@@ -44,8 +44,12 @@ pub enum Inline {
     NoteRef { label: String, id: String, href: String },
     /// A citation like `[12]` linked to its reference.
     Cite { label: String, id: String, href: String },
-    /// An invisible anchor, e.g. the start of printed page 6 (`p6`).
+    /// An anchor: the start of printed page 6 (`p6`, written with a
+    /// visible page marker) or a link target (invisible).
     Anchor(String),
+    /// A link target wrapped around the words it points at (an index
+    /// term), so the viewer can show where the link landed.
+    Target { id: String, text: String, emph: bool },
     /// A link; `text` is already Markdown.
     Link { text: String, href: String },
 }
@@ -108,13 +112,20 @@ pub struct Book {
     pub labels: Vec<Option<String>>,
 }
 
+/// The printed page label of a page-start anchor id ("p18" -> "18"), None
+/// for other anchors.
+pub fn page_label(id: &str) -> Option<&str> {
+    let l = id.strip_prefix('p')?;
+    (!l.is_empty() && l.chars().all(|c| c.is_ascii_alphanumeric())).then_some(l)
+}
+
 /// Plain text of some inlines (math as its LaTeX), for matching titles.
 pub fn plain(inl: &[Inline]) -> String {
     let mut s = String::new();
     for i in inl {
         match i {
             Inline::Text(t) | Inline::Emph(t) | Inline::Math(t) | Inline::Sup(t) => s.push_str(t),
-            Inline::Link { text, .. } => s.push_str(text),
+            Inline::Link { text, .. } | Inline::Target { text, .. } => s.push_str(text),
             _ => {}
         }
     }

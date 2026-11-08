@@ -1,6 +1,6 @@
 //! Write the chapters as Markdown files.
 
-use crate::{Block, Book, Inline, Note};
+use crate::{page_label, Block, Book, Inline, Note};
 use std::path::{Path, PathBuf};
 
 /// Escape characters that Markdown would otherwise treat as formatting.
@@ -50,7 +50,22 @@ pub fn render_inlines(inl: &[Inline]) -> String {
             Inline::Cite { label, id, href } => {
                 s.push_str(&format!("<a id=\"{id}\"></a>[[{label}]]({href})"))
             }
-            Inline::Anchor(id) => s.push_str(&format!("<a id=\"{id}\"></a>")),
+            Inline::Anchor(id) => match page_label(id) {
+                // a small marker where the printed page starts, so pages
+                // can be found ("p. 18") and index links visibly land there
+                Some(l) => {
+                    if !s.is_empty() && !s.ends_with(' ') {
+                        s.push(' ');
+                    }
+                    s.push_str(&format!("<a id=\"{id}\"><sup>[p. {l}]</sup></a>"));
+                }
+                None => s.push_str(&format!("<a id=\"{id}\"></a>")),
+            },
+            Inline::Target { id, text, emph } => {
+                let t = escape(text);
+                let t = if *emph { format!("<em>{t}</em>") } else { t };
+                s.push_str(&format!("<a id=\"{id}\">{t}</a>"));
+            }
             Inline::Link { text, href } => s.push_str(&format!("[{text}]({href})")),
         }
     }
@@ -86,7 +101,10 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
             let tag = tag.as_ref().map(|t| format!(" \\tag{{{t}}}")).unwrap_or_default();
             out.push_str(&format!("$$\n{latex}{tag}\n$$\n\n"));
         }
-        Block::Anchor(id) => out.push_str(&format!("<a id=\"{id}\"></a>\n\n")),
+        Block::Anchor(id) => match page_label(id) {
+            Some(l) => out.push_str(&format!("<a id=\"{id}\"><sup>[p. {l}]</sup></a>\n\n")),
+            None => out.push_str(&format!("<a id=\"{id}\"></a>\n\n")),
+        },
         Block::Item { level, text } => {
             out.push_str(&format!("{}- {}\n", "  ".repeat(*level), render_inlines(text)));
         }

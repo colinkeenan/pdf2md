@@ -1,10 +1,10 @@
 # Free Particle Scattering Problems
 
-<a id="p81"></a>
+<a id="p81"><sup>[p. 81]</sup></a>
 
 In this extensive class of problems we are interested in calculating the over-all transition matrix element $M$ between an initial state $A$ and a final state $B , A$ and $B$ being specified by assigning the spins and momenta of the free particles which are present in these states. The scattering process is supposed to occur as follows: The free particles which are specified by state $A$ in the remote past, converge and interact, and other free particles emerge or are created in the interaction and finally constitute the state $B$ in the remote future. We wish to calculate the matrix element $M$ for this process, without studying the equations of motion or investigating the behavior of the system at intermediate times while the interaction is in progress.
 
-The unperturbed states $A$ and $B$ are supposed to be states of free particles without interaction and are therefore represented by constant state-vectors Φ$A$ and Φ$B$ in the interaction representation. The actual initial and final states in a scattering problem will consist of particles each having a self-field with which it continues to interact even in the remote future and past, hence Φ$A$ and Φ$B$ do not accurately represent the initial and final states. However, so long as we are using perturbation theory and not including the higher order effects arising form the self-fields of the particles, it is consistent to use constant Φ$A$ and Φ$B$ representing bare particles without radiation interaction. Even when self-field effects are considered, it turns out that the bare-particle Φ$A$ and Φ$B$ can still be used, although in this case some careful justification for it is needed.
+The unperturbed states $A$ and $B$ are supposed to be states of free particles without interaction and are therefore represented by constant state-vectors Φ$A$ and Φ$B$ in the <a id="ix-126">interaction representation</a>. The actual initial and final states in a scattering problem will consist of particles each having a self-<a id="ix-184">field</a> with which it continues to interact even in the remote future and past, hence Φ$A$ and Φ$B$ do not accurately represent the initial and final states. However, so long as we are using perturbation theory and not including the higher order effects arising form the self-fields of the particles, it is consistent to use constant Φ$A$ and Φ$B$ representing bare particles <a id="ix-112">without radiation</a> interaction. Even when self-field effects are considered, it turns out that the bare-particle Φ$A$ and Φ$B$ can still be used, although in this case some careful justification for it is needed.
 
 The matrix element $M$ is
 
@@ -12,7 +12,7 @@ $$
 M = ( \Phi_{B}^{*} U \Phi_{A} ) \tag{419}
 $$
 
-Here $U$Φ$A$ is the state which is obtained at $t$ = +$\infty$ by solving the equation of motion (417) with the initial condition Φ = Φ$A$ at $t = -\infty . U$ can easily be written down as a perturbation expansion in the operators $H^{e}$ and $H_{R}$,
+Here $U$Φ$A$ is the state which is obtained at $t$ = +$\infty$ by solving the <a id="ix-234">equation</a> of motion (417) with the initial condition Φ = Φ$A$ at $t = -\infty . U$ can easily be written down as a perturbation expansion in the operators $H^{e}$ and $H_{R}$,
 
 $$
 \begin{aligned} U &= 1 + \left( - \frac{i}{\hbar} \right) \int_{-\infty}^{\infty} dt_{1} \{ H^{e} ( t_{1} ) + H_{R} ( t_{1} ) \} \\ & \quad + \left( - \frac{i}{\hbar} \right)^{2} \int_{-\infty}^{\infty} dt_{1} \int_{-\infty}^{\infty} dt_{2} \{ H^{e} ( t_{1} ) + H_{R} ( t_{1} ) \}\{ H^{e} ( t_{2} ) + H_{R} ( t_{2} ) \} + \dots \end{aligned} \tag{420}
@@ -28,13 +28,13 @@ Before discussing the general analysis of the series expansion (421), we shall u
 
 ## <a id="s-a-m-ller-scattering-of-two-electrons"></a>A. Møller Scattering of Two Electrons
 
-We have in the initial state $A$ two electrons in states $( p_{1} u_{1} ) ( p_{2} u_{2} )$ and in the final state $B$ two electrons $( p_{1}^{\prime} u_{1}^{\prime} ) ( p_{2}^{\prime} u_{2}^{\prime} )$. The electron ($p_{1} u_{1} )$ is given by the one-particle wave-function
+We have in the initial state $A$ two electrons in states $( p_{1} u_{1} ) ( p_{2} u_{2} )$ and in the final state $B$ two electrons $( p_{1}^{\prime} u_{1}^{\prime} ) ( p_{2}^{\prime} u_{2}^{\prime} )$. The electron ($p_{1} u_{1} )$ is given by the one-particle <a id="ix-83">wave-function</a>
 
 $$
 u_{1} e^{ip {}_{1} \cdot x} \tag{422}
 $$
 
-<a id="p82"></a>
+<a id="p82"><sup>[p. 82]</sup></a>
 
 normalized by $( u_{1} u_{1} )$ = 1. With the wave function normalized in this way, (422) is just the matrix element of the operator $\psi ( x )$ between the vacuum state and the state containing electron 1. We can see this from
 
@@ -84,7 +84,7 @@ $$
 \langle P \{ A_{\lambda} ( x_{1} ) ,A_{\mu} ( x_{2} ) \} \rangle_{o} = \tfrac{1}{2} \hbar c\delta_{\lambda \mu} D_{F} ( x_{1} - x_{2} ) \tag{427}
 $$
 
-where $F$ stands for Feynman. Also called by Stueckelberg $D^{c} , c$ for causality. <a id="refback-18-1"></a>[[18]](#ref-18)
+where $F$ stands for <a id="ix-80">Feynman</a>. Also called by Stueckelberg $D^{c} , c$ for causality. <a id="refback-18-1"></a>[[18]](#ref-18)
 
 ### <a id="s-properties-of-the-d-f-function"></a>Properties of the $D_{F}$ Function
 
@@ -100,11 +100,11 @@ $$
 \begin{aligned} D_{F} ( x ) &= D^{( 1 )} ( x ) + i\epsilon ( x ) D ( x ) = \frac{1}{2 \pi^{2}} \left[ \frac{1}{x^{2}} - i\pi \delta ( x^{2} ) \right] \\ & \quad = D^{( 1 )} ( x ) - i \{ D_{A} ( x ) + D_{R} ( x ) \} \\ & \quad = D^{( 1 )} ( x ) - 2 \overline{iD} ( x ) \end{aligned} \tag{429}
 $$
 
-<a id="p83"></a>
+<a id="p83"><sup>[p. 83]</sup></a>
 
 according to (228). Obviously $D_{F}$ is an even function. It has the property that asymptotically as $x_{0} \to \infty$ in the future, $D_{F}$ = 2$iD^{+}$ contains only positive frequencies, while as $x_{0} \to -\infty$ in the past, $D_{F} = - 2 iD^{-}$ contains only negative frequencies. See Fierz, _Helv. Phys. Acta_ 23 (1950) 731 for a full discussion.
 
-Thus $D_{F}$ is the potential arising from a point source disturbance at the origin, when all the potential travelling out in the future represents particles created, and all the potential travelling in from<sup><a id="fnref-56" href="#fn-56">56</a></sup> the past represents particles to be absorbed, all particles having positive energy. It is thus the potential which maintains the correct causal time-sequence of events, and in this way it was discovered by Stueckelberg. But the definition (427) is easier to understand and use.
+Thus $D_{F}$ is the potential arising from a point source disturbance at the origin, when all the potential travelling out in the future represents particles <a id="ix-5">created</a>, and all the potential travelling in from<sup><a id="fnref-56" href="#fn-56">56</a></sup> the past represents particles to be absorbed, all particles having positive energy. It is thus the potential which maintains the correct causal time-sequence of events, and in this way it was discovered by Stueckelberg. But the definition (427) is easier to understand and use.
 
 The momentum representation of $D_{F}$ is
 
@@ -142,9 +142,9 @@ Now $p_{1}$ and $p_{1}^{\prime}$ are both electron momentum 4-vectors and hence 
 
 It is clear that the formula comes very directly out of (423), once we know the momentum expansion (431) of the $D_{F}$ function. And we shall find that things are equally simple in other free-particle scattering problems.
 
-<a id="p84"></a>
+<a id="p84"><sup>[p. 84]</sup></a>
 
-### <a id="s-electron-positron-scattering"></a>Electron-Positron Scattering
+### <a id="s-electron-positron-scattering"></a>Electron-Positron <a id="ix-229">Scattering</a>
 
 Exactly the same formula (432) also gives the matrix element of scattering of an electron by a positron. We must assume that the electron is initially in state 1 given by
 
@@ -182,7 +182,7 @@ $$
 ue^{ip \cdot x} \tag{437}
 $$
 
-and a photon with potentials given by
+and a photon with <a id="ix-195">potentials</a> given by
 
 $$
 A_{\mu} = e_{\mu} e^{ik \cdot x} \tag{438}
@@ -206,13 +206,13 @@ $$
 \begin{aligned} M_{2} &= \frac{e^{2}}{\hbar^{2} c^{2}} \sum_{\lambda ,\mu ,\alpha ,\beta} \int \int dx_{1} dx_{2} \left\{ \exp ( ip \cdot x_{2} - ip^{\prime} \cdot x_{1} ) ( u_{1}^{\prime} \gamma_{\lambda} )_{\alpha} \left\langle \epsilon ( x_{1} - x_{2} ) P \left\{ \psi_{\alpha} ( x_{1} ) \overline{,\psi}_{\beta} ( x_{2} ) \right\} \right\rangle_{o} ( \gamma_{\mu} u )_{\beta} \right\} \times \\ & \quad \left\{ e_{\lambda} e_{\mu}^{\prime} \exp ( ik \cdot x_{1} - ik^{\prime} \cdot x_{2} ) + e_{\mu} e_{\lambda}^{\prime} \exp ( ik \cdot x_{2} - ik^{\prime} \cdot x_{1} ) \right\} \end{aligned} \tag{441}
 $$
 
-Note that with anticommuting fields the expression $\epsilon ( x_{1} - x_{2} ) P \left\{ \psi_{\alpha} ( x_{1} ) \overline{,\psi}_{\beta} ( x_{2} ) \right\}$ is a relativistic invariant whereas the $P$-product by itself is not. Thus in analogy with (427) we write
+Note that with <a id="ix-41">anticommuting</a> fields the expression $\epsilon ( x_{1} - x_{2} ) P \left\{ \psi_{\alpha} ( x_{1} ) \overline{,\psi}_{\beta} ( x_{2} ) \right\}$ is a relativistic invariant whereas the $P$-product by itself is not. Thus in analogy with (427) we write
 
 $$
 \left\langle \epsilon ( x_{1} - x_{2} ) P \left\{ \psi_{\alpha} ( x_{1} ) \overline{,\psi}_{\beta} ( x_{2} ) \right\} \right\rangle_{o} = - \tfrac{1}{2} S_{F\alpha \beta} ( x_{1} - x_{2} ) \tag{442}
 $$
 
-<a id="p85"></a>
+<a id="p85"><sup>[p. 85]</sup></a>
 
 where $S_{F}$ is a new invariant function. Since
 
@@ -232,7 +232,7 @@ $$
 S_{F} ( x ) = \sum_{\lambda} \left( \gamma_{\lambda} \frac{\partial}{\partial x_{\lambda}} - \mu \right) \Delta_{F} ( x ) \tag{445}
 $$
 
-and we find from (444) the momentum representations
+and we find from (444) the momentum <a id="ix-130">representations</a>
 
 $$
 \Delta_{F} ( x ) = \frac{- 2 i}{( 2 \pi )^{4}} \int e^{ik \cdot x} \frac{d^{4} k}{k^{2} + \mu^{2} - i\epsilon} \tag{446}
@@ -248,7 +248,7 @@ $$
 S_{F} ( x ) = \frac{2}{( 2 \pi )^{4}} \int_{F} e^{ik \cdot x} \frac{1}{k / - i\mu} d^{4} k \tag{448}
 $$
 
-Here the Dirac matrix in the denominator means that we have to multiply above and below by $( / k + i\mu )$ in order to evaluate the integral. Thus (448) is not a real simplification of (447), only it saves writing. The Feynman integration in (448) is defined as a contour integral exactly as in (430).
+Here the Dirac matrix in the denominator means that we have to multiply above and below by $( / k + i\mu )$ in order to evaluate the integral. Thus (448) is not a real simplification of (447), only it saves writing. The Feynman integration in (448) is defined as a <a id="ix-67">contour integral</a> exactly as in (430).
 
 Now substituting from (448) into (441), just like for (432)
 
@@ -286,7 +286,7 @@ $$
 M_{2} = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu} ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) u^{\prime} \left[ /e \frac{/ k^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e^{\prime} \frac{/ k}{k_{0}} /e \right] u \tag{453}
 $$
 
-<a id="p86"></a>
+<a id="p86"><sup>[p. 86]</sup></a>
 
 ### <a id="s-calculation-of-cross-section"></a>Calculation of the Cross-Section
 
@@ -296,7 +296,7 @@ $$
 M_{2} = K ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \tag{454}
 $$
 
-Then the scattering probability per unit volume and per unit time for the single final state is as before
+Then the <a id="ix-118">scattering</a> probability per unit volume and per unit time for the single final state is as before
 
 $$
 w_{\delta} = c | K |^{2} ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \tag{455}
@@ -352,7 +352,7 @@ $$
 
 This gives the cross-section for a known electron spin in the initial and final states.
 
-<a id="p87"></a>
+<a id="p87"><sup>[p. 87]</sup></a>
 
 ### <a id="s-sum-over-spins"></a>Sum over Spins
 
@@ -404,13 +404,13 @@ $$
 
 Similarly $\frac{k /^{\prime}}{k_{0}^{\prime}} = i\beta + \gamma_{k \prime}$.
 
-Since $/p$ anticommutes with $/e , /e^{\prime} , \gamma_{k}$ and $\gamma_{k \prime}$, (compare with remark after (451)) we may write (463) in the form
+Since $/p$ <a id="ix-42">anticommutes</a> with $/e , /e^{\prime} , \gamma_{k}$ and $\gamma_{k \prime}$, (compare with remark after (451)) we may write (463) in the form
 
 $$
 \frac{e^{4}}{3 2 \hbar^{4} c^{4} \mu^{4}} \operatorname{Spur} \left[ \left\{ \left( /e \frac{k /}{k_{0}} /e^{\prime} + /e^{\prime} \frac{/ k^{\prime}}{k_{0}^{\prime}} /e \right) ( i\mu - p / ) + 4 \mu ( e \cdot e^{\prime} ) \right\} ( p /^{\prime} + i\mu ) \left\{ /e \frac{/ k^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e^{\prime} \frac{/ k}{k_{0}} /e \right\} \right]
 $$
 
-<a id="p88"></a>
+<a id="p88"><sup>[p. 88]</sup></a>
 
 because, using 4), and again compare with remark after (451),<sup><a id="fnref-59" href="#fn-59">59</a></sup>
 
@@ -486,7 +486,7 @@ $$
 = \operatorname{Sp} \left[ p/e / \frac{k /^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e \frac{/ k}{k_{0}} /e^{\prime} p / \right] = \operatorname{Sp} \left[ p/e / \frac{k /^{\prime}}{k_{0}^{\prime}} /e^{\prime} + p/e / \frac{/ k}{k_{0}} /e^{\prime} \right]
 $$
 
-<a id="p89"></a>
+<a id="p89"><sup>[p. 89]</sup></a>
 
 and so (464) is
 
@@ -568,7 +568,7 @@ $$
 \sum_{e} ( e \cdot e^{\prime} )^{2} = 1 - ( \boldsymbol{e} \cdot \boldsymbol{k} ˆ^{\prime} )^{2}
 $$
 
-<a id="p90"></a>
+<a id="p90"><sup>[p. 90]</sup></a>
 
 Now we perform the other summation over the two polarization directions of photon $k$, using the same argument. This gives
 
@@ -634,7 +634,7 @@ $$
 w = 0 \tag{475}
 $$
 
-<a id="p91"></a>
+<a id="p91"><sup>[p. 91]</sup></a>
 
 For _perpendicular_ polarizations, take coordinate axes 1 along $e$, 2 along $e^{\prime}$, and 3 along $k$. Then
 
@@ -676,13 +676,13 @@ $$
 
 This is one place where charge-conjugate spinors are useful and necessary!
 
-Summarizing, we find for electron and positron with spins parallel, in triplet state, the 2-photon decay is forbidden. This selection rule is in fact an exact one for positronium in the ground state 1$s$ triplet. Only 3-photon decay can occur and this makes the lifetime $\sim$ 1100 times longer. For electron and positron in singlet state, the 2-photon decay occurs with the photons always polarized perpendicularly to each other. The probability for the decay, integrating (474) over a solid angle 2$\pi$ since the photons are indistinguishable, is
+Summarizing, we find for electron and positron with spins parallel, in triplet state, the 2-photon decay is forbidden. This selection rule is in fact an exact one for positronium in the ground state 1$s$ triplet. Only 3-photon decay can occur and this makes the lifetime $\sim$ 1100 times longer. For electron and positron in singlet state, the 2-photon decay occurs with the photons always polarized perpendicularly to each other. The probability for the decay, integrating (474) over a solid <a id="ix-22">angle</a> 2$\pi$ since the photons are indistinguishable, is
 
 $$
 w = \frac{\hbar^{2} c^{3}}{1 6 \pi} 2 | K |^{2} = \frac{2 e^{4}}{\hbar^{2} c\mu^{2} 8 \pi} = 4 \pi cr_{o}^{2} \tag{477}
 $$
 
-Formula (477) is for electron and positron normalized to one particle per unit volume. If the density of the electron probability relative to the position of the positron is $\rho$, then the mean annihilation life-time will be<sup><a id="fnref-65" href="#fn-65">65</a></sup> (the “classical electron radius” $r_{o} = e^{2} / ( 4 \pi mc^{2} )$ in Heaviside units)
+Formula (477) is for electron and positron normalized to one particle per unit volume. If the density of the electron probability relative to the position of the positron is $\rho$, then the mean <a id="ix-35">annihilation</a> life-time will be<sup><a id="fnref-65" href="#fn-65">65</a></sup> (the “classical electron radius” $r_{o} = e^{2} / ( 4 \pi mc^{2} )$ in Heaviside units)
 
 $$
 \tau = \frac{1}{4 \pi cr_{o}^{2} \rho} \tag{478}
@@ -702,9 +702,9 @@ $$
 
 proportional to 1 just like neutron cross-sections at low (thermal) energies.
 
-<a id="p92"></a>
+<a id="p92"><sup>[p. 92]</sup></a>
 
-## <a id="s-d-bremsstrahlung-and-pair-creation-in-the-coulomb-field-of-an-atom"></a>D. Bremsstrahlung and Pair Creation in the Coulomb Field of an Atom
+## <a id="s-d-bremsstrahlung-and-pair-creation-in-the-coulomb-field-of-an-atom"></a>D. Bremsstrahlung and <a id="ix-36">Pair</a> Creation in the Coulomb Field of an Atom
 
 We consider these two important processes together. Given an external potential $A_{\mu}^{e}$ representing the Coulomb field, the processes are:
 
@@ -754,7 +754,7 @@ $$
 M_{1} = - \frac{e^{2} ( 2 \pi )^{4} )}{\hbar^{2} c^{2}} \delta^{4} ( k + k^{\prime} - p - p_{+} ) u \left\{ /e \frac{1}{/ k^{\prime} - p /_{+} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{/ k - p /_{+} - i\mu} /e \right\} u^{\prime} \tag{485}
 $$
 
-<a id="p93"></a>
+<a id="p93"><sup>[p. 93]</sup></a>
 
 and integrating over the components of the potential
 
@@ -762,7 +762,7 @@ $$
 M_{1} = - \frac{e^{2}}{\hbar^{2} c^{2}} f ( p + p_{+} - k^{\prime} ) u \left\{ /e \frac{1}{/ k^{\prime} - p /_{+} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{p / - / k^{\prime} - i\mu} /e \right\} u^{\prime} \tag{486}
 $$
 
-For the cross-section calculation see again Heitler, $§ 2 0 .$<sup><a id="fnref-67" href="#fn-67">67</a></sup>
+For the <a id="ix-34">cross-section</a> calculation see again Heitler, $§ 2 0 .$<sup><a id="fnref-67" href="#fn-67">67</a></sup>
 
 ---
 

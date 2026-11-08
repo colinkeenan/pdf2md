@@ -144,7 +144,7 @@ fn converts_a_small_book() {
     assert!(alpha.contains("$$\nE = mc^{2} \\tag{1}\n$$"), "{alpha}");
     // the running header is gone, the printed page number became an anchor
     assert!(!alpha.contains("ALPHA"), "{alpha}");
-    assert!(alpha.contains("<a id=\"p2\"></a>"), "{alpha}");
+    assert!(alpha.contains("<a id=\"p2\"><sup>[p. 2]</sup></a>"), "{alpha}");
 
     // aligned columns become a LaTeX array
     assert!(

@@ -3,7 +3,8 @@
 Converts a PDF textbook into a folder of Markdown files, one per chapter.
 
 * **Footnotes / references** are moved from the end of the book to the end of the chapter that cites them. Clicking a marker jumps to the note; the note has a ↩ link back (one per citation if cited several times).
-* **Table of contents and index** are links. TOC entries point to chapter files or to headings inside them; index page numbers point to page anchors (`#p32`).
+* **Page markers**: where each printed page starts, a small <sup>[p. 32]</sup> marker (with anchor `#p32`), so you can search for a page ("p. 32") and see where you are.
+* **Table of contents and index** are links. TOC entries point to chapter files or to headings inside them. An index page number points to the word on that page where the entry's term appears (also "anticommute" → "anticommuting", "Lamb, Willis E." → "Lamb"); if the term is not in the text of that page (the index sometimes points to related material), it points to the page marker. In Dyson about 40 % of index links find their term. The found words are wrapped in their anchor (`<a id="ix-7">Lamb shift</a>`), so a viewer can highlight them; [mdBun](https://github.com/colinkeenan/mdBun) flashes the target of a link.
 * **Math** is emitted as LaTeX (`$$ … $$`), never as pictures.
 
 ## Layout

@@ -8,7 +8,7 @@ F. J. Dyson
 
 Second Edition
 
-<a id="pi"></a>
+<a id="pi"><sup>[p. i]</sup></a>
 
 _ADVANCED QUANTUM MECHANICS_
 
@@ -31,7 +31,7 @@ A^{T} & = & \text{transposed} \\
 \end{array}
 $$
 
-<a id="pii"></a>
+<a id="pii"><sup>[p. ii]</sup></a>
 
 ## <a id="s-table-of-contents"></a>Table of Contents
 
@@ -140,9 +140,9 @@ $$
 - [Typist’s Afterword](09-typist-s-afterword.md)
 - [Index](10-index.md)
 
-<a id="piii"></a>
+<a id="piii"><sup>[p. iii]</sup></a>
 
-<a id="piv"></a>
+<a id="piv"><sup>[p. iv]</sup></a>
 
 ## <a id="s-lecture-course-491-advanced-quantum-theory-f-j-dyson-fall-semester-1951"></a>Lecture Course 491 — Advanced Quantum Theory F. J. Dyson — Fall Semester 1951
 

@@ -6,11 +6,13 @@
 //!   If the section title is not a separate heading line in the text (a
 //!   "run-in" heading), an anchor is put at the start of the paragraph on
 //!   that page that begins with the title.
-//! * Index page numbers link to page anchors (`#p32`).
+//! * Index page numbers link to the place on that page where the entry's
+//!   term appears (an anchor `#ix-7` put in front of the word), or to the
+//!   page start (`#p32`) if the term is not found in the text.
 
 use crate::emit::render_inlines;
 use crate::structure::slugify;
-use crate::{key, plain, Block, Chapter, Inline};
+use crate::{key, page_label, plain, Block, Chapter, Inline};
 use std::collections::{HashMap, HashSet};
 
 /// The body heading may be a shortened form of the TOC entry or vice versa.
@@ -260,8 +262,9 @@ fn page_map(chapters: &[Chapter]) -> HashMap<String, String> {
     map
 }
 
-/// "amplitude, 4, 29, 55–58" -> the numbers become links to page anchors.
-fn link_numbers(t: &str, pages: &HashMap<String, String>, out: &mut Vec<Inline>) {
+/// "amplitude, 4, 29, 55–58" -> the numbers become links; `target` gives
+/// the link for a page label (None: leave the number as text).
+fn link_numbers(t: &str, target: &mut dyn FnMut(&str) -> Option<String>, out: &mut Vec<Inline>) {
     let mut buf = String::new();
     let chars: Vec<char> = t.chars().collect();
     let mut i = 0;
@@ -280,12 +283,12 @@ fn link_numbers(t: &str, pages: &HashMap<String, String>, out: &mut Vec<Inline>)
         let tok: String = chars[i..j].iter().collect();
         let ends = j == chars.len() || matches!(chars[j], ',' | ';' | ' ' | '.');
         let first: String = tok.chars().take_while(|c| c.is_ascii_digit()).collect();
-        match pages.get(&first).filter(|_| ends) {
-            Some(slug) => {
+        match ends.then(|| target(&first)).flatten() {
+            Some(href) => {
                 if !buf.is_empty() {
                     out.push(Inline::Text(std::mem::take(&mut buf)));
                 }
-                out.push(Inline::Link { text: tok, href: format!("{slug}.md#p{first}") });
+                out.push(Inline::Link { text: tok, href });
             }
             None => buf.push_str(&tok),
         }
@@ -296,22 +299,253 @@ fn link_numbers(t: &str, pages: &HashMap<String, String>, out: &mut Vec<Inline>)
     }
 }
 
-pub fn link_index(chapters: &mut [Chapter]) {
-    let pages = page_map(chapters);
-    for ch in chapters.iter_mut() {
-        if key(&ch.title) != "index" {
+/// A place in the text: chapter, block, inline, byte offset in the inline.
+type Spot = (usize, usize, usize, usize);
+
+/// Text pieces of every printed page: label -> (chapter, block, inline).
+fn page_texts(chapters: &[Chapter], skip: usize) -> HashMap<String, Vec<(usize, usize, usize)>> {
+    let mut map: HashMap<String, Vec<(usize, usize, usize)>> = HashMap::new();
+    for (ci, ch) in chapters.iter().enumerate() {
+        if ci == skip {
             continue;
         }
-        for b in ch.blocks.iter_mut() {
-            if let Block::Item { text, .. } | Block::Para(text) = &mut b.block {
-                let old = std::mem::take(text);
-                for x in old {
-                    match x {
-                        Inline::Text(t) => link_numbers(&t, &pages, text),
-                        other => text.push(other),
+        let mut page: Option<String> = None;
+        for (bi, b) in ch.blocks.iter().enumerate() {
+            let inl = match &b.block {
+                Block::Anchor(id) => {
+                    if let Some(l) = page_label(id) {
+                        page = Some(l.to_string());
                     }
+                    continue;
+                }
+                Block::Para(inl) | Block::Heading { text: inl, .. } | Block::Item { text: inl, .. } => inl,
+                Block::PageNote { text, .. } => text,
+                _ => continue,
+            };
+            for (ii, x) in inl.iter().enumerate() {
+                match x {
+                    Inline::Anchor(id) => {
+                        if let Some(l) = page_label(id) {
+                            page = Some(l.to_string());
+                        }
+                    }
+                    Inline::Text(_) | Inline::Emph(_) => {
+                        if let Some(p) = &page {
+                            map.entry(p.clone()).or_default().push((ci, bi, ii));
+                        }
+                    }
+                    _ => {}
                 }
             }
         }
+    }
+    map
+}
+
+fn inline_text<'a>(chapters: &'a [Chapter], (ci, bi, ii): (usize, usize, usize)) -> &'a str {
+    let inl = match &chapters[ci].blocks[bi].block {
+        Block::Para(inl) | Block::Heading { text: inl, .. } | Block::Item { text: inl, .. } => inl,
+        Block::PageNote { text, .. } => text,
+        _ => return "",
+    };
+    match &inl[ii] {
+        Inline::Text(t) | Inline::Emph(t) => t,
+        _ => "",
+    }
+}
+
+/// Byte offset of `needle` (lowercase words) in `hay` at a word start,
+/// ignoring case and treating hyphens as spaces.
+fn find_term(hay: &str, needle: &str) -> Option<(usize, usize)> {
+    find_term_with(hay, needle, false)
+}
+
+/// Like [`find_term`], but the last word only has to share its stem
+/// ("anticommute" finds "anticommuting", "renormalization" "renormalized").
+fn find_stem(hay: &str, needle: &str) -> Option<(usize, usize)> {
+    let last = needle.rsplit(' ').next().unwrap_or(needle);
+    let n = last.chars().count();
+    if n < 5 {
+        return None;
+    }
+    let keep = n - (n / 4).clamp(1, 3);
+    let cut: String = needle.chars().take(needle.chars().count() - (n - keep)).collect();
+    find_term_with(hay, &cut, true)
+}
+
+/// (byte offset, byte length) of the match; with `open_end` the match runs
+/// on to the end of the word.
+fn find_term_with(hay: &str, needle: &str, open_end: bool) -> Option<(usize, usize)> {
+    let norm: Vec<(usize, char)> = hay
+        .char_indices()
+        .map(|(i, c)| (i, if c == '-' || c == '‐' || c.is_whitespace() { ' ' } else { c.to_lowercase().next().unwrap_or(c) }))
+        .collect();
+    let nd: Vec<char> = needle.chars().collect();
+    if nd.is_empty() {
+        return None;
+    }
+    (0..norm.len()).find_map(|k| {
+        let word_start = k == 0 || !norm[k - 1].1.is_alphanumeric();
+        let fits = k + nd.len() <= norm.len() && nd.iter().enumerate().all(|(m, &c)| norm[k + m].1 == c);
+        let word_end = fits && (open_end || k + nd.len() == norm.len() || !norm[k + nd.len()].1.is_alphanumeric());
+        (word_start && fits && word_end).then(|| {
+            let mut e = k + nd.len();
+            while open_end && e < norm.len() && norm[e].1.is_alphanumeric() {
+                e += 1;
+            }
+            let end = norm.get(e).map_or(hay.len(), |x| x.0);
+            (norm[k].0, end - norm[k].0)
+        })
+    })
+}
+
+/// What to look for on the page, best first: "Lamb shift"; for "Lamb,
+/// Willis E." also "Lamb"; for a sub-entry "and Lamb shift" under "Lamb"
+/// also "Lamb shift", then the main entry.
+fn term_candidates(term: &str, parent: Option<&str>) -> Vec<String> {
+    const SMALL: [&str; 12] = ["and", "of", "in", "for", "the", "by", "with", "on", "to", "from", "a", "an"];
+    let clean = |t: &str| -> String {
+        let t: String = t.chars().map(|c| if c == '-' || c == '‐' { ' ' } else { c }).collect();
+        let words: Vec<String> = t
+            .split(|c: char| c.is_whitespace() || matches!(c, '(' | ')' | '“' | '”' | '"'))
+            .map(|w| w.trim_matches(|c: char| !c.is_alphanumeric()).to_lowercase())
+            .filter(|w| !w.is_empty())
+            .collect();
+        words.join(" ")
+    };
+    let mut v: Vec<String> = Vec::new();
+    let mut add = |t: String| {
+        if t.chars().count() >= 2 && !v.contains(&t) {
+            v.push(t);
+        }
+    };
+    let strip = |t: &str| -> String {
+        let mut w: Vec<&str> = t.split(' ').collect();
+        while w.len() > 1 && SMALL.contains(&w[0]) {
+            w.remove(0);
+        }
+        w.join(" ")
+    };
+    add(clean(term));
+    add(strip(&clean(term)));
+    if let Some((a, b)) = term.split_once(',') {
+        // "scattering, Compton": "Compton scattering"; "Lamb, Willis E.": "Lamb"
+        add(clean(&format!("{b} {a}")));
+        add(clean(a));
+    }
+    if let Some(p) = parent {
+        let main = clean(p.split(',').next().unwrap_or(p));
+        let sub = strip(&clean(term));
+        add(format!("{sub} {main}"));
+        add(format!("{main} {sub}"));
+        add(main);
+    }
+    v
+}
+
+pub fn link_index(chapters: &mut [Chapter]) {
+    let pages = page_map(chapters);
+    let Some(ix) = chapters.iter().position(|c| key(&c.title) == "index") else { return };
+    let texts = page_texts(chapters, ix);
+    // anchors to put into the text: spot -> id
+    let mut spots: HashMap<Spot, (String, usize)> = HashMap::new();
+    let mut blocks = std::mem::take(&mut chapters[ix].blocks);
+    let mut parent: Option<String> = None;
+    for b in blocks.iter_mut() {
+        let level = match &b.block {
+            Block::Item { level, .. } => *level,
+            Block::Para(_) => 0,
+            _ => continue,
+        };
+        let (Block::Item { text, .. } | Block::Para(text)) = &mut b.block else { continue };
+        // the entry's term: its text up to the first page number
+        let all = plain(text);
+        let cut = all
+            .char_indices()
+            .find(|&(i, c)| c == ',' && all[i + 1..].trim_start().starts_with(|d: char| d.is_ascii_digit()))
+            .map_or(all.len(), |(i, _)| i);
+        let term = all[..cut].trim().to_string();
+        let cands = term_candidates(&term, if level > 0 { parent.as_deref() } else { None });
+        if level == 0 {
+            parent = Some(term.clone());
+        }
+        let chs: &[Chapter] = chapters;
+        let mut target = |label: &str| -> Option<String> {
+            let slug = pages.get(label)?;
+            let found = texts.get(label).and_then(|pieces| {
+                let search = |f: fn(&str, &str) -> Option<(usize, usize)>| {
+                    cands.iter().find_map(|c| {
+                        pieces.iter().find_map(|&p| f(inline_text(chs, p), c).map(|(off, len)| ((p.0, p.1, p.2, off), len)))
+                    })
+                };
+                search(find_term).or_else(|| search(find_stem))
+            });
+            Some(match found {
+                Some((spot, len)) => {
+                    let n = spots.len();
+                    let id = spots.entry(spot).or_insert_with(|| (format!("ix-{n}"), len)).0.clone();
+                    format!("{}.md#{id}", chs[spot.0].slug)
+                }
+                None => format!("{slug}.md#p{label}"),
+            })
+        };
+        let old = std::mem::take(text);
+        for x in old {
+            match x {
+                Inline::Text(t) => link_numbers(&t, &mut target, text),
+                other => text.push(other),
+            }
+        }
+    }
+    chapters[ix].blocks = blocks;
+
+    // Wrap the found words in their targets, splitting the text around
+    // them (last offsets first, so earlier ones stay valid).
+    let mut todo: Vec<(Spot, (String, usize))> = spots.into_iter().collect();
+    todo.sort_by(|a, b| b.0.cmp(&a.0));
+    for ((ci, bi, ii, off), (id, len)) in todo {
+        let inl = match &mut chapters[ci].blocks[bi].block {
+            Block::Para(inl) | Block::Heading { text: inl, .. } | Block::Item { text: inl, .. } => inl,
+            Block::PageNote { text, .. } => text,
+            _ => continue,
+        };
+        let (t, emph) = match &inl[ii] {
+            Inline::Text(t) => (t.clone(), false),
+            Inline::Emph(t) => (t.clone(), true),
+            _ => continue,
+        };
+        // a later (overlapping) match may have shortened this piece
+        let end = (off + len).min(t.len());
+        let wrap = |t: &str| if emph { Inline::Emph(t.to_string()) } else { Inline::Text(t.to_string()) };
+        let mut repl = Vec::new();
+        if off > 0 {
+            repl.push(wrap(&t[..off]));
+        }
+        repl.push(Inline::Target { id, text: t[off..end].to_string(), emph });
+        if end < t.len() {
+            repl.push(wrap(&t[end..]));
+        }
+        inl.splice(ii..ii + 1, repl);
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn index_terms_found_in_text() {
+        let c = term_candidates("Lamb, Willis E.", None);
+        assert_eq!(c, vec!["lamb willis e", "willis e lamb", "lamb"]);
+        let c = term_candidates("and Lamb shift", Some("level shift"));
+        assert_eq!(c[0], "and lamb shift");
+        assert_eq!(c[1], "lamb shift");
+        let t = "the first approximation to the Lamb-shift; the 2s state";
+        assert_eq!(find_term(t, "lamb shift"), Some((31, 10)));
+        // whole words only
+        assert_eq!(find_term("a lambda term", "lamb"), None);
+        // word endings
+        assert_eq!(find_term("anticommuting fields", "anticommute"), None);
+        assert_eq!(find_stem("anticommuting fields", "anticommute"), Some((0, 13)));
     }
 }

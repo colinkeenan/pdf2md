@@ -1,14 +1,14 @@
 # Scattering Problems and Born Approximation
 
-<a id="p22"></a>
+<a id="p22"><sup>[p. 22]</sup></a>
 
 ## <a id="s-general-discussion"></a>General Discussion
 
-The problem of scattering of a Dirac particle by a potential can be treated exactly by finding the continuum solutions of the Dirac equation. This is a complicated business even for the simplest case of a Coulomb force. It was done by Mott, _Proc. Roy. Soc._ A135 (1932) 429.
+The problem of scattering of a Dirac particle by a potential can be treated exactly by finding the continuum solutions of the Dirac <a id="ix-54">equation</a>. This is a complicated business even for the simplest case of a Coulomb force. It was done by <a id="ix-135">Mott</a>, _Proc. Roy. Soc._ A135 (1932) 429.
 
-For most purposes in relativistic problems, and always when the scattering is produced by complicated effects involving radiation theory, one uses the _Born approximation_. That is, we treat the scattering only to 1<sup>st</sup> order in the interaction, or only to some definite order in which we are interested.
+For most purposes in relativistic problems, and always when the scattering is produced by complicated effects involving radiation theory, one uses the <a id="ix-45"><em>Born approximation</em></a>. That is, we treat the scattering only to 1<sup>st</sup> order in the interaction, or only to some definite order in which we are interested.
 
-The formula for scattering from an initial state $A$ to a final state $B$ lying in a continuum of states is, transition probability per unit time,
+The formula for scattering from an initial state $A$ to a final state $B$ lying in a continuum of <a id="ix-109">states</a> is, <a id="ix-206">transition</a> probability per unit time,
 
 $$
 w = \frac{2 \pi}{\hbar} \rho_{E} | V_{BA} |^{2} \tag{102}
@@ -22,7 +22,7 @@ $$
 \text{ One particle per volume } \frac{mc^{2}}{| E |} \tag{103}
 $$
 
-where $| E |$ is the energy of the particles. Then under a Lorentz transformation the volume of a fixed region transforms like 1$/ | E |$ and so the definition stays invariant.
+where $| E |$ is the energy of the particles. Then under a <a id="ix-167">Lorentz</a> transformation the volume of a fixed region transforms like 1$/ | E |$ and so the definition stays invariant.
 
 Thus a continuum state given by the spinor $\psi = u$exp$\{ ( i \boldsymbol{p} \boldsymbol{\cdot} \boldsymbol{x} - iEt ) / \hbar \}$ is normalized so that
 
@@ -30,7 +30,7 @@ $$
 u^{*} u = \frac{| E |}{mc^{2}} \tag{104}
 $$
 
-Now if we multiply the Dirac equation for a free particle, (44), by $u$ on the left, we get $Eu^{*} \beta u = cu^{*} \beta \boldsymbol{\alpha} \boldsymbol{\cdot}$ $\boldsymbol{p} u + mc^{2} u^{*} u$; its complex conjugate is $Eu^{*} \beta u = - cu^{*} \beta \boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{p} u + mc^{2} u^{*} u$ since $\beta \boldsymbol{\alpha}$ is anti-Hermitian; then by adding we get
+Now if we multiply the Dirac equation for a free particle, (44), by $u$ on the left, we get $Eu^{*} \beta u = cu^{*} \beta \boldsymbol{\alpha} \boldsymbol{\cdot}$ $\boldsymbol{p} u + mc^{2} u^{*} u$; its complex conjugate is $Eu^{*} \beta u = - cu^{*} \beta \boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{p} u + mc^{2} u^{*} u$ since $\beta \boldsymbol{\alpha}$ is anti-<a id="ix-117">Hermitian</a>; then by adding we get
 
 $$
 Euu = mc^{2} u^{*} u \tag{105}
@@ -42,7 +42,7 @@ $$
 uu \frac{= + 1 \text{ for electron states }}{= - 1 \text{ for positron states }} \{ \} = \epsilon ; \quad \text{ This is the definition of } \epsilon . \tag{106}
 $$
 
-With this normalization the density of states in momentum space is one per volume $h^{3}$ of phase space, that is to say
+With this normalization the density of states in momentum <a id="ix-133">space</a> is one per volume $h^{3}$ of phase space, that is to say
 
 $$
 \rho = \frac{1}{h^{3}} \frac{mc^{2}}{| E |} dp_{1} dp_{2} dp_{3} \tag{107}
@@ -54,17 +54,17 @@ $$
 \frac{dp_{1} dp_{2} dp_{3}}{| E |} \tag{108}
 $$
 
-<a id="p23"></a>
+<a id="p23"><sup>[p. 23]</sup></a>
 
 ## <a id="s-projection-operators"></a>Projection Operators
 
-Usually we are not interested in the spin either of an intermediate or of an initial or final state. Therefore we have to make sums over spin states which are of the form
+Usually we are not interested in the spin either of an intermediate or of an initial or final state. Therefore we have to make sums over spin <a id="ix-163">states</a> which are of the form
 
 $$
 S = \sum_{2} ( sOu ) ( uPr ) \tag{109}
 $$
 
-where $O$ and $P$ are some kind of operators, $s$ and $r$ some kind of spin states, and the sum is over the two spin states $u$ of an electron of momentum $\boldsymbol{p}$ and energy $E$.
+where $O$ and $P$ are some kind of operators, $s$ and $r$ some kind of spin states, and the sum is over the two spin states $u$ of an electron of <a id="ix-203">momentum</a> $\boldsymbol{p}$ and energy $E$.
 
 Let us write
 
@@ -72,7 +72,7 @@ $$
 p / = \sum_{\mu} p_{\mu} \gamma_{\mu} , \quad p_{4} = iE/c \tag{110}
 $$
 
-The Dirac equation satisfied by $u$ is
+The Dirac <a id="ix-55">equation</a> satisfied by $u$ is
 
 $$
 \left( p / - imc \right) u = 0 \tag{111}
@@ -102,7 +102,7 @@ $$
 \Lambda_{+} = \frac{p / + imc}{2 imc} \tag{115}
 $$
 
-is a projection operator for _electrons_ of momentum $p$.
+is a <a id="ix-213">projection operator</a> for _electrons_ of momentum $p$.
 
 In the same way for a sum over the two positron states $u$ with momentum $p$ energy $E$
 
@@ -122,11 +122,11 @@ $$
 \Lambda_{+} - \Lambda_{-} = \mathbb{I} \tag{118}
 $$
 
-These projection operators are covariant. In Heitler the business is done in a different way which makes them non-covariant and more difficult to handle.
+These projection operators are covariant. In <a id="ix-114">Heitler</a> the business is done in a different way which makes them non-covariant and more difficult to handle.
 
-Note that here charge-conjugate wave functions are _not_ used. The positrons of momentum $p$ are represented by the electron wave functions $u$ of momentum $- p$ energy $- E$.
+Note that here charge-conjugate <a id="ix-110">wave functions</a> are _not_ used. The positrons of momentum $p$ are represented by the electron wave functions $u$ of momentum $- p$ energy $- E$.
 
-<a id="p24"></a>
+<a id="p24"><sup>[p. 24]</sup></a>
 
 ## <a id="s-calculation-of-spurs"></a>Calculation of Spurs
 
@@ -136,7 +136,7 @@ $$
 \tfrac{1}{2} \sum_{I} \sum_{F} ( u_{F} Ou_{I} ) ( u_{I} Ou_{F} )
 $$
 
-summed over electron states only. This gives
+summed over <a id="ix-211">electron</a> states only. This gives
 
 $$
 \tfrac{1}{2} \sum ( u_{F} O \Lambda_{+} O \Lambda_{+} u_{F} ) \epsilon
@@ -176,15 +176,15 @@ $$
 
 and this is always easy to calculate.
 
-_Problem 3:_ Given a steady potential $V$ a function of position, and a beam of incident particles, electrons. Solve the Schr¨odinger equation in the Born approximation
+_Problem 3:_ Given a steady potential $V$ a function of position, and a beam of incident particles, electrons. Solve the Schr¨odinger <a id="ix-231">equation</a> in the <a id="ix-46">Born approximation</a>
 
 a) By stationary perturbation theory b) By time-dependent perturbation theory.
 
-Show that the results agree, with a transition probability per unit time given by $w$ = (2$\pi / \hbar ) \rho_{E} | V_{BA} |^{2}$. Evaluate the cross section in the case $V = - Ze^{2} /r$, averaging spin over initial state and summing over final state.
+Show that the results agree, with a <a id="ix-207">transition</a> probability per unit time given by $w$ = (2$\pi / \hbar ) \rho_{E} | V_{BA} |^{2}$. Evaluate the cross section in the case $V = - Ze^{2} /r$, averaging spin over initial state and summing over final state.
 
-c) Repeat the calculation with particles obeying the Klein-Gordon equation, leaving out the $V^{2}$ term, by either method. Compare the angular distribution in the two cases.
+c) Repeat the calculation with particles obeying the <a id="ix-132">Klein-Gordon equation</a>, leaving out the $V^{2}$ term, by either method. Compare the <a id="ix-92">angular</a> <a id="ix-91">distribution</a> in the two cases.
 
-_Problem 4:_ A nucleus (O<sup>16</sup>) has an even<sup><a id="fnref-11" href="#fn-11">11</a></sup> $j$ = 0 ground state and an even $j$ = 0 excited state at 6 MeV. Calculate the total rate of emission of pairs, and the angular and momentum distributions.
+_Problem 4:_ A nucleus (O<sup>16</sup>) has an even<sup><a id="fnref-11" href="#fn-11">11</a></sup> $j$ = 0 ground state and an even $j$ = 0 excited state at 6 MeV. Calculate the total rate of emission of pairs, and the angular and <a id="ix-95">momentum</a> distributions.
 
 _Solution:_ Let ∆$E$ be the excitation energy, $\rho_{N}$ and $\boldsymbol{j}_{N}$ the charge and current density operators of the nucleus. Then for the transition we are interested in $\rho_{N}$ and $\boldsymbol{j}_{N}$ are functions of position $r$ with the time-variation of the single matrix element given by exp$\{- i$∆$E/ \hbar \}$. Also
 
@@ -192,7 +192,7 @@ $$
 \nabla \boldsymbol{\cdot} \boldsymbol{j}_{N} = - \frac{\partial \rho_{H}}{\partial t} = i \frac{\Delta E}{\hbar} \rho_{N} \tag{119}
 $$
 
-<a id="p25"></a>
+<a id="p25"><sup>[p. 25]</sup></a>
 
 The electrostatic potential $V$ of the nucleus has the matrix element given by
 
@@ -200,7 +200,7 @@ $$
 \nabla^{2} V = - 4 \pi \rho_{N} \tag{120}
 $$
 
-The states being spherically symmetric, $\rho_{N}$ is a function of $r$ only, and so the general solution of Poisson’s equation simplifies to<sup><a id="fnref-12" href="#fn-12">12</a></sup>
+The states being spherically symmetric, $\rho_{N}$ is a function of $r$ only, and so the general solution of <a id="ix-151">Poisson’s equation</a> simplifies to<sup><a id="fnref-12" href="#fn-12">12</a></sup>
 
 $$
 V ( r ) = - \frac{6 \pi}{r} \int_{0}^{r} r_{1}^{2} \rho_{N} ( r_{1} ) dr_{1} \tag{121}
@@ -220,7 +220,7 @@ $$
 I = \int \frac{4 \pi r \hbar}{i \Delta E} j_{No} ( r ) ( - e\psi^{*} \psi ( r ) ) d\tau \tag{123}
 $$
 
-As an approximation consider the de Broglie wavelengths of all pairs long compared with the nuclear size. Then
+As an approximation consider the <a id="ix-44">de Broglie wavelengths</a> of all pairs long compared with the nuclear size. Then
 
 $$
 I = \psi^{*} \psi ( 0 ) \frac{4 \pi \hbar ei}{\Delta E} \int rj_{No} ( r ) d\tau \tag{124}
@@ -244,7 +244,7 @@ $$
 I = - \frac{4 \pi Ze^{2} r_{o}^{2}}{5} \{ \psi^{*} \psi ( 0 ) \} e^{- i \Delta Et/ \hbar} \tag{126}
 $$
 
-So the problem is just to compute the probabilities of pair-emission with this interaction. Note that real radiation is strictly forbidden in a 0–0 transition, and so these pairs are actually observed in the reaction
+So the problem is just to compute the probabilities of <a id="ix-16">pair</a>-emission with this interaction. Note that real radiation is strictly forbidden in a 0–0 transition, and so these pairs are actually observed in the reaction
 
 $$
 p + F_{1 9} \to O_{1 6}^{*} + \alpha \to O_{1 6} + e^{+} + e^{-} + \alpha \tag{127}
@@ -256,15 +256,15 @@ $$
 \int V ( r ) ( - e\psi^{*} \psi ) d\tau
 $$
 
-taking the Coulomb potential of the nuclear charge and ignoring all electrodynamic effects? Yes. Because in general the interaction would be
+taking the <a id="ix-0">Coulomb potential</a> of the nuclear charge and ignoring all electrodynamic effects? Yes. Because in general the interaction would be
 
 $$
 \int \left\{ \phi ( - e\psi^{*} \psi ) - \sum_{k} A_{k} ( - e\psi^{*} \alpha_{k} \psi ) \right\} d\tau \tag{128}
 $$
 
-<a id="p26"></a>
+<a id="p26"><sup>[p. 26]</sup></a>
 
-where $\phi , A_{k}$ are the scalar and vector potentials satisfying the Maxwell equations
+where $\phi , A_{k}$ are the scalar and vector potentials satisfying the <a id="ix-191">Maxwell</a> <a id="ix-175">equations</a>
 
 $$
 \nabla^{2} \phi + \frac{1}{c} \nabla \boldsymbol{\cdot} \frac{\partial \boldsymbol{A}}{\partial t} = - 4 \pi \rho_{N}
@@ -274,7 +274,7 @@ $$
 \nabla^{2} \boldsymbol{A} - \frac{1}{c^{2}} \frac{\partial^{2} \boldsymbol{A}}{\partial t^{2}} -\nabla \left\{ \nabla \boldsymbol{\cdot} \boldsymbol{A} + \frac{1}{c} \frac{\partial \phi}{\partial t} \right\} = - \frac{4 \pi}{c} \boldsymbol{j}_{N}
 $$
 
-The matrix element of the interaction (128) is unchanged by any gauge transformation of the $( \boldsymbol{A} ,\phi )$. Therefore we may take the gauge in which
+The matrix element of the interaction (128) is unchanged by any gauge <a id="ix-101">transformation</a> of the $( \boldsymbol{A} ,\phi )$. Therefore we may take the gauge in which
 
 $$
 \nabla \boldsymbol{\cdot} \boldsymbol{A} = 0
@@ -288,7 +288,7 @@ $$
 
 Now, since there is no free radiation present, also $\nabla \times \boldsymbol{A}$ = 0, and hence $\boldsymbol{A}$ = 0, in this gauge, and therefore we can indeed ignore all electrodynamic effects.
 
-Let us calculate then the probability of pair emission with the interaction (126). A typical final state has an electron of momentum $p_{1}$ and a positron of momentum $p_{2}$, with energies $E_{1} , E_{2}$ and spins $u_{1} , u_{2}$ respectively. For the creation of this pair the matrix element of $I$ is
+Let us calculate then the probability of <a id="ix-17">pair</a> emission with the interaction (126). A typical final state has an electron of momentum $p_{1}$ and a <a id="ix-154">positron</a> of momentum $p_{2}$, with energies $E_{1} , E_{2}$ and spins $u_{1} , u_{2}$ respectively. For the <a id="ix-9">creation</a> of this pair the matrix element of $I$ is
 
 $$
 I = - Cu_{1} \beta u_{2} , C = \frac{4 \pi Ze^{2} r_{o}^{2}}{5} \tag{128a}
@@ -300,7 +300,7 @@ $$
 \frac{1}{( 2 \pi \hbar )^{6}} \frac{m^{2} c^{4}}{E_{1} E_{2}} p_{1}^{2} dp_{1} d\omega_{1} p_{2}^{2} dp_{2} d\omega_{2} \tag{129}
 $$
 
-where $d\omega_{1}$ and $d\omega_{2}$ are the solid angles for $p_{1}$ and $p_{2}$. The creation probability per unit time is thus by (102)
+where $d\omega_{1}$ and $d\omega_{2}$ are the <a id="ix-25">solid</a> angles for $p_{1}$ and $p_{2}$. The creation probability per unit time is thus by (102)
 
 $$
 w = \frac{2 \pi}{\hbar} \frac{\rho_{E}}{dE} | I |^{2} = \frac{2 \pi}{\hbar} \frac{dp_{1} dp_{2}}{d ( E_{1} + E_{2} )} C^{2} \frac{1}{( 2 \pi \hbar )^{6}} \frac{m^{2} c^{4} p_{1}^{2} p_{2}^{2} d\omega_{1} d\omega_{2}}{E_{1} E_{2}} \sum_{u_{1} ,u_{2}} | u_{1} \beta u_{2} |^{2} \tag{130}
@@ -322,19 +322,19 @@ $$
 = - 1 + \frac{\boldsymbol{p}_{1} \boldsymbol{\cdot} \boldsymbol{p}_{2}}{m^{2} c^{2}} + \frac{E_{1} E_{2}}{m^{2} c^{4}} = \frac{E_{1} E_{2} - m^{2} c^{4} + c^{2} p_{1} p_{2} \cos \theta}{m^{2} c^{4}}
 $$
 
-where $\theta$ is the angle between the pair. Then writing in (130)
+where $\theta$ is the <a id="ix-20">angle</a> between the pair. Then writing in (130)
 
 $$
 dE_{1} = dp_{1} \frac{c^{2} p_{1}}{E_{1}} , \quad d\omega_{1} = 4 \pi , \quad d\omega_{2} = 2 \pi \sin \theta d\theta
 $$
 
-we obtain the differential probability<sup><a id="fnref-13" href="#fn-13">13</a></sup> in $E_{1}$ and $\theta$
+we obtain the <a id="ix-188">differential</a> probability<sup><a id="fnref-13" href="#fn-13">13</a></sup> in $E_{1}$ and $\theta$
 
 $$
 w_{o} = \frac{4 Z^{2} e^{4} r_{o}^{4}}{2 5 \pi c^{4} \hbar^{7}} p_{1} p_{2} dE_{1} \left( E_{1} E_{2} - m^{2} c^{4} + c^{2} p_{1} p_{2} \cos \theta \right) \sin \theta d\theta \tag{131}
 $$
 
-<a id="p27"></a>
+<a id="p27"><sup>[p. 27]</sup></a>
 
 Since
 
@@ -348,13 +348,13 @@ $$
 w_{o} = \frac{4 Z^{2} e^{4} r_{o}^{4}}{2 5 \pi c^{6} \hbar^{7}} E_{1}^{2} E_{2}^{2} dE_{1} ( 1 + \cos \theta ) \sin \theta d\theta \tag{132}
 $$
 
-So the pairs have an angular distribution concentrated in the _same_ hemisphere, and predominantly _equal_ energies. Then, since
+So the pairs have an <a id="ix-93">angular</a> distribution concentrated in the _same_ hemisphere, and predominantly _equal_ energies. Then, since
 
 $$
 \int_{0}^{\pi} ( 1 + \cos \theta ) \sin \theta d\theta = 2 , \quad \text{ and } \quad \int_{0}^{\Delta E} E_{1}^{2} E_{2}^{2} dE_{1} = \int_{0}^{\Delta E} E_{1}^{2} ( E_{1} + \Delta E )^{2} dE_{1} = \frac{1}{1 5} ( \Delta E )^{5}
 $$
 
-the total creation probability per unit time is
+the total <a id="ix-10">creation</a> <a id="ix-169">probability</a> per unit time is
 
 $$
 w_{T} = \frac{4 Z^{2} e^{4} r_{o}^{4}}{2 5 \pi \hbar^{7} c^{6}} \frac{1}{1 5} ( \Delta E )^{5} \tag{133}
@@ -372,11 +372,11 @@ $$
 \tau = 1 5 \times 2 5 \pi \times 1 0^{5} \times 1 7^{2} \times \frac{1}{4} \times \frac{r_{o}}{c} = 1 0^{1 0} \frac{r_{o}}{c} \approx 1 0^{- 1 3} \sec . \tag{134}
 $$
 
-## <a id="s-scattering-of-two-electrons-in-born-approximation-the-m-ller-formula"></a>Scattering of Two Electrons in Born Approximation.The Møller Formula.
+## <a id="s-scattering-of-two-electrons-in-born-approximation-the-m-ller-formula"></a>Scattering of Two Electrons in <a id="ix-47">Born Approximation</a>.The <a id="ix-228">Møller</a> Formula.
 
-We calculate now the transition scattering matrix element $M$ between an initial state $A$ consisting of 2 electrons with momenta $p_{1} ,p_{2}$ and spin states $u_{1} ,u_{2}$ and a final state $B$ consisting of two electrons with momenta $p_{1}^{\prime} ,p_{2}^{\prime}$ and spin states $u_{1}^{\prime} ,u_{2}^{\prime}$. Thus $M$ gives the probability amplitude for arriving in state $B$ after a long time when the system is known to be in state $A$ to begin with. Hence $M$ itself should be an _invariant_ relativistically.
+We calculate now the transition scattering matrix element $M$ between an initial state $A$ consisting of 2 electrons with <a id="ix-205">momenta</a> $p_{1} ,p_{2}$ and spin states $u_{1} ,u_{2}$ and a final state $B$ consisting of two electrons with momenta $p_{1}^{\prime} ,p_{2}^{\prime}$ and spin states $u_{1}^{\prime} ,u_{2}^{\prime}$. Thus $M$ gives the probability amplitude for arriving in state $B$ after a long time when the system is known to be in state $A$ to begin with. Hence $M$ itself should be an _invariant_ relativistically.
 
-We treat the interaction in Born approximation i.e. consider the particles to go directly from the free-particle state $A$ to the free-particle state $B$ by applying the interaction operator once to state $A$. For electrons at reasonably high or relativistic velocities this will be a very good approximation $( e^{2} / \hbar v \ll$ 1). Also we treat the electromagnetic interaction classically, just as in the O<sup>16</sup> problem, taking the field produced by particle 1 according to classical Maxwell equations to act directly on particle 2. This ignores the fact that the field consists of quanta. We shall see later, after we have developed the quantum field theories, that this introduces _no error_ so long as we are in the Born approximation.
+We treat the interaction in Born approximation i.e. consider the particles to go directly from the free-particle state $A$ to the free-particle state $B$ by applying the interaction operator once to state $A$. For electrons at reasonably high or relativistic velocities this will be a very good approximation $( e^{2} / \hbar v \ll$ 1). Also we treat the electromagnetic interaction classically, just as in the O<sup>16</sup> problem, taking the field produced by particle 1 according to classical Maxwell <a id="ix-176">equations</a> to act directly on particle 2. This ignores the fact that the field consists of quanta. We shall see later, after we have developed the quantum field theories, that this introduces _no error_ so long as we are in the Born approximation.
 
 For the field produced by particle 1 in a transition from the state $p_{1} ,u_{1}$ to $p_{1}^{\prime} ,u_{1}^{\prime}$ we have the matrix elements $\phi_{( 1 )} , \boldsymbol{A}_{( 1 )}$ say. We use now not the gauge in which $\nabla \boldsymbol{\cdot} \boldsymbol{A}$ = 0, but the covariant gauge in which<sup><a id="fnref-14" href="#fn-14">14</a></sup>
 
@@ -394,7 +394,7 @@ $$
 s_{\mu ( 1 )} = i ( u_{1}^{\prime} \gamma_{\mu} u_{1} ) \exp \left\{ \sum_{\nu} \frac{i}{\hbar} ( p_{1 \nu} - p_{1 \nu}^{\prime} ) x_{\nu} \right\} \tag{137}
 $$
 
-<a id="p28"></a>
+<a id="p28"><sup>[p. 28]</sup></a>
 
 whence
 
@@ -408,7 +408,7 @@ $$
 \sum_{\nu} ( p_{1 \nu} - p_{1 \nu}^{\prime} )^{2} = | \boldsymbol{p}_{1} - \boldsymbol{p}_{1}^{\prime} |^{2} - \frac{1}{c^{2}} ( E_{1} - E_{1}^{\prime} )^{2} \tag{139}
 $$
 
-The effect of the field (138) on particle 2 is given by the interaction term in the Dirac equation for particle 2
+The effect of the field (138) on particle 2 is given by the interaction term in the Dirac <a id="ix-56">equation</a> for particle 2
 
 $$
 - e\phi + e \boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{A} = ie\beta \sum_{\mu} \gamma_{\mu} A_{\mu} \tag{140}
@@ -450,9 +450,9 @@ $$
 
 Then what will be the cross-section in terms of $K$? We do this calculation once here so that later we can stop when we have found formulae for $M$ of the type (145) which come for example conveniently in this form out of radiation theory.
 
-<a id="p29"></a>
+<a id="p29"><sup>[p. 29]</sup></a>
 
-## <a id="s-relation-of-cross-sections-to-transition-amplitudes"></a>Relation of Cross-sections to Transition Amplitudes
+## <a id="s-relation-of-cross-sections-to-transition-amplitudes"></a>Relation of Cross-sections to <a id="ix-208">Transition</a> <a id="ix-12">Amplitudes</a>
 
 Let $w$ be the transition probability per unit volume and per unit time. This is related to the transition probability for a single final state, which is
 
@@ -478,7 +478,7 @@ $$
 \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) = \delta^{3} ( \boldsymbol{p}_{1} + \boldsymbol{p}_{2} - \boldsymbol{p}_{1}^{\prime} - \boldsymbol{p}_{2}^{\prime} ) c\delta ( E_{1} + E_{2} - E_{1}^{\prime} - E_{2}^{\prime} )
 $$
 
-and the integration over $dp_{2}$ gives then by the momentum conservation
+and the integration over $dp_{2}$ gives then by the momentum <a id="ix-204">conservation</a>
 
 $$
 w = | K |^{2} \frac{c^{2}}{( 2 \pi \hbar )^{2}} \frac{m^{2} c^{4}}{E_{1}^{\prime} E_{2}^{\prime}} \delta ( E_{1} + E_{2} - E_{1}^{\prime} - E_{2}^{\prime} ) dp_{1 1}^{\prime} dp_{1 2}^{\prime} dp_{1 3}^{\prime} \tag{148a}
@@ -508,7 +508,7 @@ $$
 w = | K |^{2} \frac{m^{2} c^{4}}{E_{1}^{\prime} E_{2}^{\prime}} \frac{c^{2}}{( 2 \pi \hbar )^{2}} \frac{dp_{1 1}^{\prime} dp_{1 2}^{\prime} dp_{1 3}^{\prime}}{d ( E_{1}^{\prime} + E_{2}^{\prime} )}
 $$
 
-Choose a Lorentz-system in which $p_{1}$ and $p_{2}$ are both along the $x_{3}$-direction and take $p_{1 1}^{\prime}$ and $p_{1 2}^{\prime}$ as the variables over which the transition probability is taken. This is necessary for relativistic invariance. Then $p_{1 1}^{\prime}$ and $p_{1 2}^{\prime}$ being fixed and having from the momentum conservation $p_{1 3}^{\prime} = - p_{2 3}^{\prime}$ we get
+Choose a Lorentz-<a id="ix-160">system</a> in which $p_{1}$ and $p_{2}$ are both along the $x_{3}$-direction and take $p_{1 1}^{\prime}$ and $p_{1 2}^{\prime}$ as the variables over which the transition probability is taken. This is necessary for relativistic invariance. Then $p_{1 1}^{\prime}$ and $p_{1 2}^{\prime}$ being fixed and having from the momentum conservation $p_{1 3}^{\prime} = - p_{2 3}^{\prime}$ we get
 
 $$
 \frac{d ( E_{1}^{\prime} + E_{1}^{\prime} )}{dp_{1 3}^{\prime}} = \left| \frac{dE_{1}^{\prime}}{dp_{1 3}^{\prime}} - \frac{dE_{2}^{\prime}}{dp_{2 3}^{\prime}} \right| = c^{2} \frac{| E_{2}^{\prime} p_{1 3}^{\prime} - E_{1}^{\prime} p_{2 3}^{\prime} |}{E_{1}^{\prime} E_{2}^{\prime}} \tag{149}
@@ -520,7 +520,7 @@ $$
 \sigma = \frac{wV_{1} V_{2}}{| \boldsymbol{v}_{1} - \boldsymbol{v}_{2} |} \tag{150}
 $$
 
-<a id="p30"></a>
+<a id="p30"><sup>[p. 30]</sup></a>
 
 where $V_{1}$ is the normalization volume for particle 1, and $v_{1}$ its velocity. In fact by (103)
 
@@ -534,7 +534,7 @@ $$
 \sigma = \frac{w \left( mc^{2} \right)^{2}}{c^{2} | \boldsymbol{p}_{1} E_{2} - \boldsymbol{p}_{2} E_{1} |} = | K |^{2} \frac{\left( mc^{2} \right)^{4}}{c^{2} | E_{2} p_{1 3} - E_{1} p_{2 3} || E_{2}^{\prime} p_{1 3}^{\prime} - E_{1}^{\prime} p_{2 3}^{\prime} |} \frac{1}{( 2 \pi \hbar )^{2}} dp_{1 1}^{\prime} dp_{1 2}^{\prime} \tag{152}
 $$
 
-It is worth noting that the factor $\boldsymbol{p}_{1} E_{2} - \boldsymbol{p}_{2} E_{1}$ is invariant under Lorentz transformations leaving the $x_{1}$ and $x_{2}$ components unchanged (e.g.boosts parallel to the $x_{3}$ axis.)<sup><a id="fnref-15" href="#fn-15">15</a></sup> To prove this, we have to show that $p_{1 3} E_{2} - p_{2 3} E_{1}$ = ˜$p_{1 3} E$˜${}_{2} - p$˜${}_{2 3} E$˜$1$ (where ˜ denotes the quantities after the Lorentz transformation) because we have chosen a Lorentz system in which the direction of the momentum vector is the $x_{3}$ axis. Then
+It is worth noting that the factor $\boldsymbol{p}_{1} E_{2} - \boldsymbol{p}_{2} E_{1}$ is invariant under Lorentz <a id="ix-168">transformations</a> leaving the $x_{1}$ and $x_{2}$ components unchanged (e.g.boosts parallel to the $x_{3}$ axis.)<sup><a id="fnref-15" href="#fn-15">15</a></sup> To prove this, we have to show that $p_{1 3} E_{2} - p_{2 3} E_{1}$ = ˜$p_{1 3} E$˜${}_{2} - p$˜${}_{2 3} E$˜$1$ (where ˜ denotes the quantities after the Lorentz transformation) because we have chosen a Lorentz system in which the direction of the momentum vector is the $x_{3}$ axis. Then
 
 $$
 E ˜ = E \cosh \theta - cp \sinh \theta
@@ -564,7 +564,7 @@ $$
 
 independently of $\theta$. Hence we see that $\sigma$ is invariant under Lorentz transformations parallel to the $x_{3}$ axis.
 
-## <a id="s-results-for-m-ller-scattering"></a>Results for Møller Scattering
+## <a id="s-results-for-m-ller-scattering"></a>Results for <a id="ix-199">Møller </a><a id="ix-23">Scattering</a>
 
 One electron initially at rest, the other initially with energy $E = \gamma mc^{2}$;
 
@@ -576,7 +576,7 @@ scattering angle = $\theta$ in the lab system
 
 $= \theta^{*}$ in the center-of-mass system
 
-Then the differential cross-section is (Mott and Massey, _Theory of Atomic Collisions_, 2<sup>nd</sup> ed., p. 368)
+Then the <a id="ix-29">differential</a> cross-section is (<a id="ix-136">Mott</a> and <a id="ix-171">Massey</a>, _Theory of Atomic Collisions_, 2<sup>nd</sup> ed., p. 368)
 
 $$
 2 \pi \sigma ( \theta ) d\theta = 4 \pi \left( \frac{e^{2}}{mv^{2}} \right)^{2} \left( \frac{\gamma + 1}{\gamma^{2}} \right) dx \left\{ \frac{4}{( 1 - x^{2} )^{2}} - \frac{3}{1 - x^{2}} + \left( \frac{\gamma - 1}{2 \gamma} \right)^{2} \left( 1 + \frac{4}{1 - x^{2}} \right) \right\} \tag{153}
@@ -594,9 +594,9 @@ $$
 4 \pi \left( \frac{e^{2}}{mv^{2}} \right)^{2} \left( \frac{\gamma + 1}{\gamma^{2}} \right) dx \left\{ \frac{4}{( 1 - x^{2} )^{2}} - \frac{3}{1 - x^{2}} \right\}
 $$
 
-Effect of spin is a measurable _increase_ of scattering over the Mott formula. Effect of exchange is roughly the 1 $- 3 x^{2}$ term. Positron-electron scattering is very similar. Only the exchange effect is different because of annihilation possibility.
+Effect of spin is a measurable _increase_ of scattering over the Mott formula. Effect of exchange is roughly the 1 $- 3 x^{2}$ term. Positron-electron scattering is very similar. Only the exchange effect is different because of <a id="ix-33">annihilation</a> possibility.
 
-<a id="p31"></a>
+<a id="p31"><sup>[p. 31]</sup></a>
 
 ## <a id="s-note-on-the-treatment-of-exchange-effects"></a>Note on the Treatment of Exchange Effects
 
@@ -608,11 +608,11 @@ $$
 
 where $\psi_{2}$(1) means the particle 2 in the state 1, and so on. With these states the matrix element $M$ is exactly as we have calculated it including the exchange term.
 
-The number of possible final states is only one half of the number of states of two distinguishable particles. But this does not bring a factor $\overline{2} 1$ into the differential cross-section, because the density of antisymmetrical states, in which one of the two particles has a momentum in a particular range $dp_{1} dp_{2} dp_{3}$ is exactly the same as the density of states of 2 distinguishable particles in which the particle labelled 1 lies in the given range. Hence the general rule: the differential cross-section does _not_ have a factor $\overline{2} 1$, the total cross section _does_ because each final state may only be counted once in integrating over the angles.
+The number of possible final states is only one half of the number of states of two distinguishable particles. But this does not bring a factor $\overline{2} 1$ into the differential cross-section, because the density of antisymmetrical states, in which one of the two particles has a momentum in a particular range $dp_{1} dp_{2} dp_{3}$ is exactly the same as the density of states of 2 distinguishable particles in which the particle labelled 1 lies in the given range. Hence the general rule: the differential cross-section does _not_ have a factor $\overline{2} 1$, the total cross section _does_ because each final state may only be counted once in integrating over the <a id="ix-21">angles</a>.
 
 ## <a id="s-relativistic-treatment-of-several-particles"></a>Relativistic Treatment of Several Particles
 
-The Møller treatment of the interaction of two electrons succeeds because the field of particle 1 is calculated for all time without taking any account of the effect of particle 2 on particle 1. How can one do a better calculation taking such reactions into account? Clearly we must construct an equation of motion which follows the motions of both particles continuously in time and keeps them in step with each other. So we must have a Dirac equation for 2 electrons, taking exact account of their interaction by including in the equation the behaviour of the Maxwell field too.
+The Møller treatment of the interaction of two electrons succeeds because the <a id="ix-178">field</a> of particle 1 is calculated for all time without taking any account of the effect of particle 2 on particle 1. How can one do a better calculation taking such reactions into account? Clearly we must construct an <a id="ix-57">equation</a> of motion which follows the motions of both particles continuously in time and keeps them in step with each other. So we must have a <a id="ix-89">Dirac</a> equation for 2 electrons, taking exact account of their interaction by including in the equation the behaviour of the Maxwell field too.
 
 This kind of 2-particle Dirac equation is no longer relativistically invariant, if we give each particle a separate position in space but all the same _time_. To avoid this Dirac constructed the _many-time_ theory in which each electron has its own private time coordinate, and satisfies its private Dirac equation. This theory is all right in principle. But it becomes hopelessly complicated when pairs are created and you have equations with new time-coordinates suddenly appearing and disappearing. In fact the whole program of quantizing the electron theory as a theory of discrete particles each with its private time becomes nonsense when you are dealing with an infinite “sea” or an indefinite number of particles. So we have come to the end of what we can do with the relativistic quantum theory of particles.
 
@@ -622,7 +622,7 @@ Relativistic quantum theory is the study of quantities $\psi$ which are function
 
 The dynamical system is specified by the quantity $\psi$ existing at all points of space-time, and so consists of a system of fields. Relativistic quantum theory is necessarily a field theory.
 
-The process of reinterpreting a one-particle wave-function like the Dirac $\psi$ as a quantized field operator is called _Second Quantization_.
+The process of reinterpreting a one-particle wave-function like the Dirac $\psi$ as a quantized field operator is called <a id="ix-209"><em>Second Quantization</em></a>.
 
 ---
 

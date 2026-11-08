@@ -1,18 +1,18 @@
 # The Dirac Theory
 
-<a id="p4"></a>
+<a id="p4"><sup>[p. 4]</sup></a>
 
-## <a id="s-the-form-of-the-dirac-equation"></a>The Form of the Dirac Equation
+## <a id="s-the-form-of-the-dirac-equation"></a>The Form of the <a id="ix-86">Dirac</a> <a id="ix-49">Equation</a>
 
 Historically before the RQ theory came the one-particle theory of Dirac. This was so successful in dealing with the electron, that it was for many years the only respectable RQ theory in existence. And its difficulties are a lot less immediate than the difficulties of the one-particle KG theory.
 
-Dirac said, suppose the particle can exist in several distinct states with the same momentum (different orientations of spin.) Then the wave-function $\psi$ satisfying (6) must have several _components_; it is not a scalar but a set of numbers each giving the prob. amplitude to find the particle at a given place and in a given substate. So we write for $\psi$ a column matrix
+Dirac said, suppose the particle can exist in several distinct states with the same <a id="ix-200">momentum</a> (different orientations of spin.) Then the wave-function $\psi$ satisfying (6) must have several _components_; it is not a scalar but a set of numbers each giving the prob. <a id="ix-11">amplitude</a> to find the particle at a given place and in a given substate. So we write for $\psi$ a column matrix
 
 $$
 \psi = \begin{bmatrix} \psi_{1} \\ \psi_{2} \\ \cdot \\ \cdot \\ \cdot \end{bmatrix} \quad \text{ for the components } \psi_{\alpha} ; \alpha = 1 , 2 ,\dots
 $$
 
-Dirac assumed that the probability density at any point is still given by
+Dirac assumed that the probability <a id="ix-185">density</a> at any point is still given by
 
 $$
 \rho = \sum_{\alpha} \psi_{\alpha}^{*} \psi_{\alpha} \tag{8}
@@ -36,13 +36,13 @@ $$
 \frac{1}{c} \frac{\partial \psi}{\partial t} + \sum_{1}^{3} \alpha^{k} \frac{\partial \psi}{\partial x_{k}} + i \frac{mc}{\hbar} \beta \psi = 0 \tag{9}
 $$
 
-where $x_{1} x_{2} x_{3}$ are written for $xyz$ and $\alpha^{1} \alpha^{2} \alpha^{3} \beta$ are square matrices whose elements are numbers. The conjugate of (9) gives
+where $x_{1} x_{2} x_{3}$ are written for $xyz$ and $\alpha^{1} \alpha^{2} \alpha^{3} \beta$ are square matrices whose elements are numbers. The <a id="ix-119">conjugate</a> of (9) gives
 
 $$
 \frac{1}{c} \frac{\partial \psi^{*}}{\partial t} + \sum_{1}^{3} \frac{\partial \psi^{*}}{\partial x_{k}} \alpha^{k *} - i \frac{mc}{\hbar} \psi^{*} \beta^{*} = 0 \tag{10}
 $$
 
-where $\alpha^{k *}$ and $\beta^{*}$ are Hermitian conjugates.
+where $\alpha^{k *}$ and $\beta^{*}$ are <a id="ix-115">Hermitian</a> conjugates.
 
 Now to get (3) out of (8), (9) and (10) we must have $\alpha^{k *} = \alpha^{k} , \beta^{*} = \beta$ so $\alpha^{k}$ and $\beta$ are _Hermitian_; and
 
@@ -50,9 +50,9 @@ $$
 j_{k} = c \left( \psi^{*} \alpha^{k} \psi \right) \tag{11}
 $$
 
-<a id="p5"></a>
+<a id="p5"><sup>[p. 5]</sup></a>
 
-Next what more do we want from equation (9)? Two things. (A) it must be consistent with the 2<sup>nd</sup> order equation (6) we started from; (B) the whole theory must be Lorentz invariant.
+Next what more do we want from equation (9)? Two things. (A) it must be consistent with the 2<sup>nd</sup> order equation (6) we started from; (B) the whole theory must be <a id="ix-158">Lorentz</a> invariant.
 
 First consider (A). If (9) is consistent with (6) it must be possible to get exactly (6) by multiplying (9) by the operator
 
@@ -72,7 +72,7 @@ $$
 \begin{aligned} \alpha^{k} \alpha^{\ell} + \alpha^{\ell} \alpha^{k} &= 0 k = \ell \\ \alpha^{k} \beta + \beta \alpha^{k} &= 0 \\ \alpha^{k 2} &= \beta^{2} = \mathbb{I} , ( \text{ identity matrix } ) \end{aligned} \tag{13}
 $$
 
-Thus we could not possibly _factorize_ the 2<sup>nd</sup> order equation into two first-order operators involving ordinary numbers. But we can do it with _matrices_.
+Thus we could not possibly _factorize_ the 2<sup>nd</sup> order equation into two first-order operators involving ordinary numbers. But we can do it with <a id="ix-69"><em>matrices</em></a>.
 
 Consider the Pauli spin matrices
 
@@ -104,9 +104,9 @@ These are hermitian as required. Of course if $\alpha^{k}$ and $\beta$ are any s
 
 The Dirac equation is thus a set of 4 simultaneous linear partial differential<sup><a id="fnref-4" href="#fn-4">4</a></sup> equations in the four functions $\psi_{\alpha}$.
 
-<a id="p6"></a>
+<a id="p6"><sup>[p. 6]</sup></a>
 
-## <a id="s-lorentz-invariance-of-the-dirac-equation"></a>Lorentz Invariance of the Dirac Equation
+## <a id="s-lorentz-invariance-of-the-dirac-equation"></a><a id="ix-166">Lorentz</a> Invariance of the Dirac Equation
 
 What does this mean? Consider a general Lorentz transformation: If $x_{\mu}^{\prime}$ are the new coordinates:
 
@@ -114,9 +114,9 @@ $$
 x_{\mu}^{\prime} = \sum_{\nu = 0}^{3} a_{\mu \nu} x_{\nu} \quad ( x_{o} = ct ) \tag{16}
 $$
 
-In the new coordinate system the wave-function will be $\psi^{\prime}$. Clearly we do not expect that $\psi^{\prime} = \psi$. Example: in the Maxwell theory which is relativistic, the magnetic field $H$ is no longer a pure magnetic field in a moving system. Instead it transforms like a tensor. So we have to find _some_ transformation law for the $\psi$ which will leave invariant the physical consequences of the equations.
+In the new coordinate <a id="ix-159">system</a> the wave-function will be $\psi^{\prime}$. Clearly we do not expect that $\psi^{\prime} = \psi$. Example: in the <a id="ix-174">Maxwell</a> theory which is relativistic, the magnetic field $H$ is no longer a pure magnetic field in a moving system. Instead it transforms like a tensor. So we have to find _some_ transformation law for the $\psi$ which will leave invariant the physical consequences of the equations.
 
-We need in fact two things: (i) the interpretation of $\psi^{*} \psi$ as a probability density must be preserved, (ii) the validity of the Dirac equation must be preserved in the new system.
+We need in fact two things: (i) the interpretation of $\psi^{*} \psi$ as a probability <a id="ix-186">density</a> must be preserved, (ii) the validity of the Dirac equation must be preserved in the new system.
 
 First consider (i). The quantity which can be directly observed and must be invariant is the quantity
 
@@ -124,7 +124,7 @@ $$
 ( \psi^{*} \psi ) \times V
 $$
 
-where $V$ is a volume. Now in going to a new Lorentz system with relative velocity $v$ the volume $V$ changes by Fitzgerald contraction to the value
+where $V$ is a volume. Now in going to a new Lorentz system with relative velocity $v$ the volume $V$ changes by <a id="ix-94">Fitzgerald contraction</a> to the value
 
 $$
 V^{\prime} = V \sqrt{1 - \frac{v^{2}}{c^{2}}} \langle \rangle
@@ -170,7 +170,7 @@ $$
 
 writing $\alpha^{0} = \mathbb{I}$.
 
-<a id="p7"></a>
+<a id="p7"><sup>[p. 7]</sup></a>
 
 Thus we need $3$
 
@@ -240,7 +240,7 @@ $$
 S = \cos \tfrac{1}{2} \theta + i\sigma_{3} \sin \tfrac{1}{2} \theta \tag{28}
 $$
 
-<a id="p8"></a>
+<a id="p8"><sup>[p. 8]</sup></a>
 
 Here
 
@@ -320,7 +320,7 @@ Note that in all cases S is ambiguous by a factor $\pm$1. So in case 1 a rotatio
 
 _Problem 1_ Find the S corresponding to a general infinitesimal coordinate transformation. Compare and show that it agrees with the exact solutions given here.
 
-The $\psi_{\alpha}$’s transforming with these $S$-transformations are called _spinors_. They are a direct extension of the non-relativistic 2-component spin-functions. Mathematical theory of spinors is not very useful. In fact we find always in practice, calculations can be done most easily if one avoids any explicit representation of the spinors. _Use only formal algebra and commutation relations of the matrices._
+The $\psi_{\alpha}$’s transforming with these $S$-transformations are called <a id="ix-214"><em>spinors</em></a>. They are a direct extension of the non-relativistic 2-component spin-functions. Mathematical theory of spinors is not very useful. In fact we find always in practice, calculations can be done most easily if one avoids any explicit representation of the spinors. _Use only formal algebra and commutation relations of the matrices._
 
 ## <a id="s-the-covariant-notation"></a>The covariant notation
 
@@ -336,13 +336,13 @@ $$
 \gamma_{1 , 2 , 3 , 4} = \left( - i\beta \alpha^{1 , 2 , 3} ,\beta \right) \quad i . e . \tag{32}
 $$
 
-<a id="p9"></a>
+<a id="p9"><sup>[p. 9]</sup></a>
 
 $$
 \gamma_{1} = \begin{pmatrix} 0 & \begin{matrix} 0 & - i \\ - i & 0 \end{matrix} \\ \begin{matrix} 0 & i \\ i & 0 \end{matrix} & 0 \end{pmatrix} ; \gamma_{2} = \begin{pmatrix} 0 & \begin{matrix} 0 & - 1 \\ 1 & 0 \end{matrix} \\ \begin{matrix} 0 & 1 \\ - 1 & 0 \end{matrix} & 0 \end{pmatrix} ; \gamma_{3} = \begin{pmatrix} 0 & \begin{matrix} - i & 0 \\ 0 & i \end{matrix} \\ \begin{matrix} i & 0 \\ 0 & - i \end{matrix} & 0 \end{pmatrix} ; \gamma_{4} = \begin{pmatrix} \begin{matrix} 1 & 0 \\ 0 & 1 \end{matrix} & 0 \\ 0 & \begin{matrix} - 1 & 0 \\ 0 & - 1 \end{matrix} \end{pmatrix}
 $$
 
-are a 4-vector. They are all Hermitian and satisfy
+are a 4-vector. They are all <a id="ix-116">Hermitian</a> and satisfy
 
 $$
 \gamma_{\mu} \gamma_{\nu} + \gamma_{\nu} \gamma_{\mu} = 2 \delta_{\mu \nu} \tag{33}
@@ -366,7 +366,7 @@ $$
 
 These notations are much the most convenient for calculations.
 
-## <a id="s-conservation-laws-existence-of-spin"></a>Conservation Laws. Existence of Spin.
+## <a id="s-conservation-laws-existence-of-spin"></a><a id="ix-64">Conservation Laws</a>. <a id="ix-212">Existence of Spin</a>.
 
 The Hamiltonian in this theory is<sup><a id="fnref-6" href="#fn-6">6</a></sup>
 
@@ -378,9 +378,9 @@ $$
 H = - i \hbar c \sum_{1}^{3} \alpha^{k} \frac{\partial}{\partial x_{k}} + mc^{2} \beta = - i \hbar c \boldsymbol{\alpha} \boldsymbol{\cdot} \nabla + mc^{2} \beta \tag{38}
 $$
 
-This commutes with the momentum $\boldsymbol{p} = - i \hbar \nabla$. So the momentum $\boldsymbol{p}$ is a constant of motion.
+This commutes with the <a id="ix-201">momentum</a> $\boldsymbol{p} = - i \hbar \nabla$. So the momentum $\boldsymbol{p}$ is a constant of motion.
 
-However the angular momentum operator
+However the <a id="ix-27">angular momentum</a> operator
 
 $$
 \boldsymbol{L} = \boldsymbol{r} \times \boldsymbol{p} = - i \hbar \boldsymbol{r} \times \nabla \tag{39}
@@ -416,9 +416,9 @@ $$
 \boldsymbol{L} + \tfrac{1}{2} \hbar \boldsymbol{\sigma} = \hbar \boldsymbol{J} \tag{42}
 $$
 
-<a id="p10"></a>
+<a id="p10"><sup>[p. 10]</sup></a>
 
-is a constant, the total angular momentum, because by (40), (41) and (42)
+is a constant, the total <a id="ix-30">angular momentum</a>, because by (40), (41) and (42)
 
 $$
 [ H, \boldsymbol{J} ] = 0
@@ -436,7 +436,7 @@ $$
 \psi ( x,t ) = u \exp \left( i \frac{\boldsymbol{p} \boldsymbol{\cdot} \boldsymbol{x}}{\hbar} - i \frac{Et}{\hbar} \right) \tag{43}
 $$
 
-where $u$ is a constant spinor. The Dirac equation then becomes an equation for $u$ only
+where $u$ is a constant spinor. The <a id="ix-87">Dirac</a> <a id="ix-50">equation</a> then becomes an equation for $u$ only
 
 $$
 Eu = \left( c \boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{p} + mc^{2} \beta \right) u \tag{44}
@@ -466,17 +466,17 @@ $$
 \begin{pmatrix} 1 \\ 0 \\ \frac{cp_{3}}{E + mc^{2}} \\ \frac{cp_{+}}{E + mc^{2}} \end{pmatrix} \quad \begin{pmatrix} 0 \\ 1 \\ \frac{cp_{-}}{E + mc^{2}} \\ \frac{- cp_{3}}{E + mc^{2}} \end{pmatrix} \tag{48}
 $$
 
-This gives the two spin-states of an electron with given momentum, as required physically.
+This gives the two spin-<a id="ix-108">states</a> of an electron with given momentum, as required physically.
 
 But there are also solutions with $E = - \sqrt{m^{2} c^{4} + c^{2} p^{2}}$. In fact again two independent solutions, making 4 altogether. These are the famous _negative energy states_. Why cannot we simply agree to ignore these states, say they are physically absent? Because when fields are present the theory gives transitions from positive to negative states. e.g.H atom should decay to negative state in 10$- 1 0$ secs. or less.
 
 Certainly negative energy particles are not allowed physically. They can for example never be stopped by matter at rest, with every collision they move faster and faster. So Dirac was driven to
 
-<a id="p11"></a>
+<a id="p11"><sup>[p. 11]</sup></a>
 
-## <a id="s-the-hole-theory"></a>The Hole Theory
+## <a id="s-the-hole-theory"></a>The <a id="ix-65">Hole Theory</a>
 
-All negative-energy states are normally filled by one electron each. Because of the exclusion principle transitions of ordinary electrons to these states are forbidden. If sometimes a negative energy state of momentum $- p$ energy $- E$ is _empty_, this appears as a particle of momentum $p$ energy +$E$, and the opposite charge to an electron, i.e. an ordinary positron.
+All <a id="ix-106">negative-energy</a> <a id="ix-162">states</a> are normally filled by one electron each. Because of the exclusion principle transitions of ordinary electrons to these states are forbidden. If sometimes a negative energy state of momentum $- p$ energy $- E$ is _empty_, this appears as a particle of momentum $p$ energy +$E$, and the opposite charge to an electron, i.e. an ordinary <a id="ix-153">positron</a>.
 
 Thus we are led at once to a many-particle theory in order to get sensible results. With spin-0 particles, to get positive probabilities. With spin-$\overline{2} 1$ particles, to get positive energies.
 
@@ -546,7 +546,7 @@ $$
 C = - i\beta \alpha^{2} = \gamma_{2} = \begin{pmatrix} 0 & \begin{matrix} 0 & - 1 \\ 1 & 0 \end{matrix} \\ \begin{matrix} 0 & 1 \\ - 1 & 0 \end{matrix} & 0 \end{pmatrix} \tag{56}
 $$
 
-<a id="p12"></a>
+<a id="p12"><sup>[p. 12]</sup></a>
 
 The relation between $\psi$ and $\varphi$ is symmetrical because
 
@@ -554,7 +554,7 @@ $$
 C^{2} = \mathbb{I} \quad \text{ Hence } \quad \psi = C\varphi^{+} \tag{57}
 $$
 
-The $\varphi$ is called the _charge-conjugate_ wave-function corresponding to the negative-energy electron $\psi$. Clearly
+The $\varphi$ is called the _charge-conjugate_ wave-function corresponding to the <a id="ix-107">negative-energy</a> electron $\psi$. Clearly
 
 $$
 \varphi^{*} \varphi = \left( C\psi^{+} \right)^{*} \left( C\psi^{+} \right) = \psi^{T} C^{*} C\psi^{+} = \psi^{*} ( C^{*} C )^{T} \psi = \psi^{*} \psi \tag{58}
@@ -566,9 +566,9 @@ $$
 \varphi^{*} \alpha^{k} \varphi = \psi^{T} C^{*} \alpha^{k} C\psi^{+} = \psi^{*} C\alpha^{kT} C\psi = \psi^{*} \alpha^{k} \psi \tag{59}
 $$
 
-Thus the probability and flow densities are the same for a positron as for the conjugate negative electron.
+Thus the probability and flow <a id="ix-187">densities</a> are the same for a positron as for the conjugate negative electron.
 
-For many purposes it is easier to represent positrons directly by the $\overline{\psi}$ wave-function, e.g. in computing cross-sections for pair creation and so forth as we shall do later. But if you actually want to _see_ the positron, e.g. in describing the details of a positronium experiment, it is necessary to use the $\varphi$ wave-function to represent e.g. the way the spin is pointing.
+For many purposes it is easier to represent positrons directly by the $\overline{\psi}$ wave-function, e.g. in computing cross-sections for <a id="ix-43">pair </a><a id="ix-8">creation</a> and so forth as we shall do later. But if you actually want to _see_ the positron, e.g. in describing the details of a positronium experiment, it is necessary to use the $\varphi$ wave-function to represent e.g. the way the spin is pointing.
 
 This is all we shall say about free electrons and positrons.
 
@@ -580,7 +580,7 @@ $$
 A_{\mu} \quad \mu = 1 , 2 , 3 , 4 \quad A_{4} = i \Phi
 $$
 
-given functions of space and time. Then the motion of a particle in the field is found by substituting in the free-particle Lagrangian
+given functions of space and time. Then the motion of a particle in the field is found by substituting in the <a id="ix-137">free-particle Lagrangian</a>
 
 $$
 \begin{aligned} & \quad E + e \Phi \text{ for } E \\ & \quad \boldsymbol{p} + \frac{e}{c} \boldsymbol{A} \text{ for } \boldsymbol{p} \end{aligned} \tag{60}
@@ -620,7 +620,7 @@ $$
 i \hbar \frac{\partial \psi}{\partial t} = \left[ - e \Phi + \sum_{1}^{3} \left( - i \hbar c \frac{\partial}{\partial x_{k}} + eA_{k} \right) \alpha^{k} + mc^{2} \beta \right] \psi \tag{66}
 $$
 
-<a id="p13"></a>
+<a id="p13"><sup>[p. 13]</sup></a>
 
 since by (57), we have $\overline{\psi \gamma}_{\mu} = \psi^{*} \beta \gamma_{\mu} = ( C\varphi^{+} )^{T} \beta \gamma_{\mu} = \varphi^{T} C^{T} \beta \gamma_{\mu}$; the wave function $\varphi = C\psi^{+}$of a positron satisfies by (65)
 
@@ -634,7 +634,7 @@ $$
 \sum \left( \frac{\partial}{\partial x_{\mu}} - \frac{ie}{\hbar c} A_{\mu} \right) \gamma_{\mu} \varphi + \frac{mc}{\hbar} \varphi = 0 \tag{68}
 $$
 
-This is exactly the Dirac equation for a particle of positive charge (+e). We have used
+This is exactly the Dirac <a id="ix-51">equation</a> for a particle of positive charge (+e). We have used
 
 $$
 C\beta \gamma_{\mu}^{T} \beta C = - \gamma_{\mu} , \tag{69}
@@ -642,7 +642,7 @@ $$
 
 which follows from (15), (32), and (55).
 
-## <a id="s-the-hydrogen-atom"></a>The Hydrogen Atom
+## <a id="s-the-hydrogen-atom"></a>The <a id="ix-121">Hydrogen Atom</a>
 
 This is the one problem which it is possible to treat very accurately using the one-electron Dirac theory. The problem is to find the eigenstates of the equation
 
@@ -660,7 +660,7 @@ $$
 j ( j + 1 ) = J^{2} = \left[ - i ( \boldsymbol{r} \times \nabla ) + \tfrac{1}{2} \boldsymbol{\sigma} \right]^{2} \tag{72}
 $$
 
-where $j_{z}$ and $j$ are now _half-odd integers_ by the ordinary theory of angular momenta. These quantum numbers are not enough to fix the state, because each value of $j$ may correspond to two NR states with $\ell = j \pm \tfrac{1}{\overline{2}}$. Therefore we need an additional operator which commutes with $H$, which will distinguish between states with $\boldsymbol{\sigma}$ parallel or antiparallel to $\boldsymbol{J}$. The obvious choice is
+where $j_{z}$ and $j$ are now _half-odd integers_ by the ordinary theory of <a id="ix-28">angular momenta</a>. These quantum numbers are not enough to fix the state, because each value of $j$ may correspond to two NR states with $\ell = j \pm \tfrac{1}{\overline{2}}$. Therefore we need an additional operator which commutes with $H$, which will distinguish between states with $\boldsymbol{\sigma}$ parallel or antiparallel to $\boldsymbol{J}$. The obvious choice is
 
 $$
 Q = \boldsymbol{\sigma} \boldsymbol{\cdot} \boldsymbol{J}
@@ -698,7 +698,7 @@ $$
 [ H,\beta \boldsymbol{\sigma} ] \boldsymbol{\cdot} \boldsymbol{J} = - 2 \hbar c \sum_{k = 1}^{3} \alpha^{k} \sigma_{k} \beta \nabla_{k} ( \boldsymbol{r} \times \nabla )_{k} - i \hbar c ( \boldsymbol{\alpha} \boldsymbol{\cdot} \nabla ) \beta = - i \hbar c ( \boldsymbol{\alpha} \boldsymbol{\cdot} \nabla ) \beta = \left[ H, \tfrac{1}{2} \beta \right]
 $$
 
-<a id="p14"></a>
+<a id="p14"><sup>[p. 14]</sup></a>
 
 because
 
@@ -738,7 +738,7 @@ $$
 j = | k |- \tfrac{1}{2} , k = \pm 1 , \pm 2 , \pm 3 ,\dots \tag{77}
 $$
 
-Using the eigenvalue for $K$, we can simplify the Hamiltonian, which we could not do as in the NR theory with the eigenvalue of $L^{2}$ alone. First
+Using the eigenvalue for $K$, we can simplify the <a id="ix-122">Hamiltonian</a>, which we could not do as in the NR theory with the eigenvalue of $L^{2}$ alone. First
 
 $$
 \boldsymbol{\sigma} \boldsymbol{\cdot} \boldsymbol{r\sigma} \boldsymbol{\cdot} ( \boldsymbol{r} \times \nabla ) = i \boldsymbol{\sigma} \boldsymbol{\cdot} ( \boldsymbol{r} \times ( \boldsymbol{r} \times \nabla ) ) = i ( \boldsymbol{\sigma} \boldsymbol{\cdot} \boldsymbol{r} ) ( \boldsymbol{r} \boldsymbol{\cdot} \nabla ) - ir^{2} \boldsymbol{\sigma} \boldsymbol{\cdot} \nabla \tag{78}
@@ -768,7 +768,7 @@ $$
 H = mc^{2} \beta - \frac{e^{2}}{r} + i \hbar c\alpha_{r} \left( \frac{\beta K}{r} - \frac{1}{r} - \frac{\partial}{\partial r} \right) \tag{80}
 $$
 
-This gives the Dirac equation as an equation in the single variable $r$, having separated all angular variables.
+This gives the <a id="ix-88">Dirac</a> <a id="ix-52">equation</a> as an equation in the single variable $r$, having separated all angular variables.
 
 For the solution of this equation, see – Dirac, _Quantum Mechanics_, Third Edition, Sec. 72, pp 268-271.
 
@@ -780,7 +780,7 @@ $$
 \beta = \begin{pmatrix} 1 & 0 \\ 0 & - 1 \end{pmatrix} , \quad \alpha_{r} = \begin{pmatrix} 0 & i \\ - i & 0 \end{pmatrix} , \quad \psi = \begin{pmatrix} u \\ v \end{pmatrix} \tag{81}
 $$
 
-<a id="p15"></a>
+<a id="p15"><sup>[p. 15]</sup></a>
 
 Then
 
@@ -794,13 +794,13 @@ $$
 a_{1} = \frac{- E + mc^{2}}{\hbar c} ; \quad a_{2} = \frac{E + mc^{2}}{\hbar c} ; \quad \alpha = \frac{e^{2}}{\hbar c} , \tag{83}
 $$
 
-the fine structure constant. Then
+the <a id="ix-90">fine structure constant</a>. Then
 
 $$
 \begin{aligned} \left( - a_{1} + \frac{\alpha}{r} \right) u &= \left( \frac{1 + K}{r} + \frac{\partial}{\partial r} \right) v \\ \sqrt{a_{1} a_{2}} \sqrt{\quad \left( a_{2} + \frac{\alpha}{r} \right) v} &= \left( \frac{- 1 + K}{r} - \frac{\partial}{\partial r} \right) u \end{aligned} \tag{84}
 $$
 
-Next put $a =$ = $m^{2} c^{4} - E^{2} / \hbar c$ which is the magnitude of the imaginary momentum of a free electron of energy $E$. Then $\psi \sim e^{- ar}$ at infinity. Hence we write
+Next put $a =$ = $m^{2} c^{4} - E^{2} / \hbar c$ which is the magnitude of the imaginary <a id="ix-202">momentum</a> of a free electron of energy $E$. Then $\psi \sim e^{- ar}$ at infinity. Hence we write
 
 $$
 \begin{aligned} u &= \frac{e^{- ar}}{r} f \\ v &= \frac{e^{- ar}}{r} g \end{aligned} \tag{85}
@@ -838,7 +838,7 @@ $$
 e_{s + 1} = \frac{\left( a_{1}^{2} - a^{2} \right) \alpha + 2 saa_{1}}{a_{1} \alpha^{2} + a_{1} ( s^{2} - k^{2} )} e_{s}
 $$
 
-<a id="p16"></a>
+<a id="p16"><sup>[p. 16]</sup></a>
 
 Suppose the series do not terminate. Then for large $s$
 
@@ -914,7 +914,7 @@ $$
 n = 0 , \quad k = + 1 , + 2 , + 3 ,\dots \tag{94}
 $$
 
-<a id="p17"></a>
+<a id="p17"><sup>[p. 17]</sup></a>
 
 The principal quantum number $N$ is
 
@@ -946,7 +946,7 @@ $$
 
 ## <a id="s-behavior-of-an-electron-in-non-relativistic-approximation"></a>Behaviour of an Electron in a Non-Relativistic Approximation
 
-Multiplying the Dirac equation (64) by $\sum \gamma_{\nu} \left( \frac{\partial}{\partial x_{\nu}} + i \frac{e}{\hbar c} A_{\nu} \right) - \frac{mc}{\hbar}$ we have
+Multiplying the Dirac <a id="ix-53">equation</a> (64) by $\sum \gamma_{\nu} \left( \frac{\partial}{\partial x_{\nu}} + i \frac{e}{\hbar c} A_{\nu} \right) - \frac{mc}{\hbar}$ we have
 
 $$
 \sum_{\mu} \sum_{\nu} \gamma_{\mu} \gamma_{\nu} \left( \frac{\partial}{\partial x_{\mu}} + i \frac{e}{\hbar c} A_{\mu} \right)^{\nu} \left( \frac{\partial}{\partial x_{\nu}} + i \frac{e}{\hbar c} A_{\nu} \right) \psi - \frac{m^{2} c^{2}}{\hbar^{2}} \psi = 0 \tag{96}
@@ -986,7 +986,7 @@ $$
 
 This is still exact.
 
-<a id="p18"></a>
+<a id="p18"><sup>[p. 18]</sup></a>
 
 Now in the NR approximation
 
@@ -1012,13 +1012,13 @@ $$
 \left( - i \hbar \frac{\partial}{\partial t} - e \Phi + mc^{2} \right) \psi - \frac{h^{2}}{2 m} \sum_{k = 1}^{3} \left\{ \left( \frac{\partial}{\partial x_{k}} + \frac{ie}{\hbar c} A_{k} \right)^{2} \right\} \psi + \frac{e \hbar}{2 mc} [ \boldsymbol{\sigma} \boldsymbol{\cdot} \boldsymbol{H} - i \boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{E} ] \psi + O \left( \frac{1}{mc^{2}} \right) = 0
 $$
 
-The NR approximation means dropping the terms $O \left( 1 /mc^{2} \right)$. Thus the NR Schr¨odinger equation is
+The NR approximation means dropping the terms $O \left( 1 /mc^{2} \right)$. Thus the NR Schr¨odinger <a id="ix-230">equation</a> is
 
 $$
 i \hbar \frac{\partial \psi}{\partial t} = \left\{ mc^{2} - e \Phi - \frac{h^{2}}{2 m} \sum_{k = 1}^{3} \left( \frac{\partial}{\partial x_{k}} + \frac{ie}{\hbar c} A_{k} \right)^{2} + \frac{e \hbar}{2 mc} ( \boldsymbol{\sigma} \boldsymbol{\cdot} \boldsymbol{H} - i \boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{E} ) \right\} \psi \tag{99}
 $$
 
-The term $\boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{E}$ is really relativistic, and should be dropped or treated more exactly. Then we have exactly the equation of motion of a NR particle with a spin magnetic moment equal to
+The term $\boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{E}$ is really relativistic, and should be dropped or treated more exactly. Then we have exactly the equation of motion of a NR particle with a spin <a id="ix-103">magnetic moment</a> equal to
 
 $$
 M = - \frac{e \hbar}{2 mc} \sigma \tag{100}
@@ -1032,9 +1032,9 @@ $$
 M = - \frac{e \hbar}{2 mc} \sigma \left\{ 1 + \frac{e^{2}}{2 \pi \hbar c} \right\} \tag{101}
 $$
 
-calculated by Schwinger using the complete many-particle theory.
+calculated by <a id="ix-243">Schwinger</a> using the complete many-particle theory.
 
-_Problem 2_ Calculate energy values and wave functions of a Dirac particle moving in a homogeneous infinite magnetic field. Can be done exactly. See F. Sauter, _Zeitschrift f¨ur Physik_ 69 (1931) 742.
+_Problem 2_ Calculate energy values and <a id="ix-81">wave functions</a> of a Dirac particle moving in a homogeneous infinite magnetic field. Can be done exactly. See F. <a id="ix-227">Sauter</a>, _Zeitschrift f¨ur Physik_ 69 (1931) 742.
 
 _Solution_ Take the field $\boldsymbol{B}$ in the $z$ direction.
 
@@ -1054,7 +1054,7 @@ $$
 L_{z} = - i \hbar \left\{ x \frac{\partial}{\partial y} - y \frac{\partial}{\partial x} \right\}
 $$
 
-<a id="p19"></a>
+<a id="p19"><sup>[p. 19]</sup></a>
 
 is a constant of the motion, say $L_{z} = \ell \hbar$ where $\ell$ is an integer. And $- i \hbar \frac{\partial}{\partial z} = p_{z}$. Let $\lambda = | eB \hbar c |$. Then
 
@@ -1082,9 +1082,9 @@ $$
 
 The lowest state has energy exactly $mc^{2}$.
 
-<a id="p20"></a>
+<a id="p20"><sup>[p. 20]</sup></a>
 
-## <a id="s-summary-of-matrices-in-the-dirac-theory-in-our-notation"></a>Summary of Matrices in the Dirac Theory in our notation
+## <a id="s-summary-of-matrices-in-the-dirac-theory-in-our-notation"></a>Summary of <a id="ix-70">Matrices</a> in the Dirac Theory in our notation
 
 $$
 \alpha^{k} \alpha^{\ell} + \alpha^{\ell} \alpha^{k} = 2 \delta_{k\ell} \mathbb{I} \alpha^{k} \beta + \beta \alpha^{k} = 0 \beta^{2} = \mathbb{I} \sigma_{k} \sigma_{\ell} + \sigma_{\ell} \sigma_{k} = 2 \delta_{k\ell} \mathbb{I}
@@ -1160,7 +1160,7 @@ Comparison with the Dirac notation: $\rho_{1} = \epsilon \rho_{2} = \eta \rho_{3
 
 Latin indices: 1, 2, 3. Greek indices: 1, 2, 3, 4.
 
-<a id="p21"></a>
+<a id="p21"><sup>[p. 21]</sup></a>
 
 ## <a id="s-summary-of-matrices-in-the-dirac-theory-in-the-feynman-notation"></a>Summary of Matrices in the Dirac Theory in the Feynman notation
 

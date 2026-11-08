@@ -1,6 +1,6 @@
 # Typist’s Afterword
 
-<a id="p132"></a>
+<a id="p132"><sup>[p. 132]</sup></a>
 
 Both Kaiser’s admirable _Drawing Theories Apart_ <a id="refback-8-1"></a>[[8]](#ref-8) and Schweber’s masterful _QED and the Men Who_ _Made It_ <a id="refback-7-1"></a>[[7]](#ref-7) refer frequently to the famous lectures on quantum electrodynamics given by Freeman Dyson at Cornell University in 1951. Two generations ago, graduate students (and their professors) wishing to learn the new techniques of QED passed around copies of Dyson’s Cornell lecture notes, then the best and fullest treatment available. Textbooks appeared a few years later, e. g. by Jauch & Rohrlich <a id="refback-25-1"></a>[[25]](#ref-25) and Schweber
 
@@ -14,9 +14,9 @@ My interest in the legendary notes was revived thirty years later by the Kaiser 
 
 Between this typed version and Moravcsik’s second edition there are few differences; all are described in the added notes. (I have also added references and an index.) About half are corrections of typographical errors. Missing words or sentences have been restored by comparison with the first edition; very infrequently a word or phrase has been deleted. A few changes have been made in notation. Intermediate steps in two calculations have been corrected but change nothing. Some notes point to articles or books. No doubt new errors have been introduced. Corrections will be welcomed! The young physicists will want familiar terms and notation, occasionally changed from 1951; the historians want _no_ alterations. It was not easy to find the middle ground.
 
-I scarcely knew L$A$TEX before beginning this project. My friend (and Princeton ’74 classmate) Robert Jantzen was enormously helpful, very generous with his time and his extensive knowledge of L$A$TEX. Thanks, Bob. Thanks, too, to Richard Koch, Gerben Wierda and their colleagues, who have made L$A$TEX so easy on<a id="p133"></a> a Macintosh. George Gr¨atzer’s textbook _Math into L_A_TEX_ was never far from the keyboard. No one who types technical material should be ignorant of L$A$TEX.
+I scarcely knew L$A$TEX before beginning this project. My friend (and Princeton ’74 classmate) Robert Jantzen was enormously helpful, very generous with his time and his extensive knowledge of L$A$TEX. Thanks, Bob. Thanks, too, to Richard Koch, Gerben Wierda and their colleagues, who have made L$A$TEX so easy on <a id="p133"><sup>[p. 133]</sup></a> a Macintosh. George Gr¨atzer’s textbook _Math into L_A_TEX_ was never far from the keyboard. No one who types technical material should be ignorant of L$A$TEX.
 
-This project would never have been undertaken without the approval of Prof. Dyson and the efforts of Profs. Hall, Schweber and Ashrafi, who made the notes accessible. I thank Prof. Hall for his steady encouragement through the many hours of typing. I thank Prof. Dyson both for friendly assistance and for allowing his wonderful lectures to become easier to obtain, to be read with pleasure and with profit for many years to come.
+This project would never have been undertaken without the approval of Prof. <a id="ix-97">Dyson</a> and the efforts of Profs. Hall, Schweber and Ashrafi, who made the notes accessible. I thank Prof. Hall for his steady encouragement through the many hours of typing. I thank Prof. Dyson both for friendly assistance and for allowing his wonderful lectures to become easier to obtain, to be read with pleasure and with profit for many years to come.
 
 David Derbes
 
