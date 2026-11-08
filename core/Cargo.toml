@@ -1,0 +1,18 @@
+[package]
+name = "pdf2md-core"
+version = "0.1.0"
+edition = "2021"
+description = "PDF textbook to Markdown conversion (no GUI dependencies)"
+
+[lib]
+name = "pdf2md_core"
+path = "src/lib.rs"
+
+[[bin]]
+name = "pdf2md-cli"
+path = "src/main.rs"
+
+# PDF text comes from poppler's command-line tools (see src/extract.rs and
+# src/layout.rs), so no PDF library is needed here.
+[dependencies]
+roxmltree = "0.21.2" # reads the XML that `pdftohtml -xml` prints
