@@ -1,6 +1,7 @@
 //! Write the chapters as Markdown files.
 
 use crate::{page_label, Block, Book, Inline, Note};
+use std::collections::{HashMap, HashSet};
 use std::path::{Path, PathBuf};
 
 /// Escape characters that Markdown would otherwise treat as formatting.
@@ -190,6 +191,102 @@ fn render_note(n: &Note, label: &str, out: &mut String) {
 }
 
 pub fn chapter_markdown(book: &Book, i: usize) -> String {
+    let mut s = chapter_body(book, i);
+    let mut nav = Vec::new();
+    if i > 0 {
+        let p = &book.chapters[i - 1];
+        nav.push(format!("[← {}]({}.md)", p.title, p.slug));
+    }
+    if i + 1 < book.chapters.len() {
+        let n = &book.chapters[i + 1];
+        nav.push(format!("[{} →]({}.md)", n.title, n.slug));
+    }
+    if !nav.is_empty() {
+        s.push_str("---\n\n");
+        s.push_str(&nav.join(" · "));
+        s.push('\n');
+    }
+    s
+}
+
+/// The whole book in one file (`book.md`), so a browser's Ctrl+F searches
+/// all of it. Links to chapter files become links inside the page (each
+/// chapter starts with an anchor named after its file); an id used in
+/// more than one chapter (each chapter's "ref-4") gets the chapter's file
+/// name in front, in that chapter's links too.
+pub fn book_markdown(book: &Book) -> String {
+    let bodies: Vec<String> = (0..book.chapters.len()).map(|i| chapter_body(book, i)).collect();
+    let mut seen: HashMap<String, usize> = HashMap::new();
+    for body in &bodies {
+        let ids: HashSet<&str> = scan(body, "id=\"", '"').into_iter().map(|(a, b)| &body[a..b]).collect();
+        for id in ids {
+            *seen.entry(id.to_string()).or_default() += 1;
+        }
+    }
+    let slugs: HashMap<&str, usize> = book.chapters.iter().enumerate().map(|(i, c)| (c.slug.as_str(), i)).collect();
+    let rename = |ci: usize, id: &str| {
+        if seen.get(id).copied().unwrap_or(0) > 1 {
+            format!("{}--{id}", book.chapters[ci].slug)
+        } else {
+            id.to_string()
+        }
+    };
+    let mut out = String::new();
+    for (ci, body) in bodies.iter().enumerate() {
+        if ci > 0 {
+            out.push_str("---\n\n");
+        }
+        out.push_str(&format!("<a id=\"{}\"></a>\n\n", book.chapters[ci].slug));
+        // (start, end) of every id and link target, in order
+        let mut spots: Vec<(usize, usize, bool)> = Vec::new();
+        spots.extend(scan(body, "id=\"", '"').into_iter().map(|(a, b)| (a, b, true)));
+        spots.extend(scan(body, "href=\"", '"').into_iter().map(|(a, b)| (a, b, false)));
+        spots.extend(scan(body, "](", ')').into_iter().map(|(a, b)| (a, b, false)));
+        spots.sort();
+        let mut last = 0;
+        for (a, b, is_id) in spots {
+            let t = &body[a..b];
+            let new = if is_id {
+                rename(ci, t)
+            } else if let Some(id) = t.strip_prefix('#') {
+                format!("#{}", rename(ci, id))
+            } else {
+                let (file, frag) = t.split_once('#').map_or((t, None), |(f, g)| (f, Some(g)));
+                match file.strip_suffix(".md").and_then(|s| slugs.get(s)) {
+                    Some(&target) => match frag {
+                        Some(id) => format!("#{}", rename(target, id)),
+                        None => format!("#{}", book.chapters[target].slug),
+                    },
+                    None => continue,
+                }
+            };
+            out.push_str(&body[last..a]);
+            out.push_str(&new);
+            last = b;
+        }
+        out.push_str(&body[last..]);
+    }
+    out
+}
+
+/// (start, end) of the text between each `open` and the next `close`.
+fn scan(s: &str, open: &str, close: char) -> Vec<(usize, usize)> {
+    let mut v = Vec::new();
+    let mut from = 0;
+    while let Some(k) = s[from..].find(open) {
+        let a = from + k + open.len();
+        let Some(len) = s[a..].find(close) else { break };
+        // a link target or id has no spaces or line breaks
+        if !s[a..a + len].contains(char::is_whitespace) {
+            v.push((a, a + len));
+        }
+        from = a;
+    }
+    v
+}
+
+/// A chapter's text without the links to the chapters before and after.
+fn chapter_body(book: &Book, i: usize) -> String {
     let ch = &book.chapters[i];
     let mut s = format!("# {}\n\n", ch.title);
     let mut in_list = false;
@@ -243,20 +340,6 @@ pub fn chapter_markdown(book: &Book, i: usize) -> String {
             render_note(n, &n.label, &mut s);
         }
     }
-    let mut nav = Vec::new();
-    if i > 0 {
-        let p = &book.chapters[i - 1];
-        nav.push(format!("[← {}]({}.md)", p.title, p.slug));
-    }
-    if i + 1 < book.chapters.len() {
-        let n = &book.chapters[i + 1];
-        nav.push(format!("[{} →]({}.md)", n.title, n.slug));
-    }
-    if !nav.is_empty() {
-        s.push_str("---\n\n");
-        s.push_str(&nav.join(" · "));
-        s.push('\n');
-    }
     s
 }
 
@@ -302,6 +385,11 @@ pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
     for (i, ch) in book.chapters.iter().enumerate() {
         let p = dir.join(format!("{}.md", ch.slug));
         std::fs::write(&p, chapter_markdown(book, i))?;
+        out.push(p);
+    }
+    if book.chapters.len() > 1 {
+        let p = dir.join("book.md");
+        std::fs::write(&p, book_markdown(book))?;
         out.push(p);
     }
     if !book.unplaced.is_empty() {

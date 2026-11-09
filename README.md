@@ -1,6 +1,6 @@
 # pdf2md — PDF textbook to Markdown
 
-Converts a PDF textbook into a folder of Markdown files, one per chapter.
+Converts a PDF textbook into a folder of Markdown files, one per chapter, plus `book.md`: the whole book in one file, so a browser's Ctrl+F searches all of it (its table of contents, index, notes and page markers link within the page).
 
 * **Footnotes / references** are moved from the end of the book to the end of the chapter that cites them. Clicking a marker jumps to the note; the note has a ↩ link back (one per citation if cited several times).
 * **Page markers**: where each printed page starts, a small <sup>[p. 32]</sup> marker (with anchor `#p32`), so you can search for a page ("p. 32") and see where you are.

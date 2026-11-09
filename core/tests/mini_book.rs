@@ -161,4 +161,14 @@ fn converts_a_small_book() {
     assert!(index.contains("- alpha, [1](01-alpha.md#p1), [2](01-alpha.md#p2)"), "{index}");
     assert!(index.contains("- beta, [3](02-beta.md#p3)"), "{index}");
     assert!(book.unplaced.is_empty(), "{:?}", book.unplaced);
+
+    // the whole book in one file: links stay inside the page
+    let whole = emit::book_markdown(&book);
+    assert!(whole.contains("<a id=\"01-alpha\"></a>\n\n# Alpha"), "{whole}");
+    assert!(whole.contains("- [Alpha](#01-alpha)"), "{whole}");
+    assert!(whole.contains("  - [Section One](#s-section-one)"), "{whole}");
+    assert!(whole.contains("- alpha, [1](#p1), [2](#p2)"), "{whole}");
+    assert!(whole.contains("[[1]](#ref-1)"), "{whole}");
+    assert!(!whole.contains(".md"), "{whole}");
+    assert!(!whole.contains(" →]"), "{whole}"); // no next-chapter links
 }
