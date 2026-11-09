@@ -9,6 +9,7 @@ meeting at a corner, like the axes of a graph). Runs texify
 (https://github.com/VikParuchuri/texify) on the GPU if there is one.
 """
 
+import os
 import re
 import sys
 from pathlib import Path
@@ -254,9 +255,24 @@ def looks_like_code(t: str) -> bool:
     return bool(call or rules)
 
 
-def read_code(img: Image.Image):
-    """Plain-text OCR (Tesseract) of an image of program code; None if
-    Tesseract is missing or the text does not look like code."""
+def surely_code(t: str) -> bool:
+    """Unmistakable Mathematica: its named characters (\\[Psi], which
+    Tesseract may write "\\ [Psi]"), or at least two weaker signs together
+    (:=, /. replacement, a capitalized call Sqrt[...] with -> or a pattern
+    x_). Strict, because it is tried on every image: read as text, typeset
+    math can show any one of the weaker signs."""
+    if re.search(r"\\\s?\[[A-Z][A-Za-z]+\]", t):
+        return True
+    signs = [
+        bool(re.search(r":=", t)),
+        bool(re.search(r"\s/\.\s", t)),
+        bool(re.search(r"\b[A-Z][a-z]+[A-Z]?\w*\[", t) and re.search(r"->|\w_[\s,\]]", t)),
+    ]
+    return sum(signs) >= 2
+
+
+def ocr_text(img: Image.Image):
+    """Plain-text OCR (Tesseract); None if Tesseract is missing."""
     import subprocess
     import tempfile
 
@@ -265,10 +281,18 @@ def read_code(img: Image.Image):
     with tempfile.NamedTemporaryFile(suffix=".png") as tmp:
         g.save(tmp.name)
         try:
-            out = subprocess.run(["tesseract", tmp.name, "-", "--psm", "6"], capture_output=True, text=True, timeout=60)
+            # one thread each: many images are read at once
+            env = dict(os.environ, OMP_THREAD_LIMIT="1")
+            out = subprocess.run(["tesseract", tmp.name, "-", "--psm", "6"], capture_output=True, text=True, timeout=60, env=env)
         except (OSError, subprocess.TimeoutExpired):
             return None
-    text = "\n".join(line.rstrip() for line in out.stdout.strip().splitlines())
+    return "\n".join(line.rstrip() for line in out.stdout.strip().splitlines())
+
+
+def read_code(img: Image.Image):
+    """The text of an image of program code; None if Tesseract is missing
+    or the text does not look like code."""
+    text = ocr_text(img)
     return text if text and looks_like_code(text) else None
 
 
@@ -282,6 +306,19 @@ def main():
             (dst / f"{f.stem}.tex").write_text("%DRAWING\n")
         else:
             todo.append((f, img))
+    # program code shown as an image: every image is read as text too (in
+    # parallel); unmistakable code is written as code, not given to texify
+    from concurrent.futures import ThreadPoolExecutor
+
+    with ThreadPoolExecutor() as pool:
+        texts = list(pool.map(lambda fi: ocr_text(fi[1]), todo))
+    rest = []
+    for (f, img), text in zip(todo, texts):
+        if text and surely_code(text):
+            (dst / f"{f.stem}.tex").write_text("%CODE\n" + text + "\n")
+        else:
+            rest.append((f, img))
+    todo = rest
     if not todo:
         return
     from texify.inference import batch_inference
