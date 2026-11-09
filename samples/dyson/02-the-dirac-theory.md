@@ -1088,7 +1088,11 @@ The lowest state has energy exactly $mc^{2}$.
 
 <a id="p20"><sup>[p. 20]</sup></a>
 
+<div align="center">
+
 ## <a id="s-summary-of-matrices-in-the-dirac-theory-in-our-notation"></a>Summary of Matrices in the Dirac Theory in our notation
+
+</div>
 
 $$
 \alpha^{k} \alpha^{\ell} + \alpha^{\ell} \alpha^{k} = 2 \delta_{k\ell} \mathbb{I} \quad \alpha^{k} \beta + \beta \alpha^{k} = 0 \quad \beta^{2} = \mathbb{I} \quad \sigma_{k} \sigma_{\ell} + \sigma_{\ell} \sigma_{k} = 2 \delta_{k\ell} \mathbb{I}
@@ -1158,7 +1162,11 @@ Latin indices: 1, 2, 3. Greek indices: 1, 2, 3, 4.
 
 <a id="p21"><sup>[p. 21]</sup></a>
 
+<div align="center">
+
 ## <a id="s-summary-of-matrices-in-the-dirac-theory-in-the-feynman-notation"></a>Summary of Matrices in the Dirac Theory in the Feynman notation
+
+</div>
 
 $$
 \alpha^{k} \alpha^{\ell} + \alpha^{\ell} \alpha^{k} = 2 \delta_{k\ell} \mathbb{I} \quad \alpha^{k} \beta + \beta \alpha^{k} = 0 \quad g_{0 0} = + 1 \quad g_{kk} = - 1 \quad g_{\mu \nu} = 0 ,\mu \neq \nu

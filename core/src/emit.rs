@@ -90,6 +90,11 @@ pub fn render_inlines(inl: &[Inline]) -> String {
                 let t = if *emph { format!("<em>{t}</em>") } else { t };
                 s.push_str(&format!("<a id=\"{id}\">{t}</a>"));
             }
+            Inline::Break => {
+                let trimmed = s.trim_end().len();
+                s.truncate(trimmed);
+                s.push_str("<br>\n");
+            }
             Inline::Link { text, href } => s.push_str(&format!("[{text}]({href})")),
         }
     }
@@ -184,11 +189,26 @@ pub fn chapter_markdown(book: &Book, i: usize) -> String {
     let ch = &book.chapters[i];
     let mut s = format!("# {}\n\n", ch.title);
     let mut in_list = false;
+    // a run of centered blocks goes in one centered div (page markers
+    // between them don't break it)
+    let mut centered = false;
     for b in &ch.blocks {
+        let neutral = matches!(b.block, crate::Block::Anchor(_));
+        if !neutral && b.centered != centered {
+            if in_list {
+                s.push('\n');
+                in_list = false;
+            }
+            s.push_str(if b.centered { "<div align=\"center\">\n\n" } else { "</div>\n\n" });
+            centered = b.centered;
+        }
         render_block(&b.block, &mut s, &mut in_list);
     }
     if in_list {
         s.push('\n');
+    }
+    if centered {
+        s.push_str("</div>\n\n");
     }
     if !ch.notes.is_empty() {
         s.push_str("---\n\n## Notes\n\n");

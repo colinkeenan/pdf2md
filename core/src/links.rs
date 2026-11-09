@@ -80,7 +80,7 @@ pub fn link_toc(
             chapters[0].blocks.retain(|b| !matches!(b.block, Block::Toc(_)));
             let at = at.min(chapters[0].blocks.len());
             for (k, block) in items.into_iter().enumerate() {
-                chapters[0].blocks.insert(at + k, crate::Blk { block, page });
+                chapters[0].blocks.insert(at + k, crate::Blk { block, page, centered: false });
             }
         }
     }

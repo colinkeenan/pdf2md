@@ -1,5 +1,7 @@
 # Front Matter
 
+<div align="center">
+
 **F. J. Dyson**
 
 ## <a id="s-advanced"></a>ADVANCED
@@ -12,13 +14,17 @@
 
 _ADVANCED QUANTUM MECHANICS_
 
-Lecture notes by Professor F. J. Dyson for a course in Relativistic Quantum Mechanics given at Cornell University in the Fall of 1951.
+Lecture notes by Professor F. J. Dyson for a course in Relativistic Quantum Mechanics<br>
+given at Cornell University in the Fall of 1951.
 
 Second Edition
 
-The first edition of these notes was written by Professor Dyson. The second edition was prepared by Michael J. Moravcsik; he is responsible for the changes made in the process of re-editing.
+The first edition of these notes was written by Professor Dyson. The second edition was prepared by<br>
+Michael J. Moravcsik; he is responsible for the changes made in the process of re-editing.
 
 _Generally used notation:_
+
+</div>
 
 $$
 \begin{array}{lcl}
@@ -144,7 +150,11 @@ $$
 
 <a id="piv"><sup>[p. iv]</sup></a>
 
+<div align="center">
+
 ## <a id="s-lecture-course-491-advanced-quantum-theory-f-j-dyson-fall-semester-1951"></a>Lecture Course 491 — Advanced Quantum Theory F. J. Dyson — Fall Semester 1951
+
+</div>
 
 ---
 

@@ -63,6 +63,7 @@ Everything is decided from the layout, measured against the book's own typical v
 
 * **Printed page numbers** come from the running header ("THE DIRAC THEORY 6") or a lone number at the bottom of the page. They become page anchors (`#p6`) for the index and the TOC.
 * **Chapters** start at headings in the chapter-title font size: the most common large size that contains real words.
+* **Centered text** (title pages, centered lines between paragraphs) goes in a `<div align="center">`, keeping its line breaks: a line counts as centered when its middle is at the middle of the text column and it is clearly in from both margins.
 * **Italic and bold prose** become `_…_` and `**…**` (bold is recognized by `<b>` or a bold font such as CMBX, e.g. journal volumes "Phys. Rev. **80**"); headings carry neither, since `#` styles them.
 * **Section headings** are short lines that are entirely italic/bold with space above, or short plain lines with space above and below. TOC entries are matched to headings on the printed page they name, also when the wording differs a little; their TOC indentation decides `##` or `###`.
 * **Footnote markers** are small raised numbers glued to a word. End notes are matched by finding the longest run of increasing marker numbers in reading order (so an "O¹⁶" cannot steal note 16). Notes printed at the bottom of a page match markers on the same page.

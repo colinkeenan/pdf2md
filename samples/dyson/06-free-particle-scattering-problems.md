@@ -360,7 +360,11 @@ Experimentally we do not observe the electron spins. Hence we observe only the c
 
 Here are some rules for spurs and dagger operators:
 
+<div align="center">
+
 $\xi$ is a Dirac matrix in general.
+
+</div>
 
 1) Spur $\left( \xi^{( 1 )} \xi^{( 2 )} \dots \xi^{( 2 k - 1 )} \right)$ = 0, i.e.the spur of an odd number of factors is 0.
 
@@ -718,7 +722,11 @@ Photon $( k^{\prime} e^{\prime} ) \to$ Electron $( pu )$ + Positron ($p_{+}^{\pr
 
 We treat not only the photon $( ke )$ but also the potential $A^{e}$ in _Born approximation._ This is valid so long as
 
+<div align="center">
+
 Potential energy $\times$ time of transit $\ll \hbar$
+
+</div>
 
 $$
 \text{ or } \text{ or } \quad \frac{Ze^{2}}{4 \pi \hbar v} \frac{Ze^{2}}{4 \pi r} \times \frac{r}{v} = \frac{Z}{1 3 7} \frac{c}{v} \ll \hbar \ll 1 \tag{481}

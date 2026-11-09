@@ -617,6 +617,21 @@ fn display_flags(doc: &Doc, lines: &[Line], st: &Stats) -> Vec<bool> {
     f
 }
 
+/// A line set in the middle of the text column: its middle at the
+/// column's middle, and clearly in from both margins (a paragraph's
+/// indented first line or its short last line is not).
+fn is_centered(l: &Line, st: &Stats) -> bool {
+    let mid = (st.left + st.right) / 2.0;
+    ((l.left + l.right) / 2.0 - mid).abs() <= 0.4 * st.body
+        && l.left - st.left >= st.body
+        && st.right - l.right >= st.body
+}
+
+/// How far a line is in from the nearer margin.
+fn inset(l: &Line, st: &Stats) -> f32 {
+    (l.left - st.left).min(st.right - l.right)
+}
+
 fn ends_sentence(t: &str) -> bool {
     matches!(t.trim_end().chars().last(), Some('.' | ':' | '?' | '!'))
 }
@@ -784,17 +799,30 @@ struct Builder<'a> {
     anchor: Option<String>,
     page: usize,
     index_mode: bool,
+    /// all lines of the paragraph being built are centered
+    para_centered: bool,
+    /// how far its most inset line is in from the margins
+    para_inset: f32,
 }
 
 impl Builder<'_> {
     fn push(&mut self, block: Block) {
-        self.out.push(Blk { block, page: self.page });
+        self.out.push(Blk { block, page: self.page, centered: false });
     }
 
     fn flush(&mut self) {
         if !self.para.is_empty() {
             let p = std::mem::take(&mut self.para);
-            self.out.push(Blk { block: Block::Para(p), page: self.para_page });
+            // (one line at least clearly in from the margins: an indented
+            // one-line paragraph that ends early is centered by chance)
+            let centered = self.para_centered && self.para_inset >= 2.5 * self.st.body;
+            // not centered after all: its kept line breaks become spaces
+            let p = if centered {
+                p
+            } else {
+                p.into_iter().map(|i| if i == Inline::Break { Inline::Text(" ".into()) } else { i }).collect()
+            };
+            self.out.push(Blk { block: Block::Para(tidy(p)), page: self.para_page, centered });
         }
         self.prev = None;
         self.para_lines = 0;
@@ -935,6 +963,8 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
         anchor: None,
         page: 0,
         index_mode: false,
+        para_centered: false,
+        para_inset: 0.0,
     };
     for (pi, page) in pages.iter().enumerate() {
         b.page = pi;
@@ -1019,6 +1049,9 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 if !merged {
                     b.anchor_block();
                     b.push(Block::Heading { level: 0, size, id: String::new(), text: text.clone() });
+                    if let Some(last) = b.out.last_mut() {
+                        last.centered = is_centered(l, st) && inset(l, st) >= 2.5 * st.body;
+                    }
                 }
                 if st.chapter_size.is_some_and(|c| (c - size).abs() < 0.6) {
                     b.index_mode = key(&plain(&text)) == "index";
@@ -1043,11 +1076,22 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 b.anchor_block();
                 b.para_page = pi;
                 b.para = inl;
+                b.para_centered = is_centered(l, st);
+                b.para_inset = inset(l, st);
             } else {
                 if let Some(a) = b.anchor.take() {
                     b.para.push(Inline::Anchor(a));
                 }
-                b.join(inl);
+                // centered lines keep their line breaks
+                let centered = b.para_centered && is_centered(l, st);
+                if centered {
+                    b.para.push(Inline::Break);
+                    b.para.extend(inl);
+                } else {
+                    b.join(inl);
+                }
+                b.para_centered &= is_centered(l, st);
+                b.para_inset = b.para_inset.max(inset(l, st));
             }
             b.para_lines += 1;
             b.prev = Some(Prev {
@@ -1086,7 +1130,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                     }
                     _ => {}
                 }
-                b.out.push(Blk { block: Block::PageNote { label: first, text: tidy(text) }, page: pi });
+                b.out.push(Blk { block: Block::PageNote { label: first, text: tidy(text) }, page: pi, centered: false });
             } else if let Some(Blk { block: Block::PageNote { text, .. }, .. }) = b.out.last_mut() {
                 push_text(text, " ");
                 text.extend(inl);

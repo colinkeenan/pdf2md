@@ -690,7 +690,11 @@ $$
 a_{o} = \frac{4 \pi \hbar^{2}}{me^{2}} = \frac{1}{\alpha} \frac{\hbar}{mc} \quad ( \text{ Bohr radius } )
 $$
 
+<div align="center">
+
 Ry = $\frac{e^{4} m}{3 2 \pi^{2} \hbar^{4}}$ (Rydberg energy unit)
+
+</div>
 
 $$
 K_{H} = \frac{\text{ Ry }}{4 \hbar c}
@@ -1308,7 +1312,12 @@ $$
 
 be the energy of an electron or a positron with momentum $\hbar k$. We apply the same argument which led to (215) for the Maxwell field. From this it follows that
 
-$b_{ku}$ for electron <a id="ix-163">states</a> $u$ $b_{ku}^{*}$ for positron states $u$
+<div align="center">
+
+$b_{ku}$ for electron <a id="ix-163">states</a> $u$<br>
+$b_{ku}^{*}$ for positron states $u$
+
+</div>
 
 have matrix elements only for transitions from an initial state of energy $E_{1}$ to a final state of energy $E_{2}$, where
 
@@ -1318,7 +1327,12 @@ $$
 
 ## <a id="s-and"></a>And
 
-$b_{ku}$ for positron states $u$ $b_{ku}^{*}$ for electron states $u$
+<div align="center">
+
+$b_{ku}$ for positron states $u$<br>
+$b_{ku}^{*}$ for electron states $u$
+
+</div>
 
 have matrix elements which are non-zero only when
 
@@ -1330,7 +1344,11 @@ Thus we see as before that the field has the properties we require of a quantize
 
 The absorption operators are
 
+<div align="center">
+
 $b_{ku}$ for electrons
+
+</div>
 
 $$
 b_{ku}^{*} \text{ for positrons }
@@ -1338,7 +1356,11 @@ $$
 
 the emission operators are
 
+<div align="center">
+
 $b_{ku}$ for positrons
+
+</div>
 
 $$
 b_{ku}^{*} \text{ for electrons }
@@ -1442,7 +1464,11 @@ The most general state of the fields is described by specifying for each electro
 
 The vacuum state Ψ$o$ is defined by
 
+<div align="center">
+
 $b_{ku}$Ψ$o$ = 0 and thus Ψ$\frac{*}{o} b_{ku}^{*}$ = 0 for electron states $u$
+
+</div>
 
 $$
 b_{ku}^{*} \Psi_{o} = 0 \text{ and thus } \quad \Psi_{o}^{*} b_{ku} = 0 \text{ for positron states } u \tag{323a}
@@ -1666,7 +1692,12 @@ $$
 
 From this Hamiltonian it is clear that the system is just a superposition of non-interacting particle-states. In each particle-state independently there is a number of particles given by
 
-$N_{n} = b_{n}^{*} b_{n}$ for electron states $N_{n} = b_{n} b_{n}^{*}$ for positron states
+<div align="center">
+
+$N_{n} = b_{n}^{*} b_{n}$ for electron states<br>
+$N_{n} = b_{n} b_{n}^{*}$ for positron states
+
+</div>
 
 From the commutation rules (338) and (347)
 

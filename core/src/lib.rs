@@ -52,6 +52,8 @@ pub enum Inline {
     /// A link target wrapped around the words it points at (an index
     /// term), so the viewer can show where the link landed.
     Target { id: String, text: String, emph: bool },
+    /// A line break kept from the page (between centered lines).
+    Break,
     /// A link; `text` is already Markdown.
     Link { text: String, href: String },
 }
@@ -85,6 +87,8 @@ pub enum Block {
 pub struct Blk {
     pub block: Block,
     pub page: usize,
+    /// Every line of it is centered on the page (title pages, dedications).
+    pub centered: bool,
 }
 
 #[derive(Debug, Clone, Default)]

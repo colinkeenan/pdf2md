@@ -728,7 +728,11 @@ To correct these errors, very long calculations have been done. In connection wi
 
 Therefore the theoretical value of the Lamb shift now stands at 1058 $\pm$ 2 megacycles. There is no clear discrepancy between this and the experimental value 1062 $\pm$ 5 though a discrepancy may be found when the experiments and the theory are further cleaned up.
 
+<div align="center">
+
 The End
+
+</div>
 
 ---
 
