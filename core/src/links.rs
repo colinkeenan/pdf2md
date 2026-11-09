@@ -696,6 +696,161 @@ pub fn link_index(chapters: &mut [Chapter], pdf: &[u32]) {
     }
 }
 
+/// Every run of text in a chapter that references can sit in: paragraphs,
+/// list items, page notes, and the chapter's notes and references.
+fn text_runs(ch: &mut Chapter) -> Vec<&mut Vec<Inline>> {
+    let blocks = ch.blocks.iter_mut().map(|b| &mut b.block);
+    let notes = ch.notes.iter_mut().chain(ch.refs.iter_mut()).flat_map(|n| n.blocks.iter_mut());
+    blocks
+        .chain(notes)
+        .filter_map(|b| match b {
+            Block::Para(inl) | Block::Item { text: inl, .. } | Block::PageNote { text: inl, .. } => Some(inl),
+            _ => None,
+        })
+        .collect()
+}
+
+/// A problem number: "6.8", "B.2", "6.8a" (chapter or appendix, dot, number).
+fn problem_number(t: &str) -> Option<&str> {
+    let t = t.trim().trim_end_matches([',', ';', ':', '.', ')']);
+    let (a, b) = t.split_once('.')?;
+    let b = b.trim_end_matches(|c: char| c.is_ascii_lowercase());
+    (!a.is_empty() && a.len() <= 2 && a.chars().all(|c| c.is_ascii_alphanumeric()) && !b.is_empty() && b.chars().all(|c| c.is_ascii_digit()))
+        .then_some(t)
+}
+
+/// "Problem 6.8" links to problem 6.8 in the "Problems" section at the end
+/// of its chapter. Each problem there (a paragraph starting with its number)
+/// gets an anchor problem-6.8. Runs before the equation references, so a
+/// problem number is not taken for an equation number.
+pub fn link_problems(chapters: &mut [Chapter]) {
+    let mut target: HashMap<String, String> = HashMap::new();
+    for ch in chapters.iter_mut() {
+        // Problems that ran into the paragraph of the one before: a bold
+        // problem number inside a paragraph of the Problems section starts
+        // a new paragraph.
+        let mut in_problems = false;
+        let old = std::mem::take(&mut ch.blocks);
+        for b in old {
+            match &b.block {
+                Block::Heading { text, .. } => in_problems = key(&plain(text)) == "problems",
+                Block::Para(inl) if in_problems => {
+                    let starts = |x: &Inline| matches!(x, Inline::Strong(t) if problem_number(t).is_some());
+                    let mut parts: Vec<Vec<Inline>> = vec![Vec::new()];
+                    for x in inl {
+                        if starts(x) && parts.last().is_some_and(|p| p.iter().any(|y| !matches!(y, Inline::Anchor(_)))) {
+                            parts.push(Vec::new());
+                        }
+                        parts.last_mut().unwrap().push(x.clone());
+                    }
+                    for p in parts {
+                        let mut p = p;
+                        if let Some(Inline::Text(t)) = p.last_mut() {
+                            *t = t.trim_end().to_string();
+                        }
+                        if let Some(Inline::Text(t)) = p.first_mut() {
+                            *t = t.trim_start().to_string();
+                        }
+                        ch.blocks.push(crate::Blk { block: Block::Para(p), page: b.page, centered: b.centered });
+                    }
+                    continue;
+                }
+                _ => {}
+            }
+            ch.blocks.push(b);
+        }
+        let mut in_problems = false;
+        for b in ch.blocks.iter_mut() {
+            match &mut b.block {
+                Block::Heading { text, .. } => in_problems = key(&plain(text)) == "problems",
+                Block::Para(inl) if in_problems => {
+                    let first = inl.iter().position(|x| !matches!(x, Inline::Anchor(_)));
+                    let Some(k) = first else { continue };
+                    let (Inline::Strong(t) | Inline::Text(t)) = &inl[k] else { continue };
+                    let Some(word) = t.split_whitespace().next() else { continue };
+                    let Some(n) = problem_number(word) else { continue };
+                    let n = n.trim_end_matches(|c: char| c.is_ascii_lowercase()).to_string();
+                    let id = format!("problem-{n}");
+                    if let std::collections::hash_map::Entry::Vacant(e) = target.entry(n) {
+                        e.insert(format!("{}.md#{id}", ch.slug));
+                        inl.insert(k, Inline::Anchor(id));
+                    }
+                }
+                _ => {}
+            }
+        }
+    }
+    if target.is_empty() {
+        return;
+    }
+    for ch in chapters.iter_mut() {
+        for inl in text_runs(ch) {
+            if !inl.iter().any(|x| matches!(x, Inline::Text(t) if t.contains("Problem"))) {
+                continue;
+            }
+            // "Problem" and its number can be separate links: join the text
+            let mut old: Vec<Inline> = Vec::new();
+            for x in std::mem::take(inl) {
+                if let (Inline::Text(b), Some(Inline::PageLink(_))) = (&x, old.last()) {
+                    let n = old.len();
+                    if n >= 2 {
+                        if let Inline::Text(a) = &old[n - 2] {
+                            if a.trim_end().ends_with("Problem") || a.trim_end().ends_with("Problems") {
+                                let joined = format!("{a}{b}");
+                                old.truncate(n - 2);
+                                old.push(Inline::Text(joined));
+                                continue;
+                            }
+                        }
+                    }
+                }
+                old.push(x);
+            }
+            for x in old {
+                match x {
+                    Inline::Text(t) if t.contains("Problem") => link_problem_refs(&t, &target, inl),
+                    other => inl.push(other),
+                }
+            }
+        }
+    }
+}
+
+/// Split text at "Problem 6.8" / "Problems 6.8, 6.9 and 6.10": each number
+/// becomes a link to its problem.
+fn link_problem_refs(t: &str, target: &HashMap<String, String>, out: &mut Vec<Inline>) {
+    let mut rest = t;
+    let mut buf = String::new();
+    while let Some(at) = rest.find("Problem") {
+        let after_word = at + "Problem".len() + if rest[at + 7..].starts_with('s') { 1 } else { 0 };
+        buf.push_str(&rest[..after_word]);
+        rest = &rest[after_word..];
+        // the numbers after it, separated by spaces, commas, "and", "–"
+        loop {
+            let lead = rest.len() - rest.trim_start_matches([' ', ',', '–', '-']).len();
+            let lead = if rest[lead..].starts_with("and ") { lead + 4 } else { lead };
+            let lead = lead + (rest[lead..].len() - rest[lead..].trim_start().len());
+            let word: String = rest[lead..].chars().take_while(|c| c.is_ascii_alphanumeric() || *c == '.').collect();
+            let Some(n) = problem_number(&word) else { break };
+            let base = n.trim_end_matches(|c: char| c.is_ascii_lowercase());
+            let Some(href) = target.get(base) else { break };
+            if lead == 0 {
+                break; // "Problem6.8": not a reference
+            }
+            buf.push_str(&rest[..lead]);
+            if !buf.is_empty() {
+                out.push(Inline::Text(std::mem::take(&mut buf)));
+            }
+            out.push(Inline::Link { text: n.to_string(), href: href.clone() });
+            rest = &rest[lead + n.len()..];
+        }
+    }
+    buf.push_str(rest);
+    if !buf.is_empty() {
+        out.push(Inline::Text(buf));
+    }
+}
+
 /// Linked references to equations ("(3.422)" that is a link in the PDF)
 /// become links to the equation's anchor, in whichever chapter it is.
 pub fn link_equations(chapters: &mut [Chapter]) {
@@ -713,8 +868,7 @@ pub fn link_equations(chapters: &mut [Chapter]) {
         return;
     }
     for ch in chapters.iter_mut() {
-        for b in ch.blocks.iter_mut() {
-            let (Block::Para(inl) | Block::Item { text: inl, .. } | Block::PageNote { text: inl, .. }) = &mut b.block else { continue };
+        for inl in text_runs(ch) {
             if !inl.iter().any(|x| matches!(x, Inline::PageLink(_))) {
                 continue;
             }
@@ -725,7 +879,9 @@ pub fn link_equations(chapters: &mut [Chapter]) {
                     // the reference is the text's last word
                     let cut = t.trim_end().rfind(char::is_whitespace).map_or(0, |i| i + 1);
                     let word = &t[cut..];
-                    if let Some(n) = crate::blocks::equation_ref(word).filter(|n| home.contains_key(*n)) {
+                    // (a number after "Problem" is a problem, not an equation)
+                    let problem = t[..cut].trim_end().ends_with("Problem") || t[..cut].trim_end().ends_with("Problems");
+                    if let Some(n) = crate::blocks::equation_ref(word).filter(|n| home.contains_key(*n) && !problem) {
                         let slug = &home[n];
                         // keep the parentheses and punctuation around the link
                         let start = cut + word.find(n).unwrap_or(0);
@@ -809,8 +965,7 @@ pub fn link_cross_refs(chapters: &mut [Chapter]) {
         ("Fig. ", "figure"),
     ];
     for ch in chapters.iter_mut() {
-        for b in ch.blocks.iter_mut() {
-            let (Block::Para(inl) | Block::Item { text: inl, .. } | Block::PageNote { text: inl, .. }) = &mut b.block else { continue };
+        for inl in text_runs(ch) {
             if !inl.iter().any(|x| matches!(x, Inline::PageLink(_))) {
                 continue;
             }
@@ -845,6 +1000,33 @@ pub fn link_cross_refs(chapters: &mut [Chapter]) {
                 k += 1;
             }
         }
+    }
+}
+
+#[cfg(test)]
+mod problem_tests {
+    use super::*;
+
+    fn run(t: &str) -> String {
+        let target: HashMap<String, String> =
+            ["6.8", "6.9", "6.10", "B.2"].iter().map(|n| (n.to_string(), format!("p.md#problem-{n}"))).collect();
+        let mut out = Vec::new();
+        link_problem_refs(t, &target, &mut out);
+        crate::emit::render_inlines(&out)
+    }
+
+    #[test]
+    fn links_problem_numbers() {
+        assert_eq!(run("see Problem 6.8."), "see Problem [6.8](p.md#problem-6.8).");
+        assert_eq!(
+            run("Problems 6.8, 6.9 and 6.10 show"),
+            "Problems [6.8](p.md#problem-6.8), [6.9](p.md#problem-6.9) and [6.10](p.md#problem-6.10) show"
+        );
+        assert_eq!(run("in Problem 6.8a"), "in Problem [6.8a](p.md#problem-6.8)");
+        assert_eq!(run("Problem B.2"), "Problem [B.2](p.md#problem-B.2)");
+        // not a problem we have, not a number, not a reference
+        assert_eq!(run("Problem 7.1 and (6.8)"), "Problem 7.1 and (6.8)");
+        assert_eq!(run("a Problematic 6.8"), "a Problematic 6.8");
     }
 }
 
