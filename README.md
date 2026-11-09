@@ -57,7 +57,7 @@ Two environment variables print what the formula builder sees: `PDF2MD_MATHDEBUG
 
 The in-app file browser also needs the Qt Labs folder list model: Fedora `qt6-qtdeclarative` (already included), Debian/Ubuntu `qml6-module-qt-labs-folderlistmodel`, Arch `qt6-declarative`.
 
-The book is written to `<output folder>/<PDF name>/`. If that folder already exists, the app asks whether to replace it (it is deleted first, after the new conversion has succeeded) or keep both (the new one goes to `<PDF name> (1)`, `(2)` …).
+The book is written to `<output folder>/<PDF name>/`. If that folder already exists, the app asks whether to replace it (the old folder is moved to the Trash, after the new conversion has succeeded) or keep both (the new one goes to `<PDF name> (1)`, `(2)` …).
 
 To start it from the application menu, install the program and its launcher:
 

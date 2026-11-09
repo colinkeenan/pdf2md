@@ -22,7 +22,7 @@ pub mod qobject {
 
         /// Start a conversion on a background thread. Output goes into
         /// `<output>/<name of the input file>/`; if that folder exists,
-        /// `replace` deletes it first, otherwise a new "<name> (1)" is made.
+        /// `replace` moves it to the Trash first, otherwise a new "<name> (1)" is made.
         #[qinvokable]
         fn convert(self: Pin<&mut Converter>, input: &QString, output: &QString, replace: bool);
 
@@ -126,7 +126,8 @@ fn run(input: &Path, output: &Path, replace: bool) -> Result<String, String> {
     // only touch the old folder once the new book is ready
     if dest.exists() {
         if replace {
-            std::fs::remove_dir_all(&dest).map_err(|e| format!("could not delete {}: {e}", dest.display()))?;
+            // to the Trash, so the old conversion can still be restored
+            trash::delete(&dest).map_err(|e| format!("could not move {} to the Trash: {e}", dest.display()))?;
         } else {
             dest = new_dir(&dest);
         }

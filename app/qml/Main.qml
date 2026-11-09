@@ -63,13 +63,13 @@ Kirigami.ApplicationWindow {
         id: existsDialog
         title: "Book folder already exists"
         subtitle: "“" + root.localPath(root.outputUrl) + "/" + root.stemOf(root.inputUrl) + "/” is already there.\n\n"
-            + "Replace deletes that folder and everything in it, then writes the new conversion. "
+            + "Replace moves that folder to the Trash, then writes the new conversion in its place. "
             + "Keep Both writes the new conversion to “" + root.stemOf(root.inputUrl) + " (1)” (or the next free number)."
         standardButtons: Kirigami.Dialog.Cancel
         customFooterActions: [
             Kirigami.Action {
                 text: "Replace"
-                icon.name: "edit-delete"
+                icon.name: "user-trash"
                 onTriggered: {
                     existsDialog.close()
                     converter.convert(root.inputUrl, root.outputUrl, true)
