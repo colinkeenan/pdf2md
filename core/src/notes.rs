@@ -154,7 +154,8 @@ pub fn attach(chapters: &mut Vec<Chapter>, book: &mut Book) -> Vec<String> {
     // ---- footnotes ---------------------------------------------------------
     // Page footnotes first: a marker matches a note printed on its own page.
     for (ci, ch) in chapters.iter_mut().enumerate() {
-        let mut page_notes: HashMap<usize, Vec<(String, Vec<Inline>, bool)>> = HashMap::new();
+        // (by page, in order, so unmatched notes are listed the same way every run)
+        let mut page_notes: std::collections::BTreeMap<usize, Vec<(String, Vec<Inline>, bool)>> = Default::default();
         ch.blocks.retain(|b| match &b.block {
             Block::PageNote { label, text } => {
                 page_notes.entry(b.page).or_default().push((label.clone(), text.clone(), false));
