@@ -57,6 +57,9 @@ pub enum Inline {
     Break,
     /// A link; `text` is already Markdown.
     Link { text: String, href: String },
+    /// Invisible: the page number just before it links to this PDF page
+    /// (a linked index). Used by `links::link_index`, never written out.
+    PageLink(u32),
 }
 
 /// One entry of the printed table of contents.
@@ -200,7 +203,7 @@ pub fn convert_doc(doc: &layout::Doc) -> Book {
     let removed = notes::attach(&mut chapters, &mut book);
     structure::assign_slugs(&mut chapters);
     links::link_toc(&mut chapters, &book.labels, &book.pdf_pages, &removed, &mut book.warnings);
-    links::link_index(&mut chapters);
+    links::link_index(&mut chapters, &book.pdf_pages);
     book.chapters = chapters;
     book
 }

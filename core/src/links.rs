@@ -529,10 +529,37 @@ fn term_candidates(term: &str, parent: Option<&str>) -> Vec<String> {
     v
 }
 
-pub fn link_index(chapters: &mut [Chapter]) {
+pub fn link_index(chapters: &mut [Chapter], pdf: &[u32]) {
     let pages = page_map(chapters);
     let Some(ix) = chapters.iter().position(|c| key(&c.title) == "index") else { return };
     let texts = page_texts(chapters, ix);
+    // For a linked index (each number links to a PDF page): the text pieces
+    // of every PDF page, and where each page's text starts.
+    let mut pdf_texts: HashMap<u32, Vec<(usize, usize, usize)>> = HashMap::new();
+    let mut pdf_start: HashMap<u32, (usize, usize)> = HashMap::new();
+    for (ci, ch) in chapters.iter().enumerate() {
+        if ci == ix {
+            continue;
+        }
+        for (bi, b) in ch.blocks.iter().enumerate() {
+            let Some(&n) = pdf.get(b.page) else { continue };
+            if !matches!(b.block, Block::Anchor(_)) {
+                pdf_start.entry(n).or_insert((ci, bi));
+            }
+            let inl = match &b.block {
+                Block::Para(inl) | Block::Heading { text: inl, .. } | Block::Item { text: inl, .. } => inl,
+                Block::PageNote { text, .. } => text,
+                _ => continue,
+            };
+            for (ii, x) in inl.iter().enumerate() {
+                if matches!(x, Inline::Text(_) | Inline::Emph(_)) {
+                    pdf_texts.entry(n).or_default().push((ci, bi, ii));
+                }
+            }
+        }
+    }
+    // pages a number links to where its term was not found: anchor ids
+    let mut page_anchors: HashMap<u32, String> = HashMap::new();
     // anchors to put into the text: spot -> id
     let mut spots: HashMap<Spot, (String, usize)> = HashMap::new();
     let mut blocks = std::mem::take(&mut chapters[ix].blocks);
@@ -556,7 +583,33 @@ pub fn link_index(chapters: &mut [Chapter]) {
             parent = Some(term.clone());
         }
         let chs: &[Chapter] = chapters;
-        let mut target = |label: &str| -> Option<String> {
+        // A page number's target: for a number that links to a PDF page, the
+        // term on exactly that page, else the start of that page; otherwise
+        // the term on the printed page, else that page's marker.
+        let mut resolve = |label: &str, linked: Option<u32>| -> Option<String> {
+            if let Some(n) = linked {
+                // (a printed page that began on PDF page n can run onto n + 1)
+                let pieces: Vec<(usize, usize, usize)> =
+                    [n, n + 1].iter().flat_map(|m| pdf_texts.get(m).into_iter().flatten().copied()).collect();
+                let search = |f: fn(&str, &str) -> Option<(usize, usize)>| {
+                    cands.iter().find_map(|c| {
+                        pieces.iter().find_map(|&p| f(inline_text(chs, p), c).map(|(off, len)| ((p.0, p.1, p.2, off), len)))
+                    })
+                };
+                let found = search(find_term).or_else(|| search(find_stem));
+                return Some(match found {
+                    Some((spot, len)) => {
+                        let k = spots.len();
+                        let id = spots.entry(spot).or_insert_with(|| (format!("ix-{k}"), len)).0.clone();
+                        format!("{}.md#{id}", chs[spot.0].slug)
+                    }
+                    None => {
+                        let &(ci, _) = pdf_start.get(&n)?;
+                        let id = page_anchors.entry(n).or_insert_with(|| format!("pdf-page-{n}")).clone();
+                        format!("{}.md#{id}", chs[ci].slug)
+                    }
+                });
+            }
             let slug = pages.get(label)?;
             let found = texts.get(label).and_then(|pieces| {
                 let search = |f: fn(&str, &str) -> Option<(usize, usize)>| {
@@ -576,10 +629,26 @@ pub fn link_index(chapters: &mut [Chapter]) {
             })
         };
         let old = std::mem::take(text);
-        for x in old {
-            match x {
-                Inline::Text(t) => link_numbers(&t, &mut target, text),
-                other => text.push(other),
+        let mut k = 0;
+        while k < old.len() {
+            match (&old[k], old.get(k + 1)) {
+                // "…, 214" + PageLink: the last number goes to that PDF page
+                (Inline::Text(t), Some(Inline::PageLink(n))) => {
+                    let cut = t.trim_end_matches([',', ';', '.', ' ']).trim_end_matches(|c: char| c.is_ascii_digit() || c == '–' || c == '-').len();
+                    link_numbers(&t[..cut], &mut |l: &str| resolve(l, None), text);
+                    let n = *n;
+                    link_numbers(&t[cut..], &mut |l: &str| resolve(l, Some(n)), text);
+                    k += 2;
+                }
+                (Inline::Text(t), _) => {
+                    link_numbers(t, &mut |l: &str| resolve(l, None), text);
+                    k += 1;
+                }
+                (Inline::PageLink(_), _) => k += 1,
+                (other, _) => {
+                    text.push(other.clone());
+                    k += 1;
+                }
             }
         }
     }
@@ -612,6 +681,18 @@ pub fn link_index(chapters: &mut [Chapter]) {
             repl.push(wrap(&t[end..]));
         }
         inl.splice(ii..ii + 1, repl);
+    }
+
+    // Anchors where linked pages start, for numbers whose term was not found
+    // on their page (last blocks first, so earlier positions stay valid).
+    let mut starts: Vec<((usize, usize), String)> = page_anchors.into_iter().filter_map(|(n, id)| Some((*pdf_start.get(&n)?, id))).collect();
+    starts.sort_by(|a, b| b.0.cmp(&a.0));
+    for ((ci, bi), id) in starts {
+        let page = chapters[ci].blocks[bi].page;
+        match &mut chapters[ci].blocks[bi].block {
+            Block::Para(inl) => inl.insert(0, Inline::Anchor(id)),
+            _ => chapters[ci].blocks.insert(bi, crate::Blk { block: Block::Anchor(id), page, centered: false }),
+        }
     }
 }
 

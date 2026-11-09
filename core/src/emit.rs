@@ -91,6 +91,7 @@ pub fn render_inlines(inl: &[Inline]) -> String {
                 let t = if *emph { format!("<em>{t}</em>") } else { t };
                 s.push_str(&format!("<a id=\"{id}\">{t}</a>"));
             }
+            Inline::PageLink(_) => {}
             Inline::Break => {
                 let trimmed = s.trim_end().len();
                 s.truncate(trimmed);

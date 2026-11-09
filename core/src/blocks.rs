@@ -423,6 +423,11 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
                     push_text(&mut out, " ");
                 }
                 push_text(&mut out, &s.text);
+                // a page number that links into the book (a linked index)
+                let num = s.text.trim().trim_end_matches([',', ';', '.']);
+                if let Some(n) = s.link.filter(|_| !num.is_empty() && num.chars().all(|c| c.is_ascii_digit() || c == '–' || c == '-')) {
+                    out.push(Inline::PageLink(n));
+                }
             }
         }
         prev_right = Some(s.right());
