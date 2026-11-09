@@ -299,6 +299,26 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
     let spans = &spans;
     let n = spans.len();
     let gap = |a: usize, b: usize| spans[b].left - spans[a].right();
+    // In a book without TeX's math fonts (an ebook), simple math is set as
+    // text: a variable is an italic letter ("j", its subscript a smaller
+    // "1"). Such a letter is math, so it joins its scripts and operators.
+    let text_math = !doc.fonts.iter().any(|f| {
+        let u = f.family.to_uppercase();
+        ["CMMI", "CMSY", "CMEX", "CMR", "MSAM", "MSBM"].iter().any(|p| u.starts_with(p))
+    });
+    // (a lone letter inside an italic phrase, with italic words on both
+    // sides, is a word of it: the article "a", not a variable)
+    let italic_word = |k: Option<&crate::layout::Span>| {
+        k.is_some_and(|s| s.italic && s.script == Script::Normal && s.text.trim().chars().filter(|c| c.is_alphabetic()).count() >= 2)
+    };
+    let variable = |i: usize| {
+        let s = &spans[i];
+        let t = s.text.trim();
+        let mut c = t.chars();
+        let letter = text_math && s.italic && c.next().is_some_and(char::is_alphabetic) && c.next().is_none();
+        let in_phrase = italic_word(i.checked_sub(1).and_then(|k| spans.get(k))) && italic_word(spans.get(i + 1));
+        letter && !in_phrase
+    };
     let mut kinds: Vec<K> = (0..n)
         .map(|i| {
             let s = &spans[i];
@@ -322,7 +342,7 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
             // an accent drawn over a math symbol (˜ over a) is part of it
             let accent_over_math = matches!(t, "˜" | "ˆ" | "˙" | "¨" | "¯" | "ˇ")
                 && spans.iter().any(|o| doc.is_math(o) && o.left < s.right() && o.right() > s.left);
-            if math || s.script != Script::Normal || accent_over_math {
+            if math || s.script != Script::Normal || accent_over_math || variable(i) {
                 K::Math
             } else if !t.is_empty() && t.chars().all(|c| c.is_ascii_digit() || "=+−-–()[]/<>|,.;:·×*!′".contains(c)) {
                 K::Op
@@ -399,6 +419,9 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
                             out.push(Inline::Source(k.clone()));
                         }
                     }
+                    // inside a sentence: no second script on one symbol, and
+                    // `split` (display only) as `aligned`
+                    let t = mathtex::fix_double_scripts(&t).replace("{split}", "{aligned}");
                     out.push(Inline::Math(t));
                 }
                 prev_right = Some(spans[j - 1].right());
@@ -493,6 +516,27 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
         prev_right = Some(s.right());
         i += 1;
     }
+    // "$m_1 + m_2 =$ $m$": formulas apart only by a space, the first ending
+    // (or the second starting) with an operator, are one formula
+    let ops = ['=', '+', '−', '-', '<', '>', '≈', '≡', '×', '·'];
+    let mut merged: Vec<Inline> = Vec::with_capacity(out.len());
+    for x in out {
+        if let Inline::Math(b) = &x {
+            let n = merged.len();
+            if n >= 2 {
+                if let (Inline::Math(a), Inline::Text(sp)) = (&merged[n - 2], &merged[n - 1]) {
+                    if sp.trim().is_empty() && (a.trim_end().ends_with(ops) || b.trim_start().starts_with(ops)) {
+                        let joined = format!("{} {}", a.trim_end(), b.trim_start());
+                        merged.truncate(n - 2);
+                        merged.push(Inline::Math(joined));
+                        continue;
+                    }
+                }
+            }
+        }
+        merged.push(x);
+    }
+    let out = merged;
     tidy(out)
 }
 
@@ -972,6 +1016,15 @@ impl Builder<'_> {
 
     /// Add a line of prose to the open paragraph, repairing hyphenation.
     fn join(&mut self, inl: Vec<Inline>) {
+        // a formula continued on this line ("$m_1 + m_2 =$" / "$m$"): one
+        let ops = ['=', '+', '−', '-', '<', '>', '≈', '≡', '×', '·'];
+        if let (Some(Inline::Math(a)), Some(Inline::Math(b))) = (self.para.last_mut(), inl.first()) {
+            if a.trim_end().ends_with(ops) || b.trim_start().starts_with(ops) {
+                *a = format!("{} {}", a.trim_end(), b.trim_start());
+                self.para.extend(inl.into_iter().skip(1));
+                return;
+            }
+        }
         // a web address continued on this line: one link, nothing between
         if let (Some(Inline::Link { text: a, href: ha }), Some(Inline::Link { text: b, href: hb })) = (self.para.last_mut(), inl.first()) {
             if ha == hb && (ha.starts_with("http") || ha.starts_with("mailto:")) {

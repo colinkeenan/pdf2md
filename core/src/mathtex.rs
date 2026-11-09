@@ -2423,3 +2423,80 @@ mod groups_accents_underbraces {
         );
     }
 }
+
+/// A second subscript (or superscript) on the same symbol is not LaTeX
+/// ("r_{i}^{2}_{i}^{j}", tensor indices side by side): give it an empty
+/// base, "r_{i}^{2}{}_{i}^{j}".
+pub fn fix_double_scripts(t: &str) -> String {
+    let b = t.as_bytes();
+    let mut out = String::with_capacity(t.len() + 4);
+    let (mut sub, mut sup) = (false, false);
+    let mut i = 0;
+    while i < b.len() {
+        let c = b[i];
+        if c == b'_' || c == b'^' {
+            let seen = if c == b'_' { sub } else { sup };
+            if seen {
+                out.push_str("{}");
+                sub = false;
+                sup = false;
+            }
+            if c == b'_' { sub = true } else { sup = true }
+            out.push(c as char);
+            i += 1;
+            // its argument: a {…} group, a \command, or one character
+            let start = i;
+            if i < b.len() && b[i] == b'{' {
+                let mut depth = 0;
+                while i < b.len() {
+                    match b[i] {
+                        b'{' => depth += 1,
+                        b'}' => {
+                            depth -= 1;
+                            if depth == 0 {
+                                i += 1;
+                                break;
+                            }
+                        }
+                        b'\\' => i += 1,
+                        _ => {}
+                    }
+                    i += 1;
+                }
+            } else if i < b.len() && b[i] == b'\\' {
+                i += 1;
+                while i < b.len() && b[i].is_ascii_alphabetic() {
+                    i += 1;
+                }
+                if i == start + 1 && i < b.len() {
+                    i += 1;
+                }
+            } else if i < b.len() {
+                i += t[i..].chars().next().map_or(1, char::len_utf8);
+            }
+            out.push_str(&t[start..i.min(b.len())]);
+            continue;
+        }
+        if !c.is_ascii_whitespace() {
+            sub = false;
+            sup = false;
+        }
+        let ch = t[i..].chars().next().unwrap();
+        out.push(ch);
+        i += ch.len_utf8();
+    }
+    out
+}
+
+#[cfg(test)]
+mod double_script_tests {
+    use super::fix_double_scripts as f;
+    #[test]
+    fn empty_base_for_second_scripts() {
+        assert_eq!(f("r_{i}^{2}_{i}^{j}"), "r_{i}^{2}{}_{i}^{j}");
+        assert_eq!(f("x_{1}^{2}+y_{a}"), "x_{1}^{2}+y_{a}");
+        assert_eq!(f("T_{a}_{b}"), "T_{a}{}_{b}");
+        assert_eq!(f("e^{i\\pi}"), "e^{i\\pi}");
+        assert_eq!(f("a_\\mu^\\nu"), "a_\\mu^\\nu");
+    }
+}
