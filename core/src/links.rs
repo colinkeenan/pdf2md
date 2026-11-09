@@ -696,6 +696,58 @@ pub fn link_index(chapters: &mut [Chapter], pdf: &[u32]) {
     }
 }
 
+/// Linked references to equations ("(3.422)" that is a link in the PDF)
+/// become links to the equation's anchor, in whichever chapter it is.
+pub fn link_equations(chapters: &mut [Chapter]) {
+    let mut home: HashMap<String, String> = HashMap::new();
+    for ch in chapters.iter() {
+        for b in &ch.blocks {
+            if let Block::Equation { latex, tag } = &b.block {
+                for t in crate::equation_numbers(latex, tag.as_deref()) {
+                    home.entry(t).or_insert_with(|| ch.slug.clone());
+                }
+            }
+        }
+    }
+    if home.is_empty() {
+        return;
+    }
+    for ch in chapters.iter_mut() {
+        for b in ch.blocks.iter_mut() {
+            let (Block::Para(inl) | Block::Item { text: inl, .. } | Block::PageNote { text: inl, .. }) = &mut b.block else { continue };
+            if !inl.iter().any(|x| matches!(x, Inline::PageLink(_))) {
+                continue;
+            }
+            let old = std::mem::take(inl);
+            let mut k = 0;
+            while k < old.len() {
+                if let (Inline::Text(t), Some(Inline::PageLink(_))) = (&old[k], old.get(k + 1)) {
+                    // the reference is the text's last word
+                    let cut = t.trim_end().rfind(char::is_whitespace).map_or(0, |i| i + 1);
+                    let word = &t[cut..];
+                    if let Some(n) = crate::blocks::equation_ref(word).filter(|n| home.contains_key(*n)) {
+                        let slug = &home[n];
+                        // keep the parentheses and punctuation around the link
+                        let start = cut + word.find(n).unwrap_or(0);
+                        let end = start + n.len();
+                        if start > 0 {
+                            inl.push(Inline::Text(t[..start].to_string()));
+                        }
+                        inl.push(Inline::Link { text: n.to_string(), href: format!("{slug}.md#{}", crate::equation_id(n)) });
+                        if end < t.len() {
+                            inl.push(Inline::Text(t[end..].to_string()));
+                        }
+                        k += 2;
+                        continue;
+                    }
+                }
+                inl.push(old[k].clone());
+                k += 1;
+            }
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

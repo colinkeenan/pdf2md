@@ -155,6 +155,16 @@ pub fn stats(doc: &Doc, pages: &[PageInfo]) -> Stats {
 }
 
 /// "Subject Matter . . . . 1" -> ("Subject Matter", "1").
+/// The equation number in a reference: "(3.422)", "(3.422", "3.425b" ->
+/// "3.422" … (chapter or appendix letter, dot, number, optional letter).
+pub fn equation_ref(t: &str) -> Option<&str> {
+    let t = t.trim().trim_start_matches('(').trim_end_matches([')', ',', ';', '.']);
+    let (a, b) = t.split_once('.')?;
+    let b = b.trim_end_matches(|c: char| c.is_ascii_lowercase());
+    (!a.is_empty() && a.len() <= 2 && a.chars().all(|c| c.is_ascii_alphanumeric()) && !b.is_empty() && b.chars().all(|c| c.is_ascii_digit()))
+        .then_some(t)
+}
+
 /// The PDF page a line links to, if its text is a link (a linked table of
 /// contents entry): "@N", standing in for a printed page number.
 fn link_target(l: &Line) -> Option<String> {
@@ -430,9 +440,11 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
                     push_text(&mut out, " ");
                 }
                 push_text(&mut out, &s.text);
-                // a page number that links into the book (a linked index)
+                // a page number that links into the book (a linked index), or
+                // a linked reference to an equation, "(3.422)"
                 let num = s.text.trim().trim_end_matches([',', ';', '.']);
-                if let Some(n) = s.link.filter(|_| !num.is_empty() && num.chars().all(|c| c.is_ascii_digit() || c == '–' || c == '-')) {
+                let page_no = !num.is_empty() && num.chars().all(|c| c.is_ascii_digit() || c == '–' || c == '-');
+                if let Some(n) = s.link.filter(|_| page_no || equation_ref(num).is_some()) {
                     out.push(Inline::PageLink(n));
                 }
             }

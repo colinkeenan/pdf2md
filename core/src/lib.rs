@@ -130,6 +130,24 @@ pub struct Book {
     pub source: Option<std::path::PathBuf>,
 }
 
+/// The equation numbers of a displayed equation: its tag, and the \tag{…}
+/// of each numbered row inside it (a system of equations).
+pub fn equation_numbers(latex: &str, tag: Option<&str>) -> Vec<String> {
+    let mut v: Vec<String> = tag.map(str::to_string).into_iter().collect();
+    for part in latex.split("\\tag{").skip(1) {
+        if let Some(t) = part.split('}').next() {
+            v.push(t.to_string());
+        }
+    }
+    v
+}
+
+/// The anchor id of an equation number: "3.422" -> "eq-3.422".
+pub fn equation_id(number: &str) -> String {
+    let t: String = number.chars().map(|c| if c.is_alphanumeric() || c == '.' { c } else { '-' }).collect();
+    format!("eq-{t}")
+}
+
 /// The printed page label of a page-start anchor id ("p18" -> "18"), None
 /// for other anchors.
 pub fn page_label(id: &str) -> Option<&str> {
@@ -204,6 +222,7 @@ pub fn convert_doc(doc: &layout::Doc) -> Book {
     structure::assign_slugs(&mut chapters);
     links::link_toc(&mut chapters, &book.labels, &book.pdf_pages, &removed, &mut book.warnings);
     links::link_index(&mut chapters, &book.pdf_pages);
+    links::link_equations(&mut chapters);
     book.chapters = chapters;
     book
 }

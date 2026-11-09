@@ -14,6 +14,8 @@ $$
 
 Dirac assumed that the probability <a id="ix-184">density</a> at any point is still given by
 
+<a id="eq-8"></a>
+
 $$
 \rho = \sum_{\alpha} \psi_{\alpha}^{*} \psi_{\alpha} \tag{8}
 $$
@@ -32,11 +34,15 @@ $$
 
 We must have (3) still satisfied. So $\psi$ must satisfy a wave-equation of _First Order_ in $t$. But since the equations are relativistic, the equation has to be also of 1<sup>st</sup> order in $xyz$. Thus the most general possible wave-equation is
 
+<a id="eq-9"></a>
+
 $$
 \frac{1}{c} \frac{\partial \psi}{\partial t} + \sum_{1}^{3} \alpha^{k} \frac{\partial \psi}{\partial x_{k}} + i \frac{mc}{\hbar} \beta \psi = 0 \tag{9}
 $$
 
 where $x_{1} x_{2} x_{3}$ are written for $xyz$ and $\alpha^{1} \alpha^{2} \alpha^{3} \beta$ are square matrices whose elements are numbers. The <a id="ix-118">conjugate</a> of (9) gives
+
+<a id="eq-10"></a>
 
 $$
 \frac{1}{c} \frac{\partial \psi^{*}}{\partial t} + \sum_{1}^{3} \frac{\partial \psi^{*}}{\partial x_{k}} \alpha^{k *} - i \frac{mc}{\hbar} \psi^{*} \beta^{*} = 0 \tag{10}
@@ -45,6 +51,8 @@ $$
 where $\alpha^{k *}$ and $\beta^{*}$ are <a id="ix-114">Hermitian</a> conjugates.
 
 Now to get (3) out of (8), (9) and (10) we must have $\alpha^{k *} = \alpha^{k} , \beta^{*} = \beta$ so $\alpha^{k}$ and $\beta$ are _Hermitian_; and
+
+<a id="eq-11"></a>
 
 $$
 j_{k} = c \left( \psi^{*} \alpha^{k} \psi \right) \tag{11}
@@ -55,6 +63,8 @@ $$
 Next what more do we want from equation (9)? Two things. (A) it must be consistent with the 2<sup>nd</sup> order equation (6) we started from; (B) the whole theory must be <a id="ix-157">Lorentz</a> invariant.
 
 First consider (A). If (9) is consistent with (6) it must be possible to get exactly (6) by multiplying (9) by the operator
+
+<a id="eq-12"></a>
 
 $$
 \frac{1}{c} \frac{\partial}{\partial t} - \sum_{1}^{3} \alpha^{\ell} \frac{\partial}{\partial x_{\ell}} - i \frac{mc}{\hbar} \beta \tag{12}
@@ -68,6 +78,8 @@ $$
 
 This agrees with (6) if and only if
 
+<a id="eq-13"></a>
+
 $$
 \begin{aligned} \alpha^{k} \alpha^{\ell} + \alpha^{\ell} \alpha^{k} &= 0 \quad k \neq \ell \\ \alpha^{k} \beta + \beta \alpha^{k} &= 0 \\ \alpha^{k 2} &= \beta^{2} = \mathbb{I} , ( \text{ identity matrix } ) \end{aligned} \tag{13}
 $$
@@ -75,6 +87,8 @@ $$
 Thus we could not possibly _factorize_ the 2<sup>nd</sup> order equation into two first-order operators involving ordinary numbers. But we can do it with <a id="ix-69"><em>matrices</em></a>.
 
 Consider the Pauli spin matrices
+
+<a id="eq-14"></a>
 
 $$
 \sigma_{1} = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \quad \sigma_{2} = \begin{pmatrix} 0 & - i \\ i & 0 \end{pmatrix} \quad \sigma_{3} = \begin{pmatrix} 1 & 0 \\ 0 & - 1 \end{pmatrix} \tag{14}
@@ -89,6 +103,8 @@ $$
 But we cannot make 4 matrices of this type all anti-commuting. They must be _at least_ 4 $\times$ 4.
 
 One possible set of $\alpha^{k}$ and $\beta$ is
+
+<a id="eq-15"></a>
 
 $$
 \alpha^{k} = \begin{pmatrix} 0 & \sigma_{k} \\ \sigma_{k} & 0 \end{pmatrix} \quad \beta = \begin{pmatrix} \begin{matrix} 1 & 0 \\ 0 & 1 \end{matrix} & 0 \\ 0 & \begin{matrix} - 1 & 0 \\ 0 & - 1 \end{matrix} \end{pmatrix} \tag{15}
@@ -109,6 +125,8 @@ The Dirac equation is thus a set of 4 simultaneous linear partial differential<s
 ## <a id="s-lorentz-invariance-of-the-dirac-equation"></a><a id="ix-165">Lorentz</a> Invariance of the Dirac Equation
 
 What does this mean? Consider a general Lorentz transformation: If $x_{\mu}^{\prime}$ are the new coordinates:
+
+<a id="eq-16"></a>
 
 $$
 x_{\mu}^{\prime} = \sum_{\nu = 0}^{3} a_{\mu \nu} x_{\nu} \quad ( x_{o} = ct ) \tag{16}
@@ -132,17 +150,23 @@ $$
 
 Therefore
 
+<a id="eq-17"></a>
+
 $$
 ( \psi^{*\prime} \psi^{\prime} ) = \frac{\psi^{*} \psi}{\sqrt{1 - \frac{v^{2}}{c^{2}}}} \tag{17}
 $$
 
 and so $( \psi^{*} \psi ) = \rho$ transforms like an _energy_, i.e.like the fourth component of a vector. This shows incidentally that $\psi^{\prime} \neq \psi$. Since $\rho$ and $\hbar$ are related by the equation of continuity, the space-components of the 4-vector are
 
+<a id="eq-18"></a>
+
 $$
 ( S_{1} ,S_{2} ,S_{3} ) = \psi^{*} \alpha^{k} \psi = \frac{1}{c} j_{k} \tag{18}
 $$
 
 So we require that the 4 quantities
+
+<a id="eq-19"></a>
 
 $$
 ( S_{1} ,S_{2} ,S_{3} ,S_{0} ) = \left( \psi^{*} \alpha^{k} \psi ,\psi^{*} \psi \right) \tag{19}
@@ -152,17 +176,23 @@ transform like a _4-vector_. This will be enough to preserve the interpretation 
 
 Assume that
 
+<a id="eq-20"></a>
+
 $$
 \psi^{\prime} = S\psi \tag{20}
 $$
 
 where $S$ is a _linear_ operator. Then
 
+<a id="eq-21"></a>
+
 $$
 \psi^{\prime *} = \psi^{*} S^{*} \tag{21}
 $$
 
 So we require
+
+<a id="eq-22"></a>
 
 $$
 \begin{aligned} \psi^{*\prime} \alpha^{k} \psi^{\prime} &= \psi^{*} S^{*} \alpha^{k} S\psi = \sum_{\nu = 0}^{3} a_{k\nu} \psi^{*} \alpha^{\nu} \psi \\ \psi^{*\prime} \psi^{\prime} &= \psi^{*} S^{*} S\psi = \sum_{\nu = 0}^{3} a_{0 \nu} \psi^{*} \alpha^{\nu} \psi \end{aligned} \tag{22}
@@ -174,11 +204,15 @@ writing $\alpha^{0} = \mathbb{I}$.
 
 Thus we need $3$
 
+<a id="eq-23"></a>
+
 $$
 S^{*} \alpha^{\mu} S = \sum_{\nu = 0} a_{\mu \nu} \alpha^{\nu} , \quad \mu = 0 , 1 , 2 , 3 \tag{23}
 $$
 
 Next consider (ii). The Dirac equation for $\psi^{\prime}$ is
+
+<a id="eq-24"></a>
 
 $$
 \sum_{0}^{3} \alpha^{\nu} \frac{\partial}{\partial x_{\nu}^{\prime}} \psi^{\prime} + i \frac{mc}{\hbar} \beta \psi^{\prime} = 0 \tag{24}
@@ -186,17 +220,23 @@ $$
 
 Now the original Dirac equation for $\psi$ expressed in terms of the new coordinates is
 
+<a id="eq-25"></a>
+
 $$
 \sum_{\mu = 0 \nu = 0}^{3} \sum^{3} \alpha^{\mu} \frac{\partial}{\partial x_{\nu}^{\prime}} a_{\nu \mu} S^{- 1} \psi^{\prime} + i \frac{mc}{\hbar} \beta S^{- 1} \psi^{\prime} = 0 \tag{25}
 $$
 
 The sets of equations (24) and (25) have to be equivalent, not identical. Thus (25) must be the same as (24) multiplied by $\beta S^{- 1} \beta$. The condition for this is
 
+<a id="eq-26"></a>
+
 $$
 \beta S^{- 1} \beta \alpha^{\nu} = \sum_{0}^{3} \alpha^{\lambda} a_{\nu \lambda} S^{- 1} \tag{26}
 $$
 
 But (23) and (26) are identical if
+
+<a id="eq-27"></a>
 
 $$
 \beta S^{- 1} \beta = S^{*} \quad \text{ which means } \quad S^{*} \beta S = \beta \tag{27}
@@ -235,6 +275,8 @@ x_{1}^{\prime} = - x_{1} \quad x_{2}^{\prime} = - x_{2} \quad x_{3}^{\prime} = -
 $$
 
 _Case 1_ Then
+
+<a id="eq-28"></a>
 
 $$
 S = \cos \tfrac{1}{2} \theta + i\sigma_{3} \sin \tfrac{1}{2} \theta \tag{28}
@@ -284,6 +326,8 @@ $$
 
 ## <a id="s-case-2"></a>Case 2
 
+<a id="eq-29"></a>
+
 $$
 S = S^{*} = \cosh \tfrac{1}{2} \theta + \alpha_{3} \sinh \tfrac{1}{2} \theta \tag{29}
 $$
@@ -312,6 +356,8 @@ $$
 
 ## <a id="s-case-3"></a>Case 3
 
+<a id="eq-30"></a>
+
 $$
 S = S^{*} = \beta \tag{30}
 $$
@@ -326,11 +372,15 @@ The $\psi_{\alpha}$’s transforming with these $S$-transformations are called <
 
 In order to avoid distinction between covariant and contravariant vectors (which we have also unjustifiably ignored in the previous discussion) it is useful to use the imaginary 4<sup>th</sup> coordinate
 
+<a id="eq-31"></a>
+
 $$
 x_{4} = ix_{0} = ict \tag{31}
 $$
 
 In this coordinate system the four matrices<sup><a id="fnref-5" href="#fn-5">5</a></sup>
+
+<a id="eq-32"></a>
 
 $$
 \gamma_{1 , 2 , 3 , 4} = \left( - i\beta \alpha^{1 , 2 , 3} ,\beta \right) \quad i . e . \tag{32}
@@ -344,11 +394,15 @@ $$
 
 are a 4-vector. They are all <a id="ix-115">Hermitian</a> and satisfy
 
+<a id="eq-33"></a>
+
 $$
 \gamma_{\mu} \gamma_{\nu} + \gamma_{\nu} \gamma_{\mu} = 2 \delta_{\mu \nu} \tag{33}
 $$
 
 The Dirac equation and its conjugate may now be written
+
+<a id="eq-34"></a>
 
 $$
 \begin{aligned} \sum_{1}^{4} \gamma_{\mu} \frac{\partial \psi}{\partial x_{\mu}} + \frac{mc}{\hbar} \psi &= 0 \\ \sum_{1}^{4} \frac{\partial \overline{\psi}}{\partial x_{\mu}} \gamma_{\mu} - \frac{mc}{\hbar} \overline{\psi} &= 0 \end{aligned} \tag{34}
@@ -356,9 +410,13 @@ $$
 
 with
 
+<a id="eq-35"></a>
+
 $$
 \overline{\psi} = \psi^{*} \beta \quad \text{ and } \tag{35}
 $$
+
+<a id="eq-36"></a>
 
 $$
 s_{\mu} = i \left( \overline{\psi} \gamma_{\mu} \psi \right) = \left( \frac{1}{c} \hbar ,i\rho \right) \tag{36}
@@ -370,9 +428,13 @@ These notations are much the most convenient for calculations.
 
 The Hamiltonian in this theory is<sup><a id="fnref-6" href="#fn-6">6</a></sup>
 
+<a id="eq-37"></a>
+
 $$
 i \hbar \frac{\partial \psi}{\partial t} = H\psi \tag{37}
 $$
+
+<a id="eq-38"></a>
 
 $$
 H = - i \hbar c \sum_{1}^{3} \alpha^{k} \frac{\partial}{\partial x_{k}} + mc^{2} \beta = - i \hbar c \boldsymbol{\alpha} \boldsymbol{\cdot} \nabla + mc^{2} \beta \tag{38}
@@ -382,11 +444,15 @@ This commutes with the <a id="ix-200">momentum</a> $\boldsymbol{p} = - i \hbar \
 
 However the <a id="ix-27">angular momentum</a> operator
 
+<a id="eq-39"></a>
+
 $$
 \boldsymbol{L} = \boldsymbol{r} \times \boldsymbol{p} = - i \hbar \boldsymbol{r} \times \nabla \tag{39}
 $$
 
 is not a constant. For
+
+<a id="eq-40"></a>
 
 $$
 [ H, \boldsymbol{L} ] = - \hbar^{2} c \boldsymbol{\alpha} \times \nabla \tag{40}
@@ -406,11 +472,15 @@ $$
 
 So
 
+<a id="eq-41"></a>
+
 $$
 \begin{aligned} [ H,\sigma_{3} ] &= 2 \hbar c \left( \alpha^{1} \nabla_{2} - \alpha^{2} \nabla_{1} \right) \quad \text{ and thus } \\ [ H, \boldsymbol{\sigma} ] &= 2 \hbar c \boldsymbol{\alpha} \times \nabla \end{aligned} \tag{41}
 $$
 
 Thus
+
+<a id="eq-42"></a>
 
 $$
 \boldsymbol{L} + \tfrac{1}{2} \hbar \boldsymbol{\sigma} = \hbar \boldsymbol{J} \tag{42}
@@ -432,11 +502,15 @@ When a central force potential $V ( r )$ is added to H, the operator $\boldsymbo
 
 For a particle with a particular momentum $\boldsymbol{p}$ and energy $E$, the wave function will be
 
+<a id="eq-43"></a>
+
 $$
 \psi ( x,t ) = u \exp \left( i \frac{\boldsymbol{p} \boldsymbol{\cdot} \boldsymbol{x}}{\hbar} - i \frac{Et}{\hbar} \right) \tag{43}
 $$
 
 where $u$ is a constant spinor. The <a id="ix-86">Dirac</a> <a id="ix-50">equation</a> then becomes an equation for $u$ only
+
+<a id="eq-44"></a>
 
 $$
 Eu = \left( c \boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{p} + mc^{2} \beta \right) u \tag{44}
@@ -444,11 +518,15 @@ $$
 
 We write now
 
+<a id="eq-45"></a>
+
 $$
 p_{+} = p_{1} + ip_{2} \quad p_{-} = p_{1} - ip_{2} \tag{45}
 $$
 
 Then (44) written out in full becomes
+
+<a id="eq-46"></a>
 
 $$
 \begin{aligned} \left( E - mc^{2} \right) u_{1} &= c ( p_{3} u_{3} + p_{-} u_{4} ) \\ \left( E - mc^{2} \right) u_{2} &= c ( p_{+} u_{3} - p_{3} u_{4} ) \\ \left( E + mc^{2} \right) u_{3} &= c ( p_{3} u_{1} + p_{-} u_{2} ) \\ \left( E + mc^{2} \right) u_{4} &= c ( p_{+} u_{1} - p_{3} u_{2} ) \end{aligned} \tag{46}
@@ -456,11 +534,15 @@ $$
 
 These 4 equations determine $u_{3}$ and $u_{4}$ given $u_{1}$ and $u_{2}$, or vice-versa. And either $u_{1}$ and $u_{2}$, or $u_{3}$ and $u_{4}$, can be chosen arbitrarily provided that<sup><a id="fnref-7" href="#fn-7">7</a></sup>
 
+<a id="eq-47"></a>
+
 $$
 E^{2} = m^{2} c^{4} + c^{2} p^{2} \tag{47}
 $$
 
 Thus given $p$ and $E$ = +$\sqrt{m^{2} c^{4} + c^{2} p^{2}}$, there are two independent solutions of (46); these are, in nonnormalized form:
+
+<a id="eq-48"></a>
 
 $$
 \begin{pmatrix} 1 \\ 0 \\ \frac{cp_{3}}{E + mc^{2}} \\ \frac{cp_{+}}{E + mc^{2}} \end{pmatrix} \quad \begin{pmatrix} 0 \\ 1 \\ \frac{cp_{-}}{E + mc^{2}} \\ \frac{- cp_{3}}{E + mc^{2}} \end{pmatrix} \tag{48}
@@ -486,11 +568,15 @@ The Dirac theory in its one-particle form cannot describe properly the interacti
 
 So which wave-function will describe a positron with momentum $p$ and energy $E$? Clearly the wave function should be of the form
 
+<a id="eq-49"></a>
+
 $$
 \varphi ( x,t ) = v \exp \left( i \frac{\boldsymbol{p} \boldsymbol{\cdot} \boldsymbol{x}}{\hbar} - i \frac{Et}{\hbar} \right) \tag{49}
 $$
 
 as always in quantum mechanics. But the negative-energy electron whose _absence is_ the positron has a wave-function
+
+<a id="eq-50"></a>
 
 $$
 \psi ( x,t ) = u \exp \left( - i \frac{\boldsymbol{p} \boldsymbol{\cdot} \boldsymbol{x}}{\hbar} + i \frac{Et}{\hbar} \right) \tag{50}
@@ -499,6 +585,8 @@ $$
 since it has a momentum $- p$ energy $- E$.
 
 Thus we must take
+
+<a id="eq-51"></a>
 
 $$
 \varphi = C\psi^{+} , \quad i . e . \quad v = Cu^{+} \tag{51}
@@ -512,11 +600,15 @@ $$
 
 We know that $u$ is a solution of
 
+<a id="eq-52"></a>
+
 $$
 Eu = \left( c \boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{p} - mc^{2} \beta \right) u \tag{52}
 $$
 
 We want the theory to make no distinction between electrons and positrons, and so $v$ must also satisfy the Dirac equation
+
+<a id="eq-53"></a>
 
 $$
 \begin{aligned} Ev &= \left( c \boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{p} + mc^{2} \beta \right) v \\ ECu^{+} &= \left( c \boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{p} + mc^{2} \beta \right) Cu^{+} \end{aligned} \tag{53}
@@ -524,11 +616,15 @@ $$
 
 But from (52) we have for $u^{+}$ the equation
 
+<a id="eq-54"></a>
+
 $$
 Eu^{+} = \left( c \boldsymbol{\alpha}^{+} \boldsymbol{\cdot} \boldsymbol{p} - mc^{2} \beta^{+} \right) u^{+} \tag{54}
 $$
 
 In order that (53) and (54) be identical we should have
+
+<a id="eq-55"></a>
 
 $$
 C\alpha^{k +} = \alpha^{k} C, \quad C\beta^{+} = - \beta C \tag{55}
@@ -542,6 +638,8 @@ $$
 
 Therefore a suitable C will be
 
+<a id="eq-56"></a>
+
 $$
 C = - i\beta \alpha^{2} = \gamma_{2} = \begin{pmatrix} 0 & \begin{matrix} 0 & - 1 \\ 1 & 0 \end{matrix} \\ \begin{matrix} 0 & 1 \\ - 1 & 0 \end{matrix} & 0 \end{pmatrix} \tag{56}
 $$
@@ -550,17 +648,23 @@ $$
 
 The relation between $\psi$ and $\varphi$ is symmetrical because
 
+<a id="eq-57"></a>
+
 $$
 C^{2} = \mathbb{I} \quad \text{ Hence } \quad \psi = C\varphi^{+} \tag{57}
 $$
 
 The $\varphi$ is called the _charge-conjugate_ wave-function corresponding to the <a id="ix-106">negative-energy</a> electron $\psi$. Clearly
 
+<a id="eq-58"></a>
+
 $$
 \varphi^{*} \varphi = \left( C\psi^{+} \right)^{*} \left( C\psi^{+} \right) = \psi^{T} C^{*} C\psi^{+} = \psi^{*} ( C^{*} C )^{T} \psi = \psi^{*} \psi \tag{58}
 $$
 
 And
+
+<a id="eq-59"></a>
 
 $$
 \varphi^{*} \alpha^{k} \varphi = \psi^{T} C^{*} \alpha^{k} C\psi^{+} = \psi^{*} C\alpha^{kT} C\psi = \psi^{*} \alpha^{k} \psi \tag{59}
@@ -582,11 +686,15 @@ $$
 
 given functions of space and time. Then the motion of a particle in the field is found by substituting in the <a id="ix-136">free-particle Lagrangian</a>
 
+<a id="eq-60"></a>
+
 $$
 \begin{aligned} & \quad E + e \Phi \quad \text{ for } E \\ & \quad \boldsymbol{p} + \frac{e}{c} \boldsymbol{A} \quad \text{ for } \boldsymbol{p} \end{aligned} \tag{60}
 $$
 
 where $( - e )$ is the electron charge. We write the momentum-energy 4-vector
+
+<a id="eq-61"></a>
 
 $$
 p = ( p_{1} ,p_{2} ,p_{3} ,p_{4} = iE/c ) \tag{61}
@@ -594,11 +702,15 @@ $$
 
 Then we have to substitute simply
 
+<a id="eq-62"></a>
+
 $$
 p_{\mu} + \frac{e}{c} A_{\mu} \quad \text{ for } p_{\mu} \tag{62}
 $$
 
 Now in the quantum theory
+
+<a id="eq-63"></a>
 
 $$
 p_{\mu} \to - i \hbar \frac{\partial}{\partial x_{\mu}} \tag{63}
@@ -606,15 +718,21 @@ $$
 
 Therefore the Dirac equation with fields is
 
+<a id="eq-64"></a>
+
 $$
 \sum_{1}^{4} \gamma_{\mu} \left( \frac{\partial}{\partial x_{\mu}} + \frac{ie}{\hbar c} A_{\mu} \right) \psi + \frac{mc}{\hbar} \psi = 0 \tag{64}
 $$
+
+<a id="eq-65"></a>
 
 $$
 \sum_{1}^{4} \left( \frac{\partial}{\partial x_{\mu}} - \frac{ie}{\hbar c} A_{\mu} \right) \overline{\psi} \gamma_{\mu} - \frac{mc}{\hbar} \overline{\psi} = 0 \tag{65}
 $$
 
 In the non-covariant notations this is
+
+<a id="eq-66"></a>
 
 $$
 i \hbar \frac{\partial \psi}{\partial t} = \left[ - e \Phi + \sum_{1}^{3} \left( - i \hbar c \frac{\partial}{\partial x_{k}} + eA_{k} \right) \alpha^{k} + mc^{2} \beta \right] \psi \tag{66}
@@ -624,17 +742,23 @@ $$
 
 since by (57), we have $\overline{\psi} \gamma_{\mu} = \psi^{*} \beta \gamma_{\mu} = ( C\varphi^{+} )^{T} \beta \gamma_{\mu} = \varphi^{T} C^{T} \beta \gamma_{\mu}$; the wave function $\varphi = C\psi^{+}$of a positron satisfies by (65)
 
+<a id="eq-67"></a>
+
 $$
 \sum \left( \frac{\partial}{\partial x_{\mu}} - \frac{ie}{\hbar c} A_{\mu} \right) \gamma_{\mu}^{T} \beta C\varphi - \frac{mc}{\hbar} \beta C\varphi = 0 \tag{67}
 $$
 
 Multiplying by $C\beta$ this gives
 
+<a id="eq-68"></a>
+
 $$
 \sum \left( \frac{\partial}{\partial x_{\mu}} - \frac{ie}{\hbar c} A_{\mu} \right) \gamma_{\mu} \varphi + \frac{mc}{\hbar} \varphi = 0 \tag{68}
 $$
 
 This is exactly the Dirac <a id="ix-51">equation</a> for a particle of positive charge (+e). We have used
+
+<a id="eq-69"></a>
 
 $$
 C\beta \gamma_{\mu}^{T} \beta C = - \gamma_{\mu} , \tag{69}
@@ -646,15 +770,21 @@ which follows from (15), (32), and (55).
 
 This is the one problem which it is possible to treat very accurately using the one-electron Dirac theory. The problem is to find the eigenstates of the equation
 
+<a id="eq-70"></a>
+
 $$
 \begin{aligned} E\psi &= H\psi \\ H &= - i \hbar c \boldsymbol{\alpha} \boldsymbol{\cdot} \nabla + mc^{2} \beta - \frac{e^{2}}{r} \end{aligned} \tag{70}
 $$
 
 As in the NR theory, we have as quantum numbers in addition to $E$ itself the quantities
 
+<a id="eq-71"></a>
+
 $$
 j_{z} = - i [ \boldsymbol{r} \times \nabla ]_{3} + \tfrac{1}{2} \sigma_{3} \tag{71}
 $$
+
+<a id="eq-72"></a>
 
 $$
 j ( j + 1 ) = J^{2} = \left[ - i ( \boldsymbol{r} \times \nabla ) + \tfrac{1}{2} \boldsymbol{\sigma} \right]^{2} \tag{72}
@@ -667,6 +797,8 @@ Q = \boldsymbol{\sigma} \boldsymbol{\cdot} \boldsymbol{J}
 $$
 
 But $[ H, \boldsymbol{\sigma} ]$ is non-zero and rather complicated. So it is better to try
+
+<a id="eq-73"></a>
 
 $$
 Q = \beta \boldsymbol{\sigma} \boldsymbol{\cdot} \boldsymbol{J} \tag{73}
@@ -708,6 +840,8 @@ $$
 
 Hence the quantity which commutes with $H$ and is a constant of the motion is
 
+<a id="eq-74"></a>
+
 $$
 K = \beta \boldsymbol{\sigma} \boldsymbol{\cdot} \boldsymbol{J} - \tfrac{1}{2} \beta \tag{74}
 $$
@@ -724,15 +858,21 @@ $$
 
 Hence
 
+<a id="eq-75"></a>
+
 $$
 K^{2} = J^{2} + \tfrac{1}{4} = \left( j + \tfrac{1}{2} \right)^{2} \tag{75}
 $$
 
 Therefore $K$ has _integer_ eigenvalues not zero,
 
+<a id="eq-76"></a>
+
 $$
 K = k = \pm \left( j + \tfrac{1}{2} \right) \tag{76}
 $$
+
+<a id="eq-77"></a>
 
 $$
 j = | k |- \tfrac{1}{2} , \quad k = \pm 1 , \pm 2 , \pm 3 ,\dots \tag{77}
@@ -740,11 +880,15 @@ $$
 
 Using the eigenvalue for $K$, we can simplify the <a id="ix-121">Hamiltonian</a>, which we could not do as in the NR theory with the eigenvalue of $L^{2}$ alone. First
 
+<a id="eq-78"></a>
+
 $$
 \boldsymbol{\sigma} \boldsymbol{\cdot} \boldsymbol{r\sigma} \boldsymbol{\cdot} ( \boldsymbol{r} \times \nabla ) = i \boldsymbol{\sigma} \boldsymbol{\cdot} ( \boldsymbol{r} \times ( \boldsymbol{r} \times \nabla ) ) = i ( \boldsymbol{\sigma} \boldsymbol{\cdot} \boldsymbol{r} ) ( \boldsymbol{r} \boldsymbol{\cdot} \nabla ) - ir^{2} \boldsymbol{\sigma} \boldsymbol{\cdot} \nabla \tag{78}
 $$
 
 Let now
+
+<a id="eq-79"></a>
 
 $$
 \epsilon = - i\alpha^{1} \alpha^{2} \alpha^{3} \quad \sigma_{k} = \epsilon \alpha^{k} \tag{79}
@@ -764,6 +908,8 @@ $$
 
 Thus finally we can write (70) in the form
 
+<a id="eq-80"></a>
+
 $$
 H = mc^{2} \beta - \frac{e^{2}}{r} + i \hbar c\alpha_{r} \left( \frac{\beta K}{r} - \frac{1}{r} - \frac{\partial}{\partial r} \right) \tag{80}
 $$
@@ -776,6 +922,8 @@ For the solution of this equation, see – Dirac, _Quantum Mechanics_, Third Edi
 
 We may choose a two-component representation in which
 
+<a id="eq-81"></a>
+
 $$
 \beta = \begin{pmatrix} 1 & 0 \\ 0 & - 1 \end{pmatrix} , \quad \alpha_{r} = \begin{pmatrix} 0 & i \\ - i & 0 \end{pmatrix} , \quad \psi = \begin{pmatrix} u \\ v \end{pmatrix} \tag{81}
 $$
@@ -784,11 +932,15 @@ $$
 
 Then
 
+<a id="eq-82"></a>
+
 $$
 \begin{aligned} \left( E - mc^{2} \right) u &= - \frac{e^{2}}{r} u + \hbar c \left( \frac{1 + K}{r} + \frac{\partial}{\partial r} \right) v \\ \left( E + mc^{2} \right) v &= - \frac{e^{2}}{r} v + \hbar c \left( - \frac{1 - K}{r} - \frac{\partial}{\partial r} \right) u \end{aligned} \tag{82}
 $$
 
 Let now
+
+<a id="eq-83"></a>
 
 $$
 a_{1} = \frac{- E + mc^{2}}{\hbar c} ; \quad a_{2} = \frac{E + mc^{2}}{\hbar c} ; \quad \alpha = \frac{e^{2}}{\hbar c} , \tag{83}
@@ -796,11 +948,15 @@ $$
 
 the <a id="ix-89">fine structure constant</a>. Then
 
+<a id="eq-84"></a>
+
 $$
 \begin{aligned} \left( - a_{1} + \frac{\alpha}{\overline{r}} \right) u &= \left( \frac{1 + K}{r} + \frac{\partial}{\partial r} \right) v \\ \left( a_{2} + \frac{\alpha}{r} \right) v &= \left( \frac{- 1 + K}{r} - \frac{\partial}{\partial r} \right) u \end{aligned} \tag{84}
 $$
 
 Next put $a = \sqrt{a_{1} a_{2}} = \sqrt{m^{2} c^{4} - E^{2}} / \hbar c$ which is the magnitude of the imaginary <a id="ix-201">momentum</a> of a free electron of energy $E$. Then $\psi \sim e^{- ar}$ at infinity. Hence we write
+
+<a id="eq-85"></a>
 
 $$
 \begin{aligned} u &= \frac{e^{- ar}}{r} f \\ v &= \frac{e^{- ar}}{r} g \end{aligned} \tag{85}
@@ -808,17 +964,23 @@ $$
 
 So
 
+<a id="eq-86"></a>
+
 $$
 \begin{aligned} \left( \frac{\alpha}{r} - a_{1} \right) f &= \left( \frac{\partial}{\partial r} - a + \frac{k}{r} \right) g \\ \left( \frac{\alpha}{r} + a_{2} \right) g &= \left( - \frac{\partial}{\partial r} + a + \frac{k}{r} \right) f \end{aligned} \tag{86}
 $$
 
 Now we try solutions in series
 
+<a id="eq-87"></a>
+
 $$
 f = \sum c_{s} r^{s} , \quad g = \sum d_{s} r^{s} \tag{87}
 $$
 
 This gives
+
+<a id="eq-88"></a>
 
 $$
 \begin{aligned} \alpha c_{s} - a_{1} c_{s - 1} &= - ad_{s - 1} + ( s + k ) d_{s} \\ \alpha d_{s} + a_{2} d_{s - 1} &= + ac_{s - 1} + ( - s + k ) c_{s} \end{aligned} \tag{88}
@@ -848,11 +1010,15 @@ $$
 
 This is permissible when $a$ is imaginary. Thus there is a continuum of states with
 
+<a id="eq-89"></a>
+
 $$
 E>mc^{2} \tag{89}
 $$
 
 For real $a$ the series must terminate at both ends in order not to blow up at infinity. Suppose then<sup><a id="fnref-8" href="#fn-8">8</a></sup> $e_{s}$ is non-zero for
+
+<a id="eq-90"></a>
 
 $$
 s = \epsilon + 1 ,\epsilon + 2 ,\dots \epsilon + n \quad n \geq 1 \tag{90}
@@ -870,6 +1036,8 @@ $$
 
 $c_{\epsilon}$ and $d_{\epsilon}$ are zero, thus the wave function $r^{- 1 + \epsilon}$ must be integrable at zero. This gives $\epsilon >$Now not both$- \tfrac{1}{2}$. But $\epsilon = \pm \sqrt{k^{2} - \alpha^{2}}$. Now $k^{2} \geq$ 1, hence $\sqrt{k^{2} - \alpha^{2}} > \tfrac{1}{2}$, and
 
+<a id="eq-91"></a>
+
 $$
 \epsilon = + \sqrt{k^{2} - \alpha^{2}} \tag{91}
 $$
@@ -886,11 +1054,15 @@ $$
 
 Hence in this case
 
+<a id="eq-92"></a>
+
 $$
 E = \frac{mc^{2}}{\sqrt{1 + \frac{\alpha^{2}}{\left( n + \sqrt{k^{2} - \alpha^{2}} \right)^{2}}}} \tag{92}
 $$
 
 Given this positive $E , \left( a_{1}^{2} - a^{2} \right)$ is negative (see (83) and (84)) and so it is allowable to square $( \epsilon + n )$ to find these solutions, without introducing any difficulties. So for each
+
+<a id="eq-93"></a>
 
 $$
 \begin{aligned} k &= \pm 1 , \pm 2 , \pm 3 ,\dots \\ n &= 1 , 2 , 3 ,\dots \end{aligned} \tag{93}
@@ -910,6 +1082,8 @@ $$
 
 Hence $a\alpha - a_{1} ( \epsilon + k )$ = 0 and $k$ must be positive to make $\epsilon + k = \sqrt{k^{2} - \alpha^{2}} + k>$ 0. After this the solution goes as before. So solutions (92) exist for
 
+<a id="eq-94"></a>
+
 $$
 n = 0 , \quad k = + 1 , + 2 , + 3 ,\dots \tag{94}
 $$
@@ -923,6 +1097,8 @@ N = n + | k |
 $$
 
 Expanding in powers of $\alpha$
+
+<a id="eq-95"></a>
 
 $$
 E = mc^{2} \left[ 1 - \underbrace{\frac{1}{2} \frac{\alpha^{2}}{N^{2}}}_{\text{ NR levels }} + \underbrace{\frac{\alpha^{4}}{N^{3}} \left( \frac{3}{8 N} - \frac{1}{2 | k |} \right)}_{\text{ fine structure }} \right] \tag{95}
@@ -952,11 +1128,15 @@ $$
 
 Multiplying the Dirac <a id="ix-53">equation</a> (64) by $\sum \gamma_{\nu} \left( \frac{\partial}{\partial x_{\nu}} + i \frac{e}{\hbar c} A_{\nu} \right) - \frac{mc}{\hbar}$ we have
 
+<a id="eq-96"></a>
+
 $$
 \sum_{\mu} \sum_{\nu} \gamma_{\mu} \gamma_{\nu} \left( \frac{\partial}{\partial x_{\mu}} + i \frac{e}{\hbar c} A_{\mu} \right)^{\nu} \left( \frac{\partial}{\partial x_{\nu}} + i \frac{e}{\hbar c} A_{\nu} \right) \psi - \frac{m^{2} c^{2}}{\hbar^{2}} \psi = 0 \tag{96}
 $$
 
 Using $\gamma_{\mu}^{2}$ = 1$,\gamma_{\mu} \gamma_{\nu} + \gamma_{\nu} \gamma_{\mu}$ = 0 this gives
+
+<a id="eq-97"></a>
 
 $$
 \sum_{\mu} \left\{ \left( \frac{\partial}{\partial x_{\mu}} + \frac{ie}{\hbar c} A_{\mu} \right)^{2} \right\} \psi - \frac{m^{2} c^{2}}{\hbar^{2}} \psi + \frac{ie}{2 \hbar c} \sum_{\mu} \sum_{\nu} \sigma_{\mu \nu} F_{\mu \nu} \psi = 0 \tag{97}
@@ -983,6 +1163,8 @@ $$
 $$
 
 Thus (97) becomes
+
+<a id="eq-98"></a>
 
 $$
 \sum_{\mu} \left\{ \left( \frac{\partial}{\partial x_{\mu}} + \frac{ie}{\hbar c} A_{\mu} \right)^{2} \right\} \psi - \frac{m^{2} c^{2}}{\hbar^{2}} \psi - \frac{e}{\hbar c} \{ \boldsymbol{\sigma} \boldsymbol{\cdot} \boldsymbol{H} - i \boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{E} \} \psi = 0 \tag{98}
@@ -1018,11 +1200,15 @@ $$
 
 The NR approximation means dropping the terms $O \left( 1 /mc^{2} \right)$. Thus the NR Schrödinger <a id="ix-229">equation</a> is
 
+<a id="eq-99"></a>
+
 $$
 i \hbar \frac{\partial \psi}{\partial t} = \left\{ mc^{2} - e \Phi - \frac{h^{2}}{2 m} \sum_{k = 1}^{3} \left( \frac{\partial}{\partial x_{k}} + \frac{ie}{\hbar c} A_{k} \right)^{2} + \frac{e \hbar}{2 mc} ( \boldsymbol{\sigma} \boldsymbol{\cdot} \boldsymbol{H} - i \boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{E} ) \right\} \psi \tag{99}
 $$
 
 The term $\boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{E}$ is really relativistic, and should be dropped or treated more exactly. Then we have exactly the equation of motion of a NR particle with a spin <a id="ix-102">magnetic moment</a> equal to
+
+<a id="eq-100"></a>
 
 $$
 M = - \frac{e \hbar}{2 mc} \sigma \tag{100}
@@ -1031,6 +1217,8 @@ $$
 This is one of the greatest triumphs of Dirac, that he got this magnetic moment right out of his general assumptions without any arbitrariness.
 
 It is confirmed by measurements to about one part in 1000. Note that the most recent experiments show a definite discrepancy, and agree with the value
+
+<a id="eq-101"></a>
 
 $$
 M = - \frac{e \hbar}{2 mc} \sigma \left\{ 1 + \frac{e^{2}}{2 \pi \hbar c} \right\} \tag{101}

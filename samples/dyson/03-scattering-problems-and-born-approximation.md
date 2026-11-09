@@ -10,6 +10,8 @@ For most purposes in relativistic problems, and always when the scattering is pr
 
 The formula for scattering from an initial state $A$ to a final state $B$ lying in a continuum of <a id="ix-108">states</a> is, <a id="ix-205">transition</a> probability per unit time,
 
+<a id="eq-102"></a>
+
 $$
 w = \frac{2 \pi}{\hbar} \rho_{E} | V_{BA} |^{2} \tag{102}
 $$
@@ -17,6 +19,8 @@ $$
 This you ought to know. $\rho_{E}$ = density of final states per unit energy interval. $V_{BA}$ is the matrix element of the potential $V$ for the transition. Here $V$ may be anything, and may be itself a second-order or higher order effect obtained by using higher-order perturbation theory.
 
 The difficulties in real calculations usually come from the factors 2 and $\pi$ and the correct _normalization_ _of states_. Always I shall normalize the continuum states not in the usual way (one particle per unit volume) which is non-invariant, but instead
+
+<a id="eq-103"></a>
 
 $$
 \text{ One particle per volume } \frac{mc^{2}}{| E |} \tag{103}
@@ -26,11 +30,15 @@ where $| E |$ is the energy of the particles. Then under a <a id="ix-166">Lorent
 
 Thus a continuum state given by the spinor $\psi = u$exp$\{ ( i \boldsymbol{p} \boldsymbol{\cdot} \boldsymbol{x} - iEt ) / \hbar \}$ is normalized so that
 
+<a id="eq-104"></a>
+
 $$
 u^{*} u = \frac{| E |}{mc^{2}} \tag{104}
 $$
 
 Now if we multiply the Dirac equation for a free particle, (44), by $\overline{u}$ on the left, we get $Eu^{*} \beta u = cu^{*} \beta \boldsymbol{\alpha} \boldsymbol{\cdot}$ $\boldsymbol{p} u + mc^{2} u^{*} u$; its complex conjugate is $Eu^{*} \beta u = - cu^{*} \beta \boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{p} u + mc^{2} u^{*} u$ since $\beta \boldsymbol{\alpha}$ is anti-<a id="ix-116">Hermitian</a>; then by adding we get
+
+<a id="eq-105"></a>
 
 $$
 E \overline{u} u = mc^{2} u^{*} u \tag{105}
@@ -38,17 +46,23 @@ $$
 
 Therefore the normalization becomes
 
+<a id="eq-106"></a>
+
 $$
 \left. \begin{aligned} \overline{u} u &= + 1 \text{ for electron states } \\ &= - 1 \text{ for positron states } \end{aligned} \right\} = \epsilon ; \quad \text{ This is the definition of } \epsilon . \tag{106}
 $$
 
 With this normalization the density of states in momentum <a id="ix-132">space</a> is one per volume $h^{3}$ of phase space, that is to say
 
+<a id="eq-107"></a>
+
 $$
 \rho = \frac{1}{h^{3}} \frac{mc^{2}}{| E |} dp_{1} dp_{2} dp_{3} \tag{107}
 $$
 
 per volume $dp_{1} dp_{2} dp_{3}$ of momentum space, for _each_ direction of spin and each sign of charge. Now we have again an invariant differential
+
+<a id="eq-108"></a>
 
 $$
 \frac{dp_{1} dp_{2} dp_{3}}{| E |} \tag{108}
@@ -60,6 +74,8 @@ $$
 
 Usually we are not interested in the spin either of an intermediate or of an initial or final state. Therefore we have to make sums over spin <a id="ix-162">states</a> which are of the form
 
+<a id="eq-109"></a>
+
 $$
 S = \sum_{2} ( \overline{s} Ou ) ( \overline{u} Pr ) \tag{109}
 $$
@@ -68,11 +84,15 @@ where $O$ and $P$ are some kind of operators, $s$ and $r$ some kind of spin stat
 
 Let us write
 
+<a id="eq-110"></a>
+
 $$
 p / = \sum_{\mu} p_{\mu} \gamma_{\mu} , \quad p_{4} = iE/c \tag{110}
 $$
 
 The Dirac <a id="ix-55">equation</a> satisfied by $u$ is
+
+<a id="eq-111"></a>
 
 $$
 \left( p / - imc \right) u = 0 \tag{111}
@@ -80,11 +100,15 @@ $$
 
 The two spin states with momentum 4-vector $- p$ satisfy
 
+<a id="eq-112"></a>
+
 $$
 \left( p / + imc \right) u = 0 \tag{112}
 $$
 
 As one can easily show from (48), these 4 states are all orthogonal in the sense that $( \overline{u}^{\prime} u )$ = 0 for each pair $u^{\prime} u$. Therefore the identity operator may be written in the form
+
+<a id="eq-113"></a>
 
 $$
 \mathbb{I} = \sum_{4} ( u \overline{u} ) \epsilon \tag{113}
@@ -92,11 +116,15 @@ $$
 
 summed over all 4 states with $\epsilon$ defined as earlier. Hence by (111) and (112) we can write (109) as
 
+<a id="eq-114"></a>
+
 $$
 S = \sum_{4} \left( \overline{s} O \frac{p / + imc}{2 imc} \epsilon u \right) ( \overline{u} Pr ) = ( \overline{s} O \Lambda_{+} Pr ) \tag{114}
 $$
 
 by virtue of (113); here the operator
+
+<a id="eq-115"></a>
 
 $$
 \Lambda_{+} = \frac{p / + imc}{2 imc} \tag{115}
@@ -106,17 +134,23 @@ is a <a id="ix-212">projection operator</a> for _electrons_ of momentum $p$.
 
 In the same way for a sum over the two positron states $u$ with momentum $p$ energy $E$
 
+<a id="eq-116"></a>
+
 $$
 S = \sum_{2} ( \overline{s} Ou ) ( \overline{u} Pr ) = ( \overline{s} O \Lambda_{-} Pr ) \tag{116}
 $$
 
 with
 
+<a id="eq-117"></a>
+
 $$
 \Lambda_{-} = \frac{p / - imc}{2 imc} \tag{117}
 $$
 
 and we have
+
+<a id="eq-118"></a>
 
 $$
 \Lambda_{+} - \Lambda_{-} = \mathbb{I} \tag{118}
@@ -188,6 +222,8 @@ _Problem 4:_ A nucleus (O<sup>16</sup>) has an even<sup><a id="fnref-11" href="#
 
 _Solution:_ Let ∆$E$ be the excitation energy, $\rho_{N}$ and $\boldsymbol{j}_{N}$ the charge and current density operators of the nucleus. Then for the transition we are interested in $\rho_{N}$ and $\boldsymbol{j}_{N}$ are functions of position $r$ with the time-variation of the single matrix element given by exp$\{- i$∆$E/ \hbar \}$. Also
 
+<a id="eq-119"></a>
+
 $$
 \nabla \boldsymbol{\cdot} \boldsymbol{j}_{N} = - \frac{\partial \rho_{H}}{\partial t} = i \frac{\Delta E}{\hbar} \rho_{N} \tag{119}
 $$
@@ -196,17 +232,23 @@ $$
 
 The electrostatic potential $V$ of the nucleus has the matrix element given by
 
+<a id="eq-120"></a>
+
 $$
 \nabla^{2} V = - 4 \pi \rho_{N} \tag{120}
 $$
 
 The states being spherically symmetric, $\rho_{N}$ is a function of $r$ only, and so the general solution of <a id="ix-150">Poisson’s equation</a> simplifies to<sup><a id="fnref-12" href="#fn-12">12</a></sup>
 
+<a id="eq-121"></a>
+
 $$
 V ( r ) = - \frac{6 \pi}{r} \int_{0}^{r} r_{1}^{2} \rho_{N} ( r_{1} ) dr_{1} \tag{121}
 $$
 
 Outside the nucleus $V ( r ) = Ze^{2} /r$ is constant in time, and so the matrix element of $V ( r )$ for this transition is zero. In fact from (119) and (120) we get by integration
+
+<a id="eq-122"></a>
 
 $$
 V ( r ) = \frac{\hbar}{i \Delta E} ( - 4 \pi ) ( - r ) j_{No} ( r ) = \frac{4 \pi r \hbar}{i \Delta E} j_{No} ( r ) \tag{122}
@@ -216,17 +258,23 @@ where $j_{No}$ is the outward component of the current.
 
 The interaction which creates pairs is then
 
+<a id="eq-123"></a>
+
 $$
 I = \int \frac{4 \pi r \hbar}{i \Delta E} j_{No} ( r ) ( - e\psi^{*} \psi ( r ) ) d\tau \tag{123}
 $$
 
 As an approximation consider the <a id="ix-44">de Broglie wavelengths</a> of all pairs long compared with the nuclear size. Then
 
+<a id="eq-124"></a>
+
 $$
 I = \psi^{*} \psi ( 0 ) \frac{4 \pi \hbar ei}{\Delta E} \int rj_{No} ( r ) d\tau \tag{124}
 $$
 
 The constant $\int rj_{No} ( r ) d\tau$ is not known exactly. Suppose as an order of magnitude estimate that the nucleus of charge $Ze$ is uniformly spread over a sphere of radius $r_{o}$ in the ground state, and also in the excited state. Since $\rho_{N}$ is roughly uniform inside the nucleus we have by integrating (119):
+
+<a id="eq-125"></a>
 
 $$
 \begin{aligned} j_{N} &= \frac{i \Delta E}{3 \hbar} \overline{r} \rho_{N} , \quad \text{ and thus } \\ I &= \psi^{*} \psi ( 0 ) \left( \frac{- 4 \pi e}{3} \right) \int r^{2} \rho_{N} ( r ) d\tau = \psi^{*} \psi ( 0 ) \left( \frac{- 4 \pi e}{3} \right) Qe^{- i \Delta Et/ \hbar} \end{aligned} \tag{125}
@@ -240,11 +288,15 @@ $$
 
 Thus
 
+<a id="eq-126"></a>
+
 $$
 I = - \frac{4 \pi Ze^{2} r_{o}^{2}}{5} \{ \psi^{*} \psi ( 0 ) \} e^{- i \Delta Et/ \hbar} \tag{126}
 $$
 
 So the problem is just to compute the probabilities of <a id="ix-16">pair</a>-emission with this interaction. Note that real radiation is strictly forbidden in a 0–0 transition, and so these pairs are actually observed in the reaction
+
+<a id="eq-127"></a>
 
 $$
 p + F_{1 9} \to O_{1 6}^{*} + \alpha \to O_{1 6} + e^{+} + e^{-} + \alpha \tag{127}
@@ -257,6 +309,8 @@ $$
 $$
 
 taking the <a id="ix-0">Coulomb potential</a> of the nuclear charge and ignoring all electrodynamic effects? Yes. Because in general the interaction would be
+
+<a id="eq-128"></a>
 
 $$
 \int \left\{ \phi ( - e\psi^{*} \psi ) - \sum_{k} A_{k} ( - e\psi^{*} \alpha_{k} \psi ) \right\} d\tau \tag{128}
@@ -290,17 +344,23 @@ Now, since there is no free radiation present, also $\nabla \times \boldsymbol{A
 
 Let us calculate then the probability of <a id="ix-17">pair</a> emission with the interaction (126). A typical final state has an electron of momentum $p_{1}$ and a <a id="ix-153">positron</a> of momentum $p_{2}$, with energies $E_{1} , E_{2}$ and spins $u_{1} , u_{2}$ respectively. For the <a id="ix-9">creation</a> of this pair the matrix element of $I$ is
 
+<a id="eq-128a"></a>
+
 $$
 I = - C \overline{u}_{1} \beta u_{2} , \quad C = \frac{4 \pi Ze^{2} r_{o}^{2}}{5} \tag{128a}
 $$
 
 The density of final states is by (107)
 
+<a id="eq-129"></a>
+
 $$
 \frac{1}{( 2 \pi \hbar )^{6}} \frac{m^{2} c^{4}}{E_{1} E_{2}} p_{1}^{2} dp_{1} d\omega_{1} p_{2}^{2} dp_{2} d\omega_{2} \tag{129}
 $$
 
 where $d\omega_{1}$ and $d\omega_{2}$ are the <a id="ix-25">solid</a> angles for $p_{1}$ and $p_{2}$. The creation probability per unit time is thus by (102)
+
+<a id="eq-130"></a>
 
 $$
 w = \frac{2 \pi}{\hbar} \frac{\rho_{E}}{dE} | I |^{2} = \frac{2 \pi}{\hbar} \frac{dp_{1} dp_{2}}{d ( E_{1} + E_{2} )} C^{2} \frac{1}{( 2 \pi \hbar )^{6}} \frac{m^{2} c^{4} p_{1}^{2} p_{2}^{2} d\omega_{1} d\omega_{2}}{E_{1} E_{2}} \sum_{u_{1} ,u_{2}} | u_{1} \beta u_{2} |^{2} \tag{130}
@@ -330,6 +390,8 @@ $$
 
 we obtain the <a id="ix-187">differential</a> probability<sup><a id="fnref-13" href="#fn-13">13</a></sup> in $E_{1}$ and $\theta$
 
+<a id="eq-131"></a>
+
 $$
 w_{o} = \frac{4 Z^{2} e^{4} r_{o}^{4}}{2 5 \pi c^{4} \hbar^{7}} p_{1} p_{2} dE_{1} \left( E_{1} E_{2} - m^{2} c^{4} + c^{2} p_{1} p_{2} \cos \theta \right) \sin \theta d\theta \tag{131}
 $$
@@ -344,6 +406,8 @@ $$
 
 we can to a good approximation treat all particles as extreme relativistic. Thus
 
+<a id="eq-132"></a>
+
 $$
 w_{o} = \frac{4 Z^{2} e^{4} r_{o}^{4}}{2 5 \pi c^{6} \hbar^{7}} E_{1}^{2} E_{2}^{2} dE_{1} ( 1 + \cos \theta ) \sin \theta d\theta \tag{132}
 $$
@@ -355,6 +419,8 @@ $$
 $$
 
 the total <a id="ix-10">creation</a> <a id="ix-168">probability</a> per unit time is
+
+<a id="eq-133"></a>
 
 $$
 w_{T} = \frac{4 Z^{2} e^{4} r_{o}^{4}}{2 5 \pi \hbar^{7} c^{6}} \frac{1}{1 5} ( \Delta E )^{5} \tag{133}
@@ -368,6 +434,8 @@ $$
 
 Hence the lifetime will be
 
+<a id="eq-134"></a>
+
 $$
 \tau = 1 5 \times 2 5 \pi \times 1 0^{5} \times 1 7^{2} \times \frac{1}{4} \times \frac{r_{o}}{c} = 1 0^{1 0} \frac{r_{o}}{c} \approx 1 0^{- 1 3} \sec . \tag{134}
 $$
@@ -380,15 +448,21 @@ We treat the interaction in Born approximation i.e. consider the particles to go
 
 For the field produced by particle 1 in a transition from the state $p_{1} ,u_{1}$ to $p_{1}^{\prime} ,u_{1}^{\prime}$ we have the matrix elements $\phi_{( 1 )} , \boldsymbol{A}_{( 1 )}$ say. We use now not the gauge in which $\nabla \boldsymbol{\cdot} \boldsymbol{A}$ = 0, but the covariant gauge in which<sup><a id="fnref-14" href="#fn-14">14</a></sup>
 
+<a id="eq-135"></a>
+
 $$
 \sum_{\mu} \frac{\partial A_{\mu}}{\partial x_{\mu}} = 0 \quad A_{4} = i\phi \tag{135}
 $$
 
 So using covariant notations we have in this gauge
 
+<a id="eq-136"></a>
+
 $$
 \sum_{\nu} \frac{\partial^{2}}{\partial x_{\nu}^{2}} A_{\mu ( 1 )} = + 4 \pi es_{\mu ( 1 )} \quad ( \text{ charge is } - e ) \tag{136}
 $$
+
+<a id="eq-137"></a>
 
 $$
 s_{\mu ( 1 )} = i ( \overline{u}_{1}^{\prime} \gamma_{\mu} u_{1} ) \exp \left\{ \sum_{\nu} \frac{i}{\hbar} ( p_{1 \nu} - p_{1 \nu}^{\prime} ) x_{\nu} \right\} \tag{137}
@@ -398,11 +472,15 @@ $$
 
 whence
 
+<a id="eq-138"></a>
+
 $$
 A_{\mu ( 1 )} = - 4 \pi ie \hbar^{2} \left[ \frac{( \overline{u}_{1}^{\prime} \gamma_{\mu} u_{1} ) \exp \left\{ \sum_{\nu} \frac{i}{\hbar} ( p_{1 \nu} - p_{1 \nu}^{\prime} ) x_{\nu} \right\}}{\sum_{\lambda} ( p_{1 \lambda} - p_{1 \lambda}^{\prime} )^{2}} \right] \tag{138}
 $$
 
 where
+
+<a id="eq-139"></a>
 
 $$
 \sum_{\nu} ( p_{1 \nu} - p_{1 \nu}^{\prime} )^{2} = | \boldsymbol{p}_{1} - \boldsymbol{p}_{1}^{\prime} |^{2} - \frac{1}{c^{2}} ( E_{1} - E_{1}^{\prime} )^{2} \tag{139}
@@ -410,11 +488,15 @@ $$
 
 The effect of the field (138) on particle 2 is given by the interaction term in the Dirac <a id="ix-56">equation</a> for particle 2
 
+<a id="eq-140"></a>
+
 $$
 - e\phi + e \boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{A} = ie\beta \sum_{\mu} \gamma_{\mu} A_{\mu} \tag{140}
 $$
 
 This gives for particle 2 for the transition from state $p_{2} ,u_{2}$ to $p_{2}^{\prime} ,u_{2}^{\prime}$ a transition matrix element
+
+<a id="eq-141"></a>
 
 $$
 \int d\tau \psi_{2}^{\prime *} \left( ie\beta \sum_{\mu} \gamma_{\mu} A_{\mu ( 1 )} \right) \psi_{2} \tag{141}
@@ -422,11 +504,15 @@ $$
 
 a 3-dimensional integral over space at the time $t$ say. For the total transition matrix element $M$ by first order perturbation method
 
+<a id="eq-142"></a>
+
 $$
 M = - \frac{i}{\hbar} \int_{-\infty}^{\infty} dt \int d\tau \overline{\psi}_{2}^{\prime} \left( ie \sum_{\mu} \gamma_{\mu} A_{\mu ( 1 )} \right) \psi_{2} = - \frac{i}{\hbar c} \int d^{4} x \overline{\psi}_{2}^{\prime} \left( ie \sum_{\mu} \gamma_{\mu} A_{\mu ( 1 )} \right) \psi_{2} \tag{142}
 $$
 
 where the 4-fold integral is $dx_{1} dx_{2} dx_{3} dx_{0} ,x_{0} = ct$. Putting in the values of $A_{\mu ( 1 )} ,\psi_{2}^{\prime}$ and $\psi_{2}$, we get
+
+<a id="eq-143"></a>
 
 $$
 \begin{aligned} M &= - \frac{4 \pi e^{2} \hbar i}{c} \sum_{\mu} ( \overline{u}_{2}^{\prime} \gamma_{\mu} u_{2} ) ( \overline{u}_{1}^{\prime} \gamma_{\mu} u_{1} ) \frac{1}{\sum_{\nu} ( p_{1 \nu} - p_{1 \nu}^{\prime} )^{2}} \int d^{4} x \exp \left\{ \sum_{\lambda} \frac{i}{\hbar} ( p_{1 \lambda} - p_{1 \lambda}^{\prime} + p_{2 \lambda} - p_{2 \lambda}^{\prime} ) x_{\lambda} \right\} \\ &= - \frac{4 \pi e^{2} \hbar i}{c} \sum_{\mu ,\nu} \frac{( \overline{u}_{2}^{\prime} \gamma_{\mu} u_{2} ) ( \overline{u}_{1}^{\prime} \gamma_{\mu} u_{1} )}{( p_{1 \nu} - p_{1 \nu}^{\prime} )^{2}} ( 2 \pi \hbar )^{4} \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) \end{aligned} \tag{143}
@@ -436,6 +522,8 @@ where $\delta^{4} ( x ) = \prod_{k = 1}^{4} \delta ( x_{k} )$.
 
 There is also the exchange process in which the particle $p_{1} ,u_{1}$ goes to $p_{2}^{\prime} ,u_{2}^{\prime}$ and _vice-versa_. This gives a contribution to $M$ with a minus sign since the wave function ought to be taken antisymmetric between the two particles. Hence the final result is
 
+<a id="eq-144"></a>
+
 $$
 M = - \frac{4 \pi e^{2} \hbar i}{c} ( 2 \pi \hbar )^{4} \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) \sum_{\mu ,\nu} \left\{ \frac{( \overline{u}_{2}^{\prime} \gamma_{\mu} u_{2} ) ( \overline{u}_{1}^{\prime} \gamma_{\mu} u_{1} )}{( p_{1 \nu} - p_{1 \nu}^{\prime} )^{2}} - \frac{( \overline{u}_{2}^{\prime} \gamma_{\mu} u_{1} ) ( \overline{u}_{1}^{\prime} \gamma_{\mu} u_{2} )}{( p_{1 \nu} - p_{2 \nu}^{\prime} )^{2}} \right\} \tag{144}
 $$
@@ -443,6 +531,8 @@ $$
 This covariant formula is elegant and easy to arrive at. The question now is, how does one go from such a formula to a cross-section?
 
 Generally, suppose in such a 2-particle collision process the transition matrix is
+
+<a id="eq-145"></a>
 
 $$
 M = K ( 2 \pi \hbar )^{4} \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) \tag{145}
@@ -456,17 +546,23 @@ Then what will be the cross-section in terms of $K$? We do this calculation once
 
 Let $w$ be the transition probability per unit volume and per unit time. This is related to the transition probability for a single final state, which is
 
+<a id="eq-146"></a>
+
 $$
 w_{s} = c | K |^{2} ( 2 \pi \hbar )^{4} \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) \tag{146}
 $$
 
 since in $| M |^{2}$ one of the two (2$\pi \hbar )$<sup>4</sup>$\delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) /c$ factors represents merely the volume of space-time in which the interaction can occur. The number of final states is by (107)
 
+<a id="eq-147"></a>
+
 $$
 \frac{1}{( 2 \pi \hbar )^{6}} \frac{mc^{2}}{| E_{1}^{\prime} |} \frac{mc^{2}}{| E_{2}^{\prime} |} dp_{1 1}^{\prime} dp_{1 2}^{\prime} dp_{1 3}^{\prime} dp_{2 1}^{\prime} dp_{2 2}^{\prime} dp_{2 3}^{\prime} \tag{147}
 $$
 
 Multiplying (146) by (147) gives the total transition probability
+
+<a id="eq-148"></a>
 
 $$
 w = | K |^{2} \frac{1}{( 2 \pi \hbar )^{2}} \frac{m^{2} c^{4}}{E_{1}^{\prime} E_{2}^{\prime}} c\delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) dp_{1 1}^{\prime} dp_{1 2}^{\prime} dp_{1 3}^{\prime} dp_{2 1}^{\prime} dp_{2 2}^{\prime} dp_{2 3}^{\prime} \tag{148}
@@ -479,6 +575,8 @@ $$
 $$
 
 and the integration over $dp_{2}$ gives then by the momentum <a id="ix-203">conservation</a>
+
+<a id="eq-148a"></a>
 
 $$
 w = | K |^{2} \frac{c^{2}}{( 2 \pi \hbar )^{2}} \frac{m^{2} c^{4}}{E_{1}^{\prime} E_{2}^{\prime}} \delta ( E_{1} + E_{2} - E_{1}^{\prime} - E_{2}^{\prime} ) dp_{1 1}^{\prime} dp_{1 2}^{\prime} dp_{1 3}^{\prime} \tag{148a}
@@ -510,11 +608,15 @@ $$
 
 Choose a Lorentz-<a id="ix-159">system</a> in which $p_{1}$ and $p_{2}$ are both along the $x_{3}$-direction and take $p_{1 1}^{\prime}$ and $p_{1 2}^{\prime}$ as the variables over which the transition probability is taken. This is necessary for relativistic invariance. Then $p_{1 1}^{\prime}$ and $p_{1 2}^{\prime}$ being fixed and having from the momentum conservation $p_{1 3}^{\prime} = - p_{2 3}^{\prime}$ we get
 
+<a id="eq-149"></a>
+
 $$
 \frac{d ( E_{1}^{\prime} + E_{1}^{\prime} )}{dp_{1 3}^{\prime}} = \left| \frac{dE_{1}^{\prime}}{dp_{1 3}^{\prime}} - \frac{dE_{2}^{\prime}}{dp_{2 3}^{\prime}} \right| = c^{2} \frac{| E_{2}^{\prime} p_{1 3}^{\prime} - E_{1}^{\prime} p_{2 3}^{\prime} |}{E_{1}^{\prime} E_{2}^{\prime}} \tag{149}
 $$
 
 Then the cross-section $\sigma$ is defined in this system by
+
+<a id="eq-150"></a>
 
 $$
 \sigma = \frac{wV_{1} V_{2}}{| \boldsymbol{v}_{1} - \boldsymbol{v}_{2} |} \tag{150}
@@ -524,11 +626,15 @@ $$
 
 where $V_{1}$ is the normalization volume for particle 1, and $v_{1}$ its velocity. In fact by (103)
 
+<a id="eq-151"></a>
+
 $$
 V_{1} = \frac{mc^{2}}{E_{1}} \quad V_{2} = \frac{mc^{2}}{E_{2}} \quad ( \boldsymbol{v}_{1} - \boldsymbol{v}_{2} ) = \frac{c^{2} \boldsymbol{p}_{1}}{E_{1}} - \frac{c^{2} \boldsymbol{p}_{2}}{E_{2}} \tag{151}
 $$
 
 Hence the cross-section becomes
+
+<a id="eq-152"></a>
 
 $$
 \sigma = \frac{w \left( mc^{2} \right)^{2}}{c^{2} | \boldsymbol{p}_{1} E_{2} - \boldsymbol{p}_{2} E_{1} |} = | K |^{2} \frac{\left( mc^{2} \right)^{4}}{c^{2} | E_{2} p_{1 3} - E_{1} p_{2 3} || E_{2}^{\prime} p_{1 3}^{\prime} - E_{1}^{\prime} p_{2 3}^{\prime} |} \frac{1}{( 2 \pi \hbar )^{2}} dp_{1 1}^{\prime} dp_{1 2}^{\prime} \tag{152}
@@ -578,6 +684,8 @@ $= \theta^{*}$ in the center-of-mass system
 
 Then the <a id="ix-29">differential</a> cross-section is (<a id="ix-135">Mott</a> and <a id="ix-170">Massey</a>, _Theory of Atomic Collisions_, 2<sup>nd</sup> ed., p. 368)
 
+<a id="eq-153"></a>
+
 $$
 2 \pi \sigma ( \theta ) d\theta = 4 \pi \left( \frac{e^{2}}{mv^{2}} \right)^{2} \left( \frac{\gamma + 1}{\gamma^{2}} \right) dx \left\{ \frac{4}{( 1 - x^{2} )^{2}} - \frac{3}{1 - x^{2}} + \left( \frac{\gamma - 1}{2 \gamma} \right)^{2} \left( 1 + \frac{4}{1 - x^{2}} \right) \right\} \tag{153}
 $$
@@ -601,6 +709,8 @@ Effect of spin is a measurable _increase_ of scattering over the Mott formula. E
 ## <a id="s-note-on-the-treatment-of-exchange-effects"></a>Note on the Treatment of Exchange Effects
 
 The correctly normalized initial and final states in this problem are
+
+<a id="eq-154"></a>
 
 $$
 \frac{1}{\sqrt{2}} \frac{1}{\sqrt{2}} \{ \psi_{1} ( 1 ) \psi_{2} ( 2 ) - \psi_{1} ( 2 ) \psi_{2} ( 1 ) \} \{ \psi_{1}^{\prime} ( 1 ) \psi_{2}^{\prime} ( 2 ) - \psi_{1}^{\prime} ( 2 ) \psi_{2}^{\prime} ( 1 ) \} \tag{154}

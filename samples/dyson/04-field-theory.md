@@ -8,17 +8,23 @@ Before we can begin on the program of constructing our quantum theory of fields,
 
 We take a field with components (vector, spinor etc.) labeled by a suffix $\alpha$. Let
 
+<a id="eq-155"></a>
+
 $$
 \varphi_{\mu}^{\alpha} = \frac{\partial \varphi^{\alpha}}{\partial x_{\mu}} \tag{155}
 $$
 
 The theory is fully described by an invariant function of position called the <a id="ix-137">Lagrangian Density</a>,
 
+<a id="eq-156"></a>
+
 $$
 L = L \left( \varphi^{\alpha} ( x ) ,\varphi_{\mu}^{\alpha} ( x ) \right) , \tag{156}
 $$
 
 a function of $\varphi^{\alpha}$ and its _first_ derivatives at the point $x$. The behaviour of the field is fixed by the <a id="ix-1"><em>Action</em></a> _Principle_. If Ω is any finite or infinite region of space-time, then
+
+<a id="eq-157"></a>
 
 $$
 I ( \Omega ) = \frac{1}{c} \int_{\Omega} L d^{4} x \tag{157}
@@ -30,17 +36,23 @@ It is always assumed that $L$ is at most quadratic in the $\varphi_{\mu}^{\alpha
 
 Let Σ be the boundary of Ω, and $d\sigma$ an element of 3–dimensional volume on Σ, $n_{\mu}$ the outward unit vector normal to $d\sigma$, and
 
+<a id="eq-158"></a>
+
 $$
 \begin{aligned} d\sigma_{\mu} &= n_{\mu} d\sigma , \sum_{\mu} n_{\mu}^{2} = - 1 \quad \mu = 1 , 2 , 3 , 4 \quad x_{0} = ct \\ d\sigma_{\mu} &= ( dx_{2} dx_{3} dx_{0} ,dx_{1} dx_{3} dx_{0} ,dx_{1} dx_{2} dx_{0} , - idx_{1} dx_{2} dx_{3} ) \end{aligned} \tag{158}
 $$
 
 Then
 
+<a id="eq-159"></a>
+
 $$
 \begin{aligned} c\delta I ( \Omega ) &= \int_{\Omega} \sum_{\alpha} \left( \frac{\partial L}{\partial \varphi^{\alpha}} \delta \varphi^{\alpha} + \sum_{\mu} \frac{\partial L}{\partial \varphi_{\mu}^{\alpha}} \delta \varphi_{\mu}^{\alpha} \right) d^{4} x \\ &= \int_{\Omega} \sum_{\alpha} \left\{ \frac{\partial L}{\partial \varphi^{\alpha}} - \sum_{\mu} \frac{\partial}{\partial x_{\mu}} \left( \frac{\partial L}{\partial \varphi_{\mu}^{\alpha}} \right) \right\} \delta \varphi^{\alpha} d^{4} x + \int_{\Sigma \alpha ,\mu} \sum n_{\mu} \frac{\partial L}{\partial \varphi_{\mu}^{\alpha}} \delta \varphi^{\alpha} d\sigma \end{aligned} \tag{159}
 $$
 
 So the principle of action gives the field equations
+
+<a id="eq-160"></a>
 
 $$
 \frac{\partial L}{\partial \varphi^{\alpha}} - \sum_{\mu} \frac{\partial}{\partial x_{\mu}} \left( \frac{\partial L}{\partial \varphi_{\mu}^{\alpha}} \right) = 0 \tag{160}
@@ -52,6 +64,8 @@ defining the motion of the fields.
 
 The quantity
 
+<a id="eq-161"></a>
+
 $$
 \pi_{\alpha} = \frac{1}{c} \sum_{\mu} n_{\mu} \frac{\partial L}{\partial \varphi_{\mu}^{\alpha}} \tag{161}
 $$
@@ -59,6 +73,8 @@ $$
 is the momentum conjugate to $\varphi^{\alpha}$, defined at $x$ and with respect to the surface Σ.
 
 A more general type of variation is made by varying not only the $\varphi^{\alpha}$ but also the boundary of Ω, each point $x_{\mu}$ being moved to the position $( x_{\mu} + \delta x_{\mu} )$ where $\delta x_{\mu}$ is either constant or may vary over the surface. Writing ${}_{N} \varphi^{\alpha}$ for the new $\varphi^{\alpha}$ and ${}_{O} \varphi^{\alpha}$ for the old one, we have
+
+<a id="eq-162"></a>
 
 $$
 \begin{aligned} \delta \varphi^{\alpha} ( x ) &= {}_{N} \varphi^{\alpha} ( x + \delta x ) - {}_{O} \varphi^{\alpha} ( x ) \\ {}_{O} \varphi^{\alpha} ( x + \delta x ) &= {}_{O} \varphi^{\alpha} ( x ) + \sum_{\mu} \delta x_{\mu O} \varphi_{\mu}^{\alpha} ( x ) \\ \Delta \varphi^{\alpha} ( x ) &= {}_{N} \varphi^{\alpha} ( x ) - {}_{O} \varphi^{\alpha} ( x ) \end{aligned} \tag{162}
@@ -88,6 +104,8 @@ $$
 
 hence we get finally
 
+<a id="eq-163"></a>
+
 $$
 \delta I ( \Omega ) = \int_{\Omega \alpha ,\mu} \sum \left\{ \pi_{\alpha} \delta \varphi^{\alpha} + \left( \frac{1}{c} n_{\mu} L - \varphi_{\mu}^{\alpha} \pi^{\alpha} \right) \delta x_{\mu} \right\} d\sigma \tag{163}
 $$
@@ -98,11 +116,15 @@ In the case which is physically of importance, the actual motion is fixed unique
 
 Special case of non-relativistic theory, both $\sigma_{1}$ and $\sigma_{2}$ are just space at the time $t_{1}$ and $t_{2}$, and $\delta x_{\mu}$ is $ic$ times a displacement of the time by $\delta t_{1}$ and $\delta t_{2}$. Then we may write $n_{\mu}$ = (0$, 0 , 0 ,i ) , \pi_{\alpha} = \partial L /\partial \dot{\varphi}^{\alpha}$, and then for the <a id="ix-103">Hamiltonian</a>
 
+<a id="eq-164"></a>
+
 $$
 H = \int d\tau \left( \sum_{\alpha} \pi_{\alpha} \dot{\varphi}^{\alpha} - L \right) \tag{164}
 $$
 
 and thus
+
+<a id="eq-165"></a>
 
 $$
 \delta I ( \Omega ) = \int d\tau \sum_{\alpha} \{ ( \pi_{\alpha} \delta \varphi^{\alpha} ) ( t_{1} ) - ( \pi_{\alpha} \delta \varphi^{\alpha} ) ( t_{2} ) \}-\{ H ( t_{1} ) \delta t_{1} - H ( t_{2} ) \delta t_{2} \} \tag{165}
@@ -120,11 +142,15 @@ $$
 
 1. <a id="ix-140">Klein-Gordon</a> Field, real
 
+<a id="eq-166"></a>
+
 $$
 L_{K} = - \tfrac{1}{2} c^{2} \left\{ \sum_{\mu} \left( \frac{\partial \psi}{\partial x_{\mu}} \right)^{2} + \mu^{2} \psi^{2} \right\} \tag{166}
 $$
 
 2. Klein-Gordon Field, complex
+
+<a id="eq-167"></a>
 
 $$
 L_{K}^{\prime} = - c^{2} \left\{ \sum_{\mu} \left( \frac{\partial \psi}{\partial x_{\mu}} \frac{\partial \psi^{*}}{\partial x_{\mu}} \right) + \mu^{2} \psi \psi^{*} \right\} \tag{167}
@@ -134,17 +160,23 @@ where we consider $\psi$ and $\psi^{*}$ independent one-component fields.
 
 3. <a id="ix-143">Maxwell</a> Field, four component $A_{\mu}$, <a id="ix-122">Fermi</a> form,
 
+<a id="eq-168"></a>
+
 $$
 L_{M} = - \tfrac{1}{4} \sum_{\mu ,\nu} \left( \frac{\partial A_{\nu}}{\partial x_{\mu}} - \frac{\partial A_{\mu}}{\partial x_{\nu}} \right)^{2} - \tfrac{1}{2} \sum_{\mu} \left( \frac{\partial A_{\mu}}{\partial x_{\mu}} \right)^{2} \tag{168}
 $$
 
 4. <a id="ix-138">Dirac</a> Field
 
+<a id="eq-169"></a>
+
 $$
 L_{D} = - \hbar c \overline{\psi} \left( \sum_{\lambda} \gamma_{\lambda} \frac{\partial}{\partial x_{\lambda}} + \mu \right) \psi \quad \mu = \frac{mc}{\hbar} \tag{169}
 $$
 
 5. Dirac Field interacting with Maxwell Field
+
+<a id="eq-170"></a>
 
 $$
 L_{Q} = L_{D} + L_{M} - \sum_{\lambda} ieA_{\lambda} \overline{\psi} \gamma_{\lambda} \psi \tag{170}
@@ -172,6 +204,8 @@ It is relativistic all the way, and it is much simpler than the old methods. It 
 
 In the quantum theory the $\varphi^{\alpha}$ are operators defined at each point of space-time as before. They satisfy the same field equations as before, and this is ensured if we assume that the Action Principle
 
+<a id="eq-171"></a>
+
 $$
 \begin{aligned} \delta I ( \Omega ) &= 0 \\ I ( \Omega ) &= \frac{1}{c} \int_{\Omega} L \left( \varphi^{\alpha} ,\varphi_{\mu}^{\alpha} \right) d^{4} x \end{aligned} \tag{171}
 $$
@@ -182,11 +216,15 @@ In the quantum theory, because of complementarity relations, it is not possible 
 
 A state of motion is specified by specifying a space-time surface $\sigma$ and a set of numerical values $\varphi^{\prime \alpha}$ for the eigenvalue which the operators $\varphi^{\alpha}$ on $\sigma$ have in this state. The state is denoted by the Dirac <a id="ix-66">ket</a> vector $| \varphi^{\prime \alpha} ,\sigma \rangle$. This is a special kind of state in which the $\varphi^{\alpha}$ on $\sigma$ have eigenvalues: the general state is a linear combination of $| \varphi^{\prime \alpha} ,\sigma \rangle$ with various values of $\varphi^{\prime \alpha}$. The physically observable quantities are expressions such as the matrix element
 
+<a id="eq-172"></a>
+
 $$
 \left\langle \varphi_{1}^{\prime \alpha} ,\sigma_{1} \varphi^{\beta} ( x ) \varphi_{2}^{\prime \alpha} ,\sigma_{2} \right\rangle \tag{172}
 $$
 
 of the field operator $\varphi^{\beta} ( x )$ between the two states specified by $\varphi_{1}^{\prime \alpha}$ on $\sigma_{1}$ and by $\varphi_{2}^{\prime \alpha}$ on $\sigma_{2}$. In particular, the <a id="ix-19">transition</a> <a id="ix-169">probability</a> <a id="ix-13">amplitude</a> between the two states is
+
+<a id="eq-173"></a>
 
 $$
 \langle \varphi_{1}^{\prime \alpha} ,\sigma_{1} \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle \tag{173}
@@ -198,6 +236,8 @@ The squared modulus of this gives the probability of finding the values $\varphi
 
 The Feynman method of quantizing the theory consists in writing down an explicit formula for the transition amplitude (173). Namely
 
+<a id="eq-174"></a>
+
 $$
 \langle \varphi_{1}^{\prime \alpha} ,\sigma_{1} \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = N \sum_{H} \exp \left\{ \frac{i}{\hbar} I_{H} ( \Omega ) \right\} \tag{174}
 $$
@@ -207,6 +247,8 @@ Here $H$ represents a History of the fields between $\sigma_{2}$ and $\sigma_{1}
 From formula (174) we derive at once the most general _Correspondence Principle_ giving us back the classical theory in the limit as $\hbar \to$ 0. For suppose $\hbar \to$ 0 then the exponential factor in (174) becomes an extremely rapidly oscillating function of $H$ for all histories $H$ _except_ that one for which $I$(Ω) is stationary. Therefore in the limit the sum $\sum H$ reduces to the contribution from the classical motion leading from $\varphi_{2}^{\prime \alpha}$ on $\sigma_{2}$ to $\varphi_{1}^{\prime \alpha}$ on $\sigma_{1}$, all other contributions interfering destructively. The classical motion is defined by the condition that<sup><a id="fnref-17" href="#fn-17">17</a></sup> its $\delta I$(Ω) = 0 for all small variations of the $\varphi^{\alpha}$ between $\sigma_{2}$ and $\sigma_{1}$. This passage to the classical theory is precisely analogous to the passage from wave-optics to geometrical optics when the wave-length of light is allowed to tend to zero. The <a id="ix-223">WKB approximation</a> is gotten by taking $\hbar$ small but not quite zero.
 
 To establish a connection between the Feynman method and the ordinary method of <a id="ix-73">quantization</a>, Feynman has to define what he means by an operator in his formulation. This he does as follows: Let $x$ be any space-time point inside Ω. Let $\mathcal{O} ( x )$ be any field operator defined at $x$, for example $\varphi^{\beta} ( x )$ or $\varphi_{\mu}^{\beta} ( x )$. Then $\mathcal{O} ( x )$ is given a meaning by defining its matrix element between the states $| \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle$ and $| \varphi_{1}^{\prime \alpha} ,\sigma_{1} \rangle$, where $\sigma_{2}$ and $\sigma_{1}$ are any two surfaces to the past and future of $x$. This matrix element is
+
+<a id="eq-175"></a>
 
 $$
 \langle \varphi_{1}^{\prime \alpha} ,\sigma_{1} \mathcal{O} ( x ) \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = N \sum_{H} \mathcal{O}_{H} ( x ) \exp \left\{ \frac{i}{\hbar} I_{H} ( \Omega ) \right\} \tag{175}
@@ -220,17 +262,23 @@ The Feynman method has one fatal drawback: we cannot use it until we have some w
 
 Let the sets of eigenvalues $\varphi_{1}^{\prime \alpha}$ and $\varphi_{2}^{\prime \alpha}$ in (174) be held fixed. Let the numbers $\varphi_{H}^{\alpha} ( x )$ be varied so that $\varphi_{H}^{\alpha} ( x )$ is replaced by $\varphi_{H}^{\alpha} ( x ) + \delta \varphi^{\alpha} ( x )$ where $\delta \varphi^{\alpha} ( x )$ is an arbitrary infinitesimal c-number quantity. Let the surfaces $\sigma_{1}$ and $\sigma_{2}$ be varied so that the point $x_{\mu}$ moves to $x_{\mu} + \delta x_{\mu}$. And let the function $L$ also be varied so that it is replaced by $L + \delta L$ where $\delta L$ is any expression involving the $\varphi^{\alpha}$ and $\varphi_{\mu}^{\alpha}$. Under this triple variation (174) gives
 
+<a id="eq-176"></a>
+
 $$
 \delta \langle \varphi_{1}^{\prime \alpha} ,\sigma_{1} \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = N \sum_{H} \left\{ \frac{i}{\hbar} \delta I_{H} ( \Omega ) \exp \left( \frac{i}{\hbar} I_{H} ( \Omega ) \right) \right\} \tag{176}
 $$
 
 Using (175) this may be written
 
+<a id="eq-177"></a>
+
 $$
 \delta \langle \varphi_{1}^{\prime \alpha} ,\sigma_{1} \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = \frac{i}{\hbar} \langle \varphi_{1}^{\prime \alpha} ,\sigma_{1} \delta I ( \Omega ) \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle . \tag{177}
 $$
 
 Here $\delta I$(Ω) is the operator obtained by making the three variations on the operator $I$(Ω). Formally $\delta I$(Ω) is the same as the variation obtained in the classical theory,
+
+<a id="eq-178"></a>
 
 $$
 \begin{aligned} \delta I ( \Omega ) &= \frac{1}{c} \int_{\Omega} \left\{ \delta L + \sum_{\alpha ,\mu} \left( \frac{\partial L}{\partial \varphi^{\alpha}} - \frac{\partial}{\partial x_{\mu}} \frac{\partial L}{\partial \varphi_{\mu}^{\alpha}} \right) \delta \varphi^{\alpha} \right\} d^{4} x \\ & \quad + \left\{ \int_{\sigma_{1}} - \int_{\sigma_{2}} \right\} \sum_{\alpha ,\mu} \left\{ \pi_{\alpha} \delta \varphi^{\alpha} + \left( \frac{1}{c} n_{\mu} L - \varphi_{\mu}^{\alpha} \pi_{\alpha} \right) \delta x_{\mu} \right\} d\sigma \end{aligned} \tag{178}
@@ -266,9 +314,13 @@ Schwinger takes equation (177) as the fundamental principle for setting up the q
 
 If we take the special case of a variation $\delta \varphi^{\alpha}$ which vanishes on the boundary of Ω and $\delta L = \delta x_{\mu}$ = 0, then $\langle \varphi_{1}^{\alpha \prime} ,\sigma_{1} \varphi_{2}^{\alpha \prime} ,\sigma_{2} \rangle$ depends only on the operators $\varphi^{\alpha}$ on $\sigma_{1}$ and $\sigma_{2}$ and is unaffected by the variation. Therefore for all such variations
 
+<a id="eq-171"></a>
+
 $$
 \delta I ( \Omega ) = 0 \tag{171}
 $$
+
+<a id="eq-179"></a>
 
 $$
 \frac{\partial L}{\partial \varphi^{\alpha}} - \sum_{\mu} \frac{\partial}{\partial x_{\mu}} \frac{\partial L}{\partial \varphi_{\mu}^{\alpha}} = 0 \tag{179}
@@ -298,6 +350,8 @@ $$
 
 or
 
+<a id="eq-180"></a>
+
 $$
 i \hbar \frac{d}{dt} \langle \varphi_{1}^{\prime \alpha} ,t_{1} \varphi_{2}^{\prime \alpha} ,t_{2} \rangle = \langle \varphi_{1}^{\prime \alpha} ,t_{1} H ( t_{1} ) \varphi_{2}^{\prime \alpha} ,t_{2} \rangle \tag{180}
 $$
@@ -310,6 +364,8 @@ Feynman defined operators by giving the formula (175) for their matrix elements 
 
 The usual and generally more useful way of defining operators is to specify their matrix elements between states defined on the same surface. Thus we are interested in a matrix element
 
+<a id="eq-181"></a>
+
 $$
 \langle \varphi^{\prime \alpha} ,\sigma \mathcal{O} \varphi^{\prime \prime \alpha} ,\sigma \rangle \tag{181}
 $$
@@ -318,11 +374,15 @@ where $\varphi^{\prime \alpha}$ and $\varphi^{\prime \prime \alpha}$ are given s
 
 Suppose that a reference surface $\sigma_{o}$ is chosen in the remote past. Let the $\varphi^{\alpha} ,\sigma$ and $L$ be varied in such a way that everything on $\sigma_{o}$ remains fixed. For such a variation, (178) gives if we assume that (179) holds
 
+<a id="eq-182"></a>
+
 $$
 \delta I ( \Omega ) = \frac{1}{c} \int_{\Omega} \delta L d^{4} x + \int_{\sigma \alpha ,\mu} \sum \left\{ \pi_{\alpha} \delta \varphi^{\alpha} + \left( \frac{1}{c} n_{\mu} L - \varphi_{\mu}^{\alpha} \pi_{\alpha} \right) \delta x_{\mu} \right\} d\sigma \tag{182}
 $$
 
 where Ω is the region bounded by $\sigma_{o}$ and $\sigma$. Let us now first calculate the variation of (181) arising from the change in the meaning of the states $| \varphi^{\prime \alpha} ,\sigma \rangle$ and $| \varphi^{\prime \prime \alpha} ,\sigma \rangle$. The operator $\mathcal{O}$ itself is at this point fixed and not affected by the variations in $\varphi^{\alpha} , \sigma$ and $L$ . Then
+
+<a id="eq-183"></a>
 
 $$
 \langle \varphi^{\prime \alpha} ,\sigma \mathcal{O} \varphi^{\prime \prime \alpha} ,\sigma \rangle = \sum_{\varphi_{o}^{\prime}} \sum_{\varphi \prime \prime_{o}} \langle \varphi^{\prime \alpha} ,\sigma \varphi_{o}^{\prime \alpha} ,\sigma_{o} \rangle \langle \varphi_{o}^{\prime \alpha} ,\sigma_{o} \mathcal{O} \varphi_{o}^{\prime \prime \alpha} ,\sigma_{o} \rangle \langle \varphi_{o}^{\prime \prime \alpha} ,\sigma_{o} \varphi^{\prime \prime \alpha} ,\sigma \rangle \tag{183}
@@ -346,6 +406,8 @@ $$
 
 where the subscript $\sigma - \sigma_{o}$ refers to the surface integrals in (178). Since $\delta I_{\sigma - \sigma_{o}} = - \delta I_{\sigma_{o} - \sigma}$, we get finally
 
+<a id="eq-184"></a>
+
 $$
 \delta \langle \varphi^{\prime \alpha} ,\sigma \mathcal{O} \varphi^{\prime \prime \alpha} ,\sigma \rangle = \frac{i}{\hbar} \langle \varphi^{\prime \alpha} ,\sigma \boldsymbol{[} \delta I ( \Omega ) , \mathcal{O} \boldsymbol{]} \varphi^{\prime \prime \alpha} ,\sigma \rangle \tag{184}
 $$
@@ -354,11 +416,15 @@ where $\boldsymbol{[} P,R \boldsymbol{]} = PR - RP$. This applies for the case w
 
 Now we want to calculate the variation of $\langle \varphi^{\prime \alpha} ,\sigma \mathcal{O} \varphi^{\prime \prime \alpha} ,\sigma \rangle$ for the case when the states are fixed, and $\mathcal{O} = \mathcal{O} ( \varphi^{\alpha} ( \sigma )$) changes. This, however, will be the same as for the previous case, except with the opposite sign, because the variation of the matrix element<sup><a id="fnref-18" href="#fn-18">18</a></sup>
 
+<a id="eq-185"></a>
+
 $$
 \langle \varphi^{\prime \alpha} ,\sigma \mathcal{O} \varphi^{\prime \prime \alpha} ,\sigma \rangle \tag{185}
 $$
 
 if _both_ the states and $\mathcal{O}$ change simultaneously is zero. Therefore, if we use a representation in which matrix elements of $\mathcal{O}$ are defined between states _not_ subject to variation we get<sup><a id="fnref-19" href="#fn-19">19</a></sup>
+
+<a id="eq-186"></a>
 
 $$
 i \hbar \delta \mathcal{O} ( \sigma ) = \boldsymbol{[} \delta I ( \Omega ) , \mathcal{O} ( \sigma ) \boldsymbol{]} \tag{186}
@@ -372,17 +438,23 @@ This is the Schwinger action principle in operator form. It is related to (177) 
 
 Taking for $\sigma$ the space at time $t$, for $\mathcal{O} ( \sigma )$ the operator $\varphi^{\alpha} ( r,t )$ at the space-point $r$, and $\delta x_{\mu} = \delta L$ = 0 we have by (182) and (186) for an arbitrary variation $\delta \varphi^{\alpha}$
 
+<a id="eq-187"></a>
+
 $$
 - i \hbar \delta \varphi^{\alpha} ( r,t ) = \sum_{\beta} \int \boldsymbol{[} \pi_{\beta} ( r^{\prime} ,t ) \delta \varphi^{\beta} ( r^{\prime} ,t ) ,\varphi^{\alpha} ( r,t ) \boldsymbol{]} d^{3} \boldsymbol{r}^{\prime} \tag{187}
 $$
 
 because $d\sigma = - n_{\mu} d\sigma_{\mu} = - i ( - idx_{1}^{\prime} dx_{2}^{\prime} dx_{3}^{\prime} ) = - d^{3} r^{\prime}$ by (158); the unit vector in the _increasing_ time direction is $i$, and this is the outward direction since we choose $\sigma_{o}$ in the past. Hence for every $r,r^{\prime}$
 
+<a id="eq-188"></a>
+
 $$
 \boldsymbol{[} \varphi^{\alpha} ( r,t ) ,\pi_{\beta} ( r^{\prime} ,t ) \boldsymbol{]} = i \hbar \delta_{\alpha \beta} \delta^{3} ( \boldsymbol{r} - \boldsymbol{r}^{\prime} ) \tag{188}
 $$
 
 Also since the $\varphi^{\alpha} ( r )$ on $\sigma$ are assumed independent variables,
+
+<a id="eq-189"></a>
 
 $$
 \boldsymbol{[} \varphi^{\alpha} ( r,t ) ,\varphi^{\beta} ( r^{\prime} ,t ) \boldsymbol{]} = 0 \tag{189}
@@ -400,6 +472,8 @@ $$
 
 That is to say, $\mathcal{O} ( t )$ satisfies the Heisenberg equation of motion
 
+<a id="eq-190"></a>
+
 $$
 i \hbar \frac{d \mathcal{O} ( t )}{dt} = \boldsymbol{[} \mathcal{O} ( t ) ,H ( t ) \boldsymbol{]} \tag{190}
 $$
@@ -412,6 +486,8 @@ From (186) we derive at once the general covariant form of the commutation laws 
 
 Let two field points $z$ and $y$ be given, and two operators $\mathcal{R} ( z )$ and $\mathcal{Q} ( y )$ depending on the field quantities $\varphi^{\alpha}$ at $z$ and $y$. Let a reference surface $\sigma_{o}$ be fixed, past of both $z$ and $y$. Suppose the quantity,
 
+<a id="eq-191"></a>
+
 $$
 \delta_{\mathcal{R}} ( L ) = \epsilon \delta^{4} ( x - z ) \mathcal{R} ( z ) \tag{191}
 $$
@@ -419,6 +495,8 @@ $$
 is added to the Lagrangian density $L ( x )$, where $\epsilon$ is an infinitesimal c-number This will make at most a certain infinitesimal change $\epsilon \delta_{\mathcal{R}} \varphi^{\alpha} ( x )$ in the solutions $\varphi^{\alpha} ( x )$ of the field equations. Supposing the new $\varphi^{\alpha} ( x )$ to be identical with the old one on $\sigma_{o}$ then $\delta_{\mathcal{R}} \varphi^{\alpha} ( x )$ is different from zero only in the future light-cone of $z$.
 
 Similarly adding
+
+<a id="eq-192"></a>
 
 $$
 \delta_{\mathcal{Q}} ( L ) = \epsilon \delta^{4} ( x - y ) \mathcal{Q} ( y ) \tag{192}
@@ -432,6 +510,8 @@ $$
 
 It is assumed that there is no intrinsic change $\delta \varphi^{\alpha}$ of $\varphi^{\alpha}$ or $\delta x_{\mu}$ of $\sigma$ apart from the change whose effect is already included in the $\delta L$ term. Thus (186) gives
 
+<a id="eq-193"></a>
+
 $$
 \begin{aligned} \boldsymbol{[} \mathcal{R} ( z ) , \mathcal{Q} ( y ) \boldsymbol{]} &= i \hbar c\delta_{\mathcal{R}} \mathcal{Q} ( y ) ( y_{0} >z_{0} ) \\ \boldsymbol{[} \mathcal{R} ( z ) , \mathcal{Q} ( y ) \boldsymbol{]} &= - i \hbar c\delta_{\mathcal{Q}} \mathcal{R} ( z ) ( z_{0} >y_{0} ) \end{aligned} \tag{193}
 $$
@@ -439,6 +519,8 @@ $$
 When $y$ and $z$ are separated by a space-like interval, the commutator is zero, because the disturbance $\mathcal{R} ( z )$ propagates with a velocity at most $c$ and therefore can affect things only in the future lightcone of $z$; this means $\delta_{\mathcal{R}} \mathcal{Q} ( y )$ = 0 in this case.
 
 <a id="ix-148">Peierls</a>’ <a id="ix-145">formula</a>, valid for any pair of field operators, is
+
+<a id="eq-194"></a>
 
 $$
 \boldsymbol{[} \mathcal{R} ( z ) , \mathcal{Q} ( y ) \boldsymbol{]} = i \hbar c \{ \delta_{\mathcal{R}} \mathcal{Q} ( y ) - \delta_{\mathcal{Q}} \mathcal{R} ( z ) \} \tag{194}
@@ -452,11 +534,15 @@ There is one type of field theory which can be constructed easily by Schwinger�
 
 Then instead of taking every $\varphi^{\alpha}$ on a given surface $\sigma$ to commute as in (189), we may take every pair of $\psi^{\alpha}$ to <a id="ix-38">anticommute</a>, thus<sup><a id="fnref-20" href="#fn-20">20</a></sup>
 
+<a id="eq-195"></a>
+
 $$
 \{ \psi^{\alpha} ( r,t ) ,\psi^{\beta} ( r^{\prime} ,t ) \} = 0 \quad \{ \mathcal{P} , \mathcal{R} \} = \mathcal{P} \mathcal{R} + \mathcal{R} \mathcal{P} \tag{195}
 $$
 
 The bilinear combination will still commute, like the $\varphi^{\alpha}$’s did before. The $\psi^{\alpha}$ commute as before with any field quantities on $\sigma$ other than the $\psi$ and $\overline{\psi}$. Schwinger then assumes (177) to hold precisely as before, except that in calculating $\delta I$(Ω) according to (178), the variation $\delta \psi^{\alpha}$ _anticommutes_ with all operators $\psi^{\alpha}$ and $\overline{\psi}^{\beta}$. In these theories it turns out that the momentum $\pi_{\alpha}$ conjugate to $\psi^{\alpha}$ is just a linear combination of $\overline{\psi}$, because the Lagrangian is only linear in the derivatives of $\psi$. With the anticommuting fields the field equations (179) are deduced as before, also the Schrödinger equation (180), the commutation rules being given by (186) and (187). But now in order to make (187) valid, since $\delta \psi^{\beta}$ anticommutes with the $\psi$ and $\pi$ operators,<sup><a id="fnref-21" href="#fn-21">21</a></sup> the canonical commutation law must be written
+
+<a id="eq-196"></a>
 
 $$
 \{ \psi^{\alpha} ( r,t ) ,\pi_{\beta} ( r^{\prime} ,t ) \} = - i \hbar \delta_{\alpha \beta} \delta^{3} ( \boldsymbol{r} - \boldsymbol{r}^{\prime} ) \tag{196}

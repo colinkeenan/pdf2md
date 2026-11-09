@@ -50,11 +50,15 @@ In this course I will go through the one-particle theories first in detail. Then
 
 Take the simplest case, one particle with no forces. Then the NR wave-mechanics tells you to take the equation $E = \frac{1}{2 m} p^{2}$ of classical mechanics, and write
 
+<a id="eq-1"></a>
+
 $$
 E \to i \hbar \frac{\partial}{\partial t} \quad p_{x} \to - i \hbar \frac{\partial}{\partial x} \tag{1}
 $$
 
 to get the wave-equation<sup><a id="fnref-2" href="#fn-2">2</a></sup>
+
+<a id="eq-2"></a>
 
 $$
 i \hbar \frac{\partial}{\partial t} \psi = - \frac{\hbar^{2}}{2 m} \left( \frac{\partial^{2}}{\partial x^{2}} + \frac{\partial^{2}}{\partial y^{2}} + \frac{\partial^{2}}{\partial z^{2}} \right) \psi = - \frac{\hbar^{2}}{2 m} \nabla^{2} \psi \tag{2}
@@ -64,11 +68,15 @@ satisfied by the wave-function $\psi$.
 
 To give a physical meaning to $\psi$, we state that $\rho = \psi^{*} \psi$ is the probability of finding the particle at the point $xyz$ at time $t$. And the probability is <a id="ix-176">conserved</a> because<sup><a id="fnref-3" href="#fn-3">3</a></sup>
 
+<a id="eq-3"></a>
+
 $$
 \frac{\partial \rho}{\partial t} + \nabla \boldsymbol{\cdot} \hbar = 0 \tag{3}
 $$
 
 where
+
+<a id="eq-4"></a>
 
 $$
 \hbar = \frac{\hbar}{2 mi} ( \psi^{*} \nabla \psi - \psi \nabla \psi^{*} ) \tag{4}
@@ -78,6 +86,8 @@ where $\psi^{*}$ is the complex conjugate of $\psi$.
 
 Now do this relativistically. We have classically
 
+<a id="eq-5"></a>
+
 $$
 E^{2} = m^{2} c^{4} + c^{2} p^{2} \tag{5}
 $$
@@ -86,6 +96,8 @@ $$
 
 which gives the wave equation
 
+<a id="eq-6"></a>
+
 $$
 \frac{1}{c^{2}} \frac{\partial^{2}}{\partial t^{2}} \psi = \nabla^{2} \psi - \frac{m^{2} c^{2}}{\hbar^{2}} \psi \tag{6}
 $$
@@ -93,6 +105,8 @@ $$
 This is an historic equation, the <a id="ix-130">Klein-Gordon equation</a>. <a id="ix-237">Schrödinger</a> already in 1926 tried to make a RQ theory out of it. But he failed, and many other people too, until Pauli and <a id="ix-219">Weisskopf</a> gave the many-particle theory in 1934 <a id="refback-12-1"></a>[[12]](#ref-12). Why?
 
 Because in order to interpret the wave-function as a probability we must have a <a id="ix-172">continuity</a> equation. This can only be got out of the wave-equation if we take $\hbar$ as before, and
+
+<a id="eq-7"></a>
 
 $$
 \rho = \frac{i \hbar}{2 mc^{2}} \left( \psi^{*} \frac{\partial \psi}{\partial t} - \frac{\partial \psi^{*}}{\partial t} \psi \right) \tag{7}

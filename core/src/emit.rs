@@ -124,6 +124,10 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
             }
         }
         Block::Equation { latex, tag } => {
+            // an invisible anchor per equation number, for references to it
+            for t in crate::equation_numbers(latex, tag.as_deref()) {
+                out.push_str(&format!("<a id=\"{}\"></a>\n\n", crate::equation_id(&t)));
+            }
             if latex.is_empty() {
                 // only an equation number survived
                 if let Some(t) = tag {
