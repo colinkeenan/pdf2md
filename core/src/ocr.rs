@@ -2,7 +2,8 @@
 //! their math as small raster images instead of text. Each image is handed
 //! to a local math-recognition model (`math_ocr.py`, run with the Python of
 //! its own environment) that answers with LaTeX, or says the image is a
-//! drawing. Answers are cached by image content in
+//! drawing, or that it cannot read it (such images stay pictures). Answers
+//! are cached by image content in
 //! `~/.cache/pdf2md/ocr/`, so converting a book again is instant.
 //!
 //! Without the recognizer the conversion still works: such images then
@@ -18,6 +19,8 @@ pub enum Reading {
     Latex(String),
     /// a plot or diagram, not math
     Drawing,
+    /// math the recognizer could not read plausibly
+    Unreadable,
 }
 
 /// The recognizer script, written next to the cache when it is run.
@@ -56,6 +59,8 @@ fn read_cached(dir: &std::path::Path, k: &str) -> Option<Reading> {
     let t = t.trim();
     if t == "%DRAWING" {
         Some(Reading::Drawing)
+    } else if t == "%UNREADABLE" {
+        Some(Reading::Unreadable)
     } else if t.is_empty() {
         None
     } else {
