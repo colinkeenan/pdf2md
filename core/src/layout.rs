@@ -162,15 +162,44 @@ fn compose(accent: char, letter: char) -> Option<char> {
     from.chars().position(|c| c == letter).and_then(|k| to.chars().nth(k))
 }
 
-pub fn clean_text(t: &str) -> String {
+/// An accent glyph followed by a letter as one letter (precomposed where
+/// Unicode has one, else the letter with a combining accent).
+pub fn compose_accents(t: &str) -> String {
     let mut out = String::with_capacity(t.len());
     let mut chars = t.chars().peekable();
     while let Some(c) = chars.next() {
-        if let Some(l) = chars.peek().and_then(|&n| compose(c, n)) {
-            out.push(l);
-            chars.next();
-            continue;
+        let next = chars.peek().copied().filter(|n| n.is_alphabetic());
+        let combining = match c {
+            '¨' => Some('\u{308}'),
+            '´' => Some('\u{301}'),
+            'ˆ' => Some('\u{302}'),
+            '˜' => Some('\u{303}'),
+            'ˇ' => Some('\u{30C}'),
+            '˙' => Some('\u{307}'),
+            _ => None,
+        };
+        match (next, combining) {
+            (Some(n), Some(m)) => {
+                match compose(c, n) {
+                    Some(l) => out.push(l),
+                    None => {
+                        out.push(n);
+                        out.push(m);
+                    }
+                }
+                chars.next();
+            }
+            _ => out.push(c),
         }
+    }
+    out
+}
+
+pub fn clean_text(t: &str) -> String {
+    let t = compose_accents(t);
+    let mut out = String::with_capacity(t.len());
+    let chars = t.chars();
+    for c in chars {
         match c {
             'ﬀ' => out.push_str("ff"),
             'ﬁ' => out.push_str("fi"),
@@ -648,12 +677,17 @@ fn mark_overlines(doc: &mut Doc) {
             })
             .collect();
         let mut overline_bars: Vec<usize> = Vec::new();
+        // (line, span, bar left, bar right) of each overline found
+        let mut marks: Vec<(usize, usize, f32, f32)> = Vec::new();
         for (ri, r) in page.rules.iter().enumerate() {
-            for line in page.lines.iter_mut() {
-                for s in line.spans.iter_mut() {
-                    let under = r.bottom >= s.top - 4.0 && r.bottom <= s.top + 2.0;
+            for (li, line) in page.lines.iter_mut().enumerate() {
+                for (si, s) in line.spans.iter_mut().enumerate() {
+                    // (the bar may sit a little inside the top of the box)
+                    let under = r.bottom >= s.top - 4.0 && r.bottom <= s.top + 0.25 * s.height;
                     let fits = r.left >= s.left - 2.0 && r.right <= s.right() + 3.0;
-                    if !(under && fits && r.right - r.left >= 0.5 * s.width) {
+                    // over one letter of a longer span ("ūu") is enough
+                    let n = s.text.chars().count().max(1) as f32;
+                    if !(under && fits && r.right - r.left >= (0.5 * s.width).min(0.7 * s.width / n)) {
                         continue;
                     }
                     let overlaps = |a: &(f32, f32, f32, f32, String, String)| a.0 < r.right && a.1 > r.left;
@@ -662,10 +696,20 @@ fn mark_overlines(doc: &mut Doc) {
                     // is just the line above)
                     let above: Vec<_> = all
                         .iter()
-                        .filter(|a| overlaps(a) && a.3 <= r.top + 1.0 && a.3 >= r.top - 1.2 * s.height)
+                        .filter(|a| overlaps(a) && a.3 <= r.top + 3.0 && a.3 >= r.top - 0.5 * s.height && a.2 < r.top)
+                        .collect();
+                    // ... together with its scripts (the ⁺ of "A⁺" in the
+                    // line above sticks out past the bar of Ā)
+                    let scripts: Vec<_> = all
+                        .iter()
+                        .filter(|t| {
+                            above.iter().any(|a| {
+                                (t.0 - a.1).abs() <= 1.5 && t.3 - t.2 < 0.85 * (a.3 - a.2) && t.2 < a.3 && t.3 > a.2
+                            })
+                        })
                         .collect();
                     let numerator = !above.is_empty()
-                        && above.iter().all(|a| a.0 >= r.left - 2.0 && a.1 <= r.right + 2.0);
+                        && above.iter().chain(&scripts).all(|a| a.0 >= r.left - 2.0 && a.1 <= r.right + 2.0);
                     let root = all.iter().any(|a| {
                         (a.5.starts_with("CMEX") || a.5.starts_with("CMSY") || a.4.contains('√'))
                             && (r.left - a.1).abs() < 3.0
@@ -673,11 +717,53 @@ fn mark_overlines(doc: &mut Doc) {
                             && a.3 > r.top - 2.0
                     });
                     if !numerator && !root {
-                        s.overline = true;
+                        marks.push((li, si, r.left, r.right));
                         overline_bars.push(ri);
                     }
                 }
             }
+        }
+        // Mark the letters under each bar; a bar over part of a span splits
+        // it (glyphs spread evenly over its width). Last spans first, so the
+        // indices stay valid.
+        marks.sort_by_key(|m| std::cmp::Reverse((m.0, m.1)));
+        for (li, si, bl, br) in marks {
+            let s = page.lines[li].spans[si].clone();
+            let chars: Vec<char> = s.text.chars().collect();
+            let n = chars.len().max(1);
+            let w = s.width / n as f32;
+            let first = (((bl - s.left) / w).round().max(0.0) as usize).min(n - 1);
+            let mut last = (((br - s.left) / w).round().max(first as f32 + 1.0) as usize).min(n);
+            // punctuation is never under a bar (",ψ̄")
+            let mut first = first;
+            let punct = |c: char| c.is_whitespace() || ",;.:()[]".contains(c);
+            while first + 1 < last && punct(chars[first]) {
+                first += 1;
+            }
+            while last > first + 1 && punct(chars[last - 1]) {
+                last -= 1;
+            }
+            if first == 0 && last == n {
+                page.lines[li].spans[si].overline = true;
+                continue;
+            }
+            let piece = |a: usize, b: usize, over: bool| {
+                let mut p = s.clone();
+                p.text = chars[a..b].iter().collect();
+                p.left = s.left + w * a as f32;
+                p.width = w * (b - a) as f32;
+                p.overline = over;
+                p
+            };
+            let mut parts = Vec::new();
+            if first > 0 {
+                parts.push(piece(0, first, s.overline));
+            }
+            parts.push(piece(first, last, true));
+            if last < n {
+                parts.push(piece(last, n, s.overline));
+            }
+            page.lines[li].spans.splice(si..si + 1, parts);
         }
         // What is left are fraction bars and root bars (used by mathtex).
         let mut ri = 0;
@@ -866,6 +952,31 @@ fn group_lines(
             None => groups.push(vec![s]),
         }
     }
+    // A root sign's box sits high, over the line above its radicand: one
+    // hanging well below its line moves to the line its bottom falls in.
+    // (a √ on a line of its own, between two lines, moves too)
+    for k in 0..groups.len() {
+        let alone = groups[k].iter().all(|s| s.text.trim() == "√");
+        let mut j = if alone { 0 } else { 1 };
+        while j < groups[k].len() {
+            let s = &groups[k][j];
+            let low = s.bottom() - 2.0;
+            let hangs = alone || s.bottom() > groups[k][0].bottom() + 0.2 * s.height;
+            let target = (s.text.trim() == "√" && hangs)
+                .then(|| {
+                    (0..groups.len()).find(|&m| m != k && groups[m][0].top > groups[k][0].top && groups[m][0].top <= low && groups[m][0].bottom() >= low)
+                })
+                .flatten();
+            match target {
+                Some(m) => {
+                    let s = groups[k].remove(j);
+                    groups[m].push(s);
+                }
+                None => j += 1,
+            }
+        }
+    }
+    groups.retain(|g| !g.is_empty());
     for s in symbols {
         let below = (0..groups.len())
             .filter(|&k| groups[k][0].top >= s.top - 0.3 * s.height && groups[k][0].top <= s.top + 3.0 * s.height)

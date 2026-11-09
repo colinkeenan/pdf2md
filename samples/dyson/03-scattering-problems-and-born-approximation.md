@@ -30,16 +30,16 @@ $$
 u^{*} u = \frac{| E |}{mc^{2}} \tag{104}
 $$
 
-Now if we multiply the Dirac equation for a free particle, (44), by $u$ on the left, we get $Eu^{*} \beta u = cu^{*} \beta \boldsymbol{\alpha} \boldsymbol{\cdot}$ $\boldsymbol{p} u + mc^{2} u^{*} u$; its complex conjugate is $Eu^{*} \beta u = - cu^{*} \beta \boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{p} u + mc^{2} u^{*} u$ since $\beta \boldsymbol{\alpha}$ is anti-<a id="ix-117">Hermitian</a>; then by adding we get
+Now if we multiply the Dirac equation for a free particle, (44), by $\overline{u}$ on the left, we get $Eu^{*} \beta u = cu^{*} \beta \boldsymbol{\alpha} \boldsymbol{\cdot}$ $\boldsymbol{p} u + mc^{2} u^{*} u$; its complex conjugate is $Eu^{*} \beta u = - cu^{*} \beta \boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{p} u + mc^{2} u^{*} u$ since $\beta \boldsymbol{\alpha}$ is anti-<a id="ix-117">Hermitian</a>; then by adding we get
 
 $$
-Euu = mc^{2} u^{*} u \tag{105}
+E \overline{u} u = mc^{2} u^{*} u \tag{105}
 $$
 
 Therefore the normalization becomes
 
 $$
-\left. \begin{aligned} uu &= + 1 \text{ for electron states } \\ &= - 1 \text{ for positron states } \end{aligned} \right\} = \epsilon ; \quad \text{ This is the definition of } \epsilon . \tag{106}
+\left. \begin{aligned} \overline{u} u &= + 1 \text{ for electron states } \\ &= - 1 \text{ for positron states } \end{aligned} \right\} = \epsilon ; \quad \text{ This is the definition of } \epsilon . \tag{106}
 $$
 
 With this normalization the density of states in momentum <a id="ix-133">space</a> is one per volume $h^{3}$ of phase space, that is to say
@@ -61,7 +61,7 @@ $$
 Usually we are not interested in the spin either of an intermediate or of an initial or final state. Therefore we have to make sums over spin <a id="ix-163">states</a> which are of the form
 
 $$
-S = \sum_{2} ( sOu ) ( uPr ) \tag{109}
+S = \sum_{2} ( \overline{s} Ou ) ( \overline{u} Pr ) \tag{109}
 $$
 
 where $O$ and $P$ are some kind of operators, $s$ and $r$ some kind of spin states, and the sum is over the two spin states $u$ of an electron of <a id="ix-203">momentum</a> $\boldsymbol{p}$ and energy $E$.
@@ -84,16 +84,16 @@ $$
 \left( p / + imc \right) u = 0 \tag{112}
 $$
 
-As one can easily show from (48), these 4 states are all orthogonal in the sense that $( u^{\prime} u )$ = 0 for each pair $u^{\prime} u$. Therefore the identity operator may be written in the form
+As one can easily show from (48), these 4 states are all orthogonal in the sense that $( \overline{u}^{\prime} u )$ = 0 for each pair $u^{\prime} u$. Therefore the identity operator may be written in the form
 
 $$
-\mathbb{I} = \sum_{4} ( uu ) \epsilon \tag{113}
+\mathbb{I} = \sum_{4} ( u \overline{u} ) \epsilon \tag{113}
 $$
 
 summed over all 4 states with $\epsilon$ defined as earlier. Hence by (111) and (112) we can write (109) as
 
 $$
-S = \sum_{4} \left( sO \frac{p / + imc}{2 imc} \epsilon u \right) ( uPr ) = ( sO \Lambda_{+} Pr ) \tag{114}
+S = \sum_{4} \left( \overline{s} O \frac{p / + imc}{2 imc} \epsilon u \right) ( \overline{u} Pr ) = ( \overline{s} O \Lambda_{+} Pr ) \tag{114}
 $$
 
 by virtue of (113); here the operator
@@ -107,7 +107,7 @@ is a <a id="ix-213">projection operator</a> for _electrons_ of momentum $p$.
 In the same way for a sum over the two positron states $u$ with momentum $p$ energy $E$
 
 $$
-S = \sum_{2} ( sOu ) ( uPr ) = ( sO \Lambda_{-} Pr ) \tag{116}
+S = \sum_{2} ( \overline{s} Ou ) ( \overline{u} Pr ) = ( \overline{s} O \Lambda_{-} Pr ) \tag{116}
 $$
 
 with
@@ -133,19 +133,19 @@ Note that here charge-conjugate <a id="ix-110">wave functions</a> are _not_ used
 Suppose we have to calculate an expression such as
 
 $$
-\tfrac{1}{2} \sum_{I} \sum_{F} ( u_{F} Ou_{I} ) ( u_{I} Ou_{F} )
+\tfrac{1}{2} \sum_{I} \sum_{F} ( \overline{u}_{F} Ou_{I} ) ( \overline{u}_{I} Ou_{F} )
 $$
 
 summed over <a id="ix-211">electron</a> states only. This gives
 
 $$
-\tfrac{1}{2} \sum ( u_{F} O \Lambda_{+} O \Lambda_{+} u_{F} ) \epsilon
+\tfrac{1}{2} \sum ( \overline{u}_{F} O \Lambda_{+} O \Lambda_{+} u_{F} ) \epsilon
 $$
 
 summed over all four spin states $u_{F}$. To calculate this, let us consider the general expression
 
 $$
-\sum_{u} \epsilon ( uQu )
+\sum_{u} \epsilon ( \overline{u} Qu )
 $$
 
 summed over all 4 spin states, where $Q$ is any 4 $\times$4 matrix.
@@ -159,19 +159,19 @@ $$
 and $4 \quad 4$
 
 $$
-\sum_{u} \epsilon ( uQu ) = \sum_{u} \epsilon \sum_{k = 1} \lambda_{k} ( uw_{k} ) ( w^{*} u ) = \sum_{k = 1} \lambda_{k} w^{*} \left\{ \sum_{u} \epsilon ( uu ) \right\} w_{k}
+\sum_{u} \epsilon ( \overline{u} Qu ) = \sum_{u} \epsilon \sum_{k = 1} \lambda_{k} ( \overline{u} w_{k} ) ( w^{*} u ) = \sum_{k = 1} \lambda_{k} w^{*} \left\{ \sum_{u} \epsilon ( u \overline{u} ) \right\} w_{k}
 $$
 
 Hence by (113)
 
 $$
-\sum_{u} \epsilon ( uQu ) = \sum \lambda
+\sum_{u} \epsilon ( \overline{u} Qu ) = \sum \lambda
 $$
 
 Now $\sum \lambda$ = sum of diagonal elements of $Q$ = Spur $Q$. Thus<sup><a id="fnref-10" href="#fn-10">10</a></sup>
 
 $$
-\sum_{u} \epsilon ( uOu ) = \operatorname{Sp} Q
+\sum_{u} \epsilon ( \overline{u} Ou ) = \operatorname{Sp} Q
 $$
 
 and this is always easy to calculate.
@@ -229,7 +229,7 @@ $$
 The constant $\int rj_{No} ( r ) d\tau$ is not known exactly. Suppose as an order of magnitude estimate that the nucleus of charge $Ze$ is uniformly spread over a sphere of radius $r_{o}$ in the ground state, and also in the excited state. Since $\rho_{N}$ is roughly uniform inside the nucleus we have by integrating (119):
 
 $$
-\begin{aligned} j_{N} &= \frac{i \Delta E}{3 \hbar} r\rho_{N} , \text{ and thus } \\ I &= \psi^{*} \psi ( 0 ) \left( \frac{- 4 \pi e}{3} \right) \int r^{2} \rho_{N} ( r ) d\tau = \psi^{*} \psi ( 0 ) \left( \frac{- 4 \pi e}{3} \right) Qe^{- i \Delta Et/ \hbar} \end{aligned} \tag{125}
+\begin{aligned} j_{N} &= \frac{i \Delta E}{3 \hbar} \overline{r} \rho_{N} , \text{ and thus } \\ I &= \psi^{*} \psi ( 0 ) \left( \frac{- 4 \pi e}{3} \right) \int r^{2} \rho_{N} ( r ) d\tau = \psi^{*} \psi ( 0 ) \left( \frac{- 4 \pi e}{3} \right) Qe^{- i \Delta Et/ \hbar} \end{aligned} \tag{125}
 $$
 
 $Q$ is roughly a measure of the charge-moment of inertia of the nucleus, and is equal to
@@ -291,7 +291,7 @@ Now, since there is no free radiation present, also $\nabla \times \boldsymbol{A
 Let us calculate then the probability of <a id="ix-17">pair</a> emission with the interaction (126). A typical final state has an electron of momentum $p_{1}$ and a <a id="ix-154">positron</a> of momentum $p_{2}$, with energies $E_{1} , E_{2}$ and spins $u_{1} , u_{2}$ respectively. For the <a id="ix-9">creation</a> of this pair the matrix element of $I$ is
 
 $$
-I = - Cu_{1} \beta u_{2} , C = \frac{4 \pi Ze^{2} r_{o}^{2}}{5} \tag{128a}
+I = - C \overline{u}_{1} \beta u_{2} , C = \frac{4 \pi Ze^{2} r_{o}^{2}}{5} \tag{128a}
 $$
 
 The density of final states is by (107)
@@ -315,7 +315,7 @@ $$
 and
 
 $$
-\sum_{u_{1} ,u 2} | u_{1} \beta u_{2} |^{2} = \sum_{u_{1} ,u 2} ( u_{1} \beta u_{2} ) ( u_{2} \beta u_{1} ) = \operatorname{Spur} \left\{ \beta \frac{p /_{2} - imc}{2 imc} \beta \frac{p /_{1} + imc}{2 imc} \right\}
+\sum_{u_{1} ,u 2} | u_{1} \beta u_{2} |^{2} = \sum_{u_{1} ,u 2} ( \overline{u}_{1} \beta u_{2} ) ( \overline{u}_{2} \beta u_{1} ) = \operatorname{Spur} \left\{ \beta \frac{p /_{2} - imc}{2 imc} \beta \frac{p /_{1} + imc}{2 imc} \right\}
 $$
 
 $$
@@ -391,7 +391,7 @@ $$
 $$
 
 $$
-s_{\mu ( 1 )} = i ( u_{1}^{\prime} \gamma_{\mu} u_{1} ) \exp \left\{ \sum_{\nu} \frac{i}{\hbar} ( p_{1 \nu} - p_{1 \nu}^{\prime} ) x_{\nu} \right\} \tag{137}
+s_{\mu ( 1 )} = i ( \overline{u}_{1}^{\prime} \gamma_{\mu} u_{1} ) \exp \left\{ \sum_{\nu} \frac{i}{\hbar} ( p_{1 \nu} - p_{1 \nu}^{\prime} ) x_{\nu} \right\} \tag{137}
 $$
 
 <a id="p28"><sup>[p. 28]</sup></a>
@@ -399,7 +399,7 @@ $$
 whence
 
 $$
-A_{\mu ( 1 )} = - 4 \pi ie \hbar^{2} \left[ \frac{( u_{1}^{\prime} \gamma_{\mu} u_{1} ) \exp \left\{ \sum_{\nu} \frac{i}{\hbar} ( p_{1 \nu} - p_{1 \nu}^{\prime} ) x_{\nu} \right\}}{\sum_{\lambda} ( p_{1 \lambda} - p_{1 \lambda}^{\prime} )^{2}} \right] \tag{138}
+A_{\mu ( 1 )} = - 4 \pi ie \hbar^{2} \left[ \frac{( \overline{u}_{1}^{\prime} \gamma_{\mu} u_{1} ) \exp \left\{ \sum_{\nu} \frac{i}{\hbar} ( p_{1 \nu} - p_{1 \nu}^{\prime} ) x_{\nu} \right\}}{\sum_{\lambda} ( p_{1 \lambda} - p_{1 \lambda}^{\prime} )^{2}} \right] \tag{138}
 $$
 
 where
@@ -423,13 +423,13 @@ $$
 a 3-dimensional integral over space at the time $t$ say. For the total transition matrix element $M$ by first order perturbation method
 
 $$
-M = - \frac{i}{\hbar} \int_{-\infty}^{\infty} dt \int d\tau \psi_{2}^{\prime} \left( ie \sum_{\mu} \gamma_{\mu} A_{\mu ( 1 )} \right) \psi_{2} = - \frac{i}{\hbar c} \int d^{4} x\psi_{2}^{\prime} \left( ie \sum_{\mu} \gamma_{\mu} A_{\mu ( 1 )} \right) \psi_{2} \tag{142}
+M = - \frac{i}{\hbar} \int_{-\infty}^{\infty} dt \int d\tau \overline{\psi}_{2}^{\prime} \left( ie \sum_{\mu} \gamma_{\mu} A_{\mu ( 1 )} \right) \psi_{2} = - \frac{i}{\hbar c} \int d^{4} x \overline{\psi}_{2}^{\prime} \left( ie \sum_{\mu} \gamma_{\mu} A_{\mu ( 1 )} \right) \psi_{2} \tag{142}
 $$
 
 where the 4-fold integral is $dx_{1} dx_{2} dx_{3} dx_{0} ,x_{0} = ct$. Putting in the values of $A_{\mu ( 1 )} ,\psi_{2}^{\prime}$ and $\psi_{2}$, we get
 
 $$
-\begin{aligned} M &= - \frac{4 \pi e^{2} \hbar i}{c} \sum_{\mu} ( u_{2}^{\prime} \gamma_{\mu} u_{2} ) ( u_{1}^{\prime} \gamma_{\mu} u_{1} ) \frac{1}{\sum_{\nu} ( p_{1 \nu} - p_{1 \nu}^{\prime} )^{2}} \int d^{4} x \exp \left\{ \sum_{\lambda} \frac{i}{\hbar} ( p_{1 \lambda} - p_{1 \lambda}^{\prime} + p_{2 \lambda} - p_{2 \lambda}^{\prime} ) x_{\lambda} \right\} \\ &= - \frac{4 \pi e^{2} \hbar i}{c} \sum_{\mu ,\nu} \frac{( u_{2}^{\prime} \gamma_{\mu} u_{2} ) ( u_{1}^{\prime} \gamma_{\mu} u_{1} )}{( p_{1 \nu} - p_{1 \nu}^{\prime} )^{2}} ( 2 \pi \hbar )^{4} \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) \end{aligned} \tag{143}
+\begin{aligned} M &= - \frac{4 \pi e^{2} \hbar i}{c} \sum_{\mu} ( \overline{u}_{2}^{\prime} \gamma_{\mu} u_{2} ) ( \overline{u}_{1}^{\prime} \gamma_{\mu} u_{1} ) \frac{1}{\sum_{\nu} ( p_{1 \nu} - p_{1 \nu}^{\prime} )^{2}} \int d^{4} x \exp \left\{ \sum_{\lambda} \frac{i}{\hbar} ( p_{1 \lambda} - p_{1 \lambda}^{\prime} + p_{2 \lambda} - p_{2 \lambda}^{\prime} ) x_{\lambda} \right\} \\ &= - \frac{4 \pi e^{2} \hbar i}{c} \sum_{\mu ,\nu} \frac{( \overline{u}_{2}^{\prime} \gamma_{\mu} u_{2} ) ( \overline{u}_{1}^{\prime} \gamma_{\mu} u_{1} )}{( p_{1 \nu} - p_{1 \nu}^{\prime} )^{2}} ( 2 \pi \hbar )^{4} \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) \end{aligned} \tag{143}
 $$
 
 where $\delta^{4} ( x ) = \prod_{k = 1}^{4} \delta ( x_{k} )$.
@@ -437,7 +437,7 @@ where $\delta^{4} ( x ) = \prod_{k = 1}^{4} \delta ( x_{k} )$.
 There is also the exchange process in which the particle $p_{1} ,u_{1}$ goes to $p_{2}^{\prime} ,u_{2}^{\prime}$ and _vice-versa_. This gives a contribution to $M$ with a minus sign since the wave function ought to be taken antisymmetric between the two particles. Hence the final result is
 
 $$
-M = - \frac{4 \pi e^{2} \hbar i}{c} ( 2 \pi \hbar )^{4} \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) \sum_{\mu ,\nu} \left\{ \frac{( u_{2}^{\prime} \gamma_{\mu} u_{2} ) ( u_{1}^{\prime} \gamma_{\mu} u_{1} )}{( p_{1 \nu} - p_{1 \nu}^{\prime} )^{2}} - \frac{( u_{2}^{\prime} \gamma_{\mu} u_{1} ) ( u_{1}^{\prime} \gamma_{\mu} u_{2} )}{( p_{1 \nu} - p_{2 \nu}^{\prime} )^{2}} \right\} \tag{144}
+M = - \frac{4 \pi e^{2} \hbar i}{c} ( 2 \pi \hbar )^{4} \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) \sum_{\mu ,\nu} \left\{ \frac{( \overline{u}_{2}^{\prime} \gamma_{\mu} u_{2} ) ( \overline{u}_{1}^{\prime} \gamma_{\mu} u_{1} )}{( p_{1 \nu} - p_{1 \nu}^{\prime} )^{2}} - \frac{( \overline{u}_{2}^{\prime} \gamma_{\mu} u_{1} ) ( \overline{u}_{1}^{\prime} \gamma_{\mu} u_{2} )}{( p_{1 \nu} - p_{2 \nu}^{\prime} )^{2}} \right\} \tag{144}
 $$
 
 This covariant formula is elegant and easy to arrive at. The question now is, how does one go from such a formula to a cross-section?
@@ -608,7 +608,7 @@ $$
 
 where $\psi_{2}$(1) means the particle 2 in the state 1, and so on. With these states the matrix element $M$ is exactly as we have calculated it including the exchange term.
 
-The number of possible final states is only one half of the number of states of two distinguishable particles. But this does not bring a factor $\overline{2} 1$ into the differential cross-section, because the density of antisymmetrical states, in which one of the two particles has a momentum in a particular range $dp_{1} dp_{2} dp_{3}$ is exactly the same as the density of states of 2 distinguishable particles in which the particle labelled 1 lies in the given range. Hence the general rule: the differential cross-section does _not_ have a factor $\overline{2} 1$, the total cross section _does_ because each final state may only be counted once in integrating over the <a id="ix-21">angles</a>.
+The number of possible final states is only one half of the number of states of two distinguishable particles. But this does not bring a factor $\frac{1}{2}$ into the differential cross-section, because the density of antisymmetrical states, in which one of the two particles has a momentum in a particular range $dp_{1} dp_{2} dp_{3}$ is exactly the same as the density of states of 2 distinguishable particles in which the particle labelled 1 lies in the given range. Hence the general rule: the differential cross-section does _not_ have a factor $\frac{1}{2}$, the total cross section _does_ because each final state may only be counted once in integrating over the <a id="ix-21">angles</a>.
 
 ## <a id="s-relativistic-treatment-of-several-particles"></a>Relativistic Treatment of Several Particles
 

@@ -682,6 +682,16 @@ fn page_notes_start(doc: &Doc, lines: &[Line], st: &Stats) -> usize {
 fn attach_fraction_rows(doc: &Doc, lines: &[Line], bars: &[Rule]) -> Vec<Line> {
     let mut lines: Vec<Line> = lines.to_vec();
     for b in bars {
+        // a root's bar starts at its root sign: it goes with the sign's line
+        let root = lines.iter().position(|l| {
+            l.spans.iter().any(|s| {
+                s.text.trim() == "√" && (b.left - s.right()).abs() <= 3.0 && s.top <= b.bottom + 2.0 && s.bottom() >= b.top
+            })
+        });
+        if let Some(k) = root {
+            lines[k].bars.push(*b);
+            continue;
+        }
         let y = (b.top + b.bottom) / 2.0;
         let Some(home) = lines.iter().position(|l| {
             y >= l.top && y <= l.top + l.size && l.left <= b.left + 1.0 && l.right >= b.right - 1.0

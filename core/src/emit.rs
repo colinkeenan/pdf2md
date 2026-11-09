@@ -21,6 +21,16 @@ fn escape(t: &str) -> String {
 }
 
 pub fn render_inlines(inl: &[Inline]) -> String {
+    // an accent and its letter that came in separate pieces ("f¨" + "ur")
+    let joined: Vec<Inline> = inl
+        .iter()
+        .map(|i| match i {
+            Inline::Text(t) => Inline::Text(crate::layout::compose_accents(t)),
+            Inline::Emph(t) => Inline::Emph(crate::layout::compose_accents(t)),
+            other => other.clone(),
+        })
+        .collect();
+    let inl = &joined[..];
     let mut s = String::new();
     for i in inl {
         match i {

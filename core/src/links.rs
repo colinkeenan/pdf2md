@@ -118,6 +118,36 @@ fn link_entries(
         rank + if has_big { 2 } else { 1 }
     };
 
+    // Page numbers after each entry, so you can see which file holds a
+    // page: a chapter's range ("pp. 4–30"), a section's page ("p. 15"),
+    // each linked to its page marker.
+    let pages = page_map(chapters);
+    let ranges: Vec<Option<(String, String)>> = chapters.iter().map(page_range).collect();
+    let page_link = |label: &str| -> Vec<Inline> {
+        match pages.get(label) {
+            Some(slug) => vec![
+                Inline::Text(" — ".into()),
+                Inline::Link { text: format!("p. {label}"), href: format!("{slug}.md#p{label}") },
+            ],
+            None if !label.is_empty() => vec![Inline::Text(format!(" — p. {label}"))],
+            None => Vec::new(),
+        }
+    };
+    let chapter_pages = |ci: usize| -> Vec<Inline> {
+        match &ranges[ci] {
+            Some((a, b)) if a != b => vec![
+                Inline::Text(" — ".into()),
+                Inline::Link { text: format!("pp. {a}–{b}"), href: format!("{}.md#p{a}", chapters[ci].slug) },
+            ],
+            Some((a, _)) => vec![
+                Inline::Text(" — ".into()),
+                Inline::Link { text: format!("p. {a}"), href: format!("{}.md#p{a}", chapters[ci].slug) },
+            ],
+            None => Vec::new(),
+        }
+    };
+    let chapter_pages: Vec<Vec<Inline>> = (0..chapters.len()).map(chapter_pages).collect();
+
     let mut items = Vec::new();
     let mut cursor = (1usize, 0usize); // search forward from the last match
     for e in &entries {
@@ -133,10 +163,9 @@ fn link_entries(
             let ck = key(&chapters[c].title);
             ck == k || fuzzy_eq(&ck, &k) || (k.len() >= 8 && ck.starts_with(&k))
         }) {
-            items.push(Block::Item {
-                level: level.saturating_sub(1),
-                text: vec![Inline::Link { text, href: format!("{}.md", chapters[ci].slug) }],
-            });
+            let mut t = vec![Inline::Link { text, href: format!("{}.md", chapters[ci].slug) }];
+            t.extend(chapter_pages[ci].iter().cloned());
+            items.push(Block::Item { level: level.saturating_sub(1), text: t });
             cursor = (ci, 0);
             continue;
         }
@@ -182,10 +211,9 @@ fn link_entries(
                 *l = level.clamp(2, 4);
                 *id = new_id.clone();
             }
-            items.push(Block::Item {
-                level: level.saturating_sub(1),
-                text: vec![Inline::Link { text, href: format!("{}.md#{}", chapters[ci].slug, new_id) }],
-            });
+            let mut t = vec![Inline::Link { text, href: format!("{}.md#{}", chapters[ci].slug, new_id) }];
+            t.extend(page_link(e.page.trim()));
+            items.push(Block::Item { level: level.saturating_sub(1), text: t });
             cursor = (ci, bi + 1);
             continue;
         }
@@ -223,17 +251,37 @@ fn link_entries(
                     inl.insert(0, Inline::Anchor(new_id.clone()));
                 }
             }
-            items.push(Block::Item {
-                level: level.saturating_sub(1),
-                text: vec![Inline::Link { text, href: format!("{}.md#{}", chapters[ci].slug, new_id) }],
-            });
+            let mut t = vec![Inline::Link { text, href: format!("{}.md#{}", chapters[ci].slug, new_id) }];
+            t.extend(page_link(e.page.trim()));
+            items.push(Block::Item { level: level.saturating_sub(1), text: t });
             cursor = (ci, bi + 1);
             continue;
         }
         warnings.push(format!("table of contents entry not found in text: {title} (page {})", e.page));
-        items.push(Block::Item { level: level.saturating_sub(1), text: e.title.clone() });
+        let mut t = e.title.clone();
+        t.extend(page_link(e.page.trim()));
+        items.push(Block::Item { level: level.saturating_sub(1), text: t });
     }
     items
+}
+
+/// First and last printed page of a chapter (from its page markers).
+fn page_range(ch: &Chapter) -> Option<(String, String)> {
+    let mut labels: Vec<String> = Vec::new();
+    for b in &ch.blocks {
+        match &b.block {
+            Block::Anchor(id) => labels.extend(page_label(id).map(str::to_string)),
+            Block::Para(inl) => {
+                for i in inl {
+                    if let Inline::Anchor(id) = i {
+                        labels.extend(page_label(id).map(str::to_string));
+                    }
+                }
+            }
+            _ => {}
+        }
+    }
+    Some((labels.first()?.clone(), labels.last()?.clone()))
 }
 
 /// Printed page label -> slug of the chapter file that contains it.

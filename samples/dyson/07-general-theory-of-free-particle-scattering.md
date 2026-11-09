@@ -13,7 +13,7 @@ M = ( \Phi_{B}^{*} S \Phi_{A} ) \tag{487}
 $$
 
 $$
-S = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int \dots \int dx_{1} \dots dx_{n} P \left\{ \psi / A\psi ( x_{1} ) ,\dots ,\psi / A\psi ( x_{n} ) \right\} \tag{488}
+S = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int \dots \int dx_{1} \dots dx_{n} P \left\{ \psi / A\psi ( x_{1} ) ,\dots , \psi / A\psi ( x_{n} ) \right\} \tag{488}
 $$
 
 The operators in (488) are field-operators of the interaction representation, the integrations over the points $x_{1} ,\dots x_{n}$ extend over all space-time, and the initial and final states $A$ and $B$ are entirely arbitrary.
@@ -31,7 +31,7 @@ $$
 where<sup><a id="fnref-68" href="#fn-68">68</a></sup>
 
 $$
-\Omega_{2} ( t_{B} ) = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int_{t_{B}}^{\infty} \dots \int_{t_{B}}^{\infty} dx_{1} \dots dx_{n} P \left\{ \psi / A\psi ( x_{1} ) ,\dots ,\psi / A\psi ( x_{n} ) \right\} g_{B} ( t_{1} ) \dots g_{B} ( t_{n} ) \tag{490}
+\Omega_{2} ( t_{B} ) = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int_{t_{B}}^{\infty} \dots \int_{t_{B}}^{\infty} dx_{1} \dots dx_{n} P \left\{ \psi / A\psi ( x_{1} ) ,\dots , \overline{\psi} A\psi / ( x_{n} ) \right\} g_{B} ( t_{1} ) \dots g_{B} ( t_{n} ) \tag{490}
 $$
 
 and $g_{B} ( t )$ is a function decreasing adiabatically from the value 1 at $t = t_{B}$ to zero at $t = \infty$. Similarly, when $t_{A}$ is a time so far in the past that the state $A$ consists of separated converging particles from $t = -\infty$ to $t = t_{A}$ we have
@@ -41,7 +41,7 @@ $$
 $$
 
 $$
-\Omega_{1} ( t_{A} ) = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int_{-\infty}^{t_{A}} \dots \int_{-\infty}^{t_{A}} dx_{1} \dots dx_{n} P \left\{ \psi / A\psi ( x_{1} ) ,\dots ,\psi / A\psi ( x_{n} ) \right\} g_{A} ( t_{1} ) \dots g_{A} ( t_{n} ) \tag{492}
+\Omega_{1} ( t_{A} ) = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int_{-\infty}^{t_{A}} \dots \int_{-\infty}^{t_{A}} dx_{1} \dots dx_{n} P \left\{ \psi / A\psi ( x_{1} ) ,\dots , \overline{\psi} A\psi / ( x_{n} ) \right\} g_{A} ( t_{1} ) \dots g_{A} ( t_{n} ) \tag{492}
 $$
 
 where $g_{A} ( t )$ is a function increasing adiabatically from $t = -\infty$ to $t = t_{A}$.
@@ -49,24 +49,24 @@ where $g_{A} ( t )$ is a function increasing adiabatically from $t = -\infty$ to
 The scattering matrix element between states $A$ and $B$ is given exactly by
 
 $$
-M = \left( \Psi_{B}^{*} ( t_{B} ) S_{t}^{t_{A B}} \Psi_{A} ( t_{A} ) \right) \tag{493}
+M = \left( \Psi_{B}^{*} ( t_{B} ) S_{t_{A}}^{t_{B}} \Psi_{A} ( t_{A} ) \right) \tag{493}
 $$
 
 $$
-S_{t}^{t_{A B}} = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int_{t_{A}}^{t_{B}} \dots \int_{t_{A}}^{t_{B}} P \left\{ \psi / A\psi ( x_{1} ) ,\dots ,\psi / A\psi ( x_{n} ) \right\} dx_{1} \dots dx_{n} \tag{494}
+S_{t_{A}}^{t_{B}} = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int_{t_{A}}^{t_{B}} \dots \int_{t_{A}}^{t_{B}} P \left\{ \psi / A\psi ( x_{1} ) ,\dots , \overline{\psi} A\psi / ( x_{n} ) \right\} dx_{1} \dots dx_{n} \tag{494}
 $$
 
 Of course (493) is independent of the times $t_{A}$ and $t_{B}$. When $t_{A}$ and $t_{B}$ are chosen so far in the past that (489) and (491) are satisfied, then (493) may be written in the form (487), where now
 
 $$
-\begin{aligned} S &= \Omega_{2} ( t_{B} ) S_{t}^{t_{A B}} \Omega_{1} ( t_{A} ) \\ &= \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int_{-\infty}^{\infty} \dots \int_{-\infty}^{\infty} dx_{1} \dots dx_{n} P \left\{ \psi / A\psi ( x_{1} ) ,\dots ,\psi / A\psi ( x_{n} ) \right\} g ( t_{1} ) \dots g ( t_{n} ) \end{aligned} \tag{495}
+\begin{aligned} S &= \Omega_{2} ( t_{B} ) S_{t_{A}}^{t_{B}} \Omega_{1} ( t_{A} ) \\ &= \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int_{-\infty}^{\infty} \dots \int_{-\infty}^{\infty} dx_{1} \dots dx_{n} P \left\{ \psi / A\psi ( x_{1} ) ,\dots , \overline{\psi} A\psi / ( x_{n} ) \right\} g ( t_{1} ) \dots g ( t_{n} ) \end{aligned} \tag{495}
 $$
 
 and $g ( t )$ is a function increasing adiabatically from 0 to 1 for $-\infty <t<t_{A}$, equal to 1 for $t_{A} \leq t \leq t_{B}$, and decreasing adiabatically from 1 to 0 for $t_{A} <t< \infty$. Thus we come to the important conclusion that formula (487) for the matrix element is correct, using the bare particle state-functions Φ$A$ and Φ$B$, provided that formula (488) for $S$ is interpreted by putting in the slowly varying cut-off function $g ( t_{i} )$ to make the integrals converge at $t_{i} = \pm \infty$. The cut-off functions are to be put in as they appear in (495), and then $S$ is defined as the limit to which (495) tends as the rate of variation of $g ( t )$ is made infinitely slow.
 
 The main practical effect of this limiting process in the definition of $S$ is to justify us in throwing away all terms in the integrals which oscillate finitely at $t_{i} = \pm \infty$. There are however certain cases in which the integral (488) is in a more serious way ambiguous due to bad convergence at $t_{i} = \pm \infty$. In these cases the cut-off functions have to be kept explicitly until a late stage of the calculations before going to the limit $g ( t )$ = 1. In all cases, if the limiting process is done in this way, the matrix element $M$ is obtained correctly and unambiguously.
 
-The use of bare-particle wave-functions Φ$A$ and Φ$B$ in (487) is thus justified. This makes the calculation of $M$ in principle simple. It is only necessary to pick out from (488) the terms which contain the right combination of elementary emission and absorption operators to annihilate the particles in $A$ and to create those in $B$. We shall next describe a general method of systematically picking out those terms, which is due originally to Feynman. It was first explained in published form by G. C ˙Wick, _Phys. Rev._ 80 (1950) 268. Feynman and Wick have applied the method only to chronologically ordered products such as appear in (488). However the method applies in the same way to all products whether chronological or not, and we shall describe it in full generality.
+The use of bare-particle wave-functions Φ$A$ and Φ$B$ in (487) is thus justified. This makes the calculation of $M$ in principle simple. It is only necessary to pick out from (488) the terms which contain the right combination of elementary emission and absorption operators to annihilate the particles in $A$ and to create those in $B$. We shall next describe a general method of systematically picking out those terms, which is due originally to Feynman. It was first explained in published form by G. C Ẇick, _Phys. Rev._ 80 (1950) 268. Feynman and Wick have applied the method only to chronologically ordered products such as appear in (488). However the method applies in the same way to all products whether chronological or not, and we shall describe it in full generality.
 
 <a id="p96"><sup>[p. 96]</sup></a>
 
@@ -271,7 +271,7 @@ $$
 or
 
 $$
-\epsilon ( x - y ) \left\langle P \left( \psi_{\alpha} ( x ) \overline{,\psi}_{\beta} ( y ) \right) \right\rangle_{o} = - \tfrac{1}{2} S_{F\alpha \beta} ( x - y ) \tag{511}
+\epsilon ( x - y ) \left\langle P \left( \psi_{\alpha} ( x ) , \overline{\psi}_{\beta} ( y ) \right) \right\rangle_{o} = - \tfrac{1}{2} S_{F\alpha \beta} ( x - y ) \tag{511}
 $$
 
 using (427) and (442). The factor $\epsilon$ is put into (511) so that the $\pm$ sign still characterizes the permutation of electron-positron operators in going from the order _as written_ in (504) to the order as written in $\mathcal{O}$. For the same reason, we shall follow Wick and generally use for chronological products the notation
@@ -283,7 +283,7 @@ $$
 where the sign is plus or minus according to the even or odd character of the permutation of electron-positron operators involved in going from the written order to the chronological order in (512). Hence in particular we have
 
 $$
-\begin{aligned} T ( A_{\lambda} ( x ) ,A_{\mu} ( y ) \} &= P \{ A_{\lambda} ( x ) ,A_{\mu} ( y ) ) \\ T \left( \psi_{\alpha} ( x ) \overline{,\psi}_{\beta} ( y ) \right) &= \epsilon ( x - y ) P \left( \psi_{\alpha} ( x ) \overline{,\psi}_{\beta} ( y ) \right) \end{aligned} \tag{513}
+\begin{aligned} T ( A_{\lambda} ( x ) ,A_{\mu} ( y ) \} &= P \{ A_{\lambda} ( x ) ,A_{\mu} ( y ) ) \\ T \left( \psi_{\alpha} ( x ) , \overline{\psi}_{\beta} ( y ) \right) &= \epsilon ( x - y ) P \left( \psi_{\alpha} ( x ) , \overline{\psi}_{\beta} ( y ) \right) \end{aligned} \tag{513}
 $$
 
 and for every set of field operators $\mathcal{R}_{1} \mathcal{R}_{2} \dots \mathcal{R}_{n}$ the quantity (512) is a relativistic invariant although the $P$-product by itself is not. In (488) itself the $P$-product may be written as a $T$-product, the sign in (512) in this case always being plus.
@@ -343,13 +343,13 @@ $$
 To write down $M_{3}$ we use the Feynman <a id="ix-75">rules</a>. The factor-pairings of $U_{2}$ are represented in the 8 graphs on pp 98-99. Of these only $G_{5}$ and $G_{6}$ contribute to $M_{2}$, and they contribute equally since the integral (423) is symmetrical in the variables $x_{1}$ and $x_{2}$. The normal constituent of $U_{2}$ arising from $G_{5}$ and $G_{6}$ is, using (510) and (511)<sup><a id="fnref-73" href="#fn-73">73</a></sup>
 
 $$
-\begin{aligned} U_{2 N} &= \sum_{\lambda ,\mu} \frac{e^{2}}{\hbar^{2} c^{2}} \int \int dx_{1} dx_{2} N \left( \psi ( x_{1} ) \gamma_{\lambda} \left\langle T \left( \psi ( x_{1} ) \overline{,\psi} ( x_{2} ) \right) \right\rangle_{o} \gamma_{\mu} \psi ( x_{2} ) \right) \langle T ( A_{\lambda} ( x_{1} ) ,A_{\mu} ( x_{2} ) ) \rangle_{o} \\ &= - \frac{e^{2}}{4 \hbar c} \sum_{\lambda} \int \int dx_{1} dx_{2} N \left( \psi ( x_{1} ) \gamma_{\lambda} S_{F} ( x_{1} - x_{2} ) \gamma_{\lambda} \psi ( x_{2} ) \right) D_{F} ( x_{2} - x_{1} ) \end{aligned} \tag{518}
+\begin{aligned} U_{2 N} &= \sum_{\lambda ,\mu} \frac{e^{2}}{\hbar^{2} c^{2}} \int \int dx_{1} dx_{2} N \left( \overline{\psi} ( x_{1} ) \gamma_{\lambda} \left\langle T \left( \psi ( x_{1} ) , \overline{\psi} ( x_{2} ) \right) \right\rangle_{o} \gamma_{\mu} \psi ( x_{2} ) \right) \langle T ( A_{\lambda} ( x_{1} ) ,A_{\mu} ( x_{2} ) ) \rangle_{o} \\ &= - \frac{e^{2}}{4 \hbar c} \sum_{\lambda} \int \int dx_{1} dx_{2} N \left( \overline{\psi} ( x_{1} ) \gamma_{\lambda} S_{F} ( x_{1} - x_{2} ) \gamma_{\lambda} \psi ( x_{2} ) \right) D_{F} ( x_{2} - x_{1} ) \end{aligned} \tag{518}
 $$
 
 To obtain $M_{2}$ from (518) we substitute for $\psi ( x_{2} )$ and $\overline{\psi} ( x_{1} )$ the wave-functions of the initial and final states, and use the momentum integrals (430), (448). Then the integration over $x_{1}$ and $x_{2}$ can be carried out and we find
 
 $$
-\begin{aligned} M_{2} &= \sum_{\lambda} \frac{ie^{2}}{\hbar c} \int_{F} \int_{F} dk_{1} dk_{2} \left( u^{\prime} \gamma_{\lambda} \frac{1}{/ k_{1} - i\mu} \gamma_{\lambda} u \right) \frac{1}{k_{2}^{2}} \delta ( k_{1} - k_{2} - p^{\prime} ) \delta ( k_{2} - k_{1} + p ) \\ &= \sum_{\lambda} \frac{ie^{2}}{\hbar c} \delta ( p - p^{\prime} ) \int_{F} dk \left( u^{\prime} \gamma_{\lambda} \frac{1}{/ k + p / - i\mu} \gamma_{\lambda} u \right) \frac{1}{k^{2}} \end{aligned} \tag{519}
+\begin{aligned} M_{2} &= \sum_{\lambda} \frac{ie^{2}}{\hbar c} \int_{F} \int_{F} dk_{1} dk_{2} \left( \overline{u}^{\prime} \gamma_{\lambda} \frac{1}{/ k_{1} - i\mu} \gamma_{\lambda} u \right) \frac{1}{k_{2}^{2}} \delta ( k_{1} - k_{2} - p^{\prime} ) \delta ( k_{2} - k_{1} + p ) \\ &= \sum_{\lambda} \frac{ie^{2}}{\hbar c} \delta ( p - p^{\prime} ) \int_{F} dk \left( \overline{u}^{\prime} \gamma_{\lambda} \frac{1}{/ k + p / - i\mu} \gamma_{\lambda} u \right) \frac{1}{k^{2}} \end{aligned} \tag{519}
 $$
 
 We consider the Dirac operator
@@ -381,7 +381,7 @@ $$
 Thus Σ$( p )$ is a logarithmically divergent constant, depending only on the electron mass and independent of the state of the electron. The difference 5$/$6 between $R$ and $R^{\prime}$ is of course not significant. Substituting (523) into (519) gives the value of $M_{2}$
 
 $$
-M_{2} = - 6 \pi^{2} i \frac{e^{2} \mu}{\hbar c} R^{\prime} \delta ( p - p^{\prime} ) ( u^{\prime} u ) \tag{524}
+M_{2} = - 6 \pi^{2} i \frac{e^{2} \mu}{\hbar c} R^{\prime} \delta ( p - p^{\prime} ) ( \overline{u}^{\prime} u ) \tag{524}
 $$
 
 Thus $U_{2}$ does not give any transitions between different one-electron states. It has only the diagonal matrix elements given by (524) .
@@ -395,7 +395,7 @@ $$
 where $m_{o}$ is the mass of the bare electron without interaction and $\delta m$ is the electromagnetic contribution to the mass. The mass-change $\delta m$ would be represented by a term
 
 $$
-L_{S} = - \delta mc^{2} \overline{\psi \psi} \tag{526}
+L_{S} = - \delta mc^{2} \overline{\psi} \psi \tag{526}
 $$
 
 in the Lagrangian density (410). This would produce an interaction energy
@@ -407,7 +407,7 @@ $$
 in the Schrödinger equation (415), and finally a contribution
 
 $$
-U_{S} = - i \frac{\delta mc}{\hbar} \int \overline{\psi \psi} ( x ) dx \tag{528}
+U_{S} = - i \frac{\delta mc}{\hbar} \int \overline{\psi} \psi ( x ) dx \tag{528}
 $$
 
 in the scattering matrix (421) or (488).
@@ -415,7 +415,7 @@ in the scattering matrix (421) or (488).
 The matrix element of (528) between the states $( pu )$ and ($p^{\prime} u^{\prime} )$ is
 
 $$
-M_{S} = - i \frac{\delta mc}{\hbar} ( 2 \pi )^{4} \delta ( p - p^{\prime} ) ( u^{\prime} u ) \tag{529}
+M_{S} = - i \frac{\delta mc}{\hbar} ( 2 \pi )^{4} \delta ( p - p^{\prime} ) ( \overline{u}^{\prime} u ) \tag{529}
 $$
 
 <a id="p104"><sup>[p. 104]</sup></a>
@@ -435,7 +435,7 @@ The reason why $\delta m$ still appears explicitly is just that we have _not_ us
 It is much better not to change the notation, but to keep the notation and change the interpretation, so that $m$ everywhere in the theory is now intended to mean the mass of a real electron. In particular, we set up the interaction representation operators with the real electron mass $m$, and the initial and final states of scattering problems are defined as free particles with the correct mass $m$. With this changed interpretation, the whole of the theory up to this point is correct, except that in $L_{D}$ which appears in the Lagrangian (410) of quantum electrodynamics, and in the field equations (411), (412) satisfied by the Heisenberg operators, the bare mass $m_{o}$ must be used instead of $m$. We prefer to keep the observed mass $m$ in $L_{D}$, and correct for it by writing instead of (410)<sup><a id="fnref-75" href="#fn-75">75</a></sup>
 
 $$
-L = L_{D} + L_{M} - ie\psi / A\psi - ie\psi / A^{e} \psi - L_{S} \tag{531}
+L = L_{D} + L_{M} - ie \overline{\psi} / A\psi - ie \overline{\psi} / A^{e} \psi - L_{S} \tag{531}
 $$
 
 with $L_{S}$ given by (526). The radiation interaction becomes then
@@ -479,19 +479,19 @@ U = U_{0} + \int U_{1} + U_{2} + U_{2}^{\prime} \tag{536}
 $$
 
 $$
-U_{0} = \frac{e}{\hbar c} dx\psi / A^{e} \psi ( x ) \tag{537}
+U_{0} = \frac{e}{\hbar c} dx \overline{\psi} / A^{e} \psi ( x ) \tag{537}
 $$
 
 $$
-U_{1} = \frac{e^{2}}{\hbar^{2} c^{2}} \int \int dxdx_{1} P \left\{ \psi / A^{e} \psi ( x ) ,\psi / A\psi ( x_{1} ) \right\} \tag{538}
+U_{1} = \frac{e^{2}}{\hbar^{2} c^{2}} \int \int dxdx_{1} P \left\{ \psi / A^{e} \psi ( x ) , \overline{\psi} / A\psi ( x_{1} ) \right\} \tag{538}
 $$
 
 $$
-U_{2} = \frac{e^{3}}{2 \hbar^{3} c^{3}} \int \int \int dxdx_{1} dx_{2} P \left\{ \psi / A^{e} \psi ( x ) ,\psi / A\psi ( x_{1} ) ,\psi / A\psi ( x_{2} ) \right\} \tag{539}
+U_{2} = \frac{e^{3}}{2 \hbar^{3} c^{3}} \int \int \int dxdx_{1} dx_{2} P \left\{ \psi / A^{e} \psi ( x ) , \overline{\psi} / A\psi ( x_{1} ) , \overline{\psi} / A\psi ( x_{2} ) \right\} \tag{539}
 $$
 
 $$
-U_{2}^{\prime} = \frac{ie\delta m}{\hbar^{2}} \int \int dxdx_{1} P \left\{ \psi / A^{e} \psi ( x ) ,\psi \psi ( x_{1} ) \right\} \tag{540}
+U_{2}^{\prime} = \frac{ie\delta m}{\hbar^{2}} \int \int dxdx_{1} P \left\{ \psi / A^{e} \psi ( x ) , \overline{\psi} \psi ( x_{1} ) \right\} \tag{540}
 $$
 
 The matrix element we wish to calculate is then correspondingly
@@ -527,7 +527,7 @@ $$
 The operator $U_{1}$ gives transitions from a one-electron state only to states consisting of an electron and a photon. This is just the <a id="ix-58">bremsstrahlung</a> process, scattering of the electron with real photon emission, and the matrix element for it is given by (484). In any scattering experiment, this process will of course go on at the same time as the scattering without radiation. Experimentally, the scattering with photon emission will only be separable from the radiationless scattering if the emitted photon has an energy greater than some limit ∆$E$, roughly equal to the energy resolution with which the energy of the electron can be measured. The scattering with emission of soft quanta (low frequency, $k^{\prime}$ small) will always be included in the radiationless scattering cross-section. Therefore we shall be interested in the value of $M_{1}$ for a final state consisting of the electron $( p^{\prime} u^{\prime} )$ and a photon with potentials (440), in the case where $k^{\prime}$ is so small as to be negligible in comparison with $p , p^{\prime}$ and $q$. In this case (484) gives
 
 $$
-M_{1} = \frac{e^{2}}{\hbar^{2} c^{2}} \left[ \frac{p \cdot e^{\prime}}{p \cdot k^{\prime}} - \frac{p^{\prime} \cdot e^{\prime}}{p^{\prime} \cdot k^{\prime}} \right] ( u^{\prime} /eu ) = \frac{e}{\hbar c} \left[ \frac{p \cdot e^{\prime}}{p \cdot k^{\prime}} - \frac{p^{\prime} \cdot e^{\prime}}{p^{\prime} \cdot k^{\prime}} \right] M_{0} \tag{546}
+M_{1} = \frac{e^{2}}{\hbar^{2} c^{2}} \left[ \frac{p \cdot e^{\prime}}{p \cdot k^{\prime}} - \frac{p^{\prime} \cdot e^{\prime}}{p^{\prime} \cdot k^{\prime}} \right] ( \overline{u}^{\prime} /eu ) = \frac{e}{\hbar c} \left[ \frac{p \cdot e^{\prime}}{p \cdot k^{\prime}} - \frac{p^{\prime} \cdot e^{\prime}}{p^{\prime} \cdot k^{\prime}} \right] M_{0} \tag{546}
 $$
 
 <a id="p106"><sup>[p. 106]</sup></a>
@@ -559,7 +559,7 @@ The effect of $\{ G_{6} ,G_{7} ,G_{8} ,G_{9} \}$ is only to double the contribut
 Using the Feynman rules, the contribution of $G_{1}$ to $M_{2}$ is (with the factor 2 from $G_{6} )$
 
 $$
-\begin{aligned} M_{2 1} &= - \frac{e^{3}}{\hbar^{3} c^{3}} \int \int \int dxdx_{1} dx_{2} \sum_{\mu} \operatorname{Spur} \left\{ A /^{e} ( x ) \left\langle T \{ \psi ( x ) \overline{,\psi} ( x_{1} ) \} \right\rangle_{o} \gamma_{\mu} \left\langle T \{ \psi ( x_{1} ) \overline{,\psi} ( x ) \} \right\rangle_{o} \right\} \times \\ & \quad \times \overline{\psi} ( x_{2} ) \left\langle T \{ A_{\mu} ( x_{1} ) ,/ A ( x_{2} ) \} \right\rangle_{o} \psi ( x_{2} ) \end{aligned} \tag{547}
+\begin{aligned} M_{2 1} &= - \frac{e^{3}}{\hbar^{3} c^{3}} \int \int \int dxdx_{1} dx_{2} \sum_{\mu} \operatorname{Spur} \left\{ A /^{e} ( x ) \left\langle T \{ \psi ( x ) , \overline{\psi} ( x_{1} ) \} \right\rangle_{o} \gamma_{\mu} \left\langle T \{ \psi ( x_{1} ) , \overline{\psi} ( x ) \} \right\rangle_{o} \right\} \times \\ & \quad \times \overline{\psi} ( x_{2} ) \left\langle T \{ A_{\mu} ( x_{1} ) ,/ A ( x_{2} ) \} \right\rangle_{o} \psi ( x_{2} ) \end{aligned} \tag{547}
 $$
 
 where the spur appears because of the contraction according to rule 3, and the minus sign comes from the change in order of $\overline{\psi}$ and $\psi$ factors between (539) and (547). By (510) and (511)
@@ -573,7 +573,7 @@ Hence, using the momentum integrals (430), (448), (534), (542) and carrying out 
 <a id="p107"><sup>[p. 107]</sup></a>
 
 $$
-\begin{aligned} & \quad ( x,x_{1} ,x_{2} ) , \\ M_{2 1} &= \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int \int \int dk_{1} dk_{2} dk_{3} dq \sum_{\mu} \operatorname{Spur} \left\{ /e ( q ) \frac{1}{/ k_{1} - i\mu} \gamma_{\mu} \frac{1}{/ k_{2} - i\mu} \right\} \frac{1}{k_{3}^{2}} ( u^{\prime} \gamma_{\mu} u ) \times \\ & \quad \times \delta ( q + k_{1} - k_{2} ) \delta ( - k_{1} + k_{2} + k_{3} ) \delta ( - k_{3} - p^{\prime} + p ) \\ &= \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int_{F} dk \sum_{\mu} \operatorname{Spur} \left\{ /e \frac{1}{/ k - i\mu} \gamma_{\mu} \frac{1}{/ k + /q - i\mu} \right\} \frac{1}{q^{2}} ( u^{\prime} \gamma_{\mu} u ) \\ &= \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \sum_{\mu} \frac{1}{q^{2}} ( u^{\prime} \gamma_{\mu} u ) J_{\mu} \end{aligned} \tag{548}
+\begin{aligned} & \quad ( x,x_{1} ,x_{2} ) , \\ M_{2 1} &= \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int \int \int dk_{1} dk_{2} dk_{3} dq \sum_{\mu} \operatorname{Spur} \left\{ /e ( q ) \frac{1}{/ k_{1} - i\mu} \gamma_{\mu} \frac{1}{/ k_{2} - i\mu} \right\} \frac{1}{k_{3}^{2}} ( \overline{u}^{\prime} \gamma_{\mu} u ) \times \\ & \quad \times \delta ( q + k_{1} - k_{2} ) \delta ( - k_{1} + k_{2} + k_{3} ) \delta ( - k_{3} - p^{\prime} + p ) \\ &= \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int_{F} dk \sum_{\mu} \operatorname{Spur} \left\{ /e \frac{1}{/ k - i\mu} \gamma_{\mu} \frac{1}{/ k + /q - i\mu} \right\} \frac{1}{q^{2}} ( \overline{u}^{\prime} \gamma_{\mu} u ) \\ &= \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \sum_{\mu} \frac{1}{q^{2}} ( \overline{u}^{\prime} \gamma_{\mu} u ) J_{\mu} \end{aligned} \tag{548}
 $$
 
 with $q$ given by (544) and<sup><a id="fnref-76" href="#fn-76">76</a></sup>
@@ -585,13 +585,13 @@ $$
 the function $F_{\mu} ( k )$ being identical with (371) for $\delta$ = 0. Note that (549) is a Feynman integral, which is precisely the same thing as the contour integral (374) with the contour drawn in the diagram. The effect of the $\epsilon$ in (431) is just equivalent to the contour $C$. Hence<sup><a id="fnref-77" href="#fn-77">77</a></sup> using (388) for $J_{\mu}$,
 
 $$
-M_{2 1} = - \frac{e^{3}}{2 \pi^{2} \hbar^{2} c^{2}} ( u^{\prime} /eu ) \left\{ \tfrac{1}{3} R - \int_{0}^{1} ( z - z^{2} ) \log \left( 1 + ( z - z^{2} ) \frac{q^{2}}{\mu^{2}} \right) dz \right\} \tag{550}
+M_{2 1} = - \frac{e^{3}}{2 \pi^{2} \hbar^{2} c^{2}} ( \overline{u}^{\prime} /eu ) \left\{ \tfrac{1}{3} R - \int_{0}^{1} ( z - z^{2} ) \log \left( 1 + ( z - z^{2} ) \frac{q^{2}}{\mu^{2}} \right) dz \right\} \tag{550}
 $$
 
 where we have also dropped the term $q_{\mu}$ in(388), since
 
 $$
-( u^{\prime} /qu ) = \{ u^{\prime} ( p /^{\prime} - i\mu ) u \}-\{ u^{\prime} ( p / - i\mu ) u \} = 0 \tag{551}
+( \overline{u}^{\prime} /qu ) = \{ u^{\prime} ( p /^{\prime} - i\mu ) u \}-\{ u^{\prime} ( p / - i\mu ) u \} = 0 \tag{551}
 $$
 
 Writing $\alpha = \frac{e^{2}}{4 \pi \hbar c}$, (550) becomes
@@ -621,7 +621,7 @@ M_{2 2} = \frac{e^{3}}{8 \hbar^{2} c^{2}} \int \int \int dxdx_{1} dx_{2} \sum_{\
 $$
 
 $$
-= - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int \int \int dk_{1} dk_{2} dk_{3} dq \sum_{\lambda} \left\{ u^{\prime} /e ( q ) \frac{1}{k /_{1} - i\mu} \gamma_{\lambda} \frac{1}{/ k_{2} - i\mu} \gamma_{\lambda} u \right\} \frac{1}{k_{3}^{2}} \times
+= - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int \int \int dk_{1} dk_{2} dk_{3} dq \sum_{\lambda} \left\{ \overline{u}^{\prime} /e ( q ) \frac{1}{k /_{1} - i\mu} \gamma_{\lambda} \frac{1}{/ k_{2} - i\mu} \gamma_{\lambda} u \right\} \frac{1}{k_{3}^{2}} \times
 $$
 
 $$
@@ -629,11 +629,11 @@ $$
 $$
 
 $$
-= - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \sum_{\lambda} \int_{F} dk \left( u^{\prime} /e \frac{1}{p / - i\mu} \gamma_{\lambda} \frac{1}{/ k + p / - i\mu} \gamma_{\lambda} u \right) \frac{1}{k^{2}} \tag{557}
+= - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \sum_{\lambda} \int_{F} dk \left( \overline{u}^{\prime} /e \frac{1}{p / - i\mu} \gamma_{\lambda} \frac{1}{/ k + p / - i\mu} \gamma_{\lambda} u \right) \frac{1}{k^{2}} \tag{557}
 $$
 
 $$
-= - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \left( u^{\prime} /e \frac{1}{p / - i\mu} \Sigma ( p ) u \right) \tag{558}
+= - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \left( \overline{u}^{\prime} /e \frac{1}{p / - i\mu} \Sigma ( p ) u \right) \tag{558}
 $$
 
 with Σ$( p )$ given by(520).
@@ -673,7 +673,7 @@ $$
 and we suppose that $G ( \epsilon_{0} )$ is “almost” a $\delta$-function, that is to say a function which is large only for values of $\epsilon_{0}$ in a range of about $( cT )^{- 1}$ on either side of zero. Substituting (561) into (560), we obtain instead of (558) the corrected formula
 
 $$
-M_{2 2} = - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int G ( \epsilon_{0} ) G ( \epsilon_{0}^{\prime} ) d\epsilon_{0} d\epsilon_{0}^{\prime} \left\{ u/e ( q - \epsilon - \epsilon^{\prime} ) \frac{1}{p / + /\epsilon + /\epsilon^{\prime} - i\mu} \Sigma ( p + \epsilon ) u \right\} \tag{564}
+M_{2 2} = - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int G ( \epsilon_{0} ) G ( \epsilon_{0}^{\prime} ) d\epsilon_{0} d\epsilon_{0}^{\prime} \left\{ \overline{u} /e ( q - \epsilon - \epsilon^{\prime} ) \frac{1}{p / + /\epsilon + /\epsilon^{\prime} - i\mu} \Sigma ( p + \epsilon ) u \right\} \tag{564}
 $$
 
 <a id="p109"><sup>[p. 109]</sup></a>
@@ -731,7 +731,7 @@ $$
 is of order $\epsilon$ and tends to zero as $T \to$ 0. This term may be dropped, and then (564) becomes<sup><a id="fnref-78" href="#fn-78">78</a></sup>
 
 $$
-M_{2 2} = - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int G \left\{ u/e ( q - \epsilon - \epsilon^{\prime} ) \frac{1}{p / + /\epsilon + /\epsilon^{\prime} - i\mu} ( - 6 \pi^{2} \mu R^{\prime} - I_{1} /\epsilon ) u \right\} ( \epsilon_{0} ) G ( \epsilon_{0}^{\prime} ) d\epsilon_{0} d\epsilon_{0}^{\prime} \times \tag{572}
+M_{2 2} = - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int G \left\{ \overline{u} /e ( q - \epsilon - \epsilon^{\prime} ) \frac{1}{p / + /\epsilon + /\epsilon^{\prime} - i\mu} ( - 6 \pi^{2} \mu R^{\prime} - I_{1} /\epsilon ) u \right\} ( \epsilon_{0} ) G ( \epsilon_{0}^{\prime} ) d\epsilon_{0} d\epsilon_{0}^{\prime} \times \tag{572}
 $$
 
 Note that if $I_{\alpha} ( p )$ given by (567) were to be evaluated assuming that $p^{2} + \mu^{2}$ = 0 and $p / - i\mu$ = 0 operating both to the left and to the right, instead of only to the right as in (521), the result obtained would be just
@@ -775,15 +775,15 @@ $$
 Using (561) and performing the integrations as before, this becomes
 
 $$
-M_{2 2}^{\prime} = - \frac{ie\delta m}{2 \hbar^{2}} \int \int G ( \epsilon_{0} ) G ( \epsilon_{0}^{\prime} ) d\epsilon_{0} d\epsilon_{0}^{\prime} \left\{ u^{\prime} /e ( q - \epsilon - \epsilon^{\prime} ) \left( \frac{1}{p / + /\epsilon + /\epsilon^{\prime} - i\mu} \right) u \right\} \tag{576}
+M_{2 2}^{\prime} = - \frac{ie\delta m}{2 \hbar^{2}} \int \int G ( \epsilon_{0} ) G ( \epsilon_{0}^{\prime} ) d\epsilon_{0} d\epsilon_{0}^{\prime} \left\{ \overline{u}^{\prime} /e ( q - \epsilon - \epsilon^{\prime} ) \left( \frac{1}{p / + /\epsilon + /\epsilon^{\prime} - i\mu} \right) u \right\} \tag{576}
 $$
 
 In virtue of (530), this term does precisely cancel the term in $R^{\prime}$ in (572), as was to be expected.
 
-To simplify the term in $I_{1}$ in (572), we may replace $/\epsilon$ by $\tfrac{1}{2} ( /\epsilon + /\epsilon^{\prime} )$ since the integrand is otherwise symmetrical between $\epsilon$ and $\epsilon^{\prime}$. And using (521) we may replace this in turn by $\frac{1}{\overline{2}} ( p / + /\epsilon + /\epsilon^{\prime} - i\mu )$. This cancels the denominator of (572) precisely. After the denominator is cancelled, the expression is non-singular and we may go to the limit $T \to \infty$, using (563) to perform the integration over $\epsilon_{0}$ and $\epsilon_{0}^{\prime}$. Since it is assumed that the external potential is of a limited duration not tending to infinity with $T$, the factor $/e ( q - \epsilon - \epsilon^{\prime} )$ is a continuous function of $\epsilon + \epsilon^{\prime}$ and tends to $/e ( q )$ as $T \to \infty$.<sup><a id="fnref-79" href="#fn-79">79</a></sup> Hence in the limit $T \to \infty$ we have
+To simplify the term in $I_{1}$ in (572), we may replace $/\epsilon$ by $\tfrac{1}{2} ( /\epsilon + /\epsilon^{\prime} )$ since the integrand is otherwise symmetrical between $\epsilon$ and $\epsilon^{\prime}$. And using (521) we may replace this in turn by $\tfrac{1}{2} ( p / + /\epsilon + /\epsilon^{\prime} - i\mu )$. This cancels the denominator of (572) precisely. After the denominator is cancelled, the expression is non-singular and we may go to the limit $T \to \infty$, using (563) to perform the integration over $\epsilon_{0}$ and $\epsilon_{0}^{\prime}$. Since it is assumed that the external potential is of a limited duration not tending to infinity with $T$, the factor $/e ( q - \epsilon - \epsilon^{\prime} )$ is a continuous function of $\epsilon + \epsilon^{\prime}$ and tends to $/e ( q )$ as $T \to \infty$.<sup><a id="fnref-79" href="#fn-79">79</a></sup> Hence in the limit $T \to \infty$ we have
 
 $$
-M_{2 2} + M_{2 2}^{\prime} = \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \frac{1}{2} I_{1} ( u^{\prime} /\epsilon u ) = \frac{i\alpha}{( 2 \pi )^{3}} I_{1} M_{o} \tag{577}
+M_{2 2} + M_{2 2}^{\prime} = \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \frac{1}{2} I_{1} ( \overline{u}^{\prime} /\epsilon u ) = \frac{i\alpha}{( 2 \pi )^{3}} I_{1} M_{o} \tag{577}
 $$
 
 <a id="p111"><sup>[p. 111]</sup></a>
@@ -827,7 +827,7 @@ The factor (579) represents a renormalization of the amplitude of the wave-funct
 The contribution from $G_{4}$ to $M$ is, with a factor 2 to allow for $G_{9}$, using the Feynman rules,
 
 $$
-\begin{aligned} M_{2 4} &= \frac{e^{3}}{8 \hbar^{2} c^{2}} \int \int dxdx_{1} dx_{2} \sum_{\lambda} \psi ( x ) \gamma_{\lambda} S_{F} ( x_{1} - x ) A /^{e} ( x ) S_{F} ( x - x_{2} ) \gamma_{\lambda} \psi ( x_{2} ) D_{F} ( x_{2} - x_{1} ) \\ &= - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} ( u^{\prime} \Lambda ( p,p^{\prime} ) u ) \end{aligned} \tag{583}
+\begin{aligned} M_{2 4} &= \frac{e^{3}}{8 \hbar^{2} c^{2}} \int \int dxdx_{1} dx_{2} \sum_{\lambda} \psi ( x ) \gamma_{\lambda} S_{F} ( x_{1} - x ) A /^{e} ( x ) S_{F} ( x - x_{2} ) \gamma_{\lambda} \psi ( x_{2} ) D_{F} ( x_{2} - x_{1} ) \\ &= - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} ( \overline{u}^{\prime} \Lambda ( p,p^{\prime} ) u ) \end{aligned} \tag{583}
 $$
 
 where
@@ -863,7 +863,7 @@ $$
 In (583) we may use the relations
 
 $$
-p^{2} + \mu^{2} = p^{\prime 2} + \mu^{2} = 0 \quad ( p / - i\mu ) u = 0 \quad u^{\prime} ( p /^{\prime} - i\mu ) = 0 \tag{587}
+p^{2} + \mu^{2} = p^{\prime 2} + \mu^{2} = 0 \quad ( p / - i\mu ) u = 0 \quad \overline{u}^{\prime} ( p /^{\prime} - i\mu ) = 0 \tag{587}
 $$
 
 We also assume that the external potential satisfies the Lorentz condition
@@ -917,7 +917,7 @@ $$
 when the conditions (587) with $p^{\prime} = p$ are assumed to hold. Thus $( I_{1} /e )$ is just the value of (594) for $p^{\prime} = p$. Adding together (583) and (578), this gives
 
 $$
-M_{2 T} = M_{2 4} + M_{2 2} + M_{2 2}^{\prime} + M_{2 3} + M_{2 3}^{\prime} = - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} ( u^{\prime} \Lambda_{c} ( p,p^{\prime} ) u ) \tag{596}
+M_{2 T} = M_{2 4} + M_{2 2} + M_{2 2}^{\prime} + M_{2 3} + M_{2 3}^{\prime} = - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} ( \overline{u}^{\prime} \Lambda_{c} ( p,p^{\prime} ) u ) \tag{596}
 $$
 
 $$
@@ -930,7 +930,7 @@ $$
 
 The $k$-integrals in (597) are now convergent. Thus the effect of the “<a id="ix-225">wave-function</a> renormalization” term (578) is just to cancel out the part of $M_{2 4}$ which is independent of $q$ and divergent at high frequencies.
 
-To evaluate (597) we use (385) and (386). First, in the term $k/e/ / k$ we may replace $k_{\mu} k_{\nu}$ by $\frac{1}{\overline{4}} \delta_{\mu \nu} k^{2}$ because of the symmetry of the integral in $k$-space. So we may write, using (585)
+To evaluate (597) we use (385) and (386). First, in the term $k/e/ / k$ we may replace $k_{\mu} k_{\nu}$ by $\tfrac{1}{4} \delta_{\mu \nu} k^{2}$ because of the symmetry of the integral in $k$-space. So we may write, using (585)
 
 $$
 / k/e/ k = \sum_{\alpha} \tfrac{1}{4} k^{2} \gamma_{\alpha} /e\gamma_{\alpha} = - \tfrac{1}{2} k^{2} /e \tag{598}
@@ -1069,7 +1069,7 @@ $$
 Using (596) and adding the contribution (554) from $G_{1}$, we find for the second-order terms in (541) the value
 
 $$
-M_{2} + M_{2}^{\prime} = - \frac{\alpha}{3 \pi} \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right\} \frac{q^{2}}{\mu^{2}} M_{0} + \frac{\alpha}{4 \pi} \frac{ie}{mc^{2}} \left( u^{\prime} /e/qu \right) \tag{617}
+M_{2} + M_{2}^{\prime} = - \frac{\alpha}{3 \pi} \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right\} \frac{q^{2}}{\mu^{2}} M_{0} + \frac{\alpha}{4 \pi} \frac{ie}{mc^{2}} \left( \overline{u}^{\prime} /e/qu \right) \tag{617}
 $$
 
 ## <a id="s-treatment-of-low-frequency-photons-the-infra-red-catastrophe"></a>The Treatment of Low-Frequency Photons. The Infra-Red Catastrophe.

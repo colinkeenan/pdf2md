@@ -579,11 +579,11 @@ $$
 $$
 
 $$
-= \int_{\Omega} \tilde{a}_{k\lambda} \left\{ \sum_{i = 1}^{\ell} n_{i} \prod_{i = 1}^{\ell} \tilde{a}_{k \lambda^{i}}^{( n_{i} - 1 )} \boldsymbol{[} a_{k\lambda} , \tilde{a}_{k_{i} \lambda} \boldsymbol{]} + \prod_{i = 1}^{\ell} ( a_{k_{i} \lambda} )^{n_{i}} a_{k\lambda} \right\} \Psi_{o} d^{3} \boldsymbol{k} \text{ by } ( 2 1 3 ) \text{ and } ( 2 1 7 a )
+= \int_{\Omega} \tilde{a}_{k\lambda} \left\{ \sum_{i = 1}^{\ell} n_{i} \prod_{i = 1}^{\ell} \tilde{a}_{k_{i} \lambda}^{( n_{i} - 1 )} \boldsymbol{[} a_{k\lambda} , \tilde{a}_{k_{i} \lambda} \boldsymbol{]} + \prod_{i = 1}^{\ell} ( a_{k_{i} \lambda} )^{n_{i}} a_{k\lambda} \right\} \Psi_{o} d^{3} \boldsymbol{k} \text{ by } ( 2 1 3 ) \text{ and } ( 2 1 7 a )
 $$
 
 $$
-= \int_{\Omega} \tilde{a}_{k\lambda} \sum_{i = 1}^{\ell} n_{i} \prod_{i = 1}^{\ell} \tilde{a}_{k}^{( n_{i}} \frac{{}_{i} - 1 )}{\lambda} \delta^{3} ( \boldsymbol{k} - \boldsymbol{k}_{i} ) \Psi_{o} d^{3} \boldsymbol{k} = \sum_{i = 1}^{j} n_{i} \prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}} \Psi_{o} = \sum_{i = 1}^{j} n_{i} \Psi
+= \int_{\Omega} \tilde{a}_{k\lambda} \sum_{i = 1}^{\ell} n_{i} \prod_{i = 1}^{\ell} \tilde{a}_{k_{i} \lambda}^{( n_{i} - 1 )} \delta^{3} ( \boldsymbol{k} - \boldsymbol{k}_{i} ) \Psi_{o} d^{3} \boldsymbol{k} = \sum_{i = 1}^{j} n_{i} \prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}} \Psi_{o} = \sum_{i = 1}^{j} n_{i} \Psi
 $$
 
 ### <a id="s-fluctuations-of-the-fields"></a>Fluctuations of the Fields
@@ -622,19 +622,7 @@ $$
 m \ddot{\boldsymbol{r}} = - e \boldsymbol{E}
 $$
 
-Thus a fluctuating component of $\boldsymbol{E}$ with frequency $c | \boldsymbol{K} |$ produces the same fluctuation in $\boldsymbol{r}$ with amplitude
-
-$$
-e
-$$
-
-multiplied by a factor $\frac{1}{c^{2} | \boldsymbol{K} |^{2}}$ . The slow fluctuations of $\boldsymbol{E}$ cannot be followed by the electron if the
-
-$$
-\overline{m}
-$$
-
-frequency is less than the atomic frequency $cK_{H}$. Hence we find from (236), making $T \to$ 0
+Thus a fluctuating component of $\boldsymbol{E}$ with frequency $c | \boldsymbol{K} |$ produces the same fluctuation in $\boldsymbol{r}$ with amplitude multiplied by a factor $\frac{e}{m} \frac{1}{c^{2} | \boldsymbol{K} |^{2}}$ . The slow fluctuations of $\boldsymbol{E}$ cannot be followed by the electron if the frequency is less than the atomic frequency $cK_{H}$. Hence we find from (236), making $T \to$ 0
 
 $$
 \left\langle r_{1}^{2} \right\rangle_{o} = \frac{e^{2}}{m^{2}} \frac{\hbar c}{1 6 \pi^{3} V^{2}} \int_{K_{H}}^{\infty} \frac{d^{3} \boldsymbol{K}}{| \boldsymbol{K} |} ( K_{2}^{2} + K_{3}^{2} ) | V ( K ) |^{2} \frac{1}{c^{4} | \boldsymbol{K} |^{4}}
@@ -676,14 +664,10 @@ $$
 
 <a id="p52"><sup>[p. 52]</sup></a>
 
-$$
-\surd
-$$
-
-because for the hydrogen atom<sup><a id="fnref-36" href="#fn-36">36</a></sup> $( \rho = r - 8 m_{r} E_{n} / \hbar )$
+because for the hydrogen atom<sup><a id="fnref-36" href="#fn-36">36</a></sup> $( \rho = r \sqrt{- 8 m_{r} E_{n}} / \hbar )$
 
 $$
-\psi_{n\ell m} ( r,\theta ,\phi ) = - \frac{1}{\sqrt{2 \pi}} e^{im\phi} \left\{ \frac{( 2 \ell + 1 ) ( \ell -| m | ) !}{2 ( \ell + | m | ) !} \right\}^{1 / 2} P_{\ell}^{| m |} ( \cos \theta ) \left[ \left( \frac{2}{na_{o}} \right)^{3} \frac{( n - \ell - 1 ) !}{2 n [ ( n + \ell ) ! ]^{3}} \right]^{1 / 2} e^{- \rho / 2} \rho^{\ell} L_{n +}^{2 \ell} \frac{+ 1}{\ell} ( \rho )
+\psi_{n\ell m} ( r,\theta ,\phi ) = - \frac{1}{\sqrt{2 \pi}} e^{im\phi} \left\{ \frac{( 2 \ell + 1 ) ( \ell -| m | ) !}{2 ( \ell + | m | ) !} \right\}^{1 / 2} P_{\ell}^{| m |} ( \cos \theta ) \left[ \left( \frac{2}{na_{o}} \right)^{3} \frac{( n - \ell - 1 ) !}{2 n [ ( n + \ell ) ! ]^{3}} \right]^{1 / 2} e^{- \rho / 2} \rho^{\ell} L_{n + \ell}^{2 \ell + 1} ( \rho )
 $$
 
 and
@@ -752,7 +736,7 @@ $$
 H_{I}^{S} = - \frac{1}{c} \int \sum_{\mu} j_{\mu}^{S} ( r ) A_{\mu}^{S} ( r ) d^{3} \boldsymbol{r} \tag{243}
 $$
 
-because $j_{\mu}^{S} ( r ) = ie\psi \gamma_{\mu} \psi$, and in this case $H = \sum_{\mu} \pi_{\mu} A_{\mu} - L = - L$ because $\pi_{\mu} = \partial L /\partial \dot{A}_{\mu}$, and $L_{I}$ does not contain $\dot{A}_{\mu}$. All the operators in (242), (243) are time-independent<sup><a id="fnref-38" href="#fn-38">38</a></sup>, Schrödinger representation operators, and so are the given the label $S$.
+because $j_{\mu}^{S} ( r ) = ie \overline{\psi} \gamma_{\mu} \psi$, and in this case $H = \sum_{\mu} \pi_{\mu} A_{\mu} - L = - L$ because $\pi_{\mu} = \partial L /\partial \dot{A}_{\mu}$, and $L_{I}$ does not contain $\dot{A}_{\mu}$. All the operators in (242), (243) are time-independent<sup><a id="fnref-38" href="#fn-38">38</a></sup>, Schrödinger representation operators, and so are the given the label $S$.
 
 Now we choose a new wave function Φ$( t )$ which is given in terms of Ψ by
 
@@ -840,17 +824,7 @@ Here $a ( t )$ = (Φ$o *$Φ$( t )$) is a slowly varying amplitude, constant to f
 
 If we put $a ( t )$ = 1 in (252) we should have just the solution of the radiation emission problem, neglecting all effects of radiation reaction on the atom, which we obtained before from Eg. (230).
 
-$$
-d \quad d
-$$
-
-The value of $a ( t ) =$ (Φ$o *$Φ$( t )$) is obtained correct to second order in $H_{I}$, and including the radiative
-
-$$
-\overline{dt} \quad \overline{dt}
-$$
-
-reaction effects, by substituting (252) into (250).
+The value of $\frac{d}{dt} a ( t ) = \frac{d}{dt}$ (Φ$o *$Φ$( t )$) is obtained correct to second order in $H_{I}$, and including the radiative reaction effects, by substituting (252) into (250).
 
 Hence we have
 
@@ -1131,13 +1105,13 @@ $$
 Lagrangian
 
 $$
-L_{o} = - \hbar \overline{c\psi} \left( \sum_{\lambda} \gamma_{\lambda} \frac{\partial}{\partial x_{\lambda}} + \mu \right) \psi \tag{285}
+L_{o} = - \hbar c \overline{\psi} \left( \sum_{\lambda} \gamma_{\lambda} \frac{\partial}{\partial x_{\lambda}} + \mu \right) \psi \tag{285}
 $$
 
-Note the factor $\hbar$ here. This means that the theory has no classical limit in the sense of the Correspondence Principle. In the classical limit, only charges and currents composed of many particles have any meaning; the $\psi$ field disappears entirely from view. The $\hbar$ has to be put into (285) to make the dimensions right, since $\left( \overline{\psi \psi} \right)$ has dimensions (1/Volume) just as in the 1-particle Dirac theory of which this is an extension. <a id="p60"><sup>[p. 60]</sup></a> <a id="ix-180">Field</a> equations
+Note the factor $\hbar$ here. This means that the theory has no classical limit in the sense of the Correspondence Principle. In the classical limit, only charges and currents composed of many particles have any meaning; the $\psi$ field disappears entirely from view. The $\hbar$ has to be put into (285) to make the dimensions right, since $\left( \overline{\psi} \psi \right)$ has dimensions (1/Volume) just as in the 1-particle Dirac theory of which this is an extension. <a id="p60"><sup>[p. 60]</sup></a> <a id="ix-180">Field</a> equations
 
 $$
-\begin{aligned} \sum_{\lambda} \gamma_{\lambda} \frac{\partial \psi}{\partial x_{\lambda}} + \mu \psi &= 0 \\ \sum_{\lambda} \frac{\overline{\partial \psi}}{\partial x_{\lambda}} \gamma_{\lambda} - \overline{\mu \psi} &= 0 \end{aligned} \tag{286}
+\begin{aligned} \sum_{\lambda} \gamma_{\lambda} \frac{\partial \psi}{\partial x_{\lambda}} + \mu \psi &= 0 \\ \sum_{\lambda} \frac{\partial \overline{\psi}}{\partial x_{\lambda}} \gamma_{\lambda} - \mu \overline{\psi} &= 0 \end{aligned} \tag{286}
 $$
 
 The charge-conjugate field $\varphi$ can be defined by
@@ -1157,7 +1131,7 @@ $$
 We proceed as for the <a id="ix-193">Maxwell</a> field. Take two points $z$ and $y$ with $z_{0} >y_{0}$. Let
 
 $$
-\begin{aligned} \mathcal{Q} ( y ) &= \overline{\psi} ( y ) u \\ \mathcal{R} ( z ) &= v\psi ( z ) \text{ or } \overline{\psi} ( z ) v \end{aligned} \tag{288}
+\begin{aligned} \mathcal{Q} ( y ) &= \overline{\psi} ( y ) u \\ \mathcal{R} ( z ) &= \overline{v} \psi ( z ) \text{ or } \overline{\psi} ( z ) v \end{aligned} \tag{288}
 $$
 
 Here $u$ and $v$ are spinor operators, not depending on $y$ or $z$ and anticommuting with all the $\psi$ and $\overline{\psi}$ operators in our equations, as we assumed at the beginning of this section. For example take $u = \psi ( w )$ where $w$ is a point far away outside the light-cones of both $y$ and $z$. We make a change in the Lagrangian by
@@ -1196,10 +1170,10 @@ $$
 
 and the 4 $\times$ 4 unit matrix $\mathbb{I}$ is understood on the right of (293).
 
-If we have $\mathcal{R} = \overline{\psi} ( z ) v$ then $\overline{\delta \psi}$ = 0, as before. If $\mathcal{R} = v\psi ( z )$ then
+If we have $\mathcal{R} = \overline{\psi} ( z ) v$ then $\delta \overline{\psi}$ = 0, as before. If $\mathcal{R} = \overline{v} \psi ( z )$ then
 
 $$
-\begin{aligned} \delta_{\mathcal{R}} \psi ( y ) &= - \frac{1}{\hbar c} vS_{A} ( z - y ) \\ \delta_{\mathcal{R}} \psi ( y ) &= 0 \end{aligned} \tag{294}
+\begin{aligned} \delta_{\mathcal{R}} \psi ( y ) &= - \frac{1}{\hbar c} \overline{v} S_{A} ( z - y ) \\ \delta_{\mathcal{R}} \psi ( y ) &= 0 \end{aligned} \tag{294}
 $$
 
 where $S_{A} ( x )$ is the <a id="ix-140">Dirac</a> matrix satisfying
@@ -1208,12 +1182,12 @@ $$
 \begin{aligned} \left( \sum_{\lambda} \gamma_{\lambda} \frac{\partial}{\partial x_{\lambda}} + \mu \right) S_{A} ( x ) &= - \delta^{4} ( x ) \\ S_{A} ( x ) &= 0 \text{ for } x_{0} > 0 \end{aligned} \tag{295}
 $$
 
-Finally, if we had chosen $\mathcal{Q} = u\psi ( y )$ we should have had $\delta_{\mathcal{Q}} \psi ( z )$ = 0 in the same way.
+Finally, if we had chosen $\mathcal{Q} = \overline{u} \psi ( y )$ we should have had $\delta_{\mathcal{Q}} \psi ( z )$ = 0 in the same way.
 
 Hence using the Peierls commutation law (194) with (292) and (294) we find
 
 $$
-\begin{aligned} \boldsymbol{[} v\psi ( z ) ,u\psi ( y ) \boldsymbol{]} &= \boldsymbol{[} \overline{\psi} ( z ) v,\psi ( y ) u \boldsymbol{]} = 0 \\ \boldsymbol{[} v\psi ( z ) \overline{,\psi} ( y ) u \boldsymbol{]} &= - iv [ S_{A} ( z - y ) - S_{R} ( z - y ) ] u \end{aligned} \tag{296}
+\begin{aligned} \boldsymbol{[} \overline{v} \psi ( z ) , \overline{u} \psi ( y ) \boldsymbol{]} &= \boldsymbol{[} \overline{\psi} ( z ) v, \overline{\psi} ( y ) u \boldsymbol{]} = 0 \\ \boldsymbol{[} \overline{v} \psi ( z ) , \overline{\psi} ( y ) u \boldsymbol{]} &= - i \overline{v} [ S_{A} ( z - y ) - S_{R} ( z - y ) ] u \end{aligned} \tag{296}
 $$
 
 These hold for every choice of $u$ and $v$ if we now choose $u$ and $v$ anti-commuting with all the $\psi$ and $\overline{\psi}$ operators. Therefore writing
@@ -1225,11 +1199,11 @@ $$
 we can write down the commutation rules for the operator components:
 
 $$
-\{ \psi_{\alpha} ( z ) ,\psi_{\beta} ( y ) \} = \left\{ \psi_{\alpha} ( z ) \overline{,\psi}_{\beta} ( y ) \right\} = 0 \tag{298}
+\{ \psi_{\alpha} ( z ) ,\psi_{\beta} ( y ) \} = \left\{ \psi_{\alpha} ( z ) , \overline{\psi}_{\beta} ( y ) \right\} = 0 \tag{298}
 $$
 
 $$
-\left\{ \psi_{\alpha} ( z ) \overline{,\psi}_{\beta} ( y ) \right\} = - iS_{\alpha \beta} ( z - y ) \tag{299}
+\left\{ \psi_{\alpha} ( z ) , \overline{\psi}_{\beta} ( y ) \right\} = - iS_{\alpha \beta} ( z - y ) \tag{299}
 $$
 
 The invariant $S -$function satisfies by (293) and (295)
@@ -1301,7 +1275,7 @@ the normalization being given by (106) and (113). The $b_{ku}$ are operators ind
 Taking the adjoint to (306) we have
 
 $$
-\overline{\psi}_{\alpha} ( x ) = Q \int d^{3} \boldsymbol{k} \left( \frac{\mu^{2}}{| \boldsymbol{k} |^{2} + \mu^{2}} \right)^{1 / 4} \left\{ \sum_{u^{+}} b_{ku}^{*} u_{\alpha} e^{- i \boldsymbol{k} \cdot \boldsymbol{x}} + \sum_{u -} b_{ku}^{*} u_{\alpha} e^{i \boldsymbol{k} \cdot \boldsymbol{x}} \right\} \tag{309}
+\overline{\psi}_{\alpha} ( x ) = Q \int d^{3} \boldsymbol{k} \left( \frac{\mu^{2}}{| \boldsymbol{k} |^{2} + \mu^{2}} \right)^{1 / 4} \left\{ \sum_{u^{+}} b_{ku}^{*} \overline{u}_{\alpha} e^{- i \boldsymbol{k} \cdot \boldsymbol{x}} + \sum_{u -} b_{ku}^{*} \overline{u}_{\alpha} e^{i \boldsymbol{k} \cdot \boldsymbol{x}} \right\} \tag{309}
 $$
 
 Here the $b_{ku}^{*}$ are ordinary Hermitian conjugates of $b_{ku}$.
@@ -1403,7 +1377,7 @@ The $\psi$ and $\varphi$ fields are thus entirely symmetrical between positrons 
 The commutation rules (311) become
 
 $$
-\begin{aligned} \{ b_{ku} ,b_{k^{\prime} u^{\prime}}^{*} \} &= \delta^{3} ( \boldsymbol{k} - \boldsymbol{k}^{\prime} ) \delta_{uu^{\prime}} \\ \left\{ b_{kv}^{C} ,b_{k v^{\prime}}^{* C^{\prime}} \right\} &= \delta^{3} ( \boldsymbol{k} - \boldsymbol{k}^{\prime} ) \delta_{vv^{\prime}} \\ \left\{ b_{kv^{\prime}}^{C} ,b_{ku}^{*} \right\} &= 0 , \quad \text{ etc } . \end{aligned} \tag{318a}
+\begin{aligned} \{ b_{ku} ,b_{k^{\prime} u^{\prime}}^{*} \} &= \delta^{3} ( \boldsymbol{k} - \boldsymbol{k}^{\prime} ) \delta_{uu^{\prime}} \\ \left\{ b_{kv}^{C} ,b_{k^{\prime} v^{\prime}}^{* C} \right\} &= \delta^{3} ( \boldsymbol{k} - \boldsymbol{k}^{\prime} ) \delta_{vv^{\prime}} \\ \left\{ b_{kv^{\prime}}^{C} ,b_{ku}^{*} \right\} &= 0 , \quad \text{ etc } . \end{aligned} \tag{318a}
 $$
 
 These are also symmetrical between electron and positron.
@@ -1486,7 +1460,7 @@ $$
 \Theta_{u} = \begin{cases} = 1 & \text{ for electron states } u , \\ = 0 & \text{ for positron states } . \end{cases}
 $$
 
-Hence by (306) and (309) the expectation value $\left\langle \psi_{\alpha} ( z ) \overline{\psi}_{\beta} ( y ) \right\rangle_{o}$ is just the part of the anti-commutator $\{ \psi_{\alpha} ( z ) \overline{,\psi}_{\beta} ( y ) \}$ which contains positive frequencies exp$[ ik \cdot ( z - y )$], with $k_{o} >$ 0. Thus, similarly to (221)
+Hence by (306) and (309) the expectation value $\left\langle \psi_{\alpha} ( z ) \overline{\psi}_{\beta} ( y ) \right\rangle_{o}$ is just the part of the anti-commutator $\{ \psi_{\alpha} ( z ) , \overline{\psi}_{\beta} ( y ) \}$ which contains positive frequencies exp$[ ik \cdot ( z - y )$], with $k_{o} >$ 0. Thus, similarly to (221)
 
 $$
 \left\langle \psi_{\alpha} ( z ) \overline{\psi}_{\beta} ( y ) \right\rangle_{o} = - iS_{\alpha \beta}^{+} ( z - y ) \tag{325}
@@ -1513,7 +1487,7 @@ $$
 $$
 
 $$
-\left\langle \boldsymbol{[} \psi_{\alpha} ( z ) \overline{,\psi}_{\beta} ( y ) \boldsymbol{]} \right\rangle_{o} = - S_{\alpha \beta}^{( 1 )} ( z - y ) \tag{329}
+\left\langle \boldsymbol{[} \psi_{\alpha} ( z ) , \overline{\psi}_{\beta} ( y ) \boldsymbol{]} \right\rangle_{o} = - S_{\alpha \beta}^{( 1 )} ( z - y ) \tag{329}
 $$
 
 $$
@@ -1533,7 +1507,7 @@ These results for the Dirac theory without electromagnetic interaction will be u
 Lagrangian
 
 $$
-L = L_{D} - ie\psi / A^{e} \psi \tag{331}
+L = L_{D} - ie \overline{\psi} / A^{e} \psi \tag{331}
 $$
 
 Field equations
@@ -1543,17 +1517,17 @@ $$
 $$
 
 $$
-\sum_{\lambda} \left( \frac{\overline{\partial \psi}}{\partial x_{\lambda}} - \frac{ie}{\hbar c} A_{\lambda}^{e} \overline{\psi} \right) \gamma_{\lambda} - \overline{\mu \psi} = 0 \tag{333}
+\sum_{\lambda} \left( \frac{\partial \overline{\psi}}{\partial x_{\lambda}} - \frac{ie}{\hbar c} A_{\lambda}^{e} \overline{\psi} \right) \gamma_{\lambda} - \mu \overline{\psi} = 0 \tag{333}
 $$
 
 These equations are still _linear_, the $A_{\mu}^{e}$ being given functions of position. This makes the theory still simple.
 
 ### <a id="s-covariant-commutation-rules-2"></a>Covariant Commutation Rules
 
-Because of the linearity, a change $v\psi ( z )$ in $L$ makes no difference to the field equation for $\psi ( y )$. Therefore for every two space-time points $y$ and $z$ we still have, as in (298),
+Because of the linearity, a change $\overline{v} \psi ( z )$ in $L$ makes no difference to the field equation for $\psi ( y )$. Therefore for every two space-time points $y$ and $z$ we still have, as in (298),
 
 $$
-\{ \psi_{\alpha} ( z ) ,\psi_{\beta} ( y ) \} = \{ \psi_{\alpha} ( z ) \overline{,\psi}_{\beta} ( y ) \} = 0 \tag{334}
+\{ \psi_{\alpha} ( z ) ,\psi_{\beta} ( y ) \} = \{ \psi_{\alpha} ( z ) , \overline{\psi}_{\beta} ( y ) \} = 0 \tag{334}
 $$
 
 Beyond this point not much can be done with the theory for general time-dependent potentials $A_{\mu}^{e}$. In practice when we have time-dependent $A_{\mu}^{e}$ we always use perturbation theory starting from free field formalism, assuming the $A_{\mu}^{e}$ to be small, or else use special tricks for particular problems.
@@ -1736,7 +1710,7 @@ $$
 V = \tfrac{1}{2} \int \int d^{3} \boldsymbol{r}_{1} d^{3} \boldsymbol{r}_{2} \{ \psi^{*} ( r_{1} ) \psi ( r_{1} ) \} V ( r_{1} - r_{2} ) \{ \psi^{*} ( r_{2} ) \psi ( r_{2} ) \} \tag{355}
 $$
 
-For example, $V$ may be the Coulomb potential between two electrons, which is not included in the Lagrangian (331). The $\overline{2} 1$ is put in so as to count each pair of points $r_{1} , r_{2}$ only once. We calculate the matrix element of $V$ for a transition from Ψ to a state
+For example, $V$ may be the Coulomb potential between two electrons, which is not included in the Lagrangian (331). The $\frac{1}{2}$ is put in so as to count each pair of points $r_{1} , r_{2}$ only once. We calculate the matrix element of $V$ for a transition from Ψ to a state
 
 $$
 \Psi^{\prime} = b_{3}^{*} b_{4}^{*} \Psi_{o}
@@ -1813,13 +1787,13 @@ where $S_{A} ( x )$ is given by (295).
 The total current operator to first order in $A_{\mu}$ is
 
 $$
-\begin{aligned} j_{\mu H} ( x ) &= - iec\psi_{H} ( x ) \gamma_{\mu} \psi_{H} ( x ) \\ &= j_{\mu} ( x ) + \frac{e^{2}}{\hbar} \int d^{4} x^{\prime} \left\{ \psi ( x ) \gamma_{\mu} S_{R} ( x - x^{\prime} ) A /^{e} ( x^{\prime} ) \psi ( x^{\prime} ) + \overline{\psi} ( x^{\prime} ) A /^{e} ( x^{\prime} ) S_{A} ( x^{\prime} - x ) \gamma_{\mu} \psi ( x ) \right\} \end{aligned} \tag{363}
+\begin{aligned} j_{\mu H} ( x ) &= - iec \overline{\psi}_{H} ( x ) \gamma_{\mu} \psi_{H} ( x ) \\ &= j_{\mu} ( x ) + \frac{e^{2}}{\hbar} \int d^{4} x^{\prime} \left\{ \psi ( x ) \gamma_{\mu} S_{R} ( x - x^{\prime} ) A /^{e} ( x^{\prime} ) \psi ( x^{\prime} ) + \overline{\psi} ( x^{\prime} ) A /^{e} ( x^{\prime} ) S_{A} ( x^{\prime} - x ) \gamma_{\mu} \psi ( x ) \right\} \end{aligned} \tag{363}
 $$
 
 Here
 
 $$
-j_{\mu} ( x ) = - iec\psi ( x ) \gamma_{\mu} \psi ( x ) \tag{364}
+j_{\mu} ( x ) = - iec \overline{\psi} ( x ) \gamma_{\mu} \psi ( x ) \tag{364}
 $$
 
 is the current operator of the interaction representation. The vacuum expectation value
@@ -2235,7 +2209,7 @@ We now take the combined system of Dirac and Maxwell fields in interaction, and 
 Lagrangian
 
 $$
-L = L_{D} + L_{M} - ie\psi / A\psi - ie\psi / A^{e} \psi \tag{410}
+L = L_{D} + L_{M} - ie \overline{\psi} / A\psi - ie \overline{\psi} / A^{e} \psi \tag{410}
 $$
 
 Here we use $A_{\nu} ( x )$ for the Maxwell potential operators and $A_{\nu}^{e} ( x )$ for the potentials of the classical external field.
@@ -2247,11 +2221,11 @@ $$
 $$
 
 $$
-\sum_{\lambda} \left\{ \frac{\partial}{\partial x_{\lambda}} - \frac{ie}{\hbar c} ( A_{\lambda} + A_{\lambda}^{e} ) \right\} \overline{\psi \gamma}_{\lambda} - \overline{\mu \psi} = 0 \tag{412}
+\sum_{\lambda} \left\{ \frac{\partial}{\partial x_{\lambda}} - \frac{ie}{\hbar c} ( A_{\lambda} + A_{\lambda}^{e} ) \right\} \overline{\psi} \gamma_{\lambda} - \mu \overline{\psi} = 0 \tag{412}
 $$
 
 $$
-\Box^{2} A_{\nu} = ie\psi \gamma_{\nu} \psi \tag{413}
+\Box^{2} A_{\nu} = ie \overline{\psi} \gamma_{\nu} \psi \tag{413}
 $$
 
 (See (384).)<sup><a id="fnref-55" href="#fn-55">55</a></sup>

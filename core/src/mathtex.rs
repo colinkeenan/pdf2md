@@ -717,8 +717,21 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
                 *r != b && !nested(r) && same_side && r.left < s.right && r.right > s.left && gap_r < gap_b && !row_near_b && spans.iter().any(far)
             })
         };
-        let above: Vec<usize> = above.into_iter().filter(|&i| !blocked(&spans[i])).collect();
-        let below: Vec<usize> = below.into_iter().filter(|&i| !blocked(&spans[i])).collect();
+        // A small script hanging on a symbol outside the bar (the ′ of /e′
+        // right before a fraction) belongs to that symbol.
+        let hangs_outside = |s: &MSpan| {
+            s.size < 0.9 * size
+                && spans.iter().any(|t| {
+                    let c = (t.left + t.right) / 2.0;
+                    t.size >= 0.9 * size
+                        && (c < b.left || c > b.right)
+                        && (s.left - t.right).abs() <= 1.5
+                        && s.top < t.bottom
+                        && s.bottom > t.top
+                })
+        };
+        let above: Vec<usize> = above.into_iter().filter(|&i| !blocked(&spans[i]) && !hangs_outside(&spans[i])).collect();
+        let below: Vec<usize> = below.into_iter().filter(|&i| !blocked(&spans[i]) && !hangs_outside(&spans[i])).collect();
         // One row of text (plus its scripts) on each side, unless a nested
         // fraction's bar makes room for more.
         let reach_up = bars
@@ -731,6 +744,19 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
             .filter(|r| nested(r) && r.top > b.bottom && r.bottom <= b.bottom + 2.5 * size)
             .map(|r| r.bottom - b.bottom + 1.7 * size)
             .fold(1.7 * size, f32::max);
+        // ... and as far as a tall bracket standing right on the bar reaches
+        // (plus room for its exponent)
+        let tall_reach = |up: bool| {
+            above
+                .iter()
+                .chain(&below)
+                .map(|&i| &spans[i])
+                .filter(|s| s.cmex() && s.height() > 1.5 * size && within(s))
+                .filter(|s| if up { (b.top - s.bottom).abs() <= 0.5 * size } else { (s.top - b.bottom).abs() <= 0.5 * size })
+                .map(|s| if up { b.top - s.top } else { s.bottom - b.bottom } + 0.7 * size)
+                .fold(0.0f32, f32::max)
+        };
+        let (reach_up, reach_down) = (reach_up.max(tall_reach(true)), reach_down.max(tall_reach(false)));
         let above: Vec<usize> = above.into_iter().filter(|&i| b.top - spans[i].top <= reach_up).collect();
         let below: Vec<usize> = below.into_iter().filter(|&i| spans[i].bottom - b.bottom <= reach_down).collect();
         let num = stack(&spans, &above, |s| b.top - s.bottom, size);
@@ -993,10 +1019,11 @@ fn take_brackets(spans: &[MSpan], depth: usize) -> (Vec<MSpan>, Vec<Item>) {
         // boxes of shapeless pieces mark only the tops of the pieces; the
         // lowest piece reaches further down than its box
         let (top, bottom) = (d0.top.min(d1.top), d0.bottom.max(d1.bottom));
-        // (a big ∫ right after a bracket reaches back over its edge: for
-        // big-symbol glyphs the middle counts)
+        // (a big ∫ or a slanted "/p" right after a bracket reaches back over
+        // its edge: the middle of a span counts)
         let (inside, outside): (Vec<MSpan>, Vec<MSpan>) = rest.into_iter().partition(|s| {
-            let (l, r) = if s.cmex() { let c = (s.left + s.right) / 2.0; (c, c) } else { (s.left, s.right) };
+            let c = (s.left + s.right) / 2.0;
+            let (l, r) = (s.left.max(c.min(d0.right)), s.right.min(c.max(d1.left)));
             l >= d0.right - 1.0
                 && r <= d1.left + 1.0
                 && s.cy() >= top - size
@@ -1506,6 +1533,31 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
         }
     }
 
+    // A small span continuing a script to its right is part of it: the
+    // whole exponent of ã^{(nᵢ−1)}_{kᵢλ}, not just its first glyphs.
+    loop {
+        let mut changed = false;
+        for i in 0..spans.len() {
+            let s = &spans[i];
+            if !matches!(role[i], Role::Above | Role::Below) || s.size >= 0.9 * max || !near_row(s) {
+                continue;
+            }
+            let follows = (0..spans.len()).find(|&j| {
+                matches!(role[j], Role::Sup | Role::Sub) && {
+                    let gap = s.left - spans[j].right;
+                    let level = (s.cy() - spans[j].cy()).abs() <= 0.3 * s.height().max(spans[j].height());
+                    gap >= -0.2 * max && gap <= 0.45 * max && level
+                }
+            });
+            if let Some(j) = follows {
+                role[i] = role[j];
+                changed = true;
+            }
+        }
+        if !changed {
+            break;
+        }
+    }
     // (small symbols level with the row joined it above)
     let bases: Vec<usize> = (0..spans.len()).filter(|&i| role[i] == Role::Base).collect();
 
@@ -1668,19 +1720,33 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
         };
         // A smaller script in between the other group's pieces belongs to
         // that group: the ′ of a_{k′λ} is not a superscript of a.
-        let inside = |it: &Item, group: &[&Item]| {
+        // (only if it sits at that group's height, not its own)
+        let cy_of = |v: &[&Item]| {
+            let ys: Vec<f32> = v.iter().flat_map(|g| g.src.iter()).map(|&k| spans[k].cy()).collect();
+            ys.iter().sum::<f32>() / ys.len().max(1) as f32
+        };
+        let inside = |it: &Item, group: &[&Item], own: &[&Item]| {
+            // its own group's height without it (none left: it is alone)
+            let rest: Vec<&Item> = own.iter().copied().filter(|o| !std::ptr::eq(*o, it)).collect();
+            let other_y = cy_of(group);
             let (l, r) = group.iter().fold((f32::MAX, f32::MIN), |(l, r), g| (l.min(g.left), r.max(g.right)));
             let big = group.iter().flat_map(|g| g.src.iter()).map(|&k| spans[k].size).fold(0.0f32, f32::max);
             let own = it.src.iter().map(|&k| spans[k].size).fold(0.0f32, f32::max);
-            group.len() >= 2 && it.left > l && it.right < r && !it.src.is_empty() && own < 0.9 * big
+            let y = cy_of(&[it]);
+            group.len() >= 2
+                && it.left > l
+                && it.right < r
+                && !it.src.is_empty()
+                && own < 0.9 * big
+                && (rest.is_empty() || (y - other_y).abs() < (y - cy_of(&rest)).abs())
         };
         let (moved_up, subs): (Vec<&Item>, Vec<&Item>) = {
-            let snapshot = sups.clone();
-            subs.iter().partition(|it| inside(it, &snapshot))
+            let (snapshot, own) = (sups.clone(), subs.clone());
+            subs.iter().partition(|it| inside(it, &snapshot, &own))
         };
         let (moved_down, mut sups): (Vec<&Item>, Vec<&Item>) = {
-            let snapshot = subs.clone();
-            sups.iter().partition(|it| inside(it, &snapshot))
+            let (snapshot, own) = (subs.clone(), sups.clone());
+            sups.iter().partition(|it| inside(it, &snapshot, &own))
         };
         let mut subs = subs;
         subs.extend(moved_down);

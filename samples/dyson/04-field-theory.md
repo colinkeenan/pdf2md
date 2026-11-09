@@ -141,13 +141,13 @@ $$
 4. <a id="ix-139">Dirac</a> Field
 
 $$
-L_{D} = - \hbar \overline{c\psi} \left( \sum_{\lambda} \gamma_{\lambda} \frac{\partial}{\partial x_{\lambda}} + \mu \right) \psi \mu = \frac{mc}{\hbar} \tag{169}
+L_{D} = - \hbar c \overline{\psi} \left( \sum_{\lambda} \gamma_{\lambda} \frac{\partial}{\partial x_{\lambda}} + \mu \right) \psi \mu = \frac{mc}{\hbar} \tag{169}
 $$
 
 5. Dirac Field interacting with Maxwell Field
 
 $$
-L_{Q} = L_{D} + L_{M} - \sum_{\lambda} ieA_{\lambda} \overline{\psi \gamma}_{\lambda} \psi \tag{170}
+L_{Q} = L_{D} + L_{M} - \sum_{\lambda} ieA_{\lambda} \overline{\psi} \gamma_{\lambda} \psi \tag{170}
 $$
 
 here $Q$ stands for <a id="ix-216">quantum electrodynamics</a>.
@@ -278,7 +278,7 @@ That is to say, the classical action principle and the classical field equations
 
 We see that (177) is exactly the kind of generalization we want of the old variation principle (171). It includes the information, necessary for a quantum theory, concerning the effect on $I$(Ω) of variations not vanishing at the boundary of Ω.
 
-### <a id="s-b-the-schr-dinger-equation-for-the-state-function"></a>B. The Schr¨odinger Equation for the State-function
+### <a id="s-b-the-schr-dinger-equation-for-the-state-function"></a>B. The Schrödinger Equation for the State-function
 
 Specialize $\sigma_{1}$ and $\sigma_{2}$ to be the whole space at the times $t_{1}$ and $t_{2}$. Then
 

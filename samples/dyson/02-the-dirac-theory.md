@@ -351,7 +351,7 @@ $$
 The Dirac equation and its conjugate may now be written
 
 $$
-\begin{aligned} \sum_{1}^{4} \gamma_{\mu} \frac{\partial \psi}{\partial x_{\mu}} + \frac{mc}{\hbar} \psi &= 0 \\ \sum_{1}^{4} \frac{\overline{\partial \psi}}{\partial x_{\mu}} \gamma_{\mu} - \frac{mc}{\hbar} \overline{\psi} &= 0 \end{aligned} \tag{34}
+\begin{aligned} \sum_{1}^{4} \gamma_{\mu} \frac{\partial \psi}{\partial x_{\mu}} + \frac{mc}{\hbar} \psi &= 0 \\ \sum_{1}^{4} \frac{\partial \overline{\psi}}{\partial x_{\mu}} \gamma_{\mu} - \frac{mc}{\hbar} \overline{\psi} &= 0 \end{aligned} \tag{34}
 $$
 
 with
@@ -361,7 +361,7 @@ $$
 $$
 
 $$
-s_{\mu} = i \left( \psi \gamma_{\mu} \psi \right) = \left( \frac{1}{c} \hbar ,i\rho \right) \tag{36}
+s_{\mu} = i \left( \overline{\psi} \gamma_{\mu} \psi \right) = \left( \frac{1}{c} \hbar ,i\rho \right) \tag{36}
 $$
 
 These notations are much the most convenient for calculations.
@@ -478,7 +478,7 @@ Certainly negative energy particles are not allowed physically. They can for exa
 
 All <a id="ix-106">negative-energy</a> <a id="ix-162">states</a> are normally filled by one electron each. Because of the exclusion principle transitions of ordinary electrons to these states are forbidden. If sometimes a negative energy state of momentum $- p$ energy $- E$ is _empty_, this appears as a particle of momentum $p$ energy +$E$, and the opposite charge to an electron, i.e. an ordinary <a id="ix-153">positron</a>.
 
-Thus we are led at once to a many-particle theory in order to get sensible results. With spin-0 particles, to get positive probabilities. With spin-$\overline{2} 1$ particles, to get positive energies.
+Thus we are led at once to a many-particle theory in order to get sensible results. With spin-0 particles, to get positive probabilities. With spin-$\frac{1}{2}$ particles, to get positive energies.
 
 The Dirac theory in its one-particle form cannot describe properly the interaction between several particles. But so long as we are talking only about free particles, we can describe them with one-particle wave-functions.
 
@@ -611,7 +611,7 @@ $$
 $$
 
 $$
-\sum_{1}^{4} \left( \frac{\partial}{\partial x_{\mu}} - \frac{ie}{\hbar c} A_{\mu} \right) \psi \gamma_{\mu} - \frac{mc}{\hbar} \overline{\psi} = 0 \tag{65}
+\sum_{1}^{4} \left( \frac{\partial}{\partial x_{\mu}} - \frac{ie}{\hbar c} A_{\mu} \right) \overline{\psi} \gamma_{\mu} - \frac{mc}{\hbar} \overline{\psi} = 0 \tag{65}
 $$
 
 In the non-covariant notations this is
@@ -622,7 +622,7 @@ $$
 
 <a id="p13"><sup>[p. 13]</sup></a>
 
-since by (57), we have $\overline{\psi \gamma}_{\mu} = \psi^{*} \beta \gamma_{\mu} = ( C\varphi^{+} )^{T} \beta \gamma_{\mu} = \varphi^{T} C^{T} \beta \gamma_{\mu}$; the wave function $\varphi = C\psi^{+}$of a positron satisfies by (65)
+since by (57), we have $\overline{\psi} \gamma_{\mu} = \psi^{*} \beta \gamma_{\mu} = ( C\varphi^{+} )^{T} \beta \gamma_{\mu} = \varphi^{T} C^{T} \beta \gamma_{\mu}$; the wave function $\varphi = C\psi^{+}$of a positron satisfies by (65)
 
 $$
 \sum \left( \frac{\partial}{\partial x_{\mu}} - \frac{ie}{\hbar c} A_{\mu} \right) \gamma_{\mu}^{T} \beta C\varphi - \frac{mc}{\hbar} \beta C\varphi = 0 \tag{67}
@@ -660,7 +660,7 @@ $$
 j ( j + 1 ) = J^{2} = \left[ - i ( \boldsymbol{r} \times \nabla ) + \tfrac{1}{2} \boldsymbol{\sigma} \right]^{2} \tag{72}
 $$
 
-where $j_{z}$ and $j$ are now _half-odd integers_ by the ordinary theory of <a id="ix-28">angular momenta</a>. These quantum numbers are not enough to fix the state, because each value of $j$ may correspond to two NR states with $\ell = j \pm \tfrac{1}{\overline{2}}$. Therefore we need an additional operator which commutes with $H$, which will distinguish between states with $\boldsymbol{\sigma}$ parallel or antiparallel to $\boldsymbol{J}$. The obvious choice is
+where $j_{z}$ and $j$ are now _half-odd integers_ by the ordinary theory of <a id="ix-28">angular momenta</a>. These quantum numbers are not enough to fix the state, because each value of $j$ may correspond to two NR states with $\ell$between states with$= j \pm \tfrac{1}{2}$. Therefore we need an additional operator which commutes with $H$, which will distinguish $\boldsymbol{\sigma}$ parallel or antiparallel to $\boldsymbol{J}$. The obvious choice is
 
 $$
 Q = \boldsymbol{\sigma} \boldsymbol{\cdot} \boldsymbol{J}
@@ -797,10 +797,10 @@ $$
 the <a id="ix-90">fine structure constant</a>. Then
 
 $$
-\begin{aligned} \left( - a_{1} + \frac{\alpha}{r} \right) u &= \left( \frac{1 + K}{r} + \frac{\partial}{\partial r} \right) v \\ \sqrt{a_{1} a_{2}} \sqrt{\quad \left( a_{2} + \frac{\alpha}{r} \right) v} &= \left( \frac{- 1 + K}{r} - \frac{\partial}{\partial r} \right) u \end{aligned} \tag{84}
+\begin{aligned} \left( - a_{1} + \frac{\alpha}{\overline{r}} \right) u &= \left( \frac{1 + K}{r} + \frac{\partial}{\partial r} \right) v \\ \left( a_{2} + \frac{\alpha}{r} \right) v &= \left( \frac{- 1 + K}{r} - \frac{\partial}{\partial r} \right) u \end{aligned} \tag{84}
 $$
 
-Next put $a =$ = $m^{2} c^{4} - E^{2} / \hbar c$ which is the magnitude of the imaginary <a id="ix-202">momentum</a> of a free electron of energy $E$. Then $\psi \sim e^{- ar}$ at infinity. Hence we write
+Next put $a = \sqrt{a_{1} a_{2}} = \sqrt{m^{2} c^{4} - E^{2}} / \hbar c$ which is the magnitude of the imaginary <a id="ix-202">momentum</a> of a free electron of energy $E$. Then $\psi \sim e^{- ar}$ at infinity. Hence we write
 
 $$
 \begin{aligned} u &= \frac{e^{- ar}}{r} f \\ v &= \frac{e^{- ar}}{r} g \end{aligned} \tag{85}
@@ -868,7 +868,7 @@ $$
 \left( a_{1}^{2} - a^{2} \right) \alpha + 2 ( \epsilon + n ) aa_{1} = 0
 $$
 
-$c_{\epsilon}$ and$\sqrt{d_{\epsilon}}$ are zero, thus the wave function$\sqrt{\quad r^{- 1 + \epsilon}}$ must be integrable at zero. This gives $\epsilon >$Now not both$- \tfrac{1}{2}$. But $\epsilon = \pm k^{2} - \alpha^{2}$. Now $k^{2} \geq$ 1, hence $k^{2} - \alpha^{2} > \tfrac{1}{2}$, and
+$c_{\epsilon}$ and $d_{\epsilon}$ are zero, thus the wave function $r^{- 1 + \epsilon}$ must be integrable at zero. This gives $\epsilon >$Now not both$- \tfrac{1}{2}$. But $\epsilon = \pm \sqrt{k^{2} - \alpha^{2}}$. Now $k^{2} \geq$ 1, hence $\sqrt{k^{2} - \alpha^{2}} > \tfrac{1}{2}$, and
 
 $$
 \epsilon = + \sqrt{k^{2} - \alpha^{2}} \tag{91}
@@ -877,7 +877,7 @@ $$
 Also<sup><a id="fnref-9" href="#fn-9">9</a></sup>
 
 $$
-( \epsilon + n )^{2} = \left( \frac{a_{1}^{2} - a^{2}}{2 aa_{1}} \right)^{2} \alpha^{2} = \begin{pmatrix} \left( 2 \right)^{2} \\ \frac{\left( mc^{2} - E \right) - \left( m^{2} c^{4} - E^{2} \right)}{4 ( m^{2} c^{4} - E^{2} ) ( mc^{2} - E )^{2}} \end{pmatrix} \alpha^{2} = \frac{4 E^{2} \alpha^{2}}{4 ( m^{2} c^{4} - E^{2} )}
+( \epsilon + n )^{2} = \left( \frac{a_{1}^{2} - a^{2}}{2 aa_{1}} \right)^{2} \alpha^{2} = \left( \frac{\left( \left( mc^{2} - E \right)^{2} - \left( m^{2} c^{4} - E^{2} \right) \right)^{2}}{4 ( m^{2} c^{4} - E^{2} ) ( mc^{2} - E )^{2}} \right) \alpha^{2} = \frac{4 E^{2} \alpha^{2}}{4 ( m^{2} c^{4} - E^{2} )}
 $$
 
 $$
@@ -898,17 +898,17 @@ $$
 
 solutions exist, with $E$ given by (92).
 
-The alternative possibility is that$\surd$_all_ $e_{s}$ _are zero_. Suppose not both of $c_{\epsilon}$ and $d_{\epsilon}$ are zero. Then $\alpha^{2} + \epsilon^{2} - k^{2}$ = 0 as before and so $\epsilon = k^{2} - \alpha^{2}$. But now
+The alternative possibility is that _all_ $e_{s}$ _are zero_. Suppose not both of $c_{\epsilon}$ and $d_{\epsilon}$ are zero. Then $\alpha^{2} + \epsilon^{2} - k^{2}$ = 0 as before and so $\epsilon = \sqrt{k^{2} - \alpha^{2}}$. But now
 
 $$
 a_{1} c_{\epsilon} - ad_{\epsilon} = 0
 $$
 
 $$
-\alpha c_{\epsilon} - ( \epsilon + k ) d_{\epsilon} = 0 \surd
+\alpha c_{\epsilon} - ( \epsilon + k ) d_{\epsilon} = 0
 $$
 
-Hence $a\alpha - a_{1} ( \epsilon + k )$ = 0 and $k$ must be positive to make $\epsilon + k = k^{2} - \alpha^{2} + k>$ 0. After this the solution goes as before. So solutions (92) exist for
+Hence $a\alpha - a_{1} ( \epsilon + k )$ = 0 and $k$ must be positive to make $\epsilon + k = \sqrt{k^{2} - \alpha^{2}} + k>$ 0. After this the solution goes as before. So solutions (92) exist for
 
 $$
 n = 0 , \quad k = + 1 , + 2 , + 3 ,\dots \tag{94}
@@ -1038,7 +1038,7 @@ $$
 
 calculated by <a id="ix-243">Schwinger</a> using the complete many-particle theory.
 
-_Problem 2_ Calculate energy values and <a id="ix-81">wave functions</a> of a Dirac particle moving in a homogeneous infinite magnetic field. Can be done exactly. See F. <a id="ix-227">Sauter</a>, _Zeitschrift f¨ur Physik_ 69 (1931) 742.
+_Problem 2_ Calculate energy values and <a id="ix-81">wave functions</a> of a Dirac particle moving in a homogeneous infinite magnetic field. Can be done exactly. See F. <a id="ix-227">Sauter</a>, _Zeitschrift für Physik_ 69 (1931) 742.
 
 _Solution_ Take the field $\boldsymbol{B}$ in the $z$ direction.
 

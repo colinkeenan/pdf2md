@@ -69,7 +69,7 @@ $$
 where $v$ is the velocity of the incident electron. Hence the cross-section for an unpolarized electron beam is
 
 $$
-\sigma_{0} = \left( \frac{eE}{2 \pi \hbar^{2} c^{2}} \right)^{2} \left( 1 - \beta^{2} \sin^{2} \frac{\theta}{2} \right) | V ( \boldsymbol{q} ) |^{2} d \Omega \tag{631}
+\overline{\sigma}_{0} = \left( \frac{eE}{2 \pi \hbar^{2} c^{2}} \right)^{2} \left( 1 - \beta^{2} \sin^{2} \frac{\theta}{2} \right) | V ( \boldsymbol{q} ) |^{2} d \Omega \tag{631}
 $$
 
 where $E$ is the energy of the incident electron.
@@ -89,25 +89,25 @@ $$
 Summing and averaging over the spin-states
 
 $$
-\begin{aligned} \tfrac{1}{2} \sum_{u} \sum_{u^{\prime}} ( u^{\prime *} /qu ) ( u^{*} u^{\prime} ) &= \frac{1}{2 ( 2 i\mu )^{2}} \operatorname{Spur} \left\{ ( p / + i\mu ) \gamma_{4} ( p /^{\prime} + i\mu ) \gamma_{4} /q \right\} \\ &= - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu \left( {}_{4} \gamma_{4} /q + \gamma_{4} p /^{\prime} \gamma_{4} /q \right) /p\gamma \right\} = - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu ( p/p /^{\prime} - p/p / - p /^{\prime} p /^{\prime} + p /^{\prime} p / ) \right\} \\ &= - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu ( p /^{\prime} - p / ) ( p /^{\prime} - p / ) \right\} = \frac{i}{2 \mu} q^{2} \end{aligned} \tag{634}
+\begin{aligned} \tfrac{1}{2} \sum_{u} \sum_{u^{\prime}} ( u^{\prime *} /qu ) ( u^{*} u^{\prime} ) &= \frac{1}{2 ( 2 i\mu )^{2}} \operatorname{Spur} \left\{ ( p / + i\mu ) \gamma_{4} ( p /^{\prime} + i\mu ) \gamma_{4} /q \right\} \\ &= - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu \left( /p\gamma_{4} \gamma_{4} /q + \gamma_{4} p /^{\prime} \gamma_{4} /q \right) \right\} = - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu ( p/p /^{\prime} - p/p / - p /^{\prime} p /^{\prime} + p /^{\prime} p / ) \right\} \\ &= - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu ( p /^{\prime} - p / ) ( p /^{\prime} - p / ) \right\} = \frac{i}{2 \mu} q^{2} \end{aligned} \tag{634}
 $$
 
 Hence for an unpolarized electron beam the non-radiative cross-section is
 
 $$
-\sigma_{N} = \left( 1 - \frac{2 \alpha}{3 \pi} \left( \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right) \frac{q^{2}}{\mu^{2}} \right) \sigma_{0} - \left( \frac{em}{2 \pi \hbar^{2}} \right)^{2} | V ( \boldsymbol{q} ) |^{2} d \Omega \frac{\alpha}{4 \pi} \frac{q^{2}}{\mu^{2}} \tag{635}
+\overline{\sigma}_{N} = \left( 1 - \frac{2 \alpha}{3 \pi} \left( \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right) \frac{q^{2}}{\mu^{2}} \right) \overline{\sigma}_{0} - \left( \frac{em}{2 \pi \hbar^{2}} \right)^{2} | V ( \boldsymbol{q} ) |^{2} d \Omega \frac{\alpha}{4 \pi} \frac{q^{2}}{\mu^{2}} \tag{635}
 $$
 
 Since we are working only to order $q^{2}$ in the radiative corrections, the second term in (635) may be replaced by
 
 $$
-- \frac{\alpha}{4 \pi} \frac{q^{2}}{\mu^{2}} \sigma_{0} \tag{636}
+- \frac{\alpha}{4 \pi} \frac{q^{2}}{\mu^{2}} \overline{\sigma}_{0} \tag{636}
 $$
 
 and then we find
 
 $$
-\sigma_{N} = \left( 1 - \frac{2 \alpha}{3 \pi} \left( \log \frac{mc^{2}}{2 \Delta E} + \tfrac{5}{6} - \tfrac{1}{5} \right) \frac{q^{2}}{\mu^{2}} \right) \sigma_{0} \tag{637}
+\sigma_{N} = \left( 1 - \frac{2 \alpha}{3 \pi} \left( \log \frac{mc^{2}}{2 \Delta E} + \tfrac{5}{6} - \tfrac{1}{5} \right) \frac{q^{2}}{\mu^{2}} \right) \overline{\sigma}_{0} \tag{637}
 $$
 
 Formulae (628) and (631) are exact for electrons of any energy; while (632) and (637) are valid only for slow electrons, terms of order higher than $\alpha q^{2}$ being neglected.
@@ -120,13 +120,13 @@ $$
 
 and therefore for all possible photons the momentum $\hbar | \boldsymbol{k}^{\prime} |$ will be very small compared with the electron momentum $\hbar | \boldsymbol{p} |$.<sup><a id="fnref-83" href="#fn-83">83</a></sup> Thus the recoil of the electron, arising from the momentum carried off by the photon, <a id="p120"><sup>[p. 120]</sup></a> can always be neglected. The matrix element and probability for radiative scattering will be given by (618) and (620), even when the photon takes away a large fraction of the kinetic energy of the electron.
 
-We imagine a scattering experiment in which only the direction of the emerging electron is measured and not its energy. Then the radiative cross-section $\sigma_{R}$ will measure the total probability of scattering the electron into a <a id="ix-26">solid</a> angle $d$Ω with emission of a photon having any frequency between the lower limit $r$ and the upper limit $k_{\max}$ given by (638). The observed cross-section will be
+We imagine a scattering experiment in which only the direction of the emerging electron is measured and not its energy. Then the radiative cross-section $\overline{\sigma}_{R}$ will measure the total probability of scattering the electron into a <a id="ix-26">solid</a> angle $d$Ω with emission of a photon having any frequency between the lower limit $r$ and the upper limit $k_{\max}$ given by (638). The observed cross-section will be
 
 $$
-\sigma_{T} = \sigma_{N} + \sigma_{R} \tag{639}
+\sigma_{T} = \overline{\sigma}_{N} + \overline{\sigma}_{R} \tag{639}
 $$
 
-with the same low-frequency cut-off $r$ in both $\sigma_{N}$ and $\sigma_{R}$. Thus $\sigma_{T}$ gives the cross-section for scattering into a given solid angle $d$Ω with or without photon emission. Being directly observed, $\sigma_{T}$ must be divergence-free and independent of $r$.
+with the same low-frequency cut-off $r$ in both $\overline{\sigma}_{N}$ and $\overline{\sigma}_{R}$. Thus $\sigma_{T}$ gives the cross-section for scattering into a given solid angle $d$Ω with or without photon emission. Being directly observed, $\sigma_{T}$ must be divergence-free and independent of $r$.
 
 In the radiative scattering process we may take the final momentum of the electron to be $\lambda \hbar p^{\prime}$ where 0 $<\lambda <$ 1 and $p^{\prime}$ satisfies (627). Instead of (627) the conservation of energy now gives by (638)
 
@@ -155,7 +155,7 @@ $$
 Hence the radiative cross-section integrated over the quantum frequency is
 
 $$
-\sigma_{R} = \frac{2 \alpha}{3 \pi} \int_{0}^{\lambda_{m}} \frac{2 \lambda^{2} d\lambda}{1 - \lambda^{2}} \frac{| \boldsymbol{p} - \lambda \boldsymbol{p}^{\prime} |^{2}}{\mu^{2}} \left( \frac{eE}{2 \pi \hbar^{2} c^{2}} \right)^{2} | V ( p - \lambda p^{\prime} ) |^{2} d \Omega \tag{644}
+\overline{\sigma}_{R} = \frac{2 \alpha}{3 \pi} \int_{0}^{\lambda_{m}} \frac{2 \lambda^{2} d\lambda}{1 - \lambda^{2}} \frac{| \boldsymbol{p} - \lambda \boldsymbol{p}^{\prime} |^{2}}{\mu^{2}} \left( \frac{eE}{2 \pi \hbar^{2} c^{2}} \right)^{2} | V ( p - \lambda p^{\prime} ) |^{2} d \Omega \tag{644}
 $$
 
 where by (640) and (638)
@@ -169,7 +169,7 @@ $T$ is the initial kinetic energy of the electron given by (638).
 Now we can combine (637) and (644) to give by (639) and (629)
 
 $$
-\begin{aligned} \sigma_{T} &= \left( 1 - \frac{2 \alpha}{3 \pi} \left( \log \frac{mc^{2}}{2 T} + \tfrac{5}{6} - \tfrac{1}{5} \right) 4 \beta^{2} \sin^{2} \frac{\theta}{2} \right) \sigma_{0} \\ & \quad + \frac{2 \alpha}{3 \pi} \left( \frac{e}{2 \pi \hbar c} \right)^{2} d \Omega \times \int_{0}^{1} \frac{2 \lambda d\lambda}{1 - \lambda^{2}} \left\{ \lambda | \boldsymbol{p} - \lambda \boldsymbol{p}^{\prime} |^{2} | V ( p - \lambda p^{\prime} ) |^{2} -| \boldsymbol{p} - \boldsymbol{p}^{\prime} |^{2} | V ( p - p^{\prime} ) |^{2} \right\} \end{aligned} \tag{646}
+\begin{aligned} \sigma_{T} &= \left( 1 - \frac{2 \alpha}{3 \pi} \left( \log \frac{mc^{2}}{2 T} + \tfrac{5}{6} - \tfrac{1}{5} \right) 4 \beta^{2} \sin^{2} \frac{\theta}{2} \right) \overline{\sigma}_{0} \\ & \quad + \frac{2 \alpha}{3 \pi} \left( \frac{e}{2 \pi \hbar c} \right)^{2} d \Omega \times \int_{0}^{1} \frac{2 \lambda d\lambda}{1 - \lambda^{2}} \left\{ \lambda | \boldsymbol{p} - \lambda \boldsymbol{p}^{\prime} |^{2} | V ( p - \lambda p^{\prime} ) |^{2} -| \boldsymbol{p} - \boldsymbol{p}^{\prime} |^{2} | V ( p - p^{\prime} ) |^{2} \right\} \end{aligned} \tag{646}
 $$
 
 Here we used the following trick: the integral over $\lambda$ blows up at $\lambda$ = 1. Therefore we subtract from the numerator its value at $\lambda$ = 1, which makes the integral behave decently and permits us to change the upper limit from $\lambda_{m}$ to 1, for small ∆$E$’s. We also have to add then the integrand with the numerator having $\lambda$ = 1; this gives then a logarithmic term which combines with (637) to give the first part of (646).
@@ -179,7 +179,7 @@ Here we used the following trick: the integral over $\lambda$ blows up at $\lamb
 Formula (646) gives a result of the form
 
 $$
-\sigma_{T} = \left( 1 - \frac{8 \alpha}{3 \pi} \beta^{2} \sin^{2} \frac{\theta}{2} \left\{ \log \frac{mc^{2}}{2 T} + f ( \theta ) \right\} \right) \sigma_{0} \tag{647}
+\sigma_{T} = \left( 1 - \frac{8 \alpha}{3 \pi} \beta^{2} \sin^{2} \frac{\theta}{2} \left\{ \log \frac{mc^{2}}{2 T} + f ( \theta ) \right\} \right) \overline{\sigma}_{0} \tag{647}
 $$
 
 where for low velocities $f ( \theta )$ is independent of $T$ and of order 1 compared to the logarithm. For any special potential $f ( \theta )$ can be calculated.
@@ -194,7 +194,7 @@ which is much smaller if $v$ is not relativistic. Thus the correction _cannot be
 
 The exact formulae in both non-relativistic and relativistic cases have been published by J. Schwinger, _Phys. Rev._ 76 (1949) 790.
 
-An experimental test in the relativistic range is just on the limits of the possible. See Lyman, Hanson and Scott, _Phys. Rev._ 84 (1951) 626. Scattering of 15 MeV electrons by nuclei were measured with very good energy-resolution, ∆$E/E$ being 1 - 3 %. In this case it was _only_ the <a id="ix-37">non-radiative</a> cross-section $\sigma_{N}$ that was observed, and so the radiative correction given by the relativistic form of (637) becomes quite large. In fact the radiative correction in $\sigma_{N}$ in the relativistic range becomes of the order
+An experimental test in the relativistic range is just on the limits of the possible. See Lyman, Hanson and Scott, _Phys. Rev._ 84 (1951) 626. Scattering of 15 MeV electrons by nuclei were measured with very good energy-resolution, ∆$E/E$ being 1 - 3 %. In this case it was _only_ the <a id="ix-37">non-radiative</a> cross-section $\overline{\sigma}_{N}$ that was observed, and so the radiative correction given by the relativistic form of (637) becomes quite large. In fact the radiative correction in $\overline{\sigma}_{N}$ in the relativistic range becomes of the order
 
 $$
 \alpha \left\{ \log \frac{\Delta E}{E} \right\} \left\{ \log \frac{E}{mc^{2}} \right\} \tag{649}
@@ -202,7 +202,7 @@ $$
 
 according to Schwinger, _Phys. Rev._ 76, 813, Eq. (2.105) (with misprint $K$ for $k$, in my notation $\mu$.) In the conditions of the experiment of Lyman-Hanson-Scott (649) becomes of the order 5% and was clearly observed, the experimental errors being $\sim$ 2%. However, (649) arises mainly from the low-energy virtual photons, with energies going down to ∆$E$. What is observed is just the decrease in the non-radiative cross-section due to the competition of radiative scattering with energy-loss in the range [∆$E,E ]$. Thus the measurement of (649) by LHS is actually only a very inaccurate measurement of the cross-section for bremsstrahlung, which could be observed much more accurately by observing the photons which are really emitted.
 
-The theoretically interesting part of the radiative corrections is the part which is not just the effect of real bremsstrahlung. This part is given by the terms in $\sigma_{N}$ which are of order 1 compared with the log(∆$E/E )$ appearing in (649). For example, we would have to observe with sufficient accuracy to see the terms $( \tfrac{5}{\overline{6}} - \tfrac{1}{\overline{5}} )$ in (637) if we wished to verify the theoretical radiative corrections at low velocities. In the relativistic range the “genuine” radiative corrections are of order
+The theoretically interesting part of the radiative corrections is the part which is not just the effect of real bremsstrahlung. This part is given by the terms in $\overline{\sigma}_{N}$ which are of order 1 compared with the log(∆ ) appearing in (649). For example, we would have to observe with sufficient accuracy to see the terms $( {}^{5} \frac{E/E}{6} - \tfrac{1}{5} )$ in (637) if we wished to verify the theoretical radiative corrections at low velocities. In the relativistic range the “genuine” radiative corrections are of order
 
 $$
 \alpha \log \left( \frac{E}{mc^{2}} \right) \tag{650}
@@ -255,7 +255,7 @@ $$
 is added to the Lagrangian. This refers still to the one-electron Dirac equation. In the theory of the quantized Dirac field, the corresponding addition to the Lagrangian density (410) is
 
 $$
-L_{M} = - \tfrac{1}{2} i\delta M\psi \sum_{\mu} \sum_{\nu} \sigma_{\mu \nu} \psi F_{\mu \nu}^{e} \tag{656}
+L_{M} = - \tfrac{1}{2} i\delta M \overline{\psi} \sum_{\mu} \sum_{\nu} \sigma_{\mu \nu} \psi F_{\mu \nu}^{e} \tag{656}
 $$
 
 where it is supposed that the anomalous moment is interacting with the external Maxwell field. The addition (656) to the Lagrangian<sup><a id="fnref-85" href="#fn-85">85</a></sup> gives a relativistically invariant description of an anomalous moment.
@@ -269,13 +269,13 @@ $$
 the integral being over all space-time. Using (542) for the initial and final electron wave-functions, and defining $q , e$ by (544) and (545), this matrix element becomes
 
 $$
-U_{M} = i \frac{\delta M}{2 \hbar c} \sum_{\mu ,\nu} ( u^{\prime} \sigma_{\mu \nu} u ) ( q_{\mu} e_{\nu} - q_{\nu} e_{\mu} ) = i \frac{\delta M}{2 \hbar c} \left[ u^{\prime} ( /q/e - /e/q ) u \right] \tag{658}
+U_{M} = i \frac{\delta M}{2 \hbar c} \sum_{\mu ,\nu} ( \overline{u}^{\prime} \sigma_{\mu \nu} u ) ( q_{\mu} e_{\nu} - q_{\nu} e_{\mu} ) = i \frac{\delta M}{2 \hbar c} \left[ u^{\prime} ( /q/e - /e/q ) u \right] \tag{658}
 $$
 
 where we used $\gamma_{k} \gamma_{\ell} = i\sigma_{m} ,k,\ell ,m$ = (1$, 2 ,$3) cyclically permuted. Since we have also assumed (588) we may write simply
 
 $$
-U_{M} = - i \frac{\delta M}{\hbar c} ( u^{\prime} /e/qu ) \tag{659}
+U_{M} = - i \frac{\delta M}{\hbar c} ( \overline{u}^{\prime} /e/qu ) \tag{659}
 $$
 
 <a id="p123"><sup>[p. 123]</sup></a>
@@ -322,7 +322,7 @@ $$
 \Psi ( t ) = \Omega_{1} \Phi ( t ) \tag{662}
 $$
 
-where Ω${}_{1} ( t )$ is defined as in (492), only with $e\psi / A\psi$ replaced by $[ e\psi / A\psi + i\delta mc^{2} \overline{\psi \psi} ]$, and the function $g_{A} ( t )$ is as before supposed to tend to the limiting form $g_{A} ( t ) \to$ 1 at the end of the calculation. The operator Ω${}_{1} ( t )$ satisfies
+where Ω${}_{1} ( t )$ is defined as in (492), only with $e \overline{\psi} / A\psi$ replaced by $[ e \overline{\psi} / A\psi + i\delta mc^{2} \overline{\psi} \psi ]$, and the function $g_{A} ( t )$ is as before supposed to tend to the limiting form $g_{A} ( t ) \to$ 1 at the end of the calculation. The operator Ω${}_{1} ( t )$ satisfies
 
 $$
 i \hbar \frac{\partial \Omega_{1} ( t )}{\partial t} = H^{I} ( t ) \Omega_{1} ( t ) \tag{663}
@@ -411,7 +411,7 @@ The calculation of $H_{T 2}$, which is the main part of the <a id="ix-147">Lamb<
 We next turn to the evaluation of $H_{T 1}$, which is related to $U_{1}$ in the same way as $H_{T 2}$ to $( U_{2} + U_{2}^{1} )$. According to (484) the matrix element of $U_{1}$ for a one-electron transition between the states (542), with emission of the photon (440), is<sup><a id="fnref-90" href="#fn-90">90</a></sup>
 
 $$
-M_{1} = - \frac{e^{2}}{\hbar^{2} c^{2}} u^{\prime} \left\{ /e \frac{1}{p / - / k^{\prime} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{p /^{\prime} + k /^{\prime} - i\mu} /e \right\} u \tag{676a}
+M_{1} = - \frac{e^{2}}{\hbar^{2} c^{2}} \overline{u}^{\prime} \left\{ /e \frac{1}{p / - / k^{\prime} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{p /^{\prime} + k /^{\prime} - i\mu} /e \right\} u \tag{676a}
 $$
 
 where now
@@ -423,7 +423,7 @@ $$
 is given by the Fourier expansion (534). Note that we cannot yet use the simple form (546) for $M_{1}$, because we do not know that $k^{\prime} \ll p,q$ for the photons which will be important in this problem. Using the Dirac equation satisfied by $u$ and $u^{\prime}$, we may write without approximations using (587) and rule 4 on page 87,
 
 $$
-M_{1} = - \frac{e^{2}}{2 \hbar^{2} c^{2}} u^{\prime} \left\{ \frac{/e/ k^{\prime} /e^{\prime} - 2 ( p \cdot e^{\prime} ) /e}{p \cdot k^{\prime}} + \frac{/e^{\prime} / k^{\prime} /e + 2 ( p^{\prime} \cdot e^{\prime} ) /e}{p^{\prime} \cdot k^{\prime}} \right\} u \tag{677a}
+M_{1} = - \frac{e^{2}}{2 \hbar^{2} c^{2}} \overline{u}^{\prime} \left\{ \frac{/e/ k^{\prime} /e^{\prime} - 2 ( p \cdot e^{\prime} ) /e}{p \cdot k^{\prime}} + \frac{/e^{\prime} / k^{\prime} /e + 2 ( p^{\prime} \cdot e^{\prime} ) /e}{p^{\prime} \cdot k^{\prime}} \right\} u \tag{677a}
 $$
 
 Since $p$ and $p^{\prime}$ are assumed non-relativistic we may write
@@ -437,7 +437,7 @@ $$
 and then
 
 $$
-M_{1} = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu k_{0}^{\prime}} u^{\prime} \left\{ 2 ( ( p^{\prime} - p ) \cdot e^{\prime} ) /e + /e^{\prime} / k^{\prime} /e + /e/ k^{\prime} /e^{\prime} \right\} u \tag{678}
+M_{1} = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu k_{0}^{\prime}} \overline{u}^{\prime} \left\{ 2 ( ( p^{\prime} - p ) \cdot e^{\prime} ) /e + /e^{\prime} / k^{\prime} /e + /e/ k^{\prime} /e^{\prime} \right\} u \tag{678}
 $$
 
 Now because we shall be considering only an electrostatic potential (674), $/e$ is a multiple of $\gamma_{4}$ simply. Then if $k_{3}^{\prime}$ is the space-like part of the vector $k^{\prime}$, we have
@@ -455,7 +455,7 @@ $$
 Now this term (679) is small compared to the other term in (678), because $/e^{\prime}$ involves the matrices $\gamma_{1} ,\gamma_{2} ,\gamma_{3}$ while $/e$ involves $\gamma_{4}$, and the matrix elements of $\gamma_{1} ,\gamma_{2} ,\gamma_{3}$ for non-relativistic transitions are small, of the order of $( v/c )$. The term (679) in fact describes magnetic radiation, whereas the other term in (678) gives electric. The electric term gives an effect of the order of the <a id="ix-125">Lamb shift</a>. Hence in our approximation we may neglect the magnetic term and write
 
 $$
-M_{1} = \frac{e^{2}}{\hbar^{2} c^{2} \mu k_{0}^{\prime}} ( ( p^{\prime} - p ) \cdot e^{\prime} ) ( u^{\prime} /eu ) \tag{680}
+M_{1} = \frac{e^{2}}{\hbar^{2} c^{2} \mu k_{0}^{\prime}} ( ( p^{\prime} - p ) \cdot e^{\prime} ) ( \overline{u}^{\prime} /eu ) \tag{680}
 $$
 
 which is the same result as we should have obtained from (546).
@@ -477,7 +477,7 @@ Compare with (422)<sup><a id="fnref-91" href="#fn-91">91</a></sup>.
 Thus the operator $U_{1}$ which has the matrix element (680) may be written<sup><a id="fnref-92" href="#fn-92">92</a></sup>
 
 $$
-U_{1} = \frac{e^{2}}{\hbar^{2} c\mu} \int dx\psi ( Z \cdot \partial ) A /^{e} \psi ( x ) \tag{683}
+U_{1} = \frac{e^{2}}{\hbar^{2} c\mu} \int dx \overline{\psi} ( Z \cdot \partial ) A /^{e} \psi ( x ) \tag{683}
 $$
 
 Using (670) and specializing by means of (674), this gives
