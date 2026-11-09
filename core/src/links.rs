@@ -686,7 +686,7 @@ pub fn link_index(chapters: &mut [Chapter], pdf: &[u32]) {
     // Anchors where linked pages start, for numbers whose term was not found
     // on their page (last blocks first, so earlier positions stay valid).
     let mut starts: Vec<((usize, usize), String)> = page_anchors.into_iter().filter_map(|(n, id)| Some((*pdf_start.get(&n)?, id))).collect();
-    starts.sort_by(|a, b| b.0.cmp(&a.0));
+    starts.sort_by_key(|s| std::cmp::Reverse(s.0));
     for ((ci, bi), id) in starts {
         let page = chapters[ci].blocks[bi].page;
         match &mut chapters[ci].blocks[bi].block {
