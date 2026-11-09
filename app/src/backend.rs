@@ -120,6 +120,40 @@ fn new_dir(dir: &Path) -> PathBuf {
         .expect("some name is free")
 }
 
+/// Move everything inside `dir` into a new sibling folder "<name> (previous)"
+/// (numbered if that exists) and return it. `dir` itself is left, empty.
+fn move_contents_aside(dir: &Path) -> Result<PathBuf, String> {
+    let name = dir.file_name().map(|s| s.to_string_lossy().into_owned()).unwrap_or_default();
+    let aside = (0..)
+        .map(|n| dir.with_file_name(if n == 0 { format!("{name} (previous)") } else { format!("{name} (previous {n})") }))
+        .find(|p| !p.exists())
+        .expect("some name is free");
+    std::fs::create_dir(&aside).map_err(|e| format!("could not create {}: {e}", aside.display()))?;
+    let entries = std::fs::read_dir(dir).map_err(|e| format!("could not read {}: {e}", dir.display()))?;
+    for e in entries.flatten() {
+        let to = aside.join(e.file_name());
+        std::fs::rename(e.path(), &to).map_err(|err| format!("could not move {}: {err}", e.path().display()))?;
+    }
+    Ok(aside)
+}
+
+/// Replace: the old conversion inside `dir` goes to the Trash as one folder
+/// ("<name> (previous)"), and `dir` stays for the new one. If the Trash
+/// fails, everything is moved back.
+fn trash_contents(dir: &Path) -> Result<(), String> {
+    let aside = move_contents_aside(dir)?;
+    if let Err(e) = trash::delete(&aside) {
+        if let Ok(entries) = std::fs::read_dir(&aside) {
+            for en in entries.flatten() {
+                let _ = std::fs::rename(en.path(), dir.join(en.file_name()));
+            }
+        }
+        let _ = std::fs::remove_dir(&aside);
+        return Err(format!("could not move the old conversion to the Trash: {e}"));
+    }
+    Ok(())
+}
+
 fn run(input: &Path, output: &Path, replace: bool) -> Result<String, String> {
     let mut dest = book_dir(input, output);
     // equations corrected by hand in the earlier conversion are kept
@@ -133,8 +167,9 @@ fn run(input: &Path, output: &Path, replace: bool) -> Result<String, String> {
     // only touch the old folder once the new book is ready
     if dest.exists() {
         if replace {
-            // to the Trash, so the old conversion can still be restored
-            trash::delete(&dest).map_err(|e| format!("could not move {} to the Trash: {e}", dest.display()))?;
+            // the old conversion to the Trash (restorable), but the folder
+            // itself stays: terminals and editors inside it see the new files
+            trash_contents(&dest)?;
         } else {
             dest = new_dir(&dest);
         }
@@ -205,6 +240,25 @@ impl qobject::Converter {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn replace_keeps_the_folder() {
+        let tmp = std::env::temp_dir().join(format!("pdf2md-aside-{}", std::process::id()));
+        let book = tmp.join("My Book");
+        std::fs::create_dir_all(book.join("images")).unwrap();
+        std::fs::write(book.join("01-a.md"), "old").unwrap();
+        std::fs::write(book.join(".pdf2md-written"), "k\tx").unwrap();
+        std::fs::write(book.join("images/fig.png"), "png").unwrap();
+        let aside = move_contents_aside(&book).unwrap();
+        assert_eq!(aside, tmp.join("My Book (previous)"));
+        assert!(book.is_dir() && std::fs::read_dir(&book).unwrap().next().is_none());
+        assert_eq!(std::fs::read_to_string(aside.join("01-a.md")).unwrap(), "old");
+        assert!(aside.join(".pdf2md-written").exists() && aside.join("images/fig.png").exists());
+        // a second time: a numbered name
+        std::fs::write(book.join("01-a.md"), "newer").unwrap();
+        assert_eq!(move_contents_aside(&book).unwrap(), tmp.join("My Book (previous 1)"));
+        std::fs::remove_dir_all(&tmp).unwrap();
+    }
 
     #[test]
     fn keep_both_picks_the_next_free_name() {
