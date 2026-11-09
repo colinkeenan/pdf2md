@@ -435,6 +435,19 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
                     out.push(Inline::Emph(s.text.clone()));
                 }
             }
+            _ if s.url.is_some() => {
+                // a web link: keep its address
+                if space {
+                    push_text(&mut out, " ");
+                }
+                let text = s.text.trim();
+                let href = s.url.clone().unwrap_or_default();
+                // the same link split over several pieces: one link
+                match out.last_mut() {
+                    Some(Inline::Link { text: t, href: h }) if *h == href && !space => t.push_str(&crate::emit::escape_text(text)),
+                    _ => out.push(Inline::Link { text: crate::emit::escape_text(text), href }),
+                }
+            }
             _ => {
                 if space {
                     push_text(&mut out, " ");
