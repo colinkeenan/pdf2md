@@ -122,6 +122,12 @@ REPEAT = re.compile(r"(\\[a-zA-Z]+|\\.|[^\s])(\s*\1){7,}")
 
 
 BIG = r"\\[bB]igg?[lrm]?"
+DELIMS = set("()[]|./") | {
+    "\\{", "\\}", "\\|", "\\langle", "\\rangle", "\\lfloor", "\\rfloor", "\\lceil", "\\rceil",
+    "\\vert", "\\Vert", "\\lvert", "\\rvert", "\\lVert", "\\rVert", "\\uparrow", "\\downarrow",
+    "\\updownarrow", "\\Uparrow", "\\Downarrow", "\\backslash", "\\lbrace", "\\rbrace",
+    "\\lbrack", "\\rbrack", "\\langle", "<", ">",
+}
 
 
 def fix(t: str) -> str:
@@ -140,6 +146,11 @@ def plausible(t: str) -> bool:
     (a model stuck emitting the same token until it hits its length limit)."""
     if not t.strip() or NONSENSE.search(t) or REPEAT.search(t):
         return False
+    # a size (\\big, \\Bigl …) must be followed by a delimiter
+    for m in re.finditer(BIG + r"(?![a-zA-Z])\s*(\\[a-zA-Z]+|\\.|.)?", t):
+        nxt = m.group(1) or ""
+        if nxt not in DELIMS:
+            return False
     depth = 0
     k = 0
     while k < len(t):
@@ -171,6 +182,63 @@ def plausible(t: str) -> bool:
         elif not stack or stack.pop() != name:
             return False
     return not stack
+
+
+def rows(img: Image.Image, min_gap: int = 5, min_height: int = 10):
+    """Cut a multi-line equation image into its lines, at blank horizontal
+    bands at least `min_gap` pixels high (the gaps inside a fraction or
+    around a subscript are only a pixel or two). Very thin pieces (a
+    stray accent or dot) stay with the line above or below."""
+    g = img.convert("L")
+    w, h = g.size
+    px = g.load()
+    ink = [any(px[x, y] < 160 for x in range(w)) for y in range(h)]
+    cuts, y = [], 0
+    while y < h:
+        if not ink[y]:
+            y0 = y
+            while y < h and not ink[y]:
+                y += 1
+            if y0 > 0 and y < h and y - y0 >= min_gap:
+                cuts.append((y0 + y) // 2)
+        else:
+            y += 1
+    bounds = [0] + cuts + [h]
+    pieces = [(a, b) for a, b in zip(bounds, bounds[1:])]
+    merged = []
+    for a, b in pieces:
+        if merged and (b - a < min_height or merged[-1][1] - merged[-1][0] < min_height):
+            merged[-1] = (merged[-1][0], b)
+        else:
+            merged.append((a, b))
+    return [img.crop((0, a, w, b)) for a, b in merged]
+
+
+def read_one(img, model, processor, batch_inference):
+    """The first plausible reading: greedy, then with a little randomness."""
+    t = fix(clean(batch_inference([img], model, processor)[0]))
+    if plausible(t):
+        return t
+    for temperature in (0.2, 0.4, 0.6):
+        t = fix(clean(batch_inference([img], model, processor, temperature=temperature, max_tokens=768)[0]))
+        if plausible(t):
+            return t
+    return None
+
+
+def read_by_rows(img, model, processor, batch_inference):
+    """A tall equation the model cannot read whole (it was trained on
+    single equations): read line by line, as one aligned block."""
+    parts = rows(img)
+    if len(parts) < 2:
+        return None
+    lines = []
+    for part in parts:
+        t = read_one(part, model, processor, batch_inference)
+        if t is None:
+            return None
+        lines.append("& " + t)
+    return "\\begin{aligned}\n" + " \\\\\n".join(lines) + "\n\\end{aligned}"
 
 
 def main():
@@ -211,6 +279,11 @@ def main():
             if plausible(t):
                 answer = t
                 break
+        else:
+            # several lines in one image: line by line
+            t = read_by_rows(img, model, processor, batch_inference)
+            if t is not None:
+                answer = t
         (dst / f"{f.stem}.tex").write_text(answer + "\n")
     if doubtful:
         unread = sum((dst / f"{f.stem}.tex").read_text().startswith("%UNREADABLE") for f, _ in doubtful)

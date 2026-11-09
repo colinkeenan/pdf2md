@@ -594,6 +594,10 @@ fn place_images(doc: &mut Doc) {
             };
             let drawing = matches!(reading, Some(crate::ocr::Reading::Drawing)) || captioned(page, im);
             if tex.is_none() && (drawing || !page.lines.iter().any(in_text)) {
+                if std::env::var("PDF2MD_IMGDEBUG").is_ok() {
+                    let kind = if captioned(page, im) { "captioned" } else { match reading { Some(crate::ocr::Reading::Drawing) => "drawing", Some(crate::ocr::Reading::Unreadable) => "unreadable", _ => "no reading" } };
+                    eprintln!("IMGFIG page {} {:.0}x{:.0} {kind}", page.number, (im.right - im.left) / 1.5 * 96.0 / 72.0, (im.bottom - im.top) / 1.5 * 96.0 / 72.0);
+                }
                 page.figures.push(fig);
                 continue;
             }

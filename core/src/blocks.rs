@@ -158,7 +158,7 @@ pub fn stats(doc: &Doc, pages: &[PageInfo]) -> Stats {
 /// The equation number in a reference: "(3.422)", "(3.422", "3.425b" ->
 /// "3.422" … (chapter or appendix letter, dot, number, optional letter).
 pub fn equation_ref(t: &str) -> Option<&str> {
-    let t = t.trim().trim_start_matches('(').trim_end_matches([')', ',', ';', '.']);
+    let t = t.trim().trim_start_matches(['[', '(']).trim_end_matches([')', ']', ',', ';', '.']);
     let (a, b) = t.split_once('.')?;
     let b = b.trim_end_matches(|c: char| c.is_ascii_lowercase());
     (!a.is_empty() && a.len() <= 2 && a.chars().all(|c| c.is_ascii_alphanumeric()) && !b.is_empty() && b.chars().all(|c| c.is_ascii_digit()))

@@ -950,6 +950,55 @@ pub fn link_equations(chapters: &mut [Chapter]) {
             }
         }
     }
+    // References the PDF does not link: "(3.422)" in the text, where that
+    // equation exists (a dotted number in parentheses is an equation
+    // reference in such books; headings are left alone)
+    for ch in chapters.iter_mut() {
+        for inl in text_runs(ch) {
+            if !inl.iter().any(|x| matches!(x, Inline::Text(t) | Inline::Emph(t) if t.contains('('))) {
+                continue;
+            }
+            let old = std::mem::take(inl);
+            for x in old {
+                // (in italic text too: the number links, the words stay italic)
+                let (t, emph) = match x {
+                    Inline::Text(t) => (t, false),
+                    Inline::Emph(t) => (t, true),
+                    other => {
+                        inl.push(other);
+                        continue;
+                    }
+                };
+                let piece = |s: String| if emph { Inline::Emph(s) } else { Inline::Text(s) };
+                let mut rest = t.as_str();
+                let mut buf = String::new();
+                while let Some(open) = rest.find('(') {
+                    let after = &rest[open + 1..];
+                    let close = after.find(')');
+                    let n = close.map(|c| &after[..c]).filter(|n| crate::blocks::equation_ref(n) == Some(*n) && home.contains_key(*n));
+                    match n {
+                        Some(n) => {
+                            buf.push_str(&rest[..=open]);
+                            if !buf.is_empty() {
+                                inl.push(piece(std::mem::take(&mut buf)));
+                            }
+                            let (slug, anchor) = &home[n];
+                            inl.push(Inline::Link { text: n.to_string(), href: format!("{slug}.md#{}", crate::equation_id(anchor)) });
+                            rest = &after[n.len()..];
+                        }
+                        None => {
+                            buf.push_str(&rest[..=open]);
+                            rest = after;
+                        }
+                    }
+                }
+                buf.push_str(rest);
+                if !buf.is_empty() {
+                    inl.push(piece(buf));
+                }
+            }
+        }
+    }
 }
 
 /// The number of a figure caption: "Fig. 1.1 The Stern–Gerlach …" -> "1.1".
