@@ -134,6 +134,8 @@ pub struct Book {
     pub pdf_pages: Vec<u32>,
     /// The PDF, to cut the pictures from when writing.
     pub source: Option<std::path::PathBuf>,
+    /// The book's title (for the top of book.md).
+    pub title: String,
 }
 
 /// The equation numbers of a displayed equation: its tag, and the \tag{…}
@@ -216,8 +218,59 @@ pub fn convert_pdf(path: &Path) -> Result<Book, String> {
 pub fn convert_pdf_pages(path: &Path, pages: Option<(u32, u32)>) -> Result<Book, String> {
     let doc = layout::read_pdf(path, pages)?;
     let mut book = convert_doc(&doc);
+    book.title = book_title(path, &doc);
     book.source = Some(path.to_path_buf());
     Ok(book)
+}
+
+/// The book's title: the PDF's title metadata if it reads like one (not an
+/// identifier like "arXiv:…" or a file name), else the biggest text on the
+/// first pages (the title page), else the file name.
+fn book_title(path: &Path, doc: &layout::Doc) -> String {
+    let words = |t: &str| t.split_whitespace().filter(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 2).count();
+    let meta = std::process::Command::new("pdfinfo")
+        .arg(path)
+        .output()
+        .ok()
+        .and_then(|o| String::from_utf8_lossy(&o.stdout).lines().find_map(|l| l.strip_prefix("Title:").map(|t| t.trim().to_string())))
+        .filter(|t| {
+            let l = t.to_lowercase();
+            words(t) >= 2 && !l.contains("arxiv") && !l.contains(".pdf") && !l.contains(".doc") && !l.contains(".tex") && !l.starts_with("microsoft")
+        });
+    if let Some(t) = meta {
+        return t;
+    }
+    // the biggest type on the first pages, all its lines together
+    // ("ADVANCED" / "QUANTUM MECHANICS"), in normal capitals
+    let has_words = |l: &layout::Line| words(&layout::plain_text(l)) >= 1;
+    let big = doc.pages.iter().take(4).flat_map(|p| p.lines.iter().filter(|l| has_words(l)).map(move |l| (p, l))).max_by(|a, b| a.1.size.total_cmp(&b.1.size));
+    let title = big.filter(|(_, l)| l.size > doc.body_size * 1.3).map(|(page, top)| {
+        // the lines just above and below it in large type belong to it
+        let lines: Vec<&layout::Line> = page.lines.iter().filter(|l| has_words(l)).collect();
+        let k = lines.iter().position(|l| std::ptr::eq(*l, top)).unwrap_or(0);
+        let part_of = |a: &layout::Line, b: &layout::Line| b.size >= 0.75 * top.size && (b.top - a.top).abs() <= 2.5 * top.size;
+        let (mut first, mut last) = (k, k);
+        while first > 0 && part_of(lines[first], lines[first - 1]) {
+            first -= 1;
+        }
+        while last + 1 < lines.len() && part_of(lines[last], lines[last + 1]) {
+            last += 1;
+        }
+        let text: Vec<String> = lines[first..=last].iter().map(|l| layout::plain_text(l).trim().to_string()).collect();
+        let t = text.join(" ");
+        if t.chars().any(char::is_lowercase) {
+            t
+        } else {
+            t.split_whitespace()
+                .map(|w| {
+                    let mut c = w.chars();
+                    c.next().map(|f| f.to_string() + &c.as_str().to_lowercase()).unwrap_or_default()
+                })
+                .collect::<Vec<_>>()
+                .join(" ")
+        }
+    });
+    title.filter(|t| !t.is_empty()).unwrap_or_else(|| path.file_stem().map(|s| s.to_string_lossy().into_owned()).unwrap_or_default())
 }
 
 /// Convert an already-read document.

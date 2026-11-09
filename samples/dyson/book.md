@@ -1,3 +1,5 @@
+# Advanced Quantum Mechanics
+
 <a id="00-front-matter"></a>
 
 # Front Matter

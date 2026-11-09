@@ -249,7 +249,8 @@ pub fn book_markdown(book: &Book) -> String {
             id.to_string()
         }
     };
-    let mut out = String::new();
+    // the book's title on top (a viewer names its tab after it)
+    let mut out = if book.title.is_empty() { String::new() } else { format!("# {}\n\n", book.title) };
     for (ci, body) in bodies.iter().enumerate() {
         if ci > 0 {
             out.push_str("---\n\n");
