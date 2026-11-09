@@ -146,15 +146,23 @@ Kirigami.ApplicationWindow {
                     Layout.fillWidth: true
                 }
 
-                QQC2.Button {
-                    icon.name: "run-build"
-                    text: "Convert"
-                    enabled: !converter.busy && root.inputUrl !== "" && root.outputUrl !== ""
-                    onClicked: {
-                        if (converter.exists(root.inputUrl, root.outputUrl)) {
-                            existsDialog.open()
-                        } else {
-                            converter.convert(root.inputUrl, root.outputUrl, false)
+                // set apart below the form, right-aligned under the Choose… buttons
+                Item {
+                    Layout.fillWidth: true
+                    implicitHeight: convertButton.implicitHeight + Kirigami.Units.gridUnit * 1.5
+                    QQC2.Button {
+                        id: convertButton
+                        anchors.right: parent.right
+                        anchors.bottom: parent.bottom
+                        icon.name: "run-build"
+                        text: "Convert"
+                        enabled: !converter.busy && root.inputUrl !== "" && root.outputUrl !== ""
+                        onClicked: {
+                            if (converter.exists(root.inputUrl, root.outputUrl)) {
+                                existsDialog.open()
+                            } else {
+                                converter.convert(root.inputUrl, root.outputUrl, false)
+                            }
                         }
                     }
                 }
