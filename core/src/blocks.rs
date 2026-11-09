@@ -1241,6 +1241,16 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 b.para.push(Inline::Anchor(a));
             }
         }
+        // printed pages that start below the last line of text: at the
+        // start of what follows
+        while mi < marks.len() {
+            if b.anchor.is_some() {
+                b.flush();
+                b.anchor_block();
+            }
+            b.anchor = Some(format!("p{}", marks[mi].1));
+            mi += 1;
+        }
         // Footnotes at the bottom of the page.
         let is_marker = |t: &str| !t.is_empty() && t.chars().all(|c| c.is_ascii_digit() || "*†‡§¶".contains(c));
         let mut lone_label: Option<String> = None;

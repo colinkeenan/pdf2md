@@ -639,16 +639,23 @@ fn add_link_positions(doc: &mut Doc, path: &Path) {
 fn printed_page_marks(doc: &mut Doc) {
     use std::collections::BTreeMap;
     let mut cited: BTreeMap<u32, Vec<(u32, f32)>> = BTreeMap::new();
+    let page_number = |s: &Span| -> Option<(u32, u32, f32)> {
+        let (Some(n), Some(top)) = (s.link, s.link_top) else { return None };
+        let t = s.text.trim().trim_end_matches([',', ';']);
+        if s.script != Script::Normal || t.is_empty() || t.len() > 4 || !t.chars().all(|c| c.is_ascii_digit()) {
+            return None;
+        }
+        Some((t.parse().ok()?, n, top))
+    };
     for page in &doc.pages {
-        for s in page.lines.iter().flat_map(|l| &l.spans) {
-            let (Some(n), Some(top)) = (s.link, s.link_top) else { continue };
-            let t = s.text.trim().trim_end_matches([',', ';']);
-            if s.script != Script::Normal || t.is_empty() || t.len() > 4 || !t.chars().all(|c| c.is_ascii_digit()) {
-                continue;
-            }
-            if let Ok(p) = t.parse::<u32>() {
-                cited.entry(p).or_default().push((n, top));
-            }
+        // only index pages: many linked page numbers (a linked year or
+        // volume number elsewhere is no printed page)
+        let found: Vec<(u32, u32, f32)> = page.lines.iter().flat_map(|l| &l.spans).filter_map(page_number).collect();
+        if found.len() < 15 {
+            continue;
+        }
+        for (p, n, top) in found {
+            cited.entry(p).or_default().push((n, top));
         }
     }
     // a page whose citations all go to one spot
@@ -680,10 +687,56 @@ fn printed_page_marks(doc: &mut Doc) {
         chain.push(j);
         k = j;
     }
+    chain.reverse();
     for &i in &chain {
         let (p, n, top) = pairs[i];
         if let Some(page) = doc.pages.iter_mut().find(|pg| pg.number == n) {
             page.marks.push((top, p.to_string()));
+        }
+    }
+    // Pages the index does not cite: spaced between the known pages on
+    // either side by the amount of text, marked as estimates.
+    let mut estimates: Vec<(u32, f32, String)> = Vec::new();
+    for w in chain.windows(2) {
+        let ((p1, n1, t1), (p2, n2, t2)) = (pairs[w[0]], pairs[w[1]]);
+        // (a printed page is about one PDF page: a far larger gap is no
+        // run of uncited pages but a wrong pair)
+        if p2 <= p1 + 1 || p2 - p1 > 2 * (n2 - n1) + 3 {
+            continue;
+        }
+        // the lines between the two known spots, with their amount of text
+        let lines: Vec<(u32, f32, usize)> = doc
+            .pages
+            .iter()
+            .filter(|pg| pg.number >= n1 && pg.number <= n2)
+            .flat_map(|pg| pg.lines.iter().map(move |l| (pg.number, l.top, l.spans.iter().map(|s| s.text.chars().count().max(if s.tex.is_some() { 10 } else { 0 })).sum::<usize>())))
+            .filter(|&(n, t, _)| (n, t) > (n1, t1 + 1.0) && (n, t) < (n2, t2 - 1.0))
+            .collect();
+        let total: usize = lines.iter().map(|l| l.2).sum();
+        if total == 0 {
+            continue;
+        }
+        let missing = p2 - p1;
+        let mut cum = 0usize;
+        let mut k = 1;
+        for &(n, t, c) in &lines {
+            while k < missing && cum >= total * k as usize / missing as usize {
+                estimates.push((n, t, format!("{}-approx", p1 + k)));
+                k += 1;
+            }
+            cum += c;
+        }
+        // (rounding can leave the last ones: on the last line)
+        if let Some(&(n, t, _)) = lines.last() {
+            while k < missing {
+                estimates.push((n, t, format!("{}-approx", p1 + k)));
+                k += 1;
+            }
+        }
+    }
+    for (n, t, label) in estimates {
+        if let Some(page) = doc.pages.iter_mut().find(|pg| pg.number == n) {
+            page.marks.push((t, label));
         }
     }
     for page in doc.pages.iter_mut() {

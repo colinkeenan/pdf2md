@@ -153,7 +153,14 @@ pub fn equation_id(number: &str) -> String {
 /// for other anchors.
 pub fn page_label(id: &str) -> Option<&str> {
     let l = id.strip_prefix('p')?;
+    let l = l.strip_suffix("-approx").unwrap_or(l);
     (!l.is_empty() && l.chars().all(|c| c.is_ascii_alphanumeric())).then_some(l)
+}
+
+/// A page-start anchor whose place is estimated ("p215-approx"): the page
+/// is not cited in the index, so it was spaced between known pages.
+pub fn page_is_approx(id: &str) -> bool {
+    id.ends_with("-approx") && page_label(id).is_some()
 }
 
 /// Plain text of some inlines (math as its LaTeX), for matching titles.

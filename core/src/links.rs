@@ -133,9 +133,9 @@ fn link_entries(
     let ranges: Vec<Option<(String, String)>> = chapters.iter().map(page_range).collect();
     let page_link = |label: &str| -> Vec<Inline> {
         match pages.get(label) {
-            Some(slug) => vec![
+            Some(href) => vec![
                 Inline::Text(" — ".into()),
-                Inline::Link { text: format!("p. {label}"), href: format!("{slug}.md#p{label}") },
+                Inline::Link { text: format!("p. {label}"), href: href.clone() },
             ],
             // ("@N" is a link target, not a page number to show)
             None if !label.is_empty() && !label.starts_with('@') => vec![Inline::Text(format!(" — p. {label}"))],
@@ -146,11 +146,11 @@ fn link_entries(
         match &ranges[ci] {
             Some((a, b)) if a != b => vec![
                 Inline::Text(" — ".into()),
-                Inline::Link { text: format!("pp. {a}–{b}"), href: format!("{}.md#p{a}", chapters[ci].slug) },
+                Inline::Link { text: format!("pp. {a}–{b}"), href: pages.get(a).cloned().unwrap_or_else(|| format!("{}.md#p{a}", chapters[ci].slug)) },
             ],
             Some((a, _)) => vec![
                 Inline::Text(" — ".into()),
-                Inline::Link { text: format!("p. {a}"), href: format!("{}.md#p{a}", chapters[ci].slug) },
+                Inline::Link { text: format!("p. {a}"), href: pages.get(a).cloned().unwrap_or_else(|| format!("{}.md#p{a}", chapters[ci].slug)) },
             ],
             None => Vec::new(),
         }
@@ -352,9 +352,10 @@ fn page_map(chapters: &[Chapter]) -> HashMap<String, String> {
     let mut map = HashMap::new();
     for ch in chapters {
         for b in &ch.blocks {
+            // label -> "file.md#id" of its marker
             let mut add = |id: &str| {
-                if let Some(l) = id.strip_prefix('p') {
-                    map.entry(l.to_string()).or_insert_with(|| ch.slug.clone());
+                if let Some(l) = page_label(id) {
+                    map.entry(l.to_string()).or_insert_with(|| format!("{}.md#{id}", ch.slug));
                 }
             };
             match &b.block {
@@ -635,7 +636,7 @@ pub fn link_index(chapters: &mut [Chapter], pdf: &[u32]) {
                     }
                 });
             }
-            let slug = pages.get(label)?;
+            let page_href = pages.get(label)?;
             let found = texts.get(label).and_then(|pieces| {
                 let search = |f: fn(&str, &str) -> Option<(usize, usize)>| {
                     cands.iter().find_map(|c| {
@@ -650,7 +651,7 @@ pub fn link_index(chapters: &mut [Chapter], pdf: &[u32]) {
                     let id = spots.entry(spot).or_insert_with(|| (format!("ix-{n}"), len)).0.clone();
                     format!("{}.md#{id}", chs[spot.0].slug)
                 }
-                None => format!("{slug}.md#p{label}"),
+                None => page_href.clone(),
             })
         };
         let old = std::mem::take(text);

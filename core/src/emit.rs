@@ -87,7 +87,8 @@ pub fn render_inlines(inl: &[Inline]) -> String {
                     if !s.is_empty() && !s.ends_with(' ') {
                         s.push(' ');
                     }
-                    s.push_str(&format!("<a id=\"{id}\"><sup>[p. {l}]</sup></a>"));
+                    let approx = if crate::page_is_approx(id) { "≈" } else { "" };
+                    s.push_str(&format!("<a id=\"{id}\"><sup>[{approx}p. {l}]</sup></a>"));
                 }
                 None => s.push_str(&format!("<a id=\"{id}\"></a>")),
             },
@@ -144,7 +145,10 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
             out.push_str(&format!("$$\n{latex}{tag}\n$$\n\n"));
         }
         Block::Anchor(id) => match page_label(id) {
-            Some(l) => out.push_str(&format!("<a id=\"{id}\"><sup>[p. {l}]</sup></a>\n\n")),
+            Some(l) => {
+                let approx = if crate::page_is_approx(id) { "≈" } else { "" };
+                out.push_str(&format!("<a id=\"{id}\"><sup>[{approx}p. {l}]</sup></a>\n\n"))
+            }
             None => out.push_str(&format!("<a id=\"{id}\"></a>\n\n")),
         },
         Block::Item { level, text } => {
