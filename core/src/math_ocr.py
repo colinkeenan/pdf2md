@@ -270,11 +270,18 @@ def looks_like_code(t: str) -> bool:
 
 def surely_code(t: str) -> bool:
     """Unmistakable Mathematica: its named characters (\\[Psi], which
-    Tesseract may write "\\ [Psi]"), or at least two weaker signs together
+    Tesseract may write "\\ [Psi]"), a CamelCase function with square
+    brackets (ClebschGordan[...]), or at least two weaker signs together
     (:=, /. replacement, a capitalized call Sqrt[...] with -> or a pattern
     x_). Strict, because it is tried on every image: read as text, typeset
     math can show any one of the weaker signs."""
     if re.search(r"\\\s?\[[A-Z][A-Za-z]+\]", t):
+        return True
+    # a CamelCase function applied with square brackets (ClebschGordan[...],
+    # HermiteH[...]): built from whole words, so the first part has at least
+    # four letters (a product of subscripted symbols read as text, "VnmVmi",
+    # has short parts); typeset math has short lowercase functions (exp, sin)
+    if re.search(r"\b[A-Z][a-z]{3,}[A-Z][A-Za-z]*[\s|]?\[", t):
         return True
     signs = [
         bool(re.search(r":=", t)),
@@ -299,7 +306,9 @@ def ocr_text(img: Image.Image):
             out = subprocess.run(["tesseract", tmp.name, "-", "--psm", "6"], capture_output=True, text=True, timeout=60, env=env)
         except (OSError, subprocess.TimeoutExpired):
             return None
-    return "\n".join(line.rstrip() for line in out.stdout.strip().splitlines())
+    text = "\n".join(line.rstrip() for line in out.stdout.strip().splitlines())
+    # a thin "[" right after a name is sometimes read as "|[" or " ["
+    return re.sub(r"([A-Za-z])[|]\[", r"\1[", text)
 
 
 def read_code(img: Image.Image):
