@@ -54,7 +54,7 @@ impl MSpan {
             math: doc.is_math(s),
             over: s.overline,
             bold: s.bold || crate::layout::is_bold_font(doc.family(s)),
-            atom: None,
+            atom: s.tex.clone(),
         }
     }
     fn cy(&self) -> f32 {

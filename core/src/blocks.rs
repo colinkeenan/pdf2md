@@ -100,22 +100,40 @@ pub fn stats(doc: &Doc, pages: &[PageInfo]) -> Stats {
     }
 
     // Chapter titles: the most common "big" font size outside the TOC.
+    // But when some big size has titles that start with a bare chapter
+    // number ("3 Theory of Angular Momentum", or "3" on a line of its own
+    // above the title), the largest such size is the
+    // chapter size, even if numbered subsections ("3.1.2 …") are more common.
     let mut counts: HashMap<i32, usize> = HashMap::new();
+    let mut numbered: HashMap<i32, usize> = HashMap::new();
     for (pi, p) in pages.iter().enumerate() {
         if toc_pages.contains(&pi) {
             continue;
         }
         for l in &p.lines {
-            if big_text_line(doc, l, body) {
-                *counts.entry((l.size * 10.0).round() as i32).or_default() += 1;
+            let k = (l.size * 10.0).round() as i32;
+            let text: String = l.spans.iter().map(|s| s.text.as_str()).collect::<Vec<_>>().join(" ");
+            let mut w = text.split_whitespace();
+            let number = w.next().is_some_and(|n| n.len() <= 2 && n.chars().all(|c| c.is_ascii_digit()));
+            let next = w.next();
+            let big = big_text_line(doc, l, body);
+            if big {
+                *counts.entry(k).or_default() += 1;
+            }
+            // "3 Theory of …", or the "3" alone on its own line
+            let alone = next.is_none() && l.size >= 1.12 * body && l.spans.iter().all(|s| !doc.is_math(s));
+            if number && (alone || (big && next.is_some_and(|t| t.chars().next().is_some_and(char::is_uppercase)))) {
+                *numbered.entry(k).or_default() += 1;
             }
         }
     }
-    let chapter_size = counts
-        .into_iter()
-        .filter(|&(_, c)| c >= 2)
-        .max_by_key(|&(s, c)| (c, s))
-        .map(|(s, _)| s as f32 / 10.0);
+    let chapter_size = numbered
+        .iter()
+        .filter(|&(_, &c)| c >= 2)
+        .map(|(&s, _)| s)
+        .max()
+        .or_else(|| counts.into_iter().filter(|&(_, c)| c >= 2).max_by_key(|&(s, c)| (c, s)).map(|(s, _)| s))
+        .map(|s| s as f32 / 10.0);
 
     let mut hyphenated = HashSet::new();
     for p in &doc.pages {

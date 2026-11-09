@@ -58,6 +58,9 @@ pub struct Span {
     pub script: Script,
     /// A drawn bar sits right above it (Ā). Set by [`read_pdf`].
     pub overline: bool,
+    /// LaTeX read from an equation image (see [`crate::ocr`]); the span
+    /// stands for that whole piece of math.
+    pub tex: Option<String>,
 }
 
 impl Span {
@@ -117,6 +120,8 @@ pub struct Page {
     pub rules: Vec<Rule>,
     /// Pictures (drawings, images) with their labels, top to bottom.
     pub figures: Vec<Figure>,
+    /// Embedded images (pictures or, in ebook-made PDFs, equations).
+    pub images: Vec<PageImage>,
 }
 
 /// A picture on a page: a drawing or an embedded image together with the
@@ -262,12 +267,24 @@ pub fn read_pdf(path: &Path, pages: Option<(u32, u32)>) -> Result<Doc, String> {
                 page.rules = r;
             }
             mark_overlines(&mut doc);
-            let delims = parse_svg_delims(&svg);
-            insert_delims(&mut doc, delims);
+            // Lost big brackets are a TeX font problem; in books without
+            // TeX's math fonts, outlines of large text glyphs are no brackets.
+            let tex_math = doc.fonts.iter().any(|f| {
+                let u = f.family.to_uppercase();
+                ["CMMI", "CMSY", "CMEX", "CMR", "MSAM", "MSBM"].iter().any(|p| u.starts_with(p))
+            });
+            if tex_math {
+                let delims = parse_svg_delims(&svg);
+                insert_delims(&mut doc, delims);
+            }
             let figures = parse_svg_figures(&svg);
             for (page, f) in doc.pages.iter_mut().zip(figures) {
                 page.figures = f;
             }
+            for (page, imgs) in doc.pages.iter_mut().zip(parse_svg_images(&svg)) {
+                page.images = imgs;
+            }
+            place_images(&mut doc);
             take_figure_labels(&mut doc);
         }
     }
@@ -418,6 +435,155 @@ fn take_figure_labels(doc: &mut Doc) {
             }
             page.lines.retain(|l| !l.spans.is_empty());
         }
+    }
+}
+
+/// An image embedded in a page (a raster picture, or in ebook-made PDFs
+/// an equation), in pdftohtml's pixels, with its PNG data as base64.
+#[derive(Debug, Clone)]
+pub struct PageImage {
+    pub left: f32,
+    pub right: f32,
+    pub top: f32,
+    pub bottom: f32,
+    pub png_base64: String,
+}
+
+/// The embedded images of each page of `pdftocairo -svg` output. Cairo
+/// writes an image either in place or once in <defs> (`<image id=…>`) and
+/// places it with `<use xlink:href="#id" transform=…>`.
+pub fn parse_svg_images(svg: &str) -> Vec<Vec<PageImage>> {
+    let attr = |tag: &str, name: &str| -> Option<String> { Some(tag.split(&format!(" {name}=\"")).nth(1)?.split('"').next()?.to_string()) };
+    let num = |tag: &str, name: &str| attr(tag, name).and_then(|v| v.trim_end_matches("px").parse::<f32>().ok());
+    let transform = |tag: &str| -> [f32; 6] {
+        attr(tag, "transform")
+            .and_then(|t| {
+                let v: Vec<f32> = t.strip_prefix("matrix(")?.trim_end_matches(')').split(',').filter_map(|x| x.trim().parse().ok()).collect();
+                (v.len() == 6).then(|| [v[0], v[1], v[2], v[3], v[4], v[5]])
+            })
+            .unwrap_or([1.0, 0.0, 0.0, 1.0, 0.0, 0.0])
+    };
+    let place = |m: [f32; 6], x: f32, y: f32, w: f32, h: f32, data: String| {
+        let p = |x: f32, y: f32| (m[0] * x + m[2] * y + m[4], m[1] * x + m[3] * y + m[5]);
+        let (a, b) = (p(x, y), p(x + w, y + h));
+        PageImage {
+            left: a.0.min(b.0) * 1.5,
+            right: a.0.max(b.0) * 1.5,
+            top: a.1.min(b.1) * 1.5,
+            bottom: a.1.max(b.1) * 1.5,
+            png_base64: data,
+        }
+    };
+    let image = |tag: &str| -> Option<(f32, f32, f32, f32, String)> {
+        let data = attr(tag, "xlink:href")?.strip_prefix("data:image/png;base64,")?.to_string();
+        Some((num(tag, "x").unwrap_or(0.0), num(tag, "y").unwrap_or(0.0), num(tag, "width")?, num(tag, "height")?, data))
+    };
+    // <defs> of a single page, or shared by all pages at the top
+    let mut by_id = std::collections::HashMap::new();
+    for defs in svg.split("<defs>").skip(1) {
+        let defs = defs.split("</defs>").next().unwrap_or("");
+        for tag in defs.split("<image ").skip(1) {
+            let tag = format!(" {}", tag.split('>').next().unwrap_or(""));
+            if let (Some(id), Some(img)) = (attr(&tag, "id"), image(&tag)) {
+                by_id.insert(id, img);
+            }
+        }
+    }
+    svg_pages(svg)
+        .into_iter()
+        .map(|page| {
+            let body = page.split("</defs>").last().unwrap_or(page);
+            let mut out = Vec::new();
+            for tag in body.split('<').skip(1) {
+                let tag = tag.split('>').next().unwrap_or("");
+                if let Some(rest) = tag.strip_prefix("image ") {
+                    let rest = format!(" {rest}");
+                    if let Some((x, y, w, h, d)) = image(&rest) {
+                        out.push(place(transform(&rest), x, y, w, h, d));
+                    }
+                } else if let Some(rest) = tag.strip_prefix("use ") {
+                    let rest = format!(" {rest}");
+                    let Some(id) = attr(&rest, "xlink:href").and_then(|h| h.strip_prefix('#').map(str::to_string)) else { continue };
+                    if let Some((x, y, w, h, d)) = by_id.get(&id) {
+                        out.push(place(transform(&rest), *x, *y, *w, *h, d.clone()));
+                    }
+                }
+            }
+            out
+        })
+        .collect()
+}
+
+/// Embedded images: a picture with a "Fig." caption right below it is a
+/// figure; any other image is first given to the math recognizer, and
+/// becomes a piece of math in its line (inline, or a displayed equation
+/// when it stands alone), or a figure if the recognizer says it is a
+/// drawing or cannot read it.
+fn place_images(doc: &mut Doc) {
+    let captioned = |page: &Page, im: &PageImage| {
+        im.bottom - im.top >= 60.0
+            && page.lines.iter().any(|l| {
+                l.top >= im.bottom - 2.0 && l.top < im.bottom + 60.0 && l.spans.first().is_some_and(|s| s.text.trim_start().starts_with("Fig"))
+            })
+    };
+    let wanted: Vec<&str> = doc
+        .pages
+        .iter()
+        .flat_map(|p| p.images.iter().filter(|im| !captioned(p, im)).map(|im| im.png_base64.as_str()))
+        .collect();
+    if doc.pages.iter().all(|p| p.images.is_empty()) {
+        return;
+    }
+    let readings = crate::ocr::recognize(&wanted);
+    let font = doc.fonts.len();
+    doc.fonts.push(Font { size: doc.body_size, family: "ImageMath".into(), math: true });
+    let fonts = doc.fonts.clone();
+    let size_of = |s: &Span| fonts.get(s.font).map_or(s.height, |f| f.size);
+    for page in doc.pages.iter_mut() {
+        let images = std::mem::take(&mut page.images);
+        let mut changed = vec![false; page.lines.len()];
+        for im in &images {
+            let fig = Figure { left: im.left, right: im.right, top: im.top, bottom: im.bottom };
+            let reading = if captioned(page, im) { None } else { readings.get(&crate::ocr::key(&im.png_base64)) };
+            let Some(crate::ocr::Reading::Latex(tex)) = reading else {
+                page.figures.push(fig);
+                continue;
+            };
+            let span = Span {
+                text: String::new(),
+                left: im.left,
+                top: im.top,
+                width: im.right - im.left,
+                height: im.bottom - im.top,
+                font,
+                bold: false,
+                italic: false,
+                script: Script::Normal,
+                overline: false,
+                tex: Some(tex.clone()),
+            };
+            // the line it shares the most height with, else a line of its own
+            let overlap = |l: &Line| (im.bottom.min(l.top + l.size) - im.top.max(l.top)).max(0.0);
+            match (0..page.lines.len()).filter(|&k| overlap(&page.lines[k]) > 0.0).max_by(|&a, &b| overlap(&page.lines[a]).total_cmp(&overlap(&page.lines[b]))) {
+                Some(k) => {
+                    page.lines[k].spans.push(span);
+                    changed[k] = true;
+                }
+                None => {
+                    page.lines.push(make_line(vec![span], &size_of));
+                    changed.push(false);
+                }
+            }
+        }
+        for (k, l) in page.lines.iter_mut().enumerate() {
+            if changed[k] {
+                let col = l.col;
+                *l = make_line(std::mem::take(&mut l.spans), &size_of);
+                l.col = col;
+            }
+        }
+        page.lines.sort_by(|a, b| a.top.total_cmp(&b.top));
+        page.figures.sort_by(|a, b| a.top.total_cmp(&b.top));
     }
 }
 
@@ -758,6 +924,7 @@ fn insert_delims(doc: &mut Doc, delims: Vec<Vec<Delim>>) {
                 italic: false,
                 script: Script::Normal,
                 overline: false,
+                tex: None,
             };
             // the line whose centre is nearest the bracket's centre
             let c = (d.top + d.bottom) / 2.0;
@@ -1020,6 +1187,7 @@ pub fn parse_xml(xml: &str) -> Result<Doc, String> {
                     italic: n.descendants().any(|d| d.has_tag_name("i")),
                     script: Script::Normal,
                     overline: false,
+                    tex: None,
                 });
             }
         }
@@ -1058,6 +1226,7 @@ pub fn parse_xml(xml: &str) -> Result<Doc, String> {
             }),
             rules: Vec::new(),
             figures: Vec::new(),
+            images: Vec::new(),
         })
         .collect();
 

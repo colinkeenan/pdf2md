@@ -21,6 +21,7 @@ pdf2md/
 │   ├── src/mathtex.rs     positioned spans -> LaTeX (fractions, scripts, limits, matrices)
 │   ├── src/structure.rs   chapters = headings in the chapter-title font size
 │   ├── src/notes.rs       footnotes + references, linked both ways
+│   ├── src/ocr.rs         equation images -> LaTeX via a local model (src/math_ocr.py)
 │   ├── src/links.rs       TOC + index linking
 │   ├── src/emit.rs        Markdown output
 │   ├── src/main.rs        command-line tool: pdf2md-cli
@@ -91,6 +92,21 @@ Everything is decided from the layout, measured against the book's own typical v
 * **Pictures** are found in the SVG: stroked or filled paths that are neither glyphs nor thin bars, and embedded images. Pieces close together are one picture, and so are diagrams of several strokes side by side in a row. A group counts as a picture when it holds an image, or 3+ pieces at least 15 pt square, or 8+ pieces at least 40 pt wide. Text inside the picture, and short text just beside it on lines that lie within it, is a label: it is taken out of the text flow and the picture grows to include it. A short label (≤ 3 characters) beside the picture is taken even on a line with a formula, as long as it stands far from the rest of that line (an axis label "x" after an equation). Each picture is then rendered from the PDF at that box with `pdftocairo -png`.
 * **Overlines** (ψ̄, Ā) are drawn bars, not text: a bar just above a single symbol, with no numerator above it and no root sign before it.
 * **Displayed equations** are lines that are mostly math and indented, or carry an equation number "(16)" at the right margin, plus the rows of fractions and limits around them. `mathtex.rs` rebuilds them from glyph positions and drawn bars: a bar with symbols right above and below it is a fraction (numerator and denominator are the connected stacks touching the bar; a clearly narrower bar inside is a nested fraction, one of the same width a separate fraction stacked below), a bar right after a root sign is a square root; where no bar is found, a group above the main row overlapping a group below is taken as a fraction, small raised/lowered glyphs are scripts, groups around Σ/∫ are limits, rows and columns between tall brackets are a matrix, a system of equations with one number, or an equation continued on a line starting with + or −, becomes an `aligned` block.
+
+## Equations that are pictures (ebook-made PDFs)
+
+PDFs made from ebooks (calibre, Kindle) often carry their math as small images instead of text. pdf2md hands each such image to a local math-recognition model, [texify](https://github.com/VikParuchuri/texify), and puts the LaTeX it reads into the text: inline where the image sits in a line of prose, as a numbered displayed equation where it stands alone. An image with a "Fig." caption below it, or with long straight lines meeting at a corner (the axes of a plot), stays a picture. Results are cached by image in `~/.cache/pdf2md/ocr/`, so converting a book again is instant.
+
+The model needs its own Python environment (about 7 GB with PyTorch; a GPU makes it fast — a 770-page book takes about two minutes on an RTX 5080):
+
+```sh
+mkdir -p ~/.local/share/pdf2md/ocr && cd ~/.local/share/pdf2md/ocr
+uv venv --python 3.12 .venv
+uv pip install --python .venv/bin/python torch torchvision --index-url https://download.pytorch.org/whl/cu128
+uv pip install --python .venv/bin/python texify "transformers==4.45.2"
+```
+
+(texify 0.2.1 does not work with newer transformers.) To use another Python, set `PDF2MD_OCR_PYTHON`. Without the model, equation images stay pictures. The recognizer is good but not perfect: check equations you rely on against the book.
 
 ## Known limitations
 

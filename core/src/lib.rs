@@ -21,6 +21,7 @@ pub mod layout;
 pub mod links;
 pub mod mathtex;
 pub mod notes;
+pub mod ocr;
 pub mod pages;
 pub mod structure;
 
