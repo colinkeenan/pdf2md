@@ -58,6 +58,9 @@ pub enum Inline {
     Break,
     /// A link; `text` is already Markdown.
     Link { text: String, href: String },
+    /// A small picture inside the text (an equation image that could not be
+    /// read), cut from this PDF page at this place.
+    Picture { page: u32, area: layout::Figure },
     /// Invisible: the page number just before it links to this PDF page
     /// (a linked index). Used by `links::link_index`, never written out.
     PageLink(u32),

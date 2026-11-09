@@ -69,6 +69,9 @@ pub struct Span {
     /// Where on the page `link` goes, in pdftohtml's pixels from the top
     /// (read from the PDF's link annotation; see [`crate::annots`]).
     pub link_top: Option<f32>,
+    /// An equation image that could not be read, inside a line of text: it
+    /// stays a small picture in the sentence (the PDF page it is on).
+    pub picture: Option<u32>,
 }
 
 impl Span {
@@ -554,6 +557,8 @@ fn place_images(doc: &mut Doc) {
     let readings = crate::ocr::recognize(&wanted);
     let font = doc.fonts.len();
     doc.fonts.push(Font { size: doc.body_size, family: "ImageMath".into(), math: true });
+    let picture_font = doc.fonts.len();
+    doc.fonts.push(Font { size: doc.body_size, family: "ImagePicture".into(), math: false });
     let fonts = doc.fonts.clone();
     let size_of = |s: &Span| fonts.get(s.font).map_or(s.height, |f| f.size);
     for page in doc.pages.iter_mut() {
@@ -562,22 +567,33 @@ fn place_images(doc: &mut Doc) {
         for im in &images {
             let fig = Figure { left: im.left, right: im.right, top: im.top, bottom: im.bottom };
             let reading = if captioned(page, im) { None } else { readings.get(&crate::ocr::key(&im.png_base64)) };
-            let Some(crate::ocr::Reading::Latex(tex)) = reading else {
+            let tex = match reading {
+                Some(crate::ocr::Reading::Latex(tex)) => Some(tex.clone()),
+                _ => None,
+            };
+            // not read: a picture; inside a line of text it stays there
+            let in_text = |l: &Line| {
+                l.top < im.bottom && l.top + l.size > im.top && l.spans.iter().any(|s| s.tex.is_none() && s.text.chars().any(char::is_alphabetic))
+            };
+            let drawing = matches!(reading, Some(crate::ocr::Reading::Drawing)) || captioned(page, im);
+            if tex.is_none() && (drawing || !page.lines.iter().any(in_text)) {
                 page.figures.push(fig);
                 continue;
-            };
+            }
+            let number = page.number;
             let span = Span {
                 text: String::new(),
                 left: im.left,
                 top: im.top,
                 width: im.right - im.left,
                 height: im.bottom - im.top,
-                font,
+                font: if tex.is_some() { font } else { picture_font },
                 bold: false,
                 italic: false,
                 script: Script::Normal,
                 overline: false,
-                tex: Some(tex.clone()),
+                picture: tex.is_none().then_some(number),
+                tex,
                 link: None,
                 url: None,
                 link_top: None,
@@ -1130,6 +1146,7 @@ fn insert_delims(doc: &mut Doc, delims: Vec<Vec<Delim>>) {
                 link: None,
                 url: None,
                 link_top: None,
+                picture: None,
             };
             // the line whose centre is nearest the bracket's centre
             let c = (d.top + d.bottom) / 2.0;
@@ -1407,6 +1424,7 @@ pub fn parse_xml(xml: &str) -> Result<Doc, String> {
                         .filter(|h| h.starts_with("http://") || h.starts_with("https://") || h.starts_with("mailto:"))
                         .map(str::to_string),
                     link_top: None,
+                    picture: None,
                 });
             }
         }

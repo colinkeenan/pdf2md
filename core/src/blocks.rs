@@ -435,6 +435,13 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
                     out.push(Inline::Emph(s.text.clone()));
                 }
             }
+            _ if s.picture.is_some() => {
+                if space {
+                    push_text(&mut out, " ");
+                }
+                let area = crate::layout::Figure { left: s.left, right: s.right(), top: s.top, bottom: s.bottom() };
+                out.push(Inline::Picture { page: s.picture.unwrap_or(0), area });
+            }
             _ if s.url.is_some() => {
                 // a web link: keep its address
                 if space {

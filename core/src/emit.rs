@@ -98,6 +98,7 @@ pub fn render_inlines(inl: &[Inline]) -> String {
                 s.push_str(&format!("<a id=\"{id}\">{t}</a>"));
             }
             Inline::PageLink(_) => {}
+            Inline::Picture { page, area } => s.push_str(&format!("![equation]({})", picture_file(*page, area))),
             Inline::Break => {
                 let trimmed = s.trim_end().len();
                 s.truncate(trimmed);
@@ -376,28 +377,49 @@ fn figure_file(page: u32, n: usize) -> String {
 
 /// Cut each picture out of its PDF page with pdftocairo (150 dpi PNG).
 /// Without pdftocairo or the PDF the Markdown still links them.
+/// Where a small picture inside the text goes: named by page and place.
+fn picture_file(page: u32, area: &crate::layout::Figure) -> String {
+    format!("images/eq-p{page:03}-{:.0}-{:.0}.png", area.left, area.top)
+}
+
+/// Cut each picture out of its PDF page with pdftocairo (150 dpi PNG):
+/// figures, and the unread equation images inside the text.
+/// Without pdftocairo or the PDF the Markdown still links them.
 fn write_figures(book: &Book, dir: &Path) {
     let Some(pdf) = &book.source else { return };
+    let cut = |page: u32, area: &crate::layout::Figure, name: &str, pad: f32| {
+        let file = dir.join(name);
+        if let Some(parent) = file.parent() {
+            let _ = std::fs::create_dir_all(parent);
+        }
+        // pdftohtml pixels are 1.5 × points; 150 dpi is 150/72 px per point
+        let dpi = 150.0f32;
+        let px = |v: f32| (v / 1.5 * dpi / 72.0).round().max(0.0) as i64;
+        let (x, y) = (px(area.left - pad), px(area.top - pad));
+        let (w, h) = (px(area.right - area.left + 2.0 * pad), px(area.bottom - area.top + 2.0 * pad));
+        let stem = file.with_extension("");
+        let _ = std::process::Command::new("pdftocairo")
+            .args(["-png", "-singlefile", "-r", "150"])
+            .args(["-f", &page.to_string(), "-l", &page.to_string()])
+            .args(["-x", &x.to_string(), "-y", &y.to_string(), "-W", &w.to_string(), "-H", &h.to_string()])
+            .arg(pdf)
+            .arg(&stem)
+            .status();
+    };
     for ch in &book.chapters {
-        for b in &ch.blocks {
-            let crate::Block::Figure { page, n, area, .. } = &b.block else { continue };
-            let file = dir.join(figure_file(*page, *n));
-            if let Some(parent) = file.parent() {
-                let _ = std::fs::create_dir_all(parent);
+        let notes = ch.notes.iter().chain(&ch.refs).flat_map(|n| &n.blocks);
+        for b in ch.blocks.iter().map(|b| &b.block).chain(notes) {
+            match b {
+                crate::Block::Figure { page, n, area, .. } => cut(*page, area, &figure_file(*page, *n), 10.0),
+                crate::Block::Para(inl) | crate::Block::Item { text: inl, .. } | crate::Block::PageNote { text: inl, .. } | crate::Block::Heading { text: inl, .. } => {
+                    for x in inl {
+                        if let crate::Inline::Picture { page, area } = x {
+                            cut(*page, area, &picture_file(*page, area), 1.0);
+                        }
+                    }
+                }
+                _ => {}
             }
-            // pdftohtml pixels are 1.5 × points; 150 dpi is 150/72 px per point
-            let (dpi, pad) = (150.0f32, 10.0f32);
-            let px = |v: f32| (v / 1.5 * dpi / 72.0).round().max(0.0) as i64;
-            let (x, y) = (px(area.left - pad), px(area.top - pad));
-            let (w, h) = (px(area.right - area.left + 2.0 * pad), px(area.bottom - area.top + 2.0 * pad));
-            let stem = file.with_extension("");
-            let _ = std::process::Command::new("pdftocairo")
-                .args(["-png", "-singlefile", "-r", "150"])
-                .args(["-f", &page.to_string(), "-l", &page.to_string()])
-                .args(["-x", &x.to_string(), "-y", &y.to_string(), "-W", &w.to_string(), "-H", &h.to_string()])
-                .arg(pdf)
-                .arg(&stem)
-                .status();
         }
     }
 }
