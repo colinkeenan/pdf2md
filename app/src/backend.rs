@@ -21,9 +21,14 @@ pub mod qobject {
         type Converter = super::ConverterRust;
 
         /// Start a conversion on a background thread. Output goes into
-        /// `<output>/<name of the input file>/`.
+        /// `<output>/<name of the input file>/`; if that folder exists,
+        /// `replace` deletes it first, otherwise a new "<name> (1)" is made.
         #[qinvokable]
-        fn convert(self: Pin<&mut Converter>, input: &QString, output: &QString);
+        fn convert(self: Pin<&mut Converter>, input: &QString, output: &QString, replace: bool);
+
+        /// Does the book folder `<output>/<name of the input file>/` exist?
+        #[qinvokable]
+        fn exists(self: &Converter, input: &QString, output: &QString) -> bool;
 
         /// Remember `folder` as the last folder used (saved to disk).
         #[qinvokable]
@@ -97,15 +102,35 @@ fn url_to_path(s: &str) -> PathBuf {
     PathBuf::from(String::from_utf8_lossy(&out).into_owned())
 }
 
-fn run(input: &Path, output: &Path) -> Result<String, String> {
-    // <output>/<pdf file name without extension>/
+/// <output>/<pdf file name without extension>/
+fn book_dir(input: &Path, output: &Path) -> PathBuf {
     let stem = input
         .file_stem()
         .map(|s| s.to_string_lossy().into_owned())
         .unwrap_or_else(|| "book".to_string());
-    let dest = output.join(stem);
+    output.join(stem)
+}
 
+/// "<dir> (1)", "<dir> (2)" … whichever does not exist yet.
+fn new_dir(dir: &Path) -> PathBuf {
+    let name = dir.file_name().map(|s| s.to_string_lossy().into_owned()).unwrap_or_default();
+    (1..)
+        .map(|n| dir.with_file_name(format!("{name} ({n})")))
+        .find(|p| !p.exists())
+        .expect("some name is free")
+}
+
+fn run(input: &Path, output: &Path, replace: bool) -> Result<String, String> {
+    let mut dest = book_dir(input, output);
     let book = convert_pdf(input)?;
+    // only touch the old folder once the new book is ready
+    if dest.exists() {
+        if replace {
+            std::fs::remove_dir_all(&dest).map_err(|e| format!("could not delete {}: {e}", dest.display()))?;
+        } else {
+            dest = new_dir(&dest);
+        }
+    }
     let files = write_book(&book, &dest).map_err(|e| e.to_string())?;
     let mut msg = format!("Wrote {} files to {}", files.len(), dest.display());
     if !book.warnings.is_empty() {
@@ -126,7 +151,13 @@ impl qobject::Converter {
         self.as_mut().set_folder(QString::from(s.as_str()));
     }
 
-    pub fn convert(mut self: Pin<&mut Self>, input: &QString, output: &QString) {
+    pub fn exists(&self, input: &QString, output: &QString) -> bool {
+        let input = url_to_path(&String::from(input));
+        let output = url_to_path(&String::from(output));
+        !input.as_os_str().is_empty() && !output.as_os_str().is_empty() && book_dir(&input, &output).exists()
+    }
+
+    pub fn convert(mut self: Pin<&mut Self>, input: &QString, output: &QString, replace: bool) {
         if *self.busy() {
             return;
         }
@@ -143,7 +174,7 @@ impl qobject::Converter {
         let qt_thread = self.qt_thread();
         std::thread::spawn(move || {
             // PDF parsers can panic on odd files; report it instead of dying.
-            let result = std::panic::catch_unwind(|| run(&input, &output))
+            let result = std::panic::catch_unwind(|| run(&input, &output, replace))
                 .unwrap_or_else(|_| Err("The PDF reader crashed on this file.".to_string()));
             let msg = match result {
                 Ok(m) => m,
@@ -154,5 +185,22 @@ impl qobject::Converter {
                 qobj.as_mut().set_busy(false);
             });
         });
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn keep_both_picks_the_next_free_name() {
+        let tmp = std::env::temp_dir().join(format!("pdf2md-test-{}", std::process::id()));
+        let book = tmp.join("My Book");
+        std::fs::create_dir_all(&book).unwrap();
+        assert_eq!(book_dir(Path::new("/x/My Book.pdf"), &tmp), book);
+        assert_eq!(new_dir(&book), tmp.join("My Book (1)"));
+        std::fs::create_dir_all(tmp.join("My Book (1)")).unwrap();
+        assert_eq!(new_dir(&book), tmp.join("My Book (2)"));
+        std::fs::remove_dir_all(&tmp).unwrap();
     }
 }

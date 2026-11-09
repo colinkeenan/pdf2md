@@ -58,6 +58,34 @@ Kirigami.ApplicationWindow {
         })
     }
 
+    // asked when the book folder is already there
+    Kirigami.PromptDialog {
+        id: existsDialog
+        title: "Book folder already exists"
+        subtitle: "“" + root.localPath(root.outputUrl) + "/" + root.stemOf(root.inputUrl) + "/” is already there.\n\n"
+            + "Replace deletes that folder and everything in it, then writes the new conversion. "
+            + "Keep Both writes the new conversion to “" + root.stemOf(root.inputUrl) + " (1)” (or the next free number)."
+        standardButtons: Kirigami.Dialog.Cancel
+        customFooterActions: [
+            Kirigami.Action {
+                text: "Replace"
+                icon.name: "edit-delete"
+                onTriggered: {
+                    existsDialog.close()
+                    converter.convert(root.inputUrl, root.outputUrl, true)
+                }
+            },
+            Kirigami.Action {
+                text: "Keep Both"
+                icon.name: "folder-new"
+                onTriggered: {
+                    existsDialog.close()
+                    converter.convert(root.inputUrl, root.outputUrl, false)
+                }
+            }
+        ]
+    }
+
     pageStack.initialPage: Kirigami.Page {
         title: "Convert a textbook"
 
@@ -122,7 +150,13 @@ Kirigami.ApplicationWindow {
                     icon.name: "run-build"
                     text: "Convert"
                     enabled: !converter.busy && root.inputUrl !== "" && root.outputUrl !== ""
-                    onClicked: converter.convert(root.inputUrl, root.outputUrl)
+                    onClicked: {
+                        if (converter.exists(root.inputUrl, root.outputUrl)) {
+                            existsDialog.open()
+                        } else {
+                            converter.convert(root.inputUrl, root.outputUrl, false)
+                        }
+                    }
                 }
             }
 
