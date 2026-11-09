@@ -147,9 +147,30 @@ pub fn is_bold_font(family: &str) -> bool {
 
 /// Clean up extracted text: expand ligatures ("ﬁ" -> "fi") and drop
 /// invisible control / private-use characters that some TeX fonts produce.
+/// A letter with an accent that TeX fonts draw as two glyphs ("¨o" in
+/// "Schr¨odinger") as one character.
+fn compose(accent: char, letter: char) -> Option<char> {
+    let (from, to) = match accent {
+        '¨' => ("aeiouyAEIOU", "äëïöüÿÄËÏÖÜ"),
+        '´' => ("aeiouyAEIOUc", "áéíóúýÁÉÍÓÚć"),
+        '`' => ("aeiouAEIOU", "àèìòùÀÈÌÒÙ"),
+        'ˆ' => ("aeiouAEIOU", "âêîôûÂÊÎÔÛ"),
+        '˜' => ("anoANO", "ãñõÃÑÕ"),
+        'ˇ' => ("cszrCSZR", "čšžřČŠŽŘ"),
+        _ => return None,
+    };
+    from.chars().position(|c| c == letter).and_then(|k| to.chars().nth(k))
+}
+
 pub fn clean_text(t: &str) -> String {
     let mut out = String::with_capacity(t.len());
-    for c in t.chars() {
+    let mut chars = t.chars().peekable();
+    while let Some(c) = chars.next() {
+        if let Some(l) = chars.peek().and_then(|&n| compose(c, n)) {
+            out.push(l);
+            chars.next();
+            continue;
+        }
         match c {
             'ﬀ' => out.push_str("ff"),
             'ﬁ' => out.push_str("fi"),
@@ -311,7 +332,20 @@ fn classify_outline(o: &Outline) -> Option<(char, f32, f32, f32, f32)> {
             }
         }
     }
-    let kind = if o.curve <= o.straight {
+    // a big root sign (√): its right edge is only reached at the top, where
+    // the long stroke ends; an angle bracket reaches it at top and bottom
+    let right_ys: Vec<f32> = pts.iter().filter(|p| (p.0 - x1).abs() <= 0.2 * w).map(|p| p.1).collect();
+    if !right_ys.is_empty() && right_ys.iter().all(|&y| y <= y0 + 0.25 * h) {
+        return None;
+    }
+    // a brace built from pieces: a point at mid-height on one side, and
+    // straight vertical stems (an angle bracket has only slanted strokes)
+    let stems = vert_left + vert_right >= 0.5 * h;
+    let kind = if o.pieces > 1 && stems && cusp(x1) && !cusp(x0) {
+        '}'
+    } else if o.pieces > 1 && stems && cusp(x0) && !cusp(x1) {
+        '{'
+    } else if o.curve <= o.straight {
         if w < 1.2 {
             '|'
         } else if vert_left >= 1.5 * h && vert_right < 0.5 * h {
@@ -390,7 +424,8 @@ pub fn parse_svg_delims(svg: &str) -> Vec<Vec<Delim>> {
                     && stacks.iter_mut().rev().filter(|s| s.bbox.1 - s.bbox.0 <= 8.0 && s.bbox.3 >= t - 3.0).any(|s| {
                         let (sl, sr, _, sb) = bbox(s);
                         let overlap = r.min(sr) - l.max(sl);
-                        let fits = sr - sl <= 8.0 && overlap >= 0.5 * (r - l).min(sr - sl);
+                        // (the pieces of a brace share only its thin stem)
+                        let fits = sr - sl <= 8.0 && overlap >= (0.5 * (r - l).min(sr - sl)).min(0.9);
                         if fits && t <= sb + 1.0 && t >= sb - 3.0 {
                             s.pts.extend(o.pts.iter().copied());
                             s.straight += o.straight;

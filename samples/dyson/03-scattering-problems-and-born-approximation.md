@@ -39,7 +39,7 @@ $$
 Therefore the normalization becomes
 
 $$
-uu \frac{= + 1 \text{ for electron states }}{= - 1 \text{ for positron states }} \{ \} = \epsilon ; \quad \text{ This is the definition of } \epsilon . \tag{106}
+\left. \begin{aligned} uu &= + 1 \text{ for electron states } \\ &= - 1 \text{ for positron states } \end{aligned} \right\} = \epsilon ; \quad \text{ This is the definition of } \epsilon . \tag{106}
 $$
 
 With this normalization the density of states in momentum <a id="ix-133">space</a> is one per volume $h^{3}$ of phase space, that is to say
@@ -176,7 +176,7 @@ $$
 
 and this is always easy to calculate.
 
-_Problem 3:_ Given a steady potential $V$ a function of position, and a beam of incident particles, electrons. Solve the Schr¨odinger <a id="ix-231">equation</a> in the <a id="ix-46">Born approximation</a>
+_Problem 3:_ Given a steady potential $V$ a function of position, and a beam of incident particles, electrons. Solve the Schrödinger <a id="ix-231">equation</a> in the <a id="ix-46">Born approximation</a>
 
 a) By stationary perturbation theory b) By time-dependent perturbation theory.
 
@@ -429,7 +429,7 @@ $$
 where the 4-fold integral is $dx_{1} dx_{2} dx_{3} dx_{0} ,x_{0} = ct$. Putting in the values of $A_{\mu ( 1 )} ,\psi_{2}^{\prime}$ and $\psi_{2}$, we get
 
 $$
-\begin{aligned} M &= - \frac{4 \pi e^{2} \hbar i}{c} \sum_{\mu} ( u_{2}^{\prime} \gamma_{\mu} u_{2} ) ( u_{1}^{\prime} \gamma_{\mu} u_{1} ) \frac{1}{\sum_{\nu} ( p_{1 \nu} - p_{1 \nu}^{\prime} )^{2}} \int d^{4} x \exp \left\{ \sum_{\lambda} \frac{i}{\hbar} ( p_{1 \lambda} - p_{1 \lambda}^{\prime} + p_{2 \lambda} - p_{2 \lambda}^{\prime} ) x_{\lambda} \right\} \\ & \quad = - \frac{4 \pi e^{2} \hbar i}{c} \sum_{\mu ,\nu} \frac{( u_{2}^{\prime} \gamma_{\mu} u_{2} ) ( u_{1}^{\prime} \gamma_{\mu} u_{1} )}{( p_{1 \nu} - p_{1 \nu}^{\prime} )^{2}} ( 2 \pi \hbar )^{4} \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) \end{aligned} \tag{143}
+\begin{aligned} M &= - \frac{4 \pi e^{2} \hbar i}{c} \sum_{\mu} ( u_{2}^{\prime} \gamma_{\mu} u_{2} ) ( u_{1}^{\prime} \gamma_{\mu} u_{1} ) \frac{1}{\sum_{\nu} ( p_{1 \nu} - p_{1 \nu}^{\prime} )^{2}} \int d^{4} x \exp \left\{ \sum_{\lambda} \frac{i}{\hbar} ( p_{1 \lambda} - p_{1 \lambda}^{\prime} + p_{2 \lambda} - p_{2 \lambda}^{\prime} ) x_{\lambda} \right\} \\ &= - \frac{4 \pi e^{2} \hbar i}{c} \sum_{\mu ,\nu} \frac{( u_{2}^{\prime} \gamma_{\mu} u_{2} ) ( u_{1}^{\prime} \gamma_{\mu} u_{1} )}{( p_{1 \nu} - p_{1 \nu}^{\prime} )^{2}} ( 2 \pi \hbar )^{4} \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) \end{aligned} \tag{143}
 $$
 
 where $\delta^{4} ( x ) = \prod_{k = 1}^{4} \delta ( x_{k} )$.
@@ -534,14 +534,14 @@ $$
 \sigma = \frac{w \left( mc^{2} \right)^{2}}{c^{2} | \boldsymbol{p}_{1} E_{2} - \boldsymbol{p}_{2} E_{1} |} = | K |^{2} \frac{\left( mc^{2} \right)^{4}}{c^{2} | E_{2} p_{1 3} - E_{1} p_{2 3} || E_{2}^{\prime} p_{1 3}^{\prime} - E_{1}^{\prime} p_{2 3}^{\prime} |} \frac{1}{( 2 \pi \hbar )^{2}} dp_{1 1}^{\prime} dp_{1 2}^{\prime} \tag{152}
 $$
 
-It is worth noting that the factor $\boldsymbol{p}_{1} E_{2} - \boldsymbol{p}_{2} E_{1}$ is invariant under Lorentz <a id="ix-168">transformations</a> leaving the $x_{1}$ and $x_{2}$ components unchanged (e.g.boosts parallel to the $x_{3}$ axis.)<sup><a id="fnref-15" href="#fn-15">15</a></sup> To prove this, we have to show that $p_{1 3} E_{2} - p_{2 3} E_{1}$ = ˜$p_{1 3} E$˜${}_{2} - p$˜${}_{2 3} E$˜$1$ (where ˜ denotes the quantities after the Lorentz transformation) because we have chosen a Lorentz system in which the direction of the momentum vector is the $x_{3}$ axis. Then
+It is worth noting that the factor $\boldsymbol{p}_{1} E_{2} - \boldsymbol{p}_{2} E_{1}$ is invariant under Lorentz <a id="ix-168">transformations</a> leaving the $x_{1}$ and $x_{2}$ components unchanged (e.g.boosts parallel to the $x_{3}$ axis.)<sup><a id="fnref-15" href="#fn-15">15</a></sup> To prove this, we have to show that $p_{1 3} E_{2} - p_{2 3} E_{1} = \tilde{p}_{1 3} \tilde{E}_{2} - \tilde{p}_{2 3} \tilde{E}_{1}$ (where ˜ denotes the quantities after the Lorentz transformation) because we have chosen a Lorentz system in which the direction of the momentum vector is the $x_{3}$ axis. Then
 
 $$
-E ˜ = E \cosh \theta - cp \sinh \theta
+\tilde{E} = E \cosh \theta - cp \sinh \theta
 $$
 
 $$
-p ˜ = p \cosh \theta - \frac{E}{c} \sinh \theta
+\tilde{p} = p \cosh \theta - \frac{E}{c} \sinh \theta
 $$
 
 Since $E^{2} = p^{2} c^{2} + m^{2} c^{4}$, we can write
@@ -551,11 +551,11 @@ E = mc^{2} \cosh \varphi pc = mc^{2} \sinh \varphi , \quad \text{ which makes }
 $$
 
 $$
-E ˜ = mc^{2} \cosh ( \varphi - \theta ) pc ˜ = mc^{2} \sinh ( \varphi - \theta ) \quad \text{ and thus }
+\tilde{E} = mc^{2} \cosh ( \varphi - \theta ) \tilde{p} c = mc^{2} \sinh ( \varphi - \theta ) \quad \text{ and thus }
 $$
 
 $$
-E ˜_{2} p ˜_{1 3} - E ˜_{1} p ˜_{2 3} = m^{2} c^{3} \{ \cosh ( \varphi_{2} - \theta ) \sinh ( \varphi_{1} - \theta ) - \cosh ( \varphi_{1} - \theta ) \sinh ( \varphi_{2} - \theta ) \}
+\tilde{E}_{2} \tilde{p}_{1 3} - \tilde{E}_{1} \tilde{p}_{2 3} = m^{2} c^{3} \{ \cosh ( \varphi_{2} - \theta ) \sinh ( \varphi_{1} - \theta ) - \cosh ( \varphi_{1} - \theta ) \sinh ( \varphi_{2} - \theta ) \}
 $$
 
 $$
@@ -603,7 +603,7 @@ Effect of spin is a measurable _increase_ of scattering over the Mott formula. E
 The correctly normalized initial and final states in this problem are
 
 $$
-\frac{1}{2} \frac{1}{2} \sqrt{\{ \psi_{1} ( 1 ) \psi_{2} ( 2 ) - \psi_{1} ( 2 ) \psi_{2} ( 1 ) \}} \sqrt{\{ \psi_{1}^{\prime} ( 1 ) \psi_{2}^{\prime} ( 2 ) - \psi_{1}^{\prime} ( 2 ) \psi_{2}^{\prime} ( 1 ) \}} \tag{154}
+\frac{1}{\sqrt{2}} \frac{1}{\sqrt{2}} \{ \psi_{1} ( 1 ) \psi_{2} ( 2 ) - \psi_{1} ( 2 ) \psi_{2} ( 1 ) \} \{ \psi_{1}^{\prime} ( 1 ) \psi_{2}^{\prime} ( 2 ) - \psi_{1}^{\prime} ( 2 ) \psi_{2}^{\prime} ( 1 ) \} \tag{154}
 $$
 
 where $\psi_{2}$(1) means the particle 2 in the state 1, and so on. With these states the matrix element $M$ is exactly as we have calculated it including the exchange term.

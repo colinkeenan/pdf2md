@@ -25,23 +25,23 @@ We wish to calculate the matrix element $M$ of $S$ for a particular scattering p
 Suppose $t_{B}$ to be a time so long in the future after the scattering process is over, that from $t_{B}$ to +$\infty$ the state $B$ consists of separated outward-traveling particles. Then the relation between Ψ${}_{B} ( t )$ and Φ$B$ is simple. We imagine a fictitious world in which the charge $e$ occurring in the radiation interaction decreases infinitely slowly (adiabatically) from its actual value at time $t_{B}$ to zero at time (+$\infty )$. In the fictitious world, the state Ψ${}_{B} ( t_{B} )$ at time $t_{B}$ will grow into the bare-particle state Φ$B$ at time +$\infty$. Thus
 
 $$
-\Phi_{B} = Ω_{2} ( t_{B} ) \Psi_{B} ( t_{B} ) \tag{489}
+\Phi_{B} = \Omega_{2} ( t_{B} ) \Psi_{B} ( t_{B} ) \tag{489}
 $$
 
 where<sup><a id="fnref-68" href="#fn-68">68</a></sup>
 
 $$
-Ω_{2} ( t_{B} ) = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int_{t_{B}}^{\infty} \dots \int_{t_{B}}^{\infty} dx_{1} \dots dx_{n} P \left\{ \psi / A\psi ( x_{1} ) ,\dots ,\psi / A\psi ( x_{n} ) \right\} g_{B} ( t_{1} ) \dots g_{B} ( t_{n} ) \tag{490}
+\Omega_{2} ( t_{B} ) = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int_{t_{B}}^{\infty} \dots \int_{t_{B}}^{\infty} dx_{1} \dots dx_{n} P \left\{ \psi / A\psi ( x_{1} ) ,\dots ,\psi / A\psi ( x_{n} ) \right\} g_{B} ( t_{1} ) \dots g_{B} ( t_{n} ) \tag{490}
 $$
 
 and $g_{B} ( t )$ is a function decreasing adiabatically from the value 1 at $t = t_{B}$ to zero at $t = \infty$. Similarly, when $t_{A}$ is a time so far in the past that the state $A$ consists of separated converging particles from $t = -\infty$ to $t = t_{A}$ we have
 
 $$
-\Psi_{A} ( t_{A} ) = Ω_{1} ( t_{A} ) \Phi_{A} \tag{491}
+\Psi_{A} ( t_{A} ) = \Omega_{1} ( t_{A} ) \Phi_{A} \tag{491}
 $$
 
 $$
-Ω_{1} ( t_{A} ) = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int_{-\infty}^{t_{A}} \dots \int_{-\infty}^{t_{A}} dx_{1} \dots dx_{n} P \left\{ \psi / A\psi ( x_{1} ) ,\dots ,\psi / A\psi ( x_{n} ) \right\} g_{A} ( t_{1} ) \dots g_{A} ( t_{n} ) \tag{492}
+\Omega_{1} ( t_{A} ) = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int_{-\infty}^{t_{A}} \dots \int_{-\infty}^{t_{A}} dx_{1} \dots dx_{n} P \left\{ \psi / A\psi ( x_{1} ) ,\dots ,\psi / A\psi ( x_{n} ) \right\} g_{A} ( t_{1} ) \dots g_{A} ( t_{n} ) \tag{492}
 $$
 
 where $g_{A} ( t )$ is a function increasing adiabatically from $t = -\infty$ to $t = t_{A}$.
@@ -49,17 +49,17 @@ where $g_{A} ( t )$ is a function increasing adiabatically from $t = -\infty$ to
 The scattering matrix element between states $A$ and $B$ is given exactly by
 
 $$
-M = \left( \Psi_{B}^{*} ( t_{B} ) S_{t A}^{t B} \Psi_{A} ( t_{A} ) \right) \tag{493}
+M = \left( \Psi_{B}^{*} ( t_{B} ) S_{t}^{t_{A B}} \Psi_{A} ( t_{A} ) \right) \tag{493}
 $$
 
 $$
-S_{t A}^{t B} = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int_{t_{A}}^{t_{B}} \dots \int_{t_{A}}^{t_{B}} P \left\{ \psi / A\psi ( x_{1} ) ,\dots ,\psi / A\psi ( x_{n} ) \right\} dx_{1} \dots dx_{n} \tag{494}
+S_{t}^{t_{A B}} = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int_{t_{A}}^{t_{B}} \dots \int_{t_{A}}^{t_{B}} P \left\{ \psi / A\psi ( x_{1} ) ,\dots ,\psi / A\psi ( x_{n} ) \right\} dx_{1} \dots dx_{n} \tag{494}
 $$
 
 Of course (493) is independent of the times $t_{A}$ and $t_{B}$. When $t_{A}$ and $t_{B}$ are chosen so far in the past that (489) and (491) are satisfied, then (493) may be written in the form (487), where now
 
 $$
-\begin{aligned} S &= Ω_{2} ( t_{B} ) S_{t A}^{t B} Ω_{1} ( t_{A} ) \\ = \sum_{n &= 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int_{-\infty}^{\infty} \dots \int_{-\infty}^{\infty} dx_{1} \dots dx_{n} P \left\{ \psi / A\psi ( x_{1} ) ,\dots ,\psi / A\psi ( x_{n} ) \right\} g ( t_{1} ) \dots g ( t_{n} ) \end{aligned} \tag{495}
+\begin{aligned} S &= \Omega_{2} ( t_{B} ) S_{t}^{t_{A B}} \Omega_{1} ( t_{A} ) \\ &= \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int_{-\infty}^{\infty} \dots \int_{-\infty}^{\infty} dx_{1} \dots dx_{n} P \left\{ \psi / A\psi ( x_{1} ) ,\dots ,\psi / A\psi ( x_{n} ) \right\} g ( t_{1} ) \dots g ( t_{n} ) \end{aligned} \tag{495}
 $$
 
 and $g ( t )$ is a function increasing adiabatically from 0 to 1 for $-\infty <t<t_{A}$, equal to 1 for $t_{A} \leq t \leq t_{B}$, and decreasing adiabatically from 1 to 0 for $t_{A} <t< \infty$. Thus we come to the important conclusion that formula (487) for the matrix element is correct, using the bare particle state-functions Φ$A$ and Φ$B$, provided that formula (488) for $S$ is interpreted by putting in the slowly varying cut-off function $g ( t_{i} )$ to make the integrals converge at $t_{i} = \pm \infty$. The cut-off functions are to be put in as they appear in (495), and then $S$ is defined as the limit to which (495) tends as the rate of variation of $g ( t )$ is made infinitely slow.
@@ -134,9 +134,9 @@ $$
 \mathcal{O}_{n} = \pm \langle \mathcal{P} \mathcal{Q} \rangle_{o} \langle \mathcal{P}^{\prime} \mathcal{Q}^{\prime} \rangle_{o} \dots N ( \mathcal{R}_{1} , \mathcal{R}_{2} ,\dots \mathcal{R}_{m} ) \tag{504}
 $$
 
-the sign in front being + or $-$ according to the even or odd character of the permutation of the electron-positron operators from the order in which they are written in $\mathcal{O}$ to the order in which they are written in (504). With this definition of (504) of $\mathcal{O}$, we have the following theorem:
+the sign in front being + or $-$ according to the even or odd character of the permutation of the electron-positron operators from the order in which they are written in $\mathcal{O}$ to the order in which they are written in (504). With this definition of (504) of $\mathcal{O} n$, we have the following theorem:
 
-_Every operator product_ $\mathcal{O}$ _is identically equal to the sum of the_ $\mathcal{O}$ _obtained from all its factor-pairings._
+_Every operator product_ $\mathcal{O}$ _is identically equal to the sum of the_ $\mathcal{O} n$ _obtained from all its factor-pairings._
 
 This theorem gives the decomposition of $\mathcal{O}$ into its normal constituents. Equations (501) – (503) are just special cases of it. Clearly non-zero $\mathcal{O}_{n}$ are only obtained when each pair of factors is either a $\overline{\psi}$ and a $\psi$ operator or two $A_{\mu}$ operators. We shall therefore suppose that the factor-pairings are always restricted in this way.
 
@@ -149,7 +149,7 @@ $$
 where $\mathcal{P}$ and $\mathcal{Q}$ are field operators and the plus sign appears only if $\mathcal{P}$ and $\mathcal{Q}$ are both electron-positron operators. In fact, the normal constituents of $\mathcal{P} \mathcal{Q} \mathcal{O}^{\prime}$ and of $( \pm \mathcal{Q} \mathcal{P} \mathcal{O}^{\prime} )$ will be identical, so long as $\mathcal{P}$ and $\mathcal{Q}$ are not paired together. Therefore the sum of the normal constituents of $\mathcal{O}$ reduces to
 
 $$
-\sum \mathcal{O} = \{ \langle \mathcal{P} \mathcal{Q} \rangle_{o} \pm \langle \mathcal{Q} \mathcal{P} \rangle_{o} \} \sum \mathcal{O}_{n}^{\prime} \tag{506}
+\sum \mathcal{O} n = \{ \langle \mathcal{P} \mathcal{Q} \rangle_{o} \pm \langle \mathcal{Q} \mathcal{P} \rangle_{o} \} \sum \mathcal{O}_{n}^{\prime} \tag{506}
 $$
 
 But $\sum \mathcal{O}_{n}^{\prime} = \mathcal{O}^{\prime}$, and
@@ -158,7 +158,7 @@ $$
 \langle \mathcal{P} \mathcal{Q} \rangle_{o} \pm \langle \mathcal{Q} \mathcal{P} \rangle_{o} = ( \mathcal{P} \mathcal{Q} \pm \mathcal{Q} \mathcal{P} ) \tag{507}
 $$
 
-this being a number and not an operator. Therefore (506) gives $\sum \mathcal{O}$ = 0, and the theorem is proved for $\mathcal{O}$ given by (505). Next let $\mathcal{O}$ be any product of $m$ factors. Then by using the commutation relations we can write
+this being a number and not an operator. Therefore (506) gives $\sum \mathcal{O} n$ = 0, and the theorem is proved for $\mathcal{O}$ given by (505). Next let $\mathcal{O}$ be any product of $m$ factors. Then by using the commutation relations we can write
 
 $$
 \mathcal{O} = N ( \mathcal{O} ) + \Sigma \tag{508}
@@ -197,13 +197,21 @@ in the corresponding normal constituents (504). We saw in the discussion followi
 The possible factor pairings of (496) are then represented by the following $G$’s:
 
 $$
-{}_{G_{1}} x_{2} x_{1} \quad \frac{x}{x_{2 G_{2}}^{1}} \quad \frac{x_{1}}{{}_{G_{3}} x_{2}} \quad {}_{G_{4}} x_{2} x_{1}
+x_{1} \quad x_{1} \quad x_{1} \quad x_{1}
+$$
+
+$$
+{}_{G_{1}} x_{2} \quad x_{{}^{2} G_{2} \quad G_{3}} x_{{}^{2} \quad G_{4}} x_{2}
 $$
 
 <a id="p99"><sup>[p. 99]</sup></a>
 
 $$
-x_{G_{5} 2} x_{1} \quad x_{1} {}_{G_{6}} x_{2} \quad x_{1} {}_{G_{7}} x_{2} \quad \frac{x_{1}}{{}_{G_{8}} x_{2}}
+x_{1} \quad x_{1} \quad x_{1} \quad x_{1}
+$$
+
+$$
+x_{G_{5}^{2} \quad G_{6}} x_{{}^{2} \quad G_{7}} x_{{}^{2} \quad G_{8}} x_{2}
 $$
 
 Corresponding to these $G$’s there will be just 8 normal constituents of $\mathcal{O}$, which we call $\mathcal{O}_{1} \dots \mathcal{O}_{8}$. These normal constituents are, in their respective order:
@@ -335,13 +343,13 @@ $$
 To write down $M_{3}$ we use the Feynman <a id="ix-75">rules</a>. The factor-pairings of $U_{2}$ are represented in the 8 graphs on pp 98-99. Of these only $G_{5}$ and $G_{6}$ contribute to $M_{2}$, and they contribute equally since the integral (423) is symmetrical in the variables $x_{1}$ and $x_{2}$. The normal constituent of $U_{2}$ arising from $G_{5}$ and $G_{6}$ is, using (510) and (511)<sup><a id="fnref-73" href="#fn-73">73</a></sup>
 
 $$
-\begin{aligned} U_{2 N} &= \sum_{\lambda ,\mu} \frac{e^{2}}{\hbar^{2} c^{2}} \int \int dx_{1} dx_{2} N \left( \psi ( x_{1} ) \gamma_{\lambda} \left\langle T \left( \psi ( x_{1} ) \overline{,\psi} ( x_{2} ) \right) \right\rangle_{o} \gamma_{\mu} \psi ( x_{2} ) \right) \langle T ( A_{\lambda} ( x_{1} ) ,A_{\mu} ( x_{2} ) ) \rangle_{o} \\ & \quad = - \frac{e^{2}}{4 \hbar c} \sum_{\lambda} \int \int dx_{1} dx_{2} N \left( \psi ( x_{1} ) \gamma_{\lambda} S_{F} ( x_{1} - x_{2} ) \gamma_{\lambda} \psi ( x_{2} ) \right) D_{F} ( x_{2} - x_{1} ) \end{aligned} \tag{518}
+\begin{aligned} U_{2 N} &= \sum_{\lambda ,\mu} \frac{e^{2}}{\hbar^{2} c^{2}} \int \int dx_{1} dx_{2} N \left( \psi ( x_{1} ) \gamma_{\lambda} \left\langle T \left( \psi ( x_{1} ) \overline{,\psi} ( x_{2} ) \right) \right\rangle_{o} \gamma_{\mu} \psi ( x_{2} ) \right) \langle T ( A_{\lambda} ( x_{1} ) ,A_{\mu} ( x_{2} ) ) \rangle_{o} \\ &= - \frac{e^{2}}{4 \hbar c} \sum_{\lambda} \int \int dx_{1} dx_{2} N \left( \psi ( x_{1} ) \gamma_{\lambda} S_{F} ( x_{1} - x_{2} ) \gamma_{\lambda} \psi ( x_{2} ) \right) D_{F} ( x_{2} - x_{1} ) \end{aligned} \tag{518}
 $$
 
 To obtain $M_{2}$ from (518) we substitute for $\psi ( x_{2} )$ and $\overline{\psi} ( x_{1} )$ the wave-functions of the initial and final states, and use the momentum integrals (430), (448). Then the integration over $x_{1}$ and $x_{2}$ can be carried out and we find
 
 $$
-\begin{aligned} M_{2} &= \sum_{\lambda} \frac{ie^{2}}{\hbar c} \int_{F} \int_{F} dk_{1} dk_{2} \left( u^{\prime} \gamma_{\lambda} \frac{1}{/ k_{1} - i\mu} \gamma_{\lambda} u \right) \frac{1}{k_{2}^{2}} \delta ( k_{1} - k_{2} - p^{\prime} ) \delta ( k_{2} - k_{1} + p ) \\ & \quad = \sum_{\lambda} \frac{ie^{2}}{\hbar c} \delta ( p - p^{\prime} ) \int_{F} dk \left( u^{\prime} \gamma_{\lambda} \frac{1}{/ k + p / - i\mu} \gamma_{\lambda} u \right) \frac{1}{k^{2}} \end{aligned} \tag{519}
+\begin{aligned} M_{2} &= \sum_{\lambda} \frac{ie^{2}}{\hbar c} \int_{F} \int_{F} dk_{1} dk_{2} \left( u^{\prime} \gamma_{\lambda} \frac{1}{/ k_{1} - i\mu} \gamma_{\lambda} u \right) \frac{1}{k_{2}^{2}} \delta ( k_{1} - k_{2} - p^{\prime} ) \delta ( k_{2} - k_{1} + p ) \\ &= \sum_{\lambda} \frac{ie^{2}}{\hbar c} \delta ( p - p^{\prime} ) \int_{F} dk \left( u^{\prime} \gamma_{\lambda} \frac{1}{/ k + p / - i\mu} \gamma_{\lambda} u \right) \frac{1}{k^{2}} \end{aligned} \tag{519}
 $$
 
 We consider the Dirac operator
@@ -361,7 +369,7 @@ $$
 when we evaluate Σ$( p )$ in (519). So using (376), (585) and following the same method that was used in evaluating (377)<sup><a id="fnref-74" href="#fn-74">74</a></sup>
 
 $$
-\begin{aligned} \Sigma ( p ) &= \int_{F} dk \sum \frac{\gamma_{\lambda} ( / k + p / + i\mu ) \gamma_{\lambda}}{k^{2} ( k^{2} + 2 p \cdot k )} = \int_{F} dk \frac{4 i\mu - 2 k / - 2 p /}{k^{2} ( k^{2} + 2 p \cdot k )} \\ = 2 \int_{0}^{1} dz \int_{F}^{\lambda} dK \frac{i\mu - / k}{[ k^{2} + 2 zp \cdot k ]^{2}} &= 2 \int_{0}^{1} \int_{F} dk \frac{( i\mu - / k + z/p )}{[ k^{2} - z^{2} p^{2} ]^{2}} \\ & \quad = 2 \int_{0}^{1} dz \int_{F} dk \frac{i\mu ( 1 + z )}{[ k^{2} + z^{2} \mu^{2} ]^{2}} \end{aligned} \tag{522}
+\begin{aligned} \Sigma ( p ) &= \int_{F} dk \sum \frac{\gamma_{\lambda} ( / k + p / + i\mu ) \gamma_{\lambda}}{k^{2} ( k^{2} + 2 p \cdot k )} = \int_{F} dk \frac{4 i\mu - 2 k / - 2 p /}{k^{2} ( k^{2} + 2 p \cdot k )} \\ &= 2 \int_{0}^{1} dz \int_{F}^{\lambda} dK \frac{i\mu - / k}{[ k^{2} + 2 zp \cdot k ]^{2}} = 2 \int_{0}^{1} \int_{F} dk \frac{( i\mu - / k + z/p )}{[ k^{2} - z^{2} p^{2} ]^{2}} \\ &= 2 \int_{0}^{1} dz \int_{F} dk \frac{i\mu ( 1 + z )}{[ k^{2} + z^{2} \mu^{2} ]^{2}} \end{aligned} \tag{522}
 $$
 
 where we changed the origin of the $k$ <a id="ix-128">integration</a> by the replacement $k \to k - zp$ and we eliminated the odd terms. Using (386) and introducing the logarithmic divergence $R$ again according to (387),
@@ -396,7 +404,7 @@ $$
 H_{S} ( t ) = \delta mc^{2} \int \overline{\psi} ( r,t ) \psi ( r,t ) d^{3} \boldsymbol{r} \tag{527}
 $$
 
-in the Schr¨odinger equation (415), and finally a contribution
+in the Schrödinger equation (415), and finally a contribution
 
 $$
 U_{S} = - i \frac{\delta mc}{\hbar} \int \overline{\psi \psi} ( x ) dx \tag{528}
@@ -495,7 +503,7 @@ $$
 The wave-functions of initial and final states are
 
 $$
-ue^{ip \cdot x} \quad u^{\prime} e^{ip {}^{\prime} \cdot x} \tag{542}
+ue^{ip \cdot x} \quad u^{\prime} e^{ip^{\prime} \cdot x} \tag{542}
 $$
 
 Then by (534) we have
@@ -535,7 +543,11 @@ $$
 _x_
 
 $$
-x x_{1}_{2} \quad x_{2} x \quad x x_{2} \quad x_{2} \quad x_{1} \quad x
+x_{1} \quad x_{2} \quad x_{2}
+$$
+
+$$
+x_{2} \quad x \quad x \quad x_{2} \quad x_{1} \quad x
 $$
 
 _G_$1$ _G_$2$ _G_$3$ _G_$4$ _G_$5$
@@ -561,7 +573,7 @@ Hence, using the momentum integrals (430), (448), (534), (542) and carrying out 
 <a id="p107"><sup>[p. 107]</sup></a>
 
 $$
-\begin{aligned} & \quad ( x,x_{1} ,x_{2} ) , \\ M_{2 1} &= \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int \int \int dk_{1} dk_{2} dk_{3} dq \sum_{\mu} \operatorname{Spur} \left\{ /e ( q ) \frac{1}{/ k_{1} - i\mu} \gamma_{\mu} \frac{1}{/ k_{2} - i\mu} \right\} \frac{1}{k_{3}^{2}} ( u^{\prime} \gamma_{\mu} u ) \times \\ & \quad \int \quad \times \delta ( q + k_{1} - k_{2} ) \delta ( - k_{1} + k_{2} + k_{3} ) \delta ( - k_{3} - p^{\prime} + p ) \\ & \quad = \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}}_{F} dk \sum_{\mu} \operatorname{Spur} \left\{ /e \frac{1}{/ k - i\mu} \gamma_{\mu} \frac{1}{/ k + /q - i\mu} \right\} \frac{1}{q^{2}} ( u^{\prime} \gamma_{\mu} u ) \\ & \quad = \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \sum_{\mu} \frac{1}{q^{2}} ( u^{\prime} \gamma_{\mu} u ) J_{\mu} \end{aligned} \tag{548}
+\begin{aligned} & \quad ( x,x_{1} ,x_{2} ) , \\ M_{2 1} &= \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int \int \int dk_{1} dk_{2} dk_{3} dq \sum_{\mu} \operatorname{Spur} \left\{ /e ( q ) \frac{1}{/ k_{1} - i\mu} \gamma_{\mu} \frac{1}{/ k_{2} - i\mu} \right\} \frac{1}{k_{3}^{2}} ( u^{\prime} \gamma_{\mu} u ) \times \\ & \quad \times \delta ( q + k_{1} - k_{2} ) \delta ( - k_{1} + k_{2} + k_{3} ) \delta ( - k_{3} - p^{\prime} + p ) \\ &= \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int_{F} dk \sum_{\mu} \operatorname{Spur} \left\{ /e \frac{1}{/ k - i\mu} \gamma_{\mu} \frac{1}{/ k + /q - i\mu} \right\} \frac{1}{q^{2}} ( u^{\prime} \gamma_{\mu} u ) \\ &= \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \sum_{\mu} \frac{1}{q^{2}} ( u^{\prime} \gamma_{\mu} u ) J_{\mu} \end{aligned} \tag{548}
 $$
 
 with $q$ given by (544) and<sup><a id="fnref-76" href="#fn-76">76</a></sup>
@@ -643,7 +655,7 @@ $$
 Here the $g ( t_{1} ) g ( t_{2} )$ factors are attached to the radiation interaction operating at $x_{1}$ and $x_{2}$. It is supposed that the time $T$ over which $g ( t )$ varies appreciably is long compared with the duration of the scattering process. Let the Fourier integral representation of $g ( t )$ be
 
 $$
-\begin{aligned} g ( t ) &= \int_{-\infty}^{\infty} G ( \epsilon_{0} ) e^{- i\epsilon_{0} ct} d\epsilon_{0} \\ & \quad = \int_{-\infty}^{\infty} G ( \epsilon_{0} ) e^{i\epsilon \cdot x} d\epsilon_{0} \end{aligned} \tag{561}
+\begin{aligned} g ( t ) &= \int_{-\infty}^{\infty} G ( \epsilon_{0} ) e^{- i\epsilon_{0} ct} d\epsilon_{0} \\ &= \int_{-\infty}^{\infty} G ( \epsilon_{0} ) e^{i\epsilon \cdot x} d\epsilon_{0} \end{aligned} \tag{561}
 $$
 
 where $\epsilon_{0}$ is a real variable and $\epsilon$ is the vector
@@ -815,7 +827,7 @@ The factor (579) represents a renormalization of the amplitude of the wave-funct
 The contribution from $G_{4}$ to $M$ is, with a factor 2 to allow for $G_{9}$, using the Feynman rules,
 
 $$
-\begin{aligned} M_{2 4} &= \frac{e^{3}}{8 \hbar^{2} c^{2}} \int \int dxdx_{1} dx_{2} \sum_{\lambda} \psi ( x ) \gamma_{\lambda} S_{F} ( x_{1} - x ) A /^{e} ( x ) S_{F} ( x - x_{2} ) \gamma_{\lambda} \psi ( x_{2} ) D_{F} ( x_{2} - x_{1} ) \\ & \quad = - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} ( u^{\prime} \Lambda ( p,p^{\prime} ) u ) \end{aligned} \tag{583}
+\begin{aligned} M_{2 4} &= \frac{e^{3}}{8 \hbar^{2} c^{2}} \int \int dxdx_{1} dx_{2} \sum_{\lambda} \psi ( x ) \gamma_{\lambda} S_{F} ( x_{1} - x ) A /^{e} ( x ) S_{F} ( x - x_{2} ) \gamma_{\lambda} \psi ( x_{2} ) D_{F} ( x_{2} - x_{1} ) \\ &= - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} ( u^{\prime} \Lambda ( p,p^{\prime} ) u ) \end{aligned} \tag{583}
 $$
 
 where
@@ -869,7 +881,7 @@ $$
 which one can verify at once by direct integration. We write
 
 $$
-\begin{aligned} p_{y} &= py + p^{\prime} ( 1 - y ) \\ p_{y}^{2} &= [ - ( p^{\prime} - p ) y + p^{\prime} ]^{2} = q^{2} y^{2} - ( 2 p^{\prime 2} - 2 p \cdot p^{\prime} ) y - \mu^{2} = q^{2} y^{2} - ( p^{\prime 2} - 2 p \cdot p^{\prime} + p^{2} ) - \mu^{2} \\ & \quad = - \mu^{2} - ( y - y^{2} ) q^{2} \end{aligned} \tag{590}
+\begin{aligned} p_{y} &= py + p^{\prime} ( 1 - y ) \\ p_{y}^{2} &= [ - ( p^{\prime} - p ) y + p^{\prime} ]^{2} = q^{2} y^{2} - ( 2 p^{\prime 2} - 2 p \cdot p^{\prime} ) y - \mu^{2} = q^{2} y^{2} - ( p^{\prime 2} - 2 p \cdot p^{\prime} + p^{2} ) - \mu^{2} \\ &= - \mu^{2} - ( y - y^{2} ) q^{2} \end{aligned} \tag{590}
 $$
 
 Then changing the origin of the $k$-integration by the substitution $k \to k - xp_{y}$ (586) and (589) give
@@ -887,7 +899,7 @@ $$
 <a id="p113"><sup>[p. 113]</sup></a>
 
 $$
-\begin{aligned} ( /p - x/p_{y} ) /e ( p /^{\prime} - x/p_{y} ) &= \left\{ ( 1 - x ) i\mu - ( 1 - xy ) /q \right\} /e \left\{ ( 1 - x ) i\mu + ( 1 - x + xy ) /q \right\} \\ & \quad = - ( 1 - x )^{2} \mu^{2} /e + ( 1 - x ) i\mu /e/q ( 2 - x ) + ( 1 - xy ) ( 1 - x + xy ) q^{2} /e \end{aligned} \tag{593}
+\begin{aligned} ( /p - x/p_{y} ) /e ( p /^{\prime} - x/p_{y} ) &= \left\{ ( 1 - x ) i\mu - ( 1 - xy ) /q \right\} /e \left\{ ( 1 - x ) i\mu + ( 1 - x + xy ) /q \right\} \\ &= - ( 1 - x )^{2} \mu^{2} /e + ( 1 - x ) i\mu /e/q ( 2 - x ) + ( 1 - xy ) ( 1 - x + xy ) q^{2} /e \end{aligned} \tag{593}
 $$
 
 Collecting terms from (592), (593), we have
@@ -913,7 +925,7 @@ $$
 $$
 
 $$
-\begin{aligned} & \quad = - 4 \int \int xdxdy \{ \} \int_{F} dk \left[ / k/e/ k + ( 2 - 2 x - x^{2} ) \mu^{2} /e \right] \left( \frac{1}{[ k^{2} + x^{2} ( \mu^{2} + ( y - y^{2} ) q^{2} ) ]^{3}} - \frac{1}{[ k^{2} + x^{2} \mu^{2} ]^{3}} \right) \\ & \quad + \left[ ( 1 - xy ) ( 1 - x + xy ) q^{2} /e - ( x - x^{2} ) i\mu /e/q \right] \int_{F} dk \frac{1}{[ k^{2} + x^{2} ( \mu^{2} + ( y - y^{2} ) q^{2} ) ]^{3}} \{ \} \end{aligned} \tag{597}
+\begin{aligned} &= - 4 \int \int xdxdy \left\{ \int_{F} dk \left[ / k/e/ k + ( 2 - 2 x - x^{2} ) \mu^{2} /e \right] \left( \frac{1}{[ k^{2} + x^{2} ( \mu^{2} + ( y - y^{2} ) q^{2} ) ]^{3}} - \frac{1}{[ k^{2} + x^{2} \mu^{2} ]^{3}} \right) \right. \\ & \quad \left. + \left[ ( 1 - xy ) ( 1 - x + xy ) q^{2} /e - ( x - x^{2} ) i\mu /e/q \right] \int_{F} dk \frac{1}{[ k^{2} + x^{2} ( \mu^{2} + ( y - y^{2} ) q^{2} ) ]^{3}} \right\} \end{aligned} \tag{597}
 $$
 
 The $k$-integrals in (597) are now convergent. Thus the effect of the “<a id="ix-225">wave-function</a> renormalization” term (578) is just to cancel out the part of $M_{2 4}$ which is independent of $q$ and divergent at high frequencies.
@@ -927,13 +939,13 @@ $$
 Then by (385) and (386)
 
 $$
-\begin{aligned} & \quad \int_{F} dkk^{2} \left\{ \frac{1}{[ k^{2} + \Lambda ]^{3}} - \frac{1}{[ k^{2} + \Lambda^{\prime} ]^{3}} \right\} = \\ = \int_{F} dkk^{2} \left\{ \frac{1}{[ k^{2} + \Lambda ]^{2}} - \frac{1}{[ k^{2} + \Lambda^{\prime} ]^{2}} - \frac{\Lambda}{[ k^{2} + \Lambda ]^{3}} + \frac{\Lambda^{\prime}}{[ k^{2} + \Lambda^{\prime} ]^{3}} \right\} &= \pi^{2} i \log \frac{\Lambda^{\prime}}{\Lambda} \end{aligned} \tag{599}
+\begin{aligned} & \quad \int_{F} dkk^{2} \left\{ \frac{1}{[ k^{2} + \Lambda ]^{3}} - \frac{1}{[ k^{2} + \Lambda^{\prime} ]^{3}} \right\} = \\ &= \int_{F} dkk^{2} \left\{ \frac{1}{[ k^{2} + \Lambda ]^{2}} - \frac{1}{[ k^{2} + \Lambda^{\prime} ]^{2}} - \frac{\Lambda}{[ k^{2} + \Lambda ]^{3}} + \frac{\Lambda^{\prime}}{[ k^{2} + \Lambda^{\prime} ]^{3}} \right\} = \pi^{2} i \log \frac{\Lambda^{\prime}}{\Lambda} \end{aligned} \tag{599}
 $$
 
 and (597) becomes
 
 $$
-\begin{aligned} \Lambda_{c} ( p,p^{\prime} ) &= 2 \pi^{2} i \int \int xdxdy \{ - /e \log \left[ 1 + ( y - y^{2} ) \frac{q^{2}}{\mu^{2}} \right] \} \\ & \quad + \frac{\{ x - 1 + 2 ( y - y^{2} ) ( 1 - x - x^{2} ) \} q^{2} /e + ( x - x^{2} ) i\mu /e/q}{x^{2} ( \mu^{2} + ( y - y^{2} ) q^{2}} \{ \} \end{aligned}
+\begin{aligned} \Lambda_{c} ( p,p^{\prime} ) &= 2 \pi^{2} i \int \int xdxdy \left\{ - /e \log \left[ 1 + ( y - y^{2} ) \frac{q^{2}}{\mu^{2}} \right] \right. \\ & \quad \left. + \frac{\{ x - 1 + 2 ( y - y^{2} ) ( 1 - x - x^{2} ) \} q^{2} /e + ( x - x^{2} ) i\mu /e/q}{x^{2} ( \mu^{2} + ( y - y^{2} ) q^{2}} \right\} \end{aligned}
 $$
 
 Integrating the logarithmic term by parts with respect to $y$,
@@ -971,7 +983,7 @@ $$
 Hence by (597)
 
 $$
-\begin{aligned} & \quad \Lambda_{c} ( p,p^{\prime} ) - \Lambda_{c}^{r} ( p,p^{\prime} ) = \\ & \quad = - 4 \int \int xdxdy/e \int_{F} dk \left\{ \frac{q^{2} + 2 \mu^{2}}{[ k^{2} + 2 xk \cdot p_{y} ]^{3}} - \frac{\mu^{2}}{[ k^{2} + 2 xk \cdot p ]^{3}} - \frac{\mu^{2}}{[ k^{2} + 2 xk \cdot p^{\prime} ]^{3}} \right\} \end{aligned} \tag{604}
+\begin{aligned} & \quad \Lambda_{c} ( p,p^{\prime} ) - \Lambda_{c}^{r} ( p,p^{\prime} ) = \\ &= - 4 \int \int xdxdy/e \int_{F} dk \left\{ \frac{q^{2} + 2 \mu^{2}}{[ k^{2} + 2 xk \cdot p_{y} ]^{3}} - \frac{\mu^{2}}{[ k^{2} + 2 xk \cdot p ]^{3}} - \frac{\mu^{2}}{[ k^{2} + 2 xk \cdot p^{\prime} ]^{3}} \right\} \end{aligned} \tag{604}
 $$
 
 The integral (604), with the integration extended over the whole $k$-space, would give, using (385), (587), and the substitutions $k \to k - xp_{y} ,k \to k - xp,k \to xp^{\prime}$, respectively in the three integrals,
@@ -1007,7 +1019,7 @@ $$
 integrated over $k$ satisfying (601), and evaluate it including terms of order $| \boldsymbol{p} |^{2} , q^{2} , | \boldsymbol{p}^{\prime} |^{2}$, but neglecting higher terms. Integrating over $k_{0}$ only, we have for any positive $b$
 
 $$
-\int_{F} dk_{0} \frac{1}{[ k^{2} + 2 ak_{0} + b ]} = i \int_{-\infty}^{\infty} \frac{dk_{0}}{[ | \boldsymbol{k} |^{2} + k_{0}^{2} + 2 iak_{0} + b ]} = i\pi \frac{1}{| \boldsymbol{k} |^{2} + a^{2} + b} \surd \tag{609}
+\int_{F} dk_{0} \frac{1}{[ k^{2} + 2 ak_{0} + b ]} = i \int_{-\infty}^{\infty} \frac{dk_{0}}{[ | \boldsymbol{k} |^{2} + k_{0}^{2} + 2 iak_{0} + b ]} = i\pi \frac{1}{\sqrt{| \boldsymbol{k} |^{2} + a^{2} + b}} \tag{609}
 $$
 
 Differentiating (609) twice with respect to $b$,
@@ -1019,7 +1031,7 @@ $$
 Hence<sup><a id="fnref-80" href="#fn-80">80</a></sup>
 
 $$
-\begin{aligned} K &= \int \int xdxdy \frac{3 i\pi}{8} \int_{| \boldsymbol{k} | >r} \quad d^{3} \boldsymbol{k} \left\{ | \boldsymbol{k} + x \boldsymbol{p}_{y} |^{2} + x^{2} \left( \mu^{2} + ( y - y^{2} ) q^{2} \right) \right\}^{- 5 / 2} \\ & \quad = \int \int xdxdy \frac{3 i\pi}{8} \int_{| \boldsymbol{k} | >r} \quad d^{3} \boldsymbol{k} \{ \left( | \boldsymbol{k} |^{2} + x^{2} \mu^{2} \right)^{- 5 / 2} - \} \tfrac{5}{2} \left( 2 x \boldsymbol{k} \cdot \boldsymbol{p}_{y} + x^{2} | \boldsymbol{p}_{y} |^{2} + x^{2} ( y - y^{2} ) q^{2} \right) \times \\ & \quad \left( | \boldsymbol{k} |^{2} + x^{2} \mu^{2} \right)^{- 7 / 2} + \tfrac{3 5}{8} \{ 4 x^{2} ( \boldsymbol{k} \cdot \boldsymbol{p}_{y} )^{2} \left( | \boldsymbol{k} |^{2} + x^{2} \mu^{2} \right)^{- 9 / 2} \} \\ & \quad = \int \int xdxdy \frac{3 i\pi^{2}}{2} \int_{r}^{\infty} k^{2} dk \{ \left( k^{2} + x^{2} \mu^{2} \right)^{- 5 / 2} - \} \tfrac{5}{2} x^{2} \left( | \boldsymbol{p}_{y} |^{2} + ( y - y^{2} ) q^{2} \right) \left( k^{2} + x^{2} \mu^{2} \right)^{- 7 / 2} \\ & \quad + \tfrac{3 5}{6} \{ x^{2} k^{2} | \boldsymbol{p}_{y} |^{2} \left( k^{2} + x^{2} \mu^{2} \right)^{- 9 / 2} \} \end{aligned} \tag{611}
+\begin{aligned} K &= \int \int xdxdy \frac{3 i\pi}{8} \int_{| \boldsymbol{k} | >r} \quad d^{3} \boldsymbol{k} \left\{ | \boldsymbol{k} + x \boldsymbol{p}_{y} |^{2} + x^{2} \left( \mu^{2} + ( y - y^{2} ) q^{2} \right) \right\}^{- 5 / 2} \\ &= \int \int xdxdy \frac{3 i\pi}{8} \int_{| \boldsymbol{k} | >r} \quad d^{3} \boldsymbol{k} \left\{ \left( | \boldsymbol{k} |^{2} + x^{2} \mu^{2} \right)^{- 5 / 2} - \tfrac{5}{2} \left( 2 x \boldsymbol{k} \cdot \boldsymbol{p}_{y} + x^{2} | \boldsymbol{p}_{y} |^{2} + x^{2} ( y - y^{2} ) q^{2} \right) \times \right. \\ & \quad \left. \left( | \boldsymbol{k} |^{2} + x^{2} \mu^{2} \right)^{- 7 / 2} + \tfrac{3 5}{8} 4 x^{2} ( \boldsymbol{k} \cdot \boldsymbol{p}_{y} )^{2} \left( | \boldsymbol{k} |^{2} + x^{2} \mu^{2} \right)^{- 9 / 2} \right\} \\ &= \int \int xdxdy \frac{3 i\pi^{2}}{2} \int_{r}^{\infty} k^{2} dk \left\{ \left( k^{2} + x^{2} \mu^{2} \right)^{- 5 / 2} - \tfrac{5}{2} x^{2} \left( | \boldsymbol{p}_{y} |^{2} + ( y - y^{2} ) q^{2} \right) \left( k^{2} + x^{2} \mu^{2} \right)^{- 7 / 2} \right. \\ & \quad \left. + \tfrac{3 5}{6} x^{2} k^{2} | \boldsymbol{p}_{y} |^{2} \left( k^{2} + x^{2} \mu^{2} \right)^{- 9 / 2} \right\} \end{aligned} \tag{611}
 $$
 
 We can now carry out the integrations over $x$ and $y$, using
@@ -1031,13 +1043,13 @@ $$
 This gives
 
 $$
-\begin{aligned} K &= \frac{3 i\pi^{2}}{2} \int_{r}^{\infty} k^{2} dk \{ \} \frac{1}{3 \mu^{2}} \left( \frac{1}{k^{3}} - \frac{1}{( k^{2} + \mu^{2} )^{3 / 2}} \right) - \frac{\boldsymbol{p} \cdot \boldsymbol{p}^{\prime} + \tfrac{1}{2} q^{2}}{3 \mu^{4}} ( ) \frac{1}{k^{3}} - \frac{1}{( k^{2} + \mu^{2} )^{3 / 2}} \\ & \quad - \frac{1}{2 \mu^{2} ( k^{2} + \mu^{2} )^{5 / 2}} ( ) + \tfrac{1}{6} k^{2} \left[ \boldsymbol{p} \cdot \boldsymbol{p}^{\prime} + \tfrac{1}{3} q^{2} \right] \frac{2}{\mu^{4}} ( ) \frac{1}{k^{5}} - \frac{1}{( k^{2} + \mu^{2} )^{5 / 2}} \\ & \quad - \frac{5}{\mu^{2}} \frac{1}{( k^{2} + \mu^{2} )^{7 / 2}} \{ ( ) \} \end{aligned} \tag{613}
+\begin{aligned} K &= \frac{3 i\pi^{2}}{2} \int_{r}^{\infty} k^{2} dk \left\{ \frac{1}{3 \mu^{2}} \left( \frac{1}{k^{3}} - \frac{1}{( k^{2} + \mu^{2} )^{3 / 2}} \right) - \frac{\boldsymbol{p} \cdot \boldsymbol{p}^{\prime} + \tfrac{1}{2} q^{2}}{3 \mu^{4}} \left( \frac{1}{k^{3}} - \frac{1}{( k^{2} + \mu^{2} )^{3 / 2}} \right. \right. \\ & \quad \left. - \frac{1}{2 \mu^{2} ( k^{2} + \mu^{2} )^{5 / 2}} \right) + \tfrac{1}{6} k^{2} \left[ \boldsymbol{p} \cdot \boldsymbol{p}^{\prime} + \tfrac{1}{3} q^{2} \right] \frac{2}{\mu^{4}} \left( \frac{1}{k^{5}} - \frac{1}{( k^{2} + \mu^{2} )^{5 / 2}} \right. \\ & \quad \left. \left. - \frac{5}{\mu^{2}} \frac{1}{( k^{2} + \mu^{2} )^{7 / 2}} \right) \right\} \end{aligned} \tag{613}
 $$
 
 The $k$-integration is now elementary, and after dropping terms which tend to zero with $r$ we have
 
 $$
-\begin{aligned} K &= \frac{3 i\pi^{2}}{2 \mu^{2}} \{ \} \tfrac{1}{3} \left( \log \frac{\mu}{2 r} + 1 \right) - \frac{\boldsymbol{p} \cdot \boldsymbol{p}^{\prime} + \tfrac{1}{2} q^{2}}{\mu^{2}} \left( \tfrac{1}{3} \log \frac{\mu}{2 r} + \tfrac{1}{6} \right) \\ & \quad + \tfrac{1}{6} \frac{\boldsymbol{p} \cdot \boldsymbol{p}^{\prime} + \tfrac{1}{3} q^{2}}{\mu^{2}} \{ \left( 2 \log \frac{\mu}{2 r} + \tfrac{5}{3} \right) \} \end{aligned} \tag{614}
+\begin{aligned} K &= \frac{3 i\pi^{2}}{2 \mu^{2}} \left\{ \tfrac{1}{3} \left( \log \frac{\mu}{2 r} + 1 \right) - \frac{\boldsymbol{p} \cdot \boldsymbol{p}^{\prime} + \tfrac{1}{2} q^{2}}{\mu^{2}} \left( \tfrac{1}{3} \log \frac{\mu}{2 r} + \tfrac{1}{6} \right) \right. \\ & \quad \left. + \tfrac{1}{6} \frac{\boldsymbol{p} \cdot \boldsymbol{p}^{\prime} + \tfrac{1}{3} q^{2}}{\mu^{2}} \left( 2 \log \frac{\mu}{2 r} + \tfrac{5}{3} \right) \right\} \end{aligned} \tag{614}
 $$
 
 <a id="p116"><sup>[p. 116]</sup></a>
@@ -1051,7 +1063,7 @@ $$
 Substituting (614) and (615) into (606) and dropping terms of higher order than $| \boldsymbol{p} |^{2} , | \boldsymbol{p}^{\prime} |^{2}$ and $q^{2}$,
 
 $$
-\begin{aligned} \Lambda_{c}^{r} ( p,p^{\prime} ) &= - 2 \pi^{2} i \left\{ - \tfrac{5}{1 2} \frac{q^{2}}{\mu^{2}} /e - \tfrac{1}{2} \frac{i}{\mu} /e/q \right\} - 4 /e \frac{3 i\pi^{2}}{2 \mu^{2}} \left\{ \tfrac{1}{3} q^{2} \left( \log \frac{\mu}{2 r} + 1 \right) - \tfrac{1}{1 8} q^{2} \left( 2 \log \frac{\mu}{2 r} + \tfrac{5}{3} \right) \right\} \\ & \quad = - \tfrac{4}{3} \pi^{2} i \frac{q^{2}}{\mu^{2}} /e \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} \right\} - \frac{\pi^{2}}{\mu} /e/q \end{aligned} \tag{616}
+\begin{aligned} \Lambda_{c}^{r} ( p,p^{\prime} ) &= - 2 \pi^{2} i \left\{ - \tfrac{5}{1 2} \frac{q^{2}}{\mu^{2}} /e - \tfrac{1}{2} \frac{i}{\mu} /e/q \right\} - 4 /e \frac{3 i\pi^{2}}{2 \mu^{2}} \left\{ \tfrac{1}{3} q^{2} \left( \log \frac{\mu}{2 r} + 1 \right) - \tfrac{1}{1 8} q^{2} \left( 2 \log \frac{\mu}{2 r} + \tfrac{5}{3} \right) \right\} \\ &= - \tfrac{4}{3} \pi^{2} i \frac{q^{2}}{\mu^{2}} /e \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} \right\} - \frac{\pi^{2}}{\mu} /e/q \end{aligned} \tag{616}
 $$
 
 Using (596) and adding the contribution (554) from $G_{1}$, we find for the second-order terms in (541) the value
@@ -1079,7 +1091,7 @@ $$
 is therefore
 
 $$
-\begin{aligned} W_{R} ( r_{1} ,r_{2} ) &= \int d^{3} \boldsymbol{k}^{\prime} \sum_{e^{\prime}} \frac{1}{( 2 \pi )^{3}} \left( \frac{\hbar c}{2 | \boldsymbol{k}^{\prime} |} \right) | M_{1} |^{2} \\ & \quad = \frac{e^{2}}{1 6 \pi^{3} \hbar c\mu^{2}} | M_{0} |^{2} \int d^{3} \boldsymbol{k}^{\prime} \frac{1}{| \boldsymbol{k}^{\prime} |^{3}} \sum_{e} | q \cdot e^{\prime} |^{2} \\ & \quad = \frac{\alpha}{\pi \mu^{2}} | M_{0} |^{2} \int_{r_{1}}^{r_{2}} \frac{dk^{\prime}}{k^{\prime}} \tfrac{2}{3} q^{2} \\ & \quad = \frac{2 \alpha}{3 \pi} \left( \log \frac{r_{2}}{r_{1}} \right) \frac{q^{2}}{\mu^{2}} | M_{0} |^{2} \end{aligned} \tag{620}
+\begin{aligned} W_{R} ( r_{1} ,r_{2} ) &= \int d^{3} \boldsymbol{k}^{\prime} \sum_{e^{\prime}} \frac{1}{( 2 \pi )^{3}} \left( \frac{\hbar c}{2 | \boldsymbol{k}^{\prime} |} \right) | M_{1} |^{2} \\ &= \frac{e^{2}}{1 6 \pi^{3} \hbar c\mu^{2}} | M_{0} |^{2} \int d^{3} \boldsymbol{k}^{\prime} \frac{1}{| \boldsymbol{k}^{\prime} |^{3}} \sum_{e^{\prime}} | q \cdot e^{\prime} |^{2} \\ &= \frac{\alpha}{\pi \mu^{2}} | M_{0} |^{2} \int_{r_{1}}^{r_{2}} \frac{dk^{\prime}}{k^{\prime}} \tfrac{2}{3} q^{2} \\ &= \frac{2 \alpha}{3 \pi} \left( \log \frac{r_{2}}{r_{1}} \right) \frac{q^{2}}{\mu^{2}} | M_{0} |^{2} \end{aligned} \tag{620}
 $$
 
 In (620) it is assumed that both $r_{2}$ and $r_{1}$ are frequencies small compared with $| \boldsymbol{q} |$.
@@ -1087,7 +1099,7 @@ In (620) it is assumed that both $r_{2}$ and $r_{1}$ are frequencies small compa
 On the other hand, the probability that an electron is scattered between the states (542) without emitting a photon is given by
 
 $$
-\begin{aligned} W_{N} &= | M_{0} + M_{2} + M_{2}^{\prime} |^{2} \\ & \quad = | M_{0} |^{2} + M_{0}^{*} ( M_{2} + M_{2}^{\prime} ) + ( M_{2} + M_{2}^{\prime} )^{*} M_{0} \end{aligned} \tag{621}
+\begin{aligned} W_{N} &= | M_{0} + M_{2} + M_{2}^{\prime} |^{2} \\ &= | M_{0} |^{2} + M_{0}^{*} ( M_{2} + M_{2}^{\prime} ) + ( M_{2} + M_{2}^{\prime} )^{*} M_{0} \end{aligned} \tag{621}
 $$
 
 neglecting terms of fourth order in the radiation interaction. If we consider in (621) the contribution only from virtual photons with frequencies in the range (619), then by (617) we have

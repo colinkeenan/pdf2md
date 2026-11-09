@@ -23,7 +23,7 @@ $$
 The cross-section for scattering between the states (542), per element of solid angle $d$Ω in the direction of $p^{\prime}$, is without radiative corrections
 
 $$
-\sigma_{0} = \left( \frac{em}{2 \pi \hbar^{2}} \right)^{2} | u^{\prime *} u |^{2} | V ( \boldsymbol{q} ) |^{2} d Ω \tag{628}
+\sigma_{0} = \left( \frac{em}{2 \pi \hbar^{2}} \right)^{2} | u^{\prime *} u |^{2} | V ( \boldsymbol{q} ) |^{2} d \Omega \tag{628}
 $$
 
 This follows immediately from (626) using (627), using the prescription derived on page 29, when we treated the Møller scattering the first time. The procedure is as follows:<sup><a id="fnref-82" href="#fn-82">82</a></sup>
@@ -33,15 +33,15 @@ w_{S} = \frac{c | M_{0} |^{2}}{2 \pi \delta ( q_{0} )} = 2 \pi \frac{e^{2}}{\hba
 $$
 
 $$
-\rho dE = \frac{mc^{2}}{E} \frac{d^{3} \boldsymbol{p}}{( 2 \pi )^{3}} \quad EdE = \hbar^{2} c^{2} pdp \quad d^{3} \boldsymbol{p} = p^{2} dpd Ω
+\rho dE = \frac{mc^{2}}{E} \frac{d^{3} \boldsymbol{p}}{( 2 \pi )^{3}} \quad EdE = \hbar^{2} c^{2} pdp \quad d^{3} \boldsymbol{p} = p^{2} dpd \Omega
 $$
 
 $$
-\rho = \frac{mc^{2}}{E} \frac{p^{2}}{( 2 \pi )^{3}} \frac{dp}{dE} d Ω = \frac{mp}{\hbar^{2} ( 2 \pi )^{3}} d Ω \quad \delta ( q_{0} ) = \hbar c\delta ( E )
+\rho = \frac{mc^{2}}{E} \frac{p^{2}}{( 2 \pi )^{3}} \frac{dp}{dE} d \Omega = \frac{mp}{\hbar^{2} ( 2 \pi )^{3}} d \Omega \quad \delta ( q_{0} ) = \hbar c\delta ( E )
 $$
 
 $$
-w = \frac{2 \pi e^{2}}{\hbar^{2} c} \hbar c \frac{mp}{\hbar^{2} ( 2 \pi )^{3}} d Ω | u^{\prime *} u |^{2} | V ( \boldsymbol{q} ) |^{2} = \frac{e^{2} mp}{( 2 \pi )^{2} \hbar^{3}} d Ω | u^{\prime *} u |^{2} | V ( \boldsymbol{q} ) |^{2}
+w = \frac{2 \pi e^{2}}{\hbar^{2} c} \hbar c \frac{mp}{\hbar^{2} ( 2 \pi )^{3}} d \Omega | u^{\prime *} u |^{2} | V ( \boldsymbol{q} ) |^{2} = \frac{e^{2} mp}{( 2 \pi )^{2} \hbar^{3}} d \Omega | u^{\prime *} u |^{2} | V ( \boldsymbol{q} ) |^{2}
 $$
 
 $$
@@ -49,13 +49,13 @@ $$
 $$
 
 $$
-\sigma = \frac{e^{2} mp}{( 2 \pi )^{2} \hbar^{3}} \frac{mc^{2}}{E} \frac{E}{c^{2} \hbar p} d Ω | u^{\prime *} u |^{2} | V ( \boldsymbol{q} ) |^{2} = \left( \frac{em}{2 \pi \hbar^{2}} \right)^{2} d Ω | u^{\prime *} u |^{2} | V ( \boldsymbol{q} ) |^{2}
+\sigma = \frac{e^{2} mp}{( 2 \pi )^{2} \hbar^{3}} \frac{mc^{2}}{E} \frac{E}{c^{2} \hbar p} d \Omega | u^{\prime *} u |^{2} | V ( \boldsymbol{q} ) |^{2} = \left( \frac{em}{2 \pi \hbar^{2}} \right)^{2} d \Omega | u^{\prime *} u |^{2} | V ( \boldsymbol{q} ) |^{2}
 $$
 
 Summing over the final spin states, and averaging over the initial spin states, we have
 
 $$
-\begin{aligned} \tfrac{1}{2} \sum_{u} \sum_{u^{\prime}} | u^{\prime *} u |^{2} &= \tfrac{1}{2} \frac{1}{( 2 i\mu )^{2}} \operatorname{Spur} \left\{ ( p / + i\mu ) \gamma_{4} ( /p^{\prime} + i\mu ) \gamma_{4} \right\} \\ = \frac{1}{2 \mu^{2}} \left\{ \mu^{2} + p_{0} p_{0}^{\prime} + \boldsymbol{p} \cdot \boldsymbol{p}^{\prime} \right\} &= \frac{1}{2 \mu^{2}} \left\{ 2 p_{0}^{2} - \tfrac{1}{2} | \boldsymbol{q} |^{2} \right\} \\ = \frac{p_{o}^{2}}{\mu^{2}} \left\{ 1 - \tfrac{1}{4} \frac{| \boldsymbol{p} |^{2} - 2 \boldsymbol{p} \cdot \boldsymbol{p}^{\prime} + | \boldsymbol{p}^{\prime} |^{2}}{p_{0}^{2}} \right\} &= \frac{p_{o}^{2}}{\mu^{2}} \left( 1 - \beta^{2} \sin^{2} \frac{\theta}{2} \right) \end{aligned} \tag{629}
+\begin{aligned} \tfrac{1}{2} \sum_{u} \sum_{u^{\prime}} | u^{\prime *} u |^{2} &= \tfrac{1}{2} \frac{1}{( 2 i\mu )^{2}} \operatorname{Spur} \left\{ ( p / + i\mu ) \gamma_{4} ( /p^{\prime} + i\mu ) \gamma_{4} \right\} \\ &= \frac{1}{2 \mu^{2}} \left\{ \mu^{2} + p_{0} p_{0}^{\prime} + \boldsymbol{p} \cdot \boldsymbol{p}^{\prime} \right\} = \frac{1}{2 \mu^{2}} \left\{ 2 p_{0}^{2} - \tfrac{1}{2} | \boldsymbol{q} |^{2} \right\} \\ &= \frac{p_{o}^{2}}{\mu^{2}} \left\{ 1 - \tfrac{1}{4} \frac{| \boldsymbol{p} |^{2} - 2 \boldsymbol{p} \cdot \boldsymbol{p}^{\prime} + | \boldsymbol{p}^{\prime} |^{2}}{p_{0}^{2}} \right\} = \frac{p_{o}^{2}}{\mu^{2}} \left( 1 - \beta^{2} \sin^{2} \frac{\theta}{2} \right) \end{aligned} \tag{629}
 $$
 
 <a id="p119"><sup>[p. 119]</sup></a>
@@ -69,7 +69,7 @@ $$
 where $v$ is the velocity of the incident electron. Hence the cross-section for an unpolarized electron beam is
 
 $$
-\sigma_{0} = \left( \frac{eE}{2 \pi \hbar^{2} c^{2}} \right)^{2} \left( 1 - \beta^{2} \sin^{2} \frac{\theta}{2} \right) | V ( \boldsymbol{q} ) |^{2} d Ω \tag{631}
+\sigma_{0} = \left( \frac{eE}{2 \pi \hbar^{2} c^{2}} \right)^{2} \left( 1 - \beta^{2} \sin^{2} \frac{\theta}{2} \right) | V ( \boldsymbol{q} ) |^{2} d \Omega \tag{631}
 $$
 
 where $E$ is the energy of the incident electron.
@@ -83,19 +83,19 @@ $$
 This gives a second order correction to the cross-section $\sigma_{0}$ according to (621). The total non-radiative cross-section, for <a id="ix-218">scattering</a> without the emission of a photon of energy greater than ∆$E$, becomes
 
 $$
-\begin{aligned} \sigma_{N} &= \sigma_{0} + \sigma_{2 N} \\ & \quad = \left( \frac{em}{2 \pi \hbar^{2}} \right)^{2} | V ( \boldsymbol{q} ) |^{2} d Ω \left| \left\{ 1 - \frac{\alpha}{3 \pi} \left( \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right) \frac{q^{2}}{\mu^{2}} \right\} ( u^{\prime *} u ) + \frac{i\alpha}{4 \pi \mu} ( u^{\prime *} /qu ) \right|^{2} \end{aligned} \tag{633}
+\begin{aligned} \sigma_{N} &= \sigma_{0} + \sigma_{2 N} \\ &= \left( \frac{em}{2 \pi \hbar^{2}} \right)^{2} | V ( \boldsymbol{q} ) |^{2} d \Omega \left| \left\{ 1 - \frac{\alpha}{3 \pi} \left( \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right) \frac{q^{2}}{\mu^{2}} \right\} ( u^{\prime *} u ) + \frac{i\alpha}{4 \pi \mu} ( u^{\prime *} /qu ) \right|^{2} \end{aligned} \tag{633}
 $$
 
 Summing and averaging over the spin-states
 
 $$
-\begin{aligned} \tfrac{1}{2} \sum_{u} \sum_{u} ( u^{\prime *} /qu ) ( u^{*} u^{\prime} ) &= \frac{1}{2 ( 2 i\mu )^{2}} \operatorname{Spur} \left\{ ( p / + i\mu ) \gamma_{4} ( p /^{\prime} + i\mu ) \gamma_{4} /q \right\} \\ = - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu \left( {}_{4} \gamma_{4} /q + \gamma_{4} p /^{\prime} \gamma_{4} /q \right) /p\gamma \right\} &= - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu ( p/p /^{\prime} - p/p / - p /^{\prime} p /^{\prime} + p /^{\prime} p / ) \right\} \\ = - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu ( p /^{\prime} - p / ) ( p /^{\prime} - p / ) \right\} &= \frac{i}{2 \mu} q^{2} \end{aligned} \tag{634}
+\begin{aligned} \tfrac{1}{2} \sum_{u} \sum_{u^{\prime}} ( u^{\prime *} /qu ) ( u^{*} u^{\prime} ) &= \frac{1}{2 ( 2 i\mu )^{2}} \operatorname{Spur} \left\{ ( p / + i\mu ) \gamma_{4} ( p /^{\prime} + i\mu ) \gamma_{4} /q \right\} \\ &= - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu \left( {}_{4} \gamma_{4} /q + \gamma_{4} p /^{\prime} \gamma_{4} /q \right) /p\gamma \right\} = - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu ( p/p /^{\prime} - p/p / - p /^{\prime} p /^{\prime} + p /^{\prime} p / ) \right\} \\ &= - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu ( p /^{\prime} - p / ) ( p /^{\prime} - p / ) \right\} = \frac{i}{2 \mu} q^{2} \end{aligned} \tag{634}
 $$
 
 Hence for an unpolarized electron beam the non-radiative cross-section is
 
 $$
-\sigma_{N} = \left( 1 - \frac{2 \alpha}{3 \pi} \left( \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right) \frac{q^{2}}{\mu^{2}} \right) \sigma_{0} - \left( \frac{em}{2 \pi \hbar^{2}} \right)^{2} | V ( \boldsymbol{q} ) |^{2} d Ω \frac{\alpha}{4 \pi} \frac{q^{2}}{\mu^{2}} \tag{635}
+\sigma_{N} = \left( 1 - \frac{2 \alpha}{3 \pi} \left( \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right) \frac{q^{2}}{\mu^{2}} \right) \sigma_{0} - \left( \frac{em}{2 \pi \hbar^{2}} \right)^{2} | V ( \boldsymbol{q} ) |^{2} d \Omega \frac{\alpha}{4 \pi} \frac{q^{2}}{\mu^{2}} \tag{635}
 $$
 
 Since we are working only to order $q^{2}$ in the radiative corrections, the second term in (635) may be replaced by
@@ -143,7 +143,7 @@ $$
 This corresponds to a differential cross-section
 
 $$
-\sigma_{R} ( k^{\prime} ) = \frac{2 \alpha}{3 \pi} \frac{dk^{\prime}}{k^{\prime}} \frac{| \boldsymbol{p} - \lambda \boldsymbol{p}^{\prime} |^{2}}{\mu^{2}} \lambda \left( \frac{eE}{2 \pi \hbar^{2} c^{2}} \right)^{2} | V ( p - \lambda p^{\prime} ) |^{2} d Ω \tag{642}
+\sigma_{R} ( k^{\prime} ) = \frac{2 \alpha}{3 \pi} \frac{dk^{\prime}}{k^{\prime}} \frac{| \boldsymbol{p} - \lambda \boldsymbol{p}^{\prime} |^{2}}{\mu^{2}} \lambda \left( \frac{eE}{2 \pi \hbar^{2} c^{2}} \right)^{2} | V ( p - \lambda p^{\prime} ) |^{2} d \Omega \tag{642}
 $$
 
 for scattering into the solid angle $d$Ω, neglecting now the term in $\beta$ which appeared in (631) since (642) is itself of order $\alpha \beta^{2}$ and higher terms are neglected. The factor $\lambda$ comes in from $\frac{p_{\text{ final }}}{p^{\prime}}$ . According to (640)
@@ -155,13 +155,13 @@ $$
 Hence the radiative cross-section integrated over the quantum frequency is
 
 $$
-\sigma_{R} = \frac{2 \alpha}{3 \pi} \int_{0}^{\lambda_{m}} \frac{2 \lambda^{2} d\lambda}{1 - \lambda^{2}} \frac{| \boldsymbol{p} - \lambda \boldsymbol{p}^{\prime} |^{2}}{\mu^{2}} \left( \frac{eE}{2 \pi \hbar^{2} c^{2}} \right)^{2} | V ( p - \lambda p^{\prime} ) |^{2} d Ω \tag{644}
+\sigma_{R} = \frac{2 \alpha}{3 \pi} \int_{0}^{\lambda_{m}} \frac{2 \lambda^{2} d\lambda}{1 - \lambda^{2}} \frac{| \boldsymbol{p} - \lambda \boldsymbol{p}^{\prime} |^{2}}{\mu^{2}} \left( \frac{eE}{2 \pi \hbar^{2} c^{2}} \right)^{2} | V ( p - \lambda p^{\prime} ) |^{2} d \Omega \tag{644}
 $$
 
 where by (640) and (638)
 
 $$
-\lambda_{m} = \sqrt{1 - \frac{r}{k_{\max}}} \langle \rangle = \sqrt{1 - \frac{\Delta E}{T}} \langle \rangle \tag{645}
+\lambda_{m} = \sqrt{1 - \frac{r}{k_{\max}}} = \sqrt{1 - \frac{\Delta E}{T}} \tag{645}
 $$
 
 $T$ is the initial kinetic energy of the electron given by (638).
@@ -169,7 +169,7 @@ $T$ is the initial kinetic energy of the electron given by (638).
 Now we can combine (637) and (644) to give by (639) and (629)
 
 $$
-\begin{aligned} \sigma_{T} &= \left( 1 - \frac{2 \alpha}{3 \pi} \left( \log \frac{mc^{2}}{2 T} + \tfrac{5}{6} - \tfrac{1}{5} \right) 4 \beta^{2} \sin^{2} \frac{\theta}{2} \right) \sigma_{0} \\ & \quad + \frac{2 \alpha}{3 \pi} \left( \frac{e}{2 \pi \hbar c} \right)^{2} d Ω \times \int_{0}^{1} \frac{2 \lambda d\lambda}{1 - \lambda^{2}} \left\{ \lambda | \boldsymbol{p} - \lambda \boldsymbol{p}^{\prime} |^{2} | V ( p - \lambda p^{\prime} ) |^{2} -| \boldsymbol{p} - \boldsymbol{p}^{\prime} |^{2} | V ( p - p^{\prime} ) |^{2} \right\} \end{aligned} \tag{646}
+\begin{aligned} \sigma_{T} &= \left( 1 - \frac{2 \alpha}{3 \pi} \left( \log \frac{mc^{2}}{2 T} + \tfrac{5}{6} - \tfrac{1}{5} \right) 4 \beta^{2} \sin^{2} \frac{\theta}{2} \right) \sigma_{0} \\ & \quad + \frac{2 \alpha}{3 \pi} \left( \frac{e}{2 \pi \hbar c} \right)^{2} d \Omega \times \int_{0}^{1} \frac{2 \lambda d\lambda}{1 - \lambda^{2}} \left\{ \lambda | \boldsymbol{p} - \lambda \boldsymbol{p}^{\prime} |^{2} | V ( p - \lambda p^{\prime} ) |^{2} -| \boldsymbol{p} - \boldsymbol{p}^{\prime} |^{2} | V ( p - p^{\prime} ) |^{2} \right\} \end{aligned} \tag{646}
 $$
 
 Here we used the following trick: the integral over $\lambda$ blows up at $\lambda$ = 1. Therefore we subtract from the numerator its value at $\lambda$ = 1, which makes the integral behave decently and permits us to change the upper limit from $\lambda_{m}$ to 1, for small ∆$E$’s. We also have to add then the integrand with the numerator having $\lambda$ = 1; this gives then a logarithmic term which combines with (637) to give the first part of (646).
@@ -202,7 +202,7 @@ $$
 
 according to Schwinger, _Phys. Rev._ 76, 813, Eq. (2.105) (with misprint $K$ for $k$, in my notation $\mu$.) In the conditions of the experiment of Lyman-Hanson-Scott (649) becomes of the order 5% and was clearly observed, the experimental errors being $\sim$ 2%. However, (649) arises mainly from the low-energy virtual photons, with energies going down to ∆$E$. What is observed is just the decrease in the non-radiative cross-section due to the competition of radiative scattering with energy-loss in the range [∆$E,E ]$. Thus the measurement of (649) by LHS is actually only a very inaccurate measurement of the cross-section for bremsstrahlung, which could be observed much more accurately by observing the photons which are really emitted.
 
-The theoretically interesting part of the radiative corrections is the part which is not just the effect of real bremsstrahlung. This part is given by the terms in $\sigma_{N}$ which are of order 1 compared with the log(∆$E/E ( )$ ) appearing in (649). For example, we would have to observe with sufficient accuracy to see the terms $( \tfrac{5}{\overline{6}} - \tfrac{1}{\overline{5}} )$ in (637) if we wished to verify the theoretical radiative corrections at low velocities. In the relativistic range the “genuine” radiative corrections are of order
+The theoretically interesting part of the radiative corrections is the part which is not just the effect of real bremsstrahlung. This part is given by the terms in $\sigma_{N}$ which are of order 1 compared with the log(∆$E/E )$ appearing in (649). For example, we would have to observe with sufficient accuracy to see the terms $( \tfrac{5}{\overline{6}} - \tfrac{1}{\overline{5}} )$ in (637) if we wished to verify the theoretical radiative corrections at low velocities. In the relativistic range the “genuine” radiative corrections are of order
 
 $$
 \alpha \log \left( \frac{E}{mc^{2}} \right) \tag{650}
@@ -238,7 +238,7 @@ $$
 H_{M} = - M ( \boldsymbol{\sigma} \cdot \boldsymbol{H} - i \boldsymbol{\alpha} \cdot \boldsymbol{E} ) \tag{653}
 $$
 
-the term which appears in the non-relativistic Schr¨odinger equation (100).
+the term which appears in the non-relativistic Schrödinger equation (100).
 
 Now suppose that the electron possesses an additional magnetic moment $\delta M$ which does not arise from its charge. Such an additional moment is called “anomalous”. To give the electron an anomalous moment, we only need to add arbitrarily a term proportional to (653) to the Hamiltonian. Comparing (654) with (97) and (98), we see that (653) is a relativistic invariant and can be written
 
@@ -319,13 +319,13 @@ $$
 with $H^{I}$ given by (532) including the mass-renormalization term $H_{S}$. The first stage in the solution of (661) is to write
 
 $$
-\Psi ( t ) = Ω_{1} \Phi ( t ) \tag{662}
+\Psi ( t ) = \Omega_{1} \Phi ( t ) \tag{662}
 $$
 
 where Ω${}_{1} ( t )$ is defined as in (492), only with $e\psi / A\psi$ replaced by $[ e\psi / A\psi + i\delta mc^{2} \overline{\psi \psi} ]$, and the function $g_{A} ( t )$ is as before supposed to tend to the limiting form $g_{A} ( t ) \to$ 1 at the end of the calculation. The operator Ω${}_{1} ( t )$ satisfies
 
 $$
-i \hbar \frac{\partial Ω_{1} ( t )}{\partial t} = H^{I} ( t ) Ω_{1} ( t ) \tag{663}
+i \hbar \frac{\partial \Omega_{1} ( t )}{\partial t} = H^{I} ( t ) \Omega_{1} ( t ) \tag{663}
 $$
 
 for any value of $t$ not in the remote past, so that we may take $g_{A} ( t )$ = 1. Hence the <a id="ix-235">equation</a> of motion for Φ$( t )$ derived from (661) is just
@@ -335,7 +335,7 @@ i \hbar \frac{\partial \Phi}{\partial t} = H_{T} ( t ) \Phi \tag{664}
 $$
 
 $$
-H_{T} ( t ) = ( Ω_{1} ( t ) )^{- 1} H^{e} ( t ) Ω_{1} ( t ) \tag{665}
+H_{T} ( t ) = ( \Omega_{1} ( t ) )^{- 1} H^{e} ( t ) \Omega_{1} ( t ) \tag{665}
 $$
 
 The covariant part of the calculation, which is done in the FIR, is just the evaluation of this transformed <a id="ix-105">Hamiltonian</a> $H_{T} ( t )$.
@@ -345,13 +345,13 @@ The covariant part of the calculation, which is done in the FIR, is just the eva
 Let us write
 
 $$
-H_{F} ( t ) = Ω_{2} ( t ) H^{e} ( t ) Ω_{1} ( t ) \tag{666}
+H_{F} ( t ) = \Omega_{2} ( t ) H^{e} ( t ) \Omega_{1} ( t ) \tag{666}
 $$
 
 with Ω$2$ given by (490). Then
 
 $$
-H_{T} ( t ) = ( Ω_{2} ( t ) Ω_{1} ( t ) )^{- 1} H_{F} ( t ) = S^{- 1} H_{F} ( t ) \tag{667}
+H_{T} ( t ) = ( \Omega_{2} ( t ) \Omega_{1} ( t ) )^{- 1} H_{F} ( t ) = S^{- 1} H_{F} ( t ) \tag{667}
 $$
 
 where $S$, given by (495), is the scattering matrix defined in the absence of the external potential $A_{\mu}^{e}$. We shall now restrict our attention to systems in which only one electron is actually present. We saw by Eq. (533) that $S$ applied to a one-electron state is equivalent to the unit operator, i. e.g. $S$ produces no real scattering or shift of phase in one-particle states. Therefore in discussing the hydrogen atom we may simply omit the $S^{- 1}$ in (667) and write
@@ -503,13 +503,13 @@ $$
 where $H_{0}$ is the Hamiltonian of the Dirac and Maxwell fields without interaction. In the Φ representation the corresponding field-operator is
 
 $$
-Q^{\prime} ( x ) = ( Ω_{1} ( t ) )^{- 1} Q ( x ) Ω_{1} ( t ) \tag{686}
+Q^{\prime} ( x ) = ( \Omega_{1} ( t ) )^{- 1} Q ( x ) \Omega_{1} ( t ) \tag{686}
 $$
 
 Now Ω${}_{1} ( t )$ is given by (492) where we now take the limit $g_{A}$ = 1. The operators appearing in (492) are all FIR operators satisfying equations of motion of the form (685). When the integrations in (492) are carried out, the integrated terms will still have the same time variation given by (685), except for those terms which correspond to transitions in which energy is conserved. The energy-conserving matrix elements will have an explicit linear dependence on $t$ after integration, which is not in accordance with (685). Therefore we conclude that the equation of motion
 
 $$
-i \hbar \frac{d Ω_{1}}{dt} = \boldsymbol{[} Ω_{1} ,H_{0} \boldsymbol{]} \tag{687}
+i \hbar \frac{d \Omega_{1}}{dt} = \boldsymbol{[} \Omega_{1} ,H_{0} \boldsymbol{]} \tag{687}
 $$
 
 is valid for all matrix elements of Ω$1$ which are not diagonal in the FIR. The same equation of motion is satisfied by (Ω${}_{1} ( t ) )^{- 1}$ with the same condition. Now we have seen that Ω${}_{1} ( t )$ has no matrix elements diagonal in $H_{0}$ which give transitions either from or into one-particle states. Hence (687) holds for all matrix elements in which either initial or final state is a one-particle state.
@@ -529,7 +529,7 @@ When we consider systems containing more than one particle, then Ω${}_{1} ( t 
 Having established that the Φ-representation in which (664) holds is the FIR, we now proceed at once to transform to the BIR in which we shall finish the calculation of the <a id="ix-148">Lamb shift</a>. To transform to the BIR, we write $e$
 
 $$
-\Phi ( t ) = e^{iH {}_{0} t/ \hbar} e^{- i \{ H_{0} + H \} t/ \hbar} \Phi^{\prime} ( t ) \tag{689}
+\Phi ( t ) = e^{iH_{0} t/ \hbar} e^{- i \{ H_{0} + H \} t/ \hbar} \Phi^{\prime} ( t ) \tag{689}
 $$
 
 The new wave-function Φ${}^{\prime} ( t )$ thus satisfies
@@ -583,7 +583,7 @@ $$
 the difference between (692) and (693) becomes
 
 $$
-J_{\mu}^{k} ( nm ) - j_{\mu}^{k} ( nm ) = \frac{ie}{\hbar \mu | \boldsymbol{k} |} \int \left\{ \psi_{n}^{*} \frac{\partial \psi}{\partial x_{\mu}} d^{3} \boldsymbol{r} \right\} ( E_{m} - E_{n} - hc | \boldsymbol{k} | ) \tag{695}
+J_{\mu}^{k} ( nm ) - j_{\mu}^{k} ( nm ) = \frac{ie}{\hbar \mu | \boldsymbol{k} |} \left\{ \int \psi_{n}^{*} \frac{\partial \psi}{\partial x_{\mu}} d^{3} \boldsymbol{r} \right\} ( E_{m} - E_{n} - hc | \boldsymbol{k} | ) \tag{695}
 $$
 
 where we used $\boldsymbol{[} p^{2} ,p_{\mu} \boldsymbol{]}$ = 0 and $\int p_{\mu} \psi_{n}^{*} p^{2} \psi_{m} d^{3} \boldsymbol{r} = - \int \psi_{n}^{*} p_{\mu} p^{2} \psi_{m} d^{3} \boldsymbol{r}$. This difference vanishes for transitions in which energy is conserved. Hence the value of Γ given by (262) is unaffected by the change from $j$ to $J$. The value Γ calculated previously is still valid in the relativistic theory, except for very small effects from magnetic radiation which we have neglected.
@@ -637,7 +637,7 @@ $$
 Using both (701) and (702) in turn in the second term of (700) and adding the results using $\alpha^{i} \gamma_{4} + \gamma_{4} \alpha^{i}$ = 0 the terms in $( E_{0} - V )$ cancel and we find<sup><a id="fnref-93" href="#fn-93">93</a></sup>
 
 $$
-\begin{aligned} 2 mc^{2} &= - i \int \hbar c \int^{\psi_{0}^{*} \gamma_{4} ( \boldsymbol{\alpha} \boldsymbol{\cdot} \nabla V ) \psi_{0} d^{3} \boldsymbol{r}} \{ ( \nabla \psi_{0}^{*} \boldsymbol{\cdot} \boldsymbol{\alpha} ) ( \boldsymbol{\alpha} \boldsymbol{\cdot} \nabla V ) \psi_{0} + \psi_{0}^{*} ( \boldsymbol{\alpha} \boldsymbol{\cdot} \nabla V ) ( \boldsymbol{\alpha} \boldsymbol{\cdot} \nabla \psi_{0} ) \} d^{3} \boldsymbol{r} \\ & \quad = - i \hbar c \int \{ ( \nabla \psi_{0}^{*} \boldsymbol{\cdot} \boldsymbol{\sigma} ) ( \boldsymbol{\sigma} \boldsymbol{\cdot} \nabla V ) \psi_{0} + \psi_{0}^{*} ( \boldsymbol{\sigma} \boldsymbol{\cdot} \nabla V ) ( \boldsymbol{\sigma} \boldsymbol{\cdot} \nabla \psi_{0} ) \} d^{3} \boldsymbol{r} \\ & \quad = - i \hbar c \int \{ \psi_{0} [ \nabla \psi_{0}^{*} \boldsymbol{\cdot} \nabla V + i \boldsymbol{\sigma} \boldsymbol{\cdot} ( \nabla \psi_{0}^{*} \times \nabla V ) ] + \psi_{0}^{*} [ \nabla \psi_{0} \boldsymbol{\cdot} \nabla V + i \boldsymbol{\sigma} \boldsymbol{\cdot} ( \nabla \psi_{0} \times \nabla V ) ] \} d^{3} \boldsymbol{r} \\ & \quad = i \hbar c \int \left\{ + ( \nabla^{2} V ) \psi_{0}^{*} \psi_{0} - 2 i\psi^{*} [ \boldsymbol{\sigma} \boldsymbol{\cdot} ( \nabla V \times \nabla ) ] \psi_{0} \right\} d^{3} \boldsymbol{r} \end{aligned} \tag{703}
+\begin{aligned} & \quad 2 mc^{2} \int \psi_{0}^{*} \gamma_{4} ( \boldsymbol{\alpha} \boldsymbol{\cdot} \nabla V ) \psi_{0} d^{3} \boldsymbol{r} \\ &= - i \hbar c \int \{ ( \nabla \psi_{0}^{*} \boldsymbol{\cdot} \boldsymbol{\alpha} ) ( \boldsymbol{\alpha} \boldsymbol{\cdot} \nabla V ) \psi_{0} + \psi_{0}^{*} ( \boldsymbol{\alpha} \boldsymbol{\cdot} \nabla V ) ( \boldsymbol{\alpha} \boldsymbol{\cdot} \nabla \psi_{0} ) \} d^{3} \boldsymbol{r} \\ &= - i \hbar c \int \{ ( \nabla \psi_{0}^{*} \boldsymbol{\cdot} \boldsymbol{\sigma} ) ( \boldsymbol{\sigma} \boldsymbol{\cdot} \nabla V ) \psi_{0} + \psi_{0}^{*} ( \boldsymbol{\sigma} \boldsymbol{\cdot} \nabla V ) ( \boldsymbol{\sigma} \boldsymbol{\cdot} \nabla \psi_{0} ) \} d^{3} \boldsymbol{r} \\ &= - i \hbar c \int \{ \psi_{0} [ \nabla \psi_{0}^{*} \boldsymbol{\cdot} \nabla V + i \boldsymbol{\sigma} \boldsymbol{\cdot} ( \nabla \psi_{0}^{*} \times \nabla V ) ] + \psi_{0}^{*} [ \nabla \psi_{0} \boldsymbol{\cdot} \nabla V + i \boldsymbol{\sigma} \boldsymbol{\cdot} ( \nabla \psi_{0} \times \nabla V ) ] \} d^{3} \boldsymbol{r} \\ &= i \hbar c \int \left\{ + ( \nabla^{2} V ) \psi_{0}^{*} \psi_{0} - 2 i\psi^{*} [ \boldsymbol{\sigma} \boldsymbol{\cdot} ( \nabla V \times \nabla ) ] \psi_{0} \right\} d^{3} \boldsymbol{r} \end{aligned} \tag{703}
 $$
 
 Here we used $\alpha^{i} = \epsilon \sigma_{i}$ (see p. 20), $\epsilon^{2} = \mathbb{I}$, and the formula

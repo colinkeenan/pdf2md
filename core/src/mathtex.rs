@@ -115,6 +115,7 @@ pub fn sym(c: char) -> Option<&'static str> {
         'Φ' => "\\Phi ",
         'Ψ' => "\\Psi ",
         'Ω' => "\\Omega ",
+        '\u{2126}' => "\\Omega ", // the ohm sign, as some fonts encode Ω
         'ℓ' => "\\ell ",
         '□' => "\\Box ",
         'ı' => "\\imath ",
@@ -359,6 +360,7 @@ pub fn build_with(spans: &[MSpan], bars: &[Rule]) -> String {
             }
         })
         .collect();
+    let spans = put_accents(spans);
     if std::env::var_os("PDF2MD_MATHDEBUG").is_some() {
         eprintln!("--- formula");
         for s in &spans {
@@ -368,7 +370,184 @@ pub fn build_with(spans: &[MSpan], bars: &[Rule]) -> String {
             eprintln!("  bar {:?}", b);
         }
     }
-    tidy(&build_at(&resolve_bars(spans, bars, 0), 0))
+    let (spans, bars) = underbraces(spans, bars);
+    tidy(&build_at(&resolve_bars(spans, &bars, 0), 0))
+}
+
+/// Labelled underbraces: a row of brace pieces from the big-symbol font
+/// ("|", "{z", "}" …) joined by thick bars, with what it braces above it and
+/// a small label below. Each becomes one ready-made piece
+/// `\underbrace{…}_{\text{label}}` on the formula's main line.
+fn underbraces(spans: Vec<MSpan>, bars: &[Rule]) -> (Vec<MSpan>, Vec<Rule>) {
+    let size = spans.iter().filter(|s| !s.cmex()).map(|s| s.size).fold(0.0f32, f32::max).max(1.0);
+    let piece = |s: &MSpan| {
+        s.cmex() && s.atom.is_none() && s.height() < 1.0 * size && !s.text.trim().is_empty() && s.text.trim().chars().all(|c| "|{}z".contains(c))
+    };
+    let thick = |r: &Rule| r.bottom - r.top > 1.2 && r.bottom - r.top < 3.0;
+    let mut idx: Vec<usize> = (0..spans.len()).filter(|&i| piece(&spans[i])).collect();
+    if idx.len() < 2 {
+        return (spans, bars.to_vec());
+    }
+    idx.sort_by(|&a, &b| spans[a].left.total_cmp(&spans[b].left));
+    // runs of pieces at one height, joined by thick bars (or touching)
+    let mut groups: Vec<Vec<usize>> = Vec::new();
+    for i in idx {
+        let s = &spans[i];
+        let joins = |g: &Vec<usize>| {
+            let last = &spans[*g.last().unwrap()];
+            let same_row = (last.top - s.top).abs() <= 2.0;
+            let bridged = bars.iter().any(|r| {
+                thick(r) && r.left <= last.right + 2.0 && r.right >= s.left - 2.0 && r.top >= s.top - 2.0 && r.bottom <= s.bottom + 2.0
+            });
+            same_row && (s.left - last.right <= 0.5 * size || bridged)
+        };
+        match groups.iter_mut().find(|g| joins(g)) {
+            Some(g) => g.push(i),
+            None => groups.push(vec![i]),
+        }
+    }
+    let mut drop = vec![false; spans.len()];
+    let mut used_bars = vec![false; bars.len()];
+    let mut atoms: Vec<MSpan> = Vec::new();
+    for g in groups.into_iter().filter(|g| g.len() >= 2) {
+        let (l, r) = (spans[g[0]].left, spans[*g.last().unwrap()].right);
+        let (top, bottom) = (spans[g[0]].top, g.iter().map(|&i| spans[i].bottom).fold(0.0, f32::max));
+        let cx = |s: &MSpan| (s.left + s.right) / 2.0;
+        // (a big bracket around the whole formula is not braced)
+        let inside = |s: &MSpan| cx(s) >= l && cx(s) <= r && (!s.cmex() || (s.left >= l - 1.0 && s.right <= r + 1.0));
+        let content: Vec<usize> = (0..spans.len())
+            .filter(|&i| !drop[i] && !g.contains(&i) && inside(&spans[i]) && spans[i].bottom <= top + 2.0 && spans[i].cy() >= top - 4.0 * size)
+            .collect();
+        let label: Vec<usize> = (0..spans.len())
+            .filter(|&i| !drop[i] && !g.contains(&i) && inside(&spans[i]) && spans[i].top >= bottom - 2.0 && spans[i].top <= bottom + 1.5 * size)
+            .collect();
+        if content.is_empty() {
+            continue;
+        }
+        let ck: Vec<usize> = (0..bars.len())
+            .filter(|&k| !used_bars[k] && !thick(&bars[k]) && bars[k].left >= l - 2.0 && bars[k].right <= r + 2.0 && bars[k].bottom <= top)
+            .collect();
+        let cbars: Vec<Rule> = ck.iter().map(|&k| bars[k]).collect();
+        for k in ck {
+            used_bars[k] = true;
+        }
+        for (k, b) in bars.iter().enumerate() {
+            if thick(b) && b.left >= l - 2.0 && b.right <= r + 2.0 && b.top >= top - 2.0 && b.bottom <= bottom + 2.0 {
+                used_bars[k] = true;
+            }
+        }
+        let c: Vec<MSpan> = content.iter().map(|&i| spans[i].clone()).collect();
+        let lab: Vec<MSpan> = label.iter().map(|&i| spans[i].clone()).collect();
+        let body = build_with(&c, &cbars);
+        let tex = if lab.is_empty() {
+            format!("\\underbrace{{{body}}}")
+        } else {
+            format!("\\underbrace{{{body}}}_{{{}}}", build(&lab))
+        };
+        // on the main line: the middle of the full-size symbols braced
+        let mains: Vec<f32> = c.iter().filter(|s| s.size >= 0.9 * size && !s.cmex()).map(|s| s.cy()).collect();
+        let mid = if mains.is_empty() { top - size } else { mains.iter().sum::<f32>() / mains.len() as f32 };
+        for &i in content.iter().chain(&label).chain(&g) {
+            drop[i] = true;
+        }
+        atoms.push(MSpan {
+            text: String::new(),
+            left: l,
+            right: r,
+            top: mid - size / 2.0,
+            bottom: mid + size / 2.0,
+            size,
+            family: String::new(),
+            math: true,
+            over: false,
+            bold: false,
+            atom: Some(tex),
+        });
+    }
+    let rest: Vec<MSpan> = spans.into_iter().enumerate().filter(|(i, _)| !drop[*i]).map(|(_, s)| s).chain(atoms).collect();
+    let rest_bars: Vec<Rule> = bars.iter().enumerate().filter(|(k, _)| !used_bars[*k]).map(|(_, b)| *b).collect();
+    (rest, rest_bars)
+}
+
+/// Accents that the PDF draws as glyphs of their own (˜ over a, ˆ over k):
+/// the accent and its letter share a box. The letter becomes `\tilde{a}`.
+fn put_accents(mut spans: Vec<MSpan>) -> Vec<MSpan> {
+    let accent = |t: &str| match t.trim() {
+        "˜" => Some("tilde"),
+        "ˆ" => Some("hat"),
+        "˙" => Some("dot"),
+        "¨" => Some("ddot"),
+        "¯" => Some("bar"),
+        "ˇ" => Some("check"),
+        "˘" => Some("breve"),
+        "´" => Some("acute"),
+        _ => None,
+    };
+    // "(˜": an accent at the end of a longer span gets a span of its own
+    spans = spans
+        .into_iter()
+        .flat_map(|s| {
+            let n = s.text.chars().count();
+            match s.text.chars().last() {
+                Some(c) if n > 1 && accent(&c.to_string()).is_some() => {
+                    let w = (s.right - s.left) / n as f32;
+                    let mut a = s.clone();
+                    a.text = s.text.chars().take(n - 1).collect();
+                    a.right = s.right - w;
+                    let mut b = s.clone();
+                    b.text = c.to_string();
+                    b.left = s.right - w;
+                    vec![a, b]
+                }
+                _ => vec![s],
+            }
+        })
+        .collect();
+    let mut k = 0;
+    while k < spans.len() {
+        let Some(name) = accent(&spans[k].text) else {
+            k += 1;
+            continue;
+        };
+        let a = spans[k].clone();
+        let mid = (a.left + a.right) / 2.0;
+        // the letter under it: overlapping its middle, same line
+        let base = (0..spans.len())
+            .filter(|&j| j != k && accent(&spans[j].text).is_none() && spans[j].atom.is_none())
+            .filter(|&j| spans[j].left <= mid && spans[j].right >= mid && (spans[j].top - a.top).abs() <= 0.5 * a.size)
+            .min_by(|&x, &y| (spans[x].left - a.left).abs().total_cmp(&(spans[y].left - a.left).abs()));
+        let Some(j) = base else {
+            k += 1;
+            continue;
+        };
+        // which letter of the span: by position (glyphs spread evenly)
+        let b = spans[j].clone();
+        let chars: Vec<char> = b.text.chars().collect();
+        let n = chars.len().max(1);
+        let w = (b.right - b.left) / n as f32;
+        let ci = (((mid - b.left) / w.max(0.1)) as usize).min(n - 1);
+        let mut pieces: Vec<MSpan> = Vec::new();
+        for (part, range) in [(0, 0..ci), (1, ci..ci + 1), (2, ci + 1..n)] {
+            if range.is_empty() {
+                continue;
+            }
+            let mut p = b.clone();
+            p.text = chars[range.clone()].iter().collect();
+            p.left = b.left + w * range.start as f32;
+            p.right = b.left + w * range.end as f32;
+            if part == 1 {
+                let inner = tex(&p);
+                p.atom = Some(format!("\\{name}{{{}}}", inner.trim()));
+                p.text = String::new();
+            }
+            pieces.push(p);
+        }
+        spans.splice(j..j + 1, pieces);
+        let k2 = spans.iter().position(|s| s.left == a.left && s.top == a.top && s.text == a.text).unwrap_or(k);
+        spans.remove(k2);
+        k = 0; // indices moved: start over (accents are rare)
+    }
+    spans
 }
 
 /// Symbols connected to a bar: those within 0.8 × size of it, plus any
@@ -494,16 +673,23 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
         let above: Vec<usize> = (0..spans.len())
             .filter(|&i| within(&spans[i]) && spans[i].bottom <= b.top + 2.0 && spans[i].cy() >= b.top - 3.5 * size)
             .collect();
+        // (a root sign in the denominator reaches up past the bar)
         let below: Vec<usize> = (0..spans.len())
-            .filter(|&i| within(&spans[i]) && spans[i].top >= b.bottom - 2.0 && spans[i].cy() <= b.bottom + 3.5 * size)
+            .filter(|&i| {
+                let s = &spans[i];
+                within(s) && (s.top >= b.bottom - 2.0 || (is_radical(s) && s.cy() >= b.top)) && s.cy() <= b.bottom + 3.5 * size
+            })
             .collect();
         // A fraction nested inside this one has a clearly narrower bar; a
         // bar of about the same width right above or below is a separate
         // fraction stacked on this one (as in a column vector).
         let width = b.right - b.left;
+        // (a root's bar, starting right at its root sign, always belongs to
+        // what is under the root)
+        let root_bar = |r: &Rule| spans.iter().any(|s| is_radical(s) && (r.left - s.right).abs() <= 3.0 && s.top <= r.bottom + size && s.bottom >= r.top - 2.0);
         let nested = |r: &Rule| {
             let c = (r.left + r.right) / 2.0;
-            r.right - r.left < 0.9 * width && c >= b.left - 2.0 && c <= b.right + 2.0
+            (r.right - r.left < 0.9 * width || root_bar(r)) && c >= b.left - 2.0 && c <= b.right + 2.0
         };
         // Nothing beyond a bar that is not nested in this fraction belongs to it.
         let blocked = |s: &MSpan| {
@@ -625,6 +811,8 @@ struct Item {
     right: f32,
     tex: String,
     kind: Kind,
+    /// for scripts: the spans they were built from
+    src: Vec<usize>,
 }
 
 fn mean_cy(spans: &[MSpan], idx: &[usize]) -> f32 {
@@ -805,9 +993,12 @@ fn take_brackets(spans: &[MSpan], depth: usize) -> (Vec<MSpan>, Vec<Item>) {
         // boxes of shapeless pieces mark only the tops of the pieces; the
         // lowest piece reaches further down than its box
         let (top, bottom) = (d0.top.min(d1.top), d0.bottom.max(d1.bottom));
+        // (a big ∫ right after a bracket reaches back over its edge: for
+        // big-symbol glyphs the middle counts)
         let (inside, outside): (Vec<MSpan>, Vec<MSpan>) = rest.into_iter().partition(|s| {
-            s.left >= d0.right - 1.0
-                && s.right <= d1.left + 1.0
+            let (l, r) = if s.cmex() { let c = (s.left + s.right) / 2.0; (c, c) } else { (s.left, s.right) };
+            l >= d0.right - 1.0
+                && r <= d1.left + 1.0
                 && s.cy() >= top - size
                 && s.cy() <= (bottom + 1.5 * size).max((top + bottom) / 2.0 + 3.0 * size)
         });
@@ -850,6 +1041,18 @@ fn take_brackets(spans: &[MSpan], depth: usize) -> (Vec<MSpan>, Vec<Item>) {
             if let Some(tex) = cases(&inside, depth) {
                 rest = outside;
                 rest.push(piece(d.left, d.right.max(inside.iter().map(|s| s.right).fold(0.0, f32::max)), (d.top + d.bottom) / 2.0, tex));
+                continue;
+            }
+        }
+        // A lone closing brace after rows: they are grouped by it.
+        if d.kind == Some('}') && !opens[k] {
+            let (inside, outside): (Vec<MSpan>, Vec<MSpan>) = rest.iter().cloned().partition(|s| {
+                s.right <= d.left + 1.0 && s.cy() >= d.top - 0.3 * size && s.cy() <= d.bottom + 0.3 * size
+            });
+            if let Some(tex) = brace_group(&inside, depth) {
+                rest = outside;
+                let left = inside.iter().map(|s| s.left).fold(d.left, f32::min);
+                rest.push(piece(left, d.right, (d.top + d.bottom) / 2.0, tex));
                 continue;
             }
         }
@@ -911,6 +1114,12 @@ fn partner(c: char) -> char {
 }
 
 const LONE: char = '\u{1}';
+
+thread_local! {
+    /// Set while the lines of a formula of several lines are built (see
+    /// [`finish`]).
+    static MULTILINE: std::cell::Cell<bool> = const { std::cell::Cell::new(false) };
+}
 
 /// Rows and columns of a matrix, if `spans` look like one.
 fn matrix(spans: &[MSpan], depth: usize, open: char, typed: bool) -> Option<String> {
@@ -1081,7 +1290,9 @@ fn small_blocks(cells: Vec<MSpan>, size: f32, depth: usize) -> Vec<MSpan> {
 
 /// Rows of cases after a lone "{": each row split into the value and the
 /// condition at the widest gap that all rows share.
-fn cases(spans: &[MSpan], depth: usize) -> Option<String> {
+/// Lines of text stacked beside a tall brace: rows of full-size symbols,
+/// with small ones (scripts) joining the nearest row.
+fn text_rows(spans: &[MSpan]) -> Vec<Vec<MSpan>> {
     let size = spans.iter().filter(|s| !s.cmex()).map(|s| s.size).fold(0.0f32, f32::max).max(1.0);
     let mut sorted: Vec<MSpan> = spans.to_vec();
     sorted.sort_by(|a, b| a.cy().total_cmp(&b.cy()));
@@ -1093,14 +1304,46 @@ fn cases(spans: &[MSpan], depth: usize) -> Option<String> {
             _ => rows.push(vec![c]),
         }
     }
-    if rows.len() < 2 {
-        return None;
+    if rows.is_empty() {
+        return rows;
     }
     for c in small {
         let k = (0..rows.len())
             .min_by(|&a, &b| (rows[a][0].cy() - c.cy()).abs().total_cmp(&(rows[b][0].cy() - c.cy()).abs()))
             .unwrap_or(0);
         rows[k].push(c);
+    }
+    rows
+}
+
+/// Rows grouped by a "}" on their right: "ūu = +1 for electron states /
+/// = −1 for positron states }", lined up at their "=".
+fn brace_group(spans: &[MSpan], depth: usize) -> Option<String> {
+    let rows = text_rows(spans);
+    if rows.len() < 2 {
+        return None;
+    }
+    let body: Vec<String> = rows
+        .iter()
+        .map(|r| {
+            let t = build_at(r, depth + 1);
+            if let Some(rest) = t.strip_prefix("= ") {
+                format!("&= {rest}")
+            } else if let Some(p) = t.find(" = ") {
+                format!("{} &= {}", &t[..p], &t[p + 3..])
+            } else {
+                format!("& {t}")
+            }
+        })
+        .collect();
+    Some(format!("\\left. \\begin{{aligned}} {} \\end{{aligned}} \\right\\}}", body.join(" \\\\ ")))
+}
+
+fn cases(spans: &[MSpan], depth: usize) -> Option<String> {
+    let size = spans.iter().filter(|s| !s.cmex()).map(|s| s.size).fold(0.0f32, f32::max).max(1.0);
+    let rows = text_rows(spans);
+    if rows.len() < 2 {
+        return None;
     }
     // free stretches of x shared by all rows (between their words)
     let gaps = |row: &[MSpan]| -> Vec<(f32, f32)> {
@@ -1235,7 +1478,10 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
         });
         if adjacent {
             let d = s.cy() - y0;
-            role[i] = if d.abs() < 0.1 * h {
+            let prime = matches!(s.text.trim(), "′" | "″" | "‴");
+            role[i] = if prime {
+                Role::Sup // k′ in a subscript sits level with the k
+            } else if d.abs() < 0.1 * h {
                 Role::Base
             } else if d < 0.0 {
                 Role::Sup
@@ -1259,6 +1505,9 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
             role[i] = if s.cy() < y0 { Role::Sup } else { Role::Sub };
         }
     }
+
+    // (small symbols level with the row joined it above)
+    let bases: Vec<usize> = (0..spans.len()).filter(|&i| role[i] == Role::Base).collect();
 
     // 3. Group what is above and below the row.
     let tol = 0.35 * max;
@@ -1292,11 +1541,11 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
             if !up.is_empty() {
                 t += &format!("^{{{}}}", build_at(&subset(spans, &up), depth + 1));
             }
-            items.push(Item { left: s.left, right: s.right, tex: t, kind: Kind::Atom });
+            items.push(Item { left: s.left, right: s.right, tex: t, kind: Kind::Atom, src: Vec::new() });
         } else {
             let t = tex(s);
             if !t.is_empty() {
-                items.push(Item { left: s.left, right: s.right, tex: t, kind: Kind::Atom });
+                items.push(Item { left: s.left, right: s.right, tex: t, kind: Kind::Atom, src: Vec::new() });
             }
         }
     }
@@ -1339,6 +1588,7 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
                 build_at(&subset(spans, &den), depth + 1)
             ),
             kind: Kind::Atom,
+            src: Vec::new(),
         });
     }
     // Leftover groups: small ones act as scripts, big ones are written inline.
@@ -1357,6 +1607,7 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
                 right: range(spans, g).1,
                 tex: t,
                 kind: if small { kind } else { Kind::Atom },
+                src: g.clone(),
             });
         }
     }
@@ -1369,7 +1620,7 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
         };
         let t = tex(&spans[i]);
         if !t.is_empty() {
-            items.push(Item { left: spans[i].left, right: spans[i].right, tex: t, kind });
+            items.push(Item { left: spans[i].left, right: spans[i].right, tex: t, kind, src: vec![i] });
         }
     }
 
@@ -1393,17 +1644,50 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
             i += 1;
             continue;
         }
-        let mut sups: Vec<&str> = Vec::new();
-        let mut subs: Vec<&str> = Vec::new();
+        let mut sups: Vec<&Item> = Vec::new();
+        let mut subs: Vec<&Item> = Vec::new();
         while i < items.len() && items[i].kind != Kind::Atom {
             prev_right = Some(prev_right.map_or(items[i].right, |r| r.max(items[i].right)));
             match items[i].kind {
-                Kind::Sup => sups.push(&items[i].tex),
-                _ => subs.push(&items[i].tex),
+                Kind::Sup => sups.push(&items[i]),
+                _ => subs.push(&items[i]),
             }
             i += 1;
         }
-        let (sup, sub) = (sups.join(" "), subs.join(" "));
+        // Scripts of scripts (e^{ip₁·x}): pieces in two sizes are built
+        // together from their spans, so the smaller ones find their base.
+        let script = |v: &[&Item]| -> String {
+            let src: Vec<usize> = v.iter().flat_map(|it| it.src.iter().copied()).collect();
+            let sizes = src.iter().map(|&k| spans[k].size);
+            let (lo, hi) = sizes.fold((f32::MAX, 0.0f32), |(a, b), z| (a.min(z), b.max(z)));
+            if v.iter().all(|it| !it.src.is_empty()) && src.len() >= 2 && lo < 0.9 * hi {
+                build_at(&subset(spans, &src), depth + 1)
+            } else {
+                v.iter().map(|it| it.tex.as_str()).collect::<Vec<_>>().join(" ")
+            }
+        };
+        // A smaller script in between the other group's pieces belongs to
+        // that group: the ′ of a_{k′λ} is not a superscript of a.
+        let inside = |it: &Item, group: &[&Item]| {
+            let (l, r) = group.iter().fold((f32::MAX, f32::MIN), |(l, r), g| (l.min(g.left), r.max(g.right)));
+            let big = group.iter().flat_map(|g| g.src.iter()).map(|&k| spans[k].size).fold(0.0f32, f32::max);
+            let own = it.src.iter().map(|&k| spans[k].size).fold(0.0f32, f32::max);
+            group.len() >= 2 && it.left > l && it.right < r && !it.src.is_empty() && own < 0.9 * big
+        };
+        let (moved_up, subs): (Vec<&Item>, Vec<&Item>) = {
+            let snapshot = sups.clone();
+            subs.iter().partition(|it| inside(it, &snapshot))
+        };
+        let (moved_down, mut sups): (Vec<&Item>, Vec<&Item>) = {
+            let snapshot = subs.clone();
+            sups.iter().partition(|it| inside(it, &snapshot))
+        };
+        let mut subs = subs;
+        subs.extend(moved_down);
+        sups.extend(moved_up);
+        subs.sort_by(|a, b| a.left.total_cmp(&b.left));
+        sups.sort_by(|a, b| a.left.total_cmp(&b.left));
+        let (sup, sub) = (script(&sups), script(&subs));
         // "+ ½": small stacked numbers after an operator are a fraction.
         let after_op = out.last().is_none_or(|p| {
             matches!(
@@ -1415,7 +1699,23 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
             out.push(format!("\\tfrac{{{sup}}}{{{sub}}}"));
             continue;
         }
-        let mut t = out.pop().unwrap_or_else(|| "{}".to_string());
+        // A script can't belong to "=", "−", "," or an opening bracket: it
+        // is a prescript of what follows (ₙφ written {}_{N} \varphi).
+        let no_base = |p: &str| {
+            matches!(
+                p.split_whitespace().last().unwrap_or(""),
+                "=" | "<" | ">" | "\\leq" | "\\geq" | "\\approx" | "\\equiv" | "\\sim" | "\\simeq" | "\\neq"
+                    | "+" | "-" | "," | "(" | "[" | "\\{" | "\\cdot" | "\\times" | "\\pm" | "\\mp"
+            )
+        };
+        let mut t = match out.pop() {
+            Some(p) if no_base(&p) => {
+                out.push(p);
+                "{}".to_string()
+            }
+            Some(p) => p,
+            None => "{}".to_string(),
+        };
         if !sub.is_empty() {
             t += &format!("_{{{sub}}}");
         }
@@ -1431,6 +1731,29 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
 /// put root signs over what they cover.
 fn finish(mut out: Vec<String>) -> String {
     out.retain(|t| !t.is_empty());
+    // In a formula of several lines a big bracket may open on one line and
+    // close on a later one: it is left open to the end of its line
+    // ("\left\{ … \right.") or closed from the start ("\left. … \right\}").
+    if MULTILINE.with(|m| m.get()) {
+        let mut k = 0;
+        while k < out.len() {
+            if let Some(c) = out[k].strip_prefix(LONE).and_then(|r| r.chars().next()) {
+                match opens_kind(c) {
+                    Some(true) => {
+                        out[k] = format!("\\left{}", delim_tex(c));
+                        out.push("\\right.".into());
+                    }
+                    Some(false) => {
+                        out[k] = format!("\\right{}", delim_tex(c));
+                        out.insert(0, "\\left.".into());
+                        k += 1;
+                    }
+                    None => {}
+                }
+            }
+            k += 1;
+        }
+    }
     // A big bracket whose partner was lost. Brackets usually enclose a sum
     // of terms, so a lone ")" gets its "(" right after the nearest fraction,
     // big operator or relation sign to its left (or at the start), and a
@@ -1572,20 +1895,82 @@ pub fn display(
         .iter()
         .filter(|s| s.cmex() && BRACKETS.contains(s.text.trim()) && !s.text.trim().is_empty() && s.bottom - s.top > 1.5 * max)
         .collect();
-    let matrix_row = |c: f32| tall.iter().any(|b| c > b.top && c < b.bottom && (c - b.cy()).abs() > 0.6 * max);
+    // ... and lies entirely between a pair of them (a row starting with
+    // "=" in front of a tall "(" is a line of its own)
+    let between_pair = |l: f32, r: f32, c: f32| {
+        // a brace opens cases on its right ("{") or groups rows on its left ("}")
+        let brace = tall.iter().any(|b| {
+            c > b.top
+                && c < b.bottom
+                && match b.text.trim() {
+                    "{" => b.right <= l + 1.0,
+                    "}" => b.left >= r - 1.0,
+                    _ => false,
+                }
+        });
+        brace || tall.iter().any(|b| {
+            c > b.top
+                && c < b.bottom
+                && b.right <= l + 1.0
+                && tall.iter().any(|q| q.left >= r - 1.0 && (q.cy() - b.cy()).abs() < 0.5 * max)
+        })
+    };
+    let matrix_row = |c: f32| {
+        let members: Vec<&MSpan> = rest
+            .iter()
+            .filter(|s| !s.cmex() && s.size >= 0.9 * max && (s.cy() - c).abs() <= 0.3 * max)
+            // numerators and denominators belong to their fraction, not the row
+            .filter(|s| {
+                !bars.iter().any(|r| {
+                    (s.cy() - (r.top + r.bottom) / 2.0).abs() <= 1.3 * max && s.left < r.right && s.right > r.left
+                })
+            })
+            .collect();
+        tall.iter().any(|b| c > b.top && c < b.bottom && (c - b.cy()).abs() > 0.6 * max)
+            && !members.is_empty()
+            && members.iter().all(|s| between_pair(s.left, s.right, c))
+    };
+    let mut skipped: Vec<f32> = Vec::new();
+    let mut prev_row: Option<f32> = None;
     for (c, rel, op) in rows {
         if matrix_row(c) {
+            skipped.push(c);
             continue;
         }
         let tagged = tags.iter().any(|t| (t.cy() - c).abs() <= 0.5 * max);
+        // With no bars at all, a row well apart from the one above is a line
+        // of its own ("φ₁ to φ₁ + δφ on σ₁" / "φ₂ to …"), and so is that one.
+        let apart = bars.is_empty()
+            && prev_row.is_some_and(|p| c - p >= 1.4 * max)
+            && !in_bracket(c)
+            && !prev_row.is_some_and(in_bracket);
+        if apart && anchors.is_empty() {
+            anchors.push((prev_row.unwrap_or(c), false));
+        }
+        prev_row = Some(c);
         let far = anchors.last().is_none_or(|&(a, _)| c - a >= 1.1 * max);
-        let own_line = !bars.is_empty() && !fraction_row(c) && !in_bracket(c);
+        let own_line = (!bars.is_empty() || apart) && !fraction_row(c) && !in_bracket(c);
         if far && (rel || tagged || own_line) {
             anchors.push((c, false));
         } else if far && op && !anchors.is_empty() {
             anchors.push((c, true));
         }
     }
+    // A brace whose rows were skipped is a line of its own (at its middle)
+    // unless a line already passes through it.
+    let lone_brace = |b: &MSpan| match b.text.trim() {
+        "{" => !tall.iter().any(|q| q.text.trim() == "}" && q.left > b.right && (q.cy() - b.cy()).abs() < 0.5 * max),
+        "}" => !tall.iter().any(|q| q.text.trim() == "{" && q.right < b.left && (q.cy() - b.cy()).abs() < 0.5 * max),
+        _ => false,
+    };
+    for b in tall.iter().filter(|b| lone_brace(b)) {
+        let has_rows = skipped.iter().any(|&c| c > b.top && c < b.bottom);
+        let crossed = anchors.iter().any(|&(a, _)| a > b.top && a < b.bottom);
+        if has_rows && !crossed {
+            anchors.push((b.cy(), false));
+        }
+    }
+    anchors.sort_by(|a, b| a.0.total_cmp(&b.0));
     if anchors.len() <= 1 {
         let tag = tags.first().and_then(|t| tag_of(&t.text));
         return vec![(build_with(&rest, bars), tag)];
@@ -1601,6 +1986,20 @@ pub fn display(
     // A span inside a tall bracket goes with the bracket (its middle), not
     // with whichever line its own row happens to be nearest.
     let home = |s: &MSpan| -> f32 {
+        // beside a brace: the brace's line
+        let brace = tall.iter().find(|b| {
+            lone_brace(b)
+                && s.cy() > b.top
+                && s.cy() < b.bottom
+                && match b.text.trim() {
+                    "{" => b.right <= s.left + 1.0,
+                    "}" => b.left >= s.right - 1.0,
+                    _ => false,
+                }
+        });
+        if let Some(b) = brace {
+            return b.cy();
+        }
         tall.iter()
             .filter(|b| s.cy() > b.top && s.cy() < b.bottom && b.right <= s.left + 1.0)
             .max_by(|a, b| a.right.total_cmp(&b.right))
@@ -1624,7 +2023,9 @@ pub fn display(
     // Equations: a row plus the continuation rows below it.
     let mut eqs: Vec<(Vec<String>, Option<String>)> = Vec::new();
     for k in 0..anchors.len() {
+        MULTILINE.with(|m| m.set(true));
         let t = build_with(&groups[k], &gbars[k]);
+        MULTILINE.with(|m| m.set(false));
         match eqs.last_mut() {
             Some(e) if anchors[k].1 => {
                 e.0.push(t);
@@ -1653,9 +2054,11 @@ fn aligned(rows: &[String]) -> String {
     let body: Vec<String> = rows
         .iter()
         .filter(|t| !t.is_empty())
-        .map(|t| match t.find(" = ") {
-            Some(p) => format!("{} &= {}", &t[..p], &t[p + 3..]),
-            None => format!("& \\quad {t}"),
+        .map(|t| match (t.strip_prefix("= "), t.find(" = ")) {
+            // a row continuing with "= ..." lines up under the first "="
+            (Some(rest), _) => format!("&= {rest}"),
+            (None, Some(p)) => format!("{} &= {}", &t[..p], &t[p + 3..]),
+            (None, None) => format!("& \\quad {t}"),
         })
         .collect();
     format!("\\begin{{aligned}} {} \\end{{aligned}}", body.join(" \\\\ "))
@@ -1841,6 +2244,101 @@ mod tests {
         assert_eq!(
             build(&v),
             "\\Theta_{u} = \\begin{cases} = 1 & \\text{ for electron states } \\\\ = 0 & \\text{ for positron states } . \\end{cases}"
+        );
+    }
+}
+#[cfg(test)]
+mod scripts_of_scripts {
+    use super::*;
+
+    #[test]
+    fn subscript_inside_an_exponent() {
+        // u₁ e^{ip₁·x}  (Dyson eq. 422): the "1" under "p" is a script of
+        // a script
+        let mk = |t: &str, l: f32, r: f32, top: f32, b: f32, size: f32, f: &str| MSpan {
+            text: t.into(), left: l, right: r, top, bottom: b, size, family: f.into(),
+            math: true, over: false, bold: false, atom: None };
+        let v = vec![
+            mk("u", 434.0, 443.0, 1041.0, 1056.0, 15.0, "CMMI10"),
+            mk("1", 442.0, 448.0, 1047.0, 1057.0, 10.0, "CMR7"),
+            mk("e", 449.0, 456.0, 1041.0, 1056.0, 15.0, "CMMI10"),
+            mk("ip", 456.0, 466.0, 1038.0, 1048.0, 10.0, "CMMI7"),
+            mk("1", 466.0, 471.0, 1043.0, 1049.0, 7.0, "CMR5"),
+            mk("·", 472.0, 476.0, 1038.0, 1048.0, 10.0, "CMSY7"),
+            mk("x", 476.0, 483.0, 1038.0, 1048.0, 10.0, "CMMI7"),
+        ];
+        assert_eq!(build(&v), "u_{1} e^{ip_{1} \\cdot x}");
+    }
+}
+
+#[cfg(test)]
+mod groups_accents_underbraces {
+    use super::*;
+
+    fn mk(t: &str, l: f32, r: f32, top: f32, b: f32, size: f32, f: &str) -> MSpan {
+        MSpan {
+            text: t.into(), left: l, right: r, top, bottom: b, size, family: f.into(),
+            math: crate::layout::is_math_font(f), over: false, bold: false, atom: None,
+        }
+    }
+
+    #[test]
+    fn rows_grouped_by_a_right_brace() {
+        // ūu = +1 for electron states / = −1 for positron states } = ε (eq. 106)
+        let v = vec![
+            mk("uu", 242.0, 259.0, 865.0, 880.0, 15.0, "CMMI10"),
+            mk("= +1 for electron states", 274.0, 434.0, 865.0, 880.0, 15.0, "CMR10"),
+            mk("}", 445.1, 452.4, 863.4, 899.3, 15.0, "CMEX10"),
+            mk("=", 459.0, 471.0, 874.0, 889.0, 15.0, "CMR10"),
+            mk("ǫ", 474.0, 480.0, 874.0, 889.0, 15.0, "CMMI10"),
+            mk("=", 274.0, 286.0, 883.0, 898.0, 15.0, "CMR10"),
+            mk("−", 289.0, 301.0, 883.0, 900.0, 15.0, "CMSY10"),
+            mk("1 for positron states", 301.0, 436.0, 883.0, 898.0, 15.0, "CMR10"),
+        ];
+        assert_eq!(
+            build(&v),
+            "\\left. \\begin{aligned} uu &= + 1 \\text{ for electron states } \\\\ &= - 1 \\text{ for positron states } \\end{aligned} \\right\\} = \\epsilon"
+        );
+    }
+
+    #[test]
+    fn accent_glyph_over_a_letter() {
+        // ã_{kµ}: the tilde is a glyph of its own sharing the box of the a
+        let v = vec![
+            mk("˜", 365.0, 372.0, 178.0, 193.0, 15.0, "CMR10"),
+            mk("a", 365.0, 373.0, 178.0, 193.0, 15.0, "CMMI10"),
+            mk("kµ", 373.0, 387.0, 183.0, 193.0, 10.0, "CMMI7"),
+        ];
+        assert_eq!(build(&v), "\\tilde{a}_{k\\mu}");
+    }
+
+    #[test]
+    fn labelled_underbrace() {
+        // 1 − ½ α²/N² with an underbrace labelled "NR levels" (eq. 95)
+        let v = vec![
+            mk("1", 390.0, 397.0, 198.0, 213.0, 15.0, "CMR10"),
+            mk("−", 400.0, 412.0, 198.0, 215.0, 15.0, "CMSY10"),
+            mk("1", 417.0, 424.0, 188.0, 203.0, 15.0, "CMR10"),
+            mk("2", 417.0, 424.0, 208.0, 223.0, 15.0, "CMR10"),
+            mk("α", 430.0, 440.0, 188.0, 203.0, 15.0, "CMMI10"),
+            mk("2", 440.0, 446.0, 185.0, 195.0, 10.0, "CMR7"),
+            mk("N", 428.0, 440.0, 208.0, 223.0, 15.0, "CMMI10"),
+            mk("2", 442.0, 448.0, 207.0, 217.0, 10.0, "CMR7"),
+            mk("|", 413.0, 418.8, 228.0, 239.0, 15.0, "CMEX10"),
+            mk("{z", 424.7, 436.3, 228.0, 239.0, 15.0, "CMEX10"),
+            mk("}", 442.2, 448.0, 228.0, 239.0, 15.0, "CMEX10"),
+            mk("NR levels", 406.0, 456.0, 239.0, 249.0, 10.0, "CMR7"),
+        ];
+        let bar = |l: f32, r: f32, t: f32, b: f32| Rule { left: l, right: r, top: t, bottom: b };
+        let bars = vec![
+            bar(417.2, 424.8, 204.7, 205.4),
+            bar(428.4, 448.9, 204.7, 205.4),
+            bar(419.7, 423.9, 231.1, 232.9),
+            bar(437.2, 441.3, 231.1, 232.9),
+        ];
+        assert_eq!(
+            build_with(&v, &bars),
+            "1 - \\underbrace{\\frac{1}{2} \\frac{\\alpha^{2}}{N^{2}}}_{\\text{ NR levels }}"
         );
     }
 }

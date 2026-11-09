@@ -342,7 +342,7 @@ fn page_texts(chapters: &[Chapter], skip: usize) -> HashMap<String, Vec<(usize, 
     map
 }
 
-fn inline_text<'a>(chapters: &'a [Chapter], (ci, bi, ii): (usize, usize, usize)) -> &'a str {
+fn inline_text(chapters: &[Chapter], (ci, bi, ii): (usize, usize, usize)) -> &str {
     let inl = match &chapters[ci].blocks[bi].block {
         Block::Para(inl) | Block::Heading { text: inl, .. } | Block::Item { text: inl, .. } => inl,
         Block::PageNote { text, .. } => text,
@@ -502,7 +502,7 @@ pub fn link_index(chapters: &mut [Chapter]) {
     // Wrap the found words in their targets, splitting the text around
     // them (last offsets first, so earlier ones stay valid).
     let mut todo: Vec<(Spot, (String, usize))> = spots.into_iter().collect();
-    todo.sort_by(|a, b| b.0.cmp(&a.0));
+    todo.sort_by_key(|t| std::cmp::Reverse(t.0));
     for ((ci, bi, ii, off), (id, len)) in todo {
         let inl = match &mut chapters[ci].blocks[bi].block {
             Block::Para(inl) | Block::Heading { text: inl, .. } | Block::Item { text: inl, .. } => inl,

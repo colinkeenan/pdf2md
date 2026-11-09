@@ -21,7 +21,7 @@ $$
 a function of $\varphi^{\alpha}$ and its _first_ derivatives at the point $x$. The behaviour of the field is fixed by the <a id="ix-1"><em>Action</em></a> _Principle_. If Ω is any finite or infinite region of space-time, then
 
 $$
-I ( Ω ) = \frac{1}{c} \int_{Ω} L d^{4} x \tag{157}
+I ( \Omega ) = \frac{1}{c} \int_{\Omega} L d^{4} x \tag{157}
 $$
 
 is stationary for the physically possible fields $\varphi^{\alpha}$. Thus the variation $\phi^{\alpha} \to \varphi^{\alpha} + \delta \varphi^{\alpha}$ produces no change in $I$ to first order in $\delta \varphi^{\alpha}$, if $\delta \varphi^{\alpha}$ is an arbitrary variation equal to zero on the boundary of Ω.
@@ -37,7 +37,7 @@ $$
 Then
 
 $$
-\begin{aligned} c\delta I ( Ω ) &= \int_{Ω} \sum_{\alpha} \left( \frac{\partial L}{\partial \varphi^{\alpha}} \delta \varphi^{\alpha} + \sum_{\mu} \frac{\partial L}{\partial \varphi_{\mu}^{\alpha}} \delta \varphi_{\mu}^{\alpha} \right) d^{4} x \\ & \quad = \int_{Ω} \sum_{\alpha} \left\{ \frac{\partial L}{\partial \varphi^{\alpha}} - \sum_{\mu} \frac{\partial}{\partial x_{\mu}} \left( \frac{\partial L}{\partial \varphi_{\mu}^{\alpha}} \right) \right\} \delta \varphi^{\alpha} d^{4} x + \int_{\Sigma \alpha ,\mu} \sum n_{\mu} \frac{\partial L}{\partial \varphi_{\mu}^{\alpha}} \delta \varphi^{\alpha} d\sigma \end{aligned} \tag{159}
+\begin{aligned} c\delta I ( \Omega ) &= \int_{\Omega} \sum_{\alpha} \left( \frac{\partial L}{\partial \varphi^{\alpha}} \delta \varphi^{\alpha} + \sum_{\mu} \frac{\partial L}{\partial \varphi_{\mu}^{\alpha}} \delta \varphi_{\mu}^{\alpha} \right) d^{4} x \\ &= \int_{\Omega} \sum_{\alpha} \left\{ \frac{\partial L}{\partial \varphi^{\alpha}} - \sum_{\mu} \frac{\partial}{\partial x_{\mu}} \left( \frac{\partial L}{\partial \varphi_{\mu}^{\alpha}} \right) \right\} \delta \varphi^{\alpha} d^{4} x + \int_{\Sigma \alpha ,\mu} \sum n_{\mu} \frac{\partial L}{\partial \varphi_{\mu}^{\alpha}} \delta \varphi^{\alpha} d\sigma \end{aligned} \tag{159}
 $$
 
 So the principle of action gives the field equations
@@ -61,21 +61,21 @@ is the momentum conjugate to $\varphi^{\alpha}$, defined at $x$ and with respect
 A more general type of variation is made by varying not only the $\varphi^{\alpha}$ but also the boundary of Ω, each point $x_{\mu}$ being moved to the position $( x_{\mu} + \delta x_{\mu} )$ where $\delta x_{\mu}$ is either constant or may vary over the surface. Writing ${}_{N} \varphi^{\alpha}$ for the new $\varphi^{\alpha}$ and ${}_{O} \varphi^{\alpha}$ for the old one, we have
 
 $$
-\begin{aligned} & \quad \delta \varphi^{\alpha} ( x ) =_{N} \varphi^{\alpha} ( x + \delta x ) -_{O} \varphi^{\alpha} ( x ) \\ & \quad {}_{O} \varphi^{\alpha} ( x + \delta x ) =_{O} \varphi^{\alpha} ( x ) + \sum_{\mu} \delta x_{\mu O} \varphi_{\mu}^{\alpha} ( x ) \\ & \quad \Delta \varphi^{\alpha} ( x ) =_{N} \varphi^{\alpha} ( x ) -_{O} \varphi^{\alpha} ( x ) \end{aligned} \tag{162}
+\begin{aligned} \delta \varphi^{\alpha} ( x ) &= {}_{N} \varphi^{\alpha} ( x + \delta x ) - {}_{O} \varphi^{\alpha} ( x ) \\ {}_{O} \varphi^{\alpha} ( x + \delta x ) &= {}_{O} \varphi^{\alpha} ( x ) + \sum_{\mu} \delta x_{\mu O} \varphi_{\mu}^{\alpha} ( x ) \\ \Delta \varphi^{\alpha} ( x ) &= {}_{N} \varphi^{\alpha} ( x ) - {}_{O} \varphi^{\alpha} ( x ) \end{aligned} \tag{162}
 $$
 
 Therefore under the joint variation
 
 $$
-c\delta I ( Ω ) = \int_{Ω_{N}} L \left( {}_{N} \varphi^{\alpha} ( x ) ,_{N} \varphi_{\mu}^{\alpha} ( x ) \right) d^{4} x - \int_{Ω_{O}} L \left( {}_{O} \varphi^{\alpha} ( x ) ,_{O} \varphi_{\mu}^{\alpha} ( x ) \right) d^{4} x
+c\delta I ( \Omega ) = \int_{\Omega_{N}} L \left( {}_{N} \varphi^{\alpha} ( x ) , {}_{N} \varphi_{\mu}^{\alpha} ( x ) \right) d^{4} x - \int_{\Omega_{O}} L \left( {}_{O} \varphi^{\alpha} ( x ) , {}_{O} \varphi_{\mu}^{\alpha} ( x ) \right) d^{4} x
 $$
 
 $$
-= \int \left\{ {}_{Ω_{N}} - \int_{Ω_{O}} \right\} L \left( {}_{N} \varphi^{\alpha} ( x ) ,_{N} \varphi_{\mu}^{\alpha} ( x ) \right) d^{4} x - \int_{Ω_{O}} \left\{ L \left( {}_{N} \varphi^{\alpha} ( x ) ,_{N} \varphi_{\mu}^{\alpha} ( x ) \right) - L \left( {}_{O} \varphi^{\alpha} ( x ) ,_{O} \varphi_{\mu}^{\alpha} ( x ) \right) \right\} d^{4} x
+= \left\{ \int_{\Omega_{N}} - \int_{\Omega_{O}} \right\} L \left( {}_{N} \varphi^{\alpha} ( x ) , {}_{N} \varphi_{\mu}^{\alpha} ( x ) \right) d^{4} x - \int_{\Omega_{O}} \left\{ L \left( {}_{N} \varphi^{\alpha} ( x ) , {}_{N} \varphi_{\mu}^{\alpha} ( x ) \right) - L \left( {}_{O} \varphi^{\alpha} ( x ) , {}_{O} \varphi_{\mu}^{\alpha} ( x ) \right) \right\} d^{4} x
 $$
 
 $$
-= \int_{\Sigma \alpha ,\mu} \sum n_{\mu} \delta x_{\mu} L \left( {}_{N} \varphi^{\alpha} ( x ) ,_{N} \varphi_{\mu}^{\alpha} ( x ) \right) d\sigma + c \int_{\Sigma} \sum_{\alpha} \pi_{\alpha} ( x ) \Delta \varphi^{\alpha} ( x ) d\sigma
+= \int_{\Sigma \alpha ,\mu} \sum n_{\mu} \delta x_{\mu} L \left( {}_{N} \varphi^{\alpha} ( x ) , {}_{N} \varphi_{\mu}^{\alpha} ( x ) \right) d\sigma + c \int_{\Sigma} \sum_{\alpha} \pi_{\alpha} ( x ) \Delta \varphi^{\alpha} ( x ) d\sigma
 $$
 
 the latter being true by (159) if we assume (160).
@@ -83,29 +83,29 @@ the latter being true by (159) if we assume (160).
 Now since by (162)
 
 $$
-\delta \varphi^{\alpha} ( x ) =_{N} \varphi^{\alpha} ( x ) + \sum_{\mu} \delta x_{\mu N} \varphi_{\mu}^{\alpha} ( x ) -_{O} \varphi^{\alpha} ( x ) = \Delta \varphi^{\alpha} + \sum_{\mu} \delta x_{\mu N} \varphi_{\mu}^{\alpha} ( x )
+\delta \varphi^{\alpha} ( x ) = {}_{N} \varphi^{\alpha} ( x ) + \sum_{\mu} \delta x_{\mu N} \varphi_{\mu}^{\alpha} ( x ) - {}_{O} \varphi^{\alpha} ( x ) = \Delta \varphi^{\alpha} + \sum_{\mu} \delta x_{\mu N} \varphi_{\mu}^{\alpha} ( x )
 $$
 
 hence we get finally
 
 $$
-\delta I ( Ω ) = \int_{Ω \alpha ,\mu} \sum \left\{ \pi_{\alpha} \delta \varphi^{\alpha} + \left( \frac{1}{c} n_{\mu} L - \varphi_{\mu}^{\alpha} \pi^{\alpha} \right) \delta x_{\mu} \right\} d\sigma \tag{163}
+\delta I ( \Omega ) = \int_{\Omega \alpha ,\mu} \sum \left\{ \pi_{\alpha} \delta \varphi^{\alpha} + \left( \frac{1}{c} n_{\mu} L - \varphi_{\mu}^{\alpha} \pi^{\alpha} \right) \delta x_{\mu} \right\} d\sigma \tag{163}
 $$
 
 with all the new quantities on the RHS.
 
 In the case which is physically of importance, the actual motion is fixed uniquely by specifying the values of the $\varphi^{\alpha}$ everywhere on two space-time surfaces $\sigma_{2}$ and $\sigma_{1}$ which are the past and future boundaries of the volume Ω. A space-like surface is one on which every two points are outside each other’s light-cones, so that the fields can be fixed independently at every point.
 
-Special case of non-relativistic theory, both $\sigma_{1}$ and $\sigma_{2}$ are just space at the time $t_{1}$ and $t_{2}$, and $\delta x_{\mu}$ is $ic$ times a displacement of the time by $\delta t_{1}$ and $\delta t_{2}$. Then we may write $n_{\mu}$ = (0$, 0 , 0 ,i ) , \pi_{\alpha} = \partial L /\partial \varphi$˙$\alpha$, and then for the <a id="ix-104">Hamiltonian</a>
+Special case of non-relativistic theory, both $\sigma_{1}$ and $\sigma_{2}$ are just space at the time $t_{1}$ and $t_{2}$, and $\delta x_{\mu}$ is $ic$ times a displacement of the time by $\delta t_{1}$ and $\delta t_{2}$. Then we may write $n_{\mu}$ = (0$, 0 , 0 ,i ) , \pi_{\alpha} = \partial L /\partial \dot{\varphi}^{\alpha}$, and then for the <a id="ix-104">Hamiltonian</a>
 
 $$
-H = \int d\tau \left( \sum_{\alpha} \pi_{\alpha} \varphi ˙^{\alpha} - L \right) \tag{164}
+H = \int d\tau \left( \sum_{\alpha} \pi_{\alpha} \dot{\varphi}^{\alpha} - L \right) \tag{164}
 $$
 
 and thus
 
 $$
-\delta I ( Ω ) = \int d\tau \sum_{\alpha} \{ ( \pi_{\alpha} \delta \varphi^{\alpha} ) ( t_{1} ) - ( \pi_{\alpha} \delta \varphi^{\alpha} ) ( t_{2} ) \}-\{ H ( t_{1} ) \delta t_{1} - H ( t_{2} ) \delta t_{2} \} \tag{165}
+\delta I ( \Omega ) = \int d\tau \sum_{\alpha} \{ ( \pi_{\alpha} \delta \varphi^{\alpha} ) ( t_{1} ) - ( \pi_{\alpha} \delta \varphi^{\alpha} ) ( t_{2} ) \}-\{ H ( t_{1} ) \delta t_{1} - H ( t_{2} ) \delta t_{2} \} \tag{165}
 $$
 
 The essential feature of this classical theory is that the <a id="ix-2">Action</a> Principle is stated only for variations vanishing on the boundary of Ω. From this one can _deduce_ as in (163) and (165) the effect on $I$(Ω) of variations not vanishing on the boundary. This is possible because each state of motion is defined by fixing _as many_ field quantities as can be fixed independently, (e.g. all the fields on two space-like surfaces or all <a id="p34"><sup>[p. 34]</sup></a> the fields and their time-derivatives on one surface) and then the whole past and future of the motion is determined by the <a id="ix-62">field</a> equations.
@@ -113,7 +113,7 @@ The essential feature of this classical theory is that the <a id="ix-2">Action</
 Field equations can be written in the Hamiltonian form
 
 $$
-\varphi ˙^{\alpha} = \frac{\partial H}{\partial \pi_{\alpha}} , \quad \pi ˙_{\alpha} = - \frac{\partial H}{\partial \varphi^{\alpha}}
+\dot{\varphi}^{\alpha} = \frac{\partial H}{\partial \pi_{\alpha}} , \quad \dot{\pi}_{\alpha} = - \frac{\partial H}{\partial \varphi^{\alpha}}
 $$
 
 ## <a id="s-examples"></a>Examples:
@@ -173,7 +173,7 @@ It is relativistic all the way, and it is much simpler than the old methods. It 
 In the quantum theory the $\varphi^{\alpha}$ are operators defined at each point of space-time as before. They satisfy the same field equations as before, and this is ensured if we assume that the Action Principle
 
 $$
-\begin{aligned} \delta I ( Ω ) &= 0 \\ I ( Ω ) &= \frac{1}{c} \int_{Ω} L \left( \varphi^{\alpha} ,\varphi_{\mu}^{\alpha} \right) d^{4} x \end{aligned} \tag{171}
+\begin{aligned} \delta I ( \Omega ) &= 0 \\ I ( \Omega ) &= \frac{1}{c} \int_{\Omega} L \left( \varphi^{\alpha} ,\varphi_{\mu}^{\alpha} \right) d^{4} x \end{aligned} \tag{171}
 $$
 
 holds for all variations $\delta \varphi^{\alpha}$ of the operators vanishing on the boundaries of Ω.
@@ -199,7 +199,7 @@ The squared modulus of this gives the probability of finding the values $\varphi
 The Feynman method of quantizing the theory consists in writing down an explicit formula for the transition amplitude (173). Namely
 
 $$
-\langle \varphi_{1}^{\prime \alpha} ,\sigma_{1} \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = N \sum_{H} \exp \left\{ \frac{i}{\hbar} I_{H} ( Ω ) \right\} \tag{174}
+\langle \varphi_{1}^{\prime \alpha} ,\sigma_{1} \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = N \sum_{H} \exp \left\{ \frac{i}{\hbar} I_{H} ( \Omega ) \right\} \tag{174}
 $$
 
 Here $H$ represents a History of the fields between $\sigma_{2}$ and $\sigma_{1}$, i.e. any set of classical functions $\varphi^{\alpha} ( x )$ which are defined in the region Ω between $\sigma_{2}$ and $\sigma_{1}$ and which take the values $\varphi_{1}^{\prime \alpha}$ on $\sigma_{1}$ and $\varphi_{2}^{\prime \alpha}$ on $\sigma_{2} . I_{H}$(Ω) is the value of $I$(Ω) calculated with these particular functions. The sum $\sum H$ is taken over all possible histories, a continuously infinite sum whose exact mathematical definition is not easy to formulate. $N$ is a normalization factor independent of the particular states considered, chosen so as to make the sum of the squares of the amplitudes from a given state to all other states equal to 1. This formula is derived by Feynman from very general considerations, applying a Huyghens principle to the solution of wave-mechanics just as it is done in wave-optics. By this one formula the whole theory is quantized and the answer to any <a id="p36"><sup>[p. 36]</sup></a> physical problem in principle given. The method applies not only to field theory but to ordinary NR quantum theory too. We do not try to derive or justify the Feynman formula here. We just show that it gives the same results as the usual QM. For a discussion of the difficulties in defining the sum $\sum H$, and a method of doing it in simple cases, see C. <a id="ix-134">Morette</a>, _Phys. Rev._ 81 (1951) 848.
@@ -209,10 +209,10 @@ From formula (174) we derive at once the most general _Correspondence Principle_
 To establish a connection between the Feynman method and the ordinary method of <a id="ix-74">quantization</a>, Feynman has to define what he means by an operator in his formulation. This he does as follows: Let $x$ be any space-time point inside Ω. Let $\mathcal{O} ( x )$ be any field operator defined at $x$, for example $\varphi^{\beta} ( x )$ or $\varphi_{\mu}^{\beta} ( x )$. Then $\mathcal{O} ( x )$ is given a meaning by defining its matrix element between the states $| \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle$ and $| \varphi_{1}^{\prime \alpha} ,\sigma_{1} \rangle$, where $\sigma_{2}$ and $\sigma_{1}$ are any two surfaces to the past and future of $x$. This matrix element is
 
 $$
-\langle \varphi_{1}^{\prime \alpha} ,\sigma_{1} \mathcal{O} ( x ) \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = N \sum_{H} \mathcal{O}_{H} ( x ) \exp \left\{ \frac{i}{\hbar} I_{H} ( Ω ) \right\} \tag{175}
+\langle \varphi_{1}^{\prime \alpha} ,\sigma_{1} \mathcal{O} ( x ) \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = N \sum_{H} \mathcal{O}_{H} ( x ) \exp \left\{ \frac{i}{\hbar} I_{H} ( \Omega ) \right\} \tag{175}
 $$
 
-The number $\mathcal{O}$ is just the value which the expression $\mathcal{O}$ takes when the $\varphi^{\alpha}$ are given the values which they have in the history $H$. It is easily verified that the definitions (174) and (175) are physically reasonable and give the right formal properties of transition <a id="ix-14">amplitudes</a> and operator matrix elements.
+The number $\mathcal{O} H$ is just the value which the expression $\mathcal{O}$ takes when the $\varphi^{\alpha}$ are given the values which they have in the history $H$. It is easily verified that the definitions (174) and (175) are physically reasonable and give the right formal properties of transition <a id="ix-14">amplitudes</a> and operator matrix elements.
 
 The Feynman method has one fatal drawback: we cannot use it until we have some way of calculating or at least using the sums over histories, and so far nobody has suggested a practical way of doing this. But Schwinger has shown how to derive from the Feynman method an <a id="ix-3">Action</a> Principle formulation of the theory which avoids this difficulty.
 
@@ -221,19 +221,19 @@ The Feynman method has one fatal drawback: we cannot use it until we have some w
 Let the sets of eigenvalues $\varphi_{1}^{\prime \alpha}$ and $\varphi_{2}^{\prime \alpha}$ in (174) be held fixed. Let the numbers $\varphi_{H}^{\alpha} ( x )$ be varied so that $\varphi_{H}^{\alpha} ( x )$ is replaced by $\varphi_{H}^{\alpha} ( x ) + \delta \varphi^{\alpha} ( x )$ where $\delta \varphi^{\alpha} ( x )$ is an arbitrary infinitesimal c-number quantity. Let the surfaces $\sigma_{1}$ and $\sigma_{2}$ be varied so that the point $x_{\mu}$ moves to $x_{\mu} + \delta x_{\mu}$. And let the function $L$ also be varied so that it is replaced by $L + \delta L$ where $\delta L$ is any expression involving the $\varphi^{\alpha}$ and $\varphi_{\mu}^{\alpha}$. Under this triple variation (174) gives
 
 $$
-\delta \langle \varphi_{1}^{\prime \alpha} ,\sigma_{1} \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = N \sum_{H} \left\{ \frac{i}{\hbar} \delta I_{H} ( Ω ) \exp \left( \frac{i}{\hbar} I_{H} ( Ω ) \right) \right\} \tag{176}
+\delta \langle \varphi_{1}^{\prime \alpha} ,\sigma_{1} \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = N \sum_{H} \left\{ \frac{i}{\hbar} \delta I_{H} ( \Omega ) \exp \left( \frac{i}{\hbar} I_{H} ( \Omega ) \right) \right\} \tag{176}
 $$
 
 Using (175) this may be written
 
 $$
-\delta \langle \varphi_{1}^{\prime \alpha} ,\sigma_{1} \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = \frac{i}{\hbar} \langle \varphi_{1}^{\prime \alpha} ,\sigma_{1} \delta I ( Ω ) \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle . \tag{177}
+\delta \langle \varphi_{1}^{\prime \alpha} ,\sigma_{1} \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = \frac{i}{\hbar} \langle \varphi_{1}^{\prime \alpha} ,\sigma_{1} \delta I ( \Omega ) \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle . \tag{177}
 $$
 
 Here $\delta I$(Ω) is the operator obtained by making the three variations on the operator $I$(Ω). Formally $\delta I$(Ω) is the same as the variation obtained in the classical theory,
 
 $$
-\begin{aligned} \delta I ( Ω ) &= \frac{1}{c} \int_{Ω} \left\{ \delta L + \sum_{\alpha ,\mu} \left( \frac{\partial L}{\partial \varphi^{\alpha}} - \frac{\partial}{\partial x_{\mu}} \frac{\partial L}{\partial \varphi_{\mu}^{\alpha}} \right) \delta \varphi^{\alpha} \right\} d^{4} x \\ & \quad + \int \left\{ {}_{\sigma_{1}} - \int_{\sigma_{2}} \right\} \sum_{\alpha ,\mu} \left\{ \pi_{\alpha} \delta \varphi^{\alpha} + \left( \frac{1}{c} n_{\mu} L - \varphi_{\mu}^{\alpha} \pi_{\alpha} \right) \delta x_{\mu} \right\} d\sigma \end{aligned} \tag{178}
+\begin{aligned} \delta I ( \Omega ) &= \frac{1}{c} \int_{\Omega} \left\{ \delta L + \sum_{\alpha ,\mu} \left( \frac{\partial L}{\partial \varphi^{\alpha}} - \frac{\partial}{\partial x_{\mu}} \frac{\partial L}{\partial \varphi_{\mu}^{\alpha}} \right) \delta \varphi^{\alpha} \right\} d^{4} x \\ & \quad + \left\{ \int_{\sigma_{1}} - \int_{\sigma_{2}} \right\} \sum_{\alpha ,\mu} \left\{ \pi_{\alpha} \delta \varphi^{\alpha} + \left( \frac{1}{c} n_{\mu} L - \varphi_{\mu}^{\alpha} \pi_{\alpha} \right) \delta x_{\mu} \right\} d\sigma \end{aligned} \tag{178}
 $$
 
 <a id="p37"><sup>[p. 37]</sup></a>
@@ -249,7 +249,11 @@ $$
 Therefore the change in $\varphi_{H}^{\alpha}$ is equivalent simply to changing
 
 $$
-\varphi_{1 \prime}^{\alpha \prime \prime} \varphi_{2}^{\alpha} \text{ to } \text{ to } \varphi \varphi_{1}^{\alpha} \frac{\prime \prime}{\prime} + \delta \varphi^{\alpha}_{2}^{\alpha} + \delta \varphi^{\alpha} \text{ on } \text{ on } \sigma_{1} \sigma_{2} .
+\varphi_{1}^{\alpha \prime \prime} \text{ to } \varphi_{1}^{\alpha \prime \prime} + \delta \varphi^{\alpha} \text{ on } \sigma_{1}
+$$
+
+$$
+\varphi_{2}^{\alpha \prime} \text{ to } \varphi_{2}^{\alpha \prime} + \delta \varphi^{\alpha} \text{ on } \sigma_{2} .
 $$
 
 The change in $L$ and in the position of $\sigma$ produces a change in the left side of (174), by virtue of the change in the operators $\varphi^{\alpha}$ on $\sigma_{1}$ and $\sigma_{2}$ resulting from the variations $\delta L$ and $\delta x_{\mu}$ in consequence of the field equations.
@@ -263,7 +267,7 @@ Schwinger takes equation (177) as the fundamental principle for setting up the q
 If we take the special case of a variation $\delta \varphi^{\alpha}$ which vanishes on the boundary of Ω and $\delta L = \delta x_{\mu}$ = 0, then $\langle \varphi_{1}^{\alpha \prime} ,\sigma_{1} \varphi_{2}^{\alpha \prime} ,\sigma_{2} \rangle$ depends only on the operators $\varphi^{\alpha}$ on $\sigma_{1}$ and $\sigma_{2}$ and is unaffected by the variation. Therefore for all such variations
 
 $$
-\delta I ( Ω ) = 0 \tag{171}
+\delta I ( \Omega ) = 0 \tag{171}
 $$
 
 $$
@@ -274,7 +278,7 @@ That is to say, the classical action principle and the classical field equations
 
 We see that (177) is exactly the kind of generalization we want of the old variation principle (171). It includes the information, necessary for a quantum theory, concerning the effect on $I$(Ω) of variations not vanishing at the boundary of Ω.
 
-### <a id="s-b-the-schr-odinger-equation-for-the-state-function"></a>B. The Schr¨odinger Equation for the State-function
+### <a id="s-b-the-schr-dinger-equation-for-the-state-function"></a>B. The Schr¨odinger Equation for the State-function
 
 Specialize $\sigma_{1}$ and $\sigma_{2}$ to be the whole space at the times $t_{1}$ and $t_{2}$. Then
 
@@ -282,7 +286,7 @@ $$
 \langle \varphi_{1}^{\prime \alpha} ,\sigma_{1} \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = \langle \varphi_{1}^{\prime \alpha} ,t_{1} \varphi_{2}^{\prime \alpha} ,t_{2} \rangle = \Psi ( \varphi_{1}^{\prime \alpha} ,t_{1} )
 $$
 
-is a Schr¨odinger wave-function giving the probability amplitude for finding the system in the state $\varphi_{1}^{\prime \alpha}$ at the time $t_{1}$, given the initial conditions $\varphi_{2}^{\prime \alpha}$ at $t_{2}$. The development of Ψ $( \varphi_{1}^{\prime \alpha} ,t_{1} )$ with time $t_{1}$ is thus a description of the development of the state of the system with time in the Schr¨odinger representation.
+is a Schrödinger wave-function giving the probability amplitude for finding the system in the state $\varphi_{1}^{\prime \alpha}$ at the time $t_{1}$, given the initial conditions $\varphi_{2}^{\prime \alpha}$ at $t_{2}$. The development of Ψ $( \varphi_{1}^{\prime \alpha} ,t_{1} )$ with time $t_{1}$ is thus a description of the development of the state of the system with time in the Schrödinger representation.
 
 Take in (177) a variation in which $\delta \varphi^{\alpha} = \delta L$ = 0, the surface $\sigma_{1}$ being just moved through the displacement $\delta t$ in the time direction. Then using (165) and (164)
 
@@ -298,7 +302,7 @@ $$
 i \hbar \frac{d}{dt} \langle \varphi_{1}^{\prime \alpha} ,t_{1} \varphi_{2}^{\prime \alpha} ,t_{2} \rangle = \langle \varphi_{1}^{\prime \alpha} ,t_{1} H ( t_{1} ) \varphi_{2}^{\prime \alpha} ,t_{2} \rangle \tag{180}
 $$
 
-This is the ordinary Schr¨odinger <a id="ix-232">equation</a> in Dirac’s <a id="ix-76">notation</a>. It shows that the Schwinger <a id="ix-239">action principle</a> contains enough information for predicting the future behaviour of a system given initially in a known quantum state.
+This is the ordinary Schrödinger <a id="ix-232">equation</a> in Dirac’s <a id="ix-76">notation</a>. It shows that the Schwinger <a id="ix-239">action principle</a> contains enough information for predicting the future behaviour of a system given initially in a known quantum state.
 
 ### <a id="s-c-operator-form-of-the-schwinger-principle"></a>C. Operator Form of the Schwinger Principle
 
@@ -315,13 +319,13 @@ where $\varphi^{\prime \alpha}$ and $\varphi^{\prime \prime \alpha}$ are given s
 Suppose that a reference surface $\sigma_{o}$ is chosen in the remote past. Let the $\varphi^{\alpha} ,\sigma$ and $L$ be varied in such a way that everything on $\sigma_{o}$ remains fixed. For such a variation, (178) gives if we assume that (179) holds
 
 $$
-\delta I ( Ω ) = \frac{1}{c} \int_{Ω} \delta L d^{4} x + \int_{\sigma \alpha ,\mu} \sum \left\{ \pi_{\alpha} \delta \varphi^{\alpha} + \left( \frac{1}{c} n_{\mu} L - \varphi_{\mu}^{\alpha} \pi_{\alpha} \right) \delta x_{\mu} \right\} d\sigma \tag{182}
+\delta I ( \Omega ) = \frac{1}{c} \int_{\Omega} \delta L d^{4} x + \int_{\sigma \alpha ,\mu} \sum \left\{ \pi_{\alpha} \delta \varphi^{\alpha} + \left( \frac{1}{c} n_{\mu} L - \varphi_{\mu}^{\alpha} \pi_{\alpha} \right) \delta x_{\mu} \right\} d\sigma \tag{182}
 $$
 
 where Ω is the region bounded by $\sigma_{o}$ and $\sigma$. Let us now first calculate the variation of (181) arising from the change in the meaning of the states $| \varphi^{\prime \alpha} ,\sigma \rangle$ and $| \varphi^{\prime \prime \alpha} ,\sigma \rangle$. The operator $\mathcal{O}$ itself is at this point fixed and not affected by the variations in $\varphi^{\alpha} , \sigma$ and $L$ . Then
 
 $$
-\langle \varphi^{\prime \alpha} ,\sigma \mathcal{O} \varphi^{\prime \prime \alpha} ,\sigma \rangle = \sum_{\varphi_{o}} \sum_{\varphi_{o}} \langle \varphi^{\prime \alpha} ,\sigma \varphi_{o}^{\prime \alpha} ,\sigma_{o} \rangle \langle \varphi_{o}^{\prime \alpha} ,\sigma_{o} \mathcal{O} \varphi_{o}^{\prime \prime \alpha} ,\sigma_{o} \rangle \langle \varphi_{o}^{\prime \prime \alpha} ,\sigma_{o} \varphi^{\prime \prime \alpha} ,\sigma \rangle \tag{183}
+\langle \varphi^{\prime \alpha} ,\sigma \mathcal{O} \varphi^{\prime \prime \alpha} ,\sigma \rangle = \sum_{\varphi_{o}^{\prime}} \sum_{\varphi \prime \prime_{o}} \langle \varphi^{\prime \alpha} ,\sigma \varphi_{o}^{\prime \alpha} ,\sigma_{o} \rangle \langle \varphi_{o}^{\prime \alpha} ,\sigma_{o} \mathcal{O} \varphi_{o}^{\prime \prime \alpha} ,\sigma_{o} \rangle \langle \varphi_{o}^{\prime \prime \alpha} ,\sigma_{o} \varphi^{\prime \prime \alpha} ,\sigma \rangle \tag{183}
 $$
 
 therefore, denoting
@@ -337,13 +341,13 @@ $$
 because $| \varphi_{o}^{\prime \alpha} \rangle$ and $| \varphi_{o}^{\prime \prime \alpha} \rangle$ are not changed by the variation, and neither is $\mathcal{O}$. Therefore, using (177) we have
 
 $$
-\delta \langle \sigma^{\prime} \mathcal{O} \sigma^{\prime \prime} \rangle = \sum_{\prime} \sum_{\prime \prime} \frac{i}{\hbar} \langle \sigma^{\prime} \delta I_{\sigma - \sigma_{o}} \mathcal{O} \sigma^{\prime \prime} \rangle + \sum_{\prime} \sum_{\prime \prime} \frac{i}{\hbar} \langle \sigma^{\prime} \mathcal{O} \delta I_{\sigma o - \sigma} \sigma^{\prime \prime} \rangle
+\delta \langle \sigma^{\prime} \mathcal{O} \sigma^{\prime \prime} \rangle = \sum_{\prime} \sum_{\prime \prime} \frac{i}{\hbar} \langle \sigma^{\prime} \delta I_{\sigma - \sigma_{o}} \mathcal{O} \sigma^{\prime \prime} \rangle + \sum_{\prime} \sum_{\prime \prime} \frac{i}{\hbar} \langle \sigma^{\prime} \mathcal{O} \delta I_{\sigma_{o} - \sigma} \sigma^{\prime \prime} \rangle
 $$
 
-where the subscript $\sigma - \sigma_{o}$ refers to the surface integrals in (178). Since $\delta I_{\sigma - \sigma_{o}} = - \delta I_{\sigma o - \sigma}$, we get finally
+where the subscript $\sigma - \sigma_{o}$ refers to the surface integrals in (178). Since $\delta I_{\sigma - \sigma_{o}} = - \delta I_{\sigma_{o} - \sigma}$, we get finally
 
 $$
-\delta \langle \varphi^{\prime \alpha} ,\sigma \mathcal{O} \varphi^{\prime \prime \alpha} ,\sigma \rangle = \frac{i}{\hbar} \langle \varphi^{\prime \alpha} ,\sigma \boldsymbol{[} \delta I ( Ω ) , \mathcal{O} \boldsymbol{]} \varphi^{\prime \prime \alpha} ,\sigma \rangle \tag{184}
+\delta \langle \varphi^{\prime \alpha} ,\sigma \mathcal{O} \varphi^{\prime \prime \alpha} ,\sigma \rangle = \frac{i}{\hbar} \langle \varphi^{\prime \alpha} ,\sigma \boldsymbol{[} \delta I ( \Omega ) , \mathcal{O} \boldsymbol{]} \varphi^{\prime \prime \alpha} ,\sigma \rangle \tag{184}
 $$
 
 where $\boldsymbol{[} P,R \boldsymbol{]} = PR - RP$. This applies for the case when $\mathcal{O}$ is fixed and the states vary.
@@ -357,10 +361,10 @@ $$
 if _both_ the states and $\mathcal{O}$ change simultaneously is zero. Therefore, if we use a representation in which matrix elements of $\mathcal{O}$ are defined between states _not_ subject to variation we get<sup><a id="fnref-19" href="#fn-19">19</a></sup>
 
 $$
-i \hbar \delta \mathcal{O} ( \sigma ) = \boldsymbol{[} \delta I ( Ω ) , \mathcal{O} ( \sigma ) \boldsymbol{]} \tag{186}
+i \hbar \delta \mathcal{O} ( \sigma ) = \boldsymbol{[} \delta I ( \Omega ) , \mathcal{O} ( \sigma ) \boldsymbol{]} \tag{186}
 $$
 
-This is the Schwinger action principle in operator form. It is related to (177) exactly as the Heisenberg representation is to the Schr¨odinger representation in elementary quantum mechanics.
+This is the Schwinger action principle in operator form. It is related to (177) exactly as the Heisenberg representation is to the Schrödinger representation in elementary quantum mechanics.
 
 <a id="p39"><sup>[p. 39]</sup></a>
 
@@ -423,7 +427,7 @@ $$
 to $L ( x )$ produces at most a change $\epsilon \delta_{\mathcal{Q}} \varphi^{\alpha} ( x )$ in the $\varphi^{\alpha} ( x )$. Let $\epsilon \delta_{\mathcal{R}} \mathcal{Q} ( y )$ be the change in $\mathcal{Q} ( y )$ produced by the addition (191), while $\epsilon \delta_{\mathcal{Q}} \mathcal{R} ( z )$ be the change in $\mathcal{R} ( z )$ produced by (192). Suppose $y$ lies on a surface <a id="p40"><sup>[p. 40]</sup></a> $\sigma$ lying in the future of $z$. Then we take $\mathcal{Q} ( y )$ for $\mathcal{O} ( \sigma )$ in (186), and $\delta L$ given by (191). The $\delta I$(Ω) given by (182) reduces then simply to
 
 $$
-\delta I ( Ω ) = \frac{1}{c} \epsilon \mathcal{R} ( z )
+\delta I ( \Omega ) = \frac{1}{c} \epsilon \mathcal{R} ( z )
 $$
 
 It is assumed that there is no intrinsic change $\delta \varphi^{\alpha}$ of $\varphi^{\alpha}$ or $\delta x_{\mu}$ of $\sigma$ apart from the change whose effect is already included in the $\delta L$ term. Thus (186) gives
@@ -452,7 +456,7 @@ $$
 \{ \psi^{\alpha} ( r,t ) ,\psi^{\beta} ( r^{\prime} ,t ) \} = 0 \quad \{ \mathcal{P} , \mathcal{R} \} = \mathcal{P} \mathcal{R} + \mathcal{R} \mathcal{P} \tag{195}
 $$
 
-The bilinear combination will still commute, like the $\varphi^{\alpha}$’s did before. The $\psi^{\alpha}$ commute as before with any field quantities on $\sigma$ other than the $\psi$ and $\overline{\psi}$. Schwinger then assumes (177) to hold precisely as before, except that in calculating $\delta I$(Ω) according to (178), the variation $\delta \psi^{\alpha}$ _anticommutes_ with all operators $\psi^{\alpha}$ and $\overline{\psi}^{\beta}$. In these theories it turns out that the momentum $\pi_{\alpha}$ conjugate to $\psi^{\alpha}$ is just a linear combination of $\overline{\psi}$, because the Lagrangian is only linear in the derivatives of $\psi$. With the anticommuting fields the field equations (179) are deduced as before, also the Schr¨odinger equation (180), the commutation rules being given by (186) and (187). But now in order to make (187) valid, since $\delta \psi^{\beta}$ anticommutes with the $\psi$ and $\pi$ operators,<sup><a id="fnref-21" href="#fn-21">21</a></sup> the canonical commutation law must be written
+The bilinear combination will still commute, like the $\varphi^{\alpha}$’s did before. The $\psi^{\alpha}$ commute as before with any field quantities on $\sigma$ other than the $\psi$ and $\overline{\psi}$. Schwinger then assumes (177) to hold precisely as before, except that in calculating $\delta I$(Ω) according to (178), the variation $\delta \psi^{\alpha}$ _anticommutes_ with all operators $\psi^{\alpha}$ and $\overline{\psi}^{\beta}$. In these theories it turns out that the momentum $\pi_{\alpha}$ conjugate to $\psi^{\alpha}$ is just a linear combination of $\overline{\psi}$, because the Lagrangian is only linear in the derivatives of $\psi$. With the anticommuting fields the field equations (179) are deduced as before, also the Schrödinger equation (180), the commutation rules being given by (186) and (187). But now in order to make (187) valid, since $\delta \psi^{\beta}$ anticommutes with the $\psi$ and $\pi$ operators,<sup><a id="fnref-21" href="#fn-21">21</a></sup> the canonical commutation law must be written
 
 $$
 \{ \psi^{\alpha} ( r,t ) ,\pi_{\beta} ( r^{\prime} ,t ) \} = - i \hbar \delta_{\alpha \beta} \delta^{3} ( \boldsymbol{r} - \boldsymbol{r}^{\prime} ) \tag{196}

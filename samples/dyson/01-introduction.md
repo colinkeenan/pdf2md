@@ -90,7 +90,7 @@ $$
 \frac{1}{c^{2}} \frac{\partial^{2}}{\partial t^{2}} \psi = \nabla^{2} \psi - \frac{m^{2} c^{2}}{\hbar^{2}} \psi \tag{6}
 $$
 
-This is an historic equation, the <a id="ix-131">Klein-Gordon equation</a>. <a id="ix-238">Schr¨odinger</a> already in 1926 tried to make a RQ theory out of it. But he failed, and many other people too, until Pauli and <a id="ix-220">Weisskopf</a> gave the many-particle theory in 1934 <a id="refback-12-1"></a>[[12]](#ref-12). Why?
+This is an historic equation, the <a id="ix-131">Klein-Gordon equation</a>. <a id="ix-238">Schrödinger</a> already in 1926 tried to make a RQ theory out of it. But he failed, and many other people too, until Pauli and <a id="ix-220">Weisskopf</a> gave the many-particle theory in 1934 <a id="refback-12-1"></a>[[12]](#ref-12). Why?
 
 Because in order to interpret the wave-function as a probability we must have a <a id="ix-173">continuity</a> equation. This can only be got out of the wave-equation if we take $\hbar$ as before, and
 

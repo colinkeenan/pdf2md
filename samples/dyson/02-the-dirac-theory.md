@@ -127,13 +127,13 @@ $$
 where $V$ is a volume. Now in going to a new Lorentz system with relative velocity $v$ the volume $V$ changes by <a id="ix-94">Fitzgerald contraction</a> to the value
 
 $$
-V^{\prime} = V \sqrt{1 - \frac{v^{2}}{c^{2}}} \langle \rangle
+V^{\prime} = V \sqrt{1 - \frac{v^{2}}{c^{2}}}
 $$
 
 Therefore
 
 $$
-( \psi^{*\prime} \psi^{\prime} ) = \sqrt{\frac{\psi^{*} \psi}{\langle 1 - \rangle \frac{v^{2}}{c^{2}}}} \tag{17}
+( \psi^{*\prime} \psi^{\prime} ) = \frac{\psi^{*} \psi}{\sqrt{1 - \frac{v^{2}}{c^{2}}}} \tag{17}
 $$
 
 and so $( \psi^{*} \psi ) = \rho$ transforms like an _energy_, i.e.like the fourth component of a vector. This shows incidentally that $\psi^{\prime} = \psi$. Since $\rho$ and $\hbar$ are related by the equation of continuity, the space-components of the 4-vector are
@@ -887,7 +887,7 @@ $$
 Hence in this case
 
 $$
-E = \frac{mc^{2}}{\sqrt{1 + \frac{\alpha^{2}}{\left( n + k^{2} - \alpha^{2} \right)^{2}} \surd} \langle \rangle} \tag{92}
+E = \frac{mc^{2}}{\sqrt{1 + \frac{\alpha^{2}}{\left( n + \sqrt{k^{2} - \alpha^{2}} \right)^{2}}}} \tag{92}
 $$
 
 Given this positive $E , \left( a_{1}^{2} - a^{2} \right)$ is negative (see (83) and (84)) and so it is allowable to square $( \epsilon + n )$ to find these solutions, without introducing any difficulties. So for each
@@ -925,7 +925,7 @@ $$
 Expanding in powers of $\alpha$
 
 $$
-E = mc^{2} \left[ 1 -_{\text{ NR levels }} \frac{1}{| 2} \frac{\alpha^{2}}{\{ N^{2} \}} + \right| \frac{\alpha^{4}}{N^{3}} [ {}_{\text{ fine structure }} \left\{ - \frac{1}{2 | k |} \right) \left( \frac{3}{8 N} \right\} ] \tag{95}
+E = mc^{2} \left[ 1 - \underbrace{\frac{1}{2} \frac{\alpha^{2}}{N^{2}}}_{\text{ NR levels }} + \underbrace{\frac{\alpha^{4}}{N^{3}} \left( \frac{3}{8 N} - \frac{1}{2 | k |} \right)}_{\text{ fine structure }} \right] \tag{95}
 $$
 
 There is _exact_ degeneracy between the two states of a given $| k |$. Nonrelativistic states are given by
@@ -941,7 +941,11 @@ $$
 So
 
 $$
-\frac{\frac{2}{2} P_{1 / 2}}{{}^{2} S_{3} \frac{/ 2}{2}_{/}} S_{1} \text{ is } \frac{\text{ is }}{\text{ is }} j \frac{j =}{j =} = \tfrac{1}{2} \frac{\tfrac{1}{2} ,}{\tfrac{1}{2} ,} , k \frac{k = 1}{k = - 2} = - 1 \{ \} \to \text{ degenerate }
+\left. \begin{aligned} {}^{2} P_{1 / 2} \text{ is } j &= \tfrac{1}{2} , k = 1 \\ {}^{2} S_{1 / 2} \text{ is } j &= \tfrac{1}{2} , k = - 1 \end{aligned} \right\} \to \text{ degenerate }
+$$
+
+$$
+{}^{2} S_{3 / 2} \text{ is } j = \tfrac{1}{2} , k = - 2
 $$
 
 ## <a id="s-behavior-of-an-electron-in-non-relativistic-approximation"></a>Behaviour of an Electron in a Non-Relativistic Approximation
@@ -1012,7 +1016,7 @@ $$
 \left( - i \hbar \frac{\partial}{\partial t} - e \Phi + mc^{2} \right) \psi - \frac{h^{2}}{2 m} \sum_{k = 1}^{3} \left\{ \left( \frac{\partial}{\partial x_{k}} + \frac{ie}{\hbar c} A_{k} \right)^{2} \right\} \psi + \frac{e \hbar}{2 mc} [ \boldsymbol{\sigma} \boldsymbol{\cdot} \boldsymbol{H} - i \boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{E} ] \psi + O \left( \frac{1}{mc^{2}} \right) = 0
 $$
 
-The NR approximation means dropping the terms $O \left( 1 /mc^{2} \right)$. Thus the NR Schr¨odinger <a id="ix-230">equation</a> is
+The NR approximation means dropping the terms $O \left( 1 /mc^{2} \right)$. Thus the NR Schrödinger <a id="ix-230">equation</a> is
 
 $$
 i \hbar \frac{\partial \psi}{\partial t} = \left\{ mc^{2} - e \Phi - \frac{h^{2}}{2 m} \sum_{k = 1}^{3} \left( \frac{\partial}{\partial x_{k}} + \frac{ie}{\hbar c} A_{k} \right)^{2} + \frac{e \hbar}{2 mc} ( \boldsymbol{\sigma} \boldsymbol{\cdot} \boldsymbol{H} - i \boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{E} ) \right\} \psi \tag{99}
@@ -1145,15 +1149,7 @@ $$
 $$
 
 $$
-\alpha_{k} \sigma_{\ell} = ( i\alpha_{m} )
-$$
-
-$$
-\sigma_{k} \gamma_{\ell} = i\gamma_{m} \quad k,\ell ,m = ( 1 , 2 , 3 ) \text{ cyclicly permuted }
-$$
-
-$$
-\gamma_{k} \alpha_{\ell} = ( \beta \sigma_{m} )
+\left. \begin{aligned} \alpha_{k} \sigma_{\ell} &= i\alpha_{m} \\ \sigma_{k} \gamma_{\ell} &= i\gamma_{m} \\ \gamma_{k} \alpha_{\ell} &= \beta \sigma_{m} \end{aligned} \right\} k,\ell ,m = ( 1 , 2 , 3 ) \text{ cyclicly permuted }
 $$
 
 Comparison with the Dirac notation: $\rho_{1} = \epsilon \rho_{2} = \eta \rho_{3} = \beta$.
@@ -1227,15 +1223,7 @@ $$
 $$
 
 $$
-\alpha_{k} \sigma_{\ell} = ( i\alpha_{m} )
-$$
-
-$$
-\sigma_{k} \gamma_{\ell} = i\gamma_{m} \quad k,\ell ,m = ( 1 , 2 , 3 ) \text{ cyclicly permuted }
-$$
-
-$$
-\gamma_{k} \alpha_{\ell} = ( i\beta \sigma_{m} )
+\left. \begin{aligned} \alpha_{k} \sigma_{\ell} &= i\alpha_{m} \\ \sigma_{k} \gamma_{\ell} &= i\gamma_{m} \\ \gamma_{k} \alpha_{\ell} &= i\beta \sigma_{m} \end{aligned} \right\} k,\ell ,m = ( 1 , 2 , 3 ) \text{ cyclicly permuted }
 $$
 
 Latin indices: 1, 2, 3. Greek indices: 0, 1, 2, 3.

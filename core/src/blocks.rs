@@ -212,7 +212,8 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
         let n = t.chars().count().max(1) as f32;
         let math = doc.is_math(s);
         let lead = t.starts_with([')', ']']) && t.chars().count() > 1 && !math;
-        let trail = t.ends_with(['(', '[']) && t.chars().count() > 1 && !math;
+        // ... and ". Likewise ˜" ends with the accent of the symbol after it
+        let trail = t.ends_with(['(', '[', '˜', 'ˆ', '˙', '¨', 'ˇ']) && t.chars().count() > 1 && !math;
         if lead || trail {
             let cut = if lead { 1 } else { t.chars().count() - 1 };
             let a: String = t.chars().take(cut).collect();
@@ -268,7 +269,10 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
                     return K::Marker;
                 }
             }
-            if math || s.script != Script::Normal {
+            // an accent drawn over a math symbol (˜ over a) is part of it
+            let accent_over_math = matches!(t, "˜" | "ˆ" | "˙" | "¨" | "¯" | "ˇ")
+                && spans.iter().any(|o| doc.is_math(o) && o.left < s.right() && o.right() > s.left);
+            if math || s.script != Script::Normal || accent_over_math {
                 K::Math
             } else if !t.is_empty() && t.chars().all(|c| c.is_ascii_digit() || "=+−-–()[]/<>|,.;:·×*!′".contains(c)) {
                 K::Op
@@ -564,7 +568,15 @@ fn display_flags(doc: &Doc, lines: &[Line], st: &Stats) -> Vec<bool> {
             let candidate = words <= 3
                 && (ratio > 0.0 || l.size < 0.9 * st.body || indented(l))
                 && (!at_margin || ratio >= 0.7);
-            let near = |j: usize| f[j] && (l.top - lines[j].top).abs() <= 1.25 * st.body;
+            // ... or it lies beside a tall bracket of the equation (the rows
+            // of cases after a big "{")
+            let beside_bracket = |j: usize| {
+                let cy = l.top + 0.5 * st.body;
+                lines[j].spans.iter().any(|s| {
+                    doc.family(s).starts_with("CMEX") && s.bottom() - s.top > 1.5 * st.body && s.top <= cy && s.bottom() >= cy
+                })
+            };
+            let near = |j: usize| f[j] && ((l.top - lines[j].top).abs() <= 1.25 * st.body || beside_bracket(j));
             if candidate && ((i > 0 && near(i - 1)) || (i + 1 < lines.len() && near(i + 1))) {
                 f[i] = true;
                 changed = true;

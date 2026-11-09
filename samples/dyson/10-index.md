@@ -178,7 +178,7 @@
 - Klein-Nishina formula, [91](06-free-particle-scattering-problems.md#p91)
 - Moravcsik, Michael J., i
 - Koenig, Seymour H., [125](08-scattering-by-a-static-potential-comparison-with-experimental-results.md#p125)
-- Morette, C´ecile, [36](04-field-theory.md#ix-134)
+- Morette, Cécile, [36](04-field-theory.md#ix-134)
 - Kramers, Hendrik A., [59](05-examples-of-quantized-field-theories.md#p59)
 - Mott, Neville F., [22](03-scattering-problems-and-born-approximation.md#ix-135), [30](03-scattering-problems-and-born-approximation.md#ix-136)
 - Kroll, Norman M., [125](08-scattering-by-a-static-potential-comparison-with-experimental-results.md#p125), [133](09-typist-s-afterword.md#p133)
@@ -310,11 +310,11 @@
   - Møller, [27](03-scattering-problems-and-born-approximation.md#ix-228), [84–86](06-free-particle-scattering-problems.md#ix-229)
   - photon, and vacuum polarization, [71](05-examples-of-quantized-field-theories.md#p71)
   - Thomson, [92](06-free-particle-scattering-problems.md#p92)
-- Schr¨odinger
+- Schrödinger
   - equation, [18](02-the-dirac-theory.md#ix-230), [24](03-scattering-problems-and-born-approximation.md#ix-231), [38](04-field-theory.md#ix-232), [41](05-examples-of-quantized-field-theories.md#ix-233), [54](05-examples-of-quantized-field-theories.md#p54), [81](06-free-particle-scattering-problems.md#ix-234), [106](07-general-theory-of-free-particle-scattering.md#p106), [124](08-scattering-by-a-static-potential-comparison-with-experimental-results.md#ix-235)
   - representation, [39](04-field-theory.md#p39), [54](05-examples-of-quantized-field-theories.md#ix-236)
   - wave function, [54](05-examples-of-quantized-field-theories.md#ix-237)
-- Schr¨odinger, Erwin, [3](01-introduction.md#ix-238)
+- Schrödinger, Erwin, [3](01-introduction.md#ix-238)
 - Schwinger
   - action principle, [36](04-field-theory.md#ix-3), [38](04-field-theory.md#ix-239), [40](04-field-theory.md#ix-240) operator form, [39](04-field-theory.md#p39)
   - covariant electrodynamics, [73](05-examples-of-quantized-field-theories.md#p73)
