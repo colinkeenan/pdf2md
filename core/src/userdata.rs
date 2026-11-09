@@ -35,16 +35,55 @@ pub struct Fix {
     pub span: String,
 }
 
+/// A marker the reader put inside a sentence (`<sup>[✎](#mine-3)</sup>`,
+/// or any `<sup class="mine">…</sup>`), pointing to a note.
+#[derive(Debug, Clone, PartialEq)]
+pub struct Mark {
+    pub slug: Option<String>,
+    /// first words of its paragraph
+    pub paragraph: String,
+    /// the text right before it in the paragraph
+    pub before: String,
+    pub mark: String,
+}
+
 #[derive(Debug, Clone, Default, PartialEq)]
 pub struct UserData {
     pub notes: Vec<Note>,
     pub fixes: Vec<Fix>,
+    pub marks: Vec<Mark>,
 }
 
 impl UserData {
     pub fn is_empty(&self) -> bool {
-        self.notes.is_empty() && self.fixes.is_empty()
+        self.notes.is_empty() && self.fixes.is_empty() && self.marks.is_empty()
     }
+}
+
+/// Byte ranges of the reader's markers in a text.
+fn mark_ranges(text: &str) -> Vec<(usize, usize)> {
+    let mut out = Vec::new();
+    for open in ["<sup>[✎](", "<sup class=\"mine\">"] {
+        let mut from = 0;
+        while let Some(i) = text[from..].find(open).map(|i| from + i) {
+            let Some(end) = text[i..].find("</sup>").map(|e| i + e + 6) else { break };
+            out.push((i, end));
+            from = end;
+        }
+    }
+    out.sort();
+    out
+}
+
+fn without_marks(t: &str) -> String {
+    let mut out = String::new();
+    let mut last = 0;
+    for (a, b) in mark_ranges(t) {
+        out.push_str(&t[last..a]);
+        last = b;
+    }
+    out.push_str(&t[last..]);
+    out
 }
 
 /// The first words of a block of Markdown, without markup: what finds the
@@ -177,6 +216,26 @@ fn collect_file(text: &str, slug_at: &dyn Fn(usize) -> Option<String>) -> UserDa
         let para = undo_fixes(&text[p0..p1]);
         data.fixes.push(Fix { slug: slug_at(i), paragraph: fingerprint(&para), was, span: span.to_string() });
     }
+    // markers inside sentences
+    for (a, b) in mark_ranges(text) {
+        if inside(a) {
+            continue;
+        }
+        let p0 = text[..a].rfind("\n\n").map_or(0, |k| k + 2);
+        let p1 = text[b..].find("\n\n").map_or(text.len(), |k| b + k);
+        // the text right before it (other markers left out), up to 40 bytes
+        let before = without_marks(&text[p0..a]);
+        let mut cut = before.len().saturating_sub(40);
+        while !before.is_char_boundary(cut) {
+            cut += 1;
+        }
+        data.marks.push(Mark {
+            slug: slug_at(a),
+            paragraph: fingerprint(&undo_fixes(&text[p0..p1])),
+            before: before[cut..].to_string(),
+            mark: text[a..b].to_string(),
+        });
+    }
     data
 }
 
@@ -232,6 +291,11 @@ pub fn collect(dir: &Path) -> UserData {
                 all.fixes.push(f);
             }
         }
+        for m in data.marks {
+            if !all.marks.iter().any(|n| n.mark == m.mark && n.paragraph == m.paragraph) {
+                all.marks.push(m);
+            }
+        }
     }
     all
 }
@@ -255,19 +319,58 @@ pub fn apply(text: &mut String, data: &UserData, slug: Option<&str>) -> Vec<Note
             pos += block.len() + 2;
         }
     }
-    // notes: after their block, else after the block holding their anchor
+    // markers: in their paragraph after the same text, else at its end
     let mut lost = Vec::new();
+    for m in data.marks.iter().filter(|m| ours(&m.slug)) {
+        let mut pos = 0;
+        let mut placed = false;
+        for block in text.clone().split("\n\n") {
+            if fingerprint(&undo_fixes(block)) == m.paragraph {
+                let at = if m.before.is_empty() {
+                    None
+                } else {
+                    // find the context, skipping markers already put back
+                    let plain = without_marks(block);
+                    plain.find(&m.before).map(|k| {
+                        let end_plain = k + m.before.len();
+                        // map the position back into the block with markers
+                        let mut seen = 0;
+                        let mut last = 0;
+                        let mut real = end_plain;
+                        for (a, b) in mark_ranges(block) {
+                            if seen + (a - last) >= end_plain {
+                                break;
+                            }
+                            seen += a - last;
+                            real += b - a;
+                            last = b;
+                        }
+                        real
+                    })
+                };
+                let at = pos + at.unwrap_or(block.len());
+                text.insert_str(at, &m.mark);
+                placed = true;
+                break;
+            }
+            pos += block.len() + 2;
+        }
+        if !placed {
+            lost.push(Note { slug: m.slug.clone(), after: m.paragraph.clone(), anchor: None, text: format!("A marker {} that followed “{}”", m.mark, m.before.trim()) });
+        }
+    }
+    // notes: after their block, else after the block holding their anchor
     let mut inserts: Vec<(usize, &Note)> = Vec::new();
     for n in data.notes.iter().filter(|n| ours(&n.slug)) {
         let mut pos = 0;
         let mut at = None;
         for block in text.split("\n\n") {
-            pos += block.len();
             if !n.after.is_empty() && fingerprint(&undo_fixes(block)) == n.after {
-                at = Some(pos);
+                // after the block's text (before a final newline of the file)
+                at = Some(pos + block.trim_end_matches('\n').len());
                 break;
             }
-            pos += 2;
+            pos += block.len() + 2;
         }
         if at.is_none() {
             if let Some(a) = &n.anchor {
@@ -338,6 +441,22 @@ mod tests {
         assert_eq!(d.notes[1].after, "second paragraph with a rnistake in it");
         assert_eq!(d.fixes.len(), 1);
         assert_eq!(d.fixes[0].was, "rnistake");
+    }
+
+    #[test]
+    fn keeps_markers_in_sentences() {
+        let old = "# Ch\n\nThe spin is one half,<sup>[✎](#mine-1)</sup> as Stern found.\n\n<details class=\"mine\" id=\"mine-1\">\n<summary>✎ note</summary>\n\nWhy.\n\n</details>\n";
+        let d = collect_file(old, &|_| Some("c".into()));
+        assert_eq!(d.marks.len(), 1);
+        let mut new = "# Ch\n\nThe spin is one half, as Stern found.\n".to_string();
+        let lost = apply(&mut new, &d, Some("c"));
+        assert!(lost.is_empty(), "{lost:?}");
+        assert_eq!(new, old.trim_end().to_string() + "\n");
+        // context gone: at the end of its paragraph
+        let mut changed = "# Ch\n\nThe spin is one half, as Stern found.\n".replace("one half,", "1/2,");
+        let d2 = UserData { marks: vec![Mark { paragraph: fingerprint("The spin is 1/2, as Stern found."), ..d.marks[0].clone() }], ..Default::default() };
+        apply(&mut changed, &d2, Some("c"));
+        assert!(changed.contains("as Stern found.\n<sup>") || changed.contains("as Stern found.<sup>"), "{changed}");
     }
 
     #[test]

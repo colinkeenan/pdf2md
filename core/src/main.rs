@@ -22,7 +22,12 @@ fn main() {
     let user = pdf2md_core::userdata::collect(Path::new(&args[1]));
     pdf2md_core::userdata::backup(&user, Path::new(&args[1]));
     if !user.is_empty() {
-        eprintln!("Kept {} note(s) and {} fix(es) from the earlier conversion.", user.notes.len(), user.fixes.len());
+        eprintln!(
+            "Kept {} note(s), {} marker(s) and {} fix(es) from the earlier conversion.",
+            user.notes.len(),
+            user.marks.len(),
+            user.fixes.len()
+        );
     }
     let mut book = convert_pdf_pages(Path::new(&args[0]), range).unwrap_or_else(|e| {
         eprintln!("error reading PDF: {e}");

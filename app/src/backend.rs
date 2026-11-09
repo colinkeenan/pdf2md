@@ -127,7 +127,7 @@ fn run(input: &Path, output: &Path, replace: bool) -> Result<String, String> {
     // and the reader's notes and prose fixes
     let user = pdf2md_core::userdata::collect(&dest);
     pdf2md_core::userdata::backup(&user, &dest);
-    let (notes, fixes) = (user.notes.len(), user.fixes.len());
+    let (notes, fixes) = (user.notes.len() + user.marks.len(), user.fixes.len());
     let mut book = convert_pdf(input)?;
     book.user = user;
     // only touch the old folder once the new book is ready

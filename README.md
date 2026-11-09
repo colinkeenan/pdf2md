@@ -133,6 +133,7 @@ Converting a book again keeps what you added, as long as it is marked:
   ```
 
   Each goes back right after the paragraph or equation it followed (found by that block's first words, else by the nearest anchor above it). A note whose place is gone ends up at the end of its chapter under "Your notes whose place was not found", never dropped.
+* **Markers inside a sentence** that point to a note: `<sup>[✎](#mine-3)</sup>` (with `id="mine-3"` on the note), or any `<sup class="mine">…</sup>`. Each goes back right after the same words in the same paragraph (at the paragraph's end if those words changed).
 * **Fixes to the converted text** (the conversion got the book's words wrong): `<span class="fix" data-was="as converted">as in the book</span>`. It reads as normal text and is redone in the same paragraph. (Equations need no marking: just edit them.)
 
 Notes and fixes are collected from the chapter files and from `book.md` (each counted once), and a copy is kept in `~/.local/share/pdf2md/notes/<book folder>.md`. Other edits to the text are not kept.
