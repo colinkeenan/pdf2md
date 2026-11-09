@@ -15,4 +15,5 @@ path = "src/main.rs"
 # PDF text comes from poppler's command-line tools (see src/extract.rs and
 # src/layout.rs), so no PDF library is needed here.
 [dependencies]
+lopdf = { version = "0.47.0", default-features = false }
 roxmltree = "0.21.2" # reads the XML that `pdftohtml -xml` prints

@@ -227,7 +227,9 @@ fn link_entries(
                 *id = new_id.clone();
             }
             let mut t = vec![Inline::Link { text, href: format!("{}.md#{}", chapters[ci].slug, new_id) }];
-            t.extend(page_link(e.page.trim()));
+            // (an entry found by its link: the printed page it lands on)
+            let shown = if e.page.starts_with('@') { page_at(chapters, ci, bi).unwrap_or_default() } else { e.page.trim().to_string() };
+            t.extend(page_link(&shown));
             items.push(Block::Item { level: level.saturating_sub(1), text: t });
             cursor = (ci, bi + 1);
             continue;
@@ -267,7 +269,9 @@ fn link_entries(
                 }
             }
             let mut t = vec![Inline::Link { text, href: format!("{}.md#{}", chapters[ci].slug, new_id) }];
-            t.extend(page_link(e.page.trim()));
+            // (an entry found by its link: the printed page it lands on)
+            let shown = if e.page.starts_with('@') { page_at(chapters, ci, bi).unwrap_or_default() } else { e.page.trim().to_string() };
+            t.extend(page_link(&shown));
             items.push(Block::Item { level: level.saturating_sub(1), text: t });
             cursor = (ci, bi + 1);
             continue;
@@ -289,7 +293,8 @@ fn link_entries(
                     Block::Para(inl) => inl.insert(0, Inline::Anchor(new_id.clone())),
                     _ => chapters[ci].blocks.insert(bi, crate::Blk { block: Block::Anchor(new_id.clone()), page, centered: false }),
                 }
-                let t = vec![Inline::Link { text, href: format!("{}.md#{}", chapters[ci].slug, new_id) }];
+                let mut t = vec![Inline::Link { text, href: format!("{}.md#{}", chapters[ci].slug, new_id) }];
+                t.extend(page_link(&page_at(chapters, ci, bi + 1).unwrap_or_default()));
                 items.push(Block::Item { level: level.saturating_sub(1), text: t });
                 cursor = (ci, bi + 1);
                 continue;
@@ -320,6 +325,26 @@ fn page_range(ch: &Chapter) -> Option<(String, String)> {
         }
     }
     Some((labels.first()?.clone(), labels.last()?.clone()))
+}
+
+/// The printed page at a place in the book: the last page marker before
+/// block `bi` of chapter `ci`, or, before the chapter's first marker, the
+/// chapter's first page (a chapter starts on a new page; its marker can sit
+/// a line below the chapter's opening headings).
+fn page_at(chapters: &[Chapter], ci: usize, bi: usize) -> Option<String> {
+    let label_in = |b: &crate::Blk| -> Option<String> {
+        match &b.block {
+            Block::Anchor(id) => page_label(id).map(str::to_string),
+            Block::Para(inl) => inl.iter().rev().find_map(|i| match i {
+                Inline::Anchor(id) => page_label(id).map(str::to_string),
+                _ => None,
+            }),
+            _ => None,
+        }
+    };
+    let here = chapters.get(ci)?.blocks[..bi.min(chapters[ci].blocks.len())].iter().rev().find_map(label_in);
+    here.or_else(|| page_range(&chapters[ci]).map(|(first, _)| first))
+        .or_else(|| chapters[..ci].iter().rev().find_map(|c| c.blocks.iter().rev().find_map(label_in)))
 }
 
 /// Printed page label -> slug of the chapter file that contains it.

@@ -1060,9 +1060,17 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
         para_centered: false,
         para_inset: 0.0,
     };
+    // printed page marks (ebook PDFs without page numbers; see layout.rs)
+    let use_marks = pages.iter().all(|p| p.label.is_none());
     for (pi, page) in pages.iter().enumerate() {
         b.page = pi;
-        b.anchor = page.label.as_ref().map(|l| format!("p{l}"));
+        if let Some(l) = &page.label {
+            b.anchor = Some(format!("p{l}"));
+        } else if !use_marks {
+            b.anchor = None;
+        }
+        let marks: &[(f32, String)] = if use_marks { &doc.pages[page.index].marks } else { &[] };
+        let mut mi = 0;
         if st.toc_pages.contains(&pi) {
             b.toc_page(&page.lines);
             continue;
@@ -1088,6 +1096,15 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
         let mut i = 0;
         while i < end {
             let l = &lines[i];
+            // a printed page starts here
+            while mi < marks.len() && marks[mi].0 <= l.top + 2.0 {
+                if b.anchor.is_some() {
+                    b.flush();
+                    b.anchor_block();
+                }
+                b.anchor = Some(format!("p{}", marks[mi].1));
+                mi += 1;
+            }
             while fi < figs.len() && figs[fi].top <= l.top {
                 b.flush();
                 b.anchor_block();

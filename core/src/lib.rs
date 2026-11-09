@@ -20,6 +20,7 @@ pub mod emit;
 pub mod layout;
 pub mod links;
 pub mod mathtex;
+pub mod annots;
 pub mod notes;
 pub mod ocr;
 pub mod pages;

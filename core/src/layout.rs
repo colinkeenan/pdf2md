@@ -66,6 +66,9 @@ pub struct Span {
     pub link: Option<u32>,
     /// A web address this text links to.
     pub url: Option<String>,
+    /// Where on the page `link` goes, in pdftohtml's pixels from the top
+    /// (read from the PDF's link annotation; see [`crate::annots`]).
+    pub link_top: Option<f32>,
 }
 
 impl Span {
@@ -127,6 +130,9 @@ pub struct Page {
     pub figures: Vec<Figure>,
     /// Embedded images (pictures or, in ebook-made PDFs, equations).
     pub images: Vec<PageImage>,
+    /// Printed pages that start on this page (ebook-made PDFs without page
+    /// numbers): height where each starts, and its number. From the index.
+    pub marks: Vec<(f32, String)>,
 }
 
 /// A picture on a page: a drawing or an embedded image together with the
@@ -255,6 +261,8 @@ pub fn read_pdf(path: &Path, pages: Option<(u32, u32)>) -> Result<Doc, String> {
         ));
     }
     let mut doc = parse_xml(&String::from_utf8_lossy(&out.stdout))?;
+    add_link_positions(&mut doc, path);
+    printed_page_marks(&mut doc);
 
     // Drawn bars. If pdftocairo is missing the conversion still works,
     // just without overlines.
@@ -572,6 +580,7 @@ fn place_images(doc: &mut Doc) {
                 tex: Some(tex.clone()),
                 link: None,
                 url: None,
+                link_top: None,
             };
             // the line it shares the most height with, else a line of its own
             let overlap = |l: &Line| (im.bottom.min(l.top + l.size) - im.top.max(l.top)).max(0.0);
@@ -595,6 +604,90 @@ fn place_images(doc: &mut Doc) {
         }
         page.lines.sort_by(|a, b| a.top.total_cmp(&b.top));
         page.figures.sort_by(|a, b| a.top.total_cmp(&b.top));
+    }
+}
+
+/// Where each internal link goes on its target page: the PDF's link
+/// annotation under the span (pdftohtml only tells the page).
+fn add_link_positions(doc: &mut Doc, path: &Path) {
+    if !doc.pages.iter().flat_map(|p| p.lines.iter().flat_map(|l| &l.spans)).any(|s| s.link.is_some()) {
+        return;
+    }
+    let annots = crate::annots::read_links(path);
+    let (mut linked, mut placed) = (0, 0);
+    for page in doc.pages.iter_mut() {
+        let Some(list) = annots.get(&page.number) else { continue };
+        for s in page.lines.iter_mut().flat_map(|l| l.spans.iter_mut()) {
+            let Some(n) = s.link else { continue };
+            linked += 1;
+            let (cx, cy) = ((s.left + s.right()) / 2.0, s.top + s.height / 2.0);
+            if let Some(a) = list.iter().find(|a| a.dest_page == n && cx >= a.left - 2.0 && cx <= a.right + 2.0 && cy >= a.top - 4.0 && cy <= a.bottom + 4.0) {
+                s.link_top = a.dest_top;
+                placed += a.dest_top.is_some() as usize;
+            }
+        }
+    }
+    if std::env::var("PDF2MD_LINKDEBUG").is_ok() {
+        eprintln!("LINKS annotations on {} pages, {} in all; linked spans {linked}, with a target position {placed}", annots.len(), annots.values().map(Vec::len).sum::<usize>());
+    }
+}
+
+/// Ebook-made PDFs have no printed page numbers, but their index does: each
+/// number links to the spot where that printed page began. Collect those
+/// spots (all citations of a page must agree, and the pages must come in
+/// order; the few that do not are dropped) as page marks.
+fn printed_page_marks(doc: &mut Doc) {
+    use std::collections::BTreeMap;
+    let mut cited: BTreeMap<u32, Vec<(u32, f32)>> = BTreeMap::new();
+    for page in &doc.pages {
+        for s in page.lines.iter().flat_map(|l| &l.spans) {
+            let (Some(n), Some(top)) = (s.link, s.link_top) else { continue };
+            let t = s.text.trim().trim_end_matches([',', ';']);
+            if s.script != Script::Normal || t.is_empty() || t.len() > 4 || !t.chars().all(|c| c.is_ascii_digit()) {
+                continue;
+            }
+            if let Ok(p) = t.parse::<u32>() {
+                cited.entry(p).or_default().push((n, top));
+            }
+        }
+    }
+    // a page whose citations all go to one spot
+    let pairs: Vec<(u32, u32, f32)> = cited
+        .into_iter()
+        .filter_map(|(p, v)| {
+            let (n, top) = v[0];
+            v.iter().all(|&(m, t)| m == n && (t - top).abs() < 3.0).then_some((p, n, top))
+        })
+        .collect();
+    // the longest run in which later pages come later in the PDF
+    let later = |a: &(u32, u32, f32), b: &(u32, u32, f32)| (b.1, b.2) > (a.1, a.2);
+    let mut best: Vec<usize> = vec![1; pairs.len()];
+    let mut prev: Vec<Option<usize>> = vec![None; pairs.len()];
+    for i in 0..pairs.len() {
+        for j in 0..i {
+            if later(&pairs[j], &pairs[i]) && best[j] + 1 > best[i] {
+                best[i] = best[j] + 1;
+                prev[i] = Some(j);
+            }
+        }
+    }
+    let Some(mut k) = (0..pairs.len()).max_by_key(|&i| best[i]) else { return };
+    if best[k] < 20 {
+        return;
+    }
+    let mut chain = vec![k];
+    while let Some(j) = prev[k] {
+        chain.push(j);
+        k = j;
+    }
+    for &i in &chain {
+        let (p, n, top) = pairs[i];
+        if let Some(page) = doc.pages.iter_mut().find(|pg| pg.number == n) {
+            page.marks.push((top, p.to_string()));
+        }
+    }
+    for page in doc.pages.iter_mut() {
+        page.marks.sort_by(|a, b| a.0.total_cmp(&b.0));
     }
 }
 
@@ -983,6 +1076,7 @@ fn insert_delims(doc: &mut Doc, delims: Vec<Vec<Delim>>) {
                 tex: None,
                 link: None,
                 url: None,
+                link_top: None,
             };
             // the line whose centre is nearest the bracket's centre
             let c = (d.top + d.bottom) / 2.0;
@@ -1259,6 +1353,7 @@ pub fn parse_xml(xml: &str) -> Result<Doc, String> {
                         .and_then(|a| a.attribute("href"))
                         .filter(|h| h.starts_with("http://") || h.starts_with("https://") || h.starts_with("mailto:"))
                         .map(str::to_string),
+                    link_top: None,
                 });
             }
         }
@@ -1298,6 +1393,7 @@ pub fn parse_xml(xml: &str) -> Result<Doc, String> {
             rules: Vec::new(),
             figures: Vec::new(),
             images: Vec::new(),
+            marks: Vec::new(),
         })
         .collect();
 
