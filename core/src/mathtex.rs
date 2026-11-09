@@ -1889,10 +1889,11 @@ fn finish(mut out: Vec<String>) -> String {
 /// "(16)" -> "16". Equation numbers sit at the right margin.
 pub fn tag_of(t: &str) -> Option<String> {
     let inner = t.trim().strip_prefix('(')?.strip_suffix(')')?;
-    let ok = !inner.is_empty()
-        && inner.len() <= 6
-        && inner.chars().next()?.is_ascii_digit()
-        && inner.chars().all(|c| c.is_ascii_alphanumeric() || c == '.');
+    // "16", "3.422", "3.425b", or an appendix's "B.12" (a capital, a dot,
+    // a number: not "(A)")
+    let c: Vec<char> = inner.chars().collect();
+    let start = c.first()?.is_ascii_digit() || (c.first()?.is_ascii_uppercase() && c.get(1) == Some(&'.') && c.get(2).is_some_and(char::is_ascii_digit));
+    let ok = !inner.is_empty() && inner.len() <= 6 && start && inner.chars().all(|c| c.is_ascii_alphanumeric() || c == '.');
     ok.then(|| inner.to_string())
 }
 

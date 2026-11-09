@@ -892,15 +892,25 @@ fn link_problem_refs(t: &str, target: &HashMap<String, String>, out: &mut Vec<In
 /// Linked references to equations ("(3.422)" that is a link in the PDF)
 /// become links to the equation's anchor, in whichever chapter it is.
 pub fn link_equations(chapters: &mut [Chapter]) {
-    let mut home: HashMap<String, String> = HashMap::new();
+    // equation number -> (chapter file, number of the anchor to link to)
+    let mut home: HashMap<String, (String, String)> = HashMap::new();
     for ch in chapters.iter() {
         for b in &ch.blocks {
             if let Block::Equation { latex, tag } = &b.block {
                 for t in crate::equation_numbers(latex, tag.as_deref()) {
-                    home.entry(t).or_insert_with(|| ch.slug.clone());
+                    home.entry(t.clone()).or_insert_with(|| (ch.slug.clone(), t));
                 }
             }
         }
+    }
+    // "(3.425)" for the group (3.425a), (3.425b) …: its first member
+    let groups: Vec<(String, (String, String))> = home
+        .iter()
+        .filter_map(|(t, v)| Some((t.strip_suffix('a')?.to_string(), v.clone())))
+        .filter(|(base, _)| !base.is_empty() && base.ends_with(|c: char| c.is_ascii_digit()))
+        .collect();
+    for (base, v) in groups {
+        home.entry(base).or_insert(v);
     }
     if home.is_empty() {
         return;
@@ -920,14 +930,14 @@ pub fn link_equations(chapters: &mut [Chapter]) {
                     // (a number after "Problem" is a problem, not an equation)
                     let problem = t[..cut].trim_end().ends_with("Problem") || t[..cut].trim_end().ends_with("Problems");
                     if let Some(n) = crate::blocks::equation_ref(word).filter(|n| home.contains_key(*n) && !problem) {
-                        let slug = &home[n];
+                        let (slug, anchor) = &home[n];
                         // keep the parentheses and punctuation around the link
                         let start = cut + word.find(n).unwrap_or(0);
                         let end = start + n.len();
                         if start > 0 {
                             inl.push(Inline::Text(t[..start].to_string()));
                         }
-                        inl.push(Inline::Link { text: n.to_string(), href: format!("{slug}.md#{}", crate::equation_id(n)) });
+                        inl.push(Inline::Link { text: n.to_string(), href: format!("{slug}.md#{}", crate::equation_id(anchor)) });
                         if end < t.len() {
                             inl.push(Inline::Text(t[end..].to_string()));
                         }
