@@ -350,6 +350,20 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
                 continue;
             }
             K::Marker => out.push(Inline::Sup(s.text.trim().to_string())),
+            _ if s.bold || crate::layout::is_bold_font(doc.family(s)) => {
+                // bold words: one `**..**` piece for a whole bold phrase
+                if let Some(Inline::Strong(e)) = out.last_mut() {
+                    if space {
+                        e.push(' ');
+                    }
+                    e.push_str(&s.text);
+                } else {
+                    if space {
+                        push_text(&mut out, " ");
+                    }
+                    out.push(Inline::Strong(s.text.clone()));
+                }
+            }
             _ if s.italic => {
                 // italic words: one `_..._` piece for a whole italic phrase
                 if let Some(Inline::Emph(e)) = out.last_mut() {

@@ -4,7 +4,7 @@
 
 In this extensive class of problems we are interested in calculating the over-all transition matrix element $M$ between an initial state $A$ and a final state $B , A$ and $B$ being specified by assigning the spins and momenta of the free particles which are present in these states. The scattering process is supposed to occur as follows: The free particles which are specified by state $A$ in the remote past, converge and interact, and other free particles emerge or are created in the interaction and finally constitute the state $B$ in the remote future. We wish to calculate the matrix element $M$ for this process, without studying the equations of motion or investigating the behavior of the system at intermediate times while the interaction is in progress.
 
-The unperturbed states $A$ and $B$ are supposed to be states of free particles without interaction and are therefore represented by constant state-vectors Φ$A$ and Φ$B$ in the <a id="ix-126">interaction representation</a>. The actual initial and final states in a scattering problem will consist of particles each having a self-<a id="ix-184">field</a> with which it continues to interact even in the remote future and past, hence Φ$A$ and Φ$B$ do not accurately represent the initial and final states. However, so long as we are using perturbation theory and not including the higher order effects arising form the self-fields of the particles, it is consistent to use constant Φ$A$ and Φ$B$ representing bare particles <a id="ix-112">without radiation</a> interaction. Even when self-field effects are considered, it turns out that the bare-particle Φ$A$ and Φ$B$ can still be used, although in this case some careful justification for it is needed.
+The unperturbed states $A$ and $B$ are supposed to be states of free particles without interaction and are therefore represented by constant state-vectors Φ$A$ and Φ$B$ in the <a id="ix-125">interaction representation</a>. The actual initial and final states in a scattering problem will consist of particles each having a self-<a id="ix-183">field</a> with which it continues to interact even in the remote future and past, hence Φ$A$ and Φ$B$ do not accurately represent the initial and final states. However, so long as we are using perturbation theory and not including the higher order effects arising form the self-fields of the particles, it is consistent to use constant Φ$A$ and Φ$B$ representing bare particles <a id="ix-111">without radiation</a> interaction. Even when self-field effects are considered, it turns out that the bare-particle Φ$A$ and Φ$B$ can still be used, although in this case some careful justification for it is needed.
 
 The matrix element $M$ is
 
@@ -12,7 +12,7 @@ $$
 M = ( \Phi_{B}^{*} U \Phi_{A} ) \tag{419}
 $$
 
-Here $U$Φ$A$ is the state which is obtained at $t$ = +$\infty$ by solving the <a id="ix-234">equation</a> of motion (417) with the initial condition Φ = Φ$A$ at $t = -\infty . U$ can easily be written down as a perturbation expansion in the operators $H^{e}$ and $H_{R}$,
+Here $U$Φ$A$ is the state which is obtained at $t$ = +$\infty$ by solving the <a id="ix-233">equation</a> of motion (417) with the initial condition Φ = Φ$A$ at $t = -\infty . U$ can easily be written down as a perturbation expansion in the operators $H^{e}$ and $H_{R}$,
 
 $$
 \begin{aligned} U &= 1 + \left( - \frac{i}{\hbar} \right) \int_{-\infty}^{\infty} dt_{1} \{ H^{e} ( t_{1} ) + H_{R} ( t_{1} ) \} \\ & \quad + \left( - \frac{i}{\hbar} \right)^{2} \int_{-\infty}^{\infty} dt_{1} \int_{-\infty}^{\infty} dt_{2} \{ H^{e} ( t_{1} ) + H_{R} ( t_{1} ) \}\{ H^{e} ( t_{2} ) + H_{R} ( t_{2} ) \} + \dots \end{aligned} \tag{420}
@@ -28,7 +28,7 @@ Before discussing the general analysis of the series expansion (421), we shall u
 
 ## <a id="s-a-m-ller-scattering-of-two-electrons"></a>A. Møller Scattering of Two Electrons
 
-We have in the initial state $A$ two electrons in states $( p_{1} u_{1} ) ( p_{2} u_{2} )$ and in the final state $B$ two electrons $( p_{1}^{\prime} u_{1}^{\prime} ) ( p_{2}^{\prime} u_{2}^{\prime} )$. The electron ($p_{1} u_{1} )$ is given by the one-particle <a id="ix-83">wave-function</a>
+We have in the initial state $A$ two electrons in states $( p_{1} u_{1} ) ( p_{2} u_{2} )$ and in the final state $B$ two electrons $( p_{1}^{\prime} u_{1}^{\prime} ) ( p_{2}^{\prime} u_{2}^{\prime} )$. The electron ($p_{1} u_{1} )$ is given by the one-particle <a id="ix-82">wave-function</a>
 
 $$
 u_{1} e^{ip_{1} \cdot x} \tag{422}
@@ -84,7 +84,7 @@ $$
 \langle P \{ A_{\lambda} ( x_{1} ) ,A_{\mu} ( x_{2} ) \} \rangle_{o} = \tfrac{1}{2} \hbar c\delta_{\lambda \mu} D_{F} ( x_{1} - x_{2} ) \tag{427}
 $$
 
-where $F$ stands for <a id="ix-80">Feynman</a>. Also called by Stueckelberg $D^{c} , c$ for causality. <a id="refback-18-1"></a>[[18]](#ref-18)
+where $F$ stands for <a id="ix-79">Feynman</a>. Also called by Stueckelberg $D^{c} , c$ for causality. <a id="refback-18-1"></a>[[18]](#ref-18)
 
 ### <a id="s-properties-of-the-d-f-function"></a>Properties of the $D_{F}$ Function
 
@@ -102,7 +102,7 @@ $$
 
 <a id="p83"><sup>[p. 83]</sup></a>
 
-according to (228). Obviously $D_{F}$ is an even function. It has the property that asymptotically as $x_{0} \to \infty$ in the future, $D_{F}$ = 2$iD^{+}$ contains only positive frequencies, while as $x_{0} \to -\infty$ in the past, $D_{F} = - 2 iD^{-}$ contains only negative frequencies. See Fierz, _Helv. Phys. Acta_ 23 (1950) 731 for a full discussion.
+according to (228). Obviously $D_{F}$ is an even function. It has the property that asymptotically as $x_{0} \to \infty$ in the future, $D_{F}$ = 2$iD^{+}$ contains only positive frequencies, while as $x_{0} \to -\infty$ in the past, $D_{F} = - 2 iD^{-}$ contains only negative frequencies. See Fierz, _Helv. Phys. Acta_ **23** (1950) 731 for a full discussion.
 
 Thus $D_{F}$ is the potential arising from a point source disturbance at the origin, when all the potential travelling out in the future represents particles <a id="ix-5">created</a>, and all the potential travelling in from<sup><a id="fnref-56" href="#fn-56">56</a></sup> the past represents particles to be absorbed, all particles having positive energy. It is thus the potential which maintains the correct causal time-sequence of events, and in this way it was discovered by Stueckelberg. But the definition (427) is easier to understand and use.
 
@@ -118,7 +118,7 @@ x x
 
 We can see this using (429), (207), (208), and comparing (210), (226) and (209) one also knows that
 
-_C_
+**C**
 
 with x x
 
@@ -144,7 +144,7 @@ It is clear that the formula comes very directly out of (423), once we know the 
 
 <a id="p84"><sup>[p. 84]</sup></a>
 
-### <a id="s-electron-positron-scattering"></a>Electron-Positron <a id="ix-229">Scattering</a>
+### <a id="s-electron-positron-scattering"></a>Electron-Positron <a id="ix-228">Scattering</a>
 
 Exactly the same formula (432) also gives the matrix element of scattering of an electron by a positron. We must assume that the electron is initially in state 1 given by
 
@@ -172,7 +172,7 @@ $$
 
 using the negative-energy electron wave-functions and _not_ the charge-conjugate functions to represent the positron. The correctness of (435) and (436) is clear since $b_{2}$ is the _emission_ operator and $b_{2}^{\prime}$ the _absorption_ operator for this positron.
 
-The second term in (432) now represents not an ordinary exchange effect but a special short-range scattering due to a virtual annihilation of the positron and electron. This term has been observed experimentally by measuring the fine-structure constant of positronium. (M. Deutsch and E. Dulit, _Phys. Rev._ 84 (1951) 601, (Nov. 1, 1951).)
+The second term in (432) now represents not an ordinary exchange effect but a special short-range scattering due to a virtual annihilation of the positron and electron. This term has been observed experimentally by measuring the fine-structure constant of positronium. (M. Deutsch and E. Dulit, _Phys. Rev._ **84** (1951) 601, (Nov. 1, 1951).)
 
 ## <a id="s-b-scattering-of-a-photon-by-an-electron-the-compton-effect-the-klein-nishina-formula"></a>B. Scattering of a Photon by an Electron. The Compton Effect. Klein-Nishina Formula.
 
@@ -182,7 +182,7 @@ $$
 ue^{ip \cdot x} \tag{437}
 $$
 
-and a photon with <a id="ix-195">potentials</a> given by
+and a photon with <a id="ix-194">potentials</a> given by
 
 $$
 A_{\mu} = e_{\mu} e^{ik \cdot x} \tag{438}
@@ -232,7 +232,7 @@ $$
 S_{F} ( x ) = \sum_{\lambda} \left( \gamma_{\lambda} \frac{\partial}{\partial x_{\lambda}} - \mu \right) \Delta_{F} ( x ) \tag{445}
 $$
 
-and we find from (444) the momentum <a id="ix-130">representations</a>
+and we find from (444) the momentum <a id="ix-129">representations</a>
 
 $$
 \Delta_{F} ( x ) = \frac{- 2 i}{( 2 \pi )^{4}} \int e^{ik \cdot x} \frac{d^{4} k}{k^{2} + \mu^{2} - i\epsilon} \tag{446}
@@ -296,7 +296,7 @@ $$
 M_{2} = K ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \tag{454}
 $$
 
-Then the <a id="ix-118">scattering</a> probability per unit volume and per unit time for the single final state is as before
+Then the <a id="ix-117">scattering</a> probability per unit volume and per unit time for the single final state is as before
 
 $$
 w_{\delta} = c | K |^{2} ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \tag{455}
@@ -800,7 +800,7 @@ $$
 
 ## References
 
-<a id="ref-18"></a>**[18]** E. C. G. Stueckelberg, “Une propriété de l’operateur $S$ en mécanique asymptotique”, _Helv. Phys. Acta_ 19 (1946) 242. See also D. Rivier & E. C. G. Stuecklberg (_sic_), “A convergent expression for the magnetic moment of the muon”, _Phys. Rev._ 74 (1948) 218. [↩](#refback-18-1)
+<a id="ref-18"></a>**[18]** E. C. G. Stueckelberg, “Une propriété de l’operateur $S$ en mécanique asymptotique”, _Helv. Phys. Acta_ **19** (1946) 242. See also D. Rivier & E. C. G. Stuecklberg (_sic_), “A convergent expression for the magnetic moment of the muon”, _Phys. Rev._ **74** (1948) 218. [↩](#refback-18-1)
 
 ---
 

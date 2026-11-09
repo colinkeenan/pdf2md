@@ -35,6 +35,8 @@ pub enum Inline {
     Text(String),
     /// Italic prose, written as `_..._`.
     Emph(String),
+    /// Bold prose (a journal volume "**80**"), written as `**...**`.
+    Strong(String),
     /// Inline math as LaTeX, written as `$...$`.
     Math(String),
     /// A superscript in the text font: a footnote marker candidate ("1"),
@@ -124,7 +126,7 @@ pub fn plain(inl: &[Inline]) -> String {
     let mut s = String::new();
     for i in inl {
         match i {
-            Inline::Text(t) | Inline::Emph(t) | Inline::Math(t) | Inline::Sup(t) => s.push_str(t),
+            Inline::Text(t) | Inline::Emph(t) | Inline::Strong(t) | Inline::Math(t) | Inline::Sup(t) => s.push_str(t),
             Inline::Link { text, .. } | Inline::Target { text, .. } => s.push_str(text),
             _ => {}
         }
@@ -137,7 +139,7 @@ pub fn no_emph(inl: Vec<Inline>) -> Vec<Inline> {
     let mut out: Vec<Inline> = Vec::new();
     for i in inl {
         let i = match i {
-            Inline::Emph(t) => Inline::Text(t),
+            Inline::Emph(t) | Inline::Strong(t) => Inline::Text(t),
             other => other,
         };
         match (out.last_mut(), &i) {

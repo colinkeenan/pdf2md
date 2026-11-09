@@ -16,7 +16,7 @@ Between this typed version and Moravcsik’s second edition there are few differ
 
 I scarcely knew L$A$TEX before beginning this project. My friend (and Princeton ’74 classmate) Robert Jantzen was enormously helpful, very generous with his time and his extensive knowledge of L$A$TEX. Thanks, Bob. Thanks, too, to Richard Koch, Gerben Wierda and their colleagues, who have made L$A$TEX so easy on <a id="p133"><sup>[p. 133]</sup></a> a Macintosh. George Grätzer’s textbook _Math into L_A_TEX_ was never far from the keyboard. No one who types technical material should be ignorant of L$A$TEX.
 
-This project would never have been undertaken without the approval of Prof. <a id="ix-97">Dyson</a> and the efforts of Profs. Hall, Schweber and Ashrafi, who made the notes accessible. I thank Prof. Hall for his steady encouragement through the many hours of typing. I thank Prof. Dyson both for friendly assistance and for allowing his wonderful lectures to become easier to obtain, to be read with pleasure and with profit for many years to come.
+This project would never have been undertaken without the approval of Prof. <a id="ix-96">Dyson</a> and the efforts of Profs. Hall, Schweber and Ashrafi, who made the notes accessible. I thank Prof. Hall for his steady encouragement through the many hours of typing. I thank Prof. Dyson both for friendly assistance and for allowing his wonderful lectures to become easier to obtain, to be read with pleasure and with profit for many years to come.
 
 David Derbes
 
@@ -40,9 +40,9 @@ University of Chicago loki@uchicago.edu
 
 <a id="ref-26"></a>**[26]** E. T. Jaynes, “Disturbing the Memory”, http://bayes.wustl.edu/etj/node2.html; link #18, 1984. [↩](#refback-26-1)
 
-<a id="ref-27"></a>**[27]** F. J. Dyson, “The Radiation Theories of Tomonaga, Schwinger and Feynman”, _Phys. Rev._ 75 (1949) 486. [↩](#refback-27-1)
+<a id="ref-27"></a>**[27]** F. J. Dyson, “The Radiation Theories of Tomonaga, Schwinger and Feynman”, _Phys. Rev._ **75** (1949) 486. [↩](#refback-27-1)
 
-<a id="ref-28"></a>**[28]** F. J. Dyson, “The S-Matrix in Quantum Electrodynamics”, _Phys. Rev._ 75 (1949) 1736. [↩](#refback-28-1)
+<a id="ref-28"></a>**[28]** F. J. Dyson, “The S-Matrix in Quantum Electrodynamics”, _Phys. Rev._ **75** (1949) 1736. [↩](#refback-28-1)
 
 <a id="ref-4"></a>**[4]** J. Schwinger, ed., _Selected Papers on Quantum Electrodynamics_, Dover Publications, New York, 1958. Many of the most important Feynman, Schwinger and Dyson papers, together with those of other authors, are gathered in this anthology edited by Schwinger. [↩](#refback-4-1)
 

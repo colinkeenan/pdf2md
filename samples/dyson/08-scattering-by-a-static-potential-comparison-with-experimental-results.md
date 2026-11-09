@@ -80,7 +80,7 @@ $$
 M_{2} + M_{2}^{\prime} = - \frac{\alpha}{3 \pi} \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right\} \frac{q^{2}}{\mu^{2}} M_{0} - \frac{\alpha}{2} \frac{e}{\hbar c\mu} ( u^{\prime *} /qu ) V ( \boldsymbol{q} ) \delta ( q_{0} ) \tag{632}
 $$
 
-This gives a second order correction to the cross-section $\sigma_{0}$ according to (621). The total non-radiative cross-section, for <a id="ix-218">scattering</a> without the emission of a photon of energy greater than ∆$E$, becomes
+This gives a second order correction to the cross-section $\sigma_{0}$ according to (621). The total non-radiative cross-section, for <a id="ix-217">scattering</a> without the emission of a photon of energy greater than ∆$E$, becomes
 
 $$
 \begin{aligned} \sigma_{N} &= \sigma_{0} + \sigma_{2 N} \\ &= \left( \frac{em}{2 \pi \hbar^{2}} \right)^{2} | V ( \boldsymbol{q} ) |^{2} d \Omega \left| \left\{ 1 - \frac{\alpha}{3 \pi} \left( \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right) \frac{q^{2}}{\mu^{2}} \right\} ( u^{\prime *} u ) + \frac{i\alpha}{4 \pi \mu} ( u^{\prime *} /qu ) \right|^{2} \end{aligned} \tag{633}
@@ -192,15 +192,15 @@ $$
 
 which is much smaller if $v$ is not relativistic. Thus the correction _cannot be observed at all_ in a non-relativistic scattering experiment. In the relativistic region the effect is actually of order $\alpha$ as indicated by (647), but the correct formula is then enormously more complicated.
 
-The exact formulae in both non-relativistic and relativistic cases have been published by J. Schwinger, _Phys. Rev._ 76 (1949) 790.
+The exact formulae in both non-relativistic and relativistic cases have been published by J. Schwinger, _Phys. Rev._ **76** (1949) 790.
 
-An experimental test in the relativistic range is just on the limits of the possible. See Lyman, Hanson and Scott, _Phys. Rev._ 84 (1951) 626. Scattering of 15 MeV electrons by nuclei were measured with very good energy-resolution, ∆$E/E$ being 1 - 3 %. In this case it was _only_ the <a id="ix-37">non-radiative</a> cross-section $\overline{\sigma}_{N}$ that was observed, and so the radiative correction given by the relativistic form of (637) becomes quite large. In fact the radiative correction in $\overline{\sigma}_{N}$ in the relativistic range becomes of the order
+An experimental test in the relativistic range is just on the limits of the possible. See Lyman, Hanson and Scott, _Phys. Rev._ **84** (1951) 626. Scattering of 15 MeV electrons by nuclei were measured with very good energy-resolution, ∆$E/E$ being 1 - 3 %. In this case it was _only_ the <a id="ix-37">non-radiative</a> cross-section $\overline{\sigma}_{N}$ that was observed, and so the radiative correction given by the relativistic form of (637) becomes quite large. In fact the radiative correction in $\overline{\sigma}_{N}$ in the relativistic range becomes of the order
 
 $$
 \alpha \left\{ \log \frac{\Delta E}{E} \right\} \left\{ \log \frac{E}{mc^{2}} \right\} \tag{649}
 $$
 
-according to Schwinger, _Phys. Rev._ 76, 813, Eq. (2.105) (with misprint $K$ for $k$, in my notation $\mu$.) In the conditions of the experiment of Lyman-Hanson-Scott (649) becomes of the order 5% and was clearly observed, the experimental errors being $\sim$ 2%. However, (649) arises mainly from the low-energy virtual photons, with energies going down to ∆$E$. What is observed is just the decrease in the non-radiative cross-section due to the competition of radiative scattering with energy-loss in the range [∆$E,E ]$. Thus the measurement of (649) by LHS is actually only a very inaccurate measurement of the cross-section for bremsstrahlung, which could be observed much more accurately by observing the photons which are really emitted.
+according to Schwinger, _Phys. Rev._ **76**, 813, Eq. (2.105) (with misprint $K$ for $k$, in my notation $\mu$.) In the conditions of the experiment of Lyman-Hanson-Scott (649) becomes of the order 5% and was clearly observed, the experimental errors being $\sim$ 2%. However, (649) arises mainly from the low-energy virtual photons, with energies going down to ∆$E$. What is observed is just the decrease in the non-radiative cross-section due to the competition of radiative scattering with energy-loss in the range [∆$E,E ]$. Thus the measurement of (649) by LHS is actually only a very inaccurate measurement of the cross-section for bremsstrahlung, which could be observed much more accurately by observing the photons which are really emitted.
 
 The theoretically interesting part of the radiative corrections is the part which is not just the effect of real bremsstrahlung. This part is given by the terms in $\overline{\sigma}_{N}$ which are of order 1 compared with the log(∆ ) appearing in (649). For example, we would have to observe with sufficient accuracy to see the terms $( {}^{5} \frac{E/E}{6} - \tfrac{1}{5} )$ in (637) if we wished to verify the theoretical radiative corrections at low velocities. In the relativistic range the “genuine” radiative corrections are of order
 
@@ -232,7 +232,7 @@ $$
 M = - \frac{e \hbar}{2 mc} \tag{652}
 $$
 
-This moment has an energy of interaction with an external <a id="ix-196">Maxwell</a> field $( \boldsymbol{E} , \boldsymbol{H} )$ given by
+This moment has an energy of interaction with an external <a id="ix-195">Maxwell</a> field $( \boldsymbol{E} , \boldsymbol{H} )$ given by
 
 $$
 H_{M} = - M ( \boldsymbol{\sigma} \cdot \boldsymbol{H} - i \boldsymbol{\alpha} \cdot \boldsymbol{E} ) \tag{653}
@@ -280,7 +280,7 @@ $$
 
 <a id="p123"><sup>[p. 123]</sup></a>
 
-Now comparing the matrix element (659) with (617), we see that the magnetic effect of the second-order radiative correction to scattering is exactly described by saying that the electron has an <a id="ix-99">anomalous magnetic moment</a> $\delta M$ given by
+Now comparing the matrix element (659) with (617), we see that the magnetic effect of the second-order radiative correction to scattering is exactly described by saying that the electron has an <a id="ix-98">anomalous magnetic moment</a> $\delta M$ given by
 
 $$
 \delta M = - \frac{\alpha}{4 \pi} \frac{e \hbar}{mc} = + \frac{\alpha}{2 \pi} M \tag{660}
@@ -288,13 +288,13 @@ $$
 
 This is the famous Schwinger correction to the electron magnetic moment, which we have now calculated. Not only for scattering but for all phenomena in the non-relativistic range, the magnetic part of the second-order radiative correction to the motion of an electron is equivalent simply to the anomalous magnetic moment (660).
 
-This anomalous moment has been extremely accurately confirmed experimentally by<sup><a id="fnref-86" href="#fn-86">86</a></sup> Kusch, Prodell and Koenig (_Phys. Rev._ 83 (1951) 687) who find
+This anomalous moment has been extremely accurately confirmed experimentally by<sup><a id="fnref-86" href="#fn-86">86</a></sup> Kusch, Prodell and Koenig (_Phys. Rev._ **83** (1951) 687) who find
 
 $$
 \frac{\delta M}{M} = 0 . 0 0 1 1 4 5 \pm 0 . 0 0 0 0 1 3
 $$
 
-The calculated value including a fourth-order $\alpha^{2}$ correction found by Karplus and Kroll (_Phys. Rev._ 77 (1950) 536) is
+The calculated value including a fourth-order $\alpha^{2}$ correction found by Karplus and Kroll (_Phys. Rev._ **77** (1950) 536) is
 
 $$
 \frac{\delta M}{M} = \frac{\alpha}{2 \pi} - 2 . 9 7 3 \left( \frac{\alpha^{2}}{\pi^{2}} \right) = 0 . 0 0 1 1 4 5 4
@@ -302,7 +302,7 @@ $$
 
 ## <a id="s-b-relativistic-calculation-of-the-lamb-shift"></a>B. Relativistic Calculation of the Lamb Shift
 
-To make a correct relativistic calculation of the Lamb shift we have to repeat the treatment of line-shifts and line-widths which we gave earlier, only now using the relativistic theory for the atom. So we should set up the equation of motion of atom plus radiation field in the _Bound Interaction Representation_. The equation of motion is then given by (245), (247), only with the $j_{\mu}$ operator now describing the system of a relativistic atom. The solution of (245) can then be found as in the non-relativistic case, using the known wave-functions of the stationary states of the atom. In this way the Lamb shift was actually calculated by Lamb and Kroll<sup><a id="fnref-87" href="#fn-87">87</a></sup>, _Phys. Rev._ 75 (1949) 388. However, in their calculations Lamb and Kroll had troubles with the subtraction of the divergent mass-renormalization effect. Because the calculation was all in terms of the atomic wave-functions, it was not possible to keep using relativistically invariant notations all the way through. Hence the mass term could not be clearly separated from the remaining finite terms by its dependence on the particle momentum $p$, as it was separated for example in Eq. (566) during the calculation of radiative corrections to scattering. The final result of Lamb and Kroll was uncertain because of this difficulty in the mass separation. They obtained the correct answer 1052 Mc but only by making use of the experimentally _measured_ value $\alpha / 2 \pi$ of the electron anomalous magnetic moment.<sup><a id="fnref-88" href="#fn-88">88</a></sup>
+To make a correct relativistic calculation of the Lamb shift we have to repeat the treatment of line-shifts and line-widths which we gave earlier, only now using the relativistic theory for the atom. So we should set up the equation of motion of atom plus radiation field in the _Bound Interaction Representation_. The equation of motion is then given by (245), (247), only with the $j_{\mu}$ operator now describing the system of a relativistic atom. The solution of (245) can then be found as in the non-relativistic case, using the known wave-functions of the stationary states of the atom. In this way the Lamb shift was actually calculated by Lamb and Kroll<sup><a id="fnref-87" href="#fn-87">87</a></sup>, _Phys. Rev._ **75** (1949) 388. However, in their calculations Lamb and Kroll had troubles with the subtraction of the divergent mass-renormalization effect. Because the calculation was all in terms of the atomic wave-functions, it was not possible to keep using relativistically invariant notations all the way through. Hence the mass term could not be clearly separated from the remaining finite terms by its dependence on the particle momentum $p$, as it was separated for example in Eq. (566) during the calculation of radiative corrections to scattering. The final result of Lamb and Kroll was uncertain because of this difficulty in the mass separation. They obtained the correct answer 1052 Mc but only by making use of the experimentally _measured_ value $\alpha / 2 \pi$ of the electron anomalous magnetic moment.<sup><a id="fnref-88" href="#fn-88">88</a></sup>
 
 Learning from the calculation of the radiative corrections to scattering, we see that to make a clear separation of the mass renormalization from observable effects, we must arrange the calculations so that the separation is done for a particle of momentum $p$ in a _variable_ Lorentz system. Then by varying the Lorentz system we can vary $p$ and identify the mass term unambiguously as the expression which has the correct dependence on $p$. To work in a variable Lorentz system, we must work in a representation which is independent of the Lorentz system, so that the calculations are formally invariant. The only convenient invariant representation is the _Free Interaction Representation_.
 
@@ -328,7 +328,7 @@ $$
 i \hbar \frac{\partial \Omega_{1} ( t )}{\partial t} = H^{I} ( t ) \Omega_{1} ( t ) \tag{663}
 $$
 
-for any value of $t$ not in the remote past, so that we may take $g_{A} ( t )$ = 1. Hence the <a id="ix-235">equation</a> of motion for Φ$( t )$ derived from (661) is just
+for any value of $t$ not in the remote past, so that we may take $g_{A} ( t )$ = 1. Hence the <a id="ix-234">equation</a> of motion for Φ$( t )$ derived from (661) is just
 
 $$
 i \hbar \frac{\partial \Phi}{\partial t} = H_{T} ( t ) \Phi \tag{664}
@@ -338,7 +338,7 @@ $$
 H_{T} ( t ) = ( \Omega_{1} ( t ) )^{- 1} H^{e} ( t ) \Omega_{1} ( t ) \tag{665}
 $$
 
-The covariant part of the calculation, which is done in the FIR, is just the evaluation of this transformed <a id="ix-105">Hamiltonian</a> $H_{T} ( t )$.
+The covariant part of the calculation, which is done in the FIR, is just the evaluation of this transformed <a id="ix-104">Hamiltonian</a> $H_{T} ( t )$.
 
 ### <a id="s-covariant-part-of-the-calculation"></a>Covariant Part of the Calculation
 
@@ -406,7 +406,7 @@ $$
 \begin{aligned} H_{T 2} &= \frac{\alpha}{3 \pi \mu^{2}} \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right\} \int ( \nabla^{2} V ) ( \psi^{*} \psi ) d^{3} \boldsymbol{r} \\ & \quad - \frac{i\alpha}{4 \pi \mu} \int \psi^{*} \gamma_{4} ( \boldsymbol{\alpha} \boldsymbol{\cdot} \nabla V ) \psi d^{3} \boldsymbol{r} \end{aligned} \tag{676}
 $$
 
-The calculation of $H_{T 2}$, which is the main part of the <a id="ix-147">Lamb</a> shift calculation, can thus be taken over directly from the scattering calculation. In particular, the elimination of divergent renormalization effects does not have to be considered afresh. Once (676) has been derived, everything is finite and we are permitted to carry out the rest of the calculation in a non-covariant way. Note however that the low-energy photon frequency cut-off $r$ still appears in (676). We expect that this dependence on $r$ will finally disappear when the effects of $H_{T 1}$ are considered, the same cut-off being used in both $H_{T 1}$ and $H_{T 2}$.
+The calculation of $H_{T 2}$, which is the main part of the <a id="ix-146">Lamb</a> shift calculation, can thus be taken over directly from the scattering calculation. In particular, the elimination of divergent renormalization effects does not have to be considered afresh. Once (676) has been derived, everything is finite and we are permitted to carry out the rest of the calculation in a non-covariant way. Note however that the low-energy photon frequency cut-off $r$ still appears in (676). We expect that this dependence on $r$ will finally disappear when the effects of $H_{T 1}$ are considered, the same cut-off being used in both $H_{T 1}$ and $H_{T 2}$.
 
 We next turn to the evaluation of $H_{T 1}$, which is related to $U_{1}$ in the same way as $H_{T 2}$ to $( U_{2} + U_{2}^{1} )$. According to (484) the matrix element of $U_{1}$ for a one-electron transition between the states (542), with emission of the photon (440), is<sup><a id="fnref-90" href="#fn-90">90</a></sup>
 
@@ -452,7 +452,7 @@ $$
 /e^{\prime} / k_{3}^{\prime} /e + /e/ k_{3}^{\prime} /e^{\prime} = ik_{0}^{\prime} /e^{\prime} ( 2 \gamma_{4} /e ) \tag{679}
 $$
 
-Now this term (679) is small compared to the other term in (678), because $/e^{\prime}$ involves the matrices $\gamma_{1} ,\gamma_{2} ,\gamma_{3}$ while $/e$ involves $\gamma_{4}$, and the matrix elements of $\gamma_{1} ,\gamma_{2} ,\gamma_{3}$ for non-relativistic transitions are small, of the order of $( v/c )$. The term (679) in fact describes magnetic radiation, whereas the other term in (678) gives electric. The electric term gives an effect of the order of the <a id="ix-125">Lamb shift</a>. Hence in our approximation we may neglect the magnetic term and write
+Now this term (679) is small compared to the other term in (678), because $/e^{\prime}$ involves the matrices $\gamma_{1} ,\gamma_{2} ,\gamma_{3}$ while $/e$ involves $\gamma_{4}$, and the matrix elements of $\gamma_{1} ,\gamma_{2} ,\gamma_{3}$ for non-relativistic transitions are small, of the order of $( v/c )$. The term (679) in fact describes magnetic radiation, whereas the other term in (678) gives electric. The electric term gives an effect of the order of the <a id="ix-124">Lamb shift</a>. Hence in our approximation we may neglect the magnetic term and write
 
 $$
 M_{1} = \frac{e^{2}}{\hbar^{2} c^{2} \mu k_{0}^{\prime}} ( ( p^{\prime} - p ) \cdot e^{\prime} ) ( \overline{u}^{\prime} /eu ) \tag{680}
@@ -490,7 +490,7 @@ This completes the evaluation of $H_{T}$.
 
 ### <a id="s-discussion-of-the-nature-of-the-representation"></a>Discussion and the Nature of the Φ-Representation
 
-To understand the effect of the <a id="ix-111">transformation</a> (662), we observe that if Ψ$( t )$ is the state of one real electron in the absence of an external field, then Φ$( t )$ will be independent of $t$ and will represent one “bare” electron with the same momentum as the real electron. In an actual hydrogen atom, we may consider the state Ψ$( t )$ to a very good approximation as a superposition of states of a single real free electron; then Φ($t )$ is a superposition of states of a single bare electron with the same distribution of momenta. Thus by the transformation from Ψ to Φ we have eliminated the radiation field surrounding the electron, all remaining effects of this radiation field being contained in the operator $H_{T}$.
+To understand the effect of the <a id="ix-110">transformation</a> (662), we observe that if Ψ$( t )$ is the state of one real electron in the absence of an external field, then Φ$( t )$ will be independent of $t$ and will represent one “bare” electron with the same momentum as the real electron. In an actual hydrogen atom, we may consider the state Ψ$( t )$ to a very good approximation as a superposition of states of a single real free electron; then Φ($t )$ is a superposition of states of a single bare electron with the same distribution of momenta. Thus by the transformation from Ψ to Φ we have eliminated the radiation field surrounding the electron, all remaining effects of this radiation field being contained in the operator $H_{T}$.
 
 It is essential at this point to make sure that in the Φ representation the field-operators are still free-particle operators, with the correct equations of motion for operators in the FIR. Thus the transformation <a id="p127"><sup>[p. 127]</sup></a> (662) is only a transformation from one set of variables to another within the FIR, and does not take us out of the FIR. This point was never explained properly by Schwinger in his papers, although he no doubt understood it himself.
 
@@ -526,7 +526,7 @@ When we consider systems containing more than one particle, then Ω${}_{1} ( t 
 
 ### <a id="s-concluding-non-covariant-part-of-the-calculation"></a>Concluding Non-Covariant Part of the Calculation
 
-Having established that the Φ-representation in which (664) holds is the FIR, we now proceed at once to transform to the BIR in which we shall finish the calculation of the <a id="ix-148">Lamb shift</a>. To transform to the BIR, we write $e$
+Having established that the Φ-representation in which (664) holds is the FIR, we now proceed at once to transform to the BIR in which we shall finish the calculation of the <a id="ix-147">Lamb shift</a>. To transform to the BIR, we write $e$
 
 $$
 \Phi ( t ) = e^{iH_{0} t/ \hbar} e^{- i \{ H_{0} + H \} t/ \hbar} \Phi^{\prime} ( t ) \tag{689}
@@ -770,13 +770,13 @@ Since $Z_{\lambda}$ is a Lorentz vector, the gradient must likewise be. So “gr
 
 <a id="ref-20"></a>**[20]** Hans A. Bethe & Edwin E. Salpeter, _Quantum Mechanics of One- and Two-Electron Atoms_, Springer- Verlag, Berlin, 1957. Reissued by Plenum Publishing Co., New York, 1977, (paperback edition). This is a revised and updated version of the article Dyson cites, H. A. Bethe, “Quantenmechanik der Einund Zwei-Elektronenprobleme”, _Handbuch der Physik_, Bd. 24/1, Springer, Berlin, 1933. The relevant formula for Eq. (710) is to be found in the new work with exactly the same label, (3.26), on p. 17. Note that Bethe & Salpeter use Hartree’s “atomic units”, so that distances are measured in terms of $a_{o}$. [↩](#refback-20-1)
 
-<a id="ref-21"></a>**[21]** M. Baranger, H. A. Bethe & R. P. Feynman, “Relativistic Corrections to the Lamb Shift”, _Phys. Rev._ 92 (1953) 482. [↩](#refback-21-1)
+<a id="ref-21"></a>**[21]** M. Baranger, H. A. Bethe & R. P. Feynman, “Relativistic Corrections to the Lamb Shift”, _Phys. Rev._ **92** (1953) 482. [↩](#refback-21-1)
 
-<a id="ref-22"></a>**[22]** E. E. Salpeter, “Mass Corrections to the Fine Structure of Hydrogen-Like Atoms”, _Phys. Rev._ 87 (1952) 328. [↩](#refback-22-1)
+<a id="ref-22"></a>**[22]** E. E. Salpeter, “Mass Corrections to the Fine Structure of Hydrogen-Like Atoms”, _Phys. Rev._ **87** (1952) 328. [↩](#refback-22-1)
 
-<a id="ref-23"></a>**[23]** M. Baranger, F. J. Dyson & E. E. Salpeter, “Fourth-Order Vacuum Polarization”, _Phys. Rev._ 88 (1952) 680. [↩](#refback-23-1)
+<a id="ref-23"></a>**[23]** M. Baranger, F. J. Dyson & E. E. Salpeter, “Fourth-Order Vacuum Polarization”, _Phys. Rev._ **88** (1952) 680. [↩](#refback-23-1)
 
-<a id="ref-24"></a>**[24]** E. E. Salpeter, “The Lamb Shift for Hydrogen and Deuterium”, _Phys. Rev._ 89 (1953) 93. [↩](#refback-24-1)
+<a id="ref-24"></a>**[24]** E. E. Salpeter, “The Lamb Shift for Hydrogen and Deuterium”, _Phys. Rev._ **89** (1953) 93. [↩](#refback-24-1)
 
 ---
 

@@ -1,12 +1,12 @@
 # Front Matter
 
-F. J. Dyson
+**F. J. Dyson**
 
 ## <a id="s-advanced"></a>ADVANCED
 
 ## <a id="s-quantum-mechanics"></a>QUANTUM MECHANICS
 
-Second Edition
+**Second Edition**
 
 <a id="pi"><sup>[p. i]</sup></a>
 

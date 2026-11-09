@@ -397,7 +397,7 @@ fn inline_text(chapters: &[Chapter], (ci, bi, ii): (usize, usize, usize)) -> &st
         _ => return "",
     };
     match &inl[ii] {
-        Inline::Text(t) | Inline::Emph(t) => t,
+        Inline::Text(t) | Inline::Emph(t) | Inline::Strong(t) => t,
         _ => "",
     }
 }

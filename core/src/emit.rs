@@ -27,6 +27,7 @@ pub fn render_inlines(inl: &[Inline]) -> String {
         .map(|i| match i {
             Inline::Text(t) => Inline::Text(crate::layout::compose_accents(t)),
             Inline::Emph(t) => Inline::Emph(crate::layout::compose_accents(t)),
+            Inline::Strong(t) => Inline::Strong(crate::layout::compose_accents(t)),
             other => other.clone(),
         })
         .collect();
@@ -43,6 +44,19 @@ pub fn render_inlines(inl: &[Inline]) -> String {
                 }
                 if !core.is_empty() {
                     s.push_str(&format!("_{}_", escape(core)));
+                }
+                if t.ends_with(' ') && !core.is_empty() {
+                    s.push(' ');
+                }
+            }
+            Inline::Strong(t) => {
+                // like italic: spaces outside the markers
+                let core = t.trim();
+                if t.starts_with(' ') {
+                    s.push(' ');
+                }
+                if !core.is_empty() {
+                    s.push_str(&format!("**{}**", escape(core)));
                 }
                 if t.ends_with(' ') && !core.is_empty() {
                     s.push(' ');
@@ -91,7 +105,9 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
     match b {
         Block::Heading { level, id, text, .. } => {
             let hashes = "#".repeat((*level).clamp(1, 6));
-            out.push_str(&format!("{hashes} <a id=\"{id}\"></a>{}\n\n", render_inlines(text)));
+            // (a heading is styled by its #s: no italic or bold inside)
+            let plain = crate::no_emph(text.clone());
+            out.push_str(&format!("{hashes} <a id=\"{id}\"></a>{}\n\n", render_inlines(&plain)));
         }
         Block::Para(inl) => {
             let t = render_inlines(inl);
