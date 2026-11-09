@@ -823,7 +823,9 @@ fn link_problem_refs(t: &str, target: &HashMap<String, String>, out: &mut Vec<In
     let mut buf = String::new();
     while let Some(at) = rest.find("Problem") {
         let after_word = at + "Problem".len() + if rest[at + 7..].starts_with('s') { 1 } else { 0 };
-        buf.push_str(&rest[..after_word]);
+        buf.push_str(&rest[..at]);
+        // the word itself goes into the first link ("Problem 6.8")
+        let mut problem_word = Some(&rest[at..after_word]);
         rest = &rest[after_word..];
         // the numbers after it, separated by spaces, commas, "and", "–"
         loop {
@@ -837,12 +839,22 @@ fn link_problem_refs(t: &str, target: &HashMap<String, String>, out: &mut Vec<In
             if lead == 0 {
                 break; // "Problem6.8": not a reference
             }
-            buf.push_str(&rest[..lead]);
+            let text = match problem_word.take() {
+                Some(w) => format!("{w}{}{n}", &rest[..lead]),
+                None => {
+                    buf.push_str(&rest[..lead]);
+                    n.to_string()
+                }
+            };
             if !buf.is_empty() {
                 out.push(Inline::Text(std::mem::take(&mut buf)));
             }
-            out.push(Inline::Link { text: n.to_string(), href: href.clone() });
+            out.push(Inline::Link { text, href: href.clone() });
             rest = &rest[lead + n.len()..];
+        }
+        // no number after the word: it stays plain text
+        if let Some(w) = problem_word {
+            buf.push_str(w);
         }
     }
     buf.push_str(rest);
@@ -1017,13 +1029,13 @@ mod problem_tests {
 
     #[test]
     fn links_problem_numbers() {
-        assert_eq!(run("see Problem 6.8."), "see Problem [6.8](p.md#problem-6.8).");
+        assert_eq!(run("see Problem 6.8."), "see [Problem 6.8](p.md#problem-6.8).");
         assert_eq!(
             run("Problems 6.8, 6.9 and 6.10 show"),
-            "Problems [6.8](p.md#problem-6.8), [6.9](p.md#problem-6.9) and [6.10](p.md#problem-6.10) show"
+            "[Problems 6.8](p.md#problem-6.8), [6.9](p.md#problem-6.9) and [6.10](p.md#problem-6.10) show"
         );
-        assert_eq!(run("in Problem 6.8a"), "in Problem [6.8a](p.md#problem-6.8)");
-        assert_eq!(run("Problem B.2"), "Problem [B.2](p.md#problem-B.2)");
+        assert_eq!(run("in Problem 6.8a"), "in [Problem 6.8a](p.md#problem-6.8)");
+        assert_eq!(run("Problem B.2"), "[Problem B.2](p.md#problem-B.2)");
         // not a problem we have, not a number, not a reference
         assert_eq!(run("Problem 7.1 and (6.8)"), "Problem 7.1 and (6.8)");
         assert_eq!(run("a Problematic 6.8"), "a Problematic 6.8");
