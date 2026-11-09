@@ -356,7 +356,10 @@ pub fn parse_svg_figures(svg: &str) -> Vec<Vec<Figure>> {
                 let (t, b) = pts.iter().fold((f32::MAX, f32::MIN), |(a, b), p| (a.min(p.1), b.max(p.1)));
                 // a thin filled bar without curves: a fraction bar or rule
                 let bar = !tag.contains("stroke=") && !d.contains(['C', 'Q']) && ((b - t <= 1.5) || (r - l <= 1.5));
-                if !bar {
+                // a background box reaching far off the page (ebooks have
+                // them) is no drawing
+                let off_page = b - t > 1200.0 || t < -50.0;
+                if !bar && !off_page {
                     boxes.push((l, r, t, b, false));
                 }
             }
@@ -417,6 +420,18 @@ pub fn parse_svg_figures(svg: &str) -> Vec<Vec<Figure>> {
 fn take_figure_labels(doc: &mut Doc) {
     let m = doc.body_size;
     for page in doc.pages.iter_mut() {
+        // A "picture" that would take whole lines of prose as its labels is
+        // no picture (background boxes of an ebook page): drop it.
+        page.figures.retain(|f| {
+            let (l, r, t, b) = (f.left - m, f.right + m, f.top - 1.2 * m, f.bottom + 1.2 * m);
+            let prose = page
+                .lines
+                .iter()
+                .filter(|line| line.top < b && line.top + line.size > t && line.left >= l && line.right <= r)
+                .filter(|line| line.spans.iter().map(|s| s.text.split_whitespace().filter(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 3).count()).sum::<usize>() >= 6)
+                .count();
+            prose <= 3
+        });
         for f in page.figures.iter_mut() {
             let (l, r, t, b) = (f.left - m, f.right + m, f.top - 1.2 * m, f.bottom + 1.2 * m);
             for line in page.lines.iter_mut() {
