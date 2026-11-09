@@ -613,10 +613,7 @@ fn join_split_equations(doc: &mut Doc) {
     let size_of = |s: &Span| fonts.get(s.font).map_or(s.height, |f| f.size);
     let is_math = |s: &Span| s.tex.is_some() || fonts.get(s.font).is_some_and(|f| f.math);
     for k in 0..doc.pages.len().saturating_sub(1) {
-        let lone_number = doc.pages[k]
-            .lines
-            .last()
-            .is_some_and(|l| l.spans.iter().map(|s| s.text.as_str()).collect::<String>().split_whitespace().collect::<String>().len() > 0 && is_eq_number(&l.spans.iter().map(|s| s.text.as_str()).collect::<String>()));
+        let lone_number = doc.pages[k].lines.last().is_some_and(|l| is_eq_number(&l.spans.iter().map(|s| s.text.as_str()).collect::<String>()));
         let next_is_equation = doc.pages[k + 1].lines.first().is_some_and(|l| {
             l.spans.iter().any(|s| s.tex.is_some())
                 && l.spans.iter().all(|s| is_math(s) || s.text.trim().chars().all(|c| ".,;".contains(c)))
