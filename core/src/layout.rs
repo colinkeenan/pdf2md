@@ -285,6 +285,7 @@ pub fn read_pdf(path: &Path, pages: Option<(u32, u32)>) -> Result<Doc, String> {
                 page.images = imgs;
             }
             place_images(&mut doc);
+            join_split_equations(&mut doc);
             take_figure_labels(&mut doc);
         }
     }
@@ -523,7 +524,10 @@ fn place_images(doc: &mut Doc) {
     let captioned = |page: &Page, im: &PageImage| {
         im.bottom - im.top >= 60.0
             && page.lines.iter().any(|l| {
-                l.top >= im.bottom - 2.0 && l.top < im.bottom + 60.0 && l.spans.first().is_some_and(|s| s.text.trim_start().starts_with("Fig"))
+                // "Fig. 2.6" — not prose that starts with "Figure 2.6 shows …"
+                let t: String = l.spans.iter().map(|s| s.text.as_str()).collect();
+                let caption = t.trim_start().strip_prefix("Fig.").is_some_and(|r| r.trim_start().starts_with(|c: char| c.is_ascii_alphanumeric()));
+                l.top >= im.bottom - 2.0 && l.top < im.bottom + 60.0 && caption
             })
     };
     let wanted: Vec<&str> = doc
@@ -584,6 +588,54 @@ fn place_images(doc: &mut Doc) {
         }
         page.lines.sort_by(|a, b| a.top.total_cmp(&b.top));
         page.figures.sort_by(|a, b| a.top.total_cmp(&b.top));
+    }
+}
+
+/// An equation number like "(1.2)", "(3.425b)" or "(A.3)".
+fn is_eq_number(t: &str) -> bool {
+    let t = t.trim();
+    let Some(inner) = t.strip_prefix('(').and_then(|r| r.strip_suffix(')')) else { return false };
+    let inner = inner.trim_end_matches(|c: char| c.is_ascii_lowercase());
+    let mut parts = inner.split('.');
+    let first = parts.next().unwrap_or("");
+    let rest: Vec<&str> = parts.collect();
+    !first.is_empty()
+        && first.chars().all(|c| c.is_ascii_alphanumeric())
+        && !rest.is_empty()
+        && rest.iter().all(|p| !p.is_empty() && p.chars().all(|c| c.is_ascii_digit()))
+}
+
+/// Ebook-made PDFs sometimes put an equation's number at the bottom of one
+/// page and the equation itself at the top of the next. Move the number
+/// onto the equation's line, at the right margin where it belongs.
+fn join_split_equations(doc: &mut Doc) {
+    let fonts = doc.fonts.clone();
+    let size_of = |s: &Span| fonts.get(s.font).map_or(s.height, |f| f.size);
+    let is_math = |s: &Span| s.tex.is_some() || fonts.get(s.font).is_some_and(|f| f.math);
+    for k in 0..doc.pages.len().saturating_sub(1) {
+        let lone_number = doc.pages[k]
+            .lines
+            .last()
+            .is_some_and(|l| l.spans.iter().map(|s| s.text.as_str()).collect::<String>().split_whitespace().collect::<String>().len() > 0 && is_eq_number(&l.spans.iter().map(|s| s.text.as_str()).collect::<String>()));
+        let next_is_equation = doc.pages[k + 1].lines.first().is_some_and(|l| {
+            l.spans.iter().any(|s| s.tex.is_some())
+                && l.spans.iter().all(|s| is_math(s) || s.text.trim().chars().all(|c| ".,;".contains(c)))
+        });
+        if !(lone_number && next_is_equation) {
+            continue;
+        }
+        let Some(number) = doc.pages[k].lines.pop() else { continue };
+        let first = &mut doc.pages[k + 1].lines[0];
+        let (top, height) = (first.top, first.size);
+        let mut spans = std::mem::take(&mut first.spans);
+        for mut s in number.spans {
+            // keep its x (the right margin); move it onto the equation's line
+            s.top = top + (height - s.height) / 2.0;
+            spans.push(s);
+        }
+        let col = first.col;
+        *first = make_line(spans, &size_of);
+        first.col = col;
     }
 }
 

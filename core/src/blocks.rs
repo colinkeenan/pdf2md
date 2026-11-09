@@ -575,8 +575,9 @@ fn math_info(doc: &Doc, l: &Line, st: &Stats) -> (f32, usize, bool) {
     }
     // An equation number at the right margin, after a wide gap (or alone).
     let tag = l.spans.last().is_some_and(|s| {
-        let before = l.spans.len() == 1
-            || s.left - l.spans[l.spans.len() - 2].right() >= 2.0 * st.body;
+        // (an equation image can reach close to its number: any gap will do)
+        let prev = (l.spans.len() >= 2).then(|| &l.spans[l.spans.len() - 2]);
+        let before = prev.is_none_or(|p| s.left - p.right() >= if p.tex.is_some() { 0.0 } else { 2.0 * st.body });
         mathtex::tag_of(&s.text).is_some() && s.right() >= st.right - 1.5 * st.body && before
     });
     let ratio = if mathc + letters == 0 {
