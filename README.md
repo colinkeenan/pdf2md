@@ -27,6 +27,7 @@ pdf2md/
 │   └── tests/mini_book.rs end-to-end test on a tiny made-up book (as pdftohtml XML)
 └── app/              KDE Kirigami GUI (cxx-qt)
     ├── build.rs, src/main.rs, src/backend.rs   Rust side
+    ├── pdf2md-app.desktop                      application menu launcher
     └── qml/Main.qml, qml/FileBrowser.qml       Kirigami UI
 ```
 
@@ -55,6 +56,16 @@ Two environment variables print what the formula builder sees: `PDF2MD_MATHDEBUG
 3. `cargo run -p pdf2md-app`
 
 The in-app file browser also needs the Qt Labs folder list model: Fedora `qt6-qtdeclarative` (already included), Debian/Ubuntu `qml6-module-qt-labs-folderlistmodel`, Arch `qt6-declarative`.
+
+To start it from the application menu, install the program and its launcher:
+
+```sh
+cargo build --release -p pdf2md-app
+install -Dm755 target/release/pdf2md-app ~/.local/bin/pdf2md-app
+install -Dm644 app/pdf2md-app.desktop ~/.local/share/applications/pdf2md-app.desktop
+```
+
+`~/.local/bin` must be on your PATH. After rebuilding, run the first `install` line again to update the menu's copy.
 
 `qmake6` must be on your PATH (cxx-qt finds Qt through it). If it isn't: `QMAKE=/usr/lib/qt6/bin/qmake cargo run -p pdf2md-app`.
 

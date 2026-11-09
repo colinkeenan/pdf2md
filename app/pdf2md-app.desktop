@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=pdf2md
+GenericName=PDF to Markdown Converter
+Comment=Convert a PDF textbook into Markdown chapters with LaTeX math
+Exec=pdf2md-app
+Icon=application-pdf
+Terminal=false
+Categories=Office;
+Keywords=pdf;markdown;convert;textbook;latex;
+StartupWMClass=pdf2md-app
