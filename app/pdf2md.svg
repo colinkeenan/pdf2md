@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- pdf2md app icon: the Markdown mark over a faded PDF page.
+     The M↓ mark follows Dustin Curtis's Markdown mark (public domain, CC0). -->
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <!-- the PDF page, translucent -->
+  <g opacity="0.5">
+    <path d="M6 4 h26 l12 12 v42 a2 2 0 0 1 -2 2 h-36 a2 2 0 0 1 -2 -2 v-52 a2 2 0 0 1 2 -2 z"
+          fill="#f4f4f4" stroke="#8a8a8a" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M32 4 v10 a2 2 0 0 0 2 2 h10" fill="#d8d8d8" stroke="#8a8a8a" stroke-width="1.5" stroke-linejoin="round"/>
+    <rect x="1" y="20" width="30" height="13" rx="2" fill="#d93025"/>
+    <text x="16" y="30.4" font-family="sans-serif" font-weight="bold" font-size="10.5"
+          text-anchor="middle" fill="#ffffff">PDF</text>
+    <rect x="9" y="38" width="28" height="2" rx="1" fill="#9a9a9a"/>
+    <rect x="9" y="43" width="22" height="2" rx="1" fill="#9a9a9a"/>
+  </g>
+  <!-- the Markdown mark, in front -->
+  <g transform="translate(21 32) scale(0.2)">
+    <rect x="0" y="0" width="208" height="128" rx="20" fill="#1f2328" stroke="#ffffff" stroke-width="10"/>
+    <path fill="#ffffff" d="M30 98V30h20l20 25 20-25h20v68H90V59L70 84 50 59v39zm125 0l-30-33h20V30h20v35h20z"/>
+  </g>
+</svg>

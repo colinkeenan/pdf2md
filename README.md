@@ -28,6 +28,7 @@ pdf2md/
 └── app/              KDE Kirigami GUI (cxx-qt)
     ├── build.rs, src/main.rs, src/backend.rs   Rust side
     ├── pdf2md-app.desktop                      application menu launcher
+    ├── pdf2md.svg                              its icon (Markdown mark over a faded PDF page)
     └── qml/Main.qml, qml/FileBrowser.qml       Kirigami UI
 ```
 
@@ -65,6 +66,7 @@ To start it from the application menu, install the program and its launcher:
 cargo build --release -p pdf2md-app
 install -Dm755 target/release/pdf2md-app ~/.local/bin/pdf2md-app
 install -Dm644 app/pdf2md-app.desktop ~/.local/share/applications/pdf2md-app.desktop
+install -Dm644 app/pdf2md.svg ~/.local/share/icons/hicolor/scalable/apps/pdf2md.svg
 ```
 
 `~/.local/bin` must be on your PATH. After rebuilding, run the first `install` line again to update the menu's copy.
