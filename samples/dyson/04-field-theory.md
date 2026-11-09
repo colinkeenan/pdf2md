@@ -31,7 +31,7 @@ It is always assumed that $L$ is at most quadratic in the $\varphi_{\mu}^{\alpha
 Let Σ be the boundary of Ω, and $d\sigma$ an element of 3–dimensional volume on Σ, $n_{\mu}$ the outward unit vector normal to $d\sigma$, and
 
 $$
-\begin{aligned} d\sigma_{\mu} &= n_{\mu} d\sigma , \sum_{\mu} n_{\mu}^{2} = - 1 \mu = 1 , 2 , 3 , 4 x_{0} = ct \\ d\sigma_{\mu} &= ( dx_{2} dx_{3} dx_{0} ,dx_{1} dx_{3} dx_{0} ,dx_{1} dx_{2} dx_{0} , - idx_{1} dx_{2} dx_{3} ) \end{aligned} \tag{158}
+\begin{aligned} d\sigma_{\mu} &= n_{\mu} d\sigma , \sum_{\mu} n_{\mu}^{2} = - 1 \quad \mu = 1 , 2 , 3 , 4 \quad x_{0} = ct \\ d\sigma_{\mu} &= ( dx_{2} dx_{3} dx_{0} ,dx_{1} dx_{3} dx_{0} ,dx_{1} dx_{2} dx_{0} , - idx_{1} dx_{2} dx_{3} ) \end{aligned} \tag{158}
 $$
 
 Then
@@ -141,7 +141,7 @@ $$
 4. <a id="ix-138">Dirac</a> Field
 
 $$
-L_{D} = - \hbar c \overline{\psi} \left( \sum_{\lambda} \gamma_{\lambda} \frac{\partial}{\partial x_{\lambda}} + \mu \right) \psi \mu = \frac{mc}{\hbar} \tag{169}
+L_{D} = - \hbar c \overline{\psi} \left( \sum_{\lambda} \gamma_{\lambda} \frac{\partial}{\partial x_{\lambda}} + \mu \right) \psi \quad \mu = \frac{mc}{\hbar} \tag{169}
 $$
 
 5. Dirac Field interacting with Maxwell Field
@@ -243,17 +243,17 @@ Only now everything on the RHS of (178) is an operator.
 Now what is the meaning of this triple variation as applied to the left side of (174)? Since the $\varphi_{H}^{\alpha} ( x )$ are only variables of summation, the change from $\varphi_{H}^{\alpha} ( x )$ to $\varphi_{H}^{\alpha} ( x ) + \delta \varphi^{\alpha} ( x )$ only affects the left side in changing the boundary values which $\varphi_{H}^{\alpha} ( x )$ must take on $\sigma_{1}$ and $\sigma_{2}$. Thus instead of $\varphi_{H}^{\alpha} ( x ) = \varphi_{1}^{\alpha \prime \prime} ( x )$ on $\sigma_{1}$ we now have the new summation variable
 
 $$
-\varphi_{H}^{\alpha} ( x ) + \delta \varphi^{\alpha} = \varphi_{1}^{\alpha \prime \prime} ( x ) + \delta \varphi^{\alpha} \text{ on } \sigma_{1}
+\varphi_{H}^{\alpha} ( x ) + \delta \varphi^{\alpha} = \varphi_{1}^{\alpha \prime \prime} ( x ) + \delta \varphi^{\alpha} \quad \text{ on } \sigma_{1}
 $$
 
 Therefore the change in $\varphi_{H}^{\alpha}$ is equivalent simply to changing
 
 $$
-\varphi_{1}^{\alpha \prime \prime} \text{ to } \varphi_{1}^{\alpha \prime \prime} + \delta \varphi^{\alpha} \text{ on } \sigma_{1}
+\varphi_{1}^{\alpha \prime \prime} \quad \text{ to } \quad \varphi_{1}^{\alpha \prime \prime} + \delta \varphi^{\alpha} \quad \text{ on } \sigma_{1}
 $$
 
 $$
-\varphi_{2}^{\alpha \prime} \text{ to } \varphi_{2}^{\alpha \prime} + \delta \varphi^{\alpha} \text{ on } \sigma_{2} .
+\varphi_{2}^{\alpha \prime} \quad \text{ to } \quad \varphi_{2}^{\alpha \prime} + \delta \varphi^{\alpha} \quad \text{ on } \sigma_{2} .
 $$
 
 The change in $L$ and in the position of $\sigma$ produces a change in the left side of (174), by virtue of the change in the operators $\varphi^{\alpha}$ on $\sigma_{1}$ and $\sigma_{2}$ resulting from the variations $\delta L$ and $\delta x_{\mu}$ in consequence of the field equations.
@@ -331,7 +331,7 @@ $$
 therefore, denoting
 
 $$
-\langle \varphi^{\prime \alpha} ,\sigma \mathcal{O} \varphi^{\prime \prime \alpha} ,\sigma \rangle = \langle \sigma^{\prime} \mathcal{O} \sigma^{\prime \prime} \rangle \text{ etc } . , \text{ we have }
+\langle \varphi^{\prime \alpha} ,\sigma \mathcal{O} \varphi^{\prime \prime \alpha} ,\sigma \rangle = \langle \sigma^{\prime} \mathcal{O} \sigma^{\prime \prime} \rangle \quad \text{ etc } . , \text{ we have }
 $$
 
 $$

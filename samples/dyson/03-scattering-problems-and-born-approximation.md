@@ -229,7 +229,7 @@ $$
 The constant $\int rj_{No} ( r ) d\tau$ is not known exactly. Suppose as an order of magnitude estimate that the nucleus of charge $Ze$ is uniformly spread over a sphere of radius $r_{o}$ in the ground state, and also in the excited state. Since $\rho_{N}$ is roughly uniform inside the nucleus we have by integrating (119):
 
 $$
-\begin{aligned} j_{N} &= \frac{i \Delta E}{3 \hbar} \overline{r} \rho_{N} , \text{ and thus } \\ I &= \psi^{*} \psi ( 0 ) \left( \frac{- 4 \pi e}{3} \right) \int r^{2} \rho_{N} ( r ) d\tau = \psi^{*} \psi ( 0 ) \left( \frac{- 4 \pi e}{3} \right) Qe^{- i \Delta Et/ \hbar} \end{aligned} \tag{125}
+\begin{aligned} j_{N} &= \frac{i \Delta E}{3 \hbar} \overline{r} \rho_{N} , \quad \text{ and thus } \\ I &= \psi^{*} \psi ( 0 ) \left( \frac{- 4 \pi e}{3} \right) \int r^{2} \rho_{N} ( r ) d\tau = \psi^{*} \psi ( 0 ) \left( \frac{- 4 \pi e}{3} \right) Qe^{- i \Delta Et/ \hbar} \end{aligned} \tag{125}
 $$
 
 $Q$ is roughly a measure of the charge-moment of inertia of the nucleus, and is equal to
@@ -291,7 +291,7 @@ Now, since there is no free radiation present, also $\nabla \times \boldsymbol{A
 Let us calculate then the probability of <a id="ix-17">pair</a> emission with the interaction (126). A typical final state has an electron of momentum $p_{1}$ and a <a id="ix-153">positron</a> of momentum $p_{2}$, with energies $E_{1} , E_{2}$ and spins $u_{1} , u_{2}$ respectively. For the <a id="ix-9">creation</a> of this pair the matrix element of $I$ is
 
 $$
-I = - C \overline{u}_{1} \beta u_{2} , C = \frac{4 \pi Ze^{2} r_{o}^{2}}{5} \tag{128a}
+I = - C \overline{u}_{1} \beta u_{2} , \quad C = \frac{4 \pi Ze^{2} r_{o}^{2}}{5} \tag{128a}
 $$
 
 The density of final states is by (107)
@@ -351,7 +351,7 @@ $$
 So the pairs have an <a id="ix-92">angular</a> distribution concentrated in the _same_ hemisphere, and predominantly _equal_ energies. Then, since
 
 $$
-\int_{0}^{\pi} ( 1 + \cos \theta ) \sin \theta d\theta = 2 , \quad \text{ and } \quad \int_{0}^{\Delta E} E_{1}^{2} E_{2}^{2} dE_{1} = \int_{0}^{\Delta E} E_{1}^{2} ( E_{1} + \Delta E )^{2} dE_{1} = \frac{1}{1 5} ( \Delta E )^{5}
+\int_{0}^{\pi} ( 1 + \cos \theta ) \sin \theta d\theta = 2 , \quad \text{ and } \int_{0}^{\Delta E} E_{1}^{2} E_{2}^{2} dE_{1} = \int_{0}^{\Delta E} E_{1}^{2} ( E_{1} + \Delta E )^{2} dE_{1} = \frac{1}{1 5} ( \Delta E )^{5}
 $$
 
 the total <a id="ix-10">creation</a> <a id="ix-168">probability</a> per unit time is
@@ -363,7 +363,7 @@ $$
 Numerically
 
 $$
-\frac{Ze^{2}}{\hbar c} \approx \frac{1}{1 7} \quad \text{ and } \quad \frac{\Delta Er_{o}}{\hbar c} \approx \frac{1}{1 0} \text{ since } r_{o} = 4 \times 1 0^{- 1 3} \text{ cm }
+\frac{Ze^{2}}{\hbar c} \approx \frac{1}{1 7} \quad \text{ and } \quad \frac{\Delta Er_{o}}{\hbar c} \approx \frac{1}{1 0} \quad \text{ since } r_{o} = 4 \times 1 0^{- 1 3} \text{ cm }
 $$
 
 Hence the lifetime will be
@@ -547,11 +547,11 @@ $$
 Since $E^{2} = p^{2} c^{2} + m^{2} c^{4}$, we can write
 
 $$
-E = mc^{2} \cosh \varphi pc = mc^{2} \sinh \varphi , \quad \text{ which makes }
+E = mc^{2} \cosh \varphi \quad pc = mc^{2} \sinh \varphi , \quad \text{ which makes }
 $$
 
 $$
-\tilde{E} = mc^{2} \cosh ( \varphi - \theta ) \tilde{p} c = mc^{2} \sinh ( \varphi - \theta ) \quad \text{ and thus }
+\tilde{E} = mc^{2} \cosh ( \varphi - \theta ) \quad \tilde{p} c = mc^{2} \sinh ( \varphi - \theta ) \quad \text{ and thus }
 $$
 
 $$

@@ -1593,7 +1593,9 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
             if !up.is_empty() {
                 t += &format!("^{{{}}}", build_at(&subset(spans, &up), depth + 1));
             }
-            items.push(Item { left: s.left, right: s.right, tex: t, kind: Kind::Atom, src: Vec::new() });
+            // its limits may reach further right than the sign itself
+            let right = up.iter().chain(&lo).map(|&i| spans[i].right).fold(s.right, f32::max);
+            items.push(Item { left: s.left, right, tex: t, kind: Kind::Atom, src: Vec::new() });
         } else {
             let t = tex(s);
             if !t.is_empty() {
@@ -1688,7 +1690,19 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
     while i < items.len() {
         if items[i].kind == Kind::Atom {
             // a wide gap separates two formulas on one line
-            if prev_right.is_some_and(|r| items[i].left - r > 2.0 * max) {
+            // (not next to a big operator, which is set wide anyway, nor
+            // right after a relation sign)
+            let after = out.last().map_or("", |p| p.as_str());
+            let big = |t: &str| ["\\sum", "\\int", "\\prod", "\\oint", "\\lim"].iter().any(|o| t.starts_with(o));
+            let next = items[i].tex.split_whitespace().next().unwrap_or("");
+            let rel = |t: &str| {
+                matches!(t, "=" | "<" | ">" | "\\neq" | "\\leq" | "\\geq" | "\\approx" | "\\equiv" | "\\sim" | "\\simeq")
+            };
+            let wide_ok = !big(after)
+                && !big(&items[i].tex)
+                && !rel(after.split_whitespace().last().unwrap_or(""))
+                && !rel(next);
+            if wide_ok && prev_right.is_some_and(|r| items[i].left - r > 0.9 * max) {
                 out.push("\\quad".into());
             }
             prev_right = Some(prev_right.map_or(items[i].right, |r| r.max(items[i].right)));

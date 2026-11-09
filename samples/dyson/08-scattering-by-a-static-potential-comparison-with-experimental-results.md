@@ -694,7 +694,7 @@ $$
 \left( \frac{1}{r^{3}} \right) = \frac{1}{\ell ( \ell + \tfrac{1}{2} ) ( \ell + 1 ) n^{3} a_{o}^{3}} \tag{710}
 $$
 
-where $a_{o}$ is the Bohr radius of the hydrogen atom. Hence the shift for states with $\ell$ = 0 becomes
+where $a_{o}$ is the Bohr radius of the hydrogen atom. Hence the shift for states with $\ell \neq$ 0 becomes
 
 $$
 \Delta E = \frac{\alpha^{3}}{2 \pi} \frac{1}{n^{3}} \text{ Ry } \frac{1}{( \ell + \tfrac{1}{2} ) ( \ell + 1 )} \quad \text{ for } j = \ell + \tfrac{1}{2} \tag{711}

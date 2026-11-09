@@ -824,8 +824,13 @@ pub fn parse_xml(xml: &str) -> Result<Doc, String> {
                     .collect();
                 let text = clean_text(&text);
                 // Zero-width text is rotated (e.g. the arXiv stamp in the
-                // margin); it is not part of the book's text.
-                if num(n, "width") < 0.5 {
+                // margin); it is not part of the book's text. Except the
+                // slash of ≠ (CMSY "6" overprinted on "="): pdftohtml gives
+                // it no width, so it gets the width of the sign it strikes.
+                let not_slash = text.trim() == "6"
+                    && fonts.get(num(n, "font") as usize).is_some_and(|f| f.family.contains("CMSY"));
+                let width = if not_slash { 0.8 * num(n, "height") } else { num(n, "width") };
+                if width < 0.5 {
                     continue;
                 }
                 // Empty text is skipped, except for glyphs of TeX's big-symbol
@@ -844,7 +849,7 @@ pub fn parse_xml(xml: &str) -> Result<Doc, String> {
                     text,
                     left: num(n, "left"),
                     top: num(n, "top"),
-                    width: num(n, "width"),
+                    width,
                     height: num(n, "height"),
                     font: num(n, "font") as usize,
                     bold: n.descendants().any(|d| d.has_tag_name("b")),

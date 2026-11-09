@@ -160,6 +160,20 @@ fn push_text(out: &mut Vec<Inline>, t: &str) {
 
 /// Collapse runs of spaces and trim the ends.
 fn tidy(mut v: Vec<Inline>) -> Vec<Inline> {
+    // "$q_0 \not$= 0": the slash of ≠ ended the formula and its "=" begins
+    // the text after it
+    for k in 1..v.len() {
+        let (a, b) = v.split_at_mut(k);
+        if let (Inline::Math(m), Inline::Text(t)) = (&mut a[k - 1], &mut b[0]) {
+            if m.trim_end().ends_with("\\not") && t.starts_with('=') {
+                *m = format!("{}\\neq", m.trim_end().trim_end_matches("\\not"));
+                t.remove(0);
+                if !t.starts_with(' ') {
+                    t.insert(0, ' ');
+                }
+            }
+        }
+    }
     for i in v.iter_mut() {
         if let Inline::Text(t) = i {
             let mut s = String::with_capacity(t.len());

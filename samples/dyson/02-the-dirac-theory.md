@@ -9,7 +9,7 @@ Historically before the RQ theory came the one-particle theory of Dirac. This wa
 Dirac said, suppose the particle can exist in several distinct states with the same <a id="ix-199">momentum</a> (different orientations of spin.) Then the wave-function $\psi$ satisfying (6) must have several _components_; it is not a scalar but a set of numbers each giving the prob. <a id="ix-11">amplitude</a> to find the particle at a given place and in a given substate. So we write for $\psi$ a column matrix
 
 $$
-\psi = \begin{bmatrix} \psi_{1} \\ \psi_{2} \\ \cdot \\ \cdot \\ \cdot \end{bmatrix} \quad \text{ for the components } \psi_{\alpha} ; \alpha = 1 , 2 ,\dots
+\psi = \begin{bmatrix} \psi_{1} \\ \psi_{2} \\ \cdot \\ \cdot \\ \cdot \end{bmatrix} \quad \text{ for the components } \psi_{\alpha} ; \quad \alpha = 1 , 2 ,\dots
 $$
 
 Dirac assumed that the probability <a id="ix-184">density</a> at any point is still given by
@@ -63,13 +63,13 @@ $$
 chosen so that the terms with mixed derivatives $\frac{\partial}{\partial t} \frac{\partial}{\partial x_{k}}$ and $\frac{\partial}{\partial t}$ cancel. This gives
 
 $$
-\begin{aligned} \frac{1}{c^{2}} \frac{\partial^{2} \psi}{\partial t^{2}} &= \sum \sum_{k = \ell} \frac{1}{2} \left( \alpha^{k} \alpha^{\ell} + \alpha^{\ell} \alpha^{k} \right) \frac{\partial^{2} \psi}{\partial x_{k} \partial x_{\ell}} + \sum_{k} \alpha_{k}^{2} \frac{\partial^{2} \psi}{\partial x_{k}^{2}} \\ & \quad - \frac{m^{2} c^{2}}{\hbar^{2}} \beta^{2} \psi + i \frac{mc}{\hbar} \sum_{k} \left( \alpha^{k} \beta + \beta \alpha^{k} \right) \frac{\partial \psi}{\partial x_{k}} \end{aligned}
+\begin{aligned} \frac{1}{c^{2}} \frac{\partial^{2} \psi}{\partial t^{2}} &= \sum \sum_{k \neq \ell} \frac{1}{2} \left( \alpha^{k} \alpha^{\ell} + \alpha^{\ell} \alpha^{k} \right) \frac{\partial^{2} \psi}{\partial x_{k} \partial x_{\ell}} + \sum_{k} \alpha_{k}^{2} \frac{\partial^{2} \psi}{\partial x_{k}^{2}} \\ & \quad - \frac{m^{2} c^{2}}{\hbar^{2}} \beta^{2} \psi + i \frac{mc}{\hbar} \sum_{k} \left( \alpha^{k} \beta + \beta \alpha^{k} \right) \frac{\partial \psi}{\partial x_{k}} \end{aligned}
 $$
 
 This agrees with (6) if and only if
 
 $$
-\begin{aligned} \alpha^{k} \alpha^{\ell} + \alpha^{\ell} \alpha^{k} &= 0 k = \ell \\ \alpha^{k} \beta + \beta \alpha^{k} &= 0 \\ \alpha^{k 2} &= \beta^{2} = \mathbb{I} , ( \text{ identity matrix } ) \end{aligned} \tag{13}
+\begin{aligned} \alpha^{k} \alpha^{\ell} + \alpha^{\ell} \alpha^{k} &= 0 \quad k \neq \ell \\ \alpha^{k} \beta + \beta \alpha^{k} &= 0 \\ \alpha^{k 2} &= \beta^{2} = \mathbb{I} , ( \text{ identity matrix } ) \end{aligned} \tag{13}
 $$
 
 Thus we could not possibly _factorize_ the 2<sup>nd</sup> order equation into two first-order operators involving ordinary numbers. But we can do it with <a id="ix-69"><em>matrices</em></a>.
@@ -136,7 +136,7 @@ $$
 ( \psi^{*\prime} \psi^{\prime} ) = \frac{\psi^{*} \psi}{\sqrt{1 - \frac{v^{2}}{c^{2}}}} \tag{17}
 $$
 
-and so $( \psi^{*} \psi ) = \rho$ transforms like an _energy_, i.e.like the fourth component of a vector. This shows incidentally that $\psi^{\prime} = \psi$. Since $\rho$ and $\hbar$ are related by the equation of continuity, the space-components of the 4-vector are
+and so $( \psi^{*} \psi ) = \rho$ transforms like an _energy_, i.e.like the fourth component of a vector. This shows incidentally that $\psi^{\prime} \neq \psi$. Since $\rho$ and $\hbar$ are related by the equation of continuity, the space-components of the 4-vector are
 
 $$
 ( S_{1} ,S_{2} ,S_{3} ) = \psi^{*} \alpha^{k} \psi = \frac{1}{c} j_{k} \tag{18}
@@ -199,7 +199,7 @@ $$
 But (23) and (26) are identical if
 
 $$
-\beta S^{- 1} \beta = S^{*} \quad \text{ which means } S^{*} \beta S = \beta \tag{27}
+\beta S^{- 1} \beta = S^{*} \quad \text{ which means } \quad S^{*} \beta S = \beta \tag{27}
 $$
 
 Thus $\beta$ transforms like a scalar, $\alpha^{\nu}$ like a 4-vector when multiplied by $S^{*} S$.
@@ -231,7 +231,7 @@ $$
 3) Pure reflections
 
 $$
-x_{1}^{\prime} = - x_{1} x_{2}^{\prime} = - x_{2} x_{3}^{\prime} = - x_{3} x_{0}^{\prime} = x_{0}
+x_{1}^{\prime} = - x_{1} \quad x_{2}^{\prime} = - x_{2} \quad x_{3}^{\prime} = - x_{3} \quad x_{0}^{\prime} = x_{0}
 $$
 
 _Case 1_ Then
@@ -339,7 +339,7 @@ $$
 <a id="p9"><sup>[p. 9]</sup></a>
 
 $$
-\gamma_{1} = \begin{pmatrix} 0 & \begin{matrix} 0 & - i \\ - i & 0 \end{matrix} \\ \begin{matrix} 0 & i \\ i & 0 \end{matrix} & 0 \end{pmatrix} ; \gamma_{2} = \begin{pmatrix} 0 & \begin{matrix} 0 & - 1 \\ 1 & 0 \end{matrix} \\ \begin{matrix} 0 & 1 \\ - 1 & 0 \end{matrix} & 0 \end{pmatrix} ; \gamma_{3} = \begin{pmatrix} 0 & \begin{matrix} - i & 0 \\ 0 & i \end{matrix} \\ \begin{matrix} i & 0 \\ 0 & - i \end{matrix} & 0 \end{pmatrix} ; \gamma_{4} = \begin{pmatrix} \begin{matrix} 1 & 0 \\ 0 & 1 \end{matrix} & 0 \\ 0 & \begin{matrix} - 1 & 0 \\ 0 & - 1 \end{matrix} \end{pmatrix}
+\gamma_{1} = \begin{pmatrix} 0 & \begin{matrix} 0 & - i \\ - i & 0 \end{matrix} \\ \begin{matrix} 0 & i \\ i & 0 \end{matrix} & 0 \end{pmatrix} ; \quad \gamma_{2} = \begin{pmatrix} 0 & \begin{matrix} 0 & - 1 \\ 1 & 0 \end{matrix} \\ \begin{matrix} 0 & 1 \\ - 1 & 0 \end{matrix} & 0 \end{pmatrix} ; \quad \gamma_{3} = \begin{pmatrix} 0 & \begin{matrix} - i & 0 \\ 0 & i \end{matrix} \\ \begin{matrix} i & 0 \\ 0 & - i \end{matrix} & 0 \end{pmatrix} ; \quad \gamma_{4} = \begin{pmatrix} \begin{matrix} 1 & 0 \\ 0 & 1 \end{matrix} & 0 \\ 0 & \begin{matrix} - 1 & 0 \\ 0 & - 1 \end{matrix} \end{pmatrix}
 $$
 
 are a 4-vector. They are all <a id="ix-115">Hermitian</a> and satisfy
@@ -395,19 +395,19 @@ $$
 But
 
 $$
-[ H, \boldsymbol{\sigma} ] = - i \hbar c \nabla \boldsymbol{\cdot} [ \boldsymbol{\alpha} , \boldsymbol{\sigma} ] \quad \text{ where } \boldsymbol{\sigma} = ( \sigma_{1} ,\sigma_{2} ,\sigma_{3} )
+[ H, \boldsymbol{\sigma} ] = - i \hbar c \nabla \boldsymbol{\cdot} [ \boldsymbol{\alpha} , \boldsymbol{\sigma} ] \quad \text{ where } \quad \boldsymbol{\sigma} = ( \sigma_{1} ,\sigma_{2} ,\sigma_{3} )
 $$
 
 while
 
 $$
-\left[ \alpha^{1} ,\sigma_{1} \right] = 0 , \quad \left[ \alpha^{1} ,\sigma_{2} \right] = 2 i\alpha^{3} , \quad \left[ \alpha^{1} ,\sigma_{3} \right] = - 2 i\alpha^{2} , \text{ etc } .
+\left[ \alpha^{1} ,\sigma_{1} \right] = 0 , \quad \left[ \alpha^{1} ,\sigma_{2} \right] = 2 i\alpha^{3} , \quad \left[ \alpha^{1} ,\sigma_{3} \right] = - 2 i\alpha^{2} , \quad \text{ etc } .
 $$
 
 So
 
 $$
-\begin{aligned} [ H,\sigma_{3} ] &= 2 \hbar c \left( \alpha^{1} \nabla_{2} - \alpha^{2} \nabla_{1} \right) \text{ and thus } \\ [ H, \boldsymbol{\sigma} ] &= 2 \hbar c \boldsymbol{\alpha} \times \nabla \end{aligned} \tag{41}
+\begin{aligned} [ H,\sigma_{3} ] &= 2 \hbar c \left( \alpha^{1} \nabla_{2} - \alpha^{2} \nabla_{1} \right) \quad \text{ and thus } \\ [ H, \boldsymbol{\sigma} ] &= 2 \hbar c \boldsymbol{\alpha} \times \nabla \end{aligned} \tag{41}
 $$
 
 Thus
@@ -501,7 +501,7 @@ since it has a momentum $- p$ energy $- E$.
 Thus we must take
 
 $$
-\varphi = C\psi^{+} , \quad i . e . v = Cu^{+} \tag{51}
+\varphi = C\psi^{+} , \quad i . e . \quad v = Cu^{+} \tag{51}
 $$
 
 where $\psi^{+}$ is $\psi$ with complex conjugate elements but _not_ transposed, and $C$ is a suitable constant matrix;
@@ -537,7 +537,7 @@ $$
 Now in fact
 
 $$
-\alpha^{1 +} = \alpha^{1} \quad \alpha^{3 +} = \alpha^{3} \alpha^{2 +} = - \alpha^{2} \beta^{+} = \beta
+\alpha^{1 +} = \alpha^{1} \quad \alpha^{3 +} = \alpha^{3} \quad \alpha^{2 +} = - \alpha^{2} \quad \beta^{+} = \beta
 $$
 
 Therefore a suitable C will be
@@ -583,7 +583,7 @@ $$
 given functions of space and time. Then the motion of a particle in the field is found by substituting in the <a id="ix-136">free-particle Lagrangian</a>
 
 $$
-\begin{aligned} & \quad E + e \Phi \text{ for } E \\ & \quad \boldsymbol{p} + \frac{e}{c} \boldsymbol{A} \text{ for } \boldsymbol{p} \end{aligned} \tag{60}
+\begin{aligned} & \quad E + e \Phi \quad \text{ for } E \\ & \quad \boldsymbol{p} + \frac{e}{c} \boldsymbol{A} \quad \text{ for } \boldsymbol{p} \end{aligned} \tag{60}
 $$
 
 where $( - e )$ is the electron charge. We write the momentum-energy 4-vector
@@ -683,7 +683,7 @@ $$
 But $[ H, \boldsymbol{J} ]$ = 0; furthermore, since
 
 $$
-\alpha^{k} \beta \sigma_{\ell} = \beta \sigma_{\ell} \alpha^{k} k = \ell \text{ and } \alpha^{k} \beta \sigma_{k} = - \beta \sigma_{k} \alpha^{k}
+\alpha^{k} \beta \sigma_{\ell} = \beta \sigma_{\ell} \alpha^{k} \quad k \neq \ell \quad \text{ and } \quad \alpha^{k} \beta \sigma_{k} = - \beta \sigma_{k} \alpha^{k}
 $$
 
 we get
@@ -703,7 +703,7 @@ $$
 because
 
 $$
-\nabla \boldsymbol{\cdot} \boldsymbol{r} \times \nabla = 0 \text{ and } \alpha^{k} \sigma_{k} = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \quad \text{ for all } k ’ s .
+\nabla \boldsymbol{\cdot} \boldsymbol{r} \times \nabla = 0 \quad \text{ and } \quad \alpha^{k} \sigma_{k} = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \quad \text{ for all } k ’ s .
 $$
 
 Hence the quantity which commutes with $H$ and is a constant of the motion is
@@ -735,7 +735,7 @@ K = k = \pm \left( j + \tfrac{1}{2} \right) \tag{76}
 $$
 
 $$
-j = | k |- \tfrac{1}{2} , k = \pm 1 , \pm 2 , \pm 3 ,\dots \tag{77}
+j = | k |- \tfrac{1}{2} , \quad k = \pm 1 , \pm 2 , \pm 3 ,\dots \tag{77}
 $$
 
 Using the eigenvalue for $K$, we can simplify the <a id="ix-121">Hamiltonian</a>, which we could not do as in the NR theory with the eigenvalue of $L^{2}$ alone. First
@@ -827,7 +827,7 @@ $$
 Putting
 
 $$
-e_{s} = a_{1} c_{s - 1} - ad_{s - 1} \quad \text{ we have } e_{s} = \alpha c_{s} - ( s + k ) d_{s} = \frac{a_{1}}{a} ( \alpha d_{s} + ( s - k ) c_{s} )
+e_{s} = a_{1} c_{s - 1} - ad_{s - 1} \quad \text{ we have } \quad e_{s} = \alpha c_{s} - ( s + k ) d_{s} = \frac{a_{1}}{a} ( \alpha d_{s} + ( s - k ) c_{s} )
 $$
 
 $$
@@ -843,7 +843,7 @@ $$
 Suppose the series do not terminate. Then for large $s$
 
 $$
-\frac{e_{s + 1}}{e_{s}} \approx \frac{c_{s + 1}}{c_{s}} \approx \frac{2 a}{s} \quad \text{ hence } f \approx \exp ( 2 ar )
+\frac{e_{s + 1}}{e_{s}} \approx \frac{c_{s + 1}}{c_{s}} \approx \frac{2 a}{s} \quad \text{ hence } \quad f \approx \exp ( 2 ar )
 $$
 
 This is permissible when $a$ is imaginary. Thus there is a continuum of states with
@@ -855,7 +855,7 @@ $$
 For real $a$ the series must terminate at both ends in order not to blow up at infinity. Suppose then<sup><a id="fnref-8" href="#fn-8">8</a></sup> $e_{s}$ is non-zero for
 
 $$
-s = \epsilon + 1 ,\epsilon + 2 ,\dots \epsilon + n n \geq 1 \tag{90}
+s = \epsilon + 1 ,\epsilon + 2 ,\dots \epsilon + n \quad n \geq 1 \tag{90}
 $$
 
 and otherwise zero. This gives
@@ -941,11 +941,11 @@ $$
 So
 
 $$
-\left. \begin{aligned} {}^{2} P_{1 / 2} \text{ is } j &= \tfrac{1}{2} , k = 1 \\ {}^{2} S_{1 / 2} \text{ is } j &= \tfrac{1}{2} , k = - 1 \end{aligned} \right\} \to \text{ degenerate }
+\left. \begin{aligned} {}^{2} P_{1 / 2} \quad \text{ is } \quad j &= \tfrac{1}{2} , \quad k = 1 \\ {}^{2} S_{1 / 2} \quad \text{ is } \quad j &= \tfrac{1}{2} , \quad k = - 1 \end{aligned} \right\} \to \text{ degenerate }
 $$
 
 $$
-{}^{2} S_{3 / 2} \text{ is } j = \tfrac{1}{2} , k = - 2
+{}^{2} S_{3 / 2} \quad \text{ is } \quad j = \tfrac{1}{2} , \quad k = - 2
 $$
 
 ## <a id="s-behavior-of-an-electron-in-non-relativistic-approximation"></a>Behaviour of an Electron in a Non-Relativistic Approximation
@@ -1091,7 +1091,7 @@ The lowest state has energy exactly $mc^{2}$.
 ## <a id="s-summary-of-matrices-in-the-dirac-theory-in-our-notation"></a>Summary of Matrices in the Dirac Theory in our notation
 
 $$
-\alpha^{k} \alpha^{\ell} + \alpha^{\ell} \alpha^{k} = 2 \delta_{k\ell} \mathbb{I} \alpha^{k} \beta + \beta \alpha^{k} = 0 \beta^{2} = \mathbb{I} \sigma_{k} \sigma_{\ell} + \sigma_{\ell} \sigma_{k} = 2 \delta_{k\ell} \mathbb{I}
+\alpha^{k} \alpha^{\ell} + \alpha^{\ell} \alpha^{k} = 2 \delta_{k\ell} \mathbb{I} \quad \alpha^{k} \beta + \beta \alpha^{k} = 0 \quad \beta^{2} = \mathbb{I} \quad \sigma_{k} \sigma_{\ell} + \sigma_{\ell} \sigma_{k} = 2 \delta_{k\ell} \mathbb{I}
 $$
 
 $$
@@ -1099,7 +1099,7 @@ $$
 $$
 
 $$
-\alpha^{k} \gamma_{\ell} - \gamma_{\ell} \alpha^{k} = 2 i\delta_{\ell k} \beta \quad \gamma_{5} = \gamma_{1} \gamma_{2} \gamma_{3} \gamma_{4} \quad \gamma_{\mu} \gamma_{5} + \gamma_{5} \gamma_{\mu} = 0 \alpha^{k} \gamma_{5} - \gamma_{5} \alpha^{k} = 0 \gamma_{5}^{2} = \mathbb{I}
+\alpha^{k} \gamma_{\ell} - \gamma_{\ell} \alpha^{k} = 2 i\delta_{\ell k} \beta \quad \gamma_{5} = \gamma_{1} \gamma_{2} \gamma_{3} \gamma_{4} \quad \gamma_{\mu} \gamma_{5} + \gamma_{5} \gamma_{\mu} = 0 \quad \alpha^{k} \gamma_{5} - \gamma_{5} \alpha^{k} = 0 \quad \gamma_{5}^{2} = \mathbb{I}
 $$
 
 We use the following representation:
@@ -1109,23 +1109,23 @@ $$
 $$
 
 $$
-\alpha^{k} = \begin{pmatrix} \mathbb{O} & \sigma_{k} \\ \sigma_{k} & \mathbb{O} \end{pmatrix} i . e . \alpha^{1} = \begin{pmatrix} 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0 \end{pmatrix} \alpha^{2} = \begin{pmatrix} 0 & 0 & 0 & - i \\ 0 & 0 & i & 0 \\ 0 & - i & 0 & 0 \\ i & 0 & 0 & 0 \end{pmatrix} \alpha^{3} = \begin{pmatrix} 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & - 1 \\ 1 & 0 & 0 & 0 \\ 0 & - 1 & 0 & 0 \end{pmatrix}
+\alpha^{k} = \begin{pmatrix} \mathbb{O} & \sigma_{k} \\ \sigma_{k} & \mathbb{O} \end{pmatrix} \quad i . e . \quad \alpha^{1} = \begin{pmatrix} 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0 \end{pmatrix} \quad \alpha^{2} = \begin{pmatrix} 0 & 0 & 0 & - i \\ 0 & 0 & i & 0 \\ 0 & - i & 0 & 0 \\ i & 0 & 0 & 0 \end{pmatrix} \quad \alpha^{3} = \begin{pmatrix} 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & - 1 \\ 1 & 0 & 0 & 0 \\ 0 & - 1 & 0 & 0 \end{pmatrix}
 $$
 
 $$
-\beta = \begin{pmatrix} \mathbb{I} & \mathbb{O} \\ \mathbb{O} & - \mathbb{I} \end{pmatrix} i . e . \beta = \gamma_{4} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & - 1 & 0 \\ 0 & 0 & 0 & - 1 \end{pmatrix} \gamma_{5} = \begin{pmatrix} \mathbb{O} & - \mathbb{I} \\ - \mathbb{I} & \mathbb{O} \end{pmatrix} = \begin{pmatrix} 0 & 0 & - 1 & 0 \\ 0 & 0 & 0 & - 1 \\ - 1 & 0 & 0 & 0 \\ 0 & - 1 & 0 & 0 \end{pmatrix}
+\beta = \begin{pmatrix} \mathbb{I} & \mathbb{O} \\ \mathbb{O} & - \mathbb{I} \end{pmatrix} \quad i . e . \quad \beta = \gamma_{4} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & - 1 & 0 \\ 0 & 0 & 0 & - 1 \end{pmatrix} \quad \gamma_{5} = \begin{pmatrix} \mathbb{O} & - \mathbb{I} \\ - \mathbb{I} & \mathbb{O} \end{pmatrix} = \begin{pmatrix} 0 & 0 & - 1 & 0 \\ 0 & 0 & 0 & - 1 \\ - 1 & 0 & 0 & 0 \\ 0 & - 1 & 0 & 0 \end{pmatrix}
 $$
 
 $$
-\gamma_{k} = \begin{pmatrix} \mathbb{O} & - i\sigma_{k} \\ i\sigma_{k} & \mathbb{O} \end{pmatrix} i . e . \gamma_{1} = \begin{pmatrix} 0 & 0 & 0 & - i \\ 0 & 0 & - i & 0 \\ 0 & i & 0 & 0 \\ i & 0 & 0 & 0 \end{pmatrix} \gamma_{2} = \begin{pmatrix} 0 & 0 & 0 & - 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ - 1 & 0 & 0 & 0 \end{pmatrix} \gamma_{3} = \begin{pmatrix} 0 & 0 & - i & 0 \\ 0 & 0 & 0 & i \\ i & 0 & 0 & 0 \\ 0 & - i & 0 & 0 \end{pmatrix}
+\gamma_{k} = \begin{pmatrix} \mathbb{O} & - i\sigma_{k} \\ i\sigma_{k} & \mathbb{O} \end{pmatrix} \quad i . e . \quad \gamma_{1} = \begin{pmatrix} 0 & 0 & 0 & - i \\ 0 & 0 & - i & 0 \\ 0 & i & 0 & 0 \\ i & 0 & 0 & 0 \end{pmatrix} \quad \gamma_{2} = \begin{pmatrix} 0 & 0 & 0 & - 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ - 1 & 0 & 0 & 0 \end{pmatrix} \quad \gamma_{3} = \begin{pmatrix} 0 & 0 & - i & 0 \\ 0 & 0 & 0 & i \\ i & 0 & 0 & 0 \\ 0 & - i & 0 & 0 \end{pmatrix}
 $$
 
 $$
-\sigma_{k} = \epsilon \alpha^{k} \quad \alpha^{k} = \epsilon \sigma_{k} \quad \eta = i\epsilon \beta \epsilon = - i\alpha^{1} \alpha^{2} \alpha^{3} \quad \epsilon^{2} = \eta^{2} = \mathbb{I} \gamma_{5} = - \epsilon
+\sigma_{k} = \epsilon \alpha^{k} \quad \alpha^{k} = \epsilon \sigma_{k} \quad \eta = i\epsilon \beta \quad \epsilon = - i\alpha^{1} \alpha^{2} \alpha^{3} \quad \epsilon^{2} = \eta^{2} = \mathbb{I} \quad \gamma_{5} = - \epsilon
 $$
 
 $$
-\sigma_{k} = \eta \gamma_{k} \quad \gamma_{k} = \eta \sigma_{k} \quad \epsilon = - i\eta \beta \eta = - \alpha^{1} \alpha^{2} \alpha^{3}
+\sigma_{k} = \eta \gamma_{k} \quad \gamma_{k} = \eta \sigma_{k} \quad \epsilon = - i\eta \beta \quad \eta = - \alpha^{1} \alpha^{2} \alpha^{3}
 $$
 
 $$
@@ -1133,11 +1133,11 @@ $$
 $$
 
 $$
-\alpha^{k} \sigma_{\ell} + \sigma_{\ell} \alpha^{k} = 2 \delta_{\ell k} \epsilon \gamma_{k} \sigma_{\ell} + \sigma_{\ell} \gamma_{k} = 2 \delta_{\ell k} \eta \quad \beta \sigma_{k} - \sigma_{k} \beta = 0
+\alpha^{k} \sigma_{\ell} + \sigma_{\ell} \alpha^{k} = 2 \delta_{\ell k} \epsilon \quad \gamma_{k} \sigma_{\ell} + \sigma_{\ell} \gamma_{k} = 2 \delta_{\ell k} \eta \quad \beta \sigma_{k} - \sigma_{k} \beta = 0
 $$
 
 $$
-\sigma_{k} \sigma_{\ell} = \alpha_{k} \alpha_{\ell} = \gamma_{k} \gamma_{\ell} = i\sigma_{m} k,\ell ,m = ( 1 , 2 , 3 ) \text{ cyclicly permuted }
+\sigma_{k} \sigma_{\ell} = \alpha_{k} \alpha_{\ell} = \gamma_{k} \gamma_{\ell} = i\sigma_{m} \quad k,\ell ,m = ( 1 , 2 , 3 ) \text{ cyclicly permuted }
 $$
 
 $$
@@ -1149,10 +1149,10 @@ $$
 $$
 
 $$
-\left. \begin{aligned} \alpha_{k} \sigma_{\ell} &= i\alpha_{m} \\ \sigma_{k} \gamma_{\ell} &= i\gamma_{m} \\ \gamma_{k} \alpha_{\ell} &= \beta \sigma_{m} \end{aligned} \right\} k,\ell ,m = ( 1 , 2 , 3 ) \text{ cyclicly permuted }
+\left. \begin{aligned} \alpha_{k} \sigma_{\ell} &= i\alpha_{m} \\ \sigma_{k} \gamma_{\ell} &= i\gamma_{m} \\ \gamma_{k} \alpha_{\ell} &= \beta \sigma_{m} \end{aligned} \right\} \quad k,\ell ,m = ( 1 , 2 , 3 ) \text{ cyclicly permuted }
 $$
 
-Comparison with the Dirac notation: $\rho_{1} = \epsilon \rho_{2} = \eta \rho_{3} = \beta$.
+Comparison with the Dirac notation: $\rho_{1} = \epsilon \quad \rho_{2} = \eta \quad \rho_{3} = \beta$.
 
 Latin indices: 1, 2, 3. Greek indices: 1, 2, 3, 4.
 
@@ -1161,11 +1161,11 @@ Latin indices: 1, 2, 3. Greek indices: 1, 2, 3, 4.
 ## <a id="s-summary-of-matrices-in-the-dirac-theory-in-the-feynman-notation"></a>Summary of Matrices in the Dirac Theory in the Feynman notation
 
 $$
-\alpha^{k} \alpha^{\ell} + \alpha^{\ell} \alpha^{k} = 2 \delta_{k\ell} \mathbb{I} \alpha^{k} \beta + \beta \alpha^{k} = 0 g_{0 0} = + 1 g_{kk} = - 1 g_{\mu \nu} = 0 ,\mu = \nu
+\alpha^{k} \alpha^{\ell} + \alpha^{\ell} \alpha^{k} = 2 \delta_{k\ell} \mathbb{I} \quad \alpha^{k} \beta + \beta \alpha^{k} = 0 \quad g_{0 0} = + 1 \quad g_{kk} = - 1 \quad g_{\mu \nu} = 0 ,\mu \neq \nu
 $$
 
 $$
-\sigma_{k} \sigma_{\ell} + \sigma_{\ell} \sigma_{k} = 2 \delta_{k\ell} \mathbb{I} \beta^{2} = \mathbb{I}
+\sigma_{k} \sigma_{\ell} + \sigma_{\ell} \sigma_{k} = 2 \delta_{k\ell} \mathbb{I} \quad \beta^{2} = \mathbb{I}
 $$
 
 $$
@@ -1173,7 +1173,7 @@ $$
 $$
 
 $$
-\alpha^{k} \gamma_{\ell} - \gamma_{\ell} \alpha^{k} = - 2 \delta_{\ell k} \beta \quad \gamma_{5} = i\gamma_{0} \gamma_{1} \gamma_{2} \gamma_{3} \quad \gamma_{\mu} \gamma_{5} + \gamma_{5} \gamma_{\mu} = 0 \alpha^{k} \gamma_{5} - \gamma_{5} \alpha^{k} = 0 \gamma_{5}^{2} = - \mathbb{I}
+\alpha^{k} \gamma_{\ell} - \gamma_{\ell} \alpha^{k} = - 2 \delta_{\ell k} \beta \quad \gamma_{5} = i\gamma_{0} \gamma_{1} \gamma_{2} \gamma_{3} \quad \gamma_{\mu} \gamma_{5} + \gamma_{5} \gamma_{\mu} = 0 \quad \alpha^{k} \gamma_{5} - \gamma_{5} \alpha^{k} = 0 \quad \gamma_{5}^{2} = - \mathbb{I}
 $$
 
 Representation:
@@ -1183,15 +1183,15 @@ $$
 $$
 
 $$
-\alpha^{k} = \begin{pmatrix} \mathbb{O} & \sigma_{k} \\ \sigma_{k} & \mathbb{O} \end{pmatrix} i . e . \alpha^{1} = \begin{pmatrix} 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0 \end{pmatrix} \alpha^{2} = \begin{pmatrix} 0 & 0 & 0 & - i \\ 0 & 0 & i & 0 \\ 0 & - i & 0 & 0 \\ i & 0 & 0 & 0 \end{pmatrix} \alpha^{3} = \begin{pmatrix} 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & - 1 \\ 1 & 0 & 0 & 0 \\ 0 & - 1 & 0 & 0 \end{pmatrix}
+\alpha^{k} = \begin{pmatrix} \mathbb{O} & \sigma_{k} \\ \sigma_{k} & \mathbb{O} \end{pmatrix} \quad i . e . \quad \alpha^{1} = \begin{pmatrix} 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0 \end{pmatrix} \quad \alpha^{2} = \begin{pmatrix} 0 & 0 & 0 & - i \\ 0 & 0 & i & 0 \\ 0 & - i & 0 & 0 \\ i & 0 & 0 & 0 \end{pmatrix} \quad \alpha^{3} = \begin{pmatrix} 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & - 1 \\ 1 & 0 & 0 & 0 \\ 0 & - 1 & 0 & 0 \end{pmatrix}
 $$
 
 $$
-\beta = \begin{pmatrix} \mathbb{I} & \mathbb{O} \\ \mathbb{O} & - \mathbb{I} \end{pmatrix} i . e . \beta = \gamma_{0} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & - 1 & 0 \\ 0 & 0 & 0 & - 1 \end{pmatrix}
+\beta = \begin{pmatrix} \mathbb{I} & \mathbb{O} \\ \mathbb{O} & - \mathbb{I} \end{pmatrix} \quad i . e . \quad \beta = \gamma_{0} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & - 1 & 0 \\ 0 & 0 & 0 & - 1 \end{pmatrix}
 $$
 
 $$
-\gamma_{k} = \begin{pmatrix} \mathbb{O} & \sigma_{k} \\ - \sigma_{k} & \mathbb{O} \end{pmatrix} i . e . \gamma_{1} = \begin{pmatrix} 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & - 1 & 0 & 0 \\ - 1 & 0 & 0 & 0 \end{pmatrix} \gamma_{2} = \begin{pmatrix} 0 & 0 & 0 & - i \\ 0 & 0 & i & 0 \\ 0 & - i & 0 & 0 \\ i & 0 & 0 & 0 \end{pmatrix} \gamma_{3} = \begin{pmatrix} 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & - 1 \\ - 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \end{pmatrix}
+\gamma_{k} = \begin{pmatrix} \mathbb{O} & \sigma_{k} \\ - \sigma_{k} & \mathbb{O} \end{pmatrix} \quad i . e . \quad \gamma_{1} = \begin{pmatrix} 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & - 1 & 0 & 0 \\ - 1 & 0 & 0 & 0 \end{pmatrix} \quad \gamma_{2} = \begin{pmatrix} 0 & 0 & 0 & - i \\ 0 & 0 & i & 0 \\ 0 & - i & 0 & 0 \\ i & 0 & 0 & 0 \end{pmatrix} \quad \gamma_{3} = \begin{pmatrix} 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & - 1 \\ - 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \end{pmatrix}
 $$
 
 $$
@@ -1211,7 +1211,7 @@ $$
 $$
 
 $$
-\sigma_{k} \sigma_{\ell} = \alpha_{k} \alpha_{\ell} = - \gamma_{k} \gamma_{\ell} = i\sigma_{m} k,\ell ,m = ( 1 , 2 , 3 ) \text{ cyclicly permuted }
+\sigma_{k} \sigma_{\ell} = \alpha_{k} \alpha_{\ell} = - \gamma_{k} \gamma_{\ell} = i\sigma_{m} \quad k,\ell ,m = ( 1 , 2 , 3 ) \text{ cyclicly permuted }
 $$
 
 $$
@@ -1223,7 +1223,7 @@ $$
 $$
 
 $$
-\left. \begin{aligned} \alpha_{k} \sigma_{\ell} &= i\alpha_{m} \\ \sigma_{k} \gamma_{\ell} &= i\gamma_{m} \\ \gamma_{k} \alpha_{\ell} &= i\beta \sigma_{m} \end{aligned} \right\} k,\ell ,m = ( 1 , 2 , 3 ) \text{ cyclicly permuted }
+\left. \begin{aligned} \alpha_{k} \sigma_{\ell} &= i\alpha_{m} \\ \sigma_{k} \gamma_{\ell} &= i\gamma_{m} \\ \gamma_{k} \alpha_{\ell} &= i\beta \sigma_{m} \end{aligned} \right\} \quad k,\ell ,m = ( 1 , 2 , 3 ) \text{ cyclicly permuted }
 $$
 
 Latin indices: 1, 2, 3. Greek indices: 0, 1, 2, 3.
