@@ -60,7 +60,8 @@ fn read_correction(k: &str) -> Option<String> {
 /// chapter files and book.md disagree, the most recently changed file wins.
 pub fn collect_corrections(dir: &std::path::Path) -> usize {
     let (Some(cdir), Ok(entries)) = (corrections_dir(), std::fs::read_dir(dir)) else { return 0 };
-    let norm = |t: &str| t.split_whitespace().collect::<Vec<_>>().join(" ");
+    // what pdf2md wrote there for each equation (see `record_written`)
+    let written_then = read_written(dir);
     // image -> (time of the file, LaTeX as it stands there)
     let mut found: HashMap<String, (std::time::SystemTime, String)> = HashMap::new();
     for e in entries.flatten() {
@@ -70,32 +71,22 @@ pub fn collect_corrections(dir: &std::path::Path) -> usize {
         }
         let (Ok(text), Ok(meta)) = (std::fs::read_to_string(&p), e.metadata()) else { continue };
         let time = meta.modified().unwrap_or(std::time::UNIX_EPOCH);
-        let mut rest = text.as_str();
-        while let Some(i) = rest.find("<!-- pdf2md:eq ") {
-            rest = &rest[i + 15..];
-            let Some(k) = rest.get(..16).filter(|k| k.chars().all(|c| c.is_ascii_hexdigit())) else { continue };
-            let k = k.to_string();
-            let after = rest.get(20..).unwrap_or("");
-            let latex = if let Some(inline) = after.strip_prefix('$') {
-                // a formula inside a sentence: $…$ right after the marker
-                let Some(end) = inline.find('$') else { break };
-                let latex = strip_numbers(&inline[..end]);
-                rest = &inline[end..];
-                latex
-            } else {
-                let Some(start) = rest.find("$$\n") else { break };
-                let body = &rest[start + 3..];
-                let Some(end) = body.find("\n$$") else { break };
-                let latex = strip_numbers(&body[..end]);
-                rest = &body[end..];
-                latex
+        for (k, latex) in marked_equations(&text) {
+            let changed = match &written_then {
+                // compared with exactly what was written
+                Some(w) => w.get(&k).is_some_and(|w| *w != norm(&latex)),
+                // a folder from before the record: compared with the current
+                // reading, and only while the picture is still read as math
+                // (a reading that became code or a drawing is no correction)
+                None => {
+                    let now = read_correction(&k).or_else(|| cache_dir().and_then(|d| read_cached(&d, &k)).and_then(|r| match r {
+                        Reading::Latex(t) => Some(t),
+                        _ => None,
+                    }));
+                    now.is_some_and(|w| norm(&w) != norm(&latex))
+                }
             };
-            let written = read_correction(&k).or_else(|| cache_dir().and_then(|d| read_cached(&d, &k)).and_then(|r| match r {
-                Reading::Latex(t) => Some(t),
-                _ => None,
-            }));
-            // unchanged: nothing to keep
-            if written.as_deref().is_some_and(|w| norm(w) == norm(&latex)) {
+            if !changed {
                 continue;
             }
             match found.get(&k) {
@@ -110,6 +101,67 @@ pub fn collect_corrections(dir: &std::path::Path) -> usize {
         return 0;
     }
     found.iter().filter(|(k, (_, latex))| std::fs::write(cdir.join(format!("{k}.tex")), format!("{latex}\n")).is_ok()).count()
+}
+
+fn norm(t: &str) -> String {
+    t.split_whitespace().collect::<Vec<_>>().join(" ")
+}
+
+/// The marked equations of a Markdown text: picture key and LaTeX (without
+/// its number), for displayed ones (`<!-- pdf2md:eq KEY -->` above `$$`)
+/// and ones inside sentences (the marker right before `$…$`).
+pub fn marked_equations(text: &str) -> Vec<(String, String)> {
+    let mut out = Vec::new();
+    let mut rest = text;
+    while let Some(i) = rest.find("<!-- pdf2md:eq ") {
+        rest = &rest[i + 15..];
+        let Some(k) = rest.get(..16).filter(|k| k.chars().all(|c| c.is_ascii_hexdigit())) else { continue };
+        let k = k.to_string();
+        let after = rest.get(20..).unwrap_or("");
+        let latex = if let Some(inline) = after.strip_prefix('$') {
+            let Some(end) = inline.find('$') else { break };
+            let latex = strip_numbers(&inline[..end]);
+            rest = &inline[end..];
+            latex
+        } else {
+            let Some(start) = rest.find("$$\n") else { break };
+            let body = &rest[start + 3..];
+            let Some(end) = body.find("\n$$") else { break };
+            let latex = strip_numbers(&body[..end]);
+            rest = &body[end..];
+            latex
+        };
+        out.push((k, latex));
+    }
+    out
+}
+
+/// The record of what a conversion wrote for each marked equation, kept in
+/// the book folder (`.pdf2md-written`: key, tab, LaTeX on one line), so the
+/// next conversion can tell the reader's edits from improved readings.
+const WRITTEN: &str = ".pdf2md-written";
+
+pub fn record_written(dir: &std::path::Path, texts: &[&str]) -> std::io::Result<()> {
+    let mut seen = std::collections::HashSet::new();
+    let mut s = String::new();
+    for t in texts {
+        for (k, latex) in marked_equations(t) {
+            if seen.insert(k.clone()) {
+                s.push_str(&format!("{k}\t{}\n", norm(&latex)));
+            }
+        }
+    }
+    if s.is_empty() {
+        // no equation pictures (a TeX book): nothing to record
+        let _ = std::fs::remove_file(dir.join(WRITTEN));
+        return Ok(());
+    }
+    std::fs::write(dir.join(WRITTEN), s)
+}
+
+fn read_written(dir: &std::path::Path) -> Option<HashMap<String, String>> {
+    let t = std::fs::read_to_string(dir.join(WRITTEN)).ok()?;
+    Some(t.lines().filter_map(|l| l.split_once('\t')).map(|(k, v)| (k.to_string(), v.to_string())).collect())
 }
 
 fn cache_dir() -> Option<PathBuf> {

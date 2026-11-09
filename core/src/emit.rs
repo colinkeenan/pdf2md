@@ -506,15 +506,19 @@ pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
     std::fs::create_dir_all(dir)?;
     write_figures(book, dir);
     let mut out = Vec::new();
+    let mut written = Vec::new();
     for (i, ch) in book.chapters.iter().enumerate() {
         let p = dir.join(format!("{}.md", ch.slug));
         let mut s = chapter_markdown(book, i);
         // the reader's notes and fixes from the earlier conversion
         let lost = crate::userdata::apply(&mut s, &book.user, Some(&ch.slug));
         s.push_str(&lost_notes(&lost));
-        std::fs::write(&p, s)?;
+        std::fs::write(&p, &s)?;
+        written.push(s);
         out.push(p);
     }
+    // what was written for each equation, to tell later edits from it
+    crate::ocr::record_written(dir, &written.iter().map(String::as_str).collect::<Vec<_>>())?;
     if let Some(list) = check_list(book) {
         let p = dir.join("check-equations.md");
         std::fs::write(&p, list)?;
