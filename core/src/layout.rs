@@ -115,6 +115,18 @@ pub struct Page {
     pub height: f32,
     pub lines: Vec<Line>,
     pub rules: Vec<Rule>,
+    /// Pictures (drawings, images) with their labels, top to bottom.
+    pub figures: Vec<Figure>,
+}
+
+/// A picture on a page: a drawing or an embedded image together with the
+/// text labels inside it, in pdftohtml's pixels.
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct Figure {
+    pub left: f32,
+    pub right: f32,
+    pub top: f32,
+    pub bottom: f32,
 }
 
 #[derive(Debug, Clone)]
@@ -252,9 +264,155 @@ pub fn read_pdf(path: &Path, pages: Option<(u32, u32)>) -> Result<Doc, String> {
             mark_overlines(&mut doc);
             let delims = parse_svg_delims(&svg);
             insert_delims(&mut doc, delims);
+            let figures = parse_svg_figures(&svg);
+            for (page, f) in doc.pages.iter_mut().zip(figures) {
+                page.figures = f;
+            }
+            take_figure_labels(&mut doc);
         }
     }
     Ok(doc)
+}
+
+/// Pictures on each page of `pdftocairo -svg` output, in pdftohtml's
+/// pixels: every drawn path that is not a glyph or a thin bar (fraction
+/// bars and rules are used elsewhere), and every embedded image. Pieces
+/// close together are one picture, and pictures side by side in a row
+/// (four little diagrams) are one too.
+pub fn parse_svg_figures(svg: &str) -> Vec<Vec<Figure>> {
+    let attr = |tag: &str, name: &str| -> Option<f32> {
+        tag.split(&format!(" {name}=\"")).nth(1)?.split('"').next()?.trim_end_matches("px").parse().ok()
+    };
+    // matrix(a, b, c, d, e, f)
+    let transform = |tag: &str| -> [f32; 6] {
+        tag.split("transform=\"matrix(")
+            .nth(1)
+            .and_then(|r| r.split(')').next())
+            .map(|m| {
+                let v: Vec<f32> = m.split(',').filter_map(|t| t.trim().parse().ok()).collect();
+                if v.len() == 6 { [v[0], v[1], v[2], v[3], v[4], v[5]] } else { [1.0, 0.0, 0.0, 1.0, 0.0, 0.0] }
+            })
+            .unwrap_or([1.0, 0.0, 0.0, 1.0, 0.0, 0.0])
+    };
+    let apply = |m: &[f32; 6], x: f32, y: f32| (m[0] * x + m[2] * y + m[4], m[1] * x + m[3] * y + m[5]);
+    svg_pages(svg)
+        .into_iter()
+        .map(|page| {
+            let body = page.split("</defs>").last().unwrap_or(page);
+            // (left, right, top, bottom, is an image)
+            let mut boxes: Vec<(f32, f32, f32, f32, bool)> = Vec::new();
+            for tag in body.split("<path ").skip(1) {
+                let tag = format!(" {}", tag.split("/>").next().unwrap_or(""));
+                if tag.contains(" id=\"") {
+                    continue;
+                }
+                let Some(d) = tag.split(" d=\"").nth(1).and_then(|r| r.split('"').next()) else { continue };
+                let nums: Vec<f32> = d
+                    .split(|c: char| c.is_ascii_alphabetic() || c.is_whitespace() || c == ',')
+                    .filter_map(|t| t.parse().ok())
+                    .collect();
+                if nums.len() < 4 {
+                    continue;
+                }
+                let m = transform(&tag);
+                let pts: Vec<(f32, f32)> = nums.chunks(2).filter(|c| c.len() == 2).map(|c| apply(&m, c[0], c[1])).collect();
+                let (l, r) = pts.iter().fold((f32::MAX, f32::MIN), |(a, b), p| (a.min(p.0), b.max(p.0)));
+                let (t, b) = pts.iter().fold((f32::MAX, f32::MIN), |(a, b), p| (a.min(p.1), b.max(p.1)));
+                // a thin filled bar without curves: a fraction bar or rule
+                let bar = !tag.contains("stroke=") && !d.contains(['C', 'Q']) && ((b - t <= 1.5) || (r - l <= 1.5));
+                if !bar {
+                    boxes.push((l, r, t, b, false));
+                }
+            }
+            for tag in body.split("<image ").skip(1) {
+                let tag = format!(" {}", tag.split('>').next().unwrap_or(""));
+                let (Some(w), Some(h)) = (attr(&tag, "width"), attr(&tag, "height")) else { continue };
+                let (x, y) = (attr(&tag, "x").unwrap_or(0.0), attr(&tag, "y").unwrap_or(0.0));
+                let m = transform(&tag);
+                let pts = [apply(&m, x, y), apply(&m, x + w, y + h)];
+                let (l, r) = (pts[0].0.min(pts[1].0), pts[0].0.max(pts[1].0));
+                let (t, b) = (pts[0].1.min(pts[1].1), pts[0].1.max(pts[1].1));
+                boxes.push((l, r, t, b, true));
+            }
+            // pieces close together form one picture
+            let mut groups: Vec<(f32, f32, f32, f32, usize, bool)> =
+                boxes.iter().map(|&(l, r, t, b, img)| (l, r, t, b, 1, img)).collect();
+            let near = |a: &(f32, f32, f32, f32, usize, bool), b: &(f32, f32, f32, f32, usize, bool)| {
+                let gap = 12.0;
+                let close = a.0 <= b.1 + gap && b.0 <= a.1 + gap && a.2 <= b.3 + gap && b.2 <= a.3 + gap;
+                // side by side in a row
+                let v_overlap = a.3.min(b.3) - a.2.max(b.2);
+                let row = v_overlap > 0.5 * (a.3 - a.2).min(b.3 - b.2) && (b.0 - a.1).max(a.0 - b.1) < 100.0;
+                close || (row && a.4 >= 2 && b.4 >= 2)
+            };
+            loop {
+                let mut merged = false;
+                'outer: for i in 0..groups.len() {
+                    for j in i + 1..groups.len() {
+                        if near(&groups[i], &groups[j]) {
+                            let (a, b) = (groups[i], groups[j]);
+                            groups[i] = (a.0.min(b.0), a.1.max(b.1), a.2.min(b.2), a.3.max(b.3), a.4 + b.4, a.5 || b.5);
+                            groups.remove(j);
+                            merged = true;
+                            break 'outer;
+                        }
+                    }
+                }
+                if !merged {
+                    break;
+                }
+            }
+            let mut figs: Vec<Figure> = groups
+                .into_iter()
+                // a real picture: an image, or several strokes of some size
+                // (or a wide strip of many pieces: a legend drawn as paths)
+                .filter(|g| g.5 || (g.4 >= 3 && g.1 - g.0 >= 15.0 && g.3 - g.2 >= 15.0) || (g.4 >= 8 && g.1 - g.0 >= 40.0))
+                .map(|g| Figure { left: g.0 * 1.5, right: g.1 * 1.5, top: g.2 * 1.5, bottom: g.3 * 1.5 })
+                .collect();
+            figs.sort_by(|a, b| a.top.total_cmp(&b.top));
+            figs
+        })
+        .collect()
+}
+
+/// The labels of a picture (x₁, G₁ …) are text: take the text inside it, or
+/// just around it on lines that lie within it, into the picture, and out
+/// of the text flow.
+fn take_figure_labels(doc: &mut Doc) {
+    let m = doc.body_size;
+    for page in doc.pages.iter_mut() {
+        for f in page.figures.iter_mut() {
+            let (l, r, t, b) = (f.left - m, f.right + m, f.top - 1.2 * m, f.bottom + 1.2 * m);
+            for line in page.lines.iter_mut() {
+                // a whole line beside the picture is prose, not a label
+                let line_inside = line.left >= l && line.right <= r;
+                let spans = std::mem::take(&mut line.spans);
+                // ... but a tiny label right beside it, far from the rest of
+                // its line (an axis label "x" next to a formula), is one
+                let lonely = |s: &Span| {
+                    s.text.trim().chars().count() <= 3
+                        && spans.iter().filter(|o| !std::ptr::eq(*o, s)).all(|o| (s.left - o.right()).max(o.left - s.right()) >= 2.0 * m)
+                };
+                let mut kept = Vec::new();
+                for s in spans.iter() {
+                    let inside = s.left >= f.left - 1.0 && s.right() <= f.right + 1.0 && s.top >= f.top - 1.0 && s.bottom() <= f.bottom + 1.0;
+                    let near = s.left < r && s.right() > l && s.top < b && s.bottom() > t;
+                    let around = near && (line_inside || lonely(s));
+                    let s = s.clone();
+                    if inside || around {
+                        f.left = f.left.min(s.left);
+                        f.right = f.right.max(s.right());
+                        f.top = f.top.min(s.top);
+                        f.bottom = f.bottom.max(s.bottom());
+                    } else {
+                        kept.push(s);
+                    }
+                }
+                line.spans = kept;
+            }
+            page.lines.retain(|l| !l.spans.is_empty());
+        }
+    }
 }
 
 /// The page parts of `pdftocairo -svg` output (several pages are wrapped
@@ -893,6 +1051,7 @@ pub fn parse_xml(xml: &str) -> Result<Doc, String> {
                 fonts.get(s.font).is_some_and(|f| f.family.starts_with("CMEX"))
             }),
             rules: Vec::new(),
+            figures: Vec::new(),
         })
         .collect();
 
@@ -1075,6 +1234,9 @@ pub fn dump(doc: &Doc) -> String {
         out += &format!("\n=== page {} ({} x {})\n", p.number, p.width, p.height);
         for r in &p.rules {
             out += &format!("  bar  top {:.1}  x {:.1}..{:.1}\n", r.top, r.left, r.right);
+        }
+        for f in &p.figures {
+            out += &format!("  figure  y {:.0}..{:.0}  x {:.0}..{:.0}\n", f.top, f.bottom, f.left, f.right);
         }
         out += "   top  left right size style | text\n";
         for l in &p.lines {

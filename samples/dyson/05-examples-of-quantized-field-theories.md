@@ -100,7 +100,7 @@ $$
 
 where $k^{2} = | \boldsymbol{k} |^{2} - k_{0}^{2}$. The integration with respect to $k_{1} k_{2} k_{3}$ is an ordinary real integral. That with respect to $k_{0}$ is a contour integral going along the real axis and _above_ the two poles at $k_{0} = \pm | \boldsymbol{k} |$.
 
-x x
+![Figure](images/fig-p048-1.png)
 
 For detailed calculations, see the Appendix below. This gives the correct behaviour of $D_{R}$ being zero for $x_{0} <$ 0. Similarly
 
@@ -116,9 +116,11 @@ $$
 
 with a contour $s$ as shown.
 
-_s_
+![Figure](images/fig-p048-2.png)
 
-x x <a id="p43"><sup>[p. 43]</sup></a> Evaluating the residues we have
+<a id="p43"><sup>[p. 43]</sup></a>
+
+Evaluating the residues we have
 
 $$
 D ( x ) = - \frac{i}{( 2 \pi )^{3}} \int \exp ( ik \cdot x ) \delta ( k^{2} ) \epsilon ( k ) d^{4} k \tag{210}
@@ -128,12 +130,14 @@ this being now an ordinary real integral.
 
 ## <a id="s-appendix"></a>Appendix
 
-_y_ Let us verify, e.g. (207). For $x_{0} <$ 0, we have to take the top path shown, otherwise the integrand blows up; this gives obviously 0.
+![Figure](images/fig-p049-1.png)
+
+Let us verify, e.g. (207). For $x_{0} <$ 0, we have to take the top path shown, otherwise the integrand blows up; this gives obviously 0.
 
 For $x_{0} >$ 0, we have to take the bottom path; then
 
 $$
-D_{R} ( x ) = \frac{1}{( 2 \pi )^{4}} \int_{+} \frac{e^{i \boldsymbol{k} \cdot \boldsymbol{x}} e^{- ik_{0} x_{0}}}{\boldsymbol{k}^{2} - k_{0}^{2}} d^{3} kdk_{0} \quad \frac{x}{x} \quad \frac{x}{x} \quad x x
+D_{R} ( x ) = \frac{1}{( 2 \pi )^{4}} \int_{+} \frac{e^{i \boldsymbol{k} \cdot \boldsymbol{x}} e^{- ik_{0} x_{0}}}{\boldsymbol{k}^{2} - k_{0}^{2}} d^{3} kdk_{0} \quad x x
 $$
 
 where $\boldsymbol{k}$ and $\boldsymbol{x}$ are 3 dimensional vectors.
@@ -1898,8 +1902,12 @@ $$
 The integral in the expression (370) is just the sum of the residues at the two points<sup><a id="fnref-49" href="#fn-49">49</a></sup>
 
 $$
-\begin{aligned} k_{0} &= - \sqrt{| \boldsymbol{k} |^{2} + \mu^{2}} \quad k_{0} = - q_{0} - i\delta_{0} - \sqrt{| \boldsymbol{k} + \boldsymbol{q} |^{2} + \mu^{2}} \\ & \quad 2 x \quad x \\ & \quad 1 x \quad x 3 \quad 4 \\ & \quad 1 \quad 2 \\ & \quad 3 \quad 4 \end{aligned} \tag{373}
+k_{0} = - \sqrt{| \boldsymbol{k} |^{2} + \mu^{2}} \quad k_{0} = - q_{0} - i\delta_{0} - \sqrt{| \boldsymbol{k} + \boldsymbol{q} |^{2} + \mu^{2}} \tag{373}
 $$
+
+![Figure](images/fig-p078-1.png)
+
+![Figure](images/fig-p078-2.png)
 
 <a id="p73"><sup>[p. 73]</sup></a>
 

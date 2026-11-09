@@ -145,6 +145,9 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
             }
             out.push('\n');
         }
+        Block::Figure { page, n, .. } => {
+            out.push_str(&format!("![Figure]({})\n\n", figure_file(*page, *n)));
+        }
         Block::PageNote { label, text } => {
             out.push_str(&format!("{label}. {}\n\n", render_inlines(text)));
         }
@@ -241,8 +244,42 @@ pub fn chapter_markdown(book: &Book, i: usize) -> String {
 
 /// Write one `<slug>.md` per chapter into `dir` (plus `unplaced-notes.md`
 /// if some notes could not be matched).
+/// Where a picture's image file goes, relative to the chapter files.
+fn figure_file(page: u32, n: usize) -> String {
+    format!("images/fig-p{page:03}-{n}.png")
+}
+
+/// Cut each picture out of its PDF page with pdftocairo (150 dpi PNG).
+/// Without pdftocairo or the PDF the Markdown still links them.
+fn write_figures(book: &Book, dir: &Path) {
+    let Some(pdf) = &book.source else { return };
+    for ch in &book.chapters {
+        for b in &ch.blocks {
+            let crate::Block::Figure { page, n, area } = &b.block else { continue };
+            let file = dir.join(figure_file(*page, *n));
+            if let Some(parent) = file.parent() {
+                let _ = std::fs::create_dir_all(parent);
+            }
+            // pdftohtml pixels are 1.5 × points; 150 dpi is 150/72 px per point
+            let (dpi, pad) = (150.0f32, 10.0f32);
+            let px = |v: f32| (v / 1.5 * dpi / 72.0).round().max(0.0) as i64;
+            let (x, y) = (px(area.left - pad), px(area.top - pad));
+            let (w, h) = (px(area.right - area.left + 2.0 * pad), px(area.bottom - area.top + 2.0 * pad));
+            let stem = file.with_extension("");
+            let _ = std::process::Command::new("pdftocairo")
+                .args(["-png", "-singlefile", "-r", "150"])
+                .args(["-f", &page.to_string(), "-l", &page.to_string()])
+                .args(["-x", &x.to_string(), "-y", &y.to_string(), "-W", &w.to_string(), "-H", &h.to_string()])
+                .arg(pdf)
+                .arg(&stem)
+                .status();
+        }
+    }
+}
+
 pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
     std::fs::create_dir_all(dir)?;
+    write_figures(book, dir);
     let mut out = Vec::new();
     for (i, ch) in book.chapters.iter().enumerate() {
         let p = dir.join(format!("{}.md", ch.slug));

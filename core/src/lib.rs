@@ -80,6 +80,9 @@ pub enum Block {
     Item { level: usize, text: Vec<Inline> },
     /// A footnote printed at the bottom of a page.
     PageNote { label: String, text: Vec<Inline> },
+    /// A picture: area `area` of PDF page `page`, the `n`th on that page,
+    /// written as an image file cut from the page.
+    Figure { page: u32, n: usize, area: layout::Figure },
 }
 
 /// A block plus the page it starts on (index into the page list).
@@ -116,6 +119,8 @@ pub struct Book {
     pub warnings: Vec<String>,
     /// Printed page number of every page (index = page index).
     pub labels: Vec<Option<String>>,
+    /// The PDF, to cut the pictures from when writing.
+    pub source: Option<std::path::PathBuf>,
 }
 
 /// The printed page label of a page-start anchor id ("p18" -> "18"), None
@@ -172,7 +177,9 @@ pub fn convert_pdf(path: &Path) -> Result<Book, String> {
 /// checking a few pages of a big book.
 pub fn convert_pdf_pages(path: &Path, pages: Option<(u32, u32)>) -> Result<Book, String> {
     let doc = layout::read_pdf(path, pages)?;
-    Ok(convert_doc(&doc))
+    let mut book = convert_doc(&doc);
+    book.source = Some(path.to_path_buf());
+    Ok(book)
 }
 
 /// Convert an already-read document.

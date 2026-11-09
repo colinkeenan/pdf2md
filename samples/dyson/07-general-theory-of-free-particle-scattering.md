@@ -196,23 +196,11 @@ in the corresponding normal constituents (504). We saw in the discussion followi
 
 The possible factor pairings of (496) are then represented by the following $G$’s:
 
-$$
-x_{1} \quad x_{1} \quad x_{1} \quad x_{1}
-$$
-
-$$
-{}_{G_{1}} x_{2} \quad x_{{}^{2} G_{2} \quad G_{3}} x_{{}^{2} \quad G_{4}} x_{2}
-$$
+![Figure](images/fig-p104-1.png)
 
 <a id="p99"><sup>[p. 99]</sup></a>
 
-$$
-x_{1} \quad x_{1} \quad x_{1} \quad x_{1}
-$$
-
-$$
-x_{G_{5}^{2} \quad G_{6}} x_{{}^{2} \quad G_{7}} x_{{}^{2} \quad G_{8}} x_{2}
-$$
+![Figure](images/fig-p105-1.png)
 
 Corresponding to these $G$’s there will be just 8 normal constituents of $\mathcal{O}$, which we call $\mathcal{O}_{1} \dots \mathcal{O}_{8}$. These normal constituents are, in their respective order:
 
@@ -536,21 +524,7 @@ where we used (521) and rule (4) on page 87.
 
 We now come to the calculation of $M_{2}$, the matrix element of (539) between the states (542). This is the main part of the problem. To do it we use the Feynman rules. There are just 9 graphs giving contributions to $M_{2}$, namely
 
-$$
-x \quad x_{1} \quad x_{1} \quad x_{1} \quad x_{2}
-$$
-
-_x_
-
-$$
-x_{1} \quad x_{2} \quad x_{2}
-$$
-
-$$
-x_{2} \quad x \quad x \quad x_{2} \quad x_{1} \quad x
-$$
-
-_G_$1$ _G_$2$ _G_$3$ _G_$4$ _G_$5$
+![Figure](images/fig-p112-1.png)
 
 and $\{ G_{6} ,G_{7} ,G_{8} ,G_{9} \}$ obtained by interchanging the labels $( x_{1} ,x_{2} )$ in $\{ G_{1} ,G_{2} ,G_{3} ,G_{4} \}$, respectively. We can see this in the following way: The process we are interested in calls for one external photon line and two external electron lines. Hence $A /^{e} ( x )$, one $\overline{\psi}$ and one $\psi$ must be unpaired. Therefore the two $A /$’s are always coupled. The free electron lines can be $\psi_{0} ,\psi_{1} ; \overline{\psi}_{1} ,\psi_{0} ; \overline{\psi}_{1} ,\psi_{1} ; \overline{\psi}_{1} ,\psi_{2}$ and four more cases obtained by the substitution 1 $\leftrightarrow$ 2. In each case, the rest is uniquely determined by the rules. The ninth case is the one with external electron lines $\overline{\psi}_{0} ,\psi_{0}$.
 
@@ -748,15 +722,7 @@ Now it is clear that the term $R^{\prime}$ in $M_{2 2}$ represents some kind of 
 
 $M_{2}^{\prime}$ is the sum of two contributions arising from the two graphs shown below.
 
-$$
-x_{1} \quad x_{1}
-$$
-
-_x x_
-
-$$
-G_{2}^{'} \quad G_{3}^{'}
-$$
+![Figure](images/fig-p116-1.png)
 
 From $G_{2}^{\prime}$ the contribution is (compare with (528))
 

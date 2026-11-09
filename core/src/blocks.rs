@@ -987,9 +987,20 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
 
         let mut prev_top: Option<f32> = None;
         let mut last_heading: Option<f32> = None; // top of a heading just written
+        // pictures go in where they stand on the page
+        let figs = &doc.pages[page.index].figures;
+        let number = doc.pages[page.index].number;
+        let mut fi = 0;
         let mut i = 0;
         while i < end {
             let l = &lines[i];
+            while fi < figs.len() && figs[fi].top <= l.top {
+                b.flush();
+                b.anchor_block();
+                b.push(Block::Figure { page: number, n: fi + 1, area: figs[fi] });
+                fi += 1;
+                prev_top = None;
+            }
             if let Some((_, j, cols)) = tables.iter().find(|t| t.0 == i).filter(|_| !b.index_mode) {
                 b.flush();
                 b.anchor_block();
@@ -1103,6 +1114,13 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
             });
             prev_top = Some(l.top);
             i += 1;
+        }
+        // pictures below the last line of text
+        while fi < figs.len() {
+            b.flush();
+            b.anchor_block();
+            b.push(Block::Figure { page: number, n: fi + 1, area: figs[fi] });
+            fi += 1;
         }
         // An empty page still gets its anchor.
         if let Some(a) = b.anchor.take() {

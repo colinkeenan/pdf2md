@@ -114,13 +114,11 @@ $$
 
 The contour of integration here is along the real axis, below the pole at $k_{0} = -| \boldsymbol{k} |$ and above the pole at $k_{0}$ = +$| \boldsymbol{k} |$, in the $k_{0}$ plane:
 
-x x
+![Figure](images/fig-p089-1.png)
 
 We can see this using (429), (207), (208), and comparing (210), (226) and (209) one also knows that
 
-**C**
-
-with x x
+![Figure](images/fig-p089-2.png)
 
 (430) is always known as a “Feynman integral”. We can also write
 
