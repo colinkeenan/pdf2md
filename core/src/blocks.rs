@@ -413,6 +413,35 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
                     out.push(Inline::PageLink(n));
                 }
             }
+            // a web link (before bold/italic: a bold address is a link too)
+            _ if s.url.is_some() && s.url_text.as_deref().is_some_and(|t| t.chars().any(char::is_alphanumeric)) => {
+                let href = s.url.clone().unwrap_or_default();
+                let link = s.url_text.clone().unwrap_or_default();
+                let link = link.trim();
+                // words of the span outside the link stay plain text
+                let (before, after) = match s.text.find(link) {
+                    Some(k) => (&s.text[..k], &s.text[k + link.len()..]),
+                    None => ("", ""),
+                };
+                let continues = matches!(out.last(), Some(Inline::Link { href: h, .. }) if *h == href) && before.trim().is_empty();
+                if continues {
+                    // the same address over several pieces (a line break inside it)
+                    if let Some(Inline::Link { text: t, .. }) = out.last_mut() {
+                        t.push_str(&crate::emit::escape_text(link));
+                    }
+                } else {
+                    if space {
+                        push_text(&mut out, " ");
+                    }
+                    if !before.trim().is_empty() {
+                        push_text(&mut out, before);
+                    }
+                    out.push(Inline::Link { text: crate::emit::escape_text(link), href });
+                }
+                if !after.is_empty() {
+                    push_text(&mut out, after);
+                }
+            }
             _ if s.bold || crate::layout::is_bold_font(doc.family(s)) => {
                 // bold words: one `**..**` piece for a whole bold phrase
                 if let Some(Inline::Strong(e)) = out.last_mut() {
@@ -447,19 +476,6 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
                 }
                 let area = crate::layout::Figure { left: s.left, right: s.right(), top: s.top, bottom: s.bottom() };
                 out.push(Inline::Picture { page: s.picture.unwrap_or(0), area });
-            }
-            _ if s.url.is_some() => {
-                // a web link: keep its address
-                if space {
-                    push_text(&mut out, " ");
-                }
-                let text = s.text.trim();
-                let href = s.url.clone().unwrap_or_default();
-                // the same link split over several pieces: one link
-                match out.last_mut() {
-                    Some(Inline::Link { text: t, href: h }) if *h == href && !space => t.push_str(&crate::emit::escape_text(text)),
-                    _ => out.push(Inline::Link { text: crate::emit::escape_text(text), href }),
-                }
             }
             _ => {
                 if space {
@@ -873,6 +889,8 @@ struct Prev {
     top: f32,
     page: usize,
     ends_sentence: bool,
+    /// the web address the line ends in (an address broken over two lines)
+    last_url: Option<String>,
 }
 
 struct Builder<'a> {
@@ -925,6 +943,10 @@ impl Builder<'_> {
     fn starts_para(&self, l: &Line, next: Option<&Line>, pi: usize) -> bool {
         let st = self.st;
         let Some(p) = &self.prev else { return true };
+        // the rest of a web address broken over two lines
+        if p.last_url.is_some() && l.spans.first().and_then(|s| s.url.as_ref()) == p.last_url.as_ref() {
+            return false;
+        }
         if starts_entry(l) {
             return true;
         }
@@ -950,6 +972,14 @@ impl Builder<'_> {
 
     /// Add a line of prose to the open paragraph, repairing hyphenation.
     fn join(&mut self, inl: Vec<Inline>) {
+        // a web address continued on this line: one link, nothing between
+        if let (Some(Inline::Link { text: a, href: ha }), Some(Inline::Link { text: b, href: hb })) = (self.para.last_mut(), inl.first()) {
+            if ha == hb && (ha.starts_with("http") || ha.starts_with("mailto:")) {
+                a.push_str(b);
+                self.para.extend(inl.into_iter().skip(1));
+                return;
+            }
+        }
         if let (Some(Inline::Text(a)), Some(Inline::Text(b))) = (self.para.last_mut(), inl.first()) {
             let a_word: String = a
                 .trim_end_matches('-')
@@ -1253,6 +1283,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 top: l.top,
                 page: pi,
                 ends_sentence: ends_sentence(&plain_text(l)),
+                last_url: l.spans.last().and_then(|s| s.url.clone()),
             });
             prev_top = Some(l.top);
             i += 1;

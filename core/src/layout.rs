@@ -64,8 +64,10 @@ pub struct Span {
     /// The PDF page this text links to (an internal link, as in a linked
     /// table of contents or index).
     pub link: Option<u32>,
-    /// A web address this text links to.
+    /// A web address this text links to, and the words of the link itself
+    /// (the span can hold more text than the link: "…org/. So then").
     pub url: Option<String>,
+    pub url_text: Option<String>,
     /// Where on the page `link` goes, in pdftohtml's pixels from the top
     /// (read from the PDF's link annotation; see [`crate::annots`]).
     pub link_top: Option<f32>,
@@ -625,6 +627,7 @@ fn place_images(doc: &mut Doc) {
                 tex,
                 link: None,
                 url: None,
+                url_text: None,
                 link_top: None,
                 image_key: Some(crate::ocr::key(&im.png_base64)),
             };
@@ -1175,6 +1178,7 @@ fn insert_delims(doc: &mut Doc, delims: Vec<Vec<Delim>>) {
                 tex: None,
                 link: None,
                 url: None,
+                url_text: None,
                 link_top: None,
                 picture: None,
                 image_key: None,
@@ -1454,6 +1458,10 @@ pub fn parse_xml(xml: &str) -> Result<Doc, String> {
                         .and_then(|a| a.attribute("href"))
                         .filter(|h| h.starts_with("http://") || h.starts_with("https://") || h.starts_with("mailto:"))
                         .map(str::to_string),
+                    url_text: n
+                        .descendants()
+                        .find(|d| d.has_tag_name("a"))
+                        .map(|a| clean_text(&a.descendants().filter(|d| d.is_text()).filter_map(|d| d.text()).collect::<String>())),
                     link_top: None,
                     picture: None,
                     image_key: None,
