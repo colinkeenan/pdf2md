@@ -108,7 +108,34 @@ uv pip install --python .venv/bin/python texify "transformers==4.45.2"
 
 (texify 0.2.1 does not work with newer transformers.)
 
-**Your corrections are kept.** Every displayed equation read from a picture has an invisible marker naming its picture (`<!-- pdf2md:eq … -->`). Fix an equation's LaTeX in a chapter file or in `book.md`; the next conversion of that book (into the same folder, or with Replace in the app) first collects the equations you changed and keeps each one in `~/.local/share/pdf2md/corrections/`, and uses it instead of the recognizer's reading from then on.
+**Your corrections are kept.** Every equation read from a picture, displayed or inside a sentence, has an invisible marker naming its picture (`<!-- pdf2md:eq … -->`). Fix an equation's LaTeX in a chapter file or in `book.md`; the next conversion of that book (into the same folder, or with Replace in the app) first collects the equations you changed and keeps each one in `~/.local/share/pdf2md/corrections/`, and uses it instead of the recognizer's reading from then on.
+
+## Your notes and fixes
+
+Converting a book again keeps what you added, as long as it is marked:
+
+* **Your own notes**: a collapsible note, opened with a click,
+
+  ```markdown
+  <details class="mine">
+  <summary>✎ My note: why the sign flips</summary>
+
+  Your explanation, with math like $[A,B]=-[B,A]$.
+
+  </details>
+  ```
+
+  or an alert box that is always visible, e.g. for where you think the book is wrong:
+
+  ```markdown
+  > [!WARNING]
+  > I think the factor should be $\frac12$.
+  ```
+
+  Each goes back right after the paragraph or equation it followed (found by that block's first words, else by the nearest anchor above it). A note whose place is gone ends up at the end of its chapter under "Your notes whose place was not found", never dropped.
+* **Fixes to the converted text** (the conversion got the book's words wrong): `<span class="fix" data-was="as converted">as in the book</span>`. It reads as normal text and is redone in the same paragraph. (Equations need no marking: just edit them.)
+
+Notes and fixes are collected from the chapter files and from `book.md` (each counted once), and a copy is kept in `~/.local/share/pdf2md/notes/<book folder>.md`. Other edits to the text are not kept.
 
 **Equations to check.** Each equation is read a second time from the picture enlarged; where the two readings are different formulas (formatting aside), it is listed in `check-equations.md` in the book folder, biggest differences first, with links. A corrected equation drops off the list. To use another Python, set `PDF2MD_OCR_PYTHON`. Without the model, equation images stay pictures. The recognizer is good but not perfect: check equations you rely on against the book.
 

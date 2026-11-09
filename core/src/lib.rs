@@ -25,6 +25,7 @@ pub mod notes;
 pub mod ocr;
 pub mod pages;
 pub mod structure;
+pub mod userdata;
 
 use std::path::Path;
 
@@ -61,6 +62,9 @@ pub enum Inline {
     /// A small picture inside the text (an equation image that could not be
     /// read), cut from this PDF page at this place.
     Picture { page: u32, area: layout::Figure },
+    /// Invisible: the formula right after it was read from this picture
+    /// (written as a comment, so a hand correction of it is kept).
+    Source(String),
     /// Invisible: the page number just before it links to this PDF page
     /// (a linked index). Used by `links::link_index`, never written out.
     PageLink(u32),
@@ -138,6 +142,9 @@ pub struct Book {
     pub source: Option<std::path::PathBuf>,
     /// The book's title (for the top of book.md).
     pub title: String,
+    /// The reader's notes and prose fixes from an earlier conversion, put
+    /// back when the book is written (see `userdata`).
+    pub user: userdata::UserData,
 }
 
 /// The equation numbers of a displayed equation: its tag, and the \tag{…}

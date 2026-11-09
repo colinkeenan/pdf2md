@@ -75,11 +75,21 @@ pub fn collect_corrections(dir: &std::path::Path) -> usize {
             rest = &rest[i + 15..];
             let Some(k) = rest.get(..16).filter(|k| k.chars().all(|c| c.is_ascii_hexdigit())) else { continue };
             let k = k.to_string();
-            let Some(start) = rest.find("$$\n") else { break };
-            let body = &rest[start + 3..];
-            let Some(end) = body.find("\n$$") else { break };
-            let latex = strip_numbers(&body[..end]);
-            rest = &body[end..];
+            let after = rest.get(20..).unwrap_or("");
+            let latex = if let Some(inline) = after.strip_prefix('$') {
+                // a formula inside a sentence: $…$ right after the marker
+                let Some(end) = inline.find('$') else { break };
+                let latex = strip_numbers(&inline[..end]);
+                rest = &inline[end..];
+                latex
+            } else {
+                let Some(start) = rest.find("$$\n") else { break };
+                let body = &rest[start + 3..];
+                let Some(end) = body.find("\n$$") else { break };
+                let latex = strip_numbers(&body[..end]);
+                rest = &body[end..];
+                latex
+            };
             let written = read_correction(&k).or_else(|| cache_dir().and_then(|d| read_cached(&d, &k)).and_then(|r| match r {
                 Reading::Latex(t) => Some(t),
                 _ => None,

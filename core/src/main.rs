@@ -18,10 +18,17 @@ fn main() {
     if kept > 0 {
         eprintln!("Kept {kept} hand-corrected equation(s) from the earlier conversion.");
     }
-    let book = convert_pdf_pages(Path::new(&args[0]), range).unwrap_or_else(|e| {
+    // and the reader's notes and prose fixes
+    let user = pdf2md_core::userdata::collect(Path::new(&args[1]));
+    pdf2md_core::userdata::backup(&user, Path::new(&args[1]));
+    if !user.is_empty() {
+        eprintln!("Kept {} note(s) and {} fix(es) from the earlier conversion.", user.notes.len(), user.fixes.len());
+    }
+    let mut book = convert_pdf_pages(Path::new(&args[0]), range).unwrap_or_else(|e| {
         eprintln!("error reading PDF: {e}");
         process::exit(1)
     });
+    book.user = user;
     match write_book(&book, Path::new(&args[1])) {
         Ok(files) => {
             for f in &files {

@@ -124,7 +124,12 @@ fn run(input: &Path, output: &Path, replace: bool) -> Result<String, String> {
     let mut dest = book_dir(input, output);
     // equations corrected by hand in the earlier conversion are kept
     let kept = pdf2md_core::ocr::collect_corrections(&dest);
-    let book = convert_pdf(input)?;
+    // and the reader's notes and prose fixes
+    let user = pdf2md_core::userdata::collect(&dest);
+    pdf2md_core::userdata::backup(&user, &dest);
+    let (notes, fixes) = (user.notes.len(), user.fixes.len());
+    let mut book = convert_pdf(input)?;
+    book.user = user;
     // only touch the old folder once the new book is ready
     if dest.exists() {
         if replace {
@@ -138,6 +143,9 @@ fn run(input: &Path, output: &Path, replace: bool) -> Result<String, String> {
     let mut msg = format!("Wrote {} files to {}", files.len(), dest.display());
     if kept > 0 {
         msg.push_str(&format!("; kept {kept} hand-corrected equation(s)"));
+    }
+    if notes + fixes > 0 {
+        msg.push_str(&format!("; kept {notes} note(s) and {fixes} fix(es)"));
     }
     if !book.warnings.is_empty() {
         msg.push_str(&format!(" ({} warnings)", book.warnings.len()));

@@ -98,6 +98,7 @@ pub fn render_inlines(inl: &[Inline]) -> String {
                 s.push_str(&format!("<a id=\"{id}\">{t}</a>"));
             }
             Inline::PageLink(_) => {}
+            Inline::Source(k) => s.push_str(&format!("<!-- pdf2md:eq {k} -->")),
             Inline::Picture { page, area } => s.push_str(&format!("![equation]({})", picture_file(*page, area))),
             Inline::Break => {
                 let trimmed = s.trim_end().len();
@@ -387,6 +388,18 @@ fn figure_file(page: u32, n: usize) -> String {
 
 /// Cut each picture out of its PDF page with pdftocairo (150 dpi PNG).
 /// Without pdftocairo or the PDF the Markdown still links them.
+/// Notes whose place was not found again: at the end, never dropped.
+fn lost_notes(lost: &[crate::userdata::Note]) -> String {
+    if lost.is_empty() {
+        return String::new();
+    }
+    let mut s = String::from("\n---\n\n## Your notes whose place was not found\n\nThe text these followed changed in this conversion; move each one back where it belongs.\n\n");
+    for n in lost {
+        s.push_str(&format!("{}\n\n", n.text));
+    }
+    s
+}
+
 /// The equations worth checking against the book: read from their image
 /// as a different formula a second time, not corrected since. Links with
 /// each equation's number and printed page, biggest differences first,
@@ -495,7 +508,11 @@ pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
     let mut out = Vec::new();
     for (i, ch) in book.chapters.iter().enumerate() {
         let p = dir.join(format!("{}.md", ch.slug));
-        std::fs::write(&p, chapter_markdown(book, i))?;
+        let mut s = chapter_markdown(book, i);
+        // the reader's notes and fixes from the earlier conversion
+        let lost = crate::userdata::apply(&mut s, &book.user, Some(&ch.slug));
+        s.push_str(&lost_notes(&lost));
+        std::fs::write(&p, s)?;
         out.push(p);
     }
     if let Some(list) = check_list(book) {
@@ -505,7 +522,10 @@ pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
     }
     if book.chapters.len() > 1 {
         let p = dir.join("book.md");
-        std::fs::write(&p, book_markdown(book))?;
+        let mut s = book_markdown(book);
+        let lost = crate::userdata::apply(&mut s, &book.user, None);
+        s.push_str(&lost_notes(&lost));
+        std::fs::write(&p, s)?;
         out.push(p);
     }
     if !book.unplaced.is_empty() {

@@ -393,6 +393,12 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
                     push_text(&mut out, " ");
                 }
                 if !t.is_empty() {
+                    // one equation picture: say which (a correction is kept)
+                    if let [one] = &spans[i..j] {
+                        if let Some(k) = &one.image_key {
+                            out.push(Inline::Source(k.clone()));
+                        }
+                    }
                     out.push(Inline::Math(t));
                 }
                 prev_right = Some(spans[j - 1].right());
