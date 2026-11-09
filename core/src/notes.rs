@@ -129,6 +129,7 @@ fn blocks_text(blocks: &[Block]) -> String {
 /// Remove the Notes and References chapters, link everything, and return
 /// the keys of the removed chapter titles (their TOC entries are dropped).
 pub fn attach(chapters: &mut Vec<Chapter>, book: &mut Book) -> Vec<String> {
+    let pdf = book.pdf_pages.clone();
     let mut removed = Vec::new();
     let mut notes: Vec<Note> = Vec::new();
     let mut refs: Vec<(u32, Vec<Block>)> = Vec::new();
@@ -169,11 +170,28 @@ pub fn attach(chapters: &mut Vec<Chapter>, book: &mut Book) -> Vec<String> {
         let mut count = 0usize;
         for b in ch.blocks.iter_mut() {
             let page = b.page;
-            let Block::Para(inl) = &mut b.block else { continue };
-            for x in inl.iter_mut() {
-                let Inline::Sup(s) = x else { continue };
+            // (a marker can sit in a section heading too)
+            let (Block::Para(inl) | Block::Heading { text: inl, .. }) = &mut b.block else { continue };
+            for k in 0..inl.len() {
+                let Inline::Sup(s) = &inl[k] else { continue };
                 let s = s.clone();
-                let Some(list) = page_notes.get_mut(&page) else { continue };
+                // the note on the marker's own page, or on the page the
+                // marker links to (notes gathered at the end of the chapter)
+                let linked = match inl.get(k + 1) {
+                    Some(Inline::PageLink(p)) => Some(*p),
+                    _ => None,
+                };
+                let same_page = page_notes.get(&page).is_some_and(|l| l.iter().any(|e| e.0 == s && !e.2));
+                let note_page = if same_page {
+                    page
+                } else if let Some(p) = linked {
+                    let Some(q) = page_notes.iter().find(|(q, l)| pdf.get(**q) == Some(&p) && l.iter().any(|e| e.0 == s && !e.2)).map(|(q, _)| *q) else { continue };
+                    q
+                } else {
+                    continue;
+                };
+                let Some(list) = page_notes.get_mut(&note_page) else { continue };
+                let x = &mut inl[k];
                 if let Some(entry) = list.iter_mut().find(|e| e.0 == s && !e.2) {
                     entry.2 = true;
                     count += 1;

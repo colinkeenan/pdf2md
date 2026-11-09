@@ -389,7 +389,14 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
                 i = j;
                 continue;
             }
-            K::Marker => out.push(Inline::Sup(s.text.trim().to_string())),
+            K::Marker => {
+                out.push(Inline::Sup(s.text.trim().to_string()));
+                // a marker that links to its note's page (an ebook's notes
+                // at the end of the chapter)
+                if let Some(n) = s.link {
+                    out.push(Inline::PageLink(n));
+                }
+            }
             _ if s.bold || crate::layout::is_bold_font(doc.family(s)) => {
                 // bold words: one `**..**` piece for a whole bold phrase
                 if let Some(Inline::Strong(e)) = out.last_mut() {
@@ -732,16 +739,27 @@ fn heading_size(
 /// Footnotes at the bottom of a page: the last lines, in a smaller font,
 /// starting with a marker. Returns the index where they start.
 fn page_notes_start(doc: &Doc, lines: &[Line], st: &Stats) -> usize {
+    // a line's type size, not counting equation images (given body size)
+    let text_size = |l: &Line| {
+        l.spans.iter().filter(|s| s.tex.is_none()).map(|s| doc.size_of(s)).fold(0.0f32, f32::max).max(if l.spans.iter().all(|s| s.tex.is_some()) { l.size } else { 0.0 })
+    };
     let mut k = lines.len();
-    while k > 0 && lines[k - 1].size <= 0.9 * st.body {
+    while k > 0 && text_size(&lines[k - 1]) <= 0.9 * st.body {
         k -= 1;
+    }
+    // a whole page of small type: notes continued from the page before
+    if k == 0 && lines.len() >= 3 {
+        return 0;
     }
     let ok = lines.get(k).is_some_and(|l| {
         let first = l.spans.first().map(|s| s.text.trim().to_string()).unwrap_or_default();
         let marker = !first.is_empty()
             && first.chars().all(|c| c.is_ascii_digit() || "*†‡§¶".contains(c));
         let (_, words, _) = math_info(doc, l, st);
-        marker && words >= 2
+        // (the note's number can stand raised on a line of its own, its
+        // text on the line just below)
+        let lone = l.spans.len() == 1 && lines.get(k + 1).is_some_and(|n| math_info(doc, n, st).1 >= 2);
+        marker && (words >= 2 || lone)
     });
     if ok {
         k
@@ -1183,11 +1201,21 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
             }
         }
         // Footnotes at the bottom of the page.
+        let is_marker = |t: &str| !t.is_empty() && t.chars().all(|c| c.is_ascii_digit() || "*†‡§¶".contains(c));
+        let mut lone_label: Option<String> = None;
         for l in &lines[end..] {
             let inl = line_inlines(doc, l, st);
             let first = l.spans.first().map(|s| s.text.trim().to_string()).unwrap_or_default();
-            let is_start = !first.is_empty()
-                && first.chars().all(|c| c.is_ascii_digit() || "*†‡§¶".contains(c));
+            // a note number alone on its line labels the text below it
+            if l.spans.len() == 1 && is_marker(&first) {
+                lone_label = Some(first);
+                continue;
+            }
+            if let Some(label) = lone_label.take() {
+                b.out.push(Blk { block: Block::PageNote { label, text: tidy(inl) }, page: pi, centered: false });
+                continue;
+            }
+            let is_start = is_marker(&first);
             if is_start {
                 // drop the marker itself from the text
                 let mut text = inl;
