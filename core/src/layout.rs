@@ -300,9 +300,11 @@ pub fn read_pdf(path: &Path, pages: Option<(u32, u32)>) -> Result<Doc, String> {
             for (page, imgs) in doc.pages.iter_mut().zip(parse_svg_images(&svg)) {
                 page.images = imgs;
             }
+            // labels of drawn pictures (text pieces); an embedded image has
+            // its labels in its pixels, so text around it is never one
+            take_figure_labels(&mut doc);
             place_images(&mut doc);
             join_split_equations(&mut doc);
-            take_figure_labels(&mut doc);
         }
     }
     Ok(doc)
