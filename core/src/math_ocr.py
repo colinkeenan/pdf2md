@@ -133,6 +133,8 @@ DELIMS = set("()[]|./") | {
 
 
 def fix(t: str) -> str:
+    # the equation's number is text beside the image: a \tag here is invented
+    t = re.sub(r"\\(tag\*?|label)\{[^{}]*\}", "", t).strip()
     for pat, rep in SUBSTITUTE:
         t = pat.sub(rep, t)
     # \bigg{(} -> \bigg(  and  \bigg{ -> \bigg\{  (a size needs a delimiter)
@@ -214,6 +216,17 @@ def rows(img: Image.Image, min_gap: int = 5, min_height: int = 10):
         else:
             merged.append((a, b))
     return [img.crop((0, a, w, b)) for a, b in merged]
+
+
+def line_breaks(t: str) -> int:
+    return t.count("\\\\")
+
+
+def run_together(img, t: str) -> bool:
+    """An image of three or more lines read as far fewer lines: the model
+    ran them together (it was trained on single equations)."""
+    n = len(rows(img))
+    return n >= 3 and line_breaks(t) + 1 < (n + 1) // 2
 
 
 def read_one(img, model, processor, batch_inference):
@@ -333,7 +346,7 @@ def main():
         texts = batch_inference([img for _, img in part], model, processor)
         for (f, img), t in zip(part, texts):
             t = fix(clean(t))
-            if plausible(t) and not CODE_HINT.search(t):
+            if plausible(t) and not CODE_HINT.search(t) and not run_together(img, t):
                 (dst / f"{f.stem}.tex").write_text(t + "\n")
             else:
                 doubtful.append((f, img))
@@ -346,6 +359,12 @@ def main():
         if code is not None:
             (dst / f"{f.stem}.tex").write_text("%CODE\n" + code + "\n")
             continue
+        # several lines read as one: line by line
+        if len(rows(img)) >= 3:
+            t = read_by_rows(img, model, processor, batch_inference)
+            if t is not None:
+                (dst / f"{f.stem}.tex").write_text(t + "\n")
+                continue
         answer = "%UNREADABLE"
         for temperature in (0.2, 0.4, 0.6):
             t = fix(clean(batch_inference([img], model, processor, temperature=temperature, max_tokens=768)[0]))

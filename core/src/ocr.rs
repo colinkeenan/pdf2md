@@ -69,8 +69,24 @@ fn read_cached(dir: &std::path::Path, k: &str) -> Option<Reading> {
     } else if t.is_empty() {
         None
     } else {
-        Some(Reading::Latex(t.to_string()))
+        Some(Reading::Latex(strip_numbers(t)))
     }
+}
+
+/// An equation image never holds the equation's number (that is text
+/// beside it); a \tag{…} or \label{…} in a reading is the model's
+/// invention, and would clash with the real number.
+fn strip_numbers(t: &str) -> String {
+    let mut out = String::with_capacity(t.len());
+    let mut rest = t;
+    while let Some(i) = ["\\tag*{", "\\tag{", "\\label{"].iter().filter_map(|p| rest.find(p).map(|i| (i, p.len()))).min() {
+        let (i, len) = i;
+        out.push_str(&rest[..i]);
+        let after = &rest[i + len..];
+        rest = after.find('}').map_or("", |j| &after[j + 1..]);
+    }
+    out.push_str(rest);
+    out.trim().to_string()
 }
 
 /// Read every image (given as base64 PNG), from the cache or by running
@@ -157,6 +173,13 @@ pub fn base64_decode(s: &str) -> Option<Vec<u8>> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn strips_invented_numbers() {
+        assert_eq!(strip_numbers("a=b \\tag{1}"), "a=b");
+        assert_eq!(strip_numbers("\\label{x} a \\\\ b \\tag*{2}"), "a \\\\ b");
+        assert_eq!(strip_numbers("x^{2}"), "x^{2}");
+    }
 
     #[test]
     fn decodes_base64() {
