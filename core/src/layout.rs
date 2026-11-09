@@ -72,6 +72,8 @@ pub struct Span {
     /// An equation image that could not be read, inside a line of text: it
     /// stays a small picture in the sentence (the PDF page it is on).
     pub picture: Option<u32>,
+    /// The equation image this span was read from (its cache key).
+    pub image_key: Option<String>,
 }
 
 impl Span {
@@ -624,6 +626,7 @@ fn place_images(doc: &mut Doc) {
                 link: None,
                 url: None,
                 link_top: None,
+                image_key: Some(crate::ocr::key(&im.png_base64)),
             };
             // the line it shares the most height with, else a line of its own
             let overlap = |l: &Line| (im.bottom.min(l.top + l.size) - im.top.max(l.top)).max(0.0);
@@ -1174,6 +1177,7 @@ fn insert_delims(doc: &mut Doc, delims: Vec<Vec<Delim>>) {
                 url: None,
                 link_top: None,
                 picture: None,
+                image_key: None,
             };
             // the line whose centre is nearest the bracket's centre
             let c = (d.top + d.bottom) / 2.0;
@@ -1452,6 +1456,7 @@ pub fn parse_xml(xml: &str) -> Result<Doc, String> {
                         .map(str::to_string),
                     link_top: None,
                     picture: None,
+                    image_key: None,
                 });
             }
         }

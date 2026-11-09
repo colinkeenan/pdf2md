@@ -896,7 +896,7 @@ pub fn link_equations(chapters: &mut [Chapter]) {
     let mut home: HashMap<String, (String, String)> = HashMap::new();
     for ch in chapters.iter() {
         for b in &ch.blocks {
-            if let Block::Equation { latex, tag } = &b.block {
+            if let Block::Equation { latex, tag, .. } = &b.block {
                 for t in crate::equation_numbers(latex, tag.as_deref()) {
                     home.entry(t.clone()).or_insert_with(|| (ch.slug.clone(), t));
                 }

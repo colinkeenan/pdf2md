@@ -130,10 +130,16 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
                 out.push_str("\n\n");
             }
         }
-        Block::Equation { latex, tag } => {
+        Block::Equation { latex, tag, source } => {
             // an invisible anchor per equation number, for references to it
             for t in crate::equation_numbers(latex, tag.as_deref()) {
                 out.push_str(&format!("<a id=\"{}\"></a>\n\n", crate::equation_id(&t)));
+            }
+            // which equation image this is (invisible): a hand correction
+            // of the LaTeX below is kept for the next conversion; the anchor
+            // is for the list of equations to check
+            if let Some(k) = source {
+                out.push_str(&format!("<a id=\"img-{k}\"></a>\n<!-- pdf2md:eq {k} -->\n"));
             }
             if latex.is_empty() {
                 // only an equation number survived
@@ -381,6 +387,61 @@ fn figure_file(page: u32, n: usize) -> String {
 
 /// Cut each picture out of its PDF page with pdftocairo (150 dpi PNG).
 /// Without pdftocairo or the PDF the Markdown still links them.
+/// The equations worth checking against the book: read from their image
+/// as a different formula a second time, not corrected since. Links with
+/// each equation's number and printed page, biggest differences first,
+/// each group in book order. None if there are none.
+fn check_list(book: &Book) -> Option<String> {
+    // (symbols that differ, line of the list)
+    let mut items: Vec<(usize, String)> = Vec::new();
+    for ch in &book.chapters {
+        let mut page: Option<String> = None;
+        let see = |id: &str, page: &mut Option<String>| {
+            if let Some(l) = page_label(id) {
+                *page = Some(format!("{}p. {l}", if crate::page_is_approx(id) { "≈" } else { "" }));
+            }
+        };
+        for b in &ch.blocks {
+            match &b.block {
+                Block::Anchor(id) => see(id, &mut page),
+                Block::Para(inl) => {
+                    for x in inl {
+                        if let Inline::Anchor(id) = x {
+                            see(id, &mut page);
+                        }
+                    }
+                }
+                Block::Equation { tag, source: Some(k), .. } => {
+                    if let Some(n) = crate::ocr::needs_check(k) {
+                        let name = tag.as_ref().map_or("equation".to_string(), |t| format!("({t})"));
+                        let at = page.as_ref().map(|p| format!(", {p}")).unwrap_or_default();
+                        let symbols = if n == 1 { "1 symbol".to_string() } else { format!("{n} symbols") };
+                        items.push((n, format!("- [{name}]({}.md#img-{k}) — {}{at} — {symbols} differ", ch.slug, ch.title)));
+                    }
+                }
+                _ => {}
+            }
+        }
+    }
+    if items.is_empty() {
+        return None;
+    }
+    let group = |title: &str, keep: &dyn Fn(usize) -> bool| -> String {
+        let lines: Vec<&str> = items.iter().filter(|(n, _)| keep(*n)).map(|(_, l)| l.as_str()).collect();
+        if lines.is_empty() {
+            String::new()
+        } else {
+            format!("## {title} ({})\n\n{}\n\n", lines.len(), lines.join("\n"))
+        }
+    };
+    Some(format!(
+        "# Equations to check\n\nThese equations were read from their pictures as a different formula on a second reading (formatting aside), so compare them with the book. The bigger the difference, the likelier the reading is wrong. Correct one in the chapter file (or in book.md); the next conversion keeps your correction and drops it from this list.\n\n{}{}{}",
+        group("Big differences (more than 10 symbols)", &|n| n > 10),
+        group("Medium differences (4–10 symbols)", &|n| (4..=10).contains(&n)),
+        group("Small differences (1–3 symbols)", &|n| n <= 3),
+    ))
+}
+
 /// Where a small picture inside the text goes: named by page and place.
 fn picture_file(page: u32, area: &crate::layout::Figure) -> String {
     format!("images/eq-p{page:03}-{:.0}-{:.0}.png", area.left, area.top)
@@ -435,6 +496,11 @@ pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
     for (i, ch) in book.chapters.iter().enumerate() {
         let p = dir.join(format!("{}.md", ch.slug));
         std::fs::write(&p, chapter_markdown(book, i))?;
+        out.push(p);
+    }
+    if let Some(list) = check_list(book) {
+        let p = dir.join("check-equations.md");
+        std::fs::write(&p, list)?;
         out.push(p);
     }
     if book.chapters.len() > 1 {

@@ -81,7 +81,9 @@ pub enum Block {
     /// `level` 0 = not decided yet (see `structure` and `links`).
     Heading { level: usize, size: f32, id: String, text: Vec<Inline> },
     Para(Vec<Inline>),
-    Equation { latex: String, tag: Option<String> },
+    /// `source`: the equation image it was read from, when it is exactly
+    /// one (so a hand correction of it can be kept; see `ocr`).
+    Equation { latex: String, tag: Option<String>, source: Option<String> },
     Anchor(String),
     Toc(Vec<TocEntry>),
     /// A bulleted line: index entries and the linked TOC.

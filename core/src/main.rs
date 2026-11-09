@@ -13,6 +13,11 @@ fn main() {
         process::exit(2);
     }
     let range = page_range(&args[2..]);
+    // equations corrected by hand in an earlier conversion are kept
+    let kept = pdf2md_core::ocr::collect_corrections(Path::new(&args[1]));
+    if kept > 0 {
+        eprintln!("Kept {kept} hand-corrected equation(s) from the earlier conversion.");
+    }
     let book = convert_pdf_pages(Path::new(&args[0]), range).unwrap_or_else(|e| {
         eprintln!("error reading PDF: {e}");
         process::exit(1)

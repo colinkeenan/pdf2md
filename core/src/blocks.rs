@@ -1132,7 +1132,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
             if let Some((_, j, cols)) = tables.iter().find(|t| t.0 == i).filter(|_| !b.index_mode) {
                 b.flush();
                 b.anchor_block();
-                b.push(Block::Equation { latex: table_latex(doc, &lines[i..*j], cols), tag: None });
+                b.push(Block::Equation { latex: table_latex(doc, &lines[i..*j], cols), tag: None, source: None });
                 prev_top = Some(lines[j - 1].top);
                 last_heading = None;
                 i = *j;
@@ -1160,9 +1160,17 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                     .filter(|r| r.left >= x0 - 5.0 && r.right <= x1 + 5.0 && r.top >= y0 - 5.0 && r.bottom <= y1 + 5.0)
                     .copied()
                     .collect();
-                for (latex, tag) in mathtex::display(spans, &bars, st.right, st.body) {
+                // one equation image (and its number): remember which
+                let parts: Vec<&crate::layout::Span> = lines[i..j].iter().flat_map(|l| &l.spans).filter(|s| mathtex::tag_of(&s.text).is_none() && (s.tex.is_some() || !s.text.trim().is_empty())).collect();
+                let source = match parts.as_slice() {
+                    [one] => one.image_key.clone(),
+                    _ => None,
+                };
+                let eqs = mathtex::display(spans, &bars, st.right, st.body);
+                let single = eqs.len() == 1;
+                for (latex, tag) in eqs {
                     if !latex.is_empty() || tag.is_some() {
-                        b.push(Block::Equation { latex, tag });
+                        b.push(Block::Equation { latex, tag, source: if single { source.clone() } else { None } });
                     }
                 }
                 prev_top = Some(lines[j - 1].top);

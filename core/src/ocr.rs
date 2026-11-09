@@ -38,6 +38,70 @@ pub fn key(png_base64: &str) -> String {
     format!("{h:016x}")
 }
 
+/// Hand corrections of equations, by image: `~/.local/share/pdf2md/corrections/`
+/// (apart from the cache, so clearing the cache never loses them).
+fn corrections_dir() -> Option<PathBuf> {
+    let base = std::env::var_os("XDG_DATA_HOME")
+        .map(PathBuf::from)
+        .or_else(|| std::env::var_os("HOME").map(|h| PathBuf::from(h).join(".local/share")))?;
+    Some(base.join("pdf2md").join("corrections"))
+}
+
+fn read_correction(k: &str) -> Option<String> {
+    let t = std::fs::read_to_string(corrections_dir()?.join(format!("{k}.tex"))).ok()?;
+    let t = t.trim();
+    (!t.is_empty()).then(|| t.to_string())
+}
+
+/// Before a book is converted again: find the equations the reader has
+/// corrected by hand in the old Markdown (each displayed equation read
+/// from an image carries `<!-- pdf2md:eq KEY -->` above it) and keep each
+/// correction for that image. Returns how many were kept. Where the
+/// chapter files and book.md disagree, the most recently changed file wins.
+pub fn collect_corrections(dir: &std::path::Path) -> usize {
+    let (Some(cdir), Ok(entries)) = (corrections_dir(), std::fs::read_dir(dir)) else { return 0 };
+    let norm = |t: &str| t.split_whitespace().collect::<Vec<_>>().join(" ");
+    // image -> (time of the file, LaTeX as it stands there)
+    let mut found: HashMap<String, (std::time::SystemTime, String)> = HashMap::new();
+    for e in entries.flatten() {
+        let p = e.path();
+        if p.extension().is_none_or(|x| x != "md") {
+            continue;
+        }
+        let (Ok(text), Ok(meta)) = (std::fs::read_to_string(&p), e.metadata()) else { continue };
+        let time = meta.modified().unwrap_or(std::time::UNIX_EPOCH);
+        let mut rest = text.as_str();
+        while let Some(i) = rest.find("<!-- pdf2md:eq ") {
+            rest = &rest[i + 15..];
+            let Some(k) = rest.get(..16).filter(|k| k.chars().all(|c| c.is_ascii_hexdigit())) else { continue };
+            let k = k.to_string();
+            let Some(start) = rest.find("$$\n") else { break };
+            let body = &rest[start + 3..];
+            let Some(end) = body.find("\n$$") else { break };
+            let latex = strip_numbers(&body[..end]);
+            rest = &body[end..];
+            let written = read_correction(&k).or_else(|| cache_dir().and_then(|d| read_cached(&d, &k)).and_then(|r| match r {
+                Reading::Latex(t) => Some(t),
+                _ => None,
+            }));
+            // unchanged: nothing to keep
+            if written.as_deref().is_some_and(|w| norm(w) == norm(&latex)) {
+                continue;
+            }
+            match found.get(&k) {
+                Some((t, _)) if *t >= time => {}
+                _ => {
+                    found.insert(k, (time, latex));
+                }
+            }
+        }
+    }
+    if found.is_empty() || std::fs::create_dir_all(&cdir).is_err() {
+        return 0;
+    }
+    found.iter().filter(|(k, (_, latex))| std::fs::write(cdir.join(format!("{k}.tex")), format!("{latex}\n")).is_ok()).count()
+}
+
 fn cache_dir() -> Option<PathBuf> {
     let base = std::env::var_os("XDG_CACHE_HOME")
         .map(PathBuf::from)
@@ -101,9 +165,19 @@ pub fn recognize(images: &[&str]) -> HashMap<String, Reading> {
         if out.contains_key(&k) || todo.iter().any(|(t, _)| *t == k) {
             continue;
         }
+        // the reader's own correction comes first
+        if let Some(c) = read_correction(&k) {
+            out.insert(k, Reading::Latex(c));
+            continue;
+        }
         match read_cached(&dir, &k) {
             Some(r) => {
-                out.insert(k, r);
+                // math read before the second reading existed: check it now
+                let unverified = matches!(r, Reading::Latex(_)) && !dir.join(format!("{k}.verify")).exists();
+                out.insert(k.clone(), r);
+                if unverified {
+                    todo.push((k, img));
+                }
             }
             None => todo.push((k, img)),
         }
@@ -123,7 +197,13 @@ pub fn recognize(images: &[&str]) -> HashMap<String, Reading> {
     }
     let script = dir.join("math_ocr.py");
     let _ = std::fs::write(&script, SCRIPT);
-    eprintln!("Reading {} equation images with the math recognizer…", todo.len());
+    let new = todo.iter().filter(|(k, _)| !out.contains_key(k)).count();
+    if new > 0 {
+        eprintln!("Reading {new} equation images with the math recognizer…");
+    }
+    if todo.len() > new {
+        eprintln!("Reading {} equations a second time, to list the doubtful ones…", todo.len() - new);
+    }
     let ok = Command::new(&py).arg(&script).arg(&pending).arg(&dir).status().is_ok_and(|s| s.success());
     if !ok {
         eprintln!("The math recognizer failed; those equations stay pictures.");
@@ -135,6 +215,18 @@ pub fn recognize(images: &[&str]) -> HashMap<String, Reading> {
         }
     }
     out
+}
+
+/// Was the equation of this image read as a different formula a second
+/// time (and not corrected by hand since)? Then it is worth checking
+/// against the book: how many symbols the two readings differ in.
+pub fn needs_check(k: &str) -> Option<usize> {
+    if read_correction(k).is_some() {
+        return None;
+    }
+    let v = std::fs::read_to_string(cache_dir()?.join(format!("{k}.verify"))).ok()?;
+    let n = v.trim().strip_prefix("check")?.trim();
+    Some(n.parse().unwrap_or(1))
 }
 
 pub fn base64_decode(s: &str) -> Option<Vec<u8>> {

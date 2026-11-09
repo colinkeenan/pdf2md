@@ -309,16 +309,81 @@ def read_code(img: Image.Image):
     return text if text and looks_like_code(text) else None
 
 
+def canonical(t: str) -> list:
+    """LaTeX reduced to what changes the formula: no spacing commands,
+    \\left/\\right or sizes, optional braces; one bold style; as tokens."""
+    t = re.sub(r"\s+", "", t)
+    t = re.sub(r"\\[,;:!]|\\quad|\\qquad|~|\\ ", "", t)
+    t = re.sub(r"\\(left|right|big|Big|bigg|Bigg)[lrm]?(?=[^a-zA-Z])", "", t)
+    t = re.sub(r"\\(displaystyle|textstyle|mathrm|operatorname|rm)", "", t)
+    t = re.sub(r"\{([^{}\\])\}", r"\1", t)
+    t = re.sub(r"\\(mathbf|boldsymbol|bf|mathbit|pmb)", r"\\B", t)
+    t = t.replace("\\ldots", "\\dots").replace("\\cdots", "\\dots").replace("{", "").replace("}", "")
+    return re.findall(r"\\[a-zA-Z]+|.", t)
+
+
+def difference(a: str, b: str) -> int:
+    """How many symbols two readings differ in (0: the same formula)."""
+    import difflib
+
+    ta, tb = canonical(a), canonical(b)
+    if ta == tb:
+        return 0
+    ops = difflib.SequenceMatcher(None, ta, tb, autojunk=False).get_opcodes()
+    return sum(max(i2 - i1, j2 - j1) for op, i1, i2, j1, j2 in ops if op != "equal")
+
+
+def verify(items, dst, model, processor, batch_inference):
+    """A second reading of each equation, from the image enlarged 2x (line by
+    line again for one read line by line). Where the two readings are
+    different formulas (formatting aside) the equation is worth checking
+    against the book: NAME.verify says "check N" (N symbols differ), else
+    "ok"; NAME.second keeps the second reading."""
+    items = [(f, img) for f, img in items if not (dst / f"{f.stem}.tex").read_text().startswith("%")]
+    if not items:
+        return
+    big = lambda img: img.resize((img.width * 2, img.height * 2), Image.LANCZOS)
+    first = {f: (dst / f"{f.stem}.tex").read_text().strip() for f, _ in items}
+    whole = [(f, img) for f, img in items if not first[f].startswith("\\begin{aligned}\n& ")]
+    by_rows = [(f, img) for f, img in items if first[f].startswith("\\begin{aligned}\n& ")]
+    second = {}
+    for i in range(0, len(whole), 16):
+        part = whole[i : i + 16]
+        for (f, _), t in zip(part, batch_inference([big(img) for _, img in part], model, processor)):
+            second[f] = fix(clean(t))
+        print(f"  checking {min(i + 16, len(whole))}/{len(whole)}", file=sys.stderr, flush=True)
+    for f, img in by_rows:
+        second[f] = read_by_rows(big(img), model, processor, batch_inference) or ""
+    flagged = 0
+    for f, _ in items:
+        n = difference(first[f], second.get(f, ""))
+        flagged += n > 0
+        (dst / f"{f.stem}.verify").write_text("ok\n" if n == 0 else f"check {n}\n")
+        (dst / f"{f.stem}.second").write_text(second.get(f, "") + "\n")
+    print(f"  {flagged} of {len(items)} equations read differently a second time: listed to check", file=sys.stderr, flush=True)
+
+
 def main():
     src, dst = Path(sys.argv[1]), Path(sys.argv[2])
     files = sorted(src.glob("*.png"))
     todo = []
+    verify_only = []  # read before: only the second reading is missing
     for f in files:
         img = Image.open(f).convert("RGB")
-        if is_drawing(img):
+        known = dst / f"{f.stem}.tex"
+        if known.exists() and not known.read_text().startswith("%"):
+            verify_only.append((f, img))
+        elif is_drawing(img):
             (dst / f"{f.stem}.tex").write_text("%DRAWING\n")
         else:
             todo.append((f, img))
+    if not todo and verify_only:
+        from texify.inference import batch_inference
+        from texify.model.model import load_model
+        from texify.model.processor import load_processor
+
+        verify(verify_only, dst, load_model(), load_processor(), batch_inference)
+        return
     # program code shown as an image: every image is read as text too (in
     # parallel); unmistakable code is written as code, not given to texify
     from concurrent.futures import ThreadPoolExecutor
@@ -380,6 +445,7 @@ def main():
     if doubtful:
         unread = sum((dst / f"{f.stem}.tex").read_text().startswith("%UNREADABLE") for f, _ in doubtful)
         print(f"  {len(doubtful)} read again, {unread} unreadable (kept as pictures)", file=sys.stderr, flush=True)
+    verify(todo + verify_only, dst, model, processor, batch_inference)
 
 
 if __name__ == "__main__":

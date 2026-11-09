@@ -122,6 +122,8 @@ fn new_dir(dir: &Path) -> PathBuf {
 
 fn run(input: &Path, output: &Path, replace: bool) -> Result<String, String> {
     let mut dest = book_dir(input, output);
+    // equations corrected by hand in the earlier conversion are kept
+    let kept = pdf2md_core::ocr::collect_corrections(&dest);
     let book = convert_pdf(input)?;
     // only touch the old folder once the new book is ready
     if dest.exists() {
@@ -134,6 +136,9 @@ fn run(input: &Path, output: &Path, replace: bool) -> Result<String, String> {
     }
     let files = write_book(&book, &dest).map_err(|e| e.to_string())?;
     let mut msg = format!("Wrote {} files to {}", files.len(), dest.display());
+    if kept > 0 {
+        msg.push_str(&format!("; kept {kept} hand-corrected equation(s)"));
+    }
     if !book.warnings.is_empty() {
         msg.push_str(&format!(" ({} warnings)", book.warnings.len()));
     }
