@@ -997,7 +997,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
             while fi < figs.len() && figs[fi].top <= l.top {
                 b.flush();
                 b.anchor_block();
-                b.push(Block::Figure { page: number, n: fi + 1, area: figs[fi] });
+                b.push(Block::Figure { page: number, n: fi + 1, area: figs[fi], label: page.label.clone() });
                 fi += 1;
                 prev_top = None;
             }
@@ -1119,7 +1119,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
         while fi < figs.len() {
             b.flush();
             b.anchor_block();
-            b.push(Block::Figure { page: number, n: fi + 1, area: figs[fi] });
+            b.push(Block::Figure { page: number, n: fi + 1, area: figs[fi], label: page.label.clone() });
             fi += 1;
         }
         // An empty page still gets its anchor.

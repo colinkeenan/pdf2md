@@ -145,6 +145,7 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
             }
             out.push('\n');
         }
+        // numbered by chapter_markdown, which writes the caption
         Block::Figure { page, n, .. } => {
             out.push_str(&format!("![Figure]({})\n\n", figure_file(*page, *n)));
         }
@@ -195,6 +196,9 @@ pub fn chapter_markdown(book: &Book, i: usize) -> String {
     // a run of centered blocks goes in one centered div (page markers
     // between them don't break it)
     let mut centered = false;
+    // pictures are numbered through the whole book
+    let is_fig = |b: &crate::Blk| matches!(b.block, crate::Block::Figure { .. });
+    let mut fig_no = book.chapters[..i].iter().flat_map(|c| &c.blocks).filter(|b| is_fig(b)).count();
     for b in &ch.blocks {
         let neutral = matches!(b.block, crate::Block::Anchor(_));
         if !neutral && b.centered != centered {
@@ -204,6 +208,20 @@ pub fn chapter_markdown(book: &Book, i: usize) -> String {
             }
             s.push_str(if b.centered { "<div align=\"center\">\n\n" } else { "</div>\n\n" });
             centered = b.centered;
+        }
+        if let crate::Block::Figure { page, n, label, .. } = &b.block {
+            // a visible caption, so a search for "Figure" finds each picture
+            fig_no += 1;
+            let caption = match label {
+                Some(l) => format!("Figure {fig_no} (p. {l})"),
+                None => format!("Figure {fig_no}"),
+            };
+            if in_list {
+                s.push('\n');
+                in_list = false;
+            }
+            s.push_str(&format!("![{caption}]({})\n\n_{caption}_\n\n", figure_file(*page, *n)));
+            continue;
         }
         render_block(&b.block, &mut s, &mut in_list);
     }
@@ -255,7 +273,7 @@ fn write_figures(book: &Book, dir: &Path) {
     let Some(pdf) = &book.source else { return };
     for ch in &book.chapters {
         for b in &ch.blocks {
-            let crate::Block::Figure { page, n, area } = &b.block else { continue };
+            let crate::Block::Figure { page, n, area, .. } = &b.block else { continue };
             let file = dir.join(figure_file(*page, *n));
             if let Some(parent) = file.parent() {
                 let _ = std::fs::create_dir_all(parent);

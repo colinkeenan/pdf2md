@@ -82,7 +82,8 @@ pub enum Block {
     PageNote { label: String, text: Vec<Inline> },
     /// A picture: area `area` of PDF page `page`, the `n`th on that page,
     /// written as an image file cut from the page.
-    Figure { page: u32, n: usize, area: layout::Figure },
+    /// `label`: the printed page number, for the caption.
+    Figure { page: u32, n: usize, area: layout::Figure, label: Option<String> },
 }
 
 /// A block plus the page it starts on (index into the page list).

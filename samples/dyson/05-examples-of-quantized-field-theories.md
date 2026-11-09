@@ -100,7 +100,9 @@ $$
 
 where $k^{2} = | \boldsymbol{k} |^{2} - k_{0}^{2}$. The integration with respect to $k_{1} k_{2} k_{3}$ is an ordinary real integral. That with respect to $k_{0}$ is a contour integral going along the real axis and _above_ the two poles at $k_{0} = \pm | \boldsymbol{k} |$.
 
-![Figure](images/fig-p048-1.png)
+![Figure 1 (p. 42)](images/fig-p048-1.png)
+
+_Figure 1 (p. 42)_
 
 For detailed calculations, see the Appendix below. This gives the correct behaviour of $D_{R}$ being zero for $x_{0} <$ 0. Similarly
 
@@ -116,7 +118,9 @@ $$
 
 with a contour $s$ as shown.
 
-![Figure](images/fig-p048-2.png)
+![Figure 2 (p. 42)](images/fig-p048-2.png)
+
+_Figure 2 (p. 42)_
 
 <a id="p43"><sup>[p. 43]</sup></a>
 
@@ -130,7 +134,9 @@ this being now an ordinary real integral.
 
 ## <a id="s-appendix"></a>Appendix
 
-![Figure](images/fig-p049-1.png)
+![Figure 3 (p. 43)](images/fig-p049-1.png)
+
+_Figure 3 (p. 43)_
 
 Let us verify, e.g. (207). For $x_{0} <$ 0, we have to take the top path shown, otherwise the integrand blows up; this gives obviously 0.
 
@@ -1905,9 +1911,13 @@ $$
 k_{0} = - \sqrt{| \boldsymbol{k} |^{2} + \mu^{2}} \quad k_{0} = - q_{0} - i\delta_{0} - \sqrt{| \boldsymbol{k} + \boldsymbol{q} |^{2} + \mu^{2}} \tag{373}
 $$
 
-![Figure](images/fig-p078-1.png)
+![Figure 4 (p. 72)](images/fig-p078-1.png)
 
-![Figure](images/fig-p078-2.png)
+_Figure 4 (p. 72)_
+
+![Figure 5 (p. 72)](images/fig-p078-2.png)
+
+_Figure 5 (p. 72)_
 
 <a id="p73"><sup>[p. 73]</sup></a>
 
