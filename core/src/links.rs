@@ -748,6 +748,106 @@ pub fn link_equations(chapters: &mut [Chapter]) {
     }
 }
 
+/// The number of a figure caption: "Fig. 1.1 The Stern–Gerlach …" -> "1.1".
+pub fn figure_caption_number(t: &str) -> Option<String> {
+    let rest = t.trim_start().strip_prefix("Fig.")?.trim_start();
+    let n: String = rest.chars().take_while(|c| c.is_ascii_alphanumeric() || *c == '.').collect();
+    let n = n.trim_end_matches('.');
+    (n.contains('.') && n.chars().next().is_some_and(|c| c.is_ascii_alphanumeric())).then(|| n.to_string())
+}
+
+/// Linked references to sections, chapters, appendices and figures
+/// ("Section 3.5", "Chapter 3", "Appendix B", "Figure 1.1") become links
+/// to the heading, chapter file or figure caption. Figure captions
+/// ("Fig. 1.1 …") get an anchor fig-1.1 for that.
+pub fn link_cross_refs(chapters: &mut [Chapter]) {
+    // targets: "section 3.5" -> file#id, "chapter 3" -> file, "figure 1.1" -> file#fig-1.1
+    let mut target: HashMap<String, String> = HashMap::new();
+    for ch in chapters.iter_mut() {
+        let slug = ch.slug.clone();
+        if let Some(rest) = ch.title.strip_prefix("Appendix ") {
+            if let Some(letter) = rest.split_whitespace().next() {
+                target.entry(format!("appendix {}", letter.trim_end_matches([':', '.']))).or_insert(format!("{slug}.md"));
+            }
+        }
+        for b in ch.blocks.iter_mut() {
+            match &mut b.block {
+                Block::Heading { text, id, .. } => {
+                    let t = plain(text);
+                    let Some(num) = t.split_whitespace().next() else { continue };
+                    if num.contains('.') && num.chars().all(|c| c.is_ascii_alphanumeric() || c == '.') {
+                        target.entry(format!("section {num}")).or_insert(format!("{slug}.md#{id}"));
+                        // the chapter number of a numbered section
+                        if let Some(c) = num.split('.').next() {
+                            target.entry(format!("chapter {c}")).or_insert(format!("{slug}.md"));
+                        }
+                    }
+                }
+                Block::Para(inl) => {
+                    if let Some(n) = figure_caption_number(&plain(inl)) {
+                        let id = format!("fig-{n}");
+                        if let std::collections::hash_map::Entry::Vacant(e) = target.entry(format!("figure {n}")) {
+                            e.insert(format!("{slug}.md#{id}"));
+                            inl.insert(0, Inline::Anchor(id));
+                        }
+                    }
+                }
+                _ => {}
+            }
+        }
+    }
+    if target.is_empty() {
+        return;
+    }
+    let kinds: [(&str, &str); 7] = [
+        ("Sections ", "section"),
+        ("Section ", "section"),
+        ("Chapter ", "chapter"),
+        ("Appendix ", "appendix"),
+        ("Figures ", "figure"),
+        ("Figure ", "figure"),
+        ("Fig. ", "figure"),
+    ];
+    for ch in chapters.iter_mut() {
+        for b in ch.blocks.iter_mut() {
+            let (Block::Para(inl) | Block::Item { text: inl, .. } | Block::PageNote { text: inl, .. }) = &mut b.block else { continue };
+            if !inl.iter().any(|x| matches!(x, Inline::PageLink(_))) {
+                continue;
+            }
+            let old = std::mem::take(inl);
+            let mut k = 0;
+            while k < old.len() {
+                if let (Inline::Text(t), Some(Inline::PageLink(_))) = (&old[k], old.get(k + 1)) {
+                    // the reference is the end of the text: "… in Figure 1.1,"
+                    let body = t.trim_end().trim_end_matches([',', ';', ':', '.', ')']);
+                    let found = kinds.iter().find_map(|(word, kind)| {
+                        let at = body.rfind(word)?;
+                        let num = body[at + word.len()..].trim();
+                        // "Figure 1.2a": part (a) of figure 1.2
+                        let href = target
+                            .get(&format!("{kind} {num}"))
+                            .or_else(|| target.get(&format!("{kind} {}", num.trim_end_matches(|c: char| c.is_ascii_lowercase()))))?;
+                        Some((at, at + word.len() + body[at + word.len()..].len(), href.clone()))
+                    });
+                    if let Some((start, end, href)) = found {
+                        if start > 0 {
+                            inl.push(Inline::Text(t[..start].to_string()));
+                        }
+                        inl.push(Inline::Link { text: crate::emit::escape_text(&t[start..end]), href });
+                        if end < t.len() {
+                            inl.push(Inline::Text(t[end..].to_string()));
+                        }
+                        k += 2;
+                        continue;
+                    }
+                }
+                inl.push(old[k].clone());
+                k += 1;
+            }
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

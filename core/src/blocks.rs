@@ -440,11 +440,10 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
                     push_text(&mut out, " ");
                 }
                 push_text(&mut out, &s.text);
-                // a page number that links into the book (a linked index), or
-                // a linked reference to an equation, "(3.422)"
-                let num = s.text.trim().trim_end_matches([',', ';', '.']);
-                let page_no = !num.is_empty() && num.chars().all(|c| c.is_ascii_digit() || c == '–' || c == '-');
-                if let Some(n) = s.link.filter(|_| page_no || equation_ref(num).is_some()) {
+                // text that links into the book: a page number in a linked
+                // index, a reference to an equation "(3.422)", a section,
+                // a figure … (see links.rs)
+                if let Some(n) = s.link {
                     out.push(Inline::PageLink(n));
                 }
             }

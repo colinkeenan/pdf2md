@@ -5,6 +5,11 @@ use std::collections::{HashMap, HashSet};
 use std::path::{Path, PathBuf};
 
 /// Escape characters that Markdown would otherwise treat as formatting.
+/// Plain text escaped for Markdown (for link texts built elsewhere).
+pub fn escape_text(t: &str) -> String {
+    escape(t)
+}
+
 fn escape(t: &str) -> String {
     let mut s = String::with_capacity(t.len());
     for c in t.chars() {
@@ -301,7 +306,7 @@ fn chapter_body(book: &Book, i: usize) -> String {
     // pictures are numbered through the whole book
     let is_fig = |b: &crate::Blk| matches!(b.block, crate::Block::Figure { .. });
     let mut fig_no = book.chapters[..i].iter().flat_map(|c| &c.blocks).filter(|b| is_fig(b)).count();
-    for b in &ch.blocks {
+    for (bi, b) in ch.blocks.iter().enumerate() {
         let neutral = matches!(b.block, crate::Block::Anchor(_));
         if !neutral && b.centered != centered {
             if in_list {
@@ -312,16 +317,26 @@ fn chapter_body(book: &Book, i: usize) -> String {
             centered = b.centered;
         }
         if let crate::Block::Figure { page, n, label, .. } = &b.block {
-            // a visible caption, so a search for "Figure" finds each picture
             fig_no += 1;
-            let caption = match label {
-                Some(l) => format!("Figure {fig_no} (p. {l})"),
-                None => format!("Figure {fig_no}"),
-            };
             if in_list {
                 s.push('\n');
                 in_list = false;
             }
+            // the book's own caption right after it ("Fig. 1.1 …"): that is
+            // the caption; otherwise a visible one of ours, so a search for
+            // "Figure" finds each picture
+            let next = ch.blocks[bi + 1..].iter().find(|b| !matches!(b.block, crate::Block::Anchor(_)));
+            if let Some(own) = next.and_then(|b| match &b.block {
+                crate::Block::Para(inl) => crate::links::figure_caption_number(&crate::plain(inl)),
+                _ => None,
+            }) {
+                s.push_str(&format!("![Fig. {own}]({})\n\n", figure_file(*page, *n)));
+                continue;
+            }
+            let caption = match label {
+                Some(l) => format!("Figure {fig_no} (p. {l})"),
+                None => format!("Figure {fig_no}"),
+            };
             s.push_str(&format!("![{caption}]({})\n\n_{caption}_\n\n", figure_file(*page, *n)));
             continue;
         }
