@@ -172,8 +172,8 @@ fn link_entries(
         // 2. a heading near the printed page: same words, or mostly the
         //    same words (the TOC is often worded a little differently)
         let mut best: Option<(f32, usize, usize)> = None;
-        for ci in 1..chapters.len() {
-            for (bi, b) in chapters[ci].blocks.iter().enumerate() {
+        for (ci, ch) in chapters.iter().enumerate().skip(1) {
+            for (bi, b) in ch.blocks.iter().enumerate() {
                 let Block::Heading { text, id, .. } = &b.block else { continue };
                 if !id.is_empty() || !page_near(labels, b.page, &e.page) {
                     continue;
@@ -221,8 +221,8 @@ fn link_entries(
         //    words is really an unstyled heading; a long one that starts
         //    with the title has a "run-in" heading and gets an anchor.
         let mut para_hit = None;
-        'outer: for ci in 1..chapters.len() {
-            for (bi, b) in chapters[ci].blocks.iter().enumerate() {
+        'outer: for (ci, ch) in chapters.iter().enumerate().skip(1) {
+            for (bi, b) in ch.blocks.iter().enumerate() {
                 if !page_near(labels, b.page, &e.page) {
                     continue;
                 }

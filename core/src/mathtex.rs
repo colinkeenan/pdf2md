@@ -1276,9 +1276,9 @@ fn small_blocks(cells: Vec<MSpan>, size: f32, depth: usize) -> Vec<MSpan> {
         }
     }
     let mut clusters: std::collections::BTreeMap<usize, Vec<usize>> = std::collections::BTreeMap::new();
-    for k in 0..cand.len() {
+    for (k, &c) in cand.iter().enumerate() {
         let r = root(&mut group, k);
-        clusters.entry(r).or_default().push(cand[k]);
+        clusters.entry(r).or_default().push(c);
     }
     let mut used = vec![false; cells.len()];
     let mut blocks: Vec<MSpan> = Vec::new();

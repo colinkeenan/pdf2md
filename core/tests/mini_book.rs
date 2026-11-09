@@ -36,7 +36,7 @@ fn body(top: u32, text: &str) -> String {
 
 fn book_xml() -> String {
     let filler = "and this sentence keeps going so that the line reaches the right margin";
-    let pages = vec![
+    let pages = [
         // 1: table of contents
         page(1, &[
             t(213, 111, 157, 5, "Table of Contents"),
