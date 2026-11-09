@@ -133,7 +133,7 @@ fn read_cached(dir: &std::path::Path, k: &str) -> Option<Reading> {
     } else if t.is_empty() {
         None
     } else {
-        Some(Reading::Latex(strip_numbers(t)))
+        Some(Reading::Latex(unglue(&strip_numbers(t))))
     }
 }
 
@@ -151,6 +151,46 @@ fn strip_numbers(t: &str) -> String {
     }
     out.push_str(rest);
     out.trim().to_string()
+}
+
+/// Every command KaTeX knows (taken from its source), one per line.
+const LATEX_COMMANDS: &str = include_str!("latex_commands.txt");
+
+/// A command glued to the letters after it ("\\cdotb" for "\\cdot b"): the
+/// model sometimes leaves out the space. When a command name is no command
+/// but starts with one, followed by letters, a space goes between them.
+fn unglue(t: &str) -> String {
+    use std::sync::OnceLock;
+    static KNOWN: OnceLock<std::collections::HashSet<&'static str>> = OnceLock::new();
+    let known = KNOWN.get_or_init(|| LATEX_COMMANDS.lines().map(str::trim).filter(|l| !l.is_empty()).collect());
+    let mut out = String::with_capacity(t.len() + 8);
+    let mut rest = t;
+    while let Some(i) = rest.find('\\') {
+        out.push_str(&rest[..i]);
+        let after = &rest[i + 1..];
+        let name_len = after.find(|c: char| !c.is_ascii_alphabetic()).unwrap_or(after.len());
+        let name = &after[..name_len];
+        if name_len == 0 {
+            // "\\\\", "\\{", "\\,": not a name
+            let c = after.chars().next().map_or(0, char::len_utf8);
+            out.push_str(&rest[i..i + 1 + c]);
+            rest = &after[c..];
+            continue;
+        }
+        let fixed = if known.contains(name) {
+            None
+        } else {
+            // the longest command it starts with
+            (1..name.len()).rev().map(|k| &name[..k]).find(|p| known.contains(p))
+        };
+        match fixed {
+            Some(p) => out.push_str(&format!("\\{p} {}", &name[p.len()..])),
+            None => out.push_str(&format!("\\{name}")),
+        }
+        rest = &after[name_len..];
+    }
+    out.push_str(rest);
+    out
 }
 
 /// Read every image (given as base64 PNG), from the cache or by running
@@ -265,6 +305,17 @@ pub fn base64_decode(s: &str) -> Option<Vec<u8>> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn unglues_commands() {
+        assert_eq!(unglue("a\\cdotb"), "a\\cdot b");
+        assert_eq!(unglue("a\\cdot\\!b"), "a\\cdot\\!b");
+        assert_eq!(unglue("x\\leftarrow y"), "x\\leftarrow y");
+        assert_eq!(unglue("\\left(\\alpha\\right)"), "\\left(\\alpha\\right)");
+        assert_eq!(unglue("\\alphab+\\varepsilon"), "\\alpha b+\\varepsilon");
+        assert_eq!(unglue("a \\\\ b \\, c"), "a \\\\ b \\, c");
+        assert_eq!(unglue("\\frac{1}{2}"), "\\frac{1}{2}");
+    }
 
     #[test]
     fn strips_invented_numbers() {
