@@ -121,6 +121,8 @@ pub struct Book {
     pub warnings: Vec<String>,
     /// Printed page number of every page (index = page index).
     pub labels: Vec<Option<String>>,
+    /// PDF page number (1 = first sheet) of every page (index = page index).
+    pub pdf_pages: Vec<u32>,
     /// The PDF, to cut the pictures from when writing.
     pub source: Option<std::path::PathBuf>,
 }
@@ -192,11 +194,12 @@ pub fn convert_doc(doc: &layout::Doc) -> Book {
     let mut chapters = structure::split_chapters(blks, stats.chapter_size);
     let mut book = Book {
         labels: pages.iter().map(|p| p.label.clone()).collect(),
+        pdf_pages: pages.iter().map(|p| doc.pages[p.index].number).collect(),
         ..Default::default()
     };
     let removed = notes::attach(&mut chapters, &mut book);
     structure::assign_slugs(&mut chapters);
-    links::link_toc(&mut chapters, &book.labels, &removed, &mut book.warnings);
+    links::link_toc(&mut chapters, &book.labels, &book.pdf_pages, &removed, &mut book.warnings);
     links::link_index(&mut chapters);
     book.chapters = chapters;
     book

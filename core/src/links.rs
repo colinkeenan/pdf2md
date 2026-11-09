@@ -37,7 +37,12 @@ fn similarity(a: &str, b: &str) -> f32 {
     2.0 * wa.intersection(&wb).count() as f32 / (wa.len() + wb.len()) as f32
 }
 
-fn page_near(labels: &[Option<String>], page: usize, target: &str) -> bool {
+/// Is page `page` (an index into the book's pages) the one a TOC entry
+/// names: near its printed number, or exactly the PDF page "@N" it links to?
+fn page_near(labels: &[Option<String>], pdf: &[u32], page: usize, target: &str) -> bool {
+    if let Some(n) = target.strip_prefix('@') {
+        return n.parse::<u32>().ok().is_some_and(|n| pdf.get(page) == Some(&n));
+    }
     let Some(label) = labels.get(page).and_then(|l| l.as_ref()) else { return false };
     match (label.parse::<i64>(), target.parse::<i64>()) {
         (Ok(a), Ok(b)) => (a - b).abs() <= 1,
@@ -60,27 +65,29 @@ fn unique_id(used: &mut HashSet<String>, text: &str) -> String {
 pub fn link_toc(
     chapters: &mut [Chapter],
     labels: &[Option<String>],
+    pdf: &[u32],
     removed: &[String],
     warnings: &mut Vec<String>,
 ) {
     let mut used_ids: Vec<HashSet<String>> = vec![HashSet::new(); chapters.len()];
-    if !chapters.is_empty() {
-        // Take the TOC entries out of the front matter.
+    // Take the TOC entries out of the chapter that holds them: the front
+    // matter, or a "Contents" chapter of its own.
+    if let Some(tc) = chapters.iter().position(|c| c.blocks.iter().any(|b| matches!(b.block, Block::Toc(_)))) {
         let mut entries = Vec::new();
         let mut toc_at = None;
-        for (bi, b) in chapters[0].blocks.iter_mut().enumerate() {
+        for (bi, b) in chapters[tc].blocks.iter_mut().enumerate() {
             if let Block::Toc(e) = &mut b.block {
                 entries.append(e);
                 toc_at.get_or_insert(bi);
             }
         }
         if let Some(at) = toc_at {
-            let items = link_entries(chapters, labels, removed, warnings, &mut used_ids, entries);
-            let page = chapters[0].blocks[at].page;
-            chapters[0].blocks.retain(|b| !matches!(b.block, Block::Toc(_)));
-            let at = at.min(chapters[0].blocks.len());
+            let items = link_entries(chapters, labels, pdf, removed, warnings, &mut used_ids, entries);
+            let page = chapters[tc].blocks[at].page;
+            chapters[tc].blocks.retain(|b| !matches!(b.block, Block::Toc(_)));
+            let at = at.min(chapters[tc].blocks.len());
             for (k, block) in items.into_iter().enumerate() {
-                chapters[0].blocks.insert(at + k, crate::Blk { block, page, centered: false });
+                chapters[tc].blocks.insert(at + k, crate::Blk { block, page, centered: false });
             }
         }
     }
@@ -99,6 +106,7 @@ pub fn link_toc(
 fn link_entries(
     chapters: &mut [Chapter],
     labels: &[Option<String>],
+    pdf: &[u32],
     removed: &[String],
     warnings: &mut Vec<String>,
     used_ids: &mut [HashSet<String>],
@@ -129,7 +137,8 @@ fn link_entries(
                 Inline::Text(" — ".into()),
                 Inline::Link { text: format!("p. {label}"), href: format!("{slug}.md#p{label}") },
             ],
-            None if !label.is_empty() => vec![Inline::Text(format!(" — p. {label}"))],
+            // ("@N" is a link target, not a page number to show)
+            None if !label.is_empty() && !label.starts_with('@') => vec![Inline::Text(format!(" — p. {label}"))],
             None => Vec::new(),
         }
     };
@@ -158,10 +167,16 @@ fn link_entries(
             continue;
         }
         let text = render_inlines(&e.title);
-        // 1. a whole chapter?
+        // 1. a whole chapter? (a linked entry: also a chapter that starts on
+        //    the page it links to, with some words in common)
+        let starts_there = |c: usize| {
+            chapters[c].blocks.iter().find(|b| !matches!(b.block, Block::Anchor(_))).is_some_and(|b| page_near(labels, pdf, b.page, &e.page))
+                && e.page.starts_with('@')
+                && similarity(&chapters[c].title, &title) >= 0.3
+        };
         if let Some(ci) = (1..chapters.len()).find(|&c| {
             let ck = key(&chapters[c].title);
-            ck == k || fuzzy_eq(&ck, &k) || (k.len() >= 8 && ck.starts_with(&k))
+            ck == k || fuzzy_eq(&ck, &k) || (k.len() >= 8 && ck.starts_with(&k)) || starts_there(c)
         }) {
             let mut t = vec![Inline::Link { text, href: format!("{}.md", chapters[ci].slug) }];
             t.extend(chapter_pages[ci].iter().cloned());
@@ -175,7 +190,7 @@ fn link_entries(
         for (ci, ch) in chapters.iter().enumerate().skip(1) {
             for (bi, b) in ch.blocks.iter().enumerate() {
                 let Block::Heading { text, id, .. } = &b.block else { continue };
-                if !id.is_empty() || !page_near(labels, b.page, &e.page) {
+                if !id.is_empty() || !page_near(labels, pdf, b.page, &e.page) {
                     continue;
                 }
                 let ht = plain(text);
@@ -223,7 +238,7 @@ fn link_entries(
         let mut para_hit = None;
         'outer: for (ci, ch) in chapters.iter().enumerate().skip(1) {
             for (bi, b) in ch.blocks.iter().enumerate() {
-                if !page_near(labels, b.page, &e.page) {
+                if !page_near(labels, pdf, b.page, &e.page) {
                     continue;
                 }
                 if let Block::Para(inl) = &b.block {
@@ -256,6 +271,29 @@ fn link_entries(
             items.push(Block::Item { level: level.saturating_sub(1), text: t });
             cursor = (ci, bi + 1);
             continue;
+        }
+        // 5. a linked entry whose heading is not in the text (an image, or
+        //    dropped by the ebook converter): an anchor where its page starts
+        if e.page.starts_with('@') {
+            let spot = (1..chapters.len()).find_map(|ci| {
+                chapters[ci]
+                    .blocks
+                    .iter()
+                    .position(|b| !matches!(b.block, Block::Anchor(_)) && page_near(labels, pdf, b.page, &e.page))
+                    .map(|bi| (ci, bi))
+            });
+            if let Some((ci, bi)) = spot {
+                let new_id = unique_id(&mut used_ids[ci], &title);
+                let page = chapters[ci].blocks[bi].page;
+                match &mut chapters[ci].blocks[bi].block {
+                    Block::Para(inl) => inl.insert(0, Inline::Anchor(new_id.clone())),
+                    _ => chapters[ci].blocks.insert(bi, crate::Blk { block: Block::Anchor(new_id.clone()), page, centered: false }),
+                }
+                let t = vec![Inline::Link { text, href: format!("{}.md#{}", chapters[ci].slug, new_id) }];
+                items.push(Block::Item { level: level.saturating_sub(1), text: t });
+                cursor = (ci, bi + 1);
+                continue;
+            }
         }
         warnings.push(format!("table of contents entry not found in text: {title} (page {})", e.page));
         let mut t = e.title.clone();

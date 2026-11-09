@@ -91,7 +91,7 @@ pub fn stats(doc: &Doc, pages: &[PageInfo]) -> Stats {
     let mut in_toc = false;
     for (pi, p) in pages.iter().enumerate() {
         let starts = p.lines.iter().any(|l| is_contents_title(&plain_text(l)));
-        let entries = p.lines.iter().filter(|l| toc_split(&plain_text(l)).is_some()).count();
+        let entries = p.lines.iter().filter(|l| toc_split(&plain_text(l)).is_some() || link_target(l).is_some()).count();
         let mostly = entries * 2 >= p.lines.len() && entries >= 3;
         in_toc = (starts && entries > 0) || (in_toc && mostly);
         if in_toc {
@@ -155,6 +155,14 @@ pub fn stats(doc: &Doc, pages: &[PageInfo]) -> Stats {
 }
 
 /// "Subject Matter . . . . 1" -> ("Subject Matter", "1").
+/// The PDF page a line links to, if its text is a link (a linked table of
+/// contents entry): "@N", standing in for a printed page number.
+fn link_target(l: &Line) -> Option<String> {
+    let has_words = l.spans.iter().any(|s| s.link.is_some() && s.text.chars().filter(|c| c.is_alphabetic()).count() >= 2);
+    let n = l.spans.iter().find_map(|s| s.link)?;
+    has_words.then(|| format!("@{n}"))
+}
+
 fn toc_split(t: &str) -> Option<(String, String)> {
     let t = t.trim();
     let (rest, last) = t.rsplit_once(char::is_whitespace)?;
@@ -941,17 +949,37 @@ impl Builder<'_> {
                 continue;
             }
             let mut inl = crate::no_emph(line_inlines(self.doc, l, self.st));
-            let Some((_, page)) = toc_split(&text) else {
-                // a title that wraps onto the next line
-                pending.extend(inl);
-                push_text(&mut pending, " ");
-                continue;
+            // a printed page number at the end, or else a link to the page
+            let page = match toc_split(&text) {
+                Some((_, page)) => {
+                    // drop the page number and dot leaders from the last text piece
+                    if let Some(Inline::Text(t)) = inl.last_mut() {
+                        let trimmed = t.trim_end();
+                        let cut = trimmed.rsplit_once(char::is_whitespace).map_or("", |(a, _)| a);
+                        *t = cut.trim_end_matches(|c: char| c == '.' || c.is_whitespace()).to_string();
+                    }
+                    page
+                }
+                None => match link_target(l) {
+                    Some(target) => target,
+                    None => {
+                        // a title that wraps onto the next line
+                        pending.extend(inl);
+                        push_text(&mut pending, " ");
+                        continue;
+                    }
+                },
             };
-            // drop the page number and dot leaders from the last text piece
-            if let Some(Inline::Text(t)) = inl.last_mut() {
-                let trimmed = t.trim_end();
-                let cut = trimmed.rsplit_once(char::is_whitespace).map_or("", |(a, _)| a);
-                *t = cut.trim_end_matches(|c: char| c == '.' || c.is_whitespace()).to_string();
+            // a linked title wrapping onto the next line links to the same
+            // page: it continues the entry above
+            if page.starts_with('@') && pending.is_empty() {
+                if let Some(prev) = entries.last_mut().filter(|e| e.page == page) {
+                    let mut title = std::mem::take(&mut prev.title);
+                    push_text(&mut title, " ");
+                    title.extend(inl);
+                    prev.title = tidy(title);
+                    continue;
+                }
             }
             let mut title = std::mem::take(&mut pending);
             title.extend(inl);

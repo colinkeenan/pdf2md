@@ -61,6 +61,9 @@ pub struct Span {
     /// LaTeX read from an equation image (see [`crate::ocr`]); the span
     /// stands for that whole piece of math.
     pub tex: Option<String>,
+    /// The PDF page this text links to (an internal link, as in a linked
+    /// table of contents or index).
+    pub link: Option<u32>,
 }
 
 impl Span {
@@ -565,6 +568,7 @@ fn place_images(doc: &mut Doc) {
                 script: Script::Normal,
                 overline: false,
                 tex: Some(tex.clone()),
+                link: None,
             };
             // the line it shares the most height with, else a line of its own
             let overlap = |l: &Line| (im.bottom.min(l.top + l.size) - im.top.max(l.top)).max(0.0);
@@ -974,6 +978,7 @@ fn insert_delims(doc: &mut Doc, delims: Vec<Vec<Delim>>) {
                 script: Script::Normal,
                 overline: false,
                 tex: None,
+                link: None,
             };
             // the line whose centre is nearest the bracket's centre
             let c = (d.top + d.bottom) / 2.0;
@@ -1237,6 +1242,13 @@ pub fn parse_xml(xml: &str) -> Result<Doc, String> {
                     script: Script::Normal,
                     overline: false,
                     tex: None,
+                    link: n
+                        .descendants()
+                        .find(|d| d.has_tag_name("a"))
+                        .and_then(|a| a.attribute("href"))
+                        .filter(|h| !h.contains("://") && !h.starts_with("mailto:"))
+                        .and_then(|h| h.rsplit_once('#'))
+                        .and_then(|(_, n)| n.parse().ok()),
                 });
             }
         }
