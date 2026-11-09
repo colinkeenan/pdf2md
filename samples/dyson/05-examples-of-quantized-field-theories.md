@@ -137,7 +137,7 @@ Let us verify, e.g. (207). For $x_{0} <$ 0, we have to take the top path shown, 
 For $x_{0} >$ 0, we have to take the bottom path; then
 
 $$
-D_{R} ( x ) = \frac{1}{( 2 \pi )^{4}} \int_{+} \frac{e^{i \boldsymbol{k} \cdot \boldsymbol{x}} e^{- ik_{0} x_{0}}}{\boldsymbol{k}^{2} - k_{0}^{2}} d^{3} kdk_{0} \quad x x
+D_{R} ( x ) = \frac{1}{( 2 \pi )^{4}} \int_{+} \frac{e^{i \boldsymbol{k} \cdot \boldsymbol{x}} e^{- ik_{0} x_{0}}}{\boldsymbol{k}^{2} - k_{0}^{2}} d^{3} kdk_{0}
 $$
 
 where $\boldsymbol{k}$ and $\boldsymbol{x}$ are 3 dimensional vectors.

@@ -6,6 +6,7 @@ Converts a PDF textbook into a folder of Markdown files, one per chapter.
 * **Page markers**: where each printed page starts, a small <sup>[p. 32]</sup> marker (with anchor `#p32`), so you can search for a page ("p. 32") and see where you are.
 * **Table of contents and index** are links. TOC entries point to chapter files or to headings inside them, and show their printed pages: a chapter its range ("— pp. 4–21", so you can tell which file holds page 20), a section its page ("— p. 15"), each linked to that page's marker. An index page number points to the word on that page where the entry's term appears (also "anticommute" → "anticommuting", "Lamb, Willis E." → "Lamb"); if the term is not in the text of that page (the index sometimes points to related material), it points to the page marker. In Dyson about 40 % of index links find their term. The found words are wrapped in their anchor (`<a id="ix-7">Lamb shift</a>`), so a viewer can highlight them; [mdBun](https://github.com/colinkeenan/mdBun) flashes the target of a link.
 * **Math** is emitted as LaTeX (`$$ … $$`), never as pictures.
+* **Pictures** (diagrams, plots, embedded images) are cut from the PDF as PNG files in `images/` (`fig-p049-1.png` = first picture on PDF page 49) and linked where they stand, with their labels inside them instead of in the text.
 
 ## Layout
 
@@ -14,7 +15,7 @@ pdf2md/
 ├── Cargo.toml        workspace
 ├── core/             the converter – plain Rust, no Qt (start here)
 │   ├── src/lib.rs         shared types + the pipeline (convert_doc)
-│   ├── src/layout.rs      runs `pdftohtml -xml` (text spans with position and font) and `pdftocairo -svg` (drawn bars)
+│   ├── src/layout.rs      runs `pdftohtml -xml` (text spans with position and font) and `pdftocairo -svg` (drawn bars, pictures)
 │   ├── src/pages.rs       running headers, page-number footers, printed page numbers, two columns
 │   ├── src/blocks.rs      lines -> headings, paragraphs, equations, TOC, index lines, footnotes
 │   ├── src/mathtex.rs     positioned spans -> LaTeX (fractions, scripts, limits, matrices)
@@ -31,7 +32,7 @@ pdf2md/
 
 ## Try the converter first (no Qt needed)
 
-The PDF is read with poppler's `pdftohtml` (text, positions, fonts) and `pdftocairo` (drawn bars: fraction bars, root bars, overlines like ψ̄) programs, so install it first: Arch `poppler`, Debian/Ubuntu/Fedora `poppler-utils`. (KDE systems usually have it already, because Okular uses poppler.)
+The PDF is read with poppler's `pdftohtml` (text, positions, fonts) and `pdftocairo` (drawn bars: fraction bars, root bars, overlines like ψ̄; pictures) programs, so install it first: Arch `poppler`, Debian/Ubuntu/Fedora `poppler-utils`. (KDE systems usually have it already, because Okular uses poppler.)
 
 ```sh
 cargo test -p pdf2md-core
@@ -72,6 +73,7 @@ Everything is decided from the layout, measured against the book's own typical v
 * **Groups of rows**: a lone `}` after several rows groups them (`\left. \begin{aligned} … \end{aligned} \right\}`); a big bracket that opens on one line of a multi-line formula and closes on a later one is written `\left\{ … \right.` / `\left. … \right\}`. Labelled underbraces become `\underbrace{…}_{\text{label}}`; accents drawn as separate glyphs (˜ ˆ ˙ ¨) become `\tilde{a}`, `\hat{k}`, `\dot{\varphi}`.
 * **Block matrices**: inside a matrix, small-font entries that stand free (not scripts touching a symbol) and form their own rows and columns are one block, written as an inner `matrix`, like β = ((1 0; 0 1), 0; 0, (−1 0; 0 −1)) in Dyson eq. (15). Matrix rows far from the bracket's middle stay with the bracket's equation instead of being taken for a line of their own.
 * **TeX symbol-font quirks**: ⟨ ⟩ come out as "h" and "i", | and ‖ as "j" and "k", { } as "f" and "g", capitals as calligraphic letters; these are mapped back.
+* **Pictures** are found in the SVG: stroked or filled paths that are neither glyphs nor thin bars, and embedded images. Pieces close together are one picture, and so are diagrams of several strokes side by side in a row. A group counts as a picture when it holds an image, or 3+ pieces at least 15 pt square, or 8+ pieces at least 40 pt wide. Text inside the picture, and short text just beside it on lines that lie within it, is a label: it is taken out of the text flow and the picture grows to include it. A short label (≤ 3 characters) beside the picture is taken even on a line with a formula, as long as it stands far from the rest of that line (an axis label "x" after an equation). Each picture is then rendered from the PDF at that box with `pdftocairo -png`.
 * **Overlines** (ψ̄, Ā) are drawn bars, not text: a bar just above a single symbol, with no numerator above it and no root sign before it.
 * **Displayed equations** are lines that are mostly math and indented, or carry an equation number "(16)" at the right margin, plus the rows of fractions and limits around them. `mathtex.rs` rebuilds them from glyph positions and drawn bars: a bar with symbols right above and below it is a fraction (numerator and denominator are the connected stacks touching the bar; a clearly narrower bar inside is a nested fraction, one of the same width a separate fraction stacked below), a bar right after a root sign is a square root; where no bar is found, a group above the main row overlapping a group below is taken as a fraction, small raised/lowered glyphs are scripts, groups around Σ/∫ are limits, rows and columns between tall brackets are a matrix, a system of equations with one number, or an equation continued on a line starting with + or −, becomes an `aligned` block.
 
@@ -81,5 +83,5 @@ Tested on one book so far (Dyson, *Advanced Quantum Mechanics*, a TeX book): all
 
 * **Math is good but not perfect.** All of Dyson's displayed equations are valid LaTeX (KaTeX renders every one), and every problem found so far in it is fixed. A new book will bring cases not seen yet, and a garbled formula does not always look broken. Some glyphs of TeX's big-symbol font are lost by `pdftohtml`; a lone bracket gets its partner back by guessing.
 * Math-font detection knows TeX's Computer Modern / AMS fonts and fonts named "Math", "Symbol" or "STIX". Books typeset with other math fonts will need their font names added in `layout.rs` (`is_math_font`) — check with `--dump`.
-* Pictures are not extracted. Text inside figures (e.g. labels of Feynman diagrams) appears as stray formulas.
+* Pictures are PNG files, so their labels are not searchable text. A picture made of only one or two strokes is not recognized as one.
 * Page-bottom footnotes are supported but untested on a real book (Dyson has only end notes).

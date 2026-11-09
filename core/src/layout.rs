@@ -389,13 +389,19 @@ fn take_figure_labels(doc: &mut Doc) {
                 let spans = std::mem::take(&mut line.spans);
                 // ... but a tiny label right beside it, far from the rest of
                 // its line (an axis label "x" next to a formula), is one
+                // (labels inside the picture are not "the rest of its line")
+                let (fl, fr, ft, fb) = (f.left, f.right, f.top, f.bottom);
+                let inside = |s: &Span| s.left >= fl - 1.0 && s.right() <= fr + 1.0 && s.top >= ft - 1.0 && s.bottom() <= fb + 1.0;
                 let lonely = |s: &Span| {
                     s.text.trim().chars().count() <= 3
-                        && spans.iter().filter(|o| !std::ptr::eq(*o, s)).all(|o| (s.left - o.right()).max(o.left - s.right()) >= 2.0 * m)
+                        && spans
+                            .iter()
+                            .filter(|o| !std::ptr::eq(*o, s) && !inside(o))
+                            .all(|o| (s.left - o.right()).max(o.left - s.right()) >= 2.0 * m)
                 };
                 let mut kept = Vec::new();
                 for s in spans.iter() {
-                    let inside = s.left >= f.left - 1.0 && s.right() <= f.right + 1.0 && s.top >= f.top - 1.0 && s.bottom() <= f.bottom + 1.0;
+                    let inside = inside(s);
                     let near = s.left < r && s.right() > l && s.top < b && s.bottom() > t;
                     let around = near && (line_inside || lonely(s));
                     let s = s.clone();
