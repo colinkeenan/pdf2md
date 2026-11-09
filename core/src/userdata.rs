@@ -216,7 +216,7 @@ pub fn collect(dir: &Path) -> UserData {
                         .then(|| (i, id.to_string()))
                 })
                 .collect();
-            collect_file(&text, &|pos| starts.iter().filter(|(i, _)| *i <= pos).last().map(|(_, s)| s.clone()))
+            collect_file(&text, &|pos| starts.iter().rev().find(|(i, _)| *i <= pos).map(|(_, s)| s.clone()))
         } else if name == "check-equations" {
             continue;
         } else {
