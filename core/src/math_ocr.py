@@ -3,6 +3,7 @@
 Usage: python math_ocr.py <folder of NAME.png> <output folder>
 
 Writes <output folder>/NAME.tex for every image: the LaTeX of the equation,
+"%CODE" and the text for program code (read with Tesseract),
 or "%DRAWING" for a plot or diagram (an image with long straight lines
 meeting at a corner, like the axes of a graph). Runs texify
 (https://github.com/VikParuchuri/texify) on the GPU if there is one.
@@ -241,6 +242,36 @@ def read_by_rows(img, model, processor, batch_inference):
     return "\\begin{aligned}\n" + " \\\\\n".join(lines) + "\n\\end{aligned}"
 
 
+CODE_HINT = re.compile(r"```|\\texttt|\\verb")
+
+
+def looks_like_code(t: str) -> bool:
+    """Program text (Mathematica and the like): calls Name[...] together
+    with assignments, rules, patterns or lists."""
+    call = re.search(r"[A-Za-z]\w*\[", t) and re.search(r":=|->|\w_[\s,\]]|//|==|\{", t)
+    # a result like {x -> 1.5, y -> 2} (a list of rules)
+    rules = re.search(r"->", t) and re.search(r"\{", t)
+    return bool(call or rules)
+
+
+def read_code(img: Image.Image):
+    """Plain-text OCR (Tesseract) of an image of program code; None if
+    Tesseract is missing or the text does not look like code."""
+    import subprocess
+    import tempfile
+
+    g = img.convert("L")
+    g = g.resize((g.width * 3, g.height * 3), Image.LANCZOS)
+    with tempfile.NamedTemporaryFile(suffix=".png") as tmp:
+        g.save(tmp.name)
+        try:
+            out = subprocess.run(["tesseract", tmp.name, "-", "--psm", "6"], capture_output=True, text=True, timeout=60)
+        except (OSError, subprocess.TimeoutExpired):
+            return None
+    text = "\n".join(line.rstrip() for line in out.stdout.strip().splitlines())
+    return text if text and looks_like_code(text) else None
+
+
 def main():
     src, dst = Path(sys.argv[1]), Path(sys.argv[2])
     files = sorted(src.glob("*.png"))
@@ -265,7 +296,7 @@ def main():
         texts = batch_inference([img for _, img in part], model, processor)
         for (f, img), t in zip(part, texts):
             t = fix(clean(t))
-            if plausible(t):
+            if plausible(t) and not CODE_HINT.search(t):
                 (dst / f"{f.stem}.tex").write_text(t + "\n")
             else:
                 doubtful.append((f, img))
@@ -273,6 +304,11 @@ def main():
     # Doubtful readings: try again with a longer limit and a little
     # randomness; an image that never reads plausibly stays a picture.
     for f, img in doubtful:
+        # program code, not math: as text
+        code = read_code(img)
+        if code is not None:
+            (dst / f"{f.stem}.tex").write_text("%CODE\n" + code + "\n")
+            continue
         answer = "%UNREADABLE"
         for temperature in (0.2, 0.4, 0.6):
             t = fix(clean(batch_inference([img], model, processor, temperature=temperature, max_tokens=768)[0]))

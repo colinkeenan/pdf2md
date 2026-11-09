@@ -1101,8 +1101,18 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
         let number = doc.pages[page.index].number;
         let mut fi = 0;
         let mut i = 0;
+        let codes = &doc.pages[page.index].codes;
+        let mut ci = 0;
         while i < end {
             let l = &lines[i];
+            // program code (an image read as text) above this line
+            while ci < codes.len() && codes[ci].0 <= l.top {
+                b.flush();
+                b.anchor_block();
+                b.push(Block::Code(codes[ci].1.clone()));
+                ci += 1;
+                prev_top = None;
+            }
             // a printed page starts here
             while mi < marks.len() && marks[mi].0 <= l.top + 2.0 {
                 if b.anchor.is_some() {
@@ -1232,6 +1242,13 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
             });
             prev_top = Some(l.top);
             i += 1;
+        }
+        // code below the last line of text
+        while ci < codes.len() {
+            b.flush();
+            b.anchor_block();
+            b.push(Block::Code(codes[ci].1.clone()));
+            ci += 1;
         }
         // pictures below the last line of text
         while fi < figs.len() {

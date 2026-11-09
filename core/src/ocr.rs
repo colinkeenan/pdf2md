@@ -21,6 +21,8 @@ pub enum Reading {
     Drawing,
     /// math the recognizer could not read plausibly
     Unreadable,
+    /// program code (read as plain text), not math
+    Code(String),
 }
 
 /// The recognizer script, written next to the cache when it is run.
@@ -56,6 +58,9 @@ fn python() -> Option<PathBuf> {
 
 fn read_cached(dir: &std::path::Path, k: &str) -> Option<Reading> {
     let t = std::fs::read_to_string(dir.join(format!("{k}.tex"))).ok()?;
+    if let Some(code) = t.strip_prefix("%CODE\n") {
+        return Some(Reading::Code(code.trim_end().to_string()));
+    }
     let t = t.trim();
     if t == "%DRAWING" {
         Some(Reading::Drawing)

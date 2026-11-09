@@ -136,6 +136,8 @@ pub struct Page {
     /// Printed pages that start on this page (ebook-made PDFs without page
     /// numbers): height where each starts, and its number. From the index.
     pub marks: Vec<(f32, String)>,
+    /// Program code shown as images, read as text: height and text.
+    pub codes: Vec<(f32, String)>,
 }
 
 /// A picture on a page: a drawing or an embedded image together with the
@@ -584,6 +586,10 @@ fn place_images(doc: &mut Doc) {
         for im in &images {
             let fig = Figure { left: im.left, right: im.right, top: im.top, bottom: im.bottom };
             let reading = if captioned(page, im) { None } else { readings.get(&crate::ocr::key(&im.png_base64)) };
+            if let Some(crate::ocr::Reading::Code(code)) = reading {
+                page.codes.push((im.top, code.clone()));
+                continue;
+            }
             let tex = match reading {
                 Some(crate::ocr::Reading::Latex(tex)) => Some(tex.clone()),
                 _ => None,
@@ -1486,6 +1492,7 @@ pub fn parse_xml(xml: &str) -> Result<Doc, String> {
             figures: Vec::new(),
             images: Vec::new(),
             marks: Vec::new(),
+            codes: Vec::new(),
         })
         .collect();
 

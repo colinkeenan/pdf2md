@@ -92,6 +92,8 @@ pub enum Block {
     /// written as an image file cut from the page.
     /// `label`: the printed page number, for the caption.
     Figure { page: u32, n: usize, area: layout::Figure, label: Option<String> },
+    /// Program code (read from an image of it), written as a code block.
+    Code(String),
 }
 
 /// A block plus the page it starts on (index into the page list).

@@ -95,7 +95,7 @@ Everything is decided from the layout, measured against the book's own typical v
 
 ## Equations that are pictures (ebook-made PDFs)
 
-PDFs made from ebooks (calibre, Kindle) often carry their math as small images instead of text. pdf2md hands each such image to a local math-recognition model, [texify](https://github.com/VikParuchuri/texify), and puts the LaTeX it reads into the text: inline where the image sits in a line of prose, as a numbered displayed equation where it stands alone. An image with a "Fig." caption below it, or with long straight lines meeting at a corner (the axes of a plot), stays a picture. Results are cached by image in `~/.cache/pdf2md/ocr/`, so converting a book again is instant.
+PDFs made from ebooks (calibre, Kindle) often carry their math as small images instead of text. pdf2md hands each such image to a local math-recognition model, [texify](https://github.com/VikParuchuri/texify), and puts the LaTeX it reads into the text: inline where the image sits in a line of prose, as a numbered displayed equation where it stands alone. An image with a "Fig." caption below it, or with long straight lines meeting at a corner (the axes of a plot), stays a picture. A tall equation the model cannot read whole is read line by line. An image of program code (e.g. Mathematica) is read as text with [Tesseract](https://github.com/tesseract-ocr/tesseract) (Arch `tesseract tesseract-data-eng`) and written as a code block. Results are cached by image in `~/.cache/pdf2md/ocr/`, so converting a book again is instant.
 
 The model needs its own Python environment (about 7 GB with PyTorch; a GPU makes it fast — a 770-page book takes about two minutes on an RTX 5080):
 
