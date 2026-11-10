@@ -289,9 +289,9 @@ def read_one(img, model, processor, batch_inference):
     return None
 
 
-def read_by_rows(img, model, processor, batch_inference):
-    """A tall equation the model cannot read whole (it was trained on
-    single equations): read line by line, as one aligned block."""
+def read_rows(img, model, processor, batch_inference):
+    """Each line of a multi-line equation image, read by itself (None if
+    the image is one line, or a line cannot be read)."""
     parts = rows(img)
     if len(parts) < 2:
         return None
@@ -300,8 +300,58 @@ def read_by_rows(img, model, processor, batch_inference):
         t = read_one(part, model, processor, batch_inference)
         if t is None:
             return None
-        lines.append("& " + t)
-    return "\\begin{aligned}\n" + " \\\\\n".join(lines) + "\n\\end{aligned}"
+        lines.append(t)
+    return lines
+
+
+def as_block(lines) -> str:
+    return "\\begin{aligned}\n" + " \\\\\n".join("& " + t for t in lines) + "\n\\end{aligned}"
+
+
+def read_by_rows(img, model, processor, batch_inference):
+    """A tall equation the model cannot read whole (it was trained on
+    single equations): read line by line, as one aligned block."""
+    lines = read_rows(img, model, processor, batch_inference)
+    return None if lines is None else as_block(lines)
+
+
+def lines_apart(img, t: str, model, processor, batch_inference):
+    """An image of several lines read with fewer lines than it has: the
+    model wrote two equations, or an equation and its continuation, as one
+    long line. Read line by line, they are kept apart -- but only if that
+    reading says the same as the whole one. Where the two differ much, the
+    "lines" are no lines (the limits under a sum, the two halves of a
+    fraction) or one of the readings is wrong: the whole reading stays."""
+    if len(rows(img)) < 2 or line_breaks(t) + 1 >= len(rows(img)):
+        return None
+    lines = read_rows(img, model, processor, batch_inference)
+    if lines is None:
+        return None
+    whole = t.replace("\\\\", "")
+    if difference(whole, " ".join(lines)) > max(2, len(canonical(whole)) // 10):
+        return None
+    return as_block(lines)
+
+
+def split_lines(items, dst, model, processor, batch_inference):
+    """Every equation not looked at before (NAME.lines marks those that
+    were): lines read as one are taken apart, see `lines_apart`."""
+    changed = 0
+    for f, img in items:
+        mark, known = dst / f"{f.stem}.lines", dst / f"{f.stem}.tex"
+        if mark.exists() or not known.exists():
+            continue
+        t = known.read_text().strip()
+        if not t.startswith("%"):
+            block = lines_apart(img, t, model, processor, batch_inference)
+            if block is not None:
+                known.write_text(block + "\n")
+                for ext in ("verify", "second"):
+                    (dst / f"{f.stem}.{ext}").unlink(missing_ok=True)
+                changed += 1
+        mark.write_text("\n")
+    if changed:
+        print(f"  {changed} equations of several lines, read as one line before, have their lines again", file=sys.stderr, flush=True)
 
 
 CODE_HINT = re.compile(r"```|\\texttt|\\verb")
@@ -486,12 +536,14 @@ def main():
     if redrawn:
         print(f"  {redrawn} drawings that were read as math before are pictures now", file=sys.stderr, flush=True)
     if not todo:
-        if any(not (dst / f"{f.stem}.verify").exists() for f, _ in verify_only):
+        if any(not (dst / f"{f.stem}.{ext}").exists() for f, _ in verify_only for ext in ("verify", "lines")):
             from texify.inference import batch_inference
             from texify.model.model import load_model
             from texify.model.processor import load_processor
 
-            verify(verify_only, dst, load_model(), load_processor(), batch_inference)
+            model, processor = load_model(), load_processor()
+            split_lines(verify_only, dst, model, processor, batch_inference)
+            verify(verify_only, dst, model, processor, batch_inference)
         settle(verify_only, dst, {})
         return
     # program code shown as an image: every image is read as text too (in
@@ -557,6 +609,7 @@ def main():
     if doubtful:
         unread = sum((dst / f"{f.stem}.tex").read_text().startswith("%UNREADABLE") for f, _ in doubtful)
         print(f"  {len(doubtful)} read again, {unread} unreadable (kept as pictures)", file=sys.stderr, flush=True)
+    split_lines(todo + verify_only, dst, model, processor, batch_inference)
     verify(todo + verify_only, dst, model, processor, batch_inference)
     settle(todo + verify_only, dst, plain)
 

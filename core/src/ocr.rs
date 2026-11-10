@@ -276,11 +276,12 @@ pub fn recognize(images: &[&str]) -> HashMap<String, Reading> {
         }
         match read_cached(&dir, &k) {
             Some(r) => {
-                // math read before the second reading existed, or before
-                // the tests that tell pictures from math: check it now
+                // math read before the second reading existed, before the
+                // tests that tell pictures from math, or before lines read
+                // as one were taken apart: check it now
                 let math = matches!(r, Reading::Latex(_));
                 let unverified = math && !dir.join(format!("{k}.verify")).exists();
-                let unsorted = math && !dir.join(format!("{k}.kind")).exists();
+                let unsorted = math && [".kind", ".lines"].iter().any(|e| !dir.join(format!("{k}{e}")).exists());
                 out.insert(k.clone(), r);
                 if unverified || unsorted {
                     second += unverified as usize;
@@ -314,7 +315,7 @@ pub fn recognize(images: &[&str]) -> HashMap<String, Reading> {
         eprintln!("Reading {second} equations a second time, to list the doubtful ones…");
     }
     if untested > 0 {
-        eprintln!("Checking {untested} images read as math before: are they diagrams or logos?");
+        eprintln!("Checking {untested} images read as math before: diagrams or logos? lines run together?");
     }
     let ok = Command::new(&py).arg(&script).arg(&pending).arg(&dir).status().is_ok_and(|s| s.success());
     if !ok {
