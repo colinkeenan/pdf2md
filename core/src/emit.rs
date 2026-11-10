@@ -111,10 +111,51 @@ pub fn render_inlines(inl: &[Inline]) -> String {
     s
 }
 
+/// The bar above a page marker: where a printed page begins is easy to
+/// find when scrolling. Translucent, in the colour of the text, so it shows
+/// on a light and on a dark page alike.
+const PAGE_BAR: &str = "<hr class=\"page\" style=\"height:6px;border:0;background:currentColor;opacity:0.25\">";
+
 fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
     let is_item = matches!(b, Block::Item { .. });
     if *in_list && !is_item {
         out.push('\n');
+    }
+    // A page marker stands on a line of its own, under its bar: one inside
+    // a paragraph parts it there; one inside a heading or a list item goes
+    // in front of it.
+    let is_marker = |x: &Inline| matches!(x, Inline::Anchor(id) if page_label(id).is_some());
+    match b {
+        Block::Para(inl) if inl.iter().any(is_marker) => {
+            for piece in inl.split_inclusive(is_marker) {
+                let (text, marker) = match piece.split_last() {
+                    Some((m, text)) if is_marker(m) => (text, Some(m)),
+                    _ => (piece, None),
+                };
+                if !text.is_empty() {
+                    render_block(&Block::Para(text.to_vec()), out, in_list);
+                }
+                if let Some(Inline::Anchor(id)) = marker {
+                    render_block(&Block::Anchor(id.clone()), out, in_list);
+                }
+            }
+            return;
+        }
+        Block::Heading { text, .. } | Block::Item { text, .. } | Block::PageNote { text, .. } if text.iter().any(is_marker) => {
+            for m in text.iter().filter(|x| is_marker(x)) {
+                if let Inline::Anchor(id) = m {
+                    render_block(&Block::Anchor(id.clone()), out, in_list);
+                }
+            }
+            let rest: Vec<Inline> = text.iter().filter(|x| !is_marker(x)).cloned().collect();
+            let mut bare = b.clone();
+            if let Block::Heading { text, .. } | Block::Item { text, .. } | Block::PageNote { text, .. } = &mut bare {
+                *text = rest;
+            }
+            render_block(&bare, out, in_list);
+            return;
+        }
+        _ => {}
     }
     *in_list = is_item;
     match b {
@@ -155,7 +196,7 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
         Block::Anchor(id) => match page_label(id) {
             Some(l) => {
                 let approx = if crate::page_is_approx(id) { "≈" } else { "" };
-                out.push_str(&format!("<a id=\"{id}\"><sup>[{approx}p. {l}]</sup></a>\n\n"))
+                out.push_str(&format!("{PAGE_BAR}\n<a id=\"{id}\"><sup>[{approx}p. {l}]</sup></a>\n\n"))
             }
             None => out.push_str(&format!("<a id=\"{id}\"></a>\n\n")),
         },
@@ -551,4 +592,26 @@ pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
         out.push(p);
     }
     Ok(out)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn a_page_marker_stands_alone_under_its_bar() {
+        let para = Block::Para(vec![
+            Inline::Text("The page ends ".into()),
+            Inline::Anchor("p8".into()),
+            Inline::Text("in this sentence.".into()),
+        ]);
+        let (mut out, mut in_list) = (String::new(), false);
+        render_block(&para, &mut out, &mut in_list);
+        assert_eq!(out, format!("The page ends\n\n{PAGE_BAR}\n<a id=\"p8\"><sup>[p. 8]</sup></a>\n\nin this sentence.\n\n"));
+        // in a heading: in front of it
+        let head = Block::Heading { level: 1, size: 0.0, id: "s-x".into(), text: vec![Inline::Anchor("p9-approx".into()), Inline::Text("Title".into())] };
+        let mut out = String::new();
+        render_block(&head, &mut out, &mut in_list);
+        assert_eq!(out, format!("{PAGE_BAR}\n<a id=\"p9-approx\"><sup>[≈p. 9]</sup></a>\n\n# <a id=\"s-x\"></a>Title\n\n"));
+    }
 }
