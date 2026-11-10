@@ -100,6 +100,8 @@ pub enum Block {
     Figure { page: u32, n: usize, area: layout::Figure, label: Option<String> },
     /// Program code (read from an image of it), written as a code block.
     Code(String),
+    /// A horizontal line across the page (drawn as an image).
+    Rule,
 }
 
 /// A block plus the page it starts on (index into the page list).

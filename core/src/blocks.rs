@@ -1194,11 +1194,11 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
         let mut ci = 0;
         while i < end {
             let l = &lines[i];
-            // program code (an image read as text) above this line
+            // program code or a rule (read from an image) above this line
             while ci < codes.len() && codes[ci].0 <= l.top {
                 b.flush();
                 b.anchor_block();
-                b.push(Block::Code(codes[ci].1.clone()));
+                b.push(codes[ci].1.clone());
                 ci += 1;
                 prev_top = None;
             }
@@ -1341,11 +1341,11 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
             prev_top = Some(l.top);
             i += 1;
         }
-        // code below the last line of text
+        // code or a rule below the last line of text
         while ci < codes.len() {
             b.flush();
             b.anchor_block();
-            b.push(Block::Code(codes[ci].1.clone()));
+            b.push(codes[ci].1.clone());
             ci += 1;
         }
         // pictures below the last line of text

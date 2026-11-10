@@ -175,6 +175,7 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
         Block::Code(code) => {
             out.push_str(&format!("```\n{code}\n```\n\n"));
         }
+        Block::Rule => out.push_str("---\n\n"),
         Block::PageNote { label, text } => {
             out.push_str(&format!("{label}. {}\n\n", render_inlines(text)));
         }

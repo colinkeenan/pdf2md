@@ -331,6 +331,20 @@ pub fn needs_check(k: &str) -> Option<usize> {
     Some(n.parse().unwrap_or(1))
 }
 
+/// Width and height of a PNG, from its header.
+pub fn png_size(png_base64: &str) -> Option<(u32, u32)> {
+    let head = base64_decode(png_base64.get(..32)?)?;
+    let be = |b: &[u8]| u32::from_be_bytes([b[0], b[1], b[2], b[3]]);
+    (head.get(12..16)? == b"IHDR").then(|| (be(&head[16..20]), be(&head[20..24])))
+}
+
+/// A horizontal line drawn as an image (a few pixels high, many wide): not
+/// math. Given to the recognizer it is a gray smear, from which texify
+/// invents text.
+pub fn is_rule(png_base64: &str) -> bool {
+    png_size(png_base64).is_some_and(|(w, h)| h <= 3 && w >= 40)
+}
+
 pub fn base64_decode(s: &str) -> Option<Vec<u8>> {
     let val = |c: u8| -> Option<u32> {
         Some(match c {
@@ -384,6 +398,15 @@ mod tests {
         assert_eq!(strip_numbers("a=b \\tag{1}"), "a=b");
         assert_eq!(strip_numbers("\\label{x} a \\\\ b \\tag*{2}"), "a \\\\ b");
         assert_eq!(strip_numbers("x^{2}"), "x^{2}");
+    }
+
+    #[test]
+    fn tells_rules_from_math() {
+        // PNG headers: 364×1 (a rule), 8×1 (a minus sign), 364×40 (an equation)
+        assert_eq!(png_size("iVBORw0KGgoAAAANSUhEUgAAAWwAAAABCAAAAAAAAAAA"), Some((364, 1)));
+        assert!(is_rule("iVBORw0KGgoAAAANSUhEUgAAAWwAAAABCAAAAAAAAAAA"));
+        assert!(!is_rule("iVBORw0KGgoAAAANSUhEUgAAAAgAAAABCAAAAAAAAAAA"));
+        assert!(!is_rule("iVBORw0KGgoAAAANSUhEUgAAAWwAAAAoCAAAAAAAAAAA"));
     }
 
     #[test]

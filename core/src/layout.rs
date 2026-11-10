@@ -140,8 +140,9 @@ pub struct Page {
     /// Printed pages that start on this page (ebook-made PDFs without page
     /// numbers): height where each starts, and its number. From the index.
     pub marks: Vec<(f32, String)>,
-    /// Program code shown as images, read as text: height and text.
-    pub codes: Vec<(f32, String)>,
+    /// Blocks read from images that go between the lines: program code
+    /// (an image read as text) and horizontal rules. Height and block.
+    pub codes: Vec<(f32, crate::Block)>,
 }
 
 /// A picture on a page: a drawing or an embedded image together with the
@@ -572,7 +573,7 @@ fn place_images(doc: &mut Doc) {
     let wanted: Vec<&str> = doc
         .pages
         .iter()
-        .flat_map(|p| p.images.iter().filter(|im| !captioned(p, im)).map(|im| im.png_base64.as_str()))
+        .flat_map(|p| p.images.iter().filter(|im| !captioned(p, im) && !crate::ocr::is_rule(&im.png_base64)).map(|im| im.png_base64.as_str()))
         .collect();
     if doc.pages.iter().all(|p| p.images.is_empty()) {
         return;
@@ -588,10 +589,14 @@ fn place_images(doc: &mut Doc) {
         let images = std::mem::take(&mut page.images);
         let mut changed = vec![false; page.lines.len()];
         for im in &images {
+            if crate::ocr::is_rule(&im.png_base64) {
+                page.codes.push((im.top, crate::Block::Rule));
+                continue;
+            }
             let fig = Figure { left: im.left, right: im.right, top: im.top, bottom: im.bottom };
             let reading = if captioned(page, im) { None } else { readings.get(&crate::ocr::key(&im.png_base64)) };
             if let Some(crate::ocr::Reading::Code(code)) = reading {
-                page.codes.push((im.top, code.clone()));
+                page.codes.push((im.top, crate::Block::Code(code.clone())));
                 continue;
             }
             let tex = match reading {
