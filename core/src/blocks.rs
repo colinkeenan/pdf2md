@@ -319,6 +319,12 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
         let in_phrase = italic_word(i.checked_sub(1).and_then(|k| spans.get(k))) && italic_word(spans.get(i + 1));
         letter && !in_phrase
     };
+    // A linked number ("2.28" of "(2.28)", a page number in the index) is a
+    // reference, never part of the formula beside it; nor are its brackets.
+    let reference = |i: usize| {
+        let t = spans[i].text.trim();
+        spans[i].link.is_some() && t.starts_with(|c: char| c.is_ascii_digit()) && t.chars().all(|c| c.is_ascii_digit() || c == '.')
+    };
     let mut kinds: Vec<K> = (0..n)
         .map(|i| {
             let s = &spans[i];
@@ -344,7 +350,7 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
                 && spans.iter().any(|o| doc.is_math(o) && o.left < s.right() && o.right() > s.left);
             if math || s.script != Script::Normal || accent_over_math || variable(i) {
                 K::Math
-            } else if !t.is_empty() && t.chars().all(|c| c.is_ascii_digit() || "=+−-–()[]/<>|,.;:·×*!′".contains(c)) {
+            } else if !reference(i) && !t.is_empty() && t.chars().all(|c| c.is_ascii_digit() || "=+−-–()[]/<>|,.;:·×*!′".contains(c)) {
                 K::Op
             } else {
                 K::Text
@@ -360,6 +366,9 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
             }
             // "=", "+" ... may be set off by a full word space.
             let t = spans[i].text.trim();
+            if (t.ends_with('(') && i + 1 < n && reference(i + 1)) || (t.starts_with(')') && i > 0 && reference(i - 1)) {
+                continue;
+            }
             let operator = t.starts_with(['=', '+', '−', '-', '×', '<', '>', '≈', '≡', '·'])
                 || t.ends_with(['=', '+', '−', '-', '×', '<', '>', '≈', '≡', '·']);
             let reach = if operator { 0.5 } else { 0.25 } * st.body;

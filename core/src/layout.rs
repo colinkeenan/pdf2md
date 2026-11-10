@@ -658,7 +658,16 @@ fn place_images(doc: &mut Doc) {
             let overlap = |l: &Line| (im.bottom.min(l.top + l.size) - im.top.max(l.top)).max(0.0);
             match (0..page.lines.len()).filter(|&k| overlap(&page.lines[k]) > 0.0).max_by(|&a, &b| overlap(&page.lines[a]).total_cmp(&overlap(&page.lines[b]))) {
                 Some(k) => {
-                    page.lines[k].spans.push(span);
+                    // inside a piece of text: the text goes around it
+                    let spans = &mut page.lines[k].spans;
+                    let inside = |s: &Span| s.tex.is_none() && s.picture.is_none() && s.left + 2.0 < im.left && im.right + 2.0 < s.right();
+                    if let Some(j) = spans.iter().position(inside) {
+                        if let Some((before, after)) = split_around(&spans[j], im.left, im.right) {
+                            spans[j] = before;
+                            spans.push(after);
+                        }
+                    }
+                    spans.push(span);
                     changed[k] = true;
                 }
                 None => {
@@ -677,6 +686,69 @@ fn place_images(doc: &mut Doc) {
         page.lines.sort_by(|a, b| a.top.total_cmp(&b.top));
         page.figures.sort_by(|a, b| a.top.total_cmp(&b.top));
     }
+}
+
+/// A piece of text with an image somewhere inside it (an ebook's symbol
+/// drawn as a picture, in a sentence the PDF holds as one piece): the text
+/// before the image and the text after it. The PDF does not say where in
+/// the text the image is, only where on the page: the place is the gap
+/// between words nearest to it, by the usual widths of the letters -- and
+/// of the gaps near there, one the text itself marks as the place: wider
+/// than the other gaps of the piece, or before a hyphen or a comma
+/// ("an  -polarized beam").
+fn split_around(s: &Span, left: f32, right: f32) -> Option<(Span, Span)> {
+    let width = |c: char| match c {
+        'i' | 'j' | 'l' | 't' | 'f' | 'r' | 'I' | '.' | ',' | ';' | ':' | '\'' | '’' | '′' | '!' | '|' | '(' | ')' | '-' => 0.3,
+        ' ' | '\u{a0}' => 0.27,
+        'm' | 'w' | 'M' | 'W' => 0.8,
+        c if c.is_uppercase() => 0.68,
+        _ => 0.48,
+    };
+    let chars: Vec<(usize, char)> = s.text.char_indices().collect();
+    let total: f32 = chars.iter().map(|&(_, c)| width(c)).sum();
+    if total <= 0.0 || s.width <= 0.0 {
+        return None;
+    }
+    let scale = s.width / total;
+    // gaps between words: (first byte, byte after, spaces, where on the page)
+    let mut gaps: Vec<(usize, usize, usize, f32)> = Vec::new();
+    let (mut x, mut i) = (s.left, 0);
+    while i < chars.len() {
+        if chars[i].1.is_whitespace() {
+            let (start, x0) = (i, x);
+            while i < chars.len() && chars[i].1.is_whitespace() {
+                x += width(chars[i].1) * scale;
+                i += 1;
+            }
+            if start > 0 && i < chars.len() {
+                gaps.push((chars[start].0, chars[i].0, i - start, (x0 + x) / 2.0));
+            }
+        } else {
+            x += width(chars[i].1) * scale;
+            i += 1;
+        }
+    }
+    let usual = gaps.iter().map(|g| g.2).min()?;
+    let before_mark = |g: &(usize, usize, usize, f32)| s.text[g.1..].starts_with(['-', '‐', ',', '.', ';', ':', ')', '′', '’']);
+    let centre = (left + right) / 2.0;
+    let off = |g: &(usize, usize, usize, f32)| (g.3 - centre).abs();
+    let near = 5.0 * s.width / chars.len() as f32;
+    let nearest = |marked: bool| {
+        gaps.iter().filter(|g| !marked || ((g.2 > usual || before_mark(g)) && off(g) <= near)).min_by(|a, b| off(a).total_cmp(&off(b)))
+    };
+    let g = nearest(true).or_else(|| nearest(false))?;
+    if std::env::var("PDF2MD_IMGDEBUG").is_ok() {
+        let marked = (g.2 > usual || before_mark(g)) && off(g) <= near;
+        let mask = |t: &str| t.chars().map(|c| if c.is_alphabetic() { 'w' } else { c }).collect::<String>();
+        eprintln!("IMGSPLIT marked={marked} off={:.0} near={near:.0} gaps={} |{}⟦⟧{}|", off(g), gaps.len(), mask(&s.text[..g.0]), mask(&s.text[g.0..]));
+    }
+    let (mut before, mut after) = (s.clone(), s.clone());
+    before.text = format!("{} ", &s.text[..g.0]);
+    before.width = (left - s.left - 1.0).max(1.0);
+    after.text = if before_mark(g) { s.text[g.1..].to_string() } else { format!(" {}", &s.text[g.1..]) };
+    after.left = right + 1.0;
+    after.width = (s.right() - right - 1.0).max(1.0);
+    Some((before, after))
 }
 
 /// Where each internal link goes on its target page: the PDF's link

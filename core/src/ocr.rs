@@ -196,7 +196,7 @@ fn read_cached(dir: &std::path::Path, k: &str) -> Option<Reading> {
     } else if t.is_empty() {
         None
     } else {
-        Some(Reading::Latex(align_rows(&unglue(&strip_numbers(t)))))
+        Some(Reading::Latex(align_rows(&unglue(unwrap_cell(&strip_numbers(t))))))
     }
 }
 
@@ -214,6 +214,18 @@ fn strip_numbers(t: &str) -> String {
     }
     out.push_str(rest);
     out.trim().to_string()
+}
+
+/// A table of one cell ("\begin{array}{l}{{\frac{1}{2}}}\end{array}", as
+/// the model sometimes writes a small fraction) is just what is in it.
+fn unwrap_cell(t: &str) -> &str {
+    let inner = t.strip_prefix("\\begin{array}{").and_then(|r| r.split_once('}')).and_then(|(cols, r)| {
+        (cols.len() == 1).then_some(r)?.strip_suffix("\\end{array}")
+    });
+    match inner {
+        Some(cell) if !cell.contains("\\\\") && !cell.contains('&') && !cell.contains("\\begin{") => cell.trim(),
+        _ => t,
+    }
 }
 
 /// Commands that stand between the two sides of an equation, like "=".
@@ -341,6 +353,10 @@ fn unglue(t: &str) -> String {
     out
 }
 
+/// An image narrower than this (pixels) is a single symbol; the
+/// recognizer reads it with white space added around it (`math_ocr.py`).
+const SMALL: u32 = 30;
+
 /// Read every image (given as base64 PNG), from the cache or by running
 /// the recognizer once for all new ones. Images it could not read are
 /// missing from the answer.
@@ -362,11 +378,15 @@ pub fn recognize(images: &[&str]) -> HashMap<String, Reading> {
         match read_cached(&dir, &k) {
             Some(r) => {
                 // math read before the second reading existed, before the
-                // tests that tell pictures from math, or before lines read
-                // as one were taken apart: check it now
+                // tests that tell pictures from math, before lines read as
+                // one were taken apart, or (a very small image) before such
+                // images were read with a margin: check it now
                 let math = matches!(r, Reading::Latex(_));
                 let unverified = math && !dir.join(format!("{k}.verify")).exists();
-                let unsorted = math && [".kind", ".lines"].iter().any(|e| !dir.join(format!("{k}{e}")).exists());
+                let small = png_size(img).is_some_and(|(w, _)| w < SMALL);
+                let unsorted = math
+                    && ([".kind", ".lines"].iter().any(|e| !dir.join(format!("{k}{e}")).exists())
+                        || (small && !dir.join(format!("{k}.small")).exists()));
                 out.insert(k.clone(), r);
                 if unverified || unsorted {
                     second += unverified as usize;
@@ -400,7 +420,7 @@ pub fn recognize(images: &[&str]) -> HashMap<String, Reading> {
         eprintln!("Reading {second} equations a second time, to list the doubtful ones…");
     }
     if untested > 0 {
-        eprintln!("Checking {untested} images read as math before: diagrams or logos? lines run together?");
+        eprintln!("Checking {untested} images read as math before: diagrams or logos? lines run together? single symbols misread?");
     }
     let ok = Command::new(&py).arg(&script).arg(&pending).arg(&dir).status().is_ok_and(|s| s.success());
     if !ok {
@@ -494,6 +514,8 @@ mod tests {
         );
         // no "=" in the first row: left-aligned, what goes on set in
         assert_eq!(align_rows(&read(&["\\int f\\,dx", "=1."])), block(&["& \\int f\\,dx", "&\\quad =1."]));
+        assert_eq!(unwrap_cell("\\begin{array}{l}{{\\frac{1}{2}}}\\end{array}"), "{{\\frac{1}{2}}}");
+        assert_eq!(unwrap_cell("\\begin{array}{l}a\\\\ b\\end{array}"), "\\begin{array}{l}a\\\\ b\\end{array}");
         // not read line by line: untouched
         assert_eq!(align_rows("a=b"), "a=b");
     }

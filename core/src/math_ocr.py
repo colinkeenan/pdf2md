@@ -333,6 +333,42 @@ def lines_apart(img, t: str, model, processor, batch_inference):
     return as_block(lines)
 
 
+SMALL = 30  # pixels wide; keep in step with SMALL in ocr.rs
+SMALL_ONES = set()  # names of the images narrower than that
+
+
+def framed(img: Image.Image) -> Image.Image:
+    """A very small image (a single symbol like a hatted bold x, ten pixels
+    wide) with white space around it: filling the whole picture, the model
+    reads it as some other letter; with a margin it reads it right."""
+    if img.width >= SMALL:
+        return img
+    from PIL import ImageOps
+
+    return ImageOps.expand(img, border=16, fill="white")
+
+
+def read_small_again(items, dst, model, processor, batch_inference):
+    """Very small images read before they were given a margin (NAME.small
+    marks those read with one): read again."""
+    changed = 0
+    for f, img in items:
+        mark, known = dst / f"{f.stem}.small", dst / f"{f.stem}.tex"
+        if f.stem not in SMALL_ONES or mark.exists() or not known.exists():
+            continue
+        old = known.read_text().strip()
+        if not old.startswith("%"):
+            t = read_one(img, model, processor, batch_inference)
+            if t is not None and t != old:
+                known.write_text(t + "\n")
+                for ext in ("verify", "second"):
+                    (dst / f"{f.stem}.{ext}").unlink(missing_ok=True)
+                changed += 1
+        mark.write_text("\n")
+    if changed:
+        print(f"  {changed} very small images (single symbols) read again with a margin: read differently now", file=sys.stderr, flush=True)
+
+
 def split_lines(items, dst, model, processor, batch_inference):
     """Every equation not looked at before (NAME.lines marks those that
     were): lines read as one are taken apart, see `lines_apart`."""
@@ -521,6 +557,9 @@ def main():
     redrawn = 0
     for f in files:
         img = Image.open(f).convert("RGB")
+        if img.width < SMALL:
+            SMALL_ONES.add(f.stem)
+        img = framed(img)
         known = dst / f"{f.stem}.tex"
         read = known.exists() and not known.read_text().startswith("%")
         if is_drawing(img):
@@ -536,12 +575,14 @@ def main():
     if redrawn:
         print(f"  {redrawn} drawings that were read as math before are pictures now", file=sys.stderr, flush=True)
     if not todo:
-        if any(not (dst / f"{f.stem}.{ext}").exists() for f, _ in verify_only for ext in ("verify", "lines")):
+        unread_small = any(f.stem in SMALL_ONES and not (dst / f"{f.stem}.small").exists() for f, _ in verify_only)
+        if unread_small or any(not (dst / f"{f.stem}.{ext}").exists() for f, _ in verify_only for ext in ("verify", "lines")):
             from texify.inference import batch_inference
             from texify.model.model import load_model
             from texify.model.processor import load_processor
 
             model, processor = load_model(), load_processor()
+            read_small_again(verify_only, dst, model, processor, batch_inference)
             split_lines(verify_only, dst, model, processor, batch_inference)
             verify(verify_only, dst, model, processor, batch_inference)
         settle(verify_only, dst, {})
@@ -609,6 +650,10 @@ def main():
     if doubtful:
         unread = sum((dst / f"{f.stem}.tex").read_text().startswith("%UNREADABLE") for f, _ in doubtful)
         print(f"  {len(doubtful)} read again, {unread} unreadable (kept as pictures)", file=sys.stderr, flush=True)
+    for f, _ in todo:
+        if f.stem in SMALL_ONES:
+            (dst / f"{f.stem}.small").write_text("\n")
+    read_small_again(verify_only, dst, model, processor, batch_inference)
     split_lines(todo + verify_only, dst, model, processor, batch_inference)
     verify(todo + verify_only, dst, model, processor, batch_inference)
     settle(todo + verify_only, dst, plain)
