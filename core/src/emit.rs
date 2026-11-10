@@ -508,11 +508,17 @@ pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
     write_figures(book, dir);
     let mut out = Vec::new();
     let mut written = Vec::new();
-    for (i, ch) in book.chapters.iter().enumerate() {
+    let texts: Vec<String> = (0..book.chapters.len()).map(|i| chapter_markdown(book, i)).collect();
+    // notes made when the chapter files had other names go where their
+    // chapters are now
+    let mut user = book.user.clone();
+    let files: Vec<(&str, &str)> = book.chapters.iter().zip(&texts).map(|(c, t)| (c.slug.as_str(), t.as_str())).collect();
+    crate::userdata::follow_renames(&mut user, &files);
+    for (ch, text) in book.chapters.iter().zip(&texts) {
         let p = dir.join(format!("{}.md", ch.slug));
-        let mut s = chapter_markdown(book, i);
+        let mut s = text.clone();
         // the reader's notes and fixes from the earlier conversion
-        let lost = crate::userdata::apply(&mut s, &book.user, Some(&ch.slug));
+        let lost = crate::userdata::apply(&mut s, &user, Some(&ch.slug));
         s.push_str(&lost_notes(&lost));
         std::fs::write(&p, &s)?;
         written.push(s);
@@ -528,7 +534,7 @@ pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
     if book.chapters.len() > 1 {
         let p = dir.join("book.md");
         let mut s = book_markdown(book);
-        let lost = crate::userdata::apply(&mut s, &book.user, None);
+        let lost = crate::userdata::apply(&mut s, &user, None);
         s.push_str(&lost_notes(&lost));
         std::fs::write(&p, s)?;
         out.push(p);

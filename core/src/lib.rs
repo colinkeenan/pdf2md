@@ -290,6 +290,7 @@ pub fn convert_doc(doc: &layout::Doc) -> Book {
     let stats = blocks::stats(doc, &pages);
     let blks = blocks::build(doc, &pages, &stats);
     let mut chapters = structure::split_chapters(blks, stats.chapter_size);
+    structure::merge_front_matter(&mut chapters, stats.chapter_size);
     let mut book = Book {
         labels: pages.iter().map(|p| p.label.clone()).collect(),
         pdf_pages: pages.iter().map(|p| doc.pages[p.index].number).collect(),

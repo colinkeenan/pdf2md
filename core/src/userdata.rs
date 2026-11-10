@@ -300,6 +300,37 @@ pub fn collect(dir: &Path) -> UserData {
     all
 }
 
+/// The chapter files are named differently than when the notes were made
+/// (the number in front changed, or prefaces became part of the front
+/// matter): each note, fix and marker moves to the file that now has its
+/// chapter's name, or else to the file that holds its paragraph. `files`:
+/// name (without .md) and text of each chapter file as it is written now.
+pub fn follow_renames(data: &mut UserData, files: &[(&str, &str)]) {
+    let name = |slug: &str| slug.split_once('-').map_or(slug, |(_, n)| n).to_string();
+    let prints: Vec<std::collections::HashSet<String>> =
+        files.iter().map(|(_, text)| text.split("\n\n").map(fingerprint).filter(|f| !f.is_empty()).collect()).collect();
+    let moved = |slug: &mut Option<String>, paragraph: &str| {
+        let Some(old) = slug.as_deref() else { return };
+        if files.iter().any(|(s, _)| *s == old) {
+            return;
+        }
+        let by_name = files.iter().find(|(s, _)| name(s) == name(old)).map(|(s, _)| s.to_string());
+        let by_text = || prints.iter().position(|p| !paragraph.is_empty() && p.contains(paragraph)).map(|i| files[i].0.to_string());
+        if let Some(new) = by_name.or_else(by_text) {
+            *slug = Some(new);
+        }
+    };
+    for n in data.notes.iter_mut() {
+        moved(&mut n.slug, &n.after);
+    }
+    for f in data.fixes.iter_mut() {
+        moved(&mut f.slug, &f.paragraph);
+    }
+    for m in data.marks.iter_mut() {
+        moved(&mut m.slug, &m.paragraph);
+    }
+}
+
 /// Put notes and fixes into a newly written Markdown file (`slug`: the
 /// chapter file it is; None for book.md). Returns the notes that found no
 /// place (for the end of their chapter).
@@ -431,6 +462,22 @@ mod tests {
     use super::*;
 
     const OLD: &str = "# Chapter\n\nFirst paragraph about spin.\n\n<a id=\"eq-1.1\"></a>\n\n$$\nx=1 \\tag{1.1}\n$$\n\n<details class=\"mine\">\n<summary>✎ My note</summary>\n\nWhy *x* is 1.\n\n</details>\n\nSecond paragraph with a <span class=\"fix\" data-was=\"rnistake\">mistake</span> in it.\n\n> [!WARNING]\n> I think this is wrong.\n\nThird paragraph.\n";
+
+    #[test]
+    fn notes_follow_renamed_files() {
+        let mut d = collect_file(OLD, &|_| Some("06-fundamental-concepts".into()));
+        let mut e = collect_file(OLD, &|_| Some("02-preface".into()));
+        let new = "# Chapter\n\nFirst paragraph about spin.\n\nSecond paragraph with a rnistake in it.\n";
+        let files = [("00-front-matter", new), ("01-fundamental-concepts", "# Other\n\nNothing alike.\n")];
+        // the chapter's new number
+        follow_renames(&mut d, &files);
+        assert!(d.notes.iter().all(|n| n.slug.as_deref() == Some("01-fundamental-concepts")));
+        assert_eq!(d.fixes[0].slug.as_deref(), Some("01-fundamental-concepts"));
+        // a preface that is part of the front matter now: by its paragraph
+        follow_renames(&mut e, &files);
+        assert_eq!(e.notes[1].slug.as_deref(), Some("00-front-matter"));
+        assert_eq!(e.fixes[0].slug.as_deref(), Some("00-front-matter"));
+    }
 
     #[test]
     fn finds_notes_and_fixes() {

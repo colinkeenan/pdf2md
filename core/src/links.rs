@@ -184,6 +184,26 @@ fn link_entries(
             cursor = (ci, 0);
             continue;
         }
+        // 1b. a part of the front matter (a preface: a chapter of its own
+        //     before the front matter became one file)
+        let part = chapters[0].blocks.iter().position(|b| match &b.block {
+            Block::Heading { level: 1, id, text, .. } if id.is_empty() => {
+                let hk = key(&plain(text));
+                hk == k || fuzzy_eq(&hk, &k)
+            }
+            _ => false,
+        });
+        if let Some(bi) = part {
+            let new_id = unique_id(&mut used_ids[0], &title);
+            if let Block::Heading { id, .. } = &mut chapters[0].blocks[bi].block {
+                *id = new_id.clone();
+            }
+            let mut t = vec![Inline::Link { text, href: format!("{}.md#{}", chapters[0].slug, new_id) }];
+            let shown = if e.page.starts_with('@') { page_at(chapters, 0, bi).unwrap_or_default() } else { e.page.trim().to_string() };
+            t.extend(page_link(&shown));
+            items.push(Block::Item { level: level.saturating_sub(1), text: t });
+            continue;
+        }
         // 2. a heading near the printed page: same words, or mostly the
         //    same words (the TOC is often worded a little differently)
         let mut best: Option<(f32, usize, usize)> = None;
