@@ -442,6 +442,10 @@ fn take_figure_labels(doc: &mut Doc) {
         for f in page.figures.iter_mut() {
             let (l, r, t, b) = (f.left - m, f.right + m, f.top - 1.2 * m, f.bottom + 1.2 * m);
             for line in page.lines.iter_mut() {
+                // the picture's caption ("Fig. 3.6 …", "Table 5.1 …") is text
+                if crate::links::starts_like_caption(&plain_text(line)) {
+                    continue;
+                }
                 // a whole line beside the picture is prose, not a label
                 let line_inside = line.left >= l && line.right <= r;
                 let spans = std::mem::take(&mut line.spans);
@@ -555,25 +559,35 @@ pub fn parse_svg_images(svg: &str) -> Vec<Vec<PageImage>> {
         .collect()
 }
 
-/// Embedded images: a picture with a "Fig." caption right below it is a
+/// Embedded images: a picture with a "Fig." caption right below it (or
+/// at the top of the next page, when the picture ends its page) is a
 /// figure; any other image is first given to the math recognizer, and
 /// becomes a piece of math in its line (inline, or a displayed equation
 /// when it stands alone), or a figure if the recognizer says it is a
 /// drawing or cannot read it.
 fn place_images(doc: &mut Doc) {
-    let captioned = |page: &Page, im: &PageImage| {
+    // "Fig. 2.6", or a bold "Figure 4.1" — not prose that starts with
+    // "Figure 2.6 shows …"
+    let is_caption = |l: &Line| {
+        let t: String = l.spans.iter().map(|s| s.text.as_str()).collect();
+        let t = t.trim_start();
+        t.strip_prefix("Fig.").is_some_and(|r| r.trim_start().starts_with(|c: char| c.is_ascii_alphanumeric()))
+            || (t.starts_with("Figure ") && crate::links::starts_like_caption(t) && l.spans.iter().find(|s| !s.text.trim().is_empty()).is_some_and(|s| s.bold))
+    };
+    // does each page's following page start with a caption?
+    let top_line = |p: &Page| p.lines.iter().min_by(|a, b| a.top.total_cmp(&b.top)).is_some_and(is_caption);
+    let next_starts: Vec<bool> = (0..doc.pages.len()).map(|i| doc.pages.get(i + 1).is_some_and(top_line)).collect();
+    let captioned = |page: &Page, caption_follows: bool, im: &PageImage| {
         im.bottom - im.top >= 60.0
-            && page.lines.iter().any(|l| {
-                // "Fig. 2.6" — not prose that starts with "Figure 2.6 shows …"
-                let t: String = l.spans.iter().map(|s| s.text.as_str()).collect();
-                let caption = t.trim_start().strip_prefix("Fig.").is_some_and(|r| r.trim_start().starts_with(|c: char| c.is_ascii_alphanumeric()));
-                l.top >= im.bottom - 2.0 && l.top < im.bottom + 60.0 && caption
-            })
+            && (page.lines.iter().any(|l| l.top >= im.bottom - 2.0 && l.top < im.bottom + 60.0 && is_caption(l))
+                // the picture ends its page, the caption starts the next
+                || (caption_follows && !page.lines.iter().any(|l| l.top >= im.bottom - 2.0) && !page.images.iter().any(|o| o.top >= im.bottom - 2.0)))
     };
     let wanted: Vec<&str> = doc
         .pages
         .iter()
-        .flat_map(|p| p.images.iter().filter(|im| !captioned(p, im) && !crate::ocr::is_rule(&im.png_base64)).map(|im| im.png_base64.as_str()))
+        .zip(&next_starts)
+        .flat_map(|(p, &nx)| p.images.iter().filter(move |im| !captioned(p, nx, im) && !crate::ocr::is_rule(&im.png_base64)).map(|im| im.png_base64.as_str()))
         .collect();
     if doc.pages.iter().all(|p| p.images.is_empty()) {
         return;
@@ -585,10 +599,14 @@ fn place_images(doc: &mut Doc) {
     doc.fonts.push(Font { size: doc.body_size, family: "ImagePicture".into(), math: false });
     let fonts = doc.fonts.clone();
     let size_of = |s: &Span| fonts.get(s.font).map_or(s.height, |f| f.size);
-    for page in doc.pages.iter_mut() {
+    for (page, &nx) in doc.pages.iter_mut().zip(&next_starts) {
+        // which images are figures by their caption (asked while the page
+        // still holds its images)
+        let by_caption: Vec<bool> = page.images.iter().map(|im| captioned(page, nx, im)).collect();
         let images = std::mem::take(&mut page.images);
         let mut changed = vec![false; page.lines.len()];
-        for im in &images {
+        for (im, &has_caption) in images.iter().zip(&by_caption) {
+            let captioned = |_: &Page, _: &PageImage| has_caption;
             if crate::ocr::is_rule(&im.png_base64) {
                 page.codes.push((im.top, crate::Block::Rule));
                 continue;

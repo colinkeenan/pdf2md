@@ -799,6 +799,10 @@ fn heading_size(
     if n == 0 || n > 120 || !text.chars().any(|c| c.is_alphabetic()) {
         return None;
     }
+    // "Fig. 3.12 Energy levels": a caption, however short and bold
+    if crate::links::starts_like_caption(&text) {
+        return None;
+    }
     if big_text_line(doc, l, st.body) {
         return Some(l.size);
     }
@@ -845,8 +849,9 @@ fn page_notes_start(doc: &Doc, lines: &[Line], st: &Stats) -> usize {
         k -= 1;
     }
     // a whole page of small type: notes continued from the page before
+    // (or a full-page picture with its caption, which is no note)
     if k == 0 && lines.len() >= 3 {
-        return 0;
+        return if crate::links::starts_like_caption(&plain_text(&lines[0])) { lines.len() } else { 0 };
     }
     let ok = lines.get(k).is_some_and(|l| {
         let first = l.spans.first().map(|s| s.text.trim().to_string()).unwrap_or_default();

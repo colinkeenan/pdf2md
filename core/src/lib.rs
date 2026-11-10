@@ -300,8 +300,8 @@ pub fn convert_doc(doc: &layout::Doc) -> Book {
     links::link_toc(&mut chapters, &book.labels, &book.pdf_pages, &removed, &mut book.warnings);
     links::link_index(&mut chapters, &book.pdf_pages);
     links::link_problems(&mut chapters);
-    links::link_equations(&mut chapters);
     links::link_cross_refs(&mut chapters);
+    links::link_equations(&mut chapters);
     book.chapters = chapters;
     book
 }

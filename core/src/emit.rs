@@ -344,10 +344,10 @@ fn chapter_body(book: &Book, i: usize) -> String {
             // "Figure" finds each picture
             let next = ch.blocks[bi + 1..].iter().find(|b| !matches!(b.block, crate::Block::Anchor(_)));
             if let Some(own) = next.and_then(|b| match &b.block {
-                crate::Block::Para(inl) => crate::links::figure_caption_number(&crate::plain(inl)),
+                crate::Block::Para(inl) => crate::links::caption(inl).filter(|(kind, _)| *kind == "figure"),
                 _ => None,
             }) {
-                s.push_str(&format!("![Fig. {own}]({})\n\n", figure_file(*page, *n)));
+                s.push_str(&format!("![Fig. {}]({})\n\n", own.1, figure_file(*page, *n)));
                 continue;
             }
             let caption = match label {

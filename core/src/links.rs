@@ -927,8 +927,12 @@ pub fn link_equations(chapters: &mut [Chapter]) {
                     // the reference is the text's last word
                     let cut = t.trim_end().rfind(char::is_whitespace).map_or(0, |i| i + 1);
                     let word = &t[cut..];
-                    // (a number after "Problem" is a problem, not an equation)
-                    let problem = t[..cut].trim_end().ends_with("Problem") || t[..cut].trim_end().ends_with("Problems");
+                    // (a number after "Problem", "Section", "Figure" … is
+                    // that, not an equation with the same number)
+                    let before = t[..cut].trim_end();
+                    let problem = ["Problem", "Problems", "Section", "Sections", "Figure", "Figures", "Fig.", "Figs.", "Table", "Tables", "Chapter", "Chapters", "Appendix"]
+                        .iter()
+                        .any(|w| before.ends_with(w));
                     if let Some(n) = crate::blocks::equation_ref(word).filter(|n| home.contains_key(*n) && !problem) {
                         let (slug, anchor) = &home[n];
                         // keep the parentheses and punctuation around the link
@@ -1009,10 +1013,59 @@ pub fn figure_caption_number(t: &str) -> Option<String> {
     (n.contains('.') && n.chars().next().is_some_and(|c| c.is_ascii_alphanumeric())).then(|| n.to_string())
 }
 
-/// Linked references to sections, chapters, appendices and figures
-/// ("Section 3.5", "Chapter 3", "Appendix B", "Figure 1.1") become links
-/// to the heading, chapter file or figure caption. Figure captions
-/// ("Fig. 1.1 …") get an anchor fig-1.1 for that.
+/// The caption a paragraph starts with: ("figure", "1.1") for "Fig. 1.1 …",
+/// and for a bold "Figure 4.1" or "Table 2.1" (bold, because prose can
+/// start with "Figure 4.1 shows …").
+pub fn caption(inl: &[Inline]) -> Option<(&'static str, String)> {
+    if let Some(n) = figure_caption_number(&crate::plain(inl)) {
+        return Some(("figure", n));
+    }
+    let first = inl.iter().find(|x| !matches!(x, Inline::Anchor(_) | Inline::PageLink(_) | Inline::Source(_)))?;
+    let Inline::Strong(t) = first else { return None };
+    let (kind, rest) = match t.trim_start() {
+        t if t.starts_with("Figure ") => ("figure", &t[7..]),
+        t if t.starts_with("Table ") => ("table", &t[6..]),
+        _ => return None,
+    };
+    let n: String = rest.trim_start().chars().take_while(|c| c.is_ascii_alphanumeric() || *c == '.').collect();
+    let n = n.trim_end_matches('.');
+    (n.contains('.') && n.starts_with(|c: char| c.is_ascii_alphanumeric())).then(|| (kind, n.to_string()))
+}
+
+/// Does a line start like a caption ("Fig. 1.1", "Figure 4.1", "Table 2.1")?
+/// Such a line is no heading, however short and bold.
+pub fn starts_like_caption(t: &str) -> bool {
+    let t = t.trim_start();
+    ["Fig. ", "Figure ", "Table "].iter().any(|w| {
+        t.strip_prefix(w).is_some_and(|r| {
+            let n: String = r.trim_start().chars().take_while(|c| !c.is_whitespace()).collect();
+            n.starts_with(|c: char| c.is_ascii_alphanumeric()) && n.contains('.') && n.chars().any(|c| c.is_ascii_digit())
+        })
+    })
+}
+
+/// What stands between the members of a list of references: "and", ",".
+fn list_joint(t: &str) -> bool {
+    ["", "and", "or", "to", "through", "–", "—", "-"].contains(&t.trim().trim_start_matches(',').trim())
+}
+
+/// "and 1.3" / ", 1.3" / "– 1.3" right after a linked "Figures 1.2": the
+/// connecting words and the number (the next member of the list).
+fn list_member(body: &str) -> Option<(&str, &str)> {
+    let cut = body.rfind(char::is_whitespace).map_or(0, |i| i + 1);
+    let (lead, num) = body.split_at(cut);
+    (list_joint(lead)
+        && num.starts_with(|c: char| c.is_ascii_alphanumeric())
+        && num.chars().any(|c| c.is_ascii_digit()))
+    .then_some((lead, num))
+}
+
+/// Linked references to sections, chapters, appendices, figures and tables
+/// ("Section 3.5", "Chapter 3", "Appendix B", "Figure 1.1", "Table 2.1")
+/// become links to the heading, chapter file or caption. Captions
+/// ("Fig. 1.1 …", "Table 2.1 …") get an anchor fig-1.1 / table-2.1 for
+/// that. Runs before the equation references, so "Section 3.5" is not
+/// taken for equation (3.5).
 pub fn link_cross_refs(chapters: &mut [Chapter]) {
     // targets: "section 3.5" -> file#id, "chapter 3" -> file, "figure 1.1" -> file#fig-1.1
     let mut target: HashMap<String, String> = HashMap::new();
@@ -1037,9 +1090,9 @@ pub fn link_cross_refs(chapters: &mut [Chapter]) {
                     }
                 }
                 Block::Para(inl) => {
-                    if let Some(n) = figure_caption_number(&plain(inl)) {
-                        let id = format!("fig-{n}");
-                        if let std::collections::hash_map::Entry::Vacant(e) = target.entry(format!("figure {n}")) {
+                    if let Some((kind, n)) = caption(inl) {
+                        let id = format!("{}-{n}", if kind == "figure" { "fig" } else { kind });
+                        if let std::collections::hash_map::Entry::Vacant(e) = target.entry(format!("{kind} {n}")) {
                             e.insert(format!("{slug}.md#{id}"));
                             inl.insert(0, Inline::Anchor(id));
                         }
@@ -1049,39 +1102,98 @@ pub fn link_cross_refs(chapters: &mut [Chapter]) {
             }
         }
     }
+    // problems (anchored by `link_problems`), for "Problems 5.25 and 5.26"
+    // where each number is a link of its own in the PDF
+    for ch in chapters.iter_mut() {
+        let slug = ch.slug.clone();
+        for inl in text_runs(ch) {
+            for x in inl.iter() {
+                if let Some(n) = match x {
+                    Inline::Anchor(id) => id.strip_prefix("problem-"),
+                    _ => None,
+                } {
+                    target.entry(format!("problem {n}")).or_insert(format!("{slug}.md#problem-{n}"));
+                }
+            }
+        }
+    }
     if target.is_empty() {
         return;
     }
-    let kinds: [(&str, &str); 7] = [
+    let kinds: [(&str, &str); 10] = [
         ("Sections ", "section"),
         ("Section ", "section"),
         ("Chapter ", "chapter"),
         ("Appendix ", "appendix"),
         ("Figures ", "figure"),
         ("Figure ", "figure"),
+        ("Figs. ", "figure"),
         ("Fig. ", "figure"),
+        ("Tables ", "table"),
+        ("Table ", "table"),
     ];
+    // "Figure 1.2a": part (a) of figure 1.2
+    let lookup = |target: &HashMap<String, String>, kind: &str, num: &str| {
+        target.get(&format!("{kind} {num}")).or_else(|| target.get(&format!("{kind} {}", num.trim_end_matches(|c: char| c.is_ascii_lowercase())))).cloned()
+    };
     for ch in chapters.iter_mut() {
         for inl in text_runs(ch) {
             if !inl.iter().any(|x| matches!(x, Inline::PageLink(_))) {
                 continue;
             }
-            let old = std::mem::take(inl);
+            // "Figure" and "4.5" in separate pieces (each under the link,
+            // or only the number): one piece
+            let mut old: Vec<Inline> = Vec::new();
+            for x in std::mem::take(inl) {
+                if let Inline::Text(b) = &x {
+                    let at = match old.as_slice() {
+                        [.., Inline::Text(_), Inline::PageLink(_)] => Some(old.len() - 2),
+                        [.., Inline::Text(_)] => Some(old.len() - 1),
+                        _ => None,
+                    };
+                    if let Some(Inline::Text(a)) = at.map(|i| &mut old[i]) {
+                        let word = kinds.iter().any(|(w, _)| a.trim_end().strip_suffix(w.trim_end()).is_some_and(|r| !r.ends_with(char::is_alphabetic)));
+                        let number = b.trim_start().starts_with(|c: char| c.is_ascii_digit());
+                        if word && number {
+                            *a = format!("{} {}", a.trim_end(), b.trim_start());
+                            old.truncate(at.unwrap() + 1);
+                            continue;
+                        }
+                    }
+                }
+                old.push(x);
+            }
             let mut k = 0;
+            // the kind of the reference linked just before this text
+            // ("Figures 1.2" before " and 1.3")
+            let mut list: Option<&str> = None;
             while k < old.len() {
+                let in_list = list.take();
+                // (kept over a link's marker and over the joining word alone)
+                match &old[k] {
+                    Inline::Link { href, .. } if href.contains("#problem-") => list = Some("problem"),
+                    Inline::PageLink(_) => list = in_list,
+                    Inline::Text(t) if matches!(old.get(k + 1), Some(Inline::PageLink(_))) && list_joint(t.trim_end()) => list = in_list,
+                    _ => {}
+                }
                 if let (Inline::Text(t), Some(Inline::PageLink(_))) = (&old[k], old.get(k + 1)) {
                     // the reference is the end of the text: "… in Figure 1.1,"
                     let body = t.trim_end().trim_end_matches([',', ';', ':', '.', ')']);
-                    let found = kinds.iter().find_map(|(word, kind)| {
+                    let mut found = kinds.iter().find_map(|(word, kind)| {
                         let at = body.rfind(word)?;
-                        let num = body[at + word.len()..].trim();
-                        // "Figure 1.2a": part (a) of figure 1.2
-                        let href = target
-                            .get(&format!("{kind} {num}"))
-                            .or_else(|| target.get(&format!("{kind} {}", num.trim_end_matches(|c: char| c.is_ascii_lowercase()))))?;
-                        Some((at, at + word.len() + body[at + word.len()..].len(), href.clone()))
+                        if body[..at].ends_with(char::is_alphabetic) {
+                            return None;
+                        }
+                        let href = lookup(&target, kind, body[at + word.len()..].trim())?;
+                        Some((at, body.len(), href, *kind))
                     });
-                    if let Some((start, end, href)) = found {
+                    if found.is_none() {
+                        if let (Some(kind), Some((lead, num))) = (in_list, list_member(body)) {
+                            found = lookup(&target, kind, num).map(|href| (lead.len(), body.len(), href, kind));
+                        }
+                    }
+                    if let Some((start, end, href, kind)) = found {
+                        list = Some(kind);
                         if start > 0 {
                             inl.push(Inline::Text(t[..start].to_string()));
                         }
@@ -1130,6 +1242,22 @@ mod problem_tests {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn captions_and_reference_lists() {
+        assert_eq!(caption(&[Inline::Strong("Fig. 1.1".into()), Inline::Text(" The apparatus".into())]), Some(("figure", "1.1".into())));
+        assert_eq!(caption(&[Inline::Anchor("p9".into()), Inline::Strong("Figure 4.1".into())]), Some(("figure", "4.1".into())));
+        assert_eq!(caption(&[Inline::Strong("Table 2.1".into())]), Some(("table", "2.1".into())));
+        // prose, not a caption
+        assert_eq!(caption(&[Inline::Text("Figure 4.1 shows the levels".into())]), None);
+        assert!(starts_like_caption("Fig. 3.12 Energy levels"));
+        assert!(starts_like_caption("Table 2.1 Solutions"));
+        assert!(!starts_like_caption("Figures of merit"));
+        assert!(!starts_like_caption("Table of Contents"));
+        assert_eq!(list_member(" and 1.3"), Some((" and ", "1.3")));
+        assert_eq!(list_member(", 1.3b"), Some((", ", "1.3b")));
+        assert_eq!(list_member(" shows that 1.3"), None);
+    }
 
     #[test]
     fn index_terms_found_in_text() {
