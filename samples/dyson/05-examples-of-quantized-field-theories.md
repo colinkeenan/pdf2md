@@ -168,7 +168,8 @@ this being now an ordinary real integral.
 
 _Figure 3 (p. 43)_
 
-Let us verify, e.g. (207). For $x_{0} <$ 0, we have to take the top path shown, otherwise the integrand blows up; this gives obviously 0.
+Let us verify, e.g. (207). For $x_{0} <$ 0, we have to take the top path shown,<br>
+otherwise the integrand blows up; this gives obviously 0.
 
 For $x_{0} >$ 0, we have to take the bottom path; then
 
@@ -226,7 +227,13 @@ $$
 
 where the factor $| \boldsymbol{k} |^{- 1 / 2}$ appears only as a matter of convenience; the actual Fourier coefficients are then $| \boldsymbol{k} |^{- 1 / 2} a_{k\mu}$ and $| \boldsymbol{k} |^{- 1 / 2} \tilde{a}_{k\mu}$. The integration is over all 4-vectors $( k )$ with $k_{0}$ = +$| \boldsymbol{k} | . B$ is a normalization factor to be determined later. The $a_{k\mu}$ and $\tilde{a}_{k\mu}$ are operators independent of $x$.
 
-Since $A_{1} ,A_{2} ,A_{3}$ and $A_{0}$ are Hermitian, $\tilde{a}_{k\mu} = a_{k\mu}^{*}$ = Hermitian conjugate of $a_{k\mu} , \quad \mu$ = 1$, 2 , 3 ,$ 0 and therefore
+Since $A_{1} ,A_{2} ,A_{3}$ and $A_{0}$ are Hermitian,
+
+<div align="center">
+
+$\tilde{a}_{k\mu} = a_{k\mu}^{*}$ = Hermitian conjugate of $a_{k\mu} , \quad \mu$ = 1$, 2 , 3 ,$ 0 and therefore
+
+</div>
 
 <a id="eq-212"></a>
 
@@ -1368,7 +1375,9 @@ $$
 
 The factor $u$ must be put in to make $\delta_{\mathcal{Q}} L$ a bilinear expression, which is necessary for the Peierls method to be applicable. In fact only bilinear expressions have a physically observable meaning, and it is never meaningful under any circumstances to add together a term linear and a term bilinear in the field operators.
 
-The changed field equations for $\psi$ and $\overline{\psi}$ are For $\overline{\psi}$ : No change
+The changed field equations for $\psi$ and $\overline{\psi}$ are
+
+For $\overline{\psi}$ : No change
 
 <a id="eq-290"></a>
 
@@ -1376,7 +1385,8 @@ $$
 \text{ For } \psi : \quad \left( \sum_{\lambda} \gamma_{\lambda} \frac{\partial}{\partial x_{\lambda}} + \mu \right) \psi - \frac{\epsilon}{\hbar c} \delta^{4} ( x - y ) u = 0 \tag{290}
 $$
 
-Thus $\delta_{\mathcal{Q}} \psi ( z )$ = 0 and $\epsilon \delta_{\mathcal{Q}} \psi ( z )$ satisfies (290). (Compare with (198).) Hence $\delta_{\mathcal{Q}} \psi ( z )$ is defined by the conditions
+Thus $\delta_{\mathcal{Q}} \psi ( z )$ = 0 and $\epsilon \delta_{\mathcal{Q}} \psi ( z )$ satisfies (290). (Compare with (198).)<br>
+Hence $\delta_{\mathcal{Q}} \psi ( z )$ is defined by the conditions
 
 <a id="eq-291"></a>
 

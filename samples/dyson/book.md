@@ -1558,7 +1558,8 @@ calculated by <a id="ix-242">Schwinger</a> using the complete many-particle theo
 
 _Problem 2_ Calculate energy values and <a id="ix-80">wave functions</a> of a Dirac particle moving in a homogeneous infinite magnetic field. Can be done exactly. See F. <a id="ix-226">Sauter</a>, _Zeitschrift für Physik_ **69** (1931) 742.
 
-_Solution_ Take the field $\boldsymbol{B}$ in the $z$ direction.
+_Solution_<br>
+Take the field $\boldsymbol{B}$ in the $z$ direction.
 
 $$
 A_{1} = - \tfrac{1}{2} By, \quad A_{2} = \tfrac{1}{2} Bx
@@ -1988,7 +1989,8 @@ and this is always easy to calculate.
 
 _Problem 3:_ Given a steady potential $V$ a function of position, and a beam of incident particles, electrons. Solve the Schrödinger <a id="ix-230">equation</a> in the <a id="ix-46">Born approximation</a>
 
-a) By stationary perturbation theory b) By time-dependent perturbation theory.
+a) By stationary perturbation theory<br>
+b) By time-dependent perturbation theory.
 
 Show that the results agree, with a <a id="ix-206">transition</a> probability per unit time given by $w$ = (2$\pi / \hbar ) \rho_{E} | V_{BA} |^{2}$. Evaluate the cross section in the case $V = - Ze^{2} /r$, averaging spin over initial state and summing over final state.
 
@@ -3284,7 +3286,8 @@ this being now an ordinary real integral.
 
 _Figure 3 (p. 43)_
 
-Let us verify, e.g. (207). For $x_{0} <$ 0, we have to take the top path shown, otherwise the integrand blows up; this gives obviously 0.
+Let us verify, e.g. (207). For $x_{0} <$ 0, we have to take the top path shown,<br>
+otherwise the integrand blows up; this gives obviously 0.
 
 For $x_{0} >$ 0, we have to take the bottom path; then
 
@@ -3342,7 +3345,13 @@ $$
 
 where the factor $| \boldsymbol{k} |^{- 1 / 2}$ appears only as a matter of convenience; the actual Fourier coefficients are then $| \boldsymbol{k} |^{- 1 / 2} a_{k\mu}$ and $| \boldsymbol{k} |^{- 1 / 2} \tilde{a}_{k\mu}$. The integration is over all 4-vectors $( k )$ with $k_{0}$ = +$| \boldsymbol{k} | . B$ is a normalization factor to be determined later. The $a_{k\mu}$ and $\tilde{a}_{k\mu}$ are operators independent of $x$.
 
-Since $A_{1} ,A_{2} ,A_{3}$ and $A_{0}$ are Hermitian, $\tilde{a}_{k\mu} = a_{k\mu}^{*}$ = Hermitian conjugate of $a_{k\mu} , \quad \mu$ = 1$, 2 , 3 ,$ 0 and therefore
+Since $A_{1} ,A_{2} ,A_{3}$ and $A_{0}$ are Hermitian,
+
+<div align="center">
+
+$\tilde{a}_{k\mu} = a_{k\mu}^{*}$ = Hermitian conjugate of $a_{k\mu} , \quad \mu$ = 1$, 2 , 3 ,$ 0 and therefore
+
+</div>
 
 <a id="eq-212"></a>
 
@@ -4484,7 +4493,9 @@ $$
 
 The factor $u$ must be put in to make $\delta_{\mathcal{Q}} L$ a bilinear expression, which is necessary for the Peierls method to be applicable. In fact only bilinear expressions have a physically observable meaning, and it is never meaningful under any circumstances to add together a term linear and a term bilinear in the field operators.
 
-The changed field equations for $\psi$ and $\overline{\psi}$ are For $\overline{\psi}$ : No change
+The changed field equations for $\psi$ and $\overline{\psi}$ are
+
+For $\overline{\psi}$ : No change
 
 <a id="eq-290"></a>
 
@@ -4492,7 +4503,8 @@ $$
 \text{ For } \psi : \quad \left( \sum_{\lambda} \gamma_{\lambda} \frac{\partial}{\partial x_{\lambda}} + \mu \right) \psi - \frac{\epsilon}{\hbar c} \delta^{4} ( x - y ) u = 0 \tag{290}
 $$
 
-Thus $\delta_{\mathcal{Q}} \psi ( z )$ = 0 and $\epsilon \delta_{\mathcal{Q}} \psi ( z )$ satisfies (290). (Compare with (198).) Hence $\delta_{\mathcal{Q}} \psi ( z )$ is defined by the conditions
+Thus $\delta_{\mathcal{Q}} \psi ( z )$ = 0 and $\epsilon \delta_{\mathcal{Q}} \psi ( z )$ satisfies (290). (Compare with (198).)<br>
+Hence $\delta_{\mathcal{Q}} \psi ( z )$ is defined by the conditions
 
 <a id="eq-291"></a>
 
@@ -6799,7 +6811,9 @@ $$
 = \{ \quad \sqrt{\}}
 $$
 
-$2 \mu$ 2 when spins $u$ and $v$ are antiparallel We get this latter result by observing that for antiparallel spins the initial wave function is
+$2 \mu$ 2 when spins $u$ and $v$ are antiparallel
+
+We get this latter result by observing that for antiparallel spins the initial wave function is
 
 $$
 \psi = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ 0 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} - \frac{1}{\sqrt{2}} \begin{pmatrix} 0 \\ 1 \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix}
@@ -9293,7 +9307,8 @@ $$
 
 With the relativistic calculation of the Lamb shift which we have done, this course comes to an end. In this calculation we have met and seen how to overcome all the problems of mass and charge renormalization. We can say we now have a workable quantum electrodynamics which will give finite and unambiguous values for all observable quantities.
 
-This calculation of the Lamb shift was of course not exact. The two most important errors were (i) using non-relativistic wave-functions and the dipole radiation approximation in evaluating the effects of $H_{T 1}$;
+This calculation of the Lamb shift was of course not exact. The two most important errors were<br>
+(i) using non-relativistic wave-functions and the dipole radiation approximation in evaluating the effects of $H_{T 1}$;
 
 (ii) neglecting the finite mass of the proton.
 

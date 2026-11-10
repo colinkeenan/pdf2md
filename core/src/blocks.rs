@@ -772,6 +772,35 @@ fn ends_sentence(t: &str) -> bool {
     matches!(t.trim_end().chars().last(), Some('.' | ':' | '?' | '!'))
 }
 
+/// A line of words only: no formula, nothing raised or lowered.
+fn words_only(doc: &Doc, l: &Line) -> bool {
+    l.spans.iter().all(|s| s.tex.is_none() && s.picture.is_none() && s.script == Script::Normal && !doc.is_math(s))
+}
+
+/// Width of what a line starts with and cannot be broken: its first word,
+/// or a formula, with whatever is glued to it.
+fn first_chunk_width(l: &Line) -> f32 {
+    let mut w = 0.0;
+    for (i, s) in l.spans.iter().enumerate() {
+        if i > 0 && (s.left - l.spans[i - 1].right() > 0.15 * l.size || s.text.starts_with(char::is_whitespace)) {
+            break;
+        }
+        let t = s.text.trim_start();
+        if s.tex.is_some() || t.is_empty() {
+            w += s.width;
+            continue;
+        }
+        match t.find(char::is_whitespace) {
+            Some(k) => {
+                w += s.width * t[..k].chars().count() as f32 / s.text.chars().count().max(1) as f32;
+                break;
+            }
+            None => w += s.width,
+        }
+    }
+    w
+}
+
 /// Does this line start a new numbered entry (a note "¹ ..." or a
 /// reference "[3] ...")?
 fn starts_entry(l: &Line) -> bool {
@@ -839,7 +868,8 @@ fn heading_size(
 
 /// Footnotes at the bottom of a page: the last lines, in a smaller font,
 /// starting with a marker. Returns the index where they start.
-fn page_notes_start(doc: &Doc, lines: &[Line], st: &Stats) -> usize {
+/// `note_open`: the page before ended in a note (which may go on here).
+fn page_notes_start(doc: &Doc, lines: &[Line], st: &Stats, note_open: bool) -> usize {
     // a line's type size, not counting equation images (given body size)
     let text_size = |l: &Line| {
         l.spans.iter().filter(|s| s.tex.is_none()).map(|s| doc.size_of(s)).fold(0.0f32, f32::max).max(if l.spans.iter().all(|s| s.tex.is_some()) { l.size } else { 0.0 })
@@ -848,10 +878,11 @@ fn page_notes_start(doc: &Doc, lines: &[Line], st: &Stats) -> usize {
     while k > 0 && text_size(&lines[k - 1]) <= 0.9 * st.body {
         k -= 1;
     }
-    // a whole page of small type: notes continued from the page before
-    // (or a full-page picture with its caption, which is no note)
-    if k == 0 && lines.len() >= 3 {
-        return if crate::links::starts_like_caption(&plain_text(&lines[0])) { lines.len() } else { 0 };
+    // a whole page of small type: notes continued from the page before,
+    // if a note is open (not a copyright page, and not a full-page picture
+    // with its caption)
+    if k == 0 && lines.len() >= 3 && note_open && !crate::links::starts_like_caption(&plain_text(&lines[0])) {
+        return 0;
     }
     let ok = lines.get(k).is_some_and(|l| {
         let first = l.spans.first().map(|s| s.text.trim().to_string()).unwrap_or_default();
@@ -932,12 +963,19 @@ fn attach_fraction_rows(doc: &Doc, lines: &[Line], bars: &[Rule]) -> Vec<Line> {
 // ---------------------------------------------------------------------------
 // Building
 
+/// Room left behind a line (in type sizes, after the next line's first
+/// word) from which the break is a hard return.
+const HARD_RETURN_ROOM: f32 = 0.5;
+
 struct Prev {
     left: f32,
     right: f32,
     top: f32,
     page: usize,
     ends_sentence: bool,
+    /// its type size, if it is words only (no formula, nothing raised or
+    /// lowered, which make a line taller)
+    plain_size: Option<f32>,
     /// the web address the line ends in (an address broken over two lines)
     last_url: Option<String>,
 }
@@ -957,6 +995,9 @@ struct Builder<'a> {
     para_centered: bool,
     /// how far its most inset line is in from the margins
     para_inset: f32,
+    /// where in `para` the line breaks stand that the book made on purpose
+    /// (hard returns): kept whether or not the paragraph is centered
+    hard: Vec<usize>,
 }
 
 impl Builder<'_> {
@@ -967,14 +1008,16 @@ impl Builder<'_> {
     fn flush(&mut self) {
         if !self.para.is_empty() {
             let p = std::mem::take(&mut self.para);
+            let hard = std::mem::take(&mut self.hard);
             // (one line at least clearly in from the margins: an indented
             // one-line paragraph that ends early is centered by chance)
             let centered = self.para_centered && self.para_inset >= 2.5 * self.st.body;
             // not centered after all: its kept line breaks become spaces
+            // (but not the hard returns)
             let p = if centered {
                 p
             } else {
-                p.into_iter().map(|i| if i == Inline::Break { Inline::Text(" ".into()) } else { i }).collect()
+                p.into_iter().enumerate().map(|(k, i)| if i == Inline::Break && !hard.contains(&k) { Inline::Text(" ".into()) } else { i }).collect()
             };
             self.out.push(Blk { block: Block::Para(tidy(p)), page: self.para_page, centered });
         }
@@ -987,6 +1030,20 @@ impl Builder<'_> {
         if let Some(a) = self.anchor.take() {
             self.push(Block::Anchor(a));
         }
+    }
+
+    /// A hard return before this line: the line above ends early although
+    /// this line's first word would have fit behind it (text that wraps
+    /// only breaks where the next word does not fit). `measure` is the
+    /// right edge the text runs to. Returns the room left over, in type
+    /// sizes, if any.
+    fn room_above(&self, l: &Line, measure: f32, pi: usize) -> Option<f32> {
+        let p = self.prev.as_ref()?;
+        if p.page != pi || l.top <= p.top {
+            return None;
+        }
+        let room = measure - (p.right + 0.3 * l.size + first_chunk_width(l));
+        (room > 0.0).then_some(room / l.size)
     }
 
     fn starts_para(&self, l: &Line, next: Option<&Line>, pi: usize) -> bool {
@@ -1159,6 +1216,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
         page: 0,
         index_mode: false,
         para_centered: false,
+        hard: Vec::new(),
         para_inset: 0.0,
     };
     // printed page marks (ebook PDFs without page numbers; see layout.rs)
@@ -1177,7 +1235,8 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
             continue;
         }
         let lines = &attach_fraction_rows(doc, &page.lines, &doc.pages[page.index].rules);
-        let end = page_notes_start(doc, lines, st);
+        let note_open = matches!(b.out.last(), Some(Blk { block: Block::PageNote { .. }, .. }));
+        let end = page_notes_start(doc, lines, st, note_open);
         let disp = display_flags(doc, &lines[..end], st);
         // left edge of each column, for index indentation
         let mut col_left: HashMap<u8, f32> = HashMap::new();
@@ -1312,7 +1371,26 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 continue;
             }
             let next = (i + 1 < end && !disp[i + 1]).then(|| &lines[i + 1]);
-            if b.starts_para(l, next, pi) {
+            // a hard return above this line: a line of its own, and a
+            // paragraph of its own if there is space above it too
+            let at_margin = |l: &Line| (l.left - st.left).abs() < 0.6 * st.body;
+            let measure = if at_margin(l) {
+                st.right
+            } else {
+                lines[..end].iter().filter(|o| (o.left - l.left).abs() < 0.6 * st.body && o.size == l.size).map(|o| o.right).fold(l.right, f32::max)
+            };
+            let starts = b.starts_para(l, next, pi);
+            let room = if starts { None } else { b.room_above(l, measure, pi) };
+            let hard = room.is_some_and(|r| r >= HARD_RETURN_ROOM);
+            // more space above than between the lines of a paragraph in
+            // this type size: after a hard return, or between two lines of
+            // plain words (a formula makes its line taller, not spaced)
+            let pitch = st.spacing * l.size / st.body;
+            let spaced = !starts
+                && b.prev.as_ref().is_some_and(|p| {
+                    p.page == pi && l.top - p.top > 1.4 * pitch && (hard || (p.plain_size == Some(l.size) && words_only(doc, l)))
+                });
+            if starts || spaced {
                 b.flush();
                 b.anchor_block();
                 b.para_page = pi;
@@ -1325,7 +1403,10 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 }
                 // centered lines keep their line breaks
                 let centered = b.para_centered && is_centered(l, st);
-                if centered {
+                if centered || hard {
+                    if hard {
+                        b.hard.push(b.para.len());
+                    }
                     b.para.push(Inline::Break);
                     b.para.extend(inl);
                 } else {
@@ -1341,6 +1422,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 top: l.top,
                 page: pi,
                 ends_sentence: ends_sentence(&plain_text(l)),
+                plain_size: words_only(doc, l).then_some(l.size),
                 last_url: l.spans.last().and_then(|s| s.url.clone()),
             });
             prev_top = Some(l.top);

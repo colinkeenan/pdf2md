@@ -780,7 +780,9 @@ $$
 = \{ \quad \sqrt{\}}
 $$
 
-$2 \mu$ 2 when spins $u$ and $v$ are antiparallel We get this latter result by observing that for antiparallel spins the initial wave function is
+$2 \mu$ 2 when spins $u$ and $v$ are antiparallel
+
+We get this latter result by observing that for antiparallel spins the initial wave function is
 
 $$
 \psi = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ 0 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} - \frac{1}{\sqrt{2}} \begin{pmatrix} 0 \\ 1 \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix}

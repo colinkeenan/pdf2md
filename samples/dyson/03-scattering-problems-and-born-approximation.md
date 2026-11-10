@@ -212,7 +212,8 @@ and this is always easy to calculate.
 
 _Problem 3:_ Given a steady potential $V$ a function of position, and a beam of incident particles, electrons. Solve the Schrödinger <a id="ix-230">equation</a> in the <a id="ix-46">Born approximation</a>
 
-a) By stationary perturbation theory b) By time-dependent perturbation theory.
+a) By stationary perturbation theory<br>
+b) By time-dependent perturbation theory.
 
 Show that the results agree, with a <a id="ix-206">transition</a> probability per unit time given by $w$ = (2$\pi / \hbar ) \rho_{E} | V_{BA} |^{2}$. Evaluate the cross section in the case $V = - Ze^{2} /r$, averaging spin over initial state and summing over final state.
 

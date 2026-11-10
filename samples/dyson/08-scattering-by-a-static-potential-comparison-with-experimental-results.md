@@ -896,7 +896,8 @@ $$
 
 With the relativistic calculation of the Lamb shift which we have done, this course comes to an end. In this calculation we have met and seen how to overcome all the problems of mass and charge renormalization. We can say we now have a workable quantum electrodynamics which will give finite and unambiguous values for all observable quantities.
 
-This calculation of the Lamb shift was of course not exact. The two most important errors were (i) using non-relativistic wave-functions and the dipole radiation approximation in evaluating the effects of $H_{T 1}$;
+This calculation of the Lamb shift was of course not exact. The two most important errors were<br>
+(i) using non-relativistic wave-functions and the dipole radiation approximation in evaluating the effects of $H_{T 1}$;
 
 (ii) neglecting the finite mass of the proton.
 

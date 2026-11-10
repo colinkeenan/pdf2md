@@ -1228,7 +1228,8 @@ calculated by <a id="ix-242">Schwinger</a> using the complete many-particle theo
 
 _Problem 2_ Calculate energy values and <a id="ix-80">wave functions</a> of a Dirac particle moving in a homogeneous infinite magnetic field. Can be done exactly. See F. <a id="ix-226">Sauter</a>, _Zeitschrift für Physik_ **69** (1931) 742.
 
-_Solution_ Take the field $\boldsymbol{B}$ in the $z$ direction.
+_Solution_<br>
+Take the field $\boldsymbol{B}$ in the $z$ direction.
 
 $$
 A_{1} = - \tfrac{1}{2} By, \quad A_{2} = \tfrac{1}{2} Bx
