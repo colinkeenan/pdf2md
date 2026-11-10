@@ -4,8 +4,11 @@ Usage: python math_ocr.py <folder of NAME.png> <output folder>
 
 Writes <output folder>/NAME.tex for every image: the LaTeX of the equation,
 "%CODE" and the text for program code (read with Tesseract),
-or "%DRAWING" for a plot or diagram (an image with long straight lines
-meeting at a corner, like the axes of a graph). Runs texify
+or "%DRAWING" for a picture that is not math: a plot or diagram (long
+straight lines meeting at a corner, like the axes of a graph, or one large
+connected shape) or lettering such as a publisher's logo (plain words that
+the math model reads differently each time). NAME.kind marks an image
+that passed these tests. Runs texify
 (https://github.com/VikParuchuri/texify) on the GPU if there is one.
 """
 
@@ -17,10 +20,55 @@ from pathlib import Path
 from PIL import Image
 
 
+# A connected shape at least this wide and this high (pixels) is drawn, not
+# typeset. The largest symbols of 96-dpi equation images (sums, integrals)
+# stay near 40; brackets and bars are long one way only.
+BIG_SHAPE = 56
+
+
+def has_big_shape(img: Image.Image) -> bool:
+    """One connected piece of ink that is large both ways: a curve, a box,
+    an arrow across the picture. In math only a root sign over a tall
+    formula grows like that, and all its ink is the bar along the top and
+    the tick at the left."""
+    g = img.convert("L")
+    w, h = g.size
+    if h < BIG_SHAPE or w < BIG_SHAPE:
+        return False
+    px = g.load()
+    seen = bytearray(w * h)
+    for y0 in range(h):
+        for x0 in range(w):
+            if seen[y0 * w + x0] or px[x0, y0] >= 140:
+                continue
+            seen[y0 * w + x0] = 1
+            stack, pts = [(x0, y0)], []
+            while stack:
+                x, y = stack.pop()
+                pts.append((x, y))
+                for u in (x - 1, x, x + 1):
+                    for v in (y - 1, y, y + 1):
+                        if 0 <= u < w and 0 <= v < h and not seen[v * w + u] and px[u, v] < 140:
+                            seen[v * w + u] = 1
+                            stack.append((u, v))
+            left, top = min(p[0] for p in pts), min(p[1] for p in pts)
+            bw, bh = max(p[0] for p in pts) - left + 1, max(p[1] for p in pts) - top + 1
+            if bw < BIG_SHAPE or bh < BIG_SHAPE:
+                continue
+            tick = max(16, min(0.4 * bh, 0.5 * bw))
+            beyond = sum(1 for x, y in pts if x - left >= tick and y - top >= 6)
+            if beyond > 0.1 * len(pts):
+                return True
+    return False
+
+
 def is_drawing(img: Image.Image) -> bool:
-    """Axes or boxes: a long vertical and a long horizontal run of dark
-    pixels that meet. Equations have long horizontal fraction bars, but no
-    long straight vertical strokes ending in one."""
+    """A plot or diagram: one large connected shape, or axes or boxes (a
+    long vertical and a long horizontal run of dark pixels that meet).
+    Equations have long horizontal fraction bars, but no long straight
+    vertical strokes ending in one."""
+    if has_big_shape(img):
+        return True
     g = img.convert("L")
     w, h = g.size
     if h < 100 or w < 100:
@@ -318,6 +366,45 @@ def read_code(img: Image.Image):
     return text if text and looks_like_code(text) else None
 
 
+def lettering(text) -> bool:
+    """Plain-text OCR that found words and nothing else (a logo, a name set
+    as a picture): at least two words, making up most of what was read."""
+    text = text or ""
+    chars = len(re.sub(r"\s", "", text))
+    words = re.findall(r"(?<!\S)[A-Za-z]{4,}(?!\S)", text)
+    return len(words) >= 2 and sum(map(len, words)) >= 0.7 * chars
+
+
+def settle(items, dst, texts):
+    """After both readings: words that the math model read as two wholly
+    different things (the readings differ by more than twice the length
+    of the first) are lettering, not math, and stay a picture. Every other
+    image is marked as passed (NAME.kind), so it is not tested again."""
+    pictures = 0
+    for f, img in items:
+        tex = dst / f"{f.stem}.tex"
+        if not tex.exists() or tex.read_text().startswith("%"):
+            continue
+        check = dst / f"{f.stem}.verify"
+        m = re.match(r"check (\d+)", check.read_text()) if check.exists() else None
+        if m and int(m.group(1)) >= 2 * max(len(canonical(tex.read_text())), 1):
+            text = texts[f] if f in texts else ocr_text(img)
+            if lettering(text):
+                as_picture(dst, f)
+                pictures += 1
+                continue
+        (dst / f"{f.stem}.kind").write_text("math\n")
+    if pictures:
+        print(f"  {pictures} images of words (logos and the like) kept as pictures", file=sys.stderr, flush=True)
+
+
+def as_picture(dst, f):
+    """An image read as math before that is a picture after all."""
+    (dst / f"{f.stem}.tex").write_text("%DRAWING\n")
+    for ext in ("verify", "second"):
+        (dst / f"{f.stem}.{ext}").unlink(missing_ok=True)
+
+
 def canonical(t: str) -> list:
     """LaTeX reduced to what changes the formula: no spacing commands,
     \\left/\\right or sizes, optional braces; one bold style; as tokens."""
@@ -348,7 +435,11 @@ def verify(items, dst, model, processor, batch_inference):
     different formulas (formatting aside) the equation is worth checking
     against the book: NAME.verify says "check N" (N symbols differ), else
     "ok"; NAME.second keeps the second reading."""
-    items = [(f, img) for f, img in items if not (dst / f"{f.stem}.tex").read_text().startswith("%")]
+    items = [
+        (f, img)
+        for f, img in items
+        if not (dst / f"{f.stem}.tex").read_text().startswith("%") and not (dst / f"{f.stem}.verify").exists()
+    ]
     if not items:
         return
     big = lambda img: img.resize((img.width * 2, img.height * 2), Image.LANCZOS)
@@ -376,22 +467,32 @@ def main():
     src, dst = Path(sys.argv[1]), Path(sys.argv[2])
     files = sorted(src.glob("*.png"))
     todo = []
-    verify_only = []  # read before: only the second reading is missing
+    verify_only = []  # read before: the second reading or the picture tests are missing
+    redrawn = 0
     for f in files:
         img = Image.open(f).convert("RGB")
         known = dst / f"{f.stem}.tex"
-        if known.exists() and not known.read_text().startswith("%"):
+        read = known.exists() and not known.read_text().startswith("%")
+        if is_drawing(img):
+            if read:
+                as_picture(dst, f)
+                redrawn += 1
+            else:
+                known.write_text("%DRAWING\n")
+        elif read:
             verify_only.append((f, img))
-        elif is_drawing(img):
-            (dst / f"{f.stem}.tex").write_text("%DRAWING\n")
         else:
             todo.append((f, img))
-    if not todo and verify_only:
-        from texify.inference import batch_inference
-        from texify.model.model import load_model
-        from texify.model.processor import load_processor
+    if redrawn:
+        print(f"  {redrawn} drawings that were read as math before are pictures now", file=sys.stderr, flush=True)
+    if not todo:
+        if any(not (dst / f"{f.stem}.verify").exists() for f, _ in verify_only):
+            from texify.inference import batch_inference
+            from texify.model.model import load_model
+            from texify.model.processor import load_processor
 
-        verify(verify_only, dst, load_model(), load_processor(), batch_inference)
+            verify(verify_only, dst, load_model(), load_processor(), batch_inference)
+        settle(verify_only, dst, {})
         return
     # program code shown as an image: every image is read as text too (in
     # parallel); unmistakable code is written as code, not given to texify
@@ -399,6 +500,7 @@ def main():
 
     with ThreadPoolExecutor() as pool:
         texts = list(pool.map(lambda fi: ocr_text(fi[1]), todo))
+    plain = {f: text for (f, _), text in zip(todo, texts)}
     rest = []
     for (f, img), text in zip(todo, texts):
         if text and surely_code(text):
@@ -407,6 +509,7 @@ def main():
             rest.append((f, img))
     todo = rest
     if not todo:
+        settle(verify_only, dst, {})
         return
     from texify.inference import batch_inference
     from texify.model.model import load_model
@@ -455,6 +558,7 @@ def main():
         unread = sum((dst / f"{f.stem}.tex").read_text().startswith("%UNREADABLE") for f, _ in doubtful)
         print(f"  {len(doubtful)} read again, {unread} unreadable (kept as pictures)", file=sys.stderr, flush=True)
     verify(todo + verify_only, dst, model, processor, batch_inference)
+    settle(todo + verify_only, dst, plain)
 
 
 if __name__ == "__main__":

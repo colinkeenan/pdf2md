@@ -2,7 +2,8 @@
 //! their math as small raster images instead of text. Each image is handed
 //! to a local math-recognition model (`math_ocr.py`, run with the Python of
 //! its own environment) that answers with LaTeX, or says the image is a
-//! drawing, or that it cannot read it (such images stay pictures). Answers
+//! picture and no math (a diagram, a logo), or that it cannot read it
+//! (such images stay pictures). Answers
 //! are cached by image content in
 //! `~/.cache/pdf2md/ocr/`, so converting a book again is instant.
 //!
@@ -17,7 +18,7 @@ use std::process::Command;
 #[derive(Debug, Clone, PartialEq)]
 pub enum Reading {
     Latex(String),
-    /// a plot or diagram, not math
+    /// a plot, a diagram or lettering (a logo), not math
     Drawing,
     /// math the recognizer could not read plausibly
     Unreadable,
@@ -262,6 +263,7 @@ pub fn recognize(images: &[&str]) -> HashMap<String, Reading> {
     let mut out = HashMap::new();
     let Some(dir) = cache_dir() else { return out };
     let mut todo: Vec<(String, &str)> = Vec::new();
+    let (mut second, mut untested) = (0, 0);
     for &img in images {
         let k = key(img);
         if out.contains_key(&k) || todo.iter().any(|(t, _)| *t == k) {
@@ -274,10 +276,15 @@ pub fn recognize(images: &[&str]) -> HashMap<String, Reading> {
         }
         match read_cached(&dir, &k) {
             Some(r) => {
-                // math read before the second reading existed: check it now
-                let unverified = matches!(r, Reading::Latex(_)) && !dir.join(format!("{k}.verify")).exists();
+                // math read before the second reading existed, or before
+                // the tests that tell pictures from math: check it now
+                let math = matches!(r, Reading::Latex(_));
+                let unverified = math && !dir.join(format!("{k}.verify")).exists();
+                let unsorted = math && !dir.join(format!("{k}.kind")).exists();
                 out.insert(k.clone(), r);
-                if unverified {
+                if unverified || unsorted {
+                    second += unverified as usize;
+                    untested += (unsorted && !unverified) as usize;
                     todo.push((k, img));
                 }
             }
@@ -303,8 +310,11 @@ pub fn recognize(images: &[&str]) -> HashMap<String, Reading> {
     if new > 0 {
         eprintln!("Reading {new} equation images with the math recognizer…");
     }
-    if todo.len() > new {
-        eprintln!("Reading {} equations a second time, to list the doubtful ones…", todo.len() - new);
+    if second > 0 {
+        eprintln!("Reading {second} equations a second time, to list the doubtful ones…");
+    }
+    if untested > 0 {
+        eprintln!("Checking {untested} images read as math before: are they diagrams or logos?");
     }
     let ok = Command::new(&py).arg(&script).arg(&pending).arg(&dir).status().is_ok_and(|s| s.success());
     if !ok {
