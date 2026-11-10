@@ -1850,6 +1850,42 @@ mod tests {
 </pdf2xml>"##;
 
     #[test]
+    fn text_goes_around_an_image_inside_it() {
+        let span = |text: &str, left: f32, width: f32| Span {
+            text: text.into(),
+            left,
+            top: 0.0,
+            width,
+            height: 22.0,
+            font: 0,
+            bold: false,
+            italic: false,
+            script: Script::Normal,
+            overline: false,
+            picture: None,
+            tex: None,
+            link: None,
+            url: None,
+            url_text: None,
+            link_top: None,
+            image_key: None,
+        };
+        // the image stands before the hyphen, not at the nearer word gap
+        let s = span("first  filter  is  an  -polarized  beam,  which", 100.0, 470.0);
+        let (a, b) = split_around(&s, 318.0, 330.0).unwrap();
+        assert_eq!((a.text.as_str(), b.text.as_str()), ("first  filter  is  an ", "-polarized  beam,  which"));
+        assert!(a.right() < 318.0 && b.left > 330.0 && (b.right() - s.right()).abs() < 0.1);
+        // two images in one piece: each at its wider gap
+        let s = span("Just as   and   in", 100.0, 180.0);
+        let (a, b) = split_around(&s, 165.0, 177.0).unwrap();
+        assert_eq!((a.text.as_str(), b.text.as_str()), ("Just as ", " and   in"));
+        let (c, d) = split_around(&b, 226.0, 238.0).unwrap();
+        assert_eq!((c.text.as_str(), d.text.as_str()), (" and ", " in"));
+        // no gap between words: left whole
+        assert!(split_around(&span("polarized", 100.0, 90.0), 140.0, 150.0).is_none());
+    }
+
+    #[test]
     fn reads_rules_from_svg() {
         // one bar (the overline of Ā on Dyson p. ii) and one glyph outline
         let svg = r#"<svg><defs><g id="glyph-0-1"><path d="M 1 1 C 2 2 3 3 4 4 Z"/></g></defs>
