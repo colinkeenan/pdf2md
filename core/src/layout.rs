@@ -688,6 +688,18 @@ fn place_images(doc: &mut Doc) {
     }
 }
 
+/// About how wide a character of the text font is, in type sizes: to tell
+/// where inside a piece of text a place on the page is.
+pub(crate) fn char_width(c: char) -> f32 {
+    match c {
+        'i' | 'j' | 'l' | 't' | 'f' | 'r' | 'I' | '.' | ',' | ';' | ':' | '\'' | '’' | '′' | '!' | '|' | '(' | ')' | '-' => 0.3,
+        ' ' | '\u{a0}' => 0.27,
+        'm' | 'w' | 'M' | 'W' => 0.8,
+        c if c.is_uppercase() => 0.68,
+        _ => 0.48,
+    }
+}
+
 /// A piece of text with an image somewhere inside it (an ebook's symbol
 /// drawn as a picture, in a sentence the PDF holds as one piece): the text
 /// before the image and the text after it. The PDF does not say where in
@@ -697,13 +709,7 @@ fn place_images(doc: &mut Doc) {
 /// than the other gaps of the piece, or before a hyphen or a comma
 /// ("an  -polarized beam").
 fn split_around(s: &Span, left: f32, right: f32) -> Option<(Span, Span)> {
-    let width = |c: char| match c {
-        'i' | 'j' | 'l' | 't' | 'f' | 'r' | 'I' | '.' | ',' | ';' | ':' | '\'' | '’' | '′' | '!' | '|' | '(' | ')' | '-' => 0.3,
-        ' ' | '\u{a0}' => 0.27,
-        'm' | 'w' | 'M' | 'W' => 0.8,
-        c if c.is_uppercase() => 0.68,
-        _ => 0.48,
-    };
+    let width = char_width;
     let chars: Vec<(usize, char)> = s.text.char_indices().collect();
     let total: f32 = chars.iter().map(|&(_, c)| width(c)).sum();
     if total <= 0.0 || s.width <= 0.0 {

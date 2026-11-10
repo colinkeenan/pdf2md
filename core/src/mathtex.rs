@@ -154,12 +154,12 @@ pub fn sym(c: char) -> Option<&'static str> {
         '†' => "\\dagger ",
         '⊥' => "\\perp ",
         '∥' => "\\parallel ",
-        '⟨' | '〈' => "\\langle ",
-        '⟩' | '〉' => "\\rangle ",
+        '⟨' | '〈' | '\u{2329}' => "\\langle ",
+        '⟩' | '〉' | '\u{232a}' => "\\rangle ",
         '…' => "\\dots ",
         '−' => "-",
         // In TeX fonts ħ is drawn with a glyph that comes out as "~".
-        'ℏ' | '~' => "\\hbar ",
+        'ℏ' | 'ħ' | 'ћ' | '~' => "\\hbar ",
         '{' => "\\{",
         '}' => "\\}",
         '%' => "\\%",
@@ -240,6 +240,29 @@ fn text_font_tex(t: &str) -> String {
             continue;
         }
         flush_words(&mut words, &mut out);
+        // a prime in the size of the text: a′ is a', not "a \prime"
+        if let Some(n) = "′″‴".chars().position(|p| p == c) {
+            let marks = "'".repeat(n + 1);
+            match out.last_mut() {
+                Some(last) => last.push_str(&marks),
+                None => out.push(format!("{{}}{marks}")),
+            }
+            continue;
+        }
+        // an accent typed after its letter: α̃
+        let accent = match c {
+            '\u{303}' => Some("tilde"),
+            '\u{302}' => Some("hat"),
+            '\u{304}' | '\u{305}' => Some("bar"),
+            '\u{307}' => Some("dot"),
+            '\u{308}' => Some("ddot"),
+            '\u{20d7}' => Some("vec"),
+            _ => None,
+        };
+        if let (Some(a), Some(last)) = (accent, out.last_mut()) {
+            *last = format!("\\{a}{{{}}}", last.trim());
+            continue;
+        }
         out.push(chars_tex(&c.to_string()));
     }
     flush_words(&mut words, &mut out);

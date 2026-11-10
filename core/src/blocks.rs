@@ -242,11 +242,19 @@ fn tidy(mut v: Vec<Inline>) -> Vec<Inline> {
 }
 
 #[derive(Clone, Copy, PartialEq, Debug)]
-enum K {
+pub(crate) enum K {
     Text,
     Math,
     Op,
     Marker,
+}
+
+/// A book without TeX's math fonts (an ebook) sets its math as text.
+pub(crate) fn is_text_math(doc: &Doc) -> bool {
+    !doc.fonts.iter().any(|f| {
+        let u = f.family.to_uppercase();
+        ["CMMI", "CMSY", "CMEX", "CMR", "MSAM", "MSBM"].iter().any(|p| u.starts_with(p))
+    })
 }
 
 /// One line of prose -> inlines. Runs of math-font spans (with the
@@ -296,29 +304,15 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
         }
         spans.push(s.clone());
     }
+    // In a book without TeX's math fonts (an ebook), math is set as text:
+    // where it begins and ends is told from the words and symbols
+    if is_text_math(doc) {
+        let (spans, kinds) = crate::textmath::classify(doc, &spans, st);
+        return emit_line(doc, l, st, &spans, &kinds);
+    }
     let spans = &spans;
     let n = spans.len();
     let gap = |a: usize, b: usize| spans[b].left - spans[a].right();
-    // In a book without TeX's math fonts (an ebook), simple math is set as
-    // text: a variable is an italic letter ("j", its subscript a smaller
-    // "1"). Such a letter is math, so it joins its scripts and operators.
-    let text_math = !doc.fonts.iter().any(|f| {
-        let u = f.family.to_uppercase();
-        ["CMMI", "CMSY", "CMEX", "CMR", "MSAM", "MSBM"].iter().any(|p| u.starts_with(p))
-    });
-    // (a lone letter inside an italic phrase, with italic words on both
-    // sides, is a word of it: the article "a", not a variable)
-    let italic_word = |k: Option<&crate::layout::Span>| {
-        k.is_some_and(|s| s.italic && s.script == Script::Normal && s.text.trim().chars().filter(|c| c.is_alphabetic()).count() >= 2)
-    };
-    let variable = |i: usize| {
-        let s = &spans[i];
-        let t = s.text.trim();
-        let mut c = t.chars();
-        let letter = text_math && s.italic && c.next().is_some_and(char::is_alphabetic) && c.next().is_none();
-        let in_phrase = italic_word(i.checked_sub(1).and_then(|k| spans.get(k))) && italic_word(spans.get(i + 1));
-        letter && !in_phrase
-    };
     // A linked number ("2.28" of "(2.28)", a page number in the index) is a
     // reference, never part of the formula beside it; nor are its brackets.
     let reference = |i: usize| {
@@ -348,7 +342,7 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
             // an accent drawn over a math symbol (˜ over a) is part of it
             let accent_over_math = matches!(t, "˜" | "ˆ" | "˙" | "¨" | "¯" | "ˇ")
                 && spans.iter().any(|o| doc.is_math(o) && o.left < s.right() && o.right() > s.left);
-            if math || s.script != Script::Normal || accent_over_math || variable(i) {
+            if math || s.script != Script::Normal || accent_over_math {
                 K::Math
             } else if !reference(i) && !t.is_empty() && t.chars().all(|c| c.is_ascii_digit() || "=+−-–()[]/<>|,.;:·×*!′".contains(c)) {
                 K::Op
@@ -398,6 +392,13 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
         }
     }
 
+    emit_line(doc, l, st, spans, &kinds)
+}
+
+/// The spans of a line, each known to be text, math or a note marker, as
+/// inlines: a run of math spans is one formula.
+fn emit_line(doc: &Doc, l: &Line, st: &Stats, spans: &[crate::layout::Span], kinds: &[K]) -> Vec<Inline> {
+    let n = spans.len();
     let mut out: Vec<Inline> = Vec::new();
     let mut prev_right: Option<f32> = None;
     let mut i = 0;
@@ -1089,8 +1090,11 @@ impl Builder<'_> {
     fn join(&mut self, inl: Vec<Inline>) {
         // a formula continued on this line ("$m_1 + m_2 =$" / "$m$"): one
         let ops = ['=', '+', '−', '-', '<', '>', '≈', '≡', '×', '·'];
+        // (math set as text: whatever stands side by side with no word or
+        // comma between is one formula, as it is within a line)
+        let text_math = is_text_math(self.doc);
         if let (Some(Inline::Math(a)), Some(Inline::Math(b))) = (self.para.last_mut(), inl.first()) {
-            if a.trim_end().ends_with(ops) || b.trim_start().starts_with(ops) {
+            if text_math || a.trim_end().ends_with(ops) || b.trim_start().starts_with(ops) {
                 *a = format!("{} {}", a.trim_end(), b.trim_start());
                 self.para.extend(inl.into_iter().skip(1));
                 return;

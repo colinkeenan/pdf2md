@@ -113,6 +113,18 @@ uv pip install --python .venv/bin/python texify "transformers==4.45.2"
 
 **Your corrections are kept.** Every equation read from a picture, displayed or inside a sentence, has an invisible marker naming its picture (`<!-- pdf2md:eq … -->`). Fix an equation's LaTeX in a chapter file or in `book.md`; the next conversion of that book (into the same folder, or with Replace in the app) first collects the equations you changed and keeps each one in `~/.local/share/pdf2md/corrections/`, and uses it instead of the recognizer's reading from then on.
 
+
+### Math set as text
+
+Such a book sets the simple math inside its sentences in the text font: an italic letter is a variable, the brackets and "=" around it are ordinary characters, and the PDF holds the line as pieces by typeface, with prose and symbols mixed in one piece ("⟩, where "). There are no math fonts to tell by (the test is: no Computer Modern fonts in the book), so pdf2md cuts each piece into words, symbols, numbers, brackets and punctuation, and a stretch with no word in it is one formula if something in it is surely math:
+
+* **Surely math:** an italic letter (with its primes: `a″` is `a''`), a Greek letter, a relation or operator prose never uses (`=`, `≈`, `→`, `×`, `⟨`, `⟩`, `|`, `∂`, `ħ` …), a subscript or superscript, a single bold letter or a short bold group (`**x′**` is a vector, `\boldsymbol{x'}`), an equation picture.
+* **Math only beside math:** numbers, round and square brackets, `+`, `−`, `/`, a lone upright letter (`Z = 2`), a function name (`sin`, `exp`, `Tr`).
+* **Two or three italic letters** are symbols (`kR`, `dt`) unless they are a common word (`is`, `or`, `not`, `ket`); three need math right beside them. A longer italic word, or an italic phrase, is emphasis.
+* **Where a formula ends:** at a word; at a comma, semicolon or full stop that is followed by a space and is not inside brackets (`⟨x′, y′|` stays whole, `$x$, $y$ and $z$` are three); brackets around the whole formula, or without their partner, are prose (`($x$)`, `(see $x$)`). The hyphen of `x-polarized` and the apostrophe of `Green′s` are prose.
+* A small raised number after a word is a footnote marker; after a symbol, a number or a formula in brackets it is a power (`$N^{2}$`). A linked number — `(2.28)`, a page in the index — is a reference, never part of the formula beside it.
+* A formula that goes on in the next line is joined with its beginning.
+
 ## Your notes and fixes
 
 Converting a book again keeps what you added, as long as it is marked:

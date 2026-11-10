@@ -25,6 +25,7 @@ pub mod notes;
 pub mod ocr;
 pub mod pages;
 pub mod structure;
+mod textmath;
 pub mod userdata;
 
 use std::path::Path;
