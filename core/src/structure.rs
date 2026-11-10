@@ -182,10 +182,15 @@ pub fn section_depth(title: &str) -> Option<usize> {
 /// stands at the level of the numbered headings of its type size; larger
 /// than all of them it is `#`, smaller it comes below the deepest.
 ///
+/// Where the chapter titles are set clearly larger than the "1.3 …"
+/// headings (a quarter or more), the sections come a level below the
+/// chapter: "1.3 …" is `##`. Where they are about the same size, as in a
+/// book whose chapter title is hardly larger than its sections, both are `#`.
+///
 /// A book that does not number its sections keeps the nesting of its
 /// table of contents (set by `links::link_toc`); a heading the contents do
 /// not list goes by type size, like a listed heading of its size.
-pub fn heading_levels(chapters: &mut [Chapter]) {
+pub fn heading_levels(chapters: &mut [Chapter], chapter_size: Option<f32>) {
     // (level, size) of the headings that say their level
     let mut known: Vec<(usize, f32)> = Vec::new();
     let mut numbered = 0;
@@ -234,6 +239,12 @@ pub fn heading_levels(chapters: &mut [Chapter]) {
         let (top, largest) = sizes.iter().copied().fold((1, 0.0f32), |a, s| if s.1 > a.1 { s } else { a });
         Some(if size > largest { top } else { sizes.iter().filter(|(_, s)| *s > size).map(|(l, _)| *l).max().unwrap_or(deepest) + 1 })
     };
+    // sections clearly smaller than the chapter titles: a level below them
+    let section = sizes.iter().find(|(l, _)| *l == 1).map(|(_, s)| *s);
+    let below = match (by_number, chapter_size, section) {
+        (true, Some(c), Some(s)) if c >= 1.25 * s => 1,
+        _ => 0,
+    };
     for ch in chapters.iter_mut() {
         for (i, b) in ch.blocks.iter_mut().enumerate() {
             let Block::Heading { level, size, id, text } = &mut b.block else { continue };
@@ -242,7 +253,9 @@ pub fn heading_levels(chapters: &mut [Chapter]) {
                 continue;
             }
             if by_number {
-                *level = section_depth(&crate::plain(text)).or_else(|| by_size(*size)).unwrap_or(deepest + 1);
+                // (a title in the type of the chapter titles is one of them)
+                let like_chapter = below == 1 && chapter_size.is_some_and(|c| *size >= c - 0.6);
+                *level = if like_chapter { 1 } else { section_depth(&crate::plain(text)).or_else(|| by_size(*size)).unwrap_or(deepest + 1) + below };
             } else if id.is_empty() {
                 if let Some(l) = by_size(*size) {
                     *level = l;
@@ -300,5 +313,30 @@ mod tests {
         assert_eq!(super::section_depth("1.5 times the width"), Some(1)); // a title all the same, if it is a heading
         assert_eq!(super::section_depth("1925 Heisenberg"), None);
         assert_eq!(super::section_depth("3.14"), None);
+    }
+
+    #[test]
+    fn sections_come_below_a_clearly_larger_chapter_title() {
+        let book = || {
+            let h = |t: &str, size: f32| Blk { block: Block::Heading { level: 2, size, id: String::new(), text: vec![crate::Inline::Text(t.into())] }, page: 0, centered: false };
+            let mut blocks = vec![Blk { block: Block::Para(vec![crate::Inline::Text("Words.".into())]), page: 0, centered: false }];
+            for n in 1..=3 {
+                blocks.push(h(&format!("1.{n} A Section"), 32.0));
+                blocks.push(h(&format!("1.{n}.1 A Subsection"), 25.0));
+            }
+            blocks.push(h("Problems", 32.0));
+            vec![Chapter { title: "One".into(), blocks, ..Default::default() }]
+        };
+        let levels = |chapters: &[Chapter]| -> Vec<usize> {
+            chapters[0].blocks.iter().filter_map(|b| if let Block::Heading { level, .. } = &b.block { Some(*level) } else { None }).collect()
+        };
+        // chapter titles hardly larger than the sections: the same level
+        let mut same = book();
+        super::heading_levels(&mut same, Some(37.0));
+        assert_eq!(levels(&same), [1, 2, 1, 2, 1, 2, 1]);
+        // clearly larger: sections a level below
+        let mut below = book();
+        super::heading_levels(&mut below, Some(45.0));
+        assert_eq!(levels(&below), [2, 3, 2, 3, 2, 3, 2]);
     }
 }

@@ -300,7 +300,7 @@ pub fn convert_doc(doc: &layout::Doc) -> Book {
     let removed = notes::attach(&mut chapters, &mut book);
     structure::assign_slugs(&mut chapters);
     links::link_toc(&mut chapters, &book.labels, &book.pdf_pages, &removed, &mut book.warnings);
-    structure::heading_levels(&mut chapters);
+    structure::heading_levels(&mut chapters, stats.chapter_size);
     links::link_index(&mut chapters, &book.pdf_pages);
     links::link_problems(&mut chapters);
     links::link_cross_refs(&mut chapters);
