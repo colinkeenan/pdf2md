@@ -295,10 +295,18 @@ fn continues(row: &str) -> u8 {
 /// first row has no "=" (a long left-hand side), the rows that go on are
 /// set in a little instead.
 fn align_rows(t: &str) -> String {
-    let Some(body) = t.strip_prefix("\\begin{aligned}\n& ").and_then(|b| b.strip_suffix("\n\\end{aligned}")) else {
-        return t.to_string();
-    };
-    let rows: Vec<&str> = body.split(" \\\\\n& ").collect();
+    if let Some(body) = t.strip_prefix("\\begin{aligned}\n& ").and_then(|b| b.strip_suffix("\n\\end{aligned}")) {
+        let rows: Vec<&str> = body.split(" \\\\\n& ").collect();
+        return aligned(&rows);
+    }
+    // the model's own table of rows: see `array_rows`
+    match array_rows(t) {
+        Some(rows) => aligned(&rows.iter().map(String::as_str).collect::<Vec<_>>()),
+        None => t.to_string(),
+    }
+}
+
+fn aligned(rows: &[&str]) -> String {
     let lined_up = top_relation(rows[0]).is_some_and(|i| i > 0);
     let rows: Vec<String> = rows
         .iter()
@@ -311,6 +319,120 @@ fn align_rows(t: &str) -> String {
         })
         .collect();
     format!("\\begin{{aligned}}\n{}\n\\end{{aligned}}", rows.join(" \\\\\n"))
+}
+
+/// The pieces of `t` between the separators (`\\` or `&`) that stand
+/// outside all braces and inner environments.
+fn split_top<'a>(t: &'a str, sep: &str) -> Vec<&'a str> {
+    let b = t.as_bytes();
+    let (mut depth, mut i, mut start) = (0i32, 0, 0);
+    let mut out = Vec::new();
+    while i < b.len() {
+        if depth == 0 && t[i..].starts_with(sep) {
+            out.push(&t[start..i]);
+            i += sep.len();
+            start = i;
+            continue;
+        }
+        match b[i] {
+            b'\\' => {
+                if t[i..].starts_with("\\begin{") {
+                    depth += 1;
+                } else if t[i..].starts_with("\\end{") {
+                    depth -= 1;
+                }
+                // "\\{", "\\&", "\\\\" are two characters
+                i += 2;
+                continue;
+            }
+            b'{' => depth += 1,
+            b'}' => depth -= 1,
+            _ => {}
+        }
+        i += 1;
+    }
+    out.push(&t[start.min(t.len())..]);
+    out
+}
+
+/// What a cell holds, without the braces the model wraps it in ("{{x}}")
+/// and without an empty group at its start ("{}=").
+fn cell(t: &str) -> &str {
+    let mut t = t.trim();
+    loop {
+        let wrapped = t.starts_with('{') && t.ends_with('}') && t.len() >= 2 && {
+            // the first brace closes at the end, not before
+            let (mut d, mut closes_at_end) = (0, true);
+            let b = t.as_bytes();
+            let mut i = 0;
+            while i < b.len() {
+                match b[i] {
+                    b'\\' => i += 1,
+                    b'{' => d += 1,
+                    b'}' => {
+                        d -= 1;
+                        if d == 0 && i + 1 < b.len() {
+                            closes_at_end = false;
+                        }
+                    }
+                    _ => {}
+                }
+                i += 1;
+            }
+            closes_at_end
+        };
+        if wrapped {
+            t = t[1..t.len() - 1].trim();
+        } else if let Some(r) = t.strip_prefix("{}") {
+            t = r.trim();
+        } else if t == "\\" || t == "\\ " {
+            return "";
+        } else {
+            return t;
+        }
+    }
+}
+
+/// A reading that is one table of rows — the model writes a multi-line
+/// equation as `\begin{array}{r l} … \end{array}`, often with the rows cut
+/// into columns unevenly (the first row all in the left column, the second
+/// in the right one), so that the "=" of the rows do not meet. The rows,
+/// each as one piece, to be lined up at the "=" like rows read one by one.
+/// None for a real table: columns that are not cut at the "=", or rows
+/// that are no equations at all.
+fn array_rows(t: &str) -> Option<Vec<String>> {
+    let rest = t.trim().strip_prefix("\\begin{array}{")?;
+    let (cols, rest) = rest.split_once('}')?;
+    let cols: String = cols.chars().filter(|c| !c.is_whitespace()).collect();
+    if !matches!(cols.as_str(), "c" | "l" | "r" | "rl" | "rcl") {
+        return None;
+    }
+    // the table is the whole reading (but for a full stop after it)
+    let end = rest.rfind("\\end{array}")?;
+    let (body, after) = (&rest[..end], rest[end + "\\end{array}".len()..].trim());
+    if !after.chars().all(|c| ".,;".contains(c)) || body.matches("\\begin{array}").count() != body.matches("\\end{array}").count() {
+        return None;
+    }
+    let mut rows: Vec<String> = Vec::new();
+    let mut at_relation = true;
+    for row in split_top(body, "\\\\") {
+        let cells: Vec<&str> = split_top(row, "&").into_iter().map(cell).collect();
+        // columns cut somewhere else than before a "=": a table
+        // (in "a & = & b" the "=" has a column of its own)
+        let lone_relation = |c: &str| continues(c) == 1 && c.len() <= 8;
+        if (1..cells.len()).any(|k| !cells[k].is_empty() && continues(cells[k]) == 0 && !lone_relation(cells[k - 1])) {
+            at_relation = false;
+        }
+        let row = cells.into_iter().filter(|c| !c.is_empty()).collect::<Vec<_>>().join(" ");
+        if !row.is_empty() {
+            rows.push(row);
+        }
+    }
+    if let Some(last) = rows.last_mut() {
+        last.push_str(after);
+    }
+    let equations = rows.iter().any(|r| top_relation(r).is_some());
+    (rows.len() >= 2 && at_relation && equations).then_some(rows)
 }
 
 /// Every command KaTeX knows (taken from its source), one per line.
@@ -516,6 +638,14 @@ mod tests {
         assert_eq!(align_rows(&read(&["\\int f\\,dx", "=1."])), block(&["& \\int f\\,dx", "&\\quad =1."]));
         assert_eq!(unwrap_cell("\\begin{array}{l}{{\\frac{1}{2}}}\\end{array}"), "{{\\frac{1}{2}}}");
         assert_eq!(unwrap_cell("\\begin{array}{l}a\\\\ b\\end{array}"), "\\begin{array}{l}a\\\\ b\\end{array}");
+        // the model's own table, its rows cut into columns unevenly
+        assert_eq!(
+            align_rows("\\begin{array}{r l}{{\\hbar}=1.05\\times10^{-27}\\,\\mathrm{erg}}\\\\ {\\ }&{{}=6.58\\times10^{-16}\\,\\mathrm{eV}.}\\end{array}"),
+            block(&["{\\hbar}&=1.05\\times10^{-27}\\,\\mathrm{erg}", "&=6.58\\times10^{-16}\\,\\mathrm{eV}."])
+        );
+        // a real table stays
+        let table = "\\begin{array}{r l}{V=\\infty}&{\\mathrm{for~}x<0,}\\\\ {V=0}&{\\mathrm{for~}x>0}\\end{array}";
+        assert_eq!(align_rows(table), table);
         // not read line by line: untouched
         assert_eq!(align_rows("a=b"), "a=b");
     }
