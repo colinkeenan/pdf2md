@@ -159,6 +159,100 @@ pub fn assign_slugs(chapters: &mut [Chapter]) {
     }
 }
 
+/// How deep a numbered section title is: "1.3 Base Kets" 1, "1.3.1
+/// Eigenkets" 2, "A.2 Units" 1; a title without such a number, none (nor
+/// a chapter's "2 Quantum Dynamics", a year, or a decimal like "1.5 times").
+pub fn section_depth(title: &str) -> Option<usize> {
+    let t = title.trim_start();
+    let number: &str = t.split_whitespace().next()?;
+    let rest = t[number.len()..].trim_start();
+    let mut parts = number.trim_end_matches('.').split('.');
+    let first = parts.next()?;
+    let chapter = (!first.is_empty() && first.len() <= 2 && first.chars().all(|c| c.is_ascii_digit())) || (first.len() == 1 && first.chars().all(|c| c.is_ascii_uppercase()));
+    let parts: Vec<&str> = parts.collect();
+    let numbered = chapter && !parts.is_empty() && parts.iter().all(|p| !p.is_empty() && p.len() <= 2 && p.chars().all(|c| c.is_ascii_digit()));
+    // a title follows the number
+    (numbered && rest.starts_with(|c: char| c.is_alphabetic())).then_some(parts.len())
+}
+
+/// The level of every section heading (chapter titles keep theirs).
+///
+/// A book that numbers its sections says the level itself: "1.3 …" is
+/// `#`, "1.3.1 …" is `##`. A heading without a number in such a book
+/// stands at the level of the numbered headings of its type size; larger
+/// than all of them it is `#`, smaller it comes below the deepest.
+///
+/// A book that does not number its sections keeps the nesting of its
+/// table of contents (set by `links::link_toc`); a heading the contents do
+/// not list goes by type size, like a listed heading of its size.
+pub fn heading_levels(chapters: &mut [Chapter]) {
+    // (level, size) of the headings that say their level
+    let mut known: Vec<(usize, f32)> = Vec::new();
+    let mut numbered = 0;
+    for ch in chapters.iter() {
+        for (i, b) in ch.blocks.iter().enumerate() {
+            if let Block::Heading { size, text, .. } = &b.block {
+                if let Some(d) = section_depth(&crate::plain(text)).filter(|_| i > 0) {
+                    numbered += 1;
+                    if *size > 0.0 {
+                        known.push((d, *size));
+                    }
+                }
+            }
+        }
+    }
+    let by_number = numbered >= 5;
+    if !by_number {
+        known.clear();
+        for ch in chapters.iter() {
+            for (i, b) in ch.blocks.iter().enumerate() {
+                if let Block::Heading { level, size, id, .. } = &b.block {
+                    if i > 0 && !id.is_empty() && *size > 0.0 && *level >= 2 {
+                        known.push((*level, *size));
+                    }
+                }
+            }
+        }
+    }
+    // the usual type size of each level
+    let mut sizes: Vec<(usize, f32)> = Vec::new();
+    let deepest = known.iter().map(|k| k.0).max().unwrap_or(0);
+    for level in 1..=deepest {
+        let mut of: Vec<f32> = known.iter().filter(|k| k.0 == level).map(|k| k.1).collect();
+        if !of.is_empty() {
+            of.sort_by(f32::total_cmp);
+            sizes.push((level, of[of.len() / 2]));
+        }
+    }
+    let by_size = |size: f32| -> Option<usize> {
+        if size <= 0.0 || sizes.is_empty() {
+            return None;
+        }
+        if let Some(&(level, _)) = sizes.iter().find(|(_, s)| (s - size).abs() <= 0.6) {
+            return Some(level);
+        }
+        let (top, largest) = sizes.iter().copied().fold((1, 0.0f32), |a, s| if s.1 > a.1 { s } else { a });
+        Some(if size > largest { top } else { sizes.iter().filter(|(_, s)| *s > size).map(|(l, _)| *l).max().unwrap_or(deepest) + 1 })
+    };
+    for ch in chapters.iter_mut() {
+        for (i, b) in ch.blocks.iter_mut().enumerate() {
+            let Block::Heading { level, size, id, text } = &mut b.block else { continue };
+            // the chapter's own title
+            if i == 0 && *level == 1 {
+                continue;
+            }
+            if by_number {
+                *level = section_depth(&crate::plain(text)).or_else(|| by_size(*size)).unwrap_or(deepest + 1);
+            } else if id.is_empty() {
+                if let Some(l) = by_size(*size) {
+                    *level = l;
+                }
+            }
+        }
+    }
+}
+
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -194,5 +288,17 @@ mod tests {
         merge_front_matter(&mut chs, None);
         assign_slugs(&mut chs);
         assert_eq!(chs[2].slug, "02-the-dirac-theory");
+    }
+
+    #[test]
+    fn section_numbers_say_the_level() {
+        assert_eq!(super::section_depth("1.3 Base Kets and Matrix Representations"), Some(1));
+        assert_eq!(super::section_depth("1.3.1 Eigenkets of an Observable"), Some(2));
+        assert_eq!(super::section_depth("A.2 The SI System"), Some(1));
+        assert_eq!(super::section_depth("2 Quantum Dynamics"), None);
+        assert_eq!(super::section_depth("Problems"), None);
+        assert_eq!(super::section_depth("1.5 times the width"), Some(1)); // a title all the same, if it is a heading
+        assert_eq!(super::section_depth("1925 Heisenberg"), None);
+        assert_eq!(super::section_depth("3.14"), None);
     }
 }

@@ -868,7 +868,11 @@ fn heading_size(
     {
         return Some(l.size);
     }
+    // an italic sentence broken up by displayed equations (the statement of
+    // a lemma: "which is analogous to", "in real Euclidian space.") is prose
+    let fragment = text.starts_with(|c: char| c.is_lowercase());
     let ok = styled
+        && !fragment
         && (l.left - st.left).abs() <= 0.6 * st.body
         && l.right <= st.right - 3.0 * st.body
         && !text.ends_with([',', ';'])
@@ -1190,7 +1194,9 @@ impl Builder<'_> {
             };
             // a linked title wrapping onto the next line links to the same
             // page: it continues the entry above
-            if page.starts_with('@') && pending.is_empty() {
+            // (not a numbered title: "1.1.1 …" right under "1.1 …" is the
+            // next entry, though its section begins at the same place)
+            if page.starts_with('@') && pending.is_empty() && crate::structure::section_depth(&text).is_none() {
                 if let Some(prev) = entries.last_mut().filter(|e| e.page == page) {
                     let mut title = std::mem::take(&mut prev.title);
                     push_text(&mut title, " ");
