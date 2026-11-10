@@ -196,7 +196,7 @@ fn read_cached(dir: &std::path::Path, k: &str) -> Option<Reading> {
     } else if t.is_empty() {
         None
     } else {
-        Some(Reading::Latex(unglue(&strip_numbers(t))))
+        Some(Reading::Latex(align_rows(&unglue(&strip_numbers(t)))))
     }
 }
 
@@ -214,6 +214,91 @@ fn strip_numbers(t: &str) -> String {
     }
     out.push_str(rest);
     out.trim().to_string()
+}
+
+/// Commands that stand between the two sides of an equation, like "=".
+const RELATIONS: [&str; 16] = [
+    "approx", "simeq", "equiv", "sim", "cong", "propto", "neq", "ne", "leq", "geq", "le", "ge", "to", "rightarrow",
+    "Rightarrow", "longrightarrow",
+];
+/// Commands a continued right-hand side starts with, like "+".
+const OPERATORS: [&str; 5] = ["times", "cdot", "pm", "mp", "cdots"];
+
+/// Where the first "=" (or other relation) outside all brackets is.
+fn top_relation(row: &str) -> Option<usize> {
+    let b = row.as_bytes();
+    let (mut depth, mut i) = (0i32, 0);
+    while i < b.len() {
+        match b[i] {
+            b'\\' => {
+                let n = b[i + 1..].iter().take_while(|c| c.is_ascii_alphabetic()).count();
+                let name = &row[i + 1..i + 1 + n];
+                match name {
+                    "left" | "begin" => depth += 1,
+                    "right" | "end" => depth = (depth - 1).max(0),
+                    _ if depth == 0 && RELATIONS.contains(&name) => return Some(i),
+                    _ => {}
+                }
+                if matches!(name, "left" | "right") {
+                    // the bracket after it is counted by the command
+                    i += 1 + n;
+                    while i < b.len() && b[i] == b' ' {
+                        i += 1;
+                    }
+                    i += if b.get(i) == Some(&b'\\') { 2 } else { 1 };
+                    continue;
+                }
+                // "\\{", "\\,": two characters
+                i += 1 + n.max(1);
+                continue;
+            }
+            b'{' | b'(' | b'[' => depth += 1,
+            b'}' | b')' | b']' => depth = (depth - 1).max(0),
+            b'=' if depth == 0 => return Some(i),
+            _ => {}
+        }
+        i += 1;
+    }
+    None
+}
+
+/// Does the row go on with the equation of the row above: with a relation
+/// ("= …", 1) or inside its right-hand side ("+ …", "× …", 2)?
+fn continues(row: &str) -> u8 {
+    if top_relation(row) == Some(0) {
+        return 1;
+    }
+    let name: String = row.strip_prefix('\\').unwrap_or("").chars().take_while(char::is_ascii_alphabetic).collect();
+    if row.starts_with(['+', '-']) || OPERATORS.contains(&name.as_str()) {
+        2
+    } else {
+        0
+    }
+}
+
+/// An equation read line by line (see `math_ocr.py`): its rows lined up
+/// at the "=", as in the book. A row that goes on with "=" has it under
+/// the "=" of the first row, a row that goes on with "+" or "×" starts to
+/// the right of it, and a second equation has its own "=" there. When the
+/// first row has no "=" (a long left-hand side), the rows that go on are
+/// set in a little instead.
+fn align_rows(t: &str) -> String {
+    let Some(body) = t.strip_prefix("\\begin{aligned}\n& ").and_then(|b| b.strip_suffix("\n\\end{aligned}")) else {
+        return t.to_string();
+    };
+    let rows: Vec<&str> = body.split(" \\\\\n& ").collect();
+    let lined_up = top_relation(rows[0]).is_some_and(|i| i > 0);
+    let rows: Vec<String> = rows
+        .iter()
+        .map(|row| match (continues(row), top_relation(row)) {
+            (1, _) if lined_up => format!("&{row}"),
+            (2, _) if lined_up => format!("&\\quad {row}"),
+            (0, Some(i)) if lined_up => format!("{}&{}", &row[..i], &row[i..]),
+            (0, _) => format!("& {row}"),
+            _ => format!("&\\quad {row}"),
+        })
+        .collect();
+    format!("\\begin{{aligned}}\n{}\n\\end{{aligned}}", rows.join(" \\\\\n"))
 }
 
 /// Every command KaTeX knows (taken from its source), one per line.
@@ -392,6 +477,26 @@ pub fn base64_decode(s: &str) -> Option<Vec<u8>> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn lines_rows_up_at_the_equals_sign() {
+        let block = |rows: &[&str]| format!("\\begin{{aligned}}\n{}\n\\end{{aligned}}", rows.join(" \\\\\n"));
+        let read = |rows: &[&str]| format!("\\begin{{aligned}}\n& {}\n\\end{{aligned}}", rows.join(" \\\\\n& "));
+        // a continued equation
+        assert_eq!(
+            align_rows(&read(&["a=b+c", "=d", "+e", "\\approx f"])),
+            block(&["a&=b+c", "&=d", "&\\quad +e", "&\\approx f"])
+        );
+        // two equations; an "=" inside brackets is not the place
+        assert_eq!(
+            align_rows(&read(&["f(x=0)=1,", "\\left(a=b\\right)g\\equiv 2."])),
+            block(&["f(x=0)&=1,", "\\left(a=b\\right)g&\\equiv 2."])
+        );
+        // no "=" in the first row: left-aligned, what goes on set in
+        assert_eq!(align_rows(&read(&["\\int f\\,dx", "=1."])), block(&["& \\int f\\,dx", "&\\quad =1."]));
+        // not read line by line: untouched
+        assert_eq!(align_rows("a=b"), "a=b");
+    }
 
     #[test]
     fn unglues_commands() {
