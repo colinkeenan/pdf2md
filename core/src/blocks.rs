@@ -585,7 +585,9 @@ fn picture_tables(blks: Vec<Blk>, boxes: &HashMap<String, (u32, Figure)>) -> Vec
         if has_text(&before) {
             out.push(Blk { block: Block::Para(tidy(before)), page, centered });
         }
-        out.push(Blk { block: Block::Table { rows, widths: Vec::new() }, page, centered: false });
+        // (keyed by the picture it was read from)
+        let table = Block::Table { key: crate::table_key(boxes.get(&key).map_or(0, |b| b.0), &rows), rows, widths: Vec::new() };
+        out.push(Blk { block: table, page, centered: false });
         if let Some((number, area)) = boxes.get(&key) {
             out.push(Blk { block: Block::Picture { page: *number, area: *area, alt: "the table as printed".into() }, page, centered: false });
         }
@@ -863,7 +865,7 @@ fn panel_tables(doc: &Doc, page: &crate::layout::Page, lines: &[Line], st: &Stat
             }
         }
         if rows.len() >= 2 {
-            out.push((first, end, Block::Table { rows, widths: Vec::new() }));
+            out.push((first, end, Block::Table { key: crate::table_key(page.number, &rows), rows, widths: Vec::new() }));
             if panel.bottom > 0.85 * page.height {
                 *carried = Some(edges.clone());
             }

@@ -502,7 +502,12 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
         Block::ColumnBreak => out.push_str("</td>\n<td valign=\"top\">\n\n"),
         Block::ColumnsEnd => out.push_str("</td>\n</tr></table>\n\n"),
         Block::Picture { page, area, alt } => out.push_str(&format!("![{alt}]({})\n\n", picture_file(*page, area))),
-        Block::Table { rows, widths } => {
+        Block::Table { rows, widths, key } => {
+            // (which table this is, invisible: a cell the reader corrects
+            // is kept for the next conversion)
+            if !key.is_empty() {
+                out.push_str(&format!("<!-- pdf2md:table {key} -->\n"));
+            }
             // (html, with each cell's text between empty lines: Markdown
             // is read inside it, so links and headings work)
             if widths.is_empty() {
@@ -514,9 +519,9 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
                 }
                 out.push_str("</colgroup>\n");
             }
-            for row in rows {
+            for (r, row) in rows.iter().enumerate() {
                 out.push_str("<tr>\n");
-                for cell in row {
+                for (c, cell) in row.iter().enumerate() {
                     let mut tag = String::from("<td");
                     if cell.span > 1 {
                         tag.push_str(&format!(" colspan=\"{}\"", cell.span));
@@ -526,7 +531,9 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
                         crate::Align::Center => tag.push_str(" align=\"center\""),
                         crate::Align::Right => tag.push_str(" align=\"right\""),
                     }
-                    let text = render_inlines(&cell.text).replace("<br>\n", "<br>");
+                    // the reader's own correction of the cell comes first
+                    let corrected = if key.is_empty() { None } else { crate::ocr::read_cell_correction(key, r, c) };
+                    let text = corrected.unwrap_or_else(|| render_inlines(&cell.text).replace("<br>\n", "<br>"));
                     if text.trim().is_empty() {
                         out.push_str(&format!("{tag}></td>\n"));
                     } else {

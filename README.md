@@ -199,6 +199,8 @@ Notes and fixes are collected from the chapter files and from `book.md` (each co
 
 **Equations to check.** Each equation is read a second time from the picture enlarged; where the two readings are different formulas (formatting aside), it is listed in `check-equations.md` in the book folder, biggest differences first, with links. A corrected equation drops off the list. To use another Python, set `PDF2MD_OCR_PYTHON`. Without the model, equation images stay pictures. The recognizer is good but not perfect: check equations you rely on against the book.
 
+* **Cells of tables**: correct a cell where it stands, between the empty lines inside its `<td>` … `</td>` (or fill an empty `<td></td>`, or empty a cell). Every table of the book carries an invisible mark above it (`<!-- pdf2md:table … -->`), and the next conversion keeps each cell that is not what the last one wrote there, by table, row and column (`~/.local/share/pdf2md/corrections/`, with the corrected equations). A table whose reading changes in a later version of pdf2md is another table: corrections of the old reading are not put into it. The table of contents is made anew each time and keeps no corrections.
+
 ## Licence
 
 pdf2md is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. It is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; see [`LICENSE`](LICENSE).

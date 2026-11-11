@@ -28,7 +28,7 @@ fn main() {
     // equations corrected by hand in an earlier conversion are kept
     let kept = pdf2md_core::ocr::collect_corrections(Path::new(&args[1]));
     if kept > 0 {
-        eprintln!("Kept {kept} hand-corrected equation(s) from the earlier conversion.");
+        eprintln!("Kept {kept} hand correction(s) of equations and table cells from the earlier conversion.");
     }
     // and the reader's notes and prose fixes
     let user = pdf2md_core::userdata::collect(Path::new(&args[1]));

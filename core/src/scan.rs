@@ -1893,7 +1893,7 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
                         // under it (a cell can be misread)
                         None => match read_table(&b.html) {
                             Some(rows) => {
-                                made.push(Block::Table { rows, widths: Vec::new() });
+                                made.push(Block::Table { key: crate::table_key(page.number, &rows), rows, widths: Vec::new() });
                                 made.push(Block::Picture { page: page.number, area, alt: "the table as printed".into() });
                             }
                             None => {

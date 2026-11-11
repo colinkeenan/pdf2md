@@ -141,7 +141,10 @@ pub enum Block {
     /// table of the book). `widths`: how wide its columns are, in percent
     /// of the page (0: as wide as needed); empty for a table that is as
     /// wide as it needs to be.
-    Table { rows: Vec<Vec<Cell>>, widths: Vec<u8> },
+    /// `key`: what the reader's corrections of its cells are kept by (see
+    /// [`table_key`]); empty for a table that is made anew each time (the
+    /// contents).
+    Table { rows: Vec<Vec<Cell>>, widths: Vec<u8>, key: String },
     /// A picture without a number or a caption of its own: area `area` of
     /// PDF page `page`, cut from the page (a table as printed, under the
     /// table read from it). `alt`: what it is, for where it cannot be shown.
@@ -213,6 +216,27 @@ pub fn equation_numbers(latex: &str, tag: Option<&str>) -> Vec<String> {
         }
     }
     v
+}
+
+/// The key of a table of the book: from the page it is on and what its
+/// cells hold as converted, so that it stays the same from one conversion
+/// to the next, and a cell the reader corrects is found again.
+pub fn table_key(page: u32, rows: &[Vec<Cell>]) -> String {
+    let mut h: u64 = 0xcbf29ce484222325;
+    let mut eat = |t: &str| {
+        for b in t.bytes() {
+            h = (h ^ b as u64).wrapping_mul(0x100000001b3);
+        }
+    };
+    eat(&page.to_string());
+    for row in rows {
+        eat("\n");
+        for cell in row {
+            eat("\t");
+            eat(&plain(&cell.text));
+        }
+    }
+    format!("{h:016x}")
 }
 
 /// The anchor id of an equation number: "3.422" -> "eq-3.422".

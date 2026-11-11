@@ -49,6 +49,37 @@ fn corrections_dir() -> Option<PathBuf> {
     Some(base.join("pdf2md").join("corrections"))
 }
 
+/// The reader's correction of a table's cell (`row`, `column` from 0),
+/// if there is one: the cell's Markdown as the reader left it (which may
+/// be nothing: a cell emptied by hand).
+pub(crate) fn read_cell_correction(table: &str, row: usize, column: usize) -> Option<String> {
+    let t = std::fs::read_to_string(corrections_dir()?.join(format!("{table}.{row}.{column}.cell"))).ok()?;
+    Some(t.trim().to_string())
+}
+
+/// The tables of a Markdown text that carry a key (`<!-- pdf2md:table KEY
+/// -->` above `<table>`), cell by cell: "KEY.row.column" and the cell's
+/// Markdown.
+pub fn marked_tables(text: &str) -> Vec<(String, String)> {
+    let mut out = Vec::new();
+    let mut rest = text;
+    while let Some(i) = rest.find("<!-- pdf2md:table ") {
+        rest = &rest[i + 18..];
+        let Some(k) = rest.get(..16).filter(|k| k.chars().all(|c| c.is_ascii_hexdigit())) else { continue };
+        let Some(end) = rest.find("</table>") else { break };
+        let table = &rest[..end];
+        for (r, row) in table.split("<tr>").skip(1).enumerate() {
+            for (c, cell) in row.split("<td").skip(1).enumerate() {
+                let inside = cell.split_once('>').map_or("", |x| x.1);
+                let inside = inside.split("</td>").next().unwrap_or("");
+                out.push((format!("{k}.{r}.{c}"), inside.trim().to_string()));
+            }
+        }
+        rest = &rest[end..];
+    }
+    out
+}
+
 pub(crate) fn read_correction(k: &str) -> Option<String> {
     let t = std::fs::read_to_string(corrections_dir()?.join(format!("{k}.tex"))).ok()?;
     let t = t.trim();
@@ -99,10 +130,36 @@ pub fn collect_corrections(dir: &std::path::Path) -> usize {
             }
         }
     }
-    if found.is_empty() || std::fs::create_dir_all(&cdir).is_err() {
+    // The cells of tables the reader corrected: each cell that is not
+    // what the conversion wrote there (only with the record of that: a
+    // table has no reading to compare with).
+    let mut cells: HashMap<String, (std::time::SystemTime, String)> = HashMap::new();
+    if let (Some(written), Ok(entries)) = (&written_then, std::fs::read_dir(dir)) {
+        for e in entries.flatten() {
+            let p = e.path();
+            if p.extension().is_none_or(|x| x != "md") {
+                continue;
+            }
+            let (Ok(text), Ok(meta)) = (std::fs::read_to_string(&p), e.metadata()) else { continue };
+            let time = meta.modified().unwrap_or(std::time::UNIX_EPOCH);
+            for (id, cell) in marked_tables(&text) {
+                if written.get(&id).is_none_or(|w| *w == norm(&cell)) {
+                    continue;
+                }
+                match cells.get(&id) {
+                    Some((t, _)) if *t >= time => {}
+                    _ => {
+                        cells.insert(id, (time, cell));
+                    }
+                }
+            }
+        }
+    }
+    if (found.is_empty() && cells.is_empty()) || std::fs::create_dir_all(&cdir).is_err() {
         return 0;
     }
     found.iter().filter(|(k, (_, latex))| std::fs::write(cdir.join(format!("{k}.tex")), format!("{latex}\n")).is_ok()).count()
+        + cells.iter().filter(|(id, (_, cell))| std::fs::write(cdir.join(format!("{id}.cell")), format!("{cell}\n")).is_ok()).count()
 }
 
 fn norm(t: &str) -> String {
@@ -150,6 +207,14 @@ pub fn record_written(dir: &std::path::Path, texts: &[&str]) -> std::io::Result<
         for (k, latex) in marked_equations(t) {
             if seen.insert(k.clone()) {
                 s.push_str(&format!("{k}\t{}\n", norm(&latex)));
+            }
+        }
+    }
+    // (and each cell of each table that has a key: "KEY.row.column")
+    for t in texts {
+        for (id, cell) in marked_tables(t) {
+            if seen.insert(id.clone()) {
+                s.push_str(&format!("{id}\t{}\n", norm(&cell)));
             }
         }
     }
@@ -748,6 +813,21 @@ pub fn base64_decode(s: &str) -> Option<Vec<u8>> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn the_cells_of_a_marked_table_are_found() {
+        let md = "Text.\n\n<!-- pdf2md:table 0123456789abcdef -->\n<table>\n<tr>\n<td></td>\n<td align=\"center\">\n\nWKB\n\n</td>\n</tr>\n<tr>\n<td>\n\n$n$\n\n</td>\n<td colspan=\"2\">\n\n2.320 and\nmore\n\n</td>\n</tr>\n</table>\n\n<table>\n<tr><td>\n\nno key\n\n</td></tr>\n</table>\n";
+        let cells = marked_tables(md);
+        assert_eq!(
+            cells,
+            [
+                ("0123456789abcdef.0.0".to_string(), "".to_string()),
+                ("0123456789abcdef.0.1".to_string(), "WKB".to_string()),
+                ("0123456789abcdef.1.0".to_string(), "$n$".to_string()),
+                ("0123456789abcdef.1.1".to_string(), "2.320 and\nmore".to_string()),
+            ]
+        );
+    }
 
     #[test]
     fn lines_rows_up_at_the_equals_sign() {
