@@ -61,11 +61,26 @@ Kirigami.ApplicationWindow {
         FileBrowser {}
     }
 
+    // a file browser page that has left the stack (a choice made, or the
+    // back arrow) is done with
+    Connections {
+        target: pageStack
+        function onPageRemoved(page) {
+            if (page.picked !== undefined) {
+                page.destroy(2000)
+            }
+        }
+    }
+
     function openBrowser(chooseFolder, onPicked) {
-        var page = pageStack.push(browserComponent, {
+        // (made here, inside the window, and then handed to the page stack:
+        // a page the stack makes from the component starts outside the
+        // scene, which Qt warns about; a page made here is ours to remove)
+        var page = browserComponent.createObject(pageStack, {
             chooseFolder: chooseFolder,
             startFolder: converter.folder
         })
+        pageStack.push(page)
         page.picked.connect(function (chosen) {
             onPicked(chosen.toString())
             pageStack.pop()
