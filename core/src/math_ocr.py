@@ -373,10 +373,11 @@ def split_lines(items, dst, model, processor, batch_inference):
     """Every equation not looked at before (NAME.lines marks those that
     were): lines read as one are taken apart, see `lines_apart`."""
     changed = 0
-    for f, img in items:
+    items = [(f, img) for f, img in items if not (dst / f"{f.stem}.lines").exists() and (dst / f"{f.stem}.tex").exists()]
+    for n, (f, img) in enumerate(items):
+        if n % 20 == 0:
+            print(f"  lines {n}/{len(items)}", file=sys.stderr, flush=True)
         mark, known = dst / f"{f.stem}.lines", dst / f"{f.stem}.tex"
-        if mark.exists() or not known.exists():
-            continue
         t = known.read_text().strip()
         if not t.startswith("%"):
             block = lines_apart(img, t, model, processor, batch_inference)
@@ -386,8 +387,100 @@ def split_lines(items, dst, model, processor, batch_inference):
                     (dst / f"{f.stem}.{ext}").unlink(missing_ok=True)
                 changed += 1
         mark.write_text("\n")
+    if items:
+        print(f"  lines {len(items)}/{len(items)}", file=sys.stderr, flush=True)
     if changed:
         print(f"  {changed} equations of several lines, read as one line before, have their lines again", file=sys.stderr, flush=True)
+
+
+def word_labels(img: Image.Image):
+    """Words set small under parts of a one-line equation ("bra" and "ket"
+    under the two halves of a product), to explain them. The model drops
+    them or reads them as symbols. Gives the equation without them and
+    each word with the place of its middle, as a fraction of the
+    equation's width -- or None if the image has no such words: the bottom
+    band of ink must be small type under one line of larger type (not a
+    denominator under its bar, nor the limits under a sum) and read as
+    words by Tesseract."""
+    import subprocess
+    import tempfile
+
+    g = img.convert("L")
+    w, h = g.size
+    px = g.load()
+    ink = [[px[x, y] < 160 for x in range(w)] for y in range(h)]
+    bands, y = [], 0
+    while y < h:
+        if any(ink[y]):
+            y0 = y
+            while y < h and any(ink[y]):
+                y += 1
+            bands.append((y0, y))
+        else:
+            y += 1
+    if len(bands) != 2:
+        return None
+    (m0, m1), (l0, l1) = bands
+    if not (5 <= l1 - l0 <= 13) or m1 - m0 < 14 or l1 - l0 > 0.8 * (m1 - m0):
+        return None
+    # a long straight stroke low in the equation: a fraction bar
+    for y in range(m0 + (m1 - m0) * 2 // 3, m1):
+        run = longest = 0
+        for x in range(w):
+            run = run + 1 if ink[y][x] else 0
+            longest = max(longest, run)
+        if longest >= 16:
+            return None
+    columns = [x for x in range(w) if any(ink[y][x] for y in range(m0, m1))]
+    left, right = columns[0], columns[-1] + 1
+    band = img.crop((0, max(0, l0 - 2), w, min(h, l1 + 2)))
+    big = Image.new("RGB", (band.width * 4 + 40, band.height * 4 + 40), "white")
+    big.paste(band.resize((band.width * 4, band.height * 4), Image.LANCZOS), (20, 20))
+    with tempfile.NamedTemporaryFile(suffix=".png") as tmp:
+        big.save(tmp.name)
+        try:
+            env = dict(os.environ, OMP_THREAD_LIMIT="1")
+            out = subprocess.run(["tesseract", tmp.name, "-", "--psm", "7", "tsv"], capture_output=True, text=True, timeout=60, env=env)
+        except (OSError, subprocess.TimeoutExpired):
+            return None
+    words = []
+    for line in out.stdout.splitlines()[1:]:
+        c = line.split("\t")
+        if len(c) < 12 or not c[11].strip() or float(c[10]) < 0:
+            continue
+        middle = ((int(c[6]) - 20) + int(c[8]) / 2) / 4
+        words.append(((middle - left) / (right - left), c[11].strip(), float(c[10])))
+    # (a word in small letters: lettering in capitals is a logo)
+    if not any(re.fullmatch(r"[A-Za-z][a-z]{2,}", t) and sure >= 80 for _, t, sure in words):
+        return None
+    return img.crop((0, 0, w, (m1 + l0) // 2)), [(at, t) for at, t, _ in words]
+
+
+def label_words(items, dst, model, processor, batch_inference):
+    """Every equation not looked at before (NAME.labels marks those that
+    were, and holds the words): one with words under it is read again
+    without them, and the words are kept with their places."""
+    found = 0
+    for f, img in items:
+        mark, known = dst / f"{f.stem}.labels", dst / f"{f.stem}.tex"
+        if mark.exists() or not known.exists():
+            continue
+        t = known.read_text().strip()
+        lines = ""
+        # (a brace under the equation with words below it is read well as it is)
+        if not t.startswith("%") and "\\underbrace" not in t:
+            labelled = word_labels(img)
+            if labelled is not None:
+                t = read_one(framed(labelled[0]), model, processor, batch_inference)
+                if t is not None:
+                    known.write_text(t + "\n")
+                    lines = "".join(f"{at:.3f}\t{word}\n" for at, word in labelled[1])
+                    for ext in ("verify", "second"):
+                        (dst / f"{f.stem}.{ext}").unlink(missing_ok=True)
+                    found += 1
+        mark.write_text(lines if lines else "\n")
+    if found:
+        print(f"  {found} equations with words under them: read without the words, which are put back where they stood", file=sys.stderr, flush=True)
 
 
 CODE_HINT = re.compile(r"```|\\texttt|\\verb")
@@ -576,7 +669,7 @@ def main():
         print(f"  {redrawn} drawings that were read as math before are pictures now", file=sys.stderr, flush=True)
     if not todo:
         unread_small = any(f.stem in SMALL_ONES and not (dst / f"{f.stem}.small").exists() for f, _ in verify_only)
-        if unread_small or any(not (dst / f"{f.stem}.{ext}").exists() for f, _ in verify_only for ext in ("verify", "lines")):
+        if unread_small or any(not (dst / f"{f.stem}.{ext}").exists() for f, _ in verify_only for ext in ("verify", "lines", "labels")):
             from texify.inference import batch_inference
             from texify.model.model import load_model
             from texify.model.processor import load_processor
@@ -584,6 +677,7 @@ def main():
             model, processor = load_model(), load_processor()
             read_small_again(verify_only, dst, model, processor, batch_inference)
             split_lines(verify_only, dst, model, processor, batch_inference)
+            label_words(verify_only, dst, model, processor, batch_inference)
             verify(verify_only, dst, model, processor, batch_inference)
         settle(verify_only, dst, {})
         return
@@ -623,7 +717,8 @@ def main():
         print(f"  {min(i + batch, len(todo))}/{len(todo)}", file=sys.stderr, flush=True)
     # Doubtful readings: try again with a longer limit and a little
     # randomness; an image that never reads plausibly stays a picture.
-    for f, img in doubtful:
+    for n, (f, img) in enumerate(doubtful):
+        print(f"  again {n}/{len(doubtful)}", file=sys.stderr, flush=True)
         # program code, not math: as text
         code = read_code(img)
         if code is not None:
@@ -648,6 +743,7 @@ def main():
                 answer = t
         (dst / f"{f.stem}.tex").write_text(answer + "\n")
     if doubtful:
+        print(f"  again {len(doubtful)}/{len(doubtful)}", file=sys.stderr, flush=True)
         unread = sum((dst / f"{f.stem}.tex").read_text().startswith("%UNREADABLE") for f, _ in doubtful)
         print(f"  {len(doubtful)} read again, {unread} unreadable (kept as pictures)", file=sys.stderr, flush=True)
     for f, _ in todo:
@@ -655,6 +751,7 @@ def main():
             (dst / f"{f.stem}.small").write_text("\n")
     read_small_again(verify_only, dst, model, processor, batch_inference)
     split_lines(todo + verify_only, dst, model, processor, batch_inference)
+    label_words(todo + verify_only, dst, model, processor, batch_inference)
     verify(todo + verify_only, dst, model, processor, batch_inference)
     settle(todo + verify_only, dst, plain)
 

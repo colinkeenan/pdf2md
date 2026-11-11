@@ -1,5 +1,6 @@
 //! Write the chapters as Markdown files.
 
+use crate::progress::Step;
 use crate::{page_label, Block, Book, Inline, Note};
 use std::collections::{HashMap, HashSet};
 use std::path::{Path, PathBuf};
@@ -710,15 +711,17 @@ fn write_figures(book: &Book, dir: &Path) {
             .arg(&stem)
             .status();
     };
+    // which pictures there are, then one by one (to tell how far it is)
+    let mut todo: Vec<(u32, &crate::layout::Figure, String, f32)> = Vec::new();
     for ch in &book.chapters {
         let notes = ch.notes.iter().chain(&ch.refs).flat_map(|n| &n.blocks);
         for b in ch.blocks.iter().map(|b| &b.block).chain(notes) {
             match b {
-                crate::Block::Figure { page, n, area, .. } => cut(*page, area, &figure_file(*page, *n), 10.0),
+                crate::Block::Figure { page, n, area, .. } => todo.push((*page, area, figure_file(*page, *n), 10.0)),
                 crate::Block::Para(inl) | crate::Block::Item { text: inl, .. } | crate::Block::PageNote { text: inl, .. } | crate::Block::Heading { text: inl, .. } => {
                     for x in inl {
                         if let crate::Inline::Picture { page, area } = x {
-                            cut(*page, area, &picture_file(*page, area), 1.0);
+                            todo.push((*page, area, picture_file(*page, area), 1.0));
                         }
                     }
                 }
@@ -726,11 +729,17 @@ fn write_figures(book: &Book, dir: &Path) {
             }
         }
     }
+    for (k, (page, area, name, pad)) in todo.iter().enumerate() {
+        crate::progress::report(Step::Pictures, k, todo.len());
+        cut(*page, area, name, *pad);
+    }
+    crate::progress::report(Step::Pictures, todo.len(), todo.len());
 }
 
 pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
     std::fs::create_dir_all(dir)?;
     write_figures(book, dir);
+    crate::progress::report(Step::Files, 0, 1);
     let mut out = Vec::new();
     let mut written = Vec::new();
     let texts: Vec<String> = (0..book.chapters.len()).map(|i| chapter_markdown(book, i)).collect();
@@ -775,6 +784,7 @@ pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
         std::fs::write(&p, s)?;
         out.push(p);
     }
+    crate::progress::report(Step::Files, 1, 1);
     Ok(out)
 }
 

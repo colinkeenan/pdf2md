@@ -27,6 +27,7 @@ pdf2md/
 │   ├── src/links.rs       TOC + index linking
 │   ├── src/emit.rs        Markdown output
 │   ├── src/measure.rs     how wide text and formulas come out in the viewer (where a line ends, for the page bars)
+│   ├── src/progress.rs    the steps of a conversion, how far each is, the time left (for the app's progress bars)
 │   ├── src/main.rs        command-line tool: pdf2md-cli
 │   └── tests/mini_book.rs end-to-end test on a tiny made-up book (as pdftohtml XML)
 └── app/              KDE Kirigami GUI (cxx-qt)
@@ -49,7 +50,7 @@ cargo run -p pdf2md-core --bin pdf2md-cli -- --dump book.pdf 10 12   # fonts, po
 
 `--dump` is the tool for understanding a new book: it shows every line with its position, font size and style, superscripts as `^{..}`, subscripts as `_{..}`, math-font text inside `«..»`, and the drawn bars on each page.
 
-Two environment variables print what the formula builder sees: `PDF2MD_MATHDEBUG=1` prints every span (box, size, font, text) and bar of each displayed formula, `PDF2MD_SVGDEBUG=1` the tall glyph outlines read from the SVG and the bracket each was taken for.
+`PDF2MD_PROGRESS=1` prints the steps with their times as the conversion goes (what the app shows as progress bars; `core/src/progress.rs`). Two environment variables print what the formula builder sees: `PDF2MD_MATHDEBUG=1` prints every span (box, size, font, text) and bar of each displayed formula, `PDF2MD_SVGDEBUG=1` the tall glyph outlines read from the SVG and the bracket each was taken for.
 
 ## Build the GUI
 
@@ -63,6 +64,8 @@ Two environment variables print what the formula builder sees: `PDF2MD_MATHDEBUG
 The in-app file browser also needs the Qt Labs folder list model: Fedora `qt6-qtdeclarative` (already included), Debian/Ubuntu `qml6-module-qt-labs-folderlistmodel`, Arch `qt6-declarative`.
 
 The book is written to `<output folder>/<PDF name>/`. If that folder already exists, the app asks whether to replace it (after the new conversion has succeeded, the old files go to the Trash as one folder, "<PDF name> (previous)", and the new ones are written into the same folder, so a terminal or editor open in it sees them at once) or keep both (the new one goes to `<PDF name> (1)`, `(2)` …).
+
+While converting, a bar shows how far the conversion is (by time) with an estimate of the time left. A conversion that has more than 30 seconds left at some point (the first one of a book with equation images) also lists its steps like a terminal: what is done and how long it took, what is running with its own bar and time left, what is still to come. The estimates come from the speed measured so far; before a step has done anything they are rough guesses.
 
 To start it from the application menu, install the program and its launcher:
 
@@ -153,6 +156,8 @@ Converting a book again keeps what you added, as long as it is marked:
 * **Fixes to the converted text** (the conversion got the book's words wrong): `<span class="fix" data-was="as converted">as in the book</span>`. It reads as normal text and is redone in the same paragraph. (Equations need no marking: just edit them.)
 
 Notes and fixes are collected from the chapter files and from `book.md` (each counted once), and a copy is kept in `~/.local/share/pdf2md/notes/<book folder>.md`. Other edits to the text are not kept.
+
+**Words under an equation.** Some equation images explain their parts with small words set under them ("bra" and "ket" under the two halves of a product). The model drops such words or reads them as symbols. An image of one line of math with a band of small type below it that Tesseract reads as words (not a denominator under its bar, not the limits under a sum; an underbrace with words is read well as it is) is read again without the band, and the words go back in a second row, each centred where it stood in the image: `\begin{array}{l} … \\ \mathrlap{\kern2.1em\mathclap{\scriptsize\text{bra}}}… \end{array}`. The places are fractions of the equation's width in the image, turned into em by an estimate of how wide the equation comes out, so a word may stand a little off. Sakurai has three such equations.
 
 **Equations to check.** Each equation is read a second time from the picture enlarged; where the two readings are different formulas (formatting aside), it is listed in `check-equations.md` in the book folder, biggest differences first, with links. A corrected equation drops off the list. To use another Python, set `PDF2MD_OCR_PYTHON`. Without the model, equation images stay pictures. The recognizer is good but not perfect: check equations you rely on against the book.
 

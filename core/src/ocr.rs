@@ -10,6 +10,7 @@
 //! Without the recognizer the conversion still works: such images then
 //! stay pictures.
 
+use crate::progress::Step;
 use std::collections::HashMap;
 use std::path::PathBuf;
 use std::process::Command;
@@ -196,8 +197,38 @@ fn read_cached(dir: &std::path::Path, k: &str) -> Option<Reading> {
     } else if t.is_empty() {
         None
     } else {
-        Some(Reading::Latex(align_rows(&unglue(unwrap_cell(&strip_numbers(t))))))
+        let latex = align_rows(&unglue(unwrap_cell(&strip_numbers(t))));
+        // words set small under parts of the equation, found in the image
+        let labels: Vec<(f32, String)> = std::fs::read_to_string(dir.join(format!("{k}.labels")))
+            .unwrap_or_default()
+            .lines()
+            .filter_map(|l| l.split_once('\t'))
+            .filter_map(|(at, word)| Some((at.trim().parse().ok()?, word.trim().to_string())))
+            .collect();
+        Some(Reading::Latex(with_labels(&latex, &labels)))
     }
+}
+
+/// An equation with words set small under parts of it ("bra" and "ket"
+/// under the two halves of a product), each word centred where it stands
+/// in the image: `labels` gives the middle of each word as a fraction of
+/// the equation's width. The words go in a second row, each moved to its
+/// place from the left edge; how wide the equation comes out is estimated
+/// (`measure`), so a word may stand a little off.
+fn with_labels(latex: &str, labels: &[(f32, String)]) -> String {
+    // (an equation of several rows has no one width to measure along)
+    if labels.is_empty() || latex.contains("\\\\") || latex.contains("\\begin") {
+        return latex.to_string();
+    }
+    let width = crate::measure::math_em(latex);
+    let row: String = labels
+        .iter()
+        .map(|(at, word)| {
+            let word: String = word.chars().filter(|c| !matches!(c, '\\' | '{' | '}' | '$' | '%' | '#' | '&' | '_' | '^' | '~')).collect();
+            format!("\\mathrlap{{\\kern{:.2}em\\mathclap{{\\scriptsize\\text{{{word}}}}}}}", (at * width).max(0.0))
+        })
+        .collect();
+    format!("\\begin{{array}}{{l}}\n{latex} \\\\[-0.2em]\n{row}\n\\end{{array}}")
 }
 
 /// An equation image never holds the equation's number (that is text
@@ -507,7 +538,7 @@ pub fn recognize(images: &[&str]) -> HashMap<String, Reading> {
                 let unverified = math && !dir.join(format!("{k}.verify")).exists();
                 let small = png_size(img).is_some_and(|(w, _)| w < SMALL);
                 let unsorted = math
-                    && ([".kind", ".lines"].iter().any(|e| !dir.join(format!("{k}{e}")).exists())
+                    && ([".kind", ".lines", ".labels"].iter().any(|e| !dir.join(format!("{k}{e}")).exists())
                         || (small && !dir.join(format!("{k}.small")).exists()));
                 out.insert(k.clone(), r);
                 if unverified || unsorted {
@@ -544,7 +575,10 @@ pub fn recognize(images: &[&str]) -> HashMap<String, Reading> {
     if untested > 0 {
         eprintln!("Checking {untested} images read as math before: diagrams or logos? lines run together? single symbols misread?");
     }
-    let ok = Command::new(&py).arg(&script).arg(&pending).arg(&dir).status().is_ok_and(|s| s.success());
+    if new > 0 {
+        crate::progress::report(Step::Formulas, 0, new);
+    }
+    let ok = run_recognizer(Command::new(&py).arg(&script).arg(&pending).arg(&dir));
     if !ok {
         eprintln!("The math recognizer failed; those equations stay pictures.");
     }
@@ -555,6 +589,30 @@ pub fn recognize(images: &[&str]) -> HashMap<String, Reading> {
         }
     }
     out
+}
+
+/// Run the recognizer, passing on what it says and reporting how far it
+/// is: it prints "  16/420" as it reads, "  again 3/40" as it reads the
+/// doubtful ones again, "  lines 20/420" as it looks for lines run together
+/// and "  checking 16/420" as it reads a second time.
+fn run_recognizer(cmd: &mut Command) -> bool {
+    use std::io::BufRead;
+    let Ok(mut child) = cmd.stderr(std::process::Stdio::piped()).spawn() else { return false };
+    if let Some(pipe) = child.stderr.take() {
+        for line in std::io::BufReader::new(pipe).lines().map_while(Result::ok) {
+            eprintln!("{line}");
+            let line = line.trim();
+            let (step, counts) = [("again ", Step::Again), ("lines ", Step::Lines), ("checking ", Step::Check)]
+                .iter()
+                .find_map(|(word, step)| Some((*step, line.strip_prefix(word)?)))
+                .unwrap_or((Step::Formulas, line));
+            let Some((done, total)) = counts.split_once('/') else { continue };
+            if let (Ok(done), Ok(total)) = (done.parse(), total.parse()) {
+                crate::progress::report(step, done, total);
+            }
+        }
+    }
+    child.wait().is_ok_and(|s| s.success())
 }
 
 /// Was the equation of this image read as a different formula a second
@@ -682,5 +740,16 @@ mod tests {
         assert_eq!(base64_decode("aGVsbG8=").unwrap(), b"hello");
         assert_eq!(base64_decode("aGVsbG8hIQ==").unwrap(), b"hello!!");
         assert_eq!(base64_decode("YWJj").unwrap(), b"abc");
+    }
+
+    #[test]
+    fn words_under_an_equation_stand_where_they_stood() {
+        // "x y" is about 1.1 em wide: a word under its middle is moved half of that
+        let t = with_labels("x y", &[(0.5, "bra".into())]);
+        assert!(t.starts_with("\\begin{array}{l}\nx y \\\\[-0.2em]\n\\mathrlap{\\kern0.5"), "{t}");
+        assert!(t.contains("\\mathclap{\\scriptsize\\text{bra}}"));
+        // none, or an equation of several rows: as it is
+        assert_eq!(with_labels("x y", &[]), "x y");
+        assert_eq!(with_labels("a \\\\ b", &[(0.5, "bra".into())]), "a \\\\ b");
     }
 }

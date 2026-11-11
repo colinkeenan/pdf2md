@@ -13,6 +13,13 @@ fn main() {
         process::exit(2);
     }
     let range = page_range(&args[2..]);
+    // PDF2MD_PROGRESS=1: print the steps with their times as they go
+    if env::var_os("PDF2MD_PROGRESS").is_some() {
+        let began = std::time::Instant::now();
+        pdf2md_core::progress::watch(move |step, done, total| {
+            eprintln!("{:7.2} s  {} {done}/{total}", began.elapsed().as_secs_f32(), step.label());
+        });
+    }
     // equations corrected by hand in an earlier conversion are kept
     let kept = pdf2md_core::ocr::collect_corrections(Path::new(&args[1]));
     if kept > 0 {

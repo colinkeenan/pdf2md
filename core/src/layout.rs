@@ -20,6 +20,7 @@
 //! later stages, which can now ask precise questions ("is this span raised
 //! and smaller than its line?") instead of guessing from plain text.
 
+use crate::progress::Step;
 use std::path::Path;
 use std::process::Command;
 
@@ -261,16 +262,18 @@ pub fn read_pdf(path: &Path, pages: Option<(u32, u32)>) -> Result<Doc, String> {
         cmd.args(["-f", &first.to_string(), "-l", &last.to_string()]);
     }
     cmd.arg(path);
-    let out = cmd.output().map_err(|e| {
+    // how many pages there are to read, to tell how far it is
+    let total = match pages {
+        Some((first, last)) => (last + 1).saturating_sub(first) as usize,
+        None => crate::progress::page_count(path),
+    };
+    let (ok, stdout, stderr) = crate::progress::run_counting(cmd, b"<page ", Step::Text, total).map_err(|e| {
         format!("could not run pdftohtml ({e}); install poppler (Arch) or poppler-utils")
     })?;
-    if !out.status.success() {
-        return Err(format!(
-            "pdftohtml failed: {}",
-            String::from_utf8_lossy(&out.stderr).trim()
-        ));
+    if !ok {
+        return Err(format!("pdftohtml failed: {}", String::from_utf8_lossy(&stderr).trim()));
     }
-    let mut doc = parse_xml(&String::from_utf8_lossy(&out.stdout))?;
+    let mut doc = parse_xml(&String::from_utf8_lossy(&stdout))?;
     add_link_positions(&mut doc, path);
     printed_page_marks(&mut doc);
 
@@ -282,9 +285,10 @@ pub fn read_pdf(path: &Path, pages: Option<(u32, u32)>) -> Result<Doc, String> {
         cmd.args(["-f", &first.to_string(), "-l", &last.to_string()]);
     }
     cmd.arg(path).arg("-");
-    if let Ok(out) = cmd.output() {
-        if out.status.success() {
-            let svg = String::from_utf8_lossy(&out.stdout);
+    crate::progress::report(Step::Text, total, total);
+    if let Ok((ok, stdout, _)) = crate::progress::run_counting(cmd, b"<page>", Step::Drawings, total) {
+        if ok {
+            let svg = String::from_utf8_lossy(&stdout);
             let rules = parse_svg_rules(&svg);
             for (page, r) in doc.pages.iter_mut().zip(rules) {
                 page.rules = r;

@@ -178,10 +178,79 @@ Kirigami.ApplicationWindow {
                 }
             }
 
-            QQC2.ProgressBar {
+            // how far the conversion is, by time, and how long it will take still
+            RowLayout {
                 Layout.fillWidth: true
-                indeterminate: true
                 visible: converter.busy
+                spacing: Kirigami.Units.largeSpacing
+                QQC2.ProgressBar {
+                    Layout.fillWidth: true
+                    from: 0
+                    to: 1
+                    value: converter.progress
+                }
+                QQC2.Label {
+                    text: converter.remaining
+                }
+            }
+
+            // A long conversion (over 30 s left at some point) shows its
+            // steps like a terminal: what is done, what is running and how
+            // long it has left, what is to come. It stays until the next one.
+            Rectangle {
+                Layout.fillWidth: true
+                visible: converter.detailed && converter.steps !== ""
+                implicitHeight: stepList.implicitHeight + 2 * Kirigami.Units.largeSpacing
+                Kirigami.Theme.colorSet: Kirigami.Theme.View
+                Kirigami.Theme.inherit: false
+                color: Kirigami.Theme.backgroundColor
+                border.color: Kirigami.ColorUtils.linearInterpolation(Kirigami.Theme.backgroundColor, Kirigami.Theme.textColor, 0.2)
+                radius: Kirigami.Units.cornerRadius
+
+                GridLayout {
+                    id: stepList
+                    anchors.fill: parent
+                    anchors.margins: Kirigami.Units.largeSpacing
+                    columns: 4
+                    columnSpacing: Kirigami.Units.largeSpacing
+                    rowSpacing: Kirigami.Units.smallSpacing
+
+                    Repeater {
+                        // four cells for each step: mark, name, bar, words
+                        model: converter.steps === "" ? 0 : converter.steps.split("\n").length * 4
+                        Item {
+                            id: cell
+                            required property int index
+                            readonly property var step: converter.steps.split("\n")[Math.floor(index / 4)].split("\t")
+                            readonly property int column: index % 4
+                            readonly property bool waiting: step[0] === "waiting"
+                            Layout.fillWidth: column === 2
+                            Layout.minimumWidth: column === 2 ? Kirigami.Units.gridUnit * 6 : 0
+                            implicitWidth: column === 2 ? Kirigami.Units.gridUnit * 6 : words.implicitWidth
+                            implicitHeight: words.implicitHeight
+                            QQC2.Label {
+                                id: words
+                                visible: cell.column !== 2
+                                font.family: "monospace"
+                                opacity: cell.waiting ? 0.5 : 1
+                                color: cell.column === 0 && cell.step[0] === "done" ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.textColor
+                                text: cell.column === 0 ? (cell.step[0] === "done" ? "✓" : cell.step[0] === "running" ? "▸" : "·")
+                                    : cell.column === 1 ? cell.step[1]
+                                    : cell.step[3]
+                            }
+                            QQC2.ProgressBar {
+                                visible: cell.column === 2
+                                anchors.left: parent.left
+                                anchors.right: parent.right
+                                anchors.verticalCenter: parent.verticalCenter
+                                opacity: cell.waiting ? 0.5 : 1
+                                from: 0
+                                to: 1
+                                value: cell.step[0] === "done" ? 1 : Number(cell.step[2])
+                            }
+                        }
+                    }
+                }
             }
 
             Kirigami.InlineMessage {

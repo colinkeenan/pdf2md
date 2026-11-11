@@ -25,6 +25,7 @@ pub mod annots;
 pub mod notes;
 pub mod ocr;
 pub mod pages;
+pub mod progress;
 pub mod structure;
 mod textmath;
 pub mod userdata;
@@ -230,9 +231,11 @@ pub fn convert_pdf(path: &Path) -> Result<Book, String> {
 /// checking a few pages of a big book.
 pub fn convert_pdf_pages(path: &Path, pages: Option<(u32, u32)>) -> Result<Book, String> {
     let doc = layout::read_pdf(path, pages)?;
+    progress::report(progress::Step::Book, 0, 1);
     let mut book = convert_doc(&doc);
     book.title = book_title(path, &doc);
     book.source = Some(path.to_path_buf());
+    progress::report(progress::Step::Book, 1, 1);
     Ok(book)
 }
 

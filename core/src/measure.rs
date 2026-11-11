@@ -104,6 +104,11 @@ pub fn math(latex: &str) -> Vec<f32> {
     run(&chars, &mut at, false, false).iter().map(|w| w * MATH).collect()
 }
 
+/// The width of a formula in em of the formula's own type size.
+pub fn math_em(latex: &str) -> f32 {
+    math(latex).iter().sum::<f32>() / MATH
+}
+
 /// What a sign is to the spacing around it.
 #[derive(Clone, Copy, PartialEq)]
 enum Kind {

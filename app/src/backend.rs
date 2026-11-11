@@ -16,6 +16,17 @@ pub mod qobject {
         #[qml_element]
         #[qproperty(QString, status)]
         #[qproperty(bool, busy)]
+        /// How much of the conversion is done, 0 to 1 (by time).
+        #[qproperty(f64, progress)]
+        /// "About 40 s left", while converting.
+        #[qproperty(QString, remaining)]
+        /// The steps of the conversion, one per line: state (done, running,
+        /// waiting), name, how much of it is done (0 to 1), and how far it is
+        /// in words, parted by tabs.
+        #[qproperty(QString, steps)]
+        /// The conversion takes long enough (over 30 s were left at some
+        /// point) for the steps to be shown.
+        #[qproperty(bool, detailed)]
         /// Last folder the user browsed (a file:// URL), remembered between runs.
         #[qproperty(QString, folder)]
         type Converter = super::ConverterRust;
@@ -42,20 +53,35 @@ pub mod qobject {
 use core::pin::Pin;
 use cxx_qt::Threading;
 use cxx_qt_lib::QString;
+use pdf2md_core::progress::{self, State, StepView, Tracker};
 use pdf2md_core::{convert_pdf, write_book};
 use std::path::{Path, PathBuf};
+use std::sync::atomic::{AtomicBool, Ordering};
+use std::sync::{Arc, Mutex};
+use std::time::{Duration, Instant};
 
 pub struct ConverterRust {
     status: QString,
     busy: bool,
+    progress: f64,
+    remaining: QString,
+    steps: QString,
+    detailed: bool,
     folder: QString,
 }
+
+/// With more than this many seconds left, the steps are shown.
+const DETAILED_FROM: f32 = 30.0;
 
 impl Default for ConverterRust {
     fn default() -> Self {
         Self {
             status: QString::default(),
             busy: false,
+            progress: 0.0,
+            remaining: QString::default(),
+            steps: QString::default(),
+            detailed: false,
             folder: QString::from(load_folder().as_str()),
         }
     }
@@ -154,6 +180,32 @@ fn trash_contents(dir: &Path) -> Result<(), String> {
     Ok(())
 }
 
+/// A step as a line for the window: state, name, fraction and how far it
+/// is in words ("155 of 771 pages, about 5 s left"), parted by tabs.
+fn step_line(v: &StepView) -> String {
+    let unit = v.step.unit();
+    let amount = |n: usize| if unit.is_empty() || v.total == 0 { String::new() } else { format!("{n} {unit}") };
+    let (state, words) = match v.state {
+        State::Done => {
+            let took = progress::duration(v.seconds, false);
+            let n = amount(v.total);
+            ("done", if n.is_empty() { took } else { format!("{n}, {took}") })
+        }
+        State::Running => {
+            let left = format!("about {} left", progress::duration(v.seconds, true));
+            // (nothing counted yet: some programs print all their pages at the end)
+            let of = match (unit.is_empty() || v.total == 0, v.done) {
+                (true, _) => String::new(),
+                (false, 0) => format!("{} {unit}, ", v.total),
+                (false, done) => format!("{done} of {} {unit}, ", v.total),
+            };
+            ("running", format!("{of}{left}"))
+        }
+        State::Waiting => ("waiting", String::new()),
+    };
+    format!("{state}\t{}\t{:.3}\t{words}", v.step.label(), v.fraction)
+}
+
 fn run(input: &Path, output: &Path, replace: bool) -> Result<String, String> {
     let mut dest = book_dir(input, output);
     // equations corrected by hand in the earlier conversion are kept
@@ -219,17 +271,68 @@ impl qobject::Converter {
         }
         self.as_mut().set_busy(true);
         self.as_mut().set_status(QString::from("Converting…"));
+        self.as_mut().set_progress(0.0);
+        self.as_mut().set_remaining(QString::default());
+        self.as_mut().set_steps(QString::default());
+        self.as_mut().set_detailed(false);
+
+        // The converter reports its steps to the tracker; a second thread
+        // shows what the tracker makes of them, a few times a second (the
+        // time left changes also while a step is silent).
+        let tracker = Arc::new(Mutex::new(Tracker::new(Instant::now())));
+        let over = Arc::new(AtomicBool::new(false));
+        {
+            let tracker = tracker.clone();
+            progress::watch(move |step, done, total| {
+                tracker.lock().unwrap_or_else(|e| e.into_inner()).update(step, done, total, Instant::now());
+            });
+        }
+        {
+            let (tracker, over, qt_thread) = (tracker.clone(), over.clone(), self.qt_thread());
+            std::thread::spawn(move || {
+                while !over.load(Ordering::Relaxed) {
+                    let now = Instant::now();
+                    let (left, fraction, steps) = {
+                        let t = tracker.lock().unwrap_or_else(|e| e.into_inner());
+                        (t.remaining(now), t.fraction(now), t.steps(now))
+                    };
+                    let lines: Vec<String> = steps.iter().map(step_line).collect();
+                    let over = over.clone();
+                    let _ = qt_thread.queue(move |mut qobj| {
+                        // (the conversion may have ended meanwhile)
+                        if over.load(Ordering::Relaxed) {
+                            return;
+                        }
+                        qobj.as_mut().set_progress(fraction as f64);
+                        qobj.as_mut().set_remaining(QString::from(format!("About {} left", progress::duration(left, true)).as_str()));
+                        qobj.as_mut().set_steps(QString::from(lines.join("\n").as_str()));
+                        if left > DETAILED_FROM {
+                            qobj.as_mut().set_detailed(true);
+                        }
+                    });
+                    std::thread::sleep(Duration::from_millis(250));
+                }
+            });
+        }
 
         let qt_thread = self.qt_thread();
         std::thread::spawn(move || {
             // PDF parsers can panic on odd files; report it instead of dying.
             let result = std::panic::catch_unwind(|| run(&input, &output, replace))
                 .unwrap_or_else(|_| Err("The PDF reader crashed on this file.".to_string()));
+            progress::unwatch();
+            over.store(true, Ordering::Relaxed);
             let msg = match result {
                 Ok(m) => m,
                 Err(e) => format!("Failed: {e}"),
             };
+            // how the steps ended, with the time each took
+            let now = Instant::now();
+            let lines: Vec<String> = tracker.lock().unwrap_or_else(|e| e.into_inner()).steps(now).iter().map(step_line).collect();
             let _ = qt_thread.queue(move |mut qobj| {
+                qobj.as_mut().set_steps(QString::from(lines.join("\n").as_str()));
+                qobj.as_mut().set_progress(1.0);
+                qobj.as_mut().set_remaining(QString::default());
                 qobj.as_mut().set_status(QString::from(msg.as_str()));
                 qobj.as_mut().set_busy(false);
             });
@@ -270,5 +373,17 @@ mod tests {
         std::fs::create_dir_all(tmp.join("My Book (1)")).unwrap();
         assert_eq!(new_dir(&book), tmp.join("My Book (2)"));
         std::fs::remove_dir_all(&tmp).unwrap();
+    }
+
+    #[test]
+    fn a_step_is_told_in_a_line() {
+        use pdf2md_core::progress::Step;
+        let mut v = StepView { step: Step::Text, state: State::Running, fraction: 0.25, done: 155, total: 771, seconds: 47.0 };
+        assert_eq!(step_line(&v), "running\tReading the text\t0.250\t155 of 771 pages, about 50 s left");
+        v.state = State::Done;
+        v.seconds = 83.2;
+        assert_eq!(step_line(&v), "done\tReading the text\t0.250\t771 pages, 1 min 23 s");
+        let w = StepView { step: Step::Files, state: State::Waiting, fraction: 0.0, done: 0, total: 0, seconds: 0.1 };
+        assert_eq!(step_line(&w), "waiting\tWriting the files\t0.000\t");
     }
 }
