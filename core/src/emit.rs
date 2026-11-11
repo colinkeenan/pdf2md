@@ -261,9 +261,24 @@ const PAGE_BAR: &str = "<hr class=\"page\" style=\"height:2px;border:0;backgroun
 /// width of the window, with any type. (A viewer that drops `style`
 /// shows the marker in the sentence, without the bar.)
 fn page_mark_inline(id: &str, label: &str) -> String {
+    page_mark_span(id, "", label)
+}
+
+/// (`attrs`: what else the marker's `<a>` holds, each with a blank before it.)
+fn page_mark_span(id: &str, attrs: &str, label: &str) -> String {
     format!(
-        "<span class=\"page\" style=\"float:left;width:100%;margin:0.4em 0 0.6em\"><span style=\"display:block;height:2px;background:currentColor;opacity:0.25\"></span><a id=\"{id}\"><sup>[{label}]</sup></a></span>"
+        "<span class=\"page\" style=\"float:left;width:100%;margin:0.4em 0 0.6em\"><span style=\"display:block;height:2px;background:currentColor;opacity:0.25\"></span><a id=\"{id}\"{attrs}><sup>[{label}]</sup></a></span>"
     )
+}
+
+/// The page marker in front of an entry inside a list (a section in the
+/// contents, a sub-entry of the index): a line that goes on the entry
+/// before it, the bar under that entry, and the next entry under the
+/// marker. A bar on lines of its own would end the list there, and the
+/// entries after it, set in from the margin, would be taken for program
+/// code.
+fn page_mark_in_list(id: &str, attrs: &str, label: &str) -> String {
+    format!("{}<span style=\"display:block;clear:both\"></span>\n", page_mark_span(id, attrs, label))
 }
 
 /// The PDF the book was made from, as the chapter files name it: a link
@@ -372,9 +387,15 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
             return;
         }
         Block::Heading { text, .. } | Block::Item { text, .. } | Block::PageNote { text, .. } if text.iter().any(is_marker) => {
+            let nested = *in_list && matches!(b, Block::Item { level, .. } if *level > 0);
             for m in text.iter().filter(|x| is_marker(x)) {
-                if let Inline::Anchor(id) = m {
-                    render_block(&Block::Anchor(id.clone()), out, in_list);
+                let Inline::Anchor(id) = m else { continue };
+                match page_label(id) {
+                    Some(l) if nested => {
+                        let approx = if crate::page_is_approx(id) { "≈" } else { "" };
+                        out.push_str(&page_mark_in_list(id, "", &format!("{approx}p. {l}")));
+                    }
+                    _ => render_block(&Block::Anchor(id.clone()), out, in_list),
                 }
             }
             let rest: Vec<Inline> = text.iter().filter(|x| !is_marker(x)).cloned().collect();
@@ -698,12 +719,17 @@ fn chapter_body(book: &Book, i: usize) -> String {
         }
         let neutral = matches!(b.block, crate::Block::Anchor(_));
         if !neutral && unnumbered.remove(&b.page) {
-            if in_list {
-                s.push('\n');
-                in_list = false;
-            }
             let n = book.pdf_pages[b.page];
-            s.push_str(&format!("{PAGE_BAR}\n<a id=\"pdf-p{n}\"{}><sup>[PDF p. {n}]</sup></a>\n\n", pdf_link(n)));
+            let (id, label) = (format!("pdf-p{n}"), format!("PDF p. {n}"));
+            if in_list && matches!(b.block, Block::Item { level, .. } if level > 0) {
+                s.push_str(&page_mark_in_list(&id, &pdf_link(n), &label));
+            } else {
+                if in_list {
+                    s.push('\n');
+                    in_list = false;
+                }
+                s.push_str(&format!("{PAGE_BAR}\n<a id=\"{id}\"{}><sup>[{label}]</sup></a>\n\n", pdf_link(n)));
+            }
         }
         if !neutral && b.centered != centered {
             if in_list {
@@ -1051,6 +1077,24 @@ mod tests {
         book.source = None;
         let out = chapter_body(&book, 0);
         assert!(!out.contains("href") && out.contains("<a id=\"p1\"><sup>[p. 1]</sup></a>"), "{out}");
+    }
+
+    #[test]
+    fn a_page_marker_inside_a_list_leaves_the_list_whole() {
+        let blk = |block: Block, page: usize| crate::Blk { block, page, centered: false };
+        let item = |level: usize, t: &str| Block::Item { level, text: vec![Inline::Text(t.into())] };
+        let mut book = Book { labels: vec![None, None], pdf_pages: vec![4, 5], source: Some("x.pdf".into()), ..Default::default() };
+        let mut blocks = vec![blk(item(0, "One"), 0), blk(item(2, "deep"), 0)];
+        blocks.extend((0..30).map(|k| blk(item(2, &format!("entry {k}")), 1)));
+        // (a printed page's marker in front of a nested entry, too)
+        blocks.push(blk(Block::Item { level: 1, text: vec![Inline::Anchor("p9".into()), Inline::Text("last".into())] }, 1));
+        book.chapters.push(crate::Chapter { title: "T".into(), slug: "t".into(), blocks, ..Default::default() });
+        let out = chapter_body(&book, 0);
+        // no line of the list stands after an empty line: none is taken for code
+        let lines: Vec<&str> = out.lines().collect();
+        assert!(lines.windows(2).all(|w| !(w[0].is_empty() && w[1].starts_with("  "))), "{out}");
+        assert!(out.contains("    - deep\n<span class=\"page\"") && out.contains("[PDF p. 5]</sup></a></span><span style=\"display:block;clear:both\"></span>\n    - entry 0\n"), "{out}");
+        assert!(out.contains("<a id=\"p9\"><sup>[p. 9]</sup></a></span><span style=\"display:block;clear:both\"></span>\n  - last\n"), "{out}");
     }
 
     #[test]
