@@ -49,7 +49,7 @@ fn corrections_dir() -> Option<PathBuf> {
     Some(base.join("pdf2md").join("corrections"))
 }
 
-fn read_correction(k: &str) -> Option<String> {
+pub(crate) fn read_correction(k: &str) -> Option<String> {
     let t = std::fs::read_to_string(corrections_dir()?.join(format!("{k}.tex"))).ok()?;
     let t = t.trim();
     (!t.is_empty()).then(|| t.to_string())
@@ -325,7 +325,7 @@ fn continues(row: &str) -> u8 {
 /// the right of it, and a second equation has its own "=" there. When the
 /// first row has no "=" (a long left-hand side), the rows that go on are
 /// set in a little instead.
-fn align_rows(t: &str) -> String {
+pub(crate) fn align_rows(t: &str) -> String {
     if let Some(body) = t.strip_prefix("\\begin{aligned}\n& ").and_then(|b| b.strip_suffix("\n\\end{aligned}")) {
         let rows: Vec<&str> = body.split(" \\\\\n& ").collect();
         return aligned(&rows);

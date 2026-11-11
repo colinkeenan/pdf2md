@@ -24,6 +24,7 @@ pdf2md/
 │   ├── src/structure.rs   chapters = headings in the chapter-title font size
 │   ├── src/notes.rs       footnotes + references, linked both ways
 │   ├── src/ocr.rs         equation images -> LaTeX via a local model (src/math_ocr.py)
+│   ├── src/scan.rs        scanned books: pages read by a local model (src/scan_read.py) -> blocks
 │   ├── src/links.rs       TOC + index linking
 │   ├── src/emit.rs        Markdown output
 │   ├── src/measure.rs     how wide text and formulas come out in the viewer (where a line ends, for the page bars)
@@ -129,6 +130,32 @@ Such a book sets the simple math inside its sentences in the text font: an itali
 * A small raised number after a word is a footnote marker; after a symbol, a number or a formula in brackets it is a power (`$N^{2}$`). A linked number — `(2.28)`, a page in the index — is a reference, never part of the formula beside it.
 * A formula that goes on in the next line is joined with its beginning.
 
+## Scanned books
+
+A scan is a PDF whose pages are pictures: there is no text in it to take (or only the hidden text an earlier reading left under the pictures, with every formula garbled). pdf2md sees this by itself (next to no text, an image on nearly every page) and then has the pages read by [marker](https://github.com/datalab-to/marker), a page-reading model that runs on your own computer; nothing is sent anywhere. marker gives the prose, the formulas in sentences and on lines of their own as LaTeX, the headings, the footnotes and where the pictures are; pdf2md makes chapters, page markers, linked notes and contents, numbered pictures and the files of it as for any other book.
+
+marker is not part of pdf2md. Set it up once, in an environment of its own (about 6 GB, and 3 GB of models that it downloads at the first book):
+
+```sh
+mkdir -p ~/.local/share/pdf2md/scan && cd ~/.local/share/pdf2md/scan
+uv venv --python 3.12 .venv
+uv pip install --python .venv/bin/python "marker-pdf==1.10.2"
+```
+
+(`PDF2MD_SCAN_PYTHON` names another Python that has marker. Version 1.10.2 is the last that runs inside Python alone; the versions after it need a model server.) Tables of contents and tables also need `pdftotext` (poppler) or, for a scan without hidden text, Tesseract.
+
+**marker's licences are not pdf2md's.** Its code is under the GNU GPL 3 (as pdf2md is), but its model weights are under the “AI Pubs Open RAIL-M License (Modified)”: free for personal use and research, not for organizations with more than 2 million US dollars of revenue or funding, not for competitors of its maker, and with terms about what the model writes. Whoever runs marker is bound by them, so read them before you convert a scanned book: both texts and a short summary are in [`licenses/marker`](licenses/marker).
+
+How it goes, and what to know:
+
+* A page takes about 3 seconds on a recent graphics card (a 540-page book: half an hour), read 16 pages at a time; the window counts the pages. Pages read are kept in `~/.cache/pdf2md/scan/`, by what the PDF holds, so converting the book again takes seconds and a conversion that was stopped goes on where it was.
+* **Chapters** are told by the layout, not by type sizes (the height of a heading's box says too little): a page that opens with a heading and has no running head opens a chapter; “Chapter I.5” and the title under it are one title. What opens a page before the first “Chapter …” or “Part …” is front matter. All other headings are sections of one level (`##`), unless they are numbered (`1.2.3`). A book without running heads goes by the heights of its headings, which is less sure.
+* **Printed page numbers** are read from the running heads and feet; a page that shows none (the first of a chapter), or whose number was misread, gets its number from the pages around it.
+* **Equations** keep their numbers; one you correct by hand is kept for the next conversion like the equations read from images (see below). There is no second reading of them, so no `check-equations.md`.
+* **Footnotes** are linked to their markers. marker does not see every small raised number in the text; a note whose marker it missed is listed in `unplaced-notes.md` with its chapter.
+* **The table of contents** is read line by line from the PDF's hidden text (or by Tesseract), because marker reads tables cell by cell, which shuffles it; an entry whose page opens a chapter takes that chapter's title as marker read it. Other tables are kept as pictures.
+* Letters that stand as symbols in a sentence (“J(x)”, “a”) are often left as plain letters.
+
 ## Your notes and fixes
 
 Converting a book again keeps what you added, as long as it is marked:
@@ -160,6 +187,14 @@ Notes and fixes are collected from the chapter files and from `book.md` (each co
 **Words under an equation.** Some equation images explain their parts with small words set under them ("bra" and "ket" under the two halves of a product). The model drops such words or reads them as symbols. An image of one line of math with a band of small type below it that Tesseract reads as words (not a denominator under its bar, not the limits under a sum; an underbrace with words is read well as it is) is read again without the band, and the words go back in a second row, each centred where it stood in the image: `\begin{array}{l} … \\ \mathrlap{\kern2.1em\mathclap{\scriptsize\text{bra}}}… \end{array}`. The places are fractions of the equation's width in the image, turned into em by an estimate of how wide the equation comes out, so a word may stand a little off. Sakurai has three such equations.
 
 **Equations to check.** Each equation is read a second time from the picture enlarged; where the two readings are different formulas (formatting aside), it is listed in `check-equations.md` in the book folder, biggest differences first, with links. A corrected equation drops off the list. To use another Python, set `PDF2MD_OCR_PYTHON`. Without the model, equation images stay pictures. The recognizer is good but not perfect: check equations you rely on against the book.
+
+## Licence
+
+pdf2md is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. It is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; see [`LICENSE`](LICENSE).
+
+Copyright (C) 2026 Colin Keenan
+
+The programs it runs have licences of their own: poppler (GPL), [texify](https://github.com/VikParuchuri/texify) (code GPL 3, model weights CC BY-SA 4.0), Tesseract (Apache 2.0), and for scanned books [marker](https://github.com/datalab-to/marker) (code GPL 3, model weights under a licence with limits on who may use them: see [`licenses/marker`](licenses/marker)). None of them is contained in pdf2md; you install them yourself.
 
 ## Known limitations
 

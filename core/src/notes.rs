@@ -181,9 +181,15 @@ pub fn attach(chapters: &mut Vec<Chapter>, book: &mut Book) -> Vec<String> {
                     Some(Inline::PageLink(p)) => Some(*p),
                     _ => None,
                 };
-                let same_page = page_notes.get(&page).is_some_and(|l| l.iter().any(|e| e.0 == s && !e.2));
+                let has_note = |p: usize| page_notes.get(&p).is_some_and(|l| l.iter().any(|e| e.0 == s && !e.2));
+                let same_page = has_note(page);
+                // (a paragraph that crosses to the next pages: the marker
+                // may stand after the page turned, which its page marks say)
+                let turned = page + inl[..k].iter().filter(|i| matches!(i, Inline::Anchor(a) if crate::page_label(a).is_some())).count();
                 let note_page = if same_page {
                     page
+                } else if turned != page && has_note(turned) {
+                    turned
                 } else if let Some(p) = linked {
                     let Some(q) = page_notes.iter().find(|(q, l)| pdf.get(**q) == Some(&p) && l.iter().any(|e| e.0 == s && !e.2)).map(|(q, _)| *q) else { continue };
                     q

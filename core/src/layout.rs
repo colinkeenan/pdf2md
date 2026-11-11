@@ -311,6 +311,23 @@ fn svg_parts(path: &Path, first: usize, total: usize) -> Option<Vec<(usize, Stri
 
 /// Read a PDF. `pages` limits it to a range (first, last), both 1-based.
 pub fn read_pdf(path: &Path, pages: Option<(u32, u32)>) -> Result<Doc, String> {
+    let mut doc = read_text(path, pages)?;
+    read_drawings(&mut doc, path, pages);
+    Ok(doc)
+}
+
+/// How many pages are read: all of the PDF, or the range asked for.
+fn pages_read(path: &Path, pages: Option<(u32, u32)>) -> usize {
+    let in_all = crate::progress::page_count(path);
+    match pages {
+        // (a range may name more pages than there are)
+        Some((first, last)) => (if in_all > 0 { last.min(in_all as u32) } else { last } + 1).saturating_sub(first) as usize,
+        None => in_all,
+    }
+}
+
+/// The text of a PDF with its positions and fonts (`pdftohtml`).
+pub fn read_text(path: &Path, pages: Option<(u32, u32)>) -> Result<Doc, String> {
     let mut cmd = Command::new("pdftohtml");
     // -xml: XML with positions; -i: skip images; -q: quiet; -stdout: no files
     cmd.args(["-xml", "-i", "-q", "-stdout", "-nodrm"]);
@@ -319,12 +336,7 @@ pub fn read_pdf(path: &Path, pages: Option<(u32, u32)>) -> Result<Doc, String> {
     }
     cmd.arg(path);
     // how many pages there are to read, to tell how far it is
-    let in_all = crate::progress::page_count(path);
-    let total = match pages {
-        // (a range may name more pages than there are)
-        Some((first, last)) => (if in_all > 0 { last.min(in_all as u32) } else { last } + 1).saturating_sub(first) as usize,
-        None => in_all,
-    };
+    let total = pages_read(path, pages);
     let (ok, stdout, stderr) = crate::progress::run_counting(cmd, b"<page ", Step::Text, total).map_err(|e| {
         format!("could not run pdftohtml ({e}); install poppler (Arch) or poppler-utils")
     })?;
@@ -334,10 +346,15 @@ pub fn read_pdf(path: &Path, pages: Option<(u32, u32)>) -> Result<Doc, String> {
     let mut doc = parse_xml(&String::from_utf8_lossy(&stdout))?;
     add_link_positions(&mut doc, path);
     printed_page_marks(&mut doc);
-
-    // Drawn bars. If pdftocairo is missing the conversion still works,
-    // just without overlines.
     crate::progress::report(Step::Text, total, total);
+    Ok(doc)
+}
+
+/// What is drawn on the pages (`pdftocairo -svg`): bars, tall brackets,
+/// pictures, and the images, which are read if they are equations. If
+/// pdftocairo is missing the conversion still works, just without them.
+pub fn read_drawings(doc: &mut Doc, path: &Path, pages: Option<(u32, u32)>) {
+    let total = pages_read(path, pages);
     let first = pages.map_or(1, |(first, _)| first as usize);
     if let Some(parts) = svg_parts(path, first, total) {
         // Lost big brackets are a TeX font problem; in books without
@@ -359,9 +376,9 @@ pub fn read_pdf(path: &Path, pages: Option<(u32, u32)>) -> Result<Doc, String> {
         for (page, r) in doc.pages.iter_mut().zip(all(&parts, parse_svg_rules)) {
             page.rules = r;
         }
-        mark_overlines(&mut doc);
+        mark_overlines(doc);
         if tex_math {
-            insert_delims(&mut doc, all(&parts, parse_svg_delims));
+            insert_delims(doc, all(&parts, parse_svg_delims));
         }
         for (page, f) in doc.pages.iter_mut().zip(all(&parts, parse_svg_figures)) {
             page.figures = f;
@@ -371,11 +388,10 @@ pub fn read_pdf(path: &Path, pages: Option<(u32, u32)>) -> Result<Doc, String> {
         }
         // labels of drawn pictures (text pieces); an embedded image has
         // its labels in its pixels, so text around it is never one
-        take_figure_labels(&mut doc);
-        place_images(&mut doc);
-        join_split_equations(&mut doc);
+        take_figure_labels(doc);
+        place_images(doc);
+        join_split_equations(doc);
     }
-    Ok(doc)
 }
 
 /// Pictures on each page of `pdftocairo -svg` output, in pdftohtml's

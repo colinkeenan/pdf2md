@@ -181,7 +181,9 @@ fn trash_contents(dir: &Path) -> Result<(), String> {
     Ok(())
 }
 
-/// A step that has reported nothing new for this many seconds says so.
+/// A step that has counted nothing new for this many seconds says so,
+/// unless that is its usual pace (scanned pages come 16 at a time, a
+/// minute apart): then when it is half as long again as usual.
 const QUIET_FROM: f32 = 30.0;
 
 /// A step as a line for the window: state, name, fraction and how far it
@@ -205,7 +207,7 @@ fn step_line(v: &StepView) -> String {
                 (false, 0) => format!("{} {unit}", v.total),
                 (false, done) => format!("{done} of {} {unit}", v.total),
             };
-            if !of.is_empty() && v.done > 0 && v.quiet >= QUIET_FROM {
+            if !of.is_empty() && v.done > 0 && v.quiet >= QUIET_FROM.max(1.5 * v.pace) {
                 of.push_str(&format!(" (none new for {})", progress::elapsed(v.quiet)));
             }
             // (the window sets what follows "; " on a line of its own)
@@ -391,7 +393,7 @@ mod tests {
     #[test]
     fn a_step_is_told_in_a_line() {
         use pdf2md_core::progress::Step;
-        let mut v = StepView { step: Step::Text, state: State::Running, fraction: 0.25, done: 155, total: 771, seconds: 47.0, spent: 12.6, quiet: 0.2 };
+        let mut v = StepView { step: Step::Text, state: State::Running, fraction: 0.25, done: 155, total: 771, seconds: 47.0, spent: 12.6, quiet: 0.2, pace: 0.1 };
         assert_eq!(step_line(&v), "running\tReading the text\t0.250\t155 of 771 pages; 12 s so far, about 50 s left");
         // nothing new for a while: said, with the time ticking
         (v.spent, v.quiet) = (95.0, 83.0);
@@ -399,10 +401,13 @@ mod tests {
             step_line(&v),
             "running\tReading the text\t0.250\t155 of 771 pages (none new for 1 min 23 s); 1 min 35 s so far, about 50 s left"
         );
+        // a step that counts once a minute is not late after 83 s
+        v.pace = 60.0;
+        assert!(!step_line(&v).contains("none new"));
         v.state = State::Done;
         v.seconds = 83.2;
         assert_eq!(step_line(&v), "done\tReading the text\t0.250\t771 pages, 1 min 23 s");
-        let w = StepView { step: Step::Files, state: State::Waiting, fraction: 0.0, done: 0, total: 0, seconds: 0.1, spent: 0.0, quiet: 0.0 };
+        let w = StepView { step: Step::Files, state: State::Waiting, fraction: 0.0, done: 0, total: 0, seconds: 0.1, spent: 0.0, quiet: 0.0, pace: 0.0 };
         assert_eq!(step_line(&w), "waiting\tWriting the files\t0.000\t");
     }
 }

@@ -26,6 +26,7 @@ pub mod notes;
 pub mod ocr;
 pub mod pages;
 pub mod progress;
+pub mod scan;
 pub mod structure;
 mod textmath;
 pub mod userdata;
@@ -230,9 +231,18 @@ pub fn convert_pdf(path: &Path) -> Result<Book, String> {
 /// Read only pages `first..=last` (1-based) and convert them; handy for
 /// checking a few pages of a big book.
 pub fn convert_pdf_pages(path: &Path, pages: Option<(u32, u32)>) -> Result<Book, String> {
-    let doc = layout::read_pdf(path, pages)?;
-    progress::report(progress::Step::Book, 0, 1);
-    let mut book = convert_doc(&doc);
+    let mut doc = layout::read_text(path, pages)?;
+    let mut book = if scan::looks_scanned(&doc, path, pages) {
+        // pictures of pages: read by the page reader
+        let (first, last) = pages.unwrap_or((1, doc.pages.len() as u32));
+        let read = scan::read(path, first, last.min(first + doc.pages.len() as u32 - 1))?;
+        progress::report(progress::Step::Book, 0, 1);
+        finish(read.blks, read.labels, read.pdf_pages, read.chapter_size)
+    } else {
+        layout::read_drawings(&mut doc, path, pages);
+        progress::report(progress::Step::Book, 0, 1);
+        convert_doc(&doc)
+    };
     book.title = book_title(path, &doc);
     book.source = Some(path.to_path_buf());
     progress::report(progress::Step::Book, 1, 1);
@@ -294,17 +304,21 @@ pub fn convert_doc(doc: &layout::Doc) -> Book {
     let pages = pages::prepare(doc);
     let stats = blocks::stats(doc, &pages);
     let blks = blocks::build(doc, &pages, &stats);
-    let mut chapters = structure::split_chapters(blks, stats.chapter_size);
-    structure::merge_front_matter(&mut chapters, stats.chapter_size);
-    let mut book = Book {
-        labels: pages.iter().map(|p| p.label.clone()).collect(),
-        pdf_pages: pages.iter().map(|p| doc.pages[p.index].number).collect(),
-        ..Default::default()
-    };
+    let labels = pages.iter().map(|p| p.label.clone()).collect();
+    let pdf_pages = pages.iter().map(|p| doc.pages[p.index].number).collect();
+    finish(blks, labels, pdf_pages, stats.chapter_size)
+}
+
+/// The book of its blocks: chapters, notes, links. `labels`: the printed
+/// number of each page; `pdf_pages`: its number in the PDF.
+fn finish(blks: Vec<Blk>, labels: Vec<Option<String>>, pdf_pages: Vec<u32>, chapter_size: Option<f32>) -> Book {
+    let mut chapters = structure::split_chapters(blks, chapter_size);
+    structure::merge_front_matter(&mut chapters, chapter_size);
+    let mut book = Book { labels, pdf_pages, ..Default::default() };
     let removed = notes::attach(&mut chapters, &mut book);
     structure::assign_slugs(&mut chapters);
     links::link_toc(&mut chapters, &book.labels, &book.pdf_pages, &removed, &mut book.warnings);
-    structure::heading_levels(&mut chapters, stats.chapter_size);
+    structure::heading_levels(&mut chapters, chapter_size);
     links::link_index(&mut chapters, &book.pdf_pages);
     links::link_problems(&mut chapters);
     links::link_cross_refs(&mut chapters);

@@ -17,6 +17,8 @@ pub enum Step {
     Text,
     /// `pdftocairo -svg`: drawn bars, brackets, pictures (pages)
     Drawings,
+    /// the pages of a scanned book read by the page reader (pages)
+    Scan,
     /// images looked at: a drawing, or something to read? (images)
     Sorting,
     /// images read as plain text, to find program code among them (images)
@@ -46,9 +48,10 @@ const RECOGNIZER: [Step; 8] =
     [Step::Sorting, Step::Words, Step::Model, Step::Formulas, Step::Again, Step::Lines, Step::Labels, Step::Check];
 
 impl Step {
-    pub const ALL: [Step; 13] = [
+    pub const ALL: [Step; 14] = [
         Step::Text,
         Step::Drawings,
+        Step::Scan,
         Step::Sorting,
         Step::Words,
         Step::Model,
@@ -67,6 +70,7 @@ impl Step {
         match self {
             Step::Text => "Reading the text",
             Step::Drawings => "Reading drawings and pictures",
+            Step::Scan => "Reading the scanned pages",
             Step::Sorting => "Telling drawings from equations",
             Step::Words => "Looking for program code",
             Step::Model => "Loading the equation reader",
@@ -84,7 +88,7 @@ impl Step {
     /// What its amounts count.
     pub fn unit(self) -> &'static str {
         match self {
-            Step::Text | Step::Drawings => "pages",
+            Step::Text | Step::Drawings | Step::Scan => "pages",
             Step::Sorting | Step::Words => "images",
             Step::Formulas | Step::Again | Step::Lines | Step::Labels | Step::Check => "equations",
             Step::Pictures => "pictures",
@@ -101,6 +105,8 @@ impl Step {
         match self {
             Step::Text => (0.01, 1.0),
             Step::Drawings => (0.05, 2.0),
+            // (with the page reader's models loaded first)
+            Step::Scan => (6.0, 60.0),
             Step::Sorting => (0.05, 2.0),
             Step::Words => (0.1, 2.0),
             Step::Model => (0.0, 40.0),
@@ -206,8 +212,11 @@ pub struct StepView {
     pub seconds: f32,
     /// seconds it has been running (0 unless it runs)
     pub spent: f32,
-    /// seconds since it last reported anything (0 unless it runs)
+    /// seconds since its count last grew (0 unless it runs)
     pub quiet: f32,
+    /// seconds it usually takes for the count to grow, as measured (0 if
+    /// not measured yet): a step that counts in lots is quiet in between
+    pub pace: f32,
 }
 
 #[derive(Clone, Copy, Debug, PartialEq)]
@@ -253,7 +262,8 @@ impl Tracker {
     pub fn new(now: Instant) -> Self {
         let steps = Step::ALL
             .iter()
-            .map(|&step| Timing { step, done: 0, total: 0, started: None, first: None, latest: None, stride: 1, finished: None, skipped: false })
+            // (only a scanned book is read by the page reader)
+            .map(|&step| Timing { step, done: 0, total: 0, started: None, first: None, latest: None, stride: 1, finished: None, skipped: step == Step::Scan })
             .collect();
         Tracker { began: now, pages: 0, steps }
     }
@@ -334,7 +344,7 @@ impl Tracker {
         // than a guess does (the second reading is of enlarged images)
         let reading = self.timing(Step::Formulas).and_then(Self::measured).map(|r| r * CAUTION);
         let units = match step {
-            Step::Text | Step::Drawings => pages,
+            Step::Text | Step::Drawings | Step::Scan => pages,
             // (seldom more than one picture to three pages)
             Step::Pictures => 0.3 * pages,
             // (how many must be read again is not known before)
@@ -424,7 +434,8 @@ impl Tracker {
                     }
                     (None, _) => (State::Waiting, 0.0, left, 0.0, 0.0),
                 };
-                StepView { step: t.step, state, fraction, done: t.done, total: t.total, seconds, spent, quiet }
+                let pace = if state == State::Running { Self::measured(t).map_or(0.0, |rate| rate * t.stride as f32) } else { 0.0 };
+                StepView { step: t.step, state, fraction, done: t.done, total: t.total, seconds, spent, quiet, pace }
             })
             .collect()
     }
@@ -529,7 +540,10 @@ mod tests {
         assert!(left(&t, Step::Formulas, 200.0) > left(&t, Step::Formulas, 100.0));
         // a report that brings nothing new does not end the silence
         t.update(Step::Formulas, 160, 320, at(150.0));
-        assert_eq!(t.steps(at(200.0)).iter().find(|v| v.step == Step::Formulas).unwrap().quiet.round(), 190.0);
+        let quiet = t.steps(at(200.0)).into_iter().find(|v| v.step == Step::Formulas).unwrap();
+        assert_eq!(quiet.quiet.round(), 190.0);
+        // (16 came every second before)
+        assert!((quiet.pace - 1.0).abs() < 0.01, "{}", quiet.pace);
     }
 
     #[test]
