@@ -3,7 +3,7 @@
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p118"><sup>[p. 118]</sup></a>
 
-Consider the scattering of an electron by a time-independent electrostatic potential
+Consider the <a id="ix-244">scattering</a> of an electron by a time-independent electrostatic potential
 
 <a id="eq-625"></a>
 
@@ -98,7 +98,7 @@ $$
 M_{2} + M_{2}^{\prime} = - \frac{\alpha}{3 \pi} \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right\} \frac{q^{2}}{\mu^{2}} M_{0} - \frac{\alpha}{2} \frac{e}{\hbar c\mu} ( u^{\prime *} /qu ) V ( \boldsymbol{q} ) \delta ( q_{0} ) \tag{632}
 $$
 
-This gives a second order correction to the cross-section $\sigma_{0}$ according to (621). The total non-radiative cross-section, for <a id="ix-217">scattering</a> without the emission of a photon of energy greater than ∆$E$, becomes
+This gives a second order correction to the cross-section $\sigma_{0}$ according to (621). The total non-radiative cross-section, for <a id="ix-242">scattering</a> without the emission of a photon of energy greater than ∆$E$, becomes
 
 <a id="eq-633"></a>
 
@@ -155,7 +155,7 @@ and therefore for all possible photons the momentum $\hbar | \boldsymbol{k}^{\pr
 
 will be given by (618) and (620), even when the photon takes away a large fraction of the kinetic energy of the electron.
 
-We imagine a scattering experiment in which only the direction of the emerging electron is measured and not its energy. Then the radiative cross-section $\overline{\sigma}_{R}$ will measure the total probability of scattering the electron into a <a id="ix-26">solid</a> angle $d$Ω with emission of a photon having any frequency between the lower limit $r$ and the upper limit $k_{\max}$ given by (638). The observed cross-section will be
+We imagine a scattering experiment in which only the direction of the emerging electron is measured and not its energy. Then the radiative <a id="ix-53">cross-section</a> $\overline{\sigma}_{R}$ will measure the total probability of scattering the electron into a <a id="ix-15">solid</a> angle $d$Ω with emission of a photon having any frequency between the lower limit $r$ and the upper limit $k_{\max}$ given by (638). The observed cross-section will be
 
 <a id="eq-639"></a>
 
@@ -250,7 +250,7 @@ which is much smaller if $v$ is not relativistic. Thus the correction _cannot be
 
 The exact formulae in both non-relativistic and relativistic cases have been published by J. Schwinger, _Phys. Rev._ **76** (1949) 790.
 
-An experimental test in the relativistic range is just on the limits of the possible. See Lyman, Hanson and Scott, _Phys. Rev._ **84** (1951) 626. Scattering of 15 MeV electrons by nuclei were measured with very good energy-resolution, ∆$E/E$ being 1 - 3 %. In this case it was _only_ the <a id="ix-37">non-radiative</a> cross-section $\overline{\sigma}_{N}$ that was observed, and so the radiative correction given by the relativistic form of (637) becomes quite large. In fact the radiative correction in $\overline{\sigma}_{N}$ in the relativistic range becomes of the order
+An experimental test in the relativistic range is just on the limits of the possible. See Lyman, Hanson and Scott, _Phys. Rev._ **84** (1951) 626. Scattering of 15 MeV electrons by nuclei were measured with very good energy-resolution, ∆$E/E$ being 1 - 3 %. In this case it was _only_ the <a id="ix-51">non-radiative</a> <a id="ix-55">cross-section</a> $\overline{\sigma}_{N}$ that was observed, and so the radiative correction given by the relativistic form of (637) becomes quite large. In fact the radiative correction in $\overline{\sigma}_{N}$ in the relativistic range becomes of the order
 
 <a id="eq-649"></a>
 
@@ -279,7 +279,7 @@ The scattering by an electrostatic potential, the two terms in (617) were lumped
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p122"><sup>[p. 122]</sup></a>
 
-Consider scattering of a slow electron by a slowly-varying<sup><a id="fnref-84" href="#fn-84">84</a></sup> magnetic field. The potentials (534) can then be taken to be a pure vector potential, so that
+Consider <a id="ix-243">scattering</a> of a slow electron by a slowly-varying<sup><a id="fnref-84" href="#fn-84">84</a></sup> magnetic field. The potentials (534) can then be taken to be a pure vector potential, so that
 
 <a id="eq-651"></a>
 
@@ -297,7 +297,7 @@ $$
 M = - \frac{e \hbar}{2 mc} \tag{652}
 $$
 
-This moment has an energy of interaction with an external <a id="ix-195">Maxwell</a> field $( \boldsymbol{E} , \boldsymbol{H} )$ given by
+This moment has an energy of interaction with an external Maxwell field $( \boldsymbol{E} , \boldsymbol{H} )$ given by
 
 <a id="eq-653"></a>
 
@@ -360,7 +360,7 @@ $$
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p123"><sup>[p. 123]</sup></a>
 
-Now comparing the matrix element (659) with (617), we see that the magnetic effect of the second-order radiative correction to scattering is exactly described by saying that the electron has an <a id="ix-98">anomalous magnetic moment</a> $\delta M$ given by
+Now comparing the matrix element (659) with (617), we see that the magnetic effect of the second-order radiative correction to scattering is exactly described by saying that the electron has an <a id="ix-104">anomalous magnetic moment</a> $\delta M$ given by
 
 <a id="eq-660"></a>
 
@@ -417,7 +417,7 @@ $$
 i \hbar \frac{\partial \Omega_{1} ( t )}{\partial t} = H^{I} ( t ) \Omega_{1} ( t ) \tag{663}
 $$
 
-for any value of $t$ not in the remote past, so that we may take $g_{A} ( t )$ = 1. Hence the <a id="ix-234">equation</a> of motion for Φ$( t )$ derived from (661) is just
+for any value of $t$ not in the remote past, so that we may take $g_{A} ( t )$ = 1. Hence the <a id="ix-70">equation</a> of motion for Φ$( t )$ derived from (661) is just
 
 <a id="eq-664"></a>
 
@@ -431,7 +431,7 @@ $$
 H_{T} ( t ) = ( \Omega_{1} ( t ) )^{- 1} H^{e} ( t ) \Omega_{1} ( t ) \tag{665}
 $$
 
-The covariant part of the calculation, which is done in the FIR, is just the evaluation of this transformed <a id="ix-104">Hamiltonian</a> $H_{T} ( t )$.
+The covariant part of the calculation, which is done in the FIR, is just the evaluation of this transformed <a id="ix-148">Hamiltonian</a> $H_{T} ( t )$.
 
 ### <a id="s-covariant-part-of-the-calculation"></a>Covariant Part of the Calculation
 
@@ -451,7 +451,7 @@ $$
 H_{T} ( t ) = ( \Omega_{2} ( t ) \Omega_{1} ( t ) )^{- 1} H_{F} ( t ) = S^{- 1} H_{F} ( t ) \tag{667}
 $$
 
-where $S$, given by (495), is the scattering matrix defined in the absence of the external potential $A_{\mu}^{e}$. We shall now restrict our attention to systems in which only one electron is actually present. We saw by Eq. (533) that $S$ applied to a one-electron state is equivalent to the unit operator, i. e.g. $S$ produces no real scattering or shift of phase in one-particle states. Therefore in discussing the hydrogen atom we may simply omit the $S^{- 1}$ in (667) and write
+where $S$, given by (495), is the scattering matrix defined in the absence of the external potential $A_{\mu}^{e}$. We shall now restrict our attention to systems in which only one <a id="ix-114">electron</a> is actually present. We saw by Eq. (533) that $S$ applied to a one-electron state is equivalent to the unit operator, i. e.g. $S$ produces no real scattering or shift of phase in one-particle states. Therefore in discussing the hydrogen atom we may simply omit the $S^{- 1}$ in (667) and write
 
 <a id="eq-668"></a>
 
@@ -483,7 +483,7 @@ $$
 H_{T} ( t ) = H^{e} ( t ) + H_{T 1} ( t ) + H_{T 2} ( t ) \tag{671}
 $$
 
-expanding $H_{T}$ in powers of the radiation interaction just as $U$ was expanded in (536)–(540). But the matrix elements of $\left( U_{2} + U_{2}^{1} \right)$ referring to one-electron transition have already been calculated and are given by (617) assuming non-relativistic velocities for the electron. This enables us to write down immediately a formula for the operator $H_{T 2}$, valid for one-electron transitions at non-relativistic
+expanding $H_{T}$ in powers of the radiation interaction just as $U$ was expanded in (536)–(540). But the matrix elements of $\left( U_{2} + U_{2}^{1} \right)$ referring to one-electron transition have already been calculated and are given by (617) assuming non-relativistic velocities for the electron. This enables us to write down immediately a formula for the operator $H_{T 2}$, valid for one-<a id="ix-105">electron</a> transitions at non-relativistic
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p125"><sup>[p. 125]</sup></a>
@@ -526,7 +526,7 @@ $$
 \begin{aligned} H_{T 2} &= \frac{\alpha}{3 \pi \mu^{2}} \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right\} \int ( \nabla^{2} V ) ( \psi^{*} \psi ) d^{3} \boldsymbol{r} \\ & \quad - \frac{i\alpha}{4 \pi \mu} \int \psi^{*} \gamma_{4} ( \boldsymbol{\alpha} \boldsymbol{\cdot} \nabla V ) \psi d^{3} \boldsymbol{r} \end{aligned} \tag{676}
 $$
 
-The calculation of $H_{T 2}$, which is the main part of the <a id="ix-146">Lamb</a> shift calculation, can thus be taken over directly from the scattering calculation. In particular, the elimination of divergent renormalization effects does not have to be considered afresh. Once (676) has been derived, everything is finite and we are permitted to carry out the rest of the calculation in a non-covariant way. Note however that the low-energy photon frequency cut-off $r$ still appears in (676). We expect that this dependence on $r$ will finally disappear when the effects of $H_{T 1}$ are considered, the same cut-off being used in both $H_{T 1}$ and $H_{T 2}$.
+The calculation of $H_{T 2}$, which is the main part of the <a id="ix-171">Lamb</a> shift calculation, can thus be taken over directly from the scattering calculation. In particular, the elimination of divergent <a id="ix-257">renormalization</a> effects does not have to be considered afresh. Once (676) has been derived, everything is finite and we are permitted to carry out the rest of the calculation in a non-covariant way. Note however that the low-energy photon frequency cut-off $r$ still appears in (676). We expect that this dependence on $r$ will finally disappear when the effects of $H_{T 1}$ are considered, the same cut-off being used in both $H_{T 1}$ and $H_{T 2}$.
 
 We next turn to the evaluation of $H_{T 1}$, which is related to $U_{1}$ in the same way as $H_{T 2}$ to $( U_{2} + U_{2}^{1} )$. According to (484) the matrix element of $U_{1}$ for a one-electron transition between the states (542), with emission of the photon (440), is<sup><a id="fnref-90" href="#fn-90">90</a></sup>
 
@@ -583,7 +583,7 @@ $$
 /e^{\prime} / k_{3}^{\prime} /e + /e/ k_{3}^{\prime} /e^{\prime} = ik_{0}^{\prime} /e^{\prime} ( 2 \gamma_{4} /e ) \tag{679}
 $$
 
-Now this term (679) is small compared to the other term in (678), because $/e^{\prime}$ involves the matrices $\gamma_{1} ,\gamma_{2} ,\gamma_{3}$ while $/e$ involves $\gamma_{4}$, and the matrix elements of $\gamma_{1} ,\gamma_{2} ,\gamma_{3}$ for non-relativistic transitions are small, of the order of $( v/c )$. The term (679) in fact describes magnetic radiation, whereas the other term in (678) gives electric. The electric term gives an effect of the order of the <a id="ix-124">Lamb shift</a>. Hence in our approximation we may neglect the magnetic term and write
+Now this term (679) is small compared to the other term in (678), because $/e^{\prime}$ involves the matrices $\gamma_{1} ,\gamma_{2} ,\gamma_{3}$ while $/e$ involves $\gamma_{4}$, and the matrix elements of $\gamma_{1} ,\gamma_{2} ,\gamma_{3}$ for non-relativistic transitions are small, of the order of $( v/c )$. The term (679) in fact describes magnetic radiation, whereas the other term in (678) gives electric. The electric term gives an effect of the order of the <a id="ix-161">Lamb shift</a>. Hence in our approximation we may neglect the magnetic term and write
 
 <a id="eq-680"></a>
 
@@ -631,7 +631,7 @@ This completes the evaluation of $H_{T}$.
 
 ### <a id="s-discussion-of-the-nature-of-the-representation"></a>Discussion and the Nature of the Φ-Representation
 
-To understand the effect of the <a id="ix-110">transformation</a> (662), we observe that if Ψ$( t )$ is the state of one real electron in the absence of an external field, then Φ$( t )$ will be independent of $t$ and will represent one “bare” electron with the same momentum as the real electron. In an actual hydrogen atom, we may consider the state Ψ$( t )$ to a very good approximation as a superposition of states of a single real free electron; then Φ($t )$ is a superposition of states of a single bare electron with the same distribution of momenta. Thus by the transformation from Ψ to Φ we have eliminated the radiation field surrounding the electron, all remaining effects of this radiation field being contained in the operator $H_{T}$.
+To understand the effect of the <a id="ix-149">transformation</a> (662), we observe that if Ψ$( t )$ is the state of one real electron in the absence of an external field, then Φ$( t )$ will be independent of $t$ and will represent one “bare” electron with the same momentum as the real electron. In an actual hydrogen atom, we may consider the state Ψ$( t )$ to a very good approximation as a superposition of states of a single real free electron; then Φ($t )$ is a superposition of states of a single bare electron with the same distribution of momenta. Thus by the transformation from Ψ to Φ we have eliminated the radiation field surrounding the electron, all remaining effects of this radiation field being contained in the operator $H_{T}$.
 
 It is essential at this point to make sure that in the Φ representation the field-operators are still free-particle operators, with the correct equations of motion for operators in the FIR. Thus the transformation (662) is only a transformation from one set of variables to another within the FIR, and
 
@@ -648,7 +648,7 @@ $$
 i \hbar \frac{dQ}{dt} = \boldsymbol{[} Q,H_{0} \boldsymbol{]} \tag{685}
 $$
 
-where $H_{0}$ is the Hamiltonian of the Dirac and Maxwell fields without interaction. In the Φ representation the corresponding field-operator is
+where $H_{0}$ is the Hamiltonian of the <a id="ix-87">Dirac</a> and Maxwell fields without interaction. In the Φ representation the corresponding field-operator is
 
 <a id="eq-686"></a>
 
@@ -680,7 +680,7 @@ When we consider systems containing more than one particle, then Ω${}_{1} ( t 
 
 ### <a id="s-concluding-non-covariant-part-of-the-calculation"></a>Concluding Non-Covariant Part of the Calculation
 
-Having established that the Φ-representation in which (664) holds is the FIR, we now proceed at once to transform to the BIR in which we shall finish the calculation of the <a id="ix-147">Lamb shift</a>. To transform to the BIR, we write $e$
+Having established that the Φ-representation in which (664) holds is the FIR, we now proceed at once to transform to the BIR in which we shall finish the calculation of the <a id="ix-172">Lamb shift</a>. To transform to the BIR, we write $e$
 
 <a id="eq-689"></a>
 
@@ -804,7 +804,7 @@ $$
 
 a result which is completely divergence-free and independent of $r$.
 
-The second term of (700) represents the effect of the anomalous magnetic moment of the electron on the energy levels. It therefore gives a spin-dependent shift which modifies slightly the fine-structure which arises from the Dirac magnetic moment. To evaluate this term we use the Dirac equations (see (38)).
+The second term of (700) represents the effect of the anomalous magnetic moment of the <a id="ix-108">electron</a> on the energy levels. It therefore gives a spin-dependent shift which modifies slightly the fine-structure which arises from the <a id="ix-78">Dirac</a> magnetic moment. To evaluate this term we use the Dirac equations (see (38)).
 
 <a id="eq-701"></a>
 
@@ -909,7 +909,7 @@ $$
 \Delta E = - \frac{\alpha^{3}}{2 \pi} \frac{1}{n^{3}} \text{ Ry } \frac{1}{\ell ( \ell + \tfrac{1}{2} )} \quad \text{ for } j = \ell - \tfrac{1}{2} \tag{712}
 $$
 
-For the relative displacement of the 2$s$ and 2$p_{1 / 2}$ levels, which in the Dirac theory were degenerate, we have finally by subtracting (712) from (708)
+For the relative displacement of the 2$s$ and 2$p_{1 / 2}$ levels, which in the <a id="ix-80">Dirac</a> theory were degenerate, we have finally by subtracting (712) from (708)
 
 <a id="eq-713"></a>
 

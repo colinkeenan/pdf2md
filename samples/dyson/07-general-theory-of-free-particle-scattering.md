@@ -7,7 +7,7 @@ We have shown how (421) leads to matrix elements for standard scattering process
 
 Nevertheless we shall work out a method of calculating the high-order terms of (421). This method turns out to be simplest and easiest to explain when we are discussing scattering problems. Incidentally we shall see what the radiative corrections to scattering look like, and we shall learn something about the nature of radiative corrections in general. Finally at the end we shall be able to use the method of calculation in order to find the radiative corrections to the motion of an electron in a hydrogen atom, which is the case in which these small effects can be accurately observed, but where the pure scattering theory is not directly applicable.
 
-To avoid unnecessary complications we suppose there is no external field $A^{e}$. Problems in which there is an external field, so long as it can be treated in the <a id="ix-48">Born approximation</a>, can always be simply related to problems without external field, just as the <a id="ix-24">bremsstrahlung</a> matrix element (484) is related to the Compton <a id="ix-59">effect</a> (449). When there is no external field the matrix element for any scattering process is
+To avoid unnecessary complications we suppose there is no external field $A^{e}$. Problems in which there is an external field, so long as it can be treated in the <a id="ix-32">Born approximation</a>, can always be simply related to problems without external field, just as the <a id="ix-33">bremsstrahlung</a> matrix element (484) is related to the Compton <a id="ix-34">effect</a> (449). When there is no external field the matrix element for any scattering process is
 
 <a id="eq-487"></a>
 
@@ -109,7 +109,7 @@ $$
 b_{2}^{*} b_{3} b_{3}^{*} b_{1} \tag{497}
 $$
 
-which would give a contribution to the matrix element, since the operator $b_{3}^{*}$ could create a particle in an intermediate state 3 which the operator $b_{3}$ would then <a id="ix-31">annihilate</a>. The expansion of $\mathcal{O}$ into normal constituents eliminates all terms such as (497) and replaces them by sums of normal products with numerical coefficients. Thus using the anticommutation rule for $b_{3}$ and $b_{3}^{*}$, (497) becomes replaced by
+which would give a contribution to the matrix element, since the operator $b_{3}^{*}$ could create a particle in an intermediate state 3 which the operator $b_{3}$ would then annihilate. The expansion of $\mathcal{O}$ into normal constituents eliminates all terms such as (497) and replaces them by sums of normal products with numerical coefficients. Thus using the anticommutation rule for $b_{3}$ and $b_{3}^{*}$, (497) becomes replaced by
 
 <a id="eq-498"></a>
 
@@ -217,7 +217,7 @@ where Σ is a sum of terms of the form (505). The theorem is true for each term 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p98"><sup>[p. 98]</sup></a>
 
-## <a id="s-feynman-graphs"></a>Feynman Graphs
+## <a id="s-feynman-graphs"></a><a id="ix-132">Feynman</a> Graphs
 
 We use a method of Feynman to enumerate the possible factor-pairings of $\mathcal{O}$. Each pairing is pictured in a diagram or graph $G . G$ consists of a certain number of vertices with lines joining them. The vertices represent simply the different field-points at which the factors of $\mathcal{O}$ operate. Thus for $\mathcal{O}$ given by (496) each $G$ has the two vertices $x_{1} , x_{2}$. The lines in $G$ are either dotted, representing photon operators, or undotted, representing electron-positron operators. The rules for drawing these lines are the following:
 
@@ -347,18 +347,18 @@ and for every set of field operators $\mathcal{R}_{1} \mathcal{R}_{2} \dots \mat
 
 The rules for writing down the normal constituents of (488) are therefore extremely simple. We are generally only interested in those normal constituents which give matrix elements for some specified type of scattering process. Then the rules are
 
-1) Draw all the graphs which have the right set of external lines corresponding to the particles absorbed and emitted in the process considered. Each <a id="ix-70">graph</a> $G$ will have the same external lines, but the number of vertices and of internal lines will vary from graph to graph. We shall always calculate only up to some definite order $N$ in the series (488), and so we draw only graphs with not more than $N$ vertices. The total number of such graphs is finite. Each vertex in each graph must have precisely 3 lines ending at it, one incoming electron line, one outgoing electron line, and one photon line.
+1) Draw all the graphs which have the right set of external lines corresponding to the particles absorbed and emitted in the process considered. Each <a id="ix-127">graph</a> $G$ will have the same external lines, but the number of vertices and of internal lines will vary from graph to graph. We shall always calculate only up to some definite order $N$ in the series (488), and so we draw only graphs with not more than $N$ vertices. The total number of such graphs is finite. Each vertex in each graph must have precisely 3 lines ending at it, one incoming electron line, one outgoing electron line, and one photon line.
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p101"><sup>[p. 101]</sup></a>
 
-2) To each <a id="ix-71">graph</a> $G$ with $n$ vertices corresponds one normal constituent $S_{G}$ of $S$.
+2) To each <a id="ix-128">graph</a> $G$ with $n$ vertices corresponds one normal constituent $S_{G}$ of $S$.
 
-3) Choosing a particular $G$, write down the $n$<sup>th</sup> term $S_{n}$ of the series (488) and <a id="ix-18">pair</a> off the factors of $S_{n}$ as indicated by $G$. Replace each factor-pair $A_{\lambda} ( x ) A_{\mu} ( y )$ by (510), and replace each factor-pair $\psi_{\alpha} ( x ) \overline{\psi}_{\beta} ( y )$ by (511). Apply an $N$-ordering to the remaining unpaired factors of $S_{n}$, and multiply the whole expression by $( \pm 1$) following the rule given for equation (504). The result of applying these operations to $S_{n}$ is the normal constituent $S_{G}$.
+3) Choosing a particular $G$, write down the $n$<sup>th</sup> term $S_{n}$ of the series (488) and <a id="ix-23">pair</a> off the factors of $S_{n}$ as indicated by $G$. Replace each factor-pair $A_{\lambda} ( x ) A_{\mu} ( y )$ by (510), and replace each factor-pair $\psi_{\alpha} ( x ) \overline{\psi}_{\beta} ( y )$ by (511). Apply an $N$-ordering to the remaining unpaired factors of $S_{n}$, and multiply the whole expression by $( \pm 1$) following the rule given for equation (504). The result of applying these operations to $S_{n}$ is the normal constituent $S_{G}$.
 
-If we wish to calculate the matrix element for the <a id="ix-63">scattering</a> process, then we have only to add one more rule to the three already given.
+If we wish to calculate the matrix element for the <a id="ix-37">scattering</a> process, then we have only to add one more rule to the three already given.
 
-4) In each $S_{G}$, substitute for the unpaired operators the wave-functions of the absorbed and emitted particles, for example writing (437) for $\psi ( x )$ when an electron ($p,u )$ is absorbed, and writing (438) for $A_{\mu} ( x )$ when a photon ($k,e )$ is absorbed. These substitutions may sometimes be made in more than one way (for example in the Compton <a id="ix-60">effect</a> when the absorbed and emitted photon may be assigned in two ways to the two unpaired photon operators.) In such cases the substitutions are to be made in all possible ways, and the results added together, taking account of Fermi statistics by putting in a minus sign when two electron or positron wave-functions are interchanged.
+4) In each $S_{G}$, substitute for the unpaired operators the wave-functions of the absorbed and emitted particles, for example writing (437) for $\psi ( x )$ when an electron ($p,u )$ is absorbed, and writing (438) for $A_{\mu} ( x )$ when a photon ($k,e )$ is absorbed. These substitutions may sometimes be made in more than one way (for example in the Compton <a id="ix-35">effect</a> when the absorbed and emitted photon may be assigned in two ways to the two unpaired photon operators.) In such cases the substitutions are to be made in all possible ways, and the results added together, taking account of Fermi statistics by putting in a minus sign when two electron or positron wave-functions are interchanged.
 
 The rules (1)–(4) constitute the Feynman rules for calculating the matrix elements of all processes in electrodynamics. According to Feynman they have an intermediate concrete interpretation. Thus (510) is the probability amplitude for a photon emitted at $x$ with polarization $\lambda$ to propagate itself and arrive at $y$ with polarization $\mu$, plus the amplitude for a photon having been emitted at $y$ to arrive at $x$. And (511) is the amplitude for an electron emitted at $y$ to arrive at $x$, plus the amplitude for a positron emitted at $x$ to arrive at $y$, with the assigned spins $\alpha$ and $\beta$. In this way the matrix element is just the probability amplitude for the succession of events, interactions and propagations, that are depicted in the vertices and lines of $G$. The total probability amplitude for a process is just the sum of the amplitudes derived by from the various graphs $G$ which contribute to the process.
 
@@ -413,7 +413,7 @@ $$
 ( p^{\prime} u^{\prime} ) .
 $$
 
-To write down $M_{3}$ we use the Feynman <a id="ix-74">rules</a>. The factor-pairings of $U_{2}$ are represented in the 8 graphs on pp 98-99. Of these only $G_{5}$ and $G_{6}$ contribute to $M_{2}$, and they contribute equally since the integral (423) is symmetrical in the variables $x_{1}$ and $x_{2}$. The normal constituent of $U_{2}$ arising from $G_{5}$ and $G_{6}$ is, using (510) and (511)<sup><a id="fnref-73" href="#fn-73">73</a></sup>
+To write down $M_{3}$ we use the <a id="ix-133">Feynman</a> <a id="ix-134">rules</a>. The factor-pairings of $U_{2}$ are represented in the 8 graphs on pp 98-99. Of these only $G_{5}$ and $G_{6}$ contribute to $M_{2}$, and they contribute equally since the integral (423) is symmetrical in the variables $x_{1}$ and $x_{2}$. The normal constituent of $U_{2}$ arising from $G_{5}$ and $G_{6}$ is, using (510) and (511)<sup><a id="fnref-73" href="#fn-73">73</a></sup>
 
 <a id="eq-518"></a>
 
@@ -440,7 +440,7 @@ $$
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p103"><sup>[p. 103]</sup></a>
 
-appearing in (519). Since $( p,u )$ are the momentum and spin of a real electron, we may use the relations
+appearing in (519). Since $( p,u )$ are the <a id="ix-208">momentum</a> and spin of a real electron, we may use the relations
 
 <a id="eq-521"></a>
 
@@ -456,7 +456,7 @@ $$
 \begin{aligned} \Sigma ( p ) &= \int_{F} dk \sum \frac{\gamma_{\lambda} ( / k + p / + i\mu ) \gamma_{\lambda}}{k^{2} ( k^{2} + 2 p \cdot k )} = \int_{F} dk \frac{4 i\mu - 2 k / - 2 p /}{k^{2} ( k^{2} + 2 p \cdot k )} \\ &= 2 \int_{0}^{1} dz \int_{F}^{\lambda} dK \frac{i\mu - / k}{[ k^{2} + 2 zp \cdot k ]^{2}} = 2 \int_{0}^{1} \int_{F} dk \frac{( i\mu - / k + z/p )}{[ k^{2} - z^{2} p^{2} ]^{2}} \\ &= 2 \int_{0}^{1} dz \int_{F} dk \frac{i\mu ( 1 + z )}{[ k^{2} + z^{2} \mu^{2} ]^{2}} \end{aligned} \tag{522}
 $$
 
-where we changed the origin of the $k$ <a id="ix-127">integration</a> by the replacement $k \to k - zp$ and we eliminated the odd terms. Using (386) and introducing the logarithmic divergence $R$ again according to (387),
+where we changed the origin of the $k$ integration by the replacement $k \to k - zp$ and we eliminated the odd terms. Using (386) and introducing the logarithmic divergence $R$ again according to (387),
 
 <a id="eq-523"></a>
 
@@ -474,7 +474,7 @@ $$
 
 Thus $U_{2}$ does not give any transitions between different one-electron states. It has only the diagonal matrix elements given by (524) .
 
-Now (524) has precisely the correct relativistic form to be identified with a pure self-energy <a id="ix-61">effect</a>. Suppose that in consequence of the radiation interaction the mass of a real electron is
+Now (524) has precisely the correct relativistic form to be identified with a pure self-energy <a id="ix-36">effect</a>. Suppose that in consequence of the radiation interaction the mass of a real electron is
 
 <a id="eq-525"></a>
 
@@ -529,7 +529,7 @@ $$
 
 For all one-electron matrix elements, $U_{2}$ is identical with $U_{S}$. That is to say, the whole effect of the radiation interaction upon a free electron is to change its mass by the amount (530). This is a most satisfactory conclusion. It means that an electron with its self-field still has the correct relationship between momentum and energy for a relativistic particle, only the value of the rest-mass being changed by the self-field. It was always one of the central difficulties of the classical electron theory, that a classical extended electron did not have the right relativistic behavior.
 
-The self-mass $\delta m$ is an unobservable quantity. The observed mass of an electron is $m$, and neither $m_{o}$ nor $\delta m$ can be measured separately. Thus it is unsatisfactory that $\delta m$ appears in the scattering matrix $S$ which is supposed to represent the results of experiments.
+The self-mass $\delta m$ is an unobservable quantity. The observed mass of an electron is $m$, and neither $m_{o}$ nor $\delta m$ can be measured separately. Thus it is unsatisfactory that $\delta m$ appears in the <a id="ix-254">scattering</a> matrix $S$ which is supposed to represent the results of experiments.
 
 The reason why $\delta m$ still appears explicitly is just that we have _not_ used the observed mass $m$ in defining the initial and final states of the system. We defined these states as states of a free electron with the bare mass $m_{o}$. Wherever we used the letter $m$ for the electron mass in the theory up to this point, in fact it was an inconsistency of notation and we meant by $m$ the mass of a _bare_ electron.
 
@@ -578,7 +578,7 @@ At the same time the electron is interacting with the quantized Maxwell field wi
 
 replacing each $H_{R}$ by $H^{I}$ according to (532).
 
-We treat $A_{\mu}^{e}$ in the linear Born approximation. Thus we keep only terms of order 0 and 1 in $A_{\mu}^{e}$. The terms of order 0 give the effects of the radiation interaction alone; as we have seen, these effects are zero for an initial state consisting of a single <a id="ix-209">electron</a>.
+We treat $A_{\mu}^{e}$ in the linear Born approximation. Thus we keep only terms of order 0 and 1 in $A_{\mu}^{e}$. The terms of order 0 give the effects of the radiation interaction alone; as we have seen, these effects are zero for an initial state consisting of a single <a id="ix-276">electron</a>.
 
 The scattering matrix is thus given effectively by the terms of order 1 in $A_{\mu}^{e}$ taken from (421), namely
 
@@ -660,7 +660,7 @@ $$
 e_{\mu} = e_{\mu} ( q ) \tag{545}
 $$
 
-The operator $U_{1}$ gives transitions from a one-electron state only to states consisting of an electron and a photon. This is just the <a id="ix-58">bremsstrahlung</a> process, scattering of the electron with real photon emission, and the matrix element for it is given by (484). In any scattering experiment, this process will of course go on at the same time as the scattering without radiation. Experimentally, the scattering with photon emission will only be separable from the radiationless scattering if the emitted photon has an energy greater than some limit ∆$E$, roughly equal to the energy resolution with which the energy of the electron can be measured. The scattering with emission of soft quanta (low frequency, $k^{\prime}$ small) will always be included in the radiationless scattering cross-section. Therefore we shall be interested in the value of $M_{1}$ for a final state consisting of the electron $( p^{\prime} u^{\prime} )$ and a photon with potentials (440), in the case where $k^{\prime}$ is so small as to be negligible in comparison with $p , p^{\prime}$ and $q$. In this case (484) gives
+The operator $U_{1}$ gives transitions from a one-electron state only to states consisting of an electron and a photon. This is just the bremsstrahlung process, scattering of the electron with real photon emission, and the matrix element for it is given by (484). In any scattering experiment, this process will of course go on at the same time as the scattering without radiation. Experimentally, the scattering with photon emission will only be separable from the radiationless scattering if the emitted photon has an energy greater than some limit ∆$E$, roughly equal to the energy resolution with which the energy of the electron can be measured. The scattering with emission of soft quanta (low frequency, $k^{\prime}$ small) will always be included in the radiationless scattering cross-section. Therefore we shall be interested in the value of $M_{1}$ for a final state consisting of the electron $( p^{\prime} u^{\prime} )$ and a photon with potentials (440), in the case where $k^{\prime}$ is so small as to be negligible in comparison with $p , p^{\prime}$ and $q$. In this case (484) gives
 
 <a id="eq-546"></a>
 
@@ -679,7 +679,7 @@ We now come to the calculation of $M_{2}$, the matrix element of (539) between t
 
 _Figure 10 (p. 106)_
 
-and $\{ G_{6} ,G_{7} ,G_{8} ,G_{9} \}$ obtained by interchanging the labels $( x_{1} ,x_{2} )$ in $\{ G_{1} ,G_{2} ,G_{3} ,G_{4} \}$, respectively. We can see this in the following way: The process we are interested in calls for one external photon line and two external electron lines. Hence $A /^{e} ( x )$, one $\overline{\psi}$ and one $\psi$ must be unpaired. Therefore the two $A /$’s are always coupled. The free electron lines can be $\psi_{0} ,\psi_{1} ; \overline{\psi}_{1} ,\psi_{0} ; \overline{\psi}_{1} ,\psi_{1} ; \overline{\psi}_{1} ,\psi_{2}$ and four more cases obtained by the substitution 1 $\leftrightarrow$ 2. In each case, the rest is uniquely determined by the rules. The ninth case is the one with external electron lines $\overline{\psi}_{0} ,\psi_{0}$.
+and $\{ G_{6} ,G_{7} ,G_{8} ,G_{9} \}$ obtained by interchanging the labels $( x_{1} ,x_{2} )$ in $\{ G_{1} ,G_{2} ,G_{3} ,G_{4} \}$, respectively. We can see this in the following way: The process we are interested in calls for one external photon line and two external <a id="ix-107">electron</a> lines. Hence $A /^{e} ( x )$, one $\overline{\psi}$ and one $\psi$ must be unpaired. Therefore the two $A /$’s are always coupled. The free electron lines can be $\psi_{0} ,\psi_{1} ; \overline{\psi}_{1} ,\psi_{0} ; \overline{\psi}_{1} ,\psi_{1} ; \overline{\psi}_{1} ,\psi_{2}$ and four more cases obtained by the substitution 1 $\leftrightarrow$ 2. In each case, the rest is uniquely determined by the rules. The ninth case is the one with external electron lines $\overline{\psi}_{0} ,\psi_{0}$.
 
 The effect of $\{ G_{6} ,G_{7} ,G_{8} ,G_{9} \}$ is only to double the contribution from $\{ G_{1} ,G_{2} ,G_{3} ,G_{4} \}$, since (539) is symmetrical in the variables $x_{1}$ and $x_{2}$. Also $G_{5}$ will give only a numerical phase factor multiplying $M_{0}$, the phase factor being the same for all final states; it is in fact precisely the phase-shift between the initial and final states due to the self-energy of the vacuum. Similar phase shift factors would also multiply the contributions of $G_{1} , G_{2}$, etc., coming from disconnected graphs in higher order contributions. In this sense therefore, we can consider $G_{5}$ to be really the contribution of $U_{0}$ with one of the many possible disconnected additions. A numerical phase factor of this kind, the same for all final states, is entirely unobservable and without physical meaning, since it can be cancelled by changing the phase of all wave-functions by the same amount. Hence we can always ignore graphs such as $G_{5}$ having a disconnected part without external lines. There remain to be considered only $\{ G_{1} ,G_{2} ,G_{3} ,G_{4} \}$.
 
@@ -842,7 +842,7 @@ $$
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p109"><sup>[p. 109]</sup></a>
 
-In (564) the inadmissible factor (559) is replaced by something finite and mathematically well-defined. There will be a singularity in the integration of (564) over $\epsilon_{0}$, but this is an ordinary pole and the integration over $\epsilon_{0}$ will give a well-determined result when taken as a Feynman integral. We have as $T \to \infty$ and $\epsilon_{0}$ and
+In (564) the inadmissible factor (559) is replaced by something finite and mathematically well-defined. There will be a singularity in the integration of (564) over $\epsilon_{0}$, but this is an ordinary pole and the integration over $\epsilon_{0}$ will give a well-determined result when taken as a <a id="ix-124">Feynman</a> integral. We have as $T \to \infty$ and $\epsilon_{0}$ and
 
 <a id="eq-565"></a>
 
@@ -943,7 +943,7 @@ $$
 M_{2 2}^{\prime} = - \frac{ie\delta m}{2 \hbar^{2}} \int \int dxdx_{1} \overline{\psi} ( x ) A /^{e} S_{F} ( x - x_{1} ) \psi ( x_{1} ) \tag{574}
 $$
 
-Like (555) this <a id="ix-97">integral</a> does not oscillate but diverges at $t_{1} = \pm \infty$. Therefore we must take explicitly into account the cut-off factor multiplying the radiation interaction. At time $t_{1}$ the radiation interaction $H_{R} ( t_{1} )$ will carry the cut-off factor $g ( t_{1} )$. But the self-energy $\delta m$ at time $t_{1}$ is an effect of second order in $H_{R}$, and therefore becomes multiplied by $[ g ( t_{1} ) ]$<sup>2</sup> if $g ( t_{1} )$ varies slowly enough. In the definition of the scattering matrix element (487), the cut-off factors $g ( t )$ were introduced in order to represent the initial and final states by simple bare-particle wave-functions in an unambiguous way. We now require that the bare-particles’ wave-functions should always have the same mass $m$ as a real electron. This is achieved if we add the term $( - H_{S} )$ to the radiation interaction appearing in (495), each $H_{S} ( t_{i} )$ being multiplied by the cut-off factor $[ g ( t_{i} ) ]$<sup>2</sup> so long as we are dealing only with second order terms in $\delta m$. If we were calculating effects to fourth order in $e$, then the fourth order part of $\delta m$ should be multiplied by $[ g ( t_{i} ) ]$<sup>4</sup>, and so on.
+Like (555) this <a id="ix-142">integral</a> does not oscillate but diverges at $t_{1} = \pm \infty$. Therefore we must take explicitly into account the cut-off factor multiplying the radiation interaction. At time $t_{1}$ the radiation interaction $H_{R} ( t_{1} )$ will carry the cut-off factor $g ( t_{1} )$. But the self-energy $\delta m$ at time $t_{1}$ is an effect of second order in $H_{R}$, and therefore becomes multiplied by $[ g ( t_{1} ) ]$<sup>2</sup> if $g ( t_{1} )$ varies slowly enough. In the definition of the scattering matrix element (487), the cut-off factors $g ( t )$ were introduced in order to represent the initial and final states by simple bare-particle wave-functions in an unambiguous way. We now require that the bare-particles’ wave-functions should always have the same mass $m$ as a real electron. This is achieved if we add the term $( - H_{S} )$ to the radiation interaction appearing in (495), each $H_{S} ( t_{i} )$ being multiplied by the cut-off factor $[ g ( t_{i} ) ]$<sup>2</sup> so long as we are dealing only with second order terms in $\delta m$. If we were calculating effects to fourth order in $e$, then the fourth order part of $\delta m$ should be multiplied by $[ g ( t_{i} ) ]$<sup>4</sup>, and so on.
 
 The effect of the cut-off factors is therefore to replace (574) by
 
@@ -984,7 +984,7 @@ $$
 
 It turns out that $I_{1}$ is pure imaginary, and the factor multiplying $M_{o}$ in (578) is real and negative.
 
-What is the physical interpretation of the divergent term (578)? It is just a divergent constant multiple of $M_{o}$, like the charge-renormalization term in (552). So one is tempted at first to call it an additional charge-renormalization effect. But this cannot be right, because the whole charge-renormalization was calculated in (392) and the result agreed with (552). In fact (578) has a much more elementary interpretation. When the electron arrives at the point $x$ of the external potential where it undergoes scattering, there will be a certain probability $P$ that it will have previously emitted and not yet reabsorbed a photon, as pictured in the Feynman graph $G_{4}$. There will be a probability (1 $- P )$ that it will arrive at $x$ not accompanied by a photon, as pictured in $G_{2}$ or $G_{3}$.
+What is the physical interpretation of the divergent term (578)? It is just a divergent constant multiple of $M_{o}$, like the charge-renormalization term in (552). So one is tempted at first to call it an additional charge-renormalization effect. But this cannot be right, because the whole charge-renormalization was calculated in (392) and the result agreed with (552). In fact (578) has a much more elementary interpretation. When the electron arrives at the point $x$ of the external potential where it undergoes scattering, there will be a certain probability $P$ that it will have previously emitted and not yet reabsorbed a photon, as pictured in the <a id="ix-125">Feynman</a> graph $G_{4}$. There will be a probability (1 $- P )$ that it will arrive at $x$ not accompanied by a photon, as pictured in $G_{2}$ or $G_{3}$.
 
 Consider then the contribution $M_{NP}$ to the matrix element $M$, produced by scattering processes in which the electron arrives at $x$ with no photon present. In the zero-order approximation $M_{NP} = M_{o}$ simply. But in the second-order approximation we must take account of the reduced probability that the electron comes to $x$ without a photon present; this is done by multiplying the wave-function of the electron in both initial and final states by the factor
 
@@ -1158,7 +1158,7 @@ $$
 \begin{aligned} &= - 4 \int \int xdxdy \left\{ \int_{F} dk \left[ / k/e/ k + ( 2 - 2 x - x^{2} ) \mu^{2} /e \right] \left( \frac{1}{[ k^{2} + x^{2} ( \mu^{2} + ( y - y^{2} ) q^{2} ) ]^{3}} - \frac{1}{[ k^{2} + x^{2} \mu^{2} ]^{3}} \right) \right. \\ & \quad \left. + \left[ ( 1 - xy ) ( 1 - x + xy ) q^{2} /e - ( x - x^{2} ) i\mu /e/q \right] \int_{F} dk \frac{1}{[ k^{2} + x^{2} ( \mu^{2} + ( y - y^{2} ) q^{2} ) ]^{3}} \right\} \end{aligned} \tag{597}
 $$
 
-The $k$-integrals in (597) are now convergent. Thus the effect of the “<a id="ix-224">wave-function</a> renormalization” term (578) is just to cancel out the part of $M_{2 4}$ which is independent of $q$ and divergent at high frequencies.
+The $k$-integrals in (597) are now convergent. Thus the effect of the “<a id="ix-258">wave-function</a> <a id="ix-256">renormalization</a>” term (578) is just to cancel out the part of $M_{2 4}$ which is independent of $q$ and divergent at high frequencies.
 
 To evaluate (597) we use (385) and (386). First, in the term $k/e/ / k$ we may replace $k_{\mu} k_{\nu}$ by $\tfrac{1}{4} \delta_{\mu \nu} k^{2}$ because of the symmetry of the integral in $k$-space. So we may write, using (585)
 
@@ -1215,7 +1215,7 @@ $$
 
 In the modified Maxwell theory the $D_{F}$ function will still be given by the integral (431), the $k_{1} ,k_{2} ,k_{3}$ integrations being limited by (601), and the $k_{0}$ integration being taken as usual along the whole real axis from $-\infty$ to +$\infty$. Let Λ${}^{r} ( p,p^{\prime} )$ and Λ$\frac{r}{c} ( p,p^{\prime} )$ be the integrals which replace Λ($p,p^{\prime} )$ and Λ${}_{c} ( p,p^{\prime} )$ when the Maxwell field is modified. We calculate the differences (Λ $-$ Λ${}^{r} )$ and (Λ${}_{c} -$ Λ$\frac{r}{c} )$, considering these integrals only in the limit of small $r$, neglecting all terms which tend to zero with $r$. This means that we may neglect terms containing either $k$ or $x$ as a factor in the numerator of integrals such as (591) or (594).
 
-In (583) there is just one factor $D_{F}$. Thus Λ${}^{r} ( p,p^{\prime} )$ is obtained from (584) simply by restricting the $k_{1} ,k_{2} ,k_{3}$ integration by (601). We can now follow the reduction of (584) to the form (594), except that we do not shift the origin of the $k$-integration through $( xp_{y} )$ since this would disturb the <a id="ix-99">condition</a> (601). Dropping terms in the numerator having $k$ or $x$ as a factor, this gives the result
+In (583) there is just one factor $D_{F}$. Thus Λ${}^{r} ( p,p^{\prime} )$ is obtained from (584) simply by restricting the $k_{1} ,k_{2} ,k_{3}$ integration by (601). We can now follow the reduction of (584) to the form (594), except that we do not shift the origin of the $k$-integration through $( xp_{y} )$ since this would disturb the <a id="ix-145">condition</a> (601). Dropping terms in the numerator having $k$ or $x$ as a factor, this gives the result
 
 <a id="eq-603"></a>
 

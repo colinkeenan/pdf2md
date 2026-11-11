@@ -27,8 +27,13 @@ pub fn split_chapters(blks: Vec<Blk>, chapter_size: Option<f32>) -> Vec<Chapter>
         // before, as the empty page after a part's title page does.)
         let prev = chapters.last_mut().unwrap();
         let mut moved = Vec::new();
-        if matches!(prev.blocks.last(), Some(Blk { block: Block::Anchor(_), .. })) {
+        // (the title is the first thing in the columns of its page: they
+        // open under it)
+        if matches!(prev.blocks.last(), Some(Blk { block: Block::Columns(_), .. })) {
             moved.push(prev.blocks.pop().unwrap());
+        }
+        if matches!(prev.blocks.last(), Some(Blk { block: Block::Anchor(_), .. })) {
+            moved.insert(0, prev.blocks.pop().unwrap());
         }
         // (a title set in lines of its own, as on the title page of a
         // part, is written as it is set: in its lines, centered if it is)

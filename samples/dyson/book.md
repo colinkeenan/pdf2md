@@ -181,52 +181,52 @@ $$
 
 ## <a id="s-books"></a>Books
 
-W. <a id="ix-142">Pauli</a>, “Die Allgemeinen Principien der Wellenmechanik”; _Handbuch der Physik_, 2 ed., Vol. 24,
+W. <a id="ix-219">Pauli</a>, “Die Allgemeinen Principien der Wellenmechanik”; _Handbuch der Physik_, 2 ed., Vol. 24,
 
 Part 1; Edwards reprint, Ann Arbor 1947. (In German) <a id="refback-1-1"></a>[[1]](#ref-1)
 
-W. <a id="ix-112">Heitler</a>, _Quantum Theory of Radiation_, 2nd Edition, Oxford. 3rd edition just published. <a id="refback-2-1"></a>[[2]](#ref-2)
+W. <a id="ix-151">Heitler</a>, _Quantum Theory of Radiation_, 2nd Edition, Oxford. 3rd edition just published. <a id="refback-2-1"></a>[[2]](#ref-2)
 
-G. <a id="ix-221">Wentzel</a>, _Introduction to the Quantum Theory of Wave-Fields_, Interscience, N.Y. 1949 <a id="refback-3-1"></a>[[3]](#ref-3)
+G. <a id="ix-281">Wentzel</a>, _Introduction to the Quantum Theory of Wave-Fields_, Interscience, N.Y. 1949 <a id="refback-3-1"></a>[[3]](#ref-3)
 
-I shall not expect you to have read any of these, but I shall refer to them as we go along. The later part of the course will be new stuff, taken from papers of <a id="ix-76">Feynman</a> and <a id="ix-240">Schwinger</a> mainly. <a id="01-introduction--refback-4-1"></a>[[4]](#01-introduction--ref-4), <a id="refback-5-1"></a>[[5]](#ref-5), <a id="01-introduction--refback-6-1"></a>[[6]](#01-introduction--ref-6), <a id="01-introduction--refback-7-1"></a>[[7]](#01-introduction--ref-7), <a id="01-introduction--refback-8-1"></a>[[8]](#01-introduction--ref-8)
+I shall not expect you to have read any of these, but I shall refer to them as we go along. The later part of the course will be new stuff, taken from papers of <a id="ix-135">Feynman</a> and <a id="ix-271">Schwinger</a> mainly. <a id="01-introduction--refback-4-1"></a>[[4]](#01-introduction--ref-4), <a id="refback-5-1"></a>[[5]](#ref-5), <a id="01-introduction--refback-6-1"></a>[[6]](#01-introduction--ref-6), <a id="01-introduction--refback-7-1"></a>[[7]](#01-introduction--ref-7), <a id="01-introduction--refback-8-1"></a>[[8]](#01-introduction--ref-8)
 
 ## <a id="s-subject-matter"></a>Subject Matter
 
 You have had a complete course in non-relativistic quantum theory. I assume this known. All the general principles of the NR theory are valid and true under all circumstances, in particular also when the system happens to be relativistic. What you have learned is therefore still good.
 
-You have had a course in classical mechanics and electrodynamics including special relativity. You know what is meant by a system being relativistic; the equations of motion are formally invariant under <a id="ix-156">Lorentz</a> <a id="ix-164">transformations</a>. General relativity we shall not touch.
+You have had a course in classical mechanics and electrodynamics including special relativity. You know what is meant by a system being relativistic; the equations of motion are formally invariant under <a id="ix-174">Lorentz</a> <a id="ix-179">transformations</a>. General relativity we shall not touch.
 
 This course will be concerned with the development of a _Lorentz–invariant Quantum theory_. That is not a general dynamical method like the NR quantum theory, applicable to all systems. We cannot yet devise a general method of that kind, and it is probably impossible. Instead we have to find out what are the possible systems, the particular equations of motion, which can be handled by the NR quantum dynamics and which are at the same time Lorentz–invariant.
 
 In the NR theory it was found that almost any classical system could be handled, i.e.quantized. Now on the contrary we find there are very few possibilities for a relativistic quantized system. This is a most important fact. It means that starting only from the principles of relativity and quantization, it is mathematically possible only for very special types of objects to exist. So one can _predict_ mathematically some important things about the real world. The most striking examples of this are:
 
-(i) <a id="ix-83">Dirac</a> from a study of the electron predicted the <a id="ix-151">positron</a>, which was later discovered <a id="refback-9-1"></a>[[9]](#ref-9).
+(i) <a id="ix-93">Dirac</a> from a study of the electron predicted the <a id="ix-224">positron</a>, which was later discovered <a id="refback-9-1"></a>[[9]](#ref-9).
 
-(ii) <a id="ix-225">Yukawa</a> from a study of nuclear forces predicted the <a id="ix-196">meson</a>, which was later discovered <a id="refback-10-1"></a>[[10]](#ref-10).
+(ii) <a id="ix-284">Yukawa</a> from a study of nuclear forces predicted the <a id="ix-199">meson</a>, which was later discovered <a id="refback-10-1"></a>[[10]](#ref-10).
 
-These two examples are special cases of the general principle, which is the basic success of the relativistic quantum theory, that _A Relativistic Quantum Theory of a Finite Number of Particles is Impossible._ A RQ theory necessarily contains these features: an indefinite number of particles of one or more types, particles of each type being identical and indistinguishable from each other, possibility of <a id="ix-6">creation</a> and <a id="ix-32">annihilation</a> of particles. Thus the two principles of relativity and quantum theory when combined lead to a world built up out of various types of elementary particles, and so make us feel quite confident that we are on the right way to an understanding of the real world. In addition, various detailed properties of the observed particles are necessary consequences of the
+These two examples are special cases of the general principle, which is the basic success of the relativistic quantum theory, that _A Relativistic Quantum Theory of a Finite Number of Particles is Impossible._ A RQ theory necessarily contains these features: an indefinite number of particles of one or more types, particles of each type being identical and indistinguishable from each other, possibility of <a id="ix-41">creation</a> and <a id="ix-19">annihilation</a> of particles. Thus the two principles of relativity and quantum theory when combined lead to a world built up out of various types of elementary particles, and so make us feel quite confident that we are on the right way to an understanding of the real world. In addition, various detailed properties of the observed particles are necessary consequences of the
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p2"><sup>[p. 2]</sup></a>
 
 general theory. These are for example:
 
-(i) <a id="ix-101">Magnetic moment</a> of Electron (<a id="ix-84">Dirac</a>) <a id="refback-9-2"></a>[[9]](#ref-9).
+(i) <a id="ix-112">Magnetic moment</a> of Electron (<a id="ix-94">Dirac</a>) <a id="refback-9-2"></a>[[9]](#ref-9).
 
-(ii) Relation between spin and statistics (<a id="ix-141">Pauli</a>) <a id="refback-11-1"></a>[[11]](#ref-11).
+(ii) Relation between spin and statistics (<a id="ix-218">Pauli</a>) <a id="refback-11-1"></a>[[11]](#ref-11).
 
 ## <a id="s-detailed-program"></a>Detailed Program
 
-We shall not develop straightaway a correct theory including many particles. Instead we follow the historical development. We try to make a relativistic quantum theory of _one_ particle, find out how far we can go and where we get into trouble. Then we shall see how to change the theory and get over the trouble by introducing many particles. Incidentally, the one–particle theories are quite useful, being correct to a good approximation in many situations where <a id="ix-7">creation</a> of new particles does not occur, and where something better than a NR approximation is needed. An example is the Dirac theory of the H atom.<sup><a id="fnref-1" href="#fn-1">1</a></sup>
+We shall not develop straightaway a correct theory including many particles. Instead we follow the historical development. We try to make a relativistic quantum theory of _one_ particle, find out how far we can go and where we get into trouble. Then we shall see how to change the theory and get over the trouble by introducing many particles. Incidentally, the one–particle theories are quite useful, being correct to a good approximation in many situations where <a id="ix-42">creation</a> of new particles does not occur, and where something better than a NR approximation is needed. An example is the Dirac theory of the H atom.<sup><a id="fnref-1" href="#fn-1">1</a></sup>
 
 The NR theory gave levels correctly but no fine-structure. (Accuracy of one part in 10,000). The Dirac one-particle theory gives all the main features of the fine-structure correctly, number of components and separations good to 10% but not better. (Accuracy one part in 100,000).
 
-The Dirac many-particle theory gives the fine-structure separations (Lamb <a id="ix-149">experiment</a>) correctly to about one part in 10,000. (Overall accuracy 1 in 10<sup>8</sup>.)
+The Dirac many-particle theory gives the fine-structure separations (Lamb <a id="ix-173">experiment</a>) correctly to about one part in 10,000. (Overall accuracy 1 in 10<sup>8</sup>.)
 
-Probably to get accuracy better than 1 in 10<sup>8</sup> even the DMP theory is not enough and one will need to take all kinds of <a id="ix-197">meson</a> effects into account which are not yet treated properly. Experiments are so far only good to about 1 in 10<sup>8</sup>.
+Probably to get accuracy better than 1 in 10<sup>8</sup> even the DMP theory is not enough and one will need to take all kinds of <a id="ix-200">meson</a> effects into account which are not yet treated properly. Experiments are so far only good to about 1 in 10<sup>8</sup>.
 
-In this course I will go through the one-particle theories first in detail. Then I will talk about their breaking down. At that point I will make a fresh start and discuss how one can make a relativistic quantum theory in general, using the new methods of <a id="ix-77">Feynman</a> and <a id="ix-241">Schwinger</a>. From this we shall be led to the many-particle theories. I will talk about the general features of these theories. Then I will take the special example of <a id="ix-214">quantum electrodynamics</a> and get as far as I can with it before the end of the course.
+In this course I will go through the one-particle theories first in detail. Then I will talk about their breaking down. At that point I will make a fresh start and discuss how one can make a relativistic quantum theory in general, using the new methods of <a id="ix-136">Feynman</a> and <a id="ix-272">Schwinger</a>. From this we shall be led to the many-particle theories. I will talk about the general features of these theories. Then I will take the special example of <a id="ix-251">quantum electrodynamics</a> and get as far as I can with it before the end of the course.
 
 ## <a id="s-one-particle-theories"></a>One-Particle Theories
 
@@ -248,7 +248,7 @@ $$
 
 satisfied by the wave-function $\psi$.
 
-To give a physical meaning to $\psi$, we state that $\rho = \psi^{*} \psi$ is the probability of finding the particle at the point $xyz$ at time $t$. And the probability is <a id="ix-176">conserved</a> because<sup><a id="fnref-3" href="#fn-3">3</a></sup>
+To give a physical meaning to $\psi$, we state that $\rho = \psi^{*} \psi$ is the probability of finding the particle at the point $xyz$ at time $t$. And the probability is <a id="ix-235">conserved</a> because<sup><a id="fnref-3" href="#fn-3">3</a></sup>
 
 <a id="eq-3"></a>
 
@@ -285,9 +285,9 @@ $$
 \frac{1}{c^{2}} \frac{\partial^{2}}{\partial t^{2}} \psi = \nabla^{2} \psi - \frac{m^{2} c^{2}}{\hbar^{2}} \psi \tag{6}
 $$
 
-This is an historic equation, the <a id="ix-130">Klein-Gordon equation</a>. <a id="ix-237">Schrödinger</a> already in 1926 tried to make a RQ theory out of it. But he failed, and many other people too, until Pauli and <a id="ix-219">Weisskopf</a> gave the many-particle theory in 1934 <a id="refback-12-1"></a>[[12]](#ref-12). Why?
+This is an historic equation, the <a id="ix-163">Klein-Gordon equation</a>. <a id="ix-268">Schrödinger</a> already in 1926 tried to make a RQ theory out of it. But he failed, and many other people too, until Pauli and <a id="ix-280">Weisskopf</a> gave the many-particle theory in 1934 <a id="refback-12-1"></a>[[12]](#ref-12). Why?
 
-Because in order to interpret the wave-function as a probability we must have a <a id="ix-172">continuity</a> equation. This can only be got out of the wave-equation if we take $\hbar$ as before, and
+Because in order to interpret the wave-function as a probability we must have a <a id="ix-234">continuity</a> equation. This can only be got out of the wave-equation if we take $\hbar$ as before, and
 
 <a id="eq-7"></a>
 
@@ -350,17 +350,17 @@ $$
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p4"><sup>[p. 4]</sup></a>
 
-## <a id="s-the-form-of-the-dirac-equation"></a>The Form of the <a id="ix-85">Dirac</a> <a id="ix-49">Equation</a>
+## <a id="s-the-form-of-the-dirac-equation"></a>The Form of the <a id="ix-58">Dirac</a> <a id="ix-61">Equation</a>
 
 Historically before the RQ theory came the one-particle theory of Dirac. This was so successful in dealing with the electron, that it was for many years the only respectable RQ theory in existence. And its difficulties are a lot less immediate than the difficulties of the one-particle KG theory.
 
-Dirac said, suppose the particle can exist in several distinct states with the same <a id="ix-199">momentum</a> (different orientations of spin.) Then the wave-function $\psi$ satisfying (6) must have several _components_; it is not a scalar but a set of numbers each giving the prob. <a id="ix-11">amplitude</a> to find the particle at a given place and in a given substate. So we write for $\psi$ a column matrix
+Dirac said, suppose the particle can exist in several distinct states with the same <a id="ix-202">momentum</a> (different orientations of spin.) Then the wave-function $\psi$ satisfying (6) must have several _components_; it is not a scalar but a set of numbers each giving the prob. <a id="ix-4">amplitude</a> to find the particle at a given place and in a given substate. So we write for $\psi$ a column matrix
 
 $$
 \psi = \begin{bmatrix} \psi_{1} \\ \psi_{2} \\ \cdot \\ \cdot \\ \cdot \end{bmatrix} \quad \text{ for the components } \psi_{\alpha} ; \quad \alpha = 1 , 2 ,\dots
 $$
 
-Dirac assumed that the probability <a id="ix-184">density</a> at any point is still given by
+Dirac assumed that the probability <a id="ix-236">density</a> at any point is still given by
 
 <a id="eq-8"></a>
 
@@ -388,7 +388,7 @@ $$
 \frac{1}{c} \frac{\partial \psi}{\partial t} + \sum_{1}^{3} \alpha^{k} \frac{\partial \psi}{\partial x_{k}} + i \frac{mc}{\hbar} \beta \psi = 0 \tag{9}
 $$
 
-where $x_{1} x_{2} x_{3}$ are written for $xyz$ and $\alpha^{1} \alpha^{2} \alpha^{3} \beta$ are square matrices whose elements are numbers. The <a id="ix-118">conjugate</a> of (9) gives
+where $x_{1} x_{2} x_{3}$ are written for $xyz$ and $\alpha^{1} \alpha^{2} \alpha^{3} \beta$ are square matrices whose elements are numbers. The <a id="ix-156">conjugate</a> of (9) gives
 
 <a id="eq-10"></a>
 
@@ -396,7 +396,7 @@ $$
 \frac{1}{c} \frac{\partial \psi^{*}}{\partial t} + \sum_{1}^{3} \frac{\partial \psi^{*}}{\partial x_{k}} \alpha^{k *} - i \frac{mc}{\hbar} \psi^{*} \beta^{*} = 0 \tag{10}
 $$
 
-where $\alpha^{k *}$ and $\beta^{*}$ are <a id="ix-114">Hermitian</a> conjugates.
+where $\alpha^{k *}$ and $\beta^{*}$ are <a id="ix-153">Hermitian</a> conjugates.
 
 Now to get (3) out of (8), (9) and (10) we must have $\alpha^{k *} = \alpha^{k} , \beta^{*} = \beta$ so $\alpha^{k}$ and $\beta$ are _Hermitian_; and
 
@@ -409,7 +409,7 @@ $$
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p5"><sup>[p. 5]</sup></a>
 
-Next what more do we want from equation (9)? Two things. (A) it must be consistent with the 2<sup>nd</sup> order equation (6) we started from; (B) the whole theory must be <a id="ix-157">Lorentz</a> invariant.
+Next what more do we want from equation (9)? Two things. (A) it must be consistent with the 2<sup>nd</sup> order equation (6) we started from; (B) the whole theory must be <a id="ix-175">Lorentz</a> invariant.
 
 First consider (A). If (9) is consistent with (6) it must be possible to get exactly (6) by multiplying (9) by the operator
 
@@ -433,7 +433,7 @@ $$
 \begin{aligned} \alpha^{k} \alpha^{\ell} + \alpha^{\ell} \alpha^{k} &= 0 \quad k \neq \ell \\ \alpha^{k} \beta + \beta \alpha^{k} &= 0 \\ \alpha^{k 2} &= \beta^{2} = \mathbb{I} , ( \text{ identity matrix } ) \end{aligned} \tag{13}
 $$
 
-Thus we could not possibly _factorize_ the 2<sup>nd</sup> order equation into two first-order operators involving ordinary numbers. But we can do it with <a id="ix-69"><em>matrices</em></a>.
+Thus we could not possibly _factorize_ the 2<sup>nd</sup> order equation into two first-order operators involving ordinary numbers. But we can do it with <a id="ix-85"><em>matrices</em></a>.
 
 Consider the Pauli spin matrices
 
@@ -472,7 +472,7 @@ The Dirac equation is thus a set of 4 simultaneous linear partial differential<s
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p6"><sup>[p. 6]</sup></a>
 
-## <a id="s-lorentz-invariance-of-the-dirac-equation"></a><a id="ix-165">Lorentz</a> Invariance of the Dirac Equation
+## <a id="s-lorentz-invariance-of-the-dirac-equation"></a><a id="ix-180">Lorentz</a> Invariance of the Dirac <a id="ix-72">Equation</a>
 
 What does this mean? Consider a general Lorentz transformation: If $x_{\mu}^{\prime}$ are the new coordinates:
 
@@ -482,9 +482,9 @@ $$
 x_{\mu}^{\prime} = \sum_{\nu = 0}^{3} a_{\mu \nu} x_{\nu} \quad ( x_{o} = ct ) \tag{16}
 $$
 
-In the new coordinate <a id="ix-158">system</a> the wave-function will be $\psi^{\prime}$. Clearly we do not expect that $\psi^{\prime} = \psi$. Example: in the <a id="ix-173">Maxwell</a> theory which is relativistic, the magnetic field $H$ is no longer a pure magnetic field in a moving system. Instead it transforms like a tensor. So we have to find _some_ transformation law for the $\psi$ which will leave invariant the physical consequences of the equations.
+In the new coordinate <a id="ix-176">system</a> the wave-function will be $\psi^{\prime}$. Clearly we do not expect that $\psi^{\prime} = \psi$. Example: in the <a id="ix-185">Maxwell</a> theory which is relativistic, the magnetic field $H$ is no longer a pure magnetic field in a moving system. Instead it transforms like a tensor. So we have to find _some_ transformation law for the $\psi$ which will leave invariant the physical consequences of the equations.
 
-We need in fact two things: (i) the interpretation of $\psi^{*} \psi$ as a probability <a id="ix-185">density</a> must be preserved, (ii) the validity of the Dirac equation must be preserved in the new system.
+We need in fact two things: (i) the interpretation of $\psi^{*} \psi$ as a probability <a id="ix-237">density</a> must be preserved, (ii) the validity of the Dirac equation must be preserved in the new system.
 
 First consider (i). The quantity which can be directly observed and must be invariant is the quantity
 
@@ -492,7 +492,7 @@ $$
 ( \psi^{*} \psi ) \times V
 $$
 
-where $V$ is a volume. Now in going to a new Lorentz system with relative velocity $v$ the volume $V$ changes by <a id="ix-93">Fitzgerald contraction</a> to the value
+where $V$ is a volume. Now in going to a new Lorentz system with relative velocity $v$ the volume $V$ changes by <a id="ix-140">Fitzgerald contraction</a> to the value
 
 $$
 V^{\prime} = V \sqrt{1 - \frac{v^{2}}{c^{2}}}
@@ -561,7 +561,7 @@ $$
 S^{*} \alpha^{\mu} S = \sum_{\nu = 0} a_{\mu \nu} \alpha^{\nu} , \quad \mu = 0 , 1 , 2 , 3 \tag{23}
 $$
 
-Next consider (ii). The Dirac equation for $\psi^{\prime}$ is
+Next consider (ii). The Dirac <a id="ix-73">equation</a> for $\psi^{\prime}$ is
 
 <a id="eq-24"></a>
 
@@ -716,9 +716,9 @@ $$
 
 Note that in all cases S is ambiguous by a factor $\pm 1$. So in case 1 a rotation though 360$◦$ gives $S = - 1 .$
 
-_Problem 1_ Find the S corresponding to a general infinitesimal coordinate transformation. Compare and show that it agrees with the exact solutions given here.
+<a id="ix-249"><em>Problem 1</em></a> Find the S corresponding to a general infinitesimal coordinate transformation. Compare and show that it agrees with the exact solutions given here.
 
-The $\psi_{\alpha}$’s transforming with these $S$-transformations are called <a id="ix-213"><em>spinors</em></a>. They are a direct extension of the non-relativistic 2-component spin-functions. Mathematical theory of spinors is not very useful. In fact we find always in practice, calculations can be done most easily if one avoids any explicit representation of the spinors. _Use only formal algebra and commutation relations of the matrices._
+The $\psi_{\alpha}$’s transforming with these $S$-transformations are called <a id="ix-278"><em>spinors</em></a>. They are a direct extension of the non-relativistic 2-component spin-functions. Mathematical theory of spinors is not very useful. In fact we find always in practice, calculations can be done most easily if one avoids any explicit representation of the spinors. _Use only formal algebra and commutation relations of the matrices._
 
 ## <a id="s-the-covariant-notation"></a>The covariant notation
 
@@ -745,7 +745,7 @@ $$
 \gamma_{1} = \begin{pmatrix} 0 & \begin{matrix} 0 & - i \\ - i & 0 \end{matrix} \\ \begin{matrix} 0 & i \\ i & 0 \end{matrix} & 0 \end{pmatrix} ; \quad \gamma_{2} = \begin{pmatrix} 0 & \begin{matrix} 0 & - 1 \\ 1 & 0 \end{matrix} \\ \begin{matrix} 0 & 1 \\ - 1 & 0 \end{matrix} & 0 \end{pmatrix} ; \quad \gamma_{3} = \begin{pmatrix} 0 & \begin{matrix} - i & 0 \\ 0 & i \end{matrix} \\ \begin{matrix} i & 0 \\ 0 & - i \end{matrix} & 0 \end{pmatrix} ; \quad \gamma_{4} = \begin{pmatrix} \begin{matrix} 1 & 0 \\ 0 & 1 \end{matrix} & 0 \\ 0 & \begin{matrix} - 1 & 0 \\ 0 & - 1 \end{matrix} \end{pmatrix}
 $$
 
-are a 4-vector. They are all <a id="ix-115">Hermitian</a> and satisfy
+are a 4-vector. They are all <a id="ix-154">Hermitian</a> and satisfy
 
 <a id="eq-33"></a>
 
@@ -753,7 +753,7 @@ $$
 \gamma_{\mu} \gamma_{\nu} + \gamma_{\nu} \gamma_{\mu} = 2 \delta_{\mu \nu} \tag{33}
 $$
 
-The Dirac equation and its conjugate may now be written
+The Dirac <a id="ix-71">equation</a> and its conjugate may now be written
 
 <a id="eq-34"></a>
 
@@ -777,7 +777,7 @@ $$
 
 These notations are much the most convenient for calculations.
 
-## <a id="s-conservation-laws-existence-of-spin"></a><a id="ix-64">Conservation Laws</a>. <a id="ix-211">Existence of Spin</a>.
+## <a id="s-conservation-laws-existence-of-spin"></a><a id="ix-38">Conservation Laws</a>. <a id="ix-277">Existence of Spin</a>.
 
 The Hamiltonian in this theory is<sup><a id="fnref-6" href="#fn-6">6</a></sup>
 
@@ -793,9 +793,9 @@ $$
 H = - i \hbar c \sum_{1}^{3} \alpha^{k} \frac{\partial}{\partial x_{k}} + mc^{2} \beta = - i \hbar c \boldsymbol{\alpha} \boldsymbol{\cdot} \nabla + mc^{2} \beta \tag{38}
 $$
 
-This commutes with the <a id="ix-200">momentum</a> $\boldsymbol{p} = - i \hbar \nabla$. So the momentum $\boldsymbol{p}$ is a constant of motion.
+This commutes with the <a id="ix-203">momentum</a> $\boldsymbol{p} = - i \hbar \nabla$. So the momentum $\boldsymbol{p}$ is a constant of motion.
 
-However the <a id="ix-27">angular momentum</a> operator
+However the <a id="ix-16">angular momentum</a> operator
 
 <a id="eq-39"></a>
 
@@ -842,7 +842,7 @@ $$
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p10"><sup>[p. 10]</sup></a>
 
-is a constant, the total <a id="ix-30">angular momentum</a>, because by (40), (41) and (42)
+is a constant, the total <a id="ix-18">angular momentum</a>, because by (40), (41) and (42)
 
 $$
 [ H, \boldsymbol{J} ] = 0
@@ -862,7 +862,7 @@ $$
 \psi ( x,t ) = u \exp \left( i \frac{\boldsymbol{p} \boldsymbol{\cdot} \boldsymbol{x}}{\hbar} - i \frac{Et}{\hbar} \right) \tag{43}
 $$
 
-where $u$ is a constant spinor. The <a id="ix-86">Dirac</a> <a id="ix-50">equation</a> then becomes an equation for $u$ only
+where $u$ is a constant spinor. The <a id="ix-95">Dirac</a> <a id="ix-62">equation</a> then becomes an equation for $u$ only
 
 <a id="eq-44"></a>
 
@@ -902,7 +902,7 @@ $$
 \begin{pmatrix} 1 \\ 0 \\ \frac{cp_{3}}{E + mc^{2}} \\ \frac{cp_{+}}{E + mc^{2}} \end{pmatrix} \quad \begin{pmatrix} 0 \\ 1 \\ \frac{cp_{-}}{E + mc^{2}} \\ \frac{- cp_{3}}{E + mc^{2}} \end{pmatrix} \tag{48}
 $$
 
-This gives the two spin-<a id="ix-107">states</a> of an electron with given momentum, as required physically.
+This gives the two spin-<a id="ix-117">states</a> of an electron with given momentum, as required physically.
 
 But there are also solutions with $E = - \sqrt{m^{2} c^{4} + c^{2} p^{2}}$. In fact again two independent solutions, making 4 altogether. These are the famous _negative energy states_. Why cannot we simply agree to ignore these states, say they are physically absent? Because when fields are present the theory gives transitions from positive to negative states. e.g.H atom should decay to negative state in 10$- 1 0$ secs. or less.
 
@@ -911,13 +911,13 @@ Certainly negative energy particles are not allowed physically. They can for exa
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p11"><sup>[p. 11]</sup></a>
 
-## <a id="s-the-hole-theory"></a>The <a id="ix-65">Hole Theory</a>
+## <a id="s-the-hole-theory"></a>The <a id="ix-81">Hole Theory</a>
 
-All <a id="ix-105">negative-energy</a> <a id="ix-161">states</a> are normally filled by one electron each. Because of the exclusion principle transitions of ordinary electrons to these states are forbidden. If sometimes a negative energy state of momentum $- p$ energy $- E$ is _empty_, this appears as a particle of momentum $p$ energy +$E$, and the opposite charge to an electron, i.e. an ordinary <a id="ix-152">positron</a>.
+All <a id="ix-115">negative-energy</a> <a id="ix-230">states</a> are normally filled by one electron each. Because of the exclusion principle transitions of ordinary electrons to these states are forbidden. If sometimes a negative energy state of momentum $- p$ energy $- E$ is _empty_, this appears as a particle of momentum $p$ energy +$E$, and the opposite charge to an electron, i.e. an ordinary <a id="ix-225">positron</a>.
 
 Thus we are led at once to a many-particle theory in order to get sensible results. With spin-0 particles, to get positive probabilities. With spin-$\frac{1}{2}$ particles, to get positive energies.
 
-The Dirac theory in its one-particle form cannot describe properly the interaction between several particles. But so long as we are talking only about free particles, we can describe them with one-particle wave-functions.
+The <a id="ix-59">Dirac</a> theory in its one-particle form cannot describe properly the interaction between several particles. But so long as we are talking only about free particles, we can describe them with one-particle wave-functions.
 
 ## <a id="s-positron-states-charge-conjugation"></a>Positron States
 
@@ -961,7 +961,7 @@ $$
 Eu = \left( c \boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{p} - mc^{2} \beta \right) u \tag{52}
 $$
 
-We want the theory to make no distinction between electrons and positrons, and so $v$ must also satisfy the Dirac equation
+We want the theory to make no distinction between electrons and positrons, and so $v$ must also satisfy the Dirac <a id="ix-74">equation</a>
 
 <a id="eq-53"></a>
 
@@ -1010,7 +1010,7 @@ $$
 C^{2} = \mathbb{I} \quad \text{ Hence } \quad \psi = C\varphi^{+} \tag{57}
 $$
 
-The $\varphi$ is called the _charge-conjugate_ wave-function corresponding to the <a id="ix-106">negative-energy</a> electron $\psi$. Clearly
+The $\varphi$ is called the _charge-conjugate_ wave-function corresponding to the <a id="ix-116">negative-energy</a> electron $\psi$. Clearly
 
 <a id="eq-58"></a>
 
@@ -1026,9 +1026,9 @@ $$
 \varphi^{*} \alpha^{k} \varphi = \psi^{T} C^{*} \alpha^{k} C\psi^{+} = \psi^{*} C\alpha^{kT} C\psi = \psi^{*} \alpha^{k} \psi \tag{59}
 $$
 
-Thus the probability and flow <a id="ix-186">densities</a> are the same for a positron as for the conjugate negative electron.
+Thus the <a id="ix-238">probability</a> and flow densities are the same for a positron as for the conjugate negative electron.
 
-For many purposes it is easier to represent positrons directly by the $\overline{\psi}$ wave-function, e.g. in computing cross-sections for <a id="ix-43">pair </a><a id="ix-8">creation</a> and so forth as we shall do later. But if you actually want to _see_ the positron, e.g. in describing the details of a positronium experiment, it is necessary to use the $\varphi$ wave-function to represent e.g. the way the spin is pointing.
+For many purposes it is easier to represent positrons directly by the $\overline{\psi}$ wave-function, e.g. in computing cross-sections for <a id="ix-52">pair </a><a id="ix-43">creation</a> and so forth as we shall do later. But if you actually want to _see_ the positron, e.g. in describing the details of a positronium experiment, it is necessary to use the $\varphi$ wave-function to represent e.g. the way the spin is pointing.
 
 This is all we shall say about free electrons and positrons.
 
@@ -1040,7 +1040,7 @@ $$
 A_{\mu} \quad \mu = 1 , 2 , 3 , 4 \quad A_{4} = i \Phi
 $$
 
-given functions of space and time. Then the motion of a particle in the field is found by substituting in the <a id="ix-136">free-particle Lagrangian</a>
+given functions of space and time. Then the motion of a particle in the field is found by substituting in the <a id="ix-165">free-particle Lagrangian</a>
 
 <a id="eq-60"></a>
 
@@ -1072,7 +1072,7 @@ $$
 p_{\mu} \to - i \hbar \frac{\partial}{\partial x_{\mu}} \tag{63}
 $$
 
-Therefore the Dirac equation with fields is
+Therefore the Dirac <a id="ix-76">equation</a> with fields is
 
 <a id="eq-64"></a>
 
@@ -1113,7 +1113,7 @@ $$
 \sum \left( \frac{\partial}{\partial x_{\mu}} - \frac{ie}{\hbar c} A_{\mu} \right) \gamma_{\mu} \varphi + \frac{mc}{\hbar} \varphi = 0 \tag{68}
 $$
 
-This is exactly the Dirac <a id="ix-51">equation</a> for a particle of positive charge (+e). We have used
+This is exactly the Dirac <a id="ix-63">equation</a> for a particle of positive charge (+e). We have used
 
 <a id="eq-69"></a>
 
@@ -1123,7 +1123,7 @@ $$
 
 which follows from (15), (32), and (55).
 
-## <a id="s-the-hydrogen-atom"></a>The <a id="ix-120">Hydrogen Atom</a>
+## <a id="s-the-hydrogen-atom"></a>The <a id="ix-158">Hydrogen Atom</a>
 
 This is the one problem which it is possible to treat very accurately using the one-electron Dirac theory. The problem is to find the eigenstates of the equation
 
@@ -1147,7 +1147,7 @@ $$
 j ( j + 1 ) = J^{2} = \left[ - i ( \boldsymbol{r} \times \nabla ) + \tfrac{1}{2} \boldsymbol{\sigma} \right]^{2} \tag{72}
 $$
 
-where $j_{z}$ and $j$ are now _half-odd integers_ by the ordinary theory of <a id="ix-28">angular momenta</a>. These quantum numbers are not enough to fix the state, because each value of $j$ may correspond to two NR states with $\ell$between states with$= j \pm \tfrac{1}{2}$. Therefore we need an additional operator which commutes with $H$, which will distinguish $\boldsymbol{\sigma}$ parallel or antiparallel to $\boldsymbol{J}$. The obvious choice is
+where $j_{z}$ and $j$ are now _half-odd integers_ by the ordinary theory of <a id="ix-17">angular momenta</a>. These quantum numbers are not enough to fix the state, because each value of $j$ may correspond to two NR states with $\ell$between states with$= j \pm \tfrac{1}{2}$. Therefore we need an additional operator which commutes with $H$, which will distinguish $\boldsymbol{\sigma}$ parallel or antiparallel to $\boldsymbol{J}$. The obvious choice is
 
 $$
 Q = \boldsymbol{\sigma} \boldsymbol{\cdot} \boldsymbol{J}
@@ -1236,7 +1236,7 @@ $$
 j = | k |- \tfrac{1}{2} , \quad k = \pm 1 , \pm 2 , \pm 3 ,\dots \tag{77}
 $$
 
-Using the eigenvalue for $K$, we can simplify the <a id="ix-121">Hamiltonian</a>, which we could not do as in the NR theory with the eigenvalue of $L^{2}$ alone. First
+Using the eigenvalue for $K$, we can simplify the <a id="ix-159">Hamiltonian</a>, which we could not do as in the NR theory with the eigenvalue of $L^{2}$ alone. First
 
 <a id="eq-78"></a>
 
@@ -1272,7 +1272,7 @@ $$
 H = mc^{2} \beta - \frac{e^{2}}{r} + i \hbar c\alpha_{r} \left( \frac{\beta K}{r} - \frac{1}{r} - \frac{\partial}{\partial r} \right) \tag{80}
 $$
 
-This gives the <a id="ix-87">Dirac</a> <a id="ix-52">equation</a> as an equation in the single variable $r$, having separated all angular variables.
+This gives the <a id="ix-96">Dirac</a> <a id="ix-64">equation</a> as an equation in the single variable $r$, having separated all angular variables.
 
 For the solution of this equation, see – Dirac, _Quantum Mechanics_, Third Edition, Sec. 72, pp 268-271.
 
@@ -1305,7 +1305,7 @@ $$
 a_{1} = \frac{- E + mc^{2}}{\hbar c} ; \quad a_{2} = \frac{E + mc^{2}}{\hbar c} ; \quad \alpha = \frac{e^{2}}{\hbar c} , \tag{83}
 $$
 
-the <a id="ix-89">fine structure constant</a>. Then
+the <a id="ix-139">fine structure constant</a>. Then
 
 <a id="eq-84"></a>
 
@@ -1313,7 +1313,7 @@ $$
 \begin{aligned} \left( - a_{1} + \frac{\alpha}{\overline{r}} \right) u &= \left( \frac{1 + K}{r} + \frac{\partial}{\partial r} \right) v \\ \left( a_{2} + \frac{\alpha}{r} \right) v &= \left( \frac{- 1 + K}{r} - \frac{\partial}{\partial r} \right) u \end{aligned} \tag{84}
 $$
 
-Next put $a = \sqrt{a_{1} a_{2}} = \sqrt{m^{2} c^{4} - E^{2}} / \hbar c$ which is the magnitude of the imaginary <a id="ix-201">momentum</a> of a free electron of energy $E$. Then $\psi \sim e^{- ar}$ at infinity. Hence we write
+Next put $a = \sqrt{a_{1} a_{2}} = \sqrt{m^{2} c^{4} - E^{2}} / \hbar c$ which is the magnitude of the imaginary <a id="ix-204">momentum</a> of a free electron of energy $E$. Then $\psi \sim e^{- ar}$ at infinity. Hence we write
 
 <a id="eq-85"></a>
 
@@ -1485,9 +1485,9 @@ $$
 {}^{2} S_{3 / 2} \quad \text{ is } \quad j = \tfrac{1}{2} , \quad k = - 2
 $$
 
-## <a id="s-behavior-of-an-electron-in-non-relativistic-approximation"></a>Behaviour of an Electron in a Non-Relativistic Approximation
+## <a id="s-behavior-of-an-electron-in-non-relativistic-approximation"></a>Behaviour of an <a id="ix-111">Electron</a> in a Non-Relativistic Approximation
 
-Multiplying the Dirac <a id="ix-53">equation</a> (64) by $\sum \gamma_{\nu} \left( \frac{\partial}{\partial x_{\nu}} + i \frac{e}{\hbar c} A_{\nu} \right) - \frac{mc}{\hbar}$ we have
+Multiplying the Dirac <a id="ix-65">equation</a> (64) by $\sum \gamma_{\nu} \left( \frac{\partial}{\partial x_{\nu}} + i \frac{e}{\hbar c} A_{\nu} \right) - \frac{mc}{\hbar}$ we have
 
 <a id="eq-96"></a>
 
@@ -1560,7 +1560,7 @@ $$
 \left( - i \hbar \frac{\partial}{\partial t} - e \Phi + mc^{2} \right) \psi - \frac{h^{2}}{2 m} \sum_{k = 1}^{3} \left\{ \left( \frac{\partial}{\partial x_{k}} + \frac{ie}{\hbar c} A_{k} \right)^{2} \right\} \psi + \frac{e \hbar}{2 mc} [ \boldsymbol{\sigma} \boldsymbol{\cdot} \boldsymbol{H} - i \boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{E} ] \psi + O \left( \frac{1}{mc^{2}} \right) = 0
 $$
 
-The NR approximation means dropping the terms $O \left( 1 /mc^{2} \right)$. Thus the NR Schrödinger <a id="ix-229">equation</a> is
+The NR approximation means dropping the terms $O \left( 1 /mc^{2} \right)$. Thus the NR Schrödinger <a id="ix-75">equation</a> is
 
 <a id="eq-99"></a>
 
@@ -1568,7 +1568,7 @@ $$
 i \hbar \frac{\partial \psi}{\partial t} = \left\{ mc^{2} - e \Phi - \frac{h^{2}}{2 m} \sum_{k = 1}^{3} \left( \frac{\partial}{\partial x_{k}} + \frac{ie}{\hbar c} A_{k} \right)^{2} + \frac{e \hbar}{2 mc} ( \boldsymbol{\sigma} \boldsymbol{\cdot} \boldsymbol{H} - i \boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{E} ) \right\} \psi \tag{99}
 $$
 
-The term $\boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{E}$ is really relativistic, and should be dropped or treated more exactly. Then we have exactly the equation of motion of a NR particle with a spin <a id="ix-102">magnetic moment</a> equal to
+The term $\boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{E}$ is really relativistic, and should be dropped or treated more exactly. Then we have exactly the equation of motion of a NR particle with a spin <a id="ix-113">magnetic moment</a> equal to
 
 <a id="eq-100"></a>
 
@@ -1576,7 +1576,7 @@ $$
 M = - \frac{e \hbar}{2 mc} \sigma \tag{100}
 $$
 
-This is one of the greatest triumphs of Dirac, that he got this magnetic moment right out of his general assumptions without any arbitrariness.
+This is one of the greatest triumphs of <a id="ix-90">Dirac</a>, that he got this magnetic moment right out of his general assumptions without any arbitrariness.
 
 It is confirmed by measurements to about one part in 1000. Note that the most recent experiments show a definite discrepancy, and agree with the value
 
@@ -1586,9 +1586,9 @@ $$
 M = - \frac{e \hbar}{2 mc} \sigma \left\{ 1 + \frac{e^{2}}{2 \pi \hbar c} \right\} \tag{101}
 $$
 
-calculated by <a id="ix-242">Schwinger</a> using the complete many-particle theory.
+calculated by <a id="ix-273">Schwinger</a> using the complete many-particle theory.
 
-_Problem 2_ Calculate energy values and <a id="ix-80">wave functions</a> of a Dirac particle moving in a homogeneous infinite magnetic field. Can be done exactly. See F. <a id="ix-226">Sauter</a>, _Zeitschrift für Physik_ **69** (1931) 742.
+_Problem 2_ Calculate energy values and wave functions of a Dirac particle moving in a homogeneous infinite magnetic field. Can be done exactly. See F. <a id="ix-259">Sauter</a>, _Zeitschrift für Physik_ **69** (1931) 742.
 
 _Solution_<br>
 Take the field $\boldsymbol{B}$ in the $z$ direction.
@@ -1709,7 +1709,7 @@ $$
 \left. \begin{aligned} \alpha_{k} \sigma_{\ell} &= i\alpha_{m} \\ \sigma_{k} \gamma_{\ell} &= i\gamma_{m} \\ \gamma_{k} \alpha_{\ell} &= \beta \sigma_{m} \end{aligned} \right\} \quad k,\ell ,m = ( 1 , 2 , 3 ) \text{ cyclicly permuted }
 $$
 
-Comparison with the Dirac notation: $\rho_{1} = \epsilon \quad \rho_{2} = \eta \quad \rho_{3} = \beta$.
+Comparison with the <a id="ix-86">Dirac</a> notation: $\rho_{1} = \epsilon \quad \rho_{2} = \eta \quad \rho_{3} = \beta$.
 
 Latin indices: 1, 2, 3. Greek indices: 1, 2, 3, 4.
 
@@ -1817,11 +1817,11 @@ Latin indices: 1, 2, 3. Greek indices: 0, 1, 2, 3.
 
 ## <a id="s-general-discussion"></a>General Discussion
 
-The problem of scattering of a Dirac particle by a potential can be treated exactly by finding the continuum solutions of the Dirac <a id="ix-54">equation</a>. This is a complicated business even for the simplest case of a Coulomb force. It was done by <a id="ix-134">Mott</a>, _Proc. Roy. Soc._ **A135** (1932) 429.
+The problem of scattering of a Dirac particle by a potential can be treated exactly by finding the continuum solutions of the Dirac <a id="ix-66">equation</a>. This is a complicated business even for the simplest case of a Coulomb force. It was done by <a id="ix-216">Mott</a>, _Proc. Roy. Soc._ **A135** (1932) 429.
 
-For most purposes in relativistic problems, and always when the scattering is produced by complicated effects involving radiation theory, one uses the <a id="ix-45"><em>Born approximation</em></a>. That is, we treat the scattering only to 1<sup>st</sup> order in the interaction, or only to some definite order in which we are interested.
+For most purposes in relativistic problems, and always when the scattering is produced by complicated effects involving radiation theory, one uses the <a id="ix-29"><em>Born approximation</em></a>. That is, we treat the scattering only to 1<sup>st</sup> order in the interaction, or only to some definite order in which we are interested.
 
-The formula for scattering from an initial state $A$ to a final state $B$ lying in a continuum of <a id="ix-108">states</a> is, <a id="ix-205">transition</a> probability per unit time,
+The formula for scattering from an initial state $A$ to a final state $B$ lying in a continuum of <a id="ix-118">states</a> is, <a id="ix-245">transition</a> probability per unit time,
 
 <a id="eq-102"></a>
 
@@ -1839,7 +1839,7 @@ $$
 \text{ One particle per volume } \frac{mc^{2}}{| E |} \tag{103}
 $$
 
-where $| E |$ is the energy of the particles. Then under a <a id="ix-166">Lorentz</a> transformation the volume of a fixed region transforms like 1$/ | E |$ and so the definition stays invariant.
+where $| E |$ is the energy of the particles. Then under a <a id="ix-181">Lorentz</a> transformation the volume of a fixed region transforms like 1$/ | E |$ and so the definition stays invariant.
 
 Thus a continuum state given by the spinor $\psi = u$exp$\{ ( i \boldsymbol{p} \boldsymbol{\cdot} \boldsymbol{x} - iEt ) / \hbar \}$ is normalized so that
 
@@ -1849,7 +1849,7 @@ $$
 u^{*} u = \frac{| E |}{mc^{2}} \tag{104}
 $$
 
-Now if we multiply the Dirac equation for a free particle, (44), by $\overline{u}$ on the left, we get $Eu^{*} \beta u = cu^{*} \beta \boldsymbol{\alpha} \boldsymbol{\cdot}$ $\boldsymbol{p} u + mc^{2} u^{*} u$; its complex conjugate is $Eu^{*} \beta u = - cu^{*} \beta \boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{p} u + mc^{2} u^{*} u$ since $\beta \boldsymbol{\alpha}$ is anti-<a id="ix-116">Hermitian</a>; then by adding we get
+Now if we multiply the Dirac equation for a free particle, (44), by $\overline{u}$ on the left, we get $Eu^{*} \beta u = cu^{*} \beta \boldsymbol{\alpha} \boldsymbol{\cdot}$ $\boldsymbol{p} u + mc^{2} u^{*} u$; its complex conjugate is $Eu^{*} \beta u = - cu^{*} \beta \boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{p} u + mc^{2} u^{*} u$ since $\beta \boldsymbol{\alpha}$ is anti-<a id="ix-155">Hermitian</a>; then by adding we get
 
 <a id="eq-105"></a>
 
@@ -1865,7 +1865,7 @@ $$
 \left. \begin{aligned} \overline{u} u &= + 1 \text{ for electron states } \\ &= - 1 \text{ for positron states } \end{aligned} \right\} = \epsilon ; \quad \text{ This is the definition of } \epsilon . \tag{106}
 $$
 
-With this normalization the density of states in momentum <a id="ix-132">space</a> is one per volume $h^{3}$ of phase space, that is to say
+With this normalization the density of states in momentum <a id="ix-214">space</a> is one per volume $h^{3}$ of phase space, that is to say
 
 <a id="eq-107"></a>
 
@@ -1886,7 +1886,7 @@ $$
 
 ## <a id="s-projection-operators"></a>Projection Operators
 
-Usually we are not interested in the spin either of an intermediate or of an initial or final state. Therefore we have to make sums over spin <a id="ix-162">states</a> which are of the form
+Usually we are not interested in the spin either of an intermediate or of an initial or final state. Therefore we have to make sums over spin <a id="ix-119">states</a> which are of the form
 
 <a id="eq-109"></a>
 
@@ -1894,7 +1894,7 @@ $$
 S = \sum_{2} ( \overline{s} Ou ) ( \overline{u} Pr ) \tag{109}
 $$
 
-where $O$ and $P$ are some kind of operators, $s$ and $r$ some kind of spin states, and the sum is over the two spin states $u$ of an electron of <a id="ix-202">momentum</a> $\boldsymbol{p}$ and energy $E$.
+where $O$ and $P$ are some kind of operators, $s$ and $r$ some kind of spin states, and the sum is over the two spin states $u$ of an <a id="ix-120">electron</a> of <a id="ix-205">momentum</a> $\boldsymbol{p}$ and energy $E$.
 
 Let us write
 
@@ -1904,7 +1904,7 @@ $$
 p / = \sum_{\mu} p_{\mu} \gamma_{\mu} , \quad p_{4} = iE/c \tag{110}
 $$
 
-The Dirac <a id="ix-55">equation</a> satisfied by $u$ is
+The Dirac <a id="ix-67">equation</a> satisfied by $u$ is
 
 <a id="eq-111"></a>
 
@@ -1944,7 +1944,7 @@ $$
 \Lambda_{+} = \frac{p / + imc}{2 imc} \tag{115}
 $$
 
-is a <a id="ix-212">projection operator</a> for _electrons_ of momentum $p$.
+is a <a id="ix-250">projection operator</a> for _electrons_ of momentum $p$.
 
 In the same way for a sum over the two positron states $u$ with momentum $p$ energy $E$
 
@@ -1970,9 +1970,9 @@ $$
 \Lambda_{+} - \Lambda_{-} = \mathbb{I} \tag{118}
 $$
 
-These projection operators are covariant. In <a id="ix-113">Heitler</a> the business is done in a different way which makes them non-covariant and more difficult to handle.
+These projection operators are covariant. In <a id="ix-152">Heitler</a> the business is done in a different way which makes them non-covariant and more difficult to handle.
 
-Note that here charge-conjugate <a id="ix-109">wave functions</a> are _not_ used. The positrons of momentum $p$ are represented by the electron wave functions $u$ of momentum $- p$ energy $- E$.
+Note that here charge-conjugate wave functions are _not_ used. The positrons of momentum $p$ are represented by the electron wave functions $u$ of momentum $- p$ energy $- E$.
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p24"><sup>[p. 24]</sup></a>
@@ -1985,7 +1985,7 @@ $$
 \tfrac{1}{2} \sum_{I} \sum_{F} ( \overline{u}_{F} Ou_{I} ) ( \overline{u}_{I} Ou_{F} )
 $$
 
-summed over <a id="ix-210">electron</a> states only. This gives
+summed over electron states only. This gives
 
 $$
 \tfrac{1}{2} \sum ( \overline{u}_{F} O \Lambda_{+} O \Lambda_{+} u_{F} ) \epsilon
@@ -2025,16 +2025,16 @@ $$
 
 and this is always easy to calculate.
 
-_Problem 3:_ Given a steady potential $V$ a function of position, and a beam of incident particles, electrons. Solve the Schrödinger <a id="ix-230">equation</a> in the <a id="ix-46">Born approximation</a>
+_Problem 3:_ Given a steady potential $V$ a function of position, and a beam of incident particles, electrons. Solve the Schrödinger <a id="ix-262">equation</a> in the <a id="ix-30">Born approximation</a>
 
 a) By stationary perturbation theory<br>
 b) By time-dependent perturbation theory.
 
-Show that the results agree, with a <a id="ix-206">transition</a> probability per unit time given by $w$ = (2$\pi / \hbar ) \rho_{E} | V_{BA} |^{2}$. Evaluate the cross section in the case $V = - Ze^{2} /r$, averaging spin over initial state and summing over final state.
+Show that the results agree, with a <a id="ix-246">transition</a> probability per unit time given by $w$ = (2$\pi / \hbar ) \rho_{E} | V_{BA} |^{2}$. Evaluate the cross section in the case $V = - Ze^{2} /r$, averaging spin over initial state and summing over final state.
 
-c) Repeat the calculation with particles obeying the <a id="ix-131">Klein-Gordon equation</a>, leaving out the $V^{2}$ term, by either method. Compare the <a id="ix-91">angular</a> <a id="ix-90">distribution</a> in the two cases.
+c) Repeat the calculation with particles obeying the <a id="ix-164">Klein-Gordon equation</a>, leaving out the $V^{2}$ term, by either method. Compare the <a id="ix-99">angular</a> <a id="ix-98">distribution</a> in the two cases.
 
-_Problem 4:_ A nucleus (O<sup>16</sup>) has an even<sup><a id="fnref-11" href="#fn-11">11</a></sup> $j$ = 0 ground state and an even $j$ = 0 excited state at 6 MeV. Calculate the total rate of emission of pairs, and the angular and <a id="ix-94">momentum</a> distributions.
+_Problem 4:_ A nucleus (O<sup>16</sup>) has an even<sup><a id="fnref-11" href="#fn-11">11</a></sup> $j$ = 0 ground state and an even $j$ = 0 excited state at 6 MeV. Calculate the total rate of emission of pairs, and the angular and <a id="ix-101">momentum</a> distributions.
 
 _Solution:_ Let ∆$E$ be the excitation energy, $\rho_{N}$ and $\boldsymbol{j}_{N}$ the charge and current density operators of the nucleus. Then for the transition we are interested in $\rho_{N}$ and $\boldsymbol{j}_{N}$ are functions of position $r$ with the time-variation of the single matrix element given by exp$\{- i$∆$E/ \hbar \}$. Also
 
@@ -2055,7 +2055,7 @@ $$
 \nabla^{2} V = - 4 \pi \rho_{N} \tag{120}
 $$
 
-The states being spherically symmetric, $\rho_{N}$ is a function of $r$ only, and so the general solution of <a id="ix-150">Poisson’s equation</a> simplifies to<sup><a id="fnref-12" href="#fn-12">12</a></sup>
+The states being spherically symmetric, $\rho_{N}$ is a function of $r$ only, and so the general solution of <a id="ix-223">Poisson’s equation</a> simplifies to<sup><a id="fnref-12" href="#fn-12">12</a></sup>
 
 <a id="eq-121"></a>
 
@@ -2081,7 +2081,7 @@ $$
 I = \int \frac{4 \pi r \hbar}{i \Delta E} j_{No} ( r ) ( - e\psi^{*} \psi ( r ) ) d\tau \tag{123}
 $$
 
-As an approximation consider the <a id="ix-44">de Broglie wavelengths</a> of all pairs long compared with the nuclear size. Then
+As an approximation consider the <a id="ix-56">de Broglie wavelengths</a> of all pairs long compared with the nuclear size. Then
 
 <a id="eq-124"></a>
 
@@ -2111,7 +2111,7 @@ $$
 I = - \frac{4 \pi Ze^{2} r_{o}^{2}}{5} \{ \psi^{*} \psi ( 0 ) \} e^{- i \Delta Et/ \hbar} \tag{126}
 $$
 
-So the problem is just to compute the probabilities of <a id="ix-16">pair</a>-emission with this interaction. Note that real radiation is strictly forbidden in a 0–0 transition, and so these pairs are actually observed in the reaction
+So the problem is just to compute the probabilities of <a id="ix-46">pair</a>-emission with this interaction. Note that real radiation is strictly forbidden in a 0–0 transition, and so these pairs are actually observed in the reaction
 
 <a id="eq-127"></a>
 
@@ -2125,7 +2125,7 @@ $$
 \int V ( r ) ( - e\psi^{*} \psi ) d\tau
 $$
 
-taking the <a id="ix-0">Coulomb potential</a> of the nuclear charge and ignoring all electrodynamic effects? Yes. Because in general the interaction would be
+taking the <a id="ix-39">Coulomb potential</a> of the nuclear charge and ignoring all electrodynamic effects? Yes. Because in general the interaction would be
 
 <a id="eq-128"></a>
 
@@ -2136,7 +2136,7 @@ $$
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p26"><sup>[p. 26]</sup></a>
 
-where $\phi , A_{k}$ are the scalar and vector potentials satisfying the <a id="ix-190">Maxwell</a> <a id="ix-174">equations</a>
+where $\phi , A_{k}$ are the scalar and vector potentials satisfying the Maxwell <a id="ix-186">equations</a>
 
 $$
 \nabla^{2} \phi + \frac{1}{c} \nabla \boldsymbol{\cdot} \frac{\partial \boldsymbol{A}}{\partial t} = - 4 \pi \rho_{N}
@@ -2146,7 +2146,7 @@ $$
 \nabla^{2} \boldsymbol{A} - \frac{1}{c^{2}} \frac{\partial^{2} \boldsymbol{A}}{\partial t^{2}} -\nabla \left\{ \nabla \boldsymbol{\cdot} \boldsymbol{A} + \frac{1}{c} \frac{\partial \phi}{\partial t} \right\} = - \frac{4 \pi}{c} \boldsymbol{j}_{N}
 $$
 
-The matrix element of the interaction (128) is unchanged by any gauge <a id="ix-100">transformation</a> of the $( \boldsymbol{A} ,\phi )$. Therefore we may take the gauge in which
+The matrix element of the interaction (128) is unchanged by any <a id="ix-143">gauge</a> <a id="ix-146">transformation</a> of the $( \boldsymbol{A} ,\phi )$. Therefore we may take the gauge in which
 
 $$
 \nabla \boldsymbol{\cdot} \boldsymbol{A} = 0
@@ -2160,7 +2160,7 @@ $$
 
 Now, since there is no free radiation present, also $\nabla \times \boldsymbol{A}$ = 0, and hence $\boldsymbol{A}$ = 0, in this gauge, and therefore we can indeed ignore all electrodynamic effects.
 
-Let us calculate then the probability of <a id="ix-17">pair</a> emission with the interaction (126). A typical final state has an electron of momentum $p_{1}$ and a <a id="ix-153">positron</a> of momentum $p_{2}$, with energies $E_{1} , E_{2}$ and spins $u_{1} , u_{2}$ respectively. For the <a id="ix-9">creation</a> of this pair the matrix element of $I$ is
+Let us calculate then the <a id="ix-241">probability</a> of <a id="ix-47">pair</a> emission with the interaction (126). A typical final state has an electron of momentum $p_{1}$ and a <a id="ix-226">positron</a> of momentum $p_{2}$, with energies $E_{1} , E_{2}$ and spins $u_{1} , u_{2}$ respectively. For the <a id="ix-44">creation</a> of this pair the matrix element of $I$ is
 
 <a id="eq-128a"></a>
 
@@ -2176,7 +2176,7 @@ $$
 \frac{1}{( 2 \pi \hbar )^{6}} \frac{m^{2} c^{4}}{E_{1} E_{2}} p_{1}^{2} dp_{1} d\omega_{1} p_{2}^{2} dp_{2} d\omega_{2} \tag{129}
 $$
 
-where $d\omega_{1}$ and $d\omega_{2}$ are the <a id="ix-25">solid</a> angles for $p_{1}$ and $p_{2}$. The creation probability per unit time is thus by (102)
+where $d\omega_{1}$ and $d\omega_{2}$ are the <a id="ix-14">solid</a> angles for $p_{1}$ and $p_{2}$. The creation probability per unit time is thus by (102)
 
 <a id="eq-130"></a>
 
@@ -2200,13 +2200,13 @@ $$
 = - 1 + \frac{\boldsymbol{p}_{1} \boldsymbol{\cdot} \boldsymbol{p}_{2}}{m^{2} c^{2}} + \frac{E_{1} E_{2}}{m^{2} c^{4}} = \frac{E_{1} E_{2} - m^{2} c^{4} + c^{2} p_{1} p_{2} \cos \theta}{m^{2} c^{4}}
 $$
 
-where $\theta$ is the <a id="ix-20">angle</a> between the pair. Then writing in (130)
+where $\theta$ is the <a id="ix-10">angle</a> between the pair. Then writing in (130)
 
 $$
 dE_{1} = dp_{1} \frac{c^{2} p_{1}}{E_{1}} , \quad d\omega_{1} = 4 \pi , \quad d\omega_{2} = 2 \pi \sin \theta d\theta
 $$
 
-we obtain the <a id="ix-187">differential</a> probability<sup><a id="fnref-13" href="#fn-13">13</a></sup> in $E_{1}$ and $\theta$
+we obtain the <a id="ix-239">differential</a> probability<sup><a id="fnref-13" href="#fn-13">13</a></sup> in $E_{1}$ and $\theta$
 
 <a id="eq-131"></a>
 
@@ -2231,13 +2231,13 @@ $$
 w_{o} = \frac{4 Z^{2} e^{4} r_{o}^{4}}{2 5 \pi c^{6} \hbar^{7}} E_{1}^{2} E_{2}^{2} dE_{1} ( 1 + \cos \theta ) \sin \theta d\theta \tag{132}
 $$
 
-So the pairs have an <a id="ix-92">angular</a> distribution concentrated in the _same_ hemisphere, and predominantly _equal_ energies. Then, since
+So the pairs have an <a id="ix-100">angular</a> distribution concentrated in the _same_ hemisphere, and predominantly _equal_ energies. Then, since
 
 $$
 \int_{0}^{\pi} ( 1 + \cos \theta ) \sin \theta d\theta = 2 , \quad \text{ and } \int_{0}^{\Delta E} E_{1}^{2} E_{2}^{2} dE_{1} = \int_{0}^{\Delta E} E_{1}^{2} ( E_{1} + \Delta E )^{2} dE_{1} = \frac{1}{1 5} ( \Delta E )^{5}
 $$
 
-the total <a id="ix-10">creation</a> <a id="ix-168">probability</a> per unit time is
+the total <a id="ix-45">creation</a> <a id="ix-232">probability</a> per unit time is
 
 <a id="eq-133"></a>
 
@@ -2259,13 +2259,13 @@ $$
 \tau = 1 5 \times 2 5 \pi \times 1 0^{5} \times 1 7^{2} \times \frac{1}{4} \times \frac{r_{o}}{c} = 1 0^{1 0} \frac{r_{o}}{c} \approx 1 0^{- 1 3} \sec . \tag{134}
 $$
 
-## <a id="s-scattering-of-two-electrons-in-born-approximation-the-m-ller-formula"></a>Scattering of Two Electrons in <a id="ix-47">Born Approximation</a>.The <a id="ix-227">Møller</a> Formula.
+## <a id="s-scattering-of-two-electrons-in-born-approximation-the-m-ller-formula"></a>Scattering of Two Electrons in <a id="ix-31">Born Approximation</a>.The <a id="ix-260">Møller</a> Formula.
 
-We calculate now the transition scattering matrix element $M$ between an initial state $A$ consisting of 2 electrons with <a id="ix-204">momenta</a> $p_{1} ,p_{2}$ and spin states $u_{1} ,u_{2}$ and a final state $B$ consisting of two electrons with momenta $p_{1}^{\prime} ,p_{2}^{\prime}$ and spin states $u_{1}^{\prime} ,u_{2}^{\prime}$. Thus $M$ gives the probability amplitude for arriving in state $B$ after a long time when the system is known to be in state $A$ to begin with. Hence $M$ itself should be an _invariant_ relativistically.
+We calculate now the transition scattering matrix element $M$ between an initial state $A$ consisting of 2 electrons with momenta $p_{1} ,p_{2}$ and spin states $u_{1} ,u_{2}$ and a final state $B$ consisting of two electrons with momenta $p_{1}^{\prime} ,p_{2}^{\prime}$ and spin states $u_{1}^{\prime} ,u_{2}^{\prime}$. Thus $M$ gives the probability amplitude for arriving in state $B$ after a long time when the system is known to be in state $A$ to begin with. Hence $M$ itself should be an _invariant_ relativistically.
 
-We treat the interaction in Born approximation i.e. consider the particles to go directly from the free-particle state $A$ to the free-particle state $B$ by applying the interaction operator once to state $A$. For electrons at reasonably high or relativistic velocities this will be a very good approximation $( e^{2} / \hbar v \ll$ 1). Also we treat the electromagnetic interaction classically, just as in the O<sup>16</sup> problem, taking the field produced by particle 1 according to classical Maxwell <a id="ix-175">equations</a> to act directly on particle 2. This ignores the fact that the field consists of quanta. We shall see later, after we have developed the quantum field theories, that this introduces _no error_ so long as we are in the Born approximation.
+We treat the interaction in Born approximation i.e. consider the particles to go directly from the free-particle state $A$ to the free-particle state $B$ by applying the interaction operator once to state $A$. For electrons at reasonably high or relativistic velocities this will be a very good approximation $( e^{2} / \hbar v \ll$ 1). Also we treat the electromagnetic interaction classically, just as in the O<sup>16</sup> problem, taking the field produced by particle 1 according to classical Maxwell <a id="ix-187">equations</a> to act directly on particle 2. This ignores the fact that the field consists of quanta. We shall see later, after we have developed the quantum field theories, that this introduces _no error_ so long as we are in the Born approximation.
 
-For the field produced by particle 1 in a transition from the state $p_{1} ,u_{1}$ to $p_{1}^{\prime} ,u_{1}^{\prime}$ we have the matrix elements $\phi_{( 1 )} , \boldsymbol{A}_{( 1 )}$ say. We use now not the gauge in which $\nabla \boldsymbol{\cdot} \boldsymbol{A}$ = 0, but the covariant gauge in which<sup><a id="fnref-14" href="#fn-14">14</a></sup>
+For the field produced by particle 1 in a transition from the state $p_{1} ,u_{1}$ to $p_{1}^{\prime} ,u_{1}^{\prime}$ we have the matrix elements $\phi_{( 1 )} , \boldsymbol{A}_{( 1 )}$ say. We use now not the <a id="ix-144">gauge</a> in which $\nabla \boldsymbol{\cdot} \boldsymbol{A}$ = 0, but the covariant gauge in which<sup><a id="fnref-14" href="#fn-14">14</a></sup>
 
 <a id="eq-135"></a>
 
@@ -2306,7 +2306,7 @@ $$
 \sum_{\nu} ( p_{1 \nu} - p_{1 \nu}^{\prime} )^{2} = | \boldsymbol{p}_{1} - \boldsymbol{p}_{1}^{\prime} |^{2} - \frac{1}{c^{2}} ( E_{1} - E_{1}^{\prime} )^{2} \tag{139}
 $$
 
-The effect of the field (138) on particle 2 is given by the interaction term in the Dirac <a id="ix-56">equation</a> for particle 2
+The effect of the field (138) on particle 2 is given by the interaction term in the Dirac <a id="ix-68">equation</a> for particle 2
 
 <a id="eq-140"></a>
 
@@ -2348,7 +2348,7 @@ $$
 M = - \frac{4 \pi e^{2} \hbar i}{c} ( 2 \pi \hbar )^{4} \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) \sum_{\mu ,\nu} \left\{ \frac{( \overline{u}_{2}^{\prime} \gamma_{\mu} u_{2} ) ( \overline{u}_{1}^{\prime} \gamma_{\mu} u_{1} )}{( p_{1 \nu} - p_{1 \nu}^{\prime} )^{2}} - \frac{( \overline{u}_{2}^{\prime} \gamma_{\mu} u_{1} ) ( \overline{u}_{1}^{\prime} \gamma_{\mu} u_{2} )}{( p_{1 \nu} - p_{2 \nu}^{\prime} )^{2}} \right\} \tag{144}
 $$
 
-This covariant formula is elegant and easy to arrive at. The question now is, how does one go from such a formula to a cross-section?
+This covariant formula is elegant and easy to arrive at. The question now is, how does one go from such a formula to a <a id="ix-49">cross-section</a>?
 
 Generally, suppose in such a 2-particle collision process the transition matrix is
 
@@ -2363,7 +2363,7 @@ Then what will be the cross-section in terms of $K$? We do this calculation once
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p29"><sup>[p. 29]</sup></a>
 
-## <a id="s-relation-of-cross-sections-to-transition-amplitudes"></a>Relation of Cross-sections to <a id="ix-207">Transition</a> <a id="ix-12">Amplitudes</a>
+## <a id="s-relation-of-cross-sections-to-transition-amplitudes"></a>Relation of Cross-sections to <a id="ix-247">Transition</a> <a id="ix-5">Amplitudes</a>
 
 Let $w$ be the transition probability per unit volume and per unit time. This is related to the transition probability for a single final state, which is
 
@@ -2395,7 +2395,7 @@ $$
 \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) = \delta^{3} ( \boldsymbol{p}_{1} + \boldsymbol{p}_{2} - \boldsymbol{p}_{1}^{\prime} - \boldsymbol{p}_{2}^{\prime} ) c\delta ( E_{1} + E_{2} - E_{1}^{\prime} - E_{2}^{\prime} )
 $$
 
-and the integration over $dp_{2}$ gives then by the momentum <a id="ix-203">conservation</a>
+and the integration over $dp_{2}$ gives then by the momentum <a id="ix-206">conservation</a>
 
 <a id="eq-148a"></a>
 
@@ -2427,7 +2427,7 @@ $$
 w = | K |^{2} \frac{m^{2} c^{4}}{E_{1}^{\prime} E_{2}^{\prime}} \frac{c^{2}}{( 2 \pi \hbar )^{2}} \frac{dp_{1 1}^{\prime} dp_{1 2}^{\prime} dp_{1 3}^{\prime}}{d ( E_{1}^{\prime} + E_{2}^{\prime} )}
 $$
 
-Choose a Lorentz-<a id="ix-159">system</a> in which $p_{1}$ and $p_{2}$ are both along the $x_{3}$-direction and take $p_{1 1}^{\prime}$ and $p_{1 2}^{\prime}$ as the variables over which the transition probability is taken. This is necessary for relativistic invariance. Then $p_{1 1}^{\prime}$ and $p_{1 2}^{\prime}$ being fixed and having from the momentum conservation $p_{1 3}^{\prime} = - p_{2 3}^{\prime}$ we get
+Choose a Lorentz-<a id="ix-177">system</a> in which $p_{1}$ and $p_{2}$ are both along the $x_{3}$-direction and take $p_{1 1}^{\prime}$ and $p_{1 2}^{\prime}$ as the variables over which the transition probability is taken. This is necessary for relativistic invariance. Then $p_{1 1}^{\prime}$ and $p_{1 2}^{\prime}$ being fixed and having from the momentum conservation $p_{1 3}^{\prime} = - p_{2 3}^{\prime}$ we get
 
 <a id="eq-149"></a>
 
@@ -2462,7 +2462,7 @@ $$
 \sigma = \frac{w \left( mc^{2} \right)^{2}}{c^{2} | \boldsymbol{p}_{1} E_{2} - \boldsymbol{p}_{2} E_{1} |} = | K |^{2} \frac{\left( mc^{2} \right)^{4}}{c^{2} | E_{2} p_{1 3} - E_{1} p_{2 3} || E_{2}^{\prime} p_{1 3}^{\prime} - E_{1}^{\prime} p_{2 3}^{\prime} |} \frac{1}{( 2 \pi \hbar )^{2}} dp_{1 1}^{\prime} dp_{1 2}^{\prime} \tag{152}
 $$
 
-It is worth noting that the factor $\boldsymbol{p}_{1} E_{2} - \boldsymbol{p}_{2} E_{1}$ is invariant under Lorentz <a id="ix-167">transformations</a> leaving the $x_{1}$ and $x_{2}$ components unchanged (e.g.boosts parallel to the $x_{3}$ axis.)<sup><a id="fnref-15" href="#fn-15">15</a></sup> To prove this, we have to show that $p_{1 3} E_{2} - p_{2 3} E_{1} = \tilde{p}_{1 3} \tilde{E}_{2} - \tilde{p}_{2 3} \tilde{E}_{1}$ (where ˜ denotes the quantities after the Lorentz transformation) because we have chosen a Lorentz system in which the direction of the momentum vector is the $x_{3}$ axis. Then
+It is worth noting that the factor $\boldsymbol{p}_{1} E_{2} - \boldsymbol{p}_{2} E_{1}$ is invariant under Lorentz <a id="ix-182">transformations</a> leaving the $x_{1}$ and $x_{2}$ components unchanged (e.g.boosts parallel to the $x_{3}$ axis.)<sup><a id="fnref-15" href="#fn-15">15</a></sup> To prove this, we have to show that $p_{1 3} E_{2} - p_{2 3} E_{1} = \tilde{p}_{1 3} \tilde{E}_{2} - \tilde{p}_{2 3} \tilde{E}_{1}$ (where ˜ denotes the quantities after the Lorentz transformation) because we have chosen a Lorentz system in which the direction of the momentum vector is the $x_{3}$ axis. Then
 
 $$
 \tilde{E} = E \cosh \theta - cp \sinh \theta
@@ -2492,7 +2492,7 @@ $$
 
 independently of $\theta$. Hence we see that $\sigma$ is invariant under Lorentz transformations parallel to the $x_{3}$ axis.
 
-## <a id="s-results-for-m-ller-scattering"></a>Results for <a id="ix-198">Møller </a><a id="ix-23">Scattering</a>
+## <a id="s-results-for-m-ller-scattering"></a>Results for <a id="ix-201">Møller </a><a id="ix-13">Scattering</a>
 
 One electron initially at rest, the other initially with energy $E = \gamma mc^{2}$;
 
@@ -2504,7 +2504,7 @@ scattering angle = $\theta$ in the lab system
 
 $= \theta^{*}$ in the center-of-mass system
 
-Then the <a id="ix-29">differential</a> cross-section is (<a id="ix-135">Mott</a> and <a id="ix-170">Massey</a>, _Theory of Atomic Collisions_, 2<sup>nd</sup> ed., p. 368)
+Then the <a id="ix-48">differential</a> cross-section is (<a id="ix-217">Mott</a> and <a id="ix-183">Massey</a>, _Theory of Atomic Collisions_, 2<sup>nd</sup> ed., p. 368)
 
 <a id="eq-153"></a>
 
@@ -2524,7 +2524,7 @@ $$
 4 \pi \left( \frac{e^{2}}{mv^{2}} \right)^{2} \left( \frac{\gamma + 1}{\gamma^{2}} \right) dx \left\{ \frac{4}{( 1 - x^{2} )^{2}} - \frac{3}{1 - x^{2}} \right\}
 $$
 
-Effect of spin is a measurable _increase_ of scattering over the Mott formula. Effect of exchange is roughly the 1 $- 3 x^{2}$ term. Positron-electron scattering is very similar. Only the exchange effect is different because of <a id="ix-33">annihilation</a> possibility.
+Effect of spin is a measurable _increase_ of scattering over the Mott formula. Effect of exchange is roughly the 1 $- 3 x^{2}$ term. Positron-electron scattering is very similar. Only the exchange effect is different because of <a id="ix-20">annihilation</a> possibility.
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p31"><sup>[p. 31]</sup></a>
@@ -2541,11 +2541,11 @@ $$
 
 where $\psi_{2}$(1) means the particle 2 in the state 1, and so on. With these states the matrix element $M$ is exactly as we have calculated it including the exchange term.
 
-The number of possible final states is only one half of the number of states of two distinguishable particles. But this does not bring a factor $\frac{1}{2}$ into the differential cross-section, because the density of antisymmetrical states, in which one of the two particles has a momentum in a particular range $dp_{1} dp_{2} dp_{3}$ is exactly the same as the density of states of 2 distinguishable particles in which the particle labelled 1 lies in the given range. Hence the general rule: the differential cross-section does _not_ have a factor $\frac{1}{2}$, the total cross section _does_ because each final state may only be counted once in integrating over the <a id="ix-21">angles</a>.
+The number of possible final states is only one half of the number of states of two distinguishable particles. But this does not bring a factor $\frac{1}{2}$ into the differential cross-section, because the density of antisymmetrical states, in which one of the two particles has a momentum in a particular range $dp_{1} dp_{2} dp_{3}$ is exactly the same as the density of states of 2 distinguishable particles in which the particle labelled 1 lies in the given range. Hence the general rule: the differential cross-section does _not_ have a factor $\frac{1}{2}$, the total cross section _does_ because each final state may only be counted once in integrating over the <a id="ix-11">angles</a>.
 
 ## <a id="s-relativistic-treatment-of-several-particles"></a>Relativistic Treatment of Several Particles
 
-The Møller treatment of the interaction of two electrons succeeds because the <a id="ix-177">field</a> of particle 1 is calculated for all time without taking any account of the effect of particle 2 on particle 1. How can one do a better calculation taking such reactions into account? Clearly we must construct an <a id="ix-57">equation</a> of motion which follows the motions of both particles continuously in time and keeps them in step with each other. So we must have a <a id="ix-88">Dirac</a> equation for 2 electrons, taking exact account of their interaction by including in the equation the behaviour of the Maxwell field too.
+The Møller treatment of the interaction of two electrons succeeds because the <a id="ix-188">field</a> of particle 1 is calculated for all time without taking any account of the effect of particle 2 on particle 1. How can one do a better calculation taking such reactions into account? Clearly we must construct an <a id="ix-69">equation</a> of motion which follows the motions of both particles continuously in time and keeps them in step with each other. So we must have a <a id="ix-97">Dirac</a> equation for 2 electrons, taking exact account of their interaction by including in the equation the behaviour of the Maxwell field too.
 
 This kind of 2-particle Dirac equation is no longer relativistically invariant, if we give each particle a separate position in space but all the same _time_. To avoid this Dirac constructed the _many-time_ theory in which each electron has its own private time coordinate, and satisfies its private Dirac equation. This theory is all right in principle. But it becomes hopelessly complicated when pairs are created and you have equations with new time-coordinates suddenly appearing and disappearing. In fact the whole program of quantizing the electron theory as a theory of discrete particles each with its private time becomes nonsense when you are dealing with an infinite “sea” or an indefinite number of particles. So we have come to the end of what we can do with the relativistic quantum theory of particles.
 
@@ -2555,7 +2555,7 @@ Relativistic quantum theory is the study of quantities $\psi$ which are function
 
 The dynamical system is specified by the quantity $\psi$ existing at all points of space-time, and so consists of a system of fields. Relativistic quantum theory is necessarily a field theory.
 
-The process of reinterpreting a one-particle wave-function like the Dirac $\psi$ as a quantized field operator is called <a id="ix-208"><em>Second Quantization</em></a>.
+The process of reinterpreting a one-particle wave-function like the Dirac $\psi$ as a quantized field operator is called <a id="ix-275"><em>Second Quantization</em></a>.
 
 ---
 
@@ -2598,7 +2598,7 @@ $$
 \varphi_{\mu}^{\alpha} = \frac{\partial \varphi^{\alpha}}{\partial x_{\mu}} \tag{155}
 $$
 
-The theory is fully described by an invariant function of position called the <a id="ix-137">Lagrangian Density</a>,
+The theory is fully described by an invariant function of position called the <a id="ix-166">Lagrangian Density</a>,
 
 <a id="eq-156"></a>
 
@@ -2606,7 +2606,7 @@ $$
 L = L \left( \varphi^{\alpha} ( x ) ,\varphi_{\mu}^{\alpha} ( x ) \right) , \tag{156}
 $$
 
-a function of $\varphi^{\alpha}$ and its _first_ derivatives at the point $x$. The behaviour of the field is fixed by the <a id="ix-1"><em>Action</em></a> _Principle_. If Ω is any finite or infinite region of space-time, then
+a function of $\varphi^{\alpha}$ and its _first_ derivatives at the point $x$. The behaviour of the field is fixed by the <a id="ix-0"><em>Action</em></a> _Principle_. If Ω is any finite or infinite region of space-time, then
 
 <a id="eq-157"></a>
 
@@ -2699,7 +2699,7 @@ with all the new quantities on the RHS.
 
 In the case which is physically of importance, the actual motion is fixed uniquely by specifying the values of the $\varphi^{\alpha}$ everywhere on two space-time surfaces $\sigma_{2}$ and $\sigma_{1}$ which are the past and future boundaries of the volume Ω. A space-like surface is one on which every two points are outside each other’s light-cones, so that the fields can be fixed independently at every point.
 
-Special case of non-relativistic theory, both $\sigma_{1}$ and $\sigma_{2}$ are just space at the time $t_{1}$ and $t_{2}$, and $\delta x_{\mu}$ is $ic$ times a displacement of the time by $\delta t_{1}$ and $\delta t_{2}$. Then we may write $n_{\mu}$ = (0$, 0 , 0 ,i ) , \pi_{\alpha} = \partial L /\partial \dot{\varphi}^{\alpha}$, and then for the <a id="ix-103">Hamiltonian</a>
+Special case of non-relativistic theory, both $\sigma_{1}$ and $\sigma_{2}$ are just space at the time $t_{1}$ and $t_{2}$, and $\delta x_{\mu}$ is $ic$ times a displacement of the time by $\delta t_{1}$ and $\delta t_{2}$. Then we may write $n_{\mu}$ = (0$, 0 , 0 ,i ) , \pi_{\alpha} = \partial L /\partial \dot{\varphi}^{\alpha}$, and then for the <a id="ix-147">Hamiltonian</a>
 
 <a id="eq-164"></a>
 
@@ -2715,12 +2715,12 @@ $$
 \delta I ( \Omega ) = \int d\tau \sum_{\alpha} \{ ( \pi_{\alpha} \delta \varphi^{\alpha} ) ( t_{1} ) - ( \pi_{\alpha} \delta \varphi^{\alpha} ) ( t_{2} ) \}-\{ H ( t_{1} ) \delta t_{1} - H ( t_{2} ) \delta t_{2} \} \tag{165}
 $$
 
-The essential feature of this classical theory is that the <a id="ix-2">Action</a> Principle is stated only for variations vanishing on the boundary of Ω. From this one can _deduce_ as in (163) and (165) the effect on $I$(Ω) of variations not vanishing on the boundary. This is possible because each state of motion is defined by fixing _as many_ field quantities as can be fixed independently, (e.g. all the fields on two space-like surfaces or all the fields and their time-derivatives on one surface) and then the whole past and
+The essential feature of this classical theory is that the <a id="ix-1">Action</a> Principle is stated only for variations vanishing on the boundary of Ω. From this one can _deduce_ as in (163) and (165) the effect on $I$(Ω) of variations not vanishing on the boundary. This is possible because each state of motion is defined by fixing _as many_ field quantities as can be fixed independently, (e.g. all the fields on two space-like surfaces or all the fields and their time-derivatives on one surface) and then the whole past and
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p34"><sup>[p. 34]</sup></a>
 
-future of the motion is determined by the <a id="ix-62">field</a> equations.
+future of the motion is determined by the <a id="ix-77">field</a> equations.
 
 Field equations can be written in the Hamiltonian form
 
@@ -2730,7 +2730,7 @@ $$
 
 ## <a id="s-examples"></a>Examples:
 
-1. <a id="ix-140">Klein-Gordon</a> Field, real
+1. <a id="ix-168">Klein-Gordon</a> Field, real
 
 <a id="eq-166"></a>
 
@@ -2748,7 +2748,7 @@ $$
 
 where we consider $\psi$ and $\psi^{*}$ independent one-component fields.
 
-3. <a id="ix-143">Maxwell</a> Field, four component $A_{\mu}$, <a id="ix-122">Fermi</a> form,
+3. <a id="ix-169">Maxwell</a> Field, four component $A_{\mu}$, <a id="ix-122">Fermi</a> form,
 
 <a id="04-field-theory--eq-168"></a>
 
@@ -2756,7 +2756,7 @@ $$
 L_{M} = - \tfrac{1}{4} \sum_{\mu ,\nu} \left( \frac{\partial A_{\nu}}{\partial x_{\mu}} - \frac{\partial A_{\mu}}{\partial x_{\nu}} \right)^{2} - \tfrac{1}{2} \sum_{\mu} \left( \frac{\partial A_{\mu}}{\partial x_{\mu}} \right)^{2} \tag{168}
 $$
 
-4. <a id="ix-138">Dirac</a> Field
+4. <a id="ix-167">Dirac</a> Field
 
 <a id="eq-169"></a>
 
@@ -2772,15 +2772,15 @@ $$
 L_{Q} = L_{D} + L_{M} - \sum_{\lambda} ieA_{\lambda} \overline{\psi} \gamma_{\lambda} \psi \tag{170}
 $$
 
-here $Q$ stands for <a id="ix-215">quantum electrodynamics</a>.
+here $Q$ stands for <a id="ix-252">quantum electrodynamics</a>.
 
 _Problem 5._ Work out these examples: find the field equations, the momentum conjugate to each component of the field, and the Hamiltonian function, (the momenta and Hamiltonian defined for the case of a flat space $\sigma$ only). Verify that the Hamiltonian gives a correct canonical representation of the field equations as Hamiltonian equations of motion.
 
 ## <a id="s-quantum-relativistic-field-theory"></a>Quantum Relativistic Field Theory
 
-The classical relativistic field theories were usually quantized by using the Hamiltonian form of the field equations and bringing in the commutation relations between coordinates and momenta taken from non-relativistic quantum mechanics. For this approach see <a id="ix-222">Wentzel</a>’s book. It is a very bad method, it is complicated; and it is not at all obvious or even easy to prove that the theory so made is relativistic, because the whole Hamiltonian approach is non-covariant.
+The classical relativistic field theories were usually quantized by using the Hamiltonian form of the field equations and bringing in the commutation relations between coordinates and momenta taken from non-relativistic quantum mechanics. For this approach see <a id="ix-282">Wentzel</a>’s book. It is a very bad method, it is complicated; and it is not at all obvious or even easy to prove that the theory so made is relativistic, because the whole Hamiltonian approach is non-covariant.
 
-Just recently we learnt a much better way of doing it, which I shall now expound in these lectures. It is due to <a id="ix-78">Feynman</a> and <a id="ix-243">Schwinger</a>.<sup><a id="fnref-16" href="#fn-16">16</a></sup>
+Just recently we learnt a much better way of doing it, which I shall now expound in these lectures. It is due to <a id="ix-137">Feynman</a> and <a id="ix-274">Schwinger</a>.<sup><a id="fnref-16" href="#fn-16">16</a></sup>
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p35"><sup>[p. 35]</sup></a>
@@ -2805,7 +2805,7 @@ holds for all variations $\delta \varphi^{\alpha}$ of the operators vanishing on
 
 In the quantum theory, because of complementarity relations, it is not possible to give numerical values to all field operators throughout a physical motion. In fact the state of motion is specified by giving numerical values to the $\varphi^{\alpha}$ on _one_ space-like surface. The future of the state of motion cannot then be determined from the field equations, which are in general second-order differential equations. Therefore the action principle (171) which was enough for the classical theory is no longer enough. We must make some _additional_ statement about the behaviour of $\delta I$ for variations $\delta \varphi^{\alpha}$ which are not zero on the boundaries of Ω.
 
-A state of motion is specified by specifying a space-time surface $\sigma$ and a set of numerical values $\varphi^{\prime \alpha}$ for the eigenvalue which the operators $\varphi^{\alpha}$ on $\sigma$ have in this state. The state is denoted by the Dirac <a id="ix-66">ket</a> vector $| \varphi^{\prime \alpha} ,\sigma \rangle$. This is a special kind of state in which the $\varphi^{\alpha}$ on $\sigma$ have eigenvalues: the general state is a linear combination of $| \varphi^{\prime \alpha} ,\sigma \rangle$ with various values of $\varphi^{\prime \alpha}$. The physically observable quantities are expressions such as the matrix element
+A state of motion is specified by specifying a space-time surface $\sigma$ and a set of numerical values $\varphi^{\prime \alpha}$ for the eigenvalue which the operators $\varphi^{\alpha}$ on $\sigma$ have in this state. The state is denoted by the Dirac <a id="ix-83">ket</a> vector $| \varphi^{\prime \alpha} ,\sigma \rangle$. This is a special kind of state in which the $\varphi^{\alpha}$ on $\sigma$ have eigenvalues: the general state is a linear combination of $| \varphi^{\prime \alpha} ,\sigma \rangle$ with various values of $\varphi^{\prime \alpha}$. The physically observable quantities are expressions such as the matrix element
 
 <a id="eq-172"></a>
 
@@ -2813,7 +2813,7 @@ $$
 \left\langle \varphi_{1}^{\prime \alpha} ,\sigma_{1} \varphi^{\beta} ( x ) \varphi_{2}^{\prime \alpha} ,\sigma_{2} \right\rangle \tag{172}
 $$
 
-of the field operator $\varphi^{\beta} ( x )$ between the two states specified by $\varphi_{1}^{\prime \alpha}$ on $\sigma_{1}$ and by $\varphi_{2}^{\prime \alpha}$ on $\sigma_{2}$. In particular, the <a id="ix-19">transition</a> <a id="ix-169">probability</a> <a id="ix-13">amplitude</a> between the two states is
+of the field operator $\varphi^{\beta} ( x )$ between the two states specified by $\varphi_{1}^{\prime \alpha}$ on $\sigma_{1}$ and by $\varphi_{2}^{\prime \alpha}$ on $\sigma_{2}$. In particular, the <a id="ix-9">transition</a> <a id="ix-233">probability</a> <a id="ix-6">amplitude</a> between the two states is
 
 <a id="eq-173"></a>
 
@@ -2823,7 +2823,7 @@ $$
 
 The squared modulus of this gives the probability of finding the values $\varphi_{1}^{\prime \alpha}$ for the fields on $\sigma_{1}$, in the motion which is defined by the fields being given the definite values $\varphi_{2}^{\prime \alpha}$ on $\sigma_{2}$.
 
-## <a id="s-the-feynman-method-of-quantization"></a>The Feynman Method of <a id="ix-72">Quantization</a>
+## <a id="s-the-feynman-method-of-quantization"></a>The Feynman Method of <a id="ix-129">Quantization</a>
 
 The Feynman method of quantizing the theory consists in writing down an explicit formula for the transition amplitude (173). Namely
 
@@ -2838,11 +2838,11 @@ Here $H$ represents a History of the fields between $\sigma_{2}$ and $\sigma_{1}
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p36"><sup>[p. 36]</sup></a>
 
-method applies not only to field theory but to ordinary NR quantum theory too. We do not try to derive or justify the Feynman formula here. We just show that it gives the same results as the usual QM. For a discussion of the difficulties in defining the sum $\sum H$, and a method of doing it in simple cases, see C. <a id="ix-133">Morette</a>, _Phys. Rev._ **81** (1951) 848.
+method applies not only to field theory but to ordinary NR quantum theory too. We do not try to derive or justify the Feynman formula here. We just show that it gives the same results as the usual QM. For a discussion of the difficulties in defining the sum $\sum H$, and a method of doing it in simple cases, see C. <a id="ix-215">Morette</a>, _Phys. Rev._ **81** (1951) 848.
 
-From formula (174) we derive at once the most general _Correspondence Principle_ giving us back the classical theory in the limit as $\hbar \to$ 0. For suppose $\hbar \to$ 0 then the exponential factor in (174) becomes an extremely rapidly oscillating function of $H$ for all histories $H$ _except_ that one for which $I$(Ω) is stationary. Therefore in the limit the sum $\sum H$ reduces to the contribution from the classical motion leading from $\varphi_{2}^{\prime \alpha}$ on $\sigma_{2}$ to $\varphi_{1}^{\prime \alpha}$ on $\sigma_{1}$, all other contributions interfering destructively. The classical motion is defined by the condition that<sup><a id="fnref-17" href="#fn-17">17</a></sup> its $\delta I$(Ω) = 0 for all small variations of the $\varphi^{\alpha}$ between $\sigma_{2}$ and $\sigma_{1}$. This passage to the classical theory is precisely analogous to the passage from wave-optics to geometrical optics when the wave-length of light is allowed to tend to zero. The <a id="ix-223">WKB approximation</a> is gotten by taking $\hbar$ small but not quite zero.
+From formula (174) we derive at once the most general _Correspondence Principle_ giving us back the classical theory in the limit as $\hbar \to$ 0. For suppose $\hbar \to$ 0 then the exponential factor in (174) becomes an extremely rapidly oscillating function of $H$ for all histories $H$ _except_ that one for which $I$(Ω) is stationary. Therefore in the limit the sum $\sum H$ reduces to the contribution from the classical motion leading from $\varphi_{2}^{\prime \alpha}$ on $\sigma_{2}$ to $\varphi_{1}^{\prime \alpha}$ on $\sigma_{1}$, all other contributions interfering destructively. The classical motion is defined by the condition that<sup><a id="fnref-17" href="#fn-17">17</a></sup> its $\delta I$(Ω) = 0 for all small variations of the $\varphi^{\alpha}$ between $\sigma_{2}$ and $\sigma_{1}$. This passage to the classical theory is precisely analogous to the passage from wave-optics to geometrical optics when the wave-length of light is allowed to tend to zero. The <a id="ix-283">WKB approximation</a> is gotten by taking $\hbar$ small but not quite zero.
 
-To establish a connection between the Feynman method and the ordinary method of <a id="ix-73">quantization</a>, Feynman has to define what he means by an operator in his formulation. This he does as follows: Let $x$ be any space-time point inside Ω. Let $\mathcal{O} ( x )$ be any field operator defined at $x$, for example $\varphi^{\beta} ( x )$ or $\varphi_{\mu}^{\beta} ( x )$. Then $\mathcal{O} ( x )$ is given a meaning by defining its matrix element between the states $| \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle$ and $| \varphi_{1}^{\prime \alpha} ,\sigma_{1} \rangle$, where $\sigma_{2}$ and $\sigma_{1}$ are any two surfaces to the past and future of $x$. This matrix element is
+To establish a connection between the Feynman method and the ordinary method of <a id="ix-130">quantization</a>, Feynman has to define what he means by an operator in his formulation. This he does as follows: Let $x$ be any space-time point inside Ω. Let $\mathcal{O} ( x )$ be any field operator defined at $x$, for example $\varphi^{\beta} ( x )$ or $\varphi_{\mu}^{\beta} ( x )$. Then $\mathcal{O} ( x )$ is given a meaning by defining its matrix element between the states $| \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle$ and $| \varphi_{1}^{\prime \alpha} ,\sigma_{1} \rangle$, where $\sigma_{2}$ and $\sigma_{1}$ are any two surfaces to the past and future of $x$. This matrix element is
 
 <a id="eq-175"></a>
 
@@ -2850,9 +2850,9 @@ $$
 \langle \varphi_{1}^{\prime \alpha} ,\sigma_{1} \mathcal{O} ( x ) \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = N \sum_{H} \mathcal{O}_{H} ( x ) \exp \left\{ \frac{i}{\hbar} I_{H} ( \Omega ) \right\} \tag{175}
 $$
 
-The number $\mathcal{O} H$ is just the value which the expression $\mathcal{O}$ takes when the $\varphi^{\alpha}$ are given the values which they have in the history $H$. It is easily verified that the definitions (174) and (175) are physically reasonable and give the right formal properties of transition <a id="ix-14">amplitudes</a> and operator matrix elements.
+The number $\mathcal{O} H$ is just the value which the expression $\mathcal{O}$ takes when the $\varphi^{\alpha}$ are given the values which they have in the history $H$. It is easily verified that the definitions (174) and (175) are physically reasonable and give the right formal properties of transition <a id="ix-7">amplitudes</a> and operator matrix elements.
 
-The Feynman method has one fatal drawback: we cannot use it until we have some way of calculating or at least using the sums over histories, and so far nobody has suggested a practical way of doing this. But Schwinger has shown how to derive from the Feynman method an <a id="ix-3">Action</a> Principle formulation of the theory which avoids this difficulty.
+The Feynman method has one fatal drawback: we cannot use it until we have some way of calculating or at least using the sums over histories, and so far nobody has suggested a practical way of doing this. But Schwinger has shown how to derive from the Feynman method an <a id="ix-2">Action</a> Principle formulation of the theory which avoids this difficulty.
 
 ## <a id="s-the-schwinger-action-principle"></a>The Schwinger Action Principle
 
@@ -2905,7 +2905,7 @@ The change in $L$ and in the position of $\sigma$ produces a change in the left 
 
 Hence the net result of the triple variation on the left side of (174) is to give the change in the matrix element $\langle \varphi_{1}^{\alpha \prime \prime} ,\sigma_{1} \varphi_{2}^{\alpha \prime} ,\sigma_{2} \rangle$ if the $\varphi_{1}^{\alpha \prime \prime}$ and $\varphi_{2}^{\alpha \prime}$ are left fixed, the operators $\varphi^{\alpha} ( x )$ on $\sigma_{1}$ and $\sigma_{2}$ being modified in consequence of the variations $\delta L$ and $\delta x_{\mu}$ according to the field equations, and in addition $\varphi^{\alpha} ( x )$ on $\sigma_{1}$ and $\sigma_{2}$ being changed to $\varphi^{\alpha} ( x ) - \delta \varphi^{\alpha} ( x )$.
 
-Schwinger takes equation (177) as the fundamental principle for setting up the quantum theory. Thus he gets rid of the unpleasant $\sum H$. Out of this <a id="ix-4">action</a> principle come very simply all the main features of a quantum field theory, A – G below.
+Schwinger takes equation (177) as the fundamental principle for setting up the quantum theory. Thus he gets rid of the unpleasant $\sum H$. Out of this <a id="ix-3">action</a> principle come very simply all the main features of a quantum field theory, A – G below.
 
 ### <a id="s-a-the-field-equations"></a>A. The Field Equations
 
@@ -2954,11 +2954,11 @@ $$
 i \hbar \frac{d}{dt} \langle \varphi_{1}^{\prime \alpha} ,t_{1} \varphi_{2}^{\prime \alpha} ,t_{2} \rangle = \langle \varphi_{1}^{\prime \alpha} ,t_{1} H ( t_{1} ) \varphi_{2}^{\prime \alpha} ,t_{2} \rangle \tag{180}
 $$
 
-This is the ordinary Schrödinger <a id="ix-231">equation</a> in Dirac’s <a id="ix-75">notation</a>. It shows that the Schwinger <a id="ix-238">action principle</a> contains enough information for predicting the future behaviour of a system given initially in a known quantum state.
+This is the ordinary Schrödinger <a id="ix-263">equation</a> in Dirac’s <a id="ix-89">notation</a>. It shows that the Schwinger <a id="ix-269">action principle</a> contains enough information for predicting the future behaviour of a system given initially in a known quantum state.
 
 ### <a id="s-c-operator-form-of-the-schwinger-principle"></a>C. Operator Form of the Schwinger Principle
 
-Feynman defined operators by giving the formula (175) for their matrix elements between states specified on two different surfaces. The initial state had to be specified in the past, the final state in the future, the operator referring to some particular time which is taken as present.
+<a id="ix-126">Feynman</a> defined operators by giving the formula (175) for their matrix elements between states specified on two different surfaces. The initial state had to be specified in the past, the final state in the future, the operator referring to some particular time which is taken as present.
 
 The usual and generally more useful way of defining operators is to specify their matrix elements between states defined on the same surface. Thus we are interested in a matrix element
 
@@ -3122,7 +3122,7 @@ $$
 
 When $y$ and $z$ are separated by a space-like interval, the commutator is zero, because the disturbance $\mathcal{R} ( z )$ propagates with a velocity at most $c$ and therefore can affect things only in the future lightcone of $z$; this means $\delta_{\mathcal{R}} \mathcal{Q} ( y )$ = 0 in this case.
 
-<a id="ix-148">Peierls</a>’ <a id="ix-145">formula</a>, valid for any pair of field operators, is
+<a id="ix-222">Peierls</a>’ <a id="ix-220">formula</a>, valid for any pair of field operators, is
 
 <a id="eq-194"></a>
 
@@ -3134,9 +3134,9 @@ This is a useful formula for calculating commutators in a covariant way.
 
 ### <a id="s-g-anticommuting-fields"></a>G. Anticommuting Fields
 
-There is one type of field theory which can be constructed easily by Schwinger’s <a id="ix-239">action principle</a>, but which does not come out of Feynman’s picture. Suppose a classical field theory in which a group of field operators $\psi^{\alpha}$ always occurs in the <a id="ix-68">Lagrangian</a> in bilinear combinations like $\overline{\psi}^{\beta} \psi^{\alpha}$ with the group of field operators $\overline{\psi}$. Examples, the Dirac $L_{D}$ and the quantum electrodynamics $L_{Q}$.
+There is one type of field theory which can be constructed easily by Schwinger’s <a id="ix-270">action principle</a>, but which does not come out of <a id="ix-131">Feynman</a>’s picture. Suppose a classical field theory in which a group of field operators $\psi^{\alpha}$ always occurs in the <a id="ix-84">Lagrangian</a> in bilinear combinations like $\overline{\psi}^{\beta} \psi^{\alpha}$ with the group of field operators $\overline{\psi}$. Examples, the Dirac $L_{D}$ and the quantum electrodynamics $L_{Q}$.
 
-Then instead of taking every $\varphi^{\alpha}$ on a given surface $\sigma$ to commute as in (189), we may take every pair of $\psi^{\alpha}$ to <a id="ix-38">anticommute</a>, thus<sup><a id="fnref-20" href="#fn-20">20</a></sup>
+Then instead of taking every $\varphi^{\alpha}$ on a given surface $\sigma$ to commute as in (189), we may take every pair of $\psi^{\alpha}$ to <a id="ix-24">anticommute</a>, thus<sup><a id="fnref-20" href="#fn-20">20</a></sup>
 
 <a id="eq-195"></a>
 
@@ -3205,7 +3205,7 @@ $$
 \sum_{\mu} \frac{\partial^{2}}{\partial x_{\mu}^{2}} A_{\lambda} = \Box^{2} A_{\lambda} = 0 \tag{197}
 $$
 
-Commutation rules for the $A_{\lambda}$: To find these we uses the Peierls method. Take two points $y$ and $z$ with $z_{0} >y_{0}$. Let $\mathcal{Q} ( y ) = A_{\lambda} ( y ) , \mathcal{R} ( z ) = A_{\mu} ( z )$. Note: in this section $x,y,z,k$ etc. are meant to have components 1, 2, 3 and 0, while in $x_{\mu} ,y_{\mu} ,z_{\mu} ,k_{\mu}$, etc. we mean $\mu$ = 1$, 2 ,$ 3 and 4. When $\delta_{\mathcal{Q}} ( L ) = \epsilon \delta^{4} ( x - y ) A_{\lambda} ( y )$ is added to $L_{M}$, the field <a id="ix-232">equation</a> for $A_{\mu}$ becomes
+Commutation rules for the $A_{\lambda}$: To find these we uses the Peierls method. Take two points $y$ and $z$ with $z_{0} >y_{0}$. Let $\mathcal{Q} ( y ) = A_{\lambda} ( y ) , \mathcal{R} ( z ) = A_{\mu} ( z )$. Note: in this section $x,y,z,k$ etc. are meant to have components 1, 2, 3 and 0, while in $x_{\mu} ,y_{\mu} ,z_{\mu} ,k_{\mu}$, etc. we mean $\mu$ = 1$, 2 ,$ 3 and 4. When $\delta_{\mathcal{Q}} ( L ) = \epsilon \delta^{4} ( x - y ) A_{\lambda} ( y )$ is added to $L_{M}$, the field <a id="ix-264">equation</a> for $A_{\mu}$ becomes
 
 <a id="eq-198"></a>
 
@@ -3473,7 +3473,7 @@ $$
 \psi_{1} i \hbar ( - ick_{0} ) a_{k\mu} \psi_{2} = \psi_{1} \hbar c | \boldsymbol{k} | a_{k\mu} \psi_{2} = \psi_{1} \boldsymbol{[} a_{\mu k} ,H \boldsymbol{]} \psi_{2} = ( E_{1} - E_{2} ) \psi_{1} a_{\mu k} \psi_{2} \tag{216}
 $$
 
-Now $\hbar c | \boldsymbol{k} |$ is a constant energy, characteristic of the frequency $\omega = ck$ characteristic of the particular Fourier <a id="ix-95">components</a> of the field. The operator $a_{k\mu}$ can only operate so as to _reduce_ the energy of a system by a lump of energy of this size. In the same way, $\tilde{a}_{k\mu}$ will only operate when
+Now $\hbar c | \boldsymbol{k} |$ is a constant energy, characteristic of the frequency $\omega = ck$ characteristic of the particular Fourier <a id="ix-141">components</a> of the field. The operator $a_{k\mu}$ can only operate so as to _reduce_ the energy of a system by a lump of energy of this size. In the same way, $\tilde{a}_{k\mu}$ will only operate when
 
 $$
 E_{1} - E_{2} = - \hbar c | \boldsymbol{k} |
@@ -3526,7 +3526,7 @@ $$
 \sum_{\mu} ( k_{\mu} a_{k\mu} ) \Psi = 0 \tag{216a}
 $$
 
-for each momentum vector $k$ of a photon.
+for each <a id="ix-209">momentum</a> vector $k$ of a photon.
 
 As a result of this work of Gupta and Bleuler, the supplementary conditions do not come into the practical use of the theory at all. We use the theory and get correct results, forgetting about the supplementary conditions.
 
@@ -3822,7 +3822,7 @@ $$
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p49"><sup>[p. 49]</sup></a>
 
-where 1 and 2 are the two directions of transverse polarization. This shows how the third and fourth polarization directions do not appear in real <a id="ix-189">emission</a> problems. The same result would be obtained if we used the indefinite metric explicitly, i.e.take the sum in (231) over the 4 polarization states $\mu$ = 1$, 2 , 3 , 4 ,$ with the $\mu$ = 4 given a minus sign arising from the $\eta$ in (220c). But it is always simpler to work directly with the covariant formalism, than to bother with the non-physical photon states and then have to use $\eta$ to get the right answers.
+where 1 and 2 are the two directions of transverse polarization. This shows how the third and fourth polarization directions do not appear in real <a id="ix-240">emission</a> problems. The same result would be obtained if we used the indefinite metric explicitly, i.e.take the sum in (231) over the 4 polarization states $\mu$ = 1$, 2 , 3 , 4 ,$ with the $\mu$ = 4 given a minus sign arising from the $\eta$ in (220c). But it is always simpler to work directly with the covariant formalism, than to bother with the non-physical photon states and then have to use $\eta$ to get the right answers.
 
 Finally, the emission probability in direction of polarization 1 and in direction of propagation given by the solid angle $d$Ω is, using (232), (232a), and $\delta ( | \boldsymbol{k} |^{2} - q^{2} ) = \frac{1}{2 q} \delta ( | \boldsymbol{k} |- q )$ for $q>$ 0
 
@@ -3884,7 +3884,7 @@ $$
 N_{k\lambda} = \tilde{a}_{k\lambda} a_{k\lambda} \quad ( \text{ not summed } )
 $$
 
-is an operator just representing the number of quanta in the frequency $k$ and polarization $\lambda$. It follows at once from the commutation rules (213), from the singular $\delta$-function factor which comes from the continuous spectrum, $N_{k\lambda}$ being in fact the number of quanta per unit frequency range, that $\int N_{k\lambda} d^{3} \boldsymbol{k}$ integrated over _any_ region of momentum-space has the integer eigenvalues 0, 1, 2, $\dots$ . This is so, because the state with $n_{i}$ particles with momentum $k_{i}$ is Ψ = $\prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}}$Ψ$o$. Then
+is an operator just representing the number of quanta in the frequency $k$ and polarization $\lambda$. It follows at once from the commutation rules (213), from the singular $\delta$-function factor which comes from the continuous spectrum, $N_{k\lambda}$ being in fact the number of quanta per unit frequency range, that $\int N_{k\lambda} d^{3} \boldsymbol{k}$ integrated over _any_ region of momentum-space has the integer eigenvalues 0, 1, 2, $\dots$ . This is so, because the state with $n_{i}$ particles with <a id="ix-210">momentum</a> $k_{i}$ is Ψ = $\prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}}$Ψ$o$. Then
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p50"><sup>[p. 50]</sup></a>
@@ -4007,7 +4007,7 @@ $$
 
 There will also be a (much bigger) addition to kinetic energy, arising from the fluctuations. We ignore this on the grounds that it will be the same for all atomic states and so will not give any relativistic displacement. Of course this is not a good argument.
 
-Hence we find the first approximation to the <a id="ix-123">Lamb shift</a>; the 2$s$ state is shifted relative to the 2$p$ states by
+Hence we find the first approximation to the <a id="ix-160">Lamb shift</a>; the 2$s$ state is shifted relative to the 2$p$ states by
 
 $$
 \Delta E = + \frac{e^{4} \hbar}{9 6 \pi^{3} m^{2} c^{3} a_{o}^{3}} \log \frac{1}{RK_{H}}
@@ -4070,7 +4070,7 @@ $$
 H = H_{A} + H_{M} + H_{I}^{S} \tag{242}
 $$
 
-where $H_{A}$ is the Hamiltonian operator for the atom, and $H_{M}$ that for the Maxwell field without interaction. $H_{M}$ is given by (234a), and in quantum electrodynamics according to (170)
+where $H_{A}$ is the Hamiltonian operator for the atom, and $H_{M}$ that for the Maxwell field without interaction. $H_{M}$ is given by (234a), and in quantum <a id="ix-110">electrodynamics</a> according to (170)
 
 <a id="eq-243"></a>
 
@@ -4137,9 +4137,9 @@ i. e., the time variation of $A_{\mu} ( r,t )$ is the same as that of $A_{\mu} (
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p54"><sup>[p. 54]</sup></a>
 
-### <a id="s-application-of-interaction-representation-to-line-shift-and-line-width"></a>The Application of the Interaction <a id="ix-235">Representation</a> to the Theory of Line-Shift and Line-Width
+### <a id="s-application-of-interaction-representation-to-line-shift-and-line-width"></a>The Application of the Interaction <a id="ix-266">Representation</a> to the Theory of Line-Shift and Line-Width
 
-Consider the solution of Eq. (245) in which the atom is given initially in a stationary unperturbed state $O$ with energy $E_{o}$, the <a id="ix-188">Maxwell</a> <a id="ix-178">field</a> being in the vacuum state, with no photons present. Let Φ$o$ be the interaction representation <a id="ix-236">wave-function</a> representing the atom in state $O$ and the Maxwell field in the vacuum state, without interaction. Φ$o$ is independent of time.
+Consider the solution of Eq. (245) in which the atom is given initially in a stationary unperturbed state $O$ with energy $E_{o}$, the Maxwell <a id="ix-189">field</a> being in the vacuum state, with no photons present. Let Φ$o$ be the interaction representation <a id="ix-267">wave-function</a> representing the atom in state $O$ and the Maxwell field in the vacuum state, without interaction. Φ$o$ is independent of time.
 
 The initial condition Φ$( t )$ = Φ$o$ at time $t = t_{o}$ is a physically unreal one. It would mean putting the atom into existence at time 0 without any radiation field being excited at this time. This we cannot do physically. In fact the initial condition for an atom in an excited state will depend on how it got into the excited state. This cannot be formulated in a simple way: one needs a complicated model in order to describe the initial excitation of the atom.
 
@@ -4270,7 +4270,7 @@ $$
 \Gamma = \frac{1}{8 \pi^{2} c} \int \frac{d^{3} \boldsymbol{k}}{| \boldsymbol{k} |} \sum_{n,\mu} | j_{\mu}^{k} ( n, 0 ) |^{2} \delta ( E_{n} - E_{0} + \hbar c | \boldsymbol{k} | ) \tag{262}
 $$
 
-These are independent of $t$. Therefore the <a id="ix-15">amplitude</a> of the state Φ$o$ in the wave-function Φ$( t )$ is given for all $t \gg t_{o}$ by
+These are independent of $t$. Therefore the <a id="ix-8">amplitude</a> of the state Φ$o$ in the wave-function Φ$( t )$ is given for all $t \gg t_{o}$ by
 
 <a id="eq-263"></a>
 
@@ -4278,7 +4278,7 @@ $$
 a ( t ) = ( \Phi_{o}^{*} \Phi ( t ) ) = \exp \left\{ - \frac{i}{\hbar} \Delta E ( t - t_{o} ) - \frac{1}{2} \Gamma ( t - t_{o} ) \right\} \tag{263}
 $$
 
-The state Φ$o$, as a result of the perturbation by the radiation field, has its energy shifted by ∆$E$, and decays exponentially like
+The state Φ$o$, as a result of the perturbation by the radiation <a id="ix-196">field</a>, has its energy shifted by ∆$E$, and decays exponentially like
 
 $$
 | a ( t ) |^{2} = e^{- \Gamma ( t - t_{o} )} \quad ( 2 6 3 / a )
@@ -4370,7 +4370,7 @@ These formulae (270) and (271) are important in interpreting the modern radio-fr
 
 ### <a id="s-calculation-of-line-shift-non-relativistic-theory"></a>Calculation of Line-Shift, Non-Relativistic Theory
 
-In all atomic systems, the line widths are finite and easily calculated from the known transition amplitudes. For this, non-relativistic theory is accurate enough for all purposes. The line-shift (261) is much more difficult, and non-relativistic theory is not accurate enough to handle it properly. Still we shall calculate (261) using the NR theory, to see what it gives. It turns out to give quite a lot that is interesting.
+In all atomic systems, the line widths are finite and easily calculated from the known <a id="ix-248">transition</a> amplitudes. For this, non-relativistic theory is accurate enough for all purposes. The line-shift (261) is much more difficult, and non-relativistic theory is not accurate enough to handle it properly. Still we shall calculate (261) using the NR theory, to see what it gives. It turns out to give quite a lot that is interesting.
 
 First, in a NR calculation we use the dipole approximation which we also used to derive (234). Supposing a one-electron atom, the electron having mass $m$ and charge $- e$, we put
 
@@ -4431,9 +4431,9 @@ $$
 - \frac{1}{6 \pi^{2}} \frac{e^{2}}{c^{2}} \int \left( \tfrac{\infty}{0} d | \boldsymbol{k} | \right) \left\langle \boldsymbol{p}^{2} \right\rangle_{oo} \tag{276}
 $$
 
-expresses only the effect of the mass-change $\delta m$ on the kinetic energy of the bound electron; this part is already included in the kinetic energy of the electron, when the observed mass $( m + \delta m )$ is taken for the mass in the formula $( \boldsymbol{p}^{2} / 2 m )$. Therefore the part (276) has to be subtracted from (273), to give the observable <a id="ix-154">line-shift</a>. The subtraction just cancels out the error that was made in identifying the mass $m$ of a “bare” electron without electromagnetic interaction with the observed electronic mass.
+expresses only the effect of the mass-change $\delta m$ on the kinetic energy of the bound electron; this part is already included in the kinetic energy of the electron, when the observed mass $( m + \delta m )$ is taken for the mass in the formula $( \boldsymbol{p}^{2} / 2 m )$. Therefore the part (276) has to be subtracted from (273), to give the observable <a id="ix-228">line-shift</a>. The subtraction just cancels out the error that was made in identifying the mass $m$ of a “bare” electron without electromagnetic interaction with the observed electronic mass.
 
-The idea of this <a id="ix-171">mass-renormalization</a> is that, although the “bare” mass $m$ appears in the original description of the atom without radiation field, all the final results of the theory should depend only on the physically observable $m + \delta m$. The idea is originally due to Kramers <a id="refback-16-1"></a>[[16]](#ref-16), developed by Bethe (_Phys. Rev._ **72** (1947) 339.)
+The idea of this <a id="ix-184">mass-renormalization</a> is that, although the “bare” mass $m$ appears in the original description of the atom without radiation field, all the final results of the theory should depend only on the physically observable $m + \delta m$. The idea is originally due to Kramers <a id="refback-16-1"></a>[[16]](#ref-16), developed by Bethe (_Phys. Rev._ **72** (1947) 339.)
 
 Subtracting (276) from (273) gives the physically observable line-shift
 
@@ -4518,7 +4518,7 @@ $$
 
 Compare this with (239). It differs only in having the log$( K/ ( E - E_{o} )_{\text{ av }} )$ replacing log(1$/RK_{H} )$. The low frequency photons have now been treated properly instead of being estimated. Only the high-frequency end is still inaccurate because of the vagueness of the cut-off $K$. Taking $K = mc^{2}$, (284) gives for the Lamb shift 2$s - 2 p$ the value _1040 Megacycles_. Remarkably close to the experimental value of 1062.
 
-The success of this calculation of the line shift shows that the correct treatment of the interaction between an electron and the Maxwell field, with the help of the idea of mass renormalization, will give sensible results in agreement with experiment. This calculation could be done non-relativistically because the line shift is mainly a low-frequency and non-relativistic effect.
+The success of this calculation of the line shift shows that the correct treatment of the interaction between an <a id="ix-106">electron</a> and the Maxwell field, with the help of the idea of mass renormalization, will give sensible results in agreement with experiment. This calculation could be done non-relativistically because the line shift is mainly a low-frequency and non-relativistic effect.
 
 There are other effects of the radiation interaction, especially the anomalous increase in the observed magnetic moment of the electron by a factor $( ) 1$ + $\frac{\alpha}{2 \pi} ( )$ over the value given by the Dirac theory, which are essentially relativistic in character. For studying these effects, and for calculating the Lamb shift accurately without an arbitrary cut-off, we need to use a complete relativistic quantum electrodynamics, in which both electrons and the Maxwell field are handled relativistically.
 
@@ -4540,7 +4540,7 @@ $$
 L_{o} = - \hbar c \overline{\psi} \left( \sum_{\lambda} \gamma_{\lambda} \frac{\partial}{\partial x_{\lambda}} + \mu \right) \psi \tag{285}
 $$
 
-Note the factor $\hbar$ here. This means that the theory has no classical limit in the sense of the Correspondence Principle. In the classical limit, only charges and currents composed of many particles have any meaning; the $\psi$ field disappears entirely from view. The $\hbar$ has to be put into (285) to make the dimensions right, since $\left( \overline{\psi} \psi \right)$ has dimensions (1/Volume) just as in the 1-particle Dirac theory of which this is an extension. <a id="ix-179">Field</a> equations
+Note the factor $\hbar$ here. This means that the theory has no classical limit in the sense of the Correspondence Principle. In the classical limit, only charges and currents composed of many particles have any meaning; the $\psi$ field disappears entirely from view. The $\hbar$ has to be put into (285) to make the dimensions right, since $\left( \overline{\psi} \psi \right)$ has dimensions (1/Volume) just as in the 1-particle Dirac theory of which this is an extension. <a id="ix-190">Field</a> equations
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p60"><sup>[p. 60]</sup></a>
@@ -4567,7 +4567,7 @@ $$
 
 ### <a id="s-covariant-commutation-rules"></a>Covariant Commutation Rules
 
-We proceed as for the <a id="ix-192">Maxwell</a> field. Take two points $z$ and $y$ with $z_{0} >y_{0}$. Let
+We proceed as for the Maxwell field. Take two points $z$ and $y$ with $z_{0} >y_{0}$. Let
 
 <a id="eq-288"></a>
 
@@ -4612,7 +4612,7 @@ $$
 \delta_{\mathcal{Q}} \psi ( z ) = - \frac{1}{\hbar c} S_{R} ( z - y ) u \tag{292}
 $$
 
-Then $S_{R} ( x )$ is a c-number Dirac matrix function of x, satisfying
+Then $S_{R} ( x )$ is a c-number <a id="ix-57">Dirac</a> matrix function of x, satisfying
 
 <a id="eq-293"></a>
 
@@ -4633,7 +4633,7 @@ $$
 \begin{aligned} \delta_{\mathcal{R}} \psi ( y ) &= - \frac{1}{\hbar c} \overline{v} S_{A} ( z - y ) \\ \delta_{\mathcal{R}} \psi ( y ) &= 0 \end{aligned} \tag{294}
 $$
 
-where $S_{A} ( x )$ is the <a id="ix-139">Dirac</a> matrix satisfying
+where $S_{A} ( x )$ is the <a id="ix-60">Dirac</a> matrix satisfying
 
 <a id="eq-295"></a>
 
@@ -4643,7 +4643,7 @@ $$
 
 Finally, if we had chosen $\mathcal{Q} = \overline{u} \psi ( y )$ we should have had $\delta_{\mathcal{Q}} \psi ( z )$ = 0 in the same way.
 
-Hence using the Peierls commutation law (194) with (292) and (294) we find
+Hence using the <a id="ix-221">Peierls</a> commutation law (194) with (292) and (294) we find
 
 <a id="eq-296"></a>
 
@@ -4728,7 +4728,7 @@ $$
 S ( x ) = \frac{1}{( 2 \pi )^{3}} \int e^{ik \cdot x} ( k / + i\mu ) \delta ( k^{2} + \mu^{2} ) \epsilon ( k ) d^{4} k \tag{305}
 $$
 
-Note the projection operator Λ$+$ appearing here, as defined by (115) with the momentum $p = \hbar k$. Thus the $S$-function distinguishes automatically between the electron states $k_{0}$ = +$\sqrt{| \boldsymbol{k} |^{2} + \mu^{2}}$ and the positron states $k_{0} = - \sqrt{| \boldsymbol{k} |^{2} + \mu^{2}}$
+Note the projection operator Λ$+$ appearing here, as defined by (115) with the <a id="ix-211">momentum</a> $p = \hbar k$. Thus the $S$-function distinguishes automatically between the electron states $k_{0}$ = +$\sqrt{| \boldsymbol{k} |^{2} + \mu^{2}}$ and the positron states $k_{0} = - \sqrt{| \boldsymbol{k} |^{2} + \mu^{2}}$
 
 ### <a id="s-fourier-analysis-of-operators-2"></a>Fourier Analysis of Operators
 
@@ -4807,7 +4807,7 @@ be the energy of an electron or a positron with momentum $\hbar k$. We apply the
 
 <div align="center">
 
-$b_{ku}$ for electron <a id="ix-163">states</a> $u$<br>
+$b_{ku}$ for electron <a id="ix-231">states</a> $u$<br>
 $b_{ku}^{*}$ for positron states $u$
 
 </div>
@@ -4865,7 +4865,7 @@ $$
 
 ### <a id="s-charge-symmetrical-representation"></a>Charge-Symmetrical Representation
 
-We use the charge-<a id="ix-119">conjugate</a> field $\varphi$ defined by (51), in order to put the whole theory into a form where there is complete symmetry between electrons and positrons. This symmetry is known as the charge-symmetry of the theory.
+We use the charge-<a id="ix-157">conjugate</a> field $\varphi$ defined by (51), in order to put the whole theory into a form where there is complete symmetry between electrons and positrons. This symmetry is known as the charge-symmetry of the theory.
 
 Let $k$ be given, and a spinor $u$ satisfying (308), representing a positron state. We represent the positron state alternatively by the charge conjugate spinor
 
@@ -4908,11 +4908,11 @@ $$
 \begin{aligned} \{ b_{ku} ,b_{k^{\prime} u^{\prime}}^{*} \} &= \delta^{3} ( \boldsymbol{k} - \boldsymbol{k}^{\prime} ) \delta_{uu^{\prime}} \\ \left\{ b_{kv}^{C} ,b_{k^{\prime} v^{\prime}}^{* C} \right\} &= \delta^{3} ( \boldsymbol{k} - \boldsymbol{k}^{\prime} ) \delta_{vv^{\prime}} \\ \left\{ b_{kv^{\prime}}^{C} ,b_{ku}^{*} \right\} &= 0 , \quad \text{ etc } . \end{aligned} \tag{318a}
 $$
 
-These are also symmetrical between electron and positron.
+These are also symmetrical between <a id="ix-103">electron</a> and <a id="ix-227">positron</a>.
 
 ### <a id="s-the-hamiltonian"></a>The Hamiltonian
 
-The Hamiltonian $H$ has commutation rules with the emission and absorption operators as for the Maxwell <a id="ix-180">field</a>. These rules come straight from the Heisenberg equations of motion for $\psi$ and $\varphi$. For any electron state $u$ or positron $v$
+The Hamiltonian $H$ has commutation rules with the emission and absorption operators as for the Maxwell <a id="ix-191">field</a>. These rules come straight from the Heisenberg equations of motion for $\psi$ and $\varphi$. For any electron state $u$ or positron $v$
 
 <a id="eq-319"></a>
 
@@ -4973,7 +4973,7 @@ $$
 
 Given any state Ψ, the result of creating _two_ electrons with frequency $k$ and spin $u$ in that state is $b_{ku}^{*} b_{ku}^{*}$Ψ = 0. Thus there are no states in which two electrons have the same momentum and spin. So we have the Pauli exclusion principle valid for both electrons and positrons. Also, an electron and a positron do not exclude each other.
 
-It is a very great success of the general <a id="ix-181">field</a> theory, that it has given us the Pauli principle automatically, not by special hypothesis as in the old particle theory of electrons.<sup><a id="fnref-45" href="#fn-45">45</a></sup>
+It is a very great success of the general <a id="ix-192">field</a> theory, that it has given us the Pauli principle automatically, not by special hypothesis as in the old particle theory of electrons.<sup><a id="fnref-45" href="#fn-45">45</a></sup>
 
 The most general state of the fields is described by specifying for each electron and positron state the number of particles occupying it. This number in each case can take just the two values 0 and 1.
 
@@ -5062,7 +5062,7 @@ $$
 S^{-} ( x ) = - \frac{1}{( 2 \pi )^{3}} \int e^{ik \cdot x} ( k / + i\mu ) \delta ( k^{2} + \mu^{2} ) \Theta ( - k ) d^{4} k \tag{330a}
 $$
 
-These results for the Dirac theory without electromagnetic interaction will be used a lot when we come to the complete quantum electrodynamics with both Dirac and Maxwell fields quantized. Meanwhile, we should say a little about the theory of quantized Dirac particles in a given c-number Maxwell field.
+These results for the <a id="ix-82">Dirac</a> theory without electromagnetic interaction will be used a lot when we come to the complete quantum electrodynamics with both Dirac and Maxwell fields quantized. Meanwhile, we should say a little about the theory of quantized Dirac particles in a given c-number Maxwell field.
 
 ## <a id="s-iii-field-theory-of-dirac-electron-in-external-field"></a>III. Field Theory of Dirac Electron in External Field
 
@@ -5102,7 +5102,7 @@ $$
 
 Beyond this point not much can be done with the theory for general time-dependent potentials $A_{\mu}^{e}$. In practice when we have time-dependent $A_{\mu}^{e}$ we always use perturbation theory starting from free field formalism, assuming the $A_{\mu}^{e}$ to be small, or else use special tricks for particular problems.
 
-The important practical cases in which the $A_{\mu}^{e}$ are not small are always those in which the $A_{\mu}^{e}$ are _time-independent_ in a particular <a id="ix-155">Lorentz</a> system. Examples: electrons bound in atoms by static Coulomb forces, electrons moving in constant macroscopic electric and magnetic fields.
+The important practical cases in which the $A_{\mu}^{e}$ are not small are always those in which the $A_{\mu}^{e}$ are _time-independent_ in a particular Lorentz system. Examples: electrons bound in atoms by static Coulomb forces, electrons moving in constant macroscopic electric and magnetic fields.
 
 So we assume $A_{\mu}^{e} = A_{\mu}^{e} ( r )$ time-independent. We also assume the $A_{\mu}^{e}$ to be physically well-behaved so that the stationary eigenvalue equation
 
@@ -5129,7 +5129,7 @@ The time-independent potentials make the problem essentially non-covariant, and 
 
 than the free-particle theory, where the normalization of continuous levels was done at every stage accurately; the simplicity is only apparent, because we shall just be ignoring the complications arising from continuous levels.
 
-The general solution of the <a id="ix-182">field</a> equations (332) is
+The general solution of the <a id="ix-193">field</a> equations (332) is
 
 <a id="eq-337"></a>
 
@@ -5226,7 +5226,7 @@ $$
 \{ b_{n}^{*} ,\psi ( r,t ) \} = \psi_{n} ( r ) \exp \left\{ - i \frac{E_{n}}{\hbar} t \right\} \tag{345}
 $$
 
-because by assumption the $u$’s <a id="ix-39">anticommute</a> with the $\psi$’s. The time $t_{o}$ no longer appears in (345), checking the consistency of the method.
+because by assumption the $u$’s <a id="ix-25">anticommute</a> with the $\psi$’s. The time $t_{o}$ no longer appears in (345), checking the consistency of the method.
 
 Multiplying (345) by $\psi_{n}^{*} ( r^{\prime} )$ exp$\{- iE_{n} t^{\prime} / \hbar \}$ and summing over $n$, we have<sup><a id="fnref-47" href="#fn-47">47</a></sup>
 
@@ -5250,7 +5250,7 @@ which is identical to (311) in the case of free particles when normalizations ar
 
 ### <a id="s-the-hamiltonian-2"></a>The Hamiltonian
 
-As before, the $b_{n +}$ are absorption operators for electrons and the $b_{n -}^{*}$ absorption operators for positrons, only the electrons and positrons being defined by the bound <a id="ix-81">wave-functions</a>. The vacuum state Ψ$o$ is given by
+As before, the $b_{n +}$ are absorption operators for electrons and the $b_{n -}^{*}$ absorption operators for positrons, only the electrons and positrons being defined by the bound <a id="ix-91">wave-functions</a>. The vacuum state Ψ$o$ is given by
 
 <a id="eq-348"></a>
 
@@ -5258,7 +5258,7 @@ $$
 b_{n +} \Psi_{0} = 0 \quad b_{n -}^{*} \Psi_{0} = 0 \tag{348}
 $$
 
-And the total Hamiltonian of the <a id="ix-160">system</a>, in order to give the correct commutators with the $b_{n}$ and the $b_{n}^{*}$ and also to have zero expectation value in the vacuum, is
+And the total Hamiltonian of the <a id="ix-178">system</a>, in order to give the correct commutators with the $b_{n}$ and the $b_{n}^{*}$ and also to have zero expectation value in the vacuum, is
 
 <a id="eq-349"></a>
 
@@ -5348,7 +5348,7 @@ $$
 M = ( \Psi_{o}^{*} ,b_{4} b_{3} Vb_{1}^{*} b_{2}^{*} \Psi_{o} ) \tag{356}
 $$
 
-Expanding $V$ by (337) into a sum of products of $b_{n}$ and $b_{n}^{*}$, a contribution to (356) will come only from the 4 terms in $V$ proportional to $b_{1} b_{2} b_{3}^{*} b_{4}^{*}$. Using the <a id="ix-40">anticommutation</a> rules, we have
+Expanding $V$ by (337) into a sum of products of $b_{n}$ and $b_{n}^{*}$, a contribution to (356) will come only from the 4 terms in $V$ proportional to $b_{1} b_{2} b_{3}^{*} b_{4}^{*}$. Using the <a id="ix-26">anticommutation</a> rules, we have
 
 <a id="eq-357"></a>
 
@@ -5373,7 +5373,7 @@ The field theory thus gives the full force of the Fermi statistics for electrons
 
 ### <a id="s-polarization-of-the-vacuum"></a>Polarization of the Vacuum
 
-Because of the possibility of exciting the vacuum by creating a positron-electron pair, the vacuum behaves like a dielectric, just as a solid has dielectric properties in virtue of the possibility of its atoms being excited to excited states by Maxwell radiation. This effect does not depend on the quantizing of the Maxwell field, so we calculate it using classical fields.
+Because of the possibility of exciting the vacuum by creating a <a id="ix-229">positron</a>-electron pair, the vacuum behaves like a dielectric, just as a solid has dielectric properties in virtue of the possibility of its atoms being excited to excited states by Maxwell radiation. This effect does not depend on the quantizing of the Maxwell field, so we calculate it using classical fields.
 
 Like a real solid dielectric, the vacuum is both non-linear and dispersive, i.e. the dielectric constant depends on the field intensity and on the frequency. And for sufficiently high frequencies and field intensities it has a complex dielectric constant, meaning it can absorb energy from the Maxwell field by real creation of pairs.
 
@@ -5464,7 +5464,7 @@ This is a highly divergent integral and is mathematically meaningless. This is o
 
 However there is no doubt that correct physical results are obtained by putting $\langle j_{\mu} ( x ) \rangle_{o}$ = 0 simply. There are two good reasons for doing this.
 
-(1) Physical. $\langle j_{\mu} ( x ) \rangle_{o}$, being the expectation value of the charge-current in the vacuum in the absence of all external fields, is known to be zero experimentally. Therefore if we calculated $\langle j_{\mu} ( x ) \rangle_{o}$ and found it were not zero we should simply define the current operator to be $j_{\mu} - \langle j_{\mu} \rangle_{o}$. With this definition the expectation value would become zero automatically.
+(1) Physical. $\langle j_{\mu} ( x ) \rangle_{o}$, being the expectation value of the charge-current in the vacuum in the absence of all external <a id="ix-195">fields</a>, is known to be zero experimentally. Therefore if we calculated $\langle j_{\mu} ( x ) \rangle_{o}$ and found it were not zero we should simply define the current operator to be $j_{\mu} - \langle j_{\mu} \rangle_{o}$. With this definition the expectation value would become zero automatically.
 
 (2) Mathematical. $\langle j_{\mu} ( x ) \rangle_{o}$ as we have calculated it is a vector, each component of which is a number quite independent of the coordinate system. There does not exist such a vector invariant under Lorentz transformations, except for this zero vector. Therefore $\langle j_{\mu} ( x ) \rangle_{o}$ = 0 is the only assumption we _can_ make which would keep the theory invariant.
 
@@ -5556,7 +5556,7 @@ $$
 \langle j_{\nu H} ( x ) \rangle_{o} = \frac{ie^{2}}{( 2 \pi )^{4} \hbar} e^{iq \cdot x + \delta_{0} x_{0}} \int_{C} F_{\nu} ( k ) dk \tag{374}
 $$
 
-where $\int C$ means a contour integral in the $k_{0}$ plane drawn as shown in the diagram, going from $-\infty$ to +$\infty$ below the two poles (373) and above the other two poles, and including the upper semicircle of the $k_{0}$ plane at infinity. So long as $\delta_{0} >$ 0 the poles are always clearly separated from each other. Now the calculation really starts, with the evaluation of this integral (374). This will be typical of all the calculations which have to be done in <a id="ix-216">quantum electrodynamics</a> using the modern methods.
+where $\int C$ means a contour integral in the $k_{0}$ plane drawn as shown in the diagram, going from $-\infty$ to +$\infty$ below the two poles (373) and above the other two poles, and including the upper semicircle of the $k_{0}$ plane at infinity. So long as $\delta_{0} >$ 0 the poles are always clearly separated from each other. Now the calculation really starts, with the evaluation of this integral (374). This will be typical of all the calculations which have to be done in <a id="ix-253">quantum electrodynamics</a> using the modern methods.
 
 ### <a id="s-calculation-of-momentum-integrals"></a>Calculation of Momentum Integrals
 
@@ -5608,7 +5608,7 @@ $$
 J_{\nu} = 4 \int_{0}^{1} dz \int_{C} dk \frac{e_{\nu} \{- \tfrac{1}{2} k^{2} - \mu^{2} + ( z - z^{2} ) q^{2} \}- 2 ( z - z^{2} ) ( e \cdot q ) q_{\nu}}{\{ k^{2} + \mu^{2} + ( z - z^{2} ) q^{2} \}^{2}} \tag{379}
 $$
 
-This integral is still badly divergent. So we again use a physical argument to give a definite value to the most divergent part of it. The current operator both in interaction and in Heisenberg <a id="ix-128">representation</a> must satisfy
+This integral is still badly divergent. So we again use a physical argument to give a definite value to the most divergent part of it. The current operator both in interaction and in Heisenberg <a id="ix-212">representation</a> must satisfy
 
 <a id="eq-380"></a>
 
@@ -5736,7 +5736,7 @@ $$
 
 The four dimensional volume element is (see (385)) $d\xi_{1} d\xi_{2} d\xi_{3} d\xi_{4}$ = 2$\pi^{2} r^{3} dr$ in four dimensional polar coordinates. To show this, we denote the surface of a $p$ dimensional unit sphere by $\omega$. Then the surface of a $p$ dimensional sphere of radius $R$ is $R^{p - 1} \omega$, and hence the volume element in polar coordinates is $\omega R^{p - 1} dR$.
 
-To calculate the value of $\omega$, we compute the $p$ dimensional Laplace <a id="ix-126">integral</a> in Cartesian and polar coordinates. We have
+To calculate the value of $\omega$, we compute the $p$ dimensional Laplace <a id="ix-207">integral</a> in Cartesian and polar coordinates. We have
 
 $$
 J = \int \int \dots \int \exp \left\{ - \sum_{i = 1}^{p} \xi_{i}^{2} \right\} d\xi_{1} d\xi_{2} \dots d\xi_{p} = \left( \sqrt{\pi} \right)^{p}
@@ -5878,7 +5878,7 @@ $$
 w = \frac{\overline{E}}{\hbar cq_{0}} = - \frac{\alpha ( e^{2} ) ( q^{2} )}{8 \hbar} \int_{0}^{- 4 \mu^{2} /q^{2}} \frac{zdz}{\sqrt{1 - z}} \tag{403}
 $$
 
-The result could of course have been found more easily by elementary methods. The thing I want to stress here is that the elementary real pair-creation processes are necessarily tied up with the less elementary <a id="ix-218">vacuum-polarization</a> effect given by the $A$ term in (398), and the $A$ term will exist whether or not real pair production is possible. The situation is quite the same as the tying up of the elementary line-width effect in atomic spectra with the less elementary line-shifts; we discussed these effects in detail earlier. Therefore we have quite as much reason to take seriously the vacuum-polarization effect given by the in-phase current in (396), as we have to take seriously the Lamb shift itself. Because physicists were unwilling to take these two effects seriously, physics was held up for quite a number of years.
+The result could of course have been found more easily by elementary methods. The thing I want to stress here is that the elementary real pair-creation processes are necessarily tied up with the less elementary <a id="ix-279">vacuum-polarization</a> effect given by the $A$ term in (398), and the $A$ term will exist whether or not real pair production is possible. The situation is quite the same as the tying up of the elementary line-width effect in atomic spectra with the less elementary line-shifts; we discussed these effects in detail earlier. Therefore we have quite as much reason to take seriously the vacuum-polarization effect given by the in-phase current in (396), as we have to take seriously the Lamb shift itself. Because physicists were unwilling to take these two effects seriously, physics was held up for quite a number of years.
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p78"><sup>[p. 78]</sup></a>
@@ -5907,7 +5907,7 @@ $$
 \langle j_{\nu H} ( x ) \rangle_{o} = - \frac{\alpha}{1 5 \pi \mu^{2}} \left\{ \Box^{2} j_{\nu R} ( x ) \right\} \tag{405}
 $$
 
-Consider the effect of (405) in the case of the hydrogen atom. The proton<sup><a id="fnref-54" href="#fn-54">54</a></sup> is represented by the static <a id="ix-220">charge</a>-density $\rho_{P} ( r )$, and this induces a charge in the vacuum whose density is
+Consider the effect of (405) in the case of the hydrogen atom. The proton<sup><a id="fnref-54" href="#fn-54">54</a></sup> is represented by the static <a id="ix-255">charge</a>-density $\rho_{P} ( r )$, and this induces a charge in the vacuum whose density is
 
 <a id="eq-406"></a>
 
@@ -5957,7 +5957,7 @@ The result (409) was calculated many years ago by Uehling <a id="refback-17-1"><
 
 ### <a id="s-the-complete-relativistic-quantum-electrodynamics"></a>The Complete Relativistic Quantum Electrodynamics
 
-We now take the combined system of Dirac and Maxwell fields in interaction, and make out of it a relativistic quantum theory using the methods we have already developed. This will then be the complete theory of quantum electrodynamics, applicable to all problems in which electrons, positrons and photons are concerned. We also include in the theory a classical <a id="ix-191">Maxwell</a> field, which
+We now take the combined system of Dirac and Maxwell fields in interaction, and make out of it a relativistic quantum theory using the methods we have already developed. This will then be the complete theory of quantum electrodynamics, applicable to all problems in which electrons, positrons and photons are concerned. We also include in the theory a classical Maxwell field, which
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p79"><sup>[p. 79]</sup></a>
@@ -6031,7 +6031,7 @@ Using the BIR we can discuss the radiation of light by an atom, as it was done b
 
 ### <a id="s-free-interaction-representation"></a>Free Interaction Representation
 
-Here we take all field operators $\overline{\psi} , \psi$ and $A_{\mu}$ to satisfy the free field equations (286) and (414). The commutation rules are then also given by the free-field formulae (203) and (298), (299). The wave-function satisfies the Schrödinger equation
+Here we take all <a id="ix-79">field</a> operators $\overline{\psi} , \psi$ and $A_{\mu}$ to satisfy the free field equations (286) and (414). The commutation rules are then also given by the free-field formulae (203) and (298), (299). The wave-function satisfies the Schrödinger equation
 
 <a id="eq-417"></a>
 
@@ -6047,7 +6047,7 @@ $$
 
 with $H_{R}$ formally again given by (416). But here $H_{R}$ is not the same operator as in (415) because of the time-dependence of the $\overline{\psi}$ and $\psi$ in the two cases.
 
-This FIR is the interaction representation normally used in <a id="ix-144">quantum electrodynamics</a>, and will be called henceforth the Interaction Representation or IR simply. It is very well suited to relativistic calculations because it makes the field-commutators and expectation values invariant functions. Thus the calculations can be explicitly and formally invariant, even when the <a id="ix-193">potentials</a> $A_{\nu}^{e}$ are given in a special Lorentz frame as in the hydrogen atom.
+This FIR is the interaction representation normally used in <a id="ix-170">quantum electrodynamics</a>, and will be called henceforth the Interaction Representation or IR simply. It is very well suited to relativistic calculations because it makes the field-commutators and expectation values invariant functions. Thus the calculations can be explicitly and formally invariant, even when the <a id="ix-197">potentials</a> $A_{\nu}^{e}$ are given in a special Lorentz frame as in the hydrogen atom.
 
 It was Schwinger and Feynman who first discovered the importance of making calculations formally invariant when using a relativistic theory. They made this discovery in completely different ways, characteristically. Feynman simply found that the calculations become much easier and simpler when done in a way which did not conceal the invariance of the theory. This is still true, in fact the main reason why we can tackle now more difficult problems than we could 10 years ago is just that the calculations with the new methods are so much shorter. But the greater and essential advantage of the covariant calculations, pointed out by Schwinger, is that they enable the separation of finite observable effects from infinite renormalization terms to be made in a clear and unambiguous way. We had an example of this in the treatment we gave of vacuum polarization, where the covariant type of calculation was used. The divergent term (382) could be separated clearly from (379), because of the way in which (379) depends formally on the vectors $e_{\nu}$ and $q_{\nu}$. If the calculation had been done in a non-covariant way we could not have used (381) as we did.
 
@@ -6160,7 +6160,7 @@ because the expression $( z - z^{2} )$ is symmetric about $z = \tfrac{1}{2}$.
 
 In this extensive class of problems we are interested in calculating the over-all transition matrix element $M$ between an initial state $A$ and a final state $B , A$ and $B$ being specified by assigning the spins and momenta of the free particles which are present in these states. The scattering process is supposed to occur as follows: The free particles which are specified by state $A$ in the remote past, converge and interact, and other free particles emerge or are created in the interaction and finally constitute the state $B$ in the remote future. We wish to calculate the matrix element $M$ for this process, without studying the equations of motion or investigating the behavior of the system at intermediate times while the interaction is in progress.
 
-The unperturbed states $A$ and $B$ are supposed to be states of free particles without interaction and are therefore represented by constant state-vectors Φ$A$ and Φ$B$ in the <a id="ix-125">interaction representation</a>. The actual initial and final states in a scattering problem will consist of particles each having a self-<a id="ix-183">field</a> with which it continues to interact even in the remote future and past, hence Φ$A$ and Φ$B$ do not accurately represent the initial and final states. However, so long as we are using perturbation theory and not including the higher order effects arising form the self-fields of the particles, it is consistent to use constant Φ$A$ and Φ$B$ representing bare particles <a id="ix-111">without radiation</a> interaction. Even when self-field effects are considered, it turns out that the bare-particle Φ$A$ and Φ$B$ can still be used, although in this case some careful justification for it is needed.
+The unperturbed states $A$ and $B$ are supposed to be states of free particles without interaction and are therefore represented by constant state-vectors Φ$A$ and Φ$B$ in the <a id="ix-162">interaction representation</a>. The actual initial and final states in a scattering problem will consist of particles each having a self-<a id="ix-194">field</a> with which it continues to interact even in the remote future and past, hence Φ$A$ and Φ$B$ do not accurately represent the initial and final states. However, so long as we are using perturbation theory and not including the higher order effects arising form the self-fields of the particles, it is consistent to use constant Φ$A$ and Φ$B$ representing bare particles <a id="ix-150">without radiation</a> interaction. Even when self-field effects are considered, it turns out that the bare-particle Φ$A$ and Φ$B$ can still be used, although in this case some careful justification for it is needed.
 
 The matrix element $M$ is
 
@@ -6170,7 +6170,7 @@ $$
 M = ( \Phi_{B}^{*} U \Phi_{A} ) \tag{419}
 $$
 
-Here $U$Φ$A$ is the state which is obtained at $t$ = +$\infty$ by solving the <a id="ix-233">equation</a> of motion (417) with the initial condition Φ = Φ$A$ at $t = -\infty . U$ can easily be written down as a perturbation expansion in the operators $H^{e}$ and $H_{R}$,
+Here $U$Φ$A$ is the state which is obtained at $t$ = +$\infty$ by solving the <a id="ix-265">equation</a> of motion (417) with the initial condition Φ = Φ$A$ at $t = -\infty . U$ can easily be written down as a perturbation expansion in the operators $H^{e}$ and $H_{R}$,
 
 <a id="eq-420"></a>
 
@@ -6190,7 +6190,7 @@ Before discussing the general analysis of the series expansion (421), we shall u
 
 ## <a id="s-a-m-ller-scattering-of-two-electrons"></a>A. Møller Scattering of Two Electrons
 
-We have in the initial state $A$ two electrons in states $( p_{1} u_{1} ) ( p_{2} u_{2} )$ and in the final state $B$ two electrons $( p_{1}^{\prime} u_{1}^{\prime} ) ( p_{2}^{\prime} u_{2}^{\prime} )$. The electron ($p_{1} u_{1} )$ is given by the one-particle <a id="ix-82">wave-function</a>
+We have in the initial state $A$ two electrons in states $( p_{1} u_{1} ) ( p_{2} u_{2} )$ and in the final state $B$ two electrons $( p_{1}^{\prime} u_{1}^{\prime} ) ( p_{2}^{\prime} u_{2}^{\prime} )$. The electron ($p_{1} u_{1} )$ is given by the one-particle <a id="ix-92">wave-function</a>
 
 <a id="eq-422"></a>
 
@@ -6259,7 +6259,7 @@ $$
 \langle P \{ A_{\lambda} ( x_{1} ) ,A_{\mu} ( x_{2} ) \} \rangle_{o} = \tfrac{1}{2} \hbar c\delta_{\lambda \mu} D_{F} ( x_{1} - x_{2} ) \tag{427}
 $$
 
-where $F$ stands for <a id="ix-79">Feynman</a>. Also called by Stueckelberg $D^{c} , c$ for causality. <a id="refback-18-1"></a>[[18]](#ref-18)
+where $F$ stands for <a id="ix-138">Feynman</a>. Also called by Stueckelberg $D^{c} , c$ for causality. <a id="refback-18-1"></a>[[18]](#ref-18)
 
 ### <a id="s-properties-of-the-d-f-function"></a>Properties of the $D_{F}$ Function
 
@@ -6284,7 +6284,7 @@ $$
 
 according to (228). Obviously $D_{F}$ is an even function. It has the property that asymptotically as $x_{0} \to \infty$ in the future, $D_{F}$ = 2$iD^{+}$ contains only positive frequencies, while as $x_{0} \to -\infty$ in the past, $D_{F} = - 2 iD^{-}$ contains only negative frequencies. See Fierz, _Helv. Phys. Acta_ **23** (1950) 731 for a full discussion.
 
-Thus $D_{F}$ is the potential arising from a point source disturbance at the origin, when all the potential travelling out in the future represents particles <a id="ix-5">created</a>, and all the potential travelling in from<sup><a id="fnref-56" href="#fn-56">56</a></sup> the past represents particles to be absorbed, all particles having positive energy. It is thus the potential which maintains the correct causal time-sequence of events, and in this way it was discovered by Stueckelberg. But the definition (427) is easier to understand and use.
+Thus $D_{F}$ is the potential arising from a point source disturbance at the origin, when all the potential travelling out in the future represents particles <a id="ix-40">created</a>, and all the potential travelling in from<sup><a id="fnref-56" href="#fn-56">56</a></sup> the past represents particles to be absorbed, all particles having positive energy. It is thus the potential which maintains the correct causal time-sequence of events, and in this way it was discovered by Stueckelberg. But the definition (427) is easier to understand and use.
 
 The momentum representation of $D_{F}$ is
 
@@ -6333,7 +6333,7 @@ It is clear that the formula comes very directly out of (423), once we know the 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p84"><sup>[p. 84]</sup></a>
 
-### <a id="s-electron-positron-scattering"></a>Electron-Positron <a id="ix-228">Scattering</a>
+### <a id="s-electron-positron-scattering"></a>Electron-Positron <a id="ix-261">Scattering</a>
 
 Exactly the same formula (432) also gives the matrix element of scattering of an electron by a positron. We must assume that the electron is initially in state 1 given by
 
@@ -6381,7 +6381,7 @@ $$
 ue^{ip \cdot x} \tag{437}
 $$
 
-and a photon with <a id="ix-194">potentials</a> given by
+and a photon with <a id="ix-198">potentials</a> given by
 
 <a id="eq-438"></a>
 
@@ -6413,7 +6413,7 @@ $$
 \begin{aligned} M_{2} &= \frac{e^{2}}{\hbar^{2} c^{2}} \sum_{\lambda ,\mu ,\alpha ,\beta} \int \int dx_{1} dx_{2} \left\{ \exp ( ip \cdot x_{2} - ip^{\prime} \cdot x_{1} ) ( \overline{u}_{1}^{\prime} \gamma_{\lambda} )_{\alpha} \left\langle \epsilon ( x_{1} - x_{2} ) P \left\{ \psi_{\alpha} ( x_{1} ) , \overline{\psi}_{\beta} ( x_{2} ) \right\} \right\rangle_{o} ( \gamma_{\mu} u )_{\beta} \right\} \times \\ & \quad \left\{ e_{\lambda} e_{\mu}^{\prime} \exp ( ik \cdot x_{1} - ik^{\prime} \cdot x_{2} ) + e_{\mu} e_{\lambda}^{\prime} \exp ( ik \cdot x_{2} - ik^{\prime} \cdot x_{1} ) \right\} \end{aligned} \tag{441}
 $$
 
-Note that with <a id="ix-41">anticommuting</a> fields the expression $\epsilon ( x_{1} - x_{2} ) P \left\{ \psi_{\alpha} ( x_{1} ) , \overline{\psi}_{\beta} ( x_{2} ) \right\}$ is a relativistic invariant whereas the $P$-product by itself is not. Thus in analogy with (427) we write
+Note that with <a id="ix-27">anticommuting</a> fields the expression $\epsilon ( x_{1} - x_{2} ) P \left\{ \psi_{\alpha} ( x_{1} ) , \overline{\psi}_{\beta} ( x_{2} ) \right\}$ is a relativistic invariant whereas the $P$-product by itself is not. Thus in analogy with (427) we write
 
 <a id="eq-442"></a>
 
@@ -6448,7 +6448,7 @@ $$
 S_{F} ( x ) = \sum_{\lambda} \left( \gamma_{\lambda} \frac{\partial}{\partial x_{\lambda}} - \mu \right) \Delta_{F} ( x ) \tag{445}
 $$
 
-and we find from (444) the momentum <a id="ix-129">representations</a>
+and we find from (444) the <a id="ix-213">momentum</a> representations
 
 <a id="eq-446"></a>
 
@@ -6470,7 +6470,7 @@ $$
 S_{F} ( x ) = \frac{2}{( 2 \pi )^{4}} \int_{F} e^{ik \cdot x} \frac{1}{k / - i\mu} d^{4} k \tag{448}
 $$
 
-Here the Dirac matrix in the denominator means that we have to multiply above and below by $( / k + i\mu )$ in order to evaluate the integral. Thus (448) is not a real simplification of (447), only it saves writing. The Feynman integration in (448) is defined as a <a id="ix-67">contour integral</a> exactly as in (430).
+Here the Dirac matrix in the denominator means that we have to multiply above and below by $( / k + i\mu )$ in order to evaluate the integral. Thus (448) is not a real simplification of (447), only it saves writing. The Feynman integration in (448) is defined as a <a id="ix-123">contour integral</a> exactly as in (430).
 
 Now substituting from (448) into (441), just like for (432)
 
@@ -6531,7 +6531,7 @@ $$
 M_{2} = K ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \tag{454}
 $$
 
-Then the <a id="ix-117">scattering</a> probability per unit volume and per unit time for the single final state is as before
+Then the <a id="ix-121">scattering</a> probability per unit volume and per unit time for the single final state is as before
 
 <a id="eq-455"></a>
 
@@ -6628,7 +6628,7 @@ $$
 \left( \xi^{( 1 )} \xi^{( 2 )} \dots \xi^{( s )} \right) \xi^{( m )} \to \xi^{( m )} \left( \xi^{( 1 )} \xi^{( 2 )} \dots \xi^{( s )} \right)
 $$
 
-and for two square matrices<sup><a id="fnref-58" href="#fn-58">58</a></sup> $A , B$
+and for two square <a id="ix-88">matrices</a><sup><a id="fnref-58" href="#fn-58">58</a></sup> $A , B$
 
 $$
 \operatorname{Spur} AB = \sum_{i,j} a_{ij} b_{ji} = \operatorname{Spur} BA
@@ -6662,7 +6662,7 @@ $$
 
 Similarly $\frac{k /^{\prime}}{k_{0}^{\prime}} = i\beta + \gamma_{k}^{\prime}$.
 
-Since $/p$ <a id="ix-42">anticommutes</a> with $/e , /e^{\prime} , \gamma_{k}$ and $\gamma_{k}^{\prime}$, (compare with remark after (451)) we may write (463) in the form
+Since $/p$ <a id="ix-28">anticommutes</a> with $/e , /e^{\prime} , \gamma_{k}$ and $\gamma_{k}^{\prime}$, (compare with remark after (451)) we may write (463) in the form
 
 $$
 \frac{e^{4}}{3 2 \hbar^{4} c^{4} \mu^{4}} \operatorname{Spur} \left[ \left\{ \left( /e \frac{k /}{k_{0}} /e^{\prime} + /e^{\prime} \frac{/ k^{\prime}}{k_{0}^{\prime}} /e \right) ( i\mu - p / ) + 4 \mu ( e \cdot e^{\prime} ) \right\} ( p /^{\prime} + i\mu ) \left\{ /e \frac{/ k^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e^{\prime} \frac{/ k}{k_{0}} /e \right\} \right]
@@ -6966,7 +6966,7 @@ $$
 
 This is one place where charge-conjugate spinors are useful and necessary!
 
-Summarizing, we find for electron and positron with spins parallel, in triplet state, the 2-photon decay is forbidden. This selection rule is in fact an exact one for positronium in the ground state 1$s$ triplet. Only 3-photon decay can occur and this makes the lifetime $\sim$ 1100 times longer. For electron and positron in singlet state, the 2-photon decay occurs with the photons always polarized perpendicularly to each other. The probability for the decay, integrating (474) over a solid <a id="ix-22">angle</a> 2$\pi$ since the photons are indistinguishable, is
+Summarizing, we find for <a id="ix-109">electron</a> and positron with spins parallel, in triplet state, the 2-photon decay is forbidden. This selection rule is in fact an exact one for positronium in the ground state 1$s$ triplet. Only 3-photon decay can occur and this makes the lifetime $\sim$ 1100 times longer. For electron and positron in singlet state, the 2-photon decay occurs with the photons always polarized perpendicularly to each other. The probability for the decay, integrating (474) over a solid <a id="ix-12">angle</a> 2$\pi$ since the photons are indistinguishable, is
 
 <a id="eq-477"></a>
 
@@ -6974,7 +6974,7 @@ $$
 w = \frac{\hbar^{2} c^{3}}{1 6 \pi} 2 | K |^{2} = \frac{2 e^{4}}{\hbar^{2} c\mu^{2} 8 \pi} = 4 \pi cr_{o}^{2} \tag{477}
 $$
 
-Formula (477) is for electron and positron normalized to one particle per unit volume. If the density of the electron probability relative to the position of the positron is $\rho$, then the mean <a id="ix-35">annihilation</a> life-time will be<sup><a id="fnref-65" href="#fn-65">65</a></sup> (the “classical electron radius” $r_{o} = e^{2} / ( 4 \pi mc^{2} )$ in Heaviside units)
+Formula (477) is for electron and positron normalized to one particle per unit volume. If the density of the electron probability relative to the position of the positron is $\rho$, then the mean annihilation life-time will be<sup><a id="fnref-65" href="#fn-65">65</a></sup> (the “classical electron radius” $r_{o} = e^{2} / ( 4 \pi mc^{2} )$ in Heaviside units)
 
 <a id="eq-478"></a>
 
@@ -6990,7 +6990,7 @@ $$
 \begin{aligned} \rho &= \frac{1}{8 \pi a_{o}^{3}} \quad a_{o} = \text{ Bohr radius } = 1 3 7^{2} r_{o} \\ \tau &= 2 \times 1 3 7^{4} \times \frac{a_{o}}{c} = 2 \times 1 3 7^{5} \times \frac{\hbar}{mc^{2}} \approx 1 . 2 \times 1 0^{- 1 0} \sec . \end{aligned} \tag{479}
 $$
 
-For slowly-moving electrons and positrons with relative velocity $v$, the annihilation cross-section according to (477) will be
+For slowly-moving electrons and positrons with relative velocity $v$, the annihilation <a id="ix-50">cross-section</a> according to (477) will be
 
 <a id="eq-480"></a>
 
@@ -7003,7 +7003,7 @@ proportional to 1 just like neutron cross-sections at low (thermal) energies.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p92"><sup>[p. 92]</sup></a>
 
-## <a id="s-d-bremsstrahlung-and-pair-creation-in-the-coulomb-field-of-an-atom"></a>D. Bremsstrahlung and <a id="ix-36">Pair</a> Creation in the Coulomb Field of an Atom
+## <a id="s-d-bremsstrahlung-and-pair-creation-in-the-coulomb-field-of-an-atom"></a>D. Bremsstrahlung and <a id="ix-22">Pair</a> Creation in the Coulomb Field of an Atom
 
 We consider these two important processes together. Given an external potential $A_{\mu}^{e}$ representing the Coulomb field, the processes are:
 
@@ -7057,7 +7057,7 @@ $$
 M_{1} = - \frac{e^{2}}{\hbar^{2} c^{2}} f ( p^{\prime} + k^{\prime} - p ) \overline{u}^{\prime} \left\{ /e \frac{1}{p / - / k^{\prime} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{p /^{\prime} + / k^{\prime} - i\mu} /e \right\} u \tag{484}
 $$
 
-The factor 2 difference between (482) and (423) is just compensated by the fact that the photon $k^{\prime} e^{\prime}$ can be emitted by two operators $A_{\mu}$ in (423) and by only one in (482). The bremsstrahlung cross section is then calculated by squaring (484) and integrating over $k^{\prime}$ and $p^{\prime}$ with appropriate normalization factors. For the details see Heitler’s book $§ 1 7 .$<sup><a id="fnref-66" href="#fn-66">66</a></sup>
+The factor 2 difference between (482) and (423) is just compensated by the fact that the photon $k^{\prime} e^{\prime}$ can be emitted by two operators $A_{\mu}$ in (423) and by only one in (482). The bremsstrahlung <a id="ix-54">cross section</a> is then calculated by squaring (484) and integrating over $k^{\prime}$ and $p^{\prime}$ with appropriate normalization factors. For the details see Heitler’s book $§ 1 7 .$<sup><a id="fnref-66" href="#fn-66">66</a></sup>
 
 For pair creation the same formula (449) gives the matrix element $M_{1}$, allowing for the fact that the roles of the particles are now changed around so that electron $( pu )$ instead of ($p^{\prime} u^{\prime} )$ is created etc. Thus
 
@@ -7078,7 +7078,7 @@ $$
 M_{1} = - \frac{e^{2}}{\hbar^{2} c^{2}} f ( p + p_{+} - k^{\prime} ) \overline{u} \left\{ /e \frac{1}{/ k^{\prime} - p /_{+} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{p / - / k^{\prime} - i\mu} /e \right\} u^{\prime} \tag{486}
 $$
 
-For the <a id="ix-34">cross-section</a> calculation see again Heitler, $§ 2 0 .$<sup><a id="fnref-67" href="#fn-67">67</a></sup>
+For the <a id="ix-21">cross-section</a> calculation see again Heitler, $§ 2 0 .$<sup><a id="fnref-67" href="#fn-67">67</a></sup>
 
 ---
 
@@ -7131,7 +7131,7 @@ We have shown how (421) leads to matrix elements for standard scattering process
 
 Nevertheless we shall work out a method of calculating the high-order terms of (421). This method turns out to be simplest and easiest to explain when we are discussing scattering problems. Incidentally we shall see what the radiative corrections to scattering look like, and we shall learn something about the nature of radiative corrections in general. Finally at the end we shall be able to use the method of calculation in order to find the radiative corrections to the motion of an electron in a hydrogen atom, which is the case in which these small effects can be accurately observed, but where the pure scattering theory is not directly applicable.
 
-To avoid unnecessary complications we suppose there is no external field $A^{e}$. Problems in which there is an external field, so long as it can be treated in the <a id="ix-48">Born approximation</a>, can always be simply related to problems without external field, just as the <a id="ix-24">bremsstrahlung</a> matrix element (484) is related to the Compton <a id="ix-59">effect</a> (449). When there is no external field the matrix element for any scattering process is
+To avoid unnecessary complications we suppose there is no external field $A^{e}$. Problems in which there is an external field, so long as it can be treated in the <a id="ix-32">Born approximation</a>, can always be simply related to problems without external field, just as the <a id="ix-33">bremsstrahlung</a> matrix element (484) is related to the Compton <a id="ix-34">effect</a> (449). When there is no external field the matrix element for any scattering process is
 
 <a id="eq-487"></a>
 
@@ -7233,7 +7233,7 @@ $$
 b_{2}^{*} b_{3} b_{3}^{*} b_{1} \tag{497}
 $$
 
-which would give a contribution to the matrix element, since the operator $b_{3}^{*}$ could create a particle in an intermediate state 3 which the operator $b_{3}$ would then <a id="ix-31">annihilate</a>. The expansion of $\mathcal{O}$ into normal constituents eliminates all terms such as (497) and replaces them by sums of normal products with numerical coefficients. Thus using the anticommutation rule for $b_{3}$ and $b_{3}^{*}$, (497) becomes replaced by
+which would give a contribution to the matrix element, since the operator $b_{3}^{*}$ could create a particle in an intermediate state 3 which the operator $b_{3}$ would then annihilate. The expansion of $\mathcal{O}$ into normal constituents eliminates all terms such as (497) and replaces them by sums of normal products with numerical coefficients. Thus using the anticommutation rule for $b_{3}$ and $b_{3}^{*}$, (497) becomes replaced by
 
 <a id="eq-498"></a>
 
@@ -7341,7 +7341,7 @@ where Σ is a sum of terms of the form (505). The theorem is true for each term 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p98"><sup>[p. 98]</sup></a>
 
-## <a id="s-feynman-graphs"></a>Feynman Graphs
+## <a id="s-feynman-graphs"></a><a id="ix-132">Feynman</a> Graphs
 
 We use a method of Feynman to enumerate the possible factor-pairings of $\mathcal{O}$. Each pairing is pictured in a diagram or graph $G . G$ consists of a certain number of vertices with lines joining them. The vertices represent simply the different field-points at which the factors of $\mathcal{O}$ operate. Thus for $\mathcal{O}$ given by (496) each $G$ has the two vertices $x_{1} , x_{2}$. The lines in $G$ are either dotted, representing photon operators, or undotted, representing electron-positron operators. The rules for drawing these lines are the following:
 
@@ -7471,18 +7471,18 @@ and for every set of field operators $\mathcal{R}_{1} \mathcal{R}_{2} \dots \mat
 
 The rules for writing down the normal constituents of (488) are therefore extremely simple. We are generally only interested in those normal constituents which give matrix elements for some specified type of scattering process. Then the rules are
 
-1) Draw all the graphs which have the right set of external lines corresponding to the particles absorbed and emitted in the process considered. Each <a id="ix-70">graph</a> $G$ will have the same external lines, but the number of vertices and of internal lines will vary from graph to graph. We shall always calculate only up to some definite order $N$ in the series (488), and so we draw only graphs with not more than $N$ vertices. The total number of such graphs is finite. Each vertex in each graph must have precisely 3 lines ending at it, one incoming electron line, one outgoing electron line, and one photon line.
+1) Draw all the graphs which have the right set of external lines corresponding to the particles absorbed and emitted in the process considered. Each <a id="ix-127">graph</a> $G$ will have the same external lines, but the number of vertices and of internal lines will vary from graph to graph. We shall always calculate only up to some definite order $N$ in the series (488), and so we draw only graphs with not more than $N$ vertices. The total number of such graphs is finite. Each vertex in each graph must have precisely 3 lines ending at it, one incoming electron line, one outgoing electron line, and one photon line.
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p101"><sup>[p. 101]</sup></a>
 
-2) To each <a id="ix-71">graph</a> $G$ with $n$ vertices corresponds one normal constituent $S_{G}$ of $S$.
+2) To each <a id="ix-128">graph</a> $G$ with $n$ vertices corresponds one normal constituent $S_{G}$ of $S$.
 
-3) Choosing a particular $G$, write down the $n$<sup>th</sup> term $S_{n}$ of the series (488) and <a id="ix-18">pair</a> off the factors of $S_{n}$ as indicated by $G$. Replace each factor-pair $A_{\lambda} ( x ) A_{\mu} ( y )$ by (510), and replace each factor-pair $\psi_{\alpha} ( x ) \overline{\psi}_{\beta} ( y )$ by (511). Apply an $N$-ordering to the remaining unpaired factors of $S_{n}$, and multiply the whole expression by $( \pm 1$) following the rule given for equation (504). The result of applying these operations to $S_{n}$ is the normal constituent $S_{G}$.
+3) Choosing a particular $G$, write down the $n$<sup>th</sup> term $S_{n}$ of the series (488) and <a id="ix-23">pair</a> off the factors of $S_{n}$ as indicated by $G$. Replace each factor-pair $A_{\lambda} ( x ) A_{\mu} ( y )$ by (510), and replace each factor-pair $\psi_{\alpha} ( x ) \overline{\psi}_{\beta} ( y )$ by (511). Apply an $N$-ordering to the remaining unpaired factors of $S_{n}$, and multiply the whole expression by $( \pm 1$) following the rule given for equation (504). The result of applying these operations to $S_{n}$ is the normal constituent $S_{G}$.
 
-If we wish to calculate the matrix element for the <a id="ix-63">scattering</a> process, then we have only to add one more rule to the three already given.
+If we wish to calculate the matrix element for the <a id="ix-37">scattering</a> process, then we have only to add one more rule to the three already given.
 
-4) In each $S_{G}$, substitute for the unpaired operators the wave-functions of the absorbed and emitted particles, for example writing (437) for $\psi ( x )$ when an electron ($p,u )$ is absorbed, and writing (438) for $A_{\mu} ( x )$ when a photon ($k,e )$ is absorbed. These substitutions may sometimes be made in more than one way (for example in the Compton <a id="ix-60">effect</a> when the absorbed and emitted photon may be assigned in two ways to the two unpaired photon operators.) In such cases the substitutions are to be made in all possible ways, and the results added together, taking account of Fermi statistics by putting in a minus sign when two electron or positron wave-functions are interchanged.
+4) In each $S_{G}$, substitute for the unpaired operators the wave-functions of the absorbed and emitted particles, for example writing (437) for $\psi ( x )$ when an electron ($p,u )$ is absorbed, and writing (438) for $A_{\mu} ( x )$ when a photon ($k,e )$ is absorbed. These substitutions may sometimes be made in more than one way (for example in the Compton <a id="ix-35">effect</a> when the absorbed and emitted photon may be assigned in two ways to the two unpaired photon operators.) In such cases the substitutions are to be made in all possible ways, and the results added together, taking account of Fermi statistics by putting in a minus sign when two electron or positron wave-functions are interchanged.
 
 The rules (1)–(4) constitute the Feynman rules for calculating the matrix elements of all processes in electrodynamics. According to Feynman they have an intermediate concrete interpretation. Thus (510) is the probability amplitude for a photon emitted at $x$ with polarization $\lambda$ to propagate itself and arrive at $y$ with polarization $\mu$, plus the amplitude for a photon having been emitted at $y$ to arrive at $x$. And (511) is the amplitude for an electron emitted at $y$ to arrive at $x$, plus the amplitude for a positron emitted at $x$ to arrive at $y$, with the assigned spins $\alpha$ and $\beta$. In this way the matrix element is just the probability amplitude for the succession of events, interactions and propagations, that are depicted in the vertices and lines of $G$. The total probability amplitude for a process is just the sum of the amplitudes derived by from the various graphs $G$ which contribute to the process.
 
@@ -7537,7 +7537,7 @@ $$
 ( p^{\prime} u^{\prime} ) .
 $$
 
-To write down $M_{3}$ we use the Feynman <a id="ix-74">rules</a>. The factor-pairings of $U_{2}$ are represented in the 8 graphs on pp 98-99. Of these only $G_{5}$ and $G_{6}$ contribute to $M_{2}$, and they contribute equally since the integral (423) is symmetrical in the variables $x_{1}$ and $x_{2}$. The normal constituent of $U_{2}$ arising from $G_{5}$ and $G_{6}$ is, using (510) and (511)<sup><a id="fnref-73" href="#fn-73">73</a></sup>
+To write down $M_{3}$ we use the <a id="ix-133">Feynman</a> <a id="ix-134">rules</a>. The factor-pairings of $U_{2}$ are represented in the 8 graphs on pp 98-99. Of these only $G_{5}$ and $G_{6}$ contribute to $M_{2}$, and they contribute equally since the integral (423) is symmetrical in the variables $x_{1}$ and $x_{2}$. The normal constituent of $U_{2}$ arising from $G_{5}$ and $G_{6}$ is, using (510) and (511)<sup><a id="fnref-73" href="#fn-73">73</a></sup>
 
 <a id="eq-518"></a>
 
@@ -7564,7 +7564,7 @@ $$
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p103"><sup>[p. 103]</sup></a>
 
-appearing in (519). Since $( p,u )$ are the momentum and spin of a real electron, we may use the relations
+appearing in (519). Since $( p,u )$ are the <a id="ix-208">momentum</a> and spin of a real electron, we may use the relations
 
 <a id="eq-521"></a>
 
@@ -7580,7 +7580,7 @@ $$
 \begin{aligned} \Sigma ( p ) &= \int_{F} dk \sum \frac{\gamma_{\lambda} ( / k + p / + i\mu ) \gamma_{\lambda}}{k^{2} ( k^{2} + 2 p \cdot k )} = \int_{F} dk \frac{4 i\mu - 2 k / - 2 p /}{k^{2} ( k^{2} + 2 p \cdot k )} \\ &= 2 \int_{0}^{1} dz \int_{F}^{\lambda} dK \frac{i\mu - / k}{[ k^{2} + 2 zp \cdot k ]^{2}} = 2 \int_{0}^{1} \int_{F} dk \frac{( i\mu - / k + z/p )}{[ k^{2} - z^{2} p^{2} ]^{2}} \\ &= 2 \int_{0}^{1} dz \int_{F} dk \frac{i\mu ( 1 + z )}{[ k^{2} + z^{2} \mu^{2} ]^{2}} \end{aligned} \tag{522}
 $$
 
-where we changed the origin of the $k$ <a id="ix-127">integration</a> by the replacement $k \to k - zp$ and we eliminated the odd terms. Using (386) and introducing the logarithmic divergence $R$ again according to (387),
+where we changed the origin of the $k$ integration by the replacement $k \to k - zp$ and we eliminated the odd terms. Using (386) and introducing the logarithmic divergence $R$ again according to (387),
 
 <a id="eq-523"></a>
 
@@ -7598,7 +7598,7 @@ $$
 
 Thus $U_{2}$ does not give any transitions between different one-electron states. It has only the diagonal matrix elements given by (524) .
 
-Now (524) has precisely the correct relativistic form to be identified with a pure self-energy <a id="ix-61">effect</a>. Suppose that in consequence of the radiation interaction the mass of a real electron is
+Now (524) has precisely the correct relativistic form to be identified with a pure self-energy <a id="ix-36">effect</a>. Suppose that in consequence of the radiation interaction the mass of a real electron is
 
 <a id="eq-525"></a>
 
@@ -7653,7 +7653,7 @@ $$
 
 For all one-electron matrix elements, $U_{2}$ is identical with $U_{S}$. That is to say, the whole effect of the radiation interaction upon a free electron is to change its mass by the amount (530). This is a most satisfactory conclusion. It means that an electron with its self-field still has the correct relationship between momentum and energy for a relativistic particle, only the value of the rest-mass being changed by the self-field. It was always one of the central difficulties of the classical electron theory, that a classical extended electron did not have the right relativistic behavior.
 
-The self-mass $\delta m$ is an unobservable quantity. The observed mass of an electron is $m$, and neither $m_{o}$ nor $\delta m$ can be measured separately. Thus it is unsatisfactory that $\delta m$ appears in the scattering matrix $S$ which is supposed to represent the results of experiments.
+The self-mass $\delta m$ is an unobservable quantity. The observed mass of an electron is $m$, and neither $m_{o}$ nor $\delta m$ can be measured separately. Thus it is unsatisfactory that $\delta m$ appears in the <a id="ix-254">scattering</a> matrix $S$ which is supposed to represent the results of experiments.
 
 The reason why $\delta m$ still appears explicitly is just that we have _not_ used the observed mass $m$ in defining the initial and final states of the system. We defined these states as states of a free electron with the bare mass $m_{o}$. Wherever we used the letter $m$ for the electron mass in the theory up to this point, in fact it was an inconsistency of notation and we meant by $m$ the mass of a _bare_ electron.
 
@@ -7702,7 +7702,7 @@ At the same time the electron is interacting with the quantized Maxwell field wi
 
 replacing each $H_{R}$ by $H^{I}$ according to (532).
 
-We treat $A_{\mu}^{e}$ in the linear Born approximation. Thus we keep only terms of order 0 and 1 in $A_{\mu}^{e}$. The terms of order 0 give the effects of the radiation interaction alone; as we have seen, these effects are zero for an initial state consisting of a single <a id="ix-209">electron</a>.
+We treat $A_{\mu}^{e}$ in the linear Born approximation. Thus we keep only terms of order 0 and 1 in $A_{\mu}^{e}$. The terms of order 0 give the effects of the radiation interaction alone; as we have seen, these effects are zero for an initial state consisting of a single <a id="ix-276">electron</a>.
 
 The scattering matrix is thus given effectively by the terms of order 1 in $A_{\mu}^{e}$ taken from (421), namely
 
@@ -7784,7 +7784,7 @@ $$
 e_{\mu} = e_{\mu} ( q ) \tag{545}
 $$
 
-The operator $U_{1}$ gives transitions from a one-electron state only to states consisting of an electron and a photon. This is just the <a id="ix-58">bremsstrahlung</a> process, scattering of the electron with real photon emission, and the matrix element for it is given by (484). In any scattering experiment, this process will of course go on at the same time as the scattering without radiation. Experimentally, the scattering with photon emission will only be separable from the radiationless scattering if the emitted photon has an energy greater than some limit ∆$E$, roughly equal to the energy resolution with which the energy of the electron can be measured. The scattering with emission of soft quanta (low frequency, $k^{\prime}$ small) will always be included in the radiationless scattering cross-section. Therefore we shall be interested in the value of $M_{1}$ for a final state consisting of the electron $( p^{\prime} u^{\prime} )$ and a photon with potentials (440), in the case where $k^{\prime}$ is so small as to be negligible in comparison with $p , p^{\prime}$ and $q$. In this case (484) gives
+The operator $U_{1}$ gives transitions from a one-electron state only to states consisting of an electron and a photon. This is just the bremsstrahlung process, scattering of the electron with real photon emission, and the matrix element for it is given by (484). In any scattering experiment, this process will of course go on at the same time as the scattering without radiation. Experimentally, the scattering with photon emission will only be separable from the radiationless scattering if the emitted photon has an energy greater than some limit ∆$E$, roughly equal to the energy resolution with which the energy of the electron can be measured. The scattering with emission of soft quanta (low frequency, $k^{\prime}$ small) will always be included in the radiationless scattering cross-section. Therefore we shall be interested in the value of $M_{1}$ for a final state consisting of the electron $( p^{\prime} u^{\prime} )$ and a photon with potentials (440), in the case where $k^{\prime}$ is so small as to be negligible in comparison with $p , p^{\prime}$ and $q$. In this case (484) gives
 
 <a id="eq-546"></a>
 
@@ -7803,7 +7803,7 @@ We now come to the calculation of $M_{2}$, the matrix element of (539) between t
 
 _Figure 10 (p. 106)_
 
-and $\{ G_{6} ,G_{7} ,G_{8} ,G_{9} \}$ obtained by interchanging the labels $( x_{1} ,x_{2} )$ in $\{ G_{1} ,G_{2} ,G_{3} ,G_{4} \}$, respectively. We can see this in the following way: The process we are interested in calls for one external photon line and two external electron lines. Hence $A /^{e} ( x )$, one $\overline{\psi}$ and one $\psi$ must be unpaired. Therefore the two $A /$’s are always coupled. The free electron lines can be $\psi_{0} ,\psi_{1} ; \overline{\psi}_{1} ,\psi_{0} ; \overline{\psi}_{1} ,\psi_{1} ; \overline{\psi}_{1} ,\psi_{2}$ and four more cases obtained by the substitution 1 $\leftrightarrow$ 2. In each case, the rest is uniquely determined by the rules. The ninth case is the one with external electron lines $\overline{\psi}_{0} ,\psi_{0}$.
+and $\{ G_{6} ,G_{7} ,G_{8} ,G_{9} \}$ obtained by interchanging the labels $( x_{1} ,x_{2} )$ in $\{ G_{1} ,G_{2} ,G_{3} ,G_{4} \}$, respectively. We can see this in the following way: The process we are interested in calls for one external photon line and two external <a id="ix-107">electron</a> lines. Hence $A /^{e} ( x )$, one $\overline{\psi}$ and one $\psi$ must be unpaired. Therefore the two $A /$’s are always coupled. The free electron lines can be $\psi_{0} ,\psi_{1} ; \overline{\psi}_{1} ,\psi_{0} ; \overline{\psi}_{1} ,\psi_{1} ; \overline{\psi}_{1} ,\psi_{2}$ and four more cases obtained by the substitution 1 $\leftrightarrow$ 2. In each case, the rest is uniquely determined by the rules. The ninth case is the one with external electron lines $\overline{\psi}_{0} ,\psi_{0}$.
 
 The effect of $\{ G_{6} ,G_{7} ,G_{8} ,G_{9} \}$ is only to double the contribution from $\{ G_{1} ,G_{2} ,G_{3} ,G_{4} \}$, since (539) is symmetrical in the variables $x_{1}$ and $x_{2}$. Also $G_{5}$ will give only a numerical phase factor multiplying $M_{0}$, the phase factor being the same for all final states; it is in fact precisely the phase-shift between the initial and final states due to the self-energy of the vacuum. Similar phase shift factors would also multiply the contributions of $G_{1} , G_{2}$, etc., coming from disconnected graphs in higher order contributions. In this sense therefore, we can consider $G_{5}$ to be really the contribution of $U_{0}$ with one of the many possible disconnected additions. A numerical phase factor of this kind, the same for all final states, is entirely unobservable and without physical meaning, since it can be cancelled by changing the phase of all wave-functions by the same amount. Hence we can always ignore graphs such as $G_{5}$ having a disconnected part without external lines. There remain to be considered only $\{ G_{1} ,G_{2} ,G_{3} ,G_{4} \}$.
 
@@ -7966,7 +7966,7 @@ $$
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p109"><sup>[p. 109]</sup></a>
 
-In (564) the inadmissible factor (559) is replaced by something finite and mathematically well-defined. There will be a singularity in the integration of (564) over $\epsilon_{0}$, but this is an ordinary pole and the integration over $\epsilon_{0}$ will give a well-determined result when taken as a Feynman integral. We have as $T \to \infty$ and $\epsilon_{0}$ and
+In (564) the inadmissible factor (559) is replaced by something finite and mathematically well-defined. There will be a singularity in the integration of (564) over $\epsilon_{0}$, but this is an ordinary pole and the integration over $\epsilon_{0}$ will give a well-determined result when taken as a <a id="ix-124">Feynman</a> integral. We have as $T \to \infty$ and $\epsilon_{0}$ and
 
 <a id="eq-565"></a>
 
@@ -8067,7 +8067,7 @@ $$
 M_{2 2}^{\prime} = - \frac{ie\delta m}{2 \hbar^{2}} \int \int dxdx_{1} \overline{\psi} ( x ) A /^{e} S_{F} ( x - x_{1} ) \psi ( x_{1} ) \tag{574}
 $$
 
-Like (555) this <a id="ix-97">integral</a> does not oscillate but diverges at $t_{1} = \pm \infty$. Therefore we must take explicitly into account the cut-off factor multiplying the radiation interaction. At time $t_{1}$ the radiation interaction $H_{R} ( t_{1} )$ will carry the cut-off factor $g ( t_{1} )$. But the self-energy $\delta m$ at time $t_{1}$ is an effect of second order in $H_{R}$, and therefore becomes multiplied by $[ g ( t_{1} ) ]$<sup>2</sup> if $g ( t_{1} )$ varies slowly enough. In the definition of the scattering matrix element (487), the cut-off factors $g ( t )$ were introduced in order to represent the initial and final states by simple bare-particle wave-functions in an unambiguous way. We now require that the bare-particles’ wave-functions should always have the same mass $m$ as a real electron. This is achieved if we add the term $( - H_{S} )$ to the radiation interaction appearing in (495), each $H_{S} ( t_{i} )$ being multiplied by the cut-off factor $[ g ( t_{i} ) ]$<sup>2</sup> so long as we are dealing only with second order terms in $\delta m$. If we were calculating effects to fourth order in $e$, then the fourth order part of $\delta m$ should be multiplied by $[ g ( t_{i} ) ]$<sup>4</sup>, and so on.
+Like (555) this <a id="ix-142">integral</a> does not oscillate but diverges at $t_{1} = \pm \infty$. Therefore we must take explicitly into account the cut-off factor multiplying the radiation interaction. At time $t_{1}$ the radiation interaction $H_{R} ( t_{1} )$ will carry the cut-off factor $g ( t_{1} )$. But the self-energy $\delta m$ at time $t_{1}$ is an effect of second order in $H_{R}$, and therefore becomes multiplied by $[ g ( t_{1} ) ]$<sup>2</sup> if $g ( t_{1} )$ varies slowly enough. In the definition of the scattering matrix element (487), the cut-off factors $g ( t )$ were introduced in order to represent the initial and final states by simple bare-particle wave-functions in an unambiguous way. We now require that the bare-particles’ wave-functions should always have the same mass $m$ as a real electron. This is achieved if we add the term $( - H_{S} )$ to the radiation interaction appearing in (495), each $H_{S} ( t_{i} )$ being multiplied by the cut-off factor $[ g ( t_{i} ) ]$<sup>2</sup> so long as we are dealing only with second order terms in $\delta m$. If we were calculating effects to fourth order in $e$, then the fourth order part of $\delta m$ should be multiplied by $[ g ( t_{i} ) ]$<sup>4</sup>, and so on.
 
 The effect of the cut-off factors is therefore to replace (574) by
 
@@ -8108,7 +8108,7 @@ $$
 
 It turns out that $I_{1}$ is pure imaginary, and the factor multiplying $M_{o}$ in (578) is real and negative.
 
-What is the physical interpretation of the divergent term (578)? It is just a divergent constant multiple of $M_{o}$, like the charge-renormalization term in (552). So one is tempted at first to call it an additional charge-renormalization effect. But this cannot be right, because the whole charge-renormalization was calculated in (392) and the result agreed with (552). In fact (578) has a much more elementary interpretation. When the electron arrives at the point $x$ of the external potential where it undergoes scattering, there will be a certain probability $P$ that it will have previously emitted and not yet reabsorbed a photon, as pictured in the Feynman graph $G_{4}$. There will be a probability (1 $- P )$ that it will arrive at $x$ not accompanied by a photon, as pictured in $G_{2}$ or $G_{3}$.
+What is the physical interpretation of the divergent term (578)? It is just a divergent constant multiple of $M_{o}$, like the charge-renormalization term in (552). So one is tempted at first to call it an additional charge-renormalization effect. But this cannot be right, because the whole charge-renormalization was calculated in (392) and the result agreed with (552). In fact (578) has a much more elementary interpretation. When the electron arrives at the point $x$ of the external potential where it undergoes scattering, there will be a certain probability $P$ that it will have previously emitted and not yet reabsorbed a photon, as pictured in the <a id="ix-125">Feynman</a> graph $G_{4}$. There will be a probability (1 $- P )$ that it will arrive at $x$ not accompanied by a photon, as pictured in $G_{2}$ or $G_{3}$.
 
 Consider then the contribution $M_{NP}$ to the matrix element $M$, produced by scattering processes in which the electron arrives at $x$ with no photon present. In the zero-order approximation $M_{NP} = M_{o}$ simply. But in the second-order approximation we must take account of the reduced probability that the electron comes to $x$ without a photon present; this is done by multiplying the wave-function of the electron in both initial and final states by the factor
 
@@ -8282,7 +8282,7 @@ $$
 \begin{aligned} &= - 4 \int \int xdxdy \left\{ \int_{F} dk \left[ / k/e/ k + ( 2 - 2 x - x^{2} ) \mu^{2} /e \right] \left( \frac{1}{[ k^{2} + x^{2} ( \mu^{2} + ( y - y^{2} ) q^{2} ) ]^{3}} - \frac{1}{[ k^{2} + x^{2} \mu^{2} ]^{3}} \right) \right. \\ & \quad \left. + \left[ ( 1 - xy ) ( 1 - x + xy ) q^{2} /e - ( x - x^{2} ) i\mu /e/q \right] \int_{F} dk \frac{1}{[ k^{2} + x^{2} ( \mu^{2} + ( y - y^{2} ) q^{2} ) ]^{3}} \right\} \end{aligned} \tag{597}
 $$
 
-The $k$-integrals in (597) are now convergent. Thus the effect of the “<a id="ix-224">wave-function</a> renormalization” term (578) is just to cancel out the part of $M_{2 4}$ which is independent of $q$ and divergent at high frequencies.
+The $k$-integrals in (597) are now convergent. Thus the effect of the “<a id="ix-258">wave-function</a> <a id="ix-256">renormalization</a>” term (578) is just to cancel out the part of $M_{2 4}$ which is independent of $q$ and divergent at high frequencies.
 
 To evaluate (597) we use (385) and (386). First, in the term $k/e/ / k$ we may replace $k_{\mu} k_{\nu}$ by $\tfrac{1}{4} \delta_{\mu \nu} k^{2}$ because of the symmetry of the integral in $k$-space. So we may write, using (585)
 
@@ -8339,7 +8339,7 @@ $$
 
 In the modified Maxwell theory the $D_{F}$ function will still be given by the integral (431), the $k_{1} ,k_{2} ,k_{3}$ integrations being limited by (601), and the $k_{0}$ integration being taken as usual along the whole real axis from $-\infty$ to +$\infty$. Let Λ${}^{r} ( p,p^{\prime} )$ and Λ$\frac{r}{c} ( p,p^{\prime} )$ be the integrals which replace Λ($p,p^{\prime} )$ and Λ${}_{c} ( p,p^{\prime} )$ when the Maxwell field is modified. We calculate the differences (Λ $-$ Λ${}^{r} )$ and (Λ${}_{c} -$ Λ$\frac{r}{c} )$, considering these integrals only in the limit of small $r$, neglecting all terms which tend to zero with $r$. This means that we may neglect terms containing either $k$ or $x$ as a factor in the numerator of integrals such as (591) or (594).
 
-In (583) there is just one factor $D_{F}$. Thus Λ${}^{r} ( p,p^{\prime} )$ is obtained from (584) simply by restricting the $k_{1} ,k_{2} ,k_{3}$ integration by (601). We can now follow the reduction of (584) to the form (594), except that we do not shift the origin of the $k$-integration through $( xp_{y} )$ since this would disturb the <a id="ix-99">condition</a> (601). Dropping terms in the numerator having $k$ or $x$ as a factor, this gives the result
+In (583) there is just one factor $D_{F}$. Thus Λ${}^{r} ( p,p^{\prime} )$ is obtained from (584) simply by restricting the $k_{1} ,k_{2} ,k_{3}$ integration by (601). We can now follow the reduction of (584) to the form (594), except that we do not shift the origin of the $k$-integration through $( xp_{y} )$ since this would disturb the <a id="ix-145">condition</a> (601). Dropping terms in the numerator having $k$ or $x$ as a factor, this gives the result
 
 <a id="eq-603"></a>
 
@@ -8591,7 +8591,7 @@ the contractions being equal to the propagators $S_{F} , D_{F}$, and so on.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p118"><sup>[p. 118]</sup></a>
 
-Consider the scattering of an electron by a time-independent electrostatic potential
+Consider the <a id="ix-244">scattering</a> of an electron by a time-independent electrostatic potential
 
 <a id="eq-625"></a>
 
@@ -8686,7 +8686,7 @@ $$
 M_{2} + M_{2}^{\prime} = - \frac{\alpha}{3 \pi} \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right\} \frac{q^{2}}{\mu^{2}} M_{0} - \frac{\alpha}{2} \frac{e}{\hbar c\mu} ( u^{\prime *} /qu ) V ( \boldsymbol{q} ) \delta ( q_{0} ) \tag{632}
 $$
 
-This gives a second order correction to the cross-section $\sigma_{0}$ according to (621). The total non-radiative cross-section, for <a id="ix-217">scattering</a> without the emission of a photon of energy greater than ∆$E$, becomes
+This gives a second order correction to the cross-section $\sigma_{0}$ according to (621). The total non-radiative cross-section, for <a id="ix-242">scattering</a> without the emission of a photon of energy greater than ∆$E$, becomes
 
 <a id="eq-633"></a>
 
@@ -8743,7 +8743,7 @@ and therefore for all possible photons the momentum $\hbar | \boldsymbol{k}^{\pr
 
 will be given by (618) and (620), even when the photon takes away a large fraction of the kinetic energy of the electron.
 
-We imagine a scattering experiment in which only the direction of the emerging electron is measured and not its energy. Then the radiative cross-section $\overline{\sigma}_{R}$ will measure the total probability of scattering the electron into a <a id="ix-26">solid</a> angle $d$Ω with emission of a photon having any frequency between the lower limit $r$ and the upper limit $k_{\max}$ given by (638). The observed cross-section will be
+We imagine a scattering experiment in which only the direction of the emerging electron is measured and not its energy. Then the radiative <a id="ix-53">cross-section</a> $\overline{\sigma}_{R}$ will measure the total probability of scattering the electron into a <a id="ix-15">solid</a> angle $d$Ω with emission of a photon having any frequency between the lower limit $r$ and the upper limit $k_{\max}$ given by (638). The observed cross-section will be
 
 <a id="eq-639"></a>
 
@@ -8838,7 +8838,7 @@ which is much smaller if $v$ is not relativistic. Thus the correction _cannot be
 
 The exact formulae in both non-relativistic and relativistic cases have been published by J. Schwinger, _Phys. Rev._ **76** (1949) 790.
 
-An experimental test in the relativistic range is just on the limits of the possible. See Lyman, Hanson and Scott, _Phys. Rev._ **84** (1951) 626. Scattering of 15 MeV electrons by nuclei were measured with very good energy-resolution, ∆$E/E$ being 1 - 3 %. In this case it was _only_ the <a id="ix-37">non-radiative</a> cross-section $\overline{\sigma}_{N}$ that was observed, and so the radiative correction given by the relativistic form of (637) becomes quite large. In fact the radiative correction in $\overline{\sigma}_{N}$ in the relativistic range becomes of the order
+An experimental test in the relativistic range is just on the limits of the possible. See Lyman, Hanson and Scott, _Phys. Rev._ **84** (1951) 626. Scattering of 15 MeV electrons by nuclei were measured with very good energy-resolution, ∆$E/E$ being 1 - 3 %. In this case it was _only_ the <a id="ix-51">non-radiative</a> <a id="ix-55">cross-section</a> $\overline{\sigma}_{N}$ that was observed, and so the radiative correction given by the relativistic form of (637) becomes quite large. In fact the radiative correction in $\overline{\sigma}_{N}$ in the relativistic range becomes of the order
 
 <a id="eq-649"></a>
 
@@ -8867,7 +8867,7 @@ The scattering by an electrostatic potential, the two terms in (617) were lumped
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p122"><sup>[p. 122]</sup></a>
 
-Consider scattering of a slow electron by a slowly-varying<sup><a id="fnref-84" href="#fn-84">84</a></sup> magnetic field. The potentials (534) can then be taken to be a pure vector potential, so that
+Consider <a id="ix-243">scattering</a> of a slow electron by a slowly-varying<sup><a id="fnref-84" href="#fn-84">84</a></sup> magnetic field. The potentials (534) can then be taken to be a pure vector potential, so that
 
 <a id="eq-651"></a>
 
@@ -8885,7 +8885,7 @@ $$
 M = - \frac{e \hbar}{2 mc} \tag{652}
 $$
 
-This moment has an energy of interaction with an external <a id="ix-195">Maxwell</a> field $( \boldsymbol{E} , \boldsymbol{H} )$ given by
+This moment has an energy of interaction with an external Maxwell field $( \boldsymbol{E} , \boldsymbol{H} )$ given by
 
 <a id="eq-653"></a>
 
@@ -8948,7 +8948,7 @@ $$
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p123"><sup>[p. 123]</sup></a>
 
-Now comparing the matrix element (659) with (617), we see that the magnetic effect of the second-order radiative correction to scattering is exactly described by saying that the electron has an <a id="ix-98">anomalous magnetic moment</a> $\delta M$ given by
+Now comparing the matrix element (659) with (617), we see that the magnetic effect of the second-order radiative correction to scattering is exactly described by saying that the electron has an <a id="ix-104">anomalous magnetic moment</a> $\delta M$ given by
 
 <a id="eq-660"></a>
 
@@ -9005,7 +9005,7 @@ $$
 i \hbar \frac{\partial \Omega_{1} ( t )}{\partial t} = H^{I} ( t ) \Omega_{1} ( t ) \tag{663}
 $$
 
-for any value of $t$ not in the remote past, so that we may take $g_{A} ( t )$ = 1. Hence the <a id="ix-234">equation</a> of motion for Φ$( t )$ derived from (661) is just
+for any value of $t$ not in the remote past, so that we may take $g_{A} ( t )$ = 1. Hence the <a id="ix-70">equation</a> of motion for Φ$( t )$ derived from (661) is just
 
 <a id="eq-664"></a>
 
@@ -9019,7 +9019,7 @@ $$
 H_{T} ( t ) = ( \Omega_{1} ( t ) )^{- 1} H^{e} ( t ) \Omega_{1} ( t ) \tag{665}
 $$
 
-The covariant part of the calculation, which is done in the FIR, is just the evaluation of this transformed <a id="ix-104">Hamiltonian</a> $H_{T} ( t )$.
+The covariant part of the calculation, which is done in the FIR, is just the evaluation of this transformed <a id="ix-148">Hamiltonian</a> $H_{T} ( t )$.
 
 ### <a id="s-covariant-part-of-the-calculation"></a>Covariant Part of the Calculation
 
@@ -9039,7 +9039,7 @@ $$
 H_{T} ( t ) = ( \Omega_{2} ( t ) \Omega_{1} ( t ) )^{- 1} H_{F} ( t ) = S^{- 1} H_{F} ( t ) \tag{667}
 $$
 
-where $S$, given by (495), is the scattering matrix defined in the absence of the external potential $A_{\mu}^{e}$. We shall now restrict our attention to systems in which only one electron is actually present. We saw by Eq. (533) that $S$ applied to a one-electron state is equivalent to the unit operator, i. e.g. $S$ produces no real scattering or shift of phase in one-particle states. Therefore in discussing the hydrogen atom we may simply omit the $S^{- 1}$ in (667) and write
+where $S$, given by (495), is the scattering matrix defined in the absence of the external potential $A_{\mu}^{e}$. We shall now restrict our attention to systems in which only one <a id="ix-114">electron</a> is actually present. We saw by Eq. (533) that $S$ applied to a one-electron state is equivalent to the unit operator, i. e.g. $S$ produces no real scattering or shift of phase in one-particle states. Therefore in discussing the hydrogen atom we may simply omit the $S^{- 1}$ in (667) and write
 
 <a id="eq-668"></a>
 
@@ -9071,7 +9071,7 @@ $$
 H_{T} ( t ) = H^{e} ( t ) + H_{T 1} ( t ) + H_{T 2} ( t ) \tag{671}
 $$
 
-expanding $H_{T}$ in powers of the radiation interaction just as $U$ was expanded in (536)–(540). But the matrix elements of $\left( U_{2} + U_{2}^{1} \right)$ referring to one-electron transition have already been calculated and are given by (617) assuming non-relativistic velocities for the electron. This enables us to write down immediately a formula for the operator $H_{T 2}$, valid for one-electron transitions at non-relativistic
+expanding $H_{T}$ in powers of the radiation interaction just as $U$ was expanded in (536)–(540). But the matrix elements of $\left( U_{2} + U_{2}^{1} \right)$ referring to one-electron transition have already been calculated and are given by (617) assuming non-relativistic velocities for the electron. This enables us to write down immediately a formula for the operator $H_{T 2}$, valid for one-<a id="ix-105">electron</a> transitions at non-relativistic
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p125"><sup>[p. 125]</sup></a>
@@ -9114,7 +9114,7 @@ $$
 \begin{aligned} H_{T 2} &= \frac{\alpha}{3 \pi \mu^{2}} \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right\} \int ( \nabla^{2} V ) ( \psi^{*} \psi ) d^{3} \boldsymbol{r} \\ & \quad - \frac{i\alpha}{4 \pi \mu} \int \psi^{*} \gamma_{4} ( \boldsymbol{\alpha} \boldsymbol{\cdot} \nabla V ) \psi d^{3} \boldsymbol{r} \end{aligned} \tag{676}
 $$
 
-The calculation of $H_{T 2}$, which is the main part of the <a id="ix-146">Lamb</a> shift calculation, can thus be taken over directly from the scattering calculation. In particular, the elimination of divergent renormalization effects does not have to be considered afresh. Once (676) has been derived, everything is finite and we are permitted to carry out the rest of the calculation in a non-covariant way. Note however that the low-energy photon frequency cut-off $r$ still appears in (676). We expect that this dependence on $r$ will finally disappear when the effects of $H_{T 1}$ are considered, the same cut-off being used in both $H_{T 1}$ and $H_{T 2}$.
+The calculation of $H_{T 2}$, which is the main part of the <a id="ix-171">Lamb</a> shift calculation, can thus be taken over directly from the scattering calculation. In particular, the elimination of divergent <a id="ix-257">renormalization</a> effects does not have to be considered afresh. Once (676) has been derived, everything is finite and we are permitted to carry out the rest of the calculation in a non-covariant way. Note however that the low-energy photon frequency cut-off $r$ still appears in (676). We expect that this dependence on $r$ will finally disappear when the effects of $H_{T 1}$ are considered, the same cut-off being used in both $H_{T 1}$ and $H_{T 2}$.
 
 We next turn to the evaluation of $H_{T 1}$, which is related to $U_{1}$ in the same way as $H_{T 2}$ to $( U_{2} + U_{2}^{1} )$. According to (484) the matrix element of $U_{1}$ for a one-electron transition between the states (542), with emission of the photon (440), is<sup><a id="fnref-90" href="#fn-90">90</a></sup>
 
@@ -9171,7 +9171,7 @@ $$
 /e^{\prime} / k_{3}^{\prime} /e + /e/ k_{3}^{\prime} /e^{\prime} = ik_{0}^{\prime} /e^{\prime} ( 2 \gamma_{4} /e ) \tag{679}
 $$
 
-Now this term (679) is small compared to the other term in (678), because $/e^{\prime}$ involves the matrices $\gamma_{1} ,\gamma_{2} ,\gamma_{3}$ while $/e$ involves $\gamma_{4}$, and the matrix elements of $\gamma_{1} ,\gamma_{2} ,\gamma_{3}$ for non-relativistic transitions are small, of the order of $( v/c )$. The term (679) in fact describes magnetic radiation, whereas the other term in (678) gives electric. The electric term gives an effect of the order of the <a id="ix-124">Lamb shift</a>. Hence in our approximation we may neglect the magnetic term and write
+Now this term (679) is small compared to the other term in (678), because $/e^{\prime}$ involves the matrices $\gamma_{1} ,\gamma_{2} ,\gamma_{3}$ while $/e$ involves $\gamma_{4}$, and the matrix elements of $\gamma_{1} ,\gamma_{2} ,\gamma_{3}$ for non-relativistic transitions are small, of the order of $( v/c )$. The term (679) in fact describes magnetic radiation, whereas the other term in (678) gives electric. The electric term gives an effect of the order of the <a id="ix-161">Lamb shift</a>. Hence in our approximation we may neglect the magnetic term and write
 
 <a id="eq-680"></a>
 
@@ -9219,7 +9219,7 @@ This completes the evaluation of $H_{T}$.
 
 ### <a id="s-discussion-of-the-nature-of-the-representation"></a>Discussion and the Nature of the Φ-Representation
 
-To understand the effect of the <a id="ix-110">transformation</a> (662), we observe that if Ψ$( t )$ is the state of one real electron in the absence of an external field, then Φ$( t )$ will be independent of $t$ and will represent one “bare” electron with the same momentum as the real electron. In an actual hydrogen atom, we may consider the state Ψ$( t )$ to a very good approximation as a superposition of states of a single real free electron; then Φ($t )$ is a superposition of states of a single bare electron with the same distribution of momenta. Thus by the transformation from Ψ to Φ we have eliminated the radiation field surrounding the electron, all remaining effects of this radiation field being contained in the operator $H_{T}$.
+To understand the effect of the <a id="ix-149">transformation</a> (662), we observe that if Ψ$( t )$ is the state of one real electron in the absence of an external field, then Φ$( t )$ will be independent of $t$ and will represent one “bare” electron with the same momentum as the real electron. In an actual hydrogen atom, we may consider the state Ψ$( t )$ to a very good approximation as a superposition of states of a single real free electron; then Φ($t )$ is a superposition of states of a single bare electron with the same distribution of momenta. Thus by the transformation from Ψ to Φ we have eliminated the radiation field surrounding the electron, all remaining effects of this radiation field being contained in the operator $H_{T}$.
 
 It is essential at this point to make sure that in the Φ representation the field-operators are still free-particle operators, with the correct equations of motion for operators in the FIR. Thus the transformation (662) is only a transformation from one set of variables to another within the FIR, and
 
@@ -9236,7 +9236,7 @@ $$
 i \hbar \frac{dQ}{dt} = \boldsymbol{[} Q,H_{0} \boldsymbol{]} \tag{685}
 $$
 
-where $H_{0}$ is the Hamiltonian of the Dirac and Maxwell fields without interaction. In the Φ representation the corresponding field-operator is
+where $H_{0}$ is the Hamiltonian of the <a id="ix-87">Dirac</a> and Maxwell fields without interaction. In the Φ representation the corresponding field-operator is
 
 <a id="eq-686"></a>
 
@@ -9268,7 +9268,7 @@ When we consider systems containing more than one particle, then Ω${}_{1} ( t 
 
 ### <a id="s-concluding-non-covariant-part-of-the-calculation"></a>Concluding Non-Covariant Part of the Calculation
 
-Having established that the Φ-representation in which (664) holds is the FIR, we now proceed at once to transform to the BIR in which we shall finish the calculation of the <a id="ix-147">Lamb shift</a>. To transform to the BIR, we write $e$
+Having established that the Φ-representation in which (664) holds is the FIR, we now proceed at once to transform to the BIR in which we shall finish the calculation of the <a id="ix-172">Lamb shift</a>. To transform to the BIR, we write $e$
 
 <a id="eq-689"></a>
 
@@ -9392,7 +9392,7 @@ $$
 
 a result which is completely divergence-free and independent of $r$.
 
-The second term of (700) represents the effect of the anomalous magnetic moment of the electron on the energy levels. It therefore gives a spin-dependent shift which modifies slightly the fine-structure which arises from the Dirac magnetic moment. To evaluate this term we use the Dirac equations (see (38)).
+The second term of (700) represents the effect of the anomalous magnetic moment of the <a id="ix-108">electron</a> on the energy levels. It therefore gives a spin-dependent shift which modifies slightly the fine-structure which arises from the <a id="ix-78">Dirac</a> magnetic moment. To evaluate this term we use the Dirac equations (see (38)).
 
 <a id="eq-701"></a>
 
@@ -9497,7 +9497,7 @@ $$
 \Delta E = - \frac{\alpha^{3}}{2 \pi} \frac{1}{n^{3}} \text{ Ry } \frac{1}{\ell ( \ell + \tfrac{1}{2} )} \quad \text{ for } j = \ell - \tfrac{1}{2} \tag{712}
 $$
 
-For the relative displacement of the 2$s$ and 2$p_{1 / 2}$ levels, which in the Dirac theory were degenerate, we have finally by subtracting (712) from (708)
+For the relative displacement of the 2$s$ and 2$p_{1 / 2}$ levels, which in the <a id="ix-80">Dirac</a> theory were degenerate, we have finally by subtracting (712) from (708)
 
 <a id="eq-713"></a>
 
@@ -9607,7 +9607,7 @@ I scarcely knew L$A$TEX before beginning this project. My friend (and Princeton 
 
 keyboard. No one who types technical material should be ignorant of L$A$TEX.
 
-This project would never have been undertaken without the approval of Prof. <a id="ix-96">Dyson</a> and the efforts of Profs. Hall, Schweber and Ashrafi, who made the notes accessible. I thank Prof. Hall for his steady encouragement through the many hours of typing. I thank Prof. Dyson both for friendly assistance and for allowing his wonderful lectures to become easier to obtain, to be read with pleasure and with profit for many years to come.
+This project would never have been undertaken without the approval of Prof. <a id="ix-102">Dyson</a> and the efforts of Profs. Hall, Schweber and Ashrafi, who made the notes accessible. I thank Prof. Hall for his steady encouragement through the many hours of typing. I thank Prof. Dyson both for friendly assistance and for allowing his wonderful lectures to become easier to obtain, to be read with pleasure and with profit for many years to come.
 
 David Derbes
 
@@ -9648,325 +9648,365 @@ University of Chicago loki@uchicago.edu
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p140"><sup>[p. 140]</sup></a>
 
+<table width="100%"><tr>
+<td valign="top" width="50%">
+
 - $a_{o}$, _see_ Bohr radius
-- contraction of field operators, [103](#p103), [104](#p104), [109](#p109)
 - Abelian, [48](#p48)
-- Coulomb potential, [22](#p22), [25](#ix-0), [59](#p59), [68](#p68), [71](#p71), [80](#p80), [94](#p94)
-- action, [32](#ix-1), [33](#ix-2), [36](#ix-3), [37](#ix-4)
-- create, [42](#p42), [83](#ix-5), [85](#p85), [94](#p94), [97](#p97), [98](#p98), [101](#p101)
+- action, [32](#ix-0), [33](#ix-1), [36](#ix-2), [37](#ix-3)
 - adiabatic, [97](#p97)
-- creation, [1](#ix-6), [2](#ix-7), [12](#ix-8), [26](#ix-9), [27](#ix-10), [71](#p71)
 - $\alpha$, _see_ fine structure constant
-  - operator, [66](#p66)
-- amplitude, [4](#ix-11), [29](#ix-12), [35](#ix-13), [36](#ix-14), [52](#p52), [55–58](#ix-15), [72](#p72), [103](#p103)
-  - pair, [25](#ix-16), [26](#ix-17), [31](#p31), [79](#p79), [84](#p84), [94](#p94), [101](#ix-18), [102](#p102), [116](#p116)
-  - transition, [35](#ix-19)
-- cross-section
-- angle, [26](#ix-20), [31](#ix-21), [91](#ix-22), [121](#p121)
-  - annihilation, [93](#p93)
-  - scattering, [30](#ix-23), [91](#ix-22), [92](#p92)
-  - bremsstrahlung, [94](#ix-24), [123](#p123)
-  - solid, [26](#ix-25), [50](#p50), [88](#p88), [93](#p93), [120](#ix-26), [122](#p122)
-  - differential, [122](#p122)
-- angular momentum, [9](#ix-27), [13](#ix-28), [132](#p132)
-  - differential, for Møller scattering, [30](#ix-29)
-  - conservation of, [10](#ix-30)
-  - differential, photon, [88](#p88)
+- amplitude, [4](#ix-4), [29](#ix-5), [35](#ix-6), [36](#ix-7), [52](#p52), [55–58](#ix-8), [72](#p72), [103](#p103)
+  - transition, [35](#ix-9)
+- angle, [26](#ix-10), [31](#ix-11), [91](#ix-12), [121](#p121)
+  - scattering, [30](#ix-13), [91](#ix-12), [92](#p92)
+  - solid, [26](#ix-14), [50](#p50), [88](#p88), [93](#p93), [120](#ix-15), [122](#p122)
+- angular momentum, [9](#ix-16), [13](#ix-17), [132](#p132)
+  - conservation of, [10](#ix-18)
 - annihilate, [92](#p92), [97](#p97), [98](#p98), [101](#p101)
-  - experimental, [96](#ix-31)
-- annihilation, [1](#ix-32), [30](#ix-33), [86](#p86), [92](#p92)
-  - from amplitudes, [28–30](#p28)
-  - cross-section, [93](#ix-34)
-  - Klein-Nishina, [91](#ix-35)
+- annihilation, [1](#ix-19), [30](#ix-20), [86](#p86), [92](#p92)
+  - cross-section, [93](#ix-21)
   - life-time, [93](#p93)
-  - neutron, [93](#p93)
-  - pair, [92](#ix-36), [101](#ix-18), [102](#p102)
-  - non-radiative, [108](#p108), [121](#ix-37)
-- anticommute, [40](#ix-38), [41](#p41), [61](#p61), [66](#p66), [68](#ix-39), [69](#ix-40), [71](#p71), [84](#ix-41), [87](#ix-42),
-  - pair creation, [12](#ix-43) [89](#p89), [98](#p98)
-  - radiative, [122–123](#p122)
-  - scattering by a static potential, [120](#p120)
+  - pair, [92](#ix-22), [101](#ix-23), [102](#p102)
+- anticommute, [40](#ix-24), [41](#p41), [61](#p61), [66](#p66), [68](#ix-25), [69](#ix-26), [71](#p71), [84](#ix-27), [87](#ix-28), [89](#p89), [98](#p98)
 - Baranger, Michael, [133](#p133)
-  - Thomson scattering, [92](#p92)
 - bare mass, [59](#p59), [106](#p106)
-  - unpolarized electron beam, [121](#p121)
 - Bethe, Hans A., [50](#p50), [59](#p59), [133](#p133)
 - Bleuler, K., [46](#p46)
-- d’Alembertian operator, [79](#p79)
-- Deutsch, Martin, [86](#p86)
 - Bloch, Felix, [119](#p119)
 - Bohr radius, [52](#p52), [53](#p53), [60](#p60), [93](#p93), [132](#p132)
-- De Broglie wavelength, [25](#ix-44)
-- Born approximation, [22](#ix-45), [24](#ix-46), [27](#ix-47), [84](#p84), [94](#ix-48), [96](#p96), [107](#p107),
-- dielectric constant, [71](#p71), [78](#p78) [124](#p124)
-- Dirac
+- Born approximation, [22](#ix-29), [24](#ix-30), [27](#ix-31), [84](#p84), [94](#ix-32), [96](#p96), [107](#p107), [124](#p124)
 - Bose statistics, [71](#p71)
-  - electron magnetic moment, [60](#p60)
 - bound interaction representation, [81](#p81), [125](#p125), [126](#p126)
-  - electron theory, [4](#p4), [11](#p11), [60](#p60), [61](#p61), [67](#p67)
   - Schwinger invention, [126](#p126)
-  - equation, [4–7](#ix-49), [10](#ix-50), [13](#ix-51), [14](#ix-52), [17](#ix-53), [22](#ix-54), [23](#ix-55), [28](#ix-56), [31](#ix-57),
-- bremsstrahlung, [94](#ix-24), [96](#p96), [108](#p108), [123](#p123) [105](#ix-58), [124](#p124), [128](#p128)
-- Brown, L. M., [59](#p59) conjugate, [9](#p9) covariant notation, [8](#p8)
-- Cauchy principal value, [57](#p57), [59](#p59) field quantization, [60](#p60)
-- charge renormalization, [78](#p78) Hamiltonian, [9](#p9)
-- charge symmetry, [64](#p64) Lorentz invariance, [6](#p6), [7](#p7)
-- chronological product, [83](#p83), [84](#p84), [102](#p102) positron, [11](#p11), [13](#p13)
-- classical electron radius, [93](#p93) second order, [18](#p18)
-- Compton with electromagnetic fields, [12](#p12)
-  - effect, [86–91](#p86), [94](#ix-59), [96](#p96), [101](#ix-60), [103](#ix-61)
-  - field, [34](#ix-62), [129](#p129)
-  - scattering, [101](#ix-63) interacting with Maxwell field, [34](#p34), [80](#p80)
-  - wavelength, [53](#p53) in external potential, [130](#p130)
-- conservation laws, [9](#ix-64)
-  - hole theory, [11](#ix-65), [66](#p66)
+- bremsstrahlung, [94](#ix-33), [96](#p96), [108](#p108), [123](#p123)
+- Brown, L. M., [59](#p59)
+- Cauchy principal value, [57](#p57), [59](#p59)
+- charge renormalization, [78](#p78)
+- charge symmetry, [64](#p64)
+- chronological product, [83](#p83), [84](#p84), [102](#p102)
+- classical electron radius, [93](#p93)
+- Compton
+  - effect, [86–91](#p86), [94](#ix-34), [96](#p96), [101](#ix-35), [103](#ix-36)
+  - scattering, [101](#ix-37)
+  - wavelength, [53](#p53)
+- conservation laws, [9](#ix-38)
+
+</td>
+<td valign="top">
+
+- contraction of field operators, [103](#p103), [104](#p104), [109](#p109)
+- Coulomb potential, [22](#p22), [25](#ix-39), [59](#p59), [68](#p68), [71](#p71), [80](#p80), [94](#p94)
+- create, [42](#p42), [83](#ix-40), [85](#p85), [94](#p94), [97](#p97), [98](#p98), [101](#p101)
+- creation, [1](#ix-41), [2](#ix-42), [12](#ix-43), [26](#ix-44), [27](#ix-45), [71](#p71)
+  - operator, [66](#p66)
+  - pair, [25](#ix-46), [26](#ix-47), [31](#p31), [79](#p79), [84](#p84), [94](#p94), [101](#ix-23), [102](#p102), [116](#p116)
+- cross-section
+  - annihilation, [93](#ix-21)
+  - bremsstrahlung, [94](#ix-33), [123](#p123)
+  - differential, [122](#p122)
+  - differential, for Møller scattering, [30](#ix-48)
+  - differential, photon, [88](#p88)
+  - experimental, [96](#p96)
+  - from amplitudes, [28–30](#ix-49)
+  - Klein-Nishina, [91](#ix-50)
+  - neutron, [93](#ix-21)
+  - non-radiative, [108](#p108), [121](#ix-51)
+  - pair creation, [12](#ix-52)
+  - radiative, [122–123](#p122)
+  - scattering by a static potential, [120](#ix-53)
+  - Thomson scattering, [92](#ix-54)
+  - unpolarized electron beam, [121](#ix-55)
+- d’Alembertian operator, [79](#p79)
+- Deutsch, Martin, [86](#p86)
+- De Broglie wavelength, [25](#ix-56)
+- dielectric constant, [71](#p71), [78](#p78)
+- Dirac
+  - electron magnetic moment, [60](#ix-57)
+  - electron theory, [4](#ix-58), [11](#ix-59), [60](#ix-57), [61](#ix-60), [67](#p67)
+  - equation, [4–7](#ix-61), [10](#ix-62), [13](#ix-63), [14](#ix-64), [17](#ix-65), [22](#ix-66), [23](#ix-67), [28](#ix-68), [31](#ix-69), [105](#p105), [124](#ix-70), [128](#p128) conjugate, [9](#ix-71) covariant notation, [8](#p8) field quantization, [60](#ix-57) Hamiltonian, [9](#ix-71) Lorentz invariance, [6](#ix-72), [7](#ix-73) positron, [11](#ix-74), [13](#ix-63) second order, [18](#ix-75) with electromagnetic fields, [12](#ix-76)
+  - field, [34](#ix-77), [129](#ix-78) interacting with Maxwell field, [34](#ix-77), [80](#ix-79) in external potential, [130](#ix-80)
+  - hole theory, [11](#ix-81), [66](#ix-82)
+
+</td>
+</tr></table>
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p141"><sup>[p. 141]</sup></a>
 
-  - ket, [35](#ix-66)
-  - contour integral, [85](#ix-67), [87](#p87), [109](#p109), [111](#p111)
-  - Lagrangian, [40](#ix-68)
-  - definition of operators, [38](#p38)
-  - matrices, [5](#ix-69), [20](#p20), [62](#p62), [104](#p104), [111](#p111), [127](#p127)
-  - graph, [100](#ix-70), [101](#ix-71), [113](#p113) Dyson notation, [20](#p20)
-  - integration formula, [75](#p75) Feynman notation, [21](#p21)
-  - propagator, _see_ Feynman, $D_{F} ,S_{F} ,$ ∆$F$ in denominator, [87](#p87)
-  - quantization, [35](#ix-72), [36](#ix-73), [40](#p40), [98](#p98), [102](#p102) spur theorems, [89](#p89), [114](#p114)
-  - rules, [102–104](#ix-74), [108](#p108), [113](#p113)
-  - notation, [38](#ix-75)
-- Feynman, Richard P., [1](#ix-76), [2](#ix-77), [34](#ix-78), [82](#ix-79), [133](#p133)
-  - wave function, [18](#ix-80), [68](#ix-81), [81](#ix-82)
-- Fierz, Markus, [85](#p85)
-- Dirac, P. A. M., [1](#ix-83), [2](#ix-84), [4](#ix-85), [10](#ix-86), [14](#ix-87), [31](#ix-88), [132](#p132)
-- fine structure constant, [15](#ix-89), [17](#p17), [60](#p60), [78](#p78), [109](#p109), [113](#p113),
-- distribution, [24](#ix-90), [98](#p98) [123](#p123), [125](#p125)
-  - angular, [24](#ix-91), [27](#ix-92)
-- Fitzgerald contraction, [6](#ix-93)
-  - momentum, [24](#ix-94)
-- Fourier
+<table width="100%"><tr>
+<td valign="top" width="50%">
+
+  - ket, [35](#ix-83)
+  - Lagrangian, [40](#ix-84)
+  - matrices, [5](#ix-85), [20](#ix-86), [62](#p62), [104](#p104), [111](#p111), [127](#ix-87) Dyson notation, [20](#ix-86) Feynman notation, [21](#p21) in denominator, [87](#ix-88) spur theorems, [89](#p89), [114](#p114)
+  - notation, [38](#ix-89)
+  - wave function, [18](#ix-90), [68](#ix-91), [81](#ix-92)
+- Dirac, P. A. M., [1](#ix-93), [2](#ix-94), [4](#ix-58), [10](#ix-95), [14](#ix-96), [31](#ix-97), [132](#p132)
+- distribution, [24](#ix-98), [98](#p98)
+  - angular, [24](#ix-99), [27](#ix-100)
+  - momentum, [24](#ix-101)
 - Dulit, Everett, [86](#p86)
-  - components, [44](#ix-95), [45](#p45), [63](#p63), [79](#p79), [94](#p94)
-- Dyson, Freeman J., i, [133](#ix-96)
-  - expansion, [127](#p127)
-  - integral, [110](#ix-97)
+- Dyson, Freeman J., i, [133](#ix-102)
 - electron
-- free interaction representation, [81](#p81), [125](#p125)
-  - absorption and emission operators, [64](#p64)
-  - anomalous magnetic moment, [60](#p60), [123–125](#ix-98),
-- gauge [131](#p131)
-  - condition, [26](#p26), [27](#p27), [114](#ix-99) Schwinger correction, [125](#p125)
-  - invariance, [46](#p46), [77](#p77)
-  - bare, [59](#p59), [106](#p106), [129](#p129)
-  - transformation, [26](#ix-100)
-  - classical radius, [91](#p91)
-- Gauss integral, _see_ Laplace integral
-  - Compton wavelength, [53](#p53)
-- Green’s theorem, [60](#p60)
-  - in electromagnetic field
-- Gupta, S. N., [46](#p46), [48](#p48) nonrelativistic treatment, [17](#p17)
-- Gupta-Bleuler method, [46](#p46), [48–50](#p48)
-  - magnetic moment, [2](#ix-101), [18](#ix-102), [124](#p124)
-- Hamiltonian, [33–35](#ix-103), [40](#p40), [50](#p50), [54](#p54) Dirac prediction, [18](#p18)
-  - and anomalous magnetic moment, [124](#ix-104)
-  - negative energy, [11](#ix-105), [12](#ix-106)
-  - Dirac and Maxwell fields, [129](#p129)
-  - states, [10](#ix-107), [22](#ix-108)
-  - Dirac field, [65](#p65), [66](#p66), [70](#p70) projection operator, [23](#p23) in external field, [70](#p70)
-  - wave function, [23](#ix-109)
-  - field equations, [34](#ix-62)
+  - absorption and emission operators, [64](#ix-103)
+  - anomalous magnetic moment, [60](#p60), [123–125](#ix-104), [131](#p131) Schwinger correction, [125](#ix-105)
+  - bare, [59](#ix-106), [106](#ix-107), [129](#ix-108)
+  - classical radius, [91](#ix-109)
+  - Compton wavelength, [53](#ix-110)
+  - in electromagnetic field nonrelativistic treatment, [17](#ix-111)
+  - magnetic moment, [2](#ix-112), [18](#ix-113), [124](#ix-114) Dirac prediction, [18](#ix-113)
+  - negative energy, [11](#ix-115), [12](#ix-116)
+  - states, [10](#ix-117), [22](#ix-118) projection operator, [23](#ix-119)
+  - wave function, [23](#ix-120)
 - electron-electron scattering, [27](#p27), [30](#p30)
-  - non-relativistic atom, [60](#p60), [130](#p130)
 - electron-photon scattering, [86](#p86)
-  - transformed, [126](#ix-110)
 - electron-positron
-  - with and without radiation, [81](#ix-111)
   - annihilation, [92–93](#p92)
-- Hanson, A. O., [123](#p123)
-  - creation, [26](#ix-9)
-- Heaviside units, [52](#p52), [60](#p60), [77](#p77)
+  - creation, [26](#ix-44)
   - field, [72](#p72)
-- Heitler, Walter, [1](#ix-112), [23](#ix-113), [94](#p94), [95](#p95)
   - pair, [79](#p79)
-- Hermitian, [4](#ix-114), [9](#ix-115), [22](#ix-116), [44](#p44)
-  - scattering, [30](#ix-23), [86](#ix-117), [92](#p92)
-  - conjugate, [4](#ix-118), [63](#ix-119), [68](#p68)
+  - scattering, [30](#ix-13), [86](#ix-121), [92](#p92)
   - symmetry, [65](#p65)
-- Huyghens principle, [36](#p36)
 - electrons and positrons
-- hydrogen atom, [2](#p2), [13–17](#ix-120)
   - relativistic field theory, [60](#p60)
-  - energy levels, [17](#p17), [70](#p70)
 - Fermi
-  - Hamiltonian, [14](#ix-121)
   - form of Maxwell Lagrangian, [34](#ix-122)
-  - Lamb shift, [52](#ix-123), [126–132](#ix-124)
   - statistics, [71](#p71)
-  - numerical calculation of energies, [59](#p59)
 - Feynman
-  - radial equation, [15–17](#p15)
   - $D_{F}$, [84–85](#p84)
-  - radiative corrections to electron motion, [96](#p96)
   - $S_{F}$, [87](#p87)
-  - vacuum polarization, [79](#p79)
   - ∆$F$, [87](#p87)
-- infra-red divergence, [116](#p116), [118–119](#p118), [124](#p124)
   - $i\epsilon$ prescription, [116](#p116)
+
+</td>
+<td valign="top">
+
+  - contour integral, [85](#ix-123), [87](#p87), [109](#ix-124), [111](#ix-125)
+  - definition of operators, [38](#ix-126)
+  - graph, [100](#ix-127), [101](#ix-128), [113](#p113)
+  - integration formula, [75](#p75)
+  - propagator, _see_ Feynman, $D_{F} ,S_{F} ,$ ∆$F$
+  - quantization, [35](#ix-129), [36](#ix-130), [40](#ix-131), [98](#ix-132), [102](#ix-133)
+  - rules, [102–104](#ix-134), [108](#p108), [113](#p113)
+- Feynman, Richard P., [1](#ix-135), [2](#ix-136), [34](#ix-137), [82](#ix-138), [133](#p133)
+- Fierz, Markus, [85](#p85)
+- fine structure constant, [15](#ix-139), [17](#p17), [60](#p60), [78](#p78), [109](#p109), [113](#p113), [123](#p123), [125](#p125)
+- Fitzgerald contraction, [6](#ix-140)
+- Fourier
+  - components, [44](#ix-141), [45](#p45), [63](#p63), [79](#p79), [94](#p94)
+  - expansion, [127](#p127)
+  - integral, [110](#ix-142)
+- free interaction representation, [81](#p81), [125](#p125)
+- gauge
+  - condition, [26](#ix-143), [27](#ix-144), [114](#ix-145)
+  - invariance, [46](#p46), [77](#p77)
+  - transformation, [26](#ix-146)
+- Gauss integral, _see_ Laplace integral
+- Green’s theorem, [60](#p60)
+- Gupta, S. N., [46](#p46), [48](#p48)
+- Gupta-Bleuler method, [46](#p46), [48–50](#p48)
+- Hamiltonian, [33–35](#ix-147), [40](#p40), [50](#p50), [54](#p54)
+  - and anomalous magnetic moment, [124](#ix-148)
+  - Dirac and Maxwell fields, [129](#p129)
+  - Dirac field, [65](#p65), [66](#p66), [70](#p70) in external field, [70](#p70)
+  - field equations, [34](#ix-77)
+  - non-relativistic atom, [60](#p60), [130](#p130)
+  - transformed, [126](#ix-149)
+  - with and without radiation, [81](#ix-150)
+- Hanson, A. O., [123](#p123)
+- Heaviside units, [52](#p52), [60](#p60), [77](#p77)
+- Heitler, Walter, [1](#ix-151), [23](#ix-152), [94](#p94), [95](#p95)
+- Hermitian, [4](#ix-153), [9](#ix-154), [22](#ix-155), [44](#p44)
+  - conjugate, [4](#ix-156), [63](#ix-157), [68](#p68)
+- Huyghens principle, [36](#p36)
+- hydrogen atom, [2](#p2), [13–17](#ix-158)
+  - energy levels, [17](#p17), [70](#p70)
+  - Hamiltonian, [14](#ix-159)
+  - Lamb shift, [52](#ix-160), [126–132](#ix-161)
+  - numerical calculation of energies, [59](#p59)
+  - radial equation, [15–17](#p15)
+  - radiative corrections to electron motion, [96](#p96)
+  - vacuum polarization, [79](#p79)
+- infra-red divergence, [116](#p116), [118–119](#p118), [124](#p124)
+
+</td>
+</tr></table>
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p142"><sup>[p. 142]</sup></a>
 
-- interaction representation, [81–82](#ix-125), [96](#p96), [106](#p106)
-  - distribution, [24](#ix-90)
-  - integral, [64](#p64), [75](#ix-126), [103](#ix-127)
+<table width="100%"><tr>
+<td valign="top" width="50%">
+
+- interaction representation, [81–82](#ix-162), [96](#p96), [106](#p106)
 - Karplus, Robert, [125](#p125)
-  - representation, [43](#p43), [45](#p45), [50](#p50), [62](#p62), [73](#ix-128), [74](#p74), [85](#ix-129), [87](#p87)
-- Klein-Gordon equation, [3](#ix-130), [4](#p4), [24](#ix-131), [31](#p31), [34](#p34)
-  - space, [22](#ix-132)
+- Klein-Gordon equation, [3](#ix-163), [4](#p4), [24](#ix-164), [31](#p31), [34](#p34)
 - Klein-Nishina formula, [91](#p91)
-- Moravcsik, Michael J., i
 - Koenig, Seymour H., [125](#p125)
-- Morette, Cécile, [36](#ix-133)
 - Kramers, Hendrik A., [59](#p59)
-- Mott, Neville F., [22](#ix-134), [30](#ix-135)
 - Kroll, Norman M., [125](#p125), [133](#p133)
-- $\mu$, [34](#p34), [60](#p60)
 - Kusch, Polykarp, [125](#p125)
-- Nordsieck, Arnold E., [119](#p119)
-- Lagrangian, free-particle, [12](#ix-136)
-- normal form, [98–103](#p98), [105](#p105)
-- Lagrangian density, [32](#ix-137)
-  - Dirac, [34](#ix-138), [61](#ix-139)
-- Pauli
+- Lagrangian, free-particle, [12](#ix-165)
+- Lagrangian density, [32](#ix-166)
+  - Dirac, [34](#ix-167), [61](#ix-60)
   - Dirac-Maxwell, [34](#p34)
-  - exclusion principle, [66](#p66)
   - inclusion of anomalous magnetic moment, [124](#p124)
-  - matrices, [5](#ix-69)
-  - Klein-Gordon, imaginary, [34](#ix-140)
-  - spin & statistics, [2](#ix-141)
-  - Klein-Gordon, real, [34](#ix-140)
-- Pauli, Wolfgang, [1–3](#ix-142)
-  - Maxwell, [34](#ix-143)
-- Peierls
-  - quantum electrodynamics, [80](#ix-144)
-  - formula, [40](#ix-145), [62](#p62), [69](#p69)
-- Lamb, Willis E., [125](#ix-146)
-  - method, [42](#p42), [61](#p61)
-- Lamb shift, [52](#ix-123), [53](#p53), [60](#p60), [72](#p72), [79](#p79), [80](#p80), [104](#p104), [125](#ix-146), [127–](#ix-147)
-- Peierls, Rudolf E., [40](#ix-148) [129](#p129), [133](#p133)
-- $\pi$ meson, [3](#p3)
-  - experiment, [2](#ix-149), [60](#p60)
-- Poisson’s equation, [25](#ix-150)
+  - Klein-Gordon, imaginary, [34](#ix-168)
+  - Klein-Gordon, real, [34](#ix-168)
+  - Maxwell, [34](#ix-169)
+  - quantum electrodynamics, [80](#ix-170)
+- Lamb, Willis E., [125](#ix-171)
+- Lamb shift, [52](#ix-160), [53](#p53), [60](#p60), [72](#p72), [79](#p79), [80](#p80), [104](#p104), [125](#ix-171), [127–](#ix-172) [129](#p129), [133](#p133)
+  - experiment, [2](#ix-173), [60](#p60)
 - Laplace integral, [77](#p77)
-- positron, [1](#ix-151), [11](#ix-152), [26](#ix-153)
 - Lorentz
-  - absorption and emission operators, [64](#p64)
   - frame, [81](#p81)
-  - and line shift, [58](#ix-154)
   - gauge condition, [114](#p114)
-  - failure of commuting fields, [66](#ix-155)
-  - invariance, [1](#ix-156), [5](#ix-157), [73](#p73)
-  - positive energy, [70](#p70)
-  - system, [6](#ix-158), [29](#ix-159), [68](#ix-160), [125](#p125)
-  - states, [11–12](#ix-161), [22](#ix-108), [23](#ix-162), [63–65](#ix-163)
-  - transformations, [1](#ix-164), [6](#ix-165), [22](#ix-166), [30](#ix-167), [73](#p73), [79](#p79), [111](#p111)
-- positron-electron pair, [71](#p71)
+  - invariance, [1](#ix-174), [5](#ix-175), [73](#p73)
+  - system, [6](#ix-176), [29](#ix-177), [68](#ix-178), [125](#p125)
+  - transformations, [1](#ix-179), [6](#ix-180), [22](#ix-181), [30](#ix-182), [73](#p73), [79](#p79), [111](#p111)
 - Lyman, E. M., [123](#p123)
-- positronium, [86](#p86), [93](#p93)
-- probability, [27](#ix-168), [35](#ix-169)
-- Massey, H. S. W., [30](#ix-170)
-  - amplitude, [38](#p38), [55](#ix-15)
-- mass renormalization, [58–59](#ix-171) transition, [35](#p35)
+- Massey, H. S. W., [30](#ix-183)
+- mass renormalization, [58–59](#ix-184)
 - Maxwell
-  - and continuity, [3](#ix-172)
-  - electromagnetic theory, [6](#ix-173), [116](#p116)
+  - electromagnetic theory, [6](#ix-185), [116](#p116)
+  - equations, [26](#ix-186), [27](#ix-187), [45](#p45)
+  - field, [31](#ix-188), [48](#p48), [54](#ix-189), [60](#ix-190), [61](#p61), [64](#ix-191), [65](#ix-192), [67](#ix-193), [72](#p72), [81](#ix-194) classical, [71](#ix-195) external classical, [80](#ix-79), [124](#p124) Hamiltonian, [54](#ix-189) Lagrangian, [34](#ix-77) modified, [116](#p116) quantized, [60](#ix-190), [72](#p72), [107](#p107) relativistic treatment, [60](#ix-190) vacuum, [55](#ix-196)
+  - potentials, [80](#ix-197), [84](#ix-198)
+  - radiation, [71](#p71)
+- meson, [1](#ix-199), [2](#ix-200)
+- Møller scattering, [27](#p27), [30](#ix-201), [31](#p31), [84–86](#p84), [101](#p101), [120](#p120), [129](#p129)
+- momentum, [4](#ix-202), [9–12](#ix-203), [15](#ix-204), [23](#ix-205)
+  - conservation, [9](#ix-38), [29](#ix-206), [88](#p88)
+
+</td>
+<td valign="top">
+
+  - distribution, [24](#ix-98)
+  - integral, [64](#p64), [75](#ix-207), [103](#ix-208)
+  - representation, [43](#p43), [45](#ix-209), [50](#ix-210), [62](#ix-211), [73](#ix-212), [74](#p74), [85](#ix-213), [87](#p87)
+  - space, [22](#ix-214)
+- Moravcsik, Michael J., i
+- Morette, Cécile, [36](#ix-215)
+- Mott, Neville F., [22](#ix-216), [30](#ix-217)
+- $\mu$, [34](#p34), [60](#p60)
+- Nordsieck, Arnold E., [119](#p119)
+- normal form, [98–103](#p98), [105](#p105)
+- Pauli
+  - exclusion principle, [66](#p66)
+  - matrices, [5](#ix-85)
+  - spin & statistics, [2](#ix-218)
+- Pauli, Wolfgang, [1–3](#ix-219)
+- Peierls
+  - formula, [40](#ix-220), [62](#p62), [69](#p69)
+  - method, [42](#p42), [61](#ix-221)
+- Peierls, Rudolf E., [40](#ix-222)
+- $\pi$ meson, [3](#p3)
+- Poisson’s equation, [25](#ix-223)
+- positron, [1](#ix-224), [11](#ix-225), [26](#ix-226)
+  - absorption and emission operators, [64](#ix-227)
+  - and line shift, [58](#ix-228)
+  - failure of commuting fields, [66](#p66)
+  - positive energy, [70](#ix-229)
+  - states, [11–12](#ix-230), [22](#ix-118), [23](#ix-119), [63–65](#ix-231)
+- positron-electron pair, [71](#p71)
+- positronium, [86](#p86), [93](#p93)
+- probability, [27](#ix-232), [35](#ix-233)
+  - amplitude, [38](#p38), [55](#ix-8) transition, [35](#ix-6)
+  - and continuity, [3](#ix-234)
   - annihilation, [92](#p92)
-  - equations, [26](#ix-174), [27](#ix-175), [45](#p45)
-  - conserved, [2](#ix-176)
-  - field, [31](#ix-177), [48](#p48), [54](#ix-178), [60](#ix-179), [61](#p61), [64](#ix-180), [65](#ix-181), [67](#ix-182), [72](#p72), [81](#ix-183)
-  - creation, [27](#ix-10) classical, [71](#p71)
-  - density, [4](#ix-184), [6](#ix-185), [12](#ix-186) external classical, [80](#p80), [124](#p124)
-  - differential, [26](#ix-187) Hamiltonian, [54](#ix-188)
-  - emission, [49](#ix-189), [50](#p50), [57](#p57) Lagrangian, [34](#ix-143)
-  - pair creation, [26](#ix-190), [79](#ix-191) modified, [116](#p116)
-  - pair emission, [26](#ix-17) quantized, [60](#ix-192), [72](#p72), [107](#p107)
-  - radiation relativistic treatment, [60](#ix-192) per unit time, [57](#p57) vacuum, [55](#p55)
-  - scattering, [88](#p88)
-  - potentials, [80](#ix-193), [84](#ix-194) infra-red, [119](#p119)
-  - radiation, [71](#p71) radiative, [122](#ix-195)
-- meson, [1](#ix-196), [2](#ix-197) reduced, [113](#p113)
-- Møller scattering, [27](#p27), [30](#ix-198), [31](#p31), [84–86](#p84), [101](#p101), [120](#p120), [129](#p129) with no emitted photon, [119](#p119)
-- momentum, [4](#ix-199), [9–12](#ix-200), [15](#ix-201), [23](#ix-202) with one emitted photon, [118](#p118)
-  - conservation, [9](#ix-64), [29](#ix-203), [88](#p88)
-  - scattering amplitude, [27](#ix-204)
+  - conserved, [2](#ix-235)
+  - creation, [27](#ix-45)
+  - density, [4](#ix-236), [6](#ix-237), [12](#ix-238)
+  - differential, [26](#ix-239)
+  - emission, [49](#ix-240), [50](#p50), [57](#p57)
+  - pair creation, [26](#ix-241), [79](#p79)
+  - pair emission, [26](#ix-47)
+  - radiation per unit time, [57](#p57)
+  - scattering, [88](#p88) infra-red, [119](#ix-242) radiative, [122](#ix-243) reduced, [113](#p113) with no emitted photon, [119](#ix-242) with one emitted photon, [118](#ix-244)
+  - scattering amplitude, [27](#ix-232)
+
+</td>
+</tr></table>
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p143"><sup>[p. 143]</sup></a>
 
-  - transition, [22](#ix-205), [24](#ix-206), [29](#ix-207)
-- Scott, M. B., [123](#p123) radiative, [57](#p57)
-- second quantization, [31](#ix-208)
-- problem
-- self-energy _1_, [8](#p8)
-  - and Lamb shift, [72](#p72) _2_, [18](#p18)
-  - electron, [72](#p72), [105](#ix-209), [112](#p112) _3_, [24](#ix-210)
-  - photon, [77](#p77) _4_, [24](#p24)
-  - vacuum, [108](#p108) _5_, [34](#p34)
-- Smith, Lloyd P., [51](#p51)
+<table width="100%"><tr>
+<td valign="top" width="50%">
+
+  - transition, [22](#ix-245), [24](#ix-246), [29](#ix-247) radiative, [57](#ix-248)
+- problem _1_, [8](#ix-249) _2_, [18](#p18) _3_, [24](#p24) _4_, [24](#p24) _5_, [34](#p34)
 - Prodell, Albert G., [125](#p125)
-- spin, existence of, [9](#ix-211)
-- projection operator, [23](#ix-212), [63](#p63), [89](#p89)
-- spinors, [8](#ix-213), [93](#p93)
-- spur theorems, [89](#p89), [114](#p114)
-- quantum electrodynamics, [2](#ix-214), [34](#ix-215), [54](#p54), [60](#p60), [73](#ix-216), [74](#p74),
-- Stehn, J. R., [59](#p59) [80](#p80), [81](#p81), [102](#p102), [106](#p106), [133](#p133)
-- Stueckelberg, E. C. G., [84](#p84), [85](#p85)
-  - Lagrangian, [40](#ix-68)
-- Stueckelberg $D^{c}$, [84](#p84)
+- projection operator, [23](#ix-250), [63](#p63), [89](#p89)
+- quantum electrodynamics, [2](#ix-251), [34](#ix-252), [54](#p54), [60](#p60), [73](#ix-253), [74](#p74), [80](#ix-170), [81](#p81), [102](#p102), [106](#p106), [133](#p133)
+  - Lagrangian, [40](#ix-84)
 - $r_{o}$, _see_ classical electron radius
-- Thomson scattering, [92](#p92)
 - radiative corrections
-- trace theorems, _see_ spur theorems
   - electron motion in hydrogen atom, [96](#p96)
-  - scattering, [96](#p96), [119–125](#ix-217)
-- Uehling, E. A., [80](#p80) electron by a weak potential, [104](#p104)
-- vacuum polarization, [72](#p72), [77–80](#ix-218), [82](#p82), [116](#p116)
+  - scattering, [96](#p96), [119–125](#ix-242) electron by a weak potential, [104](#ix-254)
 - renormalization
-  - Schwinger calculation, [72](#p72)
   - advantages of covariant calculation, [82](#p82)
   - and external potential, [109](#p109)
-- Weisskopf, Victor, [3](#ix-219)
   - and vacuum polarization, [72](#p72)
-- Welton, Theodore A., [53](#p53)
-  - charge, [78](#ix-220), [113](#p113)
-- Wentzel, Gregor, [1](#ix-221), [34](#ix-222), [48](#p48)
+  - charge, [78](#ix-255), [113](#ix-256)
   - elimination of divergent effects, [127](#p127)
-- Wick, Gian Carlo, [98](#p98), [102](#p102)
-  - mass, [60](#p60), [107](#p107), [125](#p125), [131](#p131)
-- Wilson, Robert R., [71](#p71)
+  - mass, [60](#p60), [107](#p107), [125](#ix-257), [131](#p131)
   - mass and charge, [133](#p133)
-- WKB approximation, [36](#ix-223)
-  - wave function, [113](#ix-224), [115](#p115)
+  - wave function, [113](#ix-258), [115](#p115)
 - Rydberg energy, [53](#p53)
-- Yukawa, Hideki, [1](#ix-225)
 - _S_-matrix, [83](#p83)
 - Salpeter, Edwin E., [133](#p133)
-- Sauter, Fritz, [18](#ix-226)
+- Sauter, Fritz, [18](#ix-259)
 - scattering
-  - and Born approximation, [22](#ix-45)
-  - Compton, [86–91](#ix-117)
+  - and Born approximation, [22](#ix-29)
+  - Compton, [86–91](#ix-121)
   - light by light, [78](#p78)
-  - Møller, [27](#ix-227), [84–86](#ix-228)
+  - Møller, [27](#ix-260), [84–86](#ix-261)
   - photon, and vacuum polarization, [71](#p71)
   - Thomson, [92](#p92)
 - Schrödinger
-  - equation, [18](#ix-229), [24](#ix-230), [38](#ix-231), [41](#ix-232), [54](#p54), [81](#ix-233), [106](#p106), [124](#ix-234)
-  - representation, [39](#p39), [54](#ix-235)
-  - wave function, [54](#ix-236)
-- Schrödinger, Erwin, [3](#ix-237)
+  - equation, [18](#ix-75), [24](#ix-262), [38](#ix-263), [41](#ix-264), [54](#p54), [81](#ix-265), [106](#p106), [124](#ix-70)
+  - representation, [39](#p39), [54](#ix-266)
+  - wave function, [54](#ix-267)
+- Schrödinger, Erwin, [3](#ix-268)
 - Schwinger
-  - action principle, [36](#ix-3), [38](#ix-238), [40](#ix-239) operator form, [39](#p39)
+  - action principle, [36](#ix-2), [38](#ix-269), [40](#ix-270) operator form, [39](#p39)
   - covariant electrodynamics, [73](#p73)
   - difficult to read, [104](#p104)
-- Schwinger, Julian, [1](#ix-240), [2](#ix-241), [18](#ix-242), [34](#ix-243), [82](#p82), [125](#p125), [129](#p129)
+- Schwinger, Julian, [1](#ix-271), [2](#ix-272), [18](#ix-273), [34](#ix-274), [82](#p82), [125](#p125), [129](#p129)
+
+</td>
+<td valign="top">
+
+- Scott, M. B., [123](#p123)
+- second quantization, [31](#ix-275)
+- self-energy
+  - and Lamb shift, [72](#p72)
+  - electron, [72](#p72), [105](#ix-276), [112](#p112)
+  - photon, [77](#p77)
+  - vacuum, [108](#p108)
+- Smith, Lloyd P., [51](#p51)
+- spin, existence of, [9](#ix-277)
+- spinors, [8](#ix-278), [93](#p93)
+- spur theorems, [89](#p89), [114](#p114)
+- Stehn, J. R., [59](#p59)
+- Stueckelberg, E. C. G., [84](#p84), [85](#p85)
+- Stueckelberg $D^{c}$, [84](#p84)
+- Thomson scattering, [92](#p92)
+- trace theorems, _see_ spur theorems
+- Uehling, E. A., [80](#p80)
+- vacuum polarization, [72](#p72), [77–80](#ix-279), [82](#p82), [116](#p116)
+  - Schwinger calculation, [72](#p72)
+- Weisskopf, Victor, [3](#ix-280)
+- Welton, Theodore A., [53](#p53)
+- Wentzel, Gregor, [1](#ix-281), [34](#ix-282), [48](#p48)
+- Wick, Gian Carlo, [98](#p98), [102](#p102)
+- Wilson, Robert R., [71](#p71)
+- WKB approximation, [36](#ix-283)
+- Yukawa, Hideki, [1](#ix-284)
+
+</td>
+</tr></table>
 

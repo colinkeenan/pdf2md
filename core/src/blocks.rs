@@ -970,7 +970,8 @@ fn attach_fraction_rows(doc: &Doc, lines: &[Line], bars: &[Rule]) -> Vec<Line> {
         }
         lines.retain(|l| !l.spans.is_empty());
     }
-    lines.sort_by(|a, b| a.top.total_cmp(&b.top));
+    // (from the top down; on a page in columns, column after column)
+    lines.sort_by(|a, b| a.col.cmp(&b.col).then(a.top.total_cmp(&b.top)));
     lines
 }
 
@@ -1273,8 +1274,24 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
         let mut i = 0;
         let codes = &doc.pages[page.index].codes;
         let mut ci = 0;
+        // (0: the page is not in columns; else the column being written)
+        let mut col = 0;
         while i < end {
             let l = &lines[i];
+            // a page in columns keeps them, side by side
+            if l.col != col {
+                b.flush();
+                if col == 0 {
+                    b.anchor_block();
+                    b.push(Block::Columns(2));
+                }
+                if l.col == 0 {
+                    b.push(Block::ColumnsEnd);
+                } else if col != 0 || l.col > 1 {
+                    b.push(Block::ColumnBreak);
+                }
+                col = l.col;
+            }
             // program code or a rule (read from an image) above this line
             while ci < codes.len() && codes[ci].0 <= l.top {
                 b.flush();
@@ -1444,6 +1461,10 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
             });
             prev_top = Some(l.top);
             i += 1;
+        }
+        if col != 0 {
+            b.flush();
+            b.push(Block::ColumnsEnd);
         }
         // code or a rule below the last line of text
         while ci < codes.len() {

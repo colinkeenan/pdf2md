@@ -15,7 +15,7 @@ $$
 \varphi_{\mu}^{\alpha} = \frac{\partial \varphi^{\alpha}}{\partial x_{\mu}} \tag{155}
 $$
 
-The theory is fully described by an invariant function of position called the <a id="ix-137">Lagrangian Density</a>,
+The theory is fully described by an invariant function of position called the <a id="ix-166">Lagrangian Density</a>,
 
 <a id="eq-156"></a>
 
@@ -23,7 +23,7 @@ $$
 L = L \left( \varphi^{\alpha} ( x ) ,\varphi_{\mu}^{\alpha} ( x ) \right) , \tag{156}
 $$
 
-a function of $\varphi^{\alpha}$ and its _first_ derivatives at the point $x$. The behaviour of the field is fixed by the <a id="ix-1"><em>Action</em></a> _Principle_. If Ω is any finite or infinite region of space-time, then
+a function of $\varphi^{\alpha}$ and its _first_ derivatives at the point $x$. The behaviour of the field is fixed by the <a id="ix-0"><em>Action</em></a> _Principle_. If Ω is any finite or infinite region of space-time, then
 
 <a id="eq-157"></a>
 
@@ -116,7 +116,7 @@ with all the new quantities on the RHS.
 
 In the case which is physically of importance, the actual motion is fixed uniquely by specifying the values of the $\varphi^{\alpha}$ everywhere on two space-time surfaces $\sigma_{2}$ and $\sigma_{1}$ which are the past and future boundaries of the volume Ω. A space-like surface is one on which every two points are outside each other’s light-cones, so that the fields can be fixed independently at every point.
 
-Special case of non-relativistic theory, both $\sigma_{1}$ and $\sigma_{2}$ are just space at the time $t_{1}$ and $t_{2}$, and $\delta x_{\mu}$ is $ic$ times a displacement of the time by $\delta t_{1}$ and $\delta t_{2}$. Then we may write $n_{\mu}$ = (0$, 0 , 0 ,i ) , \pi_{\alpha} = \partial L /\partial \dot{\varphi}^{\alpha}$, and then for the <a id="ix-103">Hamiltonian</a>
+Special case of non-relativistic theory, both $\sigma_{1}$ and $\sigma_{2}$ are just space at the time $t_{1}$ and $t_{2}$, and $\delta x_{\mu}$ is $ic$ times a displacement of the time by $\delta t_{1}$ and $\delta t_{2}$. Then we may write $n_{\mu}$ = (0$, 0 , 0 ,i ) , \pi_{\alpha} = \partial L /\partial \dot{\varphi}^{\alpha}$, and then for the <a id="ix-147">Hamiltonian</a>
 
 <a id="eq-164"></a>
 
@@ -132,12 +132,12 @@ $$
 \delta I ( \Omega ) = \int d\tau \sum_{\alpha} \{ ( \pi_{\alpha} \delta \varphi^{\alpha} ) ( t_{1} ) - ( \pi_{\alpha} \delta \varphi^{\alpha} ) ( t_{2} ) \}-\{ H ( t_{1} ) \delta t_{1} - H ( t_{2} ) \delta t_{2} \} \tag{165}
 $$
 
-The essential feature of this classical theory is that the <a id="ix-2">Action</a> Principle is stated only for variations vanishing on the boundary of Ω. From this one can _deduce_ as in (163) and (165) the effect on $I$(Ω) of variations not vanishing on the boundary. This is possible because each state of motion is defined by fixing _as many_ field quantities as can be fixed independently, (e.g. all the fields on two space-like surfaces or all the fields and their time-derivatives on one surface) and then the whole past and
+The essential feature of this classical theory is that the <a id="ix-1">Action</a> Principle is stated only for variations vanishing on the boundary of Ω. From this one can _deduce_ as in (163) and (165) the effect on $I$(Ω) of variations not vanishing on the boundary. This is possible because each state of motion is defined by fixing _as many_ field quantities as can be fixed independently, (e.g. all the fields on two space-like surfaces or all the fields and their time-derivatives on one surface) and then the whole past and
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p34"><sup>[p. 34]</sup></a>
 
-future of the motion is determined by the <a id="ix-62">field</a> equations.
+future of the motion is determined by the <a id="ix-77">field</a> equations.
 
 Field equations can be written in the Hamiltonian form
 
@@ -147,7 +147,7 @@ $$
 
 ## <a id="s-examples"></a>Examples:
 
-1. <a id="ix-140">Klein-Gordon</a> Field, real
+1. <a id="ix-168">Klein-Gordon</a> Field, real
 
 <a id="eq-166"></a>
 
@@ -165,7 +165,7 @@ $$
 
 where we consider $\psi$ and $\psi^{*}$ independent one-component fields.
 
-3. <a id="ix-143">Maxwell</a> Field, four component $A_{\mu}$, <a id="ix-122">Fermi</a> form,
+3. <a id="ix-169">Maxwell</a> Field, four component $A_{\mu}$, <a id="ix-122">Fermi</a> form,
 
 <a id="eq-168"></a>
 
@@ -173,7 +173,7 @@ $$
 L_{M} = - \tfrac{1}{4} \sum_{\mu ,\nu} \left( \frac{\partial A_{\nu}}{\partial x_{\mu}} - \frac{\partial A_{\mu}}{\partial x_{\nu}} \right)^{2} - \tfrac{1}{2} \sum_{\mu} \left( \frac{\partial A_{\mu}}{\partial x_{\mu}} \right)^{2} \tag{168}
 $$
 
-4. <a id="ix-138">Dirac</a> Field
+4. <a id="ix-167">Dirac</a> Field
 
 <a id="eq-169"></a>
 
@@ -189,15 +189,15 @@ $$
 L_{Q} = L_{D} + L_{M} - \sum_{\lambda} ieA_{\lambda} \overline{\psi} \gamma_{\lambda} \psi \tag{170}
 $$
 
-here $Q$ stands for <a id="ix-215">quantum electrodynamics</a>.
+here $Q$ stands for <a id="ix-252">quantum electrodynamics</a>.
 
 _Problem 5._ Work out these examples: find the field equations, the momentum conjugate to each component of the field, and the Hamiltonian function, (the momenta and Hamiltonian defined for the case of a flat space $\sigma$ only). Verify that the Hamiltonian gives a correct canonical representation of the field equations as Hamiltonian equations of motion.
 
 ## <a id="s-quantum-relativistic-field-theory"></a>Quantum Relativistic Field Theory
 
-The classical relativistic field theories were usually quantized by using the Hamiltonian form of the field equations and bringing in the commutation relations between coordinates and momenta taken from non-relativistic quantum mechanics. For this approach see <a id="ix-222">Wentzel</a>’s book. It is a very bad method, it is complicated; and it is not at all obvious or even easy to prove that the theory so made is relativistic, because the whole Hamiltonian approach is non-covariant.
+The classical relativistic field theories were usually quantized by using the Hamiltonian form of the field equations and bringing in the commutation relations between coordinates and momenta taken from non-relativistic quantum mechanics. For this approach see <a id="ix-282">Wentzel</a>’s book. It is a very bad method, it is complicated; and it is not at all obvious or even easy to prove that the theory so made is relativistic, because the whole Hamiltonian approach is non-covariant.
 
-Just recently we learnt a much better way of doing it, which I shall now expound in these lectures. It is due to <a id="ix-78">Feynman</a> and <a id="ix-243">Schwinger</a>.<sup><a id="fnref-16" href="#fn-16">16</a></sup>
+Just recently we learnt a much better way of doing it, which I shall now expound in these lectures. It is due to <a id="ix-137">Feynman</a> and <a id="ix-274">Schwinger</a>.<sup><a id="fnref-16" href="#fn-16">16</a></sup>
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p35"><sup>[p. 35]</sup></a>
@@ -222,7 +222,7 @@ holds for all variations $\delta \varphi^{\alpha}$ of the operators vanishing on
 
 In the quantum theory, because of complementarity relations, it is not possible to give numerical values to all field operators throughout a physical motion. In fact the state of motion is specified by giving numerical values to the $\varphi^{\alpha}$ on _one_ space-like surface. The future of the state of motion cannot then be determined from the field equations, which are in general second-order differential equations. Therefore the action principle (171) which was enough for the classical theory is no longer enough. We must make some _additional_ statement about the behaviour of $\delta I$ for variations $\delta \varphi^{\alpha}$ which are not zero on the boundaries of Ω.
 
-A state of motion is specified by specifying a space-time surface $\sigma$ and a set of numerical values $\varphi^{\prime \alpha}$ for the eigenvalue which the operators $\varphi^{\alpha}$ on $\sigma$ have in this state. The state is denoted by the Dirac <a id="ix-66">ket</a> vector $| \varphi^{\prime \alpha} ,\sigma \rangle$. This is a special kind of state in which the $\varphi^{\alpha}$ on $\sigma$ have eigenvalues: the general state is a linear combination of $| \varphi^{\prime \alpha} ,\sigma \rangle$ with various values of $\varphi^{\prime \alpha}$. The physically observable quantities are expressions such as the matrix element
+A state of motion is specified by specifying a space-time surface $\sigma$ and a set of numerical values $\varphi^{\prime \alpha}$ for the eigenvalue which the operators $\varphi^{\alpha}$ on $\sigma$ have in this state. The state is denoted by the Dirac <a id="ix-83">ket</a> vector $| \varphi^{\prime \alpha} ,\sigma \rangle$. This is a special kind of state in which the $\varphi^{\alpha}$ on $\sigma$ have eigenvalues: the general state is a linear combination of $| \varphi^{\prime \alpha} ,\sigma \rangle$ with various values of $\varphi^{\prime \alpha}$. The physically observable quantities are expressions such as the matrix element
 
 <a id="eq-172"></a>
 
@@ -230,7 +230,7 @@ $$
 \left\langle \varphi_{1}^{\prime \alpha} ,\sigma_{1} \varphi^{\beta} ( x ) \varphi_{2}^{\prime \alpha} ,\sigma_{2} \right\rangle \tag{172}
 $$
 
-of the field operator $\varphi^{\beta} ( x )$ between the two states specified by $\varphi_{1}^{\prime \alpha}$ on $\sigma_{1}$ and by $\varphi_{2}^{\prime \alpha}$ on $\sigma_{2}$. In particular, the <a id="ix-19">transition</a> <a id="ix-169">probability</a> <a id="ix-13">amplitude</a> between the two states is
+of the field operator $\varphi^{\beta} ( x )$ between the two states specified by $\varphi_{1}^{\prime \alpha}$ on $\sigma_{1}$ and by $\varphi_{2}^{\prime \alpha}$ on $\sigma_{2}$. In particular, the <a id="ix-9">transition</a> <a id="ix-233">probability</a> <a id="ix-6">amplitude</a> between the two states is
 
 <a id="eq-173"></a>
 
@@ -240,7 +240,7 @@ $$
 
 The squared modulus of this gives the probability of finding the values $\varphi_{1}^{\prime \alpha}$ for the fields on $\sigma_{1}$, in the motion which is defined by the fields being given the definite values $\varphi_{2}^{\prime \alpha}$ on $\sigma_{2}$.
 
-## <a id="s-the-feynman-method-of-quantization"></a>The Feynman Method of <a id="ix-72">Quantization</a>
+## <a id="s-the-feynman-method-of-quantization"></a>The Feynman Method of <a id="ix-129">Quantization</a>
 
 The Feynman method of quantizing the theory consists in writing down an explicit formula for the transition amplitude (173). Namely
 
@@ -255,11 +255,11 @@ Here $H$ represents a History of the fields between $\sigma_{2}$ and $\sigma_{1}
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p36"><sup>[p. 36]</sup></a>
 
-method applies not only to field theory but to ordinary NR quantum theory too. We do not try to derive or justify the Feynman formula here. We just show that it gives the same results as the usual QM. For a discussion of the difficulties in defining the sum $\sum H$, and a method of doing it in simple cases, see C. <a id="ix-133">Morette</a>, _Phys. Rev._ **81** (1951) 848.
+method applies not only to field theory but to ordinary NR quantum theory too. We do not try to derive or justify the Feynman formula here. We just show that it gives the same results as the usual QM. For a discussion of the difficulties in defining the sum $\sum H$, and a method of doing it in simple cases, see C. <a id="ix-215">Morette</a>, _Phys. Rev._ **81** (1951) 848.
 
-From formula (174) we derive at once the most general _Correspondence Principle_ giving us back the classical theory in the limit as $\hbar \to$ 0. For suppose $\hbar \to$ 0 then the exponential factor in (174) becomes an extremely rapidly oscillating function of $H$ for all histories $H$ _except_ that one for which $I$(Ω) is stationary. Therefore in the limit the sum $\sum H$ reduces to the contribution from the classical motion leading from $\varphi_{2}^{\prime \alpha}$ on $\sigma_{2}$ to $\varphi_{1}^{\prime \alpha}$ on $\sigma_{1}$, all other contributions interfering destructively. The classical motion is defined by the condition that<sup><a id="fnref-17" href="#fn-17">17</a></sup> its $\delta I$(Ω) = 0 for all small variations of the $\varphi^{\alpha}$ between $\sigma_{2}$ and $\sigma_{1}$. This passage to the classical theory is precisely analogous to the passage from wave-optics to geometrical optics when the wave-length of light is allowed to tend to zero. The <a id="ix-223">WKB approximation</a> is gotten by taking $\hbar$ small but not quite zero.
+From formula (174) we derive at once the most general _Correspondence Principle_ giving us back the classical theory in the limit as $\hbar \to$ 0. For suppose $\hbar \to$ 0 then the exponential factor in (174) becomes an extremely rapidly oscillating function of $H$ for all histories $H$ _except_ that one for which $I$(Ω) is stationary. Therefore in the limit the sum $\sum H$ reduces to the contribution from the classical motion leading from $\varphi_{2}^{\prime \alpha}$ on $\sigma_{2}$ to $\varphi_{1}^{\prime \alpha}$ on $\sigma_{1}$, all other contributions interfering destructively. The classical motion is defined by the condition that<sup><a id="fnref-17" href="#fn-17">17</a></sup> its $\delta I$(Ω) = 0 for all small variations of the $\varphi^{\alpha}$ between $\sigma_{2}$ and $\sigma_{1}$. This passage to the classical theory is precisely analogous to the passage from wave-optics to geometrical optics when the wave-length of light is allowed to tend to zero. The <a id="ix-283">WKB approximation</a> is gotten by taking $\hbar$ small but not quite zero.
 
-To establish a connection between the Feynman method and the ordinary method of <a id="ix-73">quantization</a>, Feynman has to define what he means by an operator in his formulation. This he does as follows: Let $x$ be any space-time point inside Ω. Let $\mathcal{O} ( x )$ be any field operator defined at $x$, for example $\varphi^{\beta} ( x )$ or $\varphi_{\mu}^{\beta} ( x )$. Then $\mathcal{O} ( x )$ is given a meaning by defining its matrix element between the states $| \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle$ and $| \varphi_{1}^{\prime \alpha} ,\sigma_{1} \rangle$, where $\sigma_{2}$ and $\sigma_{1}$ are any two surfaces to the past and future of $x$. This matrix element is
+To establish a connection between the Feynman method and the ordinary method of <a id="ix-130">quantization</a>, Feynman has to define what he means by an operator in his formulation. This he does as follows: Let $x$ be any space-time point inside Ω. Let $\mathcal{O} ( x )$ be any field operator defined at $x$, for example $\varphi^{\beta} ( x )$ or $\varphi_{\mu}^{\beta} ( x )$. Then $\mathcal{O} ( x )$ is given a meaning by defining its matrix element between the states $| \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle$ and $| \varphi_{1}^{\prime \alpha} ,\sigma_{1} \rangle$, where $\sigma_{2}$ and $\sigma_{1}$ are any two surfaces to the past and future of $x$. This matrix element is
 
 <a id="eq-175"></a>
 
@@ -267,9 +267,9 @@ $$
 \langle \varphi_{1}^{\prime \alpha} ,\sigma_{1} \mathcal{O} ( x ) \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = N \sum_{H} \mathcal{O}_{H} ( x ) \exp \left\{ \frac{i}{\hbar} I_{H} ( \Omega ) \right\} \tag{175}
 $$
 
-The number $\mathcal{O} H$ is just the value which the expression $\mathcal{O}$ takes when the $\varphi^{\alpha}$ are given the values which they have in the history $H$. It is easily verified that the definitions (174) and (175) are physically reasonable and give the right formal properties of transition <a id="ix-14">amplitudes</a> and operator matrix elements.
+The number $\mathcal{O} H$ is just the value which the expression $\mathcal{O}$ takes when the $\varphi^{\alpha}$ are given the values which they have in the history $H$. It is easily verified that the definitions (174) and (175) are physically reasonable and give the right formal properties of transition <a id="ix-7">amplitudes</a> and operator matrix elements.
 
-The Feynman method has one fatal drawback: we cannot use it until we have some way of calculating or at least using the sums over histories, and so far nobody has suggested a practical way of doing this. But Schwinger has shown how to derive from the Feynman method an <a id="ix-3">Action</a> Principle formulation of the theory which avoids this difficulty.
+The Feynman method has one fatal drawback: we cannot use it until we have some way of calculating or at least using the sums over histories, and so far nobody has suggested a practical way of doing this. But Schwinger has shown how to derive from the Feynman method an <a id="ix-2">Action</a> Principle formulation of the theory which avoids this difficulty.
 
 ## <a id="s-the-schwinger-action-principle"></a>The Schwinger Action Principle
 
@@ -322,7 +322,7 @@ The change in $L$ and in the position of $\sigma$ produces a change in the left 
 
 Hence the net result of the triple variation on the left side of (174) is to give the change in the matrix element $\langle \varphi_{1}^{\alpha \prime \prime} ,\sigma_{1} \varphi_{2}^{\alpha \prime} ,\sigma_{2} \rangle$ if the $\varphi_{1}^{\alpha \prime \prime}$ and $\varphi_{2}^{\alpha \prime}$ are left fixed, the operators $\varphi^{\alpha} ( x )$ on $\sigma_{1}$ and $\sigma_{2}$ being modified in consequence of the variations $\delta L$ and $\delta x_{\mu}$ according to the field equations, and in addition $\varphi^{\alpha} ( x )$ on $\sigma_{1}$ and $\sigma_{2}$ being changed to $\varphi^{\alpha} ( x ) - \delta \varphi^{\alpha} ( x )$.
 
-Schwinger takes equation (177) as the fundamental principle for setting up the quantum theory. Thus he gets rid of the unpleasant $\sum H$. Out of this <a id="ix-4">action</a> principle come very simply all the main features of a quantum field theory, A – G below.
+Schwinger takes equation (177) as the fundamental principle for setting up the quantum theory. Thus he gets rid of the unpleasant $\sum H$. Out of this <a id="ix-3">action</a> principle come very simply all the main features of a quantum field theory, A – G below.
 
 ### <a id="s-a-the-field-equations"></a>A. The Field Equations
 
@@ -371,11 +371,11 @@ $$
 i \hbar \frac{d}{dt} \langle \varphi_{1}^{\prime \alpha} ,t_{1} \varphi_{2}^{\prime \alpha} ,t_{2} \rangle = \langle \varphi_{1}^{\prime \alpha} ,t_{1} H ( t_{1} ) \varphi_{2}^{\prime \alpha} ,t_{2} \rangle \tag{180}
 $$
 
-This is the ordinary Schrödinger <a id="ix-231">equation</a> in Dirac’s <a id="ix-75">notation</a>. It shows that the Schwinger <a id="ix-238">action principle</a> contains enough information for predicting the future behaviour of a system given initially in a known quantum state.
+This is the ordinary Schrödinger <a id="ix-263">equation</a> in Dirac’s <a id="ix-89">notation</a>. It shows that the Schwinger <a id="ix-269">action principle</a> contains enough information for predicting the future behaviour of a system given initially in a known quantum state.
 
 ### <a id="s-c-operator-form-of-the-schwinger-principle"></a>C. Operator Form of the Schwinger Principle
 
-Feynman defined operators by giving the formula (175) for their matrix elements between states specified on two different surfaces. The initial state had to be specified in the past, the final state in the future, the operator referring to some particular time which is taken as present.
+<a id="ix-126">Feynman</a> defined operators by giving the formula (175) for their matrix elements between states specified on two different surfaces. The initial state had to be specified in the past, the final state in the future, the operator referring to some particular time which is taken as present.
 
 The usual and generally more useful way of defining operators is to specify their matrix elements between states defined on the same surface. Thus we are interested in a matrix element
 
@@ -539,7 +539,7 @@ $$
 
 When $y$ and $z$ are separated by a space-like interval, the commutator is zero, because the disturbance $\mathcal{R} ( z )$ propagates with a velocity at most $c$ and therefore can affect things only in the future lightcone of $z$; this means $\delta_{\mathcal{R}} \mathcal{Q} ( y )$ = 0 in this case.
 
-<a id="ix-148">Peierls</a>’ <a id="ix-145">formula</a>, valid for any pair of field operators, is
+<a id="ix-222">Peierls</a>’ <a id="ix-220">formula</a>, valid for any pair of field operators, is
 
 <a id="eq-194"></a>
 
@@ -551,9 +551,9 @@ This is a useful formula for calculating commutators in a covariant way.
 
 ### <a id="s-g-anticommuting-fields"></a>G. Anticommuting Fields
 
-There is one type of field theory which can be constructed easily by Schwinger’s <a id="ix-239">action principle</a>, but which does not come out of Feynman’s picture. Suppose a classical field theory in which a group of field operators $\psi^{\alpha}$ always occurs in the <a id="ix-68">Lagrangian</a> in bilinear combinations like $\overline{\psi}^{\beta} \psi^{\alpha}$ with the group of field operators $\overline{\psi}$. Examples, the Dirac $L_{D}$ and the quantum electrodynamics $L_{Q}$.
+There is one type of field theory which can be constructed easily by Schwinger’s <a id="ix-270">action principle</a>, but which does not come out of <a id="ix-131">Feynman</a>’s picture. Suppose a classical field theory in which a group of field operators $\psi^{\alpha}$ always occurs in the <a id="ix-84">Lagrangian</a> in bilinear combinations like $\overline{\psi}^{\beta} \psi^{\alpha}$ with the group of field operators $\overline{\psi}$. Examples, the Dirac $L_{D}$ and the quantum electrodynamics $L_{Q}$.
 
-Then instead of taking every $\varphi^{\alpha}$ on a given surface $\sigma$ to commute as in (189), we may take every pair of $\psi^{\alpha}$ to <a id="ix-38">anticommute</a>, thus<sup><a id="fnref-20" href="#fn-20">20</a></sup>
+Then instead of taking every $\varphi^{\alpha}$ on a given surface $\sigma$ to commute as in (189), we may take every pair of $\psi^{\alpha}$ to <a id="ix-24">anticommute</a>, thus<sup><a id="fnref-20" href="#fn-20">20</a></sup>
 
 <a id="eq-195"></a>
 

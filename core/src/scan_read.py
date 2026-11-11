@@ -7,7 +7,7 @@ headings, footnotes, and where the pictures are.
 reads the pages FIRST..LAST (1 = the first sheet) and writes each as
 OUT_DIR/pNNNN.txt, skipping the ones that are there. A page file holds
 
-    page <TAB> width <TAB> height
+    page <TAB> width <TAB> height <TAB> 2
     block <TAB> kind <TAB> left <TAB> top <TAB> right <TAB> bottom <TAB> lines <TAB> html
     line <TAB> text
 
@@ -78,7 +78,8 @@ def table_lines(pdf: str, n: int, box):
 
 def write_page(pdf: str, n: int, page, counts, path: Path):
     left, top, right, bottom = page["bbox"]
-    lines = [f"page\t{right - left:.1f}\t{bottom - top:.1f}"]
+    # (2: the page files that have the lines of blocks of several lines)
+    lines = [f"page\t{right - left:.1f}\t{bottom - top:.1f}\t2"]
     blocks = []
     for child in page.get("children") or []:
         leaves(child, blocks)

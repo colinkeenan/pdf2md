@@ -22,7 +22,7 @@ I scarcely knew L$A$TEX before beginning this project. My friend (and Princeton 
 
 keyboard. No one who types technical material should be ignorant of L$A$TEX.
 
-This project would never have been undertaken without the approval of Prof. <a id="ix-96">Dyson</a> and the efforts of Profs. Hall, Schweber and Ashrafi, who made the notes accessible. I thank Prof. Hall for his steady encouragement through the many hours of typing. I thank Prof. Dyson both for friendly assistance and for allowing his wonderful lectures to become easier to obtain, to be read with pleasure and with profit for many years to come.
+This project would never have been undertaken without the approval of Prof. <a id="ix-102">Dyson</a> and the efforts of Profs. Hall, Schweber and Ashrafi, who made the notes accessible. I thank Prof. Hall for his steady encouragement through the many hours of typing. I thank Prof. Dyson both for friendly assistance and for allowing his wonderful lectures to become easier to obtain, to be read with pleasure and with profit for many years to come.
 
 David Derbes
 

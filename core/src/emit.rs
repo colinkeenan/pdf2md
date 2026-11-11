@@ -389,6 +389,10 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
         Block::Item { level, text } => {
             out.push_str(&format!("{}- {}\n", "  ".repeat(*level), render_inlines(text)));
         }
+        // columns side by side: a table of one row, Markdown in its cells
+        Block::Columns(n) => out.push_str(&format!("<table width=\"100%\"><tr>\n<td valign=\"top\" width=\"{}%\">\n\n", 100 / (*n).max(1))),
+        Block::ColumnBreak => out.push_str("</td>\n<td valign=\"top\">\n\n"),
+        Block::ColumnsEnd => out.push_str("</td>\n</tr></table>\n\n"),
         Block::Table(rows) => {
             // (html, with each cell's text between empty lines: Markdown
             // is read inside it, so links and headings work)

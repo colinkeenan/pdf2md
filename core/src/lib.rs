@@ -139,6 +139,11 @@ pub enum Block {
     Rule,
     /// A table: its rows of cells (a table of contents set in columns).
     Table(Vec<Vec<Cell>>),
+    /// What follows is set in this many columns side by side, as on the
+    /// page (an index), up to `ColumnsEnd`; `ColumnBreak` starts the next.
+    Columns(usize),
+    ColumnBreak,
+    ColumnsEnd,
 }
 
 /// A block plus the page it starts on (index into the page list).

@@ -84,6 +84,9 @@ struct Raw {
     html: String,
     /// a table's text, line by line
     text: Vec<String>,
+    /// how far each of those lines is set in from the block's left edge,
+    /// in letters (empty: not known)
+    indents: Vec<usize>,
 }
 
 #[derive(Debug, Clone, Default)]
@@ -93,6 +96,19 @@ struct PageRead {
     width: f32,
     height: f32,
     blocks: Vec<Raw>,
+    /// the page's columns, where the PDF's own text says how they lie
+    laid: Option<Laid>,
+}
+
+/// The columns of a page set in columns, from the places of the words in
+/// the PDF's own text: for each column its lines from the top down, and
+/// of each line whether it is set in (it goes on from the line before).
+#[derive(Debug, Clone, Default)]
+struct Laid {
+    /// from where to where down the page the columns reach
+    top: f32,
+    bottom: f32,
+    columns: Vec<Vec<(bool, String)>>,
 }
 
 fn parse_page(number: u32, text: &str) -> PageRead {
@@ -115,11 +131,13 @@ fn parse_page(number: u32, text: &str) -> PageRead {
                 for tag in ["sup", "/sup", "sub", "/sub"] {
                     html = html.replace(&format!("&lt;{tag}&gt;"), &format!("<{tag}>"));
                 }
-                page.blocks.push(Raw { kind, left, top, right, bottom, lines, html, text: Vec::new() });
+                page.blocks.push(Raw { kind, left, top, right, bottom, lines, html, text: Vec::new(), indents: Vec::new() });
             }
             Some("line") => {
                 if let Some(b) = page.blocks.last_mut() {
-                    b.text.push(line.split_once('\t').map_or("", |x| x.1).to_string());
+                    // (marker writes some line ends out as "\n": two lines)
+                    let text = line.split_once('\t').map_or("", |x| x.1);
+                    b.text.extend(text.split("\\n").map(str::trim).filter(|t| !t.is_empty()).map(str::to_string));
                 }
             }
             _ => {}
@@ -160,6 +178,13 @@ pub fn read(path: &Path, first: u32, last: u32) -> Result<Scan, String> {
     std::fs::write(&script, SCRIPT).map_err(|e| e.to_string())?;
     progress::skip(Step::Drawings);
     let file = |n: u32| dir.join(format!("p{n:04}.txt"));
+    // (a page read before the reader handed on the lines of its blocks,
+    // with a block of many lines on it, a column of an index: read again)
+    for n in first..=last {
+        if std::fs::read_to_string(file(n)).is_ok_and(|t| lacks_lines(&t)) {
+            let _ = std::fs::remove_file(file(n));
+        }
+    }
     let missing = (first..=last).filter(|n| !file(*n).exists()).count();
     if missing > 0 {
         eprintln!("Reading {missing} scanned pages with marker…");
@@ -204,6 +229,14 @@ pub fn read(path: &Path, first: u32, last: u32) -> Result<Scan, String> {
             }
         }
     }
+    // A page in columns (an index): how its columns lie, by the words
+    // of the PDF's own text.
+    for page in pages.iter_mut() {
+        let many_lines = page.blocks.iter().any(|b| b.lines >= 20 && b.right - b.left > 0.6 * page.width);
+        if columns(page).is_some() || many_lines {
+            page.laid = lay_columns(page, &page_words(path, page.number));
+        }
+    }
     // Where the lines of a block end (pages read before the reader said
     // so, and blocks it read as one line): asked of the PDF itself, for
     // blocks of several lines and for pages set centered, where every
@@ -222,6 +255,147 @@ pub fn read(path: &Path, first: u32, last: u32) -> Result<Scan, String> {
         }
     }
     Ok(build(&pages, &format!("{:016x}", fnv(dir.to_string_lossy().as_bytes()))))
+}
+
+/// Is this a page file of the first kind (no lines of blocks in it) with
+/// a block of text of many lines?
+fn lacks_lines(text: &str) -> bool {
+    let mut lines = text.lines().peekable();
+    if lines.peek().is_some_and(|l| l.split('\t').count() >= 4) {
+        return false;
+    }
+    while let Some(l) = lines.next() {
+        let f: Vec<&str> = l.splitn(8, '\t').collect();
+        let many = f.len() >= 7 && f[0] == "block" && !matches!(f[1], "Table" | "Form" | "TableOfContents") && f[6].parse::<usize>().is_ok_and(|n| n >= 6);
+        if many && !lines.peek().is_some_and(|n| n.starts_with("line\t")) {
+            return true;
+        }
+    }
+    false
+}
+
+/// A word of the PDF's own text with its place on the page, in points.
+#[derive(Debug, Clone)]
+struct Word {
+    left: f32,
+    top: f32,
+    right: f32,
+    bottom: f32,
+    text: String,
+}
+
+/// The words the PDF itself has on a page (`pdftotext -bbox`): the text an
+/// earlier reading left under the picture of a scanned page.
+fn page_words(path: &Path, page: u32) -> Vec<Word> {
+    let page = page.to_string();
+    let Ok(out) = Command::new("pdftotext").args(["-bbox", "-f", &page, "-l", &page]).arg(path).arg("-").output() else { return Vec::new() };
+    let text = String::from_utf8_lossy(&out.stdout);
+    let mut words = Vec::new();
+    for w in text.split("<word ").skip(1) {
+        let Some((tag, rest)) = w.split_once('>') else { continue };
+        let num = |name: &str| tag.split(&format!("{name}=\"")).nth(1).and_then(|v| v.split('"').next()).and_then(|v| v.parse::<f32>().ok());
+        let (Some(left), Some(top), Some(right), Some(bottom)) = (num("xMin"), num("yMin"), num("xMax"), num("yMax")) else { continue };
+        let text = unescape(rest.split("</word>").next().unwrap_or(""));
+        if !text.trim().is_empty() {
+            words.push(Word { left, top, right, bottom, text: text.trim().to_string() });
+        }
+    }
+    words
+}
+
+/// How alike two lines of text are, 0 to 1: the share of the pairs of
+/// letters they have in common (letters and digits only, small).
+fn alike(a: &str, b: &str) -> f32 {
+    let pairs = |t: &str| -> Vec<(char, char)> {
+        let c: Vec<char> = t.chars().filter(|c| c.is_alphanumeric()).flat_map(char::to_lowercase).collect();
+        c.windows(2).map(|w| (w[0], w[1])).collect()
+    };
+    let (pa, mut pb) = (pairs(a), pairs(b));
+    if pa.is_empty() || pb.is_empty() {
+        return 0.0;
+    }
+    let total = (pa.len() + pb.len()) as f32;
+    let mut common = 0;
+    for p in pa {
+        if let Some(k) = pb.iter().position(|q| *q == p) {
+            pb.swap_remove(k);
+            common += 1;
+        }
+    }
+    2.0 * common as f32 / total
+}
+
+/// The columns of a page whose text stands in two columns, by the words
+/// of the PDF's own text (None: it has none there, or they do not stand
+/// in two columns). `words`: those words. The lines take marker's reading
+/// of them where one of its lines is plainly the same line: marker reads
+/// better, but gives a column's lines without saying which are set in,
+/// and at times deals the lines of two columns into one.
+fn lay_columns(page: &PageRead, words: &[Word]) -> Option<Laid> {
+    let side_by_side = columns(page);
+    let column_block = |i: usize, b: &Raw| -> bool {
+        let texty = matches!(b.kind.as_str(), "Text" | "TextInlineMath" | "ListItem" | "Code");
+        // (a block of a column, or one that marker laid over both)
+        let over_both = b.right - b.left > 0.6 * page.width && b.lines >= 20;
+        texty && b.bottom > 0.06 * page.height && (over_both || side_by_side.as_ref().is_some_and(|(l, r)| l.contains(&i) || r.contains(&i)))
+    };
+    let blocks: Vec<&Raw> = page.blocks.iter().enumerate().filter(|(i, b)| column_block(*i, b)).map(|(_, b)| b).collect();
+    if blocks.is_empty() {
+        return None;
+    }
+    let (top, bottom) = (blocks.iter().map(|b| b.top).fold(f32::MAX, f32::min) - 3.0, blocks.iter().map(|b| b.bottom).fold(0.0, f32::max) + 5.0);
+    let (left, right) = (blocks.iter().map(|b| b.left).fold(f32::MAX, f32::min) - 4.0, blocks.iter().map(|b| b.right).fold(0.0, f32::max) + 4.0);
+    let middle = |w: &Word| ((w.left + w.right) / 2.0, (w.top + w.bottom) / 2.0);
+    let words: Vec<&Word> = words.iter().filter(|w| (left..right).contains(&middle(w).0) && (top..bottom).contains(&middle(w).1)).collect();
+    if words.len() < 20 {
+        return None;
+    }
+    // the gutter: where, about the middle, the fewest words lie across
+    let across = |x: f32| words.iter().filter(|w| w.left < x && w.right > x).count();
+    let (from, to) = (left + 0.3 * (right - left), left + 0.7 * (right - left));
+    let centre = (left + right) / 2.0;
+    let gutter = (0..=((to - from) / 2.0) as usize).map(|k| from + 2.0 * k as f32).min_by(|a, b| across(*a).cmp(&across(*b)).then((a - centre).abs().total_cmp(&(b - centre).abs())))?;
+    let (l, r): (Vec<&Word>, Vec<&Word>) = words.iter().partition(|w| middle(w).0 < gutter);
+    if across(gutter) * 50 > words.len() || l.len() * 5 < words.len() || r.len() * 5 < words.len() {
+        return None;
+    }
+    // marker's lines of these blocks, each to be used once
+    let mut read: Vec<String> = blocks.iter().flat_map(|b| if b.text.len() >= 2 { b.text.clone() } else { vec![plain(&all_inline(&b.html))] }).collect();
+    let mut column = |mut words: Vec<&Word>| -> Vec<(bool, String)> {
+        // the lines: words at one height, from the left
+        words.sort_by(|a, b| middle(a).1.total_cmp(&middle(b).1));
+        let mut lines: Vec<Vec<&Word>> = Vec::new();
+        for w in words {
+            match lines.last_mut() {
+                Some(line) if middle(w).1 - middle(line[0]).1 < 0.6 * (line[0].bottom - line[0].top).max(4.0) => line.push(w),
+                _ => lines.push(vec![w]),
+            }
+        }
+        for line in lines.iter_mut() {
+            line.sort_by(|a, b| a.left.total_cmp(&b.left));
+        }
+        // where the column's lines start: the leftmost place where a
+        // good many of them do (lines set in can be more than the others;
+        // a stray word left of the column is no line start)
+        let mut starts: Vec<f32> = lines.iter().map(|l| l[0].left).collect();
+        starts.sort_by(f32::total_cmp);
+        let many = (starts.len() / 10).max(2).min(starts.len());
+        let edge = starts.iter().copied().find(|s| starts.iter().filter(|o| (*o - s).abs() <= 2.0).count() >= many).unwrap_or(starts[0]);
+        lines
+            .iter()
+            .map(|line| {
+                let own = line.iter().map(|w| w.text.as_str()).collect::<Vec<_>>().join(" ");
+                let best = read.iter().enumerate().map(|(k, t)| (alike(t, &own), k)).max_by(|a, b| a.0.total_cmp(&b.0));
+                let text = match best {
+                    Some((score, k)) if score >= 0.72 => read.swap_remove(k),
+                    _ => own,
+                };
+                (line[0].left > edge + 4.0, text)
+            })
+            .collect()
+    };
+    let columns = vec![column(l), column(r)];
+    Some(Laid { top, bottom, columns })
 }
 
 /// The words in a block's area of a page (see [`area_lines`]).
@@ -290,7 +464,7 @@ fn run_reader(cmd: &mut Command) -> bool {
 
 fn unescape(t: &str) -> String {
     let mut t = t.to_string();
-    for (a, b) in [("&lt;", "<"), ("&gt;", ">"), ("&quot;", "\""), ("&#39;", "'"), ("&#x27;", "'"), ("&nbsp;", " "), ("&amp;", "&")] {
+    for (a, b) in [("&lt;", "<"), ("&gt;", ">"), ("&quot;", "\""), ("&#39;", "'"), ("&#x27;", "'"), ("&apos;", "'"), ("&nbsp;", " "), ("&amp;", "&")] {
         if t.contains(a) {
             t = t.replace(a, b);
         }
@@ -856,6 +1030,103 @@ fn looks_like_code(t: &str) -> bool {
     (signs + 2 * keywords) * 5 >= words && signs + keywords >= 3
 }
 
+/// A page set in two columns (an index): the blocks of its left and of
+/// its right column, each from the top down. The blocks of text stand
+/// either left or right of the middle, a good part of the page's height
+/// on both sides; what spans the page (a title, a line under it) is in
+/// neither.
+fn columns(page: &PageRead) -> Option<(Vec<usize>, Vec<usize>)> {
+    let (mut left, mut right): (Vec<usize>, Vec<usize>) = Default::default();
+    for (i, b) in page.blocks.iter().enumerate().filter(|(_, b)| matches!(b.kind.as_str(), "Text" | "TextInlineMath" | "ListItem") && has_words(&all_inline(&b.html))) {
+        if b.right <= 0.54 * page.width {
+            left.push(i);
+        } else if b.left >= 0.46 * page.width {
+            right.push(i);
+        } else if b.bottom > 0.3 * page.height {
+            // (text across the page, not at its top: no columns)
+            return None;
+        }
+    }
+    let height = |c: &[usize]| c.iter().map(|i| page.blocks[*i].bottom - page.blocks[*i].top).sum::<f32>();
+    if height(&left) < 0.25 * page.height || height(&right) < 0.25 * page.height {
+        return None;
+    }
+    // (a short left block at the very top beside nothing is a running head)
+    let top = |i: &usize| page.blocks[*i].top;
+    left.sort_by(|a, b| top(a).total_cmp(&top(b)));
+    right.sort_by(|a, b| top(a).total_cmp(&top(b)));
+    Some((left, right))
+}
+
+/// The entries of a column of an index, from a block of it: a line set
+/// in from the others goes on from the line before; a block whose lines
+/// are not known is one entry.
+fn entries(b: &Raw) -> Vec<Vec<Inline>> {
+    if b.text.len() < 2 {
+        return vec![all_inline(&b.html)];
+    }
+    let least = b.indents.iter().copied().min().unwrap_or(0);
+    let lines: Vec<(bool, String)> = b.text.iter().enumerate().map(|(k, line)| (b.indents.get(k).is_some_and(|i| *i > least + 1), line.clone())).collect();
+    join_lines(&lines)
+}
+
+/// The entries of lines of which some go on from the line before.
+fn join_lines(lines: &[(bool, String)]) -> Vec<Vec<Inline>> {
+    // words written with a hyphen somewhere in these lines ("meson-meson")
+    let hyphened: std::collections::HashSet<String> = lines
+        .iter()
+        .flat_map(|(_, l)| l.split_whitespace())
+        .map(|w| w.trim_matches(|c: char| !c.is_alphanumeric()).to_lowercase())
+        .filter(|w| w.contains('-'))
+        .collect();
+    let mut out: Vec<String> = Vec::new();
+    for (goes_on, line) in lines {
+        let line = line.trim();
+        match out.last_mut() {
+            Some(entry) if *goes_on => {
+                let last = entry.split_whitespace().last().unwrap_or("").trim_start_matches(|c: char| !c.is_alphanumeric()).to_lowercase();
+                let next = line.split_whitespace().next().unwrap_or("").trim_end_matches(|c: char| !c.is_alphanumeric()).to_lowercase();
+                // A line that ends in a hyphen: pages "248-" and "52" are
+                // one range, and a word written with a hyphen elsewhere
+                // keeps it; else the word was cut at the line's end.
+                let range = last.trim_end_matches('-').ends_with(|c: char| c.is_ascii_digit()) && next.starts_with(|c: char| c.is_ascii_digit());
+                if entry.ends_with('-') && (range || hyphened.contains(&format!("{last}{next}"))) {
+                } else if entry.ends_with('-') && line.starts_with(char::is_lowercase) {
+                    entry.pop();
+                } else {
+                    entry.push(' ');
+                }
+                entry.push_str(line);
+            }
+            _ => out.push(line.to_string()),
+        }
+    }
+    out.iter().map(|t| line_inlines(t)).collect()
+}
+
+/// A line as marker hands it on with a block's lines: plain text, with
+/// its formulas as LaTeX but unmarked ("\\sigma model, 318"). What is
+/// written with a backslash is a formula.
+fn line_inlines(line: &str) -> Vec<Inline> {
+    let mut out: Vec<Inline> = Vec::new();
+    for word in unescape(line).split_whitespace() {
+        // (the comma after a formula is not part of it)
+        let body = word.trim_end_matches([',', ';', '.', ':']);
+        let math = body.contains('\\') && body.chars().any(char::is_alphabetic);
+        if !out.is_empty() {
+            push_text(&mut out, Inline::Text(" ".into()));
+        }
+        if math {
+            out.push(Inline::Math(body.to_string()));
+            push_text(&mut out, Inline::Text(word[body.len()..].to_string()));
+        } else {
+            push_text(&mut out, Inline::Text(word.to_string()));
+        }
+    }
+    out.retain(|i| !matches!(i, Inline::Text(t) if t.is_empty()));
+    out
+}
+
 /// Blocks of running text and headings.
 fn is_text(b: &Raw) -> bool {
     matches!(b.kind.as_str(), "Text" | "TextInlineMath" | "SectionHeader" | "Caption" | "ListItem")
@@ -1132,11 +1403,82 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
             });
             continue;
         }
+        // A page in columns keeps them: what spans the page above them,
+        // then the left column, then the right, side by side.
+        // (laid by the PDF's own words: the entries are known already)
+        let in_laid = |b: &Raw| page.laid.as_ref().is_some_and(|l| matches!(b.kind.as_str(), "Text" | "TextInlineMath" | "ListItem" | "Code") && b.top >= l.top - 1.0 && b.bottom <= l.bottom + 1.0);
+        let cols = if page.laid.is_some() { None } else { columns(page) };
+        let order: Vec<(Option<usize>, Option<Block>)> = match (&page.laid, &cols) {
+            (Some(laid), _) => {
+                // (entries with page numbers: an index, a list; else paragraphs)
+                let lines = laid.columns.iter().flatten().count().max(1);
+                let numbered = laid.columns.iter().flatten().filter(|(_, t)| t.chars().any(|c| c.is_ascii_digit())).count() * 5 >= lines * 2;
+                let entry = |text: Vec<Inline>| (None, Some(if numbered { Block::Item { level: 0, text } } else { Block::Para(text) }));
+                let mark = |b: Block| (None, Some(b));
+                let outside = |above: bool| (0..page.blocks.len()).filter(move |i| !in_laid(&page.blocks[*i]) && (page.blocks[*i].top < laid.top) == above).map(|i| (Some(i), None));
+                let mut order: Vec<(Option<usize>, Option<Block>)> = outside(true).collect();
+                order.push(mark(Block::Columns(laid.columns.len())));
+                for (k, column) in laid.columns.iter().enumerate() {
+                    if k > 0 {
+                        order.push(mark(Block::ColumnBreak));
+                    }
+                    order.extend(join_lines(column).into_iter().filter(|t| has_words(t)).map(entry));
+                }
+                order.push(mark(Block::ColumnsEnd));
+                order.extend(outside(false));
+                order
+            }
+            (None, Some((left, right))) => {
+                let first = left.iter().chain(right).map(|i| page.blocks[*i].top).fold(f32::MAX, f32::min);
+                let in_columns = |i: usize| left.contains(&i) || right.contains(&i);
+                let above = (0..page.blocks.len()).filter(|i| !in_columns(*i) && page.blocks[*i].top < first);
+                let below = (0..page.blocks.len()).filter(|i| !in_columns(*i) && page.blocks[*i].top >= first);
+                let at = |i: usize| (Some(i), None);
+                let mark = |b: Block| (None, Some(b));
+                above
+                    .map(at)
+                    .chain([mark(Block::Columns(2))])
+                    .chain(left.iter().copied().map(at))
+                    .chain([mark(Block::ColumnBreak)])
+                    .chain(right.iter().copied().map(at))
+                    .chain([mark(Block::ColumnsEnd)])
+                    .chain(below.map(at))
+                    .collect()
+            }
+            (None, None) => (0..page.blocks.len()).map(|i| (Some(i), None)).collect(),
+        };
+        // (a column of entries with page numbers: an index, a list)
+        let listed = cols.as_ref().is_some_and(|(l, r)| {
+            let lines: Vec<&String> = l.iter().chain(r).flat_map(|i| &page.blocks[*i].text).collect();
+            !lines.is_empty() && lines.iter().filter(|t| t.chars().any(|c| c.is_ascii_digit())).count() * 5 >= lines.len() * 2
+        });
         let pictures: Vec<&Raw> = page.blocks.iter().filter(|b| b.kind == "Picture" || b.kind == "Figure").collect();
         let contents_page = page.blocks.iter().any(|b| matches!(b.kind.as_str(), "Table" | "Form" | "TableOfContents") && contents(&b.text).is_some());
-        for (bi, b) in page.blocks.iter().enumerate() {
+        for (at, mark) in order {
+            let Some(bi) = at else {
+                if let Some(a) = anchor.take() {
+                    push(&mut blks, Block::Anchor(a));
+                }
+                blks.extend(mark.map(|block| Blk { block, page: pi, centered: false }));
+                first_text = false;
+                continue;
+            };
+            let b = &page.blocks[bi];
             let area = Figure { left: b.left * PX, right: b.right * PX, top: b.top * PX, bottom: b.bottom * PX };
             let mut made: Vec<Block> = Vec::new();
+            // an entry of an index in columns, or a column of them
+            if listed && cols.as_ref().is_some_and(|(l, r)| l.contains(&bi) || r.contains(&bi)) {
+                if let Some(a) = anchor.take() {
+                    push(&mut blks, Block::Anchor(a));
+                }
+                for text in entries(b) {
+                    if has_words(&text) {
+                        blks.push(Blk { block: Block::Item { level: 0, text }, page: pi, centered: false });
+                    }
+                }
+                first_text = false;
+                continue;
+            }
             // words lettered on a picture are in the picture
             if !matches!(b.kind.as_str(), "Picture" | "Figure") && pictures.iter().any(|p| inside(b, p) >= 0.6) {
                 continue;
@@ -1338,6 +1680,87 @@ fn join_titles(blks: &mut Vec<Blk>, chapter_size: Option<f32>) {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn an_index_in_two_columns_keeps_them() {
+        let column = |left: f32, top: f32, html: &str, lines: &[&str]| {
+            let lines: String = lines.iter().map(|l| format!("line\t{l}\n")).collect();
+            format!("block\tText\t{left}\t{top}\t{}\t780.0\t{}\t{html}\n{lines}", left + 210.0, lines.matches('\n').count())
+        };
+        let mut page = parse_page(
+            9,
+            &format!(
+                "page\t487.0\t842.0\nblock\tSectionHeader\t200.0\t40.0\t280.0\t60.0\t1\t<h1>Index</h1>\n{}{}",
+                column(20.0, 100.0, "<p>x</p>", &["bosons: bad behavior of, 166;", "pairing into, 270", "Bose statistics, 117"]),
+                column(250.0, 100.0, "<p>y</p>", &["closed forms, 219", "coherence length, 271"]),
+            ),
+        );
+        // (the second line of the left column is set in: it goes on)
+        page.blocks[1].indents = vec![0, 6, 0];
+        let scan = build(&[page], "book");
+        let shown: Vec<String> = scan
+            .blks
+            .iter()
+            .map(|b| match &b.block {
+                Block::Heading { text, .. } => format!("# {}", plain(text)),
+                Block::Item { text, .. } => format!("- {}", plain(text)),
+                Block::Columns(n) => format!("columns {n}"),
+                Block::ColumnBreak => "next column".into(),
+                Block::ColumnsEnd => "end".into(),
+                other => format!("{other:?}"),
+            })
+            .collect();
+        assert_eq!(
+            shown,
+            ["# Index", "columns 2", "- bosons: bad behavior of, 166; pairing into, 270", "- Bose statistics, 117", "next column", "- closed forms, 219", "- coherence length, 271", "end"]
+        );
+        // By the PDF's own words: marker laid one block over both columns
+        // and dealt their lines into one another; the words say which
+        // line is in which column and which is set in, and marker's
+        // lines, which read better, are put in their places.
+        let mut both = parse_page(
+            10,
+            "page\t487.0\t842.0\nblock\tCode\t20.0\t100.0\t470.0\t700.0\t40\t<pre>x</pre>\nline\tclosed forms, 219\nline\tbosons: bad behavior of, 166;\nline\tpairing into, 270\nline\tBose statistics, 117\nline\tcoherence length, 271",
+        );
+        let word = |left: f32, top: f32, text: &str| Word { left, top, right: left + 5.0 * text.len() as f32, bottom: top + 10.0, text: text.to_string() };
+        let mut words = Vec::new();
+        for row in 0..12 {
+            // (lines enough for two columns; the first rows are the ones read)
+            let y = 100.0 + 14.0 * row as f32;
+            let (l, r): (&[&str], &[&str]) = match row {
+                0 => (&["bosons:", "bad", "behavi0r", "of,", "166;"], &["closed", "f0rms,", "219"]),
+                1 => (&["pairing", "into,", "270"], &["coherence", "length,", "271"]),
+                2 => (&["Bose", "statistics,", "117"], &["other", "entry,", "5"]),
+                _ => (&["more", "words,", "12"], &["and", "more,", "34"]),
+            };
+            let indent = if row == 1 { 12.0 } else { 0.0 };
+            let mut x = 20.0 + indent;
+            for w in l {
+                words.push(word(x, y, w));
+                x += 5.0 * w.len() as f32 + 4.0;
+            }
+            let mut x = 260.0;
+            for w in r {
+                words.push(word(x, y, w));
+                x += 5.0 * w.len() as f32 + 4.0;
+            }
+        }
+        both.laid = lay_columns(&both, &words);
+        let laid = both.laid.as_ref().unwrap();
+        assert_eq!(laid.columns[0][..3], [(false, "bosons: bad behavior of, 166;".to_string()), (true, "pairing into, 270".to_string()), (false, "Bose statistics, 117".to_string())]);
+        assert_eq!(laid.columns[1][..2], [(false, "closed forms, 219".to_string()), (false, "coherence length, 271".to_string())]);
+        let scan = build(&[both], "book");
+        let items: Vec<String> = scan.blks.iter().filter_map(|b| if let Block::Item { text, .. } = &b.block { Some(plain(text)) } else { None }).collect();
+        assert_eq!(items[..2], ["bosons: bad behavior of, 166; pairing into, 270", "Bose statistics, 117"]);
+        // lines put together: a range of pages, a word with its hyphen, a word cut in two
+        let lines = |l: &[&str]| -> Vec<(bool, String)> { l.iter().enumerate().map(|(k, t)| (k > 0, t.to_string())).collect() };
+        let one = |l: &[&str]| plain(&join_lines(&lines(l))[0]);
+        assert_eq!(one(&["anomaly, 243; consequences of, 248-", "52; meson-meson scattering, see meson-", "meson amplitude; renormal-", "ization, 150"]), "anomaly, 243; consequences of, 248-52; meson-meson scattering, see meson-meson amplitude; renormalization, 150");
+        assert_eq!(line_inlines("\\sigma model, 318; &apos;t Hooft"), [Inline::Math("\\sigma".into()), Inline::Text(" model, 318; 't Hooft".into())]);
+        assert!(lacks_lines("page\t487.0\t842.0\nblock\tText\t1\t1\t9\t9\t51\t<p>x</p>\n"));
+        assert!(!lacks_lines("page\t487.0\t842.0\t2\nblock\tText\t1\t1\t9\t9\t51\t<p>x</p>\n"));
+        assert!(!lacks_lines("page\t487.0\t842.0\nblock\tText\t1\t1\t9\t9\t2\t<p>x</p>\n"));
+    }
 
     fn page(number: u32, blocks: &[(&str, f32, f32, usize, &str)]) -> PageRead {
         let text: String =
