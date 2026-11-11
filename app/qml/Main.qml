@@ -16,7 +16,17 @@ Kirigami.ApplicationWindow {
     // long the chosen paths are (but not wider than the screen): the
     // window grows instead of the buttons running into its right edge.
     readonly property real formWidth: Math.ceil(form.implicitWidth + page.leftPadding + page.rightPadding)
-    minimumWidth: Math.max(Kirigami.Units.gridUnit * 24, Math.min(formWidth, Screen.desktopAvailableWidth))
+    // (The window grows a moment after the form does: growing while the
+    // file browser's page is still sliding away leaves that page drawn
+    // over the form, with the buttons under it.)
+    property real settledWidth: 0
+    onFormWidthChanged: widen.restart()
+    Timer {
+        id: widen
+        interval: Kirigami.Units.veryLongDuration * 2
+        onTriggered: root.settledWidth = root.formWidth
+    }
+    minimumWidth: Math.max(Kirigami.Units.gridUnit * 24, Math.min(settledWidth, Screen.desktopAvailableWidth))
     minimumHeight: Kirigami.Units.gridUnit * 18
     width: Kirigami.Units.gridUnit * 36
     height: Kirigami.Units.gridUnit * 24
@@ -101,6 +111,11 @@ Kirigami.ApplicationWindow {
             Kirigami.FormLayout {
                 id: form
                 Layout.fillWidth: true
+                // always labels beside the fields: the window is made wide
+                // enough for that (left to itself, the form switches to
+                // labels above the fields just when a long path arrives,
+                // and then asks for less room than it needs)
+                wideMode: true
 
                 RowLayout {
                     Kirigami.FormData.label: "Textbook:"
