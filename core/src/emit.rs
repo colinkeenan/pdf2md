@@ -578,7 +578,14 @@ fn chapter_body(book: &Book, i: usize) -> String {
     let ch = &book.chapters[i];
     // (a title set centered, or in lines of its own: as it is set)
     let title = if ch.heading.is_empty() { ch.title.clone() } else { render_inlines(&crate::no_emph(ch.heading.clone())).replace("<br>\n", "<br>") };
-    let mut s = if ch.centered { format!("<div align=\"center\">\n\n# {title}\n\n</div>\n\n") } else { format!("# {title}\n\n") };
+    // (what stands above the title: the book's title above "Contents")
+    let mut s = String::new();
+    for b in &ch.lead {
+        let mut text = String::new();
+        render_block(&b.block, &mut text, &mut false);
+        s.push_str(&if b.centered { format!("<div align=\"center\">\n\n{text}</div>\n\n") } else { text });
+    }
+    s.push_str(&if ch.centered { format!("<div align=\"center\">\n\n# {title}\n\n</div>\n\n") } else { format!("# {title}\n\n") });
     let mut in_list = false;
     // a run of centered blocks goes in one centered div (page markers
     // between them don't break it)

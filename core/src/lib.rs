@@ -186,6 +186,9 @@ pub struct Chapter {
     pub heading: Vec<Inline>,
     /// The title is set centered.
     pub centered: bool,
+    /// What stands above the title in the chapter's file (the book's
+    /// title above "Contents").
+    pub lead: Vec<Blk>,
     pub slug: String,
     pub blocks: Vec<Blk>,
     pub notes: Vec<Note>,
