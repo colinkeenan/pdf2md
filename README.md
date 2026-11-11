@@ -149,12 +149,14 @@ uv pip install --python .venv/bin/python "marker-pdf==1.10.2"
 How it goes, and what to know:
 
 * A page takes about 3 seconds on a recent graphics card (a 540-page book: half an hour), read 16 pages at a time; the window counts the pages. Pages read are kept in `~/.cache/pdf2md/scan/`, by what the PDF holds, so converting the book again takes seconds and a conversion that was stopped goes on where it was.
-* **Chapters** are told by the layout, not by type sizes (the height of a heading's box says too little): a page that opens with a heading and has no running head opens a chapter; “Chapter I.5” and the title under it are one title. What opens a page before the first “Chapter …” or “Part …” is front matter. All other headings are sections of one level (`##`), unless they are numbered (`1.2.3`). A book without running heads goes by the heights of its headings, which is less sure.
-* **Printed page numbers** are read from the running heads and feet; a page that shows none (the first of a chapter), or whose number was misread, gets its number from the pages around it.
+* **Chapters** are told by the layout, not by type sizes (the height of a heading's box says too little): a page that opens with a heading and has no running head opens a chapter; “Chapter I.5” and the title under it are one title. What opens a page before the first “Chapter …” or “Part …” is front matter. All other headings are sections of one level (`##`), unless they are numbered (`1.2.3`). A heading marker saw but could not read (it happens to small capitals) gets its words from the PDF's hidden text or from Tesseract. A book without running heads goes by the heights of its headings, which is less sure.
+* **Printed page numbers** are read from the running heads and feet; a page that shows none (the first of a chapter), or whose number was misread, gets its number from the pages around it; unnumbered pages at the end (an index) count on.
 * **Equations** keep their numbers; one you correct by hand is kept for the next conversion like the equations read from images (see below). There is no second reading of them, so no `check-equations.md`.
 * **Footnotes** are linked to their markers. marker does not see every small raised number in the text; a note whose marker it missed is listed in `unplaced-notes.md` with its chapter.
 * **The table of contents** is read line by line from the PDF's hidden text (or by Tesseract), because marker reads tables cell by cell, which shuffles it; an entry whose page opens a chapter takes that chapter's title as marker read it. Other tables are kept as pictures.
+* What marker calls program code is only written as a code block if it looks like code (it calls an index page code, too); otherwise it is text.
 * Letters that stand as symbols in a sentence (“J(x)”, “a”) are often left as plain letters.
+* Measured on the test book (537 pages): 29 minutes for the first conversion, 8 seconds for the next; 8120 formulas, of which 6 do not render (cut short by the model, or tables of numbers it invented); 73 footnotes linked and 46 whose marker was missed.
 
 ## Your notes and fixes
 

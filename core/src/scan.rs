@@ -90,6 +90,7 @@ struct Raw {
 struct PageRead {
     /// the PDF's page number (1 = first sheet)
     number: u32,
+    height: f32,
     blocks: Vec<Raw>,
 }
 
@@ -98,6 +99,7 @@ fn parse_page(number: u32, text: &str) -> PageRead {
     for line in text.lines() {
         let mut f = line.splitn(8, '\t');
         match f.next() {
+            Some("page") => page.height = f.nth(1).and_then(|h| h.parse().ok()).unwrap_or(0.0),
             Some("block") => {
                 let kind = f.next().unwrap_or("").to_string();
                 let mut num = || f.next().and_then(|v| v.parse::<f32>().ok()).unwrap_or(0.0);
@@ -117,6 +119,15 @@ fn parse_page(number: u32, text: &str) -> PageRead {
                 }
             }
             _ => {}
+        }
+    }
+    // A running head that marker took for text ("xii Preface", at the very
+    // top of the page, with the page's number): a running head.
+    let top = page.blocks.iter().position(|b| b.kind != "PageHeader" && b.kind != "PageFooter");
+    if let Some(b) = top.map(|k| &mut page.blocks[k]) {
+        let text = crate::plain(&all_inline(&b.html));
+        if b.kind == "Text" && b.bottom < 0.05 * page.height && text.split_whitespace().count() <= 12 && number_in(&text).is_some() {
+            b.kind = "PageHeader".into();
         }
     }
     page
@@ -157,9 +168,52 @@ pub fn read(path: &Path, first: u32, last: u32) -> Result<Scan, String> {
     let mut pages = Vec::new();
     for n in first..=last {
         let text = std::fs::read_to_string(file(n)).map_err(|_| format!("page {n} was not read"))?;
-        pages.push(parse_page(n, &text));
+        let mut page = parse_page(n, &text);
+        // a heading marker saw but could not read ("Chapter VI.4" in
+        // small capitals, "Index"): its words from the PDF itself
+        for b in page.blocks.iter_mut().filter(|b| b.kind == "SectionHeader") {
+            if !has_words(&all_inline(&b.html)) {
+                let words = area_text(path, n, b);
+                b.html = words.replace('&', "&amp;").replace('<', "&lt;").replace('>', "&gt;");
+            }
+        }
+        pages.push(page);
     }
     Ok(build(&pages, &format!("{:016x}", fnv(dir.to_string_lossy().as_bytes()))))
+}
+
+/// The words in a block's area of a page: the text the PDF carries there
+/// under the picture, else what Tesseract reads in it. Empty if neither
+/// knows.
+fn area_text(path: &Path, page: u32, b: &Raw) -> String {
+    let (x, y, w, h) = (b.left.floor().max(0.0), b.top.floor().max(0.0), (b.right - b.left).ceil().max(1.0), (b.bottom - b.top).ceil().max(1.0));
+    let page = page.to_string();
+    let arg = |v: f32| (v as i64).to_string();
+    let hidden = Command::new("pdftotext")
+        .args(["-f", &page, "-l", &page, "-x", &arg(x), "-y", &arg(y), "-W", &arg(w), "-H", &arg(h)])
+        .arg(path)
+        .arg("-")
+        .output()
+        .map(|o| String::from_utf8_lossy(&o.stdout).into_owned())
+        .unwrap_or_default();
+    let tidy = |t: &str| t.split_whitespace().collect::<Vec<_>>().join(" ");
+    if hidden.chars().any(char::is_alphanumeric) {
+        return tidy(&hidden);
+    }
+    // (cut out at 300 dots per inch, which pdftoppm counts its pixels in)
+    let k = 300.0 / 72.0;
+    let cut = Command::new("pdftoppm")
+        .args(["-f", &page, "-l", &page, "-r", "300", "-gray", "-png", "-x", &arg(x * k), "-y", &arg(y * k), "-W", &arg(w * k), "-H", &arg(h * k)])
+        .arg(path)
+        .output();
+    let Ok(cut) = cut else { return String::new() };
+    let read = Command::new("tesseract").args(["-", "-", "--psm", "6"]).env("OMP_THREAD_LIMIT", "1").stdin(std::process::Stdio::piped()).stdout(std::process::Stdio::piped()).stderr(std::process::Stdio::null()).spawn();
+    let Ok(mut read) = read else { return String::new() };
+    if let Some(mut pipe) = read.stdin.take() {
+        use std::io::Write;
+        let _ = pipe.write_all(&cut.stdout);
+    }
+    read.wait_with_output().map(|o| tidy(&String::from_utf8_lossy(&o.stdout))).unwrap_or_default()
 }
 
 /// Run the reader, passing on what it says and reporting how far it is.
@@ -374,6 +428,10 @@ fn equation(maths: &[String], beside: &str, key: String) -> Block {
             latex = format!("{}{}", before.trim_end(), rest).trim().to_string();
         }
     }
+    // (a name for the equation, which only LaTeX itself can use)
+    while let Some((before, after)) = latex.split_once("\\label{") {
+        latex = format!("{}{}", before, after.split_once('}').map_or("", |x| x.1).trim_start());
+    }
     // the reader's own correction of it comes first
     if let Some(fixed) = crate::ocr::read_correction(&key) {
         latex = fixed;
@@ -425,13 +483,18 @@ fn to_roman(mut n: i32) -> String {
 /// The printed page number in a running head or foot: the head or foot is
 /// the number, or starts or ends with it. (true: in roman numerals.)
 fn number_in(text: &str) -> Option<(bool, i32)> {
+    // (roman numerals are sometimes read in Cyrillic letters that look the same)
+    let text: String = text.chars().map(|c| match c { 'х' => 'x', 'і' => 'i', 'Х' => 'X', 'І' => 'I', 'с' => 'c', c => c }).collect();
     let words: Vec<&str> = text.split_whitespace().collect();
     let read = |w: &&str| -> Option<(bool, i32)> {
         if crate::pages::is_arabic(w) {
             return Some((false, w.parse().ok()?));
         }
-        // (a head in capitals is words, not a number: "MIX", "CIVIL")
-        (words.len() == 1 && crate::pages::is_roman(&w.to_lowercase())).then(|| roman(&w.to_lowercase())).flatten().map(|n| (true, n))
+        // (alone, also in capitals; beside the words of a head only in
+        // small letters and of two letters or more: "xii Preface", but
+        // not "MIX", "Part I")
+        let alone = words.len() == 1 && crate::pages::is_roman(&w.to_lowercase());
+        (alone || (w.len() >= 2 && crate::pages::is_roman(w))).then(|| roman(&w.to_lowercase())).flatten().map(|n| (true, n))
     };
     let found = [words.first(), words.last()].into_iter().flatten().find_map(read);
     found
@@ -447,7 +510,7 @@ fn labels(pages: &[PageRead]) -> Vec<Option<String>> {
         .collect();
     // (kind of numerals, number less the page's place) of each page
     let offset = |i: usize| seen[i].map(|(r, n)| (r, n - i as i32));
-    (0..pages.len())
+    let labels = (0..pages.len())
         .map(|i| {
             let mut votes: std::collections::HashMap<(bool, i32), (usize, usize)> = Default::default();
             for j in i.saturating_sub(6)..(i + 7).min(pages.len()) {
@@ -466,7 +529,17 @@ fn labels(pages: &[PageRead]) -> Vec<Option<String>> {
             };
             (n > 0).then(|| if is_roman { to_roman(n) } else { n.to_string() })
         })
-        .collect()
+        .collect();
+    // pages without numbers after the last numbered one (an index) count on
+    let mut labels: Vec<Option<String>> = labels;
+    for i in 1..labels.len() {
+        if let (None, Some(Ok(n))) = (&labels[i], labels[i - 1].as_ref().map(|l| l.parse::<u32>())) {
+            if seen[i].is_none() {
+                labels[i] = Some((n + 1).to_string());
+            }
+        }
+    }
+    labels
 }
 
 // ---- headings -----------------------------------------------------------
@@ -550,7 +623,8 @@ fn openers(pages: &[PageRead]) -> Option<Vec<Option<Opener>>> {
             }
             // "Chapter I.5" alone, its title in the heading under it
             let t = text(&p.blocks[at]);
-            let alone = names_chapter(&t) && t.split_whitespace().count() <= 2;
+            // (or a heading nobody could read)
+            let alone = (names_chapter(&t) && t.split_whitespace().count() <= 2) || !t.chars().any(char::is_alphanumeric);
             let title = (at + 1 < p.blocks.len() && alone && p.blocks[at + 1].kind == "SectionHeader").then_some(at + 1);
             Some(Opener { at, title, chapter: names_chapter(&t) })
         })
@@ -581,8 +655,19 @@ fn contents(lines: &[String]) -> Option<Vec<TocEntry>> {
             continue;
         }
         with_page += page.is_some() as usize;
-        // (a line in capitals without a page: the name of a part)
+        // (a line in capitals without a page: the name of a part, which
+        // goes on under "PART I")
         let part = page.is_none() && !title.chars().any(char::is_lowercase);
+        if let (true, Some(before)) = (part, entries.last_mut().filter(|e: &&mut TocEntry| e.page.is_empty() && e.size > BODY && names_chapter(&crate::plain(&e.title)))) {
+            before.title = vec![Inline::Text(format!("{} {}", crate::plain(&before.title), title))];
+            continue;
+        }
+        // (a title too long for its line goes on in the next, where its page is)
+        if let Some(before) = entries.last_mut().filter(|e: &&mut TocEntry| e.page.is_empty() && e.size == BODY && !part) {
+            before.title = vec![Inline::Text(format!("{} {}", crate::plain(&before.title), title.trim_end_matches(['.', ' '])))];
+            before.page = page.unwrap_or_default();
+            continue;
+        }
         entries.push(TocEntry {
             title: vec![Inline::Text(title.trim_end_matches(['.', ' ']).to_string())],
             page: page.unwrap_or_default(),
@@ -617,6 +702,15 @@ fn footnote(html: &str) -> Option<(String, Vec<Inline>)> {
         _ => return None,
     };
     Some((label, tidy(inl)))
+}
+
+/// Program code, by what only code is full of: braces, semicolons,
+/// assignments, calls, arrows, the words of a language.
+fn looks_like_code(t: &str) -> bool {
+    let words = t.split_whitespace().count().max(1);
+    let signs = t.matches(['{', '}', ';']).count() + t.matches(" = ").count() + t.matches("()").count() + t.matches("->").count() + t.matches("==").count();
+    let keywords = t.split(|c: char| !c.is_alphanumeric() && c != '#').filter(|w| ["def", "return", "import", "#include", "void", "int", "function", "printf", "print", "elif", "endif", "var", "const", "fn", "let"].contains(w)).count();
+    (signs + 2 * keywords) * 5 >= words && signs + keywords >= 3
 }
 
 fn ends_sentence(t: &str) -> bool {
@@ -660,7 +754,9 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
                         if let Some(o) = openers[pi].filter(|o| o.at == bi) {
                             size = if o.chapter { CHAPTER } else { SECTION + 3.0 };
                             if let Some(title) = o.title {
-                                text.push(Inline::Text(": ".into()));
+                                if has_words(&text) {
+                                    text.push(Inline::Text(": ".into()));
+                                }
                                 text.extend(crate::no_emph(all_inline(&page.blocks[title].html)));
                                 text = crate::no_emph(text);
                                 joined = Some((pi, title));
@@ -681,8 +777,9 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
                     made.push(Block::Figure { page: page.number, n: figures, area, label: labels[pi].clone() });
                 }
                 "Table" | "Form" | "TableOfContents" => {
-                    // (no text in it: marker saw a table in an empty page)
-                    if b.text.is_empty() {
+                    // (nothing written in it: marker saw a table in an
+                    // empty page, or in a speck on one)
+                    if b.text.iter().flat_map(|t| t.chars()).filter(|c| c.is_alphanumeric()).count() < 4 {
                         continue;
                     }
                     match contents(&b.text) {
@@ -695,8 +792,14 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
                 }
                 "Code" => {
                     let text: String = pieces(&b.html).iter().filter_map(|p| if let Piece::Text(t) = p { Some(unescape(t)) } else { None }).collect();
-                    if !text.trim().is_empty() {
+                    // (marker calls lists of names and numbers code, too)
+                    if looks_like_code(&text) {
                         made.push(Block::Code(text.trim().to_string()));
+                    } else {
+                        let words = all_inline(&b.html);
+                        if has_words(&words) {
+                            made.push(Block::Para(words));
+                        }
                     }
                 }
                 _ => {
@@ -957,13 +1060,20 @@ mod tests {
 
     #[test]
     fn a_table_of_contents_is_read_line_by_line() {
-        let lines: Vec<String> =
-            ["Preface                 xi", "             PART I", "I.1     Who Needs It? . . . . .   3", "I.2     Path Integrals         7"].iter().map(|s| s.to_string()).collect();
+        let lines: Vec<String> = ["Preface                 xi", "             PART I", "       MOTIVATION AND FOUNDATION", "I.1     Who Needs It? . . . . .   3", "I.2     Path Integrals         7"]
+            .iter()
+            .map(|s| s.to_string())
+            .collect();
         let entries = contents(&lines).unwrap();
         let got: Vec<(String, &str)> = entries.iter().map(|e| (plain(&e.title), e.page.as_str())).collect();
         assert_eq!(
             got,
-            [("Preface".to_string(), "xi"), ("PART I".to_string(), ""), ("I.1 Who Needs It?".to_string(), "3"), ("I.2 Path Integrals".to_string(), "7")]
+            [
+                ("Preface".to_string(), "xi"),
+                ("PART I MOTIVATION AND FOUNDATION".to_string(), ""),
+                ("I.1 Who Needs It?".to_string(), "3"),
+                ("I.2 Path Integrals".to_string(), "7")
+            ]
         );
         assert!(contents(&["Energy in MeV".to_string(), "up 2.2".to_string(), "down 4.7".to_string()]).is_none());
     }
@@ -973,6 +1083,12 @@ mod tests {
         assert_eq!(number_in("I.3. From Mattress to Field 17"), Some((false, 17)));
         assert_eq!(number_in("vii"), Some((true, 7)));
         assert_eq!(number_in("Motivation and Foundation"), None);
+        assert_eq!(number_in("хi"), Some((true, 11)));
+        // a running head read as text is a running head
+        let p = parse_page(1, "page\t487.0\t842.0\nblock\tText\t18.0\t17.0\t120.0\t30.0\t1\t<p>xii Preface</p>\nblock\tText\t18.0\t50.0\t460.0\t90.0\t1\t<p>12 apples</p>");
+        assert_eq!((p.blocks[0].kind.as_str(), p.blocks[1].kind.as_str()), ("PageHeader", "Text"));
+        assert!(looks_like_code("for (i = 0; i < n; i++) { sum = sum + a[i]; } return sum;"));
+        assert!(!looks_like_code("Abrahams, Elihu, 347 anyon(s), 293; interacting, 294; statistics Adler, Stephen, 251 between, 2"));
         assert_eq!(to_roman(14), "xiv");
     }
 }
