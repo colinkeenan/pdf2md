@@ -55,6 +55,105 @@ fn numbers_into_formulas(mut inl: Vec<Inline>) -> Vec<Inline> {
     inl
 }
 
+/// LaTeX that would not render, made to: math inside `\text{…}` ("^" and
+/// "_" mean nothing in text) is taken out of it, and two subscripts or
+/// two superscripts on one symbol are one.
+pub fn mend(latex: &str) -> String {
+    let mut t = latex.to_string();
+    // \text{ R^{-1}=1 \Rightarrow … }: a formula, no words in it
+    let mut from = 0;
+    while let Some(at) = t[from..].find("\\text{").map(|i| i + from) {
+        let open = at + "\\text".len();
+        let Some(close) = closing_brace(&t, open) else { break };
+        let inside = &t[open + 1..close];
+        let commands_out: String = {
+            // (the letters of commands are no words)
+            let mut out = String::new();
+            let mut cs = inside.chars().peekable();
+            while let Some(c) = cs.next() {
+                if c == '\\' {
+                    while cs.peek().is_some_and(|n| n.is_ascii_alphabetic()) {
+                        cs.next();
+                    }
+                    out.push(' ');
+                } else {
+                    out.push(c);
+                }
+            }
+            out
+        };
+        let math = inside.contains('^') || inside.contains('_');
+        let words = commands_out.split(|c: char| !c.is_alphabetic()).any(|w| w.chars().count() >= 3);
+        if math && !words {
+            t = format!("{}{{{}}}{}", &t[..at], inside, &t[close + 1..]);
+            from = at;
+        } else {
+            from = close + 1;
+        }
+    }
+    // x_{a}_{b}: x_{a b}
+    for mark in ['_', '^'] {
+        let mut k = 0;
+        while let Some(at) = t[k..].find(mark).map(|i| i + k) {
+            k = at + 1;
+            if at > 0 && t.as_bytes()[at - 1] == b'\\' {
+                continue;
+            }
+            let Some((first, end)) = script(&t, at + 1) else { continue };
+            let rest = &t[end..];
+            let gap = rest.len() - rest.trim_start().len();
+            if !rest.trim_start().starts_with(mark) {
+                continue;
+            }
+            let Some((second, end2)) = script(&t, end + gap + 1) else { continue };
+            t = format!("{}{mark}{{{first} {second}}}{}", &t[..at], &t[end2..]);
+            k = at;
+        }
+    }
+    t
+}
+
+/// The place of the "}" that closes the "{" at `open`.
+fn closing_brace(t: &str, open: usize) -> Option<usize> {
+    let b = t.as_bytes();
+    if b.get(open) != Some(&b'{') {
+        return None;
+    }
+    let mut depth = 0;
+    let mut i = open;
+    while i < b.len() {
+        match b[i] {
+            b'\\' => i += 1,
+            b'{' => depth += 1,
+            b'}' => {
+                depth -= 1;
+                if depth == 0 {
+                    return Some(i);
+                }
+            }
+            _ => {}
+        }
+        i += 1;
+    }
+    None
+}
+
+/// What a "_" or "^" is followed by at `at`: a group in braces (its
+/// inside), a command, or one character; and where it ends.
+fn script(t: &str, at: usize) -> Option<(String, usize)> {
+    let rest = t.get(at..)?;
+    let c = rest.chars().next()?;
+    if c == '{' {
+        let close = closing_brace(t, at)?;
+        return Some((t[at + 1..close].to_string(), close + 1));
+    }
+    if c == '\\' {
+        let n = 1 + rest[1..].chars().take_while(|c| c.is_ascii_alphabetic()).count();
+        return (n > 1).then(|| (rest[..n].to_string(), at + n));
+    }
+    (!c.is_whitespace()).then(|| (c.to_string(), at + c.len_utf8()))
+}
+
 pub fn render_inlines(inl: &[Inline]) -> String {
     // an accent and its letter that came in separate pieces ("f¨" + "ur")
     let joined: Vec<Inline> = inl
@@ -99,7 +198,16 @@ pub fn render_inlines(inl: &[Inline]) -> String {
                 }
             }
             Inline::Math(m) => {
-                s.push('$');
+                // (a formula right behind a formula is one with it: "$a$$b$"
+                // would read as "$$", the mark of a displayed formula, and
+                // put all that follows in the file out of joint)
+                if s.ends_with('$') && !s.ends_with("\\$") && !s.ends_with("$$") && s.matches('$').count().is_multiple_of(2) {
+                    s.pop();
+                    s.push(' ');
+                } else {
+                    s.push('$');
+                }
+                let m = &mend(m);
                 s.push_str(m.trim());
                 s.push('$');
             }
@@ -377,7 +485,7 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
                 return;
             }
             let tag = tag.as_ref().map(|t| format!(" \\tag{{{t}}}")).unwrap_or_default();
-            out.push_str(&format!("$$\n{latex}{tag}\n$$\n\n"));
+            out.push_str(&format!("$$\n{}{tag}\n$$\n\n", mend(latex)));
         }
         Block::Anchor(id) => match page_label(id) {
             Some(l) => {
@@ -916,6 +1024,13 @@ mod tests {
 
     #[test]
     fn a_number_right_behind_a_formula_is_part_of_it() {
+        // two formulas with nothing between them are written as one
+        let two = vec![Inline::Text("is ".into()), Inline::Math("\\pm 2".into()), Inline::Math("\\pi".into()), Inline::Text(", so".into())];
+        assert_eq!(render_inlines(&two), "is $\\pm 2 \\pi$, so");
+        // LaTeX that would not render is mended
+        assert_eq!(mend("\\text{If:}\\ \\text{ R^{-1}=1\\Rightarrow\\mathscr{D}(R) }"), "\\text{If:}\\ { R^{-1}=1\\Rightarrow\\mathscr{D}(R) }");
+        assert_eq!(mend("\\text{ for all x_i }"), "\\text{ for all x_i }");
+        assert_eq!(mend("N N_{4}_{5} + a^2^{3} + x_1^2 + \\_"), "N N_{4 5} + a^{2 3} + x_1^2 + \\_");
         let inl = vec![Inline::Text("at ".into()), Inline::Math("t =".into()), Inline::Text("0.5. Then".into())];
         assert_eq!(render_inlines(&inl), "at $t = 0.5$. Then");
         // a formula read from a picture is left as read

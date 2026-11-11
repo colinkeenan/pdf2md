@@ -208,6 +208,8 @@ The programs it runs have licences of their own: poppler (GPL), [texify](https:/
 
 ## Known limitations
 
+* **Formulas that would not render are mended when written** (every book): two formulas in a sentence with nothing between them are one (written one right behind the other they read as `$$`, the mark of a displayed formula, and put what follows in the file out of joint); math inside `\text{…}` is taken out of it; two subscripts or two superscripts on one symbol are one. A mended formula renders; whether it is the book's formula is another matter (a table read as formulas stays wrong).
+
 Tested on one book so far (Dyson, *Advanced Quantum Mechanics*, a TeX book): all chapters, every TOC entry, all 93 footnotes, all references and the whole index are linked.
 
 * **Math is good but not perfect.** All of Dyson's displayed equations are valid LaTeX (KaTeX renders every one), and every problem found so far in it is fixed. A new book will bring cases not seen yet, and a garbled formula does not always look broken. Some glyphs of TeX's big-symbol font are lost by `pdftohtml`; a lone bracket gets its partner back by guessing.
