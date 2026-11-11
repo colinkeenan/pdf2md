@@ -3,7 +3,7 @@
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p94"><sup>[p. 94]</sup></a>
 
-We have shown how (421) leads to matrix elements for standard scattering processes, from which cross-sections can be calculated. In each case we used only the term $n$ = 2 in (421), which happened to be the lowest term giving a contribution to these processes. The higher terms $n$ = 4$, 6 ,\dots$ will also give contributions to the matrix elements for these processes, contributions which are collectively called “radiative corrections”. It turns out that the results without radiative corrections agree with the experimental scattering cross-sections in all cases. The experiments are never accurate to better than a few percent, and the radiative corrections are always smaller than the lowest-order terms by at least one power of $( e^{2} / 4 \pi \hbar c )$ = (1$/$137). Thus the study of the radiative corrections for scattering processes will not lead to any directly observable effects.
+We have shown how (421) leads to matrix elements for standard scattering processes, from which cross-sections can be calculated. In each case we used only the term $n$ = 2 in (421), which happened to be the lowest term giving a contribution to these processes. The higher terms $n$ = 4$, 6 ,\dots$ will also give contributions to the matrix elements for these processes, contributions which are collectively called “radiative corrections”. It turns out that the results without radiative corrections agree with the experimental scattering cross-sections in all cases. The experiments are never accurate to better than a few percent, and the radiative corrections are always smaller than the lowest-order terms by at least one power of $( e^{2} / 4 \pi \hbar c )$ = (1$/ 137$). Thus the study of the radiative corrections for scattering processes will not lead to any directly observable effects.
 
 Nevertheless we shall work out a method of calculating the high-order terms of (421). This method turns out to be simplest and easiest to explain when we are discussing scattering problems. Incidentally we shall see what the radiative corrections to scattering look like, and we shall learn something about the nature of radiative corrections in general. Finally at the end we shall be able to use the method of calculation in order to find the radiative corrections to the motion of an electron in a hydrogen atom, which is the case in which these small effects can be accurately observed, but where the pure scattering theory is not directly applicable.
 
@@ -121,7 +121,7 @@ where $A$ is a numerical coefficient. The second term in (498) gives no contribu
 
 It is clear that by using the commutation rules of the operators in this way, every $\mathcal{O}$ can be written as a sum of normal products, and that the analysis leads to a unique expansion of $\mathcal{O}$. But we do not need to go through the tedious algebra of using the commutation rules, instead we can write down the normal constituents $\mathcal{O}_{n}$ directly by following simple rules.
 
-First, we define the notation $N ( \mathcal{Q} )$, where $\mathcal{Q}$ is any product of emission and absorption operators, to be the product obtained by simply rearranging the factors of $\mathcal{Q}$ in a normal order, irrespective of the commutation rules, with a factor $( -$1) if the rearrangement involves an odd permutation of the electron-positron operators. Similarly if $\mathcal{Q}$ is any sum of products, $N ( \mathcal{Q} )$ is defined by rearranging factors in each term of the sum in the same way. Thus we have for example (see (211))
+First, we define the notation $N ( \mathcal{Q} )$, where $\mathcal{Q}$ is any product of emission and absorption operators, to be the product obtained by simply rearranging the factors of $\mathcal{Q}$ in a normal order, irrespective of the commutation rules, with a factor $( - 1$) if the rearrangement involves an odd permutation of the electron-positron operators. Similarly if $\mathcal{Q}$ is any sum of products, $N ( \mathcal{Q} )$ is defined by rearranging factors in each term of the sum in the same way. Thus we have for example (see (211))
 
 <a id="eq-499"></a>
 
@@ -354,7 +354,7 @@ The rules for writing down the normal constituents of (488) are therefore extrem
 
 2) To each <a id="ix-71">graph</a> $G$ with $n$ vertices corresponds one normal constituent $S_{G}$ of $S$.
 
-3) Choosing a particular $G$, write down the $n$<sup>th</sup> term $S_{n}$ of the series (488) and <a id="ix-18">pair</a> off the factors of $S_{n}$ as indicated by $G$. Replace each factor-pair $A_{\lambda} ( x ) A_{\mu} ( y )$ by (510), and replace each factor-pair $\psi_{\alpha} ( x ) \overline{\psi}_{\beta} ( y )$ by (511). Apply an $N$-ordering to the remaining unpaired factors of $S_{n}$, and multiply the whole expression by $( \pm$1) following the rule given for equation (504). The result of applying these operations to $S_{n}$ is the normal constituent $S_{G}$.
+3) Choosing a particular $G$, write down the $n$<sup>th</sup> term $S_{n}$ of the series (488) and <a id="ix-18">pair</a> off the factors of $S_{n}$ as indicated by $G$. Replace each factor-pair $A_{\lambda} ( x ) A_{\mu} ( y )$ by (510), and replace each factor-pair $\psi_{\alpha} ( x ) \overline{\psi}_{\beta} ( y )$ by (511). Apply an $N$-ordering to the remaining unpaired factors of $S_{n}$, and multiply the whole expression by $( \pm 1$) following the rule given for equation (504). The result of applying these operations to $S_{n}$ is the normal constituent $S_{G}$.
 
 If we wish to calculate the matrix element for the <a id="ix-63">scattering</a> process, then we have only to add one more rule to the three already given.
 
@@ -464,7 +464,7 @@ $$
 \Sigma ( p ) = 2 \int_{0}^{1} dzi\mu ( 1 + z ) \{ 2 i\pi^{2} ( R - \log z ) \} = - \pi^{2} \mu [ 6 R + 5 ] = - 6 \pi^{2} \mu R^{\prime} \tag{523}
 $$
 
-Thus Σ$( p )$ is a logarithmically divergent constant, depending only on the electron mass and independent of the state of the electron. The difference 5$/$6 between $R$ and $R^{\prime}$ is of course not significant. Substituting (523) into (519) gives the value of $M_{2}$
+Thus Σ$( p )$ is a logarithmically divergent constant, depending only on the electron mass and independent of the state of the electron. The difference 5$/ 6$ between $R$ and $R^{\prime}$ is of course not significant. Substituting (523) into (519) gives the value of $M_{2}$
 
 <a id="eq-524"></a>
 

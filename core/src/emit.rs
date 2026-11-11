@@ -26,6 +26,34 @@ fn escape(t: &str) -> String {
     s
 }
 
+/// A number right behind a formula is part of it ("$t =$0" is "$t = 0$"):
+/// viewers do not take a "$" with a digit behind it for the end of a
+/// formula (it could be a price), and would show the LaTeX as it is.
+/// A formula read from a picture is left as read (it may be corrected by
+/// hand); there a space parts the two.
+fn numbers_into_formulas(mut inl: Vec<Inline>) -> Vec<Inline> {
+    for i in 1..inl.len() {
+        let read = i >= 2 && matches!(inl[i - 2], Inline::Source(_));
+        let (before, after) = inl.split_at_mut(i);
+        let (Some(Inline::Math(m)), Inline::Text(t)) = (before.last_mut(), &mut after[0]) else { continue };
+        if !t.starts_with(|c: char| c.is_ascii_digit()) {
+            continue;
+        }
+        if read {
+            t.insert(0, ' ');
+            continue;
+        }
+        // the digits, and a decimal point between digits
+        let chars: Vec<char> = t.chars().collect();
+        let n = (0..chars.len())
+            .take_while(|&k| chars[k].is_ascii_digit() || (chars[k] == '.' && chars.get(k + 1).is_some_and(char::is_ascii_digit)))
+            .count();
+        *m = format!("{} {}", m.trim(), &t[..n]);
+        *t = t[n..].to_string();
+    }
+    inl
+}
+
 pub fn render_inlines(inl: &[Inline]) -> String {
     // an accent and its letter that came in separate pieces ("f¨" + "ur")
     let joined: Vec<Inline> = inl
@@ -37,6 +65,7 @@ pub fn render_inlines(inl: &[Inline]) -> String {
             other => other.clone(),
         })
         .collect();
+    let joined = numbers_into_formulas(joined);
     let inl = &joined[..];
     let mut s = String::new();
     for i in inl {
@@ -834,5 +863,14 @@ mod tests {
         let (a, b) = part_at_line_end(&para, 1);
         assert_eq!(render_inlines(&a).trim(), words(8));
         assert!(matches!(&b[0], Inline::Anchor(id) if id == "p9"));
+    }
+
+    #[test]
+    fn a_number_right_behind_a_formula_is_part_of_it() {
+        let inl = vec![Inline::Text("at ".into()), Inline::Math("t =".into()), Inline::Text("0.5. Then".into())];
+        assert_eq!(render_inlines(&inl), "at $t = 0.5$. Then");
+        // a formula read from a picture is left as read
+        let inl = vec![Inline::Source("k".into()), Inline::Math("x".into()), Inline::Text("2 times".into())];
+        assert_eq!(render_inlines(&inl), "<!-- pdf2md:eq k -->$x$ 2 times");
     }
 }

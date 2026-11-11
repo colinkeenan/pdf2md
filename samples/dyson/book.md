@@ -708,7 +708,7 @@ $$
 S = S^{*} = \beta \tag{30}
 $$
 
-Note that in all cases S is ambiguous by a factor $\pm$1. So in case 1 a rotation though 360$◦$ gives $S = - 1 .$
+Note that in all cases S is ambiguous by a factor $\pm 1$. So in case 1 a rotation though 360$◦$ gives $S = - 1 .$
 
 _Problem 1_ Find the S corresponding to a general infinitesimal coordinate transformation. Compare and show that it agrees with the exact solutions given here.
 
@@ -1597,7 +1597,7 @@ $$
 \left( \frac{E^{2}}{\hbar^{2} c^{2}} - \frac{m^{2} c^{2}}{\hbar^{2}} \right) \psi + \left( \frac{\partial}{\partial x} - \frac{1}{2} \frac{ieB}{\hbar c} y \right)^{2} \psi + \left( \frac{\partial}{\partial y} + \frac{1}{2} \frac{ieB}{\hbar c} x \right)^{2} \psi + \frac{\partial^{2}}{\partial z^{2}} \psi - \frac{eB}{\hbar c} \sigma_{z} \psi = 0
 $$
 
-Taking a representation with $\sigma_{z}$ diagonal, this splits at once into two states with $\sigma_{z} = \pm$1. Also
+Taking a representation with $\sigma_{z}$ diagonal, this splits at once into two states with $\sigma_{z} = \pm 1$. Also
 
 $$
 L_{z} = - i \hbar \left\{ x \frac{\partial}{\partial y} - y \frac{\partial}{\partial x} \right\}
@@ -1991,7 +1991,7 @@ $$
 \sum_{u} \epsilon ( \overline{u} Qu )
 $$
 
-summed over all 4 spin states, where $Q$ is any 4 $\times$4 matrix.
+summed over all 4 spin states, where $Q$ is any 4 $\times 4$ matrix.
 
 Let $Q$ have the eigenvectors $w_{1} ,w_{2} ,w_{3} ,w_{4}$ with eigenvalues $\lambda_{1} ,\lambda_{2} ,\lambda_{3} ,\lambda_{4}$. Then
 
@@ -3712,7 +3712,7 @@ $$
 \langle a_{k\mu} a_{k^{\prime} \lambda}^{*} \rangle_{o} = \pm \delta^{3} ( \boldsymbol{k} - \boldsymbol{k}^{\prime} ) \delta_{\mu \lambda} \tag{220a}
 $$
 
-Here the plus sign holds for $\mu$ = 1$, 2 ,$3; the minus sign for $\mu$ = 4. Now if the operators $a_{k\mu} ,a_{k\mu}^{*}$ are represented in the usual way by matrices, as it is done in the elementary theory of the harmonic oscillator$( )$ (see Wentzel p. 33, Eq. (6.16)), the vacuum expectation values of a product $( a_{k\mu} a_{k\mu}^{*} )$ will always be _positive_, i.e. the plus sign should hold in (220a) for $\mu$ = 4 also. In fact $( a_{k\mu} a_{k\mu}^{*} )$ will have a positive expectation value in any state whatever, if the photon oscillators are treated as ordinary$( )$ elementary oscillators.
+Here the plus sign holds for $\mu$ = 1$, 2 , 3$; the minus sign for $\mu$ = 4. Now if the operators $a_{k\mu} ,a_{k\mu}^{*}$ are represented in the usual way by matrices, as it is done in the elementary theory of the harmonic oscillator$( )$ (see Wentzel p. 33, Eq. (6.16)), the vacuum expectation values of a product $( a_{k\mu} a_{k\mu}^{*} )$ will always be _positive_, i.e. the plus sign should hold in (220a) for $\mu$ = 4 also. In fact $( a_{k\mu} a_{k\mu}^{*} )$ will have a positive expectation value in any state whatever, if the photon oscillators are treated as ordinary$( )$ elementary oscillators.
 
 Therefore we must distinguish between the scalar product (Ψ$\frac{*}{1} ,$ Ψ${}_{2} )$ as we have defined it by our covariant theory, and the scalar product (Ψ$\frac{*}{1} ,$ Ψ${}_{2} )_{E}$ which one would calculate using the explicit matrix representation of the operators. The product (Ψ$\frac{*}{1} ,$ Ψ${}_{2} )_{E}$ has no physical significance, because the matrix representations of the $a_{k 4}$ refer to states with photons polarized purely in the time dimension, which cannot occur physically. However, it is convenient also to be able to use the matrix representations in practice.
 
@@ -4514,7 +4514,7 @@ Compare this with (239). It differs only in having the log$( K/ ( E - E_{o} )_{\
 
 The success of this calculation of the line shift shows that the correct treatment of the interaction between an electron and the Maxwell field, with the help of the idea of mass renormalization, will give sensible results in agreement with experiment. This calculation could be done non-relativistically because the line shift is mainly a low-frequency and non-relativistic effect.
 
-There are other effects of the radiation interaction, especially the anomalous increase in the observed magnetic moment of the electron by a factor $( )$1 + $\frac{\alpha}{2 \pi} ( )$ over the value given by the Dirac theory, which are essentially relativistic in character. For studying these effects, and for calculating the Lamb shift accurately without an arbitrary cut-off, we need to use a complete relativistic quantum electrodynamics, in which both electrons and the Maxwell field are handled relativistically.
+There are other effects of the radiation interaction, especially the anomalous increase in the observed magnetic moment of the electron by a factor $( ) 1$ + $\frac{\alpha}{2 \pi} ( )$ over the value given by the Dirac theory, which are essentially relativistic in character. For studying these effects, and for calculating the Lamb shift accurately without an arbitrary cut-off, we need to use a complete relativistic quantum electrodynamics, in which both electrons and the Maxwell field are handled relativistically.
 
 Therefore we must go back to where we left off the theory of the Dirac electron on page 31, and start to construct a relativistic field theory of electrons and positrons, similar to the quantized Maxwell field theory.
 
@@ -5803,7 +5803,7 @@ Everything here is now finite and observable.
 
 5) When $A_{\nu}^{e} ( x )$ is the potential of a pure radiation field without sources, $j_{\nu R}$ = 0 and so there is no polarization. Thus for every photon or freely travelling wave, the vacuum behaves like a true vacuum; there are no dielectric effects of any kind. This agrees with the common-sense idea of the vacuum. The result is however only true so long as the polarization can be treated as linear; if non-linear effects were included then two beams of light crossing the same region would produce a polarization current, giving rise to a “scattering of light by light”. The light-by-light scattering has been calculated, it is not zero but is much too small to be observable.
 
-6) The induced current (396) consists of two components, the first in phase with the potential $A_{\nu}^{e} ( x )$ and the second out of phase by $\pi /$2. Speaking of the vacuum as a circuit being driven by the potential $A_{\nu}^{e} ( x )$, the first is an inductive effect, the second a resistive one. So only the second term gives an absorption of energy by the vacuum from the driving potentials.
+6) The induced current (396) consists of two components, the first in phase with the potential $A_{\nu}^{e} ( x )$ and the second out of phase by $\pi / 2$. Speaking of the vacuum as a circuit being driven by the potential $A_{\nu}^{e} ( x )$, the first is an inductive effect, the second a resistive one. So only the second term gives an absorption of energy by the vacuum from the driving potentials.
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p77"><sup>[p. 77]</sup></a>
@@ -5943,7 +5943,7 @@ $$
 \Delta E_{P} = - \frac{\alpha e^{2}}{1 5 \pi \mu^{2}} | \psi ( 0 ) |^{2} = - \tfrac{1}{5} \left\{ \frac{e^{4} \hbar}{1 2 \pi^{2} m^{2} c^{3}} | \psi ( 0 ) |^{2} \right\} \tag{409}
 $$
 
-This is just the same as the formula for the Lamb shift, (284), with $( - 1 /$5) instead of the logarithm. Thus it is a factor 40 smaller than the Lamb shift, and in the opposite direction, $-$27 megacycles in the total of 1062. Still the experiments are good enough to show that the effect is there all right.
+This is just the same as the formula for the Lamb shift, (284), with $( - 1 / 5$) instead of the logarithm. Thus it is a factor 40 smaller than the Lamb shift, and in the opposite direction, $- 27$ megacycles in the total of 1062. Still the experiments are good enough to show that the effect is there all right.
 
 The result (409) was calculated many years ago by Uehling <a id="refback-17-1"></a>[[17]](#ref-17) using old-fashioned methods.
 
@@ -6075,7 +6075,7 @@ So now we shall apply the covariant methods, working in the IR, to solve a numbe
 
 <a id="fn-33"></a>**33.** “if” substuted for “it”; and “gives” added to the previous sentence. [↩](#fnref-33)
 
-<a id="fn-34"></a>**34.** The limits on the integral were $-$1 and +1, and the value of the integral was given as $\frac{2}{3}$. [↩](#fnref-34)
+<a id="fn-34"></a>**34.** The limits on the integral were $- 1$ and +1, and the value of the integral was given as $\frac{2}{3}$. [↩](#fnref-34)
 
 <a id="fn-35"></a>**35.** The expression for $a_{o}$ is not here in the original, but it appears before Eq. (240). [↩](#fnref-35)
 
@@ -7121,7 +7121,7 @@ $$
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p94"><sup>[p. 94]</sup></a>
 
-We have shown how (421) leads to matrix elements for standard scattering processes, from which cross-sections can be calculated. In each case we used only the term $n$ = 2 in (421), which happened to be the lowest term giving a contribution to these processes. The higher terms $n$ = 4$, 6 ,\dots$ will also give contributions to the matrix elements for these processes, contributions which are collectively called “radiative corrections”. It turns out that the results without radiative corrections agree with the experimental scattering cross-sections in all cases. The experiments are never accurate to better than a few percent, and the radiative corrections are always smaller than the lowest-order terms by at least one power of $( e^{2} / 4 \pi \hbar c )$ = (1$/$137). Thus the study of the radiative corrections for scattering processes will not lead to any directly observable effects.
+We have shown how (421) leads to matrix elements for standard scattering processes, from which cross-sections can be calculated. In each case we used only the term $n$ = 2 in (421), which happened to be the lowest term giving a contribution to these processes. The higher terms $n$ = 4$, 6 ,\dots$ will also give contributions to the matrix elements for these processes, contributions which are collectively called “radiative corrections”. It turns out that the results without radiative corrections agree with the experimental scattering cross-sections in all cases. The experiments are never accurate to better than a few percent, and the radiative corrections are always smaller than the lowest-order terms by at least one power of $( e^{2} / 4 \pi \hbar c )$ = (1$/ 137$). Thus the study of the radiative corrections for scattering processes will not lead to any directly observable effects.
 
 Nevertheless we shall work out a method of calculating the high-order terms of (421). This method turns out to be simplest and easiest to explain when we are discussing scattering problems. Incidentally we shall see what the radiative corrections to scattering look like, and we shall learn something about the nature of radiative corrections in general. Finally at the end we shall be able to use the method of calculation in order to find the radiative corrections to the motion of an electron in a hydrogen atom, which is the case in which these small effects can be accurately observed, but where the pure scattering theory is not directly applicable.
 
@@ -7239,7 +7239,7 @@ where $A$ is a numerical coefficient. The second term in (498) gives no contribu
 
 It is clear that by using the commutation rules of the operators in this way, every $\mathcal{O}$ can be written as a sum of normal products, and that the analysis leads to a unique expansion of $\mathcal{O}$. But we do not need to go through the tedious algebra of using the commutation rules, instead we can write down the normal constituents $\mathcal{O}_{n}$ directly by following simple rules.
 
-First, we define the notation $N ( \mathcal{Q} )$, where $\mathcal{Q}$ is any product of emission and absorption operators, to be the product obtained by simply rearranging the factors of $\mathcal{Q}$ in a normal order, irrespective of the commutation rules, with a factor $( -$1) if the rearrangement involves an odd permutation of the electron-positron operators. Similarly if $\mathcal{Q}$ is any sum of products, $N ( \mathcal{Q} )$ is defined by rearranging factors in each term of the sum in the same way. Thus we have for example (see (211))
+First, we define the notation $N ( \mathcal{Q} )$, where $\mathcal{Q}$ is any product of emission and absorption operators, to be the product obtained by simply rearranging the factors of $\mathcal{Q}$ in a normal order, irrespective of the commutation rules, with a factor $( - 1$) if the rearrangement involves an odd permutation of the electron-positron operators. Similarly if $\mathcal{Q}$ is any sum of products, $N ( \mathcal{Q} )$ is defined by rearranging factors in each term of the sum in the same way. Thus we have for example (see (211))
 
 <a id="eq-499"></a>
 
@@ -7472,7 +7472,7 @@ The rules for writing down the normal constituents of (488) are therefore extrem
 
 2) To each <a id="ix-71">graph</a> $G$ with $n$ vertices corresponds one normal constituent $S_{G}$ of $S$.
 
-3) Choosing a particular $G$, write down the $n$<sup>th</sup> term $S_{n}$ of the series (488) and <a id="ix-18">pair</a> off the factors of $S_{n}$ as indicated by $G$. Replace each factor-pair $A_{\lambda} ( x ) A_{\mu} ( y )$ by (510), and replace each factor-pair $\psi_{\alpha} ( x ) \overline{\psi}_{\beta} ( y )$ by (511). Apply an $N$-ordering to the remaining unpaired factors of $S_{n}$, and multiply the whole expression by $( \pm$1) following the rule given for equation (504). The result of applying these operations to $S_{n}$ is the normal constituent $S_{G}$.
+3) Choosing a particular $G$, write down the $n$<sup>th</sup> term $S_{n}$ of the series (488) and <a id="ix-18">pair</a> off the factors of $S_{n}$ as indicated by $G$. Replace each factor-pair $A_{\lambda} ( x ) A_{\mu} ( y )$ by (510), and replace each factor-pair $\psi_{\alpha} ( x ) \overline{\psi}_{\beta} ( y )$ by (511). Apply an $N$-ordering to the remaining unpaired factors of $S_{n}$, and multiply the whole expression by $( \pm 1$) following the rule given for equation (504). The result of applying these operations to $S_{n}$ is the normal constituent $S_{G}$.
 
 If we wish to calculate the matrix element for the <a id="ix-63">scattering</a> process, then we have only to add one more rule to the three already given.
 
@@ -7582,7 +7582,7 @@ $$
 \Sigma ( p ) = 2 \int_{0}^{1} dzi\mu ( 1 + z ) \{ 2 i\pi^{2} ( R - \log z ) \} = - \pi^{2} \mu [ 6 R + 5 ] = - 6 \pi^{2} \mu R^{\prime} \tag{523}
 $$
 
-Thus Σ$( p )$ is a logarithmically divergent constant, depending only on the electron mass and independent of the state of the electron. The difference 5$/$6 between $R$ and $R^{\prime}$ is of course not significant. Substituting (523) into (519) gives the value of $M_{2}$
+Thus Σ$( p )$ is a logarithmically divergent constant, depending only on the electron mass and independent of the state of the electron. The difference 5$/ 6$ between $R$ and $R^{\prime}$ is of course not significant. Substituting (523) into (519) gives the value of $M_{2}$
 
 <a id="eq-524"></a>
 
@@ -8931,7 +8931,7 @@ $$
 U_{M} = i \frac{\delta M}{2 \hbar c} \sum_{\mu ,\nu} ( \overline{u}^{\prime} \sigma_{\mu \nu} u ) ( q_{\mu} e_{\nu} - q_{\nu} e_{\mu} ) = i \frac{\delta M}{2 \hbar c} \left[ u^{\prime} ( /q/e - /e/q ) u \right] \tag{658}
 $$
 
-where we used $\gamma_{k} \gamma_{\ell} = i\sigma_{m} ,k,\ell ,m$ = (1$, 2 ,$3) cyclically permuted. Since we have also assumed (588) we may write simply
+where we used $\gamma_{k} \gamma_{\ell} = i\sigma_{m} ,k,\ell ,m$ = (1$, 2 , 3$) cyclically permuted. Since we have also assumed (588) we may write simply
 
 <a id="eq-659"></a>
 

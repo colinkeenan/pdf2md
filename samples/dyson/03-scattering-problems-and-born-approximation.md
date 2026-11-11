@@ -185,7 +185,7 @@ $$
 \sum_{u} \epsilon ( \overline{u} Qu )
 $$
 
-summed over all 4 spin states, where $Q$ is any 4 $\times$4 matrix.
+summed over all 4 spin states, where $Q$ is any 4 $\times 4$ matrix.
 
 Let $Q$ have the eigenvectors $w_{1} ,w_{2} ,w_{3} ,w_{4}$ with eigenvalues $\lambda_{1} ,\lambda_{2} ,\lambda_{3} ,\lambda_{4}$. Then
 

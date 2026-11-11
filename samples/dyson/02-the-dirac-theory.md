@@ -367,7 +367,7 @@ $$
 S = S^{*} = \beta \tag{30}
 $$
 
-Note that in all cases S is ambiguous by a factor $\pm$1. So in case 1 a rotation though 360$◦$ gives $S = - 1 .$
+Note that in all cases S is ambiguous by a factor $\pm 1$. So in case 1 a rotation though 360$◦$ gives $S = - 1 .$
 
 _Problem 1_ Find the S corresponding to a general infinitesimal coordinate transformation. Compare and show that it agrees with the exact solutions given here.
 
@@ -1256,7 +1256,7 @@ $$
 \left( \frac{E^{2}}{\hbar^{2} c^{2}} - \frac{m^{2} c^{2}}{\hbar^{2}} \right) \psi + \left( \frac{\partial}{\partial x} - \frac{1}{2} \frac{ieB}{\hbar c} y \right)^{2} \psi + \left( \frac{\partial}{\partial y} + \frac{1}{2} \frac{ieB}{\hbar c} x \right)^{2} \psi + \frac{\partial^{2}}{\partial z^{2}} \psi - \frac{eB}{\hbar c} \sigma_{z} \psi = 0
 $$
 
-Taking a representation with $\sigma_{z}$ diagonal, this splits at once into two states with $\sigma_{z} = \pm$1. Also
+Taking a representation with $\sigma_{z}$ diagonal, this splits at once into two states with $\sigma_{z} = \pm 1$. Also
 
 $$
 L_{z} = - i \hbar \left\{ x \frac{\partial}{\partial y} - y \frac{\partial}{\partial x} \right\}
