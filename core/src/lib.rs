@@ -82,6 +82,37 @@ pub struct TocEntry {
     pub page: String,
     pub left: f32,
     pub size: f32,
+    /// The contents are set in columns (number, title, page): they are
+    /// written as a table, not as a list.
+    pub columns: bool,
+    /// What stands in the first column: the number of the chapter
+    /// ("I.5", "A"). Empty: the title starts in the first column.
+    pub number: String,
+    /// The title as the table shows it, where that is not `title` (the
+    /// title without its number; a part's name in its two lines).
+    pub label: Vec<Inline>,
+    /// The name of a part of the book, set centered between its chapters.
+    pub part: bool,
+}
+
+/// How a cell of a table is set.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub enum Align {
+    #[default]
+    Left,
+    Center,
+    Right,
+}
+
+/// A cell of a table.
+#[derive(Debug, Clone, Default)]
+pub struct Cell {
+    pub text: Vec<Inline>,
+    pub align: Align,
+    /// 0: ordinary text; else the text is a heading of this level.
+    pub heading: usize,
+    /// How many columns it takes (1 or more).
+    pub span: usize,
 }
 
 #[derive(Debug, Clone)]
@@ -106,6 +137,8 @@ pub enum Block {
     Code(String),
     /// A horizontal line across the page (drawn as an image).
     Rule,
+    /// A table: its rows of cells (a table of contents set in columns).
+    Table(Vec<Vec<Cell>>),
 }
 
 /// A block plus the page it starts on (index into the page list).
@@ -129,6 +162,11 @@ pub struct Note {
 #[derive(Debug, Clone, Default)]
 pub struct Chapter {
     pub title: String,
+    /// The title as it is set where that is more than its words (its
+    /// lines); empty: `title`.
+    pub heading: Vec<Inline>,
+    /// The title is set centered.
+    pub centered: bool,
     pub slug: String,
     pub blocks: Vec<Blk>,
     pub notes: Vec<Note>,
@@ -316,6 +354,9 @@ fn finish(blks: Vec<Blk>, labels: Vec<Option<String>>, pdf_pages: Vec<u32>, chap
     structure::merge_front_matter(&mut chapters, chapter_size);
     let mut book = Book { labels, pdf_pages, ..Default::default() };
     let removed = notes::attach(&mut chapters, &mut book);
+    // (after the notes: their names count the chapters, and stay as they
+    // were before the contents were a file of their own)
+    structure::split_contents(&mut chapters);
     structure::assign_slugs(&mut chapters);
     links::link_toc(&mut chapters, &book.labels, &book.pdf_pages, &removed, &mut book.warnings);
     structure::heading_levels(&mut chapters, chapter_size);

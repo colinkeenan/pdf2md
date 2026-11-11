@@ -66,7 +66,7 @@ fn big_text_line(doc: &Doc, l: &Line, body: f32) -> bool {
         })
 }
 
-fn is_contents_title(t: &str) -> bool {
+pub(crate) fn is_contents_title(t: &str) -> bool {
     matches!(key(t).as_str(), "contents" | "tableofcontents")
 }
 
@@ -1209,14 +1209,12 @@ impl Builder<'_> {
             title.extend(inl);
             let title = tidy(title);
             if !title.is_empty() {
-                entries.push(TocEntry { title, page, left: l.left, size: l.size });
+                entries.push(TocEntry { title, page, left: l.left, size: l.size, columns: false, number: String::new(), label: Vec::new(), part: false });
             }
         }
-        // Several TOC pages make one table (only page anchors in between).
-        let last = self.out.iter().rposition(|b| !matches!(b.block, Block::Anchor(_)));
-        if let Some(Block::Toc(prev)) = last.map(|p| &mut self.out[p].block) {
-            prev.extend(entries);
-        } else if !entries.is_empty() {
+        // (each page of the contents keeps its entries: the page marks
+        // stand between them as in the book)
+        if !entries.is_empty() {
             self.push(Block::Toc(entries));
         }
     }

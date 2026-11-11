@@ -183,6 +183,27 @@ pub fn read(path: &Path, first: u32, last: u32) -> Result<Scan, String> {
         }
         pages.push(page);
     }
+    // A line of which marker read too little for the room it takes
+    // ("cm." in a box four times as wide: the page says "p.   cm."): the
+    // PDF's own words, if they are marker's and more.
+    for page in pages.iter_mut() {
+        let number = page.number;
+        for b in page.blocks.iter_mut().filter(|b| b.kind == "Text" && b.lines <= 1 && b.bottom - b.top <= 24.0) {
+            let inl = all_inline(&b.html);
+            let read = plain(&inl);
+            let letters = read.chars().count();
+            if letters == 0 || letters > 12 || !inl.iter().all(|i| matches!(i, Inline::Text(_))) || b.right - b.left < 12.0 * letters as f32 {
+                continue;
+            }
+            // (looked for a little to the left and right of marker's box, too)
+            let wider = Raw { left: b.left - 16.0, right: b.right + 6.0, top: b.top - 3.0, bottom: b.bottom + 5.0, ..b.clone() };
+            let there = area_text(path, number, &wider);
+            let more = there.split_whitespace().count() > read.split_whitespace().count() && there.chars().count() <= 4 * letters + 8;
+            if more && there.to_lowercase().ends_with(&read.to_lowercase()) {
+                b.html = there.replace('&', "&amp;").replace('<', "&lt;").replace('>', "&gt;");
+            }
+        }
+    }
     // Where the lines of a block end (pages read before the reader said
     // so, and blocks it read as one line): asked of the PDF itself, for
     // blocks of several lines and for pages set centered, where every
@@ -192,8 +213,11 @@ pub fn read(path: &Path, first: u32, last: u32) -> Result<Scan, String> {
         let all = centered_page(page);
         let number = page.number;
         for b in page.blocks.iter_mut().filter(|b| is_text(b) && b.text.is_empty()) {
-            if b.lines >= 2 || (all && b.bottom - b.top > 20.0) {
-                b.text = area_lines(path, number, b);
+            // (and for a heading of several lines: the title of a part)
+            if b.lines >= 2 || (all && b.bottom - b.top > 20.0) || (b.kind == "SectionHeader" && b.bottom - b.top > 30.0) {
+                // (a heading's last line may reach a little under marker's box)
+                let roomy = if b.kind == "SectionHeader" { Raw { left: b.left - 3.0, right: b.right + 3.0, top: b.top - 2.0, bottom: b.bottom + 6.0, ..b.clone() } } else { b.clone() };
+                b.text = area_lines(path, number, &roomy);
             }
         }
     }
@@ -517,7 +541,8 @@ fn number_in(text: &str) -> Option<(bool, i32)> {
         // small letters and of two letters or more: "xii Preface", but
         // not "MIX", "Part I")
         let alone = words.len() == 1 && crate::pages::is_roman(&w.to_lowercase());
-        (alone || (w.len() >= 2 && crate::pages::is_roman(w))).then(|| roman(&w.to_lowercase())).flatten().map(|n| (true, n))
+        // ("x Contents": one letter beside a word or two)
+        (alone || (crate::pages::is_roman(w) && (w.len() >= 2 || words.len() <= 3))).then(|| roman(&w.to_lowercase())).flatten().map(|n| (true, n))
     };
     let found = [words.first(), words.last()].into_iter().flatten().find_map(read);
     found
@@ -663,42 +688,137 @@ fn openers(pages: &[PageRead]) -> Option<Vec<Option<Opener>>> {
 
 // ---- tables of contents -------------------------------------------------
 
-/// The entries of a table of contents given line by line ("I.1  Who
-/// Needs It? . . . 3"); None if the lines are no such table.
+/// A contents entry as these functions make it.
+fn entry(title: String, page: String, left: f32, part: bool) -> TocEntry {
+    TocEntry { title: vec![Inline::Text(title)], page, left, size: if part { BODY + 3.0 } else { BODY }, columns: false, number: String::new(), label: Vec::new(), part }
+}
+
+/// Is this what stands in the first column of a table of contents: the
+/// number of a chapter ("I.5", "12", "A", "VIII.2")?
+fn chapter_mark(t: &str) -> bool {
+    let n = t.chars().count();
+    (1..=8).contains(&n)
+        && !t.contains(' ')
+        && t.chars().all(|c| c.is_ascii_alphanumeric() || c == '.')
+        && (t.chars().any(|c| c.is_ascii_digit()) || (n <= 4 && t.chars().all(|c| c.is_ascii_uppercase() || c == '.')))
+}
+
+/// The entries of a table of contents given line by line, laid out as on
+/// the page ("I.1     Who Needs It? . . .     3"); None if the lines are no
+/// such table. A number that stands apart in front of a title is the
+/// entry's number (the first column of contents set in columns).
 fn contents(lines: &[String]) -> Option<Vec<TocEntry>> {
-    let mut entries = Vec::new();
+    let mut entries: Vec<TocEntry> = Vec::new();
     let mut with_page = 0;
     for line in lines {
         let indent = line.chars().take_while(|c| *c == ' ').count() as f32;
-        let words: Vec<&str> = line.split_whitespace().filter(|w| !w.chars().all(|c| c == '.' || c == '·' || c == '…')).collect();
-        let Some(last) = words.last() else { continue };
-        let page = (words.len() > 1 && crate::pages::is_page_number(last)).then(|| last.to_string());
-        let title = words[..words.len() - page.is_some() as usize].join(" ");
+        // what stands apart on the line (two spaces or more between)
+        let leaders = |w: &&str| !w.chars().all(|c| c == '.' || c == '·' || c == '…' || c == ' ');
+        let mut fields: Vec<String> =
+            line.split("  ").map(str::trim).filter(|f| !f.is_empty()).map(|f| f.split_whitespace().filter(leaders).collect::<Vec<_>>().join(" ")).filter(|f| !f.is_empty()).collect();
+        // the page: the last of them, or the last word
+        let mut page = None;
+        if fields.len() > 1 && fields.last().is_some_and(|f| crate::pages::is_page_number(f)) {
+            page = fields.pop();
+        } else if let Some((rest, last)) = fields.last().and_then(|f| f.rsplit_once(' ')).map(|(a, b)| (a.to_string(), b.to_string())) {
+            if crate::pages::is_page_number(&last) {
+                *fields.last_mut().unwrap() = rest;
+                page = Some(last);
+            }
+        }
+        let number = if fields.len() >= 2 && indent < 4.0 && chapter_mark(&fields[0]) { fields.remove(0) } else { String::new() };
+        let title = fields.join(" ").trim_end_matches(['.', ' ']).to_string();
         if !title.chars().any(char::is_alphabetic) {
             continue;
         }
         with_page += page.is_some() as usize;
         // (a line in capitals without a page: the name of a part, which
         // goes on under "PART I")
-        let part = page.is_none() && !title.chars().any(char::is_lowercase);
-        if let (true, Some(before)) = (part, entries.last_mut().filter(|e: &&mut TocEntry| e.page.is_empty() && e.size > BODY && names_chapter(&crate::plain(&e.title)))) {
-            before.title = vec![Inline::Text(format!("{} {}", crate::plain(&before.title), title))];
+        let part = page.is_none() && number.is_empty() && !title.chars().any(char::is_lowercase);
+        if let (true, Some(before)) = (part, entries.last_mut().filter(|e| e.part && names_chapter(&crate::plain(&e.title)))) {
+            let first = crate::plain(&before.title);
+            before.label = vec![Inline::Text(format!("{first} ")), Inline::Break, Inline::Text(title.clone())];
+            before.title = vec![Inline::Text(format!("{first} {title}"))];
             continue;
         }
         // (a title too long for its line goes on in the next, where its page is)
-        if let Some(before) = entries.last_mut().filter(|e: &&mut TocEntry| e.page.is_empty() && e.size == BODY && !part) {
-            before.title = vec![Inline::Text(format!("{} {}", crate::plain(&before.title), title.trim_end_matches(['.', ' '])))];
+        if let Some(before) = entries.last_mut().filter(|e| e.page.is_empty() && !e.part && !part && number.is_empty()) {
+            before.title = vec![Inline::Text(format!("{} {}", crate::plain(&before.title), title))];
             before.page = page.unwrap_or_default();
             continue;
         }
-        entries.push(TocEntry {
-            title: vec![Inline::Text(title.trim_end_matches(['.', ' ']).to_string())],
-            page: page.unwrap_or_default(),
-            left: if part { 0.0 } else { (indent / 4.0).round() * 12.0 },
-            size: if part { BODY + 3.0 } else { BODY },
-        });
+        let mut e = entry(title, page.unwrap_or_default(), if part { 0.0 } else { (indent / 4.0).round() * 12.0 }, part);
+        e.number = number;
+        entries.push(e);
     }
     (entries.len() >= 3 && with_page * 2 >= entries.len()).then_some(entries)
+}
+
+/// "Chapter I.5: Coulomb and Newton" as the contents set it in columns:
+/// the number, and the title without it.
+fn numbered(title: &str) -> Option<(String, String)> {
+    let (head, rest) = title.split_once(": ")?;
+    let mut words = head.split_whitespace();
+    let (kind, number) = (words.next()?.to_lowercase(), words.next()?);
+    (words.next().is_none() && matches!(kind.as_str(), "chapter" | "appendix") && chapter_mark(number)).then(|| (number.to_string(), rest.trim().to_string()))
+}
+
+/// The contents know the book's titles less well than the book does: they
+/// are read from the PDF's own text, which has "It9" for "It?" and loses a
+/// letter here and there. `opened`: the titles that open a page, in the
+/// book's order, with the page's printed number. An entry whose page
+/// opens with a title is that title (in contents set in columns: its
+/// number in the first column, the rest in the second); a part's name is
+/// the title that opens the part, before the chapter that follows it.
+fn name_entries(blks: &mut [Blk], opened: &[(Option<String>, Vec<Inline>)]) {
+    let columns = blks.iter().any(|b| matches!(&b.block, Block::Toc(e) if e.iter().filter(|e| !e.number.is_empty()).count() >= 3));
+    let at_page = |page: &str| opened.iter().position(|(label, _)| !page.is_empty() && label.as_deref() == Some(page));
+    let mut all: Vec<&mut TocEntry> = blks.iter_mut().filter_map(|b| if let Block::Toc(e) = &mut b.block { Some(e.iter_mut()) } else { None }).flatten().collect();
+    for k in 0..all.len() {
+        all[k].columns = columns;
+        if all[k].part {
+            // the part that the next entry's chapter comes right after
+            let next = all[k + 1..].iter().find(|e| !e.part).and_then(|e| at_page(&e.page));
+            if let Some((_, title)) = next.and_then(|j| j.checked_sub(1)).map(|j| &opened[j]).filter(|(_, t)| names_chapter(&plain(t))) {
+                // (the words as the part's own page has them, in the
+                // lines the contents set them in: "PART IV", and under it
+                // the part's name)
+                let words = plain(title);
+                let first = match all[k].label.first() {
+                    Some(Inline::Text(t)) if all[k].label.contains(&Inline::Break) => t.split_whitespace().count(),
+                    _ => 2,
+                };
+                let mut w = words.split_whitespace();
+                let head: Vec<&str> = w.by_ref().take(first).collect();
+                let rest: Vec<&str> = w.collect();
+                all[k].label = if rest.is_empty() { vec![Inline::Text(words.clone())] } else { vec![Inline::Text(format!("{} ", head.join(" "))), Inline::Break, Inline::Text(rest.join(" "))] };
+                all[k].title = vec![Inline::Text(words)];
+            }
+        } else if let Some((_, title)) = at_page(&all[k].page).map(|j| &opened[j]) {
+            let words = plain(title);
+            match numbered(&words).filter(|_| columns) {
+                Some((number, rest)) => {
+                    // (the title without "Chapter I.5: ", its formulas kept)
+                    let mut label = title.clone();
+                    let cut = words.len() - rest.len();
+                    match label.first_mut() {
+                        Some(Inline::Text(t)) if t.len() >= cut && t.is_char_boundary(cut) => *t = t[cut..].to_string(),
+                        _ => label = vec![Inline::Text(rest)],
+                    }
+                    (all[k].number, all[k].label) = (number, label);
+                }
+                // (a number the contents have and the title has not stays)
+                None if !all[k].number.is_empty() && !words.starts_with(&all[k].number) => all[k].label = title.clone(),
+                None => all[k].number.clear(),
+            }
+            all[k].title = title.clone();
+        } else if !all[k].number.is_empty() && !columns {
+            // (contents in a list: the number is part of the title)
+            let whole = format!("{} {}", all[k].number, plain(&all[k].title));
+            all[k].title = vec![Inline::Text(whole)];
+            all[k].number.clear();
+        }
+    }
 }
 
 // ---- the blocks ---------------------------------------------------------
@@ -908,6 +1028,22 @@ fn hard_return(lines: &[String], k: usize, room: f32) -> bool {
     len(&lines[k]) + needed <= longest + room.max(0.0)
 }
 
+/// Put entries of the table of contents on page `pi`: with the ones of
+/// that page that are there already, else as a block after the page's
+/// anchor.
+fn toc(blks: &mut Vec<Blk>, pi: usize, entries: Vec<TocEntry>, anchor: &mut Option<String>) {
+    if let Some(Blk { block: Block::Toc(there), page, .. }) = blks.last_mut() {
+        if *page == pi {
+            there.extend(entries);
+            return;
+        }
+    }
+    if let Some(a) = anchor.take() {
+        blks.push(Blk { block: Block::Anchor(a), page: pi, centered: false });
+    }
+    blks.push(Blk { block: Block::Toc(entries), page: pi, centered: false });
+}
+
 /// How much of block `a` lies inside block `b`, 0 to 1.
 fn inside(a: &Raw, b: &Raw) -> f32 {
     let w = (a.right.min(b.right) - a.left.max(b.left)).max(0.0);
@@ -959,7 +1095,13 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
         };
         // where the lines of this page end at the latest
         let (_, right) = margins(page, measure);
+        // (the title page of a part, also when the part's first words
+        // stand under the title: centered, in its lines)
+        let part_page = openers.as_ref().is_some_and(|o| o[pi].is_some_and(|o| plain(&all_inline(&page.blocks[o.at].html)).to_lowercase().starts_with("part ")));
         let breaks = |b: &Raw, inl: Vec<Inline>| -> Vec<Inline> {
+            if b.kind == "SectionHeader" && part_page && b.text.len() >= 2 {
+                return with_breaks(inl, &b.text, &|_| true);
+            }
             // (a heading's lines are its own only on a page set centered:
             // a chapter title in two lines is one title)
             if b.text.len() < 2 || !is_text(b) || (b.kind == "SectionHeader" && !all_centered) {
@@ -991,6 +1133,7 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
             continue;
         }
         let pictures: Vec<&Raw> = page.blocks.iter().filter(|b| b.kind == "Picture" || b.kind == "Figure").collect();
+        let contents_page = page.blocks.iter().any(|b| matches!(b.kind.as_str(), "Table" | "Form" | "TableOfContents") && contents(&b.text).is_some());
         for (bi, b) in page.blocks.iter().enumerate() {
             let area = Figure { left: b.left * PX, right: b.right * PX, top: b.top * PX, bottom: b.bottom * PX };
             let mut made: Vec<Block> = Vec::new();
@@ -1006,6 +1149,14 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
                     if joined == Some((pi, bi)) {
                         continue;
                     }
+                    // a heading on a page of the contents, other than
+                    // their title: the name of a part, which marker took
+                    // out of the table
+                    let words = plain(&all_inline(&b.html));
+                    if contents_page && !crate::blocks::is_contents_title(&words) && has_words(&all_inline(&b.html)) {
+                        toc(&mut blks, pi, vec![entry(words, String::new(), 0.0, true)], &mut anchor);
+                        continue;
+                    }
                     let mut text = breaks(b, crate::no_emph(all_inline(&b.html)));
                     if let Some(openers) = &openers {
                         // by where the headings stand, not by their heights
@@ -1013,10 +1164,17 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
                         if let Some(o) = openers[pi].filter(|o| o.at == bi) {
                             size = if o.chapter { CHAPTER } else { SECTION + 3.0 };
                             if let Some(title) = o.title {
+                                // (on a page set centered the title is
+                                // the next of its lines)
+                                let under = &page.blocks[title];
                                 if has_words(&text) {
-                                    text.push(Inline::Text(": ".into()));
+                                    if all_centered || part_page {
+                                        text.extend([Inline::Text(" ".into()), Inline::Break]);
+                                    } else {
+                                        text.push(Inline::Text(": ".into()));
+                                    }
                                 }
-                                text.extend(crate::no_emph(all_inline(&page.blocks[title].html)));
+                                text.extend(breaks(under, crate::no_emph(all_inline(&under.html))));
                                 text = crate::no_emph(text);
                                 joined = Some((pi, title));
                             }
@@ -1024,7 +1182,10 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
                     }
                     if has_words(&text) {
                         titles.push((size, plain(&text)));
-                        made.push(Block::Heading { level: 0, size, id: String::new(), text });
+                        // (what opens a page of the front matter is a
+                        // part of it: a heading of the first level there)
+                        let level = usize::from(openers.as_ref().is_some_and(|o| o[pi].is_some_and(|o| o.at == bi && !o.chapter)));
+                        made.push(Block::Heading { level, size, id: String::new(), text });
                     }
                 }
                 "Footnote" => match footnote(&b.html) {
@@ -1042,7 +1203,7 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
                         continue;
                     }
                     match contents(&b.text) {
-                        Some(entries) => made.push(Block::Toc(entries)),
+                        Some(entries) => toc(&mut blks, pi, entries, &mut anchor),
                         None => {
                             figures += 1;
                             made.push(Block::Figure { page: page.number, n: figures, area, label: labels[pi].clone() });
@@ -1116,7 +1277,11 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
                 if let Some(a) = anchor.take() {
                     push(&mut blks, Block::Anchor(a));
                 }
+                let title = part_page && openers.as_ref().is_some_and(|o| o[pi].is_some_and(|o| o.at == bi)) && matches!(block, Block::Heading { .. });
                 push(&mut blks, block);
+                if let (true, Some(last)) = (title, blks.last_mut()) {
+                    last.centered = true;
+                }
             }
         }
         // an empty page still has its mark
@@ -1142,26 +1307,11 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
     if openers.is_none() {
         join_titles(&mut blks, chapter_size);
     }
-    // An entry of the table of contents is read less well than the title
-    // it names (and "I.5 Coulomb …" is "Chapter I.5: Coulomb …" there):
-    // where a chapter opens on the entry's page, the entry is that title.
-    let mut opens: std::collections::HashMap<String, Vec<Inline>> = Default::default();
-    for b in &blks {
-        if let (Block::Heading { size, text, .. }, Some(label)) = (&b.block, &labels[b.page]) {
-            if Some(*size) == chapter_size {
-                opens.entry(label.clone()).or_insert_with(|| text.clone());
-            }
-        }
-    }
-    for b in blks.iter_mut() {
-        if let Block::Toc(entries) = &mut b.block {
-            for e in entries.iter_mut() {
-                if let Some(title) = opens.get(&e.page) {
-                    e.title = title.clone();
-                }
-            }
-        }
-    }
+    // the titles that open a page, in order, for the contents
+    let opening = |size: f32| if openers.is_some() { size == CHAPTER || size == SECTION + 3.0 } else { Some(size) == chapter_size };
+    let opened: Vec<(Option<String>, Vec<Inline>)> =
+        blks.iter().filter_map(|b| if let Block::Heading { size, text, .. } = &b.block { opening(*size).then(|| (labels[b.page].clone(), text.clone())) } else { None }).collect();
+    name_entries(&mut blks, &opened);
     Scan { blks, labels, pdf_pages: pages.iter().map(|p| p.number).collect(), chapter_size }
 }
 
@@ -1442,16 +1592,21 @@ mod tests {
             .map(|s| s.to_string())
             .collect();
         let entries = contents(&lines).unwrap();
-        let got: Vec<(String, &str)> = entries.iter().map(|e| (plain(&e.title), e.page.as_str())).collect();
+        let got: Vec<(&str, String, &str, bool)> = entries.iter().map(|e| (e.number.as_str(), plain(&e.title), e.page.as_str(), e.part)).collect();
         assert_eq!(
             got,
             [
-                ("Preface".to_string(), "xi"),
-                ("PART I MOTIVATION AND FOUNDATION".to_string(), ""),
-                ("I.1 Who Needs It?".to_string(), "3"),
-                ("I.2 Path Integrals".to_string(), "7")
+                ("", "Preface".to_string(), "xi", false),
+                ("", "PART I MOTIVATION AND FOUNDATION".to_string(), "", true),
+                ("I.1", "Who Needs It?".to_string(), "3", false),
+                ("I.2", "Path Integrals".to_string(), "7", false)
             ]
         );
+        // (the part's name keeps its two lines)
+        assert!(entries[1].label.contains(&Inline::Break));
+        assert_eq!(numbered("Chapter I.5: Coulomb and Newton: Repulsion"), Some(("I.5".to_string(), "Coulomb and Newton: Repulsion".to_string())));
+        assert_eq!(numbered("Appendix B: A Brief Review"), Some(("B".to_string(), "A Brief Review".to_string())));
+        assert_eq!(numbered("Closing Words"), None);
         assert!(contents(&["Energy in MeV".to_string(), "up 2.2".to_string(), "down 4.7".to_string()]).is_none());
     }
 

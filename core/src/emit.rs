@@ -389,6 +389,38 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
         Block::Item { level, text } => {
             out.push_str(&format!("{}- {}\n", "  ".repeat(*level), render_inlines(text)));
         }
+        Block::Table(rows) => {
+            // (html, with each cell's text between empty lines: Markdown
+            // is read inside it, so links and headings work)
+            out.push_str("<table width=\"100%\">\n");
+            // (three columns: a narrow one for numbers, one for pages)
+            if rows.iter().map(|r| r.iter().map(|c| c.span.max(1)).sum::<usize>()).max() == Some(3) {
+                out.push_str("<colgroup><col width=\"10%\"><col><col width=\"20%\"></colgroup>\n");
+            }
+            for row in rows {
+                out.push_str("<tr>\n");
+                for cell in row {
+                    let mut tag = String::from("<td");
+                    if cell.span > 1 {
+                        tag.push_str(&format!(" colspan=\"{}\"", cell.span));
+                    }
+                    match cell.align {
+                        crate::Align::Left => {}
+                        crate::Align::Center => tag.push_str(" align=\"center\""),
+                        crate::Align::Right => tag.push_str(" align=\"right\""),
+                    }
+                    let text = render_inlines(&cell.text).replace("<br>\n", "<br>");
+                    if text.trim().is_empty() {
+                        out.push_str(&format!("{tag}></td>\n"));
+                    } else {
+                        let hashes = if cell.heading > 0 { format!("{} ", "#".repeat(cell.heading.clamp(1, 6))) } else { String::new() };
+                        out.push_str(&format!("{tag}>\n\n{hashes}{}\n\n</td>\n", text.trim()));
+                    }
+                }
+                out.push_str("</tr>\n");
+            }
+            out.push_str("</table>\n\n");
+        }
         Block::Toc(entries) => {
             for e in entries {
                 out.push_str(&format!("- {}\n", render_inlines(&e.title)));
@@ -542,7 +574,9 @@ fn scan(s: &str, open: &str, close: char) -> Vec<(usize, usize)> {
 /// A chapter's text without the links to the chapters before and after.
 fn chapter_body(book: &Book, i: usize) -> String {
     let ch = &book.chapters[i];
-    let mut s = format!("# {}\n\n", ch.title);
+    // (a title set centered, or in lines of its own: as it is set)
+    let title = if ch.heading.is_empty() { ch.title.clone() } else { render_inlines(&crate::no_emph(ch.heading.clone())).replace("<br>\n", "<br>") };
+    let mut s = if ch.centered { format!("<div align=\"center\">\n\n# {title}\n\n</div>\n\n") } else { format!("# {title}\n\n") };
     let mut in_list = false;
     // a run of centered blocks goes in one centered div (page markers
     // between them don't break it)

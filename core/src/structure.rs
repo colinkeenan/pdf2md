@@ -22,15 +22,21 @@ pub fn split_chapters(blks: Vec<Blk>, chapter_size: Option<f32>) -> Vec<Chapter>
         }
         let Block::Heading { text, .. } = &b.block else { unreachable!() };
         // The page anchor written just before the title belongs to the new
-        // chapter, not to the end of the previous one.
+        // chapter, not to the end of the previous one. (Only that one: the
+        // anchors before it are of empty pages, which close the chapter
+        // before, as the empty page after a part's title page does.)
         let prev = chapters.last_mut().unwrap();
         let mut moved = Vec::new();
-        while matches!(prev.blocks.last(), Some(Blk { block: Block::Anchor(_), .. })) {
+        if matches!(prev.blocks.last(), Some(Blk { block: Block::Anchor(_), .. })) {
             moved.push(prev.blocks.pop().unwrap());
         }
-        moved.reverse();
+        // (a title set in lines of its own, as on the title page of a
+        // part, is written as it is set: in its lines, centered if it is)
+        let set = text.iter().any(|i| matches!(i, crate::Inline::Break));
         chapters.push(Chapter {
             title: plain(text),
+            heading: if set { text.clone() } else { Vec::new() },
+            centered: set && b.centered,
             blocks: moved,
             ..Default::default()
         });
@@ -113,6 +119,35 @@ pub fn merge_front_matter(chapters: &mut Vec<Chapter>, chapter_size: Option<f32>
     chapters.extend(rest);
 }
 
+/// The table of contents is a file of its own: the "Contents" heading
+/// and the entries under it leave the chapter they are in (the front
+/// matter), and stand right after it.
+pub fn split_contents(chapters: &mut Vec<Chapter>) {
+    let found = chapters.iter().enumerate().find_map(|(ci, ch)| {
+        let at = ch.blocks.iter().position(|b| matches!(&b.block, Block::Heading { text, .. } if crate::blocks::is_contents_title(&plain(text))))?;
+        // the entries under it, with the page anchors between them
+        let rest = &ch.blocks[at + 1..];
+        let last = rest.iter().take_while(|b| matches!(b.block, Block::Toc(_) | Block::Anchor(_))).enumerate().filter(|(_, b)| matches!(b.block, Block::Toc(_))).map(|(k, _)| k).last()?;
+        Some((ci, at, at + 1 + last))
+    });
+    let Some((ci, at, last)) = found else { return };
+    // (the anchor of the page the heading stands on goes with it)
+    let from = if at > 0 && matches!(chapters[ci].blocks[at - 1].block, Block::Anchor(_)) { at - 1 } else { at };
+    let mut blocks: Vec<Blk> = chapters[ci].blocks.drain(from..=last).collect();
+    let heading = blocks.remove(at - from);
+    let title = match &heading.block {
+        Block::Heading { text, .. } => plain(text),
+        _ => "Contents".into(),
+    };
+    if chapters[ci].blocks.iter().all(|b| matches!(b.block, Block::Anchor(_))) && ci > 0 {
+        // the chapter held nothing else: it is the contents
+        chapters[ci].title = title;
+        chapters[ci].blocks.splice(0..0, blocks);
+        return;
+    }
+    chapters.insert(ci + 1, Chapter { title, blocks, ..Default::default() });
+}
+
 /// The numbered chapters come in rising order (else the numbers were
 /// misread, and they are not used).
 fn numbers_in_order(chapters: &[Chapter]) -> bool {
@@ -129,10 +164,22 @@ fn numbers_in_order(chapters: &[Chapter]) -> bool {
 pub fn assign_slugs(chapters: &mut [Chapter]) {
     let numbers: Vec<Option<u32>> = chapters.iter().map(chapter_number).collect();
     let first = numbers.iter().position(Option::is_some);
-    let usable = first.is_some_and(|f| f <= 1 && numbers_in_order(&chapters[f..]) && numbers[f] == Some(f as u32));
+    // (chapter 1 comes first, after the front matter and its contents)
+    let contents = |c: &Chapter| crate::blocks::is_contents_title(&c.title);
+    let usable = first.is_some_and(|f| {
+        numbers_in_order(&chapters[f..]) && ((f <= 1 && numbers[f] == Some(f as u32)) || (f == 2 && numbers[f] == Some(1) && contents(&chapters[1])))
+    });
     if !usable {
+        // (the contents, a file of their own after the front matter, are
+        // "00b": the chapters keep the numbers they have without them)
+        let mut n = 0;
         for (i, ch) in chapters.iter_mut().enumerate() {
-            ch.slug = format!("{:02}-{}", i, slugify(&ch.title));
+            if i == 1 && crate::blocks::is_contents_title(&ch.title) {
+                ch.slug = format!("00b-{}", slugify(&ch.title));
+                continue;
+            }
+            ch.slug = format!("{:02}-{}", n, slugify(&ch.title));
+            n += 1;
         }
         return;
     }

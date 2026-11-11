@@ -123,16 +123,18 @@ fn converts_a_small_book() {
     let book = convert_doc(&doc);
 
     let titles: Vec<&str> = book.chapters.iter().map(|c| c.title.as_str()).collect();
-    assert_eq!(titles, ["Front Matter", "Alpha", "Beta", "Index"], "{:?}", book.warnings);
+    assert_eq!(titles, ["Front Matter", "Table of Contents", "Alpha", "Beta", "Index"], "{:?}", book.warnings);
+    // (the contents are a file of their own, and take no number from the chapters)
+    assert_eq!(book.chapters[1].slug, "00b-table-of-contents");
     assert!(book.warnings.is_empty(), "{:?}", book.warnings);
 
     // table of contents: chapters and sections are links
-    let front = emit::chapter_markdown(&book, 0);
+    let front = emit::chapter_markdown(&book, 1);
     assert!(front.contains("- [Alpha](01-alpha.md)"), "{front}");
     assert!(front.contains("  - [Section One](01-alpha.md#s-section-one)"), "{front}");
     assert!(!front.contains("Notes"), "{front}"); // moved into the chapters
 
-    let alpha = emit::chapter_markdown(&book, 1);
+    let alpha = emit::chapter_markdown(&book, 2);
     assert!(alpha.contains("## <a id=\"s-section-one\"></a>Section One"), "{alpha}");
     // footnote marker -> note, and back
     assert!(alpha.contains("note.<sup><a id=\"fnref-1\" href=\"#fn-1\">1</a></sup>"), "{alpha}");
@@ -152,12 +154,12 @@ fn converts_a_small_book() {
         "{alpha}"
     );
 
-    let beta = emit::chapter_markdown(&book, 2);
+    let beta = emit::chapter_markdown(&book, 3);
     assert!(beta.contains("<a id=\"fn-2\"></a>**2.** Second note text."), "{beta}");
     assert!(!beta.contains("First note"), "{beta}");
 
     // index page numbers link to page anchors in the right chapter
-    let index = emit::chapter_markdown(&book, 3);
+    let index = emit::chapter_markdown(&book, 4);
     assert!(index.contains("- alpha, [1](01-alpha.md#p1), [2](01-alpha.md#p2)"), "{index}");
     assert!(index.contains("- beta, [3](02-beta.md#p3)"), "{index}");
     assert!(book.unplaced.is_empty(), "{:?}", book.unplaced);

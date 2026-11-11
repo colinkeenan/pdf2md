@@ -42,10 +42,20 @@ A^{T} & = & \text{transposed} \\
 \end{array}
 $$
 
+<div align="center">
+
+## <a id="s-lecture-course-491-advanced-quantum-theory-f-j-dyson-fall-semester-1951"></a>Lecture Course 491 — Advanced Quantum Theory F. J. Dyson — Fall Semester 1951
+
+</div>
+
+---
+
+<a id="00b-table-of-contents"></a>
+
+# Table of Contents
+
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="pii"><sup>[p. ii]</sup></a>
-
-## <a id="s-table-of-contents"></a>Table of Contents
 
 - [Introduction](#01-introduction) — [pp. 1–3](#p1)
   - [Subject Matter](#s-subject-matter) — [p. 1](#p1)
@@ -87,6 +97,10 @@ $$
     - [E. The Heisenberg Equation of Motion for the Operators](#s-e-the-heisenberg-equation-of-motion-for-the-operators) — [p. 39](#p39)
     - [F. General Covariant Commutation Laws](#s-f-general-covariant-commutation-laws) — [p. 39](#p39)
     - [G. Anticommuting Fields](#s-g-anticommuting-fields) — [p. 40](#p40)
+
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
+<a id="piii"><sup>[p. iii]</sup></a>
+
 - [Examples of Quantized Field Theories](#05-examples-of-quantized-field-theories) — [pp. 41–80](#p41)
   - [I. The Maxwell Field](#s-i-the-maxwell-field) — [p. 41](#p41)
     - [Momentum Representations](#s-momentum-representations) — [p. 42](#p42)
@@ -135,6 +149,10 @@ $$
     - [Sum Over Spins](#s-sum-over-spins) — [p. 87](#p87)
   - [C. Two-Quantum Pair Annihilation](#s-c-two-quantum-pair-annihilation) — [p. 90](#p90)
   - [D. Bremsstrahlung and Pair Creation in the Coulomb Field of an Atom](#s-d-bremsstrahlung-and-pair-creation-in-the-coulomb-field-of-an-atom) — [p. 92](#p92)
+
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
+<a id="piv"><sup>[p. iv]</sup></a>
+
 - [General Theory of Free Particle Scattering](#07-general-theory-of-free-particle-scattering) — [pp. 94–117](#p94)
   - [Reduction of an Operator to Normal Form](#s-reduction-of-an-operator-to-normal-form) — [p. 96](#p96)
   - [Feynman Graphs](#s-feynman-graphs) — [p. 98](#p98)
@@ -151,18 +169,6 @@ $$
     - [Accuracy of the Lamb Shift Calculation](#s-accuracy-of-the-lamb-shift-calculation) — [p. 130](#p130)
 - [Typist’s Afterword](#09-typist-s-afterword) — [pp. 132–133](#p132)
 - [Index](#10-index) — [pp. 140–143](#p140)
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="piii"><sup>[p. iii]</sup></a>
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="piv"><sup>[p. iv]</sup></a>
-
-<div align="center">
-
-## <a id="s-lecture-course-491-advanced-quantum-theory-f-j-dyson-fall-semester-1951"></a>Lecture Course 491 — Advanced Quantum Theory F. J. Dyson — Fall Semester 1951
-
-</div>
 
 ---
 

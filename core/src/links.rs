@@ -73,21 +73,31 @@ pub fn link_toc(
     // Take the TOC entries out of the chapter that holds them: the front
     // matter, or a "Contents" chapter of its own.
     if let Some(tc) = chapters.iter().position(|c| c.blocks.iter().any(|b| matches!(b.block, Block::Toc(_)))) {
+        // (all of them are linked together, and each stays on its page)
         let mut entries = Vec::new();
-        let mut toc_at = None;
+        let mut tocs: Vec<(usize, usize)> = Vec::new();
         for (bi, b) in chapters[tc].blocks.iter_mut().enumerate() {
             if let Block::Toc(e) = &mut b.block {
-                entries.append(e);
-                toc_at.get_or_insert(bi);
+                // (entries of chapters taken out of the book make no item)
+                let kept: Vec<crate::TocEntry> = e.drain(..).filter(|e| !removed.contains(&key(&plain(&e.title)))).collect();
+                tocs.push((bi, kept.len()));
+                entries.extend(kept);
             }
         }
-        if let Some(at) = toc_at {
-            let items = link_entries(chapters, labels, pdf, removed, warnings, &mut used_ids, entries);
-            let page = chapters[tc].blocks[at].page;
-            chapters[tc].blocks.retain(|b| !matches!(b.block, Block::Toc(_)));
-            let at = at.min(chapters[tc].blocks.len());
-            for (k, block) in items.into_iter().enumerate() {
-                chapters[tc].blocks.insert(at + k, crate::Blk { block, page, centered: false });
+        if !tocs.is_empty() {
+            let shown = entries.clone();
+            let mut items = link_entries(chapters, labels, pdf, removed, warnings, &mut used_ids, entries);
+            debug_assert_eq!(items.len(), shown.len());
+            let mut end = items.len();
+            for &(bi, n) in tocs.iter().rev() {
+                let page = chapters[tc].blocks[bi].page;
+                let from = end.saturating_sub(n);
+                let of_page: Vec<Block> = items.drain(from..end.min(items.len())).collect();
+                let entries = &shown[from..end.min(shown.len())];
+                end = from;
+                // contents set in columns: a table; else a list
+                let blocks = if entries.iter().any(|e| e.columns) { vec![contents_table(entries, of_page)] } else { of_page };
+                chapters[tc].blocks.splice(bi..=bi, blocks.into_iter().map(|block| crate::Blk { block, page, centered: false }));
             }
         }
     }
@@ -101,6 +111,39 @@ pub fn link_toc(
             }
         }
     }
+}
+
+/// The entries of a table of contents set in columns, as a table: the
+/// chapter's number, its title, its pages. A title that starts in the
+/// first column (a preface, an index) takes the first two; the name of a
+/// part is a heading, centered in the middle column.
+fn contents_table(entries: &[crate::TocEntry], items: Vec<Block>) -> Block {
+    use crate::{Align, Cell};
+    let cell = |text: Vec<Inline>| Cell { text, span: 1, ..Default::default() };
+    let rows = entries
+        .iter()
+        .zip(items)
+        .map(|(e, item)| {
+            let Block::Item { text, .. } = item else { return Vec::new() };
+            // (the item: the title, " — ", the pages)
+            let at = text.iter().position(|i| matches!(i, Inline::Text(t) if t.starts_with(" — "))).unwrap_or(text.len());
+            let (title, mut pages) = (text[..at].to_vec(), text[at..].to_vec());
+            if let Some(Inline::Text(t)) = pages.first_mut() {
+                *t = t.trim_start_matches(" — ").to_string();
+            }
+            if e.part {
+                return vec![cell(Vec::new()), Cell { text: title, align: Align::Center, heading: 2, span: 1 }, cell(Vec::new())];
+            }
+            let pages = Cell { text: pages, align: Align::Right, heading: 0, span: 1 };
+            if e.number.is_empty() {
+                vec![Cell { text: title, span: 2, ..Default::default() }, pages]
+            } else {
+                vec![cell(vec![Inline::Text(e.number.clone())]), cell(title), pages]
+            }
+        })
+        .filter(|row| !row.is_empty())
+        .collect();
+    Block::Table(rows)
 }
 
 fn link_entries(
@@ -166,7 +209,8 @@ fn link_entries(
         if removed.contains(&k) {
             continue;
         }
-        let text = render_inlines(&e.title);
+        // (as the contents show it: in columns, without its number)
+        let text = render_inlines(if e.label.is_empty() { &e.title } else { &e.label }).replace("<br>\n", "<br>");
         // 1. a whole chapter? (a linked entry: also a chapter that starts on
         //    the page it links to, with some words in common)
         let starts_there = |c: usize| {

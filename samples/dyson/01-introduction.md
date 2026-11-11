@@ -167,4 +167,4 @@ $$
 
 ---
 
-[← Front Matter](00-front-matter.md) · [The Dirac Theory →](02-the-dirac-theory.md)
+[← Table of Contents](00b-table-of-contents.md) · [The Dirac Theory →](02-the-dirac-theory.md)
