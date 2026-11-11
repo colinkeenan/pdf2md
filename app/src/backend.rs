@@ -29,6 +29,15 @@ pub mod qobject {
         #[qproperty(bool, detailed)]
         /// Last folder the user browsed (a file:// URL), remembered between runs.
         #[qproperty(QString, folder)]
+        /// The command that shows a book (the user's Markdown reader),
+        /// remembered between runs. Empty: the system's own choice.
+        #[qproperty(QString, reader)]
+        /// The folder of the book converted last in this session (a path);
+        /// empty before a conversion has succeeded.
+        #[qproperty(QString, last)]
+        /// The converted books known, newest first, one per line: name,
+        /// folder (a path) and when it was converted, parted by tabs.
+        #[qproperty(QString, books)]
         type Converter = super::ConverterRust;
 
         /// Start a conversion on a background thread. Output goes into
@@ -44,6 +53,18 @@ pub mod qobject {
         /// Remember `folder` as the last folder used (saved to disk).
         #[qinvokable]
         fn remember(self: Pin<&mut Converter>, folder: &QString);
+
+        /// Use `command` to show books from now on (saved to disk).
+        #[qinvokable]
+        fn usereader(self: Pin<&mut Converter>, command: &QString);
+
+        /// Show the book in the folder `book` (a path) with the reader.
+        #[qinvokable]
+        fn show(self: Pin<&mut Converter>, book: &QString);
+
+        /// Look again for converted books (fills `books`).
+        #[qinvokable]
+        fn refresh(self: Pin<&mut Converter>);
     }
 
     // lets us call back into the QObject from the worker thread
@@ -68,6 +89,9 @@ pub struct ConverterRust {
     steps: QString,
     detailed: bool,
     folder: QString,
+    reader: QString,
+    last: QString,
+    books: QString,
 }
 
 /// A conversion that takes longer than this many seconds in all (time
@@ -84,16 +108,119 @@ impl Default for ConverterRust {
             steps: QString::default(),
             detailed: false,
             folder: QString::from(load_folder().as_str()),
+            reader: QString::from(read_config("reader").unwrap_or_default().as_str()),
+            last: QString::default(),
+            books: QString::from(book_lines().as_str()),
         }
     }
 }
 
-/// ~/.config/pdf2md/last_folder
-fn config_file() -> Option<PathBuf> {
+/// ~/.config/pdf2md/<name>
+fn config(name: &str) -> Option<PathBuf> {
     let base = std::env::var_os("XDG_CONFIG_HOME")
         .map(PathBuf::from)
         .or_else(|| std::env::var_os("HOME").map(|h| PathBuf::from(h).join(".config")))?;
-    Some(base.join("pdf2md").join("last_folder"))
+    Some(base.join("pdf2md").join(name))
+}
+
+/// ~/.config/pdf2md/last_folder
+fn config_file() -> Option<PathBuf> {
+    config("last_folder")
+}
+
+fn read_config(name: &str) -> Option<String> {
+    Some(std::fs::read_to_string(config(name)?).ok()?.trim().to_string())
+}
+
+fn write_config(name: &str, text: &str) {
+    if let Some(p) = config(name) {
+        if let Some(dir) = p.parent() {
+            let _ = std::fs::create_dir_all(dir);
+        }
+        let _ = std::fs::write(p, text);
+    }
+}
+
+/// Is this folder a converted book? (The converter leaves a list of what
+/// it wrote in it, and the book in one file.)
+fn is_book(dir: &Path) -> bool {
+    dir.join(".pdf2md-written").is_file() || (dir.join("book.md").is_file() && dir.join("00-front-matter.md").is_file())
+}
+
+/// Note that `dir` holds a converted book (~/.config/pdf2md/books: the
+/// folders of the books converted, newest first).
+fn note_book(dir: &Path) {
+    let me = dir.to_string_lossy().into_owned();
+    let mut all = vec![me.clone()];
+    all.extend(read_config("books").unwrap_or_default().lines().filter(|l| *l != me && !l.is_empty()).map(str::to_string));
+    write_config("books", &(all.join("\n") + "\n"));
+}
+
+/// The converted books to offer: the ones noted when they were converted,
+/// and the books beside them and in `near` (books converted before the
+/// list was kept, or with the command-line tool). Newest first.
+fn find_books(noted: &[PathBuf], near: &[PathBuf]) -> Vec<(PathBuf, std::time::SystemTime)> {
+    let mut places: Vec<PathBuf> = near.to_vec();
+    places.extend(noted.iter().filter_map(|b| b.parent().map(Path::to_path_buf)));
+    let mut found: Vec<PathBuf> = noted.to_vec();
+    for place in places {
+        let Ok(entries) = std::fs::read_dir(&place) else { continue };
+        found.extend(entries.flatten().map(|e| e.path()).filter(|p| p.is_dir()));
+    }
+    let mut seen = std::collections::HashSet::new();
+    let mut books: Vec<(PathBuf, std::time::SystemTime)> = found
+        .into_iter()
+        .filter(|p| is_book(p) && seen.insert(p.clone()))
+        .map(|p| {
+            // (when it was converted: when its list of files was written)
+            let when = [".pdf2md-written", "book.md"].iter().find_map(|f| std::fs::metadata(p.join(f)).and_then(|m| m.modified()).ok());
+            (p, when.unwrap_or(std::time::UNIX_EPOCH))
+        })
+        .collect();
+    books.sort_by(|a, b| b.1.cmp(&a.1).then_with(|| a.0.cmp(&b.0)));
+    books
+}
+
+/// "today", "yesterday", "5 days ago", "3 months ago": how long ago.
+fn ago(when: std::time::SystemTime, now: std::time::SystemTime) -> String {
+    let days = now.duration_since(when).map_or(0, |d| d.as_secs() / 86_400);
+    match days {
+        0 => "today".into(),
+        1 => "yesterday".into(),
+        2..=59 => format!("{days} days ago"),
+        60..=729 => format!("{} months ago", days / 30),
+        _ => format!("{} years ago", days / 365),
+    }
+}
+
+/// The books as lines for the window: name, folder, when; parted by tabs.
+fn book_lines() -> String {
+    let noted: Vec<PathBuf> = read_config("books").unwrap_or_default().lines().filter(|l| !l.is_empty()).map(PathBuf::from).collect();
+    let near = vec![url_to_path(&load_folder())];
+    let now = std::time::SystemTime::now();
+    find_books(&noted, &near)
+        .iter()
+        .map(|(dir, when)| format!("{}\t{}\t{}", dir.file_name().map(|n| n.to_string_lossy().into_owned()).unwrap_or_default(), dir.display(), ago(*when, now)))
+        .collect::<Vec<_>>()
+        .join("\n")
+}
+
+/// The program and arguments that show the book in `dir` with the
+/// reader `command`: its words, with "{folder}" for the book's folder and
+/// "{file}" for the whole book in one file; a command that names neither
+/// gets the folder as its last argument. An empty command is the
+/// system's own choice (`xdg-open`).
+fn reader_command(command: &str, dir: &Path) -> Vec<String> {
+    let folder = dir.to_string_lossy().into_owned();
+    let file = dir.join("book.md").to_string_lossy().into_owned();
+    let mut words: Vec<String> = command.split_whitespace().map(|w| w.replace("{folder}", &folder).replace("{file}", &file)).collect();
+    if words.is_empty() {
+        words.push("xdg-open".into());
+    }
+    if !command.contains("{folder}") && !command.contains("{file}") {
+        words.push(folder);
+    }
+    words
 }
 
 fn home_url() -> String {
@@ -218,7 +345,8 @@ fn step_line(v: &StepView) -> String {
     format!("{state}\t{}\t{:.3}\t{words}", v.step.label(), v.fraction)
 }
 
-fn run(input: &Path, output: &Path, replace: bool) -> Result<String, String> {
+/// Convert; gives back what to tell the user and the book's folder.
+fn run(input: &Path, output: &Path, replace: bool) -> Result<(String, PathBuf), String> {
     let mut dest = book_dir(input, output);
     // equations corrected by hand in the earlier conversion are kept
     let kept = pdf2md_core::ocr::collect_corrections(&dest);
@@ -249,10 +377,41 @@ fn run(input: &Path, output: &Path, replace: bool) -> Result<String, String> {
     if !book.warnings.is_empty() {
         msg.push_str(&format!(" ({} warnings)", book.warnings.len()));
     }
-    Ok(msg)
+    note_book(&dest);
+    Ok((msg, dest))
 }
 
 impl qobject::Converter {
+    pub fn usereader(mut self: Pin<&mut Self>, command: &QString) {
+        let command = String::from(command).trim().to_string();
+        write_config("reader", &command);
+        self.as_mut().set_reader(QString::from(command.as_str()));
+    }
+
+    pub fn show(mut self: Pin<&mut Self>, book: &QString) {
+        let dir = PathBuf::from(String::from(book));
+        let words = reader_command(&String::from(self.reader()), &dir);
+        let started = std::process::Command::new(&words[0])
+            .args(&words[1..])
+            .stdin(std::process::Stdio::null())
+            .stdout(std::process::Stdio::null())
+            .stderr(std::process::Stdio::null())
+            .spawn();
+        match started {
+            // (waited for, so that it does not stay behind as a dead process)
+            Ok(mut child) => {
+                std::thread::spawn(move || {
+                    let _ = child.wait();
+                });
+            }
+            Err(e) => self.as_mut().set_status(QString::from(format!("Failed: could not start the reader “{}” ({e}).", words[0]).as_str())),
+        }
+    }
+
+    pub fn refresh(mut self: Pin<&mut Self>) {
+        self.as_mut().set_books(QString::from(book_lines().as_str()));
+    }
+
     pub fn remember(mut self: Pin<&mut Self>, folder: &QString) {
         let s = String::from(folder);
         if let Some(p) = config_file() {
@@ -262,6 +421,8 @@ impl qobject::Converter {
             let _ = std::fs::write(p, &s);
         }
         self.as_mut().set_folder(QString::from(s.as_str()));
+        // (the converted books in that folder are offered too)
+        self.as_mut().set_books(QString::from(book_lines().as_str()));
     }
 
     pub fn exists(&self, input: &QString, output: &QString) -> bool {
@@ -282,6 +443,7 @@ impl qobject::Converter {
             return;
         }
         self.as_mut().set_busy(true);
+        self.as_mut().set_last(QString::default());
         self.as_mut().set_status(QString::from("Converting…"));
         self.as_mut().set_progress(0.0);
         self.as_mut().set_remaining(QString::default());
@@ -337,10 +499,11 @@ impl qobject::Converter {
                 .unwrap_or_else(|_| Err("The PDF reader crashed on this file.".to_string()));
             progress::unwatch();
             over.store(true, Ordering::Relaxed);
-            let msg = match result {
-                Ok(m) => m,
-                Err(e) => format!("Failed: {e}"),
+            let (msg, book) = match result {
+                Ok((m, dir)) => (m, Some(dir.to_string_lossy().into_owned())),
+                Err(e) => (format!("Failed: {e}"), None),
             };
+            let books = book_lines();
             // how the steps ended, with the time each took
             let now = Instant::now();
             let lines: Vec<String> = tracker.lock().unwrap_or_else(|e| e.into_inner()).steps(now).iter().map(step_line).collect();
@@ -349,6 +512,8 @@ impl qobject::Converter {
                 qobj.as_mut().set_progress(1.0);
                 qobj.as_mut().set_remaining(QString::default());
                 qobj.as_mut().set_status(QString::from(msg.as_str()));
+                qobj.as_mut().set_last(QString::from(book.unwrap_or_default().as_str()));
+                qobj.as_mut().set_books(QString::from(books.as_str()));
                 qobj.as_mut().set_busy(false);
             });
         });
@@ -388,6 +553,32 @@ mod tests {
         std::fs::create_dir_all(tmp.join("My Book (1)")).unwrap();
         assert_eq!(new_dir(&book), tmp.join("My Book (2)"));
         std::fs::remove_dir_all(&tmp).unwrap();
+    }
+
+    #[test]
+    fn the_reader_gets_the_book() {
+        let dir = Path::new("/books/My Book");
+        assert_eq!(reader_command("md", dir), ["md", "/books/My Book"]);
+        assert_eq!(reader_command("", dir), ["xdg-open", "/books/My Book"]);
+        assert_eq!(reader_command("  okular --unique {file} ", dir), ["okular", "--unique", "/books/My Book/book.md"]);
+        assert_eq!(reader_command("code -n {folder}", dir), ["code", "-n", "/books/My Book"]);
+    }
+
+    #[test]
+    fn converted_books_are_found() {
+        let tmp = std::env::temp_dir().join(format!("pdf2md-books-{}", std::process::id()));
+        for (name, mark) in [("shelf/Noted", ".pdf2md-written"), ("shelf/Beside It", ".pdf2md-written"), ("shelf/Not a Book", "notes.md"), ("near/Older", ".pdf2md-written")] {
+            std::fs::create_dir_all(tmp.join(name)).unwrap();
+            std::fs::write(tmp.join(name).join(mark), "x").unwrap();
+        }
+        let found = find_books(&[tmp.join("shelf/Noted"), tmp.join("shelf/Gone")], &[tmp.join("near")]);
+        let mut names: Vec<String> = found.iter().map(|b| b.0.file_name().unwrap().to_string_lossy().into_owned()).collect();
+        names.sort();
+        assert_eq!(names, ["Beside It", "Noted", "Older"]);
+        std::fs::remove_dir_all(&tmp).unwrap();
+        let day = std::time::Duration::from_secs(86_400);
+        let now = std::time::SystemTime::now();
+        assert_eq!((ago(now, now), ago(now - day * 3, now), ago(now - day * 90, now)), ("today".to_string(), "3 days ago".to_string(), "3 months ago".to_string()));
     }
 
     #[test]

@@ -184,6 +184,18 @@ Kirigami.ApplicationWindow {
                     }
                 }
 
+                // the user's own Markdown reader, to show converted books
+                QQC2.TextField {
+                    Kirigami.FormData.label: "Reader:"
+                    Layout.fillWidth: true
+                    placeholderText: "Command that shows a book, e.g. md (empty: the system's choice)"
+                    text: converter.reader
+                    onEditingFinished: converter.usereader(text)
+                    QQC2.ToolTip.visible: hovered
+                    QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+                    QQC2.ToolTip.text: "The command gets the book's folder as its last argument.\nWrite {folder} or {file} (the whole book in one file, book.md) to put it elsewhere."
+                }
+
                 QQC2.Label {
                     Kirigami.FormData.label: "Files go in:"
                     visible: root.inputUrl !== "" && root.outputUrl !== ""
@@ -297,9 +309,76 @@ Kirigami.ApplicationWindow {
                 type: converter.busy ? Kirigami.MessageType.Information
                     : converter.status.startsWith("Failed") ? Kirigami.MessageType.Error
                     : Kirigami.MessageType.Positive
+                // the book just converted, a click away
+                actions: [
+                    Kirigami.Action {
+                        text: "Open Book"
+                        icon.name: "document-open"
+                        visible: !converter.busy && converter.last !== ""
+                        onTriggered: converter.show(converter.last)
+                    }
+                ]
             }
 
-            Item { Layout.fillHeight: true }
+            // the converted books: a click shows one in the reader
+            Kirigami.Heading {
+                level: 4
+                text: "Converted books"
+                visible: bookList.count > 0
+            }
+            QQC2.ScrollView {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                Layout.minimumHeight: Math.min(bookList.count, 3) * Kirigami.Units.gridUnit * 2.5
+                visible: bookList.count > 0
+                ListView {
+                    id: bookList
+                    clip: true
+                    model: converter.books === "" ? [] : converter.books.split("\n")
+                    delegate: QQC2.ItemDelegate {
+                        id: book
+                        required property string modelData
+                        readonly property var parts: modelData.split("\t")
+                        width: ListView.view.width
+                        icon.name: "document-open"
+                        text: parts[0]
+                        onClicked: converter.show(parts[1])
+                        contentItem: RowLayout {
+                            spacing: Kirigami.Units.largeSpacing
+                            Kirigami.Icon {
+                                source: "x-office-document"
+                                implicitWidth: Kirigami.Units.iconSizes.smallMedium
+                                implicitHeight: Kirigami.Units.iconSizes.smallMedium
+                            }
+                            ColumnLayout {
+                                Layout.fillWidth: true
+                                spacing: 0
+                                QQC2.Label {
+                                    Layout.fillWidth: true
+                                    text: book.parts[0]
+                                    elide: Text.ElideRight
+                                }
+                                QQC2.Label {
+                                    Layout.fillWidth: true
+                                    text: book.parts[1]
+                                    elide: Text.ElideMiddle
+                                    opacity: 0.6
+                                    font: Kirigami.Theme.smallFont
+                                }
+                            }
+                            QQC2.Label {
+                                text: book.parts[2]
+                                opacity: 0.6
+                            }
+                        }
+                    }
+                }
+            }
+
+            Item {
+                Layout.fillHeight: true
+                visible: bookList.count === 0
+            }
         }
     }
 }
