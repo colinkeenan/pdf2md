@@ -577,6 +577,10 @@ pub fn recognize(images: &[&str]) -> HashMap<String, Reading> {
     }
     if new > 0 {
         crate::progress::report(Step::Formulas, 0, new);
+    } else {
+        // only checks of earlier readings: the first of them is under way
+        // from now on (while the model loads, too)
+        crate::progress::report(Step::Lines, 0, todo.len());
     }
     let ok = run_recognizer(Command::new(&py).arg(&script).arg(&pending).arg(&dir));
     if !ok {

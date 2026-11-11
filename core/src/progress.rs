@@ -271,6 +271,11 @@ impl Tracker {
         self.steps.iter().map(|t| self.left(t, now)).sum()
     }
 
+    /// Seconds since the conversion began.
+    pub fn spent(&self, now: Instant) -> f32 {
+        now.saturating_duration_since(self.began).as_secs_f32()
+    }
+
     /// How much of the conversion is done, 0 to 1, by time.
     pub fn fraction(&self, now: Instant) -> f32 {
         let spent = now.saturating_duration_since(self.began).as_secs_f32();

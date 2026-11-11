@@ -24,8 +24,8 @@ pub mod qobject {
         /// waiting), name, how much of it is done (0 to 1), and how far it is
         /// in words, parted by tabs.
         #[qproperty(QString, steps)]
-        /// The conversion takes long enough (over 30 s were left at some
-        /// point) for the steps to be shown.
+        /// The conversion takes long enough (over 30 s in all) for the
+        /// steps to be shown.
         #[qproperty(bool, detailed)]
         /// Last folder the user browsed (a file:// URL), remembered between runs.
         #[qproperty(QString, folder)]
@@ -70,7 +70,8 @@ pub struct ConverterRust {
     folder: QString,
 }
 
-/// With more than this many seconds left, the steps are shown.
+/// A conversion that takes longer than this many seconds in all (time
+/// spent and time left together) shows its steps.
 const DETAILED_FROM: f32 = 30.0;
 
 impl Default for ConverterRust {
@@ -292,9 +293,9 @@ impl qobject::Converter {
             std::thread::spawn(move || {
                 while !over.load(Ordering::Relaxed) {
                     let now = Instant::now();
-                    let (left, fraction, steps) = {
+                    let (left, spent, fraction, steps) = {
                         let t = tracker.lock().unwrap_or_else(|e| e.into_inner());
-                        (t.remaining(now), t.fraction(now), t.steps(now))
+                        (t.remaining(now), t.spent(now), t.fraction(now), t.steps(now))
                     };
                     let lines: Vec<String> = steps.iter().map(step_line).collect();
                     let over = over.clone();
@@ -306,7 +307,9 @@ impl qobject::Converter {
                         qobj.as_mut().set_progress(fraction as f64);
                         qobj.as_mut().set_remaining(QString::from(format!("About {} left", progress::duration(left, true)).as_str()));
                         qobj.as_mut().set_steps(QString::from(lines.join("\n").as_str()));
-                        if left > DETAILED_FROM {
+                        // (the estimate can stay low all the way through a
+                        // long conversion: the time spent counts too)
+                        if spent + left > DETAILED_FROM {
                             qobj.as_mut().set_detailed(true);
                         }
                     });

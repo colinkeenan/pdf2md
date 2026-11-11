@@ -65,7 +65,7 @@ The in-app file browser also needs the Qt Labs folder list model: Fedora `qt6-qt
 
 The book is written to `<output folder>/<PDF name>/`. If that folder already exists, the app asks whether to replace it (after the new conversion has succeeded, the old files go to the Trash as one folder, "<PDF name> (previous)", and the new ones are written into the same folder, so a terminal or editor open in it sees them at once) or keep both (the new one goes to `<PDF name> (1)`, `(2)` …).
 
-While converting, a bar shows how far the conversion is (by time) with an estimate of the time left. A conversion that has more than 30 seconds left at some point (the first one of a book with equation images) also lists its steps like a terminal: what is done and how long it took, what is running with its own bar and time left, what is still to come. The estimates come from the speed measured so far; before a step has done anything they are rough guesses.
+While converting, a bar shows how far the conversion is (by time) with an estimate of the time left. A conversion that takes more than 30 seconds in all (the first one of a book with equation images) also lists its steps like a terminal: what is done and how long it took, what is running with its own bar and time left, what is still to come. The estimates come from the speed measured so far; before a step has done anything they are rough guesses.
 
 To start it from the application menu, install the program and its launcher:
 

@@ -224,7 +224,7 @@ Kirigami.ApplicationWindow {
                 }
             }
 
-            // A long conversion (over 30 s left at some point) shows its
+            // A long conversion (over 30 s in all) shows its
             // steps like a terminal: what is done, what is running and how
             // long it has left, what is to come. It stays until the next one.
             Rectangle {
