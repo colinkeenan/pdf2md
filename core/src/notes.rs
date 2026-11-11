@@ -168,6 +168,8 @@ pub fn attach(chapters: &mut Vec<Chapter>, book: &mut Book) -> Vec<String> {
             continue;
         }
         let mut count = 0usize;
+        // (the page each of the chapter's notes stands on, as they come)
+        let mut on_page: Vec<usize> = Vec::new();
         for b in ch.blocks.iter_mut() {
             let page = b.page;
             // (a marker can sit in a section heading too)
@@ -209,15 +211,29 @@ pub fn attach(chapters: &mut Vec<Chapter>, book: &mut Book) -> Vec<String> {
                         blocks: vec![Block::Para(entry.1.clone())],
                         backrefs: vec![back.clone()],
                     });
+                    on_page.push(note_page);
                     *x = Inline::NoteRef { label: s, id: back, href: format!("#{id}") };
                 }
             }
         }
-        for (_, list) in page_notes {
+        // A note whose marker is not in the text (a scan: the small raised
+        // number was not read) stays with the notes of its chapter, in
+        // its place among them by its page, and says which page it is on.
+        let mut lost = 0;
+        for (page, list) in page_notes {
             for (label, text, used) in list {
                 if !used {
-                    book.unplaced.push(format!("Footnote {label} ({}): {}", ch.title, plain(&text)));
+                    lost += 1;
                     book.warnings.push(format!("page footnote {label} in {} has no marker", ch.title));
+                    let place = match book.labels.get(page).and_then(|l| l.as_ref()) {
+                        Some(l) => format!("(p. {l}; its marker was not found in the text) "),
+                        None => "(its marker was not found in the text) ".to_string(),
+                    };
+                    let mut inl = vec![Inline::Emph(place.trim_end().to_string()), Inline::Text(" ".into())];
+                    inl.extend(text);
+                    let at = on_page.iter().rposition(|p| *p <= page).map_or(0, |k| k + 1);
+                    on_page.insert(at, page);
+                    ch.notes.insert(at, Note { id: format!("fn-{ci}-x{lost}"), label, blocks: vec![Block::Para(inl)], backrefs: Vec::new() });
                 }
             }
         }

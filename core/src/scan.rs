@@ -158,6 +158,9 @@ fn parse_page(number: u32, text: &str) -> PageRead {
 /// What a scanned book was read as: the blocks of [`crate::blocks::build`]
 /// and what goes with them.
 pub struct Scan {
+    /// the displayed equations that are a block of their own: key, page
+    /// of the PDF, where on it (in points)
+    equations: Vec<(String, u32, Figure)>,
     pub blks: Vec<Blk>,
     pub labels: Vec<Option<String>>,
     pub pdf_pages: Vec<u32>,
@@ -254,7 +257,9 @@ pub fn read(path: &Path, first: u32, last: u32) -> Result<Scan, String> {
             }
         }
     }
-    Ok(build(&pages, &format!("{:016x}", fnv(dir.to_string_lossy().as_bytes()))))
+    let mut scan = build(&pages, &format!("{:016x}", fnv(dir.to_string_lossy().as_bytes())));
+    check_equations(path, &mut scan);
+    Ok(scan)
 }
 
 /// Is this a page file of the first kind (no lines of blocks in it) with
@@ -396,6 +401,98 @@ fn lay_columns(page: &PageRead, words: &[Word]) -> Option<Laid> {
     };
     let columns = vec![column(l), column(r)];
     Some(Laid { top, bottom, columns })
+}
+
+/// The displayed equations read a second time, by the math recognizer
+/// from a picture of each (cut from its page at 150 dots per inch), so
+/// that the ones the two readers read differently are listed to check.
+fn check_equations(path: &Path, scan: &mut Scan) {
+    second_readings(path, scan);
+    // A formula marker did not finish (a matrix cut off in its third
+    // row, a table of numbers without end), or wrote words into: the
+    // second reading of it, if that one is whole.
+    for b in scan.blks.iter_mut() {
+        if let Block::Equation { latex, source: Some(k), .. } = &mut b.block {
+            if !whole(latex) && crate::ocr::read_correction(k).is_none() {
+                if let Some(second) = crate::ocr::second_reading(k).filter(|s| whole(s)) {
+                    *latex = tame(&second);
+                }
+            }
+        }
+    }
+}
+
+/// Is this LaTeX a whole formula: what it opens it closes, and there is
+/// no "$" in it (a sentence the model ran on into)?
+fn whole(latex: &str) -> bool {
+    let plain = latex.replace("\\{", "").replace("\\}", "").replace("\\$", "");
+    let count = |t: &str| plain.matches(t).count();
+    count("{") == count("}") && count("\\begin{") == count("\\end{") && count("\\left") == count("\\right") && !plain.contains('$') && !plain.trim().is_empty()
+}
+
+/// In a formula set in rows, a bracket that grows with what it holds
+/// (\left( … \right)) must close in the cell it opens in, or the formula
+/// does not render: where one does not, the brackets of that cell are
+/// plain ones.
+fn tame(latex: &str) -> String {
+    if !latex.contains("\\\\") && !latex.contains('&') {
+        return latex.to_string();
+    }
+    let mut out = String::with_capacity(latex.len());
+    let mut rest = latex;
+    // (cell after cell: up to the next "&" or "\\")
+    loop {
+        let end = [rest.find('&'), rest.find("\\\\")].into_iter().flatten().min();
+        let cell = &rest[..end.unwrap_or(rest.len())];
+        if cell.matches("\\left").count() != cell.matches("\\right").count() {
+            // ("\left." and "\right." are nothing at all)
+            out.push_str(&cell.replace("\\left.", "").replace("\\right.", "").replace("\\left", "").replace("\\right", ""));
+        } else {
+            out.push_str(cell);
+        }
+        let Some(end) = end else { break };
+        let mark = if rest[end..].starts_with('&') { 1 } else { 2 };
+        out.push_str(&rest[end..end + mark]);
+        rest = &rest[end + mark..];
+    }
+    out
+}
+
+/// The displayed equations read a second time (see [`check_equations`]).
+fn second_readings(path: &Path, scan: &Scan) {
+    // (key -> the LaTeX the book gets)
+    let latex: std::collections::HashMap<&str, &str> =
+        scan.blks.iter().filter_map(|b| if let Block::Equation { latex, source: Some(k), .. } = &b.block { Some((k.as_str(), latex.as_str())) } else { None }).collect();
+    let cut = |page: u32, area: &Figure| -> Option<Vec<u8>> {
+        let k = 150.0 / 72.0;
+        let arg = |v: f32| ((v * k).round() as i64).max(0).to_string();
+        let page = page.to_string();
+        // (a little room around it: marker's boxes are tight)
+        let out = Command::new("pdftoppm")
+            .args(["-f", &page, "-l", &page, "-r", "150", "-png", "-x", &arg(area.left - 4.0), "-y", &arg(area.top - 3.0), "-W", &arg(area.right - area.left + 8.0), "-H", &arg(area.bottom - area.top + 6.0)])
+            .arg(path)
+            .output()
+            .ok()?;
+        (out.status.success() && !out.stdout.is_empty()).then_some(out.stdout)
+    };
+    let todo: Vec<&(String, u32, Figure)> = scan.equations.iter().filter(|e| latex.contains_key(e.0.as_str())).collect();
+    // cut out on all processors
+    let next = std::sync::atomic::AtomicUsize::new(0);
+    let done: std::sync::Mutex<Vec<(String, String, Vec<u8>)>> = Default::default();
+    std::thread::scope(|scope| {
+        for _ in 0..std::thread::available_parallelism().map_or(1, |n| n.get()).min(todo.len().max(1)) {
+            scope.spawn(|| loop {
+                let i = next.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+                let Some((key, page, area)) = todo.get(i) else { break };
+                if let Some(png) = cut(*page, area) {
+                    done.lock().unwrap_or_else(|e| e.into_inner()).push((key.clone(), latex[key.as_str()].to_string(), png));
+                }
+            });
+        }
+    });
+    let mut equations = done.into_inner().unwrap_or_default();
+    equations.sort_by(|a, b| a.0.cmp(&b.0));
+    crate::ocr::second_readings(&equations);
 }
 
 /// The words in a block's area of a page (see [`area_lines`]).
@@ -589,7 +686,30 @@ fn parts(html: &str) -> Vec<Part> {
 }
 
 /// Running text without spaces at its ends, and with single spaces in it.
-fn tidy(mut inl: Vec<Inline>) -> Vec<Inline> {
+fn tidy(inl: Vec<Inline>) -> Vec<Inline> {
+    // A formula that goes on in the next line of the book comes as two
+    // ("$a =$" and "$b$"): one formula. (Written one right behind the
+    // other they would even read as "$$", the mark of a displayed one.)
+    let mut joined: Vec<Inline> = Vec::new();
+    for i in inl {
+        let n = joined.len();
+        let goes_on = |m: &str| m.trim_end().ends_with(['=', '+', '-', ',', '(']) || m.trim_end().ends_with("\\cdot") || m.trim_end().ends_with("\\times");
+        match (&i, n) {
+            (Inline::Math(b), n) if n >= 1 && matches!(&joined[n - 1], Inline::Math(_)) => {
+                let Inline::Math(a) = &mut joined[n - 1] else { unreachable!() };
+                a.push(' ');
+                a.push_str(b);
+            }
+            (Inline::Math(b), n) if n >= 2 && matches!((&joined[n - 2], &joined[n - 1]), (Inline::Math(a), Inline::Text(t)) if t.trim().is_empty() && goes_on(a)) => {
+                joined.pop();
+                let Some(Inline::Math(a)) = joined.last_mut() else { unreachable!() };
+                a.push(' ');
+                a.push_str(b);
+            }
+            _ => joined.push(i),
+        }
+    }
+    let mut inl = joined;
     for i in inl.iter_mut() {
         if let Inline::Text(t) = i {
             let mut s = String::with_capacity(t.len());
@@ -640,7 +760,7 @@ fn rows(maths: &[String]) -> String {
 /// A displayed equation with its number, from its LaTeX and what stood
 /// beside it.
 fn equation(maths: &[String], beside: &str, key: String) -> Block {
-    let mut latex = rows(maths);
+    let mut latex = tame(&rows(maths));
     let mut tag = tag_of(beside);
     // (a number the model wrote into the formula: once is enough)
     if let Some((before, after)) = latex.split_once("\\tag{") {
@@ -670,6 +790,143 @@ fn has_words(inl: &[Inline]) -> bool {
         Inline::Math(_) => true,
         _ => false,
     })
+}
+
+// ---- symbols in sentences ----------------------------------------------
+
+/// marker writes most formulas in a sentence as formulas, but leaves the
+/// plainest as text: "J(x)", a lone "m", "h = 1". They are found by their
+/// shape, with caution (a letter can be an initial, a label, a unit):
+///
+/// * a letter or two with what they are a function of in brackets right
+///   behind: "J(x)", "W(J)", "D(x-y)", "SU(2)";
+/// * a single letter other than "a", "A", "I" — not an initial ("S.
+///   Coleman"), not a label ("(b)", "b)", "Appendix B", "Part V"), not a
+///   unit behind a number;
+/// * a short relation written without spaces ("m=0");
+/// * and what such a symbol is set equal to, added to, and so on, with
+///   spaces: "h = 1", "x + y".
+fn symbols(inl: Vec<Inline>) -> Vec<Inline> {
+    const BEFORE_LABEL: [&str; 16] =
+        ["part", "chapter", "appendix", "appendixes", "section", "volume", "vol", "table", "figure", "fig", "exercise", "problem", "type", "class", "case", "step"];
+    const OPERATORS: [&str; 10] = ["=", "+", "-", "−", "<", ">", "≈", "→", "×", "≡"];
+    let short_letters = |t: &str| t.split(|c: char| !c.is_alphabetic()).all(|run| run.chars().count() <= 2);
+    // (prefix, the word itself, suffix) of a word with its punctuation
+    let cut = |w: &str| -> (String, String, String) {
+        let open: String = w.chars().take_while(|c| "(\"“‘[".contains(*c)).collect();
+        let rest = &w[open.len()..];
+        let mut core = rest.trim_end_matches(|c: char| ".,;:!?\"”’]".contains(c)).to_string();
+        // (a closing bracket that has no opening one in the word is punctuation)
+        while core.ends_with(')') && core.matches(')').count() > core.matches('(').count() {
+            core.pop();
+            core = core.trim_end_matches(|c: char| ".,;:!?\"”’]".contains(c)).to_string();
+        }
+        let close = rest[core.len()..].to_string();
+        (open, core, close)
+    };
+    let function = |core: &str| -> bool {
+        let Some(at) = core.find('(') else { return false };
+        let (head, args) = (&core[..at], &core[at..]);
+        let head_ok = (1..=3).contains(&head.chars().count()) && head.chars().all(|c| c.is_ascii_alphabetic()) && (head.chars().count() <= 2 || head.chars().all(|c| c.is_ascii_uppercase()));
+        let inside = args.trim_start_matches('(').trim_end_matches(')');
+        head_ok
+            && args.ends_with(')')
+            && args.matches('(').count() == args.matches(')').count()
+            && !inside.is_empty()
+            && args.chars().count() <= 16
+            && args.chars().all(|c| c.is_alphanumeric() || "()+-−*/=^_'′,.".contains(c))
+            && short_letters(args)
+    };
+    let relation = |core: &str| -> bool {
+        let n = core.chars().count();
+        (3..=12).contains(&n)
+            && core.contains('=')
+            && !core.starts_with('=')
+            && !core.ends_with('=')
+            && core.chars().all(|c| c.is_alphanumeric() || "()+-−*/=^_'′".contains(c))
+            && short_letters(core)
+            && core.chars().any(char::is_alphabetic)
+    };
+    let tex = |t: &str| t.replace('′', "'").replace('−', "-");
+    let mut out: Vec<Inline> = Vec::new();
+    for i in inl {
+        let Inline::Text(text) = &i else {
+            out.push(i);
+            continue;
+        };
+        let words: Vec<&str> = text.split(' ').collect();
+        let parts: Vec<(String, String, String)> = words.iter().map(|w| cut(w)).collect();
+        let number = |k: usize| parts.get(k).is_some_and(|p| !p.1.is_empty() && p.1.chars().all(|c| c.is_ascii_digit() || c == '.'));
+        // which words are symbols by themselves
+        let symbol: Vec<bool> = (0..words.len())
+            .map(|k| {
+                let (open, core, close) = &parts[k];
+                if function(core) || relation(core) {
+                    return true;
+                }
+                let mut c = core.chars();
+                let (Some(letter), None) = (c.next(), c.next()) else { return false };
+                if !letter.is_ascii_alphabetic() || "aAI".contains(letter) {
+                    return false;
+                }
+                let before = k.checked_sub(1).map(|j| parts[j].1.to_lowercase()).unwrap_or_default();
+                let next_capital = parts.get(k + 1).is_some_and(|p| p.1.starts_with(char::is_uppercase));
+                let initial = letter.is_uppercase() && close.starts_with('.') && (next_capital || k == 0);
+                let label = (open.contains('(') || close.starts_with(')')) || BEFORE_LABEL.contains(&before.as_str());
+                let unit = k > 0 && number(k - 1) && parts[k - 1].2.is_empty();
+                // ("Figure IV.7.1a and b")
+                let sublabel = k >= 2 && before == "and" && parts[k - 2].1.chars().rev().nth(1).is_some_and(|c| c.is_ascii_digit());
+                !(initial || label || unit || sublabel)
+            })
+            .collect();
+        // "a" is a symbol where it stands with one: "a and b", "a, b"
+        let mut symbol = symbol;
+        for k in 0..words.len() {
+            let list = |j: usize| words.get(j).is_some_and(|w| matches!(*w, "and" | "or" | "to"));
+            let single = |j: usize| symbol.get(j).copied().unwrap_or(false) && parts[j].1.chars().count() == 1;
+            if parts[k].1 == "a" && parts[k].0.is_empty() {
+                let ahead = (list(k + 1) && single(k + 2) && parts[k].2.is_empty()) || (parts[k].2 == "," && single(k + 1));
+                let behind = k >= 2 && list(k - 1) && single(k - 2);
+                symbol[k] = ahead || behind;
+            }
+        }
+        let mut piece = String::new();
+        let flush = |piece: &mut String, out: &mut Vec<Inline>| {
+            if !piece.is_empty() {
+                push_text(out, Inline::Text(std::mem::take(piece)));
+            }
+        };
+        let mut k = 0;
+        while k < words.len() {
+            if !symbol[k] {
+                piece.push_str(words[k]);
+                if k + 1 < words.len() {
+                    piece.push(' ');
+                }
+                k += 1;
+                continue;
+            }
+            // the symbol, and what it is set equal to, added to …
+            let (open, core, mut close) = parts[k].clone();
+            let mut formula = tex(&core);
+            let mut end = k;
+            while close.is_empty() && end + 2 < words.len() && OPERATORS.contains(&words[end + 1]) && (symbol[end + 2] || number(end + 2)) && parts[end + 2].0.is_empty() {
+                formula.push_str(&format!(" {} {}", tex(words[end + 1]), tex(&parts[end + 2].1)));
+                close = parts[end + 2].2.clone();
+                end += 2;
+            }
+            piece.push_str(&open);
+            flush(&mut piece, &mut out);
+            out.push(Inline::Math(formula));
+            piece.push_str(&close);
+            if end + 1 < words.len() {
+                piece.push(' ');
+            }
+            k = end + 1;
+        }
+        flush(&mut piece, &mut out);
+    }
+    out
 }
 
 // ---- page numbers -------------------------------------------------------
@@ -1355,6 +1612,7 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
     // (the title under a "Chapter 3" was joined to it: not a heading again)
     let mut joined = None;
     let mut blks: Vec<Blk> = Vec::new();
+    let mut checked: Vec<(String, u32, Figure)> = Vec::new();
     // (size, text) of the headings, to find the size of the chapter titles
     let mut titles: Vec<(f32, String)> = Vec::new();
     for (pi, page) in pages.iter().enumerate() {
@@ -1531,7 +1789,7 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
                     }
                 }
                 "Footnote" => match footnote(&b.html) {
-                    Some((label, text)) => made.push(Block::PageNote { label, text }),
+                    Some((label, text)) => made.push(Block::PageNote { label, text: symbols(text) }),
                     None => made.push(Block::Para(all_inline(&b.html))),
                 },
                 "Picture" | "Figure" => {
@@ -1576,12 +1834,15 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
                         format!("{:016x}", fnv(format!("{book} {} {equations}", page.number).as_bytes()))
                     };
                     if is_equation && !maths.is_empty() && (beside.trim().is_empty() || tag_of(&beside).is_some_and(|t| beside.trim().len() <= t.len() + 2)) {
-                        made.push(equation(&maths, &beside, key()));
+                        let k = key();
+                        // (where it is on the page, in points, for its picture)
+                        checked.push((k.clone(), page.number, Figure { left: b.left, right: b.right, top: b.top, bottom: b.bottom }));
+                        made.push(equation(&maths, &beside, k));
                     } else {
                         for p in ps {
                             match p {
                                 Part::Inline(i) => {
-                                    let i = breaks(b, tidy(i));
+                                    let i = symbols(breaks(b, tidy(i)));
                                     if has_words(&i) {
                                         made.push(Block::Para(i));
                                     }
@@ -1654,7 +1915,7 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
     let opened: Vec<(Option<String>, Vec<Inline>)> =
         blks.iter().filter_map(|b| if let Block::Heading { size, text, .. } = &b.block { opening(*size).then(|| (labels[b.page].clone(), text.clone())) } else { None }).collect();
     name_entries(&mut blks, &opened);
-    Scan { blks, labels, pdf_pages: pages.iter().map(|p| p.number).collect(), chapter_size }
+    Scan { equations: checked, blks, labels, pdf_pages: pages.iter().map(|p| p.number).collect(), chapter_size }
 }
 
 /// "Chapter I.5" and, under it, "Coulomb and Newton": one title.
@@ -1784,6 +2045,10 @@ mod tests {
             ]
         );
         assert_eq!(tag_of(" (I.2.15)"), Some("I.2.15".into()));
+        // a formula in two pieces is one; two formulas with a word between are two
+        let two = "<p>and <math display=\"inline\">\\delta M =</math><math display=\"inline\">e^{x}</math> or <math display=\"inline\">a +</math> <math display=\"inline\">b</math>, <math display=\"inline\">c</math> and <math display=\"inline\">d</math></p>";
+        let maths: Vec<String> = all_inline(two).into_iter().filter_map(|i| if let Inline::Math(m) = i { Some(m) } else { None }).collect();
+        assert_eq!(maths, ["\\delta M = e^{x}", "a + b", "c", "d"]);
         assert_eq!(tag_of("(see below)"), None);
         let note = parse_page(1, "block\tFootnote\t0\t0\t9\t9\t1\t<p><sup>&amp;</sup>lt;sup&gt;1&lt;/sup&gt;When I was young</p>");
         let (label, text) = footnote(&note.blocks[0].html).unwrap();
@@ -1888,6 +2153,41 @@ mod tests {
             ]
         );
         assert_eq!(scan.chapter_size, Some(CHAPTER));
+    }
+
+    #[test]
+    fn plain_symbols_in_a_sentence_are_formulas() {
+        let shown = |t: &str| -> String {
+            symbols(vec![Inline::Text(t.into())])
+                .iter()
+                .map(|i| match i {
+                    Inline::Text(t) => t.clone(),
+                    Inline::Math(m) => format!("${m}$"),
+                    other => format!("{other:?}"),
+                })
+                .collect()
+        };
+        assert_eq!(shown("for J(x) real, W(J) and D(x-y), as in SU(2)."), "for $J(x)$ real, $W(J)$ and $D(x-y)$, as in $SU(2)$.");
+        assert_eq!(shown("the mass m of a particle, with h = 1 and x + y, or m=0."), "the mass $m$ of a particle, with $h = 1$ and $x + y$, or $m=0$.");
+        // not symbols: the article, initials, labels, units, words in brackets
+        assert_eq!(shown("I gave A. Zee and S. Coleman a copy."), "I gave A. Zee and S. Coleman a copy.");
+        assert_eq!(shown("see Part V, Appendix B and case (b), or b) below; 5 m high"), "see Part V, Appendix B and case (b), or b) below; 5 m high");
+        assert_eq!(shown("a function (see above) is(not) one"), "a function (see above) is(not) one");
+        assert_eq!(shown("in the limit T → ∞ we find Z"), "in the limit $T$ → ∞ we find $Z$");
+        assert_eq!(shown("that a and b annihilate; constants a, b, as a rule; Figure 4.1a and b show a and the"), "that $a$ and $b$ annihilate; constants $a$, $b$, as a rule; Figure 4.1a and b show a and the");
+    }
+
+    #[test]
+    fn formulas_that_would_not_render_are_mended() {
+        // a growing bracket that closes in another row: plain brackets there
+        let rows = "\\begin{aligned} a &= \\left( b \\\\ &\\quad + c \\right) + \\left( d \\right) \\end{aligned}";
+        // (all of them in the cells where one does not close)
+        assert_eq!(tame(rows), "\\begin{aligned} a &= ( b \\\\ &\\quad + c ) + ( d ) \\end{aligned}");
+        assert_eq!(tame("\\left( x \\right)"), "\\left( x \\right)");
+        assert!(whole("J = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}"));
+        assert!(!whole("J = \\begin{pmatrix} 0 & 1 \\\\ 1 &"));
+        assert!(!whole("a = b, where $c$ is"));
+        assert!(!whole("\\begin{array}{ccccc"));
     }
 
     #[test]

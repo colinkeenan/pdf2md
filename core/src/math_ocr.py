@@ -610,10 +610,27 @@ def as_picture(dst, f):
 def canonical(t: str) -> list:
     """LaTeX reduced to what changes the formula: no spacing commands,
     \\left/\\right or sizes, optional braces; one bold style; as tokens."""
+    # (the equation's number, which one reading may have and the other not)
+    t = re.sub(r"\\tag\{[^{}]*\}", "", t)
+    t = re.sub(r"(\\quad|\\qquad|\s)+\(\s*[0-9A-Za-z.]{1,8}\s*\)\s*(\\end\{[a-z]+\}\s*)*$", lambda m: "".join(re.findall(r"\\end\{[a-z]+\}", m.group(0))), t.strip())
+    # (commands that are the same thing, while the spaces still tell
+    # where a command ends)
+    t = re.sub(r"\\rightarrow(?![a-zA-Z])", r"\\to", t)
+    t = re.sub(r"\\cal(?![a-zA-Z])", r"\\mathcal", t)
+    t = re.sub(r"\\[td]frac(?![a-zA-Z])", r"\\frac", t)
+    t = re.sub(r"\\iint(?![a-zA-Z])", r"\\int\\int", t)
     t = re.sub(r"\s+", "", t)
     t = re.sub(r"\\[,;:!]|\\quad|\\qquad|~|\\ ", "", t)
     t = re.sub(r"\\(left|right|big|Big|bigg|Bigg)[lrm]?(?=[^a-zA-Z])", "", t)
-    t = re.sub(r"\\(displaystyle|textstyle|mathrm|operatorname|rm)", "", t)
+    t = re.sub(r"\\(displaystyle|textstyle|mathrm|operatorname|rm|text)", "", t)
+    # two ways to write the same: a matrix in brackets, primes, arrows,
+    # script letters, small fractions, a formula set in rows
+    t = re.sub(r"\\begin\{array\}\{[lcr|]*\}", r"\\begin{array}", t)
+    t = t.replace("\\begin{pmatrix}", "(\\begin{array}").replace("\\end{pmatrix}", "\\end{array})")
+    t = t.replace("\\begin{bmatrix}", "[\\begin{array}").replace("\\end{bmatrix}", "\\end{array}]")
+    t = re.sub(r"\\(begin|end)\{(aligned|split|gathered|align\*?|eqnarray\*?)\}", "", t)
+    t = t.replace("\\\\", "").replace("&", "")
+    t = re.sub(r"\^\{?((?:\\prime)+)\}?", lambda m: "'" * m.group(1).count("prime"), t)
     t = re.sub(r"\{([^{}\\])\}", r"\1", t)
     t = re.sub(r"\\(mathbf|boldsymbol|bf|mathbit|pmb)", r"\\B", t)
     t = t.replace("\\ldots", "\\dots").replace("\\cdots", "\\dots").replace("{", "").replace("}", "")

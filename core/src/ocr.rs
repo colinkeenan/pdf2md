@@ -596,6 +596,64 @@ pub fn recognize(images: &[&str]) -> HashMap<String, Reading> {
     out
 }
 
+/// What the math recognizer read an equation as when it read it a second
+/// time (see [`second_readings`]), if it did.
+pub fn second_reading(k: &str) -> Option<String> {
+    let t = std::fs::read_to_string(cache_dir()?.join(format!("{k}.second"))).ok()?;
+    let t = t.trim();
+    (!t.is_empty() && !t.starts_with('%')).then(|| t.to_string())
+}
+
+/// A second reading of equations that something else read (the page
+/// reader of scanned books), to tell which are worth checking against the
+/// book: each `(key, LaTeX as read, picture of the equation as PNG)` is
+/// read by the math recognizer from its picture, and where that reading
+/// is another formula, [`needs_check`] says so for the key from then on.
+/// Without the recognizer nothing is said about any of them.
+pub fn second_readings(equations: &[(String, String, Vec<u8>)]) {
+    let (Some(dir), Some(py)) = (cache_dir(), python()) else { return };
+    let pending = dir.join("pending");
+    if std::fs::create_dir_all(&pending).is_err() {
+        return;
+    }
+    let mut todo = Vec::new();
+    for (k, latex, png) in equations {
+        // (read a second time before, and the same formula as then)
+        let same = std::fs::read_to_string(dir.join(format!("{k}.tex"))).is_ok_and(|t| t.trim() == latex.trim());
+        if same && dir.join(format!("{k}.verify")).exists() {
+            continue;
+        }
+        let _ = std::fs::write(dir.join(format!("{k}.tex")), format!("{latex}\n"));
+        // (not to be read again in lines, or without words under it:
+        // only compared)
+        for mark in ["kind", "lines", "labels", "small"] {
+            let _ = std::fs::write(dir.join(format!("{k}.{mark}")), "\n");
+        }
+        for old in ["verify", "second"] {
+            let _ = std::fs::remove_file(dir.join(format!("{k}.{old}")));
+        }
+        if std::fs::write(pending.join(format!("{k}.png")), png).is_ok() {
+            todo.push(k);
+        }
+    }
+    if todo.is_empty() {
+        return;
+    }
+    let script = dir.join("math_ocr.py");
+    let _ = std::fs::write(&script, SCRIPT);
+    eprintln!("Reading {} equations a second time, to list the doubtful ones…", todo.len());
+    for step in [Step::Words, Step::Formulas, Step::Again, Step::Lines, Step::Labels] {
+        crate::progress::skip(step);
+    }
+    crate::progress::report(Step::Sorting, 0, todo.len());
+    if !run_recognizer(Command::new(&py).arg(&script).arg(&pending).arg(&dir)) {
+        eprintln!("The math recognizer failed; the equations are not compared.");
+    }
+    for k in todo {
+        let _ = std::fs::remove_file(pending.join(format!("{k}.png")));
+    }
+}
+
 /// Run the recognizer, passing on what it says and reporting how far it
 /// is: it prints lines like "  reading 16/420", with one word for each of
 /// its steps.
