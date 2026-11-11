@@ -1,7 +1,7 @@
 # Table of Contents
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="pii"><sup>[p. ii]</sup></a>
+<a id="pii" href="book.pdf#page=3" target="_blank" title="This page in the PDF"><sup>[p. ii]</sup></a>
 
 - [Introduction](01-introduction.md) — [pp. 1–3](01-introduction.md#p1)
   - [Subject Matter](01-introduction.md#s-subject-matter) — [p. 1](01-introduction.md#p1)
@@ -45,7 +45,7 @@
     - [G. Anticommuting Fields](04-field-theory.md#s-g-anticommuting-fields) — [p. 40](04-field-theory.md#p40)
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="piii"><sup>[p. iii]</sup></a>
+<a id="piii" href="book.pdf#page=4" target="_blank" title="This page in the PDF"><sup>[p. iii]</sup></a>
 
 - [Examples of Quantized Field Theories](05-examples-of-quantized-field-theories.md) — [pp. 41–80](05-examples-of-quantized-field-theories.md#p41)
   - [I. The Maxwell Field](05-examples-of-quantized-field-theories.md#s-i-the-maxwell-field) — [p. 41](05-examples-of-quantized-field-theories.md#p41)
@@ -97,7 +97,7 @@
   - [D. Bremsstrahlung and Pair Creation in the Coulomb Field of an Atom](06-free-particle-scattering-problems.md#s-d-bremsstrahlung-and-pair-creation-in-the-coulomb-field-of-an-atom) — [p. 92](06-free-particle-scattering-problems.md#p92)
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="piv"><sup>[p. iv]</sup></a>
+<a id="piv" href="book.pdf#page=5" target="_blank" title="This page in the PDF"><sup>[p. iv]</sup></a>
 
 - [General Theory of Free Particle Scattering](07-general-theory-of-free-particle-scattering.md) — [pp. 94–117](07-general-theory-of-free-particle-scattering.md#p94)
   - [Reduction of an Operator to Normal Form](07-general-theory-of-free-particle-scattering.md#s-reduction-of-an-operator-to-normal-form) — [p. 96](07-general-theory-of-free-particle-scattering.md#p96)

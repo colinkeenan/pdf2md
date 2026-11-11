@@ -1,7 +1,7 @@
 # Free Particle Scattering Problems
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p81"><sup>[p. 81]</sup></a>
+<a id="p81" href="book.pdf#page=87" target="_blank" title="This page in the PDF"><sup>[p. 81]</sup></a>
 
 In this extensive class of problems we are interested in calculating the over-all transition matrix element $M$ between an initial state $A$ and a final state $B , A$ and $B$ being specified by assigning the spins and momenta of the free particles which are present in these states. The scattering process is supposed to occur as follows: The free particles which are specified by state $A$ in the remote past, converge and interact, and other free particles emerge or are created in the interaction and finally constitute the state $B$ in the remote future. We wish to calculate the matrix element $M$ for this process, without studying the equations of motion or investigating the behavior of the system at intermediate times while the interaction is in progress.
 
@@ -44,7 +44,7 @@ u_{1} e^{ip_{1} \cdot x} \tag{422}
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p82"><sup>[p. 82]</sup></a>
+<a id="p82" href="book.pdf#page=88" target="_blank" title="This page in the PDF"><sup>[p. 82]</sup></a>
 
 normalized by $( \overline{u}_{1} u_{1} )$ = 1. With the wave function normalized in this way, (422) is just the matrix element of the operator $\psi ( x )$ between the vacuum state and the state containing electron 1. We can see this from
 
@@ -125,7 +125,7 @@ $$
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p83"><sup>[p. 83]</sup></a>
+<a id="p83" href="book.pdf#page=89" target="_blank" title="This page in the PDF"><sup>[p. 83]</sup></a>
 
 according to (228). Obviously $D_{F}$ is an even function. It has the property that asymptotically as $x_{0} \to \infty$ in the future, $D_{F}$ = 2$iD^{+}$ contains only positive frequencies, while as $x_{0} \to -\infty$ in the past, $D_{F} = - 2 iD^{-}$ contains only negative frequencies. See Fierz, _Helv. Phys. Acta_ **23** (1950) 731 for a full discussion.
 
@@ -176,7 +176,7 @@ Now $p_{1}$ and $p_{1}^{\prime}$ are both electron momentum 4-vectors and hence 
 It is clear that the formula comes very directly out of (423), once we know the momentum expansion (431) of the $D_{F}$ function. And we shall find that things are equally simple in other free-particle scattering problems.
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p84"><sup>[p. 84]</sup></a>
+<a id="p84" href="book.pdf#page=90" target="_blank" title="This page in the PDF"><sup>[p. 84]</sup></a>
 
 ### <a id="s-electron-positron-scattering"></a>Electron-Positron <a id="ix-261">Scattering</a>
 
@@ -267,7 +267,7 @@ $$
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p85"><sup>[p. 85]</sup></a>
+<a id="p85" href="book.pdf#page=91" target="_blank" title="This page in the PDF"><sup>[p. 85]</sup></a>
 
 where $S_{F}$ is a new invariant function. Since
 
@@ -364,7 +364,7 @@ M_{2} = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu} ( 2 \pi )^{4} \delta^{4} ( p + k - p
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p86"><sup>[p. 86]</sup></a>
+<a id="p86" href="book.pdf#page=92" target="_blank" title="This page in the PDF"><sup>[p. 86]</sup></a>
 
 ### <a id="s-calculation-of-cross-section"></a>Calculation of the Cross-Section
 
@@ -449,7 +449,7 @@ $$
 This gives the cross-section for a known electron spin in the initial and final states.
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p87"><sup>[p. 87]</sup></a>
+<a id="p87" href="book.pdf#page=93" target="_blank" title="This page in the PDF"><sup>[p. 87]</sup></a>
 
 ### <a id="s-sum-over-spins"></a>Sum over Spins
 
@@ -514,7 +514,7 @@ $$
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p88"><sup>[p. 88]</sup></a>
+<a id="p88" href="book.pdf#page=94" target="_blank" title="This page in the PDF"><sup>[p. 88]</sup></a>
 
 because, using 4), and again compare with remark after (451),<sup><a id="fnref-59" href="#fn-59">59</a></sup>
 
@@ -593,7 +593,7 @@ $$
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p89"><sup>[p. 89]</sup></a>
+<a id="p89" href="book.pdf#page=95" target="_blank" title="This page in the PDF"><sup>[p. 89]</sup></a>
 
 and so (464) is
 
@@ -686,7 +686,7 @@ $$
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p90"><sup>[p. 90]</sup></a>
+<a id="p90" href="book.pdf#page=96" target="_blank" title="This page in the PDF"><sup>[p. 90]</sup></a>
 
 Now we perform the other summation over the two polarization directions of photon $k$, using the same argument. This gives
 
@@ -765,7 +765,7 @@ w = 0 \tag{475}
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p91"><sup>[p. 91]</sup></a>
+<a id="p91" href="book.pdf#page=97" target="_blank" title="This page in the PDF"><sup>[p. 91]</sup></a>
 
 For _perpendicular_ polarizations, take coordinate axes 1 along $e$, 2 along $e^{\prime}$, and 3 along $k$. Then
 
@@ -846,7 +846,7 @@ $$
 proportional to 1 just like neutron cross-sections at low (thermal) energies.
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p92"><sup>[p. 92]</sup></a>
+<a id="p92" href="book.pdf#page=98" target="_blank" title="This page in the PDF"><sup>[p. 92]</sup></a>
 
 ## <a id="s-d-bremsstrahlung-and-pair-creation-in-the-coulomb-field-of-an-atom"></a>D. Bremsstrahlung and <a id="ix-22">Pair</a> Creation in the Coulomb Field of an Atom
 
@@ -913,7 +913,7 @@ M_{1} = - \frac{e^{2} ( 2 \pi )^{4} )}{\hbar^{2} c^{2}} \delta^{4} ( k + k^{\pri
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p93"><sup>[p. 93]</sup></a>
+<a id="p93" href="book.pdf#page=99" target="_blank" title="This page in the PDF"><sup>[p. 93]</sup></a>
 
 and integrating over the components of the potential
 

@@ -266,6 +266,80 @@ fn page_mark_inline(id: &str, label: &str) -> String {
     )
 }
 
+/// The PDF the book was made from, as the chapter files name it: a link
+/// to it in the book's folder (see `link_pdf`), so that a viewer that
+/// shows only what is in that folder can open it.
+pub const PDF_NAME: &str = "book.pdf";
+
+/// What makes a page marker a link to its page of the PDF, in a new tab
+/// (the place in the book stays open). `#page=` is what the PDF viewers
+/// of the browsers go by: the page counted from the first sheet.
+fn pdf_link(page: u32) -> String {
+    format!(" href=\"{PDF_NAME}#page={page}\" target=\"_blank\" title=\"This page in the PDF\"")
+}
+
+/// Every page marker of a text as a link to its page of the PDF.
+fn link_pages(text: &str, book: &Book) -> String {
+    if book.source.is_none() || book.pdf_of.is_empty() {
+        return text.to_string();
+    }
+    const OPEN: &str = "<a id=\"";
+    let mut out = String::with_capacity(text.len() + text.len() / 16);
+    let mut rest = text;
+    while let Some(i) = rest.find(OPEN) {
+        let Some(e) = rest[i + OPEN.len()..].find('"') else { break };
+        let id = &rest[i + OPEN.len()..i + OPEN.len() + e];
+        let after = i + OPEN.len() + e + 1;
+        out.push_str(&rest[..after]);
+        rest = &rest[after..];
+        if let (true, Some(n)) = (rest.starts_with("><sup>["), book.pdf_of.get(id)) {
+            out.push_str(&pdf_link(*n));
+        }
+    }
+    out.push_str(rest);
+    out
+}
+
+/// How much a block says, in words: what tells a page worth a marker of
+/// its own from a title page or a dedication.
+fn weight(b: &Block) -> usize {
+    match b {
+        Block::Heading { text, .. } | Block::Para(text) | Block::Item { text, .. } | Block::PageNote { text, .. } => crate::plain(text).split_whitespace().count(),
+        Block::Equation { .. } | Block::Table { .. } | Block::Code(_) => SAYS_ENOUGH,
+        Block::Toc(entries) => entries.len() * 4,
+        _ => 0,
+    }
+}
+
+/// From this many words on, a page without a printed number gets a marker.
+const SAYS_ENOUGH: usize = 30;
+
+/// The pages (their places in the page list) that have no page marker to
+/// link to the PDF, and say enough to get one: "[PDF p. 5]", by their
+/// number in the PDF. In a book whose printed pages are not the pages of
+/// the PDF (an ebook: the markers come from its index), only the pages
+/// before the first printed page and after the last one.
+fn unnumbered_pages(book: &Book) -> HashSet<usize> {
+    if book.source.is_none() {
+        return HashSet::new();
+    }
+    let marked: HashSet<u32> = book.pdf_of.values().copied().collect();
+    let ebook = !marked.is_empty() && book.labels.iter().all(Option::is_none);
+    let (first, last) = (marked.iter().min().copied().unwrap_or(0), marked.iter().max().copied().unwrap_or(0));
+    let mut words: HashMap<usize, usize> = HashMap::new();
+    for b in book.chapters.iter().flat_map(|c| &c.blocks) {
+        *words.entry(b.page).or_default() += weight(&b.block);
+    }
+    words
+        .into_iter()
+        .filter(|&(page, w)| {
+            let Some(&n) = book.pdf_pages.get(page) else { return false };
+            w >= SAYS_ENOUGH && !marked.contains(&n) && (!ebook || n < first || n > last)
+        })
+        .map(|(page, _)| page)
+        .collect()
+}
+
 fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
     let is_item = matches!(b, Block::Item { .. });
     if *in_list && !is_item {
@@ -609,6 +683,9 @@ fn chapter_body(book: &Book, i: usize) -> String {
     // bar of the next page (inside the bar's own block, where the page
     // turns in the middle of a paragraph), or at the chapter's end.
     let mut foot: std::collections::VecDeque<&Note> = ch.notes.iter().filter(|n| n.page.is_some()).collect();
+    // pages without a printed number: a marker by their number in the PDF,
+    // before the first thing that starts on them
+    let mut unnumbered = unnumbered_pages(book);
     for (bi, b) in ch.blocks.iter().enumerate() {
         // (what stands on a later page: the notes of the pages before it first)
         while foot.front().is_some_and(|n| n.page.is_some_and(|p| p < b.page)) {
@@ -620,6 +697,14 @@ fn chapter_body(book: &Book, i: usize) -> String {
             render_note(n, &format!("{}.", n.label), &mut s);
         }
         let neutral = matches!(b.block, crate::Block::Anchor(_));
+        if !neutral && unnumbered.remove(&b.page) {
+            if in_list {
+                s.push('\n');
+                in_list = false;
+            }
+            let n = book.pdf_pages[b.page];
+            s.push_str(&format!("{PAGE_BAR}\n<a id=\"pdf-p{n}\"{}><sup>[PDF p. {n}]</sup></a>\n\n", pdf_link(n)));
+        }
         if !neutral && b.centered != centered {
             if in_list {
                 s.push('\n');
@@ -702,7 +787,7 @@ fn chapter_body(book: &Book, i: usize) -> String {
             render_note(n, &n.label, &mut s);
         }
     }
-    s
+    link_pages(&s, book)
 }
 
 /// Write one `<slug>.md` per chapter into `dir` (plus `unplaced-notes.md`
@@ -836,8 +921,45 @@ fn write_figures(book: &Book, dir: &Path) {
     crate::progress::report(Step::Pictures, todo.len(), todo.len());
 }
 
+/// The PDF in the book's folder, as `book.pdf`: a link to where it is (no
+/// second copy), for the page markers to open. Written anew with every
+/// conversion; a file of that name that is no such link is left alone.
+fn link_pdf(pdf: &Path, dir: &Path) {
+    let at = dir.join(PDF_NAME);
+    match std::fs::symlink_metadata(&at) {
+        Ok(m) if m.file_type().is_symlink() => {
+            let _ = std::fs::remove_file(&at);
+        }
+        Ok(_) => return,
+        Err(_) => {}
+    }
+    let (Ok(pdf), Ok(dir)) = (pdf.canonicalize(), dir.canonicalize()) else { return };
+    #[cfg(unix)]
+    let _ = std::os::unix::fs::symlink(relative(&dir, &pdf), &at);
+    #[cfg(not(unix))]
+    let _ = std::fs::copy(&pdf, &at);
+}
+
+/// The way from a folder to a file, both given in full: "../My Book.pdf"
+/// for the PDF beside the book's folder. The two can be moved together.
+fn relative(dir: &Path, file: &Path) -> PathBuf {
+    let (d, f): (Vec<_>, Vec<_>) = (dir.components().collect(), file.components().collect());
+    let common = d.iter().zip(&f).take_while(|(a, b)| a == b).count();
+    let mut p = PathBuf::new();
+    for _ in common..d.len() {
+        p.push("..");
+    }
+    for c in &f[common..] {
+        p.push(c);
+    }
+    p
+}
+
 pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
     std::fs::create_dir_all(dir)?;
+    if let Some(pdf) = &book.source {
+        link_pdf(pdf, dir);
+    }
     write_figures(book, dir);
     crate::progress::report(Step::Files, 0, 1);
     let mut out = Vec::new();
@@ -891,6 +1013,52 @@ pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn a_page_marker_opens_its_page_of_the_pdf() {
+        let blk = |block: Block, page: usize| crate::Blk { block, page, centered: false };
+        let long = "word ".repeat(40);
+        let mut book = Book {
+            labels: vec![None, None, Some("1".into())],
+            pdf_pages: vec![4, 5, 6],
+            source: Some("x.pdf".into()),
+            ..Default::default()
+        };
+        book.pdf_of.insert("p1".into(), 6);
+        book.chapters.push(crate::Chapter {
+            title: "T".into(),
+            slug: "t".into(),
+            blocks: vec![
+                // a title page: too little for a marker of its own
+                blk(Block::Para(vec![Inline::Text("A Book".into())]), 0),
+                // a page of preface without a number: by its PDF page
+                blk(Block::Para(vec![Inline::Text(long.clone())]), 1),
+                blk(Block::Para(vec![Inline::Text("More of it.".into())]), 1),
+                blk(Block::Para(vec![Inline::Text("It ends ".into()), Inline::Anchor("p1".into()), Inline::Text("here.".into())]), 1),
+                // a link target that is no page marker stays as it is
+                blk(Block::Anchor("pdf-page-9".into()), 2),
+            ],
+            ..Default::default()
+        });
+        let out = chapter_body(&book, 0);
+        let attrs = " target=\"_blank\" title=\"This page in the PDF\"";
+        assert!(out.starts_with("# T\n\nA Book\n\n<hr class=\"page\""), "{out}");
+        assert_eq!(out.matches(&format!("<a id=\"pdf-p5\" href=\"book.pdf#page=5\"{attrs}><sup>[PDF p. 5]</sup></a>\n\nword")).count(), 1, "{out}");
+        assert_eq!(out.matches("[PDF p.").count(), 1, "{out}");
+        assert!(out.contains(&format!("<a id=\"p1\" href=\"book.pdf#page=6\"{attrs}><sup>[p. 1]</sup></a></span>here.")), "{out}");
+        assert!(out.contains("<a id=\"pdf-page-9\"></a>"), "{out}");
+        // no PDF to open: markers as they were
+        book.source = None;
+        let out = chapter_body(&book, 0);
+        assert!(!out.contains("href") && out.contains("<a id=\"p1\"><sup>[p. 1]</sup></a>"), "{out}");
+    }
+
+    #[test]
+    fn the_way_to_the_pdf_from_the_books_folder() {
+        assert_eq!(relative(Path::new("/a/b/My Book"), Path::new("/a/b/My Book.pdf")), PathBuf::from("../My Book.pdf"));
+        assert_eq!(relative(Path::new("/a/out/x"), Path::new("/a/in/y.pdf")), PathBuf::from("../../in/y.pdf"));
+        assert_eq!(relative(Path::new("/a/b"), Path::new("/a/b/y.pdf")), PathBuf::from("y.pdf"));
+    }
 
     #[test]
     fn a_page_marker_stands_alone_under_its_bar() {

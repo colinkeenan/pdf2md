@@ -11,7 +11,7 @@
 **Second Edition**
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="pi"><sup>[p. i]</sup></a>
+<a id="pi" href="book.pdf#page=2" target="_blank" title="This page in the PDF"><sup>[p. i]</sup></a>
 
 _ADVANCED QUANTUM MECHANICS_
 

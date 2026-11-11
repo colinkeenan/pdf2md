@@ -1,7 +1,7 @@
 # Scattering Problems and Born Approximation
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p22"><sup>[p. 22]</sup></a>
+<a id="p22" href="book.pdf#page=28" target="_blank" title="This page in the PDF"><sup>[p. 22]</sup></a>
 
 ## <a id="s-general-discussion"></a>General Discussion
 
@@ -70,7 +70,7 @@ $$
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p23"><sup>[p. 23]</sup></a>
+<a id="p23" href="book.pdf#page=29" target="_blank" title="This page in the PDF"><sup>[p. 23]</sup></a>
 
 ## <a id="s-projection-operators"></a>Projection Operators
 
@@ -163,7 +163,7 @@ These projection operators are covariant. In <a id="ix-152">Heitler</a> the busi
 Note that here charge-conjugate wave functions are _not_ used. The positrons of momentum $p$ are represented by the electron wave functions $u$ of momentum $- p$ energy $- E$.
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p24"><sup>[p. 24]</sup></a>
+<a id="p24" href="book.pdf#page=30" target="_blank" title="This page in the PDF"><sup>[p. 24]</sup></a>
 
 ## <a id="s-calculation-of-spurs"></a>Calculation of Spurs
 
@@ -233,7 +233,7 @@ $$
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p25"><sup>[p. 25]</sup></a>
+<a id="p25" href="book.pdf#page=31" target="_blank" title="This page in the PDF"><sup>[p. 25]</sup></a>
 
 The electrostatic potential $V$ of the nucleus has the matrix element given by
 
@@ -322,7 +322,7 @@ $$
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p26"><sup>[p. 26]</sup></a>
+<a id="p26" href="book.pdf#page=32" target="_blank" title="This page in the PDF"><sup>[p. 26]</sup></a>
 
 where $\phi , A_{k}$ are the scalar and vector potentials satisfying the Maxwell <a id="ix-186">equations</a>
 
@@ -403,7 +403,7 @@ w_{o} = \frac{4 Z^{2} e^{4} r_{o}^{4}}{2 5 \pi c^{4} \hbar^{7}} p_{1} p_{2} dE_{
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p27"><sup>[p. 27]</sup></a>
+<a id="p27" href="book.pdf#page=33" target="_blank" title="This page in the PDF"><sup>[p. 27]</sup></a>
 
 Since
 
@@ -476,7 +476,7 @@ s_{\mu ( 1 )} = i ( \overline{u}_{1}^{\prime} \gamma_{\mu} u_{1} ) \exp \left\{ 
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p28"><sup>[p. 28]</sup></a>
+<a id="p28" href="book.pdf#page=34" target="_blank" title="This page in the PDF"><sup>[p. 28]</sup></a>
 
 whence
 
@@ -549,7 +549,7 @@ $$
 Then what will be the cross-section in terms of $K$? We do this calculation once here so that later we can stop when we have found formulae for $M$ of the type (145) which come for example conveniently in this form out of radiation theory.
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p29"><sup>[p. 29]</sup></a>
+<a id="p29" href="book.pdf#page=35" target="_blank" title="This page in the PDF"><sup>[p. 29]</sup></a>
 
 ## <a id="s-relation-of-cross-sections-to-transition-amplitudes"></a>Relation of Cross-sections to <a id="ix-247">Transition</a> <a id="ix-5">Amplitudes</a>
 
@@ -632,7 +632,7 @@ $$
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p30"><sup>[p. 30]</sup></a>
+<a id="p30" href="book.pdf#page=36" target="_blank" title="This page in the PDF"><sup>[p. 30]</sup></a>
 
 where $V_{1}$ is the normalization volume for particle 1, and $v_{1}$ its velocity. In fact by (103)
 
@@ -715,7 +715,7 @@ $$
 Effect of spin is a measurable _increase_ of scattering over the Mott formula. Effect of exchange is roughly the 1 $- 3 x^{2}$ term. Positron-electron scattering is very similar. Only the exchange effect is different because of <a id="ix-20">annihilation</a> possibility.
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p31"><sup>[p. 31]</sup></a>
+<a id="p31" href="book.pdf#page=37" target="_blank" title="This page in the PDF"><sup>[p. 31]</sup></a>
 
 ## <a id="s-note-on-the-treatment-of-exchange-effects"></a>Note on the Treatment of Exchange Effects
 

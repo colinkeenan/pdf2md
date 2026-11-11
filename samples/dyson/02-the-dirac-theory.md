@@ -1,7 +1,7 @@
 # The Dirac Theory
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p4"><sup>[p. 4]</sup></a>
+<a id="p4" href="book.pdf#page=10" target="_blank" title="This page in the PDF"><sup>[p. 4]</sup></a>
 
 ## <a id="s-the-form-of-the-dirac-equation"></a>The Form of the <a id="ix-58">Dirac</a> <a id="ix-61">Equation</a>
 
@@ -60,7 +60,7 @@ j_{k} = c \left( \psi^{*} \alpha^{k} \psi \right) \tag{11}
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p5"><sup>[p. 5]</sup></a>
+<a id="p5" href="book.pdf#page=11" target="_blank" title="This page in the PDF"><sup>[p. 5]</sup></a>
 
 Next what more do we want from equation (9)? Two things. (A) it must be consistent with the 2<sup>nd</sup> order equation (6) we started from; (B) the whole theory must be <a id="ix-175">Lorentz</a> invariant.
 
@@ -123,7 +123,7 @@ These are hermitian as required. Of course if $\alpha^{k}$ and $\beta$ are any s
 The Dirac equation is thus a set of 4 simultaneous linear partial differential<sup><a id="fnref-4" href="#fn-4">4</a></sup> equations in the four functions $\psi_{\alpha}$.
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p6"><sup>[p. 6]</sup></a>
+<a id="p6" href="book.pdf#page=12" target="_blank" title="This page in the PDF"><sup>[p. 6]</sup></a>
 
 ## <a id="s-lorentz-invariance-of-the-dirac-equation"></a><a id="ix-180">Lorentz</a> Invariance of the Dirac <a id="ix-72">Equation</a>
 
@@ -204,7 +204,7 @@ $$
 writing $\alpha^{0} = \mathbb{I}$.
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p7"><sup>[p. 7]</sup></a>
+<a id="p7" href="book.pdf#page=13" target="_blank" title="This page in the PDF"><sup>[p. 7]</sup></a>
 
 Thus we need $3$
 
@@ -287,7 +287,7 @@ S = \cos \tfrac{1}{2} \theta + i\sigma_{3} \sin \tfrac{1}{2} \theta \tag{28}
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p8"><sup>[p. 8]</sup></a>
+<a id="p8" href="book.pdf#page=14" target="_blank" title="This page in the PDF"><sup>[p. 8]</sup></a>
 
 Here
 
@@ -392,7 +392,7 @@ $$
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p9"><sup>[p. 9]</sup></a>
+<a id="p9" href="book.pdf#page=15" target="_blank" title="This page in the PDF"><sup>[p. 9]</sup></a>
 
 $$
 \gamma_{1} = \begin{pmatrix} 0 & \begin{matrix} 0 & - i \\ - i & 0 \end{matrix} \\ \begin{matrix} 0 & i \\ i & 0 \end{matrix} & 0 \end{pmatrix} ; \quad \gamma_{2} = \begin{pmatrix} 0 & \begin{matrix} 0 & - 1 \\ 1 & 0 \end{matrix} \\ \begin{matrix} 0 & 1 \\ - 1 & 0 \end{matrix} & 0 \end{pmatrix} ; \quad \gamma_{3} = \begin{pmatrix} 0 & \begin{matrix} - i & 0 \\ 0 & i \end{matrix} \\ \begin{matrix} i & 0 \\ 0 & - i \end{matrix} & 0 \end{pmatrix} ; \quad \gamma_{4} = \begin{pmatrix} \begin{matrix} 1 & 0 \\ 0 & 1 \end{matrix} & 0 \\ 0 & \begin{matrix} - 1 & 0 \\ 0 & - 1 \end{matrix} \end{pmatrix}
@@ -493,7 +493,7 @@ $$
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p10"><sup>[p. 10]</sup></a>
+<a id="p10" href="book.pdf#page=16" target="_blank" title="This page in the PDF"><sup>[p. 10]</sup></a>
 
 is a constant, the total <a id="ix-18">angular momentum</a>, because by (40), (41) and (42)
 
@@ -562,7 +562,7 @@ But there are also solutions with $E = - \sqrt{m^{2} c^{4} + c^{2} p^{2}}$. In f
 Certainly negative energy particles are not allowed physically. They can for example never be stopped by matter at rest, with every collision they move faster and faster. So Dirac was driven to
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p11"><sup>[p. 11]</sup></a>
+<a id="p11" href="book.pdf#page=17" target="_blank" title="This page in the PDF"><sup>[p. 11]</sup></a>
 
 ## <a id="s-the-hole-theory"></a>The <a id="ix-81">Hole Theory</a>
 
@@ -653,7 +653,7 @@ C = - i\beta \alpha^{2} = \gamma_{2} = \begin{pmatrix} 0 & \begin{matrix} 0 & - 
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p12"><sup>[p. 12]</sup></a>
+<a id="p12" href="book.pdf#page=18" target="_blank" title="This page in the PDF"><sup>[p. 12]</sup></a>
 
 The relation between $\psi$ and $\varphi$ is symmetrical because
 
@@ -748,7 +748,7 @@ i \hbar \frac{\partial \psi}{\partial t} = \left[ - e \Phi + \sum_{1}^{3} \left(
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p13"><sup>[p. 13]</sup></a>
+<a id="p13" href="book.pdf#page=19" target="_blank" title="This page in the PDF"><sup>[p. 13]</sup></a>
 
 since by (57), we have $\overline{\psi} \gamma_{\mu} = \psi^{*} \beta \gamma_{\mu} = ( C\varphi^{+} )^{T} \beta \gamma_{\mu} = \varphi^{T} C^{T} \beta \gamma_{\mu}$; the wave function $\varphi = C\psi^{+}$of a positron satisfies by (65)
 
@@ -841,7 +841,7 @@ $$
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p14"><sup>[p. 14]</sup></a>
+<a id="p14" href="book.pdf#page=20" target="_blank" title="This page in the PDF"><sup>[p. 14]</sup></a>
 
 because
 
@@ -940,7 +940,7 @@ $$
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p15"><sup>[p. 15]</sup></a>
+<a id="p15" href="book.pdf#page=21" target="_blank" title="This page in the PDF"><sup>[p. 15]</sup></a>
 
 Then
 
@@ -1013,7 +1013,7 @@ e_{s + 1} = \frac{\left( a_{1}^{2} - a^{2} \right) \alpha + 2 saa_{1}}{a_{1} \al
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p16"><sup>[p. 16]</sup></a>
+<a id="p16" href="book.pdf#page=22" target="_blank" title="This page in the PDF"><sup>[p. 16]</sup></a>
 
 Suppose the series do not terminate. Then for large $s$
 
@@ -1102,7 +1102,7 @@ n = 0 , \quad k = + 1 , + 2 , + 3 ,\dots \tag{94}
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p17"><sup>[p. 17]</sup></a>
+<a id="p17" href="book.pdf#page=23" target="_blank" title="This page in the PDF"><sup>[p. 17]</sup></a>
 
 The principal quantum number $N$ is
 
@@ -1187,7 +1187,7 @@ $$
 This is still exact.
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p18"><sup>[p. 18]</sup></a>
+<a id="p18" href="book.pdf#page=24" target="_blank" title="This page in the PDF"><sup>[p. 18]</sup></a>
 
 Now in the NR approximation
 
@@ -1263,7 +1263,7 @@ L_{z} = - i \hbar \left\{ x \frac{\partial}{\partial y} - y \frac{\partial}{\par
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p19"><sup>[p. 19]</sup></a>
+<a id="p19" href="book.pdf#page=25" target="_blank" title="This page in the PDF"><sup>[p. 19]</sup></a>
 
 is a constant of the motion, say $L_{z} = \ell \hbar$ where $\ell$ is an integer. And $- i \hbar \frac{\partial}{\partial z} = p_{z}$. Let $\lambda = | eB \hbar c |$. Then
 
@@ -1292,7 +1292,7 @@ $$
 The lowest state has energy exactly $mc^{2}$.
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p20"><sup>[p. 20]</sup></a>
+<a id="p20" href="book.pdf#page=26" target="_blank" title="This page in the PDF"><sup>[p. 20]</sup></a>
 
 <div align="center">
 
@@ -1367,7 +1367,7 @@ Comparison with the <a id="ix-86">Dirac</a> notation: $\rho_{1} = \epsilon \quad
 Latin indices: 1, 2, 3. Greek indices: 1, 2, 3, 4.
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p21"><sup>[p. 21]</sup></a>
+<a id="p21" href="book.pdf#page=27" target="_blank" title="This page in the PDF"><sup>[p. 21]</sup></a>
 
 <div align="center">
 

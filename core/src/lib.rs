@@ -204,6 +204,9 @@ pub struct Book {
     pub labels: Vec<Option<String>>,
     /// PDF page number (1 = first sheet) of every page (index = page index).
     pub pdf_pages: Vec<u32>,
+    /// The PDF page each printed page starts on, by the id of its page
+    /// marker ("p18" -> 24): what the marker links to.
+    pub pdf_of: std::collections::HashMap<String, u32>,
     /// The PDF, to cut the pictures from when writing.
     pub source: Option<std::path::PathBuf>,
     /// The book's title (for the top of book.md).
@@ -396,7 +399,18 @@ pub fn convert_doc(doc: &layout::Doc) -> Book {
     let blks = blocks::build(doc, &pages, &stats);
     let labels = pages.iter().map(|p| p.label.clone()).collect();
     let pdf_pages = pages.iter().map(|p| doc.pages[p.index].number).collect();
-    finish(blks, labels, pdf_pages, stats.chapter_size)
+    let mut book = finish(blks, labels, pdf_pages, stats.chapter_size);
+    // (a book without page numbers, whose printed pages were found by the
+    // links of its index: each starts on the page its mark is on)
+    if pages.iter().all(|p| p.label.is_none()) {
+        for p in &pages {
+            let page = &doc.pages[p.index];
+            for (_, label) in &page.marks {
+                book.pdf_of.entry(format!("p{label}")).or_insert(page.number);
+            }
+        }
+    }
+    book
 }
 
 /// The book of its blocks: chapters, notes, links. `labels`: the printed
@@ -405,6 +419,11 @@ fn finish(blks: Vec<Blk>, labels: Vec<Option<String>>, pdf_pages: Vec<u32>, chap
     let mut chapters = structure::split_chapters(blks, chapter_size);
     structure::merge_front_matter(&mut chapters, chapter_size);
     let mut book = Book { labels, pdf_pages, ..Default::default() };
+    for (label, n) in book.labels.iter().zip(&book.pdf_pages) {
+        if let Some(l) = label {
+            book.pdf_of.entry(format!("p{l}")).or_insert(*n);
+        }
+    }
     let removed = notes::attach(&mut chapters, &mut book);
     // (after the notes: their names count the chapters, and stay as they
     // were before the contents were a file of their own)

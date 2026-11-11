@@ -1,7 +1,7 @@
 # Index
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p140"><sup>[p. 140]</sup></a>
+<a id="p140" href="book.pdf#page=146" target="_blank" title="This page in the PDF"><sup>[p. 140]</sup></a>
 
 <table width="100%"><tr>
 <td valign="top" width="50%">
@@ -87,7 +87,7 @@
 </tr></table>
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p141"><sup>[p. 141]</sup></a>
+<a id="p141" href="book.pdf#page=147" target="_blank" title="This page in the PDF"><sup>[p. 141]</sup></a>
 
 <table width="100%"><tr>
 <td valign="top" width="50%">
@@ -189,7 +189,7 @@
 </tr></table>
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p142"><sup>[p. 142]</sup></a>
+<a id="p142" href="book.pdf#page=148" target="_blank" title="This page in the PDF"><sup>[p. 142]</sup></a>
 
 <table width="100%"><tr>
 <td valign="top" width="50%">
@@ -286,7 +286,7 @@
 </tr></table>
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p143"><sup>[p. 143]</sup></a>
+<a id="p143" href="book.pdf#page=149" target="_blank" title="This page in the PDF"><sup>[p. 143]</sup></a>
 
 <table width="100%"><tr>
 <td valign="top" width="50%">

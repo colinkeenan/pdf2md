@@ -1,7 +1,7 @@
 # Introduction
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p1"><sup>[p. 1]</sup></a>
+<a id="p1" href="book.pdf#page=7" target="_blank" title="This page in the PDF"><sup>[p. 1]</sup></a>
 
 ## <a id="s-books"></a>Books
 
@@ -29,7 +29,7 @@ In the NR theory it was found that almost any classical system could be handled,
 
 (ii) <a id="ix-284">Yukawa</a> from a study of nuclear forces predicted the <a id="ix-199">meson</a>, which was later discovered <a id="refback-10-1"></a>[[10]](#ref-10).
 
-These two examples are special cases of the general principle, which is the basic success of the relativistic quantum theory, that _A Relativistic Quantum Theory of a Finite Number of Particles is Impossible._ A RQ theory necessarily contains these features: an indefinite number of particles of one or more types, particles of each type being identical and indistinguishable from each other, possibility of <a id="ix-41">creation</a> and <a id="ix-19">annihilation</a> of particles. Thus the two principles of relativity and quantum theory when combined lead to a world built up out of various types of elementary particles, and so make us feel quite confident that we are on the right way to an understanding of the real world. In addition, various detailed properties of the observed particles<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p2"><sup>[p. 2]</sup></a></span> are necessary consequences of the general theory. These are for example:
+These two examples are special cases of the general principle, which is the basic success of the relativistic quantum theory, that _A Relativistic Quantum Theory of a Finite Number of Particles is Impossible._ A RQ theory necessarily contains these features: an indefinite number of particles of one or more types, particles of each type being identical and indistinguishable from each other, possibility of <a id="ix-41">creation</a> and <a id="ix-19">annihilation</a> of particles. Thus the two principles of relativity and quantum theory when combined lead to a world built up out of various types of elementary particles, and so make us feel quite confident that we are on the right way to an understanding of the real world. In addition, various detailed properties of the observed particles<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p2" href="book.pdf#page=8" target="_blank" title="This page in the PDF"><sup>[p. 2]</sup></a></span> are necessary consequences of the general theory. These are for example:
 
 (i) <a id="ix-112">Magnetic moment</a> of Electron (<a id="ix-94">Dirac</a>) <a id="refback-9-2"></a>[[9]](#ref-9).
 
@@ -94,7 +94,7 @@ E^{2} = m^{2} c^{4} + c^{2} p^{2} \tag{5}
 $$
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p3"><sup>[p. 3]</sup></a>
+<a id="p3" href="book.pdf#page=9" target="_blank" title="This page in the PDF"><sup>[p. 3]</sup></a>
 
 which gives the wave equation
 
