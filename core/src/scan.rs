@@ -761,6 +761,70 @@ fn imprints(pages: &[PageRead]) -> Vec<PageRead> {
     out
 }
 
+/// How wide the text is set: the usual width of a full paragraph.
+fn measure(pages: &[PageRead]) -> Option<f32> {
+    let mut widths: Vec<f32> = pages.iter().flat_map(|p| p.blocks.iter().filter(|b| b.kind == "Text" && b.right - b.left > 0.7 * p.width).map(|b| b.right - b.left)).collect();
+    widths.sort_by(f32::total_cmp);
+    widths.get(widths.len() / 2).copied()
+}
+
+/// Where the text starts on a page, and where its lines end at the latest.
+fn margins(page: &PageRead, measure: Option<f32>) -> (f32, f32) {
+    let left = page.blocks.iter().filter(|b| is_text(b)).map(|b| b.left).fold(f32::MAX, f32::min);
+    (left, left + measure.unwrap_or(0.9 * page.width))
+}
+
+/// marker gives each line of an address (or of a verse, or of the lines
+/// about a book on its copyright page) as a paragraph of its own. Lines
+/// of text that follow each other without space between them, each ended
+/// before the right margin, are one paragraph with its line ends kept;
+/// pieces side by side are one line. Not on a page of ordinary paragraphs,
+/// and not on a page in columns (an index): there every entry is its own.
+fn paragraphs_of_lines(mut pages: Vec<PageRead>, measure: Option<f32>) -> Vec<PageRead> {
+    for page in pages.iter_mut() {
+        let (_, right) = margins(page, measure);
+        let line = |b: &Raw| b.kind == "Text" && b.text.len() < 2 && b.bottom - b.top <= 24.0 && has_words(&all_inline(&b.html));
+        // Only on a page made of such lines (a copyright page, a poem). On
+        // a page of ordinary paragraphs, a short line after another is
+        // the end of one paragraph and the start of the next.
+        // (nor on a page of equations with a few words between them)
+        let paragraphs = page.blocks.iter().any(|b| b.kind == "Equation" || (b.kind == "Text" && b.bottom - b.top > 40.0 && b.right - b.left > 0.7 * page.width));
+        if paragraphs || page.blocks.iter().filter(|b| is_text(b) && b.left > 0.45 * page.width).count() >= 3 {
+            continue;
+        }
+        let mut out: Vec<Raw> = Vec::new();
+        // (the last line of the paragraph being gathered)
+        let mut last: Option<Raw> = None;
+        for b in std::mem::take(&mut page.blocks) {
+            let joins = match &last {
+                Some(l) if line(&b) => {
+                    let beside = (b.top - l.top).abs() <= 4.0 && b.left >= l.right - 2.0;
+                    let under = b.top > l.top + 4.0 && b.top - l.bottom <= 6.0 && right - l.right >= 0.06 * page.width;
+                    Some(beside).filter(|beside| *beside || under)
+                }
+                _ => None,
+            };
+            match (joins, out.last_mut()) {
+                (Some(beside), Some(para)) => {
+                    para.html = format!("{}{}{}", para.html, if beside { " " } else { " <br>" }, b.html);
+                    (para.left, para.right, para.bottom) = (para.left.min(b.left), para.right.max(b.right), para.bottom.max(b.bottom));
+                    para.lines = 0;
+                    // (a piece beside the line: the line still ends where it did)
+                    if !beside {
+                        last = Some(b);
+                    }
+                }
+                _ => {
+                    last = line(&b).then(|| b.clone());
+                    out.push(b);
+                }
+            }
+        }
+        page.blocks = out;
+    }
+    pages
+}
+
 /// Is everything on this page set centered (a title page, a dedication)?
 /// Every block of text lies about the middle of the page and is clearly
 /// narrower than the page.
@@ -873,12 +937,9 @@ fn ends_sentence(t: &str) -> bool {
 /// The blocks of a scanned book from its pages. `book`: what tells this
 /// book from others (for the keys of its equations).
 fn build(pages: &[PageRead], book: &str) -> Scan {
-    let pages = &imprints(pages);
+    let measure = measure(pages);
+    let pages = &paragraphs_of_lines(imprints(pages), measure);
     let labels = labels(pages);
-    // how wide the text is set: the usual width of a full paragraph
-    let mut widths: Vec<f32> = pages.iter().flat_map(|p| p.blocks.iter().filter(|b| b.kind == "Text" && b.right - b.left > 0.7 * p.width).map(|b| b.right - b.left)).collect();
-    widths.sort_by(f32::total_cmp);
-    let measure = widths.get(widths.len() / 2).copied();
     // the sizes of the headings, in the order they come
     let heads: Vec<(f32, usize)> = pages.iter().flat_map(|p| &p.blocks).filter(|b| b.kind == "SectionHeader").map(|b| (b.bottom - b.top, b.lines)).collect();
     let head_sizes = sizes(&heads);
@@ -896,9 +957,8 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
             let centered = all_centered && !matches!(block, Block::Anchor(_));
             blks.push(Blk { block, page: pi, centered })
         };
-        // where the text starts on this page, and where its lines end
-        let left = page.blocks.iter().filter(|b| is_text(b)).map(|b| b.left).fold(f32::MAX, f32::min);
-        let right = left + measure.unwrap_or(0.9 * page.width);
+        // where the lines of this page end at the latest
+        let (_, right) = margins(page, measure);
         let breaks = |b: &Raw, inl: Vec<Inline>| -> Vec<Inline> {
             // (a heading's lines are its own only on a page set centered:
             // a chapter title in two lines is one title)
@@ -1329,6 +1389,36 @@ mod tests {
                 (false, "A paragraph as wide as the page is, of some lines, to show how wide the text is set on it.".to_string()),
                 (false, "41 William Street, Princeton, /New Jersey 08540".to_string()),
                 (false, "This book was composed in Times Roman by Princeton Editorial Associates, Inc., Scottsdale".to_string()),
+            ]
+        );
+        // lines that marker gave one by one: a paragraph, a number beside
+        // its last line in that line; what follows a gap, or a line that
+        // went to the margin, is a new paragraph
+        let wide = block("Text", 16.0, 60.0, 458.0, 120.0, "<p>A paragraph as wide as the page is, of some lines, to show how wide the text is set on it.</p>", &[]);
+        let lines = [
+            block("Text", 16.0, 140.0, 381.0, 161.0, "<p>Published by the Press, 41 William Street, Princeton,</p>", &[]),
+            block("Text", 16.0, 155.0, 114.0, 170.0, "<p>New Jersey 08540</p>", &[]),
+            block("Text", 30.0, 171.0, 114.0, 184.0, "<p>530.14 dc21</p>", &[]),
+            block("Text", 220.0, 171.0, 288.0, 184.0, "<p>2002031743</p>", &[]),
+            block("Text", 16.0, 205.0, 300.0, 218.0, "<p>British Library data is available</p>", &[]),
+            block("Text", 16.0, 230.0, 455.0, 243.0, "<p>A line that runs all the way to the right margin of the page it is on</p>", &[]),
+            block("Text", 16.0, 244.0, 200.0, 257.0, "<p>and one after it.</p>", &[]),
+        ];
+        let page = parse_page(5, &format!("page\t487.0\t842.0\n{}", lines.concat()));
+        // (on a page of ordinary paragraphs the same lines stay apart)
+        let other = parse_page(6, &format!("page\t487.0\t842.0\n{wide}{}", lines[..2].concat()));
+        let scan = build(&[page, other], "book");
+        let paras: Vec<String> = scan.blks.iter().filter_map(|b| if let Block::Para(t) = &b.block { Some(emit_plain(t)) } else { None }).collect();
+        assert_eq!(
+            paras,
+            [
+                "Published by the Press, 41 William Street, Princeton, /New Jersey 08540 /530.14 dc21 2002031743",
+                "British Library data is available",
+                "A line that runs all the way to the right margin of the page it is on",
+                "and one after it.",
+                "A paragraph as wide as the page is, of some lines, to show how wide the text is set on it.",
+                "Published by the Press, 41 William Street, Princeton,",
+                "New Jersey 08540",
             ]
         );
     }
