@@ -134,6 +134,9 @@ pub struct Page {
     pub height: f32,
     pub lines: Vec<Line>,
     pub rules: Vec<Rule>,
+    /// Panels of colour drawn behind text (a table's grey ground), with
+    /// how light each is, 0 (black) to 1 (white).
+    pub shades: Vec<(Rule, f32)>,
     /// Pictures (drawings, images) with their labels, top to bottom.
     pub figures: Vec<Figure>,
     /// Embedded images (pictures or, in ebook-made PDFs, equations).
@@ -376,12 +379,26 @@ pub fn read_drawings(doc: &mut Doc, path: &Path, pages: Option<(u32, u32)>) {
         for (page, r) in doc.pages.iter_mut().zip(all(&parts, parse_svg_rules)) {
             page.rules = r;
         }
+        for (page, s) in doc.pages.iter_mut().zip(all(&parts, parse_svg_shades)) {
+            page.shades = s;
+        }
         mark_overlines(doc);
         if tex_math {
             insert_delims(doc, all(&parts, parse_svg_delims));
         }
         for (page, f) in doc.pages.iter_mut().zip(all(&parts, parse_svg_figures)) {
             page.figures = f;
+            // The light panel a table (or the note under it) stands on is
+            // no picture: its text is text, not the labels of a drawing.
+            let panels: Vec<Rule> = page.shades.iter().filter(|(_, light)| *light >= 0.7).map(|(p, _)| *p).collect();
+            page.figures.retain(|f| {
+                let area = (f.right - f.left) * (f.bottom - f.top);
+                let covered: f32 = panels
+                    .iter()
+                    .map(|p| (f.right.min(p.right) - f.left.max(p.left)).max(0.0) * (f.bottom.min(p.bottom) - f.top.max(p.top)).max(0.0))
+                    .sum();
+                area <= 0.0 || covered < 0.5 * area
+            });
         }
         for (page, imgs) in doc.pages.iter_mut().zip(all(&parts, parse_svg_images)) {
             page.images = imgs;
@@ -1428,6 +1445,50 @@ pub fn parse_svg_rules(svg: &str) -> Vec<Vec<Rule>> {
     pages
 }
 
+/// The panels of colour on each page of `pdftocairo -svg` output, in
+/// pdftohtml's pixels: rectangles filled with something between black and
+/// white, big enough to stand behind a line of text or more (the grey
+/// ground of a table and of its caption in an ebook-made PDF).
+pub fn parse_svg_shades(svg: &str) -> Vec<Vec<(Rule, f32)>> {
+    let mut pages = Vec::new();
+    for chunk in svg_pages(svg) {
+        let mut shades = Vec::new();
+        for tag in chunk.split("<path ").skip(1) {
+            let tag = tag.split("/>").next().unwrap_or("");
+            if tag.contains("id=\"") || tag.contains("transform=") {
+                continue;
+            }
+            // fill="rgb(86.2%, 86.2%, 87%)": how light it is
+            let Some(rgb) = tag.split("fill=\"rgb(").nth(1).and_then(|r| r.split(')').next()) else { continue };
+            let parts: Vec<f32> = rgb.split(',').filter_map(|v| v.trim().trim_end_matches('%').parse().ok()).collect();
+            if parts.len() != 3 {
+                continue;
+            }
+            let light = parts.iter().sum::<f32>() / 300.0;
+            if !(0.3..0.98).contains(&light) {
+                continue;
+            }
+            let Some(d) = tag.split("d=\"").nth(1).and_then(|r| r.split('"').next()) else { continue };
+            if d.contains(['C', 'Q', 'A']) {
+                continue;
+            }
+            for piece in d.split('Z') {
+                let nums: Vec<f32> = piece.split(|c: char| c.is_ascii_alphabetic() || c.is_whitespace() || c == ',').filter_map(|t| t.parse().ok()).collect();
+                if nums.len() != 8 {
+                    continue;
+                }
+                let (x0, x1) = nums.iter().step_by(2).fold((f32::MAX, f32::MIN), |(a, b), &x| (a.min(x), b.max(x)));
+                let (y0, y1) = nums.iter().skip(1).step_by(2).fold((f32::MAX, f32::MIN), |(a, b), &y| (a.min(y), b.max(y)));
+                if x1 - x0 >= 20.0 && y1 - y0 >= 10.0 {
+                    shades.push((Rule { left: x0 * 1.5, right: x1 * 1.5, top: y0 * 1.5, bottom: y1 * 1.5 }, light));
+                }
+            }
+        }
+        pages.push(shades);
+    }
+    pages
+}
+
 /// A bar just above a single span, with nothing above the bar (so it is not
 /// a fraction bar) and no root sign right before it, is an overline: Ā.
 fn mark_overlines(doc: &mut Doc) {
@@ -1680,6 +1741,7 @@ pub fn parse_xml(xml: &str) -> Result<Doc, String> {
                 fonts.get(s.font).is_some_and(|f| f.family.starts_with("CMEX"))
             }),
             rules: Vec::new(),
+            shades: Vec::new(),
             figures: Vec::new(),
             images: Vec::new(),
             marks: Vec::new(),

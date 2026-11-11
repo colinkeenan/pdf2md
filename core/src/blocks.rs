@@ -553,6 +553,264 @@ fn emit_line(doc: &Doc, l: &Line, st: &Stats, spans: &[crate::layout::Span], kin
 // ---------------------------------------------------------------------------
 // Tables
 
+/// The tables of a page that are set on a panel of grey (an ebook-made
+/// PDF): (first line, end, the table). Such a table has a short rule
+/// under each cell of its head, so the rules say where its columns are.
+/// Its rows have no marks and stand close together, but every cell is
+/// set in the middle of its row's height: a column in which the cells are
+/// short shows the rows (its cells stand apart), and the lines of the
+/// other columns go to the row whose middle their own middle fits.
+///
+/// A table that reaches the foot of its page goes on at the top of the
+/// next, on a panel without rules (they stand under the head only):
+/// `carried` holds the columns of such a table from one page to the next.
+fn panel_tables(doc: &Doc, page: &crate::layout::Page, lines: &[Line], st: &Stats, carried: &mut Option<Vec<f32>>) -> Vec<(usize, usize, Block)> {
+    let mut out = Vec::new();
+    let from_before = carried.take();
+    for (panel, light) in &page.shades {
+        if *light < 0.7 || panel.bottom - panel.top < 2.0 * st.body {
+            continue;
+        }
+        // the rules on the panel, from the top down
+        let on_panel = |r: &&Rule| r.top >= panel.top - 2.0 && r.top <= panel.bottom + 2.0 && r.left >= panel.left - 2.0 && r.right <= panel.right + 2.0;
+        let rules: Vec<&Rule> = page.rules.iter().filter(on_panel).collect();
+        // where the columns begin and end: where the rules do
+        let mut edges: Vec<f32> = rules.iter().flat_map(|r| [r.left, r.right]).collect();
+        edges.sort_by(f32::total_cmp);
+        edges.dedup_by(|a, b| (*a - *b).abs() < 3.0);
+        if edges.len() < 3 {
+            // (no rules: the rest of the table of the page before, if this
+            // panel starts the page and stands where that table stood)
+            match &from_before {
+                Some(before) if panel.top < 0.15 * page.height && (panel.left - before[0]).abs() < 6.0 => edges = before.clone(),
+                _ => continue,
+            }
+        }
+        let columns = edges.len() - 1;
+        let column_of = |x: f32| (0..columns).find(|c| x < edges[c + 1]).unwrap_or(columns - 1);
+        // the lines on the panel: they must be a run of the page's lines
+        let inside = |l: &Line| l.top >= panel.top - 3.0 && l.top < panel.bottom && l.left >= panel.left - 3.0 && l.right <= panel.right + 3.0;
+        let Some(first) = lines.iter().position(inside) else { continue };
+        let end = first + lines[first..].iter().take_while(|l| inside(l)).count();
+        if std::env::var_os("PDF2MD_TABLEDEBUG").is_some() {
+            eprintln!(
+                "PANEL page {} columns {} lines {}..{} more inside after: {} | {:.0},{:.0}-{:.0},{:.0}",
+                page.number,
+                columns,
+                first,
+                end,
+                lines[end..].iter().filter(|l| inside(l)).count(),
+                panel.left,
+                panel.top,
+                panel.right,
+                panel.bottom
+            );
+            for l in lines.iter().filter(|l| l.top >= panel.top - 3.0 && l.top < panel.bottom) {
+                eprintln!("   line top {:.0} left {:.0} right {:.0} inside {}", l.top, l.left, l.right, inside(l));
+            }
+        }
+        if lines[end..].iter().any(inside) || end - first < 2 {
+            continue;
+        }
+        // each line's part in each column
+        let size_of = |s: &crate::layout::Span| doc.size_of(s);
+        let mut parts: Vec<Vec<Line>> = vec![Vec::new(); columns];
+        for l in &lines[first..end] {
+            // (a piece of text that runs across a column's edge, the words
+            // of two cells with spaces between them: cut at the edge)
+            let mut pieces: Vec<crate::layout::Span> = Vec::new();
+            for s in &l.spans {
+                let mut rest = s.clone();
+                for e in &edges[1..edges.len() - 1] {
+                    let chars: Vec<char> = rest.text.chars().collect();
+                    if rest.tex.is_some() || rest.left >= *e - 4.0 || rest.right() <= *e + 4.0 || chars.len() < 3 {
+                        continue;
+                    }
+                    // the space nearest the edge, by the width of a letter
+                    let per = rest.width / chars.len() as f32;
+                    let at = (*e - rest.left) / per;
+                    // (or where a word begins right behind another: the two
+                    // cells' words can stand with no space between them)
+                    let between = |k: &usize| chars[*k] == ' ' || (*k > 0 && chars[*k].is_uppercase() && chars[*k - 1].is_lowercase());
+                    let Some(cut) = (0..chars.len()).filter(between).min_by(|a, b| (*a as f32 - at).abs().total_cmp(&(*b as f32 - at).abs())) else { continue };
+                    if (cut as f32 - at).abs() > 6.0 {
+                        continue;
+                    }
+                    let skip = usize::from(chars[cut] == ' ');
+                    let (head, tail): (String, String) = (chars[..cut].iter().collect(), chars[cut + skip..].iter().collect());
+                    if head.trim().is_empty() || tail.trim().is_empty() {
+                        continue;
+                    }
+                    let mut before = rest.clone();
+                    before.text = head;
+                    before.width = per * cut as f32;
+                    rest.text = tail;
+                    rest.left += per * (cut + skip) as f32;
+                    rest.width = (s.right() - rest.left).max(1.0);
+                    pieces.push(before);
+                }
+                pieces.push(rest);
+            }
+            for (c, of_column) in parts.iter_mut().enumerate() {
+                let spans: Vec<crate::layout::Span> = pieces.iter().filter(|s| column_of((s.left + s.right()) / 2.0) == c).cloned().collect();
+                if spans.iter().any(|s| !s.text.trim().is_empty() || s.tex.is_some()) {
+                    of_column.push(crate::layout::make_line(spans, &size_of));
+                }
+            }
+        }
+        for of_column in parts.iter_mut() {
+            of_column.sort_by(|a, b| a.top.total_cmp(&b.top));
+            // A small piece set a little lower right behind a line's last
+            // piece is its subscript ("N" and, half a line down, "1"),
+            // not a line of its own.
+            let mut k = 1;
+            while k < of_column.len() {
+                let (above, below) = (&of_column[k - 1], &of_column[k]);
+                let small = below.spans.len() == 1 && below.size <= 0.85 * above.size && below.spans[0].text.trim().chars().count() <= 3;
+                let behind = (below.left - above.right).abs() <= 0.4 * above.size && below.top > above.top && below.top < above.top + 0.7 * above.size;
+                if small && behind {
+                    let mut sub = of_column.remove(k).spans.remove(0);
+                    sub.script = crate::layout::Script::Sub;
+                    let mut spans = of_column[k - 1].spans.clone();
+                    spans.push(sub);
+                    of_column[k - 1] = crate::layout::make_line(spans, &size_of);
+                } else {
+                    k += 1;
+                }
+            }
+        }
+        // bands: the head above the first rule, the body below (a rule
+        // across the body parts it again)
+        let mut cuts: Vec<f32> = rules.iter().map(|r| r.top).filter(|y| *y < panel.bottom - 4.0).collect();
+        cuts.sort_by(f32::total_cmp);
+        cuts.dedup_by(|a, b| (*a - *b).abs() < 3.0);
+        let mut bounds = vec![f32::MIN];
+        bounds.extend(cuts);
+        bounds.push(f32::MAX);
+        let middle = |l: &Line| l.top + l.size / 2.0;
+        let mut rows: Vec<Vec<crate::Cell>> = Vec::new();
+        for (k, band) in bounds.windows(2).enumerate() {
+            let of_band: Vec<Vec<&Line>> = parts.iter().map(|c| c.iter().filter(|l| middle(l) >= band[0] && middle(l) < band[1]).collect()).collect();
+            if of_band.iter().all(Vec::is_empty) {
+                continue;
+            }
+            // the head is one row; the body's rows are found
+            let dealt = if k == 0 && bounds.len() > 2 { deal_rows(&of_band, &[0.0], st) } else { table_rows(&of_band, st) };
+            for of_row in &dealt {
+                let mut row = Vec::new();
+                for mine in of_row {
+                    let mut text: Vec<Inline> = Vec::new();
+                    for l in mine.iter().copied() {
+                        if !text.is_empty() {
+                            push_text(&mut text, " ");
+                        }
+                        text.extend(line_inlines(doc, l, st));
+                    }
+                    row.push(crate::Cell { text: tidy(text), span: 1, ..Default::default() });
+                }
+                rows.push(row);
+            }
+        }
+        if rows.len() >= 2 {
+            out.push((first, end, Block::Table { rows, widths: Vec::new() }));
+            if panel.bottom > 0.85 * page.height {
+                *carried = Some(edges.clone());
+            }
+        }
+    }
+    out
+}
+
+/// The rows of a table from the lines of each of its columns (see
+/// [`panel_tables`]): for each row, the lines of each column. The column
+/// that has the most groups of lines standing apart shows the rows: each
+/// of its groups is a cell. The lines of the other columns go with them,
+/// in the one of two ways that fits the table better: its cells are set
+/// in the middle of their row's height, or at its top. If no column
+/// shows the rows (every column is one group), each line is a row.
+fn table_rows<'a>(columns: &[Vec<&'a Line>], st: &Stats) -> Vec<Vec<Vec<&'a Line>>> {
+    let middle = |l: &Line| l.top + l.size / 2.0;
+    // (the top of the first and of the last line of each group)
+    let groups = |column: &[&Line]| -> Vec<(f32, f32)> {
+        let mut out: Vec<(f32, f32)> = Vec::new();
+        for l in column {
+            match out.last_mut() {
+                // (the next line of the same cell: no more than a line and a third lower)
+                Some((_, last)) if l.top - *last <= 1.35 * st.spacing.max(l.size) => *last = l.top,
+                _ => out.push((l.top, l.top)),
+            }
+        }
+        out
+    };
+    let size = columns.iter().flatten().map(|l| l.size).fold(st.body, f32::max);
+    let best = columns.iter().filter(|c| !c.is_empty()).map(|c| (groups(c), c.len())).max_by(|a, b| a.0.len().cmp(&b.0.len()).then(b.1.cmp(&a.1)));
+    let cells = match best {
+        Some((cells, _)) if cells.len() > 1 => cells,
+        // no column tells: a line a row, by the column with the most lines
+        _ => {
+            let centres: Vec<f32> = columns.iter().max_by_key(|c| c.len()).map(|c| c.iter().map(|l| middle(l)).collect()).unwrap_or_default();
+            return deal_rows(columns, &centres, st);
+        }
+    };
+    // cells in the middle of their rows
+    let centres: Vec<f32> = cells.iter().map(|(a, b)| (a + b) / 2.0 + size / 2.0).collect();
+    let centred = deal_rows(columns, &centres, st);
+    let misfit_centred: f32 = centred
+        .iter()
+        .zip(&centres)
+        .flat_map(|(row, c)| row.iter().filter_map(move |cell| Some(((cell.first()?.top + cell.last()?.top + size) / 2.0 - c).abs())))
+        .sum();
+    // cells at the top of their rows
+    let tops: Vec<f32> = cells.iter().map(|c| c.0).collect();
+    let mut topped: Vec<Vec<Vec<&Line>>> = vec![vec![Vec::new(); columns.len()]; tops.len()];
+    for (c, column) in columns.iter().enumerate() {
+        for l in column {
+            let r = tops.iter().rposition(|t| l.top >= *t - 0.4 * size).unwrap_or(0);
+            topped[r][c].push(*l);
+        }
+    }
+    let misfit_topped: f32 = topped.iter().zip(&tops).flat_map(|(row, t)| row.iter().filter_map(move |cell| Some((cell.first()?.top - t).abs()))).sum();
+    if misfit_topped < misfit_centred {
+        topped
+    } else {
+        centred
+    }
+}
+
+/// The lines of a table's columns dealt to its rows (they have their
+/// middles at `centres`): for each row, the lines of each column. A line
+/// goes to the row it lies in; where one row ends and the next begins is
+/// between their middles, nearer the lower one's middle (rows are as high
+/// as their highest cell, which is found by dealing twice).
+fn deal_rows<'a>(columns: &[Vec<&'a Line>], centres: &[f32], st: &Stats) -> Vec<Vec<Vec<&'a Line>>> {
+    let rows = centres.len();
+    let middle = |l: &Line| l.top + l.size / 2.0;
+    let mut heights = vec![1.0f32; rows];
+    let mut dealt: Vec<Vec<Vec<&Line>>> = Vec::new();
+    for _ in 0..3 {
+        // the lower edge of each row but the last
+        let edges: Vec<f32> = (0..rows.saturating_sub(1)).map(|r| centres[r] + (centres[r + 1] - centres[r]) * heights[r] / (heights[r] + heights[r + 1])).collect();
+        dealt = vec![vec![Vec::new(); columns.len()]; rows];
+        for (c, column) in columns.iter().enumerate() {
+            for l in column {
+                let r = edges.iter().position(|e| middle(l) < *e).unwrap_or(rows.saturating_sub(1));
+                if r < rows {
+                    dealt[r][c].push(*l);
+                }
+            }
+        }
+        // how high each row is: its cell of the most lines
+        for (r, of_row) in dealt.iter().enumerate() {
+            let most = of_row.iter().map(|cell| match (cell.first(), cell.last()) {
+                (Some(a), Some(b)) => b.top - a.top + st.spacing.max(a.size),
+                _ => 0.0,
+            });
+            heights[r] = most.fold(st.spacing.max(1.0), f32::max);
+        }
+    }
+    dealt
+}
+
 /// Runs of 3+ consecutive lines laid out in the same columns, with words in
 /// the last column (a list like "A* : complex conjugate"). Returns
 /// (first line, end, column starts).
@@ -1239,6 +1497,8 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
     };
     // printed page marks (ebook PDFs without page numbers; see layout.rs)
     let use_marks = pages.iter().all(|p| p.label.is_none());
+    // (the columns of a table that goes on over the page)
+    let mut carried_table: Option<Vec<f32>> = None;
     for (pi, page) in pages.iter().enumerate() {
         b.page = pi;
         if let Some(l) = &page.label {
@@ -1254,8 +1514,25 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
         }
         let lines = &attach_fraction_rows(doc, &page.lines, &doc.pages[page.index].rules);
         let note_open = matches!(b.out.last(), Some(Blk { block: Block::PageNote { .. }, .. }));
-        let end = page_notes_start(doc, lines, st, note_open);
-        let disp = display_flags(doc, &lines[..end], st);
+        let mut end = page_notes_start(doc, lines, st, note_open);
+        // tables set on a panel of grey, with a rule under each cell of
+        // their head: real tables. (A raised mark in such a table, or the
+        // note under it on a panel of its own, is not where the page's
+        // footnotes start: those are looked for below the panels.)
+        let panels = panel_tables(doc, &doc.pages[page.index], lines, st, &mut carried_table);
+        let on_table = |i: usize, j: usize| panels.iter().any(|p| i < p.1 && p.0 < j);
+        if let Some(last) = panels.iter().map(|t| t.1).max().filter(|last| end < *last) {
+            let on_panel = |l: &Line| doc.pages[page.index].shades.iter().any(|(p, _)| l.top >= p.top - 3.0 && l.top < p.bottom && l.left >= p.left - 3.0 && l.right <= p.right + 3.0);
+            let below = last + lines[last..].iter().take_while(|l| on_panel(l)).count();
+            end = below + page_notes_start(doc, &lines[below..], st, false);
+        }
+        let mut disp = display_flags(doc, &lines[..end], st);
+        // (a line of a table is no displayed formula, and none runs on into one)
+        for (first, last, _) in &panels {
+            for flag in disp.iter_mut().take(*last).skip(*first) {
+                *flag = false;
+            }
+        }
         // left edge of each column, for index indentation
         let mut col_left: HashMap<u8, f32> = HashMap::new();
         for l in lines {
@@ -1316,7 +1593,16 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 fi += 1;
                 prev_top = None;
             }
-            if let Some((_, j, cols)) = tables.iter().find(|t| t.0 == i).filter(|_| !b.index_mode) {
+            if let Some((_, j, table)) = panels.iter().find(|t| t.0 == i) {
+                b.flush();
+                b.anchor_block();
+                b.push(table.clone());
+                prev_top = Some(lines[j - 1].top);
+                last_heading = None;
+                i = *j;
+                continue;
+            }
+            if let Some((_, j, cols)) = tables.iter().find(|t| t.0 == i && !on_table(t.0, t.1)).filter(|_| !b.index_mode) {
                 b.flush();
                 b.anchor_block();
                 b.push(Block::Equation { latex: table_latex(doc, &lines[i..*j], cols), tag: None, source: None });
@@ -1535,4 +1821,57 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
     }
     b.flush();
     b.out
+}
+
+#[cfg(test)]
+mod table_tests {
+    use super::*;
+    use crate::layout::{Line, Script, Span};
+
+    fn line(text: &str, top: f32) -> Line {
+        let span = Span {
+            text: text.into(),
+            left: 0.0,
+            top,
+            width: 50.0,
+            height: 25.0,
+            font: 0,
+            bold: false,
+            italic: false,
+            script: Script::Normal,
+            overline: false,
+            tex: None,
+            link: None,
+            url: None,
+            url_text: None,
+            link_top: None,
+            picture: None,
+            image_key: None,
+        };
+        crate::layout::make_line(vec![span], &|_| 25.0)
+    }
+
+    fn shown(rows: &[Vec<Vec<&Line>>]) -> Vec<Vec<String>> {
+        rows.iter().map(|r| r.iter().map(|c| c.iter().map(|l| l.spans[0].text.clone()).collect::<Vec<_>>().join(" ")).collect()).collect()
+    }
+
+    #[test]
+    fn the_rows_of_a_table_are_found_by_how_its_cells_stand() {
+        let st = Stats { left: 0.0, right: 500.0, body: 25.0, spacing: 26.0, chapter_size: None, toc_pages: Default::default(), hyphenated: Default::default() };
+        // cells in the middle of their rows: a name beside two and three lines
+        let names = [line("ket", 838.0), line("observable", 906.0), line("base", 998.0)];
+        let texts = [line("a1", 826.0), line("a2", 852.0), line("b1", 880.0), line("b2", 906.0), line("b3", 932.0), line("c1", 960.0), line("c2", 986.0), line("c3", 1012.0), line("c4", 1037.0)];
+        let columns = vec![names.iter().collect::<Vec<_>>(), texts.iter().collect()];
+        assert_eq!(shown(&table_rows(&columns, &st)), [["ket", "a1 a2"], ["observable", "b1 b2 b3"], ["base", "c1 c2 c3 c4"]]);
+        // cells at the top of their rows: the short cell stands beside the first line
+        let names = [line("weak", 400.0), line("strong", 478.0)];
+        let texts = [line("a1", 400.0), line("a2", 426.0), line("a3", 452.0), line("b1", 478.0), line("b2", 504.0)];
+        let columns = vec![names.iter().collect::<Vec<_>>(), texts.iter().collect()];
+        assert_eq!(shown(&table_rows(&columns, &st)), [["weak", "a1 a2 a3"], ["strong", "b1 b2"]]);
+        // rows of one line each: a line a row
+        let n = [line("1", 100.0), line("2", 128.0), line("3", 156.0)];
+        let v = [line("2.320", 100.0), line("4.082", 128.0), line("5.517", 156.0)];
+        let columns = vec![n.iter().collect::<Vec<_>>(), v.iter().collect()];
+        assert_eq!(shown(&table_rows(&columns, &st)), [["1", "2.320"], ["2", "4.082"], ["3", "5.517"]]);
+    }
 }

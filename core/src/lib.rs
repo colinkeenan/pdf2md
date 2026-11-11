@@ -137,8 +137,11 @@ pub enum Block {
     Code(String),
     /// A horizontal line across the page (drawn as an image).
     Rule,
-    /// A table: its rows of cells (a table of contents set in columns).
-    Table(Vec<Vec<Cell>>),
+    /// A table: its rows of cells (a table of contents set in columns, a
+    /// table of the book). `widths`: how wide its columns are, in percent
+    /// of the page (0: as wide as needed); empty for a table that is as
+    /// wide as it needs to be.
+    Table { rows: Vec<Vec<Cell>>, widths: Vec<u8> },
     /// What follows is set in this many columns side by side, as on the
     /// page (an index), up to `ColumnsEnd`; `ColumnBreak` starts the next.
     Columns(usize),

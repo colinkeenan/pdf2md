@@ -501,13 +501,17 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
         Block::Columns(n) => out.push_str(&format!("<table width=\"100%\"><tr>\n<td valign=\"top\" width=\"{}%\">\n\n", 100 / (*n).max(1))),
         Block::ColumnBreak => out.push_str("</td>\n<td valign=\"top\">\n\n"),
         Block::ColumnsEnd => out.push_str("</td>\n</tr></table>\n\n"),
-        Block::Table(rows) => {
+        Block::Table { rows, widths } => {
             // (html, with each cell's text between empty lines: Markdown
             // is read inside it, so links and headings work)
-            out.push_str("<table width=\"100%\">\n");
-            // (three columns: a narrow one for numbers, one for pages)
-            if rows.iter().map(|r| r.iter().map(|c| c.span.max(1)).sum::<usize>()).max() == Some(3) {
-                out.push_str("<colgroup><col width=\"10%\"><col><col width=\"20%\"></colgroup>\n");
+            if widths.is_empty() {
+                out.push_str("<table>\n");
+            } else {
+                out.push_str("<table width=\"100%\">\n<colgroup>");
+                for w in widths {
+                    out.push_str(&if *w > 0 { format!("<col width=\"{w}%\">") } else { "<col>".to_string() });
+                }
+                out.push_str("</colgroup>\n");
             }
             for row in rows {
                 out.push_str("<tr>\n");

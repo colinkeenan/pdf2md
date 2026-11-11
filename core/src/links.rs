@@ -143,7 +143,8 @@ fn contents_table(entries: &[crate::TocEntry], items: Vec<Block>) -> Block {
         })
         .filter(|row| !row.is_empty())
         .collect();
-    Block::Table(rows)
+    // (a narrow column for the numbers, one for the pages)
+    Block::Table { rows, widths: vec![10, 0, 20] }
 }
 
 fn link_entries(
