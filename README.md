@@ -156,6 +156,7 @@ How it goes, and what to know:
 * **Equations** keep their numbers; one you correct by hand is kept for the next conversion like the equations read from images (see below). There is no second reading of them, so no `check-equations.md`.
 * **Footnotes** are linked to their markers. marker does not see every small raised number in the text; a note whose marker it missed is listed in `unplaced-notes.md` with its chapter.
 * **The table of contents** is read line by line from the PDF's hidden text (or by Tesseract), because marker reads tables cell by cell, which shuffles it; an entry whose page opens a chapter takes that chapter's title as marker read it. Other tables are kept as pictures.
+* **The cover** (the first sheet, a picture over a third of it or more and only a few words) is one picture of the whole page; its title and author are not written as text. Anywhere in the book, words that lie on a picture are part of the picture.
 * What marker calls program code is only written as a code block if it looks like code (it calls an index page code, too); otherwise it is text.
 * Letters that stand as symbols in a sentence (“J(x)”, “a”) are often left as plain letters.
 * Measured on the test book (537 pages): 29 minutes for the first conversion, 8 seconds for the next; 8120 formulas, of which 6 do not render (cut short by the model, or tables of numbers it invented); 73 footnotes linked and 46 whose marker was missed.

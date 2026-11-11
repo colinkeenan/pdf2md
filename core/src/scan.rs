@@ -90,6 +90,7 @@ struct Raw {
 struct PageRead {
     /// the PDF's page number (1 = first sheet)
     number: u32,
+    width: f32,
     height: f32,
     blocks: Vec<Raw>,
 }
@@ -99,7 +100,10 @@ fn parse_page(number: u32, text: &str) -> PageRead {
     for line in text.lines() {
         let mut f = line.splitn(8, '\t');
         match f.next() {
-            Some("page") => page.height = f.nth(1).and_then(|h| h.parse().ok()).unwrap_or(0.0),
+            Some("page") => {
+                let mut size = f.map(|v| v.parse().unwrap_or(0.0));
+                (page.width, page.height) = (size.next().unwrap_or(0.0), size.next().unwrap_or(0.0));
+            }
             Some("block") => {
                 let kind = f.next().unwrap_or("").to_string();
                 let mut num = || f.next().and_then(|v| v.parse::<f32>().ok()).unwrap_or(0.0);
@@ -713,6 +717,28 @@ fn looks_like_code(t: &str) -> bool {
     (signs + 2 * keywords) * 5 >= words && signs + keywords >= 3
 }
 
+/// How much of block `a` lies inside block `b`, 0 to 1.
+fn inside(a: &Raw, b: &Raw) -> f32 {
+    let w = (a.right.min(b.right) - a.left.max(b.left)).max(0.0);
+    let h = (a.bottom.min(b.bottom) - a.top.max(b.top)).max(0.0);
+    let area = (a.right - a.left) * (a.bottom - a.top);
+    if area > 0.0 {
+        w * h / area
+    } else {
+        0.0
+    }
+}
+
+/// Is this page the book's cover? The first sheet of the PDF, a picture
+/// over a third of it or more, and only a few words (the title, the
+/// author) besides.
+fn is_cover(page: &PageRead) -> bool {
+    let sheet = page.width * page.height;
+    let picture = page.blocks.iter().filter(|b| b.kind == "Picture" || b.kind == "Figure").map(|b| (b.right - b.left) * (b.bottom - b.top)).fold(0.0, f32::max);
+    let words: usize = page.blocks.iter().filter(|b| b.kind != "Picture" && b.kind != "Figure").map(|b| plain(&all_inline(&b.html)).split_whitespace().count()).sum();
+    page.number == 1 && sheet > 0.0 && picture >= sheet / 3.0 && words <= 30
+}
+
 fn ends_sentence(t: &str) -> bool {
     t.trim_end().ends_with(['.', '!', '?', ':', ';', '”', '"', ')'])
 }
@@ -736,9 +762,25 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
         let mut anchor = labels[pi].as_ref().map(|l| format!("p{l}"));
         let (mut figures, mut equations) = (0, 0);
         let mut first_text = true;
+        // The cover: a picture with the title and the author lettered on
+        // it. All of the page is the picture; its words are not text.
+        if is_cover(page) {
+            push(&mut blks, Block::Figure {
+                page: page.number,
+                n: 1,
+                area: Figure { left: 0.0, right: page.width * PX, top: 0.0, bottom: page.height * PX },
+                label: labels[pi].clone(),
+            });
+            continue;
+        }
+        let pictures: Vec<&Raw> = page.blocks.iter().filter(|b| b.kind == "Picture" || b.kind == "Figure").collect();
         for (bi, b) in page.blocks.iter().enumerate() {
             let area = Figure { left: b.left * PX, right: b.right * PX, top: b.top * PX, bottom: b.bottom * PX };
             let mut made: Vec<Block> = Vec::new();
+            // words lettered on a picture are in the picture
+            if !matches!(b.kind.as_str(), "Picture" | "Figure") && pictures.iter().any(|p| inside(b, p) >= 0.6) {
+                continue;
+            }
             match b.kind.as_str() {
                 "PageHeader" | "PageFooter" => continue,
                 "SectionHeader" => {
@@ -1056,6 +1098,33 @@ mod tests {
             ]
         );
         assert_eq!(scan.chapter_size, Some(CHAPTER));
+    }
+
+    #[test]
+    fn the_cover_is_one_picture() {
+        let cover = parse_page(
+            1,
+            "page\t265.0\t400.0\nblock\tPicture\t0.0\t0.0\t264.0\t251.6\t0\t\nblock\tText\t14.0\t220.3\t259.0\t265.2\t1\t<p>uantum Field Theory</p>\nblock\tText\t159.4\t280.1\t230.6\t302.9\t1\t<p>A. Zee</p>",
+        );
+        // (the same blocks on a later page: a picture and the text that
+        // is not lettered on it)
+        let mut later = cover.clone();
+        later.number = 7;
+        let scan = build(&[cover, later], "book");
+        let kinds: Vec<String> = scan
+            .blks
+            .iter()
+            .map(|b| match &b.block {
+                Block::Figure { area, .. } => format!("figure {:.0}x{:.0}", area.right - area.left, area.bottom - area.top),
+                Block::Para(i) => format!("para {}", plain(i)),
+                other => format!("{other:?}"),
+            })
+            .collect();
+        assert_eq!(kinds, ["figure 398x600", "figure 396x377", "para A. Zee"]);
+        // words that lie on a picture are part of it
+        let lettered = parse_page(3, "page\t400.0\t600.0\nblock\tPicture\t50.0\t50.0\t350.0\t300.0\t0\t\nblock\tText\t100.0\t100.0\t200.0\t120.0\t1\t<p>x axis</p>\nblock\tText\t50.0\t320.0\t350.0\t340.0\t1\t<p>Below it.</p>");
+        let scan = build(&[lettered], "book");
+        assert_eq!(scan.blks.iter().filter(|b| matches!(b.block, Block::Para(_))).count(), 1);
     }
 
     #[test]
