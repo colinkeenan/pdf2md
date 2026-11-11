@@ -575,13 +575,14 @@ pub fn recognize(images: &[&str]) -> HashMap<String, Reading> {
     if untested > 0 {
         eprintln!("Checking {untested} images read as math before: diagrams or logos? lines run together? single symbols misread?");
     }
-    if new > 0 {
-        crate::progress::report(Step::Formulas, 0, new);
-    } else {
-        // only checks of earlier readings: the first of them is under way
-        // from now on (while the model loads, too)
-        crate::progress::report(Step::Lines, 0, todo.len());
+    if new == 0 {
+        // only checks of earlier readings: nothing is read for the first time
+        for step in [Step::Words, Step::Formulas, Step::Again] {
+            crate::progress::skip(step);
+        }
     }
+    // (the recognizer says how far it is from here on; it starts with this)
+    crate::progress::report(Step::Sorting, 0, todo.len());
     let ok = run_recognizer(Command::new(&py).arg(&script).arg(&pending).arg(&dir));
     if !ok {
         eprintln!("The math recognizer failed; those equations stay pictures.");
@@ -596,22 +597,30 @@ pub fn recognize(images: &[&str]) -> HashMap<String, Reading> {
 }
 
 /// Run the recognizer, passing on what it says and reporting how far it
-/// is: it prints "  16/420" as it reads, "  again 3/40" as it reads the
-/// doubtful ones again, "  lines 20/420" as it looks for lines run together
-/// and "  checking 16/420" as it reads a second time.
+/// is: it prints lines like "  reading 16/420", with one word for each of
+/// its steps.
 fn run_recognizer(cmd: &mut Command) -> bool {
     use std::io::BufRead;
     let Ok(mut child) = cmd.stderr(std::process::Stdio::piped()).spawn() else { return false };
     if let Some(pipe) = child.stderr.take() {
         for line in std::io::BufReader::new(pipe).lines().map_while(Result::ok) {
+            let count = [
+                ("sorting ", Step::Sorting),
+                ("text ", Step::Words),
+                ("loading ", Step::Model),
+                ("reading ", Step::Formulas),
+                ("again ", Step::Again),
+                ("lines ", Step::Lines),
+                ("labels ", Step::Labels),
+                ("checking ", Step::Check),
+            ]
+            .iter()
+            .find_map(|(word, step)| {
+                let (done, total) = line.trim().strip_prefix(word)?.split_once('/')?;
+                Some((*step, done.parse().ok()?, total.parse().ok()?))
+            });
             eprintln!("{line}");
-            let line = line.trim();
-            let (step, counts) = [("again ", Step::Again), ("lines ", Step::Lines), ("checking ", Step::Check)]
-                .iter()
-                .find_map(|(word, step)| Some((*step, line.strip_prefix(word)?)))
-                .unwrap_or((Step::Formulas, line));
-            let Some((done, total)) = counts.split_once('/') else { continue };
-            if let (Ok(done), Ok(total)) = (done.parse(), total.parse()) {
+            if let Some((step, done, total)) = count {
                 crate::progress::report(step, done, total);
             }
         }

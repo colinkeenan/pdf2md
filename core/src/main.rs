@@ -15,9 +15,14 @@ fn main() {
     let range = page_range(&args[2..]);
     // PDF2MD_PROGRESS=1: print the steps with their times as they go
     if env::var_os("PDF2MD_PROGRESS").is_some() {
+        use pdf2md_core::progress::{duration, Tracker};
         let began = std::time::Instant::now();
+        let tracker = std::sync::Mutex::new(Tracker::new(began));
         pdf2md_core::progress::watch(move |step, done, total| {
-            eprintln!("{:7.2} s  {} {done}/{total}", began.elapsed().as_secs_f32(), step.label());
+            let now = std::time::Instant::now();
+            let mut t = tracker.lock().unwrap_or_else(|e| e.into_inner());
+            t.update(step, done, total, now);
+            eprintln!("{:7.2} s  {} {done}/{total}  (about {} left)", t.spent(now), step.label(), duration(t.remaining(now), true));
         });
     }
     // equations corrected by hand in an earlier conversion are kept

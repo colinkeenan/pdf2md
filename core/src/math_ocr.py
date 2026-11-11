@@ -26,6 +26,26 @@ from PIL import Image
 BIG_SHAPE = 56
 
 
+_told = [0.0]
+
+
+def tell(what: str, n: int, total: int):
+    """How far a step is, for the converter to show ("  lines 20/420"):
+    its start, its end, and in between at most twice a second."""
+    import time
+
+    now = time.monotonic()
+    if n == 0 or n >= total or now - _told[0] >= 0.5:
+        _told[0] = now
+        print(f"  {what} {n}/{total}", file=sys.stderr, flush=True)
+
+
+def sort_one(path) -> bool:
+    """Is the image of this file a drawing? (Run in several processes at
+    once: looking at every pixel of a large image takes seconds.)"""
+    return is_drawing(framed(Image.open(path).convert("RGB")))
+
+
 def has_big_shape(img: Image.Image) -> bool:
     """One connected piece of ink that is large both ways: a curve, a box,
     an arrow across the picture. In math only a root sign over a tall
@@ -333,6 +353,8 @@ def lines_apart(img, t: str, model, processor, batch_inference):
     return as_block(lines)
 
 
+BATCH = 16  # images given to the model at once: it reports after each batch
+
 SMALL = 30  # pixels wide; keep in step with SMALL in ocr.rs
 SMALL_ONES = set()  # names of the images narrower than that
 
@@ -375,8 +397,7 @@ def split_lines(items, dst, model, processor, batch_inference):
     changed = 0
     items = [(f, img) for f, img in items if not (dst / f"{f.stem}.lines").exists() and (dst / f"{f.stem}.tex").exists()]
     for n, (f, img) in enumerate(items):
-        if n % 20 == 0:
-            print(f"  lines {n}/{len(items)}", file=sys.stderr, flush=True)
+        tell("lines", n, len(items))
         mark, known = dst / f"{f.stem}.lines", dst / f"{f.stem}.tex"
         t = known.read_text().strip()
         if not t.startswith("%"):
@@ -388,7 +409,7 @@ def split_lines(items, dst, model, processor, batch_inference):
                 changed += 1
         mark.write_text("\n")
     if items:
-        print(f"  lines {len(items)}/{len(items)}", file=sys.stderr, flush=True)
+        tell("lines", len(items), len(items))
     if changed:
         print(f"  {changed} equations of several lines, read as one line before, have their lines again", file=sys.stderr, flush=True)
 
@@ -461,10 +482,10 @@ def label_words(items, dst, model, processor, batch_inference):
     were, and holds the words): one with words under it is read again
     without them, and the words are kept with their places."""
     found = 0
-    for f, img in items:
+    items = [(f, img) for f, img in items if not (dst / f"{f.stem}.labels").exists() and (dst / f"{f.stem}.tex").exists()]
+    for n, (f, img) in enumerate(items):
+        tell("labels", n, len(items))
         mark, known = dst / f"{f.stem}.labels", dst / f"{f.stem}.tex"
-        if mark.exists() or not known.exists():
-            continue
         t = known.read_text().strip()
         lines = ""
         # (a brace under the equation with words below it is read well as it is)
@@ -479,6 +500,8 @@ def label_words(items, dst, model, processor, batch_inference):
                         (dst / f"{f.stem}.{ext}").unlink(missing_ok=True)
                     found += 1
         mark.write_text(lines if lines else "\n")
+    if items:
+        tell("labels", len(items), len(items))
     if found:
         print(f"  {found} equations with words under them: read without the words, which are put back where they stood", file=sys.stderr, flush=True)
 
@@ -626,19 +649,22 @@ def verify(items, dst, model, processor, batch_inference):
     whole = [(f, img) for f, img in items if not first[f].startswith("\\begin{aligned}\n& ")]
     by_rows = [(f, img) for f, img in items if first[f].startswith("\\begin{aligned}\n& ")]
     second = {}
-    for i in range(0, len(whole), 16):
-        part = whole[i : i + 16]
+    tell("checking", 0, len(items))
+    for i in range(0, len(whole), BATCH):
+        part = whole[i : i + BATCH]
         for (f, _), t in zip(part, batch_inference([big(img) for _, img in part], model, processor)):
             second[f] = fix(clean(t))
-        print(f"  checking {min(i + 16, len(whole))}/{len(whole)}", file=sys.stderr, flush=True)
-    for f, img in by_rows:
+        tell("checking", min(i + BATCH, len(whole)), len(items))
+    for n, (f, img) in enumerate(by_rows):
         second[f] = read_by_rows(big(img), model, processor, batch_inference) or ""
+        tell("checking", len(whole) + n + 1, len(items))
     flagged = 0
     for f, _ in items:
         n = difference(first[f], second.get(f, ""))
         flagged += n > 0
         (dst / f"{f.stem}.verify").write_text("ok\n" if n == 0 else f"check {n}\n")
         (dst / f"{f.stem}.second").write_text(second.get(f, "") + "\n")
+    tell("checking", len(items), len(items))
     print(f"  {flagged} of {len(items)} equations read differently a second time: listed to check", file=sys.stderr, flush=True)
 
 
@@ -648,14 +674,24 @@ def main():
     todo = []
     verify_only = []  # read before: the second reading or the picture tests are missing
     redrawn = 0
-    for f in files:
+    # drawings among them: looked for in several processes at once
+    from concurrent.futures import ProcessPoolExecutor
+
+    tell("sorting", 0, len(files))
+    with ProcessPoolExecutor() as pool:
+        drawings = []
+        for drawing in pool.map(sort_one, files, chunksize=1 if len(files) < 2000 else 16):
+            drawings.append(drawing)
+            # (not all done before the images are loaded, below)
+            tell("sorting", min(len(drawings), len(files) - 1), len(files))
+    for f, drawing in zip(files, drawings):
         img = Image.open(f).convert("RGB")
         if img.width < SMALL:
             SMALL_ONES.add(f.stem)
         img = framed(img)
         known = dst / f"{f.stem}.tex"
         read = known.exists() and not known.read_text().startswith("%")
-        if is_drawing(img):
+        if drawing:
             if read:
                 as_picture(dst, f)
                 redrawn += 1
@@ -665,6 +701,7 @@ def main():
             verify_only.append((f, img))
         else:
             todo.append((f, img))
+    tell("sorting", len(files), len(files))
     if redrawn:
         print(f"  {redrawn} drawings that were read as math before are pictures now", file=sys.stderr, flush=True)
     if not todo:
@@ -674,7 +711,9 @@ def main():
             from texify.model.model import load_model
             from texify.model.processor import load_processor
 
+            tell("loading", 0, 1)
             model, processor = load_model(), load_processor()
+            tell("loading", 1, 1)
             read_small_again(verify_only, dst, model, processor, batch_inference)
             split_lines(verify_only, dst, model, processor, batch_inference)
             label_words(verify_only, dst, model, processor, batch_inference)
@@ -685,8 +724,12 @@ def main():
     # parallel); unmistakable code is written as code, not given to texify
     from concurrent.futures import ThreadPoolExecutor
 
+    tell("text", 0, len(todo))
     with ThreadPoolExecutor() as pool:
-        texts = list(pool.map(lambda fi: ocr_text(fi[1]), todo))
+        texts = []
+        for text in pool.map(lambda fi: ocr_text(fi[1]), todo):
+            texts.append(text)
+            tell("text", len(texts), len(todo))
     plain = {f: text for (f, _), text in zip(todo, texts)}
     rest = []
     for (f, img), text in zip(todo, texts):
@@ -702,9 +745,12 @@ def main():
     from texify.model.model import load_model
     from texify.model.processor import load_processor
 
+    tell("loading", 0, 1)
     model, processor = load_model(), load_processor()
-    batch = 16
+    tell("loading", 1, 1)
+    batch = BATCH
     doubtful = []
+    tell("reading", 0, len(todo))
     for i in range(0, len(todo), batch):
         part = todo[i : i + batch]
         texts = batch_inference([img for _, img in part], model, processor)
@@ -714,11 +760,11 @@ def main():
                 (dst / f"{f.stem}.tex").write_text(t + "\n")
             else:
                 doubtful.append((f, img))
-        print(f"  {min(i + batch, len(todo))}/{len(todo)}", file=sys.stderr, flush=True)
+        tell("reading", min(i + batch, len(todo)), len(todo))
     # Doubtful readings: try again with a longer limit and a little
     # randomness; an image that never reads plausibly stays a picture.
     for n, (f, img) in enumerate(doubtful):
-        print(f"  again {n}/{len(doubtful)}", file=sys.stderr, flush=True)
+        tell("again", n, len(doubtful))
         # program code, not math: as text
         code = read_code(img)
         if code is not None:
@@ -743,7 +789,7 @@ def main():
                 answer = t
         (dst / f"{f.stem}.tex").write_text(answer + "\n")
     if doubtful:
-        print(f"  again {len(doubtful)}/{len(doubtful)}", file=sys.stderr, flush=True)
+        tell("again", len(doubtful), len(doubtful))
         unread = sum((dst / f"{f.stem}.tex").read_text().startswith("%UNREADABLE") for f, _ in doubtful)
         print(f"  {len(doubtful)} read again, {unread} unreadable (kept as pictures)", file=sys.stderr, flush=True)
     for f, _ in todo:

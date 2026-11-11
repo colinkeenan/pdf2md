@@ -15,7 +15,9 @@ Kirigami.ApplicationWindow {
     // Wide enough for the form with the page's padding around it, however
     // long the chosen paths are (but not wider than the screen): the
     // window grows instead of the buttons running into its right edge.
-    readonly property real formWidth: Math.ceil(form.implicitWidth + page.leftPadding + page.rightPadding)
+    // (the same for the steps of a long conversion, under the form)
+    readonly property real formWidth: Math.ceil(Math.max(form.implicitWidth,
+            converter.detailed ? stepList.implicitWidth + 2 * Kirigami.Units.largeSpacing : 0) + page.leftPadding + page.rightPadding)
     // (The window grows a moment after the form does: growing while the
     // file browser's page is still sliding away leaves that page drawn
     // over the form, with the buttons under it.)
@@ -27,7 +29,10 @@ Kirigami.ApplicationWindow {
         onTriggered: root.settledWidth = root.formWidth
     }
     minimumWidth: Math.max(Kirigami.Units.gridUnit * 24, Math.min(settledWidth, Screen.desktopAvailableWidth))
-    minimumHeight: Kirigami.Units.gridUnit * 18
+    // and high enough for the steps of a long conversion (the page's
+    // title bar is about three grid units high)
+    readonly property real neededHeight: Math.ceil(column.implicitHeight + page.topPadding + page.bottomPadding + Kirigami.Units.gridUnit * 3)
+    minimumHeight: Math.max(Kirigami.Units.gridUnit * 18, Math.min(neededHeight, Screen.desktopAvailableHeight))
     width: Kirigami.Units.gridUnit * 36
     height: Kirigami.Units.gridUnit * 24
 
@@ -120,6 +125,7 @@ Kirigami.ApplicationWindow {
         title: "Convert a textbook"
 
         ColumnLayout {
+            id: column
             anchors.fill: parent
             spacing: Kirigami.Units.largeSpacing
 
@@ -266,7 +272,8 @@ Kirigami.ApplicationWindow {
                                 color: cell.column === 0 && cell.step[0] === "done" ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.textColor
                                 text: cell.column === 0 ? (cell.step[0] === "done" ? "✓" : cell.step[0] === "running" ? "▸" : "·")
                                     : cell.column === 1 ? cell.step[1]
-                                    : cell.step[3]
+                                    // (the running step's times are on a line of their own)
+                                    : cell.step[3].split("; ").join("\n")
                             }
                             QQC2.ProgressBar {
                                 visible: cell.column === 2

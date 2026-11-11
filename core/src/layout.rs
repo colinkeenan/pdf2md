@@ -253,6 +253,62 @@ pub fn clean_text(t: &str) -> String {
     out
 }
 
+/// Pages given to one `pdftocairo`.
+const SVG_PART: usize = 8;
+
+/// `pdftocairo -svg` of `total` pages from page `first` on, as the parts it
+/// was made in, each with its number of pages. The program writes nothing
+/// before it is through with all its pages, which takes minutes for a
+/// scanned book: run on a few pages at a time (on all processors) it tells
+/// how far it is. None if it is missing or fails: the conversion still
+/// works, just without drawn bars, brackets and pictures.
+fn svg_parts(path: &Path, first: usize, total: usize) -> Option<Vec<(usize, String)>> {
+    use std::sync::atomic::{AtomicBool, AtomicUsize, Ordering};
+    let run = |from: Option<usize>, to: usize| -> Option<String> {
+        let mut cmd = Command::new("pdftocairo");
+        cmd.arg("-svg");
+        if let Some(from) = from {
+            cmd.args(["-f", &from.to_string(), "-l", &to.to_string()]);
+        }
+        let out = cmd.arg(path).arg("-").stdin(std::process::Stdio::null()).output().ok()?;
+        out.status.success().then(|| String::from_utf8_lossy(&out.stdout).into_owned())
+    };
+    crate::progress::report(Step::Drawings, 0, total.max(1));
+    if total == 0 {
+        // (the number of pages is not known: all at once)
+        let svg = run(None, 0)?;
+        let pages = svg_pages(&svg).len();
+        crate::progress::report(Step::Drawings, 1, 1);
+        return Some(vec![(pages, svg)]);
+    }
+    let ranges: Vec<(usize, usize)> = (0..total).step_by(SVG_PART).map(|at| (first + at, first + (at + SVG_PART).min(total) - 1)).collect();
+    let parts: Vec<std::sync::Mutex<Option<String>>> = ranges.iter().map(|_| std::sync::Mutex::new(None)).collect();
+    let (next, done, failed) = (AtomicUsize::new(0), AtomicUsize::new(0), AtomicBool::new(false));
+    let workers = std::thread::available_parallelism().map_or(1, |n| n.get()).min(ranges.len());
+    std::thread::scope(|scope| {
+        for _ in 0..workers {
+            scope.spawn(|| {
+                while !failed.load(Ordering::Relaxed) {
+                    let i = next.fetch_add(1, Ordering::Relaxed);
+                    let Some(&(from, to)) = ranges.get(i) else { break };
+                    match run(Some(from), to) {
+                        Some(svg) => *parts[i].lock().unwrap_or_else(|e| e.into_inner()) = Some(svg),
+                        None => failed.store(true, Ordering::Relaxed),
+                    }
+                    let pages = done.fetch_add(to + 1 - from, Ordering::Relaxed) + to + 1 - from;
+                    // (the step is over when the parts are read, below)
+                    crate::progress::report(Step::Drawings, pages.min(total - 1), total);
+                }
+            });
+        }
+    });
+    if failed.load(Ordering::Relaxed) {
+        return None;
+    }
+    let parts = ranges.iter().zip(parts).map(|(&(from, to), part)| Some((to + 1 - from, part.into_inner().ok()??))).collect();
+    parts
+}
+
 /// Read a PDF. `pages` limits it to a range (first, last), both 1-based.
 pub fn read_pdf(path: &Path, pages: Option<(u32, u32)>) -> Result<Doc, String> {
     let mut cmd = Command::new("pdftohtml");
@@ -263,9 +319,11 @@ pub fn read_pdf(path: &Path, pages: Option<(u32, u32)>) -> Result<Doc, String> {
     }
     cmd.arg(path);
     // how many pages there are to read, to tell how far it is
+    let in_all = crate::progress::page_count(path);
     let total = match pages {
-        Some((first, last)) => (last + 1).saturating_sub(first) as usize,
-        None => crate::progress::page_count(path),
+        // (a range may name more pages than there are)
+        Some((first, last)) => (if in_all > 0 { last.min(in_all as u32) } else { last } + 1).saturating_sub(first) as usize,
+        None => in_all,
     };
     let (ok, stdout, stderr) = crate::progress::run_counting(cmd, b"<page ", Step::Text, total).map_err(|e| {
         format!("could not run pdftohtml ({e}); install poppler (Arch) or poppler-utils")
@@ -279,44 +337,43 @@ pub fn read_pdf(path: &Path, pages: Option<(u32, u32)>) -> Result<Doc, String> {
 
     // Drawn bars. If pdftocairo is missing the conversion still works,
     // just without overlines.
-    let mut cmd = Command::new("pdftocairo");
-    cmd.arg("-svg");
-    if let Some((first, last)) = pages {
-        cmd.args(["-f", &first.to_string(), "-l", &last.to_string()]);
-    }
-    cmd.arg(path).arg("-");
     crate::progress::report(Step::Text, total, total);
-    if let Ok((ok, stdout, _)) = crate::progress::run_counting(cmd, b"<page>", Step::Drawings, total) {
-        if ok {
-            let svg = String::from_utf8_lossy(&stdout);
-            let rules = parse_svg_rules(&svg);
-            for (page, r) in doc.pages.iter_mut().zip(rules) {
-                page.rules = r;
+    let first = pages.map_or(1, |(first, _)| first as usize);
+    if let Some(parts) = svg_parts(path, first, total) {
+        // Lost big brackets are a TeX font problem; in books without
+        // TeX's math fonts, outlines of large text glyphs are no brackets.
+        let tex_math = doc.fonts.iter().any(|f| {
+            let u = f.family.to_uppercase();
+            ["CMMI", "CMSY", "CMEX", "CMR", "MSAM", "MSBM"].iter().any(|p| u.starts_with(p))
+        });
+        // what each part holds, page by page, in one row for the book
+        fn all<T>(parts: &[(usize, String)], parse: impl Fn(&str) -> Vec<Vec<T>>) -> Vec<Vec<T>> {
+            let mut out = Vec::new();
+            for (pages, svg) in parts {
+                let mut of_part = parse(svg);
+                of_part.resize_with(*pages, Vec::new);
+                out.append(&mut of_part);
             }
-            mark_overlines(&mut doc);
-            // Lost big brackets are a TeX font problem; in books without
-            // TeX's math fonts, outlines of large text glyphs are no brackets.
-            let tex_math = doc.fonts.iter().any(|f| {
-                let u = f.family.to_uppercase();
-                ["CMMI", "CMSY", "CMEX", "CMR", "MSAM", "MSBM"].iter().any(|p| u.starts_with(p))
-            });
-            if tex_math {
-                let delims = parse_svg_delims(&svg);
-                insert_delims(&mut doc, delims);
-            }
-            let figures = parse_svg_figures(&svg);
-            for (page, f) in doc.pages.iter_mut().zip(figures) {
-                page.figures = f;
-            }
-            for (page, imgs) in doc.pages.iter_mut().zip(parse_svg_images(&svg)) {
-                page.images = imgs;
-            }
-            // labels of drawn pictures (text pieces); an embedded image has
-            // its labels in its pixels, so text around it is never one
-            take_figure_labels(&mut doc);
-            place_images(&mut doc);
-            join_split_equations(&mut doc);
+            out
         }
+        for (page, r) in doc.pages.iter_mut().zip(all(&parts, parse_svg_rules)) {
+            page.rules = r;
+        }
+        mark_overlines(&mut doc);
+        if tex_math {
+            insert_delims(&mut doc, all(&parts, parse_svg_delims));
+        }
+        for (page, f) in doc.pages.iter_mut().zip(all(&parts, parse_svg_figures)) {
+            page.figures = f;
+        }
+        for (page, imgs) in doc.pages.iter_mut().zip(all(&parts, parse_svg_images)) {
+            page.images = imgs;
+        }
+        // labels of drawn pictures (text pieces); an embedded image has
+        // its labels in its pixels, so text around it is never one
+        take_figure_labels(&mut doc);
+        place_images(&mut doc);
+        join_split_equations(&mut doc);
     }
     Ok(doc)
 }

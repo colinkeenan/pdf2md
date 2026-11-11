@@ -181,8 +181,13 @@ fn trash_contents(dir: &Path) -> Result<(), String> {
     Ok(())
 }
 
+/// A step that has reported nothing new for this many seconds says so.
+const QUIET_FROM: f32 = 30.0;
+
 /// A step as a line for the window: state, name, fraction and how far it
-/// is in words ("155 of 771 pages, about 5 s left"), parted by tabs.
+/// is in words ("155 of 771 pages; 12 s so far, about 5 s left"), parted
+/// by tabs. The time so far ticks, so a step that counts nothing for
+/// minutes is still seen to be alive.
 fn step_line(v: &StepView) -> String {
     let unit = v.step.unit();
     let amount = |n: usize| if unit.is_empty() || v.total == 0 { String::new() } else { format!("{n} {unit}") };
@@ -193,14 +198,18 @@ fn step_line(v: &StepView) -> String {
             ("done", if n.is_empty() { took } else { format!("{n}, {took}") })
         }
         State::Running => {
-            let left = format!("about {} left", progress::duration(v.seconds, true));
-            // (nothing counted yet: some programs print all their pages at the end)
-            let of = match (unit.is_empty() || v.total == 0, v.done) {
+            let times = format!("{} so far, about {} left", progress::elapsed(v.spent), progress::duration(v.seconds, true));
+            // (nothing counted yet: some programs print all at the end)
+            let mut of = match (unit.is_empty() || v.total == 0, v.done) {
                 (true, _) => String::new(),
-                (false, 0) => format!("{} {unit}, ", v.total),
-                (false, done) => format!("{done} of {} {unit}, ", v.total),
+                (false, 0) => format!("{} {unit}", v.total),
+                (false, done) => format!("{done} of {} {unit}", v.total),
             };
-            ("running", format!("{of}{left}"))
+            if !of.is_empty() && v.done > 0 && v.quiet >= QUIET_FROM {
+                of.push_str(&format!(" (none new for {})", progress::elapsed(v.quiet)));
+            }
+            // (the window sets what follows "; " on a line of its own)
+            ("running", if of.is_empty() { times } else { format!("{of}; {times}") })
         }
         State::Waiting => ("waiting", String::new()),
     };
@@ -305,7 +314,8 @@ impl qobject::Converter {
                             return;
                         }
                         qobj.as_mut().set_progress(fraction as f64);
-                        qobj.as_mut().set_remaining(QString::from(format!("About {} left", progress::duration(left, true)).as_str()));
+                        let times = format!("{} so far, about {} left", progress::elapsed(spent), progress::duration(left, true));
+                        qobj.as_mut().set_remaining(QString::from(times.as_str()));
                         qobj.as_mut().set_steps(QString::from(lines.join("\n").as_str()));
                         // (the estimate can stay low all the way through a
                         // long conversion: the time spent counts too)
@@ -381,12 +391,18 @@ mod tests {
     #[test]
     fn a_step_is_told_in_a_line() {
         use pdf2md_core::progress::Step;
-        let mut v = StepView { step: Step::Text, state: State::Running, fraction: 0.25, done: 155, total: 771, seconds: 47.0 };
-        assert_eq!(step_line(&v), "running\tReading the text\t0.250\t155 of 771 pages, about 50 s left");
+        let mut v = StepView { step: Step::Text, state: State::Running, fraction: 0.25, done: 155, total: 771, seconds: 47.0, spent: 12.6, quiet: 0.2 };
+        assert_eq!(step_line(&v), "running\tReading the text\t0.250\t155 of 771 pages; 12 s so far, about 50 s left");
+        // nothing new for a while: said, with the time ticking
+        (v.spent, v.quiet) = (95.0, 83.0);
+        assert_eq!(
+            step_line(&v),
+            "running\tReading the text\t0.250\t155 of 771 pages (none new for 1 min 23 s); 1 min 35 s so far, about 50 s left"
+        );
         v.state = State::Done;
         v.seconds = 83.2;
         assert_eq!(step_line(&v), "done\tReading the text\t0.250\t771 pages, 1 min 23 s");
-        let w = StepView { step: Step::Files, state: State::Waiting, fraction: 0.0, done: 0, total: 0, seconds: 0.1 };
+        let w = StepView { step: Step::Files, state: State::Waiting, fraction: 0.0, done: 0, total: 0, seconds: 0.1, spent: 0.0, quiet: 0.0 };
         assert_eq!(step_line(&w), "waiting\tWriting the files\t0.000\t");
     }
 }

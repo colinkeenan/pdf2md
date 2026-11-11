@@ -50,7 +50,7 @@ cargo run -p pdf2md-core --bin pdf2md-cli -- --dump book.pdf 10 12   # fonts, po
 
 `--dump` is the tool for understanding a new book: it shows every line with its position, font size and style, superscripts as `^{..}`, subscripts as `_{..}`, math-font text inside `«..»`, and the drawn bars on each page.
 
-`PDF2MD_PROGRESS=1` prints the steps with their times as the conversion goes (what the app shows as progress bars; `core/src/progress.rs`). Two environment variables print what the formula builder sees: `PDF2MD_MATHDEBUG=1` prints every span (box, size, font, text) and bar of each displayed formula, `PDF2MD_SVGDEBUG=1` the tall glyph outlines read from the SVG and the bracket each was taken for.
+`PDF2MD_PROGRESS=1` prints the steps with their times and the estimate of the time left as the conversion goes (what the app shows as progress bars; `core/src/progress.rs`). Two environment variables print what the formula builder sees: `PDF2MD_MATHDEBUG=1` prints every span (box, size, font, text) and bar of each displayed formula, `PDF2MD_SVGDEBUG=1` the tall glyph outlines read from the SVG and the bracket each was taken for.
 
 ## Build the GUI
 
@@ -65,7 +65,7 @@ The in-app file browser also needs the Qt Labs folder list model: Fedora `qt6-qt
 
 The book is written to `<output folder>/<PDF name>/`. If that folder already exists, the app asks whether to replace it (after the new conversion has succeeded, the old files go to the Trash as one folder, "<PDF name> (previous)", and the new ones are written into the same folder, so a terminal or editor open in it sees them at once) or keep both (the new one goes to `<PDF name> (1)`, `(2)` …).
 
-While converting, a bar shows how far the conversion is (by time) with an estimate of the time left. A conversion that takes more than 30 seconds in all (the first one of a book with equation images) also lists its steps like a terminal: what is done and how long it took, what is running with its own bar and time left, what is still to come. The estimates come from the speed measured so far; before a step has done anything they are rough guesses.
+While converting, a bar shows how far the conversion is (by time) with an estimate of the time left. A conversion that takes more than 30 seconds in all (the first one of a book with equation images) also lists its steps like a terminal: what is done and how long it took, what is running with its own bar and time left, what is still to come. The estimates come from the speed measured so far; before a step has done anything they are guesses, set several times too high on purpose (a conversion that is over sooner than it said worries nobody). The time gone by is shown ticking beside each estimate, so a step that counts nothing for a while is still seen to be alive; a step that takes longer than estimated raises its estimate as it goes, and one that has counted nothing new for 30 seconds says so.
 
 To start it from the application menu, install the program and its launcher:
 
