@@ -12,7 +12,11 @@ Kirigami.ApplicationWindow {
          | Qt.WindowMinMaxButtonsHint | Qt.WindowCloseButtonHint
 
     title: "PDF to Markdown"
-    minimumWidth: Kirigami.Units.gridUnit * 24
+    // Wide enough for the form with the page's padding around it, however
+    // long the chosen paths are (but not wider than the screen): the
+    // window grows instead of the buttons running into its right edge.
+    readonly property real formWidth: Math.ceil(form.implicitWidth + page.leftPadding + page.rightPadding)
+    minimumWidth: Math.max(Kirigami.Units.gridUnit * 24, Math.min(formWidth, Screen.desktopAvailableWidth))
     minimumHeight: Kirigami.Units.gridUnit * 18
     width: Kirigami.Units.gridUnit * 36
     height: Kirigami.Units.gridUnit * 24
@@ -87,6 +91,7 @@ Kirigami.ApplicationWindow {
     }
 
     pageStack.initialPage: Kirigami.Page {
+        id: page
         title: "Convert a textbook"
 
         ColumnLayout {
@@ -94,12 +99,15 @@ Kirigami.ApplicationWindow {
             spacing: Kirigami.Units.largeSpacing
 
             Kirigami.FormLayout {
+                id: form
                 Layout.fillWidth: true
 
                 RowLayout {
                     Kirigami.FormData.label: "Textbook:"
                     QQC2.TextField {
                         Layout.fillWidth: true
+                        // as wide as the path in it
+                        implicitWidth: Math.max(Kirigami.Units.gridUnit * 12, Math.ceil(contentWidth) + leftPadding + rightPadding)
                         readOnly: true
                         placeholderText: "PDF file"
                         text: root.inputUrl === "" ? "" : root.localPath(root.inputUrl)
@@ -123,6 +131,8 @@ Kirigami.ApplicationWindow {
                     Kirigami.FormData.label: "Output folder:"
                     QQC2.TextField {
                         Layout.fillWidth: true
+                        // as wide as the path in it
+                        implicitWidth: Math.max(Kirigami.Units.gridUnit * 12, Math.ceil(contentWidth) + leftPadding + rightPadding)
                         readOnly: true
                         placeholderText: "Defaults to the textbook's folder"
                         text: root.outputUrl === "" ? "" : root.localPath(root.outputUrl)
