@@ -501,6 +501,7 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
         Block::Columns(n) => out.push_str(&format!("<table width=\"100%\"><tr>\n<td valign=\"top\" width=\"{}%\">\n\n", 100 / (*n).max(1))),
         Block::ColumnBreak => out.push_str("</td>\n<td valign=\"top\">\n\n"),
         Block::ColumnsEnd => out.push_str("</td>\n</tr></table>\n\n"),
+        Block::Picture { page, area, alt } => out.push_str(&format!("![{alt}]({})\n\n", picture_file(*page, area))),
         Block::Table { rows, widths } => {
             // (html, with each cell's text between empty lines: Markdown
             // is read inside it, so links and headings work)
@@ -869,6 +870,7 @@ fn write_figures(book: &Book, dir: &Path) {
         for b in ch.blocks.iter().map(|b| &b.block).chain(notes) {
             match b {
                 crate::Block::Figure { page, n, area, .. } => todo.push((*page, area, figure_file(*page, *n), 10.0)),
+                crate::Block::Picture { page, area, .. } => todo.push((*page, area, picture_file(*page, area), 4.0)),
                 crate::Block::Para(inl) | crate::Block::Item { text: inl, .. } | crate::Block::PageNote { text: inl, .. } | crate::Block::Heading { text: inl, .. } => {
                     for x in inl {
                         if let crate::Inline::Picture { page, area } = x {

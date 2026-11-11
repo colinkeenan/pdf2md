@@ -142,6 +142,10 @@ pub enum Block {
     /// of the page (0: as wide as needed); empty for a table that is as
     /// wide as it needs to be.
     Table { rows: Vec<Vec<Cell>>, widths: Vec<u8> },
+    /// A picture without a number or a caption of its own: area `area` of
+    /// PDF page `page`, cut from the page (a table as printed, under the
+    /// table read from it). `alt`: what it is, for where it cannot be shown.
+    Picture { page: u32, area: layout::Figure, alt: String },
     /// What follows is set in this many columns side by side, as on the
     /// page (an index), up to `ColumnsEnd`; `ColumnBreak` starts the next.
     Columns(usize),

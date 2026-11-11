@@ -792,6 +792,90 @@ fn has_words(inl: &[Inline]) -> bool {
     })
 }
 
+// ---- tables -------------------------------------------------------------
+
+/// The rows and cells of a table as marker read it (`<table>` … `<td>`).
+/// None if they do not hold together as a table: fewer than two rows or
+/// two columns, rows of unlike length, or too many cells with nothing in
+/// them (marker sees tables in empty pages).
+fn read_table(html: &str) -> Option<Vec<Vec<crate::Cell>>> {
+    let mut rows: Vec<Vec<crate::Cell>> = Vec::new();
+    for row in html.split("<tr").skip(1) {
+        let row = row.split("</tr>").next().unwrap_or("");
+        let mut cells = Vec::new();
+        for (k, piece) in row.split("<td").flat_map(|p| p.split("<th")).enumerate() {
+            // (what stands before the first cell is the row's own tag)
+            if k == 0 {
+                continue;
+            }
+            let Some((tag, rest)) = piece.split_once('>') else { continue };
+            let inside = rest.split("</td>").next().unwrap_or("").split("</th>").next().unwrap_or("");
+            let span = tag.split("colspan=\"").nth(1).and_then(|v| v.split('"').next()).and_then(|v| v.parse::<usize>().ok()).unwrap_or(1).max(1);
+            cells.push(crate::Cell { text: cell_inlines(inside), span, ..Default::default() });
+        }
+        if !cells.is_empty() {
+            rows.push(cells);
+        }
+    }
+    let width = |r: &Vec<crate::Cell>| r.iter().map(|c| c.span).sum::<usize>();
+    let columns = rows.iter().map(width).max().unwrap_or(0);
+    let cells: usize = rows.iter().map(Vec::len).sum();
+    let filled = rows.iter().flatten().filter(|c| has_words(&c.text)).count();
+    let even = rows.iter().all(|r| width(r) + 1 >= columns);
+    (rows.len() >= 2 && columns >= 2 && even && filled * 5 >= cells * 3).then_some(rows)
+}
+
+/// What a cell of marker's table holds. marker writes a cell's formulas
+/// as LaTeX among its words, unmarked ("Maxwell f^2 \\sim a \\partial^2 a"):
+/// a run of pieces with "\\", "^", "_" or "=" in them is a formula, and
+/// the single letters and numbers beside them belong to it.
+fn cell_inlines(html: &str) -> Vec<Inline> {
+    let marked = all_inline(html);
+    let mut out: Vec<Inline> = Vec::new();
+    for i in marked {
+        let Inline::Text(t) = &i else {
+            out.push(i);
+            continue;
+        };
+        let words: Vec<&str> = t.split_whitespace().collect();
+        let sure = |w: &str| w.contains('\\') || w.contains('^') || w.contains('_') || w.contains('=') || w == "~";
+        let small = |w: &str| {
+            let core = w.trim_matches(|c: char| "()[],.".contains(c));
+            core.chars().count() <= 1 || core.chars().all(|c| c.is_ascii_digit()) || ["+", "-", "−", "/"].contains(&w)
+        };
+        // which words are in a formula: the sure ones, and small ones that
+        // touch them
+        let mut math: Vec<bool> = words.iter().map(|w| sure(w)).collect();
+        for _ in 0..words.len() {
+            for k in 0..words.len() {
+                let beside = (k > 0 && math[k - 1]) || math.get(k + 1).copied().unwrap_or(false);
+                if !math[k] && small(words[k]) && beside {
+                    math[k] = true;
+                }
+            }
+        }
+        let mut k = 0;
+        while k < words.len() {
+            let end = (k..words.len()).find(|j| math[*j] != math[k]).unwrap_or(words.len());
+            let piece = words[k..end].join(" ");
+            // (the space the words had before them, or between two pieces)
+            if !out.is_empty() && (k > 0 || t.starts_with(char::is_whitespace)) {
+                push_text(&mut out, Inline::Text(" ".into()));
+            }
+            if math[k] {
+                out.push(Inline::Math(piece));
+            } else {
+                push_text(&mut out, Inline::Text(piece));
+            }
+            k = end;
+        }
+        if t.ends_with(char::is_whitespace) && !words.is_empty() {
+            push_text(&mut out, Inline::Text(" ".into()));
+        }
+    }
+    tidy(out)
+}
+
 // ---- symbols in sentences ----------------------------------------------
 
 /// marker writes most formulas in a sentence as formulas, but leaves the
@@ -1804,10 +1888,19 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
                     }
                     match contents(&b.text) {
                         Some(entries) => toc(&mut blks, pi, entries, &mut anchor),
-                        None => {
-                            figures += 1;
-                            made.push(Block::Figure { page: page.number, n: figures, area, label: labels[pi].clone() });
-                        }
+                        // a table marker read into rows and cells that hold
+                        // together: a table, with the picture of it right
+                        // under it (a cell can be misread)
+                        None => match read_table(&b.html) {
+                            Some(rows) => {
+                                made.push(Block::Table { rows, widths: Vec::new() });
+                                made.push(Block::Picture { page: page.number, area, alt: "the table as printed".into() });
+                            }
+                            None => {
+                                figures += 1;
+                                made.push(Block::Figure { page: page.number, n: figures, area, label: labels[pi].clone() });
+                            }
+                        },
                     }
                 }
                 "Code" => {
@@ -2188,6 +2281,42 @@ mod tests {
         assert!(!whole("J = \\begin{pmatrix} 0 & 1 \\\\ 1 &"));
         assert!(!whole("a = b, where $c$ is"));
         assert!(!whole("\\begin{array}{ccccc"));
+    }
+
+    #[test]
+    fn a_table_marker_read_is_a_table() {
+        let html = "<table><tbody><tr><th>Dynamics of a</th><th>K</th><th>Effective Lagrangian \\mathcal{L}(A) \\sim A</th></tr><tr><td>Meissner a2</td><td>1</td><td>A(\\varepsilon \\partial) A \\sim A \\partial^2 A</td></tr><tr><td>Maxwell f^2 \\sim a \\partial^2 a</td><td>\\partial^2</td><td>A A</td></tr></tbody></table>";
+        let rows = read_table(html).unwrap();
+        let shown: Vec<Vec<String>> = rows
+            .iter()
+            .map(|r| {
+                r.iter()
+                    .map(|c| {
+                        c.text
+                            .iter()
+                            .map(|i| match i {
+                                Inline::Text(t) => t.clone(),
+                                Inline::Math(m) => format!("${m}$"),
+                                other => format!("{other:?}"),
+                            })
+                            .collect()
+                    })
+                    .collect()
+            })
+            .collect();
+        assert_eq!(
+            shown,
+            [
+                vec!["Dynamics of a", "K", "Effective Lagrangian $\\mathcal{L}(A) \\sim A$"],
+                vec!["Meissner a2", "1", "$A(\\varepsilon \\partial) A \\sim A \\partial^2 A$"],
+                vec!["Maxwell $f^2 \\sim a \\partial^2 a$", "$\\partial^2$", "A A"]
+            ]
+        );
+        // (formulas marker marked itself keep the space before them)
+        let marked = cell_inlines("Effective Lagrangian <math>\\mathcal{L}(A)</math>");
+        assert_eq!(marked, [Inline::Text("Effective Lagrangian ".into()), Inline::Math("\\mathcal{L}(A)".into())]);
+        // an empty page read as a table of empty cells is none
+        assert!(read_table("<table><tbody><tr><th></th><th></th></tr><tr><td></td><td>x</td></tr><tr><td></td><td></td></tr></tbody></table>").is_none());
     }
 
     #[test]

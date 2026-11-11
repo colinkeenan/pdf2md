@@ -12,7 +12,7 @@
 //! * **new paragraph**: first-line indent, extra vertical space, or the
 //!   previous line ended a sentence well short of the right margin.
 
-use crate::layout::{plain_text, Doc, Line, Rule, Script};
+use crate::layout::{plain_text, Doc, Figure, Line, Rule, Script};
 use crate::mathtex::{self, MSpan};
 use crate::pages::{is_page_number, PageInfo};
 use crate::{key, plain, Blk, Block, Inline, TocEntry};
@@ -552,6 +552,157 @@ fn emit_line(doc: &Doc, l: &Line, st: &Stats, spans: &[crate::layout::Span], kin
 
 // ---------------------------------------------------------------------------
 // Tables
+
+/// A table that the book holds as a picture comes from the math
+/// recognizer as one formula, an array. Under a table's caption such a
+/// formula is the table: its rows and cells, with the picture it was read
+/// from right under it (a cell can be misread; the picture shows what
+/// stands there). `boxes`: where each equation picture is on its page.
+fn picture_tables(blks: Vec<Blk>, boxes: &HashMap<String, (u32, Figure)>) -> Vec<Blk> {
+    let is_caption = |inl: &[Inline]| crate::links::caption(inl).is_some_and(|(kind, _)| kind == "table");
+    let array = |tex: &str| tex.trim_start().starts_with("\\begin{array}");
+    let mut out: Vec<Blk> = Vec::new();
+    for blk in blks {
+        // the formula of this block, if it is all of it or stands at its end
+        let found: Option<(Vec<Inline>, String, String)> = match &blk.block {
+            Block::Equation { latex, source: Some(k), .. } if array(latex) => Some((Vec::new(), k.clone(), latex.clone())),
+            Block::Para(inl) => match inl.as_slice() {
+                [before @ .., Inline::Source(k), Inline::Math(tex)] if array(tex) => Some((before.to_vec(), k.clone(), tex.clone())),
+                _ => None,
+            },
+            _ => None,
+        };
+        // (under a table's caption: in the block itself, or one of the last few)
+        let captioned = |before: &[Inline]| {
+            is_caption(before) || out.iter().rev().filter(|b| !matches!(b.block, Block::Anchor(_))).take(3).any(|b| matches!(&b.block, Block::Para(inl) if is_caption(inl)))
+        };
+        let table = found.as_ref().filter(|(before, _, _)| captioned(before)).and_then(|(_, _, tex)| array_table(tex));
+        let (Some((before, key, _)), Some(rows)) = (found, table) else {
+            out.push(blk);
+            continue;
+        };
+        let (page, centered) = (blk.page, blk.centered);
+        if has_text(&before) {
+            out.push(Blk { block: Block::Para(tidy(before)), page, centered });
+        }
+        out.push(Blk { block: Block::Table { rows, widths: Vec::new() }, page, centered: false });
+        if let Some((number, area)) = boxes.get(&key) {
+            out.push(Blk { block: Block::Picture { page: *number, area: *area, alt: "the table as printed".into() }, page, centered: false });
+        }
+    }
+    out
+}
+
+fn has_text(inl: &[Inline]) -> bool {
+    inl.iter().any(|i| match i {
+        Inline::Text(t) | Inline::Emph(t) | Inline::Strong(t) => !t.trim().is_empty(),
+        Inline::Math(_) | Inline::Link { .. } => true,
+        _ => false,
+    })
+}
+
+/// The rows and cells of a LaTeX array (`\begin{array}{ccc} a & b \\ c & d
+/// \end{array}`), each cell a formula, or words if it holds only words.
+/// None if it is no table: fewer than two rows or two columns.
+pub(crate) fn array_table(tex: &str) -> Option<Vec<Vec<crate::Cell>>> {
+    let inner = tex.trim().strip_prefix("\\begin{array}")?;
+    let inner = inner[..inner.rfind("\\end{array}")?].trim_start();
+    // (the columns' alignment: "{c c c}")
+    let inner = match inner.strip_prefix('{') {
+        Some(rest) => &rest[rest.find('}')? + 1..],
+        None => inner,
+    };
+    // cut at "\\" and "&" that stand in no braces and no inner array
+    let mut rows: Vec<Vec<String>> = vec![vec![String::new()]];
+    let (mut depth, mut nested) = (0i32, 0i32);
+    let mut rest = inner;
+    while let Some(c) = rest.chars().next() {
+        let cell = rows.last_mut().unwrap().last_mut().unwrap();
+        if rest.starts_with("\\begin{") {
+            nested += 1;
+        } else if rest.starts_with("\\end{") {
+            nested -= 1;
+        }
+        if depth == 0 && nested == 0 && rest.starts_with("\\\\") {
+            rows.push(vec![String::new()]);
+            rest = &rest[2..];
+            continue;
+        }
+        if depth == 0 && nested == 0 && c == '&' {
+            rows.last_mut().unwrap().push(String::new());
+            rest = &rest[1..];
+            continue;
+        }
+        if c == '\\' && rest.len() > 1 {
+            // (an escaped character, or a command's backslash: not a brace)
+            let next = rest[1..].chars().next().unwrap();
+            cell.push(c);
+            cell.push(next);
+            rest = &rest[1 + next.len_utf8()..];
+            continue;
+        }
+        match c {
+            '{' => depth += 1,
+            '}' => depth -= 1,
+            _ => {}
+        }
+        cell.push(c);
+        rest = &rest[c.len_utf8()..];
+    }
+    let clean = |cell: &str| -> crate::Cell {
+        let mut t = cell.replace("\\hline", "");
+        let mut t_ref = t.trim();
+        // ({{…}}: braces around all of it say nothing)
+        while t_ref.starts_with('{') && t_ref.ends_with('}') && wraps(t_ref) {
+            t_ref = t_ref[1..t_ref.len() - 1].trim();
+        }
+        t = t_ref.to_string();
+        let words = ["\\mathrm{", "\\text{", "\\textrm{", "\\operatorname{"].iter().find_map(|w| {
+            let inside = t.strip_prefix(w)?.strip_suffix('}')?;
+            inside.chars().all(|c| c.is_alphabetic() || " ,.-–'’~".contains(c)).then(|| inside.replace('~', " "))
+        });
+        // (words the recognizer wrote as if they were letters of a formula)
+        let plain_words = t.chars().all(|c| c.is_alphabetic() || c == ' ') && t.split_whitespace().any(|w| w.chars().count() >= 3);
+        let text = match words {
+            Some(w) => vec![Inline::Text(w.trim().to_string())],
+            None if t.is_empty() => Vec::new(),
+            None if plain_words => vec![Inline::Text(t)],
+            None => vec![Inline::Math(t)],
+        };
+        crate::Cell { text, span: 1, ..Default::default() }
+    };
+    let mut rows: Vec<Vec<crate::Cell>> = rows.iter().map(|r| r.iter().map(|c| clean(c)).collect::<Vec<_>>()).filter(|r: &Vec<crate::Cell>| r.iter().any(|c| !c.text.is_empty())).collect();
+    let columns = rows.iter().map(Vec::len).max().unwrap_or(0);
+    if rows.len() < 2 || columns < 2 {
+        return None;
+    }
+    for r in rows.iter_mut() {
+        r.resize_with(columns, || crate::Cell { span: 1, ..Default::default() });
+    }
+    Some(rows)
+}
+
+/// Does the "{" that starts `t` close at its end?
+fn wraps(t: &str) -> bool {
+    let mut depth = 0;
+    let mut prev = ' ';
+    for (i, c) in t.char_indices() {
+        if prev != '\\' {
+            match c {
+                '{' => depth += 1,
+                '}' => {
+                    depth -= 1;
+                    if depth == 0 {
+                        return i == t.len() - 1;
+                    }
+                }
+                _ => {}
+            }
+        }
+        prev = c;
+    }
+    false
+}
 
 /// The tables of a page that are set on a panel of grey (an ebook-made
 /// PDF): (first line, end, the table). Such a table has a short rule
@@ -1820,7 +1971,16 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
         }
     }
     b.flush();
-    b.out
+    // where the equation pictures are on their pages
+    let mut boxes: HashMap<String, (u32, Figure)> = HashMap::new();
+    for page in &doc.pages {
+        for s in page.lines.iter().flat_map(|l| &l.spans) {
+            if let Some(k) = &s.image_key {
+                boxes.insert(k.clone(), (page.number, Figure { left: s.left, right: s.right(), top: s.top, bottom: s.bottom() }));
+            }
+        }
+    }
+    picture_tables(b.out, &boxes)
 }
 
 #[cfg(test)]
@@ -1853,6 +2013,33 @@ mod table_tests {
 
     fn shown(rows: &[Vec<Vec<&Line>>]) -> Vec<Vec<String>> {
         rows.iter().map(|r| r.iter().map(|c| c.iter().map(|l| l.spans[0].text.clone()).collect::<Vec<_>>().join(" ")).collect()).collect()
+    }
+
+    #[test]
+    fn an_array_read_from_a_picture_is_a_table() {
+        let rows = array_table("\\begin{array}{c c c}{{}}&{{\\mathrm{Bosons}}}&{{\\mathrm{Fermions}}}\\\\ \\hline {{}}&{{a_{i}a_{j}=0}}&{{\\{a_{i},a_{j}\\}=0}}\\\\ m & \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix} & \\end{array}").unwrap();
+        let shown: Vec<Vec<String>> = rows
+            .iter()
+            .map(|r| {
+                r.iter()
+                    .map(|c| match c.text.first() {
+                        Some(Inline::Text(t)) => t.clone(),
+                        Some(Inline::Math(m)) => format!("${m}$"),
+                        _ => String::new(),
+                    })
+                    .collect()
+            })
+            .collect();
+        assert_eq!(
+            shown,
+            [
+                vec!["", "Bosons", "Fermions"],
+                vec!["", "$a_{i}a_{j}=0$", "$\\{a_{i},a_{j}\\}=0$"],
+                vec!["$m$", "$\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$", ""]
+            ]
+        );
+        assert!(array_table("\\begin{array}{c} a \\\\ b \\end{array}").is_none());
+        assert!(array_table("x = 1").is_none());
     }
 
     #[test]
