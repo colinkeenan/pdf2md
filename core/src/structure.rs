@@ -153,6 +153,28 @@ pub fn split_contents(chapters: &mut Vec<Chapter>) {
     chapters.insert(ci + 1, Chapter { title, blocks, ..Default::default() });
 }
 
+/// The half-title: the book's title alone on a page, after the prefaces
+/// and before the first part or chapter, is the last thing in the front
+/// matter. It heads the book, not the front matter: it goes to the top of
+/// the table of contents (which stands right after the front matter).
+/// The page it stood on keeps its marker where it was.
+pub fn half_title_to_contents(chapters: &mut [Chapter], title: &str) {
+    if chapters.len() < 2 || !crate::blocks::is_contents_title(&chapters[1].title) || title.is_empty() {
+        return;
+    }
+    let wanted = crate::key(title);
+    let is_title = |b: &Blk| matches!(&b.block, Block::Heading { text, .. } if crate::key(&plain(text)) == wanted);
+    let front = &chapters[0].blocks;
+    // the last thing written in the front matter, if it is the title
+    // again (the title page has it first)
+    let Some(at) = front.iter().rposition(|b| !matches!(b.block, Block::Anchor(_))) else { return };
+    if !is_title(&front[at]) || !front[..at].iter().any(is_title) {
+        return;
+    }
+    let half = chapters[0].blocks.remove(at);
+    chapters[1].blocks.insert(0, half);
+}
+
 /// The numbered chapters come in rising order (else the numbers were
 /// misread, and they are not used).
 fn numbers_in_order(chapters: &[Chapter]) -> bool {

@@ -17,6 +17,7 @@ use std::path::{Path, PathBuf};
 use std::process::Command;
 
 const SCRIPT: &str = include_str!("scan_read.py");
+const MARKS_SCRIPT: &str = include_str!("scan_marks.py");
 /// marker's points to pdftohtml's pixels.
 const PX: f32 = 1.5;
 
@@ -211,6 +212,9 @@ pub fn read(path: &Path, first: u32, last: u32) -> Result<Scan, String> {
         }
         pages.push(page);
     }
+    // Footnotes whose marks marker did not read: looked for on the
+    // pictures of their pages.
+    find_marks(path, &dir, &py, &mut pages);
     // A line of which marker read too little for the room it takes
     // ("cm." in a box four times as wide: the page says "p.   cm."): the
     // PDF's own words, if they are marker's and more.
@@ -493,6 +497,191 @@ fn second_readings(path: &Path, scan: &Scan) {
     let mut equations = done.into_inner().unwrap_or_default();
     equations.sort_by(|a, b| a.0.cmp(&b.0));
     crate::ocr::second_readings(&equations);
+}
+
+/// The footnotes of each page whose mark is not in the page's text: their
+/// labels ("1", "3").
+fn unmarked(page: &PageRead) -> Vec<String> {
+    let mut raised: Vec<String> = Vec::new();
+    for b in page.blocks.iter().filter(|b| b.kind != "Footnote" && b.kind != "PageHeader" && b.kind != "PageFooter") {
+        raised.extend(all_inline(&b.html).into_iter().filter_map(|i| if let Inline::Sup(t) = i { Some(t) } else { None }));
+    }
+    let mut out = Vec::new();
+    for b in page.blocks.iter().filter(|b| b.kind == "Footnote") {
+        if let Some((label, _)) = footnote(&b.html) {
+            if label.chars().all(|c| c.is_ascii_digit()) && !raised.contains(&label) && !out.contains(&label) {
+                out.push(label);
+            }
+        }
+    }
+    out
+}
+
+/// The small raised number that points to a footnote is often not read
+/// by marker. Where a page has a footnote without its mark in the text,
+/// the mark is looked for on the picture of the page, and of the page
+/// before and the page after (`scan_marks.py`: a small piece of ink set
+/// high, right behind a word, that reads as the note's number), and put
+/// into the text behind the word it follows there.
+fn find_marks(path: &Path, dir: &Path, py: &Path, pages: &mut [PageRead]) {
+    let missing: Vec<Vec<String>> = pages.iter().map(unmarked).collect();
+    if missing.iter().all(Vec::is_empty) {
+        return;
+    }
+    // where a page's footnotes begin: no mark is looked for below
+    let limit = |p: &PageRead| p.blocks.iter().filter(|b| b.kind == "Footnote").map(|b| b.top).fold(0.0f32, |a, t| if a == 0.0 { t } else { a.min(t) });
+    // what to look for on which page: its own unmarked notes, and those of
+    // the pages beside it
+    let mut wanted: Vec<Vec<String>> = vec![Vec::new(); pages.len()];
+    for (i, labels) in missing.iter().enumerate() {
+        let (from, to) = (i.saturating_sub(1), (i + 2).min(pages.len()));
+        for of_page in &mut wanted[from..to] {
+            for l in labels {
+                if !of_page.contains(l) {
+                    of_page.push(l.clone());
+                }
+            }
+        }
+    }
+    let file = |n: u32| dir.join(format!("m{n:04}.txt"));
+    let head = |i: usize| {
+        let mut labels = wanted[i].clone();
+        labels.sort();
+        format!("want\t{}\t{:.0}", labels.join(","), limit(&pages[i]))
+    };
+    // (looked at before, for the same marks: kept)
+    let todo: Vec<usize> = (0..pages.len()).filter(|i| !wanted[*i].is_empty() && std::fs::read_to_string(file(pages[*i].number)).ok().and_then(|t| t.lines().next().map(str::to_string)) != Some(head(*i))).collect();
+    if !todo.is_empty() {
+        let script = dir.join("scan_marks.py");
+        if std::fs::write(&script, MARKS_SCRIPT).is_err() {
+            return;
+        }
+        eprintln!("Looking for the marks of footnotes on {} pages…", todo.len());
+        progress::report(Step::Marks, 0, todo.len());
+        let requests: String = todo.iter().map(|i| format!("{}\n", head(*i).replacen("want", &pages[*i].number.to_string(), 1))).collect();
+        let child = Command::new(py).arg(&script).arg(path).arg(dir).stdin(std::process::Stdio::piped()).stdout(std::process::Stdio::null()).stderr(std::process::Stdio::piped()).spawn();
+        let Ok(mut child) = child else { return };
+        if let Some(mut pipe) = child.stdin.take() {
+            use std::io::Write;
+            let _ = pipe.write_all(requests.as_bytes());
+        }
+        if let Some(pipe) = child.stderr.take() {
+            use std::io::BufRead;
+            for line in std::io::BufReader::new(pipe).lines().map_while(Result::ok) {
+                if let Some((done, total)) = line.trim().strip_prefix("marks ").and_then(|c| c.split_once('/')).and_then(|(d, t)| Some((d.parse::<usize>().ok()?, t.parse::<usize>().ok()?))) {
+                    progress::report(Step::Marks, done.min(total.saturating_sub(1)), total);
+                }
+            }
+        }
+        let _ = child.wait();
+        progress::report(Step::Marks, todo.len(), todo.len());
+    }
+    // the marks found on each page: label, and the words up to the one it follows
+    let found: Vec<Vec<(String, Vec<String>)>> = (0..pages.len())
+        .map(|i| {
+            let text = std::fs::read_to_string(file(pages[i].number)).unwrap_or_default();
+            text.lines()
+                .filter_map(|l| {
+                    let mut f = l.split('\t');
+                    (f.next() == Some("mark")).then(|| Some((f.next()?.to_string(), f.next()?.split_whitespace().map(str::to_string).collect())))?
+                })
+                .collect()
+        })
+        .collect();
+    let mut placed = 0;
+    for (i, labels) in missing.iter().enumerate() {
+        for label in labels {
+            // on the note's own page first, then the page before, the page after
+            // (not a page that has a note of that number itself: its mark is that note's)
+            let own = |j: usize| pages[j].blocks.iter().any(|b| b.kind == "Footnote" && footnote(&b.html).is_some_and(|(l, _)| &l == label));
+            let mut tries = vec![i];
+            if i > 0 && !own(i - 1) {
+                tries.push(i - 1);
+            }
+            if i + 1 < pages.len() && !own(i + 1) {
+                tries.push(i + 1);
+            }
+            'pages: for j in tries {
+                for (l, words) in &found[j] {
+                    if l == label && place_mark(&mut pages[j], words, label) {
+                        placed += 1;
+                        break 'pages;
+                    }
+                }
+            }
+        }
+    }
+    let unmarked: usize = missing.iter().map(Vec::len).sum();
+    eprintln!("  {placed} of {unmarked} footnote marks that the page reader missed were found on the pages' pictures");
+}
+
+/// The words of a block's html that stand outside tags and formulas, each
+/// with the place right behind it and the punctuation that follows it.
+fn text_words(html: &str) -> Vec<(String, usize)> {
+    let mut out = Vec::new();
+    let b = html.as_bytes();
+    let mut i = 0;
+    let mut word = String::new();
+    while i < html.len() {
+        if b[i] == b'<' {
+            if !word.is_empty() {
+                out.push((std::mem::take(&mut word), i));
+            }
+            // (a formula: skipped whole)
+            let end = if html[i..].starts_with("<math") { html[i..].find("</math>").map(|e| i + e + 7) } else { html[i..].find('>').map(|e| i + e + 1) };
+            i = end.unwrap_or(html.len());
+            continue;
+        }
+        let c = html[i..].chars().next().unwrap();
+        if c.is_alphanumeric() {
+            word.extend(c.to_lowercase());
+        } else if !word.is_empty() {
+            out.push((std::mem::take(&mut word), i));
+        }
+        i += c.len_utf8();
+    }
+    if !word.is_empty() {
+        out.push((word, html.len()));
+    }
+    // behind the punctuation that closes the word (a mark stands behind the full stop)
+    for (_, at) in out.iter_mut() {
+        while html[*at..].starts_with(['.', ',', ';', ':', '!', '?', ')', '"', '”', '’', '\'']) {
+            *at += html[*at..].chars().next().map_or(1, char::len_utf8);
+        }
+    }
+    out
+}
+
+/// Put the mark of footnote `label` into the text of the page behind the
+/// word it follows: the last of `words` (what Tesseract read there; the
+/// word before it tells which one, where the word comes more than once).
+/// Only if that place is the only one; says whether it did.
+fn place_mark(page: &mut PageRead, words: &[String], label: &str) -> bool {
+    let norm = |w: &str| w.chars().filter(|c| c.is_alphanumeric()).flat_map(char::to_lowercase).collect::<String>();
+    let Some(last) = words.last().map(|w| norm(w)).filter(|w| !w.is_empty()) else { return false };
+    let before = words.len().checked_sub(2).map(|k| norm(&words[k])).filter(|w| !w.is_empty());
+    let texty = |b: &Raw| is_text(b) || b.kind == "Equation";
+    // (block, place) of each fit, with the word before it or without
+    let fits = |with_before: bool| -> Vec<(usize, usize)> {
+        let mut out = Vec::new();
+        for (k, b) in page.blocks.iter().enumerate().filter(|(_, b)| texty(b)) {
+            let ws = text_words(&b.html);
+            for (n, (w, at)) in ws.iter().enumerate() {
+                let prev_ok = !with_before || before.as_ref().is_none_or(|p| n > 0 && &ws[n - 1].0 == p);
+                if *w == last && prev_ok {
+                    out.push((k, *at));
+                }
+            }
+        }
+        out
+    };
+    let mut places = fits(true);
+    if places.is_empty() {
+        places = fits(false);
+    }
+    let [(k, at)] = places[..] else { return false };
+    page.blocks[k].html.insert_str(at, &format!("<sup>{label}</sup>"));
+    true
 }
 
 /// The words in a block's area of a page (see [`area_lines`]).
@@ -2144,6 +2333,13 @@ mod tests {
         assert_eq!(maths, ["\\delta M = e^{x}", "a + b", "c", "d"]);
         assert_eq!(tag_of("(see below)"), None);
         let note = parse_page(1, "block\tFootnote\t0\t0\t9\t9\t1\t<p><sup>&amp;</sup>lt;sup&gt;1&lt;/sup&gt;When I was young</p>");
+        // a mark found on the page's picture goes behind its word
+        let mut marked = parse_page(1, "page\t487\t842\nblock\tText\t0\t0\t9\t9\t1\t<p>If it is <i>OK</i> we go on; else <math>x^2</math> is not OK. Then more.</p>\nblock\tFootnote\t0\t800\t9\t820\t1\t<p><sup>1</sup>A note.</p>");
+        assert_eq!(unmarked(&marked), ["1"]);
+        assert!(!place_mark(&mut marked, &["this".into(), "OK".into()], "1"), "two places: not placed");
+        assert!(place_mark(&mut marked, &["is".into(), "not".into(), "OK".into()], "1"));
+        assert!(marked.blocks[0].html.contains("is not OK.<sup>1</sup> Then more."));
+        assert!(unmarked(&marked).is_empty());
         let (label, text) = footnote(&note.blocks[0].html).unwrap();
         assert_eq!((label.as_str(), plain(&text).as_str()), ("1", "When I was young"));
         let marked = parse_page(1, "block\tText\t0\t0\t9\t9\t1\t<p>the equation.&lt;sup&gt;2&lt;/sup&gt; Being</p>");

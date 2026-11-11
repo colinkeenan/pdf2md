@@ -210,6 +210,7 @@ pub fn attach(chapters: &mut Vec<Chapter>, book: &mut Book) -> Vec<String> {
                         label: s.clone(),
                         blocks: vec![Block::Para(entry.1.clone())],
                         backrefs: vec![back.clone()],
+                        page: Some(note_page),
                     });
                     on_page.push(note_page);
                     *x = Inline::NoteRef { label: s, id: back, href: format!("#{id}") };
@@ -217,23 +218,19 @@ pub fn attach(chapters: &mut Vec<Chapter>, book: &mut Book) -> Vec<String> {
             }
         }
         // A note whose marker is not in the text (a scan: the small raised
-        // number was not read) stays with the notes of its chapter, in
-        // its place among them by its page, and says which page it is on.
+        // number was not read) stays with the notes of its page, and says
+        // that it has no marker.
         let mut lost = 0;
         for (page, list) in page_notes {
             for (label, text, used) in list {
                 if !used {
                     lost += 1;
                     book.warnings.push(format!("page footnote {label} in {} has no marker", ch.title));
-                    let place = match book.labels.get(page).and_then(|l| l.as_ref()) {
-                        Some(l) => format!("(p. {l}; its marker was not found in the text) "),
-                        None => "(its marker was not found in the text) ".to_string(),
-                    };
-                    let mut inl = vec![Inline::Emph(place.trim_end().to_string()), Inline::Text(" ".into())];
+                    let mut inl = vec![Inline::Emph("(its marker was not found in the text)".to_string()), Inline::Text(" ".into())];
                     inl.extend(text);
                     let at = on_page.iter().rposition(|p| *p <= page).map_or(0, |k| k + 1);
                     on_page.insert(at, page);
-                    ch.notes.insert(at, Note { id: format!("fn-{ci}-x{lost}"), label, blocks: vec![Block::Para(inl)], backrefs: Vec::new() });
+                    ch.notes.insert(at, Note { id: format!("fn-{ci}-x{lost}"), label, blocks: vec![Block::Para(inl)], backrefs: Vec::new(), page: Some(page) });
                 }
             }
         }
@@ -356,6 +353,7 @@ pub fn attach(chapters: &mut Vec<Chapter>, book: &mut Book) -> Vec<String> {
                     label: format!("[{n}]"),
                     blocks: refs[&n].clone(),
                     backrefs: backs.remove(&n).unwrap_or_default(),
+                    page: None,
                 });
             }
         }

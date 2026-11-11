@@ -132,12 +132,7 @@ $$
 \delta I ( \Omega ) = \int d\tau \sum_{\alpha} \{ ( \pi_{\alpha} \delta \varphi^{\alpha} ) ( t_{1} ) - ( \pi_{\alpha} \delta \varphi^{\alpha} ) ( t_{2} ) \}-\{ H ( t_{1} ) \delta t_{1} - H ( t_{2} ) \delta t_{2} \} \tag{165}
 $$
 
-The essential feature of this classical theory is that the <a id="ix-1">Action</a> Principle is stated only for variations vanishing on the boundary of Ω. From this one can _deduce_ as in (163) and (165) the effect on $I$(Ω) of variations not vanishing on the boundary. This is possible because each state of motion is defined by fixing _as many_ field quantities as can be fixed independently, (e.g. all the fields on two space-like surfaces or all the fields and their time-derivatives on one surface) and then the whole past and
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p34"><sup>[p. 34]</sup></a>
-
-future of the motion is determined by the <a id="ix-77">field</a> equations.
+The essential feature of this classical theory is that the <a id="ix-1">Action</a> Principle is stated only for variations vanishing on the boundary of Ω. From this one can _deduce_ as in (163) and (165) the effect on $I$(Ω) of variations not vanishing on the boundary. This is possible because each state of motion is defined by fixing _as many_ field quantities as can be fixed independently, (e.g. all the fields on two space-like surfaces or all<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p34"><sup>[p. 34]</sup></a></span> the fields and their time-derivatives on one surface) and then the whole past and future of the motion is determined by the <a id="ix-77">field</a> equations.
 
 Field equations can be written in the Hamiltonian form
 
@@ -250,12 +245,7 @@ $$
 \langle \varphi_{1}^{\prime \alpha} ,\sigma_{1} \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = N \sum_{H} \exp \left\{ \frac{i}{\hbar} I_{H} ( \Omega ) \right\} \tag{174}
 $$
 
-Here $H$ represents a History of the fields between $\sigma_{2}$ and $\sigma_{1}$, i.e. any set of classical functions $\varphi^{\alpha} ( x )$ which are defined in the region Ω between $\sigma_{2}$ and $\sigma_{1}$ and which take the values $\varphi_{1}^{\prime \alpha}$ on $\sigma_{1}$ and $\varphi_{2}^{\prime \alpha}$ on $\sigma_{2} . I_{H}$(Ω) is the value of $I$(Ω) calculated with these particular functions. The sum $\sum H$ is taken over all possible histories, a continuously infinite sum whose exact mathematical definition is not easy to formulate. $N$ is a normalization factor independent of the particular states considered, chosen so as to make the sum of the squares of the amplitudes from a given state to all other states equal to 1. This formula is derived by Feynman from very general considerations, applying a Huyghens principle to the solution of wave-mechanics just as it is done in wave-optics. By this one formula the whole theory is quantized and the answer to any physical problem in principle given. The
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p36"><sup>[p. 36]</sup></a>
-
-method applies not only to field theory but to ordinary NR quantum theory too. We do not try to derive or justify the Feynman formula here. We just show that it gives the same results as the usual QM. For a discussion of the difficulties in defining the sum $\sum H$, and a method of doing it in simple cases, see C. <a id="ix-215">Morette</a>, _Phys. Rev._ **81** (1951) 848.
+Here $H$ represents a History of the fields between $\sigma_{2}$ and $\sigma_{1}$, i.e. any set of classical functions $\varphi^{\alpha} ( x )$ which are defined in the region Ω between $\sigma_{2}$ and $\sigma_{1}$ and which take the values $\varphi_{1}^{\prime \alpha}$ on $\sigma_{1}$ and $\varphi_{2}^{\prime \alpha}$ on $\sigma_{2} . I_{H}$(Ω) is the value of $I$(Ω) calculated with these particular functions. The sum $\sum H$ is taken over all possible histories, a continuously infinite sum whose exact mathematical definition is not easy to formulate. $N$ is a normalization factor independent of the particular states considered, chosen so as to make the sum of the squares of the amplitudes from a given state to all other states equal to 1. This formula is derived by Feynman from very general considerations, applying a Huyghens principle to the solution of wave-mechanics just as it is done in wave-optics. By this one formula the whole theory is quantized and the answer to any<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p36"><sup>[p. 36]</sup></a></span> physical problem in principle given. The method applies not only to field theory but to ordinary NR quantum theory too. We do not try to derive or justify the Feynman formula here. We just show that it gives the same results as the usual QM. For a discussion of the difficulties in defining the sum $\sum H$, and a method of doing it in simple cases, see C. <a id="ix-215">Morette</a>, _Phys. Rev._ **81** (1951) 848.
 
 From formula (174) we derive at once the most general _Correspondence Principle_ giving us back the classical theory in the limit as $\hbar \to$ 0. For suppose $\hbar \to$ 0 then the exponential factor in (174) becomes an extremely rapidly oscillating function of $H$ for all histories $H$ _except_ that one for which $I$(Ω) is stationary. Therefore in the limit the sum $\sum H$ reduces to the contribution from the classical motion leading from $\varphi_{2}^{\prime \alpha}$ on $\sigma_{2}$ to $\varphi_{1}^{\prime \alpha}$ on $\sigma_{1}$, all other contributions interfering destructively. The classical motion is defined by the condition that<sup><a id="fnref-17" href="#fn-17">17</a></sup> its $\delta I$(Ω) = 0 for all small variations of the $\varphi^{\alpha}$ between $\sigma_{2}$ and $\sigma_{1}$. This passage to the classical theory is precisely analogous to the passage from wave-optics to geometrical optics when the wave-length of light is allowed to tend to zero. The <a id="ix-283">WKB approximation</a> is gotten by taking $\hbar$ small but not quite zero.
 
@@ -518,12 +508,7 @@ $$
 \delta_{\mathcal{Q}} ( L ) = \epsilon \delta^{4} ( x - y ) \mathcal{Q} ( y ) \tag{192}
 $$
 
-to $L ( x )$ produces at most a change $\epsilon \delta_{\mathcal{Q}} \varphi^{\alpha} ( x )$ in the $\varphi^{\alpha} ( x )$. Let $\epsilon \delta_{\mathcal{R}} \mathcal{Q} ( y )$ be the change in $\mathcal{Q} ( y )$ produced by the addition (191), while $\epsilon \delta_{\mathcal{Q}} \mathcal{R} ( z )$ be the change in $\mathcal{R} ( z )$ produced by (192). Suppose $y$ lies on a surface $\sigma$ lying in the future of $z$. Then we take $\mathcal{Q} ( y )$ for $\mathcal{O} ( \sigma )$ in (186), and $\delta L$ given by
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p40"><sup>[p. 40]</sup></a>
-
-(191). The $\delta I$(Ω) given by (182) reduces then simply to
+to $L ( x )$ produces at most a change $\epsilon \delta_{\mathcal{Q}} \varphi^{\alpha} ( x )$ in the $\varphi^{\alpha} ( x )$. Let $\epsilon \delta_{\mathcal{R}} \mathcal{Q} ( y )$ be the change in $\mathcal{Q} ( y )$ produced by the addition (191), while $\epsilon \delta_{\mathcal{Q}} \mathcal{R} ( z )$ be the change in $\mathcal{R} ( z )$ produced by (192). Suppose $y$ lies on a surface<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p40"><sup>[p. 40]</sup></a></span> $\sigma$ lying in the future of $z$. Then we take $\mathcal{Q} ( y )$ for $\mathcal{O} ( \sigma )$ in (186), and $\delta L$ given by (191). The $\delta I$(Ω) given by (182) reduces then simply to
 
 $$
 \delta I ( \Omega ) = \frac{1}{c} \epsilon \mathcal{R} ( z )

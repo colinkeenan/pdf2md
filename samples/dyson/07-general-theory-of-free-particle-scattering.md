@@ -298,12 +298,7 @@ A $\psi$ operator not only annihilates electrons but also creates positrons. And
 
 We have introduced the Feynman graphs simply as a convenient pictorial way of visualizing the analysis of an operator into its normal constituents. The graphs are just diagrams drawn on the paper. But according to Feynman<sup><a id="fnref-71" href="#fn-71">71</a></sup> , “Space-time Approach to Quantum Electrodynamics”, _Phys. Rev._ **76** (1949) 769, the graphs are more than this. He regards the graphs as a picture of an actual process which is occurring physically in space-time. Thus $G_{2}$ represents an electron and a photon coming together and interacting at the space-time point $x_{1}$, where the photon is absorbed; then the electron propagates through space-time along the line $x_{1} x_{2}$, until at $x_{2}$ it emits a photon, and the electron and photon then travel out along the outgoing lines at $x_{2}$. According to Feynman an internal undotted line running from $x_{1}$ to $x_{2}$ represents an electron propagating from $x_{1}$ to $x_{2}$ if the time $x_{2}$ is later than the time $x_{1}$, and represents a positron propagating from $x_{2}$ to $x_{1}$ if the time $x_{2}$ is earlier. In this sense a positron can be regarded as precisely equivalent to an electron which happens to propagate itself backwards instead of forwards in time.
 
-The space-time picture of Feynman is a perfectly consistent and reasonable one. It gives a correct account of everything that happens, including pair creation and annihilation and all the other phenomena connected with positrons. It is in fact equivalent mathematically to the field-theory
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p100"><sup>[p. 100]</sup></a>
-
-treatment we follow in this course.
+The space-time picture of Feynman is a perfectly consistent and reasonable one. It gives a correct account of everything that happens, including pair creation and annihilation and all the other phenomena<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p100"><sup>[p. 100]</sup></a></span> connected with positrons. It is in fact equivalent mathematically to the field-theory treatment we follow in this course.
 
 The disadvantage of the Feynman theory is that it is constructed as a particle theory. The fact that there are many particles, indistinguishable from each other and obeying quantum statistics, has to be put into the theory as a special assumption. And the equations of motion of the particles become quite complicated when interactions between several particles, not to mention vacuum-polarization effects, are included. Thus the logical basis of the Feynman theory is much less simple than that of the field theory, where everything follows from general principles once the form of the Lagrangian is chosen.
 
@@ -347,10 +342,7 @@ and for every set of field operators $\mathcal{R}_{1} \mathcal{R}_{2} \dots \mat
 
 The rules for writing down the normal constituents of (488) are therefore extremely simple. We are generally only interested in those normal constituents which give matrix elements for some specified type of scattering process. Then the rules are
 
-1) Draw all the graphs which have the right set of external lines corresponding to the particles absorbed and emitted in the process considered. Each <a id="ix-127">graph</a> $G$ will have the same external lines, but the number of vertices and of internal lines will vary from graph to graph. We shall always calculate only up to some definite order $N$ in the series (488), and so we draw only graphs with not more than $N$ vertices. The total number of such graphs is finite. Each vertex in each graph must have precisely 3 lines ending at it, one incoming electron line, one outgoing electron line, and one photon line.
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p101"><sup>[p. 101]</sup></a>
+1) Draw all the graphs which have the right set of external lines corresponding to the particles absorbed and emitted in the process considered. Each <a id="ix-127">graph</a> $G$ will have the same external lines, but the number of vertices and of internal lines will vary from graph to graph. We shall always calculate only up to some definite order $N$ in the series (488), and so we draw only graphs with not more than $N$ vertices. The total number of such graphs is finite. Each vertex in each graph must have precisely 3 lines ending at it, one<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p101"><sup>[p. 101]</sup></a></span> incoming electron line, one outgoing electron line, and one photon line.
 
 2) To each <a id="ix-128">graph</a> $G$ with $n$ vertices corresponds one normal constituent $S_{G}$ of $S$.
 
@@ -388,12 +380,7 @@ corresponding to each internal photon line of $G$ at which the 3 lines associate
 
 In addition to these factors there will be numerical factors and Dirac matrices $\gamma_{\alpha}$ arising from the particular form of $S_{n}$. In practice it is easiest not to write down the $S_{G}$ directly in momentum space, but to use the rules (1) – (4) to obtain formulae in configuration space with the right numerical constants, and then transform to momentum space by (430) and (448).
 
-We shall now show how these general methods work by calculating in detail _the_ historic problem, the second-order radiative correction to the scattering of an electron by a weak external potential. This
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p102"><sup>[p. 102]</sup></a>
-
-problem has been first satisfactorily treated by Schwinger,<sup><a id="fnref-72" href="#fn-72">72</a></sup> _Phys. Rev._ **76** (1949) 790. Schwinger’s paper is outstandingly difficult to read, and I hope you will find my treatment at least slightly easier. But the problem is in its nature complicated and cannot be done without some fairly heavy mathematics. Once the calculations are done for this problem of scattering, it turns out that the results can be used without much further trouble for the relativistic calculation of the Lamb shift too. The scattering and Lamb shift problems are very closely related: in both cases one is calculating the second-order radiative corrections to the motion of an electron, only in one case the electron is in a high continuum state so that the external field can be treated as weak, in the other case the electron is in a discrete state and the potential must be treated as strong.
+We shall now show how these general methods work by calculating in detail _the_ historic problem, the second-order radiative correction to the scattering of an electron by a weak external potential. This<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p102"><sup>[p. 102]</sup></a></span> problem has been first satisfactorily treated by Schwinger,<sup><a id="fnref-72" href="#fn-72">72</a></sup> _Phys. Rev._ **76** (1949) 790. Schwinger’s paper is outstandingly difficult to read, and I hope you will find my treatment at least slightly easier. But the problem is in its nature complicated and cannot be done without some fairly heavy mathematics. Once the calculations are done for this problem of scattering, it turns out that the results can be used without much further trouble for the relativistic calculation of the Lamb shift too. The scattering and Lamb shift problems are very closely related: in both cases one is calculating the second-order radiative corrections to the motion of an electron, only in one case the electron is in a high continuum state so that the external field can be treated as weak, in the other case the electron is in a discrete state and the potential must be treated as strong.
 
 ## <a id="s-the-self-energy-of-the-electron"></a>The Self-Energy of the Electron
 
@@ -571,12 +558,7 @@ $$
 A_{\mu}^{e} ( x ) = \frac{1}{( 2 \pi )^{4}} \int e^{iq \cdot x} e_{\mu} ( q ) dq \tag{534}
 $$
 
-At the same time the electron is interacting with the quantized Maxwell field with the interaction (532), since we suppose the initial and final states to be defined with the observed mass of a free electron. The scattering matrix element $M$ is then given by (419), with $U$ given by (421) after
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p105"><sup>[p. 105]</sup></a>
-
-replacing each $H_{R}$ by $H^{I}$ according to (532).
+At the same time the electron is interacting with the quantized Maxwell field with the interaction (532), since we suppose the initial and final states to be defined with the observed mass of a free electron. The<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p105"><sup>[p. 105]</sup></a></span> scattering matrix element $M$ is then given by (419), with $U$ given by (421) after replacing each $H_{R}$ by $H^{I}$ according to (532).
 
 We treat $A_{\mu}^{e}$ in the linear Born approximation. Thus we keep only terms of order 0 and 1 in $A_{\mu}^{e}$. The terms of order 0 give the effects of the radiation interaction alone; as we have seen, these effects are zero for an initial state consisting of a single <a id="ix-276">electron</a>.
 
@@ -1036,10 +1018,7 @@ $$
 \Lambda ( p,p^{\prime} ) = \int_{F} dk \sum_{\lambda} \left( \gamma_{\lambda} \frac{1}{/ k + p /^{\prime} - i\mu} /e \frac{1}{k / + p / - i\mu} \gamma_{\lambda} \right) \frac{1}{k^{2}} \tag{584}
 $$
 
-There is no singular factor in (584) such as we had in (558). To perform the sum over $\lambda$ in (584), we use the table
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p112"><sup>[p. 112]</sup></a>
+There is no singular factor in (584) such as we had in (558). To perform the sum over $\lambda$ in (584), we use<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p112"><sup>[p. 112]</sup></a></span> the table
 
 <a id="eq-585"></a>
 

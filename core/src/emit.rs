@@ -222,11 +222,8 @@ pub fn render_inlines(inl: &[Inline]) -> String {
                 // a small marker where the printed page starts, so pages
                 // can be found ("p. 18") and index links visibly land there
                 Some(l) => {
-                    if !s.is_empty() && !s.ends_with(' ') {
-                        s.push(' ');
-                    }
                     let approx = if crate::page_is_approx(id) { "≈" } else { "" };
-                    s.push_str(&format!("<a id=\"{id}\"><sup>[{approx}p. {l}]</sup></a>"));
+                    s.push_str(&page_mark_inline(id, &format!("{approx}p. {l}")));
                 }
                 None => s.push_str(&format!("<a id=\"{id}\"></a>")),
             },
@@ -254,159 +251,19 @@ pub fn render_inlines(inl: &[Inline]) -> String {
 /// on a light and on a dark page alike.
 const PAGE_BAR: &str = "<hr class=\"page\" style=\"height:2px;border:0;background:currentColor;opacity:0.25\">";
 
-/// A paragraph with a page marker at `m`, parted for the bar: what goes
-/// above it and what below. The page ends somewhere in a line of the
-/// paragraph as the viewer sets it; the words up to the end of that line go
-/// above the bar, so that line is full. (Lines as in the widest text column,
-/// see `measure`; in a narrower window they end elsewhere.) Never past the
-/// next page marker.
-fn part_at_line_end(inl: &[Inline], m: usize) -> (Vec<Inline>, Vec<Inline>) {
-    let is_marker = |x: &Inline| matches!(x, Inline::Anchor(id) if page_label(id).is_some());
-    let end = inl.iter().enumerate().position(|(i, x)| i > m && is_marker(x)).unwrap_or(inl.len());
-    let at_marker = (inl[..m].to_vec(), inl[m + 1..].to_vec());
-    let Some((i, byte)) = line_end(&inl[..end], m) else { return at_marker };
-    let mut above: Vec<Inline> = inl[..i].iter().enumerate().filter(|(k, _)| *k != m).map(|(_, x)| x.clone()).collect();
-    let mut below = Vec::new();
-    if byte > 0 {
-        let cut = |t: &str| (t[..byte].to_string(), t[byte..].trim_start().to_string());
-        let ((a, b), rest) = match &inl[i] {
-            Inline::Text(t) => ((Inline::Text(cut(t).0), Inline::Text(cut(t).1)), cut(t).1),
-            Inline::Emph(t) => ((Inline::Emph(cut(t).0), Inline::Emph(cut(t).1)), cut(t).1),
-            Inline::Strong(t) => ((Inline::Strong(cut(t).0), Inline::Strong(cut(t).1)), cut(t).1),
-            _ => return at_marker,
-        };
-        above.push(a);
-        if !rest.is_empty() {
-            below.push(b);
-        }
-        below.extend(inl[i + 1..].iter().cloned());
-    } else {
-        below.extend(inl[i..].iter().cloned());
-    }
-    (above, below)
-}
-
-/// Where the line ends in which the page marker `inl[m]` falls: in front of
-/// byte `.1` of the text of `inl[.0]` (0: in front of the whole of it;
-/// `inl.len()`: at the paragraph's end). None if the marker is at a line's
-/// end already, or at the very start.
-fn line_end(inl: &[Inline], m: usize) -> Option<(usize, usize)> {
-    use crate::measure::{self, Face};
-    // The words: each as wide as measured; a word runs across pieces with
-    // no space between them ("$x$," is one).
-    struct Word {
-        width: f32,
-        /// where it ends
-        end: (usize, usize),
-        /// a space follows it (none inside "wave-|optics" or a formula)
-        spaced: bool,
-        /// the line is broken after it (a kept line break)
-        broken: bool,
-    }
-    let mut words: Vec<Word> = Vec::new();
-    let mut open: Option<f32> = None;
-    // the word the marker comes after or stands in, and whether it stands in it
-    let mut marked: Option<(usize, bool)> = None;
-    for (i, x) in inl.iter().enumerate() {
-        // a link or a link target is kept whole: a line ending inside one
-        // counts as ending in front of it
-        let (t, face, scale, whole) = match x {
-            Inline::Text(t) => (t.clone(), Face::Regular, 1.0, false),
-            Inline::Emph(t) => (t.clone(), Face::Italic, 1.0, false),
-            Inline::Strong(t) => (t.clone(), Face::Bold, 1.0, false),
-            Inline::Target { text, emph, .. } => (text.clone(), if *emph { Face::Italic } else { Face::Regular }, 1.0, true),
-            Inline::Link { text, .. } => (text.replace(['\\', '_', '*'], ""), Face::Regular, 1.0, true),
-            Inline::Sup(t) => (t.replace(' ', ""), Face::Regular, measure::RAISED, true),
-            Inline::NoteRef { label, .. } => (label.replace(' ', ""), Face::Regular, measure::RAISED, true),
-            Inline::Cite { label, .. } => (format!("[{}]", label.replace(' ', "")), Face::Regular, 1.0, true),
-            Inline::Math(l) => {
-                // (a line ending inside a formula counts as ending in front of it)
-                for (k, w) in measure::math(l).iter().enumerate() {
-                    if k > 0 {
-                        words.push(Word { width: open.take().unwrap_or(0.0), end: (i, 0), spaced: false, broken: false });
-                    }
-                    open = Some(open.unwrap_or(0.0) + w);
-                }
-                continue;
-            }
-            Inline::Picture { area, .. } => {
-                // cut from the page at 150 dots per inch, shown dot for pixel
-                let w = ((area.right - area.left) * 150.0 / 72.0).min(measure::LINE);
-                open = Some(open.unwrap_or(0.0) + w);
-                continue;
-            }
-            Inline::Break => {
-                words.push(Word { width: open.take().unwrap_or(0.0), end: (i, 0), spaced: false, broken: true });
-                continue;
-            }
-            Inline::Anchor(_) if i == m => {
-                marked = match open {
-                    Some(_) => Some((words.len(), true)),
-                    None => Some((words.len().checked_sub(1)?, false)),
-                };
-                continue;
-            }
-            Inline::Anchor(_) | Inline::Source(_) | Inline::PageLink(_) => continue,
-        };
-        let mut from = 0;
-        let mut before = ' ';
-        for (at, c) in t.char_indices().chain([(t.len(), ' ')]) {
-            let after = at + c.len_utf8().min(t.len() - at);
-            // a line may also end after the hyphen or the stroke inside a
-            // word ("wave-|optics", "and/|or"), and after a dash
-            let inside = match c {
-                '-' | '/' => before.is_alphanumeric() && t[after..].starts_with(char::is_alphabetic),
-                '–' | '—' => t[after..].starts_with(|n: char| !n.is_whitespace()),
-                _ => false,
-            };
-            before = c;
-            if inside {
-                let w = open.take().unwrap_or(0.0) + scale * measure::text(&t[from..after], face);
-                words.push(Word { width: w, end: (i, if whole { 0 } else { after }), spaced: false, broken: false });
-                from = after;
-                continue;
-            }
-            if !c.is_whitespace() {
-                continue;
-            }
-            if at > from {
-                open = Some(open.unwrap_or(0.0) + scale * measure::text(&t[from..at], face));
-            }
-            // (the end of the piece is not the end of a word)
-            if at < t.len() {
-                if let Some(w) = open.take() {
-                    words.push(Word { width: w, end: (i, if whole { 0 } else { at }), spaced: true, broken: false });
-                }
-            }
-            from = after;
-        }
-    }
-    if let Some(w) = open {
-        words.push(Word { width: w, end: (inl.len(), 0), spaced: true, broken: false });
-    }
-    let (marked, inside) = marked?;
-    // fill the lines word by word, up to the one the marker is in
-    let (mut x, mut last) = (0.0, 0);
-    let mut gap = 0.0;
-    for (k, word) in words.iter().enumerate() {
-        let fits = x == 0.0 || x + gap + word.width <= measure::LINE;
-        if !fits && k > marked {
-            break;
-        }
-        x = if fits { x + gap + word.width } else { word.width };
-        gap = if word.spaced { measure::space() } else { 0.0 };
-        last = k;
-        if word.broken {
-            if k >= marked {
-                break;
-            }
-            (x, gap) = (0.0, 0.0);
-        }
-    }
-    // (a line that ends in front of a link standing before the marker, or
-    // right at the marker, leaves the marker where it is)
-    let end = words[last].end;
-    (end.0 > m && !(last == marked && !inside)).then_some(end)
+/// The page marker inside a paragraph, where the page turns in the middle
+/// of a line: the bar and the marker under it, written into the sentence
+/// as a float as wide as the text. The browser cannot set such a float
+/// beside the words already on the line, so it puts it under that line,
+/// and goes on filling the line with the words that follow: the line the
+/// page ends in runs to the right margin as on the printed page, the
+/// marker stands alone under its bar, and the text goes on below — at any
+/// width of the window, with any type. (A viewer that drops `style`
+/// shows the marker in the sentence, without the bar.)
+fn page_mark_inline(id: &str, label: &str) -> String {
+    format!(
+        "<span class=\"page\" style=\"float:left;width:100%;margin:0.4em 0 0.6em\"><span style=\"display:block;height:2px;background:currentColor;opacity:0.25\"></span><a id=\"{id}\"><sup>[{label}]</sup></a></span>"
+    )
 }
 
 fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
@@ -414,23 +271,29 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
     if *in_list && !is_item {
         out.push('\n');
     }
-    // A page marker stands on a line of its own, under its bar: one inside
-    // a paragraph parts it at the end of the line the page ends in (so the
-    // text above the bar runs to the right margin, as on the printed page);
-    // one inside a heading or a list item goes in front of it.
+    // A page marker stands on a line of its own, under its bar. One inside
+    // a paragraph is written into it (see `page_mark_inline`: the browser
+    // puts it under the line the page ends in); one at the very start or
+    // end of a paragraph stands before or after it; one inside a heading
+    // or a list item goes in front of it.
     let is_marker = |x: &Inline| matches!(x, Inline::Anchor(id) if page_label(id).is_some());
+    let blank = |x: &Inline| matches!(x, Inline::Text(t) if t.trim().is_empty());
     match b {
-        Block::Para(inl) if inl.iter().any(is_marker) => {
+        Block::Para(inl) if inl.first().is_some_and(is_marker) || inl.iter().position(is_marker).is_some_and(|m| inl[..m].iter().all(blank)) => {
             let m = inl.iter().position(is_marker).unwrap_or(0);
-            let (above, below) = part_at_line_end(inl, m);
-            if !above.is_empty() {
-                render_block(&Block::Para(above), out, in_list);
-            }
             if let Inline::Anchor(id) = &inl[m] {
                 render_block(&Block::Anchor(id.clone()), out, in_list);
             }
-            if !below.is_empty() {
-                render_block(&Block::Para(below), out, in_list);
+            if inl[m + 1..].iter().any(|x| !blank(x)) {
+                render_block(&Block::Para(inl[m + 1..].to_vec()), out, in_list);
+            }
+            return;
+        }
+        Block::Para(inl) if inl.iter().rposition(is_marker).is_some_and(|m| inl[m + 1..].iter().all(blank)) => {
+            let m = inl.iter().rposition(is_marker).unwrap_or(0);
+            render_block(&Block::Para(inl[..m].to_vec()), out, in_list);
+            if let Inline::Anchor(id) = &inl[m] {
+                render_block(&Block::Anchor(id.clone()), out, in_list);
             }
             return;
         }
@@ -578,6 +441,21 @@ fn backlinks(n: &Note) -> String {
     }
 }
 
+/// A footnote as it stands in the bar's block where its page turns in
+/// the middle of a paragraph (see `page_mark_inline`): a line of its own
+/// above the bar.
+fn note_inline(n: &Note) -> String {
+    let text: Vec<String> = n
+        .blocks
+        .iter()
+        .filter_map(|b| match b {
+            Block::Para(inl) => Some(render_inlines(inl).trim().to_string()),
+            _ => None,
+        })
+        .collect();
+    format!("<span class=\"footnote\" style=\"display:block;margin:0 0 0.5em\"><a id=\"{}\"></a>**{}.** {}{}</span>", n.id, n.label, text.join(" "), backlinks(n))
+}
+
 fn render_note(n: &Note, label: &str, out: &mut String) {
     let mut first = true;
     let mut in_list = false;
@@ -708,7 +586,20 @@ fn chapter_body(book: &Book, i: usize) -> String {
     // pictures are numbered through the whole book
     let is_fig = |b: &crate::Blk| matches!(b.block, crate::Block::Figure { .. });
     let mut fig_no = book.chapters[..i].iter().flat_map(|c| &c.blocks).filter(|b| is_fig(b)).count();
+    // The footnotes of a page stand at the foot of that page: before the
+    // bar of the next page (inside the bar's own block, where the page
+    // turns in the middle of a paragraph), or at the chapter's end.
+    let mut foot: std::collections::VecDeque<&Note> = ch.notes.iter().filter(|n| n.page.is_some()).collect();
     for (bi, b) in ch.blocks.iter().enumerate() {
+        // (what stands on a later page: the notes of the pages before it first)
+        while foot.front().is_some_and(|n| n.page.is_some_and(|p| p < b.page)) {
+            if in_list {
+                s.push('\n');
+                in_list = false;
+            }
+            let n = foot.pop_front().unwrap();
+            render_note(n, &format!("{}.", n.label), &mut s);
+        }
         let neutral = matches!(b.block, crate::Block::Anchor(_));
         if !neutral && b.centered != centered {
             if in_list {
@@ -742,6 +633,31 @@ fn chapter_body(book: &Book, i: usize) -> String {
             s.push_str(&format!("![{caption}]({})\n\n_{caption}_\n\n", figure_file(*page, *n)));
             continue;
         }
+        // A paragraph that goes on over a page: the notes of the page
+        // that ends in it go into the bar's block, above the bar. (Only
+        // where its markers are the pages of the PDF, one after another.)
+        if let crate::Block::Para(inl) = &b.block {
+            let marks: Vec<&String> = inl.iter().filter_map(|x| if let Inline::Anchor(id) = x { page_label(id).map(|_| id) } else { None }).collect();
+            let turns = |k: usize| book.labels.get(b.page + k + 1).and_then(|l| l.as_ref()).is_some_and(|l| marks[k] == &format!("p{l}"));
+            if !marks.is_empty() && (0..marks.len()).all(turns) && foot.front().is_some_and(|n| n.page.is_some_and(|p| p < b.page + marks.len())) {
+                let mut text = String::new();
+                render_block(&b.block, &mut text, &mut in_list);
+                for (k, id) in marks.iter().enumerate() {
+                    let mut notes = String::new();
+                    while foot.front().is_some_and(|n| n.page.is_some_and(|p| p <= b.page + k)) {
+                        notes.push_str(&note_inline(foot.pop_front().unwrap()));
+                    }
+                    // (right after the opening of the bar's block)
+                    let at = text.find(&format!("<a id=\"{id}\"><sup>[")).and_then(|m| text[..m].rfind("<span class=\"page\"")).and_then(|open| text[open..].find('>').map(|e| open + e + 1));
+                    match at {
+                        Some(at) if !notes.is_empty() => text.insert_str(at, &notes),
+                        _ => {}
+                    }
+                }
+                s.push_str(&text);
+                continue;
+            }
+        }
         render_block(&b.block, &mut s, &mut in_list);
     }
     if in_list {
@@ -750,9 +666,14 @@ fn chapter_body(book: &Book, i: usize) -> String {
     if centered {
         s.push_str("</div>\n\n");
     }
-    if !ch.notes.is_empty() {
+    // the notes of the chapter's last page
+    for n in foot {
+        render_note(n, &format!("{}.", n.label), &mut s);
+    }
+    // notes from the end of the book: at the end of their chapter
+    if ch.notes.iter().any(|n| n.page.is_none()) {
         s.push_str("---\n\n## Notes\n\n");
-        for n in &ch.notes {
+        for n in ch.notes.iter().filter(|n| n.page.is_none()) {
             render_note(n, &format!("{}.", n.label), &mut s);
         }
     }
@@ -959,80 +880,26 @@ mod tests {
             Inline::Anchor("p8".into()),
             Inline::Text("in this sentence.".into()),
         ]);
-        // the paragraph ends in the line the page ends in: the bar comes after it
+        // inside a paragraph: written into it, for the browser to put
+        // under the line the page ends in
         let (mut out, mut in_list) = (String::new(), false);
         render_block(&para, &mut out, &mut in_list);
-        assert_eq!(out, format!("The page ends in this sentence.\n\n{PAGE_BAR}\n<a id=\"p8\"><sup>[p. 8]</sup></a>\n\n"));
+        assert_eq!(out, format!("The page ends {}in this sentence.\n\n", page_mark_inline("p8", "p. 8")));
+        assert!(page_mark_inline("p8", "p. 8").contains("float:left;width:100%") && page_mark_inline("p8", "p. 8").contains("<a id=\"p8\"><sup>[p. 8]</sup></a>"));
+        // at the end of a paragraph, or at its start: a bar of its own
+        let ends = Block::Para(vec![Inline::Text("The page ends here. ".into()), Inline::Anchor("p8".into())]);
+        let mut out = String::new();
+        render_block(&ends, &mut out, &mut in_list);
+        assert_eq!(out, format!("The page ends here.\n\n{PAGE_BAR}\n<a id=\"p8\"><sup>[p. 8]</sup></a>\n\n"));
+        let starts = Block::Para(vec![Inline::Anchor("p8".into()), Inline::Text("A new page.".into())]);
+        let mut out = String::new();
+        render_block(&starts, &mut out, &mut in_list);
+        assert_eq!(out, format!("{PAGE_BAR}\n<a id=\"p8\"><sup>[p. 8]</sup></a>\n\nA new page.\n\n"));
         // in a heading: in front of it
         let head = Block::Heading { level: 1, size: 0.0, id: "s-x".into(), text: vec![Inline::Anchor("p9-approx".into()), Inline::Text("Title".into())] };
         let mut out = String::new();
         render_block(&head, &mut out, &mut in_list);
         assert_eq!(out, format!("{PAGE_BAR}\n<a id=\"p9-approx\"><sup>[≈p. 9]</sup></a>\n\n# <a id=\"s-x\"></a>Title\n\n"));
-    }
-
-    /// "aaaa" is 35.9 px wide and a space 4.2 px: 19 of them fill a line.
-    fn words(n: usize) -> String {
-        vec!["aaaa"; n].join(" ")
-    }
-
-    fn parted(before: usize, after: usize) -> (String, String) {
-        let para = vec![
-            Inline::Text(words(before) + " "),
-            Inline::Anchor("p8".into()),
-            Inline::Text(words(after)),
-        ];
-        let (a, b) = part_at_line_end(&para, 1);
-        (render_inlines(&a).trim().to_string(), render_inlines(&b).trim().to_string())
-    }
-
-    #[test]
-    fn the_text_above_a_page_bar_ends_with_a_full_line() {
-        // the page ends 5 words into the first line: the line is filled
-        assert_eq!(parted(5, 35), (words(19), words(21)));
-        // ... 6 words into the second line
-        assert_eq!(parted(25, 35), (words(38), words(22)));
-        // at a line's end: nothing moves
-        assert_eq!(parted(19, 21), (words(19), words(21)));
-        assert_eq!(parted(38, 2), (words(38), words(2)));
-        // the paragraph ends in that line: all of it goes above the bar
-        assert_eq!(parted(20, 3), (words(23), String::new()));
-    }
-
-    #[test]
-    fn a_line_does_not_end_inside_a_formula_or_a_link() {
-        // "$x$," is one word: the comma is not left behind
-        let para = vec![
-            Inline::Text(words(5) + " "),
-            Inline::Anchor("p8".into()),
-            Inline::Text(words(13) + " "),
-            Inline::Math("x".into()),
-            Inline::Text(", ".to_string() + &words(10)),
-        ];
-        let (a, b) = part_at_line_end(&para, 1);
-        assert_eq!(render_inlines(&a).trim(), format!("{} $x$,", words(18)));
-        assert_eq!(render_inlines(&b).trim(), words(10));
-        // a link the line would end in goes below the bar whole
-        let para = vec![
-            Inline::Text(words(5) + " "),
-            Inline::Anchor("p8".into()),
-            Inline::Text(words(12) + " "),
-            Inline::Link { text: words(5), href: "#x".into() },
-            Inline::Text(" ".to_string() + &words(10)),
-        ];
-        let (a, b) = part_at_line_end(&para, 1);
-        assert_eq!(render_inlines(&a).trim(), words(17));
-        assert!(render_inlines(&b).starts_with(&format!("[{}](#x)", words(5))));
-        // the next page's marker is not passed
-        let para = vec![
-            Inline::Text(words(5) + " "),
-            Inline::Anchor("p8".into()),
-            Inline::Text(words(3) + " "),
-            Inline::Anchor("p9".into()),
-            Inline::Text(words(30)),
-        ];
-        let (a, b) = part_at_line_end(&para, 1);
-        assert_eq!(render_inlines(&a).trim(), words(8));
-        assert!(matches!(&b[0], Inline::Anchor(id) if id == "p9"));
     }
 
     #[test]

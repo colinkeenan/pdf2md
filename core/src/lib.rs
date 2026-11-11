@@ -172,6 +172,10 @@ pub struct Note {
     pub blocks: Vec<Block>,
     /// Anchor ids of the places in the text that cite this note.
     pub backrefs: Vec<String>,
+    /// A footnote printed at the foot of a page: which page (its place in
+    /// the page list). It is written at the foot of that page; a note
+    /// from the end of the book, at the end of its chapter.
+    pub page: Option<usize>,
 }
 
 #[derive(Debug, Clone, Default)]
@@ -318,6 +322,7 @@ pub fn convert_pdf_pages(path: &Path, pages: Option<(u32, u32)>) -> Result<Book,
         convert_doc(&doc)
     };
     book.title = book_title(path, &doc);
+    structure::half_title_to_contents(&mut book.chapters, &book.title);
     book.source = Some(path.to_path_buf());
     progress::report(progress::Step::Book, 1, 1);
     Ok(book)

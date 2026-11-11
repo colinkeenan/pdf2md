@@ -700,12 +700,7 @@ $$
 N_{k\lambda} = \tilde{a}_{k\lambda} a_{k\lambda} \quad ( \text{ not summed } )
 $$
 
-is an operator just representing the number of quanta in the frequency $k$ and polarization $\lambda$. It follows at once from the commutation rules (213), from the singular $\delta$-function factor which comes from the continuous spectrum, $N_{k\lambda}$ being in fact the number of quanta per unit frequency range, that $\int N_{k\lambda} d^{3} \boldsymbol{k}$ integrated over _any_ region of momentum-space has the integer eigenvalues 0, 1, 2, $\dots$ . This is so, because the state with $n_{i}$ particles with <a id="ix-210">momentum</a> $k_{i}$ is Ψ = $\prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}}$Ψ$o$. Then
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p50"><sup>[p. 50]</sup></a>
-
-taking $\int_{\Omega} N_{k\lambda} d^{3} \boldsymbol{k}$ over Ω including the momenta $k_{1} ,k_{2} ,\dots ,k_{j}$ we get
+is an operator just representing the number of quanta in the frequency $k$ and polarization $\lambda$. It follows at once from the commutation rules (213), from the singular $\delta$-function factor which comes from the continuous spectrum, $N_{k\lambda}$ being in fact the number of quanta per unit frequency range, that $\int N_{k\lambda} d^{3} \boldsymbol{k}$ integrated over _any_ region of momentum-space has the integer eigenvalues 0, 1, 2, $\dots$ . This is so, because the state with<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p50"><sup>[p. 50]</sup></a></span> $n_{i}$ particles with <a id="ix-210">momentum</a> $k_{i}$ is Ψ = $\prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}}$Ψ$o$. Then taking $\int_{\Omega} N_{k\lambda} d^{3} \boldsymbol{k}$ over Ω including the momenta $k_{1} ,k_{2} ,\dots ,k_{j}$ we get
 
 $$
 \int_{\Omega} N_{k\lambda} d^{3} \boldsymbol{k} \Psi = \int_{\Omega} \tilde{a}_{k\lambda} a_{k\lambda} \prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}} \Psi_{o} d^{3} \boldsymbol{k}
@@ -1356,10 +1351,7 @@ $$
 L_{o} = - \hbar c \overline{\psi} \left( \sum_{\lambda} \gamma_{\lambda} \frac{\partial}{\partial x_{\lambda}} + \mu \right) \psi \tag{285}
 $$
 
-Note the factor $\hbar$ here. This means that the theory has no classical limit in the sense of the Correspondence Principle. In the classical limit, only charges and currents composed of many particles have any meaning; the $\psi$ field disappears entirely from view. The $\hbar$ has to be put into (285) to make the dimensions right, since $\left( \overline{\psi} \psi \right)$ has dimensions (1/Volume) just as in the 1-particle Dirac theory of which this is an extension. <a id="ix-190">Field</a> equations
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p60"><sup>[p. 60]</sup></a>
+Note the factor $\hbar$ here. This means that the theory has no classical limit in the sense of the Correspondence Principle. In the classical limit, only charges and currents composed of many particles have any meaning; the $\psi$ field disappears entirely from view. The $\hbar$ has to be put into (285) to make the dimensions right, since $\left( \overline{\psi} \psi \right)$ has dimensions (1/Volume) just as in the 1-particle Dirac theory of which this is an extension.<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p60"><sup>[p. 60]</sup></a></span> <a id="ix-190">Field</a> equations
 
 <a id="eq-286"></a>
 
@@ -1938,12 +1930,7 @@ $$
 
 We assume further the potentials to be such that the eigenfunctions $\psi_{n}$ separate clearly into two classes, the $\psi_{n +}$ with positive $E_{n}$ and the $\psi_{n -}$ with negative $E_{n}$. This is again true for all physically occurring potentials, though it would fail for the Coulomb field of a point nucleus with charge $Z>$ 137.
 
-The time-independent potentials make the problem essentially non-covariant, and so we shall use the non-covariant notations in developing the theory. We write the equations as if all the levels $n$ are _discrete_, thus $\sum n$ means a sum over discrete levels plus an integral over continuous levels suitably normalized. We are now chiefly interested in discrete levels, and so we need not bother to write the formulae for normalizing the continuous levels explicitly. This makes the picture apparently simpler
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p67"><sup>[p. 67]</sup></a>
-
-than the free-particle theory, where the normalization of continuous levels was done at every stage accurately; the simplicity is only apparent, because we shall just be ignoring the complications arising from continuous levels.
+The time-independent potentials make the problem essentially non-covariant, and so we shall use the non-covariant notations in developing the theory. We write the equations as if all the levels $n$ are _discrete_, thus $\sum n$ means a sum over discrete levels plus an integral over continuous levels suitably normalized. We are now chiefly interested in discrete levels, and so we need not bother to write the formulae for normalizing<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p67"><sup>[p. 67]</sup></a></span> the continuous levels explicitly. This makes the picture apparently simpler than the free-particle theory, where the normalization of continuous levels was done at every stage accurately; the simplicity is only apparent, because we shall just be ignoring the complications arising from continuous levels.
 
 The general solution of the <a id="ix-193">field</a> equations (332) is
 
@@ -2227,12 +2214,7 @@ $$
 
 Here $S_{R}$ is given by (293), (301), and (303), and $\psi ( x )$ is a solution of the free-field equation (286). In fact $\psi ( x )$ is the field operator of the interaction representation, when the effects of $A_{\mu}$ are represented in the wave-function instead of in the operators. Using the retarded potential in (361) means that the unperturbed states are specified in the past, as the initial states upon which $A_{\mu}^{e}$ later produces effects. Thus the vacuum state defined by (323a) is the state in which initially no electrons or positrons are present. This is the state which we wish to study, and we call it Ψ$o$.
 
-Using the interaction representation operators $\psi ( x )$, Ψ$o$ is the vacuum state and remains so for all time; the physical state is initially Ψ$o$ but does not remain Ψ$o$. Using the Heisenberg operators $\psi_{H} ( x )$, Ψ$o$ is the physical state for all time; it is initially the vacuum state but does not remain so. In
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p71"><sup>[p. 71]</sup></a>
-
-the remote past as $x_{0} \to -\infty$, because $S_{R}$ is a retarded potential $\psi_{H} ( x )$ and $\psi ( x )$ become identical.
+Using the interaction representation operators $\psi ( x )$, Ψ$o$ is the vacuum state and remains so for all time; the physical state is initially Ψ$o$ but does not remain Ψ$o$. Using the Heisenberg operators $\psi_{H} ( x )$, Ψ$o$ is the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p71"><sup>[p. 71]</sup></a></span> physical state for all time; it is initially the vacuum state but does not remain so. In the remote past as $x_{0} \to -\infty$, because $S_{R}$ is a retarded potential $\psi_{H} ( x )$ and $\psi ( x )$ become identical.
 
 The expression (361) is useful because we know how to calculate matrix elements of $\psi ( x )$ from the state Ψ$o$, whereas the matrix elements of $\psi_{H}$ do not have any simple form. We also need the adjoint equation
 
@@ -2773,12 +2755,7 @@ The result (409) was calculated many years ago by Uehling <a id="refback-17-1"><
 
 ### <a id="s-the-complete-relativistic-quantum-electrodynamics"></a>The Complete Relativistic Quantum Electrodynamics
 
-We now take the combined system of Dirac and Maxwell fields in interaction, and make out of it a relativistic quantum theory using the methods we have already developed. This will then be the complete theory of quantum electrodynamics, applicable to all problems in which electrons, positrons and photons are concerned. We also include in the theory a classical Maxwell field, which
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p79"><sup>[p. 79]</sup></a>
-
-acts on the electrons and positrons and represents the effects of external charges such as protons which may happen to be present.
+We now take the combined system of Dirac and Maxwell fields in interaction, and make out of it a relativistic quantum theory using the methods we have already developed. This will then be the complete theory of quantum electrodynamics, applicable to all problems in which electrons, positrons and photons are<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p79"><sup>[p. 79]</sup></a></span> concerned. We also include in the theory a classical Maxwell field, which acts on the electrons and positrons and represents the effects of external charges such as protons which may happen to be present.
 
 Lagrangian
 

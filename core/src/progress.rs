@@ -19,6 +19,8 @@ pub enum Step {
     Drawings,
     /// the pages of a scanned book read by the page reader (pages)
     Scan,
+    /// the marks of footnotes looked for on the pictures of pages (pages)
+    Marks,
     /// images looked at: a drawing, or something to read? (images)
     Sorting,
     /// images read as plain text, to find program code among them (images)
@@ -48,10 +50,11 @@ const RECOGNIZER: [Step; 8] =
     [Step::Sorting, Step::Words, Step::Model, Step::Formulas, Step::Again, Step::Lines, Step::Labels, Step::Check];
 
 impl Step {
-    pub const ALL: [Step; 14] = [
+    pub const ALL: [Step; 15] = [
         Step::Text,
         Step::Drawings,
         Step::Scan,
+        Step::Marks,
         Step::Sorting,
         Step::Words,
         Step::Model,
@@ -71,6 +74,7 @@ impl Step {
             Step::Text => "Reading the text",
             Step::Drawings => "Reading drawings and pictures",
             Step::Scan => "Reading the scanned pages",
+            Step::Marks => "Looking for footnote marks",
             Step::Sorting => "Telling drawings from equations",
             Step::Words => "Looking for program code",
             Step::Model => "Loading the equation reader",
@@ -88,7 +92,7 @@ impl Step {
     /// What its amounts count.
     pub fn unit(self) -> &'static str {
         match self {
-            Step::Text | Step::Drawings | Step::Scan => "pages",
+            Step::Text | Step::Drawings | Step::Scan | Step::Marks => "pages",
             Step::Sorting | Step::Words => "images",
             Step::Formulas | Step::Again | Step::Lines | Step::Labels | Step::Check => "equations",
             Step::Pictures => "pictures",
@@ -107,6 +111,7 @@ impl Step {
             Step::Drawings => (0.05, 2.0),
             // (with the page reader's models loaded first)
             Step::Scan => (6.0, 60.0),
+            Step::Marks => (3.0, 2.0),
             Step::Sorting => (0.05, 2.0),
             Step::Words => (0.1, 2.0),
             Step::Model => (0.0, 40.0),
@@ -263,7 +268,7 @@ impl Tracker {
         let steps = Step::ALL
             .iter()
             // (only a scanned book is read by the page reader)
-            .map(|&step| Timing { step, done: 0, total: 0, started: None, first: None, latest: None, stride: 1, finished: None, skipped: step == Step::Scan })
+            .map(|&step| Timing { step, done: 0, total: 0, started: None, first: None, latest: None, stride: 1, finished: None, skipped: matches!(step, Step::Scan | Step::Marks) })
             .collect();
         Tracker { began: now, pages: 0, steps }
     }
@@ -350,7 +355,7 @@ impl Tracker {
             // (how many must be read again is not known before)
             Step::Again => 0.05 * images,
             Step::Sorting | Step::Words | Step::Formulas | Step::Lines | Step::Labels | Step::Check => images,
-            Step::Model | Step::Book | Step::Files => 0.0,
+            Step::Marks | Step::Model | Step::Book | Step::Files => 0.0,
         };
         let rate = match (step, reading) {
             (Step::Lines, Some(r)) => per_unit.max(0.5 * r),

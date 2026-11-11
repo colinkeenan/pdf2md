@@ -205,12 +205,7 @@ In the NR theory it was found that almost any classical system could be handled,
 
 (ii) <a id="ix-284">Yukawa</a> from a study of nuclear forces predicted the <a id="ix-199">meson</a>, which was later discovered <a id="refback-10-1"></a>[[10]](#ref-10).
 
-These two examples are special cases of the general principle, which is the basic success of the relativistic quantum theory, that _A Relativistic Quantum Theory of a Finite Number of Particles is Impossible._ A RQ theory necessarily contains these features: an indefinite number of particles of one or more types, particles of each type being identical and indistinguishable from each other, possibility of <a id="ix-41">creation</a> and <a id="ix-19">annihilation</a> of particles. Thus the two principles of relativity and quantum theory when combined lead to a world built up out of various types of elementary particles, and so make us feel quite confident that we are on the right way to an understanding of the real world. In addition, various detailed properties of the observed particles are necessary consequences of the
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p2"><sup>[p. 2]</sup></a>
-
-general theory. These are for example:
+These two examples are special cases of the general principle, which is the basic success of the relativistic quantum theory, that _A Relativistic Quantum Theory of a Finite Number of Particles is Impossible._ A RQ theory necessarily contains these features: an indefinite number of particles of one or more types, particles of each type being identical and indistinguishable from each other, possibility of <a id="ix-41">creation</a> and <a id="ix-19">annihilation</a> of particles. Thus the two principles of relativity and quantum theory when combined lead to a world built up out of various types of elementary particles, and so make us feel quite confident that we are on the right way to an understanding of the real world. In addition, various detailed properties of the observed particles<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p2"><sup>[p. 2]</sup></a></span> are necessary consequences of the general theory. These are for example:
 
 (i) <a id="ix-112">Magnetic moment</a> of Electron (<a id="ix-94">Dirac</a>) <a id="refback-9-2"></a>[[9]](#ref-9).
 
@@ -2715,12 +2710,7 @@ $$
 \delta I ( \Omega ) = \int d\tau \sum_{\alpha} \{ ( \pi_{\alpha} \delta \varphi^{\alpha} ) ( t_{1} ) - ( \pi_{\alpha} \delta \varphi^{\alpha} ) ( t_{2} ) \}-\{ H ( t_{1} ) \delta t_{1} - H ( t_{2} ) \delta t_{2} \} \tag{165}
 $$
 
-The essential feature of this classical theory is that the <a id="ix-1">Action</a> Principle is stated only for variations vanishing on the boundary of Ω. From this one can _deduce_ as in (163) and (165) the effect on $I$(Ω) of variations not vanishing on the boundary. This is possible because each state of motion is defined by fixing _as many_ field quantities as can be fixed independently, (e.g. all the fields on two space-like surfaces or all the fields and their time-derivatives on one surface) and then the whole past and
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p34"><sup>[p. 34]</sup></a>
-
-future of the motion is determined by the <a id="ix-77">field</a> equations.
+The essential feature of this classical theory is that the <a id="ix-1">Action</a> Principle is stated only for variations vanishing on the boundary of Ω. From this one can _deduce_ as in (163) and (165) the effect on $I$(Ω) of variations not vanishing on the boundary. This is possible because each state of motion is defined by fixing _as many_ field quantities as can be fixed independently, (e.g. all the fields on two space-like surfaces or all<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p34"><sup>[p. 34]</sup></a></span> the fields and their time-derivatives on one surface) and then the whole past and future of the motion is determined by the <a id="ix-77">field</a> equations.
 
 Field equations can be written in the Hamiltonian form
 
@@ -2833,12 +2823,7 @@ $$
 \langle \varphi_{1}^{\prime \alpha} ,\sigma_{1} \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = N \sum_{H} \exp \left\{ \frac{i}{\hbar} I_{H} ( \Omega ) \right\} \tag{174}
 $$
 
-Here $H$ represents a History of the fields between $\sigma_{2}$ and $\sigma_{1}$, i.e. any set of classical functions $\varphi^{\alpha} ( x )$ which are defined in the region Ω between $\sigma_{2}$ and $\sigma_{1}$ and which take the values $\varphi_{1}^{\prime \alpha}$ on $\sigma_{1}$ and $\varphi_{2}^{\prime \alpha}$ on $\sigma_{2} . I_{H}$(Ω) is the value of $I$(Ω) calculated with these particular functions. The sum $\sum H$ is taken over all possible histories, a continuously infinite sum whose exact mathematical definition is not easy to formulate. $N$ is a normalization factor independent of the particular states considered, chosen so as to make the sum of the squares of the amplitudes from a given state to all other states equal to 1. This formula is derived by Feynman from very general considerations, applying a Huyghens principle to the solution of wave-mechanics just as it is done in wave-optics. By this one formula the whole theory is quantized and the answer to any physical problem in principle given. The
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p36"><sup>[p. 36]</sup></a>
-
-method applies not only to field theory but to ordinary NR quantum theory too. We do not try to derive or justify the Feynman formula here. We just show that it gives the same results as the usual QM. For a discussion of the difficulties in defining the sum $\sum H$, and a method of doing it in simple cases, see C. <a id="ix-215">Morette</a>, _Phys. Rev._ **81** (1951) 848.
+Here $H$ represents a History of the fields between $\sigma_{2}$ and $\sigma_{1}$, i.e. any set of classical functions $\varphi^{\alpha} ( x )$ which are defined in the region Ω between $\sigma_{2}$ and $\sigma_{1}$ and which take the values $\varphi_{1}^{\prime \alpha}$ on $\sigma_{1}$ and $\varphi_{2}^{\prime \alpha}$ on $\sigma_{2} . I_{H}$(Ω) is the value of $I$(Ω) calculated with these particular functions. The sum $\sum H$ is taken over all possible histories, a continuously infinite sum whose exact mathematical definition is not easy to formulate. $N$ is a normalization factor independent of the particular states considered, chosen so as to make the sum of the squares of the amplitudes from a given state to all other states equal to 1. This formula is derived by Feynman from very general considerations, applying a Huyghens principle to the solution of wave-mechanics just as it is done in wave-optics. By this one formula the whole theory is quantized and the answer to any<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p36"><sup>[p. 36]</sup></a></span> physical problem in principle given. The method applies not only to field theory but to ordinary NR quantum theory too. We do not try to derive or justify the Feynman formula here. We just show that it gives the same results as the usual QM. For a discussion of the difficulties in defining the sum $\sum H$, and a method of doing it in simple cases, see C. <a id="ix-215">Morette</a>, _Phys. Rev._ **81** (1951) 848.
 
 From formula (174) we derive at once the most general _Correspondence Principle_ giving us back the classical theory in the limit as $\hbar \to$ 0. For suppose $\hbar \to$ 0 then the exponential factor in (174) becomes an extremely rapidly oscillating function of $H$ for all histories $H$ _except_ that one for which $I$(Ω) is stationary. Therefore in the limit the sum $\sum H$ reduces to the contribution from the classical motion leading from $\varphi_{2}^{\prime \alpha}$ on $\sigma_{2}$ to $\varphi_{1}^{\prime \alpha}$ on $\sigma_{1}$, all other contributions interfering destructively. The classical motion is defined by the condition that<sup><a id="fnref-17" href="#fn-17">17</a></sup> its $\delta I$(Ω) = 0 for all small variations of the $\varphi^{\alpha}$ between $\sigma_{2}$ and $\sigma_{1}$. This passage to the classical theory is precisely analogous to the passage from wave-optics to geometrical optics when the wave-length of light is allowed to tend to zero. The <a id="ix-283">WKB approximation</a> is gotten by taking $\hbar$ small but not quite zero.
 
@@ -3101,12 +3086,7 @@ $$
 \delta_{\mathcal{Q}} ( L ) = \epsilon \delta^{4} ( x - y ) \mathcal{Q} ( y ) \tag{192}
 $$
 
-to $L ( x )$ produces at most a change $\epsilon \delta_{\mathcal{Q}} \varphi^{\alpha} ( x )$ in the $\varphi^{\alpha} ( x )$. Let $\epsilon \delta_{\mathcal{R}} \mathcal{Q} ( y )$ be the change in $\mathcal{Q} ( y )$ produced by the addition (191), while $\epsilon \delta_{\mathcal{Q}} \mathcal{R} ( z )$ be the change in $\mathcal{R} ( z )$ produced by (192). Suppose $y$ lies on a surface $\sigma$ lying in the future of $z$. Then we take $\mathcal{Q} ( y )$ for $\mathcal{O} ( \sigma )$ in (186), and $\delta L$ given by
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p40"><sup>[p. 40]</sup></a>
-
-(191). The $\delta I$(Ω) given by (182) reduces then simply to
+to $L ( x )$ produces at most a change $\epsilon \delta_{\mathcal{Q}} \varphi^{\alpha} ( x )$ in the $\varphi^{\alpha} ( x )$. Let $\epsilon \delta_{\mathcal{R}} \mathcal{Q} ( y )$ be the change in $\mathcal{Q} ( y )$ produced by the addition (191), while $\epsilon \delta_{\mathcal{Q}} \mathcal{R} ( z )$ be the change in $\mathcal{R} ( z )$ produced by (192). Suppose $y$ lies on a surface<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p40"><sup>[p. 40]</sup></a></span> $\sigma$ lying in the future of $z$. Then we take $\mathcal{Q} ( y )$ for $\mathcal{O} ( \sigma )$ in (186), and $\delta L$ given by (191). The $\delta I$(Ω) given by (182) reduces then simply to
 
 $$
 \delta I ( \Omega ) = \frac{1}{c} \epsilon \mathcal{R} ( z )
@@ -3884,12 +3864,7 @@ $$
 N_{k\lambda} = \tilde{a}_{k\lambda} a_{k\lambda} \quad ( \text{ not summed } )
 $$
 
-is an operator just representing the number of quanta in the frequency $k$ and polarization $\lambda$. It follows at once from the commutation rules (213), from the singular $\delta$-function factor which comes from the continuous spectrum, $N_{k\lambda}$ being in fact the number of quanta per unit frequency range, that $\int N_{k\lambda} d^{3} \boldsymbol{k}$ integrated over _any_ region of momentum-space has the integer eigenvalues 0, 1, 2, $\dots$ . This is so, because the state with $n_{i}$ particles with <a id="ix-210">momentum</a> $k_{i}$ is Ψ = $\prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}}$Ψ$o$. Then
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p50"><sup>[p. 50]</sup></a>
-
-taking $\int_{\Omega} N_{k\lambda} d^{3} \boldsymbol{k}$ over Ω including the momenta $k_{1} ,k_{2} ,\dots ,k_{j}$ we get
+is an operator just representing the number of quanta in the frequency $k$ and polarization $\lambda$. It follows at once from the commutation rules (213), from the singular $\delta$-function factor which comes from the continuous spectrum, $N_{k\lambda}$ being in fact the number of quanta per unit frequency range, that $\int N_{k\lambda} d^{3} \boldsymbol{k}$ integrated over _any_ region of momentum-space has the integer eigenvalues 0, 1, 2, $\dots$ . This is so, because the state with<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p50"><sup>[p. 50]</sup></a></span> $n_{i}$ particles with <a id="ix-210">momentum</a> $k_{i}$ is Ψ = $\prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}}$Ψ$o$. Then taking $\int_{\Omega} N_{k\lambda} d^{3} \boldsymbol{k}$ over Ω including the momenta $k_{1} ,k_{2} ,\dots ,k_{j}$ we get
 
 $$
 \int_{\Omega} N_{k\lambda} d^{3} \boldsymbol{k} \Psi = \int_{\Omega} \tilde{a}_{k\lambda} a_{k\lambda} \prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}} \Psi_{o} d^{3} \boldsymbol{k}
@@ -4540,10 +4515,7 @@ $$
 L_{o} = - \hbar c \overline{\psi} \left( \sum_{\lambda} \gamma_{\lambda} \frac{\partial}{\partial x_{\lambda}} + \mu \right) \psi \tag{285}
 $$
 
-Note the factor $\hbar$ here. This means that the theory has no classical limit in the sense of the Correspondence Principle. In the classical limit, only charges and currents composed of many particles have any meaning; the $\psi$ field disappears entirely from view. The $\hbar$ has to be put into (285) to make the dimensions right, since $\left( \overline{\psi} \psi \right)$ has dimensions (1/Volume) just as in the 1-particle Dirac theory of which this is an extension. <a id="ix-190">Field</a> equations
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p60"><sup>[p. 60]</sup></a>
+Note the factor $\hbar$ here. This means that the theory has no classical limit in the sense of the Correspondence Principle. In the classical limit, only charges and currents composed of many particles have any meaning; the $\psi$ field disappears entirely from view. The $\hbar$ has to be put into (285) to make the dimensions right, since $\left( \overline{\psi} \psi \right)$ has dimensions (1/Volume) just as in the 1-particle Dirac theory of which this is an extension.<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p60"><sup>[p. 60]</sup></a></span> <a id="ix-190">Field</a> equations
 
 <a id="eq-286"></a>
 
@@ -5122,12 +5094,7 @@ $$
 
 We assume further the potentials to be such that the eigenfunctions $\psi_{n}$ separate clearly into two classes, the $\psi_{n +}$ with positive $E_{n}$ and the $\psi_{n -}$ with negative $E_{n}$. This is again true for all physically occurring potentials, though it would fail for the Coulomb field of a point nucleus with charge $Z>$ 137.
 
-The time-independent potentials make the problem essentially non-covariant, and so we shall use the non-covariant notations in developing the theory. We write the equations as if all the levels $n$ are _discrete_, thus $\sum n$ means a sum over discrete levels plus an integral over continuous levels suitably normalized. We are now chiefly interested in discrete levels, and so we need not bother to write the formulae for normalizing the continuous levels explicitly. This makes the picture apparently simpler
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p67"><sup>[p. 67]</sup></a>
-
-than the free-particle theory, where the normalization of continuous levels was done at every stage accurately; the simplicity is only apparent, because we shall just be ignoring the complications arising from continuous levels.
+The time-independent potentials make the problem essentially non-covariant, and so we shall use the non-covariant notations in developing the theory. We write the equations as if all the levels $n$ are _discrete_, thus $\sum n$ means a sum over discrete levels plus an integral over continuous levels suitably normalized. We are now chiefly interested in discrete levels, and so we need not bother to write the formulae for normalizing<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p67"><sup>[p. 67]</sup></a></span> the continuous levels explicitly. This makes the picture apparently simpler than the free-particle theory, where the normalization of continuous levels was done at every stage accurately; the simplicity is only apparent, because we shall just be ignoring the complications arising from continuous levels.
 
 The general solution of the <a id="ix-193">field</a> equations (332) is
 
@@ -5411,12 +5378,7 @@ $$
 
 Here $S_{R}$ is given by (293), (301), and (303), and $\psi ( x )$ is a solution of the free-field equation (286). In fact $\psi ( x )$ is the field operator of the interaction representation, when the effects of $A_{\mu}$ are represented in the wave-function instead of in the operators. Using the retarded potential in (361) means that the unperturbed states are specified in the past, as the initial states upon which $A_{\mu}^{e}$ later produces effects. Thus the vacuum state defined by (323a) is the state in which initially no electrons or positrons are present. This is the state which we wish to study, and we call it Ψ$o$.
 
-Using the interaction representation operators $\psi ( x )$, Ψ$o$ is the vacuum state and remains so for all time; the physical state is initially Ψ$o$ but does not remain Ψ$o$. Using the Heisenberg operators $\psi_{H} ( x )$, Ψ$o$ is the physical state for all time; it is initially the vacuum state but does not remain so. In
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p71"><sup>[p. 71]</sup></a>
-
-the remote past as $x_{0} \to -\infty$, because $S_{R}$ is a retarded potential $\psi_{H} ( x )$ and $\psi ( x )$ become identical.
+Using the interaction representation operators $\psi ( x )$, Ψ$o$ is the vacuum state and remains so for all time; the physical state is initially Ψ$o$ but does not remain Ψ$o$. Using the Heisenberg operators $\psi_{H} ( x )$, Ψ$o$ is the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p71"><sup>[p. 71]</sup></a></span> physical state for all time; it is initially the vacuum state but does not remain so. In the remote past as $x_{0} \to -\infty$, because $S_{R}$ is a retarded potential $\psi_{H} ( x )$ and $\psi ( x )$ become identical.
 
 The expression (361) is useful because we know how to calculate matrix elements of $\psi ( x )$ from the state Ψ$o$, whereas the matrix elements of $\psi_{H}$ do not have any simple form. We also need the adjoint equation
 
@@ -5957,12 +5919,7 @@ The result (409) was calculated many years ago by Uehling <a id="refback-17-1"><
 
 ### <a id="s-the-complete-relativistic-quantum-electrodynamics"></a>The Complete Relativistic Quantum Electrodynamics
 
-We now take the combined system of Dirac and Maxwell fields in interaction, and make out of it a relativistic quantum theory using the methods we have already developed. This will then be the complete theory of quantum electrodynamics, applicable to all problems in which electrons, positrons and photons are concerned. We also include in the theory a classical Maxwell field, which
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p79"><sup>[p. 79]</sup></a>
-
-acts on the electrons and positrons and represents the effects of external charges such as protons which may happen to be present.
+We now take the combined system of Dirac and Maxwell fields in interaction, and make out of it a relativistic quantum theory using the methods we have already developed. This will then be the complete theory of quantum electrodynamics, applicable to all problems in which electrons, positrons and photons are<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p79"><sup>[p. 79]</sup></a></span> concerned. We also include in the theory a classical Maxwell field, which acts on the electrons and positrons and represents the effects of external charges such as protons which may happen to be present.
 
 Lagrangian
 
@@ -7422,12 +7379,7 @@ A $\psi$ operator not only annihilates electrons but also creates positrons. And
 
 We have introduced the Feynman graphs simply as a convenient pictorial way of visualizing the analysis of an operator into its normal constituents. The graphs are just diagrams drawn on the paper. But according to Feynman<sup><a id="fnref-71" href="#fn-71">71</a></sup> , “Space-time Approach to Quantum Electrodynamics”, _Phys. Rev._ **76** (1949) 769, the graphs are more than this. He regards the graphs as a picture of an actual process which is occurring physically in space-time. Thus $G_{2}$ represents an electron and a photon coming together and interacting at the space-time point $x_{1}$, where the photon is absorbed; then the electron propagates through space-time along the line $x_{1} x_{2}$, until at $x_{2}$ it emits a photon, and the electron and photon then travel out along the outgoing lines at $x_{2}$. According to Feynman an internal undotted line running from $x_{1}$ to $x_{2}$ represents an electron propagating from $x_{1}$ to $x_{2}$ if the time $x_{2}$ is later than the time $x_{1}$, and represents a positron propagating from $x_{2}$ to $x_{1}$ if the time $x_{2}$ is earlier. In this sense a positron can be regarded as precisely equivalent to an electron which happens to propagate itself backwards instead of forwards in time.
 
-The space-time picture of Feynman is a perfectly consistent and reasonable one. It gives a correct account of everything that happens, including pair creation and annihilation and all the other phenomena connected with positrons. It is in fact equivalent mathematically to the field-theory
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p100"><sup>[p. 100]</sup></a>
-
-treatment we follow in this course.
+The space-time picture of Feynman is a perfectly consistent and reasonable one. It gives a correct account of everything that happens, including pair creation and annihilation and all the other phenomena<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p100"><sup>[p. 100]</sup></a></span> connected with positrons. It is in fact equivalent mathematically to the field-theory treatment we follow in this course.
 
 The disadvantage of the Feynman theory is that it is constructed as a particle theory. The fact that there are many particles, indistinguishable from each other and obeying quantum statistics, has to be put into the theory as a special assumption. And the equations of motion of the particles become quite complicated when interactions between several particles, not to mention vacuum-polarization effects, are included. Thus the logical basis of the Feynman theory is much less simple than that of the field theory, where everything follows from general principles once the form of the Lagrangian is chosen.
 
@@ -7471,10 +7423,7 @@ and for every set of field operators $\mathcal{R}_{1} \mathcal{R}_{2} \dots \mat
 
 The rules for writing down the normal constituents of (488) are therefore extremely simple. We are generally only interested in those normal constituents which give matrix elements for some specified type of scattering process. Then the rules are
 
-1) Draw all the graphs which have the right set of external lines corresponding to the particles absorbed and emitted in the process considered. Each <a id="ix-127">graph</a> $G$ will have the same external lines, but the number of vertices and of internal lines will vary from graph to graph. We shall always calculate only up to some definite order $N$ in the series (488), and so we draw only graphs with not more than $N$ vertices. The total number of such graphs is finite. Each vertex in each graph must have precisely 3 lines ending at it, one incoming electron line, one outgoing electron line, and one photon line.
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p101"><sup>[p. 101]</sup></a>
+1) Draw all the graphs which have the right set of external lines corresponding to the particles absorbed and emitted in the process considered. Each <a id="ix-127">graph</a> $G$ will have the same external lines, but the number of vertices and of internal lines will vary from graph to graph. We shall always calculate only up to some definite order $N$ in the series (488), and so we draw only graphs with not more than $N$ vertices. The total number of such graphs is finite. Each vertex in each graph must have precisely 3 lines ending at it, one<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p101"><sup>[p. 101]</sup></a></span> incoming electron line, one outgoing electron line, and one photon line.
 
 2) To each <a id="ix-128">graph</a> $G$ with $n$ vertices corresponds one normal constituent $S_{G}$ of $S$.
 
@@ -7512,12 +7461,7 @@ corresponding to each internal photon line of $G$ at which the 3 lines associate
 
 In addition to these factors there will be numerical factors and Dirac matrices $\gamma_{\alpha}$ arising from the particular form of $S_{n}$. In practice it is easiest not to write down the $S_{G}$ directly in momentum space, but to use the rules (1) – (4) to obtain formulae in configuration space with the right numerical constants, and then transform to momentum space by (430) and (448).
 
-We shall now show how these general methods work by calculating in detail _the_ historic problem, the second-order radiative correction to the scattering of an electron by a weak external potential. This
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p102"><sup>[p. 102]</sup></a>
-
-problem has been first satisfactorily treated by Schwinger,<sup><a id="fnref-72" href="#fn-72">72</a></sup> _Phys. Rev._ **76** (1949) 790. Schwinger’s paper is outstandingly difficult to read, and I hope you will find my treatment at least slightly easier. But the problem is in its nature complicated and cannot be done without some fairly heavy mathematics. Once the calculations are done for this problem of scattering, it turns out that the results can be used without much further trouble for the relativistic calculation of the Lamb shift too. The scattering and Lamb shift problems are very closely related: in both cases one is calculating the second-order radiative corrections to the motion of an electron, only in one case the electron is in a high continuum state so that the external field can be treated as weak, in the other case the electron is in a discrete state and the potential must be treated as strong.
+We shall now show how these general methods work by calculating in detail _the_ historic problem, the second-order radiative correction to the scattering of an electron by a weak external potential. This<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p102"><sup>[p. 102]</sup></a></span> problem has been first satisfactorily treated by Schwinger,<sup><a id="fnref-72" href="#fn-72">72</a></sup> _Phys. Rev._ **76** (1949) 790. Schwinger’s paper is outstandingly difficult to read, and I hope you will find my treatment at least slightly easier. But the problem is in its nature complicated and cannot be done without some fairly heavy mathematics. Once the calculations are done for this problem of scattering, it turns out that the results can be used without much further trouble for the relativistic calculation of the Lamb shift too. The scattering and Lamb shift problems are very closely related: in both cases one is calculating the second-order radiative corrections to the motion of an electron, only in one case the electron is in a high continuum state so that the external field can be treated as weak, in the other case the electron is in a discrete state and the potential must be treated as strong.
 
 ## <a id="s-the-self-energy-of-the-electron"></a>The Self-Energy of the Electron
 
@@ -7695,12 +7639,7 @@ $$
 A_{\mu}^{e} ( x ) = \frac{1}{( 2 \pi )^{4}} \int e^{iq \cdot x} e_{\mu} ( q ) dq \tag{534}
 $$
 
-At the same time the electron is interacting with the quantized Maxwell field with the interaction (532), since we suppose the initial and final states to be defined with the observed mass of a free electron. The scattering matrix element $M$ is then given by (419), with $U$ given by (421) after
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p105"><sup>[p. 105]</sup></a>
-
-replacing each $H_{R}$ by $H^{I}$ according to (532).
+At the same time the electron is interacting with the quantized Maxwell field with the interaction (532), since we suppose the initial and final states to be defined with the observed mass of a free electron. The<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p105"><sup>[p. 105]</sup></a></span> scattering matrix element $M$ is then given by (419), with $U$ given by (421) after replacing each $H_{R}$ by $H^{I}$ according to (532).
 
 We treat $A_{\mu}^{e}$ in the linear Born approximation. Thus we keep only terms of order 0 and 1 in $A_{\mu}^{e}$. The terms of order 0 give the effects of the radiation interaction alone; as we have seen, these effects are zero for an initial state consisting of a single <a id="ix-276">electron</a>.
 
@@ -8160,10 +8099,7 @@ $$
 \Lambda ( p,p^{\prime} ) = \int_{F} dk \sum_{\lambda} \left( \gamma_{\lambda} \frac{1}{/ k + p /^{\prime} - i\mu} /e \frac{1}{k / + p / - i\mu} \gamma_{\lambda} \right) \frac{1}{k^{2}} \tag{584}
 $$
 
-There is no singular factor in (584) such as we had in (558). To perform the sum over $\lambda$ in (584), we use the table
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p112"><sup>[p. 112]</sup></a>
+There is no singular factor in (584) such as we had in (558). To perform the sum over $\lambda$ in (584), we use<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p112"><sup>[p. 112]</sup></a></span> the table
 
 <a id="eq-585"></a>
 
@@ -8736,12 +8672,7 @@ $$
 \hbar ck_{\max} = E - mc^{2} \approx \frac{\hbar^{2}}{2 m} | \boldsymbol{p} |^{2} \tag{638}
 $$
 
-and therefore for all possible photons the momentum $\hbar | \boldsymbol{k}^{\prime} |$ will be very small compared with the electron momentum $\hbar | \boldsymbol{p} |$.<sup><a id="fnref-83" href="#fn-83">83</a></sup> Thus the recoil of the electron, arising from the momentum carried off by the photon, can always be neglected. The matrix element and probability for radiative scattering
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p120"><sup>[p. 120]</sup></a>
-
-will be given by (618) and (620), even when the photon takes away a large fraction of the kinetic energy of the electron.
+and therefore for all possible photons the momentum $\hbar | \boldsymbol{k}^{\prime} |$ will be very small compared with the electron momentum $\hbar | \boldsymbol{p} |$.<sup><a id="fnref-83" href="#fn-83">83</a></sup> Thus the recoil of the electron, arising from the momentum carried off by the photon,<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p120"><sup>[p. 120]</sup></a></span> can always be neglected. The matrix element and probability for radiative scattering will be given by (618) and (620), even when the photon takes away a large fraction of the kinetic energy of the electron.
 
 We imagine a scattering experiment in which only the direction of the emerging electron is measured and not its energy. Then the radiative <a id="ix-53">cross-section</a> $\overline{\sigma}_{R}$ will measure the total probability of scattering the electron into a <a id="ix-15">solid</a> angle $d$Ω with emission of a photon having any frequency between the lower limit $r$ and the upper limit $k_{\max}$ given by (638). The observed cross-section will be
 
@@ -9071,12 +9002,7 @@ $$
 H_{T} ( t ) = H^{e} ( t ) + H_{T 1} ( t ) + H_{T 2} ( t ) \tag{671}
 $$
 
-expanding $H_{T}$ in powers of the radiation interaction just as $U$ was expanded in (536)–(540). But the matrix elements of $\left( U_{2} + U_{2}^{1} \right)$ referring to one-electron transition have already been calculated and are given by (617) assuming non-relativistic velocities for the electron. This enables us to write down immediately a formula for the operator $H_{T 2}$, valid for one-<a id="ix-105">electron</a> transitions at non-relativistic
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p125"><sup>[p. 125]</sup></a>
-
-velocities. In (617) each factor $q_{\lambda}$ may be replaced by $( - i\partial /\partial x_{\lambda} )$ operating on the potentials (534). Then (617) becomes
+expanding $H_{T}$ in powers of the radiation interaction just as $U$ was expanded in (536)–(540). But the matrix elements of $\left( U_{2} + U_{2}^{1} \right)$ referring to one-electron transition have already been calculated and are given by (617) assuming non-relativistic velocities for the electron. This enables us to write down immediately a<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p125"><sup>[p. 125]</sup></a></span> formula for the operator $H_{T 2}$, valid for one-<a id="ix-105">electron</a> transitions at non-relativistic velocities. In (617) each factor $q_{\lambda}$ may be replaced by $( - i\partial /\partial x_{\lambda} )$ operating on the potentials (534). Then (617) becomes
 
 <a id="eq-672"></a>
 
@@ -9221,12 +9147,7 @@ This completes the evaluation of $H_{T}$.
 
 To understand the effect of the <a id="ix-149">transformation</a> (662), we observe that if Ψ$( t )$ is the state of one real electron in the absence of an external field, then Φ$( t )$ will be independent of $t$ and will represent one “bare” electron with the same momentum as the real electron. In an actual hydrogen atom, we may consider the state Ψ$( t )$ to a very good approximation as a superposition of states of a single real free electron; then Φ($t )$ is a superposition of states of a single bare electron with the same distribution of momenta. Thus by the transformation from Ψ to Φ we have eliminated the radiation field surrounding the electron, all remaining effects of this radiation field being contained in the operator $H_{T}$.
 
-It is essential at this point to make sure that in the Φ representation the field-operators are still free-particle operators, with the correct equations of motion for operators in the FIR. Thus the transformation (662) is only a transformation from one set of variables to another within the FIR, and
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p127"><sup>[p. 127]</sup></a>
-
-does not take us out of the FIR. This point was never explained properly by Schwinger in his papers, although he no doubt understood it himself.
+It is essential at this point to make sure that in the Φ representation the field-operators are still free-particle operators, with the correct equations of motion for operators in the FIR. Thus the transformation<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p127"><sup>[p. 127]</sup></a></span> (662) is only a transformation from one set of variables to another within the FIR, and does not take us out of the FIR. This point was never explained properly by Schwinger in his papers, although he no doubt understood it himself.
 
 Let then $Q ( x )$ be a field-operator of the Ψ representation. Being a FIR operator, $Q ( x )$ satisfies
 
@@ -9600,12 +9521,7 @@ My interest in the legendary notes was revived thirty years later by the Kaiser 
 
 Between this typed version and Moravcsik’s second edition there are few differences; all are described in the added notes. (I have also added references and an index.) About half are corrections of typographical errors. Missing words or sentences have been restored by comparison with the first edition; very infrequently a word or phrase has been deleted. A few changes have been made in notation. Intermediate steps in two calculations have been corrected but change nothing. Some notes point to articles or books. No doubt new errors have been introduced. Corrections will be welcomed! The young physicists will want familiar terms and notation, occasionally changed from 1951; the historians want _no_ alterations. It was not easy to find the middle ground.
 
-I scarcely knew L$A$TEX before beginning this project. My friend (and Princeton ’74 classmate) Robert Jantzen was enormously helpful, very generous with his time and his extensive knowledge of L$A$TEX. Thanks, Bob. Thanks, too, to Richard Koch, Gerben Wierda and their colleagues, who have made L$A$TEX so easy on a Macintosh. George Grätzer’s textbook _Math into L_A_TEX_ was never far from the
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p133"><sup>[p. 133]</sup></a>
-
-keyboard. No one who types technical material should be ignorant of L$A$TEX.
+I scarcely knew L$A$TEX before beginning this project. My friend (and Princeton ’74 classmate) Robert Jantzen was enormously helpful, very generous with his time and his extensive knowledge of L$A$TEX. Thanks, Bob. Thanks, too, to Richard Koch, Gerben Wierda and their colleagues, who have made L$A$TEX so easy on<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p133"><sup>[p. 133]</sup></a></span> a Macintosh. George Grätzer’s textbook _Math into L_A_TEX_ was never far from the keyboard. No one who types technical material should be ignorant of L$A$TEX.
 
 This project would never have been undertaken without the approval of Prof. <a id="ix-102">Dyson</a> and the efforts of Profs. Hall, Schweber and Ashrafi, who made the notes accessible. I thank Prof. Hall for his steady encouragement through the many hours of typing. I thank Prof. Dyson both for friendly assistance and for allowing his wonderful lectures to become easier to obtain, to be read with pleasure and with profit for many years to come.
 

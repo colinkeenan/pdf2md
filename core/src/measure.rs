@@ -1,28 +1,11 @@
-//! How wide text comes out in the viewer, to tell where its lines end.
-//!
-//! A page marker inside a paragraph goes to the end of a line (see
-//! `emit::line_end`), so the text above it runs to the right margin as on
-//! the printed page. Where a line ends depends on the reader's window and
-//! fonts; this measures for the widest text column of the viewer the books
-//! are read in (mdBun: 760 px of 16 px Noto Sans, math by KaTeX at 1.21 em).
-//! In a narrower window the marker is no longer at a line's end.
+//! How wide a formula comes out in the viewer, estimated from its LaTeX
+//! (KaTeX sets math at 1.21 em of the text): to tell where words set
+//! under an equation stand in it.
 
-/// The width of the text column, in CSS pixels.
-pub const LINE: f32 = 760.0;
 /// The type size, in CSS pixels.
 const SIZE: f32 = 16.0;
 /// KaTeX sets math this much larger than the text around it.
 const MATH: f32 = 1.21 * SIZE;
-/// Raised text (`<sup>`) is set this much smaller.
-pub const RAISED: f32 = 0.83;
-
-#[derive(Clone, Copy, PartialEq)]
-pub enum Face {
-    Regular,
-    Italic,
-    Bold,
-}
-
 // Advance widths of the characters ' ' to '~' in Noto Sans, in 1/1000 em.
 const REGULAR: [u16; 95] = [
     260, 269, 408, 646, 572, 831, 732, 225, 300, 300, 551, 572, 268, 322, 268, 372,
@@ -32,23 +15,6 @@ const REGULAR: [u16; 95] = [
     281, 561, 615, 480, 615, 564, 344, 615, 618, 258, 258, 534, 258, 935, 618, 605,
     615, 615, 413, 479, 361, 618, 508, 786, 529, 510, 470, 380, 551, 380, 572,
 ];
-const ITALIC: [u16; 95] = [
-    260, 261, 392, 646, 551, 799, 673, 220, 290, 290, 551, 572, 256, 313, 256, 356,
-    551, 551, 551, 551, 551, 551, 551, 551, 551, 551, 256, 256, 572, 572, 572, 430,
-    848, 562, 600, 587, 667, 514, 477, 678, 680, 324, 273, 562, 478, 841, 707, 721,
-    567, 721, 573, 505, 501, 677, 552, 856, 527, 509, 531, 290, 356, 290, 572, 395,
-    278, 568, 579, 453, 579, 499, 318, 579, 579, 258, 258, 495, 258, 875, 579, 563,
-    579, 579, 398, 432, 332, 579, 467, 723, 483, 467, 445, 350, 551, 350, 572,
-];
-const BOLD: [u16; 95] = [
-    260, 282, 479, 646, 572, 902, 750, 266, 339, 339, 542, 572, 285, 320, 281, 415,
-    572, 572, 572, 572, 572, 572, 572, 572, 572, 572, 281, 285, 572, 572, 572, 477,
-    898, 692, 665, 642, 732, 560, 549, 724, 765, 389, 331, 664, 559, 943, 813, 791,
-    621, 791, 656, 551, 577, 756, 650, 967, 670, 626, 579, 331, 415, 331, 572, 411,
-    365, 599, 632, 516, 632, 597, 387, 632, 650, 299, 298, 620, 298, 975, 650, 625,
-    632, 632, 447, 502, 434, 650, 571, 856, 578, 571, 493, 394, 551, 394, 572,
-];
-
 // Widths of a–z and A–Z in KaTeX's math italic, in 1/1000 em.
 const MATH_SMALL: [u16; 26] = [
     529, 429, 433, 520, 466, 597, 513, 576, 345, 469, 552, 318, 878,
@@ -59,18 +25,9 @@ const MATH_CAPITAL: [u16; 26] = [
     912, 791, 781, 791, 767, 671, 723, 792, 806, 1083, 907, 803, 754,
 ];
 
-/// The width of a space between words.
-pub fn space() -> f32 {
-    REGULAR[0] as f32 * SIZE / 1000.0
-}
-
 /// The width of some text in pixels.
-pub fn text(s: &str, face: Face) -> f32 {
-    let table = match face {
-        Face::Regular => &REGULAR,
-        Face::Italic => &ITALIC,
-        Face::Bold => &BOLD,
-    };
+pub fn text(s: &str) -> f32 {
+    let table = &REGULAR;
     let units: u32 = s
         .chars()
         .map(|c| match c {
@@ -283,7 +240,7 @@ fn command(name: &str, c: &[char], at: &mut usize, tight: bool) -> f32 {
             }
             let words: String = c[start..(*at).saturating_sub(1).max(start)].iter().collect();
             // set in the math font's roman, a little narrower than the text font
-            0.9 * text(&words, Face::Regular) / SIZE
+            0.9 * text(&words) / SIZE
         }
         // \begin{array}{cc}: the names take no room
         "begin" | "end" => {
@@ -357,9 +314,8 @@ mod tests {
     #[test]
     fn widths_follow_the_font() {
         // "Hello" in 16 px Noto Sans: 741 + 564 + 258 + 258 + 605 thousandths
-        assert!((text("Hello", Face::Regular) - 38.816).abs() < 0.01);
-        assert!(text("Hello", Face::Bold) > text("Hello", Face::Regular));
-        assert!(text("mmm", Face::Regular) > 2.0 * text("iii", Face::Regular));
+        assert!((text("Hello") - 38.816).abs() < 0.01);
+        assert!(text("mmm") > 2.0 * text("iii"));
     }
 
     #[test]

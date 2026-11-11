@@ -148,12 +148,7 @@ $$
 \hbar ck_{\max} = E - mc^{2} \approx \frac{\hbar^{2}}{2 m} | \boldsymbol{p} |^{2} \tag{638}
 $$
 
-and therefore for all possible photons the momentum $\hbar | \boldsymbol{k}^{\prime} |$ will be very small compared with the electron momentum $\hbar | \boldsymbol{p} |$.<sup><a id="fnref-83" href="#fn-83">83</a></sup> Thus the recoil of the electron, arising from the momentum carried off by the photon, can always be neglected. The matrix element and probability for radiative scattering
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p120"><sup>[p. 120]</sup></a>
-
-will be given by (618) and (620), even when the photon takes away a large fraction of the kinetic energy of the electron.
+and therefore for all possible photons the momentum $\hbar | \boldsymbol{k}^{\prime} |$ will be very small compared with the electron momentum $\hbar | \boldsymbol{p} |$.<sup><a id="fnref-83" href="#fn-83">83</a></sup> Thus the recoil of the electron, arising from the momentum carried off by the photon,<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p120"><sup>[p. 120]</sup></a></span> can always be neglected. The matrix element and probability for radiative scattering will be given by (618) and (620), even when the photon takes away a large fraction of the kinetic energy of the electron.
 
 We imagine a scattering experiment in which only the direction of the emerging electron is measured and not its energy. Then the radiative <a id="ix-53">cross-section</a> $\overline{\sigma}_{R}$ will measure the total probability of scattering the electron into a <a id="ix-15">solid</a> angle $d$Ω with emission of a photon having any frequency between the lower limit $r$ and the upper limit $k_{\max}$ given by (638). The observed cross-section will be
 
@@ -483,12 +478,7 @@ $$
 H_{T} ( t ) = H^{e} ( t ) + H_{T 1} ( t ) + H_{T 2} ( t ) \tag{671}
 $$
 
-expanding $H_{T}$ in powers of the radiation interaction just as $U$ was expanded in (536)–(540). But the matrix elements of $\left( U_{2} + U_{2}^{1} \right)$ referring to one-electron transition have already been calculated and are given by (617) assuming non-relativistic velocities for the electron. This enables us to write down immediately a formula for the operator $H_{T 2}$, valid for one-<a id="ix-105">electron</a> transitions at non-relativistic
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p125"><sup>[p. 125]</sup></a>
-
-velocities. In (617) each factor $q_{\lambda}$ may be replaced by $( - i\partial /\partial x_{\lambda} )$ operating on the potentials (534). Then (617) becomes
+expanding $H_{T}$ in powers of the radiation interaction just as $U$ was expanded in (536)–(540). But the matrix elements of $\left( U_{2} + U_{2}^{1} \right)$ referring to one-electron transition have already been calculated and are given by (617) assuming non-relativistic velocities for the electron. This enables us to write down immediately a<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p125"><sup>[p. 125]</sup></a></span> formula for the operator $H_{T 2}$, valid for one-<a id="ix-105">electron</a> transitions at non-relativistic velocities. In (617) each factor $q_{\lambda}$ may be replaced by $( - i\partial /\partial x_{\lambda} )$ operating on the potentials (534). Then (617) becomes
 
 <a id="eq-672"></a>
 
@@ -633,12 +623,7 @@ This completes the evaluation of $H_{T}$.
 
 To understand the effect of the <a id="ix-149">transformation</a> (662), we observe that if Ψ$( t )$ is the state of one real electron in the absence of an external field, then Φ$( t )$ will be independent of $t$ and will represent one “bare” electron with the same momentum as the real electron. In an actual hydrogen atom, we may consider the state Ψ$( t )$ to a very good approximation as a superposition of states of a single real free electron; then Φ($t )$ is a superposition of states of a single bare electron with the same distribution of momenta. Thus by the transformation from Ψ to Φ we have eliminated the radiation field surrounding the electron, all remaining effects of this radiation field being contained in the operator $H_{T}$.
 
-It is essential at this point to make sure that in the Φ representation the field-operators are still free-particle operators, with the correct equations of motion for operators in the FIR. Thus the transformation (662) is only a transformation from one set of variables to another within the FIR, and
-
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p127"><sup>[p. 127]</sup></a>
-
-does not take us out of the FIR. This point was never explained properly by Schwinger in his papers, although he no doubt understood it himself.
+It is essential at this point to make sure that in the Φ representation the field-operators are still free-particle operators, with the correct equations of motion for operators in the FIR. Thus the transformation<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p127"><sup>[p. 127]</sup></a></span> (662) is only a transformation from one set of variables to another within the FIR, and does not take us out of the FIR. This point was never explained properly by Schwinger in his papers, although he no doubt understood it himself.
 
 Let then $Q ( x )$ be a field-operator of the Ψ representation. Being a FIR operator, $Q ( x )$ satisfies
 
