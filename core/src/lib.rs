@@ -19,6 +19,7 @@ pub mod blocks;
 pub mod emit;
 pub mod layout;
 pub mod links;
+mod measure;
 pub mod mathtex;
 pub mod annots;
 pub mod notes;

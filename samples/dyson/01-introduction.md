@@ -1,6 +1,6 @@
 # Introduction
 
-<hr class="page" style="height:6px;border:0;background:currentColor;opacity:0.25">
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p1"><sup>[p. 1]</sup></a>
 
 ## <a id="s-books"></a>Books
@@ -29,12 +29,12 @@ In the NR theory it was found that almost any classical system could be handled,
 
 (ii) <a id="ix-225">Yukawa</a> from a study of nuclear forces predicted the <a id="ix-196">meson</a>, which was later discovered <a id="refback-10-1"></a>[[10]](#ref-10).
 
-These two examples are special cases of the general principle, which is the basic success of the relativistic quantum theory, that _A Relativistic Quantum Theory of a Finite Number of Particles is Impossible._ A RQ theory necessarily contains these features: an indefinite number of particles of one or more types, particles of each type being identical and indistinguishable from each other, possibility of <a id="ix-6">creation</a> and <a id="ix-32">annihilation</a> of particles. Thus the two principles of relativity and quantum theory when combined lead to a world built up out of various types of elementary particles, and so make us feel quite confident that we are on the right way to an understanding of the real world. In addition, various detailed properties of the observed particles
+These two examples are special cases of the general principle, which is the basic success of the relativistic quantum theory, that _A Relativistic Quantum Theory of a Finite Number of Particles is Impossible._ A RQ theory necessarily contains these features: an indefinite number of particles of one or more types, particles of each type being identical and indistinguishable from each other, possibility of <a id="ix-6">creation</a> and <a id="ix-32">annihilation</a> of particles. Thus the two principles of relativity and quantum theory when combined lead to a world built up out of various types of elementary particles, and so make us feel quite confident that we are on the right way to an understanding of the real world. In addition, various detailed properties of the observed particles are necessary consequences of the
 
-<hr class="page" style="height:6px;border:0;background:currentColor;opacity:0.25">
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p2"><sup>[p. 2]</sup></a>
 
-are necessary consequences of the general theory. These are for example:
+general theory. These are for example:
 
 (i) <a id="ix-101">Magnetic moment</a> of Electron (<a id="ix-84">Dirac</a>) <a id="refback-9-2"></a>[[9]](#ref-9).
 
@@ -98,7 +98,7 @@ $$
 E^{2} = m^{2} c^{4} + c^{2} p^{2} \tag{5}
 $$
 
-<hr class="page" style="height:6px;border:0;background:currentColor;opacity:0.25">
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p3"><sup>[p. 3]</sup></a>
 
 which gives the wave equation

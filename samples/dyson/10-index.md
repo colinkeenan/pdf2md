@@ -1,6 +1,6 @@
 # Index
 
-<hr class="page" style="height:6px;border:0;background:currentColor;opacity:0.25">
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p140"><sup>[p. 140]</sup></a>
 
 - $a_{o}$, _see_ Bohr radius
@@ -76,7 +76,7 @@
 - conservation laws, [9](02-the-dirac-theory.md#ix-64)
   - hole theory, [11](02-the-dirac-theory.md#ix-65), [66](05-examples-of-quantized-field-theories.md#p66)
 
-<hr class="page" style="height:6px;border:0;background:currentColor;opacity:0.25">
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p141"><sup>[p. 141]</sup></a>
 
   - ket, [35](04-field-theory.md#ix-66)
@@ -168,7 +168,7 @@
 - infra-red divergence, [116](07-general-theory-of-free-particle-scattering.md#p116), [118–119](08-scattering-by-a-static-potential-comparison-with-experimental-results.md#p118), [124](08-scattering-by-a-static-potential-comparison-with-experimental-results.md#p124)
   - $i\epsilon$ prescription, [116](07-general-theory-of-free-particle-scattering.md#p116)
 
-<hr class="page" style="height:6px;border:0;background:currentColor;opacity:0.25">
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p142"><sup>[p. 142]</sup></a>
 
 - interaction representation, [81–82](06-free-particle-scattering-problems.md#ix-125), [96](07-general-theory-of-free-particle-scattering.md#p96), [106](07-general-theory-of-free-particle-scattering.md#p106)
@@ -255,7 +255,7 @@
   - conservation, [9](02-the-dirac-theory.md#ix-64), [29](03-scattering-problems-and-born-approximation.md#ix-203), [88](06-free-particle-scattering-problems.md#p88)
   - scattering amplitude, [27](03-scattering-problems-and-born-approximation.md#ix-204)
 
-<hr class="page" style="height:6px;border:0;background:currentColor;opacity:0.25">
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p143"><sup>[p. 143]</sup></a>
 
   - transition, [22](03-scattering-problems-and-born-approximation.md#ix-205), [24](03-scattering-problems-and-born-approximation.md#ix-206), [29](03-scattering-problems-and-born-approximation.md#ix-207)

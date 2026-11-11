@@ -10,7 +10,7 @@
 
 **Second Edition**
 
-<hr class="page" style="height:6px;border:0;background:currentColor;opacity:0.25">
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="pi"><sup>[p. i]</sup></a>
 
 _ADVANCED QUANTUM MECHANICS_
@@ -38,7 +38,7 @@ A^{T} & = & \text{transposed} \\
 \end{array}
 $$
 
-<hr class="page" style="height:6px;border:0;background:currentColor;opacity:0.25">
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="pii"><sup>[p. ii]</sup></a>
 
 ## <a id="s-table-of-contents"></a>Table of Contents
@@ -148,10 +148,10 @@ $$
 - [Typist’s Afterword](09-typist-s-afterword.md) — [pp. 132–133](09-typist-s-afterword.md#p132)
 - [Index](10-index.md) — [pp. 140–143](10-index.md#p140)
 
-<hr class="page" style="height:6px;border:0;background:currentColor;opacity:0.25">
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="piii"><sup>[p. iii]</sup></a>
 
-<hr class="page" style="height:6px;border:0;background:currentColor;opacity:0.25">
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="piv"><sup>[p. iv]</sup></a>
 
 <div align="center">

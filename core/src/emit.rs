@@ -114,7 +114,162 @@ pub fn render_inlines(inl: &[Inline]) -> String {
 /// The bar above a page marker: where a printed page begins is easy to
 /// find when scrolling. Translucent, in the colour of the text, so it shows
 /// on a light and on a dark page alike.
-const PAGE_BAR: &str = "<hr class=\"page\" style=\"height:6px;border:0;background:currentColor;opacity:0.25\">";
+const PAGE_BAR: &str = "<hr class=\"page\" style=\"height:2px;border:0;background:currentColor;opacity:0.25\">";
+
+/// A paragraph with a page marker at `m`, parted for the bar: what goes
+/// above it and what below. The page ends somewhere in a line of the
+/// paragraph as the viewer sets it; the words up to the end of that line go
+/// above the bar, so that line is full. (Lines as in the widest text column,
+/// see `measure`; in a narrower window they end elsewhere.) Never past the
+/// next page marker.
+fn part_at_line_end(inl: &[Inline], m: usize) -> (Vec<Inline>, Vec<Inline>) {
+    let is_marker = |x: &Inline| matches!(x, Inline::Anchor(id) if page_label(id).is_some());
+    let end = inl.iter().enumerate().position(|(i, x)| i > m && is_marker(x)).unwrap_or(inl.len());
+    let at_marker = (inl[..m].to_vec(), inl[m + 1..].to_vec());
+    let Some((i, byte)) = line_end(&inl[..end], m) else { return at_marker };
+    let mut above: Vec<Inline> = inl[..i].iter().enumerate().filter(|(k, _)| *k != m).map(|(_, x)| x.clone()).collect();
+    let mut below = Vec::new();
+    if byte > 0 {
+        let cut = |t: &str| (t[..byte].to_string(), t[byte..].trim_start().to_string());
+        let ((a, b), rest) = match &inl[i] {
+            Inline::Text(t) => ((Inline::Text(cut(t).0), Inline::Text(cut(t).1)), cut(t).1),
+            Inline::Emph(t) => ((Inline::Emph(cut(t).0), Inline::Emph(cut(t).1)), cut(t).1),
+            Inline::Strong(t) => ((Inline::Strong(cut(t).0), Inline::Strong(cut(t).1)), cut(t).1),
+            _ => return at_marker,
+        };
+        above.push(a);
+        if !rest.is_empty() {
+            below.push(b);
+        }
+        below.extend(inl[i + 1..].iter().cloned());
+    } else {
+        below.extend(inl[i..].iter().cloned());
+    }
+    (above, below)
+}
+
+/// Where the line ends in which the page marker `inl[m]` falls: in front of
+/// byte `.1` of the text of `inl[.0]` (0: in front of the whole of it;
+/// `inl.len()`: at the paragraph's end). None if the marker is at a line's
+/// end already, or at the very start.
+fn line_end(inl: &[Inline], m: usize) -> Option<(usize, usize)> {
+    use crate::measure::{self, Face};
+    // The words: each as wide as measured; a word runs across pieces with
+    // no space between them ("$x$," is one).
+    struct Word {
+        width: f32,
+        /// where it ends
+        end: (usize, usize),
+        /// a space follows it (none inside "wave-|optics" or a formula)
+        spaced: bool,
+        /// the line is broken after it (a kept line break)
+        broken: bool,
+    }
+    let mut words: Vec<Word> = Vec::new();
+    let mut open: Option<f32> = None;
+    // the word the marker comes after or stands in, and whether it stands in it
+    let mut marked: Option<(usize, bool)> = None;
+    for (i, x) in inl.iter().enumerate() {
+        // a link or a link target is kept whole: a line ending inside one
+        // counts as ending in front of it
+        let (t, face, scale, whole) = match x {
+            Inline::Text(t) => (t.clone(), Face::Regular, 1.0, false),
+            Inline::Emph(t) => (t.clone(), Face::Italic, 1.0, false),
+            Inline::Strong(t) => (t.clone(), Face::Bold, 1.0, false),
+            Inline::Target { text, emph, .. } => (text.clone(), if *emph { Face::Italic } else { Face::Regular }, 1.0, true),
+            Inline::Link { text, .. } => (text.replace(['\\', '_', '*'], ""), Face::Regular, 1.0, true),
+            Inline::Sup(t) => (t.replace(' ', ""), Face::Regular, measure::RAISED, true),
+            Inline::NoteRef { label, .. } => (label.replace(' ', ""), Face::Regular, measure::RAISED, true),
+            Inline::Cite { label, .. } => (format!("[{}]", label.replace(' ', "")), Face::Regular, 1.0, true),
+            Inline::Math(l) => {
+                // (a line ending inside a formula counts as ending in front of it)
+                for (k, w) in measure::math(l).iter().enumerate() {
+                    if k > 0 {
+                        words.push(Word { width: open.take().unwrap_or(0.0), end: (i, 0), spaced: false, broken: false });
+                    }
+                    open = Some(open.unwrap_or(0.0) + w);
+                }
+                continue;
+            }
+            Inline::Picture { area, .. } => {
+                // cut from the page at 150 dots per inch, shown dot for pixel
+                let w = ((area.right - area.left) * 150.0 / 72.0).min(measure::LINE);
+                open = Some(open.unwrap_or(0.0) + w);
+                continue;
+            }
+            Inline::Break => {
+                words.push(Word { width: open.take().unwrap_or(0.0), end: (i, 0), spaced: false, broken: true });
+                continue;
+            }
+            Inline::Anchor(_) if i == m => {
+                marked = match open {
+                    Some(_) => Some((words.len(), true)),
+                    None => Some((words.len().checked_sub(1)?, false)),
+                };
+                continue;
+            }
+            Inline::Anchor(_) | Inline::Source(_) | Inline::PageLink(_) => continue,
+        };
+        let mut from = 0;
+        let mut before = ' ';
+        for (at, c) in t.char_indices().chain([(t.len(), ' ')]) {
+            let after = at + c.len_utf8().min(t.len() - at);
+            // a line may also end after the hyphen or the stroke inside a
+            // word ("wave-|optics", "and/|or"), and after a dash
+            let inside = match c {
+                '-' | '/' => before.is_alphanumeric() && t[after..].starts_with(char::is_alphabetic),
+                '–' | '—' => t[after..].starts_with(|n: char| !n.is_whitespace()),
+                _ => false,
+            };
+            before = c;
+            if inside {
+                let w = open.take().unwrap_or(0.0) + scale * measure::text(&t[from..after], face);
+                words.push(Word { width: w, end: (i, if whole { 0 } else { after }), spaced: false, broken: false });
+                from = after;
+                continue;
+            }
+            if !c.is_whitespace() {
+                continue;
+            }
+            if at > from {
+                open = Some(open.unwrap_or(0.0) + scale * measure::text(&t[from..at], face));
+            }
+            // (the end of the piece is not the end of a word)
+            if at < t.len() {
+                if let Some(w) = open.take() {
+                    words.push(Word { width: w, end: (i, if whole { 0 } else { at }), spaced: true, broken: false });
+                }
+            }
+            from = after;
+        }
+    }
+    if let Some(w) = open {
+        words.push(Word { width: w, end: (inl.len(), 0), spaced: true, broken: false });
+    }
+    let (marked, inside) = marked?;
+    // fill the lines word by word, up to the one the marker is in
+    let (mut x, mut last) = (0.0, 0);
+    let mut gap = 0.0;
+    for (k, word) in words.iter().enumerate() {
+        let fits = x == 0.0 || x + gap + word.width <= measure::LINE;
+        if !fits && k > marked {
+            break;
+        }
+        x = if fits { x + gap + word.width } else { word.width };
+        gap = if word.spaced { measure::space() } else { 0.0 };
+        last = k;
+        if word.broken {
+            if k >= marked {
+                break;
+            }
+            (x, gap) = (0.0, 0.0);
+        }
+    }
+    // (a line that ends in front of a link standing before the marker, or
+    // right at the marker, leaves the marker where it is)
+    let end = words[last].end;
+    (end.0 > m && !(last == marked && !inside)).then_some(end)
+}
 
 fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
     let is_item = matches!(b, Block::Item { .. });
@@ -122,22 +277,22 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
         out.push('\n');
     }
     // A page marker stands on a line of its own, under its bar: one inside
-    // a paragraph parts it there; one inside a heading or a list item goes
-    // in front of it.
+    // a paragraph parts it at the end of the line the page ends in (so the
+    // text above the bar runs to the right margin, as on the printed page);
+    // one inside a heading or a list item goes in front of it.
     let is_marker = |x: &Inline| matches!(x, Inline::Anchor(id) if page_label(id).is_some());
     match b {
         Block::Para(inl) if inl.iter().any(is_marker) => {
-            for piece in inl.split_inclusive(is_marker) {
-                let (text, marker) = match piece.split_last() {
-                    Some((m, text)) if is_marker(m) => (text, Some(m)),
-                    _ => (piece, None),
-                };
-                if !text.is_empty() {
-                    render_block(&Block::Para(text.to_vec()), out, in_list);
-                }
-                if let Some(Inline::Anchor(id)) = marker {
-                    render_block(&Block::Anchor(id.clone()), out, in_list);
-                }
+            let m = inl.iter().position(is_marker).unwrap_or(0);
+            let (above, below) = part_at_line_end(inl, m);
+            if !above.is_empty() {
+                render_block(&Block::Para(above), out, in_list);
+            }
+            if let Inline::Anchor(id) = &inl[m] {
+                render_block(&Block::Anchor(id.clone()), out, in_list);
+            }
+            if !below.is_empty() {
+                render_block(&Block::Para(below), out, in_list);
             }
             return;
         }
@@ -605,13 +760,79 @@ mod tests {
             Inline::Anchor("p8".into()),
             Inline::Text("in this sentence.".into()),
         ]);
+        // the paragraph ends in the line the page ends in: the bar comes after it
         let (mut out, mut in_list) = (String::new(), false);
         render_block(&para, &mut out, &mut in_list);
-        assert_eq!(out, format!("The page ends\n\n{PAGE_BAR}\n<a id=\"p8\"><sup>[p. 8]</sup></a>\n\nin this sentence.\n\n"));
+        assert_eq!(out, format!("The page ends in this sentence.\n\n{PAGE_BAR}\n<a id=\"p8\"><sup>[p. 8]</sup></a>\n\n"));
         // in a heading: in front of it
         let head = Block::Heading { level: 1, size: 0.0, id: "s-x".into(), text: vec![Inline::Anchor("p9-approx".into()), Inline::Text("Title".into())] };
         let mut out = String::new();
         render_block(&head, &mut out, &mut in_list);
         assert_eq!(out, format!("{PAGE_BAR}\n<a id=\"p9-approx\"><sup>[≈p. 9]</sup></a>\n\n# <a id=\"s-x\"></a>Title\n\n"));
+    }
+
+    /// "aaaa" is 35.9 px wide and a space 4.2 px: 19 of them fill a line.
+    fn words(n: usize) -> String {
+        vec!["aaaa"; n].join(" ")
+    }
+
+    fn parted(before: usize, after: usize) -> (String, String) {
+        let para = vec![
+            Inline::Text(words(before) + " "),
+            Inline::Anchor("p8".into()),
+            Inline::Text(words(after)),
+        ];
+        let (a, b) = part_at_line_end(&para, 1);
+        (render_inlines(&a).trim().to_string(), render_inlines(&b).trim().to_string())
+    }
+
+    #[test]
+    fn the_text_above_a_page_bar_ends_with_a_full_line() {
+        // the page ends 5 words into the first line: the line is filled
+        assert_eq!(parted(5, 35), (words(19), words(21)));
+        // ... 6 words into the second line
+        assert_eq!(parted(25, 35), (words(38), words(22)));
+        // at a line's end: nothing moves
+        assert_eq!(parted(19, 21), (words(19), words(21)));
+        assert_eq!(parted(38, 2), (words(38), words(2)));
+        // the paragraph ends in that line: all of it goes above the bar
+        assert_eq!(parted(20, 3), (words(23), String::new()));
+    }
+
+    #[test]
+    fn a_line_does_not_end_inside_a_formula_or_a_link() {
+        // "$x$," is one word: the comma is not left behind
+        let para = vec![
+            Inline::Text(words(5) + " "),
+            Inline::Anchor("p8".into()),
+            Inline::Text(words(13) + " "),
+            Inline::Math("x".into()),
+            Inline::Text(", ".to_string() + &words(10)),
+        ];
+        let (a, b) = part_at_line_end(&para, 1);
+        assert_eq!(render_inlines(&a).trim(), format!("{} $x$,", words(18)));
+        assert_eq!(render_inlines(&b).trim(), words(10));
+        // a link the line would end in goes below the bar whole
+        let para = vec![
+            Inline::Text(words(5) + " "),
+            Inline::Anchor("p8".into()),
+            Inline::Text(words(12) + " "),
+            Inline::Link { text: words(5), href: "#x".into() },
+            Inline::Text(" ".to_string() + &words(10)),
+        ];
+        let (a, b) = part_at_line_end(&para, 1);
+        assert_eq!(render_inlines(&a).trim(), words(17));
+        assert!(render_inlines(&b).starts_with(&format!("[{}](#x)", words(5))));
+        // the next page's marker is not passed
+        let para = vec![
+            Inline::Text(words(5) + " "),
+            Inline::Anchor("p8".into()),
+            Inline::Text(words(3) + " "),
+            Inline::Anchor("p9".into()),
+            Inline::Text(words(30)),
+        ];
+        let (a, b) = part_at_line_end(&para, 1);
+        assert_eq!(render_inlines(&a).trim(), words(8));
+        assert!(matches!(&b[0], Inline::Anchor(id) if id == "p9"));
     }
 }

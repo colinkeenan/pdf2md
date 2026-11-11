@@ -1,6 +1,6 @@
 # Free Particle Scattering Problems
 
-<hr class="page" style="height:6px;border:0;background:currentColor;opacity:0.25">
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p81"><sup>[p. 81]</sup></a>
 
 In this extensive class of problems we are interested in calculating the over-all transition matrix element $M$ between an initial state $A$ and a final state $B , A$ and $B$ being specified by assigning the spins and momenta of the free particles which are present in these states. The scattering process is supposed to occur as follows: The free particles which are specified by state $A$ in the remote past, converge and interact, and other free particles emerge or are created in the interaction and finally constitute the state $B$ in the remote future. We wish to calculate the matrix element $M$ for this process, without studying the equations of motion or investigating the behavior of the system at intermediate times while the interaction is in progress.
@@ -43,7 +43,7 @@ $$
 u_{1} e^{ip_{1} \cdot x} \tag{422}
 $$
 
-<hr class="page" style="height:6px;border:0;background:currentColor;opacity:0.25">
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p82"><sup>[p. 82]</sup></a>
 
 normalized by $( \overline{u}_{1} u_{1} )$ = 1. With the wave function normalized in this way, (422) is just the matrix element of the operator $\psi ( x )$ between the vacuum state and the state containing electron 1. We can see this from
@@ -124,7 +124,7 @@ $$
 \begin{aligned} D_{F} ( x ) &= D^{( 1 )} ( x ) + i\epsilon ( x ) D ( x ) = \frac{1}{2 \pi^{2}} \left[ \frac{1}{x^{2}} - i\pi \delta ( x^{2} ) \right] \\ &= D^{( 1 )} ( x ) - i \{ D_{A} ( x ) + D_{R} ( x ) \} \\ &= D^{( 1 )} ( x ) - 2 i \overline{D} ( x ) \end{aligned} \tag{429}
 $$
 
-<hr class="page" style="height:6px;border:0;background:currentColor;opacity:0.25">
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p83"><sup>[p. 83]</sup></a>
 
 according to (228). Obviously $D_{F}$ is an even function. It has the property that asymptotically as $x_{0} \to \infty$ in the future, $D_{F}$ = 2$iD^{+}$ contains only positive frequencies, while as $x_{0} \to -\infty$ in the past, $D_{F} = - 2 iD^{-}$ contains only negative frequencies. See Fierz, _Helv. Phys. Acta_ **23** (1950) 731 for a full discussion.
@@ -175,7 +175,7 @@ Now $p_{1}$ and $p_{1}^{\prime}$ are both electron momentum 4-vectors and hence 
 
 It is clear that the formula comes very directly out of (423), once we know the momentum expansion (431) of the $D_{F}$ function. And we shall find that things are equally simple in other free-particle scattering problems.
 
-<hr class="page" style="height:6px;border:0;background:currentColor;opacity:0.25">
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p84"><sup>[p. 84]</sup></a>
 
 ### <a id="s-electron-positron-scattering"></a>Electron-Positron <a id="ix-228">Scattering</a>
@@ -266,7 +266,7 @@ $$
 \left\langle \epsilon ( x_{1} - x_{2} ) P \left\{ \psi_{\alpha} ( x_{1} ) , \overline{\psi}_{\beta} ( x_{2} ) \right\} \right\rangle_{o} = - \tfrac{1}{2} S_{F\alpha \beta} ( x_{1} - x_{2} ) \tag{442}
 $$
 
-<hr class="page" style="height:6px;border:0;background:currentColor;opacity:0.25">
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p85"><sup>[p. 85]</sup></a>
 
 where $S_{F}$ is a new invariant function. Since
@@ -363,7 +363,7 @@ $$
 M_{2} = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu} ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \overline{u}^{\prime} \left[ /e \frac{/ k^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e^{\prime} \frac{/ k}{k_{0}} /e \right] u \tag{453}
 $$
 
-<hr class="page" style="height:6px;border:0;background:currentColor;opacity:0.25">
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p86"><sup>[p. 86]</sup></a>
 
 ### <a id="s-calculation-of-cross-section"></a>Calculation of the Cross-Section
@@ -448,7 +448,7 @@ $$
 
 This gives the cross-section for a known electron spin in the initial and final states.
 
-<hr class="page" style="height:6px;border:0;background:currentColor;opacity:0.25">
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p87"><sup>[p. 87]</sup></a>
 
 ### <a id="s-sum-over-spins"></a>Sum over Spins
@@ -513,7 +513,7 @@ $$
 \frac{e^{4}}{3 2 \hbar^{4} c^{4} \mu^{4}} \operatorname{Spur} \left[ \left\{ \left( /e \frac{k /}{k_{0}} /e^{\prime} + /e^{\prime} \frac{/ k^{\prime}}{k_{0}^{\prime}} /e \right) ( i\mu - p / ) + 4 \mu ( e \cdot e^{\prime} ) \right\} ( p /^{\prime} + i\mu ) \left\{ /e \frac{/ k^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e^{\prime} \frac{/ k}{k_{0}} /e \right\} \right]
 $$
 
-<hr class="page" style="height:6px;border:0;background:currentColor;opacity:0.25">
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p88"><sup>[p. 88]</sup></a>
 
 because, using 4), and again compare with remark after (451),<sup><a id="fnref-59" href="#fn-59">59</a></sup>
@@ -592,7 +592,7 @@ $$
 = \operatorname{Sp} \left[ p/e / \frac{k /^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e \frac{/ k}{k_{0}} /e^{\prime} p / \right] = \operatorname{Sp} \left[ p/e / \frac{k /^{\prime}}{k_{0}^{\prime}} /e^{\prime} + p/e / \frac{/ k}{k_{0}} /e^{\prime} \right]
 $$
 
-<hr class="page" style="height:6px;border:0;background:currentColor;opacity:0.25">
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p89"><sup>[p. 89]</sup></a>
 
 and so (464) is
@@ -685,7 +685,7 @@ $$
 \sum_{e^{\prime}} ( e \cdot e^{\prime} )^{2} = 1 - ( \boldsymbol{e} \cdot \hat{\boldsymbol{k}}^{\prime} )^{2}
 $$
 
-<hr class="page" style="height:6px;border:0;background:currentColor;opacity:0.25">
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p90"><sup>[p. 90]</sup></a>
 
 Now we perform the other summation over the two polarization directions of photon $k$, using the same argument. This gives
@@ -764,7 +764,7 @@ $$
 w = 0 \tag{475}
 $$
 
-<hr class="page" style="height:6px;border:0;background:currentColor;opacity:0.25">
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p91"><sup>[p. 91]</sup></a>
 
 For _perpendicular_ polarizations, take coordinate axes 1 along $e$, 2 along $e^{\prime}$, and 3 along $k$. Then
@@ -845,7 +845,7 @@ $$
 
 proportional to 1 just like neutron cross-sections at low (thermal) energies.
 
-<hr class="page" style="height:6px;border:0;background:currentColor;opacity:0.25">
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p92"><sup>[p. 92]</sup></a>
 
 ## <a id="s-d-bremsstrahlung-and-pair-creation-in-the-coulomb-field-of-an-atom"></a>D. Bremsstrahlung and <a id="ix-36">Pair</a> Creation in the Coulomb Field of an Atom
@@ -912,7 +912,7 @@ $$
 M_{1} = - \frac{e^{2} ( 2 \pi )^{4} )}{\hbar^{2} c^{2}} \delta^{4} ( k + k^{\prime} - p - p_{+} ) \overline{u} \left\{ /e \frac{1}{/ k^{\prime} - p /_{+} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{/ k - p /_{+} - i\mu} /e \right\} u^{\prime} \tag{485}
 $$
 
-<hr class="page" style="height:6px;border:0;background:currentColor;opacity:0.25">
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p93"><sup>[p. 93]</sup></a>
 
 and integrating over the components of the potential
