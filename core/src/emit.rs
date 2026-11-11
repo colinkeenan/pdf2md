@@ -364,6 +364,18 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
         Block::Columns(n) => out.push_str(&format!("<table width=\"100%\"><tr>\n<td valign=\"top\" width=\"{}%\">\n\n", 100 / (*n).max(1))),
         Block::ColumnBreak => out.push_str("</td>\n<td valign=\"top\">\n\n"),
         Block::ColumnsEnd => out.push_str("</td>\n</tr></table>\n\n"),
+        // The printed table under a table: to check the table against,
+        // and to fold away (or take out) once that is done. How the reader
+        // left it is how it is written again.
+        Block::Picture { page, area, alt } if alt == crate::TABLE_READ || alt == crate::TABLE_SET => {
+            // (which table: the one just written)
+            let key = out.trim_end().ends_with("</table>").then(|| out.rfind("<!-- pdf2md:table ").and_then(|i| out.get(i + 18..i + 34))).flatten();
+            let state = key.and_then(crate::ocr::read_picture_state);
+            if state.as_deref() != Some("removed") {
+                let open = if state.is_none() { " open" } else { "" };
+                out.push_str(&format!("<details{open}>\n<summary>The table as printed</summary>\n\n![{alt}]({})\n\n</details>\n\n", picture_file(*page, area)));
+            }
+        }
         Block::Picture { page, area, alt } => out.push_str(&format!("![{alt}]({})\n\n", picture_file(*page, area))),
         Block::Table { rows, widths, key } => {
             // (which table this is, invisible: a cell the reader corrects

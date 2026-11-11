@@ -80,6 +80,36 @@ pub fn marked_tables(text: &str) -> Vec<(String, String)> {
     out
 }
 
+/// How the picture under each table that carries a key stands in a
+/// Markdown text: "KEY.picture" and "open" (shown), "closed" (folded away:
+/// `<details>` without `open`) or "removed".
+pub fn marked_table_pictures(text: &str) -> Vec<(String, String)> {
+    let mut out = Vec::new();
+    let mut rest = text;
+    while let Some(i) = rest.find("<!-- pdf2md:table ") {
+        rest = &rest[i + 18..];
+        let Some(k) = rest.get(..16).filter(|k| k.chars().all(|c| c.is_ascii_hexdigit())) else { continue };
+        let Some(end) = rest.find("</table>") else { break };
+        rest = &rest[end + 8..];
+        let after = rest.trim_start();
+        let state = match after.strip_prefix("<details") {
+            Some(tag) if tag.split('>').next().is_some_and(|t| t.contains("open")) => "open",
+            Some(_) => "closed",
+            None => "removed",
+        };
+        out.push((format!("{k}.picture"), state.to_string()));
+    }
+    out
+}
+
+/// How the reader left the picture under a table, if not shown: "closed"
+/// or "removed".
+pub(crate) fn read_picture_state(table: &str) -> Option<String> {
+    let t = std::fs::read_to_string(corrections_dir()?.join(format!("{table}.picture"))).ok()?;
+    let t = t.trim();
+    matches!(t, "closed" | "removed").then(|| t.to_string())
+}
+
 pub(crate) fn read_correction(k: &str) -> Option<String> {
     let t = std::fs::read_to_string(corrections_dir()?.join(format!("{k}.tex"))).ok()?;
     let t = t.trim();
@@ -134,6 +164,7 @@ pub fn collect_corrections(dir: &std::path::Path) -> usize {
     // what the conversion wrote there (only with the record of that: a
     // table has no reading to compare with).
     let mut cells: HashMap<String, (std::time::SystemTime, String)> = HashMap::new();
+    let mut pictures: HashMap<String, (std::time::SystemTime, String)> = HashMap::new();
     if let (Some(written), Ok(entries)) = (&written_then, std::fs::read_dir(dir)) {
         for e in entries.flatten() {
             let p = e.path();
@@ -153,13 +184,32 @@ pub fn collect_corrections(dir: &std::path::Path) -> usize {
                     }
                 }
             }
+            // (and the picture under a table: folded away, taken out, or shown again)
+            for (id, state) in marked_table_pictures(&text) {
+                if written.get(&id).is_none_or(|w| *w == state) {
+                    continue;
+                }
+                match pictures.get(&id) {
+                    Some((t, _)) if *t >= time => {}
+                    _ => {
+                        pictures.insert(id, (time, state));
+                    }
+                }
+            }
         }
     }
-    if (found.is_empty() && cells.is_empty()) || std::fs::create_dir_all(&cdir).is_err() {
+    if (found.is_empty() && cells.is_empty() && pictures.is_empty()) || std::fs::create_dir_all(&cdir).is_err() {
         return 0;
+    }
+    let mut kept = 0;
+    for (id, (_, state)) in &pictures {
+        // (shown again: nothing to keep any more)
+        let done = if state == "open" { std::fs::remove_file(cdir.join(id)).is_ok() } else { std::fs::write(cdir.join(id), format!("{state}\n")).is_ok() };
+        kept += usize::from(done);
     }
     found.iter().filter(|(k, (_, latex))| std::fs::write(cdir.join(format!("{k}.tex")), format!("{latex}\n")).is_ok()).count()
         + cells.iter().filter(|(id, (_, cell))| std::fs::write(cdir.join(format!("{id}.cell")), format!("{cell}\n")).is_ok()).count()
+        + kept
 }
 
 fn norm(t: &str) -> String {
@@ -215,6 +265,14 @@ pub fn record_written(dir: &std::path::Path, texts: &[&str]) -> std::io::Result<
         for (id, cell) in marked_tables(t) {
             if seen.insert(id.clone()) {
                 s.push_str(&format!("{id}\t{}\n", norm(&cell)));
+            }
+        }
+    }
+    // (and how the picture under each such table was written)
+    for t in texts {
+        for (id, state) in marked_table_pictures(t) {
+            if state != "removed" && seen.insert(id.clone()) {
+                s.push_str(&format!("{id}\t{state}\n"));
             }
         }
     }
@@ -736,7 +794,7 @@ pub fn read_picture_tables(book: &mut crate::Book, pdf: &std::path::Path) {
     for (c, ch) in book.chapters.iter().enumerate() {
         for (b, pair) in ch.blocks.windows(2).enumerate() {
             match (&pair[0].block, &pair[1].block) {
-                (Block::Table { key, .. }, Block::Picture { page, area, alt }) if alt == "the table as printed" && !key.is_empty() => {
+                (Block::Table { key, .. }, Block::Picture { page, area, alt }) if alt == crate::TABLE_READ && !key.is_empty() => {
                     tables.push((c, b, key.clone(), *page, *area));
                 }
                 _ => {}
@@ -890,6 +948,17 @@ pub fn base64_decode(s: &str) -> Option<Vec<u8>> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn how_the_picture_under_a_table_stands_is_found() {
+        let table = |k: &str, after: &str| format!("<!-- pdf2md:table {k} -->\n<table>\n<tr>\n<td>\n\na\n\n</td>\n</tr>\n</table>\n\n{after}\n\n");
+        let md = table("0123456789abcdef", "<details open>\n<summary>The table as printed</summary>\n\n![x](images/a.png)\n\n</details>")
+            + &table("1123456789abcdef", "<details>\n<summary>The table as printed</summary>\n\n![x](images/b.png)\n\n</details>")
+            + &table("2123456789abcdef", "Text goes on.");
+        let states: Vec<(String, String)> = marked_table_pictures(&md);
+        let want = [("0123456789abcdef.picture", "open"), ("1123456789abcdef.picture", "closed"), ("2123456789abcdef.picture", "removed")];
+        assert_eq!(states, want.iter().map(|(k, s)| (k.to_string(), s.to_string())).collect::<Vec<_>>());
+    }
 
     #[test]
     fn the_cells_of_a_marked_table_are_found() {

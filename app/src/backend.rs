@@ -369,7 +369,7 @@ fn run(input: &Path, output: &Path, replace: bool) -> Result<(String, PathBuf), 
     let files = write_book(&book, &dest).map_err(|e| e.to_string())?;
     let mut msg = format!("Wrote {} files to {}", files.len(), dest.display());
     if kept > 0 {
-        msg.push_str(&format!("; kept {kept} hand correction(s) of equations and table cells"));
+        msg.push_str(&format!("; kept {kept} hand correction(s) (equations, table cells, pictures under tables folded away)"));
     }
     if notes + fixes > 0 {
         msg.push_str(&format!("; kept {notes} note(s) and {fixes} fix(es)"));

@@ -225,6 +225,12 @@ pub fn equation_numbers(latex: &str, tag: Option<&str>) -> Vec<String> {
     v
 }
 
+/// What the picture under a table is called: the printed table, cut from
+/// the page, to check the table against. Under a table that was read from
+/// that picture, and under one whose text the book itself holds.
+pub const TABLE_READ: &str = "the table as printed";
+pub const TABLE_SET: &str = "the table as the book sets it";
+
 /// The key of a table of the book: from the page it is on and what its
 /// cells hold as converted, so that it stays the same from one conversion
 /// to the next, and a cell the reader corrects is found again.

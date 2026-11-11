@@ -589,7 +589,7 @@ fn picture_tables(blks: Vec<Blk>, boxes: &HashMap<String, (u32, Figure)>) -> Vec
         let table = Block::Table { key: crate::table_key(boxes.get(&key).map_or(0, |b| b.0), &rows), rows, widths: Vec::new() };
         out.push(Blk { block: table, page, centered: false });
         if let Some((number, area)) = boxes.get(&key) {
-            out.push(Blk { block: Block::Picture { page: *number, area: *area, alt: "the table as printed".into() }, page, centered: false });
+            out.push(Blk { block: Block::Picture { page: *number, area: *area, alt: crate::TABLE_READ.into() }, page, centered: false });
         }
     }
     out
@@ -722,7 +722,7 @@ fn wraps(t: &str) -> bool {
 /// A table that reaches the foot of its page goes on at the top of the
 /// next, on a panel without rules (they stand under the head only):
 /// `carried` holds the columns of such a table from one page to the next.
-fn panel_tables(doc: &Doc, page: &crate::layout::Page, lines: &[Line], st: &Stats, carried: &mut Option<Vec<f32>>) -> Vec<(usize, usize, Block)> {
+fn panel_tables(doc: &Doc, page: &crate::layout::Page, lines: &[Line], st: &Stats, carried: &mut Option<Vec<f32>>) -> Vec<(usize, usize, Block, Figure)> {
     let mut out = Vec::new();
     let from_before = carried.take();
     for (panel, light) in &page.shades {
@@ -870,7 +870,9 @@ fn panel_tables(doc: &Doc, page: &crate::layout::Page, lines: &[Line], st: &Stat
             }
         }
         if rows.len() >= 2 {
-            out.push((first, end, Block::Table { key: crate::table_key(page.number, &rows), rows, widths: Vec::new() }));
+            // (with where the panel is: the picture of the table as it is set)
+            let area = Figure { left: panel.left, right: panel.right, top: panel.top, bottom: panel.bottom };
+            out.push((first, end, Block::Table { key: crate::table_key(page.number, &rows), rows, widths: Vec::new() }, area));
             if panel.bottom > 0.85 * page.height {
                 *carried = Some(edges.clone());
             }
@@ -1686,7 +1688,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
         }
         let mut disp = display_flags(doc, &lines[..end], st);
         // (a line of a table is no displayed formula, and none runs on into one)
-        for (first, last, _) in &panels {
+        for (first, last, _, _) in &panels {
             for flag in disp.iter_mut().take(*last).skip(*first) {
                 *flag = false;
             }
@@ -1751,10 +1753,12 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 fi += 1;
                 prev_top = None;
             }
-            if let Some((_, j, table)) = panels.iter().find(|t| t.0 == i) {
+            if let Some((_, j, table, area)) = panels.iter().find(|t| t.0 == i) {
                 b.flush();
                 b.anchor_block();
                 b.push(table.clone());
+                // (the printed table under it, to check it against)
+                b.push(Block::Picture { page: number, area: *area, alt: crate::TABLE_SET.into() });
                 prev_top = Some(lines[j - 1].top);
                 last_heading = None;
                 i = *j;
