@@ -17,7 +17,10 @@ PDF's points; `lines` is the number of text lines in it (0 if not known),
 (a table of contents is one for marker) is followed by its text line by
 line, as `line`s: marker reads tables cell by cell, which shuffles a table
 of contents, so its lines are taken from the text the PDF carries under
-the picture of the page, or read from the picture by Tesseract.
+the picture of the page, or read from the picture by Tesseract. A block of
+text that marker read as several lines (an address, the lines of a title
+page: lines that end where the author ended them) is followed by those
+lines too; `html` has them run together.
 How far it is goes to stderr: "  loading 0/1", "  scan 8/537".
 
 Everything runs on this machine; nothing is sent anywhere.
@@ -82,10 +85,12 @@ def write_page(pdf: str, n: int, page, counts, path: Path):
     for b in blocks:
         html = " ".join((b.get("html") or "").split())
         x0, y0, x1, y1 = b["bbox"]
-        count = counts.get(b.get("id"), 0)
+        count, read = counts.get(b.get("id"), (0, []))
         lines.append(f"block\t{b['block_type']}\t{x0 - left:.1f}\t{y0 - top:.1f}\t{x1 - left:.1f}\t{y1 - top:.1f}\t{count}\t{html}")
         if b["block_type"] in TABLES:
             lines += ["line\t" + t for t in table_lines(pdf, n, b["bbox"])]
+        elif len(read) >= 2:
+            lines += ["line\t" + " ".join(t.split()) for t in read]
     # (written whole or not at all: a page file that is there is done)
     tmp = path.with_suffix(".tmp")
     tmp.write_text("\n".join(lines) + "\n")
@@ -143,7 +148,8 @@ def main():
         counts = {}
         for page in document.pages:
             for block in page.structure_blocks(document):
-                counts[str(block.id)] = len(block.contained_blocks(document, (BlockTypes.Line,)))
+                read = [t for t in block.raw_text(document).split("\n") if t.strip()]
+                counts[str(block.id)] = (len(block.contained_blocks(document, (BlockTypes.Line,))), read)
         for step in steps:
             step(document)
         rendered = converter.resolve_dependencies(converter.renderer)(document)

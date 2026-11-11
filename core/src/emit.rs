@@ -348,7 +348,8 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
             let hashes = "#".repeat((*level).clamp(1, 6));
             // (a heading is styled by its #s: no italic or bold inside)
             let plain = crate::no_emph(text.clone());
-            out.push_str(&format!("{hashes} <a id=\"{id}\"></a>{}\n\n", render_inlines(&plain)));
+            // (a line break inside it: on the heading's own line)
+            out.push_str(&format!("{hashes} <a id=\"{id}\"></a>{}\n\n", render_inlines(&plain).replace("<br>\n", "<br>")));
         }
         Block::Para(inl) => {
             let t = render_inlines(inl);

@@ -183,26 +183,45 @@ pub fn read(path: &Path, first: u32, last: u32) -> Result<Scan, String> {
         }
         pages.push(page);
     }
+    // Where the lines of a block end (pages read before the reader said
+    // so, and blocks it read as one line): asked of the PDF itself, for
+    // blocks of several lines and for pages set centered, where every
+    // line ends as the author ended it.
+    let mut pages = imprints(&pages);
+    for page in pages.iter_mut() {
+        let all = centered_page(page);
+        let number = page.number;
+        for b in page.blocks.iter_mut().filter(|b| is_text(b) && b.text.is_empty()) {
+            if b.lines >= 2 || (all && b.bottom - b.top > 20.0) {
+                b.text = area_lines(path, number, b);
+            }
+        }
+    }
     Ok(build(&pages, &format!("{:016x}", fnv(dir.to_string_lossy().as_bytes()))))
 }
 
-/// The words in a block's area of a page: the text the PDF carries there
-/// under the picture, else what Tesseract reads in it. Empty if neither
-/// knows.
+/// The words in a block's area of a page (see [`area_lines`]).
 fn area_text(path: &Path, page: u32, b: &Raw) -> String {
+    area_lines(path, page, b).join(" ")
+}
+
+/// The text in a block's area of a page, line by line: the text the PDF
+/// carries there under the picture, else what Tesseract reads in it.
+/// Empty if neither knows.
+fn area_lines(path: &Path, page: u32, b: &Raw) -> Vec<String> {
     let (x, y, w, h) = (b.left.floor().max(0.0), b.top.floor().max(0.0), (b.right - b.left).ceil().max(1.0), (b.bottom - b.top).ceil().max(1.0));
     let page = page.to_string();
     let arg = |v: f32| (v as i64).to_string();
+    let lines = |t: &str| -> Vec<String> { t.lines().map(|l| l.split_whitespace().collect::<Vec<_>>().join(" ")).filter(|l| !l.is_empty()).collect() };
     let hidden = Command::new("pdftotext")
-        .args(["-f", &page, "-l", &page, "-x", &arg(x), "-y", &arg(y), "-W", &arg(w), "-H", &arg(h)])
+        .args(["-layout", "-f", &page, "-l", &page, "-x", &arg(x), "-y", &arg(y), "-W", &arg(w), "-H", &arg(h)])
         .arg(path)
         .arg("-")
         .output()
         .map(|o| String::from_utf8_lossy(&o.stdout).into_owned())
         .unwrap_or_default();
-    let tidy = |t: &str| t.split_whitespace().collect::<Vec<_>>().join(" ");
     if hidden.chars().any(char::is_alphanumeric) {
-        return tidy(&hidden);
+        return lines(&hidden);
     }
     // (cut out at 300 dots per inch, which pdftoppm counts its pixels in)
     let k = 300.0 / 72.0;
@@ -210,14 +229,14 @@ fn area_text(path: &Path, page: u32, b: &Raw) -> String {
         .args(["-f", &page, "-l", &page, "-r", "300", "-gray", "-png", "-x", &arg(x * k), "-y", &arg(y * k), "-W", &arg(w * k), "-H", &arg(h * k)])
         .arg(path)
         .output();
-    let Ok(cut) = cut else { return String::new() };
+    let Ok(cut) = cut else { return Vec::new() };
     let read = Command::new("tesseract").args(["-", "-", "--psm", "6"]).env("OMP_THREAD_LIMIT", "1").stdin(std::process::Stdio::piped()).stdout(std::process::Stdio::piped()).stderr(std::process::Stdio::null()).spawn();
-    let Ok(mut read) = read else { return String::new() };
+    let Ok(mut read) = read else { return Vec::new() };
     if let Some(mut pipe) = read.stdin.take() {
         use std::io::Write;
         let _ = pipe.write_all(&cut.stdout);
     }
-    read.wait_with_output().map(|o| tidy(&String::from_utf8_lossy(&o.stdout))).unwrap_or_default()
+    read.wait_with_output().map(|o| lines(&String::from_utf8_lossy(&o.stdout))).unwrap_or_default()
 }
 
 /// Run the reader, passing on what it says and reporting how far it is.
@@ -717,6 +736,114 @@ fn looks_like_code(t: &str) -> bool {
     (signs + 2 * keywords) * 5 >= words && signs + keywords >= 3
 }
 
+/// Blocks of running text and headings.
+fn is_text(b: &Raw) -> bool {
+    matches!(b.kind.as_str(), "Text" | "TextInlineMath" | "SectionHeader" | "Caption" | "ListItem")
+}
+
+/// The publisher's name at the foot of the title page is no running
+/// foot: a foot of several words without a page number, on a page with no
+/// other head or foot, that the pages around do not repeat, is text.
+fn imprints(pages: &[PageRead]) -> Vec<PageRead> {
+    let text = |b: &Raw| crate::key(&plain(&all_inline(&b.html)));
+    let heads = |p: &PageRead| -> Vec<String> { p.blocks.iter().filter(|b| b.kind == "PageHeader" || b.kind == "PageFooter").map(text).collect() };
+    let mut out = pages.to_vec();
+    for (i, page) in out.iter_mut().enumerate() {
+        let around: Vec<String> = (i.saturating_sub(4)..(i + 5).min(pages.len())).filter(|j| *j != i).flat_map(|j| heads(&pages[j])).collect();
+        let alone = page.blocks.iter().filter(|b| b.kind == "PageHeader" || b.kind == "PageFooter").count() == 1;
+        for b in page.blocks.iter_mut().filter(|b| b.kind == "PageFooter") {
+            let words = plain(&all_inline(&b.html));
+            if alone && words.split_whitespace().count() >= 2 && number_in(&words).is_none() && !around.contains(&text(b)) {
+                b.kind = "Text".into();
+            }
+        }
+    }
+    out
+}
+
+/// Is everything on this page set centered (a title page, a dedication)?
+/// Every block of text lies about the middle of the page and is clearly
+/// narrower than the page.
+fn centered_page(page: &PageRead) -> bool {
+    let middle = page.width / 2.0;
+    let centered = |b: &Raw| ((b.left + b.right) / 2.0 - middle).abs() <= 0.045 * page.width && b.right - b.left < 0.8 * page.width;
+    let mut text = page.blocks.iter().filter(|b| is_text(b) && has_words(&all_inline(&b.html))).peekable();
+    // (a table, a table of contents or an equation has a shape of its own)
+    let shaped = page.blocks.iter().any(|b| matches!(b.kind.as_str(), "Equation" | "Table" | "Form" | "TableOfContents") && (b.kind == "Equation" || !b.text.is_empty()));
+    page.width > 0.0 && text.peek().is_some() && text.all(centered) && !shaped
+}
+
+/// Running text with its lines ended where `lines` end them, for the
+/// line ends that `keep` says are meant (by their place among the lines).
+/// The text as it was if it is not the words of `lines`, or holds more
+/// than words (a formula).
+fn with_breaks(inl: Vec<Inline>, lines: &[String], keep: &dyn Fn(usize) -> bool) -> Vec<Inline> {
+    let counts: Vec<usize> = lines.iter().map(|l| l.split_whitespace().count()).collect();
+    let words = |i: &Inline| match i {
+        Inline::Text(t) | Inline::Emph(t) | Inline::Strong(t) => Some(t.split_whitespace().count()),
+        _ => None,
+    };
+    let total: Option<usize> = inl.iter().map(words).sum();
+    if lines.len() < 2 || total != Some(counts.iter().sum()) {
+        return inl;
+    }
+    // the place of each line's last word
+    let mut ends: Vec<usize> = Vec::new();
+    for c in &counts[..counts.len() - 1] {
+        ends.push(ends.last().copied().unwrap_or(0) + c);
+    }
+    let mut out: Vec<Inline> = Vec::new();
+    let (mut n, mut fresh) = (0, true);
+    for i in &inl {
+        let (Inline::Text(t) | Inline::Emph(t) | Inline::Strong(t)) = i else { continue };
+        for w in t.split_whitespace() {
+            match (out.last_mut(), i) {
+                (Some(Inline::Text(last)), Inline::Text(_)) | (Some(Inline::Emph(last)), Inline::Emph(_)) | (Some(Inline::Strong(last)), Inline::Strong(_)) if !fresh => {
+                    last.push(' ');
+                    last.push_str(w);
+                }
+                _ => {
+                    if !fresh {
+                        push_text(&mut out, Inline::Text(" ".into()));
+                    }
+                    let piece = match i {
+                        Inline::Emph(_) => Inline::Emph(w.into()),
+                        Inline::Strong(_) => Inline::Strong(w.into()),
+                        _ => Inline::Text(w.into()),
+                    };
+                    push_text(&mut out, piece);
+                }
+            }
+            n += 1;
+            fresh = false;
+            if let Some(k) = ends.iter().position(|e| *e == n) {
+                if keep(k) {
+                    // (a space, so that the words stay apart where the
+                    // break is not written: in an anchor's name)
+                    push_text(&mut out, Inline::Text(" ".into()));
+                    out.push(Inline::Break);
+                    fresh = true;
+                }
+            }
+        }
+    }
+    out
+}
+
+/// Does line `k` of a block's `lines` end where the author ended it (a
+/// hard return), not where the measure did? It does if the first word of
+/// the next line would have fitted after it: the line is clearly shorter
+/// than the block's longest line, or even that line stops short of the
+/// right margin (`room`: the space from the block's right edge to the
+/// margin, in letters).
+fn hard_return(lines: &[String], k: usize, room: f32) -> bool {
+    let len = |l: &String| l.chars().count() as f32;
+    let longest = lines.iter().map(len).fold(1.0, f32::max);
+    let Some(next) = lines.get(k + 1).and_then(|l| l.split_whitespace().next()) else { return false };
+    let needed = next.chars().count() as f32 + 1.0;
+    len(&lines[k]) + needed <= longest + room.max(0.0)
+}
+
 /// How much of block `a` lies inside block `b`, 0 to 1.
 fn inside(a: &Raw, b: &Raw) -> f32 {
     let w = (a.right.min(b.right) - a.left.max(b.left)).max(0.0);
@@ -746,7 +873,12 @@ fn ends_sentence(t: &str) -> bool {
 /// The blocks of a scanned book from its pages. `book`: what tells this
 /// book from others (for the keys of its equations).
 fn build(pages: &[PageRead], book: &str) -> Scan {
+    let pages = &imprints(pages);
     let labels = labels(pages);
+    // how wide the text is set: the usual width of a full paragraph
+    let mut widths: Vec<f32> = pages.iter().flat_map(|p| p.blocks.iter().filter(|b| b.kind == "Text" && b.right - b.left > 0.7 * p.width).map(|b| b.right - b.left)).collect();
+    widths.sort_by(f32::total_cmp);
+    let measure = widths.get(widths.len() / 2).copied();
     // the sizes of the headings, in the order they come
     let heads: Vec<(f32, usize)> = pages.iter().flat_map(|p| &p.blocks).filter(|b| b.kind == "SectionHeader").map(|b| (b.bottom - b.top, b.lines)).collect();
     let head_sizes = sizes(&heads);
@@ -758,7 +890,32 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
     // (size, text) of the headings, to find the size of the chapter titles
     let mut titles: Vec<(f32, String)> = Vec::new();
     for (pi, page) in pages.iter().enumerate() {
-        let push = |blks: &mut Vec<Blk>, block: Block| blks.push(Blk { block, page: pi, centered: false });
+        // a page set centered keeps its look: centered, every line as it ends
+        let all_centered = centered_page(page);
+        let push = |blks: &mut Vec<Blk>, block: Block| {
+            let centered = all_centered && !matches!(block, Block::Anchor(_));
+            blks.push(Blk { block, page: pi, centered })
+        };
+        // where the text starts on this page, and where its lines end
+        let left = page.blocks.iter().filter(|b| is_text(b)).map(|b| b.left).fold(f32::MAX, f32::min);
+        let right = left + measure.unwrap_or(0.9 * page.width);
+        let breaks = |b: &Raw, inl: Vec<Inline>| -> Vec<Inline> {
+            // (a heading's lines are its own only on a page set centered:
+            // a chapter title in two lines is one title)
+            if b.text.len() < 2 || !is_text(b) || (b.kind == "SectionHeader" && !all_centered) {
+                return inl;
+            }
+            // A block as wide as the text is set is a paragraph: its
+            // lines end where the measure ends them. (Its lines may come
+            // from the PDF's own text, which knows no other kind.)
+            if !all_centered && right - b.right < 0.06 * page.width {
+                return inl;
+            }
+            // (the room to the margin in letters, by the width of this block's letters)
+            let longest = b.text.iter().map(|l| l.chars().count()).max().unwrap_or(1).max(1) as f32;
+            let room = (right - b.right) / ((b.right - b.left).max(1.0) / longest);
+            with_breaks(inl, &b.text, &|k| all_centered || hard_return(&b.text, k, room))
+        };
         let mut anchor = labels[pi].as_ref().map(|l| format!("p{l}"));
         let (mut figures, mut equations) = (0, 0);
         let mut first_text = true;
@@ -789,7 +946,7 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
                     if joined == Some((pi, bi)) {
                         continue;
                     }
-                    let mut text = crate::no_emph(all_inline(&b.html));
+                    let mut text = breaks(b, crate::no_emph(all_inline(&b.html)));
                     if let Some(openers) = &openers {
                         // by where the headings stand, not by their heights
                         size = SECTION;
@@ -861,7 +1018,7 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
                         for p in ps {
                             match p {
                                 Part::Inline(i) => {
-                                    let i = tidy(i);
+                                    let i = breaks(b, tidy(i));
                                     if has_words(&i) {
                                         made.push(Block::Para(i));
                                     }
@@ -1125,6 +1282,67 @@ mod tests {
         let lettered = parse_page(3, "page\t400.0\t600.0\nblock\tPicture\t50.0\t50.0\t350.0\t300.0\t0\t\nblock\tText\t100.0\t100.0\t200.0\t120.0\t1\t<p>x axis</p>\nblock\tText\t50.0\t320.0\t350.0\t340.0\t1\t<p>Below it.</p>");
         let scan = build(&[lettered], "book");
         assert_eq!(scan.blks.iter().filter(|b| matches!(b.block, Block::Para(_))).count(), 1);
+    }
+
+    #[test]
+    fn a_centered_page_stays_centered_with_its_lines() {
+        let block = |kind: &str, left: f32, top: f32, right: f32, bottom: f32, html: &str, lines: &[&str]| {
+            let lines: String = lines.iter().map(|l| format!("line\t{l}\n")).collect();
+            format!("block\t{kind}\t{left}\t{top}\t{right}\t{bottom}\t{}\t{html}\n{lines}", lines.matches('\n').count())
+        };
+        let title = parse_page(
+            3,
+            &format!(
+                "page\t487.0\t842.0\n{}{}{}",
+                block("SectionHeader", 59.0, 92.0, 432.0, 155.0, "<h2>QUANTUM FIELD THEORY IN A NUTSHELL</h2>", &["QUANTUM FIELD THEORY", "IN A NUTSHELL"]),
+                block("Text", 109.0, 309.0, 380.0, 350.0, "<p>Kavli Institute for <i>Theoretical Physics</i> University of California</p>", &["Kavli Institute for Theoretical Physics", "University of California"]),
+                block("PageFooter", 145.0, 768.0, 342.0, 802.0, "<p>PRINCETON UNIVERSITY PRESS</p>", &[]),
+            ),
+        );
+        // a page of ordinary text: an address keeps its lines, a sentence
+        // that the measure broke does not
+        let text = parse_page(
+            4,
+            &format!(
+                "page\t487.0\t842.0\n{}{}{}",
+                block("Text", 16.0, 100.0, 458.0, 160.0, "<p>A paragraph as wide as the page is, of some lines, to show how wide the text is set on it.</p>", &[]),
+                block("Text", 16.0, 200.0, 200.0, 230.0, "<p>41 William Street, Princeton, New Jersey 08540</p>", &["41 William Street, Princeton,", "New Jersey 08540"]),
+                block("Text", 16.0, 300.0, 440.0, 330.0, "<p>This book was composed in Times Roman by Princeton Editorial Associates, Inc., Scottsdale</p>", &["This book was composed in Times Roman by Princeton Editorial", "Associates, Inc., Scottsdale"]),
+            ),
+        );
+        let scan = build(&[title, text], "book");
+        let shown: Vec<(bool, String)> = scan
+            .blks
+            .iter()
+            .filter_map(|b| match &b.block {
+                Block::Heading { text, .. } | Block::Para(text) => Some((b.centered, emit_plain(text))),
+                _ => None,
+            })
+            .collect();
+        assert_eq!(
+            shown,
+            [
+                (true, "QUANTUM FIELD THEORY /IN A NUTSHELL".to_string()),
+                (true, "Kavli Institute for _Theoretical Physics_ /University of California".to_string()),
+                // (the publisher at the foot of the title page is text)
+                (true, "PRINCETON UNIVERSITY PRESS".to_string()),
+                (false, "A paragraph as wide as the page is, of some lines, to show how wide the text is set on it.".to_string()),
+                (false, "41 William Street, Princeton, /New Jersey 08540".to_string()),
+                (false, "This book was composed in Times Roman by Princeton Editorial Associates, Inc., Scottsdale".to_string()),
+            ]
+        );
+    }
+
+    /// Text with "/" where a line ends and italics marked.
+    fn emit_plain(inl: &[Inline]) -> String {
+        inl.iter()
+            .map(|i| match i {
+                Inline::Text(t) => t.clone(),
+                Inline::Emph(t) => format!("_{t}_"),
+                Inline::Break => "/".into(),
+                other => format!("{other:?}"),
+            })
+            .collect()
     }
 
     #[test]
