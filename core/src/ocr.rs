@@ -719,6 +719,83 @@ pub fn second_readings(equations: &[(String, String, Vec<u8>)]) {
     }
 }
 
+const TABLE_SCRIPT: &str = include_str!("table_ocr.py");
+
+/// Tables that the book holds as pictures, read cell by cell. Read whole,
+/// as one formula, such a table comes out with cells in the wrong rows
+/// and columns (see `table_ocr.py`); here each table that stands over its
+/// picture is cut from the PDF once more, sharper, and its rows and
+/// columns are found on the picture itself. A table that does not part
+/// into rows and columns there, or cannot be read (no recognizer), stays
+/// as it was read whole. A reading is kept, under the table's key.
+pub fn read_picture_tables(book: &mut crate::Book, pdf: &std::path::Path) {
+    use crate::Block;
+    let (Some(dir), Some(py)) = (cache_dir(), python()) else { return };
+    // (chapter, block, key, page, area) of each table over its picture
+    let mut tables = Vec::new();
+    for (c, ch) in book.chapters.iter().enumerate() {
+        for (b, pair) in ch.blocks.windows(2).enumerate() {
+            match (&pair[0].block, &pair[1].block) {
+                (Block::Table { key, .. }, Block::Picture { page, area, alt }) if alt == "the table as printed" && !key.is_empty() => {
+                    tables.push((c, b, key.clone(), *page, *area));
+                }
+                _ => {}
+            }
+        }
+    }
+    let todo: Vec<_> = tables.iter().filter(|t| !dir.join(format!("{}.cells", t.2)).exists()).collect();
+    if !todo.is_empty() {
+        let pending = dir.join("tables");
+        if std::fs::create_dir_all(&pending).is_err() {
+            return;
+        }
+        for (_, _, key, page, area) in &todo {
+            // pdftohtml pixels are 1.5 × points; 300 dpi is 300/72 px per point
+            let px = |v: f32| (v / 1.5 * 300.0 / 72.0).round().max(0.0) as i64;
+            let pad = 4.0;
+            let _ = Command::new("pdftoppm")
+                .args(["-png", "-singlefile", "-r", "300"])
+                .args(["-f", &page.to_string(), "-l", &page.to_string()])
+                .args(["-x", &px(area.left - pad).to_string(), "-y", &px(area.top - pad).to_string()])
+                .args(["-W", &px(area.right - area.left + 2.0 * pad).to_string(), "-H", &px(area.bottom - area.top + 2.0 * pad).to_string()])
+                .arg(pdf)
+                .arg(pending.join(key))
+                .status();
+        }
+        // (the reader of cells uses the recognizer's own reading of one picture)
+        let _ = std::fs::write(dir.join("math_ocr.py"), SCRIPT);
+        let script = dir.join("table_ocr.py");
+        let _ = std::fs::write(&script, TABLE_SCRIPT);
+        eprintln!("Reading {} tables cell by cell…", todo.len());
+        if !run_recognizer(Command::new(&py).arg(&script).arg(&pending).arg(&dir)) {
+            eprintln!("The tables could not be read cell by cell; they stay as read whole.");
+        }
+        for (_, _, key, _, _) in &todo {
+            let _ = std::fs::remove_file(pending.join(format!("{key}.png")));
+            // (not looked at again if it is no table of rows and columns)
+            let cells = dir.join(format!("{key}.cells"));
+            if !cells.exists() {
+                let _ = std::fs::write(cells, "");
+            }
+        }
+    }
+    for (c, b, key, _, _) in tables {
+        let Ok(text) = std::fs::read_to_string(dir.join(format!("{key}.cells"))) else { continue };
+        let mut read: Vec<Vec<crate::Cell>> = text.lines().map(|l| l.split('\t').map(crate::blocks::table_cell).collect()).collect();
+        read.retain(|r: &Vec<crate::Cell>| r.iter().any(|cell| !cell.text.is_empty()));
+        let columns = read.iter().map(Vec::len).max().unwrap_or(0);
+        if read.len() < 2 || columns < 2 {
+            continue;
+        }
+        for r in read.iter_mut() {
+            r.resize_with(columns, || crate::Cell { span: 1, ..Default::default() });
+        }
+        if let Block::Table { rows, .. } = &mut book.chapters[c].blocks[b].block {
+            *rows = read;
+        }
+    }
+}
+
 /// Run the recognizer, passing on what it says and reporting how far it
 /// is: it prints lines like "  reading 16/420", with one word for each of
 /// its steps.

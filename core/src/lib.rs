@@ -322,7 +322,9 @@ pub fn convert_pdf_pages(path: &Path, pages: Option<(u32, u32)>) -> Result<Book,
     } else {
         layout::read_drawings(&mut doc, path, pages);
         progress::report(progress::Step::Book, 0, 1);
-        convert_doc(&doc)
+        let mut book = convert_doc(&doc);
+        ocr::read_picture_tables(&mut book, path);
+        book
     };
     book.title = book_title(path, &doc);
     structure::half_title_to_contents(&mut book.chapters, &book.title);

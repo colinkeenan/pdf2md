@@ -651,7 +651,21 @@ pub(crate) fn array_table(tex: &str) -> Option<Vec<Vec<crate::Cell>>> {
         cell.push(c);
         rest = &rest[c.len_utf8()..];
     }
-    let clean = |cell: &str| -> crate::Cell {
+    let mut rows: Vec<Vec<crate::Cell>> = rows.iter().map(|r| r.iter().map(|c| table_cell(c)).collect::<Vec<_>>()).filter(|r: &Vec<crate::Cell>| r.iter().any(|c| !c.text.is_empty())).collect();
+    let columns = rows.iter().map(Vec::len).max().unwrap_or(0);
+    if rows.len() < 2 || columns < 2 {
+        return None;
+    }
+    for r in rows.iter_mut() {
+        r.resize_with(columns, || crate::Cell { span: 1, ..Default::default() });
+    }
+    Some(rows)
+}
+
+/// A cell of a table read as LaTeX: a formula, or words if it holds only
+/// words.
+pub(crate) fn table_cell(cell: &str) -> crate::Cell {
+    {
         let mut t = cell.replace("\\hline", "");
         let mut t_ref = t.trim();
         // ({{…}}: braces around all of it say nothing)
@@ -672,16 +686,7 @@ pub(crate) fn array_table(tex: &str) -> Option<Vec<Vec<crate::Cell>>> {
             None => vec![Inline::Math(t)],
         };
         crate::Cell { text, span: 1, ..Default::default() }
-    };
-    let mut rows: Vec<Vec<crate::Cell>> = rows.iter().map(|r| r.iter().map(|c| clean(c)).collect::<Vec<_>>()).filter(|r: &Vec<crate::Cell>| r.iter().any(|c| !c.text.is_empty())).collect();
-    let columns = rows.iter().map(Vec::len).max().unwrap_or(0);
-    if rows.len() < 2 || columns < 2 {
-        return None;
     }
-    for r in rows.iter_mut() {
-        r.resize_with(columns, || crate::Cell { span: 1, ..Default::default() });
-    }
-    Some(rows)
 }
 
 /// Does the "{" that starts `t` close at its end?
