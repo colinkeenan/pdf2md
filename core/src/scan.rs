@@ -173,7 +173,7 @@ pub fn read(path: &Path, first: u32, last: u32) -> Result<Scan, String> {
     let total = (last + 1).saturating_sub(first) as usize;
     let Some(py) = python() else {
         return Err("this PDF is a scan (pictures of pages, no text), and the page reader for scanned books is not installed. \
-                    The README says how to set it up (“Scanned books”)."
+                    The README says how to set it up (“Install”)."
             .into());
     };
     let dir = cache_dir(path).ok_or("no folder to keep the pages read in")?;
