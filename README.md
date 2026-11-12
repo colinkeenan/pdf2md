@@ -2,7 +2,7 @@
 
 pdf2md turns a PDF textbook into Markdown you can read, search and annotate: one file per chapter, plus `book.md` with the whole book in one file. Formulas become LaTeX, not pictures. The contents, the index, footnotes and references become links. Every printed page is marked, and the mark opens that page of the PDF, so you can check the text against the book.
 
-It is made for physics and math textbooks and has been used on three: a TeX-made PDF, a PDF made from an ebook, and a scan. [`samples/dyson`](samples/dyson) is the first of them, converted.
+It is made for physics and math textbooks and has been used on three: a TeX-made PDF, a PDF made from an ebook, and a scan. [`samples/dyson`](samples/dyson) is the first of them, converted. To see it as intended, clone the repository and open that folder with mdBun; GitHub shows it less well (see [below](#math-github-or-standard)).
 
 The books are best read with [mdBun](https://github.com/colinkeenan/mdBun), a small Markdown viewer written alongside pdf2md. It typesets the math, flashes the target of a link, and lets you correct an equation or add a note by clicking.
 
@@ -104,7 +104,7 @@ The github form exists because GitHub reads what stands between `$` signs as Mar
 
 In the app, typing a reader that is known to understand only the standard form (VS Code, Obsidian, Typora, MarkText, Zettlr, ghostwriter, Joplin, Logseq, pandoc) switches "Math" to standard; you can switch it back. That list comes from those programs' documentation, not from trying each one. On the command line the form is github unless you pass `--math standard`.
 
-**GitHub will not look as good as mdBun.** mdBun typesets formulas itself and brings its own fonts. GitHub leaves the drawing to your browser, which needs a math font of its own: without one, brackets, roots and sums stay the size of a letter. Chrome on Linux looks for "Latin Modern Math" (Arch `otf-latinmodern-math`), and even with it the math looks thinner than in mdBun. Phones mostly have no such font.
+**GitHub will not look as good as mdBun.** mdBun typesets formulas itself and brings its own fonts. GitHub leaves the drawing to your browser, which needs a math font of its own: without one, brackets, roots and sums stay the size of a letter. Chrome on Linux looks for "Latin Modern Math" (Arch `otf-latinmodern-math`), and even with it the math looks thinner than in mdBun. Phones mostly have no such font. The page markers do not jump to their page on GitHub either: its PDF viewer opens `book.pdf` at the front and loads a few pages at a time. Read locally, they open the PDF at the page.
 
 ## Correcting and annotating a book
 
