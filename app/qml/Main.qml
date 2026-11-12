@@ -204,14 +204,14 @@ Kirigami.ApplicationWindow {
                     textRole: "text"
                     valueRole: "value"
                     model: [
-                        { value: "github", text: "$`…`$ and ```math — for GitHub and mdBun" },
-                        { value: "standard", text: "$…$ and $$…$$ — for most other readers" }
+                        { value: "github", text: "For GitHub or mdBun   ($`…`$, ```math)" },
+                        { value: "standard", text: "For other Markdown readers   ($…$, $$…$$)" }
                     ]
                     currentIndex: converter.math === "standard" ? 1 : 0
                     onActivated: converter.usemath(currentValue)
                     QQC2.ToolTip.visible: hovered
                     QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
-                    QQC2.ToolTip.text: "How formulas are written in the book.\nGitHub garbles formulas between $ signs; most other Markdown programs show the first form as program code.\nmdBun reads both. A book is written anew in the form chosen when you convert it again."
+                    QQC2.ToolTip.text: "How formulas are written in the book.\nmdBun reads both. GitHub needs the first;\nmost other programs need the second."
                 }
 
                 QQC2.Label {
