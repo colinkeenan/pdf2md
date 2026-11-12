@@ -1,165 +1,251 @@
 # How pdf2md works
 
-The [README](../README.md) says what pdf2md does and how to use it. This page is the detail behind it: what exactly is written, how each kind of PDF is read, and where the rules have edges. It grew rule by rule while three books were converted (Dyson, a TeX book; Sakurai, made from an ebook; Zee, a scan), so it reads as a list of cases.
+The [README](../README.md) says what pdf2md does and how to use it. This page describes what it writes and how it reads each kind of PDF, including the rules it applies and where they stop working. The rules were worked out on three books: Dyson's *Advanced Quantum Mechanics* (made with TeX), Sakurai's *Modern Quantum Mechanics* (made from an ebook) and Zee's *Quantum Field Theory in a Nutshell* (a scan).
 
 - [The source](#the-source)
 - [What is written](#what-is-written)
 - [The two forms of math](#the-two-forms-of-math)
-- [Reading a PDF that holds text](#reading-a-pdf-that-holds-text)
-- [Equations that are pictures](#equations-that-are-pictures)
+- [PDFs that hold text](#pdfs-that-hold-text)
+- [PDFs made from ebooks](#pdfs-made-from-ebooks)
 - [Scanned books](#scanned-books)
-- [What is kept from one conversion to the next](#what-is-kept-from-one-conversion-to-the-next)
-- [The window](#the-window)
-- [What was measured](#what-was-measured)
+- [What is kept between conversions](#what-is-kept-between-conversions)
+- [The app window](#the-app-window)
+- [Measurements](#measurements)
 
 ## The source
 
 ```
 pdf2md/
-├── Cargo.toml        workspace
-├── core/             the converter – plain Rust, no Qt (start here)
-│   ├── src/lib.rs         shared types + the pipeline (convert_doc)
-│   ├── src/layout.rs      runs `pdftohtml -xml` (text spans with position and font) and `pdftocairo -svg` (drawn bars, pictures)
-│   ├── src/pages.rs       running headers, page-number footers, printed page numbers, two columns
-│   ├── src/blocks.rs      lines -> headings, paragraphs, equations, TOC, index lines, footnotes
-│   ├── src/mathtex.rs     positioned spans -> LaTeX (fractions, scripts, limits, matrices)
-│   ├── src/structure.rs   chapters = headings in the chapter-title font size
-│   ├── src/notes.rs       footnotes + references, linked both ways
-│   ├── src/ocr.rs         equation images -> LaTeX via a local model (src/math_ocr.py)
-│   ├── src/scan.rs        scanned books: pages read by a local model (src/scan_read.py) -> blocks
-│   ├── src/links.rs       TOC + index linking
+├── core/             the converter: plain Rust, no Qt
+│   ├── src/lib.rs         shared types and the pipeline
+│   ├── src/layout.rs      runs pdftohtml and pdftocairo; text spans, drawn bars, pictures
+│   ├── src/annots.rs      link targets read straight from the PDF
+│   ├── src/pages.rs       running heads, printed page numbers, columns
+│   ├── src/blocks.rs      lines to headings, paragraphs, equations, tables, notes
+│   ├── src/mathtex.rs     positioned glyphs to LaTeX
+│   ├── src/textmath.rs    math set in the text font (ebook-made PDFs)
+│   ├── src/structure.rs   chapters, heading levels, file names
+│   ├── src/notes.rs       footnotes and references, linked both ways
+│   ├── src/links.rs       contents, index and cross-references
+│   ├── src/ocr.rs         equation pictures to LaTeX (math_ocr.py, table_ocr.py)
+│   ├── src/scan.rs        scanned books (scan_read.py, scan_marks.py)
+│   ├── src/userdata.rs    the reader's notes and fixes
 │   ├── src/emit.rs        Markdown output
-│   ├── src/measure.rs     how wide text and formulas come out in the viewer (where a line ends, for the page bars)
-│   ├── src/progress.rs    the steps of a conversion, how far each is, the time left (for the app's progress bars)
-│   ├── src/main.rs        command-line tool: pdf2md-cli
-│   └── tests/mini_book.rs end-to-end test on a tiny made-up book (as pdftohtml XML)
-└── app/              KDE Kirigami GUI (cxx-qt)
-    ├── build.rs, src/main.rs, src/backend.rs   Rust side
-    ├── pdf2md-app.desktop                      application menu launcher
-    ├── pdf2md.svg                              its icon (Markdown mark over a faded PDF page)
-    └── qml/Main.qml, qml/FileBrowser.qml       Kirigami UI
+│   ├── src/measure.rs     how wide a formula comes out (for words under an equation)
+│   ├── src/progress.rs    steps of a conversion and the time left
+│   ├── src/main.rs        the command-line tool, pdf2md-cli
+│   └── tests/mini_book.rs end-to-end test on a small made-up book
+└── app/              the window: KDE Kirigami, through cxx-qt
+    ├── src/backend.rs     the Rust side
+    └── qml/               Main.qml, FileBrowser.qml
 ```
 
-The PDF is read with poppler's `pdftohtml` (text, positions, fonts) and `pdftocairo` (drawn bars: fraction bars, root bars, overlines like ψ̄; pictures).
+pdf2md reads a PDF with two poppler programs. `pdftohtml -xml` gives every piece of text with its position and font. `pdftocairo -svg` gives what is drawn: fraction bars, root bars, the outlines of tall brackets, and pictures.
 
-### Tools for looking at a new book
+Several switches print what the converter sees:
 
-`--dump` is the tool for understanding a new book: it shows every line with its position, font size and style, superscripts as `^{..}`, subscripts as `_{..}`, math-font text inside `«..»`, and the drawn bars on each page.
-
-`PDF2MD_PROGRESS=1` prints the steps with their times and the estimate of the time left as the conversion goes (what the app shows as progress bars; `core/src/progress.rs`). Two environment variables print what the formula builder sees: `PDF2MD_MATHDEBUG=1` prints every span (box, size, font, text) and bar of each displayed formula, `PDF2MD_SVGDEBUG=1` the tall glyph outlines read from the SVG and the bracket each was taken for.
+| | |
+|---|---|
+| `pdf2md-cli --dump book.pdf 10 12` | every line of PDF pages 10 to 12 with position, font size and style; scripts as `^{…}` and `_{…}`; math-font text in `«…»`; the drawn bars |
+| `PDF2MD_PROGRESS=1` | the steps with their times and the estimate of the time left |
+| `PDF2MD_MATHDEBUG=1` | every span and bar of each displayed formula |
+| `PDF2MD_SVGDEBUG=1` | the tall outlines read from the SVG and the bracket each was taken for |
+| `PDF2MD_TMDEBUG=1` | how doubtful lines of text-font math were cut into words and symbols |
+| `PDF2MD_TABLEDEBUG=1` | the grey panels found and their lines |
+| `PDF2MD_OCR_PYTHON`, `PDF2MD_SCAN_PYTHON` | another Python that has texify or marker |
 
 ## What is written
 
-* **File names follow the book's chapter numbers**: `03-theory-of-angular-momentum.md` is chapter 3, with all its sections. `00-front-matter.md` holds everything before chapter 1 (title pages, prefaces, each under its own heading), except the table of contents, which is a file of its own right after it (`00b-contents.md`), with the page markers of its pages between its entries. A half-title (the book's title alone on a page, after the prefaces) stands at the very top of the contents file, above the word "Contents", not at the end of the front matter. An empty page before a chapter belongs to what comes before it (the empty page after the title page of a part is in the part's file). What comes after the last chapter (appendices, index) counts on from it. A book whose chapters have no numbers is numbered in order, front matter 00. Notes you made when the files had other names move to the renamed files.
-* **Footnotes / references**: notes and references printed at the end of the book are moved to the end of the chapter that cites them. A footnote printed at the foot of a page stays there: it stands at the foot of its page, right above the bar of the next page (also where the page turns in the middle of a paragraph). Clicking a marker jumps to the note; the note has a ↩ link back (one per citation if cited several times). A footnote whose marker is not in the text still stands at the foot of its page and says so.
-* **Page markers**: where each printed page starts, a small <sup>[p. 32]</sup> marker (with anchor `#p32`), so you can search for a page ("p. 32") and see where you are. The marker always stands on a line of its own, under a translucent bar across the page, so it is easy to spot when scrolling. Where the page turns in the middle of a paragraph, the bar and the marker are written into the sentence as a block as wide as the text that floats: the browser cannot set it beside the words already on the line, so it puts it under that line and goes on filling the line, and the text above the bar runs to the right margin as on the printed page, at any width of the window. (A viewer that drops `style` attributes shows the marker inside the sentence, without the bar.) Each marker is a link that opens that page of the PDF in a new tab of the browser, to compare the text with the book: `book.pdf#page=38`, counted in sheets of the PDF, which is what the browsers' PDF viewers go by (for [p. 32] of a book with six pages before page 1). `book.pdf` in the book's folder is a link to the PDF the book was made from, not a second copy, so a viewer that shows only what is in that folder can open it; it is made anew with each conversion, and if the PDF is moved (without the book's folder beside it), convert again. A page without a printed number that says something (30 words or more, a formula, a table: a preface, not a title page) gets a marker by its place in the PDF, <sup>[PDF p. 5]</sup> (anchor `#pdf-p5`), with the same link. Where a page starts in front of an entry inside a list (a section in the contents, a sub-entry of the index), the marker is written onto the entry before it, with its bar under that entry: on lines of its own it would end the list, and the indented entries after it would be shown as program code. In a book made from an ebook, where a printed page is not a page of the PDF, the link opens the PDF page on which the printed page starts, and only the pages before the first printed page and after the last one get PDF markers.
-* **Tables** of an ebook-made PDF are tables: such a book sets a table on a panel of grey, with a short rule under each cell of its head. The rules say where the columns are. The rows have no marks and stand close together, so they are found by how the cells stand: in the middle of their row's height, or at its top (whichever fits the table), a column with short cells showing where the rows are; where every row is one line, each line is a row. A table that reaches the foot of its page goes on at the top of the next. Formulas, links to equations and symbols that are pictures stay what they are inside the cells. The panel is no picture any more, and its text no picture's labels (one table's text was lost that way). Under each such table stands the picture of the panel, the table as the book sets it, to check the table against. A table that the book holds as a picture is read by the math recognizer as one formula, an array: under a table's caption that is a table, with the picture right under it, because a cell can be misread. Read whole, though, such a table comes back with cells in the wrong rows and columns, so it is read once more, cell by cell: the picture is cut from the page again, sharper, its rows are the lines of text on it and its columns end where no row has ink and what stands left and right is clearly apart; each cell is then read on its own, as words, as a whole number (Tesseract; the math recognizer makes signs of lone figures) or as a formula. A table that does not part into rows and columns that way stays as it was read whole. The readings are kept in `~/.cache/pdf2md/ocr/` (`KEY.cells`).
-* **A page set in two columns stays in two columns** (an index): the columns stand side by side as in the book, each read from the top down.
-* **Table of contents and index** are links. TOC entries point to chapter files or to headings inside them, and show their printed pages: a chapter its range ("— pp. 4–21", so you can tell which file holds page 20), a section its page ("— p. 15"), each linked to that page's marker. An index page number points to the word on that page where the entry's term appears (also "anticommute" → "anticommuting", "Lamb, Willis E." → "Lamb"); if the term is not in the text of that page (the index sometimes points to related material), it points to the page marker. In Dyson about 40 % of index links find their term. The found words are wrapped in their anchor (`<a id="ix-7">Lamb shift</a>`), so a viewer can highlight them; [mdBun](https://github.com/colinkeenan/mdBun) flashes the target of a link.
-* **Math** is emitted as LaTeX, never as pictures, in one of two forms, as you choose (“Math” in the window, `--math github` or `--math standard` on the command line; see [Which form for the math](../README.md#math-github-or-standard)): ``$`…`$`` in a sentence and a ```` ```math ```` block for a displayed formula, which is what GitHub needs and the form pdf2md starts with; or `$…$` and `$$…$$`, which is what most other Markdown programs know.
-* **References inside the book** that are links in the PDF stay links, and the whole reference is the link: "Section 3.5" goes to that heading, "Chapter 3" and "Appendix B" to their files, "Figure 1.1" and "Table 2.1" to their captions, "Problem 6.8" to the problem, "(3.422)" to the equation. In a list ("Figures 4.3 and 4.7") each number is a link. The word decides the target: "Section 2.1" is the section even though an equation (2.1) exists. References to other books ("Section 3.9 of Gottfried") are not links in the PDF and stay text.
-* **Pictures** (diagrams, plots, embedded images) are cut from the PDF as PNG files in `images/` (`fig-p049-1.png` = first picture on PDF page 49) and linked where they stand, with their labels inside them instead of in the text. Each gets a visible caption, numbered through the book with its printed page (_Figure 3 (p. 43)_), so searching a rendered chapter for "Figure" steps from picture to picture.
+### Files
+
+Each chapter is a file named by its number, such as `03-theory-of-angular-momentum.md`, with all its sections. A book whose chapters carry no numbers is numbered in order. Appendices and the index count on after the last chapter.
+
+`00-front-matter.md` holds everything before chapter 1, each title page or preface under its own heading. The table of contents is a file of its own right after it. A half-title, the book's title alone on a page, stands at the top of the contents file. An empty page belongs to what comes before it.
+
+`book.md` is the whole book in one file, with all links pointing inside it, so one search covers the book.
+
+### Page markers
+
+Where a printed page starts there is a marker, <sup>[p. 32]</sup>, with the anchor `#p32`. It stands on a line of its own under a faint bar.
+
+* **In the middle of a paragraph** the bar and marker are written into the sentence as a floating block as wide as the text. The browser puts it under the current line and goes on filling that line, so the text above the bar runs to the right margin as on the printed page, at any window width. A viewer that drops `style` attributes shows the marker inside the sentence, without the bar.
+* **The link.** Each marker opens that page of the PDF in a new tab: `book.pdf#page=38`, counted in sheets of the PDF, which is how browsers count. `book.pdf` in the book's folder is a symbolic link to the source PDF, made anew at each conversion. If you move the PDF, convert again.
+* **Pages without a printed number** get <sup>[PDF p. 5]</sup> (anchor `#pdf-p5`) if they say something: 30 words or more, a formula or a table. A title page gets none.
+* **Inside a list**, such as the contents or the index, a marker on a line of its own would end the list and turn the indented entries after it into code. There the marker is attached to the entry before it.
+* **Ebook-made PDFs** do not have one PDF page per printed page. The link opens the PDF page on which the printed page starts, and only the pages before the first and after the last printed page get PDF markers.
+
+### Footnotes and references
+
+A footnote printed at the foot of a page is written at the foot of that page, just above the next page's bar. Notes and references printed at the end of the book move to the end of the chapter that cites them. A marker links to its note, and the note has a ↩ link back for each place that cites it. A footnote whose marker was not found still stands at the foot of its page and says so.
+
+### Contents, index and cross-references
+
+* **Contents entries** link to chapter files and to headings inside them. Each shows its printed pages, a range for a chapter ("pp. 4–21") and a page for a section, linked to that page's marker.
+* **Index page numbers** link to the word on that page where the entry's term appears, allowing for endings ("anticommute" finds "anticommuting") and for names ("Lamb, Willis E." finds "Lamb"). If the term is not on that page, the link goes to the page marker. In Dyson about 40 % of index links find their term. The word found is wrapped in its anchor, so a viewer can highlight it.
+* **Cross-references** that are links in the PDF stay links, and the whole reference is the link: "Section 3.5", "Chapter 3", "Appendix B", "Figure 1.1", "Table 2.1", "Problem 6.8", "(3.422)". The word decides the target, so "Section 2.1" goes to the section even if an equation (2.1) exists. In a list such as "Figures 4.3 and 4.7" each number is a link. References to other books are not links in the PDF and stay text.
+
+### Pictures
+
+Pictures are cut from the PDF as PNG files in `images/`; `fig-p049-1.png` is the first picture on PDF page 49. Labels that belong to a picture are part of the image, not of the text. Each picture gets a caption numbered through the book with its printed page, such as _Figure 3 (p. 43)_.
+
+### Tables and columns
+
+A table is written as an HTML table with Markdown in its cells. Under every table that pdf2md builds stands a picture of the printed table in a fold, because a cell can be misread. A page set in two columns, such as an index, stays in two columns.
 
 ## The two forms of math
 
-“Math” in the window chooses how formulas are written; the choice is remembered, and a book is written anew in the form chosen when you convert it again (your corrections are kept either way).
+Formulas are written in one of two forms, chosen with "Math" in the window or `--math` on the command line.
 
-* **``$`…`$`` and ```` ```math ````** (the form pdf2md starts with) is for GitHub, GitLab and [mdBun](https://github.com/colinkeenan/mdBun). GitHub reads what stands between `$` signs as Markdown first: `A^{*} … B^{*}` turns italic, `\\`, `\{` and `\,` lose their backslash, and a `$` with a letter, a digit, a hyphen or a quotation mark right beside it is not taken for a formula at all. In the Dyson sample that spoiled 720 of 3,684 formulas; in this form none. An equation's number stands behind the equation as text, `\qquad \text{(12)}`, because GitHub breaks an equation that has a `\tag{12}` into a column of single symbols.
-* **`$…$` and `$$…$$`**, the equation's number as `\tag{12}`, is for nearly every other program: they show the first form as program code. When you type the command of a reader known to be one of these into “Reader” (VS Code as `code`, `codium` and the like, `obsidian`, `typora`, `marktext`, `zettlr`, `ghostwriter`, `joplin`, `logseq`, `pandoc`), “Math” switches to this form; you can set it back. The list is from what these programs document, not from trying each. Choose this form yourself for a reader that is not started from here, such as Zettel Notes on Android.
+**github** writes ``$`…`$`` in a sentence and a ```` ```math ```` block for a displayed equation. GitHub, GitLab and mdBun show it. Three things GitHub does made this form necessary, and shaped it:
 
-**The same book looks different on GitHub and in mdBun.** mdBun typesets formulas itself (KaTeX, which brings its own fonts), reads both forms, and sets an equation's number at the right margin as the book does. GitHub only turns the LaTeX into MathML and leaves the drawing to your browser: the number stands right behind the equation, and brackets, roots and sums grow to the size of what they hold only if the browser finds a math font it knows. Chrome on Linux wants “Latin Modern Math” (Arch: `otf-latinmodern-math`); without it every bracket stays the size of a letter. That font is thin and looks softer on screen than mdBun's. Phones mostly have no such font.
+* GitHub reads what stands between `$` signs as Markdown first. `A^{*} … B^{*}` turns italic; `\\`, `\{` and `\,` lose their backslash; a `$` beside a letter, digit, hyphen or quotation mark is not taken as math at all. In Dyson this spoiled 720 of 3,684 formulas. In the github form none are spoiled.
+* GitHub breaks an equation that has a `\tag{12}` into a column of single symbols. The number is therefore written as text after the equation, `\qquad \text{(12)}`. mdBun turns it back into a tag at the right margin.
+* GitHub adds a backslash to a line of a math block that ends in `\\`, and shows a paragraph that starts with an HTML comment as raw text. pdf2md writes a space after such a `\\`, and puts its invisible equation mark after a formula in a sentence, not before it.
 
-Formulas that would not render are mended when written** (every book): two formulas in a sentence with nothing between them are one; math inside `\text{…}` is taken out of it; two subscripts or two superscripts on one symbol are one. A mended formula renders; whether it is the book's formula is another matter (a table read as formulas stays wrong).
+**standard** writes `$…$`, `$$…$$` and `\tag{12}`. Most other Markdown programs know only this form and show the github form as code. Typing one of these commands into "Reader" switches "Math" to standard: `code`, `code-oss`, `codium`, `vscodium`, `code-insiders`, `obsidian`, `typora`, `marktext`, `zettlr`, `ghostwriter`, `joplin`, `logseq`, `pandoc`. The list comes from those programs' documentation, not from trying each.
 
-## Reading a PDF that holds text
+**How GitHub draws math.** GitHub converts the LaTeX to MathML and leaves the drawing to the browser. Brackets, roots and sums grow only if the browser finds a math font it knows; Chrome on Linux looks for "Latin Modern Math". mdBun typesets with KaTeX, which brings its own fonts.
 
-Everything is decided from the layout, measured against the book's own typical values (body font size, margins, line spacing):
+**Mending.** In either form, a formula that would not render is mended when written: two formulas in a sentence with nothing between them become one, math inside `\text{…}` is taken out of it, and two subscripts or two superscripts on one symbol become one. A mended formula renders. Whether it is the book's formula is another matter.
 
-* **Printed page numbers** come from the running header ("THE DIRAC THEORY 6") or a lone number at the bottom of the page. They become page anchors (`#p6`) for the index and the TOC.
-* **Chapters** start at headings in the chapter-title font size: the most common large size that contains real words.
-* **Centered text** (title pages, centered lines between paragraphs) goes in a `<div align="center">`, keeping its line breaks: a line counts as centered when its middle is at the middle of the text column and it is clearly in from both margins.
-* **Hard returns** are kept. Text that wraps only breaks a line where the next word no longer fits; a line that ends early although the next line's first word would have fit behind it was ended on purpose (addresses on a copyright page, parts a., b., c. of a problem). Such a line stays a line of its own (`<br>`), and becomes a paragraph of its own when there is also more space above it than between the lines of a paragraph. Two lines of plain words with that extra space between them are separate paragraphs too.
-* **Italic and bold prose** become `_…_` and `**…**` (bold is recognized by `<b>` or a bold font such as CMBX, e.g. journal volumes "Phys. Rev. **80**"); headings carry neither, since `#` styles them.
-* **Section headings** are short lines that are entirely italic/bold with space above, or short plain lines with space above and below. TOC entries are matched to headings on the printed page they name, also when the wording differs a little; their TOC indentation decides `##` or `###`. In a book that numbers its sections the number says the level instead: `1.3 …` is `#`, `1.3.1 …` is `##` — or one level deeper each, `##` and `###`, where the chapter titles are set clearly larger (a quarter or more) than the `1.3 …` headings; a heading without a number stands at the level of the numbered headings of its type size — larger than all of them it is `#`, smaller it comes below the deepest. A heading the contents do not list, in a book without section numbers, also goes by type size. An italic line that starts with a small letter is no heading (a lemma's statement, broken up by its displayed equations).
-* **Footnote markers** are small raised numbers glued to a word. End notes are matched by finding the longest run of increasing marker numbers in reading order (so an "O¹⁶" cannot steal note 16). Notes printed at the bottom of a page match markers on the same page.
-* **Tables / notation lists**: 3+ lines whose columns start at the same x positions (no text running across a column edge), with words in the last column, become a LaTeX `array`.
-* **Big brackets** are read from their glyph outlines in the SVG, because pdftohtml gives them no character (or drops them): straight strokes with the long vertical stroke on one side are [ or ], curved outlines bulging at mid-height are ( or ), a thin bar is |, two strokes meeting in a point are ⟨ or ⟩, and a curve whose outer edge is only a sharp point at mid-height is { or }. Pieces of tall extensible brackets (top hook, extensions, bottom hook) are joined first. Brackets are then matched like brackets in text (nested ones too) and written as `\left[ … \right]`, `bmatrix`, `vmatrix` and so on. A lone `{` followed by two or more rows becomes `cases` (split into value and condition at the widest gap all rows share).
-* **Groups of rows**: a lone `}` after several rows groups them (`\left. \begin{aligned} … \end{aligned} \right\}`); a big bracket that opens on one line of a multi-line formula and closes on a later one is written `\left\{ … \right.` / `\left. … \right\}`. Labelled underbraces become `\underbrace{…}_{\text{label}}`; accents drawn as separate glyphs (˜ ˆ ˙ ¨) become `\tilde{a}`, `\hat{k}`, `\dot{\varphi}`.
-* **Block matrices**: inside a matrix, small-font entries that stand free (not scripts touching a symbol) and form their own rows and columns are one block, written as an inner `matrix`, like β = ((1 0; 0 1), 0; 0, (−1 0; 0 −1)) in Dyson eq. (15). Matrix rows far from the bracket's middle stay with the bracket's equation instead of being taken for a line of their own.
-* **TeX symbol-font quirks**: ⟨ ⟩ come out as "h" and "i", | and ‖ as "j" and "k", { } as "f" and "g", capitals as calligraphic letters; these are mapped back.
-* **Pictures** are found in the SVG: stroked or filled paths that are neither glyphs nor thin bars, and embedded images. Pieces close together are one picture, and so are diagrams of several strokes side by side in a row. A group counts as a picture when it holds an image, or 3+ pieces at least 15 pt square, or 8+ pieces at least 40 pt wide. Text inside the picture, and short text just beside it on lines that lie within it, is a label: it is taken out of the text flow and the picture grows to include it. A short label (≤ 3 characters) beside the picture is taken even on a line with a formula, as long as it stands far from the rest of that line (an axis label "x" after an equation). Each picture is then rendered from the PDF at that box with `pdftocairo -png`.
-* **Overlines** (ψ̄, Ā) are drawn bars, not text: a bar just above a single symbol, with no numerator above it and no root sign before it.
-* **Displayed equations** are lines that are mostly math and indented, or carry an equation number "(16)" at the right margin, plus the rows of fractions and limits around them. `mathtex.rs` rebuilds them from glyph positions and drawn bars: a bar with symbols right above and below it is a fraction (numerator and denominator are the connected stacks touching the bar; a clearly narrower bar inside is a nested fraction, one of the same width a separate fraction stacked below), a bar right after a root sign is a square root; where no bar is found, a group above the main row overlapping a group below is taken as a fraction, small raised/lowered glyphs are scripts, groups around Σ/∫ are limits, rows and columns between tall brackets are a matrix, a system of equations with one number, or an equation continued on a line starting with + or −, becomes an `aligned` block.
+## PDFs that hold text
 
-## Equations that are pictures
+This is the path for a PDF made with TeX, where the math is text in math fonts. Everything is decided from the layout, measured against the book's own usual values: body font size, margins and line spacing.
 
-PDFs made from ebooks (calibre, Kindle) often carry their math as small images instead of text. pdf2md hands each such image to a local math-recognition model, [texify](https://github.com/VikParuchuri/texify), and puts the LaTeX it reads into the text: inline where the image sits in a line of prose, as a numbered displayed equation where it stands alone. Images that are not math stay pictures: one with a "Fig." caption below it; a diagram (long straight lines meeting at a corner, like the axes of a plot, or one connected shape large both ways, like a curve or a box — in math only a root sign grows like that, and it is told apart); lettering such as a publisher's logo (plain-text OCR finds nothing but words, and the math model reads it as two wholly different things); and a horizontal line, which is written as `---`. A very small image (a single symbol such as a hatted bold **x**, under 30 pixels wide) is read with white space added around it — filling the whole picture, it is read as some other letter. Where such a symbol stands inside a sentence that the PDF holds as one piece of text, the text is split at the gap the image sits in (a gap wider than the others, or one before a hyphen or comma). A tall equation the model cannot read whole is read line by line; so is an image of two or more lines that the model wrote as one long line, if the line-by-line reading says the same (then each line is a row of an `aligned` block). The same is done where the model itself writes a multi-line equation as a table (`\begin{array}{r l}`), with the rows cut into columns unevenly; a real table, whose columns are not cut at the "=", stays. The rows of such a block are lined up at the "=": a row that goes on with "=" has it under the "=" of the first row, one that goes on with "+" or "×" starts to the right of it. An image of program code (e.g. Mathematica) is read as text with [Tesseract](https://github.com/tesseract-ocr/tesseract) (Arch `tesseract tesseract-data-eng`) and written as a code block. Results are cached by image in `~/.cache/pdf2md/ocr/`, so converting a book again is instant.
+### Pages and chapters
 
-### Math set as text
+* **Printed page numbers** come from the running head ("THE DIRAC THEORY 6") or from a lone number at the foot of the page.
+* **Chapters** start at headings in the chapter-title size: the most common large size that holds real words.
+* **Section headings** are short lines that are wholly italic or bold with space above, or short plain lines with space above and below. Contents entries are matched to headings on the page they name, also when the wording differs a little. An italic line that starts with a small letter is not a heading.
+* **Heading levels.** In a book without section numbers, the indentation in the contents decides `##` or `###`, and a heading the contents do not list goes by its type size. In a book that numbers its sections, the number decides: `1.3` is `#` and `1.3.1` is `##`, or one level deeper each where the chapter titles are at least a quarter larger than the `1.3` headings. An unnumbered heading takes the level of the numbered headings of its size.
 
-Such a book sets the simple math inside its sentences in the text font: an italic letter is a variable, the brackets and "=" around it are ordinary characters, and the PDF holds the line as pieces by typeface, with prose and symbols mixed in one piece ("⟩, where "). There are no math fonts to tell by (the test is: no Computer Modern fonts in the book), so pdf2md cuts each piece into words, symbols, numbers, brackets and punctuation, and a stretch with no word in it is one formula if something in it is surely math:
+### Text
 
-* **Surely math:** an italic letter (with its primes: `a″` is `a''`), a Greek letter, a relation or operator prose never uses (`=`, `≈`, `→`, `×`, `⟨`, `⟩`, `|`, `∂`, `ħ` …), a subscript or superscript, a single bold letter or a short bold group (`**x′**` is a vector, `\boldsymbol{x'}`), an equation picture.
-* **Math only beside math:** numbers, round and square brackets, `+`, `−`, `/`, a lone upright letter (`Z = 2`), a function name (`sin`, `exp`, `Tr`).
-* **Two or three italic letters** are symbols (`kR`, `dt`) unless they are a common word (`is`, `or`, `not`, `ket`); three need math right beside them. A longer italic word, or an italic phrase, is emphasis.
-* **Where a formula ends:** at a word; at a comma, semicolon or full stop that is followed by a space and is not inside brackets (`⟨x′, y′|` stays whole, ``$`x`$, $`y`$ and $`z`$`` are three); brackets around the whole formula, or without their partner, are prose (``($`x`$)``, ``(see $`x`$)``). The hyphen of `x-polarized` and the apostrophe of `Green′s` are prose.
-* A small raised number after a word is a footnote marker; after a symbol, a number or a formula in brackets it is a power (``$`N^{2}`$``). A linked number — `(2.28)`, a page in the index — is a reference, never part of the formula beside it.
-* A formula that goes on in the next line is joined with its beginning.
+* **Italic and bold** become `_…_` and `**…**`. Headings carry neither.
+* **Centered text**, such as a title page, goes in `<div align="center">` and keeps its line breaks. A line counts as centered when its middle is at the middle of the column and it is clearly in from both margins.
+* **Hard returns** are kept. A line that ends early, although the next line's first word would have fit, was ended on purpose, as in an address. It stays a line of its own (`<br>`), and becomes its own paragraph when there is also extra space above it.
+* **Footnote markers** are small raised numbers attached to a word. End notes are matched by the longest run of rising marker numbers in reading order, so the 16 of "O¹⁶" cannot take note 16. Notes at the foot of a page match markers on that page.
 
-### Words under an equation
+### Displayed equations
 
-Some equation images explain their parts with small words set under them ("bra" and "ket" under the two halves of a product). The model drops such words or reads them as symbols. An image of one line of math with a band of small type below it that Tesseract reads as words (not a denominator under its bar, not the limits under a sum; an underbrace with words is read well as it is) is read again without the band, and the words go back in a second row, each centred where it stood in the image: `\begin{array}{l} … \\ \mathrlap{\kern2.1em\mathclap{\scriptsize\text{bra}}}… \end{array}`. The places are fractions of the equation's width in the image, turned into em by an estimate of how wide the equation comes out, so a word may stand a little off. Sakurai has three such equations.
+A displayed equation is a line that is mostly math and indented, or one with an equation number at the right margin, together with the rows of fractions and limits around it. It is rebuilt from the positions of the glyphs and the drawn bars:
 
-### Equations to check
+* **Fractions.** A bar with symbols right above and below it is a fraction. A clearly narrower bar inside is a nested fraction; one of the same width is a separate fraction below. Where no bar is found, a group above the main row that overlaps a group below is taken as a fraction.
+* **Roots and overlines.** A bar right after a root sign is a square root. A bar just above a single symbol, with no numerator above it, is an overline (ψ̄).
+* **Scripts and limits.** Small raised or lowered glyphs are scripts. Groups around Σ or ∫ are limits.
+* **Several lines.** A system of equations with one number, or an equation continued on a line that starts with + or −, becomes an `aligned` block.
+* **Accents** drawn as separate glyphs (˜ ˆ ˙ ¨) become `\tilde`, `\hat`, `\dot`, `\ddot`. A labelled underbrace becomes `\underbrace{…}_{\text{label}}`.
 
-Each equation is read a second time from the picture enlarged; where the two readings are different formulas (formatting aside), it is listed in `check-equations.md` in the book folder, biggest differences first, with links. A corrected equation drops off the list. To use another Python, set `PDF2MD_OCR_PYTHON`. Without the model, equation images stay pictures. The recognizer is good but not perfect: check equations you rely on against the book.
+### Brackets and matrices
+
+`pdftohtml` gives tall brackets no character, or drops them, so they are read from their outlines in the SVG. Straight strokes with the long stroke on one side are `[` or `]`. A curve bulging at mid-height is `(` or `)`. A thin bar is `|`. Two strokes meeting in a point are `⟨` or `⟩`. A curve whose outer edge is a sharp point at mid-height is `{` or `}`. The pieces of an extensible bracket are joined first.
+
+Brackets are then paired as in text, nested ones included, and written as `\left[ … \right]`, `bmatrix`, `vmatrix` and so on.
+
+* A lone `{` followed by two or more rows becomes `cases`.
+* A lone `}` after several rows groups them: `\left. \begin{aligned} … \end{aligned} \right\}`.
+* A bracket that opens on one line of a formula and closes on a later one is written with `\left\{ … \right.` and `\left. … \right\}`.
+* Inside a matrix, small entries that stand free and form their own rows and columns are an inner `matrix`, as in Dyson's equation (15).
+
+TeX's symbol font has a quirk: in the PDF's text, ⟨ ⟩ come out as "h" and "i", | and ‖ as "j" and "k", { } as "f" and "g", and capitals as calligraphic letters. These are mapped back.
+
+### Notation lists and pictures
+
+* **Aligned columns.** Three or more lines whose columns start at the same positions, with words in the last column, become a LaTeX `array`.
+* **Pictures** are found in the SVG: stroked or filled paths that are neither glyphs nor thin bars, and embedded images. Pieces close together are one picture. A group counts as a picture if it holds an image, or 3 or more pieces at least 15 pt square, or 8 or more pieces at least 40 pt wide. Text inside the picture, and short text just beside it, is a label and becomes part of the image. The picture is then rendered from the PDF with `pdftocairo -png`.
+
+## PDFs made from ebooks
+
+A PDF made from an ebook, with calibre or from Kindle, holds its prose as text but its math in two other ways: larger formulas as small pictures, and simple math inside sentences in the ordinary text font. pdf2md takes this path when the book has no Computer Modern fonts.
+
+### Equation pictures
+
+Each equation picture goes to [texify](https://github.com/VikParuchuri/texify), a math-recognition model that runs locally. The LaTeX it reads is put inline where the picture sits in a sentence, and as a displayed equation where it stands alone. Readings are cached by picture in `~/.cache/pdf2md/ocr/`.
+
+* **Not every picture is math.** A picture stays a picture if it has a "Fig." caption, or if it is a diagram: long straight lines meeting at a corner, or one connected shape that is large both ways. Lettering such as a publisher's logo also stays a picture. A horizontal line becomes `---`. A picture of program code is read as text by [Tesseract](https://github.com/tesseract-ocr/tesseract) and written as a code block.
+* **Very small pictures**, under 30 pixels wide, are single symbols such as a hatted **x**. They are read with white space added around them, because a symbol that fills its picture is read as some other letter. Where such a symbol sits inside a sentence that the PDF holds as one piece of text, the text is split at the gap it sits in.
+* **Several lines.** A tall equation the model cannot read whole is read line by line. So is a picture of several lines that the model wrote as one long line, if the two readings agree. The rows become an `aligned` block, lined up at the "=". A multi-line equation that the model wrote as an `array` with uneven columns is turned into rows the same way.
+* **Words under an equation.** Some pictures label their parts with small words underneath, such as "bra" and "ket". The model drops such words or reads them as symbols. pdf2md reads the picture again without that band and puts the words back in a second row, each centred where it stood. The places are estimates, so a word may stand a little off. Sakurai has three such equations.
+* **A second reading.** Each displayed equation is read again from the picture enlarged. Where the two readings are different formulas, formatting aside, the equation is listed in `check-equations.md`, biggest differences first.
+
+### Math in the text font
+
+Inside a sentence, an italic letter is a variable and the brackets and "=" around it are ordinary characters. The PDF gives each line as pieces by typeface, with prose and symbols mixed in one piece. pdf2md cuts each piece into words, symbols, numbers, brackets and punctuation. A stretch with no word in it is one formula if something in it is surely math.
+
+* **Surely math:** an italic letter with its primes; a Greek letter; a relation or operator that prose never uses, such as `=`, `≈`, `→`, `×`, `⟨`, `|`, `∂`, `ħ`; a subscript or superscript; a single bold letter (a vector); an equation picture.
+* **Math only beside math:** numbers, round and square brackets, `+`, `−`, `/`, a lone upright letter as in `Z = 2`, and function names such as `sin`, `exp`, `Tr`.
+* **Two or three italic letters** are symbols (`kR`, `dt`) unless they are a common word (`is`, `or`, `not`). Three need math right beside them. A longer italic word is emphasis.
+* **Where a formula ends:** at a word, and at a comma, semicolon or full stop that is followed by a space and is not inside brackets. Brackets around a whole formula are prose. So are the hyphen in "x-polarized" and the apostrophe in "Green's".
+* **Raised numbers.** After a word, a small raised number is a footnote marker. After a symbol, a number or a bracketed formula it is a power.
+* **Linked numbers**, such as an equation reference or an index page, are never part of the formula beside them.
+
+### Tables
+
+Such a book sets a table on a grey panel, with a short rule under each cell of the head. The rules give the columns. The rows have no marks, so they are found from how the cells stand: centred in their row or at its top, whichever fits the table. A table that reaches the foot of its page continues at the top of the next.
+
+A table that the book holds as a picture is read cell by cell. The picture is cut from the page again at higher resolution. Its rows are the lines of text on it, and its columns end where no row has ink. Each cell is then read on its own, as words, as a whole number or as a formula. A picture that does not split into rows and columns this way keeps the model's reading of it as one array.
 
 ## Scanned books
 
-A scan is a PDF whose pages are pictures: there is no text in it to take (or only the hidden text an earlier reading left under the pictures, with every formula garbled). pdf2md sees this by itself (next to no text, an image on nearly every page) and then has the pages read by [marker](https://github.com/datalab-to/marker), a page-reading model that runs on your own computer; nothing is sent anywhere. marker gives the prose, the formulas in sentences and on lines of their own as LaTeX, the headings, the footnotes and where the pictures are; pdf2md makes chapters, page markers, linked notes and contents, numbered pictures and the files of it as for any other book.
+A scan is a PDF whose pages are pictures. pdf2md recognizes one by itself: next to no text, and an image on nearly every page. It has the pages read by [marker](https://github.com/datalab-to/marker), a page-reading model that runs locally. marker gives the prose, the formulas as LaTeX, the headings, the footnotes and the places of the pictures. pdf2md builds chapters, page markers, links and files from that as for any other book.
 
-(`PDF2MD_SCAN_PYTHON` names another Python that has marker. Version 1.10.2 is the last that runs inside Python alone; the versions after it need a model server.) Tables of contents and tables also need `pdftotext` (poppler) or, for a scan without hidden text, Tesseract.
+A page takes about 3 seconds on a recent graphics card. Pages read are cached in `~/.cache/pdf2md/scan/`, so a later conversion takes seconds and one that was stopped goes on where it was. pdf2md uses marker 1.10.2, the last version that runs inside Python alone. Tables of contents also need `pdftotext` or, for a scan without hidden text, Tesseract.
 
-* A page takes about 3 seconds on a recent graphics card (a 540-page book: half an hour), read 16 pages at a time; the window counts the pages. Pages read are kept in `~/.cache/pdf2md/scan/`, by what the PDF holds, so converting the book again takes seconds and a conversion that was stopped goes on where it was.
-* **Chapters** are told by the layout, not by type sizes (the height of a heading's box says too little): a page that opens with a heading and has no running head opens a chapter; “Chapter I.5” and the title under it are one title. What opens a page before the first “Chapter …” or “Part …” is front matter. All other headings are sections of one level (`##`), unless they are numbered (`1.2.3`). A heading marker saw but could not read (it happens to small capitals) gets its words from the PDF's hidden text or from Tesseract. A book without running heads goes by the heights of its headings, which is less sure.
-* **Printed page numbers** are read from the running heads and feet; a page that shows none (the first of a chapter), or whose number was misread, gets its number from the pages around it; unnumbered pages at the end (an index) count on.
-* **Equations** keep their numbers; one you correct by hand is kept for the next conversion like the equations read from images (see below). Each displayed equation is read a second time, by the math recognizer (texify) from a picture of it cut from the page, and the ones the two readers read as different formulas are listed in `check-equations.md`, biggest differences first (the two write the same formula in different ways, a matrix, a prime, an arrow: that is not counted). This needs the environment for equations that are pictures (see below); without it there is no list. A formula marker did not finish (a matrix cut off, a table of numbers without end) is replaced by the second reading if that one is whole, and a bracket that grows with what it holds but closes in another row of the formula is a plain bracket.
-* **Footnotes** are linked to their markers. marker does not see every small raised number in the text (nor does Tesseract, nor the PDF's own text). Where a page has a footnote without its marker, the marker is looked for on the picture of that page, of the page before and of the page after (`scan_marks.py`): a small piece of ink set high in its line, right behind a word or the full stop after it, that reads as the note's number. It is put into the text behind that word, if the word (with the word before it) is found there in one place only. A note whose marker is still not found stands at the foot of its page and says so.
-* **The table of contents** is read line by line from the PDF's hidden text (or by Tesseract), because marker reads tables cell by cell, which shuffles it. That text is poor (“It9” for “It?”, letters lost), so an entry whose page opens with a title takes that title as marker read it, and the name of a part is the title that opens the part. Where the contents are set in columns (the chapters' numbers stand apart in front of the titles), they are written as a table of three columns, page by page: number, title, pages. A title that starts in the first column (a preface, the index) starts there, and the name of a part is a heading (`##`) centered in the middle column, in its lines. Other tables are tables as marker read them, if their rows and cells hold together (two rows and two columns or more, rows of like length, most cells with something in them: marker also sees tables in empty pages), with the picture of the table right under it, because a cell can be misread; formulas in the cells that marker left unmarked are marked. A table that does not hold together is kept as a picture.
-* **The title page of a part** (“PART IV”, and under it the part's name) is the title of the part's file, centered and in its lines.
-* A line of which marker read too little for the room it takes (“cm.” where the page says “p.   cm.”) takes its words from the PDF's own text, if those are marker's words and more.
-* **Pages set centered** (a title page, a dedication: every block of text lies about the middle of the page and is clearly narrower than it) stay centered, and each of their lines ends where it ends in the book. On other pages a block of several lines that stops short of the right margin (an address, an entry of the index) keeps its line ends; a block as wide as the text is set is a paragraph. The publisher's name at the foot of the title page is text, not a running foot. On a page made of single lines (a copyright page, a poem: no ordinary paragraph and no equation on it), lines that follow each other without space between them are one paragraph with its line ends kept (an address), and pieces side by side are one line.
-* **The cover** (the first sheet, a picture over a third of it or more and only a few words) is one picture of the whole page; its title and author are not written as text. Anywhere in the book, words that lie on a picture are part of the picture.
-* **An index in two columns** stays in two columns. marker gives a column's lines without saying which are set in (the lines that go on from the entry above), and at times deals the lines of both columns into one block; so which line stands in which column, and which is set in, comes from the places of the words in the PDF's own text, and each line takes marker's reading of it where marker has that line (it reads better). Lines that go on are joined to their entry: a range of pages cut at the line's end is one range (“248-52”), a word written with a hyphen elsewhere keeps it. A scan without text of its own keeps its columns but not the joining: each line is an entry.
-* What marker calls program code is only written as a code block if it looks like code (it calls an index page code, too); otherwise it is text.
-* **Symbols in a sentence** that marker left as plain text are made formulas by their shape: a letter or two with what they are a function of in brackets right behind (`J(x)`, `D(x-y)`, `SU(2)`); a single letter other than “a”, “A”, “I” that is not an initial (“S. Coleman”), a label (“(b)”, “Appendix B”, “Part V”) or a unit behind a number; a short relation without spaces (`m=0`); with what such a symbol is set equal or added to (`h = 1`). “a” is a symbol where it stands with one (“a and b”). A formula that goes on in the next line of the book and comes as two is one.
+### Structure
 
-## What is kept from one conversion to the next
+* **Chapters** are told from the layout, because the height of a heading's box says too little about its type size. A page that opens with a heading and has no running head opens a chapter. "Chapter I.5" and the title under it are one title. Everything before the first "Chapter" or "Part" is front matter. A book without running heads goes by the heights of its headings, which is less sure.
+* **Sections** are one level (`##`) unless they are numbered.
+* **Headings marker could not read**, which happens with small capitals, get their words from the PDF's hidden text or from Tesseract.
+* **Printed page numbers** come from the running heads and feet. A page that shows none, or whose number was misread, gets its number from the pages around it.
+* **A part's title page** ("PART IV" and the part's name) becomes the title of the part's file.
+* **The cover**, a first sheet that is mostly picture, is one picture of the whole page.
 
-Every equation read from a picture, displayed or inside a sentence, has an invisible marker naming its picture (`<!-- pdf2md:eq … -->`). Fix an equation's LaTeX in a chapter file or in `book.md`; the next conversion of that book (into the same folder, or with Replace in the app) first collects the equations you changed and keeps each one in `~/.local/share/pdf2md/corrections/`, and uses it instead of the recognizer's reading from then on. (A book converted before formulas were written in GitHub's forms has them between `$` and `$$`: it is read as it is, so what you corrected in it is kept when you convert it again.)
+### Text
 
-Each goes back right after the paragraph or equation it followed (found by that block's first words, else by the nearest anchor above it). A note whose place is gone ends up at the end of its chapter under "Your notes whose place was not found", never dropped.
+* **Centered pages**, such as a title page or a dedication, stay centered and keep their line ends. On other pages, a block of several lines that stops short of the right margin keeps its line ends; a block as wide as the text is a paragraph.
+* **Lines read too short.** Where marker read much less than the line holds, the words come from the PDF's hidden text, if that text contains marker's words and more.
+* **Words on a picture** are part of the picture.
+* **Code.** What marker calls program code is written as a code block only if it looks like code; marker also calls an index page code.
+* **An index in two columns** stays in two columns. marker does not say which lines are indented continuation lines, and sometimes mixes the two columns. So the column and indentation of each line come from the positions of the words in the PDF's hidden text, and the wording from marker where it has the line. Continuation lines are joined to their entry. A scan without hidden text keeps its columns, but each line is an entry.
 
-* **Markers inside a sentence** that point to a note: `<sup>[✎](#mine-3)</sup>` (with `id="mine-3"` on the note), or any `<sup class="mine">…</sup>`. Each goes back right after the same words in the same paragraph (at the paragraph's end if those words changed).
-* **Fixes to the converted text** (the conversion got the book's words wrong): `<span class="fix" data-was="as converted">as in the book</span>`. It reads as normal text and is redone in the same paragraph. (Equations need no marking: just edit them.)
-* **Cells of tables**: correct a cell where it stands, between the empty lines inside its `<td>` … `</td>` (or fill an empty `<td></td>`, or empty a cell). Every table of the book carries an invisible mark above it (`<!-- pdf2md:table … -->`), and the next conversion keeps each cell that is not what the last one wrote there, by table, row and column (`~/.local/share/pdf2md/corrections/`, with the corrected equations). A table whose reading changes in a later version of pdf2md is another table: corrections of the old reading are not put into it. The table of contents is made anew each time and keeps no corrections.
-* **The picture under a table**: every table that pdf2md builds (from a grey panel, from a picture, from a scanned page) has the printed table under it, in a fold: `<details open>` … `</details>`. A click on its line "The table as printed" folds it away while you read. To put it away for good once the table is right, delete the word `open` in the Markdown (the picture stays one click away), or delete the whole fold, from `<details` to `</details>`. The next conversion writes it as you left it (`KEY.picture` in the corrections folder); put `open` back and it is shown again. A picture you deleted comes back if you delete its `KEY.picture` file.
+### Math
 
-Notes and fixes are collected from the chapter files and from `book.md` (each counted once), and a copy is kept in `~/.local/share/pdf2md/notes/<book folder>.md`. Other edits to the text are not kept.
+* **Symbols marker left as plain text** are made formulas by their shape: a letter or two followed by an argument in brackets (`J(x)`, `SU(2)`); a single letter other than "a", "A", "I" that is not an initial, a label or a unit; a short relation without spaces (`m=0`).
+* **Displayed equations** keep their numbers. Each is read a second time by texify from a picture cut from the page, and the ones the two readers read differently are listed in `check-equations.md`. Without the texify environment there is no list.
+* **Unfinished formulas.** A formula marker did not finish, such as a matrix cut off, is replaced by the second reading if that one is whole.
 
-## The window
+### Footnotes
 
-The book is written to `<output folder>/<PDF name>/`. If that folder already exists, the app asks whether to replace it (after the new conversion has succeeded, the old files go to the Trash as one folder, "<PDF name> (previous)", and the new ones are written into the same folder, so a terminal or editor open in it sees them at once) or keep both (the new one goes to `<PDF name> (1)`, `(2)` …).
+marker does not see every small raised number in the text. Where a page has a footnote without its marker, pdf2md looks for the marker on the picture of that page and of the pages before and after: a small piece of ink set high in its line, right after a word, that reads as the note's number. It is put into the text after that word if the word is found there in one place only.
 
-**Reading the books.** “Reader” takes the command of your Markdown reader (for example `md`); it is remembered. The command gets the book's folder as its last argument; write `{folder}` or `{file}` (the whole book in one file, `book.md`) in it to put the book elsewhere (`okular {file}`). Left empty, the system's own choice opens the folder (`xdg-open`). When a conversion is done, “Open Book” in its message shows the new book in the reader, and under it the window lists the converted books, newest first: the ones converted with the app, and the books in the same folders and in the folder you browsed last (so books converted earlier or with the command-line tool are there too). A click shows one.
+### Contents and tables
 
-While converting, a bar shows how far the conversion is (by time) with an estimate of the time left. A conversion that takes more than 30 seconds in all (the first one of a book with equation images) also lists its steps like a terminal: what is done and how long it took, what is running with its own bar and time left, what is still to come. The estimates come from the speed measured so far; before a step has done anything they are guesses, set several times too high on purpose (a conversion that is over sooner than it said worries nobody). The time gone by is shown ticking beside each estimate, so a step that counts nothing for a while is still seen to be alive; a step that takes longer than estimated raises its estimate as it goes, and one that has counted nothing new for 30 seconds says so.
+* **The table of contents** is read line by line from the PDF's hidden text or by Tesseract, because marker reads tables cell by cell, which shuffles a contents page. That text is poor, so an entry whose page opens with a title takes the title as marker read it. Contents set in columns are written as a table of number, title and pages.
+* **Other tables** are kept as marker read them if their rows and cells hold together: at least two rows and two columns, rows of similar length, most cells filled. A table that does not hold together stays a picture.
 
-## What was measured
+## What is kept between conversions
 
-* Dyson, *Advanced Quantum Mechanics* (a TeX book, 149 pages): all chapters, every contents entry, all 93 footnotes, all references and the whole index are linked; KaTeX renders every one of its displayed equations. It is the sample in [`samples/dyson`](../samples/dyson).
-* The scanned test book (537 pages): half an hour for the first conversion, half a minute for the next; 10,262 formulas, all of which render; 1190 displayed equations read a second time, 403 listed to check (40 with big differences); 119 footnotes, 107 linked to their markers (34 of them found on the pages' pictures) and 12 without.
-* **Math is good but not perfect.** All of Dyson's displayed equations are valid LaTeX (KaTeX renders every one), and every problem found so far in it is fixed. A new book will bring cases not seen yet, and a garbled formula does not always look broken. Some glyphs of TeX's big-symbol font are lost by `pdftohtml`; a lone bracket gets its partner back by guessing.
-* Math-font detection knows TeX's Computer Modern / AMS fonts and fonts named "Math", "Symbol" or "STIX". Books typeset with other math fonts will need their font names added in `layout.rs` (`is_math_font`) — check with `--dump`.
-* Pictures are PNG files, so their labels are not searchable text. A picture made of only one or two strokes is not recognized as one.
-* Footnotes at the foot of a page are written at the foot of their page (tested on a scanned book and an ebook-made one; Dyson has only end notes).
+Before a book is converted again, pdf2md collects what the reader changed in the old files, from the chapter files and from `book.md`.
+
+* **Equations.** Every equation read from a picture or a scan carries an invisible mark naming its picture, `<!-- pdf2md:eq … -->`. A file in the book's folder records what the last conversion wrote for each. An equation that now differs from that record is the reader's correction. It is stored in `~/.local/share/pdf2md/corrections/` and used from then on in place of the model's reading. Both forms of math are read, so a book keeps its corrections when it changes form.
+* **Table cells.** Every table carries a mark above it, `<!-- pdf2md:table … -->`, and a corrected cell is kept by table, row and column. If a later version of pdf2md reads the table differently, it counts as another table and the old corrections are not applied. The table of contents is made anew each time.
+* **The picture under a table** keeps the state the reader left it in: open, folded, or deleted.
+* **Notes.** A `<details class="mine">` block or an alert box goes back after the paragraph or equation it followed. That block is found by its first words, or else by the nearest anchor above it. A note whose place is gone goes to the end of its chapter under "Your notes whose place was not found".
+* **Markers in a sentence** that point to a note go back after the same words in the same paragraph, or at the paragraph's end if those words changed.
+* **Prose fixes**, `<span class="fix" data-was="…">`, are redone in the same paragraph.
+
+A copy of the notes and fixes is kept in `~/.local/share/pdf2md/notes/`. Notes follow a chapter whose file name changes. Any other edit to the text is not kept.
+
+## The app window
+
+* **Replace or keep both.** If the book's folder exists, Replace moves the old files to the Trash as one folder, "<name> (previous)", once the new conversion has succeeded. The new files are written into the same folder, so a terminal or editor open in it sees them at once. Keep both writes to "<name> (1)".
+* **Reader.** The command gets the book's folder as its last argument. `{folder}` or `{file}` in the command puts the folder or `book.md` elsewhere. Left empty, `xdg-open` opens the folder.
+* **Converted books.** The list shows the books converted with the app, and books found beside them and in the folder browsed last, newest first.
+* **Progress.** The bar goes by time. A conversion of more than 30 seconds also lists its steps: done, running or waiting. Estimates come from the speed measured so far. Before a step has done anything they are guesses, set several times too high on purpose. A step that has counted nothing new for 30 seconds says so.
+* **Settings** are kept in `~/.config/pdf2md/`.
+
+## Measurements
+
+* **Dyson** (TeX, 149 pages): every chapter, contents entry, reference and index entry is linked, and all 93 footnotes. KaTeX renders every displayed equation. It is the sample in [`samples/dyson`](../samples/dyson) and the reference for regressions.
+* **Sakurai** (ebook-made, 771 PDF pages): about two minutes for the first conversion on an RTX 5080, about 15 seconds after that. All 12,665 formulas are written where a Markdown reader takes them as math.
+* **Zee** (scan, 537 pages): half an hour for the first conversion, half a minute after that. 10,262 formulas, all of which render. Of 1,190 displayed equations read twice, 403 are listed to check, 40 with large differences. Of 119 footnotes, 107 are linked to their markers, 34 of those found on the pictures of the pages.
