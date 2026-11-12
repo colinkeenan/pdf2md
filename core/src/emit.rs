@@ -32,6 +32,68 @@ fn escape(t: &str) -> String {
 /// ("*" and "_" become italics, `\\`, `\{` and `\,` lose their backslash),
 /// and takes no `$` for a formula that has a letter, a digit, a hyphen or a
 /// quotation mark right beside it.
+///
+/// A reader that knows only `$…$` and `$$…$$` (most Markdown programs)
+/// shows these two forms as program code, so the book can be written
+/// that way instead: [`MathForm::Dollar`].
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub enum MathForm {
+    /// ``$`…`$`` and a ```` ```math ```` block, an equation's number as
+    /// text behind it: right on GitHub, and read by GitLab and mdBun
+    #[default]
+    GitHub,
+    /// `$…$` and `$$…$$`, an equation's number as `\tag{…}`
+    Dollar,
+}
+
+impl MathForm {
+    /// "github" or "standard", as the choice is kept and given on the
+    /// command line.
+    pub fn named(name: &str) -> Option<MathForm> {
+        match name.trim().to_lowercase().as_str() {
+            "github" => Some(MathForm::GitHub),
+            "standard" | "dollar" | "latex" => Some(MathForm::Dollar),
+            _ => None,
+        }
+    }
+
+    pub fn name(self) -> &'static str {
+        match self {
+            MathForm::GitHub => "github",
+            MathForm::Dollar => "standard",
+        }
+    }
+
+    /// The form for a reader started with `command`, if that program is
+    /// known to show math only between `$` (None: not known, no advice).
+    pub fn for_reader(command: &str) -> Option<MathForm> {
+        let program = command.split_whitespace().next()?;
+        let program = program.rsplit('/').next().unwrap_or(program).to_lowercase();
+        DOLLAR_ONLY.contains(&program.as_str()).then_some(MathForm::Dollar)
+    }
+}
+
+/// Programs that show math only between `$` and `$$` (their commands):
+/// VS Code and its builds, Obsidian, Typora, MarkText, Zettlr, ghostwriter,
+/// Joplin, Logseq, pandoc.
+const DOLLAR_ONLY: [&str; 13] =
+    ["code", "code-oss", "codium", "vscodium", "code-insiders", "obsidian", "typora", "marktext", "zettlr", "ghostwriter", "joplin", "logseq", "pandoc"];
+
+static FORM: std::sync::atomic::AtomicU8 = std::sync::atomic::AtomicU8::new(0);
+
+/// Write formulas in this form from now on (for the whole program).
+pub fn set_math_form(form: MathForm) {
+    FORM.store(form as u8, std::sync::atomic::Ordering::Relaxed);
+}
+
+pub fn math_form() -> MathForm {
+    if FORM.load(std::sync::atomic::Ordering::Relaxed) == MathForm::Dollar as u8 {
+        MathForm::Dollar
+    } else {
+        MathForm::GitHub
+    }
+}
+
 pub const MATH_OPEN: &str = "$`";
 pub const MATH_CLOSE: &str = "`$";
 pub const DISPLAY_OPEN: &str = "```math\n";
@@ -62,7 +124,10 @@ fn numbers_as_text(latex: &str) -> String {
 /// A displayed formula as written. (GitHub adds a third "\" to a line of
 /// it that ends in `\\`, which starts the next row with a space of its
 /// own: a blank behind the `\\` keeps the row break as it is.)
-fn display(latex: &str) -> String {
+fn display(latex: &str, form: MathForm) -> String {
+    if form == MathForm::Dollar {
+        return format!("$$\n{latex}\n$$\n\n");
+    }
     let latex = numbers_as_text(latex);
     let lines: Vec<String> = latex.lines().map(|l| if l.ends_with("\\\\") { format!("{l} ") } else { l.to_string() }).collect();
     format!("{DISPLAY_OPEN}{}{DISPLAY_CLOSE}\n\n", lines.join("\n"))
@@ -196,6 +261,10 @@ fn script(t: &str, at: usize) -> Option<(String, usize)> {
 }
 
 pub fn render_inlines(inl: &[Inline]) -> String {
+    render_inlines_as(inl, math_form())
+}
+
+fn render_inlines_as(inl: &[Inline], form: MathForm) -> String {
     // an accent and its letter that came in separate pieces ("f¨" + "ur")
     let joined: Vec<Inline> = inl
         .iter()
@@ -240,6 +309,20 @@ pub fn render_inlines(inl: &[Inline]) -> String {
                     s.push(' ');
                 }
             }
+            Inline::Math(m) if form == MathForm::Dollar => {
+                // (a formula right behind a formula is one with it: "$a$$b$"
+                // would read as "$$", the mark of a displayed formula, and
+                // put all that follows in the file out of joint)
+                if s.ends_with('$') && !s.ends_with("\\$") && !s.ends_with("$$") && s.matches('$').count().is_multiple_of(2) {
+                    s.pop();
+                    s.push(' ');
+                } else {
+                    s.push('$');
+                }
+                let m = &mend(m);
+                s.push_str(m.trim());
+                s.push('$');
+            }
             Inline::Math(m) => {
                 // (a formula right behind a formula is one with it; one
                 // read from a picture stays by itself, as its marker says)
@@ -282,6 +365,9 @@ pub fn render_inlines(inl: &[Inline]) -> String {
                 s.push_str(&format!("<a id=\"{id}\">{t}</a>"));
             }
             Inline::PageLink(_) => {}
+            // (between "$" the marker stands in front of its formula, as
+            // it always did there)
+            Inline::Source(k) if form == MathForm::Dollar => s.push_str(&format!("<!-- pdf2md:eq {k} -->")),
             Inline::Source(k) => source = Some(k),
             Inline::Picture { page, area } => s.push_str(&format!("![equation]({})", picture_file(*page, area))),
             Inline::Break => {
@@ -482,17 +568,20 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
             // of the LaTeX below is kept for the next conversion; the anchor
             // is for the list of equations to check
             if let Some(k) = source {
-                out.push_str(&format!("<a id=\"img-{k}\"></a>\n<!-- pdf2md:eq {k} -->\n\n"));
+                // (an empty line under it: a block fenced with ``` would else
+                // be part of the HTML of these two lines)
+                let gap = if math_form() == MathForm::GitHub { "\n" } else { "" };
+                out.push_str(&format!("<a id=\"img-{k}\"></a>\n<!-- pdf2md:eq {k} -->\n{gap}"));
             }
             if latex.is_empty() {
                 // only an equation number survived
                 if let Some(t) = tag {
-                    out.push_str(&display(&format!("\\tag{{{t}}}")));
+                    out.push_str(&display(&format!("\\tag{{{t}}}"), math_form()));
                 }
                 return;
             }
             let tag = tag.as_ref().map(|t| format!(" \\tag{{{t}}}")).unwrap_or_default();
-            out.push_str(&display(&format!("{}{tag}", mend(latex))));
+            out.push_str(&display(&format!("{}{tag}", mend(latex)), math_form()));
         }
         Block::Anchor(id) => match page_label(id) {
             Some(l) => {
@@ -1193,6 +1282,13 @@ mod tests {
         assert_eq!(mend("N N_{4}_{5} + a^2^{3} + x_1^2 + \\_"), "N N_{4 5} + a^{2 3} + x_1^2 + \\_");
         let inl = vec![Inline::Text("at ".into()), Inline::Math("t =".into()), Inline::Text("0.5. Then".into())];
         assert_eq!(render_inlines(&inl), "at $`t = 0.5`$. Then");
+        // between "$": as pdf2md wrote formulas before
+        let inl = vec![Inline::Text("is ".into()), Inline::Source("k".into()), Inline::Math("x^{*}".into()), Inline::Math("y".into()), Inline::Text(".".into())];
+        assert_eq!(render_inlines_as(&inl, MathForm::Dollar), "is <!-- pdf2md:eq k -->$x^{*} y$.");
+        assert_eq!(display("a \\\\\nb \\tag{1}", MathForm::Dollar), "$$\na \\\\\nb \\tag{1}\n$$\n\n");
+        assert_eq!(display("a \\\\\nb \\tag{1}", MathForm::GitHub), "```math\na \\\\ \nb \\qquad \\text{(1)}\n```\n\n");
+        assert_eq!(MathForm::for_reader("/usr/bin/code -n {folder}"), Some(MathForm::Dollar));
+        assert_eq!(MathForm::for_reader("md"), None);
         // a formula read from a picture is left as read
         let inl = vec![Inline::Math("a".into()), Inline::Source("k".into()), Inline::Math("x".into())];
         assert_eq!(render_inlines(&inl), "$`a`$$`x`$<!-- pdf2md:eq k -->");

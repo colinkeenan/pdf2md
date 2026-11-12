@@ -196,6 +196,24 @@ Kirigami.ApplicationWindow {
                     QQC2.ToolTip.text: "The command gets the book's folder as its last argument.\nWrite {folder} or {file} (the whole book in one file, book.md) to put it elsewhere."
                 }
 
+                // how formulas are written: follows the reader when that is a
+                // program known to show math only between "$"
+                QQC2.ComboBox {
+                    Kirigami.FormData.label: "Math:"
+                    Layout.fillWidth: true
+                    textRole: "text"
+                    valueRole: "value"
+                    model: [
+                        { value: "github", text: "$`…`$ and ```math — for GitHub and mdBun" },
+                        { value: "standard", text: "$…$ and $$…$$ — for most other readers" }
+                    ]
+                    currentIndex: converter.math === "standard" ? 1 : 0
+                    onActivated: converter.usemath(currentValue)
+                    QQC2.ToolTip.visible: hovered
+                    QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+                    QQC2.ToolTip.text: "How formulas are written in the book.\nGitHub garbles formulas between $ signs; most other Markdown programs show the first form as program code.\nmdBun reads both. A book is written anew in the form chosen when you convert it again."
+                }
+
                 QQC2.Label {
                     Kirigami.FormData.label: "Files go in:"
                     visible: root.inputUrl !== "" && root.outputUrl !== ""

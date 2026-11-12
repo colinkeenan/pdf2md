@@ -2,13 +2,22 @@ use pdf2md_core::{convert_pdf_pages, write_book};
 use std::{env, path::Path, process};
 
 fn main() {
-    let args: Vec<String> = env::args().skip(1).collect();
+    let mut args: Vec<String> = env::args().skip(1).collect();
+    // --math github|standard: how formulas are written (see emit::MathForm)
+    if let Some(i) = args.iter().position(|a| a == "--math") {
+        let form = args.get(i + 1).and_then(|n| pdf2md_core::emit::MathForm::named(n)).unwrap_or_else(|| {
+            eprintln!("--math takes \"github\" ($`…`$ and ```math, for GitHub and mdBun) or \"standard\" ($…$ and $$…$$)");
+            process::exit(2)
+        });
+        pdf2md_core::emit::set_math_form(form);
+        args.drain(i..i + 2);
+    }
     if args.first().map(String::as_str) == Some("--dump") {
         dump(&args[1..]);
         return;
     }
     if args.len() != 2 && args.len() != 4 {
-        eprintln!("usage: pdf2md-cli <input.pdf> <output-dir> [first-page last-page]");
+        eprintln!("usage: pdf2md-cli [--math github|standard] <input.pdf> <output-dir> [first-page last-page]");
         eprintln!("       pdf2md-cli --dump <input.pdf> [first-page last-page]");
         process::exit(2);
     }

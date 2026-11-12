@@ -32,6 +32,10 @@ pub mod qobject {
         /// The command that shows a book (the user's Markdown reader),
         /// remembered between runs. Empty: the system's own choice.
         #[qproperty(QString, reader)]
+        /// How formulas are written: "github" ($`…`$ and ```math, right on
+        /// GitHub and in mdBun) or "standard" ($…$ and $$…$$, for most
+        /// other readers). Remembered between runs.
+        #[qproperty(QString, math)]
         /// The folder of the book converted last in this session (a path);
         /// empty before a conversion has succeeded.
         #[qproperty(QString, last)]
@@ -58,6 +62,10 @@ pub mod qobject {
         #[qinvokable]
         fn usereader(self: Pin<&mut Converter>, command: &QString);
 
+        /// Write formulas as `form` says from now on (saved to disk).
+        #[qinvokable]
+        fn usemath(self: Pin<&mut Converter>, form: &QString);
+
         /// Show the book in the folder `book` (a path) with the reader.
         #[qinvokable]
         fn show(self: Pin<&mut Converter>, book: &QString);
@@ -75,6 +83,7 @@ use core::pin::Pin;
 use cxx_qt::Threading;
 use cxx_qt_lib::QString;
 use pdf2md_core::progress::{self, State, StepView, Tracker};
+use pdf2md_core::emit::MathForm;
 use pdf2md_core::{convert_pdf, write_book};
 use std::path::{Path, PathBuf};
 use std::sync::atomic::{AtomicBool, Ordering};
@@ -90,6 +99,7 @@ pub struct ConverterRust {
     detailed: bool,
     folder: QString,
     reader: QString,
+    math: QString,
     last: QString,
     books: QString,
 }
@@ -109,10 +119,18 @@ impl Default for ConverterRust {
             detailed: false,
             folder: QString::from(load_folder().as_str()),
             reader: QString::from(read_config("reader").unwrap_or_default().as_str()),
+            math: QString::from(math_choice(read_config("math").as_deref(), &read_config("reader").unwrap_or_default()).name()),
             last: QString::default(),
             books: QString::from(book_lines().as_str()),
         }
     }
+}
+
+/// How formulas are written: what the user chose; if nothing was chosen
+/// yet, what the reader needs if it is a program known to show math only
+/// between "$"; else GitHub's forms.
+fn math_choice(chosen: Option<&str>, reader: &str) -> MathForm {
+    chosen.and_then(MathForm::named).or_else(|| MathForm::for_reader(reader)).unwrap_or_default()
 }
 
 /// ~/.config/pdf2md/<name>
@@ -384,8 +402,22 @@ fn run(input: &Path, output: &Path, replace: bool) -> Result<(String, PathBuf), 
 impl qobject::Converter {
     pub fn usereader(mut self: Pin<&mut Self>, command: &QString) {
         let command = String::from(command).trim().to_string();
+        let changed = command != String::from(self.reader());
         write_config("reader", &command);
         self.as_mut().set_reader(QString::from(command.as_str()));
+        // a reader known to show math only between "$" gets its books
+        // written that way (the choice stays open, see `usemath`)
+        if changed {
+            if let Some(form) = MathForm::for_reader(&command) {
+                self.as_mut().usemath(&QString::from(form.name()));
+            }
+        }
+    }
+
+    pub fn usemath(mut self: Pin<&mut Self>, form: &QString) {
+        let form = MathForm::named(&String::from(form)).unwrap_or_default();
+        write_config("math", form.name());
+        self.as_mut().set_math(QString::from(form.name()));
     }
 
     pub fn show(mut self: Pin<&mut Self>, book: &QString) {
@@ -442,6 +474,7 @@ impl qobject::Converter {
                 .set_status(QString::from("Choose a book and an output folder first."));
             return;
         }
+        pdf2md_core::emit::set_math_form(MathForm::named(&String::from(self.math())).unwrap_or_default());
         self.as_mut().set_busy(true);
         self.as_mut().set_last(QString::default());
         self.as_mut().set_status(QString::from("Converting…"));
@@ -553,6 +586,14 @@ mod tests {
         std::fs::create_dir_all(tmp.join("My Book (1)")).unwrap();
         assert_eq!(new_dir(&book), tmp.join("My Book (2)"));
         std::fs::remove_dir_all(&tmp).unwrap();
+    }
+
+    #[test]
+    fn the_math_form_follows_the_choice_then_the_reader() {
+        assert_eq!(math_choice(None, "md"), MathForm::GitHub);
+        assert_eq!(math_choice(None, "code -n {folder}"), MathForm::Dollar);
+        assert_eq!(math_choice(Some("github"), "obsidian"), MathForm::GitHub);
+        assert_eq!(math_choice(Some("standard"), "md"), MathForm::Dollar);
     }
 
     #[test]
