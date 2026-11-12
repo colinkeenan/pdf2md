@@ -32,7 +32,7 @@ The models run on your own computer; nothing is sent anywhere. Their readings ar
 
 **poppler** is always needed: Arch `poppler`, Debian/Ubuntu/Fedora `poppler-utils`.
 
-**The app** needs Rust (<https://rustup.rs>), Qt 6 and KDE Frameworks 6:
+**The app** needs Rust, Qt 6 and KDE Frameworks 6. Rust can come from your distribution's packages (Arch: `sudo pacman -S rust`) or from <https://rustup.rs>.
 
 * Arch: `sudo pacman -S qt6-base qt6-declarative kirigami`
 * Fedora: `sudo dnf install qt6-qtbase-devel qt6-qtdeclarative-devel qt6-qtdeclarative kf6-kirigami-devel kf6-kirigami qt6-qtbase-private-devel`
