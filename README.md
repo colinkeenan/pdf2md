@@ -8,7 +8,7 @@ Converts a PDF textbook into a folder of Markdown files, one per chapter, plus `
 * **Tables** of an ebook-made PDF are tables: such a book sets a table on a panel of grey, with a short rule under each cell of its head. The rules say where the columns are. The rows have no marks and stand close together, so they are found by how the cells stand: in the middle of their row's height, or at its top (whichever fits the table), a column with short cells showing where the rows are; where every row is one line, each line is a row. A table that reaches the foot of its page goes on at the top of the next. Formulas, links to equations and symbols that are pictures stay what they are inside the cells. The panel is no picture any more, and its text no picture's labels (one table's text was lost that way). Under each such table stands the picture of the panel, the table as the book sets it, to check the table against. A table that the book holds as a picture is read by the math recognizer as one formula, an array: under a table's caption that is a table, with the picture right under it, because a cell can be misread. Read whole, though, such a table comes back with cells in the wrong rows and columns, so it is read once more, cell by cell: the picture is cut from the page again, sharper, its rows are the lines of text on it and its columns end where no row has ink and what stands left and right is clearly apart; each cell is then read on its own, as words, as a whole number (Tesseract; the math recognizer makes signs of lone figures) or as a formula. A table that does not part into rows and columns that way stays as it was read whole. The readings are kept in `~/.cache/pdf2md/ocr/` (`KEY.cells`).
 * **A page set in two columns stays in two columns** (an index): the columns stand side by side as in the book, each read from the top down.
 * **Table of contents and index** are links. TOC entries point to chapter files or to headings inside them, and show their printed pages: a chapter its range ("— pp. 4–21", so you can tell which file holds page 20), a section its page ("— p. 15"), each linked to that page's marker. An index page number points to the word on that page where the entry's term appears (also "anticommute" → "anticommuting", "Lamb, Willis E." → "Lamb"); if the term is not in the text of that page (the index sometimes points to related material), it points to the page marker. In Dyson about 40 % of index links find their term. The found words are wrapped in their anchor (`<a id="ix-7">Lamb shift</a>`), so a viewer can highlight them; [mdBun](https://github.com/colinkeenan/mdBun) flashes the target of a link.
-* **Math** is emitted as LaTeX (`$$ … $$`), never as pictures.
+* **Math** is emitted as LaTeX, never as pictures, in the two forms GitHub leaves untouched: a formula in a sentence as ``$`…`$``, a displayed one as a ```` ```math ```` block. (In `$…$` and `$$…$$` GitHub reads the LaTeX as Markdown first: `A^{*} … B^{*}` turns italic, `\\`, `\{` and `\,` lose their backslash, and a `$` with a letter, a digit, a hyphen or a quotation mark right beside it is not taken for a formula at all. In Dyson that spoiled 720 of 3,684 formulas; now none.) A viewer has to know these two forms: GitHub, GitLab and [mdBun](https://github.com/colinkeenan/mdBun) do.
 * **References inside the book** that are links in the PDF stay links, and the whole reference is the link: "Section 3.5" goes to that heading, "Chapter 3" and "Appendix B" to their files, "Figure 1.1" and "Table 2.1" to their captions, "Problem 6.8" to the problem, "(3.422)" to the equation. In a list ("Figures 4.3 and 4.7") each number is a link. The word decides the target: "Section 2.1" is the section even though an equation (2.1) exists. References to other books ("Section 3.9 of Gottfried") are not links in the PDF and stay text.
 * **Pictures** (diagrams, plots, embedded images) are cut from the PDF as PNG files in `images/` (`fig-p049-1.png` = first picture on PDF page 49) and linked where they stand, with their labels inside them instead of in the text. Each gets a visible caption, numbered through the book with its printed page (_Figure 3 (p. 43)_), so searching a rendered chapter for "Figure" steps from picture to picture.
 
@@ -120,7 +120,7 @@ uv pip install --python .venv/bin/python texify "transformers==4.45.2"
 
 (texify 0.2.1 does not work with newer transformers.)
 
-**Your corrections are kept.** Every equation read from a picture, displayed or inside a sentence, has an invisible marker naming its picture (`<!-- pdf2md:eq … -->`). Fix an equation's LaTeX in a chapter file or in `book.md`; the next conversion of that book (into the same folder, or with Replace in the app) first collects the equations you changed and keeps each one in `~/.local/share/pdf2md/corrections/`, and uses it instead of the recognizer's reading from then on.
+**Your corrections are kept.** Every equation read from a picture, displayed or inside a sentence, has an invisible marker naming its picture (`<!-- pdf2md:eq … -->`). Fix an equation's LaTeX in a chapter file or in `book.md`; the next conversion of that book (into the same folder, or with Replace in the app) first collects the equations you changed and keeps each one in `~/.local/share/pdf2md/corrections/`, and uses it instead of the recognizer's reading from then on. (A book converted before formulas were written in GitHub's forms has them between `$` and `$$`: it is read as it is, so what you corrected in it is kept when you convert it again.)
 
 
 ### Math set as text
@@ -130,8 +130,8 @@ Such a book sets the simple math inside its sentences in the text font: an itali
 * **Surely math:** an italic letter (with its primes: `a″` is `a''`), a Greek letter, a relation or operator prose never uses (`=`, `≈`, `→`, `×`, `⟨`, `⟩`, `|`, `∂`, `ħ` …), a subscript or superscript, a single bold letter or a short bold group (`**x′**` is a vector, `\boldsymbol{x'}`), an equation picture.
 * **Math only beside math:** numbers, round and square brackets, `+`, `−`, `/`, a lone upright letter (`Z = 2`), a function name (`sin`, `exp`, `Tr`).
 * **Two or three italic letters** are symbols (`kR`, `dt`) unless they are a common word (`is`, `or`, `not`, `ket`); three need math right beside them. A longer italic word, or an italic phrase, is emphasis.
-* **Where a formula ends:** at a word; at a comma, semicolon or full stop that is followed by a space and is not inside brackets (`⟨x′, y′|` stays whole, `$x$, $y$ and $z$` are three); brackets around the whole formula, or without their partner, are prose (`($x$)`, `(see $x$)`). The hyphen of `x-polarized` and the apostrophe of `Green′s` are prose.
-* A small raised number after a word is a footnote marker; after a symbol, a number or a formula in brackets it is a power (`$N^{2}$`). A linked number — `(2.28)`, a page in the index — is a reference, never part of the formula beside it.
+* **Where a formula ends:** at a word; at a comma, semicolon or full stop that is followed by a space and is not inside brackets (`⟨x′, y′|` stays whole, ``$`x`$, $`y`$ and $`z`$`` are three); brackets around the whole formula, or without their partner, are prose (``($`x`$)``, ``(see $`x`$)``). The hyphen of `x-polarized` and the apostrophe of `Green′s` are prose.
+* A small raised number after a word is a footnote marker; after a symbol, a number or a formula in brackets it is a power (``$`N^{2}`$``). A linked number — `(2.28)`, a page in the index — is a reference, never part of the formula beside it.
 * A formula that goes on in the next line is joined with its beginning.
 
 ## Scanned books
@@ -177,7 +177,7 @@ Converting a book again keeps what you added, as long as it is marked:
   <details class="mine">
   <summary>✎ My note: why the sign flips</summary>
 
-  Your explanation, with math like $[A,B]=-[B,A]$.
+  Your explanation, with math like $`[A,B]=-[B,A]`$.
 
   </details>
   ```
@@ -186,7 +186,7 @@ Converting a book again keeps what you added, as long as it is marked:
 
   ```markdown
   > [!WARNING]
-  > I think the factor should be $\frac12$.
+  > I think the factor should be $`\frac12`$.
   ```
 
   Each goes back right after the paragraph or equation it followed (found by that block's first words, else by the nearest anchor above it). A note whose place is gone ends up at the end of its chapter under "Your notes whose place was not found", never dropped.
@@ -212,7 +212,7 @@ The programs it runs have licences of their own: poppler (GPL), [texify](https:/
 
 ## Known limitations
 
-* **Formulas that would not render are mended when written** (every book): two formulas in a sentence with nothing between them are one (written one right behind the other they read as `$$`, the mark of a displayed formula, and put what follows in the file out of joint); math inside `\text{…}` is taken out of it; two subscripts or two superscripts on one symbol are one. A mended formula renders; whether it is the book's formula is another matter (a table read as formulas stays wrong).
+* **Formulas that would not render are mended when written** (every book): two formulas in a sentence with nothing between them are one; math inside `\text{…}` is taken out of it; two subscripts or two superscripts on one symbol are one. A mended formula renders; whether it is the book's formula is another matter (a table read as formulas stays wrong).
 
 Tested on one book so far (Dyson, *Advanced Quantum Mechanics*, a TeX book): all chapters, every TOC entry, all 93 footnotes, all references and the whole index are linked.
 

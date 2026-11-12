@@ -143,14 +143,15 @@ fn converts_a_small_book() {
     assert!(alpha.contains("[[1]](#ref-1)"), "{alpha}");
     assert!(alpha.contains("**[1]** A. Author, A Book, Press, 1950. [↩](#refback-1-1)"), "{alpha}");
     // displayed equation with its number
-    assert!(alpha.contains("$$\nE = mc^{2} \\tag{1}\n$$"), "{alpha}");
+    assert!(alpha.contains("```math\nE = mc^{2} \\tag{1}\n```"), "{alpha}");
     // the running header is gone, the printed page number became an anchor
     assert!(!alpha.contains("ALPHA"), "{alpha}");
     assert!(alpha.contains("<a id=\"p2\"><sup>[p. 2]</sup></a>"), "{alpha}");
 
-    // aligned columns become a LaTeX array
+    // aligned columns become a LaTeX array (a blank behind each "\\": see
+    // emit's `display`)
     assert!(
-        alpha.contains("\\begin{array}{lcl}\nA & : & \\text{the first symbol} \\\\\nB & = & \\text{the second symbol}"),
+        alpha.contains("\\begin{array}{lcl}\nA & : & \\text{the first symbol} \\\\ \nB & = & \\text{the second symbol}"),
         "{alpha}"
     );
 

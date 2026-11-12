@@ -27,16 +27,17 @@ _Generally used notation:_
 
 </div>
 
-$$
+```math
 \begin{array}{lcl}
-A^{\ast} & : & \text{complex conjugate transposed (Hermitian conjugate)} \\
-A^{+} & : & \text{complex conjugate (not transposed)} \\
-\overline{A} & : & A^{\ast} \beta = A^{\ast} \gamma_{4} = \text{ adjoint } \\
-A^{- 1} & = & \text{inverse} \\
-A^{T} & = & \text{transposed} \\
-\mathbb{I} & = & \text{identity matrix or operator} \\
+A^{*} & : & \text{complex conjugate transposed (Hermitian conjugate)} \\ 
+A^{+} & : & \text{complex conjugate (not transposed)} \\ 
+\overline{A} & : & A^{*} \beta = A^{*} \gamma_{4} = \text{ adjoint } \\ 
+A^{- 1} & = & \text{inverse} \\ 
+A^{T} & = & \text{transposed} \\ 
+\mathbb{I} & = & \text{identity matrix or operator} \\ 
 \end{array}
-$$
+```
+
 <div align="center">
 
 ## <a id="s-lecture-course-491-advanced-quantum-theory-f-j-dyson-fall-semester-1951"></a>Lecture Course 491 — Advanced Quantum Theory F. J. Dyson — Fall Semester 1951

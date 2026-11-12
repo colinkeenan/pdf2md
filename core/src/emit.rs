@@ -27,6 +27,24 @@ fn escape(t: &str) -> String {
     s
 }
 
+/// How formulas are written: the two forms inside which GitHub leaves the
+/// LaTeX alone. In `$…$` and `$$…$$` it reads the LaTeX as Markdown first
+/// ("*" and "_" become italics, `\\`, `\{` and `\,` lose their backslash),
+/// and takes no `$` for a formula that has a letter, a digit, a hyphen or a
+/// quotation mark right beside it.
+pub const MATH_OPEN: &str = "$`";
+pub const MATH_CLOSE: &str = "`$";
+pub const DISPLAY_OPEN: &str = "```math\n";
+pub const DISPLAY_CLOSE: &str = "\n```";
+
+/// A displayed formula as written. (GitHub adds a third "\" to a line of
+/// it that ends in `\\`, which starts the next row with a space of its
+/// own: a blank behind the `\\` keeps the row break as it is.)
+fn display(latex: &str) -> String {
+    let lines: Vec<String> = latex.lines().map(|l| if l.ends_with("\\\\") { format!("{l} ") } else { l.to_string() }).collect();
+    format!("{DISPLAY_OPEN}{}{DISPLAY_CLOSE}\n\n", lines.join("\n"))
+}
+
 /// A number right behind a formula is part of it ("$t =$0" is "$t = 0$"):
 /// viewers do not take a "$" with a digit behind it for the end of a
 /// formula (it could be a price), and would show the LaTeX as it is.
@@ -168,6 +186,8 @@ pub fn render_inlines(inl: &[Inline]) -> String {
     let joined = numbers_into_formulas(joined);
     let inl = &joined[..];
     let mut s = String::new();
+    // the picture the next formula was read from
+    let mut source: Option<&String> = None;
     for i in inl {
         match i {
             Inline::Text(t) => s.push_str(&escape(t)),
@@ -198,18 +218,24 @@ pub fn render_inlines(inl: &[Inline]) -> String {
                 }
             }
             Inline::Math(m) => {
-                // (a formula right behind a formula is one with it: "$a$$b$"
-                // would read as "$$", the mark of a displayed formula, and
-                // put all that follows in the file out of joint)
-                if s.ends_with('$') && !s.ends_with("\\$") && !s.ends_with("$$") && s.matches('$').count().is_multiple_of(2) {
-                    s.pop();
+                // (a formula right behind a formula is one with it; one
+                // read from a picture stays by itself, as its marker says)
+                if s.ends_with(MATH_CLOSE) && source.is_none() {
+                    s.truncate(s.len() - MATH_CLOSE.len());
                     s.push(' ');
                 } else {
-                    s.push('$');
+                    s.push_str(MATH_OPEN);
                 }
-                let m = &mend(m);
+                // (a "`" would end the formula: the quote mark it prints)
+                let m = mend(m).replace('`', "‘");
                 s.push_str(m.trim());
-                s.push('$');
+                s.push_str(MATH_CLOSE);
+                // which picture it was read from: behind it (in front, a
+                // marker that starts a paragraph makes GitHub take the
+                // whole line for HTML and show it as it is)
+                if let Some(k) = source.take() {
+                    s.push_str(&format!("<!-- pdf2md:eq {k} -->"));
+                }
             }
             Inline::Sup(t) => s.push_str(&format!("<sup>{}</sup>", escape(t))),
             Inline::NoteRef { label, id, href } => {
@@ -233,7 +259,7 @@ pub fn render_inlines(inl: &[Inline]) -> String {
                 s.push_str(&format!("<a id=\"{id}\">{t}</a>"));
             }
             Inline::PageLink(_) => {}
-            Inline::Source(k) => s.push_str(&format!("<!-- pdf2md:eq {k} -->")),
+            Inline::Source(k) => source = Some(k),
             Inline::Picture { page, area } => s.push_str(&format!("![equation]({})", picture_file(*page, area))),
             Inline::Break => {
                 let trimmed = s.trim_end().len();
@@ -433,17 +459,17 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
             // of the LaTeX below is kept for the next conversion; the anchor
             // is for the list of equations to check
             if let Some(k) = source {
-                out.push_str(&format!("<a id=\"img-{k}\"></a>\n<!-- pdf2md:eq {k} -->\n"));
+                out.push_str(&format!("<a id=\"img-{k}\"></a>\n<!-- pdf2md:eq {k} -->\n\n"));
             }
             if latex.is_empty() {
                 // only an equation number survived
                 if let Some(t) = tag {
-                    out.push_str(&format!("$$\n\\tag{{{t}}}\n$$\n\n"));
+                    out.push_str(&display(&format!("\\tag{{{t}}}")));
                 }
                 return;
             }
             let tag = tag.as_ref().map(|t| format!(" \\tag{{{t}}}")).unwrap_or_default();
-            out.push_str(&format!("$$\n{}{tag}\n$$\n\n", mend(latex)));
+            out.push_str(&display(&format!("{}{tag}", mend(latex))));
         }
         Block::Anchor(id) => match page_label(id) {
             Some(l) => {
@@ -1137,15 +1163,17 @@ mod tests {
     fn a_number_right_behind_a_formula_is_part_of_it() {
         // two formulas with nothing between them are written as one
         let two = vec![Inline::Text("is ".into()), Inline::Math("\\pm 2".into()), Inline::Math("\\pi".into()), Inline::Text(", so".into())];
-        assert_eq!(render_inlines(&two), "is $\\pm 2 \\pi$, so");
+        assert_eq!(render_inlines(&two), "is $`\\pm 2 \\pi`$, so");
         // LaTeX that would not render is mended
         assert_eq!(mend("\\text{If:}\\ \\text{ R^{-1}=1\\Rightarrow\\mathscr{D}(R) }"), "\\text{If:}\\ { R^{-1}=1\\Rightarrow\\mathscr{D}(R) }");
         assert_eq!(mend("\\text{ for all x_i }"), "\\text{ for all x_i }");
         assert_eq!(mend("N N_{4}_{5} + a^2^{3} + x_1^2 + \\_"), "N N_{4 5} + a^{2 3} + x_1^2 + \\_");
         let inl = vec![Inline::Text("at ".into()), Inline::Math("t =".into()), Inline::Text("0.5. Then".into())];
-        assert_eq!(render_inlines(&inl), "at $t = 0.5$. Then");
+        assert_eq!(render_inlines(&inl), "at $`t = 0.5`$. Then");
         // a formula read from a picture is left as read
+        let inl = vec![Inline::Math("a".into()), Inline::Source("k".into()), Inline::Math("x".into())];
+        assert_eq!(render_inlines(&inl), "$`a`$$`x`$<!-- pdf2md:eq k -->");
         let inl = vec![Inline::Source("k".into()), Inline::Math("x".into()), Inline::Text("2 times".into())];
-        assert_eq!(render_inlines(&inl), "<!-- pdf2md:eq k -->$x$ 2 times");
+        assert_eq!(render_inlines(&inl), "$`x`$<!-- pdf2md:eq k --> 2 times");
     }
 }

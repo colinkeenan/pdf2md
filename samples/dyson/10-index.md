@@ -6,11 +6,11 @@
 <table width="100%"><tr>
 <td valign="top" width="50%">
 
-- $a_{o}$, _see_ Bohr radius
+- $`a_{o}`$, _see_ Bohr radius
 - Abelian, [48](05-examples-of-quantized-field-theories.md#p48)
 - action, [32](04-field-theory.md#ix-0), [33](04-field-theory.md#ix-1), [36](04-field-theory.md#ix-2), [37](04-field-theory.md#ix-3)
 - adiabatic, [97](07-general-theory-of-free-particle-scattering.md#p97)
-- $\alpha$, _see_ fine structure constant
+- $`\alpha`$, _see_ fine structure constant
 - amplitude, [4](02-the-dirac-theory.md#ix-4), [29](03-scattering-problems-and-born-approximation.md#ix-5), [35](04-field-theory.md#ix-6), [36](04-field-theory.md#ix-7), [52](05-examples-of-quantized-field-theories.md#p52), [55–58](05-examples-of-quantized-field-theories.md#ix-8), [72](05-examples-of-quantized-field-theories.md#p72), [103](07-general-theory-of-free-particle-scattering.md#p103)
   - transition, [35](04-field-theory.md#ix-9)
 - angle, [26](03-scattering-problems-and-born-approximation.md#ix-10), [31](03-scattering-problems-and-born-approximation.md#ix-11), [91](06-free-particle-scattering-problems.md#ix-12), [121](08-scattering-by-a-static-potential-comparison-with-experimental-results.md#p121)
@@ -129,10 +129,10 @@
   - form of Maxwell Lagrangian, [34](04-field-theory.md#ix-122)
   - statistics, [71](05-examples-of-quantized-field-theories.md#p71)
 - Feynman
-  - $D_{F}$, [84–85](06-free-particle-scattering-problems.md#p84)
-  - $S_{F}$, [87](06-free-particle-scattering-problems.md#p87)
-  - ∆$F$, [87](06-free-particle-scattering-problems.md#p87)
-  - $i\epsilon$ prescription, [116](07-general-theory-of-free-particle-scattering.md#p116)
+  - $`D_{F}`$, [84–85](06-free-particle-scattering-problems.md#p84)
+  - $`S_{F}`$, [87](06-free-particle-scattering-problems.md#p87)
+  - ∆$`F`$, [87](06-free-particle-scattering-problems.md#p87)
+  - $`i\epsilon`$ prescription, [116](07-general-theory-of-free-particle-scattering.md#p116)
 
 </td>
 <td valign="top">
@@ -141,7 +141,7 @@
   - definition of operators, [38](04-field-theory.md#ix-126)
   - graph, [100](07-general-theory-of-free-particle-scattering.md#ix-127), [101](07-general-theory-of-free-particle-scattering.md#ix-128), [113](07-general-theory-of-free-particle-scattering.md#p113)
   - integration formula, [75](05-examples-of-quantized-field-theories.md#p75)
-  - propagator, _see_ Feynman, $D_{F} ,S_{F} ,$ ∆$F$
+  - propagator, _see_ Feynman, $`D_{F} ,S_{F} ,`$ ∆$`F`$
   - quantization, [35](04-field-theory.md#ix-129), [36](04-field-theory.md#ix-130), [40](04-field-theory.md#ix-131), [98](07-general-theory-of-free-particle-scattering.md#ix-132), [102](07-general-theory-of-free-particle-scattering.md#ix-133)
   - rules, [102–104](07-general-theory-of-free-particle-scattering.md#ix-134), [108](07-general-theory-of-free-particle-scattering.md#p108), [113](07-general-theory-of-free-particle-scattering.md#p113)
 - Feynman, Richard P., [1](01-introduction.md#ix-135), [2](01-introduction.md#ix-136), [34](04-field-theory.md#ix-137), [82](06-free-particle-scattering-problems.md#ix-138), [133](09-typist-s-afterword.md#p133)
@@ -245,7 +245,7 @@
 - Moravcsik, Michael J., i
 - Morette, Cécile, [36](04-field-theory.md#ix-215)
 - Mott, Neville F., [22](03-scattering-problems-and-born-approximation.md#ix-216), [30](03-scattering-problems-and-born-approximation.md#ix-217)
-- $\mu$, [34](04-field-theory.md#p34), [60](05-examples-of-quantized-field-theories.md#p60)
+- $`\mu`$, [34](04-field-theory.md#p34), [60](05-examples-of-quantized-field-theories.md#p60)
 - Nordsieck, Arnold E., [119](08-scattering-by-a-static-potential-comparison-with-experimental-results.md#p119)
 - normal form, [98–103](07-general-theory-of-free-particle-scattering.md#p98), [105](07-general-theory-of-free-particle-scattering.md#p105)
 - Pauli
@@ -257,7 +257,7 @@
   - formula, [40](04-field-theory.md#ix-220), [62](05-examples-of-quantized-field-theories.md#p62), [69](05-examples-of-quantized-field-theories.md#p69)
   - method, [42](05-examples-of-quantized-field-theories.md#p42), [61](05-examples-of-quantized-field-theories.md#ix-221)
 - Peierls, Rudolf E., [40](04-field-theory.md#ix-222)
-- $\pi$ meson, [3](01-introduction.md#p3)
+- $`\pi`$ meson, [3](01-introduction.md#p3)
 - Poisson’s equation, [25](03-scattering-problems-and-born-approximation.md#ix-223)
 - positron, [1](01-introduction.md#ix-224), [11](02-the-dirac-theory.md#ix-225), [26](03-scattering-problems-and-born-approximation.md#ix-226)
   - absorption and emission operators, [64](05-examples-of-quantized-field-theories.md#ix-227)
@@ -297,7 +297,7 @@
 - projection operator, [23](03-scattering-problems-and-born-approximation.md#ix-250), [63](05-examples-of-quantized-field-theories.md#p63), [89](06-free-particle-scattering-problems.md#p89)
 - quantum electrodynamics, [2](01-introduction.md#ix-251), [34](04-field-theory.md#ix-252), [54](05-examples-of-quantized-field-theories.md#p54), [60](05-examples-of-quantized-field-theories.md#p60), [73](05-examples-of-quantized-field-theories.md#ix-253), [74](05-examples-of-quantized-field-theories.md#p74), [80](05-examples-of-quantized-field-theories.md#ix-170), [81](06-free-particle-scattering-problems.md#p81), [102](07-general-theory-of-free-particle-scattering.md#p102), [106](07-general-theory-of-free-particle-scattering.md#p106), [133](09-typist-s-afterword.md#p133)
   - Lagrangian, [40](04-field-theory.md#ix-84)
-- $r_{o}$, _see_ classical electron radius
+- $`r_{o}`$, _see_ classical electron radius
 - radiative corrections
   - electron motion in hydrogen atom, [96](07-general-theory-of-free-particle-scattering.md#p96)
   - scattering, [96](07-general-theory-of-free-particle-scattering.md#p96), [119–125](08-scattering-by-a-static-potential-comparison-with-experimental-results.md#ix-242) electron by a weak potential, [104](07-general-theory-of-free-particle-scattering.md#ix-254)
@@ -348,7 +348,7 @@
 - spur theorems, [89](06-free-particle-scattering-problems.md#p89), [114](07-general-theory-of-free-particle-scattering.md#p114)
 - Stehn, J. R., [59](05-examples-of-quantized-field-theories.md#p59)
 - Stueckelberg, E. C. G., [84](06-free-particle-scattering-problems.md#p84), [85](06-free-particle-scattering-problems.md#p85)
-- Stueckelberg $D^{c}$, [84](06-free-particle-scattering-problems.md#p84)
+- Stueckelberg $`D^{c}`$, [84](06-free-particle-scattering-problems.md#p84)
 - Thomson scattering, [92](06-free-particle-scattering-problems.md#p92)
 - trace theorems, _see_ spur theorems
 - Uehling, E. A., [80](05-examples-of-quantized-field-theories.md#p80)

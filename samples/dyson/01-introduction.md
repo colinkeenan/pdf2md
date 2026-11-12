@@ -49,49 +49,49 @@ In this course I will go through the one-particle theories first in detail. Then
 
 ## <a id="s-one-particle-theories"></a>One-Particle Theories
 
-Take the simplest case, one particle with no forces. Then the NR wave-mechanics tells you to take the equation $E = \frac{1}{2 m} p^{2}$ of classical mechanics, and write
+Take the simplest case, one particle with no forces. Then the NR wave-mechanics tells you to take the equation $`E = \frac{1}{2 m} p^{2}`$ of classical mechanics, and write
 
 <a id="eq-1"></a>
 
-$$
+```math
 E \to i \hbar \frac{\partial}{\partial t} \quad p_{x} \to - i \hbar \frac{\partial}{\partial x} \tag{1}
-$$
+```
 
 to get the wave-equation<sup><a id="fnref-2" href="#fn-2">2</a></sup>
 
 <a id="eq-2"></a>
 
-$$
+```math
 i \hbar \frac{\partial}{\partial t} \psi = - \frac{\hbar^{2}}{2 m} \left( \frac{\partial^{2}}{\partial x^{2}} + \frac{\partial^{2}}{\partial y^{2}} + \frac{\partial^{2}}{\partial z^{2}} \right) \psi = - \frac{\hbar^{2}}{2 m} \nabla^{2} \psi \tag{2}
-$$
+```
 
-satisfied by the wave-function $\psi$.
+satisfied by the wave-function $`\psi`$.
 
-To give a physical meaning to $\psi$, we state that $\rho = \psi^{*} \psi$ is the probability of finding the particle at the point $xyz$ at time $t$. And the probability is <a id="ix-235">conserved</a> because<sup><a id="fnref-3" href="#fn-3">3</a></sup>
+To give a physical meaning to $`\psi`$, we state that $`\rho = \psi^{*} \psi`$ is the probability of finding the particle at the point $`xyz`$ at time $`t`$. And the probability is <a id="ix-235">conserved</a> because<sup><a id="fnref-3" href="#fn-3">3</a></sup>
 
 <a id="eq-3"></a>
 
-$$
+```math
 \frac{\partial \rho}{\partial t} + \nabla \boldsymbol{\cdot} \hbar = 0 \tag{3}
-$$
+```
 
 where
 
 <a id="eq-4"></a>
 
-$$
+```math
 \hbar = \frac{\hbar}{2 mi} ( \psi^{*} \nabla \psi - \psi \nabla \psi^{*} ) \tag{4}
-$$
+```
 
-where $\psi^{*}$ is the complex conjugate of $\psi$.
+where $`\psi^{*}`$ is the complex conjugate of $`\psi`$.
 
 Now do this relativistically. We have classically
 
 <a id="eq-5"></a>
 
-$$
+```math
 E^{2} = m^{2} c^{4} + c^{2} p^{2} \tag{5}
-$$
+```
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p3" href="book.pdf#page=9" target="_blank" title="This page in the PDF"><sup>[p. 3]</sup></a>
@@ -100,23 +100,23 @@ which gives the wave equation
 
 <a id="eq-6"></a>
 
-$$
+```math
 \frac{1}{c^{2}} \frac{\partial^{2}}{\partial t^{2}} \psi = \nabla^{2} \psi - \frac{m^{2} c^{2}}{\hbar^{2}} \psi \tag{6}
-$$
+```
 
 This is an historic equation, the <a id="ix-163">Klein-Gordon equation</a>. <a id="ix-268">Schrödinger</a> already in 1926 tried to make a RQ theory out of it. But he failed, and many other people too, until Pauli and <a id="ix-280">Weisskopf</a> gave the many-particle theory in 1934 <a id="refback-12-1"></a>[[12]](#ref-12). Why?
 
-Because in order to interpret the wave-function as a probability we must have a <a id="ix-234">continuity</a> equation. This can only be got out of the wave-equation if we take $\hbar$ as before, and
+Because in order to interpret the wave-function as a probability we must have a <a id="ix-234">continuity</a> equation. This can only be got out of the wave-equation if we take $`\hbar`$ as before, and
 
 <a id="eq-7"></a>
 
-$$
+```math
 \rho = \frac{i \hbar}{2 mc^{2}} \left( \psi^{*} \frac{\partial \psi}{\partial t} - \frac{\partial \psi^{*}}{\partial t} \psi \right) \tag{7}
-$$
+```
 
-But now since the equation is 2<sup>nd</sup> order, $\psi$ and $\frac{\partial \psi}{\partial t}$ are arbitrary. Hence $\rho$ need not be positive. We have _Negative Probabilities_. This defeated all attempts to make a sensible one-particle theory.
+But now since the equation is 2<sup>nd</sup> order, $`\psi`$ and $`\frac{\partial \psi}{\partial t}`$ are arbitrary. Hence $`\rho`$ need not be positive. We have _Negative Probabilities_. This defeated all attempts to make a sensible one-particle theory.
 
-The theory can be carried through quite easily, if we make $\psi$ describe an assembly of particles of both positive and negative charge, and $\rho$ is the _net_ charge density at any point. This is what Pauli and Weisskopf did, and the theory you get is correct for $\pi$-mesons, the mesons which are made in the synchrotron downstairs. I will talk about it later.
+The theory can be carried through quite easily, if we make $`\psi`$ describe an assembly of particles of both positive and negative charge, and $`\rho`$ is the _net_ charge density at any point. This is what Pauli and Weisskopf did, and the theory you get is correct for $`\pi`$-mesons, the mesons which are made in the synchrotron downstairs. I will talk about it later.
 
 ---
 
@@ -124,13 +124,13 @@ The theory can be carried through quite easily, if we make $\psi$ describe an as
 
 <a id="fn-1"></a>**1.** “is” substituted for “in” [↩](#fnref-1)
 
-<a id="fn-2"></a>**2.** Both the first and the second editions use ∆ for the Laplacian differential operator; as there are many quantities with ∆ in them to denote a change or shift, the use of $\nabla^{2}$ for the Laplacian seems a safer choice. [↩](#fnref-2)
+<a id="fn-2"></a>**2.** Both the first and the second editions use ∆ for the Laplacian differential operator; as there are many quantities with ∆ in them to denote a change or shift, the use of $`\nabla^{2}`$ for the Laplacian seems a safer choice. [↩](#fnref-2)
 
-<a id="fn-3"></a>**3.** The text symbols “div”, “grad” and “curl” have been replaced throughout by “$\nabla \boldsymbol{\cdot}$”, “$\nabla$”, and “$\nabla \times$”, respectively. For example, the equation (3) originally read [↩](#fnref-3)
+<a id="fn-3"></a>**3.** The text symbols “div”, “grad” and “curl” have been replaced throughout by “$`\nabla \boldsymbol{\cdot}`$”, “$`\nabla`$”, and “$`\nabla \times`$”, respectively. For example, the equation (3) originally read [↩](#fnref-3)
 
-$$
+```math
 \frac{\partial \rho}{\partial t} + \text{ div } j = 0
-$$
+```
 
 ---
 

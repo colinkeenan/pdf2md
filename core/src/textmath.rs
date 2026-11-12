@@ -712,21 +712,21 @@ mod tests {
         // Sakurai [p. 19]: pieces by typeface, as the PDF gives them
         assert_eq!(
             line(&[("exactly ", ""), ("N", "i"), ("2", "^"), ("  numbers  of  form ", ""), ("⟨", ""), ("a″", "i"), ("|", ""), ("X", "i"), ("|", ""), ("a′", "i"), ("⟩", ""), (",  where ", ""), ("N", "i"), ("  is  the", "")]),
-            "exactly $N^{2}$ numbers of form $\\langle a'' | X | a' \\rangle$, where $N$ is the"
+            "exactly $`N^{2}`$ numbers of form $`\\langle a'' | X | a' \\rangle`$, where $`N`$ is the"
         );
     }
 
     #[test]
     fn words_stay_words() {
-        assert_eq!(line(&[("is an ", ""), ("x", "i"), ("-polarized beam, which is ", ""), ("not", "i"), (" a", "")]), "is an $x$-polarized beam, which is _not_ a");
+        assert_eq!(line(&[("is an ", ""), ("x", "i"), ("-polarized beam, which is ", ""), ("not", "i"), (" a", "")]), "is an $`x`$-polarized beam, which is _not_ a");
         assert_eq!(line(&[("(see part b and Figure 3) in 1925, a", "")]), "(see part b and Figure 3) in 1925, a");
-        assert_eq!(line(&[("the kets (", ""), ("x", "i"), (") and ", ""), ("y", "i"), (", ", ""), ("z", "i"), (".", "")]), "the kets ($x$) and $y$, $z$.");
+        assert_eq!(line(&[("the kets (", ""), ("x", "i"), (") and ", ""), ("y", "i"), (", ", ""), ("z", "i"), (".", "")]), "the kets ($`x`$) and $`y`$, $`z`$.");
     }
 
     #[test]
     fn numbers_and_upright_letters_go_with_the_math_beside_them() {
-        assert_eq!(line(&[("atoms with Z = 2 and ", ""), ("l", "i"), (" = 0, so", "")]), "atoms with $Z = 2$ and $l = 0$, so");
-        assert_eq!(line(&[("a 2 × 2 matrix ", ""), ("f", "i"), ("(", ""), ("x", "i"), (", ", ""), ("y", "i"), (") of", "")]), "a $2 \\times 2$ matrix $f ( x , y )$ of");
-        assert_eq!(line(&[("vector ", ""), ("x′", "b"), (" and ", ""), ("kR", "i"), (" ≫ 1 here", "")]), "vector $\\boldsymbol{x'}$ and $k R \\gg 1$ here");
+        assert_eq!(line(&[("atoms with Z = 2 and ", ""), ("l", "i"), (" = 0, so", "")]), "atoms with $`Z = 2`$ and $`l = 0`$, so");
+        assert_eq!(line(&[("a 2 × 2 matrix ", ""), ("f", "i"), ("(", ""), ("x", "i"), (", ", ""), ("y", "i"), (") of", "")]), "a $`2 \\times 2`$ matrix $`f ( x , y )`$ of");
+        assert_eq!(line(&[("vector ", ""), ("x′", "b"), (" and ", ""), ("kR", "i"), (" ≫ 1 here", "")]), "vector $`\\boldsymbol{x'}`$ and $`k R \\gg 1`$ here");
     }
 }

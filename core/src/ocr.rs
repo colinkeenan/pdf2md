@@ -217,30 +217,40 @@ fn norm(t: &str) -> String {
 }
 
 /// The marked equations of a Markdown text: picture key and LaTeX (without
-/// its number), for displayed ones (`<!-- pdf2md:eq KEY -->` above `$$`)
-/// and ones inside sentences (the marker right before `$…$`).
+/// its number), for displayed ones (`<!-- pdf2md:eq KEY -->` above the
+/// ```` ```math ```` block) and ones inside sentences (the marker right
+/// behind ``$`…`$``: in front, a marker that starts a paragraph would make
+/// GitHub take the whole line for HTML and show it as it is).
+///
+/// A book written before formulas were put in GitHub's forms has them
+/// between `$` and `$$`, the marker in front in sentences too: read as
+/// well, the corrections made in it count.
 pub fn marked_equations(text: &str) -> Vec<(String, String)> {
+    use crate::emit::{DISPLAY_CLOSE, DISPLAY_OPEN, MATH_CLOSE, MATH_OPEN};
+    const MARK: &str = "<!-- pdf2md:eq ";
     let mut out = Vec::new();
-    let mut rest = text;
-    while let Some(i) = rest.find("<!-- pdf2md:eq ") {
-        rest = &rest[i + 15..];
-        let Some(k) = rest.get(..16).filter(|k| k.chars().all(|c| c.is_ascii_hexdigit())) else { continue };
-        let k = k.to_string();
-        let after = rest.get(20..).unwrap_or("");
-        let latex = if let Some(inline) = after.strip_prefix('$') {
+    let mut from = 0;
+    while let Some(at) = text[from..].find(MARK).map(|i| from + i) {
+        from = at + MARK.len();
+        let Some(k) = text.get(from..from + 16).filter(|k| k.chars().all(|c| c.is_ascii_hexdigit())) else { continue };
+        let after = text.get(from + 20..).unwrap_or("");
+        let before = &text[..at];
+        let latex = if let Some(inline) = before.strip_suffix(MATH_CLOSE) {
+            let Some(start) = inline.rfind(MATH_OPEN) else { continue };
+            &inline[start + MATH_OPEN.len()..]
+        } else if let Some(inline) = after.strip_prefix('$').filter(|i| !i.starts_with('$')) {
             let Some(end) = inline.find('$') else { break };
-            let latex = strip_numbers(&inline[..end]);
-            rest = &inline[end..];
-            latex
+            from = text.len() - inline.len() + end;
+            &inline[..end]
         } else {
-            let Some(start) = rest.find("$$\n") else { break };
-            let body = &rest[start + 3..];
-            let Some(end) = body.find("\n$$") else { break };
-            let latex = strip_numbers(&body[..end]);
-            rest = &body[end..];
-            latex
+            let forms = [(DISPLAY_OPEN, DISPLAY_CLOSE), ("$$\n", "\n$$")];
+            let Some((start, open, close)) = forms.iter().filter_map(|(o, c)| after.find(o).map(|i| (i, o, c))).min() else { break };
+            let body = &after[start + open.len()..];
+            let Some(end) = body.find(close) else { break };
+            from = text.len() - body.len() + end;
+            &body[..end]
         };
-        out.push((k, latex));
+        out.push((k.to_string(), strip_numbers(latex)));
     }
     out
 }
@@ -948,6 +958,18 @@ pub fn base64_decode(s: &str) -> Option<Vec<u8>> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn marked_equations_are_read_in_both_forms() {
+        // as written now, and as written before (a book converted earlier)
+        let k = "0123456789abcdef";
+        let now = format!("<!-- pdf2md:eq {k} -->\n\n```math\na \\\\ \nb \\tag{{1}}\n```\n\nSee $`x^{{*}}`$<!-- pdf2md:eq {k} --> here, and $`y`$ too.");
+        let before = format!("<!-- pdf2md:eq {k} -->\n$$\na \\\\\nb \\tag{{1}}\n$$\n\nSee <!-- pdf2md:eq {k} -->$x^{{*}}$ here.");
+        for text in [now, before] {
+            let found: Vec<String> = marked_equations(&text).into_iter().map(|(_, l)| norm(&l)).collect();
+            assert_eq!(found, ["a \\\\ b", "x^{*}"], "{text}");
+        }
+    }
 
     #[test]
     fn how_the_picture_under_a_table_stands_is_found() {

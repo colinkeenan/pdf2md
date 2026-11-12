@@ -87,7 +87,7 @@
     - [Free Interaction Representation](05-examples-of-quantized-field-theories.md#s-free-interaction-representation) — [p. 80](05-examples-of-quantized-field-theories.md#p80)
 - [Free Particle Scattering Problems](06-free-particle-scattering-problems.md) — [pp. 81–93](06-free-particle-scattering-problems.md#p81)
   - [A. Møller Scattering of Two Electrons](06-free-particle-scattering-problems.md#s-a-m-ller-scattering-of-two-electrons) — [p. 81](06-free-particle-scattering-problems.md#p81)
-    - [Properties of the $D_{F}$ Function](06-free-particle-scattering-problems.md#s-properties-of-the-d-f-function) — [p. 82](06-free-particle-scattering-problems.md#p82)
+    - [Properties of the $`D_{F}`$ Function](06-free-particle-scattering-problems.md#s-properties-of-the-d-f-function) — [p. 82](06-free-particle-scattering-problems.md#p82)
     - [The Møller Formula – Conclusion](06-free-particle-scattering-problems.md#s-the-m-ller-formula-conclusion) — [p. 83](06-free-particle-scattering-problems.md#p83)
     - [Electron-Positron Scattering](06-free-particle-scattering-problems.md#s-electron-positron-scattering) — [p. 84](06-free-particle-scattering-problems.md#p84)
   - [B. Scattering of a Photon by an Electron – The Compton Effect – The Klein-Nishina Formula](06-free-particle-scattering-problems.md#s-b-scattering-of-a-photon-by-an-electron-the-compton-effect-the-klein-nishina-formula) — [p. 84](06-free-particle-scattering-problems.md#p84)
