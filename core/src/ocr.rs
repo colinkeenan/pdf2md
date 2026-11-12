@@ -370,7 +370,8 @@ fn with_labels(latex: &str, labels: &[(f32, String)]) -> String {
 fn strip_numbers(t: &str) -> String {
     let mut out = String::with_capacity(t.len());
     let mut rest = t;
-    while let Some(i) = ["\\tag*{", "\\tag{", "\\label{"].iter().filter_map(|p| rest.find(p).map(|i| (i, p.len()))).min() {
+    // (the number as pdf2md writes it, and as it wrote it before)
+    while let Some(i) = [crate::emit::NUMBER_OPEN, "\\tag*{", "\\tag{", "\\label{"].iter().filter_map(|p| rest.find(p).map(|i| (i, p.len()))).min() {
         let (i, len) = i;
         out.push_str(&rest[..i]);
         let after = &rest[i + len..];
@@ -963,7 +964,7 @@ mod tests {
     fn marked_equations_are_read_in_both_forms() {
         // as written now, and as written before (a book converted earlier)
         let k = "0123456789abcdef";
-        let now = format!("<!-- pdf2md:eq {k} -->\n\n```math\na \\\\ \nb \\tag{{1}}\n```\n\nSee $`x^{{*}}`$<!-- pdf2md:eq {k} --> here, and $`y`$ too.");
+        let now = format!("<!-- pdf2md:eq {k} -->\n\n```math\na \\\\ \nb \\qquad \\text{{(1)}}\n```\n\nSee $`x^{{*}}`$<!-- pdf2md:eq {k} --> here, and $`y`$ too.");
         let before = format!("<!-- pdf2md:eq {k} -->\n$$\na \\\\\nb \\tag{{1}}\n$$\n\nSee <!-- pdf2md:eq {k} -->$x^{{*}}$ here.");
         for text in [now, before] {
             let found: Vec<String> = marked_equations(&text).into_iter().map(|(_, l)| norm(&l)).collect();
@@ -1041,6 +1042,7 @@ mod tests {
     #[test]
     fn strips_invented_numbers() {
         assert_eq!(strip_numbers("a=b \\tag{1}"), "a=b");
+        assert_eq!(strip_numbers("a=b \\qquad \\text{(1.2a)}"), "a=b");
         assert_eq!(strip_numbers("\\label{x} a \\\\ b \\tag*{2}"), "a \\\\ b");
         assert_eq!(strip_numbers("x^{2}"), "x^{2}");
     }

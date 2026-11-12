@@ -37,10 +37,33 @@ pub const MATH_CLOSE: &str = "`$";
 pub const DISPLAY_OPEN: &str = "```math\n";
 pub const DISPLAY_CLOSE: &str = "\n```";
 
+/// How an equation's number is written: behind the equation, as text.
+/// (`\tag{…}` would set it at the right margin, but GitHub breaks an
+/// equation that has one into a column of single symbols.)
+pub const NUMBER_OPEN: &str = "\\qquad \\text{(";
+pub const NUMBER_CLOSE: &str = ")}";
+
+/// `\tag{N}` and `\tag*{N}` of a formula, written as its number (see
+/// [`NUMBER_OPEN`]).
+fn numbers_as_text(latex: &str) -> String {
+    let mut out = String::with_capacity(latex.len() + 16);
+    let mut rest = latex;
+    while let Some((i, len)) = ["\\tag*{", "\\tag{"].iter().filter_map(|p| rest.find(p).map(|i| (i, p.len()))).min() {
+        let after = &rest[i + len..];
+        let Some(end) = after.find('}') else { break };
+        out.push_str(&rest[..i]);
+        out.push_str(&format!("{NUMBER_OPEN}{}{NUMBER_CLOSE}", &after[..end]));
+        rest = &after[end + 1..];
+    }
+    out.push_str(rest);
+    out
+}
+
 /// A displayed formula as written. (GitHub adds a third "\" to a line of
 /// it that ends in `\\`, which starts the next row with a space of its
 /// own: a blank behind the `\\` keeps the row break as it is.)
 fn display(latex: &str) -> String {
+    let latex = numbers_as_text(latex);
     let lines: Vec<String> = latex.lines().map(|l| if l.ends_with("\\\\") { format!("{l} ") } else { l.to_string() }).collect();
     format!("{DISPLAY_OPEN}{}{DISPLAY_CLOSE}\n\n", lines.join("\n"))
 }

@@ -54,7 +54,7 @@ Take the simplest case, one particle with no forces. Then the NR wave-mechanics 
 <a id="eq-1"></a>
 
 ```math
-E \to i \hbar \frac{\partial}{\partial t} \quad p_{x} \to - i \hbar \frac{\partial}{\partial x} \tag{1}
+E \to i \hbar \frac{\partial}{\partial t} \quad p_{x} \to - i \hbar \frac{\partial}{\partial x} \qquad \text{(1)}
 ```
 
 to get the wave-equation<sup><a id="fnref-2" href="#fn-2">2</a></sup>
@@ -62,7 +62,7 @@ to get the wave-equation<sup><a id="fnref-2" href="#fn-2">2</a></sup>
 <a id="eq-2"></a>
 
 ```math
-i \hbar \frac{\partial}{\partial t} \psi = - \frac{\hbar^{2}}{2 m} \left( \frac{\partial^{2}}{\partial x^{2}} + \frac{\partial^{2}}{\partial y^{2}} + \frac{\partial^{2}}{\partial z^{2}} \right) \psi = - \frac{\hbar^{2}}{2 m} \nabla^{2} \psi \tag{2}
+i \hbar \frac{\partial}{\partial t} \psi = - \frac{\hbar^{2}}{2 m} \left( \frac{\partial^{2}}{\partial x^{2}} + \frac{\partial^{2}}{\partial y^{2}} + \frac{\partial^{2}}{\partial z^{2}} \right) \psi = - \frac{\hbar^{2}}{2 m} \nabla^{2} \psi \qquad \text{(2)}
 ```
 
 satisfied by the wave-function $`\psi`$.
@@ -72,7 +72,7 @@ To give a physical meaning to $`\psi`$, we state that $`\rho = \psi^{*} \psi`$ i
 <a id="eq-3"></a>
 
 ```math
-\frac{\partial \rho}{\partial t} + \nabla \boldsymbol{\cdot} \hbar = 0 \tag{3}
+\frac{\partial \rho}{\partial t} + \nabla \boldsymbol{\cdot} \hbar = 0 \qquad \text{(3)}
 ```
 
 where
@@ -80,7 +80,7 @@ where
 <a id="eq-4"></a>
 
 ```math
-\hbar = \frac{\hbar}{2 mi} ( \psi^{*} \nabla \psi - \psi \nabla \psi^{*} ) \tag{4}
+\hbar = \frac{\hbar}{2 mi} ( \psi^{*} \nabla \psi - \psi \nabla \psi^{*} ) \qquad \text{(4)}
 ```
 
 where $`\psi^{*}`$ is the complex conjugate of $`\psi`$.
@@ -90,7 +90,7 @@ Now do this relativistically. We have classically
 <a id="eq-5"></a>
 
 ```math
-E^{2} = m^{2} c^{4} + c^{2} p^{2} \tag{5}
+E^{2} = m^{2} c^{4} + c^{2} p^{2} \qquad \text{(5)}
 ```
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -101,7 +101,7 @@ which gives the wave equation
 <a id="eq-6"></a>
 
 ```math
-\frac{1}{c^{2}} \frac{\partial^{2}}{\partial t^{2}} \psi = \nabla^{2} \psi - \frac{m^{2} c^{2}}{\hbar^{2}} \psi \tag{6}
+\frac{1}{c^{2}} \frac{\partial^{2}}{\partial t^{2}} \psi = \nabla^{2} \psi - \frac{m^{2} c^{2}}{\hbar^{2}} \psi \qquad \text{(6)}
 ```
 
 This is an historic equation, the <a id="ix-163">Klein-Gordon equation</a>. <a id="ix-268">Schrödinger</a> already in 1926 tried to make a RQ theory out of it. But he failed, and many other people too, until Pauli and <a id="ix-280">Weisskopf</a> gave the many-particle theory in 1934 <a id="refback-12-1"></a>[[12]](#ref-12). Why?
@@ -111,7 +111,7 @@ Because in order to interpret the wave-function as a probability we must have a 
 <a id="eq-7"></a>
 
 ```math
-\rho = \frac{i \hbar}{2 mc^{2}} \left( \psi^{*} \frac{\partial \psi}{\partial t} - \frac{\partial \psi^{*}}{\partial t} \psi \right) \tag{7}
+\rho = \frac{i \hbar}{2 mc^{2}} \left( \psi^{*} \frac{\partial \psi}{\partial t} - \frac{\partial \psi^{*}}{\partial t} \psi \right) \qquad \text{(7)}
 ```
 
 But now since the equation is 2<sup>nd</sup> order, $`\psi`$ and $`\frac{\partial \psi}{\partial t}`$ are arbitrary. Hence $`\rho`$ need not be positive. We have _Negative Probabilities_. This defeated all attempts to make a sensible one-particle theory.

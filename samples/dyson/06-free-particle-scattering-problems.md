@@ -12,7 +12,7 @@ The matrix element $`M`$ is
 <a id="eq-419"></a>
 
 ```math
-M = ( \Phi_{B}^{*} U \Phi_{A} ) \tag{419}
+M = ( \Phi_{B}^{*} U \Phi_{A} ) \qquad \text{(419)}
 ```
 
 Here $`U`$Φ$`A`$ is the state which is obtained at $`t`$ = +$`\infty`$ by solving the <a id="ix-265">equation</a> of motion (417) with the initial condition Φ = Φ$`A`$ at $`t = -\infty . U`$ can easily be written down as a perturbation expansion in the operators $`H^{e}`$ and $`H_{R}`$,
@@ -20,13 +20,13 @@ Here $`U`$Φ$`A`$ is the state which is obtained at $`t`$ = +$`\infty`$ by solvi
 <a id="eq-420"></a>
 
 ```math
-\begin{aligned} U &= 1 + \left( - \frac{i}{\hbar} \right) \int_{-\infty}^{\infty} dt_{1} \{ H^{e} ( t_{1} ) + H_{R} ( t_{1} ) \} \\ & \quad + \left( - \frac{i}{\hbar} \right)^{2} \int_{-\infty}^{\infty} dt_{1} \int_{-\infty}^{\infty} dt_{2} \{ H^{e} ( t_{1} ) + H_{R} ( t_{1} ) \}\{ H^{e} ( t_{2} ) + H_{R} ( t_{2} ) \} + \dots \end{aligned} \tag{420}
+\begin{aligned} U &= 1 + \left( - \frac{i}{\hbar} \right) \int_{-\infty}^{\infty} dt_{1} \{ H^{e} ( t_{1} ) + H_{R} ( t_{1} ) \} \\ & \quad + \left( - \frac{i}{\hbar} \right)^{2} \int_{-\infty}^{\infty} dt_{1} \int_{-\infty}^{\infty} dt_{2} \{ H^{e} ( t_{1} ) + H_{R} ( t_{1} ) \}\{ H^{e} ( t_{2} ) + H_{R} ( t_{2} ) \} + \dots \end{aligned} \qquad \text{(420)}
 ```
 
 <a id="eq-421"></a>
 
 ```math
-= \sum_{n = 0}^{\infty} \left( - \frac{i}{\hbar} \right)^{n} \frac{1}{n !} \int_{-\infty}^{\infty} dt_{1} \dots \int_{-\infty}^{\infty} dt_{n} P \{\{ H^{e} ( t_{1} ) + H_{R} ( t_{1} ) \} \dots \{ H^{e} ( t_{n} ) + H_{R} ( t_{n} ) \}\} \tag{421}
+= \sum_{n = 0}^{\infty} \left( - \frac{i}{\hbar} \right)^{n} \frac{1}{n !} \int_{-\infty}^{\infty} dt_{1} \dots \int_{-\infty}^{\infty} dt_{n} P \{\{ H^{e} ( t_{1} ) + H_{R} ( t_{1} ) \} \dots \{ H^{e} ( t_{n} ) + H_{R} ( t_{n} ) \}\} \qquad \text{(421)}
 ```
 
 Here the $`P`$ signifies a chronological product, the factors in it being multiplied not in the order in which they are written but in the order of the times $`t_{1} ,t_{2} ,\dots ,t_{n}`$, the factors with later times standing to the left of those with earlier times. This accounts for the factor 1$`/n`$! after we change all the limits to cover the whole range from $`-\infty`$ to +$`\infty`$. The operator $`U`$ is generally referred to as “the S-matrix”.
@@ -40,7 +40,7 @@ We have in the initial state $`A`$ two electrons in states $`( p_{1} u_{1} ) ( p
 <a id="eq-422"></a>
 
 ```math
-u_{1} e^{ip_{1} \cdot x} \tag{422}
+u_{1} e^{ip_{1} \cdot x} \qquad \text{(422)}
 ```
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -63,7 +63,7 @@ We shall calculate in the Born approximation as before, thus keeping only the te
 <a id="eq-423"></a>
 
 ```math
-U_{2} = \frac{+ e^{2}}{2 \hbar^{2} c^{2}} \int \int dx_{1} dx_{2} P \left\{ \psi ( x_{1} ) A / ( x_{1} ) \psi ( x_{1} ) , \overline{\psi} ( x_{2} ) A / ( x_{2} ) \psi ( x_{2} ) \right\} \tag{423}
+U_{2} = \frac{+ e^{2}}{2 \hbar^{2} c^{2}} \int \int dx_{1} dx_{2} P \left\{ \psi ( x_{1} ) A / ( x_{1} ) \psi ( x_{1} ) , \overline{\psi} ( x_{2} ) A / ( x_{2} ) \psi ( x_{2} ) \right\} \qquad \text{(423)}
 ```
 
 the integration going over all space-time. To obtain the matrix element $`M`$ = (Φ$`\frac{*}{B} U_{2}`$Φ$`{}_{A} )`$ we only have to replace according to (377)
@@ -71,7 +71,7 @@ the integration going over all space-time. To obtain the matrix element $`M`$ = 
 <a id="eq-424"></a>
 
 ```math
-\psi ( x_{i} ) = u_{1} e^{ip_{1} \cdot x_{i}} b_{1} + u_{2} e^{ip_{2} \cdot x_{i}} b_{2} + u^{\prime} e^{ip_{1}^{\prime} \cdot x_{i}} b_{1}^{\prime} + u_{2}^{\prime} e^{ip_{2}^{\prime} \cdot x_{i}} b_{2}^{\prime} \quad \text{ by } \quad u_{1} e^{ip_{1} \cdot x_{i}} b_{1} + u_{2} e^{ip_{2} \cdot x_{i}} b_{2} \tag{424}
+\psi ( x_{i} ) = u_{1} e^{ip_{1} \cdot x_{i}} b_{1} + u_{2} e^{ip_{2} \cdot x_{i}} b_{2} + u^{\prime} e^{ip_{1}^{\prime} \cdot x_{i}} b_{1}^{\prime} + u_{2}^{\prime} e^{ip_{2}^{\prime} \cdot x_{i}} b_{2}^{\prime} \quad \text{ by } \quad u_{1} e^{ip_{1} \cdot x_{i}} b_{1} + u_{2} e^{ip_{2} \cdot x_{i}} b_{2} \qquad \text{(424)}
 ```
 
 and
@@ -85,7 +85,7 @@ because we only absorb 1 and 2 and only create 1$`\prime`$ and 2$`\prime`$. Then
 <a id="eq-425"></a>
 
 ```math
-( b_{1}^{*\prime} b_{1} ) ( b_{2}^{*\prime} b_{2} ) \tag{425}
+( b_{1}^{*\prime} b_{1} ) ( b_{2}^{*\prime} b_{2} ) \qquad \text{(425)}
 ```
 
 in the resulting expansion. There are no photons in the initial and final states and so the vacuum expectation value is taken for the Maxwell potential operators. We thus find, taking account of the fact that the $`b`$ and $`\overline{b}`$ anticommute with each other as in the derivation of (358), the result
@@ -93,7 +93,7 @@ in the resulting expansion. There are no photons in the initial and final states
 <a id="eq-426"></a>
 
 ```math
-\begin{aligned} M &= \sum_{\mu ,\lambda} \frac{e^{2}}{\hbar^{2} c^{2}} \int \int dx_{1} dx_{2} \{ \exp [ i ( p_{1} - p_{1}^{\prime} ) \cdot x_{1} + i ( p_{2} - p_{2}^{\prime} ) \cdot x_{2} ] ( \overline{u}_{1}^{\prime} \gamma_{\lambda} u_{1} ) ( \overline{u}_{2}^{\prime} \gamma_{\mu} u_{2} ) \\ & \quad - \exp [ i ( p_{1} - p_{2}^{\prime} \cdot x_{1} + i ( p_{2} - p_{1}^{\prime} ) \cdot x_{2} ] ( \overline{u}_{2}^{\prime} \gamma_{\lambda} u_{1} ) ( \overline{u}_{1}^{\prime} \gamma_{\mu} u_{2} ) \} \langle P \{ A_{\lambda} ( x_{1} ) ,A_{\mu} ( x_{2} ) \} \rangle_{o} \end{aligned} \tag{426}
+\begin{aligned} M &= \sum_{\mu ,\lambda} \frac{e^{2}}{\hbar^{2} c^{2}} \int \int dx_{1} dx_{2} \{ \exp [ i ( p_{1} - p_{1}^{\prime} ) \cdot x_{1} + i ( p_{2} - p_{2}^{\prime} ) \cdot x_{2} ] ( \overline{u}_{1}^{\prime} \gamma_{\lambda} u_{1} ) ( \overline{u}_{2}^{\prime} \gamma_{\mu} u_{2} ) \\ & \quad - \exp [ i ( p_{1} - p_{2}^{\prime} \cdot x_{1} + i ( p_{2} - p_{1}^{\prime} ) \cdot x_{2} ] ( \overline{u}_{2}^{\prime} \gamma_{\lambda} u_{1} ) ( \overline{u}_{1}^{\prime} \gamma_{\mu} u_{2} ) \} \langle P \{ A_{\lambda} ( x_{1} ) ,A_{\mu} ( x_{2} ) \} \rangle_{o} \end{aligned} \qquad \text{(426)}
 ```
 
 The expectation-value of the chronological product brings in an important new function,
@@ -101,7 +101,7 @@ The expectation-value of the chronological product brings in an important new fu
 <a id="eq-427"></a>
 
 ```math
-\langle P \{ A_{\lambda} ( x_{1} ) ,A_{\mu} ( x_{2} ) \} \rangle_{o} = \tfrac{1}{2} \hbar c\delta_{\lambda \mu} D_{F} ( x_{1} - x_{2} ) \tag{427}
+\langle P \{ A_{\lambda} ( x_{1} ) ,A_{\mu} ( x_{2} ) \} \rangle_{o} = \tfrac{1}{2} \hbar c\delta_{\lambda \mu} D_{F} ( x_{1} - x_{2} ) \qquad \text{(427)}
 ```
 
 where $`F`$ stands for <a id="ix-138">Feynman</a>. Also called by Stueckelberg $`D^{c} , c`$ for causality. <a id="refback-18-1"></a>[[18]](#ref-18)
@@ -113,7 +113,7 @@ Since
 <a id="eq-428"></a>
 
 ```math
-P \{ A_{\lambda} ( x_{1} ) ,A_{\mu} ( x_{2} ) \} = \tfrac{1}{2} \{ A_{\lambda} ( x_{1} ) ,A_{\mu} ( x_{2} ) \} + \tfrac{1}{2} \epsilon ( x_{1} - x_{2} ) \boldsymbol{[} A_{\lambda} ( x_{1} ) ,A_{\mu} ( x_{2} ) \boldsymbol{]} \tag{428}
+P \{ A_{\lambda} ( x_{1} ) ,A_{\mu} ( x_{2} ) \} = \tfrac{1}{2} \{ A_{\lambda} ( x_{1} ) ,A_{\mu} ( x_{2} ) \} + \tfrac{1}{2} \epsilon ( x_{1} - x_{2} ) \boldsymbol{[} A_{\lambda} ( x_{1} ) ,A_{\mu} ( x_{2} ) \boldsymbol{]} \qquad \text{(428)}
 ```
 
 we have by (203) and (205)
@@ -121,7 +121,7 @@ we have by (203) and (205)
 <a id="eq-429"></a>
 
 ```math
-\begin{aligned} D_{F} ( x ) &= D^{( 1 )} ( x ) + i\epsilon ( x ) D ( x ) = \frac{1}{2 \pi^{2}} \left[ \frac{1}{x^{2}} - i\pi \delta ( x^{2} ) \right] \\ &= D^{( 1 )} ( x ) - i \{ D_{A} ( x ) + D_{R} ( x ) \} \\ &= D^{( 1 )} ( x ) - 2 i \overline{D} ( x ) \end{aligned} \tag{429}
+\begin{aligned} D_{F} ( x ) &= D^{( 1 )} ( x ) + i\epsilon ( x ) D ( x ) = \frac{1}{2 \pi^{2}} \left[ \frac{1}{x^{2}} - i\pi \delta ( x^{2} ) \right] \\ &= D^{( 1 )} ( x ) - i \{ D_{A} ( x ) + D_{R} ( x ) \} \\ &= D^{( 1 )} ( x ) - 2 i \overline{D} ( x ) \end{aligned} \qquad \text{(429)}
 ```
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -136,7 +136,7 @@ The momentum representation of $`D_{F}`$ is
 <a id="eq-430"></a>
 
 ```math
-D_{F} ( x ) = \frac{- 2 i}{( 2 \pi )^{4}} \int_{F} e^{ik \cdot x} \frac{d^{4} k}{k^{2}} \tag{430}
+D_{F} ( x ) = \frac{- 2 i}{( 2 \pi )^{4}} \int_{F} e^{ik \cdot x} \frac{d^{4} k}{k^{2}} \qquad \text{(430)}
 ```
 
 The contour of integration here is along the real axis, below the pole at $`k_{0} = -| \boldsymbol{k} |`$ and above the pole at $`k_{0}`$ = +$`| \boldsymbol{k} |`$, in the $`k_{0}`$ plane:
@@ -156,7 +156,7 @@ _Figure 7 (p. 83)_
 <a id="eq-431"></a>
 
 ```math
-D_{F} ( x ) = \frac{- 2 i}{( 2 \pi )^{4}} \int e^{ik \cdot x} \frac{d^{4} k}{k^{2} - i\epsilon} \tag{431}
+D_{F} ( x ) = \frac{- 2 i}{( 2 \pi )^{4}} \int e^{ik \cdot x} \frac{d^{4} k}{k^{2} - i\epsilon} \qquad \text{(431)}
 ```
 
 Here the integration is along the real axis for all four components of $`k . \epsilon`$ is a small positive real number and the limit $`\epsilon \to`$ 0 is supposed to be taken in (431) after the integration is done. Before going to the limit, the $`\epsilon`$ term just shifts the poles off the real axis, the pole $`| \boldsymbol{k} |`$ going done and the pole $`-| \boldsymbol{k} |`$ going up, and so the integral is well-defined and non-singular.
@@ -168,7 +168,7 @@ Using (427) and (431) in (426), the integrations over $`x_{1}`$ and $`x_{2}`$ ca
 <a id="eq-432"></a>
 
 ```math
-M_{2} = \sum_{\lambda} \frac{- ie^{2}}{\hbar c} ( 2 \pi )^{4} \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) \left\{ \frac{( \overline{u}_{1}^{\prime} \gamma_{\lambda} u_{1} ) ( \overline{u}_{2}^{\prime} \gamma_{\lambda} u_{2} )}{( p_{1} - p_{1}^{\prime} )^{2} - i\epsilon} - \frac{( \overline{u}_{2}^{\prime} \gamma_{\lambda} u_{1} ) ( \overline{u}_{1}^{\prime} \gamma_{\lambda} u_{2} )}{( p_{1} - p_{2}^{\prime} )^{2} - i\epsilon} \right\} \tag{432}
+M_{2} = \sum_{\lambda} \frac{- ie^{2}}{\hbar c} ( 2 \pi )^{4} \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) \left\{ \frac{( \overline{u}_{1}^{\prime} \gamma_{\lambda} u_{1} ) ( \overline{u}_{2}^{\prime} \gamma_{\lambda} u_{2} )}{( p_{1} - p_{1}^{\prime} )^{2} - i\epsilon} - \frac{( \overline{u}_{2}^{\prime} \gamma_{\lambda} u_{1} ) ( \overline{u}_{1}^{\prime} \gamma_{\lambda} u_{2} )}{( p_{1} - p_{2}^{\prime} )^{2} - i\epsilon} \right\} \qquad \text{(432)}
 ```
 
 Now $`p_{1}`$ and $`p_{1}^{\prime}`$ are both electron momentum 4-vectors and hence $`( p_{1} - p_{1}^{\prime} )`$ is a space-like vector and its square cannot be zero. Hence we can go directly to the limit by putting $`\epsilon`$ = 0 in (432). This gives us the Møller formula (144) allowing for a difference in units in $`p`$ and $`e`$.
@@ -185,7 +185,7 @@ Exactly the same formula (432) also gives the matrix element of scattering of an
 <a id="eq-433"></a>
 
 ```math
-u_{1} e^{ip_{1} \cdot x} \tag{433}
+u_{1} e^{ip_{1} \cdot x} \qquad \text{(433)}
 ```
 
 and finally in state 1$`\prime`$ by
@@ -193,7 +193,7 @@ and finally in state 1$`\prime`$ by
 <a id="eq-434"></a>
 
 ```math
-u_{1}^{\prime} e^{ip_{1}^{\prime} \cdot x} \tag{434}
+u_{1}^{\prime} e^{ip_{1}^{\prime} \cdot x} \qquad \text{(434)}
 ```
 
 But now the initial state of the positron is given by the wave-function
@@ -201,7 +201,7 @@ But now the initial state of the positron is given by the wave-function
 <a id="eq-435"></a>
 
 ```math
-\overline{u}_{2}^{\prime} e^{- ip_{2}^{\prime} \cdot x} \tag{435}
+\overline{u}_{2}^{\prime} e^{- ip_{2}^{\prime} \cdot x} \qquad \text{(435)}
 ```
 
 and the final state by
@@ -209,7 +209,7 @@ and the final state by
 <a id="eq-436"></a>
 
 ```math
-\overline{u}_{2} e^{- ip_{2} \cdot x} \tag{436}
+\overline{u}_{2} e^{- ip_{2} \cdot x} \qquad \text{(436)}
 ```
 
 using the negative-energy electron wave-functions and _not_ the charge-conjugate functions to represent the positron. The correctness of (435) and (436) is clear since $`b_{2}`$ is the _emission_ operator and $`b_{2}^{\prime}`$ the _absorption_ operator for this positron.
@@ -223,7 +223,7 @@ Again we use the same operator $`U_{2}`$ given by (423). We only have to calcula
 <a id="eq-437"></a>
 
 ```math
-ue^{ip \cdot x} \tag{437}
+ue^{ip \cdot x} \qquad \text{(437)}
 ```
 
 and a photon with <a id="ix-198">potentials</a> given by
@@ -231,7 +231,7 @@ and a photon with <a id="ix-198">potentials</a> given by
 <a id="eq-438"></a>
 
 ```math
-A_{\mu} = e_{\mu} e^{ik \cdot x} \tag{438}
+A_{\mu} = e_{\mu} e^{ik \cdot x} \qquad \text{(438)}
 ```
 
 and $`B`$ consists of the electron in state
@@ -239,7 +239,7 @@ and $`B`$ consists of the electron in state
 <a id="eq-439"></a>
 
 ```math
-u^{\prime} e^{ip^{\prime} \cdot x} \tag{439}
+u^{\prime} e^{ip^{\prime} \cdot x} \qquad \text{(439)}
 ```
 
 and the photon with potentials
@@ -247,7 +247,7 @@ and the photon with potentials
 <a id="eq-440"></a>
 
 ```math
-A_{\mu} = e_{\mu}^{\prime} e^{ik^{\prime} \cdot x} \tag{440}
+A_{\mu} = e_{\mu}^{\prime} e^{ik^{\prime} \cdot x} \qquad \text{(440)}
 ```
 
 The operator $`A_{\lambda} ( x_{1} )`$ appearing in (423) contains both photon emission and absorption components according to (211), and so does $`A_{\mu} ( x_{2} )`$. Hence the matrix element $`M_{2}`$ is a sum of contributions; we can either take $`e_{\lambda} e^{ik \cdot x_{1}}`$ from $`A_{\lambda} ( x_{1} )`$ and<sup><a id="fnref-57" href="#fn-57">57</a></sup> $`e_{\mu}^{\prime} e^{ik^{\prime} \cdot x_{2}}`$ from $`A_{\mu} ( x_{2} )`$ or vice versa. Likewise the electron can be absorbed by $`\psi ( x_{2} )`$ or emitted again by $`\overline{\psi} ( x_{1} )`$, or vice versa. Thus altogether we find for $`M_{2}`$, after taking into account that the whole expression is symmetrical in $`x_{1}`$ and $`x_{2}`$,
@@ -255,7 +255,7 @@ The operator $`A_{\lambda} ( x_{1} )`$ appearing in (423) contains both photon e
 <a id="eq-441"></a>
 
 ```math
-\begin{aligned} M_{2} &= \frac{e^{2}}{\hbar^{2} c^{2}} \sum_{\lambda ,\mu ,\alpha ,\beta} \int \int dx_{1} dx_{2} \left\{ \exp ( ip \cdot x_{2} - ip^{\prime} \cdot x_{1} ) ( \overline{u}_{1}^{\prime} \gamma_{\lambda} )_{\alpha} \left\langle \epsilon ( x_{1} - x_{2} ) P \left\{ \psi_{\alpha} ( x_{1} ) , \overline{\psi}_{\beta} ( x_{2} ) \right\} \right\rangle_{o} ( \gamma_{\mu} u )_{\beta} \right\} \times \\ & \quad \left\{ e_{\lambda} e_{\mu}^{\prime} \exp ( ik \cdot x_{1} - ik^{\prime} \cdot x_{2} ) + e_{\mu} e_{\lambda}^{\prime} \exp ( ik \cdot x_{2} - ik^{\prime} \cdot x_{1} ) \right\} \end{aligned} \tag{441}
+\begin{aligned} M_{2} &= \frac{e^{2}}{\hbar^{2} c^{2}} \sum_{\lambda ,\mu ,\alpha ,\beta} \int \int dx_{1} dx_{2} \left\{ \exp ( ip \cdot x_{2} - ip^{\prime} \cdot x_{1} ) ( \overline{u}_{1}^{\prime} \gamma_{\lambda} )_{\alpha} \left\langle \epsilon ( x_{1} - x_{2} ) P \left\{ \psi_{\alpha} ( x_{1} ) , \overline{\psi}_{\beta} ( x_{2} ) \right\} \right\rangle_{o} ( \gamma_{\mu} u )_{\beta} \right\} \times \\ & \quad \left\{ e_{\lambda} e_{\mu}^{\prime} \exp ( ik \cdot x_{1} - ik^{\prime} \cdot x_{2} ) + e_{\mu} e_{\lambda}^{\prime} \exp ( ik \cdot x_{2} - ik^{\prime} \cdot x_{1} ) \right\} \end{aligned} \qquad \text{(441)}
 ```
 
 Note that with <a id="ix-27">anticommuting</a> fields the expression $`\epsilon ( x_{1} - x_{2} ) P \left\{ \psi_{\alpha} ( x_{1} ) , \overline{\psi}_{\beta} ( x_{2} ) \right\}`$ is a relativistic invariant whereas the $`P`$-product by itself is not. Thus in analogy with (427) we write
@@ -263,7 +263,7 @@ Note that with <a id="ix-27">anticommuting</a> fields the expression $`\epsilon 
 <a id="eq-442"></a>
 
 ```math
-\left\langle \epsilon ( x_{1} - x_{2} ) P \left\{ \psi_{\alpha} ( x_{1} ) , \overline{\psi}_{\beta} ( x_{2} ) \right\} \right\rangle_{o} = - \tfrac{1}{2} S_{F\alpha \beta} ( x_{1} - x_{2} ) \tag{442}
+\left\langle \epsilon ( x_{1} - x_{2} ) P \left\{ \psi_{\alpha} ( x_{1} ) , \overline{\psi}_{\beta} ( x_{2} ) \right\} \right\rangle_{o} = - \tfrac{1}{2} S_{F\alpha \beta} ( x_{1} - x_{2} ) \qquad \text{(442)}
 ```
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -274,7 +274,7 @@ where $`S_{F}`$ is a new invariant function. Since
 <a id="eq-443"></a>
 
 ```math
-\epsilon ( x_{2} - x_{1} ) P \left\{ \psi_{\alpha} ( x_{1} ) , \overline{\psi}_{\beta} ( x_{2} ) \right\} = \tfrac{1}{2} \boldsymbol{[} \psi_{\alpha} ( x_{1} ) , \overline{\psi}_{\beta} ( x_{2} ) \boldsymbol{]} + \tfrac{1}{2} \epsilon ( x_{2} - x_{1} ) \left\{ \psi_{\alpha} ( x_{1} ) , \overline{\psi}_{\beta} ( x_{2} ) \right\} \tag{443}
+\epsilon ( x_{2} - x_{1} ) P \left\{ \psi_{\alpha} ( x_{1} ) , \overline{\psi}_{\beta} ( x_{2} ) \right\} = \tfrac{1}{2} \boldsymbol{[} \psi_{\alpha} ( x_{1} ) , \overline{\psi}_{\beta} ( x_{2} ) \boldsymbol{]} + \tfrac{1}{2} \epsilon ( x_{2} - x_{1} ) \left\{ \psi_{\alpha} ( x_{1} ) , \overline{\psi}_{\beta} ( x_{2} ) \right\} \qquad \text{(443)}
 ```
 
 we have by (299) and (329)
@@ -282,7 +282,7 @@ we have by (299) and (329)
 <a id="eq-444"></a>
 
 ```math
-S_{F} ( x ) = S^{( 1 )} + i\epsilon ( x ) S ( x ) \tag{444}
+S_{F} ( x ) = S^{( 1 )} + i\epsilon ( x ) S ( x ) \qquad \text{(444)}
 ```
 
 in exact analogy to (429). We write also
@@ -290,7 +290,7 @@ in exact analogy to (429). We write also
 <a id="eq-445"></a>
 
 ```math
-S_{F} ( x ) = \sum_{\lambda} \left( \gamma_{\lambda} \frac{\partial}{\partial x_{\lambda}} - \mu \right) \Delta_{F} ( x ) \tag{445}
+S_{F} ( x ) = \sum_{\lambda} \left( \gamma_{\lambda} \frac{\partial}{\partial x_{\lambda}} - \mu \right) \Delta_{F} ( x ) \qquad \text{(445)}
 ```
 
 and we find from (444) the <a id="ix-213">momentum</a> representations
@@ -298,13 +298,13 @@ and we find from (444) the <a id="ix-213">momentum</a> representations
 <a id="eq-446"></a>
 
 ```math
-\Delta_{F} ( x ) = \frac{- 2 i}{( 2 \pi )^{4}} \int e^{ik \cdot x} \frac{d^{4} k}{k^{2} + \mu^{2} - i\epsilon} \tag{446}
+\Delta_{F} ( x ) = \frac{- 2 i}{( 2 \pi )^{4}} \int e^{ik \cdot x} \frac{d^{4} k}{k^{2} + \mu^{2} - i\epsilon} \qquad \text{(446)}
 ```
 
 <a id="eq-447"></a>
 
 ```math
-S_{F} ( x ) = \frac{2}{( 2 \pi )^{4}} \int e^{ik \cdot x} \left( \frac{/ k + i\mu}{k^{2} + \mu^{2} - i\epsilon} \right) d^{4} k \tag{447}
+S_{F} ( x ) = \frac{2}{( 2 \pi )^{4}} \int e^{ik \cdot x} \left( \frac{/ k + i\mu}{k^{2} + \mu^{2} - i\epsilon} \right) d^{4} k \qquad \text{(447)}
 ```
 
 We can also write (447) conveniently as
@@ -312,7 +312,7 @@ We can also write (447) conveniently as
 <a id="eq-448"></a>
 
 ```math
-S_{F} ( x ) = \frac{2}{( 2 \pi )^{4}} \int_{F} e^{ik \cdot x} \frac{1}{k / - i\mu} d^{4} k \tag{448}
+S_{F} ( x ) = \frac{2}{( 2 \pi )^{4}} \int_{F} e^{ik \cdot x} \frac{1}{k / - i\mu} d^{4} k \qquad \text{(448)}
 ```
 
 Here the Dirac matrix in the denominator means that we have to multiply above and below by $`( / k + i\mu )`$ in order to evaluate the integral. Thus (448) is not a real simplification of (447), only it saves writing. The Feynman integration in (448) is defined as a <a id="ix-123">contour integral</a> exactly as in (430).
@@ -322,7 +322,7 @@ Now substituting from (448) into (441), just like for (432)
 <a id="eq-449"></a>
 
 ```math
-M_{2} = \frac{- e^{2}}{\hbar^{2} c^{2}} ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \overline{u}^{\prime} \left[ /e \frac{1}{p / - k /^{\prime} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{p / + / k - i\mu} /e \right] u \tag{449}
+M_{2} = \frac{- e^{2}}{\hbar^{2} c^{2}} ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \overline{u}^{\prime} \left[ /e \frac{1}{p / - k /^{\prime} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{p / + / k - i\mu} /e \right] u \qquad \text{(449)}
 ```
 
 Again the denominators $`( p - k )`$<sup>2</sup> $`+ \mu^{2}`$ can never vanish so the $`\epsilon`$ can be put equal to zero in (447). In fact if the electron is initially at rest
@@ -336,7 +336,7 @@ and similarly
 <a id="eq-450"></a>
 
 ```math
-( p + k )^{2} + \mu^{2} = - 2 \mu k_{0} \tag{450}
+( p + k )^{2} + \mu^{2} = - 2 \mu k_{0} \qquad \text{(450)}
 ```
 
 because $`k^{\prime 2}`$ = 0 and $`p^{2} = - \mu^{2} ; \boldsymbol{p}`$ = 0 because the electron is at rest.
@@ -344,7 +344,7 @@ because $`k^{\prime 2}`$ = 0 and $`p^{2} = - \mu^{2} ; \boldsymbol{p}`$ = 0 beca
 <a id="eq-451"></a>
 
 ```math
-M_{2} = \frac{- e^{2}}{2 \hbar^{2} c^{2} \mu} ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \overline{u}^{\prime} \left[ \frac{1}{k_{0}^{\prime}} /e ( p / - / k^{\prime} + i\mu ) /e^{\prime} - \frac{1}{k_{0}} /e^{\prime} ( p / + / k + i\mu ) /e \right] u \tag{451}
+M_{2} = \frac{- e^{2}}{2 \hbar^{2} c^{2} \mu} ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \overline{u}^{\prime} \left[ \frac{1}{k_{0}^{\prime}} /e ( p / - / k^{\prime} + i\mu ) /e^{\prime} - \frac{1}{k_{0}} /e^{\prime} ( p / + / k + i\mu ) /e \right] u \qquad \text{(451)}
 ```
 
 Now we can simplify (451) further. Since the photon is not polarized in time, $`e_{4} = e_{4}^{\prime}`$ = 0; since the electron is at rest, $`\boldsymbol{p}`$ = 0. Hence $`e \cdot p`$ = 0, and thus $`/e/p = - p/e /`$ + 2$`\mathbb{I} e \cdot p = - p/e /`$ , i.e. $`p /`$ and $`/e`$ anticommute. This plus the fact that $`u`$ is a spin state of momentum $`\hbar p`$, i.e.
@@ -352,7 +352,7 @@ Now we can simplify (451) further. Since the photon is not polarized in time, $`
 <a id="eq-452"></a>
 
 ```math
-( p / - i\mu ) u = 0 \tag{452}
+( p / - i\mu ) u = 0 \qquad \text{(452)}
 ```
 
 mean that the term $`p / + i\mu`$ in (451) can be omitted. Thus we get
@@ -360,7 +360,7 @@ mean that the term $`p / + i\mu`$ in (451) can be omitted. Thus we get
 <a id="eq-453"></a>
 
 ```math
-M_{2} = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu} ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \overline{u}^{\prime} \left[ /e \frac{/ k^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e^{\prime} \frac{/ k}{k_{0}} /e \right] u \tag{453}
+M_{2} = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu} ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \overline{u}^{\prime} \left[ /e \frac{/ k^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e^{\prime} \frac{/ k}{k_{0}} /e \right] u \qquad \text{(453)}
 ```
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -373,7 +373,7 @@ We write as in (145)
 <a id="eq-454"></a>
 
 ```math
-M_{2} = K ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \tag{454}
+M_{2} = K ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \qquad \text{(454)}
 ```
 
 Then the <a id="ix-121">scattering</a> probability per unit volume and per unit time for the single final state is as before
@@ -381,7 +381,7 @@ Then the <a id="ix-121">scattering</a> probability per unit volume and per unit 
 <a id="eq-455"></a>
 
 ```math
-w_{\delta} = c | K |^{2} ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \tag{455}
+w_{\delta} = c | K |^{2} ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \qquad \text{(455)}
 ```
 
 The number of final states for the electron is
@@ -389,7 +389,7 @@ The number of final states for the electron is
 <a id="eq-456"></a>
 
 ```math
-\frac{1}{( 2 \pi )^{3}} \left( \frac{mc^{2}}{E^{\prime}} \right) dp_{1}^{\prime} dp_{2}^{\prime} dp_{3}^{\prime} \tag{456}
+\frac{1}{( 2 \pi )^{3}} \left( \frac{mc^{2}}{E^{\prime}} \right) dp_{1}^{\prime} dp_{2}^{\prime} dp_{3}^{\prime} \qquad \text{(456)}
 ```
 
 The photon with potentials (440), when $`e_{\mu}^{\prime}`$ is a space-like vector having $`( e_{\mu}^{\prime} )`$<sup>2</sup> = 1 is normalized to one particle per volume $`\hbar c/ 2 k_{0}^{\prime}`$. This can be seen at once, comparing (440) with (211) and (214), and taking into account the difference of (2$`\pi )`$<sup>3</sup> between the continuous and discrete normalizations. Hence the number of final states for the photon is
@@ -397,7 +397,7 @@ The photon with potentials (440), when $`e_{\mu}^{\prime}`$ is a space-like vect
 <a id="eq-457"></a>
 
 ```math
-\frac{1}{( 2 \pi )^{3}} \left( \frac{\hbar c}{2 k_{0}^{\prime}} \right) dk_{1}^{\prime} dk_{2}^{\prime} dk_{3}^{\prime} \tag{457}
+\frac{1}{( 2 \pi )^{3}} \left( \frac{\hbar c}{2 k_{0}^{\prime}} \right) dk_{1}^{\prime} dk_{2}^{\prime} dk_{3}^{\prime} \qquad \text{(457)}
 ```
 
 The total transition probability is thus
@@ -405,7 +405,7 @@ The total transition probability is thus
 <a id="eq-458"></a>
 
 ```math
-w = c | K |^{2} \frac{1}{( 2 \pi )^{2}} \left( \frac{mc^{2}}{E^{\prime}} \frac{\hbar c}{2 k_{0}^{\prime}} \right) \frac{dk_{1}^{\prime} dk_{2}^{\prime} dk_{3}^{\prime}}{d ( p_{0}^{\prime} + k_{0}^{\prime} )} \tag{458}
+w = c | K |^{2} \frac{1}{( 2 \pi )^{2}} \left( \frac{mc^{2}}{E^{\prime}} \frac{\hbar c}{2 k_{0}^{\prime}} \right) \frac{dk_{1}^{\prime} dk_{2}^{\prime} dk_{3}^{\prime}}{d ( p_{0}^{\prime} + k_{0}^{\prime} )} \qquad \text{(458)}
 ```
 
 We write this as a probability for scattering the _photon_ with frequency $`k_{0}^{\prime}`$ into a unit solid angle $`d`$Ω. Then using momentum conservation, we have
@@ -413,7 +413,7 @@ We write this as a probability for scattering the _photon_ with frequency $`k_{0
 <a id="eq-459"></a>
 
 ```math
-\begin{aligned} \frac{dp_{0}^{\prime}}{dk_{0}^{\prime}} &= \frac{p_{1}^{\prime} dp_{1}^{\prime} + \dots}{p_{0}^{\prime} dk_{0}^{\prime}} = - \frac{p_{1}^{\prime} dk_{1}^{\prime} + \dots}{p_{0}^{\prime} dk_{0}^{\prime}} = - \frac{p_{1}^{\prime} k_{1}^{\prime} + \cdot \cdot \cdot + p_{3}^{\prime} k_{3}^{\prime}}{p_{0}^{\prime} k_{0}^{\prime}} \\ \frac{dk_{0}^{\prime}}{d ( p_{0}^{\prime} + k_{0}^{\prime} )} &= \frac{p_{0}^{\prime} k_{0}^{\prime}}{- ( p^{\prime} \cdot k^{\prime} )} = \frac{p_{0}^{\prime} k_{0}^{\prime}}{- p \cdot k} = \frac{p_{0}^{\prime} k_{0}^{\prime}}{p_{0} k_{0}} \end{aligned} \tag{459}
+\begin{aligned} \frac{dp_{0}^{\prime}}{dk_{0}^{\prime}} &= \frac{p_{1}^{\prime} dp_{1}^{\prime} + \dots}{p_{0}^{\prime} dk_{0}^{\prime}} = - \frac{p_{1}^{\prime} dk_{1}^{\prime} + \dots}{p_{0}^{\prime} dk_{0}^{\prime}} = - \frac{p_{1}^{\prime} k_{1}^{\prime} + \cdot \cdot \cdot + p_{3}^{\prime} k_{3}^{\prime}}{p_{0}^{\prime} k_{0}^{\prime}} \\ \frac{dk_{0}^{\prime}}{d ( p_{0}^{\prime} + k_{0}^{\prime} )} &= \frac{p_{0}^{\prime} k_{0}^{\prime}}{- ( p^{\prime} \cdot k^{\prime} )} = \frac{p_{0}^{\prime} k_{0}^{\prime}}{- p \cdot k} = \frac{p_{0}^{\prime} k_{0}^{\prime}}{p_{0} k_{0}} \end{aligned} \qquad \text{(459)}
 ```
 
 Hence finally
@@ -421,7 +421,7 @@ Hence finally
 <a id="eq-460"></a>
 
 ```math
-w = c | K |^{2} \frac{1}{( 2 \pi )^{2}} \frac{\hbar c}{2 k_{0}} k_{0}^{\prime 2} d \Omega \tag{460}
+w = c | K |^{2} \frac{1}{( 2 \pi )^{2}} \frac{\hbar c}{2 k_{0}} k_{0}^{\prime 2} d \Omega \qquad \text{(460)}
 ```
 
 The differential cross-section for scattering the photon of frequency $`k_{0}`$ into solid angle $`d`$Ω is then
@@ -437,13 +437,13 @@ $`V_{2} = \frac{\hbar c}{2 k_{0}}`$ . Thus
 <a id="eq-461"></a>
 
 ```math
-\sigma = \left( \frac{\hbar c}{4 \pi k_{0}} \right)^{2} | K |^{2} k_{0}^{\prime 2} d \Omega \tag{461}
+\sigma = \left( \frac{\hbar c}{4 \pi k_{0}} \right)^{2} | K |^{2} k_{0}^{\prime 2} d \Omega \qquad \text{(461)}
 ```
 
 <a id="eq-462"></a>
 
 ```math
-K = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu} \overline{u}^{\prime} \left[ /e \frac{k /^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e^{\prime} \frac{k /}{k_{0}} /e \right] u \tag{462}
+K = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu} \overline{u}^{\prime} \left[ /e \frac{k /^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e^{\prime} \frac{k /}{k_{0}} /e \right] u \qquad \text{(462)}
 ```
 
 This gives the cross-section for a known electron spin in the initial and final states.
@@ -502,7 +502,7 @@ Now we can proceed to evaluate the sum over spins. We have
 <a id="eq-463"></a>
 
 ```math
-\begin{aligned} \tfrac{1}{2} \sum_{u} \sum_{u^{\prime}} | K |^{2} &= - \frac{e^{4}}{8 \hbar^{4} c^{4} \mu^{2}} \sum_{u} \sum_{u^{\prime}} \left\{ \overline{u}^{\prime} \left( /e \frac{k /^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e^{\prime} \frac{/ k}{k_{0}} /e \right) u \right\} \left\{ \overline{u} \left( /e \frac{k /}{k_{0}} /e^{\prime} + /e^{\prime} \frac{/ k^{\prime}}{k_{0}^{\prime}} /e \right) u^{\prime} \right\} \\ &= \frac{e^{4}}{3 2 \hbar^{4} c^{4} \mu^{4}} \operatorname{Spur} \left\{ ( p / + i\mu ) \left( /e \frac{/ k}{k_{0}} /e^{\prime} + /e^{\prime} \frac{k /^{\prime}}{k_{0}^{\prime}} /e \right) ( p /^{\prime} + i\mu ) \left( /e \frac{/ k^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e^{\prime} \frac{k /}{k_{0}} /e \right) \right\} \\ \text{ Now } \frac{/ k}{k_{0}} &= i\beta + \frac{k_{1} \gamma_{1} + k_{2} \gamma_{2} + k_{3} \gamma_{3}}{k_{0}} = i\beta + \gamma_{k} , \text{ say } . \end{aligned} \tag{463}
+\begin{aligned} \tfrac{1}{2} \sum_{u} \sum_{u^{\prime}} | K |^{2} &= - \frac{e^{4}}{8 \hbar^{4} c^{4} \mu^{2}} \sum_{u} \sum_{u^{\prime}} \left\{ \overline{u}^{\prime} \left( /e \frac{k /^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e^{\prime} \frac{/ k}{k_{0}} /e \right) u \right\} \left\{ \overline{u} \left( /e \frac{k /}{k_{0}} /e^{\prime} + /e^{\prime} \frac{/ k^{\prime}}{k_{0}^{\prime}} /e \right) u^{\prime} \right\} \\ &= \frac{e^{4}}{3 2 \hbar^{4} c^{4} \mu^{4}} \operatorname{Spur} \left\{ ( p / + i\mu ) \left( /e \frac{/ k}{k_{0}} /e^{\prime} + /e^{\prime} \frac{k /^{\prime}}{k_{0}^{\prime}} /e \right) ( p /^{\prime} + i\mu ) \left( /e \frac{/ k^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e^{\prime} \frac{k /}{k_{0}} /e \right) \right\} \\ \text{ Now } \frac{/ k}{k_{0}} &= i\beta + \frac{k_{1} \gamma_{1} + k_{2} \gamma_{2} + k_{3} \gamma_{3}}{k_{0}} = i\beta + \gamma_{k} , \text{ say } . \end{aligned} \qquad \text{(463)}
 ```
 
 Similarly $`\frac{k /^{\prime}}{k_{0}^{\prime}} = i\beta + \gamma_{k}^{\prime}`$.
@@ -539,7 +539,7 @@ Now since $`k/ / k = / k^{\prime} k /^{\prime} = p/p / + \mu^{2}`$ = 0 (for the 
 <a id="eq-464"></a>
 
 ```math
-\frac{e^{4}}{3 2 \hbar^{4} c^{4} \mu^{4}} \operatorname{Spur} \left[ 4 \mu ( e \cdot e^{\prime} ) ( p /^{\prime} + i\mu ) ( /e \frac{k /^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e^{\prime} \frac{/ k}{k_{0}} /e ) + ( /e \frac{/ k^{\prime}}{k_{0}^{\prime}} /e^{\prime} /e \frac{/ k}{k_{0}} /e^{\prime} + /e^{\prime} \frac{/ k}{k_{0}} /e/e^{\prime} \frac{/ k^{\prime}}{k_{0}^{\prime}} /e ) ( i\mu - p / ) ( / k - k /^{\prime} ) \right] \tag{464}
+\frac{e^{4}}{3 2 \hbar^{4} c^{4} \mu^{4}} \operatorname{Spur} \left[ 4 \mu ( e \cdot e^{\prime} ) ( p /^{\prime} + i\mu ) ( /e \frac{k /^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e^{\prime} \frac{/ k}{k_{0}} /e ) + ( /e \frac{/ k^{\prime}}{k_{0}^{\prime}} /e^{\prime} /e \frac{/ k}{k_{0}} /e^{\prime} + /e^{\prime} \frac{/ k}{k_{0}} /e/e^{\prime} \frac{/ k^{\prime}}{k_{0}^{\prime}} /e ) ( i\mu - p / ) ( / k - k /^{\prime} ) \right] \qquad \text{(464)}
 ```
 
 because
@@ -600,7 +600,7 @@ and so (464) is
 <a id="eq-465"></a>
 
 ```math
-\frac{e^{4}}{8 \hbar^{4} c^{4} \mu^{4}} \left\{ \frac{2 \mu^{2} ( k_{0} - k_{0}^{\prime} )^{2}}{k_{0} k_{0}^{\prime}} + 2 \mu ( e \cdot e^{\prime} ) \operatorname{Spur} \left[ p/ei\beta /e /^{\prime} \right] \right\} = \frac{e^{4}}{4 \hbar^{4} c^{4} \mu^{2}} \left\{ \frac{( k_{0} - k_{0}^{\prime} )^{2}}{k_{0} k_{0}^{\prime}} + 4 ( e \cdot e^{\prime} )^{2} \right\} \tag{465}
+\frac{e^{4}}{8 \hbar^{4} c^{4} \mu^{4}} \left\{ \frac{2 \mu^{2} ( k_{0} - k_{0}^{\prime} )^{2}}{k_{0} k_{0}^{\prime}} + 2 \mu ( e \cdot e^{\prime} ) \operatorname{Spur} \left[ p/ei\beta /e /^{\prime} \right] \right\} = \frac{e^{4}}{4 \hbar^{4} c^{4} \mu^{2}} \left\{ \frac{( k_{0} - k_{0}^{\prime} )^{2}}{k_{0} k_{0}^{\prime}} + 4 ( e \cdot e^{\prime} )^{2} \right\} \qquad \text{(465)}
 ```
 
 Hence by (461) the cross-section averaged over electron spins is
@@ -620,7 +620,7 @@ Hence
 <a id="eq-466"></a>
 
 ```math
-\overline{\sigma} = \tfrac{1}{4} r_{o}^{2} d \Omega \left( \frac{k_{0}^{\prime}}{k_{0}} \right)^{2} \left\{ \frac{( k_{0} - k_{0}^{\prime} )^{2}}{k_{0} k_{0}^{\prime}} + 4 \cos^{2} \varphi \right\} \tag{466}
+\overline{\sigma} = \tfrac{1}{4} r_{o}^{2} d \Omega \left( \frac{k_{0}^{\prime}}{k_{0}} \right)^{2} \left\{ \frac{( k_{0} - k_{0}^{\prime} )^{2}}{k_{0} k_{0}^{\prime}} + 4 \cos^{2} \varphi \right\} \qquad \text{(466)}
 ```
 
 where $`\varphi`$ is the angle between the polarizations of the incident quantum $`k_{0}`$ and the emitted quantum $`k_{0}^{\prime}`$ . This is the famous _Klein-Nishina formula_.
@@ -654,7 +654,7 @@ Then
 <a id="eq-467"></a>
 
 ```math
-\overline{\sigma} = \tfrac{1}{4} r_{o}^{2} d \Omega \frac{\left( \frac{( 1 - \cos \theta )^{2} \epsilon^{2}}{1 + \epsilon ( 1 - \cos \theta )} + 4 \cos^{2} \varphi \right)}{[ 1 + \epsilon ( 1 - \cos \theta ) ]^{2}} \tag{467}
+\overline{\sigma} = \tfrac{1}{4} r_{o}^{2} d \Omega \frac{\left( \frac{( 1 - \cos \theta )^{2} \epsilon^{2}}{1 + \epsilon ( 1 - \cos \theta )} + 4 \cos^{2} \varphi \right)}{[ 1 + \epsilon ( 1 - \cos \theta ) ]^{2}} \qquad \text{(467)}
 ```
 
 Thus for large $`\epsilon`$ the scattered photons are mainly unpolarized and concentrated in the forward direction. For small $`\epsilon`$ (non-relativistic problem) we have simply<sup><a id="fnref-62" href="#fn-62">62</a></sup>
@@ -662,7 +662,7 @@ Thus for large $`\epsilon`$ the scattered photons are mainly unpolarized and con
 <a id="eq-468"></a>
 
 ```math
-\overline{\sigma} = r_{o}^{2} \cos^{2} \varphi d \Omega \tag{468}
+\overline{\sigma} = r_{o}^{2} \cos^{2} \varphi d \Omega \qquad \text{(468)}
 ```
 
 the classical result. Summing over the two polarizations of the photon $`k^{\prime}`$ and averaging over all polarizations of $`k`$, this gives the cross-section for all polarizations
@@ -670,7 +670,7 @@ the classical result. Summing over the two polarizations of the photon $`k^{\pri
 <a id="eq-469"></a>
 
 ```math
-\overline{\sigma} = \tfrac{1}{2} r_{o}^{2} ( 1 + \cos^{2} \theta ) d \Omega \tag{469}
+\overline{\sigma} = \tfrac{1}{2} r_{o}^{2} ( 1 + \cos^{2} \theta ) d \Omega \qquad \text{(469)}
 ```
 
 We get this by evaluating $`\tfrac{1}{2} \sum_{e} \sum_{e^{\prime}} ( e \cdot e^{\prime} )`$<sup>2</sup>. First we have to sum over the two polarization directions of photon $`k^{\prime}`$. This summation for three directions would give
@@ -701,7 +701,7 @@ The total cross-section then is
 <a id="eq-470"></a>
 
 ```math
-\sigma = \tfrac{8}{3} \pi r_{o}^{2} \tag{470}
+\sigma = \tfrac{8}{3} \pi r_{o}^{2} \qquad \text{(470)}
 ```
 
 This non-relativistic scattering given by (468) – (470) is called _Thomson scattering_.<sup><a id="fnref-63" href="#fn-63">63</a></sup>
@@ -715,7 +715,7 @@ This annihilation process will again be effected by the operator $`U_{2}`$ given
 <a id="eq-471"></a>
 
 ```math
-\begin{aligned} M_{2} &= - \frac{e^{2} ( 2 \pi )^{4}}{\hbar^{2} c^{2}} \delta^{4} ( p + p_{+} - k - k^{\prime} ) \overline{u}^{\prime} \left\{ /e \frac{1}{p / - / k^{\prime} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{p / - k / - i\mu} /e \right\} u \\ &= K ( 2 \pi )^{4} \delta^{4} ( p + p_{+} - k - k^{\prime} ) \end{aligned} \tag{471}
+\begin{aligned} M_{2} &= - \frac{e^{2} ( 2 \pi )^{4}}{\hbar^{2} c^{2}} \delta^{4} ( p + p_{+} - k - k^{\prime} ) \overline{u}^{\prime} \left\{ /e \frac{1}{p / - / k^{\prime} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{p / - k / - i\mu} /e \right\} u \\ &= K ( 2 \pi )^{4} \delta^{4} ( p + p_{+} - k - k^{\prime} ) \end{aligned} \qquad \text{(471)}
 ```
 
 We consider the probability for this process for an electron and positron _both at rest_. The result will then apply to the decay of a positronium atom, where the velocities are only of the order of $`\alpha c`$ and can be treated as zero to a good approximation.
@@ -725,7 +725,7 @@ Then
 <a id="eq-472"></a>
 
 ```math
-\begin{aligned} p &= p_{+} = ( 0 , 0 , 0 ,i\mu ) \\ k_{0} &= k_{0}^{\prime} = \mu \end{aligned} \tag{472}
+\begin{aligned} p &= p_{+} = ( 0 , 0 , 0 ,i\mu ) \\ k_{0} &= k_{0}^{\prime} = \mu \end{aligned} \qquad \text{(472)}
 ```
 
 As in (453) we have
@@ -733,7 +733,7 @@ As in (453) we have
 <a id="eq-473"></a>
 
 ```math
-K = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu^{2}} \overline{u}^{\prime} ( /e/ k^{\prime} /e^{\prime} + /e^{\prime} / k/e ) u \tag{473}
+K = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu^{2}} \overline{u}^{\prime} ( /e/ k^{\prime} /e^{\prime} + /e^{\prime} / k/e ) u \qquad \text{(473)}
 ```
 
 The decay probability per unit volume per unit time into a solid angle $`d`$Ω for _one_ of the photons is
@@ -747,7 +747,7 @@ w = c | K |^{2} \frac{1}{( 2 \pi )^{2}} \left( \frac{\hbar c}{2 \mu} \right)^{2}
 <a id="eq-474"></a>
 
 ```math
-w = c | K |^{2} \frac{1}{( 2 \pi )^{2}} \frac{1}{8} \hbar^{2} c^{2} d \Omega \tag{474}
+w = c | K |^{2} \frac{1}{( 2 \pi )^{2}} \frac{1}{8} \hbar^{2} c^{2} d \Omega \qquad \text{(474)}
 ```
 
 For _parallel_ polarizations, $`e = e^{\prime}`$, and
@@ -761,7 +761,7 @@ But $`\beta`$ has zero matrix element between the spin-states $`u`$ and $`u^{\pr
 <a id="eq-475"></a>
 
 ```math
-w = 0 \tag{475}
+w = 0 \qquad \text{(475)}
 ```
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -772,7 +772,7 @@ For _perpendicular_ polarizations, take coordinate axes 1 along $`e`$, 2 along $
 <a id="eq-476"></a>
 
 ```math
-( /e/ k^{\prime} /e^{\prime} + /e^{\prime} / k/e ) = \mu \{ \gamma_{1} ( - \gamma_{3} + i\beta ) \gamma_{2} + \gamma_{2} ( \gamma_{3} + i\beta ) \gamma_{1} \} = 2 \mu \gamma_{1} \gamma_{2} \gamma_{3} \tag{476}
+( /e/ k^{\prime} /e^{\prime} + /e^{\prime} / k/e ) = \mu \{ \gamma_{1} ( - \gamma_{3} + i\beta ) \gamma_{2} + \gamma_{2} ( \gamma_{3} + i\beta ) \gamma_{1} \} = 2 \mu \gamma_{1} \gamma_{2} \gamma_{3} \qquad \text{(476)}
 ```
 
 Hence for perpendicular polarizations<sup><a id="fnref-64" href="#fn-64">64</a></sup>
@@ -816,7 +816,7 @@ Summarizing, we find for <a id="ix-109">electron</a> and positron with spins par
 <a id="eq-477"></a>
 
 ```math
-w = \frac{\hbar^{2} c^{3}}{1 6 \pi} 2 | K |^{2} = \frac{2 e^{4}}{\hbar^{2} c\mu^{2} 8 \pi} = 4 \pi cr_{o}^{2} \tag{477}
+w = \frac{\hbar^{2} c^{3}}{1 6 \pi} 2 | K |^{2} = \frac{2 e^{4}}{\hbar^{2} c\mu^{2} 8 \pi} = 4 \pi cr_{o}^{2} \qquad \text{(477)}
 ```
 
 Formula (477) is for electron and positron normalized to one particle per unit volume. If the density of the electron probability relative to the position of the positron is $`\rho`$, then the mean annihilation life-time will be<sup><a id="fnref-65" href="#fn-65">65</a></sup> (the “classical electron radius” $`r_{o} = e^{2} / ( 4 \pi mc^{2} )`$ in Heaviside units)
@@ -824,7 +824,7 @@ Formula (477) is for electron and positron normalized to one particle per unit v
 <a id="eq-478"></a>
 
 ```math
-\tau = \frac{1}{4 \pi cr_{o}^{2} \rho} \tag{478}
+\tau = \frac{1}{4 \pi cr_{o}^{2} \rho} \qquad \text{(478)}
 ```
 
 For the positronium 1$`s`$ singlet state
@@ -832,7 +832,7 @@ For the positronium 1$`s`$ singlet state
 <a id="eq-479"></a>
 
 ```math
-\begin{aligned} \rho &= \frac{1}{8 \pi a_{o}^{3}} \quad a_{o} = \text{ Bohr radius } = 1 3 7^{2} r_{o} \\ \tau &= 2 \times 1 3 7^{4} \times \frac{a_{o}}{c} = 2 \times 1 3 7^{5} \times \frac{\hbar}{mc^{2}} \approx 1 . 2 \times 1 0^{- 1 0} \sec . \end{aligned} \tag{479}
+\begin{aligned} \rho &= \frac{1}{8 \pi a_{o}^{3}} \quad a_{o} = \text{ Bohr radius } = 1 3 7^{2} r_{o} \\ \tau &= 2 \times 1 3 7^{4} \times \frac{a_{o}}{c} = 2 \times 1 3 7^{5} \times \frac{\hbar}{mc^{2}} \approx 1 . 2 \times 1 0^{- 1 0} \sec . \end{aligned} \qquad \text{(479)}
 ```
 
 For slowly-moving electrons and positrons with relative velocity $`v`$, the annihilation <a id="ix-50">cross-section</a> according to (477) will be
@@ -840,7 +840,7 @@ For slowly-moving electrons and positrons with relative velocity $`v`$, the anni
 <a id="eq-480"></a>
 
 ```math
-4 \pi r_{o}^{2} \left( \frac{c}{v} \right) \quad \text{ singlet state } , \tag{480}
+4 \pi r_{o}^{2} \left( \frac{c}{v} \right) \quad \text{ singlet state } , \qquad \text{(480)}
 ```
 
 proportional to 1 just like neutron cross-sections at low (thermal) energies.
@@ -871,7 +871,7 @@ Potential energy $`\times`$ time of transit $`\ll \hbar`$
 <a id="eq-481"></a>
 
 ```math
-\text{ or } \text{ or } \quad \frac{Ze^{2}}{4 \pi \hbar v} \frac{Ze^{2}}{4 \pi r} \times \frac{r}{v} = \frac{Z}{1 3 7} \frac{c}{v} \ll \hbar \ll 1 \tag{481}
+\text{ or } \text{ or } \quad \frac{Ze^{2}}{4 \pi \hbar v} \frac{Ze^{2}}{4 \pi r} \times \frac{r}{v} = \frac{Z}{1 3 7} \frac{c}{v} \ll \hbar \ll 1 \qquad \text{(481)}
 ```
 
 The treatment will only be good for _relativistic velocities_ $`v \sim c`$, and for _lighter atoms_ $`Z \ll`$ 137. In fact for heavy atoms $`( Z`$ = 82 for lead) and $`v \sim c`$ the error from the Born approximation is about 10%.
@@ -881,7 +881,7 @@ The processes arise in the Born approximation just from the term linear in $`A_{
 <a id="eq-482"></a>
 
 ```math
-U_{1} = \frac{e^{2}}{\hbar^{2} c^{2}} \int \int dx_{1} dx_{2} P \left\{ \psi ( x_{1} ) A / ( x_{1} ) \psi ( x_{1} ) , \overline{\psi} ( x_{2} ) A /^{e} ( x_{2} ) \psi ( x_{2} ) \right\} \tag{482}
+U_{1} = \frac{e^{2}}{\hbar^{2} c^{2}} \int \int dx_{1} dx_{2} P \left\{ \psi ( x_{1} ) A / ( x_{1} ) \psi ( x_{1} ) , \overline{\psi} ( x_{2} ) A /^{e} ( x_{2} ) \psi ( x_{2} ) \right\} \qquad \text{(482)}
 ```
 
 The factor $`\frac{1}{2}`$ in (423) is now missing, otherwise everything is the same as before. We suppose $`A_{\mu}^{e} ( x_{2} )`$ is a superposition of Fourier components
@@ -889,7 +889,7 @@ The factor $`\frac{1}{2}`$ in (423) is now missing, otherwise everything is the 
 <a id="eq-483"></a>
 
 ```math
-A_{\mu}^{e} ( x_{2} ) = \frac{1}{( 2 \pi )^{4}} \int dkf ( k ) e_{\mu} e^{ik \cdot x_{2}} \tag{483}
+A_{\mu}^{e} ( x_{2} ) = \frac{1}{( 2 \pi )^{4}} \int dkf ( k ) e_{\mu} e^{ik \cdot x_{2}} \qquad \text{(483)}
 ```
 
 where $`f ( k )`$ is a known function of $`k`$. For a static Coulomb field all the vectors $`k`$ appearing in (483) have zero 4<sup>th</sup> component, and $`e_{\mu}`$ is the constant vector (0$`, 0 , 0 ,i )`$. We calculate the matrix element $`M_{1}`$ for bremsstrahlung or pair creation with $`A_{\mu}^{e}`$ given by the pure Fourier component (438) ; the results are then to be afterwards superposed to give the actual potential according to (483).
@@ -899,7 +899,7 @@ For bremsstrahlung the formula for $`M_{1}`$ is (449), identically the same as f
 <a id="eq-484"></a>
 
 ```math
-M_{1} = - \frac{e^{2}}{\hbar^{2} c^{2}} f ( p^{\prime} + k^{\prime} - p ) \overline{u}^{\prime} \left\{ /e \frac{1}{p / - / k^{\prime} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{p /^{\prime} + / k^{\prime} - i\mu} /e \right\} u \tag{484}
+M_{1} = - \frac{e^{2}}{\hbar^{2} c^{2}} f ( p^{\prime} + k^{\prime} - p ) \overline{u}^{\prime} \left\{ /e \frac{1}{p / - / k^{\prime} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{p /^{\prime} + / k^{\prime} - i\mu} /e \right\} u \qquad \text{(484)}
 ```
 
 The factor 2 difference between (482) and (423) is just compensated by the fact that the photon $`k^{\prime} e^{\prime}`$ can be emitted by two operators $`A_{\mu}`$ in (423) and by only one in (482). The bremsstrahlung <a id="ix-54">cross section</a> is then calculated by squaring (484) and integrating over $`k^{\prime}`$ and $`p^{\prime}`$ with appropriate normalization factors. For the details see Heitler’s book $`§ 1 7 .`$<sup><a id="fnref-66" href="#fn-66">66</a></sup>
@@ -909,7 +909,7 @@ For pair creation the same formula (449) gives the matrix element $`M_{1}`$, all
 <a id="eq-485"></a>
 
 ```math
-M_{1} = - \frac{e^{2} ( 2 \pi )^{4} )}{\hbar^{2} c^{2}} \delta^{4} ( k + k^{\prime} - p - p_{+} ) \overline{u} \left\{ /e \frac{1}{/ k^{\prime} - p /_{+} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{/ k - p /_{+} - i\mu} /e \right\} u^{\prime} \tag{485}
+M_{1} = - \frac{e^{2} ( 2 \pi )^{4} )}{\hbar^{2} c^{2}} \delta^{4} ( k + k^{\prime} - p - p_{+} ) \overline{u} \left\{ /e \frac{1}{/ k^{\prime} - p /_{+} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{/ k - p /_{+} - i\mu} /e \right\} u^{\prime} \qquad \text{(485)}
 ```
 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -920,7 +920,7 @@ and integrating over the components of the potential
 <a id="eq-486"></a>
 
 ```math
-M_{1} = - \frac{e^{2}}{\hbar^{2} c^{2}} f ( p + p_{+} - k^{\prime} ) \overline{u} \left\{ /e \frac{1}{/ k^{\prime} - p /_{+} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{p / - / k^{\prime} - i\mu} /e \right\} u^{\prime} \tag{486}
+M_{1} = - \frac{e^{2}}{\hbar^{2} c^{2}} f ( p + p_{+} - k^{\prime} ) \overline{u} \left\{ /e \frac{1}{/ k^{\prime} - p /_{+} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{p / - / k^{\prime} - i\mu} /e \right\} u^{\prime} \qquad \text{(486)}
 ```
 
 For the <a id="ix-21">cross-section</a> calculation see again Heitler, $`§ 2 0 .`$<sup><a id="fnref-67" href="#fn-67">67</a></sup>
