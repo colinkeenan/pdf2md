@@ -516,6 +516,57 @@ fn restore_glyphs(doc: &mut Doc, path: &Path, parts: &[(usize, String)], lost: &
             }
             continue;
         }
+        // An arrow or stroke over a figure or letter of the text font (the
+        // 0 of "(m, 0⃗)", which stands in a piece of prose, "0, 0"): the
+        // character under it is cut out of its piece and is math, so the
+        // arrow finds it. It is the glyph drawn right after the arrow.
+        let px = |k: usize| (1.5 * placed[k].x, 1.5 * placed[k].y);
+        for gi in 0..drawn.len().saturating_sub(1) {
+            let (f, code) = drawn[gi];
+            if !matches!(glyphs.fonts[f].glyph(code), Glyph::Lost(t) if OVER.contains(&t)) || lossy(&glyphs.fonts[f].base, lost).is_none() {
+                continue;
+            }
+            let (bf, bcode) = drawn[gi + 1];
+            let base_font = &glyphs.fonts[bf];
+            let Glyph::Known(letter) = base_font.glyph(bcode) else { continue };
+            let (xb, yb) = px(gi + 1);
+            if is_math_font(&base_font.base) || letter.chars().count() != 1 || !letter.chars().all(char::is_alphanumeric) || (xb - px(gi).0).abs() > 12.0 {
+                continue;
+            }
+            let found = page.lines.iter().enumerate().find_map(|(li, line)| {
+                let si = line.spans.iter().position(|s| same(&base_font.base, &families[s.font]) && xb >= s.left - 1.5 && xb < s.right() - 0.5 && yb >= s.top - 3.0 && yb <= s.bottom() + 3.0)?;
+                Some((li, si))
+            });
+            let Some((li, si)) = found else { continue };
+            let span = page.lines[li].spans[si].clone();
+            // the glyphs of the piece, left to right: the letter is one of
+            // them, and the piece's characters are those glyphs
+            let mut inside: Vec<usize> = (0..drawn.len())
+                .filter(|&k| glyphs.fonts[drawn[k].0].base == base_font.base && !matches!(glyphs.fonts[drawn[k].0].glyph(drawn[k].1), Glyph::Known(t) if t.trim().is_empty()))
+                .filter(|&k| px(k).0 >= span.left - 1.5 && px(k).0 < span.right() - 0.5 && (px(k).1 - yb).abs() <= 0.5)
+                .collect();
+            inside.sort_by(|&a, &b| px(a).0.total_cmp(&px(b).0));
+            let chars: Vec<(usize, char)> = span.text.char_indices().filter(|(_, c)| !c.is_whitespace()).collect();
+            let Some(rank) = inside.iter().position(|&k| k == gi + 1) else { continue };
+            if chars.len() != inside.len() || chars[rank].1.to_string() != letter || chars.len() < 2 {
+                continue;
+            }
+            // a math font of the piece's size, for the letter
+            let size = doc.fonts.get(span.font).map_or(0.0, |f| f.size);
+            let Some(math) = doc.fonts.iter().position(|f| f.math && lossy(&f.family, lost) == Some(false) && (f.size - size).abs() < 0.5) else { continue };
+            let at = chars[rank].0;
+            let after = at + chars[rank].1.len_utf8();
+            let next_x = inside.get(rank + 1).map_or(span.right(), |&k| px(k).0);
+            let mut pieces = Vec::new();
+            for (text, left, right, font) in [(&span.text[..at], span.left, xb, span.font), (&span.text[at..after], xb, next_x, math), (&span.text[after..], next_x, span.right(), span.font)] {
+                if !text.trim().is_empty() {
+                    let mut piece = span.clone();
+                    (piece.text, piece.left, piece.width, piece.font) = (text.to_string(), left, (right - left).max(1.0), font);
+                    pieces.push(piece);
+                }
+            }
+            page.lines[li].spans.splice(si..=si, pieces);
+        }
         // the glyphs of each piece of text, in pdftohtml's pixels
         let mut of_span: HashMap<(usize, usize), Vec<(Placed, Glyph)>> = HashMap::new();
         for (&(f, code), at) in drawn.iter().zip(&placed) {
@@ -707,6 +758,36 @@ fn restore_glyphs(doc: &mut Doc, path: &Path, parts: &[(usize, String)], lost: &
         }
         page.lines.retain(|l| !l.spans.is_empty());
         page.lines.sort_by(|a, b| a.top.total_cmp(&b.top));
+        // An arrow or stroke is drawn high over its letter, and its empty
+        // piece may have been put with the line above: it goes to the
+        // line that has a letter under it.
+        let under = |line: &Line, a: &Span| {
+            let mid = a.left + a.width / 2.0;
+            line.spans.iter().any(|s| !OVER.contains(&s.text.as_str()) && !s.text.trim().is_empty() && s.left <= mid && s.right() >= mid && s.top < a.bottom() && s.bottom() > a.top + 0.25 * a.height)
+        };
+        let mut remake = vec![false; page.lines.len()];
+        for li in 0..page.lines.len() {
+            let mut k = 0;
+            while k < page.lines[li].spans.len() {
+                let a = page.lines[li].spans[k].clone();
+                let stray = OVER[..2].contains(&a.text.as_str()) && !under(&page.lines[li], &a);
+                let to = if stray { (0..page.lines.len()).find(|&j| j != li && under(&page.lines[j], &a)) } else { None };
+                match to {
+                    Some(j) => {
+                        let a = page.lines[li].spans.remove(k);
+                        page.lines[j].spans.push(a);
+                        (remake[li], remake[j]) = (true, true);
+                    }
+                    None => k += 1,
+                }
+            }
+        }
+        for (k, line) in page.lines.iter_mut().enumerate() {
+            if remake[k] && !line.spans.is_empty() {
+                *line = Line { col: line.col, bars: std::mem::take(&mut line.bars), ..make_line(std::mem::take(&mut line.spans), &size_of) };
+            }
+        }
+        page.lines.retain(|l| !l.spans.is_empty());
     }
     if debug {
         eprintln!("GLYPHS {filled} written, {missed} without a place, {pages_off} pages not counted alike");
