@@ -302,6 +302,28 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
             pieces.push(s.clone());
         }
     }
+    // A number at the end of a piece of prose with an exponent or index
+    // right after it ("of dimension 5" and a raised ∗, "is 2" and a raised
+    // n−1) is the base of that script: it is cut off the words before it,
+    // so that it joins the formula.
+    let mut k = 0;
+    while k + 1 < pieces.len() {
+        let (s, next) = (&pieces[k], &pieces[k + 1]);
+        let chars: Vec<char> = s.text.trim_end().chars().collect();
+        let digits = chars.iter().rev().take_while(|c| c.is_ascii_digit()).count();
+        let cut = chars.len() - digits;
+        let based = next.script != Script::Normal && s.script == Script::Normal && !doc.is_math(s) && (next.left - s.right()).abs() < 0.25 * st.body;
+        if based && digits > 0 && cut > 0 && chars[cut - 1].is_whitespace() {
+            let n = s.text.chars().count().max(1) as f32;
+            let split_x = s.left + s.width * cut as f32 / n;
+            let (mut words, mut number) = (s.clone(), s.clone());
+            (words.text, words.width) = (chars[..cut].iter().collect(), split_x - s.left);
+            (number.text, number.left, number.width) = (chars[cut..].iter().collect(), split_x, s.right() - split_x);
+            pieces.splice(k..=k, [words, number]);
+            k += 1;
+        }
+        k += 1;
+    }
     // Glue touching spans of the same font and script ("9" + "0" = "90").
     let mut spans: Vec<crate::layout::Span> = Vec::with_capacity(pieces.len());
     for s in &pieces {

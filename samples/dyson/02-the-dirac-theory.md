@@ -375,7 +375,7 @@ S^{*} \alpha^{0} S = \sinh \theta \alpha^{3} + \cos \theta \alpha^{0}
 S = S^{*} = \beta \qquad \text{(30)}
 ```
 
-Note that in all cases S is ambiguous by a factor $`\pm 1`$. So in case 1 a rotation though 360$`◦`$ gives $`S = - 1 .`$
+Note that in all cases S is ambiguous by a factor $`\pm 1`$. So in case 1 a rotation though $`3 6 0^{◦}`$ gives $`S = - 1 .`$
 
 <a id="ix-249"><em>Problem 1</em></a> Find the S corresponding to a general infinitesimal coordinate transformation. Compare and show that it agrees with the exact solutions given here.
 
@@ -567,7 +567,7 @@ Thus given $`p`$ and $`E`$ = +$`\sqrt{m^{2} c^{4} + c^{2} p^{2}}`$, there are tw
 
 This gives the two spin-<a id="ix-117">states</a> of an electron with given momentum, as required physically.
 
-But there are also solutions with $`E = - \sqrt{m^{2} c^{4} + c^{2} p^{2}}`$. In fact again two independent solutions, making 4 altogether. These are the famous _negative energy states_. Why cannot we simply agree to ignore these states, say they are physically absent? Because when fields are present the theory gives transitions from positive to negative states. e.g.H atom should decay to negative state in 10$`- 1 0`$ secs. or less.
+But there are also solutions with $`E = - \sqrt{m^{2} c^{4} + c^{2} p^{2}}`$. In fact again two independent solutions, making 4 altogether. These are the famous _negative energy states_. Why cannot we simply agree to ignore these states, say they are physically absent? Because when fields are present the theory gives transitions from positive to negative states. e.g.H atom should decay to negative state in $`1 0^{- 1 0}`$ secs. or less.
 
 Certainly negative energy particles are not allowed physically. They can for example never be stopped by matter at rest, with every collision they move faster and faster. So Dirac was driven to
 

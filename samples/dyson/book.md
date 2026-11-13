@@ -728,7 +728,7 @@ S^{*} \alpha^{0} S = \sinh \theta \alpha^{3} + \cos \theta \alpha^{0}
 S = S^{*} = \beta \qquad \text{(30)}
 ```
 
-Note that in all cases S is ambiguous by a factor $`\pm 1`$. So in case 1 a rotation though 360$`◦`$ gives $`S = - 1 .`$
+Note that in all cases S is ambiguous by a factor $`\pm 1`$. So in case 1 a rotation though $`3 6 0^{◦}`$ gives $`S = - 1 .`$
 
 <a id="ix-249"><em>Problem 1</em></a> Find the S corresponding to a general infinitesimal coordinate transformation. Compare and show that it agrees with the exact solutions given here.
 
@@ -920,7 +920,7 @@ Thus given $`p`$ and $`E`$ = +$`\sqrt{m^{2} c^{4} + c^{2} p^{2}}`$, there are tw
 
 This gives the two spin-<a id="ix-117">states</a> of an electron with given momentum, as required physically.
 
-But there are also solutions with $`E = - \sqrt{m^{2} c^{4} + c^{2} p^{2}}`$. In fact again two independent solutions, making 4 altogether. These are the famous _negative energy states_. Why cannot we simply agree to ignore these states, say they are physically absent? Because when fields are present the theory gives transitions from positive to negative states. e.g.H atom should decay to negative state in 10$`- 1 0`$ secs. or less.
+But there are also solutions with $`E = - \sqrt{m^{2} c^{4} + c^{2} p^{2}}`$. In fact again two independent solutions, making 4 altogether. These are the famous _negative energy states_. Why cannot we simply agree to ignore these states, say they are physically absent? Because when fields are present the theory gives transitions from positive to negative states. e.g.H atom should decay to negative state in $`1 0^{- 1 0}`$ secs. or less.
 
 Certainly negative energy particles are not allowed physically. They can for example never be stopped by matter at rest, with every collision they move faster and faster. So Dirac was driven to
 
@@ -6249,7 +6249,7 @@ normalized by $`( \overline{u}_{1} u_{1} )`$ = 1. With the wave function normali
 \text{ where } \{ b_{pu} ,b_{p^{\prime} u^{\prime}}^{*} \} = \delta_{pp^{\prime}} \delta_{uu^{\prime}} . \text{ Then } ( \Phi_{o}^{*} ,\psi ( x ) \Phi_{pu} ) = ( \Phi_{o}^{*} ,b_{pu} \Phi_{pu} ) ue^{ip \cdot x} = ( \Phi_{o}^{*} , \Phi_{o} ) ue^{ip \cdot x} = ue^{ip \cdot x} .
 ```
 
-Thus we consider the states 1, 2 and 1$`{}^{\prime} , 2^{\prime}`$ as if they were discrete states, the $`\psi`$ operator being given by the expansion (337). It would also be possible to use the continuous-state expansion (306) for $`\psi`$, but then the normalization of the initial and final states would have to be considered afresh. Since we fixed the normalization (472) when we previously derived the Møller formula (144), we shall now stick to it.
+Thus we consider the states 1, 2 and $`1^{\prime} , 2^{\prime}`$ as if they were discrete states, the $`\psi`$ operator being given by the expansion (337). It would also be possible to use the continuous-state expansion (306) for $`\psi`$, but then the normalization of the initial and final states would have to be considered afresh. Since we fixed the normalization (472) when we previously derived the Møller formula (144), we shall now stick to it.
 
 We shall calculate in the Born approximation as before, thus keeping only the term $`n`$ = 2 in (421) which gives the matrix element $`M`$ proportional to $`e^{2}`$. In this problem the external potential $`A^{e}`$ is zero. The term $`n`$ = 2 in (421) is
 
@@ -6273,7 +6273,7 @@ and
 \overline{\psi} ( x_{i} ) = \overline{u}_{1} e^{- ip_{1} \cdot x_{i}} b_{1}^{*} + \overline{u}_{2} e^{- ip_{2} \cdot x_{i}} b_{2}^{*} + \overline{u}_{1}^{\prime} e^{- ip_{1}^{\prime} \cdot x_{i}} b_{1}^{*\prime} + \overline{u}_{2}^{\prime} e^{- ip_{2}^{\prime} \cdot x_{i}} b_{2}^{*\prime} \quad \text{ by } \quad \overline{u}_{1}^{\prime} e^{- ip_{1}^{\prime} \cdot x_{i}} b_{1}^{*\prime} + \overline{u}_{2}^{\prime} e^{- ip_{2}^{\prime} \cdot x_{i}} b_{2}^{*\prime}
 ```
 
-because we only absorb 1 and 2 and only create 1$`\prime`$ and 2$`\prime`$. Then we want to pick out the coefficient of
+because we only absorb 1 and 2 and only create $`1^{\prime}`$ and $`2^{\prime}`$. Then we want to pick out the coefficient of
 
 <a id="eq-425"></a>
 
@@ -6383,7 +6383,7 @@ Exactly the same formula (432) also gives the matrix element of scattering of an
 u_{1} e^{ip_{1} \cdot x} \qquad \text{(433)}
 ```
 
-and finally in state 1$`\prime`$ by
+and finally in state $`1^{\prime}`$ by
 
 <a id="eq-434"></a>
 

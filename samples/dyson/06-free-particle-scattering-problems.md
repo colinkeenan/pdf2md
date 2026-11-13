@@ -61,7 +61,7 @@ normalized by $`( \overline{u}_{1} u_{1} )`$ = 1. With the wave function normali
 \text{ where } \{ b_{pu} ,b_{p^{\prime} u^{\prime}}^{*} \} = \delta_{pp^{\prime}} \delta_{uu^{\prime}} . \text{ Then } ( \Phi_{o}^{*} ,\psi ( x ) \Phi_{pu} ) = ( \Phi_{o}^{*} ,b_{pu} \Phi_{pu} ) ue^{ip \cdot x} = ( \Phi_{o}^{*} , \Phi_{o} ) ue^{ip \cdot x} = ue^{ip \cdot x} .
 ```
 
-Thus we consider the states 1, 2 and 1$`{}^{\prime} , 2^{\prime}`$ as if they were discrete states, the $`\psi`$ operator being given by the expansion (337). It would also be possible to use the continuous-state expansion (306) for $`\psi`$, but then the normalization of the initial and final states would have to be considered afresh. Since we fixed the normalization (472) when we previously derived the Møller formula (144), we shall now stick to it.
+Thus we consider the states 1, 2 and $`1^{\prime} , 2^{\prime}`$ as if they were discrete states, the $`\psi`$ operator being given by the expansion (337). It would also be possible to use the continuous-state expansion (306) for $`\psi`$, but then the normalization of the initial and final states would have to be considered afresh. Since we fixed the normalization (472) when we previously derived the Møller formula (144), we shall now stick to it.
 
 We shall calculate in the Born approximation as before, thus keeping only the term $`n`$ = 2 in (421) which gives the matrix element $`M`$ proportional to $`e^{2}`$. In this problem the external potential $`A^{e}`$ is zero. The term $`n`$ = 2 in (421) is
 
@@ -85,7 +85,7 @@ and
 \overline{\psi} ( x_{i} ) = \overline{u}_{1} e^{- ip_{1} \cdot x_{i}} b_{1}^{*} + \overline{u}_{2} e^{- ip_{2} \cdot x_{i}} b_{2}^{*} + \overline{u}_{1}^{\prime} e^{- ip_{1}^{\prime} \cdot x_{i}} b_{1}^{*\prime} + \overline{u}_{2}^{\prime} e^{- ip_{2}^{\prime} \cdot x_{i}} b_{2}^{*\prime} \quad \text{ by } \quad \overline{u}_{1}^{\prime} e^{- ip_{1}^{\prime} \cdot x_{i}} b_{1}^{*\prime} + \overline{u}_{2}^{\prime} e^{- ip_{2}^{\prime} \cdot x_{i}} b_{2}^{*\prime}
 ```
 
-because we only absorb 1 and 2 and only create 1$`\prime`$ and 2$`\prime`$. Then we want to pick out the coefficient of
+because we only absorb 1 and 2 and only create $`1^{\prime}`$ and $`2^{\prime}`$. Then we want to pick out the coefficient of
 
 <a id="eq-425"></a>
 
@@ -195,7 +195,7 @@ Exactly the same formula (432) also gives the matrix element of scattering of an
 u_{1} e^{ip_{1} \cdot x} \qquad \text{(433)}
 ```
 
-and finally in state 1$`\prime`$ by
+and finally in state $`1^{\prime}`$ by
 
 <a id="eq-434"></a>
 
