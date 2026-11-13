@@ -5,14 +5,16 @@ formula with its cells in the wrong rows and columns. Here the rows and
 the columns are found on the picture itself (they are set apart by white
 space), and each cell is read on its own.
 
-    table_ocr.py PENDING_DIR OUT_DIR
+    table_ocr.py PENDING_DIR OUT_DIR [--ruled]
 
 reads every PENDING_DIR/NAME.png and writes OUT_DIR/NAME.cells: the line
 "aligned", then a line for each row of the table, its cells parted by
 tabs. A cell is "<", "^" or ">" (set at the left of its column, in its
 middle, at its right) and its LaTeX (words as \\text{...}); an empty cell
 is empty. No file is written for a picture that does not part into two
-rows and two columns or more.
+rows and two columns or more. With --ruled the pictures are not known to
+be tables (they have no caption): only one with rules across it, two or
+more, is taken for one.
 """
 
 import re
@@ -176,7 +178,7 @@ def alignments(spans, rows):
 
 
 def number(img: Image.Image):
-    """A cell that is a whole number ("3", "-2"), read as figures only (the
+    """A cell that is a whole number ("3", "-2", or "5/2"), read as figures only (the
     math recognizer makes signs of lone figures); None if it is not one,
     or Tesseract is missing."""
     import os
@@ -192,6 +194,9 @@ def number(img: Image.Image):
         try:
             # what it is without help: letters mean it is no number
             free = subprocess.run(["tesseract", tmp.name, "-", "--psm", "7"], capture_output=True, text=True, timeout=60, env=env).stdout.strip()
+            # (a simple fraction set in one line: "5/2")
+            if re.fullmatch(r"-?\d{1,3}/\d{1,2}", free.replace(" ", "")):
+                return free.replace(" ", "")
             # (nor is a lone letter one, unless it is what a 1 or a 0 reads as)
             if re.search(r"[A-Za-z]{2,}|[=+(),/\\[\]{}]|[A-HJ-NP-Za-km-np-z]", free):
                 return None
@@ -208,6 +213,26 @@ def number(img: Image.Image):
     return None
 
 
+def letter(img: Image.Image):
+    """A cell that is one letter (the "j" at the head of a column), as
+    Tesseract reads it when told it is one sign; None if it reads none."""
+    import os
+    import subprocess
+    import tempfile
+
+    g = img.convert("L")
+    g = g.resize((g.width * 3, g.height * 3), Image.LANCZOS)
+    with tempfile.NamedTemporaryFile(suffix=".png") as tmp:
+        g.save(tmp.name)
+        try:
+            read = subprocess.run(["tesseract", tmp.name, "-", "--psm", "10"], capture_output=True, text=True, timeout=60, env=dict(os.environ, OMP_THREAD_LIMIT="1")).stdout.strip()
+        except (OSError, subprocess.TimeoutExpired):
+            return None
+    # (specks around it read as dots and strokes)
+    read = [c for c in read if c.isalpha() and c.isascii()]
+    return read[0] if len(read) == 1 else None
+
+
 def words(img: Image.Image):
     """The cell as plain words, if it holds only words ("Bosons", "Numbers
     of States"); else None."""
@@ -218,12 +243,27 @@ def words(img: Image.Image):
     return None
 
 
+def rules(gray) -> int:
+    """How many rules run across the picture: runs of rows in which one
+    unbroken stretch of ink takes up most of the picture's width. (The
+    bar of a long fraction does not; nor do the bars of two roots side by
+    side in a matrix, which are two stretches.)"""
+    ground = int(np.median(gray))
+    ink = gray < ground - 70
+    width = ink.shape[1]
+    across = [max((b - a for a, b in runs(row)), default=0) >= 0.85 * width for row in ink]
+    return len(runs(across))
+
+
 def main():
     src, dst = Path(sys.argv[1]), Path(sys.argv[2])
+    ruled = "--ruled" in sys.argv[3:]
     files = sorted(src.glob("*.png"))
     todo = []
     for f in files:
         gray = cv2.imread(str(f), cv2.IMREAD_GRAYSCALE)
+        if gray is not None and ruled and rules(gray) < 2:
+            continue
         found = cells_of(gray) if gray is not None else None
         if found is None:
             continue
@@ -286,6 +326,11 @@ def main():
                     t = lone.group(1) or lone.group(2)
                 elif t == "\\mathbf{l}":
                     t = "1"
+                elif "\\Sigma" in t and not stacked and img.width <= 32 + 4 * img.height:
+                    # (or of a lone letter: as Tesseract reads it, if it reads one)
+                    one = letter(img)
+                    if one is not None:
+                        t = one
                 # (an array of one cell is that cell; "l" set as a word is 1)
                 one = re.fullmatch(r"\\begin\{array\}\{[lcr ]*\}(.*)\\end\{array\}", t)
                 if one and "&" not in one.group(1) and "\\\\" not in one.group(1):

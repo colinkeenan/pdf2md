@@ -563,6 +563,11 @@ fn emit_line(doc: &Doc, l: &Line, st: &Stats, spans: &[crate::layout::Span], kin
 /// as its first row; it comes as centered paragraphs, cut where its lines
 /// end and where the page turns. They are the table's title then: one
 /// cell across its columns.
+///
+/// A picture of a table can also stand without a caption (in a problem).
+/// What the recognizer makes of it is no array then, or need not be: a
+/// large picture that is a block of its own is marked to be looked at
+/// (see [`crate::TABLE_MAYBE`]).
 fn picture_tables(blks: Vec<Blk>, boxes: &HashMap<String, (u32, Figure)>) -> Vec<Blk> {
     let is_caption = |inl: &[Inline]| crate::links::caption(inl).is_some_and(|(kind, _)| kind == "table");
     let array = |tex: &str| tex.trim_start().starts_with("\\begin{array}");
@@ -587,7 +592,23 @@ fn picture_tables(blks: Vec<Blk>, boxes: &HashMap<String, (u32, Figure)>) -> Vec
         };
         let table = found.as_ref().filter(|(before, _, _)| captioned(before)).and_then(|(_, _, tex)| array_table(tex));
         let (Some((before, key, _)), Some(rows)) = (found, table) else {
+            // A large picture that is all of its block may be a table
+            // without a caption: it is looked at later (rules across it
+            // tell), so where it stands goes with it.
+            let alone = match &blk.block {
+                Block::Equation { source: Some(k), .. } => Some(k),
+                Block::Para(inl) => match inl.as_slice() {
+                    [Inline::Source(k), Inline::Math(_)] => Some(k),
+                    _ => None,
+                },
+                _ => None,
+            };
+            let large = alone.and_then(|k| boxes.get(k)).filter(|(_, a)| a.bottom - a.top >= 100.0 && a.right - a.left >= 100.0).copied();
+            let page = blk.page;
             out.push(blk);
+            if let Some((number, area)) = large {
+                out.push(Blk { block: Block::Picture { page: number, area, alt: crate::TABLE_MAYBE.into() }, page, centered: false });
+            }
             continue;
         };
         let (page, centered) = (blk.page, blk.centered);

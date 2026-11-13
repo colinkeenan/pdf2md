@@ -610,6 +610,7 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
                 out.push_str(&format!("<details{open}>\n<summary>The table as printed</summary>\n\n![{alt}]({})\n\n</details>\n\n", picture_file(*page, area)));
             }
         }
+        Block::Picture { alt, .. } if alt == crate::TABLE_MAYBE => {}
         Block::Picture { page, area, alt } => out.push_str(&format!("![{alt}]({})\n\n", picture_file(*page, area))),
         Block::Table { rows, widths, key, title, note } => {
             // (which table this is, invisible: a cell the reader corrects

@@ -810,16 +810,39 @@ const TABLE_SCRIPT: &str = include_str!("table_ocr.py");
 /// columns are found on the picture itself. A table that does not part
 /// into rows and columns there, or cannot be read (no recognizer), stays
 /// as it was read whole. A reading is kept, under the table's key.
+///
+/// A table needs no caption to be one: a large picture that was read as
+/// a formula ([`crate::TABLE_MAYBE`] marks it) is a table if rules run
+/// across it and it parts into rows and columns. Its key is the key of
+/// the picture.
 pub fn read_picture_tables(book: &mut crate::Book, pdf: &std::path::Path) {
     use crate::Block;
+    read_tables(book, pdf);
+    // (a picture that was to be looked at and is no table: only its formula stays)
+    for ch in book.chapters.iter_mut() {
+        ch.blocks.retain(|b| !matches!(&b.block, Block::Picture { alt, .. } if alt == crate::TABLE_MAYBE));
+    }
+}
+
+fn read_tables(book: &mut crate::Book, pdf: &std::path::Path) {
+    use crate::{Block, Inline};
     let (Some(dir), Some(py)) = (cache_dir(), python()) else { return };
-    // (chapter, block, key, page, area) of each table over its picture
-    let mut tables = Vec::new();
+    // (chapter, block, key, page, area) of each table over its picture,
+    // and of each formula over a picture that may be a table
+    let (mut tables, mut maybe) = (Vec::new(), Vec::new());
     for (c, ch) in book.chapters.iter().enumerate() {
         for (b, pair) in ch.blocks.windows(2).enumerate() {
             match (&pair[0].block, &pair[1].block) {
                 (Block::Table { key, .. }, Block::Picture { page, area, alt }) if alt == crate::TABLE_READ && !key.is_empty() => {
                     tables.push((c, b, key.clone(), *page, *area));
+                }
+                (Block::Equation { source: Some(key), .. }, Block::Picture { page, area, alt }) if alt == crate::TABLE_MAYBE => {
+                    maybe.push((c, b, key.clone(), *page, *area));
+                }
+                (Block::Para(inl), Block::Picture { page, area, alt }) if alt == crate::TABLE_MAYBE => {
+                    if let [Inline::Source(key), Inline::Math(_)] = inl.as_slice() {
+                        maybe.push((c, b, key.clone(), *page, *area));
+                    }
                 }
                 _ => {}
             }
@@ -829,9 +852,13 @@ pub fn read_picture_tables(book: &mut crate::Book, pdf: &std::path::Path) {
     // first line of such a reading says "aligned"; an empty one is of a
     // picture that is no table of rows and columns)
     let read_before = |key: &str| std::fs::read_to_string(dir.join(format!("{key}.cells"))).is_ok_and(|t| t.is_empty() || t.starts_with("aligned\n"));
-    let todo: Vec<_> = tables.iter().filter(|t| !read_before(&t.2)).collect();
-    if !todo.is_empty() {
-        let pending = dir.join("tables");
+    type Found = Vec<(usize, usize, String, u32, crate::layout::Figure)>;
+    let read = |found: &Found, ruled: bool| {
+        let todo: Vec<_> = found.iter().filter(|t| !read_before(&t.2)).collect();
+        if todo.is_empty() {
+            return;
+        }
+        let pending = dir.join(if ruled { "tables-ruled" } else { "tables" });
         if std::fs::create_dir_all(&pending).is_err() {
             return;
         }
@@ -852,8 +879,15 @@ pub fn read_picture_tables(book: &mut crate::Book, pdf: &std::path::Path) {
         let _ = std::fs::write(dir.join("math_ocr.py"), SCRIPT);
         let script = dir.join("table_ocr.py");
         let _ = std::fs::write(&script, TABLE_SCRIPT);
-        eprintln!("Reading {} tables cell by cell…", todo.len());
-        if !run_recognizer(Command::new(&py).arg(&script).arg(&pending).arg(&dir)) {
+        let mut cmd = Command::new(&py);
+        cmd.arg(&script).arg(&pending).arg(&dir);
+        if ruled {
+            eprintln!("Looking at {} large pictures of formulas: tables?", todo.len());
+            cmd.arg("--ruled");
+        } else {
+            eprintln!("Reading {} tables cell by cell…", todo.len());
+        }
+        if !run_recognizer(&mut cmd) {
             eprintln!("The tables could not be read cell by cell; they stay as read whole.");
         }
         for (_, _, key, _, _) in &todo {
@@ -863,9 +897,12 @@ pub fn read_picture_tables(book: &mut crate::Book, pdf: &std::path::Path) {
                 let _ = std::fs::write(dir.join(format!("{key}.cells")), "");
             }
         }
-    }
-    for (c, b, key, _, _) in tables {
-        let Ok(text) = std::fs::read_to_string(dir.join(format!("{key}.cells"))) else { continue };
+    };
+    read(&tables, false);
+    read(&maybe, true);
+    // the rows of a reading, if it is a table's
+    let rows_of = |key: &str| -> Option<Vec<Vec<crate::Cell>>> {
+        let text = std::fs::read_to_string(dir.join(format!("{key}.cells"))).ok()?;
         // a cell: how it is set in its column ("<", "^", ">"), and its LaTeX
         let cell = |t: &str| {
             let (align, tex) = match t.chars().next() {
@@ -880,13 +917,26 @@ pub fn read_picture_tables(book: &mut crate::Book, pdf: &std::path::Path) {
         read.retain(|r: &Vec<crate::Cell>| r.iter().any(|cell| !cell.text.is_empty()));
         let columns = read.iter().map(Vec::len).max().unwrap_or(0);
         if read.len() < 2 || columns < 2 {
-            continue;
+            return None;
         }
         for r in read.iter_mut() {
             r.resize_with(columns, || crate::Cell { span: 1, ..Default::default() });
         }
-        if let Block::Table { rows, .. } = &mut book.chapters[c].blocks[b].block {
+        Some(read)
+    };
+    for (c, b, key, _, _) in tables {
+        if let (Some(read), Block::Table { rows, .. }) = (rows_of(&key), &mut book.chapters[c].blocks[b].block) {
             *rows = read;
+        }
+    }
+    // a formula that is a table: the table, over its picture
+    for (c, b, key, _, _) in maybe {
+        let Some(rows) = rows_of(&key) else { continue };
+        let blocks = &mut book.chapters[c].blocks;
+        blocks[b].block = Block::Table { rows, widths: Vec::new(), key, title: Vec::new(), note: Vec::new() };
+        blocks[b].centered = false;
+        if let Block::Picture { alt, .. } = &mut blocks[b + 1].block {
+            *alt = crate::TABLE_READ.into();
         }
     }
 }

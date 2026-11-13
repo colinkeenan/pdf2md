@@ -239,6 +239,10 @@ pub fn equation_numbers(latex: &str, tag: Option<&str>) -> Vec<String> {
 /// the page, to check the table against. Under a table that was read from
 /// that picture, and under one whose text the book itself holds.
 pub const TABLE_READ: &str = "the table as printed";
+/// (Of a picture that may be a table, behind the formula it was read as:
+/// [`ocr::read_picture_tables`] makes the two a table and its picture, or
+/// takes the picture away again. Never written out.)
+pub const TABLE_MAYBE: &str = "a table, if it is one";
 pub const TABLE_SET: &str = "the table as the book sets it";
 
 /// The key of a table of the book: from the page it is on and what its
