@@ -2586,7 +2586,7 @@ and thus by comparison
 \omega = \frac{2 \pi^{p/ 2}}{\Gamma ( p/ 2 )}
 ```
 
-For $`p`$ = 4, we have Γ(2) = 1, $`\omega`$ = 2$`\pi^{2}`$. For $`p`$ = 3, we have Γ$`( \tfrac{3}{2} ) = \frac{\pi}{2} \sqrt{, \omega} = \frac{2 \pi^{3 / 2}}{\sqrt{\pi /} 2}`$ = 4$`\pi`$, etc.
+For $`p`$ = 4, we have Γ(2) = 1, $`\omega`$ = 2$`\pi^{2}`$. For $`p`$ = 3, we have Γ$`( \tfrac{3}{2} ) = \frac{\pi}{2} \sqrt{, \omega} = \frac{2 \pi^{3 / 2}}{\sqrt{\pi} / 2}`$ = 4$`\pi`$, etc.
 
 ### <a id="s-physical-meaning-of-the-vacuum-polarization"></a>Physical Meaning of the Vacuum Polarization
 

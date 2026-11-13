@@ -630,6 +630,26 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
         return spans;
     }
     let size = spans.iter().filter(|s| !s.cmex()).map(|s| s.size).fold(0.0f32, f32::max).max(1.0);
+    // A piece of text that goes on past the end of a root's bar ("π e"
+    // under the bar of √2π, the e after it) is cut there: the root ends
+    // where its bar ends.
+    for b in bars {
+        let root = spans.iter().any(|s| is_radical(s) && (b.left - s.right).abs() <= 3.0 && s.top <= b.bottom + size && s.bottom >= b.top - 2.0);
+        let over = |s: &MSpan| s.atom.is_none() && !s.cmex() && s.left < b.right - 2.0 && s.right > b.right + 3.0 && s.top >= b.bottom - 2.0 && s.top <= b.bottom + 1.5 * size;
+        while let Some(k) = spans.iter().position(|s| root && over(s) && s.text.trim().chars().count() >= 2) {
+            let whole = spans[k].clone();
+            let chars: Vec<char> = whole.text.chars().collect();
+            let w = (whole.right - whole.left) / chars.len() as f32;
+            let cut = (((b.right - whole.left) / w).round() as usize).clamp(1, chars.len() - 1);
+            let (mut first, mut second) = (whole.clone(), whole.clone());
+            (first.text, first.right) = (chars[..cut].iter().collect(), whole.left + w * cut as f32);
+            (second.text, second.left) = (chars[cut..].iter().collect(), whole.left + w * cut as f32);
+            if first.text.trim().is_empty() || second.text.trim().is_empty() || first.right > b.right + 3.0 {
+                break;
+            }
+            spans.splice(k..=k, [first, second]);
+        }
+    }
     let mut order: Vec<usize> = (0..bars.len()).collect();
     order.sort_by(|&a, &b| (bars[b].right - bars[b].left).total_cmp(&(bars[a].right - bars[a].left)));
     let mut used = vec![false; bars.len()];
@@ -668,7 +688,8 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
             is_radical(s) && (b.left - s.right).abs() <= 3.0 && s.top <= b.bottom + size && s.bottom >= b.top - 2.0
         }) {
             let under: Vec<usize> = (0..spans.len())
-                .filter(|&i| i != ri && within(&spans[i]) && spans[i].top >= b.top - 2.0 && spans[i].cy() <= b.bottom + 2.5 * size)
+                // (the box of a sign, the minus of √−g, starts a little above the bar)
+                .filter(|&i| i != ri && within(&spans[i]) && (spans[i].top >= b.top - 2.0 || (spans[i].top >= b.top - 0.35 * size && spans[i].cy() >= b.bottom + 0.3 * size)) && spans[i].cy() <= b.bottom + 2.5 * size)
                 .collect();
             if under.is_empty() {
                 continue;
@@ -711,7 +732,10 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
         let below: Vec<usize> = (0..spans.len())
             .filter(|&i| {
                 let s = &spans[i];
-                within(s) && (s.top >= b.bottom - 2.0 || (is_radical(s) && s.cy() >= b.top)) && s.cy() <= b.bottom + 3.5 * size
+                // (a sign of a symbol font has a box taller than the letters':
+                // the minus of √−g starts a little above the bar it is under)
+                let tall_under = s.top >= b.bottom - 0.35 * size && s.cy() >= b.bottom + 0.3 * size;
+                within(s) && (s.top >= b.bottom - 2.0 || tall_under || (is_radical(s) && s.cy() >= b.top)) && s.cy() <= b.bottom + 3.5 * size
             })
             .collect();
         // A fraction nested inside this one has a clearly narrower bar; a
