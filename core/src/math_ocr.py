@@ -619,7 +619,7 @@ def low_line(part, model, processor, batch_inference):
     return re.sub(r"(?<![A-Za-z\\])[COSVWXZ](?![A-Za-z])", lambda m: m.group(0).lower(), t)
 
 
-LINES_RULE = "6"
+LINES_RULE = "7"
 
 
 def lines_looked_at(dst, stem: str) -> bool:
@@ -665,16 +665,134 @@ def read_small_again(items, dst, model, processor, batch_inference):
         print(f"  {changed} very small images (single symbols) read again with a margin: read differently now", file=sys.stderr, flush=True)
 
 
+BOLD_COMMANDS = ("mathbf", "boldsymbol", "pmb", "mathbit")
+# Stroke thickness, in pixels of an equation picture of an ebook (96 to the
+# inch): the letters of its ordinary type have strokes of 1.1 to 1.3, the
+# bold ones of 1.6 to 1.8. Measured on 800 pictures of one book.
+NO_BOLD = 1.38  # no stroke of the picture is as thick: it has no bold letter
+SURELY_BOLD = 1.55
+
+
+def bold_letters(t: str):
+    """How many letters a reading sets bold: (on the line, in subscripts
+    and superscripts). A bold Greek letter counts as one."""
+    main = script = 0
+    # (in a script?, bold?) of each open brace
+    stack = [(False, False)]
+    i, next_script, next_bold = 0, False, False
+    plain = ("left", "right", "hat", "vec", "tilde", "bar", "dot", "mathrm", "text", "rm", "cal", "mathcal", "operatorname", "prime", "dagger")
+    while i < len(t):
+        c = t[i]
+        if c == "\\":
+            m = re.match(r"\\([a-zA-Z]+|.)", t[i:], re.S)
+            name = m.group(1)
+            i += len(m.group(0))
+            if name in BOLD_COMMANDS:
+                next_bold = True
+            elif name == "bf":
+                stack[-1] = (stack[-1][0], True)
+            elif name.isalpha() and name not in plain:
+                if stack[-1][1] or next_bold:
+                    if stack[-1][0] or next_script:
+                        script += 1
+                    else:
+                        main += 1
+                next_bold = next_script = False
+            continue
+        if c in "_^":
+            next_script = True
+        elif c == "{":
+            stack.append((stack[-1][0] or next_script, stack[-1][1] or next_bold))
+            next_script = next_bold = False
+        elif c == "}":
+            if len(stack) > 1:
+                stack.pop()
+        elif c.isalnum():
+            if stack[-1][1] or next_bold:
+                if stack[-1][0] or next_script:
+                    script += 1
+                else:
+                    main += 1
+            next_script = next_bold = False
+        elif not c.isspace():
+            next_script = next_bold = False
+        i += 1
+    return main, script
+
+
+def strokes(img):
+    """Of each letter-sized piece of ink of an equation picture: (its
+    height, how thick its strokes are), in the picture's pixels (twice its
+    area over its outline, measured on the picture enlarged four times).
+    None without OpenCV."""
+    try:
+        import cv2
+        import numpy as np
+    except ImportError:
+        return None
+    big = cv2.resize(np.array(img.convert("L")), None, fx=4, fy=4, interpolation=cv2.INTER_CUBIC)
+    ink = (big < 128).astype(np.uint8)
+    n, labels, stats, _ = cv2.connectedComponentsWithStats(ink, 8)
+    out = []
+    for k in range(1, n):
+        x, y, w, h, area = (int(v) for v in stats[k])
+        # (a letter of the line: not a dot, a bar or a tall bracket)
+        if area < 40 or not 24 <= h <= 64 or w >= 2.5 * h:
+            continue
+        piece = (labels[y : y + h, x : x + w] == k).astype(np.uint8)
+        outline = sum(cv2.arcLength(c, True) for c in cv2.findContours(piece, cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)[0])
+        if outline > 0:
+            out.append((h / 4, 2 * area / outline / 4))
+    return out
+
+
+def bold_by_picture(img, t: str):
+    """What the picture says about the bold letters of a reading: the
+    reading without them if it sets letters bold and no stroke of the
+    picture is thick enough for a bold letter (the model takes ordinary
+    letters for bold now and then); else the reading as it is. The second
+    answer: the picture has thick strokes and the reading no bold letter
+    (which of its letters are bold, the picture does not say).
+
+    Only whether there is bold at all is told this way. How many letters
+    are bold, counted by their strokes, was right two times in three: a
+    sum sign and a large letter have thick strokes, too."""
+    main, script = bold_letters(t)
+    found = strokes(img) if img.width >= 2 * SMALL else None
+    if not found or len(found) < 4:
+        return t, False
+    # (no piece at all with thick strokes, a tall capital or a sum sign
+    # among them: a bold "J" reaches under the line)
+    if main and not script and max(thick for _, thick in found) < NO_BOLD:
+        plain = re.sub(r"\\(?:%s|bf)(?![a-zA-Z])\s*" % "|".join(BOLD_COMMANDS), "", t)
+        return plain, False
+    # (a thick piece no higher than a capital: a sum sign is thick, too)
+    letters = [thick for h, thick in found if h <= 12.5]
+    return t, main + script == 0 and "\\textbf" not in t and bool(letters) and max(letters) >= SURELY_BOLD
+
+
 def split_lines(items, dst, model, processor, batch_inference):
     """Every equation not looked at before (NAME.lines marks those that
-    were): lines read as one are taken apart, see `lines_apart`."""
-    changed = 0
+    were): its bold letters are held against the picture (see
+    `bold_by_picture`; NAME.bold says that the picture has bold the reading
+    lacks), and lines read as one are taken apart, see `lines_apart`."""
+    changed = plain = 0
     items = [(f, img) for f, img in items if not lines_looked_at(dst, f.stem) and (dst / f"{f.stem}.tex").exists()]
     for n, (f, img) in enumerate(items):
         tell("lines", n, len(items))
         mark, known = dst / f"{f.stem}.lines", dst / f"{f.stem}.tex"
         t = known.read_text().strip()
         if not t.startswith("%"):
+            without, lacks = bold_by_picture(img, t)
+            (dst / f"{f.stem}.bold").unlink(missing_ok=True)
+            if lacks:
+                (dst / f"{f.stem}.bold").write_text("lacks\n")
+            if without != t:
+                t = without
+                known.write_text(t + "\n")
+                for ext in ("verify", "second"):
+                    (dst / f"{f.stem}.{ext}").unlink(missing_ok=True)
+                plain += 1
             block = lines_apart(img, t, model, processor, batch_inference)
             if block is not None:
                 known.write_text(block + "\n")
@@ -686,6 +804,8 @@ def split_lines(items, dst, model, processor, batch_inference):
         tell("lines", len(items), len(items))
     if changed:
         print(f"  {changed} equations of several lines, read as one line before, have their lines again", file=sys.stderr, flush=True)
+    if plain:
+        print(f"  {plain} equations had letters read as bold whose pictures have no bold letter: not bold now", file=sys.stderr, flush=True)
 
 
 def word_labels(img: Image.Image):
@@ -943,8 +1063,9 @@ def verify(items, dst, model, processor, batch_inference):
     tell("checking", 0, len(items))
     for i in range(0, len(whole), BATCH):
         part = whole[i : i + BATCH]
-        for (f, _), t in zip(part, batch_inference([big(img) for _, img in part], model, processor)):
-            second[f] = fix(clean(t))
+        for (f, img), t in zip(part, batch_inference([big(img) for _, img in part], model, processor)):
+            # (the picture has no bold letter: nor has this reading of it)
+            second[f] = bold_by_picture(img, fix(clean(t)))[0]
         tell("checking", min(i + BATCH, len(whole)), len(items))
     for n, (f, img) in enumerate(by_rows):
         second[f] = read_by_rows(big(img), model, processor, batch_inference) or ""

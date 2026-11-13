@@ -662,7 +662,7 @@ const SMALL: u32 = 30;
 /// (`LINES_RULE` in `math_ocr.py`), or "never" for an equation that is
 /// only compared (see [`second_readings`]).
 fn lines_looked_at(dir: &std::path::Path, k: &str) -> bool {
-    std::fs::read_to_string(dir.join(format!("{k}.lines"))).is_ok_and(|t| matches!(t.trim(), "6" | "never"))
+    std::fs::read_to_string(dir.join(format!("{k}.lines"))).is_ok_and(|t| matches!(t.trim(), "7" | "never"))
 }
 
 /// Read every image (given as base64 PNG), from the cache or by running
@@ -1046,6 +1046,14 @@ pub fn bold_differs(k: &str) -> bool {
         }
         _ => false,
     }
+}
+
+/// Does the picture of this equation have strokes as thick as bold
+/// letters have, while its reading sets no letter bold (see
+/// `bold_by_picture` in `math_ocr.py`), and the reader has not corrected
+/// it since?
+pub fn lacks_bold(k: &str) -> bool {
+    read_correction(k).is_none() && cache_dir().is_some_and(|d| d.join(format!("{k}.bold")).exists())
 }
 
 /// Width and height of a PNG, from its header.

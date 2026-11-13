@@ -993,6 +993,8 @@ fn lost_notes(lost: &[crate::userdata::Note]) -> String {
 fn check_list(book: &Book) -> Option<String> {
     // (symbols that differ, line of the list)
     let mut items: Vec<(usize, String)> = Vec::new();
+    // equations whose picture has bold letters and whose reading has none
+    let mut lacking: Vec<String> = Vec::new();
     for ch in &book.chapters {
         let mut page: Option<String> = None;
         let see = |id: &str, page: &mut Option<String>| {
@@ -1018,14 +1020,28 @@ fn check_list(book: &Book) -> Option<String> {
                         let bold = if crate::ocr::bold_differs(k) { " — **bold?**" } else { "" };
                         items.push((n, format!("- [{name}]({}.md#img-{k}) — {}{at} — {symbols} differ{bold}", ch.slug, ch.title)));
                     }
+                    if crate::ocr::lacks_bold(k) {
+                        let name = tag.as_ref().map_or("equation".to_string(), |t| format!("({t})"));
+                        let at = page.as_ref().map(|p| format!(", {p}")).unwrap_or_default();
+                        lacking.push(format!("- [{name}]({}.md#img-{k}) — {}{at}", ch.slug, ch.title));
+                    }
                 }
                 _ => {}
             }
         }
     }
-    if items.is_empty() {
+    if items.is_empty() && lacking.is_empty() {
         return None;
     }
+    let lacking = if lacking.is_empty() {
+        String::new()
+    } else {
+        format!(
+            "## Bold letters the reading may lack ({})\n\nThe pictures of these equations have strokes as thick as bold letters have, but they were read without a bold letter. Which letters are bold, the picture does not tell: see the book. (A large letter has thick strokes, too.)\n\n{}\n\n",
+            lacking.len(),
+            lacking.join("\n")
+        )
+    };
     let group = |title: &str, keep: &dyn Fn(usize) -> bool| -> String {
         let lines: Vec<&str> = items.iter().filter(|(n, _)| keep(*n)).map(|(_, l)| l.as_str()).collect();
         if lines.is_empty() {
@@ -1037,7 +1053,7 @@ fn check_list(book: &Book) -> Option<String> {
     let bold = items.iter().filter(|(_, l)| l.ends_with("**bold?**")).count();
     let bold = if bold == 0 { String::new() } else { format!(" In {bold} of them the two readings set different letters bold: those are marked **bold?**, for a look at which letters are bold in the book.") };
     Some(format!(
-        "# Equations to check\n\nThese equations were read from their pictures as a different formula on a second reading (formatting aside), so compare them with the book. The bigger the difference, the likelier the reading is wrong. Correct one in the chapter file (or in book.md); the next conversion keeps your correction and drops it from this list.{bold}\n\n{}{}{}",
+        "# Equations to check\n\nThese equations were read from their pictures as a different formula on a second reading (formatting aside), so compare them with the book. The bigger the difference, the likelier the reading is wrong. Correct one in the chapter file (or in book.md); the next conversion keeps your correction and drops it from this list.{bold}\n\n{}{}{}{lacking}",
         group("Big differences (more than 10 symbols)", &|n| n > 10),
         group("Medium differences (4–10 symbols)", &|n| (4..=10).contains(&n)),
         group("Small differences (1–3 symbols)", &|n| n <= 3),
