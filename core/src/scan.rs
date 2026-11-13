@@ -334,6 +334,115 @@ fn alike(a: &str, b: &str) -> f32 {
     2.0 * common as f32 / total
 }
 
+/// The words marker read on a page, to mend a line that is only known from
+/// the PDF's own text (the scanner's reading, which is poorer): see
+/// [`Known::mend`].
+struct Known {
+    words: std::collections::HashSet<String>,
+    /// For each word's strokes (see [`strokes`]), the words that have them.
+    by_strokes: std::collections::HashMap<String, Vec<String>>,
+    /// marker's text, word by word, block after block.
+    texts: Vec<Vec<String>>,
+}
+
+/// A word with its letters of short upright strokes counted, not named:
+/// "rn" and "m", "nn" and "rm", "in" and "m", "mi" and "nn" are three or
+/// four such strokes each, and a scanner's reading takes one for the other
+/// ("renonnalization", "Feynrnan", "Riemami").
+fn strokes(word: &str) -> String {
+    let mut out = String::new();
+    for c in word.chars().flat_map(char::to_lowercase) {
+        match c {
+            'i' | 'l' | 'r' => out.push('|'),
+            'n' | 'u' => out.push_str("||"),
+            'm' => out.push_str("|||"),
+            c => out.push(c),
+        }
+    }
+    out
+}
+
+impl Known {
+    fn of(texts: &[String]) -> Known {
+        let mut known = Known { words: Default::default(), by_strokes: Default::default(), texts: Vec::new() };
+        for t in texts {
+            for w in t.split(|c: char| !c.is_alphabetic()).filter(|w| !w.is_empty()) {
+                let w = w.to_lowercase();
+                if known.words.insert(w.clone()) {
+                    known.by_strokes.entry(strokes(&w)).or_default().push(w);
+                }
+            }
+            known.texts.push(t.split_whitespace().map(str::to_string).collect());
+        }
+        known
+    }
+
+    /// A line of the PDF's own text, mended by what marker read on the page:
+    ///
+    /// * a word marker does not have, of the same strokes as exactly one
+    ///   word it has, is that word ("fennions" -> "fermions");
+    /// * a piece that is no word and no page number, where marker has a
+    ///   formula at the same place of the same line, is that formula
+    ///   ("0.4 theory" -> "$\\phi^4$ theory");
+    /// * page numbers run together get their space ("302,303" -> "302, 303").
+    fn mend(&self, line: &str) -> String {
+        // the words
+        let mut out = String::new();
+        let mut rest = line;
+        while !rest.is_empty() {
+            let end = rest.find(|c: char| !c.is_alphabetic()).unwrap_or(rest.len());
+            if end == 0 {
+                let c = rest.chars().next().unwrap();
+                out.push(c);
+                rest = &rest[c.len_utf8()..];
+                continue;
+            }
+            let word = &rest[..end];
+            rest = &rest[end..];
+            let small = word.to_lowercase();
+            let other = match self.by_strokes.get(&strokes(word)).map(Vec::as_slice) {
+                Some([one]) if word.chars().count() >= 5 && !self.words.contains(&small) => Some(one),
+                _ => None,
+            };
+            match other {
+                Some(w) if word.chars().all(char::is_uppercase) => out.push_str(&w.to_uppercase()),
+                Some(w) if word.starts_with(char::is_uppercase) => {
+                    let mut c = w.chars();
+                    out.extend(c.next().into_iter().flat_map(char::to_uppercase).chain(c));
+                }
+                Some(w) => out.push_str(w),
+                None => out.push_str(word),
+            }
+        }
+        // the page numbers
+        let c: Vec<char> = out.chars().collect();
+        let mut spaced = String::new();
+        for (k, ch) in c.iter().enumerate() {
+            spaced.push(*ch);
+            if matches!(ch, ',' | ';') && k > 0 && c[k - 1].is_ascii_digit() && c.get(k + 1).is_some_and(|n| n.is_ascii_digit()) {
+                spaced.push(' ');
+            }
+        }
+        // the formulas
+        let mut words: Vec<String> = spaced.split_whitespace().map(str::to_string).collect();
+        let number = |w: &str| w.trim_matches(|c: char| ",;.".contains(c)).chars().all(|c| c.is_ascii_digit() || "-–f".contains(c));
+        let garbled = |w: &str| w.chars().filter(|c| c.is_alphabetic()).count() < 3 && w.chars().any(|c| c.is_ascii_digit()) && !number(w);
+        if words.iter().any(|w| garbled(w)) {
+            // (the same run of words in marker's text: the most alike)
+            let own = words.join(" ");
+            let runs = self.texts.iter().flat_map(|t| t.windows(words.len()));
+            if let Some((score, run)) = runs.map(|r| (alike(&r.join(" "), &own), r)).max_by(|a, b| a.0.total_cmp(&b.0)) {
+                for (w, theirs) in words.iter_mut().zip(run) {
+                    if score >= 0.8 && garbled(w) && (theirs.contains('\\') || theirs.contains('$')) {
+                        *w = theirs.clone();
+                    }
+                }
+            }
+        }
+        words.join(" ")
+    }
+}
+
 /// The columns of a page whose text stands in two columns, by the words
 /// of the PDF's own text (None: it has none there, or they do not stand
 /// in two columns). `words`: those words. The lines take marker's reading
@@ -370,6 +479,8 @@ fn lay_columns(page: &PageRead, words: &[Word]) -> Option<Laid> {
     }
     // marker's lines of these blocks, each to be used once
     let mut read: Vec<String> = blocks.iter().flat_map(|b| if b.text.len() >= 2 { b.text.clone() } else { vec![plain(&all_inline(&b.html))] }).collect();
+    // (marker's words, to mend the PDF's own where a line has only those)
+    let known = Known::of(&read);
     let mut column = |mut words: Vec<&Word>| -> Vec<(bool, String)> {
         // the lines: words at one height, from the left
         words.sort_by(|a, b| middle(a).1.total_cmp(&middle(b).1));
@@ -397,7 +508,7 @@ fn lay_columns(page: &PageRead, words: &[Word]) -> Option<Laid> {
                 let best = read.iter().enumerate().map(|(k, t)| (alike(t, &own), k)).max_by(|a, b| a.0.total_cmp(&b.0));
                 let text = match best {
                     Some((score, k)) if score >= 0.72 => read.swap_remove(k),
-                    _ => own,
+                    _ => known.mend(&own),
                 };
                 (line[0].left > edge + 4.0, text)
             })
@@ -838,6 +949,11 @@ fn parts(html: &str) -> Vec<Part> {
                     "sup" => sup = (sup + d).max(0),
                     "sub" => sub = (sub + d).max(0),
                     "br" => run.push(Inline::Break),
+                    // (written by `paragraphs_of_lines` for a line set in)
+                    "emsp" if !*closing => match run.last_mut() {
+                        Some(Inline::Indent(n)) => *n += 1,
+                        _ => run.push(Inline::Indent(1)),
+                    },
                     _ => {}
                 }
             }
@@ -1719,7 +1835,10 @@ fn margins(page: &PageRead, measure: Option<f32>) -> (f32, f32) {
 /// about a book on its copyright page) as a paragraph of its own. Lines
 /// of text that follow each other without space between them, each ended
 /// before the right margin, are one paragraph with its line ends kept;
-/// pieces side by side are one line. Not on a page of ordinary paragraphs,
+/// pieces side by side are one line. A line set in from the paragraph's
+/// first line starts with as much space (an em space for each line's
+/// height it is set in by: the lines of a catalogue entry on a copyright
+/// page are set in by one step and by two). Not on a page of ordinary paragraphs,
 /// and not on a page in columns (an index): there every entry is its own.
 fn paragraphs_of_lines(mut pages: Vec<PageRead>, measure: Option<f32>) -> Vec<PageRead> {
     for page in pages.iter_mut() {
@@ -1736,6 +1855,8 @@ fn paragraphs_of_lines(mut pages: Vec<PageRead>, measure: Option<f32>) -> Vec<Pa
         let mut out: Vec<Raw> = Vec::new();
         // (the last line of the paragraph being gathered)
         let mut last: Option<Raw> = None;
+        // (where the first line of that paragraph starts)
+        let mut first_left = 0.0;
         for b in std::mem::take(&mut page.blocks) {
             let joins = match &last {
                 Some(l) if line(&b) => {
@@ -1747,7 +1868,8 @@ fn paragraphs_of_lines(mut pages: Vec<PageRead>, measure: Option<f32>) -> Vec<Pa
             };
             match (joins, out.last_mut()) {
                 (Some(beside), Some(para)) => {
-                    para.html = format!("{}{}{}", para.html, if beside { " " } else { " <br>" }, b.html);
+                    let set_in = if beside { 0 } else { ((b.left - first_left) / (b.bottom - b.top).max(8.0)).round().clamp(0.0, 8.0) as usize };
+                    para.html = format!("{}{}{}{}", para.html, if beside { " " } else { " <br>" }, "<emsp>".repeat(set_in), b.html);
                     (para.left, para.right, para.bottom) = (para.left.min(b.left), para.right.max(b.right), para.bottom.max(b.bottom));
                     para.lines = 0;
                     // (a piece beside the line: the line still ends where it did)
@@ -1757,6 +1879,7 @@ fn paragraphs_of_lines(mut pages: Vec<PageRead>, measure: Option<f32>) -> Vec<Pa
                 }
                 _ => {
                     last = line(&b).then(|| b.clone());
+                    first_left = b.left;
                     out.push(b);
                 }
             }
@@ -2628,8 +2751,9 @@ mod tests {
             ]
         );
         // lines that marker gave one by one: a paragraph, a number beside
-        // its last line in that line; what follows a gap, or a line that
-        // went to the margin, is a new paragraph
+        // its last line in that line, a line set in (">") starting with
+        // space; what follows a gap, or a line that went to the margin, is
+        // a new paragraph
         let wide = block("Text", 16.0, 60.0, 458.0, 120.0, "<p>A paragraph as wide as the page is, of some lines, to show how wide the text is set on it.</p>", &[]);
         let lines = [
             block("Text", 16.0, 140.0, 381.0, 161.0, "<p>Published by the Press, 41 William Street, Princeton,</p>", &[]),
@@ -2648,7 +2772,7 @@ mod tests {
         assert_eq!(
             paras,
             [
-                "Published by the Press, 41 William Street, Princeton, /New Jersey 08540 /530.14 dc21 2002031743",
+                "Published by the Press, 41 William Street, Princeton, /New Jersey 08540 />530.14 dc21 2002031743",
                 "British Library data is available",
                 "A line that runs all the way to the right margin of the page it is on",
                 "and one after it.",
@@ -2666,9 +2790,23 @@ mod tests {
                 Inline::Text(t) => t.clone(),
                 Inline::Emph(t) => format!("_{t}_"),
                 Inline::Break => "/".into(),
+                Inline::Indent(n) => ">".repeat(*n),
                 other => format!("{other:?}"),
             })
             .collect()
+    }
+
+    #[test]
+    fn a_line_of_the_pdfs_own_text_is_mended_by_markers_words() {
+        let known = Known::of(&["Feynman diagrams, 41; fermions, 107; renormalization of, 150".to_string(), "$\\varphi^4$ theory, renormalizability of, 158".to_string(), "Grassmann variables, 124".to_string()]);
+        // letters of the same strokes: marker's word
+        assert_eq!(known.mend("Feynrnan diagrams, 41; fennions, 107;"), "Feynman diagrams, 41; fermions, 107;");
+        assert_eq!(known.mend("RENONNALIZATION of, 150"), "RENORMALIZATION of, 150");
+        // (another word, not another reading of the same strokes: left alone)
+        assert_eq!(known.mend("Grossmann, Marcel, 419"), "Grossmann, Marcel, 419");
+        // a formula the scanner made nothing of, and page numbers run together
+        assert_eq!(known.mend("0.4 theory, renonnalizability of, 158"), "$\\varphi^4$ theory, renormalizability of, 158");
+        assert_eq!(known.mend("vortices, 302,303;307"), "vortices, 302, 303; 307");
     }
 
     #[test]

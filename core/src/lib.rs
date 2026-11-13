@@ -61,6 +61,8 @@ pub enum Inline {
     Target { id: String, text: String, emph: bool },
     /// A line break kept from the page (between centered lines).
     Break,
+    /// A line set in from the ones above it: so many steps (em spaces).
+    Indent(usize),
     /// A link; `text` is already Markdown.
     Link { text: String, href: String },
     /// A small picture inside the text (an equation image that could not be

@@ -206,7 +206,8 @@ A page takes about 3 seconds on a recent graphics card. Pages read are cached in
 * **Lines read too short.** Where marker read much less than the line holds, the words come from the PDF's hidden text, if that text contains marker's words and more.
 * **Words on a picture** are part of the picture.
 * **Code.** What marker calls program code is written as a code block only if it looks like code; marker also calls an index page code.
-* **An index in two columns** stays in two columns. marker does not say which lines are indented continuation lines, and sometimes mixes the two columns. So the column and indentation of each line come from the positions of the words in the PDF's hidden text, and the wording from marker where it has the line. Continuation lines are joined to their entry. A scan without hidden text keeps its columns, but each line is an entry.
+* **An index in two columns** stays in two columns. marker does not say which lines are indented continuation lines, and sometimes mixes the two columns. So the column and indentation of each line come from the positions of the words in the PDF's hidden text, and the wording from marker where it has the line. Continuation lines are joined to their entry. A scan without hidden text keeps its columns, but each line is an entry. A line known only from the hidden text is mended by marker's words of the same page: a word marker does not have becomes the one word it has with the same short strokes ("fennions" is "fermions", "Feynrnan" is "Feynman"), a piece that is neither word nor page number becomes marker's formula at that place ("0.4 theory" is $`\varphi^4`$ theory), and page numbers run together get their space.
+* **Lines given one by one** (an address, or the catalogue entry on a copyright page) are one paragraph with its line ends kept. A line set in from the first starts with em spaces, one for each line height it is set in by.
 
 ### Math
 

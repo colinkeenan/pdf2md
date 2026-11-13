@@ -375,6 +375,7 @@ fn render_inlines_as(inl: &[Inline], form: MathForm) -> String {
                 s.truncate(trimmed);
                 s.push_str("<br>\n");
             }
+            Inline::Indent(n) => s.push_str(&"&emsp;".repeat(*n)),
             Inline::Link { text, href } => s.push_str(&format!("[{text}]({href})")),
         }
     }
