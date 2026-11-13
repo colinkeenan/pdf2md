@@ -841,6 +841,7 @@ pub fn parse_svg_figures(svg: &str) -> Vec<Vec<Figure>> {
             let body = page.split("</defs>").last().unwrap_or(page);
             // (left, right, top, bottom, is an image)
             let mut boxes: Vec<(f32, f32, f32, f32, bool)> = Vec::new();
+            let mut drawn: Vec<(f32, f32, f32, f32)> = Vec::new();
             for tag in body.split("<path ").skip(1) {
                 let tag = format!(" {}", tag.split("/>").next().unwrap_or(""));
                 if tag.contains(" id=\"") {
@@ -865,6 +866,12 @@ pub fn parse_svg_figures(svg: &str) -> Vec<Vec<Figure>> {
                 let off_page = b - t > 1200.0 || t < -50.0;
                 if !bar && !off_page {
                     boxes.push((l, r, t, b, false));
+                    // (a fraction bar drawn as a thin stroke is a piece of a
+                    // drawing only together with something else: a formula
+                    // of many stacked fractions is no drawing)
+                    if stroked_rule(tag.trim_start()).is_none() {
+                        drawn.push((l, r, t, b));
+                    }
                 }
             }
             for tag in body.split("<image ").skip(1) {
@@ -910,6 +917,7 @@ pub fn parse_svg_figures(svg: &str) -> Vec<Vec<Figure>> {
                 // a real picture: an image, or several strokes of some size
                 // (or a wide strip of many pieces: a legend drawn as paths)
                 .filter(|g| g.5 || (g.4 >= 3 && g.1 - g.0 >= 15.0 && g.3 - g.2 >= 15.0) || (g.4 >= 8 && g.1 - g.0 >= 40.0))
+                .filter(|g| g.5 || drawn.iter().any(|p| p.0 >= g.0 - 0.1 && p.1 <= g.1 + 0.1 && p.2 >= g.2 - 0.1 && p.3 <= g.3 + 0.1))
                 .map(|g| Figure { left: g.0 * 1.5, right: g.1 * 1.5, top: g.2 * 1.5, bottom: g.3 * 1.5 })
                 .collect();
             figs.sort_by(|a, b| a.top.total_cmp(&b.top));
