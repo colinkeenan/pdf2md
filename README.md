@@ -130,7 +130,7 @@ In the app, typing a reader that is known to understand only the standard form (
 No conversion is perfect, and a textbook is something you write in. What you change in the Markdown is kept when you convert the book again, as long as pdf2md can tell it is yours:
 
 * **Equations read from a picture or a scan**: just edit the LaTeX. In mdBun, click the equation.
-* **Table cells**: edit the cell where it stands, between the empty lines inside its `<td>`. (The title across the top of a table and the note across its foot are not cells: an edit there is not kept.)
+* **Table cells**: edit the cell where it stands, between the empty lines inside its `<td>`. The title across the top of a table and the note across its foot are not cells: correct words there as you would in the text, with a fix (next point; in mdBun, "Fix text").
 * **The picture under a table**: once the table is right, fold the picture away for good by deleting the word `open` in its `<details open>`, or delete the fold.
 * **Wrong words in the text**: wrap the fix so it can be redone, `<span class="fix" data-was="as converted">as in the book</span>`.
 * **Your own notes**: a collapsible note or an alert box, placed after the paragraph or equation it belongs to.
