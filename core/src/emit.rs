@@ -267,6 +267,12 @@ pub fn render_inlines(inl: &[Inline]) -> String {
 }
 
 fn render_inlines_as(inl: &[Inline], form: MathForm) -> String {
+    // a title with a line under it: the whole of it over the line, the
+    // frame at its head standing on the line
+    if let Some((Inline::Ruled, title)) = inl.split_first() {
+        let title = render_inlines_as(title, form).replace(FRAME, FRAME_ON_RULE);
+        return format!("<span style=\"display:block;border-bottom:1px solid\">{title}</span>");
+    }
     // an accent and its letter that came in separate pieces ("f¨" + "ur")
     let joined: Vec<Inline> = inl
         .iter()
@@ -347,7 +353,8 @@ fn render_inlines_as(inl: &[Inline], form: MathForm) -> String {
             }
             Inline::Sup(t) => s.push_str(&format!("<sup>{}</sup>", escape(t))),
             // (a viewer that drops `style` shows it without its frame)
-            Inline::Framed(t) => s.push_str(&format!("<span style=\"border:1px solid;padding:0 0.3em;margin-right:0.15em\">{}</span>", escape(t))),
+            Inline::Framed(t) => s.push_str(&format!("<span style=\"{FRAME}\">{}</span>", escape(t))),
+            Inline::Ruled => {}
             Inline::NoteRef { label, id, href } => {
                 s.push_str(&format!("<sup><a id=\"{id}\" href=\"{href}\">{label}</a></sup>"))
             }
@@ -385,6 +392,11 @@ fn render_inlines_as(inl: &[Inline], form: MathForm) -> String {
     }
     s
 }
+
+/// How a framed piece of a title is drawn, and how where the title has a
+/// line under it: the frame then stands on that line, open at its foot.
+const FRAME: &str = "border:1px solid;padding:0 0.3em;margin-right:0.15em";
+const FRAME_ON_RULE: &str = "display:inline-block;border:1px solid;border-bottom:0;padding:0 0.3em;margin-right:0.15em";
 
 /// The bar above a page marker: where a printed page begins is easy to
 /// find when scrolling. Translucent, in the colour of the text, so it shows

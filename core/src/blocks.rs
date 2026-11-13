@@ -860,6 +860,10 @@ fn framed_title(doc: &Doc, page: &crate::layout::Page, l: &Line, st: &Stats) -> 
     let line_of = |spans: Vec<crate::layout::Span>| crate::layout::make_line(spans, &|s| doc.size_of(s));
     let (inside, rest): (Vec<_>, Vec<_>) = l.spans.iter().cloned().partition(|s| s.left + s.width / 2.0 <= frame.right + 1.0);
     let mut out = Vec::new();
+    // (the line the book draws under the title, from the frame's foot on)
+    if page.rules.iter().any(|r| (r.top - frame.bottom).abs() <= 3.0 && r.left <= frame.left + 3.0 && r.right >= frame.right + 60.0) {
+        out.push(Inline::Ruled);
+    }
     if inside.is_empty() {
         // (only the first letter is in the frame: the piece of text goes on)
         let mut chars = first.text.chars();
@@ -1964,7 +1968,7 @@ impl Builder<'_> {
                         // (the entry shows the number in its frame, as the
                         // book does; it is found by its name)
                         let label = match framed_title(self.doc, page, l, self.st).filter(|_| framed) {
-                            Some(shown) => tidy(shown),
+                            Some(shown) => tidy(shown.into_iter().filter(|i| *i != Inline::Ruled).collect()),
                             None => Vec::new(),
                         };
                         entries.push(TocEntry { title, page: String::new(), left: l.left, size: l.size, columns: false, number: String::new(), label, part: false });

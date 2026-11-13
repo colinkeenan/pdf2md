@@ -65,6 +65,9 @@ pub enum Inline {
     /// Text the book sets in a drawn frame at the head of a title: a
     /// chapter's number ("I.1"), the first letter of the book's title.
     Framed(String),
+    /// At the head of a title: the book draws a line under this title,
+    /// from the frame at its head to the right margin.
+    Ruled,
     /// A line set in from the ones above it: so many steps (em spaces).
     Indent(usize),
     /// A link; `text` is already Markdown.
