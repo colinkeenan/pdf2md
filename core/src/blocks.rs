@@ -1926,7 +1926,7 @@ impl Builder<'_> {
         self.push(Block::Item { level, text: inl });
     }
 
-    fn toc_page(&mut self, lines: &[Line]) {
+    fn toc_page(&mut self, lines: &[Line], page: &crate::layout::Page) {
         self.flush();
         self.anchor_block();
         let mut entries: Vec<TocEntry> = Vec::new();
@@ -1935,7 +1935,8 @@ impl Builder<'_> {
         for l in lines {
             let text = plain_text(l);
             if is_contents_title(&text) {
-                let inl = crate::no_emph(line_inlines(self.doc, l, self.st));
+                // (in its frame, if the book sets it in one)
+                let inl = framed_title(self.doc, page, l, self.st).unwrap_or_else(|| crate::no_emph(line_inlines(self.doc, l, self.st)));
                 self.push(Block::Heading { level: 2, size: l.size, id: String::new(), text: inl });
                 continue;
             }
@@ -1960,7 +1961,13 @@ impl Builder<'_> {
                         let mut words = text.split_whitespace();
                         let framed = matches!((words.next(), words.next(), words.next()), (Some(n), Some("Part"), Some(again)) if n == again.trim_end_matches(':'));
                         let title = if framed { vec![Inline::Text(text.split_once(char::is_whitespace).map_or("", |(_, rest)| rest).trim().to_string())] } else { tidy(inl) };
-                        entries.push(TocEntry { title, page: String::new(), left: l.left, size: l.size, columns: false, number: String::new(), label: Vec::new(), part: false });
+                        // (the entry shows the number in its frame, as the
+                        // book does; it is found by its name)
+                        let label = match framed_title(self.doc, page, l, self.st).filter(|_| framed) {
+                            Some(shown) => tidy(shown),
+                            None => Vec::new(),
+                        };
+                        entries.push(TocEntry { title, page: String::new(), left: l.left, size: l.size, columns: false, number: String::new(), label, part: false });
                         continue;
                     }
                     None => {
@@ -2049,7 +2056,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
         let marks: &[(f32, String)] = if use_marks { &doc.pages[page.index].marks } else { &[] };
         let mut mi = 0;
         if st.toc_pages.contains(&pi) {
-            b.toc_page(&page.lines);
+            b.toc_page(&page.lines, &doc.pages[page.index]);
             continue;
         }
         let lines = &attach_fraction_rows(doc, &page.lines, &doc.pages[page.index].rules);

@@ -188,9 +188,15 @@ pub fn split_contents(chapters: &mut Vec<Chapter>) {
         Block::Heading { text, .. } => plain(text),
         _ => "Contents".into(),
     };
+    // (a title the book sets in a frame keeps it)
+    let framed = match &heading.block {
+        Block::Heading { text, .. } if text.iter().any(|i| matches!(i, crate::Inline::Framed(_))) => text.clone(),
+        _ => Vec::new(),
+    };
     if chapters[ci].blocks.iter().all(|b| matches!(b.block, Block::Anchor(_))) && ci > 0 {
         // the chapter held nothing else: it is the contents
         chapters[ci].title = title;
+        chapters[ci].heading = framed;
         chapters[ci].blocks.splice(0..0, blocks);
         return;
     }
@@ -205,7 +211,7 @@ pub fn split_contents(chapters: &mut Vec<Chapter>) {
         rest = chapters[0].blocks.split_off(from);
         chapters[0].title = TITLE_PAGES.into();
     }
-    chapters.insert(ci + 1, Chapter { title, blocks, ..Default::default() });
+    chapters.insert(ci + 1, Chapter { title, heading: framed, blocks, ..Default::default() });
     if !rest.is_empty() {
         chapters.insert(ci + 2, Chapter { title: MORE_FRONT_MATTER.into(), blocks: rest, ..Default::default() });
     }
