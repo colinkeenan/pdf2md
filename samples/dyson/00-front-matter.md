@@ -2,6 +2,9 @@
 
 ---
 
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
+<a id="pdf-p1" href="book.pdf#page=1" target="_blank" title="This page in the PDF"><sup>[PDF p. 1]</sup></a>
+
 # Front Matter
 
 <div align="center">

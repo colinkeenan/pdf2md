@@ -514,54 +514,24 @@ fn page_ends(text: &str, book: &Book) -> String {
     out
 }
 
-/// How much a block says, in words: what tells a page worth a marker of
-/// its own from a title page or a dedication.
-fn weight(b: &Block) -> usize {
-    match b {
-        Block::Heading { text, .. } | Block::Para(text) | Block::Item { text, .. } | Block::PageNote { text, .. } => crate::plain(text).split_whitespace().count(),
-        // (a picture: the book's cover, a page that is one picture)
-        Block::Equation { .. } | Block::Table { .. } | Block::Code(_) | Block::Figure { .. } => SAYS_ENOUGH,
-        Block::Toc(entries) => entries.len() * 4,
-        _ => 0,
-    }
-}
-
-/// From this many words on, a page without a printed number gets a marker.
-const SAYS_ENOUGH: usize = 30;
-
-/// The pages (their places in the page list) that have no page marker to
-/// link to the PDF, and say enough to get one: "[PDF p. 5]", by their
-/// number in the PDF. In a book whose printed pages are not the pages of
-/// the PDF (an ebook: the markers come from its index), only the pages
-/// before the first printed page and after the last one.
-fn unnumbered_pages(book: &Book) -> HashSet<usize> {
+/// The pages (their places in the page list) that have no printed number
+/// to mark them by: each gets "[PDF p. 5]", its number in the PDF, so that
+/// every page of the PDF has its bar and no page seems to be missing. In a
+/// book whose printed pages are not the pages of the PDF (an ebook: the
+/// markers come from its index), only the pages before the first printed
+/// page and after the last one.
+fn unnumbered_pages(book: &Book) -> std::collections::BTreeSet<usize> {
     if book.source.is_none() {
-        return HashSet::new();
+        return Default::default();
     }
     let marked: HashSet<u32> = book.pdf_of.values().copied().collect();
     let ebook = !marked.is_empty() && book.labels.iter().all(Option::is_none);
     let (first, last) = (marked.iter().min().copied().unwrap_or(0), marked.iter().max().copied().unwrap_or(0));
-    let mut words: HashMap<usize, usize> = HashMap::new();
-    for b in book.chapters.iter().flat_map(|c| &c.blocks) {
-        *words.entry(b.page).or_default() += weight(&b.block);
-    }
-    // (a page the contents name by its number in the PDF has that marker)
-    let named: HashSet<u32> = book
-        .chapters
-        .iter()
-        .flat_map(|c| &c.blocks)
-        .filter_map(|b| if let Block::Item { text, .. } = &b.block { Some(text) } else { None })
-        .flatten()
-        .filter_map(|i| if let Inline::Link { href, .. } = i { href.rsplit_once("#pdf-p")?.1.parse().ok() } else { None })
-        .collect();
-    words
-        .into_iter()
-        .filter(|&(page, w)| {
-            let Some(&n) = book.pdf_pages.get(page) else { return false };
-            !marked.contains(&n) && (named.contains(&n) || (w >= SAYS_ENOUGH && (!ebook || n < first || n > last)))
-        })
-        .map(|(page, _)| page)
-        .collect()
+    (0..book.pdf_pages.len()).filter(|&page| {
+        let n = book.pdf_pages[page];
+        !marked.contains(&n) && (!ebook || n < first || n > last)
+    })
+    .collect()
 }
 
 fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
@@ -925,13 +895,24 @@ fn chapter_body(book: &Book, i: usize) -> String {
     for b in &ch.blocks[..opening] {
         render_block(&b.block, &mut s, &mut false);
     }
-    // pages without a printed number: a marker by their number in the PDF,
-    // before the first thing that starts on them
-    let mut unnumbered = unnumbered_pages(book);
-    if let Some(first) = ch.blocks[opening..].iter().find(|b| !matches!(b.block, crate::Block::Anchor(_))) {
-        if opening == 0 && unnumbered.remove(&first.page) {
-            let n = book.pdf_pages[first.page];
-            s.push_str(&format!("{PAGE_BAR}\n<a id=\"pdf-p{n}\"{}><sup>[PDF p. {n}]</sup></a>\n\n", pdf_link(n)));
+    // Pages without a printed number: a marker by their number in the
+    // PDF, before the first thing that starts on them. An empty one has
+    // its bar before the next page that holds something; those after the
+    // file's last text close the file (an empty page belongs to what
+    // comes before it). The file's pages: from its first to the next
+    // file's first.
+    let first_page = |c: &crate::Chapter| c.blocks.iter().find(|b| !matches!(b.block, crate::Block::Anchor(_))).or(c.blocks.first()).map(|b| b.page);
+    let own_from = if i == 0 { 0 } else { first_page(ch).unwrap_or(usize::MAX) };
+    let own_to = book.chapters[i + 1..].iter().find_map(first_page).unwrap_or(book.pdf_pages.len());
+    let mut unnumbered: std::collections::BTreeSet<usize> = unnumbered_pages(book).into_iter().filter(|q| *q >= own_from && *q < own_to).collect();
+    let pdf_mark = |q: usize| {
+        let n = book.pdf_pages[q];
+        format!("{PAGE_BAR}\n<a id=\"pdf-p{n}\"{}><sup>[PDF p. {n}]</sup></a>\n\n", pdf_link(n))
+    };
+    if let (0, Some(first)) = (opening, first_page(ch)) {
+        while let Some(q) = unnumbered.first().copied().filter(|q| *q <= first) {
+            unnumbered.remove(&q);
+            s.push_str(&pdf_mark(q));
         }
     }
     s.push_str(&if ch.centered { format!("<div align=\"center\">\n\n# {title}\n\n</div>\n\n") } else { format!("# {title}\n\n") });
@@ -976,11 +957,11 @@ fn chapter_body(book: &Book, i: usize) -> String {
             }
         }
         let neutral = matches!(b.block, crate::Block::Anchor(_));
-        if !neutral && unnumbered.remove(&b.page) {
-            let n = book.pdf_pages[b.page];
-            let (id, label) = (format!("pdf-p{n}"), format!("PDF p. {n}"));
-            if in_list && matches!(b.block, Block::Item { level, .. } if level > 0) {
-                s.push_str(&page_mark_in_list(&id, &pdf_link(n), &label));
+        while let Some(q) = unnumbered.first().copied().filter(|q| *q <= b.page) {
+            unnumbered.remove(&q);
+            let n = book.pdf_pages[q];
+            if q == b.page && in_list && matches!(b.block, Block::Item { level, .. } if level > 0) {
+                s.push_str(&page_mark_in_list(&format!("pdf-p{n}"), &pdf_link(n), &format!("PDF p. {n}")));
             } else {
                 if in_list {
                     s.push('\n');
@@ -990,7 +971,7 @@ fn chapter_body(book: &Book, i: usize) -> String {
                     s.push_str("</div>\n\n");
                     centered = false;
                 }
-                s.push_str(&format!("{PAGE_BAR}\n<a id=\"{id}\"{}><sup>[{label}]</sup></a>\n\n", pdf_link(n)));
+                s.push_str(&pdf_mark(q));
             }
         }
         // (a page's bar and marker stand at the left like all others, not
@@ -1080,6 +1061,10 @@ fn chapter_body(book: &Book, i: usize) -> String {
     }
     if centered {
         s.push_str("</div>\n\n");
+    }
+    // (the empty pages after the file's last text)
+    for q in std::mem::take(&mut unnumbered) {
+        s.push_str(&pdf_mark(q));
     }
     // the notes of the chapter's last page
     for n in foot {
@@ -1374,7 +1359,8 @@ mod tests {
         let attrs = " target=\"_blank\" title=\"This page in the PDF\"";
         // above the bar, at the right, the page that ends there
         let ends = |n: u32| format!("<a href=\"book.pdf#page={n}\"{attrs}><sup>[PDF p. {n}]</sup></a>");
-        assert!(out.starts_with(&format!("# T\n\nA Book\n\n<div align=\"right\">{}</div>\n<hr class=\"page\"", ends(4))), "{out}");
+        // (every page has its bar, a title page too; the file's first above its title)
+        assert!(out.starts_with(&format!("{PAGE_BAR}\n<a id=\"pdf-p4\" href=\"book.pdf#page=4\"{attrs}><sup>[PDF p. 4]</sup></a>\n\n# T\n\nA Book\n\n<div align=\"right\">{}</div>\n<hr class=\"page\"", ends(4))), "{out}");
         assert_eq!(out.matches(&format!("<a id=\"pdf-p5\" href=\"book.pdf#page=5\"{attrs}><sup>[PDF p. 5]</sup></a>\n\nword")).count(), 1, "{out}");
         assert_eq!(out.matches("<sup>[PDF p. 5]").count(), 2, "{out}");
         assert!(out.contains(&format!("<span style=\"display:block;text-align:right\">{}</span>{BAR_SPAN}<a id=\"p1\"", ends(5))), "{out}");

@@ -1589,6 +1589,18 @@ struct Prev {
     plain_size: Option<f32>,
     /// the web address the line ends in (an address broken over two lines)
     last_url: Option<String>,
+    /// its type size
+    size: f32,
+    /// the line names who said what stands above it ("—N. P. Ong,
+    /// Princeton University"): it ends its paragraph
+    signs: bool,
+}
+
+/// A line that names the author of the words above it: a dash and a name,
+/// short, as under a quotation.
+fn signs_quote(text: &str) -> bool {
+    let Some(name) = text.trim_start().strip_prefix('—') else { return false };
+    name.trim_start().starts_with(char::is_uppercase) && text.split_whitespace().count() <= 12
 }
 
 struct Builder<'a> {
@@ -1664,7 +1676,12 @@ impl Builder<'_> {
         if p.last_url.is_some() && l.spans.first().and_then(|s| s.url.as_ref()) == p.last_url.as_ref() {
             return false;
         }
-        if starts_entry(l) {
+        if starts_entry(l) || p.signs {
+            return true;
+        }
+        // (a paragraph goes on over a page in the type it is set in: the
+        // dedication is not the end of the copyright page's last line)
+        if p.page != pi && (l.size - p.size).abs() > 0.5 {
             return true;
         }
         if p.page == pi && l.top - p.top > 1.6 * st.spacing {
@@ -2155,14 +2172,23 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
             } else {
                 lines[..end].iter().filter(|o| (o.left - l.left).abs() < 0.6 * st.body && o.size == l.size).map(|o| o.right).fold(l.right, f32::max)
             };
-            let starts = b.starts_para(l, next, pi);
+            // The name under a quotation is the last line of the
+            // quotation's paragraph, on a line of its own; what follows
+            // it is another paragraph, also where the page ends with the
+            // name.
+            let signs = signs_quote(&plain_text(l))
+                && l.right < st.right - 3.0 * st.body
+                && !b.para.is_empty()
+                && b.prev.as_ref().is_some_and(|p| !p.signs && (p.page != pi || l.top - p.top <= 1.6 * st.spacing));
+            let starts = !signs && b.starts_para(l, next, pi);
             let room = if starts { None } else { b.room_above(l, measure, pi) };
-            let hard = room.is_some_and(|r| r >= HARD_RETURN_ROOM);
+            let hard = signs || room.is_some_and(|r| r >= HARD_RETURN_ROOM);
             // more space above than between the lines of a paragraph in
             // this type size: after a hard return, or between two lines of
             // plain words (a formula makes its line taller, not spaced)
             let pitch = st.spacing * l.size / st.body;
             let spaced = !starts
+                && !signs
                 && b.prev.as_ref().is_some_and(|p| {
                     p.page == pi && l.top - p.top > 1.4 * pitch && (hard || (p.plain_size == Some(l.size) && words_only(doc, l)))
                 });
@@ -2200,6 +2226,8 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 ends_sentence: ends_sentence(&plain_text(l)),
                 plain_size: words_only(doc, l).then_some(l.size),
                 last_url: l.spans.last().and_then(|s| s.url.clone()),
+                size: l.size,
+                signs: signs_quote(&plain_text(l)) && l.right < st.right - 3.0 * st.body,
             });
             prev_top = Some(l.top);
             i += 1;

@@ -75,7 +75,7 @@ Above the bar, at the right, stands the marker of the page that ends there, <sup
 * **Among centered lines** (a title page) the bar and marker stand at the left like all others.
 * **In the middle of a paragraph** the bar and marker are written into the sentence as a floating block as wide as the text. The browser puts it under the current line and goes on filling that line, so the text above the bar runs to the right margin as on the printed page, at any window width. A viewer that drops `style` attributes shows the marker inside the sentence, without the bar.
 * **The link.** Each marker opens that page of the PDF in a new tab: `book.pdf#page=38`, counted in sheets of the PDF, which is how browsers count. `book.pdf` in the book's folder is a symbolic link to the source PDF, made anew at each conversion. If you move the PDF, convert again.
-* **Pages without a printed number** get <sup>[PDF p. 5]</sup> (anchor `#pdf-p5`) if they say something: 30 words or more, a formula, a table or a picture. A title page gets none. The contents name a piece that comes before the first printed page number (a preface) by that PDF page, too.
+* **Pages without a printed number** get <sup>[PDF p. 5]</sup> (anchor `#pdf-p5`), every one of them, an empty page too, so that no page of the PDF seems to be missing. An empty page's bar stands before the next page that holds something. The contents name a piece that comes before the first printed page number (a preface) by that PDF page, too.
 * **Inside a list**, such as the contents or the index, a marker on a line of its own would end the list and turn the indented entries after it into code. There the marker is attached to the entry before it. The bar then starts at that entry's indent, and the entries after it stay under their part or chapter.
 * **Ebook-made PDFs** do not have one PDF page per printed page. The link opens the PDF page on which the printed page starts, and only the pages before the first and after the last printed page get PDF markers.
 
@@ -133,6 +133,9 @@ This is the path for a PDF made with TeX, where the math is text in math fonts. 
 * **Centered text**, such as a title page, goes in `<div align="center">` and keeps its line breaks. A line counts as centered when its middle is at the middle of the column and it is clearly in from both margins.
 * **Hard returns** are kept. A line that ends early, although the next line's first word would have fit, was ended on purpose, as in an address. It stays a line of its own (`<br>`), and becomes its own paragraph when there is also extra space above it.
 * **Footnote markers** are small raised numbers attached to a word. End notes are matched by the longest run of rising marker numbers in reading order, so the 16 of "O¹⁶" cannot take note 16. Notes at the foot of a page match markers on that page.
+
+* **The name under a quotation** ("—N. P. Ong, Princeton University") is the last line of the quotation's paragraph, on a line of its own, and ends it: what follows is another paragraph, also where the page ends with the name.
+* **Over a page** a paragraph goes on only in the type size it is set in.
 
 ### Displayed equations
 
