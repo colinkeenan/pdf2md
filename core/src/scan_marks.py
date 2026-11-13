@@ -12,7 +12,7 @@ first sheet), the marks looked for ("1,3"), and how far down the page to
 look, in points (where its footnotes begin; 0: all of it). For each page
 OUT_DIR/mNNNN.txt is written:
 
-    want <TAB> LABELS <TAB> LIMIT
+    want2 <TAB> LABELS <TAB> LIMIT
     mark <TAB> LABEL <TAB> the two words before it and the word it follows
 
 How far it is goes to stderr: "  marks 3/12".
@@ -69,26 +69,36 @@ def raised_pieces(gray, limit: int):
                 continue
             high = y + h <= base - 0.45 * small
             little = 0.45 * small <= h <= 1.25 * small and w <= small
-            px, _, pw, _ = of_line[k - 1]
-            if high and little and -2 <= x - (px + pw) <= 0.6 * small:
+            px, py, pw, ph = of_line[k - 1]
+            # (not behind a raised stroke: the 1 of an exponent "-1")
+            minus = py + ph <= base - 0.45 * small and ph <= 0.3 * small and pw >= 2 * ph
+            if high and little and not minus and -2 <= x - (px + pw) <= 0.6 * small:
                 out.append((x, y, w, h, y0, y1, small))
     return out
 
 
 def read_digit(gray, piece) -> str:
+    """The digit a small piece of ink is, as most of five readings of it
+    have it (enlarged more and less, with more and less of what is around
+    it): one reading takes a 5 for a 3 now and then, and a piece that is
+    no digit reads as one thing and another."""
     x, y, w, h = piece[:4]
-    crop = gray[max(0, y - 6) : y + h + 6, max(0, x - 6) : x + w + 6]
-    crop = cv2.resize(crop, None, fx=4, fy=4, interpolation=cv2.INTER_CUBIC)
-    crop = cv2.copyMakeBorder(crop, 40, 40, 40, 40, cv2.BORDER_CONSTANT, value=255)
-    ok, png = cv2.imencode(".png", crop)
-    if not ok:
-        return ""
     env = dict(os.environ, OMP_THREAD_LIMIT="1")
-    try:
-        read = subprocess.run(["tesseract", "-", "-", "--psm", "10", "-c", "tessedit_char_whitelist=0123456789"], input=png.tobytes(), capture_output=True, timeout=60, env=env)
-    except (OSError, subprocess.TimeoutExpired):
-        return ""
-    return read.stdout.decode("utf-8", "replace").strip()
+    readings = []
+    for scale, mode, room in ((4, "10", 6), (3, "10", 2), (3, "13", 6), (6, "10", 2), (6, "13", 6)):
+        crop = gray[max(0, y - room) : y + h + room, max(0, x - room) : x + w + room]
+        crop = cv2.resize(crop, None, fx=scale, fy=scale, interpolation=cv2.INTER_CUBIC)
+        crop = cv2.copyMakeBorder(crop, 40, 40, 40, 40, cv2.BORDER_CONSTANT, value=255)
+        ok, png = cv2.imencode(".png", crop)
+        if not ok:
+            return ""
+        try:
+            read = subprocess.run(["tesseract", "-", "-", "--psm", mode, "-c", "tessedit_char_whitelist=0123456789"], input=png.tobytes(), capture_output=True, timeout=60, env=env)
+        except (OSError, subprocess.TimeoutExpired):
+            return ""
+        readings.append(read.stdout.decode("utf-8", "replace").strip())
+    best = max(set(readings), key=readings.count)
+    return best if readings.count(best) >= 3 else ""
 
 
 def page_words(gray):
@@ -110,27 +120,40 @@ def page_words(gray):
 def marks(gray, labels, limit: int):
     """The marks among `labels` found on the page: (label, the words up to
     the one it follows). A mark follows a word (three letters or more, or
-    two before a punctuation mark: an exponent follows a symbol)."""
+    two before a punctuation mark: an exponent follows a symbol), or the
+    stop after a number or a bracket ("in 1972.", "(Exercise 4)."). The
+    words are Tesseract's, which at times takes the mark into the word
+    before it, as its last letter or sign."""
     pieces = raised_pieces(gray, limit)
     if not pieces:
         return []
     words = page_words(gray)
     found = []
     for piece in pieces:
-        x, _, _, _, y0, y1, small = piece
-        before = [t for t in words if t[1] < y1 and t[1] + t[3] > y0 and abs((t[0] + t[2]) - x) <= 0.8 * small]
+        x, _, w, _, y0, y1, small = piece
+        # (the word that ends at the piece, or that reaches over it and
+        # ends in a sign that is no letter: the mark, read as that sign)
+        over = lambda t: (t[0] + t[2]) - x
+        before = [t for t in words if t[1] < y1 and t[1] + t[3] > y0 and t[0] < x and (abs(over(t)) <= 0.8 * small or (0 < over(t) <= w + 1.2 * small and not t[4][-1].isalpha()))]
         if not before:
             continue
-        word = max(before, key=lambda t: t[0] + t[2])
-        core = re.sub(r"[^A-Za-z]+$", "", word[4])
-        tail = word[4][len(core) :]
+        # (the one that ends nearest the piece: a word of the line below
+        # can reach up into this line)
+        word = min(before, key=lambda t: abs(over(t)))
+        text = word[4]
+        if over(word) > 0.5 * w and len(text) > 1 and not text[-1].isalpha():
+            text = text[:-1]
+        core = re.sub(r"[^A-Za-z]+$", "", text)
+        tail = text[len(core) :]
         letters = len(re.search(r"[A-Za-z]*$", core).group(0))
-        if not (letters >= 3 or (letters >= 2 and re.match(r"[.,;:!?)]", tail))):
+        after_word = letters >= 3 or (letters >= 2 and re.match(r"[.,;:!?)]", tail))
+        after_stop = re.search(r"[0-9)][.,;:]$", text) is not None
+        if not (after_word or after_stop):
             continue
         digit = read_digit(gray, piece)
         if digit in labels:
             k = words.index(word)
-            found.append((digit, [t[4] for t in words[max(0, k - 2) : k]] + [core]))
+            found.append((digit, [t[4] for t in words[max(0, k - 2) : k]] + [core if after_word else text.rstrip(".,;:")]))
     return found
 
 
@@ -143,7 +166,7 @@ def main():
     def look(request):
         page, labels, limit = request
         gray = page_picture(pdf, int(page))
-        lines = [f"want\t{labels}\t{limit}"]
+        lines = [f"want2\t{labels}\t{limit}"]
         if gray is not None:
             for label, words in marks(gray, labels.split(","), int(float(limit) * DPI / 72)):
                 lines.append(f"mark\t{label}\t{' '.join(words)}")

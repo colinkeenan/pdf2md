@@ -52,6 +52,7 @@ Several switches print what the converter sees:
 | `PDF2MD_SVGDEBUG=1` | the tall outlines read from the SVG and the bracket each was taken for |
 | `PDF2MD_TMDEBUG=1` | how doubtful lines of text-font math were cut into words and symbols |
 | `PDF2MD_TABLEDEBUG=1` | the grey panels found and their lines |
+| `PDF2MD_MARKDEBUG=1` | for each footnote marker found on a page's picture, the words looked for and how many places fit; the markers not placed |
 | `PDF2MD_OCR_PYTHON`, `PDF2MD_SCAN_PYTHON` | another Python that has texify or marker |
 
 ## What is written
@@ -217,7 +218,7 @@ A page takes about 3 seconds on a recent graphics card. Pages read are cached in
 
 ### Footnotes
 
-marker does not see every small raised number in the text. Where a page has a footnote without its marker, pdf2md looks for the marker on the picture of that page and of the pages before and after: a small piece of ink set high in its line, right after a word, that reads as the note's number. It is put into the text after that word if the word is found there in one place only.
+marker does not see every small raised number in the text. Where a page has a footnote without its marker, pdf2md looks for the marker on the picture of that page and of the pages before and after: a small piece of ink set high in its line, right after a word (or after the stop that follows a number or a bracket), that most of five readings take for the note's number. It is put into the text after that word if the word, with the words before it, is found there in one place only, and if the markers of the page still rise from one to the next.
 
 ### Contents and tables
 

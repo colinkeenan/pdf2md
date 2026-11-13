@@ -658,7 +658,8 @@ fn find_marks(path: &Path, dir: &Path, py: &Path, pages: &mut [PageRead]) {
     let head = |i: usize| {
         let mut labels = wanted[i].clone();
         labels.sort();
-        format!("want\t{}\t{:.0}", labels.join(","), limit(&pages[i]))
+        // ("want2": looked at by the second way of looking, see `scan_marks.py`)
+        format!("want2\t{}\t{:.0}", labels.join(","), limit(&pages[i]))
     };
     // (looked at before, for the same marks: kept)
     let todo: Vec<usize> = (0..pages.len()).filter(|i| !wanted[*i].is_empty() && std::fs::read_to_string(file(pages[*i].number)).ok().and_then(|t| t.lines().next().map(str::to_string)) != Some(head(*i))).collect();
@@ -669,7 +670,7 @@ fn find_marks(path: &Path, dir: &Path, py: &Path, pages: &mut [PageRead]) {
         }
         eprintln!("Looking for the marks of footnotes on {} pages…", todo.len());
         progress::report(Step::Marks, 0, todo.len());
-        let requests: String = todo.iter().map(|i| format!("{}\n", head(*i).replacen("want", &pages[*i].number.to_string(), 1))).collect();
+        let requests: String = todo.iter().map(|i| format!("{}\n", head(*i).replacen("want2", &pages[*i].number.to_string(), 1))).collect();
         let child = Command::new(py).arg(&script).arg(path).arg(dir).stdin(std::process::Stdio::piped()).stdout(std::process::Stdio::null()).stderr(std::process::Stdio::piped()).spawn();
         let Ok(mut child) = child else { return };
         if let Some(mut pipe) = child.stdin.take() {
@@ -712,6 +713,7 @@ fn find_marks(path: &Path, dir: &Path, py: &Path, pages: &mut [PageRead]) {
             if i + 1 < pages.len() && !own(i + 1) {
                 tries.push(i + 1);
             }
+            let before = placed;
             'pages: for j in tries {
                 for (l, words) in &found[j] {
                     if l == label && place_mark(&mut pages[j], words, label) {
@@ -719,6 +721,9 @@ fn find_marks(path: &Path, dir: &Path, py: &Path, pages: &mut [PageRead]) {
                         break 'pages;
                     }
                 }
+            }
+            if placed == before && std::env::var_os("PDF2MD_MARKDEBUG").is_some() {
+                eprintln!("MARK p{} {label} not placed", pages[i].number);
             }
         }
     }
@@ -744,12 +749,14 @@ fn text_words(html: &str) -> Vec<(String, usize)> {
             continue;
         }
         let c = html[i..].chars().next().unwrap();
+        // (a character written by its name, "&quot;": no word)
+        let named = if c == '&' { html[i..].find(';').filter(|e| *e <= 8 && html[i + 1..i + e].chars().all(|c| c.is_ascii_alphanumeric() || c == '#')) } else { None };
         if c.is_alphanumeric() {
             word.extend(c.to_lowercase());
         } else if !word.is_empty() {
             out.push((std::mem::take(&mut word), i));
         }
-        i += c.len_utf8();
+        i += named.map_or(c.len_utf8(), |e| e + 1);
     }
     if !word.is_empty() {
         out.push((word, html.len()));
@@ -765,32 +772,70 @@ fn text_words(html: &str) -> Vec<(String, usize)> {
 
 /// Put the mark of footnote `label` into the text of the page behind the
 /// word it follows: the last of `words` (what Tesseract read there; the
-/// word before it tells which one, where the word comes more than once).
-/// Only if that place is the only one; says whether it did.
+/// words before it tell which one, where the word comes more than once:
+/// as many of them as it takes, and as the text has there, Tesseract
+/// misreading the odd one). Only if that place is the only one; says
+/// whether it did.
 fn place_mark(page: &mut PageRead, words: &[String], label: &str) -> bool {
     let norm = |w: &str| w.chars().filter(|c| c.is_alphanumeric()).flat_map(char::to_lowercase).collect::<String>();
-    let Some(last) = words.last().map(|w| norm(w)).filter(|w| !w.is_empty()) else { return false };
-    let before = words.len().checked_sub(2).map(|k| norm(&words[k])).filter(|w| !w.is_empty());
+    // the words as `text_words` cuts them ("I.10.4)" is three); a word cut
+    // in two at the end of a line ("veni-", "son") is one in the text
+    let mut joined: Vec<String> = Vec::new();
+    for w in words {
+        match joined.last_mut() {
+            Some(last) if last.ends_with('-') && last.len() > 1 => {
+                last.pop();
+                last.push_str(w);
+            }
+            _ => joined.push(w.clone()),
+        }
+    }
+    let cut = |ws: &[String]| -> Vec<String> { ws.iter().flat_map(|w| w.split(|c: char| !c.is_alphanumeric()).map(norm).collect::<Vec<_>>()).filter(|w| !w.is_empty()).collect() };
     let texty = |b: &Raw| is_text(b) || b.kind == "Equation";
-    // (block, place) of each fit, with the word before it or without
-    let fits = |with_before: bool| -> Vec<(usize, usize)> {
+    // (block, place) of each place where the last `depth` of `wanted` stand
+    let fits = |wanted: &[String], depth: usize| -> Vec<(usize, usize)> {
+        let tail = &wanted[wanted.len() - depth..];
         let mut out = Vec::new();
         for (k, b) in page.blocks.iter().enumerate().filter(|(_, b)| texty(b)) {
             let ws = text_words(&b.html);
-            for (n, (w, at)) in ws.iter().enumerate() {
-                let prev_ok = !with_before || before.as_ref().is_none_or(|p| n > 0 && &ws[n - 1].0 == p);
-                if *w == last && prev_ok {
-                    out.push((k, *at));
+            for n in (depth - 1)..ws.len() {
+                if ws[n + 1 - depth..=n].iter().map(|w| &w.0).eq(tail.iter()) {
+                    out.push((k, ws[n].1));
                 }
             }
         }
         out
     };
-    let mut places = fits(true);
-    if places.is_empty() {
-        places = fits(false);
+    // with all the words before it, then with fewer, down to the word
+    // alone (and if the words with the cut one joined stand nowhere, as
+    // they are: the word may be written with its hyphen)
+    let mut places = Vec::new();
+    for wanted in [cut(&joined), cut(words)] {
+        places = (1..=wanted.len()).rev().map(|d| fits(&wanted, d)).find(|p| !p.is_empty()).unwrap_or_default();
+        if std::env::var_os("PDF2MD_MARKDEBUG").is_some() {
+            eprintln!("MARK p{} {label} {} places for {wanted:?}", page.number, places.len());
+        }
+        if !places.is_empty() {
+            break;
+        }
     }
     let [(k, at)] = places[..] else { return false };
+    // The marks of a page rise from one to the next: a mark that would
+    // stand before a lower one, or behind a higher one, is no mark (an
+    // exponent that reads as the number looked for).
+    if let Ok(mine) = label.parse::<u32>() {
+        for (j, b) in page.blocks.iter().enumerate().filter(|(_, b)| texty(b) && b.kind != "Footnote") {
+            let mut from = 0;
+            while let Some(open) = b.html[from..].find("<sup>").map(|o| from + o) {
+                from = open + 5;
+                let Some(other) = b.html[from..].split("</sup>").next().and_then(|n| n.parse::<u32>().ok()) else { continue };
+                let behind_me = (j, open) >= (k, at);
+                if (behind_me && other < mine) || (!behind_me && other > mine) {
+                    return false;
+                }
+            }
+        }
+    }
     page.blocks[k].html.insert_str(at, &format!("<sup>{label}</sup>"));
     true
 }
