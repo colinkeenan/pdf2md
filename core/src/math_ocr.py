@@ -428,7 +428,8 @@ def lines_apart(img, t: str, model, processor, batch_inference):
     * the whole reading shows where its lines end (`line_spaces`): cut there;
     * read line by line, it says the same as the whole reading: the lines;
     * the whole reading says the same as the lines without one of them (the
-      model left a line out): the lines;
+      model left a line out): the lines (a low line must be missing from
+      it altogether);
     * two lines, and the whole reading starts with what the first line reads
       as: cut where that ends.
 
@@ -438,6 +439,10 @@ def lines_apart(img, t: str, model, processor, batch_inference):
     parts = rows(img)
     n = len(parts)
     if n < 2 or line_breaks(t) + 1 >= n:
+        return None
+    # (cut into lines here before, into fewer than the picture has rows:
+    # the rows are no lines, see below)
+    if t.startswith("\\begin{aligned}"):
         return None
     if "\\begin" not in t:
         # (a line set in may start with wide spaces and no plain one)
@@ -454,7 +459,19 @@ def lines_apart(img, t: str, model, processor, batch_inference):
     limit = max(2, len(canonical(whole)) // 10)
     if difference(whole, " ".join(lines)) <= limit:
         return as_block(lines)
-    if "\\begin" in t or any(p.height < FULL_LINE for p in parts) or rule_between(parts):
+    if "\\begin" in t or rule_between(parts):
+        return None
+    # A low line (a short remark in small type under the equation) that
+    # the model left out altogether: the whole reading says just what the
+    # other lines say, and the low one reads as three symbols or more.
+    # (The limits under a sum are low, too, but the whole reading has them.)
+    low = [j for j, p in enumerate(parts) if p.height < FULL_LINE]
+    if low:
+        others = " ".join(l for j, l in enumerate(lines) if j not in low)
+        if all(len(canonical(lines[j])) >= 3 for j in low) and difference(whole, others) <= 1:
+            for j in low:
+                lines[j] = low_line(parts[j], model, processor, batch_inference) or lines[j]
+            return as_block(lines)
         return None
     for j in range(n):
         if difference(whole, " ".join(lines[:j] + lines[j + 1 :])) <= limit:
@@ -472,7 +489,25 @@ def lines_apart(img, t: str, model, processor, batch_inference):
 
 # NAME.lines holds the number of the rules the image was looked at with (keep
 # in step with `lines_looked_at` in ocr.rs), or "never" if it is not to be.
-LINES_RULE = "2"
+def low_line(part, model, processor, batch_inference):
+    """A line no higher than its small letters, read once more: cut close
+    to its ink, with a margin (the model then tells a full stop from a
+    comma), and with small letters where it reads capitals of the same
+    shape (it cannot tell their size with nothing beside them, but a
+    capital would stand higher than this line is)."""
+    from PIL import ImageOps
+
+    box = ImageOps.invert(part.convert("L")).point(lambda v: 255 if v > 95 else 0).getbbox()
+    if box is None:
+        return None
+    t = read_one(ImageOps.expand(part.crop(box), border=16, fill="white"), model, processor, batch_inference)
+    if t is None:
+        return None
+    # (single letters only: not the letters of a command's name)
+    return re.sub(r"(?<![A-Za-z\\])[COSVWXZ](?![A-Za-z])", lambda m: m.group(0).lower(), t)
+
+
+LINES_RULE = "3"
 
 
 def lines_looked_at(dst, stem: str) -> bool:
