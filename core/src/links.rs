@@ -144,7 +144,7 @@ fn contents_table(entries: &[crate::TocEntry], items: Vec<Block>) -> Block {
         .filter(|row| !row.is_empty())
         .collect();
     // (a narrow column for the numbers, one for the pages)
-    Block::Table { rows, widths: vec![10, 0, 20], key: String::new() }
+    Block::Table { rows, widths: vec![10, 0, 20], key: String::new(), title: Vec::new() }
 }
 
 fn link_entries(
@@ -796,6 +796,7 @@ fn text_runs(ch: &mut Chapter) -> Vec<&mut Vec<Inline>> {
         .chain(notes)
         .filter_map(|b| match b {
             Block::Para(inl) | Block::Item { text: inl, .. } | Block::PageNote { text: inl, .. } => Some(inl),
+            Block::Table { title, .. } if !title.is_empty() => Some(title),
             _ => None,
         })
         .collect()
@@ -1154,7 +1155,8 @@ pub fn link_cross_refs(chapters: &mut [Chapter]) {
                         }
                     }
                 }
-                Block::Para(inl) => {
+                // (a caption, also one that is the title of its table)
+                Block::Para(inl) | Block::Table { title: inl, .. } => {
                     if let Some((kind, n)) = caption(inl) {
                         let id = format!("{}-{n}", if kind == "figure" { "fig" } else { kind });
                         if let std::collections::hash_map::Entry::Vacant(e) = target.entry(format!("{kind} {n}")) {

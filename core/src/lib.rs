@@ -146,7 +146,10 @@ pub enum Block {
     /// `key`: what the reader's corrections of its cells are kept by (see
     /// [`table_key`]); empty for a table that is made anew each time (the
     /// contents).
-    Table { rows: Vec<Vec<Cell>>, widths: Vec<u8>, key: String },
+    /// `title`: the table's caption, where the book sets it as the top of
+    /// the table itself (a panel as wide as the table): written as a cell
+    /// across all columns, above the rows.
+    Table { rows: Vec<Vec<Cell>>, widths: Vec<u8>, key: String, title: Vec<Inline> },
     /// A picture without a number or a caption of its own: area `area` of
     /// PDF page `page`, cut from the page (a table as printed, under the
     /// table read from it). `alt`: what it is, for where it cannot be shown.

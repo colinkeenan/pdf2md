@@ -611,7 +611,7 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
             }
         }
         Block::Picture { page, area, alt } => out.push_str(&format!("![{alt}]({})\n\n", picture_file(*page, area))),
-        Block::Table { rows, widths, key } => {
+        Block::Table { rows, widths, key, title } => {
             // (which table this is, invisible: a cell the reader corrects
             // is kept for the next conversion)
             if !key.is_empty() {
@@ -627,6 +627,11 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
                     out.push_str(&if *w > 0 { format!("<col width=\"{w}%\">") } else { "<col>".to_string() });
                 }
                 out.push_str("</colgroup>\n");
+            }
+            // the title: a cell across all the columns
+            if !title.is_empty() {
+                let columns = rows.iter().map(|r| r.iter().map(|c| c.span.max(1)).sum::<usize>()).max().unwrap_or(1);
+                out.push_str(&format!("<tr>\n<td colspan=\"{columns}\" align=\"center\">\n\n{}\n\n</td>\n</tr>\n", render_inlines(title).replace("<br>\n", "<br>").trim()));
             }
             for (r, row) in rows.iter().enumerate() {
                 out.push_str("<tr>\n");

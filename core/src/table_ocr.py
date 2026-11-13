@@ -7,10 +7,12 @@ space), and each cell is read on its own.
 
     table_ocr.py PENDING_DIR OUT_DIR
 
-reads every PENDING_DIR/NAME.png and writes OUT_DIR/NAME.cells: a line for
-each row of the table, its cells parted by tabs, each cell LaTeX (words as
-\\text{...}; an empty cell is empty). No file is written for a picture
-that does not part into two rows and two columns or more.
+reads every PENDING_DIR/NAME.png and writes OUT_DIR/NAME.cells: the line
+"aligned", then a line for each row of the table, its cells parted by
+tabs. A cell is "<", "^" or ">" (set at the left of its column, in its
+middle, at its right) and its LaTeX (words as \\text{...}); an empty cell
+is empty. No file is written for a picture that does not part into two
+rows and two columns or more.
 """
 
 import re
@@ -105,7 +107,9 @@ def cells_of(gray):
             if left > 0 and right < w:
                 # (not across a whole column that the row leaves empty)
                 votes.append(right - left)
-        near = [v for v in votes if v < 6 * line]
+        # (a row that leaves a column empty there does not tell; but if
+        # every row has that far from one side to the other, they all do)
+        near = [v for v in votes if v < 6 * line] or votes
         if near and min(near) >= wide:
             seps.append((a + b) // 2)
     cols = list(zip([0] + seps, seps + [w]))
@@ -139,6 +143,38 @@ def cells_of(gray):
     return parted, cols, ink
 
 
+def alignments(spans, rows):
+    """How each cell is set in its column: "<" at the left, "^" in the
+    middle, ">" at the right, by where its ink starts and ends between the
+    leftmost and the rightmost ink of the column. A cell that fills the
+    column from side to side does not tell: it is set as most of the
+    others of its column are (in the middle if none tells)."""
+    # (the head is the first row)
+    heights = sorted(b - a for a, b in rows)
+    near = 0.5 * heights[len(heights) // 2]
+    signs = [[""] * len(r) for r in spans]
+    for c in range(len(spans[0])):
+        cells = [r[c] for r in spans]
+        there = [s for s in cells if s is not None]
+        if not there:
+            continue
+        left, right = min(s[0] for s in there), max(s[1] for s in there)
+        for r, s in enumerate(cells):
+            if s is None:
+                continue
+            at_left, at_right = s[0] - left <= near, right - s[1] <= near
+            signs[r][c] = "?" if at_left and at_right else "<" if at_left else ">" if at_right else "^"
+        # (the cells under the head first: a head is often set in the
+        # middle of a column whose cells are not)
+        tells = lambda rows_: [signs[r][c] for r in rows_ if signs[r][c] and signs[r][c] in "<^>"]
+        told = tells(range(1, len(cells))) or tells(range(len(cells)))
+        most = max("^<>", key=told.count) if told else "^"
+        for r in range(len(cells)):
+            if signs[r][c] == "?":
+                signs[r][c] = most
+    return signs
+
+
 def number(img: Image.Image):
     """A cell that is a whole number ("3", "-2"), read as figures only (the
     math recognizer makes signs of lone figures); None if it is not one,
@@ -156,7 +192,8 @@ def number(img: Image.Image):
         try:
             # what it is without help: letters mean it is no number
             free = subprocess.run(["tesseract", tmp.name, "-", "--psm", "7"], capture_output=True, text=True, timeout=60, env=env).stdout.strip()
-            if re.search(r"[A-Za-z]{2,}|[=+(),/\\[\]{}]", free):
+            # (nor is a lone letter one, unless it is what a 1 or a 0 reads as)
+            if re.search(r"[A-Za-z]{2,}|[=+(),/\\[\]{}]|[A-HJ-NP-Za-km-np-z]", free):
                 return None
             # (read freely it keeps its minus sign, which the figures-only reading can lose)
             free = re.sub(r"[—–−~_]", "-", free).replace(" ", "")
@@ -193,11 +230,15 @@ def main():
         rows, cols, ink = found
         ground = int(np.median(gray))
         grid = []
+        # (where each cell's ink starts and ends in its column)
+        spans = []
         for top, bottom in rows:
             crops = []
+            spans.append([])
             for left, right in cols:
                 part = ink[top:bottom, left:right]
                 xs = np.where(part.sum(axis=0) > 0)[0]
+                spans[-1].append((int(xs[0]), int(xs[-1]) + 1) if len(xs) else None)
                 if len(xs) == 0:
                     crops.append(None)
                     continue
@@ -211,7 +252,7 @@ def main():
                 stacked = len(bands(part, 1)) > 1
                 crops.append((img, stacked))
             grid.append(crops)
-        todo.append((f, grid))
+        todo.append((f, grid, alignments(spans, rows)))
     if not todo:
         return
     from texify.inference import batch_inference
@@ -219,9 +260,9 @@ def main():
     from texify.model.processor import load_processor
 
     model, processor = load_model(), load_processor()
-    for f, grid in todo:
-        lines = []
-        for crops in grid:
+    for f, grid, aligned in todo:
+        lines = ["aligned"]
+        for crops, signs in zip(grid, aligned):
             cells = []
             for crop in crops:
                 if crop is None:
@@ -251,9 +292,9 @@ def main():
                     t = one.group(1).strip()
                 t = t.replace("\\operatorname{l}", "1")
                 cells.append(t)
-            lines.append("\t".join(cells))
+            lines.append("\t".join(sign + cell if cell else "" for sign, cell in zip(signs, cells)))
         (dst / f"{f.stem}.cells").write_text("\n".join(lines) + "\n")
-        print(f"  table {f.stem}: {len(lines)} rows, {max(len(l.split(chr(9))) for l in lines)} columns", file=sys.stderr, flush=True)
+        print(f"  table {f.stem}: {len(lines) - 1} rows, {max(len(l.split(chr(9))) for l in lines)} columns", file=sys.stderr, flush=True)
 
 
 if __name__ == "__main__":

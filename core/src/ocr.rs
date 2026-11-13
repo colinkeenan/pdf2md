@@ -825,7 +825,11 @@ pub fn read_picture_tables(book: &mut crate::Book, pdf: &std::path::Path) {
             }
         }
     }
-    let todo: Vec<_> = tables.iter().filter(|t| !dir.join(format!("{}.cells", t.2)).exists()).collect();
+    // (read before, and with how each cell is set in its column: the
+    // first line of such a reading says "aligned"; an empty one is of a
+    // picture that is no table of rows and columns)
+    let read_before = |key: &str| std::fs::read_to_string(dir.join(format!("{key}.cells"))).is_ok_and(|t| t.is_empty() || t.starts_with("aligned\n"));
+    let todo: Vec<_> = tables.iter().filter(|t| !read_before(&t.2)).collect();
     if !todo.is_empty() {
         let pending = dir.join("tables");
         if std::fs::create_dir_all(&pending).is_err() {
@@ -855,15 +859,24 @@ pub fn read_picture_tables(book: &mut crate::Book, pdf: &std::path::Path) {
         for (_, _, key, _, _) in &todo {
             let _ = std::fs::remove_file(pending.join(format!("{key}.png")));
             // (not looked at again if it is no table of rows and columns)
-            let cells = dir.join(format!("{key}.cells"));
-            if !cells.exists() {
-                let _ = std::fs::write(cells, "");
+            if !read_before(key) {
+                let _ = std::fs::write(dir.join(format!("{key}.cells")), "");
             }
         }
     }
     for (c, b, key, _, _) in tables {
         let Ok(text) = std::fs::read_to_string(dir.join(format!("{key}.cells"))) else { continue };
-        let mut read: Vec<Vec<crate::Cell>> = text.lines().map(|l| l.split('\t').map(crate::blocks::table_cell).collect()).collect();
+        // a cell: how it is set in its column ("<", "^", ">"), and its LaTeX
+        let cell = |t: &str| {
+            let (align, tex) = match t.chars().next() {
+                Some('<') => (crate::Align::Left, &t[1..]),
+                Some('^') => (crate::Align::Center, &t[1..]),
+                Some('>') => (crate::Align::Right, &t[1..]),
+                _ => (crate::Align::Left, t),
+            };
+            crate::Cell { align, ..crate::blocks::table_cell(tex) }
+        };
+        let mut read: Vec<Vec<crate::Cell>> = text.lines().skip_while(|l| *l == "aligned").map(|l| l.split('\t').map(cell).collect()).collect();
         read.retain(|r: &Vec<crate::Cell>| r.iter().any(|cell| !cell.text.is_empty()));
         let columns = read.iter().map(Vec::len).max().unwrap_or(0);
         if read.len() < 2 || columns < 2 {

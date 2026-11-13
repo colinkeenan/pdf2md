@@ -558,9 +558,31 @@ fn emit_line(doc: &Doc, l: &Line, st: &Stats, spans: &[crate::layout::Span], kin
 /// formula is the table: its rows and cells, with the picture it was read
 /// from right under it (a cell can be misread; the picture shows what
 /// stands there). `boxes`: where each equation picture is on its page.
+///
+/// Such a book sets the caption centered on a panel on top of the table,
+/// as its first row; it comes as centered paragraphs, cut where its lines
+/// end and where the page turns. They are the table's title then: one
+/// cell across its columns.
 fn picture_tables(blks: Vec<Blk>, boxes: &HashMap<String, (u32, Figure)>) -> Vec<Blk> {
     let is_caption = |inl: &[Inline]| crate::links::caption(inl).is_some_and(|(kind, _)| kind == "table");
     let array = |tex: &str| tex.trim_start().starts_with("\\begin{array}");
+    // where the caption starts that the last blocks are: centered
+    // paragraphs (and marks of pages) back to one that starts as a
+    // table's caption does, a dozen blocks at most
+    let caption_start = |out: &[Blk]| -> Option<usize> {
+        for (k, b) in out.iter().enumerate().rev().take(12) {
+            match &b.block {
+                Block::Para(inl) if b.centered => {
+                    if is_caption(inl) {
+                        return Some(k);
+                    }
+                }
+                Block::Anchor(_) => {}
+                _ => return None,
+            }
+        }
+        None
+    };
     let mut out: Vec<Blk> = Vec::new();
     for blk in blks {
         // the formula of this block, if it is all of it or stands at its end
@@ -572,9 +594,12 @@ fn picture_tables(blks: Vec<Blk>, boxes: &HashMap<String, (u32, Figure)>) -> Vec
             },
             _ => None,
         };
-        // (under a table's caption: in the block itself, or one of the last few)
+        // (under a table's caption: in the block itself, or one of the
+        // last few, or at the start of the centered paragraphs above)
         let captioned = |before: &[Inline]| {
-            is_caption(before) || out.iter().rev().filter(|b| !matches!(b.block, Block::Anchor(_))).take(3).any(|b| matches!(&b.block, Block::Para(inl) if is_caption(inl)))
+            is_caption(before)
+                || out.iter().rev().filter(|b| !matches!(b.block, Block::Anchor(_))).take(3).any(|b| matches!(&b.block, Block::Para(inl) if is_caption(inl)))
+                || (blk.centered && caption_start(&out).is_some())
         };
         let table = found.as_ref().filter(|(before, _, _)| captioned(before)).and_then(|(_, _, tex)| array_table(tex));
         let (Some((before, key, _)), Some(rows)) = (found, table) else {
@@ -582,11 +607,33 @@ fn picture_tables(blks: Vec<Blk>, boxes: &HashMap<String, (u32, Figure)>) -> Vec
             continue;
         };
         let (page, centered) = (blk.page, blk.centered);
-        if has_text(&before) {
+        // The title: the centered paragraphs from the caption's start to
+        // the table (the page's mark among them stays in front of the table).
+        let mut title: Vec<Inline> = Vec::new();
+        let start = caption_start(&out).filter(|_| centered && !is_caption(&before));
+        if let Some(start) = start {
+            let mut marks = Vec::new();
+            for b in out.split_off(start) {
+                match b.block {
+                    Block::Para(inl) => {
+                        if !title.is_empty() {
+                            title.push(Inline::Text(" ".into()));
+                        }
+                        title.extend(inl);
+                    }
+                    _ => marks.push(b),
+                }
+            }
+            out.extend(marks);
+        }
+        if centered && (start.is_some() || is_caption(&before)) {
+            title.extend(before.clone());
+            title = tidy(title.into_iter().map(|i| if i == Inline::Break { Inline::Text(" ".into()) } else { i }).collect());
+        } else if has_text(&before) {
             out.push(Blk { block: Block::Para(tidy(before)), page, centered });
         }
         // (keyed by the picture it was read from)
-        let table = Block::Table { key: crate::table_key(boxes.get(&key).map_or(0, |b| b.0), &rows), rows, widths: Vec::new() };
+        let table = Block::Table { key: crate::table_key(boxes.get(&key).map_or(0, |b| b.0), &rows), rows, widths: Vec::new(), title };
         out.push(Blk { block: table, page, centered: false });
         if let Some((number, area)) = boxes.get(&key) {
             out.push(Blk { block: Block::Picture { page: *number, area: *area, alt: crate::TABLE_READ.into() }, page, centered: false });
@@ -927,7 +974,7 @@ fn panel_tables(
         }
         if rows.len() >= 2 {
             // (with where the panel is: the picture of the table as it is set)
-            out.push((first, end, Some(Block::Table { key: crate::table_key(page.number, &rows), rows, widths: Vec::new() }), area));
+            out.push((first, end, Some(Block::Table { key: crate::table_key(page.number, &rows), rows, widths: Vec::new(), title: Vec::new() }), area));
             carried.head_taken |= !head.is_empty();
             if panel.bottom > 0.85 * page.height {
                 carried.columns = Some(edges.clone());
