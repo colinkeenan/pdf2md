@@ -8,7 +8,7 @@ space), and each cell is read on its own.
     table_ocr.py PENDING_DIR OUT_DIR [--ruled]
 
 reads every PENDING_DIR/NAME.png and writes OUT_DIR/NAME.cells: the line
-"aligned", then a line for each row of the table, its cells parted by
+"aligned 2", then a line for each row of the table, its cells parted by
 tabs. A cell is "<", "^" or ">" (set at the left of its column, in its
 middle, at its right) and its LaTeX (words as \\text{...}); an empty cell
 is empty. No file is written for a picture that does not part into two
@@ -26,6 +26,12 @@ import numpy as np
 from PIL import Image, ImageOps
 
 import math_ocr
+
+
+# The first line of a reading: which way of reading wrote it (keep in step
+# with `read_tables` in ocr.rs). A reading that starts otherwise is of an
+# earlier way and is made anew.
+HEAD = "aligned 2"
 
 
 def bands(mask, least_gap: int):
@@ -301,7 +307,7 @@ def main():
 
     model, processor = load_model(), load_processor()
     for f, grid, aligned in todo:
-        lines = ["aligned"]
+        lines = [HEAD]
         for crops, signs in zip(grid, aligned):
             cells = []
             for crop in crops:

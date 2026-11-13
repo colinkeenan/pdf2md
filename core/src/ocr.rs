@@ -893,10 +893,10 @@ fn read_tables(book: &mut crate::Book, pdf: &std::path::Path) {
             }
         }
     }
-    // (read before, and with how each cell is set in its column: the
-    // first line of such a reading says "aligned"; an empty one is of a
-    // picture that is no table of rows and columns)
-    let read_before = |key: &str| std::fs::read_to_string(dir.join(format!("{key}.cells"))).is_ok_and(|t| t.is_empty() || t.starts_with("aligned\n"));
+    // (read before, in the way cells are read now: the first line of such
+    // a reading says "aligned 2", see `table_ocr.py`; an empty one is of
+    // a picture that is no table of rows and columns)
+    let read_before = |key: &str| std::fs::read_to_string(dir.join(format!("{key}.cells"))).is_ok_and(|t| t.is_empty() || t.starts_with("aligned 2\n"));
     type Found = Vec<(usize, usize, String, u32, crate::layout::Figure)>;
     let read = |found: &Found, ruled: bool| {
         let todo: Vec<_> = found.iter().filter(|t| !read_before(&t.2)).collect();
@@ -958,7 +958,7 @@ fn read_tables(book: &mut crate::Book, pdf: &std::path::Path) {
             };
             crate::Cell { align, ..crate::blocks::table_cell(tex) }
         };
-        let mut read: Vec<Vec<crate::Cell>> = text.lines().skip_while(|l| *l == "aligned").map(|l| l.split('\t').map(cell).collect()).collect();
+        let mut read: Vec<Vec<crate::Cell>> = text.lines().skip_while(|l| l.starts_with("aligned")).map(|l| l.split('\t').map(cell).collect()).collect();
         read.retain(|r: &Vec<crate::Cell>| r.iter().any(|cell| !cell.text.is_empty()));
         let columns = read.iter().map(Vec::len).max().unwrap_or(0);
         if read.len() < 2 || columns < 2 {
