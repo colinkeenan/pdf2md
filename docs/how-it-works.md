@@ -116,7 +116,7 @@ This is the path for a PDF made with TeX, where the math is text in math fonts. 
 
 * **Printed page numbers** come from the running head ("THE DIRAC THEORY 6") or from a lone number at the foot of the page.
 * **Chapters** start at headings in the chapter-title size: the most common large size that holds real words.
-* **Section headings** are short lines that are wholly italic or bold with space above, or short plain lines with space above and below. Contents entries are matched to headings on the page they name, also when the wording differs a little. An italic line that starts with a small letter is not a heading.
+* **Section headings** are short lines that are wholly italic or bold with space above, or short plain lines with space above and below. Contents entries are matched to headings on the page they name, also when the wording differs a little. An italic line that starts with a small letter is not a heading. Nor is a line that leads straight into a displayed formula ("This can be rewritten as"), unless it is a styled title of a word or two.
 * **Heading levels.** In a book without section numbers, the indentation in the contents decides `##` or `###`, and a heading the contents do not list goes by its type size. In a book that numbers its sections, the number decides: `1.3` is `#` and `1.3.1` is `##`, or one level deeper each where the chapter titles are at least a quarter larger than the `1.3` headings. An unnumbered heading takes the level of the numbered headings of its size.
 
 ### Text
