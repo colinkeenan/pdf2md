@@ -46,7 +46,7 @@ There are two ways to start the app. Both are run in the cloned repository.
 cargo run --release -p pdf2md-app
 ```
 
-This builds the app into the repository's `target/release/` folder if the source has changed, then starts it. It always runs the current source, but only from a terminal.
+This builds the app into the repository's `target/release/` folder if the source has changed, then starts it. It always runs the current source, but only from a terminal. Without `--release`, cargo makes a slower debug build in `target/debug/` instead.
 
 *Install it*, so that it appears as "pdf2md" in your app launcher and `pdf2md-app` works in any terminal:
 
