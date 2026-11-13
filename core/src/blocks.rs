@@ -812,6 +812,10 @@ struct Carried {
 /// on the next page. Those lines are held back (the entry for them has no
 /// table) and go into the head of the table there, if `next_takes` says
 /// that the next page has such a table.
+///
+/// The answer for each table: its first line, where it ends, the table
+/// (or none, see above), where it stands, and whether it is the rest of
+/// the table of the page before.
 fn panel_tables(
     doc: &Doc,
     page: &crate::layout::Page,
@@ -819,7 +823,7 @@ fn panel_tables(
     st: &Stats,
     carried: &mut Carried,
     next_takes: &dyn Fn(&[Line]) -> bool,
-) -> Vec<(usize, usize, Option<Block>, Figure)> {
+) -> Vec<(usize, usize, Option<Block>, Figure, bool)> {
     let mut out = Vec::new();
     let from_before = std::mem::take(carried);
     for (panel, light) in &page.shades {
@@ -827,6 +831,7 @@ fn panel_tables(
             continue;
         }
         let tall = panel.bottom - panel.top >= 2.0 * st.body;
+        let mut goes_on = false;
         // the lines on the panel: they must be a run of the page's lines
         let inside = |l: &Line| l.top >= panel.top - 3.0 && l.top < panel.bottom && l.left >= panel.left - 3.0 && l.right <= panel.right + 3.0;
         let area = Figure { left: panel.left, right: panel.right, top: panel.top, bottom: panel.bottom };
@@ -841,7 +846,10 @@ fn panel_tables(
             // (no rules: the rest of the table of the page before, if this
             // panel starts the page and stands where that table stood)
             match &from_before.columns {
-                Some(before) if tall && panel.top < 0.15 * page.height && (panel.left - before[0]).abs() < 6.0 => edges = before.clone(),
+                Some(before) if tall && panel.top < 0.15 * page.height && (panel.left - before[0]).abs() < 6.0 => {
+                    edges = before.clone();
+                    goes_on = true;
+                }
                 _ => {
                     // (or, at the foot of the page, the first lines of the
                     // head of a table that the next page has)
@@ -849,7 +857,7 @@ fn panel_tables(
                         let end = first + lines[first..].iter().take_while(|l| inside(l)).count();
                         if !lines[end..].iter().any(inside) && next_takes(&lines[first..end]) {
                             carried.head = lines[first..end].to_vec();
-                            out.push((first, end, None, area));
+                            out.push((first, end, None, area, false));
                         }
                     }
                     continue;
@@ -1000,7 +1008,7 @@ fn panel_tables(
         }
         if rows.len() >= 2 {
             // (with where the panel is: the picture of the table as it is set)
-            out.push((first, end, Some(Block::Table { key: crate::table_key(page.number, &rows), rows, widths: Vec::new(), title: Vec::new(), note: Vec::new() }), area));
+            out.push((first, end, Some(Block::Table { key: crate::table_key(page.number, &rows), rows, widths: Vec::new(), title: Vec::new(), note: Vec::new() }), area, goes_on));
             carried.head_taken |= !head.is_empty();
             if panel.bottom > 0.85 * page.height {
                 carried.columns = Some(edges.clone());
@@ -1835,7 +1843,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
         }
         let mut disp = display_flags(doc, &lines[..end], st);
         // (a line of a table is no displayed formula, and none runs on into one)
-        for (first, last, _, _) in &panels {
+        for (first, last, _, _, _) in &panels {
             for flag in disp.iter_mut().take(*last).skip(*first) {
                 *flag = false;
             }
@@ -1900,16 +1908,20 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 fi += 1;
                 prev_top = None;
             }
-            if let Some((_, j, table, area)) = panels.iter().find(|t| t.0 == i) {
+            if let Some((_, j, table, area, goes_on)) = panels.iter().find(|t| t.0 == i) {
                 b.flush();
                 let mut j = *j;
                 // (no table: lines of a head that the table of the next page takes)
                 if let Some(table) = table {
+                    // The rest of the table of the page before: where that
+                    // table stands, if only its picture, the page's mark
+                    // and the page's notes have come since.
+                    let before = b.out.iter().rposition(|o| !matches!(o.block, Block::Picture { .. } | Block::Anchor(_) | Block::PageNote { .. })).filter(|k| *goes_on && matches!(b.out[*k].block, Block::Table { .. }));
                     b.anchor_block();
                     let mut table = table.clone();
                     // The caption on its panel on top of the table: the
                     // table's title, a cell across its columns.
-                    if let (Some(start), Block::Table { title, .. }) = (caption_above(&b.out), &mut table) {
+                    if let (Some(start), Block::Table { title, .. }, None) = (caption_above(&b.out), &mut table, before) {
                         *title = tidy(take_caption(&mut b.out, start));
                     }
                     // The table's own note, on a panel right under it: the
@@ -1940,9 +1952,29 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                             j = last;
                         }
                     }
-                    b.push(table);
-                    // (the printed table under it, to check it against)
-                    b.push(Block::Picture { page: number, area, alt: crate::TABLE_SET.into() });
+                    let picture = Block::Picture { page: number, area, alt: crate::TABLE_SET.into() };
+                    match (before, table) {
+                        // One table with the part of the page before: its
+                        // rows go under that part's rows (the cells of that
+                        // part keep their places, and the table its key),
+                        // and its picture goes behind that part's picture.
+                        (Some(k), Block::Table { rows: more, note: foot, .. }) => {
+                            if let Block::Table { rows, note, .. } = &mut b.out[k].block {
+                                rows.extend(more);
+                                if !foot.is_empty() {
+                                    *note = foot;
+                                }
+                            }
+                            let at = k + 1 + b.out[k + 1..].iter().take_while(|o| matches!(o.block, Block::Picture { .. })).count();
+                            let page = b.out[k].page;
+                            b.out.insert(at, Blk { block: picture, page, centered: false });
+                        }
+                        (_, table) => {
+                            b.push(table);
+                            // (the printed table under it, to check it against)
+                            b.push(picture);
+                        }
+                    }
                 }
                 prev_top = Some(lines[j - 1].top);
                 last_heading = None;
