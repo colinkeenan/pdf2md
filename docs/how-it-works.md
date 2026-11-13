@@ -91,7 +91,7 @@ Pictures are cut from the PDF as PNG files in `images/`; `fig-p049-1.png` is the
 
 ### Tables and columns
 
-A table is written as an HTML table with Markdown in its cells. Under every table that pdf2md builds stands a picture of the printed table in a fold, because a cell can be misread. A page set in two columns, such as an index, stays in two columns.
+A table is written as an HTML table with Markdown in its cells. Under every table that pdf2md builds stands a picture of the printed table in a fold, because a cell can be misread. A title or a note that the book sets as part of the table is a cell across all its columns, in a row marked `<tr class="title">` or `<tr class="note">`. A page set in two columns, such as an index, stays in two columns.
 
 ## The two forms of math
 
@@ -170,6 +170,8 @@ Each equation picture goes to [texify](https://github.com/VikParuchuri/texify), 
 * **Words under an equation.** Some pictures label their parts with small words underneath, such as "bra" and "ket". The model drops such words or reads them as symbols. pdf2md reads the picture again without that band and puts the words back in a second row, each centred where it stood. The places are estimates, so a word may stand a little off. Sakurai has three such equations.
 * **A second reading.** Each displayed equation is read again from the picture enlarged. Where the two readings are different formulas, formatting aside, the equation is listed in `check-equations.md`, biggest differences first.
 
+**What is kept of the readings.** Everything read from a picture is kept in `~/.cache/pdf2md/ocr/` under the picture's key: the reading (`KEY.tex`), the second reading and how far the two differ (`KEY.second`, `KEY.verify`), the cells of a table (`KEY.cells`), and marks that say which checks the picture has had (`KEY.kind`, `KEY.lines`, `KEY.labels`, `KEY.small`, `KEY.bold`). `KEY.lines` and the first line of `KEY.cells` name the version of the rules that looked at the picture, so a reading kept from an earlier version is looked at again once when the rules have changed. That is why the first conversion after an update takes minutes, not seconds.
+
 ### Math in the text font
 
 Inside a sentence, an italic letter is a variable and the brackets and "=" around it are ordinary characters. The PDF gives each line as pieces by typeface, with prose and symbols mixed in one piece. pdf2md cuts each piece into words, symbols, numbers, brackets and punctuation. A stretch with no word in it is one formula if something in it is surely math.
@@ -231,7 +233,7 @@ marker does not see every small raised number in the text. Where a page has a fo
 Before a book is converted again, pdf2md collects what the reader changed in the old files, from the chapter files and from `book.md`.
 
 * **Equations.** Every equation read from a picture or a scan carries an invisible mark naming its picture, `<!-- pdf2md:eq … -->`. A file in the book's folder records what the last conversion wrote for each. An equation that now differs from that record is the reader's correction. It is stored in `~/.local/share/pdf2md/corrections/` and used from then on in place of the model's reading. Both forms of math are read, so a book keeps its corrections when it changes form.
-* **Table cells.** Every table carries a mark above it, `<!-- pdf2md:table … -->`, and a corrected cell is kept by table, row and column. If a later version of pdf2md reads the table differently, it counts as another table and the old corrections are not applied. The table of contents is made anew each time.
+* **Table cells.** Every table carries a mark above it, `<!-- pdf2md:table … -->`, and a corrected cell is kept by table, row and column. The rows of the title and of the note are not counted, and a cell that differs from what was written only in the files its links go to (as in `book.md`) is not a correction. If a later version of pdf2md reads the table differently, it counts as another table and the old corrections are not applied. The table of contents is made anew each time.
 * **The picture under a table** keeps the state the reader left it in: open, folded, or deleted.
 * **Notes.** A `<details class="mine">` block or an alert box goes back after the paragraph or equation it followed. That block is found by its first words, or else by the nearest anchor above it. A note whose place is gone goes to the end of its chapter under "Your notes whose place was not found".
 * **Markers in a sentence** that point to a note go back after the same words in the same paragraph, or at the paragraph's end if those words changed.
@@ -251,4 +253,4 @@ A copy of the notes and fixes is kept in `~/.local/share/pdf2md/notes/`. Notes f
 
 * **Dyson** (TeX, 149 pages): every chapter, contents entry, reference and index entry is linked, and all 93 footnotes. KaTeX renders every displayed equation. It is the sample in [`samples/dyson`](../samples/dyson) and the reference for regressions.
 * **Sakurai** (ebook-made, 771 PDF pages): about two minutes for the first conversion on an RTX 5080, about 15 seconds after that. All 12,665 formulas are written where a Markdown reader takes them as math.
-* **Zee** (scan, 537 pages): half an hour for the first conversion, half a minute after that. 10,262 formulas, all of which render. Of 1,190 displayed equations read twice, 403 are listed to check, 40 with large differences. Of 119 footnotes, 107 are linked to their markers, 34 of those found on the pictures of the pages.
+* **Zee** (scan, 537 pages): half an hour for the first conversion, half a minute after that. 10,262 formulas, all of which render. Of 1,190 displayed equations read twice, 403 are listed to check, 40 with large differences. Of 119 footnotes, 116 are linked to their markers, 43 of those found on the pictures of the pages.

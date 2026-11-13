@@ -13,7 +13,7 @@ The books are best read with [mdBun](https://github.com/colinkeenan/mdBun), a sm
 * **Links**: contents entries go to their chapters and sections, index page numbers go to the word on that page, footnote markers go to their notes and back, and "Section 3.5", "Figure 1.1" or "(3.422)" go to what they name. The words an index entry points to are marked as its target; mdBun shows them in blue, though they are not links themselves.
 * **Math** as LaTeX, in sentences and as displayed equations with their numbers.
 * **Pictures** cut from the PDF into `images/`, with captions numbered through the book.
-* **Tables** as tables, each with a picture of the printed table under it to check against.
+* **Tables** as tables, each with a picture of the printed table under it to check against. Where the book sets a table's title or its note as part of the table, they are cells across the top and the foot of it. A table that runs over a page turn is one table.
 * **Footnotes** at the foot of their page, end notes at the end of the chapter that cites them.
 
 ## Three kinds of PDF
@@ -26,7 +26,7 @@ pdf2md looks at the PDF and picks the way to read it. What you need to install d
 | Holds text, but math as small pictures (made from an ebook) | Text as above; each equation picture by a math-recognition model | poppler, texify, Tesseract |
 | Holds only pictures of pages (a scan) | Every page by a page-reading model | poppler, marker, Tesseract; texify for the list of equations to check |
 
-The models run on your own computer; nothing is sent anywhere. Their readings are cached, so the first conversion of an ebook-made or scanned book is slow (minutes to half an hour with a recent graphics card) and later ones take seconds.
+The models run on your own computer; nothing is sent anywhere. Their readings are cached, so the first conversion of an ebook-made or scanned book is slow (minutes to half an hour with a recent graphics card) and later ones take seconds. After an update of pdf2md, the first conversion of such a book can take a few minutes again: readings kept from before are checked by the new rules once.
 
 ## Install
 
@@ -130,7 +130,7 @@ In the app, typing a reader that is known to understand only the standard form (
 No conversion is perfect, and a textbook is something you write in. What you change in the Markdown is kept when you convert the book again, as long as pdf2md can tell it is yours:
 
 * **Equations read from a picture or a scan**: just edit the LaTeX. In mdBun, click the equation.
-* **Table cells**: edit the cell where it stands, between the empty lines inside its `<td>`.
+* **Table cells**: edit the cell where it stands, between the empty lines inside its `<td>`. (The title across the top of a table and the note across its foot are not cells: an edit there is not kept.)
 * **The picture under a table**: once the table is right, fold the picture away for good by deleting the word `open` in its `<details open>`, or delete the fold.
 * **Wrong words in the text**: wrap the fix so it can be redone, `<span class="fix" data-was="as converted">as in the book</span>`.
 * **Your own notes**: a collapsible note or an alert box, placed after the paragraph or equation it belongs to.
@@ -156,6 +156,7 @@ Any other edit to the text is lost at the next conversion. A note whose place ca
 ## Limitations
 
 * **Recognized math is good, not perfect.** A misread formula does not always look broken. Check equations you rely on against the book; the page markers make that one click.
+* **Bold letters in recognized math are unsure.** The recognizer mixes up bold and ordinary letters, which matters where a bold letter is a vector. pdf2md takes the bold away where the equation's picture has no bold letter at all, and marks doubtful equations in `check-equations.md`, but it cannot tell which letters of an equation are the bold ones.
 * **Each new book brings cases not seen before.** pdf2md has been worked through three books. The rules that tell a heading from a line of text, or a formula from prose, are tuned on those.
 * **TeX-made PDFs need known math fonts**: Computer Modern, AMS, or fonts named "Math", "Symbol" or "STIX". Other fonts must be added in the source.
 * **Pictures are images**, so the labels inside them cannot be searched. A picture made of only one or two strokes is not found.
