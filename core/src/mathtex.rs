@@ -1914,8 +1914,15 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
         while let Some(op) = items.get(i).filter(|it| it.kind == Kind::Atom && (it.src.first().is_some_and(|&k| big_op(&spans[k]).is_some()) || raised_dot(it))) {
             let end = i + 1 + items[i + 1..].iter().take_while(|it| it.kind != Kind::Atom).count();
             let run: Vec<usize> = items[i + 1..end].iter().flat_map(|it| it.src.iter().copied()).collect();
+            // (the sign may have taken what follows it for its upper limit,
+            // where its lower limit, the C of a line integral, led up to it)
+            let (run, taken) = if run.is_empty() && op.src.len() > 2 { (op.src[1..].to_vec(), true) } else { (run, false) };
             let before: Vec<usize> = if folded.is_empty() { sups.iter().flat_map(|it| it.src.iter().copied()).collect() } else { folded.clone() };
+            let trace = std::env::var("PDF2MD_MATHDEBUG").is_ok_and(|v| v == "3");
             if run.is_empty() || before.is_empty() || out.is_empty() || items[i + 1..end].iter().chain(sups.iter().copied()).any(|it| it.src.is_empty()) {
+                if trace {
+                    eprintln!("FOLD no: run {} before {} out {} op {:?} next {:?}", run.len(), before.len(), out.len(), op.tex, items.get(i + 1).map(|it| (&it.tex, it.kind == Kind::Atom, it.src.len())));
+                }
                 break;
             }
             // (the letters of each, without their own small indices)
@@ -1927,6 +1934,9 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
             };
             let ((y_before, size_before), (y_run, size_run)) = (level(&before), level(&run));
             if (size_before - size_run).abs() > 0.1 * size_before || (y_before - y_run).abs() > 0.4 * size_before {
+                if trace {
+                    eprintln!("FOLD no: sizes {size_before} {size_run} heights {y_before} {y_run} op {:?}", op.tex);
+                }
                 break;
             }
             // (not the limits of an integral on the line, which are small
@@ -1944,7 +1954,9 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
             }
             folded = before;
             folded.extend(op.src.iter().copied());
-            folded.extend(run);
+            if !taken {
+                folded.extend(run);
+            }
             prev_right = items[i..end].iter().map(|it| it.right).fold(prev_right, |a, r| Some(a.map_or(r, |a| a.max(r))));
             i = end;
         }
