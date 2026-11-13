@@ -59,7 +59,12 @@ install -Dm644 app/pdf2md.svg ~/.local/share/icons/hicolor/scalable/apps/pdf2md.
 
 The first line builds the app; the others copy the program, its launcher entry and its icon into your home folder. The installed program is a copy: after you update the source (`git pull`), run the first two lines again, or the launcher keeps starting the old version.
 
-`~/.local/bin` and `qmake6` must be on your PATH (or set `QMAKE=/usr/lib/qt6/bin/qmake`). The command-line tool needs only Rust and poppler.
+The launcher and the terminal find the installed program only if `~/.local/bin` is on your PATH. Not every distribution puts it there: check with `echo $PATH`. If it is missing, add it and log in again:
+
+* bash or zsh: add `export PATH="$HOME/.local/bin:$PATH"` to `~/.profile` (zsh: `~/.zprofile`)
+* fish: `fish_add_path ~/.local/bin`
+
+Building needs `qmake6` on your PATH (or set `QMAKE=/usr/lib/qt6/bin/qmake`). The command-line tool needs only Rust and poppler.
 
 **texify**, for equations that are pictures (about 7 GB with PyTorch):
 
