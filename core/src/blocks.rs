@@ -566,23 +566,7 @@ fn emit_line(doc: &Doc, l: &Line, st: &Stats, spans: &[crate::layout::Span], kin
 fn picture_tables(blks: Vec<Blk>, boxes: &HashMap<String, (u32, Figure)>) -> Vec<Blk> {
     let is_caption = |inl: &[Inline]| crate::links::caption(inl).is_some_and(|(kind, _)| kind == "table");
     let array = |tex: &str| tex.trim_start().starts_with("\\begin{array}");
-    // where the caption starts that the last blocks are: centered
-    // paragraphs (and marks of pages) back to one that starts as a
-    // table's caption does, a dozen blocks at most
-    let caption_start = |out: &[Blk]| -> Option<usize> {
-        for (k, b) in out.iter().enumerate().rev().take(12) {
-            match &b.block {
-                Block::Para(inl) if b.centered => {
-                    if is_caption(inl) {
-                        return Some(k);
-                    }
-                }
-                Block::Anchor(_) => {}
-                _ => return None,
-            }
-        }
-        None
-    };
+    let caption_start = caption_above;
     let mut out: Vec<Blk> = Vec::new();
     for blk in blks {
         // the formula of this block, if it is all of it or stands at its end
@@ -612,19 +596,7 @@ fn picture_tables(blks: Vec<Blk>, boxes: &HashMap<String, (u32, Figure)>) -> Vec
         let mut title: Vec<Inline> = Vec::new();
         let start = caption_start(&out).filter(|_| centered && !is_caption(&before));
         if let Some(start) = start {
-            let mut marks = Vec::new();
-            for b in out.split_off(start) {
-                match b.block {
-                    Block::Para(inl) => {
-                        if !title.is_empty() {
-                            title.push(Inline::Text(" ".into()));
-                        }
-                        title.extend(inl);
-                    }
-                    _ => marks.push(b),
-                }
-            }
-            out.extend(marks);
+            title = take_caption(&mut out, start);
         }
         if centered && (start.is_some() || is_caption(&before)) {
             title.extend(before.clone());
@@ -640,6 +612,60 @@ fn picture_tables(blks: Vec<Blk>, boxes: &HashMap<String, (u32, Figure)>) -> Vec
         }
     }
     out
+}
+
+/// Where the caption starts that the last blocks are: centered paragraphs
+/// (and marks of pages) back to one that starts as a table's caption
+/// does, a dozen blocks at most. A book that sets a table's caption
+/// centered on a panel on top of the table gives it so, cut where its
+/// lines end and where the page turns.
+fn caption_above(out: &[Blk]) -> Option<usize> {
+    for (k, b) in out.iter().enumerate().rev().take(12) {
+        match &b.block {
+            Block::Para(inl) if b.centered => {
+                if crate::links::caption(inl).is_some_and(|(kind, _)| kind == "table") {
+                    return Some(k);
+                }
+            }
+            Block::Anchor(_) => {}
+            // (a line of the caption with a formula in it, taken for a
+            // displayed formula: it has no number)
+            Block::Equation { tag: None, source: None, .. } => {}
+            _ => return None,
+        }
+    }
+    None
+}
+
+/// The caption that the blocks from `start` on are, taken out of them as
+/// one run of text; the marks of pages among them stay.
+/// (Its last blocks must be blocks of a caption: see `caption_above`.)
+fn take_caption(out: &mut Vec<Blk>, start: usize) -> Vec<Inline> {
+    let mut caption: Vec<Inline> = Vec::new();
+    let mut marks = Vec::new();
+    for b in out.split_off(start) {
+        match b.block {
+            Block::Para(inl) => {
+                if !caption.is_empty() {
+                    caption.push(Inline::Text(" ".into()));
+                }
+                caption.extend(inl.into_iter().map(|i| if i == Inline::Break { Inline::Text(" ".into()) } else { i }));
+            }
+            // (a line taken for a displayed formula: words, if it is only
+            // words, else a formula in the line)
+            Block::Equation { latex, .. } => {
+                let words = latex.trim().strip_prefix("\\text{").and_then(|t| t.strip_suffix('}')).filter(|t| !t.contains(['{', '}', '\\']));
+                caption.push(Inline::Text(" ".into()));
+                caption.push(match words {
+                    Some(w) => Inline::Text(w.trim().to_string()),
+                    None => Inline::Math(latex),
+                });
+            }
+            _ => marks.push(b),
+        }
+    }
+    out.extend(marks);
+    caption
 }
 
 fn has_text(inl: &[Inline]) -> bool {
@@ -1881,6 +1907,11 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 if let Some(table) = table {
                     b.anchor_block();
                     let mut table = table.clone();
+                    // The caption on its panel on top of the table: the
+                    // table's title, a cell across its columns.
+                    if let (Some(start), Block::Table { title, .. }) = (caption_above(&b.out), &mut table) {
+                        *title = tidy(take_caption(&mut b.out, start));
+                    }
                     // The table's own note, on a panel right under it: the
                     // foot of the table, a cell across its columns (its
                     // lines are short only because the panel is narrow),
