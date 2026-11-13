@@ -62,6 +62,9 @@ pub enum Inline {
     Target { id: String, text: String, emph: bool },
     /// A line break kept from the page (between centered lines).
     Break,
+    /// Text the book sets in a drawn frame at the head of a title: a
+    /// chapter's number ("I.1"), the first letter of the book's title.
+    Framed(String),
     /// A line set in from the ones above it: so many steps (em spaces).
     Indent(usize),
     /// A link; `text` is already Markdown.
@@ -292,7 +295,7 @@ pub fn plain(inl: &[Inline]) -> String {
     let mut s = String::new();
     for i in inl {
         match i {
-            Inline::Text(t) | Inline::Emph(t) | Inline::Strong(t) | Inline::Math(t) | Inline::Sup(t) => s.push_str(t),
+            Inline::Text(t) | Inline::Emph(t) | Inline::Strong(t) | Inline::Math(t) | Inline::Sup(t) | Inline::Framed(t) => s.push_str(t),
             Inline::Link { text, .. } | Inline::Target { text, .. } => s.push_str(text),
             _ => {}
         }

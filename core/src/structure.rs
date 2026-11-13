@@ -40,7 +40,7 @@ pub fn split_chapters(blks: Vec<Blk>, chapter_size: Option<f32>) -> Vec<Chapter>
         let set = text.iter().any(|i| matches!(i, crate::Inline::Break));
         // (a title with a formula in it is written with the formula; its
         // name, for the links to it and for its file, is in plain letters)
-        let math = text.iter().any(|i| matches!(i, crate::Inline::Math(_)));
+        let math = text.iter().any(|i| matches!(i, crate::Inline::Math(_) | crate::Inline::Framed(_)));
         chapters.push(Chapter {
             title: if math { plain_letters(text) } else { plain(text) },
             heading: if set || math { text.clone() } else { Vec::new() },
@@ -93,6 +93,9 @@ fn plain_letters(text: &[crate::Inline]) -> String {
                 }
                 out.push(' ');
             }
+            // (as they stand: the blank after a framed number, none after
+            // a framed first letter)
+            crate::Inline::Text(t) | crate::Inline::Framed(t) => out.push_str(t),
             other => out.push_str(&plain(std::slice::from_ref(other))),
         }
     }

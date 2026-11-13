@@ -142,6 +142,9 @@ pub struct Page {
     pub figures: Vec<Figure>,
     /// Frames and ruled grids with text in them: tables, not drawings.
     pub grids: Vec<Grid>,
+    /// Frames drawn around a title's number or first letter, in larger
+    /// type (a chapter's "I.1", the Q of the book's title).
+    pub frames: Vec<Figure>,
     /// Embedded images (pictures or, in ebook-made PDFs, equations).
     pub images: Vec<PageImage>,
     /// Printed pages that start on this page (ebook-made PDFs without page
@@ -406,6 +409,14 @@ pub fn read_drawings(doc: &mut Doc, path: &Path, pages: Option<(u32, u32)>) {
         let body = doc.body_size;
         for (page, segments) in doc.pages.iter_mut().zip(all(&parts, parse_svg_segments)) {
             page.grids = find_grids(&segments);
+            // (a frame around large type: kept apart, for the title)
+            page.frames = page
+                .grids
+                .iter()
+                .filter(|g| g.xs.len() == 2 && g.ys.len() == 2)
+                .map(|g| Figure { left: g.xs[0], right: g.xs[1], top: g.ys[0], bottom: g.ys[1] })
+                .filter(|f| page.lines.iter().flat_map(|l| l.spans.iter()).any(|s| s.height >= 1.2 * body && s.left >= f.left - 3.0 && s.left < f.right && s.top >= f.top - 0.5 * s.height && s.top < f.bottom))
+                .collect();
             page.grids.retain(|g| {
                 // (a line may go on to the equation's number at the margin)
                 let inside: Vec<&Line> = page.lines.iter().filter(|l| l.top >= g.ys[0] - 3.0 && l.top < g.ys[g.ys.len() - 1] && l.left >= g.xs[0] - 3.0 && l.left < g.xs[g.xs.len() - 1]).collect();
@@ -2393,6 +2404,7 @@ pub fn parse_xml_with(xml: &str, lost: &HashMap<String, bool>) -> Result<Doc, St
             shades: Vec::new(),
             figures: Vec::new(),
             grids: Vec::new(),
+            frames: Vec::new(),
             images: Vec::new(),
             marks: Vec::new(),
             codes: Vec::new(),
@@ -2647,6 +2659,9 @@ pub fn dump(doc: &Doc) -> String {
         out += &format!("\n=== page {} ({} x {})\n", p.number, p.width, p.height);
         for r in &p.rules {
             out += &format!("  bar  top {:.1}  x {:.1}..{:.1}\n", r.top, r.left, r.right);
+        }
+        for f in &p.frames {
+            out += &format!("  frame  y {:.0}..{:.0}  x {:.0}..{:.0}\n", f.top, f.bottom, f.left, f.right);
         }
         for g in &p.grids {
             out += &format!("  grid  x {:?}  y {:?}\n", g.xs.iter().map(|x| x.round()).collect::<Vec<_>>(), g.ys.iter().map(|y| y.round()).collect::<Vec<_>>());

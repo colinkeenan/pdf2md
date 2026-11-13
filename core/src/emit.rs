@@ -346,6 +346,8 @@ fn render_inlines_as(inl: &[Inline], form: MathForm) -> String {
                 }
             }
             Inline::Sup(t) => s.push_str(&format!("<sup>{}</sup>", escape(t))),
+            // (a viewer that drops `style` shows it without its frame)
+            Inline::Framed(t) => s.push_str(&format!("<span style=\"border:1px solid;padding:0 0.3em;margin-right:0.15em\">{}</span>", escape(t))),
             Inline::NoteRef { label, id, href } => {
                 s.push_str(&format!("<sup><a id=\"{id}\" href=\"{href}\">{label}</a></sup>"))
             }

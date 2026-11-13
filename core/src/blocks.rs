@@ -850,6 +850,34 @@ struct Carried {
     head_taken: bool,
 }
 
+/// A title whose number, or whose first letter, the book sets in a drawn
+/// frame ("I.1" in a box before "Who Needs It?", the Q of "Quantum Field
+/// Theory"): the title with that part marked as framed. A title that
+/// stands in the frame whole is framed whole.
+fn framed_title(doc: &Doc, page: &crate::layout::Page, l: &Line, st: &Stats) -> Option<Vec<Inline>> {
+    let first = l.spans.first()?;
+    let frame = page.frames.iter().find(|f| first.left >= f.left - 3.0 && first.left < f.right && first.top < f.bottom && first.bottom() > f.top)?;
+    let line_of = |spans: Vec<crate::layout::Span>| crate::layout::make_line(spans, &|s| doc.size_of(s));
+    let (inside, rest): (Vec<_>, Vec<_>) = l.spans.iter().cloned().partition(|s| s.left + s.width / 2.0 <= frame.right + 1.0);
+    let mut out = Vec::new();
+    if inside.is_empty() {
+        // (only the first letter is in the frame: the piece of text goes on)
+        let mut chars = first.text.chars();
+        let letter = chars.next()?;
+        let mut rest = l.spans.clone();
+        rest[0].text = chars.collect();
+        out.push(Inline::Framed(letter.to_string()));
+        out.extend(crate::no_emph(line_inlines(doc, &line_of(rest), st)));
+        return Some(out);
+    }
+    out.push(Inline::Framed(plain(&line_inlines(doc, &line_of(inside), st))));
+    if !rest.is_empty() {
+        out.push(Inline::Text(" ".into()));
+        out.extend(crate::no_emph(line_inlines(doc, &line_of(rest), st)));
+    }
+    Some(out)
+}
+
 /// Text in a frame of drawn lines, or in a grid of them: a table, whose
 /// cells are the fields of the grid (a frame alone: one cell).
 ///
@@ -2260,7 +2288,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                     _ => size,
                 };
                 b.flush();
-                let text = crate::no_emph(line_inlines(doc, l, st));
+                let text = framed_title(doc, &doc.pages[page.index], l, st).unwrap_or_else(|| crate::no_emph(line_inlines(doc, l, st)));
                 // A title broken over two lines is one heading.
                 let mut merged = false;
                 if let (Some(top), Some(Blk { block: Block::Heading { size: s0, text: t0, .. }, .. })) =
