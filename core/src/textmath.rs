@@ -673,6 +673,7 @@ mod tests {
             body: 22.0,
             spacing: 26.0,
             chapter_size: None,
+            section_size: None,
             toc_pages: Default::default(),
             hyphenated: Default::default(),
         };

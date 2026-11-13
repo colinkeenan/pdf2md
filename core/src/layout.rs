@@ -172,7 +172,7 @@ pub struct Doc {
 /// Fonts that only ever contain math symbols. TeX books use the Computer
 /// Modern / AMS fonts; others use names containing "Math" or "Symbol".
 pub fn is_math_font(family: &str) -> bool {
-    const PREFIXES: &[&str] = &["CMMI", "CMSY", "CMEX", "MSAM", "MSBM", "EUFM", "EUEX", "RSFS"];
+    const PREFIXES: &[&str] = &["CMMI", "CMSY", "CMEX", "MSAM", "MSBM", "EUFM", "EUEX", "RSFS", "MTMI", "MTSY", "MTEX"];
     const CONTAINS: &[&str] = &["MATH", "SYMBOL", "STIX", "EULER"];
     let f = family.to_uppercase();
     PREFIXES.iter().any(|p| f.starts_with(p)) || CONTAINS.iter().any(|c| f.contains(c))
@@ -408,6 +408,7 @@ pub fn read_drawings(doc: &mut Doc, path: &Path, pages: Option<(u32, u32)>) {
         take_figure_labels(doc);
         place_images(doc);
         join_split_equations(doc);
+        title_words(doc);
     }
 }
 
@@ -531,7 +532,18 @@ fn take_figure_labels(doc: &mut Doc) {
                 .filter(|line| line.top < b && line.top + line.size > t && line.left >= l && line.right <= r)
                 .filter(|line| line.spans.iter().map(|s| s.text.split_whitespace().filter(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 3).count()).sum::<usize>() >= 6)
                 .count();
-            prose <= 3
+            // Nor is a frame or rule drawn around a title (the boxed number
+            // and the line under a chapter's title): the labels of a drawing
+            // are never words set clearly larger than the book's text.
+            let titled = page.lines.iter().any(|line| {
+                line.size >= 1.3 * m
+                    && line.top >= t
+                    && line.top + line.size <= b
+                    && line.left >= l
+                    && line.right <= r
+                    && line.spans.iter().any(|s| s.text.split_whitespace().any(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 3))
+            });
+            prose <= 3 && !titled
         });
         for f in page.figures.iter_mut() {
             let (l, r, t, b) = (f.left - m, f.right + m, f.top - 1.2 * m, f.bottom + 1.2 * m);
@@ -1306,6 +1318,7 @@ fn insert_delims(doc: &mut Doc, delims: Vec<Vec<Delim>>) {
         }
     };
     let fonts = doc.fonts.clone();
+    let body = doc.body_size;
     let is_cmex = |s: &Span| fonts.get(s.font).is_some_and(|f| f.family.starts_with("CMEX"));
     let size_of = |s: &Span| fonts.get(s.font).map_or(s.height, |f| f.size);
     for (page, ds) in doc.pages.iter_mut().zip(delims) {
@@ -1313,7 +1326,9 @@ fn insert_delims(doc: &mut Doc, delims: Vec<Vec<Delim>>) {
         for d in ds {
             let overlaps = |s: &Span| s.left < d.right - 0.5 && s.right() > d.left + 0.5 && s.top < d.bottom && s.bottom() > d.top;
             let as_text = page.lines.iter().flat_map(|l| &l.spans).any(|s| {
-                !is_cmex(s) && overlaps(s) && s.text.trim().chars().any(|c| "()[]|{}⟨⟩".contains(c))
+                // (the bracket is in the text, or it is a stroke of a large
+                // letter or figure of a title: the "1" of a chapter's number)
+                !is_cmex(s) && overlaps(s) && (s.text.trim().chars().any(|c| "()[]|{}⟨⟩".contains(c)) || (size_of(s) >= 1.3 * body && s.text.chars().any(char::is_alphanumeric)))
             });
             if as_text || page.lines.is_empty() {
                 continue;
@@ -1749,7 +1764,36 @@ pub fn parse_xml(xml: &str) -> Result<Doc, String> {
         })
         .collect();
 
-    Ok(Doc { fonts, pages, body_size })
+    let mut doc = Doc { fonts, pages, body_size };
+    title_words(&mut doc);
+    Ok(doc)
+}
+
+/// Words larger than the book's text are no index or exponent: a title
+/// beside its much larger chapter number ("I.1 Who Needs It?") is on the
+/// line like the number.
+fn title_words(doc: &mut Doc) {
+    let fonts = &doc.fonts;
+    let body = doc.body_size;
+    for line in doc.pages.iter_mut().flat_map(|p| p.lines.iter_mut()) {
+        if line.size < 1.3 * body {
+            continue;
+        }
+        let mut right = f32::MIN;
+        for s in line.spans.iter_mut() {
+            let font = fonts.get(s.font);
+            let size = font.map_or(s.height, |f| f.size);
+            let words = s.text.split_whitespace().any(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 3);
+            if s.script != Script::Normal && size >= body && words && !font.is_some_and(|f| f.math) {
+                s.script = Script::Normal;
+                // (the title's second line starts under its first)
+                if s.left < right && !s.text.starts_with(' ') {
+                    s.text.insert(0, ' ');
+                }
+            }
+            right = right.max(s.right());
+        }
+    }
 }
 
 /// Group a page's spans into lines and mark superscripts/subscripts.
@@ -1822,7 +1866,8 @@ fn group_lines(
             let hangs = alone || s.bottom() > groups[k][0].bottom() + 0.2 * s.height;
             let target = (s.text.trim() == "√" && hangs)
                 .then(|| {
-                    (0..groups.len()).find(|&m| m != k && groups[m][0].top > groups[k][0].top && groups[m][0].top <= low && groups[m][0].bottom() >= low)
+                    // (a line of root signs that have all moved away is empty)
+                    (0..groups.len()).find(|&m| m != k && !groups[m].is_empty() && groups[m][0].top > groups[k][0].top && groups[m][0].top <= low && groups[m][0].bottom() >= low)
                 })
                 .flatten();
             match target {

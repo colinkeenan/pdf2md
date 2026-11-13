@@ -30,6 +30,8 @@ pub struct Stats {
     pub spacing: f32,
     /// Font size of chapter titles, if there is a clear one.
     pub chapter_size: Option<f32>,
+    /// Font size of the most common headings (the sections), if any.
+    pub section_size: Option<f32>,
     /// Pages that hold the table of contents.
     pub toc_pages: HashSet<usize>,
     /// Hyphenated words seen inside lines ("wave-function"), used to decide
@@ -58,8 +60,11 @@ fn big_text_line(doc: &Doc, l: &Line, body: f32) -> bool {
             .filter(|s| doc.size_of(s) >= l.size - 0.5)
             .all(|s| !doc.is_math(s))
         && l.spans.iter().any(|s| {
-            // at least one real word (diagram labels like "x₁ x₂" are not titles)
-            doc.size_of(s) >= l.size - 0.5
+            // at least one real word (diagram labels like "x₁ x₂" are not titles),
+            // in the line's size or, beside a larger number ("I.1"), smaller
+            // but still large
+            doc.size_of(s) >= (l.size - 0.5).min(1.3 * body)
+                && !doc.is_math(s)
                 && s.text
                     .split_whitespace()
                     .any(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 3)
@@ -114,7 +119,13 @@ pub fn stats(doc: &Doc, pages: &[PageInfo]) -> Stats {
             let k = (l.size * 10.0).round() as i32;
             let text: String = l.spans.iter().map(|s| s.text.as_str()).collect::<Vec<_>>().join(" ");
             let mut w = text.split_whitespace();
-            let number = w.next().is_some_and(|n| n.len() <= 2 && n.chars().all(|c| c.is_ascii_digit()));
+            // ("3", or the "IV.2" of a book that counts its chapters within parts)
+            let number = w.next().is_some_and(|n| {
+                (n.len() <= 2 && n.chars().all(|c| c.is_ascii_digit()))
+                    || n.split_once('.').is_some_and(|(part, ch)| {
+                        !part.is_empty() && part.len() <= 4 && part.chars().all(|c| "IVX".contains(c)) && !ch.is_empty() && ch.len() <= 2 && ch.chars().all(|c| c.is_ascii_digit())
+                    })
+            });
             let next = w.next();
             let big = big_text_line(doc, l, body);
             if big {
@@ -127,6 +138,7 @@ pub fn stats(doc: &Doc, pages: &[PageInfo]) -> Stats {
             }
         }
     }
+    let section_size = counts.iter().filter(|&(_, &c)| c >= 2).max_by_key(|&(&s, &c)| (c, s)).map(|(&s, _)| s as f32 / 10.0);
     let chapter_size = numbered
         .iter()
         .filter(|&(_, &c)| c >= 2)
@@ -151,7 +163,7 @@ pub fn stats(doc: &Doc, pages: &[PageInfo]) -> Stats {
         }
     }
 
-    Stats { left, right, body, spacing, chapter_size, toc_pages, hyphenated }
+    Stats { left, right, body, spacing, chapter_size, section_size, toc_pages, hyphenated }
 }
 
 /// "Subject Matter . . . . 1" -> ("Subject Matter", "1").
@@ -1825,6 +1837,13 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
     let use_marks = pages.iter().all(|p| p.label.is_none());
     // (the columns of a table that goes on over the page)
     let mut carried_table = Carried::default();
+    // where the contents start (found by their entries, or by their title)
+    let contents_page = st
+        .toc_pages
+        .iter()
+        .min()
+        .copied()
+        .or_else(|| pages.iter().position(|p| p.lines.first().is_some_and(|l| is_contents_title(&plain_text(l)))));
     for (pi, page) in pages.iter().enumerate() {
         b.page = pi;
         if let Some(l) = &page.label {
@@ -2056,6 +2075,16 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
             let only_formula = |l: &Line| l.spans.iter().any(|s| s.tex.is_some()) && l.spans.iter().all(|s| s.tex.is_some() || s.text.trim().is_empty());
             let before_display = i + 1 < end && (disp[i + 1] || only_formula(&lines[i + 1]));
             if let Some(size) = heading_size(doc, l, prev_top, next_top, before_display, st) {
+                // A page that opens well down from its top with a title
+                // clearly larger than the sections' opens a chapter too,
+                // whatever its size ("Preface", "Part I", "Appendix A" in a
+                // book whose numbered chapters have a type size of their own).
+                // Not before the contents: those are the book's title pages.
+                let titles_over = contents_page.is_none_or(|first| pi >= first);
+                let size = match (st.chapter_size, st.section_size) {
+                    (Some(c), Some(sec)) if i == 0 && titles_over && c > 1.25 * sec && size >= 1.25 * sec && l.top >= 0.15 * page.height => c,
+                    _ => size,
+                };
                 b.flush();
                 let text = crate::no_emph(line_inlines(doc, l, st));
                 // A title broken over two lines is one heading.
@@ -2296,7 +2325,7 @@ mod table_tests {
 
     #[test]
     fn the_rows_of_a_table_are_found_by_how_its_cells_stand() {
-        let st = Stats { left: 0.0, right: 500.0, body: 25.0, spacing: 26.0, chapter_size: None, toc_pages: Default::default(), hyphenated: Default::default() };
+        let st = Stats { left: 0.0, right: 500.0, body: 25.0, spacing: 26.0, chapter_size: None, section_size: None, toc_pages: Default::default(), hyphenated: Default::default() };
         // cells in the middle of their rows: a name beside two and three lines
         let names = [line("ket", 838.0), line("observable", 906.0), line("base", 998.0)];
         let texts = [line("a1", 826.0), line("a2", 852.0), line("b1", 880.0), line("b2", 906.0), line("b3", 932.0), line("c1", 960.0), line("c2", 986.0), line("c3", 1012.0), line("c4", 1037.0)];
