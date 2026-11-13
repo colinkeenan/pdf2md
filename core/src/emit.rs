@@ -1015,7 +1015,8 @@ fn check_list(book: &Book) -> Option<String> {
                         let name = tag.as_ref().map_or("equation".to_string(), |t| format!("({t})"));
                         let at = page.as_ref().map(|p| format!(", {p}")).unwrap_or_default();
                         let symbols = if n == 1 { "1 symbol".to_string() } else { format!("{n} symbols") };
-                        items.push((n, format!("- [{name}]({}.md#img-{k}) — {}{at} — {symbols} differ", ch.slug, ch.title)));
+                        let bold = if crate::ocr::bold_differs(k) { " — **bold?**" } else { "" };
+                        items.push((n, format!("- [{name}]({}.md#img-{k}) — {}{at} — {symbols} differ{bold}", ch.slug, ch.title)));
                     }
                 }
                 _ => {}
@@ -1033,8 +1034,10 @@ fn check_list(book: &Book) -> Option<String> {
             format!("## {title} ({})\n\n{}\n\n", lines.len(), lines.join("\n"))
         }
     };
+    let bold = items.iter().filter(|(_, l)| l.ends_with("**bold?**")).count();
+    let bold = if bold == 0 { String::new() } else { format!(" In {bold} of them the two readings set different letters bold: those are marked **bold?**, for a look at which letters are bold in the book.") };
     Some(format!(
-        "# Equations to check\n\nThese equations were read from their pictures as a different formula on a second reading (formatting aside), so compare them with the book. The bigger the difference, the likelier the reading is wrong. Correct one in the chapter file (or in book.md); the next conversion keeps your correction and drops it from this list.\n\n{}{}{}",
+        "# Equations to check\n\nThese equations were read from their pictures as a different formula on a second reading (formatting aside), so compare them with the book. The bigger the difference, the likelier the reading is wrong. Correct one in the chapter file (or in book.md); the next conversion keeps your correction and drops it from this list.{bold}\n\n{}{}{}",
         group("Big differences (more than 10 symbols)", &|n| n > 10),
         group("Medium differences (4–10 symbols)", &|n| (4..=10).contains(&n)),
         group("Small differences (1–3 symbols)", &|n| n <= 3),

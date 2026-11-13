@@ -151,7 +151,7 @@ No conversion is perfect, and a textbook is something you write in. What you cha
 
 Any other edit to the text is lost at the next conversion. A note whose place can no longer be found goes to the end of its chapter; it is never dropped. Corrections are stored in `~/.local/share/pdf2md/corrections/`, and a copy of your notes in `~/.local/share/pdf2md/notes/`.
 
-**Equations to check.** For ebook-made and scanned books, each displayed equation is read twice. Where the two readings disagree, the equation is listed in `check-equations.md` in the book's folder, biggest differences first. An equation you correct drops off the list.
+**Equations to check.** For ebook-made and scanned books, each displayed equation is read twice. Where the two readings disagree, the equation is listed in `check-equations.md` in the book's folder, biggest differences first. An entry marked **bold?** is one where the two readings set different letters bold. An equation you correct drops off the list.
 
 ## Limitations
 

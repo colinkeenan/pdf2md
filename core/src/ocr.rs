@@ -998,6 +998,56 @@ pub fn needs_check(k: &str) -> Option<usize> {
     Some(n.parse().unwrap_or(1))
 }
 
+/// The letters a reading sets bold, in order: what stands in `\mathbf{…}`,
+/// `\boldsymbol{…}`, `\pmb{…}`, `\mathbit{…}` and `{\bf …}`, without
+/// spaces and braces.
+pub(crate) fn bold_letters(tex: &str) -> Vec<String> {
+    let mut out = Vec::new();
+    let mut rest = tex;
+    while let Some(at) = rest.find('\\') {
+        rest = &rest[at + 1..];
+        let name: String = rest.chars().take_while(char::is_ascii_alphabetic).collect();
+        if !["mathbf", "boldsymbol", "pmb", "mathbit", "bf"].contains(&name.as_str()) {
+            continue;
+        }
+        let after = rest[name.len()..].trim_start();
+        // (\mathbf{x}: the group behind it; {\bf x}: up to the brace that closes it)
+        let body = after.strip_prefix('{').unwrap_or(after);
+        let mut depth = 0;
+        let mut inner = String::new();
+        for c in body.chars() {
+            match c {
+                '{' => depth += 1,
+                '}' if depth == 0 => break,
+                '}' => depth -= 1,
+                c if !c.is_whitespace() => inner.push(c),
+                _ => {}
+            }
+        }
+        if !inner.is_empty() {
+            out.push(inner);
+        }
+    }
+    out
+}
+
+/// Do the two readings of this image set other letters bold? (The
+/// recognizer is unsure of bold; where upright bold and italic mean two
+/// things, as vector and number, these are worth a look of their own.)
+pub fn bold_differs(k: &str) -> bool {
+    let Some(dir) = cache_dir() else { return false };
+    let read = |ext: &str| std::fs::read_to_string(dir.join(format!("{k}.{ext}"))).ok();
+    match (read("tex"), read("second")) {
+        (Some(a), Some(b)) => {
+            let (mut a, mut b) = (bold_letters(&a), bold_letters(&b));
+            a.sort();
+            b.sort();
+            a != b
+        }
+        _ => false,
+    }
+}
+
 /// Width and height of a PNG, from its header.
 pub fn png_size(png_base64: &str) -> Option<(u32, u32)> {
     let head = base64_decode(png_base64.get(..32)?)?;
