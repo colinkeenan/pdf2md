@@ -1305,6 +1305,7 @@ fn heading_size(
     l: &Line,
     prev_top: Option<f32>,
     next_top: Option<f32>,
+    before_display: bool,
     st: &Stats,
 ) -> Option<f32> {
     let text = plain_text(l);
@@ -1329,8 +1330,10 @@ fn heading_size(
     let space_above = prev_top.is_none_or(|t| l.top - t >= 1.4 * st.spacing);
     let space_below = next_top.is_some_and(|t| t - l.top >= 1.4 * st.spacing);
     let at_margin = (l.left - st.left).abs() <= 0.6 * st.body;
-    // An unstyled heading: a short title-like line with space above and below.
+    // An unstyled heading: a short title-like line with space above and
+    // below (and text below: a line right above a formula leads up to it).
     if !styled
+        && !before_display
         && at_margin
         && space_above
         && space_below
@@ -1343,8 +1346,13 @@ fn heading_size(
         return Some(l.size);
     }
     // an italic sentence broken up by displayed equations (the statement of
-    // a lemma: "which is analogous to", "in real Euclidian space.") is prose
-    let fragment = text.starts_with(|c: char| c.is_lowercase());
+    // a lemma: "which is analogous to", "in real Euclidian space.") is prose;
+    // so is a styled line of three words or more that a displayed equation
+    // follows at once ("But this can be rewritten as", "Theorem 6 Suppose"):
+    // it leads up to the equation. (A title of a word or two can stand
+    // right above one: "Case 2", "Appendix".)
+    let leads_up = before_display && text.split_whitespace().count() >= 3;
+    let fragment = text.starts_with(|c: char| c.is_lowercase()) || leads_up;
     let ok = styled
         && !fragment
         && (l.left - st.left).abs() <= 0.6 * st.body
@@ -1908,7 +1916,10 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 continue;
             }
             let next_top = (i + 1 < end && !disp[i + 1]).then(|| lines[i + 1].top);
-            if let Some(size) = heading_size(doc, l, prev_top, next_top, st) {
+            // (a displayed equation, or a line that is nothing but a formula read from an image)
+            let only_formula = |l: &Line| l.spans.iter().any(|s| s.tex.is_some()) && l.spans.iter().all(|s| s.tex.is_some() || s.text.trim().is_empty());
+            let before_display = i + 1 < end && (disp[i + 1] || only_formula(&lines[i + 1]));
+            if let Some(size) = heading_size(doc, l, prev_top, next_top, before_display, st) {
                 b.flush();
                 let text = crate::no_emph(line_inlines(doc, l, st));
                 // A title broken over two lines is one heading.
