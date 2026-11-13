@@ -335,22 +335,149 @@ def read_by_rows(img, model, processor, batch_inference):
     return None if lines is None else as_block(lines)
 
 
+# What a line of an equation goes on with: a relation or an operator (or the
+# space the model sets for the indent of such a line).
+RELATION = r"=|<|>|\\(?:approx|equiv|simeq|sim|leq|geq|le|ge|neq|ne|propto|cong|ll|gg)(?![a-zA-Z])"
+CONTINUES = re.compile(RELATION + r"|\+|-|\\(?:times|pm|mp|cdot|quad|qquad)(?![a-zA-Z])")
+RELATION = re.compile(RELATION)
+
+FULL_LINE = 16  # pixels: a line of an equation is at least this high (the limits under a sum are 10 to 13)
+
+
+def outside_braces(t: str):
+    """Each place of `t` that is in no braces and in no command name."""
+    depth, i = 0, 0
+    while i < len(t):
+        c = t[i]
+        if c == "\\":
+            m = re.match(r"\\([a-zA-Z]+|.)", t[i:], re.S)
+            i += len(m.group(0))
+            if m.group(1).isalpha():
+                # the space that ends a command name is no place of its own
+                while i < len(t) and t[i] == " ":
+                    i += 1
+                if depth == 0 and i < len(t) and t[i] not in "{}\\":
+                    yield i
+                    i += 1
+            continue
+        if c == "{":
+            depth += 1
+        elif c == "}":
+            depth -= 1
+        elif depth == 0:
+            yield i
+        i += 1
+
+
+def line_spaces(t: str) -> list:
+    """Where the model, reading several lines as one, went from one line to
+    the next: it writes no spaces except the ones TeX needs, but leaves one
+    there, before the relation or operator the next line starts with. (Of
+    3,000 one-line equations of the first such book, one had such a
+    space; of the equations of several lines read as one, two in three.)"""
+    return [i for i in outside_braces(t) if t[i] == " " and i > 0 and CONTINUES.match(t, i + 1)]
+
+
+def cut_lines(t: str, places) -> list:
+    """`t` cut at `places` into lines that stand by themselves, or None. A
+    bracket opened on one line and closed on another cannot grow with its
+    content any more (\\left needs its \\right on the same line): such
+    brackets get a fixed large size."""
+    lines, start = [], 0
+    for p in list(places) + [len(t)]:
+        lines.append(re.sub(r"^(\\q?quad(?![a-zA-Z])\s*)+", "", t[start:p].strip()))
+        start = p
+    if not all(lines):
+        return None
+    if not all(plausible(x) for x in lines):
+        lines = [re.sub(r"\\(left|right)(?![a-zA-Z])", lambda m: "\\Bigl" if m.group(1) == "left" else "\\Bigr", x) for x in lines]
+        if not all(plausible(x) for x in lines):
+            return None
+    return lines
+
+
+def rule_between(parts) -> bool:
+    """A horizontal rule at the edge of a line, facing the next one: a
+    fraction bar, and the two "lines" are numerator and denominator."""
+
+    def ruled(part, top: bool) -> bool:
+        g = part.convert("L")
+        w, h = g.size
+        px = g.load()
+        seen = 0
+        for y in range(h) if top else range(h - 1, -1, -1):
+            run = best = 0
+            for x in range(w):
+                run = run + 1 if px[x, y] < 160 else 0
+                best = max(best, run)
+            if best >= 10:
+                return True
+            seen += best > 0
+            if seen == 3:
+                break
+        return False
+
+    return any(ruled(a, False) or ruled(b, True) for a, b in zip(parts, parts[1:]))
+
+
 def lines_apart(img, t: str, model, processor, batch_inference):
     """An image of several lines read with fewer lines than it has: the
     model wrote two equations, or an equation and its continuation, as one
-    long line. Read line by line, they are kept apart -- but only if that
-    reading says the same as the whole one. Where the two differ much, the
-    "lines" are no lines (the limits under a sum, the two halves of a
-    fraction) or one of the readings is wrong: the whole reading stays."""
-    if len(rows(img)) < 2 or line_breaks(t) + 1 >= len(rows(img)):
+    long line. The lines are kept apart, by the first of these that holds:
+
+    * the whole reading shows where its lines end (`line_spaces`): cut there;
+    * read line by line, it says the same as the whole reading: the lines;
+    * the whole reading says the same as the lines without one of them (the
+      model left a line out): the lines;
+    * two lines, and the whole reading starts with what the first line reads
+      as: cut where that ends.
+
+    Otherwise the "lines" are no lines (the limits under a sum, the two
+    halves of a fraction) or one of the readings is wrong, and the whole
+    reading stays."""
+    parts = rows(img)
+    n = len(parts)
+    if n < 2 or line_breaks(t) + 1 >= n:
         return None
+    if "\\begin" not in t:
+        # (a line set in may start with wide spaces and no plain one)
+        spaced = re.sub(r"(?<! )((?:\\q?quad\s*)+)(?=[-+=]|\\times)", r" \1", t)
+        places = line_spaces(spaced)
+        if 1 <= len(places) <= n - 1:
+            lines = cut_lines(spaced, places)
+            if lines is not None:
+                return as_block(lines)
     lines = read_rows(img, model, processor, batch_inference)
     if lines is None:
         return None
     whole = t.replace("\\\\", "")
-    if difference(whole, " ".join(lines)) > max(2, len(canonical(whole)) // 10):
+    limit = max(2, len(canonical(whole)) // 10)
+    if difference(whole, " ".join(lines)) <= limit:
+        return as_block(lines)
+    if "\\begin" in t or any(p.height < FULL_LINE for p in parts) or rule_between(parts):
         return None
-    return as_block(lines)
+    for j in range(n):
+        if difference(whole, " ".join(lines[:j] + lines[j + 1 :])) <= limit:
+            return as_block(lines)
+    if n == 2:
+        places = [i for i in outside_braces(t) if i > 0 and RELATION.match(t, i)]
+        if places:
+            cut = min(places, key=lambda i: difference(t[:i], lines[0]))
+            if difference(t[:cut], lines[0]) <= max(2, len(canonical(lines[0])) // 10):
+                cut_ = cut_lines(t, [cut])
+                if cut_ is not None:
+                    return as_block(cut_)
+    return None
+
+
+# NAME.lines holds the number of the rules the image was looked at with (keep
+# in step with `lines_looked_at` in ocr.rs), or "never" if it is not to be.
+LINES_RULE = "2"
+
+
+def lines_looked_at(dst, stem: str) -> bool:
+    mark = dst / f"{stem}.lines"
+    return mark.exists() and mark.read_text().strip() in (LINES_RULE, "never")
 
 
 BATCH = 16  # images given to the model at once: it reports after each batch
@@ -395,7 +522,7 @@ def split_lines(items, dst, model, processor, batch_inference):
     """Every equation not looked at before (NAME.lines marks those that
     were): lines read as one are taken apart, see `lines_apart`."""
     changed = 0
-    items = [(f, img) for f, img in items if not (dst / f"{f.stem}.lines").exists() and (dst / f"{f.stem}.tex").exists()]
+    items = [(f, img) for f, img in items if not lines_looked_at(dst, f.stem) and (dst / f"{f.stem}.tex").exists()]
     for n, (f, img) in enumerate(items):
         tell("lines", n, len(items))
         mark, known = dst / f"{f.stem}.lines", dst / f"{f.stem}.tex"
@@ -407,7 +534,7 @@ def split_lines(items, dst, model, processor, batch_inference):
                 for ext in ("verify", "second"):
                     (dst / f"{f.stem}.{ext}").unlink(missing_ok=True)
                 changed += 1
-        mark.write_text("\n")
+        mark.write_text(LINES_RULE + "\n")
     if items:
         tell("lines", len(items), len(items))
     if changed:
@@ -723,7 +850,7 @@ def main():
         print(f"  {redrawn} drawings that were read as math before are pictures now", file=sys.stderr, flush=True)
     if not todo:
         unread_small = any(f.stem in SMALL_ONES and not (dst / f"{f.stem}.small").exists() for f, _ in verify_only)
-        if unread_small or any(not (dst / f"{f.stem}.{ext}").exists() for f, _ in verify_only for ext in ("verify", "lines", "labels")):
+        if unread_small or any(not (dst / f"{f.stem}.{ext}").exists() for f, _ in verify_only for ext in ("verify", "labels")) or any(not lines_looked_at(dst, f.stem) for f, _ in verify_only):
             from texify.inference import batch_inference
             from texify.model.model import load_model
             from texify.model.processor import load_processor

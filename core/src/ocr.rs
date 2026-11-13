@@ -644,6 +644,14 @@ fn unglue(t: &str) -> String {
 /// recognizer reads it with white space added around it (`math_ocr.py`).
 const SMALL: u32 = 30;
 
+/// Whether the recognizer has looked at image `k` for lines read as one
+/// with its current rules: `KEY.lines` holds the number of the rules
+/// (`LINES_RULE` in `math_ocr.py`), or "never" for an equation that is
+/// only compared (see [`second_readings`]).
+fn lines_looked_at(dir: &std::path::Path, k: &str) -> bool {
+    std::fs::read_to_string(dir.join(format!("{k}.lines"))).is_ok_and(|t| matches!(t.trim(), "2" | "never"))
+}
+
 /// Read every image (given as base64 PNG), from the cache or by running
 /// the recognizer once for all new ones. Images it could not read are
 /// missing from the answer.
@@ -672,7 +680,8 @@ pub fn recognize(images: &[&str]) -> HashMap<String, Reading> {
                 let unverified = math && !dir.join(format!("{k}.verify")).exists();
                 let small = png_size(img).is_some_and(|(w, _)| w < SMALL);
                 let unsorted = math
-                    && ([".kind", ".lines", ".labels"].iter().any(|e| !dir.join(format!("{k}{e}")).exists())
+                    && ([".kind", ".labels"].iter().any(|e| !dir.join(format!("{k}{e}")).exists())
+                        || !lines_looked_at(&dir, &k)
                         || (small && !dir.join(format!("{k}.small")).exists()));
                 out.insert(k.clone(), r);
                 if unverified || unsorted {
@@ -760,9 +769,10 @@ pub fn second_readings(equations: &[(String, String, Vec<u8>)]) {
         let _ = std::fs::write(dir.join(format!("{k}.tex")), format!("{latex}\n"));
         // (not to be read again in lines, or without words under it:
         // only compared)
-        for mark in ["kind", "lines", "labels", "small"] {
+        for mark in ["kind", "labels", "small"] {
             let _ = std::fs::write(dir.join(format!("{k}.{mark}")), "\n");
         }
+        let _ = std::fs::write(dir.join(format!("{k}.lines")), "never\n");
         for old in ["verify", "second"] {
             let _ = std::fs::remove_file(dir.join(format!("{k}.{old}")));
         }
