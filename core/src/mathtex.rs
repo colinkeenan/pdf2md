@@ -864,9 +864,12 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
             .iter()
             .enumerate()
             .filter(|(i, s)| !num.contains(i) && !den.contains(i) && !s.cmex() && s.atom.is_none() && s.size < 0.9 * size && s.size > own && s.top <= y && s.bottom >= y)
-            .filter(|(_, s)| (s.left - b.right).max(b.left - s.right) <= 2.0 * size)
+            .filter(|(_, s)| (s.left - b.right).max(b.left - s.right) <= if script { 2.0 } else { 0.6 } * size && (s.cy() - y).abs() <= 0.3 * s.size)
             .map(|(_, s)| s.size)
             .fold(0.0f32, f32::max);
+        // (small letters right beside it at its height: it is one of them,
+        // however little the exponent is raised in a line of text)
+        let script = small && (script || level > 0.0);
         let (top, bottom, size) = if script && level > 0.0 {
             (y - level / 2.0, y + level / 2.0, level)
         } else if script {
