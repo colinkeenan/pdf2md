@@ -76,6 +76,8 @@ impl MSpan {
 /// LaTeX for one Unicode character, if it needs translating.
 pub fn sym(c: char) -> Option<&'static str> {
     Some(match c {
+        // the stroke through the sign or letter after it (≠, the Feynman slash)
+        '\u{338}' => "\\not ",
         'α' => "\\alpha ",
         'β' => "\\beta ",
         'γ' => "\\gamma ",
@@ -498,6 +500,9 @@ fn put_accents(mut spans: Vec<MSpan>) -> Vec<MSpan> {
     let accent = |t: &str| match t.trim() {
         "˜" => Some("tilde"),
         "ˆ" => Some("hat"),
+        "\u{20d7}" => Some("vec"),
+        // the stroke through a letter (the Feynman slash) or a sign (≠)
+        "\u{338}" => Some("not"),
         "˙" => Some("dot"),
         "¨" => Some("ddot"),
         "¯" => Some("bar"),
@@ -824,9 +829,43 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
     spans
 }
 
+/// An arrow drawn over a letter that was not found under it (it stands a
+/// little to the right of a small or sloping letter) goes over the letter
+/// before it: "x ⃗" is `\vec{x}`, "\nabla ⃗" `\vec{\nabla}`.
+fn late_arrows(s: &str) -> String {
+    let mut out = String::with_capacity(s.len());
+    for c in s.chars() {
+        if c != '\u{20d7}' {
+            out.push(c);
+            continue;
+        }
+        let kept = out.trim_end().len();
+        let before = &out[..kept];
+        // the letter, or the command, the arrow comes after
+        let start = match before.chars().next_back() {
+            Some(l) if l.is_ascii_alphabetic() => {
+                let word = before.len() - before.chars().rev().take_while(char::is_ascii_alphabetic).count();
+                if before[..word].ends_with('\\') { Some(word - 1) } else { Some(before.len() - 1) }
+            }
+            Some(l) if l.is_alphanumeric() => Some(before.len() - l.len_utf8()),
+            _ => None,
+        };
+        match start {
+            Some(start) => {
+                let letter = out[start..kept].to_string();
+                out.truncate(start);
+                out.push_str(&format!("\\vec{{{letter}}}"));
+            }
+            None => out.push(c),
+        }
+    }
+    out
+}
+
 fn tidy(s: &str) -> String {
     let s = s.split_whitespace().collect::<Vec<_>>().join(" ");
-    s.replace("\\not =", "\\neq").replace("\\not=", "\\neq")
+    let s = if s.contains('\u{20d7}') { late_arrows(&s) } else { s };
+    s.replace("\\not =", "\\neq").replace("\\not=", "\\neq").replace("\\not{=}", "\\neq")
 }
 
 fn linear(spans: &[MSpan]) -> String {
@@ -2170,6 +2209,12 @@ fn aligned(rows: &[String]) -> String {
 
 #[cfg(test)]
 mod tests {
+    #[test]
+    fn arrows_after_their_letter() {
+        assert_eq!(super::late_arrows("a x \u{20d7} - \\nabla \u{20d7}"), "a \\vec{x} - \\vec{\\nabla}");
+        assert_eq!(super::late_arrows("( \u{20d7}"), "( \u{20d7}");
+    }
+
     use super::*;
 
     fn sp(text: &str, left: f32, top: f32, w: f32, size: f32, family: &str) -> MSpan {

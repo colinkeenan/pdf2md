@@ -150,6 +150,18 @@ Brackets are then paired as in text, nested ones included, and written as `\left
 
 TeX's symbol font has a quirk: in the PDF's text, ⟨ ⟩ come out as "h" and "i", | and ‖ as "j" and "k", { } as "f" and "g", and capitals as calligraphic letters. These are mapped back.
 
+### Symbols the text leaves out
+
+A font names the glyph each character draws ("summationdisplay", "angbracketleft") and usually also gives its Unicode character. Where a font gives no characters, or not for all its glyphs, `pdftohtml` gives an empty piece of text. Some publishers' math fonts do this for the big symbols (∫, Σ, ∏, large brackets and roots), the angle brackets, the prime, the arrow over a vector and the stroke of the Feynman slash.
+
+pdf2md reads the names from the PDF's fonts. The PDF lists the glyphs of a page in the order they are drawn, and so does the SVG, which also says where each one is. Each lost glyph is written into the empty piece at its place. A page where the two lists differ in length is left alone. The fraction bars of such a book may be drawn as thin lines, not as filled rectangles; both are read.
+
+An arrow or a stroke belongs to the letter it is drawn over: `\vec{k}`, `\not{p}`.
+
+| Variable | Shows |
+|---|---|
+| `PDF2MD_GLYPHDEBUG=1` | glyphs without a known name, glyphs that found no place, and the count written |
+
 ### Notation lists and pictures
 
 * **Aligned columns.** Three or more lines whose columns start at the same positions, with words in the last column, become a LaTeX `array`.

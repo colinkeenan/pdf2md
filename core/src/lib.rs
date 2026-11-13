@@ -17,6 +17,7 @@
 
 pub mod blocks;
 pub mod emit;
+pub mod glyphs;
 pub mod layout;
 pub mod links;
 mod measure;

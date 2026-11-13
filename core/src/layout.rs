@@ -20,6 +20,7 @@
 //! later stages, which can now ask precise questions ("is this span raised
 //! and smaller than its line?") instead of guessing from plain text.
 
+use std::collections::HashMap;
 use crate::progress::Step;
 use std::path::Path;
 use std::process::Command;
@@ -346,7 +347,7 @@ pub fn read_text(path: &Path, pages: Option<(u32, u32)>) -> Result<Doc, String> 
     if !ok {
         return Err(format!("pdftohtml failed: {}", String::from_utf8_lossy(&stderr).trim()));
     }
-    let mut doc = parse_xml(&String::from_utf8_lossy(&stdout))?;
+    let mut doc = parse_xml_with(&String::from_utf8_lossy(&stdout), &crate::glyphs::lost_fonts(path))?;
     add_link_positions(&mut doc, path);
     printed_page_marks(&mut doc);
     crate::progress::report(Step::Text, total, total);
@@ -359,7 +360,15 @@ pub fn read_text(path: &Path, pages: Option<(u32, u32)>) -> Result<Doc, String> 
 pub fn read_drawings(doc: &mut Doc, path: &Path, pages: Option<(u32, u32)>) {
     let total = pages_read(path, pages);
     let first = pages.map_or(1, |(first, _)| first as usize);
-    if let Some(parts) = svg_parts(path, first, total) {
+    let parts = svg_parts(path, first, total);
+    let lost = crate::glyphs::lost_fonts(path);
+    if !lost.is_empty() {
+        if let Some(parts) = &parts {
+            restore_glyphs(doc, path, parts, &lost);
+        }
+        drop_empty(doc, &lost);
+    }
+    if let Some(parts) = parts {
         // Lost big brackets are a TeX font problem; in books without
         // TeX's math fonts, outlines of large text glyphs are no brackets.
         let tex_math = doc.fonts.iter().any(|f| {
@@ -409,6 +418,262 @@ pub fn read_drawings(doc: &mut Doc, path: &Path, pages: Option<(u32, u32)>) {
         place_images(doc);
         join_split_equations(doc);
         title_words(doc);
+    }
+}
+
+/// A glyph drawn on a page (`<use xlink:href="#glyph-4-5" x=".." y=".."/>`),
+/// in points: where it starts on its base line, and the left, right and
+/// top edge of what is drawn.
+#[derive(Clone, Copy)]
+struct Placed {
+    x: f32,
+    y: f32,
+    ink: (f32, f32, f32),
+}
+
+/// The glyphs of each page in the order they are drawn.
+fn parse_svg_uses(svg: &str) -> Vec<Vec<Placed>> {
+    let text = |tag: &str, name: &str| -> Option<String> { tag.split(&format!(" {name}=\"")).nth(1)?.split('"').next().map(str::to_string) };
+    // how far each glyph's outline reaches
+    let mut inks: HashMap<&str, (f32, f32, f32)> = HashMap::new();
+    let defs = svg.split("</defs>").next().unwrap_or("");
+    for g in defs.split("<g id=\"").skip(1) {
+        let Some((id, body)) = g.split_once('"') else { continue };
+        let body = body.split("</g>").next().unwrap_or("");
+        let Some(d) = body.split(" d=\"").nth(1).and_then(|r| r.split('"').next()) else { continue };
+        let o = outline(d);
+        if !o.pts.is_empty() {
+            inks.insert(id, (o.bbox.0, o.bbox.1, o.bbox.2));
+        }
+    }
+    svg_pages(svg)
+        .into_iter()
+        .map(|page| {
+            page.split("<use ")
+                .skip(1)
+                .filter_map(|tag| {
+                    let tag = format!(" {}", tag.split("/>").next()?);
+                    let id = text(&tag, "xlink:href")?;
+                    let id = id.strip_prefix("#glyph")?;
+                    let (x, y): (f32, f32) = (text(&tag, "x")?.parse().ok()?, text(&tag, "y")?.parse().ok()?);
+                    let ink = inks.get(format!("glyph{id}").as_str()).map_or((x, x, y), |(l, r, t)| (x + l, x + r, y + t));
+                    Some(Placed { x, y, ink })
+                })
+                .collect()
+        })
+        .collect()
+}
+
+/// Glyphs drawn over the letter they belong to: their place is where they
+/// are drawn, not where the type moves on.
+const OVER: [&str; 4] = ["\u{20d7}", "\u{338}", "˜", "ˆ"];
+
+/// Write the glyphs pdftohtml left out into the empty pieces of text it
+/// gave for them. What each glyph is, the PDF's fonts say by its name
+/// ([`crate::glyphs`]); where it is, the SVG says: both list the glyphs of
+/// a page in the order they are drawn. A page where the two do not count
+/// the same number of glyphs is left alone.
+fn restore_glyphs(doc: &mut Doc, path: &Path, parts: &[(usize, String)], lost: &HashMap<String, bool>) {
+    use crate::glyphs::Glyph;
+    let (Some(first), Some(last)) = (doc.pages.first().map(|p| p.number), doc.pages.last().map(|p| p.number)) else { return };
+    let Some(glyphs) = crate::glyphs::read(path, first, last) else { return };
+    let debug = std::env::var_os("PDF2MD_GLYPHDEBUG").is_some();
+    let mut uses: Vec<Vec<Placed>> = Vec::new();
+    for (pages, svg) in parts {
+        let mut of_part = parse_svg_uses(svg);
+        of_part.resize_with(*pages, Vec::new);
+        uses.append(&mut of_part);
+    }
+    let families: Vec<String> = doc.fonts.iter().map(|f| f.family.strip_prefix("CMEX/").unwrap_or(&f.family).to_string()).collect();
+    let extension: Vec<bool> = doc.fonts.iter().map(|f| f.family.starts_with("CMEX/")).collect();
+    let kept: Vec<bool> = doc.fonts.iter().map(|f| lossy(&f.family, lost).is_some()).collect();
+    let same = |base: &str, family: &str| base == family || base.strip_prefix(family).is_some_and(|rest| rest.starts_with('-'));
+    let (mut filled, mut missed, mut pages_off) = (0, 0, 0);
+    for (page, placed) in doc.pages.iter_mut().zip(uses) {
+        let Some(shown) = glyphs.pages.get(&page.number) else { continue };
+        // (a space is a glyph that draws nothing: it may not be in the SVG)
+        let drawn: Vec<(usize, u8)> = if shown.len() == placed.len() {
+            shown.clone()
+        } else {
+            shown.iter().copied().filter(|&(_, code)| code != b' ').collect()
+        };
+        if drawn.len() != placed.len() {
+            pages_off += 1;
+            if debug {
+                eprintln!("GLYPHS page {}: {} shown, {} drawn", page.number, shown.len(), placed.len());
+            }
+            continue;
+        }
+        // the glyphs of each piece of text, in pdftohtml's pixels
+        let mut of_span: HashMap<(usize, usize), Vec<(Placed, Glyph)>> = HashMap::new();
+        for (&(f, code), at) in drawn.iter().zip(&placed) {
+            let info = &glyphs.fonts[f];
+            if lossy(&info.base, lost).is_none() {
+                continue;
+            }
+            let glyph = info.glyph(code);
+            if debug && glyph == Glyph::Unknown {
+                eprintln!("GLYPHS unknown {} {:?} {code}", info.base, info.name(code));
+            }
+            let at = Placed { x: 1.5 * at.x, y: 1.5 * at.y, ink: (1.5 * at.ink.0, 1.5 * at.ink.1, 1.5 * at.ink.2) };
+            // the piece of this font the glyph starts in (its base line is
+            // inside the piece's box, or at its top: big symbols hang)
+            let mut best: Option<((usize, usize), f32)> = None;
+            for (li, line) in page.lines.iter().enumerate() {
+                for (si, s) in line.spans.iter().enumerate() {
+                    if !kept[s.font] || !same(&info.base, &families[s.font]) || at.y < s.top - 3.0 || at.y > s.bottom() + 3.0 {
+                        continue;
+                    }
+                    let off = (s.left - at.x).max(at.x - (s.right() - 1.0).max(s.left)).max(0.0);
+                    if off <= 1.5 && best.is_none_or(|(_, o)| off < o) {
+                        best = Some(((li, si), off));
+                    }
+                }
+            }
+            match best {
+                Some((span, _)) => of_span.entry(span).or_default().push((at, glyph)),
+                None if matches!(glyph, Glyph::Lost(_)) => {
+                    missed += 1;
+                    if debug {
+                        eprintln!("GLYPHS page {}: no place for {glyph:?} of {} at {:.0},{:.0}", page.number, info.base, at.x, at.y);
+                    }
+                }
+                None => {}
+            }
+        }
+        // (the pieces of a line from its end, so that one cut into its
+        // glyphs leaves the places of those before it)
+        let mut spans: Vec<_> = of_span.into_iter().collect();
+        spans.sort_by_key(|s| std::cmp::Reverse(s.0));
+        // big symbols written, to be hung where they are drawn: line, the
+        // piece's place as pdftohtml gave it, the top of what is drawn
+        let mut hung: Vec<(usize, f32, f32, f32)> = Vec::new();
+        for ((li, si), mut found) in spans {
+            let lost_here = found.iter().filter(|(_, g)| matches!(g, Glyph::Lost(_))).count();
+            if lost_here == 0 {
+                continue;
+            }
+            found.sort_by(|a, b| a.0.x.total_cmp(&b.0.x));
+            // (a glyph nothing is known of is left out)
+            let found: Vec<(Placed, bool, String)> = found
+                .into_iter()
+                .filter_map(|(at, g)| match g {
+                    Glyph::Known(t) => Some((at, false, clean_text(&t))),
+                    Glyph::Lost(t) => Some((at, true, t.to_string())),
+                    Glyph::Unknown => None,
+                })
+                .collect();
+            let span = page.lines[li].spans[si].clone();
+            let over = |t: &str| OVER.contains(&t);
+            // one glyph, or the glyphs of a big-symbol font (which pdftohtml
+            // writes without spaces): the piece stays one
+            if extension[span.font] || found.len() == 1 {
+                let s = &mut page.lines[li].spans[si];
+                s.text = found.iter().filter(|f| f.1).map(|f| f.2.as_str()).collect();
+                if let [(at, _, t)] = found.as_slice() {
+                    if over(t) {
+                        (s.left, s.width) = (at.ink.0, (at.ink.1 - at.ink.0).max(1.0));
+                    }
+                }
+                if extension[span.font] && !s.text.is_empty() && !found.iter().any(|f| over(&f.2)) {
+                    let top = found.iter().filter(|f| f.1).map(|f| f.0.ink.2).fold(f32::MAX, f32::min);
+                    hung.push((li, s.left, s.top, top));
+                }
+                filled += lost_here;
+                continue;
+            }
+            // Text with gaps. What pdftohtml gave must be what is known of
+            // it (it knows some glyphs by their names, too).
+            let given: String = span.text.split_whitespace().collect();
+            let join = |with: &dyn Fn(&(Placed, bool, String)) -> bool| -> String { found.iter().filter(|f| with(f)).flat_map(|f| f.2.split_whitespace()).collect() };
+            if join(&|_| true) == given {
+                continue;
+            }
+            if !given.is_empty() && join(&|f| !f.1 || given.contains(f.2.as_str())) != given {
+                // not what pdftohtml gave: its text stays, and the lost
+                // glyphs are pieces of their own beside it
+                if debug {
+                    eprintln!("GLYPHS page {}: {:?} does not go into {:?}", page.number, found.iter().map(|f| &f.2).collect::<Vec<_>>(), span.text);
+                }
+                let pieces: Vec<Span> = found
+                    .iter()
+                    .filter(|f| f.1)
+                    .map(|(at, _, t)| {
+                        let mut s = span.clone();
+                        s.text = t.clone();
+                        (s.left, s.width) = if over(t) { (at.ink.0, (at.ink.1 - at.ink.0).max(1.0)) } else { (at.x, (at.ink.1 - at.x).max(1.0)) };
+                        s
+                    })
+                    .collect();
+                page.lines[li].spans.splice(si + 1..si + 1, pieces);
+                filled += lost_here;
+                continue;
+            }
+            // each glyph is a piece of its own, where it is drawn
+            let pieces: Vec<Span> = found
+                .iter()
+                .enumerate()
+                .map(|(k, (at, _, t))| {
+                    let mut s = span.clone();
+                    s.text = t.clone();
+                    let next = found.get(k + 1).map_or(span.right(), |n| n.0.x);
+                    (s.left, s.width) = if over(t) { (at.ink.0, (at.ink.1 - at.ink.0).max(1.0)) } else { (at.x, (next - at.x).max(1.0)) };
+                    s
+                })
+                .collect();
+            page.lines[li].spans.splice(si..=si, pieces);
+            filled += lost_here;
+        }
+        // A big symbol hangs from its base line, and pdftohtml's box for it
+        // is around that line, not around the symbol; how far above, each
+        // font has its own way. The box starts where the symbol is drawn
+        // now, and the symbol goes to the line at or under that (as
+        // `group_lines` does for TeX's), away from the limit set over it.
+        let fonts = doc.fonts.clone();
+        let size_of = |s: &Span| fonts.get(s.font).map_or(s.height, |f| f.size);
+        let mut remake = vec![false; page.lines.len()];
+        for (li, left, top, ink_top) in hung {
+            let Some(si) = page.lines[li].spans.iter().position(|s| extension[s.font] && s.left == left && s.top == top) else { continue };
+            let mut s = page.lines[li].spans.remove(si);
+            s.top = ink_top;
+            let to = (0..page.lines.len())
+                .filter(|&k| k == li || !page.lines[k].spans.is_empty())
+                .filter(|&k| page.lines[k].top >= s.top - 0.3 * s.height && page.lines[k].top <= s.top + 3.0 * s.height)
+                .min_by(|&a, &b| page.lines[a].top.total_cmp(&page.lines[b].top))
+                .unwrap_or(li);
+            page.lines[to].spans.push(s);
+            (remake[li], remake[to]) = (true, true);
+        }
+        for (k, line) in page.lines.iter_mut().enumerate() {
+            if remake[k] && !line.spans.is_empty() {
+                *line = Line { col: line.col, bars: std::mem::take(&mut line.bars), ..make_line(std::mem::take(&mut line.spans), &size_of) };
+            }
+        }
+        page.lines.retain(|l| !l.spans.is_empty());
+        page.lines.sort_by(|a, b| a.top.total_cmp(&b.top));
+    }
+    if debug {
+        eprintln!("GLYPHS {filled} written, {missed} without a place, {pages_off} pages not counted alike");
+    }
+}
+
+/// The pieces of text kept for [`restore_glyphs`] that are still empty
+/// stand for nothing.
+fn drop_empty(doc: &mut Doc, lost: &HashMap<String, bool>) {
+    let fonts = doc.fonts.clone();
+    let size_of = |s: &Span| fonts.get(s.font).map_or(s.height, |f| f.size);
+    let empty = |s: &Span| s.text.trim().is_empty() && fonts.get(s.font).is_some_and(|f| !f.family.starts_with("CMEX") && lossy(&f.family, lost).is_some());
+    for page in doc.pages.iter_mut() {
+        for line in page.lines.iter_mut() {
+            if line.spans.iter().any(empty) {
+                let mut spans = std::mem::take(&mut line.spans);
+                spans.retain(|s| !empty(s));
+                if !spans.is_empty() {
+                    *line = Line { col: line.col, bars: std::mem::take(&mut line.bars), ..make_line(spans, &size_of) };
+                }
+            }
+        }
+        page.lines.retain(|l| !l.spans.is_empty());
     }
 }
 
@@ -1417,6 +1682,35 @@ fn insert_delims(doc: &mut Doc, delims: Vec<Vec<Delim>>) {
     }
 }
 
+/// A rule drawn as a stroke, not as a filled rectangle (some typesetters
+/// draw their fraction bars so): a thin black line from one point straight
+/// across to another,
+/// `<path fill="none" stroke-width="0.448" … stroke="rgb(0%, 0%, 0%)" …
+/// d="M 0.0007 -0.0005 L 10.53 -0.0005" transform="matrix(1, 0, 0, -1, 158, 320)"/>`.
+fn stroked_rule(tag: &str) -> Option<Rule> {
+    let attr = |name: &str| tag.split(&format!("{name}=\"")).nth(1)?.split('"').next();
+    if attr("fill") != Some("none") || attr("stroke") != Some("rgb(0%, 0%, 0%)") || tag.contains("stroke-dasharray") {
+        return None;
+    }
+    let width: f32 = attr("stroke-width")?.parse().ok()?;
+    let d = attr(" d")?;
+    let mut words = d.split_whitespace();
+    let (Some("M"), Some(x0), Some(y0), Some("L"), Some(x1), Some(y1), None) = (words.next(), words.next(), words.next(), words.next(), words.next(), words.next(), words.next()) else { return None };
+    let (x0, y0, x1, y1): (f32, f32, f32, f32) = (x0.parse().ok()?, y0.parse().ok()?, x1.parse().ok()?, y1.parse().ok()?);
+    // matrix(a, b, c, d, e, f)
+    let m: Vec<f32> = match attr("transform") {
+        Some(t) => t.strip_prefix("matrix(")?.trim_end_matches(')').split(',').filter_map(|v| v.trim().parse().ok()).collect(),
+        None => vec![1.0, 0.0, 0.0, 1.0, 0.0, 0.0],
+    };
+    if m.len() != 6 || m[1].abs() > 1e-3 || m[2].abs() > 1e-3 {
+        return None;
+    }
+    let (x0, x1) = ((m[0] * x0 + m[4]).min(m[0] * x1 + m[4]), (m[0] * x0 + m[4]).max(m[0] * x1 + m[4]));
+    let (y0, y1) = (m[3] * y0 + m[5], m[3] * y1 + m[5]);
+    let width = width * m[3].abs();
+    ((y1 - y0).abs() < 0.05 && width <= 1.5 && x1 - x0 >= 2.0).then(|| Rule { left: x0 * 1.5, right: x1 * 1.5, top: (y0 - width / 2.0) * 1.5, bottom: (y0 + width / 2.0) * 1.5 })
+}
+
 /// Thin horizontal black rectangles on each page of `pdftocairo -svg`
 /// output, in pdftohtml's pixels (1.5 per point).
 ///
@@ -1430,6 +1724,10 @@ pub fn parse_svg_rules(svg: &str) -> Vec<Vec<Rule>> {
         let mut rules = Vec::new();
         for tag in chunk.split("<path ").skip(1) {
             let tag = tag.split("/>").next().unwrap_or("");
+            if let Some(rule) = stroked_rule(tag) {
+                rules.push(rule);
+                continue;
+            }
             if !tag.contains("fill=\"rgb(0%, 0%, 0%)\"") || tag.contains("id=\"") || tag.contains("transform=") {
                 continue;
             }
@@ -1619,6 +1917,32 @@ fn mark_overlines(doc: &mut Doc) {
 /// Turn pdftohtml's XML into a [`Doc`]. Separate from [`read_pdf`] so tests
 /// can feed it a hand-written XML string.
 pub fn parse_xml(xml: &str) -> Result<Doc, String> {
+    parse_xml_with(xml, &HashMap::new())
+}
+
+/// The family a font goes by here. A big-symbol font that pdftohtml cannot
+/// read ("MTEX") goes as TeX's, "CMEX/MTEX": its glyphs are written as
+/// pdftohtml writes TeX's (see [`restore_glyphs`]) and read like them.
+fn family_name(raw: &str, lost: &HashMap<String, bool>) -> String {
+    // "YIEKEP+CMR10" -> "CMR10"
+    let family = raw.split_once('+').map_or(raw, |(_, f)| f);
+    match lossy(family, lost) {
+        Some(true) => format!("CMEX/{family}"),
+        _ => family.to_string(),
+    }
+}
+
+/// Is the font one pdftohtml loses glyphs of (and is it a big-symbol font)?
+/// (pdftohtml drops the style from a name: "Scala" for "Scala-Bold")
+fn lossy(family: &str, lost: &HashMap<String, bool>) -> Option<bool> {
+    let family = family.strip_prefix("CMEX/").unwrap_or(family);
+    lost.iter().find(|(base, _)| *base == family || base.strip_prefix(family).is_some_and(|rest| rest.starts_with('-'))).map(|(_, ext)| *ext)
+}
+
+/// As [`parse_xml`], told which fonts pdftohtml loses glyphs of
+/// ([`crate::glyphs::lost_fonts`]): their empty pieces of text are kept, to
+/// be filled in from the PDF.
+pub fn parse_xml_with(xml: &str, lost: &HashMap<String, bool>) -> Result<Doc, String> {
     // The XML starts with a <!DOCTYPE ...> line, which roxmltree rejects
     // unless we allow it.
     let opts = roxmltree::ParsingOptions {
@@ -1642,9 +1966,7 @@ pub fn parse_xml(xml: &str) -> Result<Doc, String> {
         for n in page_node.children().filter(|n| n.is_element()) {
             if n.has_tag_name("fontspec") {
                 let id = num(n, "id") as usize;
-                let raw = n.attribute("family").unwrap_or("");
-                // "YIEKEP+CMR10" -> "CMR10"
-                let family = raw.split_once('+').map_or(raw, |(_, f)| f).to_string();
+                let family = family_name(n.attribute("family").unwrap_or(""), lost);
                 if fonts.len() <= id {
                     fonts.resize(
                         id + 1,
@@ -1672,7 +1994,10 @@ pub fn parse_xml(xml: &str) -> Result<Doc, String> {
                 let not_slash = text.trim() == "6"
                     && fonts.get(num(n, "font") as usize).is_some_and(|f| f.family.contains("CMSY"));
                 let width = if not_slash { 0.8 * num(n, "height") } else { num(n, "width") };
-                if width < 0.5 {
+                // (nor is an empty piece kept to be filled in: an accent
+                // moves the type on by nothing)
+                let to_fill = text.trim().is_empty() && fonts.get(num(n, "font") as usize).is_some_and(|f| lossy(&f.family, lost).is_some());
+                if width < 0.5 && !to_fill {
                     continue;
                 }
                 // Empty text is skipped, except for glyphs of TeX's big-symbol
@@ -1684,7 +2009,11 @@ pub fn parse_xml(xml: &str) -> Result<Doc, String> {
                 // out empty; it is by far its most common glyph in physics.
                 let msam = fonts.get(id).is_some_and(|f| f.family.starts_with("MSAM"));
                 let text = if text.trim().is_empty() && msam { "□".to_string() } else { text };
-                if text.trim().is_empty() && !cmex {
+                let kept = fonts.get(id).is_some_and(|f| lossy(&f.family, lost).is_some());
+                // (what pdftohtml gives for a big-symbol font it cannot read
+                // is the glyph's number as a character: nothing)
+                let text = if fonts.get(id).is_some_and(|f| f.family.starts_with("CMEX/")) { String::new() } else { text };
+                if text.trim().is_empty() && !cmex && !kept {
                     continue;
                 }
                 spans.push(Span {
