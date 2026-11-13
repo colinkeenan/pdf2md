@@ -711,6 +711,17 @@ fn wraps(t: &str) -> bool {
     false
 }
 
+/// What a table hands from its page to the next (see [`panel_tables`]).
+#[derive(Default)]
+struct Carried {
+    /// The columns of a table that reaches the foot of its page.
+    columns: Option<Vec<f32>>,
+    /// The lines of a head that starts at the foot of its page.
+    head: Vec<Line>,
+    /// Set on the page after: its table took those lines into its head.
+    head_taken: bool,
+}
+
 /// The tables of a page that are set on a panel of grey (an ebook-made
 /// PDF): (first line, end, the table). Such a table has a short rule
 /// under each cell of its head, so the rules say where its columns are.
@@ -722,13 +733,30 @@ fn wraps(t: &str) -> bool {
 /// A table that reaches the foot of its page goes on at the top of the
 /// next, on a panel without rules (they stand under the head only):
 /// `carried` holds the columns of such a table from one page to the next.
-fn panel_tables(doc: &Doc, page: &crate::layout::Page, lines: &[Line], st: &Stats, carried: &mut Option<Vec<f32>>) -> Vec<(usize, usize, Block, Figure)> {
+///
+/// A table can also start at the foot of a page with no more than the
+/// first lines of its head, the rest of the head and its rules following
+/// on the next page. Those lines are held back (the entry for them has no
+/// table) and go into the head of the table there, if `next_takes` says
+/// that the next page has such a table.
+fn panel_tables(
+    doc: &Doc,
+    page: &crate::layout::Page,
+    lines: &[Line],
+    st: &Stats,
+    carried: &mut Carried,
+    next_takes: &dyn Fn(&[Line]) -> bool,
+) -> Vec<(usize, usize, Option<Block>, Figure)> {
     let mut out = Vec::new();
-    let from_before = carried.take();
+    let from_before = std::mem::take(carried);
     for (panel, light) in &page.shades {
-        if *light < 0.7 || panel.bottom - panel.top < 2.0 * st.body {
+        if *light < 0.7 {
             continue;
         }
+        let tall = panel.bottom - panel.top >= 2.0 * st.body;
+        // the lines on the panel: they must be a run of the page's lines
+        let inside = |l: &Line| l.top >= panel.top - 3.0 && l.top < panel.bottom && l.left >= panel.left - 3.0 && l.right <= panel.right + 3.0;
+        let area = Figure { left: panel.left, right: panel.right, top: panel.top, bottom: panel.bottom };
         // the rules on the panel, from the top down
         let on_panel = |r: &&Rule| r.top >= panel.top - 2.0 && r.top <= panel.bottom + 2.0 && r.left >= panel.left - 2.0 && r.right <= panel.right + 2.0;
         let rules: Vec<&Rule> = page.rules.iter().filter(on_panel).collect();
@@ -739,15 +767,27 @@ fn panel_tables(doc: &Doc, page: &crate::layout::Page, lines: &[Line], st: &Stat
         if edges.len() < 3 {
             // (no rules: the rest of the table of the page before, if this
             // panel starts the page and stands where that table stood)
-            match &from_before {
-                Some(before) if panel.top < 0.15 * page.height && (panel.left - before[0]).abs() < 6.0 => edges = before.clone(),
-                _ => continue,
+            match &from_before.columns {
+                Some(before) if tall && panel.top < 0.15 * page.height && (panel.left - before[0]).abs() < 6.0 => edges = before.clone(),
+                _ => {
+                    // (or, at the foot of the page, the first lines of the
+                    // head of a table that the next page has)
+                    if let Some(first) = lines.iter().position(inside).filter(|_| panel.bottom > 0.85 * page.height) {
+                        let end = first + lines[first..].iter().take_while(|l| inside(l)).count();
+                        if !lines[end..].iter().any(inside) && next_takes(&lines[first..end]) {
+                            carried.head = lines[first..end].to_vec();
+                            out.push((first, end, None, area));
+                        }
+                    }
+                    continue;
+                }
             }
+        }
+        if !tall {
+            continue;
         }
         let columns = edges.len() - 1;
         let column_of = |x: f32| (0..columns).find(|c| x < edges[c + 1]).unwrap_or(columns - 1);
-        // the lines on the panel: they must be a run of the page's lines
-        let inside = |l: &Line| l.top >= panel.top - 3.0 && l.top < panel.bottom && l.left >= panel.left - 3.0 && l.right <= panel.right + 3.0;
         let Some(first) = lines.iter().position(inside) else { continue };
         let end = first + lines[first..].iter().take_while(|l| inside(l)).count();
         if std::env::var_os("PDF2MD_TABLEDEBUG").is_some() {
@@ -773,7 +813,23 @@ fn panel_tables(doc: &Doc, page: &crate::layout::Page, lines: &[Line], st: &Stat
         // each line's part in each column
         let size_of = |s: &crate::layout::Span| doc.size_of(s);
         let mut parts: Vec<Vec<Line>> = vec![Vec::new(); columns];
-        for l in &lines[first..end] {
+        // (the lines of the head that stand on the page before, if this
+        // table opens the page with rules of its own: as if they stood
+        // right above the panel)
+        let mut head: Vec<Line> = Vec::new();
+        if rules.len() >= 2 && panel.top < 0.15 * page.height && from_before.head.first().is_some_and(|l| (l.left - panel.left).abs() < 0.5 * (panel.right - panel.left)) {
+            let lowest = from_before.head.iter().map(|l| l.top + l.size).fold(f32::MIN, f32::max);
+            let up = lowest - (panel.top - 2.0 * st.body);
+            for l in &from_before.head {
+                let mut l = l.clone();
+                l.top -= up;
+                for s in &mut l.spans {
+                    s.top -= up;
+                }
+                head.push(l);
+            }
+        }
+        for l in head.iter().chain(&lines[first..end]) {
             // (a piece of text that runs across a column's edge, the words
             // of two cells with spaces between them: cut at the edge)
             let mut pieces: Vec<crate::layout::Span> = Vec::new();
@@ -871,10 +927,10 @@ fn panel_tables(doc: &Doc, page: &crate::layout::Page, lines: &[Line], st: &Stat
         }
         if rows.len() >= 2 {
             // (with where the panel is: the picture of the table as it is set)
-            let area = Figure { left: panel.left, right: panel.right, top: panel.top, bottom: panel.bottom };
-            out.push((first, end, Block::Table { key: crate::table_key(page.number, &rows), rows, widths: Vec::new() }, area));
+            out.push((first, end, Some(Block::Table { key: crate::table_key(page.number, &rows), rows, widths: Vec::new() }), area));
+            carried.head_taken |= !head.is_empty();
             if panel.bottom > 0.85 * page.height {
-                *carried = Some(edges.clone());
+                carried.columns = Some(edges.clone());
             }
         }
     }
@@ -1658,7 +1714,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
     // printed page marks (ebook PDFs without page numbers; see layout.rs)
     let use_marks = pages.iter().all(|p| p.label.is_none());
     // (the columns of a table that goes on over the page)
-    let mut carried_table: Option<Vec<f32>> = None;
+    let mut carried_table = Carried::default();
     for (pi, page) in pages.iter().enumerate() {
         b.page = pi;
         if let Some(l) = &page.label {
@@ -1679,7 +1735,17 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
         // their head: real tables. (A raised mark in such a table, or the
         // note under it on a panel of its own, is not where the page's
         // footnotes start: those are looked for below the panels.)
-        let panels = panel_tables(doc, &doc.pages[page.index], lines, st, &mut carried_table);
+        // (a head that starts at the foot of this page: does the table of
+        // the next page take its lines?)
+        let next_takes = |head: &[Line]| {
+            pages.get(pi + 1).filter(|_| !st.toc_pages.contains(&(pi + 1))).is_some_and(|next| {
+                let lines = attach_fraction_rows(doc, &next.lines, &doc.pages[next.index].rules);
+                let mut carried = Carried { head: head.to_vec(), ..Default::default() };
+                panel_tables(doc, &doc.pages[next.index], &lines, st, &mut carried, &|_| false);
+                carried.head_taken
+            })
+        };
+        let panels = panel_tables(doc, &doc.pages[page.index], lines, st, &mut carried_table, &next_takes);
         let on_table = |i: usize, j: usize| panels.iter().any(|p| i < p.1 && p.0 < j);
         if let Some(last) = panels.iter().map(|t| t.1).max().filter(|last| end < *last) {
             let on_panel = |l: &Line| doc.pages[page.index].shades.iter().any(|(p, _)| l.top >= p.top - 3.0 && l.top < p.bottom && l.left >= p.left - 3.0 && l.right <= p.right + 3.0);
@@ -1755,13 +1821,41 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
             }
             if let Some((_, j, table, area)) = panels.iter().find(|t| t.0 == i) {
                 b.flush();
-                b.anchor_block();
-                b.push(table.clone());
-                // (the printed table under it, to check it against)
-                b.push(Block::Picture { page: number, area: *area, alt: crate::TABLE_SET.into() });
+                let mut j = *j;
+                // (no table: lines of a head that the table of the next page takes)
+                if let Some(table) = table {
+                    b.anchor_block();
+                    b.push(table.clone());
+                    // The table's own note, on a panel right under it: a
+                    // paragraph under the table (its lines are short only
+                    // because the panel is narrow), and part of the picture.
+                    let mut area = *area;
+                    let under = |p: &Rule| p.top >= area.bottom - 4.0 && p.top <= area.bottom + st.body && p.left < area.right && p.right > area.left;
+                    if let Some((note, _)) = doc.pages[page.index].shades.iter().find(|(p, light)| *light >= 0.7 && under(p)) {
+                        let on_note = |l: &Line| l.top >= note.top - 3.0 && l.top < note.bottom && l.left >= note.left - 3.0 && l.right <= note.right + 3.0;
+                        let last = j + lines[j..end].iter().take_while(|l| on_note(l)).count();
+                        if last > j {
+                            b.para_page = pi;
+                            b.para_centered = false;
+                            for (k, l) in lines[j..last].iter().enumerate() {
+                                let inl = line_inlines(doc, l, st);
+                                if k == 0 {
+                                    b.para = inl;
+                                } else {
+                                    b.join(inl);
+                                }
+                            }
+                            b.flush();
+                            area = Figure { left: area.left.min(note.left), right: area.right.max(note.right), top: area.top, bottom: note.bottom };
+                            j = last;
+                        }
+                    }
+                    // (the printed table under it, to check it against)
+                    b.push(Block::Picture { page: number, area, alt: crate::TABLE_SET.into() });
+                }
                 prev_top = Some(lines[j - 1].top);
                 last_heading = None;
-                i = *j;
+                i = j;
                 continue;
             }
             if let Some((_, j, cols)) = tables.iter().find(|t| t.0 == i && !on_table(t.0, t.1)).filter(|_| !b.index_mode) {

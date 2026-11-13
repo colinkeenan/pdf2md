@@ -181,7 +181,7 @@ Inside a sentence, an italic letter is a variable and the brackets and "=" aroun
 
 ### Tables
 
-Such a book sets a table on a grey panel, with a short rule under each cell of the head. The rules give the columns. The rows have no marks, so they are found from how the cells stand: centred in their row or at its top, whichever fits the table. A table that reaches the foot of its page continues at the top of the next.
+Such a book sets a table on a grey panel, with a short rule under each cell of the head. The rules give the columns. The rows have no marks, so they are found from how the cells stand: centred in their row or at its top, whichever fits the table. A table that reaches the foot of its page continues at the top of the next. A table whose head starts at the foot of a page, with the rest on the next, gets those lines into its head. A note set on a panel of its own under a table is a paragraph under the table and part of its picture.
 
 A table that the book holds as a picture is read cell by cell. The picture is cut from the page again at higher resolution. Its rows are the lines of text on it, and its columns end where no row has ink. Each cell is then read on its own, as words, as a whole number or as a formula. A picture that does not split into rows and columns this way keeps the model's reading of it as one array.
 
