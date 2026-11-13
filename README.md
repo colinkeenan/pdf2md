@@ -159,7 +159,7 @@ Any other edit to the text is lost at the next conversion. A note whose place ca
 * **Each new book brings cases not seen before.** pdf2md has been worked through three books. The rules that tell a heading from a line of text, or a formula from prose, are tuned on those.
 * **TeX-made PDFs need known math fonts**: Computer Modern, AMS, or fonts named "Math", "Symbol" or "STIX". Other fonts must be added in the source.
 * **Pictures are images**, so the labels inside them cannot be searched. A picture made of only one or two strokes is not found.
-* **Scanned books lose some footnote markers.** A footnote whose marker was not found still stands at the foot of its page and says so. In the test scan, 12 of 119 were left that way.
+* **Scanned books lose some footnote markers.** A footnote whose marker was not found still stands at the foot of its page and says so. In the test scan, 3 of 119 were left that way.
 * **A scanned book's table of contents** is read from poor text, so an entry can keep a misread character.
 
 ## How it works
