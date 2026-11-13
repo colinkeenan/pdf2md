@@ -61,7 +61,7 @@ The first line builds the app; the others copy the program, its launcher entry a
 
 The launcher and the terminal find the installed program only if `~/.local/bin` is on your PATH. Not every distribution puts it there: check with `echo $PATH`. If it is missing, add it and log in again:
 
-* bash or zsh: add `export PATH="$HOME/.local/bin:$PATH"` to `~/.profile` (zsh: `~/.zprofile`)
+* bash or zsh: add `export PATH="$HOME/.local/bin:$PATH"` to `~/.profile` (zsh: `~/.zprofile`). Putting the line in `~/.bashrc` or `~/.zshrc` works too, but usually only for terminals: the app launcher does not read those files.
 * fish: `fish_add_path ~/.local/bin`
 
 Building needs `qmake6` on your PATH (or set `QMAKE=/usr/lib/qt6/bin/qmake`). The command-line tool needs only Rust and poppler.
