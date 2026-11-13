@@ -483,6 +483,19 @@ fn aligned(rows: &[&str]) -> String {
             _ => format!("&\\quad {row}"),
         })
         .collect();
+    // Words set apart at the end of every row ("SI", "Gaussian": what the
+    // row is of) stand in a column of their own, as in the book.
+    let label = |row: &str| -> Option<usize> {
+        let at = row.rfind("\\qquad")?;
+        let tail = row[at + 6..].trim().trim_end_matches(['.', ',']);
+        let inner = ["\\mathrm{", "\\text{", "\\mathbf{", "\\textbf{"].iter().find_map(|w| tail.strip_prefix(w)?.strip_suffix('}'))?;
+        (!inner.is_empty() && inner.chars().all(|c| c.is_alphabetic() || c == ' ' || c == '~')).then_some(at)
+    };
+    let rows: Vec<String> = if rows.len() >= 2 && rows.iter().all(|r| label(r).is_some()) {
+        rows.iter().map(|r| label(r).map_or(r.clone(), |at| format!("{}&&{}", r[..at].trim_end(), r[at + 6..].trim_start()))).collect()
+    } else {
+        rows
+    };
     format!("\\begin{{aligned}}\n{}\n\\end{{aligned}}", rows.join(" \\\\\n"))
 }
 
@@ -649,7 +662,7 @@ const SMALL: u32 = 30;
 /// (`LINES_RULE` in `math_ocr.py`), or "never" for an equation that is
 /// only compared (see [`second_readings`]).
 fn lines_looked_at(dir: &std::path::Path, k: &str) -> bool {
-    std::fs::read_to_string(dir.join(format!("{k}.lines"))).is_ok_and(|t| matches!(t.trim(), "3" | "never"))
+    std::fs::read_to_string(dir.join(format!("{k}.lines"))).is_ok_and(|t| matches!(t.trim(), "4" | "never"))
 }
 
 /// Read every image (given as base64 PNG), from the cache or by running

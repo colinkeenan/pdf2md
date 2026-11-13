@@ -317,11 +317,22 @@ def read_rows(img, model, processor, batch_inference):
         return None
     lines = []
     for part in parts:
-        t = read_one(part, model, processor, batch_inference)
+        t = read_one(close_cut(part), model, processor, batch_inference)
         if t is None:
             return None
         lines.append(t)
     return lines
+
+
+def close_cut(part):
+    """A line of an equation cut close to its ink, with a margin of white:
+    as wide as the picture it comes from, with nothing around it, the
+    model reads a short line worse (words as plain text, a full stop as a
+    comma)."""
+    from PIL import ImageOps
+
+    box = ImageOps.invert(part.convert("L")).point(lambda v: 255 if v > 95 else 0).getbbox()
+    return part if box is None else ImageOps.expand(part.crop(box), border=16, fill="white")
 
 
 def as_block(lines) -> str:
@@ -426,6 +437,8 @@ def lines_apart(img, t: str, model, processor, batch_inference):
     long line. The lines are kept apart, by the first of these that holds:
 
     * the whole reading shows where its lines end (`line_spaces`): cut there;
+    * the whole reading is plain words, and the lines read one by one are
+      formulas with the same letters: the lines;
     * read line by line, it says the same as the whole reading: the lines;
     * the whole reading says the same as the lines without one of them (the
       model left a line out): the lines (a low line must be missing from
@@ -456,6 +469,13 @@ def lines_apart(img, t: str, model, processor, batch_inference):
     if lines is None:
         return None
     whole = t.replace("\\\\", "")
+    # Lines of words ("1 Joule = 1 Volt C"), read whole as plain text with
+    # no formula in it: the lines as read one by one, if they have the
+    # same letters.
+    letters = lambda x: re.sub(r"\\[a-zA-Z]+|[^A-Za-z]", "", x).lower()
+    if "\\" not in t and len(re.findall(r"[A-Za-z]{3,}", t)) >= 2 and all(p.height >= FULL_LINE for p in parts):
+        if letters(t) == letters(" ".join(lines)) and all("\\" in l for l in lines):
+            return as_block(lines)
     limit = max(2, len(canonical(whole)) // 10)
     if difference(whole, " ".join(lines)) <= limit:
         return as_block(lines)
@@ -497,17 +517,14 @@ def low_line(part, model, processor, batch_inference):
     capital would stand higher than this line is)."""
     from PIL import ImageOps
 
-    box = ImageOps.invert(part.convert("L")).point(lambda v: 255 if v > 95 else 0).getbbox()
-    if box is None:
-        return None
-    t = read_one(ImageOps.expand(part.crop(box), border=16, fill="white"), model, processor, batch_inference)
+    t = read_one(close_cut(part), model, processor, batch_inference)
     if t is None:
         return None
     # (single letters only: not the letters of a command's name)
     return re.sub(r"(?<![A-Za-z\\])[COSVWXZ](?![A-Za-z])", lambda m: m.group(0).lower(), t)
 
 
-LINES_RULE = "3"
+LINES_RULE = "4"
 
 
 def lines_looked_at(dst, stem: str) -> bool:
