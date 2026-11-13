@@ -144,7 +144,7 @@ fn contents_table(entries: &[crate::TocEntry], items: Vec<Block>) -> Block {
         .filter(|row| !row.is_empty())
         .collect();
     // (a narrow column for the numbers, one for the pages)
-    Block::Table { rows, widths: vec![10, 0, 20], key: String::new(), title: Vec::new() }
+    Block::Table { rows, widths: vec![10, 0, 20], key: String::new(), title: Vec::new(), note: Vec::new() }
 }
 
 fn link_entries(
@@ -794,10 +794,11 @@ fn text_runs(ch: &mut Chapter) -> Vec<&mut Vec<Inline>> {
     let notes = ch.notes.iter_mut().chain(ch.refs.iter_mut()).flat_map(|n| n.blocks.iter_mut());
     blocks
         .chain(notes)
-        .filter_map(|b| match b {
-            Block::Para(inl) | Block::Item { text: inl, .. } | Block::PageNote { text: inl, .. } => Some(inl),
-            Block::Table { title, .. } if !title.is_empty() => Some(title),
-            _ => None,
+        .flat_map(|b| match b {
+            Block::Para(inl) | Block::Item { text: inl, .. } | Block::PageNote { text: inl, .. } => vec![inl],
+            // (a table's title and the note at its foot)
+            Block::Table { title, note, .. } => [title, note].into_iter().filter(|i| !i.is_empty()).collect(),
+            _ => Vec::new(),
         })
         .collect()
 }

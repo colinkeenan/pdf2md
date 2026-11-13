@@ -633,7 +633,7 @@ fn picture_tables(blks: Vec<Blk>, boxes: &HashMap<String, (u32, Figure)>) -> Vec
             out.push(Blk { block: Block::Para(tidy(before)), page, centered });
         }
         // (keyed by the picture it was read from)
-        let table = Block::Table { key: crate::table_key(boxes.get(&key).map_or(0, |b| b.0), &rows), rows, widths: Vec::new(), title };
+        let table = Block::Table { key: crate::table_key(boxes.get(&key).map_or(0, |b| b.0), &rows), rows, widths: Vec::new(), title, note: Vec::new() };
         out.push(Blk { block: table, page, centered: false });
         if let Some((number, area)) = boxes.get(&key) {
             out.push(Blk { block: Block::Picture { page: *number, area: *area, alt: crate::TABLE_READ.into() }, page, centered: false });
@@ -974,7 +974,7 @@ fn panel_tables(
         }
         if rows.len() >= 2 {
             // (with where the panel is: the picture of the table as it is set)
-            out.push((first, end, Some(Block::Table { key: crate::table_key(page.number, &rows), rows, widths: Vec::new(), title: Vec::new() }), area));
+            out.push((first, end, Some(Block::Table { key: crate::table_key(page.number, &rows), rows, widths: Vec::new(), title: Vec::new(), note: Vec::new() }), area));
             carried.head_taken |= !head.is_empty();
             if panel.bottom > 0.85 * page.height {
                 carried.columns = Some(edges.clone());
@@ -1880,10 +1880,11 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 // (no table: lines of a head that the table of the next page takes)
                 if let Some(table) = table {
                     b.anchor_block();
-                    b.push(table.clone());
-                    // The table's own note, on a panel right under it: a
-                    // paragraph under the table (its lines are short only
-                    // because the panel is narrow), and part of the picture.
+                    let mut table = table.clone();
+                    // The table's own note, on a panel right under it: the
+                    // foot of the table, a cell across its columns (its
+                    // lines are short only because the panel is narrow),
+                    // and part of the picture.
                     let mut area = *area;
                     let under = |p: &Rule| p.top >= area.bottom - 4.0 && p.top <= area.bottom + st.body && p.left < area.right && p.right > area.left;
                     if let Some((note, _)) = doc.pages[page.index].shades.iter().find(|(p, light)| *light >= 0.7 && under(p)) {
@@ -1900,11 +1901,15 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                                     b.join(inl);
                                 }
                             }
+                            if let Block::Table { note, .. } = &mut table {
+                                *note = tidy(std::mem::take(&mut b.para));
+                            }
                             b.flush();
                             area = Figure { left: area.left.min(note.left), right: area.right.max(note.right), top: area.top, bottom: note.bottom };
                             j = last;
                         }
                     }
+                    b.push(table);
                     // (the printed table under it, to check it against)
                     b.push(Block::Picture { page: number, area, alt: crate::TABLE_SET.into() });
                 }

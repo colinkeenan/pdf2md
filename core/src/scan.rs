@@ -2271,7 +2271,7 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
                         None => match read_table(&b.html) {
                             Some(mut rows) => {
                                 let number = table_number(&mut rows);
-                                made.push(Block::Table { key: crate::table_key(page.number, &rows), rows, widths: Vec::new(), title: Vec::new() });
+                                made.push(Block::Table { key: crate::table_key(page.number, &rows), rows, widths: Vec::new(), title: Vec::new(), note: Vec::new() });
                                 if number.is_some() {
                                     made.push(Block::Equation { latex: String::new(), tag: number, source: None });
                                 }

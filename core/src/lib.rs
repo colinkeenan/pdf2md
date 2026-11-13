@@ -149,7 +149,9 @@ pub enum Block {
     /// `title`: the table's caption, where the book sets it as the top of
     /// the table itself (a panel as wide as the table): written as a cell
     /// across all columns, above the rows.
-    Table { rows: Vec<Vec<Cell>>, widths: Vec<u8>, key: String, title: Vec<Inline> },
+    /// `note`: a note the book sets on a panel right under the table, as
+    /// its foot: written as a cell across all columns, under the rows.
+    Table { rows: Vec<Vec<Cell>>, widths: Vec<u8>, key: String, title: Vec<Inline>, note: Vec<Inline> },
     /// A picture without a number or a caption of its own: area `area` of
     /// PDF page `page`, cut from the page (a table as printed, under the
     /// table read from it). `alt`: what it is, for where it cannot be shown.
