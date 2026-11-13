@@ -444,7 +444,7 @@ def lines_apart(img, t: str, model, processor, batch_inference):
       model left a line out): the lines (a low line must be missing from
       it altogether);
     * two lines, and the whole reading starts with what the first line reads
-      as: cut where that ends.
+      as: cut where that ends (at a relation; else see `wrapped`).
 
     Otherwise the "lines" are no lines (the limits under a sum, the two
     halves of a fraction) or one of the readings is wrong, and the whole
@@ -504,7 +504,85 @@ def lines_apart(img, t: str, model, processor, batch_inference):
                 cut_ = cut_lines(t, [cut])
                 if cut_ is not None:
                     return as_block(cut_)
+        return wrapped(t, lines)
     return None
+
+
+TEXT_GROUP = ("text", "mathrm", "textrm", "textbf", "textit")
+
+
+def cut_places(t: str):
+    """Where a line of `t` can end: (place, in words). Before each piece
+    that stands in no braces, and before each word of a run of words
+    (\\text{...}) that stands in no other braces."""
+    stack, i = [], 0
+    while i < len(t):
+        c = t[i]
+        if i > 0 and not stack:
+            yield i, False
+        elif i > 0 and stack == [True] and t[i - 1] == " " and c != " ":
+            yield i, True
+        if c == "\\":
+            m = re.match(r"\\([a-zA-Z]+|.)", t[i:], re.S)
+            i += len(m.group(0))
+            if m.group(1) in TEXT_GROUP and t[i : i + 1] == "{":
+                stack.append(True)
+                i += 1
+            continue
+        if c == "{":
+            stack.append(False)
+        elif c == "}" and stack:
+            stack.pop()
+        i += 1
+
+
+def wrapped(t: str, lines):
+    """Two lines the model read as one where no relation starts the second
+    (a formula too long for its line, wrapped inside a bracket or inside
+    its words; two sentences of words and symbols): the whole reading, cut
+    where its letters and figures part as those of the two lines do. Both
+    parts must have nearly the letters and figures of their line (the
+    whole reading is the better one, so they need not be the same). A cut
+    inside a run of words ends the run and starts it again."""
+    import difflib
+
+    alnum = lambda x: re.sub(r"\\[a-zA-Z]+|[^A-Za-z0-9]", "", x).lower()
+
+    def apart(a: str, b: str) -> int:
+        ops = difflib.SequenceMatcher(None, a, b, autojunk=False).get_opcodes()
+        return sum(max(i2 - i1, j2 - j1) for op, i1, i2, j1, j2 in ops if op != "equal")
+
+    first, second = alnum(lines[0]), alnum(lines[1])
+    if len(first) < 4 or len(second) < 4:
+        return None
+    best = None
+    for place, in_words in cut_places(t):
+        head, tail = alnum(t[:place]), alnum(t[place:])
+        # (only where the first part is about as long as the first line)
+        if abs(len(head) - len(first)) > 0.2 * len(first) + 2:
+            continue
+        score = (apart(head, first) + apart(tail, second), difference(t[:place], lines[0]) + difference(t[place:], lines[1]))
+        if best is None or score < best[0]:
+            best = (score, place, in_words, apart(head, first), apart(tail, second))
+    if best is None:
+        return None
+    _, place, in_words, d1, d2 = best
+    if d1 > max(2, 0.15 * len(first)) or d2 > max(2, 0.15 * len(second)):
+        return None
+    head, tail = t[:place].rstrip(), t[place:].lstrip()
+    if in_words:
+        head, tail = head + "}", "\\text{" + tail
+    pieces = [bold_words(x) for x in (head, tail)]
+    if not all(plausible(x) for x in pieces):
+        return None
+    return as_block(pieces)
+
+
+def bold_words(t: str) -> str:
+    """Without the "**" the model sets around some words of a run of words
+    (as Markdown marks bold: it does so for words that are not bold, and
+    for one of two that are set alike)."""
+    return re.sub(r"\\text\{([^{}]*\*\*[^{}]*)\}", lambda m: "\\text{" + m.group(1).replace("**", "") + "}", t)
 
 
 # NAME.lines holds the number of the rules the image was looked at with (keep
@@ -524,7 +602,7 @@ def low_line(part, model, processor, batch_inference):
     return re.sub(r"(?<![A-Za-z\\])[COSVWXZ](?![A-Za-z])", lambda m: m.group(0).lower(), t)
 
 
-LINES_RULE = "4"
+LINES_RULE = "5"
 
 
 def lines_looked_at(dst, stem: str) -> bool:
