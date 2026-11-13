@@ -497,7 +497,8 @@ fn page_ends(text: &str, book: &Book) -> String {
                 Some((format!("p. {l}"), book.pdf_of.get(&format!("p{l}")).filter(|_| book.source.is_some()).map_or(String::new(), |n| pdf_link(*n))))
             }),
         };
-        if let Some((label, link)) = before {
+        // (not above the first bar of a file: nothing of that page is there)
+        if let Some((label, link)) = before.filter(|_| !out.trim().trim_end_matches(PAGE_BAR).trim().is_empty()) {
             let mark = if link.is_empty() { format!("<sup>[{label}]</sup>") } else { format!("<a{link}><sup>[{label}]</sup></a>") };
             if out.ends_with(&format!("{PAGE_BAR}\n")) {
                 out.insert_str(out.len() - PAGE_BAR.len() - 1, &format!("<div align=\"right\">{mark}</div>\n"));
@@ -971,8 +972,18 @@ fn chapter_body(book: &Book, i: usize) -> String {
                     s.push('\n');
                     in_list = false;
                 }
+                if centered {
+                    s.push_str("</div>\n\n");
+                    centered = false;
+                }
                 s.push_str(&format!("{PAGE_BAR}\n<a id=\"{id}\"{}><sup>[{label}]</sup></a>\n\n", pdf_link(n)));
             }
+        }
+        // (a page's bar and marker stand at the left like all others, not
+        // in the middle with the centered lines around them)
+        if centered && matches!(&b.block, crate::Block::Anchor(id) if page_label(id).is_some()) {
+            s.push_str("</div>\n\n");
+            centered = false;
         }
         if !neutral && b.centered != centered {
             if in_list {

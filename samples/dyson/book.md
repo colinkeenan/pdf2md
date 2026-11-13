@@ -14,9 +14,13 @@
 
 **Second Edition**
 
+</div>
+
 <div align="right"><a href="book.pdf#page=1" target="_blank" title="This page in the PDF"><sup>[PDF p. 1]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="pi" href="book.pdf#page=2" target="_blank" title="This page in the PDF"><sup>[p. i]</sup></a>
+
+<div align="center">
 
 _ADVANCED QUANTUM MECHANICS_
 
@@ -43,21 +47,10 @@ A^{T} & = & \text{transposed} \\
 \end{array}
 ```
 
-<div align="right"><a href="book.pdf#page=5" target="_blank" title="This page in the PDF"><sup>[p. iv]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="pv" href="book.pdf#page=6" target="_blank" title="This page in the PDF"><sup>[p. v]</sup></a>
-
-<div align="center">
-
-## <a id="s-lecture-course-491-advanced-quantum-theory-f-j-dyson-fall-semester-1951"></a>Lecture Course 491 — Advanced Quantum Theory F. J. Dyson — Fall Semester 1951
-
-</div>
-
 ---
 
 <a id="00b-table-of-contents"></a>
 
-<div align="right"><a href="book.pdf#page=2" target="_blank" title="This page in the PDF"><sup>[p. i]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="pii" href="book.pdf#page=3" target="_blank" title="This page in the PDF"><sup>[p. ii]</sup></a>
 
@@ -181,6 +174,15 @@ A^{T} & = & \text{transposed} \\
 ---
 
 <a id="01-introduction"></a>
+
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
+<a id="pv" href="book.pdf#page=6" target="_blank" title="This page in the PDF"><sup>[p. v]</sup></a>
+
+<div align="center">
+
+## <a id="s-lecture-course-491-advanced-quantum-theory-f-j-dyson-fall-semester-1951"></a>Lecture Course 491 — Advanced Quantum Theory F. J. Dyson — Fall Semester 1951
+
+</div>
 
 <div align="right"><a href="book.pdf#page=6" target="_blank" title="This page in the PDF"><sup>[p. v]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -350,7 +352,6 @@ The theory can be carried through quite easily, if we make $`\psi`$ describe an 
 
 <a id="02-the-dirac-theory"></a>
 
-<div align="right"><a href="book.pdf#page=9" target="_blank" title="This page in the PDF"><sup>[p. 3]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p4" href="book.pdf#page=10" target="_blank" title="This page in the PDF"><sup>[p. 4]</sup></a>
 
@@ -1833,7 +1834,6 @@ Latin indices: 1, 2, 3. Greek indices: 0, 1, 2, 3.
 
 <a id="03-scattering-problems-and-born-approximation"></a>
 
-<div align="right"><a href="book.pdf#page=27" target="_blank" title="This page in the PDF"><sup>[p. 21]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p22" href="book.pdf#page=28" target="_blank" title="This page in the PDF"><sup>[p. 22]</sup></a>
 
@@ -2614,7 +2614,6 @@ V ( r ) = - 4 \pi \int_{0}^{r} \frac{1}{r_{1}^{2}} dr_{1} \int_{0}^{r_{1}} r_{2}
 
 <a id="04-field-theory"></a>
 
-<div align="right"><a href="book.pdf#page=37" target="_blank" title="This page in the PDF"><sup>[p. 31]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p32" href="book.pdf#page=38" target="_blank" title="This page in the PDF"><sup>[p. 32]</sup></a>
 
@@ -3206,7 +3205,6 @@ The interpretation of the operators, and the justification for the Schwinger pri
 
 <a id="05-examples-of-quantized-field-theories"></a>
 
-<div align="right"><a href="book.pdf#page=46" target="_blank" title="This page in the PDF"><sup>[p. 40]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p41" href="book.pdf#page=47" target="_blank" title="This page in the PDF"><sup>[p. 41]</sup></a>
 
@@ -6189,7 +6187,6 @@ because the expression $`( z - z^{2} )`$ is symmetric about $`z = \tfrac{1}{2}`$
 
 <a id="06-free-particle-scattering-problems"></a>
 
-<div align="right"><a href="book.pdf#page=86" target="_blank" title="This page in the PDF"><sup>[p. 80]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p81" href="book.pdf#page=87" target="_blank" title="This page in the PDF"><sup>[p. 81]</sup></a>
 
@@ -7171,7 +7168,6 @@ For the <a id="ix-21">cross-section</a> calculation see again Heitler, $`§ 2 0 
 
 <a id="07-general-theory-of-free-particle-scattering"></a>
 
-<div align="right"><a href="book.pdf#page=99" target="_blank" title="This page in the PDF"><sup>[p. 93]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p94" href="book.pdf#page=100" target="_blank" title="This page in the PDF"><sup>[p. 94]</sup></a>
 
@@ -8633,7 +8629,6 @@ the contractions being equal to the propagators $`S_{F} , D_{F}`$, and so on.
 
 <a id="08-scattering-by-a-static-potential-comparison-with-experimental-results"></a>
 
-<div align="right"><a href="book.pdf#page=123" target="_blank" title="This page in the PDF"><sup>[p. 117]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p118" href="book.pdf#page=124" target="_blank" title="This page in the PDF"><sup>[p. 118]</sup></a>
 
@@ -9626,7 +9621,6 @@ Since $`Z_{\lambda}`$ is a Lorentz vector, the gradient must likewise be. So “
 
 <a id="09-typist-s-afterword"></a>
 
-<div align="right"><a href="book.pdf#page=137" target="_blank" title="This page in the PDF"><sup>[p. 131]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p132" href="book.pdf#page=138" target="_blank" title="This page in the PDF"><sup>[p. 132]</sup></a>
 
@@ -9682,7 +9676,6 @@ University of Chicago loki@uchicago.edu
 
 <a id="10-index"></a>
 
-<div align="right"><a href="book.pdf#page=145" target="_blank" title="This page in the PDF"><sup>[p. 139]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p140" href="book.pdf#page=146" target="_blank" title="This page in the PDF"><sup>[p. 140]</sup></a>
 

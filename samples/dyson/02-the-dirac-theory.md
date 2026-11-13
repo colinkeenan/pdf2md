@@ -2,7 +2,6 @@
 
 ---
 
-<div align="right"><a href="book.pdf#page=9" target="_blank" title="This page in the PDF"><sup>[p. 3]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p4" href="book.pdf#page=10" target="_blank" title="This page in the PDF"><sup>[p. 4]</sup></a>
 

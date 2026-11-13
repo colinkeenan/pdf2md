@@ -168,7 +168,7 @@ fn converts_a_small_book() {
     // the whole book in one file: links stay inside the page
     let whole = emit::book_markdown(&book);
     // (the page a chapter opens on begins above its title)
-    assert!(whole.contains("<a id=\"01-alpha\"></a>\n\n<div align=\"right\"><sup>[p. i]</sup></div>\n<hr class=\"page\"") && whole.contains("<sup>[p. 1]</sup></a>\n\n# Alpha"), "{whole}");
+    assert!(whole.contains("<a id=\"01-alpha\"></a>\n\n<hr class=\"page\"") && whole.contains("<sup>[p. 1]</sup></a>\n\n# Alpha"), "{whole}");
     assert!(whole.contains("- [Alpha](#01-alpha)"), "{whole}");
     assert!(whole.contains("  - [Section One](#s-section-one)"), "{whole}");
     assert!(whole.contains("- alpha, [1](#p1), [2](#p2)"), "{whole}");

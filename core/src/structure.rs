@@ -199,6 +199,7 @@ pub fn split_contents(chapters: &mut Vec<Chapter>) {
 /// file that follows it, above that file's title, never at the bottom of
 /// the file before. The page it stood on keeps its marker where it was.
 pub fn half_titles_lead(chapters: &mut [Chapter], title: &str) {
+    title_page_after_contents(chapters);
     let wanted = crate::key(title);
     let heading = |b: &Blk| match &b.block {
         Block::Heading { text, .. } => Some(crate::key(&plain(text))),
@@ -217,6 +218,27 @@ pub fn half_titles_lead(chapters: &mut [Chapter], title: &str) {
         let half = chapters[i].blocks.remove(at);
         chapters[i + 1].lead.push(half);
     }
+}
+
+/// The contents are a file of their own after the front matter. A page
+/// printed after them that holds only a title (the title of the lectures,
+/// before their first chapter) does not stay behind in the front matter,
+/// in front of the pages of the contents: it heads the file that follows
+/// the contents, with its page marker, above that file's own first page.
+fn title_page_after_contents(chapters: &mut [Chapter]) {
+    if chapters.len() < 3 || !crate::blocks::is_contents_title(&chapters[1].title) {
+        return;
+    }
+    let Some(contents_end) = chapters[1].blocks.iter().map(|b| b.page).max() else { return };
+    let front = &chapters[0].blocks;
+    let from = front.iter().position(|b| b.page > contents_end).unwrap_or(front.len());
+    let after = &front[from..];
+    let headings = after.iter().filter(|b| matches!(b.block, Block::Heading { .. })).count();
+    if headings == 0 || headings > 3 || !after.iter().all(|b| matches!(b.block, Block::Heading { .. } | Block::Anchor(_))) {
+        return;
+    }
+    let page: Vec<Blk> = chapters[0].blocks.drain(from..).collect();
+    chapters[2].lead.splice(0..0, page);
 }
 
 /// The numbered chapters come in rising order (else the numbers were
