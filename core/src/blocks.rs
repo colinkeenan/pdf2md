@@ -1519,19 +1519,17 @@ fn attach_fraction_rows(doc: &Doc, lines: &[Line], bars: &[Rule]) -> Vec<Line> {
     let mut lines: Vec<Line> = lines.to_vec();
     for b in bars {
         // a root's bar starts at its root sign: it goes with the sign's line
-        let root = lines.iter().position(|l| {
-            l.spans.iter().any(|s| {
-                s.text.trim() == "√" && (b.left - s.right()).abs() <= 3.0 && s.top <= b.bottom + 2.0 && s.bottom() >= b.top
-            })
-        });
+        let at_sign = |s: &crate::layout::Span| (b.left - s.right()).abs() <= 3.0 && s.top <= b.bottom + 2.0 && s.bottom() >= b.top;
+        let root = lines.iter().position(|l| l.spans.iter().any(|s| s.text.trim() == "√" && at_sign(s)));
         if let Some(k) = root {
             lines[k].bars.push(*b);
             continue;
         }
+        // (a larger root sign of the big-symbol font: its bar lies above
+        // the line's letters, and belongs to the sign's line all the same)
+        let big_root = lines.iter().position(|l| l.spans.iter().any(|s| doc.family(s).starts_with("CMEX") && matches!(s.text.trim(), "p" | "q" | "r" | "s") && at_sign(s)));
         let y = (b.top + b.bottom) / 2.0;
-        let Some(home) = lines.iter().position(|l| {
-            y >= l.top && y <= l.top + l.size && l.left <= b.left + 1.0 && l.right >= b.right - 1.0
-        }) else {
+        let Some(home) = big_root.or_else(|| lines.iter().position(|l| y >= l.top && y <= l.top + l.size && l.left <= b.left + 1.0 && l.right >= b.right - 1.0)) else {
             continue;
         };
         let size = lines[home].size;
@@ -1543,7 +1541,9 @@ fn attach_fraction_rows(doc: &Doc, lines: &[Line], bars: &[Rule]) -> Vec<Line> {
             l.spans.retain(|s| {
                 let c = s.left + s.width / 2.0;
                 let inside = c >= b.left - 2.0 && c <= b.right + 2.0;
-                let near = (b.top - s.bottom() <= 0.8 * size && s.bottom() <= b.top + 2.0)
+                // (under a root's bar is what the root is of; over it, the
+                // line above)
+                let near = (big_root.is_none() && b.top - s.bottom() <= 0.8 * size && s.bottom() <= b.top + 2.0)
                     || (s.top - b.bottom <= 0.8 * size && s.top >= b.bottom - 2.0);
                 if inside && near {
                     moved.push(s.clone());
