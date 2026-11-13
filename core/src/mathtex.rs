@@ -799,19 +799,50 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
         let d: Vec<MSpan> = den.iter().map(|&i| spans[i].clone()).collect();
         // small numbers in a line of normal size: a text-style fraction (½)
         let small = n.iter().chain(&d).all(|s| s.size < 0.85 * size);
+        // (its own size and height, for the box of one that is an exponent)
+        let own = n.iter().chain(&d).map(|s| s.size).fold(0.0f32, f32::max);
+        let (own_top, own_bottom) = (n.iter().map(|s| s.top).fold(f32::MAX, f32::min), d.iter().map(|s| s.bottom).fold(f32::MIN, f32::max));
         let t = format!(
             "\\{}{{{}}}{{{}}}",
             if small { "tfrac" } else { "frac" },
             build_at(&resolve_bars(n, &nbars, depth + 1), depth + 1),
             build_at(&resolve_bars(d, &dbars, depth + 1), depth + 1)
         );
-            let y = (b.top + b.bottom) / 2.0;
+        let y = (b.top + b.bottom) / 2.0;
+        // A small fraction set above or below the line (the ½ of a square
+        // root written as a power) is an exponent or an index: it keeps
+        // its small size and its place, and is attached like any other.
+        // One on the line, at the height of the letters beside it, is a
+        // symbol of the line ("½ m v²").
+        let beside = spans
+            .iter()
+            .enumerate()
+            .filter(|(i, s)| !num.contains(i) && !den.contains(i) && !s.cmex() && s.size >= 0.9 * size && (s.cy() - y).abs() <= 1.2 * size)
+            .min_by(|a, c| (a.1.left - b.right).max(b.left - a.1.right).total_cmp(&(c.1.left - b.right).max(b.left - c.1.right)))
+            .map(|(_, s)| s.cy());
+        let script = small && beside.is_some_and(|cy| (y - cy).abs() > 0.3 * size);
+        // (among the letters of an exponent, "−½x²", it is of their size
+        // and on their line: a symbol of the exponent, not its index)
+        let level = spans
+            .iter()
+            .enumerate()
+            .filter(|(i, s)| !num.contains(i) && !den.contains(i) && !s.cmex() && s.atom.is_none() && s.size < 0.9 * size && s.size > own && s.top <= y && s.bottom >= y)
+            .filter(|(_, s)| (s.left - b.right).max(b.left - s.right) <= 2.0 * size)
+            .map(|(_, s)| s.size)
+            .fold(0.0f32, f32::max);
+        let (top, bottom, size) = if script && level > 0.0 {
+            (y - level / 2.0, y + level / 2.0, level)
+        } else if script {
+            (own_top, own_bottom, own)
+        } else {
+            (y - size / 2.0, y + size / 2.0, size)
+        };
         let atom = MSpan {
             text: String::new(),
             left: b.left,
             right: b.right,
-            top: y - size / 2.0,
-            bottom: y + size / 2.0,
+            top,
+            bottom,
             size,
             family: String::new(),
             math: true,
