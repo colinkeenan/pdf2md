@@ -605,6 +605,40 @@ fn restore_glyphs(doc: &mut Doc, path: &Path, parts: &[(usize, String)], lost: &
                 if debug {
                     eprintln!("GLYPHS page {}: {:?} does not go into {:?}", page.number, found.iter().map(|f| &f.2).collect::<Vec<_>>(), span.text);
                 }
+                // Its text holds a letter of another font ("i" before a
+                // lost Λ): where the characters it gives are, in their
+                // order, the glyphs that are known, each stands where its
+                // glyph is drawn, a character between them right after the
+                // one before it, and the lost glyphs go in at their places.
+                let known: Vec<&(Placed, bool, String)> = found.iter().filter(|f| !f.1).collect();
+                let mut placed: Vec<(f32, f32, String)> = Vec::new();
+                let (mut k, mut x) = (0, span.left);
+                for c in given.chars() {
+                    match known.get(k).filter(|f| f.2 == c.to_string()) {
+                        Some(f) => {
+                            x = f.0.x;
+                            k += 1;
+                        }
+                        None => x += 0.01,
+                    }
+                    placed.push((x, 0.0, c.to_string()));
+                }
+                if k == known.len() && !found.iter().any(|f| f.1 && over(&f.2)) {
+                    placed.extend(found.iter().filter(|f| f.1).map(|(at, _, t)| (at.x, 0.0, t.clone())));
+                    placed.sort_by(|a, b| a.0.total_cmp(&b.0));
+                    let pieces: Vec<Span> = (0..placed.len())
+                        .map(|k| {
+                            let mut s = span.clone();
+                            s.text = placed[k].2.clone();
+                            s.left = placed[k].0;
+                            s.width = (placed.get(k + 1).map_or(span.right(), |n| n.0) - s.left).max(0.5);
+                            s
+                        })
+                        .collect();
+                    page.lines[li].spans.splice(si..=si, pieces);
+                    filled += lost_here;
+                    continue;
+                }
                 let pieces: Vec<Span> = found
                     .iter()
                     .filter(|f| f.1)

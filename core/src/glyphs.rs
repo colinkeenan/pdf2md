@@ -49,6 +49,10 @@ impl FontInfo {
             // Without a table pdftohtml goes by the standard glyph names; only
             // the names of TeX's sizes ("parenleftbigg") are lost on it.
             (None, Some((text, true))) => Glyph::Lost(text),
+            // ... and names that are not standard ones, where the glyph
+            // has a code pdftohtml gives no character for (a font cut down
+            // to the glyphs used numbers them from 2: ℏ in the AMS font)
+            (None, Some((text, false))) if code < 32 && NOT_STANDARD.contains(&self.names[&code].as_str()) => Glyph::Lost(text),
             _ => Glyph::Unknown,
         }
     }
@@ -68,6 +72,9 @@ impl FontInfo {
         self.names.keys().any(|&c| matches!(self.glyph(c), Glyph::Lost(_)))
     }
 }
+
+/// Glyph names pdftohtml does not know.
+const NOT_STANDARD: [&str; 3] = ["planckover2pi", "planckover2pi1", "hslash"];
 
 /// What a glyph name stands for, and whether it is a name of TeX's
 /// big-symbol font. Those are written as pdftohtml writes CMEX: by the
@@ -161,6 +168,54 @@ fn symbol(name: &str) -> Option<(&'static str, bool)> {
         "dagger" => "†",
         "daggerdbl" => "‡",
         "aleph" => "ℵ",
+        "planckover2pi" | "planckover2pi1" | "hslash" => "ℏ",
+        "angleleft" => "⟨",
+        "angleright" => "⟩",
+        "lscript" | "ell" => "ℓ",
+        "dotlessi" => "ı",
+        "dotlessj" => "ȷ",
+        // Greek, as the fonts name it ("epsilon1" is the other form of the
+        // letter, "Gamma1" a sloping capital)
+        "alpha" => "α",
+        "beta" => "β",
+        "gamma" => "γ",
+        "delta" => "δ",
+        "epsilon" => "ε",
+        "epsilon1" => "ϵ",
+        "zeta" => "ζ",
+        "eta" => "η",
+        "theta" => "θ",
+        "theta1" => "ϑ",
+        "iota" => "ι",
+        "kappa" => "κ",
+        "lambda" => "λ",
+        "mu" | "mu1" => "μ",
+        "nu" => "ν",
+        "xi" => "ξ",
+        "pi" => "π",
+        "pi1" | "omega1" => "ϖ",
+        "rho" => "ρ",
+        "rho1" => "ϱ",
+        "sigma" => "σ",
+        "sigma1" => "ς",
+        "tau" => "τ",
+        "upsilon" => "υ",
+        "phi" => "φ",
+        "phi1" => "ϕ",
+        "chi" => "χ",
+        "psi" => "ψ",
+        "omega" => "ω",
+        "Gamma" | "Gamma1" => "Γ",
+        "Delta" | "Delta1" => "Δ",
+        "Theta" | "Theta1" => "Θ",
+        "Lambda" | "Lambda1" => "Λ",
+        "Xi" | "Xi1" => "Ξ",
+        "Pi" | "Pi1" => "Π",
+        "Sigma" | "Sigma1" => "Σ",
+        "Upsilon" | "Upsilon1" => "Υ",
+        "Phi" | "Phi1" => "Φ",
+        "Psi" | "Psi1" => "Ψ",
+        "Omega" | "Omega1" | "Omegagreek" => "Ω",
         _ => return None,
     };
     Some((c, false))
@@ -334,7 +389,7 @@ fn find_lost_fonts(path: &Path) -> HashMap<String, bool> {
 
 fn tex_font(base: &str) -> bool {
     let u = base.to_uppercase();
-    ["CM", "MSAM", "MSBM", "EUFM", "EUEX", "RSFS"].iter().any(|p| u.starts_with(p))
+    ["CM", "EUFM", "EUEX", "RSFS"].iter().any(|p| u.starts_with(p))
 }
 
 /// The glyphs shown on the pages, in the order they are drawn.

@@ -1574,7 +1574,10 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
         .iter()
         .map(|s| {
             let d = s.cy() - y0;
-            if s.cmex() || (s.size >= 0.9 * max && d.abs() <= 0.3 * h) {
+            // (a big symbol set small, above or below the line: the integral
+            // sign inside an exponent is part of the exponent)
+            let in_script = s.cmex() && s.size < 0.9 * max && d.abs() > 0.3 * h && !s.text.trim().is_empty();
+            if (s.cmex() && !in_script) || (s.size >= 0.9 * max && d.abs() <= 0.3 * h) {
                 Role::Base
             } else if d < 0.0 {
                 Role::Above
@@ -1688,7 +1691,9 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
             }
             // its limits may reach further right than the sign itself
             let right = up.iter().chain(&lo).map(|&i| spans[i].right).fold(s.right, f32::max);
-            items.push(Item { left: s.left, right, tex: t, kind: Kind::Atom, src: Vec::new() });
+            // (its spans, the sign first: it may turn out to stand in an exponent)
+            let src: Vec<usize> = std::iter::once(b).chain(up.iter().copied()).chain(lo.iter().copied()).collect();
+            items.push(Item { left: s.left, right, tex: t, kind: Kind::Atom, src });
         } else {
             let t = tex(s);
             if !t.is_empty() {
@@ -1813,6 +1818,45 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
             }
             i += 1;
         }
+        // An integral in an exponent, e^{i∫d⁴x L}: some books set its sign
+        // as large as on the line, between the small "i" before it and the
+        // small integrand after it. A big operator that follows an
+        // exponent and is followed by more of it, at the same height, is
+        // inside the exponent, and so is what follows.
+        let mut folded: Vec<usize> = Vec::new();
+        while let Some(op) = items.get(i).filter(|it| it.kind == Kind::Atom && it.src.first().is_some_and(|&k| big_op(&spans[k]).is_some())) {
+            let end = i + 1 + items[i + 1..].iter().take_while(|it| it.kind != Kind::Atom).count();
+            let run: Vec<usize> = items[i + 1..end].iter().flat_map(|it| it.src.iter().copied()).collect();
+            let before: Vec<usize> = if folded.is_empty() { sups.iter().flat_map(|it| it.src.iter().copied()).collect() } else { folded.clone() };
+            if run.is_empty() || before.is_empty() || out.is_empty() || items[i + 1..end].iter().chain(sups.iter().copied()).any(|it| it.src.is_empty()) {
+                break;
+            }
+            // (the letters of each, without their own small indices)
+            let level = |v: &[usize]| {
+                let v: Vec<usize> = v.iter().copied().filter(|&k| !spans[k].cmex()).collect();
+                let hi = v.iter().map(|&k| spans[k].size).fold(0.0f32, f32::max);
+                let main: Vec<usize> = v.into_iter().filter(|&k| spans[k].size >= 0.9 * hi).collect();
+                (mean_cy(spans, &main), hi)
+            };
+            let ((y_before, size_before), (y_run, size_run)) = (level(&before), level(&run));
+            if (size_before - size_run).abs() > 0.1 * size_before || (y_before - y_run).abs() > 0.4 * size_before {
+                break;
+            }
+            // (not the limits of an integral on the line, which are small
+            // and raised too: what follows runs on at the exponent's
+            // height; nor an integral after another's limits)
+            let on_level: Vec<&MSpan> = run.iter().map(|&k| &spans[k]).filter(|r| !r.cmex() && r.size >= 0.9 * size_run && (r.cy() - y_before).abs() <= 0.4 * size_before).collect();
+            let width = on_level.iter().map(|r| r.right).fold(f32::MIN, f32::max) - on_level.iter().map(|r| r.left).fold(f32::MAX, f32::min);
+            let after_op = out.last().is_some_and(|p| ["\\int", "\\sum", "\\prod", "\\oint"].iter().any(|o| p.trim_start().starts_with(o)));
+            if after_op || on_level.len() < 2 || width < 1.5 * max {
+                break;
+            }
+            folded = before;
+            folded.extend(op.src.iter().copied());
+            folded.extend(run);
+            prev_right = items[i..end].iter().map(|it| it.right).fold(prev_right, |a, r| Some(a.map_or(r, |a| a.max(r))));
+            i = end;
+        }
         // Scripts of scripts (e^{ip₁·x}): pieces in two sizes are built
         // together from their spans, so the smaller ones find their base.
         let script = |v: &[&Item]| -> String {
@@ -1861,6 +1905,7 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
         subs.sort_by(|a, b| a.left.total_cmp(&b.left));
         sups.sort_by(|a, b| a.left.total_cmp(&b.left));
         let (sup, sub) = (script(&sups), script(&subs));
+        let sup = if folded.is_empty() { sup } else { build_at(&subset(spans, &folded), depth + 1) };
         // "+ ½": small stacked numbers after an operator are a fraction.
         let after_op = out.last().is_none_or(|p| {
             matches!(
@@ -2224,11 +2269,35 @@ pub fn display(
 
 /// Rows of one `aligned` block, lined up at the first "=" (rows without
 /// one, like continuation lines, are indented under the right-hand side).
+/// The first " = " of a row that stands in no group: the rows line up
+/// there (not at the "=" under a sum sign, "\\sum_{n = 1}").
+fn top_level_equals(t: &str) -> Option<usize> {
+    // (groups, and brackets of any kind: one may open what another closes,
+    // "( a , b \\}")
+    let (mut group, mut bracket) = (0i32, 0i32);
+    let mut escaped = false;
+    for (i, c) in t.char_indices() {
+        let was = escaped;
+        escaped = c == '\\' && !was;
+        match c {
+            '{' if was => bracket += 1,
+            '}' if was => bracket = (bracket - 1).max(0),
+            '{' => group += 1,
+            '}' => group -= 1,
+            '(' | '[' => bracket += 1,
+            ')' | ']' => bracket = (bracket - 1).max(0),
+            ' ' if group == 0 && bracket == 0 && t[i..].starts_with(" = ") => return Some(i),
+            _ => {}
+        }
+    }
+    None
+}
+
 fn aligned(rows: &[String]) -> String {
     let body: Vec<String> = rows
         .iter()
         .filter(|t| !t.is_empty())
-        .map(|t| match (t.strip_prefix("= "), t.find(" = ")) {
+        .map(|t| match (t.strip_prefix("= "), top_level_equals(t)) {
             // a row continuing with "= ..." lines up under the first "="
             (Some(rest), _) => format!("&= {rest}"),
             (None, Some(p)) => format!("{} &= {}", &t[..p], &t[p + 3..]),
@@ -2573,7 +2642,12 @@ pub fn fix_double_scripts(t: &str) -> String {
             } else if i < b.len() {
                 i += t[i..].chars().next().map_or(1, char::len_utf8);
             }
-            out.push_str(&t[start..i.min(b.len())]);
+            // (a group has indices of its own: "P_{p p_{2}^{2}_{2}}")
+            let arg = &t[start..i.min(b.len())];
+            match arg.strip_prefix('{').and_then(|a| a.strip_suffix('}')) {
+                Some(inner) if inner.contains(['_', '^']) => out.push_str(&format!("{{{}}}", fix_double_scripts(inner))),
+                _ => out.push_str(arg),
+            }
             continue;
         }
         if !c.is_ascii_whitespace() {

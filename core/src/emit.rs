@@ -216,7 +216,9 @@ pub fn mend(latex: &str) -> String {
             k = at;
         }
     }
-    t
+    // (what is left of them, inside an index of its own or apart: an
+    // empty base for the second)
+    crate::mathtex::fix_double_scripts(&t)
 }
 
 /// The place of the "}" that closes the "{" at `open`.
