@@ -823,7 +823,8 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
         let beside = spans
             .iter()
             .enumerate()
-            .filter(|(i, s)| !num.contains(i) && !den.contains(i) && !s.cmex() && s.size >= 0.9 * size && (s.cy() - y).abs() <= 1.2 * size)
+            // (not the dot of a product, which is raised itself)
+            .filter(|(i, s)| !num.contains(i) && !den.contains(i) && !s.cmex() && s.size >= 0.9 * size && (s.cy() - y).abs() <= 1.2 * size && s.text.trim() != ".")
             .min_by(|a, c| (a.1.left - b.right).max(b.left - a.1.right).total_cmp(&(c.1.left - b.right).max(b.left - c.1.right)))
             .map(|(_, s)| s.cy());
         let script = small && beside.is_some_and(|cy| (y - cy).abs() > 0.3 * size);
@@ -1871,8 +1872,13 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
         // small integrand after it. A big operator that follows an
         // exponent and is followed by more of it, at the same height, is
         // inside the exponent, and so is what follows.
+        // The same for the dot of a product in an exponent, e^{−½ x·A·x}:
+        // a full stop of the text font, in the size of the line, raised
+        // to the middle of the small letters beside it.
         let mut folded: Vec<usize> = Vec::new();
-        while let Some(op) = items.get(i).filter(|it| it.kind == Kind::Atom && it.src.first().is_some_and(|&k| big_op(&spans[k]).is_some())) {
+        let mut dots: Vec<usize> = Vec::new();
+        let raised_dot = |it: &Item| it.tex.trim() == "." && it.src.len() == 1 && spans[it.src[0]].cy() < y0 - 0.25 * h;
+        while let Some(op) = items.get(i).filter(|it| it.kind == Kind::Atom && (it.src.first().is_some_and(|&k| big_op(&spans[k]).is_some()) || raised_dot(it))) {
             let end = i + 1 + items[i + 1..].iter().take_while(|it| it.kind != Kind::Atom).count();
             let run: Vec<usize> = items[i + 1..end].iter().flat_map(|it| it.src.iter().copied()).collect();
             let before: Vec<usize> = if folded.is_empty() { sups.iter().flat_map(|it| it.src.iter().copied()).collect() } else { folded.clone() };
@@ -1881,7 +1887,7 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
             }
             // (the letters of each, without their own small indices)
             let level = |v: &[usize]| {
-                let v: Vec<usize> = v.iter().copied().filter(|&k| !spans[k].cmex()).collect();
+                let v: Vec<usize> = v.iter().copied().filter(|&k| !spans[k].cmex() && !dots.contains(&k)).collect();
                 let hi = v.iter().map(|&k| spans[k].size).fold(0.0f32, f32::max);
                 let main: Vec<usize> = v.into_iter().filter(|&k| spans[k].size >= 0.9 * hi).collect();
                 (mean_cy(spans, &main), hi)
@@ -1896,8 +1902,12 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
             let on_level: Vec<&MSpan> = run.iter().map(|&k| &spans[k]).filter(|r| !r.cmex() && r.size >= 0.9 * size_run && (r.cy() - y_before).abs() <= 0.4 * size_before).collect();
             let width = on_level.iter().map(|r| r.right).fold(f32::MIN, f32::max) - on_level.iter().map(|r| r.left).fold(f32::MAX, f32::min);
             let after_op = out.last().is_some_and(|p| ["\\int", "\\sum", "\\prod", "\\oint"].iter().any(|o| p.trim_start().starts_with(o)));
-            if after_op || on_level.len() < 2 || width < 1.5 * max {
+            let dot = raised_dot(op);
+            if after_op || (!dot && (on_level.len() < 2 || width < 1.5 * max)) || (dot && on_level.is_empty()) {
                 break;
+            }
+            if dot {
+                dots.push(op.src[0]);
             }
             folded = before;
             folded.extend(op.src.iter().copied());
@@ -1953,12 +1963,26 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
         subs.sort_by(|a, b| a.left.total_cmp(&b.left));
         sups.sort_by(|a, b| a.left.total_cmp(&b.left));
         let (sup, sub) = (script(&sups), script(&subs));
-        let sup = if folded.is_empty() { sup } else { build_at(&subset(spans, &folded), depth + 1) };
+        let sup = if folded.is_empty() {
+            sup
+        } else {
+            // (the dot as a small one among the small letters)
+            let small = folded.iter().filter(|k| !dots.contains(k) && !spans[**k].cmex()).map(|&k| spans[k].size).fold(0.0f32, f32::max);
+            let mut inside = subset(spans, &folded);
+            for (s, k) in inside.iter_mut().zip(&folded) {
+                if dots.contains(k) {
+                    (s.text, s.size) = ("·".to_string(), small);
+                    let mid = s.cy();
+                    (s.top, s.bottom) = (mid - small / 2.0, mid + small / 2.0);
+                }
+            }
+            build_at(&inside, depth + 1)
+        };
         // "+ ½": small stacked numbers after an operator are a fraction.
         let after_op = out.last().is_none_or(|p| {
             matches!(
                 p.as_str(),
-                "+" | "-" | "=" | "(" | "[" | "," | "\\cdot" | "\\times" | "\\pm" | "\\mp"
+                "+" | "-" | "=" | "(" | "[" | "," | "\\cdot" | "\\times" | "\\pm" | "\\mp" | "\\{" | "\\left(" | "\\left[" | "\\left\\{"
             )
         });
         if !sup.is_empty() && !sub.is_empty() && after_op {
