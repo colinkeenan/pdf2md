@@ -1538,7 +1538,20 @@ fn attach_fraction_rows(doc: &Doc, lines: &[Line], bars: &[Rule]) -> Vec<Line> {
             if k == home {
                 continue;
             }
+            // (a line of the text, with its words, is no numerator or
+            // denominator set apart: the letters of a formula in it that
+            // lie under a bar of the line above stay in it. A numerator
+            // put with the words of the line above stands lower than they.)
+            let words = l.spans.iter().any(|s| !doc.is_math(s) && s.text.split_whitespace().any(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 4));
+            let line_top = l.top;
             l.spans.retain(|s| {
+                // (standing on that line of text like its words: of that line)
+                // unless it is right at the bar. (And what lies under a
+                // root's bar is under the root.)
+                let at_bar = (b.top - s.bottom()).max(s.top - b.bottom) <= 0.35 * size;
+                if words && big_root.is_none() && (s.top - line_top).abs() <= 0.3 * size && !at_bar {
+                    return true;
+                }
                 let c = s.left + s.width / 2.0;
                 let inside = c >= b.left - 2.0 && c <= b.right + 2.0;
                 // (under a root's bar is what the root is of; over it, the

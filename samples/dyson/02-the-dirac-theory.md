@@ -813,7 +813,7 @@ j_{z} = - i [ \boldsymbol{r} \times \nabla ]_{3} + \tfrac{1}{2} \sigma_{3} \qqua
 j ( j + 1 ) = J^{2} = \left[ - i ( \boldsymbol{r} \times \nabla ) + \tfrac{1}{2} \boldsymbol{\sigma} \right]^{2} \qquad \text{(72)}
 ```
 
-where $`j_{z}`$ and $`j`$ are now _half-odd integers_ by the ordinary theory of <a id="ix-17">angular momenta</a>. These quantum numbers are not enough to fix the state, because each value of $`j`$ may correspond to two NR states with $`\ell`$between states with$`= j \pm \tfrac{1}{2}`$. Therefore we need an additional operator which commutes with $`H`$, which will distinguish $`\boldsymbol{\sigma}`$ parallel or antiparallel to $`\boldsymbol{J}`$. The obvious choice is
+where $`j_{z}`$ and $`j`$ are now _half-odd integers_ by the ordinary theory of <a id="ix-17">angular momenta</a>. These quantum numbers are not enough to fix the state, because each value of $`j`$ may correspond to two NR states with $`\ell = j \pm \tfrac{1}{2}`$. Therefore we need an additional operator which commutes with $`H`$, which will distinguish between states with $`\boldsymbol{\sigma}`$ parallel or antiparallel to $`\boldsymbol{J}`$. The obvious choice is
 
 ```math
 Q = \boldsymbol{\sigma} \boldsymbol{\cdot} \boldsymbol{J}
@@ -1063,7 +1063,7 @@ and otherwise zero. This gives
 \left( a_{1}^{2} - a^{2} \right) \alpha + 2 ( \epsilon + n ) aa_{1} = 0
 ```
 
-$`c_{\epsilon}`$ and $`d_{\epsilon}`$ are zero, thus the wave function $`r^{- 1 + \epsilon}`$ must be integrable at zero. This gives $`\epsilon >`$Now not both$`- \tfrac{1}{2}`$. But $`\epsilon = \pm \sqrt{k^{2} - \alpha^{2}}`$. Now $`k^{2} \geq`$ 1, hence $`\sqrt{k^{2} - \alpha^{2}} > \tfrac{1}{2}`$, and
+Now not both $`c_{\epsilon}`$ and $`d_{\epsilon}`$ are zero, thus the wave function $`r^{- 1 + \epsilon}`$ must be integrable at zero. This gives $`\epsilon > - \tfrac{1}{2}`$. But $`\epsilon = \pm \sqrt{k^{2} - \alpha^{2}}`$. Now $`k^{2} \geq`$ 1, hence $`\sqrt{k^{2} - \alpha^{2}} > \tfrac{1}{2}`$, and
 
 <a id="eq-91"></a>
 

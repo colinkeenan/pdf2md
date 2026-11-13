@@ -385,6 +385,12 @@ pub fn build_with(spans: &[MSpan], bars: &[Rule]) -> String {
             }
         })
         .collect();
+    if std::env::var("PDF2MD_MATHDEBUG").is_ok_and(|v| v == "2") {
+        eprintln!("--- before accents");
+        for s in &spans {
+            eprintln!("  {:7.1} {:7.1} {:7.1} {:7.1} {:4.1} {:8} {:?}", s.left, s.right, s.top, s.bottom, s.size, s.family, s.text);
+        }
+    }
     let spans = put_accents(spans);
     if std::env::var_os("PDF2MD_MATHDEBUG").is_some() {
         eprintln!("--- formula");
