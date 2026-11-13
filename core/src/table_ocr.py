@@ -326,11 +326,13 @@ def main():
                     t = lone.group(1) or lone.group(2)
                 elif t == "\\mathbf{l}":
                     t = "1"
-                elif "\\Sigma" in t and not stacked and img.width <= 32 + 4 * img.height:
-                    # (or of a lone letter: as Tesseract reads it, if it reads one)
+                elif "\\Sigma" in t and img.width <= 32 + 4 * img.height:
+                    # (or of a lone letter: as Tesseract reads it, if it
+                    # reads one. A piece of ink above the rest is the dot
+                    # of an "i" or a "j", which it reads as capitals.)
                     one = letter(img)
                     if one is not None:
-                        t = one
+                        t = one.lower() if stacked and one in "IJ" else one
                 # (an array of one cell is that cell; "l" set as a word is 1)
                 one = re.fullmatch(r"\\begin\{array\}\{[lcr ]*\}(.*)\\end\{array\}", t)
                 if one and "&" not in one.group(1) and "\\\\" not in one.group(1):
