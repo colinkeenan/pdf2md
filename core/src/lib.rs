@@ -348,7 +348,7 @@ pub fn convert_pdf_pages(path: &Path, pages: Option<(u32, u32)>) -> Result<Book,
         book
     };
     book.title = book_title(path, &doc);
-    structure::half_title_to_contents(&mut book.chapters, &book.title);
+    structure::half_titles_lead(&mut book.chapters, &book.title);
     book.source = Some(path.to_path_buf());
     progress::report(progress::Step::Book, 1, 1);
     Ok(book)

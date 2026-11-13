@@ -153,27 +153,29 @@ pub fn split_contents(chapters: &mut Vec<Chapter>) {
     chapters.insert(ci + 1, Chapter { title, blocks, ..Default::default() });
 }
 
-/// The half-title: the book's title alone on a page, after the prefaces
-/// and before the first part or chapter, is the last thing in the front
-/// matter. It heads the book, not the front matter: it goes to the very
-/// top of the file of the table of contents (which stands right after
-/// the front matter), above the word "Contents". The page it stood on
-/// keeps its marker where it was.
-pub fn half_title_to_contents(chapters: &mut [Chapter], title: &str) {
-    if chapters.len() < 2 || !crate::blocks::is_contents_title(&chapters[1].title) || title.is_empty() {
-        return;
-    }
+/// The book's title printed once more on a page of its own (a half-title:
+/// before the contents, before the first part) stands at the top of the
+/// file that follows it, above that file's title, never at the bottom of
+/// the file before. The page it stood on keeps its marker where it was.
+pub fn half_titles_lead(chapters: &mut [Chapter], title: &str) {
     let wanted = crate::key(title);
-    let is_title = |b: &Blk| matches!(&b.block, Block::Heading { text, .. } if crate::key(&plain(text)) == wanted);
-    let front = &chapters[0].blocks;
-    // the last thing written in the front matter, if it is the title
-    // again (the title page has it first)
-    let Some(at) = front.iter().rposition(|b| !matches!(b.block, Block::Anchor(_))) else { return };
-    if !is_title(&front[at]) || !front[..at].iter().any(is_title) {
-        return;
+    let heading = |b: &Blk| match &b.block {
+        Block::Heading { text, .. } => Some(crate::key(&plain(text))),
+        _ => None,
+    };
+    for i in 0..chapters.len().saturating_sub(1) {
+        // the last thing written in the file, if it is the title again
+        // (the title page has it first, or the PDF names the book so)
+        let blocks = &chapters[i].blocks;
+        let Some(at) = blocks.iter().rposition(|b| !matches!(b.block, Block::Anchor(_))) else { continue };
+        let Some(last) = heading(&blocks[at]) else { continue };
+        let before = if i == 0 { &blocks[..at] } else { &chapters[0].blocks[..] };
+        if last.is_empty() || !(before.iter().any(|b| heading(b).as_ref() == Some(&last)) || (i > 0 && last == wanted)) {
+            continue;
+        }
+        let half = chapters[i].blocks.remove(at);
+        chapters[i + 1].lead.push(half);
     }
-    let half = chapters[0].blocks.remove(at);
-    chapters[1].lead.push(half);
 }
 
 /// The numbered chapters come in rising order (else the numbers were

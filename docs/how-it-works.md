@@ -61,7 +61,7 @@ Several switches print what the converter sees:
 
 Each chapter is a file named by its number, such as `03-theory-of-angular-momentum.md`, with all its sections. A book whose chapters carry no numbers is numbered in order. Appendices and the index count on after the last chapter.
 
-`00-front-matter.md` holds everything before chapter 1, each title page or preface under its own heading. The table of contents is a file of its own right after it. A half-title, the book's title alone on a page, stands at the top of the contents file. An empty page belongs to what comes before it.
+`00-front-matter.md` holds everything before chapter 1, each title page or preface under its own heading. The table of contents is a file of its own right after it. A half-title, the book's title printed once more on a page of its own, stands at the top of the file that follows it, above that file's title: above the word "Contents", or above the first part. It is never the last thing in the file before.
 
 `book.md` is the whole book in one file, with all links pointing inside it, so one search covers the book.
 
