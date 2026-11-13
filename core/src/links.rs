@@ -245,7 +245,10 @@ fn link_entries(
             }
             let mut t = vec![Inline::Link { text, href: format!("{}.md#{}", chapters[0].slug, new_id) }];
             let shown = if e.page.starts_with('@') { page_at(chapters, 0, bi).unwrap_or_default() } else { e.page.trim().to_string() };
-            t.extend(page_link(&shown));
+            match pdf_page_at(chapters, pdf, 0, bi).filter(|_| e.page.starts_with('@')) {
+                Some(n) => t.extend(pdf_page_link(&chapters[0].slug, n)),
+                None => t.extend(page_link(&shown)),
+            }
             items.push(Block::Item { level: level.saturating_sub(1), text: t });
             continue;
         }
@@ -294,7 +297,10 @@ fn link_entries(
             let mut t = vec![Inline::Link { text, href: format!("{}.md#{}", chapters[ci].slug, new_id) }];
             // (an entry found by its link: the printed page it lands on)
             let shown = if e.page.starts_with('@') { page_at(chapters, ci, bi).unwrap_or_default() } else { e.page.trim().to_string() };
-            t.extend(page_link(&shown));
+            match pdf_page_at(chapters, pdf, ci, bi).filter(|_| e.page.starts_with('@')) {
+                Some(n) => t.extend(pdf_page_link(&chapters[ci].slug, n)),
+                None => t.extend(page_link(&shown)),
+            }
             items.push(Block::Item { level: level.saturating_sub(1), text: t });
             cursor = (ci, bi + 1);
             continue;
@@ -336,7 +342,10 @@ fn link_entries(
             let mut t = vec![Inline::Link { text, href: format!("{}.md#{}", chapters[ci].slug, new_id) }];
             // (an entry found by its link: the printed page it lands on)
             let shown = if e.page.starts_with('@') { page_at(chapters, ci, bi).unwrap_or_default() } else { e.page.trim().to_string() };
-            t.extend(page_link(&shown));
+            match pdf_page_at(chapters, pdf, ci, bi).filter(|_| e.page.starts_with('@')) {
+                Some(n) => t.extend(pdf_page_link(&chapters[ci].slug, n)),
+                None => t.extend(page_link(&shown)),
+            }
             items.push(Block::Item { level: level.saturating_sub(1), text: t });
             cursor = (ci, bi + 1);
             continue;
@@ -410,6 +419,27 @@ fn page_at(chapters: &[Chapter], ci: usize, bi: usize) -> Option<String> {
     let here = chapters.get(ci)?.blocks[..bi.min(chapters[ci].blocks.len())].iter().rev().find_map(label_in);
     here.or_else(|| page_range(&chapters[ci]).map(|(first, _)| first))
         .or_else(|| chapters[..ci].iter().rev().find_map(|c| c.blocks.iter().rev().find_map(label_in)))
+}
+
+/// A place in the book before its first printed page number (a preface
+/// in a book whose markers start at page 1): the page of the PDF it is
+/// on. Its marker there is "[PDF p. N]" (see `emit`), and the contents
+/// name it the same way, not by the first printed page that comes later.
+fn pdf_page_at(chapters: &[Chapter], pdf: &[u32], ci: usize, bi: usize) -> Option<u32> {
+    let marked = |b: &crate::Blk| match &b.block {
+        Block::Anchor(id) => page_label(id).is_some(),
+        Block::Para(inl) => inl.iter().any(|i| matches!(i, Inline::Anchor(id) if page_label(id).is_some())),
+        _ => false,
+    };
+    let mut before = chapters[..ci].iter().flat_map(|c| c.blocks.iter()).chain(chapters[ci].blocks[..bi].iter());
+    if before.any(marked) {
+        return None;
+    }
+    pdf.get(chapters[ci].blocks.get(bi)?.page).copied()
+}
+
+fn pdf_page_link(slug: &str, n: u32) -> Vec<Inline> {
+    vec![Inline::Text(" — ".into()), Inline::Link { text: format!("PDF p. {n}"), href: format!("{slug}.md#pdf-p{n}") }]
 }
 
 /// Printed page label -> slug of the chapter file that contains it.

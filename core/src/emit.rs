@@ -519,7 +519,8 @@ fn page_ends(text: &str, book: &Book) -> String {
 fn weight(b: &Block) -> usize {
     match b {
         Block::Heading { text, .. } | Block::Para(text) | Block::Item { text, .. } | Block::PageNote { text, .. } => crate::plain(text).split_whitespace().count(),
-        Block::Equation { .. } | Block::Table { .. } | Block::Code(_) => SAYS_ENOUGH,
+        // (a picture: the book's cover, a page that is one picture)
+        Block::Equation { .. } | Block::Table { .. } | Block::Code(_) | Block::Figure { .. } => SAYS_ENOUGH,
         Block::Toc(entries) => entries.len() * 4,
         _ => 0,
     }
@@ -544,11 +545,20 @@ fn unnumbered_pages(book: &Book) -> HashSet<usize> {
     for b in book.chapters.iter().flat_map(|c| &c.blocks) {
         *words.entry(b.page).or_default() += weight(&b.block);
     }
+    // (a page the contents name by its number in the PDF has that marker)
+    let named: HashSet<u32> = book
+        .chapters
+        .iter()
+        .flat_map(|c| &c.blocks)
+        .filter_map(|b| if let Block::Item { text, .. } = &b.block { Some(text) } else { None })
+        .flatten()
+        .filter_map(|i| if let Inline::Link { href, .. } = i { href.rsplit_once("#pdf-p")?.1.parse().ok() } else { None })
+        .collect();
     words
         .into_iter()
         .filter(|&(page, w)| {
             let Some(&n) = book.pdf_pages.get(page) else { return false };
-            w >= SAYS_ENOUGH && !marked.contains(&n) && (!ebook || n < first || n > last)
+            !marked.contains(&n) && (named.contains(&n) || (w >= SAYS_ENOUGH && (!ebook || n < first || n > last)))
         })
         .map(|(page, _)| page)
         .collect()
@@ -930,7 +940,11 @@ fn chapter_body(book: &Book, i: usize) -> String {
     // between them don't break it)
     let mut centered = false;
     // pictures are numbered through the whole book
-    let is_fig = |b: &crate::Blk| matches!(b.block, crate::Block::Figure { .. });
+    // (the book's cover, a picture alone on the PDF's first page, is no
+    // figure of the book: it has no number and no caption)
+    let cover = book.pdf_pages.first() == Some(&1)
+        && book.chapters.iter().flat_map(|c| &c.blocks).filter(|b| b.page == 0 && !matches!(b.block, crate::Block::Anchor(_))).count() == 1;
+    let is_fig = |b: &crate::Blk| matches!(b.block, crate::Block::Figure { .. }) && !(cover && b.page == 0);
     let mut fig_no = book.chapters[..i].iter().flat_map(|c| &c.blocks).filter(|b| is_fig(b)).count();
     // The footnotes of a page stand at the foot of that page: before the
     // bar of the next page (inside the bar's own block, where the page
@@ -994,11 +1008,15 @@ fn chapter_body(book: &Book, i: usize) -> String {
             centered = b.centered;
         }
         if let crate::Block::Figure { page, n, label, .. } = &b.block {
-            fig_no += 1;
             if in_list {
                 s.push('\n');
                 in_list = false;
             }
+            if !is_fig(b) {
+                s.push_str(&format!("![Cover]({})\n\n", figure_file(*page, *n)));
+                continue;
+            }
+            fig_no += 1;
             // the book's own caption right after it ("Fig. 1.1 …"): that is
             // the caption; otherwise a visible one of ours, so a search for
             // "Figure" finds each picture

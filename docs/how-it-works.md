@@ -75,7 +75,7 @@ Above the bar, at the right, stands the marker of the page that ends there, <sup
 * **Among centered lines** (a title page) the bar and marker stand at the left like all others.
 * **In the middle of a paragraph** the bar and marker are written into the sentence as a floating block as wide as the text. The browser puts it under the current line and goes on filling that line, so the text above the bar runs to the right margin as on the printed page, at any window width. A viewer that drops `style` attributes shows the marker inside the sentence, without the bar.
 * **The link.** Each marker opens that page of the PDF in a new tab: `book.pdf#page=38`, counted in sheets of the PDF, which is how browsers count. `book.pdf` in the book's folder is a symbolic link to the source PDF, made anew at each conversion. If you move the PDF, convert again.
-* **Pages without a printed number** get <sup>[PDF p. 5]</sup> (anchor `#pdf-p5`) if they say something: 30 words or more, a formula or a table. A title page gets none.
+* **Pages without a printed number** get <sup>[PDF p. 5]</sup> (anchor `#pdf-p5`) if they say something: 30 words or more, a formula, a table or a picture. A title page gets none. The contents name a piece that comes before the first printed page number (a preface) by that PDF page, too.
 * **Inside a list**, such as the contents or the index, a marker on a line of its own would end the list and turn the indented entries after it into code. There the marker is attached to the entry before it. The bar then starts at that entry's indent, and the entries after it stay under their part or chapter.
 * **Ebook-made PDFs** do not have one PDF page per printed page. The link opens the PDF page on which the printed page starts, and only the pages before the first and after the last printed page get PDF markers.
 
@@ -92,6 +92,8 @@ A footnote printed at the foot of a page is written at the foot of that page, ju
 ### Pictures
 
 Pictures are cut from the PDF as PNG files in `images/`; `fig-p049-1.png` is the first picture on PDF page 49. Labels that belong to a picture are part of the image, not of the text. Each picture gets a caption numbered through the book with its printed page, such as _Figure 3 (p. 43)_.
+
+A page that is one picture and no text, such as the book's cover, is kept as that picture on its own page. On the PDF's first page it is the cover: it has no figure number and no caption.
 
 ### Tables and columns
 

@@ -412,6 +412,16 @@ pub fn read_drawings(doc: &mut Doc, path: &Path, pages: Option<(u32, u32)>) {
         for (page, imgs) in doc.pages.iter_mut().zip(all(&parts, parse_svg_images)) {
             page.images = imgs;
         }
+        // A page that is one picture and no text (the book's cover) is
+        // that picture, whatever kind of image it is: it is not read for
+        // words or formulas.
+        for (page, images) in doc.pages.iter_mut().zip(all(&parts, parse_svg_image_boxes)) {
+            let whole = |f: &&Figure| f.right - f.left >= 0.7 * page.width && f.bottom - f.top >= 0.7 * page.height;
+            if let (true, Some(cover)) = (page.lines.is_empty(), images.iter().find(whole)) {
+                page.figures = vec![Figure { left: cover.left.max(0.0), right: cover.right.min(page.width), top: cover.top.max(0.0), bottom: cover.bottom.min(page.height) }];
+                page.images.clear();
+            }
+        }
         // labels of drawn pictures (text pieces); an embedded image has
         // its labels in its pixels, so text around it is never one
         take_figure_labels(doc);
@@ -868,6 +878,55 @@ pub struct PageImage {
     pub top: f32,
     pub bottom: f32,
     pub png_base64: String,
+}
+
+/// Where the embedded images of each page stand, of any kind (PNG, JPEG),
+/// written in place or once in `<defs>` and placed with `<use>`; in
+/// pdftohtml's pixels.
+fn parse_svg_image_boxes(svg: &str) -> Vec<Vec<Figure>> {
+    let attr = |tag: &str, name: &str| -> Option<String> { Some(tag.split(&format!(" {name}=\"")).nth(1)?.split('"').next()?.to_string()) };
+    let num = |tag: &str, name: &str| attr(tag, name).and_then(|v| v.trim_end_matches("px").parse::<f32>().ok());
+    let size = |tag: &str| Some((num(tag, "x").unwrap_or(0.0), num(tag, "y").unwrap_or(0.0), num(tag, "width")?, num(tag, "height")?));
+    let place = |tag: &str, (x, y, w, h): (f32, f32, f32, f32)| {
+        let m: Vec<f32> = attr(tag, "transform")
+            .and_then(|t| Some(t.strip_prefix("matrix(")?.trim_end_matches(')').split(',').filter_map(|v| v.trim().parse().ok()).collect()))
+            .filter(|m: &Vec<f32>| m.len() == 6)
+            .unwrap_or(vec![1.0, 0.0, 0.0, 1.0, 0.0, 0.0]);
+        let p = |x: f32, y: f32| (m[0] * x + m[2] * y + m[4], m[1] * x + m[3] * y + m[5]);
+        let (a, b) = (p(x, y), p(x + w, y + h));
+        Figure { left: a.0.min(b.0) * 1.5, right: a.0.max(b.0) * 1.5, top: a.1.min(b.1) * 1.5, bottom: a.1.max(b.1) * 1.5 }
+    };
+    let mut by_id = HashMap::new();
+    for defs in svg.split("<defs>").skip(1) {
+        for tag in defs.split("</defs>").next().unwrap_or("").split("<image ").skip(1) {
+            let tag = format!(" {}", tag.split('>').next().unwrap_or(""));
+            if let (Some(id), Some(at)) = (attr(&tag, "id"), size(&tag)) {
+                by_id.insert(id, at);
+            }
+        }
+    }
+    svg_pages(svg)
+        .into_iter()
+        .map(|page| {
+            let body = page.split("</defs>").last().unwrap_or(page);
+            let mut out = Vec::new();
+            for tag in body.split('<').skip(1) {
+                let tag = tag.split('>').next().unwrap_or("");
+                if let Some(rest) = tag.strip_prefix("image ") {
+                    let rest = format!(" {rest}");
+                    if let Some(at) = size(&rest) {
+                        out.push(place(&rest, at));
+                    }
+                } else if let Some(rest) = tag.strip_prefix("use ") {
+                    let rest = format!(" {rest}");
+                    if let Some(at) = attr(&rest, "xlink:href").and_then(|h| by_id.get(h.trim_start_matches('#')).copied()) {
+                        out.push(place(&rest, at));
+                    }
+                }
+            }
+            out
+        })
+        .collect()
 }
 
 /// The embedded images of each page of `pdftocairo -svg` output. Cairo
