@@ -850,6 +850,97 @@ struct Carried {
     head_taken: bool,
 }
 
+/// Text in a frame of drawn lines, or in a grid of them: a table, whose
+/// cells are the fields of the grid (a frame alone: one cell).
+///
+/// A line of the page that crosses several fields is cut at the upright
+/// lines. A cell of symbols only is one formula, whatever lines it was set
+/// in (a sum sign with its index under it); a cell with words keeps its
+/// lines where the frame has one column, as an indented line is part of
+/// how boxed text is set.
+///
+/// The number of the equation at the margin beside it is given apart, by
+/// the table's first line: it is written under the table.
+type Found = (usize, usize, Option<Block>, Figure, bool);
+fn grid_tables(doc: &Doc, page: &crate::layout::Page, lines: &[Line], st: &Stats) -> (Vec<Found>, HashMap<usize, String>) {
+    let mut out = Vec::new();
+    let mut tags = HashMap::new();
+    for g in &page.grids {
+        let (left, right, top, bottom) = (g.xs[0], g.xs[g.xs.len() - 1], g.ys[0], g.ys[g.ys.len() - 1]);
+        // (what stands right of the frame on a line of it: the equation's number)
+        let beside = |l: &Line| -> Vec<String> { l.spans.iter().filter(|s| s.left >= right - 1.0).map(|s| s.text.trim().to_string()).filter(|t| !t.is_empty()).collect() };
+        let inside = |l: &Line| {
+            let out = beside(l);
+            l.top >= top - 3.0 && l.top < bottom && l.left >= left - 3.0 && l.left < right && (l.right <= right + 3.0 || (out.len() == 1 && mathtex::tag_of(&out[0]).is_some()))
+        };
+        let Some(first) = lines.iter().position(inside) else { continue };
+        let end = first + lines[first..].iter().take_while(|l| inside(l)).count();
+        // (they must be a run of the page's lines)
+        if lines[end..].iter().any(inside) {
+            continue;
+        }
+        let (rows_n, cols_n) = (g.ys.len() - 1, g.xs.len() - 1);
+        let mut cells: Vec<Vec<Vec<Line>>> = vec![vec![Vec::new(); cols_n]; rows_n];
+        for l in &lines[first..end] {
+            let mid = l.top + l.size / 2.0;
+            let r = (0..rows_n).rfind(|&r| mid >= g.ys[r] - 3.0).unwrap_or(0);
+            let mut of_col: Vec<Vec<crate::layout::Span>> = vec![Vec::new(); cols_n];
+            // (a piece of text that runs across an upright line, the
+            // symbols of three fields with wide gaps between them, is cut
+            // into its words)
+            let crosses = |s: &crate::layout::Span| g.xs[1..cols_n].iter().any(|x| s.left < x - 2.0 && s.right() > x + 2.0);
+            let pieces: Vec<crate::layout::Span> = l.spans.iter().flat_map(|s| if crosses(s) { crate::layout::split_span_words(s) } else { vec![s.clone()] }).collect();
+            for s in &pieces {
+                let c = s.left + s.width / 2.0;
+                if s.left >= right - 1.0 {
+                    if let Some(tag) = mathtex::tag_of(s.text.trim()) {
+                        tags.insert(first, tag);
+                    }
+                    continue;
+                }
+                of_col[(0..cols_n).rfind(|&k| c >= g.xs[k]).unwrap_or(0)].push(s.clone());
+            }
+            for (c, spans) in of_col.into_iter().enumerate() {
+                if spans.is_empty() {
+                    continue;
+                }
+                let mut piece = crate::layout::make_line(spans, &|s| doc.size_of(s));
+                piece.bars = l.bars.iter().filter(|b| b.left >= g.xs[c] - 2.0 && b.right <= g.xs[c + 1] + 2.0).copied().collect();
+                cells[r][c].push(piece);
+            }
+        }
+        let rows: Vec<Vec<crate::Cell>> = cells
+            .into_iter()
+            .map(|row| {
+                row.into_iter()
+                    .map(|pieces| {
+                        let words = pieces.iter().flat_map(|l| l.spans.iter()).any(|s| !doc.is_math(s) && s.text.split_whitespace().any(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 3));
+                        let mut text: Vec<Inline> = Vec::new();
+                        if !words && !pieces.is_empty() {
+                            let spans: Vec<MSpan> = pieces.iter().flat_map(|l| l.spans.iter()).map(|s| MSpan::new(doc, s)).collect();
+                            let bars: Vec<Rule> = pieces.iter().flat_map(|l| l.bars.iter().copied()).collect();
+                            text.push(Inline::Math(mathtex::fix_double_scripts(&mathtex::build_with(&spans, &bars))));
+                        } else {
+                            for (k, l) in pieces.iter().enumerate() {
+                                if k > 0 && cols_n == 1 {
+                                    text.push(Inline::Break);
+                                } else if k > 0 {
+                                    push_text(&mut text, " ");
+                                }
+                                text.extend(line_inlines(doc, l, st));
+                            }
+                        }
+                        crate::Cell { text: tidy(text), span: 1, ..Default::default() }
+                    })
+                    .collect()
+            })
+            .collect();
+        let area = Figure { left, right, top, bottom };
+        out.push((first, end, Some(Block::Table { key: crate::table_key(page.number, &rows), rows, widths: Vec::new(), title: Vec::new(), note: Vec::new() }), area, false));
+    }
+    (out, tags)
+}
+
 /// The tables of a page that are set on a panel of grey (an ebook-made
 /// PDF): (first line, end, the table). Such a table has a short rule
 /// under each cell of its head, so the rules say where its columns are.
@@ -1950,7 +2041,10 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 carried.head_taken
             })
         };
-        let panels = panel_tables(doc, &doc.pages[page.index], lines, st, &mut carried_table, &next_takes);
+        let mut panels = panel_tables(doc, &doc.pages[page.index], lines, st, &mut carried_table, &next_takes);
+        let (grids, grid_tags) = grid_tables(doc, &doc.pages[page.index], lines, st);
+        panels.extend(grids);
+        panels.sort_by_key(|p| p.0);
         let on_table = |i: usize, j: usize| panels.iter().any(|p| i < p.1 && p.0 < j);
         if let Some(last) = panels.iter().map(|t| t.1).max().filter(|last| end < *last) {
             let on_panel = |l: &Line| doc.pages[page.index].shades.iter().any(|(p, _)| l.top >= p.top - 3.0 && l.top < p.bottom && l.left >= p.left - 3.0 && l.right <= p.right + 3.0);
@@ -2089,6 +2183,10 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                             b.push(table);
                             // (the printed table under it, to check it against)
                             b.push(picture);
+                            // (a framed equation's number, with its anchor)
+                            if let Some(tag) = grid_tags.get(&i) {
+                                b.push(Block::Equation { latex: String::new(), tag: Some(tag.clone()), source: None });
+                            }
                         }
                     }
                 }

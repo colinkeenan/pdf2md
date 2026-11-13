@@ -140,6 +140,8 @@ pub struct Page {
     pub shades: Vec<(Rule, f32)>,
     /// Pictures (drawings, images) with their labels, top to bottom.
     pub figures: Vec<Figure>,
+    /// Frames and ruled grids with text in them: tables, not drawings.
+    pub grids: Vec<Grid>,
     /// Embedded images (pictures or, in ebook-made PDFs, equations).
     pub images: Vec<PageImage>,
     /// Printed pages that start on this page (ebook-made PDFs without page
@@ -148,6 +150,16 @@ pub struct Page {
     /// Blocks read from images that go between the lines: program code
     /// (an image read as text) and horizontal rules. Height and block.
     pub codes: Vec<(f32, crate::Block)>,
+}
+
+/// A frame drawn in lines around text, or a grid of such lines: where its
+/// vertical lines stand (left to right) and its horizontal ones (top
+/// down), in pdftohtml's pixels. Two of each are a box around text; more
+/// are the columns and rows of a table.
+#[derive(Debug, Clone, PartialEq)]
+pub struct Grid {
+    pub xs: Vec<f32>,
+    pub ys: Vec<f32>,
 }
 
 /// A picture on a page: a drawing or an embedded image together with the
@@ -388,6 +400,20 @@ pub fn read_drawings(doc: &mut Doc, path: &Path, pages: Option<(u32, u32)>) {
         for (page, r) in doc.pages.iter_mut().zip(all(&parts, parse_svg_rules)) {
             page.rules = r;
         }
+        // Frames and grids of lines with text in them are tables. (Not the
+        // frame of a chapter's number or title, in larger type.) Their
+        // lines are no fraction bars or overlines of the text in them.
+        let body = doc.body_size;
+        for (page, segments) in doc.pages.iter_mut().zip(all(&parts, parse_svg_segments)) {
+            page.grids = find_grids(&segments);
+            page.grids.retain(|g| {
+                // (a line may go on to the equation's number at the margin)
+                let inside: Vec<&Line> = page.lines.iter().filter(|l| l.top >= g.ys[0] - 3.0 && l.top < g.ys[g.ys.len() - 1] && l.left >= g.xs[0] - 3.0 && l.left < g.xs[g.xs.len() - 1]).collect();
+                !inside.is_empty() && inside.iter().all(|l| l.size < 1.3 * body)
+            });
+            let grids = page.grids.clone();
+            page.rules.retain(|r| !grids.iter().any(|g| g.ys.iter().any(|y| (r.top - y).abs() < 2.5) && r.left >= g.xs[0] - 3.0 && r.right <= g.xs[g.xs.len() - 1] + 3.0 && r.right - r.left >= 0.9 * (g.xs[1] - g.xs[0])));
+        }
         for (page, s) in doc.pages.iter_mut().zip(all(&parts, parse_svg_shades)) {
             page.shades = s;
         }
@@ -397,6 +423,9 @@ pub fn read_drawings(doc: &mut Doc, path: &Path, pages: Option<(u32, u32)>) {
         }
         for (page, f) in doc.pages.iter_mut().zip(all(&parts, parse_svg_figures)) {
             page.figures = f;
+            // (a grid is a table: no picture with the text as its labels)
+            let grids = page.grids.clone();
+            page.figures.retain(|f| !grids.iter().any(|g| f.left >= g.xs[0] - 4.0 && f.right <= g.xs[g.xs.len() - 1] + 4.0 && f.top >= g.ys[0] - 4.0 && f.bottom <= g.ys[g.ys.len() - 1] + 4.0));
             // The light panel a table (or the note under it) stands on is
             // no picture: its text is text, not the labels of a drawing.
             let panels: Vec<Rule> = page.shades.iter().filter(|(_, light)| *light >= 0.7).map(|(p, _)| *p).collect();
@@ -1746,7 +1775,7 @@ pub fn parse_svg_delims(svg: &str) -> Vec<Vec<Delim>> {
 }
 
 /// One span per word, spread over the span's width by character count.
-fn split_span_words(s: &Span) -> Vec<Span> {
+pub(crate) fn split_span_words(s: &Span) -> Vec<Span> {
     let chars: Vec<char> = s.text.chars().collect();
     let n = chars.len().max(1) as f32;
     let mut out = Vec::new();
@@ -1879,6 +1908,83 @@ fn insert_delims(doc: &mut Doc, delims: Vec<Vec<Delim>>) {
         }
         page.lines.retain(|l| !l.spans.is_empty());
     }
+}
+
+/// The straight black lines stroked on each page (`M x y L x y` with a
+/// matrix), across or up and down, in pdftohtml's pixels: (x0, y0, x1, y1).
+fn parse_svg_segments(svg: &str) -> Vec<Vec<(f32, f32, f32, f32)>> {
+    svg_pages(svg)
+        .into_iter()
+        .map(|page| {
+            let body = page.split("</defs>").last().unwrap_or(page);
+            body.split("<path ")
+                .skip(1)
+                .filter_map(|tag| {
+                    let tag = tag.split("/>").next()?;
+                    let attr = |name: &str| tag.split(&format!("{name}=\"")).nth(1)?.split('"').next();
+                    if attr("fill") != Some("none") || attr("stroke") != Some("rgb(0%, 0%, 0%)") || tag.contains("stroke-dasharray") {
+                        return None;
+                    }
+                    let mut words = attr(" d")?.split_whitespace();
+                    let (Some("M"), Some(x0), Some(y0), Some("L"), Some(x1), Some(y1), None) = (words.next(), words.next(), words.next(), words.next(), words.next(), words.next(), words.next()) else { return None };
+                    let (x0, y0, x1, y1): (f32, f32, f32, f32) = (x0.parse().ok()?, y0.parse().ok()?, x1.parse().ok()?, y1.parse().ok()?);
+                    let m: Vec<f32> = match attr("transform") {
+                        Some(t) => t.strip_prefix("matrix(")?.trim_end_matches(')').split(',').filter_map(|v| v.trim().parse().ok()).collect(),
+                        None => vec![1.0, 0.0, 0.0, 1.0, 0.0, 0.0],
+                    };
+                    if m.len() != 6 || m[1].abs() > 1e-3 || m[2].abs() > 1e-3 {
+                        return None;
+                    }
+                    let at = |x: f32, y: f32| (1.5 * (m[0] * x + m[4]), 1.5 * (m[3] * y + m[5]));
+                    let (a, b) = (at(x0, y0), at(x1, y1));
+                    ((a.0 - b.0).abs() < 0.5 || (a.1 - b.1).abs() < 0.5).then_some((a.0.min(b.0), a.1.min(b.1), a.0.max(b.0), a.1.max(b.1)))
+                })
+                .collect()
+        })
+        .collect()
+}
+
+/// Frames and grids among the straight lines of a page: vertical lines of
+/// one height, with horizontal lines from the first to the last of them
+/// at their top, at their foot and maybe between.
+fn find_grids(segments: &[(f32, f32, f32, f32)]) -> Vec<Grid> {
+    // lines drawn in pieces (a table's upright lines, row by row) are one
+    let joined = |mut pieces: Vec<(f32, f32, f32)>| -> Vec<(f32, f32, f32)> {
+        // (where it stands, from, to)
+        // (pieces of one line may differ by a hair in where they stand)
+        pieces.sort_by(|a, b| a.0.round().total_cmp(&b.0.round()).then(a.1.total_cmp(&b.1)));
+        let mut out: Vec<(f32, f32, f32)> = Vec::new();
+        for p in pieces {
+            match out.last_mut() {
+                Some(l) if (l.0 - p.0).abs() < 1.0 && p.1 <= l.2 + 4.0 => l.2 = l.2.max(p.2),
+                _ => out.push(p),
+            }
+        }
+        out
+    };
+    let upright = joined(segments.iter().filter(|s| (s.0 - s.2).abs() < 0.5 && s.3 - s.1 >= 8.0).map(|s| (s.0, s.1, s.3)).collect());
+    let across = joined(segments.iter().filter(|s| (s.1 - s.3).abs() < 0.5 && s.2 - s.0 >= 8.0).map(|s| (s.1, s.0, s.2)).collect());
+    let mut grids: Vec<Grid> = Vec::new();
+    for &(_, top, bottom) in &upright {
+        let mut xs: Vec<f32> = upright.iter().filter(|u| (u.1 - top).abs() < 3.0 && (u.2 - bottom).abs() < 3.0).map(|u| u.0).collect();
+        xs.sort_by(f32::total_cmp);
+        xs.dedup_by(|a, b| (*a - *b).abs() < 2.0);
+        if xs.len() < 2 {
+            continue;
+        }
+        let (left, right) = (xs[0], xs[xs.len() - 1]);
+        let mut ys: Vec<f32> = across.iter().filter(|a| a.1 <= left + 3.0 && a.2 >= right - 3.0 && a.0 >= top - 3.0 && a.0 <= bottom + 3.0).map(|a| a.0).collect();
+        ys.sort_by(f32::total_cmp);
+        ys.dedup_by(|a, b| (*a - *b).abs() < 2.0);
+        if ys.len() < 2 || (ys[0] - top).abs() > 3.0 || (ys[ys.len() - 1] - bottom).abs() > 3.0 {
+            continue;
+        }
+        let grid = Grid { xs, ys };
+        if !grids.contains(&grid) {
+            grids.push(grid);
+        }
+    }
+    grids
 }
 
 /// A rule drawn as a stroke, not as a filled rectangle (some typesetters
@@ -2286,6 +2392,7 @@ pub fn parse_xml_with(xml: &str, lost: &HashMap<String, bool>) -> Result<Doc, St
             rules: Vec::new(),
             shades: Vec::new(),
             figures: Vec::new(),
+            grids: Vec::new(),
             images: Vec::new(),
             marks: Vec::new(),
             codes: Vec::new(),
@@ -2540,6 +2647,9 @@ pub fn dump(doc: &Doc) -> String {
         out += &format!("\n=== page {} ({} x {})\n", p.number, p.width, p.height);
         for r in &p.rules {
             out += &format!("  bar  top {:.1}  x {:.1}..{:.1}\n", r.top, r.left, r.right);
+        }
+        for g in &p.grids {
+            out += &format!("  grid  x {:?}  y {:?}\n", g.xs.iter().map(|x| x.round()).collect::<Vec<_>>(), g.ys.iter().map(|y| y.round()).collect::<Vec<_>>());
         }
         for f in &p.figures {
             out += &format!("  figure  y {:.0}..{:.0}  x {:.0}..{:.0}\n", f.top, f.bottom, f.left, f.right);

@@ -99,6 +99,8 @@ A page that is one picture and no text, such as the book's cover, is kept as tha
 
 A table is written as an HTML table with Markdown in its cells. Under every table that pdf2md builds stands a picture of the printed table in a fold, because a cell can be misread. A title or a note that the book sets as part of the table is a cell across all its columns, in a row marked `<tr class="title">` or `<tr class="note">`. A page set in two columns, such as an index, stays in two columns.
 
+**Text in a frame of drawn lines, or in a grid of them,** is a table whose cells are the fields of the grid; a frame alone is one cell. A line of the page that crosses several fields is cut at the upright lines. A cell of symbols only is one formula. A cell with words keeps its lines where the frame has one column. The number of the equation at the margin is written under the table. The frame of a chapter's number or title, in larger type, is no table.
+
 ## The two forms of math
 
 Formulas are written in one of two forms, chosen with "Math" in the window or `--math` on the command line.
