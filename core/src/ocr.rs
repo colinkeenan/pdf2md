@@ -54,12 +54,41 @@ fn corrections_dir() -> Option<PathBuf> {
 /// be nothing: a cell emptied by hand).
 pub(crate) fn read_cell_correction(table: &str, row: usize, column: usize) -> Option<String> {
     let t = std::fs::read_to_string(corrections_dir()?.join(format!("{table}.{row}.{column}.cell"))).ok()?;
+    // (A table's caption is no cell: for two days its title cell was taken
+    // for the first cell of the table, and its text in book.md, where the
+    // links go elsewhere, for a correction of that cell.)
+    if t.trim_start().starts_with("<a id=\"table-") {
+        return None;
+    }
     Some(t.trim().to_string())
+}
+
+/// Are two pieces of Markdown the same but for the files their links go
+/// to ("](chapter.md#eq-1)" and "](#eq-1)")?
+fn same_but_links(a: &str, b: &str) -> bool {
+    let bare = |t: &str| -> String {
+        let mut out = String::new();
+        let mut rest = t;
+        while let Some(i) = rest.find("](") {
+            out.push_str(&rest[..i + 2]);
+            rest = &rest[i + 2..];
+            // (up to the "#" of a link into a Markdown file)
+            match (rest.find('#'), rest.find(')')) {
+                (Some(h), Some(close)) if h < close && rest[..h].ends_with(".md") => rest = &rest[h..],
+                _ => {}
+            }
+        }
+        out.push_str(rest);
+        out
+    };
+    a == b || bare(a) == bare(b)
 }
 
 /// The tables of a Markdown text that carry a key (`<!-- pdf2md:table KEY
 /// -->` above `<table>`), cell by cell: "KEY.row.column" and the cell's
-/// Markdown.
+/// Markdown. The rows are the plain `<tr>` ones: the table's title and
+/// the note at its foot stand in rows marked as such (`<tr class=…>`)
+/// and are no cells.
 pub fn marked_tables(text: &str) -> Vec<(String, String)> {
     let mut out = Vec::new();
     let mut rest = text;
@@ -69,6 +98,7 @@ pub fn marked_tables(text: &str) -> Vec<(String, String)> {
         let Some(end) = rest.find("</table>") else { break };
         let table = &rest[..end];
         for (r, row) in table.split("<tr>").skip(1).enumerate() {
+            let row = row.split("</tr>").next().unwrap_or("");
             for (c, cell) in row.split("<td").skip(1).enumerate() {
                 let inside = cell.split_once('>').map_or("", |x| x.1);
                 let inside = inside.split("</td>").next().unwrap_or("");
@@ -174,7 +204,9 @@ pub fn collect_corrections(dir: &std::path::Path) -> usize {
             let (Ok(text), Ok(meta)) = (std::fs::read_to_string(&p), e.metadata()) else { continue };
             let time = meta.modified().unwrap_or(std::time::UNIX_EPOCH);
             for (id, cell) in marked_tables(&text) {
-                if written.get(&id).is_none_or(|w| *w == norm(&cell)) {
+                // (the same but for where its links go: book.md links into
+                // itself, a chapter's file to the chapters' files)
+                if written.get(&id).is_none_or(|w| same_but_links(w, &norm(&cell))) {
                     continue;
                 }
                 match cells.get(&id) {

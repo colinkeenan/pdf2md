@@ -629,10 +629,12 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
                 }
                 out.push_str("</colgroup>\n");
             }
-            // the title: a cell across all the columns
+            // the title: a cell across all the columns (its row is marked,
+            // and the row of the note: they are no rows of cells, see
+            // `ocr::marked_tables`)
             let columns = rows.iter().map(|r| r.iter().map(|c| c.span.max(1)).sum::<usize>()).max().unwrap_or(1);
             if !title.is_empty() {
-                out.push_str(&format!("<tr>\n<td colspan=\"{columns}\" align=\"center\">\n\n{}\n\n</td>\n</tr>\n", render_inlines(title).replace("<br>\n", "<br>").trim()));
+                out.push_str(&format!("<tr class=\"title\">\n<td colspan=\"{columns}\" align=\"center\">\n\n{}\n\n</td>\n</tr>\n", render_inlines(title).replace("<br>\n", "<br>").trim()));
             }
             for (r, row) in rows.iter().enumerate() {
                 out.push_str("<tr>\n");
@@ -660,7 +662,7 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
             }
             // the note at its foot: a cell across all the columns, too
             if !note.is_empty() {
-                out.push_str(&format!("<tr>\n<td colspan=\"{columns}\">\n\n{}\n\n</td>\n</tr>\n", render_inlines(note).replace("<br>\n", "<br>").trim()));
+                out.push_str(&format!("<tr class=\"note\">\n<td colspan=\"{columns}\">\n\n{}\n\n</td>\n</tr>\n", render_inlines(note).replace("<br>\n", "<br>").trim()));
             }
             out.push_str("</table>\n\n");
         }
