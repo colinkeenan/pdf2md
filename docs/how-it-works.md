@@ -221,7 +221,7 @@ marker does not see every small raised number in the text. Where a page has a fo
 ### Contents and tables
 
 * **The table of contents** is read line by line from the PDF's hidden text or by Tesseract, because marker reads tables cell by cell, which shuffles a contents page. That text is poor, so an entry whose page opens with a title takes the title as marker read it. Contents set in columns are written as a table of number, title and pages.
-* **Other tables** are kept as marker read them if their rows and cells hold together: at least two rows and two columns, rows of similar length, most cells filled. A table that does not hold together stays a picture.
+* **Other tables** are kept as marker read them if their rows and cells hold together: at least two rows and two columns, rows of similar length, most cells filled. A table that does not hold together stays a picture. A table numbered like an equation, "(16)" beside or under it, has that number written under it as an equation number, so references to it find the table.
 
 ## What is kept between conversions
 

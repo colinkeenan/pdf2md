@@ -762,8 +762,11 @@ pub fn second_readings(equations: &[(String, String, Vec<u8>)]) {
     let mut todo = Vec::new();
     for (k, latex, png) in equations {
         // (read a second time before, and the same formula as then)
-        let same = std::fs::read_to_string(dir.join(format!("{k}.tex"))).is_ok_and(|t| t.trim() == latex.trim());
-        if same && dir.join(format!("{k}.verify")).exists() {
+        let before = std::fs::read_to_string(dir.join(format!("{k}.tex"))).unwrap_or_default();
+        // (or one the recognizer took for a drawing: it has no reading to
+        // compare, and would be sent and sorted out again every time)
+        let same = before.trim() == latex.trim();
+        if (same && dir.join(format!("{k}.verify")).exists()) || before.starts_with('%') {
             continue;
         }
         let _ = std::fs::write(dir.join(format!("{k}.tex")), format!("{latex}\n"));

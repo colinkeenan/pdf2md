@@ -1014,6 +1014,26 @@ fn read_table(html: &str) -> Option<Vec<Vec<crate::Cell>>> {
     (rows.len() >= 2 && columns >= 2 && even && filled * 5 >= cells * 3).then_some(rows)
 }
 
+/// The equation number of a table that has one: a ruled table can be
+/// numbered like an equation, "(16)" beside it at the right margin, and
+/// marker reads the number as one more column, empty but for it. That
+/// column is taken away again and the number given: it is written under
+/// the table as an equation number, so references to it find the table.
+fn table_number(rows: &mut [Vec<crate::Cell>]) -> Option<String> {
+    let columns = rows.iter().map(Vec::len).max()?;
+    if columns < 3 || rows.iter().any(|r| r.iter().any(|c| c.span != 1)) {
+        return None;
+    }
+    let last: Vec<String> = rows.iter().filter(|r| r.len() == columns).map(|r| crate::plain(&r[columns - 1].text).trim().to_string()).collect();
+    let mut filled = last.iter().filter(|t| !t.is_empty());
+    let (Some(only), None) = (filled.next(), filled.next()) else { return None };
+    let number = crate::mathtex::tag_of(only)?;
+    for r in rows.iter_mut().filter(|r| r.len() == columns) {
+        r.pop();
+    }
+    Some(number)
+}
+
 /// What a cell of marker's table holds. marker writes a cell's formulas
 /// as LaTeX among its words, unmarked ("Maxwell f^2 \\sim a \\partial^2 a"):
 /// a run of pieces with "\\", "^", "_" or "=" in them is a formula, and
@@ -2081,8 +2101,12 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
                         // together: a table, with the picture of it right
                         // under it (a cell can be misread)
                         None => match read_table(&b.html) {
-                            Some(rows) => {
+                            Some(mut rows) => {
+                                let number = table_number(&mut rows);
                                 made.push(Block::Table { key: crate::table_key(page.number, &rows), rows, widths: Vec::new() });
+                                if number.is_some() {
+                                    made.push(Block::Equation { latex: String::new(), tag: number, source: None });
+                                }
                                 made.push(Block::Picture { page: page.number, area, alt: crate::TABLE_READ.into() });
                             }
                             None => {
@@ -2136,6 +2160,20 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
                 }
             }
             for block in made {
+                // A table's equation number set under it, which marker read
+                // as a paragraph of its own: the number of the table, written
+                // right under it as in `table_number`.
+                let number = match &block {
+                    Block::Para(t) => crate::mathtex::tag_of(&plain(t)),
+                    _ => None,
+                };
+                let under_table = matches!(blks.as_slice(), [.., Blk { block: Block::Table { .. }, .. }, Blk { block: Block::Picture { .. }, page, .. }] if *page == pi);
+                if number.is_some() && under_table {
+                    let picture = blks.pop();
+                    push(&mut blks, Block::Equation { latex: String::new(), tag: number, source: None });
+                    blks.extend(picture);
+                    continue;
+                }
                 // a paragraph that goes on from the page before: one
                 // paragraph, with the page's mark where the page turns
                 // (the footnotes of the page before stand after its text)
