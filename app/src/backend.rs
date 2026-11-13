@@ -162,7 +162,7 @@ fn write_config(name: &str, text: &str) {
 /// Is this folder a converted book? (The converter leaves a list of what
 /// it wrote in it, and the book in one file.)
 fn is_book(dir: &Path) -> bool {
-    dir.join(".pdf2md-written").is_file() || (dir.join("book.md").is_file() && dir.join("00-front-matter.md").is_file())
+    dir.join(".pdf2md-written").is_file() || (dir.join("book.md").is_file() && (dir.join("00-front-matter.md").is_file() || dir.join("00a-title-pages.md").is_file()))
 }
 
 /// Note that `dir` holds a converted book (~/.config/pdf2md/books: the

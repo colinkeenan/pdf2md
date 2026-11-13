@@ -8,7 +8,7 @@ use crate::{plain, Blk, Block, Chapter};
 
 pub fn split_chapters(blks: Vec<Blk>, chapter_size: Option<f32>) -> Vec<Chapter> {
     let mut chapters = vec![Chapter {
-        title: "Front Matter".into(),
+        title: FRONT_MATTER.into(),
         ..Default::default()
     }];
     for b in blks {
@@ -191,8 +191,28 @@ pub fn split_contents(chapters: &mut Vec<Chapter>) {
         chapters[ci].blocks.splice(0..0, blocks);
         return;
     }
+    // What is printed after the contents and before the first chapter
+    // (prefaces, a foreword) does not stay in the file in front of the
+    // contents: the front matter is then two files around them, the title
+    // pages and the rest. (A page that holds only a title goes to the top
+    // of the next file instead, see `title_page_after_contents`.)
+    let says = |b: &Blk| !matches!(b.block, Block::Heading { .. } | Block::Anchor(_));
+    let mut rest = Vec::new();
+    if ci == 0 && chapters[0].title == FRONT_MATTER && chapters[0].blocks[from..].iter().any(says) && chapters[0].blocks[..from].iter().any(|b| !matches!(b.block, Block::Anchor(_))) {
+        rest = chapters[0].blocks.split_off(from);
+        chapters[0].title = TITLE_PAGES.into();
+    }
     chapters.insert(ci + 1, Chapter { title, blocks, ..Default::default() });
+    if !rest.is_empty() {
+        chapters.insert(ci + 2, Chapter { title: MORE_FRONT_MATTER.into(), blocks: rest, ..Default::default() });
+    }
 }
+
+/// The name of the file of everything before the first chapter, and the
+/// names of its two parts where the contents stand between them.
+pub const FRONT_MATTER: &str = "Front Matter";
+pub const TITLE_PAGES: &str = "Title Pages";
+pub const MORE_FRONT_MATTER: &str = "Additional Front Matter";
 
 /// The book's title printed once more on a page of its own (a half-title:
 /// before the contents, before the first part) stands at the top of the
@@ -260,7 +280,7 @@ pub fn assign_slugs(chapters: &mut [Chapter]) {
     // (chapter 1 comes first, after the front matter and its contents)
     let contents = |c: &Chapter| crate::blocks::is_contents_title(&c.title);
     let usable = first.is_some_and(|f| {
-        numbers_in_order(&chapters[f..]) && ((f <= 1 && numbers[f] == Some(f as u32)) || (f == 2 && numbers[f] == Some(1) && contents(&chapters[1])))
+        numbers_in_order(&chapters[f..]) && ((f <= 1 && numbers[f] == Some(f as u32)) || (f == 2 && numbers[f] == Some(1) && contents(&chapters[1])) || (f == 3 && numbers[f] == Some(1) && contents(&chapters[1]) && chapters[2].title == MORE_FRONT_MATTER))
     });
     if !usable {
         // (the contents, a file of their own after the front matter, are
@@ -269,6 +289,12 @@ pub fn assign_slugs(chapters: &mut [Chapter]) {
         for (i, ch) in chapters.iter_mut().enumerate() {
             if i == 1 && crate::blocks::is_contents_title(&ch.title) {
                 ch.slug = format!("00b-{}", slugify(&ch.title));
+                continue;
+            }
+            // (the front matter in two files around the contents)
+            if (i == 0 && ch.title == TITLE_PAGES) || (i == 2 && ch.title == MORE_FRONT_MATTER) {
+                ch.slug = format!("00{}-{}", if i == 0 { 'a' } else { 'c' }, slugify(&ch.title));
+                n += usize::from(i == 0);
                 continue;
             }
             ch.slug = format!("{:02}-{}", n, slugify(&ch.title));
@@ -284,6 +310,8 @@ pub fn assign_slugs(chapters: &mut [Chapter]) {
                 (current, letter) = (n, b'a');
                 format!("{n:02}")
             }
+            // ("00a-title-pages", "00b-contents", "00c-additional-front-matter")
+            None if i == 0 && ch.title == TITLE_PAGES => "00a".to_string(),
             None if i == 0 => "00".to_string(),
             // after the last chapter: counting on
             None if i > last => {
