@@ -265,13 +265,14 @@ pub fn collect(dir: &Path) -> UserData {
         let Ok(text) = std::fs::read_to_string(&p) else { continue };
         let name = p.file_stem().map(|s| s.to_string_lossy().into_owned()).unwrap_or_default();
         let data = if name == "book" {
-            // chapters start with <a id="slug"></a>
+            // chapters start with <a id="slug"></a>; their title follows, under
+            // the bar and marker of the page they open on
             let starts: Vec<(usize, String)> = text
                 .match_indices("<a id=\"")
                 .filter_map(|(i, _)| {
                     let id = text[i + 7..].split('"').next()?;
                     let line_end = text[i..].find('\n').map_or(text.len(), |k| i + k);
-                    (text[i..line_end].trim() == format!("<a id=\"{id}\"></a>") && text[line_end..].trim_start().starts_with("# ") && id.chars().next().is_some_and(|c| c.is_ascii_digit()))
+                    (text[i..line_end].trim() == format!("<a id=\"{id}\"></a>") && text[line_end..].lines().filter(|l| !l.trim().is_empty()).take(8).any(|l| l.starts_with("# ")) && id.chars().next().is_some_and(|c| c.is_ascii_digit()))
                         .then(|| (i, id.to_string()))
                 })
                 .collect();

@@ -905,6 +905,24 @@ fn chapter_body(book: &Book, i: usize) -> String {
         render_block(&b.block, &mut text, &mut false);
         s.push_str(&if b.centered { format!("<div align=\"center\">\n\n{text}</div>\n\n") } else { text });
     }
+    // The page the file opens on begins above its title: the title is
+    // printed on that page, not at the foot of the page before. So the
+    // page's bar and marker come first.
+    // (one page: a marker after it is of the page after the title's, an
+    // empty one)
+    let opening = ch.blocks.iter().take(1).take_while(|b| matches!(&b.block, crate::Block::Anchor(id) if page_label(id).is_some())).count();
+    for b in &ch.blocks[..opening] {
+        render_block(&b.block, &mut s, &mut false);
+    }
+    // pages without a printed number: a marker by their number in the PDF,
+    // before the first thing that starts on them
+    let mut unnumbered = unnumbered_pages(book);
+    if let Some(first) = ch.blocks[opening..].iter().find(|b| !matches!(b.block, crate::Block::Anchor(_))) {
+        if opening == 0 && unnumbered.remove(&first.page) {
+            let n = book.pdf_pages[first.page];
+            s.push_str(&format!("{PAGE_BAR}\n<a id=\"pdf-p{n}\"{}><sup>[PDF p. {n}]</sup></a>\n\n", pdf_link(n)));
+        }
+    }
     s.push_str(&if ch.centered { format!("<div align=\"center\">\n\n# {title}\n\n</div>\n\n") } else { format!("# {title}\n\n") });
     let mut in_list = false;
     // a run of centered blocks goes in one centered div (page markers
@@ -917,10 +935,7 @@ fn chapter_body(book: &Book, i: usize) -> String {
     // bar of the next page (inside the bar's own block, where the page
     // turns in the middle of a paragraph), or at the chapter's end.
     let mut foot: std::collections::VecDeque<&Note> = ch.notes.iter().filter(|n| n.page.is_some()).collect();
-    // pages without a printed number: a marker by their number in the PDF,
-    // before the first thing that starts on them
-    let mut unnumbered = unnumbered_pages(book);
-    for (bi, b) in ch.blocks.iter().enumerate() {
+    for (bi, b) in ch.blocks.iter().enumerate().skip(opening) {
         // (what stands on a later page: the notes of the pages before it first)
         while foot.front().is_some_and(|n| n.page.is_some_and(|p| p < b.page)) {
             if in_list {

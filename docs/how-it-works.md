@@ -71,6 +71,7 @@ Where a printed page starts there is a marker, <sup>[p. 32]</sup>, with the anch
 
 Above the bar, at the right, stands the marker of the page that ends there, <sup>[p. 31]</sup>. With one bar in the window both pages are named, and each marker opens its own page of the PDF. Only the marker under the bar carries the anchor. The page that ends is the page before in the PDF; in an ebook-made PDF it is the page of the marker before.
 
+* **At the top of a file** the bar and markers of the page the file opens on stand above the file's title: the title is printed on that page, not at the foot of the page before.
 * **In the middle of a paragraph** the bar and marker are written into the sentence as a floating block as wide as the text. The browser puts it under the current line and goes on filling that line, so the text above the bar runs to the right margin as on the printed page, at any window width. A viewer that drops `style` attributes shows the marker inside the sentence, without the bar.
 * **The link.** Each marker opens that page of the PDF in a new tab: `book.pdf#page=38`, counted in sheets of the PDF, which is how browsers count. `book.pdf` in the book's folder is a symbolic link to the source PDF, made anew at each conversion. If you move the PDF, convert again.
 * **Pages without a printed number** get <sup>[PDF p. 5]</sup> (anchor `#pdf-p5`) if they say something: 30 words or more, a formula or a table. A title page gets none.

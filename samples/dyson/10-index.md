@@ -2,11 +2,11 @@
 
 ---
 
-# Index
-
 <div align="right"><a href="book.pdf#page=145" target="_blank" title="This page in the PDF"><sup>[p. 139]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p140" href="book.pdf#page=146" target="_blank" title="This page in the PDF"><sup>[p. 140]</sup></a>
+
+# Index
 
 <table width="100%"><tr>
 <td valign="top" width="50%">

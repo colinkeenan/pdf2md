@@ -2,11 +2,11 @@
 
 ---
 
-# Typist’s Afterword
-
 <div align="right"><a href="book.pdf#page=137" target="_blank" title="This page in the PDF"><sup>[p. 131]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p132" href="book.pdf#page=138" target="_blank" title="This page in the PDF"><sup>[p. 132]</sup></a>
+
+# Typist’s Afterword
 
 Both Kaiser’s admirable _Drawing Theories Apart_ <a id="refback-8-1"></a>[[8]](#ref-8) and Schweber’s masterful _QED and the Men Who_ _Made It_ <a id="refback-7-1"></a>[[7]](#ref-7) refer frequently to the famous lectures on quantum electrodynamics given by Freeman Dyson at Cornell University in 1951. Two generations ago, graduate students (and their professors) wishing to learn the new techniques of QED passed around copies of Dyson’s Cornell lecture notes, then the best and fullest treatment available. Textbooks appeared a few years later, e. g. by Jauch & Rohrlich <a id="refback-25-1"></a>[[25]](#ref-25) and Schweber
 

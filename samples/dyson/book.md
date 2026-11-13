@@ -57,11 +57,11 @@ A^{T} & = & \text{transposed} \\
 
 <a id="00b-table-of-contents"></a>
 
-# Table of Contents
-
 <div align="right"><a href="book.pdf#page=2" target="_blank" title="This page in the PDF"><sup>[p. i]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="pii" href="book.pdf#page=3" target="_blank" title="This page in the PDF"><sup>[p. ii]</sup></a>
+
+# Table of Contents
 
 - [Introduction](#01-introduction) — [pp. 1–3](#p1)
   - [Subject Matter](#s-subject-matter) — [p. 1](#p1)
@@ -182,11 +182,11 @@ A^{T} & = & \text{transposed} \\
 
 <a id="01-introduction"></a>
 
-# Introduction
-
 <div align="right"><a href="book.pdf#page=6" target="_blank" title="This page in the PDF"><sup>[p. v]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p1" href="book.pdf#page=7" target="_blank" title="This page in the PDF"><sup>[p. 1]</sup></a>
+
+# Introduction
 
 ## <a id="s-books"></a>Books
 
@@ -350,11 +350,11 @@ The theory can be carried through quite easily, if we make $`\psi`$ describe an 
 
 <a id="02-the-dirac-theory"></a>
 
-# The Dirac Theory
-
 <div align="right"><a href="book.pdf#page=9" target="_blank" title="This page in the PDF"><sup>[p. 3]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p4" href="book.pdf#page=10" target="_blank" title="This page in the PDF"><sup>[p. 4]</sup></a>
+
+# The Dirac Theory
 
 ## <a id="s-the-form-of-the-dirac-equation"></a>The Form of the <a id="ix-58">Dirac</a> <a id="ix-61">Equation</a>
 
@@ -1833,11 +1833,11 @@ Latin indices: 1, 2, 3. Greek indices: 0, 1, 2, 3.
 
 <a id="03-scattering-problems-and-born-approximation"></a>
 
-# Scattering Problems and Born Approximation
-
 <div align="right"><a href="book.pdf#page=27" target="_blank" title="This page in the PDF"><sup>[p. 21]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p22" href="book.pdf#page=28" target="_blank" title="This page in the PDF"><sup>[p. 22]</sup></a>
+
+# Scattering Problems and Born Approximation
 
 ## <a id="s-general-discussion"></a>General Discussion
 
@@ -2614,11 +2614,11 @@ V ( r ) = - 4 \pi \int_{0}^{r} \frac{1}{r_{1}^{2}} dr_{1} \int_{0}^{r_{1}} r_{2}
 
 <a id="04-field-theory"></a>
 
-# Field Theory
-
 <div align="right"><a href="book.pdf#page=37" target="_blank" title="This page in the PDF"><sup>[p. 31]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p32" href="book.pdf#page=38" target="_blank" title="This page in the PDF"><sup>[p. 32]</sup></a>
+
+# Field Theory
 
 Before we can begin on the program of constructing our quantum theory of fields, we must make some remarks about Classical Field Theory.
 
@@ -3206,11 +3206,11 @@ The interpretation of the operators, and the justification for the Schwinger pri
 
 <a id="05-examples-of-quantized-field-theories"></a>
 
-# Examples of Quantized Field Theories
-
 <div align="right"><a href="book.pdf#page=46" target="_blank" title="This page in the PDF"><sup>[p. 40]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p41" href="book.pdf#page=47" target="_blank" title="This page in the PDF"><sup>[p. 41]</sup></a>
+
+# Examples of Quantized Field Theories
 
 ## <a id="s-i-the-maxwell-field"></a>I. The Maxwell Field
 
@@ -6189,11 +6189,11 @@ because the expression $`( z - z^{2} )`$ is symmetric about $`z = \tfrac{1}{2}`$
 
 <a id="06-free-particle-scattering-problems"></a>
 
-# Free Particle Scattering Problems
-
 <div align="right"><a href="book.pdf#page=86" target="_blank" title="This page in the PDF"><sup>[p. 80]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p81" href="book.pdf#page=87" target="_blank" title="This page in the PDF"><sup>[p. 81]</sup></a>
+
+# Free Particle Scattering Problems
 
 In this extensive class of problems we are interested in calculating the over-all transition matrix element $`M`$ between an initial state $`A`$ and a final state $`B , A`$ and $`B`$ being specified by assigning the spins and momenta of the free particles which are present in these states. The scattering process is supposed to occur as follows: The free particles which are specified by state $`A`$ in the remote past, converge and interact, and other free particles emerge or are created in the interaction and finally constitute the state $`B`$ in the remote future. We wish to calculate the matrix element $`M`$ for this process, without studying the equations of motion or investigating the behavior of the system at intermediate times while the interaction is in progress.
 
@@ -7171,11 +7171,11 @@ For the <a id="ix-21">cross-section</a> calculation see again Heitler, $`§ 2 0 
 
 <a id="07-general-theory-of-free-particle-scattering"></a>
 
-# General Theory of Free Particle Scattering
-
 <div align="right"><a href="book.pdf#page=99" target="_blank" title="This page in the PDF"><sup>[p. 93]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p94" href="book.pdf#page=100" target="_blank" title="This page in the PDF"><sup>[p. 94]</sup></a>
+
+# General Theory of Free Particle Scattering
 
 We have shown how (421) leads to matrix elements for standard scattering processes, from which cross-sections can be calculated. In each case we used only the term $`n`$ = 2 in (421), which happened to be the lowest term giving a contribution to these processes. The higher terms $`n`$ = 4$`, 6 ,\dots`$ will also give contributions to the matrix elements for these processes, contributions which are collectively called “radiative corrections”. It turns out that the results without radiative corrections agree with the experimental scattering cross-sections in all cases. The experiments are never accurate to better than a few percent, and the radiative corrections are always smaller than the lowest-order terms by at least one power of $`( e^{2} / 4 \pi \hbar c )`$ = (1$`/ 137`$). Thus the study of the radiative corrections for scattering processes will not lead to any directly observable effects.
 
@@ -8633,11 +8633,11 @@ the contractions being equal to the propagators $`S_{F} , D_{F}`$, and so on.
 
 <a id="08-scattering-by-a-static-potential-comparison-with-experimental-results"></a>
 
-# Scattering By A Static Potential. Comparison With Experimental Results.
-
 <div align="right"><a href="book.pdf#page=123" target="_blank" title="This page in the PDF"><sup>[p. 117]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p118" href="book.pdf#page=124" target="_blank" title="This page in the PDF"><sup>[p. 118]</sup></a>
+
+# Scattering By A Static Potential. Comparison With Experimental Results.
 
 Consider the <a id="ix-244">scattering</a> of an electron by a time-independent electrostatic potential
 
@@ -9626,11 +9626,11 @@ Since $`Z_{\lambda}`$ is a Lorentz vector, the gradient must likewise be. So “
 
 <a id="09-typist-s-afterword"></a>
 
-# Typist’s Afterword
-
 <div align="right"><a href="book.pdf#page=137" target="_blank" title="This page in the PDF"><sup>[p. 131]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p132" href="book.pdf#page=138" target="_blank" title="This page in the PDF"><sup>[p. 132]</sup></a>
+
+# Typist’s Afterword
 
 Both Kaiser’s admirable _Drawing Theories Apart_ <a id="09-typist-s-afterword--refback-8-1"></a>[[8]](#09-typist-s-afterword--ref-8) and Schweber’s masterful _QED and the Men Who_ _Made It_ <a id="09-typist-s-afterword--refback-7-1"></a>[[7]](#09-typist-s-afterword--ref-7) refer frequently to the famous lectures on quantum electrodynamics given by Freeman Dyson at Cornell University in 1951. Two generations ago, graduate students (and their professors) wishing to learn the new techniques of QED passed around copies of Dyson’s Cornell lecture notes, then the best and fullest treatment available. Textbooks appeared a few years later, e. g. by Jauch & Rohrlich <a id="refback-25-1"></a>[[25]](#ref-25) and Schweber
 
@@ -9682,11 +9682,11 @@ University of Chicago loki@uchicago.edu
 
 <a id="10-index"></a>
 
-# Index
-
 <div align="right"><a href="book.pdf#page=145" target="_blank" title="This page in the PDF"><sup>[p. 139]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p140" href="book.pdf#page=146" target="_blank" title="This page in the PDF"><sup>[p. 140]</sup></a>
+
+# Index
 
 <table width="100%"><tr>
 <td valign="top" width="50%">

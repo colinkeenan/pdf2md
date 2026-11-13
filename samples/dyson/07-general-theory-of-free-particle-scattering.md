@@ -2,11 +2,11 @@
 
 ---
 
-# General Theory of Free Particle Scattering
-
 <div align="right"><a href="book.pdf#page=99" target="_blank" title="This page in the PDF"><sup>[p. 93]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p94" href="book.pdf#page=100" target="_blank" title="This page in the PDF"><sup>[p. 94]</sup></a>
+
+# General Theory of Free Particle Scattering
 
 We have shown how (421) leads to matrix elements for standard scattering processes, from which cross-sections can be calculated. In each case we used only the term $`n`$ = 2 in (421), which happened to be the lowest term giving a contribution to these processes. The higher terms $`n`$ = 4$`, 6 ,\dots`$ will also give contributions to the matrix elements for these processes, contributions which are collectively called “radiative corrections”. It turns out that the results without radiative corrections agree with the experimental scattering cross-sections in all cases. The experiments are never accurate to better than a few percent, and the radiative corrections are always smaller than the lowest-order terms by at least one power of $`( e^{2} / 4 \pi \hbar c )`$ = (1$`/ 137`$). Thus the study of the radiative corrections for scattering processes will not lead to any directly observable effects.
 

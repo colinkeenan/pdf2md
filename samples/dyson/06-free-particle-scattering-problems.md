@@ -2,11 +2,11 @@
 
 ---
 
-# Free Particle Scattering Problems
-
 <div align="right"><a href="book.pdf#page=86" target="_blank" title="This page in the PDF"><sup>[p. 80]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p81" href="book.pdf#page=87" target="_blank" title="This page in the PDF"><sup>[p. 81]</sup></a>
+
+# Free Particle Scattering Problems
 
 In this extensive class of problems we are interested in calculating the over-all transition matrix element $`M`$ between an initial state $`A`$ and a final state $`B , A`$ and $`B`$ being specified by assigning the spins and momenta of the free particles which are present in these states. The scattering process is supposed to occur as follows: The free particles which are specified by state $`A`$ in the remote past, converge and interact, and other free particles emerge or are created in the interaction and finally constitute the state $`B`$ in the remote future. We wish to calculate the matrix element $`M`$ for this process, without studying the equations of motion or investigating the behavior of the system at intermediate times while the interaction is in progress.
 
