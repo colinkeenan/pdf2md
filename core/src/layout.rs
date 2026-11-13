@@ -488,6 +488,8 @@ fn restore_glyphs(doc: &mut Doc, path: &Path, parts: &[(usize, String)], lost: &
     let (Some(first), Some(last)) = (doc.pages.first().map(|p| p.number), doc.pages.last().map(|p| p.number)) else { return };
     let Some(glyphs) = crate::glyphs::read(path, first, last) else { return };
     let debug = std::env::var_os("PDF2MD_GLYPHDEBUG").is_some();
+    // (=all: every glyph of every font, with its place)
+    let debug_all = std::env::var("PDF2MD_GLYPHDEBUG").is_ok_and(|v| v == "all");
     let mut uses: Vec<Vec<Placed>> = Vec::new();
     for (pages, svg) in parts {
         let mut of_part = parse_svg_uses(svg);
@@ -518,6 +520,9 @@ fn restore_glyphs(doc: &mut Doc, path: &Path, parts: &[(usize, String)], lost: &
         let mut of_span: HashMap<(usize, usize), Vec<(Placed, Glyph)>> = HashMap::new();
         for (&(f, code), at) in drawn.iter().zip(&placed) {
             let info = &glyphs.fonts[f];
+            if debug_all {
+                eprintln!("GLYPH page {} {:6.1} {:6.1} {} {code} {:?} {:?}", page.number, 1.5 * at.x, 1.5 * at.y, info.base, info.name(code), info.glyph(code));
+            }
             if lossy(&info.base, lost).is_none() {
                 continue;
             }
@@ -534,9 +539,12 @@ fn restore_glyphs(doc: &mut Doc, path: &Path, parts: &[(usize, String)], lost: &
                     if !kept[s.font] || !same(&info.base, &families[s.font]) || at.y < s.top - 3.0 || at.y > s.bottom() + 3.0 {
                         continue;
                     }
+                    // (a glyph that starts at the right edge of one piece
+                    // and the left edge of the next is the next one's)
                     let off = (s.left - at.x).max(at.x - (s.right() - 1.0).max(s.left)).max(0.0);
-                    if off <= 1.5 && best.is_none_or(|(_, o)| off < o) {
-                        best = Some(((li, si), off));
+                    let score = f32::from(at.x >= s.right() - 1.5) + 0.01 * (at.x - s.left).abs();
+                    if off <= 1.5 && best.is_none_or(|(_, o)| score < o) {
+                        best = Some(((li, si), score));
                     }
                 }
             }
@@ -577,7 +585,11 @@ fn restore_glyphs(doc: &mut Doc, path: &Path, parts: &[(usize, String)], lost: &
             let over = |t: &str| OVER.contains(&t);
             // one glyph, or the glyphs of a big-symbol font (which pdftohtml
             // writes without spaces): the piece stays one
-            if extension[span.font] || found.len() == 1 {
+            // (one glyph: what pdftohtml wrote for it, if anything, is
+            // written over. But not by an arrow or a stroke, which is
+            // drawn over a letter: the ∇ under a lost arrow starts left
+            // of the piece and is not among its glyphs here)
+            if extension[span.font] || (found.len() == 1 && (span.text.trim().is_empty() || !over(&found[0].2))) {
                 let s = &mut page.lines[li].spans[si];
                 s.text = found.iter().filter(|f| f.1).map(|f| f.2.as_str()).collect();
                 if let [(at, _, t)] = found.as_slice() {

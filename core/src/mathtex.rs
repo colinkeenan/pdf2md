@@ -542,7 +542,13 @@ fn put_accents(mut spans: Vec<MSpan>) -> Vec<MSpan> {
         // the letter under it: overlapping its middle, same line
         let base = (0..spans.len())
             .filter(|&j| j != k && accent(&spans[j].text).is_none() && spans[j].atom.is_none())
-            .filter(|&j| spans[j].left <= mid && spans[j].right >= mid && (spans[j].top - a.top).abs() <= 0.5 * a.size)
+            // (an arrow or a stroke over a letter is given the height of its
+            // font's line, which starts well above the letter's box: it is
+            // over the letter it shares most of its height with)
+            .filter(|&j| {
+                let drawn_over = matches!(name, "vec" | "not") && a.top <= spans[j].top && a.bottom.min(spans[j].bottom) - spans[j].top >= 0.5 * (spans[j].bottom - spans[j].top);
+                spans[j].left <= mid && spans[j].right >= mid && ((spans[j].top - a.top).abs() <= 0.5 * a.size || drawn_over)
+            })
             .min_by(|&x, &y| (spans[x].left - a.left).abs().total_cmp(&(spans[y].left - a.left).abs()));
         let Some(j) = base else {
             k += 1;
@@ -1782,6 +1788,48 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
             .total_cmp(&b.left)
             .then((a.kind != Kind::Atom).cmp(&(b.kind != Kind::Atom)))
     });
+    // What is set under "lim" (N → ∞, centered under the word, so it
+    // starts left of it and ends right of it) is its index, all of it: not
+    // an index of what stands before, nor one half of it.
+    let mut k = 0;
+    while k < items.len() {
+        let word = items[k].tex.trim().to_string();
+        if items[k].kind != Kind::Atom || !["\\lim", "\\max", "\\min", "\\sup", "\\inf"].contains(&word.as_str()) {
+            k += 1;
+            continue;
+        }
+        let under = |j: usize, l: f32, r: f32| items[j].kind == Kind::Sub && items[j].left < r + 0.6 * max && items[j].right > l - 0.6 * max;
+        let mut take: Vec<usize> = (0..items.len()).filter(|&j| under(j, items[k].left + 0.6 * max, items[k].right - 0.6 * max)).collect();
+        if take.is_empty() {
+            k += 1;
+            continue;
+        }
+        // (and what goes on beside it at that height)
+        loop {
+            let (l, r) = take.iter().fold((f32::MAX, f32::MIN), |(l, r), &j| (l.min(items[j].left), r.max(items[j].right)));
+            let more: Vec<usize> = (0..items.len()).filter(|j| !take.contains(j) && under(*j, l, r)).collect();
+            if more.is_empty() {
+                break;
+            }
+            take.extend(more);
+        }
+        take.sort_by(|&a, &b| items[a].left.total_cmp(&items[b].left));
+        let src: Vec<usize> = take.iter().flat_map(|&j| items[j].src.iter().copied()).collect();
+        let index = if take.iter().all(|&j| !items[j].src.is_empty()) { build_at(&subset(spans, &src), depth + 1) } else { take.iter().map(|&j| items[j].tex.as_str()).collect::<Vec<_>>().join(" ") };
+        items[k].tex = format!("{word}_{{{index}}}");
+        items[k].left = take.iter().map(|&j| items[j].left).fold(items[k].left, f32::min);
+        items[k].right = take.iter().map(|&j| items[j].right).fold(items[k].right, f32::max);
+        let mut gone = take.clone();
+        gone.sort_unstable_by(|a, b| b.cmp(a));
+        for j in gone {
+            items.remove(j);
+            if j < k {
+                k -= 1;
+            }
+        }
+        k += 1;
+    }
+    items.sort_by(|a, b| a.left.total_cmp(&b.left).then((a.kind != Kind::Atom).cmp(&(b.kind != Kind::Atom))));
     let mut out: Vec<String> = Vec::new();
     let mut prev_right: Option<f32> = None;
     let mut i = 0;
