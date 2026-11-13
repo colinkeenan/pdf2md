@@ -4,7 +4,7 @@
 
 # Introduction
 
-<div align="right"><a href="book.pdf#page=6" target="_blank" title="This page in the PDF"><sup>[PDF p. 6]</sup></a></div>
+<div align="right"><a href="book.pdf#page=6" target="_blank" title="This page in the PDF"><sup>[p. v]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p1" href="book.pdf#page=7" target="_blank" title="This page in the PDF"><sup>[p. 1]</sup></a>
 

@@ -38,9 +38,12 @@ pub fn split_chapters(blks: Vec<Blk>, chapter_size: Option<f32>) -> Vec<Chapter>
         // (a title set in lines of its own, as on the title page of a
         // part, is written as it is set: in its lines, centered if it is)
         let set = text.iter().any(|i| matches!(i, crate::Inline::Break));
+        // (a title with a formula in it is written with the formula; its
+        // name, for the links to it and for its file, is in plain letters)
+        let math = text.iter().any(|i| matches!(i, crate::Inline::Math(_)));
         chapters.push(Chapter {
-            title: plain(text),
-            heading: if set { text.clone() } else { Vec::new() },
+            title: if math { plain_letters(text) } else { plain(text) },
+            heading: if set || math { text.clone() } else { Vec::new() },
             centered: set && b.centered,
             blocks: moved,
             ..Default::default()
@@ -57,6 +60,44 @@ pub fn split_chapters(blks: Vec<Blk>, chapter_size: Option<f32>) -> Vec<Chapter>
         }
     }
     chapters
+}
+
+/// A title in plain letters: a formula in it without its LaTeX commands
+/// ("Large $\\boldsymbol{N}$ Expansion" is "Large N Expansion").
+fn plain_letters(text: &[crate::Inline]) -> String {
+    // commands that say how a letter is set, not which letter it is
+    const SET: [&str; 14] = ["boldsymbol", "text", "mathrm", "mathbf", "mathcal", "mathit", "mathsf", "vec", "hat", "tilde", "bar", "left", "right", "quad"];
+    let mut out = String::new();
+    for i in text {
+        match i {
+            crate::Inline::Math(m) => {
+                let mut chars = m.chars().peekable();
+                out.push(' ');
+                while let Some(c) = chars.next() {
+                    match c {
+                        '\\' => {
+                            let mut name = String::new();
+                            while let Some(c) = chars.peek().filter(|c| c.is_ascii_alphabetic()) {
+                                name.push(*c);
+                                chars.next();
+                            }
+                            // (a Greek letter by its name: "sigma")
+                            out.push(' ');
+                            if !SET.contains(&name.as_str()) {
+                                out.push_str(&name);
+                            }
+                        }
+                        '{' | '}' => {}
+                        c => out.push(c),
+                    }
+                }
+                out.push(' ');
+            }
+            other => out.push_str(&plain(std::slice::from_ref(other))),
+        }
+    }
+    // ("SO (10)": a bracket closes up to the letters before it)
+    out.split_whitespace().collect::<Vec<_>>().join(" ").replace(" (", "(").replace("( ", "(")
 }
 
 pub fn slugify(s: &str) -> String {

@@ -31,6 +31,38 @@ pub fn is_page_number(t: &str) -> bool {
     is_arabic(t) || is_roman(t)
 }
 
+/// A page number's value, and whether it is in Roman numerals.
+fn number_of(label: &str) -> Option<(u32, bool)> {
+    if let Ok(n) = label.parse::<u32>() {
+        return Some((n, false));
+    }
+    if !is_roman(label) {
+        return None;
+    }
+    let value = |c: char| match c {
+        'i' => 1,
+        'v' => 5,
+        'x' => 10,
+        'l' => 50,
+        _ => 100,
+    };
+    let digits: Vec<u32> = label.chars().map(value).collect();
+    let n = digits.iter().enumerate().map(|(k, d)| if digits.get(k + 1).is_some_and(|next| next > d) { -(*d as i64) } else { *d as i64 }).sum::<i64>();
+    // (only a numeral written as it should be: "iiii" or "vx" is no number)
+    u32::try_from(n).ok().filter(|n| to_roman(*n) == label).map(|n| (n, true))
+}
+
+fn to_roman(mut n: u32) -> String {
+    let mut out = String::new();
+    for (value, numeral) in [(100, "c"), (90, "xc"), (50, "l"), (40, "xl"), (10, "x"), (9, "ix"), (5, "v"), (4, "iv"), (1, "i")] {
+        while n >= value {
+            out.push_str(numeral);
+            n -= value;
+        }
+    }
+    out
+}
+
 pub fn prepare(doc: &Doc) -> Vec<PageInfo> {
     let mut pages: Vec<PageInfo> = doc
         .pages
@@ -62,7 +94,15 @@ pub fn prepare(doc: &Doc) -> Vec<PageInfo> {
             // Footer: a lone page number near the bottom edge.
             if let Some(last) = lines.last() {
                 let text = plain_text(last);
-                if last.top > p.height * 0.88 && is_page_number(text.trim()) {
+                // (not a lone "i" or "v" at the foot of a page, the end of
+                // a formula, in the part of the book numbered in figures:
+                // the page before has such a number in its running head)
+                let figures_before = index > 0
+                    && doc.pages[index - 1].lines.first().is_some_and(|h| {
+                        let head = plain_text(h);
+                        h.top < p.height * 0.09 && [head.split_whitespace().next(), head.split_whitespace().last()].into_iter().flatten().any(is_arabic)
+                    });
+                if last.top > p.height * 0.88 && is_page_number(text.trim()) && !(is_roman(text.trim()) && figures_before) {
                     label.get_or_insert(text.trim().to_string());
                     lines.pop();
                 }
@@ -72,20 +112,29 @@ pub fn prepare(doc: &Doc) -> Vec<PageInfo> {
         })
         .collect();
 
-    // A page without a number between numbered pages: count on from the
-    // previous one.
+    // The pages before the first page numbered in figures, back to page 1
+    // (a part's title page, an empty page and the page the first chapter
+    // opens on come after pages in Roman numerals): count back.
+    for i in (0..pages.len().saturating_sub(1)).rev() {
+        if pages[i].label.is_some() {
+            continue;
+        }
+        if let Some((n, false)) = pages[i + 1].label.as_deref().and_then(number_of).filter(|(n, _)| *n > 1) {
+            pages[i].label = Some((n - 1).to_string());
+        }
+    }
+    // A page without a number after a numbered page (the page a chapter
+    // opens on has no running head): count on from the page before, in
+    // figures or in Roman numerals as that one is numbered.
     for i in 1..pages.len() {
         if pages[i].label.is_some() {
             continue;
         }
-        if let Some(n) = pages[i - 1].label.as_ref().and_then(|l| l.parse::<u32>().ok()) {
-            let next_ok = pages
-                .get(i + 1)
-                .and_then(|p| p.label.as_ref())
-                .is_none_or(|l| l.parse::<u32>().ok() == Some(n + 2));
-            if next_ok {
-                pages[i].label = Some((n + 1).to_string());
-            }
+        let Some((n, roman)) = pages[i - 1].label.as_deref().and_then(number_of) else { continue };
+        let next_ok = pages.get(i + 1).and_then(|p| p.label.as_deref()).is_none_or(|l| number_of(l) == Some((n + 2, roman)) || (roman && number_of(l) == Some((1, false))));
+        // (after the last page in Roman numerals comes page 1)
+        if next_ok {
+            pages[i].label = Some(if roman { to_roman(n + 1) } else { (n + 1).to_string() });
         }
     }
     pages
@@ -127,6 +176,19 @@ fn split_columns(doc: &Doc, lines: Vec<Line>, width: f32) -> Vec<Line> {
         return lines;
     }
     let gutter = best_xs[best_xs.len() / 2];
+    // Titles at the left and their page numbers at the right margin (a
+    // table of contents without dots between them) are lines, not columns.
+    let (mut both, mut numbers) = (0, 0);
+    for l in &lines {
+        let right: Vec<&str> = l.spans.iter().filter(|s| s.left >= gutter).map(|s| s.text.trim()).collect();
+        if !right.is_empty() && l.spans.iter().any(|s| s.right() <= gutter) {
+            both += 1;
+            numbers += usize::from(right.len() == 1 && is_page_number(right[0]));
+        }
+    }
+    if numbers * 5 >= both * 4 {
+        return lines;
+    }
     let size_of = |s: &crate::layout::Span| doc.size_of(s);
     let mut left_col = Vec::new();
     let mut right_col = Vec::new();
@@ -145,4 +207,17 @@ fn split_columns(doc: &Doc, lines: Vec<Line>, width: f32) -> Vec<Line> {
     }
     left_col.extend(right_col);
     left_col
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn roman_numbers() {
+        assert_eq!(number_of("xxiv"), Some((24, true)));
+        assert_eq!(number_of("17"), Some((17, false)));
+        assert_eq!(number_of("vx"), None);
+        assert_eq!(to_roman(29), "xxix");
+    }
 }

@@ -800,6 +800,9 @@ fn take_figure_labels(doc: &mut Doc) {
             // Nor is a frame or rule drawn around a title (the boxed number
             // and the line under a chapter's title): the labels of a drawing
             // are never words set clearly larger than the book's text.
+            // (or a number of a part alone in its frame, "II", beside the title)
+            let sizes = &doc.fonts;
+            let large = |s: &Span| sizes.get(s.font).map_or(s.height, |f| f.size) >= 1.3 * m;
             let titled = page.lines.iter().any(|line| {
                 line.size >= 1.3 * m
                     && line.top >= t
@@ -807,6 +810,8 @@ fn take_figure_labels(doc: &mut Doc) {
                     && line.left >= l
                     && line.right <= r
                     && line.spans.iter().any(|s| s.text.split_whitespace().any(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 3))
+            }) || page.lines.iter().flat_map(|line| line.spans.iter()).any(|s| {
+                large(s) && s.left >= f.left - 1.0 && s.right() <= f.right + 1.0 && s.top >= f.top - 0.5 * s.height && s.bottom() <= f.bottom + 0.5 * s.height && s.text.trim().chars().all(|c| "IVXLN0123456789".contains(c)) && !s.text.trim().is_empty()
             });
             prose <= 3 && !titled
         });

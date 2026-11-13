@@ -43,6 +43,10 @@ A^{T} & = & \text{transposed} \\
 \end{array}
 ```
 
+<div align="right"><a href="book.pdf#page=5" target="_blank" title="This page in the PDF"><sup>[p. iv]</sup></a></div>
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
+<a id="pv" href="book.pdf#page=6" target="_blank" title="This page in the PDF"><sup>[p. v]</sup></a>
+
 <div align="center">
 
 ## <a id="s-lecture-course-491-advanced-quantum-theory-f-j-dyson-fall-semester-1951"></a>Lecture Course 491 — Advanced Quantum Theory F. J. Dyson — Fall Semester 1951

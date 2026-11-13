@@ -117,8 +117,9 @@ This is the path for a PDF made with TeX, where the math is text in math fonts. 
 
 ### Pages and chapters
 
-* **Printed page numbers** come from the running head ("THE DIRAC THEORY 6") or from a lone number at the foot of the page.
-* **Chapters** start at headings in the chapter-title size: the most common large size that holds real words.
+* **Printed page numbers** come from the running head ("THE DIRAC THEORY 6") or from a lone number at the foot of the page. A page without one (the page a chapter opens on, an empty page) counts on from the page before, in figures or in Roman numerals, and the pages before the first numbered one count back to page 1.
+* **Chapters** start at headings in the chapter-title size: the most common large size that holds real words. Where chapters are numbered within parts ("IV.2"), that number's size is the chapter size, and a page that opens well down with a larger title than the sections' ("Preface", "Part I", "Appendix A") opens a file too. A frame or rule drawn around a title or its number is not a picture.
+* **The contents** are read as lines "title … page", with dots between or with the number at the right margin. The name of a part, in larger type and without a page, is an entry of its own.
 * **Section headings** are short lines that are wholly italic or bold with space above, or short plain lines with space above and below. Contents entries are matched to headings on the page they name, also when the wording differs a little. An italic line that starts with a small letter is not a heading. Nor is a line that leads straight into a displayed formula ("This can be rewritten as"), unless it is a styled title of a word or two.
 * **Heading levels.** In a book without section numbers, the indentation in the contents decides `##` or `###`, and a heading the contents do not list goes by its type size. In a book that numbers its sections, the number decides: `1.3` is `#` and `1.3.1` is `##`, or one level deeper each where the chapter titles are at least a quarter larger than the `1.3` headings. An unnumbered heading takes the level of the numbered headings of its size.
 

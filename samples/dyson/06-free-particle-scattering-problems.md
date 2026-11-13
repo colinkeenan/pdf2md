@@ -858,7 +858,7 @@ For slowly-moving electrons and positrons with relative velocity $`v`$, the anni
 4 \pi r_{o}^{2} \left( \frac{c}{v} \right) \quad \text{ singlet state } , \qquad \text{(480)}
 ```
 
-proportional to 1 just like neutron cross-sections at low (thermal) energies.
+proportional to $`\frac{1}{v}`$ just like neutron cross-sections at low (thermal) energies.
 
 <div align="right"><a href="book.pdf#page=97" target="_blank" title="This page in the PDF"><sup>[p. 91]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">

@@ -1760,6 +1760,7 @@ impl Builder<'_> {
         self.anchor_block();
         let mut entries: Vec<TocEntry> = Vec::new();
         let mut pending: Vec<Inline> = Vec::new();
+        let mut pending_left: Option<f32> = None;
         for l in lines {
             let text = plain_text(l);
             if is_contents_title(&text) {
@@ -1781,8 +1782,22 @@ impl Builder<'_> {
                 }
                 None => match link_target(l) {
                     Some(target) => target,
+                    // the name of a part, in larger type and without a
+                    // page: an entry of its own (its number set once more
+                    // in a frame before it, "II Part II: …", is not said twice)
+                    None if l.size >= 1.15 * self.st.body && pending.is_empty() => {
+                        let mut words = text.split_whitespace();
+                        let framed = matches!((words.next(), words.next(), words.next()), (Some(n), Some("Part"), Some(again)) if n == again.trim_end_matches(':'));
+                        let title = if framed { vec![Inline::Text(text.split_once(char::is_whitespace).map_or("", |(_, rest)| rest).trim().to_string())] } else { tidy(inl) };
+                        entries.push(TocEntry { title, page: String::new(), left: l.left, size: l.size, columns: false, number: String::new(), label: Vec::new(), part: false });
+                        continue;
+                    }
                     None => {
-                        // a title that wraps onto the next line
+                        // a title that wraps onto the next line (the entry
+                        // stands where its first line starts)
+                        if pending.is_empty() {
+                            pending_left = Some(l.left);
+                        }
                         pending.extend(inl);
                         push_text(&mut pending, " ");
                         continue;
@@ -1805,8 +1820,9 @@ impl Builder<'_> {
             let mut title = std::mem::take(&mut pending);
             title.extend(inl);
             let title = tidy(title);
+            let left = pending_left.take().unwrap_or(l.left);
             if !title.is_empty() {
-                entries.push(TocEntry { title, page, left: l.left, size: l.size, columns: false, number: String::new(), label: Vec::new(), part: false });
+                entries.push(TocEntry { title, page, left, size: l.size, columns: false, number: String::new(), label: Vec::new(), part: false });
             }
         }
         // (each page of the contents keeps its entries: the page marks
