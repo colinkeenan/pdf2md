@@ -930,6 +930,21 @@ fn chapter_body(book: &Book, i: usize) -> String {
             let n = foot.pop_front().unwrap();
             render_note(n, &format!("{}.", n.label), &mut s);
         }
+        // A page that turns between the entries of a list, before an entry
+        // set in from the margin (the chapters of a part, in the contents):
+        // the marker goes onto the entry before it, as for a page without
+        // a number below. A bar on lines of its own would end the list,
+        // and the entries after it would start a new one at the margin.
+        if let (true, crate::Block::Anchor(id)) = (in_list, &b.block) {
+            let next = ch.blocks[bi + 1..].iter().find(|b| !matches!(b.block, crate::Block::Anchor(_)));
+            if let (Some(l), Some(Block::Item { level, .. })) = (page_label(id), next.map(|b| &b.block)) {
+                if *level > 0 {
+                    let approx = if crate::page_is_approx(id) { "≈" } else { "" };
+                    s.push_str(&page_mark_in_list(id, "", &format!("{approx}p. {l}")));
+                    continue;
+                }
+            }
+        }
         let neutral = matches!(b.block, crate::Block::Anchor(_));
         if !neutral && unnumbered.remove(&b.page) {
             let n = book.pdf_pages[b.page];
