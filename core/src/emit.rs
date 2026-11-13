@@ -403,7 +403,7 @@ fn page_mark_inline(id: &str, label: &str) -> String {
 /// (`attrs`: what else the marker's `<a>` holds, each with a blank before it.)
 fn page_mark_span(id: &str, attrs: &str, label: &str) -> String {
     format!(
-        "<span class=\"page\" style=\"float:left;width:100%;margin:0.4em 0 0.6em\"><span style=\"display:block;height:2px;background:currentColor;opacity:0.25\"></span><a id=\"{id}\"{attrs}><sup>[{label}]</sup></a></span>"
+        "<span class=\"page\" style=\"float:left;width:100%;margin:0.4em 0 0.6em\">{BAR_SPAN}<a id=\"{id}\"{attrs}><sup>[{label}]</sup></a></span>"
     )
 }
 
@@ -446,6 +446,68 @@ fn link_pages(text: &str, book: &Book) -> String {
         if let (true, Some(n)) = (rest.starts_with("><sup>["), book.pdf_of.get(id)) {
             out.push_str(&pdf_link(*n));
         }
+    }
+    out.push_str(rest);
+    out
+}
+
+/// The bar of the page marker written into a paragraph (see `page_mark_span`).
+const BAR_SPAN: &str = "<span style=\"display:block;height:2px;background:currentColor;opacity:0.25\"></span>";
+
+/// Above every page bar, at the right, the marker of the page that ends
+/// there: with the marker of the page that begins, under the bar at the
+/// left, a reader who has one bar in the window sees both pages named,
+/// each a link to its page of the PDF. (Only the marker under the bar
+/// has the page's anchor.)
+fn page_ends(text: &str, book: &Book) -> String {
+    const OPEN: &str = "<a id=\"";
+    let mut out = String::with_capacity(text.len() + text.len() / 16);
+    let mut rest = text;
+    // the marker before this one in the text: (label, link)
+    let mut last: Option<(String, String)> = None;
+    while let Some(i) = rest.find(OPEN) {
+        out.push_str(&rest[..i]);
+        rest = &rest[i..];
+        let tag_end = rest.find('>').unwrap_or(rest.len() - 1);
+        let tag = &rest[..=tag_end];
+        let id = tag[OPEN.len()..].split('"').next().unwrap_or("");
+        let unnumbered = id.strip_prefix("pdf-p").and_then(|n| n.parse::<u32>().ok());
+        let label = rest[tag_end + 1..].strip_prefix("<sup>[").and_then(|l| l.split_once(']')).map(|(l, _)| l);
+        let (Some(label), true) = (label, unnumbered.is_some() || page_label(id).is_some()) else {
+            out.push_str(tag);
+            rest = &rest[tag_end + 1..];
+            continue;
+        };
+        let link = tag.find(" href=").map_or(String::new(), |h| tag[h..tag.len() - 1].to_string());
+        // The page before it in the PDF, where the printed pages are the
+        // PDF's pages; else the page of the marker before this one, or
+        // the number before this one.
+        let sheet = unnumbered.or_else(|| book.pdf_of.get(id).copied()).and_then(|n| book.pdf_pages.iter().position(|p| *p == n));
+        let by_sheet = sheet.filter(|&k| unnumbered.is_some() || book.labels.get(k).and_then(|l| l.as_deref()) == page_label(id));
+        let before = match by_sheet {
+            Some(0) => None,
+            Some(k) => {
+                let n = book.pdf_pages[k - 1];
+                let label = book.labels.get(k - 1).and_then(|l| l.as_ref()).map_or(format!("PDF p. {n}"), |l| format!("p. {l}"));
+                Some((label, if book.source.is_some() { pdf_link(n) } else { String::new() }))
+            }
+            None => last.clone().or_else(|| {
+                let n: u32 = page_label(id)?.parse().ok()?;
+                let l = n.checked_sub(1).filter(|l| *l > 0)?;
+                Some((format!("p. {l}"), book.pdf_of.get(&format!("p{l}")).filter(|_| book.source.is_some()).map_or(String::new(), |n| pdf_link(*n))))
+            }),
+        };
+        if let Some((label, link)) = before {
+            let mark = if link.is_empty() { format!("<sup>[{label}]</sup>") } else { format!("<a{link}><sup>[{label}]</sup></a>") };
+            if out.ends_with(&format!("{PAGE_BAR}\n")) {
+                out.insert_str(out.len() - PAGE_BAR.len() - 1, &format!("<div align=\"right\">{mark}</div>\n"));
+            } else if out.ends_with(BAR_SPAN) {
+                out.insert_str(out.len() - BAR_SPAN.len(), &format!("<span style=\"display:block;text-align:right\">{mark}</span>"));
+            }
+        }
+        last = Some((label.to_string(), link));
+        out.push_str(tag);
+        rest = &rest[tag_end + 1..];
     }
     out.push_str(rest);
     out
@@ -746,10 +808,10 @@ pub fn chapter_markdown(book: &Book, i: usize) -> String {
         let n = &book.chapters[i + 1];
         nav.push(format!("[{} →]({}.md)", n.title, n.slug));
     }
+    // the way to the files before and after: at the top and at the bottom
     if !nav.is_empty() {
-        s.push_str("---\n\n");
-        s.push_str(&nav.join(" · "));
-        s.push('\n');
+        let nav = nav.join(" · ");
+        s = format!("{nav}\n\n---\n\n{s}---\n\n{nav}\n");
     }
     s
 }
@@ -977,7 +1039,7 @@ fn chapter_body(book: &Book, i: usize) -> String {
             render_note(n, &n.label, &mut s);
         }
     }
-    link_pages(&s, book)
+    page_ends(&link_pages(&s, book), book)
 }
 
 /// Write one `<slug>.md` per chapter into `dir` (plus `unplaced-notes.md`
@@ -1251,9 +1313,12 @@ mod tests {
         });
         let out = chapter_body(&book, 0);
         let attrs = " target=\"_blank\" title=\"This page in the PDF\"";
-        assert!(out.starts_with("# T\n\nA Book\n\n<hr class=\"page\""), "{out}");
+        // above the bar, at the right, the page that ends there
+        let ends = |n: u32| format!("<a href=\"book.pdf#page={n}\"{attrs}><sup>[PDF p. {n}]</sup></a>");
+        assert!(out.starts_with(&format!("# T\n\nA Book\n\n<div align=\"right\">{}</div>\n<hr class=\"page\"", ends(4))), "{out}");
         assert_eq!(out.matches(&format!("<a id=\"pdf-p5\" href=\"book.pdf#page=5\"{attrs}><sup>[PDF p. 5]</sup></a>\n\nword")).count(), 1, "{out}");
-        assert_eq!(out.matches("[PDF p.").count(), 1, "{out}");
+        assert_eq!(out.matches("<sup>[PDF p. 5]").count(), 2, "{out}");
+        assert!(out.contains(&format!("<span style=\"display:block;text-align:right\">{}</span>{BAR_SPAN}<a id=\"p1\"", ends(5))), "{out}");
         assert!(out.contains(&format!("<a id=\"p1\" href=\"book.pdf#page=6\"{attrs}><sup>[p. 1]</sup></a></span>here.")), "{out}");
         assert!(out.contains("<a id=\"pdf-page-9\"></a>"), "{out}");
         // no PDF to open: markers as they were

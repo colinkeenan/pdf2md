@@ -1,5 +1,10 @@
+[← Typist’s Afterword](09-typist-s-afterword.md)
+
+---
+
 # Index
 
+<div align="right"><a href="book.pdf#page=145" target="_blank" title="This page in the PDF"><sup>[p. 139]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p140" href="book.pdf#page=146" target="_blank" title="This page in the PDF"><sup>[p. 140]</sup></a>
 
@@ -86,6 +91,7 @@
 </td>
 </tr></table>
 
+<div align="right"><a href="book.pdf#page=146" target="_blank" title="This page in the PDF"><sup>[p. 140]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p141" href="book.pdf#page=147" target="_blank" title="This page in the PDF"><sup>[p. 141]</sup></a>
 
@@ -188,6 +194,7 @@
 </td>
 </tr></table>
 
+<div align="right"><a href="book.pdf#page=147" target="_blank" title="This page in the PDF"><sup>[p. 141]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p142" href="book.pdf#page=148" target="_blank" title="This page in the PDF"><sup>[p. 142]</sup></a>
 
@@ -285,6 +292,7 @@
 </td>
 </tr></table>
 
+<div align="right"><a href="book.pdf#page=148" target="_blank" title="This page in the PDF"><sup>[p. 142]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p143" href="book.pdf#page=149" target="_blank" title="This page in the PDF"><sup>[p. 143]</sup></a>
 

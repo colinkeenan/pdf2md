@@ -1,3 +1,7 @@
+[Table of Contents →](00b-table-of-contents.md)
+
+---
+
 # Front Matter
 
 <div align="center">
@@ -10,6 +14,7 @@
 
 **Second Edition**
 
+<div align="right"><a href="book.pdf#page=1" target="_blank" title="This page in the PDF"><sup>[PDF p. 1]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="pi" href="book.pdf#page=2" target="_blank" title="This page in the PDF"><sup>[p. i]</sup></a>
 

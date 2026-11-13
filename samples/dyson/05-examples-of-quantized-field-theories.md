@@ -1,5 +1,10 @@
+[← Field Theory](04-field-theory.md) · [Free Particle Scattering Problems →](06-free-particle-scattering-problems.md)
+
+---
+
 # Examples of Quantized Field Theories
 
+<div align="right"><a href="book.pdf#page=46" target="_blank" title="This page in the PDF"><sup>[p. 40]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p41" href="book.pdf#page=47" target="_blank" title="This page in the PDF"><sup>[p. 41]</sup></a>
 
@@ -73,6 +78,7 @@ In the same way
 \delta_{\mathcal{R}} A_{\lambda} ( y ) = \delta_{\lambda \mu} D_{A} ( z - y ) = \delta_{\lambda \mu} D_{R} ( y - z ) \qquad \text{(202)}
 ```
 
+<div align="right"><a href="book.pdf#page=47" target="_blank" title="This page in the PDF"><sup>[p. 41]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p42" href="book.pdf#page=48" target="_blank" title="This page in the PDF"><sup>[p. 42]</sup></a>
 
@@ -152,6 +158,7 @@ with a contour $`s`$ as shown.
 
 _Figure 2 (p. 42)_
 
+<div align="right"><a href="book.pdf#page=48" target="_blank" title="This page in the PDF"><sup>[p. 42]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p43" href="book.pdf#page=49" target="_blank" title="This page in the PDF"><sup>[p. 43]</sup></a>
 
@@ -244,6 +251,7 @@ $`\tilde{a}_{k\mu} = a_{k\mu}^{*}`$ = Hermitian conjugate of $`a_{k\mu} , \quad 
 \tilde{a}_{k 4} = - a_{k 4}^{*} = - \text{ Hermitian conjugate of } a_{k 4} \qquad \text{(212)}
 ```
 
+<div align="right"><a href="book.pdf#page=49" target="_blank" title="This page in the PDF"><sup>[p. 43]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p44" href="book.pdf#page=50" target="_blank" title="This page in the PDF"><sup>[p. 44]</sup></a>
 
@@ -321,6 +329,7 @@ the condition imposed in order to simplify the Maxwell equations to the simple f
 \sum_{\mu} \frac{\partial A_{\mu}}{\partial x_{\mu}} \Psi = 0
 ```
 
+<div align="right"><a href="book.pdf#page=50" target="_blank" title="This page in the PDF"><sup>[p. 44]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p45" href="book.pdf#page=51" target="_blank" title="This page in the PDF"><sup>[p. 45]</sup></a>
 
@@ -394,6 +403,7 @@ Given any operator $`\mathcal{Q}`$, we are interested in the “vacuum expectati
 \langle Q \rangle_{o} = ( \Psi_{o}^{*} , \mathcal{Q} \Psi_{o} ) \qquad \text{(218)}
 ```
 
+<div align="right"><a href="book.pdf#page=51" target="_blank" title="This page in the PDF"><sup>[p. 45]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p46" href="book.pdf#page=52" target="_blank" title="This page in the PDF"><sup>[p. 46]</sup></a>
 
@@ -509,6 +519,7 @@ D^{( 1 )} ( x ) = \frac{1}{( 2 \pi )^{3}} \int e^{ik \cdot x} \delta ( k^{2} ) d
 = \frac{1}{2 \pi^{2}} \frac{1}{| \boldsymbol{x} |} \int_{0}^{\infty} \sin ( | \boldsymbol{k} || \boldsymbol{x} | ) \cos ( | \boldsymbol{k} | x_{0} ) d | \boldsymbol{k} | = \frac{1}{2 \pi^{2}} \frac{1}{2 | \boldsymbol{x} |} \int_{0}^{\infty} d | \boldsymbol{k} |\{ \sin ( ( | \boldsymbol{x} | + x_{0} ) | \boldsymbol{k} | ) + \sin ( ( | \boldsymbol{x} |- x_{0} ) | \boldsymbol{k} | ) \}
 ```
 
+<div align="right"><a href="book.pdf#page=52" target="_blank" title="This page in the PDF"><sup>[p. 46]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p47" href="book.pdf#page=53" target="_blank" title="This page in the PDF"><sup>[p. 47]</sup></a>
 
@@ -574,6 +585,7 @@ The interaction with the Maxwell field has matrix element<sup><a id="fnref-27" h
 I = - \frac{1}{c} \int \sum_{\mu} j_{\mu A} ( r,t ) \langle A_{\mu} ( r,t ) \rangle_{\text{ emit }} d^{3} \boldsymbol{r} \qquad \text{(230)}
 ```
 
+<div align="right"><a href="book.pdf#page=53" target="_blank" title="This page in the PDF"><sup>[p. 47]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p48" href="book.pdf#page=54" target="_blank" title="This page in the PDF"><sup>[p. 48]</sup></a>
 
@@ -635,6 +647,7 @@ and so
 \begin{aligned} \sum_{\mu} j_{\mu A} ( k ) \tilde{j}_{\mu A} ( k ) &= \frac{1}{q^{2}} qj_{4 A} q \tilde{j}_{4 A} + \sum_{i}^{3} | j_{iA} ( k ) |^{2} = - \frac{1}{q^{2}} \sum_{i,\ell = 1}^{3} \left\{ k_{i} j_{iA} ( k ) k_{\ell} \tilde{j}_{\ell A} ( k ) \right\} + \sum_{i}^{3} | j_{iA} ( k ) |^{2} \\ &= - \frac{1}{q^{2}} | \boldsymbol{k} |^{2} | \boldsymbol{j}_{A} |^{2} \cos^{2} \theta + | \boldsymbol{j}_{A} |^{2} = | \boldsymbol{j}_{A} |^{2} ( 1 - \cos^{2} \theta ) = | j_{1 A} |^{2} + | j_{2 A} |^{2} \end{aligned} \qquad \text{(232a)}
 ```
 
+<div align="right"><a href="book.pdf#page=54" target="_blank" title="This page in the PDF"><sup>[p. 48]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p49" href="book.pdf#page=55" target="_blank" title="This page in the PDF"><sup>[p. 49]</sup></a>
 
@@ -700,7 +713,7 @@ To derive $`H`$ from the Lagrangian is also possible but much more tedious. From
 N_{k\lambda} = \tilde{a}_{k\lambda} a_{k\lambda} \quad ( \text{ not summed } )
 ```
 
-is an operator just representing the number of quanta in the frequency $`k`$ and polarization $`\lambda`$. It follows at once from the commutation rules (213), from the singular $`\delta`$-function factor which comes from the continuous spectrum, $`N_{k\lambda}`$ being in fact the number of quanta per unit frequency range, that $`\int N_{k\lambda} d^{3} \boldsymbol{k}`$ integrated over _any_ region of momentum-space has the integer eigenvalues 0, 1, 2, $`\dots`$ . This is so, because the state with<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p50" href="book.pdf#page=56" target="_blank" title="This page in the PDF"><sup>[p. 50]</sup></a></span> $`n_{i}`$ particles with <a id="ix-210">momentum</a> $`k_{i}`$ is Ψ = $`\prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}}`$Ψ$`o`$. Then taking $`\int_{\Omega} N_{k\lambda} d^{3} \boldsymbol{k}`$ over Ω including the momenta $`k_{1} ,k_{2} ,\dots ,k_{j}`$ we get
+is an operator just representing the number of quanta in the frequency $`k`$ and polarization $`\lambda`$. It follows at once from the commutation rules (213), from the singular $`\delta`$-function factor which comes from the continuous spectrum, $`N_{k\lambda}`$ being in fact the number of quanta per unit frequency range, that $`\int N_{k\lambda} d^{3} \boldsymbol{k}`$ integrated over _any_ region of momentum-space has the integer eigenvalues 0, 1, 2, $`\dots`$ . This is so, because the state with<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=55" target="_blank" title="This page in the PDF"><sup>[p. 49]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p50" href="book.pdf#page=56" target="_blank" title="This page in the PDF"><sup>[p. 50]</sup></a></span> $`n_{i}`$ particles with <a id="ix-210">momentum</a> $`k_{i}`$ is Ψ = $`\prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}}`$Ψ$`o`$. Then taking $`\int_{\Omega} N_{k\lambda} d^{3} \boldsymbol{k}`$ over Ω including the momenta $`k_{1} ,k_{2} ,\dots ,k_{j}`$ we get
 
 ```math
 \int_{\Omega} N_{k\lambda} d^{3} \boldsymbol{k} \Psi = \int_{\Omega} \tilde{a}_{k\lambda} a_{k\lambda} \prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}} \Psi_{o} d^{3} \boldsymbol{k}
@@ -736,6 +749,7 @@ averaged over some finite space-volume $`V`$ and also over a time $`T`$. Let $`V
 \begin{aligned} \left\langle \{ H_{1} ( VT ) \}^{2} \right\rangle_{o} &= \frac{1}{V^{2} T^{2}} \int \int d\tau d\tau^{\prime} dtdt^{\prime} \left\langle \left( \frac{\partial}{\partial x_{2}} A_{3} - \frac{\partial}{\partial x_{3}} A_{2} \right) \left( \frac{\partial}{\partial x_{2}^{\prime}} A_{3}^{\prime} - \frac{\partial}{\partial x_{3}^{\prime}} A_{2}^{\prime} \right) \right\rangle_{o} \\ &= \frac{1}{V^{2} T^{2}} \frac{\hbar c}{2} \int \int d\tau d\tau^{\prime} dtdt^{\prime} \left( \frac{\partial}{\partial x_{2}} \frac{\partial}{\partial x_{2}^{\prime}} + \frac{\partial}{\partial x_{3}} \frac{\partial}{\partial x_{3}^{\prime}} \right) D^{( 1 )} ( x - x^{\prime} ) \quad \text{ using } ( 2 2 5 ) \\ &= \frac{1}{V^{2} T^{2}} \frac{\hbar c}{1 6 \pi^{3}} \int \int d\tau d\tau^{\prime} dtdt^{\prime} \left( \frac{\partial}{\partial x_{2}} \frac{\partial}{\partial x_{2}^{\prime}} + \frac{\partial}{\partial x_{3}} \frac{\partial}{\partial x_{3}^{\prime}} \right) \int d^{4} ke^{ik \cdot ( x - x^{\prime} )} \delta ( k^{2} ) \text{ using } ( 2 2 6 ) \\ &= \frac{\hbar c}{1 6 \pi^{3} V^{2} T^{2}} \int_{0}^{T} \int_{0}^{T} \int \frac{d^{3} \boldsymbol{k}}{| \boldsymbol{k} |} ( k_{2}^{2} + k_{3}^{2} ) | V ( k ) |^{2} e^{i | \boldsymbol{k} | x_{0}} e^{- i | \boldsymbol{k} | x_{0}^{\prime}} dtdt^{\prime} \\ &= \frac{\hbar c}{1 6 \pi^{3} V^{2} T^{2}} \int \frac{d^{3} \boldsymbol{k}}{| \boldsymbol{k} |} ( k_{2}^{2} + k_{3}^{2} ) | V ( k ) |^{2} \frac{4 \sin^{2} ( \tfrac{1}{2} c | \boldsymbol{k} T )}{c^{2} | \boldsymbol{k} |^{2}} \\ \left\langle \{ E_{1} ( VT ) \}^{2} \right\rangle_{o} &= \frac{1}{V^{2} T^{2}} \frac{\hbar c}{2} \int \int d\tau d\tau^{\prime} dtdt^{\prime} \left( - \frac{\partial}{\partial x_{4}} \frac{\partial}{\partial x_{4}^{\prime}} - \frac{\partial}{\partial x_{1}} \frac{\partial}{\partial x_{1}^{\prime}} \right) D^{( 1 )} ( x - x^{\prime} ) \\ &= \frac{\hbar c}{1 6 \pi^{3} V^{2} T^{2}} \int \frac{d^{3} \boldsymbol{k}}{| \boldsymbol{k} |} ( | \boldsymbol{k} |^{2} - k_{1}^{2} ) | V ( k ) |^{2} \frac{4 \sin^{2} ( \tfrac{1}{2} c | \boldsymbol{k} T )}{c^{2} | \boldsymbol{k} |^{2}} = \left\langle \{ H_{1} ( VT ) \}^{2} \right\rangle_{o} \end{aligned} \qquad \text{(236)}
 ```
 
+<div align="right"><a href="book.pdf#page=56" target="_blank" title="This page in the PDF"><sup>[p. 50]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p51" href="book.pdf#page=57" target="_blank" title="This page in the PDF"><sup>[p. 51]</sup></a>
 
@@ -801,6 +815,7 @@ because $`\langle \delta \boldsymbol{r} \cdot \nabla V ( r ) \rangle_{o}`$ = 0, 
 \begin{aligned} \Delta E &= \int \psi^{*} \delta V\psi d\tau = \tfrac{1}{2} \left\langle r_{1}^{2} \right\rangle_{o} e^{2} | \psi ( 0 ) |^{2} \\ &= \begin{cases} \frac{e^{4} \hbar}{1 2 \pi^{2} m^{2} c^{3}} \log \left( \frac{1}{RK_{H}} \right) \frac{1}{\pi n^{3} a_{o}^{3}} & \text{ for s } - \text{ states } \\ 0 & \text{ for all others } \end{cases} \end{aligned} \qquad \text{(239)}
 ```
 
+<div align="right"><a href="book.pdf#page=57" target="_blank" title="This page in the PDF"><sup>[p. 51]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p52" href="book.pdf#page=58" target="_blank" title="This page in the PDF"><sup>[p. 52]</sup></a>
 
@@ -860,6 +875,7 @@ So we make a theory now which treats the atom non-relativistically, but takes ac
 
 For this sort of calculation it is always convenient to work in a special representation called the _Inter-_ _action Representation_.
 
+<div align="right"><a href="book.pdf#page=58" target="_blank" title="This page in the PDF"><sup>[p. 52]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p53" href="book.pdf#page=59" target="_blank" title="This page in the PDF"><sup>[p. 53]</sup></a>
 
@@ -945,6 +961,7 @@ These operators $`j_{\mu} ( r,t )`$ and $`A_{\mu} ( r,t )`$ have precisely the t
 
 i. e., the time variation of $`A_{\mu} ( r,t )`$ is the same as that of $`A_{\mu} ( x )`$ in the Heisenberg representation without interaction (see (190a)), which in turn leads to the field equations (197). Matrix elements of IR operators given by (246), (248) or (249) between IR wave-functions given by (244) are of course the same as the matrix elements which would be obtained in any other representation.
 
+<div align="right"><a href="book.pdf#page=59" target="_blank" title="This page in the PDF"><sup>[p. 53]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p54" href="book.pdf#page=60" target="_blank" title="This page in the PDF"><sup>[p. 54]</sup></a>
 
@@ -1006,6 +1023,7 @@ Hence we have
 \frac{1}{a ( t )} \frac{d}{dt} a ( t ) = - \frac{1}{\hbar} \int_{-\infty}^{t} dt^{\prime} \{ \Phi_{o}^{*} H_{I} ( t ) H_{I} ( t^{\prime} ) \Phi_{o} \} \qquad \text{(253)}
 ```
 
+<div align="right"><a href="book.pdf#page=60" target="_blank" title="This page in the PDF"><sup>[p. 54]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p55" href="book.pdf#page=61" target="_blank" title="This page in the PDF"><sup>[p. 55]</sup></a>
 
@@ -1095,6 +1113,7 @@ The state Φ$`o`$, as a result of the perturbation by the radiation <a id="ix-19
 | a ( t ) |^{2} = e^{- \Gamma ( t - t_{o} )} \quad ( 2 6 3 / a )
 ```
 
+<div align="right"><a href="book.pdf#page=61" target="_blank" title="This page in the PDF"><sup>[p. 55]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p56" href="book.pdf#page=62" target="_blank" title="This page in the PDF"><sup>[p. 56]</sup></a>
 
@@ -1164,6 +1183,7 @@ This formula for P(k) gives the natural shape of a spectral line. The maximum in
 \hbar c | \boldsymbol{k} | = ( E_{o} + \Delta E_{o} ) - ( E_{n} + \Delta E_{n} ) \qquad \text{(270)}
 ```
 
+<div align="right"><a href="book.pdf#page=62" target="_blank" title="This page in the PDF"><sup>[p. 56]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p57" href="book.pdf#page=63" target="_blank" title="This page in the PDF"><sup>[p. 57]</sup></a>
 
@@ -1231,6 +1251,7 @@ is a small correction to the kinetic energy, which would be produced by an incre
 \delta m = \frac{1}{3 \pi^{2}} \frac{e^{2}}{c^{2}} \int_{0}^{\infty} d | \boldsymbol{k} | \qquad \text{(275)}
 ```
 
+<div align="right"><a href="book.pdf#page=63" target="_blank" title="This page in the PDF"><sup>[p. 57]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p58" href="book.pdf#page=64" target="_blank" title="This page in the PDF"><sup>[p. 58]</sup></a>
 
@@ -1308,6 +1329,7 @@ where $`H`$ is the Hamiltonian for the atom<sup><a id="fnref-42" href="#fn-42">4
 H = \frac{1}{2 m} \boldsymbol{p}^{2} + V \quad V = - \frac{1}{4 \pi} \frac{e^{2}}{r} , \quad \boldsymbol{[} H, \boldsymbol{p} \boldsymbol{]} = i \hbar ( \nabla V ) \qquad \text{(282)}
 ```
 
+<div align="right"><a href="book.pdf#page=64" target="_blank" title="This page in the PDF"><sup>[p. 58]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p59" href="book.pdf#page=65" target="_blank" title="This page in the PDF"><sup>[p. 59]</sup></a>
 
@@ -1351,7 +1373,7 @@ Lagrangian
 L_{o} = - \hbar c \overline{\psi} \left( \sum_{\lambda} \gamma_{\lambda} \frac{\partial}{\partial x_{\lambda}} + \mu \right) \psi \qquad \text{(285)}
 ```
 
-Note the factor $`\hbar`$ here. This means that the theory has no classical limit in the sense of the Correspondence Principle. In the classical limit, only charges and currents composed of many particles have any meaning; the $`\psi`$ field disappears entirely from view. The $`\hbar`$ has to be put into (285) to make the dimensions right, since $`\left( \overline{\psi} \psi \right)`$ has dimensions (1/Volume) just as in the 1-particle Dirac theory of which this is an extension.<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p60" href="book.pdf#page=66" target="_blank" title="This page in the PDF"><sup>[p. 60]</sup></a></span> <a id="ix-190">Field</a> equations
+Note the factor $`\hbar`$ here. This means that the theory has no classical limit in the sense of the Correspondence Principle. In the classical limit, only charges and currents composed of many particles have any meaning; the $`\psi`$ field disappears entirely from view. The $`\hbar`$ has to be put into (285) to make the dimensions right, since $`\left( \overline{\psi} \psi \right)`$ has dimensions (1/Volume) just as in the 1-particle Dirac theory of which this is an extension.<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=65" target="_blank" title="This page in the PDF"><sup>[p. 59]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p60" href="book.pdf#page=66" target="_blank" title="This page in the PDF"><sup>[p. 60]</sup></a></span> <a id="ix-190">Field</a> equations
 
 <a id="eq-286"></a>
 
@@ -1428,6 +1450,7 @@ Then $`S_{R} ( x )`$ is a c-number <a id="ix-57">Dirac</a> matrix function of x,
 \begin{aligned} \left( \sum_{\lambda} \gamma_{\lambda} \frac{\partial}{\partial x_{\lambda}} + \mu \right) S_{R} ( x ) &= - \delta^{4} ( x ) \\ S_{R} ( x ) &= 0 \text{ for } x_{0} < 0 \end{aligned} \qquad \text{(293)}
 ```
 
+<div align="right"><a href="book.pdf#page=66" target="_blank" title="This page in the PDF"><sup>[p. 60]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p61" href="book.pdf#page=67" target="_blank" title="This page in the PDF"><sup>[p. 61]</sup></a>
 
@@ -1517,6 +1540,7 @@ with the boundary conditions as before. And the ∆-functions are exact analogue
 \begin{aligned} & \quad k^{2} \to k^{2} + \mu^{2} \int \\ \Delta_{R} ( x ) &= \frac{1}{( 2 \pi )^{4}}_{+} e^{ik \cdot x} \frac{1}{k^{2} + \mu^{2}} d^{4} k \end{aligned} \qquad \text{(303)}
 ```
 
+<div align="right"><a href="book.pdf#page=67" target="_blank" title="This page in the PDF"><sup>[p. 61]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p62" href="book.pdf#page=68" target="_blank" title="This page in the PDF"><sup>[p. 62]</sup></a>
 
@@ -1608,6 +1632,7 @@ Let
 E_{k} = \hbar c \sqrt{| \boldsymbol{k} |^{2} + \mu^{2}} \qquad \text{(313)}
 ```
 
+<div align="right"><a href="book.pdf#page=68" target="_blank" title="This page in the PDF"><sup>[p. 62]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p63" href="book.pdf#page=69" target="_blank" title="This page in the PDF"><sup>[p. 63]</sup></a>
 
@@ -1703,6 +1728,7 @@ the absorption operator for the positron state $`v`$. Then instead of (306), (30
 \varphi_{\alpha} ( x ) = Q \int d^{3} \boldsymbol{k} \left( \frac{\mu^{2}}{| \boldsymbol{k} |^{2} + \mu^{2}} \right)^{1 / 4} \left\{ \sum_{v^{+}} v_{\alpha} e^{i \boldsymbol{k} \cdot \boldsymbol{x}} b_{kv}^{C} + \sum_{u^{+}} \left\{ Cu^{+} \right\}_{\alpha} e^{- i \boldsymbol{k} \cdot \boldsymbol{x}} b_{ku}^{*} \right\} \qquad \text{(318)}
 ```
 
+<div align="right"><a href="book.pdf#page=69" target="_blank" title="This page in the PDF"><sup>[p. 63]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p64" href="book.pdf#page=70" target="_blank" title="This page in the PDF"><sup>[p. 64]</sup></a>
 
@@ -1766,6 +1792,7 @@ So positrons would actually be particles of negative energy, like the negative e
 
 Thus the use of anticommuting fields is the only thing which gives us a proper positive energy for the positrons. This is reasonable, because the intuitive Dirac hole theory can only work by virtue of the Pauli exclusion principle, and the exclusion principle is a feature of anticommuting fields.
 
+<div align="right"><a href="book.pdf#page=70" target="_blank" title="This page in the PDF"><sup>[p. 64]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p65" href="book.pdf#page=71" target="_blank" title="This page in the PDF"><sup>[p. 65]</sup></a>
 
@@ -1861,6 +1888,7 @@ S^{+} = \tfrac{1}{2} \left( S - iS^{( 1 )} \right) \quad S^{-} = \tfrac{1}{2} \l
 S^{( 1 )} ( x ) = \frac{i}{( 2 \pi )^{3}} \int e^{ik \cdot x} ( k / + i\mu ) \delta ( k^{2} + \mu^{2} ) d^{4} k \qquad \text{(330)}
 ```
 
+<div align="right"><a href="book.pdf#page=71" target="_blank" title="This page in the PDF"><sup>[p. 65]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p66" href="book.pdf#page=72" target="_blank" title="This page in the PDF"><sup>[p. 66]</sup></a>
 
@@ -1930,7 +1958,7 @@ regarded as an equation for the c-number Dirac wave-function $`\psi_{n} ( r )`$ 
 
 We assume further the potentials to be such that the eigenfunctions $`\psi_{n}`$ separate clearly into two classes, the $`\psi_{n +}`$ with positive $`E_{n}`$ and the $`\psi_{n -}`$ with negative $`E_{n}`$. This is again true for all physically occurring potentials, though it would fail for the Coulomb field of a point nucleus with charge $`Z>`$ 137.
 
-The time-independent potentials make the problem essentially non-covariant, and so we shall use the non-covariant notations in developing the theory. We write the equations as if all the levels $`n`$ are _discrete_, thus $`\sum n`$ means a sum over discrete levels plus an integral over continuous levels suitably normalized. We are now chiefly interested in discrete levels, and so we need not bother to write the formulae for normalizing<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p67" href="book.pdf#page=73" target="_blank" title="This page in the PDF"><sup>[p. 67]</sup></a></span> the continuous levels explicitly. This makes the picture apparently simpler than the free-particle theory, where the normalization of continuous levels was done at every stage accurately; the simplicity is only apparent, because we shall just be ignoring the complications arising from continuous levels.
+The time-independent potentials make the problem essentially non-covariant, and so we shall use the non-covariant notations in developing the theory. We write the equations as if all the levels $`n`$ are _discrete_, thus $`\sum n`$ means a sum over discrete levels plus an integral over continuous levels suitably normalized. We are now chiefly interested in discrete levels, and so we need not bother to write the formulae for normalizing<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=72" target="_blank" title="This page in the PDF"><sup>[p. 66]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p67" href="book.pdf#page=73" target="_blank" title="This page in the PDF"><sup>[p. 67]</sup></a></span> the continuous levels explicitly. This makes the picture apparently simpler than the free-particle theory, where the normalization of continuous levels was done at every stage accurately; the simplicity is only apparent, because we shall just be ignoring the complications arising from continuous levels.
 
 The general solution of the <a id="ix-193">field</a> equations (332) is
 
@@ -2018,6 +2046,7 @@ For $`t>t_{o}`$, (343) is the change produced in $`\psi ( r,t )`$ by adding (344
 \boldsymbol{[} b_{n}^{*} u,\psi ( r,t ) \boldsymbol{]} = - \psi_{n} ( r ) \exp \left\{ - i \frac{E_{n}}{\hbar} t \right\}
 ```
 
+<div align="right"><a href="book.pdf#page=73" target="_blank" title="This page in the PDF"><sup>[p. 67]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p68" href="book.pdf#page=74" target="_blank" title="This page in the PDF"><sup>[p. 68]</sup></a>
 
@@ -2110,6 +2139,7 @@ then we have
 \begin{aligned} b_{n +} &= \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} \quad b_{n -}^{*} = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} \\ b_{n -} &= \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} \quad b_{n -}^{*} = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} \end{aligned} \qquad \text{(353)}
 ```
 
+<div align="right"><a href="book.pdf#page=74" target="_blank" title="This page in the PDF"><sup>[p. 68]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p69" href="book.pdf#page=75" target="_blank" title="This page in the PDF"><sup>[p. 69]</sup></a>
 
@@ -2171,6 +2201,7 @@ This is exactly the result, direct minus exchange interaction, which would be gi
 
 The field theory thus gives the full force of the Fermi statistics for electrons. And we could have shown in the same way that it gives the Bose statistics for photons.
 
+<div align="right"><a href="book.pdf#page=75" target="_blank" title="This page in the PDF"><sup>[p. 69]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p70" href="book.pdf#page=76" target="_blank" title="This page in the PDF"><sup>[p. 70]</sup></a>
 
@@ -2214,7 +2245,7 @@ The electron field operator $`\psi_{H}`$ in the field (360) satisfies (332). Her
 
 Here $`S_{R}`$ is given by (293), (301), and (303), and $`\psi ( x )`$ is a solution of the free-field equation (286). In fact $`\psi ( x )`$ is the field operator of the interaction representation, when the effects of $`A_{\mu}`$ are represented in the wave-function instead of in the operators. Using the retarded potential in (361) means that the unperturbed states are specified in the past, as the initial states upon which $`A_{\mu}^{e}`$ later produces effects. Thus the vacuum state defined by (323a) is the state in which initially no electrons or positrons are present. This is the state which we wish to study, and we call it Ψ$`o`$.
 
-Using the interaction representation operators $`\psi ( x )`$, Ψ$`o`$ is the vacuum state and remains so for all time; the physical state is initially Ψ$`o`$ but does not remain Ψ$`o`$. Using the Heisenberg operators $`\psi_{H} ( x )`$, Ψ$`o`$ is the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p71" href="book.pdf#page=77" target="_blank" title="This page in the PDF"><sup>[p. 71]</sup></a></span> physical state for all time; it is initially the vacuum state but does not remain so. In the remote past as $`x_{0} \to -\infty`$, because $`S_{R}`$ is a retarded potential $`\psi_{H} ( x )`$ and $`\psi ( x )`$ become identical.
+Using the interaction representation operators $`\psi ( x )`$, Ψ$`o`$ is the vacuum state and remains so for all time; the physical state is initially Ψ$`o`$ but does not remain Ψ$`o`$. Using the Heisenberg operators $`\psi_{H} ( x )`$, Ψ$`o`$ is the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=76" target="_blank" title="This page in the PDF"><sup>[p. 70]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p71" href="book.pdf#page=77" target="_blank" title="This page in the PDF"><sup>[p. 71]</sup></a></span> physical state for all time; it is initially the vacuum state but does not remain so. In the remote past as $`x_{0} \to -\infty`$, because $`S_{R}`$ is a retarded potential $`\psi_{H} ( x )`$ and $`\psi ( x )`$ become identical.
 
 The expression (361) is useful because we know how to calculate matrix elements of $`\psi ( x )`$ from the state Ψ$`o`$, whereas the matrix elements of $`\psi_{H}`$ do not have any simple form. We also need the adjoint equation
 
@@ -2276,6 +2307,7 @@ So using this principle we have by (328)
 \langle j_{\mu H} ( x ) \rangle_{o} = - \frac{ie^{2}}{\hbar} \int d^{4} x^{\prime} \operatorname{Spur} \{ A /^{e} ( x^{\prime} ) S^{-} ( x^{\prime} - x ) \gamma_{\mu} S_{R} ( x - x^{\prime} ) + A /^{e} ( x^{\prime} ) S_{A} ( x^{\prime} - x ) \gamma_{\mu} S^{-} ( x - x^{\prime} ) \} \qquad \text{(367)}
 ```
 
+<div align="right"><a href="book.pdf#page=77" target="_blank" title="This page in the PDF"><sup>[p. 71]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p72" href="book.pdf#page=78" target="_blank" title="This page in the PDF"><sup>[p. 72]</sup></a>
 
@@ -2343,6 +2375,7 @@ _Figure 4 (p. 72)_
 
 _Figure 5 (p. 72)_
 
+<div align="right"><a href="book.pdf#page=78" target="_blank" title="This page in the PDF"><sup>[p. 72]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p73" href="book.pdf#page=79" target="_blank" title="This page in the PDF"><sup>[p. 73]</sup></a>
 
@@ -2414,6 +2447,7 @@ This integral is still badly divergent. So we again use a physical argument to g
 \sum_{\nu} \frac{\partial j_{\nu} ( x )}{\partial x_{\nu}} = 0 \qquad \text{(380)}
 ```
 
+<div align="right"><a href="book.pdf#page=79" target="_blank" title="This page in the PDF"><sup>[p. 73]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p74" href="book.pdf#page=80" target="_blank" title="This page in the PDF"><sup>[p. 74]</sup></a>
 
@@ -2495,6 +2529,7 @@ This is the analytic formula for $`J_{\nu}`$ valid for large $`\mu`$ in which ca
 \log \left| 1 + \frac{( z - z^{2} ) q^{2}}{\mu^{2}} \right| + \begin{cases} 0 & \text{ for } \frac{( z - z^{2} ) q^{2}}{\mu^{2}} > - 1 \\ - i\pi \epsilon ( q_{0} ) & \text{ for } \frac{( z - z^{2} ) q^{2}}{\mu^{2}} < - 1 \end{cases}
 ```
 
+<div align="right"><a href="book.pdf#page=80" target="_blank" title="This page in the PDF"><sup>[p. 74]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p75" href="book.pdf#page=81" target="_blank" title="This page in the PDF"><sup>[p. 75]</sup></a>
 
@@ -2564,6 +2599,7 @@ We now discuss the various physical effects arising from the calculation of
 
 1) The result is completely gauge-invariant. This may be seen at once from (391): for if a gradient $`\partial`$Λ$`/\partial x_{\nu}`$ is added to $`A_{\nu}^{e}`$, there is no change in $`j_{\nu E}`$.
 
+<div align="right"><a href="book.pdf#page=81" target="_blank" title="This page in the PDF"><sup>[p. 75]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p76" href="book.pdf#page=82" target="_blank" title="This page in the PDF"><sup>[p. 76]</sup></a>
 
@@ -2609,6 +2645,7 @@ Everything here is now finite and observable.
 
 6) The induced current (396) consists of two components, the first in phase with the potential $`A_{\nu}^{e} ( x )`$ and the second out of phase by $`\pi / 2`$. Speaking of the vacuum as a circuit being driven by the potential $`A_{\nu}^{e} ( x )`$, the first is an inductive effect, the second a resistive one. So only the second term gives an absorption of energy by the vacuum from the driving potentials.
 
+<div align="right"><a href="book.pdf#page=82" target="_blank" title="This page in the PDF"><sup>[p. 76]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p77" href="book.pdf#page=83" target="_blank" title="This page in the PDF"><sup>[p. 77]</sup></a>
 
@@ -2678,6 +2715,7 @@ w = \frac{\overline{E}}{\hbar cq_{0}} = - \frac{\alpha ( e^{2} ) ( q^{2} )}{8 \h
 
 The result could of course have been found more easily by elementary methods. The thing I want to stress here is that the elementary real pair-creation processes are necessarily tied up with the less elementary <a id="ix-279">vacuum-polarization</a> effect given by the $`A`$ term in (398), and the $`A`$ term will exist whether or not real pair production is possible. The situation is quite the same as the tying up of the elementary line-width effect in atomic spectra with the less elementary line-shifts; we discussed these effects in detail earlier. Therefore we have quite as much reason to take seriously the vacuum-polarization effect given by the in-phase current in (396), as we have to take seriously the Lamb shift itself. Because physicists were unwilling to take these two effects seriously, physics was held up for quite a number of years.
 
+<div align="right"><a href="book.pdf#page=83" target="_blank" title="This page in the PDF"><sup>[p. 77]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p78" href="book.pdf#page=84" target="_blank" title="This page in the PDF"><sup>[p. 78]</sup></a>
 
@@ -2755,7 +2793,7 @@ The result (409) was calculated many years ago by Uehling <a id="refback-17-1"><
 
 ### <a id="s-the-complete-relativistic-quantum-electrodynamics"></a>The Complete Relativistic Quantum Electrodynamics
 
-We now take the combined system of Dirac and Maxwell fields in interaction, and make out of it a relativistic quantum theory using the methods we have already developed. This will then be the complete theory of quantum electrodynamics, applicable to all problems in which electrons, positrons and photons are<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p79" href="book.pdf#page=85" target="_blank" title="This page in the PDF"><sup>[p. 79]</sup></a></span> concerned. We also include in the theory a classical Maxwell field, which acts on the electrons and positrons and represents the effects of external charges such as protons which may happen to be present.
+We now take the combined system of Dirac and Maxwell fields in interaction, and make out of it a relativistic quantum theory using the methods we have already developed. This will then be the complete theory of quantum electrodynamics, applicable to all problems in which electrons, positrons and photons are<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=84" target="_blank" title="This page in the PDF"><sup>[p. 78]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p79" href="book.pdf#page=85" target="_blank" title="This page in the PDF"><sup>[p. 79]</sup></a></span> concerned. We also include in the theory a classical Maxwell field, which acts on the electrons and positrons and represents the effects of external charges such as protons which may happen to be present.
 
 Lagrangian
 
@@ -2819,6 +2857,7 @@ This $`H_{R} ( t )`$ is just the difference between the Hamiltonians of the theo
 
 Using the BIR we can discuss the radiation of light by an atom, as it was done before, but now treating the atom relativistically. In fact this representation must be used, as soon as we wish to calculate effects accurately enough to require exact Dirac wave-functions for the unperturbed atomic states. However, the BIR is not convenient to use, because the commutation rules for the electron field are given by (346) and are still too complicated for all but the simplest problems. Therefore we shall use the BIR only when we are compelled to, and then usually only in the final stages of a problem. Generally we can do the main part of the work, with the major calculations, in the second type of interaction representation.
 
+<div align="right"><a href="book.pdf#page=85" target="_blank" title="This page in the PDF"><sup>[p. 79]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p80" href="book.pdf#page=86" target="_blank" title="This page in the PDF"><sup>[p. 80]</sup></a>
 

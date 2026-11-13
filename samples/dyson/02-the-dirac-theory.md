@@ -1,5 +1,10 @@
+[← Introduction](01-introduction.md) · [Scattering Problems and Born Approximation →](03-scattering-problems-and-born-approximation.md)
+
+---
+
 # The Dirac Theory
 
+<div align="right"><a href="book.pdf#page=9" target="_blank" title="This page in the PDF"><sup>[p. 3]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p4" href="book.pdf#page=10" target="_blank" title="This page in the PDF"><sup>[p. 4]</sup></a>
 
@@ -59,6 +64,7 @@ Now to get (3) out of (8), (9) and (10) we must have $`\alpha^{k *} = \alpha^{k}
 j_{k} = c \left( \psi^{*} \alpha^{k} \psi \right) \qquad \text{(11)}
 ```
 
+<div align="right"><a href="book.pdf#page=10" target="_blank" title="This page in the PDF"><sup>[p. 4]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p5" href="book.pdf#page=11" target="_blank" title="This page in the PDF"><sup>[p. 5]</sup></a>
 
@@ -122,6 +128,7 @@ These are hermitian as required. Of course if $`\alpha^{k}`$ and $`\beta`$ are a
 
 The Dirac equation is thus a set of 4 simultaneous linear partial differential<sup><a id="fnref-4" href="#fn-4">4</a></sup> equations in the four functions $`\psi_{\alpha}`$.
 
+<div align="right"><a href="book.pdf#page=11" target="_blank" title="This page in the PDF"><sup>[p. 5]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p6" href="book.pdf#page=12" target="_blank" title="This page in the PDF"><sup>[p. 6]</sup></a>
 
@@ -203,6 +210,7 @@ So we require
 
 writing $`\alpha^{0} = \mathbb{I}`$.
 
+<div align="right"><a href="book.pdf#page=12" target="_blank" title="This page in the PDF"><sup>[p. 6]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p7" href="book.pdf#page=13" target="_blank" title="This page in the PDF"><sup>[p. 7]</sup></a>
 
@@ -286,6 +294,7 @@ _Case 1_ Then
 S = \cos \tfrac{1}{2} \theta + i\sigma_{3} \sin \tfrac{1}{2} \theta \qquad \text{(28)}
 ```
 
+<div align="right"><a href="book.pdf#page=13" target="_blank" title="This page in the PDF"><sup>[p. 7]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p8" href="book.pdf#page=14" target="_blank" title="This page in the PDF"><sup>[p. 8]</sup></a>
 
@@ -391,6 +400,7 @@ In this coordinate system the four matrices<sup><a id="fnref-5" href="#fn-5">5</
 \gamma_{1 , 2 , 3 , 4} = \left( - i\beta \alpha^{1 , 2 , 3} ,\beta \right) \quad i . e . \qquad \text{(32)}
 ```
 
+<div align="right"><a href="book.pdf#page=14" target="_blank" title="This page in the PDF"><sup>[p. 8]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p9" href="book.pdf#page=15" target="_blank" title="This page in the PDF"><sup>[p. 9]</sup></a>
 
@@ -492,6 +502,7 @@ Thus
 \boldsymbol{L} + \tfrac{1}{2} \hbar \boldsymbol{\sigma} = \hbar \boldsymbol{J} \qquad \text{(42)}
 ```
 
+<div align="right"><a href="book.pdf#page=15" target="_blank" title="This page in the PDF"><sup>[p. 9]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p10" href="book.pdf#page=16" target="_blank" title="This page in the PDF"><sup>[p. 10]</sup></a>
 
@@ -561,6 +572,7 @@ But there are also solutions with $`E = - \sqrt{m^{2} c^{4} + c^{2} p^{2}}`$. In
 
 Certainly negative energy particles are not allowed physically. They can for example never be stopped by matter at rest, with every collision they move faster and faster. So Dirac was driven to
 
+<div align="right"><a href="book.pdf#page=16" target="_blank" title="This page in the PDF"><sup>[p. 10]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p11" href="book.pdf#page=17" target="_blank" title="This page in the PDF"><sup>[p. 11]</sup></a>
 
@@ -652,6 +664,7 @@ Therefore a suitable C will be
 C = - i\beta \alpha^{2} = \gamma_{2} = \begin{pmatrix} 0 & \begin{matrix} 0 & - 1 \\ 1 & 0 \end{matrix} \\ \begin{matrix} 0 & 1 \\ - 1 & 0 \end{matrix} & 0 \end{pmatrix} \qquad \text{(56)}
 ```
 
+<div align="right"><a href="book.pdf#page=17" target="_blank" title="This page in the PDF"><sup>[p. 11]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p12" href="book.pdf#page=18" target="_blank" title="This page in the PDF"><sup>[p. 12]</sup></a>
 
@@ -747,6 +760,7 @@ In the non-covariant notations this is
 i \hbar \frac{\partial \psi}{\partial t} = \left[ - e \Phi + \sum_{1}^{3} \left( - i \hbar c \frac{\partial}{\partial x_{k}} + eA_{k} \right) \alpha^{k} + mc^{2} \beta \right] \psi \qquad \text{(66)}
 ```
 
+<div align="right"><a href="book.pdf#page=18" target="_blank" title="This page in the PDF"><sup>[p. 12]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p13" href="book.pdf#page=19" target="_blank" title="This page in the PDF"><sup>[p. 13]</sup></a>
 
@@ -840,6 +854,7 @@ Therefore
 [ H,\beta \boldsymbol{\sigma} ] \boldsymbol{\cdot} \boldsymbol{J} = - 2 \hbar c \sum_{k = 1}^{3} \alpha^{k} \sigma_{k} \beta \nabla_{k} ( \boldsymbol{r} \times \nabla )_{k} - i \hbar c ( \boldsymbol{\alpha} \boldsymbol{\cdot} \nabla ) \beta = - i \hbar c ( \boldsymbol{\alpha} \boldsymbol{\cdot} \nabla ) \beta = \left[ H, \tfrac{1}{2} \beta \right]
 ```
 
+<div align="right"><a href="book.pdf#page=19" target="_blank" title="This page in the PDF"><sup>[p. 13]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p14" href="book.pdf#page=20" target="_blank" title="This page in the PDF"><sup>[p. 14]</sup></a>
 
@@ -939,6 +954,7 @@ We may choose a two-component representation in which
 \beta = \begin{pmatrix} 1 & 0 \\ 0 & - 1 \end{pmatrix} , \quad \alpha_{r} = \begin{pmatrix} 0 & i \\ - i & 0 \end{pmatrix} , \quad \psi = \begin{pmatrix} u \\ v \end{pmatrix} \qquad \text{(81)}
 ```
 
+<div align="right"><a href="book.pdf#page=20" target="_blank" title="This page in the PDF"><sup>[p. 14]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p15" href="book.pdf#page=21" target="_blank" title="This page in the PDF"><sup>[p. 15]</sup></a>
 
@@ -1012,6 +1028,7 @@ c_{s} = \frac{a_{1} \alpha + a ( s + k )}{a_{1} \alpha^{2} + a_{1} ( s^{2} - k^{
 e_{s + 1} = \frac{\left( a_{1}^{2} - a^{2} \right) \alpha + 2 saa_{1}}{a_{1} \alpha^{2} + a_{1} ( s^{2} - k^{2} )} e_{s}
 ```
 
+<div align="right"><a href="book.pdf#page=21" target="_blank" title="This page in the PDF"><sup>[p. 15]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p16" href="book.pdf#page=22" target="_blank" title="This page in the PDF"><sup>[p. 16]</sup></a>
 
@@ -1101,6 +1118,7 @@ Hence $`a\alpha - a_{1} ( \epsilon + k )`$ = 0 and $`k`$ must be positive to mak
 n = 0 , \quad k = + 1 , + 2 , + 3 ,\dots \qquad \text{(94)}
 ```
 
+<div align="right"><a href="book.pdf#page=22" target="_blank" title="This page in the PDF"><sup>[p. 16]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p17" href="book.pdf#page=23" target="_blank" title="This page in the PDF"><sup>[p. 17]</sup></a>
 
@@ -1186,6 +1204,7 @@ Thus (97) becomes
 
 This is still exact.
 
+<div align="right"><a href="book.pdf#page=23" target="_blank" title="This page in the PDF"><sup>[p. 17]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p18" href="book.pdf#page=24" target="_blank" title="This page in the PDF"><sup>[p. 18]</sup></a>
 
@@ -1262,6 +1281,7 @@ Taking a representation with $`\sigma_{z}`$ diagonal, this splits at once into t
 L_{z} = - i \hbar \left\{ x \frac{\partial}{\partial y} - y \frac{\partial}{\partial x} \right\}
 ```
 
+<div align="right"><a href="book.pdf#page=24" target="_blank" title="This page in the PDF"><sup>[p. 18]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p19" href="book.pdf#page=25" target="_blank" title="This page in the PDF"><sup>[p. 19]</sup></a>
 
@@ -1291,6 +1311,7 @@ E = \sqrt{m^{2} c^{4} + c^{2} p_{z}^{2} + M | eB \hbar c |} \quad \text{ with } 
 
 The lowest state has energy exactly $`mc^{2}`$.
 
+<div align="right"><a href="book.pdf#page=25" target="_blank" title="This page in the PDF"><sup>[p. 19]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p20" href="book.pdf#page=26" target="_blank" title="This page in the PDF"><sup>[p. 20]</sup></a>
 
@@ -1366,6 +1387,7 @@ Comparison with the <a id="ix-86">Dirac</a> notation: $`\rho_{1} = \epsilon \qua
 
 Latin indices: 1, 2, 3. Greek indices: 1, 2, 3, 4.
 
+<div align="right"><a href="book.pdf#page=26" target="_blank" title="This page in the PDF"><sup>[p. 20]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p21" href="book.pdf#page=27" target="_blank" title="This page in the PDF"><sup>[p. 21]</sup></a>
 

@@ -1,5 +1,10 @@
+[← General Theory of Free Particle Scattering](07-general-theory-of-free-particle-scattering.md) · [Typist’s Afterword →](09-typist-s-afterword.md)
+
+---
+
 # Scattering By A Static Potential. Comparison With Experimental Results.
 
+<div align="right"><a href="book.pdf#page=123" target="_blank" title="This page in the PDF"><sup>[p. 117]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p118" href="book.pdf#page=124" target="_blank" title="This page in the PDF"><sup>[p. 118]</sup></a>
 
@@ -69,6 +74,7 @@ Summing over the final spin states, and averaging over the initial spin states, 
 \begin{aligned} \tfrac{1}{2} \sum_{u} \sum_{u^{\prime}} | u^{\prime *} u |^{2} &= \tfrac{1}{2} \frac{1}{( 2 i\mu )^{2}} \operatorname{Spur} \left\{ ( p / + i\mu ) \gamma_{4} ( /p^{\prime} + i\mu ) \gamma_{4} \right\} \\ &= \frac{1}{2 \mu^{2}} \left\{ \mu^{2} + p_{0} p_{0}^{\prime} + \boldsymbol{p} \cdot \boldsymbol{p}^{\prime} \right\} = \frac{1}{2 \mu^{2}} \left\{ 2 p_{0}^{2} - \tfrac{1}{2} | \boldsymbol{q} |^{2} \right\} \\ &= \frac{p_{o}^{2}}{\mu^{2}} \left\{ 1 - \tfrac{1}{4} \frac{| \boldsymbol{p} |^{2} - 2 \boldsymbol{p} \cdot \boldsymbol{p}^{\prime} + | \boldsymbol{p}^{\prime} |^{2}}{p_{0}^{2}} \right\} = \frac{p_{o}^{2}}{\mu^{2}} \left( 1 - \beta^{2} \sin^{2} \frac{\theta}{2} \right) \end{aligned} \qquad \text{(629)}
 ```
 
+<div align="right"><a href="book.pdf#page=124" target="_blank" title="This page in the PDF"><sup>[p. 118]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p119" href="book.pdf#page=125" target="_blank" title="This page in the PDF"><sup>[p. 119]</sup></a>
 
@@ -148,7 +154,7 @@ To remove the dependence of (637) on $`r`$ we must consider the cross-section fo
 \hbar ck_{\max} = E - mc^{2} \approx \frac{\hbar^{2}}{2 m} | \boldsymbol{p} |^{2} \qquad \text{(638)}
 ```
 
-and therefore for all possible photons the momentum $`\hbar | \boldsymbol{k}^{\prime} |`$ will be very small compared with the electron momentum $`\hbar | \boldsymbol{p} |`$.<sup><a id="fnref-83" href="#fn-83">83</a></sup> Thus the recoil of the electron, arising from the momentum carried off by the photon,<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p120" href="book.pdf#page=126" target="_blank" title="This page in the PDF"><sup>[p. 120]</sup></a></span> can always be neglected. The matrix element and probability for radiative scattering will be given by (618) and (620), even when the photon takes away a large fraction of the kinetic energy of the electron.
+and therefore for all possible photons the momentum $`\hbar | \boldsymbol{k}^{\prime} |`$ will be very small compared with the electron momentum $`\hbar | \boldsymbol{p} |`$.<sup><a id="fnref-83" href="#fn-83">83</a></sup> Thus the recoil of the electron, arising from the momentum carried off by the photon,<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=125" target="_blank" title="This page in the PDF"><sup>[p. 119]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p120" href="book.pdf#page=126" target="_blank" title="This page in the PDF"><sup>[p. 120]</sup></a></span> can always be neglected. The matrix element and probability for radiative scattering will be given by (618) and (620), even when the photon takes away a large fraction of the kinetic energy of the electron.
 
 We imagine a scattering experiment in which only the direction of the emerging electron is measured and not its energy. Then the radiative <a id="ix-53">cross-section</a> $`\overline{\sigma}_{R}`$ will measure the total probability of scattering the electron into a <a id="ix-15">solid</a> angle $`d`$Ω with emission of a photon having any frequency between the lower limit $`r`$ and the upper limit $`k_{\max}`$ given by (638). The observed cross-section will be
 
@@ -220,6 +226,7 @@ Now we can combine (637) and (644) to give by (639) and (629)
 
 Here we used the following trick: the integral over $`\lambda`$ blows up at $`\lambda`$ = 1. Therefore we subtract from the numerator its value at $`\lambda`$ = 1, which makes the integral behave decently and permits us to change the upper limit from $`\lambda_{m}`$ to 1, for small ∆$`E`$’s. We also have to add then the integrand with the numerator having $`\lambda`$ = 1; this gives then a logarithmic term which combines with (637) to give the first part of (646).
 
+<div align="right"><a href="book.pdf#page=126" target="_blank" title="This page in the PDF"><sup>[p. 120]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p121" href="book.pdf#page=127" target="_blank" title="This page in the PDF"><sup>[p. 121]</sup></a>
 
@@ -271,6 +278,7 @@ This is all we can say at present about radiative corrections to scattering by a
 
 The scattering by an electrostatic potential, the two terms in (617) were lumped together. Both gave contributions of the same order of magnitude, $`\alpha ( q^{2} /\mu^{2} )`$ in the cross section. What then is the meaning of the special form of the second term in (617)? This term has no infra-red divergence and therefore should be particularly simple to interpret experimentally.
 
+<div align="right"><a href="book.pdf#page=127" target="_blank" title="This page in the PDF"><sup>[p. 121]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p122" href="book.pdf#page=128" target="_blank" title="This page in the PDF"><sup>[p. 122]</sup></a>
 
@@ -352,6 +360,7 @@ where we used $`\gamma_{k} \gamma_{\ell} = i\sigma_{m} ,k,\ell ,m`$ = (1$`, 2 , 
 U_{M} = - i \frac{\delta M}{\hbar c} ( \overline{u}^{\prime} /e/qu ) \qquad \text{(659)}
 ```
 
+<div align="right"><a href="book.pdf#page=128" target="_blank" title="This page in the PDF"><sup>[p. 122]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p123" href="book.pdf#page=129" target="_blank" title="This page in the PDF"><sup>[p. 123]</sup></a>
 
@@ -393,6 +402,7 @@ In the FIR the equation of motion is
 i \hbar \frac{\partial \Psi}{\partial t} = \left( H^{e} ( t ) + H^{I} ( t ) \right) \Psi \qquad \text{(661)}
 ```
 
+<div align="right"><a href="book.pdf#page=129" target="_blank" title="This page in the PDF"><sup>[p. 123]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p124" href="book.pdf#page=130" target="_blank" title="This page in the PDF"><sup>[p. 124]</sup></a>
 
@@ -478,7 +488,7 @@ We write
 H_{T} ( t ) = H^{e} ( t ) + H_{T 1} ( t ) + H_{T 2} ( t ) \qquad \text{(671)}
 ```
 
-expanding $`H_{T}`$ in powers of the radiation interaction just as $`U`$ was expanded in (536)–(540). But the matrix elements of $`\left( U_{2} + U_{2}^{1} \right)`$ referring to one-electron transition have already been calculated and are given by (617) assuming non-relativistic velocities for the electron. This enables us to write down immediately a<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p125" href="book.pdf#page=131" target="_blank" title="This page in the PDF"><sup>[p. 125]</sup></a></span> formula for the operator $`H_{T 2}`$, valid for one-<a id="ix-105">electron</a> transitions at non-relativistic velocities. In (617) each factor $`q_{\lambda}`$ may be replaced by $`( - i\partial /\partial x_{\lambda} )`$ operating on the potentials (534). Then (617) becomes
+expanding $`H_{T}`$ in powers of the radiation interaction just as $`U`$ was expanded in (536)–(540). But the matrix elements of $`\left( U_{2} + U_{2}^{1} \right)`$ referring to one-electron transition have already been calculated and are given by (617) assuming non-relativistic velocities for the electron. This enables us to write down immediately a<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=130" target="_blank" title="This page in the PDF"><sup>[p. 124]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p125" href="book.pdf#page=131" target="_blank" title="This page in the PDF"><sup>[p. 125]</sup></a></span> formula for the operator $`H_{T 2}`$, valid for one-<a id="ix-105">electron</a> transitions at non-relativistic velocities. In (617) each factor $`q_{\lambda}`$ may be replaced by $`( - i\partial /\partial x_{\lambda} )`$ operating on the potentials (534). Then (617) becomes
 
 <a id="eq-672"></a>
 
@@ -548,6 +558,7 @@ Since $`p`$ and $`p^{\prime}`$ are assumed non-relativistic we may write
 p \cdot k^{\prime} = p^{\prime} \cdot k^{\prime} = - \mu k_{0}^{\prime}
 ```
 
+<div align="right"><a href="book.pdf#page=131" target="_blank" title="This page in the PDF"><sup>[p. 125]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p126" href="book.pdf#page=132" target="_blank" title="This page in the PDF"><sup>[p. 126]</sup></a>
 
@@ -623,7 +634,7 @@ This completes the evaluation of $`H_{T}`$.
 
 To understand the effect of the <a id="ix-149">transformation</a> (662), we observe that if Ψ$`( t )`$ is the state of one real electron in the absence of an external field, then Φ$`( t )`$ will be independent of $`t`$ and will represent one “bare” electron with the same momentum as the real electron. In an actual hydrogen atom, we may consider the state Ψ$`( t )`$ to a very good approximation as a superposition of states of a single real free electron; then Φ($`t )`$ is a superposition of states of a single bare electron with the same distribution of momenta. Thus by the transformation from Ψ to Φ we have eliminated the radiation field surrounding the electron, all remaining effects of this radiation field being contained in the operator $`H_{T}`$.
 
-It is essential at this point to make sure that in the Φ representation the field-operators are still free-particle operators, with the correct equations of motion for operators in the FIR. Thus the transformation<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p127" href="book.pdf#page=133" target="_blank" title="This page in the PDF"><sup>[p. 127]</sup></a></span> (662) is only a transformation from one set of variables to another within the FIR, and does not take us out of the FIR. This point was never explained properly by Schwinger in his papers, although he no doubt understood it himself.
+It is essential at this point to make sure that in the Φ representation the field-operators are still free-particle operators, with the correct equations of motion for operators in the FIR. Thus the transformation<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=132" target="_blank" title="This page in the PDF"><sup>[p. 126]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p127" href="book.pdf#page=133" target="_blank" title="This page in the PDF"><sup>[p. 127]</sup></a></span> (662) is only a transformation from one set of variables to another within the FIR, and does not take us out of the FIR. This point was never explained properly by Schwinger in his papers, although he no doubt understood it himself.
 
 Let then $`Q ( x )`$ be a field-operator of the Ψ representation. Being a FIR operator, $`Q ( x )`$ satisfies
 
@@ -683,6 +694,7 @@ i \hbar \frac{\partial \Phi^{\prime}}{\partial t} = \{ H_{T 1} ( t ) + H_{T 2} (
 
 where $`H_{T 1}`$ and $`H_{T 2}`$ are given by (684) and (676), only now the $`\psi^{*}`$ and $`\psi`$ operators have the time-variation of the Dirac field in the external potential $`V`$ .
 
+<div align="right"><a href="book.pdf#page=133" target="_blank" title="This page in the PDF"><sup>[p. 127]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p128" href="book.pdf#page=134" target="_blank" title="This page in the PDF"><sup>[p. 128]</sup></a>
 
@@ -760,6 +772,7 @@ Using formula (261) with $`J`$ substituted for $`j`$, the contribution from $`H_
 
 The integral is now convergent at high frequencies and only divergent at low frequencies where the cut-off $`r`$ is now required to make it finite. The shift (697) would be zero for a free particle, and so there is no question of subtracting away a mass-renormalization term as we did from (273); in the relativistic treatment the mass-subtraction was already done long before this stage of the calculation was reached.
 
+<div align="right"><a href="book.pdf#page=134" target="_blank" title="This page in the PDF"><sup>[p. 128]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p129" href="book.pdf#page=135" target="_blank" title="This page in the PDF"><sup>[p. 129]</sup></a>
 
@@ -835,6 +848,7 @@ with $`\boldsymbol{L}`$, the orbital angular momentum, is given by (39). In this
 \begin{aligned} \Delta E &= \frac{\alpha}{3 \pi \mu^{2}} \left\{ \log \frac{mc^{2}}{2 ( E - E_{0} )_{\text{ avg }}} + \tfrac{5}{6} - \tfrac{1}{5} \right\} \int ( \nabla^{2} V ) | \psi_{0} |^{2} d^{3} \boldsymbol{r} \\ & \quad + \frac{\alpha}{4 \pi \mu^{2} \hbar} \int \psi_{0}^{*} \left( \frac{1}{r} \frac{dV}{dr} \right) ( \boldsymbol{\sigma} \cdot \boldsymbol{L} ) \psi_{0} d^{3} \boldsymbol{r} \end{aligned} \qquad \text{(705)}
 ```
 
+<div align="right"><a href="book.pdf#page=135" target="_blank" title="This page in the PDF"><sup>[p. 129]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p130" href="book.pdf#page=136" target="_blank" title="This page in the PDF"><sup>[p. 130]</sup></a>
 
@@ -913,6 +927,7 @@ This calculation of the Lamb shift was of course not exact. The two most importa
 
 To correct these errors, very long calculations have been done. In connection with (i), Baranger <a id="refback-21-1"></a>[[21]](#ref-21) has calculated the effect of using relativistic theory in the treatment of $`H_{T 1}`$ and he finds the observed shift increases by 7 megacycles. The effects of (ii) are being looked at by Salpeter <a id="refback-22-1"></a>[[22]](#ref-22) but are not greater than 1 - 2 megacycles at most. In addition we have not considered
 
+<div align="right"><a href="book.pdf#page=136" target="_blank" title="This page in the PDF"><sup>[p. 130]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p131" href="book.pdf#page=137" target="_blank" title="This page in the PDF"><sup>[p. 131]</sup></a>
 

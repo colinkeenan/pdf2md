@@ -9,7 +9,8 @@ The books are best read with [mdBun](https://github.com/colinkeenan/mdBun), a sm
 ## What you get
 
 * **Chapter files** named by chapter number (`03-theory-of-angular-momentum.md`), with `00-front-matter.md` and the table of contents before them, and `book.md` holding everything.
-* **Page markers** such as <sup>[p. 32]</sup> where each printed page starts, under a faint bar. Search for "p. 32" to find a page; click the marker to open that page of the PDF.
+* **Page markers** at a faint bar where each printed page starts: <sup>[p. 32]</sup> under the bar at the left for the page that begins, <sup>[p. 31]</sup> above it at the right for the page that ends. Search for "p. 32" to find a page; click a marker to open that page of the PDF.
+* **Previous and next** file are linked at the top and at the bottom of every file.
 * **Links**: contents entries go to their chapters and sections, index page numbers go to the word on that page, footnote markers go to their notes and back, and "Section 3.5", "Figure 1.1" or "(3.422)" go to what they name. The words an index entry points to are marked as its target; mdBun shows them in blue, though they are not links themselves.
 * **Math** as LaTeX, in sentences and as displayed equations with their numbers.
 * **Pictures** cut from the PDF into `images/`, with captions numbered through the book.

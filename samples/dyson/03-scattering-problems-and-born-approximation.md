@@ -1,5 +1,10 @@
+[← The Dirac Theory](02-the-dirac-theory.md) · [Field Theory →](04-field-theory.md)
+
+---
+
 # Scattering Problems and Born Approximation
 
+<div align="right"><a href="book.pdf#page=27" target="_blank" title="This page in the PDF"><sup>[p. 21]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p22" href="book.pdf#page=28" target="_blank" title="This page in the PDF"><sup>[p. 22]</sup></a>
 
@@ -69,6 +74,7 @@ per volume $`dp_{1} dp_{2} dp_{3}`$ of momentum space, for _each_ direction of s
 \frac{dp_{1} dp_{2} dp_{3}}{| E |} \qquad \text{(108)}
 ```
 
+<div align="right"><a href="book.pdf#page=28" target="_blank" title="This page in the PDF"><sup>[p. 22]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p23" href="book.pdf#page=29" target="_blank" title="This page in the PDF"><sup>[p. 23]</sup></a>
 
@@ -162,6 +168,7 @@ These projection operators are covariant. In <a id="ix-152">Heitler</a> the busi
 
 Note that here charge-conjugate wave functions are _not_ used. The positrons of momentum $`p`$ are represented by the electron wave functions $`u`$ of momentum $`- p`$ energy $`- E`$.
 
+<div align="right"><a href="book.pdf#page=29" target="_blank" title="This page in the PDF"><sup>[p. 23]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p24" href="book.pdf#page=30" target="_blank" title="This page in the PDF"><sup>[p. 24]</sup></a>
 
@@ -232,6 +239,7 @@ _Solution:_ Let ∆$`E`$ be the excitation energy, $`\rho_{N}`$ and $`\boldsymbo
 \nabla \boldsymbol{\cdot} \boldsymbol{j}_{N} = - \frac{\partial \rho_{H}}{\partial t} = i \frac{\Delta E}{\hbar} \rho_{N} \qquad \text{(119)}
 ```
 
+<div align="right"><a href="book.pdf#page=30" target="_blank" title="This page in the PDF"><sup>[p. 24]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p25" href="book.pdf#page=31" target="_blank" title="This page in the PDF"><sup>[p. 25]</sup></a>
 
@@ -321,6 +329,7 @@ taking the <a id="ix-39">Coulomb potential</a> of the nuclear charge and ignorin
 \int \left\{ \phi ( - e\psi^{*} \psi ) - \sum_{k} A_{k} ( - e\psi^{*} \alpha_{k} \psi ) \right\} d\tau \qquad \text{(128)}
 ```
 
+<div align="right"><a href="book.pdf#page=31" target="_blank" title="This page in the PDF"><sup>[p. 25]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p26" href="book.pdf#page=32" target="_blank" title="This page in the PDF"><sup>[p. 26]</sup></a>
 
@@ -402,6 +411,7 @@ we obtain the <a id="ix-239">differential</a> probability<sup><a id="fnref-13" h
 w_{o} = \frac{4 Z^{2} e^{4} r_{o}^{4}}{2 5 \pi c^{4} \hbar^{7}} p_{1} p_{2} dE_{1} \left( E_{1} E_{2} - m^{2} c^{4} + c^{2} p_{1} p_{2} \cos \theta \right) \sin \theta d\theta \qquad \text{(131)}
 ```
 
+<div align="right"><a href="book.pdf#page=32" target="_blank" title="This page in the PDF"><sup>[p. 26]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p27" href="book.pdf#page=33" target="_blank" title="This page in the PDF"><sup>[p. 27]</sup></a>
 
@@ -475,6 +485,7 @@ So using covariant notations we have in this gauge
 s_{\mu ( 1 )} = i ( \overline{u}_{1}^{\prime} \gamma_{\mu} u_{1} ) \exp \left\{ \sum_{\nu} \frac{i}{\hbar} ( p_{1 \nu} - p_{1 \nu}^{\prime} ) x_{\nu} \right\} \qquad \text{(137)}
 ```
 
+<div align="right"><a href="book.pdf#page=33" target="_blank" title="This page in the PDF"><sup>[p. 27]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p28" href="book.pdf#page=34" target="_blank" title="This page in the PDF"><sup>[p. 28]</sup></a>
 
@@ -548,6 +559,7 @@ M = K ( 2 \pi \hbar )^{4} \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\
 
 Then what will be the cross-section in terms of $`K`$? We do this calculation once here so that later we can stop when we have found formulae for $`M`$ of the type (145) which come for example conveniently in this form out of radiation theory.
 
+<div align="right"><a href="book.pdf#page=34" target="_blank" title="This page in the PDF"><sup>[p. 28]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p29" href="book.pdf#page=35" target="_blank" title="This page in the PDF"><sup>[p. 29]</sup></a>
 
@@ -631,6 +643,7 @@ Then the cross-section $`\sigma`$ is defined in this system by
 \sigma = \frac{wV_{1} V_{2}}{| \boldsymbol{v}_{1} - \boldsymbol{v}_{2} |} \qquad \text{(150)}
 ```
 
+<div align="right"><a href="book.pdf#page=35" target="_blank" title="This page in the PDF"><sup>[p. 29]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p30" href="book.pdf#page=36" target="_blank" title="This page in the PDF"><sup>[p. 30]</sup></a>
 
@@ -714,6 +727,7 @@ Without spin you get simply
 
 Effect of spin is a measurable _increase_ of scattering over the Mott formula. Effect of exchange is roughly the 1 $`- 3 x^{2}`$ term. Positron-electron scattering is very similar. Only the exchange effect is different because of <a id="ix-20">annihilation</a> possibility.
 
+<div align="right"><a href="book.pdf#page=36" target="_blank" title="This page in the PDF"><sup>[p. 30]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p31" href="book.pdf#page=37" target="_blank" title="This page in the PDF"><sup>[p. 31]</sup></a>
 

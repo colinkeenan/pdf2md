@@ -1,5 +1,10 @@
+[← Free Particle Scattering Problems](06-free-particle-scattering-problems.md) · [Scattering By A Static Potential. Comparison With Experimental Results. →](08-scattering-by-a-static-potential-comparison-with-experimental-results.md)
+
+---
+
 # General Theory of Free Particle Scattering
 
+<div align="right"><a href="book.pdf#page=99" target="_blank" title="This page in the PDF"><sup>[p. 93]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p94" href="book.pdf#page=100" target="_blank" title="This page in the PDF"><sup>[p. 94]</sup></a>
 
@@ -25,6 +30,7 @@ The operators in (488) are field-operators of the interaction representation, th
 
 We wish to calculate the matrix element $`M`$ of $`S`$ for a particular scattering process, in which the states $`A`$ and $`B`$ are specified by enumerating the particles present in the two states. We must now take properly into account the fact that the particles in states $`A`$ and $`B`$, although well separated and no longer interacting with one another, are real particles interacting with their self-fields and with the vacuum-fluctuations of the fields in their neighborhood. Thus $`A`$ and $`B`$ are really time-dependent states in the interaction representation and will not be given by time-independent vectors Φ$`A`$ and Φ$`B`$, except in the lowest-order approximation. (See page 81.) Let Ψ$`{}_{B} ( t )`$ be the actual time-dependent state-vector of the state $`B`$ in the IR. We are not interested in the dependence of Φ$`{}_{B} ( t )`$ on $`t`$. In an actual scattering experiment the particles in state B are observed in counters or photographic plates or cloud-chambers and the time of their arrival is not measured precisely. Therefore it is convenient to use for $`B`$ not the state-function Ψ$`{}_{B} ( t )`$ but a state-function Φ$`B`$ which is _by definition_ the state-function describing a set of bare particles without radiation interaction, the bare particles having the same momenta and spins as the real particles in the state $`B`$. In the IR the state-function Φ$`B`$ is time-independent. The question is only, what is the connection between Ψ$`{}_{B} ( t )`$ and Φ$`B`$?
 
+<div align="right"><a href="book.pdf#page=100" target="_blank" title="This page in the PDF"><sup>[p. 94]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p95" href="book.pdf#page=101" target="_blank" title="This page in the PDF"><sup>[p. 95]</sup></a>
 
@@ -88,6 +94,7 @@ The main practical effect of this limiting process in the definition of $`S`$ is
 
 The use of bare-particle wave-functions Φ$`A`$ and Φ$`B`$ in (487) is thus justified. This makes the calculation of $`M`$ in principle simple. It is only necessary to pick out from (488) the terms which contain the right combination of elementary emission and absorption operators to annihilate the particles in $`A`$ and to create those in $`B`$. We shall next describe a general method of systematically picking out those terms, which is due originally to Feynman. It was first explained in published form by G. C Ẇick, _Phys. Rev._ **80** (1950) 268. Feynman and Wick have applied the method only to chronologically ordered products such as appear in (488). However the method applies in the same way to all products whether chronological or not, and we shall describe it in full generality.
 
+<div align="right"><a href="book.pdf#page=101" target="_blank" title="This page in the PDF"><sup>[p. 95]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p96" href="book.pdf#page=102" target="_blank" title="This page in the PDF"><sup>[p. 96]</sup></a>
 
@@ -161,6 +168,7 @@ And in fact for _any_ two field operators $`\mathcal{P} , \mathcal{Q}`$ we have
 \mathcal{P} \mathcal{Q} = \langle \mathcal{P} \mathcal{Q} \rangle_{o} + N ( \mathcal{P} \mathcal{Q} ) \qquad \text{(503)}
 ```
 
+<div align="right"><a href="book.pdf#page=102" target="_blank" title="This page in the PDF"><sup>[p. 96]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p97" href="book.pdf#page=103" target="_blank" title="This page in the PDF"><sup>[p. 97]</sup></a>
 
@@ -214,6 +222,7 @@ this being a number and not an operator. Therefore (506) gives $`\sum \mathcal{O
 
 where Σ is a sum of terms of the form (505). The theorem is true for each term (505) and so is true for Σ. The theorem is trivially true for $`N ( \mathcal{O} )`$, because $`\langle \mathcal{P} \mathcal{Q} \rangle_{o}`$ = 0 for every pair of factors $`\mathcal{P} , \mathcal{Q}`$ in the order in which they occur in $`N ( \mathcal{O} )`$, and so all normal constituents (504) of $`N ( \mathcal{O} )`$ are zero except the constituent $`N ( \mathcal{O} )`$ itself. Therefore the theorem holds for every $`\mathcal{O}`$ given by (508), and this completes the proof.
 
+<div align="right"><a href="book.pdf#page=103" target="_blank" title="This page in the PDF"><sup>[p. 97]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p98" href="book.pdf#page=104" target="_blank" title="This page in the PDF"><sup>[p. 98]</sup></a>
 
@@ -251,6 +260,7 @@ The possible factor pairings of (496) are then represented by the following $`G`
 
 _Figure 8 (p. 98)_
 
+<div align="right"><a href="book.pdf#page=104" target="_blank" title="This page in the PDF"><sup>[p. 98]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p99" href="book.pdf#page=105" target="_blank" title="This page in the PDF"><sup>[p. 99]</sup></a>
 
@@ -298,7 +308,7 @@ A $`\psi`$ operator not only annihilates electrons but also creates positrons. A
 
 We have introduced the Feynman graphs simply as a convenient pictorial way of visualizing the analysis of an operator into its normal constituents. The graphs are just diagrams drawn on the paper. But according to Feynman<sup><a id="fnref-71" href="#fn-71">71</a></sup> , “Space-time Approach to Quantum Electrodynamics”, _Phys. Rev._ **76** (1949) 769, the graphs are more than this. He regards the graphs as a picture of an actual process which is occurring physically in space-time. Thus $`G_{2}`$ represents an electron and a photon coming together and interacting at the space-time point $`x_{1}`$, where the photon is absorbed; then the electron propagates through space-time along the line $`x_{1} x_{2}`$, until at $`x_{2}`$ it emits a photon, and the electron and photon then travel out along the outgoing lines at $`x_{2}`$. According to Feynman an internal undotted line running from $`x_{1}`$ to $`x_{2}`$ represents an electron propagating from $`x_{1}`$ to $`x_{2}`$ if the time $`x_{2}`$ is later than the time $`x_{1}`$, and represents a positron propagating from $`x_{2}`$ to $`x_{1}`$ if the time $`x_{2}`$ is earlier. In this sense a positron can be regarded as precisely equivalent to an electron which happens to propagate itself backwards instead of forwards in time.
 
-The space-time picture of Feynman is a perfectly consistent and reasonable one. It gives a correct account of everything that happens, including pair creation and annihilation and all the other phenomena<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p100" href="book.pdf#page=106" target="_blank" title="This page in the PDF"><sup>[p. 100]</sup></a></span> connected with positrons. It is in fact equivalent mathematically to the field-theory treatment we follow in this course.
+The space-time picture of Feynman is a perfectly consistent and reasonable one. It gives a correct account of everything that happens, including pair creation and annihilation and all the other phenomena<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=105" target="_blank" title="This page in the PDF"><sup>[p. 99]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p100" href="book.pdf#page=106" target="_blank" title="This page in the PDF"><sup>[p. 100]</sup></a></span> connected with positrons. It is in fact equivalent mathematically to the field-theory treatment we follow in this course.
 
 The disadvantage of the Feynman theory is that it is constructed as a particle theory. The fact that there are many particles, indistinguishable from each other and obeying quantum statistics, has to be put into the theory as a special assumption. And the equations of motion of the particles become quite complicated when interactions between several particles, not to mention vacuum-polarization effects, are included. Thus the logical basis of the Feynman theory is much less simple than that of the field theory, where everything follows from general principles once the form of the Lagrangian is chosen.
 
@@ -342,7 +352,7 @@ and for every set of field operators $`\mathcal{R}_{1} \mathcal{R}_{2} \dots \ma
 
 The rules for writing down the normal constituents of (488) are therefore extremely simple. We are generally only interested in those normal constituents which give matrix elements for some specified type of scattering process. Then the rules are
 
-1) Draw all the graphs which have the right set of external lines corresponding to the particles absorbed and emitted in the process considered. Each <a id="ix-127">graph</a> $`G`$ will have the same external lines, but the number of vertices and of internal lines will vary from graph to graph. We shall always calculate only up to some definite order $`N`$ in the series (488), and so we draw only graphs with not more than $`N`$ vertices. The total number of such graphs is finite. Each vertex in each graph must have precisely 3 lines ending at it, one<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p101" href="book.pdf#page=107" target="_blank" title="This page in the PDF"><sup>[p. 101]</sup></a></span> incoming electron line, one outgoing electron line, and one photon line.
+1) Draw all the graphs which have the right set of external lines corresponding to the particles absorbed and emitted in the process considered. Each <a id="ix-127">graph</a> $`G`$ will have the same external lines, but the number of vertices and of internal lines will vary from graph to graph. We shall always calculate only up to some definite order $`N`$ in the series (488), and so we draw only graphs with not more than $`N`$ vertices. The total number of such graphs is finite. Each vertex in each graph must have precisely 3 lines ending at it, one<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=106" target="_blank" title="This page in the PDF"><sup>[p. 100]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p101" href="book.pdf#page=107" target="_blank" title="This page in the PDF"><sup>[p. 101]</sup></a></span> incoming electron line, one outgoing electron line, and one photon line.
 
 2) To each <a id="ix-128">graph</a> $`G`$ with $`n`$ vertices corresponds one normal constituent $`S_{G}`$ of $`S`$.
 
@@ -380,7 +390,7 @@ corresponding to each internal photon line of $`G`$ at which the 3 lines associa
 
 In addition to these factors there will be numerical factors and Dirac matrices $`\gamma_{\alpha}`$ arising from the particular form of $`S_{n}`$. In practice it is easiest not to write down the $`S_{G}`$ directly in momentum space, but to use the rules (1) – (4) to obtain formulae in configuration space with the right numerical constants, and then transform to momentum space by (430) and (448).
 
-We shall now show how these general methods work by calculating in detail _the_ historic problem, the second-order radiative correction to the scattering of an electron by a weak external potential. This<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p102" href="book.pdf#page=108" target="_blank" title="This page in the PDF"><sup>[p. 102]</sup></a></span> problem has been first satisfactorily treated by Schwinger,<sup><a id="fnref-72" href="#fn-72">72</a></sup> _Phys. Rev._ **76** (1949) 790. Schwinger’s paper is outstandingly difficult to read, and I hope you will find my treatment at least slightly easier. But the problem is in its nature complicated and cannot be done without some fairly heavy mathematics. Once the calculations are done for this problem of scattering, it turns out that the results can be used without much further trouble for the relativistic calculation of the Lamb shift too. The scattering and Lamb shift problems are very closely related: in both cases one is calculating the second-order radiative corrections to the motion of an electron, only in one case the electron is in a high continuum state so that the external field can be treated as weak, in the other case the electron is in a discrete state and the potential must be treated as strong.
+We shall now show how these general methods work by calculating in detail _the_ historic problem, the second-order radiative correction to the scattering of an electron by a weak external potential. This<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=107" target="_blank" title="This page in the PDF"><sup>[p. 101]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p102" href="book.pdf#page=108" target="_blank" title="This page in the PDF"><sup>[p. 102]</sup></a></span> problem has been first satisfactorily treated by Schwinger,<sup><a id="fnref-72" href="#fn-72">72</a></sup> _Phys. Rev._ **76** (1949) 790. Schwinger’s paper is outstandingly difficult to read, and I hope you will find my treatment at least slightly easier. But the problem is in its nature complicated and cannot be done without some fairly heavy mathematics. Once the calculations are done for this problem of scattering, it turns out that the results can be used without much further trouble for the relativistic calculation of the Lamb shift too. The scattering and Lamb shift problems are very closely related: in both cases one is calculating the second-order radiative corrections to the motion of an electron, only in one case the electron is in a high continuum state so that the external field can be treated as weak, in the other case the electron is in a discrete state and the potential must be treated as strong.
 
 ## <a id="s-the-self-energy-of-the-electron"></a>The Self-Energy of the Electron
 
@@ -424,6 +434,7 @@ We consider the Dirac operator
 \Sigma ( p ) = \sum_{\lambda} \int_{F} dk \left( \gamma_{\lambda} \frac{1}{/ k + p / - i\mu} \gamma_{\lambda} \right) \frac{1}{k^{2}} \qquad \text{(520)}
 ```
 
+<div align="right"><a href="book.pdf#page=108" target="_blank" title="This page in the PDF"><sup>[p. 102]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p103" href="book.pdf#page=109" target="_blank" title="This page in the PDF"><sup>[p. 103]</sup></a>
 
@@ -503,6 +514,7 @@ The matrix element of (528) between the states $`( pu )`$ and ($`p^{\prime} u^{\
 M_{S} = - i \frac{\delta mc}{\hbar} ( 2 \pi )^{4} \delta ( p - p^{\prime} ) ( \overline{u}^{\prime} u ) \qquad \text{(529)}
 ```
 
+<div align="right"><a href="book.pdf#page=109" target="_blank" title="This page in the PDF"><sup>[p. 103]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p104" href="book.pdf#page=110" target="_blank" title="This page in the PDF"><sup>[p. 104]</sup></a>
 
@@ -558,7 +570,7 @@ Let an electron be scattered from the initial state $`( pu )`$ to the final stat
 A_{\mu}^{e} ( x ) = \frac{1}{( 2 \pi )^{4}} \int e^{iq \cdot x} e_{\mu} ( q ) dq \qquad \text{(534)}
 ```
 
-At the same time the electron is interacting with the quantized Maxwell field with the interaction (532), since we suppose the initial and final states to be defined with the observed mass of a free electron. The<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p105" href="book.pdf#page=111" target="_blank" title="This page in the PDF"><sup>[p. 105]</sup></a></span> scattering matrix element $`M`$ is then given by (419), with $`U`$ given by (421) after replacing each $`H_{R}`$ by $`H^{I}`$ according to (532).
+At the same time the electron is interacting with the quantized Maxwell field with the interaction (532), since we suppose the initial and final states to be defined with the observed mass of a free electron. The<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=110" target="_blank" title="This page in the PDF"><sup>[p. 104]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p105" href="book.pdf#page=111" target="_blank" title="This page in the PDF"><sup>[p. 105]</sup></a></span> scattering matrix element $`M`$ is then given by (419), with $`U`$ given by (421) after replacing each $`H_{R}`$ by $`H^{I}`$ according to (532).
 
 We treat $`A_{\mu}^{e}`$ in the linear Born approximation. Thus we keep only terms of order 0 and 1 in $`A_{\mu}^{e}`$. The terms of order 0 give the effects of the radiation interaction alone; as we have seen, these effects are zero for an initial state consisting of a single <a id="ix-276">electron</a>.
 
@@ -650,6 +662,7 @@ The operator $`U_{1}`$ gives transitions from a one-electron state only to state
 M_{1} = \frac{e^{2}}{\hbar^{2} c^{2}} \left[ \frac{p \cdot e^{\prime}}{p \cdot k^{\prime}} - \frac{p^{\prime} \cdot e^{\prime}}{p^{\prime} \cdot k^{\prime}} \right] ( \overline{u}^{\prime} /eu ) = \frac{e}{\hbar c} \left[ \frac{p \cdot e^{\prime}}{p \cdot k^{\prime}} - \frac{p^{\prime} \cdot e^{\prime}}{p^{\prime} \cdot k^{\prime}} \right] M_{0} \qquad \text{(546)}
 ```
 
+<div align="right"><a href="book.pdf#page=111" target="_blank" title="This page in the PDF"><sup>[p. 105]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p106" href="book.pdf#page=112" target="_blank" title="This page in the PDF"><sup>[p. 106]</sup></a>
 
@@ -681,6 +694,7 @@ M_{2 1} = - \frac{e^{3}}{8 \hbar^{2} c^{2}} \int \int \int dxdx_{1} dx_{2} \sum_
 
 Hence, using the momentum integrals (430), (448), (534), (542) and carrying out the integration over
 
+<div align="right"><a href="book.pdf#page=112" target="_blank" title="This page in the PDF"><sup>[p. 106]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p107" href="book.pdf#page=113" target="_blank" title="This page in the PDF"><sup>[p. 107]</sup></a>
 
@@ -738,6 +752,7 @@ The integral will be in general complex as before. But for small $`q`$ it will b
 M_{2 1} = \frac{2 \alpha}{\pi} \frac{q^{2}}{\mu^{2}} M_{0} \int_{0}^{1} ( z - z^{2} )^{2} dz = \frac{\alpha}{1 5 \pi} M_{0} \frac{q^{2}}{\mu^{2}} \qquad \text{(554)}
 ```
 
+<div align="right"><a href="book.pdf#page=113" target="_blank" title="This page in the PDF"><sup>[p. 107]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p108" href="book.pdf#page=114" target="_blank" title="This page in the PDF"><sup>[p. 108]</sup></a>
 
@@ -821,6 +836,7 @@ and we suppose that $`G ( \epsilon_{0} )`$ is “almost” a $`\delta`$-function
 M_{2 2} = - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int G ( \epsilon_{0} ) G ( \epsilon_{0}^{\prime} ) d\epsilon_{0} d\epsilon_{0}^{\prime} \left\{ \overline{u} /e ( q - \epsilon - \epsilon^{\prime} ) \frac{1}{p / + /\epsilon + /\epsilon^{\prime} - i\mu} \Sigma ( p + \epsilon ) u \right\} \qquad \text{(564)}
 ```
 
+<div align="right"><a href="book.pdf#page=114" target="_blank" title="This page in the PDF"><sup>[p. 108]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p109" href="book.pdf#page=115" target="_blank" title="This page in the PDF"><sup>[p. 109]</sup></a>
 
@@ -904,6 +920,7 @@ Note that if $`I_{\alpha} ( p )`$ given by (567) were to be evaluated assuming t
 I_{\alpha} ( p ) = I_{1} \gamma_{\alpha} \qquad \text{(573)}
 ```
 
+<div align="right"><a href="book.pdf#page=115" target="_blank" title="This page in the PDF"><sup>[p. 109]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p110" href="book.pdf#page=116" target="_blank" title="This page in the PDF"><sup>[p. 110]</sup></a>
 
@@ -953,6 +970,7 @@ To simplify the term in $`I_{1}`$ in (572), we may replace $`/\epsilon`$ by $`\t
 M_{2 2} + M_{2 2}^{\prime} = \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \frac{1}{2} I_{1} ( \overline{u}^{\prime} /\epsilon u ) = \frac{i\alpha}{( 2 \pi )^{3}} I_{1} M_{o} \qquad \text{(577)}
 ```
 
+<div align="right"><a href="book.pdf#page=116" target="_blank" title="This page in the PDF"><sup>[p. 110]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p111" href="book.pdf#page=117" target="_blank" title="This page in the PDF"><sup>[p. 111]</sup></a>
 
@@ -1018,7 +1036,7 @@ where
 \Lambda ( p,p^{\prime} ) = \int_{F} dk \sum_{\lambda} \left( \gamma_{\lambda} \frac{1}{/ k + p /^{\prime} - i\mu} /e \frac{1}{k / + p / - i\mu} \gamma_{\lambda} \right) \frac{1}{k^{2}} \qquad \text{(584)}
 ```
 
-There is no singular factor in (584) such as we had in (558). To perform the sum over $`\lambda`$ in (584), we use<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p112" href="book.pdf#page=118" target="_blank" title="This page in the PDF"><sup>[p. 112]</sup></a></span> the table
+There is no singular factor in (584) such as we had in (558). To perform the sum over $`\lambda`$ in (584), we use<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=117" target="_blank" title="This page in the PDF"><sup>[p. 111]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p112" href="book.pdf#page=118" target="_blank" title="This page in the PDF"><sup>[p. 112]</sup></a></span> the table
 
 <a id="eq-585"></a>
 
@@ -1094,6 +1112,7 @@ In (591) we may drop terms which are odd in $`k`$. Also using (587) and (588) we
 e \cdot p = e \cdot p^{\prime} = e \cdot p_{y} = i\mu /e + \tfrac{1}{2} /e/q \qquad \text{(592)}
 ```
 
+<div align="right"><a href="book.pdf#page=118" target="_blank" title="This page in the PDF"><sup>[p. 112]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p113" href="book.pdf#page=119" target="_blank" title="This page in the PDF"><sup>[p. 113]</sup></a>
 
@@ -1169,6 +1188,7 @@ Integrating the logarithmic term by parts with respect to $`y`$,
 \Lambda_{c} ( p,p^{\prime} ) = - 2 \pi^{2} i \int_{0}^{1} \int_{0}^{1} dxdy \frac{1}{x [ \mu^{2} + ( y - y^{2} ) q^{2} ]} \left\{ \left[ ( 1 - x ) ( 1 - 2 y + 2 y^{2} ) + x^{2} y \right] q^{2} /e - ( x - x^{2} ) i\mu /e/q \right\} \qquad \text{(600)}
 ```
 
+<div align="right"><a href="book.pdf#page=119" target="_blank" title="This page in the PDF"><sup>[p. 113]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p114" href="book.pdf#page=120" target="_blank" title="This page in the PDF"><sup>[p. 114]</sup></a>
 
@@ -1226,6 +1246,7 @@ which is just the divergent part of (600). But the integration in (604) actually
 \begin{aligned} \Lambda_{c}^{r} ( p,p^{\prime} ) &= - 2 \pi^{2} i \int_{0}^{1} dy \frac{1}{\mu^{2} + ( y - y^{2} ) q^{2}} \left\{ ( - 1 + \tfrac{5}{2} y - 2 y^{2} ) q^{2} /e - \tfrac{1}{2} i\mu /e/q \right\} \\ & \quad - 4 \int \int xdxdy/e \int_{F} dk \left\{ \frac{q^{2} + 2 \mu^{2}}{[ k^{2} + 2 xk \cdot p_{y} ]^{3}} - \frac{\mu^{2}}{[ k^{2} + 2 xk \cdot p ]^{3}} - \frac{\mu^{2}}{[ k^{2} + 2 xk \cdot p^{\prime} ]^{3}} \right\} \end{aligned} \qquad \text{(606)}
 ```
 
+<div align="right"><a href="book.pdf#page=120" target="_blank" title="This page in the PDF"><sup>[p. 114]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p115" href="book.pdf#page=121" target="_blank" title="This page in the PDF"><sup>[p. 115]</sup></a>
 
@@ -1297,6 +1318,7 @@ The $`k`$-integration is now elementary, and after dropping terms which tend to 
 \begin{aligned} K &= \frac{3 i\pi^{2}}{2 \mu^{2}} \left\{ \tfrac{1}{3} \left( \log \frac{\mu}{2 r} + 1 \right) - \frac{\boldsymbol{p} \cdot \boldsymbol{p}^{\prime} + \tfrac{1}{2} q^{2}}{\mu^{2}} \left( \tfrac{1}{3} \log \frac{\mu}{2 r} + \tfrac{1}{6} \right) \right. \\ & \quad \left. + \tfrac{1}{6} \frac{\boldsymbol{p} \cdot \boldsymbol{p}^{\prime} + \tfrac{1}{3} q^{2}}{\mu^{2}} \left( 2 \log \frac{\mu}{2 r} + \tfrac{5}{3} \right) \right\} \end{aligned} \qquad \text{(614)}
 ```
 
+<div align="right"><a href="book.pdf#page=121" target="_blank" title="This page in the PDF"><sup>[p. 115]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p116" href="book.pdf#page=122" target="_blank" title="This page in the PDF"><sup>[p. 116]</sup></a>
 
@@ -1370,6 +1392,7 @@ neglecting terms of fourth order in the radiation interaction. If we consider in
 \begin{aligned} M_{2} + M_{2}^{\prime} &= - \frac{\alpha}{3 \pi} \left( \log \frac{r_{2}}{r_{1}} \right) \frac{q^{2}}{\mu^{2}} | M_{0} |^{2} \\ W_{N} ( r_{1} ,r_{2} ) &= | M_{0} |^{2} - \frac{2 \alpha}{3 \pi} \left( \log \frac{r_{2}}{r_{1}} \right) \frac{q^{2}}{\mu^{2}} | M_{0} |^{2} \end{aligned} \qquad \text{(622)}
 ```
 
+<div align="right"><a href="book.pdf#page=122" target="_blank" title="This page in the PDF"><sup>[p. 116]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p117" href="book.pdf#page=123" target="_blank" title="This page in the PDF"><sup>[p. 117]</sup></a>
 

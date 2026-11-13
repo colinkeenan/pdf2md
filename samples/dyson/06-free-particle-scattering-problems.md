@@ -1,5 +1,10 @@
+[← Examples of Quantized Field Theories](05-examples-of-quantized-field-theories.md) · [General Theory of Free Particle Scattering →](07-general-theory-of-free-particle-scattering.md)
+
+---
+
 # Free Particle Scattering Problems
 
+<div align="right"><a href="book.pdf#page=86" target="_blank" title="This page in the PDF"><sup>[p. 80]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p81" href="book.pdf#page=87" target="_blank" title="This page in the PDF"><sup>[p. 81]</sup></a>
 
@@ -43,6 +48,7 @@ We have in the initial state $`A`$ two electrons in states $`( p_{1} u_{1} ) ( p
 u_{1} e^{ip_{1} \cdot x} \qquad \text{(422)}
 ```
 
+<div align="right"><a href="book.pdf#page=87" target="_blank" title="This page in the PDF"><sup>[p. 81]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p82" href="book.pdf#page=88" target="_blank" title="This page in the PDF"><sup>[p. 82]</sup></a>
 
@@ -124,6 +130,7 @@ we have by (203) and (205)
 \begin{aligned} D_{F} ( x ) &= D^{( 1 )} ( x ) + i\epsilon ( x ) D ( x ) = \frac{1}{2 \pi^{2}} \left[ \frac{1}{x^{2}} - i\pi \delta ( x^{2} ) \right] \\ &= D^{( 1 )} ( x ) - i \{ D_{A} ( x ) + D_{R} ( x ) \} \\ &= D^{( 1 )} ( x ) - 2 i \overline{D} ( x ) \end{aligned} \qquad \text{(429)}
 ```
 
+<div align="right"><a href="book.pdf#page=88" target="_blank" title="This page in the PDF"><sup>[p. 82]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p83" href="book.pdf#page=89" target="_blank" title="This page in the PDF"><sup>[p. 83]</sup></a>
 
@@ -175,6 +182,7 @@ Now $`p_{1}`$ and $`p_{1}^{\prime}`$ are both electron momentum 4-vectors and he
 
 It is clear that the formula comes very directly out of (423), once we know the momentum expansion (431) of the $`D_{F}`$ function. And we shall find that things are equally simple in other free-particle scattering problems.
 
+<div align="right"><a href="book.pdf#page=89" target="_blank" title="This page in the PDF"><sup>[p. 83]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p84" href="book.pdf#page=90" target="_blank" title="This page in the PDF"><sup>[p. 84]</sup></a>
 
@@ -266,6 +274,7 @@ Note that with <a id="ix-27">anticommuting</a> fields the expression $`\epsilon 
 \left\langle \epsilon ( x_{1} - x_{2} ) P \left\{ \psi_{\alpha} ( x_{1} ) , \overline{\psi}_{\beta} ( x_{2} ) \right\} \right\rangle_{o} = - \tfrac{1}{2} S_{F\alpha \beta} ( x_{1} - x_{2} ) \qquad \text{(442)}
 ```
 
+<div align="right"><a href="book.pdf#page=90" target="_blank" title="This page in the PDF"><sup>[p. 84]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p85" href="book.pdf#page=91" target="_blank" title="This page in the PDF"><sup>[p. 85]</sup></a>
 
@@ -363,6 +372,7 @@ mean that the term $`p / + i\mu`$ in (451) can be omitted. Thus we get
 M_{2} = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu} ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \overline{u}^{\prime} \left[ /e \frac{/ k^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e^{\prime} \frac{/ k}{k_{0}} /e \right] u \qquad \text{(453)}
 ```
 
+<div align="right"><a href="book.pdf#page=91" target="_blank" title="This page in the PDF"><sup>[p. 85]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p86" href="book.pdf#page=92" target="_blank" title="This page in the PDF"><sup>[p. 86]</sup></a>
 
@@ -448,6 +458,7 @@ K = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu} \overline{u}^{\prime} \left[ /e \frac{k 
 
 This gives the cross-section for a known electron spin in the initial and final states.
 
+<div align="right"><a href="book.pdf#page=92" target="_blank" title="This page in the PDF"><sup>[p. 86]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p87" href="book.pdf#page=93" target="_blank" title="This page in the PDF"><sup>[p. 87]</sup></a>
 
@@ -513,6 +524,7 @@ Since $`/p`$ <a id="ix-28">anticommutes</a> with $`/e , /e^{\prime} , \gamma_{k}
 \frac{e^{4}}{3 2 \hbar^{4} c^{4} \mu^{4}} \operatorname{Spur} \left[ \left\{ \left( /e \frac{k /}{k_{0}} /e^{\prime} + /e^{\prime} \frac{/ k^{\prime}}{k_{0}^{\prime}} /e \right) ( i\mu - p / ) + 4 \mu ( e \cdot e^{\prime} ) \right\} ( p /^{\prime} + i\mu ) \left\{ /e \frac{/ k^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e^{\prime} \frac{/ k}{k_{0}} /e \right\} \right]
 ```
 
+<div align="right"><a href="book.pdf#page=93" target="_blank" title="This page in the PDF"><sup>[p. 87]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p88" href="book.pdf#page=94" target="_blank" title="This page in the PDF"><sup>[p. 88]</sup></a>
 
@@ -592,6 +604,7 @@ Hence $`k \cdot k^{\prime} = - \mu ( k_{0} - k_{0}^{\prime} )`$ and then
 = \operatorname{Sp} \left[ p/e / \frac{k /^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e \frac{/ k}{k_{0}} /e^{\prime} p / \right] = \operatorname{Sp} \left[ p/e / \frac{k /^{\prime}}{k_{0}^{\prime}} /e^{\prime} + p/e / \frac{/ k}{k_{0}} /e^{\prime} \right]
 ```
 
+<div align="right"><a href="book.pdf#page=94" target="_blank" title="This page in the PDF"><sup>[p. 88]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p89" href="book.pdf#page=95" target="_blank" title="This page in the PDF"><sup>[p. 89]</sup></a>
 
@@ -685,6 +698,7 @@ Hence for the two directions perpendicular to $`k^{\prime}`$ we can write
 \sum_{e^{\prime}} ( e \cdot e^{\prime} )^{2} = 1 - ( \boldsymbol{e} \cdot \hat{\boldsymbol{k}}^{\prime} )^{2}
 ```
 
+<div align="right"><a href="book.pdf#page=95" target="_blank" title="This page in the PDF"><sup>[p. 89]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p90" href="book.pdf#page=96" target="_blank" title="This page in the PDF"><sup>[p. 90]</sup></a>
 
@@ -764,6 +778,7 @@ But $`\beta`$ has zero matrix element between the spin-states $`u`$ and $`u^{\pr
 w = 0 \qquad \text{(475)}
 ```
 
+<div align="right"><a href="book.pdf#page=96" target="_blank" title="This page in the PDF"><sup>[p. 90]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p91" href="book.pdf#page=97" target="_blank" title="This page in the PDF"><sup>[p. 91]</sup></a>
 
@@ -845,6 +860,7 @@ For slowly-moving electrons and positrons with relative velocity $`v`$, the anni
 
 proportional to 1 just like neutron cross-sections at low (thermal) energies.
 
+<div align="right"><a href="book.pdf#page=97" target="_blank" title="This page in the PDF"><sup>[p. 91]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p92" href="book.pdf#page=98" target="_blank" title="This page in the PDF"><sup>[p. 92]</sup></a>
 
@@ -912,6 +928,7 @@ For pair creation the same formula (449) gives the matrix element $`M_{1}`$, all
 M_{1} = - \frac{e^{2} ( 2 \pi )^{4} )}{\hbar^{2} c^{2}} \delta^{4} ( k + k^{\prime} - p - p_{+} ) \overline{u} \left\{ /e \frac{1}{/ k^{\prime} - p /_{+} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{/ k - p /_{+} - i\mu} /e \right\} u^{\prime} \qquad \text{(485)}
 ```
 
+<div align="right"><a href="book.pdf#page=98" target="_blank" title="This page in the PDF"><sup>[p. 92]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p93" href="book.pdf#page=99" target="_blank" title="This page in the PDF"><sup>[p. 93]</sup></a>
 
