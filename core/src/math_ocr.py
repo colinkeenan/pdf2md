@@ -364,12 +364,17 @@ def outside_braces(t: str):
             m = re.match(r"\\([a-zA-Z]+|.)", t[i:], re.S)
             i += len(m.group(0))
             if m.group(1).isalpha():
-                # the space that ends a command name is no place of its own
-                while i < len(t) and t[i] == " ":
-                    i += 1
-                if depth == 0 and i < len(t) and t[i] not in "{}\\":
-                    yield i
-                    i += 1
+                # the space that ends a command name before a letter is no
+                # place of its own (before anything else the name ends
+                # without it: such a space is one the model had no need for)
+                j = i
+                while j < len(t) and t[j] == " ":
+                    j += 1
+                if j < len(t) and t[j].isalpha():
+                    i = j
+                    if depth == 0:
+                        yield i
+                        i += 1
             continue
         if c == "{":
             depth += 1
@@ -439,6 +444,8 @@ def lines_apart(img, t: str, model, processor, batch_inference):
     * the whole reading shows where its lines end (`line_spaces`): cut there;
     * the whole reading is plain words, and the lines read one by one are
       formulas with the same letters: the lines;
+    * every line after the first starts with a relation, and the whole
+      reading starts with the first: the lines;
     * read line by line, it says the same as the whole reading: the lines;
     * the whole reading says the same as the lines without one of them (the
       model left a line out): the lines (a low line must be missing from
@@ -479,6 +486,16 @@ def lines_apart(img, t: str, model, processor, batch_inference):
     limit = max(2, len(canonical(whole)) // 10)
     if difference(whole, " ".join(lines)) <= limit:
         return as_block(lines)
+    # Lines that each go on with a relation ("= ...", "= ..."), after a
+    # first line that the whole reading starts with: the lines, whatever
+    # the whole reading made of the rest (it can lose a line, or read a bar
+    # with its limits as a table). The rows of a fraction, or the limits
+    # under a sum, do not start with "=".
+    starts = lambda l: RELATION.match(re.sub(r"^(\\q?quad(?![a-zA-Z])\s*)+", "", l.strip()))
+    if all(p.height >= FULL_LINE for p in parts) and all(starts(l) for l in lines[1:]) and not starts(lines[0]):
+        ends = [i for i in outside_braces(t) if i > 0 and RELATION.match(t, i)] + [len(t)]
+        if min(difference(t[:i], lines[0]) for i in ends) <= max(2, 0.15 * len(canonical(lines[0]))):
+            return as_block(lines)
     if "\\begin" in t or rule_between(parts):
         return None
     # A low line (a short remark in small type under the equation) that
@@ -602,7 +619,7 @@ def low_line(part, model, processor, batch_inference):
     return re.sub(r"(?<![A-Za-z\\])[COSVWXZ](?![A-Za-z])", lambda m: m.group(0).lower(), t)
 
 
-LINES_RULE = "5"
+LINES_RULE = "6"
 
 
 def lines_looked_at(dst, stem: str) -> bool:
