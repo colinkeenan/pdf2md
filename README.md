@@ -38,12 +38,26 @@ The models run on your own computer; nothing is sent anywhere. Their readings ar
 * Fedora: `sudo dnf install qt6-qtbase-devel qt6-qtdeclarative-devel qt6-qtdeclarative kf6-kirigami-devel kf6-kirigami qt6-qtbase-private-devel`
 * Debian/Ubuntu: `sudo apt install qt6-base-dev qt6-declarative-dev qml6-module-qtquick-controls qml6-module-qtquick-dialogs qml6-module-org-kde-kirigami qml6-module-qt-labs-folderlistmodel` (a release that ships KF6)
 
+There are two ways to start the app. Both are run in the cloned repository.
+
+*Run it from the repository*, with nothing installed:
+
+```sh
+cargo run --release -p pdf2md-app
+```
+
+This builds the app into the repository's `target/release/` folder if the source has changed, then starts it. It always runs the current source, but only from a terminal.
+
+*Install it*, so that it appears as "pdf2md" in your app launcher and `pdf2md-app` works in any terminal:
+
 ```sh
 cargo build --release -p pdf2md-app
 install -Dm755 target/release/pdf2md-app ~/.local/bin/pdf2md-app
 install -Dm644 app/pdf2md-app.desktop ~/.local/share/applications/pdf2md-app.desktop
 install -Dm644 app/pdf2md.svg ~/.local/share/icons/hicolor/scalable/apps/pdf2md.svg
 ```
+
+The first line builds the app; the others copy the program, its launcher entry and its icon into your home folder. The installed program is a copy: after you update the source (`git pull`), run the first two lines again, or the launcher keeps starting the old version.
 
 `~/.local/bin` and `qmake6` must be on your PATH (or set `QMAKE=/usr/lib/qt6/bin/qmake`). The command-line tool needs only Rust and poppler.
 
@@ -74,7 +88,7 @@ Read marker's licence before you use it: its model weights are free for personal
 
 ### The app
 
-Choose the textbook and, if you like, an output folder (the default is the folder the PDF is in), then press Convert. The book is written to `<output folder>/<PDF name>/`.
+Start pdf2md from your app launcher, or with `cargo run --release -p pdf2md-app` in the repository (see [Install](#install)). Choose the textbook and, if you like, an output folder (the default is the folder the PDF is in), then press Convert. The book is written to `<output folder>/<PDF name>/`.
 
 * **Converting again.** If the book's folder exists, the app asks whether to replace it or keep both. Replace moves the old files to the Trash and keeps your corrections and notes (see below).
 * **Reader** is the command of your Markdown viewer, for example `md` for mdBun. "Open Book" and the list of converted books in the window start it with the book's folder. Write `{file}` in the command to pass `book.md` instead, as in `okular {file}`.
