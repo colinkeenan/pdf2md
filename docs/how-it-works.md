@@ -147,6 +147,12 @@ A displayed equation is a line that is mostly math and indented, or one with an 
 * **Several lines.** A system of equations with one number, or an equation continued on a line that starts with + or −, becomes an `aligned` block.
 * **Accents** drawn as separate glyphs (˜ ˆ ˙ ¨) become `\tilde`, `\hat`, `\dot`, `\ddot`. A labelled underbrace becomes `\underbrace{…}_{\text{label}}`.
 
+### Exponents
+
+* **A small stacked fraction** set above or below the line (a power of ½) is an exponent or an index. One on the line is a symbol of the line.
+* **An integral or sum inside an exponent** may be set with its sign as large as on the line, between the small letters before and after it: `e^{i \int d^{4} x …}`. A big operator that follows an exponent and is followed by more of it at the same height is inside the exponent. So is the dot of a product set as a raised full stop: `e^{- i k \cdot x}`.
+* **What stands under "lim"** is its index, all of it: `\lim_{N \to \infty}`.
+
 ### Brackets and matrices
 
 `pdftohtml` gives tall brackets no character, or drops them, so they are read from their outlines in the SVG. Straight strokes with the long stroke on one side are `[` or `]`. A curve bulging at mid-height is `(` or `)`. A thin bar is `|`. Two strokes meeting in a point are `⟨` or `⟩`. A curve whose outer edge is a sharp point at mid-height is `{` or `}`. The pieces of an extensible bracket are joined first.
@@ -167,6 +173,8 @@ A font names the glyph each character draws ("summationdisplay", "angbracketleft
 pdf2md reads the names from the PDF's fonts. The PDF lists the glyphs of a page in the order they are drawn, and so does the SVG, which also says where each one is. Each lost glyph is written into the empty piece at its place. A page where the two lists differ in length is left alone. The fraction bars of such a book may be drawn as thin lines, not as filled rectangles; both are read.
 
 An arrow or a stroke belongs to the letter it is drawn over: `\vec{k}`, `\not{p}`.
+
+The names cover the big symbols, brackets and roots of a big-symbol font, the angle brackets, the prime, Greek letters as fonts name them ("Lambda1", "epsilon1") and ℏ. A figure or letter of the text font under an arrow is taken into the formula with it.
 
 | Variable | Shows |
 |---|---|
