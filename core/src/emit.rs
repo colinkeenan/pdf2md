@@ -924,15 +924,28 @@ fn chapter_body(book: &Book, i: usize) -> String {
                 let mut text = String::new();
                 render_block(&b.block, &mut text, &mut in_list);
                 for (k, id) in marks.iter().enumerate() {
-                    let mut notes = String::new();
+                    let mut ending: Vec<&Note> = Vec::new();
                     while foot.front().is_some_and(|n| n.page.is_some_and(|p| p <= b.page + k)) {
-                        notes.push_str(&note_inline(foot.pop_front().unwrap()));
+                        ending.push(foot.pop_front().unwrap());
+                    }
+                    if ending.is_empty() {
+                        continue;
                     }
                     // (right after the opening of the bar's block)
-                    let at = text.find(&format!("<a id=\"{id}\"><sup>[")).and_then(|m| text[..m].rfind("<span class=\"page\"")).and_then(|open| text[open..].find('>').map(|e| open + e + 1));
-                    match at {
-                        Some(at) if !notes.is_empty() => text.insert_str(at, &notes),
-                        _ => {}
+                    let mark = text.find(&format!("<a id=\"{id}\"><sup>["));
+                    let at = mark.and_then(|m| text[..m].rfind("<span class=\"page\"")).and_then(|open| text[open..].find('>').map(|e| open + e + 1));
+                    // The page may turn at the paragraph's end (an empty
+                    // page follows): its bar is then a line of its own, and
+                    // the notes stand as paragraphs above it.
+                    let bar = text.find(&format!("<a id=\"{id}\"")).and_then(|m| text[..m].rfind(PAGE_BAR));
+                    let mut apart = String::new();
+                    for n in &ending {
+                        render_note(n, &format!("{}.", n.label), &mut apart);
+                    }
+                    match (at, bar) {
+                        (Some(at), _) => text.insert_str(at, &ending.iter().map(|n| note_inline(n)).collect::<String>()),
+                        (None, Some(bar)) => text.insert_str(bar, &apart),
+                        (None, None) => text.push_str(&apart),
                     }
                 }
                 s.push_str(&text);

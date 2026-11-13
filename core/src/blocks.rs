@@ -1844,6 +1844,14 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
         .min()
         .copied()
         .or_else(|| pages.iter().position(|p| p.lines.first().is_some_and(|l| is_contents_title(&plain_text(l)))));
+    // the book's title as its title pages have it: a page that only says it
+    // again later on (a second half-title) opens nothing
+    let book_titles: HashSet<String> = pages[..contents_page.unwrap_or(0)]
+        .iter()
+        .flat_map(|p| p.lines.iter())
+        .filter(|l| big_text_line(doc, l, st.body))
+        .map(|l| key(&plain_text(l)))
+        .collect();
     for (pi, page) in pages.iter().enumerate() {
         b.page = pi;
         if let Some(l) = &page.label {
@@ -2080,7 +2088,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 // whatever its size ("Preface", "Part I", "Appendix A" in a
                 // book whose numbered chapters have a type size of their own).
                 // Not before the contents: those are the book's title pages.
-                let titles_over = contents_page.is_none_or(|first| pi >= first);
+                let titles_over = contents_page.is_none_or(|first| pi >= first) && !(page.lines.len() == 1 && book_titles.contains(&key(&plain_text(l))));
                 let size = match (st.chapter_size, st.section_size) {
                     (Some(c), Some(sec)) if i == 0 && titles_over && c > 1.25 * sec && size >= 1.25 * sec && l.top >= 0.15 * page.height => c,
                     _ => size,

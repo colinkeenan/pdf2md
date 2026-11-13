@@ -2094,8 +2094,47 @@ pub fn parse_xml_with(xml: &str, lost: &HashMap<String, bool>) -> Result<Doc, St
         .collect();
 
     let mut doc = Doc { fonts, pages, body_size };
+    blank_pages(&mut doc);
+    large_capitals(&mut doc);
     title_words(&mut doc);
     Ok(doc)
+}
+
+/// A page that says only that it is blank ("This page intentionally left
+/// blank") is a blank page.
+fn blank_pages(doc: &mut Doc) {
+    for page in doc.pages.iter_mut() {
+        let words: Vec<String> = page.lines.iter().flat_map(|l| l.spans.iter()).flat_map(|s| s.text.split_whitespace()).map(str::to_lowercase).collect();
+        let has = |w: &str| words.iter().any(|x| x.trim_matches(|c: char| !c.is_alphabetic()) == w);
+        if words.len() <= 8 && has("page") && has("intentionally") && has("blank") {
+            page.lines.clear();
+        }
+    }
+}
+
+/// A title's first letter set larger than the rest ("Q" and "uantum Field
+/// Theory") is the first letter of its word: one piece of text with it.
+fn large_capitals(doc: &mut Doc) {
+    let fonts = doc.fonts.clone();
+    let size_of = |s: &Span| fonts.get(s.font).map_or(s.height, |f| f.size);
+    for line in doc.pages.iter_mut().flat_map(|p| p.lines.iter_mut()) {
+        let [first, second, ..] = line.spans.as_slice() else { continue };
+        let mut letters = first.text.trim().chars();
+        let capital = matches!((letters.next(), letters.next()), (Some(c), None) if c.is_uppercase());
+        let goes_on = second.text.starts_with(char::is_lowercase) && second.left - first.right() <= size_of(first);
+        // (in a title: both larger than the text, and no math, where a
+        // capital has its index after it)
+        let title = size_of(second) >= 1.15 * doc.body_size && [first, second].iter().all(|s| !fonts.get(s.font).is_some_and(|f| f.math));
+        if !capital || !goes_on || !title || size_of(first) < 1.15 * size_of(second) {
+            continue;
+        }
+        let mut spans = std::mem::take(&mut line.spans);
+        let capital = spans.remove(0);
+        spans[0].text = format!("{}{}", capital.text.trim(), spans[0].text);
+        spans[0].width = spans[0].right() - capital.left;
+        spans[0].left = capital.left;
+        *line = Line { col: line.col, bars: std::mem::take(&mut line.bars), ..make_line(spans, &size_of) };
+    }
 }
 
 /// Words larger than the book's text are no index or exponent: a title
