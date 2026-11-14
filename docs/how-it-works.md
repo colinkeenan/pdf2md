@@ -1,7 +1,8 @@
 # How pdf2md works
 
-The [README](../README.md) says what pdf2md does and how to use it. This page describes what it writes and how it reads each kind of PDF, including the rules it applies and where they stop working. The rules were worked out on three books: Dyson's *Advanced Quantum Mechanics* (made with TeX), Sakurai's *Modern Quantum Mechanics* (made from an ebook) and Zee's *Quantum Field Theory in a Nutshell* (a scan).
+The [README](../README.md) says what pdf2md does and how to use it. This page describes what it writes and how it reads each kind of PDF, including the rules it applies and where they stop working. The rules were worked out on four PDFs of three books: Dyson's *Advanced Quantum Mechanics* (made with TeX), Sakurai's *Modern Quantum Mechanics* (made from an ebook), and Zee's *Quantum Field Theory in a Nutshell* twice, as a scan of the first edition and as the publisher's PDF of the second. [Where the rules come from](#where-the-rules-come-from) says which book each part was fitted to and which numbers are guesses.
 
+- [Where the rules come from](#where-the-rules-come-from)
 - [The source](#the-source)
 - [What is written](#what-is-written)
 - [The two forms of math](#the-two-forms-of-math)
@@ -11,6 +12,56 @@ The [README](../README.md) says what pdf2md does and how to use it. This page de
 - [What is kept between conversions](#what-is-kept-between-conversions)
 - [The app window](#the-app-window)
 - [Measurements](#measurements)
+
+## Where the rules come from
+
+No rule asks which book it is reading. Every rule is stated by what is on the page. But each was written after seeing a fault in one of four PDFs, and was checked only against those four. Under each heading below, a line in italics names the PDF the rules of that part were worked out on and how far they can be expected to carry:
+
+* **general**: follows from how printed pages are made. It should hold for another book.
+* **fitted**: the idea is general, but the numbers in it were set by looking at these books. Another book may need them moved.
+* **one kind of PDF**: holds only for a PDF made the same way (the same fonts, the same program, the same publisher's design).
+
+The four PDFs:
+
+| Short name | What it is | What is special about it |
+|---|---|---|
+| Dyson | made with TeX, 149 pages | Computer Modern fonts; no section numbers; end notes |
+| Sakurai | made from an ebook with calibre, 771 pages | formulas are pictures; math in sentences is in the text font; tables on grey panels |
+| Zee 1 | scan of the first edition, 537 pages | pages are pictures. **This PDF is gone**: the scan path has had no book to test it on since November 2026 |
+| Zee 2 | publisher's PDF of the second edition, 605 pages | MathTime fonts that give no characters for many symbols; framed chapter numbers; exercises and notes in smaller type |
+
+### Numbers that are guesses
+
+Each of these was set to make the books above come out right, and none was derived. They are the first places to look when another book goes wrong. For the older ones, the book named is taken from the notes of the work, not from the history of each line.
+
+| Number | What it decides | Where | First set on |
+|---|---|---|---|
+| gap > 0.15 × type size | a space between two pieces of a line | `blocks.rs` `emit_line` | Dyson, then Zee 2 |
+| gap ≤ 0.3 × type size | no space before a comma or full stop | `blocks.rs` `emit_line` | Zee 2 |
+| size < 0.85 × the line's | a piece is a script (raised or lowered) | `layout.rs` `make_line`, `group_lines` | Dyson |
+| shares < half its height | a piece only touches a line and waits | `layout.rs` `group_lines` | Zee 2 |
+| 2 × type size away, 0.3 × beside | a stray piece moves to the line beside it | `layout.rs` `group_lines` | Zee 2 |
+| math share ≥ 0.7, or ≥ 0.25 and indented by 4 × body | a line is a displayed equation | `blocks.rs` `display_flags` | Dyson |
+| ≤ 1.6 × type size under prose | an all-math line is the paragraph's last line, not a display | `blocks.rs` `display_flags` | Zee 2 |
+| within 3 lines, 2 × body right of a bracket | a row of numbers is a matrix row | `blocks.rs` `display_flags` | Zee 2 |
+| 0.75 × type size above | an accent is over that letter | `mathtex.rs` `put_accents` | Zee 2 |
+| letter widths 0.27 to 0.8 em | which letter of a piece an accent or picture is at | `layout.rs` `char_width` | Sakurai |
+| room ≥ 0.5 × type size | a line ended early on purpose (hard return) | `blocks.rs` `HARD_RETURN_ROOM` | Sakurai |
+| gap above ≥ 1.4 × line spacing | a heading, or a new paragraph | `blocks.rs` | Dyson |
+| chapter title ≥ 1.25 × section heading | sections go one heading level down | `structure.rs` | chosen; Sakurai is below it |
+| type ≥ 1.2 or 1.3 × body in a frame | a framed title, not a table | `layout.rs` `read_drawings` | Zee 2 |
+| 3 pieces of 15 pt, or 8 of 40 pt | drawn paths are a picture | `layout.rs` `parse_svg_figures` | Dyson |
+| under 30 px wide | an equation picture is a single symbol | `math_ocr.py` | Sakurai |
+| a shape 56 px both ways | an equation picture is a diagram | `math_ocr.py` `BIG_SHAPE` | Sakurai |
+| strokes 1.1–1.3 px, bold 1.6–1.8 px | a picture has bold letters | `math_ocr.py` | Sakurai (800 pictures, at 96 dpi) |
+
+### Known weak points for another book
+
+* **Which path a text PDF takes** is decided by whether it has Computer Modern or AMS fonts. Without them it is read as an ebook-made PDF. Zee 2 takes the right path only because it uses a few Computer Modern symbols beside its MathTime fonts. A book set wholly in another publisher's math fonts would be sent down the ebook path and its math fonts ignored (`blocks.rs` `is_text_math`).
+* **Math fonts are known by name**: Computer Modern, AMS, Euler, RSFS and MathTime (`layout.rs` `is_math_font`). Text in any other math font is taken for prose.
+* **Glyph names** are known for the fonts of Zee 2. Another font family names its glyphs differently, and unknown names are left out (`PDF2MD_GLYPHDEBUG=1` lists them).
+* **The scan path** depends on marker 1.10.2 and was fitted to one scan that is gone.
+* **Sizes in pixels** assume equation pictures at 96 dpi, as calibre makes them.
 
 ## The source
 
@@ -59,6 +110,8 @@ Several switches print what the converter sees:
 
 ### Files
 
+*Worked out on: all four; the split of front matter on Sakurai and Zee 2. General, and the file naming is the reader's choice, not a finding.*
+
 Each chapter is a file named by its number, such as `03-theory-of-angular-momentum.md`, with all its sections. A book whose chapters carry no numbers is numbered in order. Appendices and the index count on after the last chapter.
 
 `00-front-matter.md` holds everything before chapter 1, each title page or preface under its own heading. The table of contents is a file of its own right after it. Where the book prints prefaces or a foreword after its contents, the files follow the book: `00a-title-pages.md` holds what comes before the contents, `00c-additional-front-matter.md` what comes after them. A page printed after the contents that holds only a title (the title of the lectures, before the first chapter) heads the file after the contents, with its page marker. A half-title, the book's title printed once more on a page of its own, stands at the top of the file that follows it, above that file's title: above the word "Contents", or above the first part. It is never the last thing in the file before. An empty page belongs to what comes before it.
@@ -66,6 +119,8 @@ Each chapter is a file named by its number, such as `03-theory-of-angular-moment
 `book.md` is the whole book in one file, with all links pointing inside it, so one search covers the book.
 
 ### Page markers
+
+*Worked out on: all four. General. The last bullet is for one kind of PDF (ebook-made, Sakurai).*
 
 Where a printed page starts there is a marker, <sup>[p. 32]</sup>, with the anchor `#p32`. It stands on a line of its own under a faint bar.
 
@@ -81,9 +136,13 @@ Above the bar, at the right, stands the marker of the page that ends there, <sup
 
 ### Footnotes and references
 
+*Worked out on: Dyson (end notes), Zee 1 and Zee 2 (notes at the foot of the page). General.*
+
 A footnote printed at the foot of a page is written at the foot of that page, just above the next page's bar. Notes and references printed at the end of the book move to the end of the chapter that cites them. A marker links to its note, and the note has a ↩ link back for each place that cites it. A footnote whose marker was not found still stands at the foot of its page and says so.
 
 ### Contents, index and cross-references
+
+*Worked out on: Dyson (index), Sakurai (cross-references that are links in the PDF), Zee 2 (contents). Fitted: the reference words ("Section", "Figure", …) are English, and a book whose PDF carries no links gets none.*
 
 * **Contents entries** link to chapter files and to headings inside them. Each shows its printed pages, a range for a chapter ("pp. 4–21") and a page for a section, linked to that page's marker.
 * **Index page numbers** link to the word on that page where the entry's term appears, allowing for endings ("anticommute" finds "anticommuting") and for names ("Lamb, Willis E." finds "Lamb"). If the term is not on that page, the link goes to the page marker. In Dyson about 40 % of index links find their term. The word found is wrapped in its anchor, so a viewer can highlight it.
@@ -91,17 +150,23 @@ A footnote printed at the foot of a page is written at the foot of that page, ju
 
 ### Pictures
 
+*Worked out on: Dyson; the cover on Sakurai and Zee 2. Fitted.*
+
 Pictures are cut from the PDF as PNG files in `images/`; `fig-p049-1.png` is the first picture on PDF page 49. Labels that belong to a picture are part of the image, not of the text. Each picture gets a caption numbered through the book with its printed page, such as _Figure 3 (p. 43)_.
 
 A page that is one picture and no text, such as the book's cover, is kept as that picture on its own page. On the PDF's first page it is the cover: it has no figure number and no caption.
 
 ### Tables and columns
 
+*Worked out on: Sakurai (first paragraph), Zee 2 (frames and grids). Fitted. The framed chapter numbers and the line under the title are one kind of PDF: Zee 2's design.*
+
 A table is written as an HTML table with Markdown in its cells. Under every table that pdf2md builds stands a picture of the printed table in a fold, because a cell can be misread. A title or a note that the book sets as part of the table is a cell across all its columns, in a row marked `<tr class="title">` or `<tr class="note">`. A page set in two columns, such as an index, stays in two columns.
 
 **Text in a frame of drawn lines, or in a grid of them,** is a table whose cells are the fields of the grid; a frame alone is one cell. A line of the page that crosses several fields is cut at the upright lines. A cell of symbols only is one formula. A cell with words keeps its lines where the frame has one column. The number of the equation at the margin is written under the table. The frame of a chapter's number or title, in larger type, is no table: it is drawn in the heading, around the number ("I.1"), the first letter or the whole title as the book has it. Where the book draws a line under the title from the frame to the right margin, the heading has that line, and the frame stands on it. The file's name and the links to it are the plain title. A viewer that drops `style` attributes shows the heading without frame and line.
 
 ## The two forms of math
+
+*Worked out on: Dyson, against GitHub as it behaved in November 2026. General for any book; it depends on GitHub, which may change. The github form was checked on GitHub with Dyson only.*
 
 Formulas are written in one of two forms, chosen with "Math" in the window or `--math` on the command line.
 
@@ -119,9 +184,11 @@ Formulas are written in one of two forms, chosen with "Math" in the window or `-
 
 ## PDFs that hold text
 
-This is the path for a PDF made with TeX, where the math is text in math fonts. Everything is decided from the layout, measured against the book's own usual values: body font size, margins and line spacing.
+This is the path for a PDF made with TeX or by a publisher's typesetting system, where the math is text in math fonts (Dyson and Zee 2). Everything is decided from the layout, measured against the book's own usual values: body font size, margins and line spacing.
 
 ### Pages and chapters
+
+*Worked out on: Dyson, then Zee 2 (chapters numbered within parts, contents with the page at the right margin). Fitted: what counts as "larger" and "short" was set on these two.*
 
 * **Printed page numbers** come from the running head ("THE DIRAC THEORY 6") or from a lone number at the foot of the page. A page without one (the page a chapter opens on, an empty page) counts on from the page before, in figures or in Roman numerals, and the pages before the first numbered one count back to page 1.
 * **Chapters** start at headings in the chapter-title size: the most common large size that holds real words. Where chapters are numbered within parts ("IV.2"), that number's size is the chapter size, and a page that opens well down with a larger title than the sections' ("Preface", "Part I", "Appendix A") opens a file too. A frame or rule drawn around a title or its number is not a picture.
@@ -130,6 +197,8 @@ This is the path for a PDF made with TeX, where the math is text in math fonts. 
 * **Heading levels.** In a book without section numbers, the indentation in the contents decides `##` or `###`, and a heading the contents do not list goes by its type size. In a book that numbers its sections, the number decides: `1.3` is `#` and `1.3.1` is `##`, or one level deeper each where the chapter titles are at least a quarter larger than the `1.3` headings. An unnumbered heading takes the level of the numbered headings of its size.
 
 ### Text
+
+*Worked out on: Dyson; hard returns on Sakurai; the last five bullets on Zee 2. Fitted. "Lines" is general and was the largest single fault found in Zee 2; it also improved Dyson and Sakurai.*
 
 * **Italic and bold** become `_…_` and `**…**`. Headings carry neither.
 * **Centered text**, such as a title page, goes in `<div align="center">` and keeps its line breaks. A line counts as centered when its middle is at the middle of the column and it is clearly in from both margins.
@@ -144,6 +213,8 @@ This is the path for a PDF made with TeX, where the math is text in math fonts. 
 
 ### Displayed equations
 
+*Worked out on: Dyson, then Zee 2. Fitted: a different way of setting fractions or limits will show new faults here first.*
+
 A displayed equation is a line that is mostly math and indented, or one with an equation number at the right margin, together with the rows of fractions and limits around it. It is rebuilt from the positions of the glyphs and the drawn bars:
 
 * **Fractions.** A bar with symbols right above and below it is a fraction. A clearly narrower bar inside is a nested fraction; one of the same width is a separate fraction below. Where no bar is found, a group above the main row that overlaps a group below is taken as a fraction.
@@ -154,11 +225,15 @@ A displayed equation is a line that is mostly math and indented, or one with an 
 
 ### Exponents
 
+*Worked out on: Zee 2. One kind of PDF in part: the full-size integral sign and the full stop as a product dot inside an exponent are that book's typesetting.*
+
 * **A small stacked fraction** set above or below the line (a power of ½) is an exponent or an index. One on the line is a symbol of the line.
 * **An integral or sum inside an exponent** may be set with its sign as large as on the line, between the small letters before and after it: `e^{i \int d^{4} x …}`. A big operator that follows an exponent and is followed by more of it at the same height is inside the exponent. So is the dot of a product set as a raised full stop: `e^{- i k \cdot x}`. With small letters on both sides of it, it is a small dot among them, also after an index set higher: `e^{J \cdot K^{-1} \cdot J}`.
 * **What stands under "lim"** is its index, all of it: `\lim_{N \to \infty}`.
 
 ### Brackets and matrices
+
+*Worked out on: Dyson. One kind of PDF: reading brackets from outlines, and the "h" and "i" for ⟨ ⟩, are for TeX's fonts only. Pairing brackets and building matrices is general and is used for Zee 2 as well.*
 
 `pdftohtml` gives tall brackets no character, or drops them, so they are read from their outlines in the SVG. Straight strokes with the long stroke on one side are `[` or `]`. A curve bulging at mid-height is `(` or `)`. A thin bar is `|`. Two strokes meeting in a point are `⟨` or `⟩`. A curve whose outer edge is a sharp point at mid-height is `{` or `}`. The pieces of an extensible bracket are joined first.
 
@@ -172,6 +247,8 @@ Brackets are then paired as in text, nested ones included, and written as `\left
 TeX's symbol font has a quirk: in the PDF's text, ⟨ ⟩ come out as "h" and "i", | and ‖ as "j" and "k", { } as "f" and "g", and capitals as calligraphic letters. These are mapped back.
 
 ### Symbols the text leaves out
+
+*Worked out on: Zee 2. One kind of PDF: MathTime fonts. The method (names from the font, places from the SVG) is general; the table of names is not.*
 
 A font names the glyph each character draws ("summationdisplay", "angbracketleft") and usually also gives its Unicode character. Where a font gives no characters, or not for all its glyphs, `pdftohtml` gives an empty piece of text. Some publishers' math fonts do this for the big symbols (∫, Σ, ∏, large brackets and roots), the angle brackets, the prime, the arrow over a vector and the stroke of the Feynman slash.
 
@@ -187,6 +264,8 @@ The names cover the big symbols, brackets and roots of a big-symbol font, the an
 
 ### Notation lists and pictures
 
+*Worked out on: Dyson. Fitted.*
+
 * **Aligned columns.** Three or more lines whose columns start at the same positions, with words in the last column, become a LaTeX `array`.
 * **Pictures** are found in the SVG: stroked or filled paths that are neither glyphs nor thin bars, and embedded images. Pieces close together are one picture. A group counts as a picture if it holds an image, or 3 or more pieces at least 15 pt square, or 8 or more pieces at least 40 pt wide. Text inside the picture, and short text just beside it, is a label and becomes part of the image. The picture is then rendered from the PDF with `pdftocairo -png`.
 
@@ -195,6 +274,8 @@ The names cover the big symbols, brackets and roots of a big-symbol font, the an
 A PDF made from an ebook, with calibre or from Kindle, holds its prose as text but its math in two other ways: larger formulas as small pictures, and simple math inside sentences in the ordinary text font. pdf2md takes this path when the book has no Computer Modern fonts.
 
 ### Equation pictures
+
+*Worked out on: Sakurai. One kind of PDF: calibre's equation pictures at 96 dpi, read by texify 0.2.1. Most bullets answer a habit of that model, and another model would need them rewritten.*
 
 Each equation picture goes to [texify](https://github.com/VikParuchuri/texify), a math-recognition model that runs locally. The LaTeX it reads is put inline where the picture sits in a sentence, and as a displayed equation where it stands alone. Readings are cached by picture in `~/.cache/pdf2md/ocr/`.
 
@@ -209,6 +290,8 @@ Each equation picture goes to [texify](https://github.com/VikParuchuri/texify), 
 
 ### Math in the text font
 
+*Worked out on: Sakurai. Fitted: the lists of what is surely math and of common italic words are English and were filled from this book.*
+
 Inside a sentence, an italic letter is a variable and the brackets and "=" around it are ordinary characters. The PDF gives each line as pieces by typeface, with prose and symbols mixed in one piece. pdf2md cuts each piece into words, symbols, numbers, brackets and punctuation. A stretch with no word in it is one formula if something in it is surely math.
 
 * **Surely math:** an italic letter with its primes; a Greek letter; a relation or operator that prose never uses, such as `=`, `≈`, `→`, `×`, `⟨`, `|`, `∂`, `ħ`; a subscript or superscript; a single bold letter (a vector); an equation picture.
@@ -220,17 +303,23 @@ Inside a sentence, an italic letter is a variable and the brackets and "=" aroun
 
 ### Tables
 
+*Worked out on: Sakurai. One kind of PDF: the grey panel with a rule under each head cell is that publisher's table design. Reading a table picture cell by cell is fitted.*
+
 Such a book sets a table on a grey panel, with a short rule under each cell of the head. The rules give the columns. The rows have no marks, so they are found from how the cells stand: centred in their row or at its top, whichever fits the table. A table that reaches the foot of its page continues at the top of the next: the two parts are written as one table, with the pictures of both under it. A table whose head starts at the foot of a page, with the rest on the next, gets those lines into its head. The caption, set centered on a panel on top of the table, is the table's title: one cell across all its columns. A note set on a panel of its own under a table is the table's foot, a cell across all its columns too, and part of its picture.
 
 A table that the book holds as a picture is read cell by cell. The picture is cut from the page again at higher resolution. Its rows are the lines of text on it, and its columns end where no row has ink. Each cell is then read on its own, as words, as a whole number or as a formula. A picture that does not split into rows and columns this way keeps the model's reading of it as one array. Each cell is set as it is in the picture: at the left of its column, in its middle or at its right, by where its ink stands between the column's edges (a cell that fills the column is set as most of the others are). Where the book sets the caption centered on a panel on top of such a table, the caption is the table's title: one cell across all its columns, above the rows. Such a table needs no caption: every large picture that was read as a formula is looked at once, and is a table if two or more rules run unbroken across it and it parts into rows and columns. (A table picture with neither a caption nor rules cannot be told from a formula of several lines.)
 
 ## Scanned books
 
+*All of this section was worked out on one scan (Zee 1), which has since been lost; nothing here has been run on a second scan.*
+
 A scan is a PDF whose pages are pictures. pdf2md recognizes one by itself: next to no text, and an image on nearly every page. It has the pages read by [marker](https://github.com/datalab-to/marker), a page-reading model that runs locally. marker gives the prose, the formulas as LaTeX, the headings, the footnotes and the places of the pictures. pdf2md builds chapters, page markers, links and files from that as for any other book.
 
 A page takes about 3 seconds on a recent graphics card. Pages read are cached in `~/.cache/pdf2md/scan/`, so a later conversion takes seconds and one that was stopped goes on where it was. pdf2md uses marker 1.10.2, the last version that runs inside Python alone. Tables of contents also need `pdftotext` or, for a scan without hidden text, Tesseract.
 
 ### Structure
+
+*Worked out on: Zee 1. One kind of PDF: what marker 1.10.2 gives for a scan. Not tested since that scan was lost.*
 
 * **Chapters** are told from the layout, because the height of a heading's box says too little about its type size. A page that opens with a heading and has no running head opens a chapter. "Chapter I.5" and the title under it are one title. Everything before the first "Chapter" or "Part" is front matter. A book without running heads goes by the heights of its headings, which is less sure.
 * **Sections** are one level (`##`) unless they are numbered.
@@ -241,6 +330,8 @@ A page takes about 3 seconds on a recent graphics card. Pages read are cached in
 
 ### Text
 
+*Worked out on: Zee 1. One kind of PDF: most bullets mend what marker got wrong on that scan.*
+
 * **Centered pages**, such as a title page or a dedication, stay centered and keep their line ends. On other pages, a block of several lines that stops short of the right margin keeps its line ends; a block as wide as the text is a paragraph.
 * **Lines read too short.** Where marker read much less than the line holds, the words come from the PDF's hidden text, if that text contains marker's words and more.
 * **Words on a picture** are part of the picture.
@@ -250,20 +341,28 @@ A page takes about 3 seconds on a recent graphics card. Pages read are cached in
 
 ### Math
 
+*Worked out on: Zee 1. One kind of PDF: answers what marker left as plain text in that book.*
+
 * **Symbols marker left as plain text** are made formulas by their shape: a letter or two followed by an argument in brackets (`J(x)`, `SU(2)`); a single letter other than "a", "A", "I" that is not an initial, a label or a unit; a short relation without spaces (`m=0`).
 * **Displayed equations** keep their numbers. Each is read a second time by texify from a picture cut from the page, and the ones the two readers read differently are listed in `check-equations.md`. Without the texify environment there is no list.
 * **Unfinished formulas.** A formula marker did not finish, such as a matrix cut off, is replaced by the second reading if that one is whole.
 
 ### Footnotes
 
+*Worked out on: Zee 1. Fitted: found 43 of 46 missing markers there.*
+
 marker does not see every small raised number in the text. Where a page has a footnote without its marker, pdf2md looks for the marker on the picture of that page and of the pages before and after: a small piece of ink set high in its line, right after a word (or after the stop that follows a number or a bracket), that most of five readings take for the note's number. It is put into the text after that word if the word, with the words before it, is found there in one place only, and if the markers of the page still rise from one to the next.
 
 ### Contents and tables
+
+*Worked out on: Zee 1. One kind of PDF.*
 
 * **The table of contents** is read line by line from the PDF's hidden text or by Tesseract, because marker reads tables cell by cell, which shuffles a contents page. That text is poor, so an entry whose page opens with a title takes the title as marker read it. Contents set in columns are written as a table of number, title and pages.
 * **Other tables** are kept as marker read them if their rows and cells hold together: at least two rows and two columns, rows of similar length, most cells filled. A table that does not hold together stays a picture. A table numbered like an equation, "(16)" beside or under it, has that number written under it as an equation number, so references to it find the table.
 
 ## What is kept between conversions
+
+*General: it does not depend on the book. Tried on test edits only so far, not on a book corrected by hand over months.*
 
 Before a book is converted again, pdf2md collects what the reader changed in the old files, from the chapter files and from `book.md`.
 
@@ -288,4 +387,5 @@ A copy of the notes and fixes is kept in `~/.local/share/pdf2md/notes/`. Notes f
 
 * **Dyson** (TeX, 149 pages): every chapter, contents entry, reference and index entry is linked, and all 93 footnotes. KaTeX renders every displayed equation. It is the sample in [`samples/dyson`](../samples/dyson) and the reference for regressions.
 * **Sakurai** (ebook-made, 771 PDF pages): about two minutes for the first conversion on an RTX 5080, about 15 seconds after that. All 12,665 formulas are written where a Markdown reader takes them as math.
-* **Zee** (scan, 537 pages): half an hour for the first conversion, half a minute after that. 10,262 formulas, all of which render. Of 1,190 displayed equations read twice, 403 are listed to check, 40 with large differences. Of 119 footnotes, 116 are linked to their markers, 43 of those found on the pictures of the pages.
+* **Zee, second edition** (publisher's PDF, 605 pages): about 10 seconds. 14,102 formulas, all of which render; 2,272 links inside the book, none broken. Known to be wrong still: about 60 indices that lost their letter, a few root signs, and labels of some figures written as formulas.
+* **Zee, first edition** (scan, 537 pages; measured before the scan was lost): half an hour for the first conversion, half a minute after that. 10,262 formulas, all of which render. Of 1,190 displayed equations read twice, 403 are listed to check, 40 with large differences. Of 119 footnotes, 116 are linked to their markers, 43 of those found on the pictures of the pages.
