@@ -1,6 +1,6 @@
 # How pdf2md works
 
-The [README](../README.md) says what pdf2md does and how to use it. This page describes what it writes and how it reads each kind of PDF, including the rules it applies and where they stop working. The rules were worked out on four PDFs of three books: Dyson's *Advanced Quantum Mechanics* (made with TeX), Sakurai's *Modern Quantum Mechanics* (made from an ebook), and Zee's *Quantum Field Theory in a Nutshell* twice, as a scan of the first edition and as the publisher's PDF of the second. [Where the rules come from](#where-the-rules-come-from) says which book each part was fitted to and which numbers are guesses.
+The [README](../README.md) says what pdf2md does and how to use it. This page describes what it writes and how it reads each kind of PDF, including the rules it applies and where they stop working. The rules were worked out on five PDFs of four books: Dyson's *Advanced Quantum Mechanics* (made with TeX), Sakurai's *Modern Quantum Mechanics* (made from an ebook), Zee's *Quantum Field Theory in a Nutshell* twice, as a scan of the first edition and as the publisher's PDF of the second, and the UCSD lecture notes *Quantum Physics (Physics 130)* (made with TeX), the first book converted after the rules were written. [Where the rules come from](#where-the-rules-come-from) says which book each part was fitted to and which numbers are guesses.
 
 - [Where the rules come from](#where-the-rules-come-from)
 - [The source](#the-source)
@@ -15,7 +15,7 @@ The [README](../README.md) says what pdf2md does and how to use it. This page de
 
 ## Where the rules come from
 
-No rule asks which book it is reading. Every rule is stated by what is on the page. But each was written after seeing a fault in one of four PDFs, and was checked only against those four. Under each heading below, a line in italics names the PDF the rules of that part were worked out on and how far they can be expected to carry:
+No rule asks which book it is reading. Every rule is stated by what is on the page. But each was written after seeing a fault in one of five PDFs, and was checked only against those. Under each heading below, a line in italics names the PDF the rules of that part were worked out on and how far they can be expected to carry:
 
 * **general**: follows from how printed pages are made. It should hold for another book.
 * **fitted**: the idea is general, but the numbers in it were set by looking at these books. Another book may need them moved.
@@ -28,6 +28,7 @@ The four PDFs:
 | Dyson | made with TeX, 149 pages | Computer Modern fonts; no section numbers; end notes |
 | Sakurai | made from an ebook with calibre, 771 pages | formulas are pictures; math in sentences is in the text font; tables on grey panels |
 | Zee 1 | scan of the first edition, 537 pages | pages are pictures. **This PDF is gone**: the scan path has had no book to test it on since November 2026 |
+| UCSD | made with TeX, 548 pages, letter paper | Computer Modern like Dyson, but numbered chapters and sections, vectors under arrows, and figures made in other programs with their own fonts |
 | Zee 2 | publisher's PDF of the second edition, 605 pages | MathTime fonts that give no characters for many symbols; framed chapter numbers; exercises and notes in smaller type |
 
 ### Numbers that are guesses
@@ -47,6 +48,9 @@ Each of these was set to make the books above come out right, and none was deriv
 | 0.75 × type size above | an accent is over that letter | `mathtex.rs` `put_accents` | Zee 2 |
 | letter widths 0.27 to 0.8 em | which letter of a piece an accent or picture is at | `layout.rs` `char_width` | Sakurai |
 | room ≥ 0.5 × type size | a line ended early on purpose (hard return) | `blocks.rs` `HARD_RETURN_ROOM` | Sakurai |
+| a lone number in the top 13 % of the page (words: 9 %) | the page's printed number | `pages.rs` `prepare` | Dyson, then UCSD |
+| under 1 % of the characters, on under 1 page in 5 | a font letters figures only | `layout.rs` `figure_fonts` | UCSD, checked on Zee 2 |
+| labels within 4 lines, strokes within 2 | how far a lettered picture reaches | `layout.rs` `lettered_figures` | UCSD |
 | gap above ≥ 1.4 × line spacing | a heading, or a new paragraph | `blocks.rs` | Dyson |
 | chapter title ≥ 1.25 × section heading | sections go one heading level down | `structure.rs` | chosen; Sakurai is below it |
 | type ≥ 1.2 or 1.3 × body in a frame | a framed title, not a table | `layout.rs` `read_drawings` | Zee 2 |
@@ -54,6 +58,18 @@ Each of these was set to make the books above come out right, and none was deriv
 | under 30 px wide | an equation picture is a single symbol | `math_ocr.py` | Sakurai |
 | a shape 56 px both ways | an equation picture is a diagram | `math_ocr.py` `BIG_SHAPE` | Sakurai |
 | strokes 1.1–1.3 px, bold 1.6–1.8 px | a picture has bold letters | `math_ocr.py` | Sakurai (800 pictures, at 96 dpi) |
+
+### What the fifth PDF showed
+
+UCSD was the first book converted with rules written for others, and it is the same kind of PDF as Dyson. It converted without stopping, and its prose, formulas and links were mostly right at once (8,800 formulas, all but one rendering). Its structure was not: it came out as 11 chapters named after figure labels, with 110 of 548 page numbers. Five things had been fitted to Dyson without anyone knowing:
+
+* the chapter size was taken from a lone "0" on a figure's axis (now: from numbered titles first);
+* the page number at the head of a page was looked for in the top 9 % of the page, and letter paper puts it at 9.7 % (now: a number alone down to 13 %);
+* a drawing counted as a picture only by the number and size of its strokes (now: also by lettering in a font of its own);
+* TeX's arrow over a vector was read as ħ, which Dyson never showed because it sets vectors bold, except in five places where it was wrong there too;
+* a raised number after a closing bracket was taken for a footnote's mark.
+
+So "the same kind of PDF" carried the math and the prose, and did not carry the layout numbers.
 
 ### Known weak points for another book
 
@@ -385,6 +401,7 @@ A copy of the notes and fixes is kept in `~/.local/share/pdf2md/notes/`. Notes f
 
 ## Measurements
 
+* **UCSD Physics 130** (TeX, 548 pages): about a minute for the first conversion (it has 53 bitmap pictures, which are looked at by the math recognizer), 10 seconds after that. 37 chapters, all 548 page markers, every contents entry linked, 85 pictures. 8,754 formulas, one of which does not render. Known to be wrong still: about 200 indices without their letter, about 50 root signs without what is under them, 14 integrals whose upper limit went to the line above, 58 powers written as raised numbers, and bitmap figures read as equations.
 * **Dyson** (TeX, 149 pages): every chapter, contents entry, reference and index entry is linked, and all 93 footnotes. KaTeX renders every displayed equation. It is the sample in [`samples/dyson`](../samples/dyson) and the reference for regressions.
 * **Sakurai** (ebook-made, 771 PDF pages): about two minutes for the first conversion on an RTX 5080, about 15 seconds after that. All 12,665 formulas are written where a Markdown reader takes them as math.
 * **Zee, second edition** (publisher's PDF, 605 pages): about 10 seconds. 14,102 formulas, all of which render; 2,272 links inside the book, none broken. Known to be wrong still: about 60 indices that lost their letter, a few root signs, and labels of some figures written as formulas.
