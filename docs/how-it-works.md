@@ -138,6 +138,9 @@ This is the path for a PDF made with TeX, where the math is text in math fonts. 
 
 * **The name under a quotation** ("—N. P. Ong, Princeton University") is the last line of the quotation's paragraph, on a line of its own, and ends it: what follows is another paragraph, also where the page ends with the name.
 * **Over a page** a paragraph goes on only in the type size it is set in.
+* **Lines.** Pieces of text are of the line their middle is in. A math font's box for "=" or "−" is taller than the letters and reaches into the line above; such a piece waits until all lines are known and goes to the one it shares most of its height with. A root sign is of the line its foot stands in.
+* **Words and formulas.** A space is written where the gap between two pieces is wider than a sixth of the line's own type size (notes and exercises are set smaller). The name of a function before its formula ("log", "tr", "cos", "det") is the formula's first word. A number beside a formula's open "=", "→" or "×" is its other side.
+* **The last line of a paragraph** that is all math is no displayed equation: it starts where the line above it starts, at the paragraph's line spacing.
 
 ### Displayed equations
 
@@ -147,12 +150,12 @@ A displayed equation is a line that is mostly math and indented, or one with an 
 * **Roots and overlines.** A bar right after a root sign is a square root. A bar just above a single symbol, with no numerator above it, is an overline (ψ̄).
 * **Scripts and limits.** Small raised or lowered glyphs are scripts. Groups around Σ or ∫ are limits.
 * **Several lines.** A system of equations with one number, or an equation continued on a line that starts with + or −, becomes an `aligned` block.
-* **Accents** drawn as separate glyphs (˜ ˆ ˙ ¨) become `\tilde`, `\hat`, `\dot`, `\ddot`. A labelled underbrace becomes `\underbrace{…}_{\text{label}}`.
+* **Accents** drawn as separate glyphs (˜ ˆ ˙ ¨ ¯) become `\tilde`, `\hat`, `\dot`, `\ddot`, `\bar`, over the letter they are drawn over: where the letter is in its piece of text is told by the usual widths of letters. A labelled underbrace becomes `\underbrace{…}_{\text{label}}`.
 
 ### Exponents
 
 * **A small stacked fraction** set above or below the line (a power of ½) is an exponent or an index. One on the line is a symbol of the line.
-* **An integral or sum inside an exponent** may be set with its sign as large as on the line, between the small letters before and after it: `e^{i \int d^{4} x …}`. A big operator that follows an exponent and is followed by more of it at the same height is inside the exponent. So is the dot of a product set as a raised full stop: `e^{- i k \cdot x}`.
+* **An integral or sum inside an exponent** may be set with its sign as large as on the line, between the small letters before and after it: `e^{i \int d^{4} x …}`. A big operator that follows an exponent and is followed by more of it at the same height is inside the exponent. So is the dot of a product set as a raised full stop: `e^{- i k \cdot x}`. With small letters on both sides of it, it is a small dot among them, also after an index set higher: `e^{J \cdot K^{-1} \cdot J}`.
 * **What stands under "lim"** is its index, all of it: `\lim_{N \to \infty}`.
 
 ### Brackets and matrices
