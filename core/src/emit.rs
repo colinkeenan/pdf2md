@@ -181,7 +181,11 @@ fn numbers_into_formulas(mut inl: Vec<Inline>) -> Vec<Inline> {
         let n = (0..chars.len())
             .take_while(|&k| chars[k].is_ascii_digit() || (chars[k] == '.' && chars.get(k + 1).is_some_and(char::is_ascii_digit)))
             .count();
-        *m = format!("{} {}", m.trim(), &t[..n]);
+        // (under a root sign that ends the formula, "1/√" and then "2")
+        *m = match m.trim().strip_suffix("\\surd") {
+            Some(before) => format!("{} \\sqrt{{{}}}", before.trim_end(), &t[..n]).trim_start().to_string(),
+            None => format!("{} {}", m.trim(), &t[..n]),
+        };
         *t = t[n..].to_string();
     }
     inl
