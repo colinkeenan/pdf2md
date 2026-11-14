@@ -382,7 +382,7 @@ This is the same as $`\ell`$ = 0 term that we got for the spin orbit correction.
 We compute the energy change due to a weak magnetic field using first order Perturbation Theory.
 
 ```math
-\begin{pmatrix} \psi_{n\ell jm_{j}} \begin{vmatrix} \frac{eB}{2 mc} ( L_{z} + 2 S_{z} ) \\ {}_{z} + 2 S_{z} ) = J_{z} + \end{vmatrix} \psi_{n\ell jm_{j}} \\ ( L \quad S_{z} \end{pmatrix}
+\begin{aligned} & \quad \left\langle \psi_{n\ell jm_{j}} \left| \frac{eB}{2 mc} ( L_{z} + 2 S_{z} ) \right| \psi_{n\ell jm_{j}} \right\rangle \\ ( L_{z} + 2 S_{z} ) &= J_{z} + S_{z} \end{aligned}
 ```
 
 The $`J_{z}`$ part is easy since we are in eigenstates of that operator.

@@ -104,7 +104,7 @@ k^{\prime} \cot ( k^{\prime} a ) = k \cot ( ka ) .
 We can compute the total scattering cross section using the relation $`\int d`$Ω$`P_{\ell}`$(cos $`\theta ) P_{\ell}^{\prime}`$(cos$`\theta ) =`$
 
 ```math
-\sigma \tfrac{4 \pi}{2 \ell + 1} \delta_{\ell \ell^{\prime}} ._{tot} = \int d \Omega | f ( \theta ,\varphi ) |^{2}
+\begin{aligned} & \quad \tfrac{4 \pi}{2 \ell + 1} \delta_{\ell \ell^{\prime}} . \\ \sigma_{tot} &= \int d \Omega | f ( \theta ,\varphi ) |^{2} \end{aligned}
 ```
 
 ```math

@@ -2402,10 +2402,30 @@ pub fn display(
         if apart && anchors.is_empty() {
             anchors.push((prev_row.unwrap_or(c), false));
         }
+        // A full row well under the rows of a fraction, reaching out past
+        // every bar: the fraction's line had no relation sign to tell it,
+        // and this row is the display's second line, not a denominator.
+        let (l, r) = rest
+            .iter()
+            .filter(|s| !s.cmex() && s.size >= 0.9 * max && (s.cy() - c).abs() <= 0.3 * max)
+            .fold((f32::MAX, f32::MIN), |(l, r), s| (l.min(s.left), r.max(s.right)));
+        let under_bar = bars.iter().any(|b| l >= b.left - max && r <= b.right + max);
+        let second_line = anchors.is_empty()
+            && !bars.is_empty()
+            && !fraction_row(c)
+            && !in_bracket(c)
+            && !under_bar
+            && prev_row.is_some_and(|p| c - p >= 1.4 * max && fraction_row(p));
+        if second_line {
+            let above: Vec<f32> = bars.iter().map(|b| (b.top + b.bottom) / 2.0).filter(|y| *y < c).collect();
+            anchors.push((above.iter().sum::<f32>() / above.len().max(1) as f32, false));
+        }
         prev_row = Some(c);
         let far = anchors.last().is_none_or(|&(a, _)| c - a >= 1.1 * max);
         let own_line = (!bars.is_empty() || apart) && !fraction_row(c) && !in_bracket(c);
-        if far && (rel || tagged || own_line) {
+        if second_line {
+            anchors.push((c, true));
+        } else if far && (rel || tagged || own_line) {
             anchors.push((c, false));
         } else if far && op && !anchors.is_empty() {
             anchors.push((c, true));

@@ -6770,7 +6770,7 @@ since
 Hence altogether (464) becomes
 
 ```math
-\text{ But } / k/e/ k = k /^{\prime} \frac{e^{4}}{3 2 \hbar^{4} c^{4} \mu^{4}} /e^{\prime} / k^{\prime} = 0 \text{ and } \left\{ - 8 \mu \frac{k_{0} - k_{0}^{\prime}}{k_{0} k_{0}^{\prime}} ( k \cdot k^{\prime} ) + 4 \mu ( e \cdot e^{\prime} ) \operatorname{Spur} \left[ ( p / - k /^{\prime} ) /e \frac{/ k^{\prime}}{k_{0}^{\prime}} /e^{\prime} + ( p / + / k ) /e^{\prime} \frac{k /}{k_{0}} /e \right] \right\}
+\begin{aligned} & \quad \frac{e^{4}}{3 2 \hbar^{4} c^{4} \mu^{4}} \left\{ - 8 \mu \frac{k_{0} - k_{0}^{\prime}}{k_{0} k_{0}^{\prime}} ( k \cdot k^{\prime} ) + 4 \mu ( e \cdot e^{\prime} ) \operatorname{Spur} \left[ ( p / - k /^{\prime} ) /e \frac{/ k^{\prime}}{k_{0}^{\prime}} /e^{\prime} + ( p / + / k ) /e^{\prime} \frac{k /}{k_{0}} /e \right] \right\} \\ \text{ But } / k/e/ k &= k /^{\prime} /e^{\prime} / k^{\prime} = 0 \text{ and } \end{aligned}
 ```
 
 ```math

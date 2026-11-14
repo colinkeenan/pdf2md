@@ -990,7 +990,7 @@ which depends on 2 quantum numbers. $`\hbar k`$ is the conserved momentum along 
 There is a symmetry in physics which we might call the **Local Phase Symmetry** in quantum mechanics. In this symmetry we change the phase of the (electron) wavefunction by a different amount everywhere in spacetime. To compensate for this change, we need to also make a gauge transformation (See section 20.3) of the electromagnetic potentials. They all must go together like this.
 
 ```math
-\frac{\psi ( \vec{r} , t )}{\varphi} \vec{A} \quad \to \frac{\to}{\to} \quad \vec{A} \frac{e^{- i \tfrac{e}{\hbar c} f ( \vec{r} ,t )} \psi ( \vec{r} , t )}{\varphi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t}} - \vec{\nabla} f ( \vec{r} , t )
+\begin{aligned} & \quad \psi ( \vec{r} , t ) \quad \to \quad e^{- i \tfrac{e}{\hbar c} f ( \vec{r} ,t )} \psi ( \vec{r} , t ) \\ & \quad \vec{A} \varphi \quad \to \to \quad \vec{A} \varphi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t} - \vec{\nabla} f ( \vec{r} , t ) \end{aligned}
 ```
 
 The local phase symmetry requires that Electromagnetism exist and have a gauge symmetry so that we can keep the Schrödinger Equation invariant under this phase transformation.

@@ -1595,7 +1595,7 @@ which depends on 2 quantum numbers. $`\hbar k`$ is the conserved momentum along 
 There is a symmetry in physics which we might call the **Local Phase Symmetry** in quantum mechanics. In this symmetry we change the phase of the (electron) wavefunction by a different amount everywhere in spacetime. To compensate for this change, we need to also make a gauge transformation (See section 20.3) of the electromagnetic potentials. They all must go together like this.
 
 ```math
-\frac{\psi ( \vec{r} , t )}{\varphi} \vec{A} \quad \to \frac{\to}{\to} \quad \vec{A} \frac{e^{- i \tfrac{e}{\hbar c} f ( \vec{r} ,t )} \psi ( \vec{r} , t )}{\varphi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t}} - \vec{\nabla} f ( \vec{r} , t )
+\begin{aligned} & \quad \psi ( \vec{r} , t ) \quad \to \quad e^{- i \tfrac{e}{\hbar c} f ( \vec{r} ,t )} \psi ( \vec{r} , t ) \\ & \quad \vec{A} \varphi \quad \to \to \quad \vec{A} \varphi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t} - \vec{\nabla} f ( \vec{r} , t ) \end{aligned}
 ```
 
 The local phase symmetry requires that Electromagnetism exist and have a gauge symmetry so that we can keep the Schrödinger Equation invariant under this phase transformation.
@@ -14073,7 +14073,7 @@ Note that this agrees with what we expect at $`t`$ = 0 and is consistent with th
 Let $`\chi =`$, be some arbitrary spin $`\frac{1}{2}`$ state. Then the expectation value of the operator
 
 ```math
-\alpha_{-} \quad \langle S_{x} \rangle = \langle \chi | S_{x} | \chi \rangle
+\begin{aligned} & \quad \alpha_{-} \\ \langle S_{x} \rangle &= \langle \chi | S_{x} | \chi \rangle \end{aligned}
 ```
 
 ```math
@@ -18033,7 +18033,7 @@ This is the same as $`\ell`$ = 0 term that we got for the spin orbit correction.
 We compute the energy change due to a weak magnetic field using first order Perturbation Theory.
 
 ```math
-\begin{pmatrix} \psi_{n\ell jm_{j}} \begin{vmatrix} \frac{eB}{2 mc} ( L_{z} + 2 S_{z} ) \\ {}_{z} + 2 S_{z} ) = J_{z} + \end{vmatrix} \psi_{n\ell jm_{j}} \\ ( L \quad S_{z} \end{pmatrix}
+\begin{aligned} & \quad \left\langle \psi_{n\ell jm_{j}} \left| \frac{eB}{2 mc} ( L_{z} + 2 S_{z} ) \right| \psi_{n\ell jm_{j}} \right\rangle \\ ( L_{z} + 2 S_{z} ) &= J_{z} + S_{z} \end{aligned}
 ```
 
 The $`J_{z}`$ part is easy since we are in eigenstates of that operator.
@@ -21366,7 +21366,7 @@ k^{\prime} \cot ( k^{\prime} a ) = k \cot ( ka ) .
 We can compute the total scattering cross section using the relation $`\int d`$Ω$`P_{\ell}`$(cos $`\theta ) P_{\ell}^{\prime}`$(cos$`\theta ) =`$
 
 ```math
-\sigma \tfrac{4 \pi}{2 \ell + 1} \delta_{\ell \ell^{\prime}} ._{tot} = \int d \Omega | f ( \theta ,\varphi ) |^{2}
+\begin{aligned} & \quad \tfrac{4 \pi}{2 \ell + 1} \delta_{\ell \ell^{\prime}} . \\ \sigma_{tot} &= \int d \Omega | f ( \theta ,\varphi ) |^{2} \end{aligned}
 ```
 
 ```math

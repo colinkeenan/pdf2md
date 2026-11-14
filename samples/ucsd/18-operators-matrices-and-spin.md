@@ -1093,7 +1093,7 @@ Note that this agrees with what we expect at $`t`$ = 0 and is consistent with th
 Let $`\chi =`$, be some arbitrary spin $`\frac{1}{2}`$ state. Then the expectation value of the operator
 
 ```math
-\alpha_{-} \quad \langle S_{x} \rangle = \langle \chi | S_{x} | \chi \rangle
+\begin{aligned} & \quad \alpha_{-} \\ \langle S_{x} \rangle &= \langle \chi | S_{x} | \chi \rangle \end{aligned}
 ```
 
 ```math
