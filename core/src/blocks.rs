@@ -399,7 +399,7 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
                     && gap(i - 1, i) < 0.5 * st.body;
                 let stacked = spans
                     .get(i + 1)
-                    .is_some_and(|nx| nx.script == Script::Sub && (nx.left - s.left).abs() < 3.0);
+                    .is_some_and(|nx| (nx.left - s.left).abs() < 3.0 && (nx.script == Script::Sub || (nx.top >= s.bottom() - 1.0 && nx.height < 0.85 * l.size && nx.top < s.bottom() + 0.5 * l.size)));
                 let digits = !t.is_empty() && t.len() <= 3 && t.bytes().all(|b| b.is_ascii_digit());
                 let symbol = !t.is_empty() && t.chars().all(|c| "*†‡§¶".contains(c));
                 let ordinal = matches!(t, "st" | "nd" | "rd" | "th");
@@ -506,6 +506,18 @@ fn emit_line(doc: &Doc, l: &Line, st: &Stats, spans: &[crate::layout::Span], kin
                 let bars: Vec<Rule> =
                     l.bars.iter().filter(|b| b.left >= x0 - 3.0 && b.right <= x1 + 3.0).copied().collect();
                 let t = if only_brackets { String::new() } else { mathtex::build_with(&ms, &bars) };
+                // A run of small raised pieces right after a word is the
+                // word's power: (length) and a raised ½(D − 2). (Its
+                // fraction bar lies well above the line's math axis.)
+                let raised = spans[i].script == Script::Super
+                    && i > 0
+                    && kinds[i - 1] == K::Text
+                    && spans[i].left - spans[i - 1].right() < 0.25 * st.body
+                    && spans[i..j].iter().all(|s| doc.size_of(s) < 0.85 * doc.size_of(&spans[i - 1]))
+                    && (bars.iter().any(|b| spans[i - 1].top + 0.8 * spans[i - 1].height - b.top > 0.5 * doc.size_of(&spans[i - 1])) || bars.is_empty());
+                // (told by its stacked fraction, or a prime alone: other
+                // raised runs are mostly limits that lost their line)
+                let t = if raised && (t.starts_with("\\tfrac") || t == "\\prime") { format!("{{}}^{{{t}}}") } else { t };
                 if space {
                     push_text(&mut out, " ");
                 }
@@ -1743,6 +1755,11 @@ fn page_notes_start(doc: &Doc, lines: &[Line], st: &Stats, note_open: bool) -> u
 /// each line the bars it contains.
 fn attach_fraction_rows(doc: &Doc, lines: &[Line], bars: &[Rule]) -> Vec<Line> {
     let mut lines: Vec<Line> = lines.to_vec();
+    // the bars of roots (they start at a root sign)
+    let root_bars: Vec<bool> = bars
+        .iter()
+        .map(|b| lines.iter().any(|l| l.spans.iter().any(|s| s.text.trim() == "√" && (b.left - s.right()).abs() <= 3.0 && s.top <= b.bottom + 2.0 && s.bottom() >= b.top)))
+        .collect();
     for b in bars {
         // a root's bar starts at its root sign: it goes with the sign's line
         let at_sign = |s: &crate::layout::Span| (b.left - s.right()).abs() <= 3.0 && s.top <= b.bottom + 2.0 && s.bottom() >= b.top;
@@ -1784,7 +1801,13 @@ fn attach_fraction_rows(doc: &Doc, lines: &[Line], bars: &[Rule]) -> Vec<Line> {
                 // line above)
                 let near = (big_root.is_none() && b.top - s.bottom() <= 0.8 * size && s.bottom() <= b.top + 2.0)
                     || (s.top - b.bottom <= 0.8 * size && s.top >= b.bottom - 2.0);
-                if inside && near {
+                // (what stands between two bars, closer to the other, is of
+                // that fraction: the 2 of a ½ in the line above, right over
+                // this one's 1)
+                let gap_to = |r: &Rule| (r.top - s.bottom()).max(s.top - r.bottom).max(0.0);
+                let mid = s.top + s.height / 2.0;
+                let others = bars.iter().zip(&root_bars).any(|(o, root)| !root && (o.top < mid) != (b.top < mid) && c >= o.left - 2.0 && c <= o.right + 2.0 && gap_to(o) < gap_to(b));
+                if inside && near && !others {
                     moved.push(s.clone());
                     false
                 } else {

@@ -630,11 +630,11 @@ The photon energy is given by the energy difference between the states.
 E_{\gamma} = 1 3 . 6 \left( \frac{1}{n^{2}} - \frac{1}{4^{2}} \right)
 ```
 
-For the $`n`$ = 1 final state, $`E =`$<sup>15</sup>$`1 3 . 6`$ = 12$`. 8`$ eV.
+For the $`n`$ = 1 final state, $`E = \tfrac{1 5}{1 6} 1 3 . 6`$ = 12$`. 8`$ eV.
 
-For the $`n`$ = 2 final state, $`E =`$<sup>16</sup>$`{}^{3} 1 3 . 6`$ = 2$`. 6`$ eV.
+For the $`n`$ = 2 final state, $`E = \tfrac{3}{1 6} 1 3 . 6`$ = 2$`. 6`$ eV.
 
-For the $`n`$ = 3 final state, $`E = \tfrac{1 6 7}{1 4 4} 1 3 . 6`$ = 0$`. 7`$ eV.
+For the $`n`$ = 3 final state, $`E = \tfrac{7}{1 4 4} 1 3 . 6`$ = 0$`. 7`$ eV.
 
 2. Using the $`\psi_{n\ell m}`$ notation, list all the $`n`$ = 1$`, 2 ,`$ 3 hydrogen states. (Neglect the existence of spin.)<br>
 **Answer**The states are,

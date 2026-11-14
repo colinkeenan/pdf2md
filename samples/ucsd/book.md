@@ -12614,11 +12614,11 @@ The photon energy is given by the energy difference between the states.
 E_{\gamma} = 1 3 . 6 \left( \frac{1}{n^{2}} - \frac{1}{4^{2}} \right)
 ```
 
-For the $`n`$ = 1 final state, $`E =`$<sup>15</sup>$`1 3 . 6`$ = 12$`. 8`$ eV.
+For the $`n`$ = 1 final state, $`E = \tfrac{1 5}{1 6} 1 3 . 6`$ = 12$`. 8`$ eV.
 
-For the $`n`$ = 2 final state, $`E =`$<sup>16</sup>$`{}^{3} 1 3 . 6`$ = 2$`. 6`$ eV.
+For the $`n`$ = 2 final state, $`E = \tfrac{3}{1 6} 1 3 . 6`$ = 2$`. 6`$ eV.
 
-For the $`n`$ = 3 final state, $`E = \tfrac{1 6 7}{1 4 4} 1 3 . 6`$ = 0$`. 7`$ eV.
+For the $`n`$ = 3 final state, $`E = \tfrac{7}{1 4 4} 1 3 . 6`$ = 0$`. 7`$ eV.
 
 2. Using the $`\psi_{n\ell m}`$ notation, list all the $`n`$ = 1$`, 2 ,`$ 3 hydrogen states. (Neglect the existence of spin.)<br>
 **Answer**The states are,
@@ -13589,10 +13589,10 @@ Note that we can compute the number of particles coming out of the second (and t
 <a id="p259" href="book.pdf#page=259" target="_blank" title="This page in the PDF"><sup>[p. 259]</sup></a>
 
 ```math
-\frac{1}{\sqrt{1 2}} \quad 1 \frac{1}{2} \quad \frac{1}{2} 1
+\frac{1}{\sqrt{2}} \quad \frac{1}{2} \quad \frac{1}{2}
 ```
 
-or we can just use the projection operator $`\left( \tfrac{1}{\sqrt{2}} \quad \tfrac{1}{\sqrt{2}} \right) =`$.
+or we can just use the projection operator $`\left( 1 \right) \left( \tfrac{1}{\sqrt{2}} \quad \tfrac{1}{\sqrt{2}} \right) = \left( 1 \quad 1 \right)`$.
 
 ```math
 \begin{pmatrix} \tfrac{1}{1 2} & \tfrac{1}{1 2} \\ 2 & 2 \end{pmatrix} \frac{N}{2} \sqrt{2} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{N}{4} \left( \frac{\tfrac{1}{2} \frac{\surd}{1}}{\sqrt{2}} \right)^{2 2}
@@ -14339,10 +14339,10 @@ be in the field direction. The upper component of the vector (a) is the amplitud
 where $`\omega = \tfrac{\mu_{B} B}{\hbar}`$.
 
 ```math
-\frac{1}{\sqrt{1 2}}
+\frac{1}{\sqrt{2}}
 ```
 
-So let’s say we start out in the state with spin up along the x axis, $`\chi`$(0) = . We then have
+So let’s say we start out in the state with spin up along the x axis, $`\chi`$(0) = $`\left( 1 \right)`$. We then have
 
 ```math
 \chi ( t ) = \left( \frac{1}{{}^{\sqrt{2}} \frac{{}_{1} e}{\sqrt{2}}} e^{- i\omega t i\omega t} \right) . \quad \sqrt{2}
@@ -26903,7 +26903,7 @@ We may solve for the effect of $`\vec{\sigma} \cdot \vec{L}`$ on the spinor $`\p
 ```
 
 ```math
-\vec{\sigma} \cdot \vec{L} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = \hbar \begin{pmatrix} ( \pm ( j + \frac{1}{\tfrac{1 2}{2}} \mp 1 ) \psi_{A} \\ ( \mp ( j + \quad \pm 1 ) \psi_{B} \end{pmatrix}
+\vec{\sigma} \cdot \vec{L} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = \hbar \begin{pmatrix} ( \pm ( j + {}^{1} \mp 1 ) \psi_{A} \\ ( \mp ( j + {}^{\tfrac{1 2}{2}} \pm 1 ) \psi_{B} \end{pmatrix}
 ```
 
 ```math
@@ -26919,11 +26919,11 @@ L^{2} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = j ( j + 1 ) \hbar^{2}
 ```
 
 ```math
-= \hbar^{2} \begin{pmatrix} ( j^{2} + j \mp j \mp \frac{1}{\tfrac{1 2}{2}} + 1 - ) \psi_{A} \\ ( j^{2} + j \pm j \pm \quad + 1 - \frac{\tfrac{3}{3 4}}{4} ) \psi_{B} \end{pmatrix}
+= \hbar^{2} \begin{pmatrix} ( j^{2} + j \mp j \mp {}^{1} + 1 - ) \psi_{A} \\ ( j^{2} + j \pm j \pm {}^{\tfrac{1 2}{2}} + 1 - \frac{\tfrac{3}{3 4}}{4} ) \psi_{B} \end{pmatrix}
 ```
 
 ```math
-= \hbar^{2} \begin{pmatrix} ( j^{2} + j \mp j \mp \frac{1}{\tfrac{1 2}{2}} + ) \psi_{A} \\ ( j^{2} + j \pm j \pm \quad + \frac{\tfrac{1}{1 4}}{4} ) \psi_{B} \end{pmatrix}
+= \hbar^{2} \begin{pmatrix} ( j^{2} + j \mp j \mp {}^{1} + ) \psi_{A} \\ ( j^{2} + j \pm j \pm {}^{\tfrac{1 2}{2}} + \frac{\tfrac{1}{1 4}}{4} ) \psi_{B} \end{pmatrix}
 ```
 
 <div align="right"><a href="book.pdf#page=524" target="_blank" title="This page in the PDF"><sup>[p. 524]</sup></a></div>
@@ -27530,7 +27530,7 @@ The tables below **compare an electron and a positron** with the same momentum a
 
 charge mom. Energy $`S_{z} \quad \vec{j}^{( EM )} \quad \vec{v}`$ spinor
 
-spin up, positive energy electron $`- e \quad p \hat{z} \quad + \sqrt{p^{2} c^{2} + m^{2} c^{4}} \quad + {}^{\hbar} \quad - \hat{z} \quad + \hat{z} \quad u^{( 1 )} ( \vec{p} )`$ spin up, positive energy positron $`+ e \quad p \hat{z} \quad + \sqrt{p^{2} c^{2} + m^{2} c^{4}} \quad + {}^{\hbar} \tfrac{2}{2} \quad + \hat{z} \quad + \hat{z} \quad v^{( 1 )} ( \vec{p} )`$ (spin down “negative energy” hole)<br>
+spin up, positive energy electron $`- e \quad p \hat{z} \quad + \sqrt{p^{2} c^{2} + m^{2} c^{4}} \quad + \tfrac{\hbar}{2} \quad - \hat{z} \quad + \hat{z} \quad u^{( 1 )} ( \vec{p} )`$ spin up, positive energy positron $`+ e \quad p \hat{z} \quad + \sqrt{p^{2} c^{2} + m^{2} c^{4}} \quad + \tfrac{\hbar}{2} \quad + \hat{z} \quad + \hat{z} \quad v^{( 1 )} ( \vec{p} )`$ (spin down “negative energy” hole)<br>
 spin down, “negative energy” electron $`- e \quad - p \hat{z} \quad - \sqrt{p^{2} c^{2} + m^{2} c^{4}} \quad - \tfrac{\hbar}{2} \quad - \hat{z} \quad + \hat{z} \quad - u^{( 4 )} ( - \vec{p} )`$
 
 We have **defined the positron spinor** $`v^{( 1 )}`$ to be the one with positive momentum and spin up. Note that the minus sign on $`u^{( 4 )}`$ is conventional and will come from our future definition of the charge conjugation operator.
@@ -27539,7 +27539,7 @@ Similarly we can make a table starting from a spin down electron.
 
 charge mom. Energy $`S_{z} \quad \vec{j}^{( EM )} \quad \vec{v}`$ spinor
 
-spin down, positive energy electron $`- e \quad p \hat{z} \quad + \sqrt{p^{2} c^{2} + m^{2} c^{4}} \quad - {}^{\hbar} \quad - \hat{z} \quad + \hat{z} \quad u^{( 2 )} ( \vec{p} )`$ spin down, positive energy positron $`+ e \quad p \hat{z} \quad + \sqrt{p^{2} c^{2} + m^{2} c^{4}} \quad - \tfrac{\hbar 2}{2} \quad + \hat{z} \quad + \hat{z} \quad v^{( 2 )} ( \vec{p} )`$ (spin up “negative energy” hole)<br>
+spin down, positive energy electron $`- e \quad p \hat{z} \quad + \sqrt{p^{2} c^{2} + m^{2} c^{4}} \quad - \tfrac{\hbar}{2} \quad - \hat{z} \quad + \hat{z} \quad u^{( 2 )} ( \vec{p} )`$ spin down, positive energy positron $`+ e \quad p \hat{z} \quad + \sqrt{p^{2} c^{2} + m^{2} c^{4}} \quad - \tfrac{\hbar}{2} \quad + \hat{z} \quad + \hat{z} \quad v^{( 2 )} ( \vec{p} )`$ (spin up “negative energy” hole)<br>
 spin up, “negative energy” electron $`- e \quad - p \hat{z} \quad - \sqrt{p^{2} c^{2} + m^{2} c^{4}} \quad + \tfrac{\hbar}{2} \quad - \hat{z} \quad + \hat{z} \quad u^{( 3 )} ( - \vec{p} )`$
 
 We have now also **defined the spinor,** $`v^{( 2 )}`$**, for the spin down positron**.

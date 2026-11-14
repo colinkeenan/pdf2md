@@ -3570,7 +3570,7 @@ If Ψ is any state then
 \Psi^{\prime} = \left( 1 + \lambda \sum_{\mu} k_{\mu} \tilde{a}_{k\mu} \right) \Psi
 ```
 
-is a state obtained from Ψ by emitting a pseudo-photon with potentials proportional to $`\partial \Lambda /\partial x_{\mu}`$. Hence Ψ$`\prime`$ should be indistinguishable from Ψ.
+is a state obtained from Ψ by emitting a pseudo-photon with potentials proportional to $`\partial \Lambda /\partial x_{\mu}`$. Hence Ψ$`{}^{\prime}`$ should be indistinguishable from Ψ.
 
 Now if Ψ$`2`$ is any state whatever satisfying the supplementary condition (216a) the matrix element
 
@@ -3580,7 +3580,7 @@ Now if Ψ$`2`$ is any state whatever satisfying the supplementary condition (216
 \begin{aligned} ( \Psi^{\prime *} , \Psi_{1} ) &= \left( \Psi^{*} \left( 1 + \lambda \sum_{\mu} k_{\mu}^{*} \tilde{a}_{k\mu}^{*} \right) , \Psi_{2} \right) \\ &= \left( \Psi^{*} , \left( 1 + \lambda \sum_{\mu} k_{\mu} a_{k\mu}^{*} \right) \Psi_{2} \right) = ( \Psi^{*} , \Psi_{2} ) \end{aligned} \qquad \text{(216b)}
 ```
 
-Hence the matrix elements of Ψ$`\prime`$ and Ψ to any physical state Ψ$`2`$ whatever are equal, and so the results of the theory are all independent of whether the state Ψ is represented by the vector Ψ or by Ψ$`\prime`$. This is enough to show that the theory is properly gauge-invariant, in spite of the fact that states are specified by the potentials which are not themselves gauge-invariant.
+Hence the matrix elements of Ψ$`{}^{\prime}`$ and Ψ to any physical state Ψ$`2`$ whatever are equal, and so the results of the theory are all independent of whether the state Ψ is represented by the vector Ψ or by Ψ$`{}^{\prime}`$. This is enough to show that the theory is properly gauge-invariant, in spite of the fact that states are specified by the potentials which are not themselves gauge-invariant.
 
 ### <a id="s-the-vacuum-state"></a>The Vacuum State
 
@@ -7135,7 +7135,7 @@ For the <a id="ix-21">cross-section</a> calculation see again Heitler, $`§ 2 0 
 
 <a id="fn-56"></a>**56.** “from” replaces a second “in” [↩](#fnref-56)
 
-<a id="fn-57"></a>**57.** The factor $`x_{2}`$ had a superfluous superscript “$`\prime`$”. [↩](#fnref-57)
+<a id="fn-57"></a>**57.** The factor $`x_{2}`$ had a superfluous superscript “$`{}^{\prime}`$”. [↩](#fnref-57)
 
 <a id="fn-58"></a>**58.** $`A , B`$ added for clarity [↩](#fnref-58)
 
@@ -7147,7 +7147,7 @@ For the <a id="ix-21">cross-section</a> calculation see again Heitler, $`§ 2 0 
 \operatorname{Sp} ( / a_{1} / a_{2} a /_{3} / a_{4} ) = ( a_{1} \cdot a_{2} ) ( a_{3} \cdot a_{4} ) - ( a_{1} \cdot a_{3} ) ( a_{2} \cdot a_{4} ) + ( a_{1} \cdot a_{4} ) ( a_{2} \cdot a_{3} )
 ```
 
-<a id="fn-61"></a>**61.** The third equation lacked a subscript “0” on the variable $`k_{0}^{\prime}`$; the fourth equation lacked a superscript “$`\prime`$” on the variable $`k_{0}^{\prime}`$. [↩](#fnref-61)
+<a id="fn-61"></a>**61.** The third equation lacked a subscript “0” on the variable $`k_{0}^{\prime}`$; the fourth equation lacked a superscript “$`{}^{\prime}`$” on the variable $`k_{0}^{\prime}`$. [↩](#fnref-61)
 
 <a id="fn-62"></a>**62.** Eq. (468) lacked a label. The word “simply” was inserted. [↩](#fnref-62)
 

@@ -364,7 +364,7 @@ If Ψ is any state then
 \Psi^{\prime} = \left( 1 + \lambda \sum_{\mu} k_{\mu} \tilde{a}_{k\mu} \right) \Psi
 ```
 
-is a state obtained from Ψ by emitting a pseudo-photon with potentials proportional to $`\partial \Lambda /\partial x_{\mu}`$. Hence Ψ$`\prime`$ should be indistinguishable from Ψ.
+is a state obtained from Ψ by emitting a pseudo-photon with potentials proportional to $`\partial \Lambda /\partial x_{\mu}`$. Hence Ψ$`{}^{\prime}`$ should be indistinguishable from Ψ.
 
 Now if Ψ$`2`$ is any state whatever satisfying the supplementary condition (216a) the matrix element
 
@@ -374,7 +374,7 @@ Now if Ψ$`2`$ is any state whatever satisfying the supplementary condition (216
 \begin{aligned} ( \Psi^{\prime *} , \Psi_{1} ) &= \left( \Psi^{*} \left( 1 + \lambda \sum_{\mu} k_{\mu}^{*} \tilde{a}_{k\mu}^{*} \right) , \Psi_{2} \right) \\ &= \left( \Psi^{*} , \left( 1 + \lambda \sum_{\mu} k_{\mu} a_{k\mu}^{*} \right) \Psi_{2} \right) = ( \Psi^{*} , \Psi_{2} ) \end{aligned} \qquad \text{(216b)}
 ```
 
-Hence the matrix elements of Ψ$`\prime`$ and Ψ to any physical state Ψ$`2`$ whatever are equal, and so the results of the theory are all independent of whether the state Ψ is represented by the vector Ψ or by Ψ$`\prime`$. This is enough to show that the theory is properly gauge-invariant, in spite of the fact that states are specified by the potentials which are not themselves gauge-invariant.
+Hence the matrix elements of Ψ$`{}^{\prime}`$ and Ψ to any physical state Ψ$`2`$ whatever are equal, and so the results of the theory are all independent of whether the state Ψ is represented by the vector Ψ or by Ψ$`{}^{\prime}`$. This is enough to show that the theory is properly gauge-invariant, in spite of the fact that states are specified by the potentials which are not themselves gauge-invariant.
 
 ### <a id="s-the-vacuum-state"></a>The Vacuum State
 

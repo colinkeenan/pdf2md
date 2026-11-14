@@ -609,10 +609,10 @@ Note that we can compute the number of particles coming out of the second (and t
 <a id="p259" href="book.pdf#page=259" target="_blank" title="This page in the PDF"><sup>[p. 259]</sup></a>
 
 ```math
-\frac{1}{\sqrt{1 2}} \quad 1 \frac{1}{2} \quad \frac{1}{2} 1
+\frac{1}{\sqrt{2}} \quad \frac{1}{2} \quad \frac{1}{2}
 ```
 
-or we can just use the projection operator $`\left( \tfrac{1}{\sqrt{2}} \quad \tfrac{1}{\sqrt{2}} \right) =`$.
+or we can just use the projection operator $`\left( 1 \right) \left( \tfrac{1}{\sqrt{2}} \quad \tfrac{1}{\sqrt{2}} \right) = \left( 1 \quad 1 \right)`$.
 
 ```math
 \begin{pmatrix} \tfrac{1}{1 2} & \tfrac{1}{1 2} \\ 2 & 2 \end{pmatrix} \frac{N}{2} \sqrt{2} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{N}{4} \left( \frac{\tfrac{1}{2} \frac{\surd}{1}}{\sqrt{2}} \right)^{2 2}
@@ -1359,10 +1359,10 @@ be in the field direction. The upper component of the vector (a) is the amplitud
 where $`\omega = \tfrac{\mu_{B} B}{\hbar}`$.
 
 ```math
-\frac{1}{\sqrt{1 2}}
+\frac{1}{\sqrt{2}}
 ```
 
-So let’s say we start out in the state with spin up along the x axis, $`\chi`$(0) = . We then have
+So let’s say we start out in the state with spin up along the x axis, $`\chi`$(0) = $`\left( 1 \right)`$. We then have
 
 ```math
 \chi ( t ) = \left( \frac{1}{{}^{\sqrt{2}} \frac{{}_{1} e}{\sqrt{2}}} e^{- i\omega t i\omega t} \right) . \quad \sqrt{2}

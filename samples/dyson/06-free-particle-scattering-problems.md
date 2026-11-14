@@ -947,7 +947,7 @@ For the <a id="ix-21">cross-section</a> calculation see again Heitler, $`§ 2 0 
 
 <a id="fn-56"></a>**56.** “from” replaces a second “in” [↩](#fnref-56)
 
-<a id="fn-57"></a>**57.** The factor $`x_{2}`$ had a superfluous superscript “$`\prime`$”. [↩](#fnref-57)
+<a id="fn-57"></a>**57.** The factor $`x_{2}`$ had a superfluous superscript “$`{}^{\prime}`$”. [↩](#fnref-57)
 
 <a id="fn-58"></a>**58.** $`A , B`$ added for clarity [↩](#fnref-58)
 
@@ -959,7 +959,7 @@ For the <a id="ix-21">cross-section</a> calculation see again Heitler, $`§ 2 0 
 \operatorname{Sp} ( / a_{1} / a_{2} a /_{3} / a_{4} ) = ( a_{1} \cdot a_{2} ) ( a_{3} \cdot a_{4} ) - ( a_{1} \cdot a_{3} ) ( a_{2} \cdot a_{4} ) + ( a_{1} \cdot a_{4} ) ( a_{2} \cdot a_{3} )
 ```
 
-<a id="fn-61"></a>**61.** The third equation lacked a subscript “0” on the variable $`k_{0}^{\prime}`$; the fourth equation lacked a superscript “$`\prime`$” on the variable $`k_{0}^{\prime}`$. [↩](#fnref-61)
+<a id="fn-61"></a>**61.** The third equation lacked a subscript “0” on the variable $`k_{0}^{\prime}`$; the fourth equation lacked a superscript “$`{}^{\prime}`$” on the variable $`k_{0}^{\prime}`$. [↩](#fnref-61)
 
 <a id="fn-62"></a>**62.** Eq. (468) lacked a label. The word “simply” was inserted. [↩](#fnref-62)
 
