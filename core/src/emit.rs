@@ -139,13 +139,32 @@ fn display(latex: &str, form: MathForm) -> String {
 /// A formula read from a picture is left as read (it may be corrected by
 /// hand); there a space parts the two.
 fn numbers_into_formulas(mut inl: Vec<Inline>) -> Vec<Inline> {
+    // (and a number before a formula that begins with a sign waiting for
+    // its first side, "0 $= k_μ Δ^μ$": it is that side)
+    for i in 1..inl.len() {
+        let (before, after) = inl.split_at_mut(i);
+        let (Some(Inline::Text(t)), Inline::Math(m)) = (before.last_mut(), &mut after[0]) else { continue };
+        const WAITING: [&str; 16] = ["=", "<", ">", "\\to ", "\\sim ", "\\simeq ", "\\approx ", "\\equiv ", "\\neq ", "\\geq ", "\\leq ", "\\ll ", "\\gg ", "\\times ", "\\otimes ", "\\oplus "];
+        let padded = format!("{} ", m.trim_start());
+        if !WAITING.iter().any(|w| padded.starts_with(w)) {
+            continue;
+        }
+        let kept = t.trim_end();
+        let digits = kept.chars().rev().take_while(char::is_ascii_digit).count();
+        let cut = kept.len() - digits;
+        if digits == 0 || !(cut == 0 || kept[..cut].ends_with(' ')) {
+            continue;
+        }
+        *m = format!("{} {}", &kept[cut..], m.trim_start());
+        *t = t[..cut].to_string();
+    }
     for i in 1..inl.len() {
         let read = i >= 2 && matches!(inl[i - 2], Inline::Source(_));
         let (before, after) = inl.split_at_mut(i);
         let (Some(Inline::Math(m)), Inline::Text(t)) = (before.last_mut(), &mut after[0]) else { continue };
         // (after a sign that waits for its other side, "x =" or "b →", the
         // number is that side, though a space parts them)
-        const WAITING: [&str; 16] = ["=", "<", ">", "\\to", "\\sim", "\\simeq", "\\approx", "\\equiv", "\\neq", "\\geq", "\\leq", "\\ll", "\\gg", "\\propto", "\\rightarrow", "\\cong"];
+        const WAITING: [&str; 19] = ["=", "<", ">", "\\to", "\\sim", "\\simeq", "\\approx", "\\equiv", "\\neq", "\\geq", "\\leq", "\\ll", "\\gg", "\\propto", "\\rightarrow", "\\cong", "\\times", "\\otimes", "\\oplus"];
         let waits = !read && WAITING.iter().any(|w| m.trim_end().ends_with(w));
         if waits && t.starts_with(' ') && t[1..].starts_with(|c: char| c.is_ascii_digit()) {
             t.remove(0);

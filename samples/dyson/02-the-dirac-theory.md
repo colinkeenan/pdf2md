@@ -107,7 +107,7 @@ you are familiar with. They satisfy
 \sigma_{k} \sigma_{\ell} + \sigma_{\ell} \sigma_{k} = 2 \delta_{\ell k}
 ```
 
-But we cannot make 4 matrices of this type all anti-commuting. They must be _at least_ 4 $`\times`$ 4.
+But we cannot make 4 matrices of this type all anti-commuting. They must be _at least_ $`4 \times 4`$.
 
 One possible set of $`\alpha^{k}`$ and $`\beta`$ is
 
@@ -123,7 +123,7 @@ In particular
 \alpha^{1} = \begin{pmatrix} 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0 \end{pmatrix} \quad \alpha^{2} = \begin{pmatrix} 0 & 0 & 0 & - i \\ 0 & 0 & i & 0 \\ 0 & - i & 0 & 0 \\ i & 0 & 0 & 0 \end{pmatrix} \quad \alpha^{3} = \begin{pmatrix} 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & - 1 \\ 1 & 0 & 0 & 0 \\ 0 & - 1 & 0 & 0 \end{pmatrix}
 ```
 
-These are hermitian as required. Of course if $`\alpha^{k}`$ and $`\beta`$ are any set satisfying (13) then $`S\alpha^{k} S^{- 1}`$ and $`S\beta S^{- 1}`$ are another set, where $`S`$ is any _unitary_ matrix $`SS^{*}`$ = 1. And conversely it can be proved that every possible 4 $`\times`$ 4 matrices $`\alpha^{k}`$ and $`\beta`$ are of this form with _some_ such matrix $`S`$. We do not prove this here.
+These are hermitian as required. Of course if $`\alpha^{k}`$ and $`\beta`$ are any set satisfying (13) then $`S\alpha^{k} S^{- 1}`$ and $`S\beta S^{- 1}`$ are another set, where $`S`$ is any _unitary_ matrix $`SS^{*}`$ = 1. And conversely it can be proved that every possible $`4 \times 4`$ matrices $`\alpha^{k}`$ and $`\beta`$ are of this form with _some_ such matrix $`S`$. We do not prove this here.
 
 The Dirac equation is thus a set of 4 simultaneous linear partial differential<sup><a id="fnref-4" href="#fn-4">4</a></sup> equations in the four functions $`\psi_{\alpha}`$.
 

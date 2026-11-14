@@ -165,7 +165,7 @@ We imagine a scattering experiment in which only the direction of the emerging e
 
 with the same low-frequency cut-off $`r`$ in both $`\overline{\sigma}_{N}`$ and $`\overline{\sigma}_{R}`$. Thus $`\sigma_{T}`$ gives the cross-section for scattering into a given solid angle $`d`$Ω with or without photon emission. Being directly observed, $`\sigma_{T}`$ must be divergence-free and independent of $`r`$.
 
-In the radiative scattering process we may take the final momentum of the electron to be $`\lambda \hbar p^{\prime}`$ where 0 $`<\lambda < 1`$ and $`p^{\prime}`$ satisfies (627). Instead of (627) the conservation of energy now gives by (638)
+In the radiative scattering process we may take the final momentum of the electron to be $`\lambda \hbar p^{\prime}`$ where $`0 <\lambda < 1`$ and $`p^{\prime}`$ satisfies (627). Instead of (627) the conservation of energy now gives by (638)
 
 <a id="eq-640"></a>
 

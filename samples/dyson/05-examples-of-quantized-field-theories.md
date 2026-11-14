@@ -570,7 +570,7 @@ The definition (220c), introduced by Gupta, makes the matrix representations con
 
 This is a purely quantum-mechanical effect. A classical treatment, considering the reaction of the atom to a classical applied Maxwell field, gives a correct account of the absorption of radiation and of stimulated emission, but fails to give the spontaneous emission.
 
-Let an atom have 2 states, the ground state 1 and an excited state 2 with energy $`\hbar cq`$. For the transition 2 $`\to 1`$ let the charge-current density of the atom have the unintegrated matrix elements
+Let an atom have 2 states, the ground state 1 and an excited state 2 with energy $`\hbar cq`$. For the transition $`2 \to 1`$ let the charge-current density of the atom have the unintegrated matrix elements
 
 ```math
 j_{\mu A} ( x ) = j_{\mu A} ( r,t ) \quad \text{ at the point } x = ( r,t )
@@ -604,7 +604,7 @@ Using a sum-rule to sum over the states
 w = \frac{1}{Tc^{4} \hbar^{2}} \int \int \sum_{\lambda ,\mu} j_{\lambda A}^{*} ( x^{\prime} ) j_{\mu A} ( x ) \langle A_{\lambda}^{*} ( x^{\prime} ) A_{\mu} ( x ) \rangle_{o} d^{4} xd^{4} x^{\prime}
 ```
 
-Write $`\tilde{j}_{\lambda A} ( x^{\prime} )`$ for the matrix element<sup><a id="fnref-29" href="#fn-29">29</a></sup> of $`j_{\lambda A} ( x^{\prime} )`$ in the reverse transition 1 $`\to 2`$. Then
+Write $`\tilde{j}_{\lambda A} ( x^{\prime} )`$ for the matrix element<sup><a id="fnref-29" href="#fn-29">29</a></sup> of $`j_{\lambda A} ( x^{\prime} )`$ in the reverse transition $`1 \to 2`$. Then
 
 ```math
 j_{\lambda A}^{*} ( x^{\prime} ) = \eta_{\lambda} \tilde{j}_{\lambda A} ( x^{\prime} ) , \quad A_{\lambda}^{*} ( x^{\prime} ) = \eta_{\lambda} A_{\lambda} ( x^{\prime} )
@@ -1453,7 +1453,7 @@ Then $`S_{R} ( x )`$ is a c-number <a id="ix-57">Dirac</a> matrix function of x,
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p61" href="book.pdf#page=67" target="_blank" title="This page in the PDF"><sup>[p. 61]</sup></a>
 
-and the 4 $`\times`$ 4 unit matrix $`\mathbb{I}`$ is understood on the right of (293).
+and the $`4 \times 4`$ unit matrix $`\mathbb{I}`$ is understood on the right of (293).
 
 If we have $`\mathcal{R} = \overline{\psi} ( z ) v`$ then $`\delta \overline{\psi}`$ = 0, as before. If $`\mathcal{R} = \overline{v} \psi ( z )`$ then
 
@@ -2122,7 +2122,7 @@ N_{n}^{2} = N_{n} \qquad \text{(351)}
 
 so each $`N_{n}`$ has just the two eigenvalues 0, 1. This describes exactly the physical situation in a many-electron atom where each atomic level may be full or empty independent of the others.
 
-If each $`N`$ is represented by the (2 $`\times`$ 2) diagonal matrix
+If each $`N`$ is represented by the (2 $`\times 2`$) diagonal matrix
 
 <a id="eq-352"></a>
 
@@ -2556,7 +2556,7 @@ Now the external potential $`A_{\nu}^{e} ( x )`$ is associated with a classical 
 \begin{aligned} j_{\nu E} ( x ) &= - c \sum_{\lambda} \frac{\partial}{\partial x_{\lambda}} F_{\lambda \nu E} ( x ) \\ &= - c \sum_{\lambda} \left\{ \frac{\partial^{2}}{\partial x_{\lambda}^{2}} A_{\nu}^{e} ( x ) - \frac{\partial^{2}}{\partial x_{\nu} \partial x_{\lambda}} A_{\lambda}^{e} ( x ) \right\} \\ &= c \left\{ q^{2} e_{\nu} - e \cdot qq_{\nu} \right\} e^{iq \cdot x} \end{aligned} \qquad \text{(391)}
 ```
 
-Hence (389) gives the final result, with $`\alpha = 1371`$ $`= \frac{e^{2}}{4 \pi \hbar c}`$, (Heaviside units)
+Hence (389) gives the final result, with $`\alpha =`$ $`1371 = \frac{e^{2}}{4 \pi \hbar c}`$, (Heaviside units)
 
 <a id="eq-392"></a>
 
