@@ -2065,7 +2065,13 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
             let width = on_level.iter().map(|r| r.right).fold(f32::MIN, f32::max) - on_level.iter().map(|r| r.left).fold(f32::MAX, f32::min);
             let after_op = out.last().is_some_and(|p| ["\\int", "\\sum", "\\prod", "\\oint"].iter().any(|o| p.trim_start().starts_with(o)));
             let dot = raised_dot(op);
-            if after_op || (!dot && (on_level.len() < 2 || width < 1.5 * max)) || (dot && on_level.is_empty()) {
+            // (one piece will do when it is long, "dτ L(q)", or opens with
+            // the d of what is integrated over, "dτ" before a second sign:
+            // a limit is neither)
+            let letters: usize = on_level.iter().map(|r| r.text.chars().filter(|c| !c.is_whitespace()).count()).sum();
+            let first = on_level.iter().min_by(|a, b| a.left.total_cmp(&b.left)).map_or("", |r| r.text.trim());
+            let integrand = (on_level.len() >= 2 && width >= 1.5 * max) || (letters >= 4 && width >= 1.5 * max) || (letters >= 2 && first.starts_with('d'));
+            if after_op || (!dot && !integrand) || (dot && on_level.is_empty()) {
                 break;
             }
             if dot {
