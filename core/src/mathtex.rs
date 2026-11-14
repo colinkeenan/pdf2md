@@ -553,9 +553,15 @@ fn put_accents(mut spans: Vec<MSpan>) -> Vec<MSpan> {
             // over the letter it shares most of its height with)
             .filter(|&j| {
                 let drawn_over = matches!(name, "vec" | "not") && a.top <= spans[j].top && a.bottom.min(spans[j].bottom) - spans[j].top >= 0.5 * (spans[j].bottom - spans[j].top);
-                spans[j].left <= mid && spans[j].right >= mid && ((spans[j].top - a.top).abs() <= 0.5 * a.size || drawn_over)
+                spans[j].left <= mid && spans[j].right >= mid && ((spans[j].top - a.top).abs() <= 0.75 * a.size || drawn_over)
             })
-            .min_by(|&x, &y| (spans[x].left - a.left).abs().total_cmp(&(spans[y].left - a.left).abs()));
+            // (of a letter and its index, both under the accent's middle,
+            // it is over the one it stands nearer above)
+            .min_by(|&x, &y| {
+                // (an arrow's or a stroke's box says little of its height)
+                let above = |j: usize| if matches!(name, "vec" | "not") { 0.0 } else { ((spans[j].top - a.top).abs() / 3.0).round() };
+                above(x).total_cmp(&above(y)).then((spans[x].left - a.left).abs().total_cmp(&(spans[y].left - a.left).abs()))
+            });
         let Some(j) = base else {
             k += 1;
             continue;
@@ -564,8 +570,20 @@ fn put_accents(mut spans: Vec<MSpan>) -> Vec<MSpan> {
         let b = spans[j].clone();
         let chars: Vec<char> = b.text.chars().collect();
         let n = chars.len().max(1);
-        let w = (b.right - b.left) / n as f32;
-        let ci = (((mid - b.left) / w.max(0.1)) as usize).min(n - 1);
+        // (by the usual widths of the letters; a space is narrow, and
+        // nothing is drawn over one: "ψ iγ" has its bar over the ψ)
+        let widths: Vec<f32> = chars.iter().map(|&c| crate::layout::char_width(c)).collect();
+        let scale = (b.right - b.left) / widths.iter().sum::<f32>().max(0.01);
+        let mut edges: Vec<f32> = vec![b.left];
+        for w in &widths {
+            edges.push(edges[edges.len() - 1] + w * scale);
+        }
+        let mut ci = (0..n).find(|&i| mid < edges[i + 1]).unwrap_or(n - 1);
+        if chars.get(ci).is_some_and(|c| c.is_whitespace()) {
+            let near = |i: usize| (0.5 * (edges[i] + edges[i + 1]) - mid).abs();
+            let other = (0..n).filter(|&i| !chars[i].is_whitespace()).min_by(|&x, &y| near(x).total_cmp(&near(y)));
+            ci = other.unwrap_or(ci);
+        }
         let mut pieces: Vec<MSpan> = Vec::new();
         for (part, range) in [(0, 0..ci), (1, ci..ci + 1), (2, ci + 1..n)] {
             if range.is_empty() {
@@ -573,8 +591,8 @@ fn put_accents(mut spans: Vec<MSpan>) -> Vec<MSpan> {
             }
             let mut p = b.clone();
             p.text = chars[range.clone()].iter().collect();
-            p.left = b.left + w * range.start as f32;
-            p.right = b.left + w * range.end as f32;
+            p.left = edges[range.start];
+            p.right = edges[range.end];
             if part == 1 {
                 let inner = tex(&p);
                 p.atom = Some(format!("\\{name}{{{}}}", inner.trim()));
