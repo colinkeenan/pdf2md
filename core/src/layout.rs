@@ -2748,6 +2748,34 @@ fn group_lines(
             None => groups.push(vec![s]),
         }
     }
+    // A line begun by a full stop is no line: the one that is the dot
+    // of a product in an exponent stands half a line above its text line,
+    // comes before it, and takes the "=" signs of that line as they pass.
+    // Its pieces go to the lines they share most of their height with.
+    let mut k = 0;
+    while k < groups.len() {
+        let main = groups[k][0].text.trim();
+        let lone_mark = main == ".";
+        let others: Vec<Vec<Span>> = groups.iter().enumerate().filter(|(m, _)| *m != k).map(|(_, g)| vec![g[0].clone()]).collect();
+        if !lone_mark || groups[k].len() < 2 || most_overlap(&others, &groups[k][0]).is_none() {
+            k += 1;
+            continue;
+        }
+        let pieces = groups.remove(k);
+        let mut left: Vec<Span> = Vec::new();
+        for (j, s) in pieces.into_iter().enumerate() {
+            // (the mark itself stands raised: it is of the line under it)
+            let below: Vec<Vec<Span>> = groups.iter().map(|g| if j == 0 && g[0].top < s.top { vec![Span { height: 0.0, ..g[0].clone() }] } else { vec![g[0].clone()] }).collect();
+            match most_overlap(&below, &s) {
+                Some((m, overlap)) if j == 0 || overlap >= 0.5 * s.height.min(groups[m][0].height) => groups[m].push(s),
+                _ => left.push(s),
+            }
+        }
+        if !left.is_empty() {
+            groups.insert(k, left);
+            k += 1;
+        }
+    }
     // Pieces far from the rest of their line that touch the small letters
     // of the line beside it: the full stop that is the dot of a product in
     // an exponent, e^{−(i/2)J·A⁻¹·J}, stands as high as the numerator of the
