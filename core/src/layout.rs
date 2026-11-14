@@ -265,6 +265,12 @@ pub fn clean_text(t: &str) -> String {
             'ﬃ' => out.push_str("ffi"),
             'ﬄ' => out.push_str("ffl"),
             '\u{E000}'..='\u{F8FF}' => {}
+            // MathematicalPi (labels in drawn figures): its Greek letters
+            // and signs come out as pictures of control characters
+            '\u{2423}'..='\u{243A}' => out.push("αβγδεζηθικλμνξοπρστυφχψω".chars().nth(c as usize - 0x2423).unwrap_or(c)),
+            '\u{2AF9}' => out.push('+'),
+            '\u{2AFA}' => out.push('−'),
+            '\u{2B48}' => out.push('·'),
             c if c.is_control() => {}
             c => out.push(c),
         }
