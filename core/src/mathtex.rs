@@ -659,7 +659,12 @@ fn put_accents(mut spans: Vec<MSpan>) -> Vec<MSpan> {
 fn raised_dots(mut spans: Vec<MSpan>) -> Vec<MSpan> {
     for k in 0..spans.len() {
         let d = &spans[k];
-        if d.text.trim() != "." || d.atom.is_some() {
+        // (and so are the dots of "and so on" among indices, μ₁μ₂...μₙ)
+        // (set in the size of the line: dots already as small as the
+        // indices are in their place)
+        let line_size = spans.iter().filter(|s| !s.cmex()).map(|s| s.size).fold(0.0f32, f32::max);
+        let ellipsis = matches!(d.text.trim(), "..." | ". . ." | "…") && d.size >= 0.9 * line_size;
+        if (d.text.trim() != "." && !ellipsis) || d.atom.is_some() {
             continue;
         }
         // (the small letters right beside it; one of them at least has the
@@ -675,9 +680,11 @@ fn raised_dots(mut spans: Vec<MSpan>) -> Vec<MSpan> {
             continue;
         }
         let like = if level(b) && (!level(a) || spans[b].size >= spans[a].size) { b } else { a };
+        // (the dots stand with the indices, not with an index's own number)
+        let like = if ellipsis && spans[a].size != spans[b].size { if spans[a].size > spans[b].size { a } else { b } } else { like };
         let (top, bottom, size) = (spans[like].top, spans[like].bottom, spans[like].size);
         let d = &mut spans[k];
-        (d.text, d.top, d.bottom, d.size) = ("·".to_string(), top, bottom, size);
+        (d.text, d.top, d.bottom, d.size) = (if ellipsis { "…" } else { "·" }.to_string(), top, bottom, size);
     }
     spans
 }
