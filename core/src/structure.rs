@@ -11,11 +11,21 @@ pub fn split_chapters(blks: Vec<Blk>, chapter_size: Option<f32>) -> Vec<Chapter>
         title: FRONT_MATTER.into(),
         ..Default::default()
     }];
-    for b in blks {
-        let is_title = match &b.block {
-            Block::Heading { size, .. } => chapter_size.is_some_and(|c| (size - c).abs() < 0.6),
-            _ => false,
-        };
+    // In a book whose chapter titles carry their numbers ("3 Diffraction"),
+    // a line of that size without one is a chapter's title only where it
+    // opens a page ("Preface"): elsewhere it is something else in large
+    // type, a label in a figure.
+    let of_size = |b: &Blk| matches!(&b.block, Block::Heading { size, .. } if chapter_size.is_some_and(|c| (size - c).abs() < 0.6));
+    let has_number = |b: &Blk| matches!(&b.block, Block::Heading { text, .. } if plain(text).trim_start().starts_with(|c: char| c.is_ascii_digit()) && plain(text).split_whitespace().next().is_some_and(|n| n.len() <= 3 && n.chars().all(|c| c.is_ascii_digit())));
+    let titles = blks.iter().filter(|b| of_size(b)).count();
+    let numbered_book = titles >= 4 && blks.iter().filter(|b| of_size(b) && has_number(b)).count() * 2 >= titles;
+    // (and not between two numbered chapters)
+    let first_numbered = blks.iter().position(|b| of_size(b) && has_number(b)).unwrap_or(0);
+    let last_numbered = blks.iter().rposition(|b| of_size(b) && has_number(b)).unwrap_or(0);
+    for (at, b) in blks.into_iter().enumerate() {
+        let opens_page = matches!(chapters.last().and_then(|c| c.blocks.last()), Some(Blk { block: Block::Anchor(_), .. }) | None);
+        let outside = at < first_numbered || at > last_numbered;
+        let is_title = of_size(&b) && (!numbered_book || has_number(&b) || (opens_page && outside));
         if !is_title {
             chapters.last_mut().unwrap().blocks.push(b);
             continue;
@@ -106,6 +116,8 @@ fn plain_letters(text: &[crate::Inline]) -> String {
 pub fn slugify(s: &str) -> String {
     let mut out = String::new();
     for c in s.to_lowercase().chars() {
+        // ("Schrödinger" is "schrodinger")
+        let c = "àáâãäåçèéêëìíîïñòóôõöùúûüýÿčšžřć".chars().position(|a| a == c).and_then(|k| "aaaaaaceeeeiiiinooooouuuuyycszrc".chars().nth(k)).unwrap_or(c);
         if c.is_ascii_alphanumeric() {
             out.push(c);
         } else if !out.ends_with('-') && !out.is_empty() {
@@ -289,7 +301,9 @@ pub fn assign_slugs(chapters: &mut [Chapter]) {
     // (chapter 1 comes first, after the front matter and its contents)
     let contents = |c: &Chapter| crate::blocks::is_contents_title(&c.title);
     let usable = first.is_some_and(|f| {
-        numbers_in_order(&chapters[f..]) && ((f <= 1 && numbers[f] == Some(f as u32)) || (f == 2 && numbers[f] == Some(1) && contents(&chapters[1])) || (f == 3 && numbers[f] == Some(1) && contents(&chapters[1]) && chapters[2].title == MORE_FRONT_MATTER))
+        // (or after the contents and a preface or two, each a file of its own)
+        let prefaces = (2..=5).contains(&f) && numbers[f] == Some(1) && contents(&chapters[1]);
+        numbers_in_order(&chapters[f..]) && (prefaces || (f <= 1 && numbers[f] == Some(f as u32)) || (f == 2 && numbers[f] == Some(1) && contents(&chapters[1])) || (f == 3 && numbers[f] == Some(1) && contents(&chapters[1]) && chapters[2].title == MORE_FRONT_MATTER))
     });
     if !usable {
         // (the contents, a file of their own after the front matter, are
@@ -332,7 +346,12 @@ pub fn assign_slugs(chapters: &mut [Chapter]) {
                 format!("{current:02}{}", letter as char)
             }
         };
-        ch.slug = format!("{prefix}-{}", slugify(&ch.title));
+        // (the number is the file's prefix: "3 Diffraction" is "03-diffraction")
+        let title = match numbers[i] {
+            Some(n) => ch.title.trim_start().strip_prefix(&n.to_string()).filter(|rest| rest.starts_with(' ')).unwrap_or(&ch.title).to_string(),
+            None => ch.title.clone(),
+        };
+        ch.slug = format!("{prefix}-{}", slugify(&title));
     }
 }
 

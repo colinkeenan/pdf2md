@@ -2430,10 +2430,34 @@ pub fn parse_xml_with(xml: &str, lost: &HashMap<String, bool>) -> Result<Doc, St
         .collect();
 
     let mut doc = Doc { fonts, pages, body_size };
+    split_accents(&mut doc);
     blank_pages(&mut doc);
     large_capitals(&mut doc);
     title_words(&mut doc);
     Ok(doc)
+}
+
+/// TeX draws "ö" as two glyphs, the dots and then the o under them, and
+/// the text may be cut between the two ("The Schr¨" and "odinger
+/// Equation", in a heading's wider type). The accent goes to the piece
+/// with its letter.
+fn split_accents(doc: &mut Doc) {
+    let fonts = doc.fonts.clone();
+    for page in doc.pages.iter_mut() {
+        for line in page.lines.iter_mut() {
+            for k in 0..line.spans.len().saturating_sub(1) {
+                let (a, b) = line.spans.split_at_mut(k + 1);
+                let (s, next) = (&mut a[k], &mut b[0]);
+                let Some(accent) = s.text.chars().last().filter(|c| "¨´`ˆ˜ˇ".contains(*c)) else { continue };
+                let prose = |f: usize| fonts.get(f).is_some_and(|f| !f.math);
+                if s.font != next.font || !prose(s.font) || s.text.chars().count() < 2 || next.left > s.right() + 1.0 || !next.text.starts_with(char::is_alphabetic) {
+                    continue;
+                }
+                s.text.pop();
+                next.text = compose_accents(&format!("{accent}{}", next.text));
+            }
+        }
+    }
 }
 
 /// A page that says only that it is blank ("This page intentionally left

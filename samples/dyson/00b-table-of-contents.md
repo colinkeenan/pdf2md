@@ -41,7 +41,7 @@
   - [The Feynman Method of Quantization](04-field-theory.md#s-the-feynman-method-of-quantization) — [p. 35](04-field-theory.md#p35)
   - [The Schwinger Action Principle](04-field-theory.md#s-the-schwinger-action-principle) — [p. 36](04-field-theory.md#p36)
     - [A. The Field Equations](04-field-theory.md#s-a-the-field-equations) — [p. 37](04-field-theory.md#p37)
-    - [B. The Schrödinger Equation for the State-function](04-field-theory.md#s-b-the-schr-dinger-equation-for-the-state-function) — [p. 37](04-field-theory.md#p37)
+    - [B. The Schrödinger Equation for the State-function](04-field-theory.md#s-b-the-schrodinger-equation-for-the-state-function) — [p. 37](04-field-theory.md#p37)
     - [C. Operator Form of the Schwinger Principle](04-field-theory.md#s-c-operator-form-of-the-schwinger-principle) — [p. 38](04-field-theory.md#p38)
     - [D. Canonical Commutation Laws](04-field-theory.md#s-d-canonical-commutation-laws) — [p. 39](04-field-theory.md#p39)
     - [E. The Heisenberg Equation of Motion for the Operators](04-field-theory.md#s-e-the-heisenberg-equation-of-motion-for-the-operators) — [p. 39](04-field-theory.md#p39)

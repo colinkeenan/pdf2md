@@ -341,7 +341,7 @@ That is to say, the classical action principle and the classical field equations
 
 We see that (177) is exactly the kind of generalization we want of the old variation principle (171). It includes the information, necessary for a quantum theory, concerning the effect on $`I`$(Ω) of variations not vanishing at the boundary of Ω.
 
-### <a id="s-b-the-schr-dinger-equation-for-the-state-function"></a>B. The Schrödinger Equation for the State-function
+### <a id="s-b-the-schrodinger-equation-for-the-state-function"></a>B. The Schrödinger Equation for the State-function
 
 Specialize $`\sigma_{1}`$ and $`\sigma_{2}`$ to be the whole space at the times $`t_{1}`$ and $`t_{2}`$. Then
 
