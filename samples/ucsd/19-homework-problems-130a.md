@@ -245,7 +245,7 @@ Compute the expected value of $`x^{2}`$ as a function of time.
 
 5. Calculate the Fermi energy of a gas of massless fermions with $`n`$ particles per unit volume.
 
-6. The number density of conduction electrons in copper is 8$`. 5 \times 1 0`$<sup>22</sup> per cubic centimeter. What
+6. The number density of conduction electrons in copper is 8$`. 5 \times 1 0^{2 2}`$ per cubic centimeter. What
 
 is the Fermi energy in electron volts?
 

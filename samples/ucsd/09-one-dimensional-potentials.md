@@ -128,7 +128,7 @@ T = 1 + R = \frac{2 k}{k + k^{\prime}} .
 We now have the **full solution**, given our assumption of particles incident from the left.
 
 ```math
-u ( x ) = \begin{cases} e^{ikx} + \tfrac{k \quad k^{\prime}}{k + k ik^{\prime}}^{-} e^{- ikx} & x< 0 \\ \tfrac{2 k}{k + k^{\prime}} e^{{}^{\prime} x} & x> 0 \end{cases}
+u ( x ) = \begin{cases} e^{ikx} + \tfrac{k \quad k^{\prime}}{k + k ik^{\prime}}^{-} e^{- ikx} & x< 0 \\ \tfrac{2 k}{k + k^{\prime}} e^{\prime x} & x> 0 \end{cases}
 ```
 
 **Classically**, all of the particles would be transmitted, continuing on to infinity.

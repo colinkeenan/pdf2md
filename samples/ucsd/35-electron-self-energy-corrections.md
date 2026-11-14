@@ -259,7 +259,7 @@ It is the **difference between the bound electron’s self energy and that for a
 ```
 
 ```math
-= \frac{2 \alpha \hbar}{3 \pi m^{2} c^{2} V^{2}} | \vec{p} |^{2} \sum_{\vec{p}^{\prime}} \int \frac{\omega}{( \omega_{nj} - \omega )} | V\delta_{\vec{p} ,}^{{}^{\prime} \vec{p}} |^{2} d\omega
+= \frac{2 \alpha \hbar}{3 \pi m^{2} c^{2} V^{2}} | \vec{p} |^{2} \sum_{\vec{p}^{\prime}} \int \frac{\omega}{( \omega_{nj} - \omega )} | V\delta_{\vec{p} ,}^{\prime \vec{p}} |^{2} d\omega
 ```
 
 ```math

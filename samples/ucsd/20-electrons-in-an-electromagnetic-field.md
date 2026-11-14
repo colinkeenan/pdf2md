@@ -829,7 +829,7 @@ Max when
 | m | = x^{2} \quad \Rightarrow \quad \rho = \left( \frac{2 c}{eB} \hbar m \right)^{1 / 2}
 ```
 
-Now let’s put in some numbers: Let $`B \approx 20`$ kGauss = $`2 \times 1 0`$<sup>4</sup> Gauss. Then
+Now let’s put in some numbers: Let $`B \approx 20`$ kGauss = $`2 \times 1 0^{4}`$ Gauss. Then
 
 ```math
 \rho = \sqrt{\frac{2 \begin{pmatrix} 3 \times 1 0^{1 0} \frac{\text{ cm }}{\sec_{-}} \\ ( 4 . 8 \times 1 0 \end{pmatrix} ( 1 . 0 5 \times 1 0^{- 2 7} \text{ erg } \sec )}{{}^{1 0} \text{ esu } ) ( 2 \times 1 0^{4} g )} m} \approx 2 . 5 \times 1 0^{- 6} \sqrt{m} \text{ cm }

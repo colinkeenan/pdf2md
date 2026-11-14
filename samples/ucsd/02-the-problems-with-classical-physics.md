@@ -403,7 +403,7 @@ V ( r ) = \frac{- \alpha \hbar c}{r}
 
 ## <a id="s-2-6-1-the-solar-temperature"></a>Estimate the solar temperature using
 
-$`•`$ the solar radiation intensity on the earth of 1.4 kilowatts per square meter. $`( r_{sun}`$ = $`7 \times 1 0`$<sup>8</sup>
+$`•`$ the solar radiation intensity on the earth of 1.4 kilowatts per square meter. $`( r_{sun}`$ = $`7 \times 1 0^{8}`$
 
 ```math
 m , d_{sun} = 1 . 5 \times 1 0^{1 1} m )
@@ -487,7 +487,7 @@ I solved this iteratively starting at y=5 and got $`y`$ = 4$`. 97`$ implying
 h\nu = 4 . 9 7 kT
 ```
 
-If we take $`\lambda`$ = 500 nm, them $`\nu`$ = $`6 \times 1 0`$<sup>14</sup>.
+If we take $`\lambda`$ = 500 nm, them $`\nu`$ = $`6 \times 1 0^{1 4}`$.
 
 ```math
 T = \frac{h\nu}{5 k} = \frac{( 6 . 6 \times 1 0^{- 3 4} ) ( 6 \times 1 0^{1 4} )}{( 5 ) ( 1 . 4 \times 1 0^{- 2 3} )} = 6 \times 1 0^{3} = 5 7 0 0

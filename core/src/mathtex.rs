@@ -1055,6 +1055,9 @@ fn late_arrows(s: &str) -> String {
 fn tidy(s: &str) -> String {
     let s = s.split_whitespace().collect::<Vec<_>>().join(" ");
     let s = if s.contains('\u{20d7}') { late_arrows(&s) } else { s };
+    // (a prime that opens an exponent stands a little higher than the
+    // number after it, m′²: one exponent)
+    let s = s.replace("^{{}^{\\prime} ", "^{\\prime ").replace("^{{}^{\\prime}}", "^{\\prime}");
     s.replace("\\not =", "\\neq").replace("\\not=", "\\neq").replace("\\not{=}", "\\neq")
 }
 

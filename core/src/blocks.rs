@@ -407,7 +407,14 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
                 let digits = !t.is_empty() && t.len() <= 3 && t.bytes().all(|b| b.is_ascii_digit());
                 let symbol = !t.is_empty() && t.chars().all(|c| "*†‡§¶".contains(c));
                 let ordinal = matches!(t, "st" | "nd" | "rd" | "th");
-                if ((digits || symbol) && (after_word || i == 0) && !stacked) || (ordinal && i > 0) {
+                // (a raised number on a number is its power where the
+                // exponent goes on in math, 2 and a raised 10/2 − 1, or the
+                // number follows a sign of the formula, "= 2" and a raised 4)
+                let on_number = i > 0 && !spans[i - 1].text.trim().is_empty() && spans[i - 1].text.trim().bytes().all(|b| b.is_ascii_digit());
+                let goes_on = spans.get(i + 1).is_some_and(|nx| nx.script == Script::Super && doc.is_math(nx) && gap(i, i + 1) < 0.15 * st.body);
+                let in_formula = i >= 2 && doc.is_math(&spans[i - 2]) && gap(i - 2, i - 1) < 0.5 * st.body;
+                let power = digits && on_number && (goes_on || in_formula);
+                if ((digits || symbol) && (after_word || i == 0) && !stacked && !power) || (ordinal && i > 0) {
                     return K::Marker;
                 }
             }

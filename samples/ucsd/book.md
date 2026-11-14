@@ -3460,7 +3460,7 @@ V ( r ) = \frac{- \alpha \hbar c}{r}
 
 ## <a id="s-2-6-1-the-solar-temperature"></a>Estimate the solar temperature using
 
-$`•`$ the solar radiation intensity on the earth of 1.4 kilowatts per square meter. $`( r_{sun}`$ = $`7 \times 1 0`$<sup>8</sup>
+$`•`$ the solar radiation intensity on the earth of 1.4 kilowatts per square meter. $`( r_{sun}`$ = $`7 \times 1 0^{8}`$
 
 ```math
 m , d_{sun} = 1 . 5 \times 1 0^{1 1} m )
@@ -3544,7 +3544,7 @@ I solved this iteratively starting at y=5 and got $`y`$ = 4$`. 97`$ implying
 h\nu = 4 . 9 7 kT
 ```
 
-If we take $`\lambda`$ = 500 nm, them $`\nu`$ = $`6 \times 1 0`$<sup>14</sup>.
+If we take $`\lambda`$ = 500 nm, them $`\nu`$ = $`6 \times 1 0^{1 4}`$.
 
 ```math
 T = \frac{h\nu}{5 k} = \frac{( 6 . 6 \times 1 0^{- 3 4} ) ( 6 \times 1 0^{1 4} )}{( 5 ) ( 1 . 4 \times 1 0^{- 2 3} )} = 6 \times 1 0^{3} = 5 7 0 0
@@ -3967,7 +3967,7 @@ If you know that the particle is highly **non-relativistic**, $`T<<mc^{2}`$, the
 \tfrac{( pc )^{2}}{2 mc^{2}} \text{ giving } pc = \sqrt{2 mc^{2} T} .
 ```
 
-So, for example, compute the wavelength of a 100 eV electron. This is non-relativistic since 100 eV ¡¡ 510000 eV. So $`pc = \sqrt{1 0}`$<sup>6</sup> $`\times 100`$ eV or 10000 eV.
+So, for example, compute the wavelength of a 100 eV electron. This is non-relativistic since 100 eV ¡¡ 510000 eV. So $`pc = \sqrt{1 0^{6} \times}`$ 100 eV or 10000 eV.
 
 ```math
 \lambda = \frac{2 \pi 1 9 7 3}{pc} = \frac{1 2 0 0 0}{1 0 0 0 0} = 1 . 2 ˚ A
@@ -7070,7 +7070,7 @@ T = 1 + R = \frac{2 k}{k + k^{\prime}} .
 We now have the **full solution**, given our assumption of particles incident from the left.
 
 ```math
-u ( x ) = \begin{cases} e^{ikx} + \tfrac{k \quad k^{\prime}}{k + k ik^{\prime}}^{-} e^{- ikx} & x< 0 \\ \tfrac{2 k}{k + k^{\prime}} e^{{}^{\prime} x} & x> 0 \end{cases}
+u ( x ) = \begin{cases} e^{ikx} + \tfrac{k \quad k^{\prime}}{k + k ik^{\prime}}^{-} e^{- ikx} & x< 0 \\ \tfrac{2 k}{k + k^{\prime}} e^{\prime x} & x> 0 \end{cases}
 ```
 
 **Classically**, all of the particles would be transmitted, continuing on to infinity.
@@ -15195,7 +15195,7 @@ Compute the expected value of $`x^{2}`$ as a function of time.
 
 5. Calculate the Fermi energy of a gas of massless fermions with $`n`$ particles per unit volume.
 
-6. The number density of conduction electrons in copper is 8$`. 5 \times 1 0`$<sup>22</sup> per cubic centimeter. What
+6. The number density of conduction electrons in copper is 8$`. 5 \times 1 0^{2 2}`$ per cubic centimeter. What
 
 is the Fermi energy in electron volts?
 
@@ -16116,7 +16116,7 @@ Max when
 | m | = x^{2} \quad \Rightarrow \quad \rho = \left( \frac{2 c}{eB} \hbar m \right)^{1 / 2}
 ```
 
-Now let’s put in some numbers: Let $`B \approx 20`$ kGauss = $`2 \times 1 0`$<sup>4</sup> Gauss. Then
+Now let’s put in some numbers: Let $`B \approx 20`$ kGauss = $`2 \times 1 0^{4}`$ Gauss. Then
 
 ```math
 \rho = \sqrt{\frac{2 \begin{pmatrix} 3 \times 1 0^{1 0} \frac{\text{ cm }}{\sec_{-}} \\ ( 4 . 8 \times 1 0 \end{pmatrix} ( 1 . 0 5 \times 1 0^{- 2 7} \text{ erg } \sec )}{{}^{1 0} \text{ esu } ) ( 2 \times 1 0^{4} g )} m} \approx 2 . 5 \times 1 0^{- 6} \sqrt{m} \text{ cm }
@@ -20966,7 +20966,7 @@ The Breit-Wigner will be the observed line shape as long as the density of final
 
 As Γ $`\to 0`$ this line shape approaches a delta function, $`\delta ( \omega - \omega_{0} )`$.
 
-For the 2p to 1s transition in hydrogen, we’ve calculated a decay rate of 0$`. 6 \times 1 0`$<sup>9</sup> per second. We can compute the FWHM of the width of the photon line.
+For the 2p to 1s transition in hydrogen, we’ve calculated a decay rate of 0$`. 6 \times 1 0^{9}`$ per second. We can compute the FWHM of the width of the photon line.
 
 ```math
 \Delta E = \hbar \Gamma = \frac{( 1 . 0 5 \times 1 0^{- 2 7} ergsec ) ( 0 . 6 \times 1 0^{9} sec^{- 1} )}{1 . 6 0 2 \times 1 0^{- 1 2} erg/eV} \approx 0 . 4 \times 1 0^{- 6} eV
@@ -24252,7 +24252,7 @@ It is the **difference between the bound electron’s self energy and that for a
 ```
 
 ```math
-= \frac{2 \alpha \hbar}{3 \pi m^{2} c^{2} V^{2}} | \vec{p} |^{2} \sum_{\vec{p}^{\prime}} \int \frac{\omega}{( \omega_{nj} - \omega )} | V\delta_{\vec{p} ,}^{{}^{\prime} \vec{p}} |^{2} d\omega
+= \frac{2 \alpha \hbar}{3 \pi m^{2} c^{2} V^{2}} | \vec{p} |^{2} \sum_{\vec{p}^{\prime}} \int \frac{\omega}{( \omega_{nj} - \omega )} | V\delta_{\vec{p} ,}^{\prime \vec{p}} |^{2} d\omega
 ```
 
 ```math
@@ -28067,7 +28067,7 @@ So the Standard Model is as simple as 1 2 3 in Quantum Field Theories.
 
 # 37 Formulas
 
-$`\hbar`$ = 1$`. 0 5 \times 1 0^{- 2 7}`$ erg sec $`c`$ = 3$`. 0 0 \times 1 0`$<sup>10</sup> cm/sec $`e`$ = 1$`. 6 0 2 \times 1 0^{- 1 9}`$ coulomb
+$`\hbar`$ = 1$`. 0 5 \times 1 0^{- 2 7}`$ erg sec $`c`$ = 3$`. 0 0 \times 1 0^{1 0}`$ cm/sec $`e`$ = 1$`. 6 0 2 \times 1 0^{- 1 9}`$ coulomb
 
 $`1 eV`$ = 1$`. 6 0 2 \times 1 0^{- 1 2}`$ erg $`\alpha = \tfrac{e^{2}}{\hbar c}`$ = 1$`/ 137`$ = $`\frac{e^{2}}{4 \pi \epsilon_{0} \hbar c}`$ (SI) $`\hbar c`$ = 1973 eV ˚A= 197.3 MeV F
 

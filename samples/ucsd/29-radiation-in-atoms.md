@@ -724,7 +724,7 @@ The Breit-Wigner will be the observed line shape as long as the density of final
 
 As Γ $`\to 0`$ this line shape approaches a delta function, $`\delta ( \omega - \omega_{0} )`$.
 
-For the 2p to 1s transition in hydrogen, we’ve calculated a decay rate of 0$`. 6 \times 1 0`$<sup>9</sup> per second. We can compute the FWHM of the width of the photon line.
+For the 2p to 1s transition in hydrogen, we’ve calculated a decay rate of 0$`. 6 \times 1 0^{9}`$ per second. We can compute the FWHM of the width of the photon line.
 
 ```math
 \Delta E = \hbar \Gamma = \frac{( 1 . 0 5 \times 1 0^{- 2 7} ergsec ) ( 0 . 6 \times 1 0^{9} sec^{- 1} )}{1 . 6 0 2 \times 1 0^{- 1 2} erg/eV} \approx 0 . 4 \times 1 0^{- 6} eV

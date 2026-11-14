@@ -217,7 +217,7 @@ If you know that the particle is highly **non-relativistic**, $`T<<mc^{2}`$, the
 \tfrac{( pc )^{2}}{2 mc^{2}} \text{ giving } pc = \sqrt{2 mc^{2} T} .
 ```
 
-So, for example, compute the wavelength of a 100 eV electron. This is non-relativistic since 100 eV ¡¡ 510000 eV. So $`pc = \sqrt{1 0}`$<sup>6</sup> $`\times 100`$ eV or 10000 eV.
+So, for example, compute the wavelength of a 100 eV electron. This is non-relativistic since 100 eV ¡¡ 510000 eV. So $`pc = \sqrt{1 0^{6} \times}`$ 100 eV or 10000 eV.
 
 ```math
 \lambda = \frac{2 \pi 1 9 7 3}{pc} = \frac{1 2 0 0 0}{1 0 0 0 0} = 1 . 2 ˚ A

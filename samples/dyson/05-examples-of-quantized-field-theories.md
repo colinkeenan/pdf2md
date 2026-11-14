@@ -2974,7 +2974,7 @@ because the expression $`( z - z^{2} )`$ is symmetric about $`z = \tfrac{1}{2}`$
 
 <a id="ref-16"></a>**[16]** H. A. Kramers, “The interaction between charged particles and the radiation field”, _Nuovo Cim._ NS **15** (1938) 108. English translation in Miller, _Early Quantum Electrodynamics_, pp 254–258. [↩](#refback-16-1)
 
-<a id="ref-15"></a>**[15]** R. R. Wilson, “Scattering of 1$`. 3`$<sup>3</sup> MeV Gamma Rays by an Electric Field”, _Phys. Rev._ **90** (1953) 720. Wilson was at Cornell at the time; also he notes “The measurements here reported were all made in 1951. Publication has been held up until now in the hope that the Rayleigh scattering could be calculated more accurately.” [↩](#refback-15-1)
+<a id="ref-15"></a>**[15]** R. R. Wilson, “Scattering of 1$`. 3^{3}`$ MeV Gamma Rays by an Electric Field”, _Phys. Rev._ **90** (1953) 720. Wilson was at Cornell at the time; also he notes “The measurements here reported were all made in 1951. Publication has been held up until now in the hope that the Rayleigh scattering could be calculated more accurately.” [↩](#refback-15-1)
 
 <a id="ref-17"></a>**[17]** E. A. Uehling, “Polarization Effects in the Positron Theory”, _Phys. Rev._ **48** (1935) 55. [↩](#refback-17-1)
 

@@ -7,7 +7,7 @@
 
 # 37 Formulas
 
-$`\hbar`$ = 1$`. 0 5 \times 1 0^{- 2 7}`$ erg sec $`c`$ = 3$`. 0 0 \times 1 0`$<sup>10</sup> cm/sec $`e`$ = 1$`. 6 0 2 \times 1 0^{- 1 9}`$ coulomb
+$`\hbar`$ = 1$`. 0 5 \times 1 0^{- 2 7}`$ erg sec $`c`$ = 3$`. 0 0 \times 1 0^{1 0}`$ cm/sec $`e`$ = 1$`. 6 0 2 \times 1 0^{- 1 9}`$ coulomb
 
 $`1 eV`$ = 1$`. 6 0 2 \times 1 0^{- 1 2}`$ erg $`\alpha = \tfrac{e^{2}}{\hbar c}`$ = 1$`/ 137`$ = $`\frac{e^{2}}{4 \pi \epsilon_{0} \hbar c}`$ (SI) $`\hbar c`$ = 1973 eV ˚A= 197.3 MeV F
 
