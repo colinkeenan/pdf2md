@@ -195,7 +195,7 @@ const FUNCS: &[&str] = &[
     "deg", "gcd",
 ];
 /// Other upright operator names seen in physics books.
-const OPNAMES: &[&str] = &["Tr", "Sp", "Spur", "Re", "Im", "sgn", "const"];
+const OPNAMES: &[&str] = &["Tr", "tr", "Sp", "Spur", "Re", "Im", "sgn", "const"];
 
 /// Is this word written upright as a function name inside math?
 pub fn is_function_word(w: &str) -> bool {

@@ -253,6 +253,11 @@ fn tidy(mut v: Vec<Inline>) -> Vec<Inline> {
     v
 }
 
+/// Names of functions that a book sets in the text's font, in a sentence:
+/// before a formula they are part of it. (Not "max" or "sup", which are
+/// words too.)
+const FUNCTION_NAMES: [&str; 20] = ["lim", "log", "ln", "sin", "cos", "tan", "cot", "sinh", "cosh", "tanh", "coth", "exp", "det", "tr", "Tr", "sgn", "Re", "Im", "arcsin", "arctan"];
+
 #[derive(Clone, Copy, PartialEq, Debug)]
 pub(crate) enum K {
     Text,
@@ -324,6 +329,27 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
         }
         k += 1;
     }
+    // The name of a function before its formula ("is log" and (Λ/m), "lim"
+    // and a lowered K→∞) is the formula's first word: it is cut off the
+    // words before it, and joins the formula.
+    let mut k = 0;
+    while k + 1 < pieces.len() {
+        let (s, next) = (&pieces[k], &pieces[k + 1]);
+        let trimmed = s.text.trim_end();
+        let word = trimmed.rsplit(char::is_whitespace).next().unwrap_or("");
+        let cut = trimmed.chars().count() - word.chars().count();
+        let before_math = (doc.is_math(next) || next.script != Script::Normal) && next.left - s.right() < 0.5 * st.body;
+        if cut > 0 && FUNCTION_NAMES.contains(&word) && before_math && !doc.is_math(s) && s.script == Script::Normal && !s.bold && !s.italic {
+            let n = s.text.chars().count().max(1) as f32;
+            let split_x = s.left + s.width * cut as f32 / n;
+            let (mut words, mut name) = (s.clone(), s.clone());
+            (words.text, words.width) = (s.text.chars().take(cut).collect(), split_x - s.left);
+            (name.text, name.left, name.width) = (word.to_string(), split_x, s.right() - split_x);
+            pieces.splice(k..=k, [words, name]);
+            k += 1;
+        }
+        k += 1;
+    }
     // Glue touching spans of the same font and script ("9" + "0" = "90").
     let mut spans: Vec<crate::layout::Span> = Vec::with_capacity(pieces.len());
     for s in &pieces {
@@ -385,6 +411,13 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
             }
         })
         .collect();
+    // The name of a function right before math is the formula's.
+    for i in 0..n.saturating_sub(1) {
+        let s = &spans[i];
+        if kinds[i] == K::Text && kinds[i + 1] == K::Math && FUNCTION_NAMES.contains(&s.text.trim()) && !s.bold && !s.italic && gap(i, i + 1) < 0.5 * st.body {
+            kinds[i] = K::Math;
+        }
+    }
     // Digits/operators touching math belong to the formula.
     loop {
         let mut changed = false;

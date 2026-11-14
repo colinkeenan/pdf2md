@@ -33,7 +33,7 @@ The difficulties in real calculations usually come from the factors 2 and $`\pi`
 
 where $`| E |`$ is the energy of the particles. Then under a <a id="ix-181">Lorentz</a> transformation the volume of a fixed region transforms like 1$`/ | E |`$ and so the definition stays invariant.
 
-Thus a continuum state given by the spinor $`\psi = u`$exp$`\{ ( i \boldsymbol{p} \boldsymbol{\cdot} \boldsymbol{x} - iEt ) / \hbar \}`$ is normalized so that
+Thus a continuum state given by the spinor $`\psi = u \exp \{ ( i \boldsymbol{p} \boldsymbol{\cdot} \boldsymbol{x} - iEt ) / \hbar \}`$ is normalized so that
 
 <a id="eq-104"></a>
 
@@ -230,7 +230,7 @@ c) Repeat the calculation with particles obeying the <a id="ix-164">Klein-Gordon
 
 _Problem 4:_ A nucleus (O<sup>16</sup>) has an even<sup><a id="fnref-11" href="#fn-11">11</a></sup> $`j`$ = 0 ground state and an even $`j`$ = 0 excited state at 6 MeV. Calculate the total rate of emission of pairs, and the angular and <a id="ix-101">momentum</a> distributions.
 
-_Solution:_ Let ∆$`E`$ be the excitation energy, $`\rho_{N}`$ and $`\boldsymbol{j}_{N}`$ the charge and current density operators of the nucleus. Then for the transition we are interested in $`\rho_{N}`$ and $`\boldsymbol{j}_{N}`$ are functions of position $`r`$ with the time-variation of the single matrix element given by exp$`\{- i`$∆$`E/ \hbar \}`$. Also
+_Solution:_ Let ∆$`E`$ be the excitation energy, $`\rho_{N}`$ and $`\boldsymbol{j}_{N}`$ the charge and current density operators of the nucleus. Then for the transition we are interested in $`\rho_{N}`$ and $`\boldsymbol{j}_{N}`$ are functions of position $`r`$ with the time-variation of the single matrix element given by $`\exp \{- i`$∆$`E/ \hbar \}`$. Also
 
 <a id="eq-119"></a>
 
@@ -762,7 +762,7 @@ The process of reinterpreting a one-particle wave-function like the Dirac $`\psi
 
 ## Notes
 
-<a id="fn-10"></a>**10.** The _spur_ of a matrix $`A`$ is the sum of its diagonal elements, and denoted Spur $`A`$ or Sp $`A`$. This term is also, and more commonly, known as the _trace_ of a matrix, denoted Tr $`A`$. [↩](#fnref-10)
+<a id="fn-10"></a>**10.** The _spur_ of a matrix $`A`$ is the sum of its diagonal elements, and denoted Spur $`A`$ or Sp $`A`$. This term is also, and more commonly, known as the _trace_ of a matrix, denoted $`\operatorname{Tr} A`$. [↩](#fnref-10)
 
 <a id="fn-11"></a>**11.** “ever” was written for “even” [↩](#fnref-11)
 

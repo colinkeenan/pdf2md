@@ -1868,7 +1868,7 @@ The difficulties in real calculations usually come from the factors 2 and $`\pi`
 
 where $`| E |`$ is the energy of the particles. Then under a <a id="ix-181">Lorentz</a> transformation the volume of a fixed region transforms like 1$`/ | E |`$ and so the definition stays invariant.
 
-Thus a continuum state given by the spinor $`\psi = u`$exp$`\{ ( i \boldsymbol{p} \boldsymbol{\cdot} \boldsymbol{x} - iEt ) / \hbar \}`$ is normalized so that
+Thus a continuum state given by the spinor $`\psi = u \exp \{ ( i \boldsymbol{p} \boldsymbol{\cdot} \boldsymbol{x} - iEt ) / \hbar \}`$ is normalized so that
 
 <a id="eq-104"></a>
 
@@ -2065,7 +2065,7 @@ c) Repeat the calculation with particles obeying the <a id="ix-164">Klein-Gordon
 
 _Problem 4:_ A nucleus (O<sup>16</sup>) has an even<sup><a id="fnref-11" href="#fn-11">11</a></sup> $`j`$ = 0 ground state and an even $`j`$ = 0 excited state at 6 MeV. Calculate the total rate of emission of pairs, and the angular and <a id="ix-101">momentum</a> distributions.
 
-_Solution:_ Let ∆$`E`$ be the excitation energy, $`\rho_{N}`$ and $`\boldsymbol{j}_{N}`$ the charge and current density operators of the nucleus. Then for the transition we are interested in $`\rho_{N}`$ and $`\boldsymbol{j}_{N}`$ are functions of position $`r`$ with the time-variation of the single matrix element given by exp$`\{- i`$∆$`E/ \hbar \}`$. Also
+_Solution:_ Let ∆$`E`$ be the excitation energy, $`\rho_{N}`$ and $`\boldsymbol{j}_{N}`$ the charge and current density operators of the nucleus. Then for the transition we are interested in $`\rho_{N}`$ and $`\boldsymbol{j}_{N}`$ are functions of position $`r`$ with the time-variation of the single matrix element given by $`\exp \{- i`$∆$`E/ \hbar \}`$. Also
 
 <a id="eq-119"></a>
 
@@ -2597,7 +2597,7 @@ The process of reinterpreting a one-particle wave-function like the Dirac $`\psi
 
 ## Notes
 
-<a id="fn-10"></a>**10.** The _spur_ of a matrix $`A`$ is the sum of its diagonal elements, and denoted Spur $`A`$ or Sp $`A`$. This term is also, and more commonly, known as the _trace_ of a matrix, denoted Tr $`A`$. [↩](#fnref-10)
+<a id="fn-10"></a>**10.** The _spur_ of a matrix $`A`$ is the sum of its diagonal elements, and denoted Spur $`A`$ or Sp $`A`$. This term is also, and more commonly, known as the _trace_ of a matrix, denoted $`\operatorname{Tr} A`$. [↩](#fnref-10)
 
 <a id="fn-11"></a>**11.** “ever” was written for “even” [↩](#fnref-11)
 
@@ -3640,7 +3640,7 @@ And by the commutation laws (213) and (219c) we have
 \langle a_{k\mu} \tilde{a}_{k^{\prime} \lambda} \rangle_{o} = \langle \boldsymbol{[} a_{k\mu} , \tilde{a}_{k^{\prime} \lambda} \boldsymbol{]} \rangle_{o} = \delta^{3} ( \boldsymbol{k} - \boldsymbol{k}^{\prime} ) \delta_{\mu \lambda} \qquad \text{(220)}
 ```
 
-The vacuum expectation value $`\langle A_{\mu} ( z ) A_{\lambda} ( y ) \rangle_{o}`$ is thus just the part of the commutator $`\boldsymbol{[} A_{\mu} ( z ) ,A_{\lambda} ( y ) \boldsymbol{]}`$ which contains positive frequencies exp$`\{ ik \cdot ( z - y ) \}`$ with $`k_{0} > 0`$, as one can see using (211), (219) and (220). Thus<sup><a id="fnref-25" href="#fn-25">25</a></sup>
+The vacuum expectation value $`\langle A_{\mu} ( z ) A_{\lambda} ( y ) \rangle_{o}`$ is thus just the part of the commutator $`\boldsymbol{[} A_{\mu} ( z ) ,A_{\lambda} ( y ) \boldsymbol{]}`$ which contains positive frequencies $`\exp \{ ik \cdot ( z - y ) \}`$ with $`k_{0} > 0`$, as one can see using (211), (219) and (220). Thus<sup><a id="fnref-25" href="#fn-25">25</a></sup>
 
 <a id="eq-221"></a>
 
@@ -3982,7 +3982,7 @@ Thus a fluctuating component of $`\boldsymbol{E}`$ with frequency $`c | \boldsym
 \left\langle r_{1}^{2} \right\rangle_{o} = \frac{e^{2}}{m^{2}} \frac{\hbar c}{1 6 \pi^{3} V^{2}} \int_{K_{H}}^{\infty} \frac{d^{3} \boldsymbol{K}}{| \boldsymbol{K} |} ( K_{2}^{2} + K_{3}^{2} ) | V ( K ) |^{2} \frac{1}{c^{4} | \boldsymbol{K} |^{4}}
 ```
 
-because lim sin$`x {}^{2} x^{2}`$ = 1. The integral now converges at $`\infty`$, because of the finite size of the electron. Since
+because lim $`\frac{\sin^{2} x}{x^{2}}`$ = 1. The integral now converges at $`\infty`$, because of the finite size of the electron. Since
 
 ```math
 x \to 0
@@ -3994,7 +3994,7 @@ $`R`$ is very small we may approximate (237) by
 V ( K ) = \begin{cases} \tfrac{4}{3} \pi R^{3} = V & \text{ for } | \boldsymbol{K} | R< 1 \\ 0 & \text{ for } | \boldsymbol{K} | R> 1 \end{cases}
 ```
 
-Then, since $`( K_{2}^{2} + K_{3}^{2} ) = | \boldsymbol{K} |^{2} ( 1 -`$ cos<sup>2</sup> $`\theta )`$ and $`\int 0 \pi`$ sin<sup>2</sup> $`\theta`$ sin$`\theta d\theta = \tfrac{4}{3}`$, we have<sup><a id="fnref-34" href="#fn-34">34</a></sup>
+Then, since $`( K_{2}^{2} + K_{3}^{2} ) = | \boldsymbol{K} |^{2} ( 1 -`$ cos<sup>2</sup> $`\theta )`$ and $`\int 0 \pi`$ sin<sup>2</sup> $`\theta \sin \theta d\theta = \tfrac{4}{3}`$, we have<sup><a id="fnref-34" href="#fn-34">34</a></sup>
 
 <a id="eq-238"></a>
 
@@ -5265,7 +5265,7 @@ and therefore
 
 because by assumption the $`u`$’s <a id="ix-25">anticommute</a> with the $`\psi`$’s. The time $`t_{o}`$ no longer appears in (345), checking the consistency of the method.
 
-Multiplying (345) by $`\psi_{n}^{*} ( r^{\prime} )`$ exp$`\{- iE_{n} t^{\prime} / \hbar \}`$ and summing over $`n`$, we have<sup><a id="fnref-47" href="#fn-47">47</a></sup>
+Multiplying (345) by $`\psi_{n}^{*} ( r^{\prime} )`$ $`\exp \{- iE_{n} t^{\prime} / \hbar \}`$ and summing over $`n`$, we have<sup><a id="fnref-47" href="#fn-47">47</a></sup>
 
 <a id="eq-346"></a>
 
