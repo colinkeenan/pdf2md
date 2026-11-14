@@ -1807,6 +1807,10 @@ fn attach_fraction_rows(doc: &Doc, lines: &[Line], bars: &[Rule]) -> Vec<Line> {
             // put with the words of the line above stands lower than they.)
             let words = l.spans.iter().any(|s| !doc.is_math(s) && s.text.split_whitespace().any(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 4));
             let line_top = l.top;
+            let words_on_line = l.spans.iter().any(|s| !doc.is_math(s) && s.script == Script::Normal && s.text.split_whitespace().any(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 4));
+            // (where the letters standing on the line end: an index
+            // follows its letter)
+            let letter_ends: Vec<f32> = l.spans.iter().filter(|s| s.script == Script::Normal && (s.top - line_top).abs() <= 0.3 * size).map(|s| s.right()).collect();
             l.spans.retain(|s| {
                 // (standing on that line of text like its words: of that line)
                 // unless it is right at the bar. (And what lies under a
@@ -1829,7 +1833,16 @@ fn attach_fraction_rows(doc: &Doc, lines: &[Line], bars: &[Rule]) -> Vec<Line> {
                 let others = bars.iter().zip(&root_bars).any(|(o, root)| !root && (o.top < mid) != (b.top < mid) && c >= o.left - 2.0 && c <= o.right + 2.0 && gap_to(o) < gap_to(b));
                 // (nor is a full stop a numerator or a denominator: the
                 // raised dot of a product in the next line's exponent)
-                if inside && near && !others && s.text.trim() != "." {
+                // (nor the index of a letter in the line of text above, the
+                // 0 of ∂₀ over the ½ of the next line)
+                // (it begins, or ends, well inside the height of its own
+                // line; a numerator put with the line above begins under it)
+                let script_of_text = words_on_line
+                    && s.script == Script::Sub
+                    && s.bottom() <= b.top + 2.0
+                    && s.top < line_top + 0.75 * size
+                    && letter_ends.iter().any(|r| (s.left - r).abs() <= 0.2 * size);
+                if inside && near && !others && !script_of_text && s.text.trim() != "." {
                     moved.push(s.clone());
                     false
                 } else {
