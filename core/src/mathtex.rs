@@ -434,6 +434,7 @@ pub fn build_with(spans: &[MSpan], bars: &[Rule]) -> String {
         }
     }
     let spans = raised_dots(spans);
+    let spans = index_commas(spans);
     if std::env::var_os("PDF2MD_MATHDEBUG").is_some() {
         eprintln!("--- formula");
         for s in &spans {
@@ -677,6 +678,33 @@ fn raised_dots(mut spans: Vec<MSpan>) -> Vec<MSpan> {
         let (top, bottom, size) = (spans[like].top, spans[like].bottom, spans[like].size);
         let d = &mut spans[k];
         (d.text, d.top, d.bottom, d.size) = ("·".to_string(), top, bottom, size);
+    }
+    spans
+}
+
+/// The comma between two groups of indices, D_{μν,λσ}: set in the size of
+/// the line, with small letters of one height close on both sides and no
+/// letter of the line between them. It is a comma among the indices.
+fn index_commas(mut spans: Vec<MSpan>) -> Vec<MSpan> {
+    for k in 0..spans.len() {
+        let d = &spans[k];
+        if d.text.trim() != "," || d.atom.is_some() {
+            continue;
+        }
+        let small = |j: &usize| !spans[*j].cmex() && spans[*j].size <= 0.85 * d.size && spans[*j].top < d.bottom && spans[*j].bottom > d.top;
+        let before = (0..spans.len()).filter(small).find(|&j| (d.left - spans[j].right).abs() <= 0.2 * d.size);
+        let after = (0..spans.len()).filter(small).find(|&j| (spans[j].left - d.right).abs() <= 0.35 * d.size);
+        let (Some(b), Some(a)) = (before, after) else { continue };
+        // (what follows the comma first is the small letter, not a letter
+        // of the line with an index of its own: x_n, t_n)
+        let first_after = (0..spans.len()).filter(|&j| j != k && spans[j].left >= d.right - 1.0 && spans[j].top < d.bottom && spans[j].bottom > d.top).min_by(|x, y| spans[*x].left.total_cmp(&spans[*y].left));
+        let lowered = |j: usize| spans[j].bottom >= d.bottom && spans[j].top > d.top + 0.2 * d.size;
+        if first_after != Some(a) || !lowered(a) || !lowered(b) || (spans[a].top - spans[b].top).abs() > 0.15 * d.size || (spans[a].size - spans[b].size).abs() > 0.5 {
+            continue;
+        }
+        let (top, bottom, size) = (spans[b].top, spans[b].bottom, spans[b].size);
+        let d = &mut spans[k];
+        (d.top, d.bottom, d.size) = (top, bottom, size);
     }
     spans
 }
