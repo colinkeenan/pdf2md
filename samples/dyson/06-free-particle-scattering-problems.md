@@ -9,7 +9,7 @@
 
 In this extensive class of problems we are interested in calculating the over-all transition matrix element $`M`$ between an initial state $`A`$ and a final state $`B , A`$ and $`B`$ being specified by assigning the spins and momenta of the free particles which are present in these states. The scattering process is supposed to occur as follows: The free particles which are specified by state $`A`$ in the remote past, converge and interact, and other free particles emerge or are created in the interaction and finally constitute the state $`B`$ in the remote future. We wish to calculate the matrix element $`M`$ for this process, without studying the equations of motion or investigating the behavior of the system at intermediate times while the interaction is in progress.
 
-The unperturbed states $`A`$ and $`B`$ are supposed to be states of free particles without interaction and are therefore represented by constant state-vectors Φ$`A`$ and Φ$`B`$ in the <a id="ix-162">interaction representation</a>. The actual initial and final states in a scattering problem will consist of particles each having a self-<a id="ix-194">field</a> with which it continues to interact even in the remote future and past, hence Φ$`A`$ and Φ$`B`$ do not accurately represent the initial and final states. However, so long as we are using perturbation theory and not including the higher order effects arising form the self-fields of the particles, it is consistent to use constant Φ$`A`$ and Φ$`B`$ representing bare particles <a id="ix-150">without radiation</a> interaction. Even when self-field effects are considered, it turns out that the bare-particle Φ$`A`$ and Φ$`B`$ can still be used, although in this case some careful justification for it is needed.
+The unperturbed states $`A`$ and $`B`$ are supposed to be states of free particles without interaction and are therefore represented by constant state-vectors Φ$`A`$ and Φ$`B`$ in the <a id="ix-162">interaction representation</a>. The actual initial and final states in a scattering problem will consist of particles each having a self-<a id="ix-194">field</a> with which it continues to interact even in the remote future and past, hence Φ$`A`$ and Φ$`B`$ do not accurately represent the initial and final states. However, so long as we are using perturbation theory and not including the higher order effects arising form the self-fields of the particles, it is consistent to use constant Φ$`A`$ and $`\Phi_{B}`$ representing bare particles <a id="ix-150">without radiation</a> interaction. Even when self-field effects are considered, it turns out that the bare-particle Φ$`A`$ and Φ$`B`$ can still be used, although in this case some careful justification for it is needed.
 
 The matrix element $`M`$ is
 
@@ -19,7 +19,7 @@ The matrix element $`M`$ is
 M = ( \Phi_{B}^{*} U \Phi_{A} ) \qquad \text{(419)}
 ```
 
-Here $`U`$Φ$`A`$ is the state which is obtained at $`t`$ = +$`\infty`$ by solving the <a id="ix-265">equation</a> of motion (417) with the initial condition Φ = Φ$`A`$ at $`t = -\infty . U`$ can easily be written down as a perturbation expansion in the operators $`H^{e}`$ and $`H_{R}`$,
+Here $`U \Phi_{A}`$ is the state which is obtained at $`t`$ = +$`\infty`$ by solving the <a id="ix-265">equation</a> of motion (417) with the initial condition Φ = Φ$`A`$ at $`t = -\infty . U`$ can easily be written down as a perturbation expansion in the operators $`H^{e}`$ and $`H_{R}`$,
 
 <a id="eq-420"></a>
 
@@ -71,7 +71,7 @@ We shall calculate in the Born approximation as before, thus keeping only the te
 U_{2} = \frac{+ e^{2}}{2 \hbar^{2} c^{2}} \int \int dx_{1} dx_{2} P \left\{ \psi ( x_{1} ) A / ( x_{1} ) \psi ( x_{1} ) , \overline{\psi} ( x_{2} ) A / ( x_{2} ) \psi ( x_{2} ) \right\} \qquad \text{(423)}
 ```
 
-the integration going over all space-time. To obtain the matrix element $`M`$ = (Φ$`\frac{*}{B} U_{2}`$Φ$`{}_{A} )`$ we only have to replace according to (377)
+the integration going over all space-time. To obtain the matrix element $`M`$ = (Φ$`\frac{*}{B} U_{2} \Phi_{A} )`$ we only have to replace according to (377)
 
 <a id="eq-424"></a>
 
@@ -333,7 +333,7 @@ Now substituting from (448) into (441), just like for (432)
 M_{2} = \frac{- e^{2}}{\hbar^{2} c^{2}} ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \overline{u}^{\prime} \left[ /e \frac{1}{p / - k /^{\prime} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{p / + / k - i\mu} /e \right] u \qquad \text{(449)}
 ```
 
-Again the denominators $`( p - k )`$<sup>2</sup> $`+ \mu^{2}`$ can never vanish so the $`\epsilon`$ can be put equal to zero in (447). In fact if the electron is initially at rest
+Again the denominators $`( p - k )^{2} + \mu^{2}`$ can never vanish so the $`\epsilon`$ can be put equal to zero in (447). In fact if the electron is initially at rest
 
 ```math
 ( p - k^{\prime} )^{2} + \mu^{2} = ( p^{2} + \mu^{2} ) + k^{\prime 2} - 2 p \cdot k^{\prime} = 2 p_{0} k_{0}^{\prime} = 2 \mu k_{0}^{\prime}
@@ -401,7 +401,7 @@ The number of final states for the electron is
 \frac{1}{( 2 \pi )^{3}} \left( \frac{mc^{2}}{E^{\prime}} \right) dp_{1}^{\prime} dp_{2}^{\prime} dp_{3}^{\prime} \qquad \text{(456)}
 ```
 
-The photon with potentials (440), when $`e_{\mu}^{\prime}`$ is a space-like vector having $`( e_{\mu}^{\prime} )`$<sup>2</sup> = 1 is normalized to one particle per volume $`\hbar c/ 2 k_{0}^{\prime}`$. This can be seen at once, comparing (440) with (211) and (214), and taking into account the difference of (2$`\pi )`$<sup>3</sup> between the continuous and discrete normalizations. Hence the number of final states for the photon is
+The photon with potentials (440), when $`e_{\mu}^{\prime}`$ is a space-like vector having $`( e_{\mu}^{\prime} )^{2}`$ = 1 is normalized to one particle per volume $`\hbar c/ 2 k_{0}^{\prime}`$. This can be seen at once, comparing (440) with (211) and (214), and taking into account the difference of (2$`\pi )^{3}`$ between the continuous and discrete normalizations. Hence the number of final states for the photon is
 
 <a id="eq-457"></a>
 
@@ -685,7 +685,7 @@ the classical result. Summing over the two polarizations of the photon $`k^{\pri
 \overline{\sigma} = \tfrac{1}{2} r_{o}^{2} ( 1 + \cos^{2} \theta ) d \Omega \qquad \text{(469)}
 ```
 
-We get this by evaluating $`\tfrac{1}{2} \sum_{e} \sum_{e^{\prime}} ( e \cdot e^{\prime} )`$<sup>2</sup>. First we have to sum over the two polarization directions of photon $`k^{\prime}`$. This summation for three directions would give
+We get this by evaluating $`\tfrac{1}{2} \sum_{e} \sum_{e^{\prime}} ( e \cdot e^{\prime} )^{2}`$. First we have to sum over the two polarization directions of photon $`k^{\prime}`$. This summation for three directions would give
 
 ```math
 \sum ( e \cdot e^{\prime} )^{2} = e^{2} = 1

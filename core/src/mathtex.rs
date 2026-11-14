@@ -346,6 +346,26 @@ fn tex_plain(s: &MSpan) -> String {
                 .join(" ");
         }
     }
+    // In TeX's math italic font the arrow of a vector is the glyph before
+    // its letter, and comes out as "~": "~x" is x under an arrow.
+    if s.family.starts_with("CMMI") && t.contains('~') {
+        let chars: Vec<char> = t.chars().filter(|c| !c.is_whitespace()).collect();
+        let mut out: Vec<String> = Vec::new();
+        let mut k = 0;
+        while k < chars.len() {
+            match (chars[k], chars.get(k + 1)) {
+                ('~', Some(&letter)) if letter != '~' => {
+                    out.push(format!("\\vec{{{}}}", chars_tex(&letter.to_string()).trim()));
+                    k += 2;
+                }
+                (c, _) => {
+                    out.push(chars_tex(&c.to_string()).trim().to_string());
+                    k += 1;
+                }
+            }
+        }
+        return out.join(" ");
+    }
     // Blackboard bold (𝕀, ℝ ...): the AMS font stores them as plain letters.
     if s.family.starts_with("MSBM") && t.chars().all(|c| c.is_ascii_alphabetic()) && !t.is_empty() {
         return t.chars().map(|c| format!("\\mathbb{{{c}}}")).collect::<Vec<_>>().join(" ");
@@ -391,7 +411,29 @@ pub fn build_with(spans: &[MSpan], bars: &[Rule]) -> String {
             eprintln!("  {:7.1} {:7.1} {:7.1} {:7.1} {:4.1} {:8} {:?}", s.left, s.right, s.top, s.bottom, s.size, s.family, s.text);
         }
     }
-    let spans = raised_dots(put_accents(spans));
+    // (TeX's arrow over a vector, "~" in its math italic font, where it is
+    // a piece of its own or ends one: the accent of the letter it is over)
+    let spans: Vec<MSpan> = spans
+        .into_iter()
+        .map(|mut s| {
+            if s.family.starts_with("CMMI") && s.atom.is_none() && s.text.trim_end().ends_with('~') {
+                let kept = s.text.trim_end().trim_end_matches('~').to_string();
+                s.text = format!("{kept}\u{20d7}");
+            }
+            s
+        })
+        .collect();
+    let mut spans = put_accents(spans);
+    // (an arrow with nothing under it: the letter is one pdftohtml has no
+    // character for, the j without its dot that TeX sets under an accent)
+    for k in 0..spans.len() {
+        let a = &spans[k];
+        if a.text.trim() == "\u{20d7}" && a.family.starts_with("CMMI") && !(0..spans.len()).any(|j| j != k && spans[j].left < 0.5 * (a.left + a.right) && spans[j].right > a.left && spans[j].top < a.bottom && spans[j].bottom > a.top) {
+            let a = &mut spans[k];
+            (a.atom, a.text) = (Some("\\vec{\\jmath}".to_string()), String::new());
+        }
+    }
+    let spans = raised_dots(spans);
     if std::env::var_os("PDF2MD_MATHDEBUG").is_some() {
         eprintln!("--- formula");
         for s in &spans {
@@ -595,7 +637,8 @@ fn put_accents(mut spans: Vec<MSpan>) -> Vec<MSpan> {
             p.right = edges[range.end];
             if part == 1 {
                 let inner = tex(&p);
-                p.atom = Some(format!("\\{name}{{{}}}", inner.trim()));
+                // (a bar through the stem of an h is ħ, which TeX draws so)
+                p.atom = Some(if name == "bar" && inner.trim() == "h" { "\\hbar".to_string() } else { format!("\\{name}{{{}}}", inner.trim()) });
                 p.text = String::new();
             }
             pieces.push(p);

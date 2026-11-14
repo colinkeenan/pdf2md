@@ -262,7 +262,7 @@ To give a physical meaning to $`\psi`$, we state that $`\rho = \psi^{*} \psi`$ i
 <a id="eq-3"></a>
 
 ```math
-\frac{\partial \rho}{\partial t} + \nabla \boldsymbol{\cdot} \hbar = 0 \qquad \text{(3)}
+\frac{\partial \rho}{\partial t} + \nabla \boldsymbol{\cdot} \vec{\jmath} = 0 \qquad \text{(3)}
 ```
 
 where
@@ -270,7 +270,7 @@ where
 <a id="eq-4"></a>
 
 ```math
-\hbar = \frac{\hbar}{2 mi} ( \psi^{*} \nabla \psi - \psi \nabla \psi^{*} ) \qquad \text{(4)}
+\vec{\jmath} = \frac{\hbar}{2 mi} ( \psi^{*} \nabla \psi - \psi \nabla \psi^{*} ) \qquad \text{(4)}
 ```
 
 where $`\psi^{*}`$ is the complex conjugate of $`\psi`$.
@@ -297,7 +297,7 @@ which gives the wave equation
 
 This is an historic equation, the <a id="ix-163">Klein-Gordon equation</a>. <a id="ix-268">Schrödinger</a> already in 1926 tried to make a RQ theory out of it. But he failed, and many other people too, until Pauli and <a id="ix-280">Weisskopf</a> gave the many-particle theory in 1934 <a id="refback-12-1"></a>[[12]](#ref-12). Why?
 
-Because in order to interpret the wave-function as a probability we must have a <a id="ix-234">continuity</a> equation. This can only be got out of the wave-equation if we take $`\hbar`$ as before, and
+Because in order to interpret the wave-function as a probability we must have a <a id="ix-234">continuity</a> equation. This can only be got out of the wave-equation if we take $`\vec{\jmath}`$ as before, and
 
 <a id="eq-7"></a>
 
@@ -518,7 +518,7 @@ Therefore
 ( \psi^{*\prime} \psi^{\prime} ) = \frac{\psi^{*} \psi}{\sqrt{1 - \frac{v^{2}}{c^{2}}}} \qquad \text{(17)}
 ```
 
-and so $`( \psi^{*} \psi ) = \rho`$ transforms like an _energy_, i.e.like the fourth component of a vector. This shows incidentally that $`\psi^{\prime} \neq \psi`$. Since $`\rho`$ and $`\hbar`$ are related by the equation of continuity, the space-components of the 4-vector are
+and so $`( \psi^{*} \psi ) = \rho`$ transforms like an _energy_, i.e.like the fourth component of a vector. This shows incidentally that $`\psi^{\prime} \neq \psi`$. Since $`\rho`$ and $`\vec{\jmath}`$ are related by the equation of continuity, the space-components of the 4-vector are
 
 <a id="eq-18"></a>
 
@@ -787,7 +787,7 @@ with
 <a id="eq-36"></a>
 
 ```math
-s_{\mu} = i \left( \overline{\psi} \gamma_{\mu} \psi \right) = \left( \frac{1}{c} \hbar ,i\rho \right) \qquad \text{(36)}
+s_{\mu} = i \left( \overline{\psi} \gamma_{\mu} \psi \right) = \left( \frac{1}{c} \vec{\jmath} ,i\rho \right) \qquad \text{(36)}
 ```
 
 These notations are much the most convenient for calculations.
@@ -2407,7 +2407,7 @@ Let $`w`$ be the transition probability per unit volume and per unit time. This 
 w_{s} = c | K |^{2} ( 2 \pi \hbar )^{4} \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) \qquad \text{(146)}
 ```
 
-since in $`| M |^{2}`$ one of the two (2$`\pi \hbar )`$<sup>4</sup>$`\delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) /c`$ factors represents merely the volume of space-time in which the interaction can occur. The number of final states is by (107)
+since in $`| M |^{2}`$ one of the two (2$`\pi \hbar )^{4} \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) /c`$ factors represents merely the volume of space-time in which the interaction can occur. The number of final states is by (107)
 
 <a id="eq-147"></a>
 
@@ -3562,7 +3562,7 @@ As a result of this work of Gupta and Bleuler, the supplementary conditions do n
 
 ### <a id="s-gauge-invariance-of-the-theory"></a>Gauge-Invariance of the Theory
 
-The theory is gauge-invariant. That is to say, adding a gradient<sup><a id="fnref-24" href="#fn-24">24</a></sup> Λ$`{}_{\mu} = \partial`$Λ$`/\partial x_{\mu}`$ to the potentials does not change the fields by anything which is physically observable. Therefore all states which differ only by such an addition to the potentials are physically identical.
+The theory is gauge-invariant. That is to say, adding a gradient<sup><a id="fnref-24" href="#fn-24">24</a></sup> $`\Lambda_{\mu} = \partial \Lambda /\partial x_{\mu}`$ to the potentials does not change the fields by anything which is physically observable. Therefore all states which differ only by such an addition to the potentials are physically identical.
 
 If Ψ is any state then
 
@@ -3570,7 +3570,7 @@ If Ψ is any state then
 \Psi^{\prime} = \left( 1 + \lambda \sum_{\mu} k_{\mu} \tilde{a}_{k\mu} \right) \Psi
 ```
 
-is a state obtained from Ψ by emitting a pseudo-photon with potentials proportional to $`\partial`$Λ$`/\partial x_{\mu}`$. Hence Ψ$`\prime`$ should be indistinguishable from Ψ.
+is a state obtained from Ψ by emitting a pseudo-photon with potentials proportional to $`\partial \Lambda /\partial x_{\mu}`$. Hence Ψ$`\prime`$ should be indistinguishable from Ψ.
 
 Now if Ψ$`2`$ is any state whatever satisfying the supplementary condition (216a) the matrix element
 
@@ -3752,7 +3752,7 @@ There is one difficulty in the preceding theory. We assume according to (220)
 
 Here the plus sign holds for $`\mu`$ = 1$`, 2 , 3`$; the minus sign for $`\mu`$ = 4. Now if the operators $`a_{k\mu} ,a_{k\mu}^{*}`$ are represented in the usual way by matrices, as it is done in the elementary theory of the harmonic oscillator$`( )`$ (see Wentzel p. 33, Eq. (6.16)), the vacuum expectation values of a product $`( a_{k\mu} a_{k\mu}^{*} )`$ will always be _positive_, i.e. the plus sign should hold in (220a) for $`\mu`$ = 4 also. In fact $`( a_{k\mu} a_{k\mu}^{*} )`$ will have a positive expectation value in any state whatever, if the photon oscillators are treated as ordinary$`( )`$ elementary oscillators.
 
-Therefore we must distinguish between the scalar product (Ψ$`\frac{*}{1} ,`$ Ψ$`{}_{2} )`$ as we have defined it by our covariant theory, and the scalar product (Ψ$`\frac{*}{1} ,`$ Ψ$`{}_{2} )_{E}`$ which one would calculate using the explicit matrix representation of the operators. The product (Ψ$`\frac{*}{1} ,`$ Ψ$`{}_{2} )_{E}`$ has no physical significance, because the matrix representations of the $`a_{k 4}`$ refer to states with photons polarized purely in the time dimension, which cannot occur physically. However, it is convenient also to be able to use the matrix representations in practice.
+Therefore we must distinguish between the scalar product (Ψ$`\frac{*}{1} , \Psi_{2} )`$ as we have defined it by our covariant theory, and the scalar product (Ψ$`\frac{*}{1} , \Psi_{2} )_{E}`$ which one would calculate using the explicit matrix representation of the operators. The product (Ψ$`\frac{*}{1} , \Psi_{2} )_{E}`$ has no physical significance, because the matrix representations of the $`a_{k 4}`$ refer to states with photons polarized purely in the time dimension, which cannot occur physically. However, it is convenient also to be able to use the matrix representations in practice.
 
 To use the matrix representations, we have only to define an operator $`\eta`$ by the condition
 
@@ -3770,7 +3770,7 @@ where Φ is any state in which there is a definite number $`N`$ of photons polar
 ( \Psi_{1}^{*} , \Psi_{2} ) = ( \Psi_{1}^{*} ,\eta \Psi_{2} )_{E} \qquad \text{(220c)}
 ```
 
-The definition (220c), introduced by Gupta, makes the matrix representations consistent with all the requirements of the covariant theory, in particular also it gives (220) correctly. The physical scalar product is thus an _indefinite metric_ regarded from the point of view of the matrix representations. However, we have seen in (216b) that for any _physical_ states the scalar product (Ψ$`\frac{*}{1} ,`$ Ψ$`{}_{2} )`$ is equal to (Ψ$`\frac{*}{1 T} ,`$ Ψ$`{}_{1 T} )`$ where Ψ$`1 T`$ is a state involving transverse photons only, and hence is positive. Thus for physical states the metric is definite and this is all that we require of it.
+The definition (220c), introduced by Gupta, makes the matrix representations consistent with all the requirements of the covariant theory, in particular also it gives (220) correctly. The physical scalar product is thus an _indefinite metric_ regarded from the point of view of the matrix representations. However, we have seen in (216b) that for any _physical_ states the scalar product (Ψ$`\frac{*}{1} , \Psi_{2} )`$ is equal to (Ψ$`\frac{*}{1 T} , \Psi_{1 T} )`$ where $`\Psi_{1 T}`$ is a state involving transverse photons only, and hence is positive. Thus for physical states the metric is definite and this is all that we require of it.
 
 ### <a id="s-example-spontaneous-emission-of-radiation"></a>Example: Spontaneous Emission of Radiation
 
@@ -3918,7 +3918,7 @@ To derive $`H`$ from the Lagrangian is also possible but much more tedious. From
 N_{k\lambda} = \tilde{a}_{k\lambda} a_{k\lambda} \quad ( \text{ not summed } )
 ```
 
-is an operator just representing the number of quanta in the frequency $`k`$ and polarization $`\lambda`$. It follows at once from the commutation rules (213), from the singular $`\delta`$-function factor which comes from the continuous spectrum, $`N_{k\lambda}`$ being in fact the number of quanta per unit frequency range, that $`\int N_{k\lambda} d^{3} \boldsymbol{k}`$ integrated over _any_ region of momentum-space has the integer eigenvalues 0, 1, 2, $`\dots`$. This is so, because the state with<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=55" target="_blank" title="This page in the PDF"><sup>[p. 49]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p50" href="book.pdf#page=56" target="_blank" title="This page in the PDF"><sup>[p. 50]</sup></a></span> $`n_{i}`$ particles with <a id="ix-210">momentum</a> $`k_{i}`$ is Ψ = $`\prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}}`$Ψ$`o`$. Then taking $`\int_{\Omega} N_{k\lambda} d^{3} \boldsymbol{k}`$ over Ω including the momenta $`k_{1} ,k_{2} ,\dots ,k_{j}`$ we get
+is an operator just representing the number of quanta in the frequency $`k`$ and polarization $`\lambda`$. It follows at once from the commutation rules (213), from the singular $`\delta`$-function factor which comes from the continuous spectrum, $`N_{k\lambda}`$ being in fact the number of quanta per unit frequency range, that $`\int N_{k\lambda} d^{3} \boldsymbol{k}`$ integrated over _any_ region of momentum-space has the integer eigenvalues 0, 1, 2, $`\dots`$. This is so, because the state with<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=55" target="_blank" title="This page in the PDF"><sup>[p. 49]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p50" href="book.pdf#page=56" target="_blank" title="This page in the PDF"><sup>[p. 50]</sup></a></span> $`n_{i}`$ particles with <a id="ix-210">momentum</a> $`k_{i}`$ is Ψ = $`\prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}} \Psi_{o}`$. Then taking $`\int_{\Omega} N_{k\lambda} d^{3} \boldsymbol{k}`$ over Ω including the momenta $`k_{1} ,k_{2} ,\dots ,k_{j}`$ we get
 
 ```math
 \int_{\Omega} N_{k\lambda} d^{3} \boldsymbol{k} \Psi = \int_{\Omega} \tilde{a}_{k\lambda} a_{k\lambda} \prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}} \Psi_{o} d^{3} \boldsymbol{k}
@@ -4176,7 +4176,7 @@ Consider the solution of Eq. (245) in which the atom is given initially in a sta
 
 The initial condition Φ$`( t )`$ = Φ$`o`$ at time $`t = t_{o}`$ is a physically unreal one. It would mean putting the atom into existence at time 0 without any radiation field being excited at this time. This we cannot do physically. In fact the initial condition for an atom in an excited state will depend on how it got into the excited state. This cannot be formulated in a simple way: one needs a complicated model in order to describe the initial excitation of the atom.
 
-We are interested in calculating the variation with time of (Φ$`o *`$Φ$`( t )`$), the probability amplitude for finding the atom still in the unperturbed state Φ$`o`$ at time $`t`$. By (245) we have
+We are interested in calculating the variation with time of (Φ$`\frac{*}{o} \Phi ( t )`$), the probability amplitude for finding the atom still in the unperturbed state Φ$`o`$ at time $`t`$. By (245) we have
 
 <a id="eq-250"></a>
 
@@ -4198,7 +4198,7 @@ Then (250) will give
 \frac{d}{dt} ( \Phi_{o}^{*} \Phi ( t ) )_{t = t_{o}} = 0 \qquad \text{(251)}
 ```
 
-from the $`H_{I}`$ given by (247) has zero expectation value in the Maxwell field vacuum, since $`A_{\mu} ( r,t )`$ also has a zero expectation value in vacuum as one can see from (211) and (217). Thus (Φ$`o *`$Φ$`( t )`$) is momentarily stationary at $`t = t_{o}`$. This is however not interesting since the conditions at $`t = t_{o}`$ are entirely unphysical.
+from the $`H_{I}`$ given by (247) has zero expectation value in the Maxwell field vacuum, since $`A_{\mu} ( r,t )`$ also has a zero expectation value in vacuum as one can see from (211) and (217). Thus (Φ$`\frac{*}{o} \Phi ( t )`$) is momentarily stationary at $`t = t_{o}`$. This is however not interesting since the conditions at $`t = t_{o}`$ are entirely unphysical.
 
 The physically meaningful quantity is the value of (250) at a time $`t`$ a long time after $`t_{o}`$. Then the atom will have “settled down” to a quasi-stationary state of radiative decay, and we may expect that the value we find for (250) is independent of the particular initial condition chosen and will be correct for an atom which has been excited by any reasonable method to the state Φ$`o`$.
 
@@ -4214,11 +4214,11 @@ Suppose that $`( t - t_{o} )`$ is long compared with all the atomic frequencies.
 
 + terms involving other atomic states Φ$`n`$ with two or more photons present.
 
-Here $`a ( t )`$ = (Φ$`o *`$Φ$`( t )`$) is a slowly varying amplitude, constant to first order in $`H_{I}`$, representing the slow decay of the atom. Note that our treatment is not only a perturbation theory correct to second order in $`H_{I}`$, but it also must account _exactly_ for the big effects produced by the radiative decay over long periods of time. Therefore we do not put $`a ( t )`$ = 1 in (252) although this would be correct to first order in $`H_{I}`$.
+Here $`a ( t )`$ = (Φ$`\frac{*}{o} \Phi ( t )`$) is a slowly varying amplitude, constant to first order in $`H_{I}`$, representing the slow decay of the atom. Note that our treatment is not only a perturbation theory correct to second order in $`H_{I}`$, but it also must account _exactly_ for the big effects produced by the radiative decay over long periods of time. Therefore we do not put $`a ( t )`$ = 1 in (252) although this would be correct to first order in $`H_{I}`$.
 
 If we put $`a ( t )`$ = 1 in (252) we should have just the solution of the radiation emission problem, neglecting all effects of radiation reaction on the atom, which we obtained before from Eg. (230).
 
-The value of $`\frac{d}{dt} a ( t ) = \frac{d}{dt}`$ (Φ$`o *`$Φ$`( t )`$) is obtained correct to second order in $`H_{I}`$, and including the radiative reaction effects, by substituting (252) into (250).
+The value of $`\frac{d}{dt} a ( t ) = \frac{d}{dt}`$ (Φ$`\frac{*}{o} \Phi ( t )`$) is obtained correct to second order in $`H_{I}`$, and including the radiative reaction effects, by substituting (252) into (250).
 
 Hence we have
 
@@ -5023,7 +5023,7 @@ The vacuum state Ψ$`o`$ is defined by
 
 <div align="center">
 
-$`b_{ku}`$Ψ$`o`$ = 0 and thus Ψ$`\frac{*}{o} b_{ku}^{*}`$ = 0 for electron states $`u`$
+$`b_{ku} \Psi_{o}`$ = 0 and thus $`\Psi_{o}^{*} b_{ku}^{*}`$ = 0 for electron states $`u`$
 
 </div>
 
@@ -5452,7 +5452,7 @@ Here $`S_{R}`$ is given by (293), (301), and (303), and $`\psi ( x )`$ is a solu
 
 Using the interaction representation operators $`\psi ( x )`$, Ψ$`o`$ is the vacuum state and remains so for all time; the physical state is initially Ψ$`o`$ but does not remain Ψ$`o`$. Using the Heisenberg operators $`\psi_{H} ( x )`$, Ψ$`o`$ is the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=76" target="_blank" title="This page in the PDF"><sup>[p. 70]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p71" href="book.pdf#page=77" target="_blank" title="This page in the PDF"><sup>[p. 71]</sup></a></span> physical state for all time; it is initially the vacuum state but does not remain so. In the remote past as $`x_{0} \to -\infty`$, because $`S_{R}`$ is a retarded potential $`\psi_{H} ( x )`$ and $`\psi ( x )`$ become identical.
 
-The expression (361) is useful because we know how to calculate matrix elements of $`\psi ( x )`$ from the state Ψ$`o`$, whereas the matrix elements of $`\psi_{H}`$ do not have any simple form. We also need the adjoint equation
+The expression (361) is useful because we know how to calculate matrix elements of $`\psi ( x )`$ from the state $`\Psi_{o}`$, whereas the matrix elements of $`\psi_{H}`$ do not have any simple form. We also need the adjoint equation
 
 <a id="eq-362"></a>
 
@@ -5540,7 +5540,7 @@ Thus the momentum representation of (367) will be
 \begin{aligned} \langle j_{\mu H} ( x ) \rangle_{o} &= - \frac{e^{2}}{\hbar} \frac{1}{( 2 \pi )^{7}} \int d^{4} x^{\prime} \int \int d^{4} k_{1} d^{4} k_{2} \exp \{ iq \cdot x^{\prime} + i ( k_{1} - k_{2} ) \cdot ( x^{\prime} - x ) + \delta_{0} x_{0} \}\times \\ & \quad \times \left\{ \operatorname{Spur} \{ /e ( k /_{1} + i\mu ) \gamma_{\mu} ( / k_{2} + i/\delta + i\mu ) \} \frac{\delta ( k_{1}^{2} + \mu^{2} ) \Theta ( - k_{1} )}{( k_{2} + i\delta )^{2} + \mu^{2}} \right. \\ & \quad \left. + \operatorname{Spur} \{ /e ( / k_{1} - i/\delta + i\mu ) \gamma_{\mu} ( / k_{2} + i\mu ) \} \frac{\delta ( k_{2}^{2} + \mu^{2} ) \Theta ( - k_{2} )}{( k_{1} - i\delta )^{2} + \mu^{2}} \right\} \end{aligned}
 ```
 
-The integration of $`x^{\prime}`$ is immediate and gives (2$`\pi )`$<sup>4</sup>$`\delta^{4} ( k_{1} - k_{2} + q )`$. Hence
+The integration of $`x^{\prime}`$ is immediate and gives (2$`\pi )^{4} \delta^{4} ( k_{1} - k_{2} + q )`$. Hence
 
 <a id="eq-370"></a>
 
@@ -5802,7 +5802,7 @@ We now discuss the various physical effects arising from the calculation of
 \langle j_{\nu H} ( x ) \rangle_{o}
 ```
 
-1) The result is completely gauge-invariant. This may be seen at once from (391): for if a gradient $`\partial`$Λ$`/\partial x_{\nu}`$ is added to $`A_{\nu}^{e}`$, there is no change in $`j_{\nu E}`$.
+1) The result is completely gauge-invariant. This may be seen at once from (391): for if a gradient $`\partial \Lambda /\partial x_{\nu}`$ is added to $`A_{\nu}^{e}`$, there is no change in $`j_{\nu E}`$.
 
 <div align="right"><a href="book.pdf#page=81" target="_blank" title="This page in the PDF"><sup>[p. 75]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -6098,7 +6098,7 @@ So now we shall apply the covariant methods, working in the IR, to solve a numbe
 
 <a id="fn-23"></a>**23.** “Bleuler” was written “Bleuber”. [↩](#fnref-23)
 
-<a id="fn-24"></a>**24.** Originally, the phrase read $`A_{\mu} = \partial`$Λ$`/\partial x_{\mu}`$; this seemed confusing as the original potential is itself $`A_{\mu}`$. [↩](#fnref-24)
+<a id="fn-24"></a>**24.** Originally, the phrase read $`A_{\mu} = \partial \Lambda /\partial x_{\mu}`$; this seemed confusing as the original potential is itself $`A_{\mu}`$. [↩](#fnref-24)
 
 <a id="fn-25"></a>**25.** Eq. (222) lacked the lower limit $`k_{0} > 0`$ on the integral. [↩](#fnref-25)
 
@@ -6197,7 +6197,7 @@ because the expression $`( z - z^{2} )`$ is symmetric about $`z = \tfrac{1}{2}`$
 
 In this extensive class of problems we are interested in calculating the over-all transition matrix element $`M`$ between an initial state $`A`$ and a final state $`B , A`$ and $`B`$ being specified by assigning the spins and momenta of the free particles which are present in these states. The scattering process is supposed to occur as follows: The free particles which are specified by state $`A`$ in the remote past, converge and interact, and other free particles emerge or are created in the interaction and finally constitute the state $`B`$ in the remote future. We wish to calculate the matrix element $`M`$ for this process, without studying the equations of motion or investigating the behavior of the system at intermediate times while the interaction is in progress.
 
-The unperturbed states $`A`$ and $`B`$ are supposed to be states of free particles without interaction and are therefore represented by constant state-vectors Φ$`A`$ and Φ$`B`$ in the <a id="ix-162">interaction representation</a>. The actual initial and final states in a scattering problem will consist of particles each having a self-<a id="ix-194">field</a> with which it continues to interact even in the remote future and past, hence Φ$`A`$ and Φ$`B`$ do not accurately represent the initial and final states. However, so long as we are using perturbation theory and not including the higher order effects arising form the self-fields of the particles, it is consistent to use constant Φ$`A`$ and Φ$`B`$ representing bare particles <a id="ix-150">without radiation</a> interaction. Even when self-field effects are considered, it turns out that the bare-particle Φ$`A`$ and Φ$`B`$ can still be used, although in this case some careful justification for it is needed.
+The unperturbed states $`A`$ and $`B`$ are supposed to be states of free particles without interaction and are therefore represented by constant state-vectors Φ$`A`$ and Φ$`B`$ in the <a id="ix-162">interaction representation</a>. The actual initial and final states in a scattering problem will consist of particles each having a self-<a id="ix-194">field</a> with which it continues to interact even in the remote future and past, hence Φ$`A`$ and Φ$`B`$ do not accurately represent the initial and final states. However, so long as we are using perturbation theory and not including the higher order effects arising form the self-fields of the particles, it is consistent to use constant Φ$`A`$ and $`\Phi_{B}`$ representing bare particles <a id="ix-150">without radiation</a> interaction. Even when self-field effects are considered, it turns out that the bare-particle Φ$`A`$ and Φ$`B`$ can still be used, although in this case some careful justification for it is needed.
 
 The matrix element $`M`$ is
 
@@ -6207,7 +6207,7 @@ The matrix element $`M`$ is
 M = ( \Phi_{B}^{*} U \Phi_{A} ) \qquad \text{(419)}
 ```
 
-Here $`U`$Φ$`A`$ is the state which is obtained at $`t`$ = +$`\infty`$ by solving the <a id="ix-265">equation</a> of motion (417) with the initial condition Φ = Φ$`A`$ at $`t = -\infty . U`$ can easily be written down as a perturbation expansion in the operators $`H^{e}`$ and $`H_{R}`$,
+Here $`U \Phi_{A}`$ is the state which is obtained at $`t`$ = +$`\infty`$ by solving the <a id="ix-265">equation</a> of motion (417) with the initial condition Φ = Φ$`A`$ at $`t = -\infty . U`$ can easily be written down as a perturbation expansion in the operators $`H^{e}`$ and $`H_{R}`$,
 
 <a id="eq-420"></a>
 
@@ -6259,7 +6259,7 @@ We shall calculate in the Born approximation as before, thus keeping only the te
 U_{2} = \frac{+ e^{2}}{2 \hbar^{2} c^{2}} \int \int dx_{1} dx_{2} P \left\{ \psi ( x_{1} ) A / ( x_{1} ) \psi ( x_{1} ) , \overline{\psi} ( x_{2} ) A / ( x_{2} ) \psi ( x_{2} ) \right\} \qquad \text{(423)}
 ```
 
-the integration going over all space-time. To obtain the matrix element $`M`$ = (Φ$`\frac{*}{B} U_{2}`$Φ$`{}_{A} )`$ we only have to replace according to (377)
+the integration going over all space-time. To obtain the matrix element $`M`$ = (Φ$`\frac{*}{B} U_{2} \Phi_{A} )`$ we only have to replace according to (377)
 
 <a id="eq-424"></a>
 
@@ -6521,7 +6521,7 @@ Now substituting from (448) into (441), just like for (432)
 M_{2} = \frac{- e^{2}}{\hbar^{2} c^{2}} ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \overline{u}^{\prime} \left[ /e \frac{1}{p / - k /^{\prime} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{p / + / k - i\mu} /e \right] u \qquad \text{(449)}
 ```
 
-Again the denominators $`( p - k )`$<sup>2</sup> $`+ \mu^{2}`$ can never vanish so the $`\epsilon`$ can be put equal to zero in (447). In fact if the electron is initially at rest
+Again the denominators $`( p - k )^{2} + \mu^{2}`$ can never vanish so the $`\epsilon`$ can be put equal to zero in (447). In fact if the electron is initially at rest
 
 ```math
 ( p - k^{\prime} )^{2} + \mu^{2} = ( p^{2} + \mu^{2} ) + k^{\prime 2} - 2 p \cdot k^{\prime} = 2 p_{0} k_{0}^{\prime} = 2 \mu k_{0}^{\prime}
@@ -6589,7 +6589,7 @@ The number of final states for the electron is
 \frac{1}{( 2 \pi )^{3}} \left( \frac{mc^{2}}{E^{\prime}} \right) dp_{1}^{\prime} dp_{2}^{\prime} dp_{3}^{\prime} \qquad \text{(456)}
 ```
 
-The photon with potentials (440), when $`e_{\mu}^{\prime}`$ is a space-like vector having $`( e_{\mu}^{\prime} )`$<sup>2</sup> = 1 is normalized to one particle per volume $`\hbar c/ 2 k_{0}^{\prime}`$. This can be seen at once, comparing (440) with (211) and (214), and taking into account the difference of (2$`\pi )`$<sup>3</sup> between the continuous and discrete normalizations. Hence the number of final states for the photon is
+The photon with potentials (440), when $`e_{\mu}^{\prime}`$ is a space-like vector having $`( e_{\mu}^{\prime} )^{2}`$ = 1 is normalized to one particle per volume $`\hbar c/ 2 k_{0}^{\prime}`$. This can be seen at once, comparing (440) with (211) and (214), and taking into account the difference of (2$`\pi )^{3}`$ between the continuous and discrete normalizations. Hence the number of final states for the photon is
 
 <a id="eq-457"></a>
 
@@ -6873,7 +6873,7 @@ the classical result. Summing over the two polarizations of the photon $`k^{\pri
 \overline{\sigma} = \tfrac{1}{2} r_{o}^{2} ( 1 + \cos^{2} \theta ) d \Omega \qquad \text{(469)}
 ```
 
-We get this by evaluating $`\tfrac{1}{2} \sum_{e} \sum_{e^{\prime}} ( e \cdot e^{\prime} )`$<sup>2</sup>. First we have to sum over the two polarization directions of photon $`k^{\prime}`$. This summation for three directions would give
+We get this by evaluating $`\tfrac{1}{2} \sum_{e} \sum_{e^{\prime}} ( e \cdot e^{\prime} )^{2}`$. First we have to sum over the two polarization directions of photon $`k^{\prime}`$. This summation for three directions would give
 
 ```math
 \sum ( e \cdot e^{\prime} )^{2} = e^{2} = 1
@@ -7196,7 +7196,7 @@ S = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \in
 
 The operators in (488) are field-operators of the interaction representation, the integrations over the points $`x_{1} ,\dots x_{n}`$ extend over all space-time, and the initial and final states $`A`$ and $`B`$ are entirely arbitrary.
 
-We wish to calculate the matrix element $`M`$ of $`S`$ for a particular scattering process, in which the states $`A`$ and $`B`$ are specified by enumerating the particles present in the two states. We must now take properly into account the fact that the particles in states $`A`$ and $`B`$, although well separated and no longer interacting with one another, are real particles interacting with their self-fields and with the vacuum-fluctuations of the fields in their neighborhood. Thus $`A`$ and $`B`$ are really time-dependent states in the interaction representation and will not be given by time-independent vectors Φ$`A`$ and Φ$`B`$, except in the lowest-order approximation. (See page 81.) Let Ψ$`{}_{B} ( t )`$ be the actual time-dependent state-vector of the state $`B`$ in the IR. We are not interested in the dependence of Φ$`{}_{B} ( t )`$ on $`t`$. In an actual scattering experiment the particles in state B are observed in counters or photographic plates or cloud-chambers and the time of their arrival is not measured precisely. Therefore it is convenient to use for $`B`$ not the state-function Ψ$`{}_{B} ( t )`$ but a state-function Φ$`B`$ which is _by definition_ the state-function describing a set of bare particles without radiation interaction, the bare particles having the same momenta and spins as the real particles in the state $`B`$. In the IR the state-function Φ$`B`$ is time-independent. The question is only, what is the connection between Ψ$`{}_{B} ( t )`$ and Φ$`B`$?
+We wish to calculate the matrix element $`M`$ of $`S`$ for a particular scattering process, in which the states $`A`$ and $`B`$ are specified by enumerating the particles present in the two states. We must now take properly into account the fact that the particles in states $`A`$ and $`B`$, although well separated and no longer interacting with one another, are real particles interacting with their self-fields and with the vacuum-fluctuations of the fields in their neighborhood. Thus $`A`$ and $`B`$ are really time-dependent states in the interaction representation and will not be given by time-independent vectors Φ$`A`$ and Φ$`B`$, except in the lowest-order approximation. (See page 81.) Let Ψ$`{}_{B} ( t )`$ be the actual time-dependent state-vector of the state $`B`$ in the IR. We are not interested in the dependence of Φ$`{}_{B} ( t )`$ on $`t`$. In an actual scattering experiment the particles in state B are observed in counters or photographic plates or cloud-chambers and the time of their arrival is not measured precisely. Therefore it is convenient to use for $`B`$ not the state-function Ψ$`{}_{B} ( t )`$ but a state-function Φ$`B`$ which is _by definition_ the state-function describing a set of bare particles without radiation interaction, the bare particles having the same momenta and spins as the real particles in the state $`B`$. In the IR the state-function Φ$`B`$ is time-independent. The question is only, what is the connection between Ψ$`{}_{B} ( t )`$ and $`\Phi_{B}`$?
 
 <div align="right"><a href="book.pdf#page=100" target="_blank" title="This page in the PDF"><sup>[p. 94]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -7562,9 +7562,9 @@ We shall now show how these general methods work by calculating in detail _the_ 
 
 ## <a id="s-the-self-energy-of-the-electron"></a>The Self-Energy of the Electron
 
-Before we can study the effect of radiation interaction on an electron scattered by an external potential, we must first consider the effect of the radiation interaction on a single free electron in the absence of external potentials. Let the free electron be given initially in the state $`( pu )`$. The effect of the radiation interaction acting alone is given by the scattering matrix (488). If the initial state is Φ$`A`$, then the final state, reached after the radiation interaction has been acting for an infinitely long time, will be $`S`$Φ$`A`$. Now $`S`$ has matrix elements only for transitions which conserve momentum and energy. Starting from a one-electron state, it is impossible to make a transition to a many-particle state, for example by emitting one or more photons, while conserving momentum and energy. Therefore the only non-zero matrix elements of $`S`$ from the state Φ$`A`$ will be given by (487), where Φ$`B`$ is also a one-electron state. In Φ$`B`$ let the electron have the momentum and spin $`( p^{\prime} u^{\prime} )`$.
+Before we can study the effect of radiation interaction on an electron scattered by an external potential, we must first consider the effect of the radiation interaction on a single free electron in the absence of external potentials. Let the free electron be given initially in the state $`( pu )`$. The effect of the radiation interaction acting alone is given by the scattering matrix (488). If the initial state is Φ$`A`$, then the final state, reached after the radiation interaction has been acting for an infinitely long time, will be $`S \Phi_{A}`$. Now $`S`$ has matrix elements only for transitions which conserve momentum and energy. Starting from a one-electron state, it is impossible to make a transition to a many-particle state, for example by emitting one or more photons, while conserving momentum and energy. Therefore the only non-zero matrix elements of $`S`$ from the state $`\Phi_{A}`$ will be given by (487), where Φ$`B`$ is also a one-electron state. In Φ$`B`$ let the electron have the momentum and spin $`( p^{\prime} u^{\prime} )`$.
 
-We consider radiative effects only up to the second order. The term of order 1 in (488) gives transitions only with emission an absorption of photons, and hence gives no contribution to the transition Φ$`{}_{A} \to`$ Φ$`B`$. Therefore we may write simply
+We consider radiative effects only up to the second order. The term of order 1 in (488) gives transitions only with emission an absorption of photons, and hence gives no contribution to the transition Φ$`{}_{A} \to \Phi_{B}`$. Therefore we may write simply
 
 <a id="eq-517"></a>
 
@@ -8376,7 +8376,7 @@ were present as usual, while all oscillations not satisfying (601) were simply a
 \Delta E = \hbar cr \qquad \text{(602)}
 ```
 
-In the modified Maxwell theory the $`D_{F}`$ function will still be given by the integral (431), the $`k_{1} ,k_{2} ,k_{3}`$ integrations being limited by (601), and the $`k_{0}`$ integration being taken as usual along the whole real axis from $`-\infty`$ to +$`\infty`$. Let Λ$`{}^{r} ( p,p^{\prime} )`$ and Λ$`\frac{r}{c} ( p,p^{\prime} )`$ be the integrals which replace Λ($`p,p^{\prime} )`$ and Λ$`{}_{c} ( p,p^{\prime} )`$ when the Maxwell field is modified. We calculate the differences (Λ $`-`$ Λ$`{}^{r} )`$ and (Λ$`{}_{c} -`$ Λ$`\frac{r}{c} )`$, considering these integrals only in the limit of small $`r`$, neglecting all terms which tend to zero with $`r`$. This means that we may neglect terms containing either $`k`$ or $`x`$ as a factor in the numerator of integrals such as (591) or (594).
+In the modified Maxwell theory the $`D_{F}`$ function will still be given by the integral (431), the $`k_{1} ,k_{2} ,k_{3}`$ integrations being limited by (601), and the $`k_{0}`$ integration being taken as usual along the whole real axis from $`-\infty`$ to +$`\infty`$. Let Λ$`{}^{r} ( p,p^{\prime} )`$ and Λ$`\frac{r}{c} ( p,p^{\prime} )`$ be the integrals which replace Λ($`p,p^{\prime} )`$ and Λ$`{}_{c} ( p,p^{\prime} )`$ when the Maxwell field is modified. We calculate the differences (Λ $`- \Lambda^{r} )`$ and (Λ$`{}_{c} - \Lambda_{c}^{r} )`$, considering these integrals only in the limit of small $`r`$, neglecting all terms which tend to zero with $`r`$. This means that we may neglect terms containing either $`k`$ or $`x`$ as a factor in the numerator of integrals such as (591) or (594).
 
 In (583) there is just one factor $`D_{F}`$. Thus Λ$`{}^{r} ( p,p^{\prime} )`$ is obtained from (584) simply by restricting the $`k_{1} ,k_{2} ,k_{3}`$ integration by (601). We can now follow the reduction of (584) to the form (594), except that we do not shift the origin of the $`k`$-integration through $`( xp_{y} )`$ since this would disturb the <a id="ix-145">condition</a> (601). Dropping terms in the numerator having $`k`$ or $`x`$ as a factor, this gives the result
 
@@ -8915,7 +8915,7 @@ Consider <a id="ix-243">scattering</a> of a slow electron by a slowly-varying<su
 e_{4} ( q ) = 0 \qquad \text{(651)}
 ```
 
-The matrix elements of $`\gamma_{1} ,\gamma_{2} ,\gamma_{3}`$ between positive energy electron states are of the order $`( v/c )`$. Hence $`M_{0}`$ given by (543) is of order $`( v/c )`$. The first term in (617) is thus of the order $`\alpha ( v/c )`$<sup>3</sup> while the second is of order $`\alpha ( v/c )`$. Therefore the second term in (617) is the main term in considering magnetic effects, and the first term can be ignored. The meaning of the second term must be a change in the _magnetic properties_ of a non-relativistic electron.
+The matrix elements of $`\gamma_{1} ,\gamma_{2} ,\gamma_{3}`$ between positive energy electron states are of the order $`( v/c )`$. Hence $`M_{0}`$ given by (543) is of order $`( v/c )`$. The first term in (617) is thus of the order $`\alpha ( v/c )^{3}`$ while the second is of order $`\alpha ( v/c )`$. Therefore the second term in (617) is the main term in considering magnetic effects, and the first term can be ignored. The meaning of the second term must be a change in the _magnetic properties_ of a non-relativistic electron.
 
 As we saw in discussing the Dirac equation, (Eq’s (99) and (100)), an electron by virtue of its charge $`( - e )`$ behaves in non-relativistic approximation as if it had a magnetic moment
 
@@ -9047,7 +9047,7 @@ where Ω$`{}_{1} ( t )`$ is defined as in (492), only with $`e \overline{\psi} 
 i \hbar \frac{\partial \Omega_{1} ( t )}{\partial t} = H^{I} ( t ) \Omega_{1} ( t ) \qquad \text{(663)}
 ```
 
-for any value of $`t`$ not in the remote past, so that we may take $`g_{A} ( t )`$ = 1. Hence the <a id="ix-70">equation</a> of motion for Φ$`( t )`$ derived from (661) is just
+for any value of $`t`$ not in the remote past, so that we may take $`g_{A} ( t )`$ = 1. Hence the <a id="ix-70">equation</a> of motion for $`\Phi ( t )`$ derived from (661) is just
 
 <a id="eq-664"></a>
 
@@ -9255,9 +9255,9 @@ H_{T 1} = \frac{e}{\hbar \mu} \int \psi^{*} ( Z \cdot \partial V ) \psi d^{3} \b
 
 This completes the evaluation of $`H_{T}`$.
 
-### <a id="s-discussion-of-the-nature-of-the-representation"></a>Discussion and the Nature of the Φ-Representation
+### <a id="s-discussion-of-the-nature-of-the-representation"></a>Discussion and the Nature of the $`\Phi`$-Representation
 
-To understand the effect of the <a id="ix-149">transformation</a> (662), we observe that if Ψ$`( t )`$ is the state of one real electron in the absence of an external field, then Φ$`( t )`$ will be independent of $`t`$ and will represent one “bare” electron with the same momentum as the real electron. In an actual hydrogen atom, we may consider the state Ψ$`( t )`$ to a very good approximation as a superposition of states of a single real free electron; then Φ($`t )`$ is a superposition of states of a single bare electron with the same distribution of momenta. Thus by the transformation from Ψ to Φ we have eliminated the radiation field surrounding the electron, all remaining effects of this radiation field being contained in the operator $`H_{T}`$.
+To understand the effect of the <a id="ix-149">transformation</a> (662), we observe that if Ψ$`( t )`$ is the state of one real electron in the absence of an external field, then Φ$`( t )`$ will be independent of $`t`$ and will represent one “bare” electron with the same momentum as the real electron. In an actual hydrogen atom, we may consider the state $`\Psi ( t )`$ to a very good approximation as a superposition of states of a single real free electron; then Φ($`t )`$ is a superposition of states of a single bare electron with the same distribution of momenta. Thus by the transformation from Ψ to Φ we have eliminated the radiation field surrounding the electron, all remaining effects of this radiation field being contained in the operator $`H_{T}`$.
 
 It is essential at this point to make sure that in the Φ representation the field-operators are still free-particle operators, with the correct equations of motion for operators in the FIR. Thus the transformation<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=132" target="_blank" title="This page in the PDF"><sup>[p. 126]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p127" href="book.pdf#page=133" target="_blank" title="This page in the PDF"><sup>[p. 127]</sup></a></span> (662) is only a transformation from one set of variables to another within the FIR, and does not take us out of the FIR. This point was never explained properly by Schwinger in his papers, although he no doubt understood it himself.
 

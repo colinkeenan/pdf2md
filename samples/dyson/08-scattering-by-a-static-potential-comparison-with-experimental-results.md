@@ -289,7 +289,7 @@ Consider <a id="ix-243">scattering</a> of a slow electron by a slowly-varying<su
 e_{4} ( q ) = 0 \qquad \text{(651)}
 ```
 
-The matrix elements of $`\gamma_{1} ,\gamma_{2} ,\gamma_{3}`$ between positive energy electron states are of the order $`( v/c )`$. Hence $`M_{0}`$ given by (543) is of order $`( v/c )`$. The first term in (617) is thus of the order $`\alpha ( v/c )`$<sup>3</sup> while the second is of order $`\alpha ( v/c )`$. Therefore the second term in (617) is the main term in considering magnetic effects, and the first term can be ignored. The meaning of the second term must be a change in the _magnetic properties_ of a non-relativistic electron.
+The matrix elements of $`\gamma_{1} ,\gamma_{2} ,\gamma_{3}`$ between positive energy electron states are of the order $`( v/c )`$. Hence $`M_{0}`$ given by (543) is of order $`( v/c )`$. The first term in (617) is thus of the order $`\alpha ( v/c )^{3}`$ while the second is of order $`\alpha ( v/c )`$. Therefore the second term in (617) is the main term in considering magnetic effects, and the first term can be ignored. The meaning of the second term must be a change in the _magnetic properties_ of a non-relativistic electron.
 
 As we saw in discussing the Dirac equation, (Eq’s (99) and (100)), an electron by virtue of its charge $`( - e )`$ behaves in non-relativistic approximation as if it had a magnetic moment
 
@@ -421,7 +421,7 @@ where Ω$`{}_{1} ( t )`$ is defined as in (492), only with $`e \overline{\psi} 
 i \hbar \frac{\partial \Omega_{1} ( t )}{\partial t} = H^{I} ( t ) \Omega_{1} ( t ) \qquad \text{(663)}
 ```
 
-for any value of $`t`$ not in the remote past, so that we may take $`g_{A} ( t )`$ = 1. Hence the <a id="ix-70">equation</a> of motion for Φ$`( t )`$ derived from (661) is just
+for any value of $`t`$ not in the remote past, so that we may take $`g_{A} ( t )`$ = 1. Hence the <a id="ix-70">equation</a> of motion for $`\Phi ( t )`$ derived from (661) is just
 
 <a id="eq-664"></a>
 
@@ -629,9 +629,9 @@ H_{T 1} = \frac{e}{\hbar \mu} \int \psi^{*} ( Z \cdot \partial V ) \psi d^{3} \b
 
 This completes the evaluation of $`H_{T}`$.
 
-### <a id="s-discussion-of-the-nature-of-the-representation"></a>Discussion and the Nature of the Φ-Representation
+### <a id="s-discussion-of-the-nature-of-the-representation"></a>Discussion and the Nature of the $`\Phi`$-Representation
 
-To understand the effect of the <a id="ix-149">transformation</a> (662), we observe that if Ψ$`( t )`$ is the state of one real electron in the absence of an external field, then Φ$`( t )`$ will be independent of $`t`$ and will represent one “bare” electron with the same momentum as the real electron. In an actual hydrogen atom, we may consider the state Ψ$`( t )`$ to a very good approximation as a superposition of states of a single real free electron; then Φ($`t )`$ is a superposition of states of a single bare electron with the same distribution of momenta. Thus by the transformation from Ψ to Φ we have eliminated the radiation field surrounding the electron, all remaining effects of this radiation field being contained in the operator $`H_{T}`$.
+To understand the effect of the <a id="ix-149">transformation</a> (662), we observe that if Ψ$`( t )`$ is the state of one real electron in the absence of an external field, then Φ$`( t )`$ will be independent of $`t`$ and will represent one “bare” electron with the same momentum as the real electron. In an actual hydrogen atom, we may consider the state $`\Psi ( t )`$ to a very good approximation as a superposition of states of a single real free electron; then Φ($`t )`$ is a superposition of states of a single bare electron with the same distribution of momenta. Thus by the transformation from Ψ to Φ we have eliminated the radiation field surrounding the electron, all remaining effects of this radiation field being contained in the operator $`H_{T}`$.
 
 It is essential at this point to make sure that in the Φ representation the field-operators are still free-particle operators, with the correct equations of motion for operators in the FIR. Thus the transformation<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=132" target="_blank" title="This page in the PDF"><sup>[p. 126]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p127" href="book.pdf#page=133" target="_blank" title="This page in the PDF"><sup>[p. 127]</sup></a></span> (662) is only a transformation from one set of variables to another within the FIR, and does not take us out of the FIR. This point was never explained properly by Schwinger in his papers, although he no doubt understood it himself.
 

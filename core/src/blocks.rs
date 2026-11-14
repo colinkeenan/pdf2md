@@ -291,7 +291,7 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
         let math = doc.is_math(s);
         let lead = t.starts_with([')', ']']) && t.chars().count() > 1 && !math;
         // ... and ". Likewise ˜" ends with the accent of the symbol after it
-        let trail = t.ends_with(['(', '[', '˜', 'ˆ', '˙', '¨', 'ˇ']) && t.chars().count() > 1 && !math;
+        let trail = t.ends_with(['(', '[', '˜', 'ˆ', '˙', '¨', 'ˇ', '¯']) && t.chars().count() > 1 && !math;
         if lead || trail {
             let cut = if lead { 1 } else { t.chars().count() - 1 };
             let a: String = t.chars().take(cut).collect();
@@ -388,9 +388,14 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
             let math = doc.is_math(s);
             let t = s.text.trim();
             if s.script == Script::Super && !math {
+                // (after a bracket that closes a formula, "(pc)" and a
+                // raised 2, it is the formula's power: the bracket alone in
+                // the text font, with math before it)
+                let closes_math = i >= 2 && matches!(spans[i - 1].text.trim(), ")" | "]" | "|") && (doc.is_math(&spans[i - 2]) || spans[i - 2].script != Script::Normal);
                 let after_word = i > 0
                     && !doc.is_math(&spans[i - 1])
                     && spans[i - 1].script == Script::Normal
+                    && !closes_math
                     && gap(i - 1, i) < 0.5 * st.body;
                 let stacked = spans
                     .get(i + 1)
@@ -414,6 +419,14 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
             }
         })
         .collect();
+    // TeX sets the capital Greek letters of a formula from its text font:
+    // one alone is a symbol.
+    for i in 0..n {
+        let text = spans[i].text.trim();
+        if kinds[i] == K::Text && !text.is_empty() && text.chars().all(|c| "ΓΔΘΛΞΠΣΥΦΨΩ".contains(c)) {
+            kinds[i] = K::Math;
+        }
+    }
     // The name of a function right before math is the formula's.
     for i in 0..n.saturating_sub(1) {
         let s = &spans[i];

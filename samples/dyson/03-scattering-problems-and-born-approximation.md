@@ -572,7 +572,7 @@ Let $`w`$ be the transition probability per unit volume and per unit time. This 
 w_{s} = c | K |^{2} ( 2 \pi \hbar )^{4} \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) \qquad \text{(146)}
 ```
 
-since in $`| M |^{2}`$ one of the two (2$`\pi \hbar )`$<sup>4</sup>$`\delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) /c`$ factors represents merely the volume of space-time in which the interaction can occur. The number of final states is by (107)
+since in $`| M |^{2}`$ one of the two (2$`\pi \hbar )^{4} \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) /c`$ factors represents merely the volume of space-time in which the interaction can occur. The number of final states is by (107)
 
 <a id="eq-147"></a>
 

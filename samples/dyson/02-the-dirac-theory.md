@@ -165,7 +165,7 @@ Therefore
 ( \psi^{*\prime} \psi^{\prime} ) = \frac{\psi^{*} \psi}{\sqrt{1 - \frac{v^{2}}{c^{2}}}} \qquad \text{(17)}
 ```
 
-and so $`( \psi^{*} \psi ) = \rho`$ transforms like an _energy_, i.e.like the fourth component of a vector. This shows incidentally that $`\psi^{\prime} \neq \psi`$. Since $`\rho`$ and $`\hbar`$ are related by the equation of continuity, the space-components of the 4-vector are
+and so $`( \psi^{*} \psi ) = \rho`$ transforms like an _energy_, i.e.like the fourth component of a vector. This shows incidentally that $`\psi^{\prime} \neq \psi`$. Since $`\rho`$ and $`\vec{\jmath}`$ are related by the equation of continuity, the space-components of the 4-vector are
 
 <a id="eq-18"></a>
 
@@ -434,7 +434,7 @@ with
 <a id="eq-36"></a>
 
 ```math
-s_{\mu} = i \left( \overline{\psi} \gamma_{\mu} \psi \right) = \left( \frac{1}{c} \hbar ,i\rho \right) \qquad \text{(36)}
+s_{\mu} = i \left( \overline{\psi} \gamma_{\mu} \psi \right) = \left( \frac{1}{c} \vec{\jmath} ,i\rho \right) \qquad \text{(36)}
 ```
 
 These notations are much the most convenient for calculations.

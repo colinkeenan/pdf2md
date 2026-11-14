@@ -86,7 +86,7 @@ To give a physical meaning to $`\psi`$, we state that $`\rho = \psi^{*} \psi`$ i
 <a id="eq-3"></a>
 
 ```math
-\frac{\partial \rho}{\partial t} + \nabla \boldsymbol{\cdot} \hbar = 0 \qquad \text{(3)}
+\frac{\partial \rho}{\partial t} + \nabla \boldsymbol{\cdot} \vec{\jmath} = 0 \qquad \text{(3)}
 ```
 
 where
@@ -94,7 +94,7 @@ where
 <a id="eq-4"></a>
 
 ```math
-\hbar = \frac{\hbar}{2 mi} ( \psi^{*} \nabla \psi - \psi \nabla \psi^{*} ) \qquad \text{(4)}
+\vec{\jmath} = \frac{\hbar}{2 mi} ( \psi^{*} \nabla \psi - \psi \nabla \psi^{*} ) \qquad \text{(4)}
 ```
 
 where $`\psi^{*}`$ is the complex conjugate of $`\psi`$.
@@ -121,7 +121,7 @@ which gives the wave equation
 
 This is an historic equation, the <a id="ix-163">Klein-Gordon equation</a>. <a id="ix-268">Schrödinger</a> already in 1926 tried to make a RQ theory out of it. But he failed, and many other people too, until Pauli and <a id="ix-280">Weisskopf</a> gave the many-particle theory in 1934 <a id="refback-12-1"></a>[[12]](#ref-12). Why?
 
-Because in order to interpret the wave-function as a probability we must have a <a id="ix-234">continuity</a> equation. This can only be got out of the wave-equation if we take $`\hbar`$ as before, and
+Because in order to interpret the wave-function as a probability we must have a <a id="ix-234">continuity</a> equation. This can only be got out of the wave-equation if we take $`\vec{\jmath}`$ as before, and
 
 <a id="eq-7"></a>
 

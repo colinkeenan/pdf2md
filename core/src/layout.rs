@@ -1070,8 +1070,7 @@ fn lettered_figures(doc: &mut Doc, pieces: Vec<Vec<Figure>>) {
             let mut area = lettered;
             let mut rest = pieces.clone();
             let mut strokes = 0;
-            loop {
-                let Some(k) = rest.iter().position(|p| near(p, &area, 2.0 * body) && p.bottom - p.top < 0.6 * page.height) else { break };
+            while let Some(k) = rest.iter().position(|p| near(p, &area, 2.0 * body) && p.bottom - p.top < 0.6 * page.height) {
                 area = join(&area, &rest.remove(k));
                 strokes += 1;
             }

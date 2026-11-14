@@ -356,7 +356,7 @@ As a result of this work of Gupta and Bleuler, the supplementary conditions do n
 
 ### <a id="s-gauge-invariance-of-the-theory"></a>Gauge-Invariance of the Theory
 
-The theory is gauge-invariant. That is to say, adding a gradient<sup><a id="fnref-24" href="#fn-24">24</a></sup> Λ$`{}_{\mu} = \partial`$Λ$`/\partial x_{\mu}`$ to the potentials does not change the fields by anything which is physically observable. Therefore all states which differ only by such an addition to the potentials are physically identical.
+The theory is gauge-invariant. That is to say, adding a gradient<sup><a id="fnref-24" href="#fn-24">24</a></sup> $`\Lambda_{\mu} = \partial \Lambda /\partial x_{\mu}`$ to the potentials does not change the fields by anything which is physically observable. Therefore all states which differ only by such an addition to the potentials are physically identical.
 
 If Ψ is any state then
 
@@ -364,7 +364,7 @@ If Ψ is any state then
 \Psi^{\prime} = \left( 1 + \lambda \sum_{\mu} k_{\mu} \tilde{a}_{k\mu} \right) \Psi
 ```
 
-is a state obtained from Ψ by emitting a pseudo-photon with potentials proportional to $`\partial`$Λ$`/\partial x_{\mu}`$. Hence Ψ$`\prime`$ should be indistinguishable from Ψ.
+is a state obtained from Ψ by emitting a pseudo-photon with potentials proportional to $`\partial \Lambda /\partial x_{\mu}`$. Hence Ψ$`\prime`$ should be indistinguishable from Ψ.
 
 Now if Ψ$`2`$ is any state whatever satisfying the supplementary condition (216a) the matrix element
 
@@ -546,7 +546,7 @@ There is one difficulty in the preceding theory. We assume according to (220)
 
 Here the plus sign holds for $`\mu`$ = 1$`, 2 , 3`$; the minus sign for $`\mu`$ = 4. Now if the operators $`a_{k\mu} ,a_{k\mu}^{*}`$ are represented in the usual way by matrices, as it is done in the elementary theory of the harmonic oscillator$`( )`$ (see Wentzel p. 33, Eq. (6.16)), the vacuum expectation values of a product $`( a_{k\mu} a_{k\mu}^{*} )`$ will always be _positive_, i.e. the plus sign should hold in (220a) for $`\mu`$ = 4 also. In fact $`( a_{k\mu} a_{k\mu}^{*} )`$ will have a positive expectation value in any state whatever, if the photon oscillators are treated as ordinary$`( )`$ elementary oscillators.
 
-Therefore we must distinguish between the scalar product (Ψ$`\frac{*}{1} ,`$ Ψ$`{}_{2} )`$ as we have defined it by our covariant theory, and the scalar product (Ψ$`\frac{*}{1} ,`$ Ψ$`{}_{2} )_{E}`$ which one would calculate using the explicit matrix representation of the operators. The product (Ψ$`\frac{*}{1} ,`$ Ψ$`{}_{2} )_{E}`$ has no physical significance, because the matrix representations of the $`a_{k 4}`$ refer to states with photons polarized purely in the time dimension, which cannot occur physically. However, it is convenient also to be able to use the matrix representations in practice.
+Therefore we must distinguish between the scalar product (Ψ$`\frac{*}{1} , \Psi_{2} )`$ as we have defined it by our covariant theory, and the scalar product (Ψ$`\frac{*}{1} , \Psi_{2} )_{E}`$ which one would calculate using the explicit matrix representation of the operators. The product (Ψ$`\frac{*}{1} , \Psi_{2} )_{E}`$ has no physical significance, because the matrix representations of the $`a_{k 4}`$ refer to states with photons polarized purely in the time dimension, which cannot occur physically. However, it is convenient also to be able to use the matrix representations in practice.
 
 To use the matrix representations, we have only to define an operator $`\eta`$ by the condition
 
@@ -564,7 +564,7 @@ where Φ is any state in which there is a definite number $`N`$ of photons polar
 ( \Psi_{1}^{*} , \Psi_{2} ) = ( \Psi_{1}^{*} ,\eta \Psi_{2} )_{E} \qquad \text{(220c)}
 ```
 
-The definition (220c), introduced by Gupta, makes the matrix representations consistent with all the requirements of the covariant theory, in particular also it gives (220) correctly. The physical scalar product is thus an _indefinite metric_ regarded from the point of view of the matrix representations. However, we have seen in (216b) that for any _physical_ states the scalar product (Ψ$`\frac{*}{1} ,`$ Ψ$`{}_{2} )`$ is equal to (Ψ$`\frac{*}{1 T} ,`$ Ψ$`{}_{1 T} )`$ where Ψ$`1 T`$ is a state involving transverse photons only, and hence is positive. Thus for physical states the metric is definite and this is all that we require of it.
+The definition (220c), introduced by Gupta, makes the matrix representations consistent with all the requirements of the covariant theory, in particular also it gives (220) correctly. The physical scalar product is thus an _indefinite metric_ regarded from the point of view of the matrix representations. However, we have seen in (216b) that for any _physical_ states the scalar product (Ψ$`\frac{*}{1} , \Psi_{2} )`$ is equal to (Ψ$`\frac{*}{1 T} , \Psi_{1 T} )`$ where $`\Psi_{1 T}`$ is a state involving transverse photons only, and hence is positive. Thus for physical states the metric is definite and this is all that we require of it.
 
 ### <a id="s-example-spontaneous-emission-of-radiation"></a>Example: Spontaneous Emission of Radiation
 
@@ -712,7 +712,7 @@ To derive $`H`$ from the Lagrangian is also possible but much more tedious. From
 N_{k\lambda} = \tilde{a}_{k\lambda} a_{k\lambda} \quad ( \text{ not summed } )
 ```
 
-is an operator just representing the number of quanta in the frequency $`k`$ and polarization $`\lambda`$. It follows at once from the commutation rules (213), from the singular $`\delta`$-function factor which comes from the continuous spectrum, $`N_{k\lambda}`$ being in fact the number of quanta per unit frequency range, that $`\int N_{k\lambda} d^{3} \boldsymbol{k}`$ integrated over _any_ region of momentum-space has the integer eigenvalues 0, 1, 2, $`\dots`$. This is so, because the state with<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=55" target="_blank" title="This page in the PDF"><sup>[p. 49]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p50" href="book.pdf#page=56" target="_blank" title="This page in the PDF"><sup>[p. 50]</sup></a></span> $`n_{i}`$ particles with <a id="ix-210">momentum</a> $`k_{i}`$ is Ψ = $`\prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}}`$Ψ$`o`$. Then taking $`\int_{\Omega} N_{k\lambda} d^{3} \boldsymbol{k}`$ over Ω including the momenta $`k_{1} ,k_{2} ,\dots ,k_{j}`$ we get
+is an operator just representing the number of quanta in the frequency $`k`$ and polarization $`\lambda`$. It follows at once from the commutation rules (213), from the singular $`\delta`$-function factor which comes from the continuous spectrum, $`N_{k\lambda}`$ being in fact the number of quanta per unit frequency range, that $`\int N_{k\lambda} d^{3} \boldsymbol{k}`$ integrated over _any_ region of momentum-space has the integer eigenvalues 0, 1, 2, $`\dots`$. This is so, because the state with<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=55" target="_blank" title="This page in the PDF"><sup>[p. 49]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p50" href="book.pdf#page=56" target="_blank" title="This page in the PDF"><sup>[p. 50]</sup></a></span> $`n_{i}`$ particles with <a id="ix-210">momentum</a> $`k_{i}`$ is Ψ = $`\prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}} \Psi_{o}`$. Then taking $`\int_{\Omega} N_{k\lambda} d^{3} \boldsymbol{k}`$ over Ω including the momenta $`k_{1} ,k_{2} ,\dots ,k_{j}`$ we get
 
 ```math
 \int_{\Omega} N_{k\lambda} d^{3} \boldsymbol{k} \Psi = \int_{\Omega} \tilde{a}_{k\lambda} a_{k\lambda} \prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}} \Psi_{o} d^{3} \boldsymbol{k}
@@ -970,7 +970,7 @@ Consider the solution of Eq. (245) in which the atom is given initially in a sta
 
 The initial condition Φ$`( t )`$ = Φ$`o`$ at time $`t = t_{o}`$ is a physically unreal one. It would mean putting the atom into existence at time 0 without any radiation field being excited at this time. This we cannot do physically. In fact the initial condition for an atom in an excited state will depend on how it got into the excited state. This cannot be formulated in a simple way: one needs a complicated model in order to describe the initial excitation of the atom.
 
-We are interested in calculating the variation with time of (Φ$`o *`$Φ$`( t )`$), the probability amplitude for finding the atom still in the unperturbed state Φ$`o`$ at time $`t`$. By (245) we have
+We are interested in calculating the variation with time of (Φ$`\frac{*}{o} \Phi ( t )`$), the probability amplitude for finding the atom still in the unperturbed state Φ$`o`$ at time $`t`$. By (245) we have
 
 <a id="eq-250"></a>
 
@@ -992,7 +992,7 @@ Then (250) will give
 \frac{d}{dt} ( \Phi_{o}^{*} \Phi ( t ) )_{t = t_{o}} = 0 \qquad \text{(251)}
 ```
 
-from the $`H_{I}`$ given by (247) has zero expectation value in the Maxwell field vacuum, since $`A_{\mu} ( r,t )`$ also has a zero expectation value in vacuum as one can see from (211) and (217). Thus (Φ$`o *`$Φ$`( t )`$) is momentarily stationary at $`t = t_{o}`$. This is however not interesting since the conditions at $`t = t_{o}`$ are entirely unphysical.
+from the $`H_{I}`$ given by (247) has zero expectation value in the Maxwell field vacuum, since $`A_{\mu} ( r,t )`$ also has a zero expectation value in vacuum as one can see from (211) and (217). Thus (Φ$`\frac{*}{o} \Phi ( t )`$) is momentarily stationary at $`t = t_{o}`$. This is however not interesting since the conditions at $`t = t_{o}`$ are entirely unphysical.
 
 The physically meaningful quantity is the value of (250) at a time $`t`$ a long time after $`t_{o}`$. Then the atom will have “settled down” to a quasi-stationary state of radiative decay, and we may expect that the value we find for (250) is independent of the particular initial condition chosen and will be correct for an atom which has been excited by any reasonable method to the state Φ$`o`$.
 
@@ -1008,11 +1008,11 @@ Suppose that $`( t - t_{o} )`$ is long compared with all the atomic frequencies.
 
 + terms involving other atomic states Φ$`n`$ with two or more photons present.
 
-Here $`a ( t )`$ = (Φ$`o *`$Φ$`( t )`$) is a slowly varying amplitude, constant to first order in $`H_{I}`$, representing the slow decay of the atom. Note that our treatment is not only a perturbation theory correct to second order in $`H_{I}`$, but it also must account _exactly_ for the big effects produced by the radiative decay over long periods of time. Therefore we do not put $`a ( t )`$ = 1 in (252) although this would be correct to first order in $`H_{I}`$.
+Here $`a ( t )`$ = (Φ$`\frac{*}{o} \Phi ( t )`$) is a slowly varying amplitude, constant to first order in $`H_{I}`$, representing the slow decay of the atom. Note that our treatment is not only a perturbation theory correct to second order in $`H_{I}`$, but it also must account _exactly_ for the big effects produced by the radiative decay over long periods of time. Therefore we do not put $`a ( t )`$ = 1 in (252) although this would be correct to first order in $`H_{I}`$.
 
 If we put $`a ( t )`$ = 1 in (252) we should have just the solution of the radiation emission problem, neglecting all effects of radiation reaction on the atom, which we obtained before from Eg. (230).
 
-The value of $`\frac{d}{dt} a ( t ) = \frac{d}{dt}`$ (Φ$`o *`$Φ$`( t )`$) is obtained correct to second order in $`H_{I}`$, and including the radiative reaction effects, by substituting (252) into (250).
+The value of $`\frac{d}{dt} a ( t ) = \frac{d}{dt}`$ (Φ$`\frac{*}{o} \Phi ( t )`$) is obtained correct to second order in $`H_{I}`$, and including the radiative reaction effects, by substituting (252) into (250).
 
 Hence we have
 
@@ -1817,7 +1817,7 @@ The vacuum state Ψ$`o`$ is defined by
 
 <div align="center">
 
-$`b_{ku}`$Ψ$`o`$ = 0 and thus Ψ$`\frac{*}{o} b_{ku}^{*}`$ = 0 for electron states $`u`$
+$`b_{ku} \Psi_{o}`$ = 0 and thus $`\Psi_{o}^{*} b_{ku}^{*}`$ = 0 for electron states $`u`$
 
 </div>
 
@@ -2246,7 +2246,7 @@ Here $`S_{R}`$ is given by (293), (301), and (303), and $`\psi ( x )`$ is a solu
 
 Using the interaction representation operators $`\psi ( x )`$, Ψ$`o`$ is the vacuum state and remains so for all time; the physical state is initially Ψ$`o`$ but does not remain Ψ$`o`$. Using the Heisenberg operators $`\psi_{H} ( x )`$, Ψ$`o`$ is the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=76" target="_blank" title="This page in the PDF"><sup>[p. 70]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p71" href="book.pdf#page=77" target="_blank" title="This page in the PDF"><sup>[p. 71]</sup></a></span> physical state for all time; it is initially the vacuum state but does not remain so. In the remote past as $`x_{0} \to -\infty`$, because $`S_{R}`$ is a retarded potential $`\psi_{H} ( x )`$ and $`\psi ( x )`$ become identical.
 
-The expression (361) is useful because we know how to calculate matrix elements of $`\psi ( x )`$ from the state Ψ$`o`$, whereas the matrix elements of $`\psi_{H}`$ do not have any simple form. We also need the adjoint equation
+The expression (361) is useful because we know how to calculate matrix elements of $`\psi ( x )`$ from the state $`\Psi_{o}`$, whereas the matrix elements of $`\psi_{H}`$ do not have any simple form. We also need the adjoint equation
 
 <a id="eq-362"></a>
 
@@ -2334,7 +2334,7 @@ Thus the momentum representation of (367) will be
 \begin{aligned} \langle j_{\mu H} ( x ) \rangle_{o} &= - \frac{e^{2}}{\hbar} \frac{1}{( 2 \pi )^{7}} \int d^{4} x^{\prime} \int \int d^{4} k_{1} d^{4} k_{2} \exp \{ iq \cdot x^{\prime} + i ( k_{1} - k_{2} ) \cdot ( x^{\prime} - x ) + \delta_{0} x_{0} \}\times \\ & \quad \times \left\{ \operatorname{Spur} \{ /e ( k /_{1} + i\mu ) \gamma_{\mu} ( / k_{2} + i/\delta + i\mu ) \} \frac{\delta ( k_{1}^{2} + \mu^{2} ) \Theta ( - k_{1} )}{( k_{2} + i\delta )^{2} + \mu^{2}} \right. \\ & \quad \left. + \operatorname{Spur} \{ /e ( / k_{1} - i/\delta + i\mu ) \gamma_{\mu} ( / k_{2} + i\mu ) \} \frac{\delta ( k_{2}^{2} + \mu^{2} ) \Theta ( - k_{2} )}{( k_{1} - i\delta )^{2} + \mu^{2}} \right\} \end{aligned}
 ```
 
-The integration of $`x^{\prime}`$ is immediate and gives (2$`\pi )`$<sup>4</sup>$`\delta^{4} ( k_{1} - k_{2} + q )`$. Hence
+The integration of $`x^{\prime}`$ is immediate and gives (2$`\pi )^{4} \delta^{4} ( k_{1} - k_{2} + q )`$. Hence
 
 <a id="eq-370"></a>
 
@@ -2596,7 +2596,7 @@ We now discuss the various physical effects arising from the calculation of
 \langle j_{\nu H} ( x ) \rangle_{o}
 ```
 
-1) The result is completely gauge-invariant. This may be seen at once from (391): for if a gradient $`\partial`$Λ$`/\partial x_{\nu}`$ is added to $`A_{\nu}^{e}`$, there is no change in $`j_{\nu E}`$.
+1) The result is completely gauge-invariant. This may be seen at once from (391): for if a gradient $`\partial \Lambda /\partial x_{\nu}`$ is added to $`A_{\nu}^{e}`$, there is no change in $`j_{\nu E}`$.
 
 <div align="right"><a href="book.pdf#page=81" target="_blank" title="This page in the PDF"><sup>[p. 75]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -2892,7 +2892,7 @@ So now we shall apply the covariant methods, working in the IR, to solve a numbe
 
 <a id="fn-23"></a>**23.** “Bleuler” was written “Bleuber”. [↩](#fnref-23)
 
-<a id="fn-24"></a>**24.** Originally, the phrase read $`A_{\mu} = \partial`$Λ$`/\partial x_{\mu}`$; this seemed confusing as the original potential is itself $`A_{\mu}`$. [↩](#fnref-24)
+<a id="fn-24"></a>**24.** Originally, the phrase read $`A_{\mu} = \partial \Lambda /\partial x_{\mu}`$; this seemed confusing as the original potential is itself $`A_{\mu}`$. [↩](#fnref-24)
 
 <a id="fn-25"></a>**25.** Eq. (222) lacked the lower limit $`k_{0} > 0`$ on the integral. [↩](#fnref-25)
 
