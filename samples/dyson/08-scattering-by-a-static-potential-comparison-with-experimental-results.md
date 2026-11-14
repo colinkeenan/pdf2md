@@ -675,12 +675,12 @@ When we consider systems containing more than one particle, then Ω$`{}_{1} ( t
 
 ### <a id="s-concluding-non-covariant-part-of-the-calculation"></a>Concluding Non-Covariant Part of the Calculation
 
-Having established that the Φ-representation in which (664) holds is the FIR, we now proceed at once to transform to the BIR in which we shall finish the calculation of the <a id="ix-172">Lamb shift</a>. To transform to the BIR, we write $`e`$
+Having established that the Φ-representation in which (664) holds is the FIR, we now proceed at once to transform to the BIR in which we shall finish the calculation of the <a id="ix-172">Lamb shift</a>. To transform to the BIR, we write
 
 <a id="eq-689"></a>
 
 ```math
-\Phi ( t ) = e^{iH_{0} t/ \hbar} e^{- i \{ H_{0} + H \} t/ \hbar} \Phi^{\prime} ( t ) \qquad \text{(689)}
+\Phi ( t ) = e^{iH_{0} t/ \hbar} e^{- i \{ H_{0} + H^{e} \} t/ \hbar} \Phi^{\prime} ( t ) \qquad \text{(689)}
 ```
 
 The new wave-function Φ$`{}^{\prime} ( t )`$ thus satisfies

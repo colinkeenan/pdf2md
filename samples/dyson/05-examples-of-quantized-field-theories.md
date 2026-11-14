@@ -2664,12 +2664,12 @@ and we take without loss of generality $`q_{0}`$ positive. Then (396) gives, tak
 \langle j_{\nu H} ( x ) \rangle_{o} = e_{\nu} \{ A \cos ( q \cdot x ) + B \sin ( q \cdot x ) \} \qquad \text{(398)}
 ```
 
-where $`A`$ and $`B`$ are real and $`2 \quad 2`$
+where $`A`$ and $`B`$ are real and
 
 <a id="eq-399"></a>
 
 ```math
-B = \tfrac{1}{4} \alpha cq^{2} \int_{0}^{- 4 \mu /q} \frac{zdz}{\sqrt{1 - z}} \qquad \text{(399)}
+B = \tfrac{1}{4} \alpha cq^{2} \int_{0}^{- 4 \mu^{2} /q^{2}} \frac{zdz}{\sqrt{1 - z}} \qquad \text{(399)}
 ```
 
 The energy supplied by the potentials to the vacuum per unit volume and per unit time is

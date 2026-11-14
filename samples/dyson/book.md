@@ -5870,12 +5870,12 @@ and we take without loss of generality $`q_{0}`$ positive. Then (396) gives, tak
 \langle j_{\nu H} ( x ) \rangle_{o} = e_{\nu} \{ A \cos ( q \cdot x ) + B \sin ( q \cdot x ) \} \qquad \text{(398)}
 ```
 
-where $`A`$ and $`B`$ are real and $`2 \quad 2`$
+where $`A`$ and $`B`$ are real and
 
 <a id="eq-399"></a>
 
 ```math
-B = \tfrac{1}{4} \alpha cq^{2} \int_{0}^{- 4 \mu /q} \frac{zdz}{\sqrt{1 - z}} \qquad \text{(399)}
+B = \tfrac{1}{4} \alpha cq^{2} \int_{0}^{- 4 \mu^{2} /q^{2}} \frac{zdz}{\sqrt{1 - z}} \qquad \text{(399)}
 ```
 
 The energy supplied by the potentials to the vacuum per unit volume and per unit time is
@@ -7587,7 +7587,7 @@ To obtain $`M_{2}`$ from (518) we substitute for $`\psi ( x_{2} )`$ and $`\overl
 <a id="eq-519"></a>
 
 ```math
-\begin{aligned} M_{2} &= \sum_{\lambda} \frac{ie^{2}}{\hbar c} \int_{F} \int_{F} dk_{1} dk_{2} \left( \overline{u}^{\prime} \gamma_{\lambda} \frac{1}{/ k_{1} - i\mu} \gamma_{\lambda} u \right) \frac{1}{k_{2}^{2}} \delta ( k_{1} - k_{2} - p^{\prime} ) \delta ( k_{2} - k_{1} + p ) \\ &= \sum_{\lambda} \frac{ie^{2}}{\hbar c} \delta ( p - p^{\prime} ) \int_{F} dk \left( \overline{u}^{\prime} \gamma_{\lambda} \frac{1}{/ k + p / - i\mu} \gamma_{\lambda} u \right) \frac{1}{k^{2}} \end{aligned} \qquad \text{(519)}
+\begin{aligned} M_{2} &= \sum_{\lambda} \frac{ie^{2}}{\hbar c} \int_{F} \int_{F} dk_{1} dk_{2} \left( \overline{u}^{\prime} \gamma_{\lambda} \frac{1}{k /_{1} - i\mu} \gamma_{\lambda} u \right) \frac{1}{k_{2}^{2}} \delta ( k_{1} - k_{2} - p^{\prime} ) \delta ( k_{2} - k_{1} + p ) \\ &= \sum_{\lambda} \frac{ie^{2}}{\hbar c} \delta ( p - p^{\prime} ) \int_{F} dk \left( \overline{u}^{\prime} \gamma_{\lambda} \frac{1}{/ k + p / - i\mu} \gamma_{\lambda} u \right) \frac{1}{k^{2}} \end{aligned} \qquad \text{(519)}
 ```
 
 We consider the Dirac operator
@@ -9301,12 +9301,12 @@ When we consider systems containing more than one particle, then Ω$`{}_{1} ( t
 
 ### <a id="s-concluding-non-covariant-part-of-the-calculation"></a>Concluding Non-Covariant Part of the Calculation
 
-Having established that the Φ-representation in which (664) holds is the FIR, we now proceed at once to transform to the BIR in which we shall finish the calculation of the <a id="ix-172">Lamb shift</a>. To transform to the BIR, we write $`e`$
+Having established that the Φ-representation in which (664) holds is the FIR, we now proceed at once to transform to the BIR in which we shall finish the calculation of the <a id="ix-172">Lamb shift</a>. To transform to the BIR, we write
 
 <a id="eq-689"></a>
 
 ```math
-\Phi ( t ) = e^{iH_{0} t/ \hbar} e^{- i \{ H_{0} + H \} t/ \hbar} \Phi^{\prime} ( t ) \qquad \text{(689)}
+\Phi ( t ) = e^{iH_{0} t/ \hbar} e^{- i \{ H_{0} + H^{e} \} t/ \hbar} \Phi^{\prime} ( t ) \qquad \text{(689)}
 ```
 
 The new wave-function Φ$`{}^{\prime} ( t )`$ thus satisfies

@@ -2577,6 +2577,56 @@ fn group_lines(
             None => groups.push(vec![s]),
         }
     }
+    // Pieces far from the rest of their line that touch the small letters
+    // of the line beside it: the full stop that is the dot of a product in
+    // an exponent, e^{−(i/2)J·A⁻¹·J}, stands as high as the numerator of the
+    // fraction before the e, and the "−1" with it. They are of the line
+    // whose small letters they stand among.
+    let apart = |a: &Span, b: &Span| (a.left - b.right()).max(b.left - a.right());
+    loop {
+        let mut to_move: Option<(usize, Vec<usize>, usize)> = None;
+        'search: for k in 0..groups.len() {
+            let main_size = size_of(&groups[k][0]);
+            for j in 1..groups[k].len() {
+                // the pieces close to this one, as one
+                let mut cluster = vec![j];
+                loop {
+                    let more: Vec<usize> = (1..groups[k].len()).filter(|i| !cluster.contains(i) && cluster.iter().any(|&c| apart(&groups[k][c], &groups[k][*i]) < main_size)).collect();
+                    if more.is_empty() {
+                        break;
+                    }
+                    cluster.extend(more);
+                }
+                let chars: usize = cluster.iter().map(|&c| groups[k][c].text.trim().chars().count()).sum();
+                let far = (0..groups[k].len()).filter(|i| !cluster.contains(i)).all(|i| cluster.iter().all(|&c| apart(&groups[k][c], &groups[k][i]) >= 2.0 * main_size));
+                if chars > 6 || !far {
+                    continue;
+                }
+                let s = &groups[k][j];
+                let among = (0..groups.len()).find(|&m| {
+                    m != k
+                        && groups[m].iter().any(|n| {
+                            let shared = s.bottom().min(n.bottom()) - s.top.max(n.top);
+                            // (small letters that have their own line's
+                            // pieces beside them: not an index set apart
+                            // from its line, which this piece is the base of)
+                            let at_home = groups[m].iter().any(|o| !std::ptr::eq(o, n) && apart(o, n) < 0.5 * size_of(&groups[m][0]));
+                            at_home && size_of(n) < 0.85 * size_of(&groups[m][0]) && apart(s, n) < 0.3 * size_of(&groups[m][0]) && shared >= 0.5 * s.height.min(n.height)
+                        })
+                });
+                if let Some(m) = among {
+                    to_move = Some((k, cluster, m));
+                    break 'search;
+                }
+            }
+        }
+        let Some((k, mut cluster, m)) = to_move else { break };
+        cluster.sort_unstable_by(|a, b| b.cmp(a));
+        for c in cluster {
+            let s = groups[k].remove(c);
+            groups[m].push(s);
+        }
+    }
     // a root sign is of the line its foot stands in
     for s in roots {
         let low = s.bottom() - 2.0;

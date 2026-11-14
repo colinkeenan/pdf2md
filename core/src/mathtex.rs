@@ -391,7 +391,7 @@ pub fn build_with(spans: &[MSpan], bars: &[Rule]) -> String {
             eprintln!("  {:7.1} {:7.1} {:7.1} {:7.1} {:4.1} {:8} {:?}", s.left, s.right, s.top, s.bottom, s.size, s.family, s.text);
         }
     }
-    let spans = put_accents(spans);
+    let spans = raised_dots(put_accents(spans));
     if std::env::var_os("PDF2MD_MATHDEBUG").is_some() {
         eprintln!("--- formula");
         for s in &spans {
@@ -604,6 +604,36 @@ fn put_accents(mut spans: Vec<MSpan>) -> Vec<MSpan> {
         let k2 = spans.iter().position(|s| s.left == a.left && s.top == a.top && s.text == a.text).unwrap_or(k);
         spans.remove(k2);
         k = 0; // indices moved: start over (accents are rare)
+    }
+    spans
+}
+
+/// The dot of a product among small letters, e^{−(i/2)J·A⁻¹·J}: some books
+/// set it as a full stop of the text font in the size of the line, raised
+/// to the middle of the small letters on both sides of it. It is a small
+/// dot at their height.
+fn raised_dots(mut spans: Vec<MSpan>) -> Vec<MSpan> {
+    for k in 0..spans.len() {
+        let d = &spans[k];
+        if d.text.trim() != "." || d.atom.is_some() {
+            continue;
+        }
+        // (the small letters right beside it; one of them at least has the
+        // dot at its middle height: the other may be an index of its own,
+        // the −1 of K⁻¹ or a dagger, set higher)
+        let small = |j: &usize| !spans[*j].cmex() && spans[*j].size <= 0.85 * d.size && spans[*j].top < d.bottom && spans[*j].bottom > d.top;
+        let level = |j: usize| d.bottom >= spans[j].top + 0.3 * (spans[j].bottom - spans[j].top) && d.bottom <= spans[j].bottom + 1.0;
+        let best = |x: &usize, y: &usize| level(*x).cmp(&level(*y)).then(spans[*x].size.total_cmp(&spans[*y].size));
+        let before = (0..spans.len()).filter(small).filter(|&j| (d.left - spans[j].right).abs() <= 0.3 * d.size).max_by(best);
+        let after = (0..spans.len()).filter(small).filter(|&j| (spans[j].left - d.right).abs() <= 0.3 * d.size).max_by(best);
+        let (Some(b), Some(a)) = (before, after) else { continue };
+        if !level(a) && !level(b) {
+            continue;
+        }
+        let like = if level(b) && (!level(a) || spans[b].size >= spans[a].size) { b } else { a };
+        let (top, bottom, size) = (spans[like].top, spans[like].bottom, spans[like].size);
+        let d = &mut spans[k];
+        (d.text, d.top, d.bottom, d.size) = ("·".to_string(), top, bottom, size);
     }
     spans
 }
