@@ -438,7 +438,11 @@ pub fn read_drawings(doc: &mut Doc, path: &Path, pages: Option<(u32, u32)>) {
         if tex_math {
             insert_delims(doc, all(&parts, parse_svg_delims));
         }
-        for (page, f) in doc.pages.iter_mut().zip(all(&parts, parse_svg_figures)) {
+        let (figures, pieces): (Vec<Vec<Figure>>, Vec<Vec<Figure>>) = all(&parts, |svg| figures_and_pieces(svg).into_iter().map(|of_page| vec![of_page]).collect())
+            .into_iter()
+            .map(|mut of_page| of_page.pop().unwrap_or_default())
+            .unzip();
+        for (page, f) in doc.pages.iter_mut().zip(figures) {
             page.figures = f;
             // (a grid is a table: no picture with the text as its labels)
             let grids = page.grids.clone();
@@ -467,6 +471,11 @@ pub fn read_drawings(doc: &mut Doc, path: &Path, pages: Option<(u32, u32)>) {
                 page.figures = vec![Figure { left: cover.left.max(0.0), right: cover.right.min(page.width), top: cover.top.max(0.0), bottom: cover.bottom.min(page.height) }];
                 page.images.clear();
             }
+        }
+        // (in a typeset book: an ebook's pages mix fonts freely, and its
+        // tables stand on drawn panels)
+        if tex_math {
+            lettered_figures(doc, pieces);
         }
         // labels of drawn pictures (text pieces); an embedded image has
         // its labels in its pixels, so text around it is never one
@@ -866,6 +875,13 @@ fn drop_empty(doc: &mut Doc, lost: &HashMap<String, bool>) {
 /// close together are one picture, and pictures side by side in a row
 /// (four little diagrams) are one too.
 pub fn parse_svg_figures(svg: &str) -> Vec<Vec<Figure>> {
+    figures_and_pieces(svg).into_iter().map(|(figures, _)| figures).collect()
+}
+
+/// The pictures of each page, and every drawn piece (a stroke, a filled
+/// shape; no glyph, no thin bar) whether it came to be part of a picture
+/// or not: both in pdftohtml's pixels.
+fn figures_and_pieces(svg: &str) -> Vec<(Vec<Figure>, Vec<Figure>)> {
     let attr = |tag: &str, name: &str| -> Option<f32> {
         tag.split(&format!(" {name}=\"")).nth(1)?.split('"').next()?.trim_end_matches("px").parse().ok()
     };
@@ -967,9 +983,118 @@ pub fn parse_svg_figures(svg: &str) -> Vec<Vec<Figure>> {
                 .map(|g| Figure { left: g.0 * 1.5, right: g.1 * 1.5, top: g.2 * 1.5, bottom: g.3 * 1.5 })
                 .collect();
             figs.sort_by(|a, b| a.top.total_cmp(&b.top));
-            figs
+            let pieces = drawn.iter().map(|p| Figure { left: p.0 * 1.5, right: p.1 * 1.5, top: p.2 * 1.5, bottom: p.3 * 1.5 }).collect();
+            (figs, pieces)
         })
         .collect()
+}
+
+/// Font families that only letter the book's figures. A figure made in
+/// another program and set into the book brings its own fonts (Times or
+/// Helvetica in a book set in Computer Modern): a family that is no TeX
+/// font, holds under a hundredth of the book's characters and stands on
+/// few of its pages. None in a book with fewer than 20 pages.
+fn figure_fonts(doc: &Doc) -> Vec<bool> {
+    let base = |family: &str| family.trim_end_matches(|c: char| c.is_ascii_digit()).split('-').next().unwrap_or("").to_string();
+    let tex = |family: &str| {
+        let u = family.to_uppercase();
+        ["CM", "MS", "LASY", "EU", "RSFS", "LCIRCLE", "LINE", "MT"].iter().any(|p| u.starts_with(p))
+    };
+    let mut chars: HashMap<String, usize> = HashMap::new();
+    let mut on_pages: HashMap<String, usize> = HashMap::new();
+    for page in &doc.pages {
+        let mut seen: Vec<String> = Vec::new();
+        for s in page.lines.iter().flat_map(|l| l.spans.iter()) {
+            let Some(f) = doc.fonts.get(s.font) else { continue };
+            let b = base(&f.family);
+            *chars.entry(b.clone()).or_default() += s.text.chars().filter(|c| !c.is_whitespace()).count();
+            if !seen.contains(&b) {
+                seen.push(b);
+            }
+        }
+        for b in seen {
+            *on_pages.entry(b).or_default() += 1;
+        }
+    }
+    let all: usize = chars.values().sum();
+    let body = doc.fonts.iter().filter(|f| f.size == doc.body_size).map(|f| base(&f.family)).max_by_key(|b| chars.get(b).copied().unwrap_or(0)).unwrap_or_default();
+    doc.fonts
+        .iter()
+        .map(|f| {
+            let b = base(&f.family);
+            // (not a cut of one of the book's own families: "ScalaSans" for
+            // titles beside "Scala" for the text)
+            let own = chars.iter().any(|(other, n)| n * 100 >= all && b.chars().take(4).eq(other.chars().take(4)));
+            doc.pages.len() >= 20 && !b.is_empty() && b != body && !own && !tex(&f.family) && !f.math && chars.get(&b).copied().unwrap_or(0) * 100 < all && on_pages.get(&b).copied().unwrap_or(0) * 5 < doc.pages.len()
+        })
+        .collect()
+}
+
+/// Pictures told by their lettering: text in a figure font, with the
+/// strokes drawn around it. A drawing of a few thin lines (a potential
+/// step with its axes) is no picture by its strokes alone, but its labels
+/// say it is one. Labels close together are of one picture; it reaches as
+/// far as the drawn pieces near them, and takes in the pictures it meets.
+fn lettered_figures(doc: &mut Doc, pieces: Vec<Vec<Figure>>) {
+    let lettering = figure_fonts(doc);
+    if !lettering.iter().any(|f| *f) {
+        return;
+    }
+    let body = doc.body_size;
+    for (page, pieces) in doc.pages.iter_mut().zip(pieces) {
+        let labels: Vec<Figure> = page
+            .lines
+            .iter()
+            .flat_map(|l| l.spans.iter())
+            .filter(|s| lettering.get(s.font).copied().unwrap_or(false) && !s.text.trim().is_empty())
+            .map(|s| Figure { left: s.left, right: s.right(), top: s.top, bottom: s.bottom() })
+            // (lettering in or right beside a picture found by its strokes
+            // is that picture's already)
+            .filter(|l| !page.figures.iter().any(|f| l.left >= f.left - body && l.right <= f.right + body && l.top >= f.top - 1.2 * body && l.bottom <= f.bottom + 1.2 * body))
+            .collect();
+        if labels.is_empty() {
+            continue;
+        }
+        let near = |a: &Figure, b: &Figure, by: f32| a.left <= b.right + by && b.left <= a.right + by && a.top <= b.bottom + by && b.top <= a.bottom + by;
+        let join = |a: &Figure, b: &Figure| Figure { left: a.left.min(b.left), right: a.right.max(b.right), top: a.top.min(b.top), bottom: a.bottom.max(b.bottom) };
+        // labels within four lines of each other, as one
+        let mut found: Vec<Figure> = Vec::new();
+        for l in labels {
+            let mut all = l;
+            while let Some(k) = found.iter().position(|f| near(f, &all, 4.0 * body)) {
+                all = join(&all, &found.remove(k));
+            }
+            found.push(all);
+        }
+        for lettered in found {
+            let mut area = lettered;
+            let mut rest = pieces.clone();
+            let mut strokes = 0;
+            loop {
+                let Some(k) = rest.iter().position(|p| near(p, &area, 2.0 * body) && p.bottom - p.top < 0.6 * page.height) else { break };
+                area = join(&area, &rest.remove(k));
+                strokes += 1;
+            }
+            // (it must not have grown over the page's text: then it is the
+            // lettering alone)
+            let prose = |a: &Figure| page.lines.iter().filter(|l| l.size == body && l.right - l.left > 0.5 * page.width && l.top >= a.top && l.top + l.size <= a.bottom && !l.spans.iter().any(|s| lettering.get(s.font).copied().unwrap_or(false))).count();
+            if prose(&area) >= 2 {
+                area = lettered;
+            }
+            // (lettering without a stroke near it is text in another
+            // font: an address, a quotation; and what stands in the frame
+            // of a title is the title)
+            let framed = page.frames.iter().any(|f| near(f, &lettered, 0.0));
+            if strokes == 0 || framed {
+                continue;
+            }
+            while let Some(k) = page.figures.iter().position(|f| near(f, &area, 0.0)) {
+                area = join(&area, &page.figures.remove(k));
+            }
+            page.figures.push(area);
+        }
+        page.figures.sort_by(|a, b| a.top.total_cmp(&b.top));
+    }
 }
 
 /// The labels of a picture (x₁, G₁ …) are text: take the text inside it, or
@@ -977,10 +1102,19 @@ pub fn parse_svg_figures(svg: &str) -> Vec<Vec<Figure>> {
 /// of the text flow.
 fn take_figure_labels(doc: &mut Doc) {
     let m = doc.body_size;
+    let tex_math = doc.fonts.iter().any(|f| {
+        let u = f.family.to_uppercase();
+        ["CMMI", "CMSY", "CMEX", "CMR", "MSAM", "MSBM"].iter().any(|p| u.starts_with(p))
+    });
+    let lettering = if tex_math { figure_fonts(doc) } else { Vec::new() };
     for page in doc.pages.iter_mut() {
         // A "picture" that would take whole lines of prose as its labels is
         // no picture (background boxes of an ebook page): drop it.
         page.figures.retain(|f| {
+            // (a picture told by its lettering is one, large words in it or not)
+            if page.lines.iter().flat_map(|l| l.spans.iter()).any(|s| lettering.get(s.font).copied().unwrap_or(false) && s.left >= f.left - 1.0 && s.right() <= f.right + 1.0 && s.top >= f.top - 1.0 && s.bottom() <= f.bottom + 1.0) {
+                return true;
+            }
             let (l, r, t, b) = (f.left - m, f.right + m, f.top - 1.2 * m, f.bottom + 1.2 * m);
             let prose = page
                 .lines
