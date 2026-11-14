@@ -480,7 +480,7 @@ _Figure 93 (p. 407)_
 
 The projection of the vector $`\vec{r}_{ni}`$ into the transverse plan gives a factor of $`\sin \theta`$. It is then easy to see that
 
-cos Θ$`1`$ = $`\sin \theta \cos \varphi`$ cos Θ$`2`$ = $`\sin \theta \sin \varphi`$
+$`\cos \Theta_{1}`$ = $`\sin \theta \cos \varphi`$ $`\cos \Theta_{2}`$ = $`\sin \theta \sin \varphi`$
 
 The sum of cos<sup>2</sup> Θ over the two polarizations then just gives sin<sup>2</sup> $`\theta`$. Therefore the decay rate becomes
 

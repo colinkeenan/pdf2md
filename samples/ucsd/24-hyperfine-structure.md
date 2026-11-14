@@ -208,9 +208,7 @@ We need to compute the matrix elements of the hyperfine perturbation using $`| m
 H_{hf} = \mathcal{A} \frac{\vec{S} \cdot \vec{I}}{\hbar^{2}}
 ```
 
-```math
-\text{ where } \mathcal{A} = \tfrac{4}{3} ( Z\alpha )^{4} \left( \tfrac{m_{e}}{M_{N}} \right) m_{e} c^{2} g_{N} \tfrac{1}{n^{3}} .
-```
+where $`\mathcal{A} = \tfrac{4}{3} ( Z\alpha )^{4} \left( \tfrac{m_{e}}{M_{N}} \right) m_{e} c^{2} g_{N} \tfrac{1}{n^{3}}`$.
 
 Recalling that we can write
 

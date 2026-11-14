@@ -342,7 +342,11 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
         let word = trimmed.rsplit(char::is_whitespace).next().unwrap_or("");
         let cut = trimmed.chars().count() - word.chars().count();
         let before_math = (doc.is_math(next) || next.script != Script::Normal) && next.left - s.right() < 0.5 * st.body;
-        if cut > 0 && FUNCTION_NAMES.contains(&word) && before_math && !doc.is_math(s) && s.script == Script::Normal && !s.bold && !s.italic {
+        // (so is a capital Greek letter of the text font that has indices,
+        // with the bracket that opens before it: "Then (Φ" and a raised *)
+        let greek = word.trim_start_matches(['(', '[']);
+        let symbol = !greek.is_empty() && greek.chars().all(|c| "ΓΔΘΛΞΠΣΥΦΨΩ".contains(c)) && next.script != Script::Normal;
+        if cut > 0 && (FUNCTION_NAMES.contains(&word) || symbol) && before_math && !doc.is_math(s) && s.script == Script::Normal && !s.bold && !s.italic {
             let n = s.text.chars().count().max(1) as f32;
             let split_x = s.left + s.width * cut as f32 / n;
             let (mut words, mut name) = (s.clone(), s.clone());
@@ -423,7 +427,10 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
     // one alone is a symbol.
     for i in 0..n {
         let text = spans[i].text.trim();
-        if kinds[i] == K::Text && !text.is_empty() && text.chars().all(|c| "ΓΔΘΛΞΠΣΥΦΨΩ".contains(c)) {
+        // (or with the bracket that opens before it, "(Φ" and its indices)
+        let greek = text.trim_start_matches(['(', '[']);
+        let scripted = spans.get(i + 1).is_some_and(|nx| nx.script != Script::Normal);
+        if kinds[i] == K::Text && !greek.is_empty() && greek.chars().all(|c| "ΓΔΘΛΞΠΣΥΦΨΩ".contains(c)) && (greek == text || scripted) {
             kinds[i] = K::Math;
         }
     }
@@ -1527,13 +1534,26 @@ fn display_flags(doc: &Doc, lines: &[Line], st: &Stats) -> Vec<bool> {
             tag || (words <= 2 && ((indented(l) && ratio >= 0.25) || ratio >= 0.7))
         })
         .collect();
+    // A line that opens with a word at the margin, in the size of the
+    // text, goes on with the sentence after a formula set apart ("with
+    // F_μν ≡ ∂_μ A_ν − ∂_ν A_μ."), however much of it is math.
+    for i in 0..lines.len() {
+        let l = &lines[i];
+        let word_first = l.spans.first().is_some_and(|s| {
+            let w = s.text.split_whitespace().next().unwrap_or("");
+            !doc.is_math(s) && s.script == Script::Normal && s.tex.is_none() && w.chars().count() >= 2 && w.chars().all(char::is_lowercase)
+        });
+        if f[i] && !info[i].2 && word_first && (l.left - st.left).abs() < 1.5 && l.size >= 0.9 * st.body {
+            f[i] = false;
+        }
+    }
     // The short last line of a paragraph may be all math ("in (M − I).}"):
     // it starts where the line of prose above it starts, at the paragraph's
     // line spacing, and that line runs to the right margin. A formula set
     // apart has more room above it.
     for i in 1..lines.len() {
         let (l, above) = (&lines[i], &lines[i - 1]);
-        let prose_above = !f[i - 1] && info[i - 1].1 >= 3 && above.right >= st.right - st.body;
+        let prose_above = !f[i - 1] && info[i - 1].1 >= 1 && above.right >= st.right - st.body;
         if f[i] && !info[i].2 && prose_above && (l.left - above.left).abs() < 1.5 && l.top - above.top <= 1.6 * l.size && l.size >= 0.75 * above.size {
             f[i] = false;
         }

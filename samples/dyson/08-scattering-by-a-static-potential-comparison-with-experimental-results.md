@@ -683,7 +683,7 @@ Having established that the Φ-representation in which (664) holds is the FIR, w
 \Phi ( t ) = e^{iH_{0} t/ \hbar} e^{- i \{ H_{0} + H^{e} \} t/ \hbar} \Phi^{\prime} ( t ) \qquad \text{(689)}
 ```
 
-The new wave-function Φ$`{}^{\prime} ( t )`$ thus satisfies
+The new wave-function $`\Phi^{\prime} ( t )`$ thus satisfies
 
 <a id="eq-690"></a>
 

@@ -364,9 +364,9 @@ If Ψ is any state then
 \Psi^{\prime} = \left( 1 + \lambda \sum_{\mu} k_{\mu} \tilde{a}_{k\mu} \right) \Psi
 ```
 
-is a state obtained from Ψ by emitting a pseudo-photon with potentials proportional to $`\partial \Lambda /\partial x_{\mu}`$. Hence Ψ$`{}^{\prime}`$ should be indistinguishable from Ψ.
+is a state obtained from Ψ by emitting a pseudo-photon with potentials proportional to $`\partial \Lambda /\partial x_{\mu}`$. Hence $`\Psi^{\prime}`$ should be indistinguishable from Ψ.
 
-Now if Ψ$`2`$ is any state whatever satisfying the supplementary condition (216a) the matrix element
+Now if $`\Psi_{2}`$ is any state whatever satisfying the supplementary condition (216a) the matrix element
 
 <a id="eq-216b"></a>
 
@@ -374,7 +374,7 @@ Now if Ψ$`2`$ is any state whatever satisfying the supplementary condition (216
 \begin{aligned} ( \Psi^{\prime *} , \Psi_{1} ) &= \left( \Psi^{*} \left( 1 + \lambda \sum_{\mu} k_{\mu}^{*} \tilde{a}_{k\mu}^{*} \right) , \Psi_{2} \right) \\ &= \left( \Psi^{*} , \left( 1 + \lambda \sum_{\mu} k_{\mu} a_{k\mu}^{*} \right) \Psi_{2} \right) = ( \Psi^{*} , \Psi_{2} ) \end{aligned} \qquad \text{(216b)}
 ```
 
-Hence the matrix elements of Ψ$`{}^{\prime}`$ and Ψ to any physical state Ψ$`2`$ whatever are equal, and so the results of the theory are all independent of whether the state Ψ is represented by the vector Ψ or by Ψ$`{}^{\prime}`$. This is enough to show that the theory is properly gauge-invariant, in spite of the fact that states are specified by the potentials which are not themselves gauge-invariant.
+Hence the matrix elements of $`\Psi^{\prime}`$ and Ψ to any physical state $`\Psi_{2}`$ whatever are equal, and so the results of the theory are all independent of whether the state Ψ is represented by the vector Ψ or by $`\Psi^{\prime}`$. This is enough to show that the theory is properly gauge-invariant, in spite of the fact that states are specified by the potentials which are not themselves gauge-invariant.
 
 ### <a id="s-the-vacuum-state"></a>The Vacuum State
 
@@ -546,7 +546,7 @@ There is one difficulty in the preceding theory. We assume according to (220)
 
 Here the plus sign holds for $`\mu`$ = 1$`, 2 , 3`$; the minus sign for $`\mu`$ = 4. Now if the operators $`a_{k\mu} ,a_{k\mu}^{*}`$ are represented in the usual way by matrices, as it is done in the elementary theory of the harmonic oscillator$`( )`$ (see Wentzel p. 33, Eq. (6.16)), the vacuum expectation values of a product $`( a_{k\mu} a_{k\mu}^{*} )`$ will always be _positive_, i.e. the plus sign should hold in (220a) for $`\mu`$ = 4 also. In fact $`( a_{k\mu} a_{k\mu}^{*} )`$ will have a positive expectation value in any state whatever, if the photon oscillators are treated as ordinary$`( )`$ elementary oscillators.
 
-Therefore we must distinguish between the scalar product (Ψ$`\frac{*}{1} , \Psi_{2} )`$ as we have defined it by our covariant theory, and the scalar product (Ψ$`\frac{*}{1} , \Psi_{2} )_{E}`$ which one would calculate using the explicit matrix representation of the operators. The product (Ψ$`\frac{*}{1} , \Psi_{2} )_{E}`$ has no physical significance, because the matrix representations of the $`a_{k 4}`$ refer to states with photons polarized purely in the time dimension, which cannot occur physically. However, it is convenient also to be able to use the matrix representations in practice.
+Therefore we must distinguish between the scalar product $`( \Psi_{1}^{*} , \Psi_{2} )`$ as we have defined it by our covariant theory, and the scalar product $`( \Psi_{1}^{*} , \Psi_{2} )_{E}`$ which one would calculate using the explicit matrix representation of the operators. The product $`( \Psi_{1}^{*} , \Psi_{2} )_{E}`$ has no physical significance, because the matrix representations of the $`a_{k 4}`$ refer to states with photons polarized purely in the time dimension, which cannot occur physically. However, it is convenient also to be able to use the matrix representations in practice.
 
 To use the matrix representations, we have only to define an operator $`\eta`$ by the condition
 
@@ -564,7 +564,7 @@ where Φ is any state in which there is a definite number $`N`$ of photons polar
 ( \Psi_{1}^{*} , \Psi_{2} ) = ( \Psi_{1}^{*} ,\eta \Psi_{2} )_{E} \qquad \text{(220c)}
 ```
 
-The definition (220c), introduced by Gupta, makes the matrix representations consistent with all the requirements of the covariant theory, in particular also it gives (220) correctly. The physical scalar product is thus an _indefinite metric_ regarded from the point of view of the matrix representations. However, we have seen in (216b) that for any _physical_ states the scalar product (Ψ$`\frac{*}{1} , \Psi_{2} )`$ is equal to (Ψ$`\frac{*}{1 T} , \Psi_{1 T} )`$ where $`\Psi_{1 T}`$ is a state involving transverse photons only, and hence is positive. Thus for physical states the metric is definite and this is all that we require of it.
+The definition (220c), introduced by Gupta, makes the matrix representations consistent with all the requirements of the covariant theory, in particular also it gives (220) correctly. The physical scalar product is thus an _indefinite metric_ regarded from the point of view of the matrix representations. However, we have seen in (216b) that for any _physical_ states the scalar product $`( \Psi_{1}^{*} , \Psi_{2} )`$ is equal to $`( \Psi_{1 T}^{*} , \Psi_{1 T} )`$ where $`\Psi_{1 T}`$ is a state involving transverse photons only, and hence is positive. Thus for physical states the metric is definite and this is all that we require of it.
 
 ### <a id="s-example-spontaneous-emission-of-radiation"></a>Example: Spontaneous Emission of Radiation
 
@@ -966,11 +966,11 @@ i. e., the time variation of $`A_{\mu} ( r,t )`$ is the same as that of $`A_{\mu
 
 ### <a id="s-application-of-interaction-representation-to-line-shift-and-line-width"></a>The Application of the Interaction <a id="ix-266">Representation</a> to the Theory of Line-Shift and Line-Width
 
-Consider the solution of Eq. (245) in which the atom is given initially in a stationary unperturbed state $`O`$ with energy $`E_{o}`$, the Maxwell <a id="ix-189">field</a> being in the vacuum state, with no photons present. Let Φ$`o`$ be the interaction representation <a id="ix-267">wave-function</a> representing the atom in state $`O`$ and the Maxwell field in the vacuum state, without interaction. Φ$`o`$ is independent of time.
+Consider the solution of Eq. (245) in which the atom is given initially in a stationary unperturbed state $`O`$ with energy $`E_{o}`$, the Maxwell <a id="ix-189">field</a> being in the vacuum state, with no photons present. Let $`\Phi_{o}`$ be the interaction representation <a id="ix-267">wave-function</a> representing the atom in state $`O`$ and the Maxwell field in the vacuum state, without interaction. $`\Phi_{o}`$ is independent of time.
 
-The initial condition Φ$`( t )`$ = Φ$`o`$ at time $`t = t_{o}`$ is a physically unreal one. It would mean putting the atom into existence at time 0 without any radiation field being excited at this time. This we cannot do physically. In fact the initial condition for an atom in an excited state will depend on how it got into the excited state. This cannot be formulated in a simple way: one needs a complicated model in order to describe the initial excitation of the atom.
+The initial condition Φ$`( t ) = \Phi_{o}`$ at time $`t = t_{o}`$ is a physically unreal one. It would mean putting the atom into existence at time 0 without any radiation field being excited at this time. This we cannot do physically. In fact the initial condition for an atom in an excited state will depend on how it got into the excited state. This cannot be formulated in a simple way: one needs a complicated model in order to describe the initial excitation of the atom.
 
-We are interested in calculating the variation with time of (Φ$`\frac{*}{o} \Phi ( t )`$), the probability amplitude for finding the atom still in the unperturbed state Φ$`o`$ at time $`t`$. By (245) we have
+We are interested in calculating the variation with time of $`( \Phi_{o}^{*} \Phi ( t )`$), the probability amplitude for finding the atom still in the unperturbed state $`\Phi_{o}`$ at time $`t`$. By (245) we have
 
 <a id="eq-250"></a>
 
@@ -992,9 +992,9 @@ Then (250) will give
 \frac{d}{dt} ( \Phi_{o}^{*} \Phi ( t ) )_{t = t_{o}} = 0 \qquad \text{(251)}
 ```
 
-from the $`H_{I}`$ given by (247) has zero expectation value in the Maxwell field vacuum, since $`A_{\mu} ( r,t )`$ also has a zero expectation value in vacuum as one can see from (211) and (217). Thus (Φ$`\frac{*}{o} \Phi ( t )`$) is momentarily stationary at $`t = t_{o}`$. This is however not interesting since the conditions at $`t = t_{o}`$ are entirely unphysical.
+from the $`H_{I}`$ given by (247) has zero expectation value in the Maxwell field vacuum, since $`A_{\mu} ( r,t )`$ also has a zero expectation value in vacuum as one can see from (211) and (217). Thus $`( \Phi_{o}^{*} \Phi ( t )`$) is momentarily stationary at $`t = t_{o}`$. This is however not interesting since the conditions at $`t = t_{o}`$ are entirely unphysical.
 
-The physically meaningful quantity is the value of (250) at a time $`t`$ a long time after $`t_{o}`$. Then the atom will have “settled down” to a quasi-stationary state of radiative decay, and we may expect that the value we find for (250) is independent of the particular initial condition chosen and will be correct for an atom which has been excited by any reasonable method to the state Φ$`o`$.
+The physically meaningful quantity is the value of (250) at a time $`t`$ a long time after $`t_{o}`$. Then the atom will have “settled down” to a quasi-stationary state of radiative decay, and we may expect that the value we find for (250) is independent of the particular initial condition chosen and will be correct for an atom which has been excited by any reasonable method to the state $`\Phi_{o}`$.
 
 We make the calculation so as to include effects of the radiation $`H_{I}`$ up to second order. This means we include effects of emitting and absorbing one photon only. In fact we know physically that effects from two or more photons are very small, so the approximation is a good one.
 
@@ -1006,13 +1006,13 @@ Suppose that $`( t - t_{o} )`$ is long compared with all the atomic frequencies.
 \Phi_{1} ( t ) = \left[ 1 - \frac{i}{\hbar} \int_{-\infty}^{t} H_{I} ( t^{\prime} ) dt^{\prime} \right] a ( t ) \Phi_{o} \qquad \text{(252)}
 ```
 
-+ terms involving other atomic states Φ$`n`$ with two or more photons present.
++ terms involving other atomic states $`\Phi_{n}`$ with two or more photons present.
 
-Here $`a ( t )`$ = (Φ$`\frac{*}{o} \Phi ( t )`$) is a slowly varying amplitude, constant to first order in $`H_{I}`$, representing the slow decay of the atom. Note that our treatment is not only a perturbation theory correct to second order in $`H_{I}`$, but it also must account _exactly_ for the big effects produced by the radiative decay over long periods of time. Therefore we do not put $`a ( t )`$ = 1 in (252) although this would be correct to first order in $`H_{I}`$.
+Here $`a ( t ) = ( \Phi_{o}^{*} \Phi ( t )`$) is a slowly varying amplitude, constant to first order in $`H_{I}`$, representing the slow decay of the atom. Note that our treatment is not only a perturbation theory correct to second order in $`H_{I}`$, but it also must account _exactly_ for the big effects produced by the radiative decay over long periods of time. Therefore we do not put $`a ( t )`$ = 1 in (252) although this would be correct to first order in $`H_{I}`$.
 
 If we put $`a ( t )`$ = 1 in (252) we should have just the solution of the radiation emission problem, neglecting all effects of radiation reaction on the atom, which we obtained before from Eg. (230).
 
-The value of $`\frac{d}{dt} a ( t ) = \frac{d}{dt}`$ (Φ$`\frac{*}{o} \Phi ( t )`$) is obtained correct to second order in $`H_{I}`$, and including the radiative reaction effects, by substituting (252) into (250).
+The value of $`\frac{d}{dt} a ( t ) = \frac{d}{dt} ( \Phi_{o}^{*} \Phi ( t )`$) is obtained correct to second order in $`H_{I}`$, and including the radiative reaction effects, by substituting (252) into (250).
 
 Hence we have
 
@@ -1098,7 +1098,7 @@ Then ∆$`E`$ and Γ are real constants given by
 \Gamma = \frac{1}{8 \pi^{2} c} \int \frac{d^{3} \boldsymbol{k}}{| \boldsymbol{k} |} \sum_{n,\mu} | j_{\mu}^{k} ( n, 0 ) |^{2} \delta ( E_{n} - E_{0} + \hbar c | \boldsymbol{k} | ) \qquad \text{(262)}
 ```
 
-These are independent of $`t`$. Therefore the <a id="ix-8">amplitude</a> of the state Φ$`o`$ in the wave-function Φ$`( t )`$ is given for all $`t \gg t_{o}`$ by
+These are independent of $`t`$. Therefore the <a id="ix-8">amplitude</a> of the state $`\Phi_{o}`$ in the wave-function Φ$`( t )`$ is given for all $`t \gg t_{o}`$ by
 
 <a id="eq-263"></a>
 
@@ -1106,7 +1106,7 @@ These are independent of $`t`$. Therefore the <a id="ix-8">amplitude</a> of the 
 a ( t ) = ( \Phi_{o}^{*} \Phi ( t ) ) = \exp \left\{ - \frac{i}{\hbar} \Delta E ( t - t_{o} ) - \frac{1}{2} \Gamma ( t - t_{o} ) \right\} \qquad \text{(263)}
 ```
 
-The state Φ$`o`$, as a result of the perturbation by the radiation <a id="ix-196">field</a>, has its energy shifted by ∆$`E`$, and decays exponentially like
+The state $`\Phi_{o}`$, as a result of the perturbation by the radiation <a id="ix-196">field</a>, has its energy shifted by ∆$`E`$, and decays exponentially like
 
 ```math
 | a ( t ) |^{2} = e^{- \Gamma ( t - t_{o} )} \quad ( 2 6 3 / a )
@@ -1118,7 +1118,7 @@ The state Φ$`o`$, as a result of the perturbation by the radiation <a id="ix-19
 
 Comparing (232) and (262), we see that Γ is exactly the total probability per unit time of radiation from the state $`o`$ to all other states $`n`$, calculated neglecting radiation reaction. This gives the physical interpretation for the decay law (263/a). When the denominators in (261) have zeroes, the integration over $`| \boldsymbol{k} |`$ is to be taken as a Cauchy principal value. The energy shift ∆$`E`$ is exactly what would be obtained from elementary second-order perturbation theory, if the difficulties arising from vanishing denominators were just ignored.
 
-We calculate now the spectrum of radiation emitted in the transition from the level $`o`$ to the level $`n`$, including effects of the level shifts ∆$`E_{o}`$ and ∆$`E_{n}`$ and the widths Γ$`o`$ and Γ$`n`$. Let $`b_{nk}`$ be the amplitude at time $`t`$, of the state in which the atom is in state $`n`$ and the photon is present with propagation vector $`k`$. The equation of motion for $`b_{nk}`$, including effects of radiation out of the state $`n`$, is
+We calculate now the spectrum of radiation emitted in the transition from the level $`o`$ to the level $`n`$, including effects of the level shifts ∆$`E_{o}`$ and ∆$`E_{n}`$ and the widths $`\Gamma_{o}`$ and $`\Gamma_{n}`$. Let $`b_{nk}`$ be the amplitude at time $`t`$, of the state in which the atom is in state $`n`$ and the photon is present with propagation vector $`k`$. The equation of motion for $`b_{nk}`$, including effects of radiation out of the state $`n`$, is
 
 <a id="eq-264"></a>
 
@@ -1559,7 +1559,7 @@ Hence using (301) and the notation (110)
 S ( x ) = \frac{1}{( 2 \pi )^{3}} \int e^{ik \cdot x} ( k / + i\mu ) \delta ( k^{2} + \mu^{2} ) \epsilon ( k ) d^{4} k \qquad \text{(305)}
 ```
 
-Note the projection operator Λ$`+`$ appearing here, as defined by (115) with the <a id="ix-211">momentum</a> $`p = \hbar k`$. Thus the $`S`$-function distinguishes automatically between the electron states $`k_{0}`$ = +$`\sqrt{| \boldsymbol{k} |^{2} + \mu^{2}}`$ and the positron states $`k_{0} = - \sqrt{| \boldsymbol{k} |^{2} + \mu^{2}}`$
+Note the projection operator $`\Lambda_{+}`$ appearing here, as defined by (115) with the <a id="ix-211">momentum</a> $`p = \hbar k`$. Thus the $`S`$-function distinguishes automatically between the electron states $`k_{0}`$ = +$`\sqrt{| \boldsymbol{k} |^{2} + \mu^{2}}`$ and the positron states $`k_{0} = - \sqrt{| \boldsymbol{k} |^{2} + \mu^{2}}`$
 
 ### <a id="s-fourier-analysis-of-operators-2"></a>Fourier Analysis of Operators
 
@@ -1599,7 +1599,7 @@ Taking the adjoint to (306) we have
 
 Here the $`b_{ku}^{*}`$ are ordinary Hermitian conjugates of $`b_{ku}`$.
 
-Computing the anti-commutators (298), (299) from (306) and (309), and comparing the results with the momentum integral (305), using (115) and the properties of Λ$`+`$ we have
+Computing the anti-commutators (298), (299) from (306) and (309), and comparing the results with the momentum integral (305), using (115) and the properties of $`\Lambda_{+}`$ we have
 
 <a id="eq-310"></a>
 
@@ -1813,7 +1813,7 @@ The most general state of the fields is described by specifying for each electro
 
 ### <a id="s-the-vacuum-state-2"></a>The Vacuum State
 
-The vacuum state Ψ$`o`$ is defined by
+The vacuum state $`\Psi_{o}`$ is defined by
 
 <div align="center">
 
@@ -2081,7 +2081,7 @@ which is identical to (311) in the case of free particles when normalizations ar
 
 ### <a id="s-the-hamiltonian-2"></a>The Hamiltonian
 
-As before, the $`b_{n +}`$ are absorption operators for electrons and the $`b_{n -}^{*}`$ absorption operators for positrons, only the electrons and positrons being defined by the bound <a id="ix-91">wave-functions</a>. The vacuum state Ψ$`o`$ is given by
+As before, the $`b_{n +}`$ are absorption operators for electrons and the $`b_{n -}^{*}`$ absorption operators for positrons, only the electrons and positrons being defined by the bound <a id="ix-91">wave-functions</a>. The vacuum state $`\Psi_{o}`$ is given by
 
 <a id="eq-348"></a>
 
@@ -2158,7 +2158,7 @@ For example, consider an atom with 2 electrons in states $`\psi_{1}`$ and $`\psi
 \Psi = b_{1}^{*} b_{2}^{*} \Psi_{o} \qquad \text{(354)}
 ```
 
-where Ψ$`o`$ is the vacuum state. In (354) there is no arbitrariness; an interchange of the indices 1 and 2 will only change Ψ into $`-`$Ψ which means no physical change. Now consider a 2-particle interaction operator
+where $`\Psi_{o}`$ is the vacuum state. In (354) there is no arbitrariness; an interchange of the indices 1 and 2 will only change Ψ into $`-`$Ψ which means no physical change. Now consider a 2-particle interaction operator
 
 <a id="eq-355"></a>
 
@@ -2242,9 +2242,9 @@ The electron field operator $`\psi_{H}`$ in the field (360) satisfies (332). Her
 \psi_{H} ( x ) = \psi ( x ) + \frac{ie}{\hbar c} \int dx^{\prime} S_{R} ( x - x^{\prime} ) A /^{e} ( x^{\prime} ) \psi ( x^{\prime} ) \qquad \text{(361)}
 ```
 
-Here $`S_{R}`$ is given by (293), (301), and (303), and $`\psi ( x )`$ is a solution of the free-field equation (286). In fact $`\psi ( x )`$ is the field operator of the interaction representation, when the effects of $`A_{\mu}`$ are represented in the wave-function instead of in the operators. Using the retarded potential in (361) means that the unperturbed states are specified in the past, as the initial states upon which $`A_{\mu}^{e}`$ later produces effects. Thus the vacuum state defined by (323a) is the state in which initially no electrons or positrons are present. This is the state which we wish to study, and we call it Ψ$`o`$.
+Here $`S_{R}`$ is given by (293), (301), and (303), and $`\psi ( x )`$ is a solution of the free-field equation (286). In fact $`\psi ( x )`$ is the field operator of the interaction representation, when the effects of $`A_{\mu}`$ are represented in the wave-function instead of in the operators. Using the retarded potential in (361) means that the unperturbed states are specified in the past, as the initial states upon which $`A_{\mu}^{e}`$ later produces effects. Thus the vacuum state defined by (323a) is the state in which initially no electrons or positrons are present. This is the state which we wish to study, and we call it $`\Psi_{o}`$.
 
-Using the interaction representation operators $`\psi ( x )`$, Ψ$`o`$ is the vacuum state and remains so for all time; the physical state is initially Ψ$`o`$ but does not remain Ψ$`o`$. Using the Heisenberg operators $`\psi_{H} ( x )`$, Ψ$`o`$ is the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=76" target="_blank" title="This page in the PDF"><sup>[p. 70]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p71" href="book.pdf#page=77" target="_blank" title="This page in the PDF"><sup>[p. 71]</sup></a></span> physical state for all time; it is initially the vacuum state but does not remain so. In the remote past as $`x_{0} \to -\infty`$, because $`S_{R}`$ is a retarded potential $`\psi_{H} ( x )`$ and $`\psi ( x )`$ become identical.
+Using the interaction representation operators $`\psi ( x ) , \Psi_{o}`$ is the vacuum state and remains so for all time; the physical state is initially $`\Psi_{o}`$ but does not remain $`\Psi_{o}`$. Using the Heisenberg operators $`\psi_{H} ( x ) , \Psi_{o}`$ is the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=76" target="_blank" title="This page in the PDF"><sup>[p. 70]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p71" href="book.pdf#page=77" target="_blank" title="This page in the PDF"><sup>[p. 71]</sup></a></span> physical state for all time; it is initially the vacuum state but does not remain so. In the remote past as $`x_{0} \to -\infty`$, because $`S_{R}`$ is a retarded potential $`\psi_{H} ( x )`$ and $`\psi ( x )`$ become identical.
 
 The expression (361) is useful because we know how to calculate matrix elements of $`\psi ( x )`$ from the state $`\Psi_{o}`$, whereas the matrix elements of $`\psi_{H}`$ do not have any simple form. We also need the adjoint equation
 

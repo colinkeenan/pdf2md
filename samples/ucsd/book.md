@@ -18392,9 +18392,7 @@ We need to compute the matrix elements of the hyperfine perturbation using $`| m
 H_{hf} = \mathcal{A} \frac{\vec{S} \cdot \vec{I}}{\hbar^{2}}
 ```
 
-```math
-\text{ where } \mathcal{A} = \tfrac{4}{3} ( Z\alpha )^{4} \left( \tfrac{m_{e}}{M_{N}} \right) m_{e} c^{2} g_{N} \tfrac{1}{n^{3}} .
-```
+where $`\mathcal{A} = \tfrac{4}{3} ( Z\alpha )^{4} \left( \tfrac{m_{e}}{M_{N}} \right) m_{e} c^{2} g_{N} \tfrac{1}{n^{3}}`$.
 
 Recalling that we can write
 
@@ -20724,7 +20722,7 @@ _Figure 93 (p. 407)_
 
 The projection of the vector $`\vec{r}_{ni}`$ into the transverse plan gives a factor of $`\sin \theta`$. It is then easy to see that
 
-cos Θ$`1`$ = $`\sin \theta \cos \varphi`$ cos Θ$`2`$ = $`\sin \theta \sin \varphi`$
+$`\cos \Theta_{1}`$ = $`\sin \theta \cos \varphi`$ $`\cos \Theta_{2}`$ = $`\sin \theta \sin \varphi`$
 
 The sum of cos<sup>2</sup> Θ over the two polarizations then just gives sin<sup>2</sup> $`\theta`$. Therefore the decay rate becomes
 
@@ -25570,7 +25568,7 @@ u_{\vec{p}}^{( r ) \dagger} u_{\vec{p}}^{( r^{\prime} )} = \frac{| E |}{mc^{2}} 
 \sigma_{z} \quad 0
 ```
 
-Are the free particle states still eigenstates of Σ$`{}_{z} =`$ as were the states of a particle at
+Are the free particle states still eigenstates of $`\Sigma_{z} =`$ as were the states of a particle at
 
 ```math
 0 \quad \sigma_{z}
@@ -25578,7 +25576,7 @@ Are the free particle states still eigenstates of Σ$`{}_{z} =`$ as were the sta
 
 rest? In general, they are not. To have an eigenvalue of +1, a spinor must have zero second and fourth components and to have an eigenvalue of -1, the first and third components must be zero. So **boosting our Dirac particle to a frame in which it is moving, mixes up the spin states**.
 
-There is one case for which these are still spin eigenstates. If the particle’s momentum is in the z direction, then we have just the spinors we need to be eigenstates of Σ$`z`$. That is, if we boost along the quantization axis, the spin eigenstates are preserved. These are called **helicity eigenstates**. Helicity is the spin component along the direction of the particle. While it is possible to make definite momentum solutions which are eigenstates of helicity, it is not possible to make definite momentum states which are eigenstates of spin along some other direction (except in the trivial case of $`\vec{p}`$ = 0 as we have shown).
+There is one case for which these are still spin eigenstates. If the particle’s momentum is in the z direction, then we have just the spinors we need to be eigenstates of $`\Sigma_{z}`$. That is, if we boost along the quantization axis, the spin eigenstates are preserved. These are called **helicity eigenstates**. Helicity is the spin component along the direction of the particle. While it is possible to make definite momentum solutions which are eigenstates of helicity, it is not possible to make definite momentum states which are eigenstates of spin along some other direction (except in the trivial case of $`\vec{p}`$ = 0 as we have shown).
 
 To further understand these solutions, we can compute the conserved probability current. First, compute it in general for a Dirac spinor
 
@@ -25871,7 +25869,7 @@ x_{4}^{\prime} & = & x_{4} & \cosh \chi & - ix_{1} \sinh \chi \\
 We verify that a boost along the $`i`$ direction is like a rotation in the $`i 4`$ plane through an angle $`i\chi`$.
 
 We need to **find the transformation matrices** $`S`$ that satisfy the equation $`S^{- 1} \gamma_{\mu} S = \gamma_{\nu} a_{\mu \nu}`$<br>
-for the Dirac equation to be covariant. Recalling that the 4 component equivalent of $`\sigma_{z}`$ is Σ$`{}_{z} = \tfrac{[ \gamma_{1} ,\gamma_{2} ]}{2 i} = \tfrac{\gamma_{1} \gamma_{2}}{i}`$, we will show that these matrices are (for a rotation in the xy plane and a boost in<br>
+for the Dirac equation to be covariant. Recalling that the 4 component equivalent of $`\sigma_{z}`$ is $`\Sigma_{z} = \tfrac{[ \gamma_{1} ,\gamma_{2} ]}{2 i} = \tfrac{\gamma_{1} \gamma_{2}}{i}`$, we will show that these matrices are (for a rotation in the xy plane and a boost in<br>
 the x direction).
 
 ```math

@@ -1298,9 +1298,7 @@ Thus
 E^{2} = m^{2} c^{4} + c^{2} p_{z}^{2} + \lambda \{ n \pm ( \ell_{z} \pm 1 ) \}
 ```
 
-```math
-\text{ where } \ell_{z} = 0 , \pm 1 , \pm 2 ,\dots , \pm ( n - 1 ) .
-```
+where $`\ell_{z}`$ = 0$`, \pm 1 , \pm 2 ,\dots , \pm ( n - 1 ) .`$
 
 So the eigenvalues are
 

@@ -9,7 +9,7 @@
 
 In this extensive class of problems we are interested in calculating the over-all transition matrix element $`M`$ between an initial state $`A`$ and a final state $`B , A`$ and $`B`$ being specified by assigning the spins and momenta of the free particles which are present in these states. The scattering process is supposed to occur as follows: The free particles which are specified by state $`A`$ in the remote past, converge and interact, and other free particles emerge or are created in the interaction and finally constitute the state $`B`$ in the remote future. We wish to calculate the matrix element $`M`$ for this process, without studying the equations of motion or investigating the behavior of the system at intermediate times while the interaction is in progress.
 
-The unperturbed states $`A`$ and $`B`$ are supposed to be states of free particles without interaction and are therefore represented by constant state-vectors Φ$`A`$ and Φ$`B`$ in the <a id="ix-162">interaction representation</a>. The actual initial and final states in a scattering problem will consist of particles each having a self-<a id="ix-194">field</a> with which it continues to interact even in the remote future and past, hence Φ$`A`$ and Φ$`B`$ do not accurately represent the initial and final states. However, so long as we are using perturbation theory and not including the higher order effects arising form the self-fields of the particles, it is consistent to use constant Φ$`A`$ and $`\Phi_{B}`$ representing bare particles <a id="ix-150">without radiation</a> interaction. Even when self-field effects are considered, it turns out that the bare-particle Φ$`A`$ and Φ$`B`$ can still be used, although in this case some careful justification for it is needed.
+The unperturbed states $`A`$ and $`B`$ are supposed to be states of free particles without interaction and are therefore represented by constant state-vectors $`\Phi_{A}`$ and $`\Phi_{B}`$ in the <a id="ix-162">interaction representation</a>. The actual initial and final states in a scattering problem will consist of particles each having a self-<a id="ix-194">field</a> with which it continues to interact even in the remote future and past, hence $`\Phi_{A}`$ and $`\Phi_{B}`$ do not accurately represent the initial and final states. However, so long as we are using perturbation theory and not including the higher order effects arising form the self-fields of the particles, it is consistent to use constant $`\Phi_{A}`$ and $`\Phi_{B}`$ representing bare particles <a id="ix-150">without radiation</a> interaction. Even when self-field effects are considered, it turns out that the bare-particle $`\Phi_{A}`$ and $`\Phi_{B}`$ can still be used, although in this case some careful justification for it is needed.
 
 The matrix element $`M`$ is
 
@@ -19,7 +19,7 @@ The matrix element $`M`$ is
 M = ( \Phi_{B}^{*} U \Phi_{A} ) \qquad \text{(419)}
 ```
 
-Here $`U \Phi_{A}`$ is the state which is obtained at $`t`$ = +$`\infty`$ by solving the <a id="ix-265">equation</a> of motion (417) with the initial condition Φ = Φ$`A`$ at $`t = -\infty . U`$ can easily be written down as a perturbation expansion in the operators $`H^{e}`$ and $`H_{R}`$,
+Here $`U \Phi_{A}`$ is the state which is obtained at $`t`$ = +$`\infty`$ by solving the <a id="ix-265">equation</a> of motion (417) with the initial condition Φ = $`\Phi_{A}`$ at $`t = -\infty . U`$ can easily be written down as a perturbation expansion in the operators $`H^{e}`$ and $`H_{R}`$,
 
 <a id="eq-420"></a>
 
@@ -57,9 +57,7 @@ normalized by $`( \overline{u}_{1} u_{1} )`$ = 1. With the wave function normali
 \psi ( x ) = \sum_{p,u} b_{pu} ue^{ip \cdot x}
 ```
 
-```math
-\text{ where } \{ b_{pu} ,b_{p^{\prime} u^{\prime}}^{*} \} = \delta_{pp^{\prime}} \delta_{uu^{\prime}} . \text{ Then } ( \Phi_{o}^{*} ,\psi ( x ) \Phi_{pu} ) = ( \Phi_{o}^{*} ,b_{pu} \Phi_{pu} ) ue^{ip \cdot x} = ( \Phi_{o}^{*} , \Phi_{o} ) ue^{ip \cdot x} = ue^{ip \cdot x} .
-```
+where $`\{ b_{pu} ,b_{p^{\prime} u^{\prime}}^{*} \} = \delta_{pp^{\prime}} \delta_{uu^{\prime}}`$. Then $`( \Phi_{o}^{*} ,\psi ( x ) \Phi_{pu} ) = ( \Phi_{o}^{*} ,b_{pu} \Phi_{pu} ) ue^{ip \cdot x} = ( \Phi_{o}^{*} , \Phi_{o} ) ue^{ip \cdot x} = ue^{ip \cdot x}`$.
 
 Thus we consider the states 1, 2 and $`1^{\prime} , 2^{\prime}`$ as if they were discrete states, the $`\psi`$ operator being given by the expansion (337). It would also be possible to use the continuous-state expansion (306) for $`\psi`$, but then the normalization of the initial and final states would have to be considered afresh. Since we fixed the normalization (472) when we previously derived the Møller formula (144), we shall now stick to it.
 
@@ -71,7 +69,7 @@ We shall calculate in the Born approximation as before, thus keeping only the te
 U_{2} = \frac{+ e^{2}}{2 \hbar^{2} c^{2}} \int \int dx_{1} dx_{2} P \left\{ \psi ( x_{1} ) A / ( x_{1} ) \psi ( x_{1} ) , \overline{\psi} ( x_{2} ) A / ( x_{2} ) \psi ( x_{2} ) \right\} \qquad \text{(423)}
 ```
 
-the integration going over all space-time. To obtain the matrix element $`M`$ = (Φ$`\frac{*}{B} U_{2} \Phi_{A} )`$ we only have to replace according to (377)
+the integration going over all space-time. To obtain the matrix element $`M = ( \Phi_{B}^{*} U_{2} \Phi_{A} )`$ we only have to replace according to (377)
 
 <a id="eq-424"></a>
 
