@@ -135,7 +135,7 @@ where $`k^{2} = | \boldsymbol{k} |^{2} - k_{0}^{2}`$. The integration with respe
 
 _Figure 1 (p. 42)_
 
-For detailed calculations, see the Appendix below. This gives the correct behaviour of $`D_{R}`$ being zero for $`x_{0} <`$ 0. Similarly
+For detailed calculations, see the Appendix below. This gives the correct behaviour of $`D_{R}`$ being zero for $`x_{0} < 0`$. Similarly
 
 <a id="eq-208"></a>
 
@@ -177,10 +177,10 @@ this being now an ordinary real integral.
 
 _Figure 3 (p. 43)_
 
-Let us verify, e.g. (207). For $`x_{0} <`$ 0, we have to take the top path shown,<br>
+Let us verify, e.g. (207). For $`x_{0} < 0`$, we have to take the top path shown,<br>
 otherwise the integrand blows up; this gives obviously 0.
 
-For $`x_{0} >`$ 0, we have to take the bottom path; then
+For $`x_{0} > 0`$, we have to take the bottom path; then
 
 ```math
 D_{R} ( x ) = \frac{1}{( 2 \pi )^{4}} \int_{+} \frac{e^{i \boldsymbol{k} \cdot \boldsymbol{x}} e^{- ik_{0} x_{0}}}{\boldsymbol{k}^{2} - k_{0}^{2}} d^{3} kdk_{0}
@@ -434,7 +434,7 @@ And by the commutation laws (213) and (219c) we have
 \langle a_{k\mu} \tilde{a}_{k^{\prime} \lambda} \rangle_{o} = \langle \boldsymbol{[} a_{k\mu} , \tilde{a}_{k^{\prime} \lambda} \boldsymbol{]} \rangle_{o} = \delta^{3} ( \boldsymbol{k} - \boldsymbol{k}^{\prime} ) \delta_{\mu \lambda} \qquad \text{(220)}
 ```
 
-The vacuum expectation value $`\langle A_{\mu} ( z ) A_{\lambda} ( y ) \rangle_{o}`$ is thus just the part of the commutator $`\boldsymbol{[} A_{\mu} ( z ) ,A_{\lambda} ( y ) \boldsymbol{]}`$ which contains positive frequencies exp$`\{ ik \cdot ( z - y ) \}`$ with $`k_{0} >`$ 0, as one can see using (211), (219) and (220). Thus<sup><a id="fnref-25" href="#fn-25">25</a></sup>
+The vacuum expectation value $`\langle A_{\mu} ( z ) A_{\lambda} ( y ) \rangle_{o}`$ is thus just the part of the commutator $`\boldsymbol{[} A_{\mu} ( z ) ,A_{\lambda} ( y ) \boldsymbol{]}`$ which contains positive frequencies exp$`\{ ik \cdot ( z - y ) \}`$ with $`k_{0} > 0`$, as one can see using (211), (219) and (220). Thus<sup><a id="fnref-25" href="#fn-25">25</a></sup>
 
 <a id="eq-221"></a>
 
@@ -570,7 +570,7 @@ The definition (220c), introduced by Gupta, makes the matrix representations con
 
 This is a purely quantum-mechanical effect. A classical treatment, considering the reaction of the atom to a classical applied Maxwell field, gives a correct account of the absorption of radiation and of stimulated emission, but fails to give the spontaneous emission.
 
-Let an atom have 2 states, the ground state 1 and an excited state 2 with energy $`\hbar cq`$. For the transition 2 $`\to`$ 1 let the charge-current density of the atom have the unintegrated matrix elements
+Let an atom have 2 states, the ground state 1 and an excited state 2 with energy $`\hbar cq`$. For the transition 2 $`\to 1`$ let the charge-current density of the atom have the unintegrated matrix elements
 
 ```math
 j_{\mu A} ( x ) = j_{\mu A} ( r,t ) \quad \text{ at the point } x = ( r,t )
@@ -604,7 +604,7 @@ Using a sum-rule to sum over the states
 w = \frac{1}{Tc^{4} \hbar^{2}} \int \int \sum_{\lambda ,\mu} j_{\lambda A}^{*} ( x^{\prime} ) j_{\mu A} ( x ) \langle A_{\lambda}^{*} ( x^{\prime} ) A_{\mu} ( x ) \rangle_{o} d^{4} xd^{4} x^{\prime}
 ```
 
-Write $`\tilde{j}_{\lambda A} ( x^{\prime} )`$ for the matrix element<sup><a id="fnref-29" href="#fn-29">29</a></sup> of $`j_{\lambda A} ( x^{\prime} )`$ in the reverse transition 1 $`\to`$ 2. Then
+Write $`\tilde{j}_{\lambda A} ( x^{\prime} )`$ for the matrix element<sup><a id="fnref-29" href="#fn-29">29</a></sup> of $`j_{\lambda A} ( x^{\prime} )`$ in the reverse transition 1 $`\to 2`$. Then
 
 ```math
 j_{\lambda A}^{*} ( x^{\prime} ) = \eta_{\lambda} \tilde{j}_{\lambda A} ( x^{\prime} ) , \quad A_{\lambda}^{*} ( x^{\prime} ) = \eta_{\lambda} A_{\lambda} ( x^{\prime} )
@@ -652,7 +652,7 @@ and so
 
 where 1 and 2 are the two directions of transverse polarization. This shows how the third and fourth polarization directions do not appear in real <a id="ix-240">emission</a> problems. The same result would be obtained if we used the indefinite metric explicitly, i.e.take the sum in (231) over the 4 polarization states $`\mu`$ = 1$`, 2 , 3 , 4 ,`$ with the $`\mu`$ = 4 given a minus sign arising from the $`\eta`$ in (220c). But it is always simpler to work directly with the covariant formalism, than to bother with the non-physical photon states and then have to use $`\eta`$ to get the right answers.
 
-Finally, the emission probability in direction of polarization 1 and in direction of propagation given by the solid angle $`d`$Ω is, using (232), (232a), and $`\delta ( | \boldsymbol{k} |^{2} - q^{2} ) = \frac{1}{2 q} \delta ( | \boldsymbol{k} |- q )`$ for $`q>`$ 0
+Finally, the emission probability in direction of polarization 1 and in direction of propagation given by the solid angle $`d`$Ω is, using (232), (232a), and $`\delta ( | \boldsymbol{k} |^{2} - q^{2} ) = \frac{1}{2 q} \delta ( | \boldsymbol{k} |- q )`$ for $`q> 0`$
 
 <a id="eq-233"></a>
 
@@ -712,7 +712,7 @@ To derive $`H`$ from the Lagrangian is also possible but much more tedious. From
 N_{k\lambda} = \tilde{a}_{k\lambda} a_{k\lambda} \quad ( \text{ not summed } )
 ```
 
-is an operator just representing the number of quanta in the frequency $`k`$ and polarization $`\lambda`$. It follows at once from the commutation rules (213), from the singular $`\delta`$-function factor which comes from the continuous spectrum, $`N_{k\lambda}`$ being in fact the number of quanta per unit frequency range, that $`\int N_{k\lambda} d^{3} \boldsymbol{k}`$ integrated over _any_ region of momentum-space has the integer eigenvalues 0, 1, 2, $`\dots`$ . This is so, because the state with<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=55" target="_blank" title="This page in the PDF"><sup>[p. 49]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p50" href="book.pdf#page=56" target="_blank" title="This page in the PDF"><sup>[p. 50]</sup></a></span> $`n_{i}`$ particles with <a id="ix-210">momentum</a> $`k_{i}`$ is Ψ = $`\prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}}`$Ψ$`o`$. Then taking $`\int_{\Omega} N_{k\lambda} d^{3} \boldsymbol{k}`$ over Ω including the momenta $`k_{1} ,k_{2} ,\dots ,k_{j}`$ we get
+is an operator just representing the number of quanta in the frequency $`k`$ and polarization $`\lambda`$. It follows at once from the commutation rules (213), from the singular $`\delta`$-function factor which comes from the continuous spectrum, $`N_{k\lambda}`$ being in fact the number of quanta per unit frequency range, that $`\int N_{k\lambda} d^{3} \boldsymbol{k}`$ integrated over _any_ region of momentum-space has the integer eigenvalues 0, 1, 2, $`\dots`$. This is so, because the state with<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=55" target="_blank" title="This page in the PDF"><sup>[p. 49]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p50" href="book.pdf#page=56" target="_blank" title="This page in the PDF"><sup>[p. 50]</sup></a></span> $`n_{i}`$ particles with <a id="ix-210">momentum</a> $`k_{i}`$ is Ψ = $`\prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}}`$Ψ$`o`$. Then taking $`\int_{\Omega} N_{k\lambda} d^{3} \boldsymbol{k}`$ over Ω including the momenta $`k_{1} ,k_{2} ,\dots ,k_{j}`$ we get
 
 ```math
 \int_{\Omega} N_{k\lambda} d^{3} \boldsymbol{k} \Psi = \int_{\Omega} \tilde{a}_{k\lambda} a_{k\lambda} \prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}} \Psi_{o} d^{3} \boldsymbol{k}
@@ -770,7 +770,7 @@ Consider an electron represented by an extended spherical charge of radius R, ly
 m \ddot{\boldsymbol{r}} = - e \boldsymbol{E}
 ```
 
-Thus a fluctuating component of $`\boldsymbol{E}`$ with frequency $`c | \boldsymbol{K} |`$ produces the same fluctuation in $`\boldsymbol{r}`$ with amplitude multiplied by a factor $`\frac{e}{m} \frac{1}{c^{2} | \boldsymbol{K} |^{2}}`$ . The slow fluctuations of $`\boldsymbol{E}`$ cannot be followed by the electron if the frequency is less than the atomic frequency $`cK_{H}`$. Hence we find from (236), making $`T \to`$ 0
+Thus a fluctuating component of $`\boldsymbol{E}`$ with frequency $`c | \boldsymbol{K} |`$ produces the same fluctuation in $`\boldsymbol{r}`$ with amplitude multiplied by a factor $`\frac{e}{m} \frac{1}{c^{2} | \boldsymbol{K} |^{2}}`$. The slow fluctuations of $`\boldsymbol{E}`$ cannot be followed by the electron if the frequency is less than the atomic frequency $`cK_{H}`$. Hence we find from (236), making $`T \to 0`$
 
 ```math
 \left\langle r_{1}^{2} \right\rangle_{o} = \frac{e^{2}}{m^{2}} \frac{\hbar c}{1 6 \pi^{3} V^{2}} \int_{K_{H}}^{\infty} \frac{d^{3} \boldsymbol{K}}{| \boldsymbol{K} |} ( K_{2}^{2} + K_{3}^{2} ) | V ( K ) |^{2} \frac{1}{c^{4} | \boldsymbol{K} |^{4}}
@@ -864,7 +864,7 @@ We take $`R = ( \hbar /mc )`$, the electron Compton wave-length since it is at t
 
 Actually $`\frac{\alpha^{3}}{3 \pi}`$ Ry = 136 Mc in frequency units. This gives an effect of the right sign and order of magnitude. Method due to Welton <a id="refback-14-1"></a>[[14]](#ref-14).
 
-The size of the log is wrong because the low-frequency cut-off was badly done. We find ∆$`E \sim`$ 1600 Mc instead of the correct value of 1060 Mc. But physically the origin of the shift is correctly described in this way.
+The size of the log is wrong because the low-frequency cut-off was badly done. We find ∆$`E \sim 1600`$ Mc instead of the correct value of 1060 Mc. But physically the origin of the shift is correctly described in this way.
 
 ## <a id="s-ia-theory-of-line-shift-and-line-width"></a>Ia. Theory of Line Shift and Line Width
 
@@ -1292,7 +1292,7 @@ remembering that the integration over $`| \boldsymbol{k} |`$ in (277) is to be t
 
 From this formula (278) the line-shift for hydrogen states can be calculated numerically, as was done by Bethe, Brown and Stehn (_Phys. Rev._ **77** (1950) 370.)
 
-Since the log in (278) will be quite large $`( \sim`$ 7) for states $`n`$ which are in the non-relativistic range, it is convenient to write
+Since the log in (278) will be quite large $`( \sim 7`$) for states $`n`$ which are in the non-relativistic range, it is convenient to write
 
 <a id="eq-279"></a>
 
@@ -1416,7 +1416,7 @@ The factor $`u`$ must be put in to make $`\delta_{\mathcal{Q}} L`$ a bilinear ex
 
 The changed field equations for $`\psi`$ and $`\overline{\psi}`$ are
 
-For $`\overline{\psi}`$ : No change
+For $`\overline{\psi}`$: No change
 
 <a id="eq-290"></a>
 
@@ -1841,7 +1841,7 @@ where
 \Theta_{u} = \begin{cases} = 1 & \text{ for electron states } u , \\ = 0 & \text{ for positron states } . \end{cases}
 ```
 
-Hence by (306) and (309) the expectation value $`\left\langle \psi_{\alpha} ( z ) \overline{\psi}_{\beta} ( y ) \right\rangle_{o}`$ is just the part of the anti-commutator $`\{ \psi_{\alpha} ( z ) , \overline{\psi}_{\beta} ( y ) \}`$ which contains positive frequencies exp$`[ ik \cdot ( z - y )`$], with $`k_{o} >`$ 0. Thus, similarly to (221)
+Hence by (306) and (309) the expectation value $`\left\langle \psi_{\alpha} ( z ) \overline{\psi}_{\beta} ( y ) \right\rangle_{o}`$ is just the part of the anti-commutator $`\{ \psi_{\alpha} ( z ) , \overline{\psi}_{\beta} ( y ) \}`$ which contains positive frequencies exp$`[ ik \cdot ( z - y )`$], with $`k_{o} > 0`$. Thus, similarly to (221)
 
 <a id="eq-325"></a>
 
@@ -1955,7 +1955,7 @@ regarded as an equation for the c-number Dirac wave-function $`\psi_{n} ( r )`$ 
 \psi = \psi_{n} ( r ) \exp \left\{ - i \frac{E_{n}}{\hbar} t \right\} \qquad \text{(336)}
 ```
 
-We assume further the potentials to be such that the eigenfunctions $`\psi_{n}`$ separate clearly into two classes, the $`\psi_{n +}`$ with positive $`E_{n}`$ and the $`\psi_{n -}`$ with negative $`E_{n}`$. This is again true for all physically occurring potentials, though it would fail for the Coulomb field of a point nucleus with charge $`Z>`$ 137.
+We assume further the potentials to be such that the eigenfunctions $`\psi_{n}`$ separate clearly into two classes, the $`\psi_{n +}`$ with positive $`E_{n}`$ and the $`\psi_{n -}`$ with negative $`E_{n}`$. This is again true for all physically occurring potentials, though it would fail for the Coulomb field of a point nucleus with charge $`Z> 137`$.
 
 The time-independent potentials make the problem essentially non-covariant, and so we shall use the non-covariant notations in developing the theory. We write the equations as if all the levels $`n`$ are _discrete_, thus $`\sum n`$ means a sum over discrete levels plus an integral over continuous levels suitably normalized. We are now chiefly interested in discrete levels, and so we need not bother to write the formulae for normalizing<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=72" target="_blank" title="This page in the PDF"><sup>[p. 66]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p67" href="book.pdf#page=73" target="_blank" title="This page in the PDF"><sup>[p. 67]</sup></a></span> the continuous levels explicitly. This makes the picture apparently simpler than the free-particle theory, where the normalization of continuous levels was done at every stage accurately; the simplicity is only apparent, because we shall just be ignoring the complications arising from continuous levels.
 
@@ -2326,7 +2326,7 @@ where $`\delta_{0}`$ is any positive real number, $`\delta`$ is the vector with 
 e^{+ \delta_{0}} S_{A} ( x ) = \frac{i}{( 2 \pi )^{4}} \int e^{ik \cdot x} \frac{/ k - i/\delta + i\mu}{( k - i\delta )^{2} + \mu^{2}} d^{4} k \qquad \text{(369)}
 ```
 
-When using (368) and (369) we shall usually make $`\delta_{0} \to`$ 0 after carrying out the integrations, so that the convergence factors $`e^{\pm \delta_{0} x_{0}}`$ will tend to 1 for every finite $`x`$.
+When using (368) and (369) we shall usually make $`\delta_{0} \to 0`$ after carrying out the integrations, so that the convergence factors $`e^{\pm \delta_{0} x_{0}}`$ will tend to 1 for every finite $`x`$.
 
 Thus the momentum representation of (367) will be
 
@@ -2386,7 +2386,7 @@ Hence
 \langle j_{\nu H} ( x ) \rangle_{o} = \frac{ie^{2}}{( 2 \pi )^{4} \hbar} e^{iq \cdot x + \delta_{0} x_{0}} \int_{C} F_{\nu} ( k ) dk \qquad \text{(374)}
 ```
 
-where $`\int C`$ means a contour integral in the $`k_{0}`$ plane drawn as shown in the diagram, going from $`-\infty`$ to +$`\infty`$ below the two poles (373) and above the other two poles, and including the upper semicircle of the $`k_{0}`$ plane at infinity. So long as $`\delta_{0} >`$ 0 the poles are always clearly separated from each other. Now the calculation really starts, with the evaluation of this integral (374). This will be typical of all the calculations which have to be done in <a id="ix-253">quantum electrodynamics</a> using the modern methods.
+where $`\int C`$ means a contour integral in the $`k_{0}`$ plane drawn as shown in the diagram, going from $`-\infty`$ to +$`\infty`$ below the two poles (373) and above the other two poles, and including the upper semicircle of the $`k_{0}`$ plane at infinity. So long as $`\delta_{0} > 0`$ the poles are always clearly separated from each other. Now the calculation really starts, with the evaluation of this integral (374). This will be typical of all the calculations which have to be done in <a id="ix-253">quantum electrodynamics</a> using the modern methods.
 
 ### <a id="s-calculation-of-momentum-integrals"></a>Calculation of Momentum Integrals
 
@@ -2398,7 +2398,7 @@ Write $`J_{\nu} = \int_{C} F_{\nu} ( k ) dk`$. Then $`J_{\nu}`$ is a vector func
 Q = q + i\delta \qquad \text{(375)}
 ```
 
-$`J_{\nu}`$ is certainly an analytic function of $`\mu`$ if $`\delta >`$ 0, and it is an analytic function of $`Q`$ if $`\mu`$ is large enough so that the poles (373) always lie to the left of the imaginary axis and the other two poles (372) to the right. Therefore we can calculate $`J_{\nu}`$ for large values of $`\mu`$ and $`\delta`$ = 0 so that $`Q = q`$.
+$`J_{\nu}`$ is certainly an analytic function of $`\mu`$ if $`\delta > 0`$, and it is an analytic function of $`Q`$ if $`\mu`$ is large enough so that the poles (373) always lie to the left of the imaginary axis and the other two poles (372) to the right. Therefore we can calculate $`J_{\nu}`$ for large values of $`\mu`$ and $`\delta`$ = 0 so that $`Q = q`$.
 
 To simplify (371) we take $`\delta`$ = 0 and use Feynman’s formula (_Phys. Rev._ **76** (1949) 785)
 
@@ -2556,7 +2556,7 @@ Now the external potential $`A_{\nu}^{e} ( x )`$ is associated with a classical 
 \begin{aligned} j_{\nu E} ( x ) &= - c \sum_{\lambda} \frac{\partial}{\partial x_{\lambda}} F_{\lambda \nu E} ( x ) \\ &= - c \sum_{\lambda} \left\{ \frac{\partial^{2}}{\partial x_{\lambda}^{2}} A_{\nu}^{e} ( x ) - \frac{\partial^{2}}{\partial x_{\nu} \partial x_{\lambda}} A_{\lambda}^{e} ( x ) \right\} \\ &= c \left\{ q^{2} e_{\nu} - e \cdot qq_{\nu} \right\} e^{iq \cdot x} \end{aligned} \qquad \text{(391)}
 ```
 
-Hence (389) gives the final result, with $`\alpha =`$ 1371 $`= \frac{e^{2}}{4 \pi \hbar c}`$, (Heaviside units)
+Hence (389) gives the final result, with $`\alpha = 1371`$ $`= \frac{e^{2}}{4 \pi \hbar c}`$, (Heaviside units)
 
 <a id="eq-392"></a>
 
@@ -2602,7 +2602,7 @@ We now discuss the various physical effects arising from the calculation of
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p76" href="book.pdf#page=82" target="_blank" title="This page in the PDF"><sup>[p. 76]</sup></a>
 
-2) If the relation (382) had not been used in order to simplify (379), we should have had an addition to $`\langle j_{\nu H} ( x ) \rangle_{o}`$ of the form $`K^{\prime} e_{\nu} = KA_{\nu}^{e} ( x )`$ (see (360)) where $`K`$ is an indeterminate numerical factor containing the divergent integral standing on the left of (382). That is to say, an induced current proportional to the inducing potential. This would have destroyed the gauge-invariance of the result if $`K \neq`$ 0. Therefore we can also use the physical requirement that the results must be gauge-invariant in order to give the value zero to the indeterminate $`K`$.
+2) If the relation (382) had not been used in order to simplify (379), we should have had an addition to $`\langle j_{\nu H} ( x ) \rangle_{o}`$ of the form $`K^{\prime} e_{\nu} = KA_{\nu}^{e} ( x )`$ (see (360)) where $`K`$ is an indeterminate numerical factor containing the divergent integral standing on the left of (382). That is to say, an induced current proportional to the inducing potential. This would have destroyed the gauge-invariance of the result if $`K \neq 0`$. Therefore we can also use the physical requirement that the results must be gauge-invariant in order to give the value zero to the indeterminate $`K`$.
 
 3) The energy density of the vacuum arising from the polarization by the potentials $`A_{\nu}^{e} ( x )`$ is
 
@@ -2698,13 +2698,13 @@ q_{0} < \sqrt{4 \mu^{2} + | \boldsymbol{q} |^{2}} \qquad \text{(402)}
 
 then $`B`$ = 0 and $`E`$ = 0, there is not enough energy in the vibrations of the field to create a real positron-electron pair whose rest-mass alone requires 2$`mc^{2}`$, given that the field supplies in the interaction a momentum $`\hbar k`$ together with the energy $`\hbar cq_{0}`$.
 
-However if (390) is satisfied, then there is enough energy for creation of real pairs, each real pair carrying energy $`\hbar cq_{0}`$. Since $`q`$ is time-like and $`e \cdot q`$ = 0, $`e`$ is space-like and $`( e^{2} ) >`$ 0. This can be seen as follows:
+However if (390) is satisfied, then there is enough energy for creation of real pairs, each real pair carrying energy $`\hbar cq_{0}`$. Since $`q`$ is time-like and $`e \cdot q`$ = 0, $`e`$ is space-like and $`( e^{2} ) > 0`$. This can be seen as follows:
 
 ```math
 e \cdot q = 0 = \boldsymbol{e} \cdot \boldsymbol{q} - e_{0} q_{0}
 ```
 
-Since $`q`$ is timelike, we can use a Lorentz transformation which makes $`\boldsymbol{q}`$ = 0; then, of course, $`q_{0} \neq`$ 0. But then we must have $`e_{0}`$ = 0, which means that $`e`$ is spacelike. Therefore $`E>`$ 0, verifying that the potentials can never extract energy from the vacuum. And we have the probability per unit volume and per unit time that the potential (397) will create a real pair
+Since $`q`$ is timelike, we can use a Lorentz transformation which makes $`\boldsymbol{q}`$ = 0; then, of course, $`q_{0} \neq 0`$. But then we must have $`e_{0}`$ = 0, which means that $`e`$ is spacelike. Therefore $`E> 0`$, verifying that the potentials can never extract energy from the vacuum. And we have the probability per unit volume and per unit time that the potential (397) will create a real pair
 
 <a id="eq-403"></a>
 
@@ -2894,7 +2894,7 @@ So now we shall apply the covariant methods, working in the IR, to solve a numbe
 
 <a id="fn-24"></a>**24.** Originally, the phrase read $`A_{\mu} = \partial`$Λ$`/\partial x_{\mu}`$; this seemed confusing as the original potential is itself $`A_{\mu}`$. [↩](#fnref-24)
 
-<a id="fn-25"></a>**25.** Eq. (222) lacked the lower limit $`k_{0} >`$ 0 on the integral. [↩](#fnref-25)
+<a id="fn-25"></a>**25.** Eq. (222) lacked the lower limit $`k_{0} > 0`$ on the integral. [↩](#fnref-25)
 
 <a id="fn-26"></a>**26.** $`D^{( 1 )} ( x )`$ was added on the left-hand side for clarity [↩](#fnref-26)
 

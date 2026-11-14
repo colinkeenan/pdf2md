@@ -1063,7 +1063,7 @@ and otherwise zero. This gives
 \left( a_{1}^{2} - a^{2} \right) \alpha + 2 ( \epsilon + n ) aa_{1} = 0
 ```
 
-Now not both $`c_{\epsilon}`$ and $`d_{\epsilon}`$ are zero, thus the wave function $`r^{- 1 + \epsilon}`$ must be integrable at zero. This gives $`\epsilon > - \tfrac{1}{2}`$. But $`\epsilon = \pm \sqrt{k^{2} - \alpha^{2}}`$. Now $`k^{2} \geq`$ 1, hence $`\sqrt{k^{2} - \alpha^{2}} > \tfrac{1}{2}`$, and
+Now not both $`c_{\epsilon}`$ and $`d_{\epsilon}`$ are zero, thus the wave function $`r^{- 1 + \epsilon}`$ must be integrable at zero. This gives $`\epsilon > - \tfrac{1}{2}`$. But $`\epsilon = \pm \sqrt{k^{2} - \alpha^{2}}`$. Now $`k^{2} \geq 1`$, hence $`\sqrt{k^{2} - \alpha^{2}} > \tfrac{1}{2}`$, and
 
 <a id="eq-91"></a>
 
@@ -1109,7 +1109,7 @@ a_{1} c_{\epsilon} - ad_{\epsilon} = 0
 \alpha c_{\epsilon} - ( \epsilon + k ) d_{\epsilon} = 0
 ```
 
-Hence $`a\alpha - a_{1} ( \epsilon + k )`$ = 0 and $`k`$ must be positive to make $`\epsilon + k = \sqrt{k^{2} - \alpha^{2}} + k>`$ 0. After this the solution goes as before. So solutions (92) exist for
+Hence $`a\alpha - a_{1} ( \epsilon + k )`$ = 0 and $`k`$ must be positive to make $`\epsilon + k = \sqrt{k^{2} - \alpha^{2}} + k> 0`$. After this the solution goes as before. So solutions (92) exist for
 
 <a id="eq-94"></a>
 

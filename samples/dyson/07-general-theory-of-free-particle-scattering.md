@@ -867,7 +867,7 @@ Here we have used the identity
 \frac{1}{A + B} = \frac{1}{A} - \frac{1}{A} B \frac{1}{A} + \frac{1}{A} B \frac{1}{A} B \frac{1}{A} - \dots \qquad \text{(568)}
 ```
 
-which is valid for any two operators $`A`$ and $`B`$, commuting or not, if the series on the RHS converges in some sense. This can be seen at once by multiplying through by $`A + B`$; then the condition becomes $`( B/A )^{n} \to`$ 0 in some sense.
+which is valid for any two operators $`A`$ and $`B`$, commuting or not, if the series on the RHS converges in some sense. This can be seen at once by multiplying through by $`A + B`$; then the condition becomes $`( B/A )^{n} \to 0`$ in some sense.
 
 In (564) we may use the conditions (521), and these give for Σ$`( p )`$ the constant value (523). The integral $`I_{\alpha} ( p )`$ is like Σ($`p )`$ logarithmically divergent for large $`k`$, and it is also logarithmically divergent for small $`k`$, which Σ$`( p )`$ is not. We shall not attempt to evaluate $`I_{\alpha} ( p )`$ mathematically. From general principles of covariance we can say what is its form as a function of $`p`$. For general $`p`$ not satisfying (521), $`I_{\alpha} ( p )`$ is a Dirac matrix transforming like a vector under Lorentz transformations, and therefore must be of the form
 
@@ -899,7 +899,7 @@ But in (564) the term
 \left( \frac{1}{p / + /\epsilon + /\epsilon^{\prime} - i\mu} \right) ( p / - i\mu ) /\epsilon = /\epsilon - \frac{1}{( p / + /\epsilon + /\epsilon^{\prime} - i\mu )} ( /\epsilon + /\epsilon^{\prime} ) /\epsilon
 ```
 
-is of order $`\epsilon`$ and tends to zero as $`T \to`$ 0. This term may be dropped, and then (564) becomes<sup><a id="fnref-78" href="#fn-78">78</a></sup>
+is of order $`\epsilon`$ and tends to zero as $`T \to 0`$. This term may be dropped, and then (564) becomes<sup><a id="fnref-78" href="#fn-78">78</a></sup>
 
 <a id="eq-572"></a>
 
@@ -1343,7 +1343,7 @@ M_{2} + M_{2}^{\prime} = - \frac{\alpha}{3 \pi} \left\{ \log \frac{\mu}{2 r} + \
 
 ## <a id="s-treatment-of-low-frequency-photons-the-infra-red-catastrophe"></a>The Treatment of Low-Frequency Photons. The Infra-Red Catastrophe.
 
-The second-order correction (617) to the scattering matrix element $`M_{0}`$ has been made convergent by only taking into account the effects of photons with energy greater than ∆$`E`$ according to (603). When ∆$`E \to`$ 0 the correction diverges logarithmically, and this divergence must now be interpreted.
+The second-order correction (617) to the scattering matrix element $`M_{0}`$ has been made convergent by only taking into account the effects of photons with energy greater than ∆$`E`$ according to (603). When ∆$`E \to 0`$ the correction diverges logarithmically, and this divergence must now be interpreted.
 
 In the approximation where $`| \boldsymbol{p} |^{2}`$ and $`| \boldsymbol{p}^{\prime} |^{2}`$ are small compared with $`\mu^{2}`$, (546) gives
 

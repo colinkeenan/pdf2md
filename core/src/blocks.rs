@@ -438,7 +438,11 @@ fn emit_line(doc: &Doc, l: &Line, st: &Stats, spans: &[crate::layout::Span], kin
     let mut i = 0;
     while i < n {
         let s = &spans[i];
-        let space = prev_right.is_some_and(|r| s.left - r > 0.15 * st.body);
+        // (in smaller type, a note or an exercise, the space is smaller too)
+        let space = prev_right.is_some_and(|r| s.left - r > 0.15 * st.body.min(l.size));
+        // (a comma or full stop after an italic letter stands a little off it)
+        let closes = kinds[i] != K::Math && s.text.starts_with([',', '.', ';', ':', ')', ']', '?', '!']) && !s.text.starts_with(". .") && !s.text.starts_with("..");
+        let space = space && !(closes && prev_right.is_some_and(|r| s.left - r <= 0.3 * st.body.min(l.size)));
         match kinds[i] {
             K::Math => {
                 let mut j = i;

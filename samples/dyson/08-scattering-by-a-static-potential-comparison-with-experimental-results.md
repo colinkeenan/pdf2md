@@ -165,7 +165,7 @@ We imagine a scattering experiment in which only the direction of the emerging e
 
 with the same low-frequency cut-off $`r`$ in both $`\overline{\sigma}_{N}`$ and $`\overline{\sigma}_{R}`$. Thus $`\sigma_{T}`$ gives the cross-section for scattering into a given solid angle $`d`$Ω with or without photon emission. Being directly observed, $`\sigma_{T}`$ must be divergence-free and independent of $`r`$.
 
-In the radiative scattering process we may take the final momentum of the electron to be $`\lambda \hbar p^{\prime}`$ where 0 $`<\lambda <`$ 1 and $`p^{\prime}`$ satisfies (627). Instead of (627) the conservation of energy now gives by (638)
+In the radiative scattering process we may take the final momentum of the electron to be $`\lambda \hbar p^{\prime}`$ where 0 $`<\lambda < 1`$ and $`p^{\prime}`$ satisfies (627). Instead of (627) the conservation of energy now gives by (638)
 
 <a id="eq-640"></a>
 
@@ -259,7 +259,7 @@ An experimental test in the relativistic range is just on the limits of the poss
 \alpha \left\{ \log \frac{\Delta E}{E} \right\} \left\{ \log \frac{E}{mc^{2}} \right\} \qquad \text{(649)}
 ```
 
-according to Schwinger, _Phys. Rev._ **76**, 813, Eq. (2.105) (with misprint $`K`$ for $`k`$, in my notation $`\mu`$.) In the conditions of the experiment of Lyman-Hanson-Scott (649) becomes of the order 5% and was clearly observed, the experimental errors being $`\sim`$ 2%. However, (649) arises mainly from the low-energy virtual photons, with energies going down to ∆$`E`$. What is observed is just the decrease in the non-radiative cross-section due to the competition of radiative scattering with energy-loss in the range [∆$`E,E ]`$. Thus the measurement of (649) by LHS is actually only a very inaccurate measurement of the cross-section for bremsstrahlung, which could be observed much more accurately by observing the photons which are really emitted.
+according to Schwinger, _Phys. Rev._ **76**, 813, Eq. (2.105) (with misprint $`K`$ for $`k`$, in my notation $`\mu`$.) In the conditions of the experiment of Lyman-Hanson-Scott (649) becomes of the order 5% and was clearly observed, the experimental errors being $`\sim 2`$%. However, (649) arises mainly from the low-energy virtual photons, with energies going down to ∆$`E`$. What is observed is just the decrease in the non-radiative cross-section due to the competition of radiative scattering with energy-loss in the range [∆$`E,E ]`$. Thus the measurement of (649) by LHS is actually only a very inaccurate measurement of the cross-section for bremsstrahlung, which could be observed much more accurately by observing the photons which are really emitted.
 
 The theoretically interesting part of the radiative corrections is the part which is not just the effect of real bremsstrahlung. This part is given by the terms in $`\overline{\sigma}_{N}`$ which are of order 1 compared with the log(∆$`E/E )`$ appearing in (649). For example, we would have to observe with sufficient accuracy to see the terms $`( \tfrac{5}{6} - \tfrac{1}{5} )`$ in (637) if we wished to verify the theoretical radiative corrections at low velocities. In the relativistic range the “genuine” radiative corrections are of order
 
@@ -413,7 +413,7 @@ with $`H^{I}`$ given by (532) including the mass-renormalization term $`H_{S}`$.
 \Psi ( t ) = \Omega_{1} \Phi ( t ) \qquad \text{(662)}
 ```
 
-where Ω$`{}_{1} ( t )`$ is defined as in (492), only with $`e \overline{\psi} / A\psi`$ replaced by $`[ e \overline{\psi} / A\psi + i\delta mc^{2} \overline{\psi} \psi ]`$, and the function $`g_{A} ( t )`$ is as before supposed to tend to the limiting form $`g_{A} ( t ) \to`$ 1 at the end of the calculation. The operator Ω$`{}_{1} ( t )`$ satisfies
+where Ω$`{}_{1} ( t )`$ is defined as in (492), only with $`e \overline{\psi} / A\psi`$ replaced by $`[ e \overline{\psi} / A\psi + i\delta mc^{2} \overline{\psi} \psi ]`$, and the function $`g_{A} ( t )`$ is as before supposed to tend to the limiting form $`g_{A} ( t ) \to 1`$ at the end of the calculation. The operator Ω$`{}_{1} ( t )`$ satisfies
 
 <a id="eq-663"></a>
 
@@ -691,7 +691,7 @@ The new wave-function Φ$`{}^{\prime} ( t )`$ thus satisfies
 i \hbar \frac{\partial \Phi^{\prime}}{\partial t} = \{ H_{T 1} ( t ) + H_{T 2} ( t ) \} \Phi^{\prime} \qquad \text{(690)}
 ```
 
-where $`H_{T 1}`$ and $`H_{T 2}`$ are given by (684) and (676), only now the $`\psi^{*}`$ and $`\psi`$ operators have the time-variation of the Dirac field in the external potential $`V`$ .
+where $`H_{T 1}`$ and $`H_{T 2}`$ are given by (684) and (676), only now the $`\psi^{*}`$ and $`\psi`$ operators have the time-variation of the Dirac field in the external potential $`V`$.
 
 <div align="right"><a href="book.pdf#page=133" target="_blank" title="This page in the PDF"><sup>[p. 127]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -893,7 +893,7 @@ The value of (709) is given by Bethe, _Handbuch der Physik_, Vol. 24/1, p. 286, 
 \left( \frac{1}{r^{3}} \right) = \frac{1}{\ell ( \ell + \tfrac{1}{2} ) ( \ell + 1 ) n^{3} a_{o}^{3}} \qquad \text{(710)}
 ```
 
-where $`a_{o}`$ is the Bohr radius of the hydrogen atom. Hence the shift for states with $`\ell \neq`$ 0 becomes
+where $`a_{o}`$ is the Bohr radius of the hydrogen atom. Hence the shift for states with $`\ell \neq 0`$ becomes
 
 <a id="eq-711"></a>
 

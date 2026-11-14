@@ -1416,7 +1416,7 @@ and otherwise zero. This gives
 \left( a_{1}^{2} - a^{2} \right) \alpha + 2 ( \epsilon + n ) aa_{1} = 0
 ```
 
-Now not both $`c_{\epsilon}`$ and $`d_{\epsilon}`$ are zero, thus the wave function $`r^{- 1 + \epsilon}`$ must be integrable at zero. This gives $`\epsilon > - \tfrac{1}{2}`$. But $`\epsilon = \pm \sqrt{k^{2} - \alpha^{2}}`$. Now $`k^{2} \geq`$ 1, hence $`\sqrt{k^{2} - \alpha^{2}} > \tfrac{1}{2}`$, and
+Now not both $`c_{\epsilon}`$ and $`d_{\epsilon}`$ are zero, thus the wave function $`r^{- 1 + \epsilon}`$ must be integrable at zero. This gives $`\epsilon > - \tfrac{1}{2}`$. But $`\epsilon = \pm \sqrt{k^{2} - \alpha^{2}}`$. Now $`k^{2} \geq 1`$, hence $`\sqrt{k^{2} - \alpha^{2}} > \tfrac{1}{2}`$, and
 
 <a id="eq-91"></a>
 
@@ -1462,7 +1462,7 @@ a_{1} c_{\epsilon} - ad_{\epsilon} = 0
 \alpha c_{\epsilon} - ( \epsilon + k ) d_{\epsilon} = 0
 ```
 
-Hence $`a\alpha - a_{1} ( \epsilon + k )`$ = 0 and $`k`$ must be positive to make $`\epsilon + k = \sqrt{k^{2} - \alpha^{2}} + k>`$ 0. After this the solution goes as before. So solutions (92) exist for
+Hence $`a\alpha - a_{1} ( \epsilon + k )`$ = 0 and $`k`$ must be positive to make $`\epsilon + k = \sqrt{k^{2} - \alpha^{2}} + k> 0`$. After this the solution goes as before. So solutions (92) exist for
 
 <a id="eq-94"></a>
 
@@ -2295,7 +2295,7 @@ Hence the lifetime will be
 
 We calculate now the transition scattering matrix element $`M`$ between an initial state $`A`$ consisting of 2 electrons with momenta $`p_{1} ,p_{2}`$ and spin states $`u_{1} ,u_{2}`$ and a final state $`B`$ consisting of two electrons with momenta $`p_{1}^{\prime} ,p_{2}^{\prime}`$ and spin states $`u_{1}^{\prime} ,u_{2}^{\prime}`$. Thus $`M`$ gives the probability amplitude for arriving in state $`B`$ after a long time when the system is known to be in state $`A`$ to begin with. Hence $`M`$ itself should be an _invariant_ relativistically.
 
-We treat the interaction in Born approximation i.e. consider the particles to go directly from the free-particle state $`A`$ to the free-particle state $`B`$ by applying the interaction operator once to state $`A`$. For electrons at reasonably high or relativistic velocities this will be a very good approximation $`( e^{2} / \hbar v \ll`$ 1). Also we treat the electromagnetic interaction classically, just as in the O<sup>16</sup> problem, taking the field produced by particle 1 according to classical Maxwell <a id="ix-187">equations</a> to act directly on particle 2. This ignores the fact that the field consists of quanta. We shall see later, after we have developed the quantum field theories, that this introduces _no error_ so long as we are in the Born approximation.
+We treat the interaction in Born approximation i.e. consider the particles to go directly from the free-particle state $`A`$ to the free-particle state $`B`$ by applying the interaction operator once to state $`A`$. For electrons at reasonably high or relativistic velocities this will be a very good approximation $`( e^{2} / \hbar v \ll 1`$). Also we treat the electromagnetic interaction classically, just as in the O<sup>16</sup> problem, taking the field produced by particle 1 according to classical Maxwell <a id="ix-187">equations</a> to act directly on particle 2. This ignores the fact that the field consists of quanta. We shall see later, after we have developed the quantum field theories, that this introduces _no error_ so long as we are in the Born approximation.
 
 For the field produced by particle 1 in a transition from the state $`p_{1} ,u_{1}`$ to $`p_{1}^{\prime} ,u_{1}^{\prime}`$ we have the matrix elements $`\phi_{( 1 )} , \boldsymbol{A}_{( 1 )}`$ say. We use now not the <a id="ix-144">gauge</a> in which $`\nabla \boldsymbol{\cdot} \boldsymbol{A}`$ = 0, but the covariant gauge in which<sup><a id="fnref-14" href="#fn-14">14</a></sup>
 
@@ -2868,7 +2868,7 @@ The Feynman method of quantizing the theory consists in writing down an explicit
 
 Here $`H`$ represents a History of the fields between $`\sigma_{2}`$ and $`\sigma_{1}`$, i.e. any set of classical functions $`\varphi^{\alpha} ( x )`$ which are defined in the region Ω between $`\sigma_{2}`$ and $`\sigma_{1}`$ and which take the values $`\varphi_{1}^{\prime \alpha}`$ on $`\sigma_{1}`$ and $`\varphi_{2}^{\prime \alpha}`$ on $`\sigma_{2} . I_{H}`$(Ω) is the value of $`I`$(Ω) calculated with these particular functions. The sum $`\sum H`$ is taken over all possible histories, a continuously infinite sum whose exact mathematical definition is not easy to formulate. $`N`$ is a normalization factor independent of the particular states considered, chosen so as to make the sum of the squares of the amplitudes from a given state to all other states equal to 1. This formula is derived by Feynman from very general considerations, applying a Huyghens principle to the solution of wave-mechanics just as it is done in wave-optics. By this one formula the whole theory is quantized and the answer to any<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=41" target="_blank" title="This page in the PDF"><sup>[p. 35]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p36" href="book.pdf#page=42" target="_blank" title="This page in the PDF"><sup>[p. 36]</sup></a></span> physical problem in principle given. The method applies not only to field theory but to ordinary NR quantum theory too. We do not try to derive or justify the Feynman formula here. We just show that it gives the same results as the usual QM. For a discussion of the difficulties in defining the sum $`\sum H`$, and a method of doing it in simple cases, see C. <a id="ix-215">Morette</a>, _Phys. Rev._ **81** (1951) 848.
 
-From formula (174) we derive at once the most general _Correspondence Principle_ giving us back the classical theory in the limit as $`\hbar \to`$ 0. For suppose $`\hbar \to`$ 0 then the exponential factor in (174) becomes an extremely rapidly oscillating function of $`H`$ for all histories $`H`$ _except_ that one for which $`I`$(Ω) is stationary. Therefore in the limit the sum $`\sum H`$ reduces to the contribution from the classical motion leading from $`\varphi_{2}^{\prime \alpha}`$ on $`\sigma_{2}`$ to $`\varphi_{1}^{\prime \alpha}`$ on $`\sigma_{1}`$, all other contributions interfering destructively. The classical motion is defined by the condition that<sup><a id="fnref-17" href="#fn-17">17</a></sup> its $`\delta I`$(Ω) = 0 for all small variations of the $`\varphi^{\alpha}`$ between $`\sigma_{2}`$ and $`\sigma_{1}`$. This passage to the classical theory is precisely analogous to the passage from wave-optics to geometrical optics when the wave-length of light is allowed to tend to zero. The <a id="ix-283">WKB approximation</a> is gotten by taking $`\hbar`$ small but not quite zero.
+From formula (174) we derive at once the most general _Correspondence Principle_ giving us back the classical theory in the limit as $`\hbar \to 0`$. For suppose $`\hbar \to 0`$ then the exponential factor in (174) becomes an extremely rapidly oscillating function of $`H`$ for all histories $`H`$ _except_ that one for which $`I`$(Ω) is stationary. Therefore in the limit the sum $`\sum H`$ reduces to the contribution from the classical motion leading from $`\varphi_{2}^{\prime \alpha}`$ on $`\sigma_{2}`$ to $`\varphi_{1}^{\prime \alpha}`$ on $`\sigma_{1}`$, all other contributions interfering destructively. The classical motion is defined by the condition that<sup><a id="fnref-17" href="#fn-17">17</a></sup> its $`\delta I`$(Ω) = 0 for all small variations of the $`\varphi^{\alpha}`$ between $`\sigma_{2}`$ and $`\sigma_{1}`$. This passage to the classical theory is precisely analogous to the passage from wave-optics to geometrical optics when the wave-length of light is allowed to tend to zero. The <a id="ix-283">WKB approximation</a> is gotten by taking $`\hbar`$ small but not quite zero.
 
 To establish a connection between the Feynman method and the ordinary method of <a id="ix-130">quantization</a>, Feynman has to define what he means by an operator in his formulation. This he does as follows: Let $`x`$ be any space-time point inside Ω. Let $`\mathcal{O} ( x )`$ be any field operator defined at $`x`$, for example $`\varphi^{\beta} ( x )`$ or $`\varphi_{\mu}^{\beta} ( x )`$. Then $`\mathcal{O} ( x )`$ is given a meaning by defining its matrix element between the states $`| \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle`$ and $`| \varphi_{1}^{\prime \alpha} ,\sigma_{1} \rangle`$, where $`\sigma_{2}`$ and $`\sigma_{1}`$ are any two surfaces to the past and future of $`x`$. This matrix element is
 
@@ -3008,7 +3008,7 @@ Suppose that a reference surface $`\sigma_{o}`$ is chosen in the remote past. Le
 \delta I ( \Omega ) = \frac{1}{c} \int_{\Omega} \delta L d^{4} x + \int_{\sigma \alpha ,\mu} \sum \left\{ \pi_{\alpha} \delta \varphi^{\alpha} + \left( \frac{1}{c} n_{\mu} L - \varphi_{\mu}^{\alpha} \pi_{\alpha} \right) \delta x_{\mu} \right\} d\sigma \qquad \text{(182)}
 ```
 
-where Ω is the region bounded by $`\sigma_{o}`$ and $`\sigma`$. Let us now first calculate the variation of (181) arising from the change in the meaning of the states $`| \varphi^{\prime \alpha} ,\sigma \rangle`$ and $`| \varphi^{\prime \prime \alpha} ,\sigma \rangle`$. The operator $`\mathcal{O}`$ itself is at this point fixed and not affected by the variations in $`\varphi^{\alpha} , \sigma`$ and $`L`$ . Then
+where Ω is the region bounded by $`\sigma_{o}`$ and $`\sigma`$. Let us now first calculate the variation of (181) arising from the change in the meaning of the states $`| \varphi^{\prime \alpha} ,\sigma \rangle`$ and $`| \varphi^{\prime \prime \alpha} ,\sigma \rangle`$. The operator $`\mathcal{O}`$ itself is at this point fixed and not affected by the variations in $`\varphi^{\alpha} , \sigma`$ and $`L`$. Then
 
 <a id="eq-183"></a>
 
@@ -3341,7 +3341,7 @@ where $`k^{2} = | \boldsymbol{k} |^{2} - k_{0}^{2}`$. The integration with respe
 
 _Figure 1 (p. 42)_
 
-For detailed calculations, see the Appendix below. This gives the correct behaviour of $`D_{R}`$ being zero for $`x_{0} <`$ 0. Similarly
+For detailed calculations, see the Appendix below. This gives the correct behaviour of $`D_{R}`$ being zero for $`x_{0} < 0`$. Similarly
 
 <a id="eq-208"></a>
 
@@ -3383,10 +3383,10 @@ this being now an ordinary real integral.
 
 _Figure 3 (p. 43)_
 
-Let us verify, e.g. (207). For $`x_{0} <`$ 0, we have to take the top path shown,<br>
+Let us verify, e.g. (207). For $`x_{0} < 0`$, we have to take the top path shown,<br>
 otherwise the integrand blows up; this gives obviously 0.
 
-For $`x_{0} >`$ 0, we have to take the bottom path; then
+For $`x_{0} > 0`$, we have to take the bottom path; then
 
 ```math
 D_{R} ( x ) = \frac{1}{( 2 \pi )^{4}} \int_{+} \frac{e^{i \boldsymbol{k} \cdot \boldsymbol{x}} e^{- ik_{0} x_{0}}}{\boldsymbol{k}^{2} - k_{0}^{2}} d^{3} kdk_{0}
@@ -3640,7 +3640,7 @@ And by the commutation laws (213) and (219c) we have
 \langle a_{k\mu} \tilde{a}_{k^{\prime} \lambda} \rangle_{o} = \langle \boldsymbol{[} a_{k\mu} , \tilde{a}_{k^{\prime} \lambda} \boldsymbol{]} \rangle_{o} = \delta^{3} ( \boldsymbol{k} - \boldsymbol{k}^{\prime} ) \delta_{\mu \lambda} \qquad \text{(220)}
 ```
 
-The vacuum expectation value $`\langle A_{\mu} ( z ) A_{\lambda} ( y ) \rangle_{o}`$ is thus just the part of the commutator $`\boldsymbol{[} A_{\mu} ( z ) ,A_{\lambda} ( y ) \boldsymbol{]}`$ which contains positive frequencies exp$`\{ ik \cdot ( z - y ) \}`$ with $`k_{0} >`$ 0, as one can see using (211), (219) and (220). Thus<sup><a id="fnref-25" href="#fn-25">25</a></sup>
+The vacuum expectation value $`\langle A_{\mu} ( z ) A_{\lambda} ( y ) \rangle_{o}`$ is thus just the part of the commutator $`\boldsymbol{[} A_{\mu} ( z ) ,A_{\lambda} ( y ) \boldsymbol{]}`$ which contains positive frequencies exp$`\{ ik \cdot ( z - y ) \}`$ with $`k_{0} > 0`$, as one can see using (211), (219) and (220). Thus<sup><a id="fnref-25" href="#fn-25">25</a></sup>
 
 <a id="eq-221"></a>
 
@@ -3776,7 +3776,7 @@ The definition (220c), introduced by Gupta, makes the matrix representations con
 
 This is a purely quantum-mechanical effect. A classical treatment, considering the reaction of the atom to a classical applied Maxwell field, gives a correct account of the absorption of radiation and of stimulated emission, but fails to give the spontaneous emission.
 
-Let an atom have 2 states, the ground state 1 and an excited state 2 with energy $`\hbar cq`$. For the transition 2 $`\to`$ 1 let the charge-current density of the atom have the unintegrated matrix elements
+Let an atom have 2 states, the ground state 1 and an excited state 2 with energy $`\hbar cq`$. For the transition 2 $`\to 1`$ let the charge-current density of the atom have the unintegrated matrix elements
 
 ```math
 j_{\mu A} ( x ) = j_{\mu A} ( r,t ) \quad \text{ at the point } x = ( r,t )
@@ -3810,7 +3810,7 @@ Using a sum-rule to sum over the states
 w = \frac{1}{Tc^{4} \hbar^{2}} \int \int \sum_{\lambda ,\mu} j_{\lambda A}^{*} ( x^{\prime} ) j_{\mu A} ( x ) \langle A_{\lambda}^{*} ( x^{\prime} ) A_{\mu} ( x ) \rangle_{o} d^{4} xd^{4} x^{\prime}
 ```
 
-Write $`\tilde{j}_{\lambda A} ( x^{\prime} )`$ for the matrix element<sup><a id="fnref-29" href="#fn-29">29</a></sup> of $`j_{\lambda A} ( x^{\prime} )`$ in the reverse transition 1 $`\to`$ 2. Then
+Write $`\tilde{j}_{\lambda A} ( x^{\prime} )`$ for the matrix element<sup><a id="fnref-29" href="#fn-29">29</a></sup> of $`j_{\lambda A} ( x^{\prime} )`$ in the reverse transition 1 $`\to 2`$. Then
 
 ```math
 j_{\lambda A}^{*} ( x^{\prime} ) = \eta_{\lambda} \tilde{j}_{\lambda A} ( x^{\prime} ) , \quad A_{\lambda}^{*} ( x^{\prime} ) = \eta_{\lambda} A_{\lambda} ( x^{\prime} )
@@ -3858,7 +3858,7 @@ and so
 
 where 1 and 2 are the two directions of transverse polarization. This shows how the third and fourth polarization directions do not appear in real <a id="ix-240">emission</a> problems. The same result would be obtained if we used the indefinite metric explicitly, i.e.take the sum in (231) over the 4 polarization states $`\mu`$ = 1$`, 2 , 3 , 4 ,`$ with the $`\mu`$ = 4 given a minus sign arising from the $`\eta`$ in (220c). But it is always simpler to work directly with the covariant formalism, than to bother with the non-physical photon states and then have to use $`\eta`$ to get the right answers.
 
-Finally, the emission probability in direction of polarization 1 and in direction of propagation given by the solid angle $`d`$Ω is, using (232), (232a), and $`\delta ( | \boldsymbol{k} |^{2} - q^{2} ) = \frac{1}{2 q} \delta ( | \boldsymbol{k} |- q )`$ for $`q>`$ 0
+Finally, the emission probability in direction of polarization 1 and in direction of propagation given by the solid angle $`d`$Ω is, using (232), (232a), and $`\delta ( | \boldsymbol{k} |^{2} - q^{2} ) = \frac{1}{2 q} \delta ( | \boldsymbol{k} |- q )`$ for $`q> 0`$
 
 <a id="eq-233"></a>
 
@@ -3918,7 +3918,7 @@ To derive $`H`$ from the Lagrangian is also possible but much more tedious. From
 N_{k\lambda} = \tilde{a}_{k\lambda} a_{k\lambda} \quad ( \text{ not summed } )
 ```
 
-is an operator just representing the number of quanta in the frequency $`k`$ and polarization $`\lambda`$. It follows at once from the commutation rules (213), from the singular $`\delta`$-function factor which comes from the continuous spectrum, $`N_{k\lambda}`$ being in fact the number of quanta per unit frequency range, that $`\int N_{k\lambda} d^{3} \boldsymbol{k}`$ integrated over _any_ region of momentum-space has the integer eigenvalues 0, 1, 2, $`\dots`$ . This is so, because the state with<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=55" target="_blank" title="This page in the PDF"><sup>[p. 49]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p50" href="book.pdf#page=56" target="_blank" title="This page in the PDF"><sup>[p. 50]</sup></a></span> $`n_{i}`$ particles with <a id="ix-210">momentum</a> $`k_{i}`$ is Ψ = $`\prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}}`$Ψ$`o`$. Then taking $`\int_{\Omega} N_{k\lambda} d^{3} \boldsymbol{k}`$ over Ω including the momenta $`k_{1} ,k_{2} ,\dots ,k_{j}`$ we get
+is an operator just representing the number of quanta in the frequency $`k`$ and polarization $`\lambda`$. It follows at once from the commutation rules (213), from the singular $`\delta`$-function factor which comes from the continuous spectrum, $`N_{k\lambda}`$ being in fact the number of quanta per unit frequency range, that $`\int N_{k\lambda} d^{3} \boldsymbol{k}`$ integrated over _any_ region of momentum-space has the integer eigenvalues 0, 1, 2, $`\dots`$. This is so, because the state with<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=55" target="_blank" title="This page in the PDF"><sup>[p. 49]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p50" href="book.pdf#page=56" target="_blank" title="This page in the PDF"><sup>[p. 50]</sup></a></span> $`n_{i}`$ particles with <a id="ix-210">momentum</a> $`k_{i}`$ is Ψ = $`\prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}}`$Ψ$`o`$. Then taking $`\int_{\Omega} N_{k\lambda} d^{3} \boldsymbol{k}`$ over Ω including the momenta $`k_{1} ,k_{2} ,\dots ,k_{j}`$ we get
 
 ```math
 \int_{\Omega} N_{k\lambda} d^{3} \boldsymbol{k} \Psi = \int_{\Omega} \tilde{a}_{k\lambda} a_{k\lambda} \prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}} \Psi_{o} d^{3} \boldsymbol{k}
@@ -3976,7 +3976,7 @@ Consider an electron represented by an extended spherical charge of radius R, ly
 m \ddot{\boldsymbol{r}} = - e \boldsymbol{E}
 ```
 
-Thus a fluctuating component of $`\boldsymbol{E}`$ with frequency $`c | \boldsymbol{K} |`$ produces the same fluctuation in $`\boldsymbol{r}`$ with amplitude multiplied by a factor $`\frac{e}{m} \frac{1}{c^{2} | \boldsymbol{K} |^{2}}`$ . The slow fluctuations of $`\boldsymbol{E}`$ cannot be followed by the electron if the frequency is less than the atomic frequency $`cK_{H}`$. Hence we find from (236), making $`T \to`$ 0
+Thus a fluctuating component of $`\boldsymbol{E}`$ with frequency $`c | \boldsymbol{K} |`$ produces the same fluctuation in $`\boldsymbol{r}`$ with amplitude multiplied by a factor $`\frac{e}{m} \frac{1}{c^{2} | \boldsymbol{K} |^{2}}`$. The slow fluctuations of $`\boldsymbol{E}`$ cannot be followed by the electron if the frequency is less than the atomic frequency $`cK_{H}`$. Hence we find from (236), making $`T \to 0`$
 
 ```math
 \left\langle r_{1}^{2} \right\rangle_{o} = \frac{e^{2}}{m^{2}} \frac{\hbar c}{1 6 \pi^{3} V^{2}} \int_{K_{H}}^{\infty} \frac{d^{3} \boldsymbol{K}}{| \boldsymbol{K} |} ( K_{2}^{2} + K_{3}^{2} ) | V ( K ) |^{2} \frac{1}{c^{4} | \boldsymbol{K} |^{4}}
@@ -4070,7 +4070,7 @@ We take $`R = ( \hbar /mc )`$, the electron Compton wave-length since it is at t
 
 Actually $`\frac{\alpha^{3}}{3 \pi}`$ Ry = 136 Mc in frequency units. This gives an effect of the right sign and order of magnitude. Method due to Welton <a id="refback-14-1"></a>[[14]](#ref-14).
 
-The size of the log is wrong because the low-frequency cut-off was badly done. We find ∆$`E \sim`$ 1600 Mc instead of the correct value of 1060 Mc. But physically the origin of the shift is correctly described in this way.
+The size of the log is wrong because the low-frequency cut-off was badly done. We find ∆$`E \sim 1600`$ Mc instead of the correct value of 1060 Mc. But physically the origin of the shift is correctly described in this way.
 
 ## <a id="s-ia-theory-of-line-shift-and-line-width"></a>Ia. Theory of Line Shift and Line Width
 
@@ -4498,7 +4498,7 @@ remembering that the integration over $`| \boldsymbol{k} |`$ in (277) is to be t
 
 From this formula (278) the line-shift for hydrogen states can be calculated numerically, as was done by Bethe, Brown and Stehn (_Phys. Rev._ **77** (1950) 370.)
 
-Since the log in (278) will be quite large $`( \sim`$ 7) for states $`n`$ which are in the non-relativistic range, it is convenient to write
+Since the log in (278) will be quite large $`( \sim 7`$) for states $`n`$ which are in the non-relativistic range, it is convenient to write
 
 <a id="eq-279"></a>
 
@@ -4622,7 +4622,7 @@ The factor $`u`$ must be put in to make $`\delta_{\mathcal{Q}} L`$ a bilinear ex
 
 The changed field equations for $`\psi`$ and $`\overline{\psi}`$ are
 
-For $`\overline{\psi}`$ : No change
+For $`\overline{\psi}`$: No change
 
 <a id="eq-290"></a>
 
@@ -5047,7 +5047,7 @@ where
 \Theta_{u} = \begin{cases} = 1 & \text{ for electron states } u , \\ = 0 & \text{ for positron states } . \end{cases}
 ```
 
-Hence by (306) and (309) the expectation value $`\left\langle \psi_{\alpha} ( z ) \overline{\psi}_{\beta} ( y ) \right\rangle_{o}`$ is just the part of the anti-commutator $`\{ \psi_{\alpha} ( z ) , \overline{\psi}_{\beta} ( y ) \}`$ which contains positive frequencies exp$`[ ik \cdot ( z - y )`$], with $`k_{o} >`$ 0. Thus, similarly to (221)
+Hence by (306) and (309) the expectation value $`\left\langle \psi_{\alpha} ( z ) \overline{\psi}_{\beta} ( y ) \right\rangle_{o}`$ is just the part of the anti-commutator $`\{ \psi_{\alpha} ( z ) , \overline{\psi}_{\beta} ( y ) \}`$ which contains positive frequencies exp$`[ ik \cdot ( z - y )`$], with $`k_{o} > 0`$. Thus, similarly to (221)
 
 <a id="eq-325"></a>
 
@@ -5161,7 +5161,7 @@ regarded as an equation for the c-number Dirac wave-function $`\psi_{n} ( r )`$ 
 \psi = \psi_{n} ( r ) \exp \left\{ - i \frac{E_{n}}{\hbar} t \right\} \qquad \text{(336)}
 ```
 
-We assume further the potentials to be such that the eigenfunctions $`\psi_{n}`$ separate clearly into two classes, the $`\psi_{n +}`$ with positive $`E_{n}`$ and the $`\psi_{n -}`$ with negative $`E_{n}`$. This is again true for all physically occurring potentials, though it would fail for the Coulomb field of a point nucleus with charge $`Z>`$ 137.
+We assume further the potentials to be such that the eigenfunctions $`\psi_{n}`$ separate clearly into two classes, the $`\psi_{n +}`$ with positive $`E_{n}`$ and the $`\psi_{n -}`$ with negative $`E_{n}`$. This is again true for all physically occurring potentials, though it would fail for the Coulomb field of a point nucleus with charge $`Z> 137`$.
 
 The time-independent potentials make the problem essentially non-covariant, and so we shall use the non-covariant notations in developing the theory. We write the equations as if all the levels $`n`$ are _discrete_, thus $`\sum n`$ means a sum over discrete levels plus an integral over continuous levels suitably normalized. We are now chiefly interested in discrete levels, and so we need not bother to write the formulae for normalizing<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=72" target="_blank" title="This page in the PDF"><sup>[p. 66]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p67" href="book.pdf#page=73" target="_blank" title="This page in the PDF"><sup>[p. 67]</sup></a></span> the continuous levels explicitly. This makes the picture apparently simpler than the free-particle theory, where the normalization of continuous levels was done at every stage accurately; the simplicity is only apparent, because we shall just be ignoring the complications arising from continuous levels.
 
@@ -5532,7 +5532,7 @@ where $`\delta_{0}`$ is any positive real number, $`\delta`$ is the vector with 
 e^{+ \delta_{0}} S_{A} ( x ) = \frac{i}{( 2 \pi )^{4}} \int e^{ik \cdot x} \frac{/ k - i/\delta + i\mu}{( k - i\delta )^{2} + \mu^{2}} d^{4} k \qquad \text{(369)}
 ```
 
-When using (368) and (369) we shall usually make $`\delta_{0} \to`$ 0 after carrying out the integrations, so that the convergence factors $`e^{\pm \delta_{0} x_{0}}`$ will tend to 1 for every finite $`x`$.
+When using (368) and (369) we shall usually make $`\delta_{0} \to 0`$ after carrying out the integrations, so that the convergence factors $`e^{\pm \delta_{0} x_{0}}`$ will tend to 1 for every finite $`x`$.
 
 Thus the momentum representation of (367) will be
 
@@ -5592,7 +5592,7 @@ Hence
 \langle j_{\nu H} ( x ) \rangle_{o} = \frac{ie^{2}}{( 2 \pi )^{4} \hbar} e^{iq \cdot x + \delta_{0} x_{0}} \int_{C} F_{\nu} ( k ) dk \qquad \text{(374)}
 ```
 
-where $`\int C`$ means a contour integral in the $`k_{0}`$ plane drawn as shown in the diagram, going from $`-\infty`$ to +$`\infty`$ below the two poles (373) and above the other two poles, and including the upper semicircle of the $`k_{0}`$ plane at infinity. So long as $`\delta_{0} >`$ 0 the poles are always clearly separated from each other. Now the calculation really starts, with the evaluation of this integral (374). This will be typical of all the calculations which have to be done in <a id="ix-253">quantum electrodynamics</a> using the modern methods.
+where $`\int C`$ means a contour integral in the $`k_{0}`$ plane drawn as shown in the diagram, going from $`-\infty`$ to +$`\infty`$ below the two poles (373) and above the other two poles, and including the upper semicircle of the $`k_{0}`$ plane at infinity. So long as $`\delta_{0} > 0`$ the poles are always clearly separated from each other. Now the calculation really starts, with the evaluation of this integral (374). This will be typical of all the calculations which have to be done in <a id="ix-253">quantum electrodynamics</a> using the modern methods.
 
 ### <a id="s-calculation-of-momentum-integrals"></a>Calculation of Momentum Integrals
 
@@ -5604,7 +5604,7 @@ Write $`J_{\nu} = \int_{C} F_{\nu} ( k ) dk`$. Then $`J_{\nu}`$ is a vector func
 Q = q + i\delta \qquad \text{(375)}
 ```
 
-$`J_{\nu}`$ is certainly an analytic function of $`\mu`$ if $`\delta >`$ 0, and it is an analytic function of $`Q`$ if $`\mu`$ is large enough so that the poles (373) always lie to the left of the imaginary axis and the other two poles (372) to the right. Therefore we can calculate $`J_{\nu}`$ for large values of $`\mu`$ and $`\delta`$ = 0 so that $`Q = q`$.
+$`J_{\nu}`$ is certainly an analytic function of $`\mu`$ if $`\delta > 0`$, and it is an analytic function of $`Q`$ if $`\mu`$ is large enough so that the poles (373) always lie to the left of the imaginary axis and the other two poles (372) to the right. Therefore we can calculate $`J_{\nu}`$ for large values of $`\mu`$ and $`\delta`$ = 0 so that $`Q = q`$.
 
 To simplify (371) we take $`\delta`$ = 0 and use Feynman’s formula (_Phys. Rev._ **76** (1949) 785)
 
@@ -5762,7 +5762,7 @@ Now the external potential $`A_{\nu}^{e} ( x )`$ is associated with a classical 
 \begin{aligned} j_{\nu E} ( x ) &= - c \sum_{\lambda} \frac{\partial}{\partial x_{\lambda}} F_{\lambda \nu E} ( x ) \\ &= - c \sum_{\lambda} \left\{ \frac{\partial^{2}}{\partial x_{\lambda}^{2}} A_{\nu}^{e} ( x ) - \frac{\partial^{2}}{\partial x_{\nu} \partial x_{\lambda}} A_{\lambda}^{e} ( x ) \right\} \\ &= c \left\{ q^{2} e_{\nu} - e \cdot qq_{\nu} \right\} e^{iq \cdot x} \end{aligned} \qquad \text{(391)}
 ```
 
-Hence (389) gives the final result, with $`\alpha =`$ 1371 $`= \frac{e^{2}}{4 \pi \hbar c}`$, (Heaviside units)
+Hence (389) gives the final result, with $`\alpha = 1371`$ $`= \frac{e^{2}}{4 \pi \hbar c}`$, (Heaviside units)
 
 <a id="eq-392"></a>
 
@@ -5808,7 +5808,7 @@ We now discuss the various physical effects arising from the calculation of
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p76" href="book.pdf#page=82" target="_blank" title="This page in the PDF"><sup>[p. 76]</sup></a>
 
-2) If the relation (382) had not been used in order to simplify (379), we should have had an addition to $`\langle j_{\nu H} ( x ) \rangle_{o}`$ of the form $`K^{\prime} e_{\nu} = KA_{\nu}^{e} ( x )`$ (see (360)) where $`K`$ is an indeterminate numerical factor containing the divergent integral standing on the left of (382). That is to say, an induced current proportional to the inducing potential. This would have destroyed the gauge-invariance of the result if $`K \neq`$ 0. Therefore we can also use the physical requirement that the results must be gauge-invariant in order to give the value zero to the indeterminate $`K`$.
+2) If the relation (382) had not been used in order to simplify (379), we should have had an addition to $`\langle j_{\nu H} ( x ) \rangle_{o}`$ of the form $`K^{\prime} e_{\nu} = KA_{\nu}^{e} ( x )`$ (see (360)) where $`K`$ is an indeterminate numerical factor containing the divergent integral standing on the left of (382). That is to say, an induced current proportional to the inducing potential. This would have destroyed the gauge-invariance of the result if $`K \neq 0`$. Therefore we can also use the physical requirement that the results must be gauge-invariant in order to give the value zero to the indeterminate $`K`$.
 
 3) The energy density of the vacuum arising from the polarization by the potentials $`A_{\nu}^{e} ( x )`$ is
 
@@ -5904,13 +5904,13 @@ q_{0} < \sqrt{4 \mu^{2} + | \boldsymbol{q} |^{2}} \qquad \text{(402)}
 
 then $`B`$ = 0 and $`E`$ = 0, there is not enough energy in the vibrations of the field to create a real positron-electron pair whose rest-mass alone requires 2$`mc^{2}`$, given that the field supplies in the interaction a momentum $`\hbar k`$ together with the energy $`\hbar cq_{0}`$.
 
-However if (390) is satisfied, then there is enough energy for creation of real pairs, each real pair carrying energy $`\hbar cq_{0}`$. Since $`q`$ is time-like and $`e \cdot q`$ = 0, $`e`$ is space-like and $`( e^{2} ) >`$ 0. This can be seen as follows:
+However if (390) is satisfied, then there is enough energy for creation of real pairs, each real pair carrying energy $`\hbar cq_{0}`$. Since $`q`$ is time-like and $`e \cdot q`$ = 0, $`e`$ is space-like and $`( e^{2} ) > 0`$. This can be seen as follows:
 
 ```math
 e \cdot q = 0 = \boldsymbol{e} \cdot \boldsymbol{q} - e_{0} q_{0}
 ```
 
-Since $`q`$ is timelike, we can use a Lorentz transformation which makes $`\boldsymbol{q}`$ = 0; then, of course, $`q_{0} \neq`$ 0. But then we must have $`e_{0}`$ = 0, which means that $`e`$ is spacelike. Therefore $`E>`$ 0, verifying that the potentials can never extract energy from the vacuum. And we have the probability per unit volume and per unit time that the potential (397) will create a real pair
+Since $`q`$ is timelike, we can use a Lorentz transformation which makes $`\boldsymbol{q}`$ = 0; then, of course, $`q_{0} \neq 0`$. But then we must have $`e_{0}`$ = 0, which means that $`e`$ is spacelike. Therefore $`E> 0`$, verifying that the potentials can never extract energy from the vacuum. And we have the probability per unit volume and per unit time that the potential (397) will create a real pair
 
 <a id="eq-403"></a>
 
@@ -6100,7 +6100,7 @@ So now we shall apply the covariant methods, working in the IR, to solve a numbe
 
 <a id="fn-24"></a>**24.** Originally, the phrase read $`A_{\mu} = \partial`$Λ$`/\partial x_{\mu}`$; this seemed confusing as the original potential is itself $`A_{\mu}`$. [↩](#fnref-24)
 
-<a id="fn-25"></a>**25.** Eq. (222) lacked the lower limit $`k_{0} >`$ 0 on the integral. [↩](#fnref-25)
+<a id="fn-25"></a>**25.** Eq. (222) lacked the lower limit $`k_{0} > 0`$ on the integral. [↩](#fnref-25)
 
 <a id="fn-26"></a>**26.** $`D^{( 1 )} ( x )`$ was added on the left-hand side for clarity [↩](#fnref-26)
 
@@ -6353,7 +6353,7 @@ _Figure 7 (p. 83)_
 D_{F} ( x ) = \frac{- 2 i}{( 2 \pi )^{4}} \int e^{ik \cdot x} \frac{d^{4} k}{k^{2} - i\epsilon} \qquad \text{(431)}
 ```
 
-Here the integration is along the real axis for all four components of $`k . \epsilon`$ is a small positive real number and the limit $`\epsilon \to`$ 0 is supposed to be taken in (431) after the integration is done. Before going to the limit, the $`\epsilon`$ term just shifts the poles off the real axis, the pole $`| \boldsymbol{k} |`$ going done and the pole $`-| \boldsymbol{k} |`$ going up, and so the integral is well-defined and non-singular.
+Here the integration is along the real axis for all four components of $`k . \epsilon`$ is a small positive real number and the limit $`\epsilon \to 0`$ is supposed to be taken in (431) after the integration is done. Before going to the limit, the $`\epsilon`$ term just shifts the poles off the real axis, the pole $`| \boldsymbol{k} |`$ going done and the pole $`-| \boldsymbol{k} |`$ going up, and so the integral is well-defined and non-singular.
 
 ### <a id="s-the-m-ller-formula-conclusion"></a>The Møller Formula, conclusion
 
@@ -6629,7 +6629,7 @@ The differential cross-section for scattering the photon of frequency $`k_{0}`$ 
 
 where $`V_{1}`$ is according to (149) the electron normalization volume $`\frac{mc^{2}}{E}`$ = 1 and $`V_{2}`$ is the photon volume,
 
-$`V_{2} = \frac{\hbar c}{2 k_{0}}`$ . Thus
+$`V_{2} = \frac{\hbar c}{2 k_{0}}`$. Thus
 
 <a id="eq-461"></a>
 
@@ -6823,7 +6823,7 @@ Hence
 \overline{\sigma} = \tfrac{1}{4} r_{o}^{2} d \Omega \left( \frac{k_{0}^{\prime}}{k_{0}} \right)^{2} \left\{ \frac{( k_{0} - k_{0}^{\prime} )^{2}}{k_{0} k_{0}^{\prime}} + 4 \cos^{2} \varphi \right\} \qquad \text{(466)}
 ```
 
-where $`\varphi`$ is the angle between the polarizations of the incident quantum $`k_{0}`$ and the emitted quantum $`k_{0}^{\prime}`$ . This is the famous _Klein-Nishina formula_.
+where $`\varphi`$ is the angle between the polarizations of the incident quantum $`k_{0}`$ and the emitted quantum $`k_{0}^{\prime}`$. This is the famous _Klein-Nishina formula_.
 
 To put $`\overline{\sigma}`$ explicitly as a function of the scattering angle $`\theta`$, we must use the equations<sup><a id="fnref-61" href="#fn-61">61</a></sup>
 
@@ -7013,7 +7013,7 @@ v^{T} \begin{bmatrix} 0 & - 1 \\ 1 & 0 \end{bmatrix} u = \frac{1}{\sqrt{2}} ( 0 
 
 This is one place where charge-conjugate spinors are useful and necessary!
 
-Summarizing, we find for <a id="ix-109">electron</a> and positron with spins parallel, in triplet state, the 2-photon decay is forbidden. This selection rule is in fact an exact one for positronium in the ground state 1$`s`$ triplet. Only 3-photon decay can occur and this makes the lifetime $`\sim`$ 1100 times longer. For electron and positron in singlet state, the 2-photon decay occurs with the photons always polarized perpendicularly to each other. The probability for the decay, integrating (474) over a solid <a id="ix-12">angle</a> 2$`\pi`$ since the photons are indistinguishable, is
+Summarizing, we find for <a id="ix-109">electron</a> and positron with spins parallel, in triplet state, the 2-photon decay is forbidden. This selection rule is in fact an exact one for positronium in the ground state 1$`s`$ triplet. Only 3-photon decay can occur and this makes the lifetime $`\sim 1100`$ times longer. For electron and positron in singlet state, the 2-photon decay occurs with the photons always polarized perpendicularly to each other. The probability for the decay, integrating (474) over a solid <a id="ix-12">angle</a> 2$`\pi`$ since the photons are indistinguishable, is
 
 <a id="eq-477"></a>
 
@@ -7077,7 +7077,7 @@ Potential energy $`\times`$ time of transit $`\ll \hbar`$
 \text{ or } \text{ or } \quad \frac{Ze^{2}}{4 \pi \hbar v} \frac{Ze^{2}}{4 \pi r} \times \frac{r}{v} = \frac{Z}{1 3 7} \frac{c}{v} \ll \hbar \ll 1 \qquad \text{(481)}
 ```
 
-The treatment will only be good for _relativistic velocities_ $`v \sim c`$, and for _lighter atoms_ $`Z \ll`$ 137. In fact for heavy atoms $`( Z`$ = 82 for lead) and $`v \sim c`$ the error from the Born approximation is about 10%.
+The treatment will only be good for _relativistic velocities_ $`v \sim c`$, and for _lighter atoms_ $`Z \ll 137`$. In fact for heavy atoms $`( Z`$ = 82 for lead) and $`v \sim c`$ the error from the Born approximation is about 10%.
 
 The processes arise in the Born approximation just from the term linear in $`A_{\mu}`$ and linear in $`A_{\mu}^{e}`$ in (421). This term is
 
@@ -7147,7 +7147,7 @@ For the <a id="ix-21">cross-section</a> calculation see again Heitler, $`§ 2 0 
 \operatorname{Sp} ( / a_{1} / a_{2} a /_{3} / a_{4} ) = ( a_{1} \cdot a_{2} ) ( a_{3} \cdot a_{4} ) - ( a_{1} \cdot a_{3} ) ( a_{2} \cdot a_{4} ) + ( a_{1} \cdot a_{4} ) ( a_{2} \cdot a_{3} )
 ```
 
-<a id="fn-61"></a>**61.** The third equation lacked a subscript “0” on the variable $`k_{0}^{\prime}`$ ; the fourth equation lacked a superscript “$`\prime`$” on the variable $`k_{0}^{\prime}`$ . [↩](#fnref-61)
+<a id="fn-61"></a>**61.** The third equation lacked a subscript “0” on the variable $`k_{0}^{\prime}`$; the fourth equation lacked a superscript “$`\prime`$” on the variable $`k_{0}^{\prime}`$. [↩](#fnref-61)
 
 <a id="fn-62"></a>**62.** Eq. (468) lacked a label. The word “simply” was inserted. [↩](#fnref-62)
 
@@ -8036,7 +8036,7 @@ Here we have used the identity
 \frac{1}{A + B} = \frac{1}{A} - \frac{1}{A} B \frac{1}{A} + \frac{1}{A} B \frac{1}{A} B \frac{1}{A} - \dots \qquad \text{(568)}
 ```
 
-which is valid for any two operators $`A`$ and $`B`$, commuting or not, if the series on the RHS converges in some sense. This can be seen at once by multiplying through by $`A + B`$; then the condition becomes $`( B/A )^{n} \to`$ 0 in some sense.
+which is valid for any two operators $`A`$ and $`B`$, commuting or not, if the series on the RHS converges in some sense. This can be seen at once by multiplying through by $`A + B`$; then the condition becomes $`( B/A )^{n} \to 0`$ in some sense.
 
 In (564) we may use the conditions (521), and these give for Σ$`( p )`$ the constant value (523). The integral $`I_{\alpha} ( p )`$ is like Σ($`p )`$ logarithmically divergent for large $`k`$, and it is also logarithmically divergent for small $`k`$, which Σ$`( p )`$ is not. We shall not attempt to evaluate $`I_{\alpha} ( p )`$ mathematically. From general principles of covariance we can say what is its form as a function of $`p`$. For general $`p`$ not satisfying (521), $`I_{\alpha} ( p )`$ is a Dirac matrix transforming like a vector under Lorentz transformations, and therefore must be of the form
 
@@ -8068,7 +8068,7 @@ But in (564) the term
 \left( \frac{1}{p / + /\epsilon + /\epsilon^{\prime} - i\mu} \right) ( p / - i\mu ) /\epsilon = /\epsilon - \frac{1}{( p / + /\epsilon + /\epsilon^{\prime} - i\mu )} ( /\epsilon + /\epsilon^{\prime} ) /\epsilon
 ```
 
-is of order $`\epsilon`$ and tends to zero as $`T \to`$ 0. This term may be dropped, and then (564) becomes<sup><a id="fnref-78" href="#fn-78">78</a></sup>
+is of order $`\epsilon`$ and tends to zero as $`T \to 0`$. This term may be dropped, and then (564) becomes<sup><a id="fnref-78" href="#fn-78">78</a></sup>
 
 <a id="eq-572"></a>
 
@@ -8512,7 +8512,7 @@ M_{2} + M_{2}^{\prime} = - \frac{\alpha}{3 \pi} \left\{ \log \frac{\mu}{2 r} + \
 
 ## <a id="s-treatment-of-low-frequency-photons-the-infra-red-catastrophe"></a>The Treatment of Low-Frequency Photons. The Infra-Red Catastrophe.
 
-The second-order correction (617) to the scattering matrix element $`M_{0}`$ has been made convergent by only taking into account the effects of photons with energy greater than ∆$`E`$ according to (603). When ∆$`E \to`$ 0 the correction diverges logarithmically, and this divergence must now be interpreted.
+The second-order correction (617) to the scattering matrix element $`M_{0}`$ has been made convergent by only taking into account the effects of photons with energy greater than ∆$`E`$ according to (603). When ∆$`E \to 0`$ the correction diverges logarithmically, and this divergence must now be interpreted.
 
 In the approximation where $`| \boldsymbol{p} |^{2}`$ and $`| \boldsymbol{p}^{\prime} |^{2}`$ are small compared with $`\mu^{2}`$, (546) gives
 
@@ -8791,7 +8791,7 @@ We imagine a scattering experiment in which only the direction of the emerging e
 
 with the same low-frequency cut-off $`r`$ in both $`\overline{\sigma}_{N}`$ and $`\overline{\sigma}_{R}`$. Thus $`\sigma_{T}`$ gives the cross-section for scattering into a given solid angle $`d`$Ω with or without photon emission. Being directly observed, $`\sigma_{T}`$ must be divergence-free and independent of $`r`$.
 
-In the radiative scattering process we may take the final momentum of the electron to be $`\lambda \hbar p^{\prime}`$ where 0 $`<\lambda <`$ 1 and $`p^{\prime}`$ satisfies (627). Instead of (627) the conservation of energy now gives by (638)
+In the radiative scattering process we may take the final momentum of the electron to be $`\lambda \hbar p^{\prime}`$ where 0 $`<\lambda < 1`$ and $`p^{\prime}`$ satisfies (627). Instead of (627) the conservation of energy now gives by (638)
 
 <a id="eq-640"></a>
 
@@ -8885,7 +8885,7 @@ An experimental test in the relativistic range is just on the limits of the poss
 \alpha \left\{ \log \frac{\Delta E}{E} \right\} \left\{ \log \frac{E}{mc^{2}} \right\} \qquad \text{(649)}
 ```
 
-according to Schwinger, _Phys. Rev._ **76**, 813, Eq. (2.105) (with misprint $`K`$ for $`k`$, in my notation $`\mu`$.) In the conditions of the experiment of Lyman-Hanson-Scott (649) becomes of the order 5% and was clearly observed, the experimental errors being $`\sim`$ 2%. However, (649) arises mainly from the low-energy virtual photons, with energies going down to ∆$`E`$. What is observed is just the decrease in the non-radiative cross-section due to the competition of radiative scattering with energy-loss in the range [∆$`E,E ]`$. Thus the measurement of (649) by LHS is actually only a very inaccurate measurement of the cross-section for bremsstrahlung, which could be observed much more accurately by observing the photons which are really emitted.
+according to Schwinger, _Phys. Rev._ **76**, 813, Eq. (2.105) (with misprint $`K`$ for $`k`$, in my notation $`\mu`$.) In the conditions of the experiment of Lyman-Hanson-Scott (649) becomes of the order 5% and was clearly observed, the experimental errors being $`\sim 2`$%. However, (649) arises mainly from the low-energy virtual photons, with energies going down to ∆$`E`$. What is observed is just the decrease in the non-radiative cross-section due to the competition of radiative scattering with energy-loss in the range [∆$`E,E ]`$. Thus the measurement of (649) by LHS is actually only a very inaccurate measurement of the cross-section for bremsstrahlung, which could be observed much more accurately by observing the photons which are really emitted.
 
 The theoretically interesting part of the radiative corrections is the part which is not just the effect of real bremsstrahlung. This part is given by the terms in $`\overline{\sigma}_{N}`$ which are of order 1 compared with the log(∆$`E/E )`$ appearing in (649). For example, we would have to observe with sufficient accuracy to see the terms $`( \tfrac{5}{6} - \tfrac{1}{5} )`$ in (637) if we wished to verify the theoretical radiative corrections at low velocities. In the relativistic range the “genuine” radiative corrections are of order
 
@@ -9039,7 +9039,7 @@ with $`H^{I}`$ given by (532) including the mass-renormalization term $`H_{S}`$.
 \Psi ( t ) = \Omega_{1} \Phi ( t ) \qquad \text{(662)}
 ```
 
-where Ω$`{}_{1} ( t )`$ is defined as in (492), only with $`e \overline{\psi} / A\psi`$ replaced by $`[ e \overline{\psi} / A\psi + i\delta mc^{2} \overline{\psi} \psi ]`$, and the function $`g_{A} ( t )`$ is as before supposed to tend to the limiting form $`g_{A} ( t ) \to`$ 1 at the end of the calculation. The operator Ω$`{}_{1} ( t )`$ satisfies
+where Ω$`{}_{1} ( t )`$ is defined as in (492), only with $`e \overline{\psi} / A\psi`$ replaced by $`[ e \overline{\psi} / A\psi + i\delta mc^{2} \overline{\psi} \psi ]`$, and the function $`g_{A} ( t )`$ is as before supposed to tend to the limiting form $`g_{A} ( t ) \to 1`$ at the end of the calculation. The operator Ω$`{}_{1} ( t )`$ satisfies
 
 <a id="eq-663"></a>
 
@@ -9317,7 +9317,7 @@ The new wave-function Φ$`{}^{\prime} ( t )`$ thus satisfies
 i \hbar \frac{\partial \Phi^{\prime}}{\partial t} = \{ H_{T 1} ( t ) + H_{T 2} ( t ) \} \Phi^{\prime} \qquad \text{(690)}
 ```
 
-where $`H_{T 1}`$ and $`H_{T 2}`$ are given by (684) and (676), only now the $`\psi^{*}`$ and $`\psi`$ operators have the time-variation of the Dirac field in the external potential $`V`$ .
+where $`H_{T 1}`$ and $`H_{T 2}`$ are given by (684) and (676), only now the $`\psi^{*}`$ and $`\psi`$ operators have the time-variation of the Dirac field in the external potential $`V`$.
 
 <div align="right"><a href="book.pdf#page=133" target="_blank" title="This page in the PDF"><sup>[p. 127]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -9519,7 +9519,7 @@ The value of (709) is given by Bethe, _Handbuch der Physik_, Vol. 24/1, p. 286, 
 \left( \frac{1}{r^{3}} \right) = \frac{1}{\ell ( \ell + \tfrac{1}{2} ) ( \ell + 1 ) n^{3} a_{o}^{3}} \qquad \text{(710)}
 ```
 
-where $`a_{o}`$ is the Bohr radius of the hydrogen atom. Hence the shift for states with $`\ell \neq`$ 0 becomes
+where $`a_{o}`$ is the Bohr radius of the hydrogen atom. Hence the shift for states with $`\ell \neq 0`$ becomes
 
 <a id="eq-711"></a>
 

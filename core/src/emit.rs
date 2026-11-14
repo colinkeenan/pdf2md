@@ -143,6 +143,13 @@ fn numbers_into_formulas(mut inl: Vec<Inline>) -> Vec<Inline> {
         let read = i >= 2 && matches!(inl[i - 2], Inline::Source(_));
         let (before, after) = inl.split_at_mut(i);
         let (Some(Inline::Math(m)), Inline::Text(t)) = (before.last_mut(), &mut after[0]) else { continue };
+        // (after a sign that waits for its other side, "x =" or "b →", the
+        // number is that side, though a space parts them)
+        const WAITING: [&str; 16] = ["=", "<", ">", "\\to", "\\sim", "\\simeq", "\\approx", "\\equiv", "\\neq", "\\geq", "\\leq", "\\ll", "\\gg", "\\propto", "\\rightarrow", "\\cong"];
+        let waits = !read && WAITING.iter().any(|w| m.trim_end().ends_with(w));
+        if waits && t.starts_with(' ') && t[1..].starts_with(|c: char| c.is_ascii_digit()) {
+            t.remove(0);
+        }
         if !t.starts_with(|c: char| c.is_ascii_digit()) {
             continue;
         }

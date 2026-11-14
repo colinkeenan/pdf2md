@@ -165,7 +165,7 @@ _Figure 7 (p. 83)_
 D_{F} ( x ) = \frac{- 2 i}{( 2 \pi )^{4}} \int e^{ik \cdot x} \frac{d^{4} k}{k^{2} - i\epsilon} \qquad \text{(431)}
 ```
 
-Here the integration is along the real axis for all four components of $`k . \epsilon`$ is a small positive real number and the limit $`\epsilon \to`$ 0 is supposed to be taken in (431) after the integration is done. Before going to the limit, the $`\epsilon`$ term just shifts the poles off the real axis, the pole $`| \boldsymbol{k} |`$ going done and the pole $`-| \boldsymbol{k} |`$ going up, and so the integral is well-defined and non-singular.
+Here the integration is along the real axis for all four components of $`k . \epsilon`$ is a small positive real number and the limit $`\epsilon \to 0`$ is supposed to be taken in (431) after the integration is done. Before going to the limit, the $`\epsilon`$ term just shifts the poles off the real axis, the pole $`| \boldsymbol{k} |`$ going done and the pole $`-| \boldsymbol{k} |`$ going up, and so the integral is well-defined and non-singular.
 
 ### <a id="s-the-m-ller-formula-conclusion"></a>The Møller Formula, conclusion
 
@@ -441,7 +441,7 @@ The differential cross-section for scattering the photon of frequency $`k_{0}`$ 
 
 where $`V_{1}`$ is according to (149) the electron normalization volume $`\frac{mc^{2}}{E}`$ = 1 and $`V_{2}`$ is the photon volume,
 
-$`V_{2} = \frac{\hbar c}{2 k_{0}}`$ . Thus
+$`V_{2} = \frac{\hbar c}{2 k_{0}}`$. Thus
 
 <a id="eq-461"></a>
 
@@ -635,7 +635,7 @@ Hence
 \overline{\sigma} = \tfrac{1}{4} r_{o}^{2} d \Omega \left( \frac{k_{0}^{\prime}}{k_{0}} \right)^{2} \left\{ \frac{( k_{0} - k_{0}^{\prime} )^{2}}{k_{0} k_{0}^{\prime}} + 4 \cos^{2} \varphi \right\} \qquad \text{(466)}
 ```
 
-where $`\varphi`$ is the angle between the polarizations of the incident quantum $`k_{0}`$ and the emitted quantum $`k_{0}^{\prime}`$ . This is the famous _Klein-Nishina formula_.
+where $`\varphi`$ is the angle between the polarizations of the incident quantum $`k_{0}`$ and the emitted quantum $`k_{0}^{\prime}`$. This is the famous _Klein-Nishina formula_.
 
 To put $`\overline{\sigma}`$ explicitly as a function of the scattering angle $`\theta`$, we must use the equations<sup><a id="fnref-61" href="#fn-61">61</a></sup>
 
@@ -825,7 +825,7 @@ v^{T} \begin{bmatrix} 0 & - 1 \\ 1 & 0 \end{bmatrix} u = \frac{1}{\sqrt{2}} ( 0 
 
 This is one place where charge-conjugate spinors are useful and necessary!
 
-Summarizing, we find for <a id="ix-109">electron</a> and positron with spins parallel, in triplet state, the 2-photon decay is forbidden. This selection rule is in fact an exact one for positronium in the ground state 1$`s`$ triplet. Only 3-photon decay can occur and this makes the lifetime $`\sim`$ 1100 times longer. For electron and positron in singlet state, the 2-photon decay occurs with the photons always polarized perpendicularly to each other. The probability for the decay, integrating (474) over a solid <a id="ix-12">angle</a> 2$`\pi`$ since the photons are indistinguishable, is
+Summarizing, we find for <a id="ix-109">electron</a> and positron with spins parallel, in triplet state, the 2-photon decay is forbidden. This selection rule is in fact an exact one for positronium in the ground state 1$`s`$ triplet. Only 3-photon decay can occur and this makes the lifetime $`\sim 1100`$ times longer. For electron and positron in singlet state, the 2-photon decay occurs with the photons always polarized perpendicularly to each other. The probability for the decay, integrating (474) over a solid <a id="ix-12">angle</a> 2$`\pi`$ since the photons are indistinguishable, is
 
 <a id="eq-477"></a>
 
@@ -889,7 +889,7 @@ Potential energy $`\times`$ time of transit $`\ll \hbar`$
 \text{ or } \text{ or } \quad \frac{Ze^{2}}{4 \pi \hbar v} \frac{Ze^{2}}{4 \pi r} \times \frac{r}{v} = \frac{Z}{1 3 7} \frac{c}{v} \ll \hbar \ll 1 \qquad \text{(481)}
 ```
 
-The treatment will only be good for _relativistic velocities_ $`v \sim c`$, and for _lighter atoms_ $`Z \ll`$ 137. In fact for heavy atoms $`( Z`$ = 82 for lead) and $`v \sim c`$ the error from the Born approximation is about 10%.
+The treatment will only be good for _relativistic velocities_ $`v \sim c`$, and for _lighter atoms_ $`Z \ll 137`$. In fact for heavy atoms $`( Z`$ = 82 for lead) and $`v \sim c`$ the error from the Born approximation is about 10%.
 
 The processes arise in the Born approximation just from the term linear in $`A_{\mu}`$ and linear in $`A_{\mu}^{e}`$ in (421). This term is
 
@@ -959,7 +959,7 @@ For the <a id="ix-21">cross-section</a> calculation see again Heitler, $`§ 2 0 
 \operatorname{Sp} ( / a_{1} / a_{2} a /_{3} / a_{4} ) = ( a_{1} \cdot a_{2} ) ( a_{3} \cdot a_{4} ) - ( a_{1} \cdot a_{3} ) ( a_{2} \cdot a_{4} ) + ( a_{1} \cdot a_{4} ) ( a_{2} \cdot a_{3} )
 ```
 
-<a id="fn-61"></a>**61.** The third equation lacked a subscript “0” on the variable $`k_{0}^{\prime}`$ ; the fourth equation lacked a superscript “$`\prime`$” on the variable $`k_{0}^{\prime}`$ . [↩](#fnref-61)
+<a id="fn-61"></a>**61.** The third equation lacked a subscript “0” on the variable $`k_{0}^{\prime}`$; the fourth equation lacked a superscript “$`\prime`$” on the variable $`k_{0}^{\prime}`$. [↩](#fnref-61)
 
 <a id="fn-62"></a>**62.** Eq. (468) lacked a label. The word “simply” was inserted. [↩](#fnref-62)
 
