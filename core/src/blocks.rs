@@ -903,7 +903,9 @@ fn grid_tables(doc: &Doc, page: &crate::layout::Page, lines: &[Line], st: &Stats
         let beside = |l: &Line| -> Vec<String> { l.spans.iter().filter(|s| s.left >= right - 1.0).map(|s| s.text.trim().to_string()).filter(|t| !t.is_empty()).collect() };
         let inside = |l: &Line| {
             let out = beside(l);
-            l.top >= top - 3.0 && l.top < bottom && l.left >= left - 3.0 && l.left < right && (l.right <= right + 3.0 || (out.len() == 1 && mathtex::tag_of(&out[0]).is_some()))
+            // (the number may be a line of its own, at the middle of the frame's height)
+            let number_only = l.left >= right - 1.0 && out.len() == 1 && mathtex::tag_of(&out[0]).is_some();
+            l.top >= top - 3.0 && l.top < bottom && ((l.left >= left - 3.0 && l.left < right && (l.right <= right + 3.0 || (out.len() == 1 && mathtex::tag_of(&out[0]).is_some()))) || number_only)
         };
         let Some(first) = lines.iter().position(inside) else { continue };
         let end = first + lines[first..].iter().take_while(|l| inside(l)).count();
@@ -1460,6 +1462,17 @@ fn display_flags(doc: &Doc, lines: &[Line], st: &Stats) -> Vec<bool> {
             tag || (words <= 2 && ((indented(l) && ratio >= 0.25) || ratio >= 0.7))
         })
         .collect();
+    // The short last line of a paragraph may be all math ("in (M − I).}"):
+    // it starts where the line of prose above it starts, at the paragraph's
+    // line spacing, and that line runs to the right margin. A formula set
+    // apart has more room above it.
+    for i in 1..lines.len() {
+        let (l, above) = (&lines[i], &lines[i - 1]);
+        let prose_above = !f[i - 1] && info[i - 1].1 >= 3 && above.right >= st.right - st.body;
+        if f[i] && !info[i].2 && prose_above && (l.left - above.left).abs() < 1.5 && l.top - above.top <= 1.6 * l.size && l.size >= 0.75 * above.size {
+            f[i] = false;
+        }
+    }
     // Grow each equation by the rows around it (numerators, limits...).
     loop {
         let mut changed = false;
@@ -1484,7 +1497,22 @@ fn display_flags(doc: &Doc, lines: &[Line], st: &Stats) -> Vec<bool> {
                 })
             };
             let near = |j: usize| f[j] && ((l.top - lines[j].top).abs() <= 1.25 * st.body || beside_bracket(j));
-            if candidate && ((i > 0 && near(i - 1)) || (i + 1 < lines.len() && near(i + 1))) {
+            // (the bracket may stand on the middle line of five rows, the
+            // line with the "=", two lines away from the first and last row)
+            let bracket_near = (i.saturating_sub(3)..(i + 4).min(lines.len())).any(|j| j != i && f[j] && beside_bracket(j));
+            // (a row of plain numbers right of the bracket is its row, even
+            // when the matrix opens the line near the margin)
+            let after_bracket = |j: usize| {
+                let cy = l.top + 0.5 * st.body;
+                lines[j].spans.iter().any(|s| doc.family(s).starts_with("CMEX") && s.bottom() - s.top > 1.5 * st.body && s.top <= cy && s.bottom() >= cy && s.left <= l.left && l.left - s.left <= 2.0 * st.body)
+            };
+            let row = words == 0 && ratio > 0.0 && (i.saturating_sub(3)..(i + 4).min(lines.len())).any(|j| j != i && f[j] && after_bracket(j));
+            if row {
+                f[i] = true;
+                changed = true;
+                continue;
+            }
+            if candidate && ((i > 0 && near(i - 1)) || (i + 1 < lines.len() && near(i + 1)) || bracket_near) {
                 f[i] = true;
                 changed = true;
             }

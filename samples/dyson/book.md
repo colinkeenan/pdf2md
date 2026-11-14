@@ -7572,11 +7572,7 @@ We consider radiative effects only up to the second order. The term of order 1 i
 S = 1 + U_{2} \qquad \text{(517)}
 ```
 
-with $`U_{2}`$ given by (423). We have to calculate the matrix element $`M_{2}`$ of $`U_{2}`$ between the states $`( pu )`$ and
-
-```math
-( p^{\prime} u^{\prime} ) .
-```
+with $`U_{2}`$ given by (423). We have to calculate the matrix element $`M_{2}`$ of $`U_{2}`$ between the states $`( pu )`$ and $`( p^{\prime} u^{\prime} )`$.
 
 To write down $`M_{3}`$ we use the <a id="ix-133">Feynman</a> <a id="ix-134">rules</a>. The factor-pairings of $`U_{2}`$ are represented in the 8 graphs on pp 98-99. Of these only $`G_{5}`$ and $`G_{6}`$ contribute to $`M_{2}`$, and they contribute equally since the integral (423) is symmetrical in the variables $`x_{1}`$ and $`x_{2}`$. The normal constituent of $`U_{2}`$ arising from $`G_{5}`$ and $`G_{6}`$ is, using (510) and (511)<sup><a id="fnref-73" href="#fn-73">73</a></sup>
 

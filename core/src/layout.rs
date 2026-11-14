@@ -1015,12 +1015,24 @@ fn take_figure_labels(doc: &mut Doc) {
                 // (labels inside the picture are not "the rest of its line")
                 let (fl, fr, ft, fb) = (f.left, f.right, f.top, f.bottom);
                 let inside = |s: &Span| s.left >= fl - 1.0 && s.right() <= fr + 1.0 && s.top >= ft - 1.0 && s.bottom() <= fb + 1.0;
+                // (a label may be a few pieces set close together, "c, λ":
+                // they are far from the rest as one)
                 let lonely = |s: &Span| {
-                    s.text.trim().chars().count() <= 3
+                    let apart = |a: &Span, b: &Span| (a.left - b.right()).max(b.left - a.right());
+                    let mut label: Vec<&Span> = vec![s];
+                    loop {
+                        let more: Vec<&Span> = spans.iter().filter(|o| !inside(o) && !label.iter().any(|k| std::ptr::eq(*k, *o)) && label.iter().any(|k| apart(k, o) < 0.5 * m)).collect();
+                        if more.is_empty() {
+                            break;
+                        }
+                        label.extend(more);
+                    }
+                    let chars: usize = label.iter().map(|k| k.text.trim().chars().count()).sum();
+                    chars <= if label.len() > 1 { 4 } else { 3 }
                         && spans
                             .iter()
-                            .filter(|o| !std::ptr::eq(*o, s) && !inside(o))
-                            .all(|o| (s.left - o.right()).max(o.left - s.right()) >= 2.0 * m)
+                            .filter(|o| !label.iter().any(|k| std::ptr::eq(*k, *o)) && !inside(o))
+                            .all(|o| label.iter().all(|k| apart(k, o) >= 2.0 * m))
                 };
                 let mut kept = Vec::new();
                 for s in spans.iter() {
@@ -2514,29 +2526,63 @@ fn group_lines(
 
     // Each group is one line; its first span is the main span.
     let mut groups: Vec<Vec<Span>> = Vec::new();
+    // By how much a piece and a line's main span share their height.
+    let most_overlap = |groups: &[Vec<Span>], s: &Span| -> Option<(usize, f32)> {
+        groups
+            .iter()
+            .enumerate()
+            .map(|(k, g)| (k, s.bottom().min(g[0].bottom()) - s.top.max(g[0].top)))
+            .filter(|(_, overlap)| *overlap > 0.0)
+            .max_by(|a, b| a.1.total_cmp(&b.1))
+    };
+    // Pieces that only touch a line so far (the tall box of a "=" reaches
+    // up into the line above its own, which comes after it): they wait
+    // until all lines are there.
+    let mut touching: Vec<Span> = Vec::new();
+    let mut roots: Vec<Span> = Vec::new();
     for s in spans {
         let small = groups
             .first()
             .is_some_and(|g| size_of(&s) < size_of(&g[0]) * 0.85);
         let found = if small {
             // vertical overlap between the span and each line's main span
-            groups
-                .iter_mut()
-                .map(|g| {
-                    let overlap = s.bottom().min(g[0].bottom()) - s.top.max(g[0].top);
-                    (overlap, g)
-                })
-                .filter(|(overlap, _)| *overlap > 0.0)
-                .max_by(|a, b| a.0.total_cmp(&b.0))
-                .map(|(_, g)| g)
+            let best = most_overlap(&groups, &s);
+            // (a root sign's box sits high: no line starts with it)
+            if s.text.trim() == "√" {
+                roots.push(s);
+                continue;
+            }
+            if let Some((k, overlap)) = best {
+                let main = &groups[k][0];
+                let mid = s.top + s.height / 2.0;
+                let own_size = size_of(&s) >= size_of(main) * 0.85;
+                if own_size && overlap < 0.5 * s.height.min(main.height) && (mid < main.top || mid > main.bottom()) {
+                    touching.push(s);
+                    continue;
+                }
+            }
+            best.map(|(k, _)| k)
         } else {
             let mid = s.top + s.height / 2.0;
-            groups
-                .iter_mut()
-                .find(|g| mid >= g[0].top && mid <= g[0].bottom())
+            groups.iter().position(|g| mid >= g[0].top && mid <= g[0].bottom())
         };
         match found {
-            Some(g) => g.push(s),
+            Some(k) => groups[k].push(s),
+            None => groups.push(vec![s]),
+        }
+    }
+    for s in touching {
+        match most_overlap(&groups, &s) {
+            Some((k, _)) => groups[k].push(s),
+            None => groups.push(vec![s]),
+        }
+    }
+    // a root sign is of the line its foot stands in
+    for s in roots {
+        let low = s.bottom() - 2.0;
+        let stands = groups.iter().position(|g| size_of(&g[0]) >= 0.85 * size_of(&s) && g[0].top <= low && g[0].bottom() >= low);
+        match stands.or_else(|| most_overlap(&groups, &s).map(|(k, _)| k)) {
+            Some(k) => groups[k].push(s),
             None => groups.push(vec![s]),
         }
     }
