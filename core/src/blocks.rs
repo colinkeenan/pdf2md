@@ -111,6 +111,7 @@ pub fn stats(doc: &Doc, pages: &[PageInfo]) -> Stats {
     // chapter size, even if numbered subsections ("3.1.2 …") are more common.
     let mut counts: HashMap<i32, usize> = HashMap::new();
     let mut numbered: HashMap<i32, usize> = HashMap::new();
+    let mut titled: HashMap<i32, usize> = HashMap::new();
     for (pi, p) in pages.iter().enumerate() {
         if toc_pages.contains(&pi) {
             continue;
@@ -133,17 +134,19 @@ pub fn stats(doc: &Doc, pages: &[PageInfo]) -> Stats {
             }
             // "3 Theory of …", or the "3" alone on its own line
             let alone = next.is_none() && l.size >= 1.12 * body && l.spans.iter().all(|s| !doc.is_math(s));
-            if number && (alone || (big && next.is_some_and(|t| t.chars().next().is_some_and(char::is_uppercase)))) {
+            // (a number with its title on the line says more than a number
+            // alone, which the "0" on a figure's axis is, too)
+            if number && big && next.is_some_and(|t| t.chars().next().is_some_and(char::is_uppercase)) {
+                *titled.entry(k).or_default() += 1;
+            } else if number && alone {
                 *numbered.entry(k).or_default() += 1;
             }
         }
     }
     let section_size = counts.iter().filter(|&(_, &c)| c >= 2).max_by_key(|&(&s, &c)| (c, s)).map(|(&s, _)| s as f32 / 10.0);
-    let chapter_size = numbered
-        .iter()
-        .filter(|&(_, &c)| c >= 2)
-        .map(|(&s, _)| s)
-        .max()
+    let largest = |sizes: &HashMap<i32, usize>| sizes.iter().filter(|&(_, &c)| c >= 2).map(|(&s, _)| s).max();
+    let chapter_size = largest(&titled)
+        .or_else(|| largest(&numbered))
         .or_else(|| counts.into_iter().filter(|&(_, c)| c >= 2).max_by_key(|&(s, c)| (c, s)).map(|(s, _)| s))
         .map(|s| s as f32 / 10.0);
 

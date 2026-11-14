@@ -78,7 +78,11 @@ pub fn prepare(doc: &Doc) -> Vec<PageInfo> {
                 let gap_ok = lines
                     .get(1)
                     .is_none_or(|n| n.top - first.top >= 2.0 * doc.body_size);
-                if first.top < p.height * 0.09 && gap_ok {
+                // (a page number alone, with that gap under it, is the
+                // page's number a little further down, too: on wider
+                // paper the head stands lower)
+                let number_alone = is_page_number(plain_text(first).trim()) && first.top < p.height * 0.13 && lines.len() > 1;
+                if (first.top < p.height * 0.09 || number_alone) && gap_ok {
                     let text = plain_text(first);
                     let words: Vec<&str> = text.split_whitespace().collect();
                     if words.len() <= 15 {
