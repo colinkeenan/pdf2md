@@ -2,7 +2,7 @@
 
 pdf2md turns a PDF textbook into Markdown you can read, search and annotate: one file per chapter, plus `book.md` with the whole book in one file. Formulas become LaTeX, not pictures. The contents, the index, footnotes and references become links. Every printed page is marked, and the mark opens that page of the PDF, so you can check the text against the book.
 
-It is made for physics and math textbooks and has been used on three: a TeX-made PDF, a PDF made from an ebook, and a scan. [`samples/dyson`](samples/dyson) is the first of them, converted. To see it as intended, clone the repository and open that folder with mdBun; GitHub shows it less well (see [below](#math-github-or-standard)).
+It is made for physics and math textbooks and has been used on four: two TeX-made PDFs, a PDF made from an ebook, and a scan. Two are in the repository, converted: Dyson's *Advanced Quantum Mechanics* in [`samples/dyson`](samples/dyson) and the UCSD lecture notes *Quantum Physics (Physics 130)* by Jim Branson in [`samples/ucsd`](samples/ucsd). To see it as intended, clone the repository and open that folder with mdBun; GitHub shows it less well (see [below](#math-github-or-standard)).
 
 The books are best read with [mdBun](https://github.com/colinkeenan/mdBun), a small Markdown viewer written alongside pdf2md. It typesets the math, flashes the target of a link, and lets you correct an equation or add a note by clicking.
 

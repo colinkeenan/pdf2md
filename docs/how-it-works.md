@@ -402,7 +402,7 @@ A copy of the notes and fixes is kept in `~/.local/share/pdf2md/notes/`. Notes f
 
 ## Measurements
 
-* **UCSD Physics 130** (TeX, 548 pages): about 10 seconds. 37 chapters, all 548 page markers, every contents entry linked, 99 pictures. 8,746 formulas, all of which render. Known to be wrong still: about 200 indices without their letter, about 50 root signs without what is under them, 14 integrals whose upper limit went to the line above, and 58 powers written as raised numbers.
+* **UCSD Physics 130** (TeX, 548 pages; the sample in [`samples/ucsd`](../samples/ucsd)): about 10 seconds. 37 chapters, all 548 page markers, every contents entry linked, 99 pictures. 8,746 formulas, all of which render. Known to be wrong still: about 200 indices without their letter, about 50 root signs without what is under them, 14 integrals whose upper limit went to the line above, and 58 powers written as raised numbers.
 * **Dyson** (TeX, 149 pages): every chapter, contents entry, reference and index entry is linked, and all 93 footnotes. KaTeX renders every displayed equation. It is the sample in [`samples/dyson`](../samples/dyson) and the reference for regressions.
 * **Sakurai** (ebook-made, 771 PDF pages): about two minutes for the first conversion on an RTX 5080, about 15 seconds after that. All 12,665 formulas are written where a Markdown reader takes them as math.
 * **Zee, second edition** (publisher's PDF, 605 pages): about 10 seconds. 14,102 formulas, all of which render; 2,272 links inside the book, none broken. Known to be wrong still: about 60 indices that lost their letter, a few root signs, and labels of some figures written as formulas.
