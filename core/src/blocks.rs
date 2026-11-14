@@ -1807,7 +1807,9 @@ fn attach_fraction_rows(doc: &Doc, lines: &[Line], bars: &[Rule]) -> Vec<Line> {
                 let gap_to = |r: &Rule| (r.top - s.bottom()).max(s.top - r.bottom).max(0.0);
                 let mid = s.top + s.height / 2.0;
                 let others = bars.iter().zip(&root_bars).any(|(o, root)| !root && (o.top < mid) != (b.top < mid) && c >= o.left - 2.0 && c <= o.right + 2.0 && gap_to(o) < gap_to(b));
-                if inside && near && !others {
+                // (nor is a full stop a numerator or a denominator: the
+                // raised dot of a product in the next line's exponent)
+                if inside && near && !others && s.text.trim() != "." {
                     moved.push(s.clone());
                     false
                 } else {
