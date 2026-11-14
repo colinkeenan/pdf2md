@@ -1322,7 +1322,8 @@ pub fn parse_svg_images(svg: &str) -> Vec<Vec<PageImage>> {
 
 /// Embedded images: a picture with a "Fig." caption right below it (or
 /// at the top of the next page, when the picture ends its page) is a
-/// figure; any other image is first given to the math recognizer, and
+/// figure, and so is every image of a typeset book (one with TeX's math
+/// fonts); any other image is first given to the math recognizer, and
 /// becomes a piece of math in its line (inline, or a displayed equation
 /// when it stands alone), or a figure if the recognizer says it is a
 /// drawing or cannot read it.
@@ -1344,6 +1345,13 @@ fn place_images(doc: &mut Doc) {
                 // the picture ends its page, the caption starts the next
                 || (caption_follows && !page.lines.iter().any(|l| l.top >= im.bottom - 2.0) && !page.images.iter().any(|o| o.top >= im.bottom - 2.0)))
     };
+    // A typeset book sets its formulas in math fonts: an image in it is
+    // a picture, with a caption or without, and none is read as math.
+    let typeset = doc.fonts.iter().any(|f| {
+        let u = f.family.to_uppercase();
+        ["CMMI", "CMSY", "CMEX", "CMR", "MSAM", "MSBM"].iter().any(|p| u.starts_with(p))
+    });
+    let captioned = |page: &Page, caption_follows: bool, im: &PageImage| typeset || captioned(page, caption_follows, im);
     let wanted: Vec<&str> = doc
         .pages
         .iter()

@@ -284,6 +284,7 @@ The names cover the big symbols, brackets and roots of a big-symbol font, the an
 
 * **Aligned columns.** Three or more lines whose columns start at the same positions, with words in the last column, become a LaTeX `array`.
 * **Pictures** are found in the SVG: stroked or filled paths that are neither glyphs nor thin bars, and embedded images. Pieces close together are one picture. A group counts as a picture if it holds an image, or 3 or more pieces at least 15 pt square, or 8 or more pieces at least 40 pt wide. Text inside the picture, and short text just beside it, is a label and becomes part of the image. The picture is then rendered from the PDF with `pdftocairo -png`.
+* **An image** in such a book is a picture, with a caption or without. It is never read as a formula: the book's formulas are set in its math fonts.
 
 ## PDFs made from ebooks
 
@@ -401,7 +402,7 @@ A copy of the notes and fixes is kept in `~/.local/share/pdf2md/notes/`. Notes f
 
 ## Measurements
 
-* **UCSD Physics 130** (TeX, 548 pages): about a minute for the first conversion (it has 53 bitmap pictures, which are looked at by the math recognizer), 10 seconds after that. 37 chapters, all 548 page markers, every contents entry linked, 85 pictures. 8,754 formulas, one of which does not render. Known to be wrong still: about 200 indices without their letter, about 50 root signs without what is under them, 14 integrals whose upper limit went to the line above, 58 powers written as raised numbers, and bitmap figures read as equations.
+* **UCSD Physics 130** (TeX, 548 pages): about 10 seconds. 37 chapters, all 548 page markers, every contents entry linked, 99 pictures. 8,746 formulas, all of which render. Known to be wrong still: about 200 indices without their letter, about 50 root signs without what is under them, 14 integrals whose upper limit went to the line above, and 58 powers written as raised numbers.
 * **Dyson** (TeX, 149 pages): every chapter, contents entry, reference and index entry is linked, and all 93 footnotes. KaTeX renders every displayed equation. It is the sample in [`samples/dyson`](../samples/dyson) and the reference for regressions.
 * **Sakurai** (ebook-made, 771 PDF pages): about two minutes for the first conversion on an RTX 5080, about 15 seconds after that. All 12,665 formulas are written where a Markdown reader takes them as math.
 * **Zee, second edition** (publisher's PDF, 605 pages): about 10 seconds. 14,102 formulas, all of which render; 2,272 links inside the book, none broken. Known to be wrong still: about 60 indices that lost their letter, a few root signs, and labels of some figures written as formulas.
