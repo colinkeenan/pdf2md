@@ -116,6 +116,7 @@ Several switches print what the converter sees:
 | `pdf2md-cli --dump book.pdf 10 12` | every line of PDF pages 10 to 12 with position, font size and style; scripts as `^{…}` and `_{…}`; math-font text in `«…»`; the drawn bars |
 | `PDF2MD_PROGRESS=1` | the steps with their times and the estimate of the time left |
 | `PDF2MD_MATHDEBUG=1` | every span and bar of each displayed formula |
+| `PDF2MD_LINEDEBUG=1` | the pieces of each text line as they were grouped (with `--dump`) |
 | `PDF2MD_SVGDEBUG=1` | the tall outlines read from the SVG and the bracket each was taken for |
 | `PDF2MD_TMDEBUG=1` | how doubtful lines of text-font math were cut into words and symbols |
 | `PDF2MD_TABLEDEBUG=1` | the grey panels found and their lines |
