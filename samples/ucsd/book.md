@@ -680,10 +680,10 @@ We can build up localized wave packets that represent single particles(See secti
 \psi ( x,t ) = \frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{+ \infty} \varphi ( p ) e^{i ( px - Et ) / \hbar} dp
 ```
 
-(We have moved to one dimension for simplicity.) Similarly we can compute the coefficient for each momentum $`\infty`$
+(We have moved to one dimension for simplicity.) Similarly we can compute the coefficient for each momentum
 
 ```math
-\varphi ( p ) = \frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty} \psi ( x ) e^{- ipx/ \hbar} dx.
+\varphi ( p ) = \frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{\infty} \psi ( x ) e^{- ipx/ \hbar} dx.
 ```
 
 These coefficients, $`\varphi ( p )`$, are actually the state function of the particle in momentum space. We can describe the state of a particle either in position space with $`\psi ( x )`$ or in momentum space with $`\varphi ( p )`$. We can use $`\varphi ( p )`$ to compute the probability distribution function for momentum.
@@ -730,10 +730,10 @@ E^{( op )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} = i \hbar \frac{\partial
 
 # <a id="s-1-6-expectation-values"></a>1.6 Expectation Values
 
-We can use operators to help us compute the expectation value (See section 6.3) of a physical variable. If a particle is in the state $`\psi ( x )`$, the normal way to compute the expectation value of $`f ( x )`$ is $`\infty \quad \infty`$
+We can use operators to help us compute the expectation value (See section 6.3) of a physical variable. If a particle is in the state $`\psi ( x )`$, the normal way to compute the expectation value of $`f ( x )`$ is
 
 ```math
-\langle f ( x ) \rangle = \int_{-\infty} P ( x ) f ( x ) dx = \int_{-\infty} \psi^{*} ( x ) \psi ( x ) f ( x ) dx.
+\langle f ( x ) \rangle = \int_{-\infty}^{\infty} P ( x ) f ( x ) dx = \int_{-\infty}^{\infty} \psi^{*} ( x ) \psi ( x ) f ( x ) dx.
 ```
 
 If the variable we wish to compute the expectation value of (like $`p )`$ is not a simple function of $`x`$, let
@@ -762,10 +762,10 @@ We extend the notation from just expectation values to
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p20" href="book.pdf#page=20" target="_blank" title="This page in the PDF"><sup>[p. 20]</sup></a>
 
-and $`\infty`$
+and
 
 ```math
-\langle \psi | \varphi \rangle \equiv \int_{-\infty} \psi^{*} ( x ) \varphi ( x ) dx
+\langle \psi | \varphi \rangle \equiv \int_{-\infty}^{\infty} \psi^{*} ( x ) \varphi ( x ) dx
 ```
 
 We use this shorthand **Dirac Bra-Ket notation** a great deal.
@@ -5820,10 +5820,10 @@ It is not necessary (or wise) to use the differential operators and a wave funct
 
 Find the expected value of $`x`$ as a function of time. Find the expected value of $`x^{2}`$ as a function of time. Compute the RMS x-width of this wave packet as a function of time.
 
-2. Find the commutator $`[ p,e^{ik_{0} x} ]`$ where $`k_{0}`$ is a constant and the second operator can be expanded
+2. Find the commutator $`{}_{\infty} \quad [ p,e^{ik_{0} x} ]`$ where $`k_{0}`$ is a constant and the second operator can be expanded
 
 ```math
-\text{ as } e^{ik_{0} x} = {}_{n} \sum_{= 0}^{\infty} \tfrac{( ik_{0} x )^{n}}{n !} .
+\text{ as } e^{ik_{0} x} = {}_{n} \sum_{= 0} \tfrac{( ik_{0} x )^{n}}{n !} .
 ```
 
 3. Which of the following are linear operators?
@@ -6406,10 +6406,10 @@ where $`\delta_{ij}`$ is the usual Kroneker delta, equal to 1 if $`i = j`$ and o
 \langle \psi_{i} | \psi_{j} \rangle = \delta_{ij}
 ```
 
-We represent our **wavefunctions – the vectors in our space** – as linear combinations of the eigenstates (unit vectors). $`\infty`$
+We represent our **wavefunctions – the vectors in our space** – as linear combinations of the eigenstates (unit vectors).
 
 ```math
-\psi = \sum_{i = 1} \alpha_{i} \psi_{i}
+\psi = \sum_{i = 1}^{\infty} \alpha_{i} \psi_{i}
 ```
 
 ```math
@@ -6842,10 +6842,10 @@ So the Hermitian conjugate of a constant operator is its complex conjugate.
 
 ## <a id="s-8-8-2-hermitian-conjugate-of-partial-x-partial"></a>8.8.2 Hermitian Conjugate of $`\frac{\partial}{\partial x}`$
 
-We wish to compute the Hermitian conjugate of the operator $`\frac{\partial}{\partial x}`$ . We will use the integral to derive the result. $`\infty`$
+We wish to compute the Hermitian conjugate of the operator $`\frac{\partial}{\partial x}`$ . We will use the integral to derive the result.
 
 ```math
-\langle \varphi \left| \frac{\partial}{\partial x} \psi \right\rangle \rangle = \int_{-\infty} \varphi^{*} ( x ) \frac{\partial \psi ( x )}{\partial x} dx
+\langle \varphi \left| \frac{\partial}{\partial x} \psi \right\rangle \rangle = \int_{-\infty}^{\infty} \varphi^{*} ( x ) \frac{\partial \psi ( x )}{\partial x} dx
 ```
 
 We can integrate this by parts, differentiating the $`\varphi`$ and integrating to get $`\psi`$.
@@ -7539,10 +7539,10 @@ This energy is larger than for one delta function. This state would be called **
 
 # <a id="s-9-5-the-delta-function-model-of-a-crystal"></a>9.5 The Delta Function Model of a Crystal \*
 
-The Kronig-Penny model of a solid crystal contains an **infinite array of repulsive delta func-** **tions**. $`\infty`$
+The Kronig-Penny model of a solid crystal contains an **infinite array of repulsive delta func-** **tions**.
 
 ```math
-V ( x ) = aV_{0} \sum_{n = -\infty} \delta ( x - na )
+V ( x ) = aV_{0} \sum_{n = -\infty}^{\infty} \delta ( x - na )
 ```
 
 <div align="right"><a href="book.pdf#page=157" target="_blank" title="This page in the PDF"><sup>[p. 157]</sup></a></div>
@@ -8035,10 +8035,10 @@ dy^{2} e \quad - 2 dy ye + \epsilon h ( - h ( y )_{{}^{2} / 2} e y ) e^{- y} - y
 
 This is our differential equation for the polynomial $`h ( y )`$.
 
-Write $`h ( y )`$ as a sum of terms. $`\infty`$
+Write $`h ( y )`$ as a sum of terms.
 
 ```math
-h ( y ) = \sum_{m = 0} a_{m} y^{m}
+h ( y ) = \sum_{m = 0}^{\infty} a_{m} y^{m}
 ```
 
 Plug it into the differential equation.
@@ -11335,10 +11335,8 @@ B = 0
 A = - C
 ```
 
-The state is
-
 ```math
-\frac{1}{\sqrt{2}} ( Y_{1 1} - Y_{1 - 1} )
+\text{ The state is } \quad \frac{1}{\sqrt{2}} ( Y_{1 1} - Y_{1 - 1} )
 ```
 
 The trivial solution that $`A = B = C`$ = 0 is just a zero state, not normalizable to 1.
@@ -12349,10 +12347,10 @@ Z\alpha \sqrt{- \mu c^{2} 2 E} = n.
 E = - \frac{1}{2 n^{2}} Z^{2} \alpha^{2} \mu c^{2}
 ```
 
-The **solutions** are $`\infty`$
+The **solutions** are
 
 ```math
-R_{n\ell} ( \rho ) = \rho^{\ell} \sum_{k = 0} a_{k} \rho^{k} e^{- \rho / 2} .
+R_{n\ell} ( \rho ) = \rho^{\ell} \sum_{k = 0}^{\infty} a_{k} \rho^{k} e^{- \rho / 2} .
 ```
 
 The recursion relation is
@@ -13864,10 +13862,10 @@ Setting $`b`$ = 1, we get the unnormalized result.
 \psi_{-}^{( y )} = C \left( \frac{i}{\sqrt{1^{2}}}_{\tfrac{i}{\sqrt{2}} -} \right)
 ```
 
-Normalizing, we get. $`i`$
+Normalizing, we get.
 
 ```math
-\psi_{-}^{( y )} = \left( {}^{\surd} \tfrac{1 2}{\frac{2 i}{2} -} \right)
+\psi_{-}^{( y )} = \left( {}^{\surd} \tfrac{1 \frac{i}{2}}{\frac{2 i}{2} -} \right)
 ```
 
 This is exactly the same as the rotated state. A 90 degree rotation about the z axis changes $`\psi_{+}^{( x )}`$ into $`\psi_{-}^{( y )}`$.
@@ -13966,10 +13964,10 @@ and all the particles are in the state
 \psi_{+}^{( z )} = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} .
 ```
 
-The second apparatus is oriented to separate the beam in the x direction. The beam separates into 3 parts. We can compute the intensity of each but lets concentrate on the bottom one because we block the other two. $`2`$
+The second apparatus is oriented to separate the beam in the x direction. The beam separates into 3 parts. We can compute the intensity of each but lets concentrate on the bottom one because we block the other two.
 
 ```math
-I_{2} = \left| \langle \psi_{-}^{( x )} | \psi_{+}^{( z )} \rangle \right| I_{1}
+I_{2} = \left| \langle \psi_{-}^{( x )} | \psi_{+}^{( z )} \rangle \right|^{2} I_{1}
 ```
 
 We have written the probability that one particle, initially in the the state $`\psi_{+}^{( z )}`$, goes into the state $`\psi_{-}^{( x )}`$ when **measured** in the x direction (times the intensity coming into the apparatus). Lets compute that probability.
@@ -14281,13 +14279,13 @@ Factoring out the $`\frac{\hbar}{2}`$, the equation for the eigenvectors is.
 ```
 
 ```math
-\begin{pmatrix} \tfrac{1}{2} a + \sqrt{\frac{3}{4}} b \\ \sqrt{\frac{3}{4}} a^{1} b \\ - {}_{2} \end{pmatrix} \surd = \pm \begin{pmatrix} a \\ b \end{pmatrix}_{( u )} \quad \sqrt{\frac{3}{4}}
+\begin{pmatrix} \tfrac{1}{2} a + \sqrt{\frac{3}{4}} b \\ \sqrt{\frac{3}{4}} a^{1} b \\ - {}_{2} \end{pmatrix} = \pm \begin{pmatrix} a \\ b \end{pmatrix} \quad \sqrt{\frac{3}{4}}
 ```
 
-For the positive eigenvalue, we have $`a`$ = $`3 b`$, giving the eigenvector $`\chi_{+}`$ = $`\left( 1 \right)`$. For the
+For the positive eigenvalue, we have $`a = \sqrt{3} b`$, giving the eigenvector $`\chi_{+}^{( u )} = \begin{pmatrix} 1 \\ 2 \end{pmatrix}`$. For the
 
 ```math
-{}_{( u )} \quad - \tfrac{1}{2}^{2}
+{}_{( u )} \quad - \tfrac{1}{2}
 ```
 
 negative eigenvalue, we have $`a = - \sqrt{\frac{1}{3}} b`$, giving the eigenvector $`\chi_{-}`$ = . Of course each of
@@ -14999,13 +14997,13 @@ with the Hamiltonian $`H = \tfrac{p^{2}}{2 m} + \tfrac{1}{2} kx^{2}`$.
 
 # <a id="s-19-2-homework-2"></a>19.2 Homework 2
 
-1. Show that $`\infty \quad \infty`$
+1. Show that
 
 ```math
-\int_{-\infty} \psi^{*} ( x ) x\psi ( x ) dx = \int_{-\infty} \varphi^{*} ( p ) \left( i \hbar \frac{\partial}{\partial p} \right) \varphi ( p ) dp.
+\int^{\infty} \psi^{*} ( x ) x\psi ( x ) dx = \int^{\infty} \varphi^{*} ( p ) \left( i \hbar \frac{\partial}{\partial p} \right) \varphi ( p ) dp.
 ```
 
-Remember that the wave functions go to zero at infinity.
+Remember that the wave functions go to zero at infinity.$`-\infty \quad -\infty`$
 
 ```math
 1
@@ -19097,10 +19095,10 @@ This is close to the right answer. As always, it is treated as an upper limit on
 
 ## <a id="s-25-6-2-1-d-h-o-with-exponential-wavefunction"></a>25.6.2 1-D H.O. with exponential wavefunction
 
-As a check of the procedure, take trial function $`e^{- ax^{2} / 2}`$. This should give us the actual ground state energy. $`\infty`$
+As a check of the procedure, take trial function $`e^{- ax^{2} / 2}`$. This should give us the actual ground state energy.
 
 ```math
-E^{\prime} = \frac{\int_{-\infty} \psi^{*} \left[ - \tfrac{\hbar^{2}}{m}_{2} \tfrac{\partial^{2} \psi}{\partial x^{2}} + \tfrac{1}{2} m\omega^{2} x^{2} \psi \right] dx}{\infty}
+E^{\prime} = \frac{\int_{-\infty}^{\infty} \psi^{*} \left[ - \tfrac{\hbar^{2}}{m}_{2} \tfrac{\partial^{2} \psi}{\partial x^{2}} + \tfrac{1}{2} m\omega^{2} x^{2} \psi \right] dx}{\infty}
 ```
 
 ```math
@@ -20541,7 +20539,7 @@ The square root and $`\langle \ell 0 | \ell_{1} \ell_{2} 0 0 \rangle`$ can be th
 First add the angular momentum from the initial state $`( Y_{\ell_{i} m_{i}} )`$ and the photon ($`Y_{1 m} )`$ using the Clebsch-Gordan series, with the usual notation for the **Clebsch-Gordan coefficients** $`\langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} m \rangle`$.
 
 ```math
-Y_{1 m} ( \theta ,\varphi ) Y_{\ell_{i} m_{i}} ( \theta ,\varphi ) = \sum_{\ell = | \ell - 1 |}^{\ell_{i} + 1} \sqrt{4 3 ( 2 \ell_{i} + 1 ) \pi ( 2 \ell + 1 )} \langle \ell 0 | \ell_{i} 1 0 0 \rangle \langle \ell ( m + m_{i} ) | \ell_{i} 1 m_{i} m \rangle Y_{\ell ( m_{i} + m )} ( \theta ,\varphi )
+Y_{1 m} ( \theta ,\varphi ) Y_{\ell_{i} m_{i}} ( \theta ,\varphi ) = \sum_{\ell = | \ell_{i} - 1 |}^{\ell_{i} + 1} \sqrt{4 3 ( 2 \ell_{i} + 1 ) \pi ( 2 \ell + 1 )} \langle \ell 0 | \ell_{i} 1 0 0 \rangle \langle \ell ( m + m_{i} ) | \ell_{i} 1 m_{i} m \rangle Y_{\ell ( m_{i} + m )} ( \theta ,\varphi )
 ```
 
 <div align="right"><a href="book.pdf#page=403" target="_blank" title="This page in the PDF"><sup>[p. 403]</sup></a></div>
@@ -21652,14 +21650,10 @@ Lagrange’s equations are
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p427" href="book.pdf#page=427" target="_blank" title="This page in the PDF"><sup>[p. 427]</sup></a>
 
-where the $`q_{i}`$ are the coordinates of the particle. This equation is derivable from the **principle of**
+where the $`q_{i}`$ are the coordinates of the particle. This equation is derivable from the **principle of** **least action**.
 
 ```math
-\text{ least action } ._{t_{2}}
-```
-
-```math
-\delta \int_{t_{1}} L ( q_{i} , \dot{q}_{i} ) dt = 0
+\delta \int_{t_{1}}^{t_{2}} L ( q_{i} , \dot{q}_{i} ) dt = 0
 ```
 
 Similarly, we can define the **Hamiltonian**
@@ -27116,13 +27110,7 @@ This is now a set of two coupled radial equations. We can simplify them a bit by
 \left( \left( \begin{pmatrix} \tfrac{\partial F}{\partial r} - \tfrac{\kappa F}{r} \\ \tfrac{\partial G}{\partial r} + \tfrac{\kappa G}{r} \end{pmatrix} \right) \right) = \begin{pmatrix} \tfrac{mc^{2} - E + V}{{}_{2} \hbar c} G \\ \tfrac{mc + E - V}{\hbar c} F \end{pmatrix}
 ```
 
-These equations are true for any spherically symmetric potential. Now it is time to **specialize to** **the hydrogen atom** for which $`\tfrac{V}{\hbar c} = - \tfrac{Z\alpha}{r}`$ . We define $`k_{1}`$ = $`\frac{mc^{2} + E}{\hbar c}`$ and $`k_{2}`$ = $`\frac{mc^{2} \quad E}{\hbar c} -`$ and the
-
-```math
-\surd
-```
-
-dimensionless $`\rho = k_{1} k_{2} r`$. The equations then become.
+These equations are true for any spherically symmetric potential. Now it is time to **specialize to** **the hydrogen atom** for which $`\tfrac{V}{\hbar c} = - \tfrac{Z\alpha}{r}`$ . We define $`k_{1}`$ = $`\frac{mc^{2} + E}{\hbar c}`$ and $`k_{2}`$ = $`\frac{mc^{2} \quad E}{\hbar c} -`$ and the dimensionless $`\rho = \sqrt{k_{1} k_{2}} r`$. The equations then become.
 
 ```math
 \left( \left( \begin{pmatrix} \tfrac{\partial F}{\partial r} - \tfrac{\kappa F}{r} \\ \tfrac{\partial G}{\partial r} + \tfrac{\kappa G}{r} \end{pmatrix} \right) \right) = \begin{pmatrix} \left( \begin{pmatrix} k_{2} - \tfrac{Z\alpha}{r} \\ k_{1} + \tfrac{Z\alpha}{r} \end{pmatrix} \right) G \\ F \end{pmatrix}
@@ -28273,11 +28261,7 @@ H_{B} = \tfrac{eB}{2 mc} ( L_{z} + 2 S_{z} ) \quad \Delta E_{B} = \tfrac{e \hbar
 \psi_{jm_{j} \ell s} = {}_{m} \sum_{\ell \quad s m} C ( jm_{j} ; \ell m_{\ell} sm_{s} ) Y_{\ell m_{\ell}} \chi_{sm_{s}} = {}_{m} \sum_{\ell \quad s m} \langle jm_{j} \ell s | \ell m_{\ell} sm_{s} \rangle Y_{\ell m_{\ell}} \chi_{sm_{s}}
 ```
 
-```math
-\psi_{j,m_{j}} = \psi_{\ell + \tfrac{1}{2} ,m + \tfrac{1}{2}} = \sqrt{\ell + 2 \ell + 1 m + 1} Y_{\ell m} \chi_{+} + \sqrt{\frac{\ell - m}{2 \ell + 1}} Y_{\ell ,m + 1} \chi_{-} \quad \text{ for } s = \tfrac{1}{2} \text{ and any } \ell
-```
-
-$`\psi_{j,m_{j}} = \psi_{\ell - \tfrac{1}{2} ,m + \tfrac{1}{2}} = \sqrt{\frac{\ell - m}{2 \ell + 1}} Y_{\ell m} \chi_{+} - \sqrt{\ell + 2 \ell + 1 m + 1} Y_{\ell ,m + 1} \chi_{-}`$ for $`s = \tfrac{1}{2}`$ and any $`\ell`$
+$`\psi_{j,m_{j}} = \psi_{\ell + \tfrac{1}{2} ,m + \tfrac{1}{2}} = \sqrt{\ell + 2 \ell + 1 m + 1} Y_{\ell m} \chi_{+} + \sqrt{\frac{\ell - m}{2 \ell + 1}} Y_{\ell ,m + 1} \chi_{-}`$ for $`s = \tfrac{1}{2}`$ and any $`\ell`$ $`\psi_{j,m_{j}} = \psi_{\ell - \tfrac{1}{2} ,m + \tfrac{1}{2}} = \sqrt{\frac{\ell - m}{2 \ell + 1}} Y_{\ell m} \chi_{+} - \sqrt{\ell + 2 \ell + 1 m + 1} Y_{\ell ,m + 1} \chi_{-}`$ for $`s = \tfrac{1}{2}`$ and any $`\ell`$
 
 <div align="center">
 

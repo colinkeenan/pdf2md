@@ -75,10 +75,10 @@ We can build up localized wave packets that represent single particles(See secti
 \psi ( x,t ) = \frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{+ \infty} \varphi ( p ) e^{i ( px - Et ) / \hbar} dp
 ```
 
-(We have moved to one dimension for simplicity.) Similarly we can compute the coefficient for each momentum $`\infty`$
+(We have moved to one dimension for simplicity.) Similarly we can compute the coefficient for each momentum
 
 ```math
-\varphi ( p ) = \frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty} \psi ( x ) e^{- ipx/ \hbar} dx.
+\varphi ( p ) = \frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{\infty} \psi ( x ) e^{- ipx/ \hbar} dx.
 ```
 
 These coefficients, $`\varphi ( p )`$, are actually the state function of the particle in momentum space. We can describe the state of a particle either in position space with $`\psi ( x )`$ or in momentum space with $`\varphi ( p )`$. We can use $`\varphi ( p )`$ to compute the probability distribution function for momentum.
@@ -125,10 +125,10 @@ E^{( op )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} = i \hbar \frac{\partial
 
 # <a id="s-1-6-expectation-values"></a>1.6 Expectation Values
 
-We can use operators to help us compute the expectation value (See section 6.3) of a physical variable. If a particle is in the state $`\psi ( x )`$, the normal way to compute the expectation value of $`f ( x )`$ is $`\infty \quad \infty`$
+We can use operators to help us compute the expectation value (See section 6.3) of a physical variable. If a particle is in the state $`\psi ( x )`$, the normal way to compute the expectation value of $`f ( x )`$ is
 
 ```math
-\langle f ( x ) \rangle = \int_{-\infty} P ( x ) f ( x ) dx = \int_{-\infty} \psi^{*} ( x ) \psi ( x ) f ( x ) dx.
+\langle f ( x ) \rangle = \int_{-\infty}^{\infty} P ( x ) f ( x ) dx = \int_{-\infty}^{\infty} \psi^{*} ( x ) \psi ( x ) f ( x ) dx.
 ```
 
 If the variable we wish to compute the expectation value of (like $`p )`$ is not a simple function of $`x`$, let
@@ -157,10 +157,10 @@ We extend the notation from just expectation values to
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p20" href="book.pdf#page=20" target="_blank" title="This page in the PDF"><sup>[p. 20]</sup></a>
 
-and $`\infty`$
+and
 
 ```math
-\langle \psi | \varphi \rangle \equiv \int_{-\infty} \psi^{*} ( x ) \varphi ( x ) dx
+\langle \psi | \varphi \rangle \equiv \int_{-\infty}^{\infty} \psi^{*} ( x ) \varphi ( x ) dx
 ```
 
 We use this shorthand **Dirac Bra-Ket notation** a great deal.

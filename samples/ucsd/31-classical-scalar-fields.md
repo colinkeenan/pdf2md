@@ -39,14 +39,10 @@ Lagrange’s equations are
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p427" href="book.pdf#page=427" target="_blank" title="This page in the PDF"><sup>[p. 427]</sup></a>
 
-where the $`q_{i}`$ are the coordinates of the particle. This equation is derivable from the **principle of**
+where the $`q_{i}`$ are the coordinates of the particle. This equation is derivable from the **principle of** **least action**.
 
 ```math
-\text{ least action } ._{t_{2}}
-```
-
-```math
-\delta \int_{t_{1}} L ( q_{i} , \dot{q}_{i} ) dt = 0
+\delta \int_{t_{1}}^{t_{2}} L ( q_{i} , \dot{q}_{i} ) dt = 0
 ```
 
 Similarly, we can define the **Hamiltonian**

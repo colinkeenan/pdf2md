@@ -1148,6 +1148,17 @@ fn take_figure_labels(doc: &mut Doc) {
                 }
                 // a whole line beside the picture is prose, not a label
                 let line_inside = line.left >= l && line.right <= r;
+                // (nor is a line all in the lettering of drawings that stands
+                // beside the picture, within its height: the Feynman rule
+                // written next to its vertex)
+                let pi = |s: &Span| doc.fonts.get(s.font).is_some_and(|f| f.family.contains("MathematicalPi"));
+                let lettered = !lettering.is_empty()
+                    && line.top >= f.top
+                    && line.top + line.size <= f.bottom
+                    && line.left < f.right + 4.0 * m
+                    && line.right > f.left - 4.0 * m
+                    && line.spans.iter().all(|s| s.text.trim().is_empty() || pi(s) || lettering.get(s.font).copied().unwrap_or(false))
+                    && line.spans.iter().any(|s| lettering.get(s.font).copied().unwrap_or(false));
                 let spans = std::mem::take(&mut line.spans);
                 // ... but a tiny label right beside it, far from the rest of
                 // its line (an axis label "x" next to a formula), is one
@@ -1177,7 +1188,7 @@ fn take_figure_labels(doc: &mut Doc) {
                 for s in spans.iter() {
                     let inside = inside(s);
                     let near = s.left < r && s.right() > l && s.top < b && s.bottom() > t;
-                    let around = near && (line_inside || lonely(s));
+                    let around = lettered || near && (line_inside || lonely(s));
                     let s = s.clone();
                     if inside || around {
                         f.left = f.left.min(s.left);
@@ -2712,6 +2723,7 @@ fn group_lines(
     let mut touching: Vec<Span> = Vec::new();
     let mut roots: Vec<Span> = Vec::new();
     let mut dots: Vec<Span> = Vec::new();
+    let mut loose: Vec<Span> = Vec::new();
     // full stops with a small letter close beside them, at their height
     let among_small: Vec<bool> = spans
         .iter()
@@ -2728,20 +2740,30 @@ fn group_lines(
         let small = groups
             .first()
             .is_some_and(|g| size_of(&s) < size_of(&g[0]) * 0.85);
+        // (a root sign's box sits high: no line starts with it, on a page
+        // with a heading or without one)
+        if s.text.trim() == "√" && !groups.is_empty() {
+            roots.push(s);
+            continue;
+        }
         let found = if small {
             // vertical overlap between the span and each line's main span
             let best = most_overlap(&groups, &s);
-            // (a root sign's box sits high: no line starts with it)
-            if s.text.trim() == "√" {
-                roots.push(s);
-                continue;
-            }
             if let Some((k, overlap)) = best {
                 let main = &groups[k][0];
                 let mid = s.top + s.height / 2.0;
                 let own_size = size_of(&s) >= size_of(main) * 0.85;
                 if own_size && overlap < 0.5 * s.height.min(main.height) && (mid < main.top || mid > main.bottom()) {
                     touching.push(s);
+                    continue;
+                }
+            }
+            // (a small piece that only touches a line: the upper limit of
+            // a sum between the text line above and its display. It waits
+            // for the line whose pieces it stands closest to.)
+            if let Some((k, overlap)) = best {
+                if size_of(&s) < size_of(&groups[k][0]) * 0.85 && overlap < 0.4 * s.height {
+                    loose.push(s);
                     continue;
                 }
             }
@@ -2866,6 +2888,58 @@ fn group_lines(
         match below {
             Some(k) => groups[k].push(s),
             None => groups.push(vec![s]),
+        }
+    }
+    // (those their line keeps first, so that the next finds them there)
+    let mut waiting = loose;
+    let mut loose: Vec<Span> = Vec::new();
+    loop {
+        let before = waiting.len();
+        let mut rest = Vec::new();
+        for s in waiting {
+            let home = most_overlap(&groups, &s).map(|(k, _)| k).filter(|&k| groups[k].iter().any(|n| (n.left - s.right()).max(s.left - n.right()) < 2.0 * size_of(&groups[k][0])));
+            match home {
+                Some(_) => loose.push(s),
+                None => rest.push(s),
+            }
+        }
+        waiting = rest;
+        let placed: Vec<Span> = std::mem::take(&mut loose);
+        for s in placed {
+            let k = most_overlap(&groups, &s).map_or(0, |(k, _)| k);
+            let size = size_of(&s);
+            let at = (1..groups[k].len()).find(|&i| size_of(&groups[k][i]) == size && (groups[k][i].top, groups[k][i].left) >= (s.top, s.left)).unwrap_or(groups[k].len());
+            groups[k].insert(at, s);
+        }
+        if waiting.len() == before || waiting.is_empty() {
+            break;
+        }
+    }
+    for s in waiting {
+        let away = |n: &Span| (n.left - s.right()).max(s.left - n.right()).max(0.0) + (n.top - s.bottom()).max(s.top - n.bottom()).max(0.0);
+        let nearest = (0..groups.len())
+            .map(|k| (k, groups[k].iter().map(away).fold(f32::MAX, f32::min)))
+            .min_by(|a, b| a.1.total_cmp(&b.1));
+        // (the line it touches keeps it when that line has a piece beside
+        // or over it: an exponent's exponent between two lines of text)
+        let touched = most_overlap(&groups, &s).map(|(k, _)| k);
+        let at_home = touched.is_some_and(|k| groups[k].iter().any(|n| (n.left - s.right()).max(s.left - n.right()) < 2.0 * size_of(&groups[k][0])));
+        match touched.filter(|_| at_home).or(nearest.filter(|(_, d)| *d < size_of(&s)).map(|(k, _)| k)).or(touched) {
+            // (in its place among the pieces of its size, which came top to
+            // bottom: pieces at one left edge keep that order in the line,
+            // and the stroke through a "=" stays before it)
+            Some(k) => {
+                let size = size_of(&s);
+                let at = (1..groups[k].len()).find(|&i| size_of(&groups[k][i]) == size && (groups[k][i].top, groups[k][i].left) >= (s.top, s.left)).unwrap_or(groups[k].len());
+                groups[k].insert(at, s);
+            }
+            None => groups.push(vec![s]),
+        }
+    }
+    // PDF2MD_LINEDEBUG=1: the pieces of each line, as grouped
+    if std::env::var_os("PDF2MD_LINEDEBUG").is_some() {
+        for g in &groups {
+            eprintln!("GROUP {:?}", g.iter().map(|s| format!("{}@{},{}", s.text, s.left, s.top)).collect::<Vec<_>>());
         }
     }
     let mut lines: Vec<Line> = groups.into_iter().map(|g| make_line(g, size_of)).collect();

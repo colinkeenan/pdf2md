@@ -884,10 +884,10 @@ Setting $`b`$ = 1, we get the unnormalized result.
 \psi_{-}^{( y )} = C \left( \frac{i}{\sqrt{1^{2}}}_{\tfrac{i}{\sqrt{2}} -} \right)
 ```
 
-Normalizing, we get. $`i`$
+Normalizing, we get.
 
 ```math
-\psi_{-}^{( y )} = \left( {}^{\surd} \tfrac{1 2}{\frac{2 i}{2} -} \right)
+\psi_{-}^{( y )} = \left( {}^{\surd} \tfrac{1 \frac{i}{2}}{\frac{2 i}{2} -} \right)
 ```
 
 This is exactly the same as the rotated state. A 90 degree rotation about the z axis changes $`\psi_{+}^{( x )}`$ into $`\psi_{-}^{( y )}`$.
@@ -986,10 +986,10 @@ and all the particles are in the state
 \psi_{+}^{( z )} = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} .
 ```
 
-The second apparatus is oriented to separate the beam in the x direction. The beam separates into 3 parts. We can compute the intensity of each but lets concentrate on the bottom one because we block the other two. $`2`$
+The second apparatus is oriented to separate the beam in the x direction. The beam separates into 3 parts. We can compute the intensity of each but lets concentrate on the bottom one because we block the other two.
 
 ```math
-I_{2} = \left| \langle \psi_{-}^{( x )} | \psi_{+}^{( z )} \rangle \right| I_{1}
+I_{2} = \left| \langle \psi_{-}^{( x )} | \psi_{+}^{( z )} \rangle \right|^{2} I_{1}
 ```
 
 We have written the probability that one particle, initially in the the state $`\psi_{+}^{( z )}`$, goes into the state $`\psi_{-}^{( x )}`$ when **measured** in the x direction (times the intensity coming into the apparatus). Lets compute that probability.
@@ -1301,13 +1301,13 @@ Factoring out the $`\frac{\hbar}{2}`$, the equation for the eigenvectors is.
 ```
 
 ```math
-\begin{pmatrix} \tfrac{1}{2} a + \sqrt{\frac{3}{4}} b \\ \sqrt{\frac{3}{4}} a^{1} b \\ - {}_{2} \end{pmatrix} \surd = \pm \begin{pmatrix} a \\ b \end{pmatrix}_{( u )} \quad \sqrt{\frac{3}{4}}
+\begin{pmatrix} \tfrac{1}{2} a + \sqrt{\frac{3}{4}} b \\ \sqrt{\frac{3}{4}} a^{1} b \\ - {}_{2} \end{pmatrix} = \pm \begin{pmatrix} a \\ b \end{pmatrix} \quad \sqrt{\frac{3}{4}}
 ```
 
-For the positive eigenvalue, we have $`a`$ = $`3 b`$, giving the eigenvector $`\chi_{+}`$ = $`\left( 1 \right)`$. For the
+For the positive eigenvalue, we have $`a = \sqrt{3} b`$, giving the eigenvector $`\chi_{+}^{( u )} = \begin{pmatrix} 1 \\ 2 \end{pmatrix}`$. For the
 
 ```math
-{}_{( u )} \quad - \tfrac{1}{2}^{2}
+{}_{( u )} \quad - \tfrac{1}{2}
 ```
 
 negative eigenvalue, we have $`a = - \sqrt{\frac{1}{3}} b`$, giving the eigenvector $`\chi_{-}`$ = . Of course each of

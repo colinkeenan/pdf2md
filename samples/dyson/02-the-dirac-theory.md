@@ -213,12 +213,12 @@ writing $`\alpha^{0} = \mathbb{I}`$.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p7" href="book.pdf#page=13" target="_blank" title="This page in the PDF"><sup>[p. 7]</sup></a>
 
-Thus we need $`3`$
+Thus we need
 
 <a id="eq-23"></a>
 
 ```math
-S^{*} \alpha^{\mu} S = \sum_{\nu = 0} a_{\mu \nu} \alpha^{\nu} , \quad \mu = 0 , 1 , 2 , 3 \qquad \text{(23)}
+S^{*} \alpha^{\mu} S = \sum_{\nu = 0}^{3} a_{\mu \nu} \alpha^{\nu} , \quad \mu = 0 , 1 , 2 , 3 \qquad \text{(23)}
 ```
 
 Next consider (ii). The Dirac <a id="ix-73">equation</a> for $`\psi^{\prime}`$ is

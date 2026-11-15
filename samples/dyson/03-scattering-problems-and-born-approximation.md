@@ -199,10 +199,10 @@ Let $`Q`$ have the eigenvectors $`w_{1} ,w_{2} ,w_{3} ,w_{4}`$ with eigenvalues 
 Q = \sum_{k = 1}^{4} \lambda_{k} w_{k} w_{k}^{*}
 ```
 
-and $`4 \quad 4`$
+and
 
 ```math
-\sum_{u} \epsilon ( \overline{u} Qu ) = \sum_{u} \epsilon \sum_{k = 1} \lambda_{k} ( \overline{u} w_{k} ) ( w^{*} u ) = \sum_{k = 1} \lambda_{k} w^{*} \left\{ \sum_{u} \epsilon ( u \overline{u} ) \right\} w_{k}
+\sum_{u} \epsilon ( \overline{u} Qu ) = \sum_{u} \epsilon \sum_{k = 1}^{4} \lambda_{k} ( \overline{u} w_{k} ) ( w^{*} u ) = \sum_{k = 1}^{4} \lambda_{k} w^{*} \left\{ \sum_{u} \epsilon ( u \overline{u} ) \right\} w_{k}
 ```
 
 Hence by (113)

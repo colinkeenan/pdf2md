@@ -2597,13 +2597,7 @@ This is now a set of two coupled radial equations. We can simplify them a bit by
 \left( \left( \begin{pmatrix} \tfrac{\partial F}{\partial r} - \tfrac{\kappa F}{r} \\ \tfrac{\partial G}{\partial r} + \tfrac{\kappa G}{r} \end{pmatrix} \right) \right) = \begin{pmatrix} \tfrac{mc^{2} - E + V}{{}_{2} \hbar c} G \\ \tfrac{mc + E - V}{\hbar c} F \end{pmatrix}
 ```
 
-These equations are true for any spherically symmetric potential. Now it is time to **specialize to** **the hydrogen atom** for which $`\tfrac{V}{\hbar c} = - \tfrac{Z\alpha}{r}`$ . We define $`k_{1}`$ = $`\frac{mc^{2} + E}{\hbar c}`$ and $`k_{2}`$ = $`\frac{mc^{2} \quad E}{\hbar c} -`$ and the
-
-```math
-\surd
-```
-
-dimensionless $`\rho = k_{1} k_{2} r`$. The equations then become.
+These equations are true for any spherically symmetric potential. Now it is time to **specialize to** **the hydrogen atom** for which $`\tfrac{V}{\hbar c} = - \tfrac{Z\alpha}{r}`$ . We define $`k_{1}`$ = $`\frac{mc^{2} + E}{\hbar c}`$ and $`k_{2}`$ = $`\frac{mc^{2} \quad E}{\hbar c} -`$ and the dimensionless $`\rho = \sqrt{k_{1} k_{2}} r`$. The equations then become.
 
 ```math
 \left( \left( \begin{pmatrix} \tfrac{\partial F}{\partial r} - \tfrac{\kappa F}{r} \\ \tfrac{\partial G}{\partial r} + \tfrac{\kappa G}{r} \end{pmatrix} \right) \right) = \begin{pmatrix} \left( \begin{pmatrix} k_{2} - \tfrac{Z\alpha}{r} \\ k_{1} + \tfrac{Z\alpha}{r} \end{pmatrix} \right) G \\ F \end{pmatrix}

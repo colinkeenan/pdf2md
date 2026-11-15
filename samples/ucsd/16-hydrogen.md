@@ -365,10 +365,10 @@ Z\alpha \sqrt{- \mu c^{2} 2 E} = n.
 E = - \frac{1}{2 n^{2}} Z^{2} \alpha^{2} \mu c^{2}
 ```
 
-The **solutions** are $`\infty`$
+The **solutions** are
 
 ```math
-R_{n\ell} ( \rho ) = \rho^{\ell} \sum_{k = 0} a_{k} \rho^{k} e^{- \rho / 2} .
+R_{n\ell} ( \rho ) = \rho^{\ell} \sum_{k = 0}^{\infty} a_{k} \rho^{k} e^{- \rho / 2} .
 ```
 
 The recursion relation is

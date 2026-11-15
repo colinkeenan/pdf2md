@@ -1051,10 +1051,8 @@ B = 0
 A = - C
 ```
 
-The state is
-
 ```math
-\frac{1}{\sqrt{2}} ( Y_{1 1} - Y_{1 - 1} )
+\text{ The state is } \quad \frac{1}{\sqrt{2}} ( Y_{1 1} - Y_{1 - 1} )
 ```
 
 The trivial solution that $`A = B = C`$ = 0 is just a zero state, not normalizable to 1.

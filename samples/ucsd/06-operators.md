@@ -474,10 +474,10 @@ It is not necessary (or wise) to use the differential operators and a wave funct
 
 Find the expected value of $`x`$ as a function of time. Find the expected value of $`x^{2}`$ as a function of time. Compute the RMS x-width of this wave packet as a function of time.
 
-2. Find the commutator $`[ p,e^{ik_{0} x} ]`$ where $`k_{0}`$ is a constant and the second operator can be expanded
+2. Find the commutator $`{}_{\infty} \quad [ p,e^{ik_{0} x} ]`$ where $`k_{0}`$ is a constant and the second operator can be expanded
 
 ```math
-\text{ as } e^{ik_{0} x} = {}_{n} \sum_{= 0}^{\infty} \tfrac{( ik_{0} x )^{n}}{n !} .
+\text{ as } e^{ik_{0} x} = {}_{n} \sum_{= 0} \tfrac{( ik_{0} x )^{n}}{n !} .
 ```
 
 3. Which of the following are linear operators?

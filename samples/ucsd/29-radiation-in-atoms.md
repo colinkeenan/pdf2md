@@ -299,7 +299,7 @@ The square root and $`\langle \ell 0 | \ell_{1} \ell_{2} 0 0 \rangle`$ can be th
 First add the angular momentum from the initial state $`( Y_{\ell_{i} m_{i}} )`$ and the photon ($`Y_{1 m} )`$ using the Clebsch-Gordan series, with the usual notation for the **Clebsch-Gordan coefficients** $`\langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} m \rangle`$.
 
 ```math
-Y_{1 m} ( \theta ,\varphi ) Y_{\ell_{i} m_{i}} ( \theta ,\varphi ) = \sum_{\ell = | \ell - 1 |}^{\ell_{i} + 1} \sqrt{4 3 ( 2 \ell_{i} + 1 ) \pi ( 2 \ell + 1 )} \langle \ell 0 | \ell_{i} 1 0 0 \rangle \langle \ell ( m + m_{i} ) | \ell_{i} 1 m_{i} m \rangle Y_{\ell ( m_{i} + m )} ( \theta ,\varphi )
+Y_{1 m} ( \theta ,\varphi ) Y_{\ell_{i} m_{i}} ( \theta ,\varphi ) = \sum_{\ell = | \ell_{i} - 1 |}^{\ell_{i} + 1} \sqrt{4 3 ( 2 \ell_{i} + 1 ) \pi ( 2 \ell + 1 )} \langle \ell 0 | \ell_{i} 1 0 0 \rangle \langle \ell ( m + m_{i} ) | \ell_{i} 1 m_{i} m \rangle Y_{\ell ( m_{i} + m )} ( \theta ,\varphi )
 ```
 
 <div align="right"><a href="book.pdf#page=403" target="_blank" title="This page in the PDF"><sup>[p. 403]</sup></a></div>

@@ -597,10 +597,10 @@ This energy is larger than for one delta function. This state would be called **
 
 # <a id="s-9-5-the-delta-function-model-of-a-crystal"></a>9.5 The Delta Function Model of a Crystal \*
 
-The Kronig-Penny model of a solid crystal contains an **infinite array of repulsive delta func-** **tions**. $`\infty`$
+The Kronig-Penny model of a solid crystal contains an **infinite array of repulsive delta func-** **tions**.
 
 ```math
-V ( x ) = aV_{0} \sum_{n = -\infty} \delta ( x - na )
+V ( x ) = aV_{0} \sum_{n = -\infty}^{\infty} \delta ( x - na )
 ```
 
 <div align="right"><a href="book.pdf#page=157" target="_blank" title="This page in the PDF"><sup>[p. 157]</sup></a></div>
@@ -1093,10 +1093,10 @@ dy^{2} e \quad - 2 dy ye + \epsilon h ( - h ( y )_{{}^{2} / 2} e y ) e^{- y} - y
 
 This is our differential equation for the polynomial $`h ( y )`$.
 
-Write $`h ( y )`$ as a sum of terms. $`\infty`$
+Write $`h ( y )`$ as a sum of terms.
 
 ```math
-h ( y ) = \sum_{m = 0} a_{m} y^{m}
+h ( y ) = \sum_{m = 0}^{\infty} a_{m} y^{m}
 ```
 
 Plug it into the differential equation.

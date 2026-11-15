@@ -197,10 +197,10 @@ where $`\delta_{ij}`$ is the usual Kroneker delta, equal to 1 if $`i = j`$ and o
 \langle \psi_{i} | \psi_{j} \rangle = \delta_{ij}
 ```
 
-We represent our **wavefunctions – the vectors in our space** – as linear combinations of the eigenstates (unit vectors). $`\infty`$
+We represent our **wavefunctions – the vectors in our space** – as linear combinations of the eigenstates (unit vectors).
 
 ```math
-\psi = \sum_{i = 1} \alpha_{i} \psi_{i}
+\psi = \sum_{i = 1}^{\infty} \alpha_{i} \psi_{i}
 ```
 
 ```math
@@ -633,10 +633,10 @@ So the Hermitian conjugate of a constant operator is its complex conjugate.
 
 ## <a id="s-8-8-2-hermitian-conjugate-of-partial-x-partial"></a>8.8.2 Hermitian Conjugate of $`\frac{\partial}{\partial x}`$
 
-We wish to compute the Hermitian conjugate of the operator $`\frac{\partial}{\partial x}`$ . We will use the integral to derive the result. $`\infty`$
+We wish to compute the Hermitian conjugate of the operator $`\frac{\partial}{\partial x}`$ . We will use the integral to derive the result.
 
 ```math
-\langle \varphi \left| \frac{\partial}{\partial x} \psi \right\rangle \rangle = \int_{-\infty} \varphi^{*} ( x ) \frac{\partial \psi ( x )}{\partial x} dx
+\langle \varphi \left| \frac{\partial}{\partial x} \psi \right\rangle \rangle = \int_{-\infty}^{\infty} \varphi^{*} ( x ) \frac{\partial \psi ( x )}{\partial x} dx
 ```
 
 We can integrate this by parts, differentiating the $`\varphi`$ and integrating to get $`\psi`$.

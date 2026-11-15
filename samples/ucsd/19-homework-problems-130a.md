@@ -49,13 +49,13 @@ with the Hamiltonian $`H = \tfrac{p^{2}}{2 m} + \tfrac{1}{2} kx^{2}`$.
 
 # <a id="s-19-2-homework-2"></a>19.2 Homework 2
 
-1. Show that $`\infty \quad \infty`$
+1. Show that
 
 ```math
-\int_{-\infty} \psi^{*} ( x ) x\psi ( x ) dx = \int_{-\infty} \varphi^{*} ( p ) \left( i \hbar \frac{\partial}{\partial p} \right) \varphi ( p ) dp.
+\int^{\infty} \psi^{*} ( x ) x\psi ( x ) dx = \int^{\infty} \varphi^{*} ( p ) \left( i \hbar \frac{\partial}{\partial p} \right) \varphi ( p ) dp.
 ```
 
-Remember that the wave functions go to zero at infinity.
+Remember that the wave functions go to zero at infinity.$`-\infty \quad -\infty`$
 
 ```math
 1

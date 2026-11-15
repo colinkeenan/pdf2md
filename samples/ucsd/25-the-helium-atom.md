@@ -391,10 +391,10 @@ This is close to the right answer. As always, it is treated as an upper limit on
 
 ## <a id="s-25-6-2-1-d-h-o-with-exponential-wavefunction"></a>25.6.2 1-D H.O. with exponential wavefunction
 
-As a check of the procedure, take trial function $`e^{- ax^{2} / 2}`$. This should give us the actual ground state energy. $`\infty`$
+As a check of the procedure, take trial function $`e^{- ax^{2} / 2}`$. This should give us the actual ground state energy.
 
 ```math
-E^{\prime} = \frac{\int_{-\infty} \psi^{*} \left[ - \tfrac{\hbar^{2}}{m}_{2} \tfrac{\partial^{2} \psi}{\partial x^{2}} + \tfrac{1}{2} m\omega^{2} x^{2} \psi \right] dx}{\infty}
+E^{\prime} = \frac{\int_{-\infty}^{\infty} \psi^{*} \left[ - \tfrac{\hbar^{2}}{m}_{2} \tfrac{\partial^{2} \psi}{\partial x^{2}} + \tfrac{1}{2} m\omega^{2} x^{2} \psi \right] dx}{\infty}
 ```
 
 ```math
