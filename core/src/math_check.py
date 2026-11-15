@@ -17,7 +17,8 @@ errs in other places than the math recognizer does:
                  formula, and N symbols differ
 
 The choice: where the two recognizers read the same formula, bold letters
-and ways of writing aside, the reading with more bold letters (each
+and ways of writing aside, the reading whose matrices are whole (no empty
+row, rows of one length), then the one with more bold letters (each
 misses some; neither invents them). Otherwise the other recognizer's
 reading: on symbols it is right far more often (l for I, a prime, a nabla
 read as a bold V). Such an equation is listed to check unless the math
@@ -38,7 +39,7 @@ from PIL import Image  # noqa: E402
 BATCH = 32
 # Which rules the choice was made by, on the second line of NAME.agree: a
 # choice made by older rules is made again (keep in step with ocr.rs).
-RULES = "rules 4"
+RULES = "rules 5"
 
 
 def tell(what: str, n: int, total: int):
@@ -347,16 +348,50 @@ def bolds(t: str) -> int:
     return len(re.findall(BOLD, t))
 
 
+def misshapen(t: str) -> int:
+    """How many arrays and matrices of a reading are not whole: rows of
+    unequal length, more cells in a row than columns, or a row with
+    nothing in it (the math recognizer writes "{{}}&{{}}" rows into a
+    matrix now and then). Single empty cells are no fault: a diagonal
+    matrix is printed with them."""
+    n = 0
+    for a in re.finditer(r"\\begin\{(array|[a-zA-Z]*matrix)\}(\{[^{}]*\})?(.*?)\\end\{\1\}", t, re.S):
+        body = a.group(3)
+        if "\\begin{" in body:
+            continue
+        rows = re.split(r"\\\\(?:\[[^\]]*\])?", body)
+        if rows and not re.sub(r"[{}\s]", "", rows[-1]):
+            rows = rows[:-1]
+        cells = [r.split("&") for r in rows]
+        blank = [all(not re.sub(r"[{}\s]|\\(?:quad|qquad|,|;|!)", "", c) for c in r) for r in cells]
+        columns = len(re.findall(r"[lcr]", a.group(2) or ""))
+        if len({len(r) for r in cells}) > 1 or any(blank) or (columns and max(map(len, cells), default=0) > columns):
+            n += 1
+    return n
+
+
 def choose(first: str, second: str, other):
     """(the reading to write, or None for the first; how many symbols are in
     doubt: 0 when two recognizers agree)."""
     if other is None:
         n = m.difference(first, second) if second else 0
-        return None, n
+        # (the same formula twice, its matrix whole only the second time)
+        whole = second and n == 0 and misshapen(first) and not misshapen(second)
+        return (second if whole else None), n
     lo = loose(other)
     if loose(first) == lo:
-        return (other if bolds(other) > bolds(first) else None), 0
+        # (of readings that are the same formula, one whose matrix is whole
+        # comes before one with an empty row or rows of unequal length)
+        # (… where it has the bold letters too: rows of unequal length in
+        # a set of lines do no harm, lost bold letters do)
+        if misshapen(first):
+            for t in (second, other):
+                if t and loose(t) == lo and not misshapen(t) and bolds(t) >= bolds(first):
+                    return t, 0
+        return (other if bolds(other) > bolds(first) and misshapen(other) <= misshapen(first) else None), 0
     if second and loose(second) == lo:
+        if misshapen(other) != misshapen(second):
+            return (other if misshapen(other) < misshapen(second) else second), 0
         return (other if bolds(other) >= bolds(second) else second), 0
     return other, max(1, m.difference(first, other))
 

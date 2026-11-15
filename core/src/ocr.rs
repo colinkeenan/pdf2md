@@ -32,7 +32,7 @@ const SCRIPT: &str = include_str!("math_ocr.py");
 /// The second opinion on each reading, from the page reader's recognizer.
 const CHECK_SCRIPT: &str = include_str!("math_check.py");
 /// The rules its choices are made by (RULES in math_check.py).
-const CHECK_RULES: &str = "rules 4";
+const CHECK_RULES: &str = "rules 5";
 
 /// Stable name for an image: FNV-1a 64 of its data.
 pub fn key(png_base64: &str) -> String {
