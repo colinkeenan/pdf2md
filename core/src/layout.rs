@@ -2492,6 +2492,11 @@ pub fn parse_xml_with(xml: &str, lost: &HashMap<String, bool>) -> Result<Doc, St
                 // gives as "(" is the arrow over a vector, as "~" elsewhere)
                 let italic_math = fonts.get(num(n, "font") as usize).is_some_and(|f| f.family.starts_with("CMMI"));
                 let text = if italic_math && text.contains('(') { text.replace('(', "~") } else { text };
+                // (its ϵ has a name pdftohtml knows no character for, and
+                // comes as an empty piece: the one glyph of the font that does)
+                let text = if italic_math && text.trim().is_empty() && num(n, "width") >= 2.0 { "ϵ".to_string() } else { text };
+                // (and its ℓ comes as "`", by the place it has in the font)
+                let text = if italic_math && text.contains('`') { text.replace('`', "ℓ") } else { text };
                 // (a word cut at the line's end with a hyphen that is only
                 // there when the word is cut)
                 let text = text.replace('\u{ad}', "-");
