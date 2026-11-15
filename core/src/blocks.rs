@@ -1956,7 +1956,25 @@ impl Builder<'_> {
             } else {
                 p.into_iter().enumerate().map(|(k, i)| if i == Inline::Break && !hard.contains(&k) { Inline::Text(" ".into()) } else { i }).collect()
             };
-            self.out.push(Blk { block: Block::Para(tidy(p)), page: self.para_page, centered });
+            let p = tidy(p);
+            // A paragraph that is one equation picture and nothing else
+            // (but the comma or full stop after it) is a formula set apart
+            // without a number: written as one.
+            let sources: Vec<&String> = p.iter().filter_map(|i| if let Inline::Source(k) = i { Some(k) } else { None }).collect();
+            let formulas: Vec<&String> = p.iter().filter_map(|i| if let Inline::Math(t) = i { Some(t) } else { None }).collect();
+            let rest_is_points = p.iter().all(|i| match i {
+                Inline::Source(_) | Inline::Math(_) => true,
+                Inline::Text(t) => t.chars().all(|c| c.is_whitespace() || ".,;:".contains(c)),
+                _ => false,
+            });
+            if let ([key], [tex], true) = (sources.as_slice(), formulas.as_slice(), rest_is_points) {
+                let points: String = p.iter().filter_map(|i| if let Inline::Text(t) = i { Some(t.trim()) } else { None }).collect();
+                let latex = if points.is_empty() || tex.trim_end().ends_with(['.', ',', ';']) { tex.to_string() } else { format!("{} {points}", tex.trim_end()) };
+                let block = Block::Equation { latex, tag: None, source: Some(key.to_string()) };
+                self.out.push(Blk { block, page: self.para_page, centered: false });
+            } else {
+                self.out.push(Blk { block: Block::Para(p), page: self.para_page, centered });
+            }
         }
         self.prev = None;
         self.para_lines = 0;
