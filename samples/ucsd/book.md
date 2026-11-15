@@ -2013,7 +2013,7 @@ In a gauge in which $`\vec{\nabla} \cdot \vec{A}`$ = 0, the perturbation is
 
 For most atomic decays, the $`A^{2}`$ term can be neglected since it is much smaller than the $`\vec{A} \cdot \vec{p}`$ term. Both the decay of excited atomic states with the emission of radiation and the excitation of atoms with the absorption of radiation can be calculated.
 
-An arbitrary EM field can be Fourier analyzed to give a sum of components of definite frequency. Consider the vector potential for one such component, $`\vec{A} ( \vec{r} , t ) \equiv 2 \vec{A}_{0}`$ cos$`( \vec{k} \cdot \vec{r} - \omega t )`$. The energy in the field is $`Energy = \tfrac{\omega^{2}}{2 \pi c^{2}} V | A_{0} |^{2}`$. If the field is quantized (as we will later show) with photons of energy $`E = \hbar \omega`$, we may write field strength **in terms of the number of photons** $`N`$.
+An arbitrary EM field can be Fourier analyzed to give a sum of components of definite frequency. Consider the vector potential for one such component, $`\vec{A} ( \vec{r} , t ) \equiv 2 \vec{A}_{0} \cos ( \vec{k} \cdot \vec{r} - \omega t )`$. The energy in the field is $`Energy = \tfrac{\omega^{2}}{2 \pi c^{2}} V | A_{0} |^{2}`$. If the field is quantized (as we will later show) with photons of energy $`E = \hbar \omega`$, we may write field strength **in terms of the number of photons** $`N`$.
 
 ```math
 \vec{A} ( \vec{r} , t ) = \left[ \frac{2 \pi \hbar c^{2} N}{\omega V} \right]^{\tfrac{1}{2}} \hat{\epsilon} 2 \cos ( \vec{k} \cdot \vec{r} - \omega t )
@@ -4356,7 +4356,7 @@ Check the normalization of (1).
 \int_{-\infty}^{\infty} | A ( k ) |^{2} dk = \frac{1}{a} \int_{k_{0} - \tfrac{a}{2}}^{k_{0} + \tfrac{a}{2}} dk = \frac{1}{a} a = 1
 ```
 
-Check the normalization of (2) using the result for a definite integral of a Gaussian (See section$`\infty`$
+Check the normalization of (2) using the result for a definite integral of a Gaussian (See section $`\infty`$
 
 ```math
 5 . 6 . 3 ) \int_{-\infty} dxe^{- ax^{2}} = \sqrt{\frac{\pi}{a}} .
@@ -5116,7 +5116,7 @@ We can probe atoms with high energy photons (for example). These will blow the a
 
 ## <a id="s-5-7-5-can-i-see-inside-a-nucleus"></a>5.7.5 Can I “See” inside a Nucleus
 
-In a similar fashion to the previous section, $`E_{\gamma} \geq \tfrac{\hbar c}{2 ( 0 . 1 F )}`$ = 1000 MeV$`.`$
+In a similar fashion to the previous section, $`E_{\gamma} \geq \tfrac{\hbar c}{2 ( 0 . 1 F )}`$ = 1000 MeV $`.`$
 
 The binding energy per nucleon is a few MeV, so, we will also blow nuclei apart to look carefully inside them. We again can just use lots of nuclei to allow us to learn about internal nuclear structure.<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=113" target="_blank" title="This page in the PDF"><sup>[p. 113]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p114" href="book.pdf#page=114" target="_blank" title="This page in the PDF"><sup>[p. 114]</sup></a></span> **5.7.6 Estimate the Hydrogen Ground State Energy**
 
@@ -6684,7 +6684,7 @@ We **cannot make eigenfunctions of all three operators** since
 [ P,p ] \neq 0 .
 ```
 
-So we have the **choice** of the $`e^{ikx}`$ states which are eigenfunctions of $`H`$ and of $`p`$, but contain positive and negative parity components. or we have the sin$`( kx )`$ and $`\cos ( kx )`$ states which contain two momenta but are eigenstates of $`H`$ and Parity. These are just different linear combinations of the same solutions.
+So we have the **choice** of the $`e^{ikx}`$ states which are eigenfunctions of $`H`$ and of $`p`$, but contain positive and negative parity components. or we have the $`\sin ( kx )`$ and $`\cos ( kx )`$ states which contain two momenta but are eigenstates of $`H`$ and Parity. These are just different linear combinations of the same solutions.
 
 # <a id="s-8-7-derivations-and-computations"></a>8.7 Derivations and Computations
 
@@ -7555,9 +7555,9 @@ By matching the boundary conditions and requiring that the probability be period
 \cos ( \varphi ) = \cos ( ka ) + \frac{maV_{0}}{\hbar^{2} k} \sin ( ka )
 ```
 
-Since cos$`( \varphi )`$ can only take on values between -1 and 1, there are **allowed bands of** $`k`$ **and gaps** **between those bands**.
+Since $`\cos ( \varphi )`$ can only take on values between -1 and 1, there are **allowed bands of** $`k`$ **and gaps** **between those bands**.
 
-The graph below shows cos$`( ka ) + \tfrac{maV_{0}}{\hbar^{2} k}`$ sin$`( ka )`$ as a function of $`k`$. If this is not between -1 and 1, there is no solution, that value of $`k`$ and the corresponding energy are not allowed.
+The graph below shows $`\cos ( ka ) + \tfrac{maV_{0}}{\hbar^{2} k} \sin ( ka )`$ as a function of $`k`$. If this is not between -1 and 1, there is no solution, that value of $`k`$ and the corresponding energy are not allowed.
 
 ![Figure 40 (p. 158)](images/fig-p158-1.png)
 
@@ -8327,7 +8327,7 @@ e^{i\varphi} + e^{- i\varphi} - \left( \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka )
 \cos ( \varphi ) = \cos ( ka ) + \frac{maV_{0}}{\hbar^{2} k} \sin ( ka )
 ```
 
-This relation puts constraints on $`k`$, like the constraints that give us quantized energies for bound states. Since cos$`( \varphi )`$ can only take on values between -1 and 1, there are allowed bands of $`k`$ and gaps between those bands.
+This relation puts constraints on $`k`$, like the constraints that give us quantized energies for bound states. Since $`\cos ( \varphi )`$ can only take on values between -1 and 1, there are allowed bands of $`k`$ and gaps between those bands.
 
 # <a id="s-9-8-examples"></a>9.8 Examples
 
@@ -9974,7 +9974,7 @@ There are only a few problems which can be worked this way but they are importan
 
 # <a id="s-13-1-particle-in-a-3d-box"></a>13.1 Particle in a 3D Box
 
-An example of a problem which has a Hamiltonian of the separable form is the **particle in a 3D** **box**. The potential is zero inside the **cube of side** $`L`$and infinite outside. It can be written as a sum of terms.
+An example of a problem which has a Hamiltonian of the separable form is the **particle in a 3D** **box**. The potential is zero inside the **cube of side** $`L`$ and infinite outside. It can be written as a sum of terms.
 
 ```math
 H = H_{x} + H_{y} + H_{z}
@@ -14524,9 +14524,9 @@ All the odd powers are the same. All the nonzero even powers are the same. The $
 
 $`•`$ The $`n`$ = 0 term contributes 1 on the diagonals.
 
-$`•`$ The $`n`$ = 1$`, 3 , 5 ,\dots`$ terms sum to sin$`( \theta ) \left( \tfrac{iL_{y}}{\hbar} \right)`$.
+$`•`$ The $`n`$ = 1$`, 3 , 5 ,\dots`$ terms sum to $`\sin ( \theta ) \left( \tfrac{iL_{y}}{\hbar} \right)`$.
 
-$`•`$ The $`n`$ = 2$`, 4 , 6 ,\dots`$ terms (with a -1 in the matrix) are nearly the series for $`\frac{1}{2}`$ cos$`( \theta )`$. The $`n`$ = 0 term is is missing so subtract 1. The middle matrix element is twice the other even terms.
+$`•`$ The $`n`$ = 2$`, 4 , 6 ,\dots`$ terms (with a -1 in the matrix) are nearly the series for $`\frac{1}{2} \cos ( \theta )`$. The $`n`$ = 0 term is is missing so subtract 1. The middle matrix element is twice the other even terms.
 
 ```math
 e^{i\theta L_{y} / \hbar} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} + \sin ( \theta ) \frac{1}{\sqrt{2}} \begin{pmatrix} 0 & 1 & 0 \\ - 1 & 0 & 1 \\ 0 & - 1 & 0 \end{pmatrix} + \frac{1}{2} ( \cos ( \theta ) - 1 ) \begin{pmatrix} 1 & 0 & - 1 \\ 0 & 2 & 0 \\ - 1 & 0 & 1 \end{pmatrix}
@@ -16373,7 +16373,7 @@ audio
 
 As a necessary check, we operate on these states with $`S^{2}`$ and **verify** (see section 21.8.3) that they are indeed the correct eigenstates.
 
-Note that by deciding to add the spins together, we could not change the nature of the electrons. They are still spin $`\frac{1}{2}`$and hence, these are all still eigenstates of $`S_{( 1 )}^{2}`$ and $`S_{( 2 )}^{2}`$ , however, (some of) the above states are not eigenstates of $`S_{( 1 ) z}`$ and $`S_{( 2 ) z}`$. This will prove to be a general feature of adding angular momenta. Our states of definite total angular momentum and z component of total angular momentum will still also be eigenstates of the individual angular momenta squared.
+Note that by deciding to add the spins together, we could not change the nature of the electrons. They are still spin $`\frac{1}{2}`$ and hence, these are all still eigenstates of $`S_{( 1 )}^{2}`$ and $`S_{( 2 )}^{2}`$ , however, (some of) the above states are not eigenstates of $`S_{( 1 ) z}`$ and $`S_{( 2 ) z}`$. This will prove to be a general feature of adding angular momenta. Our states of definite total angular momentum and z component of total angular momentum will still also be eigenstates of the individual angular momenta squared.
 
 # <a id="s-21-2-total-angular-momentum-and-the-spin-orbit-interaction"></a>21.2 Total Angular Momentum and The Spin Orbit Interaction
 
@@ -17549,7 +17549,7 @@ This is just the standard eigenvalue problem for the full Hamiltonian in the **s
 
 1. An electron is bound in a harmonic oscillator potential $`V_{0} = \tfrac{1}{2} m\omega^{2} x^{2}`$. Small electric fields in the $`x`$ direction are applied to the system. Find the lowest order nonzero shifts in the energies of the ground state and the first excited state if a constant field $`E_{1}`$ is applied. Find the same shifts if a field $`E_{1} x^{3}`$ is applied.
 
-2. A particle is in a box from $`- a`$ to $`a`$ in one dimension. A small additional potential $`V_{1} = \lambda`$ cos$`( \tfrac{\pi x}{2 b} )`$ is applied. Calculate the energies of the first and second excited states in this new potential.
+2. A particle is in a box from $`- a`$ to $`a`$ in one dimension. A small additional potential $`V_{1} = \lambda \cos ( \tfrac{\pi x}{2 b} )`$ is applied. Calculate the energies of the first and second excited states in this new potential.
 
 3. The proton in the hydrogen nucleus is not really a point particle like the electron is. It has a complicated structure, but, a good approximation to its charge distribution is a uniform charge density over a sphere of radius 0.5 fermis. Calculate the effect of this potential change for the energy of the ground state of hydrogen. Calculate the effect for the $`n`$ = 2 states.
 
@@ -19646,7 +19646,7 @@ Its clear we would need to introduce some wfn. parameters to get good precision.
 
 # <a id="s-27-2-the-h2-molecule"></a>27.2 The H$`2`$ Molecule
 
-The H$`2`$ molecule consists of four particles bound together: $`e_{1} , e_{2}`$, proton$`A`$, and proton$`B`$. The Hamiltonian can be written in terms of the H$`2 +`$ Hamiltonian, the repulsion between electrons, plus a correction term for double counting the repulsion between protons.
+The H$`2`$ molecule consists of four particles bound together: $`e_{1} , e_{2}`$, proton $`A`$, and proton $`B`$. The Hamiltonian can be written in terms of the H$`2 +`$ Hamiltonian, the repulsion between electrons, plus a correction term for double counting the repulsion between protons.
 
 ```math
 H = H_{1} + H_{2} + \frac{e^{2}}{r_{1 2}} - \frac{e^{2}}{R_{AB}}
@@ -20199,7 +20199,7 @@ We need to quantize the EM field into photons satisfying Plank’s original hypo
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p399" href="book.pdf#page=399" target="_blank" title="This page in the PDF"><sup>[p. 399]</sup></a>
 
-vector $`\vec{k} )`$. Using classical E&M to compute the energy in a field (See Section 29.14.1) represented by a vector potential $`\vec{A} ( \vec{r} , t )`$ = 2$`\vec{A}_{0}`$ cos$`( \vec{k} \cdot \vec{r} - \omega t )`$, we find that the energy inside a volume $`V`$ is
+vector $`\vec{k} )`$. Using classical E&M to compute the energy in a field (See Section 29.14.1) represented by a vector potential $`\vec{A} ( \vec{r} , t )`$ = 2$`\vec{A}_{0} \cos ( \vec{k} \cdot \vec{r} - \omega t )`$, we find that the energy inside a volume $`V`$ is
 
 ```math
 Energy = \frac{\omega^{2}}{2 \pi c^{2}} V | A_{0} |^{2} = N \hbar \omega .

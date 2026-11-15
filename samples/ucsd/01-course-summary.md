@@ -1416,7 +1416,7 @@ In a gauge in which $`\vec{\nabla} \cdot \vec{A}`$ = 0, the perturbation is
 
 For most atomic decays, the $`A^{2}`$ term can be neglected since it is much smaller than the $`\vec{A} \cdot \vec{p}`$ term. Both the decay of excited atomic states with the emission of radiation and the excitation of atoms with the absorption of radiation can be calculated.
 
-An arbitrary EM field can be Fourier analyzed to give a sum of components of definite frequency. Consider the vector potential for one such component, $`\vec{A} ( \vec{r} , t ) \equiv 2 \vec{A}_{0}`$ cos$`( \vec{k} \cdot \vec{r} - \omega t )`$. The energy in the field is $`Energy = \tfrac{\omega^{2}}{2 \pi c^{2}} V | A_{0} |^{2}`$. If the field is quantized (as we will later show) with photons of energy $`E = \hbar \omega`$, we may write field strength **in terms of the number of photons** $`N`$.
+An arbitrary EM field can be Fourier analyzed to give a sum of components of definite frequency. Consider the vector potential for one such component, $`\vec{A} ( \vec{r} , t ) \equiv 2 \vec{A}_{0} \cos ( \vec{k} \cdot \vec{r} - \omega t )`$. The energy in the field is $`Energy = \tfrac{\omega^{2}}{2 \pi c^{2}} V | A_{0} |^{2}`$. If the field is quantized (as we will later show) with photons of energy $`E = \hbar \omega`$, we may write field strength **in terms of the number of photons** $`N`$.
 
 ```math
 \vec{A} ( \vec{r} , t ) = \left[ \frac{2 \pi \hbar c^{2} N}{\omega V} \right]^{\tfrac{1}{2}} \hat{\epsilon} 2 \cos ( \vec{k} \cdot \vec{r} - \omega t )

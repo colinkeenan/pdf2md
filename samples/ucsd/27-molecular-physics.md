@@ -121,7 +121,7 @@ Its clear we would need to introduce some wfn. parameters to get good precision.
 
 # <a id="s-27-2-the-h2-molecule"></a>27.2 The H$`2`$ Molecule
 
-The H$`2`$ molecule consists of four particles bound together: $`e_{1} , e_{2}`$, proton$`A`$, and proton$`B`$. The Hamiltonian can be written in terms of the H$`2 +`$ Hamiltonian, the repulsion between electrons, plus a correction term for double counting the repulsion between protons.
+The H$`2`$ molecule consists of four particles bound together: $`e_{1} , e_{2}`$, proton $`A`$, and proton $`B`$. The Hamiltonian can be written in terms of the H$`2 +`$ Hamiltonian, the repulsion between electrons, plus a correction term for double counting the repulsion between protons.
 
 ```math
 H = H_{1} + H_{2} + \frac{e^{2}}{r_{1 2}} - \frac{e^{2}}{R_{AB}}

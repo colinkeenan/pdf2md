@@ -93,7 +93,7 @@ audio
 
 As a necessary check, we operate on these states with $`S^{2}`$ and **verify** (see section 21.8.3) that they are indeed the correct eigenstates.
 
-Note that by deciding to add the spins together, we could not change the nature of the electrons. They are still spin $`\frac{1}{2}`$and hence, these are all still eigenstates of $`S_{( 1 )}^{2}`$ and $`S_{( 2 )}^{2}`$ , however, (some of) the above states are not eigenstates of $`S_{( 1 ) z}`$ and $`S_{( 2 ) z}`$. This will prove to be a general feature of adding angular momenta. Our states of definite total angular momentum and z component of total angular momentum will still also be eigenstates of the individual angular momenta squared.
+Note that by deciding to add the spins together, we could not change the nature of the electrons. They are still spin $`\frac{1}{2}`$ and hence, these are all still eigenstates of $`S_{( 1 )}^{2}`$ and $`S_{( 2 )}^{2}`$ , however, (some of) the above states are not eigenstates of $`S_{( 1 ) z}`$ and $`S_{( 2 ) z}`$. This will prove to be a general feature of adding angular momenta. Our states of definite total angular momentum and z component of total angular momentum will still also be eigenstates of the individual angular momenta squared.
 
 # <a id="s-21-2-total-angular-momentum-and-the-spin-orbit-interaction"></a>21.2 Total Angular Momentum and The Spin Orbit Interaction
 

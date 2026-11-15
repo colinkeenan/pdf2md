@@ -1594,9 +1594,9 @@ All the odd powers are the same. All the nonzero even powers are the same. The $
 
 $`•`$ The $`n`$ = 0 term contributes 1 on the diagonals.
 
-$`•`$ The $`n`$ = 1$`, 3 , 5 ,\dots`$ terms sum to sin$`( \theta ) \left( \tfrac{iL_{y}}{\hbar} \right)`$.
+$`•`$ The $`n`$ = 1$`, 3 , 5 ,\dots`$ terms sum to $`\sin ( \theta ) \left( \tfrac{iL_{y}}{\hbar} \right)`$.
 
-$`•`$ The $`n`$ = 2$`, 4 , 6 ,\dots`$ terms (with a -1 in the matrix) are nearly the series for $`\frac{1}{2}`$ cos$`( \theta )`$. The $`n`$ = 0 term is is missing so subtract 1. The middle matrix element is twice the other even terms.
+$`•`$ The $`n`$ = 2$`, 4 , 6 ,\dots`$ terms (with a -1 in the matrix) are nearly the series for $`\frac{1}{2} \cos ( \theta )`$. The $`n`$ = 0 term is is missing so subtract 1. The middle matrix element is twice the other even terms.
 
 ```math
 e^{i\theta L_{y} / \hbar} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} + \sin ( \theta ) \frac{1}{\sqrt{2}} \begin{pmatrix} 0 & 1 & 0 \\ - 1 & 0 & 1 \\ 0 & - 1 & 0 \end{pmatrix} + \frac{1}{2} ( \cos ( \theta ) - 1 ) \begin{pmatrix} 1 & 0 & - 1 \\ 0 & 2 & 0 \\ - 1 & 0 & 1 \end{pmatrix}

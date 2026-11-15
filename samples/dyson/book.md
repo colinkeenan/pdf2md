@@ -1116,7 +1116,7 @@ i \hbar \frac{\partial \psi}{\partial t} = \left[ - e \Phi + \sum_{1}^{3} \left(
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p13" href="book.pdf#page=19" target="_blank" title="This page in the PDF"><sup>[p. 13]</sup></a>
 
-since by (57), we have $`\overline{\psi} \gamma_{\mu} = \psi^{*} \beta \gamma_{\mu} = ( C\varphi^{+} )^{T} \beta \gamma_{\mu} = \varphi^{T} C^{T} \beta \gamma_{\mu}`$; the wave function $`\varphi = C\psi^{+}`$of a positron satisfies by (65)
+since by (57), we have $`\overline{\psi} \gamma_{\mu} = \psi^{*} \beta \gamma_{\mu} = ( C\varphi^{+} )^{T} \beta \gamma_{\mu} = \varphi^{T} C^{T} \beta \gamma_{\mu}`$; the wave function $`\varphi = C\psi^{+}`$ of a positron satisfies by (65)
 
 <a id="eq-67"></a>
 
@@ -3484,7 +3484,7 @@ The operators $`A_{\mu} ( x )`$ obey the Heisenberg equations of motion for oper
 i \hbar \frac{\partial A_{\mu}}{\partial t} = \boldsymbol{[} A_{\mu} ,H \boldsymbol{]} \qquad \text{(190a)}
 ```
 
-Therefore the operator $`a_{k\mu}`$ exp$`( ik \cdot x )`$ has matrix elements between an initial state of energy $`E_{1}`$ and a final state of energy $`E_{2}`$, only if
+Therefore the operator $`a_{k\mu} \exp ( ik \cdot x )`$ has matrix elements between an initial state of energy $`E_{1}`$ and a final state of energy $`E_{2}`$, only if
 
 <a id="eq-215"></a>
 
@@ -4552,7 +4552,7 @@ Hence<sup><a id="fnref-43" href="#fn-43">43</a></sup>
 \begin{aligned} \Delta E &= \frac{e^{4} \hbar}{1 2 \pi^{2} m^{2} c^{3}} | \psi_{o} ( 0 ) |^{2} \log \frac{K}{( E - E_{o} )_{\text{ av }}} \\ &= \frac{e^{4} \hbar}{1 2 \pi^{2} m^{2} c^{3}} \log \frac{K}{( E - E_{o} )_{\text{ av }}} \times \begin{cases} 1 / ( \pi n^{3} a_{o}^{3} ) & \text{ for } s \text{ states } \\ 0 & \text{ for others } \end{cases} \end{aligned} \qquad \text{(284)}
 ```
 
-Compare this with (239). It differs only in having the log$`( K/ ( E - E_{o} )_{\text{ av }} )`$ replacing $`\log ( 1 /RK_{H} )`$. The low frequency photons have now been treated properly instead of being estimated. Only the high-frequency end is still inaccurate because of the vagueness of the cut-off $`K`$. Taking $`K = mc^{2}`$, (284) gives for the Lamb shift 2$`s - 2 p`$ the value _1040 Megacycles_. Remarkably close to the experimental value of 1062.
+Compare this with (239). It differs only in having the $`\log ( K/ ( E - E_{o} )_{\text{ av }} )`$ replacing $`\log ( 1 /RK_{H} )`$. The low frequency photons have now been treated properly instead of being estimated. Only the high-frequency end is still inaccurate because of the vagueness of the cut-off $`K`$. Taking $`K = mc^{2}`$, (284) gives for the Lamb shift 2$`s - 2 p`$ the value _1040 Megacycles_. Remarkably close to the experimental value of 1062.
 
 The success of this calculation of the line shift shows that the correct treatment of the interaction between an <a id="ix-106">electron</a> and the Maxwell field, with the help of the idea of mass renormalization, will give sensible results in agreement with experiment. This calculation could be done non-relativistically because the line shift is mainly a low-frequency and non-relativistic effect.
 
@@ -5045,7 +5045,7 @@ where
 \Theta_{u} = \begin{cases} = 1 & \text{ for electron states } u , \\ = 0 & \text{ for positron states } . \end{cases}
 ```
 
-Hence by (306) and (309) the expectation value $`\left\langle \psi_{\alpha} ( z ) \overline{\psi}_{\beta} ( y ) \right\rangle_{o}`$ is just the part of the anti-commutator $`\{ \psi_{\alpha} ( z ) , \overline{\psi}_{\beta} ( y ) \}`$ which contains positive frequencies exp$`[ ik \cdot ( z - y ) ]`$, with $`k_{o} > 0`$. Thus, similarly to (221)
+Hence by (306) and (309) the expectation value $`\left\langle \psi_{\alpha} ( z ) \overline{\psi}_{\beta} ( y ) \right\rangle_{o}`$ is just the part of the anti-commutator $`\{ \psi_{\alpha} ( z ) , \overline{\psi}_{\beta} ( y ) \}`$ which contains positive frequencies $`\exp [ ik \cdot ( z - y ) ]`$, with $`k_{o} > 0`$. Thus, similarly to (221)
 
 <a id="eq-325"></a>
 

@@ -59,7 +59,7 @@ There are only a few problems which can be worked this way but they are importan
 
 # <a id="s-13-1-particle-in-a-3d-box"></a>13.1 Particle in a 3D Box
 
-An example of a problem which has a Hamiltonian of the separable form is the **particle in a 3D** **box**. The potential is zero inside the **cube of side** $`L`$and infinite outside. It can be written as a sum of terms.
+An example of a problem which has a Hamiltonian of the separable form is the **particle in a 3D** **box**. The potential is zero inside the **cube of side** $`L`$ and infinite outside. It can be written as a sum of terms.
 
 ```math
 H = H_{x} + H_{y} + H_{z}

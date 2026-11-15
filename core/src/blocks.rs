@@ -503,6 +503,16 @@ fn emit_line(doc: &Doc, l: &Line, st: &Stats, spans: &[crate::layout::Span], kin
         let s = &spans[i];
         // (in smaller type, a note or an exercise, the space is smaller too)
         let space = prev_right.is_some_and(|r| s.left - r > 0.15 * st.body.min(l.size));
+        // (between a word and a formula a space may be squeezed to two
+        // points of the page's grid, where the pieces' places are whole
+        // numbers: still a space, but for "th" and "s" set against a letter)
+        let space = space || {
+            let gap = prev_right.map_or(0.0, |r| s.left - r);
+            let word_before = i > 0 && kinds[i - 1] != K::Math && kinds[i] == K::Math && spans[i - 1].text.ends_with(char::is_alphabetic);
+            let first: String = s.text.chars().take_while(|c| c.is_alphabetic()).collect();
+            let word_after = i > 0 && kinds[i - 1] == K::Math && kinds[i] == K::Text && !first.is_empty() && !["th", "st", "nd", "rd", "s"].contains(&first.as_str());
+            (word_before || word_after) && gap >= 0.12 * st.body.min(l.size) && gap >= 1.5
+        };
         // (a comma or full stop after an italic letter stands a little off it)
         let closes = kinds[i] != K::Math && s.text.starts_with([',', '.', ';', ':', ')', ']', '?', '!']) && !s.text.starts_with(". .") && !s.text.starts_with("..");
         let space = space && !(closes && prev_right.is_some_and(|r| s.left - r <= 0.3 * st.body.min(l.size)));

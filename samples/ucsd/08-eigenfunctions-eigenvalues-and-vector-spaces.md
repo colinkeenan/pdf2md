@@ -499,7 +499,7 @@ We **cannot make eigenfunctions of all three operators** since
 [ P,p ] \neq 0 .
 ```
 
-So we have the **choice** of the $`e^{ikx}`$ states which are eigenfunctions of $`H`$ and of $`p`$, but contain positive and negative parity components. or we have the sin$`( kx )`$ and $`\cos ( kx )`$ states which contain two momenta but are eigenstates of $`H`$ and Parity. These are just different linear combinations of the same solutions.
+So we have the **choice** of the $`e^{ikx}`$ states which are eigenfunctions of $`H`$ and of $`p`$, but contain positive and negative parity components. or we have the $`\sin ( kx )`$ and $`\cos ( kx )`$ states which contain two momenta but are eigenstates of $`H`$ and Parity. These are just different linear combinations of the same solutions.
 
 # <a id="s-8-7-derivations-and-computations"></a>8.7 Derivations and Computations
 

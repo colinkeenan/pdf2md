@@ -763,7 +763,7 @@ i \hbar \frac{\partial \psi}{\partial t} = \left[ - e \Phi + \sum_{1}^{3} \left(
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p13" href="book.pdf#page=19" target="_blank" title="This page in the PDF"><sup>[p. 13]</sup></a>
 
-since by (57), we have $`\overline{\psi} \gamma_{\mu} = \psi^{*} \beta \gamma_{\mu} = ( C\varphi^{+} )^{T} \beta \gamma_{\mu} = \varphi^{T} C^{T} \beta \gamma_{\mu}`$; the wave function $`\varphi = C\psi^{+}`$of a positron satisfies by (65)
+since by (57), we have $`\overline{\psi} \gamma_{\mu} = \psi^{*} \beta \gamma_{\mu} = ( C\varphi^{+} )^{T} \beta \gamma_{\mu} = \varphi^{T} C^{T} \beta \gamma_{\mu}`$; the wave function $`\varphi = C\psi^{+}`$ of a positron satisfies by (65)
 
 <a id="eq-67"></a>
 

@@ -461,6 +461,55 @@ pub(crate) fn sides(mut v: Vec<Inline>) -> Vec<Inline> {
                 }
             }
         }
+        // (a word set right against a formula: a function's name before
+        // its bracket is the formula's — "det" + "[ A ]", "tr log" + "[…]" —
+        // and any other word has lost its space; so has a word behind a
+        // formula, but for "th" and "st")
+        let mut named = false;
+        if k > 0 {
+            let (a, b) = v.split_at_mut(k);
+            if let (Inline::Text(t), Inline::Math(m)) = (&mut a[k - 1], &mut b[0]) {
+                loop {
+                    let body = t.strip_suffix(' ').unwrap_or(t);
+                    let spaced = body.len() < t.len();
+                    let n = body.len() - body.trim_end_matches(|c: char| c.is_ascii_alphabetic()).len();
+                    let word = &body[body.len() - n..];
+                    let alone = !body[..body.len() - n].ends_with(|c: char| c.is_alphanumeric());
+                    let name = function(word).or_else(|| (word == "sign").then(|| "\\operatorname{sign}".to_string())).filter(|_| alone);
+                    let takes = if spaced { m.starts_with("\\operatorname") || crate::mathtex::FUNCS.iter().any(|f| m.strip_prefix('\\').is_some_and(|r| r.starts_with(f))) } else { m.starts_with(['(', '[']) };
+                    match name {
+                        Some(f) if takes => {
+                            *m = format!("{f} {m}");
+                            t.truncate(body.len() - n);
+                            named = true;
+                        }
+                        _ => {
+                            if !spaced && n >= 2 && !m.starts_with(['(', '[']) {
+                                t.push(' ');
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        // (the name stood between two parts of one formula: "⟨" + "tr" + "[…]⟩")
+        if named && k >= 2 && matches!(&v[k - 1], Inline::Text(t) if t.trim().is_empty()) && matches!(&v[k - 2], Inline::Math(_)) {
+            let (Inline::Math(a), Inline::Math(b)) = (&v[k - 2], &v[k]) else { unreachable!() };
+            let all = joined(a, b);
+            v.splice(k - 2..=k, [Inline::Math(all)]);
+            k -= 2;
+            continue;
+        }
+        if k + 1 < v.len() {
+            let (a, b) = v.split_at_mut(k + 1);
+            if let (Inline::Math(_), Inline::Text(t)) = (&a[k], &mut b[0]) {
+                let n = t.len() - t.trim_start_matches(|c: char| c.is_ascii_lowercase()).len();
+                if n >= 2 && !["th", "st", "nd", "rd"].contains(&&t[..n]) {
+                    t.insert(0, ' ');
+                }
+            }
+        }
         // (an exponent or index with nothing under it, behind a bracket:
         // the bracket's — "(length)" and its power, "[1]" and its star)
         if let Inline::Math(m) = &mut v[k] {
@@ -645,6 +694,11 @@ mod tests {
         assert_eq!(sides(vec![t("dimension of (length) "), m("{}^{\\tfrac{1}{2} (D - 2 )}"), t(". Thus")]), vec![t("dimension of "), m("( \\text{length} )^{\\tfrac{1}{2} (D - 2 )}"), t(". Thus")]);
         assert_eq!(sides(vec![t("equivalent to [1]"), m("{}^{*} = 5^{*}")]), vec![t("equivalent to "), m("[ 1 ]^{*} = 5^{*}")]);
         assert_eq!(sides(vec![m("( \\text{length} ) {}^{2}")]), vec![m("( \\text{length} )^{2}")]);
+        assert_eq!(sides(vec![t("we need tr log"), m("[ i \\partial - m ]"), t("which is")]), vec![t("we need "), m("\\operatorname{tr} \\log [ i \\partial - m ]"), t(" which is")]);
+        assert_eq!(sides(vec![t("denoted by"), m("\\psi"), t(". The "), m("n"), t("th one")]), vec![t("denoted by "), m("\\psi"), t(". The "), m("n"), t("th one")]);
+        assert_eq!(sides(vec![m("G(z) \\equiv \\langle"), t("tr"), m("[ 1 /(z - H) ] \\rangle")]), vec![m("G(z) \\equiv \\langle \\operatorname{tr} [ 1 /(z - H) ] \\rangle")]);
+        let greek = vec![t("with Ω"), m("{}_{1} ( t )"), t("Ψ = 0 in L"), m("A"), t("TEX")];
+        assert_eq!(sides(greek.clone()), greek);
         // (a note's mark after a word or a year stays one)
         let mark = vec![t("as shown in 1905"), sup("3"), t(" by")];
         assert_eq!(sides(mark.clone()), mark);

@@ -487,7 +487,7 @@ This is just the standard eigenvalue problem for the full Hamiltonian in the **s
 
 1. An electron is bound in a harmonic oscillator potential $`V_{0} = \tfrac{1}{2} m\omega^{2} x^{2}`$. Small electric fields in the $`x`$ direction are applied to the system. Find the lowest order nonzero shifts in the energies of the ground state and the first excited state if a constant field $`E_{1}`$ is applied. Find the same shifts if a field $`E_{1} x^{3}`$ is applied.
 
-2. A particle is in a box from $`- a`$ to $`a`$ in one dimension. A small additional potential $`V_{1} = \lambda`$ cos$`( \tfrac{\pi x}{2 b} )`$ is applied. Calculate the energies of the first and second excited states in this new potential.
+2. A particle is in a box from $`- a`$ to $`a`$ in one dimension. A small additional potential $`V_{1} = \lambda \cos ( \tfrac{\pi x}{2 b} )`$ is applied. Calculate the energies of the first and second excited states in this new potential.
 
 3. The proton in the hydrogen nucleus is not really a point particle like the electron is. It has a complicated structure, but, a good approximation to its charge distribution is a uniform charge density over a sphere of radius 0.5 fermis. Calculate the effect of this potential change for the energy of the ground state of hydrogen. Calculate the effect for the $`n`$ = 2 states.
 

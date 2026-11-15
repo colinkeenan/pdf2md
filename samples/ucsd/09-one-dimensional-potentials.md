@@ -637,9 +637,9 @@ By matching the boundary conditions and requiring that the probability be period
 \cos ( \varphi ) = \cos ( ka ) + \frac{maV_{0}}{\hbar^{2} k} \sin ( ka )
 ```
 
-Since cos$`( \varphi )`$ can only take on values between -1 and 1, there are **allowed bands of** $`k`$ **and gaps** **between those bands**.
+Since $`\cos ( \varphi )`$ can only take on values between -1 and 1, there are **allowed bands of** $`k`$ **and gaps** **between those bands**.
 
-The graph below shows cos$`( ka ) + \tfrac{maV_{0}}{\hbar^{2} k}`$ sin$`( ka )`$ as a function of $`k`$. If this is not between -1 and 1, there is no solution, that value of $`k`$ and the corresponding energy are not allowed.
+The graph below shows $`\cos ( ka ) + \tfrac{maV_{0}}{\hbar^{2} k} \sin ( ka )`$ as a function of $`k`$. If this is not between -1 and 1, there is no solution, that value of $`k`$ and the corresponding energy are not allowed.
 
 ![Figure 40 (p. 158)](images/fig-p158-1.png)
 
@@ -1409,7 +1409,7 @@ e^{i\varphi} + e^{- i\varphi} - \left( \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka )
 \cos ( \varphi ) = \cos ( ka ) + \frac{maV_{0}}{\hbar^{2} k} \sin ( ka )
 ```
 
-This relation puts constraints on $`k`$, like the constraints that give us quantized energies for bound states. Since cos$`( \varphi )`$ can only take on values between -1 and 1, there are allowed bands of $`k`$ and gaps between those bands.
+This relation puts constraints on $`k`$, like the constraints that give us quantized energies for bound states. Since $`\cos ( \varphi )`$ can only take on values between -1 and 1, there are allowed bands of $`k`$ and gaps between those bands.
 
 # <a id="s-9-8-examples"></a>9.8 Examples
 

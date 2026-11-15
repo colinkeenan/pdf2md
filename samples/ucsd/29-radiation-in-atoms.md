@@ -47,7 +47,7 @@ We need to quantize the EM field into photons satisfying Plank’s original hypo
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p399" href="book.pdf#page=399" target="_blank" title="This page in the PDF"><sup>[p. 399]</sup></a>
 
-vector $`\vec{k} )`$. Using classical E&M to compute the energy in a field (See Section 29.14.1) represented by a vector potential $`\vec{A} ( \vec{r} , t )`$ = 2$`\vec{A}_{0}`$ cos$`( \vec{k} \cdot \vec{r} - \omega t )`$, we find that the energy inside a volume $`V`$ is
+vector $`\vec{k} )`$. Using classical E&M to compute the energy in a field (See Section 29.14.1) represented by a vector potential $`\vec{A} ( \vec{r} , t )`$ = 2$`\vec{A}_{0} \cos ( \vec{k} \cdot \vec{r} - \omega t )`$, we find that the energy inside a volume $`V`$ is
 
 ```math
 Energy = \frac{\omega^{2}}{2 \pi c^{2}} V | A_{0} |^{2} = N \hbar \omega .

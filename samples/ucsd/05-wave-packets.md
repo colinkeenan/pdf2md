@@ -79,7 +79,7 @@ Check the normalization of (1).
 \int_{-\infty}^{\infty} | A ( k ) |^{2} dk = \frac{1}{a} \int_{k_{0} - \tfrac{a}{2}}^{k_{0} + \tfrac{a}{2}} dk = \frac{1}{a} a = 1
 ```
 
-Check the normalization of (2) using the result for a definite integral of a Gaussian (See section$`\infty`$
+Check the normalization of (2) using the result for a definite integral of a Gaussian (See section $`\infty`$
 
 ```math
 5 . 6 . 3 ) \int_{-\infty} dxe^{- ax^{2}} = \sqrt{\frac{\pi}{a}} .
@@ -839,7 +839,7 @@ We can probe atoms with high energy photons (for example). These will blow the a
 
 ## <a id="s-5-7-5-can-i-see-inside-a-nucleus"></a>5.7.5 Can I “See” inside a Nucleus
 
-In a similar fashion to the previous section, $`E_{\gamma} \geq \tfrac{\hbar c}{2 ( 0 . 1 F )}`$ = 1000 MeV$`.`$
+In a similar fashion to the previous section, $`E_{\gamma} \geq \tfrac{\hbar c}{2 ( 0 . 1 F )}`$ = 1000 MeV $`.`$
 
 The binding energy per nucleon is a few MeV, so, we will also blow nuclei apart to look carefully inside them. We again can just use lots of nuclei to allow us to learn about internal nuclear structure.<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=113" target="_blank" title="This page in the PDF"><sup>[p. 113]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p114" href="book.pdf#page=114" target="_blank" title="This page in the PDF"><sup>[p. 114]</sup></a></span> **5.7.6 Estimate the Hydrogen Ground State Energy**
 
