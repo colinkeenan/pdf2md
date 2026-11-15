@@ -1351,10 +1351,13 @@ pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
     }
     // what was written for each equation, to tell later edits from it
     crate::ocr::record_written(dir, &written.iter().map(String::as_str).collect::<Vec<_>>())?;
+    let p = dir.join("check-equations.md");
     if let Some(list) = check_list(book) {
-        let p = dir.join("check-equations.md");
         std::fs::write(&p, list)?;
         out.push(p);
+    } else if std::fs::read_to_string(&p).is_ok_and(|t| t.starts_with("# Equations to check")) {
+        // (nothing left to check: the list of an earlier conversion goes)
+        std::fs::remove_file(&p)?;
     }
     if book.chapters.len() > 1 {
         let p = dir.join("book.md");

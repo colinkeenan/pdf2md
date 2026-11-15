@@ -330,10 +330,23 @@ pub fn collect(dir: &Path) -> UserData {
         } else {
             collect_file(&text, &|_| Some(name.clone()))
         };
-        for n in data.notes {
-            if !all.notes.iter().any(|m| m.text == n.text) {
-                all.notes.push(n);
+        if name == "book" {
+            // (a note of book.md that a chapter's file has too is that note,
+            // one for one: two notes of the same words are two notes)
+            let mut taken = vec![false; all.notes.len()];
+            for n in data.notes {
+                let free = |i: &usize| !taken[*i] && all.notes[*i].text == n.text;
+                let hit = (0..all.notes.len()).filter(free).find(|&i| all.notes[i].after == n.after).or_else(|| (0..all.notes.len()).find(free));
+                match hit {
+                    Some(i) => taken[i] = true,
+                    None => {
+                        all.notes.push(n);
+                        taken.push(true);
+                    }
+                }
             }
+        } else {
+            all.notes.extend(data.notes);
         }
         for f in data.fixes {
             if !all.fixes.iter().any(|g| g.span == f.span && g.paragraph == f.paragraph) {
@@ -540,6 +553,19 @@ mod tests {
         // (a note that came to stand between the mark and the equation)
         let between = eq("u_{El} = A r", "").replace(" -->\n\n```math", " -->\n\n> [!NOTE]\n> The index was read as I.\n\n```math");
         assert_eq!(collect_file(&between, &|_| Some("c".into())), d);
+    }
+
+    #[test]
+    fn two_notes_of_the_same_words_are_two_notes() {
+        let dir = std::env::temp_dir().join(format!("pdf2md-notes-{}", std::process::id()));
+        std::fs::create_dir_all(&dir).unwrap();
+        let chapter = "# One\n\nFirst paragraph.\n\n> [!NOTE]\n> Bold in the book.\n\nSecond paragraph.\n\n> [!NOTE]\n> Bold in the book.\n";
+        std::fs::write(dir.join("01-one.md"), chapter).unwrap();
+        std::fs::write(dir.join("book.md"), format!("<a id=\"01-one\"></a>\n\n{chapter}")).unwrap();
+        let d = collect(&dir);
+        std::fs::remove_dir_all(&dir).unwrap();
+        assert_eq!(d.notes.len(), 2);
+        assert_ne!(d.notes[0].after, d.notes[1].after);
     }
 
     #[test]
