@@ -4,8 +4,9 @@
 //! * **Notes**: `<details class="mine"> … </details>` blocks and alert
 //!   boxes (`> [!NOTE]`, `> [!WARNING]` …); pdf2md never writes either.
 //!   Each is put back right after the block it followed (found by that
-//!   block's first words), else after the nearest anchor above it, else at
-//!   the end of its chapter.
+//!   block's first words; under an equation read from a picture, by the
+//!   picture), else after the nearest anchor above it, else at the end of
+//!   its chapter.
 //! * **Prose fixes** (the conversion got the book's words wrong):
 //!   `<span class="fix" data-was="as converted">as in the book</span>`;
 //!   redone in the same paragraph.
@@ -192,6 +193,26 @@ fn note_ranges(text: &str) -> Vec<(usize, usize)> {
 
 /// The reader's notes and prose fixes in one Markdown file. `slug_at`
 /// names the chapter at a byte position (book.md holds them all).
+/// What `Note::after` begins with for a note under a displayed equation
+/// read from a picture (no block's first words read like this), before
+/// the picture's key.
+const EQUATION: &str = "pdf2md:eq ";
+
+/// The picture of the displayed equation that ends this text: its
+/// ```` ```math ```` block under its mark (`<!-- pdf2md:eq KEY -->`), or
+/// the mark alone (a note that came to stand between the two).
+fn equation_above(before: &str) -> Option<&str> {
+    let before = before.trim_end();
+    fn mark(t: &str) -> Option<&str> {
+        t.trim_end().rsplit('\n').next()?.strip_prefix("<!-- pdf2md:eq ")?.strip_suffix(" -->")
+    }
+    if let Some(k) = mark(before) {
+        return Some(k);
+    }
+    let start = before.rfind("\n\n")?;
+    (before[start + 2..].starts_with("```math") && before.ends_with("```")).then(|| mark(&before[..start]))?
+}
+
 fn collect_file(text: &str, slug_at: &dyn Fn(usize) -> Option<String>) -> UserData {
     let mut data = UserData::default();
     let notes = note_ranges(text);
@@ -206,6 +227,12 @@ fn collect_file(text: &str, slug_at: &dyn Fn(usize) -> Option<String>) -> UserDa
             if inside(start) {
                 end = start;
                 continue;
+            }
+            // (under a displayed equation read from a picture: kept by the
+            // picture, for the equation's LaTeX may be corrected since)
+            if let Some(k) = equation_above(before) {
+                after = format!("{EQUATION}{k}");
+                break;
             }
             // (as converted: fixes undone, so it is found with or without them)
             after = fingerprint(&undo_fixes(&before[start..]));
@@ -419,7 +446,19 @@ pub fn apply(text: &mut String, data: &UserData, slug: Option<&str>) -> Vec<Note
     for n in data.notes.iter().filter(|n| ours(&n.slug)) {
         let mut pos = 0;
         let mut at = None;
+        // (under an equation read from a picture: under that picture's
+        // equation, whatever its LaTeX is now)
+        if let Some(k) = n.after.strip_prefix(EQUATION) {
+            let open = format!("<!-- pdf2md:eq {k} -->\n\n```math\n");
+            at = text.find(&open).and_then(|i| {
+                let from = i + open.len();
+                text[from..].find("\n```").map(|j| from + j + 4)
+            });
+        }
         for block in text.split("\n\n") {
+            if at.is_some() || n.after.starts_with(EQUATION) {
+                break;
+            }
             if !n.after.is_empty() && fingerprint(&undo_fixes(block)) == n.after {
                 // after the block's text (before a final newline of the file)
                 at = Some(pos + block.trim_end_matches('\n').len());
@@ -486,6 +525,22 @@ mod tests {
     use super::*;
 
     const OLD: &str = "# Chapter\n\nFirst paragraph about spin.\n\n<a id=\"eq-1.1\"></a>\n\n$$\nx=1 \\tag{1.1}\n$$\n\n<details class=\"mine\">\n<summary>✎ My note</summary>\n\nWhy *x* is 1.\n\n</details>\n\nSecond paragraph with a <span class=\"fix\" data-was=\"rnistake\">mistake</span> in it.\n\n> [!WARNING]\n> I think this is wrong.\n\nThird paragraph.\n";
+
+    #[test]
+    fn a_note_under_an_equation_stays_under_it_when_the_equation_is_corrected() {
+        let eq = |latex: &str, note: &str| format!("Before it.\n\n<a id=\"img-0123456789abcdef\"></a>\n<!-- pdf2md:eq 0123456789abcdef -->\n\n```math\n{latex} \\qquad \\text{{(1.1)}}\n```{note}\n\nAfter it.\n");
+        let note = "\n\n> [!NOTE]\n> The index was read as I.";
+        let d = collect_file(&eq("u_{EI} = A r", note), &|_| Some("c".into()));
+        assert_eq!(d.notes[0].after, "pdf2md:eq 0123456789abcdef");
+        // (the next conversion writes the corrected equation)
+        let mut new = eq("u_{El} = A r", "");
+        assert!(apply(&mut new, &d, Some("c")).is_empty());
+        assert_eq!(new, eq("u_{El} = A r", note));
+        assert_eq!(collect_file(&new, &|_| Some("c".into())), d);
+        // (a note that came to stand between the mark and the equation)
+        let between = eq("u_{El} = A r", "").replace(" -->\n\n```math", " -->\n\n> [!NOTE]\n> The index was read as I.\n\n```math");
+        assert_eq!(collect_file(&between, &|_| Some("c".into())), d);
+    }
 
     #[test]
     fn two_fixes_in_one_paragraph_are_both_redone() {
