@@ -2918,6 +2918,34 @@ fn group_lines(
             groups[m].push(s);
         }
     }
+    // A small piece that goes on, at their height, right after the small
+    // letters of the line beside its own, and has nothing of its own line
+    // before it there: the "+" of the ϕ⁺ that heads a column set in the
+    // text, which stands in the height of the line above.
+    loop {
+        let mut to_move: Option<(usize, usize, usize)> = None;
+        'find: for k in 0..groups.len() {
+            let main_size = size_of(&groups[k][0]);
+            for j in 1..groups[k].len() {
+                let s = &groups[k][j];
+                if size_of(s) >= 0.85 * main_size || s.text.trim().is_empty() || s.text.trim() == "√" {
+                    continue;
+                }
+                let follows = |n: &Span| n.right() >= s.left - 0.3 * size_of(s) && n.right() <= s.left + 1.0 && n.bottom().min(s.bottom()) - n.top.max(s.top) >= 0.6 * n.height.min(s.height);
+                if groups[k].iter().any(|n| !std::ptr::eq(n, s) && n.right() >= s.left - 0.5 * main_size && n.right() <= s.left + 1.0 && n.bottom() > s.top && n.top < s.bottom()) {
+                    continue;
+                }
+                let among = (0..groups.len()).find(|&m| m != k && groups[m].iter().skip(1).any(|n| size_of(n) < 0.85 * size_of(&groups[m][0]) && (size_of(n) - size_of(s)).abs() < 0.3 * size_of(n) && follows(n)));
+                if let Some(m) = among {
+                    to_move = Some((k, j, m));
+                    break 'find;
+                }
+            }
+        }
+        let Some((k, j, m)) = to_move else { break };
+        let s = groups[k].remove(j);
+        groups[m].push(s);
+    }
     // a root sign is of the line its foot stands in
     for s in roots {
         let low = s.bottom() - 2.0;
