@@ -166,7 +166,7 @@ No conversion is perfect, and a textbook is something you write in. What you cha
 
 Any other edit to the text is lost at the next conversion. A note whose place can no longer be found goes to the end of its chapter; it is never dropped. Corrections are stored in `~/.local/share/pdf2md/corrections/`, and a copy of your notes in `~/.local/share/pdf2md/notes/`.
 
-**Equations to check.** For ebook-made and scanned books, each displayed equation is read twice, and for ebook-made books a third time by the page reader's recognizer where that is installed (see [scanned books](#three-kinds-of-pdf)); its reading is the one written where the two recognizers differ in more than bold letters. Where no two readings agree, the equation is listed in `check-equations.md` in the book's folder, biggest differences first. An entry marked **bold?** is one where the two readings set different letters bold. A last group lists equations whose pictures have bold letters while the reading has none. An equation you correct drops off the list.
+**Equations to check.** For ebook-made and scanned books, each displayed equation is read twice, and for ebook-made books a third time by the page reader's recognizer where that is installed (see [scanned books](#three-kinds-of-pdf)); its reading is the one written where the two recognizers differ in more than bold letters. Where no two readings agree (the two recognizers', or one recognizer's two), the equation is listed in `check-equations.md` in the book's folder, biggest differences first. An entry marked **bold?** is one where the two readings set different letters bold. A last group lists equations whose pictures have bold letters while the reading has none. An equation you correct drops off the list.
 
 ## Limitations
 

@@ -11,7 +11,9 @@ errs in other places than the math recognizer does:
     NAME.surya   what it read, as it gave it (kept: the choice below is
                  made anew each time, from the three readings)
     NAME.best    the reading to write, where it is not NAME.tex
-    NAME.agree   "ok", or "check N": no two recognizers read the same
+    NAME.surya3  its second reading, of the picture enlarged more, where
+                 the math recognizer did not bear the first out
+    NAME.agree   "ok", or "check N": no two readings are the same
                  formula, and N symbols differ
 
 The choice: where the two recognizers read the same formula, bold letters
@@ -19,7 +21,8 @@ and ways of writing aside, the reading with more bold letters (each
 misses some; neither invents them). Otherwise the other recognizer's
 reading: on symbols it is right far more often (l for I, a prime, a nabla
 read as a bold V). Such an equation is listed to check unless the math
-recognizer's second reading says the same.
+recognizer's second reading says the same, or the other recognizer reads
+the same formula again from the picture enlarged more.
 """
 
 import os
@@ -39,11 +42,11 @@ def tell(what: str, n: int, total: int):
     print(f"  {what} {n}/{total}", file=sys.stderr, flush=True)
 
 
-def prepared(path) -> Image.Image:
-    """The picture twice as large on a white ground: as the recognizer
-    reads a block of a page."""
+def prepared(path, scale: int = 2) -> Image.Image:
+    """The picture enlarged on a white ground: as the recognizer reads a
+    block of a page."""
     img = Image.open(path).convert("RGB")
-    img = img.resize((img.width * 2, img.height * 2), Image.LANCZOS)
+    img = img.resize((img.width * scale, img.height * scale), Image.LANCZOS)
     out = Image.new("RGB", (img.width + 40, img.height + 40), "white")
     out.paste(img, (20, 20))
     return out
@@ -154,6 +157,36 @@ def choose(first: str, second: str, other):
     return other, max(1, m.difference(first, other))
 
 
+def read(files, dst, ext: str, scale: int, state: dict):
+    """Read the pictures with the page reader's recognizer, enlarged
+    `scale` times; what it gives is kept as NAME.`ext`."""
+    if not files:
+        return
+    if "rec" not in state:
+        from surya.foundation import FoundationPredictor
+        from surya.recognition import RecognitionPredictor
+
+        tell("loading", 0, 1)
+        state["rec"] = RecognitionPredictor(FoundationPredictor())
+        state["rec"].disable_tqdm = True
+        tell("loading", 1, 1)
+    rec = state["rec"]
+    tell("comparing", 0, len(files))
+    for i in range(0, len(files), BATCH):
+        part = files[i : i + BATCH]
+        imgs = [prepared(f, scale) for f in part]
+        preds = rec(
+            images=imgs,
+            bboxes=[[[0, 0, im.width, im.height]] for im in imgs],
+            task_names=["block_without_boxes"] * len(imgs),
+            math_mode=True,
+            max_tokens=1024,
+        )
+        for f, p in zip(part, preds):
+            (dst / f"{f.stem}.{ext}").write_text(" ".join(line.text for line in p.text_lines) + "\n")
+        tell("comparing", min(i + BATCH, len(files)), len(files))
+
+
 def main():
     src, dst = Path(sys.argv[1]), Path(sys.argv[2])
     files = sorted(src.glob("*.png"))
@@ -162,31 +195,10 @@ def main():
         tex = dst / f"{f.stem}.tex"
         if tex.exists() and not tex.read_text().startswith("%"):
             math.append(f)
-    todo = [f for f in math if not (dst / f"{f.stem}.surya").exists()]
-    if todo:
-        from surya.foundation import FoundationPredictor
-        from surya.recognition import RecognitionPredictor
+    state = {}
+    read([f for f in math if not (dst / f"{f.stem}.surya").exists()], dst, "surya", 2, state)
 
-        tell("loading", 0, 1)
-        rec = RecognitionPredictor(FoundationPredictor())
-        rec.disable_tqdm = True
-        tell("loading", 1, 1)
-        tell("comparing", 0, len(todo))
-        for i in range(0, len(todo), BATCH):
-            part = todo[i : i + BATCH]
-            imgs = [prepared(f) for f in part]
-            preds = rec(
-                images=imgs,
-                bboxes=[[[0, 0, im.width, im.height]] for im in imgs],
-                task_names=["block_without_boxes"] * len(imgs),
-                math_mode=True,
-                max_tokens=1024,
-            )
-            for f, p in zip(part, preds):
-                (dst / f"{f.stem}.surya").write_text(" ".join(line.text for line in p.text_lines) + "\n")
-            tell("comparing", min(i + BATCH, len(todo)), len(todo))
-    changed = doubtful = 0
-    for f in math:
+    def readings(f):
         first = (dst / f"{f.stem}.tex").read_text().strip()
         s = dst / f"{f.stem}.second"
         second = s.read_text().strip() if s.exists() else ""
@@ -194,7 +206,27 @@ def main():
         if other is not None:
             # (the picture has no bold letter: nor has this reading of it)
             other = m.bold_by_picture(Image.open(f), other)[0]
+        return first, second, other
+
+    # Where the math recognizer does not bear the other one out, the other
+    # one reads the picture again, larger: reading the same formula twice
+    # is as good a sign (9 of 9 right in a sample checked by eye).
+    chosen = {f: (readings(f), None) for f in math}
+    again = []
+    for f in math:
+        (first, second, other), _ = chosen[f]
+        if other is not None and choose(first, second, other)[1] > 0 and not (dst / f"{f.stem}.surya3").exists():
+            again.append(f)
+    read(again, dst, "surya3", 3, state)
+    changed = doubtful = 0
+    for f in math:
+        (first, second, other), _ = chosen[f]
         best, n = choose(first, second, other)
+        third = dst / f"{f.stem}.surya3"
+        if n > 0 and other is not None and third.exists():
+            larger = as_latex(third.read_text())
+            if larger is not None and loose(larger) == loose(other):
+                n = 0
         target = dst / f"{f.stem}.best"
         if best is None:
             if target.exists():
