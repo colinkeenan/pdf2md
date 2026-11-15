@@ -38,7 +38,7 @@ from PIL import Image  # noqa: E402
 BATCH = 32
 # Which rules the choice was made by, on the second line of NAME.agree: a
 # choice made by older rules is made again (keep in step with ocr.rs).
-RULES = "rules 2"
+RULES = "rules 3"
 
 
 def tell(what: str, n: int, total: int):
@@ -247,6 +247,12 @@ def main():
             larger = as_latex(third.read_text())
             if larger is not None and loose(larger) == loose(other):
                 n = 0
+            elif larger is not None:
+                # (its two readings differ: one of them may be what the
+                # math recognizer read, and then that is the formula)
+                again = choose(first, second, larger)
+                if again[1] == 0:
+                    best, n = again
         target = dst / f"{f.stem}.best"
         if best is None:
             if target.exists():
