@@ -121,6 +121,8 @@ cargo run -p pdf2md-core --bin pdf2md-cli -- --course "My Course Downloads" "My 
 
 The folder holds pages of the course's site saved as HTML (`syllabus.html`, `lecture-notes.html`, `assignments.html` …) and, for each page that lists PDFs, a subfolder with those PDFs (`Lecture Notes/`, `Assignments/` …) under the names the page's links have. A page without PDFs is a file of the book. `topics-covered.html`, if there is one, holds the course's outline as a list: it is the frame of the contents, and the lecture notes are listed under the topic they belong to (by the words of their topics). Each PDF's page markers open that PDF; `book.md` holds the whole course for searching. Command line only for now.
 
+Not every PDF of a course is typeset text. Scanned handwriting is written as the pictures of its pages, with what the page reader made of each folded under it (good for searching, not to be trusted for the formulas). Pages that are pictures of print are read by the page reader (see [scanned books](#three-kinds-of-pdf)), and each page's picture is folded under the text to check it by.
+
 ### Math: GitHub or standard
 
 Markdown has no single way to write math, so you choose one. A book is rewritten in the chosen form when you convert it again.
