@@ -1033,7 +1033,7 @@ Magnetic flux is observed to be quantized in a region enclosed by a superconduct
 
 1. Show that the Hamiltonian $`H = \tfrac{1}{2 \mu} [ \vec{p} + \tfrac{e}{c} \vec{A} ( \vec{r} , t ) ]^{2} - e\varphi ( \vec{r} , t )`$ yields the Lorentz force law for an electron. Note that the fields must be evaluated at the position of the electron. This means that the total time derivative of $`\vec{A}`$ must also account for the motion of the electron.
 
-2. Calculate the wavelengths of the three Zeeman lines in the 3$`d \to 2 p`$ transition in Hydrogen atoms in a 10<sup>4</sup> gauss field.
+2. Calculate the wavelengths of the three Zeeman lines in the 3$`d \to 2 p`$ transition in Hydrogen atoms in a $`10^{4}`$ gauss field.
 
 3. Show that the probability flux for system described by the Hamiltonian
 

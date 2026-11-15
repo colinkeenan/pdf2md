@@ -4031,7 +4031,7 @@ _Figure 30 (p. 95)_
 
 No matter what distance between the slits we choose, we **never observe diffraction** for the bullets. They always give the $`P_{1} + P_{2}`$ pattern (probably different for the bullets). Can you explain this? The bullet’s wavelength is much much smaller than the actual size of the bullet.
 
-Why didn’t we see diffraction for the bullets. Bullets are **macroscopic objects** with huge momenta compared to individual particles. High momentum implies a small deBroglie wavelength. So to see diffraction, we must make the distance between the slits much smaller than we did for the photons (perhaps 10<sup>20</sup> times smaller). But bullets are also big. They only fit through big slits which must them be further apart than the slits used for photons. For bullets, **the wavelength is tiny** **compared to any slit a bullet would fit through**. Therefore no bullet diffraction is possible.
+Why didn’t we see diffraction for the bullets. Bullets are **macroscopic objects** with huge momenta compared to individual particles. High momentum implies a small deBroglie wavelength. So to see diffraction, we must make the distance between the slits much smaller than we did for the photons (perhaps $`10^{20}`$ times smaller). But bullets are also big. They only fit through big slits which must them be further apart than the slits used for photons. For bullets, **the wavelength is tiny** **compared to any slit a bullet would fit through**. Therefore no bullet diffraction is possible.
 
 **Feynman Lectures on Physics, Vol. III Chapter 1**
 
@@ -4098,7 +4098,7 @@ a) a 10 eV electron b) a 1 MeV electron c) a 10 MeV proton
 
 4. What is the DeBroglie wavelength for each of the following particles? The energies given are the kinetic energies.
 
-a) a 1 eV electron b) a 10<sup>4</sup> MeV proton
+a) a 1 eV electron b) a $`10^{4}`$ MeV proton
 
 5. What K.E. must a Hydrogen atom have so that its DeBroglie wavelength is smaller than the size of the atom? (Factors of 2 are not important.)
 
@@ -10142,7 +10142,7 @@ so the radius becomes.
 R = \left( \frac{8 1 \pi^{2}}{5 1 2} \right)^{\tfrac{1}{3}} \frac{\hbar^{2}}{Gm_{e} M_{N}^{2}} N^{- \tfrac{1}{3}}
 ```
 
-The radius decreases as we add mass. For one solar mass, $`N = 1 0`$<sup>57</sup>, we get a radius of 7200 km, the size of the earth. The Fermi energy is about 0.2 MeV.
+The radius decreases as we add mass. For one solar mass, $`N = 1 0^{57}`$, we get a radius of 7200 km, the size of the earth. The Fermi energy is about 0.2 MeV.
 
 A **white dwarf** is the remnant of a normal star. It has used up its nuclear fuel, fusing light elements into heavier ones, until most of what is left is Fe<sup>56</sup> which is the most tightly bound nucleus. Now the star begins to cool and to shrink. It is stopped by the pressure of electrons. Since the **pressure**<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=199" target="_blank" title="This page in the PDF"><sup>[p. 199]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p200" href="book.pdf#page=200" target="_blank" title="This page in the PDF"><sup>[p. 200]</sup></a></span> **from the electrons grows faster than the pressure of gravity**, the star will stay at about earth size even when it cools.
 
@@ -14708,7 +14708,7 @@ Now comes the one tricky part of the calculation. The diagonal terms in the Hami
 = \frac{i\omega_{1}}{2} ( e^{i ( \omega + 2 \omega_{0} ) t} + e^{- i ( \omega - 2 \omega_{0} ) t} )
 ```
 
-Terms that oscillate rapidly will average to zero. To get a net change in $`be^{i\omega_{0} t}`$, we need to have $`\omega \approx 2 \omega_{0}`$. Then the first term is important and we can neglect the second which oscillates with a frequency of the order of 10<sup>11</sup>. Note that this is exactly the condition that requires the energy of the photons in the EM field $`E = \hbar \omega`$ to be equal to the energy difference between the two spin states ∆$`E`$ = 2$`\hbar \omega_{0}`$.
+Terms that oscillate rapidly will average to zero. To get a net change in $`be^{i\omega_{0} t}`$, we need to have $`\omega \approx 2 \omega_{0}`$. Then the first term is important and we can neglect the second which oscillates with a frequency of the order of $`10^{11}`$. Note that this is exactly the condition that requires the energy of the photons in the EM field $`E = \hbar \omega`$ to be equal to the energy difference between the two spin states ∆$`E`$ = 2$`\hbar \omega_{0}`$.
 
 <div align="right"><a href="book.pdf#page=278" target="_blank" title="This page in the PDF"><sup>[p. 278]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -16246,7 +16246,7 @@ Magnetic flux is observed to be quantized in a region enclosed by a superconduct
 
 1. Show that the Hamiltonian $`H = \tfrac{1}{2 \mu} [ \vec{p} + \tfrac{e}{c} \vec{A} ( \vec{r} , t ) ]^{2} - e\varphi ( \vec{r} , t )`$ yields the Lorentz force law for an electron. Note that the fields must be evaluated at the position of the electron. This means that the total time derivative of $`\vec{A}`$ must also account for the motion of the electron.
 
-2. Calculate the wavelengths of the three Zeeman lines in the 3$`d \to 2 p`$ transition in Hydrogen atoms in a 10<sup>4</sup> gauss field.
+2. Calculate the wavelengths of the three Zeeman lines in the 3$`d \to 2 p`$ transition in Hydrogen atoms in a $`10^{4}`$ gauss field.
 
 3. Show that the probability flux for system described by the Hamiltonian
 
@@ -20648,7 +20648,7 @@ The projection of the vector $`\vec{r}_{ni}`$ into the transverse plan gives a f
 \cos \Theta_{2} = \sin \theta \sin \varphi
 ```
 
-The sum of cos<sup>2</sup> Θ over the two polarizations then just gives sin<sup>2</sup> $`\theta`$. Therefore the decay rate becomes
+The sum of cos<sup>2</sup> Θ over the two polarizations then just gives $`\sin^{2} \theta`$. Therefore the decay rate becomes
 
 ```math
 \Gamma_{tot} = \frac{\alpha \omega_{in}^{3}}{2 \pi c^{2}} \sum_{\lambda} \int d \Omega_{\gamma} | \vec{r}_{ni} |^{2} \cos^{2} \Theta
@@ -20736,9 +20736,9 @@ We have performed that radial integration which will be unchanged. Assume that w
 
 where we have set $`m_{i}`$ = 1 eliminating two terms.
 
-Lets study the rate as a function of the angle of the photon from the z axis, $`\theta_{\gamma}`$. The rate will be independent of the azimuthal angle. We see that the rate is proportional to $`\epsilon_{x}^{2} + \epsilon_{y}^{2}`$. We still must sum over the two independent transverse polarizations. For clarity, assume that $`\varphi`$ = 0 and the photon is therefore emitted in the x-z plane. One transverse polarization can be in the y direction. The other is in the x-z plane perpendicular to the direction of the photon. The x component is proportional to $`\cos \theta_{\gamma}`$. So the rate is proportional to $`\epsilon_{x}^{2} + \epsilon_{y}^{2}`$ = 1 + cos<sup>2</sup> $`\theta_{\gamma}`$.
+Lets study the rate as a function of the angle of the photon from the z axis, $`\theta_{\gamma}`$. The rate will be independent of the azimuthal angle. We see that the rate is proportional to $`\epsilon_{x}^{2} + \epsilon_{y}^{2}`$. We still must sum over the two independent transverse polarizations. For clarity, assume that $`\varphi`$ = 0 and the photon is therefore emitted in the x-z plane. One transverse polarization can be in the y direction. The other is in the x-z plane perpendicular to the direction of the photon. The x component is proportional to $`\cos \theta_{\gamma}`$. So the rate is proportional to $`\epsilon_{x}^{2} + \epsilon_{y}^{2}`$ = 1 + $`\cos^{2} \theta_{\gamma}`$.
 
-If we assume that $`m_{i}`$ = 0 then only the $`\epsilon_{z}`$ term remains and the rate is proportional to $`\epsilon_{z}^{2}`$. The angular distribution then goes like sin<sup>2</sup> $`\theta_{\gamma}`$.
+If we assume that $`m_{i}`$ = 0 then only the $`\epsilon_{z}`$ term remains and the rate is proportional to $`\epsilon_{z}^{2}`$. The angular distribution then goes like $`\sin^{2} \theta_{\gamma}`$.
 
 # <a id="s-29-9-vector-operators-and-the-wigner-eckart-theorem"></a>29.9 Vector Operators and the Wigner Eckart Theorem
 
@@ -20966,7 +20966,7 @@ E_{H} = \frac{p^{2}}{2 m_{p}} = \frac{E^{2}}{2 m_{p} c^{2}}
 \frac{\Delta E}{E} = \frac{E}{2 m_{p} c^{2}}
 ```
 
-For our 2p to 1s decay in Hydrogen, this is about 10 eV over 1860 MeV, or less than one part in 10<sup>8</sup>. One can see that the effect of recoil becomes more important as the energy radiated increases. The energy shift due to recoil is more significant for nuclear decays.
+For our 2p to 1s decay in Hydrogen, this is about 10 eV over 1860 MeV, or less than one part in $`10^{8}`$. One can see that the effect of recoil becomes more important as the energy radiated increases. The energy shift due to recoil is more significant for nuclear decays.
 
 # <a id="s-29-12phenomena-of-radiation-theory"></a>29.12 Phenomena of Radiation Theory
 
@@ -20984,7 +20984,7 @@ P_{0} = e^{- E_{recoil} / \hbar \omega_{HO}}
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p414" href="book.pdf#page=414" target="_blank" title="This page in the PDF"><sup>[p. 414]</sup></a>
 
-Thus a large fraction of the radiation is emitted (and reabsorbed) without a large energy shift. (Remember that the crystal may have 10<sup>23</sup> atoms in it and that is a large number.
+Thus a large fraction of the radiation is emitted (and reabsorbed) without a large energy shift. (Remember that the crystal may have $`10^{23}`$ atoms in it and that is a large number.
 
 The Mössbauer effect has be used to measure the gravitational red shift on earth. The red shift was compensated by moving a detector, made from the same material as the emitter, at a velocity (should be equal to the free fall velocity). The blue shift was measured to be
 
@@ -21463,7 +21463,7 @@ Since ∆ =$`\vec{\jmath} \quad \vec{k}_{f} - \vec{k}_{i}`$, we have ∆2 $`= k_
 = \left| \frac{Z_{1} Z_{2} e^{2}}{\tfrac{\hbar^{2}}{2 \mu a^{2}} + 4 E \sin^{2} \tfrac{\theta}{2}} \right|^{2}
 ```
 
-In the last step we have used the non-relativistic formula for energy and $`1 - \cos \theta = \tfrac{1}{2}`$ sin<sup>2</sup> $`\frac{\theta}{2}`$.
+In the last step we have used the non-relativistic formula for energy and $`1 - \cos \theta = \tfrac{1}{2}`$ $`\sin^{2} \frac{\theta}{2}`$.
 
 The screened Coulomb potential gives a finite total cross section. It corresponds well with the experiment Rutherford did in which $`\alpha`$ particles were scattered from atoms in a foil. If we scatter from a bare charge where there is no screening, we can take the limit in which $`a \to \infty`$.
 
@@ -28003,7 +28003,7 @@ So the Standard Model is as simple as 1 2 3 in Quantum Field Theories.
 
 $`\hbar`$ = 1$`. 0 5 \times 1 0^{- 2 7}`$ erg sec $`c`$ = 3$`. 0 0 \times 1 0^{1 0}`$ cm/sec $`e`$ = 1$`. 6 0 2 \times 1 0^{- 1 9}`$ coulomb
 
-$`1 eV`$ = 1$`. 6 0 2 \times 1 0^{- 1 2}`$ erg $`\alpha = \tfrac{e^{2}}{\hbar c}`$ = 1$`/ 137`$ = $`\frac{e^{2}}{4 \pi \epsilon_{0} \hbar c}`$ (SI) $`\hbar c`$ = 1973 eV ˚A= 197.3 MeV F
+$`1 eV`$ = 1$`. 6 0 2 \times 1 0^{- 1 2}`$ erg $`\alpha = \tfrac{e^{2}}{\hbar c}`$ = $`1 / 137`$ = $`\frac{e^{2}}{4 \pi \epsilon_{0} \hbar c}`$ (SI) $`\hbar c`$ = 1973 eV ˚A= 197.3 MeV F
 
 1 ˚A= 1$`. 0 \times 1 0^{- 8}`$ cm 1 Fermi = 1$`. 0 \times 1 0^{- 1 3}`$ cm $`a_{0} = \tfrac{\hbar}{\alpha m_{e} c}`$ = 0$`. 5 2 9 \times 1 0^{- 8}`$ cm
 

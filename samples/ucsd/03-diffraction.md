@@ -287,7 +287,7 @@ _Figure 30 (p. 95)_
 
 No matter what distance between the slits we choose, we **never observe diffraction** for the bullets. They always give the $`P_{1} + P_{2}`$ pattern (probably different for the bullets). Can you explain this? The bullet’s wavelength is much much smaller than the actual size of the bullet.
 
-Why didn’t we see diffraction for the bullets. Bullets are **macroscopic objects** with huge momenta compared to individual particles. High momentum implies a small deBroglie wavelength. So to see diffraction, we must make the distance between the slits much smaller than we did for the photons (perhaps 10<sup>20</sup> times smaller). But bullets are also big. They only fit through big slits which must them be further apart than the slits used for photons. For bullets, **the wavelength is tiny** **compared to any slit a bullet would fit through**. Therefore no bullet diffraction is possible.
+Why didn’t we see diffraction for the bullets. Bullets are **macroscopic objects** with huge momenta compared to individual particles. High momentum implies a small deBroglie wavelength. So to see diffraction, we must make the distance between the slits much smaller than we did for the photons (perhaps $`10^{20}`$ times smaller). But bullets are also big. They only fit through big slits which must them be further apart than the slits used for photons. For bullets, **the wavelength is tiny** **compared to any slit a bullet would fit through**. Therefore no bullet diffraction is possible.
 
 **Feynman Lectures on Physics, Vol. III Chapter 1**
 
@@ -354,7 +354,7 @@ a) a 10 eV electron b) a 1 MeV electron c) a 10 MeV proton
 
 4. What is the DeBroglie wavelength for each of the following particles? The energies given are the kinetic energies.
 
-a) a 1 eV electron b) a 10<sup>4</sup> MeV proton
+a) a 1 eV electron b) a $`10^{4}`$ MeV proton
 
 5. What K.E. must a Hydrogen atom have so that its DeBroglie wavelength is smaller than the size of the atom? (Factors of 2 are not important.)
 

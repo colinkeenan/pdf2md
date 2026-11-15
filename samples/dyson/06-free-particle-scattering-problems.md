@@ -33,7 +33,7 @@ Here $`U \Phi_{A}`$ is the state which is obtained at $`t`$ = +$`\infty`$ by sol
 = \sum_{n = 0}^{\infty} \left( - \frac{i}{\hbar} \right)^{n} \frac{1}{n !} \int_{-\infty}^{\infty} dt_{1} \dots \int_{-\infty}^{\infty} dt_{n} P \{\{ H^{e} ( t_{1} ) + H_{R} ( t_{1} ) \} \dots \{ H^{e} ( t_{n} ) + H_{R} ( t_{n} ) \}\} \qquad \text{(421)}
 ```
 
-Here the $`P`$ signifies a chronological product, the factors in it being multiplied not in the order in which they are written but in the order of the times $`t_{1} ,t_{2} ,\dots ,t_{n}`$, the factors with later times standing to the left of those with earlier times. This accounts for the factor 1$`/n`$! after we change all the limits to cover the whole range from $`-\infty`$ to +$`\infty`$. The operator $`U`$ is generally referred to as “the S-matrix”.
+Here the $`P`$ signifies a chronological product, the factors in it being multiplied not in the order in which they are written but in the order of the times $`t_{1} ,t_{2} ,\dots ,t_{n}`$, the factors with later times standing to the left of those with earlier times. This accounts for the factor $`1 /n`$! after we change all the limits to cover the whole range from $`-\infty`$ to +$`\infty`$. The operator $`U`$ is generally referred to as “the S-matrix”.
 
 Before discussing the general analysis of the series expansion (421), we shall use it to solve some standard problems.
 

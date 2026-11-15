@@ -55,9 +55,9 @@ We shall not develop straightaway a correct theory including many particles. Ins
 
 The NR theory gave levels correctly but no fine-structure. (Accuracy of one part in 10,000). The Dirac one-particle theory gives all the main features of the fine-structure correctly, number of components and separations good to 10% but not better. (Accuracy one part in 100,000).
 
-The Dirac many-particle theory gives the fine-structure separations (Lamb <a id="ix-173">experiment</a>) correctly to about one part in 10,000. (Overall accuracy 1 in 10<sup>8</sup>.)
+The Dirac many-particle theory gives the fine-structure separations (Lamb <a id="ix-173">experiment</a>) correctly to about one part in 10,000. (Overall accuracy 1 in $`10^{8}`$.)
 
-Probably to get accuracy better than 1 in 10<sup>8</sup> even the DMP theory is not enough and one will need to take all kinds of <a id="ix-200">meson</a> effects into account which are not yet treated properly. Experiments are so far only good to about 1 in 10<sup>8</sup>.
+Probably to get accuracy better than 1 in $`10^{8}`$ even the DMP theory is not enough and one will need to take all kinds of <a id="ix-200">meson</a> effects into account which are not yet treated properly. Experiments are so far only good to about 1 in $`10^{8}`$.
 
 In this course I will go through the one-particle theories first in detail. Then I will talk about their breaking down. At that point I will make a fresh start and discuss how one can make a relativistic quantum theory in general, using the new methods of <a id="ix-136">Feynman</a> and <a id="ix-272">Schwinger</a>. From this we shall be led to the many-particle theories. I will talk about the general features of these theories. Then I will take the special example of <a id="ix-251">quantum electrodynamics</a> and get as far as I can with it before the end of the course.
 

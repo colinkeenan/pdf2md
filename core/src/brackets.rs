@@ -329,7 +329,7 @@ const BETWEEN: [&str; 24] = [
 
 fn ends_open(m: &str) -> bool {
     let m = m.trim_end();
-    if m.ends_with(['=', '+', '-', '<', '>']) {
+    if m.ends_with(['=', '+', '-', '<', '>', '/']) {
         // ("x^{-}" and "e^{+}" end with a brace; "A( ++" is a list of signs)
         return !m.ends_with("++") && !m.ends_with("--");
     }
@@ -339,7 +339,7 @@ fn ends_open(m: &str) -> bool {
 
 fn begins_open(m: &str) -> bool {
     let m = m.trim_start();
-    if m.starts_with(['=', '+', '-', '<', '>']) {
+    if m.starts_with(['=', '+', '-', '<', '>', '/']) {
         return true;
     }
     let Some(rest) = m.strip_prefix('\\') else { return false };
@@ -396,11 +396,52 @@ fn dots_first(t: &str) -> Option<usize> {
 /// dots ("i = 1" + ", 2, . . . " + "n"). The "−" before a word set right
 /// against it is a hyphen: "(D + 1)" + "-dimensional".
 pub(crate) fn sides(mut v: Vec<Inline>) -> Vec<Inline> {
-    if !v.iter().any(|x| matches!(x, Inline::Math(_))) {
+    if !v.iter().any(|x| matches!(x, Inline::Math(_) | Inline::Sup(_))) {
         return v;
     }
     let mut k = 0;
     while k < v.len() {
+        // (a raised figure of the text's font: the power of what it stands on)
+        if let Some(Inline::Sup(d)) = v.get(k + 1).filter(|x| matches!(x, Inline::Sup(d) if !d.is_empty() && d.chars().all(|c| c.is_ascii_digit()))).cloned() {
+            let after = match (v.get(k + 2), v.get(k + 3)) {
+                (Some(Inline::Math(m)), _) => Some((1, m.clone())),
+                (Some(Inline::Text(t)), Some(Inline::Math(m))) if t == " " => Some((2, m.clone())),
+                _ => None,
+            };
+            match &mut v[k] {
+                // ("[ … ]" + 2, "8!/(4!)^3 2" + 4)
+                Inline::Math(m) if m.trim_end().ends_with([')', ']']) || m.trim_end().ends_with(|c: char| c.is_ascii_digit()) => {
+                    *m = format!("{}^{{{d}}}", m.trim_end());
+                    v.remove(k + 1);
+                    // (what follows right behind is the same formula)
+                    if let (Some(Inline::Math(_)), Some((1, next))) = (v.get(k + 1), &after) {
+                        v[k] = Inline::Math(joined(if let Inline::Math(m) = &v[k] { m } else { "" }, next));
+                        v.remove(k + 1);
+                    }
+                    continue;
+                }
+                Inline::Text(t) => {
+                    // ("sin" + 2 + "θ": the function's power)
+                    let name = t.len() - t.trim_end_matches(|c: char| c.is_alphabetic()).len();
+                    let figures = t.len() - t.trim_end_matches(|c: char| c.is_ascii_digit()).len();
+                    let alone = |t: &str, n: usize| t[..t.len() - n].chars().last().is_none_or(|c| !c.is_alphanumeric() && c != '.');
+                    if let (Some(f), true, Some((n, m))) = (function(&t[t.len() - name..]), alone(t, name), &after) {
+                        t.truncate(t.len() - name);
+                        v.splice(k + 1..=k + 1 + n, [Inline::Math(format!("{f}^{{{d}}} {}", m.trim_start()))]);
+                        continue;
+                    }
+                    // ("10" + 19; "3" + 2 before "− 1 = 8")
+                    let base = t[t.len() - figures..].to_string();
+                    let goes_on = after.as_ref().is_some_and(|(_, m)| begins_open(m));
+                    if figures > 0 && alone(t, figures) && (base == "10" || goes_on) {
+                        t.truncate(t.len() - figures);
+                        v[k + 1] = Inline::Math(format!("{base}^{{{d}}}"));
+                        continue;
+                    }
+                }
+                _ => {}
+            }
+        }
         // (the text behind a formula)
         if k + 1 < v.len() {
             let (a, b) = v.split_at_mut(k + 1);
@@ -572,6 +613,14 @@ mod tests {
         assert_eq!(sides(vec![m("S(P) ="), t(" Re "), m("\\operatorname{tr} U")]), vec![m("S(P) = \\operatorname{Re} \\operatorname{tr} U")]);
         assert_eq!(sides(vec![m("\\bar{\\psi}_{L} \\psi_{R} +"), t(" h.c. "), m("= x"), t(" is")]), vec![m("\\bar{\\psi}_{L} \\psi_{R} + \\text{h.c.} = x"), t(" is")]);
         assert_eq!(sides(vec![t("an "), m("N -"), t(" dimensional vector")]), vec![t("an "), m("N"), t("-dimensional vector")]);
+        let sup = |d: &str| Inline::Sup(d.into());
+        assert_eq!(sides(vec![t("and sin"), sup("2"), t(" "), m("\\theta ]"), t(" is")]), vec![t("and "), m("\\sin^{2} \\theta ]"), t(" is")]);
+        assert_eq!(sides(vec![t("which are 3"), sup("2"), t(" "), m("- 1 = 8"), t(", the")]), vec![t("which are "), m("3^{2} - 1 = 8"), t(", the")]);
+        assert_eq!(sides(vec![t("scale 10"), sup("19"), t(" GeV as")]), vec![t("scale "), m("10^{19}"), t(" GeV as")]);
+        assert_eq!(sides(vec![m("\\langle 1 2 \\rangle [ 3 4 ]"), sup("2"), m("/( [ 1 2 ] )")]), vec![m("\\langle 1 2 \\rangle [ 3 4 ]^{2} /( [ 1 2 ] )")]);
+        // (a note's mark after a word or a year stays one)
+        let mark = vec![t("as shown in 1905"), sup("3"), t(" by")];
+        assert_eq!(sides(mark.clone()), mark);
         // (two formulas of a sentence stay two; so does a figure of the sentence)
         let two = vec![m("x"), t(" "), m("y"), t(" and "), m("a = b"), t(", 2 of them")];
         assert_eq!(sides(two.clone()), two);

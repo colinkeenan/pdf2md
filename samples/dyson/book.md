@@ -231,9 +231,9 @@ We shall not develop straightaway a correct theory including many particles. Ins
 
 The NR theory gave levels correctly but no fine-structure. (Accuracy of one part in 10,000). The Dirac one-particle theory gives all the main features of the fine-structure correctly, number of components and separations good to 10% but not better. (Accuracy one part in 100,000).
 
-The Dirac many-particle theory gives the fine-structure separations (Lamb <a id="ix-173">experiment</a>) correctly to about one part in 10,000. (Overall accuracy 1 in 10<sup>8</sup>.)
+The Dirac many-particle theory gives the fine-structure separations (Lamb <a id="ix-173">experiment</a>) correctly to about one part in 10,000. (Overall accuracy 1 in $`10^{8}`$.)
 
-Probably to get accuracy better than 1 in 10<sup>8</sup> even the DMP theory is not enough and one will need to take all kinds of <a id="ix-200">meson</a> effects into account which are not yet treated properly. Experiments are so far only good to about 1 in 10<sup>8</sup>.
+Probably to get accuracy better than 1 in $`10^{8}`$ even the DMP theory is not enough and one will need to take all kinds of <a id="ix-200">meson</a> effects into account which are not yet treated properly. Experiments are so far only good to about 1 in $`10^{8}`$.
 
 In this course I will go through the one-particle theories first in detail. Then I will talk about their breaking down. At that point I will make a fresh start and discuss how one can make a relativistic quantum theory in general, using the new methods of <a id="ix-136">Feynman</a> and <a id="ix-272">Schwinger</a>. From this we shall be led to the many-particle theories. I will talk about the general features of these theories. Then I will take the special example of <a id="ix-251">quantum electrodynamics</a> and get as far as I can with it before the end of the course.
 
@@ -1864,7 +1864,7 @@ The difficulties in real calculations usually come from the factors 2 and $`\pi`
 \text{ One particle per volume } \frac{mc^{2}}{| E |} \qquad \text{(103)}
 ```
 
-where $`| E |`$ is the energy of the particles. Then under a <a id="ix-181">Lorentz</a> transformation the volume of a fixed region transforms like 1$`/ | E |`$ and so the definition stays invariant.
+where $`| E |`$ is the energy of the particles. Then under a <a id="ix-181">Lorentz</a> transformation the volume of a fixed region transforms like $`1 / | E |`$ and so the definition stays invariant.
 
 Thus a continuum state given by the spinor $`\psi = u \exp \{ ( i \boldsymbol{p} \boldsymbol{\cdot} \boldsymbol{x} - iEt ) / \hbar \}`$ is normalized so that
 
@@ -3992,7 +3992,7 @@ $`R`$ is very small we may approximate (237) by
 V ( K ) = \begin{cases} \tfrac{4}{3} \pi R^{3} = V & \text{ for } | \boldsymbol{K} | R< 1 \\ 0 & \text{ for } | \boldsymbol{K} | R> 1 \end{cases}
 ```
 
-Then, since $`( K_{2}^{2} + K_{3}^{2} ) = | \boldsymbol{K} |^{2}`$ ($`1 -`$ cos<sup>2</sup> $`\theta )`$ and $`\int 0 \pi`$ sin<sup>2</sup> $`\theta \sin \theta d\theta = \tfrac{4}{3}`$, we have<sup><a id="fnref-34" href="#fn-34">34</a></sup>
+Then, since $`( K_{2}^{2} + K_{3}^{2} ) = | \boldsymbol{K} |^{2} ( 1 - \cos^{2} \theta )`$ and $`\int 0 \pi`$ $`\sin^{2} \theta \sin \theta d\theta = \tfrac{4}{3}`$, we have<sup><a id="fnref-34" href="#fn-34">34</a></sup>
 
 <a id="eq-238"></a>
 
@@ -6215,7 +6215,7 @@ Here $`U \Phi_{A}`$ is the state which is obtained at $`t`$ = +$`\infty`$ by sol
 = \sum_{n = 0}^{\infty} \left( - \frac{i}{\hbar} \right)^{n} \frac{1}{n !} \int_{-\infty}^{\infty} dt_{1} \dots \int_{-\infty}^{\infty} dt_{n} P \{\{ H^{e} ( t_{1} ) + H_{R} ( t_{1} ) \} \dots \{ H^{e} ( t_{n} ) + H_{R} ( t_{n} ) \}\} \qquad \text{(421)}
 ```
 
-Here the $`P`$ signifies a chronological product, the factors in it being multiplied not in the order in which they are written but in the order of the times $`t_{1} ,t_{2} ,\dots ,t_{n}`$, the factors with later times standing to the left of those with earlier times. This accounts for the factor 1$`/n`$! after we change all the limits to cover the whole range from $`-\infty`$ to +$`\infty`$. The operator $`U`$ is generally referred to as “the S-matrix”.
+Here the $`P`$ signifies a chronological product, the factors in it being multiplied not in the order in which they are written but in the order of the times $`t_{1} ,t_{2} ,\dots ,t_{n}`$, the factors with later times standing to the left of those with earlier times. This accounts for the factor $`1 /n`$! after we change all the limits to cover the whole range from $`-\infty`$ to +$`\infty`$. The operator $`U`$ is generally referred to as “the S-matrix”.
 
 Before discussing the general analysis of the series expansion (421), we shall use it to solve some standard problems.
 
@@ -7168,7 +7168,7 @@ For the <a id="ix-21">cross-section</a> calculation see again Heitler, $`§ 2 0 
 
 # General Theory of Free Particle Scattering
 
-We have shown how (421) leads to matrix elements for standard scattering processes, from which cross-sections can be calculated. In each case we used only the term $`n`$ = 2 in (421), which happened to be the lowest term giving a contribution to these processes. The higher terms $`n`$ = 4$`, 6 ,\dots`$ will also give contributions to the matrix elements for these processes, contributions which are collectively called “radiative corrections”. It turns out that the results without radiative corrections agree with the experimental scattering cross-sections in all cases. The experiments are never accurate to better than a few percent, and the radiative corrections are always smaller than the lowest-order terms by at least one power of $`( e^{2} / 4 \pi \hbar c )`$ = (1$`/ 137`$). Thus the study of the radiative corrections for scattering processes will not lead to any directly observable effects.
+We have shown how (421) leads to matrix elements for standard scattering processes, from which cross-sections can be calculated. In each case we used only the term $`n`$ = 2 in (421), which happened to be the lowest term giving a contribution to these processes. The higher terms $`n`$ = 4$`, 6 ,\dots`$ will also give contributions to the matrix elements for these processes, contributions which are collectively called “radiative corrections”. It turns out that the results without radiative corrections agree with the experimental scattering cross-sections in all cases. The experiments are never accurate to better than a few percent, and the radiative corrections are always smaller than the lowest-order terms by at least one power of $`( e^{2} / 4 \pi \hbar c )`$ = ($`1 / 137`$). Thus the study of the radiative corrections for scattering processes will not lead to any directly observable effects.
 
 Nevertheless we shall work out a method of calculating the high-order terms of (421). This method turns out to be simplest and easiest to explain when we are discussing scattering problems. Incidentally we shall see what the radiative corrections to scattering look like, and we shall learn something about the nature of radiative corrections in general. Finally at the end we shall be able to use the method of calculation in order to find the radiative corrections to the motion of an electron in a hydrogen atom, which is the case in which these small effects can be accurately observed, but where the pure scattering theory is not directly applicable.
 
@@ -7618,7 +7618,7 @@ where we changed the origin of the $`k`$ integration by the replacement $`k \to 
 \Sigma ( p ) = 2 \int_{0}^{1} dzi\mu ( 1 + z ) \{ 2 i\pi^{2} ( R - \log z ) \} = - \pi^{2} \mu [ 6 R + 5 ] = - 6 \pi^{2} \mu R^{\prime} \qquad \text{(523)}
 ```
 
-Thus Σ$`( p )`$ is a logarithmically divergent constant, depending only on the electron mass and independent of the state of the electron. The difference 5$`/ 6`$ between $`R`$ and $`R^{\prime}`$ is of course not significant. Substituting (523) into (519) gives the value of $`M_{2}`$
+Thus Σ$`( p )`$ is a logarithmically divergent constant, depending only on the electron mass and independent of the state of the electron. The difference $`5 / 6`$ between $`R`$ and $`R^{\prime}`$ is of course not significant. Substituting (523) into (519) gives the value of $`M_{2}`$
 
 <a id="eq-524"></a>
 
@@ -8098,7 +8098,7 @@ From $`G_{2}^{\prime}`$ the contribution is (compare with (528))
 M_{2 2}^{\prime} = - \frac{ie\delta m}{2 \hbar^{2}} \int \int dxdx_{1} \overline{\psi} ( x ) A /^{e} S_{F} ( x - x_{1} ) \psi ( x_{1} ) \qquad \text{(574)}
 ```
 
-Like (555) this <a id="ix-142">integral</a> does not oscillate but diverges at $`t_{1} = \pm \infty`$. Therefore we must take explicitly into account the cut-off factor multiplying the radiation interaction. At time $`t_{1}`$ the radiation interaction $`H_{R} ( t_{1} )`$ will carry the cut-off factor $`g ( t_{1} )`$. But the self-energy $`\delta m`$ at time $`t_{1}`$ is an effect of second order in $`H_{R}`$, and therefore becomes multiplied by $`[ g ( t_{1} ) ]`$<sup>2</sup> if $`g ( t_{1} )`$ varies slowly enough. In the definition of the scattering matrix element (487), the cut-off factors $`g ( t )`$ were introduced in order to represent the initial and final states by simple bare-particle wave-functions in an unambiguous way. We now require that the bare-particles’ wave-functions should always have the same mass $`m`$ as a real electron. This is achieved if we add the term $`( - H_{S} )`$ to the radiation interaction appearing in (495), each $`H_{S} ( t_{i} )`$ being multiplied by the cut-off factor $`[ g ( t_{i} ) ]`$<sup>2</sup> so long as we are dealing only with second order terms in $`\delta m`$. If we were calculating effects to fourth order in $`e`$, then the fourth order part of $`\delta m`$ should be multiplied by $`[ g ( t_{i} ) ]`$<sup>4</sup>, and so on.
+Like (555) this <a id="ix-142">integral</a> does not oscillate but diverges at $`t_{1} = \pm \infty`$. Therefore we must take explicitly into account the cut-off factor multiplying the radiation interaction. At time $`t_{1}`$ the radiation interaction $`H_{R} ( t_{1} )`$ will carry the cut-off factor $`g ( t_{1} )`$. But the self-energy $`\delta m`$ at time $`t_{1}`$ is an effect of second order in $`H_{R}`$, and therefore becomes multiplied by $`[ g ( t_{1} ) ]^{2}`$ if $`g ( t_{1} )`$ varies slowly enough. In the definition of the scattering matrix element (487), the cut-off factors $`g ( t )`$ were introduced in order to represent the initial and final states by simple bare-particle wave-functions in an unambiguous way. We now require that the bare-particles’ wave-functions should always have the same mass $`m`$ as a real electron. This is achieved if we add the term $`( - H_{S} )`$ to the radiation interaction appearing in (495), each $`H_{S} ( t_{i} )`$ being multiplied by the cut-off factor $`[ g ( t_{i} ) ]^{2}`$ so long as we are dealing only with second order terms in $`\delta m`$. If we were calculating effects to fourth order in $`e`$, then the fourth order part of $`\delta m`$ should be multiplied by $`[ g ( t_{i} ) ]^{4}`$, and so on.
 
 The effect of the cut-off factors is therefore to replace (574) by
 

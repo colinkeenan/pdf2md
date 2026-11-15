@@ -227,7 +227,7 @@ so the radius becomes.
 R = \left( \frac{8 1 \pi^{2}}{5 1 2} \right)^{\tfrac{1}{3}} \frac{\hbar^{2}}{Gm_{e} M_{N}^{2}} N^{- \tfrac{1}{3}}
 ```
 
-The radius decreases as we add mass. For one solar mass, $`N = 1 0`$<sup>57</sup>, we get a radius of 7200 km, the size of the earth. The Fermi energy is about 0.2 MeV.
+The radius decreases as we add mass. For one solar mass, $`N = 1 0^{57}`$, we get a radius of 7200 km, the size of the earth. The Fermi energy is about 0.2 MeV.
 
 A **white dwarf** is the remnant of a normal star. It has used up its nuclear fuel, fusing light elements into heavier ones, until most of what is left is Fe<sup>56</sup> which is the most tightly bound nucleus. Now the star begins to cool and to shrink. It is stopped by the pressure of electrons. Since the **pressure**<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=199" target="_blank" title="This page in the PDF"><sup>[p. 199]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p200" href="book.pdf#page=200" target="_blank" title="This page in the PDF"><sup>[p. 200]</sup></a></span> **from the electrons grows faster than the pressure of gravity**, the star will stay at about earth size even when it cools.
 

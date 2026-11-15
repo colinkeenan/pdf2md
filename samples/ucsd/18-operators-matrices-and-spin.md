@@ -1778,7 +1778,7 @@ Now comes the one tricky part of the calculation. The diagonal terms in the Hami
 = \frac{i\omega_{1}}{2} ( e^{i ( \omega + 2 \omega_{0} ) t} + e^{- i ( \omega - 2 \omega_{0} ) t} )
 ```
 
-Terms that oscillate rapidly will average to zero. To get a net change in $`be^{i\omega_{0} t}`$, we need to have $`\omega \approx 2 \omega_{0}`$. Then the first term is important and we can neglect the second which oscillates with a frequency of the order of 10<sup>11</sup>. Note that this is exactly the condition that requires the energy of the photons in the EM field $`E = \hbar \omega`$ to be equal to the energy difference between the two spin states ∆$`E`$ = 2$`\hbar \omega_{0}`$.
+Terms that oscillate rapidly will average to zero. To get a net change in $`be^{i\omega_{0} t}`$, we need to have $`\omega \approx 2 \omega_{0}`$. Then the first term is important and we can neglect the second which oscillates with a frequency of the order of $`10^{11}`$. Note that this is exactly the condition that requires the energy of the photons in the EM field $`E = \hbar \omega`$ to be equal to the energy difference between the two spin states ∆$`E`$ = 2$`\hbar \omega_{0}`$.
 
 <div align="right"><a href="book.pdf#page=278" target="_blank" title="This page in the PDF"><sup>[p. 278]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">

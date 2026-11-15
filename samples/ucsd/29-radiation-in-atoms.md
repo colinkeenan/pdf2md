@@ -488,7 +488,7 @@ The projection of the vector $`\vec{r}_{ni}`$ into the transverse plan gives a f
 \cos \Theta_{2} = \sin \theta \sin \varphi
 ```
 
-The sum of cos<sup>2</sup> Θ over the two polarizations then just gives sin<sup>2</sup> $`\theta`$. Therefore the decay rate becomes
+The sum of cos<sup>2</sup> Θ over the two polarizations then just gives $`\sin^{2} \theta`$. Therefore the decay rate becomes
 
 ```math
 \Gamma_{tot} = \frac{\alpha \omega_{in}^{3}}{2 \pi c^{2}} \sum_{\lambda} \int d \Omega_{\gamma} | \vec{r}_{ni} |^{2} \cos^{2} \Theta
@@ -576,9 +576,9 @@ We have performed that radial integration which will be unchanged. Assume that w
 
 where we have set $`m_{i}`$ = 1 eliminating two terms.
 
-Lets study the rate as a function of the angle of the photon from the z axis, $`\theta_{\gamma}`$. The rate will be independent of the azimuthal angle. We see that the rate is proportional to $`\epsilon_{x}^{2} + \epsilon_{y}^{2}`$. We still must sum over the two independent transverse polarizations. For clarity, assume that $`\varphi`$ = 0 and the photon is therefore emitted in the x-z plane. One transverse polarization can be in the y direction. The other is in the x-z plane perpendicular to the direction of the photon. The x component is proportional to $`\cos \theta_{\gamma}`$. So the rate is proportional to $`\epsilon_{x}^{2} + \epsilon_{y}^{2}`$ = 1 + cos<sup>2</sup> $`\theta_{\gamma}`$.
+Lets study the rate as a function of the angle of the photon from the z axis, $`\theta_{\gamma}`$. The rate will be independent of the azimuthal angle. We see that the rate is proportional to $`\epsilon_{x}^{2} + \epsilon_{y}^{2}`$. We still must sum over the two independent transverse polarizations. For clarity, assume that $`\varphi`$ = 0 and the photon is therefore emitted in the x-z plane. One transverse polarization can be in the y direction. The other is in the x-z plane perpendicular to the direction of the photon. The x component is proportional to $`\cos \theta_{\gamma}`$. So the rate is proportional to $`\epsilon_{x}^{2} + \epsilon_{y}^{2}`$ = 1 + $`\cos^{2} \theta_{\gamma}`$.
 
-If we assume that $`m_{i}`$ = 0 then only the $`\epsilon_{z}`$ term remains and the rate is proportional to $`\epsilon_{z}^{2}`$. The angular distribution then goes like sin<sup>2</sup> $`\theta_{\gamma}`$.
+If we assume that $`m_{i}`$ = 0 then only the $`\epsilon_{z}`$ term remains and the rate is proportional to $`\epsilon_{z}^{2}`$. The angular distribution then goes like $`\sin^{2} \theta_{\gamma}`$.
 
 # <a id="s-29-9-vector-operators-and-the-wigner-eckart-theorem"></a>29.9 Vector Operators and the Wigner Eckart Theorem
 
@@ -806,7 +806,7 @@ E_{H} = \frac{p^{2}}{2 m_{p}} = \frac{E^{2}}{2 m_{p} c^{2}}
 \frac{\Delta E}{E} = \frac{E}{2 m_{p} c^{2}}
 ```
 
-For our 2p to 1s decay in Hydrogen, this is about 10 eV over 1860 MeV, or less than one part in 10<sup>8</sup>. One can see that the effect of recoil becomes more important as the energy radiated increases. The energy shift due to recoil is more significant for nuclear decays.
+For our 2p to 1s decay in Hydrogen, this is about 10 eV over 1860 MeV, or less than one part in $`10^{8}`$. One can see that the effect of recoil becomes more important as the energy radiated increases. The energy shift due to recoil is more significant for nuclear decays.
 
 # <a id="s-29-12phenomena-of-radiation-theory"></a>29.12 Phenomena of Radiation Theory
 
@@ -824,7 +824,7 @@ P_{0} = e^{- E_{recoil} / \hbar \omega_{HO}}
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p414" href="book.pdf#page=414" target="_blank" title="This page in the PDF"><sup>[p. 414]</sup></a>
 
-Thus a large fraction of the radiation is emitted (and reabsorbed) without a large energy shift. (Remember that the crystal may have 10<sup>23</sup> atoms in it and that is a large number.
+Thus a large fraction of the radiation is emitted (and reabsorbed) without a large energy shift. (Remember that the crystal may have $`10^{23}`$ atoms in it and that is a large number.
 
 The Mössbauer effect has be used to measure the gravitational red shift on earth. The red shift was compensated by moving a detector, made from the same material as the emitter, at a velocity (should be equal to the free fall velocity). The blue shift was measured to be
 

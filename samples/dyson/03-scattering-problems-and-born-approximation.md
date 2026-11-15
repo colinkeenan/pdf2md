@@ -31,7 +31,7 @@ The difficulties in real calculations usually come from the factors 2 and $`\pi`
 \text{ One particle per volume } \frac{mc^{2}}{| E |} \qquad \text{(103)}
 ```
 
-where $`| E |`$ is the energy of the particles. Then under a <a id="ix-181">Lorentz</a> transformation the volume of a fixed region transforms like 1$`/ | E |`$ and so the definition stays invariant.
+where $`| E |`$ is the energy of the particles. Then under a <a id="ix-181">Lorentz</a> transformation the volume of a fixed region transforms like $`1 / | E |`$ and so the definition stays invariant.
 
 Thus a continuum state given by the spinor $`\psi = u \exp \{ ( i \boldsymbol{p} \boldsymbol{\cdot} \boldsymbol{x} - iEt ) / \hbar \}`$ is normalized so that
 

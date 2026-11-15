@@ -788,7 +788,7 @@ $`R`$ is very small we may approximate (237) by
 V ( K ) = \begin{cases} \tfrac{4}{3} \pi R^{3} = V & \text{ for } | \boldsymbol{K} | R< 1 \\ 0 & \text{ for } | \boldsymbol{K} | R> 1 \end{cases}
 ```
 
-Then, since $`( K_{2}^{2} + K_{3}^{2} ) = | \boldsymbol{K} |^{2}`$ ($`1 -`$ cos<sup>2</sup> $`\theta )`$ and $`\int 0 \pi`$ sin<sup>2</sup> $`\theta \sin \theta d\theta = \tfrac{4}{3}`$, we have<sup><a id="fnref-34" href="#fn-34">34</a></sup>
+Then, since $`( K_{2}^{2} + K_{3}^{2} ) = | \boldsymbol{K} |^{2} ( 1 - \cos^{2} \theta )`$ and $`\int 0 \pi`$ $`\sin^{2} \theta \sin \theta d\theta = \tfrac{4}{3}`$, we have<sup><a id="fnref-34" href="#fn-34">34</a></sup>
 
 <a id="eq-238"></a>
 

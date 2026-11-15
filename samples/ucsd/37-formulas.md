@@ -9,7 +9,7 @@
 
 $`\hbar`$ = 1$`. 0 5 \times 1 0^{- 2 7}`$ erg sec $`c`$ = 3$`. 0 0 \times 1 0^{1 0}`$ cm/sec $`e`$ = 1$`. 6 0 2 \times 1 0^{- 1 9}`$ coulomb
 
-$`1 eV`$ = 1$`. 6 0 2 \times 1 0^{- 1 2}`$ erg $`\alpha = \tfrac{e^{2}}{\hbar c}`$ = 1$`/ 137`$ = $`\frac{e^{2}}{4 \pi \epsilon_{0} \hbar c}`$ (SI) $`\hbar c`$ = 1973 eV ˚A= 197.3 MeV F
+$`1 eV`$ = 1$`. 6 0 2 \times 1 0^{- 1 2}`$ erg $`\alpha = \tfrac{e^{2}}{\hbar c}`$ = $`1 / 137`$ = $`\frac{e^{2}}{4 \pi \epsilon_{0} \hbar c}`$ (SI) $`\hbar c`$ = 1973 eV ˚A= 197.3 MeV F
 
 1 ˚A= 1$`. 0 \times 1 0^{- 8}`$ cm 1 Fermi = 1$`. 0 \times 1 0^{- 1 3}`$ cm $`a_{0} = \tfrac{\hbar}{\alpha m_{e} c}`$ = 0$`. 5 2 9 \times 1 0^{- 8}`$ cm
 
