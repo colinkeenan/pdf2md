@@ -365,6 +365,10 @@ fn read_cached(dir: &std::path::Path, k: &str) -> Option<Reading> {
         Some(Reading::Unreadable)
     } else if t.is_empty() {
         None
+    } else if t.contains("\\includegraphics") {
+        // (a "formula" that names a picture file: the recognizer saw a
+        // drawing, one too faint for the test of drawings)
+        Some(Reading::Drawing)
     } else {
         // (the reading chosen from the two recognizers', where it is not
         // the math recognizer's own)
