@@ -43,6 +43,10 @@ fn python() -> Option<PathBuf> {
 /// while nearly every page holds an image.
 pub fn looks_scanned(doc: &Doc, path: &Path, pages: Option<(u32, u32)>) -> bool {
     let n = doc.pages.len();
+    // PDF2MD_SCAN=1: read the pages as pictures whatever text they hold
+    if n > 0 && std::env::var_os("PDF2MD_SCAN").is_some() {
+        return true;
+    }
     let letters: usize = doc.pages.iter().flat_map(|p| &p.lines).flat_map(|l| &l.spans).map(|s| s.text.chars().filter(|c| c.is_alphabetic()).count()).sum();
     if n == 0 || letters > 100 * n {
         return false;

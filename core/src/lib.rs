@@ -340,8 +340,15 @@ pub fn convert_pdf(path: &Path) -> Result<Book, String> {
 /// Read only pages `first..=last` (1-based) and convert them; handy for
 /// checking a few pages of a big book.
 pub fn convert_pdf_pages(path: &Path, pages: Option<(u32, u32)>) -> Result<Book, String> {
+    convert_pdf_as(path, pages, false)
+}
+
+/// [`convert_pdf_pages`]; `pictures`: read the pages as pictures whatever
+/// text the PDF holds (a scan with a layer of text that is no use: what a
+/// program made of handwriting).
+pub fn convert_pdf_as(path: &Path, pages: Option<(u32, u32)>, pictures: bool) -> Result<Book, String> {
     let mut doc = layout::read_text(path, pages)?;
-    let mut book = if scan::looks_scanned(&doc, path, pages) {
+    let mut book = if pictures || scan::looks_scanned(&doc, path, pages) {
         // pictures of pages: read by the page reader
         let (first, last) = pages.unwrap_or((1, doc.pages.len() as u32));
         let read = scan::read(path, first, last.min(first + doc.pages.len() as u32 - 1))?;

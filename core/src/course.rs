@@ -182,6 +182,8 @@ fn markdown(html: &str, top: usize, link: &dyn Fn(&str) -> Option<String>) -> St
                     heading = Some((top + level - highest).min(6));
                 }
                 "p" | "div" | "section" | "article" | "main" if table.is_none() => flush(&mut cur, &mut out, &mut item, &mut heading, lists.len()),
+                // (in a cell of a table: a new line)
+                "p" | "li" if cell && !squeeze(&cur).is_empty() && !cur.trim_end().ends_with("<br>") => cur.push_str("<br>"),
                 "ol" | "ul" if table.is_none() => {
                     flush(&mut cur, &mut out, &mut item, &mut heading, lists.len());
                     lists.push((n == "ol", 0));
@@ -342,7 +344,12 @@ fn link_name(href: &str) -> Option<String> {
 fn tidy_label(t: &str) -> String {
     let t = squeeze(t);
     let t = t.trim_matches(|c| c == '[' || c == ']').trim();
-    t.trim_end_matches("(PDF)").trim().to_string()
+    // ("Homework #1 (PDF)", "(PDF - 2.2 MB)")
+    let t = match t.rfind("(PDF") {
+        Some(k) if t.ends_with(')') => t[..k].trim(),
+        _ => t,
+    };
+    t.trim_matches(|c| c == '(' || c == ')').trim().to_string()
 }
 
 /// What a page lists, in its order.
@@ -390,7 +397,14 @@ fn entries(html: &str) -> Vec<Entry> {
         }
         // (the last cell of its row tells its topics)
         let about = if p.2 { pieces[k + 1..].iter().take_while(|q| q.2 && q.3 == p.3).last().map(|q| q.0.clone()).unwrap_or_default() } else { String::new() };
-        out.push(Entry { label: tidy_label(&p.0), name: p.1.clone(), about });
+        let mut label = tidy_label(&p.0);
+        // (a cell that holds the link alone, "(PDF)": the row's other cells
+        // name it, "1 - 8" and "Time-dependent Perturbation Theory")
+        if p.2 && (label.is_empty() || label == "PDF") {
+            let cells: Vec<&str> = pieces.iter().filter(|q| q.2 && q.3 == p.3 && !std::ptr::eq(*q, p)).map(|q| q.0.as_str()).collect();
+            label = cells.join(": ");
+        }
+        out.push(Entry { label, name: p.1.clone(), about });
     }
     out
 }
@@ -475,7 +489,12 @@ fn pdf_text(pdf: &Path, stem: &str, out: &Path) -> Result<(String, Option<String
             range = Some((1, n - 1));
         }
     }
-    let book = crate::convert_pdf_pages(pdf, range)?;
+    let written_by_hand = handwritten(pdf);
+    // (pages that are pictures of print, or set in fonts that are drawn
+    // letter by letter and have no names: read by the page reader, and
+    // each page's picture given under what was read, to check it by)
+    let pictured = !written_by_hand && pictures_of_print(pdf);
+    let book = crate::convert_pdf_as(pdf, range, written_by_hand || pictured)?;
     // the pictures, named after the PDF
     let tmp = out.join(format!(".course-{stem}"));
     let _ = std::fs::remove_dir_all(&tmp);
@@ -512,11 +531,127 @@ fn pdf_text(pdf: &Path, stem: &str, out: &Path) -> Result<(String, Option<String
         .collect();
     let names: Vec<&str> = book.chapters.iter().map(|c| c.slug.as_str()).collect();
     let text = emit::join_bodies("", &names, &bodies, false);
+    let last = pages.unwrap_or(0).min(range.map_or(u32::MAX, |r| r.1));
+    let mut text = if written_by_hand { page_pictures(pdf, stem, out, &text, last) } else { text };
+    if pictured {
+        for n in 1..=last {
+            if let Some(name) = page_picture(pdf, stem, out, n) {
+                text.push_str(&format!("\n<details>\n<summary>Page {n} as printed</summary>\n\n![Page {n}]({name})\n\n</details>\n"));
+            }
+        }
+    }
     let text = text
         .replace(&format!("\"{}#page=", emit::PDF_NAME), &format!("\"pdf/{stem}.pdf#page="))
         .replace("](images/", &format!("](images/{stem}-"))
+        .replace(&format!("](images/{stem}-{stem}-page-"), &format!("](images/{stem}-page-"))
         .replace("src=\"images/", &format!("src=\"images/{stem}-"));
     Ok((text, source))
+}
+
+/// Is the PDF a scan of handwriting with a layer of text that a program
+/// made of it? Its pages are pictures, its text is in fonts the PDF does
+/// not hold, and few of its "words" are words.
+fn handwritten(pdf: &Path) -> bool {
+    let run = |cmd: &str, args: &[&str]| std::process::Command::new(cmd).args(args).output().ok().map(|o| String::from_utf8_lossy(&o.stdout).into_owned()).unwrap_or_default();
+    let path = pdf.to_string_lossy();
+    let fonts = run("pdffonts", &[&path]);
+    let rows: Vec<&str> = fonts.lines().skip(2).collect();
+    // (name, type, encoding, emb, sub, uni …: "no" in the emb column, read
+    // from the right, where no column has spaces)
+    let held = |row: &str| row.split_whitespace().rev().nth(4).is_some_and(|emb| emb == "yes");
+    if rows.is_empty() || rows.iter().any(|r| held(r)) {
+        return false;
+    }
+    let pages: usize = run("pdfinfo", &[&path]).lines().find_map(|l| l.strip_prefix("Pages:").and_then(|n| n.trim().parse().ok())).unwrap_or(0);
+    let with_picture: std::collections::HashSet<u32> = run("pdfimages", &["-list", &path]).lines().skip(2).filter_map(|l| l.split_whitespace().next()?.parse().ok()).collect();
+    if pages == 0 || with_picture.len() * 5 < pages * 4 {
+        return false;
+    }
+    let text = run("pdftotext", &[&path, "-"]);
+    let tokens: Vec<&str> = text.split_whitespace().collect();
+    let words = tokens.iter().filter(|t| t.chars().count() >= 3 && t.trim_end_matches(['.', ',', ';', ':']).chars().all(char::is_alphabetic)).count();
+    tokens.is_empty() || words * 2 < tokens.len()
+}
+
+/// Are the PDF's pages pictures of print, or its letters drawn one by one
+/// (TeX's fonts as bitmaps, without names to tell the math by)?
+fn pictures_of_print(pdf: &Path) -> bool {
+    let run = |cmd: &str, args: &[&str]| std::process::Command::new(cmd).args(args).output().ok().map(|o| String::from_utf8_lossy(&o.stdout).into_owned()).unwrap_or_default();
+    let path = pdf.to_string_lossy();
+    let fonts = run("pdffonts", &[&path]);
+    let rows: Vec<&str> = fonts.lines().skip(2).collect();
+    if rows.is_empty() || rows.iter().all(|r| r.contains(" Type 3 ")) {
+        return true;
+    }
+    let pages: usize = run("pdfinfo", &[&path]).lines().find_map(|l| l.strip_prefix("Pages:").and_then(|n| n.trim().parse().ok())).unwrap_or(1);
+    run("pdftotext", &[&path, "-"]).split_whitespace().count() < 10 * pages.max(1)
+}
+
+/// The picture of a page, in the book's folder; gives its name there.
+fn page_picture(pdf: &Path, stem: &str, out: &Path, n: u32) -> Option<String> {
+    let _ = std::fs::create_dir_all(out.join("images"));
+    let name = format!("images/{stem}-page-{n:03}");
+    std::process::Command::new("pdftocairo")
+        .args(["-png", "-gray", "-r", "110", "-singlefile", "-f", &n.to_string(), "-l", &n.to_string()])
+        .arg(pdf)
+        .arg(out.join(&name))
+        .status()
+        .is_ok_and(|st| st.success())
+        .then(|| format!("{name}.png"))
+}
+
+/// The text of a handwritten PDF, page by page: each page as its picture,
+/// and under it, folded away, what the machine read on it (for searching;
+/// handwriting is read with mistakes, its formulas most of all).
+fn page_pictures(pdf: &Path, stem: &str, out: &Path, text: &str, pages: u32) -> String {
+    // what was read, by the page it is on
+    let mut read: HashMap<u32, String> = HashMap::new();
+    let mut page = 0u32;
+    let number = |t: &str| t.find("#page=").map(|k| t[k + 6..].chars().take_while(char::is_ascii_digit).collect::<String>()).and_then(|n| n.parse::<u32>().ok());
+    let mut rest = text;
+    let mut bar_next = false;
+    while !rest.is_empty() {
+        // a page turns in the middle of a paragraph
+        if let Some(k) = rest.find("<span class=\"page\"").filter(|k| !rest[..*k].contains('\n')) {
+            read.entry(page).or_default().push_str(&rest[..k]);
+            let tail = &rest[k..];
+            let id = tail.find(" id=\"").unwrap_or(0);
+            let end = tail[id..].find("</a></span>").map_or(tail.len(), |e| id + e + "</a></span>".len());
+            page = number(&tail[id..end]).unwrap_or(page + 1);
+            rest = &tail[end..];
+            continue;
+        }
+        let (line, after) = rest.split_once('\n').unwrap_or((rest, ""));
+        rest = after;
+        if line.starts_with("<hr class=\"page\"") {
+            bar_next = true;
+        } else if bar_next && line.starts_with("<a id=\"p") {
+            page = number(line).unwrap_or(page + 1);
+            bar_next = false;
+        } else if line.starts_with("<div align=\"right\"><a href=") && line.contains("#page=") {
+            // (the page that ends, named above the bar)
+        } else if line.trim_end() == "# Front Matter" {
+        } else {
+            bar_next = false;
+            let t = read.entry(page).or_default();
+            t.push_str(line);
+            t.push('\n');
+        }
+    }
+    let mut s = String::new();
+    let attrs = " target=\"_blank\" title=\"This page in the PDF\"";
+    for n in 1..=pages.max(read.keys().copied().max().unwrap_or(0)) {
+        let made = page_picture(pdf, stem, out, n);
+        s.push_str(&format!("<hr class=\"page\" style=\"height:2px;border:0;background:currentColor;opacity:0.25\">\n<a id=\"pdf-p{n}\" href=\"{}#page={n}\"{attrs}><sup>[PDF p. {n}]</sup></a>\n\n", emit::PDF_NAME));
+        if let Some(name) = made {
+            s.push_str(&format!("![Page {n}]({name})\n\n"));
+        }
+        let words = read.get(&n).map(|t| t.trim()).unwrap_or("");
+        if !words.is_empty() {
+            s.push_str(&format!("<details>\n<summary>Page {n} as a machine read it (handwriting: expect mistakes, in the formulas most of all)</summary>\n\n{words}\n\n</details>\n\n"));
+        }
+    }
+    s
 }
 
 /// The words that tell a topic: lowercase, four letters or more, without a
