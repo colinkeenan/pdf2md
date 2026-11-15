@@ -113,7 +113,28 @@ pub fn fingerprint(block: &str) -> String {
 }
 
 fn unescape(t: &str) -> String {
-    t.replace("&quot;", "\"").replace("&lt;", "<").replace("&gt;", ">").replace("&#39;", "'").replace("&amp;", "&")
+    // (a character by its number, "&#36;" for "$": so a formula in the
+    // converted text can be kept in an attribute without a reader of
+    // Markdown taking it for one)
+    let mut out = String::with_capacity(t.len());
+    let mut rest = t;
+    while let Some(i) = rest.find("&#") {
+        out.push_str(&rest[..i]);
+        let after = &rest[i + 2..];
+        let digits: String = after.chars().take_while(char::is_ascii_digit).collect();
+        match (digits.parse::<u32>().ok().and_then(char::from_u32), after[digits.len()..].starts_with(';')) {
+            (Some(c), true) if !digits.is_empty() => {
+                out.push(c);
+                rest = &after[digits.len() + 1..];
+            }
+            _ => {
+                out.push_str("&#");
+                rest = after;
+            }
+        }
+    }
+    out.push_str(rest);
+    out.replace("&quot;", "\"").replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&")
 }
 
 /// Byte ranges of the reader's notes in a file: <details class="mine">
@@ -341,7 +362,9 @@ pub fn apply(text: &mut String, data: &UserData, slug: Option<&str>) -> Vec<Note
     for f in data.fixes.iter().filter(|f| ours(&f.slug)) {
         let mut pos = 0;
         for block in text.clone().split("\n\n") {
-            if fingerprint(block) == f.paragraph {
+            // (the paragraph as converted: a fix put back before this one,
+            // near the paragraph's start, changes its first words)
+            if fingerprint(&undo_fixes(block)) == f.paragraph {
                 if let Some(k) = block.find(&f.was) {
                     let at = pos + k;
                     text.replace_range(at..at + f.was.len(), &f.span);
@@ -463,6 +486,26 @@ mod tests {
     use super::*;
 
     const OLD: &str = "# Chapter\n\nFirst paragraph about spin.\n\n<a id=\"eq-1.1\"></a>\n\n$$\nx=1 \\tag{1.1}\n$$\n\n<details class=\"mine\">\n<summary>✎ My note</summary>\n\nWhy *x* is 1.\n\n</details>\n\nSecond paragraph with a <span class=\"fix\" data-was=\"rnistake\">mistake</span> in it.\n\n> [!WARNING]\n> I think this is wrong.\n\nThird paragraph.\n";
+
+    #[test]
+    fn two_fixes_in_one_paragraph_are_both_redone() {
+        let edited = "# Chapter\n\nThe <span class=\"fix\" data-was=\"frist\">first</span> word and the <span class=\"fix\" data-was=\"lsat\">last</span> one.\n";
+        let d = collect_file(edited, &|_| Some("01-chapter".into()));
+        assert_eq!(d.fixes.len(), 2);
+        let mut new = "# Chapter\n\nThe frist word and the lsat one.\n".to_string();
+        apply(&mut new, &d, Some("01-chapter"));
+        assert_eq!(new, edited);
+    }
+
+    #[test]
+    fn a_formula_kept_in_a_fix_by_its_characters_numbers() {
+        let edited = "# Chapter\n\nSo <span class=\"fix\" data-was=\"&#36;&#96;e^{-Z}&#96;&#36;eff\">$`e^{-Z_{\\mathrm{eff}}}`$</span> it is.\n";
+        let d = collect_file(edited, &|_| Some("01-chapter".into()));
+        assert_eq!(d.fixes[0].was, "$`e^{-Z}`$eff");
+        let mut new = "# Chapter\n\nSo $`e^{-Z}`$eff it is.\n".to_string();
+        apply(&mut new, &d, Some("01-chapter"));
+        assert_eq!(new, edited);
+    }
 
     #[test]
     fn notes_follow_renamed_files() {

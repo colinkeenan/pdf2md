@@ -147,7 +147,7 @@ No conversion is perfect, and a textbook is something you write in. What you cha
 * **Equations read from a picture or a scan**: just edit the LaTeX. In mdBun, click the equation.
 * **Table cells**: edit the cell where it stands, between the empty lines inside its `<td>`. The title across the top of a table and the note across its foot are not cells: correct words there as you would in the text, with a fix (next point; in mdBun, "Fix text").
 * **The picture under a table**: once the table is right, fold the picture away for good by deleting the word `open` in its `<details open>`, or delete the fold.
-* **Wrong words in the text**: wrap the fix so it can be redone, `<span class="fix" data-was="as converted">as in the book</span>`.
+* **Wrong words in the text**: wrap the fix so it can be redone, `<span class="fix" data-was="as converted">as in the book</span>`. Where the converted text holds a formula, write its `$` as `&#36;` and its backtick as `&#96;` inside `data-was`, so that a Markdown reader does not take it for a formula there.
 * **Your own notes**: a collapsible note or an alert box, placed after the paragraph or equation it belongs to.
 
   ```markdown
