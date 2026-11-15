@@ -64,7 +64,7 @@ s ( s - 1 ) + 2 s = \ell ( \ell + 1 )
 s ( s + 1 ) = \ell ( \ell + 1 )
 ```
 
-There are actually two solutions to this equation, $`s = \ell`$ and $`s = - \ell -`$ 1. The first solution, $`s = \ell`$, is well behaved at the origin (**regular solution**). The second solution, $`s = - \ell - 1`$, causes normalization problems at the origin (**irregular solution**).
+There are actually two solutions to this equation, $`s = \ell`$ and $`s = - \ell - 1`$. The first solution, $`s = \ell`$, is well behaved at the origin (**regular solution**). The second solution, $`s = - \ell - 1`$, causes normalization problems at the origin (**irregular solution**).
 
 # <a id="s-15-3-spherical-bessel-functions"></a>15.3 Spherical Bessel Functions \*
 

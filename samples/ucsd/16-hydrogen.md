@@ -287,7 +287,7 @@ s^{2} - s + 2 s = \ell ( \ell + 1 )
 s ( s + 1 ) = \ell ( \ell + 1 )
 ```
 
-So either $`s = \ell`$ or $`s = - \ell -`$ 1. The second is not well normalizable. We **write** $`G`$ **as a sum**.
+So either $`s = \ell`$ or $`s = - \ell - 1`$. The second is not well normalizable. We **write** $`G`$ **as a sum**.
 
 ```math
 G ( \rho ) = \rho^{\ell} \sum_{k = 0}^{\infty} a_{k} \rho^{k} = \sum_{k = 0}^{\infty} a_{k} \rho^{k + \ell}

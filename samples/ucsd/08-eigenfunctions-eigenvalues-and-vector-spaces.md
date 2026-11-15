@@ -647,7 +647,7 @@ We can integrate this by parts, differentiating the $`\varphi`$ and integrating 
 
 So the Hermitian conjugate of $`\frac{\partial}{\partial x}`$ is $`- \tfrac{\partial}{\partial x}`$ .
 
-Note that the Hermitian conjugate of the momentum operator is $`\frac{\hbar}{- i} \frac{\partial}{\partial x} -`$ which is the same as the original operator. So the momentum operator is Hermitian.
+Note that the Hermitian conjugate of the momentum operator is $`\frac{\hbar}{- i} \frac{\partial}{\partial x}`$-which is the same as the original operator. So the momentum operator is Hermitian.
 
 # <a id="s-8-9-sample-test-problems"></a>8.9 Sample Test Problems
 

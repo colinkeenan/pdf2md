@@ -1190,7 +1190,7 @@ If two particles interact with each other, with no external potential,
 H = \frac{- \hbar^{2}}{2 m_{( 1 )}} \nabla_{( 1 )}^{2} + \frac{- \hbar^{2}}{2 m_{( 2 )}} \nabla_{( 1 )}^{2} + V ( \vec{x}_{( 1 )} - \vec{x}_{( 2 )} )
 ```
 
-the Hamiltonian has a **translational symmetry**, and remains invariant under the translation $`\vec{x} \to`$ $`\vec{x} + \vec{a}`$. We can show that this translational symmetry implies **conservation of total momentum**. Similarly, we will show that rotational symmetry implies conservation of angular momentum, and that time symmetry implies conservation of energy.
+the Hamiltonian has a **translational symmetry**, and remains invariant under the translation $`\vec{x} \to \vec{x} + \vec{a}`$. We can show that this translational symmetry implies **conservation of total momentum**. Similarly, we will show that rotational symmetry implies conservation of angular momentum, and that time symmetry implies conservation of energy.
 
 For two particles interacting through a potential that depends only on difference on the coordinates,
 
@@ -2579,7 +2579,7 @@ where the gamma matrices are given by
 \gamma_{1} = \begin{pmatrix} 0 & 0 & 0 & - i \\ 0 & 0 & - i & 0 \\ 0 & i & 0 & 0 \end{pmatrix} \quad \gamma_{2} = \begin{pmatrix} 0 & 0 & 0 & - 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \end{pmatrix}
 ```
 
-$`i`$ 0 0 0 $`- 1`$ 0 0 0 and they satisfy anti-commutation relations.
+$`i`$ 0 0 $`0 - 1`$ 0 0 0 and they satisfy anti-commutation relations.
 
 ```math
 \gamma_{3} = \begin{pmatrix} 0 & 0 & - i & 0 \\ 0 & 0 & 0 & i \\ i & 0 & 0 & 0 \\ 0 & - i & 0 & 0 \end{pmatrix} \quad \gamma_{4} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & - 1 & 0 \\ 0 & 0 & 0 & - 1 \end{pmatrix}
@@ -6832,7 +6832,7 @@ We can integrate this by parts, differentiating the $`\varphi`$ and integrating 
 
 So the Hermitian conjugate of $`\frac{\partial}{\partial x}`$ is $`- \tfrac{\partial}{\partial x}`$ .
 
-Note that the Hermitian conjugate of the momentum operator is $`\frac{\hbar}{- i} \frac{\partial}{\partial x} -`$ which is the same as the original operator. So the momentum operator is Hermitian.
+Note that the Hermitian conjugate of the momentum operator is $`\frac{\hbar}{- i} \frac{\partial}{\partial x}`$-which is the same as the original operator. So the momentum operator is Hermitian.
 
 # <a id="s-8-9-sample-test-problems"></a>8.9 Sample Test Problems
 
@@ -11419,7 +11419,7 @@ s ( s - 1 ) + 2 s = \ell ( \ell + 1 )
 s ( s + 1 ) = \ell ( \ell + 1 )
 ```
 
-There are actually two solutions to this equation, $`s = \ell`$ and $`s = - \ell -`$ 1. The first solution, $`s = \ell`$, is well behaved at the origin (**regular solution**). The second solution, $`s = - \ell - 1`$, causes normalization problems at the origin (**irregular solution**).
+There are actually two solutions to this equation, $`s = \ell`$ and $`s = - \ell - 1`$. The first solution, $`s = \ell`$, is well behaved at the origin (**regular solution**). The second solution, $`s = - \ell - 1`$, causes normalization problems at the origin (**irregular solution**).
 
 # <a id="s-15-3-spherical-bessel-functions"></a>15.3 Spherical Bessel Functions \*
 
@@ -12227,7 +12227,7 @@ s^{2} - s + 2 s = \ell ( \ell + 1 )
 s ( s + 1 ) = \ell ( \ell + 1 )
 ```
 
-So either $`s = \ell`$ or $`s = - \ell -`$ 1. The second is not well normalizable. We **write** $`G`$ **as a sum**.
+So either $`s = \ell`$ or $`s = - \ell - 1`$. The second is not well normalizable. We **write** $`G`$ **as a sum**.
 
 ```math
 G ( \rho ) = \rho^{\ell} \sum_{k = 0}^{\infty} a_{k} \rho^{k} = \sum_{k = 0}^{\infty} a_{k} \rho^{k + \ell}
@@ -14170,7 +14170,7 @@ To find the eigenvectors of the operator $`S_{y}`$ we follow precisely the same 
 
 4. Solve this equation for the eigenvectors
 
-Here we go! The operator $`S = \tfrac{\hbar}{2}`$ 0 $`- i`$ , so that, in matrix notation the eigenvalue equation
+Here we go! The operator $`S = \tfrac{\hbar}{2}`$ $`0 - i`$ , so that, in matrix notation the eigenvalue equation
 
 ```math
 {}_{y} \quad \left( i \quad 0 \right)
@@ -17419,7 +17419,7 @@ This is OK in both limits, ∆ $`\gg \gamma`$, and $`\gamma \gg`$ ∆. It is als
 
 ## <a id="s-22-4-1-derivation-of-1st-and-2nd-order-perturbation-equations"></a>22.4.1 Derivation of 1st and 2nd Order Perturbation Equations
 
-To keep track of powers of the perturbation in this derivation we will make the substitution $`H_{1} \to`$ $`\lambda H_{1}`$ where $`\lambda`$ is assumed to be a small parameter in which we are making the series expansion of our energy eigenvalues and eigenstates. It is there to do the book-keeping correctly and can go away at the end of the derivations.
+To keep track of powers of the perturbation in this derivation we will make the substitution $`H_{1} \to \lambda H_{1}`$ where $`\lambda`$ is assumed to be a small parameter in which we are making the series expansion of our energy eigenvalues and eigenstates. It is there to do the book-keeping correctly and can go away at the end of the derivations.
 
 To solve the problem using a **perturbation series**, we will expand both our energy eigenvalues and eigenstates in powers of $`\lambda`$.
 
@@ -18076,7 +18076,7 @@ Compute the energy shifts in eV.
 
 # <a id="s-23-6-sample-test-problems"></a>23.6 Sample Test Problems
 
-1. The relativistic correction to the Hydrogen Hamiltonian is $`H_{1}`$ = $`- {}_{8} \tfrac{p^{4}}{m^{3} c^{2}}`$. Assume that electrons have spin zero and that there is therefore no spin orbit correction. Calculate the energy shifts and draw an energy diagram for the n=3 states of Hydrogen. You may use $`\langle \psi_{nlm} | \tfrac{1}{r} | \psi_{nlm} \rangle = \tfrac{1}{n^{2} a_{0}}`$ and $`\langle \psi_{nlm} | \tfrac{1}{r^{2}} | \psi_{nlm} \rangle = \tfrac{1}{n^{3} a_{0}^{2} ( l + \tfrac{1}{2} )}`$.
+1. The relativistic correction to the Hydrogen Hamiltonian is $`H_{1} = - {}_{8} \tfrac{p^{4}}{m^{3} c^{2}}`$. Assume that electrons have spin zero and that there is therefore no spin orbit correction. Calculate the energy shifts and draw an energy diagram for the n=3 states of Hydrogen. You may use $`\langle \psi_{nlm} | \tfrac{1}{r} | \psi_{nlm} \rangle = \tfrac{1}{n^{2} a_{0}}`$ and $`\langle \psi_{nlm} | \tfrac{1}{r^{2}} | \psi_{nlm} \rangle = \tfrac{1}{n^{3} a_{0}^{2} ( l + \tfrac{1}{2} )}`$.
 
 2. Calculate the fine structure energy shifts (in eV!) for the $`n`$ = 1, $`n`$ = 2, and $`n`$ = 3 states of Hydrogen. Include the effects of relativistic corrections, the spin-orbit interaction, and the so-called Darwin term (due to Dirac equation). Do not include hyperfine splitting or the effects of an external magnetic field. (Note: I am not asking you to derive the equations.) Clearly list the states in spectroscopic notation and make a diagram showing the allowed electric dipole decays of these states.
 
@@ -19465,7 +19465,7 @@ The ground state has $`s`$ = 1 and $`\ell`$ = 1 as we predicted. Other states la
 
 ## <a id="s-26-6-3-nitrogen-ground-state"></a>26.6.3 Nitrogen Ground State
 
-Now, with $`Z`$ = 7 we have three valence 2P electrons and the shell is half full. Hund’s first rule , maximum total $`s`$, tells us to couple the three electron spins to $`s = \tfrac{3}{2}`$. This is again the symmetric spin state so we’ll need to make the space state antisymmetric. We now have the truly nasty problem of figuring out which total $`\ell`$ states are totally antisymmetric. All I have to say is $`3 \otimes`$ $`3 \otimes 3`$ = $`7_{S} \oplus 5_{MS} \oplus 3_{MS} \oplus 5_{MA} \oplus 3_{MA} \oplus 1_{A} \oplus 3_{MS}`$. Here MS means mixed symmetric. That is; it is symmetric under the interchange of two of the electrons but not with the third. Remember, adding two P states together, we get total $`\ell_{1 2}`$ = 0$`, 1 ,`$ 2. Adding another P state to each of these gives total $`\ell`$ = 1 for $`\ell_{1 2}`$ = 0, $`\ell`$ = 0$`, 1 ,`$ 2 for $`\ell_{1 2}`$ = 1, and $`\ell`$ = 1$`, 2 ,`$ 3 for $`\ell_{1 2}`$ = 2. Hund’s second rule, maximum $`\ell`$,
+Now, with $`Z`$ = 7 we have three valence 2P electrons and the shell is half full. Hund’s first rule , maximum total $`s`$, tells us to couple the three electron spins to $`s = \tfrac{3}{2}`$. This is again the symmetric spin state so we’ll need to make the space state antisymmetric. We now have the truly nasty problem of figuring out which total $`\ell`$ states are totally antisymmetric. All I have to say is $`3 \otimes 3 \otimes 3`$ = $`7_{S} \oplus 5_{MS} \oplus 3_{MS} \oplus 5_{MA} \oplus 3_{MA} \oplus 1_{A} \oplus 3_{MS}`$. Here MS means mixed symmetric. That is; it is symmetric under the interchange of two of the electrons but not with the third. Remember, adding two P states together, we get total $`\ell_{1 2}`$ = 0$`, 1 ,`$ 2. Adding another P state to each of these gives total $`\ell`$ = 1 for $`\ell_{1 2}`$ = 0, $`\ell`$ = 0$`, 1 ,`$ 2 for $`\ell_{1 2}`$ = 1, and $`\ell`$ = 1$`, 2 ,`$ 3 for $`\ell_{1 2}`$ = 2. Hund’s second rule, maximum $`\ell`$,
 
 <div align="right"><a href="book.pdf#page=380" target="_blank" title="This page in the PDF"><sup>[p. 380]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -20355,7 +20355,7 @@ A quick estimate of the decay rate of an atom (See Section 29.14.3) gives
 
 # <a id="s-29-5-electric-dipole-approximation-and-selection-rules"></a>29.5 Electric Dipole Approximation and Selection Rules
 
-We can now expand the $`e^{- i \vec{k} \cdot \vec{r}} \approx 1`$ $`- i \vec{k} \cdot \vec{r} + \dots`$ term to allow us to compute matrix elements more easily. Since $`\vec{k} \cdot \vec{r} \approx \tfrac{\alpha}{2}`$ and the matrix element is squared, our expansion will be in powers of $`\alpha^{2}`$ which is a small number. The dominant decays will be those from the zeroth order approximation which is
+We can now expand the $`e^{- i \vec{k} \cdot \vec{r}} \approx 1 - i \vec{k} \cdot \vec{r} + \dots`$ term to allow us to compute matrix elements more easily. Since $`\vec{k} \cdot \vec{r} \approx \tfrac{\alpha}{2}`$ and the matrix element is squared, our expansion will be in powers of $`\alpha^{2}`$ which is a small number. The dominant decays will be those from the zeroth order approximation which is
 
 ```math
 e^{- i \vec{k} \cdot \vec{r}} \approx 1 .
@@ -21463,7 +21463,7 @@ Since ∆ =$`\vec{\jmath} \quad \vec{k}_{f} - \vec{k}_{i}`$, we have ∆2 $`= k_
 = \left| \frac{Z_{1} Z_{2} e^{2}}{\tfrac{\hbar^{2}}{2 \mu a^{2}} + 4 E \sin^{2} \tfrac{\theta}{2}} \right|^{2}
 ```
 
-In the last step we have used the non-relativistic formula for energy and 1 $`- \cos \theta = \tfrac{1}{2}`$ sin<sup>2</sup> $`\frac{\theta}{2}`$.
+In the last step we have used the non-relativistic formula for energy and $`1 - \cos \theta = \tfrac{1}{2}`$ sin<sup>2</sup> $`\frac{\theta}{2}`$.
 
 The screened Coulomb potential gives a finite total cross section. It corresponds well with the experiment Rutherford did in which $`\alpha`$ particles were scattered from atoms in a foil. If we scatter from a bare charge where there is no screening, we can take the limit in which $`a \to \infty`$.
 
@@ -23396,7 +23396,7 @@ The decay rate does not depend on the $`m`$ of the initial state.
 
 ## <a id="s-33-12-1-beyond-the-electric-dipole-approximation"></a>33.12.1 Beyond the Electric Dipole Approximation
 
-Some atomic states have no lower energy state that satisfies the E1 selection rules to decay to. Then, higher order processes must be considered. The next order term in the expansion of $`e^{- i \vec{k} \cdot \vec{r}} = 1`$ $`- i \vec{k} \cdot \vec{r} + \dots`$ will allow other transitions to take place but at lower rates. We will attempt to understand the **selection rules** when we include the $`i \vec{k} \cdot \vec{r}`$ term.
+Some atomic states have no lower energy state that satisfies the E1 selection rules to decay to. Then, higher order processes must be considered. The next order term in the expansion of $`e^{- i \vec{k} \cdot \vec{r}} = 1 - i \vec{k} \cdot \vec{r} + \dots`$ will allow other transitions to take place but at lower rates. We will attempt to understand the **selection rules** when we include the $`i \vec{k} \cdot \vec{r}`$ term.
 
 The matrix element is proportional to $`- i \langle \varphi_{n} | ( \vec{k} \cdot \vec{r} )`$(ˆ$`\epsilon^{( \lambda )} \cdot \vec{p}_{e}`$) $`| \varphi_{i} \rangle`$ which we will **split up into two** **terms**. You might ask why split it. The reason is that we will essentially be **computing matrix** **elements of at tensor** and dotting it into two vectors that do not depend on the atomic state.
 
@@ -26138,7 +26138,7 @@ Therefore, under a **parity inversion operation**
 0 1 1 0 \quad 0 0 \quad 0 0
 ```
 
-Since $`\gamma_{4} = ( )`$ 0 0 $`- 1`$ 0 $`( )`$ , the third and fourth components of the spinor change sign while
+Since $`\gamma_{4} = ( )`$ 0 $`0 - 1`$ 0 $`( )`$ , the third and fourth components of the spinor change sign while
 
 ```math
 0 0 \quad 0 \quad - 1

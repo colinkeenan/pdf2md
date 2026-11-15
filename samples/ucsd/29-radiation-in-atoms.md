@@ -195,7 +195,7 @@ A quick estimate of the decay rate of an atom (See Section 29.14.3) gives
 
 # <a id="s-29-5-electric-dipole-approximation-and-selection-rules"></a>29.5 Electric Dipole Approximation and Selection Rules
 
-We can now expand the $`e^{- i \vec{k} \cdot \vec{r}} \approx 1`$ $`- i \vec{k} \cdot \vec{r} + \dots`$ term to allow us to compute matrix elements more easily. Since $`\vec{k} \cdot \vec{r} \approx \tfrac{\alpha}{2}`$ and the matrix element is squared, our expansion will be in powers of $`\alpha^{2}`$ which is a small number. The dominant decays will be those from the zeroth order approximation which is
+We can now expand the $`e^{- i \vec{k} \cdot \vec{r}} \approx 1 - i \vec{k} \cdot \vec{r} + \dots`$ term to allow us to compute matrix elements more easily. Since $`\vec{k} \cdot \vec{r} \approx \tfrac{\alpha}{2}`$ and the matrix element is squared, our expansion will be in powers of $`\alpha^{2}`$ which is a small number. The dominant decays will be those from the zeroth order approximation which is
 
 ```math
 e^{- i \vec{k} \cdot \vec{r}} \approx 1 .

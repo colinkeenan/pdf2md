@@ -485,7 +485,7 @@ Compute the energy shifts in eV.
 
 # <a id="s-23-6-sample-test-problems"></a>23.6 Sample Test Problems
 
-1. The relativistic correction to the Hydrogen Hamiltonian is $`H_{1}`$ = $`- {}_{8} \tfrac{p^{4}}{m^{3} c^{2}}`$. Assume that electrons have spin zero and that there is therefore no spin orbit correction. Calculate the energy shifts and draw an energy diagram for the n=3 states of Hydrogen. You may use $`\langle \psi_{nlm} | \tfrac{1}{r} | \psi_{nlm} \rangle = \tfrac{1}{n^{2} a_{0}}`$ and $`\langle \psi_{nlm} | \tfrac{1}{r^{2}} | \psi_{nlm} \rangle = \tfrac{1}{n^{3} a_{0}^{2} ( l + \tfrac{1}{2} )}`$.
+1. The relativistic correction to the Hydrogen Hamiltonian is $`H_{1} = - {}_{8} \tfrac{p^{4}}{m^{3} c^{2}}`$. Assume that electrons have spin zero and that there is therefore no spin orbit correction. Calculate the energy shifts and draw an energy diagram for the n=3 states of Hydrogen. You may use $`\langle \psi_{nlm} | \tfrac{1}{r} | \psi_{nlm} \rangle = \tfrac{1}{n^{2} a_{0}}`$ and $`\langle \psi_{nlm} | \tfrac{1}{r^{2}} | \psi_{nlm} \rangle = \tfrac{1}{n^{3} a_{0}^{2} ( l + \tfrac{1}{2} )}`$.
 
 2. Calculate the fine structure energy shifts (in eV!) for the $`n`$ = 1, $`n`$ = 2, and $`n`$ = 3 states of Hydrogen. Include the effects of relativistic corrections, the spin-orbit interaction, and the so-called Darwin term (due to Dirac equation). Do not include hyperfine splitting or the effects of an external magnetic field. (Note: I am not asking you to derive the equations.) Clearly list the states in spectroscopic notation and make a diagram showing the allowed electric dipole decays of these states.
 

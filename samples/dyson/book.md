@@ -2557,7 +2557,7 @@ Without spin you get simply
 4 \pi \left( \frac{e^{2}}{mv^{2}} \right)^{2} \left( \frac{\gamma + 1}{\gamma^{2}} \right) dx \left\{ \frac{4}{( 1 - x^{2} )^{2}} - \frac{3}{1 - x^{2}} \right\}
 ```
 
-Effect of spin is a measurable _increase_ of scattering over the Mott formula. Effect of exchange is roughly the 1 $`- 3 x^{2}`$ term. Positron-electron scattering is very similar. Only the exchange effect is different because of <a id="ix-20">annihilation</a> possibility.
+Effect of spin is a measurable _increase_ of scattering over the Mott formula. Effect of exchange is roughly the $`1 - 3 x^{2}`$ term. Positron-electron scattering is very similar. Only the exchange effect is different because of <a id="ix-20">annihilation</a> possibility.
 
 <div align="right"><a href="book.pdf#page=36" target="_blank" title="This page in the PDF"><sup>[p. 30]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -4707,7 +4707,7 @@ we can write down the commutation rules for the operator components:
 \left\{ \psi_{\alpha} ( z ) , \overline{\psi}_{\beta} ( y ) \right\} = - iS_{\alpha \beta} ( z - y ) \qquad \text{(299)}
 ```
 
-The invariant $`S -`$function satisfies by (293) and (295)
+The invariant $`S`$-function satisfies by (293) and (295)
 
 <a id="eq-300"></a>
 
@@ -5326,7 +5326,7 @@ N_{n}^{2} = N_{n} \qquad \text{(351)}
 
 so each $`N_{n}`$ has just the two eigenvalues 0, 1. This describes exactly the physical situation in a many-electron atom where each atomic level may be full or empty independent of the others.
 
-If each $`N`$ is represented by the (2 $`\times 2`$) diagonal matrix
+If each $`N`$ is represented by the ($`2 \times 2`$) diagonal matrix
 
 <a id="eq-352"></a>
 
@@ -5760,7 +5760,7 @@ Now the external potential $`A_{\nu}^{e} ( x )`$ is associated with a classical 
 \begin{aligned} j_{\nu E} ( x ) &= - c \sum_{\lambda} \frac{\partial}{\partial x_{\lambda}} F_{\lambda \nu E} ( x ) \\ &= - c \sum_{\lambda} \left\{ \frac{\partial^{2}}{\partial x_{\lambda}^{2}} A_{\nu}^{e} ( x ) - \frac{\partial^{2}}{\partial x_{\nu} \partial x_{\lambda}} A_{\lambda}^{e} ( x ) \right\} \\ &= c \left\{ q^{2} e_{\nu} - e \cdot qq_{\nu} \right\} e^{iq \cdot x} \end{aligned} \qquad \text{(391)}
 ```
 
-Hence (389) gives the final result, with $`\alpha =`$ $`1371 = \frac{e^{2}}{4 \pi \hbar c}`$, (Heaviside units)
+Hence (389) gives the final result, with $`\alpha = 1371 = \frac{e^{2}}{4 \pi \hbar c}`$, (Heaviside units)
 
 <a id="eq-392"></a>
 
@@ -7348,7 +7348,7 @@ _Every operator product_ $`\mathcal{O}`$ _is identically equal to the sum of the
 
 This theorem gives the decomposition of $`\mathcal{O}`$ into its normal constituents. Equations (501) – (503) are just special cases of it. Clearly non-zero $`\mathcal{O}_{n}`$ are only obtained when each pair of factors is either a $`\overline{\psi}`$ and a $`\psi`$ operator or two $`A_{\mu}`$ operators. We shall therefore suppose that the factor-pairings are always restricted in this way.
 
-The proof of the theorem is very simple, by induction on $`m`$, the number of factors in $`\mathcal{O}`$. The theorem is true when $`m`$ = 1 or 2, so we need only prove it true for $`m`$ assuming it true for $`m -`$ 2. Let then $`\mathcal{O}^{\prime}`$ be a product of $`( m - 2 )`$ factors. First we show that the theorem is true for
+The proof of the theorem is very simple, by induction on $`m`$, the number of factors in $`\mathcal{O}`$. The theorem is true when $`m`$ = 1 or 2, so we need only prove it true for $`m`$ assuming it true for $`m - 2`$. Let then $`\mathcal{O}^{\prime}`$ be a product of $`( m - 2 )`$ factors. First we show that the theorem is true for
 
 <a id="eq-505"></a>
 
@@ -7830,7 +7830,7 @@ We now come to the calculation of $`M_{2}`$, the matrix element of (539) between
 
 _Figure 10 (p. 106)_
 
-and $`\{ G_{6} ,G_{7} ,G_{8} ,G_{9} \}`$ obtained by interchanging the labels $`( x_{1} ,x_{2} )`$ in $`\{ G_{1} ,G_{2} ,G_{3} ,G_{4} \}`$, respectively. We can see this in the following way: The process we are interested in calls for one external photon line and two external <a id="ix-107">electron</a> lines. Hence $`A /^{e} ( x )`$, one $`\overline{\psi}`$ and one $`\psi`$ must be unpaired. Therefore the two $`A /`$’s are always coupled. The free electron lines can be $`\psi_{0} ,\psi_{1} ; \overline{\psi}_{1} ,\psi_{0} ; \overline{\psi}_{1} ,\psi_{1} ; \overline{\psi}_{1} ,\psi_{2}`$ and four more cases obtained by the substitution 1 $`\leftrightarrow`$ 2. In each case, the rest is uniquely determined by the rules. The ninth case is the one with external electron lines $`\overline{\psi}_{0} ,\psi_{0}`$.
+and $`\{ G_{6} ,G_{7} ,G_{8} ,G_{9} \}`$ obtained by interchanging the labels $`( x_{1} ,x_{2} )`$ in $`\{ G_{1} ,G_{2} ,G_{3} ,G_{4} \}`$, respectively. We can see this in the following way: The process we are interested in calls for one external photon line and two external <a id="ix-107">electron</a> lines. Hence $`A /^{e} ( x )`$, one $`\overline{\psi}`$ and one $`\psi`$ must be unpaired. Therefore the two $`A /`$’s are always coupled. The free electron lines can be $`\psi_{0} ,\psi_{1} ; \overline{\psi}_{1} ,\psi_{0} ; \overline{\psi}_{1} ,\psi_{1} ; \overline{\psi}_{1} ,\psi_{2}`$ and four more cases obtained by the substitution $`1 \leftrightarrow 2`$. In each case, the rest is uniquely determined by the rules. The ninth case is the one with external electron lines $`\overline{\psi}_{0} ,\psi_{0}`$.
 
 The effect of $`\{ G_{6} ,G_{7} ,G_{8} ,G_{9} \}`$ is only to double the contribution from $`\{ G_{1} ,G_{2} ,G_{3} ,G_{4} \}`$, since (539) is symmetrical in the variables $`x_{1}`$ and $`x_{2}`$. Also $`G_{5}`$ will give only a numerical phase factor multiplying $`M_{0}`$, the phase factor being the same for all final states; it is in fact precisely the phase-shift between the initial and final states due to the self-energy of the vacuum. Similar phase shift factors would also multiply the contributions of $`G_{1} , G_{2}`$, etc., coming from disconnected graphs in higher order contributions. In this sense therefore, we can consider $`G_{5}`$ to be really the contribution of $`U_{0}`$ with one of the many possible disconnected additions. A numerical phase factor of this kind, the same for all final states, is entirely unobservable and without physical meaning, since it can be cancelled by changing the phase of all wave-functions by the same amount. Hence we can always ignore graphs such as $`G_{5}`$ having a disconnected part without external lines. There remain to be considered only $`\{ G_{1} ,G_{2} ,G_{3} ,G_{4} \}`$.
 
@@ -9552,7 +9552,7 @@ To correct these errors, very long calculations have been done. In connection wi
 
 <a id="refback-23-1"></a>[[23]](#ref-23); they are certainly less than 1 megacycle. <a id="refback-24-1"></a>[[24]](#ref-24)
 
-Therefore the theoretical value of the Lamb shift now stands at 1058 $`\pm`$ 2 megacycles. There is no clear discrepancy between this and the experimental value 1062 $`\pm`$ 5 though a discrepancy may be found when the experiments and the theory are further cleaned up.
+Therefore the theoretical value of the Lamb shift now stands at $`1058 \pm 2`$ megacycles. There is no clear discrepancy between this and the experimental value $`1062 \pm 5`$ though a discrepancy may be found when the experiments and the theory are further cleaned up.
 
 <div align="center">
 

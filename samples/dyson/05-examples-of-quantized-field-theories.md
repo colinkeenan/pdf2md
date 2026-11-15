@@ -1503,7 +1503,7 @@ we can write down the commutation rules for the operator components:
 \left\{ \psi_{\alpha} ( z ) , \overline{\psi}_{\beta} ( y ) \right\} = - iS_{\alpha \beta} ( z - y ) \qquad \text{(299)}
 ```
 
-The invariant $`S -`$function satisfies by (293) and (295)
+The invariant $`S`$-function satisfies by (293) and (295)
 
 <a id="eq-300"></a>
 
@@ -2122,7 +2122,7 @@ N_{n}^{2} = N_{n} \qquad \text{(351)}
 
 so each $`N_{n}`$ has just the two eigenvalues 0, 1. This describes exactly the physical situation in a many-electron atom where each atomic level may be full or empty independent of the others.
 
-If each $`N`$ is represented by the (2 $`\times 2`$) diagonal matrix
+If each $`N`$ is represented by the ($`2 \times 2`$) diagonal matrix
 
 <a id="eq-352"></a>
 
@@ -2556,7 +2556,7 @@ Now the external potential $`A_{\nu}^{e} ( x )`$ is associated with a classical 
 \begin{aligned} j_{\nu E} ( x ) &= - c \sum_{\lambda} \frac{\partial}{\partial x_{\lambda}} F_{\lambda \nu E} ( x ) \\ &= - c \sum_{\lambda} \left\{ \frac{\partial^{2}}{\partial x_{\lambda}^{2}} A_{\nu}^{e} ( x ) - \frac{\partial^{2}}{\partial x_{\nu} \partial x_{\lambda}} A_{\lambda}^{e} ( x ) \right\} \\ &= c \left\{ q^{2} e_{\nu} - e \cdot qq_{\nu} \right\} e^{iq \cdot x} \end{aligned} \qquad \text{(391)}
 ```
 
-Hence (389) gives the final result, with $`\alpha =`$ $`1371 = \frac{e^{2}}{4 \pi \hbar c}`$, (Heaviside units)
+Hence (389) gives the final result, with $`\alpha = 1371 = \frac{e^{2}}{4 \pi \hbar c}`$, (Heaviside units)
 
 <a id="eq-392"></a>
 

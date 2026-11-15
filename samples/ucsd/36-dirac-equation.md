@@ -1681,7 +1681,7 @@ Therefore, under a **parity inversion operation**
 0 1 1 0 \quad 0 0 \quad 0 0
 ```
 
-Since $`\gamma_{4} = ( )`$ 0 0 $`- 1`$ 0 $`( )`$ , the third and fourth components of the spinor change sign while
+Since $`\gamma_{4} = ( )`$ 0 $`0 - 1`$ 0 $`( )`$ , the third and fourth components of the spinor change sign while
 
 ```math
 0 0 \quad 0 \quad - 1

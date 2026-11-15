@@ -934,7 +934,7 @@ To correct these errors, very long calculations have been done. In connection wi
 
 <a id="refback-23-1"></a>[[23]](#ref-23); they are certainly less than 1 megacycle. <a id="refback-24-1"></a>[[24]](#ref-24)
 
-Therefore the theoretical value of the Lamb shift now stands at 1058 $`\pm`$ 2 megacycles. There is no clear discrepancy between this and the experimental value 1062 $`\pm`$ 5 though a discrepancy may be found when the experiments and the theory are further cleaned up.
+Therefore the theoretical value of the Lamb shift now stands at $`1058 \pm 2`$ megacycles. There is no clear discrepancy between this and the experimental value $`1062 \pm 5`$ though a discrepancy may be found when the experiments and the theory are further cleaned up.
 
 <div align="center">
 

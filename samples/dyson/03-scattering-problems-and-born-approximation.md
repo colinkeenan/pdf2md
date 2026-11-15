@@ -724,7 +724,7 @@ Without spin you get simply
 4 \pi \left( \frac{e^{2}}{mv^{2}} \right)^{2} \left( \frac{\gamma + 1}{\gamma^{2}} \right) dx \left\{ \frac{4}{( 1 - x^{2} )^{2}} - \frac{3}{1 - x^{2}} \right\}
 ```
 
-Effect of spin is a measurable _increase_ of scattering over the Mott formula. Effect of exchange is roughly the 1 $`- 3 x^{2}`$ term. Positron-electron scattering is very similar. Only the exchange effect is different because of <a id="ix-20">annihilation</a> possibility.
+Effect of spin is a measurable _increase_ of scattering over the Mott formula. Effect of exchange is roughly the $`1 - 3 x^{2}`$ term. Positron-electron scattering is very similar. Only the exchange effect is different because of <a id="ix-20">annihilation</a> possibility.
 
 <div align="right"><a href="book.pdf#page=36" target="_blank" title="This page in the PDF"><sup>[p. 30]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">

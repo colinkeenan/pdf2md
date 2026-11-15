@@ -593,7 +593,7 @@ If two particles interact with each other, with no external potential,
 H = \frac{- \hbar^{2}}{2 m_{( 1 )}} \nabla_{( 1 )}^{2} + \frac{- \hbar^{2}}{2 m_{( 2 )}} \nabla_{( 1 )}^{2} + V ( \vec{x}_{( 1 )} - \vec{x}_{( 2 )} )
 ```
 
-the Hamiltonian has a **translational symmetry**, and remains invariant under the translation $`\vec{x} \to`$ $`\vec{x} + \vec{a}`$. We can show that this translational symmetry implies **conservation of total momentum**. Similarly, we will show that rotational symmetry implies conservation of angular momentum, and that time symmetry implies conservation of energy.
+the Hamiltonian has a **translational symmetry**, and remains invariant under the translation $`\vec{x} \to \vec{x} + \vec{a}`$. We can show that this translational symmetry implies **conservation of total momentum**. Similarly, we will show that rotational symmetry implies conservation of angular momentum, and that time symmetry implies conservation of energy.
 
 For two particles interacting through a potential that depends only on difference on the coordinates,
 
@@ -1982,7 +1982,7 @@ where the gamma matrices are given by
 \gamma_{1} = \begin{pmatrix} 0 & 0 & 0 & - i \\ 0 & 0 & - i & 0 \\ 0 & i & 0 & 0 \end{pmatrix} \quad \gamma_{2} = \begin{pmatrix} 0 & 0 & 0 & - 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \end{pmatrix}
 ```
 
-$`i`$ 0 0 0 $`- 1`$ 0 0 0 and they satisfy anti-commutation relations.
+$`i`$ 0 0 $`0 - 1`$ 0 0 0 and they satisfy anti-commutation relations.
 
 ```math
 \gamma_{3} = \begin{pmatrix} 0 & 0 & - i & 0 \\ 0 & 0 & 0 & i \\ i & 0 & 0 & 0 \\ 0 & - i & 0 & 0 \end{pmatrix} \quad \gamma_{4} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & - 1 & 0 \\ 0 & 0 & 0 & - 1 \end{pmatrix}

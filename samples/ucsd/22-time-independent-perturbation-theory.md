@@ -349,7 +349,7 @@ This is OK in both limits, ∆ $`\gg \gamma`$, and $`\gamma \gg`$ ∆. It is als
 
 ## <a id="s-22-4-1-derivation-of-1st-and-2nd-order-perturbation-equations"></a>22.4.1 Derivation of 1st and 2nd Order Perturbation Equations
 
-To keep track of powers of the perturbation in this derivation we will make the substitution $`H_{1} \to`$ $`\lambda H_{1}`$ where $`\lambda`$ is assumed to be a small parameter in which we are making the series expansion of our energy eigenvalues and eigenstates. It is there to do the book-keeping correctly and can go away at the end of the derivations.
+To keep track of powers of the perturbation in this derivation we will make the substitution $`H_{1} \to \lambda H_{1}`$ where $`\lambda`$ is assumed to be a small parameter in which we are making the series expansion of our energy eigenvalues and eigenstates. It is there to do the book-keeping correctly and can go away at the end of the derivations.
 
 To solve the problem using a **perturbation series**, we will expand both our energy eigenvalues and eigenstates in powers of $`\lambda`$.
 

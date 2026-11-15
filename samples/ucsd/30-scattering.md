@@ -285,7 +285,7 @@ Since ∆ =$`\vec{\jmath} \quad \vec{k}_{f} - \vec{k}_{i}`$, we have ∆2 $`= k_
 = \left| \frac{Z_{1} Z_{2} e^{2}}{\tfrac{\hbar^{2}}{2 \mu a^{2}} + 4 E \sin^{2} \tfrac{\theta}{2}} \right|^{2}
 ```
 
-In the last step we have used the non-relativistic formula for energy and 1 $`- \cos \theta = \tfrac{1}{2}`$ sin<sup>2</sup> $`\frac{\theta}{2}`$.
+In the last step we have used the non-relativistic formula for energy and $`1 - \cos \theta = \tfrac{1}{2}`$ sin<sup>2</sup> $`\frac{\theta}{2}`$.
 
 The screened Coulomb potential gives a finite total cross section. It corresponds well with the experiment Rutherford did in which $`\alpha`$ particles were scattered from atoms in a foil. If we scatter from a bare charge where there is no screening, we can take the limit in which $`a \to \infty`$.
 

@@ -1240,7 +1240,7 @@ To find the eigenvectors of the operator $`S_{y}`$ we follow precisely the same 
 
 4. Solve this equation for the eigenvectors
 
-Here we go! The operator $`S = \tfrac{\hbar}{2}`$ 0 $`- i`$ , so that, in matrix notation the eigenvalue equation
+Here we go! The operator $`S = \tfrac{\hbar}{2}`$ $`0 - i`$ , so that, in matrix notation the eigenvalue equation
 
 ```math
 {}_{y} \quad \left( i \quad 0 \right)

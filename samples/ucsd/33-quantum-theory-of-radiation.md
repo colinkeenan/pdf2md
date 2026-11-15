@@ -1003,7 +1003,7 @@ The decay rate does not depend on the $`m`$ of the initial state.
 
 ## <a id="s-33-12-1-beyond-the-electric-dipole-approximation"></a>33.12.1 Beyond the Electric Dipole Approximation
 
-Some atomic states have no lower energy state that satisfies the E1 selection rules to decay to. Then, higher order processes must be considered. The next order term in the expansion of $`e^{- i \vec{k} \cdot \vec{r}} = 1`$ $`- i \vec{k} \cdot \vec{r} + \dots`$ will allow other transitions to take place but at lower rates. We will attempt to understand the **selection rules** when we include the $`i \vec{k} \cdot \vec{r}`$ term.
+Some atomic states have no lower energy state that satisfies the E1 selection rules to decay to. Then, higher order processes must be considered. The next order term in the expansion of $`e^{- i \vec{k} \cdot \vec{r}} = 1 - i \vec{k} \cdot \vec{r} + \dots`$ will allow other transitions to take place but at lower rates. We will attempt to understand the **selection rules** when we include the $`i \vec{k} \cdot \vec{r}`$ term.
 
 The matrix element is proportional to $`- i \langle \varphi_{n} | ( \vec{k} \cdot \vec{r} )`$(ˆ$`\epsilon^{( \lambda )} \cdot \vec{p}_{e}`$) $`| \varphi_{i} \rangle`$ which we will **split up into two** **terms**. You might ask why split it. The reason is that we will essentially be **computing matrix** **elements of at tensor** and dotting it into two vectors that do not depend on the atomic state.
 

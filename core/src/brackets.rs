@@ -14,6 +14,10 @@
 //!   right before it: "(0 $+ 1 )$", "tr[1$/(z - H) ]$";
 //! * what is left is the sentence's own bracket, and goes back to the text:
 //!   "(where $c = 1$)", "$\mathcal{A}$(particle … in time $T$) $=$".
+//!
+//! Before that ([`sides`]) the two sides of a sign are put together: the
+//! figure or the dots behind a formula that ends with "+" or "=", the
+//! figure before one that begins with it.
 
 use crate::Inline;
 
@@ -316,6 +320,143 @@ fn push_text(out: &mut Vec<Inline>, t: &str) {
     }
 }
 
+/// Signs that stand between two sides: a formula that ends with one, or
+/// begins with one, is not whole.
+const BETWEEN: [&str; 24] = [
+    "to", "simeq", "approx", "equiv", "sim", "leq", "geq", "le", "ge", "neq", "ne", "ll", "gg", "propto", "times", "cdot", "pm", "mp", "otimes",
+    "oplus", "rightarrow", "leftrightarrow", "leftarrow", "cong",
+];
+
+fn ends_open(m: &str) -> bool {
+    let m = m.trim_end();
+    if m.ends_with(['=', '+', '-', '<', '>']) {
+        // ("x^{-}" and "e^{+}" end with a brace; "A( ++" is a list of signs)
+        return !m.ends_with("++") && !m.ends_with("--");
+    }
+    let name = m.len() - m.trim_end_matches(|c: char| c.is_ascii_alphabetic()).len();
+    name > 0 && m[..m.len() - name].ends_with('\\') && BETWEEN.contains(&&m[m.len() - name..])
+}
+
+fn begins_open(m: &str) -> bool {
+    let m = m.trim_start();
+    if m.starts_with(['=', '+', '-', '<', '>']) {
+        return true;
+    }
+    let Some(rest) = m.strip_prefix('\\') else { return false };
+    let name = rest.len() - rest.trim_start_matches(|c: char| c.is_ascii_alphabetic()).len();
+    BETWEEN.contains(&&rest[..name])
+}
+
+/// The figure a text begins with ("1 dimension", " 2, and"): its length.
+fn figure_first(t: &str) -> Option<usize> {
+    let lead = t.len() - t.trim_start_matches(' ').len();
+    let rest = &t[lead..];
+    let mut n = rest.len() - rest.trim_start_matches(|c: char| c.is_ascii_digit()).len();
+    if n == 0 || lead > 1 {
+        return None;
+    }
+    // (a decimal; not the full stop of the sentence)
+    if rest[n..].starts_with('.') && rest[n + 1..].starts_with(|c: char| c.is_ascii_digit()) {
+        n += 1 + rest[n + 1..].len() - rest[n + 1..].trim_start_matches(|c: char| c.is_ascii_digit()).len();
+    }
+    (!rest[n..].starts_with(|c: char| c.is_alphanumeric())).then_some(lead + n)
+}
+
+/// The figure a text ends with ("is 24 "): where it begins.
+fn figure_last(t: &str) -> Option<usize> {
+    let body = t.strip_suffix(' ').unwrap_or(t);
+    let n = body.len() - body.trim_end_matches(|c: char| c.is_ascii_digit()).len();
+    let before = &body[..body.len() - n];
+    (n > 0 && (before.is_empty() || before.ends_with([' ', '(', '[']))).then_some(body.len() - n)
+}
+
+/// Dots of "and so on" at the head of a text (". . .", "..."): their length.
+fn dots_first(t: &str) -> Option<usize> {
+    let lead = t.len() - t.trim_start_matches(' ').len();
+    let (mut n, mut dots) = (lead, 0);
+    let b = t.as_bytes();
+    while n < b.len() && (b[n] == b'.' || (b[n] == b' ' && dots > 0 && dots < 3 && b.get(n + 1) == Some(&b'.'))) {
+        dots += usize::from(b[n] == b'.');
+        n += 1;
+        if dots == 3 {
+            break;
+        }
+    }
+    if t[lead..].starts_with('…') {
+        return Some(lead + '…'.len_utf8());
+    }
+    (dots == 3).then_some(n)
+}
+
+/// The two sides of a sign, put together (for a whole paragraph): a
+/// formula that ends with "+", "=", "→" … takes the figure or the dots of
+/// "and so on" that the text goes on with, one that begins with such a
+/// sign the figure the text ends with ("24" + "+ 2 = 26"); two formulas
+/// with such a sign between them are one, as is a list that runs through
+/// dots ("i = 1" + ", 2, . . . " + "n"). The "−" before a word set right
+/// against it is a hyphen: "(D + 1)" + "-dimensional".
+pub(crate) fn sides(mut v: Vec<Inline>) -> Vec<Inline> {
+    if !v.iter().any(|x| matches!(x, Inline::Math(_))) {
+        return v;
+    }
+    let mut k = 0;
+    while k < v.len() {
+        // (the text behind a formula)
+        if k + 1 < v.len() {
+            let (a, b) = v.split_at_mut(k + 1);
+            if let (Inline::Math(m), Inline::Text(t)) = (&mut a[k], &mut b[0]) {
+                // (a word after a "−": a hyphen, also where the line ended on it)
+                let word = t.strip_prefix(' ').unwrap_or(t);
+                let letters = word.len() - word.trim_start_matches(|c: char| c.is_lowercase()).len();
+                if m.trim_end().ends_with('-') && !m.trim_end().ends_with("--") && letters >= if word.len() < t.len() { 4 } else { 1 } && m.trim().len() > 1 {
+                    *m = m.trim_end().trim_end_matches('-').trim_end().to_string();
+                    *t = format!("-{word}");
+                } else if let (true, Some(n)) = (ends_open(m), figure_first(t)) {
+                    *m = joined(m, t[..n].trim());
+                    t.replace_range(..n, "");
+                } else if let (true, Some(n)) = (ends_open(m) || m.trim_end().ends_with(','), dots_first(t)) {
+                    *m = joined(m, if m.trim_end().ends_with(',') { "\\ldots" } else { "\\cdots" });
+                    t.replace_range(..n, "");
+                }
+            }
+        }
+        // (the text before a formula)
+        if k > 0 {
+            let (a, b) = v.split_at_mut(k);
+            if let (Inline::Text(t), Inline::Math(m)) = (&mut a[k - 1], &mut b[0]) {
+                if let (true, Some(at)) = (begins_open(m), figure_last(t)) {
+                    *m = joined(t[at..].trim(), m);
+                    t.truncate(at);
+                }
+            }
+        }
+        // (two formulas, with nothing or a list through dots between them)
+        let gap = match (v.get(k), v.get(k + 1), v.get(k + 2)) {
+            (Some(Inline::Math(_)), Some(Inline::Math(_)), _) => Some((1, String::new())),
+            (Some(Inline::Math(_)), Some(Inline::Text(t)), Some(Inline::Math(_))) if t.trim().is_empty() => Some((2, String::new())),
+            // (through dots, or over a function's name or "h.c." beside a sign)
+            (Some(Inline::Math(a)), Some(Inline::Text(t)), Some(Inline::Math(b))) => listed(t).filter(|l| {
+                let plain = l.replace("\\text{h.c.}", "");
+                let names = !plain.contains(|c: char| c.is_ascii_digit() || ",;:".contains(c)) && (ends_open(a) || begins_open(b));
+                !plain.contains("\\text") && (l.contains("\\ldots") || names)
+            }).map(|l| (2, l)),
+            _ => None,
+        };
+        if let Some((n, list)) = gap {
+            let (Inline::Math(a), Inline::Math(b)) = (&v[k], &v[k + n]) else { unreachable!() };
+            if !list.is_empty() || ends_open(a) || begins_open(b) {
+                let all = joined(&joined(a, &list), b);
+                v.splice(k..=k + n, [Inline::Math(all)]);
+                // (it may go on: looked at again)
+                continue;
+            }
+        }
+        k += 1;
+    }
+    v.retain(|x| !matches!(x, Inline::Text(t) if t.is_empty()));
+    v
+}
+
 /// The brackets of a paragraph's formulas, mended (see the module's head).
 pub(crate) fn mend(v: Vec<Inline>) -> Vec<Inline> {
     if !v.iter().any(|x| matches!(x, Inline::Math(m) if !balanced(m))) {
@@ -416,6 +557,26 @@ mod tests {
     }
     fn t(t: &str) -> Inline {
         Inline::Text(t.into())
+    }
+
+    #[test]
+    fn the_two_sides_of_a_sign_are_one_formula() {
+        assert_eq!(sides(vec![t("to be 24 "), m("+ 2 = 2 6"), t(" which")]), vec![t("to be "), m("24 + 2 = 2 6"), t(" which")]);
+        assert_eq!(sides(vec![t("write "), m("d = D +"), t(" 1 for")]), vec![t("write "), m("d = D + 1"), t(" for")]);
+        assert_eq!(sides(vec![t("in a "), m("( D + 1 ) -"), t("dimensional world")]), vec![t("in a "), m("( D + 1 )"), t("-dimensional world")]);
+        assert_eq!(sides(vec![m("p_{1} + p_{2} \\to k_{1} + k_{2} +"), t(" . . . "), m("+ k_{n}"), t(". Then")]), vec![m("p_{1} + p_{2} \\to k_{1} + k_{2} + \\cdots + k_{n}"), t(". Then")]);
+        assert_eq!(sides(vec![m("D + Ek^{2} +"), t(" . . . . The")]), vec![m("D + Ek^{2} + \\cdots"), t(" . The")]);
+        assert_eq!(sides(vec![m("m_{G} \\ll"), t(" "), m("( 1 0^{2 4} )^{- 1}")]), vec![m("m_{G} \\ll ( 1 0^{2 4} )^{- 1}")]);
+        assert_eq!(sides(vec![t("for "), m("i = 1"), t(", 2, . . . "), m("n"), t(" we")]), vec![t("for "), m("i = 1 , 2 , \\ldots n"), t(" we")]);
+        assert_eq!(sides(vec![m("m =- j , - j +"), t(" 1, . . . , "), m("j - 1 , j")]), vec![m("m =- j , - j + 1 , \\ldots , j - 1 , j")]);
+        assert_eq!(sides(vec![m("S(P) ="), t(" Re "), m("\\operatorname{tr} U")]), vec![m("S(P) = \\operatorname{Re} \\operatorname{tr} U")]);
+        assert_eq!(sides(vec![m("\\bar{\\psi}_{L} \\psi_{R} +"), t(" h.c. "), m("= x"), t(" is")]), vec![m("\\bar{\\psi}_{L} \\psi_{R} + \\text{h.c.} = x"), t(" is")]);
+        assert_eq!(sides(vec![t("an "), m("N -"), t(" dimensional vector")]), vec![t("an "), m("N"), t("-dimensional vector")]);
+        // (two formulas of a sentence stay two; so does a figure of the sentence)
+        let two = vec![m("x"), t(" "), m("y"), t(" and "), m("a = b"), t(", 2 of them")];
+        assert_eq!(sides(two.clone()), two);
+        let signs = vec![m("e^{+}"), t(" 2 jets and "), m("\\sin"), t(" 2")];
+        assert_eq!(sides(signs.clone()), signs);
     }
 
     #[test]
