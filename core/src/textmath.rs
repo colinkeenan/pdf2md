@@ -59,7 +59,8 @@ fn is_combining(c: char) -> bool {
 }
 
 fn is_greek(c: char) -> bool {
-    matches!(c, 'α'..='ω' | 'Α'..='Ω' | 'ϕ' | 'ϵ' | 'ϑ' | 'ϖ' | 'ϱ')
+    // (ɛ: the open e some ebooks set for ε)
+    matches!(c, 'α'..='ω' | 'Α'..='Ω' | 'ϕ' | 'ϵ' | 'ϑ' | 'ϖ' | 'ϱ' | 'ɛ')
 }
 
 /// Relations, operators and brackets that prose never uses.
@@ -77,6 +78,13 @@ fn is_langle(t: &str) -> bool {
 }
 fn is_rangle(t: &str) -> bool {
     matches!(t, "⟩" | "〉" | "\u{232a}")
+}
+
+/// A letter with a dot over it as one character, "ẋ": its letter. Prose
+/// in English has none; it is the time derivative of a formula.
+fn dotted(c: char) -> Option<char> {
+    let k = "ẋẏżṗṙȧḃċḋėḟġḣṁṅȯṡṫẇẊẎŻṖṘȦḂĊḊĖḞĠḢṀṄȮṠṪẆ".chars().position(|d| d == c)?;
+    "xyzprabcdefghmnostwXYZPRABCDEFGHMNOSTW".chars().nth(k)
 }
 
 fn is_prime(c: char, symbols: bool) -> bool {
@@ -120,7 +128,7 @@ fn tokens(cs: &[char], italic: bool) -> Vec<Tok> {
                 continue;
             }
         }
-        let role = if is_sure(c) {
+        let role = if is_sure(c) || dotted(c).is_some() {
             // with its primes: ψ′
             let mut j = i + 1;
             while j < cs.len() && is_prime(cs[j], italic) {
@@ -260,6 +268,10 @@ fn tokens(cs: &[char], italic: bool) -> Vec<Tok> {
     cut
 }
 
+fn bold_font(doc: &Doc, s: &Span) -> bool {
+    s.bold || crate::layout::is_bold_font(doc.family(s))
+}
+
 /// The pieces of a line cut into tokens, and what each is: text, math or
 /// a note marker.
 pub(crate) fn classify(doc: &Doc, spans: &[Span], st: &Stats) -> (Vec<Span>, Vec<K>) {
@@ -312,6 +324,90 @@ pub(crate) fn classify(doc: &Doc, spans: &[Span], st: &Stats) -> (Vec<Span>, Vec
                     k = e;
                 }
                 continue;
+            }
+            // What an index or exponent stands on is math with it: the
+            // last letter of the words right before it ("the operator p"
+            // and a lowered x, all in italics; "A" and a raised "(I)"), or
+            // the last two letters of italic words ("me" and a raised 2).
+            if !marker && !ordinal {
+                // (two italic letters that would pass for a word, "me", "Be",
+                // are symbols under an exponent)
+                if roles.last() == Some(&Role::Maybe) && toks.last().is_some_and(|p| p.script == Script::Normal && p.text.trim().chars().count() == 2 && s.left - p.right() < 0.25 * st.body) {
+                    if let Some(r) = roles.last_mut() {
+                        *r = Role::Atom;
+                    }
+                }
+                // (a unit or a molecule with its number: "cm" and a raised
+                // −1, "NH" and a lowered 3, upright in the formula)
+                let figures = !t.is_empty() && t.chars().all(|c| c.is_ascii_digit() || "+−-".contains(c));
+                let unit = toks.last().filter(|p| roles.last() == Some(&Role::Word) && !p.italic && p.script == Script::Normal && p.picture.is_none() && p.url.is_none() && p.tex.is_none() && s.left - p.right() < 0.25 * st.body).and_then(|p| {
+                    let cs: Vec<char> = p.text.chars().collect();
+                    let from = cs.iter().rposition(|c| !c.is_ascii_alphabetic()).map_or(0, |k| k + 1);
+                    let letters = cs.len() - from;
+                    let own = from == 0 || cs[from - 1].is_whitespace() || "(·/".contains(cs[from - 1]);
+                    (figures && own && (2..=3).contains(&letters) && cs.len() == cs.iter().rposition(|c| !c.is_whitespace()).map_or(0, |k| k + 1)).then_some(from)
+                });
+                if let (Some(from), Some(p)) = (unit, toks.last().cloned()) {
+                    let cs: Vec<char> = p.text.chars().collect();
+                    let w = p.width / cs.len().max(1) as f32;
+                    toks.pop();
+                    roles.pop();
+                    if cs[..from].iter().any(|c| !c.is_whitespace()) {
+                        let mut head = p.clone();
+                        head.text = cs[..from].iter().collect();
+                        head.width = w * from as f32;
+                        toks.push(head);
+                        roles.push(Role::Word);
+                    }
+                    let mut one = p.clone();
+                    one.text = cs[from..].iter().collect();
+                    one.left = p.left + w * from as f32;
+                    one.width = w * (cs.len() - from) as f32;
+                    one.link = None;
+                    one.tex = Some(format!("\\mathrm{{{}}}", one.text));
+                    toks.push(one);
+                    roles.push(Role::Atom);
+                }
+                let base = toks.last().filter(|p| {
+                    roles.last() == Some(&Role::Word) && p.script == Script::Normal && p.picture.is_none() && p.url.is_none() && p.tex.is_none() && s.left - p.right() < 0.25 * st.body && !p.text.ends_with(char::is_whitespace)
+                });
+                let cut = base.and_then(|p| {
+                    let cs: Vec<char> = p.text.chars().collect();
+                    let from = cs.iter().rposition(|c| !c.is_alphabetic()).map_or(0, |k| k + 1);
+                    let letters = cs.len() - from;
+                    // (a word of its own, not the end of one: after a space,
+                    // a bracket, or at the piece's start)
+                    let own = from == 0 || cs[from - 1].is_whitespace() || "([{/=+−".contains(cs[from - 1]);
+                    let symbol = letters == 1 || (letters == 2 && p.italic && !bold_font(doc, p));
+                    (own && symbol).then_some(from)
+                });
+                if let (Some(from), Some(p)) = (cut, toks.last().cloned()) {
+                    let cs: Vec<char> = p.text.chars().collect();
+                    let w = if cs.is_empty() { 0.0 } else { p.width / cs.len() as f32 };
+                    toks.pop();
+                    roles.pop();
+                    if cs[..from].iter().any(|c| !c.is_whitespace()) {
+                        let mut head = p.clone();
+                        head.text = cs[..from].iter().collect();
+                        head.width = w * from as f32;
+                        toks.push(head);
+                        roles.push(Role::Word);
+                    }
+                    for (k, c) in cs.iter().enumerate().skip(from) {
+                        let mut one = p.clone();
+                        one.text = c.to_string();
+                        one.left = p.left + w * k as f32;
+                        one.width = w;
+                        one.link = None;
+                        // (the bold of a caption's or a title's words is
+                        // not the bold of a vector)
+                        if from > 0 {
+                            one.bold = false;
+                        }
+                        toks.push(one);
+                        roles.push(Role::Atom);
+                    }
+                }
             }
             toks.push(s.clone());
             roles.push(if marker && prev != Some(Role::Close) { Role::Marker } else { Role::Atom });
@@ -375,9 +471,28 @@ pub(crate) fn classify(doc: &Doc, spans: &[Span], st: &Stats) -> (Vec<Span>, Vec
         }
         x.push(s.right());
         let first = toks.len();
-        for tok in tokens(&cs, s.italic || bold) {
+        // (in a linked piece the reference comes first, "(8.145a) by (1 +":
+        // what follows words after it is not the reference)
+        let (mut seen_number, mut reference_over) = (false, false);
+        let cut = tokens(&cs, s.italic || bold);
+        // ("(1 + ε" is no reference: after its number comes an operator)
+        let sum: Vec<bool> = (0..cut.len())
+            .map(|j| {
+                let role = |k: usize| cut.get(k).map(|t| t.role);
+                match cut[j].role {
+                    Role::Number => matches!(role(j + 1), Some(Role::Loose | Role::Atom)),
+                    Role::Open => role(j + 1) == Some(Role::Number) && matches!(role(j + 2), Some(Role::Loose | Role::Atom)),
+                    _ => false,
+                }
+            })
+            .collect();
+        for (j, tok) in cut.into_iter().enumerate() {
             let mut piece = s.clone();
             piece.text = cs[tok.a..tok.b].iter().collect();
+            // (a letter with its dot as one character: the letter, then the dot)
+            if tok.role == Role::Atom && piece.text.chars().any(|c| dotted(c).is_some()) {
+                piece.text = piece.text.chars().flat_map(|c| match dotted(c) { Some(l) => vec![l, '\u{307}'], None => vec![c] }).collect();
+            }
             if (s.italic || bold) && tok.role != Role::Word {
                 // primes typed as quotes
                 piece.text = piece.text.replace("''", "″").replace('\'', "′").replace('"', "″");
@@ -394,7 +509,20 @@ pub(crate) fn classify(doc: &Doc, spans: &[Span], st: &Stats) -> (Vec<Span>, Vec
             }
             toks.push(piece);
             // in linked text a number is the reference ("(2.28)"), not math
-            let linked_number = s.link.is_some() && matches!(tok.role, Role::Number | Role::Open | Role::Close | Role::Punct);
+            if s.link.is_some() {
+                // ("8.145a" is a word with figures in it)
+                let figures = cs[tok.a..tok.b].iter().any(char::is_ascii_digit);
+                match tok.role {
+                    // (the piece may open with the bracket that closes the
+                    // reference, whose number is the piece before)
+                    Role::Close if tok.a == 0 || cs[..tok.a].iter().all(|c| c.is_whitespace()) => seen_number = true,
+                    Role::Number => seen_number = true,
+                    Role::Word if figures => seen_number = true,
+                    Role::Word if seen_number => reference_over = true,
+                    _ => {}
+                }
+            }
+            let linked_number = s.link.is_some() && !reference_over && !sum[j] && matches!(tok.role, Role::Number | Role::Open | Role::Close | Role::Punct);
             roles.push(if linked_number { Role::Word } else { tok.role });
         }
         if s.link.is_some() {
@@ -520,6 +648,16 @@ pub(crate) fn classify(doc: &Doc, spans: &[Span], st: &Stats) -> (Vec<Span>, Vec
                 toks[k].tex = Some(format!("{{}}{}{{{t}}}", if s.script == Script::Super { '^' } else { '_' }));
             }
         }
+    }
+    // PDF2MD_TMDEBUG=3: the lines that have an index with nothing to stand on
+    if std::env::var("PDF2MD_TMDEBUG").is_ok_and(|v| v == "3") && toks.iter().any(|t| t.tex.as_deref().is_some_and(|x| x.starts_with("{}"))) {
+        let line: Vec<String> = (0..n)
+            .map(|i| {
+                let t: String = if roles[i] == Role::Word { toks[i].text.chars().map(|c| if c.is_alphabetic() { 'w' } else { c }).collect() } else { toks[i].text.clone() };
+                format!("{t}‹{:?}{}{}{}{}›", roles[i], if kinds[i] == K::Math { "*" } else { "" }, if toks[i].italic { "i" } else { "" }, if toks[i].bold { "b" } else { "" }, match toks[i].script { Script::Super => "^", Script::Sub => "_", _ => "" })
+            })
+            .collect();
+        eprintln!("TM {}", line.join(" "));
     }
     // a linked piece of text says where it links once, after its last word
     for (a, b) in linked {

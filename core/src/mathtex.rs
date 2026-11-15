@@ -82,7 +82,7 @@ pub fn sym(c: char) -> Option<&'static str> {
         'β' => "\\beta ",
         'γ' => "\\gamma ",
         'δ' => "\\delta ",
-        'ε' | 'ϵ' | 'ǫ' => "\\epsilon ",
+        'ε' | 'ϵ' | 'ǫ' | 'ɛ' => "\\epsilon ",
         'ζ' => "\\zeta ",
         'η' => "\\eta ",
         'θ' => "\\theta ",
