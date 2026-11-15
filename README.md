@@ -111,6 +111,16 @@ cargo run -p pdf2md-core --bin pdf2md-cli -- --math standard book.pdf out/  # fo
 
 Converting into a folder that already holds the book replaces it in place and keeps your corrections and notes.
 
+### A course as a book
+
+A folder of a course's material becomes one book, a file for each PDF:
+
+```sh
+cargo run -p pdf2md-core --bin pdf2md-cli -- --course "My Course Downloads" "My Course"
+```
+
+The folder holds pages of the course's site saved as HTML (`syllabus.html`, `lecture-notes.html`, `assignments.html` …) and, for each page that lists PDFs, a subfolder with those PDFs (`Lecture Notes/`, `Assignments/` …) under the names the page's links have. A page without PDFs is a file of the book. `topics-covered.html`, if there is one, holds the course's outline as a list: it is the frame of the contents, and the lecture notes are listed under the topic they belong to (by the words of their topics). Each PDF's page markers open that PDF; `book.md` holds the whole course for searching. Command line only for now.
+
 ### Math: GitHub or standard
 
 Markdown has no single way to write math, so you choose one. A book is rewritten in the chosen form when you convert it again.

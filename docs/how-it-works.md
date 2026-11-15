@@ -93,6 +93,7 @@ pdf2md/
 │   ├── src/textmath.rs    math set in the text font (ebook-made PDFs)
 │   ├── src/structure.rs   chapters, heading levels, file names
 │   ├── src/notes.rs       footnotes and references, linked both ways
+│   ├── src/course.rs      a folder of saved web pages and PDFs as one book
 │   ├── src/links.rs       contents, index and cross-references
 │   ├── src/ocr.rs         equation pictures to LaTeX (math_ocr.py, table_ocr.py)
 │   ├── src/scan.rs        scanned books (scan_read.py, scan_marks.py)

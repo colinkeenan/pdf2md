@@ -16,8 +16,28 @@ fn main() {
         dump(&args[1..]);
         return;
     }
+    // --course folder out: a course's saved pages and PDFs as one book
+    if args.first().map(String::as_str) == Some("--course") {
+        if args.len() != 3 {
+            eprintln!("usage: pdf2md-cli --course <folder of pages and PDFs> <output-dir>");
+            process::exit(2);
+        }
+        match pdf2md_core::course::write_course(Path::new(&args[1]), Path::new(&args[2])) {
+            Ok(files) => {
+                for f in &files {
+                    println!("{}", f.display());
+                }
+            }
+            Err(e) => {
+                eprintln!("error: {e}");
+                process::exit(1);
+            }
+        }
+        return;
+    }
     if args.len() != 2 && args.len() != 4 {
         eprintln!("usage: pdf2md-cli [--math github|standard] <input.pdf> <output-dir> [first-page last-page]");
+        eprintln!("       pdf2md-cli --course <folder of pages and PDFs> <output-dir>");
         eprintln!("       pdf2md-cli --dump <input.pdf> [first-page last-page]");
         process::exit(2);
     }

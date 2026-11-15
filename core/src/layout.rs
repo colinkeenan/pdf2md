@@ -2002,7 +2002,10 @@ fn insert_delims(doc: &mut Doc, delims: Vec<Vec<Delim>>) {
             let as_text = page.lines.iter().flat_map(|l| &l.spans).any(|s| {
                 // (the bracket is in the text, or it is a stroke of a large
                 // letter or figure of a title: the "1" of a chapter's number)
-                !is_cmex(s) && overlaps(s) && (s.text.trim().chars().any(|c| "()[]|{}⟨⟩".contains(c)) || (size_of(s) >= 1.3 * body && s.text.chars().any(char::is_alphanumeric)))
+                // (in TeX's symbol font the brackets are the letters h i ⟨⟩,
+                // f g {}, j |: the ket of "\left| ψ \right>" at its usual size)
+                let symbols = fonts.get(s.font).is_some_and(|f| f.family.starts_with("CMSY"));
+                !is_cmex(s) && overlaps(s) && (s.text.trim().chars().any(|c| "()[]|{}⟨⟩".contains(c)) || (symbols && s.text.trim().chars().any(|c| "hifgj".contains(c))) || (size_of(s) >= 1.3 * body && s.text.chars().any(char::is_alphanumeric)))
             });
             if as_text || page.lines.is_empty() {
                 continue;
@@ -2412,6 +2415,11 @@ pub fn parse_xml(xml: &str) -> Result<Doc, String> {
 fn family_name(raw: &str, lost: &HashMap<String, bool>) -> String {
     // "YIEKEP+CMR10" -> "CMR10"
     let family = raw.split_once('+').map_or(raw, |(_, f)| f);
+    // (the integral signs of the esint package: big operators like those
+    // of TeX's own extension font, under their own letters)
+    if family.to_lowercase().starts_with("esint") {
+        return format!("CMEX-{family}");
+    }
     match lossy(family, lost) {
         Some(true) => format!("CMEX/{family}"),
         _ => family.to_string(),
@@ -2472,6 +2480,14 @@ pub fn parse_xml_with(xml: &str, lost: &HashMap<String, bool>) -> Result<Doc, St
                     .filter(|d| d.is_text())
                     .filter_map(|d| d.text())
                     .collect();
+                // (esint's signs as the letters TeX's extension font has
+                // for them: ∫ in a display and in the text, ∮)
+                let esint = fonts.get(num(n, "font") as usize).is_some_and(|f| f.family.starts_with("CMEX-esint"));
+                let text = if esint { text.chars().map(|c| match c { 'ˆ' => 'Z', '´' => 'R', '˛' => 'I', c => c }).collect() } else { text };
+                // (TeX's symbol font has the prime where the figure 0 is; a
+                // PDF that does not say what its letters mean gives "0")
+                let symbols = fonts.get(num(n, "font") as usize).is_some_and(|f| f.family.starts_with("CMSY"));
+                let text = if symbols && !text.trim().is_empty() && text.trim().chars().all(|c| c == '0') { text.replace('0', "′") } else { text };
                 let text = clean_text(&text);
                 // Zero-width text is rotated (e.g. the arXiv stamp in the
                 // margin); it is not part of the book's text. Except the
@@ -2583,6 +2599,7 @@ pub fn parse_xml_with(xml: &str, lost: &HashMap<String, bool>) -> Result<Doc, St
 
     let mut doc = Doc { fonts, pages, body_size };
     split_accents(&mut doc);
+    accents_over_letters(&mut doc);
     blank_pages(&mut doc);
     large_capitals(&mut doc);
     title_words(&mut doc);
@@ -2608,6 +2625,37 @@ fn split_accents(doc: &mut Doc) {
                 s.text.pop();
                 next.text = compose_accents(&format!("{accent}{}", next.text));
             }
+        }
+    }
+}
+
+/// A hat or tilde set over a letter of a formula comes after its letter,
+/// at the letter's place, and the text that follows is one piece with it
+/// ("ẑ, such as the region": "z", then "ˆ, such as the region" beginning
+/// inside the z). The accent is a piece of its own, over its letter.
+fn accents_over_letters(doc: &mut Doc) {
+    let fonts = doc.fonts.clone();
+    let size_of = |s: &Span| fonts.get(s.font).map_or(s.height, |f| f.size);
+    for line in doc.pages.iter_mut().flat_map(|p| p.lines.iter_mut()) {
+        let mut k = 0;
+        while k < line.spans.len() {
+            let s = &line.spans[k];
+            let mut cs = s.text.chars();
+            let accent = cs.next().filter(|c| "ˆ˜".contains(*c));
+            let rest: String = cs.collect();
+            let over = accent.is_some()
+                && !rest.trim().is_empty()
+                && line.spans.iter().any(|p| !std::ptr::eq(p, s) && p.text.trim().chars().count() == 1 && p.text.trim().chars().all(char::is_alphabetic) && p.left <= s.left + 1.0 && p.right() >= s.left + 2.0 && (p.top - s.top).abs() < 0.5 * size_of(s));
+            if let (true, Some(accent)) = (over, accent) {
+                let w = (0.5 * size_of(s)).min(0.5 * s.width);
+                let mut hat = s.clone();
+                (hat.text, hat.width) = (accent.to_string(), w);
+                let s = &mut line.spans[k];
+                (s.text, s.left, s.width) = (rest, s.left + w, s.width - w);
+                line.spans.insert(k, hat);
+                k += 1;
+            }
+            k += 1;
         }
     }
 }

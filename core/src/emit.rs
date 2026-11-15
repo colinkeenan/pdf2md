@@ -850,28 +850,36 @@ pub fn chapter_markdown(book: &Book, i: usize) -> String {
 /// name in front, in that chapter's links too.
 pub fn book_markdown(book: &Book) -> String {
     let bodies: Vec<String> = (0..book.chapters.len()).map(|i| chapter_body(book, i)).collect();
+    let slugs: Vec<&str> = book.chapters.iter().map(|c| c.slug.as_str()).collect();
+    join_bodies(&book.title, &slugs, &bodies, true)
+}
+
+/// Files as one text: `names` (without .md) and what each holds. Links
+/// between them become links inside the page, and an id that more than one
+/// of them uses gets its file's name in front. `rules`: a line between.
+pub(crate) fn join_bodies(title: &str, names: &[&str], bodies: &[String], rules: bool) -> String {
     let mut seen: HashMap<String, usize> = HashMap::new();
-    for body in &bodies {
+    for body in bodies {
         let ids: HashSet<&str> = scan(body, "id=\"", '"').into_iter().map(|(a, b)| &body[a..b]).collect();
         for id in ids {
             *seen.entry(id.to_string()).or_default() += 1;
         }
     }
-    let slugs: HashMap<&str, usize> = book.chapters.iter().enumerate().map(|(i, c)| (c.slug.as_str(), i)).collect();
+    let slugs: HashMap<&str, usize> = names.iter().enumerate().map(|(i, c)| (*c, i)).collect();
     let rename = |ci: usize, id: &str| {
         if seen.get(id).copied().unwrap_or(0) > 1 {
-            format!("{}--{id}", book.chapters[ci].slug)
+            format!("{}--{id}", names[ci])
         } else {
             id.to_string()
         }
     };
     // the book's title on top (a viewer names its tab after it)
-    let mut out = if book.title.is_empty() { String::new() } else { format!("# {}\n\n", book.title) };
+    let mut out = if title.is_empty() { String::new() } else { format!("# {title}\n\n") };
     for (ci, body) in bodies.iter().enumerate() {
-        if ci > 0 {
+        if ci > 0 && rules {
             out.push_str("---\n\n");
         }
-        out.push_str(&format!("<a id=\"{}\"></a>\n\n", book.chapters[ci].slug));
+        out.push_str(&format!("<a id=\"{}\"></a>\n\n", names[ci]));
         // (start, end) of every id and link target, in order
         let mut spots: Vec<(usize, usize, bool)> = Vec::new();
         spots.extend(scan(body, "id=\"", '"').into_iter().map(|(a, b)| (a, b, true)));
@@ -890,7 +898,7 @@ pub fn book_markdown(book: &Book) -> String {
                 match file.strip_suffix(".md").and_then(|s| slugs.get(s)) {
                     Some(&target) => match frag {
                         Some(id) => format!("#{}", rename(target, id)),
-                        None => format!("#{}", book.chapters[target].slug),
+                        None => format!("#{}", names[target]),
                     },
                     None => continue,
                 }
@@ -921,7 +929,7 @@ fn scan(s: &str, open: &str, close: char) -> Vec<(usize, usize)> {
 }
 
 /// A chapter's text without the links to the chapters before and after.
-fn chapter_body(book: &Book, i: usize) -> String {
+pub(crate) fn chapter_body(book: &Book, i: usize) -> String {
     let ch = &book.chapters[i];
     // (a title set centered, or in lines of its own: as it is set)
     let title = if ch.heading.is_empty() { ch.title.clone() } else { render_inlines(&crate::no_emph(ch.heading.clone())).replace("<br>\n", "<br>") };
@@ -1142,7 +1150,7 @@ fn figure_file(page: u32, n: usize) -> String {
 /// Cut each picture out of its PDF page with pdftocairo (150 dpi PNG).
 /// Without pdftocairo or the PDF the Markdown still links them.
 /// Notes whose place was not found again: at the end, never dropped.
-fn lost_notes(lost: &[crate::userdata::Note]) -> String {
+pub(crate) fn lost_notes(lost: &[crate::userdata::Note]) -> String {
     if lost.is_empty() {
         return String::new();
     }
@@ -1235,7 +1243,7 @@ fn picture_file(page: u32, area: &crate::layout::Figure) -> String {
 /// Cut each picture out of its PDF page with pdftocairo (150 dpi PNG):
 /// figures, and the unread equation images inside the text.
 /// Without pdftocairo or the PDF the Markdown still links them.
-fn write_figures(book: &Book, dir: &Path) {
+pub(crate) fn write_figures(book: &Book, dir: &Path) {
     let Some(pdf) = &book.source else { return };
     let cut = |page: u32, area: &crate::layout::Figure, name: &str, pad: f32| {
         let file = dir.join(name);
@@ -1303,7 +1311,7 @@ fn link_pdf(pdf: &Path, dir: &Path) {
 
 /// The way from a folder to a file, both given in full: "../My Book.pdf"
 /// for the PDF beside the book's folder. The two can be moved together.
-fn relative(dir: &Path, file: &Path) -> PathBuf {
+pub(crate) fn relative(dir: &Path, file: &Path) -> PathBuf {
     let (d, f): (Vec<_>, Vec<_>) = (dir.components().collect(), file.components().collect());
     let common = d.iter().zip(&f).take_while(|(a, b)| a == b).count();
     let mut p = PathBuf::new();
