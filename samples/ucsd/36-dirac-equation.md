@@ -299,11 +299,7 @@ It is interesting to note that the **primary physics input was the choice of the
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p489" href="book.pdf#page=489" target="_blank" title="This page in the PDF"><sup>[p. 489]</sup></a>
 
-that gave us the correct interaction with the electron’s spin. We have applied this same momentum operator relativistically, not much of a stretch. We have also written the equation in terms of four components, but there was no new physics in that since everything could be computed from two
-
-```math
-\text{ components } , \text{ say } \varphi^{( L )} \text{ since }
-```
+that gave us the correct interaction with the electron’s spin. We have applied this same momentum operator relativistically, not much of a stretch. We have also written the equation in terms of four components, but there was no new physics in that since everything could be computed from two components, say $`\varphi^{( L )}`$ since
 
 ```math
 \varphi^{( R )} = \frac{1}{mc} \left( i \hbar \frac{\partial}{\partial x_{0}} - i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \varphi^{( L )} .
@@ -1306,19 +1302,15 @@ a_{\mu \nu}^{( boost )} = \begin{pmatrix} \gamma & 0 & 0 & i\beta \gamma \\ 0 & 
 The **boost is just another rotation in Minkowski space** through and angle $`i\chi = i \tanh^{- 1} \beta`$. For example a boost with velocity $`\beta`$ in the x direction is like a rotation in the 1-4 plane by an angle $`i\chi`$. Let us review the **Lorentz transformation for boosts in terms of hyperbolic functions**. We define $`\tanh \chi = \beta`$.
 
 ```math
-\tanh \chi = e^{\chi} + e^{- \chi} \frac{e^{\chi} - e^{- \chi}}{e^{\chi} + e^{- \chi}} = \beta
+\tanh \chi = \frac{e^{\chi} - e^{- \chi}}{e^{\chi} + e^{- \chi}} = \beta
 ```
 
-$`\cosh \chi`$ =
+$`\cosh \chi`$ = $`\frac{e^{\chi} + e^{- \chi}}{2}`$
+
+$`\sinh \chi`$ = $`\frac{e^{\chi} - e^{- \chi}}{2}`$
 
 ```math
-e^{\chi} - 2 e^{- \chi}
-```
-
-$`\sinh \chi`$ =
-
-```math
-\cos ( i\chi ) = \frac{e^{i ( i\chi )} + e^{- i ( i\chi )}}{2} 2 = \frac{e^{- \chi} + e^{\chi}}{2} = \cosh \chi
+\cos ( i\chi ) = \frac{e^{i ( i\chi )} + e^{- i ( i\chi )}}{2} = \frac{e^{- \chi} + e^{\chi}}{2} = \cosh \chi
 ```
 
 ```math
@@ -1952,7 +1944,7 @@ H = ic\gamma_{4} \vec{\gamma} \cdot \vec{p} + mc^{2} \gamma_{4}
 ```
 
 ```math
-[ H,K ] = 2 c \left( i ( \vec{\gamma} \cdot \vec{p} ) ( \vec{\Sigma} \cdot \vec{J} ) - \vec{\gamma} \times \vec{p} \cdot \vec{J} - i \hbar ( \vec{\gamma} \cdot \vec{p} ) \right)
+[ H,K ] = 2 c \left( i ( \vec{\gamma} \cdot \vec{p} ) ( \vec{\Sigma} \cdot \vec{J} ) - \vec{\gamma} \times \vec{p} \cdot \vec{J} - i \frac{\hbar}{2} ( \vec{\gamma} \cdot \vec{p} ) \right)
 ```
 
 <div align="right"><a href="book.pdf#page=517" target="_blank" title="This page in the PDF"><sup>[p. 517]</sup></a></div>
@@ -2896,7 +2888,7 @@ _Figure 97 (p. 532)_
 In one term, the initial state photon is absorbed by a “negative energy” electron, then the initial state electron fills the hole in the “negative energy” sea emitting the final state photon. In the other term, even further from the mass shell, a “negative energy” electron emits the final state photon and moves to a positive energy state, then the initial state electron absorbs the initial photon and fills the hole left behind in the sea. These terms are larger because the $`\gamma_{4} \gamma_{i}`$ matrix connects positive energy and “negative energy” states.
 
 ```math
-\begin{aligned} c_{\vec{p}^{\prime} ,r^{\prime} ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 2 )} ( t ) &= \frac{ie^{2} c^{2}}{2 V \sqrt{\omega^{\prime} \omega}} \sum_{\vec{p}^{\prime \prime} r^{\prime \prime} = 3 , 4} \left[ \frac{\langle \vec{p}^{\prime \prime} r^{\prime \prime} | i\gamma_{4} \gamma_{n} \epsilon_{n}^{\prime} e^{- i \vec{k}^{\prime} \cdot \vec{x}} | \vec{p} r \rangle \langle \vec{p}^{\prime} r^{\prime} | i\gamma_{4} \gamma_{n} \epsilon_{n} e^{i \vec{k} \cdot \vec{x}} | \vec{p}^{\prime \prime} r^{\prime \prime} \rangle}{E^{\prime} - E^{\prime \prime} - \hbar \omega} \right. \\ & \quad \left. + \quad \frac{\langle \vec{p}^{\prime \prime} r^{\prime \prime} | i\gamma_{4} \gamma_{n} \epsilon_{n} e^{i \vec{k} \cdot \vec{x}} | \vec{p} r \rangle \langle \vec{p}^{\prime} r^{\prime} | i\gamma_{4} \gamma_{n} \epsilon_{n}^{\prime} e^{- i k^{\vec{\prime}} \cdot \vec{x}} | \vec{p}^{\prime \prime} r^{\prime \prime} \rangle}{E^{\prime \prime} - E^{\prime} + \hbar \omega^{\prime}} \right] \int^{t} dt_{2} e^{i ( E^{\prime} - E + \hbar \omega^{\prime} - \hbar \omega ) t_{2} / \hbar} \end{aligned}
+\begin{aligned} c_{\vec{p}^{\prime} ,r^{\prime} ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 2 )} ( t ) &= \frac{ie^{2} c^{2}}{2 V \sqrt{\omega^{\prime} \omega}} \sum_{\vec{p}^{\prime \prime} r^{\prime \prime} = 3 , 4} \left[ \frac{\langle \vec{p}^{\prime \prime} r^{\prime \prime} | i\gamma_{4} \gamma_{n} \epsilon_{n}^{\prime} e^{- i \vec{k}^{\prime} \cdot \vec{x}} | \vec{p} r \rangle \langle \vec{p}^{\prime} r^{\prime} | i\gamma_{4} \gamma_{n} \epsilon_{n} e^{i \vec{k} \cdot \vec{x}} | \vec{p}^{\prime \prime} r^{\prime \prime} \rangle}{E^{\prime} - E^{\prime \prime} - \hbar \omega} \right. \\ & \quad \left. + \quad \frac{\langle \vec{p}^{\prime \prime} r^{\prime \prime} | i\gamma_{4} \gamma_{n} \epsilon_{n} e^{i \vec{k} \cdot \vec{x}} | \vec{p} r \rangle \langle \vec{p}^{\prime} r^{\prime} | i\gamma_{4} \gamma_{n} \epsilon_{n}^{\prime} e^{- i k^{\vec{\prime}} \cdot \vec{x}} | \vec{p}^{\prime \prime} r^{\prime \prime} \rangle}{E^{\prime \prime} - E^{\prime} + \hbar \omega^{\prime}} \right] \int_{0}^{t} dt_{2} e^{i ( E^{\prime} - E + \hbar \omega^{\prime} - \hbar \omega ) t_{2} / \hbar} \end{aligned}
 ```
 
 <div align="right"><a href="book.pdf#page=532" target="_blank" title="This page in the PDF"><sup>[p. 532]</sup></a></div>

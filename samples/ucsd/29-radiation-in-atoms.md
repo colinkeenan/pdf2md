@@ -551,7 +551,7 @@ This is the same result we got in the explicit calculation.
 We may also deduce the angular distribution of photons from our calculation. Lets take the 2p to 1s calculation as an example. We had the equation for the decay rate.
 
 ```math
-\Gamma_{tot} = \frac{\alpha \omega_{in}^{3}}{2 \pi c^{2}} \sum_{\lambda} \int d \Omega_{\gamma} \left| \int^{\sqrt{\frac{4 \pi}{3}}^{\infty}} r^{3} drR_{1 0}^{*} R_{2 1} \int d \Omega Y_{0 0}^{*} \left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \right) Y_{1 m_{i}} \right|^{2}
+\Gamma_{tot} = \frac{\alpha \omega_{in}^{3}}{2 \pi c^{2}} \sum_{\lambda} \int d \Omega_{\gamma} \left| \int_{0}^{\sqrt{\frac{4 \pi}{3}}^{\infty}} r^{3} drR_{1 0}^{*} R_{2 1} \int d \Omega Y_{0 0}^{*} \left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \right) Y_{1 m_{i}} \right|^{2}
 ```
 
 <div align="right"><a href="book.pdf#page=408" target="_blank" title="This page in the PDF"><sup>[p. 408]</sup></a></div>
@@ -883,11 +883,11 @@ We have the vector potential
 First find the fields.
 
 ```math
-\begin{array}{ll}
-\vec{\jmath} & 1 \partial \vec{A} \quad \vec{k} \\ 
-E = - & c \partial t = 2 \frac{\omega}{c} \vec{A}_{0} \sin ( \cdot \vec{r} - \omega t ) \\ 
-\vec{B} = 2 & \vec{\nabla} \times \vec{A} = 2 \vec{k} \times \vec{A}_{0} \sin ( \vec{k} \cdot \vec{r} - \omega t ) \\ 
-\end{array}
+\vec{E} = - \frac{1}{c} \frac{\partial \vec{A}}{\partial t} = 2 \frac{\omega}{c} \vec{A}_{0} \sin ( \vec{k} \cdot \vec{r} - \omega t )
+```
+
+```math
+\vec{B} = 2 \vec{\nabla} \times \vec{A} = 2 \vec{k} \times \vec{A}_{0} \sin ( \vec{k} \cdot \vec{r} - \omega t )
 ```
 
 Note that, for an EM wave, the vector potential is transverse to the wave vector. The energy density in the field is

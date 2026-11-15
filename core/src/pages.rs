@@ -106,7 +106,12 @@ pub fn prepare(doc: &Doc) -> Vec<PageInfo> {
                         let head = plain_text(h);
                         h.top < p.height * 0.09 && [head.split_whitespace().next(), head.split_whitespace().last()].into_iter().flatten().any(is_arabic)
                     });
-                if last.top > p.height * 0.88 && is_page_number(text.trim()) && !(is_roman(text.trim()) && figures_before) {
+                // (nor the denominator that ends the page's last formula:
+                // the page has its number at the head, or the figure stands
+                // right under the line above it)
+                let above = lines.len().checked_sub(2).map(|k| &lines[k]);
+                let denominator = label.is_some() || above.is_some_and(|a| last.top - a.top < 1.2 * a.size.max(last.size));
+                if last.top > p.height * 0.88 && is_page_number(text.trim()) && !(is_roman(text.trim()) && figures_before) && !denominator {
                     label.get_or_insert(text.trim().to_string());
                     lines.pop();
                 }

@@ -58,10 +58,10 @@ with the Hamiltonian $`H = \tfrac{p^{2}}{2 m} + \tfrac{1}{2} kx^{2}`$.
 Remember that the wave functions go to zero at infinity.$`-\infty \quad -\infty`$
 
 ```math
-1
+\frac{1}{4}
 ```
 
-2. Directly calculate the the RMS uncertainty in $`x`$ for the state $`\psi ( x ) = \left( \tfrac{a}{\pi} \right)^{4} e \tfrac{- ax 2}{2}`$ by computing
+2. Directly calculate the the RMS uncertainty in $`x`$ for the state $`\psi ( x ) = \left( \tfrac{a}{\pi} \right) \quad e \tfrac{- ax 2}{2}`$ by computing
 
 ```math
 \Delta x = \sqrt{\langle \psi | ( x - \langle x \rangle )^{2} | \psi \rangle .}

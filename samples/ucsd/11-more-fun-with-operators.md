@@ -140,7 +140,7 @@ First the bra vector dots into the state, giving the coefficient of $`| j \rangl
 The sum of the projection operators is 1, if we **sum over a complete set of states**, like the eigenstates of a Hermitian operator.
 
 ```math
-\sum | i \rangle \langle i | = 1
+\sum_{i} | i \rangle \langle i | = 1
 ```
 
 <div align="right"><a href="book.pdf#page=183" target="_blank" title="This page in the PDF"><sup>[p. 183]</sup></a></div>

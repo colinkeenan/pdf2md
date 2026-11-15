@@ -834,7 +834,7 @@ We may define the **components of a state vector** $`\psi`$ as the projections o
 ```
 
 ```math
-| \psi \rangle = \sum \psi_{i} | u_{i} \rangle
+| \psi \rangle = \sum_{i} \psi_{i} | u_{i} \rangle
 ```
 
 <div align="right"><a href="book.pdf#page=31" target="_blank" title="This page in the PDF"><sup>[p. 31]</sup></a></div>
@@ -897,7 +897,11 @@ The half integer possibility is used to represent the internal angular momentum 
 
 possible states with different z components of spin: spin up $`\left( 0 \right)`$, with z component of angular
 
-momentum +$`\frac{\hbar}{2}`$, and spin down $`\left( 0 \right)`$, with $`- \tfrac{\hbar}{2}`$. The corresponding spin operators are
+```math
+0
+```
+
+momentum +$`\frac{\hbar}{2}`$, and spin down , with $`- \tfrac{\hbar}{2}`$. The corresponding spin operators are
 
 ```math
 S_{x} = \frac{\hbar}{2} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \quad 1 \quad S_{y} = \frac{\hbar}{2} \begin{pmatrix} 0 & - i \\ i & 0 \end{pmatrix} \quad S_{z} = \frac{\hbar}{2} \begin{pmatrix} 1 & 0 \\ 0 & - 1 \end{pmatrix}
@@ -1378,14 +1382,10 @@ Assuming that at $`t`$ = 0 the quantum system starts out in some **initial state
 c_{n} ( t ) = \frac{1}{i \hbar} \int_{0}^{t} e^{i\omega_{ni} t^{\prime}} \mathcal{V}_{ni} ( t^{\prime} ) dt^{\prime}
 ```
 
-An important case of a time dependent potential is a pure **sinusoidal oscillating (harmonic)** **perturbation**. We can **make up any time dependence from a linear combination** of sine and cosine waves. With some calculation, we derive the transition rate in a harmonic potential of
+An important case of a time dependent potential is a pure **sinusoidal oscillating (harmonic)** **perturbation**. We can **make up any time dependence from a linear combination** of sine and cosine waves. With some calculation, we derive the transition rate in a harmonic potential of frequency $`\omega`$.
 
 ```math
-\text{ frequency } \omega ._{2}
-```
-
-```math
-\Gamma_{i \to n} \equiv \frac{dP_{n}}{dt} = \frac{2 \pi V_{ni}}{\hbar} \delta ( E_{n} - E_{i} + \hbar \omega )
+\Gamma_{i \to n} \equiv \frac{dP_{n}}{dt} = \frac{2 \pi V_{ni}^{2}}{\hbar} \delta ( E_{n} - E_{i} + \hbar \omega )
 ```
 
 This contains a delta function of energy conservation. The delta function may seem strange. The transition rate would be zero if energy is not conserved and infinite if energy is exactly conserved. We can make sense of this if there is a distribution function of $`P ( \omega )`$ of the perturbing potential or if there is a continuum of final states that we need to integrate over. In either case, the delta function helps us do the integral simply.
@@ -2235,7 +2235,7 @@ We can also see that the **helicity**, or spin along the direction of motion doe
 For any calculation, we need to know the interaction term with the Electromagnetic field. Based on the interaction of field with a current
 
 ```math
-H_{int} = - 1 j_{\mu} A_{\mu}
+H_{int} = - \frac{1}{c} j_{\mu} A_{\mu}
 ```
 
 <div align="right"><a href="book.pdf#page=58" target="_blank" title="This page in the PDF"><sup>[p. 58]</sup></a></div>

@@ -518,7 +518,7 @@ We can do the integral for $`r_{2} <r_{1}`$ and simplify the expression. Because
 ```
 
 ```math
-= - \frac{Ze^{2}}{a_{0}} \int^{\infty} \left[ \left( x_{1}^{3} + 2 x_{1}^{2} + 2 x_{1} \right) e^{- 2 x_{1}} - 2 x_{1} e^{- x_{1}} \right] dx_{1}
+= - \frac{Ze^{2}}{a_{0}} \int_{0}^{\infty} \left[ \left( x_{1}^{3} + 2 x_{1}^{2} + 2 x_{1} \right) e^{- 2 x_{1}} - 2 x_{1} e^{- x_{1}} \right] dx_{1}
 ```
 
 <div align="right"><a href="book.pdf#page=368" target="_blank" title="This page in the PDF"><sup>[p. 368]</sup></a></div>

@@ -387,7 +387,7 @@ It is now necessary to discuss **approximations needed** to complete this calcul
 ```
 
 ```math
-= \frac{2 \alpha \hbar}{3 \pi m^{2} c^{2}} \int^{\omega_{cut - off}} \sum_{j} \frac{\omega + ( \omega_{nj} - \omega )}{( \omega_{nj} - \omega )} | \langle n | \vec{p} | j \rangle |^{2} d\omega
+= \frac{2 \alpha \hbar}{3 \pi m^{2} c^{2}} \int_{0}^{\omega_{cut - off}} \sum_{j} \frac{\omega + ( \omega_{nj} - \omega )}{( \omega_{nj} - \omega )} | \langle n | \vec{p} | j \rangle |^{2} d\omega
 ```
 
 <div align="right"><a href="book.pdf#page=480" target="_blank" title="This page in the PDF"><sup>[p. 480]</sup></a></div>
@@ -457,7 +457,7 @@ This **must be a real number so we may use its complex conjugate**.
 ```
 
 ```math
-= - \hbar^{2} \langle n |\nabla^{2} V | n \rangle
+= - \frac{\hbar^{2}}{2} \langle n |\nabla^{2} V | n \rangle
 ```
 
 <div align="right"><a href="book.pdf#page=481" target="_blank" title="This page in the PDF"><sup>[p. 481]</sup></a></div>

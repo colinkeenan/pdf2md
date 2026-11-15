@@ -591,7 +591,7 @@ J^{2} \psi_{j,m + \tfrac{1}{2}} = j ( j + 1 ) \hbar^{2} \psi_{j,m + \tfrac{1}{2}
 Since the two terms are orthogonal, we can equate the coefficients for each term, giving us two equations. The $`Y_{\ell m} \chi_{+}`$ term gives
 
 ```math
-\alpha j ( j + 1 ) = \alpha \left( \ell ( \ell + 1 ) + 3 + m \right) + \beta \sqrt{\ell ( \ell + 1 ) - m ( m + 1 )} .
+\alpha j ( j + 1 ) = \alpha \left( \ell ( \ell + 1 ) + \frac{3}{4} + m \right) + \beta \sqrt{\ell ( \ell + 1 ) - m ( m + 1 )} .
 ```
 
 <div align="right"><a href="book.pdf#page=321" target="_blank" title="This page in the PDF"><sup>[p. 321]</sup></a></div>

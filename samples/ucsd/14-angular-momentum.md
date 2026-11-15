@@ -644,7 +644,7 @@ r = \sqrt{x^{2} + y^{2} + z^{2}}
 ```
 
 ```math
-\tan \varphi = y
+\tan \varphi = \frac{y}{x}
 ```
 
 <div align="right"><a href="book.pdf#page=211" target="_blank" title="This page in the PDF"><sup>[p. 211]</sup></a></div>
@@ -1051,8 +1051,10 @@ B = 0
 A = - C
 ```
 
+The state is
+
 ```math
-\text{ The state is } \quad \frac{1}{\sqrt{2}} ( Y_{1 1} - Y_{1 - 1} )
+\frac{1}{\sqrt{2}} ( Y_{1 1} - Y_{1 - 1} )
 ```
 
 The trivial solution that $`A = B = C`$ = 0 is just a zero state, not normalizable to 1.

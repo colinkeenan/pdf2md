@@ -60,7 +60,7 @@ This is the matrix element $`H_{ni} ( t )`$. The **amplitude to be in the final 
 **by first order time dependent perturbation theory**.
 
 ```math
-c_{n}^{( 1 )} ( t ) = \frac{1}{i \hbar} \int^{t} e^{i\omega_{ni} t^{\prime}} H_{ni} ( t^{\prime} ) dt^{\prime}
+c_{n}^{( 1 )} ( t ) = \frac{1}{i \hbar} \int_{0}^{t} e^{i\omega_{ni} t^{\prime}} H_{ni} ( t^{\prime} ) dt^{\prime}
 ```
 
 <div align="right"><a href="book.pdf#page=463" target="_blank" title="This page in the PDF"><sup>[p. 463]</sup></a></div>

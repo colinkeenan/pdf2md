@@ -190,7 +190,7 @@ _Figure 11 (p. 70)_
 Measurements were made of the **maximum electron energy versus light frequency** and light intensity. Classical physics predicted that the electron energy should increase with intensity, as the electric field increases. This is not observed. The electron energy is independent of intensity and depends linearly on the light frequency, as seen the the figure above. The kinetic energy of the electrons is given by Plank’s constant times the light frequency minus a **work function** $`W`$ which depends on the material.
 
 ```math
-1 mv^{2} = h\nu - W
+\frac{1}{2} mv^{2} = h\nu - W
 ```
 
 <div align="right"><a href="book.pdf#page=70" target="_blank" title="This page in the PDF"><sup>[p. 70]</sup></a></div>

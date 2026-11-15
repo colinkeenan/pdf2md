@@ -356,7 +356,7 @@ R_{\ell} ( r ) \to - \frac{1}{2 ikr} = \frac{\sin ( kr - \ell \pi / 2 + \delta_{
 
 The $`\delta_{\ell} ( k )`$ is called the **phase shift** for the partial wave of angular momentum $`\ell`$. We can compute the **differential cross section** for scattering
 
-$`d\sigma`$ scattered flux into $`d`$Ω $`d`$Ω $`\equiv`$ incident flux<br>
+$`\frac{d\sigma}{d}`$Ω $`\equiv`$ scattered flux intoincident flux $`d`$Ω<br>
 in terms of the phase shifts.
 
 ```math

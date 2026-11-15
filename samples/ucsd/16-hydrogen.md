@@ -580,7 +580,7 @@ For $`\ell`$ = 0, there is no angular dependence to the wavefunction so no veloc
 We can find the term for $`\frac{p_{r}^{2}}{2 m}`$ in the radial equation.
 
 ```math
-\langle \psi_{1 0 0} | ( v_{r} )^{2} | \psi_{1 0 0} \rangle = \int^{\infty} r^{2} R_{1 0}^{*} \frac{- \hbar^{2}}{m^{2}} \left( \frac{d^{2}}{dr^{2}} + \frac{2}{r} \frac{d}{dr} \right) R_{1 0} dr
+\langle \psi_{1 0 0} | ( v_{r} )^{2} | \psi_{1 0 0} \rangle = \int_{0}^{\infty} r^{2} R_{1 0}^{*} \frac{- \hbar^{2}}{m^{2}} \left( \frac{d^{2}}{dr^{2}} + \frac{2}{r} \frac{d}{dr} \right) R_{1 0} dr
 ```
 
 <div align="right"><a href="book.pdf#page=239" target="_blank" title="This page in the PDF"><sup>[p. 239]</sup></a></div>
@@ -700,7 +700,7 @@ measured energies and the probabilities of each. Find the expected value of $`L_
 ```
 
 ```math
-\langle \psi | r | \psi \rangle = 1 \langle \psi_{1 0 0} - \psi_{2 0 0} e^{i ( E_{1} - E_{2} ) t/ \hbar} | r | \psi_{1 0 0} - \psi_{2 0 0} e^{i ( E_{1} - E_{2} ) t/ \hbar} \rangle
+\langle \psi | r | \psi \rangle = \frac{1}{2} \langle \psi_{1 0 0} - \psi_{2 0 0} e^{i ( E_{1} - E_{2} ) t/ \hbar} | r | \psi_{1 0 0} - \psi_{2 0 0} e^{i ( E_{1} - E_{2} ) t/ \hbar} \rangle
 ```
 
 <div align="right"><a href="book.pdf#page=241" target="_blank" title="This page in the PDF"><sup>[p. 241]</sup></a></div>

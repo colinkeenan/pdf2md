@@ -286,7 +286,7 @@ We will use this once we have written the radiation field in a convenient form. 
 ```
 
 ```math
-= 1 ( E^{2} + B^{2} ) + E_{i} \frac{\partial \varphi}{\partial x_{i}}
+= \frac{1}{2} ( E^{2} + B^{2} ) + E_{i} \frac{\partial \varphi}{\partial x_{i}}
 ```
 
 <div align="right"><a href="book.pdf#page=440" target="_blank" title="This page in the PDF"><sup>[p. 440]</sup></a></div>

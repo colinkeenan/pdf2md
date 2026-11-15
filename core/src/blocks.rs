@@ -1801,7 +1801,12 @@ fn attach_fraction_rows(doc: &Doc, lines: &[Line], bars: &[Rule]) -> Vec<Line> {
         // the line's letters, and belongs to the sign's line all the same)
         let big_root = lines.iter().position(|l| l.spans.iter().any(|s| doc.family(s).starts_with("CMEX") && matches!(s.text.trim(), "p" | "q" | "r" | "s") && at_sign(s)));
         let y = (b.top + b.bottom) / 2.0;
-        let Some(home) = big_root.or_else(|| lines.iter().position(|l| y >= l.top && y <= l.top + l.size && l.left <= b.left + 1.0 && l.right >= b.right - 1.0)) else {
+        // (the bar is of the line whose letters it stands level with: a
+        // tall bracket may have given the line a top far above them)
+        // (or the fraction opens that line, and the bar lies before its
+        // first letter)
+        let level = |l: &Line| l.left <= b.right + 2.0 * l.size && l.right >= b.left - 2.0 * l.size && l.spans.iter().any(|s| !doc.family(s).starts_with("CMEX") && s.script == Script::Normal && doc.size_of(s) >= 0.8 * l.size.min(doc.body_size) && s.height <= 1.5 * doc.size_of(s) && y >= s.top + 0.2 * s.height && y <= s.bottom() - 0.2 * s.height && (s.right() < b.left || s.left > b.right) && (b.left - s.right()).max(s.left - b.right) < 5.0 * l.size);
+        let Some(home) = big_root.or_else(|| lines.iter().position(|l| y >= l.top && y <= l.top + l.size && l.left <= b.left + 1.0 && l.right >= b.right - 1.0)).or_else(|| lines.iter().position(level)) else {
             continue;
         };
         let size = lines[home].size;

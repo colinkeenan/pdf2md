@@ -262,7 +262,7 @@ E_{0} \alpha_{j} + \sum_{i} \alpha_{i} \left\langle \varphi^{( j )} | e \mathcal
 ```
 
 ```math
-\sum \alpha_{i} \left\langle \varphi^{( j )} | e \mathcal{E} z | \varphi^{( i )} \right\rangle = E^{( 1 )} \alpha_{j}
+\sum_{i} \alpha_{i} \left\langle \varphi^{( j )} | e \mathcal{E} z | \varphi^{( i )} \right\rangle = E^{( 1 )} \alpha_{j}
 ```
 
 <div align="right"><a href="book.pdf#page=330" target="_blank" title="This page in the PDF"><sup>[p. 330]</sup></a></div>

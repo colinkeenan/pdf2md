@@ -1063,7 +1063,7 @@ As a concrete example, let’s assume we start out in the eigenstate of $`L_{x}`
 ```
 
 ```math
-\psi ( t ) = \psi_{x +} = \left( \tfrac{e^{- i\mu BBt/ \hbar}}{e^{i\mu BB} \frac{1 2}{\sqrt{2}}^{t/ \hbar}} \right)
+\psi ( t ) = \psi_{x +} = \left( \tfrac{e^{- i\mu BBt/ \hbar}}{e^{i\mu BB} \frac{1 2}{\sqrt{2}}^{t/ \hbar}}_{2} \right)
 ```
 
 <div align="right"><a href="book.pdf#page=266" target="_blank" title="This page in the PDF"><sup>[p. 266]</sup></a></div>
@@ -1277,7 +1277,7 @@ which are both equivalent to $`\chi_{2} = i\chi_{1}`$. Repeating the process for
 ```
 
 ```math
-\alpha_{-} = - \hbar / 2 \quad \chi_{-}^{( y )} = \frac{1}{\surd} \begin{pmatrix} 1 \\ - i \end{pmatrix}
+\alpha_{-} = - \hbar / 2 \quad \chi_{-}^{( y )} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ - i \end{pmatrix}
 ```
 
 <div align="right"><a href="book.pdf#page=269" target="_blank" title="This page in the PDF"><sup>[p. 269]</sup></a></div>

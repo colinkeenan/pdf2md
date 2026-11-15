@@ -589,7 +589,7 @@ p = \frac{1}{i} \sqrt{\frac{m \hbar \omega}{2} ( A - A^{\dagger} )}
 ```
 
 ```math
-\Delta p \Delta x = \hbar
+\Delta p \Delta x = \frac{\hbar}{2}
 ```
 
 <div align="right"><a href="book.pdf#page=180" target="_blank" title="This page in the PDF"><sup>[p. 180]</sup></a></div>

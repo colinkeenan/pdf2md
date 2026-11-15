@@ -160,7 +160,7 @@ Lets take the **case of radiation of an energy quantum** $`\hbar \omega`$. If th
 The amplitude to be in state $`\varphi_{n}`$ as a function of time is
 
 ```math
-c_{n} ( t ) = \frac{1}{i \hbar} V_{ni} \int^{t} dt^{\prime} e^{i ( \omega_{ni} + \omega ) t^{\prime}}
+c_{n} ( t ) = \frac{1}{i \hbar} V_{ni} \int_{0}^{t} dt^{\prime} e^{i ( \omega_{ni} + \omega ) t^{\prime}}
 ```
 
 <div align="right"><a href="book.pdf#page=393" target="_blank" title="This page in the PDF"><sup>[p. 393]</sup></a></div>

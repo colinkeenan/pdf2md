@@ -500,7 +500,7 @@ m \vec{v} = \vec{p} + \frac{e}{c} \vec{A}
 ```
 
 ```math
-\vec{p} = m \vec{v} - e \vec{A}
+\vec{p} = m \vec{v} - \frac{e}{c} \vec{A}
 ```
 
 <div align="right"><a href="book.pdf#page=301" target="_blank" title="This page in the PDF"><sup>[p. 301]</sup></a></div>
@@ -737,12 +737,10 @@ Let $`x = \sqrt{\frac{eB}{2 \hbar c}} \rho`$ (dummy variable, not the coordinate
 \frac{d^{2} u}{dx^{2}} + \frac{1}{x} \frac{du}{dx} - \frac{m^{2}}{x^{2}} u - x^{2} u + \lambda = 0
 ```
 
-```math
-\text{ In the limit } x \to \infty , {}_{2}
-```
+In the limit $`x \to \infty`$,
 
 ```math
-\frac{d u}{dx^{2}} - x^{2} u = 0 \quad \Rightarrow \quad u \sim e^{- x^{2} / 2}
+\frac{d^{2} u}{dx^{2}} - x^{2} u = 0 \quad \Rightarrow \quad u \sim e^{- x^{2} / 2}
 ```
 
 while in the other limit $`x \to 0`$,

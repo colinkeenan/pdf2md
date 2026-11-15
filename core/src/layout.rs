@@ -808,7 +808,7 @@ fn restore_glyphs(doc: &mut Doc, path: &Path, parts: &[(usize, String)], lost: &
         }
         for (k, line) in page.lines.iter_mut().enumerate() {
             if remake[k] && !line.spans.is_empty() {
-                *line = Line { col: line.col, bars: std::mem::take(&mut line.bars), ..make_line(std::mem::take(&mut line.spans), &size_of) };
+                *line = Line { col: line.col, bars: std::mem::take(&mut line.bars), ..make_line_but(std::mem::take(&mut line.spans), &size_of, &|s: &Span| extension[s.font]) };
             }
         }
         page.lines.retain(|l| !l.spans.is_empty());
@@ -839,7 +839,7 @@ fn restore_glyphs(doc: &mut Doc, path: &Path, parts: &[(usize, String)], lost: &
         }
         for (k, line) in page.lines.iter_mut().enumerate() {
             if remake[k] && !line.spans.is_empty() {
-                *line = Line { col: line.col, bars: std::mem::take(&mut line.bars), ..make_line(std::mem::take(&mut line.spans), &size_of) };
+                *line = Line { col: line.col, bars: std::mem::take(&mut line.bars), ..make_line_but(std::mem::take(&mut line.spans), &size_of, &|s: &Span| extension[s.font]) };
             }
         }
         page.lines.retain(|l| !l.spans.is_empty());
@@ -2778,10 +2778,69 @@ fn group_lines(
             None => groups.push(vec![s]),
         }
     }
-    for s in touching {
-        match most_overlap(&groups, &s) {
-            Some((k, _)) => groups[k].push(s),
-            None => groups.push(vec![s]),
+    // (Where every letter of a line only touches the row of numerators set
+    // over it, the line has not begun: its first letter begins it, when it
+    // has company at its height.)
+    let company: Vec<Option<usize>> = touching
+        .iter()
+        .map(|s| {
+            let c = touching
+                .iter()
+                .filter(|t| {
+                    let mid = t.top + t.height / 2.0;
+                    !std::ptr::eq(*t, s) && mid >= s.top && mid <= s.bottom()
+                })
+                .count();
+            (c >= 2).then_some(c)
+        })
+        .collect();
+    let mut begun: Vec<usize> = Vec::new();
+    for (s, company) in touching.into_iter().zip(company) {
+        let mid = s.top + s.height / 2.0;
+        // (a line begun here takes the pieces at its height)
+        let in_begun = begun.iter().copied().find(|&k| mid >= groups[k][0].top && mid <= groups[k][0].bottom());
+        let best = most_overlap(&groups, &s);
+        let half = best.is_some_and(|(k, overlap)| overlap >= 0.5 * s.height.min(groups[k][0].height));
+        // (and outnumbers the row it touches: a few numerators over a long
+        // line are of that line)
+        let shared = |a: &Span, b: &Span| a.bottom().min(b.bottom()) - a.top.max(b.top);
+        let begins = !half && company.is_some_and(|c| best.is_none_or(|(k, _)| c + 1 > groups[k].iter().filter(|p| size_of(p) >= 0.85 * size_of(&groups[k][0]) && shared(p, &s) <= shared(p, &groups[k][0])).count()));
+        match (in_begun, best) {
+            (Some(k), _) => groups[k].push(s),
+            (None, _) if begins => {
+                begun.push(groups.len());
+                groups.push(vec![s]);
+            }
+            (None, Some((k, _))) => groups[k].push(s),
+            (None, None) => groups.push(vec![s]),
+        }
+    }
+    // The pieces that went to the row above for want of this line come to
+    // it: signs that share more of their height with it, and small letters
+    // whose nearest letter beside them is one of its own.
+    for n in begun {
+        let shared = |a: &Span, b: &Span| a.bottom().min(b.bottom()) - a.top.max(b.top);
+        let beside = |a: &Span, b: &Span| (a.left - b.right()).max(b.left - a.right()).max(0.0);
+        for k in 0..groups.len() {
+            if k == n {
+                continue;
+            }
+            let mut j = 1;
+            while j < groups[k].len() {
+                let p = &groups[k][j];
+                let moves = if size_of(p) >= 0.85 * size_of(&groups[n][0]) {
+                    shared(p, &groups[n][0]) > shared(p, &groups[k][0]).max(0.0)
+                } else {
+                    let nearest = |g: &[Span]| g.iter().filter(|q| !std::ptr::eq(*q, p) && size_of(q) > size_of(p) && shared(p, q) > 0.0).map(|q| beside(p, q)).fold(f32::MAX, f32::min);
+                    nearest(&groups[n]) < nearest(&groups[k])
+                };
+                if moves {
+                    let p = groups[k].remove(j);
+                    groups[n].push(p);
+                } else {
+                    j += 1;
+                }
+            }
         }
     }
     // A full stop among small letters begins no line: the dot of a product
@@ -2962,8 +3021,18 @@ fn group_lines(
 /// Build a [`Line`] from spans that belong together: find the main (largest)
 /// span, mark smaller raised/lowered spans as superscripts/subscripts, and
 /// sort left to right.
-pub fn make_line(mut g: Vec<Span>, size_of: &dyn Fn(&Span) -> f32) -> Line {
+pub fn make_line(g: Vec<Span>, size_of: &dyn Fn(&Span) -> f32) -> Line {
+    make_line_but(g, size_of, &|_| false)
+}
+
+/// [`make_line`] where big symbols (brackets, integral signs of the
+/// extension font) are known: one of them is not the line's main span while
+/// there are letters, for its box is as tall as the symbol and it may be
+/// set in a larger size than the formula.
+pub fn make_line_but(mut g: Vec<Span>, size_of: &dyn Fn(&Span) -> f32, big_symbol: &dyn Fn(&Span) -> bool) -> Line {
+    let letters = g.iter().any(|s| !big_symbol(s));
     let m = (0..g.len())
+        .filter(|&k| !letters || !big_symbol(&g[k]))
         .max_by(|&a, &b| size_of(&g[a]).total_cmp(&size_of(&g[b])).then(b.cmp(&a)))
         .unwrap_or(0);
     let (main_top, main_bottom, main_size, main_h) =
@@ -2972,7 +3041,7 @@ pub fn make_line(mut g: Vec<Span>, size_of: &dyn Fn(&Span) -> f32) -> Line {
         s.script = Script::Normal;
         // Only clearly smaller text counts as a script; same-size text that
         // is slightly offset is just uneven typesetting.
-        if size_of(s) < main_size * 0.85 {
+        if size_of(s) < main_size * 0.85 && !big_symbol(s) {
             let shift = main_h * 0.2;
             if s.bottom() < main_bottom - shift {
                 s.script = Script::Super;

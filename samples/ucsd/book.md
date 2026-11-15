@@ -1439,7 +1439,7 @@ We may define the **components of a state vector** $`\psi`$ as the projections o
 ```
 
 ```math
-| \psi \rangle = \sum \psi_{i} | u_{i} \rangle
+| \psi \rangle = \sum_{i} \psi_{i} | u_{i} \rangle
 ```
 
 <div align="right"><a href="book.pdf#page=31" target="_blank" title="This page in the PDF"><sup>[p. 31]</sup></a></div>
@@ -1502,7 +1502,11 @@ The half integer possibility is used to represent the internal angular momentum 
 
 possible states with different z components of spin: spin up $`\left( 0 \right)`$, with z component of angular
 
-momentum +$`\frac{\hbar}{2}`$, and spin down $`\left( 0 \right)`$, with $`- \tfrac{\hbar}{2}`$. The corresponding spin operators are
+```math
+0
+```
+
+momentum +$`\frac{\hbar}{2}`$, and spin down , with $`- \tfrac{\hbar}{2}`$. The corresponding spin operators are
 
 ```math
 S_{x} = \frac{\hbar}{2} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \quad 1 \quad S_{y} = \frac{\hbar}{2} \begin{pmatrix} 0 & - i \\ i & 0 \end{pmatrix} \quad S_{z} = \frac{\hbar}{2} \begin{pmatrix} 1 & 0 \\ 0 & - 1 \end{pmatrix}
@@ -1983,14 +1987,10 @@ Assuming that at $`t`$ = 0 the quantum system starts out in some **initial state
 c_{n} ( t ) = \frac{1}{i \hbar} \int_{0}^{t} e^{i\omega_{ni} t^{\prime}} \mathcal{V}_{ni} ( t^{\prime} ) dt^{\prime}
 ```
 
-An important case of a time dependent potential is a pure **sinusoidal oscillating (harmonic)** **perturbation**. We can **make up any time dependence from a linear combination** of sine and cosine waves. With some calculation, we derive the transition rate in a harmonic potential of
+An important case of a time dependent potential is a pure **sinusoidal oscillating (harmonic)** **perturbation**. We can **make up any time dependence from a linear combination** of sine and cosine waves. With some calculation, we derive the transition rate in a harmonic potential of frequency $`\omega`$.
 
 ```math
-\text{ frequency } \omega ._{2}
-```
-
-```math
-\Gamma_{i \to n} \equiv \frac{dP_{n}}{dt} = \frac{2 \pi V_{ni}}{\hbar} \delta ( E_{n} - E_{i} + \hbar \omega )
+\Gamma_{i \to n} \equiv \frac{dP_{n}}{dt} = \frac{2 \pi V_{ni}^{2}}{\hbar} \delta ( E_{n} - E_{i} + \hbar \omega )
 ```
 
 This contains a delta function of energy conservation. The delta function may seem strange. The transition rate would be zero if energy is not conserved and infinite if energy is exactly conserved. We can make sense of this if there is a distribution function of $`P ( \omega )`$ of the perturbing potential or if there is a continuum of final states that we need to integrate over. In either case, the delta function helps us do the integral simply.
@@ -2840,7 +2840,7 @@ We can also see that the **helicity**, or spin along the direction of motion doe
 For any calculation, we need to know the interaction term with the Electromagnetic field. Based on the interaction of field with a current
 
 ```math
-H_{int} = - 1 j_{\mu} A_{\mu}
+H_{int} = - \frac{1}{c} j_{\mu} A_{\mu}
 ```
 
 <div align="right"><a href="book.pdf#page=58" target="_blank" title="This page in the PDF"><sup>[p. 58]</sup></a></div>
@@ -3247,7 +3247,7 @@ _Figure 11 (p. 70)_
 Measurements were made of the **maximum electron energy versus light frequency** and light intensity. Classical physics predicted that the electron energy should increase with intensity, as the electric field increases. This is not observed. The electron energy is independent of intensity and depends linearly on the light frequency, as seen the the figure above. The kinetic energy of the electrons is given by Plank’s constant times the light frequency minus a **work function** $`W`$ which depends on the material.
 
 ```math
-1 mv^{2} = h\nu - W
+\frac{1}{2} mv^{2} = h\nu - W
 ```
 
 <div align="right"><a href="book.pdf#page=70" target="_blank" title="This page in the PDF"><sup>[p. 70]</sup></a></div>
@@ -9093,7 +9093,7 @@ p = \frac{1}{i} \sqrt{\frac{m \hbar \omega}{2} ( A - A^{\dagger} )}
 ```
 
 ```math
-\Delta p \Delta x = \hbar
+\Delta p \Delta x = \frac{\hbar}{2}
 ```
 
 <div align="right"><a href="book.pdf#page=180" target="_blank" title="This page in the PDF"><sup>[p. 180]</sup></a></div>
@@ -9272,7 +9272,7 @@ First the bra vector dots into the state, giving the coefficient of $`| j \rangl
 The sum of the projection operators is 1, if we **sum over a complete set of states**, like the eigenstates of a Hermitian operator.
 
 ```math
-\sum | i \rangle \langle i | = 1
+\sum_{i} | i \rangle \langle i | = 1
 ```
 
 <div align="right"><a href="book.pdf#page=183" target="_blank" title="This page in the PDF"><sup>[p. 183]</sup></a></div>
@@ -10928,7 +10928,7 @@ r = \sqrt{x^{2} + y^{2} + z^{2}}
 ```
 
 ```math
-\tan \varphi = y
+\tan \varphi = \frac{y}{x}
 ```
 
 <div align="right"><a href="book.pdf#page=211" target="_blank" title="This page in the PDF"><sup>[p. 211]</sup></a></div>
@@ -11335,8 +11335,10 @@ B = 0
 A = - C
 ```
 
+The state is
+
 ```math
-\text{ The state is } \quad \frac{1}{\sqrt{2}} ( Y_{1 1} - Y_{1 - 1} )
+\frac{1}{\sqrt{2}} ( Y_{1 1} - Y_{1 - 1} )
 ```
 
 The trivial solution that $`A = B = C`$ = 0 is just a zero state, not normalizable to 1.
@@ -11761,7 +11763,7 @@ R_{\ell} ( r ) \to - \frac{1}{2 ikr} = \frac{\sin ( kr - \ell \pi / 2 + \delta_{
 
 The $`\delta_{\ell} ( k )`$ is called the **phase shift** for the partial wave of angular momentum $`\ell`$. We can compute the **differential cross section** for scattering
 
-$`d\sigma`$ scattered flux into $`d`$Ω $`d`$Ω $`\equiv`$ incident flux<br>
+$`\frac{d\sigma}{d}`$Ω $`\equiv`$ scattered flux intoincident flux $`d`$Ω<br>
 in terms of the phase shifts.
 
 ```math
@@ -12562,7 +12564,7 @@ For $`\ell`$ = 0, there is no angular dependence to the wavefunction so no veloc
 We can find the term for $`\frac{p_{r}^{2}}{2 m}`$ in the radial equation.
 
 ```math
-\langle \psi_{1 0 0} | ( v_{r} )^{2} | \psi_{1 0 0} \rangle = \int^{\infty} r^{2} R_{1 0}^{*} \frac{- \hbar^{2}}{m^{2}} \left( \frac{d^{2}}{dr^{2}} + \frac{2}{r} \frac{d}{dr} \right) R_{1 0} dr
+\langle \psi_{1 0 0} | ( v_{r} )^{2} | \psi_{1 0 0} \rangle = \int_{0}^{\infty} r^{2} R_{1 0}^{*} \frac{- \hbar^{2}}{m^{2}} \left( \frac{d^{2}}{dr^{2}} + \frac{2}{r} \frac{d}{dr} \right) R_{1 0} dr
 ```
 
 <div align="right"><a href="book.pdf#page=239" target="_blank" title="This page in the PDF"><sup>[p. 239]</sup></a></div>
@@ -12682,7 +12684,7 @@ measured energies and the probabilities of each. Find the expected value of $`L_
 ```
 
 ```math
-\langle \psi | r | \psi \rangle = 1 \langle \psi_{1 0 0} - \psi_{2 0 0} e^{i ( E_{1} - E_{2} ) t/ \hbar} | r | \psi_{1 0 0} - \psi_{2 0 0} e^{i ( E_{1} - E_{2} ) t/ \hbar} \rangle
+\langle \psi | r | \psi \rangle = \frac{1}{2} \langle \psi_{1 0 0} - \psi_{2 0 0} e^{i ( E_{1} - E_{2} ) t/ \hbar} | r | \psi_{1 0 0} - \psi_{2 0 0} e^{i ( E_{1} - E_{2} ) t/ \hbar} \rangle
 ```
 
 <div align="right"><a href="book.pdf#page=241" target="_blank" title="This page in the PDF"><sup>[p. 241]</sup></a></div>
@@ -14041,7 +14043,7 @@ As a concrete example, let’s assume we start out in the eigenstate of $`L_{x}`
 ```
 
 ```math
-\psi ( t ) = \psi_{x +} = \left( \tfrac{e^{- i\mu BBt/ \hbar}}{e^{i\mu BB} \frac{1 2}{\sqrt{2}}^{t/ \hbar}} \right)
+\psi ( t ) = \psi_{x +} = \left( \tfrac{e^{- i\mu BBt/ \hbar}}{e^{i\mu BB} \frac{1 2}{\sqrt{2}}^{t/ \hbar}}_{2} \right)
 ```
 
 <div align="right"><a href="book.pdf#page=266" target="_blank" title="This page in the PDF"><sup>[p. 266]</sup></a></div>
@@ -14255,7 +14257,7 @@ which are both equivalent to $`\chi_{2} = i\chi_{1}`$. Repeating the process for
 ```
 
 ```math
-\alpha_{-} = - \hbar / 2 \quad \chi_{-}^{( y )} = \frac{1}{\surd} \begin{pmatrix} 1 \\ - i \end{pmatrix}
+\alpha_{-} = - \hbar / 2 \quad \chi_{-}^{( y )} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ - i \end{pmatrix}
 ```
 
 <div align="right"><a href="book.pdf#page=269" target="_blank" title="This page in the PDF"><sup>[p. 269]</sup></a></div>
@@ -15006,10 +15008,10 @@ with the Hamiltonian $`H = \tfrac{p^{2}}{2 m} + \tfrac{1}{2} kx^{2}`$.
 Remember that the wave functions go to zero at infinity.$`-\infty \quad -\infty`$
 
 ```math
-1
+\frac{1}{4}
 ```
 
-2. Directly calculate the the RMS uncertainty in $`x`$ for the state $`\psi ( x ) = \left( \tfrac{a}{\pi} \right)^{4} e \tfrac{- ax 2}{2}`$ by computing
+2. Directly calculate the the RMS uncertainty in $`x`$ for the state $`\psi ( x ) = \left( \tfrac{a}{\pi} \right) \quad e \tfrac{- ax 2}{2}`$ by computing
 
 ```math
 \Delta x = \sqrt{\langle \psi | ( x - \langle x \rangle )^{2} | \psi \rangle .}
@@ -15785,7 +15787,7 @@ m \vec{v} = \vec{p} + \frac{e}{c} \vec{A}
 ```
 
 ```math
-\vec{p} = m \vec{v} - e \vec{A}
+\vec{p} = m \vec{v} - \frac{e}{c} \vec{A}
 ```
 
 <div align="right"><a href="book.pdf#page=301" target="_blank" title="This page in the PDF"><sup>[p. 301]</sup></a></div>
@@ -16022,12 +16024,10 @@ Let $`x = \sqrt{\frac{eB}{2 \hbar c}} \rho`$ (dummy variable, not the coordinate
 \frac{d^{2} u}{dx^{2}} + \frac{1}{x} \frac{du}{dx} - \frac{m^{2}}{x^{2}} u - x^{2} u + \lambda = 0
 ```
 
-```math
-\text{ In the limit } x \to \infty , {}_{2}
-```
+In the limit $`x \to \infty`$,
 
 ```math
-\frac{d u}{dx^{2}} - x^{2} u = 0 \quad \Rightarrow \quad u \sim e^{- x^{2} / 2}
+\frac{d^{2} u}{dx^{2}} - x^{2} u = 0 \quad \Rightarrow \quad u \sim e^{- x^{2} / 2}
 ```
 
 while in the other limit $`x \to 0`$,
@@ -16929,7 +16929,7 @@ J^{2} \psi_{j,m + \tfrac{1}{2}} = j ( j + 1 ) \hbar^{2} \psi_{j,m + \tfrac{1}{2}
 Since the two terms are orthogonal, we can equate the coefficients for each term, giving us two equations. The $`Y_{\ell m} \chi_{+}`$ term gives
 
 ```math
-\alpha j ( j + 1 ) = \alpha \left( \ell ( \ell + 1 ) + 3 + m \right) + \beta \sqrt{\ell ( \ell + 1 ) - m ( m + 1 )} .
+\alpha j ( j + 1 ) = \alpha \left( \ell ( \ell + 1 ) + \frac{3}{4} + m \right) + \beta \sqrt{\ell ( \ell + 1 ) - m ( m + 1 )} .
 ```
 
 <div align="right"><a href="book.pdf#page=321" target="_blank" title="This page in the PDF"><sup>[p. 321]</sup></a></div>
@@ -17390,7 +17390,7 @@ E_{0} \alpha_{j} + \sum_{i} \alpha_{i} \left\langle \varphi^{( j )} | e \mathcal
 ```
 
 ```math
-\sum \alpha_{i} \left\langle \varphi^{( j )} | e \mathcal{E} z | \varphi^{( i )} \right\rangle = E^{( 1 )} \alpha_{j}
+\sum_{i} \alpha_{i} \left\langle \varphi^{( j )} | e \mathcal{E} z | \varphi^{( i )} \right\rangle = E^{( 1 )} \alpha_{j}
 ```
 
 <div align="right"><a href="book.pdf#page=330" target="_blank" title="This page in the PDF"><sup>[p. 330]</sup></a></div>
@@ -19222,7 +19222,7 @@ We can do the integral for $`r_{2} <r_{1}`$ and simplify the expression. Because
 ```
 
 ```math
-= - \frac{Ze^{2}}{a_{0}} \int^{\infty} \left[ \left( x_{1}^{3} + 2 x_{1}^{2} + 2 x_{1} \right) e^{- 2 x_{1}} - 2 x_{1} e^{- x_{1}} \right] dx_{1}
+= - \frac{Ze^{2}}{a_{0}} \int_{0}^{\infty} \left[ \left( x_{1}^{3} + 2 x_{1}^{2} + 2 x_{1} \right) e^{- 2 x_{1}} - 2 x_{1} e^{- x_{1}} \right] dx_{1}
 ```
 
 <div align="right"><a href="book.pdf#page=368" target="_blank" title="This page in the PDF"><sup>[p. 368]</sup></a></div>
@@ -20051,7 +20051,7 @@ Lets take the **case of radiation of an energy quantum** $`\hbar \omega`$. If th
 The amplitude to be in state $`\varphi_{n}`$ as a function of time is
 
 ```math
-c_{n} ( t ) = \frac{1}{i \hbar} V_{ni} \int^{t} dt^{\prime} e^{i ( \omega_{ni} + \omega ) t^{\prime}}
+c_{n} ( t ) = \frac{1}{i \hbar} V_{ni} \int_{0}^{t} dt^{\prime} e^{i ( \omega_{ni} + \omega ) t^{\prime}}
 ```
 
 <div align="right"><a href="book.pdf#page=393" target="_blank" title="This page in the PDF"><sup>[p. 393]</sup></a></div>
@@ -20791,7 +20791,7 @@ This is the same result we got in the explicit calculation.
 We may also deduce the angular distribution of photons from our calculation. Lets take the 2p to 1s calculation as an example. We had the equation for the decay rate.
 
 ```math
-\Gamma_{tot} = \frac{\alpha \omega_{in}^{3}}{2 \pi c^{2}} \sum_{\lambda} \int d \Omega_{\gamma} \left| \int^{\sqrt{\frac{4 \pi}{3}}^{\infty}} r^{3} drR_{1 0}^{*} R_{2 1} \int d \Omega Y_{0 0}^{*} \left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \right) Y_{1 m_{i}} \right|^{2}
+\Gamma_{tot} = \frac{\alpha \omega_{in}^{3}}{2 \pi c^{2}} \sum_{\lambda} \int d \Omega_{\gamma} \left| \int_{0}^{\sqrt{\frac{4 \pi}{3}}^{\infty}} r^{3} drR_{1 0}^{*} R_{2 1} \int d \Omega Y_{0 0}^{*} \left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \right) Y_{1 m_{i}} \right|^{2}
 ```
 
 <div align="right"><a href="book.pdf#page=408" target="_blank" title="This page in the PDF"><sup>[p. 408]</sup></a></div>
@@ -21123,11 +21123,11 @@ We have the vector potential
 First find the fields.
 
 ```math
-\begin{array}{ll}
-\vec{\jmath} & 1 \partial \vec{A} \quad \vec{k} \\ 
-E = - & c \partial t = 2 \frac{\omega}{c} \vec{A}_{0} \sin ( \cdot \vec{r} - \omega t ) \\ 
-\vec{B} = 2 & \vec{\nabla} \times \vec{A} = 2 \vec{k} \times \vec{A}_{0} \sin ( \vec{k} \cdot \vec{r} - \omega t ) \\ 
-\end{array}
+\vec{E} = - \frac{1}{c} \frac{\partial \vec{A}}{\partial t} = 2 \frac{\omega}{c} \vec{A}_{0} \sin ( \vec{k} \cdot \vec{r} - \omega t )
+```
+
+```math
+\vec{B} = 2 \vec{\nabla} \times \vec{A} = 2 \vec{k} \times \vec{A}_{0} \sin ( \vec{k} \cdot \vec{r} - \omega t )
 ```
 
 Note that, for an EM wave, the vector potential is transverse to the wave vector. The energy density in the field is
@@ -22372,7 +22372,7 @@ We will use this once we have written the radiation field in a convenient form. 
 ```
 
 ```math
-= 1 ( E^{2} + B^{2} ) + E_{i} \frac{\partial \varphi}{\partial x_{i}}
+= \frac{1}{2} ( E^{2} + B^{2} ) + E_{i} \frac{\partial \varphi}{\partial x_{i}}
 ```
 
 <div align="right"><a href="book.pdf#page=440" target="_blank" title="This page in the PDF"><sup>[p. 440]</sup></a></div>
@@ -23658,7 +23658,7 @@ This is the matrix element $`H_{ni} ( t )`$. The **amplitude to be in the final 
 **by first order time dependent perturbation theory**.
 
 ```math
-c_{n}^{( 1 )} ( t ) = \frac{1}{i \hbar} \int^{t} e^{i\omega_{ni} t^{\prime}} H_{ni} ( t^{\prime} ) dt^{\prime}
+c_{n}^{( 1 )} ( t ) = \frac{1}{i \hbar} \int_{0}^{t} e^{i\omega_{ni} t^{\prime}} H_{ni} ( t^{\prime} ) dt^{\prime}
 ```
 
 <div align="right"><a href="book.pdf#page=463" target="_blank" title="This page in the PDF"><sup>[p. 463]</sup></a></div>
@@ -24374,7 +24374,7 @@ It is now necessary to discuss **approximations needed** to complete this calcul
 ```
 
 ```math
-= \frac{2 \alpha \hbar}{3 \pi m^{2} c^{2}} \int^{\omega_{cut - off}} \sum_{j} \frac{\omega + ( \omega_{nj} - \omega )}{( \omega_{nj} - \omega )} | \langle n | \vec{p} | j \rangle |^{2} d\omega
+= \frac{2 \alpha \hbar}{3 \pi m^{2} c^{2}} \int_{0}^{\omega_{cut - off}} \sum_{j} \frac{\omega + ( \omega_{nj} - \omega )}{( \omega_{nj} - \omega )} | \langle n | \vec{p} | j \rangle |^{2} d\omega
 ```
 
 <div align="right"><a href="book.pdf#page=480" target="_blank" title="This page in the PDF"><sup>[p. 480]</sup></a></div>
@@ -24444,7 +24444,7 @@ This **must be a real number so we may use its complex conjugate**.
 ```
 
 ```math
-= - \hbar^{2} \langle n |\nabla^{2} V | n \rangle
+= - \frac{\hbar^{2}}{2} \langle n |\nabla^{2} V | n \rangle
 ```
 
 <div align="right"><a href="book.pdf#page=481" target="_blank" title="This page in the PDF"><sup>[p. 481]</sup></a></div>
@@ -24812,11 +24812,7 @@ It is interesting to note that the **primary physics input was the choice of the
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p489" href="book.pdf#page=489" target="_blank" title="This page in the PDF"><sup>[p. 489]</sup></a>
 
-that gave us the correct interaction with the electron’s spin. We have applied this same momentum operator relativistically, not much of a stretch. We have also written the equation in terms of four components, but there was no new physics in that since everything could be computed from two
-
-```math
-\text{ components } , \text{ say } \varphi^{( L )} \text{ since }
-```
+that gave us the correct interaction with the electron’s spin. We have applied this same momentum operator relativistically, not much of a stretch. We have also written the equation in terms of four components, but there was no new physics in that since everything could be computed from two components, say $`\varphi^{( L )}`$ since
 
 ```math
 \varphi^{( R )} = \frac{1}{mc} \left( i \hbar \frac{\partial}{\partial x_{0}} - i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \varphi^{( L )} .
@@ -25819,19 +25815,15 @@ a_{\mu \nu}^{( boost )} = \begin{pmatrix} \gamma & 0 & 0 & i\beta \gamma \\ 0 & 
 The **boost is just another rotation in Minkowski space** through and angle $`i\chi = i \tanh^{- 1} \beta`$. For example a boost with velocity $`\beta`$ in the x direction is like a rotation in the 1-4 plane by an angle $`i\chi`$. Let us review the **Lorentz transformation for boosts in terms of hyperbolic functions**. We define $`\tanh \chi = \beta`$.
 
 ```math
-\tanh \chi = e^{\chi} + e^{- \chi} \frac{e^{\chi} - e^{- \chi}}{e^{\chi} + e^{- \chi}} = \beta
+\tanh \chi = \frac{e^{\chi} - e^{- \chi}}{e^{\chi} + e^{- \chi}} = \beta
 ```
 
-$`\cosh \chi`$ =
+$`\cosh \chi`$ = $`\frac{e^{\chi} + e^{- \chi}}{2}`$
+
+$`\sinh \chi`$ = $`\frac{e^{\chi} - e^{- \chi}}{2}`$
 
 ```math
-e^{\chi} - 2 e^{- \chi}
-```
-
-$`\sinh \chi`$ =
-
-```math
-\cos ( i\chi ) = \frac{e^{i ( i\chi )} + e^{- i ( i\chi )}}{2} 2 = \frac{e^{- \chi} + e^{\chi}}{2} = \cosh \chi
+\cos ( i\chi ) = \frac{e^{i ( i\chi )} + e^{- i ( i\chi )}}{2} = \frac{e^{- \chi} + e^{\chi}}{2} = \cosh \chi
 ```
 
 ```math
@@ -26465,7 +26457,7 @@ H = ic\gamma_{4} \vec{\gamma} \cdot \vec{p} + mc^{2} \gamma_{4}
 ```
 
 ```math
-[ H,K ] = 2 c \left( i ( \vec{\gamma} \cdot \vec{p} ) ( \vec{\Sigma} \cdot \vec{J} ) - \vec{\gamma} \times \vec{p} \cdot \vec{J} - i \hbar ( \vec{\gamma} \cdot \vec{p} ) \right)
+[ H,K ] = 2 c \left( i ( \vec{\gamma} \cdot \vec{p} ) ( \vec{\Sigma} \cdot \vec{J} ) - \vec{\gamma} \times \vec{p} \cdot \vec{J} - i \frac{\hbar}{2} ( \vec{\gamma} \cdot \vec{p} ) \right)
 ```
 
 <div align="right"><a href="book.pdf#page=517" target="_blank" title="This page in the PDF"><sup>[p. 517]</sup></a></div>
@@ -27409,7 +27401,7 @@ _Figure 97 (p. 532)_
 In one term, the initial state photon is absorbed by a “negative energy” electron, then the initial state electron fills the hole in the “negative energy” sea emitting the final state photon. In the other term, even further from the mass shell, a “negative energy” electron emits the final state photon and moves to a positive energy state, then the initial state electron absorbs the initial photon and fills the hole left behind in the sea. These terms are larger because the $`\gamma_{4} \gamma_{i}`$ matrix connects positive energy and “negative energy” states.
 
 ```math
-\begin{aligned} c_{\vec{p}^{\prime} ,r^{\prime} ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 2 )} ( t ) &= \frac{ie^{2} c^{2}}{2 V \sqrt{\omega^{\prime} \omega}} \sum_{\vec{p}^{\prime \prime} r^{\prime \prime} = 3 , 4} \left[ \frac{\langle \vec{p}^{\prime \prime} r^{\prime \prime} | i\gamma_{4} \gamma_{n} \epsilon_{n}^{\prime} e^{- i \vec{k}^{\prime} \cdot \vec{x}} | \vec{p} r \rangle \langle \vec{p}^{\prime} r^{\prime} | i\gamma_{4} \gamma_{n} \epsilon_{n} e^{i \vec{k} \cdot \vec{x}} | \vec{p}^{\prime \prime} r^{\prime \prime} \rangle}{E^{\prime} - E^{\prime \prime} - \hbar \omega} \right. \\ & \quad \left. + \quad \frac{\langle \vec{p}^{\prime \prime} r^{\prime \prime} | i\gamma_{4} \gamma_{n} \epsilon_{n} e^{i \vec{k} \cdot \vec{x}} | \vec{p} r \rangle \langle \vec{p}^{\prime} r^{\prime} | i\gamma_{4} \gamma_{n} \epsilon_{n}^{\prime} e^{- i k^{\vec{\prime}} \cdot \vec{x}} | \vec{p}^{\prime \prime} r^{\prime \prime} \rangle}{E^{\prime \prime} - E^{\prime} + \hbar \omega^{\prime}} \right] \int^{t} dt_{2} e^{i ( E^{\prime} - E + \hbar \omega^{\prime} - \hbar \omega ) t_{2} / \hbar} \end{aligned}
+\begin{aligned} c_{\vec{p}^{\prime} ,r^{\prime} ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 2 )} ( t ) &= \frac{ie^{2} c^{2}}{2 V \sqrt{\omega^{\prime} \omega}} \sum_{\vec{p}^{\prime \prime} r^{\prime \prime} = 3 , 4} \left[ \frac{\langle \vec{p}^{\prime \prime} r^{\prime \prime} | i\gamma_{4} \gamma_{n} \epsilon_{n}^{\prime} e^{- i \vec{k}^{\prime} \cdot \vec{x}} | \vec{p} r \rangle \langle \vec{p}^{\prime} r^{\prime} | i\gamma_{4} \gamma_{n} \epsilon_{n} e^{i \vec{k} \cdot \vec{x}} | \vec{p}^{\prime \prime} r^{\prime \prime} \rangle}{E^{\prime} - E^{\prime \prime} - \hbar \omega} \right. \\ & \quad \left. + \quad \frac{\langle \vec{p}^{\prime \prime} r^{\prime \prime} | i\gamma_{4} \gamma_{n} \epsilon_{n} e^{i \vec{k} \cdot \vec{x}} | \vec{p} r \rangle \langle \vec{p}^{\prime} r^{\prime} | i\gamma_{4} \gamma_{n} \epsilon_{n}^{\prime} e^{- i k^{\vec{\prime}} \cdot \vec{x}} | \vec{p}^{\prime \prime} r^{\prime \prime} \rangle}{E^{\prime \prime} - E^{\prime} + \hbar \omega^{\prime}} \right] \int_{0}^{t} dt_{2} e^{i ( E^{\prime} - E + \hbar \omega^{\prime} - \hbar \omega ) t_{2} / \hbar} \end{aligned}
 ```
 
 <div align="right"><a href="book.pdf#page=532" target="_blank" title="This page in the PDF"><sup>[p. 532]</sup></a></div>
