@@ -3729,7 +3729,7 @@ D^{( 1 )} ( x ) = \frac{1}{( 2 \pi )^{3}} \int e^{ik \cdot x} \delta ( k^{2} ) d
 Taking the integral in the Abelian sense
 
 ```math
-\lim \int_{\epsilon \to 0 \quad 0}^{\infty} e^{- \epsilon x} \sin axdx = \lim_{\epsilon \to 0} \frac{a}{\epsilon^{2} + a^{2}} = \frac{1}{a}
+\lim_{\epsilon \to 0} \int_{0}^{\infty} e^{- \epsilon x} \sin axdx = \lim_{\epsilon \to 0} \frac{a}{\epsilon^{2} + a^{2}} = \frac{1}{a}
 ```
 
 hence in our case<sup><a id="fnref-26" href="#fn-26">26</a></sup>

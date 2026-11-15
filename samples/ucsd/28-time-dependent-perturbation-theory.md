@@ -242,11 +242,11 @@ c_{n} ( t ) = \frac{1}{i \hbar} \int_{0}^{t} e^{i\omega_{ni} t^{\prime}} \mathca
 ```
 
 ```math
-c_{1} = \frac{1}{i \hbar} eE \int_{0}^{\sqrt{\frac{\hbar}{2 m\omega}}^{T}} e^{i\omega t^{\prime}} \langle 1 | A + A^{\dagger} | 0 \rangle dt^{\prime}
+c_{1} = \frac{1}{i \hbar} eE \sqrt{\frac{\hbar}{2 m\omega}} \int_{0}^{T} e^{i\omega t^{\prime}} \langle 1 | A + A^{\dagger} | 0 \rangle dt^{\prime}
 ```
 
 ```math
-= \frac{eE}{i \hbar} \int_{0}^{\sqrt{\frac{\hbar}{2 m\omega}}^{T}} e^{i\omega t^{\prime}} dt^{\prime}
+= \frac{eE}{i \hbar} \sqrt{\frac{\hbar}{2 m\omega}} \int_{0}^{T} e^{i\omega t^{\prime}} dt^{\prime}
 ```
 
 ```math

@@ -1858,7 +1858,11 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
             let take = |groups: &Vec<Vec<usize>>, used: &mut Vec<bool>| -> Vec<usize> {
                 let mut v = Vec::new();
                 for (k, g) in groups.iter().enumerate() {
-                    if !used[k] && overlaps(range(spans, g), r) {
+                    // (not small letters that lead up to the sign from far
+                    // on its left and end at it: the exponent the sign is in)
+                    let (gl, gr) = range(spans, g);
+                    let leads_up = gl < s.left - 1.5 * max && gr <= s.left + 0.3 * (s.right - s.left);
+                    if !used[k] && overlaps((gl, gr), r) && !leads_up {
                         used[k] = true;
                         v.extend(g);
                     }
