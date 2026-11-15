@@ -990,7 +990,15 @@ which depends on 2 quantum numbers. $`\hbar k`$ is the conserved momentum along 
 There is a symmetry in physics which we might call the **Local Phase Symmetry** in quantum mechanics. In this symmetry we change the phase of the (electron) wavefunction by a different amount everywhere in spacetime. To compensate for this change, we need to also make a gauge transformation (See section 20.3) of the electromagnetic potentials. They all must go together like this.
 
 ```math
-\begin{aligned} & \quad \psi ( \vec{r} , t ) \quad \to \quad e^{- i \tfrac{e}{\hbar c} f ( \vec{r} ,t )} \psi ( \vec{r} , t ) \\ & \quad \vec{A} \varphi \quad \to \to \quad \vec{A} \varphi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t} - \vec{\nabla} f ( \vec{r} , t ) \end{aligned}
+\psi ( \vec{r} , t ) \quad \to \quad e^{- i \tfrac{e}{\hbar c} f ( \vec{r} ,t )} \psi ( \vec{r} , t )
+```
+
+```math
+\vec{A} \quad \to \quad \vec{A} - \vec{\nabla} f ( \vec{r} , t )
+```
+
+```math
+\varphi \quad \to \quad \varphi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t}
 ```
 
 The local phase symmetry requires that Electromagnetism exist and have a gauge symmetry so that we can keep the Schrödinger Equation invariant under this phase transformation.
@@ -1016,7 +1024,15 @@ _Figure 2 (p. 35)_
 The electron beams travel through two slits in field free regions but we have the ability to vary a magnetic field enclosed by the path of the electrons. At the screen, the amplitudes from the two slits interfere $`\psi = \psi_{1} + \psi_{2}`$. Let’s start with $`B`$ = 0 and $`A`$ = 0 everywhere. When we change the $`B`$ field, the wavefunctions must change.
 
 ```math
-\psi \psi_{1 2} \psi \quad \to \to = \left( \psi_{1} e^{- i \tfrac{e \Phi}{\hbar c}} + \psi_{2} \right) \int^{\psi \psi_{1} e \frac{- i \tfrac{e}{\hbar c}_{1} d \vec{r} \cdot \vec{A}}{- i \tfrac{e}{\hbar c}_{2} d \vec{r} \cdot \vec{A}}_{2} e} \int e \int^{- i \tfrac{e}{\hbar c}_{2} d \vec{r} \cdot \vec{A}}
+\psi_{1} \quad \to \quad \psi_{1} e_{e} \int^{- i \tfrac{e}{\hbar c}_{1} d \vec{r} \cdot \vec{A}} \int_{\vec{\jmath}}
+```
+
+```math
+\psi_{2} \quad \to \quad \psi_{2} e_{e}^{- i_{\hbar c 2} d \vec{r} \cdot A} \int_{\vec{\jmath}}
+```
+
+```math
+\psi = \left( \psi_{1} e^{- i \tfrac{e \Phi}{\hbar c}} + \psi_{2} \right) e^{- i_{\hbar c 2} d \vec{r} \cdot A}
 ```
 
 The relative phase from the two slits depends on the flux between the slits. By varying the $`B`$ field, we will **shift the diffraction pattern** even though $`B`$ = 0 along the whole path of the electrons.

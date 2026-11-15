@@ -169,7 +169,11 @@ h_{2}^{( 1 )} ( \rho ) = \frac{ie^{i\rho}}{\rho} \left( 1 + \frac{3 i}{\rho} - \
 We should also give the **limits for large** $`r , ( \rho >>\ell )`$,of the Bessel and Neumann functions.
 
 ```math
-n j_{\ell} ( \rho ) \to_{\ell} ( \rho ) \to \frac{\cos \left( \rho - \tfrac{\ell \pi}{2} \right)}{\rho} \frac{\sin \left( \rho - \tfrac{\ell \pi}{2} \right)}{\rho}
+j_{\ell} ( \rho ) \to \frac{\sin \left( \rho - \tfrac{\ell \pi}{2} \right)}{\rho}
+```
+
+```math
+n_{\ell} ( \rho ) \to \frac{\cos \left( \rho - \tfrac{\ell \pi}{2} \right)}{\rho}
 ```
 
 Decomposing the sine in the Bessel function at large $`r`$, we see that the Bessel function is composed of an incoming spherical wave and an outgoing spherical wave of the **same magnitude**.
@@ -347,7 +351,11 @@ e^{ikz} \to - \sum_{\ell = 0}^{\infty} \sqrt{4 \pi ( 2 \ell + 1 )} i^{\ell} \fra
 The scattering potential will modify the plane wave, particularly the outgoing part. To maintain the outgoing flux equal to the incoming flux, the most the scattering can do is **change the relative** **phase of the incoming an outgoing waves**.
 
 ```math
-R_{\ell} ( r ) \to - \frac{1}{2 ikr} = \frac{\sin ( kr - \ell \pi / 2 + \delta_{\ell} ( k ) )}{kr} \left( e^{- i ( kr - \ell \pi / 2 )} - e^{2 i\delta_{\ell} ( k )} e^{i ( kr - \ell \pi / 2 )} \right) e^{i\delta_{\ell} ( k )}
+R_{\ell} ( r ) \to - \frac{1}{2 ikr} \left( e^{- i ( kr - \ell \pi / 2 )} - e^{2 i\delta_{\ell} ( k )} e^{i ( kr - \ell \pi / 2 )} \right)
+```
+
+```math
+= \frac{\sin ( kr - \ell \pi / 2 + \delta_{\ell} ( k ) )}{kr} e^{i\delta_{\ell} ( k )}
 ```
 
 <div align="right"><a href="book.pdf#page=223" target="_blank" title="This page in the PDF"><sup>[p. 223]</sup></a></div>
@@ -428,7 +436,7 @@ k^{\prime} \left[ \frac{\frac{dj_{\ell} ( \rho )}{d\rho}}{j_{\ell} ( \rho )} \ri
 Recalling that for $`r \to \infty`$,
 
 ```math
-n_{\ell} \to j_{\ell} \to \frac{\sin ( \rho - \tfrac{\ell \pi}{2} )}{\frac{- \cos ( \rho - \tfrac{\ell \pi}{2} )}{\rho} \rho}
+\begin{aligned} & \quad j_{\ell} \to \frac{\sin ( \rho - \tfrac{\ell \pi}{2} )}{\rho} \\ & \quad n_{\ell} \to \frac{- \cos ( \rho - \tfrac{\ell \pi}{2} )}{\rho} \end{aligned}
 ```
 
 and that our formula with the phase shift is

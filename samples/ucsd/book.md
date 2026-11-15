@@ -1595,7 +1595,15 @@ which depends on 2 quantum numbers. $`\hbar k`$ is the conserved momentum along 
 There is a symmetry in physics which we might call the **Local Phase Symmetry** in quantum mechanics. In this symmetry we change the phase of the (electron) wavefunction by a different amount everywhere in spacetime. To compensate for this change, we need to also make a gauge transformation (See section 20.3) of the electromagnetic potentials. They all must go together like this.
 
 ```math
-\begin{aligned} & \quad \psi ( \vec{r} , t ) \quad \to \quad e^{- i \tfrac{e}{\hbar c} f ( \vec{r} ,t )} \psi ( \vec{r} , t ) \\ & \quad \vec{A} \varphi \quad \to \to \quad \vec{A} \varphi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t} - \vec{\nabla} f ( \vec{r} , t ) \end{aligned}
+\psi ( \vec{r} , t ) \quad \to \quad e^{- i \tfrac{e}{\hbar c} f ( \vec{r} ,t )} \psi ( \vec{r} , t )
+```
+
+```math
+\vec{A} \quad \to \quad \vec{A} - \vec{\nabla} f ( \vec{r} , t )
+```
+
+```math
+\varphi \quad \to \quad \varphi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t}
 ```
 
 The local phase symmetry requires that Electromagnetism exist and have a gauge symmetry so that we can keep the Schrödinger Equation invariant under this phase transformation.
@@ -1621,7 +1629,15 @@ _Figure 2 (p. 35)_
 The electron beams travel through two slits in field free regions but we have the ability to vary a magnetic field enclosed by the path of the electrons. At the screen, the amplitudes from the two slits interfere $`\psi = \psi_{1} + \psi_{2}`$. Let’s start with $`B`$ = 0 and $`A`$ = 0 everywhere. When we change the $`B`$ field, the wavefunctions must change.
 
 ```math
-\psi \psi_{1 2} \psi \quad \to \to = \left( \psi_{1} e^{- i \tfrac{e \Phi}{\hbar c}} + \psi_{2} \right) \int^{\psi \psi_{1} e \frac{- i \tfrac{e}{\hbar c}_{1} d \vec{r} \cdot \vec{A}}{- i \tfrac{e}{\hbar c}_{2} d \vec{r} \cdot \vec{A}}_{2} e} \int e \int^{- i \tfrac{e}{\hbar c}_{2} d \vec{r} \cdot \vec{A}}
+\psi_{1} \quad \to \quad \psi_{1} e_{e} \int^{- i \tfrac{e}{\hbar c}_{1} d \vec{r} \cdot \vec{A}} \int_{\vec{\jmath}}
+```
+
+```math
+\psi_{2} \quad \to \quad \psi_{2} e_{e}^{- i_{\hbar c 2} d \vec{r} \cdot A} \int_{\vec{\jmath}}
+```
+
+```math
+\psi = \left( \psi_{1} e^{- i \tfrac{e \Phi}{\hbar c}} + \psi_{2} \right) e^{- i_{\hbar c 2} d \vec{r} \cdot A}
 ```
 
 The relative phase from the two slits depends on the flux between the slits. By varying the $`B`$ field, we will **shift the diffraction pattern** even though $`B`$ = 0 along the whole path of the electrons.
@@ -11574,7 +11590,11 @@ h_{2}^{( 1 )} ( \rho ) = \frac{ie^{i\rho}}{\rho} \left( 1 + \frac{3 i}{\rho} - \
 We should also give the **limits for large** $`r , ( \rho >>\ell )`$,of the Bessel and Neumann functions.
 
 ```math
-n j_{\ell} ( \rho ) \to_{\ell} ( \rho ) \to \frac{\cos \left( \rho - \tfrac{\ell \pi}{2} \right)}{\rho} \frac{\sin \left( \rho - \tfrac{\ell \pi}{2} \right)}{\rho}
+j_{\ell} ( \rho ) \to \frac{\sin \left( \rho - \tfrac{\ell \pi}{2} \right)}{\rho}
+```
+
+```math
+n_{\ell} ( \rho ) \to \frac{\cos \left( \rho - \tfrac{\ell \pi}{2} \right)}{\rho}
 ```
 
 Decomposing the sine in the Bessel function at large $`r`$, we see that the Bessel function is composed of an incoming spherical wave and an outgoing spherical wave of the **same magnitude**.
@@ -11752,7 +11772,11 @@ e^{ikz} \to - \sum_{\ell = 0}^{\infty} \sqrt{4 \pi ( 2 \ell + 1 )} i^{\ell} \fra
 The scattering potential will modify the plane wave, particularly the outgoing part. To maintain the outgoing flux equal to the incoming flux, the most the scattering can do is **change the relative** **phase of the incoming an outgoing waves**.
 
 ```math
-R_{\ell} ( r ) \to - \frac{1}{2 ikr} = \frac{\sin ( kr - \ell \pi / 2 + \delta_{\ell} ( k ) )}{kr} \left( e^{- i ( kr - \ell \pi / 2 )} - e^{2 i\delta_{\ell} ( k )} e^{i ( kr - \ell \pi / 2 )} \right) e^{i\delta_{\ell} ( k )}
+R_{\ell} ( r ) \to - \frac{1}{2 ikr} \left( e^{- i ( kr - \ell \pi / 2 )} - e^{2 i\delta_{\ell} ( k )} e^{i ( kr - \ell \pi / 2 )} \right)
+```
+
+```math
+= \frac{\sin ( kr - \ell \pi / 2 + \delta_{\ell} ( k ) )}{kr} e^{i\delta_{\ell} ( k )}
 ```
 
 <div align="right"><a href="book.pdf#page=223" target="_blank" title="This page in the PDF"><sup>[p. 223]</sup></a></div>
@@ -11833,7 +11857,7 @@ k^{\prime} \left[ \frac{\frac{dj_{\ell} ( \rho )}{d\rho}}{j_{\ell} ( \rho )} \ri
 Recalling that for $`r \to \infty`$,
 
 ```math
-n_{\ell} \to j_{\ell} \to \frac{\sin ( \rho - \tfrac{\ell \pi}{2} )}{\frac{- \cos ( \rho - \tfrac{\ell \pi}{2} )}{\rho} \rho}
+\begin{aligned} & \quad j_{\ell} \to \frac{\sin ( \rho - \tfrac{\ell \pi}{2} )}{\rho} \\ & \quad n_{\ell} \to \frac{- \cos ( \rho - \tfrac{\ell \pi}{2} )}{\rho} \end{aligned}
 ```
 
 and that our formula with the phase shift is
@@ -13281,7 +13305,7 @@ We can use this apparatus to **prepare an eigenstate**. The apparatus below pick
 _Figure 71 (p. 253)_
 
 ```math
--| 0 |_{z} \to
+\begin{aligned} & \quad 0 | \quad \to \\ & \quad -|_{z} \end{aligned}
 ```
 
 again representing the apparatus by the symbol at the right. We could also represent our apparatus plus blocking by an operator
@@ -14825,7 +14849,11 @@ upper left $`5 \times 5`$ part of the matrix.
 11. Let’s define the u axis to be in the x-z plane, between the positive x and z axes and at an angle of 30 degrees to the x axis. Given an unpolarized spin $`\frac{1}{2}`$ beam of intensity $`I`$ going into the following Stern-Gerlach apparati, what intensity comes out?
 
 ```math
-\frac{I \to}{I \to} I \to \frac{\frac{I \to \begin{Bmatrix} + \\ -| \\ + \end{Bmatrix}_{z} \to}{\begin{Bmatrix} + \\ -| \end{Bmatrix}_{z}} I \to \left\{ -| \right\} \to \frac{\begin{Bmatrix} + \\ -| \end{Bmatrix}_{x} \to ?}{\begin{Bmatrix} {}^{z} + | \\ - \end{Bmatrix}_{u} \to} \to \begin{Bmatrix} + | \\ - \end{Bmatrix} \to ? {}_{z} \to ?}{\left\{ \begin{Bmatrix} + \\ -| \\ + \\ -| \end{Bmatrix} \right\} \frac{z}{z} \to \left\{ - \right\}_{u} \to \left\{ - \right\}_{x} \to ?} \to \begin{Bmatrix} + \\ - \\ + | \end{Bmatrix}_{u} \to \left\{ \begin{Bmatrix} {}^{u} + | \\ - \\ + | \\ - \\ + | \end{Bmatrix} \right\}_{z} \to ?
+\begin{aligned} & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{x} \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix} \quad \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{u} \to \begin{Bmatrix} {}^{u} + | \\ - \end{Bmatrix}_{z} \to ? \end{aligned}
+```
+
+```math
+\begin{aligned} & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + \\ - \end{Bmatrix}_{u} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{z} \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{u} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{x} \to ? \end{aligned}
 ```
 
 # <a id="s-18-13sample-test-problems"></a>18.13 Sample Test Problems
@@ -15280,7 +15308,7 @@ You may find the expansion of $`e^{ikz}`$ in terms of Bessel functions useful.
 5. Let’s define the u axis to be in the x-z plane, between the positive x and z axes and at an angle of 30 degrees to the x axis. Given an unpolarized spin $`\frac{1}{2}`$ beam of intensity $`I`$ going into the following Stern-Gerlach apparati, what intensity comes out?
 
 ```math
-\frac{I \to}{I \to} I \to \frac{\frac{I \to \begin{Bmatrix} + \\ -| \\ + \end{Bmatrix}_{z} \to}{\begin{Bmatrix} + \\ -| \end{Bmatrix}_{z}} I \to \left\{ -| \right\} \to \frac{\begin{Bmatrix} + \\ -| \end{Bmatrix}_{x} \to ?}{\begin{Bmatrix} {}^{z} + | \\ - \end{Bmatrix}_{u} \to} \to \begin{Bmatrix} + | \\ - \end{Bmatrix} \to ? {}_{z} \to ?}{\left\{ \begin{Bmatrix} + \\ -| \\ + \\ -| \end{Bmatrix} \right\} \frac{z}{z} \to \left\{ - \right\}_{u} \to \left\{ - \right\}_{x} \to ?} \to \begin{Bmatrix} + \\ - \\ + | \end{Bmatrix}_{u} \to \left\{ \begin{Bmatrix} {}^{u} + | \\ - \\ + | \\ - \\ + | \end{Bmatrix} \right\}_{z} \to ?
+\begin{aligned} & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{x} \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix} \quad \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{u} \to \begin{Bmatrix} {}^{u} + | \\ - \end{Bmatrix} \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + \\ - \end{Bmatrix}_{u} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}^{z} \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{u} \to \begin{Bmatrix} + | \\ - \end{Bmatrix} \frac{z}{x} \to ? \end{aligned}
 ```
 
 ---
@@ -15383,7 +15411,11 @@ $`•`$ the classical Hamiltonian.
 The Maxwell equations are invariant under a **gauge transformation** of the potentials.
 
 ```math
-\vec{A} \varphi \quad \to \to \quad \vec{A} \varphi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t} - \vec{\nabla} f ( \vec{r} , t )
+\vec{A} \quad \to \quad \vec{A} - \vec{\nabla} f ( \vec{r} , t )
+```
+
+```math
+\varphi \quad \to \quad \varphi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t}
 ```
 
 Note that when we quantize the field, the potentials will play the role that wave functions do for the electron, so this gauge symmetry will be important in quantum mechanics. We can use the gauge symmetry to simplify our equations. For time independent charge and current distributions, the **coulomb gauge,** $`\vec{\nabla} \cdot \vec{A}`$ = 0, is often used. For time dependent conditions, the **Lorentz gauge,** $`\vec{\nabla} \cdot \vec{A} + \tfrac{1}{c} \tfrac{\partial \varphi}{\partial t}`$ = 0, is often convenient. These greatly simplify the above wave equations in an obvious way.
@@ -15485,11 +15517,15 @@ Its clear that this transformation leaves the **absolute square of the wavefunct
 A little **calculation** (see section 20.5.7) shows that the equation remains unchanged if we also transform the potentials
 
 ```math
-\frac{\vec{A}}{\varphi} \quad \frac{\to}{\to} \quad \frac{\vec{A} - \vec{\nabla} f ( \vec{r} , t )}{\varphi +} 1 \partial f ( \vec{r} , t )
+\vec{A} \quad \to \quad \vec{A} - \vec{\nabla} f ( \vec{r} , t )
 ```
 
 ```math
-f ( \vec{r} , t ) = \frac{\hbar c}{e} \lambda ( c \vec{r} , t ) \partial t .
+\varphi \quad \to \quad \varphi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t}
+```
+
+```math
+f ( \vec{r} , t ) = \frac{\hbar c}{e} \lambda ( \vec{r} , t ) .
 ```
 
 <div align="right"><a href="book.pdf#page=295" target="_blank" title="This page in the PDF"><sup>[p. 295]</sup></a></div>
@@ -15501,7 +15537,15 @@ This is just the **standard gauge transformation of electromagnetism**, but, we 
 We will write our **standard gauge transformation** in the traditional way to conform a bit better to the textbooks.
 
 ```math
-\frac{\vec{A}}{\psi ( \vec{r} , t )} \varphi \quad \to \frac{\to}{\to} \quad \varphi \frac{\vec{A} - \vec{\nabla} f ( \vec{r} , t )}{e^{- i} \frac{\frac{1}{{}_{e} c}}{\hbar c} f^{( \vec{r} ,t )} \psi ( \vec{r} , t )} + \frac{\partial f ( \vec{r} , t )}{\partial t}
+\vec{A} \quad \to \quad \vec{A} - \vec{\nabla} f ( \vec{r} , t )
+```
+
+```math
+\varphi \quad \to \quad \varphi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t}
+```
+
+```math
+\psi ( \vec{r} , t ) \quad \to \quad e^{- i \tfrac{e}{\hbar c} f ( \vec{r} ,t )} \psi ( \vec{r} , t )
 ```
 
 There are measurable **quantum physics consequences** of this symmetry. We can understand a number of them by looking at the **vector potential in a field free regions**. If $`B`$ = 0 then $`\vec{A}`$ can be written as the gradient of a function $`f ( \vec{r} )`$. To be specific, take our gauge transformation of the vector potential. Make a gauge transformation such that $`\vec{A}^{\prime}`$ = 0. This of course is still consistent with $`\vec{B}`$ = 0.
@@ -15561,7 +15605,15 @@ _Figure 75 (p. 297)_
 The electron beams travel through two slits in field free regions but we have the ability to vary a magnetic field enclosed by the path of the electrons. At the screen, the amplitudes from the two<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=297" target="_blank" title="This page in the PDF"><sup>[p. 297]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p298" href="book.pdf#page=298" target="_blank" title="This page in the PDF"><sup>[p. 298]</sup></a></span> slits interfere $`\psi = \psi_{1} + \psi_{2}`$. Let’s start with $`B`$ = 0 and $`A`$ = 0 everywhere. When we change the $`B`$ field, the wavefunctions must change.
 
 ```math
-\psi \psi_{1 2} \psi \quad \to \to = \left( \psi_{1} e^{- i \tfrac{e \Phi}{\hbar c}} + \psi_{2} \right) \int^{\psi \psi_{1} e \frac{- i \tfrac{e}{\hbar c}_{1} d \vec{r} \cdot \vec{A}}{- i \tfrac{e}{\hbar c}_{2} d \vec{r} \cdot \vec{A}}_{2} e} \int e \int^{- i \tfrac{e}{\hbar c}_{2} d \vec{r} \cdot \vec{A}}
+\psi_{1} \quad \to \quad \psi_{1} e_{e} \int^{- i \tfrac{e}{\hbar c}_{1} d \vec{r} \cdot \vec{A}} \int_{\vec{\jmath}}
+```
+
+```math
+\psi_{2} \quad \to \quad \psi_{2} e_{e}^{- i_{\hbar c 2} d \vec{r} \cdot A} \int_{\vec{\jmath}}
+```
+
+```math
+\psi = \left( \psi_{1} e^{- i \tfrac{e \Phi}{\hbar c}} + \psi_{2} \right) e^{- i_{\hbar c 2} d \vec{r} \cdot A}
 ```
 
 The relative phase from the two slits depends on the flux between the slits. By varying the $`B`$ field, we will **shift the diffraction pattern** even though $`B`$ = 0 along the whole path of the electrons. While this may at first seem amazing, we have seen similar effects in classical E&M with an EMF induced in a loop by a changing $`B`$ field which does not touch the actual loop.
@@ -16233,11 +16285,15 @@ We can argue that **we need Electromagnetism to give us the local phase transfor
 ```
 
 ```math
-\frac{\vec{A}}{\varphi} \quad \frac{\to}{\to} \quad \frac{\vec{A} - \vec{\nabla} f ( \vec{r} , t )}{\varphi +} 1 \partial f ( \vec{r} , t )
+\vec{A} \quad \to \quad \vec{A} - \vec{\nabla} f ( \vec{r} , t )
 ```
 
 ```math
-f ( \vec{r} , t ) = \frac{\hbar c}{e} \lambda ( c \vec{r} , t ) \partial t .
+\varphi \quad \to \quad \varphi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t}
+```
+
+```math
+f ( \vec{r} , t ) = \frac{\hbar c}{e} \lambda ( \vec{r} , t ) .
 ```
 
 **20.5.8 Magnetic Flux Quantization from Gauge Symmetry**
@@ -22108,7 +22164,23 @@ We will correct this little mistake and move to **Rationalized Heaviside-Lorentz
 In **Rationalized Heaviside-Lorentz units** we decrease the field strength by a factor of $`\sqrt{4 \pi}`$ and increase the charges by the same factor, leaving the force unchanged.
 
 ```math
-\alpha = \frac{e^{2}}{\hbar c} \frac{\vec{B} \vec{E}}{e} \vec{A} \quad \to \to \frac{\to \to}{\to} \quad \frac{e^{2}}{4 \pi \hbar c} \frac{\vec{B}}{\sqrt{4 \pi}} \frac{\frac{\vec{E}}{\sqrt{4 \pi}}}{\frac{\vec{A}}{\frac{\surd}{e \sqrt{4 \pi}} 4 \pi}} \approx \frac{1}{1 3 7}
+\vec{E} \quad \to \quad \frac{\vec{E}}{\sqrt{4 \pi}}
+```
+
+```math
+\vec{B} \quad \to \quad \frac{\vec{B}}{\sqrt{4 \pi}}
+```
+
+```math
+\vec{A} \quad \to \quad \frac{\vec{A}}{\sqrt{4 \pi}}
+```
+
+```math
+{}_{2} e \quad \to \quad e \sqrt{{}_{2} 4 \pi}
+```
+
+```math
+\alpha = \frac{e}{\hbar c} \quad \to \quad \frac{e}{4 \pi \hbar c} \approx \frac{1}{1 3 7}
 ```
 
 Its not a very big change but it would have been nice if Maxwell had started with this set of units. Of course the value of $`\alpha`$ cannot change, but, the formula for it does because we have redefined the charge $`e`$.
@@ -23087,7 +23159,15 @@ Its not hard to show that the **occupation number for fermion states is either z
 The Fourier coefficients of the expansion of the classical radiation field should now be **replaced by** **operators**.
 
 ```math
-c c_{k,\alpha k,\alpha}^{*} A_{\mu} \quad \to \to = \frac{1}{\sqrt{V}} \sum_{k\alpha}^{\frac{\frac{\sqrt{\frac{\hbar c^{2}}{2 \omega}}}{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} a_{k,\alpha}}{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} a_{k,\alpha}^{\dagger}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + a_{k,\alpha}^{\dagger} ( t ) e^{- i \vec{k} \cdot \vec{x}} \right)
+c_{k,\alpha} \quad \to \quad \sqrt{\frac{\hbar c^{2}}{2 \omega}} a_{k,\alpha}
+```
+
+```math
+c_{k,\alpha}^{*} \quad \to \quad \sqrt{\frac{\hbar c^{2}}{2 \omega} a_{k,\alpha}^{\dagger}}
+```
+
+```math
+A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + a_{k,\alpha}^{\dagger} ( t ) e^{- i \vec{k} \cdot \vec{x}} \right)}
 ```
 
 $`A`$ is now an operator that acts on state vectors in occupation number space. The operator is parameterized in terms of $`\vec{x}`$ and $`t`$. This type of operator is called a **field operator** or a **quantized** **field**.
@@ -28005,7 +28085,11 @@ Note that in the interaction term $`- ie \bar{\psi} \gamma_{\mu} A_{\mu} \psi`$ 
 Phase (or Gauge) symmetry can be studied very simply from this LaGrangian. We have shown that the phase transformation
 
 ```math
-A_{\mu} \to A_{\mu} \psi \to e^{i\lambda ( x )} \psi - \frac{\hbar c}{e} \frac{\partial \lambda ( x )}{\partial x_{\mu}}
+\psi \to e^{i\lambda ( x )} \psi
+```
+
+```math
+A_{\mu} \to A_{\mu} - \frac{\hbar c}{e} \frac{\partial \lambda ( x )}{\partial x_{\mu}}
 ```
 
 leaves the Schrödinger equation invariant. This can be most directly studied using the LaGrangian. We can deduce from the above transformation that

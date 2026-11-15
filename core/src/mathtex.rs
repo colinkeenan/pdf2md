@@ -2336,7 +2336,10 @@ pub fn display(
     let close_row = |cur: &Vec<&MSpan>, rows: &mut Vec<(f32, bool, bool)>| {
         if !cur.is_empty() {
             let c = cur.iter().map(|s| s.cy()).sum::<f32>() / cur.len() as f32;
-            let rel = cur.iter().any(|s| is_relation(&s.text));
+            // (an arrow relates the two sides of its line as "=" does)
+            // (not an arrow over or under a fraction's bar)
+            let in_fraction = |s: &MSpan| bars.iter().any(|b| s.left >= b.left - 2.0 && s.right <= b.right + 2.0 && (s.cy() - (b.top + b.bottom) / 2.0).abs() > 0.35 * max && (s.cy() - (b.top + b.bottom) / 2.0).abs() <= 1.3 * max);
+            let rel = cur.iter().any(|s| is_relation(&s.text) || (s.text.contains('→') && !in_fraction(s)));
             let first = cur.iter().min_by(|a, b| a.left.total_cmp(&b.left)).unwrap();
             let op = first.text.trim_start().starts_with(['+', '−', '-', '×', '·']);
             rows.push((c, rel, op));

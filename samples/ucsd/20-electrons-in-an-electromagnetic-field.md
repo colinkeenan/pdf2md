@@ -98,7 +98,11 @@ $`•`$ the classical Hamiltonian.
 The Maxwell equations are invariant under a **gauge transformation** of the potentials.
 
 ```math
-\vec{A} \varphi \quad \to \to \quad \vec{A} \varphi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t} - \vec{\nabla} f ( \vec{r} , t )
+\vec{A} \quad \to \quad \vec{A} - \vec{\nabla} f ( \vec{r} , t )
+```
+
+```math
+\varphi \quad \to \quad \varphi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t}
 ```
 
 Note that when we quantize the field, the potentials will play the role that wave functions do for the electron, so this gauge symmetry will be important in quantum mechanics. We can use the gauge symmetry to simplify our equations. For time independent charge and current distributions, the **coulomb gauge,** $`\vec{\nabla} \cdot \vec{A}`$ = 0, is often used. For time dependent conditions, the **Lorentz gauge,** $`\vec{\nabla} \cdot \vec{A} + \tfrac{1}{c} \tfrac{\partial \varphi}{\partial t}`$ = 0, is often convenient. These greatly simplify the above wave equations in an obvious way.
@@ -200,11 +204,15 @@ Its clear that this transformation leaves the **absolute square of the wavefunct
 A little **calculation** (see section 20.5.7) shows that the equation remains unchanged if we also transform the potentials
 
 ```math
-\frac{\vec{A}}{\varphi} \quad \frac{\to}{\to} \quad \frac{\vec{A} - \vec{\nabla} f ( \vec{r} , t )}{\varphi +} 1 \partial f ( \vec{r} , t )
+\vec{A} \quad \to \quad \vec{A} - \vec{\nabla} f ( \vec{r} , t )
 ```
 
 ```math
-f ( \vec{r} , t ) = \frac{\hbar c}{e} \lambda ( c \vec{r} , t ) \partial t .
+\varphi \quad \to \quad \varphi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t}
+```
+
+```math
+f ( \vec{r} , t ) = \frac{\hbar c}{e} \lambda ( \vec{r} , t ) .
 ```
 
 <div align="right"><a href="book.pdf#page=295" target="_blank" title="This page in the PDF"><sup>[p. 295]</sup></a></div>
@@ -216,7 +224,15 @@ This is just the **standard gauge transformation of electromagnetism**, but, we 
 We will write our **standard gauge transformation** in the traditional way to conform a bit better to the textbooks.
 
 ```math
-\frac{\vec{A}}{\psi ( \vec{r} , t )} \varphi \quad \to \frac{\to}{\to} \quad \varphi \frac{\vec{A} - \vec{\nabla} f ( \vec{r} , t )}{e^{- i} \frac{\frac{1}{{}_{e} c}}{\hbar c} f^{( \vec{r} ,t )} \psi ( \vec{r} , t )} + \frac{\partial f ( \vec{r} , t )}{\partial t}
+\vec{A} \quad \to \quad \vec{A} - \vec{\nabla} f ( \vec{r} , t )
+```
+
+```math
+\varphi \quad \to \quad \varphi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t}
+```
+
+```math
+\psi ( \vec{r} , t ) \quad \to \quad e^{- i \tfrac{e}{\hbar c} f ( \vec{r} ,t )} \psi ( \vec{r} , t )
 ```
 
 There are measurable **quantum physics consequences** of this symmetry. We can understand a number of them by looking at the **vector potential in a field free regions**. If $`B`$ = 0 then $`\vec{A}`$ can be written as the gradient of a function $`f ( \vec{r} )`$. To be specific, take our gauge transformation of the vector potential. Make a gauge transformation such that $`\vec{A}^{\prime}`$ = 0. This of course is still consistent with $`\vec{B}`$ = 0.
@@ -276,7 +292,15 @@ _Figure 75 (p. 297)_
 The electron beams travel through two slits in field free regions but we have the ability to vary a magnetic field enclosed by the path of the electrons. At the screen, the amplitudes from the two<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=297" target="_blank" title="This page in the PDF"><sup>[p. 297]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p298" href="book.pdf#page=298" target="_blank" title="This page in the PDF"><sup>[p. 298]</sup></a></span> slits interfere $`\psi = \psi_{1} + \psi_{2}`$. Let’s start with $`B`$ = 0 and $`A`$ = 0 everywhere. When we change the $`B`$ field, the wavefunctions must change.
 
 ```math
-\psi \psi_{1 2} \psi \quad \to \to = \left( \psi_{1} e^{- i \tfrac{e \Phi}{\hbar c}} + \psi_{2} \right) \int^{\psi \psi_{1} e \frac{- i \tfrac{e}{\hbar c}_{1} d \vec{r} \cdot \vec{A}}{- i \tfrac{e}{\hbar c}_{2} d \vec{r} \cdot \vec{A}}_{2} e} \int e \int^{- i \tfrac{e}{\hbar c}_{2} d \vec{r} \cdot \vec{A}}
+\psi_{1} \quad \to \quad \psi_{1} e_{e} \int^{- i \tfrac{e}{\hbar c}_{1} d \vec{r} \cdot \vec{A}} \int_{\vec{\jmath}}
+```
+
+```math
+\psi_{2} \quad \to \quad \psi_{2} e_{e}^{- i_{\hbar c 2} d \vec{r} \cdot A} \int_{\vec{\jmath}}
+```
+
+```math
+\psi = \left( \psi_{1} e^{- i \tfrac{e \Phi}{\hbar c}} + \psi_{2} \right) e^{- i_{\hbar c 2} d \vec{r} \cdot A}
 ```
 
 The relative phase from the two slits depends on the flux between the slits. By varying the $`B`$ field, we will **shift the diffraction pattern** even though $`B`$ = 0 along the whole path of the electrons. While this may at first seem amazing, we have seen similar effects in classical E&M with an EMF induced in a loop by a changing $`B`$ field which does not touch the actual loop.
@@ -948,11 +972,15 @@ We can argue that **we need Electromagnetism to give us the local phase transfor
 ```
 
 ```math
-\frac{\vec{A}}{\varphi} \quad \frac{\to}{\to} \quad \frac{\vec{A} - \vec{\nabla} f ( \vec{r} , t )}{\varphi +} 1 \partial f ( \vec{r} , t )
+\vec{A} \quad \to \quad \vec{A} - \vec{\nabla} f ( \vec{r} , t )
 ```
 
 ```math
-f ( \vec{r} , t ) = \frac{\hbar c}{e} \lambda ( c \vec{r} , t ) \partial t .
+\varphi \quad \to \quad \varphi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t}
+```
+
+```math
+f ( \vec{r} , t ) = \frac{\hbar c}{e} \lambda ( \vec{r} , t ) .
 ```
 
 **20.5.8 Magnetic Flux Quantization from Gauge Symmetry**

@@ -18,7 +18,23 @@ We will correct this little mistake and move to **Rationalized Heaviside-Lorentz
 In **Rationalized Heaviside-Lorentz units** we decrease the field strength by a factor of $`\sqrt{4 \pi}`$ and increase the charges by the same factor, leaving the force unchanged.
 
 ```math
-\alpha = \frac{e^{2}}{\hbar c} \frac{\vec{B} \vec{E}}{e} \vec{A} \quad \to \to \frac{\to \to}{\to} \quad \frac{e^{2}}{4 \pi \hbar c} \frac{\vec{B}}{\sqrt{4 \pi}} \frac{\frac{\vec{E}}{\sqrt{4 \pi}}}{\frac{\vec{A}}{\frac{\surd}{e \sqrt{4 \pi}} 4 \pi}} \approx \frac{1}{1 3 7}
+\vec{E} \quad \to \quad \frac{\vec{E}}{\sqrt{4 \pi}}
+```
+
+```math
+\vec{B} \quad \to \quad \frac{\vec{B}}{\sqrt{4 \pi}}
+```
+
+```math
+\vec{A} \quad \to \quad \frac{\vec{A}}{\sqrt{4 \pi}}
+```
+
+```math
+{}_{2} e \quad \to \quad e \sqrt{{}_{2} 4 \pi}
+```
+
+```math
+\alpha = \frac{e}{\hbar c} \quad \to \quad \frac{e}{4 \pi \hbar c} \approx \frac{1}{1 3 7}
 ```
 
 Its not a very big change but it would have been nice if Maxwell had started with this set of units. Of course the value of $`\alpha`$ cannot change, but, the formula for it does because we have redefined the charge $`e`$.

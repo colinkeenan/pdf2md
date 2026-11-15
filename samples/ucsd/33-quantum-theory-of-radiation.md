@@ -626,7 +626,15 @@ Its not hard to show that the **occupation number for fermion states is either z
 The Fourier coefficients of the expansion of the classical radiation field should now be **replaced by** **operators**.
 
 ```math
-c c_{k,\alpha k,\alpha}^{*} A_{\mu} \quad \to \to = \frac{1}{\sqrt{V}} \sum_{k\alpha}^{\frac{\frac{\sqrt{\frac{\hbar c^{2}}{2 \omega}}}{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} a_{k,\alpha}}{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} a_{k,\alpha}^{\dagger}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + a_{k,\alpha}^{\dagger} ( t ) e^{- i \vec{k} \cdot \vec{x}} \right)
+c_{k,\alpha} \quad \to \quad \sqrt{\frac{\hbar c^{2}}{2 \omega}} a_{k,\alpha}
+```
+
+```math
+c_{k,\alpha}^{*} \quad \to \quad \sqrt{\frac{\hbar c^{2}}{2 \omega} a_{k,\alpha}^{\dagger}}
+```
+
+```math
+A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + a_{k,\alpha}^{\dagger} ( t ) e^{- i \vec{k} \cdot \vec{x}} \right)}
 ```
 
 $`A`$ is now an operator that acts on state vectors in occupation number space. The operator is parameterized in terms of $`\vec{x}`$ and $`t`$. This type of operator is called a **field operator** or a **quantized** **field**.

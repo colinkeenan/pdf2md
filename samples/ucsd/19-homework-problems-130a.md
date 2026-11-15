@@ -332,7 +332,7 @@ You may find the expansion of $`e^{ikz}`$ in terms of Bessel functions useful.
 5. Let’s define the u axis to be in the x-z plane, between the positive x and z axes and at an angle of 30 degrees to the x axis. Given an unpolarized spin $`\frac{1}{2}`$ beam of intensity $`I`$ going into the following Stern-Gerlach apparati, what intensity comes out?
 
 ```math
-\frac{I \to}{I \to} I \to \frac{\frac{I \to \begin{Bmatrix} + \\ -| \\ + \end{Bmatrix}_{z} \to}{\begin{Bmatrix} + \\ -| \end{Bmatrix}_{z}} I \to \left\{ -| \right\} \to \frac{\begin{Bmatrix} + \\ -| \end{Bmatrix}_{x} \to ?}{\begin{Bmatrix} {}^{z} + | \\ - \end{Bmatrix}_{u} \to} \to \begin{Bmatrix} + | \\ - \end{Bmatrix} \to ? {}_{z} \to ?}{\left\{ \begin{Bmatrix} + \\ -| \\ + \\ -| \end{Bmatrix} \right\} \frac{z}{z} \to \left\{ - \right\}_{u} \to \left\{ - \right\}_{x} \to ?} \to \begin{Bmatrix} + \\ - \\ + | \end{Bmatrix}_{u} \to \left\{ \begin{Bmatrix} {}^{u} + | \\ - \\ + | \\ - \\ + | \end{Bmatrix} \right\}_{z} \to ?
+\begin{aligned} & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{x} \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix} \quad \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{u} \to \begin{Bmatrix} {}^{u} + | \\ - \end{Bmatrix} \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + \\ - \end{Bmatrix}_{u} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}^{z} \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{u} \to \begin{Bmatrix} + | \\ - \end{Bmatrix} \frac{z}{x} \to ? \end{aligned}
 ```
 
 ---

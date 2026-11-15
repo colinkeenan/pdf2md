@@ -303,7 +303,7 @@ We can use this apparatus to **prepare an eigenstate**. The apparatus below pick
 _Figure 71 (p. 253)_
 
 ```math
--| 0 |_{z} \to
+\begin{aligned} & \quad 0 | \quad \to \\ & \quad -|_{z} \end{aligned}
 ```
 
 again representing the apparatus by the symbol at the right. We could also represent our apparatus plus blocking by an operator
@@ -1847,7 +1847,11 @@ upper left $`5 \times 5`$ part of the matrix.
 11. Let’s define the u axis to be in the x-z plane, between the positive x and z axes and at an angle of 30 degrees to the x axis. Given an unpolarized spin $`\frac{1}{2}`$ beam of intensity $`I`$ going into the following Stern-Gerlach apparati, what intensity comes out?
 
 ```math
-\frac{I \to}{I \to} I \to \frac{\frac{I \to \begin{Bmatrix} + \\ -| \\ + \end{Bmatrix}_{z} \to}{\begin{Bmatrix} + \\ -| \end{Bmatrix}_{z}} I \to \left\{ -| \right\} \to \frac{\begin{Bmatrix} + \\ -| \end{Bmatrix}_{x} \to ?}{\begin{Bmatrix} {}^{z} + | \\ - \end{Bmatrix}_{u} \to} \to \begin{Bmatrix} + | \\ - \end{Bmatrix} \to ? {}_{z} \to ?}{\left\{ \begin{Bmatrix} + \\ -| \\ + \\ -| \end{Bmatrix} \right\} \frac{z}{z} \to \left\{ - \right\}_{u} \to \left\{ - \right\}_{x} \to ?} \to \begin{Bmatrix} + \\ - \\ + | \end{Bmatrix}_{u} \to \left\{ \begin{Bmatrix} {}^{u} + | \\ - \\ + | \\ - \\ + | \end{Bmatrix} \right\}_{z} \to ?
+\begin{aligned} & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{x} \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix} \quad \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{u} \to \begin{Bmatrix} {}^{u} + | \\ - \end{Bmatrix}_{z} \to ? \end{aligned}
+```
+
+```math
+\begin{aligned} & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + \\ - \end{Bmatrix}_{u} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{z} \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{u} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{x} \to ? \end{aligned}
 ```
 
 # <a id="s-18-13sample-test-problems"></a>18.13 Sample Test Problems

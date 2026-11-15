@@ -3488,7 +3488,11 @@ Note that in the interaction term $`- ie \bar{\psi} \gamma_{\mu} A_{\mu} \psi`$ 
 Phase (or Gauge) symmetry can be studied very simply from this LaGrangian. We have shown that the phase transformation
 
 ```math
-A_{\mu} \to A_{\mu} \psi \to e^{i\lambda ( x )} \psi - \frac{\hbar c}{e} \frac{\partial \lambda ( x )}{\partial x_{\mu}}
+\psi \to e^{i\lambda ( x )} \psi
+```
+
+```math
+A_{\mu} \to A_{\mu} - \frac{\hbar c}{e} \frac{\partial \lambda ( x )}{\partial x_{\mu}}
 ```
 
 leaves the Schrödinger equation invariant. This can be most directly studied using the LaGrangian. We can deduce from the above transformation that
