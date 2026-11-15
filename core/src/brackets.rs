@@ -461,6 +461,30 @@ pub(crate) fn sides(mut v: Vec<Inline>) -> Vec<Inline> {
                 }
             }
         }
+        // (an exponent or index with nothing under it, behind a bracket:
+        // the bracket's — "(length)" and its power, "[1]" and its star)
+        if let Inline::Math(m) = &mut v[k] {
+            for c in [')', ']'] {
+                for script in ['^', '_'] {
+                    *m = m.replace(&format!("{c} {{}}{script}{{"), &format!("{c}{script}{{"));
+                }
+            }
+        }
+        if k > 0 {
+            let (a, b) = v.split_at_mut(k);
+            if let (Inline::Text(t), Inline::Math(m)) = (&mut a[k - 1], &mut b[0]) {
+                let body = t.strip_suffix(' ').unwrap_or(t);
+                let close = body.chars().last().filter(|c| *c == ')' || *c == ']');
+                let open = close.and_then(|c| body.rfind(partner(c)));
+                if let (true, Some(c), Some(at)) = (m.starts_with("{}^{") || m.starts_with("{}_{"), close, open) {
+                    let inner = &body[at + 1..body.len() - 1];
+                    if let Some(list) = listed(inner).filter(|_| inner.chars().count() <= 14 && !inner.contains(['(', '['])) {
+                        *m = format!("{} {} {c}{}", partner(c), list.trim(), &m[2..]);
+                        t.truncate(at);
+                    }
+                }
+            }
+        }
         // (the text before a formula)
         if k > 0 {
             let (a, b) = v.split_at_mut(k);
@@ -618,6 +642,9 @@ mod tests {
         assert_eq!(sides(vec![t("which are 3"), sup("2"), t(" "), m("- 1 = 8"), t(", the")]), vec![t("which are "), m("3^{2} - 1 = 8"), t(", the")]);
         assert_eq!(sides(vec![t("scale 10"), sup("19"), t(" GeV as")]), vec![t("scale "), m("10^{19}"), t(" GeV as")]);
         assert_eq!(sides(vec![m("\\langle 1 2 \\rangle [ 3 4 ]"), sup("2"), m("/( [ 1 2 ] )")]), vec![m("\\langle 1 2 \\rangle [ 3 4 ]^{2} /( [ 1 2 ] )")]);
+        assert_eq!(sides(vec![t("dimension of (length) "), m("{}^{\\tfrac{1}{2} (D - 2 )}"), t(". Thus")]), vec![t("dimension of "), m("( \\text{length} )^{\\tfrac{1}{2} (D - 2 )}"), t(". Thus")]);
+        assert_eq!(sides(vec![t("equivalent to [1]"), m("{}^{*} = 5^{*}")]), vec![t("equivalent to "), m("[ 1 ]^{*} = 5^{*}")]);
+        assert_eq!(sides(vec![m("( \\text{length} ) {}^{2}")]), vec![m("( \\text{length} )^{2}")]);
         // (a note's mark after a word or a year stays one)
         let mark = vec![t("as shown in 1905"), sup("3"), t(" by")];
         assert_eq!(sides(mark.clone()), mark);
