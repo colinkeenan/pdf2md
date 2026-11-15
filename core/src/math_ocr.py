@@ -1030,8 +1030,11 @@ def canonical(t: str) -> list:
     t = re.sub(r"\\cal(?![a-zA-Z])", r"\\mathcal", t)
     t = re.sub(r"\\[td]frac(?![a-zA-Z])", r"\\frac", t)
     t = re.sub(r"\\iint(?![a-zA-Z])", r"\\int\\int", t)
+    # (a forced space, before the spaces go: its backslash would take the
+    # next letter for a command's name)
+    t = re.sub(r"(?<!\\)((?:\\\\)*)\\\s", r"\1 ", t)
     t = re.sub(r"\s+", "", t)
-    t = re.sub(r"\\[,;:!]|\\quad|\\qquad|~|\\ ", "", t)
+    t = re.sub(r"\\[,;:!]|\\quad|\\qquad|~", "", t)
     t = re.sub(r"\\(left|right|big|Big|bigg|Bigg)[lrm]?(?=[^a-zA-Z])", "", t)
     t = re.sub(r"\\(displaystyle|textstyle|mathrm|operatorname|rm|text)", "", t)
     # two ways to write the same: a matrix in brackets, primes, arrows,

@@ -32,7 +32,7 @@ const SCRIPT: &str = include_str!("math_ocr.py");
 /// The second opinion on each reading, from the page reader's recognizer.
 const CHECK_SCRIPT: &str = include_str!("math_check.py");
 /// The rules its choices are made by (RULES in math_check.py).
-const CHECK_RULES: &str = "rules 3";
+const CHECK_RULES: &str = "rules 4";
 
 /// Stable name for an image: FNV-1a 64 of its data.
 pub fn key(png_base64: &str) -> String {
@@ -1156,7 +1156,9 @@ pub fn bold_differs(k: &str) -> bool {
 /// `bold_by_picture` in `math_ocr.py`), and the reader has not corrected
 /// it since?
 pub fn lacks_bold(k: &str) -> bool {
-    read_correction(k).is_none() && cache_dir().is_some_and(|d| d.join(format!("{k}.bold")).exists())
+    // (the reading written may be the other recognizer's, with bold letters)
+    let bold_now = |d: &std::path::Path| std::fs::read_to_string(d.join(format!("{k}.best"))).is_ok_and(|t| !bold_letters(&t).is_empty());
+    read_correction(k).is_none() && cache_dir().is_some_and(|d| d.join(format!("{k}.bold")).exists() && !bold_now(&d))
 }
 
 /// Width and height of a PNG, from its header.
