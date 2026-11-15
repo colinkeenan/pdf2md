@@ -728,8 +728,14 @@ pub fn recognize(images: &[&str]) -> HashMap<String, Reading> {
                     && ([".kind", ".labels"].iter().any(|e| !dir.join(format!("{k}{e}")).exists())
                         || !lines_looked_at(&dir, &k)
                         || (small && !dir.join(format!("{k}.small")).exists()));
+                // (or program code read before a formula of several lines
+                // could be told from it: looked at once more)
+                let code = matches!(r, Reading::Code(_)) && !dir.join(format!("{k}.code")).exists();
                 out.insert(k.clone(), r);
-                if unverified || unsorted {
+                if code {
+                    untested += 1;
+                    todo.push((k, img));
+                } else if unverified || unsorted {
                     second += unverified as usize;
                     untested += (unsorted && !unverified) as usize;
                     todo.push((k, img));

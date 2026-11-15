@@ -958,11 +958,25 @@ def ocr_text(img: Image.Image):
     return re.sub(r"([A-Za-z])[|]\[", r"\1[", text)
 
 
+def balanced(t: str) -> bool:
+    """Do the brackets of a text match? Those of program code do; a formula
+    of several lines read as plain text is a litter of them."""
+    pairs = {")": "(", "]": "[", "}": "{"}
+    stack = []
+    for c in t:
+        if c in "([{":
+            stack.append(c)
+        elif c in pairs:
+            if not stack or stack.pop() != pairs[c]:
+                return False
+    return not stack
+
+
 def read_code(img: Image.Image):
     """The text of an image of program code; None if Tesseract is missing
     or the text does not look like code."""
     text = ocr_text(img)
-    return text if text and looks_like_code(text) else None
+    return text if text and looks_like_code(text) and balanced(text) else None
 
 
 def lettering(text) -> bool:
@@ -1150,6 +1164,7 @@ def main():
     for (f, img), text in zip(todo, texts):
         if text and surely_code(text):
             (dst / f"{f.stem}.tex").write_text("%CODE\n" + text + "\n")
+            (dst / f"{f.stem}.code").write_text("")
         else:
             rest.append((f, img))
     todo = rest
@@ -1184,6 +1199,7 @@ def main():
         code = read_code(img)
         if code is not None:
             (dst / f"{f.stem}.tex").write_text("%CODE\n" + code + "\n")
+            (dst / f"{f.stem}.code").write_text("")
             continue
         # several lines read as one: line by line
         if len(rows(img)) >= 3:
