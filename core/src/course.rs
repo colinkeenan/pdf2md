@@ -367,22 +367,29 @@ fn entries(html: &str) -> Vec<Entry> {
     let mut pieces: Vec<(String, Option<String>, bool, usize)> = Vec::new(); // (text, link, in a table, row)
     let mut cur = String::new();
     let mut link: Option<String> = None;
+    let mut inside_link = false;
     let (mut in_table, mut row) = (false, 0usize);
     for t in &toks {
         match t {
             Tok::Text(t) => cur.push_str(t),
             Tok::Open(n, href) if n == "a" => {
+                inside_link = true;
                 if let Some(name) = href.as_deref().and_then(link_name) {
                     link = Some(name);
                 }
             }
+            Tok::Close(n) if n == "a" => inside_link = false,
             Tok::Open(n, _) | Tok::Close(n) if matches!(n.as_str(), "p" | "li" | "td" | "th" | "tr" | "table" | "h1" | "h2" | "h3" | "h4" | "ul" | "ol" | "div") => {
                 let text = squeeze(&cur);
                 if !text.is_empty() {
-                    pieces.push((text, link.take(), in_table, row));
+                    pieces.push((text, link.clone(), in_table, row));
                 }
                 cur.clear();
-                link = None;
+                // (a link around several pieces, a picture and a title, is
+                // the link of each)
+                if !inside_link {
+                    link = None;
+                }
                 if n == "table" {
                     in_table = matches!(t, Tok::Open(..));
                 }
@@ -614,6 +621,97 @@ fn pdf_text(pdf: &Path, stem: &str, out: &Path) -> Result<(String, Option<String
     Ok((text, source))
 }
 
+fn is_captions(p: &Path) -> bool {
+    p.extension().is_some_and(|x| x.eq_ignore_ascii_case("webvtt") || x.eq_ignore_ascii_case("vtt"))
+}
+
+/// What is said in a video, as text: the captions (WebVTT) joined into
+/// paragraphs, each headed by its time, which opens the video there when
+/// the file names the video (a line "NOTE video <address>"; "NOTE about
+/// <words>" is told on top). Noises in brackets are left out; a new
+/// speaker, or a sentence's end after a good many words, begins a paragraph.
+fn captions_text(vtt: &str) -> String {
+    let mut video = String::new();
+    let mut about = String::new();
+    let mut cues: Vec<(u32, String)> = Vec::new();
+    let seconds = |t: &str| -> Option<u32> {
+        let t = t.trim().split('.').next()?;
+        let parts: Vec<u32> = t.split(':').map(|p| p.parse().ok()).collect::<Option<Vec<u32>>>()?;
+        Some(parts.iter().fold(0, |a, p| a * 60 + p))
+    };
+    let mut at: Option<u32> = None;
+    for line in vtt.lines() {
+        let line = line.trim();
+        if let Some(v) = line.strip_prefix("NOTE video ") {
+            video = v.trim().to_string();
+        } else if let Some(a) = line.strip_prefix("NOTE about ") {
+            about = a.trim().to_string();
+        } else if let Some((from, _)) = line.split_once("-->") {
+            at = seconds(from);
+        } else if line.is_empty() {
+            at = None;
+        } else if let Some(t) = at {
+            // (tags of the captions' own, <v Name>, <i>)
+            let mut words = String::new();
+            let mut tag = false;
+            for c in line.chars() {
+                match c {
+                    '<' => tag = true,
+                    '>' => tag = false,
+                    c if !tag => words.push(c),
+                    _ => {}
+                }
+            }
+            let words = decode(words.trim());
+            if words.is_empty() || (words.starts_with('[') && words.ends_with(']')) {
+                continue;
+            }
+            match cues.last_mut() {
+                Some((s, text)) if *s == t => {
+                    text.push(' ');
+                    text.push_str(&words);
+                }
+                _ => cues.push((t, words)),
+            }
+        }
+    }
+    let clock = |t: u32| if t >= 3600 { format!("{}:{:02}:{:02}", t / 3600, t / 60 % 60, t % 60) } else { format!("{}:{:02}", t / 60, t % 60) };
+    let stamp = |t: u32| {
+        if video.is_empty() {
+            format!("**{}**", clock(t))
+        } else {
+            let join = if video.contains('?') { '&' } else { '?' };
+            format!("**[{}]({video}{join}t={t}s)**", clock(t))
+        }
+    };
+    let speaker = |t: &str| t.split(':').next().is_some_and(|w| t.contains(':') && w.len() >= 3 && w.chars().all(|c| c.is_uppercase() || c == ' '));
+    let mut out = String::new();
+    if !about.is_empty() {
+        out.push_str(&format!("_{}_\n\n", emit::escape_text(&about)));
+    }
+    if !video.is_empty() {
+        out.push_str(&format!("[Watch the video]({video})\n\n"));
+    }
+    let mut para = String::new();
+    let mut began = 0u32;
+    for (t, words) in cues {
+        let full = para.chars().count() >= 600 && para.trim_end().ends_with(['.', '?', '!']);
+        if !para.is_empty() && (full || speaker(&words)) {
+            out.push_str(&format!("{} {}\n\n", stamp(began), emit::escape_text(para.trim())));
+            para.clear();
+        }
+        if para.is_empty() {
+            began = t;
+        }
+        para.push_str(&words);
+        para.push(' ');
+    }
+    if !para.trim().is_empty() {
+        out.push_str(&format!("{} {}\n\n", stamp(began), emit::escape_text(para.trim())));
+    }
+    out
+}
+
 /// Is the PDF a scan of handwriting with a layer of text that a program
 /// made of it? Its pages are pictures, its text is in fonts the PDF does
 /// not hold, and few of its "words" are words.
@@ -815,7 +913,7 @@ pub fn write_course(folder: &Path, out: &Path) -> Result<Vec<PathBuf>, String> {
     let mut pdfs: Vec<(PathBuf, String, bool)> = Vec::new(); // (file, key of its name, used)
     for d in &folders {
         if let Ok(files) = std::fs::read_dir(d) {
-            let mut here: Vec<PathBuf> = files.flatten().map(|e| e.path()).filter(|p| p.extension().is_some_and(|x| x.eq_ignore_ascii_case("pdf"))).collect();
+            let mut here: Vec<PathBuf> = files.flatten().map(|e| e.path()).filter(|p| p.extension().is_some_and(|x| x.eq_ignore_ascii_case("pdf") || is_captions(p))).collect();
             here.sort_by(|a, b| natural(&stem(a), &stem(b)));
             pdfs.extend(here.into_iter().map(|p| {
                 let k = crate::key(&stem(&p));
@@ -921,6 +1019,14 @@ pub fn write_course(folder: &Path, out: &Path) -> Result<Vec<PathBuf>, String> {
     for (n, (k, pdf, _)) in todo.iter().enumerate() {
         crate::progress::report(crate::progress::Step::Book, n, total);
         let name = stem(pdf);
+        // (what is said in a video, from the file of its captions)
+        if is_captions(pdf) {
+            files[*k].body = match std::fs::read_to_string(pdf) {
+                Ok(t) => captions_text(&t),
+                Err(e) => format!("The captions could not be read: {e}\n"),
+            };
+            continue;
+        }
         match pdf_text(pdf, &name, out) {
             Ok((text, from)) => {
                 files[*k].body = text;
@@ -1099,6 +1205,17 @@ pub fn write_course(folder: &Path, out: &Path) -> Result<Vec<PathBuf>, String> {
     let p = out.join("book.md");
     std::fs::write(&p, all).map_err(|e| format!("{}: {e}", p.display()))?;
     written.push(p);
+    // The files written last time that are not written now (a file's
+    // name changed with its title or its place) are taken away: the list
+    // of what was written is kept in the folder.
+    let list = out.join(".pdf2md-course");
+    let now: Vec<String> = written.iter().filter_map(|p| p.file_name().map(|n| n.to_string_lossy().into_owned())).collect();
+    if let Ok(before) = std::fs::read_to_string(&list) {
+        for old in before.lines().filter(|l| l.ends_with(".md") && !l.contains('/') && !now.iter().any(|n| n == l)) {
+            let _ = std::fs::remove_file(out.join(old));
+        }
+    }
+    let _ = std::fs::write(&list, now.join("\n") + "\n");
     for w in warnings {
         eprintln!("warning: {w}");
     }
@@ -1138,6 +1255,13 @@ mod tests {
         let place = assign(&topics, &lectures);
         assert_eq!((place[0], place[1], place[3]), (0, 1, 2));
         assert!(place[2] == 1 || place[2] == 2);
+    }
+
+    #[test]
+    fn captions_as_paragraphs() {
+        let vtt = "WEBVTT\n\nNOTE video https://example.org/watch?v=abc\n\n00:00:01.000 --> 00:00:03.000 align:middle\n[SQUEAKING]\n\n00:00:10.560 --> 00:00:15.600\nPROFESSOR: Yeah, so I'm Hong,\nso you can just call me Hong.\n\n00:01:05.000 --> 00:01:08.000\nAUDIENCE: A question?\n";
+        let text = captions_text(vtt);
+        assert_eq!(text, "[Watch the video](https://example.org/watch?v=abc)\n\n**[0:10](https://example.org/watch?v=abc&t=10s)** PROFESSOR: Yeah, so I'm Hong, so you can just call me Hong.\n\n**[1:05](https://example.org/watch?v=abc&t=65s)** AUDIENCE: A question?\n\n");
     }
 
     #[test]
