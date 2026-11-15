@@ -559,9 +559,7 @@ it \sum_{n = 1}^{\infty} \frac{( it )^{n - 1} \hbar \omega AH^{n - 1}}{( n - 1 )
 
 a) Prove that $`<u_{i} | [ H,A ] | u_{i} >`$= 0 for an arbitrary linear operator $`A`$.
 
-b) For a particle of mass $`m`$ moving in 1-dimension, the Hamiltonian is given by $`H = \tfrac{p^{2}}{2 m}`$ +
-
-$`V ( x )`$. Compute the commutator [H,X] where $`X`$ is the position operator.
+b) For a particle of mass $`m`$ moving in 1-dimension, the Hamiltonian is given by $`H = \tfrac{p^{2}}{2 m}`$ + $`V ( x )`$. Compute the commutator [H,X] where $`X`$ is the position operator.
 
 c) Compute $`<u_{i} | P | u_{i} >`$ the mean momentum in the state $`| u_{i} >`$.
 

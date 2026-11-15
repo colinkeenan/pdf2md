@@ -489,9 +489,7 @@ Compute the energy shifts in eV.
 
 2. Calculate the fine structure energy shifts (in eV!) for the $`n`$ = 1, $`n`$ = 2, and $`n`$ = 3 states of Hydrogen. Include the effects of relativistic corrections, the spin-orbit interaction, and the so-called Darwin term (due to Dirac equation). Do not include hyperfine splitting or the effects of an external magnetic field. (Note: I am not asking you to derive the equations.) Clearly list the states in spectroscopic notation and make a diagram showing the allowed electric dipole decays of these states.
 
-3. Calculate and show the splitting of the $`n`$ = 3 states (as in the previous problem) in a weak
-
-magnetic field B. Draw a diagram showing the states before and after the field is applied
+3. Calculate and show the splitting of the $`n`$ = 3 states (as in the previous problem) in a weak magnetic field B. Draw a diagram showing the states before and after the field is applied
 
 4. If the general form of the spin-orbit coupling for a particle of mass $`m`$ and spin $`\vec{S}`$ moving in a potential $`V ( r )`$ is $`H_{SO} = \tfrac{1}{2 m^{2} c^{2}} \vec{L} \cdot \vec{S} \tfrac{1}{r} \tfrac{dV}{dr}`$, what is the effect of that coupling on the spectrum of
 

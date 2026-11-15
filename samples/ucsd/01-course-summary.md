@@ -1104,9 +1104,7 @@ $`•`$ Add the orbital angular momentum to the spin angular momentum for an ele
 \end{array}
 ```
 
-$`•`$ Add the total orbital angular momentum to the total spin angular momentum for a collection
-
-of electrons in an atom $`\vec{J} = \vec{L} + \vec{S}`$;
+$`•`$ Add the total orbital angular momentum to the total spin angular momentum for a collection of electrons in an atom $`\vec{J} = \vec{L} + \vec{S}`$;
 
 $`•`$ Write the product of spherical harmonics in terms of a sum of spherical harmonics.
 
@@ -1334,13 +1332,9 @@ A set of guidelines, known as Hund’s rules, help us determine the quantum numb
 
 1. Couple the valence electrons (or holes) to give **maximum total spin**.
 
-2. Now choose the state of maximum $`\ell`$ (subject to the Pauli principle. The Pauli principle rather
+2. Now choose the state of maximum $`\ell`$ (subject to the Pauli principle. The Pauli principle rather than the rule, often determines everything here.)
 
-than the rule, often determines everything here.)
-
-3. If the shell is more than half full, pick the highest total angular momentum state $`j = \ell + s`$
-
-otherwise pick the lowest $`j = | \ell - s |`$.
+3. If the shell is more than half full, pick the highest total angular momentum state $`j = \ell + s`$ otherwise pick the lowest $`j = | \ell - s |`$.
 
 # <a id="s-1-34-molecules"></a>1.34 Molecules
 

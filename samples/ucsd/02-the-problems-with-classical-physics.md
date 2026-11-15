@@ -679,13 +679,9 @@ u ( \nu ,T ) = \frac{8 \pi \nu^{2}}{c^{3}} k_{B} T.
 
 Why is this related to black body radiation? Why was this in obvious disagreement with observation?
 
-3. What is the maximum wavelength of electromagnetic radiation which can eject electrons from
+3. What is the maximum wavelength of electromagnetic radiation which can eject electrons from a metal having a work function of 2 eV?
 
-a metal having a work function of 2 eV?
-
-4. **\*** State simply what problem with black-body radiation caused Plank to propose the relation
-
-$`E = h\nu`$ for light.
+4. **\*** State simply what problem with black-body radiation caused Plank to propose the relation $`E = h\nu`$ for light.
 
 5. The work function of a metal is 2 eV. Assume a beam of light of wavelength $`\lambda`$ is incident upon a polished surface of the metal. Plot the maximum electron energy (in eV) of electrons ejected from the metal versus $`\lambda`$ in Angstroms. Be sure to label both axes with some numerical values.
 

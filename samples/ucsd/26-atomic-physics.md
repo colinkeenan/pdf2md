@@ -79,13 +79,9 @@ A set of guidelines, known as Hund’s rules, help us determine the quantum numb
 
 1. Couple the valence electrons (or holes) to give **maximum total spin**.
 
-2. Now choose the state of maximum $`\ell`$ (subject to the Pauli principle. The Pauli principle rather
+2. Now choose the state of maximum $`\ell`$ (subject to the Pauli principle. The Pauli principle rather than the rule, often determines everything here.)
 
-than the rule, often determines everything here.)
-
-3. If the shell is more than half full, pick the highest total angular momentum state $`j = \ell + s`$
-
-otherwise pick the lowest $`j = | \ell - s |`$.
+3. If the shell is more than half full, pick the highest total angular momentum state $`j = \ell + s`$ otherwise pick the lowest $`j = | \ell - s |`$.
 
 This method of adding up all the spins and all the Ls, is called LS or **Russel-Saunders coupling**. This method and these rule are quite good until the electrons become relativistic in heavy atoms and spin-orbit effects become comparable to the electron repulsion (arond Z=40). We choose the
 
@@ -107,9 +103,7 @@ A simpler set of rules has been developed for chemists, who can’t understand a
 
 </div>
 
-2. Now set the orbital states to make maximum $`m_{\ell}`$, and call this $`\ell`$, but don’t allow any two
-
-electrons to be in the same state (of $`m_{s}`$ and $`m_{\ell} )`$.
+2. Now set the orbital states to make maximum $`m_{\ell}`$, and call this $`\ell`$, but don’t allow any two electrons to be in the same state (of $`m_{s}`$ and $`m_{\ell} )`$.
 
 3. Couple to get $`j`$ as before.
 
@@ -298,13 +292,9 @@ s \frac{m_{\ell} 1}{- 1} 0 = \sum m \frac{↑↓ e}{↑} ↑_{s} = 1
 
 1. List the possible spectroscopic states that can arise in the following electronic configurations: $`( 1 s )^{2}`$, (2$`p )^{2}`$, (2$`p )^{3}`$, (2$`p )^{4}`$, and (3$`d )^{4}`$. Take the exclusion principle into account. Which should be the ground state?
 
-2. Use Hund’s rules to find the spectroscopic description of the ground states of the following
+2. Use Hund’s rules to find the spectroscopic description of the ground states of the following atoms: N$`( Z`$=7), K$`( Z`$=19), Sc$`( Z`$=21), Co$`( Z`$=27). Also determine the electronic configuration.
 
-atoms: N$`( Z`$=7), K$`( Z`$=19), Sc$`( Z`$=21), Co$`( Z`$=27). Also determine the electronic configuration.
-
-3. Use Hund’s rules to check the $`( S,L,J )`$ quantum numbers of the elements with $`Z`$ =14, 15, 24,
-
-30, 34.
+3. Use Hund’s rules to check the $`( S,L,J )`$ quantum numbers of the elements with $`Z`$ =14, 15, 24, 30, 34.
 
 # <a id="s-26-8-sample-test-problems"></a>26.8 Sample Test Problems
 

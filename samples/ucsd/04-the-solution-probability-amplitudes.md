@@ -41,9 +41,7 @@ Lets summarize the physics input again.
 
 $`•`$ Free particles are represented by complex wave functions with a relationship between their particle properties – energy and momentum, and their wave properties – frequency and wavelength given by Plank and deBroglie.
 
-$`•`$ The absolute square of the wavefunction gives the probability distribution function. Quantum
-
-Mechanics only tells us the probability.
+$`•`$ The absolute square of the wavefunction gives the probability distribution function. Quantum Mechanics only tells us the probability.
 
 $`•`$ We can make superpositions of our free particle wave functions to make states that do not have definite momentum. We will find that any state can be made from the superposition of free particle states with different momentum.
 

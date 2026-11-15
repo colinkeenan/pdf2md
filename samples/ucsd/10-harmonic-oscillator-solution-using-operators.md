@@ -596,9 +596,7 @@ p = \frac{1}{i} \sqrt{\frac{m \hbar \omega}{2} ( A - A^{\dagger} )}
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p181" href="book.pdf#page=181" target="_blank" title="This page in the PDF"><sup>[p. 181]</sup></a>
 
-4. Use the commutator relation between $`A`$ and $`A^{\dagger}`$ to derive $`[ H,A ]`$. Now show that $`A`$ is the
-
-**lowering operator for the harmonic oscillator** energy.
+4. Use the commutator relation between $`A`$ and $`A^{\dagger}`$ to derive $`[ H,A ]`$. Now show that $`A`$ is the **lowering operator for the harmonic oscillator** energy.
 
 5. At $`t`$ = 0, a **one dimensional harmonic oscillator** is in the state $`\psi ( t`$ = 0) = $`\sqrt{\frac{3}{4}} u_{0} + i \sqrt{\frac{1}{4}} u_{1}`$.
 

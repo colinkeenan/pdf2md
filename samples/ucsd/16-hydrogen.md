@@ -661,9 +661,7 @@ For the $`n`$ = 3 final state, $`E = \tfrac{7}{1 4 4} 1 3 . 6`$ = 0$`. 7`$ eV.
 
 7. Write down the wave function of the hydrogen atom state $`\psi_{3 2 1} (`$**r**).
 
-8. A Hydrogen atom is in its 4$`D`$ state $`( n`$ = 4$`,l`$ = 2). The atom decays to a lower state by emitting
-
-a photon. Find the possible photon energies that may be observed. Give your answers in $`eV`$.
+8. A Hydrogen atom is in its 4$`D`$ state $`( n`$ = 4$`,l`$ = 2). The atom decays to a lower state by emitting a photon. Find the possible photon energies that may be observed. Give your answers in $`eV`$.
 
 9. A Hydrogen atom is in the state:
 
@@ -673,9 +671,7 @@ a photon. Find the possible photon energies that may be observed. Give your answ
 
 For the Hydrogen eigenstates, $`\langle \psi_{nlm} | \tfrac{1}{r} | \psi_{nlm} \rangle = \tfrac{Z}{a_{0} n^{2}}`$. Find the expected value of the potential energy for this state. Find the expected value of $`L_{x}`$.
 
-10. A Hydrogen atom is in its 3$`D`$ state $`( n`$ = 3$`,l`$ = 2). The atom decays to a lower state by emitting
-
-a photon. Find the possible photon energies that may be observed. Give your answers in $`eV`$.
+10. A Hydrogen atom is in its 3$`D`$ state $`( n`$ = 3$`,l`$ = 2). The atom decays to a lower state by emitting a photon. Find the possible photon energies that may be observed. Give your answers in $`eV`$.
 
 11. The hydrogen atom is made up of a proton and an electron bound together by the Coulomb force. The electron has a mass of 0.51 MeV/$`c^{2}`$. It is possible to make a hydrogen-like atom from a proton and a muon. The force binding the muon to the proton is identical to that for the electron but the muon has a mass of 106 MeV/$`c^{2}`$.
 
@@ -683,9 +679,7 @@ a) What is the ground state energy of muonic hydrogen (in eV).
 
 b) What is the“Bohr Radius” of the ground state of muonic hydrogen.
 
-12. A hydrogen atom is in the state: $`\psi (`$**r**$`) = \frac{1}{\langle \rangle 1 0} \sqrt{( \psi_{3 2 2}}`$ + 2$`\psi_{2 2 1}`$ + 2$`i\psi_{2 2 0} + \psi_{1 1 - 1} )`$ Find the possible
-
-measured energies and the probabilities of each. Find the expected value of $`L_{z}`$.
+12. A hydrogen atom is in the state: $`\psi (`$**r**$`) = \frac{1}{\langle \rangle 1 0} \sqrt{( \psi_{3 2 2}}`$ + 2$`\psi_{2 2 1}`$ + 2$`i\psi_{2 2 0} + \psi_{1 1 - 1} )`$ Find the possible measured energies and the probabilities of each. Find the expected value of $`L_{z}`$.
 
 13. Find the difference in frequency between light emitted from the 2$`P \to 1 S`$ transition in Hydrogen and light from the same transition in Deuterium. (Deuterium is an isotope of Hydrogen with a proton and a neutron in the nucleus.)
 

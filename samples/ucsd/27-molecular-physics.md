@@ -11,9 +11,7 @@ In this section, we will study the binding and excitation of simple molecules. A
 
 $`•`$ Excitation of electrons to higher states. $`E \sim 4`$ eV
 
-$`•`$ Vibrational modes (Harmonic Oscillator). Nuclei move slowly in background of electrons. $`E \sim`$
-
-0.1 eV
+$`•`$ Vibrational modes (Harmonic Oscillator). Nuclei move slowly in background of electrons. $`E \sim 0.1`$ eV
 
 $`•`$ Rotational modes $`( L = n \hbar )`$. Entire molecule rotates. $`E \sim 0.001`$ eV
 
@@ -274,9 +272,7 @@ _Figure 92 (p. 390)_
 
 1. In HCl, absorption lines with wave numbers in inverse centimeters of 83.03, 103.73, 124.30, 145.05, 165.51 and 185.86 have been observed. Are these rotational or vibrational transitions? Estimate some physical parameters of the molecule from these data.
 
-2. What is the ratio of the number of HCl molecules in the $`j`$ = 10 rotational state to that in the
-
-$`j`$ = 0 state if the gas is at room temperature?
+2. What is the ratio of the number of HCl molecules in the $`j`$ = 10 rotational state to that in the $`j`$ = 0 state if the gas is at room temperature?
 
 # <a id="s-27-10sample-test-problems"></a>27.10 Sample Test Problems
 

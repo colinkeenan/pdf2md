@@ -726,9 +726,7 @@ This is what we expect.
 
 # <a id="s-21-9-homework-problems"></a>21.9 Homework Problems
 
-1. Find the allowed total spin states of two spin 1 particles. Explicitly write out the 9 states
-
-which are eigenfunctions of $`S^{2}`$ and $`S_{z}`$.
+1. Find the allowed total spin states of two spin 1 particles. Explicitly write out the 9 states which are eigenfunctions of $`S^{2}`$ and $`S_{z}`$.
 
 2. The Hamiltonian of a spin system is given by $`H = A + \tfrac{B \vec{S}_{1} \vec{S}_{2}}{\hbar^{2}}^{\cdot} + {}^{C} \tfrac{( S_{1 z} + S_{2 z} )}{\hbar}`$. Find the eigenvalues and eigenfunctions of the system of two particles (a) when both particles have spin $`\frac{1}{2}`$, (b) when one particle has spin $`\frac{1}{2}`$ and the other spin 1. What happens in (a) when the two particles are identical?
 
@@ -738,9 +736,7 @@ which are eigenfunctions of $`S^{2}`$ and $`S_{z}`$.
 
 3. Consider a system of two spinless identical particles. Show that the orbital angular momentum of their relative motion can only be even. $`( l`$ = 0$`, 2 , 4 ,\dots )`$ Show by direct calculation that, for the triplet spin states of two spin $`\frac{1}{2}`$ particles, $`\vec{\sigma}_{1} \cdot \vec{\sigma}_{2} \chi_{1 m} = \chi_{1 m}`$ for all allowed $`m`$. Show that for the singlet state $`\vec{\sigma}_{1} \cdot \vec{\sigma}_{2} \chi_{0 0} = - 3 \chi_{0 0}`$.
 
-4. A deuteron has spin 1. What are the possible spin and total angular momentum states of two
-
-deuterons. Include orbital angular momentum and assume the two particles are identical.
+4. A deuteron has spin 1. What are the possible spin and total angular momentum states of two deuterons. Include orbital angular momentum and assume the two particles are identical.
 
 5. The state of an electron is given by $`\psi = R ( r ) [ \sqrt{\frac{1}{3}} Y_{1 0} ( \theta ,\varphi ) \chi_{+} + \sqrt{\frac{2}{3}} Y_{1 1} ( \theta ,\varphi ) \chi_{-} ]`$. Find the possible values and the probabilities of the $`z`$ component of the electron’s total angular momentum. Do the same for the total angular momentum squared. What is the probability density for finding an electron with spin up at $`r,\theta ,\varphi`$? What is it for spin down? What is the probability density independent of spin? (Do not leave your answer in terms of spherical harmonics.)
 
@@ -758,13 +754,9 @@ deuterons. Include orbital angular momentum and assume the two particles are ide
 
 (a) What are the allowed values of $`s`$, the total spin quantum number.
 
-(b) Write down the states of maximum $`m_{s}`$ for the maximum $`s`$ state. Use $`| sm_{s} \rangle`$ notation and
+(b) Write down the states of maximum $`m_{s}`$ for the maximum $`s`$ state. Use $`| sm_{s} \rangle`$ notation and $`| s_{1} m_{1} \rangle | s_{2} m_{2} \rangle`$ for the product states.
 
-$`| s_{1} m_{1} \rangle | s_{2} m_{2} \rangle`$ for the product states.
-
-(c) Now apply the lowering operator to get the other $`m_{s}`$ states. You only need to go down
-
-to $`m_{s}`$ = 0 because of the obvious symmetry.
+(c) Now apply the lowering operator to get the other $`m_{s}`$ states. You only need to go down to $`m_{s}`$ = 0 because of the obvious symmetry.
 
 (d) Now find the states with the other values of $`s`$ in a similar way.
 

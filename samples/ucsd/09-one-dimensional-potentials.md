@@ -1421,9 +1421,7 @@ This whole section is examples.
 
 # <a id="s-9-9-sample-test-problems"></a>9.9 Sample Test Problems
 
-1. A beam of 100 eV (kinetic energy) electrons is incident upon a **potential step** of height
-
-$`V_{0}`$ = 10 eV. Calculate the probability to be transmitted. Get a numerical answer.
+1. A beam of 100 eV (kinetic energy) electrons is incident upon a **potential step** of height $`V_{0}`$ = 10 eV. Calculate the probability to be transmitted. Get a numerical answer.
 
 2. **\*** Find the energy eigenstates (and energy eigenvalues) of a particle of mass $`m`$ bound in the 1D potential $`V ( x ) = - V_{0} \delta ( x )`$. Assume $`V_{0}`$ is a positive real number. (Don’t assume that $`V_{0}`$ has the units of energy.) You need not normalize the state.
 
@@ -1486,9 +1484,7 @@ a) Find the solution to the Schrödinger equation for this problem.
 
 b) Determine the coefficients needed to satisfy the boundary conditions.
 
-c) Calculate the probability for a particle in the beam to be reflected by the potential and
-
-the probability to be transmitted.
+c) Calculate the probability for a particle in the beam to be reflected by the potential and the probability to be transmitted.
 
 5. **\*** The Schrödinger equation for the one dimensional harmonic ocillator is reduced to the following equation for the polynomial $`h ( y )`$:
 
@@ -1502,9 +1498,7 @@ a) Assume $`h ( y ) = \sum^{\infty} a_{m} y^{m}`$ and find the recursion relatio
 m = 0
 ```
 
-b) Use the requirement that this polynomial series must terminate to find the allowed ener-
-
-gies in terms of $`\alpha`$.
+b) Use the requirement that this polynomial series must terminate to find the allowed energies in terms of $`\alpha`$.
 
 c) Find $`h ( y )`$ for the ground state and second excited state.
 
@@ -1518,17 +1512,13 @@ a) Find the solution to the Schrödinger equation for this problem.
 
 b) Determine the coefficients needed to satisfy the boundary conditions.
 
-c) Calculate the probability for a particle in the beam to be reflected by the potential step
-
-and the probability to be transmitted.
+c) Calculate the probability for a particle in the beam to be reflected by the potential step and the probability to be transmitted.
 
 7. **\*** A particle is in the ground state $`( \psi ( x )`$ = ($`\tfrac{m\omega}{\pi \hbar} ) 4^{1} e \tfrac{- m\omega x 2}{2 \hbar}`$.) of a harmonic oscillator potential. Suddenly the potential is removed without affecting the particle’s state. Find the probability distribution $`P ( p )`$ for the particle’s momentum after the potential has been removed.
 
 8. **\*** A particle is in the third excited state (n=3) of the one dimensional harmonic oscillator potential.
 
-a) Calculate this energy eigenfunction, up to a normalization factor, from the recursion
-
-relations given on the front of the exam.
+a) Calculate this energy eigenfunction, up to a normalization factor, from the recursion relations given on the front of the exam.
 
 b) Give, but do not evaluate, the expression for the normalization factor.
 
@@ -1546,9 +1536,7 @@ a) Assume $`h ( y ) = \sum^{\infty} a_{m} y^{m}`$ and find the recursion relatio
 m = 0
 ```
 
-b) Use the requirement that this polynomial series must terminate to find the allowed ener-
-
-gies in terms of $`\alpha`$.
+b) Use the requirement that this polynomial series must terminate to find the allowed energies in terms of $`\alpha`$.
 
 c) Find $`h ( y )`$ for the ground state and second excited state.
 

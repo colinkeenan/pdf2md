@@ -1059,13 +1059,7 @@ The state is
 
 The trivial solution that $`A = B = C`$ = 0 is just a zero state, not normalizable to 1.
 
-3. Write the (normalized) state which is an eigenstate of $`L^{2}`$ with eigenvalue $`\ell ( \ell`$ + 1)$`\hbar^{2}`$ = 2$`\hbar^{2}`$ and
-
-<div align="center">
-
-also an **eigenstate of** $`L_{y}`$ with eigenvalue 1$`\hbar`$ in terms of the usual $`Y_{\ell m}`$.
-
-</div>
+3. Write the (normalized) state which is an eigenstate of $`L^{2}`$ with eigenvalue $`\ell ( \ell`$ + 1)$`\hbar^{2}`$ = 2$`\hbar^{2}`$ and also an **eigenstate of** $`L_{y}`$ with eigenvalue 1$`\hbar`$ in terms of the usual $`Y_{\ell m}`$.
 
 4. Calculate the **commutators** $`[ p_{z} ,L_{x} ]`$ and [$`L_{x}^{2} ,L_{z} ]`$.
 
@@ -1095,9 +1089,7 @@ where $`R ( r )`$ is some arbitrary radial wave function normalized such that
 
 a) Find the value of C that will normalize this wave function.
 
-b) If a measurement of $`L_{z}`$ is made, what are the possible measured values and what are
-
-probabilities for each.
+b) If a measurement of $`L_{z}`$ is made, what are the possible measured values and what are probabilities for each.
 
 c) Find the expected value of $`<L_{x} >`$ in the above state.
 
@@ -1113,13 +1105,9 @@ a) What is the energy spectrum due to rotations of the molecule?
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p218" href="book.pdf#page=218" target="_blank" title="This page in the PDF"><sup>[p. 218]</sup></a>
 
-b) Assuming that $`R ( r )`$ is given, write down the energy eigenfunctions for the ground state
+b) Assuming that $`R ( r )`$ is given, write down the energy eigenfunctions for the ground state and the first excited state.
 
-and the first excited state.
-
-c) Assuming that both masses are about 1000 MeV, how does the excitation energy of the
-
-first excited state compare to thermal energies at $`3 0 0^{◦}`$K.
+c) Assuming that both masses are about 1000 MeV, how does the excitation energy of the first excited state compare to thermal energies at $`3 0 0^{◦}`$K.
 
 ---
 

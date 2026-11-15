@@ -323,9 +323,7 @@ c) Find the Fermi Energy $`E_{F}`$ for $`N`$ particles in the box. (N is large.)
 
 11. In 3 dimensions, a particle of mass $`m`$ is bound in a potential $`V (`$**r**$`) = \tfrac{e^{2}}{\sqrt{x^{2} + z^{2}}}^{-}`$.
 
-a) The definite energy states will, of course, be eigenfunctions of $`H`$. What other operators
-
-can they be eigenfunctions of?
+a) The definite energy states will, of course, be eigenfunctions of $`H`$. What other operators can they be eigenfunctions of?
 
 b) Simplify the three dimensional Schrödinger equation by using these operators.
 

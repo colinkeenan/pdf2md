@@ -1003,9 +1003,7 @@ b \psi ( x ) = ( {}_{\pi}^{\alpha} ) 4^{1} e^{- \alpha x^{2} / 2}
 c \psi ( x ) = \delta ( x - x_{0} )
 ```
 
-5. Use the Heisenberg uncertainty principle to estimate the ground state energy for a particle of
-
-mass $`m`$ in the potential $`V ( x ) = \tfrac{1}{2} kx^{2}`$.
+5. Use the Heisenberg uncertainty principle to estimate the ground state energy for a particle of mass $`m`$ in the potential $`V ( x ) = \tfrac{1}{2} kx^{2}`$.
 
 6. **\*** Find the one dimensional wave function in position space $`\psi ( x )`$ that corresponds to $`\varphi ( p ) =`$
 
@@ -1013,31 +1011,19 @@ mass $`m`$ in the potential $`V ( x ) = \tfrac{1}{2} kx^{2}`$.
 \delta ( p - p_{0} ) .
 ```
 
-7. **\*** Find the one dimensional wave function in position space $`\psi ( x )`$ that corresponds to $`\varphi ( p ) =`$
+7. **\*** Find the one dimensional wave function in position space $`\psi ( x )`$ that corresponds to $`\varphi ( p ) = \frac{1}{\sqrt{2 b}}`$ for $`- b<p<b`$, and $`\varphi ( p )`$ = 0 otherwise.
 
-$`\frac{1}{\sqrt{2 b}}`$ for $`- b<p<b`$, and $`\varphi ( p )`$ = 0 otherwise.
-
-8. **\*** Assume that a particle is localized such that $`\psi ( x ) = \tfrac{1}{\sqrt{a}}`$ for $`0 <x<a`$ and that $`\psi ( x )`$ = 0
-
-elsewhere. What is the probability for the particle to have a momentum between $`p`$ and $`p + dp`$?
+8. **\*** Assume that a particle is localized such that $`\psi ( x ) = \tfrac{1}{\sqrt{a}}`$ for $`0 <x<a`$ and that $`\psi ( x )`$ = 0 elsewhere. What is the probability for the particle to have a momentum between $`p`$ and $`p + dp`$?
 
 9. A beam of photons of momentum $`p`$ is incident upon a slit of width $`a`$. The resulting diffraction pattern is viewed on screen which is a distance $`d`$ from the slit. Use the **uncertainty principle** to estimate the width of the central maximum of the diffraction pattern in terms of the variables given.
 
-10. **\*** The wave-function of a particle in position space is given by $`\psi ( x ) = \delta ( x - a )`$. Find the
+10. **\*** The wave-function of a particle in position space is given by $`\psi ( x ) = \delta ( x - a )`$. Find the wave-function in **momentum space**. Is the state correctly normalized? Explain why.
 
-wave-function in **momentum space**. Is the state correctly normalized? Explain why.
+11. **\*** A particle is in the state $`\psi ( x ) = Ae^{- \alpha x^{2} / 2}`$. What is the probability for the particle to have a momentum between $`p`$ and $`p + dp`$?
 
-11. **\*** A particle is in the state $`\psi ( x ) = Ae^{- \alpha x^{2} / 2}`$. What is the probability for the particle to have
+12. A hydrogen atom has the potential $`V ( r ) = \tfrac{e^{2}}{r}^{-}`$. Use the uncertainty principle to estimate the ground state energy.
 
-a momentum between $`p`$ and $`p + dp`$?
-
-12. A hydrogen atom has the potential $`V ( r ) = \tfrac{e^{2}}{r}^{-}`$. Use the uncertainty principle to estimate the
-
-ground state energy.
-
-13. **\*** Assume that $`\varphi ( p ) = \tfrac{1}{\sqrt{2 a}}`$ for $`| p | <a`$ and $`\varphi ( p )`$ = 0 elsewhere. What is $`\psi ( x )`$? What is the
-
-probability to find the particle between $`x`$ and $`x + dx`$?
+13. **\*** Assume that $`\varphi ( p ) = \tfrac{1}{\sqrt{2 a}}`$ for $`| p | <a`$ and $`\varphi ( p )`$ = 0 elsewhere. What is $`\psi ( x )`$? What is the probability to find the particle between $`x`$ and $`x + dx`$?
 
 14. The hydrogen atom is made up of a proton and an electron bound together by the Coulomb potential, $`V ( r ) = \tfrac{- e^{2}}{r}`$. It is also possible to make a hydrogen-like atom from a proton and a muon. The force binding the muon to the proton is identical to that for the electron but the muon’s mass is 106 MeV/c<sup>2</sup>. Use the uncertainty principle to estimate the energy and the radius of the ground state of muonic hydrogen.
 

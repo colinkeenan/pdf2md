@@ -37,9 +37,7 @@ momentum space wave function $`\varphi ( p )`$ if $`\psi ( x ) = \delta ( x - x_
 
 6. Use the calculation of a spreading Gaussian wave packet to find the fractional change in size of a wave packet between $`t`$ = 0 and $`t`$ = 1 second for an electron localized to 1 Angstrom. Now find the fraction change for a 1 gram weight localized to 1 nanometer.
 
-7. Use the uncertainty principle to estimate the energy of the ground state of a harmonic oscillator
-
-with the Hamiltonian $`H = \tfrac{p^{2}}{2 m} + \tfrac{1}{2} kx^{2}`$.
+7. Use the uncertainty principle to estimate the energy of the ground state of a harmonic oscillator with the Hamiltonian $`H = \tfrac{p^{2}}{2 m} + \tfrac{1}{2} kx^{2}`$.
 
 8. Estimate the kinetic energy of an electron confined to be inside a nucleus of radius 5 Fermis. Estimate the kinetic energy of a neutron confined inside the same nucleus.
 
@@ -67,15 +65,11 @@ Remember that the wave functions go to zero at infinity.$`-\infty \quad -\infty`
 \Delta x = \sqrt{\langle \psi | ( x - \langle x \rangle )^{2} | \psi \rangle .}
 ```
 
-3. Calculate $`\langle p^{n} \rangle`$ for the state in the previous problem. Use this to calculate ∆$`p`$ in a similar way
-
-to the ∆$`x`$ calculation.
+3. Calculate $`\langle p^{n} \rangle`$ for the state in the previous problem. Use this to calculate ∆$`p`$ in a similar way to the ∆$`x`$ calculation.
 
 4. Calculate the commutator $`[ p^{2} ,x^{2} ]`$.
 
-5. Consider the functions of one angle $`\psi ( \theta )`$ with $`- \pi \leq \theta \leq \pi`$ and $`\psi ( - \pi ) = \psi ( \pi )`$. Show that the
-
-angular momentum operator $`L = \tfrac{\hbar}{i} \tfrac{d}{d\theta}`$ has real expectation values.
+5. Consider the functions of one angle $`\psi ( \theta )`$ with $`- \pi \leq \theta \leq \pi`$ and $`\psi ( - \pi ) = \psi ( \pi )`$. Show that the angular momentum operator $`L = \tfrac{\hbar}{i} \tfrac{d}{d\theta}`$ has real expectation values.
 
 6. A particle is in the first excited state of a box of length $`L`$. What is that state? Now one wall of the box is suddenly moved outward so that the new box has length $`D`$. What is the probability for the particle to be in the ground state of the new box? What is the probability for the particle to be in the first excited state of the new box? You may find it useful to know that
 
@@ -87,9 +81,7 @@ angular momentum operator $`L = \tfrac{\hbar}{i} \tfrac{d}{d\theta}`$ has real e
 
 8. A particle is in a box with solid walls at $`x = \pm \tfrac{a}{2}`$. The state at $`t`$ = 0 is constant $`\psi ( x, 0`$) = $`\sqrt{\frac{2}{a}}`$ for $`- \tfrac{a}{2} <x< 0`$ and the $`\psi ( x, 0`$) = 0 everywhere else. Write this state as a sum of energy eigenstates of the particle in a box. Write $`\psi ( x,t )`$ in terms of the energy eigenstates. Write the state at $`t`$ = 0 as $`\varphi ( p )`$. Would it be correct (and why) to use $`\varphi ( p )`$ to compute $`\psi ( x,t )`$?
 
-9. The wave function for a particle is initially $`\psi ( x ) = Ae^{ikx} + Be^{- ikx}`$. What is the probability
-
-flux $`j ( x )`$?
+9. The wave function for a particle is initially $`\psi ( x ) = Ae^{ikx} + Be^{- ikx}`$. What is the probability flux $`j ( x )`$?
 
 10. Prove that the parity operator defined by $`P\psi ( x ) = \psi ( - x )`$ is a hermitian operator and find its possible eigenvalues.
 
@@ -169,13 +161,9 @@ Assume that $`\tfrac{ma^{2} V_{0}}{\hbar^{2}} =`$<sup>3</sup>$`2 \pi`$ and plot 
 
 3. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t`$ = 0) = $`\tfrac{1}{2}^{\surd} ( u_{0} + u_{1} )`$. Is $`\psi`$ correctly normalized? Compute the expected value of $`x`$ as a function of time by doing the integrals in the $`x`$ representation.
 
-4. Prove the Schwartz inequality $`| \langle \psi | \varphi \rangle |^{2} \leq \langle \psi | \psi \rangle \langle \varphi | \varphi \rangle`$. (Start from the fact that $`\langle \psi + C\varphi | \psi +`$
+4. Prove the Schwartz inequality $`| \langle \psi | \varphi \rangle |^{2} \leq \langle \psi | \psi \rangle \langle \varphi | \varphi \rangle`$. (Start from the fact that $`\langle \psi + C\varphi | \psi + C\varphi \rangle \geq 0`$ for any $`C`$.
 
-$`C\varphi \rangle \geq 0`$ for any $`C`$.
-
-5. The hyper-parity operator $`H`$ has the property that $`H^{4} \psi = \psi`$ for any state $`\psi`$. Find the
-
-eigenvalues of $`H`$ for the case that it is not Hermitian and the case that it is Hermitian.
+5. The hyper-parity operator $`H`$ has the property that $`H^{4} \psi = \psi`$ for any state $`\psi`$. Find the eigenvalues of $`H`$ for the case that it is not Hermitian and the case that it is Hermitian.
 
 6. Find the correctly normalized energy eigenfunction $`u_{5} ( x )`$ for the 1D harmonic oscillator.
 
@@ -221,9 +209,7 @@ k
 
 8. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t`$ = 0) = $`\tfrac{1}{\sqrt{2}} ( u_{0} + u_{1} )`$.
 
-$`•`$ Compute the expected value of $`x`$ as a function of time using $`A`$ and $`A^{\dagger}`$ in the Schrod̈inger
-
-picture.
+$`•`$ Compute the expected value of $`x`$ as a function of time using $`A`$ and $`A^{\dagger}`$ in the Schrod̈inger picture.
 
 $`•`$ Now do the same in the Heisenberg picture.
 
@@ -245,9 +231,7 @@ Compute the expected value of $`x^{2}`$ as a function of time.
 
 5. Calculate the Fermi energy of a gas of massless fermions with $`n`$ particles per unit volume.
 
-6. The number density of conduction electrons in copper is 8$`. 5 \times 1 0^{2 2}`$ per cubic centimeter. What
-
-is the Fermi energy in electron volts?
+6. The number density of conduction electrons in copper is 8$`. 5 \times 1 0^{2 2}`$ per cubic centimeter. What is the Fermi energy in electron volts?
 
 7. The volume of a nucleus is approximately 1$`. 1 A^{\tfrac{1}{3}}`$ Fermis, where $`A = N + Z , N`$ is the number of neutrons, and $`Z`$ is the number of protons. A Lead nucleus consists of 82 protons and 126 neutrons. Estimate the Fermi energy of the protons and neutrons separately.
 
@@ -285,17 +269,11 @@ L^{2} , L_{z} , L_{x} , \text{ and } L_{y} .
 
 # <a id="s-19-8-homework-8"></a>19.8 Homework 8
 
-1. Calculate the $`\ell`$ = 0 phase shift for the spherical potential well for both and attractive and
+1. Calculate the $`\ell`$ = 0 phase shift for the spherical potential well for both and attractive and repulsive potential.
 
-repulsive potential.
+2. Calculate the $`\ell`$ = 0 phase shift for a hard sphere $`V = \infty`$ for $`r<a`$ and $`V`$ = 0 for $`r>a`$. What are the limits for $`ka`$ large and small?
 
-2. Calculate the $`\ell`$ = 0 phase shift for a hard sphere $`V = \infty`$ for $`r<a`$ and $`V`$ = 0 for $`r>a`$. What
-
-are the limits for $`ka`$ large and small?
-
-3. Show that at large $`r`$, the radial flux is large compared to the angular components of the flux
-
-for wave-functions of the form $`C \tfrac{e^{\pm ikr}}{r} Y_{\ell m} ( \theta ,\varphi )`$.
+3. Show that at large $`r`$, the radial flux is large compared to the angular components of the flux for wave-functions of the form $`C \tfrac{e^{\pm ikr}}{r} Y_{\ell m} ( \theta ,\varphi )`$.
 
 4. Calculate the difference in wavelengths of the 2p to 1s transition in Hydrogen and Deuterium.
 

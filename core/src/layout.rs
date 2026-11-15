@@ -2488,6 +2488,13 @@ pub fn parse_xml_with(xml: &str, lost: &HashMap<String, bool>) -> Result<Doc, St
                 // PDF that does not say what its letters mean gives "0")
                 let symbols = fonts.get(num(n, "font") as usize).is_some_and(|f| f.family.starts_with("CMSY"));
                 let text = if symbols && !text.trim().is_empty() && text.trim().chars().all(|c| c == '0') { text.replace('0', "′") } else { text };
+                // (TeX's math italic font has no bracket: what such a PDF
+                // gives as "(" is the arrow over a vector, as "~" elsewhere)
+                let italic_math = fonts.get(num(n, "font") as usize).is_some_and(|f| f.family.starts_with("CMMI"));
+                let text = if italic_math && text.contains('(') { text.replace('(', "~") } else { text };
+                // (a word cut at the line's end with a hyphen that is only
+                // there when the word is cut)
+                let text = text.replace('\u{ad}', "-");
                 let text = clean_text(&text);
                 // Zero-width text is rotated (e.g. the arXiv stamp in the
                 // margin); it is not part of the book's text. Except the

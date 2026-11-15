@@ -510,9 +510,7 @@ l = 1 ) , \text{ and } ( s_{1} = \tfrac{1}{2} , \quad s_{2} = 1 \text{ and } l =
 
 # <a id="s-24-6-sample-test-problems"></a>24.6 Sample Test Problems
 
-1. Calculate the energy shifts to the four hyperfine ground states of hydrogen in a weak magnetic
-
-field. (The field is weak enough so that the perturbation is smaller than the hyperfine splitting.)
+1. Calculate the energy shifts to the four hyperfine ground states of hydrogen in a weak magnetic field. (The field is weak enough so that the perturbation is smaller than the hyperfine splitting.)
 
 2. Calculate the splitting for the ground state of positronium due to the spin-spin interaction between the electron and the positron. Try to correctly use the reduced mass where required but don’t let this detail keep you from working the problem.
 

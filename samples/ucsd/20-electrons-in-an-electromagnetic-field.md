@@ -905,9 +905,7 @@ E = \left( n + \frac{1}{2} \right) \hbar \omega = \frac{\hbar eB}{m_{e} c} \left
 
 So we get the **same energies with a much simpler calculation**. The resulting **states are** **somewhat strange** and are not analogous to the classical solutions. (Note that an electron could be circulating about any field line so there are many possible states, just in case you are worrying about the choice of $`k_{y}`$ and $`x_{0}`$ and counting states.)
 
-## <a id="s-20-5-7-a-hamiltonian-invariant-under-wavefunction-phase-or-gauge-transformations307-20-5-8-magnetic-flux-quantization-from-gauge-symmetry"></a>20.5.7 A Hamiltonian Invariant Under Wavefunction Phase (or Gauge) Transforma-
-
-**tions**
+## <a id="s-20-5-7-a-hamiltonian-invariant-under-wavefunction-phase-or-gauge-transformations307-20-5-8-magnetic-flux-quantization-from-gauge-symmetry"></a>20.5.7 A Hamiltonian Invariant Under Wavefunction Phase (or Gauge) Transforma- tions
 
 We want to investigate what it takes for the **Hamiltonian to be invariant under a local phase** **transformation** of the wave function.
 
@@ -1035,9 +1033,7 @@ Magnetic flux is observed to be quantized in a region enclosed by a superconduct
 
 1. Show that the Hamiltonian $`H = \tfrac{1}{2 \mu} [ \vec{p} + \tfrac{e}{c} \vec{A} ( \vec{r} , t ) ]^{2} - e\varphi ( \vec{r} , t )`$ yields the Lorentz force law for an electron. Note that the fields must be evaluated at the position of the electron. This means that the total time derivative of $`\vec{A}`$ must also account for the motion of the electron.
 
-2. Calculate the wavelengths of the three Zeeman lines in the 3$`d \to 2 p`$ transition in Hydrogen
-
-atoms in a 10<sup>4</sup> gauss field.
+2. Calculate the wavelengths of the three Zeeman lines in the 3$`d \to 2 p`$ transition in Hydrogen atoms in a 10<sup>4</sup> gauss field.
 
 3. Show that the probability flux for system described by the Hamiltonian
 

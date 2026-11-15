@@ -356,9 +356,7 @@ a) a 10 eV electron b) a 1 MeV electron c) a 10 MeV proton
 
 a) a 1 eV electron b) a 10<sup>4</sup> MeV proton
 
-5. What K.E. must a Hydrogen atom have so that its DeBroglie wavelength is smaller than the
-
-size of the atom? (Factors of 2 are not important.)
+5. What K.E. must a Hydrogen atom have so that its DeBroglie wavelength is smaller than the size of the atom? (Factors of 2 are not important.)
 
 6. Calculate the DeBroglie wavelength for (a) a proton with 10 MeV kinetic energy, (b) An electron with 10 MeV kinetic energy, and (c) a 1 gram lead ball moving with a velocity of 10 cm/sec (one erg is one gram cm<sup>2</sup>/sec<sup>2</sup>). Be sure to take account of relativity where needed.
 

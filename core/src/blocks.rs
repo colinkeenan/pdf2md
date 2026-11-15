@@ -1993,6 +1993,16 @@ impl Builder<'_> {
         if starts_entry(l) || p.signs {
             return true;
         }
+        // (the next part of a problem, "(b) Show that …", after a sentence)
+        let part = {
+            let t = plain_text(l);
+            t.trim_start().strip_prefix('(').and_then(|r| r.split_once(')')).is_some_and(|(n, rest)| {
+                rest.starts_with(' ') && ((n.chars().count() == 1 && n.chars().all(|c| c.is_ascii_lowercase())) || (!n.is_empty() && n.chars().count() <= 4 && n.chars().all(|c| "ivx".contains(c))))
+            })
+        };
+        if part && p.ends_sentence {
+            return true;
+        }
         // (a paragraph goes on over a page in the type it is set in: the
         // dedication is not the end of the copyright page's last line)
         if p.page != pi && (l.size - p.size).abs() > 0.5 {
@@ -2008,9 +2018,12 @@ impl Builder<'_> {
         if l.left - st.left >= step {
             // Hanging indent (references): the first line sticks out and
             // the rest are indented.
+            // (or the first line is full and stops in the middle of its
+            // sentence: the lines under "(a) Show that …" begin under "Show")
+            let goes_on = p.right >= st.right - st.body && !p.ends_sentence;
             let hanging = self.para_lines == 1
                 && p.left < l.left - step
-                && next.is_none_or(|n| n.left >= l.left - step || starts_entry(n));
+                && (goes_on || next.is_none_or(|n| n.left >= l.left - step || starts_entry(n)));
             // An indented block (a quotation): same indent as before.
             let same_indent = (p.left - l.left).abs() < step;
             return !(hanging || same_indent);

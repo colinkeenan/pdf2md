@@ -553,15 +553,11 @@ P_{\ell} ( \cos \theta_{1 2} ) = \frac{4 \pi}{2 \ell + 1} \sum_{m = - \ell}^{\el
 
 Using the equation $`Y_{\ell ( - m )} = ( - 1 )^{\ell} Y_{\ell m}^{*}`$ , this sets us up to do our integrals nicely.
 
-2. Consider the lowest state of ortho-helium. What is the magnetic moment? That is what is
-
-the interaction with an external magnetic field?
+2. Consider the lowest state of ortho-helium. What is the magnetic moment? That is what is the interaction with an external magnetic field?
 
 3. A proton and neutron are bound together into a deuteron, the nucleus of an isotope of hydrogen. The binding energy is found to be -2.23 MeV for the nuclear ground state, an $`\ell`$ = 0 state. Assuming a potential of the form $`V ( r ) = V_{0} \tfrac{e^{- r/r 0}}{r/r_{0}}`$, with $`r_{0}`$ = 2$`. 8`$ Fermis, use the variational principle to estimate the strength of the potential.
 
-4. Use the variational principle with a gaussian trial wave function to prove that a one dimensional
-
-attractive potential will always have a bound state.
+4. Use the variational principle with a gaussian trial wave function to prove that a one dimensional attractive potential will always have a bound state.
 
 5. Use the variational principle to estimate the ground state energy of the anharmonic oscillator,
 

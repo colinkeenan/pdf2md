@@ -563,23 +563,15 @@ April 2, 2003
 
 These notes represent an experiment in the use of information technology in teaching an advanced undergraduate physics course, Quantum Physics at UCSD. The experiment has several goals.
 
-$`•`$ To make all the class material including a complete set of lecture notes available to students
+$`•`$ To make all the class material including a complete set of lecture notes available to students on the World-Wide Web.
 
-on the World-Wide Web.
+$`•`$ To make use of some simple multimedia technology to enhance the class notes as a learning tool compared to a conventional textbook.
 
-$`•`$ To make use of some simple multimedia technology to enhance the class notes as a learning
-
-tool compared to a conventional textbook.
-
-$`•`$ To present a complex subject to students in several different ways so that each student can
-
-use the learning techniques best suited to that individual.
+$`•`$ To present a complex subject to students in several different ways so that each student can use the learning techniques best suited to that individual.
 
 $`•`$ To get some experience with the use of multimedia technologies in teaching advanced courses.
 
-$`•`$ To produce course material that might be appropriate for distance learning or self-paced courses
-
-in the future.
+$`•`$ To produce course material that might be appropriate for distance learning or self-paced courses in the future.
 
 The current set of notes covers a 3 quarter course at UCSD, from the beginning of Quantum Mechanics to the quantization of the electromagnetic field and the Dirac equation. The notes for the last quarter should be considered to be a first draft.
 
@@ -1709,9 +1701,7 @@ $`•`$ Add the orbital angular momentum to the spin angular momentum for an ele
 \end{array}
 ```
 
-$`•`$ Add the total orbital angular momentum to the total spin angular momentum for a collection
-
-of electrons in an atom $`\vec{J} = \vec{L} + \vec{S}`$;
+$`•`$ Add the total orbital angular momentum to the total spin angular momentum for a collection of electrons in an atom $`\vec{J} = \vec{L} + \vec{S}`$;
 
 $`•`$ Write the product of spherical harmonics in terms of a sum of spherical harmonics.
 
@@ -1939,13 +1929,9 @@ A set of guidelines, known as Hund’s rules, help us determine the quantum numb
 
 1. Couple the valence electrons (or holes) to give **maximum total spin**.
 
-2. Now choose the state of maximum $`\ell`$ (subject to the Pauli principle. The Pauli principle rather
+2. Now choose the state of maximum $`\ell`$ (subject to the Pauli principle. The Pauli principle rather than the rule, often determines everything here.)
 
-than the rule, often determines everything here.)
-
-3. If the shell is more than half full, pick the highest total angular momentum state $`j = \ell + s`$
-
-otherwise pick the lowest $`j = | \ell - s |`$.
+3. If the shell is more than half full, pick the highest total angular momentum state $`j = \ell + s`$ otherwise pick the lowest $`j = | \ell - s |`$.
 
 # <a id="s-1-34-molecules"></a>1.34 Molecules
 
@@ -3748,13 +3734,9 @@ u ( \nu ,T ) = \frac{8 \pi \nu^{2}}{c^{3}} k_{B} T.
 
 Why is this related to black body radiation? Why was this in obvious disagreement with observation?
 
-3. What is the maximum wavelength of electromagnetic radiation which can eject electrons from
+3. What is the maximum wavelength of electromagnetic radiation which can eject electrons from a metal having a work function of 2 eV?
 
-a metal having a work function of 2 eV?
-
-4. **\*** State simply what problem with black-body radiation caused Plank to propose the relation
-
-$`E = h\nu`$ for light.
+4. **\*** State simply what problem with black-body radiation caused Plank to propose the relation $`E = h\nu`$ for light.
 
 5. The work function of a metal is 2 eV. Assume a beam of light of wavelength $`\lambda`$ is incident upon a polished surface of the metal. Plot the maximum electron energy (in eV) of electrons ejected from the metal versus $`\lambda`$ in Angstroms. Be sure to label both axes with some numerical values.
 
@@ -4118,9 +4100,7 @@ a) a 10 eV electron b) a 1 MeV electron c) a 10 MeV proton
 
 a) a 1 eV electron b) a 10<sup>4</sup> MeV proton
 
-5. What K.E. must a Hydrogen atom have so that its DeBroglie wavelength is smaller than the
-
-size of the atom? (Factors of 2 are not important.)
+5. What K.E. must a Hydrogen atom have so that its DeBroglie wavelength is smaller than the size of the atom? (Factors of 2 are not important.)
 
 6. Calculate the DeBroglie wavelength for (a) a proton with 10 MeV kinetic energy, (b) An electron with 10 MeV kinetic energy, and (c) a 1 gram lead ball moving with a velocity of 10 cm/sec (one erg is one gram cm<sup>2</sup>/sec<sup>2</sup>). Be sure to take account of relativity where needed.
 
@@ -4169,9 +4149,7 @@ Lets summarize the physics input again.
 
 $`•`$ Free particles are represented by complex wave functions with a relationship between their particle properties – energy and momentum, and their wave properties – frequency and wavelength given by Plank and deBroglie.
 
-$`•`$ The absolute square of the wavefunction gives the probability distribution function. Quantum
-
-Mechanics only tells us the probability.
+$`•`$ The absolute square of the wavefunction gives the probability distribution function. Quantum Mechanics only tells us the probability.
 
 $`•`$ We can make superpositions of our free particle wave functions to make states that do not have definite momentum. We will find that any state can be made from the superposition of free particle states with different momentum.
 
@@ -5302,9 +5280,7 @@ b \psi ( x ) = ( {}_{\pi}^{\alpha} ) 4^{1} e^{- \alpha x^{2} / 2}
 c \psi ( x ) = \delta ( x - x_{0} )
 ```
 
-5. Use the Heisenberg uncertainty principle to estimate the ground state energy for a particle of
-
-mass $`m`$ in the potential $`V ( x ) = \tfrac{1}{2} kx^{2}`$.
+5. Use the Heisenberg uncertainty principle to estimate the ground state energy for a particle of mass $`m`$ in the potential $`V ( x ) = \tfrac{1}{2} kx^{2}`$.
 
 6. **\*** Find the one dimensional wave function in position space $`\psi ( x )`$ that corresponds to $`\varphi ( p ) =`$
 
@@ -5312,31 +5288,19 @@ mass $`m`$ in the potential $`V ( x ) = \tfrac{1}{2} kx^{2}`$.
 \delta ( p - p_{0} ) .
 ```
 
-7. **\*** Find the one dimensional wave function in position space $`\psi ( x )`$ that corresponds to $`\varphi ( p ) =`$
+7. **\*** Find the one dimensional wave function in position space $`\psi ( x )`$ that corresponds to $`\varphi ( p ) = \frac{1}{\sqrt{2 b}}`$ for $`- b<p<b`$, and $`\varphi ( p )`$ = 0 otherwise.
 
-$`\frac{1}{\sqrt{2 b}}`$ for $`- b<p<b`$, and $`\varphi ( p )`$ = 0 otherwise.
-
-8. **\*** Assume that a particle is localized such that $`\psi ( x ) = \tfrac{1}{\sqrt{a}}`$ for $`0 <x<a`$ and that $`\psi ( x )`$ = 0
-
-elsewhere. What is the probability for the particle to have a momentum between $`p`$ and $`p + dp`$?
+8. **\*** Assume that a particle is localized such that $`\psi ( x ) = \tfrac{1}{\sqrt{a}}`$ for $`0 <x<a`$ and that $`\psi ( x )`$ = 0 elsewhere. What is the probability for the particle to have a momentum between $`p`$ and $`p + dp`$?
 
 9. A beam of photons of momentum $`p`$ is incident upon a slit of width $`a`$. The resulting diffraction pattern is viewed on screen which is a distance $`d`$ from the slit. Use the **uncertainty principle** to estimate the width of the central maximum of the diffraction pattern in terms of the variables given.
 
-10. **\*** The wave-function of a particle in position space is given by $`\psi ( x ) = \delta ( x - a )`$. Find the
+10. **\*** The wave-function of a particle in position space is given by $`\psi ( x ) = \delta ( x - a )`$. Find the wave-function in **momentum space**. Is the state correctly normalized? Explain why.
 
-wave-function in **momentum space**. Is the state correctly normalized? Explain why.
+11. **\*** A particle is in the state $`\psi ( x ) = Ae^{- \alpha x^{2} / 2}`$. What is the probability for the particle to have a momentum between $`p`$ and $`p + dp`$?
 
-11. **\*** A particle is in the state $`\psi ( x ) = Ae^{- \alpha x^{2} / 2}`$. What is the probability for the particle to have
+12. A hydrogen atom has the potential $`V ( r ) = \tfrac{e^{2}}{r}^{-}`$. Use the uncertainty principle to estimate the ground state energy.
 
-a momentum between $`p`$ and $`p + dp`$?
-
-12. A hydrogen atom has the potential $`V ( r ) = \tfrac{e^{2}}{r}^{-}`$. Use the uncertainty principle to estimate the
-
-ground state energy.
-
-13. **\*** Assume that $`\varphi ( p ) = \tfrac{1}{\sqrt{2 a}}`$ for $`| p | <a`$ and $`\varphi ( p )`$ = 0 elsewhere. What is $`\psi ( x )`$? What is the
-
-probability to find the particle between $`x`$ and $`x + dx`$?
+13. **\*** Assume that $`\varphi ( p ) = \tfrac{1}{\sqrt{2 a}}`$ for $`| p | <a`$ and $`\varphi ( p )`$ = 0 elsewhere. What is $`\psi ( x )`$? What is the probability to find the particle between $`x`$ and $`x + dx`$?
 
 14. The hydrogen atom is made up of a proton and an electron bound together by the Coulomb potential, $`V ( r ) = \tfrac{- e^{2}}{r}`$. It is also possible to make a hydrogen-like atom from a proton and a muon. The force binding the muon to the proton is identical to that for the electron but the muon’s mass is 106 MeV/c<sup>2</sup>. Use the uncertainty principle to estimate the energy and the radius of the ground state of muonic hydrogen.
 
@@ -8375,9 +8339,7 @@ This whole section is examples.
 
 # <a id="s-9-9-sample-test-problems"></a>9.9 Sample Test Problems
 
-1. A beam of 100 eV (kinetic energy) electrons is incident upon a **potential step** of height
-
-$`V_{0}`$ = 10 eV. Calculate the probability to be transmitted. Get a numerical answer.
+1. A beam of 100 eV (kinetic energy) electrons is incident upon a **potential step** of height $`V_{0}`$ = 10 eV. Calculate the probability to be transmitted. Get a numerical answer.
 
 2. **\*** Find the energy eigenstates (and energy eigenvalues) of a particle of mass $`m`$ bound in the 1D potential $`V ( x ) = - V_{0} \delta ( x )`$. Assume $`V_{0}`$ is a positive real number. (Don’t assume that $`V_{0}`$ has the units of energy.) You need not normalize the state.
 
@@ -8440,9 +8402,7 @@ a) Find the solution to the Schrödinger equation for this problem.
 
 b) Determine the coefficients needed to satisfy the boundary conditions.
 
-c) Calculate the probability for a particle in the beam to be reflected by the potential and
-
-the probability to be transmitted.
+c) Calculate the probability for a particle in the beam to be reflected by the potential and the probability to be transmitted.
 
 5. **\*** The Schrödinger equation for the one dimensional harmonic ocillator is reduced to the following equation for the polynomial $`h ( y )`$:
 
@@ -8456,9 +8416,7 @@ a) Assume $`h ( y ) = \sum^{\infty} a_{m} y^{m}`$ and find the recursion relatio
 m = 0
 ```
 
-b) Use the requirement that this polynomial series must terminate to find the allowed ener-
-
-gies in terms of $`\alpha`$.
+b) Use the requirement that this polynomial series must terminate to find the allowed energies in terms of $`\alpha`$.
 
 c) Find $`h ( y )`$ for the ground state and second excited state.
 
@@ -8472,17 +8430,13 @@ a) Find the solution to the Schrödinger equation for this problem.
 
 b) Determine the coefficients needed to satisfy the boundary conditions.
 
-c) Calculate the probability for a particle in the beam to be reflected by the potential step
-
-and the probability to be transmitted.
+c) Calculate the probability for a particle in the beam to be reflected by the potential step and the probability to be transmitted.
 
 7. **\*** A particle is in the ground state $`( \psi ( x )`$ = ($`\tfrac{m\omega}{\pi \hbar} ) 4^{1} e \tfrac{- m\omega x 2}{2 \hbar}`$.) of a harmonic oscillator potential. Suddenly the potential is removed without affecting the particle’s state. Find the probability distribution $`P ( p )`$ for the particle’s momentum after the potential has been removed.
 
 8. **\*** A particle is in the third excited state (n=3) of the one dimensional harmonic oscillator potential.
 
-a) Calculate this energy eigenfunction, up to a normalization factor, from the recursion
-
-relations given on the front of the exam.
+a) Calculate this energy eigenfunction, up to a normalization factor, from the recursion relations given on the front of the exam.
 
 b) Give, but do not evaluate, the expression for the normalization factor.
 
@@ -8500,9 +8454,7 @@ a) Assume $`h ( y ) = \sum^{\infty} a_{m} y^{m}`$ and find the recursion relatio
 m = 0
 ```
 
-b) Use the requirement that this polynomial series must terminate to find the allowed ener-
-
-gies in terms of $`\alpha`$.
+b) Use the requirement that this polynomial series must terminate to find the allowed energies in terms of $`\alpha`$.
 
 c) Find $`h ( y )`$ for the ground state and second excited state.
 
@@ -9114,9 +9066,7 @@ p = \frac{1}{i} \sqrt{\frac{m \hbar \omega}{2} ( A - A^{\dagger} )}
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p181" href="book.pdf#page=181" target="_blank" title="This page in the PDF"><sup>[p. 181]</sup></a>
 
-4. Use the commutator relation between $`A`$ and $`A^{\dagger}`$ to derive $`[ H,A ]`$. Now show that $`A`$ is the
-
-**lowering operator for the harmonic oscillator** energy.
+4. Use the commutator relation between $`A`$ and $`A^{\dagger}`$ to derive $`[ H,A ]`$. Now show that $`A`$ is the **lowering operator for the harmonic oscillator** energy.
 
 5. At $`t`$ = 0, a **one dimensional harmonic oscillator** is in the state $`\psi ( t`$ = 0) = $`\sqrt{\frac{3}{4}} u_{0} + i \sqrt{\frac{1}{4}} u_{1}`$.
 
@@ -9705,9 +9655,7 @@ it \sum_{n = 1}^{\infty} \frac{( it )^{n - 1} \hbar \omega AH^{n - 1}}{( n - 1 )
 
 a) Prove that $`<u_{i} | [ H,A ] | u_{i} >`$= 0 for an arbitrary linear operator $`A`$.
 
-b) For a particle of mass $`m`$ moving in 1-dimension, the Hamiltonian is given by $`H = \tfrac{p^{2}}{2 m}`$ +
-
-$`V ( x )`$. Compute the commutator [H,X] where $`X`$ is the position operator.
+b) For a particle of mass $`m`$ moving in 1-dimension, the Hamiltonian is given by $`H = \tfrac{p^{2}}{2 m}`$ + $`V ( x )`$. Compute the commutator [H,X] where $`X`$ is the position operator.
 
 c) Compute $`<u_{i} | P | u_{i} >`$ the mean momentum in the state $`| u_{i} >`$.
 
@@ -10290,9 +10238,7 @@ c) Find the Fermi Energy $`E_{F}`$ for $`N`$ particles in the box. (N is large.)
 
 11. In 3 dimensions, a particle of mass $`m`$ is bound in a potential $`V (`$**r**$`) = \tfrac{e^{2}}{\sqrt{x^{2} + z^{2}}}^{-}`$.
 
-a) The definite energy states will, of course, be eigenfunctions of $`H`$. What other operators
-
-can they be eigenfunctions of?
+a) The definite energy states will, of course, be eigenfunctions of $`H`$. What other operators can they be eigenfunctions of?
 
 b) Simplify the three dimensional Schrödinger equation by using these operators.
 
@@ -11357,13 +11303,7 @@ The state is
 
 The trivial solution that $`A = B = C`$ = 0 is just a zero state, not normalizable to 1.
 
-3. Write the (normalized) state which is an eigenstate of $`L^{2}`$ with eigenvalue $`\ell ( \ell`$ + 1)$`\hbar^{2}`$ = 2$`\hbar^{2}`$ and
-
-<div align="center">
-
-also an **eigenstate of** $`L_{y}`$ with eigenvalue 1$`\hbar`$ in terms of the usual $`Y_{\ell m}`$.
-
-</div>
+3. Write the (normalized) state which is an eigenstate of $`L^{2}`$ with eigenvalue $`\ell ( \ell`$ + 1)$`\hbar^{2}`$ = 2$`\hbar^{2}`$ and also an **eigenstate of** $`L_{y}`$ with eigenvalue 1$`\hbar`$ in terms of the usual $`Y_{\ell m}`$.
 
 4. Calculate the **commutators** $`[ p_{z} ,L_{x} ]`$ and [$`L_{x}^{2} ,L_{z} ]`$.
 
@@ -11393,9 +11333,7 @@ where $`R ( r )`$ is some arbitrary radial wave function normalized such that
 
 a) Find the value of C that will normalize this wave function.
 
-b) If a measurement of $`L_{z}`$ is made, what are the possible measured values and what are
-
-probabilities for each.
+b) If a measurement of $`L_{z}`$ is made, what are the possible measured values and what are probabilities for each.
 
 c) Find the expected value of $`<L_{x} >`$ in the above state.
 
@@ -11411,13 +11349,9 @@ a) What is the energy spectrum due to rotations of the molecule?
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p218" href="book.pdf#page=218" target="_blank" title="This page in the PDF"><sup>[p. 218]</sup></a>
 
-b) Assuming that $`R ( r )`$ is given, write down the energy eigenfunctions for the ground state
+b) Assuming that $`R ( r )`$ is given, write down the energy eigenfunctions for the ground state and the first excited state.
 
-and the first excited state.
-
-c) Assuming that both masses are about 1000 MeV, how does the excitation energy of the
-
-first excited state compare to thermal energies at $`3 0 0^{◦}`$K.
+c) Assuming that both masses are about 1000 MeV, how does the excitation energy of the first excited state compare to thermal energies at $`3 0 0^{◦}`$K.
 
 ---
 
@@ -12667,9 +12601,7 @@ For the $`n`$ = 3 final state, $`E = \tfrac{7}{1 4 4} 1 3 . 6`$ = 0$`. 7`$ eV.
 
 7. Write down the wave function of the hydrogen atom state $`\psi_{3 2 1} (`$**r**).
 
-8. A Hydrogen atom is in its 4$`D`$ state $`( n`$ = 4$`,l`$ = 2). The atom decays to a lower state by emitting
-
-a photon. Find the possible photon energies that may be observed. Give your answers in $`eV`$.
+8. A Hydrogen atom is in its 4$`D`$ state $`( n`$ = 4$`,l`$ = 2). The atom decays to a lower state by emitting a photon. Find the possible photon energies that may be observed. Give your answers in $`eV`$.
 
 9. A Hydrogen atom is in the state:
 
@@ -12679,9 +12611,7 @@ a photon. Find the possible photon energies that may be observed. Give your answ
 
 For the Hydrogen eigenstates, $`\langle \psi_{nlm} | \tfrac{1}{r} | \psi_{nlm} \rangle = \tfrac{Z}{a_{0} n^{2}}`$. Find the expected value of the potential energy for this state. Find the expected value of $`L_{x}`$.
 
-10. A Hydrogen atom is in its 3$`D`$ state $`( n`$ = 3$`,l`$ = 2). The atom decays to a lower state by emitting
-
-a photon. Find the possible photon energies that may be observed. Give your answers in $`eV`$.
+10. A Hydrogen atom is in its 3$`D`$ state $`( n`$ = 3$`,l`$ = 2). The atom decays to a lower state by emitting a photon. Find the possible photon energies that may be observed. Give your answers in $`eV`$.
 
 11. The hydrogen atom is made up of a proton and an electron bound together by the Coulomb force. The electron has a mass of 0.51 MeV/$`c^{2}`$. It is possible to make a hydrogen-like atom from a proton and a muon. The force binding the muon to the proton is identical to that for the electron but the muon has a mass of 106 MeV/$`c^{2}`$.
 
@@ -12689,9 +12619,7 @@ a) What is the ground state energy of muonic hydrogen (in eV).
 
 b) What is the“Bohr Radius” of the ground state of muonic hydrogen.
 
-12. A hydrogen atom is in the state: $`\psi (`$**r**$`) = \frac{1}{\langle \rangle 1 0} \sqrt{( \psi_{3 2 2}}`$ + 2$`\psi_{2 2 1}`$ + 2$`i\psi_{2 2 0} + \psi_{1 1 - 1} )`$ Find the possible
-
-measured energies and the probabilities of each. Find the expected value of $`L_{z}`$.
+12. A hydrogen atom is in the state: $`\psi (`$**r**$`) = \frac{1}{\langle \rangle 1 0} \sqrt{( \psi_{3 2 2}}`$ + 2$`\psi_{2 2 1}`$ + 2$`i\psi_{2 2 0} + \psi_{1 1 - 1} )`$ Find the possible measured energies and the probabilities of each. Find the expected value of $`L_{z}`$.
 
 13. Find the difference in frequency between light emitted from the 2$`P \to 1 S`$ transition in Hydrogen and light from the same transition in Deuterium. (Deuterium is an isotope of Hydrogen with a proton and a neutron in the nucleus.)
 
@@ -14828,9 +14756,7 @@ What are the eigen-energies and corresponding eigenstates of the system? (This i
 
 5. What are the eigenfunctions and eigenvalues of the operator $`L_{x} L_{y} + L_{y} L_{x}`$ for a spin 1 system?
 
-6. Calculate the $`\ell`$ = 1 operator for arbitrary rotations about the x-axis. Use the usual $`L_{z}`$
-
-eigenstates as a basis.
+6. Calculate the $`\ell`$ = 1 operator for arbitrary rotations about the x-axis. Use the usual $`L_{z}`$ eigenstates as a basis.
 
 7. An electron is in an eigenstate of $`S_{x}`$ with eigenvalue $`\frac{\hbar}{2}`$. What are the amplitudes to find the electron with a) $`S_{z}`$ = +$`\frac{\hbar}{2}`$, b) $`S_{z} = - \tfrac{\hbar}{2} , S_{y}`$ = +$`\tfrac{\hbar}{2} , S_{u}`$ = +$`\frac{\hbar}{2}`$, where the $`u`$-axis is assumed to be in the $`x - y`$ plane rotated by and angle $`\theta`$ from the $`x`$-axis.
 
@@ -14842,9 +14768,7 @@ eigenstates as a basis.
 
 9. Find the eigenstates of the harmonic oscillator lowering operator $`A`$. They should satisfy the equation $`A | \alpha \rangle = \alpha | \alpha \rangle`$. Do this by finding the coefficients $`\langle n | \alpha \rangle`$ where $`| n \rangle`$ is the $`n^{th}`$ energy eigenstate. Make sure that the states $`| \alpha \rangle`$ are normalized so that $`\langle \alpha | \alpha \rangle`$ = 1. Suppose $`| \alpha^{\prime} \rangle`$ is another such state with a different eigenvalue. Compute $`\langle \alpha^{\prime} | \alpha \rangle`$. Would you expect these states to be orthogonal?
 
-10. Find the matrix which represents the $`p^{2}`$ operator for a 1D harmonic oscillator. Write out the
-
-upper left $`5 \times 5`$ part of the matrix.
+10. Find the matrix which represents the $`p^{2}`$ operator for a 1D harmonic oscillator. Write out the upper left $`5 \times 5`$ part of the matrix.
 
 11. Let’s define the u axis to be in the x-z plane, between the positive x and z axes and at an angle of 30 degrees to the x axis. Given an unpolarized spin $`\frac{1}{2}`$ beam of intensity $`I`$ going into the following Stern-Gerlach apparati, what intensity comes out?
 
@@ -14880,9 +14804,7 @@ is the probability that a measurement of the $`x`$ component of spin yields zero
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p281" href="book.pdf#page=281" target="_blank" title="This page in the PDF"><sup>[p. 281]</sup></a>
 
-5. Find the (normalized) eigenvectors and eigenvalues of the $`S_{x}`$ (matrix) operator for $`s`$ = 1 in
-
-the usual $`( S_{z} )`$ basis.
+5. Find the (normalized) eigenvectors and eigenvalues of the $`S_{x}`$ (matrix) operator for $`s`$ = 1 in the usual $`( S_{z} )`$ basis.
 
 6. **\*** A spin $`\frac{1}{2}`$ particle is in a magnetic field in the $`x`$ direction giving a Hamiltonian $`H = \mu_{B} B\sigma_{x}`$.
 
@@ -15013,9 +14935,7 @@ momentum space wave function $`\varphi ( p )`$ if $`\psi ( x ) = \delta ( x - x_
 
 6. Use the calculation of a spreading Gaussian wave packet to find the fractional change in size of a wave packet between $`t`$ = 0 and $`t`$ = 1 second for an electron localized to 1 Angstrom. Now find the fraction change for a 1 gram weight localized to 1 nanometer.
 
-7. Use the uncertainty principle to estimate the energy of the ground state of a harmonic oscillator
-
-with the Hamiltonian $`H = \tfrac{p^{2}}{2 m} + \tfrac{1}{2} kx^{2}`$.
+7. Use the uncertainty principle to estimate the energy of the ground state of a harmonic oscillator with the Hamiltonian $`H = \tfrac{p^{2}}{2 m} + \tfrac{1}{2} kx^{2}`$.
 
 8. Estimate the kinetic energy of an electron confined to be inside a nucleus of radius 5 Fermis. Estimate the kinetic energy of a neutron confined inside the same nucleus.
 
@@ -15043,15 +14963,11 @@ Remember that the wave functions go to zero at infinity.$`-\infty \quad -\infty`
 \Delta x = \sqrt{\langle \psi | ( x - \langle x \rangle )^{2} | \psi \rangle .}
 ```
 
-3. Calculate $`\langle p^{n} \rangle`$ for the state in the previous problem. Use this to calculate ∆$`p`$ in a similar way
-
-to the ∆$`x`$ calculation.
+3. Calculate $`\langle p^{n} \rangle`$ for the state in the previous problem. Use this to calculate ∆$`p`$ in a similar way to the ∆$`x`$ calculation.
 
 4. Calculate the commutator $`[ p^{2} ,x^{2} ]`$.
 
-5. Consider the functions of one angle $`\psi ( \theta )`$ with $`- \pi \leq \theta \leq \pi`$ and $`\psi ( - \pi ) = \psi ( \pi )`$. Show that the
-
-angular momentum operator $`L = \tfrac{\hbar}{i} \tfrac{d}{d\theta}`$ has real expectation values.
+5. Consider the functions of one angle $`\psi ( \theta )`$ with $`- \pi \leq \theta \leq \pi`$ and $`\psi ( - \pi ) = \psi ( \pi )`$. Show that the angular momentum operator $`L = \tfrac{\hbar}{i} \tfrac{d}{d\theta}`$ has real expectation values.
 
 6. A particle is in the first excited state of a box of length $`L`$. What is that state? Now one wall of the box is suddenly moved outward so that the new box has length $`D`$. What is the probability for the particle to be in the ground state of the new box? What is the probability for the particle to be in the first excited state of the new box? You may find it useful to know that
 
@@ -15063,9 +14979,7 @@ angular momentum operator $`L = \tfrac{\hbar}{i} \tfrac{d}{d\theta}`$ has real e
 
 8. A particle is in a box with solid walls at $`x = \pm \tfrac{a}{2}`$. The state at $`t`$ = 0 is constant $`\psi ( x, 0`$) = $`\sqrt{\frac{2}{a}}`$ for $`- \tfrac{a}{2} <x< 0`$ and the $`\psi ( x, 0`$) = 0 everywhere else. Write this state as a sum of energy eigenstates of the particle in a box. Write $`\psi ( x,t )`$ in terms of the energy eigenstates. Write the state at $`t`$ = 0 as $`\varphi ( p )`$. Would it be correct (and why) to use $`\varphi ( p )`$ to compute $`\psi ( x,t )`$?
 
-9. The wave function for a particle is initially $`\psi ( x ) = Ae^{ikx} + Be^{- ikx}`$. What is the probability
-
-flux $`j ( x )`$?
+9. The wave function for a particle is initially $`\psi ( x ) = Ae^{ikx} + Be^{- ikx}`$. What is the probability flux $`j ( x )`$?
 
 10. Prove that the parity operator defined by $`P\psi ( x ) = \psi ( - x )`$ is a hermitian operator and find its possible eigenvalues.
 
@@ -15145,13 +15059,9 @@ Assume that $`\tfrac{ma^{2} V_{0}}{\hbar^{2}} =`$<sup>3</sup>$`2 \pi`$ and plot 
 
 3. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t`$ = 0) = $`\tfrac{1}{2}^{\surd} ( u_{0} + u_{1} )`$. Is $`\psi`$ correctly normalized? Compute the expected value of $`x`$ as a function of time by doing the integrals in the $`x`$ representation.
 
-4. Prove the Schwartz inequality $`| \langle \psi | \varphi \rangle |^{2} \leq \langle \psi | \psi \rangle \langle \varphi | \varphi \rangle`$. (Start from the fact that $`\langle \psi + C\varphi | \psi +`$
+4. Prove the Schwartz inequality $`| \langle \psi | \varphi \rangle |^{2} \leq \langle \psi | \psi \rangle \langle \varphi | \varphi \rangle`$. (Start from the fact that $`\langle \psi + C\varphi | \psi + C\varphi \rangle \geq 0`$ for any $`C`$.
 
-$`C\varphi \rangle \geq 0`$ for any $`C`$.
-
-5. The hyper-parity operator $`H`$ has the property that $`H^{4} \psi = \psi`$ for any state $`\psi`$. Find the
-
-eigenvalues of $`H`$ for the case that it is not Hermitian and the case that it is Hermitian.
+5. The hyper-parity operator $`H`$ has the property that $`H^{4} \psi = \psi`$ for any state $`\psi`$. Find the eigenvalues of $`H`$ for the case that it is not Hermitian and the case that it is Hermitian.
 
 6. Find the correctly normalized energy eigenfunction $`u_{5} ( x )`$ for the 1D harmonic oscillator.
 
@@ -15197,9 +15107,7 @@ k
 
 8. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t`$ = 0) = $`\tfrac{1}{\sqrt{2}} ( u_{0} + u_{1} )`$.
 
-$`•`$ Compute the expected value of $`x`$ as a function of time using $`A`$ and $`A^{\dagger}`$ in the Schrod̈inger
-
-picture.
+$`•`$ Compute the expected value of $`x`$ as a function of time using $`A`$ and $`A^{\dagger}`$ in the Schrod̈inger picture.
 
 $`•`$ Now do the same in the Heisenberg picture.
 
@@ -15221,9 +15129,7 @@ Compute the expected value of $`x^{2}`$ as a function of time.
 
 5. Calculate the Fermi energy of a gas of massless fermions with $`n`$ particles per unit volume.
 
-6. The number density of conduction electrons in copper is 8$`. 5 \times 1 0^{2 2}`$ per cubic centimeter. What
-
-is the Fermi energy in electron volts?
+6. The number density of conduction electrons in copper is 8$`. 5 \times 1 0^{2 2}`$ per cubic centimeter. What is the Fermi energy in electron volts?
 
 7. The volume of a nucleus is approximately 1$`. 1 A^{\tfrac{1}{3}}`$ Fermis, where $`A = N + Z , N`$ is the number of neutrons, and $`Z`$ is the number of protons. A Lead nucleus consists of 82 protons and 126 neutrons. Estimate the Fermi energy of the protons and neutrons separately.
 
@@ -15261,17 +15167,11 @@ L^{2} , L_{z} , L_{x} , \text{ and } L_{y} .
 
 # <a id="s-19-8-homework-8"></a>19.8 Homework 8
 
-1. Calculate the $`\ell`$ = 0 phase shift for the spherical potential well for both and attractive and
+1. Calculate the $`\ell`$ = 0 phase shift for the spherical potential well for both and attractive and repulsive potential.
 
-repulsive potential.
+2. Calculate the $`\ell`$ = 0 phase shift for a hard sphere $`V = \infty`$ for $`r<a`$ and $`V`$ = 0 for $`r>a`$. What are the limits for $`ka`$ large and small?
 
-2. Calculate the $`\ell`$ = 0 phase shift for a hard sphere $`V = \infty`$ for $`r<a`$ and $`V`$ = 0 for $`r>a`$. What
-
-are the limits for $`ka`$ large and small?
-
-3. Show that at large $`r`$, the radial flux is large compared to the angular components of the flux
-
-for wave-functions of the form $`C \tfrac{e^{\pm ikr}}{r} Y_{\ell m} ( \theta ,\varphi )`$.
+3. Show that at large $`r`$, the radial flux is large compared to the angular components of the flux for wave-functions of the form $`C \tfrac{e^{\pm ikr}}{r} Y_{\ell m} ( \theta ,\varphi )`$.
 
 4. Calculate the difference in wavelengths of the 2p to 1s transition in Hydrogen and Deuterium.
 
@@ -16218,9 +16118,7 @@ E = \left( n + \frac{1}{2} \right) \hbar \omega = \frac{\hbar eB}{m_{e} c} \left
 
 So we get the **same energies with a much simpler calculation**. The resulting **states are** **somewhat strange** and are not analogous to the classical solutions. (Note that an electron could be circulating about any field line so there are many possible states, just in case you are worrying about the choice of $`k_{y}`$ and $`x_{0}`$ and counting states.)
 
-## <a id="s-20-5-7-a-hamiltonian-invariant-under-wavefunction-phase-or-gauge-transformations307-20-5-8-magnetic-flux-quantization-from-gauge-symmetry"></a>20.5.7 A Hamiltonian Invariant Under Wavefunction Phase (or Gauge) Transforma-
-
-**tions**
+## <a id="s-20-5-7-a-hamiltonian-invariant-under-wavefunction-phase-or-gauge-transformations307-20-5-8-magnetic-flux-quantization-from-gauge-symmetry"></a>20.5.7 A Hamiltonian Invariant Under Wavefunction Phase (or Gauge) Transforma- tions
 
 We want to investigate what it takes for the **Hamiltonian to be invariant under a local phase** **transformation** of the wave function.
 
@@ -16348,9 +16246,7 @@ Magnetic flux is observed to be quantized in a region enclosed by a superconduct
 
 1. Show that the Hamiltonian $`H = \tfrac{1}{2 \mu} [ \vec{p} + \tfrac{e}{c} \vec{A} ( \vec{r} , t ) ]^{2} - e\varphi ( \vec{r} , t )`$ yields the Lorentz force law for an electron. Note that the fields must be evaluated at the position of the electron. This means that the total time derivative of $`\vec{A}`$ must also account for the motion of the electron.
 
-2. Calculate the wavelengths of the three Zeeman lines in the 3$`d \to 2 p`$ transition in Hydrogen
-
-atoms in a 10<sup>4</sup> gauss field.
+2. Calculate the wavelengths of the three Zeeman lines in the 3$`d \to 2 p`$ transition in Hydrogen atoms in a 10<sup>4</sup> gauss field.
 
 3. Show that the probability flux for system described by the Hamiltonian
 
@@ -17118,9 +17014,7 @@ This is what we expect.
 
 # <a id="s-21-9-homework-problems"></a>21.9 Homework Problems
 
-1. Find the allowed total spin states of two spin 1 particles. Explicitly write out the 9 states
-
-which are eigenfunctions of $`S^{2}`$ and $`S_{z}`$.
+1. Find the allowed total spin states of two spin 1 particles. Explicitly write out the 9 states which are eigenfunctions of $`S^{2}`$ and $`S_{z}`$.
 
 2. The Hamiltonian of a spin system is given by $`H = A + \tfrac{B \vec{S}_{1} \vec{S}_{2}}{\hbar^{2}}^{\cdot} + {}^{C} \tfrac{( S_{1 z} + S_{2 z} )}{\hbar}`$. Find the eigenvalues and eigenfunctions of the system of two particles (a) when both particles have spin $`\frac{1}{2}`$, (b) when one particle has spin $`\frac{1}{2}`$ and the other spin 1. What happens in (a) when the two particles are identical?
 
@@ -17130,9 +17024,7 @@ which are eigenfunctions of $`S^{2}`$ and $`S_{z}`$.
 
 3. Consider a system of two spinless identical particles. Show that the orbital angular momentum of their relative motion can only be even. $`( l`$ = 0$`, 2 , 4 ,\dots )`$ Show by direct calculation that, for the triplet spin states of two spin $`\frac{1}{2}`$ particles, $`\vec{\sigma}_{1} \cdot \vec{\sigma}_{2} \chi_{1 m} = \chi_{1 m}`$ for all allowed $`m`$. Show that for the singlet state $`\vec{\sigma}_{1} \cdot \vec{\sigma}_{2} \chi_{0 0} = - 3 \chi_{0 0}`$.
 
-4. A deuteron has spin 1. What are the possible spin and total angular momentum states of two
-
-deuterons. Include orbital angular momentum and assume the two particles are identical.
+4. A deuteron has spin 1. What are the possible spin and total angular momentum states of two deuterons. Include orbital angular momentum and assume the two particles are identical.
 
 5. The state of an electron is given by $`\psi = R ( r ) [ \sqrt{\frac{1}{3}} Y_{1 0} ( \theta ,\varphi ) \chi_{+} + \sqrt{\frac{2}{3}} Y_{1 1} ( \theta ,\varphi ) \chi_{-} ]`$. Find the possible values and the probabilities of the $`z`$ component of the electron’s total angular momentum. Do the same for the total angular momentum squared. What is the probability density for finding an electron with spin up at $`r,\theta ,\varphi`$? What is it for spin down? What is the probability density independent of spin? (Do not leave your answer in terms of spherical harmonics.)
 
@@ -17150,13 +17042,9 @@ deuterons. Include orbital angular momentum and assume the two particles are ide
 
 (a) What are the allowed values of $`s`$, the total spin quantum number.
 
-(b) Write down the states of maximum $`m_{s}`$ for the maximum $`s`$ state. Use $`| sm_{s} \rangle`$ notation and
+(b) Write down the states of maximum $`m_{s}`$ for the maximum $`s`$ state. Use $`| sm_{s} \rangle`$ notation and $`| s_{1} m_{1} \rangle | s_{2} m_{2} \rangle`$ for the product states.
 
-$`| s_{1} m_{1} \rangle | s_{2} m_{2} \rangle`$ for the product states.
-
-(c) Now apply the lowering operator to get the other $`m_{s}`$ states. You only need to go down
-
-to $`m_{s}`$ = 0 because of the obvious symmetry.
+(c) Now apply the lowering operator to get the other $`m_{s}`$ states. You only need to go down to $`m_{s}`$ = 0 because of the obvious symmetry.
 
 (d) Now find the states with the other values of $`s`$ in a similar way.
 
@@ -18192,9 +18080,7 @@ Compute the energy shifts in eV.
 
 2. Calculate the fine structure energy shifts (in eV!) for the $`n`$ = 1, $`n`$ = 2, and $`n`$ = 3 states of Hydrogen. Include the effects of relativistic corrections, the spin-orbit interaction, and the so-called Darwin term (due to Dirac equation). Do not include hyperfine splitting or the effects of an external magnetic field. (Note: I am not asking you to derive the equations.) Clearly list the states in spectroscopic notation and make a diagram showing the allowed electric dipole decays of these states.
 
-3. Calculate and show the splitting of the $`n`$ = 3 states (as in the previous problem) in a weak
-
-magnetic field B. Draw a diagram showing the states before and after the field is applied
+3. Calculate and show the splitting of the $`n`$ = 3 states (as in the previous problem) in a weak magnetic field B. Draw a diagram showing the states before and after the field is applied
 
 4. If the general form of the spin-orbit coupling for a particle of mass $`m`$ and spin $`\vec{S}`$ moving in a potential $`V ( r )`$ is $`H_{SO} = \tfrac{1}{2 m^{2} c^{2}} \vec{L} \cdot \vec{S} \tfrac{1}{r} \tfrac{dV}{dr}`$, what is the effect of that coupling on the spectrum of
 
@@ -18746,9 +18632,7 @@ l = 1 ) , \text{ and } ( s_{1} = \tfrac{1}{2} , \quad s_{2} = 1 \text{ and } l =
 
 # <a id="s-24-6-sample-test-problems"></a>24.6 Sample Test Problems
 
-1. Calculate the energy shifts to the four hyperfine ground states of hydrogen in a weak magnetic
-
-field. (The field is weak enough so that the perturbation is smaller than the hyperfine splitting.)
+1. Calculate the energy shifts to the four hyperfine ground states of hydrogen in a weak magnetic field. (The field is weak enough so that the perturbation is smaller than the hyperfine splitting.)
 
 2. Calculate the splitting for the ground state of positronium due to the spin-spin interaction between the electron and the positron. Try to correctly use the reduced mass where required but don’t let this detail keep you from working the problem.
 
@@ -19311,15 +19195,11 @@ P_{\ell} ( \cos \theta_{1 2} ) = \frac{4 \pi}{2 \ell + 1} \sum_{m = - \ell}^{\el
 
 Using the equation $`Y_{\ell ( - m )} = ( - 1 )^{\ell} Y_{\ell m}^{*}`$ , this sets us up to do our integrals nicely.
 
-2. Consider the lowest state of ortho-helium. What is the magnetic moment? That is what is
-
-the interaction with an external magnetic field?
+2. Consider the lowest state of ortho-helium. What is the magnetic moment? That is what is the interaction with an external magnetic field?
 
 3. A proton and neutron are bound together into a deuteron, the nucleus of an isotope of hydrogen. The binding energy is found to be -2.23 MeV for the nuclear ground state, an $`\ell`$ = 0 state. Assuming a potential of the form $`V ( r ) = V_{0} \tfrac{e^{- r/r 0}}{r/r_{0}}`$, with $`r_{0}`$ = 2$`. 8`$ Fermis, use the variational principle to estimate the strength of the potential.
 
-4. Use the variational principle with a gaussian trial wave function to prove that a one dimensional
-
-attractive potential will always have a bound state.
+4. Use the variational principle with a gaussian trial wave function to prove that a one dimensional attractive potential will always have a bound state.
 
 5. Use the variational principle to estimate the ground state energy of the anharmonic oscillator,
 
@@ -19426,13 +19306,9 @@ A set of guidelines, known as Hund’s rules, help us determine the quantum numb
 
 1. Couple the valence electrons (or holes) to give **maximum total spin**.
 
-2. Now choose the state of maximum $`\ell`$ (subject to the Pauli principle. The Pauli principle rather
+2. Now choose the state of maximum $`\ell`$ (subject to the Pauli principle. The Pauli principle rather than the rule, often determines everything here.)
 
-than the rule, often determines everything here.)
-
-3. If the shell is more than half full, pick the highest total angular momentum state $`j = \ell + s`$
-
-otherwise pick the lowest $`j = | \ell - s |`$.
+3. If the shell is more than half full, pick the highest total angular momentum state $`j = \ell + s`$ otherwise pick the lowest $`j = | \ell - s |`$.
 
 This method of adding up all the spins and all the Ls, is called LS or **Russel-Saunders coupling**. This method and these rule are quite good until the electrons become relativistic in heavy atoms and spin-orbit effects become comparable to the electron repulsion (arond Z=40). We choose the
 
@@ -19454,9 +19330,7 @@ A simpler set of rules has been developed for chemists, who can’t understand a
 
 </div>
 
-2. Now set the orbital states to make maximum $`m_{\ell}`$, and call this $`\ell`$, but don’t allow any two
-
-electrons to be in the same state (of $`m_{s}`$ and $`m_{\ell} )`$.
+2. Now set the orbital states to make maximum $`m_{\ell}`$, and call this $`\ell`$, but don’t allow any two electrons to be in the same state (of $`m_{s}`$ and $`m_{\ell} )`$.
 
 3. Couple to get $`j`$ as before.
 
@@ -19645,13 +19519,9 @@ s \frac{m_{\ell} 1}{- 1} 0 = \sum m \frac{↑↓ e}{↑} ↑_{s} = 1
 
 1. List the possible spectroscopic states that can arise in the following electronic configurations: $`( 1 s )^{2}`$, (2$`p )^{2}`$, (2$`p )^{3}`$, (2$`p )^{4}`$, and (3$`d )^{4}`$. Take the exclusion principle into account. Which should be the ground state?
 
-2. Use Hund’s rules to find the spectroscopic description of the ground states of the following
+2. Use Hund’s rules to find the spectroscopic description of the ground states of the following atoms: N$`( Z`$=7), K$`( Z`$=19), Sc$`( Z`$=21), Co$`( Z`$=27). Also determine the electronic configuration.
 
-atoms: N$`( Z`$=7), K$`( Z`$=19), Sc$`( Z`$=21), Co$`( Z`$=27). Also determine the electronic configuration.
-
-3. Use Hund’s rules to check the $`( S,L,J )`$ quantum numbers of the elements with $`Z`$ =14, 15, 24,
-
-30, 34.
+3. Use Hund’s rules to check the $`( S,L,J )`$ quantum numbers of the elements with $`Z`$ =14, 15, 24, 30, 34.
 
 # <a id="s-26-8-sample-test-problems"></a>26.8 Sample Test Problems
 
@@ -19674,9 +19544,7 @@ In this section, we will study the binding and excitation of simple molecules. A
 
 $`•`$ Excitation of electrons to higher states. $`E \sim 4`$ eV
 
-$`•`$ Vibrational modes (Harmonic Oscillator). Nuclei move slowly in background of electrons. $`E \sim`$
-
-0.1 eV
+$`•`$ Vibrational modes (Harmonic Oscillator). Nuclei move slowly in background of electrons. $`E \sim 0.1`$ eV
 
 $`•`$ Rotational modes $`( L = n \hbar )`$. Entire molecule rotates. $`E \sim 0.001`$ eV
 
@@ -19937,9 +19805,7 @@ _Figure 92 (p. 390)_
 
 1. In HCl, absorption lines with wave numbers in inverse centimeters of 83.03, 103.73, 124.30, 145.05, 165.51 and 185.86 have been observed. Are these rotational or vibrational transitions? Estimate some physical parameters of the molecule from these data.
 
-2. What is the ratio of the number of HCl molecules in the $`j`$ = 10 rotational state to that in the
-
-$`j`$ = 0 state if the gas is at room temperature?
+2. What is the ratio of the number of HCl molecules in the $`j`$ = 10 rotational state to that in the $`j`$ = 0 state if the gas is at room temperature?
 
 # <a id="s-27-10sample-test-problems"></a>27.10 Sample Test Problems
 
@@ -21272,13 +21138,9 @@ This gives a life time of about 50 psec.
 
 # <a id="s-29-15homework-problems"></a>29.15 Homework Problems
 
-1. The interaction term for Electric Quadrupole transitions correspond to a linear combination
+1. The interaction term for Electric Quadrupole transitions correspond to a linear combination of spherical harmonics, $`Y_{2 m}`$, and are parity even. Find the selection rules for E2 transitions.
 
-of spherical harmonics, $`Y_{2 m}`$, and are parity even. Find the selection rules for E2 transitions.
-
-2. Magnetic dipole transitions are due to an axial vector operator and hence are proportional to
-
-the $`Y_{1 m}`$ but do not change parity (unlike a vector operator). What are the M1 selection rules?
+2. Magnetic dipole transitions are due to an axial vector operator and hence are proportional to the $`Y_{1 m}`$ but do not change parity (unlike a vector operator). What are the M1 selection rules?
 
 3. Draw the energy level diagram for hydrogen up to $`n`$ = 3. Show the allowed E1 transitions.
 
@@ -21300,9 +21162,7 @@ Use another color to show the allowed E2 and M1 transitions.
 
 1. A hydrogen atom is in the $`n`$ = 5, $`{}^{3} D_{\tfrac{5}{2}}`$ state. To which states is it allowed to decay via electric dipole transitions? What will be the polarization for a photon emitted along the $`z`$-axis if $`m_{l}`$ decreases by one unit in the decay?
 
-2. Derive the selection rules for radiative transitions between hydrogen atom states in the electric
-
-dipole approximation. These are rules for the change in $`l,m`$, and $`s`$.
+2. Derive the selection rules for radiative transitions between hydrogen atom states in the electric dipole approximation. These are rules for the change in $`l,m`$, and $`s`$.
 
 3. State the selection rules for radiative transitions between hydrogen atom states in the electric dipole approximation. These are rules for the allowed changes in $`l,m , s`$, and parity. They can be easily derived from the matrix element given on the front of the test. Draw an energy level diagram (up to $`n`$ = 3) for hydrogen atoms in a weak $`B`$ field. Show the allowed E1 transitions from $`n`$ = 3 to $`n`$ = 1 on that diagram.
 

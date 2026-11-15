@@ -1826,9 +1826,7 @@ What are the eigen-energies and corresponding eigenstates of the system? (This i
 
 5. What are the eigenfunctions and eigenvalues of the operator $`L_{x} L_{y} + L_{y} L_{x}`$ for a spin 1 system?
 
-6. Calculate the $`\ell`$ = 1 operator for arbitrary rotations about the x-axis. Use the usual $`L_{z}`$
-
-eigenstates as a basis.
+6. Calculate the $`\ell`$ = 1 operator for arbitrary rotations about the x-axis. Use the usual $`L_{z}`$ eigenstates as a basis.
 
 7. An electron is in an eigenstate of $`S_{x}`$ with eigenvalue $`\frac{\hbar}{2}`$. What are the amplitudes to find the electron with a) $`S_{z}`$ = +$`\frac{\hbar}{2}`$, b) $`S_{z} = - \tfrac{\hbar}{2} , S_{y}`$ = +$`\tfrac{\hbar}{2} , S_{u}`$ = +$`\frac{\hbar}{2}`$, where the $`u`$-axis is assumed to be in the $`x - y`$ plane rotated by and angle $`\theta`$ from the $`x`$-axis.
 
@@ -1840,9 +1838,7 @@ eigenstates as a basis.
 
 9. Find the eigenstates of the harmonic oscillator lowering operator $`A`$. They should satisfy the equation $`A | \alpha \rangle = \alpha | \alpha \rangle`$. Do this by finding the coefficients $`\langle n | \alpha \rangle`$ where $`| n \rangle`$ is the $`n^{th}`$ energy eigenstate. Make sure that the states $`| \alpha \rangle`$ are normalized so that $`\langle \alpha | \alpha \rangle`$ = 1. Suppose $`| \alpha^{\prime} \rangle`$ is another such state with a different eigenvalue. Compute $`\langle \alpha^{\prime} | \alpha \rangle`$. Would you expect these states to be orthogonal?
 
-10. Find the matrix which represents the $`p^{2}`$ operator for a 1D harmonic oscillator. Write out the
-
-upper left $`5 \times 5`$ part of the matrix.
+10. Find the matrix which represents the $`p^{2}`$ operator for a 1D harmonic oscillator. Write out the upper left $`5 \times 5`$ part of the matrix.
 
 11. Let’s define the u axis to be in the x-z plane, between the positive x and z axes and at an angle of 30 degrees to the x axis. Given an unpolarized spin $`\frac{1}{2}`$ beam of intensity $`I`$ going into the following Stern-Gerlach apparati, what intensity comes out?
 
@@ -1878,9 +1874,7 @@ is the probability that a measurement of the $`x`$ component of spin yields zero
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p281" href="book.pdf#page=281" target="_blank" title="This page in the PDF"><sup>[p. 281]</sup></a>
 
-5. Find the (normalized) eigenvectors and eigenvalues of the $`S_{x}`$ (matrix) operator for $`s`$ = 1 in
-
-the usual $`( S_{z} )`$ basis.
+5. Find the (normalized) eigenvectors and eigenvalues of the $`S_{x}`$ (matrix) operator for $`s`$ = 1 in the usual $`( S_{z} )`$ basis.
 
 6. **\*** A spin $`\frac{1}{2}`$ particle is in a magnetic field in the $`x`$ direction giving a Hamiltonian $`H = \mu_{B} B\sigma_{x}`$.
 

@@ -978,13 +978,9 @@ This gives a life time of about 50 psec.
 
 # <a id="s-29-15homework-problems"></a>29.15 Homework Problems
 
-1. The interaction term for Electric Quadrupole transitions correspond to a linear combination
+1. The interaction term for Electric Quadrupole transitions correspond to a linear combination of spherical harmonics, $`Y_{2 m}`$, and are parity even. Find the selection rules for E2 transitions.
 
-of spherical harmonics, $`Y_{2 m}`$, and are parity even. Find the selection rules for E2 transitions.
-
-2. Magnetic dipole transitions are due to an axial vector operator and hence are proportional to
-
-the $`Y_{1 m}`$ but do not change parity (unlike a vector operator). What are the M1 selection rules?
+2. Magnetic dipole transitions are due to an axial vector operator and hence are proportional to the $`Y_{1 m}`$ but do not change parity (unlike a vector operator). What are the M1 selection rules?
 
 3. Draw the energy level diagram for hydrogen up to $`n`$ = 3. Show the allowed E1 transitions.
 
@@ -1006,9 +1002,7 @@ Use another color to show the allowed E2 and M1 transitions.
 
 1. A hydrogen atom is in the $`n`$ = 5, $`{}^{3} D_{\tfrac{5}{2}}`$ state. To which states is it allowed to decay via electric dipole transitions? What will be the polarization for a photon emitted along the $`z`$-axis if $`m_{l}`$ decreases by one unit in the decay?
 
-2. Derive the selection rules for radiative transitions between hydrogen atom states in the electric
-
-dipole approximation. These are rules for the change in $`l,m`$, and $`s`$.
+2. Derive the selection rules for radiative transitions between hydrogen atom states in the electric dipole approximation. These are rules for the change in $`l,m`$, and $`s`$.
 
 3. State the selection rules for radiative transitions between hydrogen atom states in the electric dipole approximation. These are rules for the allowed changes in $`l,m , s`$, and parity. They can be easily derived from the matrix element given on the front of the test. Draw an energy level diagram (up to $`n`$ = 3) for hydrogen atoms in a weak $`B`$ field. Show the allowed E1 transitions from $`n`$ = 3 to $`n`$ = 1 on that diagram.
 

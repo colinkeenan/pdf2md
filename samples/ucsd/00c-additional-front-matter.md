@@ -11,23 +11,15 @@
 
 These notes represent an experiment in the use of information technology in teaching an advanced undergraduate physics course, Quantum Physics at UCSD. The experiment has several goals.
 
-$`•`$ To make all the class material including a complete set of lecture notes available to students
+$`•`$ To make all the class material including a complete set of lecture notes available to students on the World-Wide Web.
 
-on the World-Wide Web.
+$`•`$ To make use of some simple multimedia technology to enhance the class notes as a learning tool compared to a conventional textbook.
 
-$`•`$ To make use of some simple multimedia technology to enhance the class notes as a learning
-
-tool compared to a conventional textbook.
-
-$`•`$ To present a complex subject to students in several different ways so that each student can
-
-use the learning techniques best suited to that individual.
+$`•`$ To present a complex subject to students in several different ways so that each student can use the learning techniques best suited to that individual.
 
 $`•`$ To get some experience with the use of multimedia technologies in teaching advanced courses.
 
-$`•`$ To produce course material that might be appropriate for distance learning or self-paced courses
-
-in the future.
+$`•`$ To produce course material that might be appropriate for distance learning or self-paced courses in the future.
 
 The current set of notes covers a 3 quarter course at UCSD, from the beginning of Quantum Mechanics to the quantization of the electromagnetic field and the Dirac equation. The notes for the last quarter should be considered to be a first draft.
 
