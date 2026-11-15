@@ -31,7 +31,7 @@ fn data_dir() -> Option<PathBuf> {
 
 /// The Python that has marker installed: `PDF2MD_SCAN_PYTHON`, or the
 /// environment set up as the README describes.
-fn python() -> Option<PathBuf> {
+pub(crate) fn python() -> Option<PathBuf> {
     if let Some(p) = std::env::var_os("PDF2MD_SCAN_PYTHON") {
         return Some(PathBuf::from(p));
     }

@@ -1228,7 +1228,7 @@ fn check_list(book: &Book) -> Option<String> {
     let bold = items.iter().filter(|(_, l)| l.ends_with("**bold?**")).count();
     let bold = if bold == 0 { String::new() } else { format!(" In {bold} of them the two readings set different letters bold: those are marked **bold?**, for a look at which letters are bold in the book.") };
     Some(format!(
-        "# Equations to check\n\nThese equations were read from their pictures as a different formula on a second reading (formatting aside), so compare them with the book. The bigger the difference, the likelier the reading is wrong. Correct one in the chapter file (or in book.md); the next conversion keeps your correction and drops it from this list.{bold}\n\n{}{}{}{lacking}",
+        "# Equations to check\n\nThese equations were read from their pictures as different formulas (formatting aside) by the two recognizers, or by the one in its two readings, so compare them with the book. The bigger the difference, the likelier the reading is wrong. Correct one in the chapter file (or in book.md); the next conversion keeps your correction and drops it from this list.{bold}\n\n{}{}{}{lacking}",
         group("Big differences (more than 10 symbols)", &|n| n > 10),
         group("Medium differences (4–10 symbols)", &|n| (4..=10).contains(&n)),
         group("Small differences (1–3 symbols)", &|n| n <= 3),

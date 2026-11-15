@@ -29,6 +29,8 @@ pub enum Reading {
 
 /// The recognizer script, written next to the cache when it is run.
 const SCRIPT: &str = include_str!("math_ocr.py");
+/// The second opinion on each reading, from the page reader's recognizer.
+const CHECK_SCRIPT: &str = include_str!("math_check.py");
 
 /// Stable name for an image: FNV-1a 64 of its data.
 pub fn key(png_base64: &str) -> String {
@@ -362,6 +364,10 @@ fn read_cached(dir: &std::path::Path, k: &str) -> Option<Reading> {
     } else if t.is_empty() {
         None
     } else {
+        // (the reading chosen from the two recognizers', where it is not
+        // the math recognizer's own)
+        let best = std::fs::read_to_string(dir.join(format!("{k}.best"))).unwrap_or_default();
+        let t = if best.trim().is_empty() { t } else { best.trim() };
         let latex = align_rows(&unglue(unwrap_cell(&strip_numbers(t))));
         // words set small under parts of the equation, found in the image
         let labels: Vec<(f32, String)> = std::fs::read_to_string(dir.join(format!("{k}.labels")))
@@ -701,6 +707,58 @@ fn lines_looked_at(dir: &std::path::Path, k: &str) -> bool {
 /// the recognizer once for all new ones. Images it could not read are
 /// missing from the answer.
 pub fn recognize(images: &[&str]) -> HashMap<String, Reading> {
+    let mut out = read_images(images);
+    second_opinion(images, &mut out);
+    out
+}
+
+/// Each equation read by the math recognizer is read once more by the
+/// recognizer of the page reader, where that is installed (the
+/// environment of scanned books): the two err in different places. The
+/// script keeps what it read (`KEY.surya`), writes the reading to use
+/// where it is not the math recognizer's (`KEY.best`), and says whether
+/// two readings agree (`KEY.agree`). Done once for each image.
+fn second_opinion(images: &[&str], out: &mut HashMap<String, Reading>) {
+    let Some(dir) = cache_dir() else { return };
+    let mut todo: Vec<(String, &str)> = Vec::new();
+    for &img in images {
+        let k = key(img);
+        let math = matches!(out.get(&k), Some(Reading::Latex(_))) && read_correction(&k).is_none();
+        if math && !dir.join(format!("{k}.agree")).exists() && !todo.iter().any(|(t, _)| *t == k) {
+            todo.push((k, img));
+        }
+    }
+    if todo.is_empty() {
+        return;
+    }
+    let Some(py) = crate::scan::python() else { return };
+    let pending = dir.join("pending-check");
+    if std::fs::create_dir_all(&pending).is_err() {
+        return;
+    }
+    for (k, img) in &todo {
+        if let Some(bytes) = base64_decode(img) {
+            let _ = std::fs::write(pending.join(format!("{k}.png")), bytes);
+        }
+    }
+    let script = dir.join("math_check.py");
+    let _ = std::fs::write(&script, CHECK_SCRIPT);
+    let _ = std::fs::write(dir.join("math_ocr.py"), SCRIPT);
+    eprintln!("Comparing {} equations with the page reader's recognizer…", todo.len());
+    crate::progress::report(Step::Check, 0, todo.len());
+    let ok = run_recognizer(Command::new(&py).arg(&script).arg(&pending).arg(&dir));
+    if !ok {
+        eprintln!("The page reader's recognizer failed; the equations are as the math recognizer read them.");
+    }
+    for (k, _) in &todo {
+        let _ = std::fs::remove_file(pending.join(format!("{k}.png")));
+        if let Some(r) = read_cached(&dir, k) {
+            out.insert(k.clone(), r);
+        }
+    }
+}
+
+fn read_images(images: &[&str]) -> HashMap<String, Reading> {
     let mut out = HashMap::new();
     let Some(dir) = cache_dir() else { return out };
     let mut todo: Vec<(String, &str)> = Vec::new();
@@ -1009,6 +1067,7 @@ fn run_recognizer(cmd: &mut Command) -> bool {
                 ("lines ", Step::Lines),
                 ("labels ", Step::Labels),
                 ("checking ", Step::Check),
+                ("comparing ", Step::Check),
             ]
             .iter()
             .find_map(|(word, step)| {
@@ -1031,7 +1090,9 @@ pub fn needs_check(k: &str) -> Option<usize> {
     if read_correction(k).is_some() {
         return None;
     }
-    let v = std::fs::read_to_string(cache_dir()?.join(format!("{k}.verify"))).ok()?;
+    // (what two recognizers say comes before what one says twice)
+    let dir = cache_dir()?;
+    let v = std::fs::read_to_string(dir.join(format!("{k}.agree"))).or_else(|_| std::fs::read_to_string(dir.join(format!("{k}.verify")))).ok()?;
     let n = v.trim().strip_prefix("check")?.trim();
     Some(n.parse().unwrap_or(1))
 }
