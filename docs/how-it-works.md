@@ -248,7 +248,7 @@ A displayed equation is a line that is mostly math and indented, or one with an 
 *Worked out on: Zee 2. One kind of PDF in part: the full-size integral sign and the full stop as a product dot inside an exponent are that book's typesetting.*
 
 * **A small stacked fraction** set above or below the line (a power of ½) is an exponent or an index. One on the line is a symbol of the line.
-* **An integral or sum inside an exponent** may be set with its sign as large as on the line, between the small letters before and after it: `e^{i \int d^{4} x …}`. A big operator that follows an exponent and is followed by more of it at the same height is inside the exponent. So is the dot of a product set as a raised full stop: `e^{- i k \cdot x}`. With small letters on both sides of it, it is a small dot among them, also after an index set higher: `e^{J \cdot K^{-1} \cdot J}`.
+* **An integral or sum inside an exponent** may be set with its sign as large as on the line, between the small letters before and after it: `e^{i \int d^{4} x …}`. A big operator that follows an exponent and is followed by more of it at the same height is inside the exponent. So is the dot of a product set as a raised full stop: `e^{- i k \cdot x}`. With small letters on both sides of it, it is a small dot among them, also after an index set higher: `e^{J \cdot K^{-1} \cdot J}`. Two signs in a row (∫∫ d⁴x d⁴y …) go in together.
 * **What stands under "lim"** is its index, all of it: `\lim_{N \to \infty}`.
 * **A stroke through a letter** (Feynman's slash, p̸ and ∂̸) is written as the letter with a "/" drawn back over it, `{p\!\!\!/}`: plain TeX, the same in every renderer. KaTeX sets `\not{p}` as a stroke beside the letter with a gap after it (Zee has about a thousand).
 

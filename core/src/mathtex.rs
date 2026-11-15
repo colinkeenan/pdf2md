@@ -2093,12 +2093,31 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
         let mut dots: Vec<usize> = Vec::new();
         let raised_dot = |it: &Item| it.tex.trim() == "." && it.src.len() == 1 && spans[it.src[0]].cy() < y0 - 0.25 * h;
         while let Some(op) = items.get(i).filter(|it| it.kind == Kind::Atom && (it.src.first().is_some_and(|&k| big_op(&spans[k]).is_some()) || raised_dot(it))) {
-            let end = i + 1 + items[i + 1..].iter().take_while(|it| it.kind != Kind::Atom).count();
-            let run: Vec<usize> = items[i + 1..end].iter().flat_map(|it| it.src.iter().copied()).collect();
+            // (two signs, ∫∫ d⁴x d⁴y …: what follows the second follows both)
+            let signs = if raised_dot(op) { 0 } else { items[i + 1..].iter().take_while(|it| it.kind == Kind::Atom && it.src.len() == 1 && big_op(&spans[it.src[0]]).is_some()).count() };
+            let start = i + 1 + signs;
+            let end = start + items[start..].iter().take_while(|it| it.kind != Kind::Atom).count();
+            let run: Vec<usize> = items[start..end].iter().flat_map(|it| it.src.iter().copied()).collect();
             // (the sign may have taken what follows it for its upper limit,
             // where its lower limit, the C of a line integral, led up to it)
             let (run, taken) = if run.is_empty() && op.src.len() > 2 { (op.src[1..].to_vec(), true) } else { (run, false) };
             let before: Vec<usize> = if folded.is_empty() { sups.iter().flat_map(|it| it.src.iter().copied()).collect() } else { folded.clone() };
+            // (an exponent of e that begins with the sign, e^{∫d⁴x …}: the
+            // small letters after the sign stand raised, and are many)
+            let opens = before.is_empty() && !run.is_empty() && out.last().is_some_and(|p| p.trim() == "e") && !raised_dot(op) && {
+                let main: Vec<&MSpan> = run.iter().map(|&k| &spans[k]).filter(|r| !r.cmex()).collect();
+                let hi = main.iter().map(|r| r.size).fold(0.0f32, f32::max);
+                let letters: usize = main.iter().map(|r| r.text.chars().filter(|c| !c.is_whitespace()).count()).sum();
+                let first = main.iter().min_by(|a, b| a.left.total_cmp(&b.left)).map_or("", |r| r.text.trim());
+                !main.is_empty() && hi < 0.85 * spans[op.src[0]].size.max(hi) + f32::EPSILON && main.iter().filter(|r| r.size >= 0.9 * hi).all(|r| r.cy() < y0 - 0.25 * h) && letters >= 4 && first.starts_with('d')
+            };
+            if opens {
+                folded.extend(items[i..start].iter().flat_map(|it| it.src.iter().copied()));
+                folded.extend(run);
+                prev_right = items[i..end].iter().map(|it| it.right).fold(prev_right, |a, r| Some(a.map_or(r, |a| a.max(r))));
+                i = end;
+                continue;
+            }
             let trace = std::env::var("PDF2MD_MATHDEBUG").is_ok_and(|v| v == "3");
             if run.is_empty() || before.is_empty() || out.is_empty() || items[i + 1..end].iter().chain(sups.iter().copied()).any(|it| it.src.is_empty()) {
                 if trace {
@@ -2140,7 +2159,7 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
                 dots.push(op.src[0]);
             }
             folded = before;
-            folded.extend(op.src.iter().copied());
+            folded.extend(items[i..start].iter().flat_map(|it| it.src.iter().copied()));
             if !taken {
                 folded.extend(run);
             }
