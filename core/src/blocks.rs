@@ -2092,6 +2092,17 @@ impl Builder<'_> {
                 return;
             }
         }
+        // a double name cut after its dash ("Stern–" / "Gerlach", "Clebsch-"
+        // / "Gordan"): the dash stays and no space comes in
+        if let (Some(Inline::Text(a)), Some(Inline::Text(b))) = (self.para.last_mut(), inl.first()) {
+            let mut end = a.chars().rev();
+            let dash = matches!(end.next(), Some('-' | '–')) && end.next().is_some_and(char::is_alphabetic);
+            if dash && b.starts_with(char::is_uppercase) {
+                a.push_str(b);
+                self.para.extend(inl.into_iter().skip(1));
+                return;
+            }
+        }
         push_text(&mut self.para, " ");
         for i in inl {
             match i {

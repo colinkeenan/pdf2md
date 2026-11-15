@@ -3177,7 +3177,7 @@ The **independent fields** are considered to be the 4 components of $`\psi`$ and
 \left( \gamma_{\mu} \frac{\partial}{\partial x_{\mu}} + \frac{mc}{\hbar} \right) \psi = 0
 ```
 
-This **gives us the Dirac equation** indicating that this Lagrangian is the right one. The Euler- Lagrange equation derived using the fields $`\psi`$ is the **Dirac adjoint equation**,
+This **gives us the Dirac equation** indicating that this Lagrangian is the right one. The Euler-Lagrange equation derived using the fields $`\psi`$ is the **Dirac adjoint equation**,
 
 ```math
 \frac{\partial}{\partial x_{\mu}} \left( \frac{\partial \mathcal{L}}{\partial ( \partial \psi /\partial x_{\mu} )} \right) - \frac{\partial \mathcal{L}}{\partial \psi} = 0

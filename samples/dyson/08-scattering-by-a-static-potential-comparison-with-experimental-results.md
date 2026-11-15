@@ -980,7 +980,7 @@ Since $`Z_{\lambda}`$ is a Lorentz vector, the gradient must likewise be. So “
 
 ## References
 
-<a id="ref-20"></a>**[20]** Hans A. Bethe & Edwin E. Salpeter, _Quantum Mechanics of One- and Two-Electron Atoms_, Springer- Verlag, Berlin, 1957. Reissued by Plenum Publishing Co., New York, 1977, (paperback edition). This is a revised and updated version of the article Dyson cites, H. A. Bethe, “Quantenmechanik der Einund Zwei-Elektronenprobleme”, _Handbuch der Physik_, Bd. 24/1, Springer, Berlin, 1933. The relevant formula for Eq. (710) is to be found in the new work with exactly the same label, (3.26), on p. 17. Note that Bethe & Salpeter use Hartree’s “atomic units”, so that distances are measured in terms of $`a_{o}`$. [↩](#refback-20-1)
+<a id="ref-20"></a>**[20]** Hans A. Bethe & Edwin E. Salpeter, _Quantum Mechanics of One- and Two-Electron Atoms_, Springer-Verlag, Berlin, 1957. Reissued by Plenum Publishing Co., New York, 1977, (paperback edition). This is a revised and updated version of the article Dyson cites, H. A. Bethe, “Quantenmechanik der Einund Zwei-Elektronenprobleme”, _Handbuch der Physik_, Bd. 24/1, Springer, Berlin, 1933. The relevant formula for Eq. (710) is to be found in the new work with exactly the same label, (3.26), on p. 17. Note that Bethe & Salpeter use Hartree’s “atomic units”, so that distances are measured in terms of $`a_{o}`$. [↩](#refback-20-1)
 
 <a id="ref-21"></a>**[21]** M. Baranger, H. A. Bethe & R. P. Feynman, “Relativistic Corrections to the Lamb Shift”, _Phys. Rev._ **92** (1953) 482. [↩](#refback-21-1)
 

@@ -2332,7 +2332,7 @@ To proceed toward a field theory for electrons and quantization of the Dirac fie
 \left( \gamma_{\mu} \frac{\partial}{\partial x_{\mu}} + \frac{mc}{\hbar} \right) \psi = 0
 ```
 
-This **gives us the Dirac equation** indicating that this Lagrangian is the right one. The Euler- Lagrange equation derived using the fields $`\psi`$ is the **Dirac adjoint equation**,
+This **gives us the Dirac equation** indicating that this Lagrangian is the right one. The Euler-Lagrange equation derived using the fields $`\psi`$ is the **Dirac adjoint equation**,
 
 <div align="right"><a href="book.pdf#page=60" target="_blank" title="This page in the PDF"><sup>[p. 60]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">

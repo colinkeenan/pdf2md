@@ -2929,7 +2929,7 @@ To proceed toward a field theory for electrons and quantization of the Dirac fie
 \left( \gamma_{\mu} \frac{\partial}{\partial x_{\mu}} + \frac{mc}{\hbar} \right) \psi = 0
 ```
 
-This **gives us the Dirac equation** indicating that this Lagrangian is the right one. The Euler- Lagrange equation derived using the fields $`\psi`$ is the **Dirac adjoint equation**,
+This **gives us the Dirac equation** indicating that this Lagrangian is the right one. The Euler-Lagrange equation derived using the fields $`\psi`$ is the **Dirac adjoint equation**,
 
 <div align="right"><a href="book.pdf#page=60" target="_blank" title="This page in the PDF"><sup>[p. 60]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -23414,7 +23414,7 @@ Putting these two vectors together is like adding to $`\ell`$ = 1 states. We can
 3 \otimes 3 = 5_{S} \oplus 3_{A} \oplus 1_{S} .
 ```
 
-The **tensor we make when we just multiply two vectors together can be reduced into** **three irreducible (spherical) tensors**. These are the ones for which we can use the Wigner- Eckart theorem to derive selection rules. Under rotations of the coordinate axes, the rotation matrix for the 9 component Cartesian tensor will be block diagonal. It can be reduced into three spherical tensors. Under rotations the 5 component (traceless) symmetric tensor will always rotate into another 5 component symmetric tensor. The 3 component anti symmetric tensor will rotate into another antisymmetric tensor and the part proportional to the identity will rotate into the identity.
+The **tensor we make when we just multiply two vectors together can be reduced into** **three irreducible (spherical) tensors**. These are the ones for which we can use the Wigner-Eckart theorem to derive selection rules. Under rotations of the coordinate axes, the rotation matrix for the 9 component Cartesian tensor will be block diagonal. It can be reduced into three spherical tensors. Under rotations the 5 component (traceless) symmetric tensor will always rotate into another 5 component symmetric tensor. The 3 component anti symmetric tensor will rotate into another antisymmetric tensor and the part proportional to the identity will rotate into the identity.
 
 ```math
 ( \vec{k} \cdot \vec{r} ) ( \hat{\epsilon}^{( \lambda )} \cdot \vec{p}_{e} ) = \frac{1}{2} [ ( \vec{k} \cdot \vec{r} ) ( \hat{\epsilon}^{( \lambda )} \cdot \vec{p} ) + ( \vec{k} \cdot \vec{p} ) ( \hat{\epsilon}^{( \lambda )} \cdot \vec{r} ) ] + \frac{1}{2} [ ( \vec{k} \cdot \vec{r} ) ( \hat{\epsilon}^{( \lambda )} \cdot \vec{p} ) - ( \vec{k} \cdot \vec{p} ) ( \hat{\epsilon}^{( \lambda )} \cdot \vec{r} ) ]
@@ -27634,7 +27634,7 @@ The **independent fields** are considered to be the 4 components of $`\psi`$ and
 \left( \gamma_{\mu} \frac{\partial}{\partial x_{\mu}} + \frac{mc}{\hbar} \right) \psi = 0
 ```
 
-This **gives us the Dirac equation** indicating that this Lagrangian is the right one. The Euler- Lagrange equation derived using the fields $`\psi`$ is the **Dirac adjoint equation**,
+This **gives us the Dirac equation** indicating that this Lagrangian is the right one. The Euler-Lagrange equation derived using the fields $`\psi`$ is the **Dirac adjoint equation**,
 
 ```math
 \frac{\partial}{\partial x_{\mu}} \left( \frac{\partial \mathcal{L}}{\partial ( \partial \psi /\partial x_{\mu} )} \right) - \frac{\partial \mathcal{L}}{\partial \psi} = 0
