@@ -6142,11 +6142,7 @@ So now we shall apply the covariant methods, working in the IR, to solve a numbe
 
 <a id="fn-46"></a>**46.** In v.2, the Hermitian conjugate $`b_{m}^{*}`$ lacked the asterisk. [↩](#fnref-46)
 
-<a id="fn-47"></a>**47.** The argument of the exp function originally had the factor $`( t - t_{o} )`$; this has been replaced by the factor [↩](#fnref-47)
-
-```math
-( t - t^{\prime} ) .
-```
+<a id="fn-47"></a>**47.** The argument of the exp function originally had the factor $`( t - t_{o} )`$; this has been replaced by the factor $`( t - t^{\prime} )`$. [↩](#fnref-47)
 
 <a id="fn-48"></a>**48.** The function $`F_{\nu} ( k )`$ was written as a scalar, $`F ( k )`$. This is misleading; the right-hand side is a vector function, because it is linear in $`\gamma_{\nu}`$. So $`F ( k )`$ was promoted to $`F_{\nu} ( k )`$. [↩](#fnref-48)
 

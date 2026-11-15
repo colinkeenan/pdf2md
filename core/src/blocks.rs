@@ -1561,7 +1561,9 @@ fn display_flags(doc: &Doc, lines: &[Line], st: &Stats) -> Vec<bool> {
     for i in 1..lines.len() {
         let (l, above) = (&lines[i], &lines[i - 1]);
         let prose_above = !f[i - 1] && info[i - 1].1 >= 1 && above.right >= st.right - st.body;
-        if f[i] && !info[i].2 && prose_above && (l.left - above.left).abs() < 1.5 && l.top - above.top <= 1.6 * l.size && l.size >= 0.75 * above.size {
+        // (the line above may be the paragraph's first, set in from the margin)
+        let under = (l.left - above.left).abs() < 1.5 || ((l.left - st.left).abs() < 1.5 && above.left > l.left && above.left - l.left <= 2.0 * st.body);
+        if f[i] && !info[i].2 && prose_above && under && l.top - above.top <= 1.6 * l.size && l.size >= 0.75 * above.size {
             f[i] = false;
         }
     }
