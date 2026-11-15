@@ -93,7 +93,11 @@ $`\psi ( x )`$ continuous $`\frac{d\psi}{dx}`$ continous if $`V`$ finite
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p547" href="book.pdf#page=547" target="_blank" title="This page in the PDF"><sup>[p. 547]</sup></a>
 
+<div align="center">
+
 # <a id="s-harmonic-oscillator"></a>HARMONIC OSCILLATOR
+
+</div>
 
 ```math
 H = \tfrac{p^{2}}{2 m} + \tfrac{1}{2} m\omega^{2} x^{2} = \hbar \omega A^{\dagger} A + \tfrac{1}{2} \hbar \omega \quad 1 0 . 1 \quad E_{n} = ( n + \tfrac{1}{2} ) \hbar \omega \quad n = 0 , 1 , 2 \dots \quad 1 0 . 3
@@ -111,7 +115,11 @@ A = ( \sqrt{\frac{m\omega}{2 \hbar}} x + i \tfrac{p}{2 m \hbar \omega} \sqrt{) \
 A^{\dagger} | n \rangle = \sqrt{( n + 1 )} | n + 1 \rangle \quad A | n \rangle = \sqrt{( n )} | n - 1 \rangle \quad u_{0} ( x ) = ( {}_{\hbar \pi}^{m\omega} ) 4^{1} e^{- m\omega x^{2} / 2 \hbar}
 ```
 
+<div align="center">
+
 # <a id="s-angular-momentum"></a>ANGULAR MOMENTUM
+
+</div>
 
 ```math
 [ L_{i} ,L_{j} ] = i \hbar \epsilon_{ijk} L_{k} \quad [ L^{2} ,L_{i} ] = 0 \int Y_{\ell m}^{*} Y_{\ell^{\prime} m^{\prime}} d \Omega = \delta \ell \ell^{\prime} \delta_{mm^{\prime}}
@@ -161,7 +169,11 @@ S_{i} = \tfrac{\hbar}{2} \sigma_{i} \quad [ \sigma_{i} ,\sigma_{j} ] = 2 i\epsil
 S_{x} = \hbar \begin{pmatrix} 0 & \tfrac{1}{\sqrt{2}} & 0 \\ \tfrac{1}{\sqrt{2}} & 0 & \tfrac{1}{\sqrt{2}} \\ 0 & \tfrac{1}{\sqrt{2}} & 0 \end{pmatrix} \quad S_{y} = \hbar \begin{pmatrix} 0 & \tfrac{- i}{2}^{\surd} & 0 \\ \tfrac{i}{\sqrt{2}} & 0 & \tfrac{i}{\sqrt{2}}^{-} \\ 0 & \tfrac{i}{2}^{\surd} & 0 \end{pmatrix} \quad S_{z} = \hbar \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & - 1 \end{pmatrix} 1
 ```
 
+<div align="center">
+
 # <a id="s-hydrogen-atom"></a>HYDROGEN ATOM
+
+</div>
 
 ```math
 H = \tfrac{p^{2}}{2 \mu} - \tfrac{Ze^{2}}{r} \quad \psi_{n\ell m} = R_{n\ell} ( r ) Y_{\ell m} ( \theta ,\varphi ) \quad E_{n} = - \tfrac{Z^{2} \alpha^{2} \mu c^{2}}{2 n^{2}} = - {}^{1 3} \tfrac{. 6}{n^{2}} \text{ eV }

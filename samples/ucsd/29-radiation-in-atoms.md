@@ -41,13 +41,7 @@ Lets also assume that the field has **some frequency** $`\omega`$ and correspond
 
 where $`\vec{A}_{0}`$ is a real vector and we have again introduced the factor of 2 for convenience of splitting the cosine into two exponentials.
 
-We need to quantize the EM field into photons satisfying Plank’s original hypothesis, $`E = \hbar \omega`$. Lets start by writing $`A`$ **in terms of the number of photons in the field** (at frequency $`\omega`$ and wave
-
-<div align="right"><a href="book.pdf#page=398" target="_blank" title="This page in the PDF"><sup>[p. 398]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p399" href="book.pdf#page=399" target="_blank" title="This page in the PDF"><sup>[p. 399]</sup></a>
-
-vector $`\vec{k} )`$. Using classical E&M to compute the energy in a field (See Section 29.14.1) represented by a vector potential $`\vec{A} ( \vec{r} , t )`$ = 2$`\vec{A}_{0} \cos ( \vec{k} \cdot \vec{r} - \omega t )`$, we find that the energy inside a volume $`V`$ is
+We need to quantize the EM field into photons satisfying Plank’s original hypothesis, $`E = \hbar \omega`$. Lets start by writing $`A`$ **in terms of the number of photons in the field** (at frequency $`\omega`$ and wave<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=398" target="_blank" title="This page in the PDF"><sup>[p. 398]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p399" href="book.pdf#page=399" target="_blank" title="This page in the PDF"><sup>[p. 399]</sup></a></span> vector $`\vec{k}`$). Using classical E&M to compute the energy in a field (See Section 29.14.1) represented by a vector potential $`\vec{A} ( \vec{r} , t )`$ = 2$`\vec{A}_{0} \cos ( \vec{k} \cdot \vec{r} - \omega t )`$, we find that the energy inside a volume $`V`$ is
 
 ```math
 Energy = \frac{\omega^{2}}{2 \pi c^{2}} V | A_{0} |^{2} = N \hbar \omega .
@@ -123,13 +117,7 @@ We must sum (or integrate) over final states. The states are distinguishable so 
 
 # <a id="s-29-3-phase-space-the-density-of-final-states"></a>29.3 Phase Space: The Density of Final States
 
-We have some experience with calculating the number of states for fermions in a 3D box (See Section 13.1.1). For the box we had boundary conditions that the wavefunction go to zero at the wall of the box. Now we wish to know how many photon states are in a region of **phase space** centered on the wave vector $`\vec{k}`$ with (small) volume in k-space of $`d^{3} \vec{k}`$. (Remember $`\omega = | \vec{k} | c`$ for light.) We will assume for the sake of calculation that the photons are confined to a cubic volume in position space of $`V = L^{3}`$ and impose **periodic boundary conditions** on our fields. (Really we could require the fields to be zero on the boundaries of the box by choosing a sine wave. The PBC are equivalent to
-
-<div align="right"><a href="book.pdf#page=400" target="_blank" title="This page in the PDF"><sup>[p. 400]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p401" href="book.pdf#page=401" target="_blank" title="This page in the PDF"><sup>[p. 401]</sup></a>
-
-this but allow us to deal with single exponentials instead of real functions.) Our final result, the decay rate, will be independent of volume so we can let the volume go to infinity.
+We have some experience with calculating the number of states for fermions in a 3D box (See Section 13.1.1). For the box we had boundary conditions that the wavefunction go to zero at the wall of the box. Now we wish to know how many photon states are in a region of **phase space** centered on the wave vector $`\vec{k}`$ with (small) volume in k-space of $`d^{3} \vec{k}`$. (Remember $`\omega = | \vec{k} | c`$ for light.) We will assume for the sake of calculation that the photons are confined to a cubic volume in position space of $`V = L^{3}`$ and impose **periodic boundary conditions** on our fields. (Really we could require the fields to be zero on the boundaries of the box by choosing a sine wave. The PBC are equivalent to<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=400" target="_blank" title="This page in the PDF"><sup>[p. 400]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p401" href="book.pdf#page=401" target="_blank" title="This page in the PDF"><sup>[p. 401]</sup></a></span> this but allow us to deal with single exponentials instead of real functions.) Our final result, the decay rate, will be independent of volume so we can let the volume go to infinity.
 
 ```math
 k_{x} L = 2 \pi n_{x} \quad dn_{x} = \tfrac{L}{2 \pi} dk_{x}
@@ -287,8 +275,7 @@ We proceed with the calculation to find the E1 selection rules.
 
 We will attempt to clearly separate the terms due to $`\langle \varphi_{n} | \hat{\epsilon} \cdot \vec{r} | \varphi_{i} \rangle`$ for the sake of modularity of the calculation.
 
-The integral with **three spherical harmonics** in each term looks a bit difficult, but, we can use<br>
-a **Clebsch-Gordan series like the one in addition of angular momentum** to help us solve the problem. We will write the product of two spherical harmonics in terms of a sum of spherical harmonics. Its very similar to adding the angular momentum from the two $`Y`$ s. **Its the same** **series as we had for addition of angular momentum (up to a constant)**. (Note that things will be very simple if either the initial or the final state have $`\ell`$ = 0, a case we will work out below for transitions to s states.) The general formula for rewriting the product of two spherical harmonics (which are functions of the same coordinates) is
+The integral with **three spherical harmonics** in each term looks a bit difficult, but, we can use a **Clebsch-Gordan series like the one in addition of angular momentum** to help us solve the problem. We will write the product of two spherical harmonics in terms of a sum of spherical harmonics. Its very similar to adding the angular momentum from the two $`Y`$ s. **Its the same** **series as we had for addition of angular momentum (up to a constant)**. (Note that things will be very simple if either the initial or the final state have $`\ell`$ = 0, a case we will work out below for transitions to s states.) The general formula for rewriting the product of two spherical harmonics (which are functions of the same coordinates) is
 
 ```math
 Y_{\ell_{1} m_{1}} ( \theta ,\varphi ) Y_{\ell_{2} m_{2}} ( \theta ,\varphi ) = \sum_{\ell = | \ell_{1} - \ell_{2} |}^{\ell_{1} + \ell_{2}} \sqrt{( 2 \ell_{1} + 1 ) ( 2 \ell_{2} + 1 ) 4 \pi ( 2 \ell + 1 )} \langle \ell 0 | \ell_{1} \ell_{2} 0 0 \rangle \langle \ell ( m_{1} + m_{2} ) | \ell_{1} \ell_{2} m_{1} m_{2} \rangle Y_{\ell ( m_{1} + m_{2} )} ( \theta ,\varphi )
@@ -474,9 +461,9 @@ Lets pick two transverse polarization vectors (to sum over) that form a right ha
 
 The figure below shows the angles, basically picking the photon direction as the polar axis, and the $`\hat{\epsilon}^{( 1 )}`$ direction as what is usually called the x-axis.
 
-![Figure 93 (p. 407)](images/fig-p407-1.png)
+![Figure 97 (p. 407)](images/fig-p407-1.png)
 
-_Figure 93 (p. 407)_
+_Figure 97 (p. 407)_
 
 The projection of the vector $`\vec{r}_{ni}`$ into the transverse plan gives a factor of $`\sin \theta`$. It is then easy to see that
 
@@ -742,11 +729,11 @@ Since the energy of the photon is about 10 eV, the width is about $`1 0^{- 7}`$ 
 
 We have calculated the line shape due to the finite lifetime of a state. If we attempt to measure line widths, other phenomena, both of a quantum and non-quantum nature, can play a role in the observed line width. These are:
 
-$`•`$ Collision broadening,
+$`\bullet`$ Collision broadening,
 
-$`•`$ Doppler broadening, and
+$`\bullet`$ Doppler broadening, and
 
-$`•`$ Recoil.
+$`\bullet`$ Recoil.
 
 Collision broadening occurs when excited atoms or molecules have a large probability to change state when they collide with other atoms or molecules. If this is true, and it usually is, the mean time to collision is an important consideration when we are assessing the lifetime of a state. If the mean time between collisions is less than the lifetime, then the line-width will be dominated by collision broadening.
 
@@ -854,9 +841,9 @@ This optical pumping to achieve a population inversion can be done in a number o
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p415" href="book.pdf#page=415" target="_blank" title="This page in the PDF"><sup>[p. 415]</sup></a>
 
-![Figure 94 (p. 415)](images/fig-p415-1.png)
+![Figure 98 (p. 415)](images/fig-p415-1.png)
 
-_Figure 94 (p. 415)_
+_Figure 98 (p. 415)_
 
 He Ne
 
@@ -864,9 +851,9 @@ Another way to get the population inversion is just the use of a metastable stat
 
 A laser with a beam coming out if it would be made in a cavity with a half silvered mirror so that the radiation can build up inside the cavity, but some of the radiation leaks out to make the beam.
 
-![Figure 95 (p. 415)](images/fig-p415-2.png)
+![Figure 99 (p. 415)](images/fig-p415-2.png)
 
-_Figure 95 (p. 415)_
+_Figure 99 (p. 415)_
 
 <div align="right"><a href="book.pdf#page=415" target="_blank" title="This page in the PDF"><sup>[p. 415]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">

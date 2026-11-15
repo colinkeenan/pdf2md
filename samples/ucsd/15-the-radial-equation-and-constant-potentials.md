@@ -104,11 +104,7 @@ the **spherical Neumann function**. For small $`r`$, the Neumann function has th
 n_{\ell} ( \rho ) \to \frac{1 \cdot 3 \cdot 5 \cdot \dots ( 2 \ell + 1 )}{\rho^{\ell + 1}}
 ```
 
-<div align="center">
-
 The lowest $`\ell`$ **Bessel functions** (regular at the origin) solutions are listed below.
-
-</div>
 
 ```math
 j_{0} ( \rho ) = \frac{\sin \rho}{\rho}
@@ -208,29 +204,29 @@ We can see both **angular and radial excitations**.
 
 We now wish to find the **energy eigenstates** for a spherical potential well of radius $`a`$ and potential $`- V_{0}`$.
 
-![Figure 47 (p. 221)](images/fig-p221-1.png)
-
-_Figure 47 (p. 221)_
-
-![Figure 48 (p. 221)](images/fig-p221-2.png)
-
-_Figure 48 (p. 221)_
-
-![Figure 49 (p. 221)](images/fig-p221-3.png)
+![Figure 49 (p. 221)](images/fig-p221-1.png)
 
 _Figure 49 (p. 221)_
 
-![Figure 50 (p. 221)](images/fig-p221-4.png)
+![Figure 50 (p. 221)](images/fig-p221-2.png)
 
 _Figure 50 (p. 221)_
 
-![Figure 51 (p. 221)](images/fig-p221-5.png)
+![Figure 51 (p. 221)](images/fig-p221-3.png)
 
 _Figure 51 (p. 221)_
 
-![Figure 52 (p. 221)](images/fig-p221-6.png)
+![Figure 52 (p. 221)](images/fig-p221-4.png)
 
 _Figure 52 (p. 221)_
+
+![Figure 53 (p. 221)](images/fig-p221-5.png)
+
+_Figure 53 (p. 221)_
+
+![Figure 54 (p. 221)](images/fig-p221-6.png)
+
+_Figure 54 (p. 221)_
 
 We must use the Bessel function near the origin.
 
@@ -308,21 +304,21 @@ The number of solutions depends on the depth and radius of the well. There can e
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p223" href="book.pdf#page=223" target="_blank" title="This page in the PDF"><sup>[p. 223]</sup></a>
 
-![Figure 53 (p. 223)](images/fig-p223-1.png)
-
-_Figure 53 (p. 223)_
-
-![Figure 54 (p. 223)](images/fig-p223-2.png)
-
-_Figure 54 (p. 223)_
-
-![Figure 55 (p. 223)](images/fig-p223-3.png)
+![Figure 55 (p. 223)](images/fig-p223-1.png)
 
 _Figure 55 (p. 223)_
 
-![Figure 56 (p. 223)](images/fig-p223-4.png)
+![Figure 56 (p. 223)](images/fig-p223-2.png)
 
 _Figure 56 (p. 223)_
+
+![Figure 57 (p. 223)](images/fig-p223-3.png)
+
+_Figure 57 (p. 223)_
+
+![Figure 58 (p. 223)](images/fig-p223-4.png)
+
+_Figure 58 (p. 223)_
 
 # <a id="s-15-6-partial-wave-analysis-of-scattering"></a>15.6 Partial Wave Analysis of Scattering \*
 
@@ -375,9 +371,9 @@ The phase shifts must be computed by actually solving the problem for the partic
 
 In fact, for low energy scattering and short range potentials, the first term $`\ell`$ = 0 is often enough to solve the problem.
 
-![Figure 57 (p. 224)](images/fig-p224-1.png)
+![Figure 59 (p. 224)](images/fig-p224-1.png)
 
-_Figure 57 (p. 224)_
+_Figure 59 (p. 224)_
 
 Only the low $`\ell`$ partial waves get close enough to the origin to be affected by the potential.
 
@@ -407,25 +403,25 @@ k = \frac{2 \mu E}{\hbar^{2}}
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p225" href="book.pdf#page=225" target="_blank" title="This page in the PDF"><sup>[p. 225]</sup></a>
 
-![Figure 58 (p. 225)](images/fig-p225-1.png)
-
-_Figure 58 (p. 225)_
-
-![Figure 59 (p. 225)](images/fig-p225-2.png)
-
-_Figure 59 (p. 225)_
-
-![Figure 60 (p. 225)](images/fig-p225-3.png)
+![Figure 60 (p. 225)](images/fig-p225-1.png)
 
 _Figure 60 (p. 225)_
 
-![Figure 61 (p. 225)](images/fig-p225-4.png)
+![Figure 61 (p. 225)](images/fig-p225-2.png)
 
 _Figure 61 (p. 225)_
 
-![Figure 62 (p. 225)](images/fig-p225-5.png)
+![Figure 62 (p. 225)](images/fig-p225-3.png)
 
 _Figure 62 (p. 225)_
+
+![Figure 63 (p. 225)](images/fig-p225-4.png)
+
+_Figure 63 (p. 225)_
+
+![Figure 64 (p. 225)](images/fig-p225-5.png)
+
+_Figure 64 (p. 225)_
 
 Matching the logarithmic derivative, we get
 
@@ -495,9 +491,9 @@ k^{\prime} \cot ( k^{\prime} a ) = k \cot ( ka ) .
 
 There will be many solutions to this and the cross section will look like diffraction.
 
-![Figure 63 (p. 226)](images/fig-p226-1.png)
+![Figure 65 (p. 226)](images/fig-p226-1.png)
 
-_Figure 63 (p. 226)_
+_Figure 65 (p. 226)_
 
 # <a id="s-15-8-the-radial-equation-for-u-r-rr-r"></a>15.8 The Radial Equation for $`u ( r ) = rR ( r )`$ \*
 
@@ -559,11 +555,7 @@ For $`\ell`$ = 0, its easy to see that $`\sin \rho`$ and $`\cos \rho`$ are solut
 
 1. A particle has orbital angular momentum quantum number $`l`$ = 1 and is bound in the potential well $`V ( r ) = - V_{0}`$ for $`r<a`$ and $`V ( r )`$ = 0 elsewhere. Write down the form of the solution (in terms of known functions) in the two regions. Your solution should satisfy constraints at the origin and at infinity. Be sure to include angular dependence. Now use the boundary condition at $`r = a`$ to get one equation, the solution of which will quantize the energies. Do not bother to solve the equation.
 
-2. A particle of mass $`m`$ with 0 total angular momentum is in a 3 dimensional potential well
-
-```math
-V ( r ) = - V_{0} \text{ for } r<a ( \text{ otherwise } V ( r ) = 0 ) .
-```
+2. A particle of mass $`m`$ with 0 total angular momentum is in a 3 dimensional potential well $`V ( r ) = - V_{0}`$ for $`r<a`$ (otherwise $`V ( r )`$ = 0).
 
 a) Write down the form of the $`( l = 0 )`$ solution, to the time independent Schrödinger equation, inside the well, which is well behaved at at $`r`$ = 0. Specify the relationship between the particles energy and any parameters in your solution.
 
@@ -579,9 +571,7 @@ d) Find the transcendental equation which will determine the energy eigenvalues.
 
 4. A particle is confined to the inside of a sphere of radius $`a`$. Find the energies of the two lowest energy states for $`\ell`$ = 0. Write down (but do not solve) the equation for the energies for $`\ell`$ = 1.
 
-```math
-5 .
-```
+5.
 
 ---
 

@@ -75,6 +75,17 @@ pub(crate) fn is_contents_title(t: &str) -> bool {
     matches!(key(t).as_str(), "contents" | "tableofcontents")
 }
 
+/// "Chapter 3", "Appendix B", "CHAPTER IV": what a chapter is called by,
+/// on a line of its own above its name.
+pub(crate) fn is_chapter_label(t: &str) -> bool {
+    let mut w = t.split_whitespace();
+    let (Some(kind), Some(n), None) = (w.next(), w.next(), w.next()) else { return false };
+    let n = n.trim_end_matches(['.', ':']);
+    matches!(kind.to_lowercase().as_str(), "chapter" | "appendix")
+        && !n.is_empty()
+        && ((n.len() <= 3 && n.chars().all(|c| c.is_ascii_digit())) || (n.len() == 1 && n.chars().all(|c| c.is_ascii_uppercase())) || (n.len() <= 5 && n.chars().all(|c| "IVXL".contains(c))))
+}
+
 pub fn stats(doc: &Doc, pages: &[PageInfo]) -> Stats {
     let body = doc.body_size;
     let full = |p: &PageInfo, l: &Line| l.size == body && l.right - l.left > 0.5 * p.width;
@@ -112,6 +123,8 @@ pub fn stats(doc: &Doc, pages: &[PageInfo]) -> Stats {
     let mut counts: HashMap<i32, usize> = HashMap::new();
     let mut numbered: HashMap<i32, usize> = HashMap::new();
     let mut titled: HashMap<i32, usize> = HashMap::new();
+    // ("Chapter 3" alone on its line, in large type, its name under it)
+    let mut labelled: HashMap<i32, usize> = HashMap::new();
     for (pi, p) in pages.iter().enumerate() {
         if toc_pages.contains(&pi) {
             continue;
@@ -132,6 +145,9 @@ pub fn stats(doc: &Doc, pages: &[PageInfo]) -> Stats {
             if big {
                 *counts.entry(k).or_default() += 1;
             }
+            if big && is_chapter_label(&text) {
+                *labelled.entry(k).or_default() += 1;
+            }
             // "3 Theory of …", or the "3" alone on its own line
             let alone = next.is_none() && l.size >= 1.12 * body && l.spans.iter().all(|s| !doc.is_math(s));
             // (a number with its title on the line says more than a number
@@ -146,6 +162,7 @@ pub fn stats(doc: &Doc, pages: &[PageInfo]) -> Stats {
     let section_size = counts.iter().filter(|&(_, &c)| c >= 2).max_by_key(|&(&s, &c)| (c, s)).map(|(&s, _)| s as f32 / 10.0);
     let largest = |sizes: &HashMap<i32, usize>| sizes.iter().filter(|&(_, &c)| c >= 2).map(|(&s, _)| s).max();
     let chapter_size = largest(&titled)
+        .or_else(|| largest(&labelled))
         .or_else(|| largest(&numbered))
         .or_else(|| counts.into_iter().filter(|&(_, c)| c >= 2).max_by_key(|&(s, c)| (c, s)).map(|(s, _)| s))
         .map(|s| s as f32 / 10.0);
@@ -2164,7 +2181,8 @@ impl Builder<'_> {
             let page = match toc_split(&text) {
                 Some((_, page)) => {
                     // drop the page number and dot leaders from the last text piece
-                    if let Some(Inline::Text(t)) = inl.last_mut() {
+                    // (the last one to be seen: a mark of where the entry links to can follow it)
+                    if let Some(Inline::Text(t)) = inl.iter_mut().rev().find(|i| matches!(i, Inline::Text(_))) {
                         let trimmed = t.trim_end();
                         let cut = trimmed.rsplit_once(char::is_whitespace).map_or("", |(a, _)| a);
                         *t = cut.trim_end_matches(|c: char| c == '.' || c.is_whitespace()).to_string();
@@ -2522,6 +2540,12 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 {
                     if (*s0 - size).abs() < 0.5 && l.top - top <= 1.6 * size {
                         push_text(t0, " ");
+                        t0.extend(text.clone());
+                        merged = true;
+                    } else if (*s0 - size).abs() < 0.5 && l.top - top <= 3.0 * size && is_chapter_label(&plain(t0)) {
+                        // "Chapter 3" and, under it, the chapter's name:
+                        // one title in two lines, as it is set
+                        t0.push(Inline::Break);
                         t0.extend(text.clone());
                         merged = true;
                     }

@@ -118,9 +118,9 @@ These should agree with the previous calculations in the two limits: B small, or
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p350" href="book.pdf#page=350" target="_blank" title="This page in the PDF"><sup>[p. 350]</sup></a>
 
-![Figure 80 (p. 350)](images/fig-p350-1.png)
+![Figure 83 (p. 350)](images/fig-p350-1.png)
 
-_Figure 80 (p. 350)_
+_Figure 83 (p. 350)_
 
 We can make a more general calculation, in which the interaction of the nuclear magnetic moment is of the same order as the electron. This occurs in muonic hydrogen or positronium. \* See Example 24.3.6: The Hyperfine Splitting in an Intermediate B Field.\*
 
@@ -500,11 +500,7 @@ We will sometimes group the constants such that
 
 2. Consider positronium, a hydrogen-like atom consisting of an electron and a positron (antielectron). Calculate the fine structure of positronium for $`n`$ = 1 and $`n`$ = 2. Determine the hyperfine structure for the ground state. Compute the energy shifts in eV.
 
-3. List the spectroscopic states allowed that arise from combining $`( s = \tfrac{1}{2} \ \text{with} l = 3 )`$, $`( s`$ = 2 with
-
-```math
-l = 1 ) , \text{ and } ( s_{1} = \tfrac{1}{2} , \quad s_{2} = 1 \text{ and } l = 4 ) .
-```
+3. List the spectroscopic states allowed that arise from combining $`( s = \tfrac{1}{2} \ \text{with} l = 3 )`$, $`( s = 2 \ \text{with} l = 1 )`$, and $`( s_{1} = \tfrac{1}{2} , \quad s_{2} = 1 \text{ and } l = 4 )`$.
 
 # <a id="s-24-6-sample-test-problems"></a>24.6 Sample Test Problems
 

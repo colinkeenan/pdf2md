@@ -64,6 +64,18 @@ fn to_roman(mut n: u32) -> String {
 }
 
 pub fn prepare(doc: &Doc) -> Vec<PageInfo> {
+    // A line of words that ends page after page, at the foot ("© The
+    // Author" under every page), is no text of the book.
+    // (Without the brackets that strokes of a drawing on the page were
+    // taken for, and put into it.)
+    let foot = |p: &crate::layout::Page| p.lines.last().filter(|l| l.top > p.height * 0.86).map(|l| plain_text(l).replace(['(', ')', '⟨', '⟩', '[', ']', '{', '}', '|'], "").trim().to_string()).filter(|t| t.chars().filter(|c| c.is_alphabetic()).count() >= 4);
+    let mut feet: std::collections::HashMap<String, usize> = std::collections::HashMap::new();
+    for p in &doc.pages {
+        if let Some(t) = foot(p) {
+            *feet.entry(t).or_default() += 1;
+        }
+    }
+    feet.retain(|_, n| *n >= 8 && *n * 4 >= doc.pages.len());
     let mut pages: Vec<PageInfo> = doc
         .pages
         .iter()
@@ -71,6 +83,9 @@ pub fn prepare(doc: &Doc) -> Vec<PageInfo> {
         .map(|(index, p)| {
             let mut lines = p.lines.clone();
             let mut label = None;
+            if foot(p).is_some_and(|t| feet.contains_key(&t)) {
+                lines.pop();
+            }
 
             // Running header: the first line, close to the top edge, with a
             // clear gap below it. Its first or last word may be the page number.

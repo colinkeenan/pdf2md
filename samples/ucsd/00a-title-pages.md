@@ -7,11 +7,15 @@
 
 # Title Pages
 
+<div align="center">
+
 # <a id="s-quantum-physics"></a>Quantum Physics
 
 # <a id="s-ucsd-physics-130"></a>(UCSD Physics 130)
 
 April 2, 2003
+
+</div>
 
 ---
 

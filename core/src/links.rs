@@ -221,6 +221,12 @@ fn link_entries(
         };
         if let Some(ci) = (1..chapters.len()).find(|&c| {
             let ck = key(&chapters[c].title);
+            // ("Chapter 3 Waves" is "3 Waves" in the contents, "Appendix B
+            // Units" is "B Units")
+            let labelled = crate::blocks::is_chapter_label(&chapters[c].title.split_whitespace().take(2).collect::<Vec<_>>().join(" "));
+            if labelled && ck.strip_prefix("chapter").or_else(|| ck.strip_prefix("appendix")) == Some(k.as_str()) {
+                return true;
+            }
             ck == k || fuzzy_eq(&ck, &k) || (k.len() >= 8 && ck.starts_with(&k)) || starts_there(c)
         }) {
             let mut t = vec![Inline::Link { text, href: format!("{}.md", chapters[ci].slug) }];
@@ -1118,7 +1124,14 @@ pub fn caption(inl: &[Inline]) -> Option<(&'static str, String)> {
         return Some(("figure", n));
     }
     let first = inl.iter().find(|x| !matches!(x, Inline::Anchor(_) | Inline::PageLink(_) | Inline::Source(_)))?;
-    let Inline::Strong(t) = first else { return None };
+    // (or, in ordinary type, with a colon after the number, as LaTeX sets
+    // a caption: "Figure 4.1: The levels of …")
+    let colon = |t: &str| t.split_whitespace().nth(1).is_some_and(|n| n.ends_with(':') && n.len() > 1);
+    let t = match first {
+        Inline::Strong(t) => t,
+        Inline::Text(t) if colon(t) => t,
+        _ => return None,
+    };
     let (kind, rest) = match t.trim_start() {
         t if t.starts_with("Figure ") => ("figure", &t[7..]),
         t if t.starts_with("Table ") => ("table", &t[6..]),
@@ -1348,6 +1361,8 @@ mod tests {
         assert_eq!(caption(&[Inline::Strong("Table 2.1".into())]), Some(("table", "2.1".into())));
         // prose, not a caption
         assert_eq!(caption(&[Inline::Text("Figure 4.1 shows the levels".into())]), None);
+        assert_eq!(caption(&[Inline::Text("Figure 4.1: The levels".into())]), Some(("figure", "4.1".into())));
+        assert_eq!(caption(&[Inline::Text("Table B.2: Constants".into())]), Some(("table", "B.2".into())));
         assert!(starts_like_caption("Fig. 3.12 Energy levels"));
         assert!(starts_like_caption("Table 2.1 Solutions"));
         assert!(!starts_like_caption("Figures of merit"));

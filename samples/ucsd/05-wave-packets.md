@@ -49,27 +49,15 @@ The normalizations of $`f ( x )`$ and $`A ( k )`$ are the same (with this **symm
 \int_{-\infty}^{\infty} f^{*} ( x ) f ( x ) dx = \int_{-\infty}^{\infty} A^{*} ( k ) A ( k ) dk
 ```
 
-We understand $`f ( x )`$ as a **wave packet** made up of definite momentum terms $`e^{ikx}`$. The coefficient of each term is $`A ( k )`$. The probability for a particle to be found in a region $`dx`$ around some value of
-
-<div align="right"><a href="book.pdf#page=100" target="_blank" title="This page in the PDF"><sup>[p. 100]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p101" href="book.pdf#page=101" target="_blank" title="This page in the PDF"><sup>[p. 101]</sup></a>
-
-$`x`$ is $`| f ( x ) |^{2} dx`$. The probability for a particle to have wave number in region $`dk`$ around some value of $`k`$ is $`| A ( k ) |^{2} dk`$. (Remember that $`p = \hbar k`$ so the momentum distribution is very closely related. We work with $`k`$ for a while for economy of notation.)
+We understand $`f ( x )`$ as a **wave packet** made up of definite momentum terms $`e^{ikx}`$. The coefficient of each term is $`A ( k )`$. The probability for a particle to be found in a region $`dx`$ around some value of<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=100" target="_blank" title="This page in the PDF"><sup>[p. 100]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p101" href="book.pdf#page=101" target="_blank" title="This page in the PDF"><sup>[p. 101]</sup></a></span> $`x`$ is $`| f ( x ) |^{2} dx`$. The probability for a particle to have wave number in region $`dk`$ around some value of $`k`$ is $`| A ( k ) |^{2} dk`$. (Remember that $`p = \hbar k`$ so the momentum distribution is very closely related. We work with $`k`$ for a while for economy of notation.)
 
 # <a id="s-5-2-two-examples-of-localized-wave-packets"></a>5.2 Two Examples of Localized Wave Packets
 
 Lets now try **two examples of a wave packet localized in** $`k`$ and properly normalized at $`t`$ = 0.
 
-<div align="center">
-
 1. A “square” packet: $`A ( k ) = \sqrt{\tfrac{1}{a}}`$ for $`k_{0} - \tfrac{a}{2} <k<k_{0} + \tfrac{a}{2}`$ and 0 elsewhere.
 
-</div>
-
-```math
-2 . A \text{ Gaussian packet } : A ( k ) = \left( \tfrac{2 \alpha}{\pi} \right)^{1 / 4} e^{- \alpha ( k - k_{0} )^{2}} .
-```
+2. A Gaussian packet: $`A ( k ) = \left( \tfrac{2 \alpha}{\pi} \right)^{1 / 4} e^{- \alpha ( k - k_{0} )^{2}}`$.
 
 These are both localized in momentum about $`p = \hbar k_{0}`$.
 
@@ -119,11 +107,11 @@ also a Gaussian. We will show later that a Gaussian is the best one can do to lo
 
 In both of these cases of $`f ( x )`$ (transformed from a normalized $`A ( k )`$ localized in momentum space) we see
 
-$`•`$ A coefficient which **correctly normalizes** the state to 1,
+$`\bullet`$ A coefficient which **correctly normalizes** the state to 1,
 
-$`• e^{ik_{0} x}`$ – a **wave corresponding to momentum** $`\hbar k_{0}`$,
+$`\bullet e^{ik_{0} x}`$ – a **wave corresponding to momentum** $`\hbar k_{0}`$,
 
-$`•`$ and a packet function which is **localized** in $`x`$.
+$`\bullet`$ and a packet function which is **localized** in $`x`$.
 
 We have achieved our goal of finding **states that represent one free particle**. We see that we can have states which are localized both in position space and momentum space. We achieved this by making wave packets which are superpositions of states with definite momentum. The wave packets, while localized, have some width in $`x`$ and in $`p`$.
 
@@ -653,11 +641,7 @@ The convenient unit of energy (mass and momentum too) is the electron volt.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p111" href="book.pdf#page=111" target="_blank" title="This page in the PDF"><sup>[p. 111]</sup></a>
 
-<div align="center">
-
 Use the fine structure constant to avoid CGS units which are used in the textbook.
-
-</div>
 
 ```math
 \alpha = \frac{e^{2}}{\hbar c} = 1 / 1 3 7
@@ -789,13 +773,7 @@ Now estimate the width of the two probability distributions.
 
 ## <a id="s-5-7-2-the-gaussian-wave-packet"></a>5.7.2 The Gaussian Wave Packet \*
 
-Given the following one dimensional probability amplitude in the position variable x, compute the probability distribution in momentum space. Show that the uncertainty principle is roughly satisfied. $`\psi ( x )`$ = $`( \tfrac{\alpha}{\pi} ) \tfrac{1}{4} e^{- \alpha x^{2} / 2}`$
-
-<div align="right"><a href="book.pdf#page=112" target="_blank" title="This page in the PDF"><sup>[p. 112]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p113" href="book.pdf#page=113" target="_blank" title="This page in the PDF"><sup>[p. 113]</sup></a>
-
-## <a id="s-5-7-3-the-dirac-delta-function-wave-packet"></a>5.7.3 The Dirac Delta Function Wave Packet \*
+Given the following one dimensional probability amplitude in the position variable x, compute the probability distribution in momentum space. Show that the uncertainty principle is roughly satisfied. $`\psi ( x )`$ = $`( \tfrac{\alpha}{\pi} ) \tfrac{1}{4} e^{- \alpha x^{2} / 2}`$<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=112" target="_blank" title="This page in the PDF"><sup>[p. 112]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p113" href="book.pdf#page=113" target="_blank" title="This page in the PDF"><sup>[p. 113]</sup></a></span> **5.7.3 The Dirac Delta Function Wave Packet \***
 
 Given the following one dimensional probability amplitude in the position variable x, compute the probability distribution in momentum space. Show that the uncertainty principle is roughly satisfied. $`\psi ( x ) = \delta ( x - x_{0} )`$
 
@@ -929,12 +907,9 @@ Try non-relativistic formula first and verify approximation when we have the ene
 E = \frac{p^{2}}{2 m} = \frac{\hbar^{2}}{2 mr^{2}} = \frac{( \hbar c )^{2}}{2 mc^{2} r^{2}} = \frac{( 1 9 7 . 3 MeVF )^{2}}{2 ( 9 4 0 MeV ) ( 4 F )^{2}} \approx 1 . 3 MeV
 ```
 
-This is much less than 940 MeV so the non-relativistic approximation is very good.<br>
-The electron energy will be higher and its rest mass is only 0.51 MeV so it WILL be relativistic.
+This is much less than 940 MeV so the non-relativistic approximation is very good.
 
-```math
-\text{ This makes it easier } .
-```
+The electron energy will be higher and its rest mass is only 0.51 MeV so it WILL be relativistic. This makes it easier.
 
 ```math
 pr \approx \hbar
@@ -946,7 +921,8 @@ E = pc = \frac{\hbar c}{r} = \frac{1 9 7 . 3 MeVF}{4 F} \approx 5 0 MeV
 
 2. **\*** Assume that the potential for a neutron near a heavy nucleus is given by $`V ( r )`$ = 0 for $`r> 5`$ Fermis and $`V ( r ) = - V_{0}`$ for $`r< 5`$ Fermis. Use the uncertainty principle to estimate the minimum value of $`V_{0}`$ needed for the neutron to be bound to the nucleus.
 
-3. Use the uncertainty principle to estimate the ground state energy of Hydrogen.<br>
+3. Use the uncertainty principle to estimate the ground state energy of Hydrogen.
+
 **Answer**
 
 ```math

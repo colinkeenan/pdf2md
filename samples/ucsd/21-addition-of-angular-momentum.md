@@ -45,7 +45,11 @@ This is a very important result since we derived everything about angular moment
 
 As with the combination of independent spatial coordinates, we can make **product states** to describe the spins of two particles. These products just mean, for example, the spin of particle 1 is up **and** the spin of particle 2 is down. There are four possible (product) spin states when we combine two spin $`\frac{1}{2}`$ particles. These **product states are eigenstates of total** $`S_{z}`$ but not necessarily of total $`S^{2}`$. The states and their $`S_{z}`$ eigenvalues are given below.
 
+<div align="center">
+
 Product State Total $`S_{z}`$ eigenvalue
+
+</div>
 
 ```math
 \chi_{+}^{( 1 )} \chi_{+}^{( 2 )} \quad \hbar
@@ -125,11 +129,7 @@ J^{2} = L^{2} + 2 \vec{L} \cdot \vec{S} + S_{2}^{2}
 
 Since our eigenstates of $`J^{2}`$ and $`J_{z}`$ are also eigenstates of $`L^{2}`$ and $`S^{2}`$ (but not $`L_{z}`$ or $`S_{z}`$), these are ideal for computing the spin orbit interaction. In fact, they are going to be the true energy eigenstates, as rotational symmetry tells us they must.
 
-<div align="center">
-
 # <a id="s-21-3-adding-spin-2-1-to-integer-orbital-angular-momentum"></a>21.3 Adding Spin $`\frac{1}{2}`$ to Integer Orbital Angular Momentum
-
-</div>
 
 Our goal is to add orbital angular momentum with quantum number $`\ell`$ to spin $`\frac{1}{2}`$. We can show in several ways that, for $`\ell \neq 0`$, that the total angular momentum quantum number has **two possible** **values** $`j = \ell + \tfrac{1}{2}`$ **or** $`j = \ell - \tfrac{1}{2}`$**.** For $`\ell`$ = 0, only $`j = \tfrac{1}{2}`$ is allowed. First lets argue that this makes sense when we are adding two **vectors.** For example if we add a vector of length 3 to a vector of length 0.5, the resulting vector could take on a length between 2.5 and 3.5 For quantized angular momentum, we will only have the half integers allowed, rather than a continuous range. Also we know that the quantum numbers like $`\ell`$ are not exactly the length of the vector but are close. So these two values make sense physically.
 
@@ -185,9 +185,9 @@ The vector model qualitatively explains the limits.
 
 audio
 
-![Figure 77 (p. 314)](images/fig-p314-1.png)
+![Figure 80 (p. 314)](images/fig-p314-1.png)
 
-_Figure 77 (p. 314)_
+_Figure 80 (p. 314)_
 
 In general, $`j`$ takes on **every value between the maximum an minimum in integer steps.**
 

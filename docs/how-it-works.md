@@ -71,6 +71,15 @@ UCSD was the first book converted with rules written for others, and it is the s
 
 So "the same kind of PDF" carried the math and the prose, and did not carry the layout numbers.
 
+### What the sixth PDF showed
+
+Lucid's *Advanced Theoretical Physics* is again a TeX book, and again its math and prose carried over while its layout did not. It came out as 132 files named after its examples, with the title page in four of them and the first page of the contents as a code block. Four things had been fitted to the books before it:
+
+* it is printed for both sides of the paper, so its text stands 65 pixels further right on the odd pages than on the even ones, and every rule that asks "is this line at the margin?" was wrong on half the pages (now: the pages are moved onto one margin first). UCSD is printed the same way and had the same faults, unnoticed: paragraphs cut at page turns, the contents nested by page;
+* its chapters are called "Chapter 3" on a line of their own, above the name (now: such lines say the chapter size, after numbered titles, and the two lines are one title);
+* its pictures are JPEGs, and only PNGs were read (the equation pictures of an ebook are PNGs);
+* its body type is 12 pt, and a "tall bracket" was anything over 10.8 pt: every italic f became a bracket (now: taller than the book's own type).
+
 ### Known weak points for another book
 
 * **Which path a text PDF takes** is decided by whether it has Computer Modern or AMS fonts. Without them it is read as an ebook-made PDF. Zee 2 takes the right path only because it uses a few Computer Modern symbols beside its MathTime fonts. A book set wholly in another publisher's math fonts would be sent down the ebook path and its math fonts ignored (`blocks.rs` `is_text_math`).
@@ -209,7 +218,9 @@ This is the path for a PDF made with TeX or by a publisher's typesetting system,
 *Worked out on: Dyson, then Zee 2 (chapters numbered within parts, contents with the page at the right margin). Fitted: what counts as "larger" and "short" was set on these two.*
 
 * **Printed page numbers** come from the running head ("THE DIRAC THEORY 6") or from a lone number at the foot of the page. A page without one (the page a chapter opens on, an empty page) counts on from the page before, in figures or in Roman numerals, and the pages before the first numbered one count back to page 1.
-* **Chapters** start at headings in the chapter-title size: the most common large size that holds real words. Where chapters are numbered within parts ("IV.2"), that number's size is the chapter size, and a page that opens well down with a larger title than the sections' ("Preface", "Part I", "Appendix A") opens a file too. A frame or rule drawn around a title or its number is not a picture.
+* **Margins.** A book printed for both sides of the paper has its text further right on one side's pages. Where the full lines of the odd pages and of the even pages begin and end at places that differ by the same amount, the pages further right are moved over, so that the book has one left and one right margin (`layout.rs` `even_margins`; pictures are cut from where they really are).
+* **A line at the foot of page after page** (a copyright line under every page) is left out, like the running head.
+* **Chapters** start at headings in the chapter-title size: the most common large size that holds real words. A book that sets "Chapter 3" on a line of its own above the chapter's name says its chapter size by those lines, and the two lines are one title, written in two lines; the file is named by the name. Where chapters are numbered within parts ("IV.2"), that number's size is the chapter size, and a page that opens well down with a larger title than the sections' ("Preface", "Part I", "Appendix A") opens a file too. A frame or rule drawn around a title or its number is not a picture.
 * **The contents** are read as lines "title … page", with dots between or with the number at the right margin. The name of a part, in larger type and without a page, is an entry of its own.
 * **Section headings** are short lines that are wholly italic or bold with space above, or short plain lines with space above and below. Contents entries are matched to headings on the page they name, also when the wording differs a little. An italic line that starts with a small letter is not a heading. Nor is a line that leads straight into a displayed formula ("This can be rewritten as"), unless it is a styled title of a word or two.
 * **Heading levels.** In a book without section numbers, the indentation in the contents decides `##` or `###`, and a heading the contents do not list goes by its type size. In a book that numbers its sections, the number decides: `1.3` is `#` and `1.3.1` is `##`, or one level deeper each where the chapter titles are at least a quarter larger than the `1.3` headings. An unnumbered heading takes the level of the numbered headings of its size.

@@ -7,9 +7,7 @@
 
 # 34 Scattering of Photons
 
-In the scattering of photons, for example from an atom, an **initial state photon** with wave-number<br>
-$`\vec{k}`$ and polarization $`\hat{\epsilon}`$ is absorbed by the atom **and a final state photon** with wave-number $`\vec{k}^{\prime}`$ and polarization $`\hat{\epsilon}^{\prime}`$ is emitted. The atom may remain in the same state (elastic scattering) or it may<br>
-change to another state (inelastic). Any calculation we will do will use the **matrix element of the** **interaction Hamiltonian between initial and final states**.
+In the scattering of photons, for example from an atom, an **initial state photon** with wave-number $`\vec{k}`$ and polarization $`\hat{\epsilon}`$ is absorbed by the atom **and a final state photon** with wave-number $`\vec{k}^{\prime}`$ and polarization $`\hat{\epsilon}^{\prime}`$ is emitted. The atom may remain in the same state (elastic scattering) or it may change to another state (inelastic). Any calculation we will do will use the **matrix element of the** **interaction Hamiltonian between initial and final states**.
 
 ```math
 H_{ni} = \langle n ; \vec{k}^{\prime} \hat{\epsilon}^{( \alpha^{\prime} )} | H_{int} | i ; \vec{k} \hat{\epsilon}^{( \alpha )} \rangle
@@ -19,22 +17,9 @@ H_{ni} = \langle n ; \vec{k}^{\prime} \hat{\epsilon}^{( \alpha^{\prime} )} | H_{
 H_{int} = - \frac{e}{mc} \vec{A} ( x ) \cdot \vec{p} + \frac{e^{2}}{2 mc^{2}} \vec{A} \cdot \vec{A}
 ```
 
-The scattering process clearly requires terms in $`H_{int}`$ that **annihilate one photon and create**<br>
-**another**. The order does not matter. The $`\tfrac{e^{2}}{2 mc^{2}} \vec{A} \cdot \vec{A}`$ is the square of the Fourier decomposition of<br>
-the radiation field so it contains terms like $`a_{k^{\prime} ,\alpha^{\prime}}^{\dagger} a_{k,\alpha}`$ and $`a_{k,\alpha} a_{k^{\prime} ,\alpha^{\prime}}^{\dagger}`$ which are just what we want.<br>
-The $`- \tfrac{e}{mc} \vec{A} \cdot \vec{p}`$ term has both creation and annihilation operators in it but not products of them.<br>
-It changes the number of photons by plus or minus one, not by zero as required for the scattering<br>
-process. Nevertheless this part of the interaction could contribute in second order perturbation<br>
-theory, by absorbing one photon in a transition from the initial atomic state to an intermediate<br>
-state, then emitting another photon and making a transition to the final atomic state. While this<br>
-is higher order in perturbation theory, it is the same order in the electromagnetic coupling constant<br>
-$`e`$, which is what really counts when expanding in powers of $`\alpha`$. Therefore, we will need to **consider**<br>
-**the** $`\frac{e^{2}}{2 mc^{2}} \vec{A} \cdot \vec{A}`$ **term in first order and the** $`- \tfrac{e}{mc} \vec{A} \cdot \vec{p}`$ **term in second order** perturbation theory<br>
-to get an order $`\alpha`$ calculation of the matrix element.
+The scattering process clearly requires terms in $`H_{int}`$ that **annihilate one photon and create** **another**. The order does not matter. The $`\tfrac{e^{2}}{2 mc^{2}} \vec{A} \cdot \vec{A}`$ is the square of the Fourier decomposition of the radiation field so it contains terms like $`a_{k^{\prime} ,\alpha^{\prime}}^{\dagger} a_{k,\alpha}`$ and $`a_{k,\alpha} a_{k^{\prime} ,\alpha^{\prime}}^{\dagger}`$ which are just what we want. The $`- \tfrac{e}{mc} \vec{A} \cdot \vec{p}`$ term has both creation and annihilation operators in it but not products of them. It changes the number of photons by plus or minus one, not by zero as required for the scattering process. Nevertheless this part of the interaction could contribute in second order perturbation theory, by absorbing one photon in a transition from the initial atomic state to an intermediate state, then emitting another photon and making a transition to the final atomic state. While this is higher order in perturbation theory, it is the same order in the electromagnetic coupling constant $`e`$, which is what really counts when expanding in powers of $`\alpha`$. Therefore, we will need to **consider** **the** $`\frac{e^{2}}{2 mc^{2}} \vec{A} \cdot \vec{A}`$ **term in first order and the** $`- \tfrac{e}{mc} \vec{A} \cdot \vec{p}`$ **term in second order** perturbation theory to get an order $`\alpha`$ calculation of the matrix element.
 
-Start with the first order perturbation theory term. All the terms in the sum that do not annihi-<br>
-late the initial state photon and create the final state photon give zero. We will assume that the<br>
-wavelength of the photon’s is long compared to the size of the atom so that $`e^{i \vec{k} \cdot \vec{r}} \approx 1`$.
+Start with the first order perturbation theory term. All the terms in the sum that do not annihilate the initial state photon and create the final state photon give zero. We will assume that the wavelength of the photon’s is long compared to the size of the atom so that $`e^{i \vec{k} \cdot \vec{r}} \approx 1`$.
 
 ```math
 A_{\mu} ( x ) = \frac{1}{\sqrt{V}} \sum_{k\alpha}^{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
@@ -56,8 +41,7 @@ A_{\mu} ( x ) = \frac{1}{\sqrt{V}} \sum_{k\alpha}^{\sqrt{\frac{\hbar c^{2}}{2 \o
 = \frac{e^{2}}{2 mc^{2}} \frac{1}{V} \frac{\hbar c^{2}}{\sqrt{\omega^{\prime} \omega}} \epsilon_{\mu}^{( \alpha )} \epsilon_{\mu}^{( \alpha^{\prime} )} e^{- i ( \omega - \omega^{\prime} ) t} \delta_{ni}
 ```
 
-This is the matrix element $`H_{ni} ( t )`$. The **amplitude to be in the final state** $`| n ; \vec{k}^{\prime} \hat{\epsilon}^{( \alpha^{\prime} )} \rangle`$ **is given**<br>
-**by first order time dependent perturbation theory**.
+This is the matrix element $`H_{ni} ( t )`$. The **amplitude to be in the final state** $`| n ; \vec{k}^{\prime} \hat{\epsilon}^{( \alpha^{\prime} )} \rangle`$ **is given** **by first order time dependent perturbation theory**.
 
 ```math
 c_{n}^{( 1 )} ( t ) = \frac{1}{i \hbar} \int_{0}^{t} e^{i\omega_{ni} t^{\prime}} H_{ni} ( t^{\prime} ) dt^{\prime}
@@ -90,6 +74,10 @@ Now we very carefully put the interaction term into the formula for **second ord
 We can understand this formula as a second order transition from state $`| i \rangle`$ to state $`| n \rangle`$ through all possible intermediate states. The transition from the initial state to the intermediate state takes place at time $`t_{1}`$. The transition from the intermediate state to the final state takes place at time $`t_{2}`$.
 
 The **space-time diagram** below shows the three terms in $`c_{n} ( t )`$ Time is assumed to run upward in the diagrams.
+
+![Figure 101 (p. 464)](images/fig-p464-1.png)
+
+_Figure 101 (p. 464)_
 
 Diagram (c) represents the $`A^{2}`$ term in which one photon is absorbed and one emitted at the same<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=464" target="_blank" title="This page in the PDF"><sup>[p. 464]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p465" href="book.pdf#page=465" target="_blank" title="This page in the PDF"><sup>[p. 465]</sup></a></span> point. Diagrams (a) and (b) represent two second order terms. In diagram (a) the initial state photon is absorbed at time $`t_{1}`$, leaving the atom in an intermediate state which may or may not be the same as the initial (or final) atomic state. This intermediate state has no photons in the field. In diagram (b), the atom emits the final state photon at time $`t_{1}`$, leaving the atom in some intermediate state. The intermediate state $`| I \rangle`$ includes two photons in the field for this diagram. At time $`t_{2}`$ the atom absorbs the initial state photon.
 
@@ -172,6 +160,10 @@ The **classical radius of the electron** is defined to be $`r_{0} = \tfrac{e^{2}
 ```
 
 This is called the **Kramers-Heisenberg Formula**. Even now, the three (space-time) **Feynman** **diagrams** are visible as separate terms in the formula.
+
+![Figure 102 (p. 467)](images/fig-p467-1.png)
+
+_Figure 102 (p. 467)_
 
 ```math
 2
@@ -327,13 +319,7 @@ The $`\hbar \omega = \hbar \omega^{\prime}`$ denominators are much larger than $
 
 This scattering **cross section is of the order of the classical radius of the electron squared**, and is **independent of the frequency** of the light.
 
-The only dependence is on polarization. This is a good time to take a look at the meaning of the **polarization vectors** we’ve been carrying around in the calculation and at the lack of any
-
-<div align="right"><a href="book.pdf#page=470" target="_blank" title="This page in the PDF"><sup>[p. 470]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p471" href="book.pdf#page=471" target="_blank" title="This page in the PDF"><sup>[p. 471]</sup></a>
-
-wave-vectors for the initial and final state. A look back at the calculation shows that we calculated the transition rate from a state with one photon with wave-vector $`\vec{k}`$ and polarization $`\epsilon^{( \alpha )}`$ to a final state with polarization $`\epsilon^{( \alpha^{\prime} )}`$. We have **integrated over the final state wave vector magnitude,** **subject to the delta function** giving energy conservation, but, we have **not integrated over** **final state photon direction** yet, as indicated by the $`\frac{d\sigma}{d \Omega}`$. There is no explicit angular dependence but there is some **hidden in the dot product between initial and final polarization vectors,** **both of which must be transverse** to the direction of propagation. We are ready to compute four different differential cross sections corresponding to two initial polarizations times two final state photon polarizations. Alternatively, we average and/or sum, if we so choose.
+The only dependence is on polarization. This is a good time to take a look at the meaning of the **polarization vectors** we’ve been carrying around in the calculation and at the lack of any<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=470" target="_blank" title="This page in the PDF"><sup>[p. 470]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p471" href="book.pdf#page=471" target="_blank" title="This page in the PDF"><sup>[p. 471]</sup></a></span> wave-vectors for the initial and final state. A look back at the calculation shows that we calculated the transition rate from a state with one photon with wave-vector $`\vec{k}`$ and polarization $`\epsilon^{( \alpha )}`$ to a final state with polarization $`\epsilon^{( \alpha^{\prime} )}`$. We have **integrated over the final state wave vector magnitude,** **subject to the delta function** giving energy conservation, but, we have **not integrated over** **final state photon direction** yet, as indicated by the $`\frac{d\sigma}{d \Omega}`$. There is no explicit angular dependence but there is some **hidden in the dot product between initial and final polarization vectors,** **both of which must be transverse** to the direction of propagation. We are ready to compute four different differential cross sections corresponding to two initial polarizations times two final state photon polarizations. Alternatively, we average and/or sum, if we so choose.
 
 In the high energy approximation we have made, there is no dependence on the state of the atoms, so we are **free to choose our coordinate system** any way we want. Set the **z-axis to be along** **the direction of the initial photon** and set the x-axis so that the **scattered photon is in the** **x-z plane** $`( \varphi = 0 )`$. The scattered photon is at an angle $`\theta`$ to the initial photon direction and at $`\varphi`$ = 0. A reasonable set of **initial state polarization vectors** is
 

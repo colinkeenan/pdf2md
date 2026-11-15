@@ -87,13 +87,7 @@ If the first order term is zero or higher accuracy is required, the second order
 
 # <a id="s-28-2-sinusoidal-perturbations"></a>28.2 Sinusoidal Perturbations
 
-An important case is a pure sinusoidal oscillating (harmonic) perturbation. We can **make up** **any time dependence from a linear combination** of sine and cosine waves. We define our
-
-<div align="right"><a href="book.pdf#page=392" target="_blank" title="This page in the PDF"><sup>[p. 392]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p393" href="book.pdf#page=393" target="_blank" title="This page in the PDF"><sup>[p. 393]</sup></a>
-
-perturbation carefully.
+An important case is a pure sinusoidal oscillating (harmonic) perturbation. We can **make up** **any time dependence from a linear combination** of sine and cosine waves. We define our<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=392" target="_blank" title="This page in the PDF"><sup>[p. 392]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p393" href="book.pdf#page=393" target="_blank" title="This page in the PDF"><sup>[p. 393]</sup></a></span> perturbation carefully.
 
 ```math
 \mathcal{V} ( \vec{r} , t ) = 2 V ( \vec{r} ) \cos ( \omega t ) \to 2 V \cos ( \omega t ) = V \left( e^{i\omega t} + e^{- i\omega t} \right)

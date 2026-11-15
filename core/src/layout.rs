@@ -153,6 +153,11 @@ pub struct Page {
     /// Blocks read from images that go between the lines: program code
     /// (an image read as text) and horizontal rules. Height and block.
     pub codes: Vec<(f32, crate::Block)>,
+    /// How far to the left everything on this page was moved, to the
+    /// margin of the pages on the other side of the paper (see
+    /// `even_margins`); 0 on most pages. A place on the PDF page itself is
+    /// this much further right.
+    pub shift: f32,
 }
 
 /// A frame drawn in lines around text, or a grid of such lines: where its
@@ -271,6 +276,11 @@ pub fn clean_text(t: &str) -> String {
             '\u{2AF9}' => out.push('+'),
             '\u{2AFA}' => out.push('−'),
             '\u{2B48}' => out.push('·'),
+            // TeX's text companion fonts (TS1), where the PDF does not say
+            // what their glyphs are: the bullet of a list, the daggers
+            '\u{88}' => out.push('•'),
+            '\u{84}' => out.push('†'),
+            '\u{85}' => out.push('‡'),
             c if c.is_control() => {}
             c => out.push(c),
         }
@@ -461,6 +471,11 @@ pub fn read_drawings(doc: &mut Doc, path: &Path, pages: Option<(u32, u32)>) {
         }
         for (page, imgs) in doc.pages.iter_mut().zip(all(&parts, parse_svg_images)) {
             page.images = imgs;
+            // (a photograph in a book that is not typeset is left as it
+            // was: no image to be read)
+            if !tex_math {
+                page.images.retain(|im| !im.photo);
+            }
         }
         // A page that is one picture and no text (the book's cover) is
         // that picture, whatever kind of image it is: it is not read for
@@ -483,6 +498,71 @@ pub fn read_drawings(doc: &mut Doc, path: &Path, pages: Option<(u32, u32)>) {
         place_images(doc);
         join_split_equations(doc);
         title_words(doc);
+    }
+    even_margins(doc);
+}
+
+/// A book printed on both sides of the paper has its text further in on
+/// the right-hand pages than on the left-hand ones (the wider margin is at
+/// the spine). Everything after this goes by one left and one right margin
+/// for the book, so the pages with the wider left margin are moved over to
+/// the others': every place on them, and `Page::shift` says by how much
+/// (for what is cut from the PDF page afterwards).
+fn even_margins(doc: &mut Doc) {
+    let body = doc.body_size;
+    // where the full lines of the odd pages begin and end, and those of
+    // the even pages: most of them at the margins
+    let of_kind = |odd: bool| -> Option<(f32, f32)> {
+        let (mut lefts, mut rights): (HashMap<i32, usize>, HashMap<i32, usize>) = Default::default();
+        let mut lines = 0;
+        for p in doc.pages.iter().filter(|p| (p.number % 2 == 1) == odd) {
+            for l in p.lines.iter().filter(|l| l.size == body && l.right - l.left > 0.5 * p.width) {
+                *lefts.entry(l.left.round() as i32).or_default() += 1;
+                *rights.entry(l.right.round() as i32).or_default() += 1;
+                lines += 1;
+            }
+        }
+        let most = |counts: &HashMap<i32, usize>| counts.iter().max_by_key(|&(&v, &c)| (c, -v)).map(|(&v, &c)| (v as f32, c));
+        let ((left, n), (right, m)) = (most(&lefts)?, most(&rights)?);
+        (lines >= 40 && n * 3 >= lines && m * 3 >= lines).then_some((left, right))
+    };
+    let (Some((odd, odd_right)), Some((even, even_right))) = (of_kind(true), of_kind(false)) else { return };
+    // (both margins moved by the same: the text is as wide on both sides)
+    if (odd - even).abs() < body || ((odd - even) - (odd_right - even_right)).abs() > 2.0 {
+        return;
+    }
+    let by = (odd - even).abs();
+    let wider_odd = odd > even;
+    for page in doc.pages.iter_mut().filter(|p| (p.number % 2 == 1) == wider_odd) {
+        page.shift = by;
+        for l in &mut page.lines {
+            l.left -= by;
+            l.right -= by;
+            for s in &mut l.spans {
+                s.left -= by;
+            }
+            for r in &mut l.bars {
+                r.left -= by;
+                r.right -= by;
+            }
+        }
+        for r in page.rules.iter_mut().chain(page.shades.iter_mut().map(|(r, _)| r)) {
+            r.left -= by;
+            r.right -= by;
+        }
+        for f in page.figures.iter_mut().chain(page.frames.iter_mut()) {
+            f.left -= by;
+            f.right -= by;
+        }
+        for g in &mut page.grids {
+            for x in &mut g.xs {
+                *x -= by;
+            }
+        }
+        for i in &mut page.images {
+            i.left -= by;
+            i.right -= by;
+        }
     }
 }
 
@@ -1215,6 +1295,9 @@ pub struct PageImage {
     pub top: f32,
     pub bottom: f32,
     pub png_base64: String,
+    /// A JPEG (a photograph, a scanned drawing), not a PNG: `png_base64`
+    /// holds it all the same. Never a formula; a picture of a typeset book.
+    pub photo: bool,
 }
 
 /// Where the embedded images of each page stand, of any kind (PNG, JPEG),
@@ -1281,6 +1364,7 @@ pub fn parse_svg_images(svg: &str) -> Vec<Vec<PageImage>> {
             .unwrap_or([1.0, 0.0, 0.0, 1.0, 0.0, 0.0])
     };
     let place = |m: [f32; 6], x: f32, y: f32, w: f32, h: f32, data: String| {
+        let photo = data.starts_with("/9j/");
         let p = |x: f32, y: f32| (m[0] * x + m[2] * y + m[4], m[1] * x + m[3] * y + m[5]);
         let (a, b) = (p(x, y), p(x + w, y + h));
         PageImage {
@@ -1289,10 +1373,12 @@ pub fn parse_svg_images(svg: &str) -> Vec<Vec<PageImage>> {
             top: a.1.min(b.1) * 1.5,
             bottom: a.1.max(b.1) * 1.5,
             png_base64: data,
+            photo,
         }
     };
     let image = |tag: &str| -> Option<(f32, f32, f32, f32, String)> {
-        let data = attr(tag, "xlink:href")?.strip_prefix("data:image/png;base64,")?.to_string();
+        let href = attr(tag, "xlink:href")?;
+        let data = href.strip_prefix("data:image/png;base64,").or_else(|| href.strip_prefix("data:image/jpeg;base64,"))?.to_string();
         Some((num(tag, "x").unwrap_or(0.0), num(tag, "y").unwrap_or(0.0), num(tag, "width")?, num(tag, "height")?, data))
     };
     // <defs> of a single page, or shared by all pages at the top
@@ -1339,6 +1425,18 @@ pub fn parse_svg_images(svg: &str) -> Vec<Vec<PageImage>> {
 /// when it stands alone), or a figure if the recognizer says it is a
 /// drawing or cannot read it.
 fn place_images(doc: &mut Doc) {
+    // A typeset book sets its formulas in math fonts: an image in it is
+    // a picture, with a caption or without, and none is read as math.
+    let typeset = doc.fonts.iter().any(|f| {
+        let u = f.family.to_uppercase();
+        ["CMMI", "CMSY", "CMEX", "CMR", "MSAM", "MSBM"].iter().any(|p| u.starts_with(p))
+    });
+    // (a photograph in a book of another kind is left as it was: not read)
+    if !typeset {
+        for p in doc.pages.iter_mut() {
+            p.images.retain(|im| !im.photo);
+        }
+    }
     // "Fig. 2.6", or a bold "Figure 4.1" — not prose that starts with
     // "Figure 2.6 shows …"
     let is_caption = |l: &Line| {
@@ -1356,12 +1454,6 @@ fn place_images(doc: &mut Doc) {
                 // the picture ends its page, the caption starts the next
                 || (caption_follows && !page.lines.iter().any(|l| l.top >= im.bottom - 2.0) && !page.images.iter().any(|o| o.top >= im.bottom - 2.0)))
     };
-    // A typeset book sets its formulas in math fonts: an image in it is
-    // a picture, with a caption or without, and none is read as math.
-    let typeset = doc.fonts.iter().any(|f| {
-        let u = f.family.to_uppercase();
-        ["CMMI", "CMSY", "CMEX", "CMR", "MSAM", "MSBM"].iter().any(|p| u.starts_with(p))
-    });
     let captioned = |page: &Page, caption_follows: bool, im: &PageImage| typeset || captioned(page, caption_follows, im);
     let wanted: Vec<&str> = doc
         .pages
@@ -2010,6 +2102,16 @@ fn insert_delims(doc: &mut Doc, delims: Vec<Vec<Delim>>) {
             if as_text || page.lines.is_empty() {
                 continue;
             }
+            // (the sign of an integral round a closed path, ∮, is no
+            // bracket, though its loop is drawn like one)
+            if page.lines.iter().flat_map(|l| &l.spans).any(|s| is_cmex(s) && overlaps(s) && matches!(s.text.trim(), "H" | "I")) {
+                continue;
+            }
+            // (taller than the book's ordinary type: in 12 pt type an
+            // italic f is as tall as a tall bracket of a 10 pt book)
+            if d.bottom - d.top < 1.08 * body {
+                continue;
+            }
             for (k, l) in page.lines.iter_mut().enumerate() {
                 // A lost bracket can sit in the space inside a span ("c α"
                 // with the "(" between them): split such spans into words.
@@ -2606,6 +2708,7 @@ pub fn parse_xml_with(xml: &str, lost: &HashMap<String, bool>) -> Result<Doc, St
             images: Vec::new(),
             marks: Vec::new(),
             codes: Vec::new(),
+            shift: 0.0,
         })
         .collect();
 

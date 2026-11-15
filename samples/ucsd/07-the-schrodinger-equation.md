@@ -9,9 +9,9 @@
 
 Schrödinger developed a **differential equation for the time development of a wave function**. Since the Energy operator has a time derivative, the kinetic energy operator has space derivatives, and we expect the solutions to be traveling waves, it is natural to try an energy equation. The Schrödinger equation is the **operator statement that the kinetic energy plus the potential** **energy is equal to the total energy**.
 
-![Figure 31 (p. 126)](images/fig-p126-1.png)
+![Figure 33 (p. 126)](images/fig-p126-1.png)
 
-_Figure 31 (p. 126)_
+_Figure 33 (p. 126)_
 
 # <a id="s-7-1-deriving-the-equation-from-operators"></a>7.1 Deriving the Equation from Operators
 
@@ -187,11 +187,7 @@ and an equation in $`x`$ set equal to a constant
 
 which depends on the problem to be solved (through $`V ( x )`$).
 
-<div align="center">
-
 The $`x`$ equation is often called the **Time Independent Schrödinger Equation**.
-
-</div>
 
 ```math
 \frac{- \hbar^{2}}{2 m} \frac{\partial^{2} u ( x )}{\partial x^{2}} + V ( x ) u ( x ) = Eu ( x )
@@ -203,11 +199,7 @@ Here, $`E`$ is a constant. The **full time dependent solution** is.
 \psi ( x,t ) = u ( x ) e^{- iEt/ \hbar}
 ```
 
-<div align="center">
-
 \* See Example 7.6.1: Solve the Schrödinger equation for a constant potential $`V_{0} . *`$
-
-</div>
 
 # <a id="s-7-5-derivations-and-computations"></a>7.5 Derivations and Computations
 
@@ -339,13 +331,9 @@ These are not waves at all, but real exponentials. Note that these are solutions
 
 # <a id="s-7-7-sample-test-problems"></a>7.7 Sample Test Problems
 
-```math
-1 .
-```
+1.
 
-```math
-2 .
-```
+2.
 
 ---
 

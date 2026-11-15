@@ -229,17 +229,7 @@ We have all the elements to finish the calculation of the Hamiltonian. Before pu
 \mathcal{H} = - \frac{\partial A_{\mu}}{\partial x_{4}} \frac{\partial A_{\mu}}{\partial x_{4}}
 ```
 
-The remaining term has a dot product between polarization vectors which will be nonzero if the polarization vectors are the same. (Note that this simplification is possible because we have assumed no sources in the region.)
-
-<div align="right"><a href="book.pdf#page=446" target="_blank" title="This page in the PDF"><sup>[p. 446]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p447" href="book.pdf#page=447" target="_blank" title="This page in the PDF"><sup>[p. 447]</sup></a>
-
-<div align="center">
-
-The total Hamiltonian we are aiming at, is the integral of the Hamiltonian density.
-
-</div>
+The remaining term has a dot product between polarization vectors which will be nonzero if the polarization vectors are the same. (Note that this simplification is possible because we have assumed no sources in the region.)<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=446" target="_blank" title="This page in the PDF"><sup>[p. 446]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p447" href="book.pdf#page=447" target="_blank" title="This page in the PDF"><sup>[p. 447]</sup></a></span> The total Hamiltonian we are aiming at, is the integral of the Hamiltonian density.
 
 ```math
 H = \int d^{3} x \mathcal{H}
@@ -499,13 +489,7 @@ So these are definitely the raising and lowering operators. Of course the commut
 [ a_{k,\alpha} ,a_{k^{\prime} ,\alpha^{\prime}}^{\dagger} ] = \delta_{kk^{\prime}} \delta_{\alpha \alpha^{\prime}}
 ```
 
-(Note that all of our commutators are assumed to be taken at equal time.) The Hamiltonian is written in terms $`a`$ and $`a^{\dagger}`$ in the same way as for the 1D harmonic oscillator. Therefore, everything we know about the raising and lowering operators (See section 10.3) applies here, including the commutator with the Hamiltonian, the raising and lowering of energy eigenstates, and even the
-
-<div align="right"><a href="book.pdf#page=450" target="_blank" title="This page in the PDF"><sup>[p. 450]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p451" href="book.pdf#page=451" target="_blank" title="This page in the PDF"><sup>[p. 451]</sup></a>
-
-constants.
+(Note that all of our commutators are assumed to be taken at equal time.) The Hamiltonian is written in terms $`a`$ and $`a^{\dagger}`$ in the same way as for the 1D harmonic oscillator. Therefore, everything we know about the raising and lowering operators (See section 10.3) applies here, including the commutator with the Hamiltonian, the raising and lowering of energy eigenstates, and even the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=450" target="_blank" title="This page in the PDF"><sup>[p. 450]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p451" href="book.pdf#page=451" target="_blank" title="This page in the PDF"><sup>[p. 451]</sup></a></span> constants.
 
 ```math
 a_{k,\alpha} | n_{k,\alpha} \rangle = \sqrt{n_{k,\alpha}} | n_{k,\alpha} - 1 \rangle
@@ -663,11 +647,7 @@ For our purposes, we may remove the (infinite) constant energy due to the ground
 H = \sum_{k,\alpha} \hbar \omega N_{k,\alpha}
 ```
 
-<div align="center">
-
 With this subtraction, the energy of the vacuum state has been defined to be zero.
-
-</div>
 
 ```math
 H | 0 \rangle = 0
@@ -765,11 +745,7 @@ a_{k,\alpha} ( t ) = a_{k,\alpha} ( 0 ) e^{- i\omega t}
 a_{k,\alpha}^{\dagger} ( t ) = a_{k,\alpha}^{\dagger} ( 0 ) e^{i\omega t}
 ```
 
-<div align="center">
-
 We can now write the quantized radiation field in terms of the operators at $`t`$ = 0.
-
-</div>
 
 ```math
 A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha}^{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)

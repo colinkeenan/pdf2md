@@ -1055,11 +1055,18 @@ pub(crate) fn chapter_body(book: &Book, i: usize) -> String {
             // the book's own caption right after it ("Fig. 1.1 …"): that is
             // the caption; otherwise a visible one of ours, so a search for
             // "Figure" finds each picture
-            let next = ch.blocks[bi + 1..].iter().find(|b| !matches!(b.block, crate::Block::Anchor(_)));
-            if let Some(own) = next.and_then(|b| match &b.block {
+            // (several pictures side by side over one caption are that
+            // figure's, each of them)
+            let next = ch.blocks[bi + 1..].iter().find(|o| !matches!(o.block, crate::Block::Anchor(_)) && !(matches!(o.block, crate::Block::Figure { .. }) && o.page == b.page));
+            let own_caption = |b: &crate::Blk| match &b.block {
                 crate::Block::Para(inl) => crate::links::caption(inl).filter(|(kind, _)| *kind == "figure"),
                 _ => None,
-            }) {
+            };
+            // (or after one line under the pictures: the names of the
+            // people in them, above the caption)
+            let after = ch.blocks[bi + 1..].iter().filter(|o| !matches!(o.block, crate::Block::Anchor(_) | crate::Block::Figure { .. })).take_while(|o| o.page == b.page).nth(1);
+            let named = next.is_some_and(|o| matches!(&o.block, crate::Block::Para(inl) if crate::plain(inl).len() <= 120) && o.page == b.page);
+            if let Some(own) = next.and_then(own_caption).or_else(|| after.filter(|_| named).and_then(own_caption)) {
                 s.push_str(&format!("![Fig. {}]({})\n\n", own.1, figure_file(*page, *n)));
                 continue;
             }
@@ -1253,7 +1260,9 @@ pub(crate) fn write_figures(book: &Book, dir: &Path) {
         // pdftohtml pixels are 1.5 × points; 150 dpi is 150/72 px per point
         let dpi = 150.0f32;
         let px = |v: f32| (v / 1.5 * dpi / 72.0).round().max(0.0) as i64;
-        let (x, y) = (px(area.left - pad), px(area.top - pad));
+        // (on the page itself: see `layout::Page::shift`)
+        let shift = book.shifts.get(&page).copied().unwrap_or(0.0);
+        let (x, y) = (px(area.left + shift - pad), px(area.top - pad));
         let (w, h) = (px(area.right - area.left + 2.0 * pad), px(area.bottom - area.top + 2.0 * pad));
         let stem = file.with_extension("");
         let _ = std::process::Command::new("pdftocairo")

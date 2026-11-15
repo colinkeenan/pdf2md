@@ -7,11 +7,15 @@
 
 # Title Pages
 
+<div align="center">
+
 # <a id="s-quantum-physics"></a>Quantum Physics
 
 # <a id="s-ucsd-physics-130"></a>(UCSD Physics 130)
 
 April 2, 2003
+
+</div>
 
 ---
 
@@ -63,45 +67,45 @@ April 2, 2003
   - [1.38 The Classical Electromagnetic Field](#s-1-38-the-classical-electromagnetic-field) — [p. 47](#p47)
   - [1.39 Quantization of the EM Field](#s-1-39-quantization-of-the-em-field) — [p. 48](#p48)
 <span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=2" target="_blank" title="This page in the PDF"><sup>[p. 2]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p3" href="book.pdf#page=3" target="_blank" title="This page in the PDF"><sup>[p. 3]</sup></a></span><span style="display:block;clear:both"></span>
-      - [1.40 Scattering of Photons](#s-1-40-scattering-of-photons) — [p. 50](#p50)
-      - [1.41 Electron Self Energy](#s-1-41-electron-self-energy) — [p. 51](#p51)
-      - [1.42 The Dirac Equation](#s-1-42-the-dirac-equation) — [p. 53](#p53)
-      - [1.43 The Dirac Equation](#s-1-43-the-dirac-equation) — [p. 60](#p60)
-    - [2 The Problems with Classical Physics](#02-the-problems-with-classical-physics) — [pp. 63–82](#p63)
-      - [2.1 Black Body Radiation \*](#s-2-1-black-body-radiation) — [p. 64](#p64)
-      - [2.2 The Photoelectric Effect](#s-2-2-the-photoelectric-effect) — [p. 69](#p69)
-      - [2.3 The Rutherford Atom \*](#s-2-3-the-rutherford-atom) — [p. 71](#p71)
-      - [2.4 Atomic Spectra \*](#s-2-4-atomic-spectra) — [p. 73](#p73)
-        - [2.4.1 The Bohr Atom \*](#s-2-4-1-the-bohr-atom) — [p. 75](#p75)
-      - [2.5 Derivations and Computations](#s-2-5-derivations-and-computations) — [p. 77](#p77)
-        - [2.5.1 Black Body Radiation Formulas \*](#s-2-5-1-black-body-radiation-formulas) — [p. 77](#p77)
-        - [2.5.2 The Fine Structure Constant and the Coulomb Potential](#s-2-5-2-the-fine-structure-constant-and-the-coulomb-potential) — [p. 77](#p77)
-      - [2.6 Examples](#s-2-6-examples) — [p. 78](#p78)
-        - [2.6.1 The Solar Temperature \*](#s-2-6-1-the-solar-temperature) — [p. 78](#p78)
-        - [2.6.2 Black Body Radiation from the Early Universe \*](#s-2-6-2-black-body-radiation-from-the-early-universe) — [p. 79](#p79)
-        - [2.6.3 Compton Scattering \*](#s-2-6-3-compton-scattering) — [p. 79](#p79)
-        - [2.6.4 Rutherford’s Nuclear Size \*](#s-2-6-4-rutherford-s-nuclear-size) — [p. 81](#p81)
-      - [2.7 Sample Test Problems](#s-2-7-sample-test-problems) — [p. 82](#p82)
-    - [3 Diffraction](#03-diffraction) — [pp. 83–96](#p83)
-      - [3.1 Diffraction from Two Slits](#s-3-1-diffraction-from-two-slits) — [p. 83](#p83)
-      - [3.2 Single Slit Diffraction](#s-3-2-single-slit-diffraction) — [p. 86](#p86)
-      - [3.3 Diffraction from Crystals](#s-3-3-diffraction-from-crystals) — [p. 86](#p86)
-      - [3.4 The DeBroglie Wavelength](#s-3-4-the-debroglie-wavelength) — [p. 89](#p89)
-        - [3.4.1 Computing DeBroglie Wavelengths](#s-3-4-1-computing-debroglie-wavelengths) — [p. 90](#p90)
-      - [3.5 Wave Particle Duality (Thought Experiments)](#s-3-5-wave-particle-duality-thought-experiments) — [p. 91](#p91)
-      - [3.6 Examples](#s-3-6-examples) — [p. 95](#p95)
-        - [3.6.1 Intensity Distribution for Two Slit Diffraction \*](#s-3-6-1-intensity-distribution-for-two-slit-diffraction) — [p. 95](#p95)
-        - [3.6.2 Intensity Distribution for Single Slit Diffraction \*](#s-3-6-2-intensity-distribution-for-single-slit-diffraction) — [p. 95](#p95)
-      - [3.7 Sample Test Problems](#s-3-7-sample-test-problems) — [p. 96](#p96)
-    - [4 The Solution: Probability Amplitudes](#04-the-solution-probability-amplitudes) — [pp. 97–99](#p97)
-      - [4.1 Derivations and Computations](#s-4-1-derivations-and-computations) — [p. 98](#p98)
-        - [4.1.1 Review of Complex Numbers](#s-4-1-1-review-of-complex-numbers) — [p. 98](#p98)
-        - [4.1.2 Review of Traveling Waves](#s-4-1-2-review-of-traveling-waves) — [p. 98](#p98)
-      - [4.2 Sample Test Problems](#s-4-2-sample-test-problems) — [p. 99](#p99)
-    - [5 Wave Packets](#05-wave-packets) — [pp. 100–116](#p100)
-      - [5.1 Building a Localized Single-Particle Wave Packet](#s-5-1-building-a-localized-single-particle-wave-packet) — [p. 100](#p100)
-      - [5.2 Two Examples of Localized Wave Packets](#s-5-2-two-examples-of-localized-wave-packets) — [p. 101](#p101)
-      - [5.3 The Heisenberg Uncertainty Principle](#s-5-3-the-heisenberg-uncertainty-principle) — [p. 102](#p102)
+  - [1.40 Scattering of Photons](#s-1-40-scattering-of-photons) — [p. 50](#p50)
+  - [1.41 Electron Self Energy](#s-1-41-electron-self-energy) — [p. 51](#p51)
+  - [1.42 The Dirac Equation](#s-1-42-the-dirac-equation) — [p. 53](#p53)
+  - [1.43 The Dirac Equation](#s-1-43-the-dirac-equation) — [p. 60](#p60)
+- [2 The Problems with Classical Physics](#02-the-problems-with-classical-physics) — [pp. 63–82](#p63)
+  - [2.1 Black Body Radiation \*](#s-2-1-black-body-radiation) — [p. 64](#p64)
+  - [2.2 The Photoelectric Effect](#s-2-2-the-photoelectric-effect) — [p. 69](#p69)
+  - [2.3 The Rutherford Atom \*](#s-2-3-the-rutherford-atom) — [p. 71](#p71)
+  - [2.4 Atomic Spectra \*](#s-2-4-atomic-spectra) — [p. 73](#p73)
+    - [2.4.1 The Bohr Atom \*](#s-2-4-1-the-bohr-atom) — [p. 75](#p75)
+  - [2.5 Derivations and Computations](#s-2-5-derivations-and-computations) — [p. 77](#p77)
+    - [2.5.1 Black Body Radiation Formulas \*](#s-2-5-1-black-body-radiation-formulas) — [p. 77](#p77)
+    - [2.5.2 The Fine Structure Constant and the Coulomb Potential](#s-2-5-2-the-fine-structure-constant-and-the-coulomb-potential) — [p. 77](#p77)
+  - [2.6 Examples](#s-2-6-examples) — [p. 78](#p78)
+    - [2.6.1 The Solar Temperature \*](#s-2-6-1-the-solar-temperature) — [p. 78](#p78)
+    - [2.6.2 Black Body Radiation from the Early Universe \*](#s-2-6-2-black-body-radiation-from-the-early-universe) — [p. 79](#p79)
+    - [2.6.3 Compton Scattering \*](#s-2-6-3-compton-scattering) — [p. 79](#p79)
+    - [2.6.4 Rutherford’s Nuclear Size \*](#s-2-6-4-rutherford-s-nuclear-size) — [p. 81](#p81)
+  - [2.7 Sample Test Problems](#s-2-7-sample-test-problems) — [p. 82](#p82)
+- [3 Diffraction](#03-diffraction) — [pp. 83–96](#p83)
+  - [3.1 Diffraction from Two Slits](#s-3-1-diffraction-from-two-slits) — [p. 83](#p83)
+  - [3.2 Single Slit Diffraction](#s-3-2-single-slit-diffraction) — [p. 86](#p86)
+  - [3.3 Diffraction from Crystals](#s-3-3-diffraction-from-crystals) — [p. 86](#p86)
+  - [3.4 The DeBroglie Wavelength](#s-3-4-the-debroglie-wavelength) — [p. 89](#p89)
+    - [3.4.1 Computing DeBroglie Wavelengths](#s-3-4-1-computing-debroglie-wavelengths) — [p. 90](#p90)
+  - [3.5 Wave Particle Duality (Thought Experiments)](#s-3-5-wave-particle-duality-thought-experiments) — [p. 91](#p91)
+  - [3.6 Examples](#s-3-6-examples) — [p. 95](#p95)
+    - [3.6.1 Intensity Distribution for Two Slit Diffraction \*](#s-3-6-1-intensity-distribution-for-two-slit-diffraction) — [p. 95](#p95)
+    - [3.6.2 Intensity Distribution for Single Slit Diffraction \*](#s-3-6-2-intensity-distribution-for-single-slit-diffraction) — [p. 95](#p95)
+  - [3.7 Sample Test Problems](#s-3-7-sample-test-problems) — [p. 96](#p96)
+- [4 The Solution: Probability Amplitudes](#04-the-solution-probability-amplitudes) — [pp. 97–99](#p97)
+  - [4.1 Derivations and Computations](#s-4-1-derivations-and-computations) — [p. 98](#p98)
+    - [4.1.1 Review of Complex Numbers](#s-4-1-1-review-of-complex-numbers) — [p. 98](#p98)
+    - [4.1.2 Review of Traveling Waves](#s-4-1-2-review-of-traveling-waves) — [p. 98](#p98)
+  - [4.2 Sample Test Problems](#s-4-2-sample-test-problems) — [p. 99](#p99)
+- [5 Wave Packets](#05-wave-packets) — [pp. 100–116](#p100)
+  - [5.1 Building a Localized Single-Particle Wave Packet](#s-5-1-building-a-localized-single-particle-wave-packet) — [p. 100](#p100)
+  - [5.2 Two Examples of Localized Wave Packets](#s-5-2-two-examples-of-localized-wave-packets) — [p. 101](#p101)
+  - [5.3 The Heisenberg Uncertainty Principle](#s-5-3-the-heisenberg-uncertainty-principle) — [p. 102](#p102)
 <span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=3" target="_blank" title="This page in the PDF"><sup>[p. 3]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p4" href="book.pdf#page=4" target="_blank" title="This page in the PDF"><sup>[p. 4]</sup></a></span><span style="display:block;clear:both"></span>
   - [5.4 Position Space and Momentum Space](#s-5-4-position-space-and-momentum-space) — [p. 103](#p103)
   - [5.5 Time Development of a Gaussian Wave Packet \*](#s-5-5-time-development-of-a-gaussian-wave-packet) — [p. 104](#p104)
@@ -116,7 +120,7 @@ April 2, 2003
   - [5.7 Examples](#s-5-7-examples) — [p. 112](#p112)
     - [5.7.1 The Square Wave Packet](#s-5-7-1-the-square-wave-packet) — [p. 112](#p112)
     - [5.7.2 The Gaussian Wave Packet \*](#s-5-7-2-the-gaussian-wave-packet) — [p. 112](#p112)
-    - [5.7.3 The Dirac Delta Function Wave Packet \*](#s-5-7-3-the-dirac-delta-function-wave-packet) — [p. 113](#p113)
+    - 5.7.3 The Dirac Delta Function Wave Packet \* — [p. 113](#p113)
     - [5.7.4 Can I “See” inside an Atom](#s-5-7-4-can-i-see-inside-an-atom) — [p. 113](#p113)
     - [5.7.5 Can I “See” inside a Nucleus](#s-5-7-5-can-i-see-inside-a-nucleus) — [p. 113](#p113)
     - [5.7.6 Estimate the Hydrogen Ground State Energy](#s-5-7-6-estimate-the-hydrogen-ground-state-energy) — [p. 114](#p114)
@@ -141,47 +145,51 @@ April 2, 2003
     - [6.7.4 Commutator of $`p`$ and $`x^{n}`$](#s-6-7-4-commutator-of-p-and-x-n) — [p. 123](#p123)
     - [6.7.5 Commutator of $`L_{x}`$ and $`L_{y}`$](#s-6-7-5-commutator-of-l-x-and-l-y) — [p. 124](#p124)
   - [6.8 Sample Test Problems](#s-6-8-sample-test-problems) — [p. 124](#p124)
-<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=4" target="_blank" title="This page in the PDF"><sup>[p. 4]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p5" href="book.pdf#page=5" target="_blank" title="This page in the PDF"><sup>[p. 5]</sup></a></span><span style="display:block;clear:both"></span>
-    - [7 The Schrödinger Equation](#07-the-schrodinger-equation) — [pp. 126–131](#p126)
-      - [7.1 Deriving the Equation from Operators](#s-7-1-deriving-the-equation-from-operators) — [p. 126](#p126)
-      - [7.2 The Flux of Probability \*](#s-7-2-the-flux-of-probability) — [p. 127](#p127)
-      - [7.3 The Schrödinger Wave Equation](#s-7-3-the-schrodinger-wave-equation) — [p. 128](#p128)
-      - [7.4 The Time Independent Schrödinger Equation](#s-7-4-the-time-independent-schrodinger-equation) — [p. 128](#p128)
-      - [7.5 Derivations and Computations](#s-7-5-derivations-and-computations) — [p. 129](#p129)
-        - [7.5.1 Linear Operators](#s-7-5-1-linear-operators) — [p. 129](#p129)
-        - [7.5.2 Probability Conservation Equation \*](#s-7-5-2-probability-conservation-equation) — [p. 130](#p130)
-      - [7.6 Examples](#s-7-6-examples) — [p. 130](#p130)
-        - [7.6.1 Solution to the Schrödinger Equation in a Constant Potential](#s-7-6-1-solution-to-the-schrodinger-equation-in-a-constant-potential) — [p. 130](#p130)
-      - [7.7 Sample Test Problems](#s-7-7-sample-test-problems) — [p. 131](#p131)
-    - [8 Eigenfunctions, Eigenvalues and Vector Spaces](#08-eigenfunctions-eigenvalues-and-vector-spaces) — [pp. 132–144](#p132)
-      - [8.1 Eigenvalue Equations](#s-8-1-eigenvalue-equations) — [p. 132](#p132)
-      - [8.2 Hermitian Conjugate of an Operator](#s-8-2-hermitian-conjugate-of-an-operator) — [p. 133](#p133)
-      - [8.3 Hermitian Operators](#s-8-3-hermitian-operators) — [p. 134](#p134)
-      - [8.4 Eigenfunctions and Vector Space](#s-8-4-eigenfunctions-and-vector-space) — [p. 135](#p135)
-      - [8.5 The Particle in a 1D Box](#s-8-5-the-particle-in-a-1d-box) — [p. 136](#p136)
-        - [8.5.1 The Same Problem with Parity Symmetry](#s-8-5-1-the-same-problem-with-parity-symmetry) — [p. 138](#p138)
-      - [8.6 Momentum Eigenfunctions](#s-8-6-momentum-eigenfunctions) — [p. 139](#p139)
-      - [8.7 Derivations and Computations](#s-8-7-derivations-and-computations) — [p. 140](#p140)
-        - [8.7.1 Eigenfunctions of Hermitian Operators are Orthogonal](#s-8-7-1-eigenfunctions-of-hermitian-operators-are-orthogonal) — [p. 140](#p140)
-        - [8.7.2 Continuity of Wavefunctions and Derivatives](#s-8-7-2-continuity-of-wavefunctions-and-derivatives) — [p. 141](#p141)
-      - [8.8 Examples](#s-8-8-examples) — [p. 142](#p142)
-        - [8.8.1 Hermitian Conjugate of a Constant Operator](#s-8-8-1-hermitian-conjugate-of-a-constant-operator) — [p. 142](#p142)
-        - [8.8.2 Hermitian Conjugate of $`\partial x \partial`$](#s-8-8-2-hermitian-conjugate-of-partial-x-partial) — [p. 142](#p142)
-      - [8.9 Sample Test Problems](#s-8-9-sample-test-problems) — [p. 142](#p142)
-    - [9 One Dimensional Potentials](#09-one-dimensional-potentials) — [pp. 145–171](#p145)
-      - [9.1 Piecewise Constant Potentials in 1D](#s-9-1-piecewise-constant-potentials-in-1d) — [p. 145](#p145)
-        - [9.1.1 The General Solution for a Constant Potential](#s-9-1-1-the-general-solution-for-a-constant-potential) — [p. 145](#p145)
-        - [9.1.2 The Potential Step](#s-9-1-2-the-potential-step) — [p. 145](#p145)
-        - [9.1.3 The Potential Well with $`E> 0`$ \*](#s-9-1-3-the-potential-well-with-e-0) — [p. 147](#p147)
-        - [9.1.4 Bound States in a Potential Well \*](#s-9-1-4-bound-states-in-a-potential-well) — [p. 149](#p149)
-        - [9.1.5 The Potential Barrier](#s-9-1-5-the-potential-barrier) — [p. 151](#p151)
-      - [9.2 The 1D Harmonic Oscillator](#s-9-2-the-1d-harmonic-oscillator) — [p. 153](#p153)
-      - [9.3 The Delta Function Potential \*](#s-9-3-the-delta-function-potential) — [p. 155](#p155)
-      - [9.4 The Delta Function Model of a Molecule \*](#s-9-4-the-delta-function-model-of-a-molecule) — [p. 156](#p156)
-      - [9.5 The Delta Function Model of a Crystal \*](#s-9-5-the-delta-function-model-of-a-crystal) — [p. 157](#p157)
-      - [9.6 The Quantum Rotor](#s-9-6-the-quantum-rotor) — [p. 159](#p159)
-      - [9.7 Derivations and Computations](#s-9-7-derivations-and-computations) — [p. 160](#p160)
-        - [9.7.1 Probability Flux for the Potential Step \*](#s-9-7-1-probability-flux-for-the-potential-step) — [p. 160](#p160)
+
+<div align="right"><a href="book.pdf#page=4" target="_blank" title="This page in the PDF"><sup>[p. 4]</sup></a></div>
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
+<a id="p5" href="book.pdf#page=5" target="_blank" title="This page in the PDF"><sup>[p. 5]</sup></a>
+
+- [7 The Schrödinger Equation](#07-the-schrodinger-equation) — [pp. 126–131](#p126)
+  - [7.1 Deriving the Equation from Operators](#s-7-1-deriving-the-equation-from-operators) — [p. 126](#p126)
+  - [7.2 The Flux of Probability \*](#s-7-2-the-flux-of-probability) — [p. 127](#p127)
+  - [7.3 The Schrödinger Wave Equation](#s-7-3-the-schrodinger-wave-equation) — [p. 128](#p128)
+  - [7.4 The Time Independent Schrödinger Equation](#s-7-4-the-time-independent-schrodinger-equation) — [p. 128](#p128)
+  - [7.5 Derivations and Computations](#s-7-5-derivations-and-computations) — [p. 129](#p129)
+    - [7.5.1 Linear Operators](#s-7-5-1-linear-operators) — [p. 129](#p129)
+    - [7.5.2 Probability Conservation Equation \*](#s-7-5-2-probability-conservation-equation) — [p. 130](#p130)
+  - [7.6 Examples](#s-7-6-examples) — [p. 130](#p130)
+    - [7.6.1 Solution to the Schrödinger Equation in a Constant Potential](#s-7-6-1-solution-to-the-schrodinger-equation-in-a-constant-potential) — [p. 130](#p130)
+  - [7.7 Sample Test Problems](#s-7-7-sample-test-problems) — [p. 131](#p131)
+- [8 Eigenfunctions, Eigenvalues and Vector Spaces](#08-eigenfunctions-eigenvalues-and-vector-spaces) — [pp. 132–144](#p132)
+  - [8.1 Eigenvalue Equations](#s-8-1-eigenvalue-equations) — [p. 132](#p132)
+  - [8.2 Hermitian Conjugate of an Operator](#s-8-2-hermitian-conjugate-of-an-operator) — [p. 133](#p133)
+  - [8.3 Hermitian Operators](#s-8-3-hermitian-operators) — [p. 134](#p134)
+  - [8.4 Eigenfunctions and Vector Space](#s-8-4-eigenfunctions-and-vector-space) — [p. 135](#p135)
+  - [8.5 The Particle in a 1D Box](#s-8-5-the-particle-in-a-1d-box) — [p. 136](#p136)
+    - [8.5.1 The Same Problem with Parity Symmetry](#s-8-5-1-the-same-problem-with-parity-symmetry) — [p. 138](#p138)
+  - [8.6 Momentum Eigenfunctions](#s-8-6-momentum-eigenfunctions) — [p. 139](#p139)
+  - [8.7 Derivations and Computations](#s-8-7-derivations-and-computations) — [p. 140](#p140)
+    - [8.7.1 Eigenfunctions of Hermitian Operators are Orthogonal](#s-8-7-1-eigenfunctions-of-hermitian-operators-are-orthogonal) — [p. 140](#p140)
+    - [8.7.2 Continuity of Wavefunctions and Derivatives](#s-8-7-2-continuity-of-wavefunctions-and-derivatives) — [p. 141](#p141)
+  - [8.8 Examples](#s-8-8-examples) — [p. 142](#p142)
+    - [8.8.1 Hermitian Conjugate of a Constant Operator](#s-8-8-1-hermitian-conjugate-of-a-constant-operator) — [p. 142](#p142)
+    - [8.8.2 Hermitian Conjugate of $`\partial x \partial`$](#s-8-8-2-hermitian-conjugate-of-partial-x-partial) — [p. 142](#p142)
+  - [8.9 Sample Test Problems](#s-8-9-sample-test-problems) — [p. 142](#p142)
+- [9 One Dimensional Potentials](#09-one-dimensional-potentials) — [pp. 145–171](#p145)
+  - [9.1 Piecewise Constant Potentials in 1D](#s-9-1-piecewise-constant-potentials-in-1d) — [p. 145](#p145)
+    - [9.1.1 The General Solution for a Constant Potential](#s-9-1-1-the-general-solution-for-a-constant-potential) — [p. 145](#p145)
+    - [9.1.2 The Potential Step](#s-9-1-2-the-potential-step) — [p. 145](#p145)
+    - [9.1.3 The Potential Well with $`E> 0`$ \*](#s-9-1-3-the-potential-well-with-e-0) — [p. 147](#p147)
+    - [9.1.4 Bound States in a Potential Well \*](#s-9-1-4-bound-states-in-a-potential-well) — [p. 149](#p149)
+    - [9.1.5 The Potential Barrier](#s-9-1-5-the-potential-barrier) — [p. 151](#p151)
+  - [9.2 The 1D Harmonic Oscillator](#s-9-2-the-1d-harmonic-oscillator) — [p. 153](#p153)
+  - [9.3 The Delta Function Potential \*](#s-9-3-the-delta-function-potential) — [p. 155](#p155)
+  - [9.4 The Delta Function Model of a Molecule \*](#s-9-4-the-delta-function-model-of-a-molecule) — [p. 156](#p156)
+  - [9.5 The Delta Function Model of a Crystal \*](#s-9-5-the-delta-function-model-of-a-crystal) — [p. 157](#p157)
+  - [9.6 The Quantum Rotor](#s-9-6-the-quantum-rotor) — [p. 159](#p159)
+  - [9.7 Derivations and Computations](#s-9-7-derivations-and-computations) — [p. 160](#p160)
+    - [9.7.1 Probability Flux for the Potential Step \*](#s-9-7-1-probability-flux-for-the-potential-step) — [p. 160](#p160)
 <span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=5" target="_blank" title="This page in the PDF"><sup>[p. 5]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p6" href="book.pdf#page=6" target="_blank" title="This page in the PDF"><sup>[p. 6]</sup></a></span><span style="display:block;clear:both"></span>
     - [9.7.2 Scattering from a 1D Potential Well \*](#s-9-7-2-scattering-from-a-1d-potential-well) — [p. 160](#p160)
     - [9.7.3 Bound States of a 1D Potential Well \*](#s-9-7-3-bound-states-of-a-1d-potential-well) — [p. 162](#p162)
@@ -224,46 +232,50 @@ April 2, 2003
   - [12.3 Two Particles in Three Dimensions](#s-12-3-two-particles-in-three-dimensions) — [p. 192](#p192)
   - [12.4 Identical Particles](#s-12-4-identical-particles) — [p. 194](#p194)
   - [12.5 Sample Test Problems](#s-12-5-sample-test-problems) — [p. 194](#p194)
-<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=6" target="_blank" title="This page in the PDF"><sup>[p. 6]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p7" href="book.pdf#page=7" target="_blank" title="This page in the PDF"><sup>[p. 7]</sup></a></span><span style="display:block;clear:both"></span>
-    - [13 3D Problems Separable in Cartesian Coordinates](#13-3d-problems-separable-in-cartesian-coordinates) — [pp. 196–201](#p196)
-      - [13.1 Particle in a 3D Box](#s-13-1-particle-in-a-3d-box) — [p. 196](#p196)
-        - [13.1.1 Filling the Box with Fermions](#s-13-1-1-filling-the-box-with-fermions) — [p. 197](#p197)
-        - [13.1.2 Degeneracy Pressure in Stars](#s-13-1-2-degeneracy-pressure-in-stars) — [p. 198](#p198)
-      - [13.2 The 3D Harmonic Oscillator](#s-13-2-the-3d-harmonic-oscillator) — [p. 200](#p200)
-      - [13.3 Sample Test Problems](#s-13-3-sample-test-problems) — [p. 201](#p201)
-    - [14 Angular Momentum](#14-angular-momentum) — [pp. 202–218](#p202)
-      - [14.1 Rotational Symmetry](#s-14-1-rotational-symmetry) — [p. 202](#p202)
-      - [14.2 Angular Momentum Algebra: Raising and Lowering Operators](#s-14-2-angular-momentum-algebra-raising-and-lowering-operators) — [p. 203](#p203)
-      - [14.3 The Angular Momentum Eigenfunctions](#s-14-3-the-angular-momentum-eigenfunctions) — [p. 205](#p205)
-        - [14.3.1 Parity of the Spherical Harmonics](#s-14-3-1-parity-of-the-spherical-harmonics) — [p. 208](#p208)
-      - [14.4 Derivations and Computations](#s-14-4-derivations-and-computations) — [p. 208](#p208)
-        - [14.4.1 Rotational Symmetry Implies Angular Momentum Conservation](#s-14-4-1-rotational-symmetry-implies-angular-momentum-conservation) — [p. 208](#p208)
-        - [14.4.2 The Commutators of the Angular Momentum Operators](#s-14-4-2-the-commutators-of-the-angular-momentum-operators) — [p. 209](#p209)
-        - [14.4.3 Rewriting $`2 p^{2} \mu`$ Using $`L^{2}`$](#s-14-4-3-rewriting-2-p-2-mu-using-l-2) — [p. 210](#p210)
-        - [14.4.4 Spherical Coordinates and the Angular Momentum Operators](#s-14-4-4-spherical-coordinates-and-the-angular-momentum-operators) — [p. 211](#p211)
-        - [14.4.5 The Operators $`L_{\pm}`$](#s-14-4-5-the-operators-l-pm) — [p. 213](#p213)
-      - [14.5 Examples](#s-14-5-examples) — [p. 215](#p215)
-        - [14.5.1 The Expectation Value of $`L_{z}`$](#s-14-5-1-the-expectation-value-of-l-z) — [p. 215](#p215)
-        - [14.5.2 The Expectation Value of $`L_{x}`$](#s-14-5-2-the-expectation-value-of-l-x) — [p. 216](#p216)
-      - [14.6 Sample Test Problems](#s-14-6-sample-test-problems) — [p. 216](#p216)
-    - [15 The Radial Equation and Constant Potentials \*](#15-the-radial-equation-and-constant-potentials) — [pp. 219–227](#p219)
-      - [15.1 The Radial Equation \*](#s-15-1-the-radial-equation) — [p. 218](#p218)
-      - [15.2 Behavior at the Origin \*](#s-15-2-behavior-at-the-origin) — [p. 218](#p218)
-      - [15.3 Spherical Bessel Functions \*](#s-15-3-spherical-bessel-functions) — [p. 219](#p219)
-      - [15.4 Particle in a Sphere \*](#s-15-4-particle-in-a-sphere) — [p. 221](#p221)
-      - [15.5 Bound States in a Spherical Potential Well \*](#s-15-5-bound-states-in-a-spherical-potential-well) — [p. 221](#p221)
-      - [15.6 Partial Wave Analysis of Scattering \*](#s-15-6-partial-wave-analysis-of-scattering) — [p. 223](#p223)
-      - [15.7 Scattering from a Spherical Well \*](#s-15-7-scattering-from-a-spherical-well) — [p. 224](#p224)
-      - [15.8 The Radial Equation for $`u ( r ) = rR ( r )`$ \*](#s-15-8-the-radial-equation-for-u-r-rr-r) — [p. 226](#p226)
-      - [15.9 Sample Test Problems](#s-15-9-sample-test-problems) — [p. 227](#p227)
-    - [16 Hydrogen](#16-hydrogen) — [pp. 228–242](#p228)
-      - [16.1 The Radial Wavefunction Solutions](#s-16-1-the-radial-wavefunction-solutions) — [p. 229](#p229)
-      - [16.2 The Hydrogen Spectrum](#s-16-2-the-hydrogen-spectrum) — [p. 233](#p233)
-      - [16.3 Derivations and Calculations](#s-16-3-derivations-and-calculations) — [p. 234](#p234)
-        - [16.3.1 Solution of Hydrogen Radial Equation \*](#s-16-3-1-solution-of-hydrogen-radial-equation) — [p. 234](#p234)
-        - [16.3.2 Computing the Radial Wavefunctions \*](#s-16-3-2-computing-the-radial-wavefunctions) — [p. 236](#p236)
-      - [16.4 Examples](#s-16-4-examples) — [p. 238](#p238)
-        - [16.4.1 Expectation Values in Hydrogen States](#s-16-4-1-expectation-values-in-hydrogen-states) — [p. 238](#p238)
+
+<div align="right"><a href="book.pdf#page=6" target="_blank" title="This page in the PDF"><sup>[p. 6]</sup></a></div>
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
+<a id="p7" href="book.pdf#page=7" target="_blank" title="This page in the PDF"><sup>[p. 7]</sup></a>
+
+- [13 3D Problems Separable in Cartesian Coordinates](#13-3d-problems-separable-in-cartesian-coordinates) — [pp. 196–201](#p196)
+  - [13.1 Particle in a 3D Box](#s-13-1-particle-in-a-3d-box) — [p. 196](#p196)
+    - [13.1.1 Filling the Box with Fermions](#s-13-1-1-filling-the-box-with-fermions) — [p. 197](#p197)
+    - [13.1.2 Degeneracy Pressure in Stars](#s-13-1-2-degeneracy-pressure-in-stars) — [p. 198](#p198)
+  - [13.2 The 3D Harmonic Oscillator](#s-13-2-the-3d-harmonic-oscillator) — [p. 200](#p200)
+  - [13.3 Sample Test Problems](#s-13-3-sample-test-problems) — [p. 201](#p201)
+- [14 Angular Momentum](#14-angular-momentum) — [pp. 202–218](#p202)
+  - [14.1 Rotational Symmetry](#s-14-1-rotational-symmetry) — [p. 202](#p202)
+  - [14.2 Angular Momentum Algebra: Raising and Lowering Operators](#s-14-2-angular-momentum-algebra-raising-and-lowering-operators) — [p. 203](#p203)
+  - [14.3 The Angular Momentum Eigenfunctions](#s-14-3-the-angular-momentum-eigenfunctions) — [p. 205](#p205)
+    - [14.3.1 Parity of the Spherical Harmonics](#s-14-3-1-parity-of-the-spherical-harmonics) — [p. 208](#p208)
+  - [14.4 Derivations and Computations](#s-14-4-derivations-and-computations) — [p. 208](#p208)
+    - [14.4.1 Rotational Symmetry Implies Angular Momentum Conservation](#s-14-4-1-rotational-symmetry-implies-angular-momentum-conservation) — [p. 208](#p208)
+    - [14.4.2 The Commutators of the Angular Momentum Operators](#s-14-4-2-the-commutators-of-the-angular-momentum-operators) — [p. 209](#p209)
+    - [14.4.3 Rewriting $`2 p^{2} \mu`$ Using $`L^{2}`$](#s-14-4-3-rewriting-2-p-2-mu-using-l-2) — [p. 210](#p210)
+    - [14.4.4 Spherical Coordinates and the Angular Momentum Operators](#s-14-4-4-spherical-coordinates-and-the-angular-momentum-operators) — [p. 211](#p211)
+    - [14.4.5 The Operators $`L_{\pm}`$](#s-14-4-5-the-operators-l-pm) — [p. 213](#p213)
+  - [14.5 Examples](#s-14-5-examples) — [p. 215](#p215)
+    - [14.5.1 The Expectation Value of $`L_{z}`$](#s-14-5-1-the-expectation-value-of-l-z) — [p. 215](#p215)
+    - [14.5.2 The Expectation Value of $`L_{x}`$](#s-14-5-2-the-expectation-value-of-l-x) — [p. 216](#p216)
+  - [14.6 Sample Test Problems](#s-14-6-sample-test-problems) — [p. 216](#p216)
+- [15 The Radial Equation and Constant Potentials \*](#15-the-radial-equation-and-constant-potentials) — [pp. 219–227](#p219)
+  - [15.1 The Radial Equation \*](#s-15-1-the-radial-equation) — [p. 218](#p218)
+  - [15.2 Behavior at the Origin \*](#s-15-2-behavior-at-the-origin) — [p. 218](#p218)
+  - [15.3 Spherical Bessel Functions \*](#s-15-3-spherical-bessel-functions) — [p. 219](#p219)
+  - [15.4 Particle in a Sphere \*](#s-15-4-particle-in-a-sphere) — [p. 221](#p221)
+  - [15.5 Bound States in a Spherical Potential Well \*](#s-15-5-bound-states-in-a-spherical-potential-well) — [p. 221](#p221)
+  - [15.6 Partial Wave Analysis of Scattering \*](#s-15-6-partial-wave-analysis-of-scattering) — [p. 223](#p223)
+  - [15.7 Scattering from a Spherical Well \*](#s-15-7-scattering-from-a-spherical-well) — [p. 224](#p224)
+  - [15.8 The Radial Equation for $`u ( r ) = rR ( r )`$ \*](#s-15-8-the-radial-equation-for-u-r-rr-r) — [p. 226](#p226)
+  - [15.9 Sample Test Problems](#s-15-9-sample-test-problems) — [p. 227](#p227)
+- [16 Hydrogen](#16-hydrogen) — [pp. 228–242](#p228)
+  - [16.1 The Radial Wavefunction Solutions](#s-16-1-the-radial-wavefunction-solutions) — [p. 229](#p229)
+  - [16.2 The Hydrogen Spectrum](#s-16-2-the-hydrogen-spectrum) — [p. 233](#p233)
+  - [16.3 Derivations and Calculations](#s-16-3-derivations-and-calculations) — [p. 234](#p234)
+    - [16.3.1 Solution of Hydrogen Radial Equation \*](#s-16-3-1-solution-of-hydrogen-radial-equation) — [p. 234](#p234)
+    - [16.3.2 Computing the Radial Wavefunctions \*](#s-16-3-2-computing-the-radial-wavefunctions) — [p. 236](#p236)
+  - [16.4 Examples](#s-16-4-examples) — [p. 238](#p238)
+    - [16.4.1 Expectation Values in Hydrogen States](#s-16-4-1-expectation-values-in-hydrogen-states) — [p. 238](#p238)
 <span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=7" target="_blank" title="This page in the PDF"><sup>[p. 7]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p8" href="book.pdf#page=8" target="_blank" title="This page in the PDF"><sup>[p. 8]</sup></a></span><span style="display:block;clear:both"></span>
     - [16.4.2 The Expectation of $`r 1`$ in the Ground State](#s-16-4-2-the-expectation-of-r-1-in-the-ground-state) — [p. 239](#p239)
     - [16.4.3 The Expectation Value of $`r`$ in the Ground State](#s-16-4-3-the-expectation-value-of-r-in-the-ground-state) — [p. 239](#p239)
@@ -306,44 +318,44 @@ April 2, 2003
     - [18.11.6 Derive Spin $`2 1`$ Operators](#s-18-11-6-derive-spin-2-1-operators) — [p. 276](#p276)
     - [18.11.7 Derive Spin $`2 1`$ Rotation Matrices \*](#s-18-11-7-derive-spin-2-1-rotation-matrices) — [p. 277](#p277)
 <span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=8" target="_blank" title="This page in the PDF"><sup>[p. 8]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p9" href="book.pdf#page=9" target="_blank" title="This page in the PDF"><sup>[p. 9]</sup></a></span><span style="display:block;clear:both"></span>
-        - [18.11.8 NMR Transition Rate in a Oscillating B Field](#s-18-11-8-nmr-transition-rate-in-a-oscillating-b-field) — [p. 278](#p278)
-      - [18.12Homework Problems](#s-18-12homework-problems) — [p. 279](#p279)
-      - [18.13Sample Test Problems](#s-18-13sample-test-problems) — [p. 280](#p280)
-    - [19 Homework Problems 130A](#19-homework-problems-130a) — [pp. 283–291](#p283)
-      - [19.1 HOMEWORK 1](#s-19-1-homework-1) — [p. 283](#p283)
-      - [19.2 Homework 2](#s-19-2-homework-2) — [p. 284](#p284)
-      - [19.3 Homework 3](#s-19-3-homework-3) — [p. 285](#p285)
-      - [19.4 Homework 4](#s-19-4-homework-4) — [p. 286](#p286)
-      - [19.5 Homework 5](#s-19-5-homework-5) — [p. 287](#p287)
-      - [19.6 Homework 6](#s-19-6-homework-6) — [p. 288](#p288)
-      - [19.7 Homework 7](#s-19-7-homework-7) — [p. 289](#p289)
-      - [19.8 Homework 8](#s-19-8-homework-8) — [p. 290](#p290)
-      - [19.9 Homework 9](#s-19-9-homework-9) — [p. 291](#p291)
-    - [20 Electrons in an Electromagnetic Field](#20-electrons-in-an-electromagnetic-field) — [pp. 292–310](#p292)
-      - [20.1 Review of the Classical Equations of Electricity and Magnetism in CGS Units](#s-20-1-review-of-the-classical-equations-of-electricity-and-magnetism-in-cgs-units) — [p. 292](#p292)
-      - [20.2 The Quantum Hamiltonian Including a B-field](#s-20-2-the-quantum-hamiltonian-including-a-b-field) — [p. 293](#p293)
-      - [20.3 Gauge Symmetry in Quantum Mechanics](#s-20-3-gauge-symmetry-in-quantum-mechanics) — [p. 295](#p295)
-      - [20.4 Examples](#s-20-4-examples) — [p. 298](#p298)
-        - [20.4.1 The Naive Zeeman Splitting](#s-20-4-1-the-naive-zeeman-splitting) — [p. 298](#p298)
-        - [20.4.2 A Plasma in a Magnetic Field](#s-20-4-2-a-plasma-in-a-magnetic-field) — [p. 298](#p298)
-      - [20.5 Derivations and Computations](#s-20-5-derivations-and-computations) — [p. 299](#p299)
-        - [20.5.1 Deriving Maxwell’s Equations for the Potentials](#s-20-5-1-deriving-maxwell-s-equations-for-the-potentials) — [p. 299](#p299)
-        - [20.5.2 The Lorentz Force from the Classical Hamiltonian](#s-20-5-2-the-lorentz-force-from-the-classical-hamiltonian) — [p. 301](#p301)
-        - [20.5.3 The Hamiltonian in terms of B](#s-20-5-3-the-hamiltonian-in-terms-of-b) — [p. 303](#p303)
-        - [20.5.4 The Size of the B field Terms in Atoms](#s-20-5-4-the-size-of-the-b-field-terms-in-atoms) — [p. 304](#p304)
-        - [20.5.5 Energy States of Electrons in a Plasma I](#s-20-5-5-energy-states-of-electrons-in-a-plasma-i) — [p. 304](#p304)
-        - [20.5.6 Energy States of Electrons in a Plasma II](#s-20-5-6-energy-states-of-electrons-in-a-plasma-ii) — [p. 306](#p306)
-        - [20.5.7 A Hamiltonian Invariant Under Wavefunction Phase (or Gauge) Transformations307 20.5.8 Magnetic Flux Quantization from Gauge Symmetry](#s-20-5-7-a-hamiltonian-invariant-under-wavefunction-phase-or-gauge-transformations307-20-5-8-magnetic-flux-quantization-from-gauge-symmetry) — [p. 308](#p308)
-      - [20.6 Homework Problems](#s-20-6-homework-problems) — [p. 309](#p309)
-      - [20.7 Sample Test Problems](#s-20-7-sample-test-problems) — [p. 310](#p310)
-    - [21 Addition of Angular Momentum](#21-addition-of-angular-momentum) — [pp. 311–325](#p311)
-      - [21.1 Adding the Spins of Two Electrons](#s-21-1-adding-the-spins-of-two-electrons) — [p. 311](#p311)
-      - [21.2 Total Angular Momentum and The Spin Orbit Interaction](#s-21-2-total-angular-momentum-and-the-spin-orbit-interaction) — [p. 312](#p312)
-      - [21.3 Adding Spin $`2 1`$ to Integer Orbital Angular Momentum](#s-21-3-adding-spin-2-1-to-integer-orbital-angular-momentum) — [p. 313](#p313)
-      - [21.4 Spectroscopic Notation](#s-21-4-spectroscopic-notation) — [p. 313](#p313)
-      - [21.5 General Addition of Angular Momentum: The Clebsch-Gordan Series](#s-21-5-general-addition-of-angular-momentum-the-clebsch-gordan-series) — [p. 314](#p314)
-      - [21.6 Interchange Symmetry for States with Identical Particles](#s-21-6-interchange-symmetry-for-states-with-identical-particles) — [p. 315](#p315)
-      - [21.7 Examples](#s-21-7-examples) — [p. 316](#p316)
+    - [18.11.8 NMR Transition Rate in a Oscillating B Field](#s-18-11-8-nmr-transition-rate-in-a-oscillating-b-field) — [p. 278](#p278)
+  - [18.12Homework Problems](#s-18-12homework-problems) — [p. 279](#p279)
+  - [18.13Sample Test Problems](#s-18-13sample-test-problems) — [p. 280](#p280)
+- [19 Homework Problems 130A](#19-homework-problems-130a) — [pp. 283–291](#p283)
+  - [19.1 HOMEWORK 1](#s-19-1-homework-1) — [p. 283](#p283)
+  - [19.2 Homework 2](#s-19-2-homework-2) — [p. 284](#p284)
+  - [19.3 Homework 3](#s-19-3-homework-3) — [p. 285](#p285)
+  - [19.4 Homework 4](#s-19-4-homework-4) — [p. 286](#p286)
+  - [19.5 Homework 5](#s-19-5-homework-5) — [p. 287](#p287)
+  - [19.6 Homework 6](#s-19-6-homework-6) — [p. 288](#p288)
+  - [19.7 Homework 7](#s-19-7-homework-7) — [p. 289](#p289)
+  - [19.8 Homework 8](#s-19-8-homework-8) — [p. 290](#p290)
+  - [19.9 Homework 9](#s-19-9-homework-9) — [p. 291](#p291)
+- [20 Electrons in an Electromagnetic Field](#20-electrons-in-an-electromagnetic-field) — [pp. 292–310](#p292)
+  - [20.1 Review of the Classical Equations of Electricity and Magnetism in CGS Units](#s-20-1-review-of-the-classical-equations-of-electricity-and-magnetism-in-cgs-units) — [p. 292](#p292)
+  - [20.2 The Quantum Hamiltonian Including a B-field](#s-20-2-the-quantum-hamiltonian-including-a-b-field) — [p. 293](#p293)
+  - [20.3 Gauge Symmetry in Quantum Mechanics](#s-20-3-gauge-symmetry-in-quantum-mechanics) — [p. 295](#p295)
+  - [20.4 Examples](#s-20-4-examples) — [p. 298](#p298)
+    - [20.4.1 The Naive Zeeman Splitting](#s-20-4-1-the-naive-zeeman-splitting) — [p. 298](#p298)
+    - [20.4.2 A Plasma in a Magnetic Field](#s-20-4-2-a-plasma-in-a-magnetic-field) — [p. 298](#p298)
+  - [20.5 Derivations and Computations](#s-20-5-derivations-and-computations) — [p. 299](#p299)
+    - [20.5.1 Deriving Maxwell’s Equations for the Potentials](#s-20-5-1-deriving-maxwell-s-equations-for-the-potentials) — [p. 299](#p299)
+    - [20.5.2 The Lorentz Force from the Classical Hamiltonian](#s-20-5-2-the-lorentz-force-from-the-classical-hamiltonian) — [p. 301](#p301)
+    - [20.5.3 The Hamiltonian in terms of B](#s-20-5-3-the-hamiltonian-in-terms-of-b) — [p. 303](#p303)
+    - [20.5.4 The Size of the B field Terms in Atoms](#s-20-5-4-the-size-of-the-b-field-terms-in-atoms) — [p. 304](#p304)
+    - [20.5.5 Energy States of Electrons in a Plasma I](#s-20-5-5-energy-states-of-electrons-in-a-plasma-i) — [p. 304](#p304)
+    - [20.5.6 Energy States of Electrons in a Plasma II](#s-20-5-6-energy-states-of-electrons-in-a-plasma-ii) — [p. 306](#p306)
+    - [20.5.7 A Hamiltonian Invariant Under Wavefunction Phase (or Gauge) Transformations307 20.5.8 Magnetic Flux Quantization from Gauge Symmetry](#s-20-5-7-a-hamiltonian-invariant-under-wavefunction-phase-or-gauge-transformations307-20-5-8-magnetic-flux-quantization-from-gauge-symmetry) — [p. 308](#p308)
+  - [20.6 Homework Problems](#s-20-6-homework-problems) — [p. 309](#p309)
+  - [20.7 Sample Test Problems](#s-20-7-sample-test-problems) — [p. 310](#p310)
+- [21 Addition of Angular Momentum](#21-addition-of-angular-momentum) — [pp. 311–325](#p311)
+  - [21.1 Adding the Spins of Two Electrons](#s-21-1-adding-the-spins-of-two-electrons) — [p. 311](#p311)
+  - [21.2 Total Angular Momentum and The Spin Orbit Interaction](#s-21-2-total-angular-momentum-and-the-spin-orbit-interaction) — [p. 312](#p312)
+  - [21.3 Adding Spin $`2 1`$ to Integer Orbital Angular Momentum](#s-21-3-adding-spin-2-1-to-integer-orbital-angular-momentum) — [p. 313](#p313)
+  - [21.4 Spectroscopic Notation](#s-21-4-spectroscopic-notation) — [p. 313](#p313)
+  - [21.5 General Addition of Angular Momentum: The Clebsch-Gordan Series](#s-21-5-general-addition-of-angular-momentum-the-clebsch-gordan-series) — [p. 314](#p314)
+  - [21.6 Interchange Symmetry for States with Identical Particles](#s-21-6-interchange-symmetry-for-states-with-identical-particles) — [p. 315](#p315)
+  - [21.7 Examples](#s-21-7-examples) — [p. 316](#p316)
 <span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=9" target="_blank" title="This page in the PDF"><sup>[p. 9]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p10" href="book.pdf#page=10" target="_blank" title="This page in the PDF"><sup>[p. 10]</sup></a></span><span style="display:block;clear:both"></span>
     - [21.7.1 Counting states for $`\ell`$ = 3 Plus spin $`2 1`$](#s-21-7-1-counting-states-for-ell-3-plus-spin-2-1) — [p. 316](#p316)
     - [21.7.2 Counting states for Arbitrary $`\ell`$ Plus spin $`2 1`$](#s-21-7-2-counting-states-for-arbitrary-ell-plus-spin-2-1) — [p. 316](#p316)
@@ -383,47 +395,51 @@ April 2, 2003
     - [23.4.6 The Anomalous Zeeman Effect](#s-23-4-6-the-anomalous-zeeman-effect) — [p. 344](#p344)
   - [23.5 Homework Problems](#s-23-5-homework-problems) — [p. 345](#p345)
   - [23.6 Sample Test Problems](#s-23-6-sample-test-problems) — [p. 345](#p345)
-<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=10" target="_blank" title="This page in the PDF"><sup>[p. 10]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p11" href="book.pdf#page=11" target="_blank" title="This page in the PDF"><sup>[p. 11]</sup></a></span><span style="display:block;clear:both"></span>
-    - [24 Hyperfine Structure](#24-hyperfine-structure) — [pp. 347–357](#p347)
-      - [24.1 Hyperfine Splitting](#s-24-1-hyperfine-splitting) — [p. 347](#p347)
-      - [24.2 Hyperfine Splitting in a B Field](#s-24-2-hyperfine-splitting-in-a-b-field) — [p. 348](#p348)
-      - [24.3 Examples](#s-24-3-examples) — [p. 350](#p350)
-        - [24.3.1 Splitting of the Hydrogen Ground State](#s-24-3-1-splitting-of-the-hydrogen-ground-state) — [p. 350](#p350)
-        - [24.3.2 Hyperfine Splitting in a Weak B Field](#s-24-3-2-hyperfine-splitting-in-a-weak-b-field) — [p. 351](#p351)
-        - [24.3.3 Hydrogen in a Strong B Field](#s-24-3-3-hydrogen-in-a-strong-b-field) — [p. 352](#p352)
-        - [24.3.4 Intermediate Field](#s-24-3-4-intermediate-field) — [p. 352](#p352)
-        - [24.3.5 Positronium](#s-24-3-5-positronium) — [p. 353](#p353)
-        - [24.3.6 Hyperfine and Zeeman for H, muonium, positronium](#s-24-3-6-hyperfine-and-zeeman-for-h-muonium-positronium) — [p. 354](#p354)
-      - [24.4 Derivations and Computations](#s-24-4-derivations-and-computations) — [p. 355](#p355)
-        - [24.4.1 Hyperfine Correction in Hydrogen](#s-24-4-1-hyperfine-correction-in-hydrogen) — [p. 355](#p355)
-      - [24.5 Homework Problems](#s-24-5-homework-problems) — [p. 357](#p357)
-      - [24.6 Sample Test Problems](#s-24-6-sample-test-problems) — [p. 357](#p357)
-    - [25 The Helium Atom](#25-the-helium-atom) — [pp. 358–370](#p358)
-      - [25.1 General Features of Helium States](#s-25-1-general-features-of-helium-states) — [p. 358](#p358)
-      - [25.2 The Helium Ground State](#s-25-2-the-helium-ground-state) — [p. 360](#p360)
-      - [25.3 The First Excited State(s)](#s-25-3-the-first-excited-state-s) — [p. 360](#p360)
-      - [25.4 The Variational Principle (Rayleigh-Ritz Approximation)](#s-25-4-the-variational-principle-rayleigh-ritz-approximation) — [p. 363](#p363)
-      - [25.5 Variational Helium Ground State Energy](#s-25-5-variational-helium-ground-state-energy) — [p. 364](#p364)
-      - [25.6 Examples](#s-25-6-examples) — [p. 366](#p366)
-        - [25.6.1 1D Harmonic Oscillator](#s-25-6-1-1d-harmonic-oscillator) — [p. 366](#p366)
-        - [25.6.2 1-D H.O. with exponential wavefunction](#s-25-6-2-1-d-h-o-with-exponential-wavefunction) — [p. 366](#p366)
-      - [25.7 Derivations and Computations](#s-25-7-derivations-and-computations) — [p. 367](#p367)
-        - [25.7.1 Calculation of the ground state energy shift](#s-25-7-1-calculation-of-the-ground-state-energy-shift) — [p. 367](#p367)
-      - [25.8 Homework Problems](#s-25-8-homework-problems) — [p. 369](#p369)
-      - [25.9 Sample Test Problems](#s-25-9-sample-test-problems) — [p. 369](#p369)
-    - [26 Atomic Physics](#26-atomic-physics) — [pp. 371–382](#p371)
-      - [26.1 Atomic Shell Model](#s-26-1-atomic-shell-model) — [p. 371](#p371)
-      - [26.2 The Hartree Equations](#s-26-2-the-hartree-equations) — [p. 372](#p372)
-      - [26.3 Hund’s Rules](#s-26-3-hund-s-rules) — [p. 372](#p372)
-      - [26.4 The Periodic Table](#s-26-4-the-periodic-table) — [p. 373](#p373)
-      - [26.5 The Nuclear Shell Model](#s-26-5-the-nuclear-shell-model) — [p. 376](#p376)
-      - [26.6 Examples](#s-26-6-examples) — [p. 378](#p378)
-        - [26.6.1 Boron Ground State](#s-26-6-1-boron-ground-state) — [p. 378](#p378)
-        - [26.6.2 Carbon Ground State](#s-26-6-2-carbon-ground-state) — [p. 379](#p379)
-        - [26.6.3 Nitrogen Ground State](#s-26-6-3-nitrogen-ground-state) — [p. 380](#p380)
-        - [26.6.4 Oxygen Ground State](#s-26-6-4-oxygen-ground-state) — [p. 382](#p382)
-      - [26.7 Homework Problems](#s-26-7-homework-problems) — [p. 382](#p382)
-      - [26.8 Sample Test Problems](#s-26-8-sample-test-problems) — [p. 382](#p382)
+
+<div align="right"><a href="book.pdf#page=10" target="_blank" title="This page in the PDF"><sup>[p. 10]</sup></a></div>
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
+<a id="p11" href="book.pdf#page=11" target="_blank" title="This page in the PDF"><sup>[p. 11]</sup></a>
+
+- [24 Hyperfine Structure](#24-hyperfine-structure) — [pp. 347–357](#p347)
+  - [24.1 Hyperfine Splitting](#s-24-1-hyperfine-splitting) — [p. 347](#p347)
+  - [24.2 Hyperfine Splitting in a B Field](#s-24-2-hyperfine-splitting-in-a-b-field) — [p. 348](#p348)
+  - [24.3 Examples](#s-24-3-examples) — [p. 350](#p350)
+    - [24.3.1 Splitting of the Hydrogen Ground State](#s-24-3-1-splitting-of-the-hydrogen-ground-state) — [p. 350](#p350)
+    - [24.3.2 Hyperfine Splitting in a Weak B Field](#s-24-3-2-hyperfine-splitting-in-a-weak-b-field) — [p. 351](#p351)
+    - [24.3.3 Hydrogen in a Strong B Field](#s-24-3-3-hydrogen-in-a-strong-b-field) — [p. 352](#p352)
+    - [24.3.4 Intermediate Field](#s-24-3-4-intermediate-field) — [p. 352](#p352)
+    - [24.3.5 Positronium](#s-24-3-5-positronium) — [p. 353](#p353)
+    - [24.3.6 Hyperfine and Zeeman for H, muonium, positronium](#s-24-3-6-hyperfine-and-zeeman-for-h-muonium-positronium) — [p. 354](#p354)
+  - [24.4 Derivations and Computations](#s-24-4-derivations-and-computations) — [p. 355](#p355)
+    - [24.4.1 Hyperfine Correction in Hydrogen](#s-24-4-1-hyperfine-correction-in-hydrogen) — [p. 355](#p355)
+  - [24.5 Homework Problems](#s-24-5-homework-problems) — [p. 357](#p357)
+  - [24.6 Sample Test Problems](#s-24-6-sample-test-problems) — [p. 357](#p357)
+- [25 The Helium Atom](#25-the-helium-atom) — [pp. 358–370](#p358)
+  - [25.1 General Features of Helium States](#s-25-1-general-features-of-helium-states) — [p. 358](#p358)
+  - [25.2 The Helium Ground State](#s-25-2-the-helium-ground-state) — [p. 360](#p360)
+  - [25.3 The First Excited State(s)](#s-25-3-the-first-excited-state-s) — [p. 360](#p360)
+  - [25.4 The Variational Principle (Rayleigh-Ritz Approximation)](#s-25-4-the-variational-principle-rayleigh-ritz-approximation) — [p. 363](#p363)
+  - [25.5 Variational Helium Ground State Energy](#s-25-5-variational-helium-ground-state-energy) — [p. 364](#p364)
+  - [25.6 Examples](#s-25-6-examples) — [p. 366](#p366)
+    - [25.6.1 1D Harmonic Oscillator](#s-25-6-1-1d-harmonic-oscillator) — [p. 366](#p366)
+    - [25.6.2 1-D H.O. with exponential wavefunction](#s-25-6-2-1-d-h-o-with-exponential-wavefunction) — [p. 366](#p366)
+  - [25.7 Derivations and Computations](#s-25-7-derivations-and-computations) — [p. 367](#p367)
+    - [25.7.1 Calculation of the ground state energy shift](#s-25-7-1-calculation-of-the-ground-state-energy-shift) — [p. 367](#p367)
+  - [25.8 Homework Problems](#s-25-8-homework-problems) — [p. 369](#p369)
+  - [25.9 Sample Test Problems](#s-25-9-sample-test-problems) — [p. 369](#p369)
+- [26 Atomic Physics](#26-atomic-physics) — [pp. 371–382](#p371)
+  - [26.1 Atomic Shell Model](#s-26-1-atomic-shell-model) — [p. 371](#p371)
+  - [26.2 The Hartree Equations](#s-26-2-the-hartree-equations) — [p. 372](#p372)
+  - [26.3 Hund’s Rules](#s-26-3-hund-s-rules) — [p. 372](#p372)
+  - [26.4 The Periodic Table](#s-26-4-the-periodic-table) — [p. 373](#p373)
+  - [26.5 The Nuclear Shell Model](#s-26-5-the-nuclear-shell-model) — [p. 376](#p376)
+  - [26.6 Examples](#s-26-6-examples) — [p. 378](#p378)
+    - [26.6.1 Boron Ground State](#s-26-6-1-boron-ground-state) — [p. 378](#p378)
+    - [26.6.2 Carbon Ground State](#s-26-6-2-carbon-ground-state) — [p. 379](#p379)
+    - [26.6.3 Nitrogen Ground State](#s-26-6-3-nitrogen-ground-state) — [p. 380](#p380)
+    - [26.6.4 Oxygen Ground State](#s-26-6-4-oxygen-ground-state) — [p. 382](#p382)
+  - [26.7 Homework Problems](#s-26-7-homework-problems) — [p. 382](#p382)
+  - [26.8 Sample Test Problems](#s-26-8-sample-test-problems) — [p. 382](#p382)
 
 <div align="right"><a href="book.pdf#page=11" target="_blank" title="This page in the PDF"><sup>[p. 11]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -470,44 +486,44 @@ April 2, 2003
   - [29.14Derivations and Computations](#s-29-14derivations-and-computations) — [p. 416](#p416)
     - [29.14.1 Energy in Field for a Given Vector Potential](#s-29-14-1-energy-in-field-for-a-given-vector-potential) — [p. 416](#p416)
 <span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=12" target="_blank" title="This page in the PDF"><sup>[p. 12]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p13" href="book.pdf#page=13" target="_blank" title="This page in the PDF"><sup>[p. 13]</sup></a></span><span style="display:block;clear:both"></span>
-        - [29.14.2 General Phase Space Formula](#s-29-14-2-general-phase-space-formula) — [p. 416](#p416)
-        - [29.14.3 Estimate of Atomic Decay Rate](#s-29-14-3-estimate-of-atomic-decay-rate) — [p. 417](#p417)
-      - [29.15Homework Problems](#s-29-15homework-problems) — [p. 417](#p417)
-      - [29.16Sample Test Problems](#s-29-16sample-test-problems) — [p. 418](#p418)
-    - [30 Scattering](#30-scattering) — [pp. 419–425](#p419)
-      - [30.1 Scattering from a Screened Coulomb Potential](#s-30-1-scattering-from-a-screened-coulomb-potential) — [p. 423](#p423)
-      - [30.2 Scattering from a Hard Sphere](#s-30-2-scattering-from-a-hard-sphere) — [p. 424](#p424)
-      - [30.3 Homework Problems](#s-30-3-homework-problems) — [p. 425](#p425)
-      - [30.4 Sample Test Problems](#s-30-4-sample-test-problems) — [p. 425](#p425)
-    - [31 Classical Scalar Fields](#31-classical-scalar-fields) — [pp. 426–435](#p426)
-      - [31.1 Simple Mechanical Systems and Fields](#s-31-1-simple-mechanical-systems-and-fields) — [p. 426](#p426)
-      - [31.2 Classical Scalar Field in Four Dimensions](#s-31-2-classical-scalar-field-in-four-dimensions) — [p. 428](#p428)
-    - [32 Classical Maxwell Fields](#32-classical-maxwell-fields) — [pp. 436–442](#p436)
-      - [32.1 Rationalized Heaviside-Lorentz Units](#s-32-1-rationalized-heaviside-lorentz-units) — [p. 436](#p436)
-      - [32.2 The Electromagnetic Field Tensor](#s-32-2-the-electromagnetic-field-tensor) — [p. 437](#p437)
-      - [32.3 The Lagrangian for Electromagnetic Fields](#s-32-3-the-lagrangian-for-electromagnetic-fields) — [p. 439](#p439)
-      - [32.4 Gauge Invariance can Simplify Equations](#s-32-4-gauge-invariance-can-simplify-equations) — [p. 441](#p441)
-    - [33 Quantum Theory of Radiation](#33-quantum-theory-of-radiation) — [pp. 443–462](#p443)
-      - [33.1 Transverse and Longitudinal Fields](#s-33-1-transverse-and-longitudinal-fields) — [p. 443](#p443)
-      - [33.2 Fourier Decomposition of Radiation Oscillators](#s-33-2-fourier-decomposition-of-radiation-oscillators) — [p. 444](#p444)
-      - [33.3 The Hamiltonian for the Radiation Field](#s-33-3-the-hamiltonian-for-the-radiation-field) — [p. 446](#p446)
-      - [33.4 Canonical Coordinates and Momenta](#s-33-4-canonical-coordinates-and-momenta) — [p. 447](#p447)
-      - [33.5 Quantization of the Oscillators](#s-33-5-quantization-of-the-oscillators) — [p. 449](#p449)
-      - [33.6 Photon States](#s-33-6-photon-states) — [p. 452](#p452)
-      - [33.7 Fermion Operators](#s-33-7-fermion-operators) — [p. 452](#p452)
-      - [33.8 Quantized Radiation Field](#s-33-8-quantized-radiation-field) — [p. 453](#p453)
-      - [33.9 The Time Development of Field Operators](#s-33-9-the-time-development-of-field-operators) — [p. 455](#p455)
-      - [33.10Uncertainty Relations and RMS Field Fluctuations](#s-33-10uncertainty-relations-and-rms-field-fluctuations) — [p. 455](#p455)
-      - [33.11Emission and Absorption of Photons by Atoms](#s-33-11emission-and-absorption-of-photons-by-atoms) — [p. 457](#p457)
-      - [33.12Review of Radiation of Photons](#s-33-12review-of-radiation-of-photons) — [p. 458](#p458)
-        - [33.12.1 Beyond the Electric Dipole Approximation](#s-33-12-1-beyond-the-electric-dipole-approximation) — [p. 459](#p459)
-      - [33.13Black Body Radiation Spectrum](#s-33-13black-body-radiation-spectrum) — [p. 461](#p461)
-    - [34 Scattering of Photons](#34-scattering-of-photons) — [pp. 463–472](#p463)
-      - [34.1 Resonant Scattering](#s-34-1-resonant-scattering) — [p. 468](#p468)
-      - [34.2 Elastic Scattering](#s-34-2-elastic-scattering) — [p. 468](#p468)
-      - [34.3 Rayleigh Scattering](#s-34-3-rayleigh-scattering) — [p. 470](#p470)
-      - [34.4 Thomson Scattering](#s-34-4-thomson-scattering) — [p. 470](#p470)
-      - [34.5 Raman Effect](#s-34-5-raman-effect) — [p. 472](#p472)
+    - [29.14.2 General Phase Space Formula](#s-29-14-2-general-phase-space-formula) — [p. 416](#p416)
+    - [29.14.3 Estimate of Atomic Decay Rate](#s-29-14-3-estimate-of-atomic-decay-rate) — [p. 417](#p417)
+  - [29.15Homework Problems](#s-29-15homework-problems) — [p. 417](#p417)
+  - [29.16Sample Test Problems](#s-29-16sample-test-problems) — [p. 418](#p418)
+- [30 Scattering](#30-scattering) — [pp. 419–425](#p419)
+  - [30.1 Scattering from a Screened Coulomb Potential](#s-30-1-scattering-from-a-screened-coulomb-potential) — [p. 423](#p423)
+  - [30.2 Scattering from a Hard Sphere](#s-30-2-scattering-from-a-hard-sphere) — [p. 424](#p424)
+  - [30.3 Homework Problems](#s-30-3-homework-problems) — [p. 425](#p425)
+  - [30.4 Sample Test Problems](#s-30-4-sample-test-problems) — [p. 425](#p425)
+- [31 Classical Scalar Fields](#31-classical-scalar-fields) — [pp. 426–435](#p426)
+  - [31.1 Simple Mechanical Systems and Fields](#s-31-1-simple-mechanical-systems-and-fields) — [p. 426](#p426)
+  - [31.2 Classical Scalar Field in Four Dimensions](#s-31-2-classical-scalar-field-in-four-dimensions) — [p. 428](#p428)
+- [32 Classical Maxwell Fields](#32-classical-maxwell-fields) — [pp. 436–442](#p436)
+  - [32.1 Rationalized Heaviside-Lorentz Units](#s-32-1-rationalized-heaviside-lorentz-units) — [p. 436](#p436)
+  - [32.2 The Electromagnetic Field Tensor](#s-32-2-the-electromagnetic-field-tensor) — [p. 437](#p437)
+  - [32.3 The Lagrangian for Electromagnetic Fields](#s-32-3-the-lagrangian-for-electromagnetic-fields) — [p. 439](#p439)
+  - [32.4 Gauge Invariance can Simplify Equations](#s-32-4-gauge-invariance-can-simplify-equations) — [p. 441](#p441)
+- [33 Quantum Theory of Radiation](#33-quantum-theory-of-radiation) — [pp. 443–462](#p443)
+  - [33.1 Transverse and Longitudinal Fields](#s-33-1-transverse-and-longitudinal-fields) — [p. 443](#p443)
+  - [33.2 Fourier Decomposition of Radiation Oscillators](#s-33-2-fourier-decomposition-of-radiation-oscillators) — [p. 444](#p444)
+  - [33.3 The Hamiltonian for the Radiation Field](#s-33-3-the-hamiltonian-for-the-radiation-field) — [p. 446](#p446)
+  - [33.4 Canonical Coordinates and Momenta](#s-33-4-canonical-coordinates-and-momenta) — [p. 447](#p447)
+  - [33.5 Quantization of the Oscillators](#s-33-5-quantization-of-the-oscillators) — [p. 449](#p449)
+  - [33.6 Photon States](#s-33-6-photon-states) — [p. 452](#p452)
+  - [33.7 Fermion Operators](#s-33-7-fermion-operators) — [p. 452](#p452)
+  - [33.8 Quantized Radiation Field](#s-33-8-quantized-radiation-field) — [p. 453](#p453)
+  - [33.9 The Time Development of Field Operators](#s-33-9-the-time-development-of-field-operators) — [p. 455](#p455)
+  - [33.10Uncertainty Relations and RMS Field Fluctuations](#s-33-10uncertainty-relations-and-rms-field-fluctuations) — [p. 455](#p455)
+  - [33.11Emission and Absorption of Photons by Atoms](#s-33-11emission-and-absorption-of-photons-by-atoms) — [p. 457](#p457)
+  - [33.12Review of Radiation of Photons](#s-33-12review-of-radiation-of-photons) — [p. 458](#p458)
+    - [33.12.1 Beyond the Electric Dipole Approximation](#s-33-12-1-beyond-the-electric-dipole-approximation) — [p. 459](#p459)
+  - [33.13Black Body Radiation Spectrum](#s-33-13black-body-radiation-spectrum) — [p. 461](#p461)
+- [34 Scattering of Photons](#34-scattering-of-photons) — [pp. 463–472](#p463)
+  - [34.1 Resonant Scattering](#s-34-1-resonant-scattering) — [p. 468](#p468)
+  - [34.2 Elastic Scattering](#s-34-2-elastic-scattering) — [p. 468](#p468)
+  - [34.3 Rayleigh Scattering](#s-34-3-rayleigh-scattering) — [p. 470](#p470)
+  - [34.4 Thomson Scattering](#s-34-4-thomson-scattering) — [p. 470](#p470)
+  - [34.5 Raman Effect](#s-34-5-raman-effect) — [p. 472](#p472)
 
 <div align="right"><a href="book.pdf#page=13" target="_blank" title="This page in the PDF"><sup>[p. 13]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -563,15 +579,15 @@ April 2, 2003
 
 These notes represent an experiment in the use of information technology in teaching an advanced undergraduate physics course, Quantum Physics at UCSD. The experiment has several goals.
 
-$`•`$ To make all the class material including a complete set of lecture notes available to students on the World-Wide Web.
+$`\bullet`$ To make all the class material including a complete set of lecture notes available to students on the World-Wide Web.
 
-$`•`$ To make use of some simple multimedia technology to enhance the class notes as a learning tool compared to a conventional textbook.
+$`\bullet`$ To make use of some simple multimedia technology to enhance the class notes as a learning tool compared to a conventional textbook.
 
-$`•`$ To present a complex subject to students in several different ways so that each student can use the learning techniques best suited to that individual.
+$`\bullet`$ To present a complex subject to students in several different ways so that each student can use the learning techniques best suited to that individual.
 
-$`•`$ To get some experience with the use of multimedia technologies in teaching advanced courses.
+$`\bullet`$ To get some experience with the use of multimedia technologies in teaching advanced courses.
 
-$`•`$ To produce course material that might be appropriate for distance learning or self-paced courses in the future.
+$`\bullet`$ To produce course material that might be appropriate for distance learning or self-paced courses in the future.
 
 The current set of notes covers a 3 quarter course at UCSD, from the beginning of Quantum Mechanics to the quantization of the electromagnetic field and the Dirac equation. The notes for the last quarter should be considered to be a first draft.
 
@@ -728,14 +744,10 @@ We can use operators to help us compute the expectation value (See section 6.3) 
 \langle f ( x ) \rangle = \int_{-\infty}^{\infty} P ( x ) f ( x ) dx = \int_{-\infty}^{\infty} \psi^{*} ( x ) \psi ( x ) f ( x ) dx.
 ```
 
-If the variable we wish to compute the expectation value of (like $`p`$) is not a simple function of $`x`$, let
+If the variable we wish to compute the expectation value of (like $`p`$) is not a simple function of $`x`$, let its operator act on $`\psi ( x )`$
 
 ```math
-\text{ its operator act on } \psi ( x )_{\infty}
-```
-
-```math
-\langle p \rangle = \int_{-\infty} \psi^{*} ( x ) p^{( op )} \psi ( x ) dx.
+\langle p \rangle = \int_{-\infty}^{\infty} \psi^{*} ( x ) p^{( op )} \psi ( x ) dx.
 ```
 
 We have a shorthand notation for the expectation value of a variable $`v`$ in the state $`\psi`$ which is quite useful. $`\infty`$
@@ -812,10 +824,10 @@ For states which are not bound, a continuous range of energies is allowed.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p21" href="book.pdf#page=21" target="_blank" title="This page in the PDF"><sup>[p. 21]</sup></a>
 
-The time independent Schrödinger equation is an example of an eigenvalue equation (See section
+The time independent Schrödinger equation is an example of an eigenvalue equation (See section 8.1).
 
 ```math
-8 . 1 ) . \quad H\psi_{i} ( \vec{x} ) = E_{i} \psi_{i} ( \vec{x} )
+H\psi_{i} ( \vec{x} ) = E_{i} \psi_{i} ( \vec{x} )
 ```
 
 If we operate on $`\psi_{i}`$ with $`H`$, we get back the same function $`\psi_{i}`$ times some constant. In this case $`\psi_{i}`$ would be called and Eigenfunction, and $`E_{i}`$ would be called an Eigenvalue. There are usually an infinite number of solutions, indicated by the index $`i`$ here.
@@ -852,11 +864,7 @@ The bra-ket $`\langle \varphi | \psi i \rangle`$ can be thought of as a dot prod
 \psi ( \vec{x} , t ) = \psi ( \vec{x} ) e^{- iE_{i} t/ \hbar}
 ```
 
-<div align="center">
-
 we can use these eigenstates to follow the time development of an arbitrary state $`\varphi`$
-
-</div>
 
 ```math
 \varphi ( t ) = \begin{pmatrix} \alpha_{1} e^{- t/ \hbar} \\ \alpha_{2} e^{-} \begin{matrix} iE_{1} \\ iE_{2} \\ iE_{3} \end{matrix}^{t/ \hbar} \\ \alpha_{3} e^{- t/ \hbar} \\ \dots \end{pmatrix}
@@ -864,11 +872,7 @@ we can use these eigenstates to follow the time development of an arbitrary stat
 
 simply by computing the coefficients $`\alpha_{i}`$ at $`t`$ = 0.
 
-<div align="center">
-
 We can define the Hermitian conjugate (See section 8.2) $`O^{\dagger}`$ of the operator $`O`$ by
-
-</div>
 
 ```math
 \langle \psi | O | \psi \rangle = \langle \psi | O\psi \rangle = \langle O^{\dagger} \psi | \psi \rangle .
@@ -1178,10 +1182,8 @@ while
 
 We may write states for two particles which are uncorrelated, like $`u_{0} ( \vec{x}_{( 1 )} ) u_{3} ( \vec{x}_{( 2 )} )`$, or we may write states in which the particles are correlated. The Hamiltonian for two particles in 3 dimensions simply becomes
 
-<a id="eq-2"></a>
-
 ```math
-\begin{aligned} H &= \frac{- \hbar^{2}}{2 m_{( 1 )}} \left( \frac{\partial^{2}}{\partial x_{( 1 )}^{2}} + \frac{\partial^{2}}{\partial y_{( 1 )}^{2}} + \frac{\partial^{2}}{\partial z_{( 1 )}^{2}} \right) + \frac{- \hbar^{2}}{2 m_{( 2 )}} \left( \frac{\partial^{2}}{\partial x_{( 2 )}^{2}} + \frac{\partial^{2}}{\partial y_{( 2 )}^{2}} + \frac{\partial^{2}}{\partial z_{( 2 )}^{2}} \right) + V ( \vec{x} \quad , \vec{x} \quad ) \\ H &= \frac{- \hbar^{2}}{2 m_{( 1 )}} \nabla_{( 1 )}^{2} + \frac{- \hbar^{2}}{2 m_{( 2 )}} \nabla_{( 1 )}^{2} + V ( \vec{x}_{( 1 )} , \vec{x}_{( 2 )} ) \end{aligned} \qquad \text{(2)}
+\begin{aligned} H &= \frac{- \hbar^{2}}{2 m_{( 1 )}} \left( \frac{\partial^{2}}{\partial x_{( 1 )}^{2}} + \frac{\partial^{2}}{\partial y_{( 1 )}^{2}} + \frac{\partial^{2}}{\partial z_{( 1 )}^{2}} \right) + \frac{- \hbar^{2}}{2 m_{( 2 )}} \left( \frac{\partial^{2}}{\partial x_{( 2 )}^{2}} + \frac{\partial^{2}}{\partial y_{( 2 )}^{2}} + \frac{\partial^{2}}{\partial z_{( 2 )}^{2}} \right) + V ( \vec{x}_{( 1 )} , \vec{x}_{( 2 )} ) \\ H &= \frac{- \hbar^{2}}{2 m_{( 1 )}} \nabla_{( 1 )}^{2} + \frac{- \hbar^{2}}{2 m_{( 2 )}} \nabla_{( 1 )}^{2} + V ( \vec{x}_{( 1 )} , \vec{x}_{( 2 )} ) \end{aligned}
 ```
 
 If two particles interact with each other, with no external potential,
@@ -1502,11 +1504,7 @@ S_{x} = \frac{\hbar}{2} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \quad S_{y}
 
 These satisfy the usual commutation relations from which we derived the properties of angular momentum operators.
 
-<div align="center">
-
 It is common to define the Pauli Matrices, $`\sigma_{i}`$, which have the following properties.
-
-</div>
 
 ```math
 S_{i} \equiv \frac{\hbar}{2} \sigma_{i} .
@@ -1686,7 +1684,7 @@ where the numbers are the number of states in the multiplet.
 
 We will use addition of angular momentum to:
 
-$`•`$ Add the orbital angular momentum to the spin angular momentum for an electron in an atom
+$`\bullet`$ Add the orbital angular momentum to the spin angular momentum for an electron in an atom
 
 ```math
 \vec{J} = \vec{L} + \vec{S} ;
@@ -1694,16 +1692,16 @@ $`•`$ Add the orbital angular momentum to the spin angular momentum for an ele
 
 ```math
 \begin{array}{ll}
-• & \text{ Add the orbital angular momenta together for two electrons in an atom } \vec{L} = \vec{L}_{1} + \vec{L}_{2} ; \\ 
-• & \text{ Add the spins of two particles together } \vec{S} = \vec{S}_{1} + \vec{S}_{2} ; \\ 
-• & \text{ Add the nuclear spin to the total atomic angular momentum } \vec{F} = \vec{J} + \vec{I} ; \\ 
-• & \text{ Add the total angular momenta of two electrons together } \vec{J} = \vec{J}_{1} + \vec{J}_{2} ; \\ 
+\bullet & \text{ Add the orbital angular momenta together for two electrons in an atom } \vec{L} = \vec{L}_{1} + \vec{L}_{2} ; \\ 
+\bullet & \text{ Add the spins of two particles together } \vec{S} = \vec{S}_{1} + \vec{S}_{2} ; \\ 
+\bullet & \text{ Add the nuclear spin to the total atomic angular momentum } \vec{F} = \vec{J} + \vec{I} ; \\ 
+\bullet & \text{ Add the total angular momenta of two electrons together } \vec{J} = \vec{J}_{1} + \vec{J}_{2} ; \\ 
 \end{array}
 ```
 
-$`•`$ Add the total orbital angular momentum to the total spin angular momentum for a collection of electrons in an atom $`\vec{J} = \vec{L} + \vec{S}`$;
+$`\bullet`$ Add the total orbital angular momentum to the total spin angular momentum for a collection of electrons in an atom $`\vec{J} = \vec{L} + \vec{S}`$;
 
-$`•`$ Write the product of spherical harmonics in terms of a sum of spherical harmonics.
+$`\bullet`$ Write the product of spherical harmonics in terms of a sum of spherical harmonics.
 
 # <a id="s-1-29-time-independent-perturbation-theory"></a>1.29 Time Independent Perturbation Theory
 
@@ -1783,13 +1781,7 @@ The correction due to a **weak magnetic field** is found to be
 \Delta E = \left\langle \psi_{n\ell jm_{j}} \left| \frac{eB}{2 mc} ( L_{z} + 2 S_{z} ) \right| \psi_{n\ell jm_{j}} \right\rangle = \frac{e \hbar B}{2 mc} m_{j} \left( 1 \pm \frac{1}{2 \ell + 1} \right)
 ```
 
-The factor $`\left( 1 \pm \tfrac{1}{2 \ell + 1} \right)`$ is known as the **Lande** $`g`$ **Factor** because the state splits as if it had this gyromagnetic ratio. We know that it is in fact a combination of the orbital and spin g factors in
-
-<div align="right"><a href="book.pdf#page=38" target="_blank" title="This page in the PDF"><sup>[p. 38]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p39" href="book.pdf#page=39" target="_blank" title="This page in the PDF"><sup>[p. 39]</sup></a>
-
-a state of definite $`j`$. We have assumed that the effect of the field is small compared to the fine structure corrections. We can write the full energy in a weak magnetic field.
+The factor $`\left( 1 \pm \tfrac{1}{2 \ell + 1} \right)`$ is known as the **Lande** $`g`$ **Factor** because the state splits as if it had this gyromagnetic ratio. We know that it is in fact a combination of the orbital and spin g factors in<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=38" target="_blank" title="This page in the PDF"><sup>[p. 38]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p39" href="book.pdf#page=39" target="_blank" title="This page in the PDF"><sup>[p. 39]</sup></a></span> a state of definite $`j`$. We have assumed that the effect of the field is small compared to the fine structure corrections. We can write the full energy in a weak magnetic field.
 
 ```math
 E_{njm_{j} \ell s} = - \frac{1}{2} \alpha^{2} mc^{2} \left( \frac{1}{n^{2}} + \frac{\alpha^{2}}{n^{3}} \left[ \frac{1}{j + \tfrac{1}{2}} - \frac{3}{4 n} \right] \right) + g_{L} \mu_{B} Bm_{j}
@@ -2047,13 +2039,7 @@ Plugging this $`N`$ = 0 field into the first order time dependent perturbation e
 
 The absolute square of the time integral from perturbation theory yields the delta function of energy conservation.
 
-To get the total decay rate, we must sum over the allowed final states. We can assume that the atom remains at rest as a very good approximation, but, the final photon states must be carefully
-
-<div align="right"><a href="book.pdf#page=44" target="_blank" title="This page in the PDF"><sup>[p. 44]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p45" href="book.pdf#page=45" target="_blank" title="This page in the PDF"><sup>[p. 45]</sup></a>
-
-considered. Applying periodic boundary conditions in a cubic volume $`V`$, the integral over final states can be done as indicated below.
+To get the total decay rate, we must sum over the allowed final states. We can assume that the atom remains at rest as a very good approximation, but, the final photon states must be carefully<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=44" target="_blank" title="This page in the PDF"><sup>[p. 44]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p45" href="book.pdf#page=45" target="_blank" title="This page in the PDF"><sup>[p. 45]</sup></a></span> considered. Applying periodic boundary conditions in a cubic volume $`V`$, the integral over final states can be done as indicated below.
 
 ```math
 k_{x} L = 2 \pi n_{x} \quad dn_{x} = \tfrac{L}{2 \pi} dk_{x}
@@ -2201,11 +2187,7 @@ A_{\mu} = ( \vec{A} ,i\varphi )
 F_{\mu \nu} = \frac{\partial A_{\nu}}{\partial x_{\mu}} - \frac{\partial A_{\mu}}{\partial x_{\nu}}
 ```
 
-<div align="center">
-
 Note that $`F_{\mu \nu}`$ is automatically antisymmetric under the interchange of the indices.
-
-</div>
 
 With the fields so derived from the vector potential, two of Maxwell’s equations are automatically satisfied. The remaining two equations can be written as one 4-vector equation.
 
@@ -2491,13 +2473,7 @@ Since the observed mass of the electron already accounts for most of the self en
 \Delta E_{n}^{( obs )} = \Delta E_{n} + \frac{2 \alpha E_{cut - off}}{3 \pi m^{2} c^{2}} \langle n | p^{2} | n \rangle
 ```
 
-In 1947, Willis E. Lamb and R. C. Retherford used microwave techniques to determine the **splitting** **between the** $`2 S 1_{2}`$ **and** $`2 P 1_{2}`$ **states in Hydrogen**. The result can be well accounted for by the
-
-<div align="right"><a href="book.pdf#page=52" target="_blank" title="This page in the PDF"><sup>[p. 52]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p53" href="book.pdf#page=53" target="_blank" title="This page in the PDF"><sup>[p. 53]</sup></a>
-
-self energy correction, at least when relativistic quantum mechanics is used. Our non-relativistic calculation gives a qualitative explanation of the effect.
+In 1947, Willis E. Lamb and R. C. Retherford used microwave techniques to determine the **splitting** **between the** $`2 S 1_{2}`$ **and** $`2 P 1_{2}`$ **states in Hydrogen**. The result can be well accounted for by the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=52" target="_blank" title="This page in the PDF"><sup>[p. 52]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p53" href="book.pdf#page=53" target="_blank" title="This page in the PDF"><sup>[p. 53]</sup></a></span> self energy correction, at least when relativistic quantum mechanics is used. Our non-relativistic calculation gives a qualitative explanation of the effect.
 
 ```math
 \Delta E_{n}^{( obs )} = \frac{4 \alpha^{5}}{3 \pi n^{3}} \left( \log \left( \frac{mc^{2}}{2 \hbar \bar{\omega}_{nj}} \right) + \frac{1 1}{2 4} - \frac{1}{5} \right) mc^{2}
@@ -2717,13 +2693,7 @@ e^{\pm ip_{\mu} x_{\mu} / \hbar}
 
 with the plus sign for solutions 1 and 2 and the minus sign for solutions 3 and 4. These $`\pm`$ sign in the exponential is not very surprising from the point of view of possible solutions to a differential equation. The problem now is that for solutions 3 and 4 the momentum and energy operators must have a minus sign added to them and the phase of the wave function at a fixed position behaves in the opposite way as a function of time than what we expect and from solutions 1 and 2. It is as if solutions 3 and 4 are moving backward in time.
 
-If we change the charge on the electron from $`- e`$ to +$`e`$ and change the sign of the exponent, the Dirac equation remains the invariant. Thus, we can turn the negative exponent solution (going
-
-<div align="right"><a href="book.pdf#page=56" target="_blank" title="This page in the PDF"><sup>[p. 56]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p57" href="book.pdf#page=57" target="_blank" title="This page in the PDF"><sup>[p. 57]</sup></a>
-
-backward in time) into the conventional positive exponent solution if we change the charge to +$`e`$. We can interpret solutions 3 and 4 as positrons. We will make this switch more carefully when we study the charge conjugation operator.
+If we change the charge on the electron from $`- e`$ to +$`e`$ and change the sign of the exponent, the Dirac equation remains the invariant. Thus, we can turn the negative exponent solution (going<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=56" target="_blank" title="This page in the PDF"><sup>[p. 56]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p57" href="book.pdf#page=57" target="_blank" title="This page in the PDF"><sup>[p. 57]</sup></a></span> backward in time) into the conventional positive exponent solution if we change the charge to +$`e`$. We can interpret solutions 3 and 4 as positrons. We will make this switch more carefully when we study the charge conjugation operator.
 
 The Dirac equation should be invariant under Lorentz boosts and under rotations, both of which are just changes in the definition of an inertial coordinate system. Under Lorentz boosts, $`\frac{\partial}{\partial x_{\mu}}`$ transforms like a 4-vector but the $`\gamma_{\mu}`$ matrices are constant. The Dirac equation is shown to be **invariant under** **boosts** along the $`x_{i}`$ direction if we transform the Dirac spinor according to
 
@@ -2929,13 +2899,7 @@ To proceed toward a field theory for electrons and quantization of the Dirac fie
 \left( \gamma_{\mu} \frac{\partial}{\partial x_{\mu}} + \frac{mc}{\hbar} \right) \psi = 0
 ```
 
-This **gives us the Dirac equation** indicating that this Lagrangian is the right one. The Euler-Lagrange equation derived using the fields $`\psi`$ is the **Dirac adjoint equation**,
-
-<div align="right"><a href="book.pdf#page=60" target="_blank" title="This page in the PDF"><sup>[p. 60]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p61" href="book.pdf#page=61" target="_blank" title="This page in the PDF"><sup>[p. 61]</sup></a>
-
-The Hamiltonian density may be derived from the Lagrangian in the standard way and the total Hamiltonian computed by integrating over space. Note that the Hamiltonian density is the same as the Hamiltonian derived from the Dirac equation directly.
+This **gives us the Dirac equation** indicating that this Lagrangian is the right one. The Euler-Lagrange equation derived using the fields $`\psi`$ is the **Dirac adjoint equation**,<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=60" target="_blank" title="This page in the PDF"><sup>[p. 60]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p61" href="book.pdf#page=61" target="_blank" title="This page in the PDF"><sup>[p. 61]</sup></a></span> The Hamiltonian density may be derived from the Lagrangian in the standard way and the total Hamiltonian computed by integrating over space. Note that the Hamiltonian density is the same as the Hamiltonian derived from the Dirac equation directly.
 
 ```math
 H = \int \psi^{\dagger} \left( \hbar c\gamma_{4} \gamma_{k} \frac{\partial}{\partial x_{k}} + mc^{2} \gamma_{4} \right) \psi d^{3} x
@@ -3066,15 +3030,15 @@ By the late nineteenth century the laws of physics were based on Mechanics and t
 
 Some of the problems leading to the development of Quantum Mechanics are listed here.
 
-$`•`$ Black Body Radiation (See section 2.1): Classical physics predicted that hot objects would instantly radiate away all their heat into electromagnetic waves. The calculation, which was based on Maxwell’s equations and Statistical Mechanics, showed that the radiation rate went to infinity as the EM wavelength went to zero, “The Ultraviolet Catastrophe”. Plank solved the problem by postulating that EM energy was emitted in quanta with $`E = h\nu`$.
+$`\bullet`$ Black Body Radiation (See section 2.1): Classical physics predicted that hot objects would instantly radiate away all their heat into electromagnetic waves. The calculation, which was based on Maxwell’s equations and Statistical Mechanics, showed that the radiation rate went to infinity as the EM wavelength went to zero, “The Ultraviolet Catastrophe”. Plank solved the problem by postulating that EM energy was emitted in quanta with $`E = h\nu`$.
 
-$`•`$ The Photoelectric Effect (See section 2.2): When light was used to knock electrons out of solids, the results were completely different than expected from Maxwell’s equations. The measurements were easy to explain (for Einstein) if light is made up of particles with the energies Plank postulated.
+$`\bullet`$ The Photoelectric Effect (See section 2.2): When light was used to knock electrons out of solids, the results were completely different than expected from Maxwell’s equations. The measurements were easy to explain (for Einstein) if light is made up of particles with the energies Plank postulated.
 
-$`•`$ Atoms: After Rutherford (See section 2.3) found that the positive charge in atoms was concentrated in a very tiny nucleus, classical physics predicted that the atomic electrons orbiting the nucleus would radiate their energy away and spiral into the nucleus. This clearly did not happen. The energy radiated by atoms (See section 2.4) also came out in quantized amounts in contradiction to the predictions of classical physics. The Bohr Atom (See section 2.4.1) postulated an angular momentum quantization rule, $`L = n \hbar`$ for $`n`$ = 1$`, 2 , 3 \dots`$, that gave the right result for hydrogen, but turned out to be wrong since the ground state of hydrogen has zero angular momentum. It took a full understanding of Quantum Mechanics to explain the atomic energy spectra.
+$`\bullet`$ Atoms: After Rutherford (See section 2.3) found that the positive charge in atoms was concentrated in a very tiny nucleus, classical physics predicted that the atomic electrons orbiting the nucleus would radiate their energy away and spiral into the nucleus. This clearly did not happen. The energy radiated by atoms (See section 2.4) also came out in quantized amounts in contradiction to the predictions of classical physics. The Bohr Atom (See section 2.4.1) postulated an angular momentum quantization rule, $`L = n \hbar`$ for $`n`$ = 1$`, 2 , 3 \dots`$, that gave the right result for hydrogen, but turned out to be wrong since the ground state of hydrogen has zero angular momentum. It took a full understanding of Quantum Mechanics to explain the atomic energy spectra.
 
-$`•`$ Compton Scattering (See section 2.6.3): When light was scattered off electrons, it behaved just like a particle but changes wave length in the scattering; more evidence for the particle nature of light and Plank’s postulate.
+$`\bullet`$ Compton Scattering (See section 2.6.3): When light was scattered off electrons, it behaved just like a particle but changes wave length in the scattering; more evidence for the particle nature of light and Plank’s postulate.
 
-$`•`$ Waves and Particles: In diffraction experiments,light was shown to behave like a wave while in experiments like the Photoelectric effect, light behaved like a particle. More difficult diffraction experiments showed that electrons (as well as the other particles) also behaved like a wave, yet we can only detect an integer number of electrons (or photons).
+$`\bullet`$ Waves and Particles: In diffraction experiments,light was shown to behave like a wave while in experiments like the Photoelectric effect, light behaved like a particle. More difficult diffraction experiments showed that electrons (as well as the other particles) also behaved like a wave, yet we can only detect an integer number of electrons (or photons).
 
 Quantum Mechanics incorporates a **wave-particle duality** and explains all of the above phenomena. In doing so, Quantum Mechanics changes our understanding of nature in fundamental ways. While the classical laws of physics are deterministic, QM is probabilistic. We can only predict the probability that a particle will be found in some region of space.
 
@@ -3100,7 +3064,7 @@ The rest of wave mechanics was built around these ideas, giving a complete pictu
 
 \* See Example 2.6.3: Assume the photon is a particle with the standard deBroglie wavelength. Use kinematics to derive the wavelength of the scattered photon as a function of angle for Compton Scattering.\*
 
-## <a id="s-gasiorowicz-chapter-1"></a>Gasiorowicz Chapter 1
+## <a id="02-the-problems-with-classical-physics--s-gasiorowicz-chapter-1"></a>Gasiorowicz Chapter 1
 
 ## <a id="s-rohlf-chapters-3-6"></a>Rohlf Chapters 3,6
 
@@ -3154,13 +3118,7 @@ A good example of a black body is a cavity with a small hole in it. Any light in
 
 _Figure 6 (p. 66)_
 
-There is a simple relation between the energy density in a cavity, $`u ( \nu ,T )`$, and the black body emissive power of a black body which simply comes from an analysis of how much radiation, traveling at the
-
-<div align="right"><a href="book.pdf#page=66" target="_blank" title="This page in the PDF"><sup>[p. 66]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p67" href="book.pdf#page=67" target="_blank" title="This page in the PDF"><sup>[p. 67]</sup></a>
-
-speed of light, will flow out of a hole in the cavity in one second.
+There is a simple relation between the energy density in a cavity, $`u ( \nu ,T )`$, and the black body emissive power of a black body which simply comes from an analysis of how much radiation, traveling at the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=66" target="_blank" title="This page in the PDF"><sup>[p. 66]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p67" href="book.pdf#page=67" target="_blank" title="This page in the PDF"><sup>[p. 67]</sup></a></span> speed of light, will flow out of a hole in the cavity in one second.
 
 ```math
 E ( \nu ,T ) = \frac{c}{4} u ( \nu ,T )
@@ -3174,6 +3132,10 @@ Rayleigh and Jeans **calculated** (see section 2.5.1) t he energy density (in EM
 u ( \nu ,T ) = \frac{8 \pi \nu^{2}}{c^{3}} kT
 ```
 
+![Figure 7 (p. 67)](images/fig-p067-1.png)
+
+_Figure 7 (p. 67)_
+
 Plank found a formula that fit the data well at both long and short wavelength.
 
 ```math
@@ -3186,15 +3148,15 @@ His formula fit the data so well that he tried to find a way to derive it. In a 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p68" href="book.pdf#page=68" target="_blank" title="This page in the PDF"><sup>[p. 68]</sup></a>
 
-![Figure 7 (p. 68)](images/fig-p068-1.png)
+![Figure 8 (p. 68)](images/fig-p068-1.png)
 
-_Figure 7 (p. 68)_
+_Figure 8 (p. 68)_
 
 It is interesting to note that classical EM waves would suck all the thermal energy out of matter, making the universe a very cold place for us. The figure below compares the two calculations to some data at $`T`$ = 1600 degrees. (It is also surprising that the start of the Quantum revolution came from Black Body radiation.)
 
-![Figure 8 (p. 68)](images/fig-p068-2.png)
+![Figure 9 (p. 68)](images/fig-p068-2.png)
 
-_Figure 8 (p. 68)_
+_Figure 9 (p. 68)_
 
 So the emissive power per unit area is
 
@@ -3206,11 +3168,7 @@ E ( \nu ,T ) = \frac{2 \pi \nu^{2}}{c^{2}} \frac{h\nu}{e^{h\nu /kT} - 1}
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p69" href="book.pdf#page=69" target="_blank" title="This page in the PDF"><sup>[p. 69]</sup></a>
 
-<div align="center">
-
 We can integrate this over frequency to get the total power radiated per unit area.
-
-</div>
 
 ```math
 R ( T ) = \frac{\pi^{2} c}{6 0 ( \hbar c )^{3}} k^{4} T^{4} = ( 5 . 6 7 \times 1 0^{- 8} W / m^{2} /^{◦} K^{4} ) T^{4}
@@ -3224,23 +3182,23 @@ R ( T ) = \frac{\pi^{2} c}{6 0 ( \hbar c )^{3}} k^{4} T^{4} = ( 5 . 6 7 \times 1
 
 The Photoelectric Effect shows that Plank’s hypothesis, used to fit the Black Body data, is actually correct for EM radiation. Einstein went further and proposed, in 1905, that light was made up of particles with energy related to the frequency of the light, $`E = h\nu`$. (He got his Nobel prize for the Photoelectric effect, not for Special or General Relativity.)
 
-![Figure 9 (p. 69)](images/fig-p069-1.png)
+![Figure 10 (p. 69)](images/fig-p069-1.png)
 
-_Figure 9 (p. 69)_
+_Figure 10 (p. 69)_
 
 <div align="right"><a href="book.pdf#page=69" target="_blank" title="This page in the PDF"><sup>[p. 69]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p70" href="book.pdf#page=70" target="_blank" title="This page in the PDF"><sup>[p. 70]</sup></a>
 
-![Figure 10 (p. 70)](images/fig-p070-1.png)
+![Figure 11 (p. 70)](images/fig-p070-1.png)
 
-_Figure 10 (p. 70)_
+_Figure 11 (p. 70)_
 
 When **light strikes a polished (metal) surface** electrons are ejected.
 
-![Figure 11 (p. 70)](images/fig-p070-2.png)
+![Figure 12 (p. 70)](images/fig-p070-2.png)
 
-_Figure 11 (p. 70)_
+_Figure 12 (p. 70)_
 
 Measurements were made of the **maximum electron energy versus light frequency** and light intensity. Classical physics predicted that the electron energy should increase with intensity, as the electric field increases. This is not observed. The electron energy is independent of intensity and depends linearly on the light frequency, as seen the the figure above. The kinetic energy of the electrons is given by Plank’s constant times the light frequency minus a **work function** $`W`$ which depends on the material.
 
@@ -3258,9 +3216,9 @@ This equation just expresses conservation of energy with $`h\nu`$ being the phot
 
 The classical theory of atoms held that electrons were bound to a large positive charge about the size of the atom. Rutherford scattered charged $`( \alpha )`$ particles from atoms to see what the positive charge distribution was. With a approximately uniform charge distribution, his 5.5 MeV $`\alpha`$ particles should never have backscattered because they had enough energy to overcome the coulomb force from a charge distribution, essentially plowing right through the middle.
 
-![Figure 12 (p. 71)](images/fig-p071-1.png)
+![Figure 13 (p. 71)](images/fig-p071-1.png)
 
-_Figure 12 (p. 71)_
+_Figure 13 (p. 71)_
 
 He found that the $`\alpha`$ particles often scattered at angles larger than 90 degrees. His data can be explained if the **positive nucleus** of an atom is very small. For a very small nucleus, the Coulomb force continues to increase as the $`\alpha`$ approaches the nucleus, and backscattering is possible.
 
@@ -3268,9 +3226,9 @@ He found that the $`\alpha`$ particles often scattered at angles larger than 90 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p72" href="book.pdf#page=72" target="_blank" title="This page in the PDF"><sup>[p. 72]</sup></a>
 
-![Figure 13 (p. 72)](images/fig-p072-1.png)
+![Figure 14 (p. 72)](images/fig-p072-1.png)
 
-_Figure 13 (p. 72)_
+_Figure 14 (p. 72)_
 
 \* See Example 2.6.4: Use Electrostatics to estimate how small a gold nucleus must be to backscatter a 5.5 MeV alpha particle.\*
 
@@ -3284,9 +3242,9 @@ Scattering of the high energy $`\alpha`$ particles allowed Rutherford to **“se
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p73" href="book.pdf#page=73" target="_blank" title="This page in the PDF"><sup>[p. 73]</sup></a>
 
-![Figure 14 (p. 73)](images/fig-p073-1.png)
+![Figure 15 (p. 73)](images/fig-p073-1.png)
 
-_Figure 14 (p. 73)_
+_Figure 15 (p. 73)_
 
 To “see” these things at smaller and smaller distances, we needed to use beams of particles with smaller and smaller wavelength, and hence, higher energy.
 
@@ -3296,9 +3254,9 @@ Hydrogen was ultimately the true test of the quantum theory. Very high accuracy 
 
 The figure below show the **energy levels in Hydrogen**, the **transitions** between energy levels, and the wavelength of light produced in the transition. The **Lyman series** covers transitions to<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=73" target="_blank" title="This page in the PDF"><sup>[p. 73]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p74" href="book.pdf#page=74" target="_blank" title="This page in the PDF"><sup>[p. 74]</sup></a></span> the ground state and is beyond the visible part of the spectrum. The **Balmer series** is due to transitions to the first excited state and is in the visible.
 
-![Figure 15 (p. 74)](images/fig-p074-1.png)
+![Figure 16 (p. 74)](images/fig-p074-1.png)
 
-_Figure 15 (p. 74)_
+_Figure 16 (p. 74)_
 
 By the time of Plank’s $`E = h\nu`$, **a great deal of data existed on the discrete energies** at which atoms radiated. Each atom had its own unique radiation fingerprint. Absorption at discrete energies had also been observed.
 
@@ -3316,11 +3274,15 @@ Heavier atoms provide a even richer spectrum but are much more difficult to calc
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p75" href="book.pdf#page=75" target="_blank" title="This page in the PDF"><sup>[p. 75]</sup></a>
 
-![Figure 16 (p. 75)](images/fig-p075-1.png)
+![Figure 17 (p. 75)](images/fig-p075-1.png)
 
-_Figure 16 (p. 75)_
+_Figure 17 (p. 75)_
 
 The figure below shows the visible part of the spectrum for several atomic or molecular sources. For Hydrogen, we mainly see the Balmer series, with a line from Paschen-Bach. The spectra of different atoms are quite distinct. Molecules have many other types of excitations and can produce many frequencies of light.
+
+![Figure 18 (p. 75)](images/fig-p075-2.png)
+
+_Figure 18 (p. 75)_
 
 ## <a id="s-2-4-1-the-bohr-atom"></a>2.4.1 The Bohr Atom \*
 
@@ -3458,13 +3420,13 @@ V ( r ) = \frac{- \alpha \hbar c}{r}
 
 ## <a id="s-2-6-1-the-solar-temperature"></a>Estimate the solar temperature using
 
-$`•`$ the solar radiation intensity on the earth of 1.4 kilowatts per square meter. $`( r_{sun}`$ = $`7 \times 1 0^{8}`$
+$`\bullet`$ the solar radiation intensity on the earth of 1.4 kilowatts per square meter. $`( r_{sun}`$ = $`7 \times 1 0^{8}`$
 
 ```math
 m , d_{sun} = 1 . 5 \times 1 0^{1 1} m )
 ```
 
-$`•`$ and the solar spectrum which peaks at about 500 nm.
+$`\bullet`$ and the solar spectrum which peaks at about 500 nm.
 
 First we compute the power radiated per unit area on the solar surface.
 
@@ -3584,9 +3546,9 @@ Similarly the peak in $`\nu`$ occurs when
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p80" href="book.pdf#page=80" target="_blank" title="This page in the PDF"><sup>[p. 80]</sup></a>
 
-![Figure 17 (p. 80)](images/fig-p080-1.png)
+![Figure 19 (p. 80)](images/fig-p080-1.png)
 
-_Figure 17 (p. 80)_
+_Figure 19 (p. 80)_
 
 We solve the problem using only conservation of energy and momentum. Lets work in **units in** **which** $`c`$ = 1 for now. We’ll put the $`c`$ back in at the end. Assume the photon is initially moving in the $`z`$ direction with energy E and that it scatters in the $`yz`$ plane so that $`p_{x}`$ = 0. **Conservation of** **momentum** gives
 
@@ -3755,7 +3717,7 @@ Why is this related to black body radiation? Why was this in obvious disagreemen
 
 **Gasciorawicz does not really this.**
 
-**Rohlf Chapters 5**
+## <a id="03-diffraction--s-rohlf-chapters-5"></a>Rohlf Chapters 5
 
 **Griffiths doesn’t cover this.**
 
@@ -3763,9 +3725,9 @@ Why is this related to black body radiation? Why was this in obvious disagreemen
 
 **Water waves** will exhibit a diffractive interference pattern in a 2 slit experiment as diagrammed below. The diagram shows the crests of the water waves at some time. Downstream from the slits, we will see constructive interference where the waves from the slits are in phase and destructive interference where they are 180 degrees out of phase, for example where a crest from one slit meets a trough from the other. The plot labeled $`I_{1 2}`$ shows the interference pattern at the location of the absorber. **Diffraction is a simple wave phenomenon**.
 
-![Figure 18 (p. 83)](images/fig-p083-1.png)
+![Figure 20 (p. 83)](images/fig-p083-1.png)
 
-_Figure 18 (p. 83)_
+_Figure 20 (p. 83)_
 
 The **diffraction of light** was a well known phenomenon by the end of the 19th century and was well explained in classical ElectroMagnetic theory since light was held to be a EM wave. The diffraction pattern from two narrow slits is particularly easy to understand in terms of waves. The setup is shown in the diagram below.
 
@@ -3773,23 +3735,17 @@ The **diffraction of light** was a well known phenomenon by the end of the 19th 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p84" href="book.pdf#page=84" target="_blank" title="This page in the PDF"><sup>[p. 84]</sup></a>
 
-![Figure 19 (p. 84)](images/fig-p084-1.png)
+![Figure 21 (p. 84)](images/fig-p084-1.png)
 
-_Figure 19 (p. 84)_
+_Figure 21 (p. 84)_
 
 EM waves of wavelength $`\lambda`$ are emitted from a single light-source, like a laser. They travel to two narrow slits, (for simplicity) equidistant from the source, and a distance $`d`$ apart. Light travels from the slits to a detection screen. A diffraction pattern can be seen on the detection screen, like the one shown in the picture below.
 
-![Figure 20 (p. 84)](images/fig-p084-2.png)
+![Figure 22 (p. 84)](images/fig-p084-2.png)
 
-_Figure 20 (p. 84)_
+_Figure 22 (p. 84)_
 
-The center of the diffraction pattern occurs at the location on the screen equidistant from each slit where the **waves from the two slits are in phase** (because they have traveled exactly the same distance) and the fields add, so the waves **interfere constructively** and there is an intensity maximum. Some distance off this center of the diffraction pattern, there will be destructive interference between waves from the two slits and the intensity will be zero. This will occur when
-
-<div align="right"><a href="book.pdf#page=84" target="_blank" title="This page in the PDF"><sup>[p. 84]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p85" href="book.pdf#page=85" target="_blank" title="This page in the PDF"><sup>[p. 85]</sup></a>
-
-the distance traveled by two waves differs by $`\lambda / 2`$, so the **waves are 180 degrees out of phase** **and the fields from the two slits cancel**.
+The center of the diffraction pattern occurs at the location on the screen equidistant from each slit where the **waves from the two slits are in phase** (because they have traveled exactly the same distance) and the fields add, so the waves **interfere constructively** and there is an intensity maximum. Some distance off this center of the diffraction pattern, there will be destructive interference between waves from the two slits and the intensity will be zero. This will occur when<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=84" target="_blank" title="This page in the PDF"><sup>[p. 84]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p85" href="book.pdf#page=85" target="_blank" title="This page in the PDF"><sup>[p. 85]</sup></a></span> the distance traveled by two waves differs by $`\lambda / 2`$, so the **waves are 180 degrees out of phase** **and the fields from the two slits cancel**.
 
 We can compute this location by looking at the above diagram. We assume that the distance to the screen is much greater than $`d`$. For light detected at an angle $`\theta`$, the extra distance traveled from slit 1 is just $`d \sin \theta`$. So the angle of the **first minimum** (or null) can be found from the equation $`d \sin \theta = \tfrac{\lambda}{2}`$.
 
@@ -3797,9 +3753,9 @@ More generally we will get a **maximum if the paths from the slits differ by an 
 
 Although it is very difficult because electrons are charged, **2 slit electron diffraction** has also been observed.
 
-![Figure 21 (p. 85)](images/fig-p085-1.png)
+![Figure 23 (p. 85)](images/fig-p085-1.png)
 
-_Figure 21 (p. 85)_
+_Figure 23 (p. 85)_
 
 So, all kinds of particles seem to diffract indicating there is some kind of wave involved. We will now continue with some thought experiments on diffraction to illustrate the physics that Quantum Mechanics needed to match.
 
@@ -3821,9 +3777,9 @@ There are many other examples of diffraction. The picture below shows diffractio
 
 First we see diffraction from a **single crystal**.
 
-![Figure 22 (p. 86)](images/fig-p086-1.png)
+![Figure 24 (p. 86)](images/fig-p086-1.png)
 
-_Figure 22 (p. 86)_
+_Figure 24 (p. 86)_
 
 Diffraction off **polycrystalline material** gives concentric rings instead of spots.
 
@@ -3831,9 +3787,9 @@ Diffraction off **polycrystalline material** gives concentric rings instead of s
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p87" href="book.pdf#page=87" target="_blank" title="This page in the PDF"><sup>[p. 87]</sup></a>
 
-![Figure 23 (p. 87)](images/fig-p087-1.png)
+![Figure 25 (p. 87)](images/fig-p087-1.png)
 
-_Figure 23 (p. 87)_
+_Figure 25 (p. 87)_
 
 Diffraction from crystals is a powerful tool. First we see **x-ray diffraction from a single Sodium** **Crystal** which has periodic locations of the atoms.
 
@@ -3841,9 +3797,9 @@ Diffraction from crystals is a powerful tool. First we see **x-ray diffraction f
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p88" href="book.pdf#page=88" target="_blank" title="This page in the PDF"><sup>[p. 88]</sup></a>
 
-![Figure 24 (p. 88)](images/fig-p088-1.png)
+![Figure 26 (p. 88)](images/fig-p088-1.png)
 
-_Figure 24 (p. 88)_
+_Figure 26 (p. 88)_
 
 Another example of diffraction is shown below. Here **neutrons diffract from a single Sodium** **crystal**.
 
@@ -3851,9 +3807,9 @@ Another example of diffraction is shown below. Here **neutrons diffract from a s
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p89" href="book.pdf#page=89" target="_blank" title="This page in the PDF"><sup>[p. 89]</sup></a>
 
-![Figure 25 (p. 89)](images/fig-p089-1.png)
+![Figure 27 (p. 89)](images/fig-p089-1.png)
 
-_Figure 25 (p. 89)_
+_Figure 27 (p. 89)_
 
 # <a id="s-3-4-the-debroglie-wavelength"></a>3.4 The DeBroglie Wavelength
 
@@ -3971,9 +3927,9 @@ So, for example, compute the wavelength of a 100 eV electron. This is non-relati
 
 Richard Feynman (Nobel Prize for Quantum ElectroDynamics...) presents several thought experiments in his Lectures on Physics, third volume.
 
-![Figure 26 (p. 91)](images/fig-p091-1.png)
+![Figure 28 (p. 91)](images/fig-p091-1.png)
 
-_Figure 26 (p. 91)_
+_Figure 28 (p. 91)_
 
 For our first thought experiment, we will consider **two silt diffraction of light**. Assume that instead of using the screen, I use a **sensitive photo-detector**. I measure the intensity of light as a function of position near the screen and find the same set of maxima and minima that I did using my eyes.
 
@@ -3981,9 +3937,9 @@ For our first thought experiment, we will consider **two silt diffraction of lig
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p92" href="book.pdf#page=92" target="_blank" title="This page in the PDF"><sup>[p. 92]</sup></a>
 
-![Figure 27 (p. 92)](images/fig-p092-1.png)
+![Figure 29 (p. 92)](images/fig-p092-1.png)
 
-_Figure 27 (p. 92)_
+_Figure 29 (p. 92)_
 
 Now lets turn down the intensity of the light source. For very low intensity I find that my detector collects **one photon at a time**. It never collects half a photon. (With the right detector, I could again verify that for each photon, the Photoelectric effect is seen and that $`E = h\nu`$.) So the waves that are diffracting are somehow made up of photons. With a **low enough intensity**, I can assure that **only one photon** is present in the apparatus at any time. I can operate my detector and collect data over a long time, summing up the number of photons detected as a function of position. What will I get for the distribution? I get exactly the same distribution as before with maxima and minima. No matter how low the intensity, (1 particle/ minute!) **we still see diffraction**. We never detect a fraction of an electron or a photon, **only integer numbers**.
 
@@ -3995,9 +3951,9 @@ Lets turn to **electron diffraction** for a minute. In our thought experiment we
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p93" href="book.pdf#page=93" target="_blank" title="This page in the PDF"><sup>[p. 93]</sup></a>
 
-![Figure 28 (p. 93)](images/fig-p093-1.png)
+![Figure 30 (p. 93)](images/fig-p093-1.png)
 
-_Figure 28 (p. 93)_
+_Figure 30 (p. 93)_
 
 We use our detector to measure the diffraction pattern similar to the one for photons labeled $`P_{1 2}`$ below. If we **cover up slit 2** we get the distribution labeled $`P_{1}`$ and if we /emphtextcover up slit 1 we get the intensity distribution labeled $`P_{2}`$. We could have done the same with our photons above.
 
@@ -4007,9 +3963,9 @@ Now we will try to see which slit each electron passes through. We put a **brigh
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p94" href="book.pdf#page=94" target="_blank" title="This page in the PDF"><sup>[p. 94]</sup></a>
 
-![Figure 29 (p. 94)](images/fig-p094-1.png)
+![Figure 31 (p. 94)](images/fig-p094-1.png)
 
-_Figure 29 (p. 94)_
+_Figure 31 (p. 94)_
 
 What distribution do we see now? Actually we will see $`P_{1} + P_{2}`$ if we can tell which slit the electron went through. Our **observation of the electron as it passes through the slit has changed** **the resulting intensity distribution**. If we turn the light off, we go back to measuring $`P_{1 2}`$.
 
@@ -4025,15 +3981,15 @@ Finally, we will do a two slit **diffraction experiment with bullets**. We must 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p95" href="book.pdf#page=95" target="_blank" title="This page in the PDF"><sup>[p. 95]</sup></a>
 
-![Figure 30 (p. 95)](images/fig-p095-1.png)
+![Figure 32 (p. 95)](images/fig-p095-1.png)
 
-_Figure 30 (p. 95)_
+_Figure 32 (p. 95)_
 
 No matter what distance between the slits we choose, we **never observe diffraction** for the bullets. They always give the $`P_{1} + P_{2}`$ pattern (probably different for the bullets). Can you explain this? The bullet’s wavelength is much much smaller than the actual size of the bullet.
 
 Why didn’t we see diffraction for the bullets. Bullets are **macroscopic objects** with huge momenta compared to individual particles. High momentum implies a small deBroglie wavelength. So to see diffraction, we must make the distance between the slits much smaller than we did for the photons (perhaps $`10^{20}`$ times smaller). But bullets are also big. They only fit through big slits which must them be further apart than the slits used for photons. For bullets, **the wavelength is tiny** **compared to any slit a bullet would fit through**. Therefore no bullet diffraction is possible.
 
-**Feynman Lectures on Physics, Vol. III Chapter 1**
+## <a id="s-feynman-lectures-on-physics-vol-iii-chapter-1"></a>Feynman Lectures on Physics, Vol. III Chapter 1
 
 # <a id="s-3-6-examples"></a>3.6 Examples
 
@@ -4147,15 +4103,15 @@ P ( x,t ) = | \psi ( x,t ) |^{2}
 
 Lets summarize the physics input again.
 
-$`•`$ Free particles are represented by complex wave functions with a relationship between their particle properties – energy and momentum, and their wave properties – frequency and wavelength given by Plank and deBroglie.
+$`\bullet`$ Free particles are represented by complex wave functions with a relationship between their particle properties – energy and momentum, and their wave properties – frequency and wavelength given by Plank and deBroglie.
 
-$`•`$ The absolute square of the wavefunction gives the probability distribution function. Quantum Mechanics only tells us the probability.
+$`\bullet`$ The absolute square of the wavefunction gives the probability distribution function. Quantum Mechanics only tells us the probability.
 
-$`•`$ We can make superpositions of our free particle wave functions to make states that do not have definite momentum. We will find that any state can be made from the superposition of free particle states with different momentum.
+$`\bullet`$ We can make superpositions of our free particle wave functions to make states that do not have definite momentum. We will find that any state can be made from the superposition of free particle states with different momentum.
 
 We now have a wave-particle duality for all the particles, however, **physics now only tells us** **the probability** for some quantum events to occur. We have lost the complete predictive power of classical physics.
 
-**Gasiorowicz Chapter 1**
+## <a id="04-the-solution-probability-amplitudes--s-gasiorowicz-chapter-1"></a>Gasiorowicz Chapter 1
 
 **Rohlf Chapter 5**
 
@@ -4255,11 +4211,7 @@ In non-relativistic QM, we have $`\hbar k = p , E = \hbar \omega`$, and $`E = \t
 \omega ( k ) = \frac{E}{\hbar} = \frac{\hbar^{2} k^{2}}{2 m \hbar} = \frac{\hbar k^{2}}{2 m}
 ```
 
-<div align="center">
-
 You may remember that a pulse will move at the group velocity which is given by
-
-</div>
 
 ```math
 v_{g} = \left( \frac{d\omega}{dk} \right) = \frac{2 \hbar k}{2 m} = \frac{\hbar k}{m} = \frac{p}{m} .
@@ -4271,9 +4223,7 @@ v_{g} = \left( \frac{d\omega}{dk} \right) = \frac{2 \hbar k}{2 m} = \frac{\hbar 
 
 1. Write down the two (unnormalized) free particle wave functions for a particle of kinetic energy E. Include the proper time dependence and expressions for other constants in terms of E.
 
-```math
-2 .
-```
+2.
 
 ---
 
@@ -4286,7 +4236,7 @@ v_{g} = \left( \frac{d\omega}{dk} \right) = \frac{2 \hbar k}{2 m} = \frac{\hbar 
 
 ## <a id="s-gasiorowicz-chapter-2"></a>Gasiorowicz Chapter 2
 
-## <a id="s-rohlf-chapters-5"></a>Rohlf Chapters 5
+## <a id="05-wave-packets--s-rohlf-chapters-5"></a>Rohlf Chapters 5
 
 ## <a id="s-griffiths-chapter-2"></a>Griffiths Chapter 2
 
@@ -4326,27 +4276,15 @@ The normalizations of $`f ( x )`$ and $`A ( k )`$ are the same (with this **symm
 \int_{-\infty}^{\infty} f^{*} ( x ) f ( x ) dx = \int_{-\infty}^{\infty} A^{*} ( k ) A ( k ) dk
 ```
 
-We understand $`f ( x )`$ as a **wave packet** made up of definite momentum terms $`e^{ikx}`$. The coefficient of each term is $`A ( k )`$. The probability for a particle to be found in a region $`dx`$ around some value of
-
-<div align="right"><a href="book.pdf#page=100" target="_blank" title="This page in the PDF"><sup>[p. 100]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p101" href="book.pdf#page=101" target="_blank" title="This page in the PDF"><sup>[p. 101]</sup></a>
-
-$`x`$ is $`| f ( x ) |^{2} dx`$. The probability for a particle to have wave number in region $`dk`$ around some value of $`k`$ is $`| A ( k ) |^{2} dk`$. (Remember that $`p = \hbar k`$ so the momentum distribution is very closely related. We work with $`k`$ for a while for economy of notation.)
+We understand $`f ( x )`$ as a **wave packet** made up of definite momentum terms $`e^{ikx}`$. The coefficient of each term is $`A ( k )`$. The probability for a particle to be found in a region $`dx`$ around some value of<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=100" target="_blank" title="This page in the PDF"><sup>[p. 100]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p101" href="book.pdf#page=101" target="_blank" title="This page in the PDF"><sup>[p. 101]</sup></a></span> $`x`$ is $`| f ( x ) |^{2} dx`$. The probability for a particle to have wave number in region $`dk`$ around some value of $`k`$ is $`| A ( k ) |^{2} dk`$. (Remember that $`p = \hbar k`$ so the momentum distribution is very closely related. We work with $`k`$ for a while for economy of notation.)
 
 # <a id="s-5-2-two-examples-of-localized-wave-packets"></a>5.2 Two Examples of Localized Wave Packets
 
 Lets now try **two examples of a wave packet localized in** $`k`$ and properly normalized at $`t`$ = 0.
 
-<div align="center">
-
 1. A “square” packet: $`A ( k ) = \sqrt{\tfrac{1}{a}}`$ for $`k_{0} - \tfrac{a}{2} <k<k_{0} + \tfrac{a}{2}`$ and 0 elsewhere.
 
-</div>
-
-```math
-2 . A \text{ Gaussian packet } : A ( k ) = \left( \tfrac{2 \alpha}{\pi} \right)^{1 / 4} e^{- \alpha ( k - k_{0} )^{2}} .
-```
+2. A Gaussian packet: $`A ( k ) = \left( \tfrac{2 \alpha}{\pi} \right)^{1 / 4} e^{- \alpha ( k - k_{0} )^{2}}`$.
 
 These are both localized in momentum about $`p = \hbar k_{0}`$.
 
@@ -4396,11 +4334,11 @@ also a Gaussian. We will show later that a Gaussian is the best one can do to lo
 
 In both of these cases of $`f ( x )`$ (transformed from a normalized $`A ( k )`$ localized in momentum space) we see
 
-$`•`$ A coefficient which **correctly normalizes** the state to 1,
+$`\bullet`$ A coefficient which **correctly normalizes** the state to 1,
 
-$`• e^{ik_{0} x}`$ – a **wave corresponding to momentum** $`\hbar k_{0}`$,
+$`\bullet e^{ik_{0} x}`$ – a **wave corresponding to momentum** $`\hbar k_{0}`$,
 
-$`•`$ and a packet function which is **localized** in $`x`$.
+$`\bullet`$ and a packet function which is **localized** in $`x`$.
 
 We have achieved our goal of finding **states that represent one free particle**. We see that we can have states which are localized both in position space and momentum space. We achieved this by making wave packets which are superpositions of states with definite momentum. The wave packets, while localized, have some width in $`x`$ and in $`p`$.
 
@@ -4930,11 +4868,7 @@ The convenient unit of energy (mass and momentum too) is the electron volt.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p111" href="book.pdf#page=111" target="_blank" title="This page in the PDF"><sup>[p. 111]</sup></a>
 
-<div align="center">
-
 Use the fine structure constant to avoid CGS units which are used in the textbook.
-
-</div>
 
 ```math
 \alpha = \frac{e^{2}}{\hbar c} = 1 / 1 3 7
@@ -5066,13 +5000,7 @@ Now estimate the width of the two probability distributions.
 
 ## <a id="s-5-7-2-the-gaussian-wave-packet"></a>5.7.2 The Gaussian Wave Packet \*
 
-Given the following one dimensional probability amplitude in the position variable x, compute the probability distribution in momentum space. Show that the uncertainty principle is roughly satisfied. $`\psi ( x )`$ = $`( \tfrac{\alpha}{\pi} ) \tfrac{1}{4} e^{- \alpha x^{2} / 2}`$
-
-<div align="right"><a href="book.pdf#page=112" target="_blank" title="This page in the PDF"><sup>[p. 112]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p113" href="book.pdf#page=113" target="_blank" title="This page in the PDF"><sup>[p. 113]</sup></a>
-
-## <a id="s-5-7-3-the-dirac-delta-function-wave-packet"></a>5.7.3 The Dirac Delta Function Wave Packet \*
+Given the following one dimensional probability amplitude in the position variable x, compute the probability distribution in momentum space. Show that the uncertainty principle is roughly satisfied. $`\psi ( x )`$ = $`( \tfrac{\alpha}{\pi} ) \tfrac{1}{4} e^{- \alpha x^{2} / 2}`$<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=112" target="_blank" title="This page in the PDF"><sup>[p. 112]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p113" href="book.pdf#page=113" target="_blank" title="This page in the PDF"><sup>[p. 113]</sup></a></span> **5.7.3 The Dirac Delta Function Wave Packet \***
 
 Given the following one dimensional probability amplitude in the position variable x, compute the probability distribution in momentum space. Show that the uncertainty principle is roughly satisfied. $`\psi ( x ) = \delta ( x - x_{0} )`$
 
@@ -5206,12 +5134,9 @@ Try non-relativistic formula first and verify approximation when we have the ene
 E = \frac{p^{2}}{2 m} = \frac{\hbar^{2}}{2 mr^{2}} = \frac{( \hbar c )^{2}}{2 mc^{2} r^{2}} = \frac{( 1 9 7 . 3 MeVF )^{2}}{2 ( 9 4 0 MeV ) ( 4 F )^{2}} \approx 1 . 3 MeV
 ```
 
-This is much less than 940 MeV so the non-relativistic approximation is very good.<br>
-The electron energy will be higher and its rest mass is only 0.51 MeV so it WILL be relativistic.
+This is much less than 940 MeV so the non-relativistic approximation is very good.
 
-```math
-\text{ This makes it easier } .
-```
+The electron energy will be higher and its rest mass is only 0.51 MeV so it WILL be relativistic. This makes it easier.
 
 ```math
 pr \approx \hbar
@@ -5223,7 +5148,8 @@ E = pc = \frac{\hbar c}{r} = \frac{1 9 7 . 3 MeVF}{4 F} \approx 5 0 MeV
 
 2. **\*** Assume that the potential for a neutron near a heavy nucleus is given by $`V ( r )`$ = 0 for $`r> 5`$ Fermis and $`V ( r ) = - V_{0}`$ for $`r< 5`$ Fermis. Use the uncertainty principle to estimate the minimum value of $`V_{0}`$ needed for the neutron to be bound to the nucleus.
 
-3. Use the uncertainty principle to estimate the ground state energy of Hydrogen.<br>
+3. Use the uncertainty principle to estimate the ground state energy of Hydrogen.
+
 **Answer**
 
 ```math
@@ -5433,22 +5359,18 @@ p^{( op )} = p.
 
 The $`( op )`$ notation used above is usually dropped. If we see the variable $`p`$, use of the operator is implied (except in state written in terms of $`p`$ like $`\varphi ( p )`$).
 
-**Gasiorowicz Chapter 3**
+## <a id="06-operators--s-gasiorowicz-chapter-3"></a>Gasiorowicz Chapter 3
 
 **Griffiths doesn’t cover this.**
 
-**Cohen-Tannoudji et al. Chapter**
+## <a id="06-operators--s-cohen-tannoudji-et-al-chapter"></a>Cohen-Tannoudji et al. Chapter
 
 # <a id="s-6-3-expectation-values"></a>6.3 Expectation Values
 
-Operators allow us to compute the expectation value of some physics quantity given the wavefunction. If a particle is in the state $`\psi ( x,t )`$, the normal way to **compute the expectation value** of
+Operators allow us to compute the expectation value of some physics quantity given the wavefunction. If a particle is in the state $`\psi ( x,t )`$, the normal way to **compute the expectation value** of $`f ( x )`$ is
 
 ```math
-f ( x ) \text{ is }_{\infty \infty}
-```
-
-```math
-\langle f ( x ) \rangle_{\psi} = \int_{-\infty} P ( x ) f ( x ) dx = \int_{-\infty} \psi^{*} ( x ) \psi ( x ) f ( x ) dx.
+\langle f ( x ) \rangle_{\psi} = \int_{-\infty}^{\infty} P ( x ) f ( x ) dx = \int_{-\infty}^{\infty} \psi^{*} ( x ) \psi ( x ) f ( x ) dx.
 ```
 
 We can move the $`f ( x )`$ between just before $`\psi`$ anticipating the use of linear operators.
@@ -5479,11 +5401,11 @@ For any physical quantity $`v`$, the expectation value of $`v`$ in an arbitrary 
 
 **The expectation values of physical quantities should be real**.
 
-## <a id="06-operators--s-gasiorowicz-chapter-3"></a>Gasiorowicz Chapter 3
+## <a id="s-gasiorowicz-chapter-3-2"></a>Gasiorowicz Chapter 3
 
 ## <a id="06-operators--s-griffiths-chapter-1"></a>Griffiths Chapter 1
 
-## <a id="06-operators--s-cohen-tannoudji-et-al-chapter"></a>Cohen-Tannoudji et al. Chapter
+## <a id="s-cohen-tannoudji-et-al-chapter-2"></a>Cohen-Tannoudji et al. Chapter
 
 # <a id="s-6-4-dirac-bra-ket-notation"></a>6.4 Dirac Bra-ket Notation
 
@@ -5525,11 +5447,7 @@ We will now **compute the commutator** between $`p`$ and $`x`$. Because $`p`$ is
 [ p,x ] \psi ( x ) = \frac{\hbar}{i} \left( \psi ( x ) + x \frac{\partial \psi ( x )}{\partial x} - x \frac{\partial \psi ( x )}{\partial x} \right) = \frac{\hbar}{i} \psi ( x )
 ```
 
-<div align="center">
-
 So, removing the $`\psi ( x )`$ we used for computational purposes, we get the commutator.
-
-</div>
 
 ```math
 [ p,x ] = \frac{\hbar}{i}
@@ -5560,11 +5478,11 @@ The commutator is the same in any representation.
 \end{array}
 ```
 
-**Gasiorowicz Chapter 3**
+## <a id="s-gasiorowicz-chapter-3-3"></a>Gasiorowicz Chapter 3
 
-**Griffiths Chapter 3**
+## <a id="s-griffiths-chapter-3"></a>Griffiths Chapter 3
 
-**Cohen-Tannoudji et al. Chapter**
+## <a id="s-cohen-tannoudji-et-al-chapter-3"></a>Cohen-Tannoudji et al. Chapter
 
 # <a id="s-6-6-derivations-and-computations"></a>6.6 Derivations and Computations
 
@@ -5809,19 +5727,19 @@ Find the expected value of $`x`$ as a function of time. Find the expected value 
 <a id="p125" href="book.pdf#page=125" target="_blank" title="This page in the PDF"><sup>[p. 125]</sup></a>
 
 ```math
-• O_{1} \psi ( x ) = 1 /\psi ( x )
+\bullet O_{1} \psi ( x ) = 1 /\psi ( x )
 ```
 
 ```math
-• O_{2} \psi ( x ) = \tfrac{\partial \psi ( x )}{\partial x}
+\bullet O_{2} \psi ( x ) = \tfrac{\partial \psi ( x )}{\partial x}
 ```
 
 ```math
-• O_{3} \psi ( x ) = x^{2} \psi ( x )
+\bullet O_{3} \psi ( x ) = x^{2} \psi ( x )
 ```
 
 ```math
-• O_{4} \psi ( x ) = - \psi ( x + a )
+\bullet O_{4} \psi ( x ) = - \psi ( x + a )
 ```
 
 4. For a free particle, the total energy operator H is given by $`H = p^{2} / 2 m`$. Compute the commutators [H,x] and [H,p]. If a particle is in a state of definite energy, what do these commutators tell you about how well we know the particle’s position and momentum?
@@ -5830,9 +5748,7 @@ Find the expected value of $`x`$ as a function of time. Find the expected value 
 
 6. Compute the commutator $`[ H,x^{2} ]`$ where $`H`$ is the Hamiltonian for a free particle.
 
-```math
-7 .
-```
+7.
 
 ---
 
@@ -5845,9 +5761,9 @@ Find the expected value of $`x`$ as a function of time. Find the expected value 
 
 Schrödinger developed a **differential equation for the time development of a wave function**. Since the Energy operator has a time derivative, the kinetic energy operator has space derivatives, and we expect the solutions to be traveling waves, it is natural to try an energy equation. The Schrödinger equation is the **operator statement that the kinetic energy plus the potential** **energy is equal to the total energy**.
 
-![Figure 31 (p. 126)](images/fig-p126-1.png)
+![Figure 33 (p. 126)](images/fig-p126-1.png)
 
-_Figure 31 (p. 126)_
+_Figure 33 (p. 126)_
 
 # <a id="s-7-1-deriving-the-equation-from-operators"></a>7.1 Deriving the Equation from Operators
 
@@ -6023,11 +5939,7 @@ and an equation in $`x`$ set equal to a constant
 
 which depends on the problem to be solved (through $`V ( x )`$).
 
-<div align="center">
-
 The $`x`$ equation is often called the **Time Independent Schrödinger Equation**.
-
-</div>
 
 ```math
 \frac{- \hbar^{2}}{2 m} \frac{\partial^{2} u ( x )}{\partial x^{2}} + V ( x ) u ( x ) = Eu ( x )
@@ -6039,11 +5951,7 @@ Here, $`E`$ is a constant. The **full time dependent solution** is.
 \psi ( x,t ) = u ( x ) e^{- iEt/ \hbar}
 ```
 
-<div align="center">
-
 \* See Example 7.6.1: Solve the Schrödinger equation for a constant potential $`V_{0} . *`$
-
-</div>
 
 # <a id="s-7-5-derivations-and-computations"></a>7.5 Derivations and Computations
 
@@ -6175,13 +6083,9 @@ These are not waves at all, but real exponentials. Note that these are solutions
 
 # <a id="s-7-7-sample-test-problems"></a>7.7 Sample Test Problems
 
-```math
-1 .
-```
+1.
 
-```math
-2 .
-```
+2.
 
 ---
 
@@ -6494,10 +6398,10 @@ u_{j} = C \sin ( kx )
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p137" href="book.pdf#page=137" target="_blank" title="This page in the PDF"><sup>[p. 137]</sup></a>
 
-which automatically satisfies the BC at 0. To satisfy the BC at $`x = a`$ we need the argument of sine
+which automatically satisfies the BC at 0. To satisfy the BC at $`x = a`$ we need the argument of sine to be $`n\pi`$ there.
 
 ```math
-\text{ to be } n\pi \text{ there } . \quad u_{n} = C \sin \left( \frac{n\pi x}{a} \right)
+u_{n} = C \sin \left( \frac{n\pi x}{a} \right)
 ```
 
 Plugging this back into the Schrödinger equation, we get
@@ -6526,9 +6430,9 @@ u_{n} = \sqrt{\frac{2}{a}} \sin \left( \frac{n\pi x}{a} \right)
 
 The first four eigenfunctions are graphed below. The ground state has the least curvature and the fewest zeros of the wavefunction.
 
-![Figure 32 (p. 137)](images/fig-p137-1.png)
+![Figure 34 (p. 137)](images/fig-p137-1.png)
 
-_Figure 32 (p. 137)_
+_Figure 34 (p. 137)_
 
 <div align="right"><a href="book.pdf#page=137" target="_blank" title="This page in the PDF"><sup>[p. 137]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -6999,9 +6903,9 @@ k^{\prime} = \frac{2 m ( E - V_{0} )}{\hbar^{2}}
 
 (Note that a beam coming from the right, would have given a $`e^{- ik^{\prime} x}`$ term for $`x> 0`$.)
 
-![Figure 33 (p. 146)](images/fig-p146-1.png)
+![Figure 35 (p. 146)](images/fig-p146-1.png)
 
-_Figure 33 (p. 146)_
+_Figure 35 (p. 146)_
 
 There are **two unknown coefficients** $`R`$ and $`T`$ which will be determined by matching boundary conditions. We will not require normalization to one particle, since we have a beam with definite momentum, which cannot be so normalized. (A more physical problem to solve would use an incoming wave packet with a spread in momentum.)
 
@@ -7071,11 +6975,7 @@ The transmission probability goes to 1 one $`k = k^{\prime}`$ (since there is no
 
 ## <a id="s-9-1-3-the-potential-well-with-e-0"></a>9.1.3 The Potential Well with $`E> 0`$ \*
 
-With positive energy, this is again a scattering type problem, now with three regions of the potential,
-
-```math
-\text{ all with } E>V .
-```
+With positive energy, this is again a scattering type problem, now with three regions of the potential, all with $`E>V`$.
 
 ```math
 V ( x ) = \begin{cases} 0 & x< - a \\ - V_{0} & - a<x<a \\ 0 & x>a \end{cases}
@@ -7103,9 +7003,9 @@ Again we have assumed a **beam of definite momentum incident from the left and n
 
 Ae + Be ik’x -ik’x
 
-![Figure 34 (p. 148)](images/fig-p148-1.png)
+![Figure 36 (p. 148)](images/fig-p148-1.png)
 
-_Figure 34 (p. 148)_
+_Figure 36 (p. 148)_
 
 There are **four unknown coefficients**. We now match the wave function and its first derivative at the two boundaries yielding **4 equations**.
 
@@ -7165,11 +7065,7 @@ u_{1} ( x ) = C_{1} e^{\kappa x}
 u_{3} ( x ) = C_{3} e^{- \kappa x}
 ```
 
-<div align="center">
-
 In the center we’ll use the sine and cosine solutions anticipating parity eigenstates.
-
-</div>
 
 ```math
 u_{2} ( x ) = A \cos ( kx \sqrt{) + B \sin ( kx )}
@@ -7185,9 +7081,9 @@ Again we will have 4 equations in 4 unknown coefficients.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p150" href="book.pdf#page=150" target="_blank" title="This page in the PDF"><sup>[p. 150]</sup></a>
 
-![Figure 35 (p. 150)](images/fig-p150-1.png)
+![Figure 37 (p. 150)](images/fig-p150-1.png)
 
-_Figure 35 (p. 150)_
+_Figure 37 (p. 150)_
 
 The calculation (See section 9.7.3) shows that either $`A`$ or $`B`$ must be zero for a solution. This means that the **solutions separate into even parity and odd parity states**. We could have guessed this from the potential.
 
@@ -7209,9 +7105,9 @@ These are transcendental equations, so we will solve them graphically. The plot 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p151" href="book.pdf#page=151" target="_blank" title="This page in the PDF"><sup>[p. 151]</sup></a>
 
-![Figure 36 (p. 151)](images/fig-p151-1.png)
+![Figure 38 (p. 151)](images/fig-p151-1.png)
 
-_Figure 36 (p. 151)_
+_Figure 38 (p. 151)_
 
 Try this 1D Potential Applet. It allows you to vary the potential and see the eigenstates.
 
@@ -7253,9 +7149,9 @@ Inside the barrier,
 \kappa = \sqrt{\frac{2 m ( V_{0} - E )}{\hbar^{2}} .}
 ```
 
-![Figure 37 (p. 152)](images/fig-p152-1.png)
+![Figure 39 (p. 152)](images/fig-p152-1.png)
 
-_Figure 37 (p. 152)_
+_Figure 39 (p. 152)_
 
 This is actually the same as the (unbound) potential well problem with the substitution
 
@@ -7409,9 +7305,9 @@ where
 
 There are only two regions, above and below the delta function. We don’t need to worry about the one point at $`x`$ = 0 – the two solutions will match there. We have already made the wave function continuous at $`x`$ = 0 by using the same coefficient, $`A`$, for the solution in both regions.
 
-![Figure 38 (p. 155)](images/fig-p155-1.png)
+![Figure 40 (p. 155)](images/fig-p155-1.png)
 
-_Figure 38 (p. 155)_
+_Figure 40 (p. 155)_
 
 We now need to meet the boundary condition on the first derivative at $`x`$ = 0. Recall that the delta function causes a known discontinuity in the first derivative (See section 8.7.2).
 
@@ -7491,9 +7387,9 @@ The figure below shows the two solutions plotted on the same graph as the potent
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p157" href="book.pdf#page=157" target="_blank" title="This page in the PDF"><sup>[p. 157]</sup></a>
 
-![Figure 39 (p. 157)](images/fig-p157-1.png)
+![Figure 41 (p. 157)](images/fig-p157-1.png)
 
-_Figure 39 (p. 157)_
+_Figure 41 (p. 157)_
 
 Two Hydrogen atoms bind together to form a molecule with a separation of 0.74 Angstroms, just larger than the Bohr radius of 0.53 Angstroms. The binding energy (for the two electrons) is about 4.5 eV. If we approximate the Coulomb potential by with a delta function, setting $`aV_{0}`$ = $`( 0 . 5 3 ) ( 2 ) ( 1 3 . 6 )`$ eV Angstroms, our very naive calculation would give 1.48 eV for one electron, which is at least the right order of magnitude.
 
@@ -7559,17 +7455,17 @@ Since $`\cos ( \varphi )`$ can only take on values between -1 and 1, there are *
 
 The graph below shows $`\cos ( ka ) + \tfrac{maV_{0}}{\hbar^{2} k} \sin ( ka )`$ as a function of $`k`$. If this is not between -1 and 1, there is no solution, that value of $`k`$ and the corresponding energy are not allowed.
 
-![Figure 40 (p. 158)](images/fig-p158-1.png)
+![Figure 42 (p. 158)](images/fig-p158-1.png)
 
-_Figure 40 (p. 158)_
+_Figure 42 (p. 158)_
 
 <div align="right"><a href="book.pdf#page=158" target="_blank" title="This page in the PDF"><sup>[p. 158]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p159" href="book.pdf#page=159" target="_blank" title="This page in the PDF"><sup>[p. 159]</sup></a>
 
-![Figure 41 (p. 159)](images/fig-p159-1.png)
+![Figure 43 (p. 159)](images/fig-p159-1.png)
 
-_Figure 41 (p. 159)_
+_Figure 43 (p. 159)_
 
 This energy band phenomenon is found in solids. Solids with partially filled bands are conductors. Solids with filled bands are insulators. Semiconductors have a small number of charge carriers (or holes) in a band.
 
@@ -8410,7 +8306,11 @@ c) Calculate the probability for a particle in the beam to be reflected by the p
 \frac{d^{2} h ( y )}{dy^{2}} - 2 y \frac{dh ( y )}{dy} + ( \frac{E}{\alpha} - 1 ) h ( y ) = 0
 ```
 
+<div align="center">
+
 a) Assume $`h ( y ) = \sum^{\infty} a_{m} y^{m}`$ and find the recursion relation for the coefficients $`a_{m}`$.
+
+</div>
 
 ```math
 m = 0
@@ -8422,11 +8322,7 @@ c) Find $`h ( y )`$ for the ground state and second excited state.
 
 6. A beam of particles of energy $`E> 0`$ coming from $`-\infty`$ is incident upon a potential step in one dimension. That is $`V ( x )`$ = 0 for $`x< 0`$ and $`V ( x ) = - V_{0}`$ for $`x> 0`$ where $`V_{0}`$ is a positive real number.
 
-<div align="center">
-
 a) Find the solution to the Schrödinger equation for this problem.
-
-</div>
 
 b) Determine the coefficients needed to satisfy the boundary conditions.
 
@@ -8448,7 +8344,11 @@ c) At $`t`$ = 0 the potential is suddenly removed so that the particle is free. 
 \frac{d^{2} h ( y )}{dy^{2}} - 2 y \frac{dh ( y )}{dy} + ( \frac{E}{\alpha} - 1 ) h ( y ) = 0
 ```
 
+<div align="center">
+
 a) Assume $`h ( y ) = \sum^{\infty} a_{m} y^{m}`$ and find the recursion relation for the coefficients $`a_{m}`$.
+
+</div>
 
 ```math
 m = 0
@@ -8458,15 +8358,9 @@ b) Use the requirement that this polynomial series must terminate to find the al
 
 c) Find $`h ( y )`$ for the ground state and second excited state.
 
-10. **\*** Find the energy eigenstates (and energy eigenvalues) of a particle of mass $`m`$ bound in the
+10. **\*** Find the energy eigenstates (and energy eigenvalues) of a particle of mass $`m`$ bound in the 1D potential $`V ( x ) = - \lambda \delta ( x )`$.
 
-```math
-1 D \text{ potential } V ( x ) = - \lambda \delta ( x ) .
-```
-
-```math
-1 1 .
-```
+11.
 
 ---
 
@@ -9086,13 +8980,9 @@ Find $`\langle x \rangle`$ and $`\langle x^{2} \rangle`$ as a function of time.
 \psi = \sqrt{\frac{2}{3}} u_{0} + \sqrt{\frac{1}{3}} u_{2} .
 ```
 
-```math
-\text{ Find } \langle x^{2} \rangle .
-```
+Find $`\langle x^{2} \rangle`$.
 
-```math
-8 .
-```
+8.
 
 ---
 
@@ -9451,11 +9341,7 @@ e^{- iHt/ \hbar} = \sum_{n = 0}^{\infty} \frac{( - iHt/ \hbar )^{n}}{n !}
 
 This is an infinite series containing all powers of the Hamiltonian. In some cases, it can be easily computed.
 
-<div align="center">
-
 $`e^{- iHt/ \hbar}`$ is the time development operator. It takes a state from time 0 to time $`t`$.
-
-</div>
 
 <div align="right"><a href="book.pdf#page=187" target="_blank" title="This page in the PDF"><sup>[p. 187]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -9593,13 +9479,7 @@ This gives the same answer with about the same amount of work.
 \Delta L_{x} \Delta L_{z} \geq \frac{i}{2} \langle [ L_{x} ,L_{z} ] \rangle = \frac{i}{2} ( - i \hbar ) \langle L_{y} \rangle = \frac{\hbar}{2} \langle L_{y} \rangle
 ```
 
-2. **\*** A particle of mass $`m`$ is in a **1 dimensional potential** $`V ( x )`$. Calculate the rate of change of the expected values of $`x`$ and $`p , ( \tfrac{d \langle x \rangle}{dt} \text{ and } \tfrac{d \langle p \rangle}{dt} )`$. Your answer will obviously depend on the
-
-<div align="right"><a href="book.pdf#page=189" target="_blank" title="This page in the PDF"><sup>[p. 189]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p190" href="book.pdf#page=190" target="_blank" title="This page in the PDF"><sup>[p. 190]</sup></a>
-
-state of the particle and on the potential.
+2. **\*** A particle of mass $`m`$ is in a **1 dimensional potential** $`V ( x )`$. Calculate the rate of change of the expected values of $`x`$ and $`p , ( \tfrac{d \langle x \rangle}{dt} \text{ and } \tfrac{d \langle p \rangle}{dt} )`$. Your answer will obviously depend on the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=189" target="_blank" title="This page in the PDF"><sup>[p. 189]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p190" href="book.pdf#page=190" target="_blank" title="This page in the PDF"><sup>[p. 190]</sup></a></span> state of the particle and on the potential.
 
 **Answer**
 
@@ -10010,9 +9890,9 @@ If we fill up all the states up to some energy, that energy is called the **Ferm
 
 Since the energy goes like $`n_{x}^{2} + n_{y}^{2} + n_{z}^{2}`$, it makes sense to define a radius $`r_{n}`$ in $`n`$-space out to which the states are filled.
 
-![Figure 42 (p. 197)](images/fig-p197-1.png)
+![Figure 44 (p. 197)](images/fig-p197-1.png)
 
-_Figure 42 (p. 197)_
+_Figure 44 (p. 197)_
 
 The number of states within the radius is
 
@@ -10206,11 +10086,7 @@ n_{x} + n_{y} + n_{z} = \frac{E_{F}}{\hbar \omega} - \frac{3}{2}
 
 4. A particle is in a cubic box. That is, the potential is zero inside a cube of side L and infinite outside the cube. Find the 3 lowest allowed energies. Find the number of states (level of degeneracy) at each of these 3 energies.
 
-<div align="center">
-
 5. A particle of mass m is bound in the 3 dimensional potential $`V`$(**r**) $`= kr^{2}`$.
-
-</div>
 
 a) Find the energy levels for this particle.
 
@@ -10220,17 +10096,17 @@ b) Determine the number of degenerate states for the first three energy levels.
 
 a) Find the three lowest allowed energies.
 
+<div align="center">
+
 b) Find the number of states (level of degeneracy) at each of these three energies.
+
+</div>
 
 c) Find the Fermi Energy $`E_{F}`$ for $`N`$ particles in the box. (N is large.)
 
 7. A particle is confined in a rectangular box of length $`L`$, width $`W`$, and “tallness” $`T`$. Find the energy eigenvalues in terms of a set of three quantum numbers (which correspond to 3 mutually commuting operators). What are the energies of the three lowest energy states if $`L`$ = 2$`a , W`$ = 1$`a`$, and $`T`$ = 0$`. 5 a`$.
 
-<div align="center">
-
 8. A particle of mass m is bound in the 3 dimensional potential $`V`$(**r**) $`= kr^{2}`$.
-
-</div>
 
 9. a) Find the energy levels for this particle.
 
@@ -10395,9 +10271,9 @@ L_{\pm} Y_{\ell m} = \hbar \sqrt{\ell ( \ell + 1 ) - m ( m \pm 1 ) Y_{\ell ( m \
 
 Therefore, $`L_{+}`$ raises the $`z`$ component of angular momentum by one unit of $`\hbar`$ and $`L_{-}`$ lowers it by one unit. The raising stops when $`m = \ell`$ and the operation gives zero, $`L_{+} Y_{\ell \ell}`$ = 0. Similarly, the lowering stops because $`L_{-} Y_{\ell - \ell}`$ = 0.
 
-![Figure 43 (p. 204)](images/fig-p204-1.png)
+![Figure 45 (p. 204)](images/fig-p204-1.png)
 
-_Figure 43 (p. 204)_
+_Figure 45 (p. 204)_
 
 **Angular momentum is quantized**. Any measurement of a component of angular momentum will give some integer times $`\hbar`$. Any measurement of the total angular momentum gives the somewhat curious result **L**
 
@@ -10851,21 +10727,13 @@ p^{2} = \frac{1}{r^{2}} \left( L^{2} + ( \vec{r} \cdot \vec{p} )^{2} - i \hbar \
 = \frac{1}{r^{2}} L^{2} - \frac{\hbar^{2}}{r^{2}} \left( r \frac{\partial}{\partial r} \right)^{2} - \hbar^{2} \frac{1}{r} \frac{\partial}{\partial r}
 ```
 
-<div align="center">
-
 The Schrödinger equation now can be written with only radial derivatives and $`L^{2}`$.
-
-</div>
 
 ```math
 \frac{- \hbar^{2}}{2 \mu} \left[ \frac{1}{r^{2}} \left( r \frac{\partial}{\partial r} \right)^{2} + \frac{1}{r} \frac{\partial}{\partial r} - \frac{L^{2}}{\hbar^{2} r^{2}} \right] u_{E} ( \vec{r} ) + V ( r ) u_{E} ( \vec{r} ) = Eu_{E} ( \vec{r} )
 ```
 
-<div align="center">
-
 ## <a id="s-14-4-4-spherical-coordinates-and-the-angular-momentum-operators"></a>14.4.4 Spherical Coordinates and the Angular Momentum Operators
-
-</div>
 
 The transformation from spherical coordinates to Cartesian coordinate is.
 
@@ -10895,17 +10763,17 @@ r = \sqrt{x^{2} + y^{2} + z^{2}}
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p212" href="book.pdf#page=212" target="_blank" title="This page in the PDF"><sup>[p. 212]</sup></a>
 
-![Figure 44 (p. 212)](images/fig-p212-1.png)
-
-_Figure 44 (p. 212)_
-
-![Figure 45 (p. 212)](images/fig-p212-2.png)
-
-_Figure 45 (p. 212)_
-
-![Figure 46 (p. 212)](images/fig-p212-3.png)
+![Figure 46 (p. 212)](images/fig-p212-1.png)
 
 _Figure 46 (p. 212)_
+
+![Figure 47 (p. 212)](images/fig-p212-2.png)
+
+_Figure 47 (p. 212)_
+
+![Figure 48 (p. 212)](images/fig-p212-3.png)
+
+_Figure 48 (p. 212)_
 
 We now proceed to calculate the angular momentum operators in spherical coordinates. The first step is to write the $`\frac{\partial}{\partial x_{i}}`$ in spherical coordinates. We use the chain rule and the above transformation from Cartesian to spherical. We have used $`d \cos \theta = - \sin \theta d\theta`$ and $`d \tan \varphi = \tfrac{1}{\cos^{2} \varphi} d\varphi`$. Ultimately all of these should be written in the sperical cooridnates but its convenient to use $`x`$ for example in intermediate steps of the calculation.
 
@@ -11005,11 +10873,7 @@ L_{\pm} = L_{x} \pm iL_{y} = \frac{\hbar}{i} \left( y \frac{\partial}{\partial z
 = \hbar e^{\pm i\varphi} \left( \pm \frac{\partial}{\partial \theta} + i \cot \theta \frac{\partial}{\partial \varphi} \right)
 ```
 
-<div align="center">
-
 We will use these results to find the actual eigenfunctions of angular momentum.
-
-</div>
 
 ```math
 L_{z} = \frac{\hbar}{i} \frac{\partial}{\partial \varphi}
@@ -11321,11 +11185,7 @@ The trivial solution that $`A = B = C`$ = 0 is just a zero state, not normalizab
 \psi ( \boldsymbol{r} ) = C ( iY_{3 3} - 2 Y_{3 0} + 3 Y_{3 1} ) R ( r )
 ```
 
-<div align="center">
-
 where $`R ( r )`$ is some arbitrary radial wave function normalized such that
-
-</div>
 
 ```math
 \int_{0}^{\infty} R^{*} ( r ) R ( r ) r^{2} dr = 1 .
@@ -11339,11 +11199,7 @@ c) Find the expected value of $`<L_{x} >`$ in the above state.
 
 10. Two (different) atoms of masses $`M_{1}`$ and $`M_{2}`$ are bound together into the ground state of a diatomic molecule. The binding is such that radial excitations can be neglected at low energy and that the atoms can be assumed to be a constant distance $`a`$ = 3˚$`A`$ apart. (We will ignore the small spread around $`r = a`$.)
 
-<div align="center">
-
 a) What is the energy spectrum due to rotations of the molecule?
-
-</div>
 
 <div align="right"><a href="book.pdf#page=217" target="_blank" title="This page in the PDF"><sup>[p. 217]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -11459,11 +11315,7 @@ the **spherical Neumann function**. For small $`r`$, the Neumann function has th
 n_{\ell} ( \rho ) \to \frac{1 \cdot 3 \cdot 5 \cdot \dots ( 2 \ell + 1 )}{\rho^{\ell + 1}}
 ```
 
-<div align="center">
-
 The lowest $`\ell`$ **Bessel functions** (regular at the origin) solutions are listed below.
-
-</div>
 
 ```math
 j_{0} ( \rho ) = \frac{\sin \rho}{\rho}
@@ -11563,29 +11415,29 @@ We can see both **angular and radial excitations**.
 
 We now wish to find the **energy eigenstates** for a spherical potential well of radius $`a`$ and potential $`- V_{0}`$.
 
-![Figure 47 (p. 221)](images/fig-p221-1.png)
-
-_Figure 47 (p. 221)_
-
-![Figure 48 (p. 221)](images/fig-p221-2.png)
-
-_Figure 48 (p. 221)_
-
-![Figure 49 (p. 221)](images/fig-p221-3.png)
+![Figure 49 (p. 221)](images/fig-p221-1.png)
 
 _Figure 49 (p. 221)_
 
-![Figure 50 (p. 221)](images/fig-p221-4.png)
+![Figure 50 (p. 221)](images/fig-p221-2.png)
 
 _Figure 50 (p. 221)_
 
-![Figure 51 (p. 221)](images/fig-p221-5.png)
+![Figure 51 (p. 221)](images/fig-p221-3.png)
 
 _Figure 51 (p. 221)_
 
-![Figure 52 (p. 221)](images/fig-p221-6.png)
+![Figure 52 (p. 221)](images/fig-p221-4.png)
 
 _Figure 52 (p. 221)_
+
+![Figure 53 (p. 221)](images/fig-p221-5.png)
+
+_Figure 53 (p. 221)_
+
+![Figure 54 (p. 221)](images/fig-p221-6.png)
+
+_Figure 54 (p. 221)_
 
 We must use the Bessel function near the origin.
 
@@ -11663,21 +11515,21 @@ The number of solutions depends on the depth and radius of the well. There can e
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p223" href="book.pdf#page=223" target="_blank" title="This page in the PDF"><sup>[p. 223]</sup></a>
 
-![Figure 53 (p. 223)](images/fig-p223-1.png)
-
-_Figure 53 (p. 223)_
-
-![Figure 54 (p. 223)](images/fig-p223-2.png)
-
-_Figure 54 (p. 223)_
-
-![Figure 55 (p. 223)](images/fig-p223-3.png)
+![Figure 55 (p. 223)](images/fig-p223-1.png)
 
 _Figure 55 (p. 223)_
 
-![Figure 56 (p. 223)](images/fig-p223-4.png)
+![Figure 56 (p. 223)](images/fig-p223-2.png)
 
 _Figure 56 (p. 223)_
+
+![Figure 57 (p. 223)](images/fig-p223-3.png)
+
+_Figure 57 (p. 223)_
+
+![Figure 58 (p. 223)](images/fig-p223-4.png)
+
+_Figure 58 (p. 223)_
 
 # <a id="s-15-6-partial-wave-analysis-of-scattering"></a>15.6 Partial Wave Analysis of Scattering \*
 
@@ -11730,9 +11582,9 @@ The phase shifts must be computed by actually solving the problem for the partic
 
 In fact, for low energy scattering and short range potentials, the first term $`\ell`$ = 0 is often enough to solve the problem.
 
-![Figure 57 (p. 224)](images/fig-p224-1.png)
+![Figure 59 (p. 224)](images/fig-p224-1.png)
 
-_Figure 57 (p. 224)_
+_Figure 59 (p. 224)_
 
 Only the low $`\ell`$ partial waves get close enough to the origin to be affected by the potential.
 
@@ -11762,25 +11614,25 @@ k = \frac{2 \mu E}{\hbar^{2}}
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p225" href="book.pdf#page=225" target="_blank" title="This page in the PDF"><sup>[p. 225]</sup></a>
 
-![Figure 58 (p. 225)](images/fig-p225-1.png)
-
-_Figure 58 (p. 225)_
-
-![Figure 59 (p. 225)](images/fig-p225-2.png)
-
-_Figure 59 (p. 225)_
-
-![Figure 60 (p. 225)](images/fig-p225-3.png)
+![Figure 60 (p. 225)](images/fig-p225-1.png)
 
 _Figure 60 (p. 225)_
 
-![Figure 61 (p. 225)](images/fig-p225-4.png)
+![Figure 61 (p. 225)](images/fig-p225-2.png)
 
 _Figure 61 (p. 225)_
 
-![Figure 62 (p. 225)](images/fig-p225-5.png)
+![Figure 62 (p. 225)](images/fig-p225-3.png)
 
 _Figure 62 (p. 225)_
+
+![Figure 63 (p. 225)](images/fig-p225-4.png)
+
+_Figure 63 (p. 225)_
+
+![Figure 64 (p. 225)](images/fig-p225-5.png)
+
+_Figure 64 (p. 225)_
 
 Matching the logarithmic derivative, we get
 
@@ -11850,9 +11702,9 @@ k^{\prime} \cot ( k^{\prime} a ) = k \cot ( ka ) .
 
 There will be many solutions to this and the cross section will look like diffraction.
 
-![Figure 63 (p. 226)](images/fig-p226-1.png)
+![Figure 65 (p. 226)](images/fig-p226-1.png)
 
-_Figure 63 (p. 226)_
+_Figure 65 (p. 226)_
 
 # <a id="s-15-8-the-radial-equation-for-u-r-rr-r"></a>15.8 The Radial Equation for $`u ( r ) = rR ( r )`$ \*
 
@@ -11914,11 +11766,7 @@ For $`\ell`$ = 0, its easy to see that $`\sin \rho`$ and $`\cos \rho`$ are solut
 
 1. A particle has orbital angular momentum quantum number $`l`$ = 1 and is bound in the potential well $`V ( r ) = - V_{0}`$ for $`r<a`$ and $`V ( r )`$ = 0 elsewhere. Write down the form of the solution (in terms of known functions) in the two regions. Your solution should satisfy constraints at the origin and at infinity. Be sure to include angular dependence. Now use the boundary condition at $`r = a`$ to get one equation, the solution of which will quantize the energies. Do not bother to solve the equation.
 
-2. A particle of mass $`m`$ with 0 total angular momentum is in a 3 dimensional potential well
-
-```math
-V ( r ) = - V_{0} \text{ for } r<a ( \text{ otherwise } V ( r ) = 0 ) .
-```
+2. A particle of mass $`m`$ with 0 total angular momentum is in a 3 dimensional potential well $`V ( r ) = - V_{0}`$ for $`r<a`$ (otherwise $`V ( r )`$ = 0).
 
 a) Write down the form of the $`( l = 0 )`$ solution, to the time independent Schrödinger equation, inside the well, which is well behaved at at $`r`$ = 0. Specify the relationship between the particles energy and any parameters in your solution.
 
@@ -11934,9 +11782,7 @@ d) Find the transcendental equation which will determine the energy eigenvalues.
 
 4. A particle is confined to the inside of a sphere of radius $`a`$. Find the energies of the two lowest energy states for $`\ell`$ = 0. Write down (but do not solve) the equation for the energies for $`\ell`$ = 1.
 
-```math
-5 .
-```
+5.
 
 ---
 
@@ -12019,11 +11865,7 @@ This principle quantum number is actually the sum of the radial quantum number p
 n = n_{r} + \ell + 1
 ```
 
-<div align="center">
-
 and therefore, the total angular momentum quantum number $`\ell`$ must be less than $`n`$.
-
-</div>
 
 ```math
 \ell = 0 , 1 , 2 ,\dots ,n - 1
@@ -12089,6 +11931,10 @@ The radial wavefunctions should be **normalized** as below.
 
 The pictures below depict the probability distributions in space for the Hydrogen wavefunctions.
 
+![Figure 66 (p. 230)](images/fig-p230-1.png)
+
+_Figure 66 (p. 230)_
+
 The graphs below show the radial wave functions. Again, for a given $`n`$ the maximum $`\ell`$ state has no radial excitation, and hence no nodes in the radial wavefunction. As $`ell`$ gets smaller for a fixed $`n`$, we see more radial excitation.
 
 <div align="right"><a href="book.pdf#page=230" target="_blank" title="This page in the PDF"><sup>[p. 230]</sup></a></div>
@@ -12099,17 +11945,17 @@ The graphs below show the radial wave functions. Again, for a given $`n`$ the ma
 2 3 1
 ```
 
-![Figure 64 (p. 231)](images/fig-p231-1.png)
+![Figure 67 (p. 231)](images/fig-p231-1.png)
 
-_Figure 64 (p. 231)_
+_Figure 67 (p. 231)_
 
 <div align="right"><a href="book.pdf#page=231" target="_blank" title="This page in the PDF"><sup>[p. 231]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p232" href="book.pdf#page=232" target="_blank" title="This page in the PDF"><sup>[p. 232]</sup></a>
 
-![Figure 65 (p. 232)](images/fig-p232-1.png)
+![Figure 68 (p. 232)](images/fig-p232-1.png)
 
-_Figure 65 (p. 232)_
+_Figure 68 (p. 232)_
 
 A **useful integral** for Hydrogen atom calculations is.
 
@@ -12135,9 +11981,9 @@ A **useful integral** for Hydrogen atom calculations is.
 
 The figure shows the transitions between Hydrogen atom states.
 
-![Figure 66 (p. 233)](images/fig-p233-1.png)
+![Figure 69 (p. 233)](images/fig-p233-1.png)
 
-_Figure 66 (p. 233)_
+_Figure 69 (p. 233)_
 
 The ground state of Hydrogen has $`n`$ = 1 and $`\ell`$ = 0. This is conventionally called the 1s state. The convention is to name $`\ell`$ = 0 states “s”, $`\ell`$ = 1 states “p”, $`\ell`$ = 2 states “d”, and $`\ell`$ = 3 states “f”. From there on follow the alphabet with g, h, i, ...
 
@@ -12145,11 +11991,7 @@ The first excited state of Hydrogen has $`n`$ = 2. There are actually four degen
 
 The second excited state has $`n`$ = 3 with the 3s, 3p and 3d states being degenerate. This totals 9 states with the different allowed $`m`$ values.
 
-<div align="center">
-
 In general there are $`n^{2}`$ degenerate states, again not counting different spin states.
-
-</div>
 
 The Hydrogen spectrum was primarily investigated by measuring the energy of photons emitted in transitions between the states, as depicted in the figures above and below.
 
@@ -12157,9 +11999,9 @@ The Hydrogen spectrum was primarily investigated by measuring the energy of phot
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p234" href="book.pdf#page=234" target="_blank" title="This page in the PDF"><sup>[p. 234]</sup></a>
 
-![Figure 67 (p. 234)](images/fig-p234-1.png)
+![Figure 70 (p. 234)](images/fig-p234-1.png)
 
-_Figure 67 (p. 234)_
+_Figure 70 (p. 234)_
 
 Transitions which change $`\ell`$ by one unit are strongly preferred, as we will later learn.
 
@@ -12589,11 +12431,7 @@ For the $`n`$ = 3 final state, $`E = \tfrac{7}{1 4 4} 1 3 . 6`$ = 0$`. 7`$ eV.
 
 4. An **electron in the Coulomb field of a proton** is in the state described by the wave function $`\tfrac{1}{6} ( 4 \psi_{1 0 0} + 3 \psi_{2 1 1} - \psi_{2 1 0} + \sqrt{1 0} \psi_{2 1 - 1} )`$. Find the expected value of the Energy, $`L^{2}`$ and $`L_{z}`$. Now find the expected value of $`L_{y}`$.
 
-<div align="center">
-
 5. **\*** Write out the (normalized) **hydrogen energy eigenstate** $`\psi_{3 1 1} ( r,\theta ,\varphi )`$.
-
-</div>
 
 6. Calculate the **expected value of** $`r`$ in the Hydrogen state $`\psi_{2 0 0}`$.
 
@@ -13029,13 +12867,7 @@ The bra vector is the conjugate transpose of the ket vector. The both represent 
 
 # <a id="s-18-2-the-angular-momentum-matrices"></a>18.2 The Angular Momentum Matrices\*
 
-An important case of the use of the matrix form of operators is that of Angular Momentum (See Section14.1) Assume we have an atomic state with $`\ell`$ = 1 (fixed) but $`m`$ free. We may use the
-
-<div align="right"><a href="book.pdf#page=248" target="_blank" title="This page in the PDF"><sup>[p. 248]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p249" href="book.pdf#page=249" target="_blank" title="This page in the PDF"><sup>[p. 249]</sup></a>
-
-eigenstates of $`L_{z}`$ as a basis for our states and operators. Ignoring the (fixed) radial part of the wavefunction, our state vectors for $`\ell`$ = 1 must be a linear combination of the $`Y_{1 m}`$
+An important case of the use of the matrix form of operators is that of Angular Momentum (See Section14.1) Assume we have an atomic state with $`\ell`$ = 1 (fixed) but $`m`$ free. We may use the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=248" target="_blank" title="This page in the PDF"><sup>[p. 248]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p249" href="book.pdf#page=249" target="_blank" title="This page in the PDF"><sup>[p. 249]</sup></a></span> eigenstates of $`L_{z}`$ as a basis for our states and operators. Ignoring the (fixed) radial part of the wavefunction, our state vectors for $`\ell`$ = 1 must be a linear combination of the $`Y_{1 m}`$
 
 ```math
 \psi = \psi_{+} Y_{1 1} + \psi_{0} Y_{1 0} + \psi_{-} Y_{1 1}
@@ -13141,11 +12973,7 @@ We will derive the Hamiltonian terms added when an atom is put in a magnetic fie
 H = - \vec{\mu} \cdot \vec{B} .
 ```
 
-<div align="center">
-
 For the **orbital angular momentum** in a normal atom, the magnetic moment is
-
-</div>
 
 ```math
 \vec{\mu} = \frac{- e}{2 mc} \vec{L} .
@@ -13194,25 +13022,25 @@ A magnet with a **strong gradient to the field** is shown below.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p252" href="book.pdf#page=252" target="_blank" title="This page in the PDF"><sup>[p. 252]</sup></a>
 
-![Figure 68 (p. 252)](images/fig-p252-1.png)
+![Figure 71 (p. 252)](images/fig-p252-1.png)
 
-_Figure 68 (p. 252)_
+_Figure 71 (p. 252)_
 
 Lets assume the field gradient is in the z direction.
 
 In the Stern-Gerlach experiment, a **beam of atoms** (assume $`\ell`$ = 1) is sent into a magnet with a strong field gradient. The atoms come from an oven through some collimator to form a beam. The beam is said to be unpolarized since the three m states are equally likely no particular state has been prepared. An unpolarized, $`\ell`$ = 1 beam of atoms will be split into the three beams (of equal intensity) corresponding to the different eigenvalues of $`L_{z}`$.
 
-![Figure 69 (p. 252)](images/fig-p252-2.png)
+![Figure 72 (p. 252)](images/fig-p252-2.png)
 
-_Figure 69 (p. 252)_
+_Figure 72 (p. 252)_
 
 The atoms in the top beam are in the $`m`$ = 1 state. If we put them through another Stern-Gerlach apparatus, they will **all** go into the top beam again. Similarly for the middle beam in the $`m`$ = 0 state and the lower beam in the $`m = - 1`$ state.
 
 We can make a **fancy Stern-Gerlach apparatus** which puts the beam back together as shown below.
 
-![Figure 70 (p. 252)](images/fig-p252-3.png)
+![Figure 73 (p. 252)](images/fig-p252-3.png)
 
-_Figure 70 (p. 252)_
+_Figure 73 (p. 252)_
 
 ```math
 \begin{Bmatrix} + \\ 0 \\ - \end{Bmatrix}_{z} \to
@@ -13226,9 +13054,9 @@ We can represent the apparatus by the symbol to the right.
 
 We can use this apparatus to **prepare an eigenstate**. The apparatus below picks out the $`m`$ = 1 state
 
-![Figure 71 (p. 253)](images/fig-p253-1.png)
+![Figure 74 (p. 253)](images/fig-p253-1.png)
 
-_Figure 71 (p. 253)_
+_Figure 74 (p. 253)_
 
 ```math
 \begin{aligned} & \quad 0 | \quad \to \\ & \quad -|_{z} \end{aligned}
@@ -13244,9 +13072,9 @@ where we are writing the states according to the $`m`$ value, either +, -, or 0.
 
 An apparatus which blocks both the + and - beams
 
-![Figure 72 (p. 253)](images/fig-p253-2.png)
+![Figure 75 (p. 253)](images/fig-p253-2.png)
 
-_Figure 72 (p. 253)_
+_Figure 75 (p. 253)_
 
 ```math
 0_{z} \to
@@ -13472,11 +13300,7 @@ Note that the operator for a rotation through 2$`\pi`$ radians is minus the iden
 
 \* See Example 18.10.12: The eigenvectors of $`S_{u} . *`$
 
-As for orbital angular momentum $`( \vec{L} )`$, there is also a **magnetic moment** associated with internal
-
-```math
-\text{ angular momentum } ( \vec{S} ) .
-```
+As for orbital angular momentum $`( \vec{L} )`$, there is also a **magnetic moment** associated with internal angular momentum $`( \vec{S} )`$.
 
 ```math
 \vec{\mu}_{spin} = - \frac{eg}{2 mc} \vec{S}
@@ -14312,9 +14136,9 @@ In basic NMR, a strong static B field is applied. A spin $`\frac{1}{2}`$ proton 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p272" href="book.pdf#page=272" target="_blank" title="This page in the PDF"><sup>[p. 272]</sup></a>
 
-![Figure 73 (p. 272)](images/fig-p272-1.png)
+![Figure 76 (p. 272)](images/fig-p272-1.png)
 
-_Figure 73 (p. 272)_
+_Figure 76 (p. 272)_
 
 As we derived, the Hamiltonian is
 
@@ -14352,13 +14176,7 @@ The **solution** (see section 18.11.8) of these equations represents and early e
 \frac{d}{dt} ( be^{i\omega_{0} t} ) = \frac{i\omega_{1}}{2} ( e^{i ( \omega + 2 \omega_{0} ) t} + e^{- i ( \omega - 2 \omega_{0} t )} )
 ```
 
-Terms that oscillate rapidly will average to zero. The first term oscillates very rapidly. The second term will only cause significant transitions if $`\omega \approx 2 \omega_{0}`$. Note that this is exactly the condition that
-
-<div align="right"><a href="book.pdf#page=272" target="_blank" title="This page in the PDF"><sup>[p. 272]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p273" href="book.pdf#page=273" target="_blank" title="This page in the PDF"><sup>[p. 273]</sup></a>
-
-requires the energy of the photons in the EM field $`E = \hbar \omega`$ to be equal to the energy difference between the two spin states ∆$`E`$ = 2$`\hbar \omega_{0}`$. The conservation of energy condition must be satisfied well enough to get a significant transition rate. Actually we will find later that for rapid transitions, energy conservation does not have to be exact.
+Terms that oscillate rapidly will average to zero. The first term oscillates very rapidly. The second term will only cause significant transitions if $`\omega \approx 2 \omega_{0}`$. Note that this is exactly the condition that<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=272" target="_blank" title="This page in the PDF"><sup>[p. 272]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p273" href="book.pdf#page=273" target="_blank" title="This page in the PDF"><sup>[p. 273]</sup></a></span> requires the energy of the photons in the EM field $`E = \hbar \omega`$ to be equal to the energy difference between the two spin states ∆$`E`$ = 2$`\hbar \omega_{0}`$. The conservation of energy condition must be satisfied well enough to get a significant transition rate. Actually we will find later that for rapid transitions, energy conservation does not have to be exact.
 
 So we have proven that we should set the frequency $`\omega`$ of our EM wave according to the energy difference between the two spin states. This allows us to cause transitions to the higher energy state. In NMR, we observe the transitions back to the lower energy state. These emit EM radiation at the same frequency and we can detect it after the stronger input pulse ends (or by more complex methods). We don’t yet know why the higher energy state will spontaneously decay to the lower energy state. To calculate this, we will have to quantize the field. But we already see that the energy terms $`e^{- iEt/ \hbar}`$ of standard wave mechanics will require energy conservation with photon energies of $`E = \hbar \omega`$.
 
@@ -14520,11 +14338,11 @@ e^{i\theta L_{y} / \hbar} = \sum_{n = 0}^{\infty} \frac{\left( \frac{i\theta L_{
 
 All the odd powers are the same. All the nonzero even powers are the same. The $`\hbar`$s all cancel out. We now must look at the sums for each term in the matrix and identify the function it represents.
 
-$`•`$ The $`n`$ = 0 term contributes 1 on the diagonals.
+$`\bullet`$ The $`n`$ = 0 term contributes 1 on the diagonals.
 
-$`•`$ The $`n`$ = 1$`, 3 , 5 ,\dots`$ terms sum to $`\sin ( \theta ) \left( \tfrac{iL_{y}}{\hbar} \right)`$.
+$`\bullet`$ The $`n`$ = 1$`, 3 , 5 ,\dots`$ terms sum to $`\sin ( \theta ) \left( \tfrac{iL_{y}}{\hbar} \right)`$.
 
-$`•`$ The $`n`$ = 2$`, 4 , 6 ,\dots`$ terms (with a -1 in the matrix) are nearly the series for $`\frac{1}{2} \cos ( \theta )`$. The $`n`$ = 0 term is is missing so subtract 1. The middle matrix element is twice the other even terms.
+$`\bullet`$ The $`n`$ = 2$`, 4 , 6 ,\dots`$ terms (with a -1 in the matrix) are nearly the series for $`\frac{1}{2} \cos ( \theta )`$. The $`n`$ = 0 term is is missing so subtract 1. The middle matrix element is twice the other even terms.
 
 ```math
 e^{i\theta L_{y} / \hbar} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} + \sin ( \theta ) \frac{1}{\sqrt{2}} \begin{pmatrix} 0 & 1 & 0 \\ - 1 & 0 & 1 \\ 0 & - 1 & 0 \end{pmatrix} + \frac{1}{2} ( \cos ( \theta ) - 1 ) \begin{pmatrix} 1 & 0 & - 1 \\ 0 & 2 & 0 \\ - 1 & 0 & 1 \end{pmatrix}
@@ -14818,11 +14636,7 @@ Find the time development (matrix) operator $`e^{- iHt/ \hbar}`$ in the usual ba
 1 + i
 ```
 
-<div align="center">
-
 probability that a measurement of the $`x`$ component of spin yields +$`\frac{1}{2}`$?
-
-</div>
 
 ```math
 i
@@ -14850,19 +14664,11 @@ P\psi_{1} = - \psi_{2} \quad P\psi_{2} = - \psi_{1}
 
 What are the properly normalized states that are eigenfunctions of H and P? What are their energies?
 
-<div align="center">
-
 11. What are the eigenvectors and eigenvalues for the spin $`\frac{1}{2}`$ operator $`S_{x} + S_{z}`$?
-
-</div>
 
 12. A spin $`\frac{1}{2}`$ object is in an eigenstate of $`S_{y}`$ with eigenvalue $`\frac{\hbar}{2}`$ at t=0. The particle is in a magnetic field **B** = $`( 0 , 0 ,B )`$ which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{z}`$. Find the probability to measure $`S_{y} = \tfrac{\hbar}{2}`$ as a function of time.
 
-<div align="center">
-
 13. A spin 1 system is in the following state, (in the usual $`L_{z}`$ eigenstate basis):
-
-</div>
 
 ```math
 \chi = \frac{1}{\sqrt{5}} \begin{pmatrix} i \\ \sqrt{2} \\ 1 + i \end{pmatrix} .
@@ -14872,10 +14678,10 @@ What is the probability that a measurement of $`L_{x}`$ yields 0? What is the pr
 
 14. A spin $`\frac{1}{2}`$ object is in an eigenstate of $`S_{z}`$ with eigenvalue $`\frac{\hbar}{2}`$ at t=0. The particle is in a magnetic field **B** = (0$`,B, 0`$) which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{y}`$. Find the probability to measure $`S_{z} = \tfrac{\hbar}{2}`$ as a function of time.
 
-15. A spin 1 particle is placed in an external field in the $`u`$ direction such that the Hamiltonian is
+15. A spin 1 particle is placed in an external field in the $`u`$ direction such that the Hamiltonian is given by
 
 ```math
-\text{ given by } \quad H = \alpha \left( \frac{\sqrt{3}}{2} S_{x} + \frac{1}{2} S_{y} \right)
+H = \alpha \left( \frac{\sqrt{3}}{2} S_{x} + \frac{1}{2} S_{y} \right)
 ```
 
 Find the energy eigenstates and eigenvalues.
@@ -14913,9 +14719,9 @@ to calculate the emissive power of a black body $`E ( \lambda ,T )`$ as a functi
 
 ```math
 \begin{array}{ll}
-• & \text{a 1 eV electron} \\ 
-• & a 1 0^{4} \text{ MeV proton } \\ 
-• & \text{a 1 gram lead ball moving with a velocity of 100 cm/sec.} \\ 
+\bullet & \text{a 1 eV electron} \\ 
+\bullet & a 1 0^{4} \text{ MeV proton } \\ 
+\bullet & \text{a 1 gram lead ball moving with a velocity of 100 cm/sec.} \\ 
 \end{array}
 ```
 
@@ -14979,10 +14785,10 @@ Remember that the wave functions go to zero at infinity.$`-\infty \quad -\infty`
 
 # <a id="s-19-3-homework-3"></a>19.3 Homework 3
 
-1. A general one dimensional scattering problem could be characterized by an (arbitrary) potential $`V ( x )`$ which is localized by the requirement that $`V ( x )`$ = 0 for $`| x | >a`$. Assume that the
+1. A general one dimensional scattering problem could be characterized by an (arbitrary) potential $`V ( x )`$ which is localized by the requirement that $`V ( x )`$ = 0 for $`| x | >a`$. Assume that the wave-function is
 
 ```math
-\text{ wave } - \text{ function is } \quad \begin{cases} Ae^{ikx} + Be^{- ikx} & x< - a \\ Ce^{ikx} + De^{- ikx} & x>a \end{cases}
+\begin{cases} Ae^{ikx} + Be^{- ikx} & x< - a \\ Ce^{ikx} + De^{- ikx} & x>a \end{cases}
 ```
 
 ```math
@@ -15083,9 +14889,7 @@ Find the expected value of $`p`$ as a function of time using operator methods.
 
 4. Show at if an operator $`H`$ is hermitian, then the operator $`e^{iH}`$ is unitary.
 
-```math
-5 . \text{ Calculate } \langle u_{i} | x | u_{j} \rangle \text{ and } \langle u_{i} | p | u_{j} \rangle .
-```
+5. Calculate $`\langle u_{i} | x | u_{j} \rangle`$ and $`\langle u_{i} | p | u_{j} \rangle`$.
 
 6. Calculate $`\langle u_{i} | xp | u_{j} \rangle`$ by direct calculation. Now calculate the same thing using $`\sum \langle u_{i} | x | u_{k} \rangle \langle u_{k} | p | u_{j} \rangle`$.
 
@@ -15097,9 +14901,9 @@ k
 
 8. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t = 0 )`$ = $`\tfrac{1}{\sqrt{2}} ( u_{0} + u_{1} )`$.
 
-$`•`$ Compute the expected value of $`x`$ as a function of time using $`A`$ and $`A^{\dagger}`$ in the Schrod̈inger picture.
+$`\bullet`$ Compute the expected value of $`x`$ as a function of time using $`A`$ and $`A^{\dagger}`$ in the Schrod̈inger picture.
 
-$`•`$ Now do the same in the Heisenberg picture.
+$`\bullet`$ Now do the same in the Heisenberg picture.
 
 <div align="right"><a href="book.pdf#page=287" target="_blank" title="This page in the PDF"><sup>[p. 287]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -15294,9 +15098,9 @@ These **derivations** (see section 20.5.1) are fairly simple using Einstein nota
 
 The two results we want to use as inputs for our study of Quantum Physics are
 
-$`•`$ the classical gauge symmetry and
+$`\bullet`$ the classical gauge symmetry and
 
-$`•`$ the classical Hamiltonian.
+$`\bullet`$ the classical Hamiltonian.
 
 The Maxwell equations are invariant under a **gauge transformation** of the potentials.
 
@@ -15474,9 +15278,9 @@ A good example of a $`B`$ = 0 region is a **superconductor**. Magnetic flux is e
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p297" href="book.pdf#page=297" target="_blank" title="This page in the PDF"><sup>[p. 297]</sup></a>
 
-![Figure 74 (p. 297)](images/fig-p297-1.png)
+![Figure 77 (p. 297)](images/fig-p297-1.png)
 
-_Figure 74 (p. 297)_
+_Figure 77 (p. 297)_
 
 Flux is observed to be quantized but the charge of the particle seen is 2$`e`$.
 
@@ -15488,9 +15292,9 @@ This is due to the pairing of electrons inside a superconductor.
 
 The **Aharanov Böhm Effect** brings us back to the two slit diffraction experiment but adds magnetic fields.
 
-![Figure 75 (p. 297)](images/fig-p297-2.png)
+![Figure 78 (p. 297)](images/fig-p297-2.png)
 
-_Figure 75 (p. 297)_
+_Figure 78 (p. 297)_
 
 The electron beams travel through two slits in field free regions but we have the ability to vary a magnetic field enclosed by the path of the electrons. At the screen, the amplitudes from the two<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=297" target="_blank" title="This page in the PDF"><sup>[p. 297]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p298" href="book.pdf#page=298" target="_blank" title="This page in the PDF"><sup>[p. 298]</sup></a></span> slits interfere $`\psi = \psi_{1} + \psi_{2}`$. Let’s start with $`B`$ = 0 and $`A`$ = 0 everywhere. When we change the $`B`$ field, the wavefunctions must change.
 
@@ -15534,13 +15338,7 @@ An important place where both magnetic terms come into play is in a **plasma.** 
 \frac{- \hbar^{2}}{2 m_{e}} \nabla^{2} \psi + \frac{eB}{2 m_{e} c} L_{z} \psi + \frac{e^{2} B^{2}}{8 m_{e} c^{2}} ( x^{2} + y^{2} ) \psi = ( E + e\varphi ) \psi
 ```
 
-The problem clearly has **translational symmetry along the z direction and rotational sym-** **metry around the z axis**. Given the symmetry, we know that $`L_{z}`$ and $`p_{z}`$ commute with the
-
-<div align="right"><a href="book.pdf#page=298" target="_blank" title="This page in the PDF"><sup>[p. 298]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p299" href="book.pdf#page=299" target="_blank" title="This page in the PDF"><sup>[p. 299]</sup></a>
-
-Hamiltonian and will give constants of the motion. We therefore will be able to separate variables in the usual way.
+The problem clearly has **translational symmetry along the z direction and rotational sym-** **metry around the z axis**. Given the symmetry, we know that $`L_{z}`$ and $`p_{z}`$ commute with the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=298" target="_blank" title="This page in the PDF"><sup>[p. 298]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p299" href="book.pdf#page=299" target="_blank" title="This page in the PDF"><sup>[p. 299]</sup></a></span> Hamiltonian and will give constants of the motion. We therefore will be able to separate variables in the usual way.
 
 ```math
 \psi ( \vec{r} ) = u_{nmk} ( \rho ) e^{im\varphi} e^{ikz}
@@ -15662,13 +15460,7 @@ For the fourth equation we have.
 \frac{\partial}{\partial x_{i}} \frac{\partial}{\partial x_{m}} A_{n} \epsilon_{mnj} \epsilon_{ijk} + \frac{1}{c} \frac{\partial}{\partial t} \left( \frac{\partial}{\partial x_{k}} \varphi + \frac{1}{c} \frac{\partial A_{k}}{\partial t} \right) = \frac{4 \pi}{c} J_{k}
 ```
 
-Its easy to derive an identity for the product of two totally antisymmetric tensors $`\epsilon_{mnj} \epsilon_{ijk}`$ as occurs above. All the indices of any tensor have to be different in order to get a nonzero result. Since the
-
-<div align="right"><a href="book.pdf#page=300" target="_blank" title="This page in the PDF"><sup>[p. 300]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p301" href="book.pdf#page=301" target="_blank" title="This page in the PDF"><sup>[p. 301]</sup></a>
-
-$`j`$ occurs in both tensors (and is summed over) we can simplify things. Take the case that $`i`$ = 1 and $`k`$ = 2. We only have a nonzero term if $`j`$ = 3 so the other 2 terms in the sum are zero. But if $`j`$ = 3, we must have either $`m`$ = 1 and $`n`$ = 2 or vice versa. We also must not have $`i = k`$ since all the indices have to be different on each epsilon. So we can write.
+Its easy to derive an identity for the product of two totally antisymmetric tensors $`\epsilon_{mnj} \epsilon_{ijk}`$ as occurs above. All the indices of any tensor have to be different in order to get a nonzero result. Since the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=300" target="_blank" title="This page in the PDF"><sup>[p. 300]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p301" href="book.pdf#page=301" target="_blank" title="This page in the PDF"><sup>[p. 301]</sup></a></span> $`j`$ occurs in both tensors (and is summed over) we can simplify things. Take the case that $`i`$ = 1 and $`k`$ = 2. We only have a nonzero term if $`j`$ = 3 so the other 2 terms in the sum are zero. But if $`j`$ = 3, we must have either $`m`$ = 1 and $`n`$ = 2 or vice versa. We also must not have $`i = k`$ since all the indices have to be different on each epsilon. So we can write.
 
 ```math
 \epsilon_{mnj} \epsilon_{ijk} = \epsilon_{mnj} \epsilon_{kij} = ( \delta_{km} \delta_{in} - \delta_{kn} \delta_{im} )
@@ -16198,14 +15990,14 @@ A superconductor excludes the magnetic field so we have our field free region. I
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p309" href="book.pdf#page=309" target="_blank" title="This page in the PDF"><sup>[p. 309]</sup></a>
 
-![Figure 76 (p. 309)](images/fig-p309-1.png)
+![Figure 79 (p. 309)](images/fig-p309-1.png)
 
-_Figure 76 (p. 309)_
+_Figure 79 (p. 309)_
 
 Consider two different paths from $`\vec{r}_{0}`$ to $`\vec{r}`$.
 
 ```math
-f_{1} ( \vec{r} ) - f_{2} ( \vec{r} ) = \oint ( ) d \vec{r} \cdot \vec{A} = \int d \vec{S} \cdot \vec{\nabla} \times \vec{A} = \int d \vec{S} \cdot \vec{B} = \Phi
+f_{1} ( \vec{r} ) - f_{2} ( \vec{r} ) = \oint d \vec{r} \cdot \vec{A} = \int d \vec{S} \cdot \vec{\nabla} \times \vec{A} = \int d \vec{S} \cdot \vec{B} = \Phi
 ```
 
 **The difference between the two calculations of f is the flux.**
@@ -16323,7 +16115,11 @@ This is a very important result since we derived everything about angular moment
 
 As with the combination of independent spatial coordinates, we can make **product states** to describe the spins of two particles. These products just mean, for example, the spin of particle 1 is up **and** the spin of particle 2 is down. There are four possible (product) spin states when we combine two spin $`\frac{1}{2}`$ particles. These **product states are eigenstates of total** $`S_{z}`$ but not necessarily of total $`S^{2}`$. The states and their $`S_{z}`$ eigenvalues are given below.
 
+<div align="center">
+
 Product State Total $`S_{z}`$ eigenvalue
+
+</div>
 
 ```math
 \chi_{+}^{( 1 )} \chi_{+}^{( 2 )} \quad \hbar
@@ -16403,11 +16199,7 @@ J^{2} = L^{2} + 2 \vec{L} \cdot \vec{S} + S_{2}^{2}
 
 Since our eigenstates of $`J^{2}`$ and $`J_{z}`$ are also eigenstates of $`L^{2}`$ and $`S^{2}`$ (but not $`L_{z}`$ or $`S_{z}`$), these are ideal for computing the spin orbit interaction. In fact, they are going to be the true energy eigenstates, as rotational symmetry tells us they must.
 
-<div align="center">
-
 # <a id="s-21-3-adding-spin-2-1-to-integer-orbital-angular-momentum"></a>21.3 Adding Spin $`\frac{1}{2}`$ to Integer Orbital Angular Momentum
-
-</div>
 
 Our goal is to add orbital angular momentum with quantum number $`\ell`$ to spin $`\frac{1}{2}`$. We can show in several ways that, for $`\ell \neq 0`$, that the total angular momentum quantum number has **two possible** **values** $`j = \ell + \tfrac{1}{2}`$ **or** $`j = \ell - \tfrac{1}{2}`$**.** For $`\ell`$ = 0, only $`j = \tfrac{1}{2}`$ is allowed. First lets argue that this makes sense when we are adding two **vectors.** For example if we add a vector of length 3 to a vector of length 0.5, the resulting vector could take on a length between 2.5 and 3.5 For quantized angular momentum, we will only have the half integers allowed, rather than a continuous range. Also we know that the quantum numbers like $`\ell`$ are not exactly the length of the vector but are close. So these two values make sense physically.
 
@@ -16463,9 +16255,9 @@ The vector model qualitatively explains the limits.
 
 audio
 
-![Figure 77 (p. 314)](images/fig-p314-1.png)
+![Figure 80 (p. 314)](images/fig-p314-1.png)
 
-_Figure 77 (p. 314)_
+_Figure 80 (p. 314)_
 
 In general, $`j`$ takes on **every value between the maximum an minimum in integer steps.**
 
@@ -17495,11 +17287,7 @@ The **normalization factor** $`N ( \lambda )`$ played no role in the solutions t
 N ( \lambda ) \approx 1 - \tfrac{1}{2}_{k} \sum_{\not = n} \lambda^{2} | c_{nk}^{( 1 )} |^{2}
 ```
 
-<div align="center">
-
 The correction is of order $`\lambda^{2}`$ and **can be neglected** at this level of approximation.
-
-</div>
 
 These results are rewritten with all the $`\lambda`$ removed in section 22.1.
 
@@ -17702,9 +17490,9 @@ E_{nlm} = E_{n}^{( 0 )} + \tfrac{E_{n}^{( 0 ) 2}}{2 mc^{2}} \left[ 3 - \tfrac{4 
 
 This is independent of $`\ell`$ so the states of different total angular momentum split in energy but there is still a good deal of degeneracy.
 
-![Figure 78 (p. 338)](images/fig-p338-1.png)
+![Figure 81 (p. 338)](images/fig-p338-1.png)
 
-_Figure 78 (p. 338)_
+_Figure 81 (p. 338)_
 
 We have calculated the fine structure effects in Hydrogen. There are, of course, other, smaller corrections to the energies. A correction from field theory, the Lamb Shift, causes states of different $`\ell`$ to shift apart slightly. Nevertheless, the states of definite total angular momentum are the energy eigenstates until we somehow break spherical symmetry.
 
@@ -17740,9 +17528,9 @@ Thus, in a weak field, the **the degeneracy is completely broken for the states*
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p340" href="book.pdf#page=340" target="_blank" title="This page in the PDF"><sup>[p. 340]</sup></a>
 
-![Figure 79 (p. 340)](images/fig-p340-1.png)
+![Figure 82 (p. 340)](images/fig-p340-1.png)
 
-_Figure 79 (p. 340)_
+_Figure 82 (p. 340)_
 
 The factor $`\left( 1 \pm \tfrac{1}{2 \ell + 1} \right)`$ is known as the **Lande** $`g`$ **Factor** because the state splits as if it had this gyromagnetic ratio. We know that it is in fact a combination of the orbital and spin g factors in a state of definite $`j`$.
 
@@ -17956,7 +17744,13 @@ Now, $`\psi`$(0) = 0 for $`\ell > 0`$ and $`\psi`$(0) = $`\tfrac{1}{\sqrt{4 \pi}
 \langle H_{D} \rangle_{n 0 0} = \frac{4 e^{2} \hbar^{2}}{8 n^{3} a_{0}^{3} m^{2} c^{2}} = \frac{e^{2} \hbar^{2} \alpha^{2} m^{2} c^{2}}{2 n^{3} a_{0} m^{2} c^{2} \hbar^{2}} = \frac{2 nE_{n}^{2}}{mc^{2}}
 ```
 
-This is the same as $`\ell`$ = 0 term that we got for the spin orbit correction. This actually replaces the $`\ell`$ = 0 term in the spin-orbit correction (which should be zero) making the formula correct!<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=343" target="_blank" title="This page in the PDF"><sup>[p. 343]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p344" href="book.pdf#page=344" target="_blank" title="This page in the PDF"><sup>[p. 344]</sup></a></span> **23.4.6 The Anomalous Zeeman Effect**
+This is the same as $`\ell`$ = 0 term that we got for the spin orbit correction. This actually replaces the $`\ell`$ = 0 term in the spin-orbit correction (which should be zero) making the formula correct!
+
+<div align="right"><a href="book.pdf#page=343" target="_blank" title="This page in the PDF"><sup>[p. 343]</sup></a></div>
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
+<a id="p344" href="book.pdf#page=344" target="_blank" title="This page in the PDF"><sup>[p. 344]</sup></a>
+
+## <a id="s-23-4-6-the-anomalous-zeeman-effect"></a>23.4.6 The Anomalous Zeeman Effect
 
 We compute the energy change due to a weak magnetic field using first order Perturbation Theory.
 
@@ -18042,7 +17836,7 @@ In summary then, we rewrite the fine structure shift.
 \Delta E = - \frac{1}{2} mc^{2} ( Z\alpha )^{4} \frac{1}{n^{3}} \left[ \frac{1}{j + \tfrac{1}{2}} - \frac{3}{4 n} \right] .
 ```
 
-## <a id="s-23-4-6-the-anomalous-zeeman-effect"></a>To this we add the anomalous Zeeman effect
+To this we add the anomalous Zeeman effect
 
 ```math
 \Delta E = \frac{e \hbar B}{2 mc} m_{j} \left( 1 \pm \frac{1}{2 \ell + 1} \right) .
@@ -18052,11 +17846,7 @@ In summary then, we rewrite the fine structure shift.
 
 1. Consider the fine structure of the $`n`$ = 2 states of the hydrogen atom. What is the spectrum in the absence of a magnetic field? How is the spectrum changed when the atom is placed in a magnetic field of 25,000 gauss? Give numerical values for the energy shifts in each of the above cases. Now, try to estimate the binding energy for the lowest energy $`n`$ = 2 state including the relativistic, spin-orbit, and magnetic field.
 
-2. Verify the relations used for $`\tfrac{1}{r} , \tfrac{1}{r^{2}}`$, and $`\frac{1}{r^{3}}`$ for hydrogen atom states up to $`n`$ = 3 and for any
-
-```math
-n \text{ if } l = n - 1 .
-```
+2. Verify the relations used for $`\tfrac{1}{r} , \tfrac{1}{r^{2}}`$, and $`\frac{1}{r^{3}}`$ for hydrogen atom states up to $`n`$ = 3 and for any $`n`$ if $`l = n - 1 .`$
 
 3. Calculate the fine structure of hydrogen atoms for spin 1 electrons for $`n`$ = 1 and $`n`$ = 2.
 
@@ -18070,13 +17860,7 @@ Compute the energy shifts in eV.
 
 3. Calculate and show the splitting of the $`n`$ = 3 states (as in the previous problem) in a weak magnetic field B. Draw a diagram showing the states before and after the field is applied
 
-4. If the general form of the spin-orbit coupling for a particle of mass $`m`$ and spin $`\vec{S}`$ moving in a potential $`V ( r )`$ is $`H_{SO} = \tfrac{1}{2 m^{2} c^{2}} \vec{L} \cdot \vec{S} \tfrac{1}{r} \tfrac{dV}{dr}`$, what is the effect of that coupling on the spectrum of
-
-<div align="right"><a href="book.pdf#page=345" target="_blank" title="This page in the PDF"><sup>[p. 345]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p346" href="book.pdf#page=346" target="_blank" title="This page in the PDF"><sup>[p. 346]</sup></a>
-
-an electron bound in a 3D harmonic oscillator? Give the energy shifts and and draw a diagram for the 0$`s`$ and 1$`p`$ states.
+4. If the general form of the spin-orbit coupling for a particle of mass $`m`$ and spin $`\vec{S}`$ moving in a potential $`V ( r )`$ is $`H_{SO} = \tfrac{1}{2 m^{2} c^{2}} \vec{L} \cdot \vec{S} \tfrac{1}{r} \tfrac{dV}{dr}`$, what is the effect of that coupling on the spectrum of<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=345" target="_blank" title="This page in the PDF"><sup>[p. 345]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p346" href="book.pdf#page=346" target="_blank" title="This page in the PDF"><sup>[p. 346]</sup></a></span> an electron bound in a 3D harmonic oscillator? Give the energy shifts and and draw a diagram for the 0$`s`$ and 1$`p`$ states.
 
 ```math
 V = \tfrac{1}{2} m\omega^{2} r^{2}
@@ -18228,9 +18012,9 @@ These should agree with the previous calculations in the two limits: B small, or
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p350" href="book.pdf#page=350" target="_blank" title="This page in the PDF"><sup>[p. 350]</sup></a>
 
-![Figure 80 (p. 350)](images/fig-p350-1.png)
+![Figure 83 (p. 350)](images/fig-p350-1.png)
 
-_Figure 80 (p. 350)_
+_Figure 83 (p. 350)_
 
 We can make a more general calculation, in which the interaction of the nuclear magnetic moment is of the same order as the electron. This occurs in muonic hydrogen or positronium. \* See Example 24.3.6: The Hyperfine Splitting in an Intermediate B Field.\*
 
@@ -18610,11 +18394,7 @@ We will sometimes group the constants such that
 
 2. Consider positronium, a hydrogen-like atom consisting of an electron and a positron (antielectron). Calculate the fine structure of positronium for $`n`$ = 1 and $`n`$ = 2. Determine the hyperfine structure for the ground state. Compute the energy shifts in eV.
 
-3. List the spectroscopic states allowed that arise from combining $`( s = \tfrac{1}{2} \ \text{with} l = 3 )`$, $`( s`$ = 2 with
-
-```math
-l = 1 ) , \text{ and } ( s_{1} = \tfrac{1}{2} , \quad s_{2} = 1 \text{ and } l = 4 ) .
-```
+3. List the spectroscopic states allowed that arise from combining $`( s = \tfrac{1}{2} \ \text{with} l = 3 )`$, $`( s = 2 \ \text{with} l = 1 )`$, and $`( s_{1} = \tfrac{1}{2} , \quad s_{2} = 1 \text{ and } l = 4 )`$.
 
 # <a id="s-24-6-sample-test-problems"></a>24.6 Sample Test Problems
 
@@ -18695,9 +18475,9 @@ Note that $`E_{2 2}`$ is above ionization energy, so the state can decay rapidly
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p359" href="book.pdf#page=359" target="_blank" title="This page in the PDF"><sup>[p. 359]</sup></a>
 
-![Figure 81 (p. 359)](images/fig-p359-1.png)
+![Figure 84 (p. 359)](images/fig-p359-1.png)
 
-_Figure 81 (p. 359)_
+_Figure 84 (p. 359)_
 
 Now let’s look at the (anti) **symmetry of the states** of two identical electrons. For the ground state, the spatial state is symmetric, so the spin state must be antisymmetric $`\Rightarrow s`$ = 0.
 
@@ -18787,9 +18567,9 @@ Thus we have a large effective spin-spin interaction entirely due to electron re
 
 The first diagram below shows the result of our calculation. All states increase in energy due to the Coulomb repulsion of the electrons. Before the perturbation, the first excited state is degenerate. After the perturbation, the singlet and triplet spin states split significantly due to the symmetry of the spatial part of the wavefunction. We designate the states with the usual spectroscopic notation.
 
-![Figure 82 (p. 361)](images/fig-p361-1.png)
+![Figure 85 (p. 361)](images/fig-p361-1.png)
 
-_Figure 82 (p. 361)_
+_Figure 85 (p. 361)_
 
 In addition to the large energy shift between the singlet and triplet states, **Electric Dipole** decay selection rules
 
@@ -18803,17 +18583,17 @@ In addition to the large energy shift between the singlet and triplet states, **
 
 cause decays from triplet to singlet states (or vice-versa) to be suppressed by a large factor (compared to decays from singlet to singlet or from triplet to triplet). This caused early researchers to think that there were two separate kinds of Helium. The diagrams below shows the levels for ParaHelium (singlet) and for OtrhoHelium (triplet). The second diagrams shows the dominant decay modes.<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=361" target="_blank" title="This page in the PDF"><sup>[p. 361]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p362" href="book.pdf#page=362" target="_blank" title="This page in the PDF"><sup>[p. 362]</sup></a></span> 362
 
-![Figure 83 (p. 362)](images/fig-p362-1.png)
+![Figure 86 (p. 362)](images/fig-p362-1.png)
 
-_Figure 83 (p. 362)_
+_Figure 86 (p. 362)_
 
 <div align="right"><a href="book.pdf#page=362" target="_blank" title="This page in the PDF"><sup>[p. 362]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p363" href="book.pdf#page=363" target="_blank" title="This page in the PDF"><sup>[p. 363]</sup></a>
 
-![Figure 84 (p. 363)](images/fig-p363-1.png)
+![Figure 87 (p. 363)](images/fig-p363-1.png)
 
-_Figure 84 (p. 363)_
+_Figure 87 (p. 363)_
 
 # <a id="s-25-4-the-variational-principle-rayleigh-ritz-approximation"></a>25.4 The Variational Principle (Rayleigh-Ritz Approximation)
 
@@ -18969,11 +18749,7 @@ Putting these together we get our estimate of the ground state energy.
 ( really - 7 8 . 9 7 5 eV ) . = - \frac{1}{2} \alpha^{2} mc^{2} \left[ 2 \left( Z - \frac{5}{1 6} \right)^{2} \right] = - 7 7 . 3 8 e V
 ```
 
-<div align="center">
-
 Now we are within a few percent. We could use more parameters for better results.
-
-</div>
 
 <div align="right"><a href="book.pdf#page=365" target="_blank" title="This page in the PDF"><sup>[p. 365]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -19294,13 +19070,7 @@ A set of guidelines, known as Hund’s rules, help us determine the quantum numb
 
 3. If the shell is more than half full, pick the highest total angular momentum state $`j = \ell + s`$ otherwise pick the lowest $`j = | \ell - s |`$.
 
-This method of adding up all the spins and all the Ls, is called LS or **Russel-Saunders coupling**. This method and these rule are quite good until the electrons become relativistic in heavy atoms and spin-orbit effects become comparable to the electron repulsion (arond Z=40). We choose the
-
-<div align="right"><a href="book.pdf#page=372" target="_blank" title="This page in the PDF"><sup>[p. 372]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p373" href="book.pdf#page=373" target="_blank" title="This page in the PDF"><sup>[p. 373]</sup></a>
-
-states in which the total $`s`$ and the total $`\ell`$ are good quantum numbers are best for minimizing the overlap of electrons, and hence the positive contribution to the energy.
+This method of adding up all the spins and all the Ls, is called LS or **Russel-Saunders coupling**. This method and these rule are quite good until the electrons become relativistic in heavy atoms and spin-orbit effects become comparable to the electron repulsion (arond Z=40). We choose the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=372" target="_blank" title="This page in the PDF"><sup>[p. 372]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p373" href="book.pdf#page=373" target="_blank" title="This page in the PDF"><sup>[p. 373]</sup></a></span> states in which the total $`s`$ and the total $`\ell`$ are good quantum numbers are best for minimizing the overlap of electrons, and hence the positive contribution to the energy.
 
 For very heavy atoms, we add the total angular momentum from each electron first then add up the Js. This is called **j-j coupling**. For heavy atoms, electrons are relativistic and the spin-orbit interaction becomes more important than the effect of electron repulsion. Thus we need to use states in which the total angular momentum of each electron is a good quantum number.
 
@@ -19308,11 +19078,7 @@ We can understand Hund’s rules to some extent. The maximum spin state is symme
 
 A simpler set of rules has been developed for chemists, who can’t understand addition of angular momentum. It is based on the same principles. The only way to have a totally antisymmetric state is to have no two electrons in the same state. We use the same kind of trick we used to get a feel for addition of angular momentum; that is, we look at the maximum z component we can get consistent with the Pauli principle. Make a table with space for each of the different $`m_{\ell}`$ states in the outer shell. We can put two electrons into each space, one with spin up and one with spin down. Fill the table with the number of valence electrons according to the following rules.
 
-<div align="center">
-
 1. Make as many spins as possible parallel, then compute $`m_{s}`$ and call that $`s`$.
-
-</div>
 
 2. Now set the orbital states to make maximum $`m_{\ell}`$, and call this $`\ell`$, but don’t allow any two electrons to be in the same state (of $`m_{s}`$ and $`m_{\ell}`$).
 
@@ -19331,7 +19097,17 @@ This method is rather easy to use compared to the other where addition of more t
 
 # <a id="s-26-4-the-periodic-table"></a>26.4 The Periodic Table
 
-The following table gives the electron configurations for the ground states of light atoms.<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=373" target="_blank" title="This page in the PDF"><sup>[p. 373]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p374" href="book.pdf#page=374" target="_blank" title="This page in the PDF"><sup>[p. 374]</sup></a></span> Z El. Electron Configuration $`{}^{2 s + 1} L_{j}`$ Ioniz. Pot.
+The following table gives the electron configurations for the ground states of light atoms.
+
+<div align="right"><a href="book.pdf#page=373" target="_blank" title="This page in the PDF"><sup>[p. 373]</sup></a></div>
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
+<a id="p374" href="book.pdf#page=374" target="_blank" title="This page in the PDF"><sup>[p. 374]</sup></a>
+
+<div align="center">
+
+Z El. Electron Configuration $`{}^{2 s + 1} L_{j}`$ Ioniz. Pot.
+
+</div>
 
 ```math
 5 4 \frac{2 6 \frac{2 4 \frac{2 2 \frac{2 0 \frac{1 8 \frac{1 6 \frac{1 2 3 4 5 6 7 8 9 1 0 1 1 1 2 1 3 1 4 1 5}{1 7}}{1 9}}{2 1}}{2 3}}{2 5}}{3 6}}{8 6} \quad \frac{\frac{\frac{\frac{\frac{\frac{\frac{\text{ Mg } \text{ He } \text{ Ne } \text{ Na } \text{ Be } \text{ Li } \text{ Al } O \text{ Si } H B C N F P}{\text{ Cl }} S}{K} \text{ Ar }}{\text{ Sc }} \text{ Ca }}{V} \text{ Ti }}{\text{ Mn }} \text{ Cr }}{\text{ Kr }} \text{ Fe }}{\text{ Rn }} \text{ Xe } \quad ( \text{ Kr } ) ( 5 \frac{\text{ Ar } ( 4 \frac{\text{ Ar } ( 4 \frac{\text{ Ar } ( 4 \frac{\text{ Ne } ( 3 \frac{\text{ Ne } ( 3 \frac{\text{ Ne } ( 3 \frac{( 1 ( 1 \text{ He } ( 2 \text{ He } ( 2 \text{ He } ( 2 \text{ He } ( 2 \text{ He } ( 2 \text{ He } ( 2 \text{ He } ( 2 \text{ He } ( 2 \text{ Ne } ( 3 \text{ Ne } ( 3 \text{ Ne } ( 3 s s ) ) 2 s s s s s s s s s s s ) ) ) ) ) ) ) ) ) ) ) 2 2 2 2 2 2 2 2 2 ( 2 ( 2 ( 2 ( 2 ( 2 ( 2 ( 3 p p p p p p p ) ) ) ) ) ) ) 2 3 4 5 6}{\text{ Ne } ( 3 s ) ( 3 p )} s )_{2}^{2} ( 3 p )_{3}^{2}}{\text{ Ne } ( 3 s ) ( 3 p )} s )_{2}^{2} ( 3 p )_{5}^{4}}{\text{ Ar } ( 4 \text{ Ar } ( 4 s ) s )^{2}} s )^{2} ( 3 p )^{6}}{\text{ Ar } ( 4 s ) ( 3 d )} s )_{2}^{2} ( 3 d )_{2}}{\text{ Ar } ( 4 \text{ Ar } ( 4 s ) ( 3 d ) s )^{2} ( 3 d )^{5}} s )^{2} ( 3 d_{5} )^{3}}{( \text{ Ar } ) ( 4 s )^{2} ( 3 d )^{1 0} ( 4 p )^{6}} s )^{2} ( 3 d )^{6}}{( \text{ Xe } ) ( 6 s ) ( 4 f ) ( 5 d )} s )_{2}^{2} ( 4 d )_{1 4}^{1 0} ( 5 p )_{1 0}^{6} ( 6 p )^{6} \quad \frac{\frac{\frac{\frac{\frac{\frac{\frac{2 2 2 2 2 4 2 4 1 1 3 3 1 1 3 3 S S P S P S P S S S P P S S P 1 1 3 1 3 1 3 1 / 0 / 0 / / / 0 / 0 / / 0 2 0 2 2 2 2 2 2 2 2}{2 1 P 3 / 2} P_{2}}{\frac{2}{1} S_{1 / 2}} S_{0}}{{}^{2} D_{3 3 / 2}} S_{0}}{\tfrac{4}{7} F_{3 / 2}} F_{2}}{\frac{6}{5} S_{3 / 2}} S_{3}}{\frac{1}{1} s_{0}} D_{4}}{{}^{1} s_{0}} s_{0} \quad 1 2 . 1 \frac{\frac{\frac{\frac{\frac{1 5 . 8 \frac{1 0 . 4 \frac{1 3 . 6 2 4 . 6 1 1 . 3 1 4 . 5 1 3 . 6 1 7 . 4 2 1 . 6 1 1 . 0 5 . 4 9 . 3 8 . 3 5 . 1 7 . 6 6 . 0 8 . 1}{1 3 . 0}}{4 . 3}}{6 . 5} 6 . 1}{6 . 7} 6 . 8}{7 . 4} 6 . 7}{1 4 . 0} 7 . 9}{1 0 . 7}
@@ -19349,13 +19125,17 @@ The **Ionization Potential** column gives the energy in eV needed to remove one 
 3 7 5
 ```
 
-![Figure 85 (p. 375)](images/fig-p375-1.png)
+![Figure 88 (p. 375)](images/fig-p375-1.png)
 
-_Figure 85 (p. 375)_
+_Figure 88 (p. 375)_
 
 <div align="right"><a href="book.pdf#page=375" target="_blank" title="This page in the PDF"><sup>[p. 375]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p376" href="book.pdf#page=376" target="_blank" title="This page in the PDF"><sup>[p. 376]</sup></a>
+
+![Figure 89 (p. 376)](images/fig-p376-1.png)
+
+_Figure 89 (p. 376)_
 
 The perodic table of elements is based on the fact that atoms with the same number of electrons outside a closed shell have similar properties. The rows of the periodic table contain the following states.
 
@@ -19387,9 +19167,9 @@ Remember, its only hydrogen states which are labeled with a principle quantum nu
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p378" href="book.pdf#page=378" target="_blank" title="This page in the PDF"><sup>[p. 378]</sup></a>
 
-![Figure 86 (p. 378)](images/fig-p378-1.png)
+![Figure 90 (p. 378)](images/fig-p378-1.png)
 
-_Figure 86 (p. 378)_
+_Figure 90 (p. 378)_
 
 Another feature of nuclei not shown in the table is that the **spin-spin force very much favors** **nucleons which are paired**. So nuclear isotopes with odd numbers of protons or odd numbers of neutrons have less binding energy and nuclei with odd numbers of both protons and neutrons are unstable (with one exception).
 
@@ -19441,21 +19221,15 @@ We can take a look at the excited states of carbon to get an appreciation of Hun
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p380" href="book.pdf#page=380" target="_blank" title="This page in the PDF"><sup>[p. 380]</sup></a>
 
-![Figure 87 (p. 380)](images/fig-p380-1.png)
+![Figure 91 (p. 380)](images/fig-p380-1.png)
 
-_Figure 87 (p. 380)_
+_Figure 91 (p. 380)_
 
 The ground state has $`s`$ = 1 and $`\ell`$ = 1 as we predicted. Other states labeled 2$`p`$ are the ones that Hund’s first two rules determined to be of higher energy. They are both spin singlets so its the symmetry of the space wavefunction that is making the difference here.
 
 ## <a id="s-26-6-3-nitrogen-ground-state"></a>26.6.3 Nitrogen Ground State
 
-Now, with $`Z`$ = 7 we have three valence 2P electrons and the shell is half full. Hund’s first rule , maximum total $`s`$, tells us to couple the three electron spins to $`s = \tfrac{3}{2}`$. This is again the symmetric spin state so we’ll need to make the space state antisymmetric. We now have the truly nasty problem of figuring out which total $`\ell`$ states are totally antisymmetric. All I have to say is $`3 \otimes 3 \otimes 3`$ = $`7_{S} \oplus 5_{MS} \oplus 3_{MS} \oplus 5_{MA} \oplus 3_{MA} \oplus 1_{A} \oplus 3_{MS}`$. Here MS means mixed symmetric. That is; it is symmetric under the interchange of two of the electrons but not with the third. Remember, adding two P states together, we get total $`\ell_{1 2}`$ = 0$`, 1 ,`$ 2. Adding another P state to each of these gives total $`\ell`$ = 1 for $`\ell_{1 2}`$ = 0, $`\ell`$ = 0$`, 1 ,`$ 2 for $`\ell_{1 2}`$ = 1, and $`\ell`$ = 1$`, 2 ,`$ 3 for $`\ell_{1 2}`$ = 2. Hund’s second rule, maximum $`\ell`$,
-
-<div align="right"><a href="book.pdf#page=380" target="_blank" title="This page in the PDF"><sup>[p. 380]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p381" href="book.pdf#page=381" target="_blank" title="This page in the PDF"><sup>[p. 381]</sup></a>
-
-doesn’t play a role, again, because only the $`\ell`$ = 0 state is totally antisymmetric. Since the shell is just half full we couple to the the lowest $`j = | \ell - s | = \tfrac{3}{2}`$. So the ground state is<sup>4</sup>$`S_{\tfrac{3}{2}}`$.
+Now, with $`Z`$ = 7 we have three valence 2P electrons and the shell is half full. Hund’s first rule , maximum total $`s`$, tells us to couple the three electron spins to $`s = \tfrac{3}{2}`$. This is again the symmetric spin state so we’ll need to make the space state antisymmetric. We now have the truly nasty problem of figuring out which total $`\ell`$ states are totally antisymmetric. All I have to say is $`3 \otimes 3 \otimes 3`$ = $`7_{S} \oplus 5_{MS} \oplus 3_{MS} \oplus 5_{MA} \oplus 3_{MA} \oplus 1_{A} \oplus 3_{MS}`$. Here MS means mixed symmetric. That is; it is symmetric under the interchange of two of the electrons but not with the third. Remember, adding two P states together, we get total $`\ell_{1 2}`$ = 0$`, 1 ,`$ 2. Adding another P state to each of these gives total $`\ell`$ = 1 for $`\ell_{1 2}`$ = 0, $`\ell`$ = 0$`, 1 ,`$ 2 for $`\ell_{1 2}`$ = 1, and $`\ell`$ = 1$`, 2 ,`$ 3 for $`\ell_{1 2}`$ = 2. Hund’s second rule, maximum $`\ell`$,<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=380" target="_blank" title="This page in the PDF"><sup>[p. 380]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p381" href="book.pdf#page=381" target="_blank" title="This page in the PDF"><sup>[p. 381]</sup></a></span> doesn’t play a role, again, because only the $`\ell`$ = 0 state is totally antisymmetric. Since the shell is just half full we couple to the the lowest $`j = | \ell - s | = \tfrac{3}{2}`$. So the ground state is<sup>4</sup>$`S_{\tfrac{3}{2}}`$.
 
 ```math
 m_{\ell} \quad e
@@ -19479,9 +19253,9 @@ s = \sum m_{s} = \tfrac{3}{2}
 
 The chart of nitrogen states is similar to the chart in the last section. Note that the chart method is clearly easier to use in this case. Our prediction of the ground state is again correct and a few space symmetric states end up a few eV higher than the ground state.
 
-![Figure 88 (p. 381)](images/fig-p381-1.png)
+![Figure 92 (p. 381)](images/fig-p381-1.png)
 
-_Figure 88 (p. 381)_
+_Figure 92 (p. 381)_
 
 <div align="right"><a href="book.pdf#page=381" target="_blank" title="This page in the PDF"><sup>[p. 381]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -19526,19 +19300,19 @@ Use the standard<sup>2</sup>$`{}^{s + 1} L_{j}`$ notation.
 
 In this section, we will study the binding and excitation of simple molecules. Atoms bind into molecules by sharing electrons, thus reducing the kinetic energy. Molecules can be excited in three ways.
 
-$`•`$ Excitation of electrons to higher states. $`E \sim 4`$ eV
+$`\bullet`$ Excitation of electrons to higher states. $`E \sim 4`$ eV
 
-$`•`$ Vibrational modes (Harmonic Oscillator). Nuclei move slowly in background of electrons. $`E \sim 0.1`$ eV
+$`\bullet`$ Vibrational modes (Harmonic Oscillator). Nuclei move slowly in background of electrons. $`E \sim 0.1`$ eV
 
-$`•`$ Rotational modes $`( L = n \hbar )`$. Entire molecule rotates. $`E \sim 0.001`$ eV
+$`\bullet`$ Rotational modes $`( L = n \hbar )`$. Entire molecule rotates. $`E \sim 0.001`$ eV
 
 Why don’t atoms have rotational states?
 
 The atomic state already accounts for electrons angular momentum around the nucleus.
 
-About which axes can a molecule rotate?
+## <a id="s-about-which-axes-can-a-molecule-rotate"></a>About which axes can a molecule rotate?
 
-Do you think identical atoms will make a difference?
+## <a id="s-do-you-think-identical-atoms-will-make-a-difference"></a>Do you think identical atoms will make a difference?
 
 This material is covered in **Gasiorowicz Chapter 20,** and in **Cohen-Tannoudji et al. Com-** **plements** $`C_{V} I \boldsymbol{,} E_{VII} \boldsymbol{,} C_{XI}`$**.**
 
@@ -19620,21 +19394,22 @@ The antisymmetric state shows no minimum and never goes below -13.6 eV so there 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p385" href="book.pdf#page=385" target="_blank" title="This page in the PDF"><sup>[p. 385]</sup></a>
 
-![Figure 89 (p. 385)](images/fig-p385-1.png)
+![Figure 93 (p. 385)](images/fig-p385-1.png)
 
-_Figure 89 (p. 385)_
+_Figure 93 (p. 385)_
 
 By setting $`\frac{d \langle H \rangle}{dy}`$ = 0, we can get the distance between atoms and the energy.
 
 Distance Energy
 
-Calculated 1.3 ˚A -1.76 eV Actual 1.06 ˚A -2.8 eV
-
 <div align="center">
 
-Its clear we would need to introduce some wfn. parameters to get good precision.
+Calculated 1.3 ˚A -1.76 eV<br>
+Actual 1.06 ˚A -2.8 eV
 
 </div>
+
+Its clear we would need to introduce some wfn. parameters to get good precision.
 
 # <a id="s-27-2-the-h2-molecule"></a>27.2 The H$`2`$ Molecule
 
@@ -19705,9 +19480,9 @@ Pictures of **molecular orbitals** are shown for $`s`$ and $`p`$ states in the f
 3 8 7
 ```
 
-![Figure 90 (p. 387)](images/fig-p387-1.png)
+![Figure 94 (p. 387)](images/fig-p387-1.png)
 
-_Figure 90 (p. 387)_
+_Figure 94 (p. 387)_
 
 <div align="right"><a href="book.pdf#page=387" target="_blank" title="This page in the PDF"><sup>[p. 387]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -19733,9 +19508,9 @@ Complex molecules can have many different modes of vibration. Diatomic molecules
 
 The graph below shows the energy spectrum of electrons knocked out of molecular hydrogen by UV photons (photoelectric effect). The **different peaks correspond to the vibrational state of** **the final H**$`2 +`$ **ion**.
 
-![Figure 91 (p. 388)](images/fig-p388-1.png)
+![Figure 95 (p. 388)](images/fig-p388-1.png)
 
-_Figure 91 (p. 388)_
+_Figure 95 (p. 388)_
 
 Can you calculate the number of vibrational modes for a molecule compose of $`N> 3`$ atoms.
 
@@ -19777,9 +19552,9 @@ The graph below shows the absorption coefficient of water for light of various e
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p390" href="book.pdf#page=390" target="_blank" title="This page in the PDF"><sup>[p. 390]</sup></a>
 
-![Figure 92 (p. 390)](images/fig-p390-1.png)
+![Figure 96 (p. 390)](images/fig-p390-1.png)
 
-_Figure 92 (p. 390)_
+_Figure 96 (p. 390)_
 
 # <a id="s-27-7-examples"></a>27.7 Examples
 
@@ -19882,13 +19657,7 @@ If the first order term is zero or higher accuracy is required, the second order
 
 # <a id="s-28-2-sinusoidal-perturbations"></a>28.2 Sinusoidal Perturbations
 
-An important case is a pure sinusoidal oscillating (harmonic) perturbation. We can **make up** **any time dependence from a linear combination** of sine and cosine waves. We define our
-
-<div align="right"><a href="book.pdf#page=392" target="_blank" title="This page in the PDF"><sup>[p. 392]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p393" href="book.pdf#page=393" target="_blank" title="This page in the PDF"><sup>[p. 393]</sup></a>
-
-perturbation carefully.
+An important case is a pure sinusoidal oscillating (harmonic) perturbation. We can **make up** **any time dependence from a linear combination** of sine and cosine waves. We define our<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=392" target="_blank" title="This page in the PDF"><sup>[p. 392]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p393" href="book.pdf#page=393" target="_blank" title="This page in the PDF"><sup>[p. 393]</sup></a></span> perturbation carefully.
 
 ```math
 \mathcal{V} ( \vec{r} , t ) = 2 V ( \vec{r} ) \cos ( \omega t ) \to 2 V \cos ( \omega t ) = V \left( e^{i\omega t} + e^{- i\omega t} \right)
@@ -20185,13 +19954,7 @@ Lets also assume that the field has **some frequency** $`\omega`$ and correspond
 
 where $`\vec{A}_{0}`$ is a real vector and we have again introduced the factor of 2 for convenience of splitting the cosine into two exponentials.
 
-We need to quantize the EM field into photons satisfying Plank’s original hypothesis, $`E = \hbar \omega`$. Lets start by writing $`A`$ **in terms of the number of photons in the field** (at frequency $`\omega`$ and wave
-
-<div align="right"><a href="book.pdf#page=398" target="_blank" title="This page in the PDF"><sup>[p. 398]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p399" href="book.pdf#page=399" target="_blank" title="This page in the PDF"><sup>[p. 399]</sup></a>
-
-vector $`\vec{k} )`$. Using classical E&M to compute the energy in a field (See Section 29.14.1) represented by a vector potential $`\vec{A} ( \vec{r} , t )`$ = 2$`\vec{A}_{0} \cos ( \vec{k} \cdot \vec{r} - \omega t )`$, we find that the energy inside a volume $`V`$ is
+We need to quantize the EM field into photons satisfying Plank’s original hypothesis, $`E = \hbar \omega`$. Lets start by writing $`A`$ **in terms of the number of photons in the field** (at frequency $`\omega`$ and wave<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=398" target="_blank" title="This page in the PDF"><sup>[p. 398]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p399" href="book.pdf#page=399" target="_blank" title="This page in the PDF"><sup>[p. 399]</sup></a></span> vector $`\vec{k}`$). Using classical E&M to compute the energy in a field (See Section 29.14.1) represented by a vector potential $`\vec{A} ( \vec{r} , t )`$ = 2$`\vec{A}_{0} \cos ( \vec{k} \cdot \vec{r} - \omega t )`$, we find that the energy inside a volume $`V`$ is
 
 ```math
 Energy = \frac{\omega^{2}}{2 \pi c^{2}} V | A_{0} |^{2} = N \hbar \omega .
@@ -20267,13 +20030,7 @@ We must sum (or integrate) over final states. The states are distinguishable so 
 
 # <a id="s-29-3-phase-space-the-density-of-final-states"></a>29.3 Phase Space: The Density of Final States
 
-We have some experience with calculating the number of states for fermions in a 3D box (See Section 13.1.1). For the box we had boundary conditions that the wavefunction go to zero at the wall of the box. Now we wish to know how many photon states are in a region of **phase space** centered on the wave vector $`\vec{k}`$ with (small) volume in k-space of $`d^{3} \vec{k}`$. (Remember $`\omega = | \vec{k} | c`$ for light.) We will assume for the sake of calculation that the photons are confined to a cubic volume in position space of $`V = L^{3}`$ and impose **periodic boundary conditions** on our fields. (Really we could require the fields to be zero on the boundaries of the box by choosing a sine wave. The PBC are equivalent to
-
-<div align="right"><a href="book.pdf#page=400" target="_blank" title="This page in the PDF"><sup>[p. 400]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p401" href="book.pdf#page=401" target="_blank" title="This page in the PDF"><sup>[p. 401]</sup></a>
-
-this but allow us to deal with single exponentials instead of real functions.) Our final result, the decay rate, will be independent of volume so we can let the volume go to infinity.
+We have some experience with calculating the number of states for fermions in a 3D box (See Section 13.1.1). For the box we had boundary conditions that the wavefunction go to zero at the wall of the box. Now we wish to know how many photon states are in a region of **phase space** centered on the wave vector $`\vec{k}`$ with (small) volume in k-space of $`d^{3} \vec{k}`$. (Remember $`\omega = | \vec{k} | c`$ for light.) We will assume for the sake of calculation that the photons are confined to a cubic volume in position space of $`V = L^{3}`$ and impose **periodic boundary conditions** on our fields. (Really we could require the fields to be zero on the boundaries of the box by choosing a sine wave. The PBC are equivalent to<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=400" target="_blank" title="This page in the PDF"><sup>[p. 400]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p401" href="book.pdf#page=401" target="_blank" title="This page in the PDF"><sup>[p. 401]</sup></a></span> this but allow us to deal with single exponentials instead of real functions.) Our final result, the decay rate, will be independent of volume so we can let the volume go to infinity.
 
 ```math
 k_{x} L = 2 \pi n_{x} \quad dn_{x} = \tfrac{L}{2 \pi} dk_{x}
@@ -20431,8 +20188,7 @@ We proceed with the calculation to find the E1 selection rules.
 
 We will attempt to clearly separate the terms due to $`\langle \varphi_{n} | \hat{\epsilon} \cdot \vec{r} | \varphi_{i} \rangle`$ for the sake of modularity of the calculation.
 
-The integral with **three spherical harmonics** in each term looks a bit difficult, but, we can use<br>
-a **Clebsch-Gordan series like the one in addition of angular momentum** to help us solve the problem. We will write the product of two spherical harmonics in terms of a sum of spherical harmonics. Its very similar to adding the angular momentum from the two $`Y`$ s. **Its the same** **series as we had for addition of angular momentum (up to a constant)**. (Note that things will be very simple if either the initial or the final state have $`\ell`$ = 0, a case we will work out below for transitions to s states.) The general formula for rewriting the product of two spherical harmonics (which are functions of the same coordinates) is
+The integral with **three spherical harmonics** in each term looks a bit difficult, but, we can use a **Clebsch-Gordan series like the one in addition of angular momentum** to help us solve the problem. We will write the product of two spherical harmonics in terms of a sum of spherical harmonics. Its very similar to adding the angular momentum from the two $`Y`$ s. **Its the same** **series as we had for addition of angular momentum (up to a constant)**. (Note that things will be very simple if either the initial or the final state have $`\ell`$ = 0, a case we will work out below for transitions to s states.) The general formula for rewriting the product of two spherical harmonics (which are functions of the same coordinates) is
 
 ```math
 Y_{\ell_{1} m_{1}} ( \theta ,\varphi ) Y_{\ell_{2} m_{2}} ( \theta ,\varphi ) = \sum_{\ell = | \ell_{1} - \ell_{2} |}^{\ell_{1} + \ell_{2}} \sqrt{( 2 \ell_{1} + 1 ) ( 2 \ell_{2} + 1 ) 4 \pi ( 2 \ell + 1 )} \langle \ell 0 | \ell_{1} \ell_{2} 0 0 \rangle \langle \ell ( m_{1} + m_{2} ) | \ell_{1} \ell_{2} m_{1} m_{2} \rangle Y_{\ell ( m_{1} + m_{2} )} ( \theta ,\varphi )
@@ -20618,9 +20374,9 @@ Lets pick two transverse polarization vectors (to sum over) that form a right ha
 
 The figure below shows the angles, basically picking the photon direction as the polar axis, and the $`\hat{\epsilon}^{( 1 )}`$ direction as what is usually called the x-axis.
 
-![Figure 93 (p. 407)](images/fig-p407-1.png)
+![Figure 97 (p. 407)](images/fig-p407-1.png)
 
-_Figure 93 (p. 407)_
+_Figure 97 (p. 407)_
 
 The projection of the vector $`\vec{r}_{ni}`$ into the transverse plan gives a factor of $`\sin \theta`$. It is then easy to see that
 
@@ -20886,11 +20642,11 @@ Since the energy of the photon is about 10 eV, the width is about $`1 0^{- 7}`$ 
 
 We have calculated the line shape due to the finite lifetime of a state. If we attempt to measure line widths, other phenomena, both of a quantum and non-quantum nature, can play a role in the observed line width. These are:
 
-$`•`$ Collision broadening,
+$`\bullet`$ Collision broadening,
 
-$`•`$ Doppler broadening, and
+$`\bullet`$ Doppler broadening, and
 
-$`•`$ Recoil.
+$`\bullet`$ Recoil.
 
 Collision broadening occurs when excited atoms or molecules have a large probability to change state when they collide with other atoms or molecules. If this is true, and it usually is, the mean time to collision is an important consideration when we are assessing the lifetime of a state. If the mean time between collisions is less than the lifetime, then the line-width will be dominated by collision broadening.
 
@@ -20998,9 +20754,9 @@ This optical pumping to achieve a population inversion can be done in a number o
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p415" href="book.pdf#page=415" target="_blank" title="This page in the PDF"><sup>[p. 415]</sup></a>
 
-![Figure 94 (p. 415)](images/fig-p415-1.png)
+![Figure 98 (p. 415)](images/fig-p415-1.png)
 
-_Figure 94 (p. 415)_
+_Figure 98 (p. 415)_
 
 He Ne
 
@@ -21008,9 +20764,9 @@ Another way to get the population inversion is just the use of a metastable stat
 
 A laser with a beam coming out if it would be made in a cavity with a half silvered mirror so that the radiation can build up inside the cavity, but some of the radiation leaks out to make the beam.
 
-![Figure 95 (p. 415)](images/fig-p415-2.png)
+![Figure 99 (p. 415)](images/fig-p415-2.png)
 
-_Figure 95 (p. 415)_
+_Figure 99 (p. 415)_
 
 <div align="right"><a href="book.pdf#page=415" target="_blank" title="This page in the PDF"><sup>[p. 415]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -21349,13 +21105,7 @@ R_{i \to f} = \frac{2 \pi}{\hbar} \int \frac{Vd \Omega_{f} k_{f}^{2} dk_{f}}{( 2
 = \frac{1}{4 \pi^{2} \hbar^{3} V} \int d \Omega_{f} \mu k_{f} \left| \tilde{V} ( \vec{\Delta} ) \right|^{2}
 ```
 
-We now need to convert this transition rate to a cross section. Our wave functions are normalize to one particle per unit volume and we should modify that so that there is a flux of one particle
-
-<div align="right"><a href="book.pdf#page=422" target="_blank" title="This page in the PDF"><sup>[p. 422]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p423" href="book.pdf#page=423" target="_blank" title="This page in the PDF"><sup>[p. 423]</sup></a>
-
-per square centimeter per second to get a cross section. To do this we set the volume to be $`V`$ = $`( 1 cm^{2} ) ( v_{rel} ) ( 1 \quad second )`$. The relative velocity is just the momentum divided by the reduced mass.
+We now need to convert this transition rate to a cross section. Our wave functions are normalize to one particle per unit volume and we should modify that so that there is a flux of one particle<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=422" target="_blank" title="This page in the PDF"><sup>[p. 422]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p423" href="book.pdf#page=423" target="_blank" title="This page in the PDF"><sup>[p. 423]</sup></a></span> per square centimeter per second to get a cross section. To do this we set the volume to be $`V`$ = $`( 1 cm^{2} ) ( v_{rel} ) ( 1 \quad second )`$. The relative velocity is just the momentum divided by the reduced mass.
 
 ```math
 \sigma = \frac{1}{4 \pi^{2} \hbar^{3} v_{rel}} \int d \Omega_{f} \mu k_{f} \left| \tilde{V} ( \vec{\Delta} ) \right|^{2}
@@ -21674,13 +21424,7 @@ We will not use the so called covariant and contravariant indices. Instead we wi
 x_{\mu} x_{\mu} = x^{2} + y^{2} + z^{2} - c^{2} t^{2}
 ```
 
-Note we can have all lower indices. As Sakurai points out, there is no need for the complication of a metric tensor to raise and lower indices unless general relativity comes into play and the geometry of space-time is not flat. We can assume the $`i`$ in the fourth component is a calculational convenience, not an indication of the need for complex numbers in our coordinate systems. So while we may have said “farewell to ict” some time in the past, we will use it here because the notation is less
-
-<div align="right"><a href="book.pdf#page=428" target="_blank" title="This page in the PDF"><sup>[p. 428]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p429" href="book.pdf#page=429" target="_blank" title="This page in the PDF"><sup>[p. 429]</sup></a>
-
-complicated. The $`i`$ here should never really be used to multiply an $`i`$ in the complex wave function, but, everything will work out so that doesn’t happen unless we make an algebra mistake.
+Note we can have all lower indices. As Sakurai points out, there is no need for the complication of a metric tensor to raise and lower indices unless general relativity comes into play and the geometry of space-time is not flat. We can assume the $`i`$ in the fourth component is a calculational convenience, not an indication of the need for complex numbers in our coordinate systems. So while we may have said “farewell to ict” some time in the past, we will use it here because the notation is less<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=428" target="_blank" title="This page in the PDF"><sup>[p. 428]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p429" href="book.pdf#page=429" target="_blank" title="This page in the PDF"><sup>[p. 429]</sup></a></span> complicated. The $`i`$ here should never really be used to multiply an $`i`$ in the complex wave function, but, everything will work out so that doesn’t happen unless we make an algebra mistake.
 
 The spacetime coordinate $`x_{\mu}`$ is a Lorentz vector transforming under rotations and boosts as follows.
 
@@ -21790,13 +21534,7 @@ With this Lagrangian, the Euler-Lagrange equation is.
 ✷ \varphi - \mu^{2} \varphi = 0
 ```
 
-This is the known as the **Klein-Gordon equation**. It is a good relativistic equation for a **massive** **scalar field**. It was also an early candidate for the relativistic equivalent of the Schrödinger equation for electrons because it basically has the **relativistic analog of the energy relation** inherent in
-
-<div align="right"><a href="book.pdf#page=430" target="_blank" title="This page in the PDF"><sup>[p. 430]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p431" href="book.pdf#page=431" target="_blank" title="This page in the PDF"><sup>[p. 431]</sup></a>
-
-the Schrödinger equation. Writing that relation in the order terms appear in the Klein-Gordon equation above we get (letting $`c`$ = 1 briefly).
+This is the known as the **Klein-Gordon equation**. It is a good relativistic equation for a **massive** **scalar field**. It was also an early candidate for the relativistic equivalent of the Schrödinger equation for electrons because it basically has the **relativistic analog of the energy relation** inherent in<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=430" target="_blank" title="This page in the PDF"><sup>[p. 430]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p431" href="book.pdf#page=431" target="_blank" title="This page in the PDF"><sup>[p. 431]</sup></a></span> the Schrödinger equation. Writing that relation in the order terms appear in the Klein-Gordon equation above we get (letting $`c`$ = 1 briefly).
 
 ```math
 - p^{2} + E^{2} - m^{2} = 0
@@ -21888,17 +21626,11 @@ We now have the **Fourier transform of the field of a point source**. If we can 
 
 This is now of a form for which we can use Cauchy’s theorem for **contour integrals**. The theorem says that an **integral around a closed contour in the complex plane** is equal to 2$`\pi i`$ times the sum of the residues at the poles enclosed in the contour. Contour Integration is a powerful technique often used in quantum mechanics.
 
-If the integrand is a function of the complex variable $`k`$, a pole is of the form $`\frac{r}{k}`$ where $`r`$ is called the residue at the pole. The **integrand above has two poles**, one at $`k = i\mu`$ and the other at $`k = - i\mu`$. The **integral we are interested in is just along the real axis** so we want the integral along
+If the integrand is a function of the complex variable $`k`$, a pole is of the form $`\frac{r}{k}`$ where $`r`$ is called the residue at the pole. The **integrand above has two poles**, one at $`k = i\mu`$ and the other at $`k = - i\mu`$. The **integral we are interested in is just along the real axis** so we want the integral along<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=432" target="_blank" title="This page in the PDF"><sup>[p. 432]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p433" href="book.pdf#page=433" target="_blank" title="This page in the PDF"><sup>[p. 433]</sup></a></span> the rest of the contour to give zero. That’s easy to do since the integrand goes to zero at infinity on the real axis and the exponentials go to zero either at positive or negative infinity for the imaginary part of $`k`$. Examine the integral $`\oint \tfrac{k}{( k + i\mu ) ( k - i\mu )} e^{ikr} dk`$ around a contour in the upper half plane as shown below.
 
-<div align="right"><a href="book.pdf#page=432" target="_blank" title="This page in the PDF"><sup>[p. 432]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p433" href="book.pdf#page=433" target="_blank" title="This page in the PDF"><sup>[p. 433]</sup></a>
+![Figure 100 (p. 433)](images/fig-p433-1.png)
 
-the rest of the contour to give zero. That’s easy to do since the integrand goes to zero at infinity on the real axis and the exponentials go to zero either at positive or negative infinity for the imaginary part of $`k`$. Examine the integral $`\oint \tfrac{k}{( k + i\mu ) ( k - i\mu )} e^{ikr} dk`$ around a contour in the upper half plane as shown below.
-
-![Figure 96 (p. 433)](images/fig-p433-1.png)
-
-_Figure 96 (p. 433)_
+_Figure 100 (p. 433)_
 
 The pole inside the contour is at $`k = i\mu`$. The residue at the pole is
 
@@ -21909,7 +21641,7 @@ The pole inside the contour is at $`k = i\mu`$. The residue at the pole is
 The integrand goes to zero exponentially on the semicircle at infinity so only the real axis contributes to the integral along the contour. The integral along the real axis can be manipulated to do the whole problem for us.
 
 ```math
-\left. \oint \right) \frac{k}{( k + i\mu ) ( k - i\mu )} e^{ikr} dk = 2 \pi i \left[ \frac{ke^{ikr}}{k + i\mu} \right]_{k = i\mu}
+\oint \frac{k}{( k + i\mu ) ( k - i\mu )} e^{ikr} dk = 2 \pi i \left[ \frac{ke^{ikr}}{k + i\mu} \right]_{k = i\mu}
 ```
 
 ```math
@@ -22606,17 +22338,7 @@ We have all the elements to finish the calculation of the Hamiltonian. Before pu
 \mathcal{H} = - \frac{\partial A_{\mu}}{\partial x_{4}} \frac{\partial A_{\mu}}{\partial x_{4}}
 ```
 
-The remaining term has a dot product between polarization vectors which will be nonzero if the polarization vectors are the same. (Note that this simplification is possible because we have assumed no sources in the region.)
-
-<div align="right"><a href="book.pdf#page=446" target="_blank" title="This page in the PDF"><sup>[p. 446]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p447" href="book.pdf#page=447" target="_blank" title="This page in the PDF"><sup>[p. 447]</sup></a>
-
-<div align="center">
-
-The total Hamiltonian we are aiming at, is the integral of the Hamiltonian density.
-
-</div>
+The remaining term has a dot product between polarization vectors which will be nonzero if the polarization vectors are the same. (Note that this simplification is possible because we have assumed no sources in the region.)<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=446" target="_blank" title="This page in the PDF"><sup>[p. 446]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p447" href="book.pdf#page=447" target="_blank" title="This page in the PDF"><sup>[p. 447]</sup></a></span> The total Hamiltonian we are aiming at, is the integral of the Hamiltonian density.
 
 ```math
 H = \int d^{3} x \mathcal{H}
@@ -22876,13 +22598,7 @@ So these are definitely the raising and lowering operators. Of course the commut
 [ a_{k,\alpha} ,a_{k^{\prime} ,\alpha^{\prime}}^{\dagger} ] = \delta_{kk^{\prime}} \delta_{\alpha \alpha^{\prime}}
 ```
 
-(Note that all of our commutators are assumed to be taken at equal time.) The Hamiltonian is written in terms $`a`$ and $`a^{\dagger}`$ in the same way as for the 1D harmonic oscillator. Therefore, everything we know about the raising and lowering operators (See section 10.3) applies here, including the commutator with the Hamiltonian, the raising and lowering of energy eigenstates, and even the
-
-<div align="right"><a href="book.pdf#page=450" target="_blank" title="This page in the PDF"><sup>[p. 450]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p451" href="book.pdf#page=451" target="_blank" title="This page in the PDF"><sup>[p. 451]</sup></a>
-
-constants.
+(Note that all of our commutators are assumed to be taken at equal time.) The Hamiltonian is written in terms $`a`$ and $`a^{\dagger}`$ in the same way as for the 1D harmonic oscillator. Therefore, everything we know about the raising and lowering operators (See section 10.3) applies here, including the commutator with the Hamiltonian, the raising and lowering of energy eigenstates, and even the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=450" target="_blank" title="This page in the PDF"><sup>[p. 450]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p451" href="book.pdf#page=451" target="_blank" title="This page in the PDF"><sup>[p. 451]</sup></a></span> constants.
 
 ```math
 a_{k,\alpha} | n_{k,\alpha} \rangle = \sqrt{n_{k,\alpha}} | n_{k,\alpha} - 1 \rangle
@@ -23040,11 +22756,7 @@ For our purposes, we may remove the (infinite) constant energy due to the ground
 H = \sum_{k,\alpha} \hbar \omega N_{k,\alpha}
 ```
 
-<div align="center">
-
 With this subtraction, the energy of the vacuum state has been defined to be zero.
-
-</div>
 
 ```math
 H | 0 \rangle = 0
@@ -23142,11 +22854,7 @@ a_{k,\alpha} ( t ) = a_{k,\alpha} ( 0 ) e^{- i\omega t}
 a_{k,\alpha}^{\dagger} ( t ) = a_{k,\alpha}^{\dagger} ( 0 ) e^{i\omega t}
 ```
 
-<div align="center">
-
 We can now write the quantized radiation field in terms of the operators at $`t`$ = 0.
-
-</div>
 
 ```math
 A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha}^{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
@@ -23531,9 +23239,7 @@ U ( \nu ) = U ( \omega ) \frac{d\omega}{d\nu} = \frac{8 \pi}{c^{3}} \frac{h\nu^{
 
 # 34 Scattering of Photons
 
-In the scattering of photons, for example from an atom, an **initial state photon** with wave-number<br>
-$`\vec{k}`$ and polarization $`\hat{\epsilon}`$ is absorbed by the atom **and a final state photon** with wave-number $`\vec{k}^{\prime}`$ and polarization $`\hat{\epsilon}^{\prime}`$ is emitted. The atom may remain in the same state (elastic scattering) or it may<br>
-change to another state (inelastic). Any calculation we will do will use the **matrix element of the** **interaction Hamiltonian between initial and final states**.
+In the scattering of photons, for example from an atom, an **initial state photon** with wave-number $`\vec{k}`$ and polarization $`\hat{\epsilon}`$ is absorbed by the atom **and a final state photon** with wave-number $`\vec{k}^{\prime}`$ and polarization $`\hat{\epsilon}^{\prime}`$ is emitted. The atom may remain in the same state (elastic scattering) or it may change to another state (inelastic). Any calculation we will do will use the **matrix element of the** **interaction Hamiltonian between initial and final states**.
 
 ```math
 H_{ni} = \langle n ; \vec{k}^{\prime} \hat{\epsilon}^{( \alpha^{\prime} )} | H_{int} | i ; \vec{k} \hat{\epsilon}^{( \alpha )} \rangle
@@ -23543,22 +23249,9 @@ H_{ni} = \langle n ; \vec{k}^{\prime} \hat{\epsilon}^{( \alpha^{\prime} )} | H_{
 H_{int} = - \frac{e}{mc} \vec{A} ( x ) \cdot \vec{p} + \frac{e^{2}}{2 mc^{2}} \vec{A} \cdot \vec{A}
 ```
 
-The scattering process clearly requires terms in $`H_{int}`$ that **annihilate one photon and create**<br>
-**another**. The order does not matter. The $`\tfrac{e^{2}}{2 mc^{2}} \vec{A} \cdot \vec{A}`$ is the square of the Fourier decomposition of<br>
-the radiation field so it contains terms like $`a_{k^{\prime} ,\alpha^{\prime}}^{\dagger} a_{k,\alpha}`$ and $`a_{k,\alpha} a_{k^{\prime} ,\alpha^{\prime}}^{\dagger}`$ which are just what we want.<br>
-The $`- \tfrac{e}{mc} \vec{A} \cdot \vec{p}`$ term has both creation and annihilation operators in it but not products of them.<br>
-It changes the number of photons by plus or minus one, not by zero as required for the scattering<br>
-process. Nevertheless this part of the interaction could contribute in second order perturbation<br>
-theory, by absorbing one photon in a transition from the initial atomic state to an intermediate<br>
-state, then emitting another photon and making a transition to the final atomic state. While this<br>
-is higher order in perturbation theory, it is the same order in the electromagnetic coupling constant<br>
-$`e`$, which is what really counts when expanding in powers of $`\alpha`$. Therefore, we will need to **consider**<br>
-**the** $`\frac{e^{2}}{2 mc^{2}} \vec{A} \cdot \vec{A}`$ **term in first order and the** $`- \tfrac{e}{mc} \vec{A} \cdot \vec{p}`$ **term in second order** perturbation theory<br>
-to get an order $`\alpha`$ calculation of the matrix element.
+The scattering process clearly requires terms in $`H_{int}`$ that **annihilate one photon and create** **another**. The order does not matter. The $`\tfrac{e^{2}}{2 mc^{2}} \vec{A} \cdot \vec{A}`$ is the square of the Fourier decomposition of the radiation field so it contains terms like $`a_{k^{\prime} ,\alpha^{\prime}}^{\dagger} a_{k,\alpha}`$ and $`a_{k,\alpha} a_{k^{\prime} ,\alpha^{\prime}}^{\dagger}`$ which are just what we want. The $`- \tfrac{e}{mc} \vec{A} \cdot \vec{p}`$ term has both creation and annihilation operators in it but not products of them. It changes the number of photons by plus or minus one, not by zero as required for the scattering process. Nevertheless this part of the interaction could contribute in second order perturbation theory, by absorbing one photon in a transition from the initial atomic state to an intermediate state, then emitting another photon and making a transition to the final atomic state. While this is higher order in perturbation theory, it is the same order in the electromagnetic coupling constant $`e`$, which is what really counts when expanding in powers of $`\alpha`$. Therefore, we will need to **consider** **the** $`\frac{e^{2}}{2 mc^{2}} \vec{A} \cdot \vec{A}`$ **term in first order and the** $`- \tfrac{e}{mc} \vec{A} \cdot \vec{p}`$ **term in second order** perturbation theory to get an order $`\alpha`$ calculation of the matrix element.
 
-Start with the first order perturbation theory term. All the terms in the sum that do not annihi-<br>
-late the initial state photon and create the final state photon give zero. We will assume that the<br>
-wavelength of the photon’s is long compared to the size of the atom so that $`e^{i \vec{k} \cdot \vec{r}} \approx 1`$.
+Start with the first order perturbation theory term. All the terms in the sum that do not annihilate the initial state photon and create the final state photon give zero. We will assume that the wavelength of the photon’s is long compared to the size of the atom so that $`e^{i \vec{k} \cdot \vec{r}} \approx 1`$.
 
 ```math
 A_{\mu} ( x ) = \frac{1}{\sqrt{V}} \sum_{k\alpha}^{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
@@ -23580,8 +23273,7 @@ A_{\mu} ( x ) = \frac{1}{\sqrt{V}} \sum_{k\alpha}^{\sqrt{\frac{\hbar c^{2}}{2 \o
 = \frac{e^{2}}{2 mc^{2}} \frac{1}{V} \frac{\hbar c^{2}}{\sqrt{\omega^{\prime} \omega}} \epsilon_{\mu}^{( \alpha )} \epsilon_{\mu}^{( \alpha^{\prime} )} e^{- i ( \omega - \omega^{\prime} ) t} \delta_{ni}
 ```
 
-This is the matrix element $`H_{ni} ( t )`$. The **amplitude to be in the final state** $`| n ; \vec{k}^{\prime} \hat{\epsilon}^{( \alpha^{\prime} )} \rangle`$ **is given**<br>
-**by first order time dependent perturbation theory**.
+This is the matrix element $`H_{ni} ( t )`$. The **amplitude to be in the final state** $`| n ; \vec{k}^{\prime} \hat{\epsilon}^{( \alpha^{\prime} )} \rangle`$ **is given** **by first order time dependent perturbation theory**.
 
 ```math
 c_{n}^{( 1 )} ( t ) = \frac{1}{i \hbar} \int_{0}^{t} e^{i\omega_{ni} t^{\prime}} H_{ni} ( t^{\prime} ) dt^{\prime}
@@ -23614,6 +23306,10 @@ Now we very carefully put the interaction term into the formula for **second ord
 We can understand this formula as a second order transition from state $`| i \rangle`$ to state $`| n \rangle`$ through all possible intermediate states. The transition from the initial state to the intermediate state takes place at time $`t_{1}`$. The transition from the intermediate state to the final state takes place at time $`t_{2}`$.
 
 The **space-time diagram** below shows the three terms in $`c_{n} ( t )`$ Time is assumed to run upward in the diagrams.
+
+![Figure 101 (p. 464)](images/fig-p464-1.png)
+
+_Figure 101 (p. 464)_
 
 Diagram (c) represents the $`A^{2}`$ term in which one photon is absorbed and one emitted at the same<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=464" target="_blank" title="This page in the PDF"><sup>[p. 464]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p465" href="book.pdf#page=465" target="_blank" title="This page in the PDF"><sup>[p. 465]</sup></a></span> point. Diagrams (a) and (b) represent two second order terms. In diagram (a) the initial state photon is absorbed at time $`t_{1}`$, leaving the atom in an intermediate state which may or may not be the same as the initial (or final) atomic state. This intermediate state has no photons in the field. In diagram (b), the atom emits the final state photon at time $`t_{1}`$, leaving the atom in some intermediate state. The intermediate state $`| I \rangle`$ includes two photons in the field for this diagram. At time $`t_{2}`$ the atom absorbs the initial state photon.
 
@@ -23696,6 +23392,10 @@ The **classical radius of the electron** is defined to be $`r_{0} = \tfrac{e^{2}
 ```
 
 This is called the **Kramers-Heisenberg Formula**. Even now, the three (space-time) **Feynman** **diagrams** are visible as separate terms in the formula.
+
+![Figure 102 (p. 467)](images/fig-p467-1.png)
+
+_Figure 102 (p. 467)_
 
 ```math
 2
@@ -23851,13 +23551,7 @@ The $`\hbar \omega = \hbar \omega^{\prime}`$ denominators are much larger than $
 
 This scattering **cross section is of the order of the classical radius of the electron squared**, and is **independent of the frequency** of the light.
 
-The only dependence is on polarization. This is a good time to take a look at the meaning of the **polarization vectors** we’ve been carrying around in the calculation and at the lack of any
-
-<div align="right"><a href="book.pdf#page=470" target="_blank" title="This page in the PDF"><sup>[p. 470]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p471" href="book.pdf#page=471" target="_blank" title="This page in the PDF"><sup>[p. 471]</sup></a>
-
-wave-vectors for the initial and final state. A look back at the calculation shows that we calculated the transition rate from a state with one photon with wave-vector $`\vec{k}`$ and polarization $`\epsilon^{( \alpha )}`$ to a final state with polarization $`\epsilon^{( \alpha^{\prime} )}`$. We have **integrated over the final state wave vector magnitude,** **subject to the delta function** giving energy conservation, but, we have **not integrated over** **final state photon direction** yet, as indicated by the $`\frac{d\sigma}{d \Omega}`$. There is no explicit angular dependence but there is some **hidden in the dot product between initial and final polarization vectors,** **both of which must be transverse** to the direction of propagation. We are ready to compute four different differential cross sections corresponding to two initial polarizations times two final state photon polarizations. Alternatively, we average and/or sum, if we so choose.
+The only dependence is on polarization. This is a good time to take a look at the meaning of the **polarization vectors** we’ve been carrying around in the calculation and at the lack of any<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=470" target="_blank" title="This page in the PDF"><sup>[p. 470]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p471" href="book.pdf#page=471" target="_blank" title="This page in the PDF"><sup>[p. 471]</sup></a></span> wave-vectors for the initial and final state. A look back at the calculation shows that we calculated the transition rate from a state with one photon with wave-vector $`\vec{k}`$ and polarization $`\epsilon^{( \alpha )}`$ to a final state with polarization $`\epsilon^{( \alpha^{\prime} )}`$. We have **integrated over the final state wave vector magnitude,** **subject to the delta function** giving energy conservation, but, we have **not integrated over** **final state photon direction** yet, as indicated by the $`\frac{d\sigma}{d \Omega}`$. There is no explicit angular dependence but there is some **hidden in the dot product between initial and final polarization vectors,** **both of which must be transverse** to the direction of propagation. We are ready to compute four different differential cross sections corresponding to two initial polarizations times two final state photon polarizations. Alternatively, we average and/or sum, if we so choose.
 
 In the high energy approximation we have made, there is no dependence on the state of the atoms, so we are **free to choose our coordinate system** any way we want. Set the **z-axis to be along** **the direction of the initial photon** and set the x-axis so that the **scattered photon is in the** **x-z plane** $`( \varphi = 0 )`$. The scattered photon is at an angle $`\theta`$ to the initial photon direction and at $`\varphi`$ = 0. A reasonable set of **initial state polarization vectors** is
 
@@ -23923,13 +23617,11 @@ At this point we must take the unpleasant position that this (constant) **infini
 
 We can **calculate the lowest order self energy corrections represented by the two Feyn-** **man diagrams** below.
 
-In these, a photon is emitted then reabsorbed. As we now know, both of these amplitudes are of order $`e^{2}`$. The first one comes from the $`A^{2}`$ term in which the number of photons changes by zero or two and the second comes from the $`\vec{A} \cdot \vec{p}`$ term in second order time dependent perturbation theory. A calculation of the first diagram will give the same result for a free electron and a bound electron, while the second diagram will give different results because the intermediate states are different if
+![Figure 103 (p. 472)](images/fig-p472-1.png)
 
-<div align="right"><a href="book.pdf#page=472" target="_blank" title="This page in the PDF"><sup>[p. 472]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p473" href="book.pdf#page=473" target="_blank" title="This page in the PDF"><sup>[p. 473]</sup></a>
+_Figure 103 (p. 472)_
 
-an electron is bound than they are if it is free. We will therefore **compute the amplitude from** **the second diagram**.
+In these, a photon is emitted then reabsorbed. As we now know, both of these amplitudes are of order $`e^{2}`$. The first one comes from the $`A^{2}`$ term in which the number of photons changes by zero or two and the second comes from the $`\vec{A} \cdot \vec{p}`$ term in second order time dependent perturbation theory. A calculation of the first diagram will give the same result for a free electron and a bound electron, while the second diagram will give different results because the intermediate states are different if<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=472" target="_blank" title="This page in the PDF"><sup>[p. 472]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p473" href="book.pdf#page=473" target="_blank" title="This page in the PDF"><sup>[p. 473]</sup></a></span> an electron is bound than they are if it is free. We will therefore **compute the amplitude from** **the second diagram**.
 
 ```math
 H_{int} = - \frac{e}{mc} \vec{A} \cdot \vec{p}
@@ -24241,13 +23933,7 @@ If we use the Dirac theory, then we will be justified to move the cut-off up to 
 
 Note that the self-energy of the free electron depends on the momentum of the electron, so we cannot simply subtract it from our bound state calculation. (What $`p^{2}`$ would we choose?) Rather me **must account for the mass renormalization**. We **used the observed electron mass in** **the calculation** of the Hydrogen bound state energies. In so doing, we have already included some of the self energy correction and we must not double correct. This is the subtraction we must make.
 
-Its hard to keep all the minus signs straight in this calculation, particularly if we consider the bound and continuum electron states separately. The free particle correction to the electron mass is positive. Because we ignore the rest energy of the electron in our non-relativistic calculations, This makes a negative energy correction to both the bound $`( E = - \tfrac{1}{2 n^{2}} \alpha^{2} mc^{2} )`$ and continuum ($`E \approx \tfrac{p^{2}}{2 m}`$ ). Bound states and continuum states have the same fractional change in the energy. We need to add back in a positive term in ∆$`E_{n}`$ to avoid double counting of the self-energy correction. Since the
-
-<div align="right"><a href="book.pdf#page=478" target="_blank" title="This page in the PDF"><sup>[p. 478]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p479" href="book.pdf#page=479" target="_blank" title="This page in the PDF"><sup>[p. 479]</sup></a>
-
-bound state and continuum state terms have the same fractional change, it is convenient to just use $`\frac{p^{2}}{2 m}`$ for all the corrections.
+Its hard to keep all the minus signs straight in this calculation, particularly if we consider the bound and continuum electron states separately. The free particle correction to the electron mass is positive. Because we ignore the rest energy of the electron in our non-relativistic calculations, This makes a negative energy correction to both the bound $`( E = - \tfrac{1}{2 n^{2}} \alpha^{2} mc^{2} )`$ and continuum ($`E \approx \tfrac{p^{2}}{2 m}`$ ). Bound states and continuum states have the same fractional change in the energy. We need to add back in a positive term in ∆$`E_{n}`$ to avoid double counting of the self-energy correction. Since the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=478" target="_blank" title="This page in the PDF"><sup>[p. 478]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p479" href="book.pdf#page=479" target="_blank" title="This page in the PDF"><sup>[p. 479]</sup></a></span> bound state and continuum state terms have the same fractional change, it is convenient to just use $`\frac{p^{2}}{2 m}`$ for all the corrections.
 
 ```math
 \frac{p^{2}}{2 m_{obs}} = \frac{p^{2}}{2 m_{bare}} - Cp^{2}
@@ -24263,6 +23949,10 @@ Because we are correcting for the mass used to calculate the base energy of the 
 
 In 1947, Willis E. Lamb and R. C. Retherford used microwave techniques to determine the **splitting** **between the** $`2 S 1_{2}`$ **and** $`2 P_{2} 1`$ **states in Hydrogen** to have a frequency of 1.06 GHz, (a wavelength of about 30 cm). (The shift is now accurately measured to be 1057.864 MHz.) This is about the same size as the hyperfine splitting of the ground state.
 
+![Figure 104 (p. 479)](images/fig-p479-1.png)
+
+_Figure 104 (p. 479)_
+
 The technique used was quite interesting. They made a **beam of Hydrogen atoms in the** $`2 S 1`$ **state**, which has a very long lifetime because of selection rules. **Microwave radiation** with a<sup>2</sup> (fixed) frequency of 2395 MHz was used to cause transitions to the 2$`P 3_{2}`$ state and a **magnetic field** **was adjusted to shift the energy of the states** until the rate was largest. The **decay of the** $`2 P 3`$ **state to the ground state was observed** to determine the transition rate. From this, they were able to deduce the shift between the 2<sup>2</sup> $`S_{2} 1`$ and 2$`P 1_{2}`$ states.
 
 **Hans Bethe used non-relativistic quantum mechanics** to calculate the self-energy correction to account for this observation.
@@ -24270,6 +23960,10 @@ The technique used was quite interesting. They made a **beam of Hydrogen atoms i
 <div align="right"><a href="book.pdf#page=479" target="_blank" title="This page in the PDF"><sup>[p. 479]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p480" href="book.pdf#page=480" target="_blank" title="This page in the PDF"><sup>[p. 480]</sup></a>
+
+![Figure 105 (p. 480)](images/fig-p480-1.png)
+
+_Figure 105 (p. 480)_
 
 We now can compute the correction the same way he did.
 
@@ -24427,13 +24121,7 @@ So the **sum of the two gives**.
 
 The **dependence on** $`\omega_{min}`$ **cancels**. In this calculation, the $`mc^{2}`$ in the log is the outcome of the relativistic calculation, not the cutoff. The electric dipole approximation is even pretty good since we did not need to go up to large photon energies non-relativistically and no E1 approximation is needed for the relativistic part. That’s how we (and Bethe) got about the right answer.
 
-The **Lamb shift splits the** $`2 S 1`$ **and** $`2 P 1`$ **states which are otherwise degenerate**. Its origin is **purely from field theory**. The experimental<sup>2</sup> $`2`$ **measurement of the Lamb shift stimulated**
-
-<div align="right"><a href="book.pdf#page=482" target="_blank" title="This page in the PDF"><sup>[p. 482]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p483" href="book.pdf#page=483" target="_blank" title="This page in the PDF"><sup>[p. 483]</sup></a>
-
-**theorists to develop Quantum ElectroDynamics**. The correction increases the energy of s states. One may think of the physical origin as the electron becoming less pointlike as virtual photons are emitted and reabsorbed. Spreading the electron out a bit decreases the effect of being in the deepest part of the potential, right at the origin. Based on the energy shift, I estimate that the **electron in the 2s state is spread out by about 0.005 Angstroms**, much more than the size of the nucleus.
+The **Lamb shift splits the** $`2 S 1`$ **and** $`2 P 1`$ **states which are otherwise degenerate**. Its origin is **purely from field theory**. The experimental<sup>2</sup> $`2`$ **measurement of the Lamb shift stimulated**<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=482" target="_blank" title="This page in the PDF"><sup>[p. 482]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p483" href="book.pdf#page=483" target="_blank" title="This page in the PDF"><sup>[p. 483]</sup></a></span> **theorists to develop Quantum ElectroDynamics**. The correction increases the energy of s states. One may think of the physical origin as the electron becoming less pointlike as virtual photons are emitted and reabsorbed. Spreading the electron out a bit decreases the effect of being in the deepest part of the potential, right at the origin. Based on the energy shift, I estimate that the **electron in the 2s state is spread out by about 0.005 Angstroms**, much more than the size of the nucleus.
 
 The **anomalous magnetic moment of the electron**, $`g - 2`$, which can also be calculated in field theory, makes a small contribution to the Lamb shift.
 
@@ -24746,7 +24434,11 @@ that gave us the correct interaction with the electron’s spin. We have applied
 
 Dirac’s paper did not follow the same line of reasoning. Historically, the Schrödinger-Pauli Hamiltonian was derived from the Dirac equation. It was Dirac who produced the correct equation for electrons and went on to interpret it to gain new insight into physics.
 
-Dirac Biography
+![Figure 106 (p. 489)](images/fig-p489-1.png)
+
+_Figure 106 (p. 489)_
+
+## <a id="s-dirac-biography"></a>Dirac Biography
 
 # <a id="s-36-4-the-conserved-probability-current"></a>36.4 The Conserved Probability Current
 
@@ -25400,11 +25092,7 @@ This reduces to the spin up “negative energy” solution for a particle at res
 
 with $`E`$ being a negative number. We will eventually understand the “negative energy” solutions in terms of anti-electrons otherwise known as positrons.
 
-<div align="center">
-
 Finally, the **“negative energy”, spin down solution** follows the same pattern.
-
-</div>
 
 ```math
 \begin{pmatrix} - E + mc^{2} & 0 & p_{z} c & ( p_{x} - ip_{y} ) c \\ 0 & - E + mc^{2} & ( p_{x} + ip_{y} ) c & - p_{z} c \\ - p_{z} c & - ( p_{x} - ip_{y} ) c & E + mc^{2} & 0 \\ - ( p_{x} + ip_{y} ) c & p_{z} c & 0 & E + mc^{2} \end{pmatrix} \begin{pmatrix} A_{1} \\ A_{2} \\ 0 \\ 1 \end{pmatrix} = 0
@@ -25638,13 +25326,7 @@ with e positive and $`\vec{p}`$ in the direction of probability flux.
 
 # <a id="s-36-8-equivalence-of-a-two-component-theory"></a>36.8 Equivalence of a Two Component Theory
 
-The two component theory with $`\psi_{A}`$ (and $`\psi_{B}`$ depending on it) is **equivalent to the Dirac theory**. It has a second order equation and separate negative and positive energy solutions. As we saw in
-
-<div align="right"><a href="book.pdf#page=506" target="_blank" title="This page in the PDF"><sup>[p. 506]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p507" href="book.pdf#page=507" target="_blank" title="This page in the PDF"><sup>[p. 507]</sup></a>
-
-the non-relativistic limit, the **normalization condition is a bit unnatural** in the two component theory. The normalization correction would be very large for the “negative energy” states if we continued to use $`\psi_{A}`$.
+The two component theory with $`\psi_{A}`$ (and $`\psi_{B}`$ depending on it) is **equivalent to the Dirac theory**. It has a second order equation and separate negative and positive energy solutions. As we saw in<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=506" target="_blank" title="This page in the PDF"><sup>[p. 506]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p507" href="book.pdf#page=507" target="_blank" title="This page in the PDF"><sup>[p. 507]</sup></a></span> the non-relativistic limit, the **normalization condition is a bit unnatural** in the two component theory. The normalization correction would be very large for the “negative energy” states if we continued to use $`\psi_{A}`$.
 
 Even though it is a second order differential equation, we only need to specify the wave function and whether it is negative or positive energy to do the time development. The Dirac theory has many advantages in terms of notation and ease of forming Lorentz covariant objects. A decision must be made when we determine how many independent fields there are.
 
@@ -25786,9 +25468,7 @@ x_{4}^{\prime} & = & x_{4} & \cosh \chi & - ix_{1} \sinh \chi \\
 
 We verify that a boost along the $`i`$ direction is like a rotation in the $`i 4`$ plane through an angle $`i\chi`$.
 
-We need to **find the transformation matrices** $`S`$ that satisfy the equation $`S^{- 1} \gamma_{\mu} S = \gamma_{\nu} a_{\mu \nu}`$<br>
-for the Dirac equation to be covariant. Recalling that the 4 component equivalent of $`\sigma_{z}`$ is $`\Sigma_{z} = \tfrac{[ \gamma_{1} ,\gamma_{2} ]}{2 i} = \tfrac{\gamma_{1} \gamma_{2}}{i}`$, we will show that these matrices are (for a rotation in the xy plane and a boost in<br>
-the x direction).
+We need to **find the transformation matrices** $`S`$ that satisfy the equation $`S^{- 1} \gamma_{\mu} S = \gamma_{\nu} a_{\mu \nu}`$ for the Dirac equation to be covariant. Recalling that the 4 component equivalent of $`\sigma_{z}`$ is $`\Sigma_{z} = \tfrac{[ \gamma_{1} ,\gamma_{2} ]}{2 i} = \tfrac{\gamma_{1} \gamma_{2}}{i}`$, we will show that these matrices are (for a rotation in the xy plane and a boost in the x direction).
 
 ```math
 S_{rot} = \cos \frac{\theta}{2} + \gamma_{1} \gamma_{2} \sin \frac{\theta}{2}
@@ -25810,17 +25490,13 @@ Lets **verify that this choice works for a boost**.
 \left( \cosh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} \right) \gamma_{\mu} \left( \cosh \frac{\chi}{2} + i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} \right) = a_{\mu \nu} \gamma_{\nu}
 ```
 
-```math
-\cosh \frac{\chi}{2} \gamma_{\mu} \cosh \frac{\chi}{2} + \cosh \frac{\chi}{2} \gamma_{\mu} i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} \gamma_{\mu} \cosh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} \gamma_{\mu} i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} = a_{\mu \nu} \gamma_{\nu}
-```
+$`\cosh \frac{\chi}{2} \gamma_{\mu} \cosh \frac{\chi}{2} + \cosh \frac{\chi}{2} \gamma_{\mu} i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} \gamma_{\mu} \cosh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} \gamma_{\mu} i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2}`$ = $`a_{\mu \nu} \gamma_{\nu}`$
 
 ```math
 \gamma_{\mu} \cosh^{2} \frac{\chi}{2} + i\gamma_{\mu} \gamma_{1} \gamma_{4} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \gamma_{\mu} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} + \gamma_{1} \gamma_{4} \gamma_{\mu} \gamma_{1} \gamma_{4} \sinh^{2} \frac{\chi}{2} = a_{\mu \nu} \gamma_{\nu}
 ```
 
-The equation we must satisfy can be checked for each $`\gamma`$ matrix. First check $`\gamma_{1}`$. The operations with<br>
-the $`\gamma`$ matrices all come from the anticommutator, $`\{ \gamma_{\mu} ,\gamma_{\nu} \}`$ = 2$`\delta_{\mu \nu}`$, which tells us that the square<br>
-of any gamma matrix is one and that commuting a pair of (unequal) matrices changes the sign.
+The equation we must satisfy can be checked for each $`\gamma`$ matrix. First check $`\gamma_{1}`$. The operations with the $`\gamma`$ matrices all come from the anticommutator, $`\{ \gamma_{\mu} ,\gamma_{\nu} \}`$ = 2$`\delta_{\mu \nu}`$, which tells us that the square of any gamma matrix is one and that commuting a pair of (unequal) matrices changes the sign.
 
 ```math
 \gamma_{1} \cosh^{2} \frac{\chi}{2} + i\gamma_{1} \gamma_{1} \gamma_{4} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \gamma_{1} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} + \gamma_{1} \gamma_{4} \gamma_{1} \gamma_{1} \gamma_{4} \sinh^{2} \frac{\chi}{2} = a_{1 \nu} \gamma_{\nu}
@@ -26234,9 +25910,7 @@ according to our derivation of the transformations $`S`$. Under the parity trans
 
 the spacial components of the vector change sign and the fourth component doesn’t. It transforms like a **Lorentz vector** under parity.
 
-```math
-\text{ Similarly } , \text{ for } \mu \neq \nu ,
-```
+Similarly, for $`\mu \neq \nu`$,
 
 ```math
 \bar{\psi} \sigma_{\mu \nu} \psi \equiv \bar{\psi} i\gamma_{\mu} \gamma_{\nu} \psi
@@ -26508,11 +26182,7 @@ v_{j} = ic\gamma_{4} \gamma_{j}
 
 The **velocity operator** then is $`v_{j} = ic\gamma_{4} \gamma_{j}`$.
 
-<div align="center">
-
 Its not hard to compute that the **velocity eigenvalues** (any component) are $`\pm c`$.
-
-</div>
 
 ```math
 ic\gamma_{4} \gamma_{1} = ic \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & - 1 & 0 \\ 0 & 0 & 0 & - 1 \end{pmatrix} \begin{pmatrix} 0 & 0 & 0 & - i \\ 0 & 0 & - i & 0 \\ 0 & i & 0 & 0 \\ i & 0 & 0 & 0 \end{pmatrix} = c \begin{pmatrix} 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0 \end{pmatrix}
@@ -26684,13 +26354,7 @@ The Zitterbewegung again keeps electrons from being well localized in a deep pot
 
 # <a id="s-36-15solution-of-the-dirac-equation-for-hydrogen"></a>36.15 Solution of the Dirac Equation for Hydrogen
 
-The standard Hydrogen atom problem can be solved exactly using relativistic quantum mechanics. The full solution is a bit long but short compared to the complete effort we made in non-relativistic
-
-<div align="right"><a href="book.pdf#page=522" target="_blank" title="This page in the PDF"><sup>[p. 522]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p523" href="book.pdf#page=523" target="_blank" title="This page in the PDF"><sup>[p. 523]</sup></a>
-
-QM. We have already seen that (even with no applied fields), while the **total angular momentum** **operator commutes with the Dirac Hamiltonian**, neither the orbital angular momentum operator nor the spin operators do commute with $`H`$. The addition of a spherically symmetric potential does not change these facts.
+The standard Hydrogen atom problem can be solved exactly using relativistic quantum mechanics. The full solution is a bit long but short compared to the complete effort we made in non-relativistic<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=522" target="_blank" title="This page in the PDF"><sup>[p. 522]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p523" href="book.pdf#page=523" target="_blank" title="This page in the PDF"><sup>[p. 523]</sup></a></span> QM. We have already seen that (even with no applied fields), while the **total angular momentum** **operator commutes with the Dirac Hamiltonian**, neither the orbital angular momentum operator nor the spin operators do commute with $`H`$. The addition of a spherically symmetric potential does not change these facts.
 
 We have shown in the section on conserved quantities that the operator
 
@@ -26988,11 +26652,7 @@ The square of the operator $`\begin{pmatrix} \cdot \\ \frac{\vec{\sigma} \vec{x}
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p527" href="book.pdf#page=527" target="_blank" title="This page in the PDF"><sup>[p. 527]</sup></a>
 
-The phase factor depends on the conventions we choose for the states $`\mathcal{Y}_{j\ell}^{m_{j}}`$. For our conventions,
-
-```math
-\text{ the factor is } - 1 .
-```
+The phase factor depends on the conventions we choose for the states $`\mathcal{Y}_{j\ell}^{m_{j}}`$. For our conventions, the factor is $`- 1 .`$
 
 ```math
 \frac{\vec{\sigma} \cdot \vec{x}}{r} \mathcal{Y}_{j\ell_{A}}^{m_{j}} = - \mathcal{Y}_{j\ell_{B}}^{m_{j}}
@@ -27258,9 +26918,7 @@ Relativistic corrections become quite important for high $`Z`$ atoms in which th
 
 # <a id="s-36-16thomson-scattering"></a>36.16 Thomson Scattering
 
-The cross section for **Thomson scattering illustrates the need for “negative energy” states**<br>
-**in our calculations**. Recall that we got the correct cross section from the non-relativistic calcula-<br>
-tion and that Thomson also got the correct result from classical E&M.
+The cross section for **Thomson scattering illustrates the need for “negative energy” states** **in our calculations**. Recall that we got the correct cross section from the non-relativistic calculation and that Thomson also got the correct result from classical E&M.
 
 In the Dirac theory, we have only one term in the **interaction Hamiltonian**,
 
@@ -27274,13 +26932,9 @@ Because it is linear in $`A`$ it can create a photon or annihilate a photon. Pho
 A_{\mu} ( x ) = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right) .
 ```
 
-The initial and final states are **definite momentum states**, as are the intermediate electron states.<br>
-We shall **first do the calculation assuming no electrons from the “negative energy” sea** **participate**, other than to exclude transitions to those “negative energy” states. The initial and<br>
-final states are therefore the positive energy plane wave states $`\psi_{\vec{p}}^{( r )}`$ for $`r`$ = 1$`,`$ 2. The intermediate<br>
-states must also be positive energy states since the “negative energy” states are all filled.
+The initial and final states are **definite momentum states**, as are the intermediate electron states. We shall **first do the calculation assuming no electrons from the “negative energy” sea** **participate**, other than to exclude transitions to those “negative energy” states. The initial and final states are therefore the positive energy plane wave states $`\psi_{\vec{p}}^{( r )}`$ for $`r`$ = 1$`,`$ 2. The intermediate states must also be positive energy states since the “negative energy” states are all filled.
 
-The computation of the scattering cross section follows the same steps made in the development<br>
-of the Krammers-Heisenberg formula for photon scattering. There is no $`A^{2}`$ term so we are just computing the **two second order terms**.
+The computation of the scattering cross section follows the same steps made in the development of the Krammers-Heisenberg formula for photon scattering. There is no $`A^{2}`$ term so we are just computing the **two second order terms**.
 
 ```math
 c_{\vec{p}^{\prime} ,r^{\prime} ; \vec{k}^{\prime} , \hat{\epsilon}^{\prime}}^{( 2 )} ( t ) = \frac{- e^{2}}{\hbar^{2}} \sum_{I} \frac{1}{V} \frac{\hbar c^{2}}{2 \sqrt{\omega^{\prime} \omega}} \int_{0}^{t} dt_{2} \langle \vec{p}^{\prime} r^{\prime} ; \vec{k}^{\prime} \hat{\epsilon}^{( \alpha^{\prime} )} | i\gamma_{4} \gamma_{n} ( \epsilon_{n}^{( \alpha )} a_{k,\alpha} e^{i ( \vec{k} \cdot \vec{x} - \omega t_{2} )} + \epsilon_{n}^{( \alpha^{\prime} )} a_{k^{\prime} ,\alpha^{\prime}}^{\dagger} e^{i ( - \vec{k} \cdot \vec{x} + \omega^{\prime} t_{2} )} ) | I \rangle e^{i ( E^{\prime} - E^{\prime \prime} )}
@@ -27294,11 +26948,9 @@ c_{\vec{p}^{\prime} ,r^{\prime} ; \vec{k}^{\prime} , \hat{\epsilon}^{\prime}}^{(
 \begin{aligned} c_{\vec{p}^{\prime} ,r^{\prime} ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 2 )} ( t ) &= \frac{e^{2} \hbar c^{2}}{2 V \sqrt{\omega^{\prime} \omega}} \sum_{\vec{p}^{\prime \prime} r^{\prime \prime} = 1 , 2} \left[ \frac{\langle \vec{p}^{\prime} r^{\prime} | i\gamma_{4} \gamma_{n} \epsilon_{n}^{\prime} e^{- i \vec{k}^{\prime} \cdot \vec{x}} | \vec{p}^{\prime \prime} r^{\prime \prime} \rangle \langle \vec{p}^{\prime \prime} r^{\prime \prime} | i\gamma_{4} \gamma_{n} \epsilon_{n} e^{i \vec{k} \cdot \vec{x}} | \vec{p} r \rangle}{E^{\prime \prime} - E - \hbar \omega} \right. \\ & \quad \left. + \quad \frac{\langle \vec{p}^{\prime} r^{\prime} | i\gamma_{4} \gamma_{n} \epsilon_{n} e^{i \vec{k} \cdot \vec{x}} | \vec{p}^{\prime \prime} r^{\prime \prime} \rangle \langle \vec{p}^{\prime \prime} r^{\prime \prime} | i\gamma_{4} \gamma_{n} \epsilon_{n}^{\prime} e^{- i \vec{k}^{\prime} \cdot \vec{x}} | \vec{p} r \rangle}{E^{\prime \prime} - E + \hbar \omega^{\prime}} \right] \frac{i}{\hbar} \int_{0}^{t} dt_{2} e^{i ( E^{\prime} - E + \hbar \omega^{\prime} - \hbar \omega ) t_{2} / \hbar} \end{aligned}
 ```
 
-As in the earlier calculation, the photon states have been eliminated from the equation since they<br>
-give a factor of 1 with the initial state photon being annihilated and the final state photon being created in each term.
+As in the earlier calculation, the photon states have been eliminated from the equation since they give a factor of 1 with the initial state photon being annihilated and the final state photon being created in each term.
 
-Now lets take a **look at one of the matrix elements**. Assume the **initial state electron is at**<br>
-**rest and that the photon momentum is small**.
+Now lets take a **look at one of the matrix elements**. Assume the **initial state electron is at** **rest and that the photon momentum is small**.
 
 ```math
 \langle \vec{p}^{\prime \prime} r^{\prime \prime} | i\gamma_{4} \gamma_{n} \epsilon_{n} e^{i \vec{k} \cdot \vec{x}} | \vec{p} r \rangle
@@ -27326,9 +26978,9 @@ This matrix only connects $`r`$ = 1$`,`$ 2 spinors to $`r`$ = 3$`,`$ 4 spinors b
 
 The above calculation misses some **important terms due to the “negative energy” sea**. There are additional terms if we consider the possibility that the photon can elevate a “negative energy” electron to have positive energy.
 
-![Figure 97 (p. 532)](images/fig-p532-1.png)
+![Figure 107 (p. 532)](images/fig-p532-1.png)
 
-_Figure 97 (p. 532)_
+_Figure 107 (p. 532)_
 
 In one term, the initial state photon is absorbed by a “negative energy” electron, then the initial state electron fills the hole in the “negative energy” sea emitting the final state photon. In the other term, even further from the mass shell, a “negative energy” electron emits the final state photon and moves to a positive energy state, then the initial state electron absorbs the initial photon and fills the hole left behind in the sea. These terms are larger because the $`\gamma_{4} \gamma_{i}`$ matrix connects positive energy and “negative energy” states.
 
@@ -27574,9 +27226,9 @@ Our opinion of the “negative energy” solutions has been biased by living in 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p538" href="book.pdf#page=538" target="_blank" title="This page in the PDF"><sup>[p. 538]</sup></a>
 
-![Figure 98 (p. 538)](images/fig-p538-1.png)
+![Figure 108 (p. 538)](images/fig-p538-1.png)
 
-_Figure 98 (p. 538)_
+_Figure 108 (p. 538)_
 
 **No reference to the “negative energy” sea is needed**. **No change in the “negative** **energy” solutions is needed** although it will be helpful to relabel them with the properties of the positron rather than the properties of the electron moving backward in time.
 
@@ -27888,9 +27540,9 @@ The effect of vacuum polarization on Hydrogen would be to lower the energy of $`
 
 We can get some qualitative understanding of the origin of **Zitterbewegung** from the idea of virtual pair production in the field of the nucleus. The diagram below shows a photon from the Coulomb field of the nucleus producing an electron positron pair. The original real electron from the atom then anihillates with the positron, coupling to another field photon. The electron from the pair is left over and becomes the new atomic electron, however, it need not be in the same place as the original electron.
 
-![Figure 99 (p. 543)](images/fig-p543-1.png)
+![Figure 109 (p. 543)](images/fig-p543-1.png)
 
-_Figure 99 (p. 543)_
+_Figure 109 (p. 543)_
 
 <div align="right"><a href="book.pdf#page=543" target="_blank" title="This page in the PDF"><sup>[p. 543]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -28069,7 +27721,11 @@ $`\psi ( x )`$ continuous $`\frac{d\psi}{dx}`$ continous if $`V`$ finite
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p547" href="book.pdf#page=547" target="_blank" title="This page in the PDF"><sup>[p. 547]</sup></a>
 
+<div align="center">
+
 # <a id="s-harmonic-oscillator"></a>HARMONIC OSCILLATOR
+
+</div>
 
 ```math
 H = \tfrac{p^{2}}{2 m} + \tfrac{1}{2} m\omega^{2} x^{2} = \hbar \omega A^{\dagger} A + \tfrac{1}{2} \hbar \omega \quad 1 0 . 1 \quad E_{n} = ( n + \tfrac{1}{2} ) \hbar \omega \quad n = 0 , 1 , 2 \dots \quad 1 0 . 3
@@ -28087,7 +27743,11 @@ A = ( \sqrt{\frac{m\omega}{2 \hbar}} x + i \tfrac{p}{2 m \hbar \omega} \sqrt{) \
 A^{\dagger} | n \rangle = \sqrt{( n + 1 )} | n + 1 \rangle \quad A | n \rangle = \sqrt{( n )} | n - 1 \rangle \quad u_{0} ( x ) = ( {}_{\hbar \pi}^{m\omega} ) 4^{1} e^{- m\omega x^{2} / 2 \hbar}
 ```
 
+<div align="center">
+
 # <a id="s-angular-momentum"></a>ANGULAR MOMENTUM
+
+</div>
 
 ```math
 [ L_{i} ,L_{j} ] = i \hbar \epsilon_{ijk} L_{k} \quad [ L^{2} ,L_{i} ] = 0 \int Y_{\ell m}^{*} Y_{\ell^{\prime} m^{\prime}} d \Omega = \delta \ell \ell^{\prime} \delta_{mm^{\prime}}
@@ -28137,7 +27797,11 @@ S_{i} = \tfrac{\hbar}{2} \sigma_{i} \quad [ \sigma_{i} ,\sigma_{j} ] = 2 i\epsil
 S_{x} = \hbar \begin{pmatrix} 0 & \tfrac{1}{\sqrt{2}} & 0 \\ \tfrac{1}{\sqrt{2}} & 0 & \tfrac{1}{\sqrt{2}} \\ 0 & \tfrac{1}{\sqrt{2}} & 0 \end{pmatrix} \quad S_{y} = \hbar \begin{pmatrix} 0 & \tfrac{- i}{2}^{\surd} & 0 \\ \tfrac{i}{\sqrt{2}} & 0 & \tfrac{i}{\sqrt{2}}^{-} \\ 0 & \tfrac{i}{2}^{\surd} & 0 \end{pmatrix} \quad S_{z} = \hbar \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & - 1 \end{pmatrix} 1
 ```
 
+<div align="center">
+
 # <a id="s-hydrogen-atom"></a>HYDROGEN ATOM
+
+</div>
 
 ```math
 H = \tfrac{p^{2}}{2 \mu} - \tfrac{Ze^{2}}{r} \quad \psi_{n\ell m} = R_{n\ell} ( r ) Y_{\ell m} ( \theta ,\varphi ) \quad E_{n} = - \tfrac{Z^{2} \alpha^{2} \mu c^{2}}{2 n^{2}} = - {}^{1 3} \tfrac{. 6}{n^{2}} \text{ eV }

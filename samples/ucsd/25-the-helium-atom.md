@@ -67,9 +67,9 @@ Note that $`E_{2 2}`$ is above ionization energy, so the state can decay rapidly
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p359" href="book.pdf#page=359" target="_blank" title="This page in the PDF"><sup>[p. 359]</sup></a>
 
-![Figure 81 (p. 359)](images/fig-p359-1.png)
+![Figure 84 (p. 359)](images/fig-p359-1.png)
 
-_Figure 81 (p. 359)_
+_Figure 84 (p. 359)_
 
 Now let’s look at the (anti) **symmetry of the states** of two identical electrons. For the ground state, the spatial state is symmetric, so the spin state must be antisymmetric $`\Rightarrow s`$ = 0.
 
@@ -159,9 +159,9 @@ Thus we have a large effective spin-spin interaction entirely due to electron re
 
 The first diagram below shows the result of our calculation. All states increase in energy due to the Coulomb repulsion of the electrons. Before the perturbation, the first excited state is degenerate. After the perturbation, the singlet and triplet spin states split significantly due to the symmetry of the spatial part of the wavefunction. We designate the states with the usual spectroscopic notation.
 
-![Figure 82 (p. 361)](images/fig-p361-1.png)
+![Figure 85 (p. 361)](images/fig-p361-1.png)
 
-_Figure 82 (p. 361)_
+_Figure 85 (p. 361)_
 
 In addition to the large energy shift between the singlet and triplet states, **Electric Dipole** decay selection rules
 
@@ -175,17 +175,17 @@ In addition to the large energy shift between the singlet and triplet states, **
 
 cause decays from triplet to singlet states (or vice-versa) to be suppressed by a large factor (compared to decays from singlet to singlet or from triplet to triplet). This caused early researchers to think that there were two separate kinds of Helium. The diagrams below shows the levels for ParaHelium (singlet) and for OtrhoHelium (triplet). The second diagrams shows the dominant decay modes.<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=361" target="_blank" title="This page in the PDF"><sup>[p. 361]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p362" href="book.pdf#page=362" target="_blank" title="This page in the PDF"><sup>[p. 362]</sup></a></span> 362
 
-![Figure 83 (p. 362)](images/fig-p362-1.png)
+![Figure 86 (p. 362)](images/fig-p362-1.png)
 
-_Figure 83 (p. 362)_
+_Figure 86 (p. 362)_
 
 <div align="right"><a href="book.pdf#page=362" target="_blank" title="This page in the PDF"><sup>[p. 362]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p363" href="book.pdf#page=363" target="_blank" title="This page in the PDF"><sup>[p. 363]</sup></a>
 
-![Figure 84 (p. 363)](images/fig-p363-1.png)
+![Figure 87 (p. 363)](images/fig-p363-1.png)
 
-_Figure 84 (p. 363)_
+_Figure 87 (p. 363)_
 
 # <a id="s-25-4-the-variational-principle-rayleigh-ritz-approximation"></a>25.4 The Variational Principle (Rayleigh-Ritz Approximation)
 
@@ -341,11 +341,7 @@ Putting these together we get our estimate of the ground state energy.
 ( really - 7 8 . 9 7 5 eV ) . = - \frac{1}{2} \alpha^{2} mc^{2} \left[ 2 \left( Z - \frac{5}{1 6} \right)^{2} \right] = - 7 7 . 3 8 e V
 ```
 
-<div align="center">
-
 Now we are within a few percent. We could use more parameters for better results.
-
-</div>
 
 <div align="right"><a href="book.pdf#page=365" target="_blank" title="This page in the PDF"><sup>[p. 365]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">

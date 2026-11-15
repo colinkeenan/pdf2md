@@ -52,7 +52,9 @@ pub fn split_chapters(blks: Vec<Blk>, chapter_size: Option<f32>) -> Vec<Chapter>
         // name, for the links to it and for its file, is in plain letters)
         let math = text.iter().any(|i| matches!(i, crate::Inline::Math(_) | crate::Inline::Framed(_)));
         chapters.push(Chapter {
-            title: if math { plain_letters(text) } else { plain(text) },
+            // (the words of a title's next line are other words: "Chapter
+            // 3" and, under it, the chapter's name)
+            title: if math { plain_letters(text) } else { plain(&text.iter().map(|i| if *i == crate::Inline::Break { crate::Inline::Text(" ".into()) } else { i.clone() }).collect::<Vec<_>>()) },
             heading: if set || math { text.clone() } else { Vec::new() },
             centered: set && b.centered,
             blocks: moved,
@@ -347,8 +349,13 @@ pub fn assign_slugs(chapters: &mut [Chapter]) {
             }
         };
         // (the number is the file's prefix: "3 Diffraction" is "03-diffraction")
+        // (so is "Chapter 3" over the chapter's name)
+        let named = |t: &str| -> String { t.trim_start().strip_prefix("Chapter ").or_else(|| t.trim_start().strip_prefix("CHAPTER ")).unwrap_or(t).to_string() };
         let title = match numbers[i] {
-            Some(n) => ch.title.trim_start().strip_prefix(&n.to_string()).filter(|rest| rest.starts_with(' ')).unwrap_or(&ch.title).to_string(),
+            Some(n) => {
+                let t = named(&ch.title);
+                t.trim_start().strip_prefix(&n.to_string()).filter(|rest| rest.starts_with(' ')).map(str::to_string).unwrap_or(t)
+            }
             None => ch.title.clone(),
         };
         ch.slug = format!("{prefix}-{}", slugify(&title));
@@ -497,6 +504,19 @@ mod tests {
         merge_front_matter(&mut chs, None);
         assign_slugs(&mut chs);
         assert_eq!(chs[2].slug, "02-the-dirac-theory");
+    }
+
+    #[test]
+    fn a_chapter_named_under_its_number_is_one_title() {
+        assert!(crate::blocks::is_chapter_label("Chapter 3"));
+        assert!(crate::blocks::is_chapter_label("Appendix B"));
+        assert!(crate::blocks::is_chapter_label("CHAPTER IV"));
+        assert!(!crate::blocks::is_chapter_label("Chapter 3 Waves"));
+        assert!(!crate::blocks::is_chapter_label("Chapter summary"));
+        let mut chs = vec![chapter("Title Pages", None), chapter("Contents", None), chapter("Chapter 1 Coordinate Systems", None), chapter("Chapter 2 Vector Algebra", None), chapter("Appendix A Numerical Methods", None)];
+        assign_slugs(&mut chs);
+        let slugs: Vec<&str> = chs.iter().map(|c| c.slug.as_str()).collect();
+        assert_eq!(slugs[2..], ["01-coordinate-systems", "02-vector-algebra", "03-appendix-a-numerical-methods"]);
     }
 
     #[test]

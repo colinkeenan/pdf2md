@@ -616,13 +616,9 @@ Find $`\langle x \rangle`$ and $`\langle x^{2} \rangle`$ as a function of time.
 \psi = \sqrt{\frac{2}{3}} u_{0} + \sqrt{\frac{1}{3}} u_{2} .
 ```
 
-```math
-\text{ Find } \langle x^{2} \rangle .
-```
+Find $`\langle x^{2} \rangle`$.
 
-```math
-8 .
-```
+8.
 
 ---
 

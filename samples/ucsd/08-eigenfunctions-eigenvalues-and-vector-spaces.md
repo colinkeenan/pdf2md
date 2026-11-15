@@ -309,10 +309,10 @@ u_{j} = C \sin ( kx )
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p137" href="book.pdf#page=137" target="_blank" title="This page in the PDF"><sup>[p. 137]</sup></a>
 
-which automatically satisfies the BC at 0. To satisfy the BC at $`x = a`$ we need the argument of sine
+which automatically satisfies the BC at 0. To satisfy the BC at $`x = a`$ we need the argument of sine to be $`n\pi`$ there.
 
 ```math
-\text{ to be } n\pi \text{ there } . \quad u_{n} = C \sin \left( \frac{n\pi x}{a} \right)
+u_{n} = C \sin \left( \frac{n\pi x}{a} \right)
 ```
 
 Plugging this back into the Schrödinger equation, we get
@@ -341,9 +341,9 @@ u_{n} = \sqrt{\frac{2}{a}} \sin \left( \frac{n\pi x}{a} \right)
 
 The first four eigenfunctions are graphed below. The ground state has the least curvature and the fewest zeros of the wavefunction.
 
-![Figure 32 (p. 137)](images/fig-p137-1.png)
+![Figure 34 (p. 137)](images/fig-p137-1.png)
 
-_Figure 32 (p. 137)_
+_Figure 34 (p. 137)_
 
 <div align="right"><a href="book.pdf#page=137" target="_blank" title="This page in the PDF"><sup>[p. 137]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">

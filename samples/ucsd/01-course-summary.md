@@ -131,14 +131,10 @@ We can use operators to help us compute the expectation value (See section 6.3) 
 \langle f ( x ) \rangle = \int_{-\infty}^{\infty} P ( x ) f ( x ) dx = \int_{-\infty}^{\infty} \psi^{*} ( x ) \psi ( x ) f ( x ) dx.
 ```
 
-If the variable we wish to compute the expectation value of (like $`p`$) is not a simple function of $`x`$, let
+If the variable we wish to compute the expectation value of (like $`p`$) is not a simple function of $`x`$, let its operator act on $`\psi ( x )`$
 
 ```math
-\text{ its operator act on } \psi ( x )_{\infty}
-```
-
-```math
-\langle p \rangle = \int_{-\infty} \psi^{*} ( x ) p^{( op )} \psi ( x ) dx.
+\langle p \rangle = \int_{-\infty}^{\infty} \psi^{*} ( x ) p^{( op )} \psi ( x ) dx.
 ```
 
 We have a shorthand notation for the expectation value of a variable $`v`$ in the state $`\psi`$ which is quite useful. $`\infty`$
@@ -215,10 +211,10 @@ For states which are not bound, a continuous range of energies is allowed.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p21" href="book.pdf#page=21" target="_blank" title="This page in the PDF"><sup>[p. 21]</sup></a>
 
-The time independent Schrödinger equation is an example of an eigenvalue equation (See section
+The time independent Schrödinger equation is an example of an eigenvalue equation (See section 8.1).
 
 ```math
-8 . 1 ) . \quad H\psi_{i} ( \vec{x} ) = E_{i} \psi_{i} ( \vec{x} )
+H\psi_{i} ( \vec{x} ) = E_{i} \psi_{i} ( \vec{x} )
 ```
 
 If we operate on $`\psi_{i}`$ with $`H`$, we get back the same function $`\psi_{i}`$ times some constant. In this case $`\psi_{i}`$ would be called and Eigenfunction, and $`E_{i}`$ would be called an Eigenvalue. There are usually an infinite number of solutions, indicated by the index $`i`$ here.
@@ -255,11 +251,7 @@ The bra-ket $`\langle \varphi | \psi i \rangle`$ can be thought of as a dot prod
 \psi ( \vec{x} , t ) = \psi ( \vec{x} ) e^{- iE_{i} t/ \hbar}
 ```
 
-<div align="center">
-
 we can use these eigenstates to follow the time development of an arbitrary state $`\varphi`$
-
-</div>
 
 ```math
 \varphi ( t ) = \begin{pmatrix} \alpha_{1} e^{- t/ \hbar} \\ \alpha_{2} e^{-} \begin{matrix} iE_{1} \\ iE_{2} \\ iE_{3} \end{matrix}^{t/ \hbar} \\ \alpha_{3} e^{- t/ \hbar} \\ \dots \end{pmatrix}
@@ -267,11 +259,7 @@ we can use these eigenstates to follow the time development of an arbitrary stat
 
 simply by computing the coefficients $`\alpha_{i}`$ at $`t`$ = 0.
 
-<div align="center">
-
 We can define the Hermitian conjugate (See section 8.2) $`O^{\dagger}`$ of the operator $`O`$ by
-
-</div>
 
 ```math
 \langle \psi | O | \psi \rangle = \langle \psi | O\psi \rangle = \langle O^{\dagger} \psi | \psi \rangle .
@@ -581,10 +569,8 @@ while
 
 We may write states for two particles which are uncorrelated, like $`u_{0} ( \vec{x}_{( 1 )} ) u_{3} ( \vec{x}_{( 2 )} )`$, or we may write states in which the particles are correlated. The Hamiltonian for two particles in 3 dimensions simply becomes
 
-<a id="eq-2"></a>
-
 ```math
-\begin{aligned} H &= \frac{- \hbar^{2}}{2 m_{( 1 )}} \left( \frac{\partial^{2}}{\partial x_{( 1 )}^{2}} + \frac{\partial^{2}}{\partial y_{( 1 )}^{2}} + \frac{\partial^{2}}{\partial z_{( 1 )}^{2}} \right) + \frac{- \hbar^{2}}{2 m_{( 2 )}} \left( \frac{\partial^{2}}{\partial x_{( 2 )}^{2}} + \frac{\partial^{2}}{\partial y_{( 2 )}^{2}} + \frac{\partial^{2}}{\partial z_{( 2 )}^{2}} \right) + V ( \vec{x} \quad , \vec{x} \quad ) \\ H &= \frac{- \hbar^{2}}{2 m_{( 1 )}} \nabla_{( 1 )}^{2} + \frac{- \hbar^{2}}{2 m_{( 2 )}} \nabla_{( 1 )}^{2} + V ( \vec{x}_{( 1 )} , \vec{x}_{( 2 )} ) \end{aligned} \qquad \text{(2)}
+\begin{aligned} H &= \frac{- \hbar^{2}}{2 m_{( 1 )}} \left( \frac{\partial^{2}}{\partial x_{( 1 )}^{2}} + \frac{\partial^{2}}{\partial y_{( 1 )}^{2}} + \frac{\partial^{2}}{\partial z_{( 1 )}^{2}} \right) + \frac{- \hbar^{2}}{2 m_{( 2 )}} \left( \frac{\partial^{2}}{\partial x_{( 2 )}^{2}} + \frac{\partial^{2}}{\partial y_{( 2 )}^{2}} + \frac{\partial^{2}}{\partial z_{( 2 )}^{2}} \right) + V ( \vec{x}_{( 1 )} , \vec{x}_{( 2 )} ) \\ H &= \frac{- \hbar^{2}}{2 m_{( 1 )}} \nabla_{( 1 )}^{2} + \frac{- \hbar^{2}}{2 m_{( 2 )}} \nabla_{( 1 )}^{2} + V ( \vec{x}_{( 1 )} , \vec{x}_{( 2 )} ) \end{aligned}
 ```
 
 If two particles interact with each other, with no external potential,
@@ -905,11 +891,7 @@ S_{x} = \frac{\hbar}{2} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \quad S_{y}
 
 These satisfy the usual commutation relations from which we derived the properties of angular momentum operators.
 
-<div align="center">
-
 It is common to define the Pauli Matrices, $`\sigma_{i}`$, which have the following properties.
-
-</div>
 
 ```math
 S_{i} \equiv \frac{\hbar}{2} \sigma_{i} .
@@ -1089,7 +1071,7 @@ where the numbers are the number of states in the multiplet.
 
 We will use addition of angular momentum to:
 
-$`•`$ Add the orbital angular momentum to the spin angular momentum for an electron in an atom
+$`\bullet`$ Add the orbital angular momentum to the spin angular momentum for an electron in an atom
 
 ```math
 \vec{J} = \vec{L} + \vec{S} ;
@@ -1097,16 +1079,16 @@ $`•`$ Add the orbital angular momentum to the spin angular momentum for an ele
 
 ```math
 \begin{array}{ll}
-• & \text{ Add the orbital angular momenta together for two electrons in an atom } \vec{L} = \vec{L}_{1} + \vec{L}_{2} ; \\ 
-• & \text{ Add the spins of two particles together } \vec{S} = \vec{S}_{1} + \vec{S}_{2} ; \\ 
-• & \text{ Add the nuclear spin to the total atomic angular momentum } \vec{F} = \vec{J} + \vec{I} ; \\ 
-• & \text{ Add the total angular momenta of two electrons together } \vec{J} = \vec{J}_{1} + \vec{J}_{2} ; \\ 
+\bullet & \text{ Add the orbital angular momenta together for two electrons in an atom } \vec{L} = \vec{L}_{1} + \vec{L}_{2} ; \\ 
+\bullet & \text{ Add the spins of two particles together } \vec{S} = \vec{S}_{1} + \vec{S}_{2} ; \\ 
+\bullet & \text{ Add the nuclear spin to the total atomic angular momentum } \vec{F} = \vec{J} + \vec{I} ; \\ 
+\bullet & \text{ Add the total angular momenta of two electrons together } \vec{J} = \vec{J}_{1} + \vec{J}_{2} ; \\ 
 \end{array}
 ```
 
-$`•`$ Add the total orbital angular momentum to the total spin angular momentum for a collection of electrons in an atom $`\vec{J} = \vec{L} + \vec{S}`$;
+$`\bullet`$ Add the total orbital angular momentum to the total spin angular momentum for a collection of electrons in an atom $`\vec{J} = \vec{L} + \vec{S}`$;
 
-$`•`$ Write the product of spherical harmonics in terms of a sum of spherical harmonics.
+$`\bullet`$ Write the product of spherical harmonics in terms of a sum of spherical harmonics.
 
 # <a id="s-1-29-time-independent-perturbation-theory"></a>1.29 Time Independent Perturbation Theory
 
@@ -1186,13 +1168,7 @@ The correction due to a **weak magnetic field** is found to be
 \Delta E = \left\langle \psi_{n\ell jm_{j}} \left| \frac{eB}{2 mc} ( L_{z} + 2 S_{z} ) \right| \psi_{n\ell jm_{j}} \right\rangle = \frac{e \hbar B}{2 mc} m_{j} \left( 1 \pm \frac{1}{2 \ell + 1} \right)
 ```
 
-The factor $`\left( 1 \pm \tfrac{1}{2 \ell + 1} \right)`$ is known as the **Lande** $`g`$ **Factor** because the state splits as if it had this gyromagnetic ratio. We know that it is in fact a combination of the orbital and spin g factors in
-
-<div align="right"><a href="book.pdf#page=38" target="_blank" title="This page in the PDF"><sup>[p. 38]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p39" href="book.pdf#page=39" target="_blank" title="This page in the PDF"><sup>[p. 39]</sup></a>
-
-a state of definite $`j`$. We have assumed that the effect of the field is small compared to the fine structure corrections. We can write the full energy in a weak magnetic field.
+The factor $`\left( 1 \pm \tfrac{1}{2 \ell + 1} \right)`$ is known as the **Lande** $`g`$ **Factor** because the state splits as if it had this gyromagnetic ratio. We know that it is in fact a combination of the orbital and spin g factors in<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=38" target="_blank" title="This page in the PDF"><sup>[p. 38]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p39" href="book.pdf#page=39" target="_blank" title="This page in the PDF"><sup>[p. 39]</sup></a></span> a state of definite $`j`$. We have assumed that the effect of the field is small compared to the fine structure corrections. We can write the full energy in a weak magnetic field.
 
 ```math
 E_{njm_{j} \ell s} = - \frac{1}{2} \alpha^{2} mc^{2} \left( \frac{1}{n^{2}} + \frac{\alpha^{2}}{n^{3}} \left[ \frac{1}{j + \tfrac{1}{2}} - \frac{3}{4 n} \right] \right) + g_{L} \mu_{B} Bm_{j}
@@ -1450,13 +1426,7 @@ Plugging this $`N`$ = 0 field into the first order time dependent perturbation e
 
 The absolute square of the time integral from perturbation theory yields the delta function of energy conservation.
 
-To get the total decay rate, we must sum over the allowed final states. We can assume that the atom remains at rest as a very good approximation, but, the final photon states must be carefully
-
-<div align="right"><a href="book.pdf#page=44" target="_blank" title="This page in the PDF"><sup>[p. 44]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p45" href="book.pdf#page=45" target="_blank" title="This page in the PDF"><sup>[p. 45]</sup></a>
-
-considered. Applying periodic boundary conditions in a cubic volume $`V`$, the integral over final states can be done as indicated below.
+To get the total decay rate, we must sum over the allowed final states. We can assume that the atom remains at rest as a very good approximation, but, the final photon states must be carefully<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=44" target="_blank" title="This page in the PDF"><sup>[p. 44]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p45" href="book.pdf#page=45" target="_blank" title="This page in the PDF"><sup>[p. 45]</sup></a></span> considered. Applying periodic boundary conditions in a cubic volume $`V`$, the integral over final states can be done as indicated below.
 
 ```math
 k_{x} L = 2 \pi n_{x} \quad dn_{x} = \tfrac{L}{2 \pi} dk_{x}
@@ -1604,11 +1574,7 @@ A_{\mu} = ( \vec{A} ,i\varphi )
 F_{\mu \nu} = \frac{\partial A_{\nu}}{\partial x_{\mu}} - \frac{\partial A_{\mu}}{\partial x_{\nu}}
 ```
 
-<div align="center">
-
 Note that $`F_{\mu \nu}`$ is automatically antisymmetric under the interchange of the indices.
-
-</div>
 
 With the fields so derived from the vector potential, two of Maxwell’s equations are automatically satisfied. The remaining two equations can be written as one 4-vector equation.
 
@@ -1894,13 +1860,7 @@ Since the observed mass of the electron already accounts for most of the self en
 \Delta E_{n}^{( obs )} = \Delta E_{n} + \frac{2 \alpha E_{cut - off}}{3 \pi m^{2} c^{2}} \langle n | p^{2} | n \rangle
 ```
 
-In 1947, Willis E. Lamb and R. C. Retherford used microwave techniques to determine the **splitting** **between the** $`2 S 1_{2}`$ **and** $`2 P 1_{2}`$ **states in Hydrogen**. The result can be well accounted for by the
-
-<div align="right"><a href="book.pdf#page=52" target="_blank" title="This page in the PDF"><sup>[p. 52]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p53" href="book.pdf#page=53" target="_blank" title="This page in the PDF"><sup>[p. 53]</sup></a>
-
-self energy correction, at least when relativistic quantum mechanics is used. Our non-relativistic calculation gives a qualitative explanation of the effect.
+In 1947, Willis E. Lamb and R. C. Retherford used microwave techniques to determine the **splitting** **between the** $`2 S 1_{2}`$ **and** $`2 P 1_{2}`$ **states in Hydrogen**. The result can be well accounted for by the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=52" target="_blank" title="This page in the PDF"><sup>[p. 52]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p53" href="book.pdf#page=53" target="_blank" title="This page in the PDF"><sup>[p. 53]</sup></a></span> self energy correction, at least when relativistic quantum mechanics is used. Our non-relativistic calculation gives a qualitative explanation of the effect.
 
 ```math
 \Delta E_{n}^{( obs )} = \frac{4 \alpha^{5}}{3 \pi n^{3}} \left( \log \left( \frac{mc^{2}}{2 \hbar \bar{\omega}_{nj}} \right) + \frac{1 1}{2 4} - \frac{1}{5} \right) mc^{2}
@@ -2120,13 +2080,7 @@ e^{\pm ip_{\mu} x_{\mu} / \hbar}
 
 with the plus sign for solutions 1 and 2 and the minus sign for solutions 3 and 4. These $`\pm`$ sign in the exponential is not very surprising from the point of view of possible solutions to a differential equation. The problem now is that for solutions 3 and 4 the momentum and energy operators must have a minus sign added to them and the phase of the wave function at a fixed position behaves in the opposite way as a function of time than what we expect and from solutions 1 and 2. It is as if solutions 3 and 4 are moving backward in time.
 
-If we change the charge on the electron from $`- e`$ to +$`e`$ and change the sign of the exponent, the Dirac equation remains the invariant. Thus, we can turn the negative exponent solution (going
-
-<div align="right"><a href="book.pdf#page=56" target="_blank" title="This page in the PDF"><sup>[p. 56]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p57" href="book.pdf#page=57" target="_blank" title="This page in the PDF"><sup>[p. 57]</sup></a>
-
-backward in time) into the conventional positive exponent solution if we change the charge to +$`e`$. We can interpret solutions 3 and 4 as positrons. We will make this switch more carefully when we study the charge conjugation operator.
+If we change the charge on the electron from $`- e`$ to +$`e`$ and change the sign of the exponent, the Dirac equation remains the invariant. Thus, we can turn the negative exponent solution (going<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=56" target="_blank" title="This page in the PDF"><sup>[p. 56]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p57" href="book.pdf#page=57" target="_blank" title="This page in the PDF"><sup>[p. 57]</sup></a></span> backward in time) into the conventional positive exponent solution if we change the charge to +$`e`$. We can interpret solutions 3 and 4 as positrons. We will make this switch more carefully when we study the charge conjugation operator.
 
 The Dirac equation should be invariant under Lorentz boosts and under rotations, both of which are just changes in the definition of an inertial coordinate system. Under Lorentz boosts, $`\frac{\partial}{\partial x_{\mu}}`$ transforms like a 4-vector but the $`\gamma_{\mu}`$ matrices are constant. The Dirac equation is shown to be **invariant under** **boosts** along the $`x_{i}`$ direction if we transform the Dirac spinor according to
 
@@ -2332,13 +2286,7 @@ To proceed toward a field theory for electrons and quantization of the Dirac fie
 \left( \gamma_{\mu} \frac{\partial}{\partial x_{\mu}} + \frac{mc}{\hbar} \right) \psi = 0
 ```
 
-This **gives us the Dirac equation** indicating that this Lagrangian is the right one. The Euler-Lagrange equation derived using the fields $`\psi`$ is the **Dirac adjoint equation**,
-
-<div align="right"><a href="book.pdf#page=60" target="_blank" title="This page in the PDF"><sup>[p. 60]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p61" href="book.pdf#page=61" target="_blank" title="This page in the PDF"><sup>[p. 61]</sup></a>
-
-The Hamiltonian density may be derived from the Lagrangian in the standard way and the total Hamiltonian computed by integrating over space. Note that the Hamiltonian density is the same as the Hamiltonian derived from the Dirac equation directly.
+This **gives us the Dirac equation** indicating that this Lagrangian is the right one. The Euler-Lagrange equation derived using the fields $`\psi`$ is the **Dirac adjoint equation**,<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=60" target="_blank" title="This page in the PDF"><sup>[p. 60]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p61" href="book.pdf#page=61" target="_blank" title="This page in the PDF"><sup>[p. 61]</sup></a></span> The Hamiltonian density may be derived from the Lagrangian in the standard way and the total Hamiltonian computed by integrating over space. Note that the Hamiltonian density is the same as the Hamiltonian derived from the Dirac equation directly.
 
 ```math
 H = \int \psi^{\dagger} \left( \hbar c\gamma_{4} \gamma_{k} \frac{\partial}{\partial x_{k}} + mc^{2} \gamma_{4} \right) \psi d^{3} x

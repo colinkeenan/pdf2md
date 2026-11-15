@@ -9,19 +9,19 @@
 
 In this section, we will study the binding and excitation of simple molecules. Atoms bind into molecules by sharing electrons, thus reducing the kinetic energy. Molecules can be excited in three ways.
 
-$`•`$ Excitation of electrons to higher states. $`E \sim 4`$ eV
+$`\bullet`$ Excitation of electrons to higher states. $`E \sim 4`$ eV
 
-$`•`$ Vibrational modes (Harmonic Oscillator). Nuclei move slowly in background of electrons. $`E \sim 0.1`$ eV
+$`\bullet`$ Vibrational modes (Harmonic Oscillator). Nuclei move slowly in background of electrons. $`E \sim 0.1`$ eV
 
-$`•`$ Rotational modes $`( L = n \hbar )`$. Entire molecule rotates. $`E \sim 0.001`$ eV
+$`\bullet`$ Rotational modes $`( L = n \hbar )`$. Entire molecule rotates. $`E \sim 0.001`$ eV
 
 Why don’t atoms have rotational states?
 
 The atomic state already accounts for electrons angular momentum around the nucleus.
 
-About which axes can a molecule rotate?
+## <a id="s-about-which-axes-can-a-molecule-rotate"></a>About which axes can a molecule rotate?
 
-Do you think identical atoms will make a difference?
+## <a id="s-do-you-think-identical-atoms-will-make-a-difference"></a>Do you think identical atoms will make a difference?
 
 This material is covered in **Gasiorowicz Chapter 20,** and in **Cohen-Tannoudji et al. Com-** **plements** $`C_{V} I \boldsymbol{,} E_{VII} \boldsymbol{,} C_{XI}`$**.**
 
@@ -103,21 +103,22 @@ The antisymmetric state shows no minimum and never goes below -13.6 eV so there 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p385" href="book.pdf#page=385" target="_blank" title="This page in the PDF"><sup>[p. 385]</sup></a>
 
-![Figure 89 (p. 385)](images/fig-p385-1.png)
+![Figure 93 (p. 385)](images/fig-p385-1.png)
 
-_Figure 89 (p. 385)_
+_Figure 93 (p. 385)_
 
 By setting $`\frac{d \langle H \rangle}{dy}`$ = 0, we can get the distance between atoms and the energy.
 
 Distance Energy
 
-Calculated 1.3 ˚A -1.76 eV Actual 1.06 ˚A -2.8 eV
-
 <div align="center">
 
-Its clear we would need to introduce some wfn. parameters to get good precision.
+Calculated 1.3 ˚A -1.76 eV<br>
+Actual 1.06 ˚A -2.8 eV
 
 </div>
+
+Its clear we would need to introduce some wfn. parameters to get good precision.
 
 # <a id="s-27-2-the-h2-molecule"></a>27.2 The H$`2`$ Molecule
 
@@ -188,9 +189,9 @@ Pictures of **molecular orbitals** are shown for $`s`$ and $`p`$ states in the f
 3 8 7
 ```
 
-![Figure 90 (p. 387)](images/fig-p387-1.png)
+![Figure 94 (p. 387)](images/fig-p387-1.png)
 
-_Figure 90 (p. 387)_
+_Figure 94 (p. 387)_
 
 <div align="right"><a href="book.pdf#page=387" target="_blank" title="This page in the PDF"><sup>[p. 387]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -216,9 +217,9 @@ Complex molecules can have many different modes of vibration. Diatomic molecules
 
 The graph below shows the energy spectrum of electrons knocked out of molecular hydrogen by UV photons (photoelectric effect). The **different peaks correspond to the vibrational state of** **the final H**$`2 +`$ **ion**.
 
-![Figure 91 (p. 388)](images/fig-p388-1.png)
+![Figure 95 (p. 388)](images/fig-p388-1.png)
 
-_Figure 91 (p. 388)_
+_Figure 95 (p. 388)_
 
 Can you calculate the number of vibrational modes for a molecule compose of $`N> 3`$ atoms.
 
@@ -260,9 +261,9 @@ The graph below shows the absorption coefficient of water for light of various e
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p390" href="book.pdf#page=390" target="_blank" title="This page in the PDF"><sup>[p. 390]</sup></a>
 
-![Figure 92 (p. 390)](images/fig-p390-1.png)
+![Figure 96 (p. 390)](images/fig-p390-1.png)
 
-_Figure 92 (p. 390)_
+_Figure 96 (p. 390)_
 
 # <a id="s-27-7-examples"></a>27.7 Examples
 

@@ -225,6 +225,10 @@ pub struct Book {
     pub pdf_of: std::collections::HashMap<String, u32>,
     /// The PDF, to cut the pictures from when writing.
     pub source: Option<std::path::PathBuf>,
+    /// PDF pages whose places were all moved to the left by so much (see
+    /// `layout::Page::shift`): what is cut from such a page is cut that
+    /// much further right.
+    pub shifts: std::collections::HashMap<u32, f32>,
     /// The book's title (for the top of book.md).
     pub title: String,
     /// The reader's notes and prose fixes from an earlier conversion, put
@@ -359,6 +363,7 @@ pub fn convert_pdf_as(path: &Path, pages: Option<(u32, u32)>, pictures: bool) ->
         layout::read_drawings(&mut doc, path, pages);
         progress::report(progress::Step::Book, 0, 1);
         let mut book = convert_doc(&doc);
+        book.shifts = doc.pages.iter().filter(|p| p.shift != 0.0).map(|p| (p.number, p.shift)).collect();
         ocr::read_picture_tables(&mut book, path);
         book
     };

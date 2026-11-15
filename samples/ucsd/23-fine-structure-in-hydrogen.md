@@ -123,9 +123,9 @@ E_{nlm} = E_{n}^{( 0 )} + \tfrac{E_{n}^{( 0 ) 2}}{2 mc^{2}} \left[ 3 - \tfrac{4 
 
 This is independent of $`\ell`$ so the states of different total angular momentum split in energy but there is still a good deal of degeneracy.
 
-![Figure 78 (p. 338)](images/fig-p338-1.png)
+![Figure 81 (p. 338)](images/fig-p338-1.png)
 
-_Figure 78 (p. 338)_
+_Figure 81 (p. 338)_
 
 We have calculated the fine structure effects in Hydrogen. There are, of course, other, smaller corrections to the energies. A correction from field theory, the Lamb Shift, causes states of different $`\ell`$ to shift apart slightly. Nevertheless, the states of definite total angular momentum are the energy eigenstates until we somehow break spherical symmetry.
 
@@ -161,9 +161,9 @@ Thus, in a weak field, the **the degeneracy is completely broken for the states*
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p340" href="book.pdf#page=340" target="_blank" title="This page in the PDF"><sup>[p. 340]</sup></a>
 
-![Figure 79 (p. 340)](images/fig-p340-1.png)
+![Figure 82 (p. 340)](images/fig-p340-1.png)
 
-_Figure 79 (p. 340)_
+_Figure 82 (p. 340)_
 
 The factor $`\left( 1 \pm \tfrac{1}{2 \ell + 1} \right)`$ is known as the **Lande** $`g`$ **Factor** because the state splits as if it had this gyromagnetic ratio. We know that it is in fact a combination of the orbital and spin g factors in a state of definite $`j`$.
 
@@ -377,7 +377,13 @@ Now, $`\psi`$(0) = 0 for $`\ell > 0`$ and $`\psi`$(0) = $`\tfrac{1}{\sqrt{4 \pi}
 \langle H_{D} \rangle_{n 0 0} = \frac{4 e^{2} \hbar^{2}}{8 n^{3} a_{0}^{3} m^{2} c^{2}} = \frac{e^{2} \hbar^{2} \alpha^{2} m^{2} c^{2}}{2 n^{3} a_{0} m^{2} c^{2} \hbar^{2}} = \frac{2 nE_{n}^{2}}{mc^{2}}
 ```
 
-This is the same as $`\ell`$ = 0 term that we got for the spin orbit correction. This actually replaces the $`\ell`$ = 0 term in the spin-orbit correction (which should be zero) making the formula correct!<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=343" target="_blank" title="This page in the PDF"><sup>[p. 343]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p344" href="book.pdf#page=344" target="_blank" title="This page in the PDF"><sup>[p. 344]</sup></a></span> **23.4.6 The Anomalous Zeeman Effect**
+This is the same as $`\ell`$ = 0 term that we got for the spin orbit correction. This actually replaces the $`\ell`$ = 0 term in the spin-orbit correction (which should be zero) making the formula correct!
+
+<div align="right"><a href="book.pdf#page=343" target="_blank" title="This page in the PDF"><sup>[p. 343]</sup></a></div>
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
+<a id="p344" href="book.pdf#page=344" target="_blank" title="This page in the PDF"><sup>[p. 344]</sup></a>
+
+## <a id="s-23-4-6-the-anomalous-zeeman-effect"></a>23.4.6 The Anomalous Zeeman Effect
 
 We compute the energy change due to a weak magnetic field using first order Perturbation Theory.
 
@@ -463,7 +469,7 @@ In summary then, we rewrite the fine structure shift.
 \Delta E = - \frac{1}{2} mc^{2} ( Z\alpha )^{4} \frac{1}{n^{3}} \left[ \frac{1}{j + \tfrac{1}{2}} - \frac{3}{4 n} \right] .
 ```
 
-## <a id="s-23-4-6-the-anomalous-zeeman-effect"></a>To this we add the anomalous Zeeman effect
+To this we add the anomalous Zeeman effect
 
 ```math
 \Delta E = \frac{e \hbar B}{2 mc} m_{j} \left( 1 \pm \frac{1}{2 \ell + 1} \right) .
@@ -473,11 +479,7 @@ In summary then, we rewrite the fine structure shift.
 
 1. Consider the fine structure of the $`n`$ = 2 states of the hydrogen atom. What is the spectrum in the absence of a magnetic field? How is the spectrum changed when the atom is placed in a magnetic field of 25,000 gauss? Give numerical values for the energy shifts in each of the above cases. Now, try to estimate the binding energy for the lowest energy $`n`$ = 2 state including the relativistic, spin-orbit, and magnetic field.
 
-2. Verify the relations used for $`\tfrac{1}{r} , \tfrac{1}{r^{2}}`$, and $`\frac{1}{r^{3}}`$ for hydrogen atom states up to $`n`$ = 3 and for any
-
-```math
-n \text{ if } l = n - 1 .
-```
+2. Verify the relations used for $`\tfrac{1}{r} , \tfrac{1}{r^{2}}`$, and $`\frac{1}{r^{3}}`$ for hydrogen atom states up to $`n`$ = 3 and for any $`n`$ if $`l = n - 1 .`$
 
 3. Calculate the fine structure of hydrogen atoms for spin 1 electrons for $`n`$ = 1 and $`n`$ = 2.
 
@@ -491,13 +493,7 @@ Compute the energy shifts in eV.
 
 3. Calculate and show the splitting of the $`n`$ = 3 states (as in the previous problem) in a weak magnetic field B. Draw a diagram showing the states before and after the field is applied
 
-4. If the general form of the spin-orbit coupling for a particle of mass $`m`$ and spin $`\vec{S}`$ moving in a potential $`V ( r )`$ is $`H_{SO} = \tfrac{1}{2 m^{2} c^{2}} \vec{L} \cdot \vec{S} \tfrac{1}{r} \tfrac{dV}{dr}`$, what is the effect of that coupling on the spectrum of
-
-<div align="right"><a href="book.pdf#page=345" target="_blank" title="This page in the PDF"><sup>[p. 345]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p346" href="book.pdf#page=346" target="_blank" title="This page in the PDF"><sup>[p. 346]</sup></a>
-
-an electron bound in a 3D harmonic oscillator? Give the energy shifts and and draw a diagram for the 0$`s`$ and 1$`p`$ states.
+4. If the general form of the spin-orbit coupling for a particle of mass $`m`$ and spin $`\vec{S}`$ moving in a potential $`V ( r )`$ is $`H_{SO} = \tfrac{1}{2 m^{2} c^{2}} \vec{L} \cdot \vec{S} \tfrac{1}{r} \tfrac{dV}{dr}`$, what is the effect of that coupling on the spectrum of<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=345" target="_blank" title="This page in the PDF"><sup>[p. 345]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p346" href="book.pdf#page=346" target="_blank" title="This page in the PDF"><sup>[p. 346]</sup></a></span> an electron bound in a 3D harmonic oscillator? Give the energy shifts and and draw a diagram for the 0$`s`$ and 1$`p`$ states.
 
 ```math
 V = \tfrac{1}{2} m\omega^{2} r^{2}

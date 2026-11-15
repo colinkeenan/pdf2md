@@ -95,9 +95,9 @@ If we fill up all the states up to some energy, that energy is called the **Ferm
 
 Since the energy goes like $`n_{x}^{2} + n_{y}^{2} + n_{z}^{2}`$, it makes sense to define a radius $`r_{n}`$ in $`n`$-space out to which the states are filled.
 
-![Figure 42 (p. 197)](images/fig-p197-1.png)
+![Figure 44 (p. 197)](images/fig-p197-1.png)
 
-_Figure 42 (p. 197)_
+_Figure 44 (p. 197)_
 
 The number of states within the radius is
 
@@ -291,11 +291,7 @@ n_{x} + n_{y} + n_{z} = \frac{E_{F}}{\hbar \omega} - \frac{3}{2}
 
 4. A particle is in a cubic box. That is, the potential is zero inside a cube of side L and infinite outside the cube. Find the 3 lowest allowed energies. Find the number of states (level of degeneracy) at each of these 3 energies.
 
-<div align="center">
-
 5. A particle of mass m is bound in the 3 dimensional potential $`V`$(**r**) $`= kr^{2}`$.
-
-</div>
 
 a) Find the energy levels for this particle.
 
@@ -305,17 +301,17 @@ b) Determine the number of degenerate states for the first three energy levels.
 
 a) Find the three lowest allowed energies.
 
+<div align="center">
+
 b) Find the number of states (level of degeneracy) at each of these three energies.
+
+</div>
 
 c) Find the Fermi Energy $`E_{F}`$ for $`N`$ particles in the box. (N is large.)
 
 7. A particle is confined in a rectangular box of length $`L`$, width $`W`$, and “tallness” $`T`$. Find the energy eigenvalues in terms of a set of three quantum numbers (which correspond to 3 mutually commuting operators). What are the energies of the three lowest energy states if $`L`$ = 2$`a , W`$ = 1$`a`$, and $`T`$ = 0$`. 5 a`$.
 
-<div align="center">
-
 8. A particle of mass m is bound in the 3 dimensional potential $`V`$(**r**) $`= kr^{2}`$.
-
-</div>
 
 9. a) Find the energy levels for this particle.
 

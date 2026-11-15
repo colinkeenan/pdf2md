@@ -25,9 +25,9 @@ to calculate the emissive power of a black body $`E ( \lambda ,T )`$ as a functi
 
 ```math
 \begin{array}{ll}
-• & \text{a 1 eV electron} \\ 
-• & a 1 0^{4} \text{ MeV proton } \\ 
-• & \text{a 1 gram lead ball moving with a velocity of 100 cm/sec.} \\ 
+\bullet & \text{a 1 eV electron} \\ 
+\bullet & a 1 0^{4} \text{ MeV proton } \\ 
+\bullet & \text{a 1 gram lead ball moving with a velocity of 100 cm/sec.} \\ 
 \end{array}
 ```
 
@@ -91,10 +91,10 @@ Remember that the wave functions go to zero at infinity.$`-\infty \quad -\infty`
 
 # <a id="s-19-3-homework-3"></a>19.3 Homework 3
 
-1. A general one dimensional scattering problem could be characterized by an (arbitrary) potential $`V ( x )`$ which is localized by the requirement that $`V ( x )`$ = 0 for $`| x | >a`$. Assume that the
+1. A general one dimensional scattering problem could be characterized by an (arbitrary) potential $`V ( x )`$ which is localized by the requirement that $`V ( x )`$ = 0 for $`| x | >a`$. Assume that the wave-function is
 
 ```math
-\text{ wave } - \text{ function is } \quad \begin{cases} Ae^{ikx} + Be^{- ikx} & x< - a \\ Ce^{ikx} + De^{- ikx} & x>a \end{cases}
+\begin{cases} Ae^{ikx} + Be^{- ikx} & x< - a \\ Ce^{ikx} + De^{- ikx} & x>a \end{cases}
 ```
 
 ```math
@@ -195,9 +195,7 @@ Find the expected value of $`p`$ as a function of time using operator methods.
 
 4. Show at if an operator $`H`$ is hermitian, then the operator $`e^{iH}`$ is unitary.
 
-```math
-5 . \text{ Calculate } \langle u_{i} | x | u_{j} \rangle \text{ and } \langle u_{i} | p | u_{j} \rangle .
-```
+5. Calculate $`\langle u_{i} | x | u_{j} \rangle`$ and $`\langle u_{i} | p | u_{j} \rangle`$.
 
 6. Calculate $`\langle u_{i} | xp | u_{j} \rangle`$ by direct calculation. Now calculate the same thing using $`\sum \langle u_{i} | x | u_{k} \rangle \langle u_{k} | p | u_{j} \rangle`$.
 
@@ -209,9 +207,9 @@ k
 
 8. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t = 0 )`$ = $`\tfrac{1}{\sqrt{2}} ( u_{0} + u_{1} )`$.
 
-$`•`$ Compute the expected value of $`x`$ as a function of time using $`A`$ and $`A^{\dagger}`$ in the Schrod̈inger picture.
+$`\bullet`$ Compute the expected value of $`x`$ as a function of time using $`A`$ and $`A^{\dagger}`$ in the Schrod̈inger picture.
 
-$`•`$ Now do the same in the Heisenberg picture.
+$`\bullet`$ Now do the same in the Heisenberg picture.
 
 <div align="right"><a href="book.pdf#page=287" target="_blank" title="This page in the PDF"><sup>[p. 287]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">

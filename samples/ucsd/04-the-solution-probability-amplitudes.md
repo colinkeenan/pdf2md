@@ -39,15 +39,15 @@ P ( x,t ) = | \psi ( x,t ) |^{2}
 
 Lets summarize the physics input again.
 
-$`•`$ Free particles are represented by complex wave functions with a relationship between their particle properties – energy and momentum, and their wave properties – frequency and wavelength given by Plank and deBroglie.
+$`\bullet`$ Free particles are represented by complex wave functions with a relationship between their particle properties – energy and momentum, and their wave properties – frequency and wavelength given by Plank and deBroglie.
 
-$`•`$ The absolute square of the wavefunction gives the probability distribution function. Quantum Mechanics only tells us the probability.
+$`\bullet`$ The absolute square of the wavefunction gives the probability distribution function. Quantum Mechanics only tells us the probability.
 
-$`•`$ We can make superpositions of our free particle wave functions to make states that do not have definite momentum. We will find that any state can be made from the superposition of free particle states with different momentum.
+$`\bullet`$ We can make superpositions of our free particle wave functions to make states that do not have definite momentum. We will find that any state can be made from the superposition of free particle states with different momentum.
 
 We now have a wave-particle duality for all the particles, however, **physics now only tells us** **the probability** for some quantum events to occur. We have lost the complete predictive power of classical physics.
 
-**Gasiorowicz Chapter 1**
+## <a id="s-gasiorowicz-chapter-1"></a>Gasiorowicz Chapter 1
 
 **Rohlf Chapter 5**
 
@@ -147,11 +147,7 @@ In non-relativistic QM, we have $`\hbar k = p , E = \hbar \omega`$, and $`E = \t
 \omega ( k ) = \frac{E}{\hbar} = \frac{\hbar^{2} k^{2}}{2 m \hbar} = \frac{\hbar k^{2}}{2 m}
 ```
 
-<div align="center">
-
 You may remember that a pulse will move at the group velocity which is given by
-
-</div>
 
 ```math
 v_{g} = \left( \frac{d\omega}{dk} \right) = \frac{2 \hbar k}{2 m} = \frac{\hbar k}{m} = \frac{p}{m} .
@@ -163,9 +159,7 @@ v_{g} = \left( \frac{d\omega}{dk} \right) = \frac{2 \hbar k}{2 m} = \frac{\hbar 
 
 1. Write down the two (unnormalized) free particle wave functions for a particle of kinetic energy E. Include the proper time dependence and expressions for other constants in terms of E.
 
-```math
-2 .
-```
+2.
 
 ---
 

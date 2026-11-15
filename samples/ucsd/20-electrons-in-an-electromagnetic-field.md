@@ -91,9 +91,9 @@ These **derivations** (see section 20.5.1) are fairly simple using Einstein nota
 
 The two results we want to use as inputs for our study of Quantum Physics are
 
-$`•`$ the classical gauge symmetry and
+$`\bullet`$ the classical gauge symmetry and
 
-$`•`$ the classical Hamiltonian.
+$`\bullet`$ the classical Hamiltonian.
 
 The Maxwell equations are invariant under a **gauge transformation** of the potentials.
 
@@ -271,9 +271,9 @@ A good example of a $`B`$ = 0 region is a **superconductor**. Magnetic flux is e
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p297" href="book.pdf#page=297" target="_blank" title="This page in the PDF"><sup>[p. 297]</sup></a>
 
-![Figure 74 (p. 297)](images/fig-p297-1.png)
+![Figure 77 (p. 297)](images/fig-p297-1.png)
 
-_Figure 74 (p. 297)_
+_Figure 77 (p. 297)_
 
 Flux is observed to be quantized but the charge of the particle seen is 2$`e`$.
 
@@ -285,9 +285,9 @@ This is due to the pairing of electrons inside a superconductor.
 
 The **Aharanov Böhm Effect** brings us back to the two slit diffraction experiment but adds magnetic fields.
 
-![Figure 75 (p. 297)](images/fig-p297-2.png)
+![Figure 78 (p. 297)](images/fig-p297-2.png)
 
-_Figure 75 (p. 297)_
+_Figure 78 (p. 297)_
 
 The electron beams travel through two slits in field free regions but we have the ability to vary a magnetic field enclosed by the path of the electrons. At the screen, the amplitudes from the two<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=297" target="_blank" title="This page in the PDF"><sup>[p. 297]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p298" href="book.pdf#page=298" target="_blank" title="This page in the PDF"><sup>[p. 298]</sup></a></span> slits interfere $`\psi = \psi_{1} + \psi_{2}`$. Let’s start with $`B`$ = 0 and $`A`$ = 0 everywhere. When we change the $`B`$ field, the wavefunctions must change.
 
@@ -331,13 +331,7 @@ An important place where both magnetic terms come into play is in a **plasma.** 
 \frac{- \hbar^{2}}{2 m_{e}} \nabla^{2} \psi + \frac{eB}{2 m_{e} c} L_{z} \psi + \frac{e^{2} B^{2}}{8 m_{e} c^{2}} ( x^{2} + y^{2} ) \psi = ( E + e\varphi ) \psi
 ```
 
-The problem clearly has **translational symmetry along the z direction and rotational sym-** **metry around the z axis**. Given the symmetry, we know that $`L_{z}`$ and $`p_{z}`$ commute with the
-
-<div align="right"><a href="book.pdf#page=298" target="_blank" title="This page in the PDF"><sup>[p. 298]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p299" href="book.pdf#page=299" target="_blank" title="This page in the PDF"><sup>[p. 299]</sup></a>
-
-Hamiltonian and will give constants of the motion. We therefore will be able to separate variables in the usual way.
+The problem clearly has **translational symmetry along the z direction and rotational sym-** **metry around the z axis**. Given the symmetry, we know that $`L_{z}`$ and $`p_{z}`$ commute with the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=298" target="_blank" title="This page in the PDF"><sup>[p. 298]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p299" href="book.pdf#page=299" target="_blank" title="This page in the PDF"><sup>[p. 299]</sup></a></span> Hamiltonian and will give constants of the motion. We therefore will be able to separate variables in the usual way.
 
 ```math
 \psi ( \vec{r} ) = u_{nmk} ( \rho ) e^{im\varphi} e^{ikz}
@@ -459,13 +453,7 @@ For the fourth equation we have.
 \frac{\partial}{\partial x_{i}} \frac{\partial}{\partial x_{m}} A_{n} \epsilon_{mnj} \epsilon_{ijk} + \frac{1}{c} \frac{\partial}{\partial t} \left( \frac{\partial}{\partial x_{k}} \varphi + \frac{1}{c} \frac{\partial A_{k}}{\partial t} \right) = \frac{4 \pi}{c} J_{k}
 ```
 
-Its easy to derive an identity for the product of two totally antisymmetric tensors $`\epsilon_{mnj} \epsilon_{ijk}`$ as occurs above. All the indices of any tensor have to be different in order to get a nonzero result. Since the
-
-<div align="right"><a href="book.pdf#page=300" target="_blank" title="This page in the PDF"><sup>[p. 300]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p301" href="book.pdf#page=301" target="_blank" title="This page in the PDF"><sup>[p. 301]</sup></a>
-
-$`j`$ occurs in both tensors (and is summed over) we can simplify things. Take the case that $`i`$ = 1 and $`k`$ = 2. We only have a nonzero term if $`j`$ = 3 so the other 2 terms in the sum are zero. But if $`j`$ = 3, we must have either $`m`$ = 1 and $`n`$ = 2 or vice versa. We also must not have $`i = k`$ since all the indices have to be different on each epsilon. So we can write.
+Its easy to derive an identity for the product of two totally antisymmetric tensors $`\epsilon_{mnj} \epsilon_{ijk}`$ as occurs above. All the indices of any tensor have to be different in order to get a nonzero result. Since the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=300" target="_blank" title="This page in the PDF"><sup>[p. 300]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p301" href="book.pdf#page=301" target="_blank" title="This page in the PDF"><sup>[p. 301]</sup></a></span> $`j`$ occurs in both tensors (and is summed over) we can simplify things. Take the case that $`i`$ = 1 and $`k`$ = 2. We only have a nonzero term if $`j`$ = 3 so the other 2 terms in the sum are zero. But if $`j`$ = 3, we must have either $`m`$ = 1 and $`n`$ = 2 or vice versa. We also must not have $`i = k`$ since all the indices have to be different on each epsilon. So we can write.
 
 ```math
 \epsilon_{mnj} \epsilon_{ijk} = \epsilon_{mnj} \epsilon_{kij} = ( \delta_{km} \delta_{in} - \delta_{kn} \delta_{im} )
@@ -995,14 +983,14 @@ A superconductor excludes the magnetic field so we have our field free region. I
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p309" href="book.pdf#page=309" target="_blank" title="This page in the PDF"><sup>[p. 309]</sup></a>
 
-![Figure 76 (p. 309)](images/fig-p309-1.png)
+![Figure 79 (p. 309)](images/fig-p309-1.png)
 
-_Figure 76 (p. 309)_
+_Figure 79 (p. 309)_
 
 Consider two different paths from $`\vec{r}_{0}`$ to $`\vec{r}`$.
 
 ```math
-f_{1} ( \vec{r} ) - f_{2} ( \vec{r} ) = \oint ( ) d \vec{r} \cdot \vec{A} = \int d \vec{S} \cdot \vec{\nabla} \times \vec{A} = \int d \vec{S} \cdot \vec{B} = \Phi
+f_{1} ( \vec{r} ) - f_{2} ( \vec{r} ) = \oint d \vec{r} \cdot \vec{A} = \int d \vec{S} \cdot \vec{\nabla} \times \vec{A} = \int d \vec{S} \cdot \vec{B} = \Phi
 ```
 
 **The difference between the two calculations of f is the flux.**

@@ -355,11 +355,7 @@ e^{- iHt/ \hbar} = \sum_{n = 0}^{\infty} \frac{( - iHt/ \hbar )^{n}}{n !}
 
 This is an infinite series containing all powers of the Hamiltonian. In some cases, it can be easily computed.
 
-<div align="center">
-
 $`e^{- iHt/ \hbar}`$ is the time development operator. It takes a state from time 0 to time $`t`$.
-
-</div>
 
 <div align="right"><a href="book.pdf#page=187" target="_blank" title="This page in the PDF"><sup>[p. 187]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -497,13 +493,7 @@ This gives the same answer with about the same amount of work.
 \Delta L_{x} \Delta L_{z} \geq \frac{i}{2} \langle [ L_{x} ,L_{z} ] \rangle = \frac{i}{2} ( - i \hbar ) \langle L_{y} \rangle = \frac{\hbar}{2} \langle L_{y} \rangle
 ```
 
-2. **\*** A particle of mass $`m`$ is in a **1 dimensional potential** $`V ( x )`$. Calculate the rate of change of the expected values of $`x`$ and $`p , ( \tfrac{d \langle x \rangle}{dt} \text{ and } \tfrac{d \langle p \rangle}{dt} )`$. Your answer will obviously depend on the
-
-<div align="right"><a href="book.pdf#page=189" target="_blank" title="This page in the PDF"><sup>[p. 189]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p190" href="book.pdf#page=190" target="_blank" title="This page in the PDF"><sup>[p. 190]</sup></a>
-
-state of the particle and on the potential.
+2. **\*** A particle of mass $`m`$ is in a **1 dimensional potential** $`V ( x )`$. Calculate the rate of change of the expected values of $`x`$ and $`p , ( \tfrac{d \langle x \rangle}{dt} \text{ and } \tfrac{d \langle p \rangle}{dt} )`$. Your answer will obviously depend on the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=189" target="_blank" title="This page in the PDF"><sup>[p. 189]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p190" href="book.pdf#page=190" target="_blank" title="This page in the PDF"><sup>[p. 190]</sup></a></span> state of the particle and on the potential.
 
 **Answer**
 

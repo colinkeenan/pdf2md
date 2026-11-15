@@ -79,11 +79,7 @@ This principle quantum number is actually the sum of the radial quantum number p
 n = n_{r} + \ell + 1
 ```
 
-<div align="center">
-
 and therefore, the total angular momentum quantum number $`\ell`$ must be less than $`n`$.
-
-</div>
 
 ```math
 \ell = 0 , 1 , 2 ,\dots ,n - 1
@@ -149,6 +145,10 @@ The radial wavefunctions should be **normalized** as below.
 
 The pictures below depict the probability distributions in space for the Hydrogen wavefunctions.
 
+![Figure 66 (p. 230)](images/fig-p230-1.png)
+
+_Figure 66 (p. 230)_
+
 The graphs below show the radial wave functions. Again, for a given $`n`$ the maximum $`\ell`$ state has no radial excitation, and hence no nodes in the radial wavefunction. As $`ell`$ gets smaller for a fixed $`n`$, we see more radial excitation.
 
 <div align="right"><a href="book.pdf#page=230" target="_blank" title="This page in the PDF"><sup>[p. 230]</sup></a></div>
@@ -159,17 +159,17 @@ The graphs below show the radial wave functions. Again, for a given $`n`$ the ma
 2 3 1
 ```
 
-![Figure 64 (p. 231)](images/fig-p231-1.png)
+![Figure 67 (p. 231)](images/fig-p231-1.png)
 
-_Figure 64 (p. 231)_
+_Figure 67 (p. 231)_
 
 <div align="right"><a href="book.pdf#page=231" target="_blank" title="This page in the PDF"><sup>[p. 231]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p232" href="book.pdf#page=232" target="_blank" title="This page in the PDF"><sup>[p. 232]</sup></a>
 
-![Figure 65 (p. 232)](images/fig-p232-1.png)
+![Figure 68 (p. 232)](images/fig-p232-1.png)
 
-_Figure 65 (p. 232)_
+_Figure 68 (p. 232)_
 
 A **useful integral** for Hydrogen atom calculations is.
 
@@ -195,9 +195,9 @@ A **useful integral** for Hydrogen atom calculations is.
 
 The figure shows the transitions between Hydrogen atom states.
 
-![Figure 66 (p. 233)](images/fig-p233-1.png)
+![Figure 69 (p. 233)](images/fig-p233-1.png)
 
-_Figure 66 (p. 233)_
+_Figure 69 (p. 233)_
 
 The ground state of Hydrogen has $`n`$ = 1 and $`\ell`$ = 0. This is conventionally called the 1s state. The convention is to name $`\ell`$ = 0 states “s”, $`\ell`$ = 1 states “p”, $`\ell`$ = 2 states “d”, and $`\ell`$ = 3 states “f”. From there on follow the alphabet with g, h, i, ...
 
@@ -205,11 +205,7 @@ The first excited state of Hydrogen has $`n`$ = 2. There are actually four degen
 
 The second excited state has $`n`$ = 3 with the 3s, 3p and 3d states being degenerate. This totals 9 states with the different allowed $`m`$ values.
 
-<div align="center">
-
 In general there are $`n^{2}`$ degenerate states, again not counting different spin states.
-
-</div>
 
 The Hydrogen spectrum was primarily investigated by measuring the energy of photons emitted in transitions between the states, as depicted in the figures above and below.
 
@@ -217,9 +213,9 @@ The Hydrogen spectrum was primarily investigated by measuring the energy of phot
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p234" href="book.pdf#page=234" target="_blank" title="This page in the PDF"><sup>[p. 234]</sup></a>
 
-![Figure 67 (p. 234)](images/fig-p234-1.png)
+![Figure 70 (p. 234)](images/fig-p234-1.png)
 
-_Figure 67 (p. 234)_
+_Figure 70 (p. 234)_
 
 Transitions which change $`\ell`$ by one unit are strongly preferred, as we will later learn.
 
@@ -649,11 +645,7 @@ For the $`n`$ = 3 final state, $`E = \tfrac{7}{1 4 4} 1 3 . 6`$ = 0$`. 7`$ eV.
 
 4. An **electron in the Coulomb field of a proton** is in the state described by the wave function $`\tfrac{1}{6} ( 4 \psi_{1 0 0} + 3 \psi_{2 1 1} - \psi_{2 1 0} + \sqrt{1 0} \psi_{2 1 - 1} )`$. Find the expected value of the Energy, $`L^{2}`$ and $`L_{z}`$. Now find the expected value of $`L_{y}`$.
 
-<div align="center">
-
 5. **\*** Write out the (normalized) **hydrogen energy eigenstate** $`\psi_{3 1 1} ( r,\theta ,\varphi )`$.
-
-</div>
 
 6. Calculate the **expected value of** $`r`$ in the Hydrogen state $`\psi_{2 0 0}`$.
 

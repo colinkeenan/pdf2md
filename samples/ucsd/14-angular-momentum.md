@@ -151,9 +151,9 @@ L_{\pm} Y_{\ell m} = \hbar \sqrt{\ell ( \ell + 1 ) - m ( m \pm 1 ) Y_{\ell ( m \
 
 Therefore, $`L_{+}`$ raises the $`z`$ component of angular momentum by one unit of $`\hbar`$ and $`L_{-}`$ lowers it by one unit. The raising stops when $`m = \ell`$ and the operation gives zero, $`L_{+} Y_{\ell \ell}`$ = 0. Similarly, the lowering stops because $`L_{-} Y_{\ell - \ell}`$ = 0.
 
-![Figure 43 (p. 204)](images/fig-p204-1.png)
+![Figure 45 (p. 204)](images/fig-p204-1.png)
 
-_Figure 43 (p. 204)_
+_Figure 45 (p. 204)_
 
 **Angular momentum is quantized**. Any measurement of a component of angular momentum will give some integer times $`\hbar`$. Any measurement of the total angular momentum gives the somewhat curious result **L**
 
@@ -607,21 +607,13 @@ p^{2} = \frac{1}{r^{2}} \left( L^{2} + ( \vec{r} \cdot \vec{p} )^{2} - i \hbar \
 = \frac{1}{r^{2}} L^{2} - \frac{\hbar^{2}}{r^{2}} \left( r \frac{\partial}{\partial r} \right)^{2} - \hbar^{2} \frac{1}{r} \frac{\partial}{\partial r}
 ```
 
-<div align="center">
-
 The Schrödinger equation now can be written with only radial derivatives and $`L^{2}`$.
-
-</div>
 
 ```math
 \frac{- \hbar^{2}}{2 \mu} \left[ \frac{1}{r^{2}} \left( r \frac{\partial}{\partial r} \right)^{2} + \frac{1}{r} \frac{\partial}{\partial r} - \frac{L^{2}}{\hbar^{2} r^{2}} \right] u_{E} ( \vec{r} ) + V ( r ) u_{E} ( \vec{r} ) = Eu_{E} ( \vec{r} )
 ```
 
-<div align="center">
-
 ## <a id="s-14-4-4-spherical-coordinates-and-the-angular-momentum-operators"></a>14.4.4 Spherical Coordinates and the Angular Momentum Operators
-
-</div>
 
 The transformation from spherical coordinates to Cartesian coordinate is.
 
@@ -651,17 +643,17 @@ r = \sqrt{x^{2} + y^{2} + z^{2}}
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p212" href="book.pdf#page=212" target="_blank" title="This page in the PDF"><sup>[p. 212]</sup></a>
 
-![Figure 44 (p. 212)](images/fig-p212-1.png)
-
-_Figure 44 (p. 212)_
-
-![Figure 45 (p. 212)](images/fig-p212-2.png)
-
-_Figure 45 (p. 212)_
-
-![Figure 46 (p. 212)](images/fig-p212-3.png)
+![Figure 46 (p. 212)](images/fig-p212-1.png)
 
 _Figure 46 (p. 212)_
+
+![Figure 47 (p. 212)](images/fig-p212-2.png)
+
+_Figure 47 (p. 212)_
+
+![Figure 48 (p. 212)](images/fig-p212-3.png)
+
+_Figure 48 (p. 212)_
 
 We now proceed to calculate the angular momentum operators in spherical coordinates. The first step is to write the $`\frac{\partial}{\partial x_{i}}`$ in spherical coordinates. We use the chain rule and the above transformation from Cartesian to spherical. We have used $`d \cos \theta = - \sin \theta d\theta`$ and $`d \tan \varphi = \tfrac{1}{\cos^{2} \varphi} d\varphi`$. Ultimately all of these should be written in the sperical cooridnates but its convenient to use $`x`$ for example in intermediate steps of the calculation.
 
@@ -761,11 +753,7 @@ L_{\pm} = L_{x} \pm iL_{y} = \frac{\hbar}{i} \left( y \frac{\partial}{\partial z
 = \hbar e^{\pm i\varphi} \left( \pm \frac{\partial}{\partial \theta} + i \cot \theta \frac{\partial}{\partial \varphi} \right)
 ```
 
-<div align="center">
-
 We will use these results to find the actual eigenfunctions of angular momentum.
-
-</div>
 
 ```math
 L_{z} = \frac{\hbar}{i} \frac{\partial}{\partial \varphi}
@@ -1077,11 +1065,7 @@ The trivial solution that $`A = B = C`$ = 0 is just a zero state, not normalizab
 \psi ( \boldsymbol{r} ) = C ( iY_{3 3} - 2 Y_{3 0} + 3 Y_{3 1} ) R ( r )
 ```
 
-<div align="center">
-
 where $`R ( r )`$ is some arbitrary radial wave function normalized such that
-
-</div>
 
 ```math
 \int_{0}^{\infty} R^{*} ( r ) R ( r ) r^{2} dr = 1 .
@@ -1095,11 +1079,7 @@ c) Find the expected value of $`<L_{x} >`$ in the above state.
 
 10. Two (different) atoms of masses $`M_{1}`$ and $`M_{2}`$ are bound together into the ground state of a diatomic molecule. The binding is such that radial excitations can be neglected at low energy and that the atoms can be assumed to be a constant distance $`a`$ = 3˚$`A`$ apart. (We will ignore the small spread around $`r = a`$.)
 
-<div align="center">
-
 a) What is the energy spectrum due to rotations of the molecule?
-
-</div>
 
 <div align="right"><a href="book.pdf#page=217" target="_blank" title="This page in the PDF"><sup>[p. 217]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">

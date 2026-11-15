@@ -307,7 +307,11 @@ that gave us the correct interaction with the electron’s spin. We have applied
 
 Dirac’s paper did not follow the same line of reasoning. Historically, the Schrödinger-Pauli Hamiltonian was derived from the Dirac equation. It was Dirac who produced the correct equation for electrons and went on to interpret it to gain new insight into physics.
 
-Dirac Biography
+![Figure 106 (p. 489)](images/fig-p489-1.png)
+
+_Figure 106 (p. 489)_
+
+## <a id="s-dirac-biography"></a>Dirac Biography
 
 # <a id="s-36-4-the-conserved-probability-current"></a>36.4 The Conserved Probability Current
 
@@ -961,11 +965,7 @@ This reduces to the spin up “negative energy” solution for a particle at res
 
 with $`E`$ being a negative number. We will eventually understand the “negative energy” solutions in terms of anti-electrons otherwise known as positrons.
 
-<div align="center">
-
 Finally, the **“negative energy”, spin down solution** follows the same pattern.
-
-</div>
 
 ```math
 \begin{pmatrix} - E + mc^{2} & 0 & p_{z} c & ( p_{x} - ip_{y} ) c \\ 0 & - E + mc^{2} & ( p_{x} + ip_{y} ) c & - p_{z} c \\ - p_{z} c & - ( p_{x} - ip_{y} ) c & E + mc^{2} & 0 \\ - ( p_{x} + ip_{y} ) c & p_{z} c & 0 & E + mc^{2} \end{pmatrix} \begin{pmatrix} A_{1} \\ A_{2} \\ 0 \\ 1 \end{pmatrix} = 0
@@ -1199,13 +1199,7 @@ with e positive and $`\vec{p}`$ in the direction of probability flux.
 
 # <a id="s-36-8-equivalence-of-a-two-component-theory"></a>36.8 Equivalence of a Two Component Theory
 
-The two component theory with $`\psi_{A}`$ (and $`\psi_{B}`$ depending on it) is **equivalent to the Dirac theory**. It has a second order equation and separate negative and positive energy solutions. As we saw in
-
-<div align="right"><a href="book.pdf#page=506" target="_blank" title="This page in the PDF"><sup>[p. 506]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p507" href="book.pdf#page=507" target="_blank" title="This page in the PDF"><sup>[p. 507]</sup></a>
-
-the non-relativistic limit, the **normalization condition is a bit unnatural** in the two component theory. The normalization correction would be very large for the “negative energy” states if we continued to use $`\psi_{A}`$.
+The two component theory with $`\psi_{A}`$ (and $`\psi_{B}`$ depending on it) is **equivalent to the Dirac theory**. It has a second order equation and separate negative and positive energy solutions. As we saw in<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=506" target="_blank" title="This page in the PDF"><sup>[p. 506]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p507" href="book.pdf#page=507" target="_blank" title="This page in the PDF"><sup>[p. 507]</sup></a></span> the non-relativistic limit, the **normalization condition is a bit unnatural** in the two component theory. The normalization correction would be very large for the “negative energy” states if we continued to use $`\psi_{A}`$.
 
 Even though it is a second order differential equation, we only need to specify the wave function and whether it is negative or positive energy to do the time development. The Dirac theory has many advantages in terms of notation and ease of forming Lorentz covariant objects. A decision must be made when we determine how many independent fields there are.
 
@@ -1347,9 +1341,7 @@ x_{4}^{\prime} & = & x_{4} & \cosh \chi & - ix_{1} \sinh \chi \\
 
 We verify that a boost along the $`i`$ direction is like a rotation in the $`i 4`$ plane through an angle $`i\chi`$.
 
-We need to **find the transformation matrices** $`S`$ that satisfy the equation $`S^{- 1} \gamma_{\mu} S = \gamma_{\nu} a_{\mu \nu}`$<br>
-for the Dirac equation to be covariant. Recalling that the 4 component equivalent of $`\sigma_{z}`$ is $`\Sigma_{z} = \tfrac{[ \gamma_{1} ,\gamma_{2} ]}{2 i} = \tfrac{\gamma_{1} \gamma_{2}}{i}`$, we will show that these matrices are (for a rotation in the xy plane and a boost in<br>
-the x direction).
+We need to **find the transformation matrices** $`S`$ that satisfy the equation $`S^{- 1} \gamma_{\mu} S = \gamma_{\nu} a_{\mu \nu}`$ for the Dirac equation to be covariant. Recalling that the 4 component equivalent of $`\sigma_{z}`$ is $`\Sigma_{z} = \tfrac{[ \gamma_{1} ,\gamma_{2} ]}{2 i} = \tfrac{\gamma_{1} \gamma_{2}}{i}`$, we will show that these matrices are (for a rotation in the xy plane and a boost in the x direction).
 
 ```math
 S_{rot} = \cos \frac{\theta}{2} + \gamma_{1} \gamma_{2} \sin \frac{\theta}{2}
@@ -1371,17 +1363,13 @@ Lets **verify that this choice works for a boost**.
 \left( \cosh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} \right) \gamma_{\mu} \left( \cosh \frac{\chi}{2} + i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} \right) = a_{\mu \nu} \gamma_{\nu}
 ```
 
-```math
-\cosh \frac{\chi}{2} \gamma_{\mu} \cosh \frac{\chi}{2} + \cosh \frac{\chi}{2} \gamma_{\mu} i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} \gamma_{\mu} \cosh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} \gamma_{\mu} i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} = a_{\mu \nu} \gamma_{\nu}
-```
+$`\cosh \frac{\chi}{2} \gamma_{\mu} \cosh \frac{\chi}{2} + \cosh \frac{\chi}{2} \gamma_{\mu} i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} \gamma_{\mu} \cosh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} \gamma_{\mu} i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2}`$ = $`a_{\mu \nu} \gamma_{\nu}`$
 
 ```math
 \gamma_{\mu} \cosh^{2} \frac{\chi}{2} + i\gamma_{\mu} \gamma_{1} \gamma_{4} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \gamma_{\mu} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} + \gamma_{1} \gamma_{4} \gamma_{\mu} \gamma_{1} \gamma_{4} \sinh^{2} \frac{\chi}{2} = a_{\mu \nu} \gamma_{\nu}
 ```
 
-The equation we must satisfy can be checked for each $`\gamma`$ matrix. First check $`\gamma_{1}`$. The operations with<br>
-the $`\gamma`$ matrices all come from the anticommutator, $`\{ \gamma_{\mu} ,\gamma_{\nu} \}`$ = 2$`\delta_{\mu \nu}`$, which tells us that the square<br>
-of any gamma matrix is one and that commuting a pair of (unequal) matrices changes the sign.
+The equation we must satisfy can be checked for each $`\gamma`$ matrix. First check $`\gamma_{1}`$. The operations with the $`\gamma`$ matrices all come from the anticommutator, $`\{ \gamma_{\mu} ,\gamma_{\nu} \}`$ = 2$`\delta_{\mu \nu}`$, which tells us that the square of any gamma matrix is one and that commuting a pair of (unequal) matrices changes the sign.
 
 ```math
 \gamma_{1} \cosh^{2} \frac{\chi}{2} + i\gamma_{1} \gamma_{1} \gamma_{4} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \gamma_{1} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} + \gamma_{1} \gamma_{4} \gamma_{1} \gamma_{1} \gamma_{4} \sinh^{2} \frac{\chi}{2} = a_{1 \nu} \gamma_{\nu}
@@ -1795,9 +1783,7 @@ according to our derivation of the transformations $`S`$. Under the parity trans
 
 the spacial components of the vector change sign and the fourth component doesn’t. It transforms like a **Lorentz vector** under parity.
 
-```math
-\text{ Similarly } , \text{ for } \mu \neq \nu ,
-```
+Similarly, for $`\mu \neq \nu`$,
 
 ```math
 \bar{\psi} \sigma_{\mu \nu} \psi \equiv \bar{\psi} i\gamma_{\mu} \gamma_{\nu} \psi
@@ -2069,11 +2055,7 @@ v_{j} = ic\gamma_{4} \gamma_{j}
 
 The **velocity operator** then is $`v_{j} = ic\gamma_{4} \gamma_{j}`$.
 
-<div align="center">
-
 Its not hard to compute that the **velocity eigenvalues** (any component) are $`\pm c`$.
-
-</div>
 
 ```math
 ic\gamma_{4} \gamma_{1} = ic \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & - 1 & 0 \\ 0 & 0 & 0 & - 1 \end{pmatrix} \begin{pmatrix} 0 & 0 & 0 & - i \\ 0 & 0 & - i & 0 \\ 0 & i & 0 & 0 \\ i & 0 & 0 & 0 \end{pmatrix} = c \begin{pmatrix} 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0 \end{pmatrix}
@@ -2245,13 +2227,7 @@ The Zitterbewegung again keeps electrons from being well localized in a deep pot
 
 # <a id="s-36-15solution-of-the-dirac-equation-for-hydrogen"></a>36.15 Solution of the Dirac Equation for Hydrogen
 
-The standard Hydrogen atom problem can be solved exactly using relativistic quantum mechanics. The full solution is a bit long but short compared to the complete effort we made in non-relativistic
-
-<div align="right"><a href="book.pdf#page=522" target="_blank" title="This page in the PDF"><sup>[p. 522]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p523" href="book.pdf#page=523" target="_blank" title="This page in the PDF"><sup>[p. 523]</sup></a>
-
-QM. We have already seen that (even with no applied fields), while the **total angular momentum** **operator commutes with the Dirac Hamiltonian**, neither the orbital angular momentum operator nor the spin operators do commute with $`H`$. The addition of a spherically symmetric potential does not change these facts.
+The standard Hydrogen atom problem can be solved exactly using relativistic quantum mechanics. The full solution is a bit long but short compared to the complete effort we made in non-relativistic<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=522" target="_blank" title="This page in the PDF"><sup>[p. 522]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p523" href="book.pdf#page=523" target="_blank" title="This page in the PDF"><sup>[p. 523]</sup></a></span> QM. We have already seen that (even with no applied fields), while the **total angular momentum** **operator commutes with the Dirac Hamiltonian**, neither the orbital angular momentum operator nor the spin operators do commute with $`H`$. The addition of a spherically symmetric potential does not change these facts.
 
 We have shown in the section on conserved quantities that the operator
 
@@ -2549,11 +2525,7 @@ The square of the operator $`\begin{pmatrix} \cdot \\ \frac{\vec{\sigma} \vec{x}
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p527" href="book.pdf#page=527" target="_blank" title="This page in the PDF"><sup>[p. 527]</sup></a>
 
-The phase factor depends on the conventions we choose for the states $`\mathcal{Y}_{j\ell}^{m_{j}}`$. For our conventions,
-
-```math
-\text{ the factor is } - 1 .
-```
+The phase factor depends on the conventions we choose for the states $`\mathcal{Y}_{j\ell}^{m_{j}}`$. For our conventions, the factor is $`- 1 .`$
 
 ```math
 \frac{\vec{\sigma} \cdot \vec{x}}{r} \mathcal{Y}_{j\ell_{A}}^{m_{j}} = - \mathcal{Y}_{j\ell_{B}}^{m_{j}}
@@ -2819,9 +2791,7 @@ Relativistic corrections become quite important for high $`Z`$ atoms in which th
 
 # <a id="s-36-16thomson-scattering"></a>36.16 Thomson Scattering
 
-The cross section for **Thomson scattering illustrates the need for “negative energy” states**<br>
-**in our calculations**. Recall that we got the correct cross section from the non-relativistic calcula-<br>
-tion and that Thomson also got the correct result from classical E&M.
+The cross section for **Thomson scattering illustrates the need for “negative energy” states** **in our calculations**. Recall that we got the correct cross section from the non-relativistic calculation and that Thomson also got the correct result from classical E&M.
 
 In the Dirac theory, we have only one term in the **interaction Hamiltonian**,
 
@@ -2835,13 +2805,9 @@ Because it is linear in $`A`$ it can create a photon or annihilate a photon. Pho
 A_{\mu} ( x ) = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right) .
 ```
 
-The initial and final states are **definite momentum states**, as are the intermediate electron states.<br>
-We shall **first do the calculation assuming no electrons from the “negative energy” sea** **participate**, other than to exclude transitions to those “negative energy” states. The initial and<br>
-final states are therefore the positive energy plane wave states $`\psi_{\vec{p}}^{( r )}`$ for $`r`$ = 1$`,`$ 2. The intermediate<br>
-states must also be positive energy states since the “negative energy” states are all filled.
+The initial and final states are **definite momentum states**, as are the intermediate electron states. We shall **first do the calculation assuming no electrons from the “negative energy” sea** **participate**, other than to exclude transitions to those “negative energy” states. The initial and final states are therefore the positive energy plane wave states $`\psi_{\vec{p}}^{( r )}`$ for $`r`$ = 1$`,`$ 2. The intermediate states must also be positive energy states since the “negative energy” states are all filled.
 
-The computation of the scattering cross section follows the same steps made in the development<br>
-of the Krammers-Heisenberg formula for photon scattering. There is no $`A^{2}`$ term so we are just computing the **two second order terms**.
+The computation of the scattering cross section follows the same steps made in the development of the Krammers-Heisenberg formula for photon scattering. There is no $`A^{2}`$ term so we are just computing the **two second order terms**.
 
 ```math
 c_{\vec{p}^{\prime} ,r^{\prime} ; \vec{k}^{\prime} , \hat{\epsilon}^{\prime}}^{( 2 )} ( t ) = \frac{- e^{2}}{\hbar^{2}} \sum_{I} \frac{1}{V} \frac{\hbar c^{2}}{2 \sqrt{\omega^{\prime} \omega}} \int_{0}^{t} dt_{2} \langle \vec{p}^{\prime} r^{\prime} ; \vec{k}^{\prime} \hat{\epsilon}^{( \alpha^{\prime} )} | i\gamma_{4} \gamma_{n} ( \epsilon_{n}^{( \alpha )} a_{k,\alpha} e^{i ( \vec{k} \cdot \vec{x} - \omega t_{2} )} + \epsilon_{n}^{( \alpha^{\prime} )} a_{k^{\prime} ,\alpha^{\prime}}^{\dagger} e^{i ( - \vec{k} \cdot \vec{x} + \omega^{\prime} t_{2} )} ) | I \rangle e^{i ( E^{\prime} - E^{\prime \prime} )}
@@ -2855,11 +2821,9 @@ c_{\vec{p}^{\prime} ,r^{\prime} ; \vec{k}^{\prime} , \hat{\epsilon}^{\prime}}^{(
 \begin{aligned} c_{\vec{p}^{\prime} ,r^{\prime} ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 2 )} ( t ) &= \frac{e^{2} \hbar c^{2}}{2 V \sqrt{\omega^{\prime} \omega}} \sum_{\vec{p}^{\prime \prime} r^{\prime \prime} = 1 , 2} \left[ \frac{\langle \vec{p}^{\prime} r^{\prime} | i\gamma_{4} \gamma_{n} \epsilon_{n}^{\prime} e^{- i \vec{k}^{\prime} \cdot \vec{x}} | \vec{p}^{\prime \prime} r^{\prime \prime} \rangle \langle \vec{p}^{\prime \prime} r^{\prime \prime} | i\gamma_{4} \gamma_{n} \epsilon_{n} e^{i \vec{k} \cdot \vec{x}} | \vec{p} r \rangle}{E^{\prime \prime} - E - \hbar \omega} \right. \\ & \quad \left. + \quad \frac{\langle \vec{p}^{\prime} r^{\prime} | i\gamma_{4} \gamma_{n} \epsilon_{n} e^{i \vec{k} \cdot \vec{x}} | \vec{p}^{\prime \prime} r^{\prime \prime} \rangle \langle \vec{p}^{\prime \prime} r^{\prime \prime} | i\gamma_{4} \gamma_{n} \epsilon_{n}^{\prime} e^{- i \vec{k}^{\prime} \cdot \vec{x}} | \vec{p} r \rangle}{E^{\prime \prime} - E + \hbar \omega^{\prime}} \right] \frac{i}{\hbar} \int_{0}^{t} dt_{2} e^{i ( E^{\prime} - E + \hbar \omega^{\prime} - \hbar \omega ) t_{2} / \hbar} \end{aligned}
 ```
 
-As in the earlier calculation, the photon states have been eliminated from the equation since they<br>
-give a factor of 1 with the initial state photon being annihilated and the final state photon being created in each term.
+As in the earlier calculation, the photon states have been eliminated from the equation since they give a factor of 1 with the initial state photon being annihilated and the final state photon being created in each term.
 
-Now lets take a **look at one of the matrix elements**. Assume the **initial state electron is at**<br>
-**rest and that the photon momentum is small**.
+Now lets take a **look at one of the matrix elements**. Assume the **initial state electron is at** **rest and that the photon momentum is small**.
 
 ```math
 \langle \vec{p}^{\prime \prime} r^{\prime \prime} | i\gamma_{4} \gamma_{n} \epsilon_{n} e^{i \vec{k} \cdot \vec{x}} | \vec{p} r \rangle
@@ -2887,9 +2851,9 @@ This matrix only connects $`r`$ = 1$`,`$ 2 spinors to $`r`$ = 3$`,`$ 4 spinors b
 
 The above calculation misses some **important terms due to the “negative energy” sea**. There are additional terms if we consider the possibility that the photon can elevate a “negative energy” electron to have positive energy.
 
-![Figure 97 (p. 532)](images/fig-p532-1.png)
+![Figure 107 (p. 532)](images/fig-p532-1.png)
 
-_Figure 97 (p. 532)_
+_Figure 107 (p. 532)_
 
 In one term, the initial state photon is absorbed by a “negative energy” electron, then the initial state electron fills the hole in the “negative energy” sea emitting the final state photon. In the other term, even further from the mass shell, a “negative energy” electron emits the final state photon and moves to a positive energy state, then the initial state electron absorbs the initial photon and fills the hole left behind in the sea. These terms are larger because the $`\gamma_{4} \gamma_{i}`$ matrix connects positive energy and “negative energy” states.
 
@@ -3135,9 +3099,9 @@ Our opinion of the “negative energy” solutions has been biased by living in 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p538" href="book.pdf#page=538" target="_blank" title="This page in the PDF"><sup>[p. 538]</sup></a>
 
-![Figure 98 (p. 538)](images/fig-p538-1.png)
+![Figure 108 (p. 538)](images/fig-p538-1.png)
 
-_Figure 98 (p. 538)_
+_Figure 108 (p. 538)_
 
 **No reference to the “negative energy” sea is needed**. **No change in the “negative** **energy” solutions is needed** although it will be helpful to relabel them with the properties of the positron rather than the properties of the electron moving backward in time.
 
@@ -3449,9 +3413,9 @@ The effect of vacuum polarization on Hydrogen would be to lower the energy of $`
 
 We can get some qualitative understanding of the origin of **Zitterbewegung** from the idea of virtual pair production in the field of the nucleus. The diagram below shows a photon from the Coulomb field of the nucleus producing an electron positron pair. The original real electron from the atom then anihillates with the positron, coupling to another field photon. The electron from the pair is left over and becomes the new atomic electron, however, it need not be in the same place as the original electron.
 
-![Figure 99 (p. 543)](images/fig-p543-1.png)
+![Figure 109 (p. 543)](images/fig-p543-1.png)
 
-_Figure 99 (p. 543)_
+_Figure 109 (p. 543)_
 
 <div align="right"><a href="book.pdf#page=543" target="_blank" title="This page in the PDF"><sup>[p. 543]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">

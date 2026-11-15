@@ -159,13 +159,7 @@ We will not use the so called covariant and contravariant indices. Instead we wi
 x_{\mu} x_{\mu} = x^{2} + y^{2} + z^{2} - c^{2} t^{2}
 ```
 
-Note we can have all lower indices. As Sakurai points out, there is no need for the complication of a metric tensor to raise and lower indices unless general relativity comes into play and the geometry of space-time is not flat. We can assume the $`i`$ in the fourth component is a calculational convenience, not an indication of the need for complex numbers in our coordinate systems. So while we may have said “farewell to ict” some time in the past, we will use it here because the notation is less
-
-<div align="right"><a href="book.pdf#page=428" target="_blank" title="This page in the PDF"><sup>[p. 428]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p429" href="book.pdf#page=429" target="_blank" title="This page in the PDF"><sup>[p. 429]</sup></a>
-
-complicated. The $`i`$ here should never really be used to multiply an $`i`$ in the complex wave function, but, everything will work out so that doesn’t happen unless we make an algebra mistake.
+Note we can have all lower indices. As Sakurai points out, there is no need for the complication of a metric tensor to raise and lower indices unless general relativity comes into play and the geometry of space-time is not flat. We can assume the $`i`$ in the fourth component is a calculational convenience, not an indication of the need for complex numbers in our coordinate systems. So while we may have said “farewell to ict” some time in the past, we will use it here because the notation is less<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=428" target="_blank" title="This page in the PDF"><sup>[p. 428]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p429" href="book.pdf#page=429" target="_blank" title="This page in the PDF"><sup>[p. 429]</sup></a></span> complicated. The $`i`$ here should never really be used to multiply an $`i`$ in the complex wave function, but, everything will work out so that doesn’t happen unless we make an algebra mistake.
 
 The spacetime coordinate $`x_{\mu}`$ is a Lorentz vector transforming under rotations and boosts as follows.
 
@@ -275,13 +269,7 @@ With this Lagrangian, the Euler-Lagrange equation is.
 ✷ \varphi - \mu^{2} \varphi = 0
 ```
 
-This is the known as the **Klein-Gordon equation**. It is a good relativistic equation for a **massive** **scalar field**. It was also an early candidate for the relativistic equivalent of the Schrödinger equation for electrons because it basically has the **relativistic analog of the energy relation** inherent in
-
-<div align="right"><a href="book.pdf#page=430" target="_blank" title="This page in the PDF"><sup>[p. 430]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p431" href="book.pdf#page=431" target="_blank" title="This page in the PDF"><sup>[p. 431]</sup></a>
-
-the Schrödinger equation. Writing that relation in the order terms appear in the Klein-Gordon equation above we get (letting $`c`$ = 1 briefly).
+This is the known as the **Klein-Gordon equation**. It is a good relativistic equation for a **massive** **scalar field**. It was also an early candidate for the relativistic equivalent of the Schrödinger equation for electrons because it basically has the **relativistic analog of the energy relation** inherent in<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=430" target="_blank" title="This page in the PDF"><sup>[p. 430]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p431" href="book.pdf#page=431" target="_blank" title="This page in the PDF"><sup>[p. 431]</sup></a></span> the Schrödinger equation. Writing that relation in the order terms appear in the Klein-Gordon equation above we get (letting $`c`$ = 1 briefly).
 
 ```math
 - p^{2} + E^{2} - m^{2} = 0
@@ -373,17 +361,11 @@ We now have the **Fourier transform of the field of a point source**. If we can 
 
 This is now of a form for which we can use Cauchy’s theorem for **contour integrals**. The theorem says that an **integral around a closed contour in the complex plane** is equal to 2$`\pi i`$ times the sum of the residues at the poles enclosed in the contour. Contour Integration is a powerful technique often used in quantum mechanics.
 
-If the integrand is a function of the complex variable $`k`$, a pole is of the form $`\frac{r}{k}`$ where $`r`$ is called the residue at the pole. The **integrand above has two poles**, one at $`k = i\mu`$ and the other at $`k = - i\mu`$. The **integral we are interested in is just along the real axis** so we want the integral along
+If the integrand is a function of the complex variable $`k`$, a pole is of the form $`\frac{r}{k}`$ where $`r`$ is called the residue at the pole. The **integrand above has two poles**, one at $`k = i\mu`$ and the other at $`k = - i\mu`$. The **integral we are interested in is just along the real axis** so we want the integral along<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=432" target="_blank" title="This page in the PDF"><sup>[p. 432]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p433" href="book.pdf#page=433" target="_blank" title="This page in the PDF"><sup>[p. 433]</sup></a></span> the rest of the contour to give zero. That’s easy to do since the integrand goes to zero at infinity on the real axis and the exponentials go to zero either at positive or negative infinity for the imaginary part of $`k`$. Examine the integral $`\oint \tfrac{k}{( k + i\mu ) ( k - i\mu )} e^{ikr} dk`$ around a contour in the upper half plane as shown below.
 
-<div align="right"><a href="book.pdf#page=432" target="_blank" title="This page in the PDF"><sup>[p. 432]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p433" href="book.pdf#page=433" target="_blank" title="This page in the PDF"><sup>[p. 433]</sup></a>
+![Figure 100 (p. 433)](images/fig-p433-1.png)
 
-the rest of the contour to give zero. That’s easy to do since the integrand goes to zero at infinity on the real axis and the exponentials go to zero either at positive or negative infinity for the imaginary part of $`k`$. Examine the integral $`\oint \tfrac{k}{( k + i\mu ) ( k - i\mu )} e^{ikr} dk`$ around a contour in the upper half plane as shown below.
-
-![Figure 96 (p. 433)](images/fig-p433-1.png)
-
-_Figure 96 (p. 433)_
+_Figure 100 (p. 433)_
 
 The pole inside the contour is at $`k = i\mu`$. The residue at the pole is
 
@@ -394,7 +376,7 @@ The pole inside the contour is at $`k = i\mu`$. The residue at the pole is
 The integrand goes to zero exponentially on the semicircle at infinity so only the real axis contributes to the integral along the contour. The integral along the real axis can be manipulated to do the whole problem for us.
 
 ```math
-\left. \oint \right) \frac{k}{( k + i\mu ) ( k - i\mu )} e^{ikr} dk = 2 \pi i \left[ \frac{ke^{ikr}}{k + i\mu} \right]_{k = i\mu}
+\oint \frac{k}{( k + i\mu ) ( k - i\mu )} e^{ikr} dk = 2 \pi i \left[ \frac{ke^{ikr}}{k + i\mu} \right]_{k = i\mu}
 ```
 
 ```math

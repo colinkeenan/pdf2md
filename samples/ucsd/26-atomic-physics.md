@@ -83,13 +83,7 @@ A set of guidelines, known as Hund’s rules, help us determine the quantum numb
 
 3. If the shell is more than half full, pick the highest total angular momentum state $`j = \ell + s`$ otherwise pick the lowest $`j = | \ell - s |`$.
 
-This method of adding up all the spins and all the Ls, is called LS or **Russel-Saunders coupling**. This method and these rule are quite good until the electrons become relativistic in heavy atoms and spin-orbit effects become comparable to the electron repulsion (arond Z=40). We choose the
-
-<div align="right"><a href="book.pdf#page=372" target="_blank" title="This page in the PDF"><sup>[p. 372]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p373" href="book.pdf#page=373" target="_blank" title="This page in the PDF"><sup>[p. 373]</sup></a>
-
-states in which the total $`s`$ and the total $`\ell`$ are good quantum numbers are best for minimizing the overlap of electrons, and hence the positive contribution to the energy.
+This method of adding up all the spins and all the Ls, is called LS or **Russel-Saunders coupling**. This method and these rule are quite good until the electrons become relativistic in heavy atoms and spin-orbit effects become comparable to the electron repulsion (arond Z=40). We choose the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=372" target="_blank" title="This page in the PDF"><sup>[p. 372]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p373" href="book.pdf#page=373" target="_blank" title="This page in the PDF"><sup>[p. 373]</sup></a></span> states in which the total $`s`$ and the total $`\ell`$ are good quantum numbers are best for minimizing the overlap of electrons, and hence the positive contribution to the energy.
 
 For very heavy atoms, we add the total angular momentum from each electron first then add up the Js. This is called **j-j coupling**. For heavy atoms, electrons are relativistic and the spin-orbit interaction becomes more important than the effect of electron repulsion. Thus we need to use states in which the total angular momentum of each electron is a good quantum number.
 
@@ -97,11 +91,7 @@ We can understand Hund’s rules to some extent. The maximum spin state is symme
 
 A simpler set of rules has been developed for chemists, who can’t understand addition of angular momentum. It is based on the same principles. The only way to have a totally antisymmetric state is to have no two electrons in the same state. We use the same kind of trick we used to get a feel for addition of angular momentum; that is, we look at the maximum z component we can get consistent with the Pauli principle. Make a table with space for each of the different $`m_{\ell}`$ states in the outer shell. We can put two electrons into each space, one with spin up and one with spin down. Fill the table with the number of valence electrons according to the following rules.
 
-<div align="center">
-
 1. Make as many spins as possible parallel, then compute $`m_{s}`$ and call that $`s`$.
-
-</div>
 
 2. Now set the orbital states to make maximum $`m_{\ell}`$, and call this $`\ell`$, but don’t allow any two electrons to be in the same state (of $`m_{s}`$ and $`m_{\ell}`$).
 
@@ -120,7 +110,17 @@ This method is rather easy to use compared to the other where addition of more t
 
 # <a id="s-26-4-the-periodic-table"></a>26.4 The Periodic Table
 
-The following table gives the electron configurations for the ground states of light atoms.<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=373" target="_blank" title="This page in the PDF"><sup>[p. 373]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p374" href="book.pdf#page=374" target="_blank" title="This page in the PDF"><sup>[p. 374]</sup></a></span> Z El. Electron Configuration $`{}^{2 s + 1} L_{j}`$ Ioniz. Pot.
+The following table gives the electron configurations for the ground states of light atoms.
+
+<div align="right"><a href="book.pdf#page=373" target="_blank" title="This page in the PDF"><sup>[p. 373]</sup></a></div>
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
+<a id="p374" href="book.pdf#page=374" target="_blank" title="This page in the PDF"><sup>[p. 374]</sup></a>
+
+<div align="center">
+
+Z El. Electron Configuration $`{}^{2 s + 1} L_{j}`$ Ioniz. Pot.
+
+</div>
 
 ```math
 5 4 \frac{2 6 \frac{2 4 \frac{2 2 \frac{2 0 \frac{1 8 \frac{1 6 \frac{1 2 3 4 5 6 7 8 9 1 0 1 1 1 2 1 3 1 4 1 5}{1 7}}{1 9}}{2 1}}{2 3}}{2 5}}{3 6}}{8 6} \quad \frac{\frac{\frac{\frac{\frac{\frac{\frac{\text{ Mg } \text{ He } \text{ Ne } \text{ Na } \text{ Be } \text{ Li } \text{ Al } O \text{ Si } H B C N F P}{\text{ Cl }} S}{K} \text{ Ar }}{\text{ Sc }} \text{ Ca }}{V} \text{ Ti }}{\text{ Mn }} \text{ Cr }}{\text{ Kr }} \text{ Fe }}{\text{ Rn }} \text{ Xe } \quad ( \text{ Kr } ) ( 5 \frac{\text{ Ar } ( 4 \frac{\text{ Ar } ( 4 \frac{\text{ Ar } ( 4 \frac{\text{ Ne } ( 3 \frac{\text{ Ne } ( 3 \frac{\text{ Ne } ( 3 \frac{( 1 ( 1 \text{ He } ( 2 \text{ He } ( 2 \text{ He } ( 2 \text{ He } ( 2 \text{ He } ( 2 \text{ He } ( 2 \text{ He } ( 2 \text{ He } ( 2 \text{ Ne } ( 3 \text{ Ne } ( 3 \text{ Ne } ( 3 s s ) ) 2 s s s s s s s s s s s ) ) ) ) ) ) ) ) ) ) ) 2 2 2 2 2 2 2 2 2 ( 2 ( 2 ( 2 ( 2 ( 2 ( 2 ( 3 p p p p p p p ) ) ) ) ) ) ) 2 3 4 5 6}{\text{ Ne } ( 3 s ) ( 3 p )} s )_{2}^{2} ( 3 p )_{3}^{2}}{\text{ Ne } ( 3 s ) ( 3 p )} s )_{2}^{2} ( 3 p )_{5}^{4}}{\text{ Ar } ( 4 \text{ Ar } ( 4 s ) s )^{2}} s )^{2} ( 3 p )^{6}}{\text{ Ar } ( 4 s ) ( 3 d )} s )_{2}^{2} ( 3 d )_{2}}{\text{ Ar } ( 4 \text{ Ar } ( 4 s ) ( 3 d ) s )^{2} ( 3 d )^{5}} s )^{2} ( 3 d_{5} )^{3}}{( \text{ Ar } ) ( 4 s )^{2} ( 3 d )^{1 0} ( 4 p )^{6}} s )^{2} ( 3 d )^{6}}{( \text{ Xe } ) ( 6 s ) ( 4 f ) ( 5 d )} s )_{2}^{2} ( 4 d )_{1 4}^{1 0} ( 5 p )_{1 0}^{6} ( 6 p )^{6} \quad \frac{\frac{\frac{\frac{\frac{\frac{\frac{2 2 2 2 2 4 2 4 1 1 3 3 1 1 3 3 S S P S P S P S S S P P S S P 1 1 3 1 3 1 3 1 / 0 / 0 / / / 0 / 0 / / 0 2 0 2 2 2 2 2 2 2 2}{2 1 P 3 / 2} P_{2}}{\frac{2}{1} S_{1 / 2}} S_{0}}{{}^{2} D_{3 3 / 2}} S_{0}}{\tfrac{4}{7} F_{3 / 2}} F_{2}}{\frac{6}{5} S_{3 / 2}} S_{3}}{\frac{1}{1} s_{0}} D_{4}}{{}^{1} s_{0}} s_{0} \quad 1 2 . 1 \frac{\frac{\frac{\frac{\frac{1 5 . 8 \frac{1 0 . 4 \frac{1 3 . 6 2 4 . 6 1 1 . 3 1 4 . 5 1 3 . 6 1 7 . 4 2 1 . 6 1 1 . 0 5 . 4 9 . 3 8 . 3 5 . 1 7 . 6 6 . 0 8 . 1}{1 3 . 0}}{4 . 3}}{6 . 5} 6 . 1}{6 . 7} 6 . 8}{7 . 4} 6 . 7}{1 4 . 0} 7 . 9}{1 0 . 7}
@@ -138,13 +138,17 @@ The **Ionization Potential** column gives the energy in eV needed to remove one 
 3 7 5
 ```
 
-![Figure 85 (p. 375)](images/fig-p375-1.png)
+![Figure 88 (p. 375)](images/fig-p375-1.png)
 
-_Figure 85 (p. 375)_
+_Figure 88 (p. 375)_
 
 <div align="right"><a href="book.pdf#page=375" target="_blank" title="This page in the PDF"><sup>[p. 375]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p376" href="book.pdf#page=376" target="_blank" title="This page in the PDF"><sup>[p. 376]</sup></a>
+
+![Figure 89 (p. 376)](images/fig-p376-1.png)
+
+_Figure 89 (p. 376)_
 
 The perodic table of elements is based on the fact that atoms with the same number of electrons outside a closed shell have similar properties. The rows of the periodic table contain the following states.
 
@@ -176,9 +180,9 @@ Remember, its only hydrogen states which are labeled with a principle quantum nu
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p378" href="book.pdf#page=378" target="_blank" title="This page in the PDF"><sup>[p. 378]</sup></a>
 
-![Figure 86 (p. 378)](images/fig-p378-1.png)
+![Figure 90 (p. 378)](images/fig-p378-1.png)
 
-_Figure 86 (p. 378)_
+_Figure 90 (p. 378)_
 
 Another feature of nuclei not shown in the table is that the **spin-spin force very much favors** **nucleons which are paired**. So nuclear isotopes with odd numbers of protons or odd numbers of neutrons have less binding energy and nuclei with odd numbers of both protons and neutrons are unstable (with one exception).
 
@@ -230,21 +234,15 @@ We can take a look at the excited states of carbon to get an appreciation of Hun
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p380" href="book.pdf#page=380" target="_blank" title="This page in the PDF"><sup>[p. 380]</sup></a>
 
-![Figure 87 (p. 380)](images/fig-p380-1.png)
+![Figure 91 (p. 380)](images/fig-p380-1.png)
 
-_Figure 87 (p. 380)_
+_Figure 91 (p. 380)_
 
 The ground state has $`s`$ = 1 and $`\ell`$ = 1 as we predicted. Other states labeled 2$`p`$ are the ones that Hund’s first two rules determined to be of higher energy. They are both spin singlets so its the symmetry of the space wavefunction that is making the difference here.
 
 ## <a id="s-26-6-3-nitrogen-ground-state"></a>26.6.3 Nitrogen Ground State
 
-Now, with $`Z`$ = 7 we have three valence 2P electrons and the shell is half full. Hund’s first rule , maximum total $`s`$, tells us to couple the three electron spins to $`s = \tfrac{3}{2}`$. This is again the symmetric spin state so we’ll need to make the space state antisymmetric. We now have the truly nasty problem of figuring out which total $`\ell`$ states are totally antisymmetric. All I have to say is $`3 \otimes 3 \otimes 3`$ = $`7_{S} \oplus 5_{MS} \oplus 3_{MS} \oplus 5_{MA} \oplus 3_{MA} \oplus 1_{A} \oplus 3_{MS}`$. Here MS means mixed symmetric. That is; it is symmetric under the interchange of two of the electrons but not with the third. Remember, adding two P states together, we get total $`\ell_{1 2}`$ = 0$`, 1 ,`$ 2. Adding another P state to each of these gives total $`\ell`$ = 1 for $`\ell_{1 2}`$ = 0, $`\ell`$ = 0$`, 1 ,`$ 2 for $`\ell_{1 2}`$ = 1, and $`\ell`$ = 1$`, 2 ,`$ 3 for $`\ell_{1 2}`$ = 2. Hund’s second rule, maximum $`\ell`$,
-
-<div align="right"><a href="book.pdf#page=380" target="_blank" title="This page in the PDF"><sup>[p. 380]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p381" href="book.pdf#page=381" target="_blank" title="This page in the PDF"><sup>[p. 381]</sup></a>
-
-doesn’t play a role, again, because only the $`\ell`$ = 0 state is totally antisymmetric. Since the shell is just half full we couple to the the lowest $`j = | \ell - s | = \tfrac{3}{2}`$. So the ground state is<sup>4</sup>$`S_{\tfrac{3}{2}}`$.
+Now, with $`Z`$ = 7 we have three valence 2P electrons and the shell is half full. Hund’s first rule , maximum total $`s`$, tells us to couple the three electron spins to $`s = \tfrac{3}{2}`$. This is again the symmetric spin state so we’ll need to make the space state antisymmetric. We now have the truly nasty problem of figuring out which total $`\ell`$ states are totally antisymmetric. All I have to say is $`3 \otimes 3 \otimes 3`$ = $`7_{S} \oplus 5_{MS} \oplus 3_{MS} \oplus 5_{MA} \oplus 3_{MA} \oplus 1_{A} \oplus 3_{MS}`$. Here MS means mixed symmetric. That is; it is symmetric under the interchange of two of the electrons but not with the third. Remember, adding two P states together, we get total $`\ell_{1 2}`$ = 0$`, 1 ,`$ 2. Adding another P state to each of these gives total $`\ell`$ = 1 for $`\ell_{1 2}`$ = 0, $`\ell`$ = 0$`, 1 ,`$ 2 for $`\ell_{1 2}`$ = 1, and $`\ell`$ = 1$`, 2 ,`$ 3 for $`\ell_{1 2}`$ = 2. Hund’s second rule, maximum $`\ell`$,<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=380" target="_blank" title="This page in the PDF"><sup>[p. 380]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p381" href="book.pdf#page=381" target="_blank" title="This page in the PDF"><sup>[p. 381]</sup></a></span> doesn’t play a role, again, because only the $`\ell`$ = 0 state is totally antisymmetric. Since the shell is just half full we couple to the the lowest $`j = | \ell - s | = \tfrac{3}{2}`$. So the ground state is<sup>4</sup>$`S_{\tfrac{3}{2}}`$.
 
 ```math
 m_{\ell} \quad e
@@ -268,9 +266,9 @@ s = \sum m_{s} = \tfrac{3}{2}
 
 The chart of nitrogen states is similar to the chart in the last section. Note that the chart method is clearly easier to use in this case. Our prediction of the ground state is again correct and a few space symmetric states end up a few eV higher than the ground state.
 
-![Figure 88 (p. 381)](images/fig-p381-1.png)
+![Figure 92 (p. 381)](images/fig-p381-1.png)
 
-_Figure 88 (p. 381)_
+_Figure 92 (p. 381)_
 
 <div align="right"><a href="book.pdf#page=381" target="_blank" title="This page in the PDF"><sup>[p. 381]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">

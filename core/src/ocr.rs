@@ -970,6 +970,8 @@ fn read_tables(book: &mut crate::Book, pdf: &std::path::Path) {
     // a picture that is no table of rows and columns)
     let read_before = |key: &str| std::fs::read_to_string(dir.join(format!("{key}.cells"))).is_ok_and(|t| t.is_empty() || t.starts_with("aligned 2\n"));
     type Found = Vec<(usize, usize, String, u32, crate::layout::Figure)>;
+    // (on the page itself: see `layout::Page::shift`)
+    let shifts = book.shifts.clone();
     let read = |found: &Found, ruled: bool| {
         let todo: Vec<_> = found.iter().filter(|t| !read_before(&t.2)).collect();
         if todo.is_empty() {
@@ -986,7 +988,7 @@ fn read_tables(book: &mut crate::Book, pdf: &std::path::Path) {
             let _ = Command::new("pdftoppm")
                 .args(["-png", "-singlefile", "-r", "300"])
                 .args(["-f", &page.to_string(), "-l", &page.to_string()])
-                .args(["-x", &px(area.left - pad).to_string(), "-y", &px(area.top - pad).to_string()])
+                .args(["-x", &px(area.left + shifts.get(page).copied().unwrap_or(0.0) - pad).to_string(), "-y", &px(area.top - pad).to_string()])
                 .args(["-W", &px(area.right - area.left + 2.0 * pad).to_string(), "-H", &px(area.bottom - area.top + 2.0 * pad).to_string()])
                 .arg(pdf)
                 .arg(pending.join(key))

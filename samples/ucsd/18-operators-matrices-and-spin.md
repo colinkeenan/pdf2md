@@ -101,13 +101,7 @@ The bra vector is the conjugate transpose of the ket vector. The both represent 
 
 # <a id="s-18-2-the-angular-momentum-matrices"></a>18.2 The Angular Momentum Matrices\*
 
-An important case of the use of the matrix form of operators is that of Angular Momentum (See Section14.1) Assume we have an atomic state with $`\ell`$ = 1 (fixed) but $`m`$ free. We may use the
-
-<div align="right"><a href="book.pdf#page=248" target="_blank" title="This page in the PDF"><sup>[p. 248]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p249" href="book.pdf#page=249" target="_blank" title="This page in the PDF"><sup>[p. 249]</sup></a>
-
-eigenstates of $`L_{z}`$ as a basis for our states and operators. Ignoring the (fixed) radial part of the wavefunction, our state vectors for $`\ell`$ = 1 must be a linear combination of the $`Y_{1 m}`$
+An important case of the use of the matrix form of operators is that of Angular Momentum (See Section14.1) Assume we have an atomic state with $`\ell`$ = 1 (fixed) but $`m`$ free. We may use the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=248" target="_blank" title="This page in the PDF"><sup>[p. 248]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p249" href="book.pdf#page=249" target="_blank" title="This page in the PDF"><sup>[p. 249]</sup></a></span> eigenstates of $`L_{z}`$ as a basis for our states and operators. Ignoring the (fixed) radial part of the wavefunction, our state vectors for $`\ell`$ = 1 must be a linear combination of the $`Y_{1 m}`$
 
 ```math
 \psi = \psi_{+} Y_{1 1} + \psi_{0} Y_{1 0} + \psi_{-} Y_{1 1}
@@ -213,11 +207,7 @@ We will derive the Hamiltonian terms added when an atom is put in a magnetic fie
 H = - \vec{\mu} \cdot \vec{B} .
 ```
 
-<div align="center">
-
 For the **orbital angular momentum** in a normal atom, the magnetic moment is
-
-</div>
 
 ```math
 \vec{\mu} = \frac{- e}{2 mc} \vec{L} .
@@ -266,25 +256,25 @@ A magnet with a **strong gradient to the field** is shown below.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p252" href="book.pdf#page=252" target="_blank" title="This page in the PDF"><sup>[p. 252]</sup></a>
 
-![Figure 68 (p. 252)](images/fig-p252-1.png)
+![Figure 71 (p. 252)](images/fig-p252-1.png)
 
-_Figure 68 (p. 252)_
+_Figure 71 (p. 252)_
 
 Lets assume the field gradient is in the z direction.
 
 In the Stern-Gerlach experiment, a **beam of atoms** (assume $`\ell`$ = 1) is sent into a magnet with a strong field gradient. The atoms come from an oven through some collimator to form a beam. The beam is said to be unpolarized since the three m states are equally likely no particular state has been prepared. An unpolarized, $`\ell`$ = 1 beam of atoms will be split into the three beams (of equal intensity) corresponding to the different eigenvalues of $`L_{z}`$.
 
-![Figure 69 (p. 252)](images/fig-p252-2.png)
+![Figure 72 (p. 252)](images/fig-p252-2.png)
 
-_Figure 69 (p. 252)_
+_Figure 72 (p. 252)_
 
 The atoms in the top beam are in the $`m`$ = 1 state. If we put them through another Stern-Gerlach apparatus, they will **all** go into the top beam again. Similarly for the middle beam in the $`m`$ = 0 state and the lower beam in the $`m = - 1`$ state.
 
 We can make a **fancy Stern-Gerlach apparatus** which puts the beam back together as shown below.
 
-![Figure 70 (p. 252)](images/fig-p252-3.png)
+![Figure 73 (p. 252)](images/fig-p252-3.png)
 
-_Figure 70 (p. 252)_
+_Figure 73 (p. 252)_
 
 ```math
 \begin{Bmatrix} + \\ 0 \\ - \end{Bmatrix}_{z} \to
@@ -298,9 +288,9 @@ We can represent the apparatus by the symbol to the right.
 
 We can use this apparatus to **prepare an eigenstate**. The apparatus below picks out the $`m`$ = 1 state
 
-![Figure 71 (p. 253)](images/fig-p253-1.png)
+![Figure 74 (p. 253)](images/fig-p253-1.png)
 
-_Figure 71 (p. 253)_
+_Figure 74 (p. 253)_
 
 ```math
 \begin{aligned} & \quad 0 | \quad \to \\ & \quad -|_{z} \end{aligned}
@@ -316,9 +306,9 @@ where we are writing the states according to the $`m`$ value, either +, -, or 0.
 
 An apparatus which blocks both the + and - beams
 
-![Figure 72 (p. 253)](images/fig-p253-2.png)
+![Figure 75 (p. 253)](images/fig-p253-2.png)
 
-_Figure 72 (p. 253)_
+_Figure 75 (p. 253)_
 
 ```math
 0_{z} \to
@@ -544,11 +534,7 @@ Note that the operator for a rotation through 2$`\pi`$ radians is minus the iden
 
 \* See Example 18.10.12: The eigenvectors of $`S_{u} . *`$
 
-As for orbital angular momentum $`( \vec{L} )`$, there is also a **magnetic moment** associated with internal
-
-```math
-\text{ angular momentum } ( \vec{S} ) .
-```
+As for orbital angular momentum $`( \vec{L} )`$, there is also a **magnetic moment** associated with internal angular momentum $`( \vec{S} )`$.
 
 ```math
 \vec{\mu}_{spin} = - \frac{eg}{2 mc} \vec{S}
@@ -1384,9 +1370,9 @@ In basic NMR, a strong static B field is applied. A spin $`\frac{1}{2}`$ proton 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p272" href="book.pdf#page=272" target="_blank" title="This page in the PDF"><sup>[p. 272]</sup></a>
 
-![Figure 73 (p. 272)](images/fig-p272-1.png)
+![Figure 76 (p. 272)](images/fig-p272-1.png)
 
-_Figure 73 (p. 272)_
+_Figure 76 (p. 272)_
 
 As we derived, the Hamiltonian is
 
@@ -1424,13 +1410,7 @@ The **solution** (see section 18.11.8) of these equations represents and early e
 \frac{d}{dt} ( be^{i\omega_{0} t} ) = \frac{i\omega_{1}}{2} ( e^{i ( \omega + 2 \omega_{0} ) t} + e^{- i ( \omega - 2 \omega_{0} t )} )
 ```
 
-Terms that oscillate rapidly will average to zero. The first term oscillates very rapidly. The second term will only cause significant transitions if $`\omega \approx 2 \omega_{0}`$. Note that this is exactly the condition that
-
-<div align="right"><a href="book.pdf#page=272" target="_blank" title="This page in the PDF"><sup>[p. 272]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p273" href="book.pdf#page=273" target="_blank" title="This page in the PDF"><sup>[p. 273]</sup></a>
-
-requires the energy of the photons in the EM field $`E = \hbar \omega`$ to be equal to the energy difference between the two spin states ∆$`E`$ = 2$`\hbar \omega_{0}`$. The conservation of energy condition must be satisfied well enough to get a significant transition rate. Actually we will find later that for rapid transitions, energy conservation does not have to be exact.
+Terms that oscillate rapidly will average to zero. The first term oscillates very rapidly. The second term will only cause significant transitions if $`\omega \approx 2 \omega_{0}`$. Note that this is exactly the condition that<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=272" target="_blank" title="This page in the PDF"><sup>[p. 272]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p273" href="book.pdf#page=273" target="_blank" title="This page in the PDF"><sup>[p. 273]</sup></a></span> requires the energy of the photons in the EM field $`E = \hbar \omega`$ to be equal to the energy difference between the two spin states ∆$`E`$ = 2$`\hbar \omega_{0}`$. The conservation of energy condition must be satisfied well enough to get a significant transition rate. Actually we will find later that for rapid transitions, energy conservation does not have to be exact.
 
 So we have proven that we should set the frequency $`\omega`$ of our EM wave according to the energy difference between the two spin states. This allows us to cause transitions to the higher energy state. In NMR, we observe the transitions back to the lower energy state. These emit EM radiation at the same frequency and we can detect it after the stronger input pulse ends (or by more complex methods). We don’t yet know why the higher energy state will spontaneously decay to the lower energy state. To calculate this, we will have to quantize the field. But we already see that the energy terms $`e^{- iEt/ \hbar}`$ of standard wave mechanics will require energy conservation with photon energies of $`E = \hbar \omega`$.
 
@@ -1592,11 +1572,11 @@ e^{i\theta L_{y} / \hbar} = \sum_{n = 0}^{\infty} \frac{\left( \frac{i\theta L_{
 
 All the odd powers are the same. All the nonzero even powers are the same. The $`\hbar`$s all cancel out. We now must look at the sums for each term in the matrix and identify the function it represents.
 
-$`•`$ The $`n`$ = 0 term contributes 1 on the diagonals.
+$`\bullet`$ The $`n`$ = 0 term contributes 1 on the diagonals.
 
-$`•`$ The $`n`$ = 1$`, 3 , 5 ,\dots`$ terms sum to $`\sin ( \theta ) \left( \tfrac{iL_{y}}{\hbar} \right)`$.
+$`\bullet`$ The $`n`$ = 1$`, 3 , 5 ,\dots`$ terms sum to $`\sin ( \theta ) \left( \tfrac{iL_{y}}{\hbar} \right)`$.
 
-$`•`$ The $`n`$ = 2$`, 4 , 6 ,\dots`$ terms (with a -1 in the matrix) are nearly the series for $`\frac{1}{2} \cos ( \theta )`$. The $`n`$ = 0 term is is missing so subtract 1. The middle matrix element is twice the other even terms.
+$`\bullet`$ The $`n`$ = 2$`, 4 , 6 ,\dots`$ terms (with a -1 in the matrix) are nearly the series for $`\frac{1}{2} \cos ( \theta )`$. The $`n`$ = 0 term is is missing so subtract 1. The middle matrix element is twice the other even terms.
 
 ```math
 e^{i\theta L_{y} / \hbar} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} + \sin ( \theta ) \frac{1}{\sqrt{2}} \begin{pmatrix} 0 & 1 & 0 \\ - 1 & 0 & 1 \\ 0 & - 1 & 0 \end{pmatrix} + \frac{1}{2} ( \cos ( \theta ) - 1 ) \begin{pmatrix} 1 & 0 & - 1 \\ 0 & 2 & 0 \\ - 1 & 0 & 1 \end{pmatrix}
@@ -1890,11 +1870,7 @@ Find the time development (matrix) operator $`e^{- iHt/ \hbar}`$ in the usual ba
 1 + i
 ```
 
-<div align="center">
-
 probability that a measurement of the $`x`$ component of spin yields +$`\frac{1}{2}`$?
-
-</div>
 
 ```math
 i
@@ -1922,19 +1898,11 @@ P\psi_{1} = - \psi_{2} \quad P\psi_{2} = - \psi_{1}
 
 What are the properly normalized states that are eigenfunctions of H and P? What are their energies?
 
-<div align="center">
-
 11. What are the eigenvectors and eigenvalues for the spin $`\frac{1}{2}`$ operator $`S_{x} + S_{z}`$?
-
-</div>
 
 12. A spin $`\frac{1}{2}`$ object is in an eigenstate of $`S_{y}`$ with eigenvalue $`\frac{\hbar}{2}`$ at t=0. The particle is in a magnetic field **B** = $`( 0 , 0 ,B )`$ which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{z}`$. Find the probability to measure $`S_{y} = \tfrac{\hbar}{2}`$ as a function of time.
 
-<div align="center">
-
 13. A spin 1 system is in the following state, (in the usual $`L_{z}`$ eigenstate basis):
-
-</div>
 
 ```math
 \chi = \frac{1}{\sqrt{5}} \begin{pmatrix} i \\ \sqrt{2} \\ 1 + i \end{pmatrix} .
@@ -1944,10 +1912,10 @@ What is the probability that a measurement of $`L_{x}`$ yields 0? What is the pr
 
 14. A spin $`\frac{1}{2}`$ object is in an eigenstate of $`S_{z}`$ with eigenvalue $`\frac{\hbar}{2}`$ at t=0. The particle is in a magnetic field **B** = (0$`,B, 0`$) which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{y}`$. Find the probability to measure $`S_{z} = \tfrac{\hbar}{2}`$ as a function of time.
 
-15. A spin 1 particle is placed in an external field in the $`u`$ direction such that the Hamiltonian is
+15. A spin 1 particle is placed in an external field in the $`u`$ direction such that the Hamiltonian is given by
 
 ```math
-\text{ given by } \quad H = \alpha \left( \frac{\sqrt{3}}{2} S_{x} + \frac{1}{2} S_{y} \right)
+H = \alpha \left( \frac{\sqrt{3}}{2} S_{x} + \frac{1}{2} S_{y} \right)
 ```
 
 Find the energy eigenstates and eigenvalues.

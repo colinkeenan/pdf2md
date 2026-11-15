@@ -111,22 +111,18 @@ p^{( op )} = p.
 
 The $`( op )`$ notation used above is usually dropped. If we see the variable $`p`$, use of the operator is implied (except in state written in terms of $`p`$ like $`\varphi ( p )`$).
 
-**Gasiorowicz Chapter 3**
+## <a id="s-gasiorowicz-chapter-3"></a>Gasiorowicz Chapter 3
 
 **Griffiths doesn’t cover this.**
 
-**Cohen-Tannoudji et al. Chapter**
+## <a id="s-cohen-tannoudji-et-al-chapter"></a>Cohen-Tannoudji et al. Chapter
 
 # <a id="s-6-3-expectation-values"></a>6.3 Expectation Values
 
-Operators allow us to compute the expectation value of some physics quantity given the wavefunction. If a particle is in the state $`\psi ( x,t )`$, the normal way to **compute the expectation value** of
+Operators allow us to compute the expectation value of some physics quantity given the wavefunction. If a particle is in the state $`\psi ( x,t )`$, the normal way to **compute the expectation value** of $`f ( x )`$ is
 
 ```math
-f ( x ) \text{ is }_{\infty \infty}
-```
-
-```math
-\langle f ( x ) \rangle_{\psi} = \int_{-\infty} P ( x ) f ( x ) dx = \int_{-\infty} \psi^{*} ( x ) \psi ( x ) f ( x ) dx.
+\langle f ( x ) \rangle_{\psi} = \int_{-\infty}^{\infty} P ( x ) f ( x ) dx = \int_{-\infty}^{\infty} \psi^{*} ( x ) \psi ( x ) f ( x ) dx.
 ```
 
 We can move the $`f ( x )`$ between just before $`\psi`$ anticipating the use of linear operators.
@@ -157,11 +153,11 @@ For any physical quantity $`v`$, the expectation value of $`v`$ in an arbitrary 
 
 **The expectation values of physical quantities should be real**.
 
-## <a id="s-gasiorowicz-chapter-3"></a>Gasiorowicz Chapter 3
+## <a id="s-gasiorowicz-chapter-3-2"></a>Gasiorowicz Chapter 3
 
 ## <a id="s-griffiths-chapter-1"></a>Griffiths Chapter 1
 
-## <a id="s-cohen-tannoudji-et-al-chapter"></a>Cohen-Tannoudji et al. Chapter
+## <a id="s-cohen-tannoudji-et-al-chapter-2"></a>Cohen-Tannoudji et al. Chapter
 
 # <a id="s-6-4-dirac-bra-ket-notation"></a>6.4 Dirac Bra-ket Notation
 
@@ -203,11 +199,7 @@ We will now **compute the commutator** between $`p`$ and $`x`$. Because $`p`$ is
 [ p,x ] \psi ( x ) = \frac{\hbar}{i} \left( \psi ( x ) + x \frac{\partial \psi ( x )}{\partial x} - x \frac{\partial \psi ( x )}{\partial x} \right) = \frac{\hbar}{i} \psi ( x )
 ```
 
-<div align="center">
-
 So, removing the $`\psi ( x )`$ we used for computational purposes, we get the commutator.
-
-</div>
 
 ```math
 [ p,x ] = \frac{\hbar}{i}
@@ -238,11 +230,11 @@ The commutator is the same in any representation.
 \end{array}
 ```
 
-**Gasiorowicz Chapter 3**
+## <a id="s-gasiorowicz-chapter-3-3"></a>Gasiorowicz Chapter 3
 
-**Griffiths Chapter 3**
+## <a id="s-griffiths-chapter-3"></a>Griffiths Chapter 3
 
-**Cohen-Tannoudji et al. Chapter**
+## <a id="s-cohen-tannoudji-et-al-chapter-3"></a>Cohen-Tannoudji et al. Chapter
 
 # <a id="s-6-6-derivations-and-computations"></a>6.6 Derivations and Computations
 
@@ -487,19 +479,19 @@ Find the expected value of $`x`$ as a function of time. Find the expected value 
 <a id="p125" href="book.pdf#page=125" target="_blank" title="This page in the PDF"><sup>[p. 125]</sup></a>
 
 ```math
-• O_{1} \psi ( x ) = 1 /\psi ( x )
+\bullet O_{1} \psi ( x ) = 1 /\psi ( x )
 ```
 
 ```math
-• O_{2} \psi ( x ) = \tfrac{\partial \psi ( x )}{\partial x}
+\bullet O_{2} \psi ( x ) = \tfrac{\partial \psi ( x )}{\partial x}
 ```
 
 ```math
-• O_{3} \psi ( x ) = x^{2} \psi ( x )
+\bullet O_{3} \psi ( x ) = x^{2} \psi ( x )
 ```
 
 ```math
-• O_{4} \psi ( x ) = - \psi ( x + a )
+\bullet O_{4} \psi ( x ) = - \psi ( x + a )
 ```
 
 4. For a free particle, the total energy operator H is given by $`H = p^{2} / 2 m`$. Compute the commutators [H,x] and [H,p]. If a particle is in a state of definite energy, what do these commutators tell you about how well we know the particle’s position and momentum?
@@ -508,9 +500,7 @@ Find the expected value of $`x`$ as a function of time. Find the expected value 
 
 6. Compute the commutator $`[ H,x^{2} ]`$ where $`H`$ is the Hamiltonian for a free particle.
 
-```math
-7 .
-```
+7.
 
 ---
 

@@ -11,7 +11,7 @@
 
 **Gasciorawicz does not really this.**
 
-**Rohlf Chapters 5**
+## <a id="s-rohlf-chapters-5"></a>Rohlf Chapters 5
 
 **Griffiths doesn’t cover this.**
 
@@ -19,9 +19,9 @@
 
 **Water waves** will exhibit a diffractive interference pattern in a 2 slit experiment as diagrammed below. The diagram shows the crests of the water waves at some time. Downstream from the slits, we will see constructive interference where the waves from the slits are in phase and destructive interference where they are 180 degrees out of phase, for example where a crest from one slit meets a trough from the other. The plot labeled $`I_{1 2}`$ shows the interference pattern at the location of the absorber. **Diffraction is a simple wave phenomenon**.
 
-![Figure 18 (p. 83)](images/fig-p083-1.png)
+![Figure 20 (p. 83)](images/fig-p083-1.png)
 
-_Figure 18 (p. 83)_
+_Figure 20 (p. 83)_
 
 The **diffraction of light** was a well known phenomenon by the end of the 19th century and was well explained in classical ElectroMagnetic theory since light was held to be a EM wave. The diffraction pattern from two narrow slits is particularly easy to understand in terms of waves. The setup is shown in the diagram below.
 
@@ -29,23 +29,17 @@ The **diffraction of light** was a well known phenomenon by the end of the 19th 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p84" href="book.pdf#page=84" target="_blank" title="This page in the PDF"><sup>[p. 84]</sup></a>
 
-![Figure 19 (p. 84)](images/fig-p084-1.png)
+![Figure 21 (p. 84)](images/fig-p084-1.png)
 
-_Figure 19 (p. 84)_
+_Figure 21 (p. 84)_
 
 EM waves of wavelength $`\lambda`$ are emitted from a single light-source, like a laser. They travel to two narrow slits, (for simplicity) equidistant from the source, and a distance $`d`$ apart. Light travels from the slits to a detection screen. A diffraction pattern can be seen on the detection screen, like the one shown in the picture below.
 
-![Figure 20 (p. 84)](images/fig-p084-2.png)
+![Figure 22 (p. 84)](images/fig-p084-2.png)
 
-_Figure 20 (p. 84)_
+_Figure 22 (p. 84)_
 
-The center of the diffraction pattern occurs at the location on the screen equidistant from each slit where the **waves from the two slits are in phase** (because they have traveled exactly the same distance) and the fields add, so the waves **interfere constructively** and there is an intensity maximum. Some distance off this center of the diffraction pattern, there will be destructive interference between waves from the two slits and the intensity will be zero. This will occur when
-
-<div align="right"><a href="book.pdf#page=84" target="_blank" title="This page in the PDF"><sup>[p. 84]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p85" href="book.pdf#page=85" target="_blank" title="This page in the PDF"><sup>[p. 85]</sup></a>
-
-the distance traveled by two waves differs by $`\lambda / 2`$, so the **waves are 180 degrees out of phase** **and the fields from the two slits cancel**.
+The center of the diffraction pattern occurs at the location on the screen equidistant from each slit where the **waves from the two slits are in phase** (because they have traveled exactly the same distance) and the fields add, so the waves **interfere constructively** and there is an intensity maximum. Some distance off this center of the diffraction pattern, there will be destructive interference between waves from the two slits and the intensity will be zero. This will occur when<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=84" target="_blank" title="This page in the PDF"><sup>[p. 84]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p85" href="book.pdf#page=85" target="_blank" title="This page in the PDF"><sup>[p. 85]</sup></a></span> the distance traveled by two waves differs by $`\lambda / 2`$, so the **waves are 180 degrees out of phase** **and the fields from the two slits cancel**.
 
 We can compute this location by looking at the above diagram. We assume that the distance to the screen is much greater than $`d`$. For light detected at an angle $`\theta`$, the extra distance traveled from slit 1 is just $`d \sin \theta`$. So the angle of the **first minimum** (or null) can be found from the equation $`d \sin \theta = \tfrac{\lambda}{2}`$.
 
@@ -53,9 +47,9 @@ More generally we will get a **maximum if the paths from the slits differ by an 
 
 Although it is very difficult because electrons are charged, **2 slit electron diffraction** has also been observed.
 
-![Figure 21 (p. 85)](images/fig-p085-1.png)
+![Figure 23 (p. 85)](images/fig-p085-1.png)
 
-_Figure 21 (p. 85)_
+_Figure 23 (p. 85)_
 
 So, all kinds of particles seem to diffract indicating there is some kind of wave involved. We will now continue with some thought experiments on diffraction to illustrate the physics that Quantum Mechanics needed to match.
 
@@ -77,9 +71,9 @@ There are many other examples of diffraction. The picture below shows diffractio
 
 First we see diffraction from a **single crystal**.
 
-![Figure 22 (p. 86)](images/fig-p086-1.png)
+![Figure 24 (p. 86)](images/fig-p086-1.png)
 
-_Figure 22 (p. 86)_
+_Figure 24 (p. 86)_
 
 Diffraction off **polycrystalline material** gives concentric rings instead of spots.
 
@@ -87,9 +81,9 @@ Diffraction off **polycrystalline material** gives concentric rings instead of s
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p87" href="book.pdf#page=87" target="_blank" title="This page in the PDF"><sup>[p. 87]</sup></a>
 
-![Figure 23 (p. 87)](images/fig-p087-1.png)
+![Figure 25 (p. 87)](images/fig-p087-1.png)
 
-_Figure 23 (p. 87)_
+_Figure 25 (p. 87)_
 
 Diffraction from crystals is a powerful tool. First we see **x-ray diffraction from a single Sodium** **Crystal** which has periodic locations of the atoms.
 
@@ -97,9 +91,9 @@ Diffraction from crystals is a powerful tool. First we see **x-ray diffraction f
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p88" href="book.pdf#page=88" target="_blank" title="This page in the PDF"><sup>[p. 88]</sup></a>
 
-![Figure 24 (p. 88)](images/fig-p088-1.png)
+![Figure 26 (p. 88)](images/fig-p088-1.png)
 
-_Figure 24 (p. 88)_
+_Figure 26 (p. 88)_
 
 Another example of diffraction is shown below. Here **neutrons diffract from a single Sodium** **crystal**.
 
@@ -107,9 +101,9 @@ Another example of diffraction is shown below. Here **neutrons diffract from a s
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p89" href="book.pdf#page=89" target="_blank" title="This page in the PDF"><sup>[p. 89]</sup></a>
 
-![Figure 25 (p. 89)](images/fig-p089-1.png)
+![Figure 27 (p. 89)](images/fig-p089-1.png)
 
-_Figure 25 (p. 89)_
+_Figure 27 (p. 89)_
 
 # <a id="s-3-4-the-debroglie-wavelength"></a>3.4 The DeBroglie Wavelength
 
@@ -227,9 +221,9 @@ So, for example, compute the wavelength of a 100 eV electron. This is non-relati
 
 Richard Feynman (Nobel Prize for Quantum ElectroDynamics...) presents several thought experiments in his Lectures on Physics, third volume.
 
-![Figure 26 (p. 91)](images/fig-p091-1.png)
+![Figure 28 (p. 91)](images/fig-p091-1.png)
 
-_Figure 26 (p. 91)_
+_Figure 28 (p. 91)_
 
 For our first thought experiment, we will consider **two silt diffraction of light**. Assume that instead of using the screen, I use a **sensitive photo-detector**. I measure the intensity of light as a function of position near the screen and find the same set of maxima and minima that I did using my eyes.
 
@@ -237,9 +231,9 @@ For our first thought experiment, we will consider **two silt diffraction of lig
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p92" href="book.pdf#page=92" target="_blank" title="This page in the PDF"><sup>[p. 92]</sup></a>
 
-![Figure 27 (p. 92)](images/fig-p092-1.png)
+![Figure 29 (p. 92)](images/fig-p092-1.png)
 
-_Figure 27 (p. 92)_
+_Figure 29 (p. 92)_
 
 Now lets turn down the intensity of the light source. For very low intensity I find that my detector collects **one photon at a time**. It never collects half a photon. (With the right detector, I could again verify that for each photon, the Photoelectric effect is seen and that $`E = h\nu`$.) So the waves that are diffracting are somehow made up of photons. With a **low enough intensity**, I can assure that **only one photon** is present in the apparatus at any time. I can operate my detector and collect data over a long time, summing up the number of photons detected as a function of position. What will I get for the distribution? I get exactly the same distribution as before with maxima and minima. No matter how low the intensity, (1 particle/ minute!) **we still see diffraction**. We never detect a fraction of an electron or a photon, **only integer numbers**.
 
@@ -251,9 +245,9 @@ Lets turn to **electron diffraction** for a minute. In our thought experiment we
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p93" href="book.pdf#page=93" target="_blank" title="This page in the PDF"><sup>[p. 93]</sup></a>
 
-![Figure 28 (p. 93)](images/fig-p093-1.png)
+![Figure 30 (p. 93)](images/fig-p093-1.png)
 
-_Figure 28 (p. 93)_
+_Figure 30 (p. 93)_
 
 We use our detector to measure the diffraction pattern similar to the one for photons labeled $`P_{1 2}`$ below. If we **cover up slit 2** we get the distribution labeled $`P_{1}`$ and if we /emphtextcover up slit 1 we get the intensity distribution labeled $`P_{2}`$. We could have done the same with our photons above.
 
@@ -263,9 +257,9 @@ Now we will try to see which slit each electron passes through. We put a **brigh
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p94" href="book.pdf#page=94" target="_blank" title="This page in the PDF"><sup>[p. 94]</sup></a>
 
-![Figure 29 (p. 94)](images/fig-p094-1.png)
+![Figure 31 (p. 94)](images/fig-p094-1.png)
 
-_Figure 29 (p. 94)_
+_Figure 31 (p. 94)_
 
 What distribution do we see now? Actually we will see $`P_{1} + P_{2}`$ if we can tell which slit the electron went through. Our **observation of the electron as it passes through the slit has changed** **the resulting intensity distribution**. If we turn the light off, we go back to measuring $`P_{1 2}`$.
 
@@ -281,15 +275,15 @@ Finally, we will do a two slit **diffraction experiment with bullets**. We must 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p95" href="book.pdf#page=95" target="_blank" title="This page in the PDF"><sup>[p. 95]</sup></a>
 
-![Figure 30 (p. 95)](images/fig-p095-1.png)
+![Figure 32 (p. 95)](images/fig-p095-1.png)
 
-_Figure 30 (p. 95)_
+_Figure 32 (p. 95)_
 
 No matter what distance between the slits we choose, we **never observe diffraction** for the bullets. They always give the $`P_{1} + P_{2}`$ pattern (probably different for the bullets). Can you explain this? The bullet’s wavelength is much much smaller than the actual size of the bullet.
 
 Why didn’t we see diffraction for the bullets. Bullets are **macroscopic objects** with huge momenta compared to individual particles. High momentum implies a small deBroglie wavelength. So to see diffraction, we must make the distance between the slits much smaller than we did for the photons (perhaps $`10^{20}`$ times smaller). But bullets are also big. They only fit through big slits which must them be further apart than the slits used for photons. For bullets, **the wavelength is tiny** **compared to any slit a bullet would fit through**. Therefore no bullet diffraction is possible.
 
-**Feynman Lectures on Physics, Vol. III Chapter 1**
+## <a id="s-feynman-lectures-on-physics-vol-iii-chapter-1"></a>Feynman Lectures on Physics, Vol. III Chapter 1
 
 # <a id="s-3-6-examples"></a>3.6 Examples
 

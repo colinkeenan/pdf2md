@@ -125,6 +125,7 @@ pub fn sym(c: char) -> Option<&'static str> {
         '∇' => "\\nabla ",
         '∫' => "\\int ",
         '∮' => "\\oint ",
+        '•' => "\\bullet ",
         '∑' => "\\sum ",
         '∏' => "\\prod ",
         '√' => "\\surd ",

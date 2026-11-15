@@ -187,13 +187,7 @@ R_{i \to f} = \frac{2 \pi}{\hbar} \int \frac{Vd \Omega_{f} k_{f}^{2} dk_{f}}{( 2
 = \frac{1}{4 \pi^{2} \hbar^{3} V} \int d \Omega_{f} \mu k_{f} \left| \tilde{V} ( \vec{\Delta} ) \right|^{2}
 ```
 
-We now need to convert this transition rate to a cross section. Our wave functions are normalize to one particle per unit volume and we should modify that so that there is a flux of one particle
-
-<div align="right"><a href="book.pdf#page=422" target="_blank" title="This page in the PDF"><sup>[p. 422]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p423" href="book.pdf#page=423" target="_blank" title="This page in the PDF"><sup>[p. 423]</sup></a>
-
-per square centimeter per second to get a cross section. To do this we set the volume to be $`V`$ = $`( 1 cm^{2} ) ( v_{rel} ) ( 1 \quad second )`$. The relative velocity is just the momentum divided by the reduced mass.
+We now need to convert this transition rate to a cross section. Our wave functions are normalize to one particle per unit volume and we should modify that so that there is a flux of one particle<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=422" target="_blank" title="This page in the PDF"><sup>[p. 422]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p423" href="book.pdf#page=423" target="_blank" title="This page in the PDF"><sup>[p. 423]</sup></a></span> per square centimeter per second to get a cross section. To do this we set the volume to be $`V`$ = $`( 1 cm^{2} ) ( v_{rel} ) ( 1 \quad second )`$. The relative velocity is just the momentum divided by the reduced mass.
 
 ```math
 \sigma = \frac{1}{4 \pi^{2} \hbar^{3} v_{rel}} \int d \Omega_{f} \mu k_{f} \left| \tilde{V} ( \vec{\Delta} ) \right|^{2}

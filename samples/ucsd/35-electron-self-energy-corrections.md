@@ -10,13 +10,11 @@ At this point we must take the unpleasant position that this (constant) **infini
 
 We can **calculate the lowest order self energy corrections represented by the two Feyn-** **man diagrams** below.
 
-In these, a photon is emitted then reabsorbed. As we now know, both of these amplitudes are of order $`e^{2}`$. The first one comes from the $`A^{2}`$ term in which the number of photons changes by zero or two and the second comes from the $`\vec{A} \cdot \vec{p}`$ term in second order time dependent perturbation theory. A calculation of the first diagram will give the same result for a free electron and a bound electron, while the second diagram will give different results because the intermediate states are different if
+![Figure 103 (p. 472)](images/fig-p472-1.png)
 
-<div align="right"><a href="book.pdf#page=472" target="_blank" title="This page in the PDF"><sup>[p. 472]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p473" href="book.pdf#page=473" target="_blank" title="This page in the PDF"><sup>[p. 473]</sup></a>
+_Figure 103 (p. 472)_
 
-an electron is bound than they are if it is free. We will therefore **compute the amplitude from** **the second diagram**.
+In these, a photon is emitted then reabsorbed. As we now know, both of these amplitudes are of order $`e^{2}`$. The first one comes from the $`A^{2}`$ term in which the number of photons changes by zero or two and the second comes from the $`\vec{A} \cdot \vec{p}`$ term in second order time dependent perturbation theory. A calculation of the first diagram will give the same result for a free electron and a bound electron, while the second diagram will give different results because the intermediate states are different if<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=472" target="_blank" title="This page in the PDF"><sup>[p. 472]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p473" href="book.pdf#page=473" target="_blank" title="This page in the PDF"><sup>[p. 473]</sup></a></span> an electron is bound than they are if it is free. We will therefore **compute the amplitude from** **the second diagram**.
 
 ```math
 H_{int} = - \frac{e}{mc} \vec{A} \cdot \vec{p}
@@ -328,13 +326,7 @@ If we use the Dirac theory, then we will be justified to move the cut-off up to 
 
 Note that the self-energy of the free electron depends on the momentum of the electron, so we cannot simply subtract it from our bound state calculation. (What $`p^{2}`$ would we choose?) Rather me **must account for the mass renormalization**. We **used the observed electron mass in** **the calculation** of the Hydrogen bound state energies. In so doing, we have already included some of the self energy correction and we must not double correct. This is the subtraction we must make.
 
-Its hard to keep all the minus signs straight in this calculation, particularly if we consider the bound and continuum electron states separately. The free particle correction to the electron mass is positive. Because we ignore the rest energy of the electron in our non-relativistic calculations, This makes a negative energy correction to both the bound $`( E = - \tfrac{1}{2 n^{2}} \alpha^{2} mc^{2} )`$ and continuum ($`E \approx \tfrac{p^{2}}{2 m}`$ ). Bound states and continuum states have the same fractional change in the energy. We need to add back in a positive term in ∆$`E_{n}`$ to avoid double counting of the self-energy correction. Since the
-
-<div align="right"><a href="book.pdf#page=478" target="_blank" title="This page in the PDF"><sup>[p. 478]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p479" href="book.pdf#page=479" target="_blank" title="This page in the PDF"><sup>[p. 479]</sup></a>
-
-bound state and continuum state terms have the same fractional change, it is convenient to just use $`\frac{p^{2}}{2 m}`$ for all the corrections.
+Its hard to keep all the minus signs straight in this calculation, particularly if we consider the bound and continuum electron states separately. The free particle correction to the electron mass is positive. Because we ignore the rest energy of the electron in our non-relativistic calculations, This makes a negative energy correction to both the bound $`( E = - \tfrac{1}{2 n^{2}} \alpha^{2} mc^{2} )`$ and continuum ($`E \approx \tfrac{p^{2}}{2 m}`$ ). Bound states and continuum states have the same fractional change in the energy. We need to add back in a positive term in ∆$`E_{n}`$ to avoid double counting of the self-energy correction. Since the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=478" target="_blank" title="This page in the PDF"><sup>[p. 478]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p479" href="book.pdf#page=479" target="_blank" title="This page in the PDF"><sup>[p. 479]</sup></a></span> bound state and continuum state terms have the same fractional change, it is convenient to just use $`\frac{p^{2}}{2 m}`$ for all the corrections.
 
 ```math
 \frac{p^{2}}{2 m_{obs}} = \frac{p^{2}}{2 m_{bare}} - Cp^{2}
@@ -350,6 +342,10 @@ Because we are correcting for the mass used to calculate the base energy of the 
 
 In 1947, Willis E. Lamb and R. C. Retherford used microwave techniques to determine the **splitting** **between the** $`2 S 1_{2}`$ **and** $`2 P_{2} 1`$ **states in Hydrogen** to have a frequency of 1.06 GHz, (a wavelength of about 30 cm). (The shift is now accurately measured to be 1057.864 MHz.) This is about the same size as the hyperfine splitting of the ground state.
 
+![Figure 104 (p. 479)](images/fig-p479-1.png)
+
+_Figure 104 (p. 479)_
+
 The technique used was quite interesting. They made a **beam of Hydrogen atoms in the** $`2 S 1`$ **state**, which has a very long lifetime because of selection rules. **Microwave radiation** with a<sup>2</sup> (fixed) frequency of 2395 MHz was used to cause transitions to the 2$`P 3_{2}`$ state and a **magnetic field** **was adjusted to shift the energy of the states** until the rate was largest. The **decay of the** $`2 P 3`$ **state to the ground state was observed** to determine the transition rate. From this, they were able to deduce the shift between the 2<sup>2</sup> $`S_{2} 1`$ and 2$`P 1_{2}`$ states.
 
 **Hans Bethe used non-relativistic quantum mechanics** to calculate the self-energy correction to account for this observation.
@@ -357,6 +353,10 @@ The technique used was quite interesting. They made a **beam of Hydrogen atoms i
 <div align="right"><a href="book.pdf#page=479" target="_blank" title="This page in the PDF"><sup>[p. 479]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p480" href="book.pdf#page=480" target="_blank" title="This page in the PDF"><sup>[p. 480]</sup></a>
+
+![Figure 105 (p. 480)](images/fig-p480-1.png)
+
+_Figure 105 (p. 480)_
 
 We now can compute the correction the same way he did.
 
@@ -514,13 +514,7 @@ So the **sum of the two gives**.
 
 The **dependence on** $`\omega_{min}`$ **cancels**. In this calculation, the $`mc^{2}`$ in the log is the outcome of the relativistic calculation, not the cutoff. The electric dipole approximation is even pretty good since we did not need to go up to large photon energies non-relativistically and no E1 approximation is needed for the relativistic part. That’s how we (and Bethe) got about the right answer.
 
-The **Lamb shift splits the** $`2 S 1`$ **and** $`2 P 1`$ **states which are otherwise degenerate**. Its origin is **purely from field theory**. The experimental<sup>2</sup> $`2`$ **measurement of the Lamb shift stimulated**
-
-<div align="right"><a href="book.pdf#page=482" target="_blank" title="This page in the PDF"><sup>[p. 482]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p483" href="book.pdf#page=483" target="_blank" title="This page in the PDF"><sup>[p. 483]</sup></a>
-
-**theorists to develop Quantum ElectroDynamics**. The correction increases the energy of s states. One may think of the physical origin as the electron becoming less pointlike as virtual photons are emitted and reabsorbed. Spreading the electron out a bit decreases the effect of being in the deepest part of the potential, right at the origin. Based on the energy shift, I estimate that the **electron in the 2s state is spread out by about 0.005 Angstroms**, much more than the size of the nucleus.
+The **Lamb shift splits the** $`2 S 1`$ **and** $`2 P 1`$ **states which are otherwise degenerate**. Its origin is **purely from field theory**. The experimental<sup>2</sup> $`2`$ **measurement of the Lamb shift stimulated**<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=482" target="_blank" title="This page in the PDF"><sup>[p. 482]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p483" href="book.pdf#page=483" target="_blank" title="This page in the PDF"><sup>[p. 483]</sup></a></span> **theorists to develop Quantum ElectroDynamics**. The correction increases the energy of s states. One may think of the physical origin as the electron becoming less pointlike as virtual photons are emitted and reabsorbed. Spreading the electron out a bit decreases the effect of being in the deepest part of the potential, right at the origin. Based on the energy shift, I estimate that the **electron in the 2s state is spread out by about 0.005 Angstroms**, much more than the size of the nucleus.
 
 The **anomalous magnetic moment of the electron**, $`g - 2`$, which can also be calculated in field theory, makes a small contribution to the Lamb shift.
 

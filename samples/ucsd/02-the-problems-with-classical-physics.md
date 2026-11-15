@@ -11,15 +11,15 @@ By the late nineteenth century the laws of physics were based on Mechanics and t
 
 Some of the problems leading to the development of Quantum Mechanics are listed here.
 
-$`•`$ Black Body Radiation (See section 2.1): Classical physics predicted that hot objects would instantly radiate away all their heat into electromagnetic waves. The calculation, which was based on Maxwell’s equations and Statistical Mechanics, showed that the radiation rate went to infinity as the EM wavelength went to zero, “The Ultraviolet Catastrophe”. Plank solved the problem by postulating that EM energy was emitted in quanta with $`E = h\nu`$.
+$`\bullet`$ Black Body Radiation (See section 2.1): Classical physics predicted that hot objects would instantly radiate away all their heat into electromagnetic waves. The calculation, which was based on Maxwell’s equations and Statistical Mechanics, showed that the radiation rate went to infinity as the EM wavelength went to zero, “The Ultraviolet Catastrophe”. Plank solved the problem by postulating that EM energy was emitted in quanta with $`E = h\nu`$.
 
-$`•`$ The Photoelectric Effect (See section 2.2): When light was used to knock electrons out of solids, the results were completely different than expected from Maxwell’s equations. The measurements were easy to explain (for Einstein) if light is made up of particles with the energies Plank postulated.
+$`\bullet`$ The Photoelectric Effect (See section 2.2): When light was used to knock electrons out of solids, the results were completely different than expected from Maxwell’s equations. The measurements were easy to explain (for Einstein) if light is made up of particles with the energies Plank postulated.
 
-$`•`$ Atoms: After Rutherford (See section 2.3) found that the positive charge in atoms was concentrated in a very tiny nucleus, classical physics predicted that the atomic electrons orbiting the nucleus would radiate their energy away and spiral into the nucleus. This clearly did not happen. The energy radiated by atoms (See section 2.4) also came out in quantized amounts in contradiction to the predictions of classical physics. The Bohr Atom (See section 2.4.1) postulated an angular momentum quantization rule, $`L = n \hbar`$ for $`n`$ = 1$`, 2 , 3 \dots`$, that gave the right result for hydrogen, but turned out to be wrong since the ground state of hydrogen has zero angular momentum. It took a full understanding of Quantum Mechanics to explain the atomic energy spectra.
+$`\bullet`$ Atoms: After Rutherford (See section 2.3) found that the positive charge in atoms was concentrated in a very tiny nucleus, classical physics predicted that the atomic electrons orbiting the nucleus would radiate their energy away and spiral into the nucleus. This clearly did not happen. The energy radiated by atoms (See section 2.4) also came out in quantized amounts in contradiction to the predictions of classical physics. The Bohr Atom (See section 2.4.1) postulated an angular momentum quantization rule, $`L = n \hbar`$ for $`n`$ = 1$`, 2 , 3 \dots`$, that gave the right result for hydrogen, but turned out to be wrong since the ground state of hydrogen has zero angular momentum. It took a full understanding of Quantum Mechanics to explain the atomic energy spectra.
 
-$`•`$ Compton Scattering (See section 2.6.3): When light was scattered off electrons, it behaved just like a particle but changes wave length in the scattering; more evidence for the particle nature of light and Plank’s postulate.
+$`\bullet`$ Compton Scattering (See section 2.6.3): When light was scattered off electrons, it behaved just like a particle but changes wave length in the scattering; more evidence for the particle nature of light and Plank’s postulate.
 
-$`•`$ Waves and Particles: In diffraction experiments,light was shown to behave like a wave while in experiments like the Photoelectric effect, light behaved like a particle. More difficult diffraction experiments showed that electrons (as well as the other particles) also behaved like a wave, yet we can only detect an integer number of electrons (or photons).
+$`\bullet`$ Waves and Particles: In diffraction experiments,light was shown to behave like a wave while in experiments like the Photoelectric effect, light behaved like a particle. More difficult diffraction experiments showed that electrons (as well as the other particles) also behaved like a wave, yet we can only detect an integer number of electrons (or photons).
 
 Quantum Mechanics incorporates a **wave-particle duality** and explains all of the above phenomena. In doing so, Quantum Mechanics changes our understanding of nature in fundamental ways. While the classical laws of physics are deterministic, QM is probabilistic. We can only predict the probability that a particle will be found in some region of space.
 
@@ -99,13 +99,7 @@ A good example of a black body is a cavity with a small hole in it. Any light in
 
 _Figure 6 (p. 66)_
 
-There is a simple relation between the energy density in a cavity, $`u ( \nu ,T )`$, and the black body emissive power of a black body which simply comes from an analysis of how much radiation, traveling at the
-
-<div align="right"><a href="book.pdf#page=66" target="_blank" title="This page in the PDF"><sup>[p. 66]</sup></a></div>
-<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p67" href="book.pdf#page=67" target="_blank" title="This page in the PDF"><sup>[p. 67]</sup></a>
-
-speed of light, will flow out of a hole in the cavity in one second.
+There is a simple relation between the energy density in a cavity, $`u ( \nu ,T )`$, and the black body emissive power of a black body which simply comes from an analysis of how much radiation, traveling at the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=66" target="_blank" title="This page in the PDF"><sup>[p. 66]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p67" href="book.pdf#page=67" target="_blank" title="This page in the PDF"><sup>[p. 67]</sup></a></span> speed of light, will flow out of a hole in the cavity in one second.
 
 ```math
 E ( \nu ,T ) = \frac{c}{4} u ( \nu ,T )
@@ -119,6 +113,10 @@ Rayleigh and Jeans **calculated** (see section 2.5.1) t he energy density (in EM
 u ( \nu ,T ) = \frac{8 \pi \nu^{2}}{c^{3}} kT
 ```
 
+![Figure 7 (p. 67)](images/fig-p067-1.png)
+
+_Figure 7 (p. 67)_
+
 Plank found a formula that fit the data well at both long and short wavelength.
 
 ```math
@@ -131,15 +129,15 @@ His formula fit the data so well that he tried to find a way to derive it. In a 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p68" href="book.pdf#page=68" target="_blank" title="This page in the PDF"><sup>[p. 68]</sup></a>
 
-![Figure 7 (p. 68)](images/fig-p068-1.png)
+![Figure 8 (p. 68)](images/fig-p068-1.png)
 
-_Figure 7 (p. 68)_
+_Figure 8 (p. 68)_
 
 It is interesting to note that classical EM waves would suck all the thermal energy out of matter, making the universe a very cold place for us. The figure below compares the two calculations to some data at $`T`$ = 1600 degrees. (It is also surprising that the start of the Quantum revolution came from Black Body radiation.)
 
-![Figure 8 (p. 68)](images/fig-p068-2.png)
+![Figure 9 (p. 68)](images/fig-p068-2.png)
 
-_Figure 8 (p. 68)_
+_Figure 9 (p. 68)_
 
 So the emissive power per unit area is
 
@@ -151,11 +149,7 @@ E ( \nu ,T ) = \frac{2 \pi \nu^{2}}{c^{2}} \frac{h\nu}{e^{h\nu /kT} - 1}
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p69" href="book.pdf#page=69" target="_blank" title="This page in the PDF"><sup>[p. 69]</sup></a>
 
-<div align="center">
-
 We can integrate this over frequency to get the total power radiated per unit area.
-
-</div>
 
 ```math
 R ( T ) = \frac{\pi^{2} c}{6 0 ( \hbar c )^{3}} k^{4} T^{4} = ( 5 . 6 7 \times 1 0^{- 8} W / m^{2} /^{◦} K^{4} ) T^{4}
@@ -169,23 +163,23 @@ R ( T ) = \frac{\pi^{2} c}{6 0 ( \hbar c )^{3}} k^{4} T^{4} = ( 5 . 6 7 \times 1
 
 The Photoelectric Effect shows that Plank’s hypothesis, used to fit the Black Body data, is actually correct for EM radiation. Einstein went further and proposed, in 1905, that light was made up of particles with energy related to the frequency of the light, $`E = h\nu`$. (He got his Nobel prize for the Photoelectric effect, not for Special or General Relativity.)
 
-![Figure 9 (p. 69)](images/fig-p069-1.png)
+![Figure 10 (p. 69)](images/fig-p069-1.png)
 
-_Figure 9 (p. 69)_
+_Figure 10 (p. 69)_
 
 <div align="right"><a href="book.pdf#page=69" target="_blank" title="This page in the PDF"><sup>[p. 69]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p70" href="book.pdf#page=70" target="_blank" title="This page in the PDF"><sup>[p. 70]</sup></a>
 
-![Figure 10 (p. 70)](images/fig-p070-1.png)
+![Figure 11 (p. 70)](images/fig-p070-1.png)
 
-_Figure 10 (p. 70)_
+_Figure 11 (p. 70)_
 
 When **light strikes a polished (metal) surface** electrons are ejected.
 
-![Figure 11 (p. 70)](images/fig-p070-2.png)
+![Figure 12 (p. 70)](images/fig-p070-2.png)
 
-_Figure 11 (p. 70)_
+_Figure 12 (p. 70)_
 
 Measurements were made of the **maximum electron energy versus light frequency** and light intensity. Classical physics predicted that the electron energy should increase with intensity, as the electric field increases. This is not observed. The electron energy is independent of intensity and depends linearly on the light frequency, as seen the the figure above. The kinetic energy of the electrons is given by Plank’s constant times the light frequency minus a **work function** $`W`$ which depends on the material.
 
@@ -203,9 +197,9 @@ This equation just expresses conservation of energy with $`h\nu`$ being the phot
 
 The classical theory of atoms held that electrons were bound to a large positive charge about the size of the atom. Rutherford scattered charged $`( \alpha )`$ particles from atoms to see what the positive charge distribution was. With a approximately uniform charge distribution, his 5.5 MeV $`\alpha`$ particles should never have backscattered because they had enough energy to overcome the coulomb force from a charge distribution, essentially plowing right through the middle.
 
-![Figure 12 (p. 71)](images/fig-p071-1.png)
+![Figure 13 (p. 71)](images/fig-p071-1.png)
 
-_Figure 12 (p. 71)_
+_Figure 13 (p. 71)_
 
 He found that the $`\alpha`$ particles often scattered at angles larger than 90 degrees. His data can be explained if the **positive nucleus** of an atom is very small. For a very small nucleus, the Coulomb force continues to increase as the $`\alpha`$ approaches the nucleus, and backscattering is possible.
 
@@ -213,9 +207,9 @@ He found that the $`\alpha`$ particles often scattered at angles larger than 90 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p72" href="book.pdf#page=72" target="_blank" title="This page in the PDF"><sup>[p. 72]</sup></a>
 
-![Figure 13 (p. 72)](images/fig-p072-1.png)
+![Figure 14 (p. 72)](images/fig-p072-1.png)
 
-_Figure 13 (p. 72)_
+_Figure 14 (p. 72)_
 
 \* See Example 2.6.4: Use Electrostatics to estimate how small a gold nucleus must be to backscatter a 5.5 MeV alpha particle.\*
 
@@ -229,9 +223,9 @@ Scattering of the high energy $`\alpha`$ particles allowed Rutherford to **“se
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p73" href="book.pdf#page=73" target="_blank" title="This page in the PDF"><sup>[p. 73]</sup></a>
 
-![Figure 14 (p. 73)](images/fig-p073-1.png)
+![Figure 15 (p. 73)](images/fig-p073-1.png)
 
-_Figure 14 (p. 73)_
+_Figure 15 (p. 73)_
 
 To “see” these things at smaller and smaller distances, we needed to use beams of particles with smaller and smaller wavelength, and hence, higher energy.
 
@@ -241,9 +235,9 @@ Hydrogen was ultimately the true test of the quantum theory. Very high accuracy 
 
 The figure below show the **energy levels in Hydrogen**, the **transitions** between energy levels, and the wavelength of light produced in the transition. The **Lyman series** covers transitions to<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=73" target="_blank" title="This page in the PDF"><sup>[p. 73]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p74" href="book.pdf#page=74" target="_blank" title="This page in the PDF"><sup>[p. 74]</sup></a></span> the ground state and is beyond the visible part of the spectrum. The **Balmer series** is due to transitions to the first excited state and is in the visible.
 
-![Figure 15 (p. 74)](images/fig-p074-1.png)
+![Figure 16 (p. 74)](images/fig-p074-1.png)
 
-_Figure 15 (p. 74)_
+_Figure 16 (p. 74)_
 
 By the time of Plank’s $`E = h\nu`$, **a great deal of data existed on the discrete energies** at which atoms radiated. Each atom had its own unique radiation fingerprint. Absorption at discrete energies had also been observed.
 
@@ -261,11 +255,15 @@ Heavier atoms provide a even richer spectrum but are much more difficult to calc
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p75" href="book.pdf#page=75" target="_blank" title="This page in the PDF"><sup>[p. 75]</sup></a>
 
-![Figure 16 (p. 75)](images/fig-p075-1.png)
+![Figure 17 (p. 75)](images/fig-p075-1.png)
 
-_Figure 16 (p. 75)_
+_Figure 17 (p. 75)_
 
 The figure below shows the visible part of the spectrum for several atomic or molecular sources. For Hydrogen, we mainly see the Balmer series, with a line from Paschen-Bach. The spectra of different atoms are quite distinct. Molecules have many other types of excitations and can produce many frequencies of light.
+
+![Figure 18 (p. 75)](images/fig-p075-2.png)
+
+_Figure 18 (p. 75)_
 
 ## <a id="s-2-4-1-the-bohr-atom"></a>2.4.1 The Bohr Atom \*
 
@@ -403,13 +401,13 @@ V ( r ) = \frac{- \alpha \hbar c}{r}
 
 ## <a id="s-2-6-1-the-solar-temperature"></a>Estimate the solar temperature using
 
-$`•`$ the solar radiation intensity on the earth of 1.4 kilowatts per square meter. $`( r_{sun}`$ = $`7 \times 1 0^{8}`$
+$`\bullet`$ the solar radiation intensity on the earth of 1.4 kilowatts per square meter. $`( r_{sun}`$ = $`7 \times 1 0^{8}`$
 
 ```math
 m , d_{sun} = 1 . 5 \times 1 0^{1 1} m )
 ```
 
-$`•`$ and the solar spectrum which peaks at about 500 nm.
+$`\bullet`$ and the solar spectrum which peaks at about 500 nm.
 
 First we compute the power radiated per unit area on the solar surface.
 
@@ -529,9 +527,9 @@ Similarly the peak in $`\nu`$ occurs when
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p80" href="book.pdf#page=80" target="_blank" title="This page in the PDF"><sup>[p. 80]</sup></a>
 
-![Figure 17 (p. 80)](images/fig-p080-1.png)
+![Figure 19 (p. 80)](images/fig-p080-1.png)
 
-_Figure 17 (p. 80)_
+_Figure 19 (p. 80)_
 
 We solve the problem using only conservation of energy and momentum. Lets work in **units in** **which** $`c`$ = 1 for now. We’ll put the $`c`$ back in at the end. Assume the photon is initially moving in the $`z`$ direction with energy E and that it scatters in the $`yz`$ plane so that $`p_{x}`$ = 0. **Conservation of** **momentum** gives
 

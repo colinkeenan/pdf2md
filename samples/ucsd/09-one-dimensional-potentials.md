@@ -81,9 +81,9 @@ k^{\prime} = \frac{2 m ( E - V_{0} )}{\hbar^{2}}
 
 (Note that a beam coming from the right, would have given a $`e^{- ik^{\prime} x}`$ term for $`x> 0`$.)
 
-![Figure 33 (p. 146)](images/fig-p146-1.png)
+![Figure 35 (p. 146)](images/fig-p146-1.png)
 
-_Figure 33 (p. 146)_
+_Figure 35 (p. 146)_
 
 There are **two unknown coefficients** $`R`$ and $`T`$ which will be determined by matching boundary conditions. We will not require normalization to one particle, since we have a beam with definite momentum, which cannot be so normalized. (A more physical problem to solve would use an incoming wave packet with a spread in momentum.)
 
@@ -153,11 +153,7 @@ The transmission probability goes to 1 one $`k = k^{\prime}`$ (since there is no
 
 ## <a id="s-9-1-3-the-potential-well-with-e-0"></a>9.1.3 The Potential Well with $`E> 0`$ \*
 
-With positive energy, this is again a scattering type problem, now with three regions of the potential,
-
-```math
-\text{ all with } E>V .
-```
+With positive energy, this is again a scattering type problem, now with three regions of the potential, all with $`E>V`$.
 
 ```math
 V ( x ) = \begin{cases} 0 & x< - a \\ - V_{0} & - a<x<a \\ 0 & x>a \end{cases}
@@ -185,9 +181,9 @@ Again we have assumed a **beam of definite momentum incident from the left and n
 
 Ae + Be ik’x -ik’x
 
-![Figure 34 (p. 148)](images/fig-p148-1.png)
+![Figure 36 (p. 148)](images/fig-p148-1.png)
 
-_Figure 34 (p. 148)_
+_Figure 36 (p. 148)_
 
 There are **four unknown coefficients**. We now match the wave function and its first derivative at the two boundaries yielding **4 equations**.
 
@@ -247,11 +243,7 @@ u_{1} ( x ) = C_{1} e^{\kappa x}
 u_{3} ( x ) = C_{3} e^{- \kappa x}
 ```
 
-<div align="center">
-
 In the center we’ll use the sine and cosine solutions anticipating parity eigenstates.
-
-</div>
 
 ```math
 u_{2} ( x ) = A \cos ( kx \sqrt{) + B \sin ( kx )}
@@ -267,9 +259,9 @@ Again we will have 4 equations in 4 unknown coefficients.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p150" href="book.pdf#page=150" target="_blank" title="This page in the PDF"><sup>[p. 150]</sup></a>
 
-![Figure 35 (p. 150)](images/fig-p150-1.png)
+![Figure 37 (p. 150)](images/fig-p150-1.png)
 
-_Figure 35 (p. 150)_
+_Figure 37 (p. 150)_
 
 The calculation (See section 9.7.3) shows that either $`A`$ or $`B`$ must be zero for a solution. This means that the **solutions separate into even parity and odd parity states**. We could have guessed this from the potential.
 
@@ -291,9 +283,9 @@ These are transcendental equations, so we will solve them graphically. The plot 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p151" href="book.pdf#page=151" target="_blank" title="This page in the PDF"><sup>[p. 151]</sup></a>
 
-![Figure 36 (p. 151)](images/fig-p151-1.png)
+![Figure 38 (p. 151)](images/fig-p151-1.png)
 
-_Figure 36 (p. 151)_
+_Figure 38 (p. 151)_
 
 Try this 1D Potential Applet. It allows you to vary the potential and see the eigenstates.
 
@@ -335,9 +327,9 @@ Inside the barrier,
 \kappa = \sqrt{\frac{2 m ( V_{0} - E )}{\hbar^{2}} .}
 ```
 
-![Figure 37 (p. 152)](images/fig-p152-1.png)
+![Figure 39 (p. 152)](images/fig-p152-1.png)
 
-_Figure 37 (p. 152)_
+_Figure 39 (p. 152)_
 
 This is actually the same as the (unbound) potential well problem with the substitution
 
@@ -491,9 +483,9 @@ where
 
 There are only two regions, above and below the delta function. We don’t need to worry about the one point at $`x`$ = 0 – the two solutions will match there. We have already made the wave function continuous at $`x`$ = 0 by using the same coefficient, $`A`$, for the solution in both regions.
 
-![Figure 38 (p. 155)](images/fig-p155-1.png)
+![Figure 40 (p. 155)](images/fig-p155-1.png)
 
-_Figure 38 (p. 155)_
+_Figure 40 (p. 155)_
 
 We now need to meet the boundary condition on the first derivative at $`x`$ = 0. Recall that the delta function causes a known discontinuity in the first derivative (See section 8.7.2).
 
@@ -573,9 +565,9 @@ The figure below shows the two solutions plotted on the same graph as the potent
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p157" href="book.pdf#page=157" target="_blank" title="This page in the PDF"><sup>[p. 157]</sup></a>
 
-![Figure 39 (p. 157)](images/fig-p157-1.png)
+![Figure 41 (p. 157)](images/fig-p157-1.png)
 
-_Figure 39 (p. 157)_
+_Figure 41 (p. 157)_
 
 Two Hydrogen atoms bind together to form a molecule with a separation of 0.74 Angstroms, just larger than the Bohr radius of 0.53 Angstroms. The binding energy (for the two electrons) is about 4.5 eV. If we approximate the Coulomb potential by with a delta function, setting $`aV_{0}`$ = $`( 0 . 5 3 ) ( 2 ) ( 1 3 . 6 )`$ eV Angstroms, our very naive calculation would give 1.48 eV for one electron, which is at least the right order of magnitude.
 
@@ -641,17 +633,17 @@ Since $`\cos ( \varphi )`$ can only take on values between -1 and 1, there are *
 
 The graph below shows $`\cos ( ka ) + \tfrac{maV_{0}}{\hbar^{2} k} \sin ( ka )`$ as a function of $`k`$. If this is not between -1 and 1, there is no solution, that value of $`k`$ and the corresponding energy are not allowed.
 
-![Figure 40 (p. 158)](images/fig-p158-1.png)
+![Figure 42 (p. 158)](images/fig-p158-1.png)
 
-_Figure 40 (p. 158)_
+_Figure 42 (p. 158)_
 
 <div align="right"><a href="book.pdf#page=158" target="_blank" title="This page in the PDF"><sup>[p. 158]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p159" href="book.pdf#page=159" target="_blank" title="This page in the PDF"><sup>[p. 159]</sup></a>
 
-![Figure 41 (p. 159)](images/fig-p159-1.png)
+![Figure 43 (p. 159)](images/fig-p159-1.png)
 
-_Figure 41 (p. 159)_
+_Figure 43 (p. 159)_
 
 This energy band phenomenon is found in solids. Solids with partially filled bands are conductors. Solids with filled bands are insulators. Semiconductors have a small number of charge carriers (or holes) in a band.
 
@@ -1492,7 +1484,11 @@ c) Calculate the probability for a particle in the beam to be reflected by the p
 \frac{d^{2} h ( y )}{dy^{2}} - 2 y \frac{dh ( y )}{dy} + ( \frac{E}{\alpha} - 1 ) h ( y ) = 0
 ```
 
+<div align="center">
+
 a) Assume $`h ( y ) = \sum^{\infty} a_{m} y^{m}`$ and find the recursion relation for the coefficients $`a_{m}`$.
+
+</div>
 
 ```math
 m = 0
@@ -1504,11 +1500,7 @@ c) Find $`h ( y )`$ for the ground state and second excited state.
 
 6. A beam of particles of energy $`E> 0`$ coming from $`-\infty`$ is incident upon a potential step in one dimension. That is $`V ( x )`$ = 0 for $`x< 0`$ and $`V ( x ) = - V_{0}`$ for $`x> 0`$ where $`V_{0}`$ is a positive real number.
 
-<div align="center">
-
 a) Find the solution to the Schrödinger equation for this problem.
-
-</div>
 
 b) Determine the coefficients needed to satisfy the boundary conditions.
 
@@ -1530,7 +1522,11 @@ c) At $`t`$ = 0 the potential is suddenly removed so that the particle is free. 
 \frac{d^{2} h ( y )}{dy^{2}} - 2 y \frac{dh ( y )}{dy} + ( \frac{E}{\alpha} - 1 ) h ( y ) = 0
 ```
 
+<div align="center">
+
 a) Assume $`h ( y ) = \sum^{\infty} a_{m} y^{m}`$ and find the recursion relation for the coefficients $`a_{m}`$.
+
+</div>
 
 ```math
 m = 0
@@ -1540,15 +1536,9 @@ b) Use the requirement that this polynomial series must terminate to find the al
 
 c) Find $`h ( y )`$ for the ground state and second excited state.
 
-10. **\*** Find the energy eigenstates (and energy eigenvalues) of a particle of mass $`m`$ bound in the
+10. **\*** Find the energy eigenstates (and energy eigenvalues) of a particle of mass $`m`$ bound in the 1D potential $`V ( x ) = - \lambda \delta ( x )`$.
 
-```math
-1 D \text{ potential } V ( x ) = - \lambda \delta ( x ) .
-```
-
-```math
-1 1 .
-```
+11.
 
 ---
 
