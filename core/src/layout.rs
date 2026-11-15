@@ -2850,7 +2850,19 @@ fn group_lines(
     for s in roots {
         let low = s.bottom() - 2.0;
         let stands = groups.iter().position(|g| size_of(&g[0]) >= 0.85 * size_of(&s) && g[0].top <= low && g[0].bottom() >= low);
-        match stands.or_else(|| most_overlap(&groups, &s).map(|(k, _)| k)) {
+        // (a root in an exponent stands above its line's letters: it is
+        // of the line of the piece right after it, which it is the root of)
+        let radicand = || {
+            (0..groups.len())
+                .flat_map(|k| groups[k].iter().map(move |n| (k, n)))
+                .filter(|(k, n)| size_of(n) < 0.85 * size_of(&groups[*k][0]) && s.bottom() <= groups[*k][0].top + 1.0 && n.left >= s.right() - 1.5 && n.left - s.right() < 0.7 * size_of(&s) && n.bottom().min(s.bottom()) - n.top.max(s.top) >= 0.3 * n.height.min(s.height))
+                .min_by(|a, b| a.1.left.total_cmp(&b.1.left))
+                .map(|(k, _)| k)
+                // (not the root in the numerator of a small fraction, which
+                // has the denominator under it)
+                .filter(|&k| !groups[k].iter().any(|n| size_of(n) < 0.85 * size_of(&groups[k][0]) && n.top >= s.bottom() - 2.0 && n.left < s.right() && n.right() > s.left))
+        };
+        match stands.or_else(radicand).or_else(|| most_overlap(&groups, &s).map(|(k, _)| k)) {
             Some(k) => groups[k].push(s),
             None => groups.push(vec![s]),
         }

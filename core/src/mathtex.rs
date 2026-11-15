@@ -831,12 +831,28 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
             let body: Vec<MSpan> = under.iter().map(|&i| spans[i].clone()).collect();
             let t = format!("\\sqrt{{{}}}", build_at(&resolve_bars(body, &nested, depth + 1), depth + 1));
             let left = spans[ri].left;
+            // (a root of small letters, in an exponent, is a small piece
+            // at their height)
+            let letters = under.iter().map(|&i| &spans[i]).filter(|s| !s.cmex()).map(|s| s.size).fold(0.0f32, f32::max);
+            let main: Vec<&MSpan> = under.iter().map(|&i| &spans[i]).filter(|s| !s.cmex() && s.size >= 0.9 * letters).collect();
+            let (top, bottom) = (main.iter().map(|s| s.top).fold(f32::MAX, f32::min), main.iter().map(|s| s.bottom).fold(f32::MIN, f32::max));
+            // (the small letters go on from those right before the sign,
+            // at one height: e^{−mr√(s²+1)})
+            let goes_on = (0..spans.len()).any(|i| {
+                let n = &spans[i];
+                i != ri && !under.contains(&i) && !n.cmex() && n.size >= 0.9 * letters && n.size < 0.85 * size && n.right <= left + 1.0 && left - n.right < letters && (n.cy() - (top + bottom) / 2.0).abs() < 0.4 * letters
+            });
+            let (top, bottom, size) = if letters > 0.0 && letters < 0.85 * size && goes_on {
+                (top, bottom, letters)
+            } else {
+                (b.bottom + 1.0, b.bottom + 1.0 + size, size)
+            };
             let atom = MSpan {
                 text: String::new(),
                 left,
                 right: b.right,
-                top: b.bottom + 1.0,
-                bottom: b.bottom + 1.0 + size,
+                top,
+                bottom,
                 size,
                 family: String::new(),
                 math: true,
