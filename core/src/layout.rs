@@ -3053,6 +3053,40 @@ fn group_lines(
         }
     }
     groups.retain(|g| !g.is_empty());
+    // A few small letters that stand right over a line and touch none, at
+    // the head of an integral sign: its upper limit, in a line of text or
+    // in an exponent. They
+    // are no line (one that the integral sign would then go to, which
+    // looks for the first line under its top) but of the line under them.
+    let mut k = 0;
+    while k < groups.len() {
+        let g = &groups[k];
+        let few = g.iter().map(|p| p.text.trim().chars().count()).sum::<usize>() <= 6;
+        let bottom = g.iter().map(Span::bottom).fold(f32::MIN, f32::max);
+        let under = (0..groups.len()).find(|&m| {
+            let main = &groups[m][0];
+            m != k
+                && g.iter().all(|p| size_of(p) < 0.85 * size_of(main))
+                && main.top >= bottom - 1.0
+                && main.top - bottom < 0.3 * size_of(main)
+                && g.iter().all(|p| groups[m].iter().any(|n| (n.left - p.right()).max(p.left - n.right()) < 2.0 * size_of(main)))
+        });
+        // (… of an integral: its sign stands right before them and begins
+        // higher. The lower limit of a sum in the line above stays.)
+        let limit = symbols.iter().any(|s| {
+            let p = &g[0];
+            let integral = matches!(s.text.trim(), "" | "∫" | "∮");
+            integral && s.top <= p.top && p.top - s.top < 2.0 * size_of(p) && p.left - s.right() < size_of(p) && p.left >= s.right() - 2.0
+        });
+        match under.filter(|_| few && limit) {
+            Some(m) => {
+                let all = groups.remove(k);
+                let m = if m > k { m - 1 } else { m };
+                groups[m].extend(all);
+            }
+            None => k += 1,
+        }
+    }
     for s in symbols {
         let below = (0..groups.len())
             .filter(|&k| groups[k][0].top >= s.top - 0.3 * s.height && groups[k][0].top <= s.top + 3.0 * s.height)
