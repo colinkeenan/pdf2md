@@ -87,7 +87,7 @@ $`\tfrac{2}{3} \alpha^{4} \tfrac{m_{e}}{m_{p}} mc^{2} g_{N}`$ = 2$`. 9 \times 1 
 
 \* See Example 24.3.2: The Hyperfine Splitting in a Weak B Field.\*
 
-The result of this is example is quite simple $`E = E_{n 0 0} + \tfrac{\mathcal{A}}{2} ( f ( f )`$ + 1) $`- \tfrac{3}{2} ( ) + \mu_{B} Bm_{f}`$. It has the hyperfine term we computed before and adds a term proportional to $`B`$ which depends on $`m_{f}`$.
+The result of this is example is quite simple $`E = E_{n 0 0} + \tfrac{\mathcal{A}}{2} ( f ( f ) + 1 )`$ $`- \tfrac{3}{2} ( ) + \mu_{B} Bm_{f}`$. It has the hyperfine term we computed before and adds a term proportional to $`B`$ which depends on $`m_{f}`$.
 
 In the strong field limit we use states $`| m_{s} m_{i} \rangle`$ and treat the hyperfine interaction as a perturbation. The unperturbed energies of these states are $`E = E_{n 0 0}`$ + 2$`\mu_{B} Bm_{s} + g\mu_{N} Bm_{I}`$. We kept the small term due to the nuclear moment in the B field without extra effort.
 
@@ -180,7 +180,7 @@ Since the field is weak we work in the states $`| fm_{f} \rangle`$ in which the 
 \sigma_{z} | 0 0 \rangle = \sigma_{z} \tfrac{1}{\sqrt{2}} ( | + - \rangle - | - + \rangle ) = \tfrac{1}{\sqrt{2}} ( | + - \rangle + |- + \rangle ) = | 1 0 \rangle
 ```
 
-Now since the three $`( f`$ = 1) states are degenerate, we have to make sure all the matrix elements between those states are zero, otherwise we should bite the bullet and do the full problem as in the intermediate field case. The $`f`$ = 1 matrix is diagonal, as we could have guessed.
+Now since the three $`( f = 1 )`$ states are degenerate, we have to make sure all the matrix elements between those states are zero, otherwise we should bite the bullet and do the full problem as in the intermediate field case. The $`f`$ = 1 matrix is diagonal, as we could have guessed.
 
 ```math
 \mu_{B} B \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & - 1 \end{pmatrix}
@@ -326,7 +326,7 @@ We will add the relativistic correction for both the electron and the positron.
 H_{rel} = - \frac{1}{8} \frac{p_{1}^{4} + p_{2}^{4}}{m^{3} c^{2}} = - \frac{1}{4} \frac{p^{4}}{m^{3} c^{2}} = \frac{- 1}{3 2} \frac{p^{4}}{\mu^{3} c^{2}} = \frac{- 1}{8 \mu c^{2}} \left( \frac{p^{2}}{2 \mu} \right)^{2}
 ```
 
-This is just half the correction we had in Hydrogen (with $`m_{e}`$ essentially replaced by $`\mu )`$.
+This is just half the correction we had in Hydrogen (with $`m_{e}`$ essentially replaced by $`\mu`$).
 
 The spin-orbit correction should be checked also. We had $`H_{SO} = \tfrac{ge}{2 mc^{2}} \vec{S} \cdot \vec{v} \times \vec{\nabla} \varphi`$ as the interaction between the spin and the B field producded by the orbital motion. Since $`\vec{p} = \mu \vec{v}`$, we have
 
@@ -502,7 +502,7 @@ We will sometimes group the constants such that
 
 2. Consider positronium, a hydrogen-like atom consisting of an electron and a positron (antielectron). Calculate the fine structure of positronium for $`n`$ = 1 and $`n`$ = 2. Determine the hyperfine structure for the ground state. Compute the energy shifts in eV.
 
-3. List the spectroscopic states allowed that arise from combining $`( s = \tfrac{1}{2}`$ with $`l`$ = 3), $`( s`$ = 2 with
+3. List the spectroscopic states allowed that arise from combining $`( s = \tfrac{1}{2} \ \text{with} l = 3 )`$, $`( s`$ = 2 with
 
 ```math
 l = 1 ) , \text{ and } ( s_{1} = \tfrac{1}{2} , \quad s_{2} = 1 \text{ and } l = 4 ) .
@@ -516,7 +516,7 @@ l = 1 ) , \text{ and } ( s_{1} = \tfrac{1}{2} , \quad s_{2} = 1 \text{ and } l =
 
 3. A muonic hydrogen atom (proton plus muon) is in a relative 1$`s`$ state in an external magnetic field. Assume that the perturbation due to the hyperfine interaction and the magnetic field is given by $`W = A \vec{S}_{1} \cdot \vec{S}_{2} + \omega_{1} S_{1 z} + \omega_{2} S_{2 z}`$. Calculate the energies of the four nearly degenerate ground states. Do not assume that any terms in the Hamiltonian are small.
 
-4. A hydrogen atom in the ground state is put in a magnetic field. Assume that the energy shift due to the B field is of the same order as the hyperfine splitting of the ground state. Find the eigenenergies of the (four) ground states as a function of the B field strength. Make sure you define any constants (like $`\mathcal{A} )`$ you use in terms of fundamental constants.
+4. A hydrogen atom in the ground state is put in a magnetic field. Assume that the energy shift due to the B field is of the same order as the hyperfine splitting of the ground state. Find the eigenenergies of the (four) ground states as a function of the B field strength. Make sure you define any constants (like $`\mathcal{A}`$) you use in terms of fundamental constants.
 
 ---
 

@@ -185,7 +185,7 @@ and an equation in $`x`$ set equal to a constant
 \frac{- \hbar^{2}}{2 m} \frac{\partial^{2} u ( x )}{\partial x^{2}} + V ( x ) u ( x ) = Eu ( x )
 ```
 
-which depends on the problem to be solved (through $`V ( x ) ) .`$
+which depends on the problem to be solved (through $`V ( x )`$).
 
 <div align="center">
 

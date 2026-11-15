@@ -349,7 +349,7 @@ In **solving** (see section 20.5.5) the equation in $`\rho`$ we may reuse the Hy
 E = \frac{eB \hbar}{m_{e} c} \left( n + \frac{1 + m + | m |}{2} \right) + \frac{\hbar^{2} k^{2}}{2 m}
 ```
 
-and associated LaGuerre polynomials (as in Hydrogen) in $`\rho^{2}`$ (instead of $`r )`$.
+and associated LaGuerre polynomials (as in Hydrogen) in $`\rho^{2}`$ (instead of $`r`$).
 
 The solution turns out to be **simpler using the Hamiltonian written in terms of** (see section 20.5.6) $`\vec{A}`$ if we choose the right gauge by setting $`\vec{A} = Bx \hat{y}`$.
 
@@ -733,7 +733,7 @@ For uniform $`\vec{B}`$ field, cylindrical symmetry $`\Rightarrow`$ apply **cyli
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p305" href="book.pdf#page=305" target="_blank" title="This page in the PDF"><sup>[p. 305]</sup></a>
 
-From the symmetry of the problem, we can guess (and verify) that $`[ H,p_{z} ]`$ = [$`H,L_{z} ]`$ = 0. These variables will be constants of the motion and we therefore choose
+From the symmetry of the problem, we can guess (and verify) that $`[ H,p_{z} ]`$ = $`[ H,L_{z} ]`$ = 0. These variables will be constants of the motion and we therefore choose
 
 ```math
 \psi ( \vec{r} ) = u_{mk} ( \rho ) e^{im\varphi} e^{ikz} .
@@ -861,7 +861,7 @@ This can be compared to the purely classical calculation for an electron with an
 
 ## <a id="s-20-5-6-energy-states-of-electrons-in-a-plasma-ii"></a>20.5.6 Energy States of Electrons in a Plasma II
 
-We are going to solve the same plasma in a constant B field in a different gauge. If $`\vec{A}`$ = (0$`,Bx, 0 ) ,`$ then
+We are going to solve the same plasma in a constant B field in a different gauge. If $`\vec{A}`$ = $`( 0 ,Bx, 0 ) ,`$ then
 
 ```math
 \vec{B} = \vec{\nabla} \times \vec{A} = \frac{\partial A_{y}}{\partial x} \hat{z} = B \hat{z} .
@@ -1053,7 +1053,7 @@ is given by
 
 Remember the flux satisfies the equations $`\tfrac{\partial ( \psi^{*} \psi )}{\partial t} + \vec{\nabla} \vec{j}`$ = 0.
 
-4. Consider the problem of a charged particle in an external magnetic field $`\vec{B}`$ = (0$`, 0 ,B )`$ with the gauge chosen so that $`\vec{A} = ( - yB, 0 , 0`$). What are the constants of the motion? Go as far as you can in solving the equations of motion and obtain the energy spectrum. Can you explain why the same problem in the gauges $`\vec{A} = ( - yB/ 2 ,xB/ 2 ,`$ 0) and $`\vec{A}`$ = (0$`,xB, 0`$) can represent the same physical situation? Why do the solutions look so different?
+4. Consider the problem of a charged particle in an external magnetic field $`\vec{B}`$ = $`( 0 , 0 ,B )`$ with the gauge chosen so that $`\vec{A} = ( - yB, 0 , 0 )`$. What are the constants of the motion? Go as far as you can in solving the equations of motion and obtain the energy spectrum. Can you explain why the same problem in the gauges $`\vec{A} = ( - yB/ 2 ,xB/ 2 , 0 )`$ and $`\vec{A}`$ = (0$`,xB, 0`$) can represent the same physical situation? Why do the solutions look so different?
 
 5. Calculate the top left $`4 \times 4`$ corner of the matrix representation of $`x^{4}`$ for the harmonic oscillator.
 
@@ -1067,9 +1067,9 @@ H = \frac{1}{2 m} \left( \vec{\sigma} \cdot [ \vec{p} + \frac{e}{c} \vec{A} ( \v
 
 # <a id="s-20-7-sample-test-problems"></a>20.7 Sample Test Problems
 
-1. A charged particle is in an external magnetic field. The vector potential is given by **A** = $`( - yB, 0 ,`$ 0). What are the constants of the motion? Prove that these are constants by evaluating their commutator with the Hamiltonian.
+1. A charged particle is in an external magnetic field. The vector potential is given by **A** = $`( - yB, 0 , 0 )`$. What are the constants of the motion? Prove that these are constants by evaluating their commutator with the Hamiltonian.
 
-2. A charged particle is in an external magnetic field. The vector potential is given by **A** = $`( 0 ,xB,`$ 0). What are the constants of the motion? Prove that these are constants by evaluating their commutator with the Hamiltonian.
+2. A charged particle is in an external magnetic field. The vector potential is given by **A** = $`( 0 ,xB, 0 )`$. What are the constants of the motion? Prove that these are constants by evaluating their commutator with the Hamiltonian.
 
 3. Gauge symmetry was noticed in electromagnetism before the advent of Quantum Mechanics. What is the symmetry transformation for the wave function of an electron from which the gauge symmetry for EM can be derived?
 

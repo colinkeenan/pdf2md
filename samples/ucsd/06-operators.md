@@ -13,7 +13,7 @@ An example of a linear operator (See section 7.5.1) is a simple differential ope
 
 # <a id="s-6-1-operators-in-position-space"></a>6.1 Operators in Position Space
 
-To find operators for physical variables in position space, we will look at wave functions with definite momentum. Our state of definite momentum $`p_{0}`$ (and definite energy $`E_{0} )`$ is
+To find operators for physical variables in position space, we will look at wave functions with definite momentum. Our state of definite momentum $`p_{0}`$ (and definite energy $`E_{0}`$) is
 
 ```math
 u_{p 0} ( x,t ) = \frac{1}{\sqrt{2 \pi \hbar}} e^{i ( p_{0} x - E_{0} t ) / \hbar} .
@@ -109,7 +109,7 @@ and
 p^{( op )} = p.
 ```
 
-The $`( op )`$ notation used above is usually dropped. If we see the variable $`p`$, use of the operator is implied (except in state written in terms of $`p`$ like $`\varphi ( p ) ) .`$
+The $`( op )`$ notation used above is usually dropped. If we see the variable $`p`$, use of the operator is implied (except in state written in terms of $`p`$ like $`\varphi ( p )`$).
 
 **Gasiorowicz Chapter 3**
 
@@ -135,7 +135,7 @@ We can move the $`f ( x )`$ between just before $`\psi`$ anticipating the use of
 \langle f ( x ) \rangle_{\psi} = \int_{-\infty}^{\infty} \psi^{*} ( x ) f ( x ) \psi ( x ) dx
 ```
 
-If the variable we wish to compute the expectation value of (like $`p )`$ is not a simple function of $`x`$, let its operator act on $`\psi ( x )`$. The **expectation value of** $`p`$ **in the state** $`\psi`$ is
+If the variable we wish to compute the expectation value of (like $`p`$) is not a simple function of $`x`$, let its operator act on $`\psi ( x )`$. The **expectation value of** $`p`$ **in the state** $`\psi`$ is
 
 ```math
 \langle p \rangle_{\psi} = \langle \psi | p | \psi \rangle = \int_{-\infty}^{\infty} \psi^{*} ( x ) p^{( op )} \psi ( x ) dx

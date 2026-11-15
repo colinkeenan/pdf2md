@@ -101,7 +101,7 @@ The simplest way and the correct way to do this is to make the Electric and Magn
 F_{\mu \nu} = \begin{pmatrix} 0 & B_{z} & - B_{y} & - iE_{x} \\ - B_{z} & 0 & B_{x} & - iE_{y} \\ B_{y} & - B_{x} & 0 & - iE_{z} \\ iE_{x} & iE_{y} & iE_{z} & 0 \end{pmatrix}
 ```
 
-The fields can simply be written in terms of the **vector potential**, (which is a Lorentz vector) $`A_{\mu} = ( \vec{A} ,i\varphi`$ ).
+The fields can simply be written in terms of the **vector potential**, (which is a Lorentz vector) $`A_{\mu} = ( \vec{A} ,i\varphi )`$.
 
 ```math
 F_{\mu \nu} = \frac{\partial A_{\nu}}{\partial x_{\mu}} - \frac{\partial A_{\mu}}{\partial x_{\nu}}

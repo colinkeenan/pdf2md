@@ -101,7 +101,7 @@ which will have zeros if
 k^{\prime} \cot ( k^{\prime} a ) = k \cot ( ka ) .
 ```
 
-We can compute the total scattering cross section using the relation $`\int d`$Ω$`P_{\ell}`$(cos $`\theta ) P_{\ell}^{\prime}`$(cos$`\theta ) =`$
+We can compute the total scattering cross section using the relation $`\int d`$Ω$`P_{\ell} ( \cos \theta ) P_{\ell}^{\prime} ( \cos \theta ) =`$
 
 ```math
 \begin{aligned} & \quad \tfrac{4 \pi}{2 \ell + 1} \delta_{\ell \ell^{\prime}} . \\ \sigma_{tot} &= \int d \Omega | f ( \theta ,\varphi ) |^{2} \end{aligned}
@@ -193,7 +193,7 @@ We now need to convert this transition rate to a cross section. Our wave functio
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p423" href="book.pdf#page=423" target="_blank" title="This page in the PDF"><sup>[p. 423]</sup></a>
 
-per square centimeter per second to get a cross section. To do this we set the volume to be $`V`$ = (1 $`cm^{2} ) ( v_{rel} ) ( 1 \quad second )`$. The relative velocity is just the momentum divided by the reduced mass.
+per square centimeter per second to get a cross section. To do this we set the volume to be $`V`$ = $`( 1 cm^{2} ) ( v_{rel} ) ( 1 \quad second )`$. The relative velocity is just the momentum divided by the reduced mass.
 
 ```math
 \sigma = \frac{1}{4 \pi^{2} \hbar^{3} v_{rel}} \int d \Omega_{f} \mu k_{f} \left| \tilde{V} ( \vec{\Delta} ) \right|^{2}
@@ -349,7 +349,7 @@ V ( \boldsymbol{r} ) = \lambda \delta ( r - r_{0} )
 
 Assume that the potential is weak so that perturbation theory can be used. Be sure to write your answer in terms of the scattering angles.
 
-2. Assume that a heavy nucleus attracts $`K_{0}`$ mesons with a weak Yakawa potential $`V ( r ) = \tfrac{V_{0}}{r} e^{- \alpha r}`$. Calculate the differential cross section, $`\frac{d\sigma}{d \Omega}`$, for scattering high energy $`K_{0}`$ mesons (mass $`m_{K} )`$ from that nucleus. Give your answer in terms of the scattering angle $`\theta`$.
+2. Assume that a heavy nucleus attracts $`K_{0}`$ mesons with a weak Yakawa potential $`V ( r ) = \tfrac{V_{0}}{r} e^{- \alpha r}`$. Calculate the differential cross section, $`\frac{d\sigma}{d \Omega}`$, for scattering high energy $`K_{0}`$ mesons (mass $`m_{K}`$) from that nucleus. Give your answer in terms of the scattering angle $`\theta`$.
 
 ---
 

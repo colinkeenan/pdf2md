@@ -261,7 +261,7 @@ I ( \omega ) \propto \tfrac{\Gamma / 2}{( \omega - \omega_{0} )^{2} + ( \Gamma /
 
 </div>
 
-Hund: 1) max $`s`$ 2)max $`\ell`$ (allowed) 3) min $`j ( \leq \tfrac{1}{2}`$ shell) else max $`j`$
+Hund: 1) max $`s`$ 2)max $`\ell`$ (allowed) 3) min $`j ( \leq \tfrac{1}{2} \ \text{shell} )`$ else max $`j`$
 
 ```math
 E_{rot} = \tfrac{\ell ( \ell + 1 ) \hbar^{2}}{2 I} \approx \tfrac{1}{2 0 0 0} \text{ eV } \quad E_{vib} = ( n + \tfrac{1}{2} ) \hbar \omega \approx \tfrac{1}{5 0} \text{ eV }

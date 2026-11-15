@@ -121,7 +121,7 @@ with all the new quantities on the RHS.
 
 In the case which is physically of importance, the actual motion is fixed uniquely by specifying the values of the $`\varphi^{\alpha}`$ everywhere on two space-time surfaces $`\sigma_{2}`$ and $`\sigma_{1}`$ which are the past and future boundaries of the volume Ω. A space-like surface is one on which every two points are outside each other’s light-cones, so that the fields can be fixed independently at every point.
 
-Special case of non-relativistic theory, both $`\sigma_{1}`$ and $`\sigma_{2}`$ are just space at the time $`t_{1}`$ and $`t_{2}`$, and $`\delta x_{\mu}`$ is $`ic`$ times a displacement of the time by $`\delta t_{1}`$ and $`\delta t_{2}`$. Then we may write $`n_{\mu}`$ = (0$`, 0 , 0 ,i ) , \pi_{\alpha} = \partial L /\partial \dot{\varphi}^{\alpha}`$, and then for the <a id="ix-147">Hamiltonian</a>
+Special case of non-relativistic theory, both $`\sigma_{1}`$ and $`\sigma_{2}`$ are just space at the time $`t_{1}`$ and $`t_{2}`$, and $`\delta x_{\mu}`$ is $`ic`$ times a displacement of the time by $`\delta t_{1}`$ and $`\delta t_{2}`$. Then we may write $`n_{\mu}`$ = $`( 0 , 0 , 0 ,i ) , \pi_{\alpha} = \partial L /\partial \dot{\varphi}^{\alpha}`$, and then for the <a id="ix-147">Hamiltonian</a>
 
 <a id="eq-164"></a>
 
@@ -427,7 +427,7 @@ where the subscript $`\sigma - \sigma_{o}`$ refers to the surface integrals in (
 
 where $`\boldsymbol{[} P,R \boldsymbol{]} = PR - RP`$. This applies for the case when $`\mathcal{O}`$ is fixed and the states vary.
 
-Now we want to calculate the variation of $`\langle \varphi^{\prime \alpha} ,\sigma \mathcal{O} \varphi^{\prime \prime \alpha} ,\sigma \rangle`$ for the case when the states are fixed, and $`\mathcal{O} = \mathcal{O} ( \varphi^{\alpha} ( \sigma )`$) changes. This, however, will be the same as for the previous case, except with the opposite sign, because the variation of the matrix element<sup><a id="fnref-18" href="#fn-18">18</a></sup>
+Now we want to calculate the variation of $`\langle \varphi^{\prime \alpha} ,\sigma \mathcal{O} \varphi^{\prime \prime \alpha} ,\sigma \rangle`$ for the case when the states are fixed, and $`\mathcal{O} = \mathcal{O} ( \varphi^{\alpha} ( \sigma ) )`$ changes. This, however, will be the same as for the previous case, except with the opposite sign, because the variation of the matrix element<sup><a id="fnref-18" href="#fn-18">18</a></sup>
 
 <a id="eq-185"></a>
 

@@ -224,7 +224,7 @@ _Problem 3:_ Given a steady potential $`V`$ a function of position, and a beam o
 a) By stationary perturbation theory<br>
 b) By time-dependent perturbation theory.
 
-Show that the results agree, with a <a id="ix-246">transition</a> probability per unit time given by $`w`$ = (2$`\pi / \hbar ) \rho_{E} | V_{BA} |^{2}`$. Evaluate the cross section in the case $`V = - Ze^{2} /r`$, averaging spin over initial state and summing over final state.
+Show that the results agree, with a <a id="ix-246">transition</a> probability per unit time given by $`w`$ = $`( 2 \pi / \hbar ) \rho_{E} | V_{BA} |^{2}`$. Evaluate the cross section in the case $`V = - Ze^{2} /r`$, averaging spin over initial state and summing over final state.
 
 c) Repeat the calculation with particles obeying the <a id="ix-164">Klein-Gordon equation</a>, leaving out the $`V^{2}`$ term, by either method. Compare the <a id="ix-99">angular</a> <a id="ix-98">distribution</a> in the two cases.
 
@@ -460,7 +460,7 @@ Hence the lifetime will be
 
 We calculate now the transition scattering matrix element $`M`$ between an initial state $`A`$ consisting of 2 electrons with momenta $`p_{1} ,p_{2}`$ and spin states $`u_{1} ,u_{2}`$ and a final state $`B`$ consisting of two electrons with momenta $`p_{1}^{\prime} ,p_{2}^{\prime}`$ and spin states $`u_{1}^{\prime} ,u_{2}^{\prime}`$. Thus $`M`$ gives the probability amplitude for arriving in state $`B`$ after a long time when the system is known to be in state $`A`$ to begin with. Hence $`M`$ itself should be an _invariant_ relativistically.
 
-We treat the interaction in Born approximation i.e. consider the particles to go directly from the free-particle state $`A`$ to the free-particle state $`B`$ by applying the interaction operator once to state $`A`$. For electrons at reasonably high or relativistic velocities this will be a very good approximation $`( e^{2} / \hbar v \ll 1`$). Also we treat the electromagnetic interaction classically, just as in the O<sup>16</sup> problem, taking the field produced by particle 1 according to classical Maxwell <a id="ix-187">equations</a> to act directly on particle 2. This ignores the fact that the field consists of quanta. We shall see later, after we have developed the quantum field theories, that this introduces _no error_ so long as we are in the Born approximation.
+We treat the interaction in Born approximation i.e. consider the particles to go directly from the free-particle state $`A`$ to the free-particle state $`B`$ by applying the interaction operator once to state $`A`$. For electrons at reasonably high or relativistic velocities this will be a very good approximation $`( e^{2} / \hbar v \ll 1 )`$. Also we treat the electromagnetic interaction classically, just as in the O<sup>16</sup> problem, taking the field produced by particle 1 according to classical Maxwell <a id="ix-187">equations</a> to act directly on particle 2. This ignores the fact that the field consists of quanta. We shall see later, after we have developed the quantum field theories, that this introduces _no error_ so long as we are in the Born approximation.
 
 For the field produced by particle 1 in a transition from the state $`p_{1} ,u_{1}`$ to $`p_{1}^{\prime} ,u_{1}^{\prime}`$ we have the matrix elements $`\phi_{( 1 )} , \boldsymbol{A}_{( 1 )}`$ say. We use now not the <a id="ix-144">gauge</a> in which $`\nabla \boldsymbol{\cdot} \boldsymbol{A}`$ = 0, but the covariant gauge in which<sup><a id="fnref-14" href="#fn-14">14</a></sup>
 
@@ -572,7 +572,7 @@ Let $`w`$ be the transition probability per unit volume and per unit time. This 
 w_{s} = c | K |^{2} ( 2 \pi \hbar )^{4} \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) \qquad \text{(146)}
 ```
 
-since in $`| M |^{2}`$ one of the two (2$`\pi \hbar )^{4} \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) /c`$ factors represents merely the volume of space-time in which the interaction can occur. The number of final states is by (107)
+since in $`| M |^{2}`$ one of the two $`( 2 \pi \hbar )^{4} \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) /c`$ factors represents merely the volume of space-time in which the interaction can occur. The number of final states is by (107)
 
 <a id="eq-147"></a>
 

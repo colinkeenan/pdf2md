@@ -49,7 +49,7 @@ Now dot $`\langle \varphi_{n} |`$ into this equation to get the time dependence 
 \frac{\partial c_{n} ( t )}{\partial t} = \frac{1}{i \hbar} \sum_{k} \mathcal{V}_{nk} ( t ) c_{k} ( t ) e^{i ( E_{n} - E_{k} ) t/ \hbar}
 ```
 
-Assume that at $`t`$ = 0, we are in an **initial state** $`\psi ( t`$ = 0) = $`\varphi_{i}`$ and hence all the other $`c_{k}`$ are equal to zero: $`c_{k} = \delta_{ki}`$.
+Assume that at $`t`$ = 0, we are in an **initial state** $`\psi ( t = 0 )`$ = $`\varphi_{i}`$ and hence all the other $`c_{k}`$ are equal to zero: $`c_{k} = \delta_{ki}`$.
 
 ```math
 \frac{\partial c_{n} ( t )}{\partial t} = \frac{1}{i \hbar} \left( \mathcal{V}_{ni} ( t ) e^{i\omega_{ni} t} + \sum_{k \neq i} \mathcal{V}_{nk} ( t ) c_{k} ( t ) e^{i\omega_{nk} t} \right)

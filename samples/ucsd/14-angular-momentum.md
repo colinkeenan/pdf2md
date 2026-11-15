@@ -75,7 +75,7 @@ L^{2} Y_{\ell m} ( \theta ,\varphi ) = \ell ( \ell + 1 ) \hbar^{2} Y_{\ell m} ( 
 \begin{aligned} L_{z} Y_{\ell m} ( \theta ,\varphi ) &= m \hbar Y_{\ell m} ( \theta ,\varphi ) \\ \frac{- \hbar^{2}}{2 \mu} \left[ \frac{1}{r^{2}} \left( r \frac{\partial}{\partial r} \right)^{2} + \frac{1}{r} \frac{\partial}{\partial r} - \frac{\ell ( \ell + 1 )}{r^{2}} \right] R_{E\ell} ( r ) + V ( r ) R_{E\ell} ( r ) &= ER_{E\ell} ( r ) \end{aligned}
 ```
 
-By assuming the eigenvalues of $`L^{2}`$ have the form $`\ell ( \ell`$ + 1)$`\hbar^{2}`$, we have **anticipated the solution** **but not constrained it**, since the units of angular momentum are those of $`\hbar`$ and since we expect $`L^{2}`$ to have positive eigenvalues.
+By assuming the eigenvalues of $`L^{2}`$ have the form $`\ell ( \ell + 1 ) \hbar^{2}`$, we have **anticipated the solution** **but not constrained it**, since the units of angular momentum are those of $`\hbar`$ and since we expect $`L^{2}`$ to have positive eigenvalues.
 
 ```math
 \langle Y_{\ell m} | L^{2} | Y_{\ell m} \rangle = \langle L_{x} Y_{\ell m} | L_{x} Y_{\ell m} \rangle + \langle L_{y} Y_{\ell m} | L_{y} Y_{\ell m} \rangle + \langle L_{z} Y_{\ell m} | L_{z} Y_{\ell m} \rangle \geq 0
@@ -131,7 +131,7 @@ The commutator with $`L_{z}`$ is.
 [ L_{\pm} ,L_{z} ] = [ L_{x} ,L_{z} ] \pm i [ L_{y} ,L_{z} ] = i \hbar ( - L_{y} \pm iL_{x} ) = \mp \hbar L_{\pm} .
 ```
 
-From the commutators $`[ L^{2} ,L_{\pm} ]`$ = 0 and [$`L_{\pm} ,L_{z} ] = \mp \hbar L_{\pm}`$, we can derive the effect of the operators (See section 14.4.5) $`L_{\pm}`$ on the eigenstates $`Y_{\ell m}`$, and in so doing, show that $`\ell`$ is an integer greater than or equal to 0, and that $`m`$ is also an integer
+From the commutators $`[ L^{2} ,L_{\pm} ]`$ = 0 and $`[ L_{\pm} ,L_{z} ] = \mp \hbar L_{\pm}`$, we can derive the effect of the operators (See section 14.4.5) $`L_{\pm}`$ on the eigenstates $`Y_{\ell m}`$, and in so doing, show that $`\ell`$ is an integer greater than or equal to 0, and that $`m`$ is also an integer
 
 ```math
 \ell = 0 , 1 , 2 ,\dots
@@ -783,7 +783,7 @@ The next step is to figure out how the $`L_{\pm}`$ operators change the eigensta
 L^{2} ( L_{\pm} Y_{\ell m} ) = L_{\pm} L^{2} Y_{\ell m} = \ell ( \ell + 1 ) \hbar^{2} ( L_{\pm} Y_{\ell m} )
 ```
 
-Because $`L^{2}`$ commutes with $`L_{\pm}`$, we see that we have the same $`\ell ( \ell`$ + 1) after operation. This is also true for operations with $`L_{z}`$.
+Because $`L^{2}`$ commutes with $`L_{\pm}`$, we see that we have the same $`\ell ( \ell + 1 )`$ after operation. This is also true for operations with $`L_{z}`$.
 
 ```math
 L^{2} ( L_{z} Y_{\ell m} ) = L_{z} L^{2} Y_{\ell m} = \ell ( \ell + 1 ) \hbar^{2} ( L_{z} Y_{\ell m} )
@@ -793,7 +793,7 @@ L^{2} ( L_{z} Y_{\ell m} ) = L_{z} L^{2} Y_{\ell m} = \ell ( \ell + 1 ) \hbar^{2
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p214" href="book.pdf#page=214" target="_blank" title="This page in the PDF"><sup>[p. 214]</sup></a>
 
-The operators $`L_{+} , L_{-}`$ and $`L_{Z}`$ do not change $`\ell`$. That is, after we operate, the new state is still an eigenstate of $`L^{2}`$ with the same eigenvalue, $`\ell ( \ell`$ + 1).
+The operators $`L_{+} , L_{-}`$ and $`L_{Z}`$ do not change $`\ell`$. That is, after we operate, the new state is still an eigenstate of $`L^{2}`$ with the same eigenvalue, $`\ell ( \ell + 1 )`$.
 
 The eigenvalue of $`L_{z}`$ is changed when we operate with $`L_{+}`$ or $`L_{-}`$.
 
@@ -849,15 +849,15 @@ we can derive limits on the quantum numbers.
 \ell ( \ell + 1 ) \geq m ( m \pm 1 )
 ```
 
-We know that the eigenvalue $`\ell ( \ell`$ + 1)$`\hbar^{2}`$ is greater than zero. We can assume that
+We know that the eigenvalue $`\ell ( \ell + 1 ) \hbar^{2}`$ is greater than zero. We can assume that
 
 ```math
 \ell \geq 0
 ```
 
-because negative values just repeat the same eigenvalues of $`\ell ( \ell`$ + 1)$`\hbar^{2}`$.
+because negative values just repeat the same eigenvalues of $`\ell ( \ell + 1 ) \hbar^{2}`$.
 
-The condition that $`\ell ( \ell`$ + 1) $`\geq m ( m \pm`$ 1) then becomes a limit on $`m`$.
+The condition that $`\ell ( \ell + 1 )`$ $`\geq m ( m \pm 1 )`$ then becomes a limit on $`m`$.
 
 ```math
 - \ell \leq m \leq \ell
@@ -937,7 +937,7 @@ L_{\pm} Y_{\ell m} = \hbar \sqrt{\ell ( \ell + 1 ) - m ( m \pm 1 )} Y_{\ell ( m 
 
 ## <a id="s-14-5-1-the-expectation-value-of-l-z"></a>14.5.1 The Expectation Value of $`L_{z}`$
 
-What is the expectation value of $`L_{z}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\frac{2}{3}} Y_{1 1} ( \theta ,\varphi ) - i \sqrt{\frac{1}{3}} Y_{1 - 1} ( \theta ,\varphi )`$)?
+What is the expectation value of $`L_{z}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\frac{2}{3}} Y_{1 1} ( \theta ,\varphi ) - i \sqrt{\frac{1}{3}} Y_{1 - 1} ( \theta ,\varphi ) )`$?
 
 The radial part plays no role. The angular part is properly normalized.
 
@@ -959,7 +959,7 @@ The radial part plays no role. The angular part is properly normalized.
 
 ## <a id="s-14-5-2-the-expectation-value-of-l-x"></a>14.5.2 The Expectation Value of $`L_{x}`$
 
-What is the expectation value of $`L_{x}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\frac{2}{3}} Y_{1 1} ( \theta ,\varphi ) - \sqrt{\frac{1}{3}} Y_{1 0} ( \theta ,\varphi )`$)?
+What is the expectation value of $`L_{x}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\frac{2}{3}} Y_{1 1} ( \theta ,\varphi ) - \sqrt{\frac{1}{3}} Y_{1 0} ( \theta ,\varphi ) )`$?
 
 We need $`L_{x} = ( L_{+} + L_{-} ) / 2 .`$
 
@@ -981,7 +981,7 @@ We need $`L_{x} = ( L_{+} + L_{-} ) / 2 .`$
 
 # <a id="s-14-6-sample-test-problems"></a>14.6 Sample Test Problems
 
-1. Derive the commutators $`[ L^{2} ,L_{+} ]`$ and [$`L_{z} ,L_{+} ]`$. Now show that $`L_{+} Y_{\ell m} = CY_{\ell ( m + 1 )}`$, that is, $`L_{+}`$ raises the $`L_{z}`$ eigenvalue but does not change the $`L^{2}`$ eigenvalue.
+1. Derive the commutators $`[ L^{2} ,L_{+} ]`$ and $`[ L_{z} ,L_{+} ]`$. Now show that $`L_{+} Y_{\ell m} = CY_{\ell ( m + 1 )}`$, that is, $`L_{+}`$ raises the $`L_{z}`$ eigenvalue but does not change the $`L^{2}`$ eigenvalue.
 
 **Answer**
 
@@ -1025,9 +1025,9 @@ L_{z} ( L_{+} Y_{\ell m} ) = ( m + 1 ) \hbar ( L_{+} Y_{\ell m} )
 
 So, $`L_{+}`$ raises the eigenvalue of $`L_{z}`$.
 
-2. Write the (normalized) state which is an eigenstate of $`L^{2}`$ with eigenvalue $`\ell ( \ell`$ + 1)$`\hbar^{2}`$ = 2$`\hbar^{2}`$ and also an **eigenstate of** $`L_{x}`$ with eigenvalue 0$`\hbar`$ in terms of the usual $`Y_{\ell m}`$.
+2. Write the (normalized) state which is an eigenstate of $`L^{2}`$ with eigenvalue $`\ell ( \ell + 1 ) \hbar^{2}`$ = 2$`\hbar^{2}`$ and also an **eigenstate of** $`L_{x}`$ with eigenvalue 0$`\hbar`$ in terms of the usual $`Y_{\ell m}`$.
 
-**Answer**<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=216" target="_blank" title="This page in the PDF"><sup>[p. 216]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p217" href="book.pdf#page=217" target="_blank" title="This page in the PDF"><sup>[p. 217]</sup></a></span> An eigenvalue of $`\ell ( \ell`$ + 1)$`\hbar^{2}`$ = 2$`\hbar^{2}`$ implies $`\ell`$ = 1. We will need a linear combination of the $`Y_{1 m}`$ to get the eigenstate of $`L_{x} = \tfrac{L_{+} + L_{-}}{2}`$.
+**Answer**<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=216" target="_blank" title="This page in the PDF"><sup>[p. 216]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p217" href="book.pdf#page=217" target="_blank" title="This page in the PDF"><sup>[p. 217]</sup></a></span> An eigenvalue of $`\ell ( \ell + 1 ) \hbar^{2}`$ = 2$`\hbar^{2}`$ implies $`\ell`$ = 1. We will need a linear combination of the $`Y_{1 m}`$ to get the eigenstate of $`L_{x} = \tfrac{L_{+} + L_{-}}{2}`$.
 
 ```math
 \frac{L_{+} + L_{-}}{2} ( AY_{1 1} + BY_{1 0} + CY_{1 - 1} ) = 0
@@ -1059,15 +1059,15 @@ The state is
 
 The trivial solution that $`A = B = C`$ = 0 is just a zero state, not normalizable to 1.
 
-3. Write the (normalized) state which is an eigenstate of $`L^{2}`$ with eigenvalue $`\ell ( \ell`$ + 1)$`\hbar^{2}`$ = 2$`\hbar^{2}`$ and also an **eigenstate of** $`L_{y}`$ with eigenvalue 1$`\hbar`$ in terms of the usual $`Y_{\ell m}`$.
+3. Write the (normalized) state which is an eigenstate of $`L^{2}`$ with eigenvalue $`\ell ( \ell + 1 ) \hbar^{2}`$ = 2$`\hbar^{2}`$ and also an **eigenstate of** $`L_{y}`$ with eigenvalue 1$`\hbar`$ in terms of the usual $`Y_{\ell m}`$.
 
-4. Calculate the **commutators** $`[ p_{z} ,L_{x} ]`$ and [$`L_{x}^{2} ,L_{z} ]`$.
+4. Calculate the **commutators** $`[ p_{z} ,L_{x} ]`$ and $`[ L_{x}^{2} ,L_{z} ]`$.
 
-5. **Derive** the relation $`L_{+} Y_{\ell m} = \hbar \sqrt{\ell ( \ell}`$ + 1) $`- m ( m`$ + 1)$`Y_{\ell ( m + 1 )}`$.
+5. **Derive** the relation $`L_{+} Y_{\ell m} = \hbar \sqrt{\ell ( \ell}`$ + 1) $`- m ( m + 1 ) Y_{\ell ( m + 1 )}`$.
 
 6. A particle is in a $`l`$ = 1 state and is known to have angular momentum in the $`x`$ direction equal to +$`\hbar`$. That is $`L_{x} \psi = \hbar \psi`$. Since we know $`l`$ = 1, $`\psi`$ must have the form $`\psi = R ( r ) ( aY_{1 , 1} + bY_{1 , 0} + cY_{1 , - 1} )`$. Find the coefficients $`a,b,`$ and $`c`$ for $`\psi`$ normalized.
 
-7. Calculate the following commutators: $`[ x,L_{z} ]`$, [$`L_{+} ,L^{2} ]`$, [$`\tfrac{1}{2} m\omega^{2} r^{2} ,p_{x} ]`$.
+7. Calculate the following commutators: $`[ x,L_{z} ]`$, $`[ L_{+} ,L^{2} ]`$, $`[ \tfrac{1}{2} m\omega^{2} r^{2} ,p_{x} ]`$.
 
 8. Prove that, if the Hamiltonian is symmetric under rotations, then $`[ H,L_{z} ]`$ = 0.
 
@@ -1093,7 +1093,7 @@ b) If a measurement of $`L_{z}`$ is made, what are the possible measured values 
 
 c) Find the expected value of $`<L_{x} >`$ in the above state.
 
-10. Two (different) atoms of masses $`M_{1}`$ and $`M_{2}`$ are bound together into the ground state of a diatomic molecule. The binding is such that radial excitations can be neglected at low energy and that the atoms can be assumed to be a constant distance $`a`$ = 3˚$`A`$ apart. (We will ignore the small spread around $`r = a . )`$
+10. Two (different) atoms of masses $`M_{1}`$ and $`M_{2}`$ are bound together into the ground state of a diatomic molecule. The binding is such that radial excitations can be neglected at low energy and that the atoms can be assumed to be a constant distance $`a`$ = 3˚$`A`$ apart. (We will ignore the small spread around $`r = a`$.)
 
 <div align="center">
 

@@ -788,7 +788,7 @@ $`R`$ is very small we may approximate (237) by
 V ( K ) = \begin{cases} \tfrac{4}{3} \pi R^{3} = V & \text{ for } | \boldsymbol{K} | R< 1 \\ 0 & \text{ for } | \boldsymbol{K} | R> 1 \end{cases}
 ```
 
-Then, since $`( K_{2}^{2} + K_{3}^{2} ) = | \boldsymbol{K} |^{2} ( 1 -`$ cos<sup>2</sup> $`\theta )`$ and $`\int 0 \pi`$ sin<sup>2</sup> $`\theta \sin \theta d\theta = \tfrac{4}{3}`$, we have<sup><a id="fnref-34" href="#fn-34">34</a></sup>
+Then, since $`( K_{2}^{2} + K_{3}^{2} ) = | \boldsymbol{K} |^{2}`$ ($`1 -`$ cos<sup>2</sup> $`\theta )`$ and $`\int 0 \pi`$ sin<sup>2</sup> $`\theta \sin \theta d\theta = \tfrac{4}{3}`$, we have<sup><a id="fnref-34" href="#fn-34">34</a></sup>
 
 <a id="eq-238"></a>
 
@@ -806,7 +806,7 @@ This fluctuation in position produces a change in the effective potential acting
 = V ( r ) + \tfrac{1}{2} \left\langle r_{1}^{2} \right\rangle_{o} \nabla^{2} V
 ```
 
-because $`\langle \delta \boldsymbol{r} \cdot \nabla V ( r ) \rangle_{o}`$ = 0, being odd. Now in a hydrogen atom, $`\nabla^{2} V = e^{2} \delta^{3} ( \boldsymbol{r} )`$ (Heaviside units!) Hence the change in the energy of the electron due to the fluctuations is<sup><a id="fnref-35" href="#fn-35">35</a></sup> $`( a_{o}`$ = Bohr radius)
+because $`\langle \delta \boldsymbol{r} \cdot \nabla V ( r ) \rangle_{o}`$ = 0, being odd. Now in a hydrogen atom, $`\nabla^{2} V = e^{2} \delta^{3} ( \boldsymbol{r} )`$ (Heaviside units!) Hence the change in the energy of the electron due to the fluctuations is<sup><a id="fnref-35" href="#fn-35">35</a></sup> ($`a_{o}`$ = Bohr radius)
 
 <a id="eq-239"></a>
 
@@ -970,7 +970,7 @@ Consider the solution of Eq. (245) in which the atom is given initially in a sta
 
 The initial condition Φ$`( t ) = \Phi_{o}`$ at time $`t = t_{o}`$ is a physically unreal one. It would mean putting the atom into existence at time 0 without any radiation field being excited at this time. This we cannot do physically. In fact the initial condition for an atom in an excited state will depend on how it got into the excited state. This cannot be formulated in a simple way: one needs a complicated model in order to describe the initial excitation of the atom.
 
-We are interested in calculating the variation with time of $`( \Phi_{o}^{*} \Phi ( t )`$), the probability amplitude for finding the atom still in the unperturbed state $`\Phi_{o}`$ at time $`t`$. By (245) we have
+We are interested in calculating the variation with time of $`( \Phi_{o}^{*} \Phi ( t ) )`$, the probability amplitude for finding the atom still in the unperturbed state $`\Phi_{o}`$ at time $`t`$. By (245) we have
 
 <a id="eq-250"></a>
 
@@ -992,7 +992,7 @@ Then (250) will give
 \frac{d}{dt} ( \Phi_{o}^{*} \Phi ( t ) )_{t = t_{o}} = 0 \qquad \text{(251)}
 ```
 
-from the $`H_{I}`$ given by (247) has zero expectation value in the Maxwell field vacuum, since $`A_{\mu} ( r,t )`$ also has a zero expectation value in vacuum as one can see from (211) and (217). Thus $`( \Phi_{o}^{*} \Phi ( t )`$) is momentarily stationary at $`t = t_{o}`$. This is however not interesting since the conditions at $`t = t_{o}`$ are entirely unphysical.
+from the $`H_{I}`$ given by (247) has zero expectation value in the Maxwell field vacuum, since $`A_{\mu} ( r,t )`$ also has a zero expectation value in vacuum as one can see from (211) and (217). Thus $`( \Phi_{o}^{*} \Phi ( t ) )`$ is momentarily stationary at $`t = t_{o}`$. This is however not interesting since the conditions at $`t = t_{o}`$ are entirely unphysical.
 
 The physically meaningful quantity is the value of (250) at a time $`t`$ a long time after $`t_{o}`$. Then the atom will have “settled down” to a quasi-stationary state of radiative decay, and we may expect that the value we find for (250) is independent of the particular initial condition chosen and will be correct for an atom which has been excited by any reasonable method to the state $`\Phi_{o}`$.
 
@@ -1008,11 +1008,11 @@ Suppose that $`( t - t_{o} )`$ is long compared with all the atomic frequencies.
 
 + terms involving other atomic states $`\Phi_{n}`$ with two or more photons present.
 
-Here $`a ( t ) = ( \Phi_{o}^{*} \Phi ( t )`$) is a slowly varying amplitude, constant to first order in $`H_{I}`$, representing the slow decay of the atom. Note that our treatment is not only a perturbation theory correct to second order in $`H_{I}`$, but it also must account _exactly_ for the big effects produced by the radiative decay over long periods of time. Therefore we do not put $`a ( t )`$ = 1 in (252) although this would be correct to first order in $`H_{I}`$.
+Here $`a ( t ) = ( \Phi_{o}^{*} \Phi ( t ) )`$ is a slowly varying amplitude, constant to first order in $`H_{I}`$, representing the slow decay of the atom. Note that our treatment is not only a perturbation theory correct to second order in $`H_{I}`$, but it also must account _exactly_ for the big effects produced by the radiative decay over long periods of time. Therefore we do not put $`a ( t )`$ = 1 in (252) although this would be correct to first order in $`H_{I}`$.
 
 If we put $`a ( t )`$ = 1 in (252) we should have just the solution of the radiation emission problem, neglecting all effects of radiation reaction on the atom, which we obtained before from Eg. (230).
 
-The value of $`\frac{d}{dt} a ( t ) = \frac{d}{dt} ( \Phi_{o}^{*} \Phi ( t )`$) is obtained correct to second order in $`H_{I}`$, and including the radiative reaction effects, by substituting (252) into (250).
+The value of $`\frac{d}{dt} a ( t ) = \frac{d}{dt} ( \Phi_{o}^{*} \Phi ( t ) )`$ is obtained correct to second order in $`H_{I}`$, and including the radiative reaction effects, by substituting (252) into (250).
 
 Hence we have
 
@@ -1292,7 +1292,7 @@ remembering that the integration over $`| \boldsymbol{k} |`$ in (277) is to be t
 
 From this formula (278) the line-shift for hydrogen states can be calculated numerically, as was done by Bethe, Brown and Stehn (_Phys. Rev._ **77** (1950) 370.)
 
-Since the log in (278) will be quite large $`( \sim 7`$) for states $`n`$ which are in the non-relativistic range, it is convenient to write
+Since the log in (278) will be quite large $`( \sim 7 )`$ for states $`n`$ which are in the non-relativistic range, it is convenient to write
 
 <a id="eq-279"></a>
 
@@ -1348,7 +1348,7 @@ Hence<sup><a id="fnref-43" href="#fn-43">43</a></sup>
 \begin{aligned} \Delta E &= \frac{e^{4} \hbar}{1 2 \pi^{2} m^{2} c^{3}} | \psi_{o} ( 0 ) |^{2} \log \frac{K}{( E - E_{o} )_{\text{ av }}} \\ &= \frac{e^{4} \hbar}{1 2 \pi^{2} m^{2} c^{3}} \log \frac{K}{( E - E_{o} )_{\text{ av }}} \times \begin{cases} 1 / ( \pi n^{3} a_{o}^{3} ) & \text{ for } s \text{ states } \\ 0 & \text{ for others } \end{cases} \end{aligned} \qquad \text{(284)}
 ```
 
-Compare this with (239). It differs only in having the log$`( K/ ( E - E_{o} )_{\text{ av }} )`$ replacing log(1$`/RK_{H} )`$. The low frequency photons have now been treated properly instead of being estimated. Only the high-frequency end is still inaccurate because of the vagueness of the cut-off $`K`$. Taking $`K = mc^{2}`$, (284) gives for the Lamb shift 2$`s - 2 p`$ the value _1040 Megacycles_. Remarkably close to the experimental value of 1062.
+Compare this with (239). It differs only in having the log$`( K/ ( E - E_{o} )_{\text{ av }} )`$ replacing $`\log ( 1 /RK_{H} )`$. The low frequency photons have now been treated properly instead of being estimated. Only the high-frequency end is still inaccurate because of the vagueness of the cut-off $`K`$. Taking $`K = mc^{2}`$, (284) gives for the Lamb shift 2$`s - 2 p`$ the value _1040 Megacycles_. Remarkably close to the experimental value of 1062.
 
 The success of this calculation of the line shift shows that the correct treatment of the interaction between an <a id="ix-106">electron</a> and the Maxwell field, with the help of the idea of mass renormalization, will give sensible results in agreement with experiment. This calculation could be done non-relativistically because the line shift is mainly a low-frequency and non-relativistic effect.
 
@@ -1841,7 +1841,7 @@ where
 \Theta_{u} = \begin{cases} = 1 & \text{ for electron states } u , \\ = 0 & \text{ for positron states } . \end{cases}
 ```
 
-Hence by (306) and (309) the expectation value $`\left\langle \psi_{\alpha} ( z ) \overline{\psi}_{\beta} ( y ) \right\rangle_{o}`$ is just the part of the anti-commutator $`\{ \psi_{\alpha} ( z ) , \overline{\psi}_{\beta} ( y ) \}`$ which contains positive frequencies exp$`[ ik \cdot ( z - y )`$], with $`k_{o} > 0`$. Thus, similarly to (221)
+Hence by (306) and (309) the expectation value $`\left\langle \psi_{\alpha} ( z ) \overline{\psi}_{\beta} ( y ) \right\rangle_{o}`$ is just the part of the anti-commutator $`\{ \psi_{\alpha} ( z ) , \overline{\psi}_{\beta} ( y ) \}`$ which contains positive frequencies exp$`[ ik \cdot ( z - y ) ]`$, with $`k_{o} > 0`$. Thus, similarly to (221)
 
 <a id="eq-325"></a>
 
@@ -2318,7 +2318,7 @@ We use the momentum representation (303) for $`S_{R}`$. But instead of taking th
 e^{- \delta_{0}} S_{R} ( x ) = \frac{i}{( 2 \pi )^{4}} \int e^{ik \cdot x} \frac{/ k + i/\delta + i\mu}{( k + i\delta )^{2} + \mu^{2}} d^{4} k \qquad \text{(368)}
 ```
 
-where $`\delta_{0}`$ is any positive real number, $`\delta`$ is the vector with components (0$`, 0 , 0 ,\delta_{0} )`$ and the integral is along the real axis. The poles of (368) in the $`k_{0}`$ plane are displaced away from the real axis and so the integrand is free from singularities on the path of integration. Similarly
+where $`\delta_{0}`$ is any positive real number, $`\delta`$ is the vector with components $`( 0 , 0 , 0 ,\delta_{0} )`$ and the integral is along the real axis. The poles of (368) in the $`k_{0}`$ plane are displaced away from the real axis and so the integrand is free from singularities on the path of integration. Similarly
 
 <a id="eq-369"></a>
 
@@ -2334,7 +2334,7 @@ Thus the momentum representation of (367) will be
 \begin{aligned} \langle j_{\mu H} ( x ) \rangle_{o} &= - \frac{e^{2}}{\hbar} \frac{1}{( 2 \pi )^{7}} \int d^{4} x^{\prime} \int \int d^{4} k_{1} d^{4} k_{2} \exp \{ iq \cdot x^{\prime} + i ( k_{1} - k_{2} ) \cdot ( x^{\prime} - x ) + \delta_{0} x_{0} \}\times \\ & \quad \times \left\{ \operatorname{Spur} \{ /e ( k /_{1} + i\mu ) \gamma_{\mu} ( / k_{2} + i/\delta + i\mu ) \} \frac{\delta ( k_{1}^{2} + \mu^{2} ) \Theta ( - k_{1} )}{( k_{2} + i\delta )^{2} + \mu^{2}} \right. \\ & \quad \left. + \operatorname{Spur} \{ /e ( / k_{1} - i/\delta + i\mu ) \gamma_{\mu} ( / k_{2} + i\mu ) \} \frac{\delta ( k_{2}^{2} + \mu^{2} ) \Theta ( - k_{2} )}{( k_{1} - i\delta )^{2} + \mu^{2}} \right\} \end{aligned}
 ```
 
-The integration of $`x^{\prime}`$ is immediate and gives (2$`\pi )^{4} \delta^{4} ( k_{1} - k_{2} + q )`$. Hence
+The integration of $`x^{\prime}`$ is immediate and gives $`( 2 \pi )^{4} \delta^{4} ( k_{1} - k_{2} + q )`$. Hence
 
 <a id="eq-370"></a>
 
@@ -2784,7 +2784,7 @@ And the change in the energy of a state of the hydrogen atom with wave-function 
 \Delta E_{P} = - \frac{\alpha e^{2}}{1 5 \pi \mu^{2}} | \psi ( 0 ) |^{2} = - \tfrac{1}{5} \left\{ \frac{e^{4} \hbar}{1 2 \pi^{2} m^{2} c^{3}} | \psi ( 0 ) |^{2} \right\} \qquad \text{(409)}
 ```
 
-This is just the same as the formula for the Lamb shift, (284), with $`( - 1 / 5`$) instead of the logarithm. Thus it is a factor 40 smaller than the Lamb shift, and in the opposite direction, $`- 27`$ megacycles in the total of 1062. Still the experiments are good enough to show that the effect is there all right.
+This is just the same as the formula for the Lamb shift, (284), with $`( - 1 / 5 )`$ instead of the logarithm. Thus it is a factor 40 smaller than the Lamb shift, and in the opposite direction, $`- 27`$ megacycles in the total of 1062. Still the experiments are good enough to show that the effect is there all right.
 
 The result (409) was calculated many years ago by Uehling <a id="refback-17-1"></a>[[17]](#ref-17) using old-fashioned methods.
 

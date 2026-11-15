@@ -79,7 +79,7 @@ We now want to go from a classical harmonic oscillator to a quantum oscillator, 
 
 Remember that one exponential corresponds to the emission of a photon and the other corresponds to the the absorption of a photon. We view $`\vec{A}`$ as an operator which either creates or absorbs a photon, raising or lowering the harmonic oscillator in the vacuum.
 
-Now there is a **perturbation even with no applied field** $`( N`$ = 0).
+Now there is a **perturbation even with no applied field** $`( N = 0 )`$.
 
 ```math
 \mathcal{V}_{N = 0} = V_{N = 0} e^{i\omega t} = \frac{e}{mc} \vec{A} \cdot \vec{p} = \frac{e}{mc} \left[ \frac{2 \pi \hbar c^{2}}{\omega V} \right]^{\tfrac{1}{2}} e^{- i ( \vec{k} \cdot \vec{r} - \omega t )} \hat{\epsilon} \cdot \vec{p}
@@ -296,7 +296,7 @@ Y_{\ell_{1} m_{1}} ( \theta ,\varphi ) Y_{\ell_{2} m_{2}} ( \theta ,\varphi ) = 
 
 The square root and $`\langle \ell 0 | \ell_{1} \ell_{2} 0 0 \rangle`$ can be thought of as a normalization constant in an otherwise normal Clebsch-Gordan series. (Note that the normal addition of the orbital angular momenta of two particles would have product states of two spherical harmonics in **different coordinates**, the coordinates of particle one and of particle two.) (The derivation of the above equation involves a somewhat detailed study of the properties of rotation matrices and would take us pretty far off the current track (See Merzbacher page 396).)
 
-First add the angular momentum from the initial state $`( Y_{\ell_{i} m_{i}} )`$ and the photon ($`Y_{1 m} )`$ using the Clebsch-Gordan series, with the usual notation for the **Clebsch-Gordan coefficients** $`\langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} m \rangle`$.
+First add the angular momentum from the initial state $`( Y_{\ell_{i} m_{i}} )`$ and the photon $`( Y_{1 m} )`$ using the Clebsch-Gordan series, with the usual notation for the **Clebsch-Gordan coefficients** $`\langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} m \rangle`$.
 
 ```math
 Y_{1 m} ( \theta ,\varphi ) Y_{\ell_{i} m_{i}} ( \theta ,\varphi ) = \sum_{\ell = | \ell_{i} - 1 |}^{\ell_{i} + 1} \sqrt{4 3 ( 2 \ell_{i} + 1 ) \pi ( 2 \ell + 1 )} \langle \ell 0 | \ell_{i} 1 0 0 \rangle \langle \ell ( m + m_{i} ) | \ell_{i} 1 m_{i} m \rangle Y_{\ell ( m_{i} + m )} ( \theta ,\varphi )
@@ -714,7 +714,7 @@ We may take the Fourier transform of this time function to the the amplitude as 
 = \frac{i}{( \omega - \omega_{0} + i \tfrac{\Gamma}{2} )}
 ```
 
-We may square this to get the probability or intensity as a function of $`\omega`$ (and hence $`E = \hbar \omega )`$.
+We may square this to get the probability or intensity as a function of $`\omega`$ (and hence $`E = \hbar \omega`$).
 
 ```math
 I_{i} ( \omega ) = | \varphi_{i} ( \omega ) |^{2} = \frac{1}{( \omega - \omega_{0} )^{2} + \tfrac{\Gamma^{2}}{4}}
@@ -1014,7 +1014,7 @@ V ( \boldsymbol{r} ) = \lambda \delta ( r - r_{0} )
 
 Assume that the potential is weak so that perturbation theory can be used. Be sure to write your answer in terms of the scattering angles.
 
-5. Assume that a heavy nucleus attracts $`K_{0}`$ mesons with a weak Yakawa potential $`V ( r ) = \tfrac{V_{0}}{r} e^{- \alpha r}`$. Calculate the differential cross section, $`\frac{d\sigma}{d \Omega}`$, for scattering high energy $`K_{0}`$ mesons (mass $`m_{K} )`$ from that nucleus. Give your answer in terms of the scattering angle $`\theta`$.
+5. Assume that a heavy nucleus attracts $`K_{0}`$ mesons with a weak Yakawa potential $`V ( r ) = \tfrac{V_{0}}{r} e^{- \alpha r}`$. Calculate the differential cross section, $`\frac{d\sigma}{d \Omega}`$, for scattering high energy $`K_{0}`$ mesons (mass $`m_{K}`$) from that nucleus. Give your answer in terms of the scattering angle $`\theta`$.
 
 ---
 

@@ -17,7 +17,7 @@ Enrico Fermi showed, in 1930, that $`A_{\|}`$ together with $`A_{0}`$ give rise 
 H = \sum_{j} \frac{1}{2 m_{j}} \left( \vec{p} - \frac{e}{c} \vec{A}_{\perp} ( \vec{x}_{j} ) \right)^{2} + \sum_{i>j} \frac{e_{i} e_{j}}{4 \pi | \vec{x}_{i} - \vec{x}_{j} |} + H_{rad}
 ```
 
-where $`H_{rad}`$ is purely the Hamiltonian of the radiation (containing only $`\vec{A}_{\perp} )`$, and $`\vec{A}_{\perp}`$ is the part of the vector potential which satisfies $`\vec{\nabla} \cdot \vec{A}_{\perp}`$ = 0. Note that $`\vec{A}_{\|}`$ and $`A_{4}`$ appear nowhere in the Hamiltonian. Instead, we have the Coulomb potential. This separation allows us to continue with our standard Hydrogen solution and just add radiation. We will not derive this result.
+where $`H_{rad}`$ is purely the Hamiltonian of the radiation (containing only $`\vec{A}_{\perp}`$), and $`\vec{A}_{\perp}`$ is the part of the vector potential which satisfies $`\vec{\nabla} \cdot \vec{A}_{\perp}`$ = 0. Note that $`\vec{A}_{\|}`$ and $`A_{4}`$ appear nowhere in the Hamiltonian. Instead, we have the Coulomb potential. This separation allows us to continue with our standard Hydrogen solution and just add radiation. We will not derive this result.
 
 In a **region in which there are no source terms**,
 
@@ -285,7 +285,7 @@ H = \sum_{k,\alpha} \left( \frac{\omega}{c} \right)^{2} \left[ c_{k,\alpha} ( t 
 
 This is the **result we will use to quantize the field**. We have been careful **not to commute** $`c`$ **and** $`c^{*}`$ here in anticipation of the fact that they do not commute.
 
-It should not be a surprise that the terms that made up the Lagrangian gave a zero contribution because $`\mathcal{L} = \tfrac{1}{2} ( E^{2} - B^{2} )`$ and we know that E and B have the same magnitude in a radiation field. (There is one wrinkle we have glossed over; terms with $`\vec{k}^{\prime} = - \vec{k} . )`$
+It should not be a surprise that the terms that made up the Lagrangian gave a zero contribution because $`\mathcal{L} = \tfrac{1}{2} ( E^{2} - B^{2} )`$ and we know that E and B have the same magnitude in a radiation field. (There is one wrinkle we have glossed over; terms with $`\vec{k}^{\prime} = - \vec{k}`$.)
 
 # <a id="s-33-4-canonical-coordinates-and-momenta"></a>33.4 Canonical Coordinates and Momenta
 
@@ -1005,7 +1005,7 @@ The decay rate does not depend on the $`m`$ of the initial state.
 
 Some atomic states have no lower energy state that satisfies the E1 selection rules to decay to. Then, higher order processes must be considered. The next order term in the expansion of $`e^{- i \vec{k} \cdot \vec{r}} = 1`$ $`- i \vec{k} \cdot \vec{r} + \dots`$ will allow other transitions to take place but at lower rates. We will attempt to understand the **selection rules** when we include the $`i \vec{k} \cdot \vec{r}`$ term.
 
-The matrix element is proportional to $`- i \langle \varphi_{n} | ( \vec{k} \cdot \vec{r} )`$(ˆ$`\epsilon^{( \lambda )} \cdot \vec{p}_{e} ) | \varphi_{i} \rangle`$ which we will **split up into two** **terms**. You might ask why split it. The reason is that we will essentially be **computing matrix** **elements of at tensor** and dotting it into two vectors that do not depend on the atomic state.
+The matrix element is proportional to $`- i \langle \varphi_{n} | ( \vec{k} \cdot \vec{r} )`$(ˆ$`\epsilon^{( \lambda )} \cdot \vec{p}_{e}`$) $`| \varphi_{i} \rangle`$ which we will **split up into two** **terms**. You might ask why split it. The reason is that we will essentially be **computing matrix** **elements of at tensor** and dotting it into two vectors that do not depend on the atomic state.
 
 ```math
 \vec{k} \cdot \langle \varphi_{n} | \vec{r} \vec{p}_{e} ) | \varphi_{i} \rangle \cdot \hat{\epsilon}^{( \lambda )}

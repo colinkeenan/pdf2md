@@ -23,7 +23,7 @@ E^{2} = p^{2} c^{2} + ( mc^{2} )^{2}
 
 This is just the **Klein-Gordon equation** that we derived for a scalar field. It did not take physicists long to come up with this equation.
 
-Because the Schrödinger equation is **first order in the time derivative**, the initial conditions needed to determine a solution to the equation are just $`\psi ( t`$ = 0). In an equation that is second order in the time derivative, we also need to specify some information about the time derivatives at $`t`$ = 0 to determine the solution at a later time. It seemed strange to give up the concept that all information is contained in the wave function to go to the relativistically correct equation.
+Because the Schrödinger equation is **first order in the time derivative**, the initial conditions needed to determine a solution to the equation are just $`\psi ( t = 0 )`$. In an equation that is second order in the time derivative, we also need to specify some information about the time derivatives at $`t`$ = 0 to determine the solution at a later time. It seemed strange to give up the concept that all information is contained in the wave function to go to the relativistically correct equation.
 
 If we have a complex scalar field that satisfies the (Euler-Lagrange = Klein-Gordon) equations
 
@@ -491,7 +491,7 @@ Expand the energy term on the left of the equation for the non-relativistic case
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p493" href="book.pdf#page=493" target="_blank" title="This page in the PDF"><sup>[p. 493]</sup></a>
 
-We will be attempting to get the correct Schrödinger equation to order $`\alpha^{4}`$, like the one we used to calculate the fine structure in Hydrogen. Since this energy term we are expanding is multiplied in the equation by $`p^{2}`$, we only need the first two terms in the expansion (order 1 and order $`\alpha^{2} )`$.
+We will be attempting to get the correct Schrödinger equation to order $`\alpha^{4}`$, like the one we used to calculate the fine structure in Hydrogen. Since this energy term we are expanding is multiplied in the equation by $`p^{2}`$, we only need the first two terms in the expansion (order 1 and order $`\alpha^{2}`$).
 
 ```math
 \vec{\sigma} \cdot \vec{p} \frac{1}{2 m} \left( 1 - \frac{E^{( NR )} + eA_{0}}{2 mc^{2}} \right) \vec{\sigma} \cdot \vec{p} \psi_{A} = ( E^{( NR )} + eA_{0} ) \psi_{A}
@@ -1227,7 +1227,7 @@ We can think of **rotations and boosts as the two basic symmetry transformations
 \psi^{\prime} = S_{boost} ( \beta ) \psi
 ```
 
-We will work with the **Dirac equation** and its transformation. We know how the Lorentz vectors transform so we can derive a requirement on the spinor transformation. (Remember that $`a_{\mu \nu}`$ works in an entirely different space than do $`\gamma_{\mu}`$ and $`S . )`$
+We will work with the **Dirac equation** and its transformation. We know how the Lorentz vectors transform so we can derive a requirement on the spinor transformation. (Remember that $`a_{\mu \nu}`$ works in an entirely different space than do $`\gamma_{\mu}`$ and $`S`$.)
 
 ```math
 \gamma_{\mu} \frac{\partial}{\partial x_{\mu}} \psi ( x ) + \frac{mc}{\hbar} \psi ( x ) = 0
@@ -1901,7 +1901,7 @@ However, the **helicity**, or spin along the direction of motion does commute.
 [ H, \vec{S} \cdot \vec{p} ] = [ H, \vec{S} ] \cdot \vec{p} = \hbar c\gamma_{4} \vec{p} \times \vec{\gamma} \cdot \vec{p} = 0
 ```
 
-From the above commutators $`[ H,L_{z} ]`$ and [$`H,S_{z} ]`$, the **components of total angular momentum** **do commute** with $`H`$.
+From the above commutators $`[ H,L_{z} ]`$ and $`[ H,S_{z} ]`$, the **components of total angular momentum** **do commute** with $`H`$.
 
 ```math
 [ H,J_{z} ] = [ H,L_{z} ] + [ H,S_{z} ] = \hbar c\gamma_{4} ( \gamma_{1} p_{y} - \gamma_{2} p_{x} ) + \hbar c\gamma_{4} [ \gamma_{2} p_{x} - \gamma_{1} p_{y} ] = 0
@@ -1999,7 +1999,7 @@ It is also useful to show that $`[ K, \vec{J} ]`$ = 0 so that we have a mutually
 [ K, \vec{J} ] = [ \gamma_{4} \vec{\Sigma} \cdot \vec{J} - \frac{\hbar}{2} \gamma_{4} , \vec{J} ] = [ \gamma_{4} , \vec{J} ] \vec{\Sigma} \cdot \vec{J} + \gamma_{4} [ \vec{\Sigma} \cdot \vec{J} , \vec{J} ] - \frac{\hbar}{2} [ \gamma_{4} , \vec{J} ]
 ```
 
-This will be zero if $`[ \gamma_{4} , \vec{J} ]`$ = 0 and [$`\vec{\Sigma} \cdot \vec{J} , \vec{J} ]`$ = 0.
+This will be zero if $`[ \gamma_{4} , \vec{J} ]`$ = 0 and $`[ \vec{\Sigma} \cdot \vec{J} , \vec{J} ]`$ = 0.
 
 ```math
 \left[ \gamma_{4} , \vec{J} \right] = [ \gamma_{4} , \vec{L} + \frac{\hbar}{2} \vec{\Sigma} ] = \frac{\hbar}{2} [ \gamma_{4} , \vec{\Sigma} ] = 0
@@ -2501,7 +2501,7 @@ We can use commutation and anticommutation relations to **write** $`\vec{\sigma}
 \vec{\sigma} \cdot \vec{p} = \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \left( - i \hbar r \frac{\partial}{\partial r} + i \vec{\sigma} \cdot \vec{L} \right)
 ```
 
-Note that the operators $`\frac{\vec{\sigma} \cdot \vec{x}}{r}`$ and $`i \vec{\sigma} \cdot \vec{L}`$ act only on the angular momentum parts of the state. There are no radial derivatives so they commute with $`- i \hbar r \tfrac{\partial}{\partial r}`$ . Lets pick a shorthand notation for the angular momentum eigenstates we must use. These have quantum numbers $`j , m_{j}`$, and $`\ell . \psi_{A}`$ will have $`\ell = \ell_{A}`$ and $`\psi_{B}`$ must have the other possible value of $`\ell`$ which we label $`\ell_{B}`$. Following the notation of Sakurai, we will call the state $`| jm_{j} \ell_{A} \rangle \equiv \mathcal{Y}_{j\ell_{A}}^{m_{j}} = \alpha Y_{\ell_{A} ,m_{j} - \tfrac{1}{2}} \chi_{+} + \beta Y_{\ell_{A} ,m_{j} + \tfrac{1}{2}} \chi_{-}`$. (Note that our previous functions made use of $`m = m_{\ell}`$ particularly in the calculation of $`\alpha`$ and $`\beta . )`$
+Note that the operators $`\frac{\vec{\sigma} \cdot \vec{x}}{r}`$ and $`i \vec{\sigma} \cdot \vec{L}`$ act only on the angular momentum parts of the state. There are no radial derivatives so they commute with $`- i \hbar r \tfrac{\partial}{\partial r}`$ . Lets pick a shorthand notation for the angular momentum eigenstates we must use. These have quantum numbers $`j , m_{j}`$, and $`\ell . \psi_{A}`$ will have $`\ell = \ell_{A}`$ and $`\psi_{B}`$ must have the other possible value of $`\ell`$ which we label $`\ell_{B}`$. Following the notation of Sakurai, we will call the state $`| jm_{j} \ell_{A} \rangle \equiv \mathcal{Y}_{j\ell_{A}}^{m_{j}} = \alpha Y_{\ell_{A} ,m_{j} - \tfrac{1}{2}} \chi_{+} + \beta Y_{\ell_{A} ,m_{j} + \tfrac{1}{2}} \chi_{-}`$. (Note that our previous functions made use of $`m = m_{\ell}`$ particularly in the calculation of $`\alpha`$ and $`\beta`$.)
 
 ```math
 c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \left( - i \hbar r \frac{\partial}{\partial r} + i \vec{\sigma} \cdot \vec{L} \right) \begin{pmatrix} \psi_{B} \\ \psi_{A} \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix}
@@ -2829,7 +2829,7 @@ In the Dirac theory, we have only one term in the **interaction Hamiltonian**,
 H_{int} = ie\gamma_{4} \gamma_{k} A_{k}
 ```
 
-Because it is linear in $`A`$ it can create a photon or annihilate a photon. Photon scattering is therefore second order (and proportional to $`e^{2} )`$. The **quantized photon field** is
+Because it is linear in $`A`$ it can create a photon or annihilate a photon. Photon scattering is therefore second order (and proportional to $`e^{2}`$). The **quantized photon field** is
 
 ```math
 A_{\mu} ( x ) = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right) .

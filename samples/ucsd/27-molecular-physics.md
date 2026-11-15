@@ -95,7 +95,7 @@ We have reused the calculation of $`S ( R )`$ in the above. Now, we plug these i
 
 The symmetric (bonding) state has a large probability for the electron to be found between nuclei. The antisymmetric (antibonding) state has a small probability there, and hence, a much larger energy.
 
-The graph below shows the energies from our calculation for the space symmetric $`( E_{g} )`$ and antisymmetric $`( E_{u} )`$ states as well as the result of a more complete calculation (Exact $`E_{g} )`$ as a function of the distance between the protons $`R`$. Our calculation for the symmetric state shows a minimum arount 1.3 Angstroms between the nuclei and a Binding Energy of 1.76 eV. We could get a better estimate by introduction some parameters in our trial wave function and using the variational method.
+The graph below shows the energies from our calculation for the space symmetric $`( E_{g} )`$ and antisymmetric $`( E_{u} )`$ states as well as the result of a more complete calculation (Exact $`E_{g}`$) as a function of the distance between the protons $`R`$. Our calculation for the symmetric state shows a minimum arount 1.3 Angstroms between the nuclei and a Binding Energy of 1.76 eV. We could get a better estimate by introduction some parameters in our trial wave function and using the variational method.
 
 The antisymmetric state shows no minimum and never goes below -13.6 eV so there is no binding in this state.
 

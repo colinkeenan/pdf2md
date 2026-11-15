@@ -7,7 +7,7 @@
 
 # 25 The Helium Atom
 
-Hydrogen has been a great laboratory for Quantum Mechanics. After Hydrogen, Helium is the simplest atom we can use to begin to study atomic physics. Helium has two protons in the nucleus $`( Z`$ = 2), usually two neutrons $`( A`$ = 4), and two electrons bound to the nucleus.
+Hydrogen has been a great laboratory for Quantum Mechanics. After Hydrogen, Helium is the simplest atom we can use to begin to study atomic physics. Helium has two protons in the nucleus $`( Z = 2 )`$, usually two neutrons $`( A = 4 )`$, and two electrons bound to the nucleus.
 
 This material is covered in **Gasiorowicz Chapters 18,** in **Cohen-Tannoudji et al. Comple-** **ment** $`B_{XIV}`$**,** and briefly in Griffiths Chapter 7.
 
@@ -19,7 +19,7 @@ We can use the hydrogenic states to begin to understand Helium. The Hamiltonian 
 H = \frac{p_{1}^{2}}{2 m} + \frac{p_{2}^{2}}{2 m} - \frac{Ze^{2}}{r_{1}} - \frac{Ze^{2}}{r_{2}} + \frac{e^{2}}{| \vec{r}_{1} - \vec{r}_{2} |}
 ```
 
-We can write this in terms of the $`( Z`$ = 2) Hydrogen Hamiltonian for each electron plus a perturbation,
+We can write this in terms of the $`( Z = 2 )`$ Hydrogen Hamiltonian for each electron plus a perturbation,
 
 ```math
 H = H_{1} + H_{2} + V
@@ -545,7 +545,7 @@ We can do the integral for $`r_{2} <r_{1}`$ and simplify the expression. Because
 \frac{1}{| \vec{r}_{1} - \vec{r}_{2} |} = \sum_{\ell = 0}^{\infty} \frac{r_{<}^{\ell}}{r_{>}^{\ell + 1}} P_{\ell} ( \cos \theta_{1 2} )
 ```
 
-Here $`r_{<}`$ is the smaller of the two radii and $`r_{>}`$ is the larger. As in the ground state calculation, we can use the symmetry of the problem to specify which radius is the larger. Then we can use a version of the addition theorem to write the Legendre Polynomial $`P_{\ell}`$(cos$`\theta_{1 2} )`$ in terms of the spherical hamonics for each electron.
+Here $`r_{<}`$ is the smaller of the two radii and $`r_{>}`$ is the larger. As in the ground state calculation, we can use the symmetry of the problem to specify which radius is the larger. Then we can use a version of the addition theorem to write the Legendre Polynomial $`P_{\ell} ( \cos \theta_{1 2} )`$ in terms of the spherical hamonics for each electron.
 
 ```math
 P_{\ell} ( \cos \theta_{1 2} ) = \frac{4 \pi}{2 \ell + 1} \sum_{m = - \ell}^{\ell} ( - 1 )^{m} Y_{\ell m} ( \theta_{1} ,\varphi_{1} ) Y_{\ell ( - m )} ( \theta_{2} ,\varphi_{2} )

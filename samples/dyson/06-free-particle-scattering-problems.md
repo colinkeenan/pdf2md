@@ -39,7 +39,7 @@ Before discussing the general analysis of the series expansion (421), we shall u
 
 ## <a id="s-a-m-ller-scattering-of-two-electrons"></a>A. Møller Scattering of Two Electrons
 
-We have in the initial state $`A`$ two electrons in states $`( p_{1} u_{1} ) ( p_{2} u_{2} )`$ and in the final state $`B`$ two electrons $`( p_{1}^{\prime} u_{1}^{\prime} ) ( p_{2}^{\prime} u_{2}^{\prime} )`$. The electron ($`p_{1} u_{1} )`$ is given by the one-particle <a id="ix-92">wave-function</a>
+We have in the initial state $`A`$ two electrons in states $`( p_{1} u_{1} ) ( p_{2} u_{2} )`$ and in the final state $`B`$ two electrons $`( p_{1}^{\prime} u_{1}^{\prime} ) ( p_{2}^{\prime} u_{2}^{\prime} )`$. The electron $`( p_{1} u_{1} )`$ is given by the one-particle <a id="ix-92">wave-function</a>
 
 <a id="eq-422"></a>
 
@@ -399,7 +399,7 @@ The number of final states for the electron is
 \frac{1}{( 2 \pi )^{3}} \left( \frac{mc^{2}}{E^{\prime}} \right) dp_{1}^{\prime} dp_{2}^{\prime} dp_{3}^{\prime} \qquad \text{(456)}
 ```
 
-The photon with potentials (440), when $`e_{\mu}^{\prime}`$ is a space-like vector having $`( e_{\mu}^{\prime} )^{2}`$ = 1 is normalized to one particle per volume $`\hbar c/ 2 k_{0}^{\prime}`$. This can be seen at once, comparing (440) with (211) and (214), and taking into account the difference of (2$`\pi )^{3}`$ between the continuous and discrete normalizations. Hence the number of final states for the photon is
+The photon with potentials (440), when $`e_{\mu}^{\prime}`$ is a space-like vector having $`( e_{\mu}^{\prime} )^{2}`$ = 1 is normalized to one particle per volume $`\hbar c/ 2 k_{0}^{\prime}`$. This can be seen at once, comparing (440) with (211) and (214), and taking into account the difference of $`( 2 \pi )^{3}`$ between the continuous and discrete normalizations. Hence the number of final states for the photon is
 
 <a id="eq-457"></a>
 
@@ -543,7 +543,7 @@ so adding the terms gives
 - \left( /e \frac{/ k}{k_{0}} /e^{\prime} + /e^{\prime} \frac{k /^{\prime}}{k_{0}^{\prime}} /e \right) p / + 2 \mu \{ /e,/e^{\prime} \} = - \left( /e \frac{/ k}{k_{0}} /e^{\prime} + /e^{\prime} \frac{k /^{\prime}}{k_{0}^{\prime}} /e \right) p / + 4 \mu ( e \cdot e^{\prime} )
 ```
 
-Now since $`k/ / k = / k^{\prime} k /^{\prime} = p/p / + \mu^{2}`$ = 0 (for the photons because they are on the lightcone, for the electron because $`p^{2} = - \mu^{2} )`$, we get for $`| K |^{2}`$
+Now since $`k/ / k = / k^{\prime} k /^{\prime} = p/p / + \mu^{2}`$ = 0 (for the photons because they are on the lightcone, for the electron because $`p^{2} = - \mu^{2}`$), we get for $`| K |^{2}`$
 
 <a id="eq-464"></a>
 
@@ -867,11 +867,11 @@ We consider these two important processes together. Given an external potential 
 
 _Bremsstrahlung_
 
-Electron $`( pu ) \to`$ Electron $`( p^{\prime} u^{\prime} )`$ + Photon ($`k^{\prime} e^{\prime} )`$
+Electron $`( pu ) \to`$ Electron $`( p^{\prime} u^{\prime} )`$ + Photon $`( k^{\prime} e^{\prime} )`$
 
 _Pair-creation_
 
-Photon $`( k^{\prime} e^{\prime} ) \to`$ Electron $`( pu )`$ + Positron ($`p_{+}^{\prime} u^{\prime} )`$
+Photon $`( k^{\prime} e^{\prime} ) \to`$ Electron $`( pu )`$ + Positron $`( p_{+}^{\prime} u^{\prime} )`$
 
 We treat not only the photon $`( ke )`$ but also the potential $`A^{e}`$ in _Born approximation._ This is valid so long as
 
@@ -887,7 +887,7 @@ Potential energy $`\times`$ time of transit $`\ll \hbar`$
 \text{ or } \text{ or } \quad \frac{Ze^{2}}{4 \pi \hbar v} \frac{Ze^{2}}{4 \pi r} \times \frac{r}{v} = \frac{Z}{1 3 7} \frac{c}{v} \ll \hbar \ll 1 \qquad \text{(481)}
 ```
 
-The treatment will only be good for _relativistic velocities_ $`v \sim c`$, and for _lighter atoms_ $`Z \ll 137`$. In fact for heavy atoms $`( Z`$ = 82 for lead) and $`v \sim c`$ the error from the Born approximation is about 10%.
+The treatment will only be good for _relativistic velocities_ $`v \sim c`$, and for _lighter atoms_ $`Z \ll 137`$. In fact for heavy atoms ($`Z`$ = 82 for lead) and $`v \sim c`$ the error from the Born approximation is about 10%.
 
 The processes arise in the Born approximation just from the term linear in $`A_{\mu}`$ and linear in $`A_{\mu}^{e}`$ in (421). This term is
 
@@ -905,7 +905,7 @@ The factor $`\frac{1}{2}`$ in (423) is now missing, otherwise everything is the 
 A_{\mu}^{e} ( x_{2} ) = \frac{1}{( 2 \pi )^{4}} \int dkf ( k ) e_{\mu} e^{ik \cdot x_{2}} \qquad \text{(483)}
 ```
 
-where $`f ( k )`$ is a known function of $`k`$. For a static Coulomb field all the vectors $`k`$ appearing in (483) have zero 4<sup>th</sup> component, and $`e_{\mu}`$ is the constant vector (0$`, 0 , 0 ,i )`$. We calculate the matrix element $`M_{1}`$ for bremsstrahlung or pair creation with $`A_{\mu}^{e}`$ given by the pure Fourier component (438) ; the results are then to be afterwards superposed to give the actual potential according to (483).
+where $`f ( k )`$ is a known function of $`k`$. For a static Coulomb field all the vectors $`k`$ appearing in (483) have zero 4<sup>th</sup> component, and $`e_{\mu}`$ is the constant vector $`( 0 , 0 , 0 ,i )`$. We calculate the matrix element $`M_{1}`$ for bremsstrahlung or pair creation with $`A_{\mu}^{e}`$ given by the pure Fourier component (438) ; the results are then to be afterwards superposed to give the actual potential according to (483).
 
 For bremsstrahlung the formula for $`M_{1}`$ is (449), identically the same as for the Compton effect, or integrating over the frequency $`k`$
 
@@ -917,7 +917,7 @@ M_{1} = - \frac{e^{2}}{\hbar^{2} c^{2}} f ( p^{\prime} + k^{\prime} - p ) \overl
 
 The factor 2 difference between (482) and (423) is just compensated by the fact that the photon $`k^{\prime} e^{\prime}`$ can be emitted by two operators $`A_{\mu}`$ in (423) and by only one in (482). The bremsstrahlung <a id="ix-54">cross section</a> is then calculated by squaring (484) and integrating over $`k^{\prime}`$ and $`p^{\prime}`$ with appropriate normalization factors. For the details see Heitler’s book $`§ 1 7 .`$<sup><a id="fnref-66" href="#fn-66">66</a></sup>
 
-For pair creation the same formula (449) gives the matrix element $`M_{1}`$, allowing for the fact that the roles of the particles are now changed around so that electron $`( pu )`$ instead of ($`p^{\prime} u^{\prime} )`$ is created etc. Thus
+For pair creation the same formula (449) gives the matrix element $`M_{1}`$, allowing for the fact that the roles of the particles are now changed around so that electron $`( pu )`$ instead of $`( p^{\prime} u^{\prime} )`$ is created etc. Thus
 
 <a id="eq-485"></a>
 

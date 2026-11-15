@@ -577,7 +577,7 @@ The figure below shows the two solutions plotted on the same graph as the potent
 
 _Figure 39 (p. 157)_
 
-Two Hydrogen atoms bind together to form a molecule with a separation of 0.74 Angstroms, just larger than the Bohr radius of 0.53 Angstroms. The binding energy (for the two electrons) is about 4.5 eV. If we approximate the Coulomb potential by with a delta function, setting $`aV_{0}`$ = (0$`. 5 3 ) ( 2 ) ( 1 3 . 6 )`$ eV Angstroms, our very naive calculation would give 1.48 eV for one electron, which is at least the right order of magnitude.
+Two Hydrogen atoms bind together to form a molecule with a separation of 0.74 Angstroms, just larger than the Bohr radius of 0.53 Angstroms. The binding energy (for the two electrons) is about 4.5 eV. If we approximate the Coulomb potential by with a delta function, setting $`aV_{0}`$ = $`( 0 . 5 3 ) ( 2 ) ( 1 3 . 6 )`$ eV Angstroms, our very naive calculation would give 1.48 eV for one electron, which is at least the right order of magnitude.
 
 The **odd parity solution** has an energy that satisfies the equation
 
@@ -1105,7 +1105,7 @@ Plug it into the differential equation.
 \sum_{m = 0}^{\infty} [ a_{m} ( m ) ( m - 1 ) y^{m - 2} - 2 a_{m} ( m ) y^{m} + ( \epsilon - 1 ) a_{m} y^{m} ] = 0
 ```
 
-We now want ot shift terms in the sum so that we see the coefficient of $`y^{m}`$. To do this, we will shift the term $`a_{m} ( m ) ( m - 1 ) y^{m - 2}`$ down two steps in the sum. It will now show up as $`a_{m + 2} ( m`$+ 2)$`( m`$+ 1)$`y^{m}`$.
+We now want ot shift terms in the sum so that we see the coefficient of $`y^{m}`$. To do this, we will shift the term $`a_{m} ( m ) ( m - 1 ) y^{m - 2}`$ down two steps in the sum. It will now show up as $`a_{m + 2} ( m + 2 ) ( m + 1 ) y^{m}`$.
 
 ```math
 \sum_{m = 0}^{\infty} [ a_{m + 2} ( m + 2 ) ( m + 1 ) - 2 a_{m} ( m ) + ( \epsilon - 1 ) a_{m} ] y^{m} = 0
@@ -1443,7 +1443,7 @@ This whole section is examples.
 E = - \frac{\hbar^{2} \kappa^{2}}{2 m} = - \frac{\hbar^{2}}{2 m} \frac{m^{2} V_{0}^{2}}{\hbar^{4}} = \frac{mV_{0}^{2}}{2 \hbar^{2}}
 ```
 
-3. **\*** A beam of particles of wave-number $`k`$ (this means $`e^{ikx} )`$ is incident upon a one dimensional potential $`V ( x ) = a\delta ( x )`$. Calculate the probability to be transmitted. Graph it as a function of $`k`$.
+3. **\*** A beam of particles of wave-number $`k`$ (this means $`e^{ikx}`$) is incident upon a one dimensional potential $`V ( x ) = a\delta ( x )`$. Calculate the probability to be transmitted. Graph it as a function of $`k`$.
 
 **Answer**<br>
 To the left of the origin the solution is $`e^{ikx} + Re^{- ikx}`$. To the right of the origin the solution is $`Te^{ikx}`$. Continuity of $`\psi`$ at the origin implies 1 +$`R = T`$. The discontinuity in the first derivative is
@@ -1514,7 +1514,7 @@ b) Determine the coefficients needed to satisfy the boundary conditions.
 
 c) Calculate the probability for a particle in the beam to be reflected by the potential step and the probability to be transmitted.
 
-7. **\*** A particle is in the ground state $`( \psi ( x )`$ = ($`\tfrac{m\omega}{\pi \hbar} ) 4^{1} e \tfrac{- m\omega x 2}{2 \hbar}`$.) of a harmonic oscillator potential. Suddenly the potential is removed without affecting the particle’s state. Find the probability distribution $`P ( p )`$ for the particle’s momentum after the potential has been removed.
+7. **\*** A particle is in the ground state ($`\psi ( x )`$ = $`( \tfrac{m\omega}{\pi \hbar} ) 4^{1} e \tfrac{- m\omega x 2}{2 \hbar}`$.) of a harmonic oscillator potential. Suddenly the potential is removed without affecting the particle’s state. Find the probability distribution $`P ( p )`$ for the particle’s momentum after the potential has been removed.
 
 8. **\*** A particle is in the third excited state (n=3) of the one dimensional harmonic oscillator potential.
 

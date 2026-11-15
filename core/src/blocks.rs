@@ -1956,7 +1956,9 @@ impl Builder<'_> {
             } else {
                 p.into_iter().enumerate().map(|(k, i)| if i == Inline::Break && !hard.contains(&k) { Inline::Text(" ".into()) } else { i }).collect()
             };
-            let p = tidy(p);
+            // (a book with math fonts sets a formula's figures and brackets
+            // in the text's font: the pieces of one formula, put together)
+            let p = if is_text_math(self.doc) { tidy(p) } else { tidy(crate::brackets::mend(tidy(p))) };
             // A paragraph that is one equation picture and nothing else
             // (but the comma or full stop after it) is a formula set apart
             // without a number: written as one.

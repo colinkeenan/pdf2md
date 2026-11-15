@@ -17,7 +17,7 @@ Hu ( x ) = Eu ( x )
 
 The Hamiltonian operates on $`u ( x )`$ **the eigenfunction**, giving a constant $`E`$ **the eigenvalue**, times the same function. (Eigen just means the same in German.)
 
-Usually, for bound states, there are **many eigenfunction solutions** (denoted here by the index $`i )`$.
+Usually, for bound states, there are **many eigenfunction solutions** (denoted here by the index $`i`$).
 
 ```math
 H\psi_{i} = E_{i} \psi_{i}
@@ -297,7 +297,7 @@ The **solution inside the box** could be written as
 u_{j} = e^{ikx}
 ```
 
-where $`k`$ can be positive or negative. We do **need to choose linear combinations that satisfy** **the boundary condition** that $`u_{j} ( x`$ = 0) = $`u_{j} ( x = a )`$ = 0.
+where $`k`$ can be positive or negative. We do **need to choose linear combinations that satisfy** **the boundary condition** that $`u_{j} ( x = 0 )`$ = $`u_{j} ( x = a )`$ = 0.
 
 We can do this easily by **choosing**
 
@@ -499,7 +499,7 @@ We **cannot make eigenfunctions of all three operators** since
 [ P,p ] \neq 0 .
 ```
 
-So we have the **choice** of the $`e^{ikx}`$ states which are eigenfunctions of $`H`$ and of $`p`$, but contain positive and negative parity components. or we have the sin$`( kx )`$ and cos($`kx )`$ states which contain two momenta but are eigenstates of $`H`$ and Parity. These are just different linear combinations of the same solutions.
+So we have the **choice** of the $`e^{ikx}`$ states which are eigenfunctions of $`H`$ and of $`p`$, but contain positive and negative parity components. or we have the sin$`( kx )`$ and $`\cos ( kx )`$ states which contain two momenta but are eigenstates of $`H`$ and Parity. These are just different linear combinations of the same solutions.
 
 # <a id="s-8-7-derivations-and-computations"></a>8.7 Derivations and Computations
 

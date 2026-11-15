@@ -79,7 +79,7 @@ Remember that the wave functions go to zero at infinity.$`-\infty \quad -\infty`
 
 7. A particle is initially in the $`n^{th}`$ eigenstate of a box of length L. Suddenly the walls of the box are completely removed. Calculate the probability to find that the particle has momentum between $`p`$ and $`p + dp`$. Is energy conserved?
 
-8. A particle is in a box with solid walls at $`x = \pm \tfrac{a}{2}`$. The state at $`t`$ = 0 is constant $`\psi ( x, 0`$) = $`\sqrt{\frac{2}{a}}`$ for $`- \tfrac{a}{2} <x< 0`$ and the $`\psi ( x, 0`$) = 0 everywhere else. Write this state as a sum of energy eigenstates of the particle in a box. Write $`\psi ( x,t )`$ in terms of the energy eigenstates. Write the state at $`t`$ = 0 as $`\varphi ( p )`$. Would it be correct (and why) to use $`\varphi ( p )`$ to compute $`\psi ( x,t )`$?
+8. A particle is in a box with solid walls at $`x = \pm \tfrac{a}{2}`$. The state at $`t`$ = 0 is constant $`\psi ( x, 0 )`$ = $`\sqrt{\frac{2}{a}}`$ for $`- \tfrac{a}{2} <x< 0`$ and the $`\psi ( x, 0 )`$ = 0 everywhere else. Write this state as a sum of energy eigenstates of the particle in a box. Write $`\psi ( x,t )`$ in terms of the energy eigenstates. Write the state at $`t`$ = 0 as $`\varphi ( p )`$. Would it be correct (and why) to use $`\varphi ( p )`$ to compute $`\psi ( x,t )`$?
 
 9. The wave function for a particle is initially $`\psi ( x ) = Ae^{ikx} + Be^{- ikx}`$. What is the probability flux $`j ( x )`$?
 
@@ -159,7 +159,7 @@ Assume that $`\tfrac{ma^{2} V_{0}}{\hbar^{2}} =`$<sup>3</sup>$`2 \pi`$ and plot 
 
 2. In a 1D square well, there is always at least one bound state. Assume the width of the square well is $`a`$. By the uncertainty principle, the kinetic energy of an electron localized to that width is $`\frac{\hbar^{2}}{2 ma^{2}}`$. How can there be a bound state even for small values of $`V_{0}`$?
 
-3. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t`$ = 0) = $`\tfrac{1}{2}^{\surd} ( u_{0} + u_{1} )`$. Is $`\psi`$ correctly normalized? Compute the expected value of $`x`$ as a function of time by doing the integrals in the $`x`$ representation.
+3. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t = 0 )`$ = $`\tfrac{1}{2}^{\surd} ( u_{0} + u_{1} )`$. Is $`\psi`$ correctly normalized? Compute the expected value of $`x`$ as a function of time by doing the integrals in the $`x`$ representation.
 
 4. Prove the Schwartz inequality $`| \langle \psi | \varphi \rangle |^{2} \leq \langle \psi | \psi \rangle \langle \varphi | \varphi \rangle`$. (Start from the fact that $`\langle \psi + C\varphi | \psi + C\varphi \rangle \geq 0`$ for any $`C`$.
 
@@ -207,7 +207,7 @@ k
 
 7. If $`h ( A^{\dagger} )`$ is a polynomial in the operator $`A^{\dagger}`$, show that $`Ah ( A^{\dagger} ) u_{0} = \tfrac{dh ( A^{\dagger} )}{dA^{\dagger}} u_{0}`$. As a result of this, note that since any energy eigenstate can be written as a series of raising operators times the ground state, we can represent $`A`$ by $`\frac{d}{dA^{\dagger}}`$.
 
-8. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t`$ = 0) = $`\tfrac{1}{\sqrt{2}} ( u_{0} + u_{1} )`$.
+8. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t = 0 )`$ = $`\tfrac{1}{\sqrt{2}} ( u_{0} + u_{1} )`$.
 
 $`•`$ Compute the expected value of $`x`$ as a function of time using $`A`$ and $`A^{\dagger}`$ in the Schrod̈inger picture.
 
@@ -225,7 +225,7 @@ $`•`$ Now do the same in the Heisenberg picture.
 
 3. Two identical, non-interacting spin $`\frac{1}{2}`$ particles are in a box. Write down the full lowest energy wave function for both particles with spin up and for one with spin up and the other spin down. Be sure your answer has the correct symmetry under the interchange of identical particles.
 
-4. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t`$ = 0) = $`\tfrac{1}{2}^{\surd} ( u_{1} + u_{3} )`$.
+4. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t = 0 )`$ = $`\tfrac{1}{2}^{\surd} ( u_{1} + u_{3} )`$.
 
 Compute the expected value of $`x^{2}`$ as a function of time.
 
@@ -235,7 +235,7 @@ Compute the expected value of $`x^{2}`$ as a function of time.
 
 7. The volume of a nucleus is approximately 1$`. 1 A^{\tfrac{1}{3}}`$ Fermis, where $`A = N + Z , N`$ is the number of neutrons, and $`Z`$ is the number of protons. A Lead nucleus consists of 82 protons and 126 neutrons. Estimate the Fermi energy of the protons and neutrons separately.
 
-8. The momentum operator conjugate to any cooridinate $`x_{i}`$ is $`\frac{\hbar}{i} \frac{\partial}{\partial x_{i}}`$. Calculate the commutators of the center of mass coordinates and momenta $`[ P_{i} ,R_{j} ]`$ and of the internal coordinates and momenta $`[ p_{i} ,r_{j} ]`$. Calculate the commutators [$`P_{i} ,r_{j} ]`$ and [$`p_{i} ,R_{j} ]`$.
+8. The momentum operator conjugate to any cooridinate $`x_{i}`$ is $`\frac{\hbar}{i} \frac{\partial}{\partial x_{i}}`$. Calculate the commutators of the center of mass coordinates and momenta $`[ P_{i} ,R_{j} ]`$ and of the internal coordinates and momenta $`[ p_{i} ,r_{j} ]`$. Calculate the commutators $`[ P_{i} ,r_{j} ]`$ and $`[ p_{i} ,R_{j} ]`$.
 
 <div align="right"><a href="book.pdf#page=288" target="_blank" title="This page in the PDF"><sup>[p. 288]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">

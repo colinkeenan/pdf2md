@@ -565,7 +565,7 @@ For $`\ell`$ = 0, its easy to see that $`\sin \rho`$ and $`\cos \rho`$ are solut
 V ( r ) = - V_{0} \text{ for } r<a ( \text{ otherwise } V ( r ) = 0 ) .
 ```
 
-a) Write down the form of the $`( l`$ = 0) solution, to the time independent Schrödinger equation, inside the well, which is well behaved at at $`r`$ = 0. Specify the relationship between the particles energy and any parameters in your solution.
+a) Write down the form of the $`( l = 0 )`$ solution, to the time independent Schrödinger equation, inside the well, which is well behaved at at $`r`$ = 0. Specify the relationship between the particles energy and any parameters in your solution.
 
 b) Write down the form of the solution to the time independent Schrödinger equation, outside the well, which has the right behavior as $`r \to \infty`$. Again specify how the parameters depend on energy.
 

@@ -728,7 +728,7 @@ We can use operators to help us compute the expectation value (See section 6.3) 
 \langle f ( x ) \rangle = \int_{-\infty}^{\infty} P ( x ) f ( x ) dx = \int_{-\infty}^{\infty} \psi^{*} ( x ) \psi ( x ) f ( x ) dx.
 ```
 
-If the variable we wish to compute the expectation value of (like $`p )`$ is not a simple function of $`x`$, let
+If the variable we wish to compute the expectation value of (like $`p`$) is not a simple function of $`x`$, let
 
 ```math
 \text{ its operator act on } \psi ( x )_{\infty}
@@ -882,13 +882,13 @@ Hermitian operators $`H`$ have the property that $`H^{\dagger} = H`$.
 
 # <a id="s-1-10-a-particle-in-a-box"></a>1.10 A Particle in a Box
 
-As a concrete illustration of these ideas, we study the particle in a box (See section 8.5) (in one dimension). This is just a particle (of mass $`m )`$ which is free to move inside the walls of a box $`0 <x<a`$, but which cannot penetrate the walls. We represent that by a potential which is zero inside the box and infinite outside. We solve the **Schrödinger equation** inside the box and realize that the probability for the particle to be outside the box, and hence the wavefunction there, must be zero. Since there is no potential inside, the Schrödinger equation is
+As a concrete illustration of these ideas, we study the particle in a box (See section 8.5) (in one dimension). This is just a particle (of mass $`m`$) which is free to move inside the walls of a box $`0 <x<a`$, but which cannot penetrate the walls. We represent that by a potential which is zero inside the box and infinite outside. We solve the **Schrödinger equation** inside the box and realize that the probability for the particle to be outside the box, and hence the wavefunction there, must be zero. Since there is no potential inside, the Schrödinger equation is
 
 ```math
 Hu_{n} ( x ) = - \frac{\hbar^{2}}{2 m} \frac{d^{2} u_{n} ( x )}{dx^{2}} = E_{n} u_{n} ( x )
 ```
 
-where we have anticipated that there will be many solutions indexed by $`n`$. We know four (only 2 linearly independent) functions which have a second derivative which is a constant times the same function: $`u ( x ) = e^{ikx} , u ( x ) = e^{- ikx} , u ( x )`$ = sin($`kx )`$, and $`u ( x )`$ = cos($`kx )`$. The wave function must be continuous though, so we require the boundary conditions
+where we have anticipated that there will be many solutions indexed by $`n`$. We know four (only 2 linearly independent) functions which have a second derivative which is a constant times the same function: $`u ( x ) = e^{ikx} , u ( x ) = e^{- ikx} , u ( x )`$ = $`\sin ( kx )`$, and $`u ( x )`$ = $`\cos ( kx )`$. The wave function must be continuous though, so we require the boundary conditions
 
 ```math
 u ( 0 ) = u ( a ) = 0 .
@@ -966,7 +966,7 @@ First, we calculate the probability the a particle of energy $`E`$ is reflected 
 
 section 9.1.2) of height $`V_{0} : P_{R}`$ = $`\sqrt{\frac{E - \quad E - V_{0}}{\sqrt{E} + \sqrt{E - V_{0}}} ( \surd )}`$ . We also use this example to understand the probability current $`j = \tfrac{\hbar}{2 im} [ u^{*} \tfrac{du}{dx} - \tfrac{du^{*}}{dx} ( ) u ]`$.
 
-Second we investigate the square potential well (See section 9.1.3) square potential well $`( V ( x ) = - V_{0}`$ for $`- a<x<a`$ and $`V ( x )`$ = 0 elsewhere), for the case where the particle is not bound $`E> 0`$. Assuming a beam of particles incident from the left, we need to match solutions in the three regions at the boundaries at $`x = \pm a`$. After some difficult arithmetic, the probabilities to be transmitted or reflected are computed. It is found that the probability to be transmitted goes to 1 for some particular energies.
+Second we investigate the square potential well (See section 9.1.3) square potential well $`( V ( x ) = - V_{0} \ \text{for} - a<x<a \text{ and } V ( x ) = 0 \ \text{elsewhere} )`$, for the case where the particle is not bound $`E> 0`$. Assuming a beam of particles incident from the left, we need to match solutions in the three regions at the boundaries at $`x = \pm a`$. After some difficult arithmetic, the probabilities to be transmitted or reflected are computed. It is found that the probability to be transmitted goes to 1 for some particular energies.
 
 ```math
 E = - V_{0} + \frac{n^{2} \pi^{2} \hbar^{2}}{8 ma^{2}}
@@ -974,7 +974,7 @@ E = - V_{0} + \frac{n^{2} \pi^{2} \hbar^{2}}{8 ma^{2}}
 
 This type of behavior is exhibited by electrons scattering from atoms. At some energies the scattering probability goes to zero.
 
-Third we study the square potential barrier (See section 9.1.5) $`( V ( x )`$ = +$`V_{0}`$ for $`- a<x<a`$ and $`V ( x )`$ = 0 elsewhere), for the case in which $`E<V_{0}`$. Classically the probability to be transmitted would be zero since the particle is energetically excluded from being inside the barrier. The Quantum calculation gives the probability to be transmitted through the barrier to be
+Third we study the square potential barrier (See section 9.1.5) $`( V ( x ) = + V_{0} \ \text{for} - a<x<a \text{ and } V ( x ) = 0 \ \text{elsewhere} )`$, for the case in which $`E<V_{0}`$. Classically the probability to be transmitted would be zero since the particle is energetically excluded from being inside the barrier. The Quantum calculation gives the probability to be transmitted through the barrier to be
 
 ```math
 | T |^{2} = \frac{( 2 k\kappa )^{2}}{( k^{2} + \kappa^{2} )^{2} \sinh^{2} ( 2 \kappa a ) + ( 2 k\kappa )^{2}} \to ( \frac{4 k\kappa}{k^{2} + \kappa^{2}} )^{2} e^{- 4 \kappa a}
@@ -996,7 +996,7 @@ Next we solve for the energy eigenstates of the harmonic oscillator (See section
 E_{n} = \left( n + \frac{1}{2} \right) \hbar \omega .
 ```
 
-The energy eigenstates turn out to be a polynomial (in $`x )`$ of degree $`n`$ times $`e^{- m\omega x^{2} / \hbar}`$. So the ground state, properly normalized, is just
+The energy eigenstates turn out to be a polynomial (in $`x`$) of degree $`n`$ times $`e^{- m\omega x^{2} / \hbar}`$. So the ground state, properly normalized, is just
 
 ```math
 u_{0} ( x ) = \left( \frac{m\omega}{\pi \hbar} \right)^{\tfrac{1}{4}} e^{- m\omega x^{2} / \hbar} .
@@ -1238,7 +1238,7 @@ Identical particles present us with another symmetry in nature. Electrons, for e
 [ H,P_{1 2} ] = 0
 ```
 
-So we can make our energy eigenstates also eigenstates of $`P_{1 2}`$. Its easy to see (by operating on an eigenstate twice with $`P_{1 2} )`$, that the possible eigenvalues are $`\pm 1`$. It is a law of physics that spin $`\frac{1}{2}`$ particles called **fermions** (like electrons) always are **antisymmetric under interchange**, while particles with **integer spin called bosons** (like photons) always are **symmetric under** **interchange**. Antisymmetry under interchange leads to the Pauli exclusion principle that no two electrons (for example) can be in the same state.
+So we can make our energy eigenstates also eigenstates of $`P_{1 2}`$. Its easy to see (by operating on an eigenstate twice with $`P_{1 2}`$), that the possible eigenvalues are $`\pm 1`$. It is a law of physics that spin $`\frac{1}{2}`$ particles called **fermions** (like electrons) always are **antisymmetric under interchange**, while particles with **integer spin called bosons** (like photons) always are **symmetric under** **interchange**. Antisymmetry under interchange leads to the Pauli exclusion principle that no two electrons (for example) can be in the same state.
 
 # <a id="s-1-18-some-3d-problems-separable-in-cartesian-coordinates"></a>1.18 Some 3D Problems Separable in Cartesian Coordinates
 
@@ -1887,7 +1887,7 @@ Calculation Energy $`Z_{wfn}`$
 
 Note that the variational calculation still uses first order perturbation theory. It just adds a variable parameter to the wavefunction which we use to minimize the energy. This only works for the ground state and for other special states.
 
-There is only one allowed (1$`s )^{2}`$ state and it is the ground state. For **excited states**, the spatial states are (usually) different so they can be either symmetric or antisymmetric (under interchange of the two electrons). It turns out that the antisymmetric state has the electrons further apart so the repulsion is smaller and the energy is lower. If the spatial state is antisymmetric, then the spin state is symmetric, s=1. So the triplet states are generally significantly lower in energy than the corresponding spin singlet states. This **appears to be a strong spin dependent interaction** **but is actually just the effect of the repulsion between the electrons** having a big effect depending on the symmetry of the spatial state and hence on the symmetry of the spin state.
+There is only one allowed $`( 1 s )^{2}`$ state and it is the ground state. For **excited states**, the spatial states are (usually) different so they can be either symmetric or antisymmetric (under interchange of the two electrons). It turns out that the antisymmetric state has the electrons further apart so the repulsion is smaller and the energy is lower. If the spatial state is antisymmetric, then the spin state is symmetric, s=1. So the triplet states are generally significantly lower in energy than the corresponding spin singlet states. This **appears to be a strong spin dependent interaction** **but is actually just the effect of the repulsion between the electrons** having a big effect depending on the symmetry of the spatial state and hence on the symmetry of the spin state.
 
 The **first exited state** has the hydrogenic state content of (1s)(2s) and has s=1. We calculated the energy of this state.
 
@@ -2031,7 +2031,7 @@ Think of the EM field as a harmonic oscillator at each frequency, the negative e
 \vec{A} ( \vec{r} , t ) = \left[ \frac{2 \pi \hbar c^{2}}{\omega V} \right]^{\tfrac{1}{2}} \hat{\epsilon} \left( \sqrt{N} e^{i ( \vec{k} \cdot \vec{r} - \omega t )} + \sqrt{N + 1} e^{- i ( \vec{k} \cdot \vec{r} - \omega t )} \right)
 ```
 
-With this change, which will later be justified with the quantization of the field, there is a **pertur-** **bation even with no applied field** $`( N`$ = 0)
+With this change, which will later be justified with the quantization of the field, there is a **pertur-** **bation even with no applied field** $`( N = 0 )`$
 
 ```math
 \mathcal{V}_{N = 0} = V_{N = 0} e^{i\omega t} = \frac{e}{mc} \vec{A} \cdot \vec{p} = \frac{e}{mc} \left[ \frac{2 \pi \hbar c^{2}}{\omega V} \right]^{\tfrac{1}{2}} e^{- i ( \vec{k} \cdot \vec{r} - \omega t )} \hat{\epsilon} \cdot \vec{p}
@@ -4175,7 +4175,7 @@ This is a simple review, but, you must make sure you use complex numbers correct
 
 A complex number $`c = a + ib`$ consists of a real part $`a`$ and an imaginary part $`ib`$. (We choose $`a`$ and $`b`$ to be real numbers.) $`i`$ is the square root of -1.
 
-The complex conjugate of $`c`$ is $`c^{*} = a - ib`$. (Just change the sign of all the $`i . )`$
+The complex conjugate of $`c`$ is $`c^{*} = a - ib`$. (Just change the sign of all the $`i`$.)
 
 The absolute square of a complex number is calculated by multiplying it by its complex conjugate.
 
@@ -4265,7 +4265,7 @@ You may remember that a pulse will move at the group velocity which is given by
 v_{g} = \left( \frac{d\omega}{dk} \right) = \frac{2 \hbar k}{2 m} = \frac{\hbar k}{m} = \frac{p}{m} .
 ```
 
-(The phase velocity for the non-relativistic case is $`v_{p} = \tfrac{p}{2 m} . )`$
+(The phase velocity for the non-relativistic case is $`v_{p} = \tfrac{p}{2 m}`$.)
 
 # <a id="s-4-2-sample-test-problems"></a>4.2 Sample Test Problems
 
@@ -4380,7 +4380,7 @@ f ( x ) = \frac{1}{\sqrt{2 \pi a}} \frac{1}{ix} \left[ e^{ikx} \right]_{k_{0} - 
 f ( x ) = \frac{1}{\sqrt{2 \pi a}} \frac{1}{ix} e^{ik_{0} x} \left[ 2 i \sin \left( \frac{ax}{2} \right) \right] = \sqrt{\frac{a}{2 \pi}} e^{ik_{0} x} \frac{2 \sin \left( \tfrac{ax}{2} \right)}{ax}
 ```
 
-Note that $`\tfrac{2 \sin}{ax} ( \tfrac{ax}{2}`$ ) is equal to 1 at $`x`$ = 0 and that it decreases from there. If you square this, it should remind you of a single slit diffraction pattern! In fact, the single slit gives us a square localization in position space and the F.T. is this $`\frac{\sin ( x )}{x}`$ function.
+Note that $`\tfrac{2 \sin}{ax} ( \tfrac{ax}{2} )`$ is equal to 1 at $`x`$ = 0 and that it decreases from there. If you square this, it should remind you of a single slit diffraction pattern! In fact, the single slit gives us a square localization in position space and the F.T. is this $`\frac{\sin ( x )}{x}`$ function.
 
 The Fourier Transform of a Gaussian (See section 5.6.4) wave packet $`A ( k ) = \left( \tfrac{2 \alpha}{\pi} \right)^{1 / 4} e^{- \alpha ( k - k_{0} )^{2}}`$ is
 
@@ -5066,7 +5066,7 @@ Now estimate the width of the two probability distributions.
 
 ## <a id="s-5-7-2-the-gaussian-wave-packet"></a>5.7.2 The Gaussian Wave Packet \*
 
-Given the following one dimensional probability amplitude in the position variable x, compute the probability distribution in momentum space. Show that the uncertainty principle is roughly satisfied. $`\psi ( x )`$ = ($`\tfrac{\alpha}{\pi} ) \tfrac{1}{4} e^{- \alpha x^{2} / 2}`$
+Given the following one dimensional probability amplitude in the position variable x, compute the probability distribution in momentum space. Show that the uncertainty principle is roughly satisfied. $`\psi ( x )`$ = $`( \tfrac{\alpha}{\pi} ) \tfrac{1}{4} e^{- \alpha x^{2} / 2}`$
 
 <div align="right"><a href="book.pdf#page=112" target="_blank" title="This page in the PDF"><sup>[p. 112]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -5335,7 +5335,7 @@ An example of a linear operator (See section 7.5.1) is a simple differential ope
 
 # <a id="s-6-1-operators-in-position-space"></a>6.1 Operators in Position Space
 
-To find operators for physical variables in position space, we will look at wave functions with definite momentum. Our state of definite momentum $`p_{0}`$ (and definite energy $`E_{0} )`$ is
+To find operators for physical variables in position space, we will look at wave functions with definite momentum. Our state of definite momentum $`p_{0}`$ (and definite energy $`E_{0}`$) is
 
 ```math
 u_{p 0} ( x,t ) = \frac{1}{\sqrt{2 \pi \hbar}} e^{i ( p_{0} x - E_{0} t ) / \hbar} .
@@ -5431,7 +5431,7 @@ and
 p^{( op )} = p.
 ```
 
-The $`( op )`$ notation used above is usually dropped. If we see the variable $`p`$, use of the operator is implied (except in state written in terms of $`p`$ like $`\varphi ( p ) ) .`$
+The $`( op )`$ notation used above is usually dropped. If we see the variable $`p`$, use of the operator is implied (except in state written in terms of $`p`$ like $`\varphi ( p )`$).
 
 **Gasiorowicz Chapter 3**
 
@@ -5457,7 +5457,7 @@ We can move the $`f ( x )`$ between just before $`\psi`$ anticipating the use of
 \langle f ( x ) \rangle_{\psi} = \int_{-\infty}^{\infty} \psi^{*} ( x ) f ( x ) \psi ( x ) dx
 ```
 
-If the variable we wish to compute the expectation value of (like $`p )`$ is not a simple function of $`x`$, let its operator act on $`\psi ( x )`$. The **expectation value of** $`p`$ **in the state** $`\psi`$ is
+If the variable we wish to compute the expectation value of (like $`p`$) is not a simple function of $`x`$, let its operator act on $`\psi ( x )`$. The **expectation value of** $`p`$ **in the state** $`\psi`$ is
 
 ```math
 \langle p \rangle_{\psi} = \langle \psi | p | \psi \rangle = \int_{-\infty}^{\infty} \psi^{*} ( x ) p^{( op )} \psi ( x ) dx
@@ -6021,7 +6021,7 @@ and an equation in $`x`$ set equal to a constant
 \frac{- \hbar^{2}}{2 m} \frac{\partial^{2} u ( x )}{\partial x^{2}} + V ( x ) u ( x ) = Eu ( x )
 ```
 
-which depends on the problem to be solved (through $`V ( x ) ) .`$
+which depends on the problem to be solved (through $`V ( x )`$).
 
 <div align="center">
 
@@ -6202,7 +6202,7 @@ Hu ( x ) = Eu ( x )
 
 The Hamiltonian operates on $`u ( x )`$ **the eigenfunction**, giving a constant $`E`$ **the eigenvalue**, times the same function. (Eigen just means the same in German.)
 
-Usually, for bound states, there are **many eigenfunction solutions** (denoted here by the index $`i )`$.
+Usually, for bound states, there are **many eigenfunction solutions** (denoted here by the index $`i`$).
 
 ```math
 H\psi_{i} = E_{i} \psi_{i}
@@ -6482,7 +6482,7 @@ The **solution inside the box** could be written as
 u_{j} = e^{ikx}
 ```
 
-where $`k`$ can be positive or negative. We do **need to choose linear combinations that satisfy** **the boundary condition** that $`u_{j} ( x`$ = 0) = $`u_{j} ( x = a )`$ = 0.
+where $`k`$ can be positive or negative. We do **need to choose linear combinations that satisfy** **the boundary condition** that $`u_{j} ( x = 0 )`$ = $`u_{j} ( x = a )`$ = 0.
 
 We can do this easily by **choosing**
 
@@ -6684,7 +6684,7 @@ We **cannot make eigenfunctions of all three operators** since
 [ P,p ] \neq 0 .
 ```
 
-So we have the **choice** of the $`e^{ikx}`$ states which are eigenfunctions of $`H`$ and of $`p`$, but contain positive and negative parity components. or we have the sin$`( kx )`$ and cos($`kx )`$ states which contain two momenta but are eigenstates of $`H`$ and Parity. These are just different linear combinations of the same solutions.
+So we have the **choice** of the $`e^{ikx}`$ states which are eigenfunctions of $`H`$ and of $`p`$, but contain positive and negative parity components. or we have the sin$`( kx )`$ and $`\cos ( kx )`$ states which contain two momenta but are eigenstates of $`H`$ and Parity. These are just different linear combinations of the same solutions.
 
 # <a id="s-8-7-derivations-and-computations"></a>8.7 Derivations and Computations
 
@@ -7495,7 +7495,7 @@ The figure below shows the two solutions plotted on the same graph as the potent
 
 _Figure 39 (p. 157)_
 
-Two Hydrogen atoms bind together to form a molecule with a separation of 0.74 Angstroms, just larger than the Bohr radius of 0.53 Angstroms. The binding energy (for the two electrons) is about 4.5 eV. If we approximate the Coulomb potential by with a delta function, setting $`aV_{0}`$ = (0$`. 5 3 ) ( 2 ) ( 1 3 . 6 )`$ eV Angstroms, our very naive calculation would give 1.48 eV for one electron, which is at least the right order of magnitude.
+Two Hydrogen atoms bind together to form a molecule with a separation of 0.74 Angstroms, just larger than the Bohr radius of 0.53 Angstroms. The binding energy (for the two electrons) is about 4.5 eV. If we approximate the Coulomb potential by with a delta function, setting $`aV_{0}`$ = $`( 0 . 5 3 ) ( 2 ) ( 1 3 . 6 )`$ eV Angstroms, our very naive calculation would give 1.48 eV for one electron, which is at least the right order of magnitude.
 
 The **odd parity solution** has an energy that satisfies the equation
 
@@ -8023,7 +8023,7 @@ Plug it into the differential equation.
 \sum_{m = 0}^{\infty} [ a_{m} ( m ) ( m - 1 ) y^{m - 2} - 2 a_{m} ( m ) y^{m} + ( \epsilon - 1 ) a_{m} y^{m} ] = 0
 ```
 
-We now want ot shift terms in the sum so that we see the coefficient of $`y^{m}`$. To do this, we will shift the term $`a_{m} ( m ) ( m - 1 ) y^{m - 2}`$ down two steps in the sum. It will now show up as $`a_{m + 2} ( m`$+ 2)$`( m`$+ 1)$`y^{m}`$.
+We now want ot shift terms in the sum so that we see the coefficient of $`y^{m}`$. To do this, we will shift the term $`a_{m} ( m ) ( m - 1 ) y^{m - 2}`$ down two steps in the sum. It will now show up as $`a_{m + 2} ( m + 2 ) ( m + 1 ) y^{m}`$.
 
 ```math
 \sum_{m = 0}^{\infty} [ a_{m + 2} ( m + 2 ) ( m + 1 ) - 2 a_{m} ( m ) + ( \epsilon - 1 ) a_{m} ] y^{m} = 0
@@ -8361,7 +8361,7 @@ This whole section is examples.
 E = - \frac{\hbar^{2} \kappa^{2}}{2 m} = - \frac{\hbar^{2}}{2 m} \frac{m^{2} V_{0}^{2}}{\hbar^{4}} = \frac{mV_{0}^{2}}{2 \hbar^{2}}
 ```
 
-3. **\*** A beam of particles of wave-number $`k`$ (this means $`e^{ikx} )`$ is incident upon a one dimensional potential $`V ( x ) = a\delta ( x )`$. Calculate the probability to be transmitted. Graph it as a function of $`k`$.
+3. **\*** A beam of particles of wave-number $`k`$ (this means $`e^{ikx}`$) is incident upon a one dimensional potential $`V ( x ) = a\delta ( x )`$. Calculate the probability to be transmitted. Graph it as a function of $`k`$.
 
 **Answer**<br>
 To the left of the origin the solution is $`e^{ikx} + Re^{- ikx}`$. To the right of the origin the solution is $`Te^{ikx}`$. Continuity of $`\psi`$ at the origin implies 1 +$`R = T`$. The discontinuity in the first derivative is
@@ -8432,7 +8432,7 @@ b) Determine the coefficients needed to satisfy the boundary conditions.
 
 c) Calculate the probability for a particle in the beam to be reflected by the potential step and the probability to be transmitted.
 
-7. **\*** A particle is in the ground state $`( \psi ( x )`$ = ($`\tfrac{m\omega}{\pi \hbar} ) 4^{1} e \tfrac{- m\omega x 2}{2 \hbar}`$.) of a harmonic oscillator potential. Suddenly the potential is removed without affecting the particle’s state. Find the probability distribution $`P ( p )`$ for the particle’s momentum after the potential has been removed.
+7. **\*** A particle is in the ground state ($`\psi ( x )`$ = $`( \tfrac{m\omega}{\pi \hbar} ) 4^{1} e \tfrac{- m\omega x 2}{2 \hbar}`$.) of a harmonic oscillator potential. Suddenly the potential is removed without affecting the particle’s state. Find the probability distribution $`P ( p )`$ for the particle’s momentum after the potential has been removed.
 
 8. **\*** A particle is in the third excited state (n=3) of the one dimensional harmonic oscillator potential.
 
@@ -8793,7 +8793,7 @@ This will allow for any computation.
 \* See Example 10.6.2: The expectation value of $`p`$ for any energy eigenstate is zero.\*<br>
 \* See Example 10.6.3: The expectation value of $`x`$ in the state $`\frac{\sqrt{1}}{2} ( u_{0} + u_{1} ) . *`$<br>
 \* See Example 10.6.4: The expectation value of $`\frac{1}{2} m\omega^{2} x^{2}`$ for any energy eigenstate is $`\frac{1}{2} \left( n + \tfrac{1}{2} \right) \hbar \omega . *`$ \* See Example 10.6.5: The expectation value of $`2 p^{2} m`$ for any energy eigenstate is $`\frac{1}{2} \left( n + \tfrac{1}{2} \right) \hbar \omega . *`$<br>
-\* See Example 10.6.6: The expectation value of $`p`$ as a function of time for the state $`\psi ( t`$ = 0) =
+\* See Example 10.6.6: The expectation value of $`p`$ as a function of time for the state $`\psi ( t = 0 )`$ =
 
 ```math
 \frac{\sqrt{1}}{2} ( u_{1} + u_{2} ) \text{ is } - \sqrt{m \hbar \omega \sin ( \omega t ) . *}
@@ -9068,7 +9068,7 @@ p = \frac{1}{i} \sqrt{\frac{m \hbar \omega}{2} ( A - A^{\dagger} )}
 
 4. Use the commutator relation between $`A`$ and $`A^{\dagger}`$ to derive $`[ H,A ]`$. Now show that $`A`$ is the **lowering operator for the harmonic oscillator** energy.
 
-5. At $`t`$ = 0, a **one dimensional harmonic oscillator** is in the state $`\psi ( t`$ = 0) = $`\sqrt{\frac{3}{4}} u_{0} + i \sqrt{\frac{1}{4}} u_{1}`$.
+5. At $`t`$ = 0, a **one dimensional harmonic oscillator** is in the state $`\psi ( t = 0 )`$ = $`\sqrt{\frac{3}{4}} u_{0} + i \sqrt{\frac{1}{4}} u_{1}`$.
 
 Calculate the expected value of $`p`$ as a function of time.
 
@@ -9593,7 +9593,7 @@ This gives the same answer with about the same amount of work.
 \Delta L_{x} \Delta L_{z} \geq \frac{i}{2} \langle [ L_{x} ,L_{z} ] \rangle = \frac{i}{2} ( - i \hbar ) \langle L_{y} \rangle = \frac{\hbar}{2} \langle L_{y} \rangle
 ```
 
-2. **\*** A particle of mass $`m`$ is in a **1 dimensional potential** $`V ( x )`$. Calculate the rate of change of the expected values of $`x`$ and $`p , ( \tfrac{d \langle x \rangle}{dt}`$ and $`\tfrac{d \langle p \rangle}{dt} )`$. Your answer will obviously depend on the
+2. **\*** A particle of mass $`m`$ is in a **1 dimensional potential** $`V ( x )`$. Calculate the rate of change of the expected values of $`x`$ and $`p , ( \tfrac{d \langle x \rangle}{dt} \text{ and } \tfrac{d \langle p \rangle}{dt} )`$. Your answer will obviously depend on the
 
 <div align="right"><a href="book.pdf#page=189" target="_blank" title="This page in the PDF"><sup>[p. 189]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -9623,7 +9623,7 @@ state of the particle and on the potential.
 = - \left\langle \frac{dV}{dx} \right\rangle
 ```
 
-3. Compute the commutators $`[ A^{\dagger} ,A^{n} ]`$ and [$`A,e^{iHt} ]`$ for the 1D harmonic oscillator.
+3. Compute the commutators $`[ A^{\dagger} ,A^{n} ]`$ and $`[ A,e^{iHt} ]`$ for the 1D harmonic oscillator.
 
 **Answer**
 
@@ -9659,7 +9659,7 @@ b) For a particle of mass $`m`$ moving in 1-dimension, the Hamiltonian is given 
 
 c) Compute $`<u_{i} | P | u_{i} >`$ the mean momentum in the state $`| u_{i} >`$.
 
-5. **\*** At $`t`$ = 0, a particle of mass $`m`$ is in the Harmonic Oscillator state $`\psi ( t`$ = 0) = $`\tfrac{1}{\sqrt{2}} ( u_{0} + u_{1} )`$. Use the Heisenberg picture to find the expected value of $`x`$ as a function of time.
+5. **\*** At $`t`$ = 0, a particle of mass $`m`$ is in the Harmonic Oscillator state $`\psi ( t = 0 )`$ = $`\tfrac{1}{\sqrt{2}} ( u_{0} + u_{1} )`$. Use the Heisenberg picture to find the expected value of $`x`$ as a function of time.
 
 ---
 
@@ -9885,7 +9885,7 @@ The energy levels are given in terms of three quantum numbers.
 E = \frac{\pi^{2} \hbar^{2}}{2 mL^{2}} ( n_{x}^{2} + n_{y}^{2} + n_{z}^{2} )
 ```
 
-The number of states with inside some $`( n_{x}^{2} + n_{y}^{2} + n_{z}^{2} )_{max} ( \tfrac{1}{8}`$ of a a sphere in $`n`$ space) is
+The number of states with inside some $`( n_{x}^{2} + n_{y}^{2} + n_{z}^{2} )_{max}`$ ($`\tfrac{1}{8}`$ of a a sphere in $`n`$ space) is
 
 ```math
 N = \frac{1}{8} \frac{4}{3} \pi ( n_{x}^{2} + n_{y}^{2} + n_{z}^{2} )_{max}^{\tfrac{3}{2}}
@@ -10198,17 +10198,17 @@ n_{x} + n_{y} + n_{z} = \frac{E_{F}}{\hbar \omega} - \frac{3}{2}
 
 # <a id="s-13-3-sample-test-problems"></a>13.3 Sample Test Problems
 
-1. A particle of mass $`m`$ in 3 dimensions is in a potential $`V ( x,y,z ) = \tfrac{1}{2} k ( x^{2}`$ + 2$`y^{2}`$ + 3$`z^{2} )`$. Find the energy eigenstates in terms of **3 quantum numbers**. What is the energy of the ground state and first excited state?
+1. A particle of mass $`m`$ in 3 dimensions is in a potential $`V ( x,y,z ) = \tfrac{1}{2} k ( x^{2} + 2 y^{2} + 3 z^{2} )`$. Find the energy eigenstates in terms of **3 quantum numbers**. What is the energy of the ground state and first excited state?
 
 2. **\*** N identical fermions are bound (at low temperature) in a potential $`V ( r ) = \tfrac{1}{2} m\omega^{2} r^{2}`$. Use separation in Cartesian coordinates to find the energy eigenvalues in terms of a set of three quantum numbers (which correspond to 3 mutually commuting operators). Find the Fermi energy of the system. If you are having trouble finding the number of states with energy less than $`E_{F}`$, you may assume that it is $`\alpha ( E_{F} / \hbar \omega )^{3}`$.
 
-3. A particle of mass m is in the potential $`V (`$**r**$`) = \tfrac{1}{2} m\omega^{2} ( x^{2} + y^{2} )`$. Find operators that commute with the Hamiltonian and use them to simplify the Schrödinger equation. Solve this problem in the simplest way possible to find the eigen-energies in terms of a set of ”quantum numbers” that describe the system.
+3. A particle of mass m is in the potential $`V`$(**r**) $`= \tfrac{1}{2} m\omega^{2} ( x^{2} + y^{2} )`$. Find operators that commute with the Hamiltonian and use them to simplify the Schrödinger equation. Solve this problem in the simplest way possible to find the eigen-energies in terms of a set of ”quantum numbers” that describe the system.
 
 4. A particle is in a cubic box. That is, the potential is zero inside a cube of side L and infinite outside the cube. Find the 3 lowest allowed energies. Find the number of states (level of degeneracy) at each of these 3 energies.
 
 <div align="center">
 
-5. A particle of mass m is bound in the 3 dimensional potential $`V (`$**r**$`) = kr^{2}`$.
+5. A particle of mass m is bound in the 3 dimensional potential $`V`$(**r**) $`= kr^{2}`$.
 
 </div>
 
@@ -10228,7 +10228,7 @@ c) Find the Fermi Energy $`E_{F}`$ for $`N`$ particles in the box. (N is large.)
 
 <div align="center">
 
-8. A particle of mass m is bound in the 3 dimensional potential $`V (`$**r**$`) = kr^{2}`$.
+8. A particle of mass m is bound in the 3 dimensional potential $`V`$(**r**) $`= kr^{2}`$.
 
 </div>
 
@@ -10236,7 +10236,7 @@ c) Find the Fermi Energy $`E_{F}`$ for $`N`$ particles in the box. (N is large.)
 
 10. b) Determine the number of degenerate states for the first three energy levels.
 
-11. In 3 dimensions, a particle of mass $`m`$ is bound in a potential $`V (`$**r**$`) = \tfrac{e^{2}}{\sqrt{x^{2} + z^{2}}}^{-}`$.
+11. In 3 dimensions, a particle of mass $`m`$ is bound in a potential $`V`$(**r**) $`= \tfrac{e^{2}}{\sqrt{x^{2} + z^{2}}}^{-}`$.
 
 a) The definite energy states will, of course, be eigenfunctions of $`H`$. What other operators can they be eigenfunctions of?
 
@@ -10319,7 +10319,7 @@ L^{2} Y_{\ell m} ( \theta ,\varphi ) = \ell ( \ell + 1 ) \hbar^{2} Y_{\ell m} ( 
 \begin{aligned} L_{z} Y_{\ell m} ( \theta ,\varphi ) &= m \hbar Y_{\ell m} ( \theta ,\varphi ) \\ \frac{- \hbar^{2}}{2 \mu} \left[ \frac{1}{r^{2}} \left( r \frac{\partial}{\partial r} \right)^{2} + \frac{1}{r} \frac{\partial}{\partial r} - \frac{\ell ( \ell + 1 )}{r^{2}} \right] R_{E\ell} ( r ) + V ( r ) R_{E\ell} ( r ) &= ER_{E\ell} ( r ) \end{aligned}
 ```
 
-By assuming the eigenvalues of $`L^{2}`$ have the form $`\ell ( \ell`$ + 1)$`\hbar^{2}`$, we have **anticipated the solution** **but not constrained it**, since the units of angular momentum are those of $`\hbar`$ and since we expect $`L^{2}`$ to have positive eigenvalues.
+By assuming the eigenvalues of $`L^{2}`$ have the form $`\ell ( \ell + 1 ) \hbar^{2}`$, we have **anticipated the solution** **but not constrained it**, since the units of angular momentum are those of $`\hbar`$ and since we expect $`L^{2}`$ to have positive eigenvalues.
 
 ```math
 \langle Y_{\ell m} | L^{2} | Y_{\ell m} \rangle = \langle L_{x} Y_{\ell m} | L_{x} Y_{\ell m} \rangle + \langle L_{y} Y_{\ell m} | L_{y} Y_{\ell m} \rangle + \langle L_{z} Y_{\ell m} | L_{z} Y_{\ell m} \rangle \geq 0
@@ -10375,7 +10375,7 @@ The commutator with $`L_{z}`$ is.
 [ L_{\pm} ,L_{z} ] = [ L_{x} ,L_{z} ] \pm i [ L_{y} ,L_{z} ] = i \hbar ( - L_{y} \pm iL_{x} ) = \mp \hbar L_{\pm} .
 ```
 
-From the commutators $`[ L^{2} ,L_{\pm} ]`$ = 0 and [$`L_{\pm} ,L_{z} ] = \mp \hbar L_{\pm}`$, we can derive the effect of the operators (See section 14.4.5) $`L_{\pm}`$ on the eigenstates $`Y_{\ell m}`$, and in so doing, show that $`\ell`$ is an integer greater than or equal to 0, and that $`m`$ is also an integer
+From the commutators $`[ L^{2} ,L_{\pm} ]`$ = 0 and $`[ L_{\pm} ,L_{z} ] = \mp \hbar L_{\pm}`$, we can derive the effect of the operators (See section 14.4.5) $`L_{\pm}`$ on the eigenstates $`Y_{\ell m}`$, and in so doing, show that $`\ell`$ is an integer greater than or equal to 0, and that $`m`$ is also an integer
 
 ```math
 \ell = 0 , 1 , 2 ,\dots
@@ -11027,7 +11027,7 @@ The next step is to figure out how the $`L_{\pm}`$ operators change the eigensta
 L^{2} ( L_{\pm} Y_{\ell m} ) = L_{\pm} L^{2} Y_{\ell m} = \ell ( \ell + 1 ) \hbar^{2} ( L_{\pm} Y_{\ell m} )
 ```
 
-Because $`L^{2}`$ commutes with $`L_{\pm}`$, we see that we have the same $`\ell ( \ell`$ + 1) after operation. This is also true for operations with $`L_{z}`$.
+Because $`L^{2}`$ commutes with $`L_{\pm}`$, we see that we have the same $`\ell ( \ell + 1 )`$ after operation. This is also true for operations with $`L_{z}`$.
 
 ```math
 L^{2} ( L_{z} Y_{\ell m} ) = L_{z} L^{2} Y_{\ell m} = \ell ( \ell + 1 ) \hbar^{2} ( L_{z} Y_{\ell m} )
@@ -11037,7 +11037,7 @@ L^{2} ( L_{z} Y_{\ell m} ) = L_{z} L^{2} Y_{\ell m} = \ell ( \ell + 1 ) \hbar^{2
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p214" href="book.pdf#page=214" target="_blank" title="This page in the PDF"><sup>[p. 214]</sup></a>
 
-The operators $`L_{+} , L_{-}`$ and $`L_{Z}`$ do not change $`\ell`$. That is, after we operate, the new state is still an eigenstate of $`L^{2}`$ with the same eigenvalue, $`\ell ( \ell`$ + 1).
+The operators $`L_{+} , L_{-}`$ and $`L_{Z}`$ do not change $`\ell`$. That is, after we operate, the new state is still an eigenstate of $`L^{2}`$ with the same eigenvalue, $`\ell ( \ell + 1 )`$.
 
 The eigenvalue of $`L_{z}`$ is changed when we operate with $`L_{+}`$ or $`L_{-}`$.
 
@@ -11093,15 +11093,15 @@ we can derive limits on the quantum numbers.
 \ell ( \ell + 1 ) \geq m ( m \pm 1 )
 ```
 
-We know that the eigenvalue $`\ell ( \ell`$ + 1)$`\hbar^{2}`$ is greater than zero. We can assume that
+We know that the eigenvalue $`\ell ( \ell + 1 ) \hbar^{2}`$ is greater than zero. We can assume that
 
 ```math
 \ell \geq 0
 ```
 
-because negative values just repeat the same eigenvalues of $`\ell ( \ell`$ + 1)$`\hbar^{2}`$.
+because negative values just repeat the same eigenvalues of $`\ell ( \ell + 1 ) \hbar^{2}`$.
 
-The condition that $`\ell ( \ell`$ + 1) $`\geq m ( m \pm`$ 1) then becomes a limit on $`m`$.
+The condition that $`\ell ( \ell + 1 )`$ $`\geq m ( m \pm 1 )`$ then becomes a limit on $`m`$.
 
 ```math
 - \ell \leq m \leq \ell
@@ -11181,7 +11181,7 @@ L_{\pm} Y_{\ell m} = \hbar \sqrt{\ell ( \ell + 1 ) - m ( m \pm 1 )} Y_{\ell ( m 
 
 ## <a id="s-14-5-1-the-expectation-value-of-l-z"></a>14.5.1 The Expectation Value of $`L_{z}`$
 
-What is the expectation value of $`L_{z}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\frac{2}{3}} Y_{1 1} ( \theta ,\varphi ) - i \sqrt{\frac{1}{3}} Y_{1 - 1} ( \theta ,\varphi )`$)?
+What is the expectation value of $`L_{z}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\frac{2}{3}} Y_{1 1} ( \theta ,\varphi ) - i \sqrt{\frac{1}{3}} Y_{1 - 1} ( \theta ,\varphi ) )`$?
 
 The radial part plays no role. The angular part is properly normalized.
 
@@ -11203,7 +11203,7 @@ The radial part plays no role. The angular part is properly normalized.
 
 ## <a id="s-14-5-2-the-expectation-value-of-l-x"></a>14.5.2 The Expectation Value of $`L_{x}`$
 
-What is the expectation value of $`L_{x}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\frac{2}{3}} Y_{1 1} ( \theta ,\varphi ) - \sqrt{\frac{1}{3}} Y_{1 0} ( \theta ,\varphi )`$)?
+What is the expectation value of $`L_{x}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\frac{2}{3}} Y_{1 1} ( \theta ,\varphi ) - \sqrt{\frac{1}{3}} Y_{1 0} ( \theta ,\varphi ) )`$?
 
 We need $`L_{x} = ( L_{+} + L_{-} ) / 2 .`$
 
@@ -11225,7 +11225,7 @@ We need $`L_{x} = ( L_{+} + L_{-} ) / 2 .`$
 
 # <a id="s-14-6-sample-test-problems"></a>14.6 Sample Test Problems
 
-1. Derive the commutators $`[ L^{2} ,L_{+} ]`$ and [$`L_{z} ,L_{+} ]`$. Now show that $`L_{+} Y_{\ell m} = CY_{\ell ( m + 1 )}`$, that is, $`L_{+}`$ raises the $`L_{z}`$ eigenvalue but does not change the $`L^{2}`$ eigenvalue.
+1. Derive the commutators $`[ L^{2} ,L_{+} ]`$ and $`[ L_{z} ,L_{+} ]`$. Now show that $`L_{+} Y_{\ell m} = CY_{\ell ( m + 1 )}`$, that is, $`L_{+}`$ raises the $`L_{z}`$ eigenvalue but does not change the $`L^{2}`$ eigenvalue.
 
 **Answer**
 
@@ -11269,9 +11269,9 @@ L_{z} ( L_{+} Y_{\ell m} ) = ( m + 1 ) \hbar ( L_{+} Y_{\ell m} )
 
 So, $`L_{+}`$ raises the eigenvalue of $`L_{z}`$.
 
-2. Write the (normalized) state which is an eigenstate of $`L^{2}`$ with eigenvalue $`\ell ( \ell`$ + 1)$`\hbar^{2}`$ = 2$`\hbar^{2}`$ and also an **eigenstate of** $`L_{x}`$ with eigenvalue 0$`\hbar`$ in terms of the usual $`Y_{\ell m}`$.
+2. Write the (normalized) state which is an eigenstate of $`L^{2}`$ with eigenvalue $`\ell ( \ell + 1 ) \hbar^{2}`$ = 2$`\hbar^{2}`$ and also an **eigenstate of** $`L_{x}`$ with eigenvalue 0$`\hbar`$ in terms of the usual $`Y_{\ell m}`$.
 
-**Answer**<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=216" target="_blank" title="This page in the PDF"><sup>[p. 216]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p217" href="book.pdf#page=217" target="_blank" title="This page in the PDF"><sup>[p. 217]</sup></a></span> An eigenvalue of $`\ell ( \ell`$ + 1)$`\hbar^{2}`$ = 2$`\hbar^{2}`$ implies $`\ell`$ = 1. We will need a linear combination of the $`Y_{1 m}`$ to get the eigenstate of $`L_{x} = \tfrac{L_{+} + L_{-}}{2}`$.
+**Answer**<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=216" target="_blank" title="This page in the PDF"><sup>[p. 216]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p217" href="book.pdf#page=217" target="_blank" title="This page in the PDF"><sup>[p. 217]</sup></a></span> An eigenvalue of $`\ell ( \ell + 1 ) \hbar^{2}`$ = 2$`\hbar^{2}`$ implies $`\ell`$ = 1. We will need a linear combination of the $`Y_{1 m}`$ to get the eigenstate of $`L_{x} = \tfrac{L_{+} + L_{-}}{2}`$.
 
 ```math
 \frac{L_{+} + L_{-}}{2} ( AY_{1 1} + BY_{1 0} + CY_{1 - 1} ) = 0
@@ -11303,15 +11303,15 @@ The state is
 
 The trivial solution that $`A = B = C`$ = 0 is just a zero state, not normalizable to 1.
 
-3. Write the (normalized) state which is an eigenstate of $`L^{2}`$ with eigenvalue $`\ell ( \ell`$ + 1)$`\hbar^{2}`$ = 2$`\hbar^{2}`$ and also an **eigenstate of** $`L_{y}`$ with eigenvalue 1$`\hbar`$ in terms of the usual $`Y_{\ell m}`$.
+3. Write the (normalized) state which is an eigenstate of $`L^{2}`$ with eigenvalue $`\ell ( \ell + 1 ) \hbar^{2}`$ = 2$`\hbar^{2}`$ and also an **eigenstate of** $`L_{y}`$ with eigenvalue 1$`\hbar`$ in terms of the usual $`Y_{\ell m}`$.
 
-4. Calculate the **commutators** $`[ p_{z} ,L_{x} ]`$ and [$`L_{x}^{2} ,L_{z} ]`$.
+4. Calculate the **commutators** $`[ p_{z} ,L_{x} ]`$ and $`[ L_{x}^{2} ,L_{z} ]`$.
 
-5. **Derive** the relation $`L_{+} Y_{\ell m} = \hbar \sqrt{\ell ( \ell}`$ + 1) $`- m ( m`$ + 1)$`Y_{\ell ( m + 1 )}`$.
+5. **Derive** the relation $`L_{+} Y_{\ell m} = \hbar \sqrt{\ell ( \ell}`$ + 1) $`- m ( m + 1 ) Y_{\ell ( m + 1 )}`$.
 
 6. A particle is in a $`l`$ = 1 state and is known to have angular momentum in the $`x`$ direction equal to +$`\hbar`$. That is $`L_{x} \psi = \hbar \psi`$. Since we know $`l`$ = 1, $`\psi`$ must have the form $`\psi = R ( r ) ( aY_{1 , 1} + bY_{1 , 0} + cY_{1 , - 1} )`$. Find the coefficients $`a,b,`$ and $`c`$ for $`\psi`$ normalized.
 
-7. Calculate the following commutators: $`[ x,L_{z} ]`$, [$`L_{+} ,L^{2} ]`$, [$`\tfrac{1}{2} m\omega^{2} r^{2} ,p_{x} ]`$.
+7. Calculate the following commutators: $`[ x,L_{z} ]`$, $`[ L_{+} ,L^{2} ]`$, $`[ \tfrac{1}{2} m\omega^{2} r^{2} ,p_{x} ]`$.
 
 8. Prove that, if the Hamiltonian is symmetric under rotations, then $`[ H,L_{z} ]`$ = 0.
 
@@ -11337,7 +11337,7 @@ b) If a measurement of $`L_{z}`$ is made, what are the possible measured values 
 
 c) Find the expected value of $`<L_{x} >`$ in the above state.
 
-10. Two (different) atoms of masses $`M_{1}`$ and $`M_{2}`$ are bound together into the ground state of a diatomic molecule. The binding is such that radial excitations can be neglected at low energy and that the atoms can be assumed to be a constant distance $`a`$ = 3˚$`A`$ apart. (We will ignore the small spread around $`r = a . )`$
+10. Two (different) atoms of masses $`M_{1}`$ and $`M_{2}`$ are bound together into the ground state of a diatomic molecule. The binding is such that radial excitations can be neglected at low energy and that the atoms can be assumed to be a constant distance $`a`$ = 3˚$`A`$ apart. (We will ignore the small spread around $`r = a`$.)
 
 <div align="center">
 
@@ -11920,7 +11920,7 @@ For $`\ell`$ = 0, its easy to see that $`\sin \rho`$ and $`\cos \rho`$ are solut
 V ( r ) = - V_{0} \text{ for } r<a ( \text{ otherwise } V ( r ) = 0 ) .
 ```
 
-a) Write down the form of the $`( l`$ = 0) solution, to the time independent Schrödinger equation, inside the well, which is well behaved at at $`r`$ = 0. Specify the relationship between the particles energy and any parameters in your solution.
+a) Write down the form of the $`( l = 0 )`$ solution, to the time independent Schrödinger equation, inside the well, which is well behaved at at $`r`$ = 0. Specify the relationship between the particles energy and any parameters in your solution.
 
 b) Write down the form of the solution to the time independent Schrödinger equation, outside the well, which has the right behavior as $`r \to \infty`$. Again specify how the parameters depend on energy.
 
@@ -12427,7 +12427,7 @@ We again normalize to determine the constant.
 
 An **electron in the Coulomb field of a proton** is in the state described by the wave function
 
-$`\tfrac{1}{6} ( 4 \psi_{1 0 0}`$ + 3$`\psi_{2 1 1} - i\psi_{2 1 0} + \sqrt{1 0} \psi_{2 1 - 1} )`$. Find the expected value of the Energy, $`L^{2} , L_{z}`$, and $`L_{y}`$.
+$`\tfrac{1}{6} ( 4 \psi_{1 0 0} + 3 \psi_{2 1 1} - i\psi_{2 1 0} + \sqrt{1 0} \psi_{2 1 - 1} )`$. Find the expected value of the Energy, $`L^{2} , L_{z}`$, and $`L_{y}`$.
 
 First check the normalization.
 
@@ -12445,7 +12445,7 @@ E_{n} = - \frac{1}{2} \alpha^{2} \mu c^{2} \frac{1}{n^{2}}
 \langle E \rangle = - \frac{1}{2} \alpha^{2} \mu c^{2} \frac{1 6 \tfrac{1}{1^{2}} + 9 \tfrac{1}{2^{2}} + 1 \tfrac{1}{2^{2}} + 1 0_{2} \tfrac{1}{2}}{3 6} = - \frac{1}{2} \alpha^{2} \mu c^{2} \frac{2 1}{3 6} = - \frac{1}{2} \alpha^{2} \mu c^{2} \frac{7}{1 2}
 ```
 
-Similarly, we can just square probability amplitudes to compute the expectation value of $`L^{2}`$. The eigenvalues are $`\ell ( \ell`$ + 1)$`\hbar^{2}`$.
+Similarly, we can just square probability amplitudes to compute the expectation value of $`L^{2}`$. The eigenvalues are $`\ell ( \ell + 1 ) \hbar^{2}`$.
 
 ```math
 \langle L^{2} \rangle = \hbar^{2} \frac{1 6 ( 0 ) + 9 ( 2 ) + 1 ( 2 ) + 1 0 ( 2 )}{3 6} = \frac{1 0}{9} \hbar^{2}
@@ -12557,7 +12557,7 @@ This is what we expect from the Virial theorem.
 
 # <a id="s-16-5-sample-test-problems"></a>16.5 Sample Test Problems
 
-1. A Hydrogen atom is in its 4D state $`( n`$ = 4$`,\ell`$ = 2). The atom decays to a lower state by emitting a photon. Find the possible photon energies that may be observed. Give your answers in eV. **Answer**The $`n`$<br>
+1. A Hydrogen atom is in its 4D state $`( n = 4 ,\ell = 2 )`$. The atom decays to a lower state by emitting a photon. Find the possible photon energies that may be observed. Give your answers in eV. **Answer**The $`n`$<br>
 = 4 state can decay into states with $`n`$ = 1$`, 2 ,`$ 3. (Really the $`n`$ = 1 state will be suppressed due to selection rules but this is supposed to be a simple question.) The energies of the states are
 
 ```math
@@ -12589,7 +12589,7 @@ For the $`n`$ = 3 final state, $`E = \tfrac{7}{1 4 4} 1 3 . 6`$ = 0$`. 7`$ eV.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p241" href="book.pdf#page=241" target="_blank" title="This page in the PDF"><sup>[p. 241]</sup></a>
 
-4. An **electron in the Coulomb field of a proton** is in the state described by the wave function $`\tfrac{1}{6} ( 4 \psi_{1 0 0}`$ + 3$`\psi_{2 1 1} - \psi_{2 1 0} + \sqrt{1 0} \psi_{2 1 - 1} )`$. Find the expected value of the Energy, $`L^{2}`$ and $`L_{z}`$. Now find the expected value of $`L_{y}`$.
+4. An **electron in the Coulomb field of a proton** is in the state described by the wave function $`\tfrac{1}{6} ( 4 \psi_{1 0 0} + 3 \psi_{2 1 1} - \psi_{2 1 0} + \sqrt{1 0} \psi_{2 1 - 1} )`$. Find the expected value of the Energy, $`L^{2}`$ and $`L_{z}`$. Now find the expected value of $`L_{y}`$.
 
 <div align="center">
 
@@ -12599,9 +12599,9 @@ For the $`n`$ = 3 final state, $`E = \tfrac{7}{1 4 4} 1 3 . 6`$ = 0$`. 7`$ eV.
 
 6. Calculate the **expected value of** $`r`$ in the Hydrogen state $`\psi_{2 0 0}`$.
 
-7. Write down the wave function of the hydrogen atom state $`\psi_{3 2 1} (`$**r**).
+7. Write down the wave function of the hydrogen atom state $`\psi_{3 2 1}`$(**r**).
 
-8. A Hydrogen atom is in its 4$`D`$ state $`( n`$ = 4$`,l`$ = 2). The atom decays to a lower state by emitting a photon. Find the possible photon energies that may be observed. Give your answers in $`eV`$.
+8. A Hydrogen atom is in its 4$`D`$ state $`( n = 4 ,l = 2 )`$. The atom decays to a lower state by emitting a photon. Find the possible photon energies that may be observed. Give your answers in $`eV`$.
 
 9. A Hydrogen atom is in the state:
 
@@ -12611,7 +12611,7 @@ For the $`n`$ = 3 final state, $`E = \tfrac{7}{1 4 4} 1 3 . 6`$ = 0$`. 7`$ eV.
 
 For the Hydrogen eigenstates, $`\langle \psi_{nlm} | \tfrac{1}{r} | \psi_{nlm} \rangle = \tfrac{Z}{a_{0} n^{2}}`$. Find the expected value of the potential energy for this state. Find the expected value of $`L_{x}`$.
 
-10. A Hydrogen atom is in its 3$`D`$ state $`( n`$ = 3$`,l`$ = 2). The atom decays to a lower state by emitting a photon. Find the possible photon energies that may be observed. Give your answers in $`eV`$.
+10. A Hydrogen atom is in its 3$`D`$ state $`( n = 3 ,l = 2 )`$. The atom decays to a lower state by emitting a photon. Find the possible photon energies that may be observed. Give your answers in $`eV`$.
 
 11. The hydrogen atom is made up of a proton and an electron bound together by the Coulomb force. The electron has a mass of 0.51 MeV/$`c^{2}`$. It is possible to make a hydrogen-like atom from a proton and a muon. The force binding the muon to the proton is identical to that for the electron but the muon has a mass of 106 MeV/$`c^{2}`$.
 
@@ -12619,13 +12619,13 @@ a) What is the ground state energy of muonic hydrogen (in eV).
 
 b) What is the“Bohr Radius” of the ground state of muonic hydrogen.
 
-12. A hydrogen atom is in the state: $`\psi (`$**r**$`) = \frac{1}{\langle \rangle 1 0} \sqrt{( \psi_{3 2 2}}`$ + 2$`\psi_{2 2 1}`$ + 2$`i\psi_{2 2 0} + \psi_{1 1 - 1} )`$ Find the possible measured energies and the probabilities of each. Find the expected value of $`L_{z}`$.
+12. A hydrogen atom is in the state: $`\psi`$(**r**) $`= \frac{1}{\langle \rangle 1 0} \sqrt{( \psi_{3 2 2}}`$ + 2$`\psi_{2 2 1}`$ + 2$`i\psi_{2 2 0} + \psi_{1 1 - 1}`$) Find the possible measured energies and the probabilities of each. Find the expected value of $`L_{z}`$.
 
 13. Find the difference in frequency between light emitted from the 2$`P \to 1 S`$ transition in Hydrogen and light from the same transition in Deuterium. (Deuterium is an isotope of Hydrogen with a proton and a neutron in the nucleus.)
 
-14. Tritium is an isotope of hydrogen having 1 proton and 2 neutrons in the nucleus. The nucleus is unstable and decays by changing one of the neutrons into a proton with the emission of a positron and a neutrino. The atomic electron is undisturbed by this decay process and therefore finds itself in exactly the same state immediately after the decay as before it. If the electron started off in the $`\psi_{2 0 0} ( n`$ = 2, $`l`$ = 0) state of tritium, compute the probability to find the electron in the ground state of the new atom with Z=2.
+14. Tritium is an isotope of hydrogen having 1 proton and 2 neutrons in the nucleus. The nucleus is unstable and decays by changing one of the neutrons into a proton with the emission of a positron and a neutrino. The atomic electron is undisturbed by this decay process and therefore finds itself in exactly the same state immediately after the decay as before it. If the electron started off in the $`\psi_{2 0 0} ( n = 2 , l = 0 )`$ state of tritium, compute the probability to find the electron in the ground state of the new atom with Z=2.
 
-15. At $`t`$ = 0 a hydrogen atom is in the state $`\psi ( t`$ = 0) = $`\tfrac{1}{\sqrt{2}} ( \psi_{1 0 0} - \psi_{2 0 0} )`$. Calculate the expected value of $`r`$ as a function of time.
+15. At $`t`$ = 0 a hydrogen atom is in the state $`\psi ( t = 0 )`$ = $`\tfrac{1}{\sqrt{2}} ( \psi_{1 0 0} - \psi_{2 0 0} )`$. Calculate the expected value of $`r`$ as a function of time.
 
 **Answer**
 
@@ -12949,7 +12949,7 @@ We will define our vectors and matrices using a complete set of, orthonormal bas
 \langle u_{i} | u_{j} \rangle = \delta_{ij}
 ```
 
-Define the **components of a state vector** $`\psi`$ (analogous to $`x_{i} )`$.
+Define the **components of a state vector** $`\psi`$ (analogous to $`x_{i}`$).
 
 ```math
 \psi_{i} \equiv \langle u_{i} | \psi \rangle \quad | \psi \rangle = \sum_{i} \psi_{i} | u_{i} \rangle
@@ -13846,7 +13846,7 @@ Now if $`\psi_{m}`$ is an eigenstate of $`L_{z}`$, then $`L_{z} \psi_{m} = m \hb
 H\psi_{m} = \frac{\mu_{B} B}{\hbar} * ( m \hbar \psi_{m} ) = ( m\mu_{B} B ) \psi_{m}
 ```
 
-Hence the normalized eigenstates must be just those of the operator $`L_{z}`$ itself, i.e., for the three values of $`m`$ (eigenvalues of $`L_{z} )`$, we have
+Hence the normalized eigenstates must be just those of the operator $`L_{z}`$ itself, i.e., for the three values of $`m`$ (eigenvalues of $`L_{z}`$), we have
 
 ```math
 \psi_{m = + 1} = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} \quad \psi_{m = 0} = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} \quad \psi_{m = - 1} = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} .
@@ -14274,13 +14274,13 @@ This gives the same answer. By using the rotation operator, the phase of the eig
 a
 ```
 
-Assume that we are in an arbitrary spin state $`\chi ( t`$ = 0) = and we have chosen the z axis to
+Assume that we are in an arbitrary spin state $`\chi ( t = 0 )`$ = and we have chosen the z axis to
 
 ```math
 b
 ```
 
-be in the field direction. The upper component of the vector (a) is the amplitude to have spin up along the z direction, and the lower component (b) is the amplitude to have spin down. Because of our choice of axes, the spin up and spin down states are also the energy eigenstates with energy eigenvalues of $`\mu_{B} B`$ and $`- \mu_{B} B`$ respectively. We know that the energy eigenstates evolve with time quite simply (recall the separation of the Schrödinger equation where $`T ( t ) = e^{- iEt/ \hbar} )`$. So its simple to write down the time evolved state vector.
+be in the field direction. The upper component of the vector (a) is the amplitude to have spin up along the z direction, and the lower component (b) is the amplitude to have spin down. Because of our choice of axes, the spin up and spin down states are also the energy eigenstates with energy eigenvalues of $`\mu_{B} B`$ and $`- \mu_{B} B`$ respectively. We know that the energy eigenstates evolve with time quite simply (recall the separation of the Schrödinger equation where $`T ( t ) = e^{- iEt/ \hbar}`$). So its simple to write down the time evolved state vector.
 
 ```math
 \chi ( t ) = \begin{pmatrix} ae^{- i\mu_{B} Bt/ \hbar} \\ be^{i\mu_{B} Bt/ \hbar} \end{pmatrix} = \begin{pmatrix} ae^{- i\omega t} \\ be^{i\omega t} \end{pmatrix}
@@ -14434,7 +14434,7 @@ The other relations will prove to be correct too, as they must. Its a reassuring
 
 ## <a id="s-18-11-3-derive-the-expression-for-rotation-operator-r-z"></a>18.11.3 Derive the Expression for Rotation Operator $`R_{z}`$ \*
 
-The laws of physics do not depend on what axes we choose for our coordinate system- There is rotational symmetry. If we make an infinitesimal rotation (through and angle $`d\varphi )`$ about the z-axis, we get the transformed coordinates
+The laws of physics do not depend on what axes we choose for our coordinate system- There is rotational symmetry. If we make an infinitesimal rotation (through and angle $`d\varphi`$) about the z-axis, we get the transformed coordinates
 
 ```math
 x^{\prime} = x - d\varphi y
@@ -14462,7 +14462,7 @@ A finite rotation can be made by applying the operator for an infinitesimal rota
 R_{z} ( \theta_{z} ) = \lim_{n \to \infty} ( 1 + \frac{i}{\hbar} \frac{\theta_{z}}{n} L_{z} )^{n} = e^{i\theta_{z} L_{z} / \hbar} .
 ```
 
-The last step, converting the limit to an exponential is a known identity. We can verify it by using the log of the quantity. First we expand $`ln ( x )`$ about $`x`$ = 1: $`ln ( x ) = ln`$(1) + $`\left( \tfrac{1}{x} \right)_{x = 1} ( x - 1`$) = $`( x - 1 ) .`$
+The last step, converting the limit to an exponential is a known identity. We can verify it by using the log of the quantity. First we expand $`ln ( x )`$ about $`x`$ = 1: $`ln ( x ) = ln`$(1) + $`\left( \tfrac{1}{x} \right)_{x = 1} ( x - 1 )`$ = $`( x - 1 ) .`$
 
 ```math
 \lim_{n \to \infty} ln ( 1 + \frac{i}{\hbar} \frac{\theta_{z}}{n} L_{z} )^{n} = n ( \frac{i}{\hbar} \frac{\theta_{z}}{n} L_{z} ) = \frac{i}{\hbar} \theta_{z} L_{z}
@@ -14812,7 +14812,7 @@ is the probability that a measurement of the $`x`$ component of spin yields zero
 1
 ```
 
-Find the time development (matrix) operator $`e^{- iHt/ \hbar}`$ in the usual basis. If $`\chi ( t`$ = 0) = ,
+Find the time development (matrix) operator $`e^{- iHt/ \hbar}`$ in the usual basis. If $`\chi ( t = 0 )`$ = ,
 
 ```math
 0
@@ -14846,7 +14846,7 @@ i
 
 probability that a measurement of $`S_{x}`$ yields$`( ) \frac{- \hbar}{2}`$? What is the probability that a measurement of $`S_{y}`$ yields $`\frac{\hbar}{2} -`$?
 
-9. A spin $`\frac{1}{2}`$ object is in an eigenstate of $`S_{y}`$ with eigenvalue $`\frac{\hbar}{2}`$ at t=0. The particle is in a magnetic field **B** = (0$`, 0 ,B )`$ which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{z}`$. Find the probability to measure $`S_{y} = \tfrac{\hbar}{2}`$ as a function of time.
+9. A spin $`\frac{1}{2}`$ object is in an eigenstate of $`S_{y}`$ with eigenvalue $`\frac{\hbar}{2}`$ at t=0. The particle is in a magnetic field **B** = $`( 0 , 0 ,B )`$ which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{z}`$. Find the probability to measure $`S_{y} = \tfrac{\hbar}{2}`$ as a function of time.
 
 10. Two degenerate eigenfunctions of the Hamiltonian are properly normalized and have the following properties.
 
@@ -14866,7 +14866,7 @@ What are the properly normalized states that are eigenfunctions of H and P? What
 
 </div>
 
-12. A spin $`\frac{1}{2}`$ object is in an eigenstate of $`S_{y}`$ with eigenvalue $`\frac{\hbar}{2}`$ at t=0. The particle is in a magnetic field **B** = (0$`, 0 ,B )`$ which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{z}`$. Find the probability to measure $`S_{y} = \tfrac{\hbar}{2}`$ as a function of time.
+12. A spin $`\frac{1}{2}`$ object is in an eigenstate of $`S_{y}`$ with eigenvalue $`\frac{\hbar}{2}`$ at t=0. The particle is in a magnetic field **B** = $`( 0 , 0 ,B )`$ which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{z}`$. Find the probability to measure $`S_{y} = \tfrac{\hbar}{2}`$ as a function of time.
 
 <div align="center">
 
@@ -14894,7 +14894,7 @@ Find the energy eigenstates and eigenvalues.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p282" href="book.pdf#page=282" target="_blank" title="This page in the PDF"><sup>[p. 282]</sup></a>
 
-16. A (spin $`\tfrac{1}{2} )`$ electron is in an eigenstate of $`S_{y}`$ with eigenvalue $`- \tfrac{\hbar}{2}`$ at $`t`$ = 0. The particle is in a magnetic field $`\vec{B}`$ = (0$`, 0 ,B )`$ which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{z}`$. Find the spin state of the particle as a function of time. Find the probability to measure $`S_{y}`$ = +$`\frac{\hbar}{2}`$ as a function of time.
+16. A (spin $`\tfrac{1}{2}`$) electron is in an eigenstate of $`S_{y}`$ with eigenvalue $`- \tfrac{\hbar}{2}`$ at $`t`$ = 0. The particle is in a magnetic field $`\vec{B}`$ = $`( 0 , 0 ,B )`$ which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{z}`$. Find the spin state of the particle as a function of time. Find the probability to measure $`S_{y}`$ = +$`\frac{\hbar}{2}`$ as a function of time.
 
 ---
 
@@ -14977,7 +14977,7 @@ Remember that the wave functions go to zero at infinity.$`-\infty \quad -\infty`
 
 7. A particle is initially in the $`n^{th}`$ eigenstate of a box of length L. Suddenly the walls of the box are completely removed. Calculate the probability to find that the particle has momentum between $`p`$ and $`p + dp`$. Is energy conserved?
 
-8. A particle is in a box with solid walls at $`x = \pm \tfrac{a}{2}`$. The state at $`t`$ = 0 is constant $`\psi ( x, 0`$) = $`\sqrt{\frac{2}{a}}`$ for $`- \tfrac{a}{2} <x< 0`$ and the $`\psi ( x, 0`$) = 0 everywhere else. Write this state as a sum of energy eigenstates of the particle in a box. Write $`\psi ( x,t )`$ in terms of the energy eigenstates. Write the state at $`t`$ = 0 as $`\varphi ( p )`$. Would it be correct (and why) to use $`\varphi ( p )`$ to compute $`\psi ( x,t )`$?
+8. A particle is in a box with solid walls at $`x = \pm \tfrac{a}{2}`$. The state at $`t`$ = 0 is constant $`\psi ( x, 0 )`$ = $`\sqrt{\frac{2}{a}}`$ for $`- \tfrac{a}{2} <x< 0`$ and the $`\psi ( x, 0 )`$ = 0 everywhere else. Write this state as a sum of energy eigenstates of the particle in a box. Write $`\psi ( x,t )`$ in terms of the energy eigenstates. Write the state at $`t`$ = 0 as $`\varphi ( p )`$. Would it be correct (and why) to use $`\varphi ( p )`$ to compute $`\psi ( x,t )`$?
 
 9. The wave function for a particle is initially $`\psi ( x ) = Ae^{ikx} + Be^{- ikx}`$. What is the probability flux $`j ( x )`$?
 
@@ -15057,7 +15057,7 @@ Assume that $`\tfrac{ma^{2} V_{0}}{\hbar^{2}} =`$<sup>3</sup>$`2 \pi`$ and plot 
 
 2. In a 1D square well, there is always at least one bound state. Assume the width of the square well is $`a`$. By the uncertainty principle, the kinetic energy of an electron localized to that width is $`\frac{\hbar^{2}}{2 ma^{2}}`$. How can there be a bound state even for small values of $`V_{0}`$?
 
-3. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t`$ = 0) = $`\tfrac{1}{2}^{\surd} ( u_{0} + u_{1} )`$. Is $`\psi`$ correctly normalized? Compute the expected value of $`x`$ as a function of time by doing the integrals in the $`x`$ representation.
+3. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t = 0 )`$ = $`\tfrac{1}{2}^{\surd} ( u_{0} + u_{1} )`$. Is $`\psi`$ correctly normalized? Compute the expected value of $`x`$ as a function of time by doing the integrals in the $`x`$ representation.
 
 4. Prove the Schwartz inequality $`| \langle \psi | \varphi \rangle |^{2} \leq \langle \psi | \psi \rangle \langle \varphi | \varphi \rangle`$. (Start from the fact that $`\langle \psi + C\varphi | \psi + C\varphi \rangle \geq 0`$ for any $`C`$.
 
@@ -15105,7 +15105,7 @@ k
 
 7. If $`h ( A^{\dagger} )`$ is a polynomial in the operator $`A^{\dagger}`$, show that $`Ah ( A^{\dagger} ) u_{0} = \tfrac{dh ( A^{\dagger} )}{dA^{\dagger}} u_{0}`$. As a result of this, note that since any energy eigenstate can be written as a series of raising operators times the ground state, we can represent $`A`$ by $`\frac{d}{dA^{\dagger}}`$.
 
-8. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t`$ = 0) = $`\tfrac{1}{\sqrt{2}} ( u_{0} + u_{1} )`$.
+8. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t = 0 )`$ = $`\tfrac{1}{\sqrt{2}} ( u_{0} + u_{1} )`$.
 
 $`•`$ Compute the expected value of $`x`$ as a function of time using $`A`$ and $`A^{\dagger}`$ in the Schrod̈inger picture.
 
@@ -15123,7 +15123,7 @@ $`•`$ Now do the same in the Heisenberg picture.
 
 3. Two identical, non-interacting spin $`\frac{1}{2}`$ particles are in a box. Write down the full lowest energy wave function for both particles with spin up and for one with spin up and the other spin down. Be sure your answer has the correct symmetry under the interchange of identical particles.
 
-4. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t`$ = 0) = $`\tfrac{1}{2}^{\surd} ( u_{1} + u_{3} )`$.
+4. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t = 0 )`$ = $`\tfrac{1}{2}^{\surd} ( u_{1} + u_{3} )`$.
 
 Compute the expected value of $`x^{2}`$ as a function of time.
 
@@ -15133,7 +15133,7 @@ Compute the expected value of $`x^{2}`$ as a function of time.
 
 7. The volume of a nucleus is approximately 1$`. 1 A^{\tfrac{1}{3}}`$ Fermis, where $`A = N + Z , N`$ is the number of neutrons, and $`Z`$ is the number of protons. A Lead nucleus consists of 82 protons and 126 neutrons. Estimate the Fermi energy of the protons and neutrons separately.
 
-8. The momentum operator conjugate to any cooridinate $`x_{i}`$ is $`\frac{\hbar}{i} \frac{\partial}{\partial x_{i}}`$. Calculate the commutators of the center of mass coordinates and momenta $`[ P_{i} ,R_{j} ]`$ and of the internal coordinates and momenta $`[ p_{i} ,r_{j} ]`$. Calculate the commutators [$`P_{i} ,r_{j} ]`$ and [$`p_{i} ,R_{j} ]`$.
+8. The momentum operator conjugate to any cooridinate $`x_{i}`$ is $`\frac{\hbar}{i} \frac{\partial}{\partial x_{i}}`$. Calculate the commutators of the center of mass coordinates and momenta $`[ P_{i} ,R_{j} ]`$ and of the internal coordinates and momenta $`[ p_{i} ,r_{j} ]`$. Calculate the commutators $`[ P_{i} ,r_{j} ]`$ and $`[ p_{i} ,R_{j} ]`$.
 
 <div align="right"><a href="book.pdf#page=288" target="_blank" title="This page in the PDF"><sup>[p. 288]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -15562,7 +15562,7 @@ In **solving** (see section 20.5.5) the equation in $`\rho`$ we may reuse the Hy
 E = \frac{eB \hbar}{m_{e} c} \left( n + \frac{1 + m + | m |}{2} \right) + \frac{\hbar^{2} k^{2}}{2 m}
 ```
 
-and associated LaGuerre polynomials (as in Hydrogen) in $`\rho^{2}`$ (instead of $`r )`$.
+and associated LaGuerre polynomials (as in Hydrogen) in $`\rho^{2}`$ (instead of $`r`$).
 
 The solution turns out to be **simpler using the Hamiltonian written in terms of** (see section 20.5.6) $`\vec{A}`$ if we choose the right gauge by setting $`\vec{A} = Bx \hat{y}`$.
 
@@ -15946,7 +15946,7 @@ For uniform $`\vec{B}`$ field, cylindrical symmetry $`\Rightarrow`$ apply **cyli
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p305" href="book.pdf#page=305" target="_blank" title="This page in the PDF"><sup>[p. 305]</sup></a>
 
-From the symmetry of the problem, we can guess (and verify) that $`[ H,p_{z} ]`$ = [$`H,L_{z} ]`$ = 0. These variables will be constants of the motion and we therefore choose
+From the symmetry of the problem, we can guess (and verify) that $`[ H,p_{z} ]`$ = $`[ H,L_{z} ]`$ = 0. These variables will be constants of the motion and we therefore choose
 
 ```math
 \psi ( \vec{r} ) = u_{mk} ( \rho ) e^{im\varphi} e^{ikz} .
@@ -16074,7 +16074,7 @@ This can be compared to the purely classical calculation for an electron with an
 
 ## <a id="s-20-5-6-energy-states-of-electrons-in-a-plasma-ii"></a>20.5.6 Energy States of Electrons in a Plasma II
 
-We are going to solve the same plasma in a constant B field in a different gauge. If $`\vec{A}`$ = (0$`,Bx, 0 ) ,`$ then
+We are going to solve the same plasma in a constant B field in a different gauge. If $`\vec{A}`$ = $`( 0 ,Bx, 0 ) ,`$ then
 
 ```math
 \vec{B} = \vec{\nabla} \times \vec{A} = \frac{\partial A_{y}}{\partial x} \hat{z} = B \hat{z} .
@@ -16266,7 +16266,7 @@ is given by
 
 Remember the flux satisfies the equations $`\tfrac{\partial ( \psi^{*} \psi )}{\partial t} + \vec{\nabla} \vec{j}`$ = 0.
 
-4. Consider the problem of a charged particle in an external magnetic field $`\vec{B}`$ = (0$`, 0 ,B )`$ with the gauge chosen so that $`\vec{A} = ( - yB, 0 , 0`$). What are the constants of the motion? Go as far as you can in solving the equations of motion and obtain the energy spectrum. Can you explain why the same problem in the gauges $`\vec{A} = ( - yB/ 2 ,xB/ 2 ,`$ 0) and $`\vec{A}`$ = (0$`,xB, 0`$) can represent the same physical situation? Why do the solutions look so different?
+4. Consider the problem of a charged particle in an external magnetic field $`\vec{B}`$ = $`( 0 , 0 ,B )`$ with the gauge chosen so that $`\vec{A} = ( - yB, 0 , 0 )`$. What are the constants of the motion? Go as far as you can in solving the equations of motion and obtain the energy spectrum. Can you explain why the same problem in the gauges $`\vec{A} = ( - yB/ 2 ,xB/ 2 , 0 )`$ and $`\vec{A}`$ = (0$`,xB, 0`$) can represent the same physical situation? Why do the solutions look so different?
 
 5. Calculate the top left $`4 \times 4`$ corner of the matrix representation of $`x^{4}`$ for the harmonic oscillator.
 
@@ -16280,9 +16280,9 @@ H = \frac{1}{2 m} \left( \vec{\sigma} \cdot [ \vec{p} + \frac{e}{c} \vec{A} ( \v
 
 # <a id="s-20-7-sample-test-problems"></a>20.7 Sample Test Problems
 
-1. A charged particle is in an external magnetic field. The vector potential is given by **A** = $`( - yB, 0 ,`$ 0). What are the constants of the motion? Prove that these are constants by evaluating their commutator with the Hamiltonian.
+1. A charged particle is in an external magnetic field. The vector potential is given by **A** = $`( - yB, 0 , 0 )`$. What are the constants of the motion? Prove that these are constants by evaluating their commutator with the Hamiltonian.
 
-2. A charged particle is in an external magnetic field. The vector potential is given by **A** = $`( 0 ,xB,`$ 0). What are the constants of the motion? Prove that these are constants by evaluating their commutator with the Hamiltonian.
+2. A charged particle is in an external magnetic field. The vector potential is given by **A** = $`( 0 ,xB, 0 )`$. What are the constants of the motion? Prove that these are constants by evaluating their commutator with the Hamiltonian.
 
 3. Gauge symmetry was noticed in electromagnetism before the advent of Quantum Mechanics. What is the symmetry transformation for the wave function of an electron from which the gauge symmetry for EM can be derived?
 
@@ -16411,7 +16411,7 @@ J^{2} = L^{2} + 2 \vec{L} \cdot \vec{S} + S_{2}^{2}
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p313" href="book.pdf#page=313" target="_blank" title="This page in the PDF"><sup>[p. 313]</sup></a>
 
-Since our eigenstates of $`J^{2}`$ and $`J_{z}`$ are also eigenstates of $`L^{2}`$ and $`S^{2}`$ (but not $`L_{z}`$ or $`S_{z} )`$, these are ideal for computing the spin orbit interaction. In fact, they are going to be the true energy eigenstates, as rotational symmetry tells us they must.
+Since our eigenstates of $`J^{2}`$ and $`J_{z}`$ are also eigenstates of $`L^{2}`$ and $`S^{2}`$ (but not $`L_{z}`$ or $`S_{z}`$), these are ideal for computing the spin orbit interaction. In fact, they are going to be the true energy eigenstates, as rotational symmetry tells us they must.
 
 <div align="center">
 
@@ -16794,7 +16794,7 @@ S^{2} \chi_{+}^{( 1 )} \chi_{+}^{( 2 )} = \frac{3}{2} \hbar^{2} \chi_{+}^{( 1 )}
 = \frac{3}{2} \hbar^{2} \chi_{+}^{( 1 )} \chi_{+}^{( 2 )} + \frac{\hbar^{2}}{2} \chi_{+}^{( 1 )} \chi_{+}^{( 2 )} = 2 \hbar^{2} \chi_{+}^{( 1 )} \chi_{+}^{( 2 )}
 ```
 
-Note that $`s ( s`$ + 1) = 2, so that the 2$`\hbar`$ is what we expected to get. This confirms that we have an s=1 state.
+Note that $`s ( s + 1 )`$ = 2, so that the 2$`\hbar`$ is what we expected to get. This confirms that we have an s=1 state.
 
 Now lets do the $`\chi_{0 0}`$ state.
 
@@ -17022,7 +17022,7 @@ This is what we expect.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p324" href="book.pdf#page=324" target="_blank" title="This page in the PDF"><sup>[p. 324]</sup></a>
 
-3. Consider a system of two spinless identical particles. Show that the orbital angular momentum of their relative motion can only be even. $`( l`$ = 0$`, 2 , 4 ,\dots )`$ Show by direct calculation that, for the triplet spin states of two spin $`\frac{1}{2}`$ particles, $`\vec{\sigma}_{1} \cdot \vec{\sigma}_{2} \chi_{1 m} = \chi_{1 m}`$ for all allowed $`m`$. Show that for the singlet state $`\vec{\sigma}_{1} \cdot \vec{\sigma}_{2} \chi_{0 0} = - 3 \chi_{0 0}`$.
+3. Consider a system of two spinless identical particles. Show that the orbital angular momentum of their relative motion can only be even. $`( l = 0 , 2 , 4 ,\dots )`$ Show by direct calculation that, for the triplet spin states of two spin $`\frac{1}{2}`$ particles, $`\vec{\sigma}_{1} \cdot \vec{\sigma}_{2} \chi_{1 m} = \chi_{1 m}`$ for all allowed $`m`$. Show that for the singlet state $`\vec{\sigma}_{1} \cdot \vec{\sigma}_{2} \chi_{0 0} = - 3 \chi_{0 0}`$.
 
 4. A deuteron has spin 1. What are the possible spin and total angular momentum states of two deuterons. Include orbital angular momentum and assume the two particles are identical.
 
@@ -17034,11 +17034,11 @@ This is what we expect.
 
 # <a id="s-21-10sample-test-problems"></a>21.10 Sample Test Problems
 
-1. Two identical spin $`\frac{3}{2}`$ particles are bound together into a state with total angular momentum $`l`$. a) What are the allowed states of total spin for $`l`$ = 0 and for $`l`$ = 1? b) List the allowed states using spectroscopic notation for $`l`$ = 0 and 1. (<sup>2</sup>$`{}^{s + 1} L_{j} )`$
+1. Two identical spin $`\frac{3}{2}`$ particles are bound together into a state with total angular momentum $`l`$. a) What are the allowed states of total spin for $`l`$ = 0 and for $`l`$ = 1? b) List the allowed states using spectroscopic notation for $`l`$ = 0 and 1. (<sup>2</sup>$`{}^{s + 1} L_{j}`$)
 
 2. A hydrogen atom is in the state $`\psi = R_{4 3} Y_{3 0} \chi_{+}`$. A combined measurement of of $`J^{2}`$ and of $`J_{z}`$ is made. What are the possible outcomes of this combined measurement and what are the probabilities of each? You may ignore nuclear spin in this problem.
 
-3. We want to find the eigenstates of total $`S^{2}`$ and $`S_{z}`$ for two spin 1 particles which have an $`S_{1} \cdot S_{2}`$ interaction. (**S** = **S**$`{}_{\boldsymbol{1}} +`$ **S**$`{}_{\boldsymbol{2}} )`$
+3. We want to find the eigenstates of total $`S^{2}`$ and $`S_{z}`$ for two spin 1 particles which have an $`S_{1} \cdot S_{2}`$ interaction. (**S** = **S**$`{}_{\boldsymbol{1}} +`$ **S**$`{}_{\boldsymbol{2}}`$)
 
 (a) What are the allowed values of $`s`$, the total spin quantum number.
 
@@ -17058,7 +17058,7 @@ This is what we expect.
 
 6. A hydrogen atom is in the state $`\psi = R_{3 2} Y_{2 1} \chi_{-}`$. If a measurement of $`J^{2}`$ and of $`J_{z}`$ is made, what are the possible outcomes of this measurement and what are the probabilities for each outcome? If a measurement of the energy of the state is made, what are the possible energies and the probabilities of each? You may ignore the nuclear spin in this problem.
 
-7. Two identical spin 1 particles are bound together into a state with orbital angular momentum $`l`$. What are the allowed states of total spin (s) for $`l`$ = 2, for $`l`$ = 1, and for $`l`$ = 0? List all the allowed states giving, for each state, the values of the quantum numbers for total angular momentum $`( j )`$, orbital angular momentum ($`l )`$ and spin angular momentum ($`s )`$ if $`l`$ is 2 or less. You need not list all the different $`m_{j}`$ values.
+7. Two identical spin 1 particles are bound together into a state with orbital angular momentum $`l`$. What are the allowed states of total spin (s) for $`l`$ = 2, for $`l`$ = 1, and for $`l`$ = 0? List all the allowed states giving, for each state, the values of the quantum numbers for total angular momentum $`( j )`$, orbital angular momentum $`( l )`$ and spin angular momentum $`( s )`$ if $`l`$ is 2 or less. You need not list all the different $`m_{j}`$ values.
 
 8. List all the allowed states of total spin and total z-component of spin for 2 identical spin 1 particles. What $`\ell`$ values are allowed for each of these states? Explicitly write down the (2$`s`$+ 1) states for the highest $`s`$ in terms of $`\chi_{+}^{( 1 )} ,\chi_{+}^{( 2 )} ,\chi_{0}^{( 1 )} ,\chi_{0}^{( 2 )} ,\chi_{-}^{( 1 )}`$ , and $`\chi_{-}^{( 2 )}`$ .
 
@@ -17365,7 +17365,7 @@ The equation (labeled with the basis states to define the order) is.
 \frac{\varphi \varphi_{2 0 0 2 1 1}}{\varphi \varphi_{2 1 0 2 1 - 1}} \begin{pmatrix} 0 & 0 & \gamma & 0 \\ 0 & 0 & 0 & 0 \\ \gamma & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix} \begin{pmatrix} \alpha_{1} \\ \alpha_{2} \\ \alpha_{3} \\ \alpha_{4} \end{pmatrix} = E^{( 1 )} \begin{pmatrix} \alpha_{1} \\ \alpha_{2} \\ \alpha_{3} \\ \alpha_{4} \end{pmatrix}
 ```
 
-We can see by inspection that the eigenfunctions of this operator are $`\varphi_{2 1 1} , \varphi_{2 1 - 1}`$, and $`\tfrac{1}{2}^{\surd} ( \varphi_{2 0 0} \pm \varphi_{2 1 0} )`$ with eigenvalues (of $`H_{1} )`$ of 0, 0, and $`\pm \gamma`$.
+We can see by inspection that the eigenfunctions of this operator are $`\varphi_{2 1 1} , \varphi_{2 1 - 1}`$, and $`\tfrac{1}{2}^{\surd} ( \varphi_{2 0 0} \pm \varphi_{2 1 0} )`$ with eigenvalues (of $`H_{1}`$) of 0, 0, and $`\pm \gamma`$.
 
 What remains is to compute $`\gamma`$. Recall $`Y_{0 0} = \tfrac{1}{\sqrt{4 \pi}}`$ and $`Y_{1 0} = \sqrt{\frac{3}{4 \pi}} \cos \theta`$.
 
@@ -17632,7 +17632,7 @@ H_{1} = - \frac{1}{8} \frac{p_{e}^{4}}{m^{3} c^{2}} .
 
 Our energy eigenstates are not eigenfunctions of this operator so we will have to **treat it as a** **perturbation.**
 
-We can **estimate the size** of this correction compared to the Hydrogen binding energy by taking the ratio to the Hydrogen kinetic energy. (Remember that, in the hydrogen ground state, $`\langle \tfrac{p^{2}}{2 m} \langle \rangle = - E = \tfrac{1}{2} \alpha^{2} mc^{2} . )`$
+We can **estimate the size** of this correction compared to the Hydrogen binding energy by taking the ratio to the Hydrogen kinetic energy. (Remember that, in the hydrogen ground state, $`\langle \tfrac{p^{2}}{2 m} \langle \rangle = - E = \tfrac{1}{2} \alpha^{2} mc^{2}`$.)
 
 ```math
 \frac{p^{4}}{8 m^{3} c^{2}} ÷ \frac{p^{2}}{2 m} = \frac{p^{2}}{4 m^{2} c^{2}} = \frac{( p^{2} / 2 m )}{2 mc^{2}} = \frac{1}{4} \alpha^{2}
@@ -17700,7 +17700,7 @@ E_{njm_{j} \ell s} = E_{n}^{( 0 )} + \frac{E_{n}^{( 0 )}}{2 mc^{2}}^{2} \left[ 3
 E_{njm_{j} \ell s} = E_{n}^{( 0 )} + \frac{E_{n}^{( 0 )}}{2 mc^{2}}^{2} \left[ 3 - n \frac{4 \mp \tfrac{2}{j + \tfrac{1}{2}}}{\ell + \tfrac{1}{2}} \right]
 ```
 
-We can write $`( \ell + \tfrac{1}{2} )`$ as ($`j + \tfrac{1}{2} \mp \tfrac{1}{2} )`$, so that
+We can write $`( \ell + \tfrac{1}{2} )`$ as $`( j + \tfrac{1}{2} \mp \tfrac{1}{2} )`$, so that
 
 ```math
 \frac{4 \mp \tfrac{2}{j + \tfrac{1}{2}}}{\ell + \tfrac{1}{2}} = \frac{4 j + 2 \mp 2}{( j + \tfrac{1}{2} ) ( j + \tfrac{1}{2} \mp \tfrac{1}{2} )} = 4 \frac{( j + \tfrac{1}{2} \mp \tfrac{1}{2} )}{( j + \tfrac{1}{2} \mp \tfrac{1}{2} ) ( j + \tfrac{1}{2} )}
@@ -18209,7 +18209,7 @@ $`\tfrac{2}{3} \alpha^{4} \tfrac{m_{e}}{m_{p}} mc^{2} g_{N}`$ = 2$`. 9 \times 1 
 
 \* See Example 24.3.2: The Hyperfine Splitting in a Weak B Field.\*
 
-The result of this is example is quite simple $`E = E_{n 0 0} + \tfrac{\mathcal{A}}{2} ( f ( f )`$ + 1) $`- \tfrac{3}{2} ( ) + \mu_{B} Bm_{f}`$. It has the hyperfine term we computed before and adds a term proportional to $`B`$ which depends on $`m_{f}`$.
+The result of this is example is quite simple $`E = E_{n 0 0} + \tfrac{\mathcal{A}}{2} ( f ( f ) + 1 )`$ $`- \tfrac{3}{2} ( ) + \mu_{B} Bm_{f}`$. It has the hyperfine term we computed before and adds a term proportional to $`B`$ which depends on $`m_{f}`$.
 
 In the strong field limit we use states $`| m_{s} m_{i} \rangle`$ and treat the hyperfine interaction as a perturbation. The unperturbed energies of these states are $`E = E_{n 0 0}`$ + 2$`\mu_{B} Bm_{s} + g\mu_{N} Bm_{I}`$. We kept the small term due to the nuclear moment in the B field without extra effort.
 
@@ -18302,7 +18302,7 @@ Since the field is weak we work in the states $`| fm_{f} \rangle`$ in which the 
 \sigma_{z} | 0 0 \rangle = \sigma_{z} \tfrac{1}{\sqrt{2}} ( | + - \rangle - | - + \rangle ) = \tfrac{1}{\sqrt{2}} ( | + - \rangle + |- + \rangle ) = | 1 0 \rangle
 ```
 
-Now since the three $`( f`$ = 1) states are degenerate, we have to make sure all the matrix elements between those states are zero, otherwise we should bite the bullet and do the full problem as in the intermediate field case. The $`f`$ = 1 matrix is diagonal, as we could have guessed.
+Now since the three $`( f = 1 )`$ states are degenerate, we have to make sure all the matrix elements between those states are zero, otherwise we should bite the bullet and do the full problem as in the intermediate field case. The $`f`$ = 1 matrix is diagonal, as we could have guessed.
 
 ```math
 \mu_{B} B \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & - 1 \end{pmatrix}
@@ -18448,7 +18448,7 @@ We will add the relativistic correction for both the electron and the positron.
 H_{rel} = - \frac{1}{8} \frac{p_{1}^{4} + p_{2}^{4}}{m^{3} c^{2}} = - \frac{1}{4} \frac{p^{4}}{m^{3} c^{2}} = \frac{- 1}{3 2} \frac{p^{4}}{\mu^{3} c^{2}} = \frac{- 1}{8 \mu c^{2}} \left( \frac{p^{2}}{2 \mu} \right)^{2}
 ```
 
-This is just half the correction we had in Hydrogen (with $`m_{e}`$ essentially replaced by $`\mu )`$.
+This is just half the correction we had in Hydrogen (with $`m_{e}`$ essentially replaced by $`\mu`$).
 
 The spin-orbit correction should be checked also. We had $`H_{SO} = \tfrac{ge}{2 mc^{2}} \vec{S} \cdot \vec{v} \times \vec{\nabla} \varphi`$ as the interaction between the spin and the B field producded by the orbital motion. Since $`\vec{p} = \mu \vec{v}`$, we have
 
@@ -18624,7 +18624,7 @@ We will sometimes group the constants such that
 
 2. Consider positronium, a hydrogen-like atom consisting of an electron and a positron (antielectron). Calculate the fine structure of positronium for $`n`$ = 1 and $`n`$ = 2. Determine the hyperfine structure for the ground state. Compute the energy shifts in eV.
 
-3. List the spectroscopic states allowed that arise from combining $`( s = \tfrac{1}{2}`$ with $`l`$ = 3), $`( s`$ = 2 with
+3. List the spectroscopic states allowed that arise from combining $`( s = \tfrac{1}{2} \ \text{with} l = 3 )`$, $`( s`$ = 2 with
 
 ```math
 l = 1 ) , \text{ and } ( s_{1} = \tfrac{1}{2} , \quad s_{2} = 1 \text{ and } l = 4 ) .
@@ -18638,7 +18638,7 @@ l = 1 ) , \text{ and } ( s_{1} = \tfrac{1}{2} , \quad s_{2} = 1 \text{ and } l =
 
 3. A muonic hydrogen atom (proton plus muon) is in a relative 1$`s`$ state in an external magnetic field. Assume that the perturbation due to the hyperfine interaction and the magnetic field is given by $`W = A \vec{S}_{1} \cdot \vec{S}_{2} + \omega_{1} S_{1 z} + \omega_{2} S_{2 z}`$. Calculate the energies of the four nearly degenerate ground states. Do not assume that any terms in the Hamiltonian are small.
 
-4. A hydrogen atom in the ground state is put in a magnetic field. Assume that the energy shift due to the B field is of the same order as the hyperfine splitting of the ground state. Find the eigenenergies of the (four) ground states as a function of the B field strength. Make sure you define any constants (like $`\mathcal{A} )`$ you use in terms of fundamental constants.
+4. A hydrogen atom in the ground state is put in a magnetic field. Assume that the energy shift due to the B field is of the same order as the hyperfine splitting of the ground state. Find the eigenenergies of the (four) ground states as a function of the B field strength. Make sure you define any constants (like $`\mathcal{A}`$) you use in terms of fundamental constants.
 
 ---
 
@@ -18649,7 +18649,7 @@ l = 1 ) , \text{ and } ( s_{1} = \tfrac{1}{2} , \quad s_{2} = 1 \text{ and } l =
 
 # 25 The Helium Atom
 
-Hydrogen has been a great laboratory for Quantum Mechanics. After Hydrogen, Helium is the simplest atom we can use to begin to study atomic physics. Helium has two protons in the nucleus $`( Z`$ = 2), usually two neutrons $`( A`$ = 4), and two electrons bound to the nucleus.
+Hydrogen has been a great laboratory for Quantum Mechanics. After Hydrogen, Helium is the simplest atom we can use to begin to study atomic physics. Helium has two protons in the nucleus $`( Z = 2 )`$, usually two neutrons $`( A = 4 )`$, and two electrons bound to the nucleus.
 
 This material is covered in **Gasiorowicz Chapters 18,** in **Cohen-Tannoudji et al. Comple-** **ment** $`B_{XIV}`$**,** and briefly in Griffiths Chapter 7.
 
@@ -18661,7 +18661,7 @@ We can use the hydrogenic states to begin to understand Helium. The Hamiltonian 
 H = \frac{p_{1}^{2}}{2 m} + \frac{p_{2}^{2}}{2 m} - \frac{Ze^{2}}{r_{1}} - \frac{Ze^{2}}{r_{2}} + \frac{e^{2}}{| \vec{r}_{1} - \vec{r}_{2} |}
 ```
 
-We can write this in terms of the $`( Z`$ = 2) Hydrogen Hamiltonian for each electron plus a perturbation,
+We can write this in terms of the $`( Z = 2 )`$ Hydrogen Hamiltonian for each electron plus a perturbation,
 
 ```math
 H = H_{1} + H_{2} + V
@@ -19187,7 +19187,7 @@ We can do the integral for $`r_{2} <r_{1}`$ and simplify the expression. Because
 \frac{1}{| \vec{r}_{1} - \vec{r}_{2} |} = \sum_{\ell = 0}^{\infty} \frac{r_{<}^{\ell}}{r_{>}^{\ell + 1}} P_{\ell} ( \cos \theta_{1 2} )
 ```
 
-Here $`r_{<}`$ is the smaller of the two radii and $`r_{>}`$ is the larger. As in the ground state calculation, we can use the symmetry of the problem to specify which radius is the larger. Then we can use a version of the addition theorem to write the Legendre Polynomial $`P_{\ell}`$(cos$`\theta_{1 2} )`$ in terms of the spherical hamonics for each electron.
+Here $`r_{<}`$ is the smaller of the two radii and $`r_{>}`$ is the larger. As in the ground state calculation, we can use the symmetry of the problem to specify which radius is the larger. Then we can use a version of the addition theorem to write the Legendre Polynomial $`P_{\ell} ( \cos \theta_{1 2} )`$ in terms of the spherical hamonics for each electron.
 
 ```math
 P_{\ell} ( \cos \theta_{1 2} ) = \frac{4 \pi}{2 \ell + 1} \sum_{m = - \ell}^{\ell} ( - 1 )^{m} Y_{\ell m} ( \theta_{1} ,\varphi_{1} ) Y_{\ell ( - m )} ( \theta_{2} ,\varphi_{2} )
@@ -19284,7 +19284,7 @@ The effect of screening not only breaks the degeneracy between states with the s
 
 # <a id="s-26-2-the-hartree-equations"></a>26.2 The Hartree Equations
 
-The Hartree method allows us to to change the 3$`Z`$ dimensional Schrödinger equation $`( Z`$ electrons in 3 dimensions) into a 3 dimensional **equation for each electron**. This equation depends on the wavefunctions of the other electrons but can be solved in a self consistent way using the variational principle and iterating.
+The Hartree method allows us to to change the 3$`Z`$ dimensional Schrödinger equation ($`Z`$ electrons in 3 dimensions) into a 3 dimensional **equation for each electron**. This equation depends on the wavefunctions of the other electrons but can be solved in a self consistent way using the variational principle and iterating.
 
 ```math
 \begin{aligned} \psi &= \varphi_{1} ( \vec{r}_{1} ) \varphi_{2} ( \vec{r}_{2} ) \dots \varphi_{Z} ( \vec{r}_{Z} ) \\ \left[ \frac{- \hbar^{2}}{2 m} \nabla_{i}^{2} - \frac{Ze^{2}}{r_{i}} + e^{2} \sum_{j \neq i} \int d^{3} r_{j} \frac{| \varphi_{j} ( \vec{r}_{j} ) |^{2}}{| \vec{r} i - \vec{r} j |} \right] \varphi_{i} ( \vec{r}_{i} ) &= \epsilon_{i} \varphi_{i} ( \vec{r}_{i} ) \end{aligned}
@@ -19330,7 +19330,7 @@ A simpler set of rules has been developed for chemists, who can’t understand a
 
 </div>
 
-2. Now set the orbital states to make maximum $`m_{\ell}`$, and call this $`\ell`$, but don’t allow any two electrons to be in the same state (of $`m_{s}`$ and $`m_{\ell} )`$.
+2. Now set the orbital states to make maximum $`m_{\ell}`$, and call this $`\ell`$, but don’t allow any two electrons to be in the same state (of $`m_{s}`$ and $`m_{\ell}`$).
 
 3. Couple to get $`j`$ as before.
 
@@ -19451,7 +19451,7 @@ s \frac{m_{\ell} 1}{- 1} 0 = \sum m_{s} ↑ \frac{e}{↑} = 1
 \ell = \sum m_{\ell} = 1
 ```
 
-We can take a look at the excited states of carbon to get an appreciation of Hund’s rules. The following chart shows the states of a carbon atom. For most states, a basis of (1$`s )^{2} ( 2 s )^{2} ( 2 p )^{1}`$ is assumed and the state of the sixth electron is given. Some states have other excited electrons and are indicated by a superscript. Different $`j`$ states are not shown since the splitting is small. Electric dipole transitions are shown changing $`\ell`$ by one unit.
+We can take a look at the excited states of carbon to get an appreciation of Hund’s rules. The following chart shows the states of a carbon atom. For most states, a basis of $`( 1 s )^{2} ( 2 s )^{2} ( 2 p )^{1}`$ is assumed and the state of the sixth electron is given. Some states have other excited electrons and are indicated by a superscript. Different $`j`$ states are not shown since the splitting is small. Electric dipole transitions are shown changing $`\ell`$ by one unit.
 
 <div align="right"><a href="book.pdf#page=379" target="_blank" title="This page in the PDF"><sup>[p. 379]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -19517,9 +19517,9 @@ s \frac{m_{\ell} 1}{- 1} 0 = \sum m \frac{↑↓ e}{↑} ↑_{s} = 1
 
 # <a id="s-26-7-homework-problems"></a>26.7 Homework Problems
 
-1. List the possible spectroscopic states that can arise in the following electronic configurations: $`( 1 s )^{2}`$, (2$`p )^{2}`$, (2$`p )^{3}`$, (2$`p )^{4}`$, and (3$`d )^{4}`$. Take the exclusion principle into account. Which should be the ground state?
+1. List the possible spectroscopic states that can arise in the following electronic configurations: $`( 1 s )^{2}`$, $`( 2 p )^{2}`$, $`( 2 p )^{3}`$, $`( 2 p )^{4}`$, and $`( 3 d )^{4}`$. Take the exclusion principle into account. Which should be the ground state?
 
-2. Use Hund’s rules to find the spectroscopic description of the ground states of the following atoms: N$`( Z`$=7), K$`( Z`$=19), Sc$`( Z`$=21), Co$`( Z`$=27). Also determine the electronic configuration.
+2. Use Hund’s rules to find the spectroscopic description of the ground states of the following atoms: N$`( Z = 7 )`$, K$`( Z = 19 )`$, Sc$`( Z = 21 )`$, Co$`( Z = 27 )`$. Also determine the electronic configuration.
 
 3. Use Hund’s rules to check the $`( S,L,J )`$ quantum numbers of the elements with $`Z`$ =14, 15, 24, 30, 34.
 
@@ -19529,7 +19529,7 @@ s \frac{m_{\ell} 1}{- 1} 0 = \sum m \frac{↑↓ e}{↑} ↑_{s} = 1
 
 Use the standard<sup>2</sup>$`{}^{s + 1} L_{j}`$ notation.
 
-2. Write down the ground state (in spectroscopic notation) for the element Oxygen $`( Z`$ = 8).
+2. Write down the ground state (in spectroscopic notation) for the element Oxygen $`( Z = 8 )`$.
 
 ---
 
@@ -19628,7 +19628,7 @@ We have reused the calculation of $`S ( R )`$ in the above. Now, we plug these i
 
 The symmetric (bonding) state has a large probability for the electron to be found between nuclei. The antisymmetric (antibonding) state has a small probability there, and hence, a much larger energy.
 
-The graph below shows the energies from our calculation for the space symmetric $`( E_{g} )`$ and antisymmetric $`( E_{u} )`$ states as well as the result of a more complete calculation (Exact $`E_{g} )`$ as a function of the distance between the protons $`R`$. Our calculation for the symmetric state shows a minimum arount 1.3 Angstroms between the nuclei and a Binding Energy of 1.76 eV. We could get a better estimate by introduction some parameters in our trial wave function and using the variational method.
+The graph below shows the energies from our calculation for the space symmetric $`( E_{g} )`$ and antisymmetric $`( E_{u} )`$ states as well as the result of a more complete calculation (Exact $`E_{g}`$) as a function of the distance between the protons $`R`$. Our calculation for the symmetric state shows a minimum arount 1.3 Angstroms between the nuclei and a Binding Energy of 1.76 eV. We could get a better estimate by introduction some parameters in our trial wave function and using the variational method.
 
 The antisymmetric state shows no minimum and never goes below -13.6 eV so there is no binding in this state.
 
@@ -19860,7 +19860,7 @@ Now dot $`\langle \varphi_{n} |`$ into this equation to get the time dependence 
 \frac{\partial c_{n} ( t )}{\partial t} = \frac{1}{i \hbar} \sum_{k} \mathcal{V}_{nk} ( t ) c_{k} ( t ) e^{i ( E_{n} - E_{k} ) t/ \hbar}
 ```
 
-Assume that at $`t`$ = 0, we are in an **initial state** $`\psi ( t`$ = 0) = $`\varphi_{i}`$ and hence all the other $`c_{k}`$ are equal to zero: $`c_{k} = \delta_{ki}`$.
+Assume that at $`t`$ = 0, we are in an **initial state** $`\psi ( t = 0 )`$ = $`\varphi_{i}`$ and hence all the other $`c_{k}`$ are equal to zero: $`c_{k} = \delta_{ki}`$.
 
 ```math
 \frac{\partial c_{n} ( t )}{\partial t} = \frac{1}{i \hbar} \left( \mathcal{V}_{ni} ( t ) e^{i\omega_{ni} t} + \sum_{k \neq i} \mathcal{V}_{nk} ( t ) c_{k} ( t ) e^{i\omega_{nk} t} \right)
@@ -20239,7 +20239,7 @@ We now want to go from a classical harmonic oscillator to a quantum oscillator, 
 
 Remember that one exponential corresponds to the emission of a photon and the other corresponds to the the absorption of a photon. We view $`\vec{A}`$ as an operator which either creates or absorbs a photon, raising or lowering the harmonic oscillator in the vacuum.
 
-Now there is a **perturbation even with no applied field** $`( N`$ = 0).
+Now there is a **perturbation even with no applied field** $`( N = 0 )`$.
 
 ```math
 \mathcal{V}_{N = 0} = V_{N = 0} e^{i\omega t} = \frac{e}{mc} \vec{A} \cdot \vec{p} = \frac{e}{mc} \left[ \frac{2 \pi \hbar c^{2}}{\omega V} \right]^{\tfrac{1}{2}} e^{- i ( \vec{k} \cdot \vec{r} - \omega t )} \hat{\epsilon} \cdot \vec{p}
@@ -20456,7 +20456,7 @@ Y_{\ell_{1} m_{1}} ( \theta ,\varphi ) Y_{\ell_{2} m_{2}} ( \theta ,\varphi ) = 
 
 The square root and $`\langle \ell 0 | \ell_{1} \ell_{2} 0 0 \rangle`$ can be thought of as a normalization constant in an otherwise normal Clebsch-Gordan series. (Note that the normal addition of the orbital angular momenta of two particles would have product states of two spherical harmonics in **different coordinates**, the coordinates of particle one and of particle two.) (The derivation of the above equation involves a somewhat detailed study of the properties of rotation matrices and would take us pretty far off the current track (See Merzbacher page 396).)
 
-First add the angular momentum from the initial state $`( Y_{\ell_{i} m_{i}} )`$ and the photon ($`Y_{1 m} )`$ using the Clebsch-Gordan series, with the usual notation for the **Clebsch-Gordan coefficients** $`\langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} m \rangle`$.
+First add the angular momentum from the initial state $`( Y_{\ell_{i} m_{i}} )`$ and the photon $`( Y_{1 m} )`$ using the Clebsch-Gordan series, with the usual notation for the **Clebsch-Gordan coefficients** $`\langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} m \rangle`$.
 
 ```math
 Y_{1 m} ( \theta ,\varphi ) Y_{\ell_{i} m_{i}} ( \theta ,\varphi ) = \sum_{\ell = | \ell_{i} - 1 |}^{\ell_{i} + 1} \sqrt{4 3 ( 2 \ell_{i} + 1 ) \pi ( 2 \ell + 1 )} \langle \ell 0 | \ell_{i} 1 0 0 \rangle \langle \ell ( m + m_{i} ) | \ell_{i} 1 m_{i} m \rangle Y_{\ell ( m_{i} + m )} ( \theta ,\varphi )
@@ -20874,7 +20874,7 @@ We may take the Fourier transform of this time function to the the amplitude as 
 = \frac{i}{( \omega - \omega_{0} + i \tfrac{\Gamma}{2} )}
 ```
 
-We may square this to get the probability or intensity as a function of $`\omega`$ (and hence $`E = \hbar \omega )`$.
+We may square this to get the probability or intensity as a function of $`\omega`$ (and hence $`E = \hbar \omega`$).
 
 ```math
 I_{i} ( \omega ) = | \varphi_{i} ( \omega ) |^{2} = \frac{1}{( \omega - \omega_{0} )^{2} + \tfrac{\Gamma^{2}}{4}}
@@ -21174,7 +21174,7 @@ V ( \boldsymbol{r} ) = \lambda \delta ( r - r_{0} )
 
 Assume that the potential is weak so that perturbation theory can be used. Be sure to write your answer in terms of the scattering angles.
 
-5. Assume that a heavy nucleus attracts $`K_{0}`$ mesons with a weak Yakawa potential $`V ( r ) = \tfrac{V_{0}}{r} e^{- \alpha r}`$. Calculate the differential cross section, $`\frac{d\sigma}{d \Omega}`$, for scattering high energy $`K_{0}`$ mesons (mass $`m_{K} )`$ from that nucleus. Give your answer in terms of the scattering angle $`\theta`$.
+5. Assume that a heavy nucleus attracts $`K_{0}`$ mesons with a weak Yakawa potential $`V ( r ) = \tfrac{V_{0}}{r} e^{- \alpha r}`$. Calculate the differential cross section, $`\frac{d\sigma}{d \Omega}`$, for scattering high energy $`K_{0}`$ mesons (mass $`m_{K}`$) from that nucleus. Give your answer in terms of the scattering angle $`\theta`$.
 
 ---
 
@@ -21279,7 +21279,7 @@ which will have zeros if
 k^{\prime} \cot ( k^{\prime} a ) = k \cot ( ka ) .
 ```
 
-We can compute the total scattering cross section using the relation $`\int d`$Ω$`P_{\ell}`$(cos $`\theta ) P_{\ell}^{\prime}`$(cos$`\theta ) =`$
+We can compute the total scattering cross section using the relation $`\int d`$Ω$`P_{\ell} ( \cos \theta ) P_{\ell}^{\prime} ( \cos \theta ) =`$
 
 ```math
 \begin{aligned} & \quad \tfrac{4 \pi}{2 \ell + 1} \delta_{\ell \ell^{\prime}} . \\ \sigma_{tot} &= \int d \Omega | f ( \theta ,\varphi ) |^{2} \end{aligned}
@@ -21371,7 +21371,7 @@ We now need to convert this transition rate to a cross section. Our wave functio
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p423" href="book.pdf#page=423" target="_blank" title="This page in the PDF"><sup>[p. 423]</sup></a>
 
-per square centimeter per second to get a cross section. To do this we set the volume to be $`V`$ = (1 $`cm^{2} ) ( v_{rel} ) ( 1 \quad second )`$. The relative velocity is just the momentum divided by the reduced mass.
+per square centimeter per second to get a cross section. To do this we set the volume to be $`V`$ = $`( 1 cm^{2} ) ( v_{rel} ) ( 1 \quad second )`$. The relative velocity is just the momentum divided by the reduced mass.
 
 ```math
 \sigma = \frac{1}{4 \pi^{2} \hbar^{3} v_{rel}} \int d \Omega_{f} \mu k_{f} \left| \tilde{V} ( \vec{\Delta} ) \right|^{2}
@@ -21527,7 +21527,7 @@ V ( \boldsymbol{r} ) = \lambda \delta ( r - r_{0} )
 
 Assume that the potential is weak so that perturbation theory can be used. Be sure to write your answer in terms of the scattering angles.
 
-2. Assume that a heavy nucleus attracts $`K_{0}`$ mesons with a weak Yakawa potential $`V ( r ) = \tfrac{V_{0}}{r} e^{- \alpha r}`$. Calculate the differential cross section, $`\frac{d\sigma}{d \Omega}`$, for scattering high energy $`K_{0}`$ mesons (mass $`m_{K} )`$ from that nucleus. Give your answer in terms of the scattering angle $`\theta`$.
+2. Assume that a heavy nucleus attracts $`K_{0}`$ mesons with a weak Yakawa potential $`V ( r ) = \tfrac{V_{0}}{r} e^{- \alpha r}`$. Calculate the differential cross section, $`\frac{d\sigma}{d \Omega}`$, for scattering high energy $`K_{0}`$ mesons (mass $`m_{K}`$) from that nucleus. Give your answer in terms of the scattering angle $`\theta`$.
 
 ---
 
@@ -22107,7 +22107,7 @@ The simplest way and the correct way to do this is to make the Electric and Magn
 F_{\mu \nu} = \begin{pmatrix} 0 & B_{z} & - B_{y} & - iE_{x} \\ - B_{z} & 0 & B_{x} & - iE_{y} \\ B_{y} & - B_{x} & 0 & - iE_{z} \\ iE_{x} & iE_{y} & iE_{z} & 0 \end{pmatrix}
 ```
 
-The fields can simply be written in terms of the **vector potential**, (which is a Lorentz vector) $`A_{\mu} = ( \vec{A} ,i\varphi`$ ).
+The fields can simply be written in terms of the **vector potential**, (which is a Lorentz vector) $`A_{\mu} = ( \vec{A} ,i\varphi )`$.
 
 ```math
 F_{\mu \nu} = \frac{\partial A_{\nu}}{\partial x_{\mu}} - \frac{\partial A_{\mu}}{\partial x_{\nu}}
@@ -22410,7 +22410,7 @@ Enrico Fermi showed, in 1930, that $`A_{\|}`$ together with $`A_{0}`$ give rise 
 H = \sum_{j} \frac{1}{2 m_{j}} \left( \vec{p} - \frac{e}{c} \vec{A}_{\perp} ( \vec{x}_{j} ) \right)^{2} + \sum_{i>j} \frac{e_{i} e_{j}}{4 \pi | \vec{x}_{i} - \vec{x}_{j} |} + H_{rad}
 ```
 
-where $`H_{rad}`$ is purely the Hamiltonian of the radiation (containing only $`\vec{A}_{\perp} )`$, and $`\vec{A}_{\perp}`$ is the part of the vector potential which satisfies $`\vec{\nabla} \cdot \vec{A}_{\perp}`$ = 0. Note that $`\vec{A}_{\|}`$ and $`A_{4}`$ appear nowhere in the Hamiltonian. Instead, we have the Coulomb potential. This separation allows us to continue with our standard Hydrogen solution and just add radiation. We will not derive this result.
+where $`H_{rad}`$ is purely the Hamiltonian of the radiation (containing only $`\vec{A}_{\perp}`$), and $`\vec{A}_{\perp}`$ is the part of the vector potential which satisfies $`\vec{\nabla} \cdot \vec{A}_{\perp}`$ = 0. Note that $`\vec{A}_{\|}`$ and $`A_{4}`$ appear nowhere in the Hamiltonian. Instead, we have the Coulomb potential. This separation allows us to continue with our standard Hydrogen solution and just add radiation. We will not derive this result.
 
 In a **region in which there are no source terms**,
 
@@ -22678,7 +22678,7 @@ H = \sum_{k,\alpha} \left( \frac{\omega}{c} \right)^{2} \left[ c_{k,\alpha} ( t 
 
 This is the **result we will use to quantize the field**. We have been careful **not to commute** $`c`$ **and** $`c^{*}`$ here in anticipation of the fact that they do not commute.
 
-It should not be a surprise that the terms that made up the Lagrangian gave a zero contribution because $`\mathcal{L} = \tfrac{1}{2} ( E^{2} - B^{2} )`$ and we know that E and B have the same magnitude in a radiation field. (There is one wrinkle we have glossed over; terms with $`\vec{k}^{\prime} = - \vec{k} . )`$
+It should not be a surprise that the terms that made up the Lagrangian gave a zero contribution because $`\mathcal{L} = \tfrac{1}{2} ( E^{2} - B^{2} )`$ and we know that E and B have the same magnitude in a radiation field. (There is one wrinkle we have glossed over; terms with $`\vec{k}^{\prime} = - \vec{k}`$.)
 
 # <a id="s-33-4-canonical-coordinates-and-momenta"></a>33.4 Canonical Coordinates and Momenta
 
@@ -23398,7 +23398,7 @@ The decay rate does not depend on the $`m`$ of the initial state.
 
 Some atomic states have no lower energy state that satisfies the E1 selection rules to decay to. Then, higher order processes must be considered. The next order term in the expansion of $`e^{- i \vec{k} \cdot \vec{r}} = 1`$ $`- i \vec{k} \cdot \vec{r} + \dots`$ will allow other transitions to take place but at lower rates. We will attempt to understand the **selection rules** when we include the $`i \vec{k} \cdot \vec{r}`$ term.
 
-The matrix element is proportional to $`- i \langle \varphi_{n} | ( \vec{k} \cdot \vec{r} )`$(ˆ$`\epsilon^{( \lambda )} \cdot \vec{p}_{e} ) | \varphi_{i} \rangle`$ which we will **split up into two** **terms**. You might ask why split it. The reason is that we will essentially be **computing matrix** **elements of at tensor** and dotting it into two vectors that do not depend on the atomic state.
+The matrix element is proportional to $`- i \langle \varphi_{n} | ( \vec{k} \cdot \vec{r} )`$(ˆ$`\epsilon^{( \lambda )} \cdot \vec{p}_{e}`$) $`| \varphi_{i} \rangle`$ which we will **split up into two** **terms**. You might ask why split it. The reason is that we will essentially be **computing matrix** **elements of at tensor** and dotting it into two vectors that do not depend on the atomic state.
 
 ```math
 \vec{k} \cdot \langle \varphi_{n} | \vec{r} \vec{p}_{e} ) | \varphi_{i} \rangle \cdot \hat{\epsilon}^{( \lambda )}
@@ -23805,7 +23805,7 @@ i \hbar \hat{\epsilon} \cdot \hat{\epsilon}^{\prime} = \sum_{j} [ ( \hat{\epsilo
 \begin{aligned} &= \hbar \omega_{ij} ( \hat{\epsilon} \cdot \vec{x} )_{ij} \\ ( \hat{\epsilon} \cdot \vec{x} )_{ij} &= \frac{- i}{m\omega} ( \hat{\epsilon} \cdot \vec{p} )_{ij} \\ i \hbar \hat{\epsilon} \cdot \hat{\epsilon}^{\prime} &= \sum^{ij} \left[ \frac{- i}{m\omega_{ij}} ( \hat{\epsilon} \cdot \vec{p} )_{ij} ( \hat{\epsilon}^{\prime} \cdot p )_{ji} - \frac{- i}{m\omega_{ji}} ( \hat{\epsilon}^{\prime} \cdot \vec{p} )_{ij} ( \hat{\epsilon} \cdot \vec{p} )_{ji} \right] \\ &= \sum^{j} \left[ \frac{- i}{m\omega_{ij}} ( \hat{\epsilon} \cdot \vec{p} )_{ij} ( \hat{\epsilon}^{\prime} \cdot p )_{ji} + \frac{- i}{m\omega_{ij}} ( \hat{\epsilon}^{\prime} \cdot \vec{p} )_{ij} ( \hat{\epsilon} \cdot \vec{p} )_{ji} \right] \\ &= \sum^{j} \frac{- i}{m\omega_{ij}} [ ( \hat{\epsilon} \cdot \vec{p} )_{ij} ( \hat{\epsilon}^{\prime} \cdot p )_{ji} + ( \hat{\epsilon}^{\prime} \cdot \vec{p} )_{ij} ( \hat{\epsilon} \cdot \vec{p} )_{ji} ] \\ \hat{\epsilon} \cdot \hat{\epsilon}^{\prime} &= \frac{- 1}{m \hbar}^{j} \sum_{j} \frac{1}{\omega_{ij}} [ ( \hat{\epsilon}^{\prime} \cdot \vec{p} )_{ij} ( \hat{\epsilon} \cdot \vec{p} )_{ji} + ( \hat{\epsilon} \cdot \vec{p} )_{ij} ( \hat{\epsilon}^{\prime} \cdot \vec{p} )_{ji} ] \end{aligned}
 ```
 
-(Reminder: $`\omega_{ij} = \tfrac{E_{i} - E_{j}}{\hbar}`$ is just a number. ($`\hat{\epsilon} \cdot \vec{p} )_{ij} = \langle i | \hat{\epsilon} \cdot \vec{p} | j \rangle`$ is a matrix element between states.)
+(Reminder: $`\omega_{ij} = \tfrac{E_{i} - E_{j}}{\hbar}`$ is just a number. $`( \hat{\epsilon} \cdot \vec{p} )_{ij} = \langle i | \hat{\epsilon} \cdot \vec{p} | j \rangle`$ is a matrix element between states.)
 
 We may now **combine the terms** for elastic scattering.
 
@@ -23877,7 +23877,7 @@ The only dependence is on polarization. This is a good time to take a look at th
 
 wave-vectors for the initial and final state. A look back at the calculation shows that we calculated the transition rate from a state with one photon with wave-vector $`\vec{k}`$ and polarization $`\epsilon^{( \alpha )}`$ to a final state with polarization $`\epsilon^{( \alpha^{\prime} )}`$. We have **integrated over the final state wave vector magnitude,** **subject to the delta function** giving energy conservation, but, we have **not integrated over** **final state photon direction** yet, as indicated by the $`\frac{d\sigma}{d \Omega}`$. There is no explicit angular dependence but there is some **hidden in the dot product between initial and final polarization vectors,** **both of which must be transverse** to the direction of propagation. We are ready to compute four different differential cross sections corresponding to two initial polarizations times two final state photon polarizations. Alternatively, we average and/or sum, if we so choose.
 
-In the high energy approximation we have made, there is no dependence on the state of the atoms, so we are **free to choose our coordinate system** any way we want. Set the **z-axis to be along** **the direction of the initial photon** and set the x-axis so that the **scattered photon is in the** **x-z plane** $`( \varphi`$ = 0). The scattered photon is at an angle $`\theta`$ to the initial photon direction and at $`\varphi`$ = 0. A reasonable set of **initial state polarization vectors** is
+In the high energy approximation we have made, there is no dependence on the state of the atoms, so we are **free to choose our coordinate system** any way we want. Set the **z-axis to be along** **the direction of the initial photon** and set the x-axis so that the **scattered photon is in the** **x-z plane** $`( \varphi = 0 )`$. The scattered photon is at an angle $`\theta`$ to the initial photon direction and at $`\varphi`$ = 0. A reasonable set of **initial state polarization vectors** is
 
 ```math
 \hat{\epsilon}^{( 1 )} = \hat{x}
@@ -23913,7 +23913,7 @@ From these, we can compute any cross section we want. For example, **averaging o
 
 Even if the initial state is unpolarized, the **final state can be polarized**. For example, for $`\theta = \tfrac{\pi}{2}`$, all of the above dot products are zero except $`\hat{\epsilon}^{( 2 )} \cdot \hat{\epsilon}^{( 2 )^{\prime}}`$ = 1. That means only the initial photons polarized along the y direction will scatter and that the scattered photon is **100% polarized** **transverse to the scattering plane** (really just the same polarization as the initial state). The angular distribution could also be used to deduce the polarization of the initial state if a large ensemble of initial state photons were available.
 
-For a **definite initial state polarization** (at an angle $`\varphi`$ to the scattering plane, the component along $`\hat{\epsilon}^{( 1 )}`$ is $`\cos \varphi`$ and along $`\hat{\epsilon}^{( 2 )}`$ is $`\sin \varphi`$. If we don’t observe final state polarization we sum (cos$`\theta \cos \varphi )^{2}`$ + (sin $`\varphi )^{2}`$ and have
+For a **definite initial state polarization** (at an angle $`\varphi`$ to the scattering plane, the component along $`\hat{\epsilon}^{( 1 )}`$ is $`\cos \varphi`$ and along $`\hat{\epsilon}^{( 2 )}`$ is $`\sin \varphi`$. If we don’t observe final state polarization we sum $`( \cos \theta \cos \varphi )^{2}`$ + $`( \sin \varphi )^{2}`$ and have
 
 ```math
 \frac{d\sigma}{d \Omega} = \left( \frac{e^{2}}{4 \pi mc^{2}} \right)^{2} \frac{1}{2} ( \cos^{2} \theta \cos^{2} \varphi + \sin^{2} \varphi )
@@ -24480,7 +24480,7 @@ E^{2} = p^{2} c^{2} + ( mc^{2} )^{2}
 
 This is just the **Klein-Gordon equation** that we derived for a scalar field. It did not take physicists long to come up with this equation.
 
-Because the Schrödinger equation is **first order in the time derivative**, the initial conditions needed to determine a solution to the equation are just $`\psi ( t`$ = 0). In an equation that is second order in the time derivative, we also need to specify some information about the time derivatives at $`t`$ = 0 to determine the solution at a later time. It seemed strange to give up the concept that all information is contained in the wave function to go to the relativistically correct equation.
+Because the Schrödinger equation is **first order in the time derivative**, the initial conditions needed to determine a solution to the equation are just $`\psi ( t = 0 )`$. In an equation that is second order in the time derivative, we also need to specify some information about the time derivatives at $`t`$ = 0 to determine the solution at a later time. It seemed strange to give up the concept that all information is contained in the wave function to go to the relativistically correct equation.
 
 If we have a complex scalar field that satisfies the (Euler-Lagrange = Klein-Gordon) equations
 
@@ -24948,7 +24948,7 @@ Expand the energy term on the left of the equation for the non-relativistic case
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p493" href="book.pdf#page=493" target="_blank" title="This page in the PDF"><sup>[p. 493]</sup></a>
 
-We will be attempting to get the correct Schrödinger equation to order $`\alpha^{4}`$, like the one we used to calculate the fine structure in Hydrogen. Since this energy term we are expanding is multiplied in the equation by $`p^{2}`$, we only need the first two terms in the expansion (order 1 and order $`\alpha^{2} )`$.
+We will be attempting to get the correct Schrödinger equation to order $`\alpha^{4}`$, like the one we used to calculate the fine structure in Hydrogen. Since this energy term we are expanding is multiplied in the equation by $`p^{2}`$, we only need the first two terms in the expansion (order 1 and order $`\alpha^{2}`$).
 
 ```math
 \vec{\sigma} \cdot \vec{p} \frac{1}{2 m} \left( 1 - \frac{E^{( NR )} + eA_{0}}{2 mc^{2}} \right) \vec{\sigma} \cdot \vec{p} \psi_{A} = ( E^{( NR )} + eA_{0} ) \psi_{A}
@@ -25684,7 +25684,7 @@ We can think of **rotations and boosts as the two basic symmetry transformations
 \psi^{\prime} = S_{boost} ( \beta ) \psi
 ```
 
-We will work with the **Dirac equation** and its transformation. We know how the Lorentz vectors transform so we can derive a requirement on the spinor transformation. (Remember that $`a_{\mu \nu}`$ works in an entirely different space than do $`\gamma_{\mu}`$ and $`S . )`$
+We will work with the **Dirac equation** and its transformation. We know how the Lorentz vectors transform so we can derive a requirement on the spinor transformation. (Remember that $`a_{\mu \nu}`$ works in an entirely different space than do $`\gamma_{\mu}`$ and $`S`$.)
 
 ```math
 \gamma_{\mu} \frac{\partial}{\partial x_{\mu}} \psi ( x ) + \frac{mc}{\hbar} \psi ( x ) = 0
@@ -26358,7 +26358,7 @@ However, the **helicity**, or spin along the direction of motion does commute.
 [ H, \vec{S} \cdot \vec{p} ] = [ H, \vec{S} ] \cdot \vec{p} = \hbar c\gamma_{4} \vec{p} \times \vec{\gamma} \cdot \vec{p} = 0
 ```
 
-From the above commutators $`[ H,L_{z} ]`$ and [$`H,S_{z} ]`$, the **components of total angular momentum** **do commute** with $`H`$.
+From the above commutators $`[ H,L_{z} ]`$ and $`[ H,S_{z} ]`$, the **components of total angular momentum** **do commute** with $`H`$.
 
 ```math
 [ H,J_{z} ] = [ H,L_{z} ] + [ H,S_{z} ] = \hbar c\gamma_{4} ( \gamma_{1} p_{y} - \gamma_{2} p_{x} ) + \hbar c\gamma_{4} [ \gamma_{2} p_{x} - \gamma_{1} p_{y} ] = 0
@@ -26456,7 +26456,7 @@ It is also useful to show that $`[ K, \vec{J} ]`$ = 0 so that we have a mutually
 [ K, \vec{J} ] = [ \gamma_{4} \vec{\Sigma} \cdot \vec{J} - \frac{\hbar}{2} \gamma_{4} , \vec{J} ] = [ \gamma_{4} , \vec{J} ] \vec{\Sigma} \cdot \vec{J} + \gamma_{4} [ \vec{\Sigma} \cdot \vec{J} , \vec{J} ] - \frac{\hbar}{2} [ \gamma_{4} , \vec{J} ]
 ```
 
-This will be zero if $`[ \gamma_{4} , \vec{J} ]`$ = 0 and [$`\vec{\Sigma} \cdot \vec{J} , \vec{J} ]`$ = 0.
+This will be zero if $`[ \gamma_{4} , \vec{J} ]`$ = 0 and $`[ \vec{\Sigma} \cdot \vec{J} , \vec{J} ]`$ = 0.
 
 ```math
 \left[ \gamma_{4} , \vec{J} \right] = [ \gamma_{4} , \vec{L} + \frac{\hbar}{2} \vec{\Sigma} ] = \frac{\hbar}{2} [ \gamma_{4} , \vec{\Sigma} ] = 0
@@ -26958,7 +26958,7 @@ We can use commutation and anticommutation relations to **write** $`\vec{\sigma}
 \vec{\sigma} \cdot \vec{p} = \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \left( - i \hbar r \frac{\partial}{\partial r} + i \vec{\sigma} \cdot \vec{L} \right)
 ```
 
-Note that the operators $`\frac{\vec{\sigma} \cdot \vec{x}}{r}`$ and $`i \vec{\sigma} \cdot \vec{L}`$ act only on the angular momentum parts of the state. There are no radial derivatives so they commute with $`- i \hbar r \tfrac{\partial}{\partial r}`$ . Lets pick a shorthand notation for the angular momentum eigenstates we must use. These have quantum numbers $`j , m_{j}`$, and $`\ell . \psi_{A}`$ will have $`\ell = \ell_{A}`$ and $`\psi_{B}`$ must have the other possible value of $`\ell`$ which we label $`\ell_{B}`$. Following the notation of Sakurai, we will call the state $`| jm_{j} \ell_{A} \rangle \equiv \mathcal{Y}_{j\ell_{A}}^{m_{j}} = \alpha Y_{\ell_{A} ,m_{j} - \tfrac{1}{2}} \chi_{+} + \beta Y_{\ell_{A} ,m_{j} + \tfrac{1}{2}} \chi_{-}`$. (Note that our previous functions made use of $`m = m_{\ell}`$ particularly in the calculation of $`\alpha`$ and $`\beta . )`$
+Note that the operators $`\frac{\vec{\sigma} \cdot \vec{x}}{r}`$ and $`i \vec{\sigma} \cdot \vec{L}`$ act only on the angular momentum parts of the state. There are no radial derivatives so they commute with $`- i \hbar r \tfrac{\partial}{\partial r}`$ . Lets pick a shorthand notation for the angular momentum eigenstates we must use. These have quantum numbers $`j , m_{j}`$, and $`\ell . \psi_{A}`$ will have $`\ell = \ell_{A}`$ and $`\psi_{B}`$ must have the other possible value of $`\ell`$ which we label $`\ell_{B}`$. Following the notation of Sakurai, we will call the state $`| jm_{j} \ell_{A} \rangle \equiv \mathcal{Y}_{j\ell_{A}}^{m_{j}} = \alpha Y_{\ell_{A} ,m_{j} - \tfrac{1}{2}} \chi_{+} + \beta Y_{\ell_{A} ,m_{j} + \tfrac{1}{2}} \chi_{-}`$. (Note that our previous functions made use of $`m = m_{\ell}`$ particularly in the calculation of $`\alpha`$ and $`\beta`$.)
 
 ```math
 c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \left( - i \hbar r \frac{\partial}{\partial r} + i \vec{\sigma} \cdot \vec{L} \right) \begin{pmatrix} \psi_{B} \\ \psi_{A} \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix}
@@ -27286,7 +27286,7 @@ In the Dirac theory, we have only one term in the **interaction Hamiltonian**,
 H_{int} = ie\gamma_{4} \gamma_{k} A_{k}
 ```
 
-Because it is linear in $`A`$ it can create a photon or annihilate a photon. Photon scattering is therefore second order (and proportional to $`e^{2} )`$. The **quantized photon field** is
+Because it is linear in $`A`$ it can create a photon or annihilate a photon. Photon scattering is therefore second order (and proportional to $`e^{2}`$). The **quantized photon field** is
 
 ```math
 A_{\mu} ( x ) = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right) .
@@ -28255,7 +28255,7 @@ I ( \omega ) \propto \tfrac{\Gamma / 2}{( \omega - \omega_{0} )^{2} + ( \Gamma /
 
 </div>
 
-Hund: 1) max $`s`$ 2)max $`\ell`$ (allowed) 3) min $`j ( \leq \tfrac{1}{2}`$ shell) else max $`j`$
+Hund: 1) max $`s`$ 2)max $`\ell`$ (allowed) 3) min $`j ( \leq \tfrac{1}{2} \ \text{shell} )`$ else max $`j`$
 
 ```math
 E_{rot} = \tfrac{\ell ( \ell + 1 ) \hbar^{2}}{2 I} \approx \tfrac{1}{2 0 0 0} \text{ eV } \quad E_{vib} = ( n + \tfrac{1}{2} ) \hbar \omega \approx \tfrac{1}{5 0} \text{ eV }

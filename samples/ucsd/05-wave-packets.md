@@ -103,7 +103,7 @@ f ( x ) = \frac{1}{\sqrt{2 \pi a}} \frac{1}{ix} \left[ e^{ikx} \right]_{k_{0} - 
 f ( x ) = \frac{1}{\sqrt{2 \pi a}} \frac{1}{ix} e^{ik_{0} x} \left[ 2 i \sin \left( \frac{ax}{2} \right) \right] = \sqrt{\frac{a}{2 \pi}} e^{ik_{0} x} \frac{2 \sin \left( \tfrac{ax}{2} \right)}{ax}
 ```
 
-Note that $`\tfrac{2 \sin}{ax} ( \tfrac{ax}{2}`$ ) is equal to 1 at $`x`$ = 0 and that it decreases from there. If you square this, it should remind you of a single slit diffraction pattern! In fact, the single slit gives us a square localization in position space and the F.T. is this $`\frac{\sin ( x )}{x}`$ function.
+Note that $`\tfrac{2 \sin}{ax} ( \tfrac{ax}{2} )`$ is equal to 1 at $`x`$ = 0 and that it decreases from there. If you square this, it should remind you of a single slit diffraction pattern! In fact, the single slit gives us a square localization in position space and the F.T. is this $`\frac{\sin ( x )}{x}`$ function.
 
 The Fourier Transform of a Gaussian (See section 5.6.4) wave packet $`A ( k ) = \left( \tfrac{2 \alpha}{\pi} \right)^{1 / 4} e^{- \alpha ( k - k_{0} )^{2}}`$ is
 
@@ -789,7 +789,7 @@ Now estimate the width of the two probability distributions.
 
 ## <a id="s-5-7-2-the-gaussian-wave-packet"></a>5.7.2 The Gaussian Wave Packet \*
 
-Given the following one dimensional probability amplitude in the position variable x, compute the probability distribution in momentum space. Show that the uncertainty principle is roughly satisfied. $`\psi ( x )`$ = ($`\tfrac{\alpha}{\pi} ) \tfrac{1}{4} e^{- \alpha x^{2} / 2}`$
+Given the following one dimensional probability amplitude in the position variable x, compute the probability distribution in momentum space. Show that the uncertainty principle is roughly satisfied. $`\psi ( x )`$ = $`( \tfrac{\alpha}{\pi} ) \tfrac{1}{4} e^{- \alpha x^{2} / 2}`$
 
 <div align="right"><a href="book.pdf#page=112" target="_blank" title="This page in the PDF"><sup>[p. 112]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">

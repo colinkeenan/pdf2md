@@ -222,7 +222,7 @@ The energy levels are given in terms of three quantum numbers.
 E = \frac{\pi^{2} \hbar^{2}}{2 mL^{2}} ( n_{x}^{2} + n_{y}^{2} + n_{z}^{2} )
 ```
 
-The number of states with inside some $`( n_{x}^{2} + n_{y}^{2} + n_{z}^{2} )_{max} ( \tfrac{1}{8}`$ of a a sphere in $`n`$ space) is
+The number of states with inside some $`( n_{x}^{2} + n_{y}^{2} + n_{z}^{2} )_{max}`$ ($`\tfrac{1}{8}`$ of a a sphere in $`n`$ space) is
 
 ```math
 N = \frac{1}{8} \frac{4}{3} \pi ( n_{x}^{2} + n_{y}^{2} + n_{z}^{2} )_{max}^{\tfrac{3}{2}}

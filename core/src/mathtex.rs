@@ -189,13 +189,13 @@ fn chars_tex(t: &str) -> String {
 }
 
 /// Function names LaTeX already knows (`\log`, `\sin`, ...).
-const FUNCS: &[&str] = &[
+pub(crate) const FUNCS: &[&str] = &[
     "log", "ln", "sin", "cos", "tan", "cot", "sec", "csc", "sinh", "cosh", "tanh", "coth", "exp",
     "lim", "max", "min", "det", "arg", "dim", "ker", "sup", "inf", "arcsin", "arccos", "arctan",
     "deg", "gcd",
 ];
 /// Other upright operator names seen in physics books.
-const OPNAMES: &[&str] = &["Tr", "tr", "Sp", "Spur", "Re", "Im", "sgn", "const"];
+pub(crate) const OPNAMES: &[&str] = &["Tr", "tr", "Sp", "Spur", "Re", "Im", "sgn", "const"];
 
 /// Is this word written upright as a function name inside math?
 pub fn is_function_word(w: &str) -> bool {

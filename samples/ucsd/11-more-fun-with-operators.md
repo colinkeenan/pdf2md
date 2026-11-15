@@ -497,7 +497,7 @@ This gives the same answer with about the same amount of work.
 \Delta L_{x} \Delta L_{z} \geq \frac{i}{2} \langle [ L_{x} ,L_{z} ] \rangle = \frac{i}{2} ( - i \hbar ) \langle L_{y} \rangle = \frac{\hbar}{2} \langle L_{y} \rangle
 ```
 
-2. **\*** A particle of mass $`m`$ is in a **1 dimensional potential** $`V ( x )`$. Calculate the rate of change of the expected values of $`x`$ and $`p , ( \tfrac{d \langle x \rangle}{dt}`$ and $`\tfrac{d \langle p \rangle}{dt} )`$. Your answer will obviously depend on the
+2. **\*** A particle of mass $`m`$ is in a **1 dimensional potential** $`V ( x )`$. Calculate the rate of change of the expected values of $`x`$ and $`p , ( \tfrac{d \langle x \rangle}{dt} \text{ and } \tfrac{d \langle p \rangle}{dt} )`$. Your answer will obviously depend on the
 
 <div align="right"><a href="book.pdf#page=189" target="_blank" title="This page in the PDF"><sup>[p. 189]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -527,7 +527,7 @@ state of the particle and on the potential.
 = - \left\langle \frac{dV}{dx} \right\rangle
 ```
 
-3. Compute the commutators $`[ A^{\dagger} ,A^{n} ]`$ and [$`A,e^{iHt} ]`$ for the 1D harmonic oscillator.
+3. Compute the commutators $`[ A^{\dagger} ,A^{n} ]`$ and $`[ A,e^{iHt} ]`$ for the 1D harmonic oscillator.
 
 **Answer**
 
@@ -563,7 +563,7 @@ b) For a particle of mass $`m`$ moving in 1-dimension, the Hamiltonian is given 
 
 c) Compute $`<u_{i} | P | u_{i} >`$ the mean momentum in the state $`| u_{i} >`$.
 
-5. **\*** At $`t`$ = 0, a particle of mass $`m`$ is in the Harmonic Oscillator state $`\psi ( t`$ = 0) = $`\tfrac{1}{\sqrt{2}} ( u_{0} + u_{1} )`$. Use the Heisenberg picture to find the expected value of $`x`$ as a function of time.
+5. **\*** At $`t`$ = 0, a particle of mass $`m`$ is in the Harmonic Oscillator state $`\psi ( t = 0 )`$ = $`\tfrac{1}{\sqrt{2}} ( u_{0} + u_{1} )`$. Use the Heisenberg picture to find the expected value of $`x`$ as a function of time.
 
 ---
 

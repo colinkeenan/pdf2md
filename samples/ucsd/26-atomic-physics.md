@@ -57,7 +57,7 @@ The effect of screening not only breaks the degeneracy between states with the s
 
 # <a id="s-26-2-the-hartree-equations"></a>26.2 The Hartree Equations
 
-The Hartree method allows us to to change the 3$`Z`$ dimensional Schrödinger equation $`( Z`$ electrons in 3 dimensions) into a 3 dimensional **equation for each electron**. This equation depends on the wavefunctions of the other electrons but can be solved in a self consistent way using the variational principle and iterating.
+The Hartree method allows us to to change the 3$`Z`$ dimensional Schrödinger equation ($`Z`$ electrons in 3 dimensions) into a 3 dimensional **equation for each electron**. This equation depends on the wavefunctions of the other electrons but can be solved in a self consistent way using the variational principle and iterating.
 
 ```math
 \begin{aligned} \psi &= \varphi_{1} ( \vec{r}_{1} ) \varphi_{2} ( \vec{r}_{2} ) \dots \varphi_{Z} ( \vec{r}_{Z} ) \\ \left[ \frac{- \hbar^{2}}{2 m} \nabla_{i}^{2} - \frac{Ze^{2}}{r_{i}} + e^{2} \sum_{j \neq i} \int d^{3} r_{j} \frac{| \varphi_{j} ( \vec{r}_{j} ) |^{2}}{| \vec{r} i - \vec{r} j |} \right] \varphi_{i} ( \vec{r}_{i} ) &= \epsilon_{i} \varphi_{i} ( \vec{r}_{i} ) \end{aligned}
@@ -103,7 +103,7 @@ A simpler set of rules has been developed for chemists, who can’t understand a
 
 </div>
 
-2. Now set the orbital states to make maximum $`m_{\ell}`$, and call this $`\ell`$, but don’t allow any two electrons to be in the same state (of $`m_{s}`$ and $`m_{\ell} )`$.
+2. Now set the orbital states to make maximum $`m_{\ell}`$, and call this $`\ell`$, but don’t allow any two electrons to be in the same state (of $`m_{s}`$ and $`m_{\ell}`$).
 
 3. Couple to get $`j`$ as before.
 
@@ -224,7 +224,7 @@ s \frac{m_{\ell} 1}{- 1} 0 = \sum m_{s} ↑ \frac{e}{↑} = 1
 \ell = \sum m_{\ell} = 1
 ```
 
-We can take a look at the excited states of carbon to get an appreciation of Hund’s rules. The following chart shows the states of a carbon atom. For most states, a basis of (1$`s )^{2} ( 2 s )^{2} ( 2 p )^{1}`$ is assumed and the state of the sixth electron is given. Some states have other excited electrons and are indicated by a superscript. Different $`j`$ states are not shown since the splitting is small. Electric dipole transitions are shown changing $`\ell`$ by one unit.
+We can take a look at the excited states of carbon to get an appreciation of Hund’s rules. The following chart shows the states of a carbon atom. For most states, a basis of $`( 1 s )^{2} ( 2 s )^{2} ( 2 p )^{1}`$ is assumed and the state of the sixth electron is given. Some states have other excited electrons and are indicated by a superscript. Different $`j`$ states are not shown since the splitting is small. Electric dipole transitions are shown changing $`\ell`$ by one unit.
 
 <div align="right"><a href="book.pdf#page=379" target="_blank" title="This page in the PDF"><sup>[p. 379]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -290,9 +290,9 @@ s \frac{m_{\ell} 1}{- 1} 0 = \sum m \frac{↑↓ e}{↑} ↑_{s} = 1
 
 # <a id="s-26-7-homework-problems"></a>26.7 Homework Problems
 
-1. List the possible spectroscopic states that can arise in the following electronic configurations: $`( 1 s )^{2}`$, (2$`p )^{2}`$, (2$`p )^{3}`$, (2$`p )^{4}`$, and (3$`d )^{4}`$. Take the exclusion principle into account. Which should be the ground state?
+1. List the possible spectroscopic states that can arise in the following electronic configurations: $`( 1 s )^{2}`$, $`( 2 p )^{2}`$, $`( 2 p )^{3}`$, $`( 2 p )^{4}`$, and $`( 3 d )^{4}`$. Take the exclusion principle into account. Which should be the ground state?
 
-2. Use Hund’s rules to find the spectroscopic description of the ground states of the following atoms: N$`( Z`$=7), K$`( Z`$=19), Sc$`( Z`$=21), Co$`( Z`$=27). Also determine the electronic configuration.
+2. Use Hund’s rules to find the spectroscopic description of the ground states of the following atoms: N$`( Z = 7 )`$, K$`( Z = 19 )`$, Sc$`( Z = 21 )`$, Co$`( Z = 27 )`$. Also determine the electronic configuration.
 
 3. Use Hund’s rules to check the $`( S,L,J )`$ quantum numbers of the elements with $`Z`$ =14, 15, 24, 30, 34.
 
@@ -302,7 +302,7 @@ s \frac{m_{\ell} 1}{- 1} 0 = \sum m \frac{↑↓ e}{↑} ↑_{s} = 1
 
 Use the standard<sup>2</sup>$`{}^{s + 1} L_{j}`$ notation.
 
-2. Write down the ground state (in spectroscopic notation) for the element Oxygen $`( Z`$ = 8).
+2. Write down the ground state (in spectroscopic notation) for the element Oxygen $`( Z = 8 )`$.
 
 ---
 

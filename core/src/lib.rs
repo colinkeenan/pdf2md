@@ -16,6 +16,7 @@
 //! 7. `emit`: write Markdown.
 
 pub mod blocks;
+mod brackets;
 pub mod course;
 pub mod emit;
 pub mod glyphs;

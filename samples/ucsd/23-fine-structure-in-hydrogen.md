@@ -41,7 +41,7 @@ H_{1} = - \frac{1}{8} \frac{p_{e}^{4}}{m^{3} c^{2}} .
 
 Our energy eigenstates are not eigenfunctions of this operator so we will have to **treat it as a** **perturbation.**
 
-We can **estimate the size** of this correction compared to the Hydrogen binding energy by taking the ratio to the Hydrogen kinetic energy. (Remember that, in the hydrogen ground state, $`\langle \tfrac{p^{2}}{2 m} \langle \rangle = - E = \tfrac{1}{2} \alpha^{2} mc^{2} . )`$
+We can **estimate the size** of this correction compared to the Hydrogen binding energy by taking the ratio to the Hydrogen kinetic energy. (Remember that, in the hydrogen ground state, $`\langle \tfrac{p^{2}}{2 m} \langle \rangle = - E = \tfrac{1}{2} \alpha^{2} mc^{2}`$.)
 
 ```math
 \frac{p^{4}}{8 m^{3} c^{2}} ÷ \frac{p^{2}}{2 m} = \frac{p^{2}}{4 m^{2} c^{2}} = \frac{( p^{2} / 2 m )}{2 mc^{2}} = \frac{1}{4} \alpha^{2}
@@ -109,7 +109,7 @@ E_{njm_{j} \ell s} = E_{n}^{( 0 )} + \frac{E_{n}^{( 0 )}}{2 mc^{2}}^{2} \left[ 3
 E_{njm_{j} \ell s} = E_{n}^{( 0 )} + \frac{E_{n}^{( 0 )}}{2 mc^{2}}^{2} \left[ 3 - n \frac{4 \mp \tfrac{2}{j + \tfrac{1}{2}}}{\ell + \tfrac{1}{2}} \right]
 ```
 
-We can write $`( \ell + \tfrac{1}{2} )`$ as ($`j + \tfrac{1}{2} \mp \tfrac{1}{2} )`$, so that
+We can write $`( \ell + \tfrac{1}{2} )`$ as $`( j + \tfrac{1}{2} \mp \tfrac{1}{2} )`$, so that
 
 ```math
 \frac{4 \mp \tfrac{2}{j + \tfrac{1}{2}}}{\ell + \tfrac{1}{2}} = \frac{4 j + 2 \mp 2}{( j + \tfrac{1}{2} ) ( j + \tfrac{1}{2} \mp \tfrac{1}{2} )} = 4 \frac{( j + \tfrac{1}{2} \mp \tfrac{1}{2} )}{( j + \tfrac{1}{2} \mp \tfrac{1}{2} ) ( j + \tfrac{1}{2} )}

@@ -131,7 +131,7 @@ We can use operators to help us compute the expectation value (See section 6.3) 
 \langle f ( x ) \rangle = \int_{-\infty}^{\infty} P ( x ) f ( x ) dx = \int_{-\infty}^{\infty} \psi^{*} ( x ) \psi ( x ) f ( x ) dx.
 ```
 
-If the variable we wish to compute the expectation value of (like $`p )`$ is not a simple function of $`x`$, let
+If the variable we wish to compute the expectation value of (like $`p`$) is not a simple function of $`x`$, let
 
 ```math
 \text{ its operator act on } \psi ( x )_{\infty}
@@ -285,13 +285,13 @@ Hermitian operators $`H`$ have the property that $`H^{\dagger} = H`$.
 
 # <a id="s-1-10-a-particle-in-a-box"></a>1.10 A Particle in a Box
 
-As a concrete illustration of these ideas, we study the particle in a box (See section 8.5) (in one dimension). This is just a particle (of mass $`m )`$ which is free to move inside the walls of a box $`0 <x<a`$, but which cannot penetrate the walls. We represent that by a potential which is zero inside the box and infinite outside. We solve the **Schrödinger equation** inside the box and realize that the probability for the particle to be outside the box, and hence the wavefunction there, must be zero. Since there is no potential inside, the Schrödinger equation is
+As a concrete illustration of these ideas, we study the particle in a box (See section 8.5) (in one dimension). This is just a particle (of mass $`m`$) which is free to move inside the walls of a box $`0 <x<a`$, but which cannot penetrate the walls. We represent that by a potential which is zero inside the box and infinite outside. We solve the **Schrödinger equation** inside the box and realize that the probability for the particle to be outside the box, and hence the wavefunction there, must be zero. Since there is no potential inside, the Schrödinger equation is
 
 ```math
 Hu_{n} ( x ) = - \frac{\hbar^{2}}{2 m} \frac{d^{2} u_{n} ( x )}{dx^{2}} = E_{n} u_{n} ( x )
 ```
 
-where we have anticipated that there will be many solutions indexed by $`n`$. We know four (only 2 linearly independent) functions which have a second derivative which is a constant times the same function: $`u ( x ) = e^{ikx} , u ( x ) = e^{- ikx} , u ( x )`$ = sin($`kx )`$, and $`u ( x )`$ = cos($`kx )`$. The wave function must be continuous though, so we require the boundary conditions
+where we have anticipated that there will be many solutions indexed by $`n`$. We know four (only 2 linearly independent) functions which have a second derivative which is a constant times the same function: $`u ( x ) = e^{ikx} , u ( x ) = e^{- ikx} , u ( x )`$ = $`\sin ( kx )`$, and $`u ( x )`$ = $`\cos ( kx )`$. The wave function must be continuous though, so we require the boundary conditions
 
 ```math
 u ( 0 ) = u ( a ) = 0 .
@@ -369,7 +369,7 @@ First, we calculate the probability the a particle of energy $`E`$ is reflected 
 
 section 9.1.2) of height $`V_{0} : P_{R}`$ = $`\sqrt{\frac{E - \quad E - V_{0}}{\sqrt{E} + \sqrt{E - V_{0}}} ( \surd )}`$ . We also use this example to understand the probability current $`j = \tfrac{\hbar}{2 im} [ u^{*} \tfrac{du}{dx} - \tfrac{du^{*}}{dx} ( ) u ]`$.
 
-Second we investigate the square potential well (See section 9.1.3) square potential well $`( V ( x ) = - V_{0}`$ for $`- a<x<a`$ and $`V ( x )`$ = 0 elsewhere), for the case where the particle is not bound $`E> 0`$. Assuming a beam of particles incident from the left, we need to match solutions in the three regions at the boundaries at $`x = \pm a`$. After some difficult arithmetic, the probabilities to be transmitted or reflected are computed. It is found that the probability to be transmitted goes to 1 for some particular energies.
+Second we investigate the square potential well (See section 9.1.3) square potential well $`( V ( x ) = - V_{0} \ \text{for} - a<x<a \text{ and } V ( x ) = 0 \ \text{elsewhere} )`$, for the case where the particle is not bound $`E> 0`$. Assuming a beam of particles incident from the left, we need to match solutions in the three regions at the boundaries at $`x = \pm a`$. After some difficult arithmetic, the probabilities to be transmitted or reflected are computed. It is found that the probability to be transmitted goes to 1 for some particular energies.
 
 ```math
 E = - V_{0} + \frac{n^{2} \pi^{2} \hbar^{2}}{8 ma^{2}}
@@ -377,7 +377,7 @@ E = - V_{0} + \frac{n^{2} \pi^{2} \hbar^{2}}{8 ma^{2}}
 
 This type of behavior is exhibited by electrons scattering from atoms. At some energies the scattering probability goes to zero.
 
-Third we study the square potential barrier (See section 9.1.5) $`( V ( x )`$ = +$`V_{0}`$ for $`- a<x<a`$ and $`V ( x )`$ = 0 elsewhere), for the case in which $`E<V_{0}`$. Classically the probability to be transmitted would be zero since the particle is energetically excluded from being inside the barrier. The Quantum calculation gives the probability to be transmitted through the barrier to be
+Third we study the square potential barrier (See section 9.1.5) $`( V ( x ) = + V_{0} \ \text{for} - a<x<a \text{ and } V ( x ) = 0 \ \text{elsewhere} )`$, for the case in which $`E<V_{0}`$. Classically the probability to be transmitted would be zero since the particle is energetically excluded from being inside the barrier. The Quantum calculation gives the probability to be transmitted through the barrier to be
 
 ```math
 | T |^{2} = \frac{( 2 k\kappa )^{2}}{( k^{2} + \kappa^{2} )^{2} \sinh^{2} ( 2 \kappa a ) + ( 2 k\kappa )^{2}} \to ( \frac{4 k\kappa}{k^{2} + \kappa^{2}} )^{2} e^{- 4 \kappa a}
@@ -399,7 +399,7 @@ Next we solve for the energy eigenstates of the harmonic oscillator (See section
 E_{n} = \left( n + \frac{1}{2} \right) \hbar \omega .
 ```
 
-The energy eigenstates turn out to be a polynomial (in $`x )`$ of degree $`n`$ times $`e^{- m\omega x^{2} / \hbar}`$. So the ground state, properly normalized, is just
+The energy eigenstates turn out to be a polynomial (in $`x`$) of degree $`n`$ times $`e^{- m\omega x^{2} / \hbar}`$. So the ground state, properly normalized, is just
 
 ```math
 u_{0} ( x ) = \left( \frac{m\omega}{\pi \hbar} \right)^{\tfrac{1}{4}} e^{- m\omega x^{2} / \hbar} .
@@ -641,7 +641,7 @@ Identical particles present us with another symmetry in nature. Electrons, for e
 [ H,P_{1 2} ] = 0
 ```
 
-So we can make our energy eigenstates also eigenstates of $`P_{1 2}`$. Its easy to see (by operating on an eigenstate twice with $`P_{1 2} )`$, that the possible eigenvalues are $`\pm 1`$. It is a law of physics that spin $`\frac{1}{2}`$ particles called **fermions** (like electrons) always are **antisymmetric under interchange**, while particles with **integer spin called bosons** (like photons) always are **symmetric under** **interchange**. Antisymmetry under interchange leads to the Pauli exclusion principle that no two electrons (for example) can be in the same state.
+So we can make our energy eigenstates also eigenstates of $`P_{1 2}`$. Its easy to see (by operating on an eigenstate twice with $`P_{1 2}`$), that the possible eigenvalues are $`\pm 1`$. It is a law of physics that spin $`\frac{1}{2}`$ particles called **fermions** (like electrons) always are **antisymmetric under interchange**, while particles with **integer spin called bosons** (like photons) always are **symmetric under** **interchange**. Antisymmetry under interchange leads to the Pauli exclusion principle that no two electrons (for example) can be in the same state.
 
 # <a id="s-1-18-some-3d-problems-separable-in-cartesian-coordinates"></a>1.18 Some 3D Problems Separable in Cartesian Coordinates
 
@@ -1290,7 +1290,7 @@ Calculation Energy $`Z_{wfn}`$
 
 Note that the variational calculation still uses first order perturbation theory. It just adds a variable parameter to the wavefunction which we use to minimize the energy. This only works for the ground state and for other special states.
 
-There is only one allowed (1$`s )^{2}`$ state and it is the ground state. For **excited states**, the spatial states are (usually) different so they can be either symmetric or antisymmetric (under interchange of the two electrons). It turns out that the antisymmetric state has the electrons further apart so the repulsion is smaller and the energy is lower. If the spatial state is antisymmetric, then the spin state is symmetric, s=1. So the triplet states are generally significantly lower in energy than the corresponding spin singlet states. This **appears to be a strong spin dependent interaction** **but is actually just the effect of the repulsion between the electrons** having a big effect depending on the symmetry of the spatial state and hence on the symmetry of the spin state.
+There is only one allowed $`( 1 s )^{2}`$ state and it is the ground state. For **excited states**, the spatial states are (usually) different so they can be either symmetric or antisymmetric (under interchange of the two electrons). It turns out that the antisymmetric state has the electrons further apart so the repulsion is smaller and the energy is lower. If the spatial state is antisymmetric, then the spin state is symmetric, s=1. So the triplet states are generally significantly lower in energy than the corresponding spin singlet states. This **appears to be a strong spin dependent interaction** **but is actually just the effect of the repulsion between the electrons** having a big effect depending on the symmetry of the spatial state and hence on the symmetry of the spin state.
 
 The **first exited state** has the hydrogenic state content of (1s)(2s) and has s=1. We calculated the energy of this state.
 
@@ -1434,7 +1434,7 @@ Think of the EM field as a harmonic oscillator at each frequency, the negative e
 \vec{A} ( \vec{r} , t ) = \left[ \frac{2 \pi \hbar c^{2}}{\omega V} \right]^{\tfrac{1}{2}} \hat{\epsilon} \left( \sqrt{N} e^{i ( \vec{k} \cdot \vec{r} - \omega t )} + \sqrt{N + 1} e^{- i ( \vec{k} \cdot \vec{r} - \omega t )} \right)
 ```
 
-With this change, which will later be justified with the quantization of the field, there is a **pertur-** **bation even with no applied field** $`( N`$ = 0)
+With this change, which will later be justified with the quantization of the field, there is a **pertur-** **bation even with no applied field** $`( N = 0 )`$
 
 ```math
 \mathcal{V}_{N = 0} = V_{N = 0} e^{i\omega t} = \frac{e}{mc} \vec{A} \cdot \vec{p} = \frac{e}{mc} \left[ \frac{2 \pi \hbar c^{2}}{\omega V} \right]^{\tfrac{1}{2}} e^{- i ( \vec{k} \cdot \vec{r} - \omega t )} \hat{\epsilon} \cdot \vec{p}

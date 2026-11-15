@@ -67,7 +67,7 @@ This is a simple review, but, you must make sure you use complex numbers correct
 
 A complex number $`c = a + ib`$ consists of a real part $`a`$ and an imaginary part $`ib`$. (We choose $`a`$ and $`b`$ to be real numbers.) $`i`$ is the square root of -1.
 
-The complex conjugate of $`c`$ is $`c^{*} = a - ib`$. (Just change the sign of all the $`i . )`$
+The complex conjugate of $`c`$ is $`c^{*} = a - ib`$. (Just change the sign of all the $`i`$.)
 
 The absolute square of a complex number is calculated by multiplying it by its complex conjugate.
 
@@ -157,7 +157,7 @@ You may remember that a pulse will move at the group velocity which is given by
 v_{g} = \left( \frac{d\omega}{dk} \right) = \frac{2 \hbar k}{2 m} = \frac{\hbar k}{m} = \frac{p}{m} .
 ```
 
-(The phase velocity for the non-relativistic case is $`v_{p} = \tfrac{p}{2 m} . )`$
+(The phase velocity for the non-relativistic case is $`v_{p} = \tfrac{p}{2 m}`$.)
 
 # <a id="s-4-2-sample-test-problems"></a>4.2 Sample Test Problems
 

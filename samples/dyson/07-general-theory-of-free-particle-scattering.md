@@ -33,7 +33,7 @@ We wish to calculate the matrix element $`M`$ of $`S`$ for a particular scatteri
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p95" href="book.pdf#page=101" target="_blank" title="This page in the PDF"><sup>[p. 95]</sup></a>
 
-Suppose $`t_{B}`$ to be a time so long in the future after the scattering process is over, that from $`t_{B}`$ to +$`\infty`$ the state $`B`$ consists of separated outward-traveling particles. Then the relation between $`\Psi_{B} ( t )`$ and $`\Phi_{B}`$ is simple. We imagine a fictitious world in which the charge $`e`$ occurring in the radiation interaction decreases infinitely slowly (adiabatically) from its actual value at time $`t_{B}`$ to zero at time (+$`\infty )`$. In the fictitious world, the state $`\Psi_{B} ( t_{B} )`$ at time $`t_{B}`$ will grow into the bare-particle state $`\Phi_{B}`$ at time +$`\infty`$. Thus
+Suppose $`t_{B}`$ to be a time so long in the future after the scattering process is over, that from $`t_{B}`$ to +$`\infty`$ the state $`B`$ consists of separated outward-traveling particles. Then the relation between $`\Psi_{B} ( t )`$ and $`\Phi_{B}`$ is simple. We imagine a fictitious world in which the charge $`e`$ occurring in the radiation interaction decreases infinitely slowly (adiabatically) from its actual value at time $`t_{B}`$ to zero at time (+$`\infty`$). In the fictitious world, the state $`\Psi_{B} ( t_{B} )`$ at time $`t_{B}`$ will grow into the bare-particle state $`\Phi_{B}`$ at time +$`\infty`$. Thus
 
 <a id="eq-489"></a>
 
@@ -127,7 +127,7 @@ where $`A`$ is a numerical coefficient. The second term in (498) gives no contri
 
 It is clear that by using the commutation rules of the operators in this way, every $`\mathcal{O}`$ can be written as a sum of normal products, and that the analysis leads to a unique expansion of $`\mathcal{O}`$. But we do not need to go through the tedious algebra of using the commutation rules, instead we can write down the normal constituents $`\mathcal{O}_{n}`$ directly by following simple rules.
 
-First, we define the notation $`N ( \mathcal{Q} )`$, where $`\mathcal{Q}`$ is any product of emission and absorption operators, to be the product obtained by simply rearranging the factors of $`\mathcal{Q}`$ in a normal order, irrespective of the commutation rules, with a factor $`( - 1`$) if the rearrangement involves an odd permutation of the electron-positron operators. Similarly if $`\mathcal{Q}`$ is any sum of products, $`N ( \mathcal{Q} )`$ is defined by rearranging factors in each term of the sum in the same way. Thus we have for example (see (211))
+First, we define the notation $`N ( \mathcal{Q} )`$, where $`\mathcal{Q}`$ is any product of emission and absorption operators, to be the product obtained by simply rearranging the factors of $`\mathcal{Q}`$ in a normal order, irrespective of the commutation rules, with a factor $`( - 1 )`$ if the rearrangement involves an odd permutation of the electron-positron operators. Similarly if $`\mathcal{Q}`$ is any sum of products, $`N ( \mathcal{Q} )`$ is defined by rearranging factors in each term of the sum in the same way. Thus we have for example (see (211))
 
 <a id="eq-499"></a>
 
@@ -187,7 +187,7 @@ _Every operator product_ $`\mathcal{O}`$ _is identically equal to the sum of the
 
 This theorem gives the decomposition of $`\mathcal{O}`$ into its normal constituents. Equations (501) – (503) are just special cases of it. Clearly non-zero $`\mathcal{O}_{n}`$ are only obtained when each pair of factors is either a $`\overline{\psi}`$ and a $`\psi`$ operator or two $`A_{\mu}`$ operators. We shall therefore suppose that the factor-pairings are always restricted in this way.
 
-The proof of the theorem is very simple, by induction on $`m`$, the number of factors in $`\mathcal{O}`$. The theorem is true when $`m`$ = 1 or 2, so we need only prove it true for $`m`$ assuming it true for $`m -`$ 2. Let then $`\mathcal{O}^{\prime}`$ be a product of $`( m -`$ 2) factors. First we show that the theorem is true for
+The proof of the theorem is very simple, by induction on $`m`$, the number of factors in $`\mathcal{O}`$. The theorem is true when $`m`$ = 1 or 2, so we need only prove it true for $`m`$ assuming it true for $`m -`$ 2. Let then $`\mathcal{O}^{\prime}`$ be a product of $`( m - 2 )`$ factors. First we show that the theorem is true for
 
 <a id="eq-505"></a>
 
@@ -355,11 +355,11 @@ The rules for writing down the normal constituents of (488) are therefore extrem
 
 2) To each <a id="ix-128">graph</a> $`G`$ with $`n`$ vertices corresponds one normal constituent $`S_{G}`$ of $`S`$.
 
-3) Choosing a particular $`G`$, write down the $`n`$<sup>th</sup> term $`S_{n}`$ of the series (488) and <a id="ix-23">pair</a> off the factors of $`S_{n}`$ as indicated by $`G`$. Replace each factor-pair $`A_{\lambda} ( x ) A_{\mu} ( y )`$ by (510), and replace each factor-pair $`\psi_{\alpha} ( x ) \overline{\psi}_{\beta} ( y )`$ by (511). Apply an $`N`$-ordering to the remaining unpaired factors of $`S_{n}`$, and multiply the whole expression by $`( \pm 1`$) following the rule given for equation (504). The result of applying these operations to $`S_{n}`$ is the normal constituent $`S_{G}`$.
+3) Choosing a particular $`G`$, write down the $`n`$<sup>th</sup> term $`S_{n}`$ of the series (488) and <a id="ix-23">pair</a> off the factors of $`S_{n}`$ as indicated by $`G`$. Replace each factor-pair $`A_{\lambda} ( x ) A_{\mu} ( y )`$ by (510), and replace each factor-pair $`\psi_{\alpha} ( x ) \overline{\psi}_{\beta} ( y )`$ by (511). Apply an $`N`$-ordering to the remaining unpaired factors of $`S_{n}`$, and multiply the whole expression by $`( \pm 1 )`$ following the rule given for equation (504). The result of applying these operations to $`S_{n}`$ is the normal constituent $`S_{G}`$.
 
 If we wish to calculate the matrix element for the <a id="ix-37">scattering</a> process, then we have only to add one more rule to the three already given.
 
-4) In each $`S_{G}`$, substitute for the unpaired operators the wave-functions of the absorbed and emitted particles, for example writing (437) for $`\psi ( x )`$ when an electron ($`p,u )`$ is absorbed, and writing (438) for $`A_{\mu} ( x )`$ when a photon ($`k,e )`$ is absorbed. These substitutions may sometimes be made in more than one way (for example in the Compton <a id="ix-35">effect</a> when the absorbed and emitted photon may be assigned in two ways to the two unpaired photon operators.) In such cases the substitutions are to be made in all possible ways, and the results added together, taking account of Fermi statistics by putting in a minus sign when two electron or positron wave-functions are interchanged.
+4) In each $`S_{G}`$, substitute for the unpaired operators the wave-functions of the absorbed and emitted particles, for example writing (437) for $`\psi ( x )`$ when an electron $`( p,u )`$ is absorbed, and writing (438) for $`A_{\mu} ( x )`$ when a photon $`( k,e )`$ is absorbed. These substitutions may sometimes be made in more than one way (for example in the Compton <a id="ix-35">effect</a> when the absorbed and emitted photon may be assigned in two ways to the two unpaired photon operators.) In such cases the substitutions are to be made in all possible ways, and the results added together, taking account of Fermi statistics by putting in a minus sign when two electron or positron wave-functions are interchanged.
 
 The rules (1)–(4) constitute the Feynman rules for calculating the matrix elements of all processes in electrodynamics. According to Feynman they have an intermediate concrete interpretation. Thus (510) is the probability amplitude for a photon emitted at $`x`$ with polarization $`\lambda`$ to propagate itself and arrive at $`y`$ with polarization $`\mu`$, plus the amplitude for a photon having been emitted at $`y`$ to arrive at $`x`$. And (511) is the amplitude for an electron emitted at $`y`$ to arrive at $`x`$, plus the amplitude for a positron emitted at $`x`$ to arrive at $`y`$, with the assigned spins $`\alpha`$ and $`\beta`$. In this way the matrix element is just the probability amplitude for the succession of events, interactions and propagations, that are depicted in the vertices and lines of $`G`$. The total probability amplitude for a process is just the sum of the amplitudes derived by from the various graphs $`G`$ which contribute to the process.
 
@@ -501,7 +501,7 @@ U_{S} = - i \frac{\delta mc}{\hbar} \int \overline{\psi} \psi ( x ) dx \qquad \t
 
 in the scattering matrix (421) or (488).
 
-The matrix element of (528) between the states $`( pu )`$ and ($`p^{\prime} u^{\prime} )`$ is
+The matrix element of (528) between the states $`( pu )`$ and $`( p^{\prime} u^{\prime} )`$ is
 
 <a id="eq-529"></a>
 
@@ -557,7 +557,7 @@ instead of (517), keeping only terms of order $`e^{2}`$. The matrix elements of 
 
 ## <a id="s-second-order-radiative-corrections-to-scattering"></a>Second-Order Radiative Corrections to Scattering
 
-Let an electron be scattered from the initial state $`( pu )`$ to the final state ($`p^{\prime} u^{\prime} )`$ by the external potential
+Let an electron be scattered from the initial state $`( pu )`$ to the final state $`( p^{\prime} u^{\prime} )`$ by the external potential
 
 <a id="eq-534"></a>
 
@@ -673,7 +673,7 @@ and $`\{ G_{6} ,G_{7} ,G_{8} ,G_{9} \}`$ obtained by interchanging the labels $`
 
 The effect of $`\{ G_{6} ,G_{7} ,G_{8} ,G_{9} \}`$ is only to double the contribution from $`\{ G_{1} ,G_{2} ,G_{3} ,G_{4} \}`$, since (539) is symmetrical in the variables $`x_{1}`$ and $`x_{2}`$. Also $`G_{5}`$ will give only a numerical phase factor multiplying $`M_{0}`$, the phase factor being the same for all final states; it is in fact precisely the phase-shift between the initial and final states due to the self-energy of the vacuum. Similar phase shift factors would also multiply the contributions of $`G_{1} , G_{2}`$, etc., coming from disconnected graphs in higher order contributions. In this sense therefore, we can consider $`G_{5}`$ to be really the contribution of $`U_{0}`$ with one of the many possible disconnected additions. A numerical phase factor of this kind, the same for all final states, is entirely unobservable and without physical meaning, since it can be cancelled by changing the phase of all wave-functions by the same amount. Hence we can always ignore graphs such as $`G_{5}`$ having a disconnected part without external lines. There remain to be considered only $`\{ G_{1} ,G_{2} ,G_{3} ,G_{4} \}`$.
 
-Using the Feynman rules, the contribution of $`G_{1}`$ to $`M_{2}`$ is (with the factor 2 from $`G_{6} )`$
+Using the Feynman rules, the contribution of $`G_{1}`$ to $`M_{2}`$ is (with the factor 2 from $`G_{6}`$)
 
 <a id="eq-547"></a>
 
@@ -869,7 +869,7 @@ Here we have used the identity
 
 which is valid for any two operators $`A`$ and $`B`$, commuting or not, if the series on the RHS converges in some sense. This can be seen at once by multiplying through by $`A + B`$; then the condition becomes $`( B/A )^{n} \to 0`$ in some sense.
 
-In (564) we may use the conditions (521), and these give for Σ$`( p )`$ the constant value (523). The integral $`I_{\alpha} ( p )`$ is like Σ($`p )`$ logarithmically divergent for large $`k`$, and it is also logarithmically divergent for small $`k`$, which Σ$`( p )`$ is not. We shall not attempt to evaluate $`I_{\alpha} ( p )`$ mathematically. From general principles of covariance we can say what is its form as a function of $`p`$. For general $`p`$ not satisfying (521), $`I_{\alpha} ( p )`$ is a Dirac matrix transforming like a vector under Lorentz transformations, and therefore must be of the form
+In (564) we may use the conditions (521), and these give for Σ$`( p )`$ the constant value (523). The integral $`I_{\alpha} ( p )`$ is like Σ$`( p )`$ logarithmically divergent for large $`k`$, and it is also logarithmically divergent for small $`k`$, which Σ$`( p )`$ is not. We shall not attempt to evaluate $`I_{\alpha} ( p )`$ mathematically. From general principles of covariance we can say what is its form as a function of $`p`$. For general $`p`$ not satisfying (521), $`I_{\alpha} ( p )`$ is a Dirac matrix transforming like a vector under Lorentz transformations, and therefore must be of the form
 
 <a id="eq-569"></a>
 
@@ -979,7 +979,7 @@ M_{2 2} + M_{2 3} + M_{2 2}^{\prime} + M_{2 3}^{\prime} = \frac{i\alpha}{4 \pi^{
 
 It turns out that $`I_{1}`$ is pure imaginary, and the factor multiplying $`M_{o}`$ in (578) is real and negative.
 
-What is the physical interpretation of the divergent term (578)? It is just a divergent constant multiple of $`M_{o}`$, like the charge-renormalization term in (552). So one is tempted at first to call it an additional charge-renormalization effect. But this cannot be right, because the whole charge-renormalization was calculated in (392) and the result agreed with (552). In fact (578) has a much more elementary interpretation. When the electron arrives at the point $`x`$ of the external potential where it undergoes scattering, there will be a certain probability $`P`$ that it will have previously emitted and not yet reabsorbed a photon, as pictured in the <a id="ix-125">Feynman</a> graph $`G_{4}`$. There will be a probability (1 $`- P )`$ that it will arrive at $`x`$ not accompanied by a photon, as pictured in $`G_{2}`$ or $`G_{3}`$.
+What is the physical interpretation of the divergent term (578)? It is just a divergent constant multiple of $`M_{o}`$, like the charge-renormalization term in (552). So one is tempted at first to call it an additional charge-renormalization effect. But this cannot be right, because the whole charge-renormalization was calculated in (392) and the result agreed with (552). In fact (578) has a much more elementary interpretation. When the electron arrives at the point $`x`$ of the external potential where it undergoes scattering, there will be a certain probability $`P`$ that it will have previously emitted and not yet reabsorbed a photon, as pictured in the <a id="ix-125">Feynman</a> graph $`G_{4}`$. There will be a probability $`( 1 - P )`$ that it will arrive at $`x`$ not accompanied by a photon, as pictured in $`G_{2}`$ or $`G_{3}`$.
 
 Consider then the contribution $`M_{NP}`$ to the matrix element $`M`$, produced by scattering processes in which the electron arrives at $`x`$ with no photon present. In the zero-order approximation $`M_{NP} = M_{o}`$ simply. But in the second-order approximation we must take account of the reduced probability that the electron comes to $`x`$ without a photon present; this is done by multiplying the wave-function of the electron in both initial and final states by the factor
 
@@ -1013,7 +1013,7 @@ the result (578) agrees with (580) provided that we identify $`P`$ with
 P = - \frac{i\alpha}{4 \pi^{3}} I_{1} \qquad \text{(582)}
 ```
 
-The factor (579) represents a renormalization of the amplitude of the wave-function, and for this reason (578) is usually called a “wave-function renormalization” effect. But this does not mean that the term (578) is to be removed by a process analogous to mass or charge renormalization. No difficulties arise if we simply retain (578) as it stands. Finally it will cancel out against a term (+$`PM_{o} )`$ which comes from $`G_{4}`$.
+The factor (579) represents a renormalization of the amplitude of the wave-function, and for this reason (578) is usually called a “wave-function renormalization” effect. But this does not mean that the term (578) is to be removed by a process analogous to mass or charge renormalization. No difficulties arise if we simply retain (578) as it stands. Finally it will cancel out against a term (+$`PM_{o}`$) which comes from $`G_{4}`$.
 
 The contribution from $`G_{4}`$ to $`M`$ is, with a factor 2 to allow for $`G_{9}`$, using the Feynman rules,
 
@@ -1189,7 +1189,7 @@ Integrating the logarithmic term by parts with respect to $`y`$,
 
 When $`q^{2} < - 4 \mu^{2}`$, the external potential is able to create real pairs, and the denominator in (600) has poles in the range of the $`y`$-integration. In this case the Feynman rule of adding a term $`( - i\epsilon )`$ to $`\mu^{2}`$, where $`\epsilon`$ is an infinitesimal positive real number, will give an unambiguous determination of the integral. Just as in the case of the vacuum polarization formula (389), the integral will split into a real part and an imaginary part describing the effects of the real pairs created. We shall not discuss these effects of real pairs since they are not practically important. So we assume $`q^{2} > - 4 \mu^{2}`$.
 
-In (600) there are no longer any divergences arising from large $`k`$. But (584) has a logarithmic divergence at small $`k`$ which appears in (600) as a divergence in the $`x`$-integration arising from the factor (1$`/x )`$. This last remaining divergence must now be examined in detail. It is the famous “Infra-Red Catastrophe”.
+In (600) there are no longer any divergences arising from large $`k`$. But (584) has a logarithmic divergence at small $`k`$ which appears in (600) as a divergence in the $`x`$-integration arising from the factor $`( 1 /x )`$. This last remaining divergence must now be examined in detail. It is the famous “Infra-Red Catastrophe”.
 
 To discover the physical meaning of the $`x`$-divergence, we consider what would be the effect on our calculations if the Maxwell field were somehow modified so that all field oscillations with wave-numbers satisfying
 
@@ -1207,7 +1207,7 @@ were present as usual, while all oscillations not satisfying (601) were simply a
 \Delta E = \hbar cr \qquad \text{(602)}
 ```
 
-In the modified Maxwell theory the $`D_{F}`$ function will still be given by the integral (431), the $`k_{1} ,k_{2} ,k_{3}`$ integrations being limited by (601), and the $`k_{0}`$ integration being taken as usual along the whole real axis from $`-\infty`$ to +$`\infty`$. Let $`\Lambda^{r} ( p,p^{\prime} )`$ and $`\Lambda_{c}^{r} ( p,p^{\prime} )`$ be the integrals which replace Λ($`p,p^{\prime} )`$ and $`\Lambda_{c} ( p,p^{\prime} )`$ when the Maxwell field is modified. We calculate the differences (Λ $`- \Lambda^{r} )`$ and $`( \Lambda_{c} - \Lambda_{c}^{r} )`$, considering these integrals only in the limit of small $`r`$, neglecting all terms which tend to zero with $`r`$. This means that we may neglect terms containing either $`k`$ or $`x`$ as a factor in the numerator of integrals such as (591) or (594).
+In the modified Maxwell theory the $`D_{F}`$ function will still be given by the integral (431), the $`k_{1} ,k_{2} ,k_{3}`$ integrations being limited by (601), and the $`k_{0}`$ integration being taken as usual along the whole real axis from $`-\infty`$ to +$`\infty`$. Let $`\Lambda^{r} ( p,p^{\prime} )`$ and $`\Lambda_{c}^{r} ( p,p^{\prime} )`$ be the integrals which replace Λ$`( p,p^{\prime} )`$ and $`\Lambda_{c} ( p,p^{\prime} )`$ when the Maxwell field is modified. We calculate the differences (Λ $`- \Lambda^{r}`$) and $`( \Lambda_{c} - \Lambda_{c}^{r} )`$, considering these integrals only in the limit of small $`r`$, neglecting all terms which tend to zero with $`r`$. This means that we may neglect terms containing either $`k`$ or $`x`$ as a factor in the numerator of integrals such as (591) or (594).
 
 In (583) there is just one factor $`D_{F}`$. Thus $`\Lambda^{r} ( p,p^{\prime} )`$ is obtained from (584) simply by restricting the $`k_{1} ,k_{2} ,k_{3}`$ integration by (601). We can now follow the reduction of (584) to the form (594), except that we do not shift the origin of the $`k`$-integration through $`( xp_{y} )`$ since this would disturb the <a id="ix-145">condition</a> (601). Dropping terms in the numerator having $`k`$ or $`x`$ as a factor, this gives the result
 
@@ -1443,7 +1443,7 @@ the contractions being equal to the propagators $`S_{F} , D_{F}`$, and so on.
 
 <a id="fn-78"></a>**78.** The times symbol $`\times`$ was inserted. [↩](#fnref-78)
 
-<a id="fn-79"></a>**79.** This sentence read formerly “. . . the factor $`\epsilon ( q - \epsilon - \epsilon^{\prime} )`$ is a continuous function of ($`\epsilon + \epsilon^{\prime} )`$ and tends to $`/\epsilon ( ( q ) )`$ . . . ” [↩](#fnref-79)
+<a id="fn-79"></a>**79.** This sentence read formerly “. . . the factor $`\epsilon ( q - \epsilon - \epsilon^{\prime} )`$ is a continuous function of $`( \epsilon + \epsilon^{\prime} )`$ and tends to $`/\epsilon ( ( q ) )`$ . . . ” [↩](#fnref-79)
 
 <a id="fn-80"></a>**80.** A sentence, “Here, $`( k \cdot p_{y} )_{3}`$ denotes the scalar product of the space-like parts of the vectors $`k`$ and $`p_{y}`$.”, was deleted, because the expression $`\boldsymbol{k} \cdot \boldsymbol{p}_{y}`$ is self-explanatory. In both the first and second editions, scant attention was paid to three-vectors; sometimes an overhead arrow was used, but these were very few. In this typed version care has been taken to represent three-vectors with bold type, thus: $`( A_{x} ,A_{y} ,A_{z} ) = \boldsymbol{A}`$. [↩](#fnref-80)
 

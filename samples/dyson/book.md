@@ -2057,7 +2057,7 @@ _Problem 3:_ Given a steady potential $`V`$ a function of position, and a beam o
 a) By stationary perturbation theory<br>
 b) By time-dependent perturbation theory.
 
-Show that the results agree, with a <a id="ix-246">transition</a> probability per unit time given by $`w`$ = (2$`\pi / \hbar ) \rho_{E} | V_{BA} |^{2}`$. Evaluate the cross section in the case $`V = - Ze^{2} /r`$, averaging spin over initial state and summing over final state.
+Show that the results agree, with a <a id="ix-246">transition</a> probability per unit time given by $`w`$ = $`( 2 \pi / \hbar ) \rho_{E} | V_{BA} |^{2}`$. Evaluate the cross section in the case $`V = - Ze^{2} /r`$, averaging spin over initial state and summing over final state.
 
 c) Repeat the calculation with particles obeying the <a id="ix-164">Klein-Gordon equation</a>, leaving out the $`V^{2}`$ term, by either method. Compare the <a id="ix-99">angular</a> <a id="ix-98">distribution</a> in the two cases.
 
@@ -2293,7 +2293,7 @@ Hence the lifetime will be
 
 We calculate now the transition scattering matrix element $`M`$ between an initial state $`A`$ consisting of 2 electrons with momenta $`p_{1} ,p_{2}`$ and spin states $`u_{1} ,u_{2}`$ and a final state $`B`$ consisting of two electrons with momenta $`p_{1}^{\prime} ,p_{2}^{\prime}`$ and spin states $`u_{1}^{\prime} ,u_{2}^{\prime}`$. Thus $`M`$ gives the probability amplitude for arriving in state $`B`$ after a long time when the system is known to be in state $`A`$ to begin with. Hence $`M`$ itself should be an _invariant_ relativistically.
 
-We treat the interaction in Born approximation i.e. consider the particles to go directly from the free-particle state $`A`$ to the free-particle state $`B`$ by applying the interaction operator once to state $`A`$. For electrons at reasonably high or relativistic velocities this will be a very good approximation $`( e^{2} / \hbar v \ll 1`$). Also we treat the electromagnetic interaction classically, just as in the O<sup>16</sup> problem, taking the field produced by particle 1 according to classical Maxwell <a id="ix-187">equations</a> to act directly on particle 2. This ignores the fact that the field consists of quanta. We shall see later, after we have developed the quantum field theories, that this introduces _no error_ so long as we are in the Born approximation.
+We treat the interaction in Born approximation i.e. consider the particles to go directly from the free-particle state $`A`$ to the free-particle state $`B`$ by applying the interaction operator once to state $`A`$. For electrons at reasonably high or relativistic velocities this will be a very good approximation $`( e^{2} / \hbar v \ll 1 )`$. Also we treat the electromagnetic interaction classically, just as in the O<sup>16</sup> problem, taking the field produced by particle 1 according to classical Maxwell <a id="ix-187">equations</a> to act directly on particle 2. This ignores the fact that the field consists of quanta. We shall see later, after we have developed the quantum field theories, that this introduces _no error_ so long as we are in the Born approximation.
 
 For the field produced by particle 1 in a transition from the state $`p_{1} ,u_{1}`$ to $`p_{1}^{\prime} ,u_{1}^{\prime}`$ we have the matrix elements $`\phi_{( 1 )} , \boldsymbol{A}_{( 1 )}`$ say. We use now not the <a id="ix-144">gauge</a> in which $`\nabla \boldsymbol{\cdot} \boldsymbol{A}`$ = 0, but the covariant gauge in which<sup><a id="fnref-14" href="#fn-14">14</a></sup>
 
@@ -2405,7 +2405,7 @@ Let $`w`$ be the transition probability per unit volume and per unit time. This 
 w_{s} = c | K |^{2} ( 2 \pi \hbar )^{4} \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) \qquad \text{(146)}
 ```
 
-since in $`| M |^{2}`$ one of the two (2$`\pi \hbar )^{4} \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) /c`$ factors represents merely the volume of space-time in which the interaction can occur. The number of final states is by (107)
+since in $`| M |^{2}`$ one of the two $`( 2 \pi \hbar )^{4} \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) /c`$ factors represents merely the volume of space-time in which the interaction can occur. The number of final states is by (107)
 
 <a id="eq-147"></a>
 
@@ -2734,7 +2734,7 @@ with all the new quantities on the RHS.
 
 In the case which is physically of importance, the actual motion is fixed uniquely by specifying the values of the $`\varphi^{\alpha}`$ everywhere on two space-time surfaces $`\sigma_{2}`$ and $`\sigma_{1}`$ which are the past and future boundaries of the volume Ω. A space-like surface is one on which every two points are outside each other’s light-cones, so that the fields can be fixed independently at every point.
 
-Special case of non-relativistic theory, both $`\sigma_{1}`$ and $`\sigma_{2}`$ are just space at the time $`t_{1}`$ and $`t_{2}`$, and $`\delta x_{\mu}`$ is $`ic`$ times a displacement of the time by $`\delta t_{1}`$ and $`\delta t_{2}`$. Then we may write $`n_{\mu}`$ = (0$`, 0 , 0 ,i ) , \pi_{\alpha} = \partial L /\partial \dot{\varphi}^{\alpha}`$, and then for the <a id="ix-147">Hamiltonian</a>
+Special case of non-relativistic theory, both $`\sigma_{1}`$ and $`\sigma_{2}`$ are just space at the time $`t_{1}`$ and $`t_{2}`$, and $`\delta x_{\mu}`$ is $`ic`$ times a displacement of the time by $`\delta t_{1}`$ and $`\delta t_{2}`$. Then we may write $`n_{\mu}`$ = $`( 0 , 0 , 0 ,i ) , \pi_{\alpha} = \partial L /\partial \dot{\varphi}^{\alpha}`$, and then for the <a id="ix-147">Hamiltonian</a>
 
 <a id="eq-164"></a>
 
@@ -3040,7 +3040,7 @@ where the subscript $`\sigma - \sigma_{o}`$ refers to the surface integrals in (
 
 where $`\boldsymbol{[} P,R \boldsymbol{]} = PR - RP`$. This applies for the case when $`\mathcal{O}`$ is fixed and the states vary.
 
-Now we want to calculate the variation of $`\langle \varphi^{\prime \alpha} ,\sigma \mathcal{O} \varphi^{\prime \prime \alpha} ,\sigma \rangle`$ for the case when the states are fixed, and $`\mathcal{O} = \mathcal{O} ( \varphi^{\alpha} ( \sigma )`$) changes. This, however, will be the same as for the previous case, except with the opposite sign, because the variation of the matrix element<sup><a id="fnref-18" href="#fn-18">18</a></sup>
+Now we want to calculate the variation of $`\langle \varphi^{\prime \alpha} ,\sigma \mathcal{O} \varphi^{\prime \prime \alpha} ,\sigma \rangle`$ for the case when the states are fixed, and $`\mathcal{O} = \mathcal{O} ( \varphi^{\alpha} ( \sigma ) )`$ changes. This, however, will be the same as for the previous case, except with the opposite sign, because the variation of the matrix element<sup><a id="fnref-18" href="#fn-18">18</a></sup>
 
 <a id="eq-185"></a>
 
@@ -3992,7 +3992,7 @@ $`R`$ is very small we may approximate (237) by
 V ( K ) = \begin{cases} \tfrac{4}{3} \pi R^{3} = V & \text{ for } | \boldsymbol{K} | R< 1 \\ 0 & \text{ for } | \boldsymbol{K} | R> 1 \end{cases}
 ```
 
-Then, since $`( K_{2}^{2} + K_{3}^{2} ) = | \boldsymbol{K} |^{2} ( 1 -`$ cos<sup>2</sup> $`\theta )`$ and $`\int 0 \pi`$ sin<sup>2</sup> $`\theta \sin \theta d\theta = \tfrac{4}{3}`$, we have<sup><a id="fnref-34" href="#fn-34">34</a></sup>
+Then, since $`( K_{2}^{2} + K_{3}^{2} ) = | \boldsymbol{K} |^{2}`$ ($`1 -`$ cos<sup>2</sup> $`\theta )`$ and $`\int 0 \pi`$ sin<sup>2</sup> $`\theta \sin \theta d\theta = \tfrac{4}{3}`$, we have<sup><a id="fnref-34" href="#fn-34">34</a></sup>
 
 <a id="eq-238"></a>
 
@@ -4010,7 +4010,7 @@ This fluctuation in position produces a change in the effective potential acting
 = V ( r ) + \tfrac{1}{2} \left\langle r_{1}^{2} \right\rangle_{o} \nabla^{2} V
 ```
 
-because $`\langle \delta \boldsymbol{r} \cdot \nabla V ( r ) \rangle_{o}`$ = 0, being odd. Now in a hydrogen atom, $`\nabla^{2} V = e^{2} \delta^{3} ( \boldsymbol{r} )`$ (Heaviside units!) Hence the change in the energy of the electron due to the fluctuations is<sup><a id="fnref-35" href="#fn-35">35</a></sup> $`( a_{o}`$ = Bohr radius)
+because $`\langle \delta \boldsymbol{r} \cdot \nabla V ( r ) \rangle_{o}`$ = 0, being odd. Now in a hydrogen atom, $`\nabla^{2} V = e^{2} \delta^{3} ( \boldsymbol{r} )`$ (Heaviside units!) Hence the change in the energy of the electron due to the fluctuations is<sup><a id="fnref-35" href="#fn-35">35</a></sup> ($`a_{o}`$ = Bohr radius)
 
 <a id="eq-239"></a>
 
@@ -4174,7 +4174,7 @@ Consider the solution of Eq. (245) in which the atom is given initially in a sta
 
 The initial condition Φ$`( t ) = \Phi_{o}`$ at time $`t = t_{o}`$ is a physically unreal one. It would mean putting the atom into existence at time 0 without any radiation field being excited at this time. This we cannot do physically. In fact the initial condition for an atom in an excited state will depend on how it got into the excited state. This cannot be formulated in a simple way: one needs a complicated model in order to describe the initial excitation of the atom.
 
-We are interested in calculating the variation with time of $`( \Phi_{o}^{*} \Phi ( t )`$), the probability amplitude for finding the atom still in the unperturbed state $`\Phi_{o}`$ at time $`t`$. By (245) we have
+We are interested in calculating the variation with time of $`( \Phi_{o}^{*} \Phi ( t ) )`$, the probability amplitude for finding the atom still in the unperturbed state $`\Phi_{o}`$ at time $`t`$. By (245) we have
 
 <a id="eq-250"></a>
 
@@ -4196,7 +4196,7 @@ Then (250) will give
 \frac{d}{dt} ( \Phi_{o}^{*} \Phi ( t ) )_{t = t_{o}} = 0 \qquad \text{(251)}
 ```
 
-from the $`H_{I}`$ given by (247) has zero expectation value in the Maxwell field vacuum, since $`A_{\mu} ( r,t )`$ also has a zero expectation value in vacuum as one can see from (211) and (217). Thus $`( \Phi_{o}^{*} \Phi ( t )`$) is momentarily stationary at $`t = t_{o}`$. This is however not interesting since the conditions at $`t = t_{o}`$ are entirely unphysical.
+from the $`H_{I}`$ given by (247) has zero expectation value in the Maxwell field vacuum, since $`A_{\mu} ( r,t )`$ also has a zero expectation value in vacuum as one can see from (211) and (217). Thus $`( \Phi_{o}^{*} \Phi ( t ) )`$ is momentarily stationary at $`t = t_{o}`$. This is however not interesting since the conditions at $`t = t_{o}`$ are entirely unphysical.
 
 The physically meaningful quantity is the value of (250) at a time $`t`$ a long time after $`t_{o}`$. Then the atom will have “settled down” to a quasi-stationary state of radiative decay, and we may expect that the value we find for (250) is independent of the particular initial condition chosen and will be correct for an atom which has been excited by any reasonable method to the state $`\Phi_{o}`$.
 
@@ -4212,11 +4212,11 @@ Suppose that $`( t - t_{o} )`$ is long compared with all the atomic frequencies.
 
 + terms involving other atomic states $`\Phi_{n}`$ with two or more photons present.
 
-Here $`a ( t ) = ( \Phi_{o}^{*} \Phi ( t )`$) is a slowly varying amplitude, constant to first order in $`H_{I}`$, representing the slow decay of the atom. Note that our treatment is not only a perturbation theory correct to second order in $`H_{I}`$, but it also must account _exactly_ for the big effects produced by the radiative decay over long periods of time. Therefore we do not put $`a ( t )`$ = 1 in (252) although this would be correct to first order in $`H_{I}`$.
+Here $`a ( t ) = ( \Phi_{o}^{*} \Phi ( t ) )`$ is a slowly varying amplitude, constant to first order in $`H_{I}`$, representing the slow decay of the atom. Note that our treatment is not only a perturbation theory correct to second order in $`H_{I}`$, but it also must account _exactly_ for the big effects produced by the radiative decay over long periods of time. Therefore we do not put $`a ( t )`$ = 1 in (252) although this would be correct to first order in $`H_{I}`$.
 
 If we put $`a ( t )`$ = 1 in (252) we should have just the solution of the radiation emission problem, neglecting all effects of radiation reaction on the atom, which we obtained before from Eg. (230).
 
-The value of $`\frac{d}{dt} a ( t ) = \frac{d}{dt} ( \Phi_{o}^{*} \Phi ( t )`$) is obtained correct to second order in $`H_{I}`$, and including the radiative reaction effects, by substituting (252) into (250).
+The value of $`\frac{d}{dt} a ( t ) = \frac{d}{dt} ( \Phi_{o}^{*} \Phi ( t ) )`$ is obtained correct to second order in $`H_{I}`$, and including the radiative reaction effects, by substituting (252) into (250).
 
 Hence we have
 
@@ -4496,7 +4496,7 @@ remembering that the integration over $`| \boldsymbol{k} |`$ in (277) is to be t
 
 From this formula (278) the line-shift for hydrogen states can be calculated numerically, as was done by Bethe, Brown and Stehn (_Phys. Rev._ **77** (1950) 370.)
 
-Since the log in (278) will be quite large $`( \sim 7`$) for states $`n`$ which are in the non-relativistic range, it is convenient to write
+Since the log in (278) will be quite large $`( \sim 7 )`$ for states $`n`$ which are in the non-relativistic range, it is convenient to write
 
 <a id="eq-279"></a>
 
@@ -4552,7 +4552,7 @@ Hence<sup><a id="fnref-43" href="#fn-43">43</a></sup>
 \begin{aligned} \Delta E &= \frac{e^{4} \hbar}{1 2 \pi^{2} m^{2} c^{3}} | \psi_{o} ( 0 ) |^{2} \log \frac{K}{( E - E_{o} )_{\text{ av }}} \\ &= \frac{e^{4} \hbar}{1 2 \pi^{2} m^{2} c^{3}} \log \frac{K}{( E - E_{o} )_{\text{ av }}} \times \begin{cases} 1 / ( \pi n^{3} a_{o}^{3} ) & \text{ for } s \text{ states } \\ 0 & \text{ for others } \end{cases} \end{aligned} \qquad \text{(284)}
 ```
 
-Compare this with (239). It differs only in having the log$`( K/ ( E - E_{o} )_{\text{ av }} )`$ replacing log(1$`/RK_{H} )`$. The low frequency photons have now been treated properly instead of being estimated. Only the high-frequency end is still inaccurate because of the vagueness of the cut-off $`K`$. Taking $`K = mc^{2}`$, (284) gives for the Lamb shift 2$`s - 2 p`$ the value _1040 Megacycles_. Remarkably close to the experimental value of 1062.
+Compare this with (239). It differs only in having the log$`( K/ ( E - E_{o} )_{\text{ av }} )`$ replacing $`\log ( 1 /RK_{H} )`$. The low frequency photons have now been treated properly instead of being estimated. Only the high-frequency end is still inaccurate because of the vagueness of the cut-off $`K`$. Taking $`K = mc^{2}`$, (284) gives for the Lamb shift 2$`s - 2 p`$ the value _1040 Megacycles_. Remarkably close to the experimental value of 1062.
 
 The success of this calculation of the line shift shows that the correct treatment of the interaction between an <a id="ix-106">electron</a> and the Maxwell field, with the help of the idea of mass renormalization, will give sensible results in agreement with experiment. This calculation could be done non-relativistically because the line shift is mainly a low-frequency and non-relativistic effect.
 
@@ -5045,7 +5045,7 @@ where
 \Theta_{u} = \begin{cases} = 1 & \text{ for electron states } u , \\ = 0 & \text{ for positron states } . \end{cases}
 ```
 
-Hence by (306) and (309) the expectation value $`\left\langle \psi_{\alpha} ( z ) \overline{\psi}_{\beta} ( y ) \right\rangle_{o}`$ is just the part of the anti-commutator $`\{ \psi_{\alpha} ( z ) , \overline{\psi}_{\beta} ( y ) \}`$ which contains positive frequencies exp$`[ ik \cdot ( z - y )`$], with $`k_{o} > 0`$. Thus, similarly to (221)
+Hence by (306) and (309) the expectation value $`\left\langle \psi_{\alpha} ( z ) \overline{\psi}_{\beta} ( y ) \right\rangle_{o}`$ is just the part of the anti-commutator $`\{ \psi_{\alpha} ( z ) , \overline{\psi}_{\beta} ( y ) \}`$ which contains positive frequencies exp$`[ ik \cdot ( z - y ) ]`$, with $`k_{o} > 0`$. Thus, similarly to (221)
 
 <a id="eq-325"></a>
 
@@ -5522,7 +5522,7 @@ We use the momentum representation (303) for $`S_{R}`$. But instead of taking th
 e^{- \delta_{0}} S_{R} ( x ) = \frac{i}{( 2 \pi )^{4}} \int e^{ik \cdot x} \frac{/ k + i/\delta + i\mu}{( k + i\delta )^{2} + \mu^{2}} d^{4} k \qquad \text{(368)}
 ```
 
-where $`\delta_{0}`$ is any positive real number, $`\delta`$ is the vector with components (0$`, 0 , 0 ,\delta_{0} )`$ and the integral is along the real axis. The poles of (368) in the $`k_{0}`$ plane are displaced away from the real axis and so the integrand is free from singularities on the path of integration. Similarly
+where $`\delta_{0}`$ is any positive real number, $`\delta`$ is the vector with components $`( 0 , 0 , 0 ,\delta_{0} )`$ and the integral is along the real axis. The poles of (368) in the $`k_{0}`$ plane are displaced away from the real axis and so the integrand is free from singularities on the path of integration. Similarly
 
 <a id="eq-369"></a>
 
@@ -5538,7 +5538,7 @@ Thus the momentum representation of (367) will be
 \begin{aligned} \langle j_{\mu H} ( x ) \rangle_{o} &= - \frac{e^{2}}{\hbar} \frac{1}{( 2 \pi )^{7}} \int d^{4} x^{\prime} \int \int d^{4} k_{1} d^{4} k_{2} \exp \{ iq \cdot x^{\prime} + i ( k_{1} - k_{2} ) \cdot ( x^{\prime} - x ) + \delta_{0} x_{0} \}\times \\ & \quad \times \left\{ \operatorname{Spur} \{ /e ( k /_{1} + i\mu ) \gamma_{\mu} ( / k_{2} + i/\delta + i\mu ) \} \frac{\delta ( k_{1}^{2} + \mu^{2} ) \Theta ( - k_{1} )}{( k_{2} + i\delta )^{2} + \mu^{2}} \right. \\ & \quad \left. + \operatorname{Spur} \{ /e ( / k_{1} - i/\delta + i\mu ) \gamma_{\mu} ( / k_{2} + i\mu ) \} \frac{\delta ( k_{2}^{2} + \mu^{2} ) \Theta ( - k_{2} )}{( k_{1} - i\delta )^{2} + \mu^{2}} \right\} \end{aligned}
 ```
 
-The integration of $`x^{\prime}`$ is immediate and gives (2$`\pi )^{4} \delta^{4} ( k_{1} - k_{2} + q )`$. Hence
+The integration of $`x^{\prime}`$ is immediate and gives $`( 2 \pi )^{4} \delta^{4} ( k_{1} - k_{2} + q )`$. Hence
 
 <a id="eq-370"></a>
 
@@ -5988,7 +5988,7 @@ And the change in the energy of a state of the hydrogen atom with wave-function 
 \Delta E_{P} = - \frac{\alpha e^{2}}{1 5 \pi \mu^{2}} | \psi ( 0 ) |^{2} = - \tfrac{1}{5} \left\{ \frac{e^{4} \hbar}{1 2 \pi^{2} m^{2} c^{3}} | \psi ( 0 ) |^{2} \right\} \qquad \text{(409)}
 ```
 
-This is just the same as the formula for the Lamb shift, (284), with $`( - 1 / 5`$) instead of the logarithm. Thus it is a factor 40 smaller than the Lamb shift, and in the opposite direction, $`- 27`$ megacycles in the total of 1062. Still the experiments are good enough to show that the effect is there all right.
+This is just the same as the formula for the Lamb shift, (284), with $`( - 1 / 5 )`$ instead of the logarithm. Thus it is a factor 40 smaller than the Lamb shift, and in the opposite direction, $`- 27`$ megacycles in the total of 1062. Still the experiments are good enough to show that the effect is there all right.
 
 The result (409) was calculated many years ago by Uehling <a id="refback-17-1"></a>[[17]](#ref-17) using old-fashioned methods.
 
@@ -6221,7 +6221,7 @@ Before discussing the general analysis of the series expansion (421), we shall u
 
 ## <a id="s-a-m-ller-scattering-of-two-electrons"></a>A. Møller Scattering of Two Electrons
 
-We have in the initial state $`A`$ two electrons in states $`( p_{1} u_{1} ) ( p_{2} u_{2} )`$ and in the final state $`B`$ two electrons $`( p_{1}^{\prime} u_{1}^{\prime} ) ( p_{2}^{\prime} u_{2}^{\prime} )`$. The electron ($`p_{1} u_{1} )`$ is given by the one-particle <a id="ix-92">wave-function</a>
+We have in the initial state $`A`$ two electrons in states $`( p_{1} u_{1} ) ( p_{2} u_{2} )`$ and in the final state $`B`$ two electrons $`( p_{1}^{\prime} u_{1}^{\prime} ) ( p_{2}^{\prime} u_{2}^{\prime} )`$. The electron $`( p_{1} u_{1} )`$ is given by the one-particle <a id="ix-92">wave-function</a>
 
 <a id="eq-422"></a>
 
@@ -6581,7 +6581,7 @@ The number of final states for the electron is
 \frac{1}{( 2 \pi )^{3}} \left( \frac{mc^{2}}{E^{\prime}} \right) dp_{1}^{\prime} dp_{2}^{\prime} dp_{3}^{\prime} \qquad \text{(456)}
 ```
 
-The photon with potentials (440), when $`e_{\mu}^{\prime}`$ is a space-like vector having $`( e_{\mu}^{\prime} )^{2}`$ = 1 is normalized to one particle per volume $`\hbar c/ 2 k_{0}^{\prime}`$. This can be seen at once, comparing (440) with (211) and (214), and taking into account the difference of (2$`\pi )^{3}`$ between the continuous and discrete normalizations. Hence the number of final states for the photon is
+The photon with potentials (440), when $`e_{\mu}^{\prime}`$ is a space-like vector having $`( e_{\mu}^{\prime} )^{2}`$ = 1 is normalized to one particle per volume $`\hbar c/ 2 k_{0}^{\prime}`$. This can be seen at once, comparing (440) with (211) and (214), and taking into account the difference of $`( 2 \pi )^{3}`$ between the continuous and discrete normalizations. Hence the number of final states for the photon is
 
 <a id="eq-457"></a>
 
@@ -6725,7 +6725,7 @@ so adding the terms gives
 - \left( /e \frac{/ k}{k_{0}} /e^{\prime} + /e^{\prime} \frac{k /^{\prime}}{k_{0}^{\prime}} /e \right) p / + 2 \mu \{ /e,/e^{\prime} \} = - \left( /e \frac{/ k}{k_{0}} /e^{\prime} + /e^{\prime} \frac{k /^{\prime}}{k_{0}^{\prime}} /e \right) p / + 4 \mu ( e \cdot e^{\prime} )
 ```
 
-Now since $`k/ / k = / k^{\prime} k /^{\prime} = p/p / + \mu^{2}`$ = 0 (for the photons because they are on the lightcone, for the electron because $`p^{2} = - \mu^{2} )`$, we get for $`| K |^{2}`$
+Now since $`k/ / k = / k^{\prime} k /^{\prime} = p/p / + \mu^{2}`$ = 0 (for the photons because they are on the lightcone, for the electron because $`p^{2} = - \mu^{2}`$), we get for $`| K |^{2}`$
 
 <a id="eq-464"></a>
 
@@ -7049,11 +7049,11 @@ We consider these two important processes together. Given an external potential 
 
 _Bremsstrahlung_
 
-Electron $`( pu ) \to`$ Electron $`( p^{\prime} u^{\prime} )`$ + Photon ($`k^{\prime} e^{\prime} )`$
+Electron $`( pu ) \to`$ Electron $`( p^{\prime} u^{\prime} )`$ + Photon $`( k^{\prime} e^{\prime} )`$
 
 _Pair-creation_
 
-Photon $`( k^{\prime} e^{\prime} ) \to`$ Electron $`( pu )`$ + Positron ($`p_{+}^{\prime} u^{\prime} )`$
+Photon $`( k^{\prime} e^{\prime} ) \to`$ Electron $`( pu )`$ + Positron $`( p_{+}^{\prime} u^{\prime} )`$
 
 We treat not only the photon $`( ke )`$ but also the potential $`A^{e}`$ in _Born approximation._ This is valid so long as
 
@@ -7069,7 +7069,7 @@ Potential energy $`\times`$ time of transit $`\ll \hbar`$
 \text{ or } \text{ or } \quad \frac{Ze^{2}}{4 \pi \hbar v} \frac{Ze^{2}}{4 \pi r} \times \frac{r}{v} = \frac{Z}{1 3 7} \frac{c}{v} \ll \hbar \ll 1 \qquad \text{(481)}
 ```
 
-The treatment will only be good for _relativistic velocities_ $`v \sim c`$, and for _lighter atoms_ $`Z \ll 137`$. In fact for heavy atoms $`( Z`$ = 82 for lead) and $`v \sim c`$ the error from the Born approximation is about 10%.
+The treatment will only be good for _relativistic velocities_ $`v \sim c`$, and for _lighter atoms_ $`Z \ll 137`$. In fact for heavy atoms ($`Z`$ = 82 for lead) and $`v \sim c`$ the error from the Born approximation is about 10%.
 
 The processes arise in the Born approximation just from the term linear in $`A_{\mu}`$ and linear in $`A_{\mu}^{e}`$ in (421). This term is
 
@@ -7087,7 +7087,7 @@ The factor $`\frac{1}{2}`$ in (423) is now missing, otherwise everything is the 
 A_{\mu}^{e} ( x_{2} ) = \frac{1}{( 2 \pi )^{4}} \int dkf ( k ) e_{\mu} e^{ik \cdot x_{2}} \qquad \text{(483)}
 ```
 
-where $`f ( k )`$ is a known function of $`k`$. For a static Coulomb field all the vectors $`k`$ appearing in (483) have zero 4<sup>th</sup> component, and $`e_{\mu}`$ is the constant vector (0$`, 0 , 0 ,i )`$. We calculate the matrix element $`M_{1}`$ for bremsstrahlung or pair creation with $`A_{\mu}^{e}`$ given by the pure Fourier component (438) ; the results are then to be afterwards superposed to give the actual potential according to (483).
+where $`f ( k )`$ is a known function of $`k`$. For a static Coulomb field all the vectors $`k`$ appearing in (483) have zero 4<sup>th</sup> component, and $`e_{\mu}`$ is the constant vector $`( 0 , 0 , 0 ,i )`$. We calculate the matrix element $`M_{1}`$ for bremsstrahlung or pair creation with $`A_{\mu}^{e}`$ given by the pure Fourier component (438) ; the results are then to be afterwards superposed to give the actual potential according to (483).
 
 For bremsstrahlung the formula for $`M_{1}`$ is (449), identically the same as for the Compton effect, or integrating over the frequency $`k`$
 
@@ -7099,7 +7099,7 @@ M_{1} = - \frac{e^{2}}{\hbar^{2} c^{2}} f ( p^{\prime} + k^{\prime} - p ) \overl
 
 The factor 2 difference between (482) and (423) is just compensated by the fact that the photon $`k^{\prime} e^{\prime}`$ can be emitted by two operators $`A_{\mu}`$ in (423) and by only one in (482). The bremsstrahlung <a id="ix-54">cross section</a> is then calculated by squaring (484) and integrating over $`k^{\prime}`$ and $`p^{\prime}`$ with appropriate normalization factors. For the details see Heitler’s book $`§ 1 7 .`$<sup><a id="fnref-66" href="#fn-66">66</a></sup>
 
-For pair creation the same formula (449) gives the matrix element $`M_{1}`$, allowing for the fact that the roles of the particles are now changed around so that electron $`( pu )`$ instead of ($`p^{\prime} u^{\prime} )`$ is created etc. Thus
+For pair creation the same formula (449) gives the matrix element $`M_{1}`$, allowing for the fact that the roles of the particles are now changed around so that electron $`( pu )`$ instead of $`( p^{\prime} u^{\prime} )`$ is created etc. Thus
 
 <a id="eq-485"></a>
 
@@ -7194,7 +7194,7 @@ We wish to calculate the matrix element $`M`$ of $`S`$ for a particular scatteri
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p95" href="book.pdf#page=101" target="_blank" title="This page in the PDF"><sup>[p. 95]</sup></a>
 
-Suppose $`t_{B}`$ to be a time so long in the future after the scattering process is over, that from $`t_{B}`$ to +$`\infty`$ the state $`B`$ consists of separated outward-traveling particles. Then the relation between $`\Psi_{B} ( t )`$ and $`\Phi_{B}`$ is simple. We imagine a fictitious world in which the charge $`e`$ occurring in the radiation interaction decreases infinitely slowly (adiabatically) from its actual value at time $`t_{B}`$ to zero at time (+$`\infty )`$. In the fictitious world, the state $`\Psi_{B} ( t_{B} )`$ at time $`t_{B}`$ will grow into the bare-particle state $`\Phi_{B}`$ at time +$`\infty`$. Thus
+Suppose $`t_{B}`$ to be a time so long in the future after the scattering process is over, that from $`t_{B}`$ to +$`\infty`$ the state $`B`$ consists of separated outward-traveling particles. Then the relation between $`\Psi_{B} ( t )`$ and $`\Phi_{B}`$ is simple. We imagine a fictitious world in which the charge $`e`$ occurring in the radiation interaction decreases infinitely slowly (adiabatically) from its actual value at time $`t_{B}`$ to zero at time (+$`\infty`$). In the fictitious world, the state $`\Psi_{B} ( t_{B} )`$ at time $`t_{B}`$ will grow into the bare-particle state $`\Phi_{B}`$ at time +$`\infty`$. Thus
 
 <a id="eq-489"></a>
 
@@ -7288,7 +7288,7 @@ where $`A`$ is a numerical coefficient. The second term in (498) gives no contri
 
 It is clear that by using the commutation rules of the operators in this way, every $`\mathcal{O}`$ can be written as a sum of normal products, and that the analysis leads to a unique expansion of $`\mathcal{O}`$. But we do not need to go through the tedious algebra of using the commutation rules, instead we can write down the normal constituents $`\mathcal{O}_{n}`$ directly by following simple rules.
 
-First, we define the notation $`N ( \mathcal{Q} )`$, where $`\mathcal{Q}`$ is any product of emission and absorption operators, to be the product obtained by simply rearranging the factors of $`\mathcal{Q}`$ in a normal order, irrespective of the commutation rules, with a factor $`( - 1`$) if the rearrangement involves an odd permutation of the electron-positron operators. Similarly if $`\mathcal{Q}`$ is any sum of products, $`N ( \mathcal{Q} )`$ is defined by rearranging factors in each term of the sum in the same way. Thus we have for example (see (211))
+First, we define the notation $`N ( \mathcal{Q} )`$, where $`\mathcal{Q}`$ is any product of emission and absorption operators, to be the product obtained by simply rearranging the factors of $`\mathcal{Q}`$ in a normal order, irrespective of the commutation rules, with a factor $`( - 1 )`$ if the rearrangement involves an odd permutation of the electron-positron operators. Similarly if $`\mathcal{Q}`$ is any sum of products, $`N ( \mathcal{Q} )`$ is defined by rearranging factors in each term of the sum in the same way. Thus we have for example (see (211))
 
 <a id="eq-499"></a>
 
@@ -7348,7 +7348,7 @@ _Every operator product_ $`\mathcal{O}`$ _is identically equal to the sum of the
 
 This theorem gives the decomposition of $`\mathcal{O}`$ into its normal constituents. Equations (501) – (503) are just special cases of it. Clearly non-zero $`\mathcal{O}_{n}`$ are only obtained when each pair of factors is either a $`\overline{\psi}`$ and a $`\psi`$ operator or two $`A_{\mu}`$ operators. We shall therefore suppose that the factor-pairings are always restricted in this way.
 
-The proof of the theorem is very simple, by induction on $`m`$, the number of factors in $`\mathcal{O}`$. The theorem is true when $`m`$ = 1 or 2, so we need only prove it true for $`m`$ assuming it true for $`m -`$ 2. Let then $`\mathcal{O}^{\prime}`$ be a product of $`( m -`$ 2) factors. First we show that the theorem is true for
+The proof of the theorem is very simple, by induction on $`m`$, the number of factors in $`\mathcal{O}`$. The theorem is true when $`m`$ = 1 or 2, so we need only prove it true for $`m`$ assuming it true for $`m -`$ 2. Let then $`\mathcal{O}^{\prime}`$ be a product of $`( m - 2 )`$ factors. First we show that the theorem is true for
 
 <a id="eq-505"></a>
 
@@ -7516,11 +7516,11 @@ The rules for writing down the normal constituents of (488) are therefore extrem
 
 2) To each <a id="ix-128">graph</a> $`G`$ with $`n`$ vertices corresponds one normal constituent $`S_{G}`$ of $`S`$.
 
-3) Choosing a particular $`G`$, write down the $`n`$<sup>th</sup> term $`S_{n}`$ of the series (488) and <a id="ix-23">pair</a> off the factors of $`S_{n}`$ as indicated by $`G`$. Replace each factor-pair $`A_{\lambda} ( x ) A_{\mu} ( y )`$ by (510), and replace each factor-pair $`\psi_{\alpha} ( x ) \overline{\psi}_{\beta} ( y )`$ by (511). Apply an $`N`$-ordering to the remaining unpaired factors of $`S_{n}`$, and multiply the whole expression by $`( \pm 1`$) following the rule given for equation (504). The result of applying these operations to $`S_{n}`$ is the normal constituent $`S_{G}`$.
+3) Choosing a particular $`G`$, write down the $`n`$<sup>th</sup> term $`S_{n}`$ of the series (488) and <a id="ix-23">pair</a> off the factors of $`S_{n}`$ as indicated by $`G`$. Replace each factor-pair $`A_{\lambda} ( x ) A_{\mu} ( y )`$ by (510), and replace each factor-pair $`\psi_{\alpha} ( x ) \overline{\psi}_{\beta} ( y )`$ by (511). Apply an $`N`$-ordering to the remaining unpaired factors of $`S_{n}`$, and multiply the whole expression by $`( \pm 1 )`$ following the rule given for equation (504). The result of applying these operations to $`S_{n}`$ is the normal constituent $`S_{G}`$.
 
 If we wish to calculate the matrix element for the <a id="ix-37">scattering</a> process, then we have only to add one more rule to the three already given.
 
-4) In each $`S_{G}`$, substitute for the unpaired operators the wave-functions of the absorbed and emitted particles, for example writing (437) for $`\psi ( x )`$ when an electron ($`p,u )`$ is absorbed, and writing (438) for $`A_{\mu} ( x )`$ when a photon ($`k,e )`$ is absorbed. These substitutions may sometimes be made in more than one way (for example in the Compton <a id="ix-35">effect</a> when the absorbed and emitted photon may be assigned in two ways to the two unpaired photon operators.) In such cases the substitutions are to be made in all possible ways, and the results added together, taking account of Fermi statistics by putting in a minus sign when two electron or positron wave-functions are interchanged.
+4) In each $`S_{G}`$, substitute for the unpaired operators the wave-functions of the absorbed and emitted particles, for example writing (437) for $`\psi ( x )`$ when an electron $`( p,u )`$ is absorbed, and writing (438) for $`A_{\mu} ( x )`$ when a photon $`( k,e )`$ is absorbed. These substitutions may sometimes be made in more than one way (for example in the Compton <a id="ix-35">effect</a> when the absorbed and emitted photon may be assigned in two ways to the two unpaired photon operators.) In such cases the substitutions are to be made in all possible ways, and the results added together, taking account of Fermi statistics by putting in a minus sign when two electron or positron wave-functions are interchanged.
 
 The rules (1)–(4) constitute the Feynman rules for calculating the matrix elements of all processes in electrodynamics. According to Feynman they have an intermediate concrete interpretation. Thus (510) is the probability amplitude for a photon emitted at $`x`$ with polarization $`\lambda`$ to propagate itself and arrive at $`y`$ with polarization $`\mu`$, plus the amplitude for a photon having been emitted at $`y`$ to arrive at $`x`$. And (511) is the amplitude for an electron emitted at $`y`$ to arrive at $`x`$, plus the amplitude for a positron emitted at $`x`$ to arrive at $`y`$, with the assigned spins $`\alpha`$ and $`\beta`$. In this way the matrix element is just the probability amplitude for the succession of events, interactions and propagations, that are depicted in the vertices and lines of $`G`$. The total probability amplitude for a process is just the sum of the amplitudes derived by from the various graphs $`G`$ which contribute to the process.
 
@@ -7662,7 +7662,7 @@ U_{S} = - i \frac{\delta mc}{\hbar} \int \overline{\psi} \psi ( x ) dx \qquad \t
 
 in the scattering matrix (421) or (488).
 
-The matrix element of (528) between the states $`( pu )`$ and ($`p^{\prime} u^{\prime} )`$ is
+The matrix element of (528) between the states $`( pu )`$ and $`( p^{\prime} u^{\prime} )`$ is
 
 <a id="eq-529"></a>
 
@@ -7718,7 +7718,7 @@ instead of (517), keeping only terms of order $`e^{2}`$. The matrix elements of 
 
 ## <a id="s-second-order-radiative-corrections-to-scattering"></a>Second-Order Radiative Corrections to Scattering
 
-Let an electron be scattered from the initial state $`( pu )`$ to the final state ($`p^{\prime} u^{\prime} )`$ by the external potential
+Let an electron be scattered from the initial state $`( pu )`$ to the final state $`( p^{\prime} u^{\prime} )`$ by the external potential
 
 <a id="eq-534"></a>
 
@@ -7834,7 +7834,7 @@ and $`\{ G_{6} ,G_{7} ,G_{8} ,G_{9} \}`$ obtained by interchanging the labels $`
 
 The effect of $`\{ G_{6} ,G_{7} ,G_{8} ,G_{9} \}`$ is only to double the contribution from $`\{ G_{1} ,G_{2} ,G_{3} ,G_{4} \}`$, since (539) is symmetrical in the variables $`x_{1}`$ and $`x_{2}`$. Also $`G_{5}`$ will give only a numerical phase factor multiplying $`M_{0}`$, the phase factor being the same for all final states; it is in fact precisely the phase-shift between the initial and final states due to the self-energy of the vacuum. Similar phase shift factors would also multiply the contributions of $`G_{1} , G_{2}`$, etc., coming from disconnected graphs in higher order contributions. In this sense therefore, we can consider $`G_{5}`$ to be really the contribution of $`U_{0}`$ with one of the many possible disconnected additions. A numerical phase factor of this kind, the same for all final states, is entirely unobservable and without physical meaning, since it can be cancelled by changing the phase of all wave-functions by the same amount. Hence we can always ignore graphs such as $`G_{5}`$ having a disconnected part without external lines. There remain to be considered only $`\{ G_{1} ,G_{2} ,G_{3} ,G_{4} \}`$.
 
-Using the Feynman rules, the contribution of $`G_{1}`$ to $`M_{2}`$ is (with the factor 2 from $`G_{6} )`$
+Using the Feynman rules, the contribution of $`G_{1}`$ to $`M_{2}`$ is (with the factor 2 from $`G_{6}`$)
 
 <a id="eq-547"></a>
 
@@ -8030,7 +8030,7 @@ Here we have used the identity
 
 which is valid for any two operators $`A`$ and $`B`$, commuting or not, if the series on the RHS converges in some sense. This can be seen at once by multiplying through by $`A + B`$; then the condition becomes $`( B/A )^{n} \to 0`$ in some sense.
 
-In (564) we may use the conditions (521), and these give for Σ$`( p )`$ the constant value (523). The integral $`I_{\alpha} ( p )`$ is like Σ($`p )`$ logarithmically divergent for large $`k`$, and it is also logarithmically divergent for small $`k`$, which Σ$`( p )`$ is not. We shall not attempt to evaluate $`I_{\alpha} ( p )`$ mathematically. From general principles of covariance we can say what is its form as a function of $`p`$. For general $`p`$ not satisfying (521), $`I_{\alpha} ( p )`$ is a Dirac matrix transforming like a vector under Lorentz transformations, and therefore must be of the form
+In (564) we may use the conditions (521), and these give for Σ$`( p )`$ the constant value (523). The integral $`I_{\alpha} ( p )`$ is like Σ$`( p )`$ logarithmically divergent for large $`k`$, and it is also logarithmically divergent for small $`k`$, which Σ$`( p )`$ is not. We shall not attempt to evaluate $`I_{\alpha} ( p )`$ mathematically. From general principles of covariance we can say what is its form as a function of $`p`$. For general $`p`$ not satisfying (521), $`I_{\alpha} ( p )`$ is a Dirac matrix transforming like a vector under Lorentz transformations, and therefore must be of the form
 
 <a id="eq-569"></a>
 
@@ -8140,7 +8140,7 @@ M_{2 2} + M_{2 3} + M_{2 2}^{\prime} + M_{2 3}^{\prime} = \frac{i\alpha}{4 \pi^{
 
 It turns out that $`I_{1}`$ is pure imaginary, and the factor multiplying $`M_{o}`$ in (578) is real and negative.
 
-What is the physical interpretation of the divergent term (578)? It is just a divergent constant multiple of $`M_{o}`$, like the charge-renormalization term in (552). So one is tempted at first to call it an additional charge-renormalization effect. But this cannot be right, because the whole charge-renormalization was calculated in (392) and the result agreed with (552). In fact (578) has a much more elementary interpretation. When the electron arrives at the point $`x`$ of the external potential where it undergoes scattering, there will be a certain probability $`P`$ that it will have previously emitted and not yet reabsorbed a photon, as pictured in the <a id="ix-125">Feynman</a> graph $`G_{4}`$. There will be a probability (1 $`- P )`$ that it will arrive at $`x`$ not accompanied by a photon, as pictured in $`G_{2}`$ or $`G_{3}`$.
+What is the physical interpretation of the divergent term (578)? It is just a divergent constant multiple of $`M_{o}`$, like the charge-renormalization term in (552). So one is tempted at first to call it an additional charge-renormalization effect. But this cannot be right, because the whole charge-renormalization was calculated in (392) and the result agreed with (552). In fact (578) has a much more elementary interpretation. When the electron arrives at the point $`x`$ of the external potential where it undergoes scattering, there will be a certain probability $`P`$ that it will have previously emitted and not yet reabsorbed a photon, as pictured in the <a id="ix-125">Feynman</a> graph $`G_{4}`$. There will be a probability $`( 1 - P )`$ that it will arrive at $`x`$ not accompanied by a photon, as pictured in $`G_{2}`$ or $`G_{3}`$.
 
 Consider then the contribution $`M_{NP}`$ to the matrix element $`M`$, produced by scattering processes in which the electron arrives at $`x`$ with no photon present. In the zero-order approximation $`M_{NP} = M_{o}`$ simply. But in the second-order approximation we must take account of the reduced probability that the electron comes to $`x`$ without a photon present; this is done by multiplying the wave-function of the electron in both initial and final states by the factor
 
@@ -8174,7 +8174,7 @@ the result (578) agrees with (580) provided that we identify $`P`$ with
 P = - \frac{i\alpha}{4 \pi^{3}} I_{1} \qquad \text{(582)}
 ```
 
-The factor (579) represents a renormalization of the amplitude of the wave-function, and for this reason (578) is usually called a “wave-function renormalization” effect. But this does not mean that the term (578) is to be removed by a process analogous to mass or charge renormalization. No difficulties arise if we simply retain (578) as it stands. Finally it will cancel out against a term (+$`PM_{o} )`$ which comes from $`G_{4}`$.
+The factor (579) represents a renormalization of the amplitude of the wave-function, and for this reason (578) is usually called a “wave-function renormalization” effect. But this does not mean that the term (578) is to be removed by a process analogous to mass or charge renormalization. No difficulties arise if we simply retain (578) as it stands. Finally it will cancel out against a term (+$`PM_{o}`$) which comes from $`G_{4}`$.
 
 The contribution from $`G_{4}`$ to $`M`$ is, with a factor 2 to allow for $`G_{9}`$, using the Feynman rules,
 
@@ -8350,7 +8350,7 @@ Integrating the logarithmic term by parts with respect to $`y`$,
 
 When $`q^{2} < - 4 \mu^{2}`$, the external potential is able to create real pairs, and the denominator in (600) has poles in the range of the $`y`$-integration. In this case the Feynman rule of adding a term $`( - i\epsilon )`$ to $`\mu^{2}`$, where $`\epsilon`$ is an infinitesimal positive real number, will give an unambiguous determination of the integral. Just as in the case of the vacuum polarization formula (389), the integral will split into a real part and an imaginary part describing the effects of the real pairs created. We shall not discuss these effects of real pairs since they are not practically important. So we assume $`q^{2} > - 4 \mu^{2}`$.
 
-In (600) there are no longer any divergences arising from large $`k`$. But (584) has a logarithmic divergence at small $`k`$ which appears in (600) as a divergence in the $`x`$-integration arising from the factor (1$`/x )`$. This last remaining divergence must now be examined in detail. It is the famous “Infra-Red Catastrophe”.
+In (600) there are no longer any divergences arising from large $`k`$. But (584) has a logarithmic divergence at small $`k`$ which appears in (600) as a divergence in the $`x`$-integration arising from the factor $`( 1 /x )`$. This last remaining divergence must now be examined in detail. It is the famous “Infra-Red Catastrophe”.
 
 To discover the physical meaning of the $`x`$-divergence, we consider what would be the effect on our calculations if the Maxwell field were somehow modified so that all field oscillations with wave-numbers satisfying
 
@@ -8368,7 +8368,7 @@ were present as usual, while all oscillations not satisfying (601) were simply a
 \Delta E = \hbar cr \qquad \text{(602)}
 ```
 
-In the modified Maxwell theory the $`D_{F}`$ function will still be given by the integral (431), the $`k_{1} ,k_{2} ,k_{3}`$ integrations being limited by (601), and the $`k_{0}`$ integration being taken as usual along the whole real axis from $`-\infty`$ to +$`\infty`$. Let $`\Lambda^{r} ( p,p^{\prime} )`$ and $`\Lambda_{c}^{r} ( p,p^{\prime} )`$ be the integrals which replace Λ($`p,p^{\prime} )`$ and $`\Lambda_{c} ( p,p^{\prime} )`$ when the Maxwell field is modified. We calculate the differences (Λ $`- \Lambda^{r} )`$ and $`( \Lambda_{c} - \Lambda_{c}^{r} )`$, considering these integrals only in the limit of small $`r`$, neglecting all terms which tend to zero with $`r`$. This means that we may neglect terms containing either $`k`$ or $`x`$ as a factor in the numerator of integrals such as (591) or (594).
+In the modified Maxwell theory the $`D_{F}`$ function will still be given by the integral (431), the $`k_{1} ,k_{2} ,k_{3}`$ integrations being limited by (601), and the $`k_{0}`$ integration being taken as usual along the whole real axis from $`-\infty`$ to +$`\infty`$. Let $`\Lambda^{r} ( p,p^{\prime} )`$ and $`\Lambda_{c}^{r} ( p,p^{\prime} )`$ be the integrals which replace Λ$`( p,p^{\prime} )`$ and $`\Lambda_{c} ( p,p^{\prime} )`$ when the Maxwell field is modified. We calculate the differences (Λ $`- \Lambda^{r}`$) and $`( \Lambda_{c} - \Lambda_{c}^{r} )`$, considering these integrals only in the limit of small $`r`$, neglecting all terms which tend to zero with $`r`$. This means that we may neglect terms containing either $`k`$ or $`x`$ as a factor in the numerator of integrals such as (591) or (594).
 
 In (583) there is just one factor $`D_{F}`$. Thus $`\Lambda^{r} ( p,p^{\prime} )`$ is obtained from (584) simply by restricting the $`k_{1} ,k_{2} ,k_{3}`$ integration by (601). We can now follow the reduction of (584) to the form (594), except that we do not shift the origin of the $`k`$-integration through $`( xp_{y} )`$ since this would disturb the <a id="ix-145">condition</a> (601). Dropping terms in the numerator having $`k`$ or $`x`$ as a factor, this gives the result
 
@@ -8604,7 +8604,7 @@ the contractions being equal to the propagators $`S_{F} , D_{F}`$, and so on.
 
 <a id="fn-78"></a>**78.** The times symbol $`\times`$ was inserted. [↩](#fnref-78)
 
-<a id="fn-79"></a>**79.** This sentence read formerly “. . . the factor $`\epsilon ( q - \epsilon - \epsilon^{\prime} )`$ is a continuous function of ($`\epsilon + \epsilon^{\prime} )`$ and tends to $`/\epsilon ( ( q ) )`$ . . . ” [↩](#fnref-79)
+<a id="fn-79"></a>**79.** This sentence read formerly “. . . the factor $`\epsilon ( q - \epsilon - \epsilon^{\prime} )`$ is a continuous function of $`( \epsilon + \epsilon^{\prime} )`$ and tends to $`/\epsilon ( ( q ) )`$ . . . ” [↩](#fnref-79)
 
 <a id="fn-80"></a>**80.** A sentence, “Here, $`( k \cdot p_{y} )_{3}`$ denotes the scalar product of the space-like parts of the vectors $`k`$ and $`p_{y}`$.”, was deleted, because the expression $`\boldsymbol{k} \cdot \boldsymbol{p}_{y}`$ is self-explanatory. In both the first and second editions, scant attention was paid to three-vectors; sometimes an overhead arrow was used, but these were very few. In this typed version care has been taken to represent three-vectors with bold type, thus: $`( A_{x} ,A_{y} ,A_{z} ) = \boldsymbol{A}`$. [↩](#fnref-80)
 
@@ -8877,9 +8877,9 @@ An experimental test in the relativistic range is just on the limits of the poss
 \alpha \left\{ \log \frac{\Delta E}{E} \right\} \left\{ \log \frac{E}{mc^{2}} \right\} \qquad \text{(649)}
 ```
 
-according to Schwinger, _Phys. Rev._ **76**, 813, Eq. (2.105) (with misprint $`K`$ for $`k`$, in my notation $`\mu`$.) In the conditions of the experiment of Lyman-Hanson-Scott (649) becomes of the order 5% and was clearly observed, the experimental errors being $`\sim 2`$%. However, (649) arises mainly from the low-energy virtual photons, with energies going down to ∆$`E`$. What is observed is just the decrease in the non-radiative cross-section due to the competition of radiative scattering with energy-loss in the range [∆$`E,E ]`$. Thus the measurement of (649) by LHS is actually only a very inaccurate measurement of the cross-section for bremsstrahlung, which could be observed much more accurately by observing the photons which are really emitted.
+according to Schwinger, _Phys. Rev._ **76**, 813, Eq. (2.105) (with misprint $`K`$ for $`k`$, in my notation $`\mu`$.) In the conditions of the experiment of Lyman-Hanson-Scott (649) becomes of the order 5% and was clearly observed, the experimental errors being $`\sim 2`$%. However, (649) arises mainly from the low-energy virtual photons, with energies going down to ∆$`E`$. What is observed is just the decrease in the non-radiative cross-section due to the competition of radiative scattering with energy-loss in the range [∆$`E,E`$]. Thus the measurement of (649) by LHS is actually only a very inaccurate measurement of the cross-section for bremsstrahlung, which could be observed much more accurately by observing the photons which are really emitted.
 
-The theoretically interesting part of the radiative corrections is the part which is not just the effect of real bremsstrahlung. This part is given by the terms in $`\overline{\sigma}_{N}`$ which are of order 1 compared with the log(∆$`E/E )`$ appearing in (649). For example, we would have to observe with sufficient accuracy to see the terms $`( \tfrac{5}{6} - \tfrac{1}{5} )`$ in (637) if we wished to verify the theoretical radiative corrections at low velocities. In the relativistic range the “genuine” radiative corrections are of order
+The theoretically interesting part of the radiative corrections is the part which is not just the effect of real bremsstrahlung. This part is given by the terms in $`\overline{\sigma}_{N}`$ which are of order 1 compared with the log(∆$`E/E`$) appearing in (649). For example, we would have to observe with sufficient accuracy to see the terms $`( \tfrac{5}{6} - \tfrac{1}{5} )`$ in (637) if we wished to verify the theoretical radiative corrections at low velocities. In the relativistic range the “genuine” radiative corrections are of order
 
 <a id="eq-650"></a>
 
@@ -9249,7 +9249,7 @@ This completes the evaluation of $`H_{T}`$.
 
 ### <a id="s-discussion-of-the-nature-of-the-representation"></a>Discussion and the Nature of the $`\Phi`$-Representation
 
-To understand the effect of the <a id="ix-149">transformation</a> (662), we observe that if Ψ$`( t )`$ is the state of one real electron in the absence of an external field, then Φ$`( t )`$ will be independent of $`t`$ and will represent one “bare” electron with the same momentum as the real electron. In an actual hydrogen atom, we may consider the state $`\Psi ( t )`$ to a very good approximation as a superposition of states of a single real free electron; then Φ($`t )`$ is a superposition of states of a single bare electron with the same distribution of momenta. Thus by the transformation from Ψ to Φ we have eliminated the radiation field surrounding the electron, all remaining effects of this radiation field being contained in the operator $`H_{T}`$.
+To understand the effect of the <a id="ix-149">transformation</a> (662), we observe that if Ψ$`( t )`$ is the state of one real electron in the absence of an external field, then Φ$`( t )`$ will be independent of $`t`$ and will represent one “bare” electron with the same momentum as the real electron. In an actual hydrogen atom, we may consider the state $`\Psi ( t )`$ to a very good approximation as a superposition of states of a single real free electron; then Φ$`( t )`$ is a superposition of states of a single bare electron with the same distribution of momenta. Thus by the transformation from Ψ to Φ we have eliminated the radiation field surrounding the electron, all remaining effects of this radiation field being contained in the operator $`H_{T}`$.
 
 It is essential at this point to make sure that in the Φ representation the field-operators are still free-particle operators, with the correct equations of motion for operators in the FIR. Thus the transformation<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=132" target="_blank" title="This page in the PDF"><sup>[p. 126]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p127" href="book.pdf#page=133" target="_blank" title="This page in the PDF"><sup>[p. 127]</sup></a></span> (662) is only a transformation from one set of variables to another within the FIR, and does not take us out of the FIR. This point was never explained properly by Schwinger in his papers, although he no doubt understood it himself.
 

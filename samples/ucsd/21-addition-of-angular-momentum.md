@@ -123,7 +123,7 @@ J^{2} = L^{2} + 2 \vec{L} \cdot \vec{S} + S_{2}^{2}
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p313" href="book.pdf#page=313" target="_blank" title="This page in the PDF"><sup>[p. 313]</sup></a>
 
-Since our eigenstates of $`J^{2}`$ and $`J_{z}`$ are also eigenstates of $`L^{2}`$ and $`S^{2}`$ (but not $`L_{z}`$ or $`S_{z} )`$, these are ideal for computing the spin orbit interaction. In fact, they are going to be the true energy eigenstates, as rotational symmetry tells us they must.
+Since our eigenstates of $`J^{2}`$ and $`J_{z}`$ are also eigenstates of $`L^{2}`$ and $`S^{2}`$ (but not $`L_{z}`$ or $`S_{z}`$), these are ideal for computing the spin orbit interaction. In fact, they are going to be the true energy eigenstates, as rotational symmetry tells us they must.
 
 <div align="center">
 
@@ -506,7 +506,7 @@ S^{2} \chi_{+}^{( 1 )} \chi_{+}^{( 2 )} = \frac{3}{2} \hbar^{2} \chi_{+}^{( 1 )}
 = \frac{3}{2} \hbar^{2} \chi_{+}^{( 1 )} \chi_{+}^{( 2 )} + \frac{\hbar^{2}}{2} \chi_{+}^{( 1 )} \chi_{+}^{( 2 )} = 2 \hbar^{2} \chi_{+}^{( 1 )} \chi_{+}^{( 2 )}
 ```
 
-Note that $`s ( s`$ + 1) = 2, so that the 2$`\hbar`$ is what we expected to get. This confirms that we have an s=1 state.
+Note that $`s ( s + 1 )`$ = 2, so that the 2$`\hbar`$ is what we expected to get. This confirms that we have an s=1 state.
 
 Now lets do the $`\chi_{0 0}`$ state.
 
@@ -734,7 +734,7 @@ This is what we expect.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p324" href="book.pdf#page=324" target="_blank" title="This page in the PDF"><sup>[p. 324]</sup></a>
 
-3. Consider a system of two spinless identical particles. Show that the orbital angular momentum of their relative motion can only be even. $`( l`$ = 0$`, 2 , 4 ,\dots )`$ Show by direct calculation that, for the triplet spin states of two spin $`\frac{1}{2}`$ particles, $`\vec{\sigma}_{1} \cdot \vec{\sigma}_{2} \chi_{1 m} = \chi_{1 m}`$ for all allowed $`m`$. Show that for the singlet state $`\vec{\sigma}_{1} \cdot \vec{\sigma}_{2} \chi_{0 0} = - 3 \chi_{0 0}`$.
+3. Consider a system of two spinless identical particles. Show that the orbital angular momentum of their relative motion can only be even. $`( l = 0 , 2 , 4 ,\dots )`$ Show by direct calculation that, for the triplet spin states of two spin $`\frac{1}{2}`$ particles, $`\vec{\sigma}_{1} \cdot \vec{\sigma}_{2} \chi_{1 m} = \chi_{1 m}`$ for all allowed $`m`$. Show that for the singlet state $`\vec{\sigma}_{1} \cdot \vec{\sigma}_{2} \chi_{0 0} = - 3 \chi_{0 0}`$.
 
 4. A deuteron has spin 1. What are the possible spin and total angular momentum states of two deuterons. Include orbital angular momentum and assume the two particles are identical.
 
@@ -746,11 +746,11 @@ This is what we expect.
 
 # <a id="s-21-10sample-test-problems"></a>21.10 Sample Test Problems
 
-1. Two identical spin $`\frac{3}{2}`$ particles are bound together into a state with total angular momentum $`l`$. a) What are the allowed states of total spin for $`l`$ = 0 and for $`l`$ = 1? b) List the allowed states using spectroscopic notation for $`l`$ = 0 and 1. (<sup>2</sup>$`{}^{s + 1} L_{j} )`$
+1. Two identical spin $`\frac{3}{2}`$ particles are bound together into a state with total angular momentum $`l`$. a) What are the allowed states of total spin for $`l`$ = 0 and for $`l`$ = 1? b) List the allowed states using spectroscopic notation for $`l`$ = 0 and 1. (<sup>2</sup>$`{}^{s + 1} L_{j}`$)
 
 2. A hydrogen atom is in the state $`\psi = R_{4 3} Y_{3 0} \chi_{+}`$. A combined measurement of of $`J^{2}`$ and of $`J_{z}`$ is made. What are the possible outcomes of this combined measurement and what are the probabilities of each? You may ignore nuclear spin in this problem.
 
-3. We want to find the eigenstates of total $`S^{2}`$ and $`S_{z}`$ for two spin 1 particles which have an $`S_{1} \cdot S_{2}`$ interaction. (**S** = **S**$`{}_{\boldsymbol{1}} +`$ **S**$`{}_{\boldsymbol{2}} )`$
+3. We want to find the eigenstates of total $`S^{2}`$ and $`S_{z}`$ for two spin 1 particles which have an $`S_{1} \cdot S_{2}`$ interaction. (**S** = **S**$`{}_{\boldsymbol{1}} +`$ **S**$`{}_{\boldsymbol{2}}`$)
 
 (a) What are the allowed values of $`s`$, the total spin quantum number.
 
@@ -770,7 +770,7 @@ This is what we expect.
 
 6. A hydrogen atom is in the state $`\psi = R_{3 2} Y_{2 1} \chi_{-}`$. If a measurement of $`J^{2}`$ and of $`J_{z}`$ is made, what are the possible outcomes of this measurement and what are the probabilities for each outcome? If a measurement of the energy of the state is made, what are the possible energies and the probabilities of each? You may ignore the nuclear spin in this problem.
 
-7. Two identical spin 1 particles are bound together into a state with orbital angular momentum $`l`$. What are the allowed states of total spin (s) for $`l`$ = 2, for $`l`$ = 1, and for $`l`$ = 0? List all the allowed states giving, for each state, the values of the quantum numbers for total angular momentum $`( j )`$, orbital angular momentum ($`l )`$ and spin angular momentum ($`s )`$ if $`l`$ is 2 or less. You need not list all the different $`m_{j}`$ values.
+7. Two identical spin 1 particles are bound together into a state with orbital angular momentum $`l`$. What are the allowed states of total spin (s) for $`l`$ = 2, for $`l`$ = 1, and for $`l`$ = 0? List all the allowed states giving, for each state, the values of the quantum numbers for total angular momentum $`( j )`$, orbital angular momentum $`( l )`$ and spin angular momentum $`( s )`$ if $`l`$ is 2 or less. You need not list all the different $`m_{j}`$ values.
 
 8. List all the allowed states of total spin and total z-component of spin for 2 identical spin 1 particles. What $`\ell`$ values are allowed for each of these states? Explicitly write down the (2$`s`$+ 1) states for the highest $`s`$ in terms of $`\chi_{+}^{( 1 )} ,\chi_{+}^{( 2 )} ,\chi_{0}^{( 1 )} ,\chi_{0}^{( 2 )} ,\chi_{-}^{( 1 )}`$ , and $`\chi_{-}^{( 2 )}`$ .
 

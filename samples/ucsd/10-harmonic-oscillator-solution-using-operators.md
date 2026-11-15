@@ -323,7 +323,7 @@ This will allow for any computation.
 \* See Example 10.6.2: The expectation value of $`p`$ for any energy eigenstate is zero.\*<br>
 \* See Example 10.6.3: The expectation value of $`x`$ in the state $`\frac{\sqrt{1}}{2} ( u_{0} + u_{1} ) . *`$<br>
 \* See Example 10.6.4: The expectation value of $`\frac{1}{2} m\omega^{2} x^{2}`$ for any energy eigenstate is $`\frac{1}{2} \left( n + \tfrac{1}{2} \right) \hbar \omega . *`$ \* See Example 10.6.5: The expectation value of $`2 p^{2} m`$ for any energy eigenstate is $`\frac{1}{2} \left( n + \tfrac{1}{2} \right) \hbar \omega . *`$<br>
-\* See Example 10.6.6: The expectation value of $`p`$ as a function of time for the state $`\psi ( t`$ = 0) =
+\* See Example 10.6.6: The expectation value of $`p`$ as a function of time for the state $`\psi ( t = 0 )`$ =
 
 ```math
 \frac{\sqrt{1}}{2} ( u_{1} + u_{2} ) \text{ is } - \sqrt{m \hbar \omega \sin ( \omega t ) . *}
@@ -598,7 +598,7 @@ p = \frac{1}{i} \sqrt{\frac{m \hbar \omega}{2} ( A - A^{\dagger} )}
 
 4. Use the commutator relation between $`A`$ and $`A^{\dagger}`$ to derive $`[ H,A ]`$. Now show that $`A`$ is the **lowering operator for the harmonic oscillator** energy.
 
-5. At $`t`$ = 0, a **one dimensional harmonic oscillator** is in the state $`\psi ( t`$ = 0) = $`\sqrt{\frac{3}{4}} u_{0} + i \sqrt{\frac{1}{4}} u_{1}`$.
+5. At $`t`$ = 0, a **one dimensional harmonic oscillator** is in the state $`\psi ( t = 0 )`$ = $`\sqrt{\frac{3}{4}} u_{0} + i \sqrt{\frac{1}{4}} u_{1}`$.
 
 Calculate the expected value of $`p`$ as a function of time.
 

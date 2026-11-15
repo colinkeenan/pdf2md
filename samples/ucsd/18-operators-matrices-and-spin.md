@@ -19,7 +19,7 @@ We will define our vectors and matrices using a complete set of, orthonormal bas
 \langle u_{i} | u_{j} \rangle = \delta_{ij}
 ```
 
-Define the **components of a state vector** $`\psi`$ (analogous to $`x_{i} )`$.
+Define the **components of a state vector** $`\psi`$ (analogous to $`x_{i}`$).
 
 ```math
 \psi_{i} \equiv \langle u_{i} | \psi \rangle \quad | \psi \rangle = \sum_{i} \psi_{i} | u_{i} \rangle
@@ -916,7 +916,7 @@ Now if $`\psi_{m}`$ is an eigenstate of $`L_{z}`$, then $`L_{z} \psi_{m} = m \hb
 H\psi_{m} = \frac{\mu_{B} B}{\hbar} * ( m \hbar \psi_{m} ) = ( m\mu_{B} B ) \psi_{m}
 ```
 
-Hence the normalized eigenstates must be just those of the operator $`L_{z}`$ itself, i.e., for the three values of $`m`$ (eigenvalues of $`L_{z} )`$, we have
+Hence the normalized eigenstates must be just those of the operator $`L_{z}`$ itself, i.e., for the three values of $`m`$ (eigenvalues of $`L_{z}`$), we have
 
 ```math
 \psi_{m = + 1} = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} \quad \psi_{m = 0} = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} \quad \psi_{m = - 1} = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} .
@@ -1344,13 +1344,13 @@ This gives the same answer. By using the rotation operator, the phase of the eig
 a
 ```
 
-Assume that we are in an arbitrary spin state $`\chi ( t`$ = 0) = and we have chosen the z axis to
+Assume that we are in an arbitrary spin state $`\chi ( t = 0 )`$ = and we have chosen the z axis to
 
 ```math
 b
 ```
 
-be in the field direction. The upper component of the vector (a) is the amplitude to have spin up along the z direction, and the lower component (b) is the amplitude to have spin down. Because of our choice of axes, the spin up and spin down states are also the energy eigenstates with energy eigenvalues of $`\mu_{B} B`$ and $`- \mu_{B} B`$ respectively. We know that the energy eigenstates evolve with time quite simply (recall the separation of the Schrödinger equation where $`T ( t ) = e^{- iEt/ \hbar} )`$. So its simple to write down the time evolved state vector.
+be in the field direction. The upper component of the vector (a) is the amplitude to have spin up along the z direction, and the lower component (b) is the amplitude to have spin down. Because of our choice of axes, the spin up and spin down states are also the energy eigenstates with energy eigenvalues of $`\mu_{B} B`$ and $`- \mu_{B} B`$ respectively. We know that the energy eigenstates evolve with time quite simply (recall the separation of the Schrödinger equation where $`T ( t ) = e^{- iEt/ \hbar}`$). So its simple to write down the time evolved state vector.
 
 ```math
 \chi ( t ) = \begin{pmatrix} ae^{- i\mu_{B} Bt/ \hbar} \\ be^{i\mu_{B} Bt/ \hbar} \end{pmatrix} = \begin{pmatrix} ae^{- i\omega t} \\ be^{i\omega t} \end{pmatrix}
@@ -1504,7 +1504,7 @@ The other relations will prove to be correct too, as they must. Its a reassuring
 
 ## <a id="s-18-11-3-derive-the-expression-for-rotation-operator-r-z"></a>18.11.3 Derive the Expression for Rotation Operator $`R_{z}`$ \*
 
-The laws of physics do not depend on what axes we choose for our coordinate system- There is rotational symmetry. If we make an infinitesimal rotation (through and angle $`d\varphi )`$ about the z-axis, we get the transformed coordinates
+The laws of physics do not depend on what axes we choose for our coordinate system- There is rotational symmetry. If we make an infinitesimal rotation (through and angle $`d\varphi`$) about the z-axis, we get the transformed coordinates
 
 ```math
 x^{\prime} = x - d\varphi y
@@ -1532,7 +1532,7 @@ A finite rotation can be made by applying the operator for an infinitesimal rota
 R_{z} ( \theta_{z} ) = \lim_{n \to \infty} ( 1 + \frac{i}{\hbar} \frac{\theta_{z}}{n} L_{z} )^{n} = e^{i\theta_{z} L_{z} / \hbar} .
 ```
 
-The last step, converting the limit to an exponential is a known identity. We can verify it by using the log of the quantity. First we expand $`ln ( x )`$ about $`x`$ = 1: $`ln ( x ) = ln`$(1) + $`\left( \tfrac{1}{x} \right)_{x = 1} ( x - 1`$) = $`( x - 1 ) .`$
+The last step, converting the limit to an exponential is a known identity. We can verify it by using the log of the quantity. First we expand $`ln ( x )`$ about $`x`$ = 1: $`ln ( x ) = ln`$(1) + $`\left( \tfrac{1}{x} \right)_{x = 1} ( x - 1 )`$ = $`( x - 1 ) .`$
 
 ```math
 \lim_{n \to \infty} ln ( 1 + \frac{i}{\hbar} \frac{\theta_{z}}{n} L_{z} )^{n} = n ( \frac{i}{\hbar} \frac{\theta_{z}}{n} L_{z} ) = \frac{i}{\hbar} \theta_{z} L_{z}
@@ -1882,7 +1882,7 @@ is the probability that a measurement of the $`x`$ component of spin yields zero
 1
 ```
 
-Find the time development (matrix) operator $`e^{- iHt/ \hbar}`$ in the usual basis. If $`\chi ( t`$ = 0) = ,
+Find the time development (matrix) operator $`e^{- iHt/ \hbar}`$ in the usual basis. If $`\chi ( t = 0 )`$ = ,
 
 ```math
 0
@@ -1916,7 +1916,7 @@ i
 
 probability that a measurement of $`S_{x}`$ yields$`( ) \frac{- \hbar}{2}`$? What is the probability that a measurement of $`S_{y}`$ yields $`\frac{\hbar}{2} -`$?
 
-9. A spin $`\frac{1}{2}`$ object is in an eigenstate of $`S_{y}`$ with eigenvalue $`\frac{\hbar}{2}`$ at t=0. The particle is in a magnetic field **B** = (0$`, 0 ,B )`$ which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{z}`$. Find the probability to measure $`S_{y} = \tfrac{\hbar}{2}`$ as a function of time.
+9. A spin $`\frac{1}{2}`$ object is in an eigenstate of $`S_{y}`$ with eigenvalue $`\frac{\hbar}{2}`$ at t=0. The particle is in a magnetic field **B** = $`( 0 , 0 ,B )`$ which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{z}`$. Find the probability to measure $`S_{y} = \tfrac{\hbar}{2}`$ as a function of time.
 
 10. Two degenerate eigenfunctions of the Hamiltonian are properly normalized and have the following properties.
 
@@ -1936,7 +1936,7 @@ What are the properly normalized states that are eigenfunctions of H and P? What
 
 </div>
 
-12. A spin $`\frac{1}{2}`$ object is in an eigenstate of $`S_{y}`$ with eigenvalue $`\frac{\hbar}{2}`$ at t=0. The particle is in a magnetic field **B** = (0$`, 0 ,B )`$ which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{z}`$. Find the probability to measure $`S_{y} = \tfrac{\hbar}{2}`$ as a function of time.
+12. A spin $`\frac{1}{2}`$ object is in an eigenstate of $`S_{y}`$ with eigenvalue $`\frac{\hbar}{2}`$ at t=0. The particle is in a magnetic field **B** = $`( 0 , 0 ,B )`$ which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{z}`$. Find the probability to measure $`S_{y} = \tfrac{\hbar}{2}`$ as a function of time.
 
 <div align="center">
 
@@ -1964,7 +1964,7 @@ Find the energy eigenstates and eigenvalues.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p282" href="book.pdf#page=282" target="_blank" title="This page in the PDF"><sup>[p. 282]</sup></a>
 
-16. A (spin $`\tfrac{1}{2} )`$ electron is in an eigenstate of $`S_{y}`$ with eigenvalue $`- \tfrac{\hbar}{2}`$ at $`t`$ = 0. The particle is in a magnetic field $`\vec{B}`$ = (0$`, 0 ,B )`$ which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{z}`$. Find the spin state of the particle as a function of time. Find the probability to measure $`S_{y}`$ = +$`\frac{\hbar}{2}`$ as a function of time.
+16. A (spin $`\tfrac{1}{2}`$) electron is in an eigenstate of $`S_{y}`$ with eigenvalue $`- \tfrac{\hbar}{2}`$ at $`t`$ = 0. The particle is in a magnetic field $`\vec{B}`$ = $`( 0 , 0 ,B )`$ which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{z}`$. Find the spin state of the particle as a function of time. Find the probability to measure $`S_{y}`$ = +$`\frac{\hbar}{2}`$ as a function of time.
 
 ---
 
