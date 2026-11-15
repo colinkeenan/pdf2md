@@ -1081,7 +1081,39 @@ fn tidy(s: &str) -> String {
     // (a prime that opens an exponent stands a little higher than the
     // number after it, m′²: one exponent)
     let s = s.replace("^{{}^{\\prime} ", "^{\\prime ").replace("^{{}^{\\prime}}", "^{\\prime}");
-    s.replace("\\not =", "\\neq").replace("\\not=", "\\neq").replace("\\not{=}", "\\neq")
+    slashed(&s.replace("\\not =", "\\neq").replace("\\not=", "\\neq").replace("\\not{=}", "\\neq"))
+}
+
+/// The stroke through a letter (Feynman's slash: p̸, ∂̸) as the letter with
+/// a "/" drawn back over it. KaTeX sets "\not{p}" as a stroke beside the
+/// letter, with a gap; this form is plain TeX and looks the same in every
+/// renderer. A stroke through a sign ("\not{\equiv}") stays as it is.
+fn slashed(s: &str) -> String {
+    let mut out = String::with_capacity(s.len());
+    let mut rest = s;
+    while let Some(i) = rest.find("\\not{") {
+        out.push_str(&rest[..i]);
+        let from = i + 5;
+        let mut depth = 1;
+        let end = rest[from..].char_indices().find_map(|(j, c)| {
+            depth += i32::from(c == '{') - i32::from(c == '}');
+            (depth == 0).then_some(from + j)
+        });
+        let Some(end) = end else {
+            out.push_str(&rest[i..]);
+            return out;
+        };
+        let inner = rest[from..end].trim();
+        let sign = inner.starts_with(['=', '<', '>']) || ["equiv", "in", "sim", "simeq", "approx", "subset", "supset", "leq", "geq", "le", "ge", "cong", "parallel", "exists"].iter().any(|r| inner.strip_prefix('\\').is_some_and(|x| x == *r));
+        if sign || inner.is_empty() {
+            out.push_str(&rest[i..=end]);
+        } else {
+            out.push_str(&format!("{{{inner}\\!\\!\\!/}}"));
+        }
+        rest = &rest[end + 1..];
+    }
+    out.push_str(rest);
+    out
 }
 
 fn linear(spans: &[MSpan]) -> String {
