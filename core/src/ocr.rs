@@ -31,6 +31,8 @@ pub enum Reading {
 const SCRIPT: &str = include_str!("math_ocr.py");
 /// The second opinion on each reading, from the page reader's recognizer.
 const CHECK_SCRIPT: &str = include_str!("math_check.py");
+/// The rules its choices are made by (RULES in math_check.py).
+const CHECK_RULES: &str = "rules 2";
 
 /// Stable name for an image: FNV-1a 64 of its data.
 pub fn key(png_base64: &str) -> String {
@@ -724,7 +726,9 @@ fn second_opinion(images: &[&str], out: &mut HashMap<String, Reading>) {
     for &img in images {
         let k = key(img);
         let math = matches!(out.get(&k), Some(Reading::Latex(_))) && read_correction(&k).is_none();
-        if math && !dir.join(format!("{k}.agree")).exists() && !todo.iter().any(|(t, _)| *t == k) {
+        // (not chosen yet, or chosen by older rules)
+        let chosen = std::fs::read_to_string(dir.join(format!("{k}.agree"))).is_ok_and(|t| t.lines().nth(1) == Some(CHECK_RULES));
+        if math && !chosen && !todo.iter().any(|(t, _)| *t == k) {
             todo.push((k, img));
         }
     }
@@ -1093,7 +1097,7 @@ pub fn needs_check(k: &str) -> Option<usize> {
     // (what two recognizers say comes before what one says twice)
     let dir = cache_dir()?;
     let v = std::fs::read_to_string(dir.join(format!("{k}.agree"))).or_else(|_| std::fs::read_to_string(dir.join(format!("{k}.verify")))).ok()?;
-    let n = v.trim().strip_prefix("check")?.trim();
+    let n = v.lines().next()?.trim().strip_prefix("check")?.trim();
     Some(n.parse().unwrap_or(1))
 }
 

@@ -36,6 +36,9 @@ import math_ocr as m  # noqa: E402  (canonical, difference, clean, fix, plausibl
 from PIL import Image  # noqa: E402
 
 BATCH = 32
+# Which rules the choice was made by, on the second line of NAME.agree: a
+# choice made by older rules is made again (keep in step with ocr.rs).
+RULES = "rules 2"
 
 
 def tell(what: str, n: int, total: int):
@@ -61,20 +64,37 @@ def as_latex(raw: str):
     # (words set off as text, a struck or underlined piece: not its formula)
     if re.search(r"<(u|b|i|sub|sup|del)\b", raw):
         return None
-    parts = re.findall(r"<math[^>]*>(.*?)</math>", raw, re.S)
-    between = re.sub(r"<math[^>]*>.*?</math>", " ", raw, flags=re.S)
-    between = re.sub(r"<br\s*/?>", " ", between)
-    # (only punctuation may stand between the lines of one formula)
-    if re.search(r"[A-Za-z0-9]", between):
-        return None
+    # Its lines; in a line, formulas with a few words between them ("… or
+    # …", "… and …", "where …"), which are text in the formula.
     lines = []
-    for p in parts:
-        p = re.sub(r"\\label\{[^{}]*\}", "", p)
-        p = p.replace("\\begin{split}", "\\begin{aligned}").replace("\\end{split}", "\\end{aligned}")
-        p = re.sub(r"\\mbox(?![a-zA-Z])", r"\\text", p)
-        p = m.fix(m.clean(p.strip()))
-        if p:
-            lines.append(p)
+    for row in re.split(r"<br\s*/?>|\n", raw):
+        pieces = []
+        for part in re.split(r"(<math[^>]*>.*?</math>)", row, flags=re.S):
+            inner = re.fullmatch(r"<math[^>]*>(.*?)</math>", part, re.S)
+            if inner:
+                p = re.sub(r"\\label\{[^{}]*\}", "", inner.group(1))
+                p = p.replace("\\begin{split}", "\\begin{aligned}").replace("\\end{split}", "\\end{aligned}")
+                p = re.sub(r"\\mbox(?![a-zA-Z])", r"\\text", p)
+                p = m.fix(m.clean(p.strip()))
+                if p:
+                    pieces.append(p)
+                continue
+            words = part.strip()
+            if not words:
+                continue
+            if re.fullmatch(r"[.,;:]+", words):
+                if pieces:
+                    pieces[-1] += words
+                continue
+            # (a sentence, or figures outside a formula: not one formula)
+            if len(words.split()) > 5 or not re.fullmatch(r"[A-Za-z ,.;:()-]+", words):
+                return None
+            pieces.append("\\text{" + words + "}")
+        # (formulas with nothing between them are the lines of one)
+        if any(p.startswith("\\text{") for p in pieces):
+            lines.append(" \\quad ".join(pieces))
+        else:
+            lines.extend(pieces)
     if not lines:
         return None
     t = lines[0] if len(lines) == 1 else m.as_block(lines)
@@ -234,7 +254,7 @@ def main():
         else:
             target.write_text(best + "\n")
             changed += 1
-        (dst / f"{f.stem}.agree").write_text("ok\n" if n == 0 else f"check {n}\n")
+        (dst / f"{f.stem}.agree").write_text(("ok\n" if n == 0 else f"check {n}\n") + RULES + "\n")
         doubtful += n > 0
     print(f"  {changed} of {len(math)} equations are written as the page reader's recognizer read them; {doubtful} are listed to check (no two readings agree)", file=sys.stderr, flush=True)
 
