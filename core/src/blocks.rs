@@ -1502,7 +1502,10 @@ fn math_info(doc: &Doc, l: &Line, st: &Stats) -> (f32, usize, bool) {
         if doc.is_math(s) || s.script != Script::Normal {
             mathc += c;
         } else {
-            letters += s.text.chars().filter(|c| c.is_alphabetic()).count();
+            // (the name of a function, "cos", is part of its formula)
+            let named: usize = s.text.split_whitespace().filter(|w| mathtex::is_function_word(w.trim_matches(|c: char| !c.is_alphabetic()))).map(|w| w.chars().filter(|c| c.is_alphabetic()).count()).sum();
+            letters += s.text.chars().filter(|c| c.is_alphabetic()).count() - named;
+            mathc += named;
             other += s.text.chars().filter(|c| !c.is_alphabetic() && !c.is_whitespace()).count();
             words += s
                 .text

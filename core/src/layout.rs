@@ -2825,6 +2825,18 @@ fn group_lines(
             if k == n {
                 continue;
             }
+            // (a piece set a little high that came first and stood alone,
+            // the raised dots of "T^{μ…}", is of this line with what it took)
+            if groups[k].is_empty() || groups[n].is_empty() {
+                continue;
+            }
+            let first = &groups[k][0];
+            let few = groups[k].iter().map(|p| p.text.trim().chars().count()).sum::<usize>() <= 6;
+            if few && shared(first, &groups[n][0]) >= 0.4 * first.height.min(groups[n][0].height) {
+                let all = std::mem::take(&mut groups[k]);
+                groups[n].extend(all);
+                continue;
+            }
             let mut j = 1;
             while j < groups[k].len() {
                 let p = &groups[k][j];
@@ -2843,6 +2855,7 @@ fn group_lines(
             }
         }
     }
+    groups.retain(|g| !g.is_empty());
     // A full stop among small letters begins no line: the dot of a product
     // in an exponent stands half a line above its text line, comes before
     // it, and would take the "=" signs of that line as they pass. It stands

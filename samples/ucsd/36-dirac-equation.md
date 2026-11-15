@@ -1305,9 +1305,13 @@ The **boost is just another rotation in Minkowski space** through and angle $`i\
 \tanh \chi = \frac{e^{\chi} - e^{- \chi}}{e^{\chi} + e^{- \chi}} = \beta
 ```
 
-$`\cosh \chi`$ = $`\frac{e^{\chi} + e^{- \chi}}{2}`$
+```math
+\cosh \chi = \frac{e^{\chi} + e^{- \chi}}{2}
+```
 
-$`\sinh \chi`$ = $`\frac{e^{\chi} - e^{- \chi}}{2}`$
+```math
+\sinh \chi = \frac{e^{\chi} - e^{- \chi}}{2}
+```
 
 ```math
 \cos ( i\chi ) = \frac{e^{i ( i\chi )} + e^{- i ( i\chi )}}{2} = \frac{e^{- \chi} + e^{\chi}}{2} = \cosh \chi
@@ -1318,10 +1322,12 @@ $`\sinh \chi`$ = $`\frac{e^{\chi} - e^{- \chi}}{2}`$
 ```
 
 ```math
-\gamma = \frac{1}{\sqrt{1 - \beta^{2}}} = \frac{1}{\sqrt{1 - \tanh^{2} \chi}} = \frac{1}{\sqrt{( 1 + \tanh \chi ) ( 1 - \tanh \chi} )} = \frac{1}{\sqrt{\frac{2 e^{\chi}}{e^{\chi} + e^{- \chi}} \frac{2 e^{- \chi}}{e^{\chi} + e^{- \chi}}}} = \frac{e^{\chi} + e^{- \chi}}{2} = \cosh \chi
+\gamma = \frac{1}{\sqrt{1 - \beta^{2}}} = \frac{1}{\sqrt{1 - \tanh^{2} \chi}} = \frac{1}{\sqrt{( 1 + \tanh \chi ) ( 1 - \tanh \chi} )} = \frac{1}{\sqrt{\frac{2 e^{\chi}}{\chi \quad - \chi} \frac{2 e^{- \chi}}{\chi \quad - \chi}}} = \frac{e^{\chi} + e^{- \chi}}{2} = \cosh \chi
 ```
 
-$`\beta \gamma`$ = $`\tanh \chi \cosh \chi = \sinh \chi`$
+```math
+\beta \gamma = \tanh \chi \cosh \chi = \sinh \chi^{e + e e + e}
+```
 
 ```math
 a_{\mu \nu}^{( boost )} = \begin{pmatrix} \cosh \chi & 0 & 0 & i \sinh \chi \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ - i \sinh \chi & 0 & 0 & \cosh \chi \end{pmatrix}
@@ -1365,7 +1371,9 @@ Lets **verify that this choice works for a boost**.
 \left( \cosh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} \right) \gamma_{\mu} \left( \cosh \frac{\chi}{2} + i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} \right) = a_{\mu \nu} \gamma_{\nu}
 ```
 
-$`\cosh \frac{\chi}{2} \gamma_{\mu} \cosh \frac{\chi}{2} + \cosh \frac{\chi}{2} \gamma_{\mu} i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} \gamma_{\mu} \cosh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} \gamma_{\mu} i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2}`$ = $`a_{\mu \nu} \gamma_{\nu}`$
+```math
+\cosh \frac{\chi}{2} \gamma_{\mu} \cosh \frac{\chi}{2} + \cosh \frac{\chi}{2} \gamma_{\mu} i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} \gamma_{\mu} \cosh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} \gamma_{\mu} i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} = a_{\mu \nu} \gamma_{\nu}
+```
 
 ```math
 \gamma_{\mu} \cosh^{2} \frac{\chi}{2} + i\gamma_{\mu} \gamma_{1} \gamma_{4} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \gamma_{\mu} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} + \gamma_{1} \gamma_{4} \gamma_{\mu} \gamma_{1} \gamma_{4} \sinh^{2} \frac{\chi}{2} = a_{\mu \nu} \gamma_{\nu}
@@ -1426,10 +1434,8 @@ a_{\mu \nu} = \begin{pmatrix} \cosh \chi & 0 & 0 & i \sinh \chi \\ 0 & 1 & 0 & 0
 That checks for $`\gamma_{1}`$. Now, try $`\gamma_{4}`$.
 
 ```math
-2 \quad 2
+\gamma_{4} \cosh^{2} \frac{\chi}{2} + i\gamma_{4} \gamma_{1} \gamma_{4} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \gamma_{4} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} + \gamma_{1} \gamma_{4} \gamma_{4} \gamma_{1} \gamma_{4} \sinh^{2} \frac{\chi}{2} = a_{4 \nu} \gamma_{\nu}
 ```
-
-$`\gamma_{4}`$ cosh $`\frac{\chi}{2} + i\gamma_{4} \gamma_{1} \gamma_{4} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \gamma_{4} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} + \gamma_{1} \gamma_{4} \gamma_{4} \gamma_{1} \gamma_{4}`$ sinh $`\frac{\chi}{2}`$ = $`a_{4 \nu} \gamma_{\nu}`$
 
 ```math
 \gamma_{4} \cosh^{2} \frac{\chi}{2} - i\gamma_{1} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} - i\gamma_{1} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} + \gamma_{4} \sinh^{2} \frac{\chi}{2} = - i \sinh \chi \gamma_{1} + \cosh \chi \gamma_{4}
@@ -1446,10 +1452,8 @@ $`\gamma_{4}`$ cosh $`\frac{\chi}{2} + i\gamma_{4} \gamma_{1} \gamma_{4} \cosh \
 That one also checks. As a last test, try $`\gamma_{2}`$.
 
 ```math
-2 \quad 2
+\gamma_{2} \cosh^{2} \frac{\chi}{2} + i\gamma_{2} \gamma_{1} \gamma_{4} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \gamma_{2} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} + \gamma_{1} \gamma_{4} \gamma_{2} \gamma_{1} \gamma_{4} \sinh^{2} \frac{\chi}{2} = \gamma_{2}
 ```
-
-$`\gamma_{2}`$ cosh $`\frac{\chi}{2} + i\gamma_{2} \gamma_{1} \gamma_{4} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \gamma_{2} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} + \gamma_{1} \gamma_{4} \gamma_{2} \gamma_{1} \gamma_{4}`$ sinh $`\frac{\chi}{2}`$ = $`\gamma_{2}`$
 
 ```math
 \gamma_{2} \cosh^{2} \frac{\chi}{2} + i\gamma_{2} \gamma_{1} \gamma_{4} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} - i\gamma_{2} \gamma_{1} \gamma_{4} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} - \gamma_{2} \sinh^{2} \frac{\chi}{2} = a_{2 \nu} \gamma_{\nu}
@@ -1477,16 +1481,18 @@ The pure rotation about the z axis should also be verified.
 \left( \cos \frac{\theta}{2} - \gamma_{1} \gamma_{2} \sin \frac{\theta}{2} \right) \gamma_{\mu} \left( \cos \frac{\theta}{2} + \gamma_{1} \gamma_{2} \sin \frac{\theta}{2} \right) = a_{\mu \nu} \gamma_{\nu}
 ```
 
-$`\gamma_{\mu}`$ cos<sup>2</sup> $`\frac{\theta}{2} + \gamma_{\mu} \gamma_{1} \gamma_{2} \cos \frac{\theta}{2} \sin \frac{\theta}{2} - \gamma_{1} \gamma_{2} \gamma_{\mu} \cos \frac{\theta}{2} \sin \frac{\theta}{2} - \gamma_{1} \gamma_{2} \gamma_{\mu} \gamma_{1} \gamma_{2}`$ sin<sup>2</sup> $`\frac{\theta}{2}`$ = $`a_{\mu \nu} \gamma_{\nu}`$<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=510" target="_blank" title="This page in the PDF"><sup>[p. 510]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p511" href="book.pdf#page=511" target="_blank" title="This page in the PDF"><sup>[p. 511]</sup></a></span> For $`\mu`$ = 3 or 4, $`a_{\mu \nu} = \delta_{\mu \nu}`$ and the requirement is fairly obviously satisfied. Checking the requirement for $`\mu`$ = 1, we get.
+```math
+\gamma_{\mu} \cos^{2} \frac{\theta}{2} + \gamma_{\mu} \gamma_{1} \gamma_{2} \cos \frac{\theta}{2} \sin \frac{\theta}{2} - \gamma_{1} \gamma_{2} \gamma_{\mu} \cos \frac{\theta}{2} \sin \frac{\theta}{2} - \gamma_{1} \gamma_{2} \gamma_{\mu} \gamma_{1} \gamma_{2} \sin^{2} \frac{\theta}{2} = a_{\mu \nu} \gamma_{\nu}
+```
 
-<div align="center">
+<div align="right"><a href="book.pdf#page=510" target="_blank" title="This page in the PDF"><sup>[p. 510]</sup></a></div>
+<hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
+<a id="p511" href="book.pdf#page=511" target="_blank" title="This page in the PDF"><sup>[p. 511]</sup></a>
 
-$`\gamma_{1}`$ cos<sup>2</sup> $`\frac{\theta}{2} + \gamma_{1} \gamma_{1} \gamma_{2} \cos \frac{\theta}{2} \sin \frac{\theta}{2} - \gamma_{1} \gamma_{2} \gamma_{1} \cos \frac{\theta}{2} \sin \frac{\theta}{2} - \gamma_{1} \gamma_{2} \gamma_{1} \gamma_{1} \gamma_{2}`$ sin<sup>2</sup> $`\frac{\theta}{2}`$ = $`a_{1 \nu} \gamma_{\nu}`$
-
-</div>
+For $`\mu`$ = 3 or 4, $`a_{\mu \nu} = \delta_{\mu \nu}`$ and the requirement is fairly obviously satisfied. Checking the requirement for $`\mu`$ = 1, we get.
 
 ```math
-a_{\mu \nu} = \begin{pmatrix} \cos \theta & \sin \theta & 0 & 0 \\ - \sin \theta & \cos \theta & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}
+\begin{aligned} \gamma_{1} \cos^{2} \frac{\theta}{2} + \gamma_{1} \gamma_{1} \gamma_{2} \cos \frac{\theta}{2} \sin \frac{\theta}{2} - \gamma_{1} \gamma_{2} \gamma_{1} \cos \frac{\theta}{2} \sin \frac{\theta}{2} - \gamma_{1} \gamma_{2} \gamma_{1} \gamma_{1} \gamma_{2} \sin^{2} \frac{\theta}{2} &= a_{1 \nu} \gamma_{\nu} \\ a_{\mu \nu} &= \begin{pmatrix} \cos \theta & \sin \theta & 0 & 0 \\ - \sin \theta & \cos \theta & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} \end{aligned}
 ```
 
 ```math

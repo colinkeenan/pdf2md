@@ -897,14 +897,10 @@ The half integer possibility is used to represent the internal angular momentum 
 
 possible states with different z components of spin: spin up $`\left( 0 \right)`$, with z component of angular
 
-```math
-0
-```
-
-momentum +$`\frac{\hbar}{2}`$, and spin down , with $`- \tfrac{\hbar}{2}`$. The corresponding spin operators are
+momentum +$`\frac{\hbar}{2}`$, and spin down $`\begin{pmatrix} 0 \\ 1 \end{pmatrix}`$, with $`- \tfrac{\hbar}{2}`$. The corresponding spin operators are
 
 ```math
-S_{x} = \frac{\hbar}{2} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \quad 1 \quad S_{y} = \frac{\hbar}{2} \begin{pmatrix} 0 & - i \\ i & 0 \end{pmatrix} \quad S_{z} = \frac{\hbar}{2} \begin{pmatrix} 1 & 0 \\ 0 & - 1 \end{pmatrix}
+S_{x} = \frac{\hbar}{2} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \quad S_{y} = \frac{\hbar}{2} \begin{pmatrix} 0 & - i \\ i & 0 \end{pmatrix} \quad S_{z} = \frac{\hbar}{2} \begin{pmatrix} 1 & 0 \\ 0 & - 1 \end{pmatrix}
 ```
 
 These satisfy the usual commutation relations from which we derived the properties of angular momentum operators.

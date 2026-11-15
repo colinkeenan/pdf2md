@@ -1341,7 +1341,9 @@ B_{n + 1} = \frac{B_{n} + A_{n + 1} \sin ( ka )}{\cos ( ka )}
 B_{n + 1} = \frac{B_{n} + \left( \tfrac{2 maV_{0}}{\hbar^{2} k} B_{n} \cos ( ka ) - B_{n} \sin ( ka ) + A_{n} \cos ( ka ) \right) \sin ( ka )}{\cos ( ka )}
 ```
 
-$`B_{n + 1}`$ = cos$`\frac{B_{n}}{( ka )} + ( ) \frac{2 maV_{0}}{\hbar^{2} k} B_{n}`$ sin$`( ka ) - B_{n}`$ sincos(<sup>2</sup>$`\frac{( ka )}{ka )} + A_{n}`$ sin$`( ( ka ) )`$
+```math
+B_{n + 1} = \frac{B_{n}}{\cos ( ka )} + \left( \frac{2 maV_{0}}{\hbar^{2} k} B_{n} \sin ( ka ) - B_{n} \frac{\sin^{2} ( ka )}{\cos ( ka )} + A_{n} \sin ( ka ) \right)
+```
 
 ```math
 B_{n + 1} = \frac{B_{n}}{\cos ( ka )} + \left( \frac{2 maV_{0}}{\hbar^{2} k} B_{n} \sin ( ka ) - B_{n} \left( \frac{1}{\cos ( ka )} - \cos ( ka ) \right) + A_{n} \sin ( ka ) \right)
