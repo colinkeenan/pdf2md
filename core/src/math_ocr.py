@@ -685,6 +685,9 @@ def bold_letters(t: str):
         c = t[i]
         if c == "\\":
             m = re.match(r"\\([a-zA-Z]+|.)", t[i:], re.S)
+            if m is None:
+                # (a reading that ends in a lone backslash)
+                break
             name = m.group(1)
             i += len(m.group(0))
             if name in BOLD_COMMANDS:

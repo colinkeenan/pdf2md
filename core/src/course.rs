@@ -176,12 +176,14 @@ fn markdown(html: &str, top: usize, link: &dyn Fn(&str) -> Option<String>) -> St
         match t {
             Tok::Text(t) => cur.push_str(&emit::escape_text(&t)),
             Tok::Open(n, href) => match n.as_str() {
+                // (a title inside a link is the link's words)
+                "h1" | "h2" | "h3" | "h4" | "h5" | "h6" if !anchors.is_empty() => {}
                 "h1" | "h2" | "h3" | "h4" | "h5" | "h6" => {
                     flush(&mut cur, &mut out, &mut item, &mut heading, lists.len());
                     let level: usize = n[1..].parse().unwrap_or(1);
                     heading = Some((top + level - highest).min(6));
                 }
-                "p" | "div" | "section" | "article" | "main" if table.is_none() => flush(&mut cur, &mut out, &mut item, &mut heading, lists.len()),
+                "p" | "div" | "section" | "article" | "main" if table.is_none() && anchors.is_empty() => flush(&mut cur, &mut out, &mut item, &mut heading, lists.len()),
                 // (in a cell of a table: a new line)
                 "p" | "li" if cell && !squeeze(&cur).is_empty() && !cur.trim_end().ends_with("<br>") => cur.push_str("<br>"),
                 "ol" | "ul" if table.is_none() => {
@@ -215,6 +217,7 @@ fn markdown(html: &str, top: usize, link: &dyn Fn(&str) -> Option<String>) -> St
                 _ => {}
             },
             Tok::Close(n) => match n.as_str() {
+                "h1" | "h2" | "h3" | "h4" | "h5" | "h6" if !anchors.is_empty() => {}
                 "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "li" if table.is_none() => flush(&mut cur, &mut out, &mut item, &mut heading, lists.len()),
                 "ol" | "ul" if table.is_none() => {
                     flush(&mut cur, &mut out, &mut item, &mut heading, lists.len());
@@ -338,6 +341,8 @@ fn link_name(href: &str) -> Option<String> {
     let h = href.split(['?', '#']).next().unwrap_or(href).trim_end_matches('/');
     let last = h.rsplit('/').next()?;
     let stem = last.strip_suffix(".pdf").unwrap_or(last);
+    // (a newer site names the page of "pset01.pdf" "pset01_pdf")
+    let stem = if h.contains("/resources/") { stem.strip_suffix("_pdf").unwrap_or(stem) } else { stem };
     (h.contains("/resources/") || last.ends_with(".pdf")).then(|| crate::key(stem))
 }
 
@@ -349,7 +354,9 @@ fn tidy_label(t: &str) -> String {
         Some(k) if t.ends_with(')') => t[..k].trim(),
         _ => t,
     };
-    t.trim_matches(|c| c == '(' || c == ')').trim().to_string()
+    // ("(PDF - 2.2 MB)" was in brackets of its own)
+    let t = if t.starts_with('(') && t.ends_with(')') && !t[1..].contains('(') { t[1..t.len() - 1].trim() } else { t };
+    t.to_string()
 }
 
 /// What a page lists, in its order.
@@ -391,22 +398,81 @@ fn entries(html: &str) -> Vec<Entry> {
         pieces.push((text, link.take(), in_table, row));
     }
     let listed = |p: &(String, Option<String>, bool, usize)| p.1.is_some() || p.0.to_lowercase().contains("not available");
+    // the head of the table a piece is in: the cells of its first row
+    let head_of = |k: usize| -> Vec<&str> {
+        let start = (0..=k).rev().take_while(|&i| pieces[i].2).last().unwrap_or(k);
+        pieces[start..].iter().take_while(|q| q.2 && q.3 == pieces[start].3).map(|q| q.0.as_str()).collect()
+    };
+    let mut rows: Vec<usize> = Vec::new(); // the table row of each entry (0: none)
     for (k, p) in pieces.iter().enumerate() {
         if !listed(p) {
             continue;
         }
         // (the last cell of its row tells its topics)
-        let about = if p.2 { pieces[k + 1..].iter().take_while(|q| q.2 && q.3 == p.3).last().map(|q| q.0.clone()).unwrap_or_default() } else { String::new() };
+        let about = if p.2 { pieces[k + 1..].iter().take_while(|q| q.2 && q.3 == p.3).last().filter(|q| q.1.is_none()).map(|q| q.0.clone()).unwrap_or_default() } else { String::new() };
         let mut label = tidy_label(&p.0);
         // (a cell that holds the link alone, "(PDF)": the row's other cells
-        // name it, "1 - 8" and "Time-dependent Perturbation Theory")
+        // name it, "1" and "Symmetries, Lie Groups and Lie Algebras" under
+        // "LEC #" and "TOPICS": "Lecture 1: Symmetries, …")
         if p.2 && (label.is_empty() || label == "PDF") {
-            let cells: Vec<&str> = pieces.iter().filter(|q| q.2 && q.3 == p.3 && !std::ptr::eq(*q, p)).map(|q| q.0.as_str()).collect();
-            label = cells.join(": ");
+            let head = head_of(k);
+            let row: Vec<&(String, Option<String>, bool, usize)> = pieces.iter().filter(|q| q.2 && q.3 == p.3).collect();
+            let at = row.iter().position(|q| std::ptr::eq(*q, p)).unwrap_or(0);
+            let cells: Vec<String> = row.iter().filter(|q| !std::ptr::eq(**q, p)).map(|q| tidy_label(&q.0)).filter(|t| !t.is_empty() && t != "PDF").collect();
+            let counted = match head.first().map(|h| h.to_uppercase()) {
+                Some(h) if h.starts_with("LEC") => "Lecture",
+                Some(h) if h.starts_with("SES") => "Session",
+                Some(h) if h.starts_with("WEEK") => "Week",
+                _ => "",
+            };
+            let numbered = cells.first().is_some_and(|c| c.chars().next().is_some_and(|d| d.is_ascii_digit()) && c.chars().all(|d| d.is_ascii_digit() || " -–".contains(d)));
+            label = if cells.len() >= 2 && numbered && !counted.is_empty() {
+                let plural = if cells[0].contains(['-', '–']) { "s" } else { "" };
+                format!("{counted}{plural} {}: {}", cells[0].replace(" - ", "–"), cells[1..].join(", "))
+            } else {
+                cells.join(": ")
+            };
+            // (a second file of the row, under its own head: "Solutions")
+            if out.iter().zip(&rows).any(|(e, r)| *r == p.3 && e.label == label) {
+                if let Some(h) = head.get(at.min(head.len().saturating_sub(1))).filter(|_| row.len() == head.len()) {
+                    label = format!("{label} — {}", title_of(&h.to_lowercase()));
+                }
+            }
         }
         out.push(Entry { label, name: p.1.clone(), about });
+        rows.push(if p.2 { p.3 } else { 0 });
     }
-    out
+    // (a file listed twice, by its picture and by its title: once, under
+    // the longer name)
+    let mut once: Vec<Entry> = Vec::new();
+    for e in out {
+        match once.iter_mut().find(|o| o.name.is_some() && o.name == e.name) {
+            Some(o) => {
+                if e.label.chars().count() > o.label.chars().count() {
+                    o.label = e.label;
+                }
+            }
+            None => once.push(e),
+        }
+    }
+    // (what all the names begin with, the course's name, is left out)
+    let files: Vec<usize> = (0..once.len()).filter(|&k| once[k].name.is_some()).collect();
+    if files.len() >= 2 {
+        let first = once[files[0]].label.clone();
+        let mut common = first.len();
+        for &k in &files[1..] {
+            common = common.min(first.bytes().zip(once[k].label.bytes()).take_while(|(a, b)| a == b).count());
+        }
+        while !first.is_char_boundary(common) {
+            common -= 1;
+        }
+        if let Some(cut) = first[..common].rfind(", ").map(|k| k + 2) {
+            for &k in &files {
+                once[k].label = once[k].label[cut..].to_string();
+            }
+        }
+    }
+    once
 }
 
 // ---------------------------------------------------------------- the book
@@ -707,6 +773,9 @@ fn assign(topics: &[String], lectures: &[String]) -> Vec<usize> {
 }
 
 struct Section {
+    /// the page is a file of the book too (a page of text that links to a
+    /// PDF or two): which of the pages without PDFs
+    page: Option<usize>,
     title: String,
     /// the page (its opening words are told in the contents); empty: none
     intro: String,
@@ -729,7 +798,7 @@ pub fn write_course(folder: &Path, out: &Path) -> Result<Vec<PathBuf>, String> {
     }
     let stem = |p: &Path| p.file_stem().map(|s| s.to_string_lossy().into_owned()).unwrap_or_default();
     // the pages in the order of a course's site
-    const ORDER: [&str; 10] = ["syllabus", "calendar", "readings", "lecturenotes", "lectureslides", "recitations", "assignments", "exams", "projects", "relatedresources"];
+    const ORDER: [&str; 12] = ["syllabus", "calendar", "readings", "lecturenotes", "lecturevideos", "lectureslides", "recitations", "assignments", "problemsets", "exams", "projects", "relatedresources"];
     let rank = |p: &PathBuf| ORDER.iter().position(|o| *o == crate::key(&stem(p))).unwrap_or(ORDER.len());
     pages.sort_by(|a, b| rank(a).cmp(&rank(b)).then(stem(a).cmp(&stem(b))));
     folders.sort();
@@ -769,7 +838,15 @@ pub fn write_course(folder: &Path, out: &Path) -> Result<Vec<PathBuf>, String> {
             plain_pages.push((page_title, html));
             continue;
         }
-        let intro = html.clone();
+        // (a page of text with a PDF or two among it, the readings with one
+        // set of notes: a file of the book, its PDFs listed under it)
+        let named = list.iter().filter(|e| e.name.is_some()).count();
+        let mixed = named <= 3 && squeeze(&markdown(&html, 2, &|_| None)).chars().count() > 1500;
+        let page = mixed.then(|| {
+            plain_pages.push((page_title.clone(), html.clone()));
+            plain_pages.len() - 1
+        });
+        let intro = if mixed { String::new() } else { html.clone() };
         let mut items = Vec::new();
         for e in list {
             let found = e.name.as_ref().and_then(|n| pdfs.iter_mut().find(|(_, k, used)| !*used && k == n));
@@ -794,7 +871,7 @@ pub fn write_course(folder: &Path, out: &Path) -> Result<Vec<PathBuf>, String> {
                 items.push((Entry { label, name: Some(f.1.clone()), about: String::new() }, Some(files.len() - 1)));
             }
         }
-        sections.push(Section { title: page_title, intro, items });
+        sections.push(Section { page, title: page_title, intro, items });
     }
     // folders no page tells of
     for d in folders.iter().filter(|d| !taken.contains(d)) {
@@ -807,7 +884,7 @@ pub fn write_course(folder: &Path, out: &Path) -> Result<Vec<PathBuf>, String> {
             items.push((Entry { label, name: Some(f.1.clone()), about: String::new() }, Some(files.len() - 1)));
         }
         if !items.is_empty() {
-            sections.push(Section { title: stem(d), intro: String::new(), items });
+            sections.push(Section { page: None, title: stem(d), intro: String::new(), items });
         }
     }
     // the pages without PDFs come first, after the contents
@@ -872,8 +949,15 @@ pub fn write_course(folder: &Path, out: &Path) -> Result<Vec<PathBuf>, String> {
 
     // the contents
     let mut c = String::new();
-    for f in files.iter().skip(1).take(plain_pages.len()) {
+    for (k, f) in files.iter().skip(1).take(plain_pages.len()).enumerate() {
         c.push_str(&format!("- [{}]({}.md)\n", f.title, f.slug));
+        for s in sections.iter().filter(|s| s.page == Some(k)) {
+            for (e, file) in &s.items {
+                if let Some(file) = file {
+                    c.push_str(&format!("   - [{}]({}.md)\n", emit::escape_text(&e.label), files[*file].slug));
+                }
+            }
+        }
     }
     if !plain_pages.is_empty() {
         c.push('\n');
@@ -960,7 +1044,7 @@ pub fn write_course(folder: &Path, out: &Path) -> Result<Vec<PathBuf>, String> {
         c.push('\n');
     }
     for (k, s) in sections.iter().enumerate() {
-        if under_topics == Some(k) {
+        if under_topics == Some(k) || s.page.is_some() {
             continue;
         }
         c.push_str(&format!("## {}\n\n", s.title));
