@@ -77,9 +77,7 @@ W_{z} = 2 \mu_{B} B \frac{S_{z}}{\hbar} .
 
 As an examples of perturbation theory, we will work this problem for weak fields, for strong fields, and also work the general case for intermediate fields. Just as in the Zeeman effect, **if one perturbation** **is much bigger than another, we choose the set of states in which the larger perturbation** **is diagonal**. In this case, the hyperfine splitting is diagonal in states of definite $`f`$ while the above perturbation due to the B field is diagonal in states of definite $`m_{s}`$. For a weak field, the hyperfine dominates and we use the states of definite $`f`$. For a strong field, we use the $`m_{s} ,m_{f}`$ states. If the two perturbations are of the same order, we must diagonalize the full perturbation matrix. This calculation will always be correct but more time consuming.
 
-We can estimate the field at which the perturbations are the same size by comparing $`\mu_{B} B`$ to
-
-$`\tfrac{2}{3} \alpha^{4} \tfrac{m_{e}}{m_{p}} mc^{2} g_{N}`$ = 2$`. 9 \times 1 0^{- 6}`$. The weak field limit is achieved if $`B \ll 500`$ gauss.
+We can estimate the field at which the perturbations are the same size by comparing $`\mu_{B} B`$ to $`\tfrac{2}{3} \alpha^{4} \tfrac{m_{e}}{m_{p}} mc^{2} g_{N}`$ = 2$`. 9 \times 1 0^{- 6}`$. The weak field limit is achieved if $`B \ll 500`$ gauss.
 
 <div align="right"><a href="book.pdf#page=348" target="_blank" title="This page in the PDF"><sup>[p. 348]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">

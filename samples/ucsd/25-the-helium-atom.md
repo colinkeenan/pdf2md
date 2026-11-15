@@ -567,9 +567,7 @@ H = \tfrac{p^{2}}{2 m} + \lambda x^{4} .
 
 # <a id="s-25-9-sample-test-problems"></a>25.9 Sample Test Problems
 
-1. We wish to get a good upper limit on the Helium ground state energy. Use as a trial wave function the 1s hydrogen state with the parameter a screened nuclear charge $`Z^{*}`$ to get this limit. Determine the value of $`Z^{*}`$ which gives the best limit. The integral $`\langle ( 1 s )^{2} |_{|} \tfrac{e^{2}}{\vec{r}_{1} - \vec{r}_{2} |} | ( 1 s )^{2} \rangle =`$
-
-$`\tfrac{5}{8} Z^{*} \alpha^{2} mc^{2}`$ for a nucleus of charge $`Z^{*} e`$.
+1. We wish to get a good upper limit on the Helium ground state energy. Use as a trial wave function the 1s hydrogen state with the parameter a screened nuclear charge $`Z^{*}`$ to get this limit. Determine the value of $`Z^{*}`$ which gives the best limit. The integral $`\langle ( 1 s )^{2} |_{|} \tfrac{e^{2}}{\vec{r}_{1} - \vec{r}_{2} |} | ( 1 s )^{2} \rangle = \tfrac{5}{8} Z^{*} \alpha^{2} mc^{2}`$ for a nucleus of charge $`Z^{*} e`$.
 
 <div align="right"><a href="book.pdf#page=369" target="_blank" title="This page in the PDF"><sup>[p. 369]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">

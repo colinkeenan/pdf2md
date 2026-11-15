@@ -1685,7 +1685,12 @@ fn starts_entry(l: &Line) -> bool {
     let Some(first) = l.spans.first() else { return false };
     let t = first.text.trim();
     if first.script == Script::Super && !t.is_empty() && t.bytes().all(|b| b.is_ascii_digit()) {
-        return true;
+        // (not the numerator of a stacked fraction the line begins with,
+        // "½μ²ϕ² term": a small figure stands right under it)
+        let stacked = l.spans.iter().skip(1).any(|s| {
+            s.script == Script::Sub && s.text.trim().bytes().all(|b| b.is_ascii_digit()) && !s.text.trim().is_empty() && s.left < first.right() + 1.0 && s.right() > first.left - 1.0 && s.top > first.top
+        });
+        return !stacked;
     }
     let p = plain_text(l);
     p.strip_prefix('[')

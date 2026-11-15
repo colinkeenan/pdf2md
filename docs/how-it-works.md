@@ -221,7 +221,7 @@ This is the path for a PDF made with TeX or by a publisher's typesetting system,
 * **Italic and bold** become `_…_` and `**…**`. Headings carry neither.
 * **Centered text**, such as a title page, goes in `<div align="center">` and keeps its line breaks. A line counts as centered when its middle is at the middle of the column and it is clearly in from both margins.
 * **Hard returns** are kept. A line that ends early, although the next line's first word would have fit, was ended on purpose, as in an address. It stays a line of its own (`<br>`), and becomes its own paragraph when there is also extra space above it.
-* **Footnote markers** are small raised numbers attached to a word. End notes are matched by the longest run of rising marker numbers in reading order, so the 16 of "O¹⁶" cannot take note 16. Notes at the foot of a page match markers on that page.
+* **Footnote markers** are small raised numbers attached to a word. End notes are matched by the longest run of rising marker numbers in reading order, so the 16 of "O¹⁶" cannot take note 16. Notes at the foot of a page match markers on that page. A line that begins with a small raised number begins a note's entry, unless a small number stands right under it: then the line begins with a stacked fraction ("½μ²ϕ² term") and goes on its paragraph.
 
 * **The name under a quotation** ("—N. P. Ong, Princeton University") is the last line of the quotation's paragraph, on a line of its own, and ends it: what follows is another paragraph, also where the page ends with the name.
 * **Over a page** a paragraph goes on only in the type size it is set in.

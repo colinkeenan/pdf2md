@@ -509,9 +509,7 @@ tator $`[ p,x ]`$ in the state $`a`$ and summing over all energy eigenstates. As
 
 # <a id="s-22-6-sample-test-problems"></a>22.6 Sample Test Problems
 
-1. Assume an electron is bound to a heavy positive particle with a harmonic potential $`V ( x ) =`$
-
-$`\tfrac{1}{2} m\omega^{2} x^{2}`$. Calculate the energy shifts to all the energy eigenstates in an electric field $`E`$ (in the $`x`$ direction).
+1. Assume an electron is bound to a heavy positive particle with a harmonic potential $`V ( x ) = \tfrac{1}{2} m\omega^{2} x^{2}`$. Calculate the energy shifts to all the energy eigenstates in an electric field $`E`$ (in the $`x`$ direction).
 
 2. Find the energies of the $`n`$ = 2 hydrogen states in a strong uniform electric field in the z-direction. (Note, since spin plays no role here there are just 4 degenerate states. Ignore the fine structure corrections to the energy since the E-field is strong. Remember to use the fact that $`[ L_{z} ,z ]`$ = 0. If you are pressed for time, don’t bother to evaluate the radial integrals.)
 

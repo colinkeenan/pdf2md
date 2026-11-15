@@ -485,9 +485,7 @@ We again normalize to determine the constant.
 
 ## <a id="s-16-4-1-expectation-values-in-hydrogen-states"></a>16.4.1 Expectation Values in Hydrogen States
 
-An **electron in the Coulomb field of a proton** is in the state described by the wave function
-
-$`\tfrac{1}{6} ( 4 \psi_{1 0 0} + 3 \psi_{2 1 1} - i\psi_{2 1 0} + \sqrt{1 0} \psi_{2 1 - 1} )`$. Find the expected value of the Energy, $`L^{2} , L_{z}`$, and $`L_{y}`$.
+An **electron in the Coulomb field of a proton** is in the state described by the wave function $`\tfrac{1}{6} ( 4 \psi_{1 0 0} + 3 \psi_{2 1 1} - i\psi_{2 1 0} + \sqrt{1 0} \psi_{2 1 - 1} )`$. Find the expected value of the Energy, $`L^{2} , L_{z}`$, and $`L_{y}`$.
 
 First check the normalization.
 

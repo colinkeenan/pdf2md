@@ -12425,9 +12425,7 @@ We again normalize to determine the constant.
 
 ## <a id="s-16-4-1-expectation-values-in-hydrogen-states"></a>16.4.1 Expectation Values in Hydrogen States
 
-An **electron in the Coulomb field of a proton** is in the state described by the wave function
-
-$`\tfrac{1}{6} ( 4 \psi_{1 0 0} + 3 \psi_{2 1 1} - i\psi_{2 1 0} + \sqrt{1 0} \psi_{2 1 - 1} )`$. Find the expected value of the Energy, $`L^{2} , L_{z}`$, and $`L_{y}`$.
+An **electron in the Coulomb field of a proton** is in the state described by the wave function $`\tfrac{1}{6} ( 4 \psi_{1 0 0} + 3 \psi_{2 1 1} - i\psi_{2 1 0} + \sqrt{1 0} \psi_{2 1 - 1} )`$. Find the expected value of the Energy, $`L^{2} , L_{z}`$, and $`L_{y}`$.
 
 First check the normalization.
 
@@ -17571,9 +17569,7 @@ tator $`[ p,x ]`$ in the state $`a`$ and summing over all energy eigenstates. As
 
 # <a id="s-22-6-sample-test-problems"></a>22.6 Sample Test Problems
 
-1. Assume an electron is bound to a heavy positive particle with a harmonic potential $`V ( x ) =`$
-
-$`\tfrac{1}{2} m\omega^{2} x^{2}`$. Calculate the energy shifts to all the energy eigenstates in an electric field $`E`$ (in the $`x`$ direction).
+1. Assume an electron is bound to a heavy positive particle with a harmonic potential $`V ( x ) = \tfrac{1}{2} m\omega^{2} x^{2}`$. Calculate the energy shifts to all the energy eigenstates in an electric field $`E`$ (in the $`x`$ direction).
 
 2. Find the energies of the $`n`$ = 2 hydrogen states in a strong uniform electric field in the z-direction. (Note, since spin plays no role here there are just 4 degenerate states. Ignore the fine structure corrections to the energy since the E-field is strong. Remember to use the fact that $`[ L_{z} ,z ]`$ = 0. If you are pressed for time, don’t bother to evaluate the radial integrals.)
 
@@ -18191,9 +18187,7 @@ W_{z} = 2 \mu_{B} B \frac{S_{z}}{\hbar} .
 
 As an examples of perturbation theory, we will work this problem for weak fields, for strong fields, and also work the general case for intermediate fields. Just as in the Zeeman effect, **if one perturbation** **is much bigger than another, we choose the set of states in which the larger perturbation** **is diagonal**. In this case, the hyperfine splitting is diagonal in states of definite $`f`$ while the above perturbation due to the B field is diagonal in states of definite $`m_{s}`$. For a weak field, the hyperfine dominates and we use the states of definite $`f`$. For a strong field, we use the $`m_{s} ,m_{f}`$ states. If the two perturbations are of the same order, we must diagonalize the full perturbation matrix. This calculation will always be correct but more time consuming.
 
-We can estimate the field at which the perturbations are the same size by comparing $`\mu_{B} B`$ to
-
-$`\tfrac{2}{3} \alpha^{4} \tfrac{m_{e}}{m_{p}} mc^{2} g_{N}`$ = 2$`. 9 \times 1 0^{- 6}`$. The weak field limit is achieved if $`B \ll 500`$ gauss.
+We can estimate the field at which the perturbations are the same size by comparing $`\mu_{B} B`$ to $`\tfrac{2}{3} \alpha^{4} \tfrac{m_{e}}{m_{p}} mc^{2} g_{N}`$ = 2$`. 9 \times 1 0^{- 6}`$. The weak field limit is achieved if $`B \ll 500`$ gauss.
 
 <div align="right"><a href="book.pdf#page=348" target="_blank" title="This page in the PDF"><sup>[p. 348]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -19201,9 +19195,7 @@ H = \tfrac{p^{2}}{2 m} + \lambda x^{4} .
 
 # <a id="s-25-9-sample-test-problems"></a>25.9 Sample Test Problems
 
-1. We wish to get a good upper limit on the Helium ground state energy. Use as a trial wave function the 1s hydrogen state with the parameter a screened nuclear charge $`Z^{*}`$ to get this limit. Determine the value of $`Z^{*}`$ which gives the best limit. The integral $`\langle ( 1 s )^{2} |_{|} \tfrac{e^{2}}{\vec{r}_{1} - \vec{r}_{2} |} | ( 1 s )^{2} \rangle =`$
-
-$`\tfrac{5}{8} Z^{*} \alpha^{2} mc^{2}`$ for a nucleus of charge $`Z^{*} e`$.
+1. We wish to get a good upper limit on the Helium ground state energy. Use as a trial wave function the 1s hydrogen state with the parameter a screened nuclear charge $`Z^{*}`$ to get this limit. Determine the value of $`Z^{*}`$ which gives the best limit. The integral $`\langle ( 1 s )^{2} |_{|} \tfrac{e^{2}}{\vec{r}_{1} - \vec{r}_{2} |} | ( 1 s )^{2} \rangle = \tfrac{5}{8} Z^{*} \alpha^{2} mc^{2}`$ for a nucleus of charge $`Z^{*} e`$.
 
 <div align="right"><a href="book.pdf#page=369" target="_blank" title="This page in the PDF"><sup>[p. 369]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -23458,9 +23450,7 @@ Higher order terms can be computed but its not recommended.
 
 Some atomic states, such as the **2s state of Hydrogen**, cannot decay by any of these terms basically because the 2s to 1s is a 0 to 0 transition and there is no way to conserve angular momentum and parity. This state can only decay by the emission of two photons.
 
-While E1 transitions in hydrogen have lifetimes as small as $`1 0^{- 9}`$ seconds, the **E2 and M1 transi-** **tions have lifetimes of the order of** $`1 0^{- 3}`$ **seconds**, and the **2s state has a lifetime of about**
-
-$`7 1`$ **of a second**.
+While E1 transitions in hydrogen have lifetimes as small as $`1 0^{- 9}`$ seconds, the **E2 and M1 transi-** **tions have lifetimes of the order of** $`1 0^{- 3}`$ **seconds**, and the **2s state has a lifetime of about** $`7 1`$ **of a second**.
 
 # <a id="s-33-13black-body-radiation-spectrum"></a>33.13 Black Body Radiation Spectrum
 
