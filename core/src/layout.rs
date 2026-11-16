@@ -984,6 +984,8 @@ fn figures_and_pieces(svg: &str) -> Vec<(Vec<Figure>, Vec<Figure>)> {
             // (left, right, top, bottom, is an image)
             let mut boxes: Vec<(f32, f32, f32, f32, bool)> = Vec::new();
             let mut drawn: Vec<(f32, f32, f32, f32)> = Vec::new();
+            // (a long curved stroke: a drawing even where it is the only piece)
+            let mut curves: Vec<(f32, f32, f32, f32)> = Vec::new();
             for tag in body.split("<path ").skip(1) {
                 let tag = format!(" {}", tag.split("/>").next().unwrap_or(""));
                 if tag.contains(" id=\"") {
@@ -1013,6 +1015,9 @@ fn figures_and_pieces(svg: &str) -> Vec<(Vec<Figure>, Vec<Figure>)> {
                     // of many stacked fractions is no drawing)
                     if stroked_rule(tag.trim_start()).is_none() {
                         drawn.push((l, r, t, b));
+                        if tag.contains("stroke=") && d.contains('C') && r - l >= 30.0 && b - t >= 30.0 {
+                            curves.push((l, r, t, b));
+                        }
                     }
                 }
             }
@@ -1058,7 +1063,7 @@ fn figures_and_pieces(svg: &str) -> Vec<(Vec<Figure>, Vec<Figure>)> {
                 .into_iter()
                 // a real picture: an image, or several strokes of some size
                 // (or a wide strip of many pieces: a legend drawn as paths)
-                .filter(|g| g.5 || (g.4 >= 3 && g.1 - g.0 >= 15.0 && g.3 - g.2 >= 15.0) || (g.4 >= 8 && g.1 - g.0 >= 40.0))
+                .filter(|g| g.5 || (g.4 >= 3 && g.1 - g.0 >= 15.0 && g.3 - g.2 >= 15.0) || (g.4 >= 8 && g.1 - g.0 >= 40.0) || curves.iter().any(|p| p.0 >= g.0 - 0.1 && p.1 <= g.1 + 0.1 && p.2 >= g.2 - 0.1 && p.3 <= g.3 + 0.1))
                 .filter(|g| g.5 || drawn.iter().any(|p| p.0 >= g.0 - 0.1 && p.1 <= g.1 + 0.1 && p.2 >= g.2 - 0.1 && p.3 <= g.3 + 0.1))
                 .map(|g| Figure { left: g.0 * 1.5, right: g.1 * 1.5, top: g.2 * 1.5, bottom: g.3 * 1.5 })
                 .collect();
@@ -1219,11 +1224,19 @@ fn take_figure_labels(doc: &mut Doc) {
             });
             prose <= 3 && !titled
         });
+        let bottoms: Vec<(f32, f32, f32)> = page.figures.iter().map(|f| (f.left, f.right, f.bottom)).collect();
         for f in page.figures.iter_mut() {
             let (l, r, t, b) = (f.left - m, f.right + m, f.top - 1.2 * m, f.bottom + 1.2 * m);
             for line in page.lines.iter_mut() {
                 // the picture's caption ("Fig. 3.6 …", "Table 5.1 …") is text
                 if crate::links::starts_like_caption(&plain_text(line)) {
+                    continue;
+                }
+                // "(a)" over this picture and under another one names the
+                // picture above it: it is no lettering of this one
+                let text = plain_text(line);
+                let panel = text.trim().len() == 3 && text.trim().starts_with('(') && text.trim().ends_with(')');
+                if panel && line.top + line.size <= f.top + 1.0 && bottoms.iter().any(|&(fl, fr, fb)| fb <= line.top + 1.0 && line.top - fb < 4.0 * m && fl < line.right && fr > line.left) {
                     continue;
                 }
                 // a whole line beside the picture is prose, not a label
