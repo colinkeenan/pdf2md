@@ -845,7 +845,7 @@ We know that the eigenvalue $`\ell ( \ell + 1 ) \hbar^{2}`$ is greater than zero
 
 because negative values just repeat the same eigenvalues of $`\ell ( \ell + 1 ) \hbar^{2}`$.
 
-The condition that $`\ell ( \ell + 1 )`$ $`\geq m ( m \pm 1 )`$ then becomes a limit on $`m`$.
+The condition that $`\ell ( \ell + 1 ) \geq m ( m \pm 1 )`$ then becomes a limit on $`m`$.
 
 ```math
 - \ell \leq m \leq \ell

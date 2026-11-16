@@ -2025,7 +2025,9 @@ impl Builder<'_> {
             };
             // (a book with math fonts sets a formula's figures and brackets
             // in the text's font: the pieces of one formula, put together)
-            let p = if is_text_math(self.doc) { tidy(p) } else { tidy(crate::brackets::mend(crate::brackets::sides(tidy(p)))) };
+            // (the two sides of a sign once more: a bracket's mending may have
+            // made a formula of the text behind an open "=")
+            let p = if is_text_math(self.doc) { tidy(p) } else { tidy(crate::brackets::sides(tidy(crate::brackets::mend(crate::brackets::sides(tidy(p)))))) };
             // A paragraph that is one equation picture and nothing else
             // (but the comma or full stop after it) is a formula set apart
             // without a number: written as one.

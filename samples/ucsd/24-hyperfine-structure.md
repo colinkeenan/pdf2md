@@ -85,7 +85,7 @@ We can estimate the field at which the perturbations are the same size by compar
 
 \* See Example 24.3.2: The Hyperfine Splitting in a Weak B Field.\*
 
-The result of this is example is quite simple $`E = E_{n 0 0} + \tfrac{\mathcal{A}}{2} ( f ( f ) + 1 )`$ $`- \tfrac{3}{2} ( ) + \mu_{B} Bm_{f}`$. It has the hyperfine term we computed before and adds a term proportional to $`B`$ which depends on $`m_{f}`$.
+The result of this is example is quite simple $`E = E_{n 0 0} + \tfrac{\mathcal{A}}{2} ( f ( f ) + 1 ) - \tfrac{3}{2} ( ) + \mu_{B} Bm_{f}`$. It has the hyperfine term we computed before and adds a term proportional to $`B`$ which depends on $`m_{f}`$.
 
 In the strong field limit we use states $`| m_{s} m_{i} \rangle`$ and treat the hyperfine interaction as a perturbation. The unperturbed energies of these states are $`E = E_{n 0 0}`$ + 2$`\mu_{B} Bm_{s} + g\mu_{N} Bm_{I}`$. We kept the small term due to the nuclear moment in the B field without extra effort.
 
