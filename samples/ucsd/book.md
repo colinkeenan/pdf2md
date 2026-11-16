@@ -7760,11 +7760,7 @@ If we equate the two expressions,
 and cross multiply, we have
 
 ```math
-( A \sin ( ka ) + B \cos ( ka ) ) ( A \cos ( ka ) + B \sin ( ka ) )
-```
-
-```math
-= ( A \cos ( ka ) - B \sin ( ka ) ) ( A \sin ( ka ) - B \cos ( ka ) ) .
+\begin{aligned} & \quad ( A \sin ( ka ) + B \cos ( ka ) ) ( A \cos ( ka ) + B \sin ( ka ) ) \\ &= ( A \cos ( ka ) - B \sin ( ka ) ) ( A \sin ( ka ) - B \cos ( ka ) ) . \end{aligned}
 ```
 
 The $`A^{2}`$ and $`B^{2}`$ terms show up on both sides of the equation and cancel. What’s left is

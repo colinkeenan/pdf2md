@@ -2387,9 +2387,9 @@ pub fn display(
     let mut mains: Vec<&MSpan> = rest.iter().filter(|s| !s.cmex() && s.size >= 0.9 * max).collect();
     mains.sort_by(|a, b| a.cy().total_cmp(&b.cy()));
     // (centre, has a relation sign, starts with + or −)
-    let mut rows: Vec<(f32, bool, bool)> = Vec::new();
+    let mut rows: Vec<(f32, bool, bool, bool)> = Vec::new();
     let mut cur: Vec<&MSpan> = Vec::new();
-    let close_row = |cur: &Vec<&MSpan>, rows: &mut Vec<(f32, bool, bool)>| {
+    let close_row = |cur: &Vec<&MSpan>, rows: &mut Vec<(f32, bool, bool, bool)>| {
         if !cur.is_empty() {
             let c = cur.iter().map(|s| s.cy()).sum::<f32>() / cur.len() as f32;
             // (an arrow relates the two sides of its line as "=" does)
@@ -2398,7 +2398,9 @@ pub fn display(
             let rel = cur.iter().any(|s| is_relation(&s.text) || (s.text.contains('→') && !in_fraction(s)));
             let first = cur.iter().min_by(|a, b| a.left.total_cmp(&b.left)).unwrap();
             let op = first.text.trim_start().starts_with(['+', '−', '-', '×', '·']);
-            rows.push((c, rel, op));
+            // (a line that begins with the sign goes on from the line above)
+            let goes_on = is_relation(first.text.trim());
+            rows.push((c, rel, op, goes_on));
         }
     };
     for s in mains {
@@ -2476,9 +2478,21 @@ pub fn display(
             && !members.is_empty()
             && members.iter().all(|s| between_pair(s.left, s.right, c))
     };
+    // Two rows inside one tall bracket (read from its outline).
+    let same_bracket = |p: f32, c: f32| tall.iter().any(|b| p > b.top - 0.5 * max && c < b.bottom + 0.5 * max);
+    // Every bracket around this row is one line high, the row at its middle,
+    // and closes in the row ("[" may close lines further down).
+    let one_line = |c: f32| {
+        !rest.iter().any(|s| s.cmex() && s.text.trim().is_empty())
+            && tall.iter().filter(|b| c > b.top - 0.5 * max && c < b.bottom + max).all(|b| b.bottom - b.top < 2.2 * max && (c - b.cy()).abs() < 0.5 * max && tall.iter().any(|q| q.text != b.text && (q.cy() - b.cy()).abs() < 0.5 * max))
+    };
     let mut skipped: Vec<f32> = Vec::new();
     let mut prev_row: Option<f32> = None;
-    for (c, rel, op) in rows {
+    let mut related = false;
+    for (c, rel, op, goes_on) in rows {
+        if std::env::var_os("PDF2MD_DISPDEBUG").is_some() {
+            eprintln!("ROW {c} rel {rel} op {op} matrix {} inbr {} frac {}", matrix_row(c), in_bracket(c), fraction_row(c));
+        }
         if matrix_row(c) {
             skipped.push(c);
             continue;
@@ -2486,13 +2500,16 @@ pub fn display(
         let tagged = tags.iter().any(|t| (t.cy() - c).abs() <= 0.5 * max);
         // With no bars at all, a row well apart from the one above is a line
         // of its own ("φ₁ to φ₁ + δφ on σ₁" / "φ₂ to …"), and so is that one.
+        // (rows of a matrix stand in one bracket; a bracket one line high
+        // around part of the row above holds no row of this one)
         let apart = bars.is_empty()
             && prev_row.is_some_and(|p| c - p >= 1.4 * max)
-            && !in_bracket(c)
-            && !prev_row.is_some_and(in_bracket);
+            && !prev_row.is_some_and(|p| (in_bracket(c) || in_bracket(p)) && (same_bracket(p, c) || !one_line(p) || !one_line(c)));
         if apart && anchors.is_empty() {
             anchors.push((prev_row.unwrap_or(c), false));
         }
+        // "= …" under a line that has no relation sign: its right-hand side
+        let rhs = apart && goes_on && !related && anchors.len() == 1 && tags.is_empty();
         // A full row well under the rows of a fraction, reaching out past
         // every bar: the fraction's line had no relation sign to tell it,
         // and this row is the display's second line, not a denominator.
@@ -2514,9 +2531,10 @@ pub fn display(
         prev_row = Some(c);
         let far = anchors.last().is_none_or(|&(a, _)| c - a >= 1.1 * max);
         let own_line = (!bars.is_empty() || apart) && !fraction_row(c) && !in_bracket(c);
-        if second_line {
+        if second_line || (rhs && far) {
             anchors.push((c, true));
         } else if far && (rel || tagged || own_line) {
+            related |= rel;
             anchors.push((c, false));
         } else if far && op && !anchors.is_empty() {
             anchors.push((c, true));
@@ -2537,6 +2555,9 @@ pub fn display(
         }
     }
     anchors.sort_by(|a, b| a.0.total_cmp(&b.0));
+    if std::env::var_os("PDF2MD_DISPDEBUG").is_some() {
+        eprintln!("DISPLAY max {max} bars {} anchors {anchors:?} skipped {skipped:?} cmex {:?}", bars.len(), rest.iter().filter(|s| s.cmex()).map(|s| format!("{:?}@{:.0},{:.0}-{:.0}", s.text, s.left, s.top, s.bottom)).collect::<Vec<_>>());
+    }
     if anchors.len() <= 1 {
         let tag = tags.first().and_then(|t| tag_of(&t.text));
         return vec![(build_with(&rest, bars), tag)];
