@@ -676,13 +676,28 @@ fn raised_dots(mut spans: Vec<MSpan>) -> Vec<MSpan> {
         let best = |x: &usize, y: &usize| level(*x).cmp(&level(*y)).then(spans[*x].size.total_cmp(&spans[*y].size));
         let before = (0..spans.len()).filter(small).filter(|&j| (d.left - spans[j].right).abs() <= 0.3 * d.size).max_by(best);
         let after = (0..spans.len()).filter(small).filter(|&j| (spans[j].left - d.right).abs() <= 0.3 * d.size).max_by(best);
-        let (Some(b), Some(a)) = (before, after) else { continue };
-        if !level(a) && !level(b) {
-            continue;
-        }
-        let like = if level(b) && (!level(a) || spans[b].size >= spans[a].size) { b } else { a };
-        // (the dots stand with the indices, not with an index's own number)
-        let like = if ellipsis && spans[a].size != spans[b].size { if spans[a].size > spans[b].size { a } else { b } } else { like };
+        // (dots that end the indices, "T^{λ…}": raised to the height of
+        // the index before them, nothing after)
+        // (raised: their box stands higher than the letter the indices
+        // are on; dots on the line after a lower index, "dx₂ … dx_N", do not)
+        let raised = (0..spans.len())
+            .filter(|&j| j != k && !spans[j].cmex() && spans[j].size >= 0.9 * line_size && spans[j].right <= d.left + 1.0 && !matches!(spans[j].text.trim(), "..." | ". . ." | "…" | "."))
+            .max_by(|&x, &y| spans[x].right.total_cmp(&spans[y].right))
+            .filter(|&j| d.left - spans[j].right < 3.0 * d.size && d.cy() < spans[j].cy() - 0.2 * d.size)
+            .map(|j| spans[j].cy());
+        let like = match (before, after) {
+            // (… and the index before them an upper one)
+            (Some(b), None) if ellipsis && level(b) && raised.is_some_and(|c| spans[b].cy() < c) => b,
+            (Some(b), Some(a)) => {
+                if !level(a) && !level(b) {
+                    continue;
+                }
+                let like = if level(b) && (!level(a) || spans[b].size >= spans[a].size) { b } else { a };
+                // (the dots stand with the indices, not with an index's own number)
+                if ellipsis && spans[a].size != spans[b].size { if spans[a].size > spans[b].size { a } else { b } } else { like }
+            }
+            _ => continue,
+        };
         let (top, bottom, size) = (spans[like].top, spans[like].bottom, spans[like].size);
         let d = &mut spans[k];
         (d.text, d.top, d.bottom, d.size) = (if ellipsis { "…" } else { "·" }.to_string(), top, bottom, size);
