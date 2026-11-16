@@ -1283,7 +1283,11 @@ fn take_figure_labels(doc: &mut Doc) {
                 };
                 let mut kept = Vec::new();
                 for s in spans.iter() {
-                    let inside = inside(s);
+                    // (… or a letter or two of its lettering across the picture's edge, within
+                    // its height, as the picture stands with the labels taken
+                    // so far: the index of the label at its corner)
+                    let across = (pi(s) || lettering.get(s.font).copied().unwrap_or(false)) && s.text.trim().chars().count() <= 3 && s.left <= f.right + 1.0 && s.right() >= f.left - 1.0 && s.top >= f.top - 1.0 && s.bottom() <= f.bottom + 1.0;
+                    let inside = inside(s) || across;
                     let near = s.left < r && s.right() > l && s.top < b && s.bottom() > t;
                     let around = lettered || near && (line_inside || lonely(s));
                     let s = s.clone();
