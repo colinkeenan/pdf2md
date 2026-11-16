@@ -340,10 +340,12 @@ Kirigami.ApplicationWindow {
                                         : row.result !== undefined ? (row.result.ok ? "Converted just now. " : "Failed: ") + row.result.words
                                         : (row.modelData.kind === "course" ? "A course: saved pages and PDFs. " : "")
                                           + (row.modelData.book !== "" ? "Converted " + row.modelData.when : "Not converted yet")
-                                    color: row.result === undefined ? Kirigami.Theme.textColor : row.result.ok ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.negativeTextColor
+                                    // (the theme's own colours for good, undecided and bad
+                                    // news, on the theme's background: none is set here)
+                                    color: row.running ? Kirigami.Theme.textColor
+                                        : row.result !== undefined ? (row.result.ok ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.negativeTextColor)
+                                        : row.modelData.book !== "" ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.neutralTextColor
                                     elide: Text.ElideMiddle
-                                    // (what this run did stands out from what was there before)
-                                    opacity: row.result !== undefined || row.running ? 1 : 0.6
                                     font: Kirigami.Theme.smallFont
                                 }
                             }
