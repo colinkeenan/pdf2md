@@ -2078,7 +2078,11 @@ impl Builder<'_> {
                 && (goes_on || next.is_none_or(|n| n.left >= l.left - step || starts_entry(n)));
             // An indented block (a quotation): same indent as before.
             let same_indent = (p.left - l.left).abs() < step;
-            return !(hanging || same_indent);
+            // (… whose paragraphs have their first line set in, like the
+            // book's: the line above is one, full to the right margin; not a
+            // name set to the right over its place)
+            let first_line = self.para_lines == 1 && p.left > l.left && p.left - l.left <= 2.0 * st.body && p.right >= st.right - st.body && !p.ends_sentence && p.right - p.left >= 0.6 * (st.right - st.left);
+            return !(hanging || same_indent || first_line);
         }
         false
     }
