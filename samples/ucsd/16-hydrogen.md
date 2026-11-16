@@ -496,7 +496,7 @@ E_{n} = - \frac{1}{2} \alpha^{2} \mu c^{2} \frac{1}{n^{2}}
 ```
 
 ```math
-\langle E \rangle = - \frac{1}{2} \alpha^{2} \mu c^{2} \frac{1 6 \tfrac{1}{1^{2}} + 9 \tfrac{1}{2^{2}} + 1 \tfrac{1}{2^{2}} + 1 0_{2} \tfrac{1}{2}}{3 6} = - \frac{1}{2} \alpha^{2} \mu c^{2} \frac{2 1}{3 6} = - \frac{1}{2} \alpha^{2} \mu c^{2} \frac{7}{1 2}
+\langle E \rangle = - \frac{1}{2} \alpha^{2} \mu c^{2} \frac{1 6 \tfrac{1}{1^{2}} + 9 \tfrac{1}{2^{2}} + 1 \tfrac{1}{2^{2}} + 1 0 \tfrac{1}{2^{2}}}{3 6} = - \frac{1}{2} \alpha^{2} \mu c^{2} \frac{2 1}{3 6} = - \frac{1}{2} \alpha^{2} \mu c^{2} \frac{7}{1 2}
 ```
 
 Similarly, we can just square probability amplitudes to compute the expectation value of $`L^{2}`$. The eigenvalues are $`\ell ( \ell + 1 ) \hbar^{2}`$.
@@ -722,7 +722,7 @@ R_{2 0} = \frac{1}{\sqrt{2}} \left( \frac{1}{a_{0}} \right)^{\tfrac{3}{2}} \left
 ```
 
 ```math
-\begin{aligned} &= \frac{1}{2 a_{0}^{3}} \int_{0}^{\infty} \left( 4 r^{3} e^{\tfrac{- 2 r}{a 0}} + \frac{1}{2} r^{3} e^{\tfrac{- r}{a 0}} - \frac{1}{2 a_{0}} r^{4} e^{\tfrac{- r}{a 0}} + \frac{1}{8 a_{0}^{2}} r^{5} e^{\tfrac{- r}{a 0}} \right. \\ & \quad \left. + \quad \left( - 2 \sqrt{2} r^{3} e^{\tfrac{- 3 r}{2 a 0}} + \frac{\sqrt{2}}{a_{0}} r^{4} e^{{}^{-} \tfrac{3 r}{2 a 0}} \right) \cos \left( \frac{E_{2} - E_{1}}{\hbar} t \right) \right) dr \end{aligned}
+\begin{aligned} &= \frac{1}{2 a_{0}^{3}} \int_{0}^{\infty} \left( 4 r^{3} e^{\tfrac{- 2 r}{a 0}} + \frac{1}{2} r^{3} e^{\tfrac{- r}{a 0}} - \frac{1}{2 a_{0}} r^{4} e^{\tfrac{- r}{a 0}} + \frac{1}{8 a_{0}^{2}} r^{5} e^{\tfrac{- r}{a 0}} \right. \\ & \quad \left. + \quad \left( - 2 \sqrt{2} r^{3} e^{\tfrac{- 3 r}{2 a 0}} + \frac{\sqrt{2}}{a_{0}} r^{4} e^{\tfrac{- 3 r}{2 a 0}} \right) \cos \left( \frac{E_{2} - E_{1}}{\hbar} t \right) \right) dr \end{aligned}
 ```
 
 ```math

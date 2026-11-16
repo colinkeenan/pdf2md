@@ -926,8 +926,13 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
         };
         // A small script hanging on a symbol outside the bar (the ′ of /e′
         // right before a fraction) belongs to that symbol.
+        // (not the half of a small stacked fraction, with its small other
+        // half right across the bar: the d of 2^{d/2−1} close behind the 2)
+        let touches = |u: &MSpan| (u.top - b.bottom).max(b.top - u.bottom).abs() <= 2.0;
+        let halves = |s: &MSpan| touches(s) && spans.iter().any(|u| u.size < 0.9 * size && within(u) && touches(u) && (u.cy() < b.top) != (s.cy() < b.top));
         let hangs_outside = |s: &MSpan| {
             s.size < 0.9 * size
+                && !halves(s)
                 && spans.iter().any(|t| {
                     let c = (t.left + t.right) / 2.0;
                     t.size >= 0.9 * size

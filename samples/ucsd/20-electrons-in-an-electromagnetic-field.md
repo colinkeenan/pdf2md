@@ -525,7 +525,7 @@ Note that $`\vec{p} \neq m \vec{v}`$. The momentum conjugate to $`\vec{r}`$ incl
 \frac{dp_{i}}{dt} = m \frac{dv_{i}}{dt} - \frac{e}{c} \frac{dA_{i}}{dt.}
 ```
 
-Similarly for the other Hamilton equation (in each vector component) $`\dot{p}_{i} = - \tfrac{\partial H}{i}_{\partial x}`$, we have
+Similarly for the other Hamilton equation (in each vector component) $`\dot{p}_{i} = - \tfrac{\partial H}{\partial x_{i}}`$, we have
 
 ```math
 \frac{dp_{i}}{dt} = \dot{p}_{i} = - \frac{e}{mc} \left( \vec{p} + \frac{e}{c} \vec{A} \right) \cdot \frac{\partial \vec{A}}{\partial x_{i}} + e \frac{\vec{\partial} \varphi}{\partial x_{i}} .

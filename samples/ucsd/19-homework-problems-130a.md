@@ -293,7 +293,7 @@ You may find the expansion of $`e^{ikz}`$ in terms of Bessel functions useful.
 
 # <a id="s-19-9-homework-9"></a>19.9 Homework 9
 
-1. An electron in the Hydrogen potential $`V ( r ) = - {}^{e} \tfrac{2}{r}`$ is in the state $`\psi ( \vec{r} ) = Ce^{- \alpha r}`$. Find the value of $`C`$ that properly normalizes the state. What is the probability that the electron be found in the ground state of Hydrogen?
+1. An electron in the Hydrogen potential $`V ( r ) = - \tfrac{e^{2}}{r}`$ is in the state $`\psi ( \vec{r} ) = Ce^{- \alpha r}`$. Find the value of $`C`$ that properly normalizes the state. What is the probability that the electron be found in the ground state of Hydrogen?
 
 2. An electron is in the $`\psi_{2 1 0}`$ state of hydrogen. Find its wave function in momentum space.
 

@@ -1172,7 +1172,7 @@ Again, we get quantized energies when we satisfy the boundary conditions at infi
 The ground state wavefunction is particularly simple, having only one term.
 
 ```math
-u_{0} ( x ) = a_{0} e^{- \tfrac{y 2}{2}} = a_{0} e^{- m\omega x^{2} / 2 \hbar}
+u_{0} ( x ) = a_{0} e^{\tfrac{- y 2}{2}} = a_{0} e^{- m\omega x^{2} / 2 \hbar}
 ```
 
 Lets find $`a_{0}`$ by normalizing the wavefunction.
@@ -1502,7 +1502,7 @@ b) Determine the coefficients needed to satisfy the boundary conditions.
 
 c) Calculate the probability for a particle in the beam to be reflected by the potential step and the probability to be transmitted.
 
-7. **\*** A particle is in the ground state ($`\psi ( x )`$ = $`( \tfrac{m\omega}{\pi \hbar} ) 4^{1} e \tfrac{- m\omega x 2}{2 \hbar}`$.) of a harmonic oscillator potential. Suddenly the potential is removed without affecting the particle’s state. Find the probability distribution $`P ( p )`$ for the particle’s momentum after the potential has been removed.
+7. **\*** A particle is in the ground state ($`\psi ( x )`$ = $`( \tfrac{m\omega}{\pi \hbar} ) \tfrac{1}{4} e \tfrac{- m\omega x 2}{2 \hbar}`$.) of a harmonic oscillator potential. Suddenly the potential is removed without affecting the particle’s state. Find the probability distribution $`P ( p )`$ for the particle’s momentum after the potential has been removed.
 
 8. **\*** A particle is in the third excited state (n=3) of the one dimensional harmonic oscillator potential.
 

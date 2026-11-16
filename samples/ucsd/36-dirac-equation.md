@@ -214,7 +214,7 @@ i \hbar \vec{\sigma} \cdot \vec{\nabla} \psi_{A} + i \hbar \frac{\partial}{\part
 ```
 
 ```math
-\begin{pmatrix} - i \hbar_{\partial x} \tfrac{\partial}{0} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} + mc \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = 0
+\begin{pmatrix} - i \hbar \tfrac{\partial}{\partial x_{0}} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} + mc \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = 0
 ```
 
 Remember that $`\psi_{A}`$ and $`\psi_{B}`$ are two component spinors so **this is an equation in 4 components**.
@@ -222,7 +222,7 @@ Remember that $`\psi_{A}`$ and $`\psi_{B}`$ are two component spinors so **this 
 We can rewrite the matrix above as a dot product between 4-vectors. The matrix has a dot product in 3 dimensions and a time component
 
 ```math
-\begin{pmatrix} - i \hbar_{\partial x} \tfrac{\partial}{0} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} = \hbar \left[ \begin{pmatrix} 0 & - i \vec{\sigma} \cdot \vec{\nabla} \\ i \vec{\sigma} \cdot \vec{\nabla} & 0 \end{pmatrix} + \begin{pmatrix} \tfrac{\partial}{\partial x_{4}} & 0 \\ 0 & - {}_{\partial x} \tfrac{\partial}{4} \end{pmatrix} \right]
+\begin{pmatrix} - i \hbar \tfrac{\partial}{\partial x_{0}} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} = \hbar \left[ \begin{pmatrix} 0 & - i \vec{\sigma} \cdot \vec{\nabla} \\ i \vec{\sigma} \cdot \vec{\nabla} & 0 \end{pmatrix} + \begin{pmatrix} \tfrac{\partial}{\partial x_{4}} & 0 \\ 0 & - \tfrac{\partial}{\partial x_{4}} \end{pmatrix} \right]
 ```
 
 ```math
@@ -242,7 +242,7 @@ The **4 by 4 matrices** $`\gamma_{\mu}`$ are given by.
 With this definition, the relativistic equation can be simplified a great deal.
 
 ```math
-\begin{pmatrix} - i \hbar \tfrac{\partial}{\partial x_{0}} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{0}_{\partial x} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} + mc \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = 0
+\begin{pmatrix} - i \hbar \tfrac{\partial}{\partial x_{0}} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} + mc \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = 0
 ```
 
 ```math
@@ -410,7 +410,7 @@ We know that our non-relativistic Quantum Mechanics only needed a two component 
 First, we can write the **two component equation that is equivalent to the Dirac equation**. Assume that the solution has the **usual time dependence** $`e^{- iEt/ \hbar}`$. We start from the equation in $`\psi_{A}`$ and $`\psi_{B}`$.
 
 ```math
-\begin{pmatrix} - i \hbar \tfrac{\partial}{\partial x_{0}} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{0}_{\partial x} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} + mc \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = 0
+\begin{pmatrix} - i \hbar \tfrac{\partial}{\partial x_{0}} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} + mc \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = 0
 ```
 
 ```math
@@ -681,7 +681,7 @@ E^{2} = p^{2} c^{2} + m^{2} c^{4}
 E = \pm \sqrt{p^{2} c^{2} + m^{2} c^{4}}
 ```
 
-Note that the momentum operator is clearly still $`\tfrac{\hbar}{i} \vec{\nabla}`$ and the energy operator is still $`i \hbar_{\partial t}^{\partial}`$ .
+Note that the momentum operator is clearly still $`\tfrac{\hbar}{i} \vec{\nabla}`$ and the energy operator is still $`i \hbar \tfrac{\partial}{\partial t}`$ .
 
 There is no coupling between the different components in this equation, but, we will see that (unlike the equation differentiated again) the **Dirac equation will give us relations between the** **components of the constant spinor**. Again, the solution can be written as a constant spinor, which may depend on momentum $`u_{\vec{p}}`$, times the exponential.
 
@@ -938,7 +938,7 @@ Now we take a look at the **“negative energy” spin up solution** in the same
 ```
 
 ```math
-\begin{pmatrix} 0 \\ 0 \\ \tfrac{p^{2} c^{2}}{- E + mc^{2}} + ( E + mc^{2} ) \\ - {}_{-} \tfrac{- p_{z} c}{E + mc^{2}} ( p_{x} + ip_{y} ) c + \tfrac{- ( p_{x} + ip_{y} ) c}{- E + mc^{2}} p_{z} c \end{pmatrix} = 0
+\begin{pmatrix} 0 \\ 0 \\ \tfrac{p^{2} c^{2}}{- E + mc^{2}} + ( E + mc^{2} ) \\ - \tfrac{- p_{z} c}{- E + mc^{2}} ( p_{x} + ip_{y} ) c + \tfrac{- ( p_{x} + ip_{y} ) c}{- E + mc^{2}} p_{z} c \end{pmatrix} = 0
 ```
 
 ```math
@@ -1594,7 +1594,7 @@ S_{boost} = \cosh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2}
 ```
 
 ```math
-\frac{1 + \cosh \chi}{2} = \frac{1 + \tfrac{e^{\chi} + e^{- \chi}}{2}}{2} = \frac{e^{\chi} + 2 + e^{- \chi}}{4} = \left( \frac{e \tfrac{\chi}{2} + e^{-} \tfrac{\chi}{2}}{2} \right)^{2} = \cosh^{2} \frac{\chi}{2}
+\frac{1 + \cosh \chi}{2} = \frac{1 + \tfrac{e^{\chi} + e^{- \chi}}{2}}{2} = \frac{e^{\chi} + 2 + e^{- \chi}}{4} = \left( \frac{e \tfrac{\chi}{2} + e \tfrac{- \chi}{2}}{2} \right)^{2} = \cosh^{2} \frac{\chi}{2}
 ```
 
 ```math
@@ -2430,7 +2430,7 @@ c \begin{pmatrix} 0 & - i \hbar \sigma_{i} \\ - i \hbar \sigma_{i} & 0 \end{pmat
 ```
 
 ```math
-c \begin{pmatrix} 0 & \sigma_{i} p_{i} \\ \sigma_{i} p_{i} & 0 \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = \begin{pmatrix} i \hbar \tfrac{\partial}{\partial t} - V ( r ) - mc^{2} & 0 \\ 0 & i \hbar_{\partial t}^{\partial} - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix}
+c \begin{pmatrix} 0 & \sigma_{i} p_{i} \\ \sigma_{i} p_{i} & 0 \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = \begin{pmatrix} i \hbar \tfrac{\partial}{\partial t} - V ( r ) - mc^{2} & 0 \\ 0 & i \hbar \tfrac{\partial}{\partial t} - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix}
 ```
 
 ```math
@@ -2542,11 +2542,11 @@ c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \begin{pmatrix} ( r ) \mathca
 ```
 
 ```math
-\begin{pmatrix} ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \\ \begin{pmatrix} \begin{pmatrix} r \tfrac{\partial}{\partial r} - ( \kappa - 1 ) \\ ir_{\partial r}^{\partial} - i ( 1 + \end{pmatrix} f \\ - \quad \kappa ) \end{pmatrix} g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell}^{m} \\ {}_{m} \begin{matrix} j \\ A \\ j \\ B \end{matrix} \\ if ( r ) \mathcal{Y}_{j\ell} \end{pmatrix}
+\begin{pmatrix} ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \\ \begin{pmatrix} \begin{pmatrix} r \tfrac{\partial}{\partial r} - ( \kappa - 1 ) \\ ir \tfrac{\partial}{\partial r} - i ( 1 + \end{pmatrix} f \\ - \quad \kappa ) \end{pmatrix} g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell}^{m} \\ {}_{m} \begin{matrix} j \\ A \\ j \\ B \end{matrix} \\ if ( r ) \mathcal{Y}_{j\ell} \end{pmatrix}
 ```
 
 ```math
-\hbar c \frac{1}{r} \begin{pmatrix} \left( \begin{pmatrix} - r_{\partial r} + ( \kappa - 1 ) \\ ir \tfrac{\partial}{\partial r} + i ( 1 + \kappa ) \end{pmatrix}^{\partial} \right) f ( r ) \mathcal{Y}_{j\ell}^{m} \\ {}_{m} \begin{matrix} j \\ A \\ j \\ B \end{matrix} \\ g ( r ) \mathcal{Y}_{j\ell} \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell}^{m} \\ {}_{m} \begin{matrix} j \\ A \\ j \\ B \end{matrix} \\ if ( r ) \mathcal{Y}_{j\ell} \end{pmatrix}
+\hbar c \frac{1}{r} \begin{pmatrix} \left( \begin{pmatrix} - r \tfrac{\partial}{\partial r} + ( \kappa - 1 ) \\ ir \tfrac{\partial}{\partial r} + i ( 1 + \kappa ) \end{pmatrix} \right) f ( r ) \mathcal{Y}_{j\ell}^{m} \\ {}_{m} \begin{matrix} j \\ A \\ j \\ B \end{matrix} \\ g ( r ) \mathcal{Y}_{j\ell} \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell}^{m} \\ {}_{m} \begin{matrix} j \\ A \\ j \\ B \end{matrix} \\ if ( r ) \mathcal{Y}_{j\ell} \end{pmatrix}
 ```
 
 ```math
@@ -2560,7 +2560,7 @@ c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \begin{pmatrix} ( r ) \mathca
 This is now a set of two coupled radial equations. We can simplify them a bit by making the substitutions $`F = rf`$ and $`G = rg`$. The extra term from the derivative cancels the 1’s that are with $`\kappa`$s.
 
 ```math
-\begin{aligned} \hbar c \left( \left( \begin{pmatrix} - {}_{r} \quad + \tfrac{F}{r^{2}} + \frac{\kappa F}{\tfrac{G r}{2}^{2} +} & 2 \\ \tfrac{1}{r} \frac{{}_{\partial G} \tfrac{\partial F}{\partial r}}{\partial r} - \tfrac{G}{r^{2}} + {}_{r} & \frac{- {}_{\kappa G} \tfrac{F}{r}}{r^{2}} \end{pmatrix}^{1} \right) \right) &= \begin{pmatrix} ( E - V - mc^{2} )_{r}^{G} \\ ( E - V + mc^{2} )_{r}^{F} \end{pmatrix} \\ \hbar c \left( \left( \begin{pmatrix} - \tfrac{\partial F}{\partial G \partial r} + \tfrac{\kappa F}{\kappa G r} \\ {}_{\partial r} + {}_{r} \end{pmatrix} \right) \right) &= \begin{pmatrix} ( E - V - mc^{2} ) G \\ ( E - V + mc^{2} ) F \end{pmatrix} \end{aligned}
+\begin{aligned} \hbar c \left( \left( \begin{pmatrix} - {}_{r} \quad + \tfrac{F}{r^{2}} + \frac{\kappa F}{\tfrac{G r}{2}^{2} +} & 2 \\ \tfrac{1}{r} \frac{{}_{\partial G} \tfrac{\partial F}{\partial r}}{\partial r} - \tfrac{G}{r^{2}} + {}_{r} & \frac{- {}_{\kappa G} \tfrac{F}{r}}{r^{2}} \end{pmatrix}^{1} \right) \right) &= \begin{pmatrix} ( E - V - mc^{2} ) \tfrac{G}{r} \\ ( E - V + mc^{2} ) \tfrac{F}{r} \end{pmatrix} \\ \hbar c \left( \left( \begin{pmatrix} - \tfrac{\partial F}{\partial G \partial r} + \tfrac{\kappa F}{\kappa G r} \\ {}_{\partial r} + {}_{r} \end{pmatrix} \right) \right) &= \begin{pmatrix} ( E - V - mc^{2} ) G \\ ( E - V + mc^{2} ) F \end{pmatrix} \end{aligned}
 ```
 
 ```math

@@ -989,7 +989,7 @@ I_{2} = \frac{1}{4} I_{1} = \frac{1}{1 2} I_{0}
 The third apparatus goes back to a separation in z and blocks the $`m`$ = 1 component. The incoming state is
 
 ```math
-\psi_{-}^{( x )} = \left( \frac{- \tfrac{1}{1 2}}{- \tfrac{2 1}{2}}^{\surd} \right)
+\psi_{-}^{( x )} = \left( \frac{- {}_{1} \tfrac{1}{2}}{- \tfrac{2 1}{2}}^{\surd} \right)
 ```
 
 Remember that the components of this vector are just the amplitudes to be in the different $`m`$ states (using the z axis). The probability to get through this apparatus is just the probability to be in the $`m`$ = 0 beam plus the probability to be in the $`m = - 1`$ beam.

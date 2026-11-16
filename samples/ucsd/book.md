@@ -1116,7 +1116,7 @@ p = - i \sqrt{\frac{m \hbar \omega}{2}} ( A - A^{\dagger} )
 
 # <a id="s-1-15-more-fun-with-operators"></a>1.15 More Fun with Operators
 
-We find the time development operator (See section 11.5) by solving the equation $`i \hbar_{\partial t}^{\partial \psi} = H\psi`$.
+We find the time development operator (See section 11.5) by solving the equation $`i \hbar \tfrac{\partial \psi}{\partial t} = H\psi`$.
 
 ```math
 \psi ( t ) = e^{- iHt/ \hbar} \psi ( t = 0 )
@@ -2448,7 +2448,7 @@ The result is, in general, complex. The imaginary part of the self energy correc
 The **time dependence of the wavefunction for the state** $`\psi_{n}`$ **is modified by the self energy** **correction**.
 
 ```math
-\psi_{n} ( \vec{x} , t ) = \psi_{n} ( \vec{x} ) e^{- i ( E_{n} + ℜ ( \Delta E_{n} ) ) t/ \hbar} e^{{}^{-} \tfrac{\Gamma nt}{2}}
+\psi_{n} ( \vec{x} , t ) = \psi_{n} ( \vec{x} ) e^{- i ( E_{n} + ℜ ( \Delta E_{n} ) ) t/ \hbar} e^{\tfrac{- \Gamma nt}{2}}
 ```
 
 This gives us the **exponential decay behavior** that we expect, **keeping resonant scattering** **cross sections from going to infinity**.
@@ -2522,7 +2522,7 @@ Instead of an equation which is second order in the time derivative, we can make
 Now rewriting in terms of $`\psi_{A} = \varphi^{( R )} + \varphi^{( L )}`$ and $`\psi_{B} = \varphi^{( R )} - \varphi^{( L )}`$ and ordering it as a matrix equation, we get an equation that can be written as a dot product between 4-vectors.
 
 ```math
-\begin{pmatrix} - i \hbar_{\partial x} \tfrac{\partial}{0} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} = \hbar \left[ \begin{pmatrix} 0 & - i \vec{\sigma} \cdot \vec{\nabla} \\ i \vec{\sigma} \cdot \vec{\nabla} & 0 \end{pmatrix} + \begin{pmatrix} \tfrac{\partial}{\partial x_{4}} & 0 \\ 0 & - {}_{\partial x} \tfrac{\partial}{4} \end{pmatrix} \right]
+\begin{pmatrix} - i \hbar \tfrac{\partial}{\partial x_{0}} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} = \hbar \left[ \begin{pmatrix} 0 & - i \vec{\sigma} \cdot \vec{\nabla} \\ i \vec{\sigma} \cdot \vec{\nabla} & 0 \end{pmatrix} + \begin{pmatrix} \tfrac{\partial}{\partial x_{4}} & 0 \\ 0 & - \tfrac{\partial}{\partial x_{4}} \end{pmatrix} \right]
 ```
 
 ```math
@@ -4597,11 +4597,11 @@ a_{n} = \tfrac{1}{2 L} \int_{- L}^{L} f ( x ) e \tfrac{- in\pi x}{L} dx \quad \t
 ```
 
 ```math
-A_{n} = \sqrt{\frac{2}{\pi}} L \tfrac{1}{2 L} \int_{- L}^{L} f ( x ) e^{-} \tfrac{in\pi x}{L} dx \quad \text{ redefine coefficient }
+A_{n} = \sqrt{\frac{2}{\pi}} L \tfrac{1}{2 L} \int_{- L}^{L} f ( x ) e \tfrac{- in\pi x}{L} dx \quad \text{ redefine coefficient }
 ```
 
 ```math
-A_{n} = \sqrt{\tfrac{1}{2 \pi} \int_{- L}^{L} f ( x ) e^{-} \tfrac{in\pi x}{L} dx}
+A_{n} = \sqrt{\tfrac{1}{2 \pi} \int_{- L}^{L} f ( x ) e \tfrac{- in\pi x}{L} dx}
 ```
 
 ```math
@@ -5199,7 +5199,7 @@ E = - \frac{1}{2} \alpha^{2} mc^{2}
 a $`\psi ( x ) = \tfrac{1}{\sqrt{2 a}}`$ for $`- a<x<a`$, otherwise $`\psi ( x )`$ = 0.
 
 ```math
-b \psi ( x ) = ( {}_{\pi}^{\alpha} ) 4^{1} e^{- \alpha x^{2} / 2}
+b \psi ( x ) = ( \tfrac{\alpha}{\pi} ) \tfrac{1}{4} e^{- \alpha x^{2} / 2}
 ```
 
 ```math
@@ -5239,7 +5239,7 @@ c \psi ( x ) = \delta ( x - x_{0} )
 ```
 
 ```math
-( c ) \bar{\psi} ( p ) = ( {}_{\pi}^{\alpha} ) 4^{1} e^{- \alpha p^{2} / 2}
+( c ) \bar{\psi} ( p ) = ( \tfrac{\alpha}{\pi} ) \tfrac{1}{4} e^{- \alpha p^{2} / 2}
 ```
 
 16. **\*** Assume that $`\varphi ( p ) = \delta ( p - p_{0} )`$. What is $`\psi ( x )`$? What is $`<p^{2} >`$? What is $`<x^{2} >`$?
@@ -5916,7 +5916,7 @@ Plug this into the Schrödinger Equation.
 Put everything that depends on $`x`$ on the left and everything that depends on $`t`$ on the right.
 
 ```math
-\frac{\left( \tfrac{\hbar^{2}}{2 m}^{-} \tfrac{\partial^{2} u ( x )}{\partial x^{2}} + V ( x ) u ( x ) \right)}{u ( x )} = \frac{i \hbar^{\partial T} \tfrac{( t )}{\partial t}}{T ( t )} = const. = E
+\frac{\left( \tfrac{\hbar^{2}}{2 m}^{-} \tfrac{\partial^{2} u ( x )}{\partial x^{2}} + V ( x ) u ( x ) \right)}{u ( x )} = \frac{i \hbar \tfrac{\partial T ( t )}{\partial t}}{T ( t )} = const. = E
 ```
 
 Since we have a function of only $`x`$ set equal to a function of only $`t`$, they **both must equal a** **constant**. In the equation above, we call the constant $`E`$, (with some knowledge of the outcome). We now have an equation in $`t`$ set equal to a constant
@@ -7994,7 +7994,7 @@ Again, we get quantized energies when we satisfy the boundary conditions at infi
 The ground state wavefunction is particularly simple, having only one term.
 
 ```math
-u_{0} ( x ) = a_{0} e^{- \tfrac{y 2}{2}} = a_{0} e^{- m\omega x^{2} / 2 \hbar}
+u_{0} ( x ) = a_{0} e^{\tfrac{- y 2}{2}} = a_{0} e^{- m\omega x^{2} / 2 \hbar}
 ```
 
 Lets find $`a_{0}`$ by normalizing the wavefunction.
@@ -8324,7 +8324,7 @@ b) Determine the coefficients needed to satisfy the boundary conditions.
 
 c) Calculate the probability for a particle in the beam to be reflected by the potential step and the probability to be transmitted.
 
-7. **\*** A particle is in the ground state ($`\psi ( x )`$ = $`( \tfrac{m\omega}{\pi \hbar} ) 4^{1} e \tfrac{- m\omega x 2}{2 \hbar}`$.) of a harmonic oscillator potential. Suddenly the potential is removed without affecting the particle’s state. Find the probability distribution $`P ( p )`$ for the particle’s momentum after the potential has been removed.
+7. **\*** A particle is in the ground state ($`\psi ( x )`$ = $`( \tfrac{m\omega}{\pi \hbar} ) \tfrac{1}{4} e \tfrac{- m\omega x 2}{2 \hbar}`$.) of a harmonic oscillator potential. Suddenly the potential is removed without affecting the particle’s state. Find the probability distribution $`P ( p )`$ for the particle’s momentum after the potential has been removed.
 
 8. **\*** A particle is in the third excited state (n=3) of the one dimensional harmonic oscillator potential.
 
@@ -12278,7 +12278,7 @@ E_{n} = - \frac{1}{2} \alpha^{2} \mu c^{2} \frac{1}{n^{2}}
 ```
 
 ```math
-\langle E \rangle = - \frac{1}{2} \alpha^{2} \mu c^{2} \frac{1 6 \tfrac{1}{1^{2}} + 9 \tfrac{1}{2^{2}} + 1 \tfrac{1}{2^{2}} + 1 0_{2} \tfrac{1}{2}}{3 6} = - \frac{1}{2} \alpha^{2} \mu c^{2} \frac{2 1}{3 6} = - \frac{1}{2} \alpha^{2} \mu c^{2} \frac{7}{1 2}
+\langle E \rangle = - \frac{1}{2} \alpha^{2} \mu c^{2} \frac{1 6 \tfrac{1}{1^{2}} + 9 \tfrac{1}{2^{2}} + 1 \tfrac{1}{2^{2}} + 1 0 \tfrac{1}{2^{2}}}{3 6} = - \frac{1}{2} \alpha^{2} \mu c^{2} \frac{2 1}{3 6} = - \frac{1}{2} \alpha^{2} \mu c^{2} \frac{7}{1 2}
 ```
 
 Similarly, we can just square probability amplitudes to compute the expectation value of $`L^{2}`$. The eigenvalues are $`\ell ( \ell + 1 ) \hbar^{2}`$.
@@ -12504,7 +12504,7 @@ R_{2 0} = \frac{1}{\sqrt{2}} \left( \frac{1}{a_{0}} \right)^{\tfrac{3}{2}} \left
 ```
 
 ```math
-\begin{aligned} &= \frac{1}{2 a_{0}^{3}} \int_{0}^{\infty} \left( 4 r^{3} e^{\tfrac{- 2 r}{a 0}} + \frac{1}{2} r^{3} e^{\tfrac{- r}{a 0}} - \frac{1}{2 a_{0}} r^{4} e^{\tfrac{- r}{a 0}} + \frac{1}{8 a_{0}^{2}} r^{5} e^{\tfrac{- r}{a 0}} \right. \\ & \quad \left. + \quad \left( - 2 \sqrt{2} r^{3} e^{\tfrac{- 3 r}{2 a 0}} + \frac{\sqrt{2}}{a_{0}} r^{4} e^{{}^{-} \tfrac{3 r}{2 a 0}} \right) \cos \left( \frac{E_{2} - E_{1}}{\hbar} t \right) \right) dr \end{aligned}
+\begin{aligned} &= \frac{1}{2 a_{0}^{3}} \int_{0}^{\infty} \left( 4 r^{3} e^{\tfrac{- 2 r}{a 0}} + \frac{1}{2} r^{3} e^{\tfrac{- r}{a 0}} - \frac{1}{2 a_{0}} r^{4} e^{\tfrac{- r}{a 0}} + \frac{1}{8 a_{0}^{2}} r^{5} e^{\tfrac{- r}{a 0}} \right. \\ & \quad \left. + \quad \left( - 2 \sqrt{2} r^{3} e^{\tfrac{- 3 r}{2 a 0}} + \frac{\sqrt{2}}{a_{0}} r^{4} e^{\tfrac{- 3 r}{2 a 0}} \right) \cos \left( \frac{E_{2} - E_{1}}{\hbar} t \right) \right) dr \end{aligned}
 ```
 
 ```math
@@ -13751,7 +13751,7 @@ I_{2} = \frac{1}{4} I_{1} = \frac{1}{1 2} I_{0}
 The third apparatus goes back to a separation in z and blocks the $`m`$ = 1 component. The incoming state is
 
 ```math
-\psi_{-}^{( x )} = \left( \frac{- \tfrac{1}{1 2}}{- \tfrac{2 1}{2}}^{\surd} \right)
+\psi_{-}^{( x )} = \left( \frac{- {}_{1} \tfrac{1}{2}}{- \tfrac{2 1}{2}}^{\surd} \right)
 ```
 
 Remember that the components of this vector are just the amplitudes to be in the different $`m`$ states (using the z axis). The probability to get through this apparatus is just the probability to be in the $`m`$ = 0 beam plus the probability to be in the $`m = - 1`$ beam.
@@ -14983,7 +14983,7 @@ You may find the expansion of $`e^{ikz}`$ in terms of Bessel functions useful.
 
 # <a id="s-19-9-homework-9"></a>19.9 Homework 9
 
-1. An electron in the Hydrogen potential $`V ( r ) = - {}^{e} \tfrac{2}{r}`$ is in the state $`\psi ( \vec{r} ) = Ce^{- \alpha r}`$. Find the value of $`C`$ that properly normalizes the state. What is the probability that the electron be found in the ground state of Hydrogen?
+1. An electron in the Hydrogen potential $`V ( r ) = - \tfrac{e^{2}}{r}`$ is in the state $`\psi ( \vec{r} ) = Ce^{- \alpha r}`$. Find the value of $`C`$ that properly normalizes the state. What is the probability that the electron be found in the ground state of Hydrogen?
 
 2. An electron is in the $`\psi_{2 1 0}`$ state of hydrogen. Find its wave function in momentum space.
 
@@ -15528,7 +15528,7 @@ Note that $`\vec{p} \neq m \vec{v}`$. The momentum conjugate to $`\vec{r}`$ incl
 \frac{dp_{i}}{dt} = m \frac{dv_{i}}{dt} - \frac{e}{c} \frac{dA_{i}}{dt.}
 ```
 
-Similarly for the other Hamilton equation (in each vector component) $`\dot{p}_{i} = - \tfrac{\partial H}{i}_{\partial x}`$, we have
+Similarly for the other Hamilton equation (in each vector component) $`\dot{p}_{i} = - \tfrac{\partial H}{\partial x_{i}}`$, we have
 
 ```math
 \frac{dp_{i}}{dt} = \dot{p}_{i} = - \frac{e}{mc} \left( \vec{p} + \frac{e}{c} \vec{A} \right) \cdot \frac{\partial \vec{A}}{\partial x_{i}} + e \frac{\vec{\partial} \varphi}{\partial x_{i}} .
@@ -16232,7 +16232,7 @@ A common way to name states in atomic physics is to use **spectroscopic notation
 A quick example is the single electron states, as we find in Hydrogen. These are:
 
 ```math
-3^{2} 1^{2} S_{\tfrac{1}{2}} D \tfrac{3}{2} 4^{2} S 2^{2} S_{\tfrac{1}{2}} \tfrac{1}{2} 4^{2} P 2^{2} P_{\tfrac{3}{{}^{2} 2}} \tfrac{3}{2} 4 P 2^{2} P_{1 2} 1_{2} 4^{2} D \tfrac{5}{2} 3^{2} S_{\tfrac{1}{2^{2}}} 4 D 3^{2} P_{3 2} \tfrac{3}{2} 4^{2} F 3^{2} P_{1 2} 7_{2} 4^{2} F 3^{2} D_{\tfrac{5}{2}} \tfrac{5}{2} \dots
+3^{2} 1^{2} S_{\tfrac{1}{2}} D \tfrac{3}{2} 4^{2} S 2^{2} S_{\tfrac{1}{2}} \tfrac{1}{2} 4^{2} P 2^{2} P_{\tfrac{3}{{}^{2} 2}} \tfrac{3}{2} 4 P 2^{2} P_{\tfrac{1}{2^{2}}} \tfrac{1}{2} 4 D \tfrac{5}{2} 3^{2} S_{\tfrac{1}{2^{2}}} 4 D 3^{2} P_{\tfrac{3}{{}^{2} 2}} \tfrac{3}{2} 4 F 3^{2} P_{\tfrac{1}{{}^{2} 2}} \tfrac{7}{2} 4 F 3^{2} D_{\tfrac{5}{2}} \tfrac{5}{2} \dots
 ```
 
 All of these have the pre-superscript 2 because they are all spin one-half. There are two $`j`$ values for each $`\ell`$.
@@ -16794,7 +16794,7 @@ This is what we expect.
 
 1. Find the allowed total spin states of two spin 1 particles. Explicitly write out the 9 states which are eigenfunctions of $`S^{2}`$ and $`S_{z}`$.
 
-2. The Hamiltonian of a spin system is given by $`H = A + \tfrac{B \vec{S}_{1} \vec{S}_{2}}{\hbar^{2}}^{\cdot} + {}^{C} \tfrac{( S_{1 z} + S_{2 z} )}{\hbar}`$. Find the eigenvalues and eigenfunctions of the system of two particles (a) when both particles have spin $`\frac{1}{2}`$, (b) when one particle has spin $`\frac{1}{2}`$ and the other spin 1. What happens in (a) when the two particles are identical?
+2. The Hamiltonian of a spin system is given by $`H = A + \tfrac{B \vec{S}_{1} \vec{S}_{2}}{\hbar^{2}}^{\cdot} + \tfrac{C ( S_{1 z} + S_{2 z} )}{\hbar}`$. Find the eigenvalues and eigenfunctions of the system of two particles (a) when both particles have spin $`\frac{1}{2}`$, (b) when one particle has spin $`\frac{1}{2}`$ and the other spin 1. What happens in (a) when the two particles are identical?
 
 <div align="right"><a href="book.pdf#page=323" target="_blank" title="This page in the PDF"><sup>[p. 323]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -17850,7 +17850,7 @@ Compute the energy shifts in eV.
 
 # <a id="s-23-6-sample-test-problems"></a>23.6 Sample Test Problems
 
-1. The relativistic correction to the Hydrogen Hamiltonian is $`H_{1} = - {}_{8} \tfrac{p^{4}}{m^{3} c^{2}}`$. Assume that electrons have spin zero and that there is therefore no spin orbit correction. Calculate the energy shifts and draw an energy diagram for the n=3 states of Hydrogen. You may use $`\langle \psi_{nlm} | \tfrac{1}{r} | \psi_{nlm} \rangle = \tfrac{1}{n^{2} a_{0}}`$ and $`\langle \psi_{nlm} | \tfrac{1}{r^{2}} | \psi_{nlm} \rangle = \tfrac{1}{n^{3} a_{0}^{2} ( l + \tfrac{1}{2} )}`$.
+1. The relativistic correction to the Hydrogen Hamiltonian is $`H_{1} = - \tfrac{p^{4}}{8 m^{3} c^{2}}`$. Assume that electrons have spin zero and that there is therefore no spin orbit correction. Calculate the energy shifts and draw an energy diagram for the n=3 states of Hydrogen. You may use $`\langle \psi_{nlm} | \tfrac{1}{r} | \psi_{nlm} \rangle = \tfrac{1}{n^{2} a_{0}}`$ and $`\langle \psi_{nlm} | \tfrac{1}{r^{2}} | \psi_{nlm} \rangle = \tfrac{1}{n^{3} a_{0}^{2} ( l + \tfrac{1}{2} )}`$.
 
 2. Calculate the fine structure energy shifts (in eV!) for the $`n`$ = 1, $`n`$ = 2, and $`n`$ = 3 states of Hydrogen. Include the effects of relativistic corrections, the spin-orbit interaction, and the so-called Darwin term (due to Dirac equation). Do not include hyperfine splitting or the effects of an external magnetic field. (Note: I am not asking you to derive the equations.) Clearly list the states in spectroscopic notation and make a diagram showing the allowed electric dipole decays of these states.
 
@@ -17874,13 +17874,13 @@ V = \tfrac{1}{2} m\omega^{2} r^{2}
 \langle H_{SO} \rangle = \tfrac{\hbar^{2} \omega^{2}}{4 mc^{2}} [ j ( j + 1 ) - l ( l + 1 ) - s ( s + 1 ) ]
 ```
 
-for the 0$`S_{2} 1`$, ∆$`E`$ = 0,
+for the 0$`S \tfrac{1}{2}`$, ∆$`E`$ = 0,
 
 ```math
-\text{ for the } 1 P_{1 2} , \Delta E = - 2 \tfrac{\hbar^{2} \omega^{2}}{4 mc^{2}} ,
+\text{ for the } 1 P_{\tfrac{1}{2}} , \Delta E = - 2 \tfrac{\hbar^{2} \omega^{2}}{4 mc^{2}} ,
 ```
 
-for the 1$`P_{3 2}`$, ∆$`E`$ = +1$`\frac{\hbar^{2} \omega^{2}}{4 mc^{2}}`$.
+for the 1$`P_{\tfrac{3}{2}}`$, ∆$`E`$ = +1$`\frac{\hbar^{2} \omega^{2}}{4 mc^{2}}`$.
 
 5. We computed that the energies after the fine structure corrections to the hydrogen spectrum are $`E_{nlj} = - \tfrac{\alpha^{2} mc^{2}}{2 n^{2}} + \tfrac{\alpha^{4} mc^{2}}{8 n^{4}} ( 3 - \tfrac{4 n}{j + \tfrac{1}{2}} )`$. Now a weak magnetic field $`B`$ is applied to hydrogen atoms in the 3$`d`$ state. Calculate the energies of all the 3$`d`$ states (ignoring hyperfine effects). Draw an energy level diagram, showing the quantum numbers of the states and the energy splittings.
 
@@ -18794,7 +18794,7 @@ This is close to the right answer. As always, it is treated as an upper limit on
 As a check of the procedure, take trial function $`e^{- ax^{2} / 2}`$. This should give us the actual ground state energy.
 
 ```math
-E^{\prime} = \frac{\int_{-\infty}^{\infty} \psi^{*} \left[ - \tfrac{\hbar^{2}}{m}_{2} \tfrac{\partial^{2} \psi}{\partial x^{2}} + \tfrac{1}{2} m\omega^{2} x^{2} \psi \right] dx}{\infty}
+E^{\prime} = \frac{\int_{-\infty}^{\infty} \psi^{*} \left[ - \tfrac{\hbar^{2}}{2 m} \tfrac{\partial^{2} \psi}{\partial x^{2}} + \tfrac{1}{2} m\omega^{2} x^{2} \psi \right] dx}{\infty}
 ```
 
 ```math
@@ -18967,7 +18967,7 @@ H = \tfrac{p^{2}}{2 m} + \lambda x^{4} .
 
 # <a id="s-25-9-sample-test-problems"></a>25.9 Sample Test Problems
 
-1. We wish to get a good upper limit on the Helium ground state energy. Use as a trial wave function the 1s hydrogen state with the parameter a screened nuclear charge $`Z^{*}`$ to get this limit. Determine the value of $`Z^{*}`$ which gives the best limit. The integral $`\langle ( 1 s )^{2} |_{|} \tfrac{e^{2}}{\vec{r}_{1} - \vec{r}_{2} |} | ( 1 s )^{2} \rangle = \tfrac{5}{8} Z^{*} \alpha^{2} mc^{2}`$ for a nucleus of charge $`Z^{*} e`$.
+1. We wish to get a good upper limit on the Helium ground state energy. Use as a trial wave function the 1s hydrogen state with the parameter a screened nuclear charge $`Z^{*}`$ to get this limit. Determine the value of $`Z^{*}`$ which gives the best limit. The integral $`\langle ( 1 s )^{2} | \tfrac{e^{2}}{| \vec{r}_{1} - \vec{r}_{2} |} | ( 1 s )^{2} \rangle = \tfrac{5}{8} Z^{*} \alpha^{2} mc^{2}`$ for a nucleus of charge $`Z^{*} e`$.
 
 <div align="right"><a href="book.pdf#page=369" target="_blank" title="This page in the PDF"><sup>[p. 369]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -19157,7 +19157,7 @@ We see that the atomic shell model works even though the hydrogen states are not
 
 Even with the strong nuclear force, a shell model describes important features of nuclei. **Nuclei** **have tightly bound closed shells for both protons and neutrons**. Tightly bound nuclei correspond to the most abundant elements. What elements exist is governed by nuclear physics and we can get a good idea from a simple shell model. **Nuclear magic numbers** occur for neutron or proton number of 2, 8, 20, 28, 50, 82, and 126, as indicated in the figure below. Nuclei where the number of protons or neutrons is magic are more tightly bound and often more abundant. Heavier nuclei tend to have **more neutrons than protons because of the coulomb repulsion** of the protons (and the otherwise symmetric strong interactions). Nuclei which are **doubly magic** are very tightly bound compared to neighboring nuclei. $`8 2`$Pb<sup>208</sup> is a good example of a doubly magic nucleus with many more neutrons than protons.
 
-Remember, its only hydrogen states which are labeled with a principle quantum number $`n = n_{r} + \ell`$ + 1. In the nuclear shell model, $`n`$ **refers only to the radial excitation** so states like the 1$`h_{9 2}`$ show up in real nuclei and on the following chart. The other feature of note in the nuclear shell model is that the nuclear **spin orbit interaction is strong** and of the opposite sign to that in atoms. The splitting between states of different $`j`$ is smaller than that but of the same order as splitting between radial or angular excitations. It is this effect and the shell model for which Maria Mayer got her Nobel prize.
+Remember, its only hydrogen states which are labeled with a principle quantum number $`n = n_{r} + \ell`$ + 1. In the nuclear shell model, $`n`$ **refers only to the radial excitation** so states like the 1$`h_{\tfrac{9}{2}}`$ show up in real nuclei and on the following chart. The other feature of note in the nuclear shell model is that the nuclear **spin orbit interaction is strong** and of the opposite sign to that in atoms. The splitting between states of different $`j`$ is smaller than that but of the same order as splitting between radial or angular excitations. It is this effect and the shell model for which Maria Mayer got her Nobel prize.
 
 <div align="right"><a href="book.pdf#page=377" target="_blank" title="This page in the PDF"><sup>[p. 377]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -19173,7 +19173,7 @@ Another feature of nuclei not shown in the table is that the **spin-spin force v
 
 ## <a id="s-26-6-1-boron-ground-state"></a>26.6.1 Boron Ground State
 
-Boron, with $`Z`$ = 5 has the 1S and 2S levels filled. They add up to $`j`$ = 0 as do all closed shells. The valence electron is in the 2P state and hence has $`\ell`$ = 1 and $`s = \tfrac{1}{2}`$. Since the shell is not half full we couple to the the lowest $`j = | \ell - s | = \tfrac{1}{2}`$. So the ground state is<sup>2</sup>$`P 1_{2}`$.
+Boron, with $`Z`$ = 5 has the 1S and 2S levels filled. They add up to $`j`$ = 0 as do all closed shells. The valence electron is in the 2P state and hence has $`\ell`$ = 1 and $`s = \tfrac{1}{2}`$. Since the shell is not half full we couple to the the lowest $`j = | \ell - s | = \tfrac{1}{2}`$. So the ground state is<sup>2</sup>$`P_{\tfrac{1}{2}}`$.
 
 <div align="right"><a href="book.pdf#page=378" target="_blank" title="This page in the PDF"><sup>[p. 378]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -21579,11 +21579,11 @@ This solution should be familiar to us from the scalar potential for an electric
 Now we solve for the scalar field from a point source by Fourier transforming the wave equation. Define the Fourier transforms to be.
 
 ```math
-\tilde{\varphi} ( \vec{k} ) = \frac{1}{( 2 \pi ) 2^{3}} \int d^{3} xe^{- i \vec{k} \cdot \vec{x}} \varphi ( \vec{x} )
+\tilde{\varphi} ( \vec{k} ) = \frac{1}{( 2 \pi )^{\tfrac{3}{2}}} \int d^{3} xe^{- i \vec{k} \cdot \vec{x}} \varphi ( \vec{x} )
 ```
 
 ```math
-\varphi ( \vec{x} ) = \frac{1}{( 2 \pi ) 2^{3}} \int d^{3} ke^{i \vec{k} \cdot \vec{x}} \tilde{\varphi} ( \vec{k} )
+\varphi ( \vec{x} ) = \frac{1}{( 2 \pi ) \tfrac{3}{2}} \int d^{3} ke^{i \vec{k} \cdot \vec{x}} \tilde{\varphi} ( \vec{k} )
 ```
 
 <div align="right"><a href="book.pdf#page=431" target="_blank" title="This page in the PDF"><sup>[p. 431]</sup></a></div>
@@ -21597,11 +21597,11 @@ We now **take the transform of both sides** of the equation.
 ```
 
 ```math
-\frac{1}{( 2 \pi )^{3} 2} \int d^{3} xe^{- i \vec{k} \cdot \vec{x}} ( \nabla^{2} \varphi - \mu^{2} \varphi ) = \frac{1}{( 2 \pi ) \tfrac{3}{2}} \int d^{3} xe^{- i \vec{k} \cdot \vec{x}} G\delta^{3} ( \vec{x} )
+\frac{1}{( 2 \pi ) \tfrac{3}{2}} \int d^{3} xe^{- i \vec{k} \cdot \vec{x}} ( \nabla^{2} \varphi - \mu^{2} \varphi ) = \frac{1}{( 2 \pi ) \tfrac{3}{2}} \int d^{3} xe^{- i \vec{k} \cdot \vec{x}} G\delta^{3} ( \vec{x} )
 ```
 
 ```math
-\frac{1}{( 2 \pi )^{3} 2} \int d^{3} xe^{- i \vec{k} \cdot \vec{x}} ( \nabla^{2} \varphi - \mu^{2} \varphi ) = \frac{G}{( 2 \pi ) \tfrac{3}{2}}
+\frac{1}{( 2 \pi ) \tfrac{3}{2}} \int d^{3} xe^{- i \vec{k} \cdot \vec{x}} ( \nabla^{2} \varphi - \mu^{2} \varphi ) = \frac{G}{( 2 \pi ) \tfrac{3}{2}}
 ```
 
 ```math
@@ -21617,7 +21617,7 @@ To deal with the $`\nabla^{2}`$, we have integrated by parts twice assuming that
 We now have the **Fourier transform of the field of a point source**. If we can **transform back** **to position space**, we will have the field. This is a fairly standard type of problem in quantum mechanics.
 
 ```math
-\begin{aligned} \varphi ( \vec{x} ) &= \frac{1}{( 2 \pi ) \tfrac{3}{2}} \int d^{3} ke^{i \vec{k} \cdot \vec{x}} \frac{- G}{( 2 \pi ) 2^{3}} \frac{1}{( k^{2} + \mu^{2} )} \\ &= \frac{- G}{( 2 \pi )^{3}} \int d^{3} k \frac{e^{i \vec{k} \cdot \vec{x}}}{( k^{2} + \mu^{2} )} \\ &= \frac{- 2 \pi G}{( 2 \pi )^{3}} \int k^{2} dk \int^{1} \frac{e^{ikr \cos \theta_{k}}}{( k^{2} + \mu^{2} )} d \cos \theta_{k} \\ &= \frac{- G}{( 2 \pi )^{2}} \int \frac{k^{2}}{( k^{2} + \mu^{2} )}^{- 1} \int^{1} e^{ikr \cos \theta_{k}} d \cos \theta_{k} dk \\ &= \frac{- G}{( 2 \pi )^{2}} \int \frac{k^{2}}{( k^{2} + \mu^{2} )}^{-} \left[ {}^{1} \frac{1}{ikr} e^{ikr \cos \theta_{k}} \right]^{1} dk \\ &= \frac{- G}{( 2 \pi )^{2} ir} \int \frac{k}{( k^{2} + \mu^{2} )} \left( e^{ikr} - e^{- ikr} \right)^{- 1} dk \\ &= \frac{- G}{( 2 \pi )^{2} ir} \int_{0}^{\infty} \frac{k}{( k + i\mu ) ( k - i\mu )} \left( e^{ikr} - e^{- ikr} \right) dk \end{aligned}
+\begin{aligned} \varphi ( \vec{x} ) &= \frac{1}{( 2 \pi ) \tfrac{3}{2}} \int d^{3} ke^{i \vec{k} \cdot \vec{x}} \frac{- G}{( 2 \pi ) \tfrac{3}{2}} \frac{1}{( k^{2} + \mu^{2} )} \\ &= \frac{- G}{( 2 \pi )^{3}} \int d^{3} k \frac{e^{i \vec{k} \cdot \vec{x}}}{( k^{2} + \mu^{2} )} \\ &= \frac{- 2 \pi G}{( 2 \pi )^{3}} \int k^{2} dk \int^{1} \frac{e^{ikr \cos \theta_{k}}}{( k^{2} + \mu^{2} )} d \cos \theta_{k} \\ &= \frac{- G}{( 2 \pi )^{2}} \int \frac{k^{2}}{( k^{2} + \mu^{2} )}^{- 1} \int^{1} e^{ikr \cos \theta_{k}} d \cos \theta_{k} dk \\ &= \frac{- G}{( 2 \pi )^{2}} \int \frac{k^{2}}{( k^{2} + \mu^{2} )}^{-} \left[ {}^{1} \frac{1}{ikr} e^{ikr \cos \theta_{k}} \right]^{1} dk \\ &= \frac{- G}{( 2 \pi )^{2} ir} \int \frac{k}{( k^{2} + \mu^{2} )} \left( e^{ikr} - e^{- ikr} \right)^{- 1} dk \\ &= \frac{- G}{( 2 \pi )^{2} ir} \int_{0}^{\infty} \frac{k}{( k + i\mu ) ( k - i\mu )} \left( e^{ikr} - e^{- ikr} \right) dk \end{aligned}
 ```
 
 This is now of a form for which we can use Cauchy’s theorem for **contour integrals**. The theorem says that an **integral around a closed contour in the complex plane** is equal to 2$`\pi i`$ times the sum of the residues at the poles enclosed in the contour. Contour Integration is a powerful technique often used in quantum mechanics.
@@ -23796,7 +23796,7 @@ The right hand side of this equation is just what we previously derived for the 
 The **time dependence of the wavefunction for the state** $`n`$ **is modified by the self energy** **correction**.
 
 ```math
-\psi_{n} ( \vec{x} , t ) = \psi_{n} ( \vec{x} ) e^{- i ( E_{n} + ℜ ( \Delta E_{n} ) ) t/ \hbar} e^{{}^{-} \tfrac{\Gamma nt}{2}}
+\psi_{n} ( \vec{x} , t ) = \psi_{n} ( \vec{x} ) e^{- i ( E_{n} + ℜ ( \Delta E_{n} ) ) t/ \hbar} e^{\tfrac{- \Gamma nt}{2}}
 ```
 
 This also gives us the **exponential decay behavior** that we expect, **keeping resonant scattering** **cross sections from going to infinity**. So, the width just goes into the time dependence as expected and we don’t have to worry about it anymore. We can now **concentrate on the energy** **shift due to the real part** of ∆$`E_{n}`$.
@@ -23949,7 +23949,7 @@ In 1947, Willis E. Lamb and R. C. Retherford used microwave techniques to determ
 
 _Figure 104 (p. 479)_
 
-The technique used was quite interesting. They made a **beam of Hydrogen atoms in the** $`2 S 1`$ **state**, which has a very long lifetime because of selection rules. **Microwave radiation** with a<sup>2</sup> (fixed) frequency of 2395 MHz was used to cause transitions to the 2$`P 3_{2}`$ state and a **magnetic field** **was adjusted to shift the energy of the states** until the rate was largest. The **decay of the** $`2 P 3`$ **state to the ground state was observed** to determine the transition rate. From this, they were able to deduce the shift between the 2<sup>2</sup> $`S_{2} 1`$ and 2$`P 1_{2}`$ states.
+The technique used was quite interesting. They made a **beam of Hydrogen atoms in the** $`2 S 1`$ **state**, which has a very long lifetime because of selection rules. **Microwave radiation** with a<sup>2</sup> (fixed) frequency of 2395 MHz was used to cause transitions to the 2$`P_{\tfrac{3}{2}}`$ state and a **magnetic field** **was adjusted to shift the energy of the states** until the rate was largest. The **decay of the** $`2 P 3`$ **state to the ground state was observed** to determine the transition rate. From this, they were able to deduce the shift between the 2<sup>2</sup> $`S \tfrac{1}{2}`$ and 2$`P \tfrac{1}{2}`$ states.
 
 **Hans Bethe used non-relativistic quantum mechanics** to calculate the self-energy correction to account for this observation.
 
@@ -24337,7 +24337,7 @@ i \hbar \vec{\sigma} \cdot \vec{\nabla} \psi_{A} + i \hbar \frac{\partial}{\part
 ```
 
 ```math
-\begin{pmatrix} - i \hbar_{\partial x} \tfrac{\partial}{0} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} + mc \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = 0
+\begin{pmatrix} - i \hbar \tfrac{\partial}{\partial x_{0}} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} + mc \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = 0
 ```
 
 Remember that $`\psi_{A}`$ and $`\psi_{B}`$ are two component spinors so **this is an equation in 4 components**.
@@ -24345,7 +24345,7 @@ Remember that $`\psi_{A}`$ and $`\psi_{B}`$ are two component spinors so **this 
 We can rewrite the matrix above as a dot product between 4-vectors. The matrix has a dot product in 3 dimensions and a time component
 
 ```math
-\begin{pmatrix} - i \hbar_{\partial x} \tfrac{\partial}{0} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} = \hbar \left[ \begin{pmatrix} 0 & - i \vec{\sigma} \cdot \vec{\nabla} \\ i \vec{\sigma} \cdot \vec{\nabla} & 0 \end{pmatrix} + \begin{pmatrix} \tfrac{\partial}{\partial x_{4}} & 0 \\ 0 & - {}_{\partial x} \tfrac{\partial}{4} \end{pmatrix} \right]
+\begin{pmatrix} - i \hbar \tfrac{\partial}{\partial x_{0}} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} = \hbar \left[ \begin{pmatrix} 0 & - i \vec{\sigma} \cdot \vec{\nabla} \\ i \vec{\sigma} \cdot \vec{\nabla} & 0 \end{pmatrix} + \begin{pmatrix} \tfrac{\partial}{\partial x_{4}} & 0 \\ 0 & - \tfrac{\partial}{\partial x_{4}} \end{pmatrix} \right]
 ```
 
 ```math
@@ -24365,7 +24365,7 @@ The **4 by 4 matrices** $`\gamma_{\mu}`$ are given by.
 With this definition, the relativistic equation can be simplified a great deal.
 
 ```math
-\begin{pmatrix} - i \hbar \tfrac{\partial}{\partial x_{0}} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{0}_{\partial x} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} + mc \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = 0
+\begin{pmatrix} - i \hbar \tfrac{\partial}{\partial x_{0}} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} + mc \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = 0
 ```
 
 ```math
@@ -24533,7 +24533,7 @@ We know that our non-relativistic Quantum Mechanics only needed a two component 
 First, we can write the **two component equation that is equivalent to the Dirac equation**. Assume that the solution has the **usual time dependence** $`e^{- iEt/ \hbar}`$. We start from the equation in $`\psi_{A}`$ and $`\psi_{B}`$.
 
 ```math
-\begin{pmatrix} - i \hbar \tfrac{\partial}{\partial x_{0}} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{0}_{\partial x} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} + mc \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = 0
+\begin{pmatrix} - i \hbar \tfrac{\partial}{\partial x_{0}} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} + mc \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = 0
 ```
 
 ```math
@@ -24804,7 +24804,7 @@ E^{2} = p^{2} c^{2} + m^{2} c^{4}
 E = \pm \sqrt{p^{2} c^{2} + m^{2} c^{4}}
 ```
 
-Note that the momentum operator is clearly still $`\tfrac{\hbar}{i} \vec{\nabla}`$ and the energy operator is still $`i \hbar_{\partial t}^{\partial}`$ .
+Note that the momentum operator is clearly still $`\tfrac{\hbar}{i} \vec{\nabla}`$ and the energy operator is still $`i \hbar \tfrac{\partial}{\partial t}`$ .
 
 There is no coupling between the different components in this equation, but, we will see that (unlike the equation differentiated again) the **Dirac equation will give us relations between the** **components of the constant spinor**. Again, the solution can be written as a constant spinor, which may depend on momentum $`u_{\vec{p}}`$, times the exponential.
 
@@ -25061,7 +25061,7 @@ Now we take a look at the **“negative energy” spin up solution** in the same
 ```
 
 ```math
-\begin{pmatrix} 0 \\ 0 \\ \tfrac{p^{2} c^{2}}{- E + mc^{2}} + ( E + mc^{2} ) \\ - {}_{-} \tfrac{- p_{z} c}{E + mc^{2}} ( p_{x} + ip_{y} ) c + \tfrac{- ( p_{x} + ip_{y} ) c}{- E + mc^{2}} p_{z} c \end{pmatrix} = 0
+\begin{pmatrix} 0 \\ 0 \\ \tfrac{p^{2} c^{2}}{- E + mc^{2}} + ( E + mc^{2} ) \\ - \tfrac{- p_{z} c}{- E + mc^{2}} ( p_{x} + ip_{y} ) c + \tfrac{- ( p_{x} + ip_{y} ) c}{- E + mc^{2}} p_{z} c \end{pmatrix} = 0
 ```
 
 ```math
@@ -25717,7 +25717,7 @@ S_{boost} = \cosh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2}
 ```
 
 ```math
-\frac{1 + \cosh \chi}{2} = \frac{1 + \tfrac{e^{\chi} + e^{- \chi}}{2}}{2} = \frac{e^{\chi} + 2 + e^{- \chi}}{4} = \left( \frac{e \tfrac{\chi}{2} + e^{-} \tfrac{\chi}{2}}{2} \right)^{2} = \cosh^{2} \frac{\chi}{2}
+\frac{1 + \cosh \chi}{2} = \frac{1 + \tfrac{e^{\chi} + e^{- \chi}}{2}}{2} = \frac{e^{\chi} + 2 + e^{- \chi}}{4} = \left( \frac{e \tfrac{\chi}{2} + e \tfrac{- \chi}{2}}{2} \right)^{2} = \cosh^{2} \frac{\chi}{2}
 ```
 
 ```math
@@ -26553,7 +26553,7 @@ c \begin{pmatrix} 0 & - i \hbar \sigma_{i} \\ - i \hbar \sigma_{i} & 0 \end{pmat
 ```
 
 ```math
-c \begin{pmatrix} 0 & \sigma_{i} p_{i} \\ \sigma_{i} p_{i} & 0 \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = \begin{pmatrix} i \hbar \tfrac{\partial}{\partial t} - V ( r ) - mc^{2} & 0 \\ 0 & i \hbar_{\partial t}^{\partial} - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix}
+c \begin{pmatrix} 0 & \sigma_{i} p_{i} \\ \sigma_{i} p_{i} & 0 \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = \begin{pmatrix} i \hbar \tfrac{\partial}{\partial t} - V ( r ) - mc^{2} & 0 \\ 0 & i \hbar \tfrac{\partial}{\partial t} - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix}
 ```
 
 ```math
@@ -26665,11 +26665,11 @@ c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \begin{pmatrix} ( r ) \mathca
 ```
 
 ```math
-\begin{pmatrix} ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \\ \begin{pmatrix} \begin{pmatrix} r \tfrac{\partial}{\partial r} - ( \kappa - 1 ) \\ ir_{\partial r}^{\partial} - i ( 1 + \end{pmatrix} f \\ - \quad \kappa ) \end{pmatrix} g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell}^{m} \\ {}_{m} \begin{matrix} j \\ A \\ j \\ B \end{matrix} \\ if ( r ) \mathcal{Y}_{j\ell} \end{pmatrix}
+\begin{pmatrix} ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \\ \begin{pmatrix} \begin{pmatrix} r \tfrac{\partial}{\partial r} - ( \kappa - 1 ) \\ ir \tfrac{\partial}{\partial r} - i ( 1 + \end{pmatrix} f \\ - \quad \kappa ) \end{pmatrix} g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell}^{m} \\ {}_{m} \begin{matrix} j \\ A \\ j \\ B \end{matrix} \\ if ( r ) \mathcal{Y}_{j\ell} \end{pmatrix}
 ```
 
 ```math
-\hbar c \frac{1}{r} \begin{pmatrix} \left( \begin{pmatrix} - r_{\partial r} + ( \kappa - 1 ) \\ ir \tfrac{\partial}{\partial r} + i ( 1 + \kappa ) \end{pmatrix}^{\partial} \right) f ( r ) \mathcal{Y}_{j\ell}^{m} \\ {}_{m} \begin{matrix} j \\ A \\ j \\ B \end{matrix} \\ g ( r ) \mathcal{Y}_{j\ell} \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell}^{m} \\ {}_{m} \begin{matrix} j \\ A \\ j \\ B \end{matrix} \\ if ( r ) \mathcal{Y}_{j\ell} \end{pmatrix}
+\hbar c \frac{1}{r} \begin{pmatrix} \left( \begin{pmatrix} - r \tfrac{\partial}{\partial r} + ( \kappa - 1 ) \\ ir \tfrac{\partial}{\partial r} + i ( 1 + \kappa ) \end{pmatrix} \right) f ( r ) \mathcal{Y}_{j\ell}^{m} \\ {}_{m} \begin{matrix} j \\ A \\ j \\ B \end{matrix} \\ g ( r ) \mathcal{Y}_{j\ell} \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell}^{m} \\ {}_{m} \begin{matrix} j \\ A \\ j \\ B \end{matrix} \\ if ( r ) \mathcal{Y}_{j\ell} \end{pmatrix}
 ```
 
 ```math
@@ -26683,7 +26683,7 @@ c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \begin{pmatrix} ( r ) \mathca
 This is now a set of two coupled radial equations. We can simplify them a bit by making the substitutions $`F = rf`$ and $`G = rg`$. The extra term from the derivative cancels the 1’s that are with $`\kappa`$s.
 
 ```math
-\begin{aligned} \hbar c \left( \left( \begin{pmatrix} - {}_{r} \quad + \tfrac{F}{r^{2}} + \frac{\kappa F}{\tfrac{G r}{2}^{2} +} & 2 \\ \tfrac{1}{r} \frac{{}_{\partial G} \tfrac{\partial F}{\partial r}}{\partial r} - \tfrac{G}{r^{2}} + {}_{r} & \frac{- {}_{\kappa G} \tfrac{F}{r}}{r^{2}} \end{pmatrix}^{1} \right) \right) &= \begin{pmatrix} ( E - V - mc^{2} )_{r}^{G} \\ ( E - V + mc^{2} )_{r}^{F} \end{pmatrix} \\ \hbar c \left( \left( \begin{pmatrix} - \tfrac{\partial F}{\partial G \partial r} + \tfrac{\kappa F}{\kappa G r} \\ {}_{\partial r} + {}_{r} \end{pmatrix} \right) \right) &= \begin{pmatrix} ( E - V - mc^{2} ) G \\ ( E - V + mc^{2} ) F \end{pmatrix} \end{aligned}
+\begin{aligned} \hbar c \left( \left( \begin{pmatrix} - {}_{r} \quad + \tfrac{F}{r^{2}} + \frac{\kappa F}{\tfrac{G r}{2}^{2} +} & 2 \\ \tfrac{1}{r} \frac{{}_{\partial G} \tfrac{\partial F}{\partial r}}{\partial r} - \tfrac{G}{r^{2}} + {}_{r} & \frac{- {}_{\kappa G} \tfrac{F}{r}}{r^{2}} \end{pmatrix}^{1} \right) \right) &= \begin{pmatrix} ( E - V - mc^{2} ) \tfrac{G}{r} \\ ( E - V + mc^{2} ) \tfrac{F}{r} \end{pmatrix} \\ \hbar c \left( \left( \begin{pmatrix} - \tfrac{\partial F}{\partial G \partial r} + \tfrac{\kappa F}{\kappa G r} \\ {}_{\partial r} + {}_{r} \end{pmatrix} \right) \right) &= \begin{pmatrix} ( E - V - mc^{2} ) G \\ ( E - V + mc^{2} ) F \end{pmatrix} \end{aligned}
 ```
 
 ```math
@@ -27644,7 +27644,7 @@ k_{B} = 1 . 3 8 \times 1 0^{- 1 6} \text{ erg } /^{◦} K \quad g_{e} = 2 + \tfr
 ```
 
 ```math
-\mu_{Bohr} = \tfrac{e \hbar}{2 m_{e} c} = 0 . 5 7 9 \times 1 0^{- 8} \text{ eV } / \text{ gauss } \int_{-\infty}^{\infty} dxf ( x ) \delta ( g ( x ) ) = \left[ \tfrac{1}{|_{dx}^{dg} |} f ( x ) \right]_{g ( x ) = 0}
+\mu_{Bohr} = \tfrac{e \hbar}{2 m_{e} c} = 0 . 5 7 9 \times 1 0^{- 8} \text{ eV } / \text{ gauss } \int_{-\infty}^{\infty} dxf ( x ) \delta ( g ( x ) ) = \left[ \tfrac{1}{| \tfrac{dg}{dx} |} f ( x ) \right]_{g ( x ) = 0}
 ```
 
 $`\int_{-\infty}^{\infty} dxf ( x ) \delta ( x - a ) = f ( a ) \int_{-\infty}^{\infty} dxe^{- ax^{2}} = \sqrt{\frac{\pi}{a}}`$ use $`\frac{\partial}{\partial a}`$ for other forms
@@ -27676,11 +27676,11 @@ E = h\nu = \hbar \omega \quad \lambda = h/p \quad p = \hbar k
 ```
 
 ```math
-p_{op} = \tfrac{\hbar}{i} \tfrac{\partial}{\partial x} \quad E_{op} = i \hbar_{\partial t}^{\partial} \quad x_{op} = i \hbar \tfrac{\partial}{\partial p}
+p_{op} = \tfrac{\hbar}{i} \tfrac{\partial}{\partial x} \quad E_{op} = i \hbar \tfrac{\partial}{\partial t} \quad x_{op} = i \hbar \tfrac{\partial}{\partial p}
 ```
 
 ```math
-Hu_{j} ( x ) = E_{j} u_{j} ( x ) \quad \psi_{j} ( x,t ) = u_{j} ( x ) e^{- iE_{j} t/ \hbar} \quad \tfrac{- \hbar^{2}}{2 m} \tfrac{\partial^{2} \psi}{\partial x^{2}} + V ( x ) \psi = i \hbar_{\partial t}^{\partial \psi}
+Hu_{j} ( x ) = E_{j} u_{j} ( x ) \quad \psi_{j} ( x,t ) = u_{j} ( x ) e^{- iE_{j} t/ \hbar} \quad \tfrac{- \hbar^{2}}{2 m} \tfrac{\partial^{2} \psi}{\partial x^{2}} + V ( x ) \psi = i \hbar \tfrac{\partial \psi}{\partial t}
 ```
 
 $`\psi ( x )`$ continuous $`\frac{d\psi}{dx}`$ continous if $`V`$ finite
@@ -27736,7 +27736,7 @@ A = ( \sqrt{\frac{m\omega}{2 \hbar}} x + i \tfrac{p}{2 m \hbar \omega} \sqrt{) \
 ```
 
 ```math
-A^{\dagger} | n \rangle = \sqrt{( n + 1 )} | n + 1 \rangle \quad A | n \rangle = \sqrt{( n )} | n - 1 \rangle \quad u_{0} ( x ) = ( {}_{\hbar \pi}^{m\omega} ) 4^{1} e^{- m\omega x^{2} / 2 \hbar}
+A^{\dagger} | n \rangle = \sqrt{( n + 1 )} | n + 1 \rangle \quad A | n \rangle = \sqrt{( n )} | n - 1 \rangle \quad u_{0} ( x ) = ( \tfrac{m\omega}{\hbar \pi} ) \tfrac{1}{4} e^{- m\omega x^{2} / 2 \hbar}
 ```
 
 <div align="center">
@@ -27800,7 +27800,7 @@ S_{x} = \hbar \begin{pmatrix} 0 & \tfrac{1}{\sqrt{2}} & 0 \\ \tfrac{1}{\sqrt{2}}
 </div>
 
 ```math
-H = \tfrac{p^{2}}{2 \mu} - \tfrac{Ze^{2}}{r} \quad \psi_{n\ell m} = R_{n\ell} ( r ) Y_{\ell m} ( \theta ,\varphi ) \quad E_{n} = - \tfrac{Z^{2} \alpha^{2} \mu c^{2}}{2 n^{2}} = - {}^{1 3} \tfrac{. 6}{n^{2}} \text{ eV }
+H = \tfrac{p^{2}}{2 \mu} - \tfrac{Ze^{2}}{r} \quad \psi_{n\ell m} = R_{n\ell} ( r ) Y_{\ell m} ( \theta ,\varphi ) \quad E_{n} = - \tfrac{Z^{2} \alpha^{2} \mu c^{2}}{2 n^{2}} = - \tfrac{1 3 . 6}{n^{2}} \text{ eV }
 ```
 
 ```math
@@ -27808,11 +27808,11 @@ n = n_{r} + \ell + 1 \quad a_{0} = \tfrac{\hbar}{\alpha \mu c} \quad \ell = 0 , 
 ```
 
 ```math
-R_{n\ell} ( \rho ) = \rho^{\ell} \sum_{k = 0}^{\infty} a_{k} \rho^{k} e^{- \rho / 2} \quad a_{k + 1} = \tfrac{k + \ell + 1 n}{( k + 1 ) ( k + 2 \ell + 2 )}^{-} a_{k} \quad \rho = \surd^{-} \tfrac{8 \mu E}{\hbar^{2}} r = \tfrac{2 r}{na_{0}}
+R_{n\ell} ( \rho ) = \rho^{\ell} \sum_{k = 0}^{\infty} a_{k} \rho^{k} e^{- \rho / 2} \quad a_{k + 1} = \tfrac{k + \ell + 1 n}{( k + 1 ) ( k + 2 \ell + 2 )}^{-} a_{k} \quad \rho = \sqrt{\tfrac{- 8 \mu E}{\hbar^{2}} r} = \tfrac{2 r}{na_{0}}
 ```
 
 ```math
-R_{1 0} = 2 ( \tfrac{Z}{a_{0}} ) 2^{3} e^{\tfrac{- Zr}{a 0}} \quad R_{2 0} = 2 ( \tfrac{Z}{2 a_{0}} ) \tfrac{3}{2} ( 1 - \tfrac{Zr}{2 a_{0}} ) e^{\tfrac{- Zr}{2 a 0}} \quad R_{2 1} = \tfrac{1}{3} \sqrt{( \tfrac{Z}{2 a_{0}} ) 2^{3} ( \tfrac{Zr}{a_{0}} ) e^{\tfrac{- Zr}{2 a 0}}}
+R_{1 0} = 2 ( \tfrac{Z}{a_{0}} ) \tfrac{3}{2} e^{\tfrac{- Zr}{a 0}} \quad R_{2 0} = 2 ( \tfrac{Z}{2 a_{0}} ) \tfrac{3}{2} ( 1 - \tfrac{Zr}{2 a_{0}} ) e^{\tfrac{- Zr}{2 a 0}} \quad R_{2 1} = \tfrac{1}{3} \sqrt{( \tfrac{Z}{2 a_{0}} ) \tfrac{3}{2} ( \tfrac{Zr}{a_{0}} ) e^{\tfrac{- Zr}{2 a 0}}}
 ```
 
 ```math
@@ -27820,7 +27820,7 @@ R_{n,n - 1} \propto r^{n - 1} e^{- Zr/na_{0}} \quad \mu = \tfrac{m_{1} m_{2}}{m_
 ```
 
 ```math
-H_{1} = - {}_{8} \tfrac{p^{4}}{m^{3} c^{2}} \quad H_{2} = \tfrac{e^{2}}{2 m^{2} c^{2} r^{3}} \vec{S} \cdot \vec{L} \quad \Delta E_{1 2} = - {}_{2} \tfrac{1}{n^{3}} \alpha^{4} mc^{2} ( \tfrac{1}{j + \tfrac{1}{2}} - \tfrac{3}{4 n} )
+H_{1} = - \tfrac{p^{4}}{8 m^{3} c^{2}} \quad H_{2} = \tfrac{e^{2}}{2 m^{2} c^{2} r^{3}} \vec{S} \cdot \vec{L} \quad \Delta E_{1 2} = - \tfrac{1}{2 n^{3}} \alpha^{4} mc^{2} ( \tfrac{1}{j + \tfrac{1}{2}} - \tfrac{3}{4 n} )
 ```
 
 ```math
@@ -27869,7 +27869,7 @@ c_{n} ( t ) = \tfrac{1}{i \hbar} \int^{t}_{0} dt^{\prime} e^{i ( E_{n} - E_{i} )
 \text{ Fermi } ’ s \text{ Golden Rule } : \quad \Gamma_{i \to f} = \tfrac{2 \pi}{\hbar} | \langle \psi_{f} | V | \psi_{i} \rangle |^{2} \rho_{f} ( E )
 ```
 
-$`\Gamma_{i \to f} =`$<sup>2</sup>$`\tfrac{\pi}{\hbar} \int \prod ( \tfrac{Vd}{( 2} \tfrac{{}^{3} p_{k}}{\pi \hbar )^{3}} ) | M_{fi} |^{2} \delta^{3}`$(momentum conservation) $`\delta`$(Energy conservation)
+$`\Gamma_{i \to f} =`$<sup>2</sup>$`\tfrac{\pi}{\hbar} \int \prod ( \tfrac{Vd^{3} p_{k}}{( 2 \pi \hbar )^{3}} ) | M_{fi} |^{2} \delta^{3}`$(momentum conservation) $`\delta`$(Energy conservation)
 
 ```math
 \Gamma_{m \to k}^{rad} = \tfrac{\alpha k}{2 \pi m^{2} c^{2}} \int d \Omega_{p} \omega_{km} | \langle \varphi_{m} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon} \cdot \vec{p} | \varphi_{k} \rangle |^{2}

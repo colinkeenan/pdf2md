@@ -193,7 +193,7 @@ The right hand side of this equation is just what we previously derived for the 
 The **time dependence of the wavefunction for the state** $`n`$ **is modified by the self energy** **correction**.
 
 ```math
-\psi_{n} ( \vec{x} , t ) = \psi_{n} ( \vec{x} ) e^{- i ( E_{n} + ℜ ( \Delta E_{n} ) ) t/ \hbar} e^{{}^{-} \tfrac{\Gamma nt}{2}}
+\psi_{n} ( \vec{x} , t ) = \psi_{n} ( \vec{x} ) e^{- i ( E_{n} + ℜ ( \Delta E_{n} ) ) t/ \hbar} e^{\tfrac{- \Gamma nt}{2}}
 ```
 
 This also gives us the **exponential decay behavior** that we expect, **keeping resonant scattering** **cross sections from going to infinity**. So, the width just goes into the time dependence as expected and we don’t have to worry about it anymore. We can now **concentrate on the energy** **shift due to the real part** of ∆$`E_{n}`$.
@@ -346,7 +346,7 @@ In 1947, Willis E. Lamb and R. C. Retherford used microwave techniques to determ
 
 _Figure 104 (p. 479)_
 
-The technique used was quite interesting. They made a **beam of Hydrogen atoms in the** $`2 S 1`$ **state**, which has a very long lifetime because of selection rules. **Microwave radiation** with a<sup>2</sup> (fixed) frequency of 2395 MHz was used to cause transitions to the 2$`P 3_{2}`$ state and a **magnetic field** **was adjusted to shift the energy of the states** until the rate was largest. The **decay of the** $`2 P 3`$ **state to the ground state was observed** to determine the transition rate. From this, they were able to deduce the shift between the 2<sup>2</sup> $`S_{2} 1`$ and 2$`P 1_{2}`$ states.
+The technique used was quite interesting. They made a **beam of Hydrogen atoms in the** $`2 S 1`$ **state**, which has a very long lifetime because of selection rules. **Microwave radiation** with a<sup>2</sup> (fixed) frequency of 2395 MHz was used to cause transitions to the 2$`P_{\tfrac{3}{2}}`$ state and a **magnetic field** **was adjusted to shift the energy of the states** until the rate was largest. The **decay of the** $`2 P 3`$ **state to the ground state was observed** to determine the transition rate. From this, they were able to deduce the shift between the 2<sup>2</sup> $`S \tfrac{1}{2}`$ and 2$`P \tfrac{1}{2}`$ states.
 
 **Hans Bethe used non-relativistic quantum mechanics** to calculate the self-energy correction to account for this observation.
 

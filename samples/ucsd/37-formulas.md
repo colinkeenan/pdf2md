@@ -20,7 +20,7 @@ k_{B} = 1 . 3 8 \times 1 0^{- 1 6} \text{ erg } /^{◦} K \quad g_{e} = 2 + \tfr
 ```
 
 ```math
-\mu_{Bohr} = \tfrac{e \hbar}{2 m_{e} c} = 0 . 5 7 9 \times 1 0^{- 8} \text{ eV } / \text{ gauss } \int_{-\infty}^{\infty} dxf ( x ) \delta ( g ( x ) ) = \left[ \tfrac{1}{|_{dx}^{dg} |} f ( x ) \right]_{g ( x ) = 0}
+\mu_{Bohr} = \tfrac{e \hbar}{2 m_{e} c} = 0 . 5 7 9 \times 1 0^{- 8} \text{ eV } / \text{ gauss } \int_{-\infty}^{\infty} dxf ( x ) \delta ( g ( x ) ) = \left[ \tfrac{1}{| \tfrac{dg}{dx} |} f ( x ) \right]_{g ( x ) = 0}
 ```
 
 $`\int_{-\infty}^{\infty} dxf ( x ) \delta ( x - a ) = f ( a ) \int_{-\infty}^{\infty} dxe^{- ax^{2}} = \sqrt{\frac{\pi}{a}}`$ use $`\frac{\partial}{\partial a}`$ for other forms
@@ -52,11 +52,11 @@ E = h\nu = \hbar \omega \quad \lambda = h/p \quad p = \hbar k
 ```
 
 ```math
-p_{op} = \tfrac{\hbar}{i} \tfrac{\partial}{\partial x} \quad E_{op} = i \hbar_{\partial t}^{\partial} \quad x_{op} = i \hbar \tfrac{\partial}{\partial p}
+p_{op} = \tfrac{\hbar}{i} \tfrac{\partial}{\partial x} \quad E_{op} = i \hbar \tfrac{\partial}{\partial t} \quad x_{op} = i \hbar \tfrac{\partial}{\partial p}
 ```
 
 ```math
-Hu_{j} ( x ) = E_{j} u_{j} ( x ) \quad \psi_{j} ( x,t ) = u_{j} ( x ) e^{- iE_{j} t/ \hbar} \quad \tfrac{- \hbar^{2}}{2 m} \tfrac{\partial^{2} \psi}{\partial x^{2}} + V ( x ) \psi = i \hbar_{\partial t}^{\partial \psi}
+Hu_{j} ( x ) = E_{j} u_{j} ( x ) \quad \psi_{j} ( x,t ) = u_{j} ( x ) e^{- iE_{j} t/ \hbar} \quad \tfrac{- \hbar^{2}}{2 m} \tfrac{\partial^{2} \psi}{\partial x^{2}} + V ( x ) \psi = i \hbar \tfrac{\partial \psi}{\partial t}
 ```
 
 $`\psi ( x )`$ continuous $`\frac{d\psi}{dx}`$ continous if $`V`$ finite
@@ -112,7 +112,7 @@ A = ( \sqrt{\frac{m\omega}{2 \hbar}} x + i \tfrac{p}{2 m \hbar \omega} \sqrt{) \
 ```
 
 ```math
-A^{\dagger} | n \rangle = \sqrt{( n + 1 )} | n + 1 \rangle \quad A | n \rangle = \sqrt{( n )} | n - 1 \rangle \quad u_{0} ( x ) = ( {}_{\hbar \pi}^{m\omega} ) 4^{1} e^{- m\omega x^{2} / 2 \hbar}
+A^{\dagger} | n \rangle = \sqrt{( n + 1 )} | n + 1 \rangle \quad A | n \rangle = \sqrt{( n )} | n - 1 \rangle \quad u_{0} ( x ) = ( \tfrac{m\omega}{\hbar \pi} ) \tfrac{1}{4} e^{- m\omega x^{2} / 2 \hbar}
 ```
 
 <div align="center">
@@ -176,7 +176,7 @@ S_{x} = \hbar \begin{pmatrix} 0 & \tfrac{1}{\sqrt{2}} & 0 \\ \tfrac{1}{\sqrt{2}}
 </div>
 
 ```math
-H = \tfrac{p^{2}}{2 \mu} - \tfrac{Ze^{2}}{r} \quad \psi_{n\ell m} = R_{n\ell} ( r ) Y_{\ell m} ( \theta ,\varphi ) \quad E_{n} = - \tfrac{Z^{2} \alpha^{2} \mu c^{2}}{2 n^{2}} = - {}^{1 3} \tfrac{. 6}{n^{2}} \text{ eV }
+H = \tfrac{p^{2}}{2 \mu} - \tfrac{Ze^{2}}{r} \quad \psi_{n\ell m} = R_{n\ell} ( r ) Y_{\ell m} ( \theta ,\varphi ) \quad E_{n} = - \tfrac{Z^{2} \alpha^{2} \mu c^{2}}{2 n^{2}} = - \tfrac{1 3 . 6}{n^{2}} \text{ eV }
 ```
 
 ```math
@@ -184,11 +184,11 @@ n = n_{r} + \ell + 1 \quad a_{0} = \tfrac{\hbar}{\alpha \mu c} \quad \ell = 0 , 
 ```
 
 ```math
-R_{n\ell} ( \rho ) = \rho^{\ell} \sum_{k = 0}^{\infty} a_{k} \rho^{k} e^{- \rho / 2} \quad a_{k + 1} = \tfrac{k + \ell + 1 n}{( k + 1 ) ( k + 2 \ell + 2 )}^{-} a_{k} \quad \rho = \surd^{-} \tfrac{8 \mu E}{\hbar^{2}} r = \tfrac{2 r}{na_{0}}
+R_{n\ell} ( \rho ) = \rho^{\ell} \sum_{k = 0}^{\infty} a_{k} \rho^{k} e^{- \rho / 2} \quad a_{k + 1} = \tfrac{k + \ell + 1 n}{( k + 1 ) ( k + 2 \ell + 2 )}^{-} a_{k} \quad \rho = \sqrt{\tfrac{- 8 \mu E}{\hbar^{2}} r} = \tfrac{2 r}{na_{0}}
 ```
 
 ```math
-R_{1 0} = 2 ( \tfrac{Z}{a_{0}} ) 2^{3} e^{\tfrac{- Zr}{a 0}} \quad R_{2 0} = 2 ( \tfrac{Z}{2 a_{0}} ) \tfrac{3}{2} ( 1 - \tfrac{Zr}{2 a_{0}} ) e^{\tfrac{- Zr}{2 a 0}} \quad R_{2 1} = \tfrac{1}{3} \sqrt{( \tfrac{Z}{2 a_{0}} ) 2^{3} ( \tfrac{Zr}{a_{0}} ) e^{\tfrac{- Zr}{2 a 0}}}
+R_{1 0} = 2 ( \tfrac{Z}{a_{0}} ) \tfrac{3}{2} e^{\tfrac{- Zr}{a 0}} \quad R_{2 0} = 2 ( \tfrac{Z}{2 a_{0}} ) \tfrac{3}{2} ( 1 - \tfrac{Zr}{2 a_{0}} ) e^{\tfrac{- Zr}{2 a 0}} \quad R_{2 1} = \tfrac{1}{3} \sqrt{( \tfrac{Z}{2 a_{0}} ) \tfrac{3}{2} ( \tfrac{Zr}{a_{0}} ) e^{\tfrac{- Zr}{2 a 0}}}
 ```
 
 ```math
@@ -196,7 +196,7 @@ R_{n,n - 1} \propto r^{n - 1} e^{- Zr/na_{0}} \quad \mu = \tfrac{m_{1} m_{2}}{m_
 ```
 
 ```math
-H_{1} = - {}_{8} \tfrac{p^{4}}{m^{3} c^{2}} \quad H_{2} = \tfrac{e^{2}}{2 m^{2} c^{2} r^{3}} \vec{S} \cdot \vec{L} \quad \Delta E_{1 2} = - {}_{2} \tfrac{1}{n^{3}} \alpha^{4} mc^{2} ( \tfrac{1}{j + \tfrac{1}{2}} - \tfrac{3}{4 n} )
+H_{1} = - \tfrac{p^{4}}{8 m^{3} c^{2}} \quad H_{2} = \tfrac{e^{2}}{2 m^{2} c^{2} r^{3}} \vec{S} \cdot \vec{L} \quad \Delta E_{1 2} = - \tfrac{1}{2 n^{3}} \alpha^{4} mc^{2} ( \tfrac{1}{j + \tfrac{1}{2}} - \tfrac{3}{4 n} )
 ```
 
 ```math
@@ -245,7 +245,7 @@ c_{n} ( t ) = \tfrac{1}{i \hbar} \int^{t}_{0} dt^{\prime} e^{i ( E_{n} - E_{i} )
 \text{ Fermi } ’ s \text{ Golden Rule } : \quad \Gamma_{i \to f} = \tfrac{2 \pi}{\hbar} | \langle \psi_{f} | V | \psi_{i} \rangle |^{2} \rho_{f} ( E )
 ```
 
-$`\Gamma_{i \to f} =`$<sup>2</sup>$`\tfrac{\pi}{\hbar} \int \prod ( \tfrac{Vd}{( 2} \tfrac{{}^{3} p_{k}}{\pi \hbar )^{3}} ) | M_{fi} |^{2} \delta^{3}`$(momentum conservation) $`\delta`$(Energy conservation)
+$`\Gamma_{i \to f} =`$<sup>2</sup>$`\tfrac{\pi}{\hbar} \int \prod ( \tfrac{Vd^{3} p_{k}}{( 2 \pi \hbar )^{3}} ) | M_{fi} |^{2} \delta^{3}`$(momentum conservation) $`\delta`$(Energy conservation)
 
 ```math
 \Gamma_{m \to k}^{rad} = \tfrac{\alpha k}{2 \pi m^{2} c^{2}} \int d \Omega_{p} \omega_{km} | \langle \varphi_{m} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon} \cdot \vec{p} | \varphi_{k} \rangle |^{2}

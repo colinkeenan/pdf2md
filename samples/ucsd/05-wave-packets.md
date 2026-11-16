@@ -370,11 +370,11 @@ a_{n} = \tfrac{1}{2 L} \int_{- L}^{L} f ( x ) e \tfrac{- in\pi x}{L} dx \quad \t
 ```
 
 ```math
-A_{n} = \sqrt{\frac{2}{\pi}} L \tfrac{1}{2 L} \int_{- L}^{L} f ( x ) e^{-} \tfrac{in\pi x}{L} dx \quad \text{ redefine coefficient }
+A_{n} = \sqrt{\frac{2}{\pi}} L \tfrac{1}{2 L} \int_{- L}^{L} f ( x ) e \tfrac{- in\pi x}{L} dx \quad \text{ redefine coefficient }
 ```
 
 ```math
-A_{n} = \sqrt{\tfrac{1}{2 \pi} \int_{- L}^{L} f ( x ) e^{-} \tfrac{in\pi x}{L} dx}
+A_{n} = \sqrt{\tfrac{1}{2 \pi} \int_{- L}^{L} f ( x ) e \tfrac{- in\pi x}{L} dx}
 ```
 
 ```math
@@ -972,7 +972,7 @@ E = - \frac{1}{2} \alpha^{2} mc^{2}
 a $`\psi ( x ) = \tfrac{1}{\sqrt{2 a}}`$ for $`- a<x<a`$, otherwise $`\psi ( x )`$ = 0.
 
 ```math
-b \psi ( x ) = ( {}_{\pi}^{\alpha} ) 4^{1} e^{- \alpha x^{2} / 2}
+b \psi ( x ) = ( \tfrac{\alpha}{\pi} ) \tfrac{1}{4} e^{- \alpha x^{2} / 2}
 ```
 
 ```math
@@ -1012,7 +1012,7 @@ c \psi ( x ) = \delta ( x - x_{0} )
 ```
 
 ```math
-( c ) \bar{\psi} ( p ) = ( {}_{\pi}^{\alpha} ) 4^{1} e^{- \alpha p^{2} / 2}
+( c ) \bar{\psi} ( p ) = ( \tfrac{\alpha}{\pi} ) \tfrac{1}{4} e^{- \alpha p^{2} / 2}
 ```
 
 16. **\*** Assume that $`\varphi ( p ) = \delta ( p - p_{0} )`$. What is $`\psi ( x )`$? What is $`<p^{2} >`$? What is $`<x^{2} >`$?

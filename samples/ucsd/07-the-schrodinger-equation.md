@@ -164,7 +164,7 @@ Plug this into the Schrödinger Equation.
 Put everything that depends on $`x`$ on the left and everything that depends on $`t`$ on the right.
 
 ```math
-\frac{\left( \tfrac{\hbar^{2}}{2 m}^{-} \tfrac{\partial^{2} u ( x )}{\partial x^{2}} + V ( x ) u ( x ) \right)}{u ( x )} = \frac{i \hbar^{\partial T} \tfrac{( t )}{\partial t}}{T ( t )} = const. = E
+\frac{\left( \tfrac{\hbar^{2}}{2 m}^{-} \tfrac{\partial^{2} u ( x )}{\partial x^{2}} + V ( x ) u ( x ) \right)}{u ( x )} = \frac{i \hbar \tfrac{\partial T ( t )}{\partial t}}{T ( t )} = const. = E
 ```
 
 Since we have a function of only $`x`$ set equal to a function of only $`t`$, they **both must equal a** **constant**. In the equation above, we call the constant $`E`$, (with some knowledge of the outcome). We now have an equation in $`t`$ set equal to a constant

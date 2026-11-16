@@ -487,7 +487,7 @@ Compute the energy shifts in eV.
 
 # <a id="s-23-6-sample-test-problems"></a>23.6 Sample Test Problems
 
-1. The relativistic correction to the Hydrogen Hamiltonian is $`H_{1} = - {}_{8} \tfrac{p^{4}}{m^{3} c^{2}}`$. Assume that electrons have spin zero and that there is therefore no spin orbit correction. Calculate the energy shifts and draw an energy diagram for the n=3 states of Hydrogen. You may use $`\langle \psi_{nlm} | \tfrac{1}{r} | \psi_{nlm} \rangle = \tfrac{1}{n^{2} a_{0}}`$ and $`\langle \psi_{nlm} | \tfrac{1}{r^{2}} | \psi_{nlm} \rangle = \tfrac{1}{n^{3} a_{0}^{2} ( l + \tfrac{1}{2} )}`$.
+1. The relativistic correction to the Hydrogen Hamiltonian is $`H_{1} = - \tfrac{p^{4}}{8 m^{3} c^{2}}`$. Assume that electrons have spin zero and that there is therefore no spin orbit correction. Calculate the energy shifts and draw an energy diagram for the n=3 states of Hydrogen. You may use $`\langle \psi_{nlm} | \tfrac{1}{r} | \psi_{nlm} \rangle = \tfrac{1}{n^{2} a_{0}}`$ and $`\langle \psi_{nlm} | \tfrac{1}{r^{2}} | \psi_{nlm} \rangle = \tfrac{1}{n^{3} a_{0}^{2} ( l + \tfrac{1}{2} )}`$.
 
 2. Calculate the fine structure energy shifts (in eV!) for the $`n`$ = 1, $`n`$ = 2, and $`n`$ = 3 states of Hydrogen. Include the effects of relativistic corrections, the spin-orbit interaction, and the so-called Darwin term (due to Dirac equation). Do not include hyperfine splitting or the effects of an external magnetic field. (Note: I am not asking you to derive the equations.) Clearly list the states in spectroscopic notation and make a diagram showing the allowed electric dipole decays of these states.
 
@@ -511,13 +511,13 @@ V = \tfrac{1}{2} m\omega^{2} r^{2}
 \langle H_{SO} \rangle = \tfrac{\hbar^{2} \omega^{2}}{4 mc^{2}} [ j ( j + 1 ) - l ( l + 1 ) - s ( s + 1 ) ]
 ```
 
-for the 0$`S_{2} 1`$, ∆$`E`$ = 0,
+for the 0$`S \tfrac{1}{2}`$, ∆$`E`$ = 0,
 
 ```math
-\text{ for the } 1 P_{1 2} , \Delta E = - 2 \tfrac{\hbar^{2} \omega^{2}}{4 mc^{2}} ,
+\text{ for the } 1 P_{\tfrac{1}{2}} , \Delta E = - 2 \tfrac{\hbar^{2} \omega^{2}}{4 mc^{2}} ,
 ```
 
-for the 1$`P_{3 2}`$, ∆$`E`$ = +1$`\frac{\hbar^{2} \omega^{2}}{4 mc^{2}}`$.
+for the 1$`P_{\tfrac{3}{2}}`$, ∆$`E`$ = +1$`\frac{\hbar^{2} \omega^{2}}{4 mc^{2}}`$.
 
 5. We computed that the energies after the fine structure corrections to the hydrogen spectrum are $`E_{nlj} = - \tfrac{\alpha^{2} mc^{2}}{2 n^{2}} + \tfrac{\alpha^{4} mc^{2}}{8 n^{4}} ( 3 - \tfrac{4 n}{j + \tfrac{1}{2}} )`$. Now a weak magnetic field $`B`$ is applied to hydrogen atoms in the 3$`d`$ state. Calculate the energies of all the 3$`d`$ states (ignoring hyperfine effects). Draw an energy level diagram, showing the quantum numbers of the states and the energy splittings.
 

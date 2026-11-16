@@ -166,7 +166,7 @@ A common way to name states in atomic physics is to use **spectroscopic notation
 A quick example is the single electron states, as we find in Hydrogen. These are:
 
 ```math
-3^{2} 1^{2} S_{\tfrac{1}{2}} D \tfrac{3}{2} 4^{2} S 2^{2} S_{\tfrac{1}{2}} \tfrac{1}{2} 4^{2} P 2^{2} P_{\tfrac{3}{{}^{2} 2}} \tfrac{3}{2} 4 P 2^{2} P_{1 2} 1_{2} 4^{2} D \tfrac{5}{2} 3^{2} S_{\tfrac{1}{2^{2}}} 4 D 3^{2} P_{3 2} \tfrac{3}{2} 4^{2} F 3^{2} P_{1 2} 7_{2} 4^{2} F 3^{2} D_{\tfrac{5}{2}} \tfrac{5}{2} \dots
+3^{2} 1^{2} S_{\tfrac{1}{2}} D \tfrac{3}{2} 4^{2} S 2^{2} S_{\tfrac{1}{2}} \tfrac{1}{2} 4^{2} P 2^{2} P_{\tfrac{3}{{}^{2} 2}} \tfrac{3}{2} 4 P 2^{2} P_{\tfrac{1}{2^{2}}} \tfrac{1}{2} 4 D \tfrac{5}{2} 3^{2} S_{\tfrac{1}{2^{2}}} 4 D 3^{2} P_{\tfrac{3}{{}^{2} 2}} \tfrac{3}{2} 4 F 3^{2} P_{\tfrac{1}{{}^{2} 2}} \tfrac{7}{2} 4 F 3^{2} D_{\tfrac{5}{2}} \tfrac{5}{2} \dots
 ```
 
 All of these have the pre-superscript 2 because they are all spin one-half. There are two $`j`$ values for each $`\ell`$.
@@ -728,7 +728,7 @@ This is what we expect.
 
 1. Find the allowed total spin states of two spin 1 particles. Explicitly write out the 9 states which are eigenfunctions of $`S^{2}`$ and $`S_{z}`$.
 
-2. The Hamiltonian of a spin system is given by $`H = A + \tfrac{B \vec{S}_{1} \vec{S}_{2}}{\hbar^{2}}^{\cdot} + {}^{C} \tfrac{( S_{1 z} + S_{2 z} )}{\hbar}`$. Find the eigenvalues and eigenfunctions of the system of two particles (a) when both particles have spin $`\frac{1}{2}`$, (b) when one particle has spin $`\frac{1}{2}`$ and the other spin 1. What happens in (a) when the two particles are identical?
+2. The Hamiltonian of a spin system is given by $`H = A + \tfrac{B \vec{S}_{1} \vec{S}_{2}}{\hbar^{2}}^{\cdot} + \tfrac{C ( S_{1 z} + S_{2 z} )}{\hbar}`$. Find the eigenvalues and eigenfunctions of the system of two particles (a) when both particles have spin $`\frac{1}{2}`$, (b) when one particle has spin $`\frac{1}{2}`$ and the other spin 1. What happens in (a) when the two particles are identical?
 
 <div align="right"><a href="book.pdf#page=323" target="_blank" title="This page in the PDF"><sup>[p. 323]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">

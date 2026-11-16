@@ -503,7 +503,7 @@ p = - i \sqrt{\frac{m \hbar \omega}{2}} ( A - A^{\dagger} )
 
 # <a id="s-1-15-more-fun-with-operators"></a>1.15 More Fun with Operators
 
-We find the time development operator (See section 11.5) by solving the equation $`i \hbar_{\partial t}^{\partial \psi} = H\psi`$.
+We find the time development operator (See section 11.5) by solving the equation $`i \hbar \tfrac{\partial \psi}{\partial t} = H\psi`$.
 
 ```math
 \psi ( t ) = e^{- iHt/ \hbar} \psi ( t = 0 )
@@ -1835,7 +1835,7 @@ The result is, in general, complex. The imaginary part of the self energy correc
 The **time dependence of the wavefunction for the state** $`\psi_{n}`$ **is modified by the self energy** **correction**.
 
 ```math
-\psi_{n} ( \vec{x} , t ) = \psi_{n} ( \vec{x} ) e^{- i ( E_{n} + ℜ ( \Delta E_{n} ) ) t/ \hbar} e^{{}^{-} \tfrac{\Gamma nt}{2}}
+\psi_{n} ( \vec{x} , t ) = \psi_{n} ( \vec{x} ) e^{- i ( E_{n} + ℜ ( \Delta E_{n} ) ) t/ \hbar} e^{\tfrac{- \Gamma nt}{2}}
 ```
 
 This gives us the **exponential decay behavior** that we expect, **keeping resonant scattering** **cross sections from going to infinity**.
@@ -1909,7 +1909,7 @@ Instead of an equation which is second order in the time derivative, we can make
 Now rewriting in terms of $`\psi_{A} = \varphi^{( R )} + \varphi^{( L )}`$ and $`\psi_{B} = \varphi^{( R )} - \varphi^{( L )}`$ and ordering it as a matrix equation, we get an equation that can be written as a dot product between 4-vectors.
 
 ```math
-\begin{pmatrix} - i \hbar_{\partial x} \tfrac{\partial}{0} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} = \hbar \left[ \begin{pmatrix} 0 & - i \vec{\sigma} \cdot \vec{\nabla} \\ i \vec{\sigma} \cdot \vec{\nabla} & 0 \end{pmatrix} + \begin{pmatrix} \tfrac{\partial}{\partial x_{4}} & 0 \\ 0 & - {}_{\partial x} \tfrac{\partial}{4} \end{pmatrix} \right]
+\begin{pmatrix} - i \hbar \tfrac{\partial}{\partial x_{0}} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} = \hbar \left[ \begin{pmatrix} 0 & - i \vec{\sigma} \cdot \vec{\nabla} \\ i \vec{\sigma} \cdot \vec{\nabla} & 0 \end{pmatrix} + \begin{pmatrix} \tfrac{\partial}{\partial x_{4}} & 0 \\ 0 & - \tfrac{\partial}{\partial x_{4}} \end{pmatrix} \right]
 ```
 
 ```math
