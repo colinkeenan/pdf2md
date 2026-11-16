@@ -2093,6 +2093,9 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
         let mut folded: Vec<usize> = Vec::new();
         let mut dots: Vec<usize> = Vec::new();
         let raised_dot = |it: &Item| it.tex.trim() == "." && it.src.len() == 1 && spans[it.src[0]].cy() < y0 - 0.25 * h;
+        if std::env::var("PDF2MD_MATHDEBUG").is_ok_and(|v| v == "3") {
+            eprintln!("SCRIPTS sups {:?} subs {:?} next {:?}", sups.iter().map(|it| &it.tex).collect::<Vec<_>>(), subs.iter().map(|it| &it.tex).collect::<Vec<_>>(), items.get(i).map(|it| (&it.tex, it.src.len())));
+        }
         while let Some(op) = items.get(i).filter(|it| it.kind == Kind::Atom && (it.src.first().is_some_and(|&k| big_op(&spans[k]).is_some()) || raised_dot(it))) {
             // (two signs, ∫∫ d⁴x d⁴y …: what follows the second follows both)
             let signs = if raised_dot(op) { 0 } else { items[i + 1..].iter().take_while(|it| it.kind == Kind::Atom && it.src.len() == 1 && big_op(&spans[it.src[0]]).is_some()).count() };
@@ -2153,7 +2156,17 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
             let letters: usize = on_level.iter().map(|r| r.text.chars().filter(|c| !c.is_whitespace()).count()).sum();
             let first = on_level.iter().min_by(|a, b| a.left.total_cmp(&b.left)).map_or("", |r| r.text.trim());
             let integrand = (on_level.len() >= 2 && width >= 1.5 * max) || (letters >= 4 && width >= 1.5 * max) || (letters >= 2 && first.starts_with('d'));
+            // (a sum with its index set beside it, lowered, and the summed
+            // letters after that at the exponent's height: an upper limit
+            // would stand over the index, not behind it)
+            let first_left = on_level.iter().map(|r| r.left).fold(f32::MAX, f32::min);
+            let index: Vec<&MSpan> = run.iter().map(|&k| &spans[k]).filter(|r| !r.cmex() && r.right <= first_left + 1.0).collect();
+            let summed = on_level.len() >= 2 && !index.is_empty() && index.iter().all(|r| r.size < 0.9 * size_run && r.cy() > y_before + 0.3 * size_before);
+            let integrand = integrand || summed;
             if after_op || (!dot && !integrand) || (dot && on_level.is_empty()) {
+                if trace {
+                    eprintln!("FOLD no: after_op {after_op} integrand {integrand} on_level {:?} width {width} y_before {y_before} run {:?}", on_level.iter().map(|r| &r.text).collect::<Vec<_>>(), run.iter().map(|&k| (&spans[k].text, spans[k].cy(), spans[k].size)).collect::<Vec<_>>());
+                }
                 break;
             }
             if dot {
