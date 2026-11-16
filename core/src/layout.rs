@@ -3220,8 +3220,10 @@ fn group_lines(
             let main = &groups[m][0];
             m != k
                 && g.iter().all(|p| size_of(p) < 0.85 * size_of(main))
-                && main.top >= bottom - 1.0
-                && main.top - bottom < 0.3 * size_of(main)
+                // (… or over the small letters of an exponent of that line,
+                // touching them: the top of an exponent that holds the integral)
+                && ((main.top >= bottom - 1.0 && main.top - bottom < 0.3 * size_of(main))
+                    || main.top >= bottom - 0.3 * size_of(main) && g.iter().all(|p| groups[m].iter().any(|n| size_of(n) < 0.85 * size_of(main) && n.top < p.bottom() && n.bottom() > p.top && (n.left - p.right()).max(p.left - n.right()) < size_of(main))))
                 && g.iter().all(|p| groups[m].iter().any(|n| (n.left - p.right()).max(p.left - n.right()) < 2.0 * size_of(main)))
         });
         // (… of an integral: its sign stands right before them and begins
@@ -3308,8 +3310,13 @@ fn group_lines(
     }
     groups.retain(|g| !g.is_empty());
     for s in symbols {
+        // (not a line in whose run of words it would stand: a sign in the
+        // text parts the words before it from those after; the words under
+        // a brace are its label)
+        let in_words = |k: usize| groups[k].iter().any(|n| n.left < s.left - 1.0 && n.right() > s.right() + 1.0 && n.top <= s.top + 0.3 * s.height && n.text.split_whitespace().filter(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 3).count() >= 2);
         let below = (0..groups.len())
             .filter(|&k| groups[k][0].top >= s.top - 0.3 * s.height && groups[k][0].top <= s.top + 3.0 * s.height)
+            .filter(|&k| !in_words(k))
             .min_by(|&a, &b| groups[a][0].top.total_cmp(&groups[b][0].top));
         match below {
             Some(k) => groups[k].push(s),
