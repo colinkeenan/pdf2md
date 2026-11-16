@@ -2855,6 +2855,12 @@ fn title_words(doc: &mut Doc) {
 /// reported with a small box at the *top* of the glyph, while the glyph
 /// reaches down over the formula. They are set aside and then attached to
 /// the nearest line at or below their top.
+/// A small piece that stands right under a big sign, within its width.
+fn under_sign(sign: &Span, s: &Span) -> bool {
+    let mid = s.left + (s.right() - s.left) / 2.0;
+    !matches!(sign.text.trim(), "∫" | "∮") && mid > sign.left - 1.0 && mid < sign.right() + 1.0 && s.top >= sign.bottom() - 2.0 && s.top - sign.bottom() <= 0.9 * sign.height
+}
+
 fn group_lines(
     spans: Vec<Span>,
     size_of: &dyn Fn(&Span) -> f32,
@@ -3241,6 +3247,51 @@ fn group_lines(
         match below {
             Some(k) => groups[k].push(s),
             None => groups.push(vec![s]),
+        }
+    }
+    // (a small piece right under a sum sign set in the text is its lower
+    // limit, whichever line it touches: the sign's line has it)
+    // (with what stands beside it at its height: "n", "=", "1")
+    // (left, right, top, bottom, line) of the limits placed
+    let mut limits: Vec<(f32, f32, f32, f32, usize)> = Vec::new();
+    // (at one height: the box of a "=" is taller than a letter's)
+    let level = |n: &Span, top: f32, bottom: f32| n.bottom().min(bottom) - n.top.max(top) >= 0.5 * n.height.min(bottom - top);
+    loop {
+        let found = (0..loose.len()).find_map(|i| {
+            let s = &loose[i];
+            let beside = limits.iter().find(|&&(l, r, top, bottom, _)| level(s, top, bottom) && (l - s.right()).max(s.left - r) < 0.7 * s.height).map(|l| l.4);
+            beside.or_else(|| groups.iter().position(|g| g.iter().any(|n| big_symbol(n) && under_sign(n, s)))).map(|k| (i, k))
+        });
+        let Some((i, k)) = found else { break };
+        let s = loose.remove(i);
+        limits.push((s.left, s.right(), s.top, s.bottom(), k));
+        groups[k].push(s);
+    }
+    // (… also where the letters made a line of their own under the sign
+    // and only the "=", in its tall box, waited)
+    loop {
+        let found = limits.iter().find_map(|&(l, r, top, bottom, k)| {
+            (0..groups.len()).filter(|&m| m != k).find_map(|m| {
+                let size = size_of(&groups[k][0]);
+                let small = groups[m].iter().all(|n| size_of(n) < 0.85 * size);
+                let j = groups[m].iter().position(|n| level(n, top, bottom) && (l - n.right()).max(n.left - r) < 0.7 * n.height)?;
+                // (or it went to the line under it, and stands clear over that)
+                let n = &groups[m][j];
+                let over = j > 0 && size_of(n) < 0.85 * size && n.bottom() <= groups[m][0].top + 0.3 * n.height;
+                (small || over).then_some((m, j, k))
+            })
+        });
+        let Some((m, j, k)) = found else { break };
+        let s = groups[m].remove(j);
+        limits.push((s.left, s.right(), s.top, s.bottom(), k));
+        groups[k].push(s);
+        if groups[m].is_empty() {
+            groups.remove(m);
+            for l in &mut limits {
+                if l.4 > m {
+                    l.4 -= 1;
+                }
+            }
         }
     }
     // (those their line keeps first, so that the next finds them there)
