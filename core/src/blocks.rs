@@ -358,6 +358,9 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
         let trimmed = s.text.trim_end();
         let word = trimmed.rsplit(char::is_whitespace).next().unwrap_or("");
         let cut = trimmed.chars().count() - word.chars().count();
+        // (a figure set against the name, "−2tr(…)": the name begins behind it)
+        let figures = word.chars().take_while(char::is_ascii_digit).count();
+        let (word, cut) = if figures > 0 && FUNCTION_NAMES.contains(&&word[figures..]) { (&word[figures..], cut + figures) } else { (word, cut) };
         let before_math = (doc.is_math(next) || next.script != Script::Normal) && next.left - s.right() < 0.5 * st.body;
         // (so is a capital Greek letter of the text font that has indices,
         // with the bracket that opens before it: "Then (Φ" and a raised *)

@@ -505,7 +505,9 @@ pub(crate) fn sides(mut v: Vec<Inline>) -> Vec<Inline> {
             let (a, b) = v.split_at_mut(k + 1);
             if let (Inline::Math(_), Inline::Text(t)) = (&a[k], &mut b[0]) {
                 let n = t.len() - t.trim_start_matches(|c: char| c.is_ascii_lowercase()).len();
-                if n >= 2 && !["th", "st", "nd", "rd"].contains(&&t[..n]) {
+                // (a unit of energy too, "10^{19}" + "Gev")
+                let unit = ["Gev", "Mev", "Tev", "GeV", "MeV", "TeV"].iter().any(|u| t.strip_prefix(u).is_some_and(|r| !r.starts_with(|c: char| c.is_alphanumeric())));
+                if unit || (n >= 2 && !["th", "st", "nd", "rd"].contains(&&t[..n])) {
                     t.insert(0, ' ');
                 }
             }
