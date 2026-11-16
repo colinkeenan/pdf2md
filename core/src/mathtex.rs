@@ -2186,17 +2186,27 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
                 let main: Vec<usize> = v.into_iter().filter(|&k| spans[k].size >= 0.9 * hi).collect();
                 (mean_cy(spans, &main), hi)
             };
-            let ((y_before, size_before), (y_run, size_run)) = (level(&before), level(&run));
+            let (y_before, size_before) = level(&before);
+            // (a sum whose sign has taken its index and the summed letters
+            // behind it for its limit: letters of the exponent's size at
+            // its height, right of the sign, are no limit — they and the
+            // index are looked at with what follows)
+            let sign_right = spans[op.src[0]].right;
+            let summed_in = op.src[1..].iter().filter(|&&k| !spans[k].cmex() && (spans[k].size - size_before).abs() <= 0.1 * size_before && (spans[k].cy() - y_before).abs() <= 0.4 * size_before && spans[k].left >= sign_right - 1.0).count();
+            let widened = !taken && !raised_dot(op) && summed_in >= 2;
+            let probe: Vec<usize> = if widened { op.src[1..].iter().copied().chain(run.iter().copied()).collect() } else { run.clone() };
+            let run_all = &probe;
+            let (y_run, size_run) = level(run_all);
             if (size_before - size_run).abs() > 0.1 * size_before || (y_before - y_run).abs() > 0.4 * size_before {
                 if trace {
-                    eprintln!("FOLD no: sizes {size_before} {size_run} heights {y_before} {y_run} op {:?}", op.tex);
+                    eprintln!("FOLD no: sizes {size_before} {size_run} heights {y_before} {y_run} op {:?} taken {taken} run {:?}", op.tex, run.iter().map(|&k| (&spans[k].text, spans[k].size, spans[k].cy(), spans[k].atom.is_some())).collect::<Vec<_>>());
                 }
                 break;
             }
             // (not the limits of an integral on the line, which are small
             // and raised too: what follows runs on at the exponent's
             // height; nor an integral after another's limits)
-            let on_level: Vec<&MSpan> = run.iter().map(|&k| &spans[k]).filter(|r| !r.cmex() && r.size >= 0.9 * size_run && (r.cy() - y_before).abs() <= 0.4 * size_before).collect();
+            let on_level: Vec<&MSpan> = run_all.iter().map(|&k| &spans[k]).filter(|r| !r.cmex() && r.size >= 0.9 * size_run && (r.cy() - y_before).abs() <= 0.4 * size_before).collect();
             let width = on_level.iter().map(|r| r.right).fold(f32::MIN, f32::max) - on_level.iter().map(|r| r.left).fold(f32::MAX, f32::min);
             let after_op = out.last().is_some_and(|p| ["\\int", "\\sum", "\\prod", "\\oint"].iter().any(|o| p.trim_start().starts_with(o)));
             let dot = raised_dot(op);
@@ -2210,8 +2220,11 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
             // letters after that at the exponent's height: an upper limit
             // would stand over the index, not behind it)
             let first_left = on_level.iter().map(|r| r.left).fold(f32::MAX, f32::min);
-            let index: Vec<&MSpan> = run.iter().map(|&k| &spans[k]).filter(|r| !r.cmex() && r.right <= first_left + 1.0).collect();
-            let summed = on_level.len() >= 2 && !index.is_empty() && index.iter().all(|r| r.size < 0.9 * size_run && r.cy() > y_before + 0.3 * size_before);
+            let index: Vec<&MSpan> = run_all.iter().map(|&k| &spans[k]).filter(|r| !r.cmex() && r.right <= first_left + 1.0).collect();
+            // (with its upper limit too, a small letter over the index, where
+            // the sign had taken them)
+            let lowered = |r: &&MSpan| r.cy() > y_before + 0.3 * size_before;
+            let summed = on_level.len() >= 2 && !index.is_empty() && index.iter().all(|r| r.size < 0.9 * size_run) && if widened { index.iter().any(lowered) } else { index.iter().all(lowered) };
             let integrand = integrand || summed;
             if after_op || (!dot && !integrand) || (dot && on_level.is_empty()) {
                 if trace {
