@@ -15,7 +15,10 @@ Kirigami.ScrollablePage {
     property url startFolder
     signal picked(url chosen)
 
-    title: chooseFolder ? "Choose output folder" : "Choose a textbook"
+    // what the folder is chosen for
+    property string heading: "Choose output folder"
+
+    title: chooseFolder ? heading : "Choose a textbook"
 
     function displayPath(u) {
         return decodeURIComponent(u.toString().replace("file://", ""))

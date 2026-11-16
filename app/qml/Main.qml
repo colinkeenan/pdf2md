@@ -12,6 +12,11 @@ Kirigami.ApplicationWindow {
          | Qt.WindowMinMaxButtonsHint | Qt.WindowCloseButtonHint
 
     title: "PDF to Markdown"
+    // the two ways to write formulas
+    readonly property var mathForms: [
+        { value: "github", text: "For GitHub or mdBun   ($`…`$, ```math)" },
+        { value: "standard", text: "For other Markdown readers   ($…$, $$…$$)" }
+    ]
     // Wide enough for the form with the page's padding around it, however
     // long the chosen paths are (but not wider than the screen): the
     // window grows instead of the buttons running into its right edge.
@@ -34,27 +39,83 @@ Kirigami.ApplicationWindow {
     readonly property real neededHeight: Math.ceil(column.implicitHeight + page.topPadding + page.bottomPadding + Kirigami.Units.gridUnit * 3)
     minimumHeight: Math.max(Kirigami.Units.gridUnit * 18, Math.min(neededHeight, Screen.desktopAvailableHeight))
     width: Kirigami.Units.gridUnit * 36
-    height: Kirigami.Units.gridUnit * 24
+    height: Kirigami.Units.gridUnit * 32
 
-    // file:// URLs as strings
-    property string inputUrl: ""
-    property string outputUrl: ""
-    property bool outputChosenByUser: false
+    // What can be converted in the folder shown (see the backend's `items`).
+    readonly property var items: converter.items === "" ? [] : converter.items.split("\n").map(function (line) {
+        var f = line.split("\t")
+        return { kind: f[0], name: f[1], path: f[2], out: f[3], book: f[4], when: f[5], bookName: f[6] }
+    })
+    // The items checked (by path), and for each, if asked for, a folder of
+    // its own for the book (a file:// URL) and a way of its own to write math.
+    property var checked: ({})
+    property var outputs: ({})
+    property var maths: ({})
+    property bool otherFolders: false
+    property bool otherMath: false
+    readonly property var chosen: items.filter(function (i) { return root.checked[i.path] === true })
+    // how the items of the last run ended, by path
+    readonly property var results: {
+        var r = {}
+        if (converter.results !== "") {
+            converter.results.split("\n").forEach(function (line) {
+                var f = line.split("\t")
+                r[f[0]] = { ok: f[1] === "ok", words: f[2] }
+            })
+        }
+        return r
+    }
+    // the jobs waiting for the answer to "Replace or Keep Both?"
+    property string pendingJobs: ""
+    property string pendingThere: ""
 
-    function parentOf(url) {
-        return url.substring(0, url.lastIndexOf("/"))
-    }
-    function localName(url) {
-        return decodeURIComponent(url.substring(url.lastIndexOf("/") + 1))
-    }
     function localPath(url) {
         return decodeURIComponent(url.replace("file://", ""))
     }
-    function stemOf(url) {
-        var n = localName(url)
-        var dot = n.lastIndexOf(".")
-        return dot > 0 ? n.substring(0, dot) : n
+    function check(path, on) {
+        var c = Object.assign({}, checked)
+        if (on) {
+            c[path] = true
+        } else {
+            delete c[path]
+        }
+        checked = c
     }
+    function checkAll(on) {
+        var c = {}
+        if (on) {
+            items.forEach(function (i) { c[i.path] = true })
+        }
+        checked = c
+    }
+    function setFor(map, path, value) {
+        var m = Object.assign({}, map)
+        m[path] = value
+        return m
+    }
+    // where an item's book goes, and how its math is written
+    function outputOf(item) {
+        return otherFolders && outputs[item.path] ? localPath(outputs[item.path]) : item.out
+    }
+    function mathOf(item) {
+        return otherMath && maths[item.path] ? maths[item.path] : converter.math
+    }
+    // the checked items, in the list's order, as the backend takes them
+    function jobs() {
+        return chosen.map(function (i) { return [i.kind, i.path, outputOf(i), mathOf(i)].join("\t") }).join("\n")
+    }
+    function start() {
+        var j = jobs()
+        var there = converter.existing(j)
+        if (there !== "") {
+            pendingJobs = j
+            pendingThere = there
+            existsDialog.open()
+        } else {
+            converter.convertall(j, false)
+        }
+    }
+
 
     // The Rust object from src/backend.rs
     Converter {
@@ -77,13 +138,14 @@ Kirigami.ApplicationWindow {
         }
     }
 
-    function openBrowser(chooseFolder, onPicked) {
+    function openBrowser(heading, start, onPicked) {
         // (made here, inside the window, and then handed to the page stack:
         // a page the stack makes from the component starts outside the
         // scene, which Qt warns about; a page made here is ours to remove)
         var page = browserComponent.createObject(pageStack, {
-            chooseFolder: chooseFolder,
-            startFolder: converter.folder
+            chooseFolder: true,
+            heading: heading,
+            startFolder: start
         })
         pageStack.push(page)
         page.picked.connect(function (chosen) {
@@ -92,21 +154,22 @@ Kirigami.ApplicationWindow {
         })
     }
 
-    // asked when the book folder is already there
+    // asked when a book folder is already there
     Kirigami.PromptDialog {
         id: existsDialog
-        title: "Book folder already exists"
-        subtitle: "“" + root.localPath(root.outputUrl) + "/" + root.stemOf(root.inputUrl) + "/” is already there.\n\n"
-            + "Replace moves the old files to the Trash and writes the new conversion into the same folder. "
-            + "Keep Both writes the new conversion to “" + root.stemOf(root.inputUrl) + " (1)” (or the next free number)."
+        readonly property var there: root.pendingThere === "" ? [] : root.pendingThere.split("\n")
+        title: there.length === 1 ? "Book folder already exists" : there.length + " book folders already exist"
+        subtitle: there.map(function (d) { return "“" + d + "/”" }).join("\n") + (there.length === 1 ? " is" : "\nare") + " already there.\n\n"
+            + "Replace moves the old files to the Trash and writes the new conversion into the same folder (a course's book is rebuilt in place). "
+            + "Keep Both writes the new conversion to a folder with “(1)” after its name (or the next free number)."
         standardButtons: Kirigami.Dialog.Cancel
         customFooterActions: [
             Kirigami.Action {
-                text: "Replace"
+                text: existsDialog.there.length === 1 ? "Replace" : "Replace All"
                 icon.name: "user-trash"
                 onTriggered: {
                     existsDialog.close()
-                    converter.convert(root.inputUrl, root.outputUrl, true)
+                    converter.convertall(root.pendingJobs, true)
                 }
             },
             Kirigami.Action {
@@ -114,7 +177,7 @@ Kirigami.ApplicationWindow {
                 icon.name: "folder-new"
                 onTriggered: {
                     existsDialog.close()
-                    converter.convert(root.inputUrl, root.outputUrl, false)
+                    converter.convertall(root.pendingJobs, false)
                 }
             }
         ]
@@ -122,7 +185,7 @@ Kirigami.ApplicationWindow {
 
     pageStack.initialPage: Kirigami.Page {
         id: page
-        title: "Convert a textbook"
+        title: "Convert textbooks"
 
         ColumnLayout {
             id: column
@@ -132,62 +195,15 @@ Kirigami.ApplicationWindow {
             Kirigami.FormLayout {
                 id: form
                 Layout.fillWidth: true
-                // always labels beside the fields: the window is made wide
-                // enough for that (left to itself, the form switches to
-                // labels above the fields just when a long path arrives,
-                // and then asks for less room than it needs)
+                // always labels beside the fields
                 wideMode: true
 
-                RowLayout {
-                    Kirigami.FormData.label: "Textbook:"
-                    QQC2.TextField {
-                        Layout.fillWidth: true
-                        // as wide as the path in it
-                        implicitWidth: Math.max(Kirigami.Units.gridUnit * 12, Math.ceil(contentWidth) + leftPadding + rightPadding)
-                        readOnly: true
-                        placeholderText: "PDF file"
-                        text: root.inputUrl === "" ? "" : root.localPath(root.inputUrl)
-                    }
-                    QQC2.Button {
-                        icon.name: "document-open"
-                        text: "Choose…"
-                        onClicked: root.openBrowser(false, function (url) {
-                            root.inputUrl = url
-                            var folder = root.parentOf(url)
-                            converter.remember(folder)
-                            // output defaults to the folder the book is in
-                            if (!root.outputChosenByUser) {
-                                root.outputUrl = folder
-                            }
-                        })
-                    }
-                }
-
-                RowLayout {
-                    Kirigami.FormData.label: "Output folder:"
-                    QQC2.TextField {
-                        Layout.fillWidth: true
-                        // as wide as the path in it
-                        implicitWidth: Math.max(Kirigami.Units.gridUnit * 12, Math.ceil(contentWidth) + leftPadding + rightPadding)
-                        readOnly: true
-                        placeholderText: "Defaults to the textbook's folder"
-                        text: root.outputUrl === "" ? "" : root.localPath(root.outputUrl)
-                    }
-                    QQC2.Button {
-                        icon.name: "folder-open"
-                        text: "Choose…"
-                        onClicked: root.openBrowser(true, function (url) {
-                            root.outputUrl = url
-                            root.outputChosenByUser = true
-                            converter.remember(url)
-                        })
-                    }
-                }
-
-                // the user's own Markdown reader, to show converted books
+                // the user's own Markdown reader, to show converted books:
+                // one for all of them
                 QQC2.TextField {
                     Kirigami.FormData.label: "Reader:"
                     Layout.fillWidth: true
+                    implicitWidth: Kirigami.Units.gridUnit * 22
                     placeholderText: "Command that shows a book, e.g. md (empty: the system's choice)"
                     text: converter.reader
                     onEditingFinished: converter.usereader(text)
@@ -203,44 +219,246 @@ Kirigami.ApplicationWindow {
                     Layout.fillWidth: true
                     textRole: "text"
                     valueRole: "value"
-                    model: [
-                        { value: "github", text: "For GitHub or mdBun   ($`…`$, ```math)" },
-                        { value: "standard", text: "For other Markdown readers   ($…$, $$…$$)" }
-                    ]
+                    model: root.mathForms
                     currentIndex: converter.math === "standard" ? 1 : 0
                     onActivated: converter.usemath(currentValue)
                     QQC2.ToolTip.visible: hovered
                     QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
-                    QQC2.ToolTip.text: "How formulas are written in the book.\nmdBun reads both. GitHub needs the first;\nmost other programs need the second."
+                    QQC2.ToolTip.text: "How formulas are written in the books.\nmdBun reads both. GitHub needs the first;\nmost other programs need the second."
                 }
 
-                QQC2.Label {
-                    Kirigami.FormData.label: "Files go in:"
-                    visible: root.inputUrl !== "" && root.outputUrl !== ""
-                    text: root.localPath(root.outputUrl) + "/" + root.stemOf(root.inputUrl) + "/"
-                    elide: Text.ElideMiddle
+                // the folder whose PDFs and courses are listed
+                RowLayout {
+                    Kirigami.FormData.label: "Folder:"
                     Layout.fillWidth: true
+                    QQC2.Label {
+                        Layout.fillWidth: true
+                        text: root.localPath(converter.folder)
+                        elide: Text.ElideMiddle
+                    }
+                    QQC2.Button {
+                        icon.name: "folder-open"
+                        text: "Choose…"
+                        enabled: !converter.busy
+                        onClicked: root.openBrowser("Choose the folder of the books", converter.folder, function (url) {
+                            converter.remember(url)
+                        })
+                    }
                 }
+            }
 
-                // set apart below the form, right-aligned under the Choose… buttons
+            // everything in the folder that can be converted: check what to convert
+            RowLayout {
+                Layout.fillWidth: true
+                visible: root.items.length > 0
+                QQC2.CheckBox {
+                    id: allBox
+                    text: "Can be converted"
+                    font.bold: true
+                    enabled: !converter.busy
+                    tristate: true
+                    // (a click checks all, or none when all are checked)
+                    nextCheckState: function () {
+                        return root.chosen.length === root.items.length ? Qt.Unchecked : Qt.Checked
+                    }
+                    onClicked: root.checkAll(checkState === Qt.Checked)
+                    Binding {
+                        target: allBox
+                        property: "checkState"
+                        value: root.chosen.length === 0 ? Qt.Unchecked : root.chosen.length === root.items.length ? Qt.Checked : Qt.PartiallyChecked
+                    }
+                }
                 Item {
                     Layout.fillWidth: true
-                    implicitHeight: convertButton.implicitHeight + Kirigami.Units.gridUnit * 1.5
-                    QQC2.Button {
-                        id: convertButton
-                        anchors.right: parent.right
-                        anchors.bottom: parent.bottom
-                        icon.name: "run-build"
-                        text: "Convert"
-                        enabled: !converter.busy && root.inputUrl !== "" && root.outputUrl !== ""
-                        onClicked: {
-                            if (converter.exists(root.inputUrl, root.outputUrl)) {
-                                existsDialog.open()
-                            } else {
-                                converter.convert(root.inputUrl, root.outputUrl, false)
+                }
+                QQC2.ToolButton {
+                    icon.name: "view-refresh"
+                    text: "Look again"
+                    display: QQC2.AbstractButton.IconOnly
+                    enabled: !converter.busy
+                    onClicked: converter.refresh()
+                    QQC2.ToolTip.visible: hovered
+                    QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+                    QQC2.ToolTip.text: "Look again for what the folder holds"
+                }
+            }
+            QQC2.ScrollView {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                Layout.minimumHeight: Kirigami.Units.gridUnit * 6
+                Layout.preferredHeight: Math.min(itemList.contentHeight + 2, Kirigami.Units.gridUnit * 22)
+                visible: root.items.length > 0
+                ListView {
+                    id: itemList
+                    clip: true
+                    model: root.items
+                    delegate: ColumnLayout {
+                        id: row
+                        required property var modelData
+                        readonly property bool on: root.checked[modelData.path] === true
+                        readonly property var result: root.results[modelData.path]
+                        readonly property bool running: converter.busy && converter.current === modelData.path
+                        width: ListView.view.width
+                        spacing: 0
+
+                        RowLayout {
+                            Layout.fillWidth: true
+                            Layout.margins: Kirigami.Units.smallSpacing
+                            spacing: Kirigami.Units.largeSpacing
+                            QQC2.CheckBox {
+                                id: box
+                                enabled: !converter.busy
+                                onClicked: root.check(row.modelData.path, checked)
+                                Binding {
+                                    target: box
+                                    property: "checked"
+                                    value: row.on
+                                }
+                            }
+                            Kirigami.Icon {
+                                source: row.modelData.kind === "course" ? "folder-documents" : "application-pdf"
+                                implicitWidth: Kirigami.Units.iconSizes.smallMedium
+                                implicitHeight: Kirigami.Units.iconSizes.smallMedium
+                            }
+                            ColumnLayout {
+                                Layout.fillWidth: true
+                                spacing: 0
+                                QQC2.Label {
+                                    Layout.fillWidth: true
+                                    text: row.modelData.name
+                                    elide: Text.ElideMiddle
+                                    MouseArea {
+                                        anchors.fill: parent
+                                        enabled: !converter.busy
+                                        onClicked: root.check(row.modelData.path, !row.on)
+                                    }
+                                }
+                                QQC2.Label {
+                                    Layout.fillWidth: true
+                                    // how it ended in this run; else what is known of it
+                                    text: row.running ? "Converting…"
+                                        : row.result !== undefined ? (row.result.ok ? "" : "Failed: ") + row.result.words
+                                        : (row.modelData.kind === "course" ? "A course: saved pages and PDFs. " : "")
+                                          + (row.modelData.book !== "" ? "Converted " + row.modelData.when : "Not converted yet")
+                                    color: row.result !== undefined && !row.result.ok ? Kirigami.Theme.negativeTextColor : Kirigami.Theme.textColor
+                                    elide: Text.ElideMiddle
+                                    opacity: row.result !== undefined && !row.result.ok ? 1 : 0.6
+                                    font: Kirigami.Theme.smallFont
+                                }
+                            }
+                            QQC2.BusyIndicator {
+                                visible: row.running
+                                running: visible
+                                implicitWidth: Kirigami.Units.iconSizes.smallMedium
+                                implicitHeight: Kirigami.Units.iconSizes.smallMedium
+                            }
+                            QQC2.Label {
+                                visible: !row.running && row.result !== undefined
+                                text: row.result !== undefined && row.result.ok ? "✓" : "✗"
+                                color: row.result !== undefined && row.result.ok ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.negativeTextColor
+                            }
+                            // a converted book, a click away
+                            QQC2.ToolButton {
+                                visible: row.modelData.book !== ""
+                                icon.name: "document-open"
+                                text: "Open"
+                                onClicked: converter.show(row.modelData.book)
                             }
                         }
+
+                        // a folder of its own for this book
+                        RowLayout {
+                            Layout.fillWidth: true
+                            Layout.leftMargin: Kirigami.Units.gridUnit * 3
+                            Layout.rightMargin: Kirigami.Units.smallSpacing
+                            Layout.bottomMargin: Kirigami.Units.smallSpacing
+                            visible: row.on && root.otherFolders
+                            spacing: Kirigami.Units.largeSpacing
+                            QQC2.Label {
+                                text: "Goes to:"
+                            }
+                            QQC2.Label {
+                                Layout.fillWidth: true
+                                text: root.outputOf(row.modelData) + "/" + row.modelData.bookName + "/"
+                                elide: Text.ElideMiddle
+                            }
+                            QQC2.Button {
+                                icon.name: "folder-open"
+                                text: "Choose…"
+                                enabled: !converter.busy
+                                onClicked: {
+                                    var path = row.modelData.path
+                                    root.openBrowser("Choose the folder for “" + row.modelData.bookName + "”", "file://" + root.outputOf(row.modelData), function (url) {
+                                        root.outputs = root.setFor(root.outputs, path, url)
+                                    })
+                                }
+                            }
+                        }
+                        // its own way to write math
+                        RowLayout {
+                            Layout.fillWidth: true
+                            Layout.leftMargin: Kirigami.Units.gridUnit * 3
+                            Layout.rightMargin: Kirigami.Units.smallSpacing
+                            Layout.bottomMargin: Kirigami.Units.smallSpacing
+                            visible: row.on && root.otherMath
+                            spacing: Kirigami.Units.largeSpacing
+                            QQC2.Label {
+                                text: "Math:"
+                            }
+                            QQC2.ComboBox {
+                                Layout.fillWidth: true
+                                enabled: !converter.busy
+                                textRole: "text"
+                                valueRole: "value"
+                                model: root.mathForms
+                                currentIndex: root.mathOf(row.modelData) === "standard" ? 1 : 0
+                                onActivated: root.maths = root.setFor(root.maths, row.modelData.path, currentValue)
+                            }
+                        }
+                        Kirigami.Separator {
+                            Layout.fillWidth: true
+                            opacity: 0.5
+                        }
                     }
+                }
+            }
+            Kirigami.PlaceholderMessage {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                visible: root.items.length === 0
+                text: "Nothing to convert in this folder"
+                explanation: "A PDF can be converted, and a folder of saved web pages (HTML) with PDFs and no Markdown yet."
+            }
+
+            // asked only where a book wants something else than the others
+            QQC2.CheckBox {
+                text: "Some of the books go to a different folder"
+                visible: root.items.length > 0
+                enabled: !converter.busy
+                checked: root.otherFolders
+                onToggled: root.otherFolders = checked
+                QQC2.ToolTip.visible: hovered
+                QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+                QQC2.ToolTip.text: "Unchecked: each book goes into a folder of its name beside its PDF\n(or to where it was converted to before)."
+            }
+            RowLayout {
+                Layout.fillWidth: true
+                visible: root.items.length > 0
+                QQC2.CheckBox {
+                    text: "Some of the books get different math"
+                    enabled: !converter.busy
+                    checked: root.otherMath
+                    onToggled: root.otherMath = checked
+                }
+                Item {
+                    Layout.fillWidth: true
+                }
+                QQC2.Button {
+                    id: convertButton
+                    icon.name: "run-build"
+                    text: root.chosen.length > 1 ? "Convert " + root.chosen.length + " Books" : "Convert"
+                    enabled: !converter.busy && root.chosen.length > 0
+                    onClicked: root.start()
                 }
             }
 
@@ -326,8 +544,9 @@ Kirigami.ApplicationWindow {
                 text: converter.status
                 type: converter.busy ? Kirigami.MessageType.Information
                     : converter.status.startsWith("Failed") ? Kirigami.MessageType.Error
+                    : converter.status.startsWith("Check") ? Kirigami.MessageType.Information
                     : Kirigami.MessageType.Positive
-                // the book just converted, a click away
+                // the book converted last, a click away
                 actions: [
                     Kirigami.Action {
                         text: "Open Book"
@@ -338,65 +557,6 @@ Kirigami.ApplicationWindow {
                 ]
             }
 
-            // the converted books: a click shows one in the reader
-            Kirigami.Heading {
-                level: 4
-                text: "Converted books"
-                visible: bookList.count > 0
-            }
-            QQC2.ScrollView {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                Layout.minimumHeight: Math.min(bookList.count, 3) * Kirigami.Units.gridUnit * 2.5
-                visible: bookList.count > 0
-                ListView {
-                    id: bookList
-                    clip: true
-                    model: converter.books === "" ? [] : converter.books.split("\n")
-                    delegate: QQC2.ItemDelegate {
-                        id: book
-                        required property string modelData
-                        readonly property var parts: modelData.split("\t")
-                        width: ListView.view.width
-                        icon.name: "document-open"
-                        text: parts[0]
-                        onClicked: converter.show(parts[1])
-                        contentItem: RowLayout {
-                            spacing: Kirigami.Units.largeSpacing
-                            Kirigami.Icon {
-                                source: "x-office-document"
-                                implicitWidth: Kirigami.Units.iconSizes.smallMedium
-                                implicitHeight: Kirigami.Units.iconSizes.smallMedium
-                            }
-                            ColumnLayout {
-                                Layout.fillWidth: true
-                                spacing: 0
-                                QQC2.Label {
-                                    Layout.fillWidth: true
-                                    text: book.parts[0]
-                                    elide: Text.ElideRight
-                                }
-                                QQC2.Label {
-                                    Layout.fillWidth: true
-                                    text: book.parts[1]
-                                    elide: Text.ElideMiddle
-                                    opacity: 0.6
-                                    font: Kirigami.Theme.smallFont
-                                }
-                            }
-                            QQC2.Label {
-                                text: book.parts[2]
-                                opacity: 0.6
-                            }
-                        }
-                    }
-                }
-            }
-
-            Item {
-                Layout.fillHeight: true
-                visible: bookList.count === 0
-            }
         }
     }
 }

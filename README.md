@@ -94,10 +94,12 @@ Read marker's licence before you use it: its model weights are free for personal
 
 ### The app
 
-Start pdf2md from your app launcher, or with `cargo run --release -p pdf2md-app` in the repository (see [Install](#install)). Choose the textbook and, if you like, an output folder (the default is the folder the PDF is in), then press Convert. The book is written to `<output folder>/<PDF name>/`.
+Start pdf2md from your app launcher, or with `cargo run --release -p pdf2md-app` in the repository (see [Install](#install)). The window lists everything in the chosen folder that can be converted: PDFs, and folders of a course's saved web pages and PDFs. Check the ones you want and press Convert; they are converted one after the other. Each book is written to a folder of its name beside its PDF.
 
-* **Converting again.** If the book's folder exists, the app asks whether to replace it or keep both. Replace moves the old files to the Trash and keeps your corrections and notes (see below).
-* **Reader** is the command of your Markdown viewer, for example `md` for mdBun. "Open Book" and the list of converted books in the window start it with the book's folder. Write `{file}` in the command to pass `book.md` instead, as in `okular {file}`.
+* **A different folder, different math.** Check one of the two boxes under the list, and each checked book gets its own output folder or math form to set.
+
+* **Converting again.** If a book's folder exists, the app asks whether to replace it or keep both. Replace moves the old files to the Trash and keeps your corrections and notes (see below).
+* **Reader** is the command of your Markdown viewer, for example `md` for mdBun. "Open" beside a converted book starts it with the book's folder. It is the same for all books. Write `{file}` in the command to pass `book.md` instead, as in `okular {file}`.
 * **Math** chooses how formulas are written (next section).
 * **Progress.** A bar shows how far the conversion is; a long conversion also lists its steps. The first time estimates are deliberately high.
 
