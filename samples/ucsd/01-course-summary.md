@@ -1099,7 +1099,7 @@ E_{n} = E_{n}^{( 0 )} + E_{n}^{( 1 )} + E_{n}^{( 2 )} + \dots
 ```
 
 ```math
-\psi_{n} = N \left( \varphi_{n} + {}_{k} \sum_{\not = n} c_{nk} \varphi_{k} \right)
+\psi_{n} = N \left( \varphi_{n} + \sum_{k \neq n} c_{nk} \varphi_{k} \right)
 ```
 
 ```math
@@ -1119,7 +1119,7 @@ c_{nk}^{( 1 )} = \tfrac{\langle \varphi_{k} | H_{1} | \varphi_{n} \rangle}{E_{n}
 ```
 
 ```math
-E_{n}^{( 2 )} = {}_{k} \sum_{\not = n} \tfrac{| \langle \varphi_{k} | H_{1} | \varphi_{n} \rangle |^{2}}{E_{n}^{( 0 )} - E_{k}^{( 0 )}}
+E_{n}^{( 2 )} = \sum_{k \neq n} \tfrac{| \langle \varphi_{k} | H_{1} | \varphi_{n} \rangle |^{2}}{E_{n}^{( 0 )} - E_{k}^{( 0 )}}
 ```
 
 <div align="right"><a href="book.pdf#page=37" target="_blank" title="This page in the PDF"><sup>[p. 37]</sup></a></div>

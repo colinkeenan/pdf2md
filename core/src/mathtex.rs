@@ -1859,6 +1859,12 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
             let gap = s.left - spans[b].right;
             // (not the index of an index, with the larger index between it
             // and the symbol: the 1 of M^{λ₁…}, level with the M's middle)
+            // (nor what stands under or over a sum sign, a little before
+            // it: its limit, "k ≠ n", wider than the sign)
+            let limit = bases.iter().any(|&o| matches!(big_op(&spans[o]), Some("\\sum" | "\\prod")) && s.right > spans[o].left && s.left < spans[o].right && (s.cy() - y0).abs() > 0.5 * h);
+            if limit {
+                return false;
+            }
             let between = (0..spans.len()).any(|j| j != i && j != b && spans[j].size > s.size && spans[j].size < 0.9 * max && spans[j].left >= spans[b].right - 1.5 && spans[j].right <= s.left + 1.5 && spans[j].right > spans[j].left);
             gap >= -0.2 * max && gap <= 0.45 * max && big_op(&spans[b]).is_none() && !between
         });

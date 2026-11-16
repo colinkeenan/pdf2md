@@ -1712,7 +1712,7 @@ E_{n} = E_{n}^{( 0 )} + E_{n}^{( 1 )} + E_{n}^{( 2 )} + \dots
 ```
 
 ```math
-\psi_{n} = N \left( \varphi_{n} + {}_{k} \sum_{\not = n} c_{nk} \varphi_{k} \right)
+\psi_{n} = N \left( \varphi_{n} + \sum_{k \neq n} c_{nk} \varphi_{k} \right)
 ```
 
 ```math
@@ -1732,7 +1732,7 @@ c_{nk}^{( 1 )} = \tfrac{\langle \varphi_{k} | H_{1} | \varphi_{n} \rangle}{E_{n}
 ```
 
 ```math
-E_{n}^{( 2 )} = {}_{k} \sum_{\not = n} \tfrac{| \langle \varphi_{k} | H_{1} | \varphi_{n} \rangle |^{2}}{E_{n}^{( 0 )} - E_{k}^{( 0 )}}
+E_{n}^{( 2 )} = \sum_{k \neq n} \tfrac{| \langle \varphi_{k} | H_{1} | \varphi_{n} \rangle |^{2}}{E_{n}^{( 0 )} - E_{k}^{( 0 )}}
 ```
 
 <div align="right"><a href="book.pdf#page=37" target="_blank" title="This page in the PDF"><sup>[p. 37]</sup></a></div>
@@ -5711,7 +5711,7 @@ Find the expected value of $`x`$ as a function of time. Find the expected value 
 2. Find the commutator $`{}_{\infty} \quad [ p,e^{ik_{0} x} ]`$ where $`k_{0}`$ is a constant and the second operator can be expanded
 
 ```math
-\text{ as } e^{ik_{0} x} = {}_{n} \sum_{= 0} \tfrac{( ik_{0} x )^{n}}{n !} .
+\text{ as } e^{ik_{0} x} = \sum_{n = 0} \tfrac{( ik_{0} x )^{n}}{n !} .
 ```
 
 3. Which of the following are linear operators?
@@ -17242,7 +17242,7 @@ The **normalization factor** $`N ( \lambda )`$ played no role in the solutions t
 ```
 
 ```math
-N ( \lambda ) \approx 1 - \tfrac{1}{2}_{k} \sum_{\not = n} \lambda^{2} | c_{nk}^{( 1 )} |^{2}
+N ( \lambda ) \approx 1 - \tfrac{1}{2} \sum_{k \neq n} \lambda^{2} | c_{nk}^{( 1 )} |^{2}
 ```
 
 The correction is of order $`\lambda^{2}`$ and **can be neglected** at this level of approximation.
@@ -27610,7 +27610,7 @@ k_{B} = 1 . 3 8 \times 1 0^{- 1 6} \text{ erg } /^{\circ} K \quad g_{e} = 2 + \t
 $`\int_{-\infty}^{\infty} dxf ( x ) \delta ( x - a ) = f ( a ) \int_{-\infty}^{\infty} dxe^{- ax^{2}} = \sqrt{\frac{\pi}{a}}`$ use $`\frac{\partial}{\partial a}`$ for other forms
 
 ```math
-e^{A} = {}_{n} \sum_{= 0}^{\infty} \tfrac{A^{n}}{n !} \quad \sin \theta = {}_{n = 1} \sum^{\infty}_{, 3 , 5 \dots} \tfrac{\theta^{n}}{n !} ( - 1 )^{\tfrac{n - 1}{2}} \quad \cos \theta = {}_{n = 0} \sum^{\infty}_{, 2 , 4 \dots} \tfrac{\theta^{n}}{n !} ( - 1 )^{\tfrac{n}{2}}
+e^{A} = \sum_{n = 0}^{\infty} \tfrac{A^{n}}{n !} \quad \sin \theta = {}_{n = 1} \sum^{\infty}_{, 3 , 5 \dots} \tfrac{\theta^{n}}{n !} ( - 1 )^{\tfrac{n - 1}{2}} \quad \cos \theta = {}_{n = 0} \sum^{\infty}_{, 2 , 4 \dots} \tfrac{\theta^{n}}{n !} ( - 1 )^{\tfrac{n}{2}}
 ```
 
 ```math
@@ -27806,7 +27806,7 @@ H_{B} = \tfrac{eB}{2 mc} ( L_{z} + 2 S_{z} ) \quad \Delta E_{B} = \tfrac{e \hbar
 ```
 
 ```math
-\psi_{jm_{j} \ell s} = {}_{m} \sum_{\ell \quad s m} C ( jm_{j} ; \ell m_{\ell} sm_{s} ) Y_{\ell m_{\ell}} \chi_{sm_{s}} = {}_{m} \sum_{\ell \quad s m} \langle jm_{j} \ell s | \ell m_{\ell} sm_{s} \rangle Y_{\ell m_{\ell}} \chi_{sm_{s}}
+\psi_{jm_{j} \ell s} = \sum_{m_{\ell} m_{s}} C ( jm_{j} ; \ell m_{\ell} sm_{s} ) Y_{\ell m_{\ell}} \chi_{sm_{s}} = \sum_{m_{\ell} m_{s}} \langle jm_{j} \ell s | \ell m_{\ell} sm_{s} \rangle Y_{\ell m_{\ell}} \chi_{sm_{s}}
 ```
 
 $`\psi_{j,m_{j}} = \psi_{\ell + \tfrac{1}{2} ,m + \tfrac{1}{2}} = \sqrt{\ell + 2 \ell + 1 m + 1} Y_{\ell m} \chi_{+} + \sqrt{\frac{\ell - m}{2 \ell + 1}} Y_{\ell ,m + 1} \chi_{-}`$ for $`s = \tfrac{1}{2}`$ and any $`\ell`$ $`\psi_{j,m_{j}} = \psi_{\ell - \tfrac{1}{2} ,m + \tfrac{1}{2}} = \sqrt{\frac{\ell - m}{2 \ell + 1}} Y_{\ell m} \chi_{+} - \sqrt{\ell + 2 \ell + 1 m + 1} Y_{\ell ,m + 1} \chi_{-}`$ for $`s = \tfrac{1}{2}`$ and any $`\ell`$
@@ -27818,7 +27818,7 @@ $`\psi_{j,m_{j}} = \psi_{\ell + \tfrac{1}{2} ,m + \tfrac{1}{2}} = \sqrt{\ell + 2
 </div>
 
 ```math
-E_{n}^{( 1 )} = \langle \varphi_{n} | H_{1} | \varphi_{n} \rangle \quad E_{n}^{( 2 )} = {}_{k} \sum_{\not = n} \tfrac{| \langle \varphi_{k} | H_{1} | \varphi_{n} \rangle |^{2}}{E_{n}^{( 0 )} - E_{k}^{( 0 )}} \quad c_{nk}^{( 1 )} = \tfrac{\langle \varphi_{k} | H_{1} | \varphi_{n} \rangle}{E_{n}^{( 0 )} - E_{k}^{( 0 )}}
+E_{n}^{( 1 )} = \langle \varphi_{n} | H_{1} | \varphi_{n} \rangle \quad E_{n}^{( 2 )} = \sum_{k \neq n} \tfrac{| \langle \varphi_{k} | H_{1} | \varphi_{n} \rangle |^{2}}{E_{n}^{( 0 )} - E_{k}^{( 0 )}} \quad c_{nk}^{( 1 )} = \tfrac{\langle \varphi_{k} | H_{1} | \varphi_{n} \rangle}{E_{n}^{( 0 )} - E_{k}^{( 0 )}}
 ```
 
 ```math

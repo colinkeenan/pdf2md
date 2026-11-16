@@ -432,7 +432,7 @@ The **normalization factor** $`N ( \lambda )`$ played no role in the solutions t
 ```
 
 ```math
-N ( \lambda ) \approx 1 - \tfrac{1}{2}_{k} \sum_{\not = n} \lambda^{2} | c_{nk}^{( 1 )} |^{2}
+N ( \lambda ) \approx 1 - \tfrac{1}{2} \sum_{k \neq n} \lambda^{2} | c_{nk}^{( 1 )} |^{2}
 ```
 
 The correction is of order $`\lambda^{2}`$ and **can be neglected** at this level of approximation.
