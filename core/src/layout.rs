@@ -2120,7 +2120,13 @@ fn insert_delims(doc: &mut Doc, delims: Vec<Vec<Delim>>) {
                 let symbols = fonts.get(s.font).is_some_and(|f| f.family.starts_with("CMSY"));
                 !is_cmex(s) && overlaps(s) && (s.text.trim().chars().any(|c| "()[]|{}⟨⟩".contains(c)) || (symbols && s.text.trim().chars().any(|c| "hifgj".contains(c))) || (size_of(s) >= 1.3 * body && s.text.chars().any(char::is_alphanumeric)))
             });
-            if as_text || page.lines.is_empty() {
+            // (a stroke of a letter drawn as a bare outline — a glyph the PDF
+            // uses once may come so: the "j" of a heading — lies inside a
+            // word of the text and is no taller than it)
+            let in_word = page.lines.iter().flat_map(|l| &l.spans).any(|s| {
+                !fonts.get(s.font).is_some_and(|f| f.math) && s.left <= d.left && s.right() >= d.right && s.top < d.bottom && s.bottom() > d.top && d.bottom - d.top <= 1.05 * s.height && s.text.split_whitespace().any(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 3)
+            });
+            if as_text || in_word || page.lines.is_empty() {
                 continue;
             }
             // (the sign of an integral round a closed path, ∮, is no
