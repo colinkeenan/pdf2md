@@ -3240,6 +3240,73 @@ fn group_lines(
             None => k += 1,
         }
     }
+    // A column of two rows set in a sentence, between a pair of big
+    // brackets: "the spin-down state (0 over 1)". Its rows stand above and
+    // below the line of words, each beginning or joining a line of its
+    // own; they and the brackets are of the line of words between them.
+    let mut symbols = symbols;
+    loop {
+        let found = (0..symbols.len()).find_map(|a| {
+            let open = &symbols[a];
+            let b = (0..symbols.len()).find(|&b| b != a && (symbols[b].top - open.top).abs() <= 2.0 && symbols[b].left > open.right() && symbols[b].left - open.right() < 4.0 * open.height)?;
+            let close = &symbols[b];
+            // (brackets, drawn in pieces or whole: no sum or integral sign)
+            if ![open, close].iter().all(|s| matches!(s.text.trim(), "" | "(" | ")" | "[" | "]")) {
+                return None;
+            }
+            let between = |n: &Span| n.left >= open.right() - 1.0 && n.right() <= close.left + 1.0;
+            let wordy = |n: &Span| n.text.split_whitespace().any(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 3);
+            // (the line of words the brackets stand in, and the pieces of
+            // its size between them: one row above it, one below, each less
+            // than a line away)
+            (0..groups.len()).find_map(|line| {
+                let words = groups[line].iter().find(|n| wordy(n) && !between(n) && n.top >= open.top && n.top <= open.top + 2.0 * open.height)?;
+                // (a sentence: a display too may hold a word or two, "and", "for all")
+                let count: usize = groups[line].iter().filter(|n| !between(n)).map(|n| n.text.split_whitespace().filter(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 3).count()).sum();
+                if count < 4 {
+                    return None;
+                }
+                let row = |n: &Span| between(n) && size_of(n) >= 0.85 * size_of(words) && (n.top - words.top).abs() > 2.0 && (n.top - words.top).abs() <= 0.8 * words.height;
+                let rows: Vec<(usize, usize)> = (0..groups.len()).flat_map(|k| (0..groups[k].len()).map(move |j| (k, j))).filter(|&(k, j)| row(&groups[k][j])).collect();
+                let above = rows.iter().any(|&(k, j)| groups[k][j].top < words.top);
+                let below = rows.iter().any(|&(k, j)| groups[k][j].top > words.top);
+                // (nothing between the brackets on the line itself)
+                let on_line = groups[line].iter().any(|n| between(n) && size_of(n) >= 0.85 * size_of(words) && (n.top - words.top).abs() <= 2.0);
+                (above && below && !on_line && rows.iter().any(|&(k, _)| k != line)).then_some((a, b, rows, line))
+            })
+        });
+        let Some((a, b, mut rows, line)) = found else { break };
+        rows.sort_unstable_by(|x, y| y.cmp(x));
+        let mut moved: Vec<Span> = Vec::new();
+        let mut donors: Vec<usize> = Vec::new();
+        for (k, j) in rows {
+            if k != line {
+                moved.push(groups[k].remove(j));
+                if !donors.contains(&k) {
+                    donors.push(k);
+                }
+            }
+        }
+        let (first, second) = (a.max(b), a.min(b));
+        moved.push(symbols.remove(first));
+        moved.push(symbols.remove(second));
+        groups[line].extend(moved);
+        // (what a row's line had taken besides goes to the line it touches most)
+        let body = size_of(&groups[line][0]);
+        let orphans: Vec<usize> = donors.into_iter().filter(|&k| !groups[k].iter().any(|n| size_of(n) >= 0.85 * body)).collect();
+        for k in orphans {
+            let rest: Vec<Span> = std::mem::take(&mut groups[k]);
+            for s in rest {
+                let home = (0..groups.len())
+                    .filter(|&m| !groups[m].is_empty())
+                    .map(|m| (m, s.bottom().min(groups[m][0].bottom()) - s.top.max(groups[m][0].top)))
+                    .max_by(|x, y| x.1.total_cmp(&y.1))
+                    .map_or(line, |(m, _)| m);
+                groups[home].push(s);
+            }
+        }
+    }
+    groups.retain(|g| !g.is_empty());
     for s in symbols {
         let below = (0..groups.len())
             .filter(|&k| groups[k][0].top >= s.top - 0.3 * s.height && groups[k][0].top <= s.top + 3.0 * s.height)

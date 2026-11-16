@@ -1068,14 +1068,10 @@ Note that this agrees with what we expect at $`t`$ = 0 and is consistent with th
 
 ## <a id="s-18-10-9-expectation-of-s-x-in-general-spin-2-1-state"></a>18.10.9 Expectation of $`S_{x}`$ in General Spin $`\frac{1}{2}`$ State
 
-```math
-\alpha_{+}
-```
-
-Let $`\chi =`$, be some arbitrary spin $`\frac{1}{2}`$ state. Then the expectation value of the operator
+Let $`\chi = \begin{pmatrix} \alpha_{+} \\ \alpha_{-} \end{pmatrix}`$, be some arbitrary spin $`\frac{1}{2}`$ state. Then the expectation value of the operator
 
 ```math
-\begin{aligned} & \quad \alpha_{-} \\ \langle S_{x} \rangle &= \langle \chi | S_{x} | \chi \rangle \end{aligned}
+\langle S_{x} \rangle = \langle \chi | S_{x} | \chi \rangle
 ```
 
 ```math
@@ -1322,17 +1318,7 @@ This gives the same answer. By using the rotation operator, the phase of the eig
 
 ## <a id="s-18-10-13time-development-of-a-spin-2-1-state-in-a-b-field"></a>18.10.13 Time Development of a Spin $`\frac{1}{2}`$ State in a B field
 
-```math
-a
-```
-
-Assume that we are in an arbitrary spin state $`\chi ( t = 0 )`$ = and we have chosen the z axis to
-
-```math
-b
-```
-
-be in the field direction. The upper component of the vector (a) is the amplitude to have spin up along the z direction, and the lower component (b) is the amplitude to have spin down. Because of our choice of axes, the spin up and spin down states are also the energy eigenstates with energy eigenvalues of $`\mu_{B} B`$ and $`- \mu_{B} B`$ respectively. We know that the energy eigenstates evolve with time quite simply (recall the separation of the Schrödinger equation where $`T ( t ) = e^{- iEt/ \hbar}`$). So its simple to write down the time evolved state vector.
+Assume that we are in an arbitrary spin state $`\chi ( t = 0 )`$ = $`\begin{pmatrix} a \\ b \end{pmatrix}`$ and we have chosen the z axis to be in the field direction. The upper component of the vector (a) is the amplitude to have spin up along the z direction, and the lower component (b) is the amplitude to have spin down. Because of our choice of axes, the spin up and spin down states are also the energy eigenstates with energy eigenvalues of $`\mu_{B} B`$ and $`- \mu_{B} B`$ respectively. We know that the energy eigenstates evolve with time quite simply (recall the separation of the Schrödinger equation where $`T ( t ) = e^{- iEt/ \hbar}`$). So its simple to write down the time evolved state vector.
 
 ```math
 \chi ( t ) = \begin{pmatrix} ae^{- i\mu_{B} Bt/ \hbar} \\ be^{i\mu_{B} Bt/ \hbar} \end{pmatrix} = \begin{pmatrix} ae^{- i\omega t} \\ be^{i\omega t} \end{pmatrix}
@@ -1848,17 +1834,7 @@ is the probability that a measurement of the $`x`$ component of spin yields zero
 
 5. Find the (normalized) eigenvectors and eigenvalues of the $`S_{x}`$ (matrix) operator for $`s`$ = 1 in the usual $`( S_{z} )`$ basis.
 
-6. **\*** A spin $`\frac{1}{2}`$ particle is in a magnetic field in the $`x`$ direction giving a Hamiltonian $`H = \mu_{B} B\sigma_{x}`$.
-
-```math
-1
-```
-
-Find the time development (matrix) operator $`e^{- iHt/ \hbar}`$ in the usual basis. If $`\chi ( t = 0 )`$ = ,
-
-```math
-0
-```
+6. **\*** A spin $`\frac{1}{2}`$ particle is in a magnetic field in the $`x`$ direction giving a Hamiltonian $`H = \mu_{B} B\sigma_{x}`$. Find the time development (matrix) operator $`e^{- iHt/ \hbar}`$ in the usual basis. If $`\chi ( t = 0 )`$ = $`\begin{pmatrix} 1 \\ 0 \end{pmatrix}`$,
 
 ```math
 \text{ find } \chi ( t ) . \quad \sqrt{3}
@@ -1872,15 +1848,7 @@ Find the time development (matrix) operator $`e^{- iHt/ \hbar}`$ in the usual ba
 
 probability that a measurement of the $`x`$ component of spin yields +$`\frac{1}{2}`$?
 
-```math
-i
-```
-
-8. A spin $`\frac{1}{2}`$ system is in the state $`\chi = \tfrac{1}{\sqrt{5}} ( )`$ (in the usual $`S_{z}`$ eigenstate basis). What is the
-
-```math
-2
-```
+8. A spin $`\frac{1}{2}`$ system is in the state $`\chi = \tfrac{1}{\sqrt{5}} ( ) \frac{i}{2}`$ (in the usual $`S_{z}`$ eigenstate basis). What is the
 
 probability that a measurement of $`S_{x}`$ yields$`( ) \frac{- \hbar}{2}`$? What is the probability that a measurement of $`S_{y}`$ yields $`\frac{\hbar}{2} -`$?
 
