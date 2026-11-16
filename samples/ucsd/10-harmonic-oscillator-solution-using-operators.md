@@ -412,11 +412,11 @@ We should have seen that coming. Since each term in the $`x`$ operator changes t
 ```
 
 ```math
-\begin{aligned} &= \sqrt{\frac{\hbar}{8 m\omega}} ( \sqrt{1} \langle u_{0} | u_{0} \rangle + \sqrt{1} \langle u_{0} | u_{1} \rangle \\ & \quad + \quad \sqrt{2} \sqrt{\langle u_{0} | u_{2} \rangle + \sqrt{1} \surd \langle u_{1} | u_{0} \rangle} \\ & \quad + \quad \sqrt{1 \langle u_{1} | u_{1} \rangle + \quad 2 \langle u_{1} | u_{2} \rangle )} \end{aligned}
+\begin{aligned} &= \sqrt{\frac{\hbar}{8 m\omega}} ( \sqrt{1} \langle u_{0} | u_{0} \rangle + \sqrt{1} \langle u_{0} | u_{1} \rangle \\ & \quad + \quad \sqrt{2} \langle u_{0} | u_{2} \rangle + \sqrt{1} \langle u_{1} | u_{0} \rangle \\ & \quad + \quad \sqrt{1} \langle u_{1} | u_{1} \rangle + \sqrt{2} \langle u_{1} | u_{2} \rangle ) \end{aligned}
 ```
 
 ```math
-= \frac{\hbar}{8 m\omega} ( 1 + 1 )
+= \sqrt{\frac{\hbar}{8 m\omega} ( 1 + 1 )}
 ```
 
 ```math

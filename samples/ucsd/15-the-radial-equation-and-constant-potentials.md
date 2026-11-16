@@ -231,11 +231,11 @@ _Figure 54 (p. 221)_
 We must use the Bessel function near the origin.
 
 ```math
-R_{n\ell} \sqrt{( r} ) = Aj_{\ell} ( kr )
+R_{n\ell} ( r ) = Aj_{\ell} ( kr )
 ```
 
 ```math
-k = \frac{2 \mu ( E + V_{0} )}{\hbar^{2}}
+k = \sqrt{\frac{2 \mu ( E + V_{0} )}{\hbar^{2}}}
 ```
 
 <div align="right"><a href="book.pdf#page=221" target="_blank" title="This page in the PDF"><sup>[p. 221]</sup></a></div>
@@ -382,21 +382,21 @@ Only the low $`\ell`$ partial waves get close enough to the origin to be affecte
 For the scattering problem, the energy is greater than zero. We must choose the Bessel function in the region containing the origin.
 
 ```math
-\sqrt{R_{\ell}} = Aj_{\ell} ( k^{\prime} r )
+R_{\ell} = Aj_{\ell} ( k^{\prime} r )
 ```
 
 ```math
-k^{\prime} = \frac{2 \mu ( E + V_{0} )}{\hbar^{2}}
+k^{\prime} = \sqrt{\frac{2 \mu ( E + V_{0} )}{\hbar^{2}}}
 ```
 
 For large $`r`$, we can have a linear combination of functions.
 
 ```math
-R_{\ell} = Bj_{\ell} ( kr ) + Cn \surd_{\ell} ( kr )
+R_{\ell} = Bj_{\ell} ( kr ) + Cn_{\ell} ( kr )
 ```
 
 ```math
-k = \frac{2 \mu E}{\hbar^{2}}
+k = \sqrt{\frac{2 \mu E}{\hbar^{2}}}
 ```
 
 <div align="right"><a href="book.pdf#page=224" target="_blank" title="This page in the PDF"><sup>[p. 224]</sup></a></div>

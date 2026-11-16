@@ -62,21 +62,21 @@ For this problem, both regions have $`E>V`$, so we will use the complex exponent
 For $`x< 0`$, the solution is
 
 ```math
-u ( x ) = e^{ikx} + \sqrt{Re^{- ikx}}
+u ( x ) = e^{ikx} + Re^{- ikx}
 ```
 
 ```math
-k = \frac{2 mE}{\hbar^{2}} .
+k = \sqrt{\frac{2 mE}{\hbar^{2}} .}
 ```
 
 Note we have assumed the coefficient of the incident beam is 1. (Multiplying by some number does not change the physics.) For $`x> 0`$ the solution is
 
 ```math
-\sqrt{u^{\prime} ( x} ) = Te^{ik^{\prime} x}
+u^{\prime} ( x ) = Te^{ik^{\prime} x}
 ```
 
 ```math
-k^{\prime} = \frac{2 m ( E - V_{0} )}{\hbar^{2}}
+k^{\prime} = \sqrt{\frac{2 m ( E - V_{0} )}{\hbar^{2}}}
 ```
 
 (Note that a beam coming from the right, would have given a $`e^{- ik^{\prime} x}`$ term for $`x> 0`$.)
@@ -246,11 +246,11 @@ u_{3} ( x ) = C_{3} e^{- \kappa x}
 In the center we’ll use the sine and cosine solutions anticipating parity eigenstates.
 
 ```math
-u_{2} ( x ) = A \cos ( kx \sqrt{) + B \sin ( kx )}
+u_{2} ( x ) = A \cos ( kx ) + B \sin ( kx )
 ```
 
 ```math
-k = \frac{2 m ( E + V_{0} )}{\hbar^{2}}
+k = \sqrt{\frac{2 m ( E + V_{0} )}{\hbar^{2}}}
 ```
 
 Again we will have 4 equations in 4 unknown coefficients.
@@ -880,11 +880,11 @@ u_{1} ( x ) = C_{1} e^{\kappa x}
 In the center we have the same solution as before.
 
 ```math
-u_{2} ( x ) = A \cos ( kx \sqrt{) + B \sin ( kx )}
+u_{2} ( x ) = A \cos ( kx ) + B \sin ( kx )
 ```
 
 ```math
-k = \frac{2 m ( E + V_{0} )}{\hbar^{2}}
+k = \sqrt{\frac{2 m ( E + V_{0} )}{\hbar^{2}}}
 ```
 
 (Note that we have switched from $`k^{\prime}`$ to $`k`$ for economy.) We will have 4 equations in 4 unknown coefficients.

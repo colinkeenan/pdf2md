@@ -526,15 +526,15 @@ Computing the expectation value of $`L_{y}`$ is harder because the states are no
 <a id="p239" href="book.pdf#page=239" target="_blank" title="This page in the PDF"><sup>[p. 239]</sup></a>
 
 ```math
-= \sqrt{\frac{\hbar}{7 2 i} \langle 4 \psi_{1 0 0} + 3 \psi_{2 1 1} - i\psi_{2 1 0} + \sqrt{1 0} \psi_{2 1 - 1} |- 3 \sqrt{2} \psi_{2 1 0} - i \sqrt{2} \psi_{2 1 1} + i \sqrt{2} \psi_{2 1 - 1} + \sqrt{1 0} \sqrt{2} \psi_{2 1 0} \rangle}
+= \frac{\hbar}{7 2 i} \langle 4 \psi_{1 0 0} + 3 \psi_{2 1 1} - i\psi_{2 1 0} + \sqrt{1 0} \psi_{2 1 - 1} |- 3 \sqrt{2} \psi_{2 1 0} - i \sqrt{2} \psi_{2 1 1} + i \sqrt{2} \psi_{2 1 - 1} + \sqrt{1 0} \sqrt{2} \psi_{2 1 0} \rangle
 ```
 
 ```math
-= \sqrt{\frac{2 \hbar}{7 2 i} \langle 4 \psi_{1 0 0} + 3 \psi_{2 1 1} - i\psi_{2 1 0} + \sqrt{1 0} \psi_{2 1 - 1} |- \surd 3 \psi_{2 1 0} \surd - i\psi_{2 1 1} + \surd i\psi_{2 1 -} \surd_{1} + \sqrt{1 0} \psi_{2 1 0} \rangle}
+= \frac{\sqrt{2} \hbar}{7 2 i} \langle 4 \psi_{1 0 0} + 3 \psi_{2 1 1} - i\psi_{2 1 0} + \sqrt{1 0} \psi_{2 1 - 1} |- 3 \psi_{2 1 0} - i\psi_{2 1 1} + i\psi_{2 1 - 1} + \sqrt{1 0} \psi_{2 1 0} \rangle
 ```
 
 ```math
-= \frac{2 \hbar}{7 2 i} ( - 3 i - 3 i + \sqrt{1 0} i + \sqrt{1 0} i ) = \frac{( - 6 + 2 1 0 ) i 2 \hbar}{7 2 i} = \frac{( 2 5 - 3 2 ) \hbar}{3 6}
+= \frac{\sqrt{2} \hbar}{7 2 i} ( - 3 i - 3 i + \sqrt{1 0} i + \sqrt{1 0} i ) = \frac{( - 6 + 2 \sqrt{1 0} ) i \sqrt{2} \hbar}{7 2 i} = \frac{( 2 \sqrt{5} - 3 \sqrt{2} ) \hbar}{3 6}
 ```
 
 ## <a id="s-16-4-2-the-expectation-of-r-1-in-the-ground-state"></a>16.4.2 The Expectation of $`\frac{1}{r}`$ in the Ground State

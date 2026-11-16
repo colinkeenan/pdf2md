@@ -6884,21 +6884,21 @@ For this problem, both regions have $`E>V`$, so we will use the complex exponent
 For $`x< 0`$, the solution is
 
 ```math
-u ( x ) = e^{ikx} + \sqrt{Re^{- ikx}}
+u ( x ) = e^{ikx} + Re^{- ikx}
 ```
 
 ```math
-k = \frac{2 mE}{\hbar^{2}} .
+k = \sqrt{\frac{2 mE}{\hbar^{2}} .}
 ```
 
 Note we have assumed the coefficient of the incident beam is 1. (Multiplying by some number does not change the physics.) For $`x> 0`$ the solution is
 
 ```math
-\sqrt{u^{\prime} ( x} ) = Te^{ik^{\prime} x}
+u^{\prime} ( x ) = Te^{ik^{\prime} x}
 ```
 
 ```math
-k^{\prime} = \frac{2 m ( E - V_{0} )}{\hbar^{2}}
+k^{\prime} = \sqrt{\frac{2 m ( E - V_{0} )}{\hbar^{2}}}
 ```
 
 (Note that a beam coming from the right, would have given a $`e^{- ik^{\prime} x}`$ term for $`x> 0`$.)
@@ -7068,11 +7068,11 @@ u_{3} ( x ) = C_{3} e^{- \kappa x}
 In the center we’ll use the sine and cosine solutions anticipating parity eigenstates.
 
 ```math
-u_{2} ( x ) = A \cos ( kx \sqrt{) + B \sin ( kx )}
+u_{2} ( x ) = A \cos ( kx ) + B \sin ( kx )
 ```
 
 ```math
-k = \frac{2 m ( E + V_{0} )}{\hbar^{2}}
+k = \sqrt{\frac{2 m ( E + V_{0} )}{\hbar^{2}}}
 ```
 
 Again we will have 4 equations in 4 unknown coefficients.
@@ -7702,11 +7702,11 @@ u_{1} ( x ) = C_{1} e^{\kappa x}
 In the center we have the same solution as before.
 
 ```math
-u_{2} ( x ) = A \cos ( kx \sqrt{) + B \sin ( kx )}
+u_{2} ( x ) = A \cos ( kx ) + B \sin ( kx )
 ```
 
 ```math
-k = \frac{2 m ( E + V_{0} )}{\hbar^{2}}
+k = \sqrt{\frac{2 m ( E + V_{0} )}{\hbar^{2}}}
 ```
 
 (Note that we have switched from $`k^{\prime}`$ to $`k`$ for economy.) We will have 4 equations in 4 unknown coefficients.
@@ -8772,11 +8772,11 @@ We should have seen that coming. Since each term in the $`x`$ operator changes t
 ```
 
 ```math
-\begin{aligned} &= \sqrt{\frac{\hbar}{8 m\omega}} ( \sqrt{1} \langle u_{0} | u_{0} \rangle + \sqrt{1} \langle u_{0} | u_{1} \rangle \\ & \quad + \quad \sqrt{2} \sqrt{\langle u_{0} | u_{2} \rangle + \sqrt{1} \surd \langle u_{1} | u_{0} \rangle} \\ & \quad + \quad \sqrt{1 \langle u_{1} | u_{1} \rangle + \quad 2 \langle u_{1} | u_{2} \rangle )} \end{aligned}
+\begin{aligned} &= \sqrt{\frac{\hbar}{8 m\omega}} ( \sqrt{1} \langle u_{0} | u_{0} \rangle + \sqrt{1} \langle u_{0} | u_{1} \rangle \\ & \quad + \quad \sqrt{2} \langle u_{0} | u_{2} \rangle + \sqrt{1} \langle u_{1} | u_{0} \rangle \\ & \quad + \quad \sqrt{1} \langle u_{1} | u_{1} \rangle + \sqrt{2} \langle u_{1} | u_{2} \rangle ) \end{aligned}
 ```
 
 ```math
-= \frac{\hbar}{8 m\omega} ( 1 + 1 )
+= \sqrt{\frac{\hbar}{8 m\omega} ( 1 + 1 )}
 ```
 
 ```math
@@ -11438,11 +11438,11 @@ _Figure 54 (p. 221)_
 We must use the Bessel function near the origin.
 
 ```math
-R_{n\ell} \sqrt{( r} ) = Aj_{\ell} ( kr )
+R_{n\ell} ( r ) = Aj_{\ell} ( kr )
 ```
 
 ```math
-k = \frac{2 \mu ( E + V_{0} )}{\hbar^{2}}
+k = \sqrt{\frac{2 \mu ( E + V_{0} )}{\hbar^{2}}}
 ```
 
 <div align="right"><a href="book.pdf#page=221" target="_blank" title="This page in the PDF"><sup>[p. 221]</sup></a></div>
@@ -11589,21 +11589,21 @@ Only the low $`\ell`$ partial waves get close enough to the origin to be affecte
 For the scattering problem, the energy is greater than zero. We must choose the Bessel function in the region containing the origin.
 
 ```math
-\sqrt{R_{\ell}} = Aj_{\ell} ( k^{\prime} r )
+R_{\ell} = Aj_{\ell} ( k^{\prime} r )
 ```
 
 ```math
-k^{\prime} = \frac{2 \mu ( E + V_{0} )}{\hbar^{2}}
+k^{\prime} = \sqrt{\frac{2 \mu ( E + V_{0} )}{\hbar^{2}}}
 ```
 
 For large $`r`$, we can have a linear combination of functions.
 
 ```math
-R_{\ell} = Bj_{\ell} ( kr ) + Cn \surd_{\ell} ( kr )
+R_{\ell} = Bj_{\ell} ( kr ) + Cn_{\ell} ( kr )
 ```
 
 ```math
-k = \frac{2 \mu E}{\hbar^{2}}
+k = \sqrt{\frac{2 \mu E}{\hbar^{2}}}
 ```
 
 <div align="right"><a href="book.pdf#page=224" target="_blank" title="This page in the PDF"><sup>[p. 224]</sup></a></div>
@@ -12308,15 +12308,15 @@ Computing the expectation value of $`L_{y}`$ is harder because the states are no
 <a id="p239" href="book.pdf#page=239" target="_blank" title="This page in the PDF"><sup>[p. 239]</sup></a>
 
 ```math
-= \sqrt{\frac{\hbar}{7 2 i} \langle 4 \psi_{1 0 0} + 3 \psi_{2 1 1} - i\psi_{2 1 0} + \sqrt{1 0} \psi_{2 1 - 1} |- 3 \sqrt{2} \psi_{2 1 0} - i \sqrt{2} \psi_{2 1 1} + i \sqrt{2} \psi_{2 1 - 1} + \sqrt{1 0} \sqrt{2} \psi_{2 1 0} \rangle}
+= \frac{\hbar}{7 2 i} \langle 4 \psi_{1 0 0} + 3 \psi_{2 1 1} - i\psi_{2 1 0} + \sqrt{1 0} \psi_{2 1 - 1} |- 3 \sqrt{2} \psi_{2 1 0} - i \sqrt{2} \psi_{2 1 1} + i \sqrt{2} \psi_{2 1 - 1} + \sqrt{1 0} \sqrt{2} \psi_{2 1 0} \rangle
 ```
 
 ```math
-= \sqrt{\frac{2 \hbar}{7 2 i} \langle 4 \psi_{1 0 0} + 3 \psi_{2 1 1} - i\psi_{2 1 0} + \sqrt{1 0} \psi_{2 1 - 1} |- \surd 3 \psi_{2 1 0} \surd - i\psi_{2 1 1} + \surd i\psi_{2 1 -} \surd_{1} + \sqrt{1 0} \psi_{2 1 0} \rangle}
+= \frac{\sqrt{2} \hbar}{7 2 i} \langle 4 \psi_{1 0 0} + 3 \psi_{2 1 1} - i\psi_{2 1 0} + \sqrt{1 0} \psi_{2 1 - 1} |- 3 \psi_{2 1 0} - i\psi_{2 1 1} + i\psi_{2 1 - 1} + \sqrt{1 0} \psi_{2 1 0} \rangle
 ```
 
 ```math
-= \frac{2 \hbar}{7 2 i} ( - 3 i - 3 i + \sqrt{1 0} i + \sqrt{1 0} i ) = \frac{( - 6 + 2 1 0 ) i 2 \hbar}{7 2 i} = \frac{( 2 5 - 3 2 ) \hbar}{3 6}
+= \frac{\sqrt{2} \hbar}{7 2 i} ( - 3 i - 3 i + \sqrt{1 0} i + \sqrt{1 0} i ) = \frac{( - 6 + 2 \sqrt{1 0} ) i \sqrt{2} \hbar}{7 2 i} = \frac{( 2 \sqrt{5} - 3 \sqrt{2} ) \hbar}{3 6}
 ```
 
 ## <a id="s-16-4-2-the-expectation-of-r-1-in-the-ground-state"></a>16.4.2 The Expectation of $`\frac{1}{r}`$ in the Ground State
@@ -14195,11 +14195,11 @@ L_{z} = \hbar \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & - 1 \end{pmatrix
 ```
 
 ```math
-\langle \ell m^{\prime} | L_{\pm} | \ell m \rangle = \sqrt{\ell ( \ell + 1 ) \sqrt{- m ( m \pm 1 )}} \hbar \delta_{m^{\prime} ( m \pm 1 )}
+\langle \ell m^{\prime} | L_{\pm} | \ell m \rangle = \sqrt{\ell ( \ell + 1 ) - m ( m \pm 1 )} \hbar \delta_{m^{\prime} ( m \pm 1 )}
 ```
 
 ```math
-L_{+} = \hbar \begin{pmatrix} 0 & 2 & 0 \\ 0 & 0 & \sqrt{2} \\ 0 & 0 & 0 \end{pmatrix}
+L_{+} = \hbar \begin{pmatrix} & \surd & \\ 0 & 2 & 0 \\ 0 & 0 & \sqrt{2} \\ 0 & 0 & 0 \end{pmatrix}
 ```
 
 ```math
@@ -27347,11 +27347,11 @@ H = \int \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} \quad r^{\pr
 ```
 
 ```math
-\left( ic\gamma_{4} \gamma_{j} p_{j} + mc^{2} \gamma_{4} \right) \sqrt{\psi} = E\psi \quad \surd
+\left( ic\gamma_{4} \gamma_{j} p_{j} + mc^{2} \gamma_{4} \right) \psi = E\psi
 ```
 
 ```math
-H = \int \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} \quad r^{\prime} = 1} \sum^{4} \frac{mc^{2}}{| E^{\prime} | V} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} ( E ) \quad \frac{mc^{2}}{| E | V} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x
+H = \int \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} \quad r^{\prime} = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E^{\prime} | V} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} ( E ) \surd \frac{mc^{2}}{| E | V} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x}
 ```
 
 ```math

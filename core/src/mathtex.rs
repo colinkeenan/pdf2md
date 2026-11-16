@@ -2611,6 +2611,15 @@ pub fn display(
         if let Some(b) = brace {
             return b.cy();
         }
+        // (a root sign's box sits high: it is of the line under its bar,
+        // the highest bar that starts at it within its height, not the bar
+        // of a fraction under or over the root; a tall root, read from its
+        // outline, has its true middle)
+        let own = if is_radical(s) && s.bottom - s.top <= 1.5 * max {
+            bars.iter().filter(|b| (b.left - s.right).abs() <= 3.0 && b.top >= s.top - 2.0 && s.bottom >= b.top - 2.0).min_by(|a, b| a.top.total_cmp(&b.top)).map_or(s.cy(), |b| b.bottom + 0.5 * max)
+        } else {
+            s.cy()
+        };
         tall.iter()
             .filter(|b| s.cy() > b.top && s.cy() < b.bottom && b.right <= s.left + 1.0)
             .max_by(|a, b| a.right.total_cmp(&b.right))
@@ -2618,7 +2627,7 @@ pub fn display(
                 // ... and a partner bracket to its right at the same height
                 tall.iter().any(|q| q.left >= s.right - 1.0 && (q.cy() - b.cy()).abs() < 0.5 * max)
             })
-            .map_or(s.cy(), |b| b.cy())
+            .map_or(own, |b| b.cy())
     };
     let homes: Vec<f32> = rest.iter().map(home).collect();
     for (s, y) in rest.into_iter().zip(homes) {

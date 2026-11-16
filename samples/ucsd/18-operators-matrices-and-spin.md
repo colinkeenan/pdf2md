@@ -1433,11 +1433,11 @@ L_{z} = \hbar \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & - 1 \end{pmatrix
 ```
 
 ```math
-\langle \ell m^{\prime} | L_{\pm} | \ell m \rangle = \sqrt{\ell ( \ell + 1 ) \sqrt{- m ( m \pm 1 )}} \hbar \delta_{m^{\prime} ( m \pm 1 )}
+\langle \ell m^{\prime} | L_{\pm} | \ell m \rangle = \sqrt{\ell ( \ell + 1 ) - m ( m \pm 1 )} \hbar \delta_{m^{\prime} ( m \pm 1 )}
 ```
 
 ```math
-L_{+} = \hbar \begin{pmatrix} 0 & 2 & 0 \\ 0 & 0 & \sqrt{2} \\ 0 & 0 & 0 \end{pmatrix}
+L_{+} = \hbar \begin{pmatrix} & \surd & \\ 0 & 2 & 0 \\ 0 & 0 & \sqrt{2} \\ 0 & 0 & 0 \end{pmatrix}
 ```
 
 ```math
