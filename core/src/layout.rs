@@ -1225,7 +1225,8 @@ fn take_figure_labels(doc: &mut Doc) {
             prose <= 3 && !titled
         });
         let bottoms: Vec<(f32, f32, f32)> = page.figures.iter().map(|f| (f.left, f.right, f.bottom)).collect();
-        for f in page.figures.iter_mut() {
+        let boxes: Vec<(f32, f32, f32, f32)> = page.figures.iter().map(|f| (f.left, f.right, f.top, f.bottom)).collect();
+        for (fi, f) in page.figures.iter_mut().enumerate() {
             let (l, r, t, b) = (f.left - m, f.right + m, f.top - 1.2 * m, f.bottom + 1.2 * m);
             for line in page.lines.iter_mut() {
                 // the picture's caption ("Fig. 3.6 …", "Table 5.1 …") is text
@@ -1244,12 +1245,15 @@ fn take_figure_labels(doc: &mut Doc) {
                 // (nor is a line all in the lettering of drawings that stands
                 // beside the picture, within its height: the Feynman rule
                 // written next to its vertex)
-                let pi = |s: &Span| doc.fonts.get(s.font).is_some_and(|f| f.family.contains("MathematicalPi"));
+                let pi = |s: &Span| doc.fonts.get(s.font).is_some_and(|f| f.family.contains("MathematicalPi") || f.family == "Symbol");
+                // (… or under it, within its width: the vertex's factor
+                // written below the vertex)
+                let beside = line.top >= f.top && line.top + line.size <= f.bottom && line.left < f.right + 4.0 * m && line.right > f.left - 4.0 * m;
+                // (not what stands in the next picture, or nearer over it)
+                let other = boxes.iter().enumerate().any(|(k, o)| k != fi && line.right > o.0 && line.left < o.1 && ((line.top >= o.2 - 1.0 && line.top <= o.3) || (o.2 >= line.top && o.2 - (line.top + line.size) < line.top - f.bottom)));
+                let under = !other && line.top >= f.bottom && line.top - f.bottom < 3.0 * m && line.left >= f.left - m && line.right <= f.right + m;
                 let lettered = !lettering.is_empty()
-                    && line.top >= f.top
-                    && line.top + line.size <= f.bottom
-                    && line.left < f.right + 4.0 * m
-                    && line.right > f.left - 4.0 * m
+                    && (beside || under)
                     && line.spans.iter().all(|s| s.text.trim().is_empty() || pi(s) || lettering.get(s.font).copied().unwrap_or(false))
                     && line.spans.iter().any(|s| lettering.get(s.font).copied().unwrap_or(false));
                 let spans = std::mem::take(&mut line.spans);

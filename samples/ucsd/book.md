@@ -20716,8 +20716,6 @@ This optical pumping to achieve a population inversion can be done in a number o
 
 _Figure 98 (p. 415)_
 
-He Ne
-
 Another way to get the population inversion is just the use of a metastable state as in a ruby laser. A normal light sorce can excite a higher excited state which decays to a metastable excited state. The metastable state will have a much larger population than in equilibrium.
 
 A laser with a beam coming out if it would be made in a cavity with a half silvered mirror so that the radiation can build up inside the cavity, but some of the radiation leaks out to make the beam.
