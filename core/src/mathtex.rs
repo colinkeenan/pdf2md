@@ -2095,6 +2095,29 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
                 out.push("\\quad".into());
             }
             prev_right = Some(prev_right.map_or(items[i].right, |r| r.max(items[i].right)));
+            // An exponent of e that is all one integral, e^{∫d⁴x ½JK⁻¹J}:
+            // the sign stands right behind the e, as large as on the line,
+            // and the small raised letters after it, which are many and
+            // begin with the "d", are no upper limit of it. They and the
+            // sign are the exponent.
+            let it = &items[i];
+            let end = i + 1 + items[i + 1..].iter().take_while(|n| n.kind == Kind::Sup).count();
+            let run: Vec<usize> = items[i + 1..end].iter().flat_map(|n| n.src.iter().copied()).collect();
+            let exponent = out.last().is_some_and(|p| p.trim() == "e") && it.src.len() == 1 && big_op(&spans[it.src[0]]) == Some("\\int") && items[i + 1..end].iter().all(|n| !n.src.is_empty()) && {
+                let sign = &spans[it.src[0]];
+                let main: Vec<&MSpan> = run.iter().map(|&k| &spans[k]).filter(|r| !r.cmex()).collect();
+                let hi = main.iter().map(|r| r.size).fold(0.0f32, f32::max);
+                let letters: usize = main.iter().map(|r| r.text.chars().filter(|c| !c.is_whitespace()).count()).sum();
+                let first = main.iter().min_by(|a, b| a.left.total_cmp(&b.left));
+                hi < 0.85 * max && letters >= 6 && first.is_some_and(|r| r.text.trim().starts_with('d') && r.left >= sign.right - 2.0 && r.left - sign.right < max)
+            };
+            if exponent {
+                let inside = build_at(&subset(spans, &run), depth + 1);
+                out.push(format!("^{{\\int {inside}}}"));
+                prev_right = items[i..end].iter().map(|n| n.right).fold(prev_right, |a, r| Some(a.map_or(r, |a| a.max(r))));
+                i = end;
+                continue;
+            }
             out.push(items[i].tex.clone());
             i += 1;
             continue;
