@@ -3109,6 +3109,50 @@ fn group_lines(
         let s = groups[k].remove(j);
         groups[m].push(s);
     }
+    // A small piece that stands over the inside of a run of words is no
+    // script of that line (a raised letter would end the run): right under
+    // a small letter of the line above, it is the lower index there, set
+    // under the upper one ("ϵ" with λ₁ over μ₁, the μ₁ down in the next line).
+    loop {
+        let mut to_move: Option<(usize, usize, usize)> = None;
+        'over: for k in 0..groups.len() {
+            let main_size = size_of(&groups[k][0]);
+            for j in 1..groups[k].len() {
+                let s = &groups[k][j];
+                if size_of(s) >= 0.85 * main_size || s.text.trim().is_empty() || s.text.trim() == "√" {
+                    continue;
+                }
+                let words = |n: &Span| size_of(n) >= 0.85 * main_size && n.text.split_whitespace().any(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 3);
+                let over_words = groups[k].iter().any(|n| words(n) && n.left < s.left - 1.0 && n.right() > s.right() + 1.0 && s.bottom() <= n.top + 0.15 * n.height);
+                // (… or has, in the line above, a small letter right over it
+                // and another of its size at its own height: the lower
+                // indices of that line stand there, and it is one of them)
+                // (not one that follows a letter of its own line: its script)
+                let based = groups[k].iter().any(|n| size_of(n) >= 0.85 * main_size && n.right() >= s.left - 0.5 * main_size && n.right() <= s.left + 1.0 && n.bottom() > s.top && n.top < s.bottom());
+                // (… and stands clear above the letters of its line, where a
+                // raised letter reaches down among them)
+                let letters_top = groups[k].iter().filter(|n| size_of(n) >= 0.85 * main_size && n.text.chars().any(char::is_alphanumeric)).map(|n| n.top).fold(f32::MIN, f32::max);
+                if !over_words && (based || s.bottom() > letters_top + 0.15 * main_size) {
+                    continue;
+                }
+                let above = (0..groups.len()).find(|&m| {
+                    let over = |n: &Span| n.top < s.top && n.bottom() >= s.top - 0.5 * s.height && n.left < s.right() && n.right() > s.left - s.height;
+                    let small = |n: &Span| size_of(n) < 0.85 * size_of(&groups[m][0]);
+                    m != k
+                        && groups[m][0].top < groups[k][0].top
+                        && groups[m].iter().any(|n| !std::ptr::eq(n, s) && over(n) && small(n))
+                        && (over_words || groups[m].iter().any(|c| small(c) && size_of(c) == size_of(s) && (c.top - s.top).abs() <= 1.0 && !c.text.trim().is_empty()))
+                });
+                if let Some(m) = above {
+                    to_move = Some((k, j, m));
+                    break 'over;
+                }
+            }
+        }
+        let Some((k, j, m)) = to_move else { break };
+        let s = groups[k].remove(j);
+        groups[m].push(s);
+    }
     // a root sign is of the line its foot stands in
     for s in roots {
         let low = s.bottom() - 2.0;
@@ -3248,7 +3292,7 @@ fn group_lines(
     // PDF2MD_LINEDEBUG=1: the pieces of each line, as grouped
     if std::env::var_os("PDF2MD_LINEDEBUG").is_some() {
         for g in &groups {
-            eprintln!("GROUP {:?}", g.iter().map(|s| format!("{}@{},{}", s.text, s.left, s.top)).collect::<Vec<_>>());
+            eprintln!("GROUP {:?}", g.iter().map(|s| format!("{}@{},{}+{}", s.text, s.left, s.top, s.height)).collect::<Vec<_>>());
         }
     }
     let mut lines: Vec<Line> = groups.into_iter().map(|g| make_line(g, size_of)).collect();
