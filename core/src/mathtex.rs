@@ -391,6 +391,27 @@ pub fn build(spans: &[MSpan]) -> String {
 
 /// Like [`build`], using the drawn bars (fraction bars, root bars) that lie
 /// inside the formula.
+/// The comma or full stop that closes an equation set smaller than the
+/// text is the text's, in its larger size: left so, it would be the only
+/// piece of "the size of the line" and every letter an index. It is given
+/// the size of the equation's letters.
+fn level_punctuation(spans: &mut [MSpan]) {
+    let max = spans.iter().filter(|s| !s.cmex()).map(|s| s.size).fold(0.0f32, f32::max);
+    let mark = |s: &MSpan| !s.cmex() && s.atom.is_none() && !s.text.trim().is_empty() && s.text.trim().chars().all(|c| ",.;:".contains(c));
+    if max <= 0.0 || spans.iter().any(|s| !s.cmex() && s.size >= 0.9 * max && !mark(s)) {
+        return;
+    }
+    let next = spans.iter().filter(|s| !s.cmex() && s.size < 0.9 * max).map(|s| s.size).fold(0.0f32, f32::max);
+    if next <= 0.0 {
+        return;
+    }
+    for s in spans.iter_mut().filter(|s| !s.cmex() && s.size >= 0.9 * max) {
+        // (it stands on the line: its box keeps its foot)
+        let shrink = (s.bottom - s.top) * (1.0 - next / s.size);
+        (s.size, s.top) = (next, s.top + shrink);
+    }
+}
+
 pub fn build_with(spans: &[MSpan], bars: &[Rule]) -> String {
     // pdftohtml sometimes puts two big operators in one span ("X X")
     let spans: Vec<MSpan> = spans
@@ -2493,9 +2514,11 @@ pub fn display(
     right_margin: f32,
     body: f32,
 ) -> Vec<(String, Option<String>)> {
-    let (tags, rest): (Vec<MSpan>, Vec<MSpan>) = spans
+    let (tags, mut rest): (Vec<MSpan>, Vec<MSpan>) = spans
         .into_iter()
         .partition(|s| tag_of(&s.text).is_some() && s.right >= right_margin - 1.5 * body);
+    level_punctuation(&mut rest);
+    let rest = rest;
     if rest.is_empty() {
         return tags
             .iter()

@@ -1109,7 +1109,7 @@ a = \pm b
 These are the eigenvectors of $`S_{x}`$. We see that if we are in an eigenstate of $`S_{x}`$ the spin measured in the z direction is equally likely to be up and down since the absolute square of either amplitude is
 
 ```math
-\tfrac{1}{2} .
+\frac{1}{2} .
 ```
 
 The remainder of this section goes into more detail on this calculation but is currently notationally challenged.
