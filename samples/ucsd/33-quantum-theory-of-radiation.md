@@ -596,7 +596,7 @@ At this point, we can hypothesize that the **operators that create fermion state
 The **states are then antisymmetric under interchange** of pairs of fermions.
 
 ```math
-b_{r}^{\dagger} b_{r}^{\dagger^{\prime}} | 0 \rangle = - b_{r}^{\dagger^{\prime}} b_{r}^{\dagger} | 0 \rangle
+b_{r}^{\dagger} b_{r^{\prime}}^{\dagger} | 0 \rangle = - b_{r^{\prime}}^{\dagger} b_{r}^{\dagger} | 0 \rangle
 ```
 
 Its not hard to show that the **occupation number for fermion states is either zero or one**.

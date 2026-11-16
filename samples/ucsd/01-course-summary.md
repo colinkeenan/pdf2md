@@ -2325,7 +2325,7 @@ H = \sum_{\vec{p} \quad r = 1} \sum^{4} Eb_{\vec{p}}^{( r )^{\dagger}} b_{\vec{p
 The **creation an annihilation operators** $`b_{\vec{p}}^{( r )}`$ and $`b_{\vec{p}}^{( r )}`$ satisfy **anticommutation relations**.
 
 ```math
-\{ b_{\vec{p}}^{( r )} ,b_{\vec{p}}^{( r_{\prime}^{\prime} )^{\dagger}} \} = \delta_{rr^{\prime}} \delta_{\vec{p} \vec{p}^{\prime}}
+\{ b_{\vec{p}}^{( r )} ,b_{\vec{p}^{\prime}}^{( r^{\prime} )^{\dagger}} \} = \delta_{rr^{\prime}} \delta_{\vec{p} \vec{p}^{\prime}}
 ```
 
 ```math
@@ -2355,7 +2355,7 @@ d_{\vec{p}}^{( 2 )} = b_{\vec{p}}^{( 3 )^{\dagger}}
 These **anti-commute** with everything else with the exception that
 
 ```math
-\{ d_{\vec{p}}^{( s )} ,d_{\vec{p}}^{( s_{\prime}^{\prime} )^{\dagger}} \} = \delta_{ss^{\prime}} \delta_{\vec{p} \vec{p}^{\prime}}
+\{ d_{\vec{p}}^{( s )} ,d_{\vec{p}^{\prime}}^{( s^{\prime} )^{\dagger}} \} = \delta_{ss^{\prime}} \delta_{\vec{p} \vec{p}^{\prime}}
 ```
 
 Now rewrite the fields and Hamiltonian.
@@ -2383,13 +2383,13 @@ There is an (infinite) constant energy, similar but of opposite sign to the one 
 Since the **operators creating fermion states anti-commute**, fermion states must be antisymmetric under interchange. Assume $`b_{r}^{\dagger}`$ and $`b_{r}`$ are the creation and annihilation operators for fermions and that they anti-commute.
 
 ```math
-\{ b_{r}^{\dagger} ,b_{r}^{\dagger^{\prime}} \} = 0
+\{ b_{r}^{\dagger} ,b_{r^{\prime}}^{\dagger} \} = 0
 ```
 
 The **states are then antisymmetric under interchange** of pairs of fermions.
 
 ```math
-b_{r}^{\dagger} b_{r}^{\dagger^{\prime}} | 0 \rangle = - b_{r}^{\dagger^{\prime}} b_{r}^{\dagger} | 0 \rangle
+b_{r}^{\dagger} b_{r^{\prime}}^{\dagger} | 0 \rangle = - b_{r^{\prime}}^{\dagger} b_{r}^{\dagger} | 0 \rangle
 ```
 
 Its not hard to show that the **occupation number for fermion states is either zero or one**.

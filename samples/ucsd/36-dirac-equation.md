@@ -1020,7 +1020,7 @@ We have the **four solutions with for a free particle with momentum** $`\vec{p}`
 The spinors are **orthogonal** for states with the same momentum and the free particle waves are orthogonal for different momenta. Note that the orthogonality condition is the same as for non-relativistic spinors
 
 ```math
-\psi_{\vec{p}}^{( r ) \dagger} \psi_{\vec{p}}^{( r_{\prime}^{\prime} )} = \delta rr^{\prime} \delta ( \vec{p} - \vec{p}^{\prime} )
+\psi_{\vec{p}}^{( r ) \dagger} \psi_{\vec{p}^{\prime}}^{( r^{\prime} )} = \delta rr^{\prime} \delta ( \vec{p} - \vec{p}^{\prime} )
 ```
 
 It is useful to write the plane wave states as a spinor $`u_{\vec{p}}^{( r )}`$ times an exponential. Sakurai picks a normalization of the spinor so that $`u^{\dagger} u`$ transforms like the fourth component of a vector. We will follow the same convention.
@@ -3093,7 +3093,7 @@ Let us take one more look at a plane wave solution to the Dirac equation, for ex
 
 The charge conjugate of the electron solution is an electron with the same charge $`- e`$, opposite momentum $`- \vec{p}`$, and spin opposite to the original state. It satisfies the equation with the signs of the EM fields reversed and, because the sign of the $`Et`$ term in the exponential is reversed, it behaves as a positive energy solution moving backward in time, with the right momentum and spin.
 
-Our opinion of the “negative energy” solutions has been biased by living in a world of matter. We know about **matter waves oscillating as** $`e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}`$. There is a **symmetric set of solutions for** **the same particles moving “backward in time” oscillating as** $`e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar}`$. These solutions **behave like antiparticles moving forward in time**. Consider the following diagram (which contributes to Thomson scattering) **from two points of view**. From one point of view, an electron starts out at $`t_{1}`$, lets say in the state $`\psi_{\vec{p}}^{( 1 )}`$ . At time $`t_{3}`$, the electron interacts with the field and makes a transition to the state $`\psi_{\vec{p}^{\prime \prime}}^{( 4 )}`$ which travels backward in time to $`t_{2}`$ where it again interacts and makes a transition to $`\psi_{\vec{p}}^{( 1 )_{\prime}}`$ . From the other point of view, the electron starts out at $`t_{1}`$, then, at time $`t^{2}`$, the field causes the creation of an electron positron pair both of which propagate forward in time. At time $`t_{3}`$, the positron and initial electron annihilate interacting with the field. The electron produced at $`t_{2}`$ propagates on into the future.
+Our opinion of the “negative energy” solutions has been biased by living in a world of matter. We know about **matter waves oscillating as** $`e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}`$. There is a **symmetric set of solutions for** **the same particles moving “backward in time” oscillating as** $`e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar}`$. These solutions **behave like antiparticles moving forward in time**. Consider the following diagram (which contributes to Thomson scattering) **from two points of view**. From one point of view, an electron starts out at $`t_{1}`$, lets say in the state $`\psi_{\vec{p}}^{( 1 )}`$ . At time $`t_{3}`$, the electron interacts with the field and makes a transition to the state $`\psi_{\vec{p}^{\prime \prime}}^{( 4 )}`$ which travels backward in time to $`t_{2}`$ where it again interacts and makes a transition to $`\psi_{\vec{p}^{\prime}}^{( 1 )}`$ . From the other point of view, the electron starts out at $`t_{1}`$, then, at time $`t^{2}`$, the field causes the creation of an electron positron pair both of which propagate forward in time. At time $`t_{3}`$, the positron and initial electron annihilate interacting with the field. The electron produced at $`t_{2}`$ propagates on into the future.
 
 <div align="right"><a href="book.pdf#page=537" target="_blank" title="This page in the PDF"><sup>[p. 537]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -3212,15 +3212,15 @@ H = \int \psi^{\dagger} \left( \hbar c\gamma_{4} \gamma_{k} \frac{\partial}{\par
 ```
 
 ```math
-H = \int \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} \quad r^{\prime} = 1} \sum^{4} \sqrt{| E mc^{2 \prime} | V} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}}^{( r_{\prime}^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \left( \hbar c\gamma_{4} \gamma_{k} \frac{\partial}{\partial x_{k}} + mc^{2} \gamma_{4} \right) \sqrt{| mc^{2} E | V} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x
+H = \int \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} \quad r^{\prime} = 1} \sum^{4} \sqrt{| E mc^{2 \prime} | V} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \left( \hbar c\gamma_{4} \gamma_{k} \frac{\partial}{\partial x_{k}} + mc^{2} \gamma_{4} \right) \sqrt{| mc^{2} E | V} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x
 ```
 
 ```math
-H = \int \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} \quad r^{\prime} = 1} \sum^{4} \sqrt{| E mc^{2 \prime} | V} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}}^{( r_{\prime}^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \left( \hbar c\gamma_{4} \gamma_{k} \frac{ip_{k}}{\hbar} + mc^{2} \gamma_{4} \right) \sqrt{| mc^{2} E | V} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x
+H = \int \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} \quad r^{\prime} = 1} \sum^{4} \sqrt{| E mc^{2 \prime} | V} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \left( \hbar c\gamma_{4} \gamma_{k} \frac{ip_{k}}{\hbar} + mc^{2} \gamma_{4} \right) \sqrt{| mc^{2} E | V} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x
 ```
 
 ```math
-H = \int \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} \quad r^{\prime} = 1} \sum^{4} \sqrt{| E mc^{2 \prime} | V} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}}^{( r_{\prime}^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \left( ic\gamma_{4} \gamma_{k} p_{k} + mc^{2} \gamma_{4} \right) \sqrt{| mc^{2} E | V} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x
+H = \int \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} \quad r^{\prime} = 1} \sum^{4} \sqrt{| E mc^{2 \prime} | V} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \left( ic\gamma_{4} \gamma_{k} p_{k} + mc^{2} \gamma_{4} \right) \sqrt{| mc^{2} E | V} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x
 ```
 
 ```math
@@ -3228,11 +3228,11 @@ H = \int \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} \quad r^{\pr
 ```
 
 ```math
-H = \int \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} \quad r^{\prime} = 1} \sum^{4} \frac{mc^{2}}{| E^{\prime} | V} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}}^{( r_{\prime}^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} ( E ) \quad \frac{mc^{2}}{| E | V} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x
+H = \int \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} \quad r^{\prime} = 1} \sum^{4} \frac{mc^{2}}{| E^{\prime} | V} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} ( E ) \quad \frac{mc^{2}}{| E | V} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x
 ```
 
 ```math
-H = \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} r^{\prime} = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E^{\prime} |}} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}}^{( r_{\prime}^{\prime} ) \dagger} ( E ) \sqrt{\frac{mc^{2}}{| E |}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} \delta_{\vec{p} \vec{p}^{\prime}}
+H = \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} r^{\prime} = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E^{\prime} |}} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} ( E ) \sqrt{\frac{mc^{2}}{| E |}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} \delta_{\vec{p} \vec{p}^{\prime}}
 ```
 
 ```math
@@ -3298,7 +3298,7 @@ H = \sum_{\vec{p} \quad r = 1} \sum^{4} Eb_{\vec{p}}^{( r )^{\dagger}} b_{\vec{p
 The **creation an annihilation operators** $`b_{\vec{p}}^{( r )^{\dagger}}`$ and $`b_{\vec{p}}^{( r )}`$ satisfy **anticommutation relations**.
 
 ```math
-\{ b_{\vec{p}}^{( r )} ,b_{\vec{p}}^{( r_{\prime}^{\prime} )^{\dagger}} \} = \delta_{rr^{\prime}} \delta_{\vec{p} \vec{p}^{\prime}}
+\{ b_{\vec{p}}^{( r )} ,b_{\vec{p}^{\prime}}^{( r^{\prime} )^{\dagger}} \} = \delta_{rr^{\prime}} \delta_{\vec{p} \vec{p}^{\prime}}
 ```
 
 ```math
@@ -3348,7 +3348,7 @@ d_{\vec{p}}^{( 2 )} = b_{\vec{p}}^{( 3 )^{\dagger}}
 These **anti-commute** with everything else with the exception that
 
 ```math
-\{ d_{\vec{p}}^{( s )} ,d_{\vec{p}}^{( s_{\prime}^{\prime} )^{\dagger}} \} = \delta_{ss^{\prime}} \delta_{\vec{p} \vec{p}^{\prime}}
+\{ d_{\vec{p}}^{( s )} ,d_{\vec{p}^{\prime}}^{( s^{\prime} )^{\dagger}} \} = \delta_{ss^{\prime}} \delta_{\vec{p} \vec{p}^{\prime}}
 ```
 
 The Dirac field and Hamiltonian can now be **rewritten**.
@@ -3376,13 +3376,13 @@ There is an (infinite) constant energy, similar but of opposite sign to the one 
 Since the **operators creating fermion states anti-commute**, fermion states must be antisymmetric under interchange. Assume $`b_{r}^{\dagger}`$ and $`b_{r}`$ are the creation and annihilation operators for fermions and that they anti-commute.
 
 ```math
-\{ b_{r}^{\dagger} ,b_{r}^{\dagger^{\prime}} \} = 0
+\{ b_{r}^{\dagger} ,b_{r^{\prime}}^{\dagger} \} = 0
 ```
 
 The **states are then antisymmetric under interchange** of pairs of fermions.
 
 ```math
-b_{r}^{\dagger} b_{r}^{\dagger^{\prime}} | 0 \rangle = - b_{r}^{\dagger^{\prime}} b_{r}^{\dagger} | 0 \rangle
+b_{r}^{\dagger} b_{r^{\prime}}^{\dagger} | 0 \rangle = - b_{r^{\prime}}^{\dagger} b_{r}^{\dagger} | 0 \rangle
 ```
 
 Its not hard to show that the **occupation number for fermion states is either zero or one**.

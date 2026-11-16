@@ -1815,7 +1815,10 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
         }
         let adjacent = bases.iter().any(|&b| {
             let gap = s.left - spans[b].right;
-            gap >= -0.2 * max && gap <= 0.45 * max && big_op(&spans[b]).is_none()
+            // (not the index of an index, with the larger index between it
+            // and the symbol: the 1 of M^{λ₁…}, level with the M's middle)
+            let between = (0..spans.len()).any(|j| j != i && j != b && spans[j].size > s.size && spans[j].size < 0.9 * max && spans[j].left >= spans[b].right - 1.5 && spans[j].right <= s.left + 1.5 && spans[j].right > spans[j].left);
+            gap >= -0.2 * max && gap <= 0.45 * max && big_op(&spans[b]).is_none() && !between
         });
         if adjacent {
             let d = s.cy() - y0;
@@ -1860,7 +1863,10 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
                 matches!(role[j], Role::Sup | Role::Sub) && {
                     let gap = s.left - spans[j].right;
                     let level = (s.cy() - spans[j].cy()).abs() <= 0.3 * s.height().max(spans[j].height());
-                    gap >= -0.2 * max && gap <= 0.45 * max && level
+                    // (a smaller piece right at a script's end, a little
+                    // lower or higher: that script's own index)
+                    let index = s.size < spans[j].size && gap.abs() <= 1.5 && (s.cy() - spans[j].cy()).abs() <= 0.5 * spans[j].height();
+                    gap >= -0.2 * max && gap <= 0.45 * max && (level || index)
                 }
             });
             if let Some(j) = follows {
