@@ -86,7 +86,7 @@ The first order perturbation **energy shift from the spin orbit correction** is 
 ```
 
 ```math
-\begin{pmatrix} g \\ 2 \end{pmatrix} E_{n} 2 mc^{2} 2 \left[ ( \ell \frac{n}{\tfrac{+ \tfrac{1}{2} - n ) ( \ell}{\ell ( \ell + \tfrac{1}{2} )}} + 1 ) \right] \quad j = \ell - \tfrac{1}{2}
+\left( \frac{g}{2} \right) \frac{E_{n}}{2 mc^{2}} 2 \left[ \tfrac{n}{( \ell \frac{+ \tfrac{1}{2} - n ) ( \ell}{\ell ( \ell + \tfrac{1}{2} )} + 1 )} \right] \quad j = \ell - \tfrac{1}{2}
 ```
 
 Actually, the $`\vec{L} \cdot \vec{S}`$ term should give 0 for $`\ell`$ = 0! In the above calculation there is an $`\frac{\ell}{\ell}`$ factor which makes the result for $`\ell`$ = 0 undefined. There is an additional Dirac Equation contribution called the **“Darwin term”** (see section 23.4.5) which is important for $`\ell`$ = 0 and surprisingly makes the above calculation right, even for $`\ell`$ = 0!
@@ -352,7 +352,7 @@ We now calculate the expectation value of $`H_{2}`$. We will immediately use the
 ```
 
 ```math
-{}^{( \ell} \tfrac{+ \tfrac{1}{2} - n ) ( \ell}{\ell ( \ell + \tfrac{1}{2} )}^{n} \left. {}^{+ 1 )} \right] \quad j = \ell - \tfrac{1}{2}
+\left. \tfrac{n}{( \ell \frac{+ \tfrac{1}{2} - n ) ( \ell}{\ell ( \ell + \tfrac{1}{2} )} + 1 )} \right] \quad j = \ell - \tfrac{1}{2}
 ```
 
 Note that in the above equation, we have canceled a term $`\frac{\ell}{\ell}`$ which is not defined for $`\ell`$ = 0. We will return to this later.

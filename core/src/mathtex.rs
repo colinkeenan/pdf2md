@@ -2722,8 +2722,10 @@ pub fn display(
         } else {
             s.cy()
         };
+        // (the last row of a column of small fractions has its middle at
+        // the bracket's foot: a point or two of play)
         tall.iter()
-            .filter(|b| s.cy() > b.top && s.cy() < b.bottom && b.right <= s.left + 1.0)
+            .filter(|b| s.cy() > b.top && s.cy() < b.bottom + 2.0 && b.right <= s.left + 1.0)
             .max_by(|a, b| a.right.total_cmp(&b.right))
             .filter(|b| {
                 // ... and a partner bracket to its right at the same height
@@ -2731,15 +2733,25 @@ pub fn display(
             })
             .map_or(own, |b| b.cy())
     };
+    // (a fraction's bar between a pair of tall brackets is of their line too)
+    let bar_home = |r: &Rule| -> f32 {
+        let y = (r.top + r.bottom) / 2.0;
+        tall.iter()
+            .filter(|b| y > b.top && y < b.bottom && b.right <= r.left + 1.0)
+            .max_by(|a, b| a.right.total_cmp(&b.right))
+            .filter(|b| tall.iter().any(|q| q.left >= r.right - 1.0 && (q.cy() - b.cy()).abs() < 0.5 * max))
+            .map_or(y, |b| b.cy())
+    };
     let homes: Vec<f32> = rest.iter().map(home).collect();
+    let bar_homes: Vec<f32> = bars.iter().map(bar_home).collect();
     for (s, y) in rest.into_iter().zip(homes) {
         groups[nearest(y)].push(s);
     }
     for t in &tags {
         gtags[nearest(t.cy())] = tag_of(&t.text);
     }
-    for r in bars {
-        gbars[nearest((r.top + r.bottom) / 2.0)].push(*r);
+    for (r, y) in bars.iter().zip(bar_homes) {
+        gbars[nearest(y)].push(*r);
     }
 
     // Equations: a row plus the continuation rows below it.

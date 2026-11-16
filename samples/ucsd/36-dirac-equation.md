@@ -950,7 +950,7 @@ E^{2} = p^{2} c^{2} + ( mc^{2} )^{2}
 ```
 
 ```math
-u_{\vec{p}} = N \begin{pmatrix} \frac{- - E + mc^{2} ( p_{x} + ip_{y} ) c}{{}^{- E +} 1^{mc^{2}}}^{- p_{z} c} \\ 0 \end{pmatrix}
+u_{\vec{p}} = N \begin{pmatrix} \frac{- \frac{- p_{z} c}{- E + mc^{2}} ( p_{x} + ip_{y} ) c}{{}^{- E +} 1^{mc^{2}}} \\ 0 \end{pmatrix}
 ```
 
 ```math
@@ -1084,11 +1084,11 @@ j_{\mu} = ic ( A_{1}^{*} \quad A_{2}^{*} \quad - B_{1}^{*} \quad - B_{2}^{*} ) \
 Now compute it specifically for a positive energy plane wave, $`\psi_{\vec{p}}^{( 1 )}`$ , and a “negative energy” plane<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=503" target="_blank" title="This page in the PDF"><sup>[p. 503]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p504" href="book.pdf#page=504" target="_blank" title="This page in the PDF"><sup>[p. 504]</sup></a></span> wave, $`\psi_{\vec{p}}^{( 3 )}`$ .
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = N \begin{pmatrix} 1 \\ {}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{{}_{2} c} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 1 )} = N \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-j_{\mu}^{( 1 )} = N^{2} c ( [ B_{2}^{E + mc} + B_{2}^{*} , - i [ B_{2} - B_{2}^{*} ] , [ B_{1} + B_{1}^{*} ] ,i [ 1 + B_{1}^{*} B_{1} + B_{2}^{*} B_{2} ] )
+j_{\mu}^{( 1 )} = N^{2} c ( [ B_{2} + B_{2}^{*} , - i [ B_{2} - B_{2}^{*} ] , [ B_{1} + B_{1}^{*} ] ,i [ 1 + B_{1}^{*} B_{1} + B_{2}^{*} B_{2} ] )
 ```
 
 ```math
@@ -2560,7 +2560,7 @@ c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \begin{pmatrix} ( r ) \mathca
 This is now a set of two coupled radial equations. We can simplify them a bit by making the substitutions $`F = rf`$ and $`G = rg`$. The extra term from the derivative cancels the 1’s that are with $`\kappa`$s.
 
 ```math
-\begin{aligned} \hbar c \left( \left( \begin{pmatrix} - {}_{r} \quad + \tfrac{F}{r^{2}} + \frac{\kappa F}{\tfrac{G r}{2}^{2} +} & 2 \\ \tfrac{1}{r} \frac{{}_{\partial G} \tfrac{\partial F}{\partial r}}{\partial r} - \tfrac{G}{r^{2}} + {}_{r} & \frac{- {}_{\kappa G} \tfrac{F}{r}}{r^{2}} \end{pmatrix}^{1} \right) \right) &= \begin{pmatrix} ( E - V - mc^{2} ) \tfrac{G}{r} \\ ( E - V + mc^{2} ) \tfrac{F}{r} \end{pmatrix} \\ \hbar c \left( \left( \begin{pmatrix} - \tfrac{\partial F}{\partial G \partial r} + \tfrac{\kappa F}{\kappa G r} \\ {}_{\partial r} + {}_{r} \end{pmatrix} \right) \right) &= \begin{pmatrix} ( E - V - mc^{2} ) G \\ ( E - V + mc^{2} ) F \end{pmatrix} \end{aligned}
+\begin{aligned} \hbar c \left( \left( \begin{pmatrix} - {}_{r} \quad + \tfrac{F}{r^{2}} + \frac{\kappa F}{\tfrac{G r}{2}^{2} +} & 2 \\ \tfrac{1}{r} \frac{{}_{\partial G} \tfrac{\partial F}{\partial r}}{\partial r} - \tfrac{G}{r^{2}} + {}_{r} & \frac{- {}_{\kappa G} \tfrac{F}{r}}{r^{2}} \end{pmatrix}^{1} \right) \right) &= \begin{pmatrix} ( E - V - mc^{2} ) \tfrac{G}{r} \\ ( E - V + mc^{2} ) \tfrac{F}{r} \end{pmatrix} \\ \hbar c \left( \left( \begin{pmatrix} - \tfrac{\partial F}{\partial r} + \tfrac{\kappa F}{r} \\ \tfrac{\partial G}{\partial r} + \tfrac{\kappa G}{r} \end{pmatrix} \right) \right) &= \begin{pmatrix} ( E - V - mc^{2} ) G \\ ( E - V + mc^{2} ) F \end{pmatrix} \end{aligned}
 ```
 
 ```math
