@@ -55,7 +55,7 @@ We understand $`f ( x )`$ as a **wave packet** made up of definite momentum term
 
 Lets now try **two examples of a wave packet localized in** $`k`$ and properly normalized at $`t`$ = 0.
 
-1. A “square” packet: $`A ( k ) = \sqrt{\tfrac{1}{a}}`$ for $`k_{0} - \tfrac{a}{2} <k<k_{0} + \tfrac{a}{2}`$ and 0 elsewhere.
+1. A “square” packet: $`A ( k ) = \tfrac{1}{\sqrt{a}}`$ for $`k_{0} - \tfrac{a}{2} <k<k_{0} + \tfrac{a}{2}`$ and 0 elsewhere.
 
 2. A Gaussian packet: $`A ( k ) = \left( \tfrac{2 \alpha}{\pi} \right)^{1 / 4} e^{- \alpha ( k - k_{0} )^{2}}`$.
 
@@ -219,13 +219,13 @@ and we add up states of definite position to get $`\varphi ( p )`$.
 \varphi ( p ) = \int_{-\infty}^{\infty} \psi ( x ) v_{x} ( p ) dx
 ```
 
-There is a more abstract way to write these states. Using the notation of Dirac, the state with definite momentum $`p_{0} , u_{p 0} ( x ) = \sqrt{\tfrac{1}{2 \pi \hbar} e^{ip_{0} x/ \hbar}}`$ might be written as
+There is a more abstract way to write these states. Using the notation of Dirac, the state with definite momentum $`p_{0} , u_{p 0} ( x ) = \tfrac{1}{\sqrt{2 \pi \hbar}} e^{ip_{0} x/ \hbar}`$ might be written as
 
 ```math
 | p_{0} \rangle
 ```
 
-and the state with definite position $`x_{1} , v_{x 1} ( p ) = \sqrt{\tfrac{1}{2 \pi \hbar} e^{- ipx_{1} / \hbar}}`$ might be written
+and the state with definite position $`x_{1} , v_{x 1} ( p ) = \tfrac{1}{\sqrt{2 \pi \hbar}} e^{- ipx_{1} / \hbar}`$ might be written
 
 ```math
 | x_{1} \rangle .
@@ -374,7 +374,7 @@ A_{n} = \sqrt{\frac{2}{\pi}} L \tfrac{1}{2 L} \int_{- L}^{L} f ( x ) e \tfrac{- 
 ```
 
 ```math
-A_{n} = \sqrt{\tfrac{1}{2 \pi} \int_{- L}^{L} f ( x ) e \tfrac{- in\pi x}{L} dx}
+A_{n} = \tfrac{1}{\sqrt{2 \pi}} \int_{- L}^{L} f ( x ) e \tfrac{- in\pi x}{L} dx
 ```
 
 ```math
@@ -388,11 +388,11 @@ $`f ( x ) = \tfrac{\sqrt{\pi}}{\sqrt{2} L} \int A ( k ) e_{\overline{\pi}}^{ikxL
 </div>
 
 ```math
-f ( x ) = \tfrac{1}{2 \pi} \sqrt{\int_{-\infty}^{-\infty \infty} A ( k ) e^{ikx} dk \quad \text{ result }}
+f ( x ) = \tfrac{1}{\sqrt{2 \pi}} \int_{-\infty}^{-\infty \infty} A ( k ) e^{ikx} dk \quad \text{ result }
 ```
 
 ```math
-A ( k ) = \tfrac{1}{2 \pi} \sqrt{\int_{-\infty}^{\infty} f ( x ) e^{- ikx} dx \quad \text{ result }}
+A ( k ) = \tfrac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f ( x ) e^{- ikx} dx \quad \text{ result }
 ```
 
 <div align="right"><a href="book.pdf#page=106" target="_blank" title="This page in the PDF"><sup>[p. 106]</sup></a></div>
@@ -1005,7 +1005,7 @@ c \psi ( x ) = \delta ( x - x_{0} )
 
 15. **\*** Given the following one dimensional probability amplitudes in the momentum representation, compute the probability amplitude in the position representation, $`\psi ( x )`$. Show that the uncertainty principle is satisfied.
 
-(a) $`\bar{\psi} ( p ) = \sqrt{\tfrac{1}{2 a}}`$ for $`- a<p<a , \bar{\psi} ( p )`$ = 0 elsewhere.
+(a) $`\bar{\psi} ( p ) = \tfrac{1}{\sqrt{2 a}}`$ for $`- a<p<a , \bar{\psi} ( p )`$ = 0 elsewhere.
 
 ```math
 ( b ) \bar{\psi} ( p ) = \delta ( p - p_{0} )

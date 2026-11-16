@@ -108,7 +108,7 @@ u_{n} ( x ) = \sum_{k = 0}^{\infty} a_{k} y^{k} e^{- y^{2} / 2} \quad a_{k + 2} 
 ```
 
 ```math
-A = ( \sqrt{\frac{m\omega}{2 \hbar}} x + i \tfrac{p}{2 m \hbar \omega} \sqrt{) \quad A^{\dagger}} = ( \sqrt{\frac{m\omega}{2 \hbar}} x - i \tfrac{p}{2 m \hbar \omega} \sqrt{) \quad [ A,A^{\dagger}} ] = 1
+A = ( \sqrt{\frac{m\omega}{2 \hbar}} x + i \tfrac{p}{\sqrt{2 m \hbar \omega}} ) \quad A^{\dagger} = ( \sqrt{\frac{m\omega}{2 \hbar}} x - i \tfrac{p}{\sqrt{2 m \hbar \omega}} ) \quad [ A,A^{\dagger} ] = 1
 ```
 
 ```math
@@ -166,7 +166,7 @@ S_{i} = \tfrac{\hbar}{2} \sigma_{i} \quad [ \sigma_{i} ,\sigma_{j} ] = 2 i\epsil
 ```
 
 ```math
-S_{x} = \hbar \begin{pmatrix} 0 & \tfrac{1}{\sqrt{2}} & 0 \\ \tfrac{1}{\sqrt{2}} & 0 & \tfrac{1}{\sqrt{2}} \\ 0 & \tfrac{1}{\sqrt{2}} & 0 \end{pmatrix} \quad S_{y} = \hbar \begin{pmatrix} 0 & \tfrac{- i}{2}^{\surd} & 0 \\ \tfrac{i}{\sqrt{2}} & 0 & \tfrac{i}{\sqrt{2}}^{-} \\ 0 & \tfrac{i}{2}^{\surd} & 0 \end{pmatrix} \quad S_{z} = \hbar \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & - 1 \end{pmatrix} 1
+S_{x} = \hbar \begin{pmatrix} 0 & \tfrac{1}{\sqrt{2}} & 0 \\ \tfrac{1}{\sqrt{2}} & 0 & \tfrac{1}{\sqrt{2}} \\ 0 & \tfrac{1}{\sqrt{2}} & 0 \end{pmatrix} \quad S_{y} = \hbar \begin{pmatrix} 0 & \tfrac{- i}{\sqrt{2}} & 0 \\ \tfrac{i}{\sqrt{2}} & 0 & \tfrac{i}{\sqrt{2}}^{-} \\ 0 & \tfrac{i}{\sqrt{2}} & 0 \end{pmatrix} \quad S_{z} = \hbar \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & - 1 \end{pmatrix} 1
 ```
 
 <div align="center">
@@ -188,7 +188,7 @@ R_{n\ell} ( \rho ) = \rho^{\ell} \sum_{k = 0}^{\infty} a_{k} \rho^{k} e^{- \rho 
 ```
 
 ```math
-R_{1 0} = 2 ( \tfrac{Z}{a_{0}} ) \tfrac{3}{2} e^{\tfrac{- Zr}{a 0}} \quad R_{2 0} = 2 ( \tfrac{Z}{2 a_{0}} ) \tfrac{3}{2} ( 1 - \tfrac{Zr}{2 a_{0}} ) e^{\tfrac{- Zr}{2 a 0}} \quad R_{2 1} = \tfrac{1}{3} \sqrt{( \tfrac{Z}{2 a_{0}} ) \tfrac{3}{2} ( \tfrac{Zr}{a_{0}} ) e^{\tfrac{- Zr}{2 a 0}}}
+R_{1 0} = 2 ( \tfrac{Z}{a_{0}} ) \tfrac{3}{2} e^{\tfrac{- Zr}{a 0}} \quad R_{2 0} = 2 ( \tfrac{Z}{2 a_{0}} ) \tfrac{3}{2} ( 1 - \tfrac{Zr}{2 a_{0}} ) e^{\tfrac{- Zr}{2 a 0}} \quad R_{2 1} = \tfrac{1}{\sqrt{3}} ( \tfrac{Z}{2 a_{0}} ) \tfrac{3}{2} ( \tfrac{Zr}{a_{0}} ) e^{\tfrac{- Zr}{2 a 0}}
 ```
 
 ```math
@@ -256,7 +256,7 @@ $`\Gamma_{i \to f} =`$<sup>2</sup>$`\tfrac{\pi}{\hbar} \int \prod ( \tfrac{Vd^{3
 ```
 
 ```math
-\hat{\epsilon} \cdot \hat{r} = \sqrt{\tfrac{4 \pi}{3} ( \epsilon_{z} Y_{1 0} + \tfrac{- \epsilon_{x} + i\epsilon_{y}}{2}^{\surd} Y_{1 1} + \tfrac{\epsilon_{x} + i\epsilon_{y}}{2}^{\surd} Y_{1 - 1} ) \quad \hat{\epsilon} \cdot \vec{k}} = 0
+\hat{\epsilon} \cdot \hat{r} = \sqrt{\tfrac{4 \pi}{3} ( \epsilon_{z} Y_{1 0} + \tfrac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \tfrac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} ) \quad \hat{\epsilon} \cdot \vec{k}} = 0
 ```
 
 ```math

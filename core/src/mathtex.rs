@@ -877,14 +877,15 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
         let above: Vec<usize> = (0..spans.len())
             .filter(|&i| within(&spans[i]) && spans[i].bottom <= b.top + 2.0 && spans[i].cy() >= b.top - 3.5 * size)
             .collect();
-        // (a root sign in the denominator reaches up past the bar)
+        // (a root sign in the denominator reaches up past the bar; its box
+        // has its middle at the bar, a point over or under it)
         let below: Vec<usize> = (0..spans.len())
             .filter(|&i| {
                 let s = &spans[i];
                 // (a sign of a symbol font has a box taller than the letters':
                 // the minus of √−g starts a little above the bar it is under)
                 let tall_under = s.top >= b.bottom - 0.35 * size && s.cy() >= b.bottom + 0.3 * size;
-                within(s) && (s.top >= b.bottom - 2.0 || tall_under || (is_radical(s) && s.cy() >= b.top)) && s.cy() <= b.bottom + 3.5 * size
+                within(s) && (s.top >= b.bottom - 2.0 || tall_under || (is_radical(s) && s.cy() >= b.top - 2.0)) && s.cy() <= b.bottom + 3.5 * size
             })
             .collect();
         // A fraction nested inside this one has a clearly narrower bar; a

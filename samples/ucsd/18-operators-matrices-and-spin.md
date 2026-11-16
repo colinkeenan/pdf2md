@@ -172,7 +172,7 @@ For the product to be zero, the **determinant** of the matrix must be zero. We s
 The eigenvectors computed in the above example show that the x axis is not really any different than the z axis. The **eigenvalues** are +$`\hbar`$, 0, and $`- \hbar`$, the same as for z. The normalized **eigenvectors** of $`L_{x}`$ are
 
 ```math
-\psi_{+ \hbar}^{( x )} = \left( \tfrac{\frac{1}{2} 1}{\frac{\frac{\surd}{1} 2}{2}} \right) \quad \psi_{0 \hbar}^{( x )} = \begin{pmatrix} {}^{\surd} \frac{1}{0^{2}} \\ - \sqrt{\tfrac{1}{2}} \end{pmatrix} \quad \psi_{- \hbar}^{( x )} = \begin{pmatrix} {}^{- 1} \tfrac{1 2}{\sqrt{2}} \\ {}^{-} \tfrac{1}{2} \end{pmatrix} .
+\psi_{+ \hbar}^{( x )} = \left( \tfrac{\frac{1}{2} 1}{\frac{\frac{\surd}{1} 2}{2}} \right) \quad \psi_{0 \hbar}^{( x )} = \begin{pmatrix} \frac{1}{\sqrt{0^{2}}} \\ - \sqrt{\tfrac{1}{2}} \end{pmatrix} \quad \psi_{- \hbar}^{( x )} = \begin{pmatrix} {}^{- 1} \tfrac{1 2}{\sqrt{2}} \\ {}^{-} \tfrac{1}{2} \end{pmatrix} .
 ```
 
 These vectors, and any $`\ell`$ = 1 vectors, can be written in terms of the eigenvectors of $`S_{z}`$.
@@ -180,7 +180,7 @@ These vectors, and any $`\ell`$ = 1 vectors, can be written in terms of the eige
 We can check whether the **eigenvectors are orthogonal,** as they must be.
 
 ```math
-\langle \psi_{0 \hbar} | \psi_{+ \hbar} \rangle = \left( \tfrac{1}{\sqrt{2}}^{*} \quad 0 \quad - \tfrac{1}{\sqrt{2}}^{*} \right) \left( {}^{\surd} \tfrac{1 \frac{1}{2}}{\frac{1}{2} 2} \right) = 0
+\langle \psi_{0 \hbar} | \psi_{+ \hbar} \rangle = \left( \tfrac{1}{\sqrt{2}}^{*} \quad 0 \quad - \tfrac{1}{\sqrt{2}}^{*} \right) \left( \tfrac{1 \frac{1}{2}}{\sqrt{2} \frac{1}{2}} \right) = 0
 ```
 
 The others will also prove orthogonal.
@@ -375,7 +375,7 @@ R_{z} ( \theta_{z} ) = \begin{pmatrix} e^{i\theta_{z}} & 0 & 0 \\ 0 & 1 & 0 \\ 0
 A **computation** (see section 18.11.5) of the operator for rotations about the y-axis yields
 
 ```math
-R_{y} ( \theta_{y} ) = \begin{pmatrix} \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) & \tfrac{1}{2}^{\surd} \sin ( \theta_{y} ) & \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) \\ - \sqrt{\tfrac{1}{2} \sin ( \theta_{y} )} & c \text{ os } ( \theta_{y} ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) \\ \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) & - \sqrt{\tfrac{1}{2} \sin ( \theta_{y} )} & \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) \end{pmatrix} .
+R_{y} ( \theta_{y} ) = \begin{pmatrix} \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) & \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) \\ - \sqrt{\tfrac{1}{2} \sin ( \theta_{y} )} & c \text{ os } ( \theta_{y} ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) \\ \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) & - \sqrt{\tfrac{1}{2} \sin ( \theta_{y} )} & \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) \end{pmatrix} .
 ```
 
 Try calculating the rotation operator for the x-axis yourself.
@@ -415,7 +415,7 @@ It is just $`\psi_{+}^{( z )} = ( 0 )`$ with the usual basis. Now we **rotate to
 **states** with the $`z^{\prime}`$ along the $`u`$ direction. This means a rotation through an angle $`\theta`$ about the y direction. The problem didn’t clearly define whether it is +$`\theta`$ or $`- \theta`$, but, if we only need to know the intensities, it doesn’t matter. So the **state coming out of the second apparatus** is
 
 ```math
-R_{y} ( \theta ) \psi_{+}^{( z )} = \begin{pmatrix} \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) & \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) \\ - \tfrac{1}{2} \sqrt{\sin ( \theta_{y} )} & c \text{ os } ( \theta_{y} ) & \tfrac{1}{2}^{\surd} \sin ( \theta_{y} ) \\ \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) & - \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) & \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) \end{pmatrix} \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}
+R_{y} ( \theta ) \psi_{+}^{( z )} = \begin{pmatrix} \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) & \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) \\ - \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) & c \text{ os } ( \theta_{y} ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) \\ \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) & - \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) & \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) \end{pmatrix} \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}
 ```
 
 ```math
@@ -587,7 +587,7 @@ Now if we block one of the beams separated according to the x direction, particl
 Note that we can compute the number of particles coming out of the second (and third) part by squaring the amplitude to go from the input state to the output state
 
 ```math
-\frac{N}{2} \left| \left( \sqrt{\tfrac{1}{2} \quad \tfrac{1}{2} \surd} \right) \begin{pmatrix} 0 \\ 1 \end{pmatrix} \right|^{2} = \frac{N}{4}
+\frac{N}{2} \left| \left( \tfrac{1}{\sqrt{2}} \quad \tfrac{1}{\sqrt{2}} \right) \begin{pmatrix} 0 \\ 1 \end{pmatrix} \right|^{2} = \frac{N}{4}
 ```
 
 <div align="right"><a href="book.pdf#page=258" target="_blank" title="This page in the PDF"><sup>[p. 258]</sup></a></div>
@@ -597,7 +597,7 @@ Note that we can compute the number of particles coming out of the second (and t
 or we can just use the projection operator $`\left( \sqrt{1 2}^{1} \right) \left( \tfrac{1}{\sqrt{2}} \quad \tfrac{1}{\sqrt{2}} \right) = \begin{pmatrix} 1 & 1 \\ 2 & 2 \\ 1 & 1 \end{pmatrix}`$.
 
 ```math
-\begin{pmatrix} \tfrac{1}{1 2} & \tfrac{1}{1 2} \\ 2 & 2 \end{pmatrix} \frac{N}{2} \sqrt{2} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{N}{4} \left( \frac{\tfrac{1}{2} \frac{\surd}{1}}{\sqrt{2}} \right)^{2 2}
+\begin{pmatrix} \tfrac{1}{1 2} & \tfrac{1}{1 2} \\ 2 & 2 \end{pmatrix} \frac{N}{2} \sqrt{2} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{N}{4} \left( \frac{\tfrac{1}{\sqrt{2}}_{1}}{\sqrt{2}} \right)^{2 2}
 ```
 
 # <a id="s-18-9-other-two-state-systems"></a>18.9 Other Two State Systems\*
@@ -797,7 +797,7 @@ There are three solutions to this equation: $`b`$ = 0, $`b`$ = +$`\sqrt{2}`$, an
 Up to a normalization constant, the solutions are:
 
 ```math
-\psi_{+ \hbar} = c \left( \frac{\surd}{\sqrt{\tfrac{1}{2}}} \frac{1}{1^{2}} \right) \quad \psi_{0 \hbar} = c \begin{pmatrix} 1 \\ 0 \\ - 1 \end{pmatrix} \quad \psi_{- \hbar} = c \left( \frac{- 1}{1^{2}} \frac{\surd}{\tfrac{- 1}{2} \surd} \right) .
+\psi_{+ \hbar} = c \left( \frac{1}{\sqrt{2} 1}_{\tfrac{1}{\sqrt{2}}} \right) \quad \psi_{0 \hbar} = c \begin{pmatrix} 1 \\ 0 \\ - 1 \end{pmatrix} \quad \psi_{- \hbar} = c \left( \frac{- 1}{\sqrt{2} 1}_{\tfrac{- 1}{\sqrt{2}}} \right) .
 ```
 
 We should normalize these eigenvectors to represent one particle. For example:
@@ -837,7 +837,7 @@ R_{z} ( \theta_{z} = 9 0 ) = \begin{pmatrix} i & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & -
 Before rotation the state is $`1`$
 
 ```math
-\psi_{+ \hbar}^{( x )} = \left( \tfrac{1 2}{\frac{1}{2} 2}^{\surd} \right)
+\psi_{+ \hbar}^{( x )} = \left( \tfrac{1 2}{\sqrt{1 2} 2} \right)
 ```
 
 The rotated state is.
@@ -857,7 +857,7 @@ L_{y} \psi_{-}^{( y )} = - \hbar \psi_{-}^{( y )}
 ```
 
 ```math
-\left( \tfrac{i ( c \frac{ib}{\sqrt{2}} - a )}{\frac{- ib 2}{2} \surd}^{\surd} \right) = \begin{pmatrix} a \\ b \\ c \end{pmatrix}
+\left( \tfrac{i ( c \frac{ib}{\sqrt{2}} - a )}{\frac{- \sqrt{ib 2}}{\sqrt{2}}} \right) = \begin{pmatrix} a \\ b \\ c \end{pmatrix}
 ```
 
 Setting $`b`$ = 1, we get the unnormalized result.
@@ -869,7 +869,7 @@ Setting $`b`$ = 1, we get the unnormalized result.
 Normalizing, we get.
 
 ```math
-\psi_{-}^{( y )} = \left( {}^{\surd} \tfrac{1 \frac{i}{2}}{\frac{2 i}{2} -} \right)
+\psi_{-}^{( y )} = \left( \tfrac{1 \frac{i}{2}}{\frac{\sqrt{2 i}}{2} -} \right)
 ```
 
 This is exactly the same as the rotated state. A 90 degree rotation about the z axis changes $`\psi_{+}^{( x )}`$ into $`\psi_{-}^{( y )}`$.
@@ -977,7 +977,7 @@ I_{2} = \left| \langle \psi_{-}^{( x )} | \psi_{+}^{( z )} \rangle \right|^{2} I
 We have written the probability that one particle, initially in the the state $`\psi_{+}^{( z )}`$, goes into the state $`\psi_{-}^{( x )}`$ when **measured** in the x direction (times the intensity coming into the apparatus). Lets compute that probability.
 
 ```math
-\langle \psi_{-}^{( x )} | \psi_{+}^{( z )} \rangle = \left( - \tfrac{1}{2} \quad \tfrac{1}{2}^{\surd} \quad - \tfrac{1}{2} \right) \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} = - \frac{1}{2}
+\langle \psi_{-}^{( x )} | \psi_{+}^{( z )} \rangle = \left( - \tfrac{1}{2} \quad \tfrac{1}{\sqrt{2}} \quad - \tfrac{1}{2} \right) \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} = - \frac{1}{2}
 ```
 
 So the probability is $`\frac{1}{4}`$.
@@ -989,7 +989,7 @@ I_{2} = \frac{1}{4} I_{1} = \frac{1}{1 2} I_{0}
 The third apparatus goes back to a separation in z and blocks the $`m`$ = 1 component. The incoming state is
 
 ```math
-\psi_{-}^{( x )} = \left( \frac{- {}_{1} \tfrac{1}{2}}{- \tfrac{2 1}{2}}^{\surd} \right)
+\psi_{-}^{( x )} = \left( \frac{- {}_{1} \tfrac{1}{2}}{- \sqrt{\frac{2}{2} 1}} \right)
 ```
 
 Remember that the components of this vector are just the amplitudes to be in the different $`m`$ states (using the z axis). The probability to get through this apparatus is just the probability to be in the $`m`$ = 0 beam plus the probability to be in the $`m = - 1`$ beam.
@@ -1041,7 +1041,7 @@ But we know how each of the energy eigenfunctions develops with time so its easy
 As a concrete example, let’s assume we start out in the eigenstate of $`L_{x}`$ with eigenvalue +$`\hbar`$.
 
 ```math
-\psi ( t = 0 ) = \psi_{x +} = \left( {}^{\surd} \tfrac{1 \frac{1}{2}}{\frac{1}{2} 2} \right)
+\psi ( t = 0 ) = \psi_{x +} = \left( \tfrac{1 \frac{1}{2}}{\sqrt{2} \frac{1}{2}} \right)
 ```
 
 ```math
@@ -1053,7 +1053,7 @@ As a concrete example, let’s assume we start out in the eigenstate of $`L_{x}`
 <a id="p267" href="book.pdf#page=267" target="_blank" title="This page in the PDF"><sup>[p. 267]</sup></a>
 
 ```math
-\langle \psi ( t ) | L_{x} | \psi ( t ) \rangle = \left( \tfrac{e^{+ i\mu BBt/ \hbar}}{2} \quad \tfrac{1}{\sqrt{2}} \quad \tfrac{e^{- i\mu BBt/ \hbar}}{2} \right) \frac{\hbar}{\sqrt{2}} \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix} \left( \tfrac{e^{- i\mu BBt/ \hbar}}{e^{i\mu BB t/ \hbar} \sqrt{\frac{1 2}{2}}}_{2} \right)
+\langle \psi ( t ) | L_{x} | \psi ( t ) \rangle = \left( \tfrac{e^{+ i\mu BBt/ \hbar}}{2} \quad \tfrac{1}{\sqrt{2}} \quad \tfrac{e^{- i\mu BBt/ \hbar}}{2} \right) \frac{\hbar}{\sqrt{2}} \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix} \left( \tfrac{e^{- i\mu BBt/ \hbar}}{e^{i\mu BB} \frac{1 2}{\sqrt{2}}^{t/ \hbar}}_{2} \right)
 ```
 
 ```math
@@ -1103,11 +1103,11 @@ a = \pm b
 ```
 
 ```math
-\chi_{+}^{( x )} = \begin{pmatrix} \tfrac{\sqrt{\tfrac{1}{2} 1}}{2} \\ \surd \end{pmatrix}
+\chi_{+}^{( x )} = \left( \tfrac{\tfrac{1}{\sqrt{2}} 1}{\sqrt{2}} \right)
 ```
 
 ```math
-\chi_{-}^{( x )} = \begin{pmatrix} \tfrac{- \tfrac{1}{\sqrt{2}} 1}{2} \\ \surd \end{pmatrix}
+\chi_{-}^{( x )} = \left( \tfrac{- \tfrac{1}{\sqrt{2}} 1}{\sqrt{2}} \right)
 ```
 
 These are the eigenvectors of $`S_{x}`$. We see that if we are in an eigenstate of $`S_{x}`$ the spin measured in the z direction is equally likely to be up and down since the absolute square of either amplitude is
@@ -1347,11 +1347,11 @@ So let’s say we start out in the state with spin up along the x axis, $`\chi`$
 ```
 
 ```math
-\langle \chi ( t ) | S_{x} | \chi ( t ) \rangle = \left( \tfrac{1}{\sqrt{2}} e^{+ i\omega t} \quad \tfrac{1}{\sqrt{2}} e^{- i\omega t} \right) \frac{\hbar}{2} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \left( {}^{\surd} \frac{1}{\frac{{}_{1} e}{\sqrt{2}}^{2}} e^{- i\omega t i\omega t} \right)
+\langle \chi ( t ) | S_{x} | \chi ( t ) \rangle = \left( \tfrac{1}{\sqrt{2}} e^{+ i\omega t} \quad \tfrac{1}{\sqrt{2}} e^{- i\omega t} \right) \frac{\hbar}{2} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \left( \frac{1}{{}^{\sqrt{2}} \frac{{}_{1} e}{\sqrt{2}}} e^{- i\omega t i\omega t} \right)
 ```
 
 ```math
-= \frac{\hbar}{2} \left( {}^{\surd} \tfrac{1}{2} e^{+ i\omega t} \quad \tfrac{1}{2}^{\surd} e^{- i\omega t} \right) \begin{pmatrix} e^{+ i\omega t} \\ \frac{\frac{\surd}{1} \tfrac{1}{2}}{\sqrt{2}} e^{- i\omega t} \end{pmatrix}
+= \frac{\hbar}{2} \left( \tfrac{1}{\sqrt{2}} e^{+ i\omega t} \quad \tfrac{1}{\sqrt{2}} e^{- i\omega t} \right) \begin{pmatrix} e^{+ i\omega t} \\ \frac{\tfrac{1}{\sqrt{2}}_{1}}{\sqrt{2}} e^{- i\omega t} \end{pmatrix}
 ```
 
 ```math
@@ -1832,7 +1832,7 @@ What are the eigen-energies and corresponding eigenstates of the system? (This i
 \sqrt{2}
 ```
 
-3. A spin 1 system is in the following state in the usual $`Lz`$ basis: $`\chi = {}^{\surd} \tfrac{1}{5} ( )`$ 1 + $`( i )`$. What
+3. A spin 1 system is in the following state in the usual $`Lz`$ basis: $`\chi = \tfrac{1}{\sqrt{5}} ( )`$ 1 + $`( i )`$. What
 
 ```math
 - i
@@ -1876,7 +1876,7 @@ probability that a measurement of the $`x`$ component of spin yields +$`\frac{1}
 i
 ```
 
-8. A spin $`\frac{1}{2}`$ system is in the state $`\chi = \sqrt{\tfrac{1}{5} ( )}`$ (in the usual $`S_{z}`$ eigenstate basis). What is the
+8. A spin $`\frac{1}{2}`$ system is in the state $`\chi = \tfrac{1}{\sqrt{5}} ( )`$ (in the usual $`S_{z}`$ eigenstate basis). What is the
 
 ```math
 2

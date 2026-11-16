@@ -69,7 +69,7 @@ What about the **position operator**, $`x^{( op )}`$? The answer is simply
 x^{( op )} = x
 ```
 
-when we are working in **position space** with $`u_{p 0} ( x,t ) = \tfrac{1}{2 \pi \hbar} \sqrt{e^{i ( p_{0} x - E_{0} t ) / \hbar}}`$ (as we have been above).
+when we are working in **position space** with $`u_{p 0} ( x,t ) = \tfrac{1}{\sqrt{2 \pi \hbar}} e^{i ( p_{0} x - E_{0} t ) / \hbar}`$ (as we have been above).
 
 ## <a id="s-6-1-4-the-hamiltonian-operator"></a>6.1.4 The Hamiltonian Operator
 

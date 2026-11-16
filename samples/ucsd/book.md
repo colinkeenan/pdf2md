@@ -4282,7 +4282,7 @@ We understand $`f ( x )`$ as a **wave packet** made up of definite momentum term
 
 Lets now try **two examples of a wave packet localized in** $`k`$ and properly normalized at $`t`$ = 0.
 
-1. A “square” packet: $`A ( k ) = \sqrt{\tfrac{1}{a}}`$ for $`k_{0} - \tfrac{a}{2} <k<k_{0} + \tfrac{a}{2}`$ and 0 elsewhere.
+1. A “square” packet: $`A ( k ) = \tfrac{1}{\sqrt{a}}`$ for $`k_{0} - \tfrac{a}{2} <k<k_{0} + \tfrac{a}{2}`$ and 0 elsewhere.
 
 2. A Gaussian packet: $`A ( k ) = \left( \tfrac{2 \alpha}{\pi} \right)^{1 / 4} e^{- \alpha ( k - k_{0} )^{2}}`$.
 
@@ -4446,13 +4446,13 @@ and we add up states of definite position to get $`\varphi ( p )`$.
 \varphi ( p ) = \int_{-\infty}^{\infty} \psi ( x ) v_{x} ( p ) dx
 ```
 
-There is a more abstract way to write these states. Using the notation of Dirac, the state with definite momentum $`p_{0} , u_{p 0} ( x ) = \sqrt{\tfrac{1}{2 \pi \hbar} e^{ip_{0} x/ \hbar}}`$ might be written as
+There is a more abstract way to write these states. Using the notation of Dirac, the state with definite momentum $`p_{0} , u_{p 0} ( x ) = \tfrac{1}{\sqrt{2 \pi \hbar}} e^{ip_{0} x/ \hbar}`$ might be written as
 
 ```math
 | p_{0} \rangle
 ```
 
-and the state with definite position $`x_{1} , v_{x 1} ( p ) = \sqrt{\tfrac{1}{2 \pi \hbar} e^{- ipx_{1} / \hbar}}`$ might be written
+and the state with definite position $`x_{1} , v_{x 1} ( p ) = \tfrac{1}{\sqrt{2 \pi \hbar}} e^{- ipx_{1} / \hbar}`$ might be written
 
 ```math
 | x_{1} \rangle .
@@ -4601,7 +4601,7 @@ A_{n} = \sqrt{\frac{2}{\pi}} L \tfrac{1}{2 L} \int_{- L}^{L} f ( x ) e \tfrac{- 
 ```
 
 ```math
-A_{n} = \sqrt{\tfrac{1}{2 \pi} \int_{- L}^{L} f ( x ) e \tfrac{- in\pi x}{L} dx}
+A_{n} = \tfrac{1}{\sqrt{2 \pi}} \int_{- L}^{L} f ( x ) e \tfrac{- in\pi x}{L} dx
 ```
 
 ```math
@@ -4615,11 +4615,11 @@ $`f ( x ) = \tfrac{\sqrt{\pi}}{\sqrt{2} L} \int A ( k ) e_{\overline{\pi}}^{ikxL
 </div>
 
 ```math
-f ( x ) = \tfrac{1}{2 \pi} \sqrt{\int_{-\infty}^{-\infty \infty} A ( k ) e^{ikx} dk \quad \text{ result }}
+f ( x ) = \tfrac{1}{\sqrt{2 \pi}} \int_{-\infty}^{-\infty \infty} A ( k ) e^{ikx} dk \quad \text{ result }
 ```
 
 ```math
-A ( k ) = \tfrac{1}{2 \pi} \sqrt{\int_{-\infty}^{\infty} f ( x ) e^{- ikx} dx \quad \text{ result }}
+A ( k ) = \tfrac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f ( x ) e^{- ikx} dx \quad \text{ result }
 ```
 
 <div align="right"><a href="book.pdf#page=106" target="_blank" title="This page in the PDF"><sup>[p. 106]</sup></a></div>
@@ -5232,7 +5232,7 @@ c \psi ( x ) = \delta ( x - x_{0} )
 
 15. **\*** Given the following one dimensional probability amplitudes in the momentum representation, compute the probability amplitude in the position representation, $`\psi ( x )`$. Show that the uncertainty principle is satisfied.
 
-(a) $`\bar{\psi} ( p ) = \sqrt{\tfrac{1}{2 a}}`$ for $`- a<p<a , \bar{\psi} ( p )`$ = 0 elsewhere.
+(a) $`\bar{\psi} ( p ) = \tfrac{1}{\sqrt{2 a}}`$ for $`- a<p<a , \bar{\psi} ( p )`$ = 0 elsewhere.
 
 ```math
 ( b ) \bar{\psi} ( p ) = \delta ( p - p_{0} )
@@ -5317,7 +5317,7 @@ What about the **position operator**, $`x^{( op )}`$? The answer is simply
 x^{( op )} = x
 ```
 
-when we are working in **position space** with $`u_{p 0} ( x,t ) = \tfrac{1}{2 \pi \hbar} \sqrt{e^{i ( p_{0} x - E_{0} t ) / \hbar}}`$ (as we have been above).
+when we are working in **position space** with $`u_{p 0} ( x,t ) = \tfrac{1}{\sqrt{2 \pi \hbar}} e^{i ( p_{0} x - E_{0} t ) / \hbar}`$ (as we have been above).
 
 ## <a id="s-6-1-4-the-hamiltonian-operator"></a>6.1.4 The Hamiltonian Operator
 
@@ -12451,7 +12451,7 @@ a) What is the ground state energy of muonic hydrogen (in eV).
 
 b) What is the“Bohr Radius” of the ground state of muonic hydrogen.
 
-12. A hydrogen atom is in the state: $`\psi`$(**r**) $`= \frac{1}{\langle \rangle 1 0} \sqrt{( \psi_{3 2 2}}`$ + 2$`\psi_{2 2 1}`$ + 2$`i\psi_{2 2 0} + \psi_{1 1 - 1}`$) Find the possible measured energies and the probabilities of each. Find the expected value of $`L_{z}`$.
+12. A hydrogen atom is in the state: $`\psi`$(**r**$`) = \frac{1}{\langle \sqrt{1 0} \rangle} ( \psi_{3 2 2}`$ + 2$`\psi_{2 2 1}`$ + 2$`i\psi_{2 2 0} + \psi_{1 1 - 1}`$) Find the possible measured energies and the probabilities of each. Find the expected value of $`L_{z}`$.
 
 13. Find the difference in frequency between light emitted from the 2$`P \to 1 S`$ transition in Hydrogen and light from the same transition in Deuterium. (Deuterium is an isotope of Hydrogen with a proton and a neutron in the nucleus.)
 
@@ -12934,7 +12934,7 @@ For the product to be zero, the **determinant** of the matrix must be zero. We s
 The eigenvectors computed in the above example show that the x axis is not really any different than the z axis. The **eigenvalues** are +$`\hbar`$, 0, and $`- \hbar`$, the same as for z. The normalized **eigenvectors** of $`L_{x}`$ are
 
 ```math
-\psi_{+ \hbar}^{( x )} = \left( \tfrac{\frac{1}{2} 1}{\frac{\frac{\surd}{1} 2}{2}} \right) \quad \psi_{0 \hbar}^{( x )} = \begin{pmatrix} {}^{\surd} \frac{1}{0^{2}} \\ - \sqrt{\tfrac{1}{2}} \end{pmatrix} \quad \psi_{- \hbar}^{( x )} = \begin{pmatrix} {}^{- 1} \tfrac{1 2}{\sqrt{2}} \\ {}^{-} \tfrac{1}{2} \end{pmatrix} .
+\psi_{+ \hbar}^{( x )} = \left( \tfrac{\frac{1}{2} 1}{\frac{\frac{\surd}{1} 2}{2}} \right) \quad \psi_{0 \hbar}^{( x )} = \begin{pmatrix} \frac{1}{\sqrt{0^{2}}} \\ - \sqrt{\tfrac{1}{2}} \end{pmatrix} \quad \psi_{- \hbar}^{( x )} = \begin{pmatrix} {}^{- 1} \tfrac{1 2}{\sqrt{2}} \\ {}^{-} \tfrac{1}{2} \end{pmatrix} .
 ```
 
 These vectors, and any $`\ell`$ = 1 vectors, can be written in terms of the eigenvectors of $`S_{z}`$.
@@ -12942,7 +12942,7 @@ These vectors, and any $`\ell`$ = 1 vectors, can be written in terms of the eige
 We can check whether the **eigenvectors are orthogonal,** as they must be.
 
 ```math
-\langle \psi_{0 \hbar} | \psi_{+ \hbar} \rangle = \left( \tfrac{1}{\sqrt{2}}^{*} \quad 0 \quad - \tfrac{1}{\sqrt{2}}^{*} \right) \left( {}^{\surd} \tfrac{1 \frac{1}{2}}{\frac{1}{2} 2} \right) = 0
+\langle \psi_{0 \hbar} | \psi_{+ \hbar} \rangle = \left( \tfrac{1}{\sqrt{2}}^{*} \quad 0 \quad - \tfrac{1}{\sqrt{2}}^{*} \right) \left( \tfrac{1 \frac{1}{2}}{\sqrt{2} \frac{1}{2}} \right) = 0
 ```
 
 The others will also prove orthogonal.
@@ -13137,7 +13137,7 @@ R_{z} ( \theta_{z} ) = \begin{pmatrix} e^{i\theta_{z}} & 0 & 0 \\ 0 & 1 & 0 \\ 0
 A **computation** (see section 18.11.5) of the operator for rotations about the y-axis yields
 
 ```math
-R_{y} ( \theta_{y} ) = \begin{pmatrix} \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) & \tfrac{1}{2}^{\surd} \sin ( \theta_{y} ) & \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) \\ - \sqrt{\tfrac{1}{2} \sin ( \theta_{y} )} & c \text{ os } ( \theta_{y} ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) \\ \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) & - \sqrt{\tfrac{1}{2} \sin ( \theta_{y} )} & \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) \end{pmatrix} .
+R_{y} ( \theta_{y} ) = \begin{pmatrix} \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) & \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) \\ - \sqrt{\tfrac{1}{2} \sin ( \theta_{y} )} & c \text{ os } ( \theta_{y} ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) \\ \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) & - \sqrt{\tfrac{1}{2} \sin ( \theta_{y} )} & \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) \end{pmatrix} .
 ```
 
 Try calculating the rotation operator for the x-axis yourself.
@@ -13177,7 +13177,7 @@ It is just $`\psi_{+}^{( z )} = ( 0 )`$ with the usual basis. Now we **rotate to
 **states** with the $`z^{\prime}`$ along the $`u`$ direction. This means a rotation through an angle $`\theta`$ about the y direction. The problem didn’t clearly define whether it is +$`\theta`$ or $`- \theta`$, but, if we only need to know the intensities, it doesn’t matter. So the **state coming out of the second apparatus** is
 
 ```math
-R_{y} ( \theta ) \psi_{+}^{( z )} = \begin{pmatrix} \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) & \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) \\ - \tfrac{1}{2} \sqrt{\sin ( \theta_{y} )} & c \text{ os } ( \theta_{y} ) & \tfrac{1}{2}^{\surd} \sin ( \theta_{y} ) \\ \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) & - \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) & \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) \end{pmatrix} \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}
+R_{y} ( \theta ) \psi_{+}^{( z )} = \begin{pmatrix} \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) & \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) \\ - \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) & c \text{ os } ( \theta_{y} ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) \\ \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) & - \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) & \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) \end{pmatrix} \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}
 ```
 
 ```math
@@ -13349,7 +13349,7 @@ Now if we block one of the beams separated according to the x direction, particl
 Note that we can compute the number of particles coming out of the second (and third) part by squaring the amplitude to go from the input state to the output state
 
 ```math
-\frac{N}{2} \left| \left( \sqrt{\tfrac{1}{2} \quad \tfrac{1}{2} \surd} \right) \begin{pmatrix} 0 \\ 1 \end{pmatrix} \right|^{2} = \frac{N}{4}
+\frac{N}{2} \left| \left( \tfrac{1}{\sqrt{2}} \quad \tfrac{1}{\sqrt{2}} \right) \begin{pmatrix} 0 \\ 1 \end{pmatrix} \right|^{2} = \frac{N}{4}
 ```
 
 <div align="right"><a href="book.pdf#page=258" target="_blank" title="This page in the PDF"><sup>[p. 258]</sup></a></div>
@@ -13359,7 +13359,7 @@ Note that we can compute the number of particles coming out of the second (and t
 or we can just use the projection operator $`\left( \sqrt{1 2}^{1} \right) \left( \tfrac{1}{\sqrt{2}} \quad \tfrac{1}{\sqrt{2}} \right) = \begin{pmatrix} 1 & 1 \\ 2 & 2 \\ 1 & 1 \end{pmatrix}`$.
 
 ```math
-\begin{pmatrix} \tfrac{1}{1 2} & \tfrac{1}{1 2} \\ 2 & 2 \end{pmatrix} \frac{N}{2} \sqrt{2} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{N}{4} \left( \frac{\tfrac{1}{2} \frac{\surd}{1}}{\sqrt{2}} \right)^{2 2}
+\begin{pmatrix} \tfrac{1}{1 2} & \tfrac{1}{1 2} \\ 2 & 2 \end{pmatrix} \frac{N}{2} \sqrt{2} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{N}{4} \left( \frac{\tfrac{1}{\sqrt{2}}_{1}}{\sqrt{2}} \right)^{2 2}
 ```
 
 # <a id="s-18-9-other-two-state-systems"></a>18.9 Other Two State Systems\*
@@ -13559,7 +13559,7 @@ There are three solutions to this equation: $`b`$ = 0, $`b`$ = +$`\sqrt{2}`$, an
 Up to a normalization constant, the solutions are:
 
 ```math
-\psi_{+ \hbar} = c \left( \frac{\surd}{\sqrt{\tfrac{1}{2}}} \frac{1}{1^{2}} \right) \quad \psi_{0 \hbar} = c \begin{pmatrix} 1 \\ 0 \\ - 1 \end{pmatrix} \quad \psi_{- \hbar} = c \left( \frac{- 1}{1^{2}} \frac{\surd}{\tfrac{- 1}{2} \surd} \right) .
+\psi_{+ \hbar} = c \left( \frac{1}{\sqrt{2} 1}_{\tfrac{1}{\sqrt{2}}} \right) \quad \psi_{0 \hbar} = c \begin{pmatrix} 1 \\ 0 \\ - 1 \end{pmatrix} \quad \psi_{- \hbar} = c \left( \frac{- 1}{\sqrt{2} 1}_{\tfrac{- 1}{\sqrt{2}}} \right) .
 ```
 
 We should normalize these eigenvectors to represent one particle. For example:
@@ -13599,7 +13599,7 @@ R_{z} ( \theta_{z} = 9 0 ) = \begin{pmatrix} i & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & -
 Before rotation the state is $`1`$
 
 ```math
-\psi_{+ \hbar}^{( x )} = \left( \tfrac{1 2}{\frac{1}{2} 2}^{\surd} \right)
+\psi_{+ \hbar}^{( x )} = \left( \tfrac{1 2}{\sqrt{1 2} 2} \right)
 ```
 
 The rotated state is.
@@ -13619,7 +13619,7 @@ L_{y} \psi_{-}^{( y )} = - \hbar \psi_{-}^{( y )}
 ```
 
 ```math
-\left( \tfrac{i ( c \frac{ib}{\sqrt{2}} - a )}{\frac{- ib 2}{2} \surd}^{\surd} \right) = \begin{pmatrix} a \\ b \\ c \end{pmatrix}
+\left( \tfrac{i ( c \frac{ib}{\sqrt{2}} - a )}{\frac{- \sqrt{ib 2}}{\sqrt{2}}} \right) = \begin{pmatrix} a \\ b \\ c \end{pmatrix}
 ```
 
 Setting $`b`$ = 1, we get the unnormalized result.
@@ -13631,7 +13631,7 @@ Setting $`b`$ = 1, we get the unnormalized result.
 Normalizing, we get.
 
 ```math
-\psi_{-}^{( y )} = \left( {}^{\surd} \tfrac{1 \frac{i}{2}}{\frac{2 i}{2} -} \right)
+\psi_{-}^{( y )} = \left( \tfrac{1 \frac{i}{2}}{\frac{\sqrt{2 i}}{2} -} \right)
 ```
 
 This is exactly the same as the rotated state. A 90 degree rotation about the z axis changes $`\psi_{+}^{( x )}`$ into $`\psi_{-}^{( y )}`$.
@@ -13739,7 +13739,7 @@ I_{2} = \left| \langle \psi_{-}^{( x )} | \psi_{+}^{( z )} \rangle \right|^{2} I
 We have written the probability that one particle, initially in the the state $`\psi_{+}^{( z )}`$, goes into the state $`\psi_{-}^{( x )}`$ when **measured** in the x direction (times the intensity coming into the apparatus). Lets compute that probability.
 
 ```math
-\langle \psi_{-}^{( x )} | \psi_{+}^{( z )} \rangle = \left( - \tfrac{1}{2} \quad \tfrac{1}{2}^{\surd} \quad - \tfrac{1}{2} \right) \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} = - \frac{1}{2}
+\langle \psi_{-}^{( x )} | \psi_{+}^{( z )} \rangle = \left( - \tfrac{1}{2} \quad \tfrac{1}{\sqrt{2}} \quad - \tfrac{1}{2} \right) \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} = - \frac{1}{2}
 ```
 
 So the probability is $`\frac{1}{4}`$.
@@ -13751,7 +13751,7 @@ I_{2} = \frac{1}{4} I_{1} = \frac{1}{1 2} I_{0}
 The third apparatus goes back to a separation in z and blocks the $`m`$ = 1 component. The incoming state is
 
 ```math
-\psi_{-}^{( x )} = \left( \frac{- {}_{1} \tfrac{1}{2}}{- \tfrac{2 1}{2}}^{\surd} \right)
+\psi_{-}^{( x )} = \left( \frac{- {}_{1} \tfrac{1}{2}}{- \sqrt{\frac{2}{2} 1}} \right)
 ```
 
 Remember that the components of this vector are just the amplitudes to be in the different $`m`$ states (using the z axis). The probability to get through this apparatus is just the probability to be in the $`m`$ = 0 beam plus the probability to be in the $`m = - 1`$ beam.
@@ -13803,7 +13803,7 @@ But we know how each of the energy eigenfunctions develops with time so its easy
 As a concrete example, let’s assume we start out in the eigenstate of $`L_{x}`$ with eigenvalue +$`\hbar`$.
 
 ```math
-\psi ( t = 0 ) = \psi_{x +} = \left( {}^{\surd} \tfrac{1 \frac{1}{2}}{\frac{1}{2} 2} \right)
+\psi ( t = 0 ) = \psi_{x +} = \left( \tfrac{1 \frac{1}{2}}{\sqrt{2} \frac{1}{2}} \right)
 ```
 
 ```math
@@ -13815,7 +13815,7 @@ As a concrete example, let’s assume we start out in the eigenstate of $`L_{x}`
 <a id="p267" href="book.pdf#page=267" target="_blank" title="This page in the PDF"><sup>[p. 267]</sup></a>
 
 ```math
-\langle \psi ( t ) | L_{x} | \psi ( t ) \rangle = \left( \tfrac{e^{+ i\mu BBt/ \hbar}}{2} \quad \tfrac{1}{\sqrt{2}} \quad \tfrac{e^{- i\mu BBt/ \hbar}}{2} \right) \frac{\hbar}{\sqrt{2}} \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix} \left( \tfrac{e^{- i\mu BBt/ \hbar}}{e^{i\mu BB t/ \hbar} \sqrt{\frac{1 2}{2}}}_{2} \right)
+\langle \psi ( t ) | L_{x} | \psi ( t ) \rangle = \left( \tfrac{e^{+ i\mu BBt/ \hbar}}{2} \quad \tfrac{1}{\sqrt{2}} \quad \tfrac{e^{- i\mu BBt/ \hbar}}{2} \right) \frac{\hbar}{\sqrt{2}} \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix} \left( \tfrac{e^{- i\mu BBt/ \hbar}}{e^{i\mu BB} \frac{1 2}{\sqrt{2}}^{t/ \hbar}}_{2} \right)
 ```
 
 ```math
@@ -13865,11 +13865,11 @@ a = \pm b
 ```
 
 ```math
-\chi_{+}^{( x )} = \begin{pmatrix} \tfrac{\sqrt{\tfrac{1}{2} 1}}{2} \\ \surd \end{pmatrix}
+\chi_{+}^{( x )} = \left( \tfrac{\tfrac{1}{\sqrt{2}} 1}{\sqrt{2}} \right)
 ```
 
 ```math
-\chi_{-}^{( x )} = \begin{pmatrix} \tfrac{- \tfrac{1}{\sqrt{2}} 1}{2} \\ \surd \end{pmatrix}
+\chi_{-}^{( x )} = \left( \tfrac{- \tfrac{1}{\sqrt{2}} 1}{\sqrt{2}} \right)
 ```
 
 These are the eigenvectors of $`S_{x}`$. We see that if we are in an eigenstate of $`S_{x}`$ the spin measured in the z direction is equally likely to be up and down since the absolute square of either amplitude is
@@ -14109,11 +14109,11 @@ So let’s say we start out in the state with spin up along the x axis, $`\chi`$
 ```
 
 ```math
-\langle \chi ( t ) | S_{x} | \chi ( t ) \rangle = \left( \tfrac{1}{\sqrt{2}} e^{+ i\omega t} \quad \tfrac{1}{\sqrt{2}} e^{- i\omega t} \right) \frac{\hbar}{2} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \left( {}^{\surd} \frac{1}{\frac{{}_{1} e}{\sqrt{2}}^{2}} e^{- i\omega t i\omega t} \right)
+\langle \chi ( t ) | S_{x} | \chi ( t ) \rangle = \left( \tfrac{1}{\sqrt{2}} e^{+ i\omega t} \quad \tfrac{1}{\sqrt{2}} e^{- i\omega t} \right) \frac{\hbar}{2} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \left( \frac{1}{{}^{\sqrt{2}} \frac{{}_{1} e}{\sqrt{2}}} e^{- i\omega t i\omega t} \right)
 ```
 
 ```math
-= \frac{\hbar}{2} \left( {}^{\surd} \tfrac{1}{2} e^{+ i\omega t} \quad \tfrac{1}{2}^{\surd} e^{- i\omega t} \right) \begin{pmatrix} e^{+ i\omega t} \\ \frac{\frac{\surd}{1} \tfrac{1}{2}}{\sqrt{2}} e^{- i\omega t} \end{pmatrix}
+= \frac{\hbar}{2} \left( \tfrac{1}{\sqrt{2}} e^{+ i\omega t} \quad \tfrac{1}{\sqrt{2}} e^{- i\omega t} \right) \begin{pmatrix} e^{+ i\omega t} \\ \frac{\tfrac{1}{\sqrt{2}}_{1}}{\sqrt{2}} e^{- i\omega t} \end{pmatrix}
 ```
 
 ```math
@@ -14594,7 +14594,7 @@ What are the eigen-energies and corresponding eigenstates of the system? (This i
 \sqrt{2}
 ```
 
-3. A spin 1 system is in the following state in the usual $`Lz`$ basis: $`\chi = {}^{\surd} \tfrac{1}{5} ( )`$ 1 + $`( i )`$. What
+3. A spin 1 system is in the following state in the usual $`Lz`$ basis: $`\chi = \tfrac{1}{\sqrt{5}} ( )`$ 1 + $`( i )`$. What
 
 ```math
 - i
@@ -14638,7 +14638,7 @@ probability that a measurement of the $`x`$ component of spin yields +$`\frac{1}
 i
 ```
 
-8. A spin $`\frac{1}{2}`$ system is in the state $`\chi = \sqrt{\tfrac{1}{5} ( )}`$ (in the usual $`S_{z}`$ eigenstate basis). What is the
+8. A spin $`\frac{1}{2}`$ system is in the state $`\chi = \tfrac{1}{\sqrt{5}} ( )`$ (in the usual $`S_{z}`$ eigenstate basis). What is the
 
 ```math
 2
@@ -14849,7 +14849,7 @@ Assume that $`\tfrac{ma^{2} V_{0}}{\hbar^{2}} =`$<sup>3</sup>$`2 \pi`$ and plot 
 
 2. In a 1D square well, there is always at least one bound state. Assume the width of the square well is $`a`$. By the uncertainty principle, the kinetic energy of an electron localized to that width is $`\frac{\hbar^{2}}{2 ma^{2}}`$. How can there be a bound state even for small values of $`V_{0}`$?
 
-3. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t = 0 )`$ = $`\tfrac{1}{2}^{\surd} ( u_{0} + u_{1} )`$. Is $`\psi`$ correctly normalized? Compute the expected value of $`x`$ as a function of time by doing the integrals in the $`x`$ representation.
+3. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t = 0 )`$ = $`\tfrac{1}{\sqrt{2}} ( u_{0} + u_{1} )`$. Is $`\psi`$ correctly normalized? Compute the expected value of $`x`$ as a function of time by doing the integrals in the $`x`$ representation.
 
 4. Prove the Schwartz inequality $`| \langle \psi | \varphi \rangle |^{2} \leq \langle \psi | \psi \rangle \langle \varphi | \varphi \rangle`$. (Start from the fact that $`\langle \psi + C\varphi | \psi + C\varphi \rangle \geq 0`$ for any $`C`$.
 
@@ -14913,7 +14913,7 @@ $`\bullet`$ Now do the same in the Heisenberg picture.
 
 3. Two identical, non-interacting spin $`\frac{1}{2}`$ particles are in a box. Write down the full lowest energy wave function for both particles with spin up and for one with spin up and the other spin down. Be sure your answer has the correct symmetry under the interchange of identical particles.
 
-4. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t = 0 )`$ = $`\tfrac{1}{2}^{\surd} ( u_{1} + u_{3} )`$.
+4. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t = 0 )`$ = $`\tfrac{1}{\sqrt{2}} ( u_{1} + u_{3} )`$.
 
 Compute the expected value of $`x^{2}`$ as a function of time.
 
@@ -17143,7 +17143,7 @@ The equation (labeled with the basis states to define the order) is.
 \frac{\varphi \varphi_{2 0 0 2 1 1}}{\varphi \varphi_{2 1 0 2 1 - 1}} \begin{pmatrix} 0 & 0 & \gamma & 0 \\ 0 & 0 & 0 & 0 \\ \gamma & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix} \begin{pmatrix} \alpha_{1} \\ \alpha_{2} \\ \alpha_{3} \\ \alpha_{4} \end{pmatrix} = E^{( 1 )} \begin{pmatrix} \alpha_{1} \\ \alpha_{2} \\ \alpha_{3} \\ \alpha_{4} \end{pmatrix}
 ```
 
-We can see by inspection that the eigenfunctions of this operator are $`\varphi_{2 1 1} , \varphi_{2 1 - 1}`$, and $`\tfrac{1}{2}^{\surd} ( \varphi_{2 0 0} \pm \varphi_{2 1 0} )`$ with eigenvalues (of $`H_{1}`$) of 0, 0, and $`\pm \gamma`$.
+We can see by inspection that the eigenfunctions of this operator are $`\varphi_{2 1 1} , \varphi_{2 1 - 1}`$, and $`\tfrac{1}{\sqrt{2}} ( \varphi_{2 0 0} \pm \varphi_{2 1 0} )`$ with eigenvalues (of $`H_{1}`$) of 0, 0, and $`\pm \gamma`$.
 
 What remains is to compute $`\gamma`$. Recall $`Y_{0 0} = \tfrac{1}{\sqrt{4 \pi}}`$ and $`Y_{1 0} = \sqrt{\frac{3}{4 \pi}} \cos \theta`$.
 
@@ -27732,7 +27732,7 @@ u_{n} ( x ) = \sum_{k = 0}^{\infty} a_{k} y^{k} e^{- y^{2} / 2} \quad a_{k + 2} 
 ```
 
 ```math
-A = ( \sqrt{\frac{m\omega}{2 \hbar}} x + i \tfrac{p}{2 m \hbar \omega} \sqrt{) \quad A^{\dagger}} = ( \sqrt{\frac{m\omega}{2 \hbar}} x - i \tfrac{p}{2 m \hbar \omega} \sqrt{) \quad [ A,A^{\dagger}} ] = 1
+A = ( \sqrt{\frac{m\omega}{2 \hbar}} x + i \tfrac{p}{\sqrt{2 m \hbar \omega}} ) \quad A^{\dagger} = ( \sqrt{\frac{m\omega}{2 \hbar}} x - i \tfrac{p}{\sqrt{2 m \hbar \omega}} ) \quad [ A,A^{\dagger} ] = 1
 ```
 
 ```math
@@ -27790,7 +27790,7 @@ S_{i} = \tfrac{\hbar}{2} \sigma_{i} \quad [ \sigma_{i} ,\sigma_{j} ] = 2 i\epsil
 ```
 
 ```math
-S_{x} = \hbar \begin{pmatrix} 0 & \tfrac{1}{\sqrt{2}} & 0 \\ \tfrac{1}{\sqrt{2}} & 0 & \tfrac{1}{\sqrt{2}} \\ 0 & \tfrac{1}{\sqrt{2}} & 0 \end{pmatrix} \quad S_{y} = \hbar \begin{pmatrix} 0 & \tfrac{- i}{2}^{\surd} & 0 \\ \tfrac{i}{\sqrt{2}} & 0 & \tfrac{i}{\sqrt{2}}^{-} \\ 0 & \tfrac{i}{2}^{\surd} & 0 \end{pmatrix} \quad S_{z} = \hbar \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & - 1 \end{pmatrix} 1
+S_{x} = \hbar \begin{pmatrix} 0 & \tfrac{1}{\sqrt{2}} & 0 \\ \tfrac{1}{\sqrt{2}} & 0 & \tfrac{1}{\sqrt{2}} \\ 0 & \tfrac{1}{\sqrt{2}} & 0 \end{pmatrix} \quad S_{y} = \hbar \begin{pmatrix} 0 & \tfrac{- i}{\sqrt{2}} & 0 \\ \tfrac{i}{\sqrt{2}} & 0 & \tfrac{i}{\sqrt{2}}^{-} \\ 0 & \tfrac{i}{\sqrt{2}} & 0 \end{pmatrix} \quad S_{z} = \hbar \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & - 1 \end{pmatrix} 1
 ```
 
 <div align="center">
@@ -27812,7 +27812,7 @@ R_{n\ell} ( \rho ) = \rho^{\ell} \sum_{k = 0}^{\infty} a_{k} \rho^{k} e^{- \rho 
 ```
 
 ```math
-R_{1 0} = 2 ( \tfrac{Z}{a_{0}} ) \tfrac{3}{2} e^{\tfrac{- Zr}{a 0}} \quad R_{2 0} = 2 ( \tfrac{Z}{2 a_{0}} ) \tfrac{3}{2} ( 1 - \tfrac{Zr}{2 a_{0}} ) e^{\tfrac{- Zr}{2 a 0}} \quad R_{2 1} = \tfrac{1}{3} \sqrt{( \tfrac{Z}{2 a_{0}} ) \tfrac{3}{2} ( \tfrac{Zr}{a_{0}} ) e^{\tfrac{- Zr}{2 a 0}}}
+R_{1 0} = 2 ( \tfrac{Z}{a_{0}} ) \tfrac{3}{2} e^{\tfrac{- Zr}{a 0}} \quad R_{2 0} = 2 ( \tfrac{Z}{2 a_{0}} ) \tfrac{3}{2} ( 1 - \tfrac{Zr}{2 a_{0}} ) e^{\tfrac{- Zr}{2 a 0}} \quad R_{2 1} = \tfrac{1}{\sqrt{3}} ( \tfrac{Z}{2 a_{0}} ) \tfrac{3}{2} ( \tfrac{Zr}{a_{0}} ) e^{\tfrac{- Zr}{2 a 0}}
 ```
 
 ```math
@@ -27880,7 +27880,7 @@ $`\Gamma_{i \to f} =`$<sup>2</sup>$`\tfrac{\pi}{\hbar} \int \prod ( \tfrac{Vd^{3
 ```
 
 ```math
-\hat{\epsilon} \cdot \hat{r} = \sqrt{\tfrac{4 \pi}{3} ( \epsilon_{z} Y_{1 0} + \tfrac{- \epsilon_{x} + i\epsilon_{y}}{2}^{\surd} Y_{1 1} + \tfrac{\epsilon_{x} + i\epsilon_{y}}{2}^{\surd} Y_{1 - 1} ) \quad \hat{\epsilon} \cdot \vec{k}} = 0
+\hat{\epsilon} \cdot \hat{r} = \sqrt{\tfrac{4 \pi}{3} ( \epsilon_{z} Y_{1 0} + \tfrac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \tfrac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} ) \quad \hat{\epsilon} \cdot \vec{k}} = 0
 ```
 
 ```math

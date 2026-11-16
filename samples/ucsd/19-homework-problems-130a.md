@@ -159,7 +159,7 @@ Assume that $`\tfrac{ma^{2} V_{0}}{\hbar^{2}} =`$<sup>3</sup>$`2 \pi`$ and plot 
 
 2. In a 1D square well, there is always at least one bound state. Assume the width of the square well is $`a`$. By the uncertainty principle, the kinetic energy of an electron localized to that width is $`\frac{\hbar^{2}}{2 ma^{2}}`$. How can there be a bound state even for small values of $`V_{0}`$?
 
-3. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t = 0 )`$ = $`\tfrac{1}{2}^{\surd} ( u_{0} + u_{1} )`$. Is $`\psi`$ correctly normalized? Compute the expected value of $`x`$ as a function of time by doing the integrals in the $`x`$ representation.
+3. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t = 0 )`$ = $`\tfrac{1}{\sqrt{2}} ( u_{0} + u_{1} )`$. Is $`\psi`$ correctly normalized? Compute the expected value of $`x`$ as a function of time by doing the integrals in the $`x`$ representation.
 
 4. Prove the Schwartz inequality $`| \langle \psi | \varphi \rangle |^{2} \leq \langle \psi | \psi \rangle \langle \varphi | \varphi \rangle`$. (Start from the fact that $`\langle \psi + C\varphi | \psi + C\varphi \rangle \geq 0`$ for any $`C`$.
 
@@ -223,7 +223,7 @@ $`\bullet`$ Now do the same in the Heisenberg picture.
 
 3. Two identical, non-interacting spin $`\frac{1}{2}`$ particles are in a box. Write down the full lowest energy wave function for both particles with spin up and for one with spin up and the other spin down. Be sure your answer has the correct symmetry under the interchange of identical particles.
 
-4. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t = 0 )`$ = $`\tfrac{1}{2}^{\surd} ( u_{1} + u_{3} )`$.
+4. At $`t`$ = 0 a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t = 0 )`$ = $`\tfrac{1}{\sqrt{2}} ( u_{1} + u_{3} )`$.
 
 Compute the expected value of $`x^{2}`$ as a function of time.
 
