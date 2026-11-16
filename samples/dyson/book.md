@@ -728,7 +728,7 @@ S^{*} \alpha^{0} S = \sinh \theta \alpha^{3} + \cos \theta \alpha^{0}
 S = S^{*} = \beta \qquad \text{(30)}
 ```
 
-Note that in all cases S is ambiguous by a factor $`\pm 1`$. So in case 1 a rotation though $`3 6 0^{◦}`$ gives $`S = - 1 .`$
+Note that in all cases S is ambiguous by a factor $`\pm 1`$. So in case 1 a rotation though $`3 6 0^{\circ}`$ gives $`S = - 1 .`$
 
 <a id="ix-249"><em>Problem 1</em></a> Find the S corresponding to a general infinitesimal coordinate transformation. Compare and show that it agrees with the exact solutions given here.
 

@@ -152,7 +152,7 @@ E ( \nu ,T ) = \frac{2 \pi \nu^{2}}{c^{2}} \frac{h\nu}{e^{h\nu /kT} - 1}
 We can integrate this over frequency to get the total power radiated per unit area.
 
 ```math
-R ( T ) = \frac{\pi^{2} c}{6 0 ( \hbar c )^{3}} k^{4} T^{4} = ( 5 . 6 7 \times 1 0^{- 8} W / m^{2} /^{◦} K^{4} ) T^{4}
+R ( T ) = \frac{\pi^{2} c}{6 0 ( \hbar c )^{3}} k^{4} T^{4} = ( 5 . 6 7 \times 1 0^{- 8} W / m^{2} /^{\circ} K^{4} ) T^{4}
 ```
 
 \* See Example 2.6.1: What is the temperature at the solar surface? Use both the the intensity of radiation on earth and that the spectrum peaks about 500 nm to get answers.\*
@@ -418,7 +418,7 @@ R = ( 1 4 0 0 W / m^{2} ) ( 4 \pi d_{sun}^{2} ) / ( 4 \pi r_{sun}^{2} ) = 6 . 4 
 We compare this to the expectation as a function of temperature.
 
 ```math
-R ( T ) = ( 5 . 6 7 \times 1 0^{- 8} W / m^{2} /^{◦} K^{4} ) T^{4}
+R ( T ) = ( 5 . 6 7 \times 1 0^{- 8} W / m^{2} /^{\circ} K^{4} ) T^{4}
 ```
 
 and get
@@ -428,7 +428,7 @@ T^{4} = \frac{6 . 4 \times 1 0^{7}}{5 . 6 7 \times 1 0^{- 8}}
 ```
 
 ```math
-T = 5 8 0 0^{◦} K
+T = 5 8 0 0^{\circ} K
 ```
 
 Lets assume that $`E ( \lambda ,T )`$ peaks at 500 nm as one of the graphs shows. We need to transform $`E ( \nu ,T )`$. Remember $`f ( \nu ) d\nu = g ( \lambda ) d\lambda`$ for distribution functions.

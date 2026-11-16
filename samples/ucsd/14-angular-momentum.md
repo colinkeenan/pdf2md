@@ -1087,7 +1087,7 @@ a) What is the energy spectrum due to rotations of the molecule?
 
 b) Assuming that $`R ( r )`$ is given, write down the energy eigenfunctions for the ground state and the first excited state.
 
-c) Assuming that both masses are about 1000 MeV, how does the excitation energy of the first excited state compare to thermal energies at $`3 0 0^{◦}`$K.
+c) Assuming that both masses are about 1000 MeV, how does the excitation energy of the first excited state compare to thermal energies at $`3 0 0^{\circ}`$K.
 
 ---
 

@@ -78,6 +78,8 @@ pub fn sym(c: char) -> Option<&'static str> {
     Some(match c {
         // the stroke through the sign or letter after it (≠, the Feynman slash)
         '\u{338}' => "\\not ",
+        // the sign of degrees
+        '◦' => "\\circ ",
         'α' => "\\alpha ",
         'β' => "\\beta ",
         'γ' => "\\gamma ",
@@ -1103,6 +1105,8 @@ fn tidy(s: &str) -> String {
     // (a prime that opens an exponent stands a little higher than the
     // number after it, m′²: one exponent)
     let s = s.replace("^{{}^{\\prime} ", "^{\\prime ").replace("^{{}^{\\prime}}", "^{\\prime}");
+    // (the sign of degrees is of the figure before it, also behind a space)
+    let s = s.replace(" {}^{\\circ}", "^{\\circ}");
     slashed(&s.replace("\\not =", "\\neq").replace("\\not=", "\\neq").replace("\\not{=}", "\\neq"))
 }
 

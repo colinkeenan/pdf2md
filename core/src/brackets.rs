@@ -515,6 +515,8 @@ pub(crate) fn sides(mut v: Vec<Inline>) -> Vec<Inline> {
         // (an exponent or index with nothing under it, behind a bracket:
         // the bracket's — "(length)" and its power, "[1]" and its star)
         if let Inline::Math(m) = &mut v[k] {
+            // (the sign of degrees is of the figure before it)
+            *m = m.replace(" {}^{\\circ}", "^{\\circ}");
             for c in [')', ']'] {
                 for script in ['^', '_'] {
                     *m = m.replace(&format!("{c} {{}}{script}{{"), &format!("{c}{script}{{"));

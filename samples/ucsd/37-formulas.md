@@ -16,7 +16,7 @@ $`1 eV`$ = 1$`. 6 0 2 \times 1 0^{- 1 2}`$ erg $`\alpha = \tfrac{e^{2}}{\hbar c}
 $`m_{p}`$ = 938.3 MeV/$`c^{2} \quad m_{n}`$ = 939.6 MeV/$`c^{2} \quad m_{e}`$ = 9$`. 1 1 \times 1 0^{- 2 8}`$ g = 0.511 MeV/$`c^{2}`$
 
 ```math
-k_{B} = 1 . 3 8 \times 1 0^{- 1 6} \text{ erg } /^{◦} K \quad g_{e} = 2 + \tfrac{\alpha}{\pi} \quad g_{p} = 5 . 6
+k_{B} = 1 . 3 8 \times 1 0^{- 1 6} \text{ erg } /^{\circ} K \quad g_{e} = 2 + \tfrac{\alpha}{\pi} \quad g_{p} = 5 . 6
 ```
 
 ```math
