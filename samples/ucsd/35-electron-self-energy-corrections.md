@@ -21,7 +21,7 @@ H_{int} = - \frac{e}{mc} \vec{A} \cdot \vec{p}
 ```
 
 ```math
-\vec{A} = \frac{1}{\sqrt{V}} \sum_{\vec{k} ,\alpha}^{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} \hat{\epsilon}^{( \alpha )} \left( a_{\vec{k} ,\alpha} e^{i ( \vec{k} \cdot \vec{x} - \omega t )} + a_{\vec{k} ,\alpha}^{\dagger} e^{- i ( \vec{k} \cdot \vec{x} - \omega t )} \right)
+\vec{A} = \frac{1}{\sqrt{V}} \sum_{\vec{k} ,\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \hat{\epsilon}^{( \alpha )} \left( a_{\vec{k} ,\alpha} e^{i ( \vec{k} \cdot \vec{x} - \omega t )} + a_{\vec{k} ,\alpha}^{\dagger} e^{- i ( \vec{k} \cdot \vec{x} - \omega t )} \right)
 ```
 
 This contains a term causing absorption of a photon and another term causing emission. We separate the terms for absorption and emission and pull out the time dependence.
@@ -31,11 +31,11 @@ H_{int} = \sum_{\vec{k} ,\alpha} \left( H_{\vec{k} ,\alpha}^{abs} e^{- i\omega t
 ```
 
 ```math
-H^{abs} = - \sqrt{2 m \hbar e^{2 2} \omega V} a_{\vec{k} ,\alpha} e^{i \vec{k} \cdot \vec{x}} \vec{p} \cdot \hat{\epsilon}^{( \alpha )}
+H^{abs} = - \sqrt{\frac{\hbar e^{2}}{2 m^{2} \omega V}} a_{\vec{k} ,\alpha} e^{i \vec{k} \cdot \vec{x}} \vec{p} \cdot \hat{\epsilon}^{( \alpha )}
 ```
 
 ```math
-H^{emit} = - \sqrt{2 m \hbar e^{2 2} \omega V} a_{\vec{k} ,\alpha}^{\dagger} e^{- i \vec{k} \cdot \vec{x}} \vec{p} \cdot \hat{\epsilon}^{( \alpha )}
+H^{emit} = - \sqrt{\frac{\hbar e^{2}}{2 m^{2} \omega V}} a_{\vec{k} ,\alpha}^{\dagger} e^{- i \vec{k} \cdot \vec{x}} \vec{p} \cdot \hat{\epsilon}^{( \alpha )}
 ```
 
 The initial and final state is the same $`| n \rangle`$, and second order perturbation theory will involve a **sum** **over intermediate atomic states,** $`| j \rangle`$ **and photon states**. We will use the matrix elements of the interaction Hamiltonian between those states.

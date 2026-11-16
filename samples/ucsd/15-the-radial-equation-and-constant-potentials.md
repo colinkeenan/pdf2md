@@ -192,7 +192,7 @@ This is **like the particle in a box** except now the particle is confined to th
 j_{\ell} ( ka ) = 0
 ```
 
-There are an infinite number of solutions for each $`\ell`$. We only need to find the zeros of the Bessel functions. The table below gives the lowest values of $`ka = \sqrt{2 ma \hbar_{2}^{2} E}`$ which satisfy the boundary condition.
+There are an infinite number of solutions for each $`\ell`$. We only need to find the zeros of the Bessel functions. The table below gives the lowest values of $`ka = \sqrt{\frac{2 ma^{2} E}{\hbar^{2}}}`$ which satisfy the boundary condition.
 
 ```math
 \ell 4 \frac{2 \frac{1 0}{3}}{5} \quad n 8 . 1 8 \frac{5 . 7 2 \frac{4 . 4 9 3 . 1 4}{6 . 9 9}}{9 . 3 2} = 1 \quad n \frac{7 . 7 3 6 . 2 8}{1 0 . 4 2} 9 . 1 0 = 2 \quad n 9 . 4 2 = 3
@@ -245,7 +245,7 @@ k = \sqrt{\frac{2 \mu ( E + V_{0} )}{\hbar^{2}}}
 We must use the Hankel function of the first type for large $`r`$.
 
 ```math
-\begin{aligned} \rho &= kr \to i\kappa r \\ \kappa &= \sqrt{- 2 \hbar^{2} \mu E} \end{aligned}
+\begin{aligned} \rho &= kr \to i\kappa r \\ \kappa &= \sqrt{\frac{- 2 \mu E}{\hbar^{2}}} \end{aligned}
 ```
 
 ```math
@@ -295,7 +295,7 @@ k \cot ( ka ) = - \kappa
 This is the **same transcendental equation that we had for the odd solution in one dimen-** **sion**.
 
 ```math
-- \cot \begin{pmatrix} \sqrt{2 \mu ( E \hbar^{2} + V_{0} )} \\ a \end{pmatrix} = \sqrt{V_{0} - E + E}
+- \cot \left( \sqrt{\frac{2 \mu ( E + V_{0} )}{\hbar^{2}}} a \right) = \sqrt{\frac{- E}{V_{0} + E}}
 ```
 
 The number of solutions depends on the depth and radius of the well. There can even be no solution.
@@ -535,7 +535,7 @@ to keep $`R`$ normalizable.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p227" href="book.pdf#page=227" target="_blank" title="This page in the PDF"><sup>[p. 227]</sup></a>
 
-For the case of a constant potential $`V_{0}`$, we define $`k = \sqrt{2 \mu ( E \hbar - {}_{2} V_{0} )}`$ and $`\rho = kr`$, and the radial equation becomes.
+For the case of a constant potential $`V_{0}`$, we define $`k = \sqrt{\frac{2 \mu ( E - V_{0} )}{\hbar^{2}}}`$ and $`\rho = kr`$, and the radial equation becomes.
 
 ```math
 \frac{d^{2} u ( r )}{dr^{2}} + \frac{2 \mu}{\hbar^{2}} \left[ E - V_{0} - \frac{\ell ( \ell + 1 ) \hbar^{2}}{2 \mu r^{2}} \right] u ( r ) = 0

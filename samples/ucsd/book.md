@@ -954,13 +954,13 @@ or
 u ( x ) = A \sin ( kx ) + B \cos ( kx )
 ```
 
-, with $`k = \sqrt{2 m ( \hbar^{2} E - V )}`$. We will also need solutions for the classically forbidden regions where the total energy is less than the potential energy, $`E<V`$.
+, with $`k = \sqrt{\frac{2 m ( E - V )}{\hbar^{2}}}`$. We will also need solutions for the classically forbidden regions where the total energy is less than the potential energy, $`E<V`$.
 
 ```math
 u ( x ) = Ae^{\kappa x} + Be^{- \kappa x}
 ```
 
-with $`\kappa = \sqrt{2 m ( \hbar V_{2} - E )}`$. (Both $`k`$ and $`\kappa`$ are positive real numbers.) The 1D scattering problems are often analogous to problems where light is reflected or transmitted when it at the surface of glass.
+with $`\kappa = \sqrt{\frac{2 m ( V - E )}{\hbar^{2}}}`$. (Both $`k`$ and $`\kappa`$ are positive real numbers.) The 1D scattering problems are often analogous to problems where light is reflected or transmitted when it at the surface of glass.
 
 First, we calculate the probability the a particle of energy $`E`$ is reflected by a potential step (See
 
@@ -984,7 +984,7 @@ Third we study the square potential barrier (See section 9.1.5) $`( V ( x ) = + 
 | T |^{2} = \frac{( 2 k\kappa )^{2}}{( k^{2} + \kappa^{2} )^{2} \sinh^{2} ( 2 \kappa a ) + ( 2 k\kappa )^{2}} \to ( \frac{4 k\kappa}{k^{2} + \kappa^{2}} )^{2} e^{- 4 \kappa a}
 ```
 
-where $`k = \sqrt{\tfrac{2 mE}{\hbar^{2}}}`$ and $`\kappa = \sqrt{2 m ( V \hbar_{0 2} - E )}`$. Study of this expression shows that the probability to be transmitted decreases as the barrier get higher or wider. Nevertheless, barrier penetration is an important quantum phenomenon.
+where $`k = \sqrt{\tfrac{2 mE}{\hbar^{2}}}`$ and $`\kappa = \sqrt{\frac{2 m ( V_{0} - E )}{\hbar^{2}}}`$. Study of this expression shows that the probability to be transmitted decreases as the barrier get higher or wider. Nevertheless, barrier penetration is an important quantum phenomenon.
 
 We also study the square well for the bound state (See section 9.1.4) case in which $`E< 0`$. Here we need to solve a transcendental equation to determine the bound state energies. The number of bound states increases with the depth and the width of the well but there is always at least one bound state.
 
@@ -2318,7 +2318,7 @@ c_{k,\alpha}^{*} = \sqrt{\frac{\hbar c^{2}}{2 \omega}} a_{k,\alpha}^{\dagger}
 ```
 
 ```math
-A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha}^{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + a_{k,\alpha}^{\dagger} ( t ) e^{- i \vec{k} \cdot \vec{x}} \right)
+A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + a_{k,\alpha}^{\dagger} ( t ) e^{- i \vec{k} \cdot \vec{x}} \right)
 ```
 
 ```math
@@ -2350,7 +2350,7 @@ This is essentially the same result as our earlier guess to put an $`n`$ + 1 in 
 We can now write the quantized radiation field in terms of the operators at $`t`$ = 0.
 
 ```math
-A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha}^{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
+A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 Beyond the Electric Dipole approximation, the next term in the expansion of $`e^{i \vec{k} \cdot \vec{x}}`$ is $`i \vec{k} \cdot \vec{x}`$. This term gets split according to its rotation and Lorentz transformation properties into the Electric Quadrupole term and the Magnetic Dipole term. The interaction of the **electron spin** with the magnetic field is of the same order and should be included together with the E2 and M1 terms.
@@ -2384,7 +2384,7 @@ U ( \nu ) = U ( \omega ) \frac{d\omega}{d\nu} = \frac{8 \pi}{c^{3}} \frac{h\nu^{
 To scatter a photon the field must act twice, once to annihilate the initial state photon and once to create the final state photon. Since the quantized field contains both creation and annihilation operators,
 
 ```math
-A_{\mu} ( x ) = \frac{1}{\sqrt{V}} \sum_{k\alpha}^{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
+A_{\mu} ( x ) = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 either the $`A^{2}`$ term in first order, or the $`\vec{A} \cdot \vec{p}`$ term in second order can contribute to scattering. Both of these amplitudes are of order $`e^{2}`$.
@@ -2628,13 +2628,13 @@ The **first and third have spin up** while the second and fourth have spin down.
 The next step is to find the solutions with definite momentum. The four plane wave solutions to the Dirac equation are
 
 ```math
-\psi_{\vec{p}}^{( r )} \equiv \sqrt{| mc^{2} E | V} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( r )} \equiv \sqrt{\frac{mc^{2}}{| E | V}} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 where the four spinors are given by.
 
 ```math
-\begin{aligned} u_{\vec{p}}^{( 1 )} &= \sqrt{E 2 mc^{2} + mc^{2}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{2} \end{pmatrix} \quad u_{\vec{p}}^{( 2 )} = \sqrt{E 2 mc^{2} + mc^{2}} \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} -} 1_{ip_{y} ) c}}{\frac{- p_{z} c}{E + mc^{2}} E + mc^{2}} \end{pmatrix} \\ u_{\vec{p}}^{( 3 )} &= \sqrt{- E 2 mc^{2} + mc^{2}} \begin{pmatrix} {}^{\tfrac{\frac{E + mc}{- ( p_{x} + ip_{y} ) c} \frac{- p_{z} c}{- E + mc^{2}}}{- E + mc^{2}}} 1 \\ 0 \end{pmatrix} \quad u_{\vec{p}}^{( 4 )} = \sqrt{- E 2 mc^{2} + mc^{2}} \begin{pmatrix} \frac{- ( p_{x} - ip_{y} ) c}{\frac{- E p + {}_{z} mc c^{2}}{{}^{- E +} 0^{mc^{2}}}} \\ 1 \end{pmatrix} \end{aligned}
+\begin{aligned} u_{\vec{p}}^{( 1 )} &= \sqrt{\frac{E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{2} \end{pmatrix} \quad u_{\vec{p}}^{( 2 )} = \sqrt{\frac{E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} -} 1_{ip_{y} ) c}}{\frac{- p_{z} c}{E + mc^{2}} E + mc^{2}} \end{pmatrix} \\ u_{\vec{p}}^{( 3 )} &= \sqrt{\frac{- E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} {}^{\tfrac{\frac{E + mc}{- ( p_{x} + ip_{y} ) c} \frac{- p_{z} c}{- E + mc^{2}}}{- E + mc^{2}}} 1 \\ 0 \end{pmatrix} \quad u_{\vec{p}}^{( 4 )} = \sqrt{\frac{- E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} \frac{- ( p_{x} - ip_{y} ) c}{\frac{- E p + {}_{z} mc c^{2}}{{}^{- E +} 0^{mc^{2}}}} \\ 1 \end{pmatrix} \end{aligned}
 ```
 
 <div align="right"><a href="book.pdf#page=55" target="_blank" title="This page in the PDF"><sup>[p. 55]</sup></a></div>
@@ -2664,19 +2664,19 @@ E \to - E
 so that all the energies are positive and the momenta point in the direction of the velocities. This means we change the signs in solutions 3 and 4 as follows.
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = \sqrt{E 2 EV + mc^{2}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-\psi_{\vec{p}}^{( 2 )} = \sqrt{E 2 EV + mc^{2}} \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} -} 1_{ip_{y} ) c}}{E \frac{- p_{z} c}{E + mc^{2}} + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 2 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} -} 1_{ip_{y} ) c}}{E \frac{- p_{z} c}{E + mc^{2}} + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-\psi_{\vec{p}}^{( 3 )} = \sqrt{E 2 EV + mc^{2}} \begin{pmatrix} {}^{\tfrac{( p \frac{p_{z} c}{E + mc^{2}}_{x} + ip_{y} ) c}{E + mc^{2}}} 1 \\ 0 \end{pmatrix} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 3 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} {}^{\tfrac{( p \frac{p_{z} c}{E + mc^{2}}_{x} + ip_{y} ) c}{E + mc^{2}}} 1 \\ 0 \end{pmatrix} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-\psi_{\vec{p}}^{( 4 )} = \sqrt{| E | + mc^{2} 2 | E | V} \begin{pmatrix} \frac{( p_{x} - ip_{y} ) c}{\frac{E + mc^{2} - p_{z} c}{{}^{E + mc^{2}} 0}} \\ 1 \end{pmatrix} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 4 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{( p_{x} - ip_{y} ) c}{\frac{E + mc^{2} - p_{z} c}{{}^{E + mc^{2}} 0}} \\ 1 \end{pmatrix} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 We have plane waves of the form
@@ -2850,19 +2850,19 @@ The Dirac equation is invariant under charge conjugation, defined as changing el
 Of course a second charge conjugation operation takes the state back to the original $`\psi`$. Applying this to the plane wave solutions gives
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = \sqrt{| mc^{2} E | V} u_{\vec{p}}^{( 1 )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \to - \sqrt{| mc^{2} E | V} u_{- \vec{p}}^{( 4 )} e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar} \equiv \sqrt{| mc^{2} E | V} v_{\vec{p}}^{( 1 )} e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar}
+\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{mc^{2}}{| E | V}} u_{\vec{p}}^{( 1 )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \to - \sqrt{\frac{mc^{2}}{| E | V}} u_{- \vec{p}}^{( 4 )} e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar} \equiv \sqrt{\frac{mc^{2}}{| E | V}} v_{\vec{p}}^{( 1 )} e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar}
 ```
 
 ```math
-\psi_{\vec{p}}^{( 2 )} = \sqrt{| mc^{2} E | V} u_{\vec{p}}^{( 2 )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \to \quad \sqrt{| mc^{2} E | V} u_{- \vec{p}}^{( 3 )} e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar} \equiv \sqrt{| mc^{2} E | V} v_{\vec{p}}^{( 2 )} e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar}
+\psi_{\vec{p}}^{( 2 )} = \sqrt{\frac{mc^{2}}{| E | V}} u_{\vec{p}}^{( 2 )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \to \quad \sqrt{\frac{mc^{2}}{| E | V}} u_{- \vec{p}}^{( 3 )} e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar} \equiv \sqrt{\frac{mc^{2}}{| E | V}} v_{\vec{p}}^{( 2 )} e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar}
 ```
 
 ```math
-\psi_{\vec{p}}^{( 3 )} = \sqrt{| mc^{2} E | V} u_{\vec{p}}^{( 3 )} e^{i ( \vec{p} \cdot \vec{x} + | E | t ) / \hbar} \quad \to \quad \sqrt{| mc^{2} E | V} u_{- \vec{p}}^{( 2 )} e^{i ( - \vec{p} \cdot \vec{x} -| E | t ) / \hbar}
+\psi_{\vec{p}}^{( 3 )} = \sqrt{\frac{mc^{2}}{| E | V}} u_{\vec{p}}^{( 3 )} e^{i ( \vec{p} \cdot \vec{x} + | E | t ) / \hbar} \quad \to \quad \sqrt{\frac{mc^{2}}{| E | V}} u_{- \vec{p}}^{( 2 )} e^{i ( - \vec{p} \cdot \vec{x} -| E | t ) / \hbar}
 ```
 
 ```math
-\psi_{\vec{p}}^{( 4 )} = \sqrt{| mc^{2} E | V} u_{\vec{p}}^{( 4 )} e^{i ( \vec{p} \cdot \vec{x} + | E | t ) / \hbar} \quad \to - \sqrt{| mc^{2} E | V} u_{- \vec{p}}^{( 1 )} e^{i ( - \vec{p} \cdot \vec{x} -| E | t ) / \hbar}
+\psi_{\vec{p}}^{( 4 )} = \sqrt{\frac{mc^{2}}{| E | V}} u_{\vec{p}}^{( 4 )} e^{i ( \vec{p} \cdot \vec{x} + | E | t ) / \hbar} \quad \to - \sqrt{\frac{mc^{2}}{| E | V}} u_{- \vec{p}}^{( 1 )} e^{i ( - \vec{p} \cdot \vec{x} -| E | t ) / \hbar}
 ```
 
 which defines new positron spinors $`v_{\vec{p}}^{( 1 )}`$ and $`v_{\vec{p}}^{( 2 )}`$ that are charge conjugates of $`u_{\vec{p}}^{( 1 )}`$ and $`u_{\vec{p}}^{( 2 )}`$ .
@@ -2902,11 +2902,11 @@ H = \int \psi^{\dagger} \left( \hbar c\gamma_{4} \gamma_{k} \frac{\partial}{\par
 We may expand $`\psi`$ in plane waves to understand the Hamiltonian as a sum of oscillators.
 
 ```math
-\psi ( \vec{x} , t ) = \sum_{\vec{p} \quad r = 1} \sum^{{}^{4} \sqrt{| mc^{2} E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi ( \vec{x} , t ) = \sum_{\vec{p} \quad r = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{r = 1}^{4} \sqrt{| mc^{2} E | V} c_{\vec{p} ,r}^{*} u_{\vec{p}}^{( r ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{r = 1}^{4} \sqrt{\frac{mc^{2}}{| E | V}} c_{\vec{p} ,r}^{*} u_{\vec{p}}^{( r ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 Writing the **Hamiltonian in terms of these fields**, the formula can be simplified yielding
@@ -2922,11 +2922,11 @@ H = \sum_{\vec{p} \quad r = 1} \sum^{4} Eb_{\vec{p}}^{( r )^{\dagger}} b_{\vec{p
 ```
 
 ```math
-\psi ( \vec{x} , t ) = \sum_{\vec{p} \quad r = 1} \sum^{4} \sqrt{| mc^{2} E | V} b_{\vec{p}}^{( r )} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi ( \vec{x} , t ) = \sum_{\vec{p} \quad r = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E | V}} b_{\vec{p}}^{( r )} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p} \quad r = 1} \sum^{{}^{4} \sqrt{| mc^{2} E | V}}_{\dagger} b_{\vec{p}}^{( r )^{\dagger}} u_{\vec{p}}^{( r ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p} \quad r = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E | V}}_{\dagger} b_{\vec{p}}^{( r )^{\dagger}} u_{\vec{p}}^{( r ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 The **creation an annihilation operators** $`b_{\vec{p}}^{( r )}`$ and $`b_{\vec{p}}^{( r )}`$ satisfy **anticommutation relations**.
@@ -2968,11 +2968,11 @@ These **anti-commute** with everything else with the exception that
 Now rewrite the fields and Hamiltonian.
 
 ```math
-\psi ( \vec{x} , t ) = \sum_{\vec{p} \quad s = 1} \sum^{{}^{2} \sqrt{\frac{mc^{2}}{EV}}} \left( b_{\vec{p}}^{( s )} u_{\vec{p}}^{( s )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s ) \dagger} v_{\vec{p}}^{( s )} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
+\psi ( \vec{x} , t ) = \sum_{\vec{p} \quad s = 1} \sum^{2} \sqrt{\frac{mc^{2}}{EV}} \left( b_{\vec{p}}^{( s )} u_{\vec{p}}^{( s )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s ) \dagger} v_{\vec{p}}^{( s )} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
 ```
 
 ```math
-\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p} \quad s = 1} \sum^{{}^{2} \sqrt{\frac{mc^{2}}{EV}}} \left( b_{\vec{p}}^{( s ) \dagger} u_{\vec{p}}^{( s ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s )} v_{\vec{p}}^{( s ) \dagger} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
+\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p} \quad s = 1} \sum^{2} \sqrt{\frac{mc^{2}}{EV}} \left( b_{\vec{p}}^{( s ) \dagger} u_{\vec{p}}^{( s ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s )} v_{\vec{p}}^{( s ) \dagger} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
 ```
 
 ```math
@@ -4501,7 +4501,7 @@ For the photon, $`v_{g} = c`$ and $`\beta`$ = 0. For the NR electron, $`v_{g} = 
 Performing the Fourier Transform (See section 5.6.5), we get
 
 ```math
-\psi ( x,t ) = \sqrt{\alpha + \pi i\beta t} e^{i ( k_{0} x - \omega_{0} t )} e^{\tfrac{- ( x - vgt ) 2}{4 ( \alpha + i\beta t )}}
+\psi ( x,t ) = \sqrt{\frac{\pi}{\alpha + i\beta t}} e^{i ( k_{0} x - \omega_{0} t )} e^{\tfrac{- ( x - vgt ) 2}{4 ( \alpha + i\beta t )}}
 ```
 
 ```math
@@ -4839,11 +4839,11 @@ f ( x ) = e^{ik_{0} x} \int_{-\infty}^{\infty} e^{- \alpha k^{\prime 2}} e^{ik^{
 Our new integral is the same with the **substitutions** $`k_{0} x \to k_{0} x - \omega_{0} t , k^{\prime} x \to k^{\prime} ( x - v_{g} t )`$, and $`\alpha \to ( \alpha + i\beta t )`$. We can then write down the answer
 
 ```math
-\psi ( x,t ) = \sqrt{\alpha + \pi i\beta t} e^{i ( k_{0} x - \omega_{0} t )} e^{\tfrac{- ( x - vgt ) 2}{4 ( \alpha + i\beta t )}}
+\psi ( x,t ) = \sqrt{\frac{\pi}{\alpha + i\beta t}} e^{i ( k_{0} x - \omega_{0} t )} e^{\tfrac{- ( x - vgt ) 2}{4 ( \alpha + i\beta t )}}
 ```
 
 ```math
-| \psi ( x,t ) |^{2} = \sqrt{\alpha + \pi i\beta t} \sqrt{\alpha - \pi i\beta t} e^{\tfrac{- ( x - vgt ) 2}{4 ( \alpha + i\beta t )}} e^{\tfrac{- ( x - vgt ) 2}{4 ( \alpha - i\beta t )}}
+| \psi ( x,t ) |^{2} = \sqrt{\frac{\pi}{\alpha + i\beta t}} \sqrt{\frac{\pi}{\alpha - i\beta t}} e^{\tfrac{- ( x - vgt ) 2}{4 ( \alpha + i\beta t )}} e^{\tfrac{- ( x - vgt ) 2}{4 ( \alpha - i\beta t )}}
 ```
 
 ```math
@@ -5703,7 +5703,7 @@ It is not necessary (or wise) to use the differential operators and a wave funct
 1. The absolute square of a wave function for a free particle is given as:
 
 ```math
-| \psi ( x,t ) |^{2} = \sqrt{2 \pi ( a^{2} a + b^{2} t^{2} )} e^{- a ( x - v_{g} t )^{2} / 2 ( a^{2} + b^{2} t^{2} )}
+| \psi ( x,t ) |^{2} = \sqrt{\frac{a}{2 \pi ( a^{2} + b^{2} t^{2} )}} e^{- a ( x - v_{g} t )^{2} / 2 ( a^{2} + b^{2} t^{2} )}
 ```
 
 Find the expected value of $`x`$ as a function of time. Find the expected value of $`x^{2}`$ as a function of time. Compute the RMS x-width of this wave packet as a function of time.
@@ -6845,7 +6845,7 @@ For $`E>V_{0}`$, the general solution is
 u ( x ) = Ae^{+ ikx} + Be^{- ikx}
 ```
 
-with $`k = \sqrt{2 m ( E \hbar_{2} - V_{0} )}`$ positive and real. We could also use the linear combination of the above two solutions.
+with $`k = \sqrt{\frac{2 m ( E - V_{0} )}{\hbar^{2}}}`$ positive and real. We could also use the linear combination of the above two solutions.
 
 ```math
 u ( x ) = A \sin ( kx ) + B \cos ( kx )
@@ -6853,7 +6853,7 @@ u ( x ) = A \sin ( kx ) + B \cos ( kx )
 
 We should use one set of solutions or the other in a region, not both. There are only two linearly independent solutions.
 
-The solutions are also technically correct for $`E<V_{0}`$ but $`k`$ becomes imaginary. For simplicity, lets write the solutions in terms of $`\kappa = \sqrt{2 m ( V \hbar_{0 2} - E )}`$, which again is real and positive. The general solution is
+The solutions are also technically correct for $`E<V_{0}`$ but $`k`$ becomes imaginary. For simplicity, lets write the solutions in terms of $`\kappa = \sqrt{\frac{2 m ( V_{0} - E )}{\hbar^{2}}}`$, which again is real and positive. The general solution is
 
 ```math
 u ( x ) = Ae^{+ \kappa x} + Be^{- \kappa x} .
@@ -7026,7 +7026,7 @@ Again, **classically, everything would be transmitted** because the energy is la
 <a id="p149" href="book.pdf#page=149" target="_blank" title="This page in the PDF"><sup>[p. 149]</sup></a>
 
 ```math
-k^{\prime} = \sqrt{2 m ( E \hbar^{2} - V_{0} )}
+k^{\prime} = \sqrt{\frac{2 m ( E - V_{0} )}{\hbar^{2}}}
 ```
 
 ```math
@@ -7046,7 +7046,7 @@ u ( x ) = Ae^{\kappa x} + Be^{- \kappa x}
 with
 
 ```math
-\kappa = \sqrt{- 2 \hbar^{2} mE} .
+\kappa = \sqrt{\frac{- 2 mE}{\hbar^{2}}} .
 ```
 
 The $`e^{- \kappa x}`$ term will not be acceptable at $`-\infty`$ and the $`e^{\kappa x}`$ term will not be acceptable at +$`\infty`$ since they diverge and we could never normalize to one bound particle.
@@ -7084,13 +7084,13 @@ The calculation (See section 9.7.3) shows that either $`A`$ or $`B`$ must be zer
 The **even states** have the (quantization) constraint on the energy that
 
 ```math
-\begin{aligned} \kappa &= \tan ( ka ) k \\ \sqrt{- 2 \hbar^{2} mE} &= \tan \begin{pmatrix} \sqrt{2 m ( E \hbar^{2} + V_{0} )} \\ a \end{pmatrix} \sqrt{2 m ( E \hbar^{2} + V_{0} )} \\ \sqrt{E - E + V_{0}} &= \tan \begin{pmatrix} \sqrt{2 m ( E \hbar^{2} + V_{0} )} \\ a \end{pmatrix} \end{aligned}
+\begin{aligned} \kappa &= \tan ( ka ) k \\ \sqrt{\frac{- 2 mE}{\hbar^{2}}} &= \tan \left( \sqrt{\frac{2 m ( E + V_{0} )}{\hbar^{2}}} a \right) \sqrt{\frac{2 m ( E + V_{0} )}{\hbar^{2}}} \\ \sqrt{\frac{- E}{E + V_{0}}} &= \tan \left( \sqrt{\frac{2 m ( E + V_{0} )}{\hbar^{2}}} a \right) \end{aligned}
 ```
 
 and the **odd states** have the constraint
 
 ```math
-\begin{aligned} \kappa &= - \cot ( ka ) k \\ \sqrt{E - E + V_{0}} &= - \cot \begin{pmatrix} \sqrt{2 m ( E \hbar^{2} + V_{0} )} \\ a \end{pmatrix} \end{aligned}
+\begin{aligned} \kappa &= - \cot ( ka ) k \\ \sqrt{\frac{- E}{E + V_{0}}} &= - \cot \left( \sqrt{\frac{2 m ( E + V_{0} )}{\hbar^{2}}} a \right) \end{aligned}
 ```
 
 These are transcendental equations, so we will solve them graphically. The plot below compares the square root on the left hand side of the transcendental equations to the tangent on the right for the event states and to “-cotangent” on the right for odd states. Where the curves intersect (not including the asymptote), is an allowed energy. There is always one even solution for the 1D potential well. In the graph shown, there are 2 even and one odd solution. The wider and deeper the well, the more solutions.
@@ -7242,7 +7242,7 @@ This is a Gaussian (minimum uncertainty) distribution. Since the HO potential ha
 The **first excited state** is an odd parity state, with a first order polynomial multiplying the same Gaussian.
 
 ```math
-u_{1} ( x ) = \left( \frac{m\omega}{\pi \hbar} \right) \tfrac{1}{4} \sqrt{\frac{2 m\omega}{\hbar}} xe^{- m\omega x^{2} / 2 \hbar}
+u_{1} ( x ) = \left( \frac{m\omega}{\pi \hbar} \right)^{\tfrac{1}{4}} \sqrt{\frac{2 m\omega}{\hbar}} xe^{- m\omega x^{2} / 2 \hbar}
 ```
 
 The **second excited state** is even parity, with a second order polynomial multiplying the same Gaussian.
@@ -7294,7 +7294,7 @@ These will have energy less than zero so the solutions are
 where
 
 ```math
-\kappa = \sqrt{- 2 \hbar^{2} mE} .
+\kappa = \sqrt{\frac{- 2 mE}{\hbar^{2}}} .
 ```
 
 There are only two regions, above and below the delta function. We don’t need to worry about the one point at $`x`$ = 0 – the two solutions will match there. We have already made the wave function continuous at $`x`$ = 0 by using the same coefficient, $`A`$, for the solution in both regions.
@@ -7346,7 +7346,7 @@ with attractive delta functions at $`x = \pm d`$. This is a parity symmetric pot
 **For even parity, our solution in the three regions** is
 
 ```math
-\begin{aligned} \psi ( x ) &= \begin{cases} e^{\kappa x} & x< - d \\ A ( e^{\kappa x} + e^{- \kappa x} ) & - d<x<d \\ e^{- \kappa x} & x>d \end{cases} \\ \kappa &= \sqrt{- 2 \hbar^{2} mE} . \end{aligned}
+\begin{aligned} \psi ( x ) &= \begin{cases} e^{\kappa x} & x< - d \\ A ( e^{\kappa x} + e^{- \kappa x} ) & - d<x<d \\ e^{- \kappa x} & x>d \end{cases} \\ \kappa &= \sqrt{\frac{- 2 mE}{\hbar^{2}}} . \end{aligned}
 ```
 
 Since the solution is designed to be symmetric about $`x`$ = 0, the boundary conditions at $`- d`$ are the same as at $`d`$. The boundary conditions determine the constant $`A`$ and constrain $`\kappa`$.
@@ -7367,7 +7367,7 @@ This is a transcendental equation, but we can limit the energy.
 \kappa > \frac{maV_{0}}{\hbar^{2}}
 ```
 
-Since $`\kappa = \tfrac{maV_{0}}{\hbar^{2}}`$ for the single delta function, this $`\kappa = \sqrt{- 2 \hbar mE_{2}}`$ is larger than the one for the single delta function. This means that $`E`$ is more negative and there is **more binding energy**.
+Since $`\kappa = \tfrac{maV_{0}}{\hbar^{2}}`$ for the single delta function, this $`\kappa = \sqrt{\frac{- 2 mE}{\hbar^{2}}}`$ is larger than the one for the single delta function. This means that $`E`$ is more negative and there is **more binding energy**.
 
 ```math
 E_{molecule} <E_{atom}
@@ -7436,7 +7436,7 @@ The general solution in the region $`( n - 1 ) a<x<na`$ is
 ```
 
 ```math
-k = \sqrt{2 mE \hbar^{2}}
+k = \sqrt{\frac{2 mE}{\hbar^{2}}}
 ```
 
 By matching the boundary conditions and requiring that the probability be periodic, we derive a constraint on $`k`$ (See section 9.7.6) similar to the quantized energies for bound states.
@@ -7690,7 +7690,7 @@ u_{1} ( x ) = C_{1} e^{\kappa x}
 ```
 
 ```math
-\begin{aligned} u_{3} ( x ) &= C_{3} e^{- \kappa x} \\ \kappa &= \sqrt{- 2 \hbar^{2} mE} . \end{aligned}
+\begin{aligned} u_{3} ( x ) &= C_{3} e^{- \kappa x} \\ \kappa &= \sqrt{\frac{- 2 mE}{\hbar^{2}}} . \end{aligned}
 ```
 
 In the center we have the same solution as before.
@@ -7998,7 +7998,7 @@ Lets find $`a_{0}`$ by normalizing the wavefunction.
 ```
 
 ```math
-| a 0 |^{2} \sqrt{\frac{\pi \hbar}{m\omega}} = 1
+| a_{0} |^{2} \sqrt{\frac{\pi \hbar}{m\omega}} = 1
 ```
 
 ```math
@@ -8012,7 +8012,7 @@ u_{0} ( x ) = \left( \frac{m\omega}{\pi \hbar} \right)^{\tfrac{1}{4}} e^{- m\ome
 ## <a id="s-9-7-5-1d-model-of-a-molecule-derivation"></a>9.7.5 1D Model of a Molecule Derivation \*
 
 ```math
-\begin{aligned} \psi ( x ) &= \begin{cases} e^{\kappa x} & x< - d \\ A ( e^{\kappa x} + e^{- \kappa x} ) & - d<x<d \\ e^{- \kappa x} & x>d \end{cases} \\ \kappa &= \sqrt{- 2 \hbar^{2} mE} . \end{aligned}
+\begin{aligned} \psi ( x ) &= \begin{cases} e^{\kappa x} & x< - d \\ A ( e^{\kappa x} + e^{- \kappa x} ) & - d<x<d \\ e^{- \kappa x} & x>d \end{cases} \\ \kappa &= \sqrt{\frac{- 2 mE}{\hbar^{2}}} . \end{aligned}
 ```
 
 Since the solution is designed to be symmetric about $`x`$ = 0, the boundary conditions at $`- d`$ are the same as at $`d`$. The boundary conditions determine the constant $`A`$ and constrain $`\kappa`$.
@@ -8232,7 +8232,7 @@ This whole section is examples.
 **Answer**
 
 ```math
-\kappa = \sqrt{- 2 \hbar^{2} mE}
+\kappa = \sqrt{\frac{- 2 mE}{\hbar^{2}}}
 ```
 
 ```math
@@ -8372,7 +8372,7 @@ H = \frac{p^{2}}{2 m} + \frac{1}{2} m\omega^{2} x^{2}
 looks like it could be written as the square of a operator. It can be rewritten in terms of the operator $`A`$ (See section 10.1)
 
 ```math
-A \equiv \begin{pmatrix} \sqrt{\frac{m\omega}{2 \hbar}} \\ x + i \frac{p}{\sqrt{2 m \hbar \omega}} \end{pmatrix}
+A \equiv \left( \sqrt{\frac{m\omega}{2 \hbar}} x + i \frac{p}{\sqrt{2 m \hbar \omega}} \right)
 ```
 
 and its Hermitian conjugate $`A^{\dagger}`$.
@@ -8452,7 +8452,7 @@ A \equiv \left( \sqrt{\frac{m\omega}{2 \hbar}} x + i \frac{p}{\sqrt{2 m \hbar \o
 and its Hermitian conjugate
 
 ```math
-A^{\dagger} = \begin{pmatrix} \sqrt{\frac{m\omega}{2 \hbar}} \\ x - i \frac{p}{\sqrt{2 m \hbar \omega}} \end{pmatrix}
+A^{\dagger} = \left( \sqrt{\frac{m\omega}{2 \hbar}} x - i \frac{p}{\sqrt{2 m \hbar \omega}} \right)
 ```
 
 Both terms in the Harmonic Oscillator Hamiltonian are squares of operators. Note that $`A`$ is chosen so that $`A^{\dagger} A`$ is close to the Hamiltonian. First just compute the quantity
@@ -8484,11 +8484,11 @@ H = \hbar \omega \left( A^{\dagger} A + \frac{1}{2} \right) .
 We will use the commutator between $`A`$ and $`A^{\dagger}`$ to solve the HO problem. The operators are defined to be
 
 ```math
-A = \begin{pmatrix} \sqrt{\frac{m\omega}{2 \hbar}} \\ x + i \frac{p}{\sqrt{2 m \hbar \omega}} \end{pmatrix}
+A = \left( \sqrt{\frac{m\omega}{2 \hbar}} x + i \frac{p}{\sqrt{2 m \hbar \omega}} \right)
 ```
 
 ```math
-A^{\dagger} = \begin{pmatrix} \sqrt{\frac{m\omega}{2 \hbar}} \\ x - i \frac{p}{\sqrt{2 m \hbar \omega}} \end{pmatrix} .
+A^{\dagger} = \left( \sqrt{\frac{m\omega}{2 \hbar}} x - i \frac{p}{\sqrt{2 m \hbar \omega}} \right) .
 ```
 
 The **commutator** is
@@ -8880,7 +8880,7 @@ Find the expected value of $`p`$.
 <a id="p180" href="book.pdf#page=180" target="_blank" title="This page in the PDF"><sup>[p. 180]</sup></a>
 
 ```math
-\langle \psi | p | \psi \rangle = - i \sqrt{\frac{m \hbar \omega}{2}} \begin{pmatrix} \sqrt{\frac{2}{3}} \quad \sqrt{\frac{1}{3}} \quad \sqrt{\frac{2}{3}} \quad \sqrt{\frac{1}{3}} \\ u_{0} - i \quad u_{1} | A - A^{\dagger} | \quad u_{0} - i \quad u_{1} \end{pmatrix}
+\langle \psi | p | \psi \rangle = - i \sqrt{\frac{m \hbar \omega}{2}} \left\langle \sqrt{\frac{2}{3}} u_{0} - i \sqrt{\frac{1}{3}} u_{1} | A - A^{\dagger} | \sqrt{\frac{2}{3}} u_{0} - i \sqrt{\frac{1}{3}} u_{1} \right\rangle
 ```
 
 ```math
@@ -11044,7 +11044,7 @@ The radial part plays no role. The angular part is properly normalized.
 ```
 
 ```math
-= \begin{pmatrix} \sqrt{\frac{2}{3}} \quad \sqrt{\frac{1}{3}} \quad \sqrt{\frac{2}{3}} & \sqrt{\frac{1}{3}} \\ Y_{1 1} - i \quad Y_{1 - 1} | & \hbar Y_{1 1} + i \quad \hbar Y_{1 - 1} \end{pmatrix}
+= \left\langle \sqrt{\frac{2}{3}} Y_{1 1} - i \sqrt{\frac{1}{3}} Y_{1 - 1} | \sqrt{\frac{2}{3}} \hbar Y_{1 1} + i \sqrt{\frac{1}{3}} \hbar Y_{1 - 1} \right\rangle
 ```
 
 ```math
@@ -11393,7 +11393,7 @@ This is **like the particle in a box** except now the particle is confined to th
 j_{\ell} ( ka ) = 0
 ```
 
-There are an infinite number of solutions for each $`\ell`$. We only need to find the zeros of the Bessel functions. The table below gives the lowest values of $`ka = \sqrt{2 ma \hbar_{2}^{2} E}`$ which satisfy the boundary condition.
+There are an infinite number of solutions for each $`\ell`$. We only need to find the zeros of the Bessel functions. The table below gives the lowest values of $`ka = \sqrt{\frac{2 ma^{2} E}{\hbar^{2}}}`$ which satisfy the boundary condition.
 
 ```math
 \ell 4 \frac{2 \frac{1 0}{3}}{5} \quad n 8 . 1 8 \frac{5 . 7 2 \frac{4 . 4 9 3 . 1 4}{6 . 9 9}}{9 . 3 2} = 1 \quad n \frac{7 . 7 3 6 . 2 8}{1 0 . 4 2} 9 . 1 0 = 2 \quad n 9 . 4 2 = 3
@@ -11446,7 +11446,7 @@ k = \sqrt{\frac{2 \mu ( E + V_{0} )}{\hbar^{2}}}
 We must use the Hankel function of the first type for large $`r`$.
 
 ```math
-\begin{aligned} \rho &= kr \to i\kappa r \\ \kappa &= \sqrt{- 2 \hbar^{2} \mu E} \end{aligned}
+\begin{aligned} \rho &= kr \to i\kappa r \\ \kappa &= \sqrt{\frac{- 2 \mu E}{\hbar^{2}}} \end{aligned}
 ```
 
 ```math
@@ -11496,7 +11496,7 @@ k \cot ( ka ) = - \kappa
 This is the **same transcendental equation that we had for the odd solution in one dimen-** **sion**.
 
 ```math
-- \cot \begin{pmatrix} \sqrt{2 \mu ( E \hbar^{2} + V_{0} )} \\ a \end{pmatrix} = \sqrt{V_{0} - E + E}
+- \cot \left( \sqrt{\frac{2 \mu ( E + V_{0} )}{\hbar^{2}}} a \right) = \sqrt{\frac{- E}{V_{0} + E}}
 ```
 
 The number of solutions depends on the depth and radius of the well. There can even be no solution.
@@ -11736,7 +11736,7 @@ to keep $`R`$ normalizable.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p227" href="book.pdf#page=227" target="_blank" title="This page in the PDF"><sup>[p. 227]</sup></a>
 
-For the case of a constant potential $`V_{0}`$, we define $`k = \sqrt{2 \mu ( E \hbar - {}_{2} V_{0} )}`$ and $`\rho = kr`$, and the radial equation becomes.
+For the case of a constant potential $`V_{0}`$, we define $`k = \sqrt{\frac{2 \mu ( E - V_{0} )}{\hbar^{2}}}`$ and $`\rho = kr`$, and the radial equation becomes.
 
 ```math
 \frac{d^{2} u ( r )}{dr^{2}} + \frac{2 \mu}{\hbar^{2}} \left[ E - V_{0} - \frac{\ell ( \ell + 1 ) \hbar^{2}}{2 \mu r^{2}} \right] u ( r ) = 0
@@ -11840,7 +11840,7 @@ a_{k + 1} = \frac{k + \ell + 1 - n}{( k + 1 ) ( k + 2 \ell + 2 )} a_{k}
 and
 
 ```math
-\rho = \sqrt{- 8 \hbar^{2} \mu E} r.
+\rho = \sqrt{\frac{- 8 \mu E}{\hbar^{2}}} r.
 ```
 
 The **principle quantum number** $`n`$ is an integer from 1 to infinity.
@@ -12008,7 +12008,7 @@ The differential equation we wish to solve is.
 First we change to a **dimensionless variable** $`\rho`$,
 
 ```math
-\rho = \sqrt{- 8 \hbar^{2} \mu E} r,
+\rho = \sqrt{\frac{- 8 \mu E}{\hbar^{2}}} r,
 ```
 
 giving the differential equation
@@ -12020,7 +12020,7 @@ giving the differential equation
 where the constant
 
 ```math
-\lambda = \frac{Ze^{2}}{\hbar} \sqrt{\frac{- \mu}{2 E}} = Z\alpha \sqrt{- \mu c^{2} 2 E} .
+\lambda = \frac{Ze^{2}}{\hbar} \sqrt{\frac{- \mu}{2 E}} = Z\alpha \sqrt{\frac{- \mu c^{2}}{2 E}} .
 ```
 
 <div align="right"><a href="book.pdf#page=234" target="_blank" title="This page in the PDF"><sup>[p. 234]</sup></a></div>
@@ -12130,7 +12130,7 @@ The number of nodes in $`G`$ will be $`n_{r}`$. We will call $`n`$ the principal
 Plugging in for $`\lambda`$ we get the **energy eigenvalues**.
 
 ```math
-Z\alpha \sqrt{- \mu c^{2} 2 E} = n.
+Z\alpha \sqrt{\frac{- \mu c^{2}}{2 E}} = n.
 ```
 
 ```math
@@ -12152,7 +12152,7 @@ a_{k + 1} = \frac{k + \ell + 1 - n}{( k + 1 ) ( k + 2 \ell + 2 )} a_{k} .
 We can rewrite $`\rho`$, substituting the energy eigenvalue.
 
 ```math
-\rho = \sqrt{- 8 \hbar^{2} \mu E} r = \sqrt{4 \mu^{2} \hbar^{2} n^{2} c^{2} Z^{2} \alpha^{2}} r = \frac{2 \mu cZ\alpha}{\hbar n} r = \frac{2 Z}{na_{0}} r
+\rho = \sqrt{\frac{- 8 \mu E}{\hbar^{2}}} r = \sqrt{\frac{4 \mu^{2} c^{2} Z^{2} \alpha^{2}}{\hbar^{2} n^{2}}} r = \frac{2 \mu cZ\alpha}{\hbar n} r = \frac{2 Z}{na_{0}} r
 ```
 
 ## <a id="s-16-3-2-computing-the-radial-wavefunctions"></a>16.3.2 Computing the Radial Wavefunctions \*
@@ -13745,7 +13745,7 @@ I_{2} = \frac{1}{4} I_{1} = \frac{1}{1 2} I_{0}
 The third apparatus goes back to a separation in z and blocks the $`m`$ = 1 component. The incoming state is
 
 ```math
-\psi_{-}^{( x )} = \left( \frac{- {}_{1} \tfrac{1}{2}}{- \sqrt{\frac{2}{2} 1}} \right)
+\psi_{-}^{( x )} = \left( \frac{- {}_{1} \tfrac{1}{2}}{- \sqrt{2 \frac{1}{2}}} \right)
 ```
 
 Remember that the components of this vector are just the amplitudes to be in the different $`m`$ states (using the z axis). The probability to get through this apparatus is just the probability to be in the $`m`$ = 0 beam plus the probability to be in the $`m = - 1`$ beam.
@@ -14023,7 +14023,7 @@ which are both equivalent to $`\chi_{2} = i\chi_{1}`$. Repeating the process for
 As an example, lets take the $`u`$ direction to be in the $`xz`$ plane, between the positive $`x`$ and $`z`$ axes, 30 degrees from the x axis. The unit vector is then $`\hat{u}`$ = (cos(30)$`, 0 ,`$ sin(30)) = $`( \sqrt{\tfrac{3}{4} ,} 0 , \tfrac{1}{2} )`$. We may simply calculate the matrix $`S_{u} = \hat{u} \cdot \vec{S}`$.
 
 ```math
-S_{u} = \sqrt{\frac{3}{4}} S_{x} + \frac{1}{2} S_{z} = \frac{\hbar}{2} \left( \sqrt{\frac{3}{4}}^{\tfrac{1}{2}} \quad \frac{\sqrt{\frac{3}{4}}}{- \tfrac{1}{2}} \right)
+S_{u} = \sqrt{\frac{3}{4}} S_{x} + \frac{1}{2} S_{z} = \frac{\hbar}{2} \begin{pmatrix} \tfrac{1}{2} & \sqrt{\frac{1}{2} \frac{3}{4}} \\ \sqrt{\frac{3}{4}} & - \end{pmatrix}
 ```
 
 We expect the eigenvalues to be $`\pm \tfrac{\hbar}{2}`$ as for all axes.
@@ -14031,11 +14031,11 @@ We expect the eigenvalues to be $`\pm \tfrac{\hbar}{2}`$ as for all axes.
 Factoring out the $`\frac{\hbar}{2}`$, the equation for the eigenvectors is.
 
 ```math
-\begin{pmatrix} \tfrac{1}{2} & \sqrt{1 \frac{3}{4}} \\ \sqrt{\frac{3}{4}} & - {}_{2} \end{pmatrix} \begin{pmatrix} a \\ b \end{pmatrix} = \pm \begin{pmatrix} a \\ b \end{pmatrix}
+\begin{pmatrix} \tfrac{1}{2} & \sqrt{\frac{1}{2} \frac{3}{4}} \\ \sqrt{\frac{3}{4}} & - \end{pmatrix} \begin{pmatrix} a \\ b \end{pmatrix} = \pm \begin{pmatrix} a \\ b \end{pmatrix}
 ```
 
 ```math
-\begin{pmatrix} \tfrac{1}{2} a + \sqrt{\frac{3}{4}} b \\ \sqrt{\frac{3}{4}} a^{1} b \\ - {}_{2} \end{pmatrix} = \pm \begin{pmatrix} a \\ b \end{pmatrix} \quad \sqrt{\frac{3}{4}}
+\begin{pmatrix} \tfrac{1}{2} a + \sqrt{\frac{1}{2} \frac{3}{4}} b \\ \sqrt{\frac{3}{4}} a - b \end{pmatrix} = \pm \begin{pmatrix} a \\ b \end{pmatrix} \quad \sqrt{\frac{3}{4}}
 ```
 
 For the positive eigenvalue, we have $`a = \sqrt{3} b`$, giving the eigenvector $`\chi_{+}^{( u )} = \begin{pmatrix} 1 \\ 2 \end{pmatrix}`$. For the
@@ -14055,15 +14055,15 @@ these could be multiplied by an arbitrary phase factor.
 There is an alternate way to solve the problem using rotation matrices. We take the states $`\chi_{\pm}^{( z )}`$ and rotate the axes so that the $`u`$ axis is where the $`z`$ axis was. We must think carefully about exacty what rotation to do. Clearly we need a rotation about the $`y`$ axis. Thinking about the signs carefully, we see that a rotation of -60 degrees moves the $`u`$ axis to the old $`z`$ axis.
 
 ```math
-\begin{aligned} R_{y} &= \begin{pmatrix} \cos \tfrac{\theta}{2} & \sin \tfrac{\theta}{2} \\ - \sin \tfrac{\theta}{2} & \cos \tfrac{\theta}{2} \end{pmatrix} \\ R_{y} ( - 6 0 ) &= \begin{pmatrix} \cos ( 3 0 ) & - \sin ( 3 0 ) \\ \sin ( 3 0 ) & \cos ( 3 0 ) \end{pmatrix} = \left( \frac{\sqrt{\frac{3}{4}}}{\tfrac{1}{2}} \quad \sqrt{\frac{3}{4}} - \tfrac{1}{2} \right) \end{aligned}
+\begin{aligned} R_{y} &= \begin{pmatrix} \cos \tfrac{\theta}{2} & \sin \tfrac{\theta}{2} \\ - \sin \tfrac{\theta}{2} & \cos \tfrac{\theta}{2} \end{pmatrix} \\ R_{y} ( - 6 0 ) &= \begin{pmatrix} \cos ( 3 0 ) & - \sin ( 3 0 ) \\ \sin ( 3 0 ) & \cos ( 3 0 ) \end{pmatrix} = \begin{pmatrix} \sqrt{\frac{3}{4}} & - \tfrac{1}{2} \\ \tfrac{1}{2} & \sqrt{\frac{3}{4}} \end{pmatrix} \end{aligned}
 ```
 
 ```math
-\chi_{+}^{( u )} = \left( \frac{\sqrt{\frac{3}{4}}}{\tfrac{1}{2}} \quad \sqrt{\frac{3}{4}} - \tfrac{1}{2} \right) \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \left( \sqrt{\frac{3}{4}}_{\tfrac{1}{2}} \right)
+\chi_{+}^{( u )} = \begin{pmatrix} \sqrt{\frac{3}{4}} & - \tfrac{1}{2} \\ \tfrac{1}{2} & \sqrt{\frac{3}{4}} \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \left( \sqrt{\frac{3}{4}}_{\tfrac{1}{2}} \right)
 ```
 
 ```math
-\chi_{-}^{( u )} = \left( \frac{\sqrt{\frac{3}{4}}}{\tfrac{1}{2}} \quad \sqrt{\frac{3}{4}} - \tfrac{1}{2} \right) \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} - \tfrac{1}{2} \\ \sqrt{\frac{3}{4}} \end{pmatrix}
+\chi_{-}^{( u )} = \begin{pmatrix} \sqrt{\frac{3}{4}} & - \tfrac{1}{2} \\ \tfrac{1}{2} & \sqrt{\frac{3}{4}} \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} - \tfrac{1}{2} \\ \sqrt{\frac{3}{4}} \end{pmatrix}
 ```
 
 This gives the same answer. By using the rotation operator, the phase of the eigenvectors is consistent with the choice made for $`\chi_{\pm}^{( z )}`$. For most problems, this is not important but it is for some.
@@ -14893,7 +14893,7 @@ Compute the expected value of $`x^{2}`$ as a function of time.
 
 # <a id="s-19-7-homework-7"></a>19.7 Homework 7
 
-1. A particle is in the state $`\psi = R ( r ) \begin{pmatrix} \sqrt{\frac{1}{3}} Y & + i \sqrt{\frac{1}{3}} Y & \sqrt{\frac{1}{3}} Y \\ 2 1 & {}_{2 0} - & 2 2 \end{pmatrix}`$. Find the expected values of
+1. A particle is in the state $`\psi = R ( r ) \left( \sqrt{\frac{1}{3}} Y_{2 1} + i \sqrt{\frac{1}{3}} Y_{2 0} - \sqrt{\frac{1}{3}} Y_{2 2} \right)`$. Find the expected values of
 
 ```math
 L^{2} , L_{z} , L_{x} , \text{ and } L_{y} .
@@ -15807,7 +15807,7 @@ Max when
 Now let’s put in some numbers: Let $`B \approx 20`$ kGauss = $`2 \times 1 0^{4}`$ Gauss. Then
 
 ```math
-\rho = \sqrt{\frac{2 \begin{pmatrix} 3 \times 1 0^{1 0} \frac{\text{ cm }}{\sec_{-}} \\ ( 4 . 8 \times 1 0 \end{pmatrix} ( 1 . 0 5 \times 1 0^{- 2 7} \text{ erg } \sec )}{{}^{1 0} \text{ esu } ) ( 2 \times 1 0^{4} g )} m} \approx 2 . 5 \times 1 0^{- 6} \sqrt{m} \text{ cm }
+\rho = \sqrt{\frac{2 \left( 3 \times 1 0^{1 0} \text{ cm } \right) ( 1 . 0 5 \times 1 0^{- 2 7} \text{ erg } \sec )}{( 4 . 8 \times 1 0^{- 1 0} \text{ esu } ) ( 2 \times 1 0^{4} g )} \sec m} \approx 2 . 5 \times 1 0^{- 6} \sqrt{m} \text{ cm }
 ```
 
 This can be compared to the purely classical calculation for an electron with angular momentum $`m \hbar`$ which gives $`\rho = \sqrt{\frac{m \hbar c}{Be}}`$. This simple calculation neglects to count the angular momentum stored in the field.
@@ -16178,11 +16178,11 @@ audio
 The coefficients $`\alpha`$ and $`\beta`$ must be **determined** (see section 21.8.4) by operating with $`J^{2}`$.
 
 ```math
-\psi_{( \ell + \tfrac{1}{2} ) ( m + \tfrac{1}{2} )} = \sqrt{\ell + 2 \ell + 1 m + 1} Y_{\ell m} \chi_{+} + \sqrt{2 \ell - m \ell + 1} Y_{\ell ( m + 1 )} \chi_{-}
+\psi_{( \ell + \tfrac{1}{2} ) ( m + \tfrac{1}{2} )} = \sqrt{\frac{\ell + m + 1}{2 \ell + 1}} Y_{\ell m} \chi_{+} + \sqrt{\frac{\ell - m}{2 \ell + 1}} Y_{\ell ( m + 1 )} \chi_{-}
 ```
 
 ```math
-\psi_{( \ell - \tfrac{1}{2} ) ( m + \tfrac{1}{2} )} = \sqrt{2 \ell - m \ell + 1} Y_{\ell m} \chi_{+} - \sqrt{\ell + 2 \ell + 1 m + 1} Y_{\ell ( m + 1 )} \chi_{-}
+\psi_{( \ell - \tfrac{1}{2} ) ( m + \tfrac{1}{2} )} = \sqrt{\frac{\ell - m}{2 \ell + 1}} Y_{\ell m} \chi_{+} - \sqrt{\frac{\ell + m + 1}{2 \ell + 1}} Y_{\ell ( m + 1 )} \chi_{-}
 ```
 
 We have made a choice in how to write these equations: $`m`$ must be the same throughout. The negative $`m`$ states are symmetric with the positive ones. These equations will be applied when we calculate the **fine structure of Hydrogen** and when we study the **anomalous Zeeman effect.**
@@ -16689,11 +16689,11 @@ we get the ratio between $`\beta`$ and $`\alpha`$. We will normalize the wave fu
 ```
 
 ```math
-\alpha = \sqrt{\ell + 2 \ell + 1 m + 1}
+\alpha = \sqrt{\frac{\ell + m + 1}{2 \ell + 1}}
 ```
 
 ```math
-\beta = \sqrt{\ell + \ell - m m + 1} \sqrt{\ell + 2 \ell + 1 m + 1} = \sqrt{2 \ell - m \ell + 1}
+\beta = \sqrt{\frac{\ell - m}{\ell + m + 1}} \sqrt{\frac{\ell + m + 1}{2 \ell + 1}} = \sqrt{\frac{\ell - m}{2 \ell + 1}}
 ```
 
 <div align="right"><a href="book.pdf#page=322" target="_blank" title="This page in the PDF"><sup>[p. 322]</sup></a></div>
@@ -16713,11 +16713,11 @@ we get.
 audio
 
 ```math
-\left\langle \left( \ell + \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell m \frac{1}{2} \frac{1}{2} \right\rangle = \alpha = \sqrt{\ell + 2 \ell + 1 m + 1} \right.
+\left\langle \left( \ell + \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell m \frac{1}{2} \frac{1}{2} \right\rangle = \alpha = \sqrt{\frac{\ell + m + 1}{2 \ell + 1}} \right.
 ```
 
 ```math
-\left\langle \left( \ell + \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell ( m + 1 ) \frac{1}{2} \frac{- 1}{2} \right\rangle = \beta = \sqrt{2 \ell - m \ell + 1} \right.
+\left\langle \left( \ell + \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell ( m + 1 ) \frac{1}{2} \frac{- 1}{2} \right\rangle = \beta = \sqrt{\frac{\ell - m}{2 \ell + 1}} \right.
 ```
 
 ```math
@@ -16731,11 +16731,11 @@ audio
 Similarly
 
 ```math
-\left\langle \left( \ell - \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell m \frac{1}{2} \frac{1}{2} \right\rangle = \sqrt{2 \ell - m \ell + 1} \right.
+\left\langle \left( \ell - \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell m \frac{1}{2} \frac{1}{2} \right\rangle = \sqrt{\frac{\ell - m}{2 \ell + 1}} \right.
 ```
 
 ```math
-\left\langle \left( \ell - \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell ( m + 1 ) \frac{1}{2} \frac{- 1}{2} \right\rangle = - \sqrt{\ell + 2 \ell + 1 m + 1} \right.
+\left\langle \left( \ell - \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell ( m + 1 ) \frac{1}{2} \frac{- 1}{2} \right\rangle = - \sqrt{\frac{\ell + m + 1}{2 \ell + 1}} \right.
 ```
 
 ## <a id="s-21-8-5-counting-the-states-for-ell-1-ell-2-leq-j-leq-ell-1-ell-2"></a>21.8.5 Counting the States for $`| \ell_{1} - \ell_{2} |\leq j \leq \ell_{1} + \ell_{2}`$.
@@ -17747,7 +17747,7 @@ We already know how to write in terms of these states of definite $`m_{\ell}`$ a
 ```
 
 ```math
-\beta = \sqrt{2 \ell - m \ell + 1}
+\beta = \sqrt{\frac{\ell - m}{2 \ell + 1}}
 ```
 
 Let’s do the $`j = \ell + \tfrac{1}{2}`$ state first.
@@ -20149,7 +20149,7 @@ We will attempt to clearly separate the terms due to $`\langle \varphi_{n} | \ha
 The integral with **three spherical harmonics** in each term looks a bit difficult, but, we can use a **Clebsch-Gordan series like the one in addition of angular momentum** to help us solve the problem. We will write the product of two spherical harmonics in terms of a sum of spherical harmonics. Its very similar to adding the angular momentum from the two $`Y`$ s. **Its the same** **series as we had for addition of angular momentum (up to a constant)**. (Note that things will be very simple if either the initial or the final state have $`\ell`$ = 0, a case we will work out below for transitions to s states.) The general formula for rewriting the product of two spherical harmonics (which are functions of the same coordinates) is
 
 ```math
-Y_{\ell_{1} m_{1}} ( \theta ,\varphi ) Y_{\ell_{2} m_{2}} ( \theta ,\varphi ) = \sum_{\ell = | \ell_{1} - \ell_{2} |}^{\ell_{1} + \ell_{2}} \sqrt{( 2 \ell_{1} + 1 ) ( 2 \ell_{2} + 1 ) 4 \pi ( 2 \ell + 1 )} \langle \ell 0 | \ell_{1} \ell_{2} 0 0 \rangle \langle \ell ( m_{1} + m_{2} ) | \ell_{1} \ell_{2} m_{1} m_{2} \rangle Y_{\ell ( m_{1} + m_{2} )} ( \theta ,\varphi )
+Y_{\ell_{1} m_{1}} ( \theta ,\varphi ) Y_{\ell_{2} m_{2}} ( \theta ,\varphi ) = \sum_{\ell = | \ell_{1} - \ell_{2} |}^{\ell_{1} + \ell_{2}} \sqrt{\frac{( 2 \ell_{1} + 1 ) ( 2 \ell_{2} + 1 )}{4 \pi ( 2 \ell + 1 )}} \langle \ell 0 | \ell_{1} \ell_{2} 0 0 \rangle \langle \ell ( m_{1} + m_{2} ) | \ell_{1} \ell_{2} m_{1} m_{2} \rangle Y_{\ell ( m_{1} + m_{2} )} ( \theta ,\varphi )
 ```
 
 The square root and $`\langle \ell 0 | \ell_{1} \ell_{2} 0 0 \rangle`$ can be thought of as a normalization constant in an otherwise normal Clebsch-Gordan series. (Note that the normal addition of the orbital angular momenta of two particles would have product states of two spherical harmonics in **different coordinates**, the coordinates of particle one and of particle two.) (The derivation of the above equation involves a somewhat detailed study of the properties of rotation matrices and would take us pretty far off the current track (See Merzbacher page 396).)
@@ -20157,7 +20157,7 @@ The square root and $`\langle \ell 0 | \ell_{1} \ell_{2} 0 0 \rangle`$ can be th
 First add the angular momentum from the initial state $`( Y_{\ell_{i} m_{i}} )`$ and the photon $`( Y_{1 m} )`$ using the Clebsch-Gordan series, with the usual notation for the **Clebsch-Gordan coefficients** $`\langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} m \rangle`$.
 
 ```math
-Y_{1 m} ( \theta ,\varphi ) Y_{\ell_{i} m_{i}} ( \theta ,\varphi ) = \sum_{\ell = | \ell_{i} - 1 |}^{\ell_{i} + 1} \sqrt{4 3 ( 2 \ell_{i} + 1 ) \pi ( 2 \ell + 1 )} \langle \ell 0 | \ell_{i} 1 0 0 \rangle \langle \ell ( m + m_{i} ) | \ell_{i} 1 m_{i} m \rangle Y_{\ell ( m_{i} + m )} ( \theta ,\varphi )
+Y_{1 m} ( \theta ,\varphi ) Y_{\ell_{i} m_{i}} ( \theta ,\varphi ) = \sum_{\ell = | \ell_{i} - 1 |}^{\ell_{i} + 1} \sqrt{\frac{3 ( 2 \ell_{i} + 1 )}{4 \pi ( 2 \ell + 1 )}} \langle \ell 0 | \ell_{i} 1 0 0 \rangle \langle \ell ( m + m_{i} ) | \ell_{i} 1 m_{i} m \rangle Y_{\ell ( m_{i} + m )} ( \theta ,\varphi )
 ```
 
 <div align="right"><a href="book.pdf#page=403" target="_blank" title="This page in the PDF"><sup>[p. 403]</sup></a></div>
@@ -20165,17 +20165,17 @@ Y_{1 m} ( \theta ,\varphi ) Y_{\ell_{i} m_{i}} ( \theta ,\varphi ) = \sum_{\ell 
 <a id="p404" href="book.pdf#page=404" target="_blank" title="This page in the PDF"><sup>[p. 404]</sup></a>
 
 ```math
-\begin{aligned} \int d \Omega Y_{\ell_{n} m_{n}}^{*} Y_{1 m} Y_{\ell_{i} m_{i}} &= \sqrt{4 3 ( 2 \ell_{i} + 1 ) \pi ( 2 \ell_{n} + 1 )} \langle \ell_{n} 0 | \ell_{i} 1 0 0 \rangle \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} m \rangle \\ & \quad \int d \Omega Y_{\ell_{n} m_{n}}^{*} \left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \right) Y_{\ell_{i} m_{i}} \end{aligned}
+\begin{aligned} \int d \Omega Y_{\ell_{n} m_{n}}^{*} Y_{1 m} Y_{\ell_{i} m_{i}} &= \sqrt{\frac{3 ( 2 \ell_{i} + 1 )}{4 \pi ( 2 \ell_{n} + 1 )}} \langle \ell_{n} 0 | \ell_{i} 1 0 0 \rangle \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} m \rangle \\ & \quad \int d \Omega Y_{\ell_{n} m_{n}}^{*} \left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \right) Y_{\ell_{i} m_{i}} \end{aligned}
 ```
 
 ```math
-= \sqrt{4 3 ( 2 \ell_{i} + 1 ) \pi ( 2 \ell_{n} + 1 )} \langle \ell_{n} 0 | \ell_{i} 1 0 0 \rangle \left( \epsilon_{z} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} 0 \rangle + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} 1 \rangle + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} - 1 \rangle \right)
+= \sqrt{\frac{3 ( 2 \ell_{i} + 1 )}{4 \pi ( 2 \ell_{n} + 1 )}} \langle \ell_{n} 0 | \ell_{i} 1 0 0 \rangle \left( \epsilon_{z} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} 0 \rangle + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} 1 \rangle + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} - 1 \rangle \right)
 ```
 
 I remind you that the Clebsch-Gordan coefficients in these equations are just numbers which are less than one. They can often be shown to be zero if the angular momentum doesn’t add up. The equation we derive can be used to give us a great deal of information.
 
 ```math
-\begin{aligned} \langle \varphi_{n} | \hat{\epsilon} \cdot \vec{r} | \varphi_{i} \rangle &= \sqrt{( 2 ( 2 \ell_{i} + 1 ) \ell_{n} + 1 )} \langle \ell_{n} 0 | \ell_{i} 1 0 0 \rangle \int^{\infty} r^{3} drR_{n_{n} \ell_{n}}^{*} R_{n_{i} \ell_{i}} \\ & \quad \left( \epsilon_{z} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} 0 \rangle + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}}^{0} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} 1 \rangle + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} - 1 \rangle \right) \end{aligned}
+\begin{aligned} \langle \varphi_{n} | \hat{\epsilon} \cdot \vec{r} | \varphi_{i} \rangle &= \sqrt{\frac{( 2 \ell_{i} + 1 )}{( 2 \ell_{n} + 1 )}} \langle \ell_{n} 0 | \ell_{i} 1 0 0 \rangle \int^{\infty} r^{3} drR_{n_{n} \ell_{n}}^{*} R_{n_{i} \ell_{i}} \\ & \quad \left( \epsilon_{z} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} 0 \rangle + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}}^{0} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} 1 \rangle + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} - 1 \rangle \right) \end{aligned}
 ```
 
 We know, from the addition of angular momentum, that adding angular momentum 1 to $`\ell_{1}`$ can only give answers in the range $`| \ell_{1} - 1 | <\ell_{n} <\ell_{1}`$ + 1 so the change in in $`\ell`$ between the initial and final state can only be ∆$`\ell`$ = 0$`, \pm 1`$. For other values, all the Clebsch-Gordan coefficients above will be zero.
@@ -22813,7 +22813,7 @@ a_{k,\alpha}^{\dagger} ( t ) = a_{k,\alpha}^{\dagger} ( 0 ) e^{i\omega t}
 We can now write the quantized radiation field in terms of the operators at $`t`$ = 0.
 
 ```math
-A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha}^{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
+A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 Again, the 4-vector $`x_{\rho}`$ is a **parameter of this field**, not the location of a photon. The **field** **operator is Hermitian** and the field itself is real.
@@ -22839,23 +22839,23 @@ Of course the average value of the Electric or Magnetic field vector is zero by 
 ```
 
 ```math
-A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha}^{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
+A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 ```math
-\vec{A} = \frac{1}{\sqrt{V}} \sum_{k\alpha}^{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} \hat{\epsilon}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
+\vec{A} = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \hat{\epsilon}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 ```math
-\vec{E} = - i \frac{1}{c} \frac{1}{\sqrt{V}} \sum_{k\alpha}^{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} \hat{\epsilon}^{( \alpha )} \left( - \omega a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + \omega a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
+\vec{E} = - i \frac{1}{c} \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \hat{\epsilon}^{( \alpha )} \left( - \omega a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + \omega a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 ```math
-\vec{E} = \frac{i}{\sqrt{V}} \sum_{k\alpha}^{\sqrt{\frac{\hbar \omega}{2}}} \hat{\epsilon}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} - a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
+\vec{E} = \frac{i}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar \omega}{2}} \hat{\epsilon}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} - a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 ```math
-\vec{E} | 0 \rangle = \frac{i}{\sqrt{V}} \sum_{k\alpha}^{\sqrt{\frac{\hbar \omega}{2}}} \hat{\epsilon}^{( \alpha )} \left( - a_{k,\alpha}^{\dagger} e^{- ik_{\rho} x_{\rho}} \right) | 0 \rangle
+\vec{E} | 0 \rangle = \frac{i}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar \omega}{2}} \hat{\epsilon}^{( \alpha )} \left( - a_{k,\alpha}^{\dagger} e^{- ik_{\rho} x_{\rho}} \right) | 0 \rangle
 ```
 
 ```math
@@ -23210,7 +23210,7 @@ The scattering process clearly requires terms in $`H_{int}`$ that **annihilate o
 Start with the first order perturbation theory term. All the terms in the sum that do not annihilate the initial state photon and create the final state photon give zero. We will assume that the wavelength of the photon’s is long compared to the size of the atom so that $`e^{i \vec{k} \cdot \vec{r}} \approx 1`$.
 
 ```math
-A_{\mu} ( x ) = \frac{1}{\sqrt{V}} \sum_{k\alpha}^{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
+A_{\mu} ( x ) = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 ```math
@@ -23252,7 +23252,7 @@ Recall that the absolute square of the time integral will turn into 2$`\pi t\del
 Now we very carefully put the interaction term into the formula for **second order time dependent** **perturbation theory**, again using $`e^{i \vec{k} \cdot \vec{x}} \approx 1`$. Our notation is that the **intermediate state of** **atom and field is called** $`| I \rangle = | j,n_{\vec{k} ,\alpha} ,n_{\vec{k}^{\prime} ,\alpha^{\prime}} \rangle`$ where $`j`$ represents the state of the atom and we may have zero or two photons, as indicated in the diagram.
 
 ```math
-\begin{aligned} \mathcal{V} &= - \frac{e}{mc} \vec{A} \cdot \vec{p} = - \frac{e}{mc} \frac{1}{\sqrt{V}} \sum_{\vec{k} \alpha}^{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} \hat{\epsilon}^{( \alpha )} \cdot \vec{p} \left( a_{k,\alpha} e^{- i\omega t} + a_{k,\alpha}^{\dagger} e^{i\omega t} \right) \\ c_{n}^{( 2 )} ( t ) &= \frac{- 1}{\hbar^{2}} \sum \int^{t} dt_{2} \mathcal{V}_{nI} ( t_{2} ) e^{i\omega_{nj} t_{2}} \int^{t_{2}} dt_{1} e^{i\omega_{ji} t_{1}} \mathcal{V}_{Ii} ( t_{1} ) \\ c_{n ; \vec{k}^{\prime} \hat{\epsilon}^{( \alpha \prime )}}^{( 2 )} ( t ) &= \frac{- e^{2}}{m^{2} c^{2} \hbar^{2}} \sum_{I}^{j, \vec{k} ,\alpha 0} \frac{1}{V} \frac{\hbar c^{2}}{2 \sqrt{\omega^{\prime} \omega}} \int_{0}^{t} dt_{2}^{0} \langle n ; \vec{k}^{\prime} \hat{\epsilon}^{( \alpha^{\prime} )} | ( \hat{\epsilon}^{( \alpha )} a_{k,\alpha} e^{- i\omega t_{2}} + \hat{\epsilon}^{( \alpha^{\prime} )} a_{k^{\prime} ,\alpha^{\prime}}^{\dagger} e^{i\omega^{\prime} t_{2}} ) \cdot \vec{p} | I \rangle e^{i\omega_{nj} t_{2}} \end{aligned}
+\begin{aligned} \mathcal{V} &= - \frac{e}{mc} \vec{A} \cdot \vec{p} = - \frac{e}{mc} \frac{1}{\sqrt{V}} \sum_{\vec{k} \alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \hat{\epsilon}^{( \alpha )} \cdot \vec{p} \left( a_{k,\alpha} e^{- i\omega t} + a_{k,\alpha}^{\dagger} e^{i\omega t} \right) \\ c_{n}^{( 2 )} ( t ) &= \frac{- 1}{\hbar^{2}} \sum \int^{t} dt_{2} \mathcal{V}_{nI} ( t_{2} ) e^{i\omega_{nj} t_{2}} \int^{t_{2}} dt_{1} e^{i\omega_{ji} t_{1}} \mathcal{V}_{Ii} ( t_{1} ) \\ c_{n ; \vec{k}^{\prime} \hat{\epsilon}^{( \alpha \prime )}}^{( 2 )} ( t ) &= \frac{- e^{2}}{m^{2} c^{2} \hbar^{2}} \sum_{I}^{j, \vec{k} ,\alpha 0} \frac{1}{V} \frac{\hbar c^{2}}{2 \sqrt{\omega^{\prime} \omega}} \int_{0}^{t} dt_{2}^{0} \langle n ; \vec{k}^{\prime} \hat{\epsilon}^{( \alpha^{\prime} )} | ( \hat{\epsilon}^{( \alpha )} a_{k,\alpha} e^{- i\omega t_{2}} + \hat{\epsilon}^{( \alpha^{\prime} )} a_{k^{\prime} ,\alpha^{\prime}}^{\dagger} e^{i\omega^{\prime} t_{2}} ) \cdot \vec{p} | I \rangle e^{i\omega_{nj} t_{2}} \end{aligned}
 ```
 
 ```math
@@ -23584,7 +23584,7 @@ H_{int} = - \frac{e}{mc} \vec{A} \cdot \vec{p}
 ```
 
 ```math
-\vec{A} = \frac{1}{\sqrt{V}} \sum_{\vec{k} ,\alpha}^{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} \hat{\epsilon}^{( \alpha )} \left( a_{\vec{k} ,\alpha} e^{i ( \vec{k} \cdot \vec{x} - \omega t )} + a_{\vec{k} ,\alpha}^{\dagger} e^{- i ( \vec{k} \cdot \vec{x} - \omega t )} \right)
+\vec{A} = \frac{1}{\sqrt{V}} \sum_{\vec{k} ,\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \hat{\epsilon}^{( \alpha )} \left( a_{\vec{k} ,\alpha} e^{i ( \vec{k} \cdot \vec{x} - \omega t )} + a_{\vec{k} ,\alpha}^{\dagger} e^{- i ( \vec{k} \cdot \vec{x} - \omega t )} \right)
 ```
 
 This contains a term causing absorption of a photon and another term causing emission. We separate the terms for absorption and emission and pull out the time dependence.
@@ -23594,11 +23594,11 @@ H_{int} = \sum_{\vec{k} ,\alpha} \left( H_{\vec{k} ,\alpha}^{abs} e^{- i\omega t
 ```
 
 ```math
-H^{abs} = - \sqrt{2 m \hbar e^{2 2} \omega V} a_{\vec{k} ,\alpha} e^{i \vec{k} \cdot \vec{x}} \vec{p} \cdot \hat{\epsilon}^{( \alpha )}
+H^{abs} = - \sqrt{\frac{\hbar e^{2}}{2 m^{2} \omega V}} a_{\vec{k} ,\alpha} e^{i \vec{k} \cdot \vec{x}} \vec{p} \cdot \hat{\epsilon}^{( \alpha )}
 ```
 
 ```math
-H^{emit} = - \sqrt{2 m \hbar e^{2 2} \omega V} a_{\vec{k} ,\alpha}^{\dagger} e^{- i \vec{k} \cdot \vec{x}} \vec{p} \cdot \hat{\epsilon}^{( \alpha )}
+H^{emit} = - \sqrt{\frac{\hbar e^{2}}{2 m^{2} \omega V}} a_{\vec{k} ,\alpha}^{\dagger} e^{- i \vec{k} \cdot \vec{x}} \vec{p} \cdot \hat{\epsilon}^{( \alpha )}
 ```
 
 The initial and final state is the same $`| n \rangle`$, and second order perturbation theory will involve a **sum** **over intermediate atomic states,** $`| j \rangle`$ **and photon states**. We will use the matrix elements of the interaction Hamiltonian between those states.
@@ -25087,17 +25087,17 @@ N^{2} \left( \frac{2 | E |}{( | E | + mc^{2} )} \right) = \frac{1}{V}
 ```
 
 ```math
-N = \sqrt{| E | + mc^{2} 2 | E | V}
+N = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}}
 ```
 
 We have the **four solutions with for a free particle with momentum** $`\vec{p}`$. For solutions 1 and 2, $`E`$ is a positive number. For solutions 3 and 4, $`E`$ is negative.
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = \sqrt{| E | + mc^{2} 2 | E | V} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 2 )} = \sqrt{| E | + mc^{2} 2 | E | V} \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} - ip_{y} ) c} 1}{E \frac{- p_{z} c}{E + mc^{2}} + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 2 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} - ip_{y} ) c} 1}{E \frac{- p_{z} c}{E + mc^{2}} + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-\psi_{\vec{p}}^{( 3 )} = \sqrt{| E | + mc^{2} 2 | E | V} \begin{pmatrix} \frac{- \frac{- p_{z} c}{- E + mc^{2}} ( p_{x} + ip_{y} ) c}{{}^{- E +} 1^{mc^{2}}} \\ 0 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 4 )} = \sqrt{| E | + mc^{2} 2 | E | V} \begin{pmatrix} {}^{\tfrac{- ( p_{x} - ip_{y} ) c}{\frac{- E p + {}_{z} mc c^{2}}{- E + mc^{2}}}} 0 \\ 1 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 3 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{- \frac{- p_{z} c}{- E + mc^{2}} ( p_{x} + ip_{y} ) c}{{}^{- E +} 1^{mc^{2}}} \\ 0 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 4 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \tfrac{- ( p_{x} - ip_{y} ) c}{\frac{- E p + {}_{z} mc c^{2}}{- E + mc^{2}}} \\ 0 \\ 1 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 The spinors are **orthogonal** for states with the same momentum and the free particle waves are orthogonal for different momenta. Note that the orthogonality condition is the same as for non-relativistic spinors
@@ -25109,11 +25109,11 @@ The spinors are **orthogonal** for states with the same momentum and the free pa
 It is useful to write the plane wave states as a spinor $`u_{\vec{p}}^{( r )}`$ times an exponential. Sakurai picks a normalization of the spinor so that $`u^{\dagger} u`$ transforms like the fourth component of a vector. We will follow the same convention.
 
 ```math
-\psi_{\vec{p}}^{( r )} \equiv \sqrt{| mc^{2} E | V} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( r )} \equiv \sqrt{\frac{mc^{2}}{| E | V}} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-\begin{aligned} u_{\vec{p}}^{( 1 )} &= \sqrt{E 2 mc^{2} + mc^{2}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} \quad u_{\vec{p}}^{( 2 )} = \sqrt{E 2 mc^{2} + mc^{2}} \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} -} 1_{ip_{y} ) c}}{\frac{- p_{z} c}{E + mc^{2}} E + mc^{2}} \end{pmatrix} \\ u_{\vec{p}}^{( 3 )} &= \sqrt{- E 2 mc^{2} + mc^{2}} \begin{pmatrix} \frac{- \frac{- p_{z} c}{- E + mc^{2}} ( p_{x} + ip_{y} ) c}{{}^{- E +} 1^{mc^{2}}} \\ 0 \end{pmatrix} \quad u_{\vec{p}}^{( 4 )} = \sqrt{- E 2 mc^{2} + mc^{2}} \begin{pmatrix} {}^{\tfrac{- ( p_{x} - ip_{y} ) c}{\frac{- E p + {}_{z} mc c^{2}}{- E + mc^{2}}}} 0 \\ 1 \end{pmatrix} \end{aligned}
+\begin{aligned} u_{\vec{p}}^{( 1 )} &= \sqrt{\frac{E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} \quad u_{\vec{p}}^{( 2 )} = \sqrt{\frac{E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} -} 1_{ip_{y} ) c}}{\frac{- p_{z} c}{E + mc^{2}} E + mc^{2}} \end{pmatrix} \\ u_{\vec{p}}^{( 3 )} &= \sqrt{\frac{- E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} \frac{- \frac{- p_{z} c}{- E + mc^{2}} ( p_{x} + ip_{y} ) c}{{}^{- E +} 1^{mc^{2}}} \\ 0 \end{pmatrix} \quad u_{\vec{p}}^{( 4 )} = \sqrt{\frac{- E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} \tfrac{- ( p_{x} - ip_{y} ) c}{\frac{- E p + {}_{z} mc c^{2}}{- E + mc^{2}}} \\ 0 \\ 1 \end{pmatrix} \end{aligned}
 ```
 
 <div align="right"><a href="book.pdf#page=502" target="_blank" title="This page in the PDF"><sup>[p. 502]</sup></a></div>
@@ -25205,11 +25205,11 @@ Since $`E`$ is negative for the “negative energy” solution, the **probabilit
 Start from the four plane wave solutions: 1 and 2 with positive energy and 3 and 4 with negative. There are four solutions for each choice of momentum $`\vec{p}`$.
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = \sqrt{| E | + mc^{2} 2 | E | V} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 2 )} = \sqrt{| E | + mc^{2} 2 | E | V} \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} - ip_{y} ) c} 1}{E \frac{- p_{z} c}{E + mc^{2}} + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 2 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} - ip_{y} ) c} 1}{E \frac{- p_{z} c}{E + mc^{2}} + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-\psi_{\vec{p}}^{( 3 )} = \sqrt{| E | + mc^{2} 2 | E | V} \begin{pmatrix} \frac{- \frac{- p_{z} c}{- E + mc^{2}} ( p_{x} + ip_{y} ) c}{{}^{- E +} 1^{mc^{2}}} \\ 0 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 4 )} = \sqrt{| E | + mc^{2} 2 | E | V} \begin{pmatrix} \frac{- ( p_{x} - ip_{y} ) c}{\frac{- E p + {}_{z} mc c^{2}}{{}^{- E +} 0^{mc^{2}}}} \\ 1 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 3 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{- \frac{- p_{z} c}{- E + mc^{2}} ( p_{x} + ip_{y} ) c}{{}^{- E +} 1^{mc^{2}}} \\ 0 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 4 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{- ( p_{x} - ip_{y} ) c}{\frac{- E p + {}_{z} mc c^{2}}{{}^{- E +} 0^{mc^{2}}}} \\ 1 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 Concentrate on the exponential which determines the wave property. For solutions 3 and 4, both the phase and group velocity are in the opposite direction to the momentum, indicating we have a problem that was not seen in non-relativistic quantum mechanics.
@@ -25231,11 +25231,11 @@ Clearly, we want waves that propagate in the right direction. Perhaps the moment
 For solutions 3 and 4, pick the solution for $`- \vec{p}`$ to classify with solutions 1 and 2 with momentum $`\vec{p}`$ **write everything in terms of the positive square root** $`E = \sqrt{p^{2} c^{2} + m^{2} c^{4}}`$.
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = \sqrt{E 2 EV + mc^{2}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 2 )} = \sqrt{E 2 EV + mc^{2}} \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} - ip_{y} ) c} 1}{E \frac{- p_{z} c}{E + mc^{2}} + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 2 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} - ip_{y} ) c} 1}{E \frac{- p_{z} c}{E + mc^{2}} + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-\psi_{\vec{p}}^{( 3 )} = \sqrt{E 2 EV + mc^{2}} \begin{pmatrix} \frac{( p \frac{p_{z} c}{E + mc^{2}}_{x} + ip_{y} ) c}{{}^{E + mc^{2}} 1} \\ 0 \end{pmatrix} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 4 )} = \sqrt{| E | + mc^{2} 2 | E | V} \begin{pmatrix} \frac{( p_{x} - ip_{y} ) c}{\frac{E + mc^{2} - p_{z} c}{{}^{E + mc^{2}} 0}} \\ 1 \end{pmatrix} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 3 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} \frac{( p \frac{p_{z} c}{E + mc^{2}}_{x} + ip_{y} ) c}{{}^{E + mc^{2}} 1} \\ 0 \end{pmatrix} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 4 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{( p_{x} - ip_{y} ) c}{\frac{E + mc^{2} - p_{z} c}{{}^{E + mc^{2}} 0}} \\ 1 \end{pmatrix} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 We have plane waves of the form
@@ -25593,7 +25593,7 @@ As an example, we might try our solution for a free electron with spin up along 
 The solution we found for a free particle with momentum $`\vec{p}`$ was.
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = \sqrt{E 2 EV + mc^{2}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} e^{ip_{\rho} x_{\rho} / \hbar}
+\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} e^{ip_{\rho} x_{\rho} / \hbar}
 ```
 
 Imagine we boost the coordinate system along the $`- x`$ direction with $`\tfrac{v}{c} = \beta`$. We can transform the momentum of the electron to the new frame.
@@ -25605,7 +25605,7 @@ p_{\nu}^{\prime} = a_{\mu \nu}^{( boost )} p_{\nu} = \begin{pmatrix} \gamma & 0 
 The momentum along the x direction is $`p_{x} = \beta \gamma mc = mc \sinh \chi`$. We now have two ways to get the free particle state with momentum in the x direction. We can use our free particle state
 
 ```math
-\psi^{( 1 )} = \sqrt{E 2 EV^{\prime} + mc^{2}} \begin{pmatrix} 1 \\ 0 \\ \frac{{}_{p_{x}} 0_{c}}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi^{( 1 )} = \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ \frac{{}_{p_{x}} 0_{c}}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 <div align="right"><a href="book.pdf#page=511" target="_blank" title="This page in the PDF"><sup>[p. 511]</sup></a></div>
@@ -25613,27 +25613,27 @@ The momentum along the x direction is $`p_{x} = \beta \gamma mc = mc \sinh \chi`
 <a id="p512" href="book.pdf#page=512" target="_blank" title="This page in the PDF"><sup>[p. 512]</sup></a>
 
 ```math
-= \sqrt{E 2 EV^{\prime} + mc^{2}} \begin{pmatrix} 1 \\ 0 \\ \frac{{}_{\beta \gamma mc^{2}} 0}{\gamma mc^{2} + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ \frac{{}_{\beta \gamma mc^{2}} 0}{\gamma mc^{2} + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-= \sqrt{E 2 EV^{\prime} + mc^{2}} \begin{pmatrix} 1 \\ 0 \\ \frac{{}_{\beta \gamma} 0}{\gamma + 1} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ \frac{{}_{\beta \gamma} 0}{\gamma + 1} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-= \sqrt{E 2 EV^{\prime} + mc^{2}} \begin{pmatrix} 1 \\ 0 \\ \frac{{}_{\sinh} 0_{\chi}}{\cosh \chi + 1} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ \frac{{}_{\sinh} 0_{\chi}}{\cosh \chi + 1} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-= \sqrt{E 2 EV^{\prime} + mc^{2}} \begin{pmatrix} 1 \\ 0 \\ \frac{{}_{2 \sinh_{\overline{2}}^{\chi}} 0_{\cosh \tfrac{\chi}{2}}}{\cosh^{2} \tfrac{\chi}{2} + \sinh^{2} \tfrac{\chi}{2} + \cosh^{2} \tfrac{\chi}{2} - \sinh^{2} \tfrac{\chi}{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ \frac{{}_{2 \sinh_{\overline{2}}^{\chi}} 0_{\cosh \tfrac{\chi}{2}}}{\cosh^{2} \tfrac{\chi}{2} + \sinh^{2} \tfrac{\chi}{2} + \cosh^{2} \tfrac{\chi}{2} - \sinh^{2} \tfrac{\chi}{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-= \sqrt{E 2 EV^{\prime} + mc^{2}} \begin{pmatrix} 1 \\ 0 \\ \frac{{}_{2 \sinh_{\overline{2}}^{\chi}} 0_{\cosh \tfrac{\chi}{2}}}{2 \cosh^{2} \tfrac{\chi}{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ \frac{{}_{2 \sinh_{\overline{2}}^{\chi}} 0_{\cosh \tfrac{\chi}{2}}}{2 \cosh^{2} \tfrac{\chi}{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-= \sqrt{E 2 EV^{\prime} + mc^{2}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ \tanh \tfrac{\chi}{2} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ \tanh \tfrac{\chi}{2} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 where the normalization factor is now set to be $`\frac{1}{\sqrt{V^{\prime}}}`$, defining this as the primed system.
@@ -25681,19 +25681,19 @@ S_{boost} = \cosh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2}
 ```
 
 ```math
-\cosh \frac{\chi}{2} = \sqrt{1 + \cosh 2 \chi} = \sqrt{1 + 2 \gamma} = \sqrt{E 2 mc^{2} + mc^{2}}
+\cosh \frac{\chi}{2} = \sqrt{\frac{1 + \cosh \chi}{2}} = \sqrt{\frac{1 + \gamma}{2}} = \sqrt{\frac{E + mc^{2}}{2 mc^{2}}}
 ```
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = \frac{1}{\sqrt{V}} \sqrt{E 2 mc^{2} + mc^{2}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ \tanh \tfrac{\chi}{2} \end{pmatrix} e^{ip_{\rho} x_{\rho} / \hbar}
+\psi_{\vec{p}}^{( 1 )} = \frac{1}{\sqrt{V}} \sqrt{\frac{E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ \tanh \tfrac{\chi}{2} \end{pmatrix} e^{ip_{\rho} x_{\rho} / \hbar}
 ```
 
 ```math
-= \frac{1}{\sqrt{\gamma V^{\prime}}} \sqrt{E 2 mc^{2} + mc^{2}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ \tanh \tfrac{\chi}{2} \end{pmatrix} e^{ip_{\rho} x_{\rho} / \hbar}
+= \frac{1}{\sqrt{\gamma V^{\prime}}} \sqrt{\frac{E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ \tanh \tfrac{\chi}{2} \end{pmatrix} e^{ip_{\rho} x_{\rho} / \hbar}
 ```
 
 ```math
-= \sqrt{E 2 EV^{\prime} + mc^{2}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ \tanh \tfrac{\chi}{2} \end{pmatrix} e^{ip_{\rho} x_{\rho} / \hbar}
+= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ \tanh \tfrac{\chi}{2} \end{pmatrix} e^{ip_{\rho} x_{\rho} / \hbar}
 ```
 
 In the last step the simple Lorentz contraction was used to set $`V^{\prime}`$ = $`\frac{V}{\gamma}`$. This **boosted state** **matches the plane wave solution including the normalization**.
@@ -26247,7 +26247,7 @@ There is a steady motion in the direction of the momentum with the correct magni
 To show how the negative energy states play a role in Zitterbewegung, it is convenient to go back to the Schrödinger representation and expand an arbitrary state in terms of plane waves. As with non-relativistic quantum mechanics, the (free particle) **definite momentum states form a complete** **set** and we can expand any state in terms of them.
 
 ```math
-\psi ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{r = 1}^{{}^{4} \sqrt{| mc^{2} E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{r = 1}^{4} \sqrt{\frac{mc^{2}}{| E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 The $`r`$ = 1$`, 2`$ terms are positive energy plane waves and the $`r`$ = 3$`, 4`$ states are “negative energy”. The differing signs of the energy in the time behavior will give rise to rapid oscillations.
@@ -26275,11 +26275,11 @@ The expected value of the velocity in a plane wave state can be simply calculate
 ```
 
 ```math
-( ic\gamma_{4} \gamma_{1} ) u_{\vec{p}}^{( 1 )} = c \begin{pmatrix} 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0 \end{pmatrix} \sqrt{E 2 EV + mc^{2}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix}
+( ic\gamma_{4} \gamma_{1} ) u_{\vec{p}}^{( 1 )} = c \begin{pmatrix} 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0 \end{pmatrix} \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix}
 ```
 
 ```math
-( ic\gamma_{4} \gamma_{1} ) u_{\vec{p}}^{( 1 )} = c \sqrt{E 2 EV + mc^{2}} \begin{pmatrix} \frac{( p_{x} + ip_{y} ) c}{\frac{E + p_{z} mc c^{2}}{{}^{E + mc^{2}} 0}} \\ 1 \end{pmatrix}
+( ic\gamma_{4} \gamma_{1} ) u_{\vec{p}}^{( 1 )} = c \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} \frac{( p_{x} + ip_{y} ) c}{\frac{E + p_{z} mc c^{2}}{{}^{E + mc^{2}} 0}} \\ 1 \end{pmatrix}
 ```
 
 ```math
@@ -26661,11 +26661,11 @@ These equations are true for any spherically symmetric potential. Now it is time
 <a id="p528" href="book.pdf#page=528" target="_blank" title="This page in the PDF"><sup>[p. 528]</sup></a>
 
 ```math
-\left( \left( \begin{pmatrix} \tfrac{\partial F}{\partial \rho} - \tfrac{\kappa F}{\rho} \\ \tfrac{\partial G}{\partial \rho} + \tfrac{\kappa G}{\rho} \end{pmatrix} \right) \right) = \begin{pmatrix} \left( \begin{pmatrix} \sqrt{k \frac{k_{2}}{k_{1}}} - \tfrac{Z\alpha}{\rho} \\ \sqrt{k_{2}^{1}} + \tfrac{Z\alpha}{\rho} \end{pmatrix} \right) G \\ F \end{pmatrix}
+\left( \left( \begin{pmatrix} \tfrac{\partial F}{\partial \rho} - \tfrac{\kappa F}{\rho} \\ \tfrac{\partial G}{\partial \rho} + \tfrac{\kappa G}{\rho} \end{pmatrix} \right) \right) = \begin{pmatrix} \left( \begin{pmatrix} \sqrt{\frac{\frac{k_{2}}{k_{1}}}{\frac{k_{1}}{k_{2}}}} - \tfrac{Z\alpha}{\rho} \\ \sqrt{\quad + \tfrac{Z\alpha}{\rho}} \end{pmatrix} \right) G \\ F \end{pmatrix}
 ```
 
 ```math
-\begin{pmatrix} \left( \tfrac{\partial}{\partial \rho} \tfrac{\partial}{\partial \rho} + - \tfrac{\kappa}{\overline{\rho}}_{\overline{\rho}}^{\kappa} \right) F - \left( \begin{pmatrix} \sqrt{k \frac{k_{2}}{k_{1}}} - \tfrac{Z\alpha}{\rho} \\ \sqrt{k_{2}^{1}} + \tfrac{Z\alpha}{\rho} \end{pmatrix} \right) G \\ G - \quad F \end{pmatrix} = 0
+\begin{pmatrix} \left( \tfrac{\partial}{\partial \rho} \tfrac{\partial}{\partial \rho} + - \tfrac{\kappa}{\overline{\rho}}_{\overline{\rho}}^{\kappa} \right) F - \left( \begin{pmatrix} \sqrt{\frac{\frac{k_{2}}{k_{1}}}{\frac{k_{1}}{k_{2}}}} - \tfrac{Z\alpha}{\rho} \\ \sqrt{\quad + \tfrac{Z\alpha}{\rho}} \end{pmatrix} \right) G \\ G - \quad F \end{pmatrix} = 0
 ```
 
 With the guidance of the non-relativistic solutions, we will **postulate a solution of the form**
@@ -26689,7 +26689,7 @@ The exponential will make everything go to zero for large $`\rho`$ if the power 
 ```
 
 ```math
-\sum_{m = 0}^{\infty} \begin{pmatrix} s + m & s + m - 1 & s + m - 1 & \sqrt{\frac{k_{2}}{k_{1}}}_{s + m} & s + m - 1 \\ - a_{m} \rho & + a_{m} ( s + m ) \rho & - a_{m} \kappa \rho & - b_{m} \quad \rho & + b_{m} Z\alpha \rho \end{pmatrix} = 0
+\sum_{m = 0}^{\infty} \left( - a_{m} \rho^{s + m} + a_{m} ( s + m ) \rho^{s + m - 1} - a_{m} \kappa \rho^{s + m - 1} - b_{m} \sqrt{\frac{k_{2}}{k_{1}}} \rho^{s + m} + b_{m} Z\alpha \rho^{s + m - 1} \right) = 0
 ```
 
 ```math
@@ -27147,11 +27147,11 @@ Of course a second charge conjugation operation takes the state back to the orig
 Applying this to the plane wave solutions gives.
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = \sqrt{| mc^{2} E | V} u_{\vec{p}}^{( 1 )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \to - \sqrt{| mc^{2} E | V} u_{- \vec{p}}^{( 4 )} e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar} \equiv \sqrt{| mc^{2} E | V} v_{\vec{p}}^{( 1 )} e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar}
+\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{mc^{2}}{| E | V}} u_{\vec{p}}^{( 1 )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \to - \sqrt{\frac{mc^{2}}{| E | V}} u_{- \vec{p}}^{( 4 )} e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar} \equiv \sqrt{\frac{mc^{2}}{| E | V}} v_{\vec{p}}^{( 1 )} e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar}
 ```
 
 ```math
-\psi_{\vec{p}}^{( 2 )} = \sqrt{| mc^{2} E | V} u_{\vec{p}}^{( 2 )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \to \quad \sqrt{| mc^{2} E | V} u_{- \vec{p}}^{( 3 )} e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar} \equiv \sqrt{| mc^{2} E | V} v_{\vec{p}}^{( 2 )} e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar}
+\psi_{\vec{p}}^{( 2 )} = \sqrt{\frac{mc^{2}}{| E | V}} u_{\vec{p}}^{( 2 )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \to \quad \sqrt{\frac{mc^{2}}{| E | V}} u_{- \vec{p}}^{( 3 )} e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar} \equiv \sqrt{\frac{mc^{2}}{| E | V}} v_{\vec{p}}^{( 2 )} e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar}
 ```
 
 <div align="right"><a href="book.pdf#page=536" target="_blank" title="This page in the PDF"><sup>[p. 536]</sup></a></div>
@@ -27159,11 +27159,11 @@ Applying this to the plane wave solutions gives.
 <a id="p537" href="book.pdf#page=537" target="_blank" title="This page in the PDF"><sup>[p. 537]</sup></a>
 
 ```math
-\psi_{\vec{p}}^{( 3 )} = \sqrt{| mc^{2} E | V} u_{\vec{p}}^{( 3 )} e^{i ( \vec{p} \cdot \vec{x} + | E | t ) / \hbar} \quad \to \quad \sqrt{| mc^{2} E | V} u_{- \vec{p}}^{( 2 )} e^{i ( - \vec{p} \cdot \vec{x} -| E | t ) / \hbar}
+\psi_{\vec{p}}^{( 3 )} = \sqrt{\frac{mc^{2}}{| E | V}} u_{\vec{p}}^{( 3 )} e^{i ( \vec{p} \cdot \vec{x} + | E | t ) / \hbar} \quad \to \quad \sqrt{\frac{mc^{2}}{| E | V}} u_{- \vec{p}}^{( 2 )} e^{i ( - \vec{p} \cdot \vec{x} -| E | t ) / \hbar}
 ```
 
 ```math
-\psi_{\vec{p}}^{( 4 )} = \sqrt{| mc^{2} E | V} u_{\vec{p}}^{( 4 )} e^{i ( \vec{p} \cdot \vec{x} + | E | t ) / \hbar} \quad \to - \sqrt{| mc^{2} E | V} u_{- \vec{p}}^{( 1 )} e^{i ( - \vec{p} \cdot \vec{x} -| E | t ) / \hbar}
+\psi_{\vec{p}}^{( 4 )} = \sqrt{\frac{mc^{2}}{| E | V}} u_{\vec{p}}^{( 4 )} e^{i ( \vec{p} \cdot \vec{x} + | E | t ) / \hbar} \quad \to - \sqrt{\frac{mc^{2}}{| E | V}} u_{- \vec{p}}^{( 1 )} e^{i ( - \vec{p} \cdot \vec{x} -| E | t ) / \hbar}
 ```
 
 **The charge conjugate of an electron state is the “negative energy” electron state, the** **absence of which would produce a positron of the same energy, momentum, spin, and** **velocity as the electron.** That is, the conjugate is the hole needed to make a positron with the same properties as the electron except that it has opposite charge.
@@ -27171,7 +27171,7 @@ Applying this to the plane wave solutions gives.
 Let us take one more look at a plane wave solution to the Dirac equation, for example $`\psi_{\vec{p}}^{( 1 )}`$ and its charge conjugate, from the point of view that **a positron is an electron moving backward in** **time**. Discard the idea of the “negative energy” sea. Assume that we have found a new solution to the field equations that moves backward in time rather than forward.
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = \sqrt{| mc^{2} E | V} u_{\vec{p}}^{( 1 )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \to - \sqrt{| mc^{2} E | V} u_{- \vec{p}}^{( 4 )} e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar} \equiv \sqrt{| mc^{2} E | V} v_{\vec{p}}^{( 1 )} e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar}
+\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{mc^{2}}{| E | V}} u_{\vec{p}}^{( 1 )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \to - \sqrt{\frac{mc^{2}}{| E | V}} u_{- \vec{p}}^{( 4 )} e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar} \equiv \sqrt{\frac{mc^{2}}{| E | V}} v_{\vec{p}}^{( 1 )} e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar}
 ```
 
 The charge conjugate of the electron solution is an electron with the same charge $`- e`$, opposite momentum $`- \vec{p}`$, and spin opposite to the original state. It satisfies the equation with the signs of the EM fields reversed and, because the sign of the $`Et`$ term in the exponential is reversed, it behaves as a positive energy solution moving backward in time, with the right momentum and spin.
@@ -27275,13 +27275,13 @@ H = \int \psi^{\dagger} \left( \hbar c\gamma_{4} \gamma_{k} \frac{\partial}{\par
 We may expand the field $`\psi`$ in the **complete set of plane waves** either using the four spinors $`u_{\vec{p}}^{( r )}`$ for $`r`$ = 1$`, 2 , 3 , 4`$ or using the electron and positron spinors $`u_{\vec{p}}^{( r )}`$ and $`v_{\vec{p}}^{( r )}`$ for $`r`$ = 1$`, 2`$. For economy of notation, we choose the former with a plan to change to the later once the quantization is completed.
 
 ```math
-\psi ( \vec{x} , t ) = \sum_{\vec{p} \quad r = 1} \sum^{{}^{4} \sqrt{| mc^{2} E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi ( \vec{x} , t ) = \sum_{\vec{p} \quad r = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 The conjugate can also be written out.
 
 ```math
-\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{r = 1}^{4} \sqrt{| mc^{2} E | V} c_{\vec{p} ,r}^{*} u_{\vec{p}}^{( r ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{r = 1}^{4} \sqrt{\frac{mc^{2}}{| E | V}} c_{\vec{p} ,r}^{*} u_{\vec{p}}^{( r ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 <div align="right"><a href="book.pdf#page=539" target="_blank" title="This page in the PDF"><sup>[p. 539]</sup></a></div>
@@ -27295,15 +27295,15 @@ H = \int \psi^{\dagger} \left( \hbar c\gamma_{4} \gamma_{k} \frac{\partial}{\par
 ```
 
 ```math
-H = \int \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} \quad r^{\prime} = 1} \sum^{4} \sqrt{| E mc^{2 \prime} | V} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \left( \hbar c\gamma_{4} \gamma_{k} \frac{\partial}{\partial x_{k}} + mc^{2} \gamma_{4} \right) \sqrt{| mc^{2} E | V} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x
+H = \int \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} \quad r^{\prime} = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E^{\prime} | V}} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \left( \hbar c\gamma_{4} \gamma_{k} \frac{\partial}{\partial x_{k}} + mc^{2} \gamma_{4} \right) \sqrt{\frac{mc^{2}}{| E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x
 ```
 
 ```math
-H = \int \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} \quad r^{\prime} = 1} \sum^{4} \sqrt{| E mc^{2 \prime} | V} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \left( \hbar c\gamma_{4} \gamma_{k} \frac{ip_{k}}{\hbar} + mc^{2} \gamma_{4} \right) \sqrt{| mc^{2} E | V} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x
+H = \int \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} \quad r^{\prime} = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E^{\prime} | V}} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \left( \hbar c\gamma_{4} \gamma_{k} \frac{ip_{k}}{\hbar} + mc^{2} \gamma_{4} \right) \sqrt{\frac{mc^{2}}{| E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x
 ```
 
 ```math
-H = \int \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} \quad r^{\prime} = 1} \sum^{4} \sqrt{| E mc^{2 \prime} | V} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \left( ic\gamma_{4} \gamma_{k} p_{k} + mc^{2} \gamma_{4} \right) \sqrt{| mc^{2} E | V} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x
+H = \int \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} \quad r^{\prime} = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E^{\prime} | V}} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \left( ic\gamma_{4} \gamma_{k} p_{k} + mc^{2} \gamma_{4} \right) \sqrt{\frac{mc^{2}}{| E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x
 ```
 
 ```math
@@ -27369,11 +27369,11 @@ H = \sum_{\vec{p} \quad r = 1} \sum^{4} Eb_{\vec{p}}^{( r )^{\dagger}} b_{\vec{p
 ```
 
 ```math
-\psi ( \vec{x} , t ) = \sum_{\vec{p} \quad r = 1} \sum^{{}^{4} \sqrt{| mc^{2} E | V}} b_{\vec{p}}^{( r )} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi ( \vec{x} , t ) = \sum_{\vec{p} \quad r = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E | V}} b_{\vec{p}}^{( r )} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p} \quad r = 1} \sum^{{}^{4} \sqrt{| mc^{2} E | V}} b_{\vec{p}}^{( r )^{\dagger}} u_{\vec{p}}^{( r ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p} \quad r = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E | V}} b_{\vec{p}}^{( r )^{\dagger}} u_{\vec{p}}^{( r ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 (Since the Fermi-Dirac operators will anti-commute, the analogy is imperfect.)
@@ -27437,11 +27437,11 @@ These **anti-commute** with everything else with the exception that
 The Dirac field and Hamiltonian can now be **rewritten**.
 
 ```math
-\psi ( \vec{x} , t ) = \sum_{\vec{p} \quad s = 1} \sum^{{}^{2} \sqrt{\frac{mc^{2}}{EV}}} \left( b_{\vec{p}}^{( s )} u_{\vec{p}}^{( s )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s ) \dagger} v_{\vec{p}}^{( s )} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
+\psi ( \vec{x} , t ) = \sum_{\vec{p} \quad s = 1} \sum^{2} \sqrt{\frac{mc^{2}}{EV}} \left( b_{\vec{p}}^{( s )} u_{\vec{p}}^{( s )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s ) \dagger} v_{\vec{p}}^{( s )} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
 ```
 
 ```math
-\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p} \quad s = 1} \sum^{{}^{2} \sqrt{\frac{mc^{2}}{EV}}} \left( b_{\vec{p}}^{( s ) \dagger} u_{\vec{p}}^{( s ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s )} v_{\vec{p}}^{( s ) \dagger} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
+\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p} \quad s = 1} \sum^{2} \sqrt{\frac{mc^{2}}{EV}} \left( b_{\vec{p}}^{( s ) \dagger} u_{\vec{p}}^{( s ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s )} v_{\vec{p}}^{( s ) \dagger} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
 ```
 
 ```math
@@ -27519,15 +27519,15 @@ QED is our first complete example of an interacting Quantum Field Theory. It tau
 The primary difference between Quantum Mechanics and Quantum Field Theory is that particles can be created and destroyed. The probability to find an electron or a photon integrated over space does not have to be one. It can change with time. We have written the fields of the photon and the electron in terms of creation and annihilation operators.
 
 ```math
-A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha}^{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + a_{k,\alpha}^{\dagger} ( t ) e^{- i \vec{k} \cdot \vec{x}} \right)
+A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + a_{k,\alpha}^{\dagger} ( t ) e^{- i \vec{k} \cdot \vec{x}} \right)
 ```
 
 ```math
-\psi ( \vec{x} , t ) = \sum_{\vec{p} \quad s = 1} \sum^{{}^{2} \sqrt{\frac{mc^{2}}{EV}}} \left( b_{\vec{p}}^{( s )} u_{\vec{p}}^{( s )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s ) \dagger} v_{\vec{p}}^{( s )} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
+\psi ( \vec{x} , t ) = \sum_{\vec{p} \quad s = 1} \sum^{2} \sqrt{\frac{mc^{2}}{EV}} \left( b_{\vec{p}}^{( s )} u_{\vec{p}}^{( s )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s ) \dagger} v_{\vec{p}}^{( s )} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
 ```
 
 ```math
-\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p} \quad s = 1} \sum^{{}^{2} \sqrt{\frac{mc^{2}}{EV}}} \left( b_{\vec{p}}^{( s ) \dagger} u_{\vec{p}}^{( s ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s )} v_{\vec{p}}^{( s ) \dagger} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
+\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p} \quad s = 1} \sum^{2} \sqrt{\frac{mc^{2}}{EV}} \left( b_{\vec{p}}^{( s ) \dagger} u_{\vec{p}}^{( s ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s )} v_{\vec{p}}^{( s ) \dagger} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
 ```
 
 Note that in the interaction term $`- ie \bar{\psi} \gamma_{\mu} A_{\mu} \psi`$ photons can be created or destroyed singly but that electrons must be created and destroyed along with a positron.
@@ -27809,7 +27809,7 @@ H_{B} = \tfrac{eB}{2 mc} ( L_{z} + 2 S_{z} ) \quad \Delta E_{B} = \tfrac{e \hbar
 \psi_{jm_{j} \ell s} = \sum_{m_{\ell} m_{s}} C ( jm_{j} ; \ell m_{\ell} sm_{s} ) Y_{\ell m_{\ell}} \chi_{sm_{s}} = \sum_{m_{\ell} m_{s}} \langle jm_{j} \ell s | \ell m_{\ell} sm_{s} \rangle Y_{\ell m_{\ell}} \chi_{sm_{s}}
 ```
 
-$`\psi_{j,m_{j}} = \psi_{\ell + \tfrac{1}{2} ,m + \tfrac{1}{2}} = \sqrt{\ell + 2 \ell + 1 m + 1} Y_{\ell m} \chi_{+} + \sqrt{\frac{\ell - m}{2 \ell + 1}} Y_{\ell ,m + 1} \chi_{-}`$ for $`s = \tfrac{1}{2}`$ and any $`\ell`$ $`\psi_{j,m_{j}} = \psi_{\ell - \tfrac{1}{2} ,m + \tfrac{1}{2}} = \sqrt{\frac{\ell - m}{2 \ell + 1}} Y_{\ell m} \chi_{+} - \sqrt{\ell + 2 \ell + 1 m + 1} Y_{\ell ,m + 1} \chi_{-}`$ for $`s = \tfrac{1}{2}`$ and any $`\ell`$
+$`\psi_{j,m_{j}} = \psi_{\ell + \tfrac{1}{2} ,m + \tfrac{1}{2}} = \sqrt{\frac{\ell + m + 1}{2 \ell + 1}} Y_{\ell m} \chi_{+} + \sqrt{\frac{\ell - m}{2 \ell + 1}} Y_{\ell ,m + 1} \chi_{-}`$ for $`s = \tfrac{1}{2}`$ and any $`\ell`$ $`\psi_{j,m_{j}} = \psi_{\ell - \tfrac{1}{2} ,m + \tfrac{1}{2}} = \sqrt{\frac{\ell - m}{2 \ell + 1}} Y_{\ell m} \chi_{+} - \sqrt{\frac{\ell + m + 1}{2 \ell + 1}} Y_{\ell ,m + 1} \chi_{-}`$ for $`s = \tfrac{1}{2}`$ and any $`\ell`$
 
 <div align="center">
 

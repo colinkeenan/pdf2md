@@ -225,7 +225,7 @@ H_{B} = \tfrac{eB}{2 mc} ( L_{z} + 2 S_{z} ) \quad \Delta E_{B} = \tfrac{e \hbar
 \psi_{jm_{j} \ell s} = \sum_{m_{\ell} m_{s}} C ( jm_{j} ; \ell m_{\ell} sm_{s} ) Y_{\ell m_{\ell}} \chi_{sm_{s}} = \sum_{m_{\ell} m_{s}} \langle jm_{j} \ell s | \ell m_{\ell} sm_{s} \rangle Y_{\ell m_{\ell}} \chi_{sm_{s}}
 ```
 
-$`\psi_{j,m_{j}} = \psi_{\ell + \tfrac{1}{2} ,m + \tfrac{1}{2}} = \sqrt{\ell + 2 \ell + 1 m + 1} Y_{\ell m} \chi_{+} + \sqrt{\frac{\ell - m}{2 \ell + 1}} Y_{\ell ,m + 1} \chi_{-}`$ for $`s = \tfrac{1}{2}`$ and any $`\ell`$ $`\psi_{j,m_{j}} = \psi_{\ell - \tfrac{1}{2} ,m + \tfrac{1}{2}} = \sqrt{\frac{\ell - m}{2 \ell + 1}} Y_{\ell m} \chi_{+} - \sqrt{\ell + 2 \ell + 1 m + 1} Y_{\ell ,m + 1} \chi_{-}`$ for $`s = \tfrac{1}{2}`$ and any $`\ell`$
+$`\psi_{j,m_{j}} = \psi_{\ell + \tfrac{1}{2} ,m + \tfrac{1}{2}} = \sqrt{\frac{\ell + m + 1}{2 \ell + 1}} Y_{\ell m} \chi_{+} + \sqrt{\frac{\ell - m}{2 \ell + 1}} Y_{\ell ,m + 1} \chi_{-}`$ for $`s = \tfrac{1}{2}`$ and any $`\ell`$ $`\psi_{j,m_{j}} = \psi_{\ell - \tfrac{1}{2} ,m + \tfrac{1}{2}} = \sqrt{\frac{\ell - m}{2 \ell + 1}} Y_{\ell m} \chi_{+} - \sqrt{\frac{\ell + m + 1}{2 \ell + 1}} Y_{\ell ,m + 1} \chi_{-}`$ for $`s = \tfrac{1}{2}`$ and any $`\ell`$
 
 <div align="center">
 

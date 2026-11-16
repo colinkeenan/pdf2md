@@ -29,7 +29,7 @@ For $`E>V_{0}`$, the general solution is
 u ( x ) = Ae^{+ ikx} + Be^{- ikx}
 ```
 
-with $`k = \sqrt{2 m ( E \hbar_{2} - V_{0} )}`$ positive and real. We could also use the linear combination of the above two solutions.
+with $`k = \sqrt{\frac{2 m ( E - V_{0} )}{\hbar^{2}}}`$ positive and real. We could also use the linear combination of the above two solutions.
 
 ```math
 u ( x ) = A \sin ( kx ) + B \cos ( kx )
@@ -37,7 +37,7 @@ u ( x ) = A \sin ( kx ) + B \cos ( kx )
 
 We should use one set of solutions or the other in a region, not both. There are only two linearly independent solutions.
 
-The solutions are also technically correct for $`E<V_{0}`$ but $`k`$ becomes imaginary. For simplicity, lets write the solutions in terms of $`\kappa = \sqrt{2 m ( V \hbar_{0 2} - E )}`$, which again is real and positive. The general solution is
+The solutions are also technically correct for $`E<V_{0}`$ but $`k`$ becomes imaginary. For simplicity, lets write the solutions in terms of $`\kappa = \sqrt{\frac{2 m ( V_{0} - E )}{\hbar^{2}}}`$, which again is real and positive. The general solution is
 
 ```math
 u ( x ) = Ae^{+ \kappa x} + Be^{- \kappa x} .
@@ -210,7 +210,7 @@ Again, **classically, everything would be transmitted** because the energy is la
 <a id="p149" href="book.pdf#page=149" target="_blank" title="This page in the PDF"><sup>[p. 149]</sup></a>
 
 ```math
-k^{\prime} = \sqrt{2 m ( E \hbar^{2} - V_{0} )}
+k^{\prime} = \sqrt{\frac{2 m ( E - V_{0} )}{\hbar^{2}}}
 ```
 
 ```math
@@ -230,7 +230,7 @@ u ( x ) = Ae^{\kappa x} + Be^{- \kappa x}
 with
 
 ```math
-\kappa = \sqrt{- 2 \hbar^{2} mE} .
+\kappa = \sqrt{\frac{- 2 mE}{\hbar^{2}}} .
 ```
 
 The $`e^{- \kappa x}`$ term will not be acceptable at $`-\infty`$ and the $`e^{\kappa x}`$ term will not be acceptable at +$`\infty`$ since they diverge and we could never normalize to one bound particle.
@@ -268,13 +268,13 @@ The calculation (See section 9.7.3) shows that either $`A`$ or $`B`$ must be zer
 The **even states** have the (quantization) constraint on the energy that
 
 ```math
-\begin{aligned} \kappa &= \tan ( ka ) k \\ \sqrt{- 2 \hbar^{2} mE} &= \tan \begin{pmatrix} \sqrt{2 m ( E \hbar^{2} + V_{0} )} \\ a \end{pmatrix} \sqrt{2 m ( E \hbar^{2} + V_{0} )} \\ \sqrt{E - E + V_{0}} &= \tan \begin{pmatrix} \sqrt{2 m ( E \hbar^{2} + V_{0} )} \\ a \end{pmatrix} \end{aligned}
+\begin{aligned} \kappa &= \tan ( ka ) k \\ \sqrt{\frac{- 2 mE}{\hbar^{2}}} &= \tan \left( \sqrt{\frac{2 m ( E + V_{0} )}{\hbar^{2}}} a \right) \sqrt{\frac{2 m ( E + V_{0} )}{\hbar^{2}}} \\ \sqrt{\frac{- E}{E + V_{0}}} &= \tan \left( \sqrt{\frac{2 m ( E + V_{0} )}{\hbar^{2}}} a \right) \end{aligned}
 ```
 
 and the **odd states** have the constraint
 
 ```math
-\begin{aligned} \kappa &= - \cot ( ka ) k \\ \sqrt{E - E + V_{0}} &= - \cot \begin{pmatrix} \sqrt{2 m ( E \hbar^{2} + V_{0} )} \\ a \end{pmatrix} \end{aligned}
+\begin{aligned} \kappa &= - \cot ( ka ) k \\ \sqrt{\frac{- E}{E + V_{0}}} &= - \cot \left( \sqrt{\frac{2 m ( E + V_{0} )}{\hbar^{2}}} a \right) \end{aligned}
 ```
 
 These are transcendental equations, so we will solve them graphically. The plot below compares the square root on the left hand side of the transcendental equations to the tangent on the right for the event states and to “-cotangent” on the right for odd states. Where the curves intersect (not including the asymptote), is an allowed energy. There is always one even solution for the 1D potential well. In the graph shown, there are 2 even and one odd solution. The wider and deeper the well, the more solutions.
@@ -426,7 +426,7 @@ This is a Gaussian (minimum uncertainty) distribution. Since the HO potential ha
 The **first excited state** is an odd parity state, with a first order polynomial multiplying the same Gaussian.
 
 ```math
-u_{1} ( x ) = \left( \frac{m\omega}{\pi \hbar} \right) \tfrac{1}{4} \sqrt{\frac{2 m\omega}{\hbar}} xe^{- m\omega x^{2} / 2 \hbar}
+u_{1} ( x ) = \left( \frac{m\omega}{\pi \hbar} \right)^{\tfrac{1}{4}} \sqrt{\frac{2 m\omega}{\hbar}} xe^{- m\omega x^{2} / 2 \hbar}
 ```
 
 The **second excited state** is even parity, with a second order polynomial multiplying the same Gaussian.
@@ -478,7 +478,7 @@ These will have energy less than zero so the solutions are
 where
 
 ```math
-\kappa = \sqrt{- 2 \hbar^{2} mE} .
+\kappa = \sqrt{\frac{- 2 mE}{\hbar^{2}}} .
 ```
 
 There are only two regions, above and below the delta function. We don’t need to worry about the one point at $`x`$ = 0 – the two solutions will match there. We have already made the wave function continuous at $`x`$ = 0 by using the same coefficient, $`A`$, for the solution in both regions.
@@ -530,7 +530,7 @@ with attractive delta functions at $`x = \pm d`$. This is a parity symmetric pot
 **For even parity, our solution in the three regions** is
 
 ```math
-\begin{aligned} \psi ( x ) &= \begin{cases} e^{\kappa x} & x< - d \\ A ( e^{\kappa x} + e^{- \kappa x} ) & - d<x<d \\ e^{- \kappa x} & x>d \end{cases} \\ \kappa &= \sqrt{- 2 \hbar^{2} mE} . \end{aligned}
+\begin{aligned} \psi ( x ) &= \begin{cases} e^{\kappa x} & x< - d \\ A ( e^{\kappa x} + e^{- \kappa x} ) & - d<x<d \\ e^{- \kappa x} & x>d \end{cases} \\ \kappa &= \sqrt{\frac{- 2 mE}{\hbar^{2}}} . \end{aligned}
 ```
 
 Since the solution is designed to be symmetric about $`x`$ = 0, the boundary conditions at $`- d`$ are the same as at $`d`$. The boundary conditions determine the constant $`A`$ and constrain $`\kappa`$.
@@ -551,7 +551,7 @@ This is a transcendental equation, but we can limit the energy.
 \kappa > \frac{maV_{0}}{\hbar^{2}}
 ```
 
-Since $`\kappa = \tfrac{maV_{0}}{\hbar^{2}}`$ for the single delta function, this $`\kappa = \sqrt{- 2 \hbar mE_{2}}`$ is larger than the one for the single delta function. This means that $`E`$ is more negative and there is **more binding energy**.
+Since $`\kappa = \tfrac{maV_{0}}{\hbar^{2}}`$ for the single delta function, this $`\kappa = \sqrt{\frac{- 2 mE}{\hbar^{2}}}`$ is larger than the one for the single delta function. This means that $`E`$ is more negative and there is **more binding energy**.
 
 ```math
 E_{molecule} <E_{atom}
@@ -620,7 +620,7 @@ The general solution in the region $`( n - 1 ) a<x<na`$ is
 ```
 
 ```math
-k = \sqrt{2 mE \hbar^{2}}
+k = \sqrt{\frac{2 mE}{\hbar^{2}}}
 ```
 
 By matching the boundary conditions and requiring that the probability be periodic, we derive a constraint on $`k`$ (See section 9.7.6) similar to the quantized energies for bound states.
@@ -874,7 +874,7 @@ u_{1} ( x ) = C_{1} e^{\kappa x}
 ```
 
 ```math
-\begin{aligned} u_{3} ( x ) &= C_{3} e^{- \kappa x} \\ \kappa &= \sqrt{- 2 \hbar^{2} mE} . \end{aligned}
+\begin{aligned} u_{3} ( x ) &= C_{3} e^{- \kappa x} \\ \kappa &= \sqrt{\frac{- 2 mE}{\hbar^{2}}} . \end{aligned}
 ```
 
 In the center we have the same solution as before.
@@ -1182,7 +1182,7 @@ Lets find $`a_{0}`$ by normalizing the wavefunction.
 ```
 
 ```math
-| a 0 |^{2} \sqrt{\frac{\pi \hbar}{m\omega}} = 1
+| a_{0} |^{2} \sqrt{\frac{\pi \hbar}{m\omega}} = 1
 ```
 
 ```math
@@ -1196,7 +1196,7 @@ u_{0} ( x ) = \left( \frac{m\omega}{\pi \hbar} \right)^{\tfrac{1}{4}} e^{- m\ome
 ## <a id="s-9-7-5-1d-model-of-a-molecule-derivation"></a>9.7.5 1D Model of a Molecule Derivation \*
 
 ```math
-\begin{aligned} \psi ( x ) &= \begin{cases} e^{\kappa x} & x< - d \\ A ( e^{\kappa x} + e^{- \kappa x} ) & - d<x<d \\ e^{- \kappa x} & x>d \end{cases} \\ \kappa &= \sqrt{- 2 \hbar^{2} mE} . \end{aligned}
+\begin{aligned} \psi ( x ) &= \begin{cases} e^{\kappa x} & x< - d \\ A ( e^{\kappa x} + e^{- \kappa x} ) & - d<x<d \\ e^{- \kappa x} & x>d \end{cases} \\ \kappa &= \sqrt{\frac{- 2 mE}{\hbar^{2}}} . \end{aligned}
 ```
 
 Since the solution is designed to be symmetric about $`x`$ = 0, the boundary conditions at $`- d`$ are the same as at $`d`$. The boundary conditions determine the constant $`A`$ and constrain $`\kappa`$.
@@ -1416,7 +1416,7 @@ This whole section is examples.
 **Answer**
 
 ```math
-\kappa = \sqrt{- 2 \hbar^{2} mE}
+\kappa = \sqrt{\frac{- 2 mE}{\hbar^{2}}}
 ```
 
 ```math

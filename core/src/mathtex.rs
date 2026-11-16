@@ -845,7 +845,26 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
                 continue;
             }
             used[bi] = true;
-            let nested = inner(&mut used, false);
+            let mut nested = inner(&mut used, false);
+            // (the bar of a fraction that fills the root is nearly as wide
+            // as the root's own: under it and within its width, it is the
+            // root's all the same)
+            let mut under = under;
+            for (k, r) in bars.iter().enumerate() {
+                if !used[k] && k != bi && r.top > b.bottom && r.bottom <= b.bottom + 3.5 * size && r.left >= b.left - 2.0 && r.right <= b.right + 2.0 && under.iter().any(|&i| spans[i].bottom <= r.top + 2.0 && spans[i].left < r.right && spans[i].right > r.left) {
+                    used[k] = true;
+                    nested.push(*r);
+                }
+            }
+            // (with its denominator, however far down that reaches)
+            for r in nested.iter().filter(|r| r.right - r.left >= 0.6 * (b.right - b.left)) {
+                for (i, s) in spans.iter().enumerate() {
+                    let c = (s.left + s.right) / 2.0;
+                    if i != ri && !under.contains(&i) && c >= r.left - 2.0 && c <= r.right + 2.0 && (s.top >= r.bottom - 2.0 || (s.top >= r.bottom - 0.35 * size && s.cy() >= r.bottom + 0.3 * size)) && s.cy() <= r.bottom + 1.7 * size {
+                        under.push(i);
+                    }
+                }
+            }
             let body: Vec<MSpan> = under.iter().map(|&i| spans[i].clone()).collect();
             let t = format!("\\sqrt{{{}}}", build_at(&resolve_bars(body, &nested, depth + 1), depth + 1));
             let left = spans[ri].left;
@@ -862,6 +881,10 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
             });
             let (top, bottom, size) = if letters > 0.0 && letters < 0.85 * size && goes_on {
                 (top, bottom, letters)
+            } else if let Some(f) = nested.iter().filter(|r| r.right - r.left >= 0.6 * (b.right - b.left)).min_by(|x, y| x.top.total_cmp(&y.top)) {
+                // (a root over a fraction stands on the line at the fraction's bar)
+                let y = (f.top + f.bottom) / 2.0;
+                (y - size / 2.0, y + size / 2.0, size)
             } else {
                 (b.bottom + 1.0, b.bottom + 1.0 + size, size)
             };

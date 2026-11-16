@@ -989,7 +989,7 @@ I_{2} = \frac{1}{4} I_{1} = \frac{1}{1 2} I_{0}
 The third apparatus goes back to a separation in z and blocks the $`m`$ = 1 component. The incoming state is
 
 ```math
-\psi_{-}^{( x )} = \left( \frac{- {}_{1} \tfrac{1}{2}}{- \sqrt{\frac{2}{2} 1}} \right)
+\psi_{-}^{( x )} = \left( \frac{- {}_{1} \tfrac{1}{2}}{- \sqrt{2 \frac{1}{2}}} \right)
 ```
 
 Remember that the components of this vector are just the amplitudes to be in the different $`m`$ states (using the z axis). The probability to get through this apparatus is just the probability to be in the $`m`$ = 0 beam plus the probability to be in the $`m = - 1`$ beam.
@@ -1267,7 +1267,7 @@ which are both equivalent to $`\chi_{2} = i\chi_{1}`$. Repeating the process for
 As an example, lets take the $`u`$ direction to be in the $`xz`$ plane, between the positive $`x`$ and $`z`$ axes, 30 degrees from the x axis. The unit vector is then $`\hat{u}`$ = (cos(30)$`, 0 ,`$ sin(30)) = $`( \sqrt{\tfrac{3}{4} ,} 0 , \tfrac{1}{2} )`$. We may simply calculate the matrix $`S_{u} = \hat{u} \cdot \vec{S}`$.
 
 ```math
-S_{u} = \sqrt{\frac{3}{4}} S_{x} + \frac{1}{2} S_{z} = \frac{\hbar}{2} \left( \sqrt{\frac{3}{4}}^{\tfrac{1}{2}} \quad \frac{\sqrt{\frac{3}{4}}}{- \tfrac{1}{2}} \right)
+S_{u} = \sqrt{\frac{3}{4}} S_{x} + \frac{1}{2} S_{z} = \frac{\hbar}{2} \begin{pmatrix} \tfrac{1}{2} & \sqrt{\frac{1}{2} \frac{3}{4}} \\ \sqrt{\frac{3}{4}} & - \end{pmatrix}
 ```
 
 We expect the eigenvalues to be $`\pm \tfrac{\hbar}{2}`$ as for all axes.
@@ -1275,11 +1275,11 @@ We expect the eigenvalues to be $`\pm \tfrac{\hbar}{2}`$ as for all axes.
 Factoring out the $`\frac{\hbar}{2}`$, the equation for the eigenvectors is.
 
 ```math
-\begin{pmatrix} \tfrac{1}{2} & \sqrt{1 \frac{3}{4}} \\ \sqrt{\frac{3}{4}} & - {}_{2} \end{pmatrix} \begin{pmatrix} a \\ b \end{pmatrix} = \pm \begin{pmatrix} a \\ b \end{pmatrix}
+\begin{pmatrix} \tfrac{1}{2} & \sqrt{\frac{1}{2} \frac{3}{4}} \\ \sqrt{\frac{3}{4}} & - \end{pmatrix} \begin{pmatrix} a \\ b \end{pmatrix} = \pm \begin{pmatrix} a \\ b \end{pmatrix}
 ```
 
 ```math
-\begin{pmatrix} \tfrac{1}{2} a + \sqrt{\frac{3}{4}} b \\ \sqrt{\frac{3}{4}} a^{1} b \\ - {}_{2} \end{pmatrix} = \pm \begin{pmatrix} a \\ b \end{pmatrix} \quad \sqrt{\frac{3}{4}}
+\begin{pmatrix} \tfrac{1}{2} a + \sqrt{\frac{1}{2} \frac{3}{4}} b \\ \sqrt{\frac{3}{4}} a - b \end{pmatrix} = \pm \begin{pmatrix} a \\ b \end{pmatrix} \quad \sqrt{\frac{3}{4}}
 ```
 
 For the positive eigenvalue, we have $`a = \sqrt{3} b`$, giving the eigenvector $`\chi_{+}^{( u )} = \begin{pmatrix} 1 \\ 2 \end{pmatrix}`$. For the
@@ -1299,15 +1299,15 @@ these could be multiplied by an arbitrary phase factor.
 There is an alternate way to solve the problem using rotation matrices. We take the states $`\chi_{\pm}^{( z )}`$ and rotate the axes so that the $`u`$ axis is where the $`z`$ axis was. We must think carefully about exacty what rotation to do. Clearly we need a rotation about the $`y`$ axis. Thinking about the signs carefully, we see that a rotation of -60 degrees moves the $`u`$ axis to the old $`z`$ axis.
 
 ```math
-\begin{aligned} R_{y} &= \begin{pmatrix} \cos \tfrac{\theta}{2} & \sin \tfrac{\theta}{2} \\ - \sin \tfrac{\theta}{2} & \cos \tfrac{\theta}{2} \end{pmatrix} \\ R_{y} ( - 6 0 ) &= \begin{pmatrix} \cos ( 3 0 ) & - \sin ( 3 0 ) \\ \sin ( 3 0 ) & \cos ( 3 0 ) \end{pmatrix} = \left( \frac{\sqrt{\frac{3}{4}}}{\tfrac{1}{2}} \quad \sqrt{\frac{3}{4}} - \tfrac{1}{2} \right) \end{aligned}
+\begin{aligned} R_{y} &= \begin{pmatrix} \cos \tfrac{\theta}{2} & \sin \tfrac{\theta}{2} \\ - \sin \tfrac{\theta}{2} & \cos \tfrac{\theta}{2} \end{pmatrix} \\ R_{y} ( - 6 0 ) &= \begin{pmatrix} \cos ( 3 0 ) & - \sin ( 3 0 ) \\ \sin ( 3 0 ) & \cos ( 3 0 ) \end{pmatrix} = \begin{pmatrix} \sqrt{\frac{3}{4}} & - \tfrac{1}{2} \\ \tfrac{1}{2} & \sqrt{\frac{3}{4}} \end{pmatrix} \end{aligned}
 ```
 
 ```math
-\chi_{+}^{( u )} = \left( \frac{\sqrt{\frac{3}{4}}}{\tfrac{1}{2}} \quad \sqrt{\frac{3}{4}} - \tfrac{1}{2} \right) \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \left( \sqrt{\frac{3}{4}}_{\tfrac{1}{2}} \right)
+\chi_{+}^{( u )} = \begin{pmatrix} \sqrt{\frac{3}{4}} & - \tfrac{1}{2} \\ \tfrac{1}{2} & \sqrt{\frac{3}{4}} \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \left( \sqrt{\frac{3}{4}}_{\tfrac{1}{2}} \right)
 ```
 
 ```math
-\chi_{-}^{( u )} = \left( \frac{\sqrt{\frac{3}{4}}}{\tfrac{1}{2}} \quad \sqrt{\frac{3}{4}} - \tfrac{1}{2} \right) \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} - \tfrac{1}{2} \\ \sqrt{\frac{3}{4}} \end{pmatrix}
+\chi_{-}^{( u )} = \begin{pmatrix} \sqrt{\frac{3}{4}} & - \tfrac{1}{2} \\ \tfrac{1}{2} & \sqrt{\frac{3}{4}} \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} - \tfrac{1}{2} \\ \sqrt{\frac{3}{4}} \end{pmatrix}
 ```
 
 This gives the same answer. By using the rotation operator, the phase of the eigenvectors is consistent with the choice made for $`\chi_{\pm}^{( z )}`$. For most problems, this is not important but it is for some.

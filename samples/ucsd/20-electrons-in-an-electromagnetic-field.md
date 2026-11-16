@@ -842,7 +842,7 @@ Max when
 Now let’s put in some numbers: Let $`B \approx 20`$ kGauss = $`2 \times 1 0^{4}`$ Gauss. Then
 
 ```math
-\rho = \sqrt{\frac{2 \begin{pmatrix} 3 \times 1 0^{1 0} \frac{\text{ cm }}{\sec_{-}} \\ ( 4 . 8 \times 1 0 \end{pmatrix} ( 1 . 0 5 \times 1 0^{- 2 7} \text{ erg } \sec )}{{}^{1 0} \text{ esu } ) ( 2 \times 1 0^{4} g )} m} \approx 2 . 5 \times 1 0^{- 6} \sqrt{m} \text{ cm }
+\rho = \sqrt{\frac{2 \left( 3 \times 1 0^{1 0} \text{ cm } \right) ( 1 . 0 5 \times 1 0^{- 2 7} \text{ erg } \sec )}{( 4 . 8 \times 1 0^{- 1 0} \text{ esu } ) ( 2 \times 1 0^{4} g )} \sec m} \approx 2 . 5 \times 1 0^{- 6} \sqrt{m} \text{ cm }
 ```
 
 This can be compared to the purely classical calculation for an electron with angular momentum $`m \hbar`$ which gives $`\rho = \sqrt{\frac{m \hbar c}{Be}}`$. This simple calculation neglects to count the angular momentum stored in the field.

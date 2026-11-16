@@ -241,7 +241,7 @@ Compute the expected value of $`x^{2}`$ as a function of time.
 
 # <a id="s-19-7-homework-7"></a>19.7 Homework 7
 
-1. A particle is in the state $`\psi = R ( r ) \begin{pmatrix} \sqrt{\frac{1}{3}} Y & + i \sqrt{\frac{1}{3}} Y & \sqrt{\frac{1}{3}} Y \\ 2 1 & {}_{2 0} - & 2 2 \end{pmatrix}`$. Find the expected values of
+1. A particle is in the state $`\psi = R ( r ) \left( \sqrt{\frac{1}{3}} Y_{2 1} + i \sqrt{\frac{1}{3}} Y_{2 0} - \sqrt{\frac{1}{3}} Y_{2 2} \right)`$. Find the expected values of
 
 ```math
 L^{2} , L_{z} , L_{x} , \text{ and } L_{y} .

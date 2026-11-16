@@ -280,7 +280,7 @@ For the photon, $`v_{g} = c`$ and $`\beta`$ = 0. For the NR electron, $`v_{g} = 
 Performing the Fourier Transform (See section 5.6.5), we get
 
 ```math
-\psi ( x,t ) = \sqrt{\alpha + \pi i\beta t} e^{i ( k_{0} x - \omega_{0} t )} e^{\tfrac{- ( x - vgt ) 2}{4 ( \alpha + i\beta t )}}
+\psi ( x,t ) = \sqrt{\frac{\pi}{\alpha + i\beta t}} e^{i ( k_{0} x - \omega_{0} t )} e^{\tfrac{- ( x - vgt ) 2}{4 ( \alpha + i\beta t )}}
 ```
 
 ```math
@@ -618,11 +618,11 @@ f ( x ) = e^{ik_{0} x} \int_{-\infty}^{\infty} e^{- \alpha k^{\prime 2}} e^{ik^{
 Our new integral is the same with the **substitutions** $`k_{0} x \to k_{0} x - \omega_{0} t , k^{\prime} x \to k^{\prime} ( x - v_{g} t )`$, and $`\alpha \to ( \alpha + i\beta t )`$. We can then write down the answer
 
 ```math
-\psi ( x,t ) = \sqrt{\alpha + \pi i\beta t} e^{i ( k_{0} x - \omega_{0} t )} e^{\tfrac{- ( x - vgt ) 2}{4 ( \alpha + i\beta t )}}
+\psi ( x,t ) = \sqrt{\frac{\pi}{\alpha + i\beta t}} e^{i ( k_{0} x - \omega_{0} t )} e^{\tfrac{- ( x - vgt ) 2}{4 ( \alpha + i\beta t )}}
 ```
 
 ```math
-| \psi ( x,t ) |^{2} = \sqrt{\alpha + \pi i\beta t} \sqrt{\alpha - \pi i\beta t} e^{\tfrac{- ( x - vgt ) 2}{4 ( \alpha + i\beta t )}} e^{\tfrac{- ( x - vgt ) 2}{4 ( \alpha - i\beta t )}}
+| \psi ( x,t ) |^{2} = \sqrt{\frac{\pi}{\alpha + i\beta t}} \sqrt{\frac{\pi}{\alpha - i\beta t}} e^{\tfrac{- ( x - vgt ) 2}{4 ( \alpha + i\beta t )}} e^{\tfrac{- ( x - vgt ) 2}{4 ( \alpha - i\beta t )}}
 ```
 
 ```math

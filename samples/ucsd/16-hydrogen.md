@@ -64,7 +64,7 @@ a_{k + 1} = \frac{k + \ell + 1 - n}{( k + 1 ) ( k + 2 \ell + 2 )} a_{k}
 and
 
 ```math
-\rho = \sqrt{- 8 \hbar^{2} \mu E} r.
+\rho = \sqrt{\frac{- 8 \mu E}{\hbar^{2}}} r.
 ```
 
 The **principle quantum number** $`n`$ is an integer from 1 to infinity.
@@ -232,7 +232,7 @@ The differential equation we wish to solve is.
 First we change to a **dimensionless variable** $`\rho`$,
 
 ```math
-\rho = \sqrt{- 8 \hbar^{2} \mu E} r,
+\rho = \sqrt{\frac{- 8 \mu E}{\hbar^{2}}} r,
 ```
 
 giving the differential equation
@@ -244,7 +244,7 @@ giving the differential equation
 where the constant
 
 ```math
-\lambda = \frac{Ze^{2}}{\hbar} \sqrt{\frac{- \mu}{2 E}} = Z\alpha \sqrt{- \mu c^{2} 2 E} .
+\lambda = \frac{Ze^{2}}{\hbar} \sqrt{\frac{- \mu}{2 E}} = Z\alpha \sqrt{\frac{- \mu c^{2}}{2 E}} .
 ```
 
 <div align="right"><a href="book.pdf#page=234" target="_blank" title="This page in the PDF"><sup>[p. 234]</sup></a></div>
@@ -354,7 +354,7 @@ The number of nodes in $`G`$ will be $`n_{r}`$. We will call $`n`$ the principal
 Plugging in for $`\lambda`$ we get the **energy eigenvalues**.
 
 ```math
-Z\alpha \sqrt{- \mu c^{2} 2 E} = n.
+Z\alpha \sqrt{\frac{- \mu c^{2}}{2 E}} = n.
 ```
 
 ```math
@@ -376,7 +376,7 @@ a_{k + 1} = \frac{k + \ell + 1 - n}{( k + 1 ) ( k + 2 \ell + 2 )} a_{k} .
 We can rewrite $`\rho`$, substituting the energy eigenvalue.
 
 ```math
-\rho = \sqrt{- 8 \hbar^{2} \mu E} r = \sqrt{4 \mu^{2} \hbar^{2} n^{2} c^{2} Z^{2} \alpha^{2}} r = \frac{2 \mu cZ\alpha}{\hbar n} r = \frac{2 Z}{na_{0}} r
+\rho = \sqrt{\frac{- 8 \mu E}{\hbar^{2}}} r = \sqrt{\frac{4 \mu^{2} c^{2} Z^{2} \alpha^{2}}{\hbar^{2} n^{2}}} r = \frac{2 \mu cZ\alpha}{\hbar n} r = \frac{2 Z}{na_{0}} r
 ```
 
 ## <a id="s-16-3-2-computing-the-radial-wavefunctions"></a>16.3.2 Computing the Radial Wavefunctions \*

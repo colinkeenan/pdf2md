@@ -461,7 +461,7 @@ It is not necessary (or wise) to use the differential operators and a wave funct
 1. The absolute square of a wave function for a free particle is given as:
 
 ```math
-| \psi ( x,t ) |^{2} = \sqrt{2 \pi ( a^{2} a + b^{2} t^{2} )} e^{- a ( x - v_{g} t )^{2} / 2 ( a^{2} + b^{2} t^{2} )}
+| \psi ( x,t ) |^{2} = \sqrt{\frac{a}{2 \pi ( a^{2} + b^{2} t^{2} )}} e^{- a ( x - v_{g} t )^{2} / 2 ( a^{2} + b^{2} t^{2} )}
 ```
 
 Find the expected value of $`x`$ as a function of time. Find the expected value of $`x^{2}`$ as a function of time. Compute the RMS x-width of this wave packet as a function of time.

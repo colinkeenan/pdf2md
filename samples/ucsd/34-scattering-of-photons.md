@@ -22,7 +22,7 @@ The scattering process clearly requires terms in $`H_{int}`$ that **annihilate o
 Start with the first order perturbation theory term. All the terms in the sum that do not annihilate the initial state photon and create the final state photon give zero. We will assume that the wavelength of the photon’s is long compared to the size of the atom so that $`e^{i \vec{k} \cdot \vec{r}} \approx 1`$.
 
 ```math
-A_{\mu} ( x ) = \frac{1}{\sqrt{V}} \sum_{k\alpha}^{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
+A_{\mu} ( x ) = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 ```math
@@ -64,7 +64,7 @@ Recall that the absolute square of the time integral will turn into 2$`\pi t\del
 Now we very carefully put the interaction term into the formula for **second order time dependent** **perturbation theory**, again using $`e^{i \vec{k} \cdot \vec{x}} \approx 1`$. Our notation is that the **intermediate state of** **atom and field is called** $`| I \rangle = | j,n_{\vec{k} ,\alpha} ,n_{\vec{k}^{\prime} ,\alpha^{\prime}} \rangle`$ where $`j`$ represents the state of the atom and we may have zero or two photons, as indicated in the diagram.
 
 ```math
-\begin{aligned} \mathcal{V} &= - \frac{e}{mc} \vec{A} \cdot \vec{p} = - \frac{e}{mc} \frac{1}{\sqrt{V}} \sum_{\vec{k} \alpha}^{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} \hat{\epsilon}^{( \alpha )} \cdot \vec{p} \left( a_{k,\alpha} e^{- i\omega t} + a_{k,\alpha}^{\dagger} e^{i\omega t} \right) \\ c_{n}^{( 2 )} ( t ) &= \frac{- 1}{\hbar^{2}} \sum \int^{t} dt_{2} \mathcal{V}_{nI} ( t_{2} ) e^{i\omega_{nj} t_{2}} \int^{t_{2}} dt_{1} e^{i\omega_{ji} t_{1}} \mathcal{V}_{Ii} ( t_{1} ) \\ c_{n ; \vec{k}^{\prime} \hat{\epsilon}^{( \alpha \prime )}}^{( 2 )} ( t ) &= \frac{- e^{2}}{m^{2} c^{2} \hbar^{2}} \sum_{I}^{j, \vec{k} ,\alpha 0} \frac{1}{V} \frac{\hbar c^{2}}{2 \sqrt{\omega^{\prime} \omega}} \int_{0}^{t} dt_{2}^{0} \langle n ; \vec{k}^{\prime} \hat{\epsilon}^{( \alpha^{\prime} )} | ( \hat{\epsilon}^{( \alpha )} a_{k,\alpha} e^{- i\omega t_{2}} + \hat{\epsilon}^{( \alpha^{\prime} )} a_{k^{\prime} ,\alpha^{\prime}}^{\dagger} e^{i\omega^{\prime} t_{2}} ) \cdot \vec{p} | I \rangle e^{i\omega_{nj} t_{2}} \end{aligned}
+\begin{aligned} \mathcal{V} &= - \frac{e}{mc} \vec{A} \cdot \vec{p} = - \frac{e}{mc} \frac{1}{\sqrt{V}} \sum_{\vec{k} \alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \hat{\epsilon}^{( \alpha )} \cdot \vec{p} \left( a_{k,\alpha} e^{- i\omega t} + a_{k,\alpha}^{\dagger} e^{i\omega t} \right) \\ c_{n}^{( 2 )} ( t ) &= \frac{- 1}{\hbar^{2}} \sum \int^{t} dt_{2} \mathcal{V}_{nI} ( t_{2} ) e^{i\omega_{nj} t_{2}} \int^{t_{2}} dt_{1} e^{i\omega_{ji} t_{1}} \mathcal{V}_{Ii} ( t_{1} ) \\ c_{n ; \vec{k}^{\prime} \hat{\epsilon}^{( \alpha \prime )}}^{( 2 )} ( t ) &= \frac{- e^{2}}{m^{2} c^{2} \hbar^{2}} \sum_{I}^{j, \vec{k} ,\alpha 0} \frac{1}{V} \frac{\hbar c^{2}}{2 \sqrt{\omega^{\prime} \omega}} \int_{0}^{t} dt_{2}^{0} \langle n ; \vec{k}^{\prime} \hat{\epsilon}^{( \alpha^{\prime} )} | ( \hat{\epsilon}^{( \alpha )} a_{k,\alpha} e^{- i\omega t_{2}} + \hat{\epsilon}^{( \alpha^{\prime} )} a_{k^{\prime} ,\alpha^{\prime}}^{\dagger} e^{i\omega^{\prime} t_{2}} ) \cdot \vec{p} | I \rangle e^{i\omega_{nj} t_{2}} \end{aligned}
 ```
 
 ```math

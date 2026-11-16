@@ -150,11 +150,11 @@ audio
 The coefficients $`\alpha`$ and $`\beta`$ must be **determined** (see section 21.8.4) by operating with $`J^{2}`$.
 
 ```math
-\psi_{( \ell + \tfrac{1}{2} ) ( m + \tfrac{1}{2} )} = \sqrt{\ell + 2 \ell + 1 m + 1} Y_{\ell m} \chi_{+} + \sqrt{2 \ell - m \ell + 1} Y_{\ell ( m + 1 )} \chi_{-}
+\psi_{( \ell + \tfrac{1}{2} ) ( m + \tfrac{1}{2} )} = \sqrt{\frac{\ell + m + 1}{2 \ell + 1}} Y_{\ell m} \chi_{+} + \sqrt{\frac{\ell - m}{2 \ell + 1}} Y_{\ell ( m + 1 )} \chi_{-}
 ```
 
 ```math
-\psi_{( \ell - \tfrac{1}{2} ) ( m + \tfrac{1}{2} )} = \sqrt{2 \ell - m \ell + 1} Y_{\ell m} \chi_{+} - \sqrt{\ell + 2 \ell + 1 m + 1} Y_{\ell ( m + 1 )} \chi_{-}
+\psi_{( \ell - \tfrac{1}{2} ) ( m + \tfrac{1}{2} )} = \sqrt{\frac{\ell - m}{2 \ell + 1}} Y_{\ell m} \chi_{+} - \sqrt{\frac{\ell + m + 1}{2 \ell + 1}} Y_{\ell ( m + 1 )} \chi_{-}
 ```
 
 We have made a choice in how to write these equations: $`m`$ must be the same throughout. The negative $`m`$ states are symmetric with the positive ones. These equations will be applied when we calculate the **fine structure of Hydrogen** and when we study the **anomalous Zeeman effect.**
@@ -661,11 +661,11 @@ we get the ratio between $`\beta`$ and $`\alpha`$. We will normalize the wave fu
 ```
 
 ```math
-\alpha = \sqrt{\ell + 2 \ell + 1 m + 1}
+\alpha = \sqrt{\frac{\ell + m + 1}{2 \ell + 1}}
 ```
 
 ```math
-\beta = \sqrt{\ell + \ell - m m + 1} \sqrt{\ell + 2 \ell + 1 m + 1} = \sqrt{2 \ell - m \ell + 1}
+\beta = \sqrt{\frac{\ell - m}{\ell + m + 1}} \sqrt{\frac{\ell + m + 1}{2 \ell + 1}} = \sqrt{\frac{\ell - m}{2 \ell + 1}}
 ```
 
 <div align="right"><a href="book.pdf#page=322" target="_blank" title="This page in the PDF"><sup>[p. 322]</sup></a></div>
@@ -685,11 +685,11 @@ we get.
 audio
 
 ```math
-\left\langle \left( \ell + \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell m \frac{1}{2} \frac{1}{2} \right\rangle = \alpha = \sqrt{\ell + 2 \ell + 1 m + 1} \right.
+\left\langle \left( \ell + \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell m \frac{1}{2} \frac{1}{2} \right\rangle = \alpha = \sqrt{\frac{\ell + m + 1}{2 \ell + 1}} \right.
 ```
 
 ```math
-\left\langle \left( \ell + \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell ( m + 1 ) \frac{1}{2} \frac{- 1}{2} \right\rangle = \beta = \sqrt{2 \ell - m \ell + 1} \right.
+\left\langle \left( \ell + \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell ( m + 1 ) \frac{1}{2} \frac{- 1}{2} \right\rangle = \beta = \sqrt{\frac{\ell - m}{2 \ell + 1}} \right.
 ```
 
 ```math
@@ -703,11 +703,11 @@ audio
 Similarly
 
 ```math
-\left\langle \left( \ell - \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell m \frac{1}{2} \frac{1}{2} \right\rangle = \sqrt{2 \ell - m \ell + 1} \right.
+\left\langle \left( \ell - \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell m \frac{1}{2} \frac{1}{2} \right\rangle = \sqrt{\frac{\ell - m}{2 \ell + 1}} \right.
 ```
 
 ```math
-\left\langle \left( \ell - \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell ( m + 1 ) \frac{1}{2} \frac{- 1}{2} \right\rangle = - \sqrt{\ell + 2 \ell + 1 m + 1} \right.
+\left\langle \left( \ell - \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell ( m + 1 ) \frac{1}{2} \frac{- 1}{2} \right\rangle = - \sqrt{\frac{\ell + m + 1}{2 \ell + 1}} \right.
 ```
 
 ## <a id="s-21-8-5-counting-the-states-for-ell-1-ell-2-leq-j-leq-ell-1-ell-2"></a>21.8.5 Counting the States for $`| \ell_{1} - \ell_{2} |\leq j \leq \ell_{1} + \ell_{2}`$.

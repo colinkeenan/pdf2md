@@ -748,7 +748,7 @@ a_{k,\alpha}^{\dagger} ( t ) = a_{k,\alpha}^{\dagger} ( 0 ) e^{i\omega t}
 We can now write the quantized radiation field in terms of the operators at $`t`$ = 0.
 
 ```math
-A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha}^{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
+A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 Again, the 4-vector $`x_{\rho}`$ is a **parameter of this field**, not the location of a photon. The **field** **operator is Hermitian** and the field itself is real.
@@ -774,23 +774,23 @@ Of course the average value of the Electric or Magnetic field vector is zero by 
 ```
 
 ```math
-A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha}^{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
+A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 ```math
-\vec{A} = \frac{1}{\sqrt{V}} \sum_{k\alpha}^{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} \hat{\epsilon}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
+\vec{A} = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \hat{\epsilon}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 ```math
-\vec{E} = - i \frac{1}{c} \frac{1}{\sqrt{V}} \sum_{k\alpha}^{\sqrt{\frac{\hbar c^{2}}{2 \omega}}} \hat{\epsilon}^{( \alpha )} \left( - \omega a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + \omega a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
+\vec{E} = - i \frac{1}{c} \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \hat{\epsilon}^{( \alpha )} \left( - \omega a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + \omega a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 ```math
-\vec{E} = \frac{i}{\sqrt{V}} \sum_{k\alpha}^{\sqrt{\frac{\hbar \omega}{2}}} \hat{\epsilon}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} - a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
+\vec{E} = \frac{i}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar \omega}{2}} \hat{\epsilon}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} - a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 ```math
-\vec{E} | 0 \rangle = \frac{i}{\sqrt{V}} \sum_{k\alpha}^{\sqrt{\frac{\hbar \omega}{2}}} \hat{\epsilon}^{( \alpha )} \left( - a_{k,\alpha}^{\dagger} e^{- ik_{\rho} x_{\rho}} \right) | 0 \rangle
+\vec{E} | 0 \rangle = \frac{i}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar \omega}{2}} \hat{\epsilon}^{( \alpha )} \left( - a_{k,\alpha}^{\dagger} e^{- ik_{\rho} x_{\rho}} \right) | 0 \rangle
 ```
 
 ```math

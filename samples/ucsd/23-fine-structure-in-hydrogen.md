@@ -422,7 +422,7 @@ We already know how to write in terms of these states of definite $`m_{\ell}`$ a
 ```
 
 ```math
-\beta = \sqrt{2 \ell - m \ell + 1}
+\beta = \sqrt{\frac{\ell - m}{2 \ell + 1}}
 ```
 
 Let’s do the $`j = \ell + \tfrac{1}{2}`$ state first.

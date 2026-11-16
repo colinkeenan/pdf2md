@@ -934,7 +934,7 @@ The radial part plays no role. The angular part is properly normalized.
 ```
 
 ```math
-= \begin{pmatrix} \sqrt{\frac{2}{3}} \quad \sqrt{\frac{1}{3}} \quad \sqrt{\frac{2}{3}} & \sqrt{\frac{1}{3}} \\ Y_{1 1} - i \quad Y_{1 - 1} | & \hbar Y_{1 1} + i \quad \hbar Y_{1 - 1} \end{pmatrix}
+= \left\langle \sqrt{\frac{2}{3}} Y_{1 1} - i \sqrt{\frac{1}{3}} Y_{1 - 1} | \sqrt{\frac{2}{3}} \hbar Y_{1 1} + i \sqrt{\frac{1}{3}} \hbar Y_{1 - 1} \right\rangle
 ```
 
 ```math

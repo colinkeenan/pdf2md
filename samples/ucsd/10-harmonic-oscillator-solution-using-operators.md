@@ -18,7 +18,7 @@ H = \frac{p^{2}}{2 m} + \frac{1}{2} m\omega^{2} x^{2}
 looks like it could be written as the square of a operator. It can be rewritten in terms of the operator $`A`$ (See section 10.1)
 
 ```math
-A \equiv \begin{pmatrix} \sqrt{\frac{m\omega}{2 \hbar}} \\ x + i \frac{p}{\sqrt{2 m \hbar \omega}} \end{pmatrix}
+A \equiv \left( \sqrt{\frac{m\omega}{2 \hbar}} x + i \frac{p}{\sqrt{2 m \hbar \omega}} \right)
 ```
 
 and its Hermitian conjugate $`A^{\dagger}`$.
@@ -98,7 +98,7 @@ A \equiv \left( \sqrt{\frac{m\omega}{2 \hbar}} x + i \frac{p}{\sqrt{2 m \hbar \o
 and its Hermitian conjugate
 
 ```math
-A^{\dagger} = \begin{pmatrix} \sqrt{\frac{m\omega}{2 \hbar}} \\ x - i \frac{p}{\sqrt{2 m \hbar \omega}} \end{pmatrix}
+A^{\dagger} = \left( \sqrt{\frac{m\omega}{2 \hbar}} x - i \frac{p}{\sqrt{2 m \hbar \omega}} \right)
 ```
 
 Both terms in the Harmonic Oscillator Hamiltonian are squares of operators. Note that $`A`$ is chosen so that $`A^{\dagger} A`$ is close to the Hamiltonian. First just compute the quantity
@@ -130,11 +130,11 @@ H = \hbar \omega \left( A^{\dagger} A + \frac{1}{2} \right) .
 We will use the commutator between $`A`$ and $`A^{\dagger}`$ to solve the HO problem. The operators are defined to be
 
 ```math
-A = \begin{pmatrix} \sqrt{\frac{m\omega}{2 \hbar}} \\ x + i \frac{p}{\sqrt{2 m \hbar \omega}} \end{pmatrix}
+A = \left( \sqrt{\frac{m\omega}{2 \hbar}} x + i \frac{p}{\sqrt{2 m \hbar \omega}} \right)
 ```
 
 ```math
-A^{\dagger} = \begin{pmatrix} \sqrt{\frac{m\omega}{2 \hbar}} \\ x - i \frac{p}{\sqrt{2 m \hbar \omega}} \end{pmatrix} .
+A^{\dagger} = \left( \sqrt{\frac{m\omega}{2 \hbar}} x - i \frac{p}{\sqrt{2 m \hbar \omega}} \right) .
 ```
 
 The **commutator** is
@@ -526,7 +526,7 @@ Find the expected value of $`p`$.
 <a id="p180" href="book.pdf#page=180" target="_blank" title="This page in the PDF"><sup>[p. 180]</sup></a>
 
 ```math
-\langle \psi | p | \psi \rangle = - i \sqrt{\frac{m \hbar \omega}{2}} \begin{pmatrix} \sqrt{\frac{2}{3}} \quad \sqrt{\frac{1}{3}} \quad \sqrt{\frac{2}{3}} \quad \sqrt{\frac{1}{3}} \\ u_{0} - i \quad u_{1} | A - A^{\dagger} | \quad u_{0} - i \quad u_{1} \end{pmatrix}
+\langle \psi | p | \psi \rangle = - i \sqrt{\frac{m \hbar \omega}{2}} \left\langle \sqrt{\frac{2}{3}} u_{0} - i \sqrt{\frac{1}{3}} u_{1} | A - A^{\dagger} | \sqrt{\frac{2}{3}} u_{0} - i \sqrt{\frac{1}{3}} u_{1} \right\rangle
 ```
 
 ```math
