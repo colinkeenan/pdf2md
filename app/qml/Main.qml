@@ -337,12 +337,13 @@ Kirigami.ApplicationWindow {
                                     Layout.fillWidth: true
                                     // how it ended in this run; else what is known of it
                                     text: row.running ? "Converting…"
-                                        : row.result !== undefined ? (row.result.ok ? "" : "Failed: ") + row.result.words
+                                        : row.result !== undefined ? (row.result.ok ? "Converted just now. " : "Failed: ") + row.result.words
                                         : (row.modelData.kind === "course" ? "A course: saved pages and PDFs. " : "")
                                           + (row.modelData.book !== "" ? "Converted " + row.modelData.when : "Not converted yet")
-                                    color: row.result !== undefined && !row.result.ok ? Kirigami.Theme.negativeTextColor : Kirigami.Theme.textColor
+                                    color: row.result === undefined ? Kirigami.Theme.textColor : row.result.ok ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.negativeTextColor
                                     elide: Text.ElideMiddle
-                                    opacity: row.result !== undefined && !row.result.ok ? 1 : 0.6
+                                    // (what this run did stands out from what was there before)
+                                    opacity: row.result !== undefined || row.running ? 1 : 0.6
                                     font: Kirigami.Theme.smallFont
                                 }
                             }
@@ -546,15 +547,6 @@ Kirigami.ApplicationWindow {
                     : converter.status.startsWith("Failed") ? Kirigami.MessageType.Error
                     : converter.status.startsWith("Check") ? Kirigami.MessageType.Information
                     : Kirigami.MessageType.Positive
-                // the book converted last, a click away
-                actions: [
-                    Kirigami.Action {
-                        text: "Open Book"
-                        icon.name: "document-open"
-                        visible: !converter.busy && converter.last !== ""
-                        onTriggered: converter.show(converter.last)
-                    }
-                ]
             }
 
         }
