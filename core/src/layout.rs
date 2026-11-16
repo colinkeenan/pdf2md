@@ -3354,6 +3354,28 @@ fn group_lines(
             None => groups.push(vec![s]),
         }
     }
+    // (a small piece right over a sum sign set in the text, at the top of
+    // the sign's box, is its upper limit: the "∞" that reaches up into the
+    // line above and was put there)
+    loop {
+        let found = (0..groups.len()).find_map(|k| {
+            let signs: Vec<&Span> = groups[k].iter().filter(|n| big_symbol(n) && !matches!(n.text.trim(), "∫" | "∮" | "√")).collect();
+            (0..groups.len()).filter(|&m| m != k && groups[m][0].top < groups[k][0].top).find_map(|m| {
+                let j = (1..groups[m].len()).find(|&j| {
+                    let s = &groups[m][j];
+                    let mid = s.left + (s.right() - s.left) / 2.0;
+                    // (no index of a letter of its own line, which it would follow)
+                    let main = size_of(&groups[m][0]);
+                    let based = groups[m].iter().any(|n| size_of(n) >= 0.85 * main && n.right() >= s.left - 0.5 * main && n.right() <= s.left + 1.0 && n.bottom() > s.top && n.top < s.bottom());
+                    !based && size_of(s) < 0.85 * size_of(&groups[k][0]) && !big_symbol(s) && s.text.trim().chars().count() <= 3 && signs.iter().any(|n| mid > n.left - 1.0 && mid < n.right() + 1.0 && (s.top - n.top).abs() <= 3.0)
+                })?;
+                Some((m, j, k))
+            })
+        });
+        let Some((m, j, k)) = found else { break };
+        let s = groups[m].remove(j);
+        groups[k].push(s);
+    }
     // (a small piece right under a sum sign set in the text is its lower
     // limit, whichever line it touches: the sign's line has it)
     // (with what stands beside it at its height: "n", "=", "1")
