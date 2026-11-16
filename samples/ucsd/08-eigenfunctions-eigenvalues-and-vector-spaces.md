@@ -592,7 +592,7 @@ Integrate both sides from just below a boundary (assumed to be at $`x`$ = 0) to 
 Let $`\epsilon`$ go to zero and the right hand side must go to zero for finite potentials.
 
 ```math
-\frac{d\psi}{dx} \left| {}_{+ \epsilon} - \frac{d\psi}{dx} \right|_{- \epsilon} \to 0
+\frac{d\psi}{dx} |_{+ \epsilon} - \frac{d\psi}{dx} |_{- \epsilon} \to 0
 ```
 
 Infinite potentials are unphysical but often handy. The delta function potential is very handy, so we will derive a special continuity equation for it. Assume $`V ( x ) = V_{0} \delta ( x )`$. Integrating the Schrödinger Equation, we get
@@ -608,7 +608,7 @@ Infinite potentials are unphysical but often handy. The delta function potential
 As before, finite terms in the right hand integral go to zero as $`\epsilon \to 0`$, but now the delta function gives a fixed contribution to the integral.
 
 ```math
-\frac{d\psi}{dx} \left| {}_{+ \epsilon} - \frac{d\psi}{dx} \right|_{- \epsilon} = \frac{2 m}{\hbar^{2}} V_{0} \psi ( 0 )
+\frac{d\psi}{dx} |_{+ \epsilon} - \frac{d\psi}{dx} |_{- \epsilon} = \frac{2 m}{\hbar^{2}} V_{0} \psi ( 0 )
 ```
 
 There is a **discontinuity in the derivative of the wave function** proportional to the wave function at that point (and to the strength of the delta function potential).

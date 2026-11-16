@@ -266,7 +266,7 @@ We write explicitly that $`\omega`$ depends on $`k`$. For our free particle, thi
 To cover the general case, lets expand $`\omega ( k )`$ around the center of the wave packet in k-space.
 
 ```math
-\omega ( k ) = \omega ( k_{0} ) + \frac{d\omega}{dk} \left| {}_{k_{0}} ( k - k_{0} ) + \frac{1}{2} \frac{d^{2} \omega}{dk^{2}} \right|_{k_{0}} ( k - k_{0} )^{2}
+\omega ( k ) = \omega ( k_{0} ) + \frac{d\omega}{dk} |_{k_{0}} ( k - k_{0} ) + \frac{1}{2} \frac{d^{2} \omega}{dk^{2}} |_{k_{0}} ( k - k_{0} )^{2}
 ```
 
 We anticipate the outcome a bit and name the coefficients.

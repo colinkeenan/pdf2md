@@ -1282,6 +1282,22 @@ fn take_brackets(spans: &[MSpan], depth: usize) -> (Vec<MSpan>, Vec<Item>) {
     // between them (and no "=") are a pair; otherwise a bracket hugs the
     // text on its inner side.
     let mut side: Vec<Option<bool>> = delims.iter().map(|d| d.kind.and_then(opens_kind)).collect();
+    // (a bar with a small index at its foot is the bar of "taken at": it
+    // closes, and opens nothing — "dψ/dx |_{+ε} − dψ/dx |_{−ε}" is no
+    // absolute value of what stands between the two bars)
+    for k in 0..delims.len() {
+        let d = delims[k];
+        let foot = rest.iter().any(|s| !s.cmex() && s.size < 0.9 * size && s.left >= d.right - 1.0 && s.left <= d.right + 0.4 * size && s.cy() > (d.top + d.bottom) / 2.0 + 0.2 * (d.bottom - d.top) && s.top < d.bottom + 0.5 * size);
+        // (… with nothing of the formula right behind the bar at its
+        // middle: the 0 under an integral sign that follows an opening
+        // bar is no such index)
+        let mid = (d.top + d.bottom) / 2.0;
+        let behind = spans.iter().any(|s| !is_piece(s) && s.left >= d.right - 1.0 && s.left <= d.right + 0.6 * size && ((s.cmex() && s.top >= d.top - size && s.top <= d.bottom) || (s.size >= 0.9 * size && s.top < mid && s.bottom > mid)));
+        let foot = foot && !behind;
+        if side[k].is_none() && d.kind == Some('|') && foot {
+            side[k] = Some(false);
+        }
+    }
     for k in 0..delims.len() {
         if side[k].is_some() {
             continue;
@@ -1688,7 +1704,8 @@ fn brace_group(spans: &[MSpan], depth: usize) -> Option<String> {
             let t = build_at(r, depth + 1);
             if let Some(rest) = t.strip_prefix("= ") {
                 format!("&= {rest}")
-            } else if let Some(p) = t.find(" = ") {
+            // (the "=" the rows line up at stands in no group or bracket)
+            } else if let Some(p) = top_level_equals(&t) {
                 format!("{} &= {}", &t[..p], &t[p + 3..])
             } else {
                 format!("& {t}")
