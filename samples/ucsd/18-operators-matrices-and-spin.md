@@ -1848,9 +1848,9 @@ is the probability that a measurement of the $`x`$ component of spin yields zero
 
 probability that a measurement of the $`x`$ component of spin yields +$`\frac{1}{2}`$?
 
-8. A spin $`\frac{1}{2}`$ system is in the state $`\chi = \tfrac{1}{\sqrt{5}} ( ) \frac{i}{2}`$ (in the usual $`S_{z}`$ eigenstate basis). What is the
+8. A spin $`\frac{1}{2}`$ system is in the state $`\chi = \tfrac{1}{\sqrt{5}} \begin{pmatrix} i \\ 2 \end{pmatrix}`$ (in the usual $`S_{z}`$ eigenstate basis). What is the
 
-probability that a measurement of $`S_{x}`$ yields$`( ) \frac{- \hbar}{2}`$? What is the probability that a measurement of $`S_{y}`$ yields $`\frac{\hbar}{2} -`$?
+probability that a measurement of $`S_{x}`$ yields $`\frac{- \hbar}{2}`$? What is the probability that a measurement of $`S_{y}`$ yields $`\frac{\hbar}{2} -`$?
 
 9. A spin $`\frac{1}{2}`$ object is in an eigenstate of $`S_{y}`$ with eigenvalue $`\frac{\hbar}{2}`$ at t=0. The particle is in a magnetic field **B** = $`( 0 , 0 ,B )`$ which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{z}`$. Find the probability to measure $`S_{y} = \tfrac{\hbar}{2}`$ as a function of time.
 

@@ -1851,6 +1851,19 @@ fn attach_fraction_rows(doc: &Doc, lines: &[Line], bars: &[Rule]) -> Vec<Line> {
         };
         let size = lines[home].size;
         let mut moved = Vec::new();
+        // (the pieces right at a little bar, over and under it: what stands
+        // behind one of them, further from the bar, is not of its fraction —
+        // the index of a letter in the line above, over the 1 of a ½)
+        let narrow = b.right - b.left <= 1.2 * size;
+        let halves: Vec<(f32, f32, f32)> = lines
+            .iter()
+            .flat_map(|l| l.spans.iter())
+            .filter(|s| {
+                let c = s.left + s.width / 2.0;
+                narrow && c >= b.left - 2.0 && c <= b.right + 2.0 && (b.top - s.bottom()).max(s.top - b.bottom) <= 2.0
+            })
+            .map(|s| (s.top, s.bottom(), s.left))
+            .collect();
         for (k, l) in lines.iter_mut().enumerate() {
             if k == home {
                 continue;
@@ -1871,6 +1884,11 @@ fn attach_fraction_rows(doc: &Doc, lines: &[Line], bars: &[Rule]) -> Vec<Line> {
                 // root's bar is under the root.)
                 let at_bar = (b.top - s.bottom()).max(s.top - b.bottom) <= 0.35 * size;
                 if words && big_root.is_none() && (s.top - line_top).abs() <= 0.3 * size && !at_bar {
+                    return true;
+                }
+                // (words much wider than the bar are no numerator of its
+                // fraction: the end of the line of text over a little ½)
+                if !doc.is_math(s) && s.width > 2.0 * (b.right - b.left) && s.text.split_whitespace().any(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 4) {
                     return true;
                 }
                 let c = s.left + s.width / 2.0;
@@ -1896,7 +1914,16 @@ fn attach_fraction_rows(doc: &Doc, lines: &[Line], bars: &[Rule]) -> Vec<Line> {
                     && s.bottom() <= b.top + 2.0
                     && s.top < line_top + 0.75 * size
                     && letter_ends.iter().any(|r| (s.left - r).abs() <= 0.2 * size);
-                if inside && near && !others && !script_of_text && s.text.trim() != "." {
+                // (away from the bar, on the side where a piece stands right at
+                // it, and beginning before that piece: its scripts begin
+                // after it, or with it)
+                let away = (b.top - s.bottom()).max(s.top - b.bottom) > 0.4 * size;
+                let side: Vec<&(f32, f32, f32)> = halves.iter().filter(|h| (s.bottom() <= b.top + 2.0) == (h.1 <= b.top + 2.0)).collect();
+                let behind = away && !side.is_empty() && !side.iter().any(|h| s.left >= h.2 - 1.0);
+                if inside && near && !others && !script_of_text && !behind && s.text.trim() != "." {
+                    if std::env::var_os("PDF2MD_FRACDEBUG").is_some() {
+                        eprintln!("FRAC bar {:.0}..{:.0}@{:.0} home top {:.0} takes {:?}@{},{} from line top {:.0} script {:?}", b.left, b.right, b.top, 0.0, s.text, s.left, s.top, line_top, s.script);
+                    }
                     moved.push(s.clone());
                     false
                 } else {
