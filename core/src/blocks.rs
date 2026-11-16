@@ -1609,8 +1609,10 @@ fn display_flags(doc: &Doc, lines: &[Line], st: &Stats) -> Vec<bool> {
             // Prose lines starting at the margin ("Also¹") are not part of
             // the equation even when they sit right above it.
             let at_margin = l.left - st.left < 2.0 * st.body;
+            // (small type alone does not make a row of it: a word between
+            // two formulas of a passage set small, "and", "becomes")
             let candidate = words <= 3
-                && (ratio > 0.0 || l.size < 0.9 * st.body || indented(l))
+                && (ratio > 0.0 || (l.size < 0.9 * st.body && words == 0) || indented(l))
                 && (!at_margin || ratio >= 0.7);
             // ... or it lies beside a tall bracket of the equation (the rows
             // of cases after a big "{")
