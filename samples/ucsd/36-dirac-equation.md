@@ -420,7 +420,7 @@ First, we can write the **two component equation that is equivalent to the Dirac
 Turn on the EM field by making the usual substitution $`\vec{p} \to \vec{p} + \tfrac{e}{c} \vec{A}`$ and adding the scalar potential term.
 
 ```math
-\begin{pmatrix} - \tfrac{1}{c} ( E + \quad mc^{2} ) & \vec{\sigma} \cdot \begin{pmatrix} \vec{p} + \tfrac{e}{c} \vec{A} \\ eA_{0} + \end{pmatrix} \\ - \vec{\sigma} \cdot \begin{pmatrix} eA_{0} - \\ \vec{p} + \tfrac{e}{c} \vec{A} \end{pmatrix} & \tfrac{1}{c} ( E + \quad mc^{2} ) \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = 0
+\begin{pmatrix} - \tfrac{1}{c} ( E + \quad mc^{2} ) & \vec{\sigma} \cdot \left( \vec{p} + \tfrac{e}{c} \vec{A} \right) \\ - \vec{\sigma} \cdot \begin{pmatrix} eA_{0} - \\ \vec{p} + \tfrac{e}{c} \vec{A} \end{pmatrix} & \tfrac{1}{c} ( E + eA_{0} + mc^{2} ) \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = 0
 ```
 
 ```math
@@ -2538,11 +2538,11 @@ We now have everything we need to **get to the radial equations**.
 ```
 
 ```math
-c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \begin{pmatrix} \begin{pmatrix} \hbar r \tfrac{\partial}{\partial r} - ( \kappa - 1 ) \hbar \\ \hbar r \tfrac{\partial}{\partial r} + i ( - \kappa - \end{pmatrix} f ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \\ \left( - i \quad 1 ) \hbar \right) g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \\ \hbar c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \\ if ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \end{pmatrix}
+c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \begin{pmatrix} \left( \hbar r \tfrac{\partial}{\partial r} - ( \kappa - 1 ) \hbar \right) f ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \\ \left( - i \hbar r \tfrac{\partial}{\partial r} + i ( - \kappa - 1 ) \hbar \right) g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \end{pmatrix} \hbar c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \\ if ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \end{pmatrix}
 ```
 
 ```math
-\begin{pmatrix} \begin{pmatrix} r \tfrac{\partial}{\partial r} - ( \kappa - 1 ) \\ ir \tfrac{\partial}{\partial r} - i ( 1 + \end{pmatrix} f ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \\ \left( - \quad \kappa ) \right) g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \\ if ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \end{pmatrix}
+\begin{pmatrix} \left( r \tfrac{\partial}{\partial r} - ( \kappa - 1 ) \right) f ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \\ \left( - ir \tfrac{\partial}{\partial r} - i ( 1 + \kappa ) \right) g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \\ if ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \end{pmatrix}
 ```
 
 ```math

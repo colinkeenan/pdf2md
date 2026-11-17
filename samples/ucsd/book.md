@@ -8192,7 +8192,7 @@ Using the second pair of equations to eliminate the $`n`$ + 1 coefficients, we h
 Now we can eliminate all the coefficients.
 
 ```math
-\begin{aligned} \frac{( e^{i\varphi} - \cos ( ka ) ) ( e^{i\varphi} - \cos ( ka ) - \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) )}{2 i\varphi \quad i\varphi} &= \left( \frac{2 maV_{0}}{\hbar^{2} k} \cos ( ka ) - \sin ( ka ) \right) \sin ( ka ) \\ & \quad e \quad - e \quad \begin{pmatrix} \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) + \cos ( ka ) + \cos ( ka ) \\ + \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) \cos ( ka ) + \cos^{2} ( ka \end{pmatrix} ) \end{aligned}
+\begin{aligned} \frac{( e^{i\varphi} - \cos ( ka ) ) ( e^{i\varphi} - \cos ( ka ) - \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) )}{2 i\varphi \quad i\varphi} &= \left( \frac{2 maV_{0}}{\hbar^{2} k} \cos ( ka ) - \sin ( ka ) \right) \sin ( ka ) \\ & \quad e \quad - e \quad \left( \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) + \cos ( ka ) + \cos ( ka ) \right) + \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) \cos ( ka ) + \cos^{2} ( ka ) \end{aligned}
 ```
 
 ```math
@@ -14277,7 +14277,7 @@ e^{i\theta L_{z} / \hbar} = \sum_{n = 0}^{\infty} \frac{\left( \frac{i\theta L_{
 ```
 
 ```math
-\left( \frac{L_{z}}{\hbar} \right)^{3} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & - 1 \\ & \dots & \end{pmatrix} = L_{z} / \hbar
+\left( \frac{L_{z}}{\hbar} \right)^{3} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & - 1 \end{pmatrix} \dots = L_{z} / \hbar
 ```
 
 All the odd powers are the same. All the nonzero even powers are the same. The $`\hbar`$s all cancel out. We now must look at the sums for each term in the matrix and identify the function it represents. If we look at the sum for the upper left term of the matrix, we get a 1 times $`\frac{( i\theta )^{n}}{n !}`$. This is just $`e^{i\theta}`$. There is only one contribution to the middle term, that is a one from $`n`$ = 0. The lower right term is like the upper left except the odd terms have a minus sign. We get $`\frac{( - i\theta )^{n}}{n !}`$ term n. This is just $`e^{- i\theta}`$. The rest of the terms are zero.
@@ -14309,7 +14309,7 @@ e^{i\theta L_{y} / \hbar} = \sum_{n = 0}^{\infty} \frac{\left( \frac{i\theta L_{
 <a id="p276" href="book.pdf#page=276" target="_blank" title="This page in the PDF"><sup>[p. 276]</sup></a>
 
 ```math
-\left( \frac{L_{y}}{\hbar} \right)^{3} = \frac{1}{\sqrt{2} i} \frac{1}{2} \begin{pmatrix} 0 & 2 & 0 \\ - 2 & 0 & 2 \\ 0 & - 2 & 0 \\ \dots & & \end{pmatrix} = \left( \frac{L_{y}}{\hbar} \right)
+\left( \frac{L_{y}}{\hbar} \right)^{3} = \frac{1}{\sqrt{2} i} \frac{1}{2} \begin{pmatrix} 0 & 2 & 0 \\ - 2 & 0 & 2 \\ 0 & - 2 & 0 \end{pmatrix} \dots = \left( \frac{L_{y}}{\hbar} \right)
 ```
 
 All the odd powers are the same. All the nonzero even powers are the same. The $`\hbar`$s all cancel out. We now must look at the sums for each term in the matrix and identify the function it represents.
@@ -24503,7 +24503,7 @@ First, we can write the **two component equation that is equivalent to the Dirac
 Turn on the EM field by making the usual substitution $`\vec{p} \to \vec{p} + \tfrac{e}{c} \vec{A}`$ and adding the scalar potential term.
 
 ```math
-\begin{pmatrix} - \tfrac{1}{c} ( E + \quad mc^{2} ) & \vec{\sigma} \cdot \begin{pmatrix} \vec{p} + \tfrac{e}{c} \vec{A} \\ eA_{0} + \end{pmatrix} \\ - \vec{\sigma} \cdot \begin{pmatrix} eA_{0} - \\ \vec{p} + \tfrac{e}{c} \vec{A} \end{pmatrix} & \tfrac{1}{c} ( E + \quad mc^{2} ) \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = 0
+\begin{pmatrix} - \tfrac{1}{c} ( E + \quad mc^{2} ) & \vec{\sigma} \cdot \left( \vec{p} + \tfrac{e}{c} \vec{A} \right) \\ - \vec{\sigma} \cdot \begin{pmatrix} eA_{0} - \\ \vec{p} + \tfrac{e}{c} \vec{A} \end{pmatrix} & \tfrac{1}{c} ( E + eA_{0} + mc^{2} ) \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = 0
 ```
 
 ```math
@@ -26621,11 +26621,11 @@ We now have everything we need to **get to the radial equations**.
 ```
 
 ```math
-c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \begin{pmatrix} \begin{pmatrix} \hbar r \tfrac{\partial}{\partial r} - ( \kappa - 1 ) \hbar \\ \hbar r \tfrac{\partial}{\partial r} + i ( - \kappa - \end{pmatrix} f ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \\ \left( - i \quad 1 ) \hbar \right) g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \\ \hbar c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \\ if ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \end{pmatrix}
+c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \begin{pmatrix} \left( \hbar r \tfrac{\partial}{\partial r} - ( \kappa - 1 ) \hbar \right) f ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \\ \left( - i \hbar r \tfrac{\partial}{\partial r} + i ( - \kappa - 1 ) \hbar \right) g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \end{pmatrix} \hbar c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \\ if ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \end{pmatrix}
 ```
 
 ```math
-\begin{pmatrix} \begin{pmatrix} r \tfrac{\partial}{\partial r} - ( \kappa - 1 ) \\ ir \tfrac{\partial}{\partial r} - i ( 1 + \end{pmatrix} f ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \\ \left( - \quad \kappa ) \right) g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \\ if ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \end{pmatrix}
+\begin{pmatrix} \left( r \tfrac{\partial}{\partial r} - ( \kappa - 1 ) \right) f ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \\ \left( - ir \tfrac{\partial}{\partial r} - i ( 1 + \kappa ) \right) g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \\ if ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \end{pmatrix}
 ```
 
 ```math

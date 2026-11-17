@@ -1521,7 +1521,7 @@ e^{i\theta L_{z} / \hbar} = \sum_{n = 0}^{\infty} \frac{\left( \frac{i\theta L_{
 ```
 
 ```math
-\left( \frac{L_{z}}{\hbar} \right)^{3} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & - 1 \\ & \dots & \end{pmatrix} = L_{z} / \hbar
+\left( \frac{L_{z}}{\hbar} \right)^{3} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & - 1 \end{pmatrix} \dots = L_{z} / \hbar
 ```
 
 All the odd powers are the same. All the nonzero even powers are the same. The $`\hbar`$s all cancel out. We now must look at the sums for each term in the matrix and identify the function it represents. If we look at the sum for the upper left term of the matrix, we get a 1 times $`\frac{( i\theta )^{n}}{n !}`$. This is just $`e^{i\theta}`$. There is only one contribution to the middle term, that is a one from $`n`$ = 0. The lower right term is like the upper left except the odd terms have a minus sign. We get $`\frac{( - i\theta )^{n}}{n !}`$ term n. This is just $`e^{- i\theta}`$. The rest of the terms are zero.
@@ -1553,7 +1553,7 @@ e^{i\theta L_{y} / \hbar} = \sum_{n = 0}^{\infty} \frac{\left( \frac{i\theta L_{
 <a id="p276" href="book.pdf#page=276" target="_blank" title="This page in the PDF"><sup>[p. 276]</sup></a>
 
 ```math
-\left( \frac{L_{y}}{\hbar} \right)^{3} = \frac{1}{\sqrt{2} i} \frac{1}{2} \begin{pmatrix} 0 & 2 & 0 \\ - 2 & 0 & 2 \\ 0 & - 2 & 0 \\ \dots & & \end{pmatrix} = \left( \frac{L_{y}}{\hbar} \right)
+\left( \frac{L_{y}}{\hbar} \right)^{3} = \frac{1}{\sqrt{2} i} \frac{1}{2} \begin{pmatrix} 0 & 2 & 0 \\ - 2 & 0 & 2 \\ 0 & - 2 & 0 \end{pmatrix} \dots = \left( \frac{L_{y}}{\hbar} \right)
 ```
 
 All the odd powers are the same. All the nonzero even powers are the same. The $`\hbar`$s all cancel out. We now must look at the sums for each term in the matrix and identify the function it represents.

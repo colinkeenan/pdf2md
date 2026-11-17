@@ -1005,7 +1005,7 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
     // where its bar ends.
     for b in bars {
         let root = spans.iter().any(|s| is_radical(s) && (b.left - s.right).abs() <= 3.0 && s.top <= b.bottom + size && s.bottom >= b.top - 2.0);
-        let over = |s: &MSpan| s.atom.is_none() && !s.cmex() && s.left < b.right - 2.0 && s.right > b.right + 3.0 && s.top >= b.bottom - 2.0 && s.top <= b.bottom + 1.5 * size;
+        let over = |s: &MSpan| s.atom.is_none() && !s.cmex() && s.left < b.right - 2.0 && s.right > b.right + 3.0 && s.top >= b.bottom - 2.0 && s.top <= b.bottom + 0.6 * size;
         while let Some(k) = spans.iter().position(|s| root && over(s) && s.text.trim().chars().count() >= 2) {
             let whole = spans[k].clone();
             let chars: Vec<char> = whole.text.chars().collect();
@@ -1652,7 +1652,9 @@ fn take_brackets(spans: &[MSpan], depth: usize) -> (Vec<MSpan>, Vec<Item>) {
                 && r <= d1.left + 1.0
                 && s.cy() >= ceiling
                 && s.cy() < floor
-                && s.cy() <= (bottom + 1.5 * size).max((top + bottom) / 2.0 + 3.0 * size)
+                // (a bracket read from its outline has its true height: what
+                // stands under its foot, in the row below, is not in it)
+                && s.cy() <= if typed_pair { bottom + 0.5 * size } else { (bottom + 1.5 * size).max((top + bottom) / 2.0 + 3.0 * size) }
         });
         rest = outside;
         let open = d0.kind.unwrap_or('(');
