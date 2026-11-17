@@ -1448,10 +1448,16 @@ fn find_tables(doc: &Doc, lines: &[Line], st: &Stats) -> Vec<(usize, usize, Vec<
             if cols.last().is_some_and(|&c| x - c < st.body) {
                 continue;
             }
+            // (no column begins right behind a root sign: the sign and what
+            // it is the root of are one cell)
+            let radical = |t: &crate::layout::Span| t.text.trim() == "√" || (matches!(t.text.trim(), "p" | "q" | "r" | "s") && doc.family(t).starts_with("CMEX")) || (t.text.trim() == "p" && doc.family(t).starts_with("CMSY"));
             let ok = run.iter().all(|l| {
                 let starts = l.spans.iter().any(|t| (t.left - x).abs() <= 6.0);
                 let crosses = l.spans.iter().any(|t| t.left < x - 6.0 && t.right() > x + 2.0);
-                starts && !crosses
+                // (the sign's box is narrower than the sign: nothing else
+                // stands between it and the column)
+                let under_root = l.spans.iter().any(|t| radical(t) && t.left < x - 6.0 && x - t.right() <= st.body && !l.spans.iter().any(|o| !radical(o) && o.left > t.left && o.left < x - 6.0));
+                starts && !crosses && !under_root
             });
             if ok {
                 cols.push(x);

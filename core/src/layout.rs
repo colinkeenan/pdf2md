@@ -1015,7 +1015,17 @@ fn figures_and_pieces(svg: &str) -> Vec<(Vec<Figure>, Vec<Figure>)> {
                 // a background box reaching far off the page (ebooks have
                 // them) is no drawing
                 let off_page = b - t > 1200.0 || t < -50.0;
-                if !bar && !off_page {
+                // a low band filled with a light tint, no outline: the
+                // ground of a table's head or of an equation set on grey,
+                // not a piece of a drawing (with the rules of the table
+                // and the bars of its roots it made a "picture" of half
+                // the table)
+                let light = tag.split(" fill=\"rgb(").nth(1).and_then(|r| r.split(')').next()).is_some_and(|rgb| {
+                    let v: Vec<f32> = rgb.split(',').filter_map(|c| c.trim().trim_end_matches('%').parse().ok()).collect();
+                    v.len() == 3 && v.iter().all(|c| *c >= 80.0)
+                });
+                let band = light && !tag.contains("stroke=") && !d.contains(['C', 'Q']) && pts.len() <= 5 && b - t <= 40.0;
+                if !bar && !off_page && !band {
                     boxes.push((l, r, t, b, false));
                     // (a fraction bar drawn as a thin stroke is a piece of a
                     // drawing only together with something else: a formula
