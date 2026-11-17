@@ -2693,7 +2693,9 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
             // run together in one line.
             {
                 let first = b.out.iter().rposition(|o| !(o.page == pi && matches!(o.block, Block::Figure { .. }))).map_or(0, |k| k + 1);
-                let areas: Vec<Figure> = b.out[first..].iter().filter_map(|o| if let Block::Figure { area, .. } = &o.block { Some(*area) } else { None }).collect();
+                // (from left to right, in whatever order the page drew them)
+                let mut areas: Vec<Figure> = b.out[first..].iter().filter_map(|o| if let Block::Figure { area, .. } = &o.block { Some(*area) } else { None }).collect();
+                areas.sort_by(|x, y| x.left.total_cmp(&y.left));
                 let beside = areas.len() >= 2 && areas.windows(2).all(|w| w[1].left >= w[0].right - 2.0 && w[1].top < w[0].bottom && w[1].bottom > w[0].top);
                 let foot = areas.iter().map(|a| a.bottom).fold(f32::MIN, f32::max);
                 let under = |s: &crate::layout::Span| {
@@ -2707,7 +2709,11 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                     && l.spans.iter().all(|s| under(s).is_some())
                     && (0..areas.len()).all(|k| l.spans.iter().any(|s| under(s) == Some(k)));
                 if named {
-                    let figures = b.out.split_off(first);
+                    let mut figures = b.out.split_off(first);
+                    figures.sort_by(|x, y| match (&x.block, &y.block) {
+                        (Block::Figure { area: p, .. }, Block::Figure { area: q, .. }) => p.left.total_cmp(&q.left),
+                        _ => std::cmp::Ordering::Equal,
+                    });
                     b.push(Block::Columns(areas.len()));
                     for (k, figure) in figures.into_iter().enumerate() {
                         if k > 0 {

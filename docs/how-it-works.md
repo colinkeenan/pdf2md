@@ -323,6 +323,21 @@ TeX's symbol font has a quirk: in the PDF's text, ⟨ ⟩ come out as "h" and "i
 * **A bracket beside a numerator** leaves its bar a fraction bar. A bar over a single piece of text with nothing above it is an overline (Ā); the short box of a large bracket that begins at the numerator's side is not "something sticking out past the bar".
 * **A page of a few formulas is no page of two columns.** Two columns need lines of words on both sides of the gap; a white gap that runs through two displayed formulas is chance.
 
+### More from Lucid: bars of "taken at", tables, sideways pages, portraits
+
+*Worked out on: Lucid. General, except the heights of TeX's root signs; several mended formulas in UCSD, Zee and Dyson too.*
+
+* **A bar of "taken at"** (a tall bar with an index at its foot, `dψ/dx |_{x = a/2}`, or with limits at foot and head, `… |_a^b`) is a piece of its row, `\Big|` or `\Bigg|` by its height, with what hangs at its foot and stands at its head as index and exponent. It closes a bracket only where that bracket is as tall as the bar, head and foot: `\left\{ … \right|_{0}^{a/2}`. The brace of a system of equations stays open past a bar in one of its rows.
+* **Roots.** A root sign set a little over a fraction's bar, with its own bar right under that bar, is in the denominator (x/√(x²+y²+z²) set small). A root over a fraction that fills it stays on the line though its letters are small. A root sign is of the line its foot stands in, or that begins a point under its foot.
+* **The lower limit of a sum set apart** stands under its tall sign, clear of every line; it is of the sign's line, not of the line of text that follows.
+* **A line in the size of an index.** A line begun in the size of the text and gone on to its end in index-size type ("H = H_fs +" and two long terms set small to fit) is cut behind the last full-size letter and its index; the small part is a formula of its own size.
+* **Table cells** get the bars drawn in them, so a small fraction or a root in a cell is one. A small fraction takes no larger piece that lies beyond its own half (the minus sign that opens the next row, under the 2 of a ½). A root sign and what it is the root of are one cell.
+* **A light band behind a table's head** or an equation is no piece of a drawing: with the table's rules and the bars of its roots it had made a "picture" of half a table.
+* **Signs and letters in the text's font beside a formula.** An upright letter or two set right against a raised or lowered piece is its base (e⁻, K⁺). A line set in with a large sum or integral sign and a short label beside it is a formula set apart.
+* **Pages set sideways** (a wide figure turned to fill the page, its caption running down the page) are found by their text, which `pdftohtml` gives without width. They are turned upright in a copy of the PDF kept in the cache, and the book is read from that copy: the figure, its caption and the formulas in it come out as on any page. The link to the PDF still goes to the book's own file. A curved stroke out in the margin, beyond every line of text, is no bracket.
+* **A row of pictures with a name under each** (portraits) is written as a row: each picture and its name one cell, and the caption under the row is the caption of each picture.
+* **On the title page**, a line in large type that stands well apart under the title and subtitle (the author's name, the date) is a line of the page in bold, not a heading of the book.
+
 ### Symbols the text leaves out
 
 *Worked out on: Zee 2. One kind of PDF: MathTime fonts. The method (names from the font, places from the SVG) is general; the table of names is not.*
