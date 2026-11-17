@@ -9,7 +9,7 @@
 
 # <a id="s-9-1-piecewise-constant-potentials-in-1d"></a>9.1 Piecewise Constant Potentials in 1D
 
-Several standard problems can be understood conceptually using two or three regions with constant potentials. We will find solutions in each region of the potential. These potentials have **simple** **solutions to the Schrödinger equation**. We must then match the solutions at the boundaries between the regions. Because of the multiple regions, these problems will require **more work with** **boundary conditions** than is usual.
+Several standard problems can be understood conceptually using two or three regions with constant potentials. We will find solutions in each region of the potential. These potentials have **simple solutions to the Schrödinger equation**. We must then match the solutions at the boundaries between the regions. Because of the multiple regions, these problems will require **more work with boundary conditions** than is usual.
 
 ## <a id="s-9-1-1-the-general-solution-for-a-constant-potential"></a>9.1.1 The General Solution for a Constant Potential
 
@@ -57,7 +57,7 @@ V ( x ) = \begin{cases} 0 & x< 0 \\ + V_{0} & x> 0 \end{cases}
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p146" href="book.pdf#page=146" target="_blank" title="This page in the PDF"><sup>[p. 146]</sup></a>
 
-For this problem, both regions have $`E>V`$, so we will use the complex exponential solutions in both regions. This is essentially a 1D scattering problem. Assume there is a **beam of particles with** **definite momentum** coming in from the left and assume there is no flux of particles coming from the right.
+For this problem, both regions have $`E>V`$, so we will use the complex exponential solutions in both regions. This is essentially a 1D scattering problem. Assume there is a **beam of particles with definite momentum** coming in from the left and assume there is no flux of particles coming from the right.
 
 For $`x< 0`$, the solution is
 
@@ -177,7 +177,7 @@ u_{2} ( x ) = Ae^{ik^{\prime} x} + Be^{- ik^{\prime} x}
 u_{3} ( x ) = Te^{ikx}
 ```
 
-Again we have assumed a **beam of definite momentum incident from the left and no wave** **incident from the right**.
+Again we have assumed a **beam of definite momentum incident from the left and no wave incident from the right**.
 
 Ae + Be ik’x -ik’x
 
@@ -291,7 +291,7 @@ Try this 1D Potential Applet. It allows you to vary the potential and see the ei
 
 ## <a id="s-9-1-5-the-potential-barrier"></a>9.1.5 The Potential Barrier
 
-With an analysis of the Potential Barrier problem, we can understand the phenomenon of **quantum** **tunneling**.
+With an analysis of the Potential Barrier problem, we can understand the phenomenon of **quantum tunneling**.
 
 ```math
 V ( x ) = \begin{cases} 0 & x< - a \\ + V_{0} & - a<x<a \\ 0 & x>a \end{cases}
@@ -383,7 +383,7 @@ which makes the **Schrödinger Equation for energy eigenstates**
 
 Note that this potential also has a Parity symmetry. The potential is unphysical because it does not go to zero at infinity, however, it is often a very good approximation, and this potential can be solved exactly.
 
-It is standard to remove the spring constant $`k`$ from the Hamiltonian, replacing it with the **classical** **oscillator frequency**.
+It is standard to remove the spring constant $`k`$ from the Hamiltonian, replacing it with the **classical oscillator frequency**.
 
 ```math
 \omega = \sqrt{\frac{k}{m}}
@@ -515,7 +515,7 @@ Putting in the formula for $`\kappa`$ in terms of the energy.
 E = - \frac{ma^{2} V_{0}^{2}}{2 \hbar^{2}}
 ```
 
-There is only one energy for which we can satisfy the boundary conditions. There is only **one** **bound state** in an attractive delta function potential.
+There is only one energy for which we can satisfy the boundary conditions. There is only **one bound state** in an attractive delta function potential.
 
 # <a id="s-9-4-the-delta-function-model-of-a-molecule"></a>9.4 The Delta Function Model of a Molecule \*
 
@@ -589,7 +589,7 @@ This energy is larger than for one delta function. This state would be called **
 
 # <a id="s-9-5-the-delta-function-model-of-a-crystal"></a>9.5 The Delta Function Model of a Crystal \*
 
-The Kronig-Penny model of a solid crystal contains an **infinite array of repulsive delta func-** **tions**.
+The Kronig-Penny model of a solid crystal contains an **infinite array of repulsive delta functions**.
 
 ```math
 V ( x ) = aV_{0} \sum_{n = -\infty}^{\infty} \delta ( x - na )
@@ -629,7 +629,7 @@ By matching the boundary conditions and requiring that the probability be period
 \cos ( \varphi ) = \cos ( ka ) + \frac{maV_{0}}{\hbar^{2} k} \sin ( ka )
 ```
 
-Since $`\cos ( \varphi )`$ can only take on values between -1 and 1, there are **allowed bands of** $`k`$ **and gaps** **between those bands**.
+Since $`\cos ( \varphi )`$ can only take on values between -1 and 1, there are **allowed bands of** $`k`$ **and gaps between those bands**.
 
 The graph below shows $`\cos ( ka ) + \tfrac{maV_{0}}{\hbar^{2} k} \sin ( ka )`$ as a function of $`k`$. If this is not between -1 and 1, there is no solution, that value of $`k`$ and the corresponding energy are not allowed.
 
@@ -1103,7 +1103,7 @@ We now want ot shift terms in the sum so that we see the coefficient of $`y^{m}`
 \sum_{m = 0}^{\infty} [ a_{m + 2} ( m + 2 ) ( m + 1 ) - 2 a_{m} ( m ) + ( \epsilon - 1 ) a_{m} ] y^{m} = 0
 ```
 
-(Note that in doing this shift the first term for $`m = 0`$ and for $`m = 1`$ get shifted out of the sum. This is OK since $`a_{m} ( m ) ( m - 1 ) y^{m - 2}`$ is zero for $`m = 0`$ or $`m = 1`$.)
+_(Note that in doing this shift the first term for_ $`m = 0`$ _and for_ $`m = 1`$ _get shifted out of the sum. This is OK since_ $`a_{m} ( m ) ( m - 1 ) y^{m - 2}`$ _is zero for_ $`m = 0`$ _or_ $`m = 1`$_.)_
 
 For the sum to be zero for all $`y`$, each coefficient of $`y^{m}`$ must be zero.
 

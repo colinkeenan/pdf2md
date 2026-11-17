@@ -7,7 +7,7 @@
 
 # 17 3D Symmetric HO in Spherical Coordinates *
 
-We have already solved the problem of a 3D harmonic oscillator by separation of variables in Cartesian coordinates (See section 13.2). It is instructive to **solve the same problem in spherical** **coordinates** and compare the results. The potential is
+We have already solved the problem of a 3D harmonic oscillator by separation of variables in Cartesian coordinates (See section 13.2). It is instructive to **solve the same problem in spherical coordinates** and compare the results. The potential is
 
 ```math
 V ( r ) = \frac{1}{2} \mu \omega^{2} r^{2} .

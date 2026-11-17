@@ -634,7 +634,9 @@ fn emit_line(doc: &Doc, l: &Line, st: &Stats, spans: &[crate::layout::Span], kin
                     out.push(Inline::Strong(s.text.clone()));
                 }
             }
-            _ if s.italic => {
+            // (not a reference the PDF links, a number in italic text: it
+            // stays plain, and is made a link further on)
+            _ if (s.italic || crate::layout::is_italic_font(doc.family(s))) && s.link.is_none() => {
                 // italic words: one `_..._` piece for a whole italic phrase
                 if let Some(Inline::Emph(e)) = out.last_mut() {
                     if space {
@@ -2233,6 +2235,26 @@ impl Builder<'_> {
                 let compound = format!("{}-{}", a_word, b_word).to_lowercase();
                 if !self.st.hyphenated.contains(&compound) {
                     a.pop();
+                }
+                a.push_str(b);
+                self.para.extend(inl.into_iter().skip(1));
+                return;
+            }
+        }
+        // an italic or bold phrase that goes on over the line's end: one
+        // piece, and a word cut at the end of the line put together as in
+        // plain text
+        let styled = matches!((self.para.last(), inl.first()), (Some(Inline::Emph(_)), Some(Inline::Emph(_))) | (Some(Inline::Strong(_)), Some(Inline::Strong(_))));
+        if styled {
+            if let (Some(Inline::Emph(a) | Inline::Strong(a)), Some(Inline::Emph(b) | Inline::Strong(b))) = (self.para.last_mut(), inl.first()) {
+                let a_word: String = a.trim_end_matches('-').chars().rev().take_while(|c| c.is_alphabetic()).collect::<Vec<_>>().into_iter().rev().collect();
+                if a.ends_with('-') && !a_word.is_empty() && b.starts_with(|c: char| c.is_lowercase()) {
+                    let b_word: String = b.chars().take_while(|c| c.is_alphabetic()).collect();
+                    if !self.st.hyphenated.contains(&format!("{a_word}-{b_word}").to_lowercase()) {
+                        a.pop();
+                    }
+                } else {
+                    a.push(' ');
                 }
                 a.push_str(b);
                 self.para.extend(inl.into_iter().skip(1));

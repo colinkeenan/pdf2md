@@ -9,7 +9,7 @@
 
 In this section, we will study the interactions of electrons in an electromagnetic field. We will compute the additions to the Hamiltonian for magnetic fields. The gauge symmetry exhibited in electromagnetism will be examined in quantum mechanics. We will show that a symmetry allowing us to change the phase of the electron wave function requires the existence of EM interactions (with the gauge symmetry).
 
-These topics are covered in **Gasiorowicz Chapter 13,** and in **Cohen-Tannoudji et al. Com-** **plements** $`E_{VI} \boldsymbol{,} D_{VII}`$ **and** $`H_{III}`$**.**
+These topics are covered in **Gasiorowicz Chapter 13,** and in **Cohen-Tannoudji et al. Complements** $`E_{VI} \boldsymbol{,} D_{VII}`$ **and** $`H_{III}`$**.**
 
 # <a id="s-20-1-review-of-the-classical-equations-of-electricity-and-magnetism-in-cgs-units"></a>20.1 Review of the Classical Equations of Electricity and Magnetism in CGS Units
 
@@ -171,7 +171,7 @@ The additional magnetic field terms are important in a plasma because the typica
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p295" href="book.pdf#page=295" target="_blank" title="This page in the PDF"><sup>[p. 295]</sup></a>
 
-In the example below, we will solve the Quantum Mechanics problem two ways: one using our new Hamiltonian with B field terms, and the other writing the Hamiltonian in terms of A. The first one will exploit both **rotational symmetry about the B field direction and translational** **symmetry along the B field direction**. We will turn the radial equation into the **equation we** **solved for Hydrogen**. In the second solution, we will use **translational symmetry along the B** **field direction as well as translational symmetry transverse** to the B field. We will now turn the remaining 1D part of the Schrödinger equation into the 1D **harmonic oscillator equation**, showing that the two problems we have solved analytically are actually related to each other!
+In the example below, we will solve the Quantum Mechanics problem two ways: one using our new Hamiltonian with B field terms, and the other writing the Hamiltonian in terms of A. The first one will exploit both **rotational symmetry about the B field direction and translational symmetry along the B field direction**. We will turn the radial equation into the **equation we solved for Hydrogen**. In the second solution, we will use **translational symmetry along the B field direction as well as translational symmetry transverse** to the B field. We will now turn the remaining 1D part of the Schrödinger equation into the 1D **harmonic oscillator equation**, showing that the two problems we have solved analytically are actually related to each other!
 
 \* See Example 20.4.2: A neutral plasma in a constant magnetic field.\*
 
@@ -195,7 +195,7 @@ We know that the all observables are unchanged if we make a global change of the
 
 That is, we can change the phase by a different amount at each point in spacetime and the physics will remain unchanged. This **local phase symmetry** is bigger than the global one.
 
-Its clear that this transformation leaves the **absolute square of the wavefunction the same**, but what about the Schrödinger equation? It must also be unchanged. The **derivatives in the** **Schrödinger equation** will act on $`\lambda ( \vec{r} , t )`$ changing the equation unless we do something else to cancel the changes.
+Its clear that this transformation leaves the **absolute square of the wavefunction the same**, but what about the Schrödinger equation? It must also be unchanged. The **derivatives in the Schrödinger equation** will act on $`\lambda ( \vec{r} , t )`$ changing the equation unless we do something else to cancel the changes.
 
 ```math
 \frac{1}{2 m} \left( \vec{p} + \frac{e}{c} \vec{A} \right)^{2} \psi = ( E + e\varphi ) \psi
@@ -253,7 +253,7 @@ Integrating this equation, we can write the function $`f ( \vec{r} )`$ in terms 
 \int_{\vec{r}_{0}}^{\vec{r}} d \vec{r} \cdot \vec{A} = \int_{\vec{r}_{0}}^{\vec{r}} d \vec{r} \cdot \vec{\nabla} f = f ( \vec{r} ) - f ( \vec{r}_{0} )
 ```
 
-If we choose $`f`$ so that $`f ( \vec{r}_{0} ) = 0`$, then we have a **very useful relation between the gauge** **function and the vector potential in a field free region.**
+If we choose $`f`$ so that $`f ( \vec{r}_{0} ) = 0`$, then we have a **very useful relation between the gauge function and the vector potential in a field free region.**
 
 ```math
 f ( \vec{r} ) = \int_{\vec{r}_{0}}^{\vec{r}} d \vec{r} \cdot \vec{A} .
@@ -331,7 +331,7 @@ An important place where both magnetic terms come into play is in a **plasma.** 
 \frac{- \hbar^{2}}{2 m_{e}} \nabla^{2} \psi + \frac{eB}{2 m_{e} c} L_{z} \psi + \frac{e^{2} B^{2}}{8 m_{e} c^{2}} ( x^{2} + y^{2} ) \psi = ( E + e\varphi ) \psi
 ```
 
-The problem clearly has **translational symmetry along the z direction and rotational sym-** **metry around the z axis**. Given the symmetry, we know that $`L_{z}`$ and $`p_{z}`$ commute with the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=298" target="_blank" title="This page in the PDF"><sup>[p. 298]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p299" href="book.pdf#page=299" target="_blank" title="This page in the PDF"><sup>[p. 299]</sup></a></span> Hamiltonian and will give constants of the motion. We therefore will be able to separate variables in the usual way.
+The problem clearly has **translational symmetry along the z direction and rotational symmetry around the z axis**. Given the symmetry, we know that $`L_{z}`$ and $`p_{z}`$ commute with the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=298" target="_blank" title="This page in the PDF"><sup>[p. 298]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p299" href="book.pdf#page=299" target="_blank" title="This page in the PDF"><sup>[p. 299]</sup></a></span> Hamiltonian and will give constants of the motion. We therefore will be able to separate variables in the usual way.
 
 ```math
 \psi ( \vec{r} ) = u_{nmk} ( \rho ) e^{im\varphi} e^{ikz}
@@ -355,7 +355,7 @@ H = \frac{1}{2 m_{e}} \left( \vec{p} + \frac{e}{c} \vec{A} \right)^{2} = \frac{1
 = \frac{1}{2 m_{e}} \left( p_{x}^{2} + p_{y}^{2} + \frac{2 eB}{c} xp_{y} + \left( \frac{eB}{c} \right)^{2} x^{2} + p_{z}^{2} \right)
 ```
 
-This Hamiltonian does not depend on $`y`$ or $`z`$ and therefore has **translational symmetry in both** **x and y** so their conjugate momenta are conserved. We can use this symmetry to write the solution and reduce to a 1D equation in $`v ( x )`$.
+This Hamiltonian does not depend on $`y`$ or $`z`$ and therefore has **translational symmetry in both x and y** so their conjugate momenta are conserved. We can use this symmetry to write the solution and reduce to a 1D equation in $`v ( x )`$.
 
 ```math
 \psi = v ( x ) e^{ik_{y} y} e^{ik_{z} z}
@@ -891,11 +891,11 @@ This is the **same as the 1D harmonic oscillator equation** with $`\omega = \tfr
 E = \left( n + \frac{1}{2} \right) \hbar \omega = \frac{\hbar eB}{m_{e} c} \left( n + \frac{1}{2} \right) + \frac{\hbar^{2} k_{z}^{2}}{2 m_{e}}
 ```
 
-So we get the **same energies with a much simpler calculation**. The resulting **states are** **somewhat strange** and are not analogous to the classical solutions. (Note that an electron could be circulating about any field line so there are many possible states, just in case you are worrying about the choice of $`k_{y}`$ and $`x_{0}`$ and counting states.)
+So we get the **same energies with a much simpler calculation**. The resulting **states are somewhat strange** and are not analogous to the classical solutions. (Note that an electron could be circulating about any field line so there are many possible states, just in case you are worrying about the choice of $`k_{y}`$ and $`x_{0}`$ and counting states.)
 
-## <a id="s-20-5-7-a-hamiltonian-invariant-under-wavefunction-phase-or-gauge-transformations307-20-5-8-magnetic-flux-quantization-from-gauge-symmetry"></a>20.5.7 A Hamiltonian Invariant Under Wavefunction Phase (or Gauge) Transforma- tions
+## <a id="s-20-5-7-a-hamiltonian-invariant-under-wavefunction-phase-or-gauge-transformations307-20-5-8-magnetic-flux-quantization-from-gauge-symmetry"></a>20.5.7 A Hamiltonian Invariant Under Wavefunction Phase (or Gauge) Transformations
 
-We want to investigate what it takes for the **Hamiltonian to be invariant under a local phase** **transformation** of the wave function.
+We want to investigate what it takes for the **Hamiltonian to be invariant under a local phase transformation** of the wave function.
 
 ```math
 \psi ( \vec{r} , t ) \to e^{i\lambda ( \vec{r} ,t )} \psi ( \vec{r} , t )
@@ -951,7 +951,7 @@ Its easy to see that we can **leave this equation invariant with the following c
 \Delta \varphi = \frac{\hbar}{e} \frac{\partial \lambda ( \vec{r} , t )}{\partial t}
 ```
 
-We can argue that **we need Electromagnetism to give us the local phase transformation** **symmetry** for electrons. We now rewrite the gauge transformation in the more conventional way, the convention being set before quantum mechanics.
+We can argue that **we need Electromagnetism to give us the local phase transformation symmetry** for electrons. We now rewrite the gauge transformation in the more conventional way, the convention being set before quantum mechanics.
 
 ```math
 \psi ( \vec{r} , t ) \quad \to \quad e^{i\lambda ( \vec{r} ,t )} \psi ( \vec{r} , t )

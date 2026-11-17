@@ -131,15 +131,15 @@ Since our eigenstates of $`J^{2}`$ and $`J_{z}`$ are also eigenstates of $`L^{2}
 
 # <a id="s-21-3-adding-spin-2-1-to-integer-orbital-angular-momentum"></a>21.3 Adding Spin $`\frac{1}{2}`$ to Integer Orbital Angular Momentum
 
-Our goal is to add orbital angular momentum with quantum number $`\ell`$ to spin $`\frac{1}{2}`$. We can show in several ways that, for $`\ell \neq 0`$, that the total angular momentum quantum number has **two possible** **values** $`j = \ell + \tfrac{1}{2}`$ **or** $`j = \ell - \tfrac{1}{2}`$**.** For $`\ell = 0`$, only $`j = \tfrac{1}{2}`$ is allowed. First lets argue that this makes sense when we are adding two **vectors.** For example if we add a vector of length 3 to a vector of length 0.5, the resulting vector could take on a length between 2.5 and 3.5 For quantized angular momentum, we will only have the half integers allowed, rather than a continuous range. Also we know that the quantum numbers like $`\ell`$ are not exactly the length of the vector but are close. So these two values make sense physically.
+Our goal is to add orbital angular momentum with quantum number $`\ell`$ to spin $`\frac{1}{2}`$. We can show in several ways that, for $`\ell \neq 0`$, that the total angular momentum quantum number has **two possible values** $`j = \ell + \tfrac{1}{2}`$ **or** $`j = \ell - \tfrac{1}{2}`$**.** For $`\ell = 0`$, only $`j = \tfrac{1}{2}`$ is allowed. First lets argue that this makes sense when we are adding two **vectors.** For example if we add a vector of length 3 to a vector of length 0.5, the resulting vector could take on a length between 2.5 and 3.5 For quantized angular momentum, we will only have the half integers allowed, rather than a continuous range. Also we know that the quantum numbers like $`\ell`$ are not exactly the length of the vector but are close. So these two values make sense physically.
 
 We can also count states for each eigenvalue of $`J_{z}`$ as in the following examples.
 
 \* See Example 21.7.1: Counting states for $`\ell = 3`$ plus spin $`\frac{1}{2} . *`$<br>
 \* See Example 21.7.2: Counting states for any $`\ell`$ plus spin $`\frac{1}{2} . *`$<br>
-As in the last section, we could start with the highest $`J_{z}`$ state, $`Y_{\ell \ell} \chi_{+}`$, and apply the **lowering** **operator** to find the rest of the multiplet with $`j = \ell + \tfrac{1}{2}`$. This works well for some specific $`\ell`$ but is hard to generalize.
+As in the last section, we could start with the highest $`J_{z}`$ state, $`Y_{\ell \ell} \chi_{+}`$, and apply the **lowering operator** to find the rest of the multiplet with $`j = \ell + \tfrac{1}{2}`$. This works well for some specific $`\ell`$ but is hard to generalize.
 
-We can work the problem in general. We know that each eigenstate of $`J^{2}`$ and $`J_{z}`$ will be a **linear** **combination of the two product states** with the right $`m`$.
+We can work the problem in general. We know that each eigenstate of $`J^{2}`$ and $`J_{z}`$ will be a **linear combination of the two product states** with the right $`m`$.
 
 ```math
 \psi_{j ( m + \tfrac{1}{2} )} = \alpha Y_{\ell m} \chi_{+} + \beta Y_{\ell ( m + 1 )} \chi_{-}
@@ -161,7 +161,7 @@ We have made a choice in how to write these equations: $`m`$ must be the same th
 
 # <a id="s-21-4-spectroscopic-notation"></a>21.4 Spectroscopic Notation
 
-A common way to name states in atomic physics is to use **spectroscopic notation**. It is essentially a standard way to write down the angular momementum quantum numbers of a state. The **general** **form** is $`N^{2 s + 1} L_{j}`$, where $`N`$ is the principal quantum number and will often be omitted, $`s`$ is the total spin quantum number ((2$`s + 1`$) is the number of spin states), $`L`$ refers to the orbital angular<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=313" target="_blank" title="This page in the PDF"><sup>[p. 313]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p314" href="book.pdf#page=314" target="_blank" title="This page in the PDF"><sup>[p. 314]</sup></a></span> momentum quantum number $`\ell`$ but is written as $`S,P,D,F,\dots`$ for $`\ell = 0 , 1 , 2 , 3 ,\dots`$, and $`j`$ is the total angular momentum quantum number.
+A common way to name states in atomic physics is to use **spectroscopic notation**. It is essentially a standard way to write down the angular momementum quantum numbers of a state. The **general form** is $`N^{2 s + 1} L_{j}`$, where $`N`$ is the principal quantum number and will often be omitted, $`s`$ is the total spin quantum number ((2$`s + 1`$) is the number of spin states), $`L`$ refers to the orbital angular<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=313" target="_blank" title="This page in the PDF"><sup>[p. 313]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p314" href="book.pdf#page=314" target="_blank" title="This page in the PDF"><sup>[p. 314]</sup></a></span> momentum quantum number $`\ell`$ but is written as $`S,P,D,F,\dots`$ for $`\ell = 0 , 1 , 2 , 3 ,\dots`$, and $`j`$ is the total angular momentum quantum number.
 
 A quick example is the single electron states, as we find in Hydrogen. These are:
 
@@ -219,7 +219,7 @@ The Clebsch-Gordan coefficients are tabulated. We have computed some of them her
 
 # <a id="s-21-6-interchange-symmetry-for-states-with-identical-particles"></a>21.6 Interchange Symmetry for States with Identical Particles
 
-If we are combining the angular momentum from two identical particles, like two electrons in an atom, we will be interested in the symmetry under interchange of the angular momentum state. Lets use the combination of two spin $`\frac{1}{2}`$ particles as an example. We know that we get total spin states of $`s = 1`$ and $`s = 0`$. The $`s = 1`$ state is called a **triplet** because there are three states with different $`m`$ values. The $`s = 0`$ state is called a **singlet.** The triplet state is symmetric under interchange. The **highest total angular momentum state,** $`s = s_{1} + s_{2}`$, will always be **symmetric under** **interchange.** We can see this by looking at the highest $`m`$ state, $`m = s`$. To get the maximum $`m`$, both spins to have the maximum $`z`$ component. So the product state has just one term and it is symmetric under interchange, in this case,
+If we are combining the angular momentum from two identical particles, like two electrons in an atom, we will be interested in the symmetry under interchange of the angular momentum state. Lets use the combination of two spin $`\frac{1}{2}`$ particles as an example. We know that we get total spin states of $`s = 1`$ and $`s = 0`$. The $`s = 1`$ state is called a **triplet** because there are three states with different $`m`$ values. The $`s = 0`$ state is called a **singlet.** The triplet state is symmetric under interchange. The **highest total angular momentum state,** $`s = s_{1} + s_{2}`$, will always be **symmetric under interchange.** We can see this by looking at the highest $`m`$ state, $`m = s`$. To get the maximum $`m`$, both spins to have the maximum $`z`$ component. So the product state has just one term and it is symmetric under interchange, in this case,
 
 ```math
 \chi_{1 1} = \chi_{+}^{( 1 )} \chi_{+}^{( 2 )} .
@@ -227,7 +227,7 @@ If we are combining the angular momentum from two identical particles, like two 
 
 When we lower this state with the (symmetric) lowering operator $`S_{-} = S_{( 1 ) -} + S_{( 2 ) -}`$, the result remains symmetric under interchange. To make the **next highest state,** with two terms, we must choose a state orthogonal to the symmetric state and this will always be **antisymmetric.**
 
-In fact, for identical particles, the **symmetry of the angular momentum wave function will** **alternate,** beginning with a symmetric state for the maximum total angular momentum. For example, if we add two spin 2 states together, the resulting states are: $`4_{S} , 3_{A} , 2_{S} , 1_{A}`$ and $`0_{S}`$. In the language of **group theory,** when we take the **direct product of two representations of** **the the SU(2) group** we get:
+In fact, for identical particles, the **symmetry of the angular momentum wave function will alternate,** beginning with a symmetric state for the maximum total angular momentum. For example, if we add two spin 2 states together, the resulting states are: $`4_{S} , 3_{A} , 2_{S} , 1_{A}`$ and $`0_{S}`$. In the language of **group theory,** when we take the **direct product of two representations of the the SU(2) group** we get:
 
 ```math
 5 \otimes 5 = 9_{S} \oplus 7_{A} \oplus 5_{S} \oplus 3_{A} \oplus 1_{S}
@@ -286,7 +286,7 @@ and that $`j`$ takes on every integer value between the limits. This makes sense
 
 ## <a id="s-21-7-4-two-electrons-in-an-atomic-p-state"></a>21.7.4 Two electrons in an atomic P state
 
-If we have two atomic electrons in a P state with no external fields applied, **states of definite** **total angular momentum will be the energy eigenstates**. We will learn later that closed shells in atoms (or nuclei) have a total angular momentum of zero, allowing us to treat only the valence electrons. Examples of atoms like this would be Carbon, Silicon, and Germanium.
+If we have two atomic electrons in a P state with no external fields applied, **states of definite total angular momentum will be the energy eigenstates**. We will learn later that closed shells in atoms (or nuclei) have a total angular momentum of zero, allowing us to treat only the valence electrons. Examples of atoms like this would be Carbon, Silicon, and Germanium.
 
 Our two electrons each have $`ell = 1`$ (P state) and $`s = \tfrac{1}{2}`$ (electrons). We need to add four angluar momenta together to get the total.
 

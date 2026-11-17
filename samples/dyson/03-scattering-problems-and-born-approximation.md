@@ -23,7 +23,7 @@ w = \frac{2 \pi}{\hbar} \rho_{E} | V_{BA} |^{2} \qquad \text{(102)}
 
 This you ought to know. $`\rho_{E}`$ = density of final states per unit energy interval. $`V_{BA}`$ is the matrix element of the potential $`V`$ for the transition. Here $`V`$ may be anything, and may be itself a second-order or higher order effect obtained by using higher-order perturbation theory.
 
-The difficulties in real calculations usually come from the factors 2 and $`\pi`$ and the correct _normalization_ _of states_. Always I shall normalize the continuum states not in the usual way (one particle per unit volume) which is non-invariant, but instead
+The difficulties in real calculations usually come from the factors 2 and $`\pi`$ and the correct _normalization of states_. Always I shall normalize the continuum states not in the usual way (one particle per unit volume) which is non-invariant, but instead
 
 <a id="eq-103"></a>
 

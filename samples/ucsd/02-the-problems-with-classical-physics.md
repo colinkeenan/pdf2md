@@ -215,9 +215,9 @@ _Figure 14 (p. 72)_
 
 This brought up a new problem. The atomic size was known from several types of experiments. If **electrons orbit around the atomic nucleus**, according to Maxwell’s equations, they should **radiate energy** as they accelerate. This radiation is not observed and the ground states of atoms are stable.
 
-In Quantum Mechanics, the **localization of the electron around a nucleus is limited because** **of the wave nature of the electron**. For hydrogen, where there is no multi-body problem to make the calculation needlessly difficult, the energy levels can be calculated very accurately. Hydrogen was used to test Quantum Mechanics as it developed. We will also use hydrogen a great deal in this course.
+In Quantum Mechanics, the **localization of the electron around a nucleus is limited because of the wave nature of the electron**. For hydrogen, where there is no multi-body problem to make the calculation needlessly difficult, the energy levels can be calculated very accurately. Hydrogen was used to test Quantum Mechanics as it developed. We will also use hydrogen a great deal in this course.
 
-Scattering of the high energy $`\alpha`$ particles allowed Rutherford to **“see” inside the atom** and determine that the atomic nucleus is very small. (He probably destroyed all the atoms he “saw”.) The figure below shows Rutherford’s angular distribution in his scattering experiment along with several subsequent uses of the same technique, with higher and higher energy particles. We see Rutherford’s discovery of the **tiny nucleus**, the discovery of **nuclear structure**, the discovery of a point-like **proton inside the nucleus**, the discovery of **proton structure**, the discovery of **quarks inside** **the proton**, and finally the lack of discovery, so far, of any **quark structure**.
+Scattering of the high energy $`\alpha`$ particles allowed Rutherford to **“see” inside the atom** and determine that the atomic nucleus is very small. (He probably destroyed all the atoms he “saw”.) The figure below shows Rutherford’s angular distribution in his scattering experiment along with several subsequent uses of the same technique, with higher and higher energy particles. We see Rutherford’s discovery of the **tiny nucleus**, the discovery of **nuclear structure**, the discovery of a point-like **proton inside the nucleus**, the discovery of **proton structure**, the discovery of **quarks inside the proton**, and finally the lack of discovery, so far, of any **quark structure**.
 
 <div align="right"><a href="book.pdf#page=72" target="_blank" title="This page in the PDF"><sup>[p. 72]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -333,7 +333,7 @@ E = \frac{1}{2} m \left( \frac{\alpha c}{n} \right)^{2} - \frac{\alpha^{2} mc^{2
 E = \frac{1}{2} \left( \frac{\alpha^{2} mc^{2}}{n^{2}} \right) - \frac{\alpha^{2} mc^{2}}{n^{2}} = - \frac{\alpha^{2} mc^{2}}{2 n^{2}}
 ```
 
-The constant $`\frac{\alpha^{2} mc^{2}}{2} = \frac{5 1 1 0 0 0}{2 ( 1 3 7 )^{2}} = 13 . 6`$ eV. Bohr’s formula gives the **right Hydrogen energy** **spectrum**.
+The constant $`\frac{\alpha^{2} mc^{2}}{2} = \frac{5 1 1 0 0 0}{2 ( 1 3 7 )^{2}} = 13 . 6`$ eV. Bohr’s formula gives the **right Hydrogen energy spectrum**.
 
 <div align="right"><a href="book.pdf#page=76" target="_blank" title="This page in the PDF"><sup>[p. 76]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -351,7 +351,7 @@ r = \frac{( 1 3 7 ) ( 1 9 7 3 )}{5 1 1 0 0 0} = 0 . 5 3 ˚ A
 
 This is also about the right radius. The name for this number, the **Bohr radius**, persists to this day despite the fact that Bohr’s assumption is wrong.
 
-Although angular momentum is quantized in units of $`\hbar`$, **the ground state of Hydrogen has zero** **angular momentum**. This would put Bohr’s electron in the nucleus.
+Although angular momentum is quantized in units of $`\hbar`$, **the ground state of Hydrogen has zero angular momentum**. This would put Bohr’s electron in the nucleus.
 
 **Bohr fit the data, with some element of truth, but his model is WRONG**.
 
@@ -531,7 +531,7 @@ Similarly the peak in $`\nu`$ occurs when
 
 _Figure 19 (p. 80)_
 
-We solve the problem using only conservation of energy and momentum. Lets work in **units in** **which** $`c = 1`$ for now. We’ll put the $`c`$ back in at the end. Assume the photon is initially moving in the $`z`$ direction with energy E and that it scatters in the $`yz`$ plane so that $`p_{x} = 0`$. **Conservation of** **momentum** gives
+We solve the problem using only conservation of energy and momentum. Lets work in **units in which** $`c = 1`$ for now. We’ll put the $`c`$ back in at the end. Assume the photon is initially moving in the $`z`$ direction with energy E and that it scatters in the $`yz`$ plane so that $`p_{x} = 0`$. **Conservation of momentum** gives
 
 ```math
 E = E^{\prime} \cos \theta + p_{e} \cos \varphi
@@ -639,7 +639,7 @@ The is then the kinetic energy in eV needed for a particle of charge +$`e`$ to p
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p82" href="book.pdf#page=82" target="_blank" title="This page in the PDF"><sup>[p. 82]</sup></a>
 
-**Lets compare the above SI units numbers to my suggested method of using the fine** **structure constant...** Putting in the alpha charge of 2$`e`$.
+**Lets compare the above SI units numbers to my suggested method of using the fine structure constant...** Putting in the alpha charge of 2$`e`$.
 
 ```math
 U = \frac{6 Ze^{2}}{8 \pi \epsilon_{0} R} = \frac{3 Z\alpha \hbar c}{R} = \frac{( 3 ) ( 7 9 ) ( 1 9 7 3 )}{( 1 3 7 ) ( 5 )} \text{ eV } = 6 8 3 \text{ eV }

@@ -349,7 +349,7 @@ The theory can be carried through quite easily, if we make $`\psi`$ describe an 
 
 <a id="ref-11"></a>**[11]** W. Pauli, “The Connection Between Spin and Statistics”, _Phys. Rev._ **58** (1940) 716. In Schwinger, _Selected Papers in Quantum Electrodynamics_, pp 372–378. [↩](#refback-11-1)
 
-<a id="ref-12"></a>**[12]** W. Pauli and V. Weisskopf, “The quantization of the scalar relativistic wave equation”, _Helv. Phys._ _Acta_ **7** (1934) 709. In Miller, _Early Quantum Electrodynamics_, pp 188–205 (English). [↩](#refback-12-1)
+<a id="ref-12"></a>**[12]** W. Pauli and V. Weisskopf, “The quantization of the scalar relativistic wave equation”, _Helv. Phys. Acta_ **7** (1934) 709. In Miller, _Early Quantum Electrodynamics_, pp 188–205 (English). [↩](#refback-12-1)
 
 ---
 
@@ -1856,7 +1856,7 @@ w = \frac{2 \pi}{\hbar} \rho_{E} | V_{BA} |^{2} \qquad \text{(102)}
 
 This you ought to know. $`\rho_{E}`$ = density of final states per unit energy interval. $`V_{BA}`$ is the matrix element of the potential $`V`$ for the transition. Here $`V`$ may be anything, and may be itself a second-order or higher order effect obtained by using higher-order perturbation theory.
 
-The difficulties in real calculations usually come from the factors 2 and $`\pi`$ and the correct _normalization_ _of states_. Always I shall normalize the continuum states not in the usual way (one particle per unit volume) which is non-invariant, but instead
+The difficulties in real calculations usually come from the factors 2 and $`\pi`$ and the correct _normalization of states_. Always I shall normalize the continuum states not in the usual way (one particle per unit volume) which is non-invariant, but instead
 
 <a id="eq-103"></a>
 
@@ -4076,7 +4076,7 @@ To make a better treatment of the effect of the radiation interaction on energy-
 
 So we make a theory now which treats the atom non-relativistically, but takes account properly of the radiation interaction. This means, we repeat the calculation of spontaneous emission by an atom, but now including the reaction of the radiation on the atom instead of taking the atom as given by a fixed charge-current oscillator.
 
-For this sort of calculation it is always convenient to work in a special representation called the _Inter-_ _action Representation_.
+For this sort of calculation it is always convenient to work in a special representation called the _Interaction Representation_.
 
 <div align="right"><a href="book.pdf#page=58" target="_blank" title="This page in the PDF"><sup>[p. 52]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -6034,7 +6034,7 @@ These equations are _non-linear_. And so there is no possibility of finding the 
 
 Since the perturbation theory treatment is forced on us from the beginning, it is convenient not to set up the theory in the Heisenberg representation but to use the interaction representation. The IR is just designed for a perturbation theory in which the radiation interaction is treated as small. In the IR the commutation rules can be obtained simply in closed form, and so the theory can be set up with a minimum of trouble.
 
-There are two different interaction representations which we can use. The first may be called the _Bound_ _Interaction Representation_. It is exactly the representation we used in discussing the radiation from an atom in the non-relativistic theory. We take all field operators to have the time-dependence of the Heisenberg operators in the theory of the free Maxwell field and the electron field interacting with external potential, only the interaction between the two fields being omitted. Thus the field equations in the BIR are (332), (333), and
+There are two different interaction representations which we can use. The first may be called the _Bound Interaction Representation_. It is exactly the representation we used in discussing the radiation from an atom in the non-relativistic theory. We take all field operators to have the time-dependence of the Heisenberg operators in the theory of the free Maxwell field and the electron field interacting with external potential, only the interaction between the two fields being omitted. Thus the field equations in the BIR are (332), (333), and
 
 <a id="eq-414"></a>
 
@@ -6535,7 +6535,7 @@ because $`k^{\prime 2} = 0`$ and $`p^{2} = - \mu^{2} ; \boldsymbol{p} = 0`$ beca
 M_{2} = \frac{- e^{2}}{2 \hbar^{2} c^{2} \mu} ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \overline{u}^{\prime} \left[ \frac{1}{k_{0}^{\prime}} /e ( p / - / k^{\prime} + i\mu ) /e^{\prime} - \frac{1}{k_{0}} /e^{\prime} ( p / + / k + i\mu ) /e \right] u \qquad \text{(451)}
 ```
 
-Now we can simplify (451) further. Since the photon is not polarized in time, $`e_{4} = e_{4}^{\prime} = 0`$; since the electron is at rest, $`\boldsymbol{p} = 0`$. Hence $`e \cdot p = 0`$, and thus $`/e/p = - p/e / + 2 \mathbb{I} e \cdot p = - p/e /`$ , i.e. $`p /`$ and $`/e`$ anticommute. This plus the fact that $`u`$ is a spin state of momentum $`\hbar p`$, i.e.
+Now we can simplify (451) further. Since the photon is not polarized in time, $`e_{4} = e_{4}^{\prime} = 0`$; since the electron is at rest, $`\boldsymbol{p} = 0`$. Hence $`e \cdot p = 0`$, and thus $`/e/p = - p/e /`$ + 2$`\mathbb{I} e \cdot p = - p/e /`$ , i.e. $`p /`$ and $`/e`$ anticommute. This plus the fact that $`u`$ is a spin state of momentum $`\hbar p`$, i.e.
 
 <a id="eq-452"></a>
 
@@ -7714,7 +7714,7 @@ In particular, one result of (532) is that for one-electron states the scatterin
 S = 1 + U_{2} - U_{S} \qquad \text{(533)}
 ```
 
-instead of (517), keeping only terms of order $`e^{2}`$. The matrix elements of $`( U_{2} - U_{S} )`$ for one-electron states are all zero. Thus, if we use the correct mass $`m`$ in defining the states of an electron, _there are no longer_ _any observable effects of the radiation interaction on the motion of a free electron._ This shows that the mass-renormalization, the procedure of inserting the term $`( - L_{S} )`$ in (531), is consistent and is likely to give sensible results.
+instead of (517), keeping only terms of order $`e^{2}`$. The matrix elements of $`( U_{2} - U_{S} )`$ for one-electron states are all zero. Thus, if we use the correct mass $`m`$ in defining the states of an electron, _there are no longer any observable effects of the radiation interaction on the motion of a free electron._ This shows that the mass-renormalization, the procedure of inserting the term $`( - L_{S} )`$ in (531), is consistent and is likely to give sensible results.
 
 ## <a id="s-second-order-radiative-corrections-to-scattering"></a>Second-Order Radiative Corrections to Scattering
 
@@ -9617,7 +9617,7 @@ Since $`Z_{\lambda}`$ is a Lorentz vector, the gradient must likewise be. So “
 
 # Typist’s Afterword
 
-Both Kaiser’s admirable _Drawing Theories Apart_ <a id="09-typist-s-afterword--refback-8-1"></a>[[8]](#09-typist-s-afterword--ref-8) and Schweber’s masterful _QED and the Men Who_ _Made It_ <a id="09-typist-s-afterword--refback-7-1"></a>[[7]](#09-typist-s-afterword--ref-7) refer frequently to the famous lectures on quantum electrodynamics given by Freeman Dyson at Cornell University in 1951. Two generations ago, graduate students (and their professors) wishing to learn the new techniques of QED passed around copies of Dyson’s Cornell lecture notes, then the best and fullest treatment available. Textbooks appeared a few years later, e. g. by Jauch & Rohrlich <a id="refback-25-1"></a>[[25]](#ref-25) and Schweber
+Both Kaiser’s admirable _Drawing Theories Apart_ <a id="09-typist-s-afterword--refback-8-1"></a>[[8]](#09-typist-s-afterword--ref-8) and Schweber’s masterful _QED and the Men Who Made It_ <a id="09-typist-s-afterword--refback-7-1"></a>[[7]](#09-typist-s-afterword--ref-7) refer frequently to the famous lectures on quantum electrodynamics given by Freeman Dyson at Cornell University in 1951. Two generations ago, graduate students (and their professors) wishing to learn the new techniques of QED passed around copies of Dyson’s Cornell lecture notes, then the best and fullest treatment available. Textbooks appeared a few years later, e. g. by Jauch & Rohrlich <a id="refback-25-1"></a>[[25]](#ref-25) and Schweber
 
 <a id="09-typist-s-afterword--refback-6-1"></a>[[6]](#09-typist-s-afterword--ref-6), but interest in Dyson’s notes has never fallen to zero. Here is what the noted theorist E. T. Jaynes wrote in an unpublished article <a id="refback-26-1"></a>[[26]](#ref-26) on Dyson’s autobiographical _Disturbing the Universe_, 1984:
 
@@ -9629,7 +9629,7 @@ My interest in the legendary notes was revived thirty years later by the Kaiser 
 
 Between this typed version and Moravcsik’s second edition there are few differences; all are described in the added notes. (I have also added references and an index.) About half are corrections of typographical errors. Missing words or sentences have been restored by comparison with the first edition; very infrequently a word or phrase has been deleted. A few changes have been made in notation. Intermediate steps in two calculations have been corrected but change nothing. Some notes point to articles or books. No doubt new errors have been introduced. Corrections will be welcomed! The young physicists will want familiar terms and notation, occasionally changed from 1951; the historians want _no_ alterations. It was not easy to find the middle ground.
 
-I scarcely knew L$`A`$TEX before beginning this project. My friend (and Princeton ’74 classmate) Robert Jantzen was enormously helpful, very generous with his time and his extensive knowledge of L$`A`$TEX. Thanks, Bob. Thanks, too, to Richard Koch, Gerben Wierda and their colleagues, who have made L$`A`$TEX so easy on<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=138" target="_blank" title="This page in the PDF"><sup>[p. 132]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p133" href="book.pdf#page=139" target="_blank" title="This page in the PDF"><sup>[p. 133]</sup></a></span> a Macintosh. George Grätzer’s textbook _Math into L_A_TEX_ was never far from the keyboard. No one who types technical material should be ignorant of L$`A`$TEX.
+I scarcely knew L$`A`$TEX before beginning this project. My friend (and Princeton ’74 classmate) Robert Jantzen was enormously helpful, very generous with his time and his extensive knowledge of L$`A`$TEX. Thanks, Bob. Thanks, too, to Richard Koch, Gerben Wierda and their colleagues, who have made L$`A`$TEX so easy on<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=138" target="_blank" title="This page in the PDF"><sup>[p. 132]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p133" href="book.pdf#page=139" target="_blank" title="This page in the PDF"><sup>[p. 133]</sup></a></span> a Macintosh. George Grätzer’s textbook _Math into LATEX_ was never far from the keyboard. No one who types technical material should be ignorant of L$`A`$TEX.
 
 This project would never have been undertaken without the approval of Prof. <a id="ix-102">Dyson</a> and the efforts of Profs. Hall, Schweber and Ashrafi, who made the notes accessible. I thank Prof. Hall for his steady encouragement through the many hours of typing. I thank Prof. Dyson both for friendly assistance and for allowing his wonderful lectures to become easier to obtain, to be read with pleasure and with profit for many years to come.
 

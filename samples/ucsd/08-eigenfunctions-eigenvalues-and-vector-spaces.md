@@ -23,7 +23,7 @@ Usually, for bound states, there are **many eigenfunction solutions** (denoted h
 H\psi_{i} = E_{i} \psi_{i}
 ```
 
-For states representing one particle (particularly bound states) we must **require that the solutions** **be normalizable**. Solutions that are not normalizable must be discarded. A normalizable wave function must go to zero at infinity.
+For states representing one particle (particularly bound states) we must **require that the solutions be normalizable**. Solutions that are not normalizable must be discarded. A normalizable wave function must go to zero at infinity.
 
 ```math
 \psi ( \infty ) \to 0
@@ -77,7 +77,7 @@ It is instructive to compute the **expectation value of the Hamiltonian** using 
 = \sum_{i} \alpha_{i}^{*} \alpha_{i} E_{i} = \sum_{i} | \alpha_{i} |^{2} E_{i}
 ```
 
-We can see that the **coefficients of the eigenstates represent probability amplitudes to be** **in those states**, since the absolute squares of the coefficients $`\alpha_{i}^{*} \alpha_{i}`$ obviously give the probability.
+We can see that the **coefficients of the eigenstates represent probability amplitudes to be in those states**, since the absolute squares of the coefficients $`\alpha_{i}^{*} \alpha_{i}`$ obviously give the probability.
 
 # <a id="s-8-2-hermitian-conjugate-of-an-operator"></a>8.2 Hermitian Conjugate of an Operator
 
@@ -297,7 +297,7 @@ The **solution inside the box** could be written as
 u_{j} = e^{ikx}
 ```
 
-where $`k`$ can be positive or negative. We do **need to choose linear combinations that satisfy** **the boundary condition** that $`u_{j} ( x = 0 ) = u_{j} ( x = a ) = 0`$.
+where $`k`$ can be positive or negative. We do **need to choose linear combinations that satisfy the boundary condition** that $`u_{j} ( x = 0 ) = u_{j} ( x = a ) = 0`$.
 
 We can do this easily by **choosing**
 
@@ -351,7 +351,7 @@ _Figure 34 (p. 137)_
 
 Note that these states would have a definite parity if $`x = 0`$ were at the center of the box.
 
-The **expansion** of an arbitrary wave function in these eigenfunctions is essentially our **original** **Fourier Series**. This is a good example of the energy eigenfunctions being orthogonal and covering the space.
+The **expansion** of an arbitrary wave function in these eigenfunctions is essentially our **original Fourier Series**. This is a good example of the energy eigenfunctions being orthogonal and covering the space.
 
 ## <a id="s-8-5-1-the-same-problem-with-parity-symmetry"></a>8.5.1 The Same Problem with Parity Symmetry
 
@@ -421,7 +421,7 @@ E_{n}^{-} = ( 2 n )^{2} \frac{\pi^{2} \hbar^{2}}{2 ma^{2}}
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p139" href="book.pdf#page=139" target="_blank" title="This page in the PDF"><sup>[p. 139]</sup></a>
 
-Together, these are **exactly equivalent to the set of solutions we had with the box defined** **to be from 0 to** $`a`$. The $`u_{n}^{+} ( x )`$ have eigenvalue +1 under the parity operator. The $`u_{n}^{-} ( x )`$ have eigenvalue -1 under the parity operator.
+Together, these are **exactly equivalent to the set of solutions we had with the box defined to be from 0 to** $`a`$. The $`u_{n}^{+} ( x )`$ have eigenvalue +1 under the parity operator. The $`u_{n}^{-} ( x )`$ have eigenvalue -1 under the parity operator.
 
 This is an **example of a symmetry** of the problem, causing an operator to commute with the Hamiltonian. We can then have simultaneous eigenfunctions of that operator and $`H`$. In this case all the energy eigenfunctions are also eigenstates of parity. Parity is conserved.
 
@@ -547,7 +547,7 @@ If $`a_{1} \neq a_{2}`$ then
 
 The **eigenfunctions are orthogonal**.
 
-What if two of the eigenfunctions have the **same eigenvalue**? Then, our proof doesn’t work. Assume $`\langle \psi_{2} | \psi_{1} \rangle`$ is real, since we can always adjust a phase to make it so. Since any linear combination of $`\psi_{1}`$ and $`\psi_{2}`$ has the same eigenvalue, we can use any linear combination. Our aim will be to **choose** **two linear combinations which are orthogonal**. Lets try
+What if two of the eigenfunctions have the **same eigenvalue**? Then, our proof doesn’t work. Assume $`\langle \psi_{2} | \psi_{1} \rangle`$ is real, since we can always adjust a phase to make it so. Since any linear combination of $`\psi_{1}`$ and $`\psi_{2}`$ has the same eigenvalue, we can use any linear combination. Our aim will be to **choose two linear combinations which are orthogonal**. Lets try
 
 ```math
 \psi_{+} = \frac{1}{\sqrt{2}} ( \psi_{1} + \psi_{2} )
@@ -569,11 +569,11 @@ so
 
 This is zero under the assumption that the dot product is real.
 
-We have thus found an **orthogonal set of eigenfunctions even in the case that some of the** **eigenvalues are equal** (degenerate). From now on we will just assume that we are working with an orthogonal set of eigenfunctions.
+We have thus found an **orthogonal set of eigenfunctions even in the case that some of the eigenvalues are equal** (degenerate). From now on we will just assume that we are working with an orthogonal set of eigenfunctions.
 
 ## <a id="s-8-7-2-continuity-of-wavefunctions-and-derivatives"></a>8.7.2 Continuity of Wavefunctions and Derivatives
 
-We can use the Schrödinger Equation to show that the **first derivative of the wave function** **should be continuous**, unless the potential is infinite at the boundary.
+We can use the Schrödinger Equation to show that the **first derivative of the wave function should be continuous**, unless the potential is infinite at the boundary.
 
 ```math
 \frac{- \hbar^{2}}{2 m} \frac{d^{2} \psi}{dx^{2}} = ( E - V ( x ) ) \psi

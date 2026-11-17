@@ -9,7 +9,7 @@
 
 # <a id="s-32-1-rationalized-heaviside-lorentz-units"></a>32.1 Rationalized Heaviside-Lorentz Units
 
-The **SI units** are based on a unit of length of the order of human size originally related to the size of the earth, a unit of time approximately equal to the time between heartbeats, and a unit of mass related to the length unit and the mass of water. None of these depend on any even nearly fundamental physical quantities. Therefore many important physical equations end up with extra (needless) constants in them like $`c`$. Even with the three basic units defined, we could have chosen the unit of charge correctly to make $`\epsilon_{0}`$ and $`\mu_{0}`$ unnecessary but instead a very arbitrary choice was made $`\mu_{0} = 4 \pi \times 1 0^{- 7}`$ and the Ampere is defined by the current in parallel wires at one meter distance from each other that gives a force of $`2 \times 1 0^{- 7}`$ Newtons per meter. The Coulomb is set so that the Ampere is one Coulomb per second. **With these choices SI units make Maxwell’s** **equations and our filed theory look very messy.**
+The **SI units** are based on a unit of length of the order of human size originally related to the size of the earth, a unit of time approximately equal to the time between heartbeats, and a unit of mass related to the length unit and the mass of water. None of these depend on any even nearly fundamental physical quantities. Therefore many important physical equations end up with extra (needless) constants in them like $`c`$. Even with the three basic units defined, we could have chosen the unit of charge correctly to make $`\epsilon_{0}`$ and $`\mu_{0}`$ unnecessary but instead a very arbitrary choice was made $`\mu_{0} = 4 \pi \times 1 0^{- 7}`$ and the Ampere is defined by the current in parallel wires at one meter distance from each other that gives a force of $`2 \times 1 0^{- 7}`$ Newtons per meter. The Coulomb is set so that the Ampere is one Coulomb per second. **With these choices SI units make Maxwell’s equations and our filed theory look very messy.**
 
 Physicists have more often used **CGS units** in which the unit of charge and definition of the field units are set so that $`\epsilon_{0} = 1`$ and $`\mu_{0} = 1`$ so they need not show up in the equations. The CGS units are not perfect, however, and we will want to change them slightly to make our theory of the Maxwell Field simple. The mistake made in defining CGS units was in removing the 4$`\pi`$ that show up in Coulombs law. Coulombs law is not fundamental and the 4$`\pi`$ belonged there.
 
@@ -181,7 +181,7 @@ There are not many ways to make a **scalar Lagrangian from the field tensor**. W
 \frac{\partial F_{\mu \nu}}{\partial x_{\nu}} = \frac{j_{\mu}}{c}
 ```
 
-and we need to make our Lagrangian out of the fields, not just the current. Again, $`x_{\mu}`$ **cannot** **appear explicitly** because that violates symmetries of nature. Also we want a linear equation and so higher powers of the field should not occur. A term of the form $`mA_{\mu} A_{\mu}`$ is a mass term and would cause fields to fall off faster than $`\frac{1}{r}`$. So, the only reasonable choice is
+and we need to make our Lagrangian out of the fields, not just the current. Again, $`x_{\mu}`$ **cannot appear explicitly** because that violates symmetries of nature. Also we want a linear equation and so higher powers of the field should not occur. A term of the form $`mA_{\mu} A_{\mu}`$ is a mass term and would cause fields to fall off faster than $`\frac{1}{r}`$. So, the only reasonable choice is
 
 ```math
 F_{\mu \nu} F_{\mu \nu} = 2 ( B^{2} - E^{2} ) .
@@ -245,9 +245,9 @@ The next step is to check what the Euler-Lagrange equation gives us.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p440" href="book.pdf#page=440" target="_blank" title="This page in the PDF"><sup>[p. 440]</sup></a>
 
-Note that, since we have four independent components of $`A_{\mu}`$ as independent fields, we have four equations; or one 4-vector equation. The **Euler-Lagrange equation gets us back Maxwell’s** **equation** with this choice of the Lagrangian. This clearly justifies the choice of $`\mathcal{L}`$.
+Note that, since we have four independent components of $`A_{\mu}`$ as independent fields, we have four equations; or one 4-vector equation. The **Euler-Lagrange equation gets us back Maxwell’s equation** with this choice of the Lagrangian. This clearly justifies the choice of $`\mathcal{L}`$.
 
-It is important to emphasize that we have a Lagrangian based, formal classical field theory for electricity and magnetism which has **the four components of the 4-vector potential as the** **independent fields.** We could not treat each component of $`F_{\mu \nu}`$ as independent since they are clearly correlated. We could have tried using the six independent components of the antisymmetric tensor but it would not have given the right answer. Using the 4-vector potentials as the fields does give the right answer. **Electricity and Magnetism is a theory of a 4-vector field** $`A_{\mu}`$**.**
+It is important to emphasize that we have a Lagrangian based, formal classical field theory for electricity and magnetism which has **the four components of the 4-vector potential as the independent fields.** We could not treat each component of $`F_{\mu \nu}`$ as independent since they are clearly correlated. We could have tried using the six independent components of the antisymmetric tensor but it would not have given the right answer. Using the 4-vector potentials as the fields does give the right answer. **Electricity and Magnetism is a theory of a 4-vector field** $`A_{\mu}`$**.**
 
 We can also calculate the **free field Hamiltonian density**, that is, the Hamiltonian density in regions with no source term. We use the standard definition of the Hamiltonian in terms of the Lagrangian.
 
@@ -309,13 +309,13 @@ We will use this once we have written the radiation field in a convenient form. 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p441" href="book.pdf#page=441" target="_blank" title="This page in the PDF"><sup>[p. 441]</sup></a>
 
-If we integrate the last term by parts, (and the fields fall to zero at infinity), then that term contains a $`\vec{\nabla} \cdot \vec{E}`$ which is zero with no sources in the region. We can therefore drop it and are left with
+_If we integrate the last term by parts, (and the fields fall to zero at infinity), then that term contains a_ $`\vec{\nabla} \cdot \vec{E}`$ _which is zero with no sources in the region. We can therefore drop it and are left with_
 
 ```math
 \mathcal{H} = \frac{1}{2} ( E^{2} + B^{2} ) .
 ```
 
-This is the result we expected, the energy density and an EM field. (Remember the fields have been decreased by a factor of $`\sqrt{4 \pi}`$ compared to CGS units.)
+_This is the result we expected, the energy density and an EM field. (Remember the fields have been decreased by a factor of_ $`\sqrt{4 \pi}`$ _compared to CGS units.)_
 
 We will study the interaction between electrons and the electromagnetic field with the Dirac equation. Until then, the Hamiltonian used for non-relativistic quantum mechanics will be sufficient. We have derived the Lorentz force law from that Hamiltonian.
 

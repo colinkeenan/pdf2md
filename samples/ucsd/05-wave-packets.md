@@ -127,7 +127,7 @@ For the “square” packet the full width in $`k`$ is ∆$`k = a`$. The width i
 
 which certainly satisfies the limit above. Note that if we change the width of $`A ( k )`$, the width of $`f ( x )`$ changes to keep the uncertainty product constant.
 
-For the Gaussian wave packet, we can rigorously read the **RMS width of the probability distri-** **bution** as was done at the end of the section on the Fourier Transform of a Gaussian (See section 5.6.4).
+For the Gaussian wave packet, we can rigorously read the **RMS width of the probability distribution** as was done at the end of the section on the Fourier Transform of a Gaussian (See section 5.6.4).
 
 ```math
 \sigma_{x} = \sqrt{\alpha}
@@ -189,7 +189,7 @@ When we change variable from $`k`$ to $`p`$, we get the **Fourier Transforms in 
 \varphi ( p ) = \frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{\infty} \psi ( x ) e^{- ipx/ \hbar} dx
 ```
 
-These formulas are worth a little study. If we define $`u_{p} ( x )`$ to be the **state with definite momen-** **tum** $`p`$, (in position space) our formula for it is
+These formulas are worth a little study. If we define $`u_{p} ( x )`$ to be the **state with definite momentum** $`p`$, (in position space) our formula for it is
 
 ```math
 u_{p} ( x ) = \frac{1}{\sqrt{2 \pi \hbar}} e^{ipx/ \hbar} .
@@ -207,7 +207,7 @@ These states cannot be normalized to 1 but they do have a normalization conventi
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p104" href="book.pdf#page=104" target="_blank" title="This page in the PDF"><sup>[p. 104]</sup></a>
 
-Our Fourier Transform can now be read to say that we **add up states of definite momentum** **to get** $`\psi ( x )`$
+Our Fourier Transform can now be read to say that we **add up states of definite momentum to get** $`\psi ( x )`$
 
 ```math
 \psi ( x ) = \int_{-\infty}^{\infty} \varphi ( p ) u_{p} ( x ) dp
@@ -681,7 +681,7 @@ m_{e} = 0 . 5 1 1 \text{ MeV } / c^{2}
 
 ## <a id="s-5-6-7-the-dirac-delta-function"></a>5.6.7 The Dirac Delta Function
 
-The **Dirac delta function is zero everywhere except at the point where its argument is** **zero**. At that point, it is just the right kind of infinity so that
+The **Dirac delta function is zero everywhere except at the point where its argument is zero**. At that point, it is just the right kind of infinity so that
 
 ```math
 \int_{-\infty}^{\infty} dxf ( x ) \delta ( x ) = f ( 0 ) .

@@ -208,6 +208,13 @@ pub fn is_bold_font(family: &str) -> bool {
         || f.ends_with("-BD")
 }
 
+/// TeX's italic and slanted text fonts (CMTI, CMSL, and their bold
+/// forms): pdftohtml does not mark every PDF's as italic.
+pub fn is_italic_font(family: &str) -> bool {
+    let f = family.to_uppercase();
+    ["CMTI", "CMSL", "CMBXTI", "CMBXSL", "CMSSI", "CMITT"].iter().any(|p| f.starts_with(p))
+}
+
 /// Clean up extracted text: expand ligatures ("ﬁ" -> "fi") and drop
 /// invisible control / private-use characters that some TeX fonts produce.
 /// A letter with an accent that TeX fonts draw as two glyphs ("¨o" in

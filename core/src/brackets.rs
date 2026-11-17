@@ -351,10 +351,11 @@ fn begins_open(m: &str) -> bool {
 /// " = 1."): the formula goes on through them. Their length and their
 /// LaTeX, and whether they end with a figure (else the formula must go on
 /// behind them). The full stop after the last figure is the sentence's.
-fn sign_run(t: &str) -> Option<(usize, String, bool)> {
+fn sign_run(t: &str, after_sign: bool) -> Option<(usize, String, bool)> {
     let mut at = 0;
     let mut out: Vec<String> = Vec::new();
-    let (mut want_sign, mut figure_last, mut end) = (true, false, 0);
+    // (behind a formula that ends with a sign, "a ∗", a figure comes first)
+    let (mut want_sign, mut figure_last, mut end) = (!after_sign, false, 0);
     while at < t.len() {
         let rest = &t[at..];
         let lead = rest.len() - rest.trim_start_matches(' ').len();
@@ -516,8 +517,9 @@ pub(crate) fn sides(mut v: Vec<Inline>) -> Vec<Inline> {
         // + " + 0 = " + "a" is one formula, "a ∗ a⁻¹" + " = 1." ends with
         // the 1. A sign alone is taken only where a formula follows it.)
         if k + 1 < v.len() && matches!(&v[k], Inline::Math(_)) {
+            let after_sign = matches!(&v[k], Inline::Math(m) if m.trim_end().ends_with('*') || ends_open(m));
             let run = match &v[k + 1] {
-                Inline::Text(t) => sign_run(t).filter(|(n, _, figure)| *figure || (t[*n..].trim().is_empty() && matches!(v.get(k + 2), Some(Inline::Math(_))))),
+                Inline::Text(t) => sign_run(t, after_sign).filter(|(n, _, figure)| *figure || (t[*n..].trim().is_empty() && matches!(v.get(k + 2), Some(Inline::Math(_))))),
                 _ => None,
             };
             if let Some((n, tex, _)) = run {

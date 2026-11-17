@@ -7,7 +7,7 @@
 
 # 7 The Schrödinger Equation
 
-Schrödinger developed a **differential equation for the time development of a wave function**. Since the Energy operator has a time derivative, the kinetic energy operator has space derivatives, and we expect the solutions to be traveling waves, it is natural to try an energy equation. The Schrödinger equation is the **operator statement that the kinetic energy plus the potential** **energy is equal to the total energy**.
+Schrödinger developed a **differential equation for the time development of a wave function**. Since the Energy operator has a time derivative, the kinetic energy operator has space derivatives, and we expect the solutions to be traveling waves, it is natural to try an energy equation. The Schrödinger equation is the **operator statement that the kinetic energy plus the potential energy is equal to the total energy**.
 
 ![Figure 33 (p. 126)](images/fig-p126-1.png)
 
@@ -143,7 +143,7 @@ When Dirac tried to make a relativistic version of the equation, where the energ
 
 # <a id="s-7-4-the-time-independent-schrodinger-equation"></a>7.4 The Time Independent Schrödinger Equation
 
-Second order differential equations, like the Schrödinger Equation, can be solved by **separation of** **variables**. These separated solutions can then be used to solve the problem in general.
+Second order differential equations, like the Schrödinger Equation, can be solved by **separation of variables**. These separated solutions can then be used to solve the problem in general.
 
 <div align="right"><a href="book.pdf#page=128" target="_blank" title="This page in the PDF"><sup>[p. 128]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -167,7 +167,7 @@ Put everything that depends on $`x`$ on the left and everything that depends on 
 \frac{\left( \tfrac{\hbar^{2}}{2 m}^{-} \tfrac{\partial^{2} u ( x )}{\partial x^{2}} + V ( x ) u ( x ) \right)}{u ( x )} = \frac{i \hbar \tfrac{\partial T ( t )}{\partial t}}{T ( t )} = const. = E
 ```
 
-Since we have a function of only $`x`$ set equal to a function of only $`t`$, they **both must equal a** **constant**. In the equation above, we call the constant $`E`$, (with some knowledge of the outcome). We now have an equation in $`t`$ set equal to a constant
+Since we have a function of only $`x`$ set equal to a function of only $`t`$, they **both must equal a constant**. In the equation above, we call the constant $`E`$, (with some knowledge of the outcome). We now have an equation in $`t`$ set equal to a constant
 
 ```math
 i \hbar \frac{\partial T ( t )}{\partial t} = ET ( t )

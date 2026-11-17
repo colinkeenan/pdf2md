@@ -35,7 +35,7 @@ P ( x,t ) = | \psi ( x,t ) |^{2}
 
 (We will overcome the problem that this probability is 1 everywhere for our simple wavefunction.)
 
-**We have just put in most of the physics of Quantum Mechanics. Much of what we do** **for the rest of the course will be deduced from the paragraph above. Our input came** **from deBroglie and Plank, with support from experiments.**
+**We have just put in most of the physics of Quantum Mechanics. Much of what we do for the rest of the course will be deduced from the paragraph above. Our input came from deBroglie and Plank, with support from experiments.**
 
 Lets summarize the physics input again.
 
@@ -45,7 +45,7 @@ $`\bullet`$ The absolute square of the wavefunction gives the probability distri
 
 $`\bullet`$ We can make superpositions of our free particle wave functions to make states that do not have definite momentum. We will find that any state can be made from the superposition of free particle states with different momentum.
 
-We now have a wave-particle duality for all the particles, however, **physics now only tells us** **the probability** for some quantum events to occur. We have lost the complete predictive power of classical physics.
+We now have a wave-particle duality for all the particles, however, **physics now only tells us the probability** for some quantum events to occur. We have lost the complete predictive power of classical physics.
 
 ## <a id="s-gasiorowicz-chapter-1"></a>Gasiorowicz Chapter 1
 

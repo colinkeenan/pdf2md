@@ -67,7 +67,7 @@ We have proven that
 [ H,p ] = 0
 ```
 
-if the Hamiltonian has translational symmetry. The **momentum is a constant of the motion**. Momentum is conserved. We can have **simultaneous eigenfunctions of the total momentum** **and of energy**.
+if the Hamiltonian has translational symmetry. The **momentum is a constant of the motion**. Momentum is conserved. We can have **simultaneous eigenfunctions of the total momentum and of energy**.
 
 <div align="right"><a href="book.pdf#page=191" target="_blank" title="This page in the PDF"><sup>[p. 191]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">

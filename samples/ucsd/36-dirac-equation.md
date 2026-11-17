@@ -59,7 +59,7 @@ Dirac sought to solve the perceived problem by finding an equation that was some
 
 # <a id="s-36-2-the-schrodinger-pauli-hamiltonian"></a>36.2 The Schrödinger-Pauli Hamiltonian
 
-In the homework on electrons in an electromagnetic field, we showed that **the Schrödinger-Pauli** **Hamiltonian gives the same result as the non-relativistic Hamiltonian we have been** **using and automatically includes the interaction of the electron’s spin with the magnetic** **field**.
+In the homework on electrons in an electromagnetic field, we showed that **the Schrödinger-Pauli Hamiltonian gives the same result as the non-relativistic Hamiltonian we have been using and automatically includes the interaction of the electron’s spin with the magnetic field**.
 
 ```math
 H = \frac{1}{2 m} \left( \vec{\sigma} \cdot [ \vec{p} + \frac{e}{c} \vec{A} ( \vec{r} , t ) ] \right)^{2} - e\varphi ( \vec{r} , t )
@@ -107,7 +107,7 @@ H = \frac{p^{2}}{2 m} + \frac{e}{mc} \vec{A} \cdot \vec{p} + \frac{e^{2}}{2 mc^{
 H = \frac{1}{2 m} [ \vec{p} + \frac{e}{c} \vec{A} ( \vec{r} , t ) ]^{2} - e\varphi ( \vec{r} , t ) + \frac{e \hbar}{2 mc} \vec{\sigma} \cdot \vec{B} ( \vec{r} , t )
 ```
 
-We assume the Lorentz condition applies. This is a step in the right direction. The **wavefunction** **now has two components** (a spinor) and the effect of spin is included. Note that this form of the NR Hamiltonian yields the coupling of the electron spin to a magnetic field with the **correct** $`g`$ **factor of 2**. The spin-orbit interaction can be correctly derived from this.
+We assume the Lorentz condition applies. This is a step in the right direction. The **wavefunction now has two components** (a spinor) and the effect of spin is included. Note that this form of the NR Hamiltonian yields the coupling of the electron spin to a magnetic field with the **correct** $`g`$ **factor of 2**. The spin-orbit interaction can be correctly derived from this.
 
 <div align="right"><a href="book.pdf#page=485" target="_blank" title="This page in the PDF"><sup>[p. 485]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -289,7 +289,7 @@ Sakurai shows that the anticommutation is all that is needed to determine the ph
 
 There are a few other representations of the Dirac matrices that are used. We will try hard to stick with this one, the one originally proposed by Dirac.
 
-It is interesting to note that the **primary physics input was the choice of the Schrödinger-** **Pauli Hamiltonian**
+It is interesting to note that the **primary physics input was the choice of the Schrödinger- Pauli Hamiltonian**
 
 ```math
 [ \vec{p} + \frac{e}{c} \vec{A} ( \vec{r} , t ) ] \to \vec{\sigma} \cdot [ \vec{p} + \frac{e}{c} \vec{A} ( \vec{r} , t ) ]
@@ -315,7 +315,7 @@ _Figure 106 (p. 489)_
 
 # <a id="s-36-4-the-conserved-probability-current"></a>36.4 The Conserved Probability Current
 
-We now return to the nagging problem of the probability density and current which prompted Dirac to find an equation that is first order in the time derivative. We derived the equation showing conservation of probability (See section 7.5.2), for 1D Schrödinger theory by **using the Schrödinger** **equation and its complex conjugate** to get an equation of the form
+We now return to the nagging problem of the probability density and current which prompted Dirac to find an equation that is first order in the time derivative. We derived the equation showing conservation of probability (See section 7.5.2), for 1D Schrödinger theory by **using the Schrödinger equation and its complex conjugate** to get an equation of the form
 
 ```math
 \frac{\partial P ( x,t )}{\partial t} + \frac{\partial j ( x,t )}{\partial x} = 0 .
@@ -333,7 +333,7 @@ Our problem to find a similar **probability and flux for Dirac theory is similar
 \left( \gamma_{\mu} \frac{\partial}{\partial x_{\mu}} + \frac{mc}{\hbar} \right) \psi = 0
 ```
 
-Since the wave function is a 4 component spinor, we will use the **Hermitian conjugate of the** **Dirac equation** instead of the complex conjugate. The $`\gamma`$ matrices are Hermitian.
+Since the wave function is a 4 component spinor, we will use the **Hermitian conjugate of the Dirac equation** instead of the complex conjugate. The $`\gamma`$ matrices are Hermitian.
 
 ```math
 \gamma_{\mu} \frac{\partial \psi}{\partial x_{\mu}} + \frac{mc}{\hbar} \psi = 0
@@ -393,7 +393,7 @@ j_{\mu} = \bar{\psi} \gamma_{\mu} \psi
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p491" href="book.pdf#page=491" target="_blank" title="This page in the PDF"><sup>[p. 491]</sup></a>
 
-We have found a **conserved current**. Some interpretation will be required as we learn more about the solutions to the Dirac equation and ultimately quantize it. We may choose an overall constant to **set the normalization**. The fourth component of the current should be $`ic`$ times the probability density so that the derivative with respect to $`x_{4}`$ turns into $`\frac{\partial P}{\partial t}`$. Therefore let us set the **properly** **normalized conserved 4-vector** to be
+We have found a **conserved current**. Some interpretation will be required as we learn more about the solutions to the Dirac equation and ultimately quantize it. We may choose an overall constant to **set the normalization**. The fourth component of the current should be $`ic`$ times the probability density so that the derivative with respect to $`x_{4}`$ turns into $`\frac{\partial P}{\partial t}`$. Therefore let us set the **properly normalized conserved 4-vector** to be
 
 ```math
 j_{\mu} = ic \bar{\psi} \gamma_{\mu} \psi .
@@ -401,7 +401,7 @@ j_{\mu} = ic \bar{\psi} \gamma_{\mu} \psi .
 
 # <a id="s-36-5-the-non-relativistic-limit-of-the-dirac-equation"></a>36.5 The Non-relativistic Limit of the Dirac Equation
 
-One **important requirement for the Dirac equation is that it reproduces what we know** **from non-relativistic quantum mechanics**. Note that we have derived this equation from something that did give the right answers so we expect the Dirac equation to pass this test. Perhaps we will learn something new though.
+One **important requirement for the Dirac equation is that it reproduces what we know from non-relativistic quantum mechanics**. Note that we have derived this equation from something that did give the right answers so we expect the Dirac equation to pass this test. Perhaps we will learn something new though.
 
 We know that our non-relativistic Quantum Mechanics only needed a two component spinor. We can show that, in the non-relativistic limit, two components of the Dirac spinor are large and two are quite small. To do this, we go back to the equations written in terms of $`\psi_{A}`$ and $`\psi_{B}`$, just prior to the introduction of the $`\gamma`$ matrices. We make the substitution to put the couplings to the electromagnetic field into the Hamiltonian.
 
@@ -463,7 +463,7 @@ j_{0} = \bar{\psi} \gamma_{4} \psi = \psi^{\dagger} \gamma_{4} \gamma_{4} \psi =
 
 ## <a id="s-36-5-3-the-non-relativistic-equation"></a>36.5.3 The Non-Relativistic Equation
 
-Now we will calculate the **prediction of the Dirac equation for the non-relativistic coulomb** **problem**, aiming to directly compare to what we have done with the Schrödinger equation for Hydrogen. As for previous Hydrogen solutions, we will set $`\vec{A} = 0`$ but have a scalar potential due to the nucleus $`\varphi = A_{0}`$. The energy we have been using in our non-relativistic formulation is $`E^{( NR )} = E - mc^{2}`$. We will **work with the equation for the large component** $`\psi_{A}`$. Note that $`A_{0}`$ is a function of the coordinates and the momentum operator will differentiate it.
+Now we will calculate the **prediction of the Dirac equation for the non-relativistic coulomb problem**, aiming to directly compare to what we have done with the Schrödinger equation for Hydrogen. As for previous Hydrogen solutions, we will set $`\vec{A} = 0`$ but have a scalar potential due to the nucleus $`\varphi = A_{0}`$. The energy we have been using in our non-relativistic formulation is $`E^{( NR )} = E - mc^{2}`$. We will **work with the equation for the large component** $`\psi_{A}`$. Note that $`A_{0}`$ is a function of the coordinates and the momentum operator will differentiate it.
 
 ```math
 \vec{\sigma} \cdot \left( \vec{p} + \frac{e}{c} \vec{A} \right) \frac{c^{2}}{( E + eA_{0} + mc^{2} )} \vec{\sigma} \cdot \left( \vec{p} + \frac{e}{c} \vec{A} \right) \psi_{A} = ( E + eA_{0} - mc^{2} ) \psi_{A}
@@ -559,7 +559,7 @@ This equation is correct, but not exactly what we want for the Schrödinger equa
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p494" href="book.pdf#page=494" target="_blank" title="This page in the PDF"><sup>[p. 494]</sup></a>
 
-We have only kept terms to order $`\alpha^{4}`$. Now we must **simplify two of the terms in the equation** **which contain the momentum operator acting on the field**.
+We have only kept terms to order $`\alpha^{4}`$. Now we must **simplify two of the terms in the equation which contain the momentum operator acting on the field**.
 
 ```math
 p^{2} A_{0} \psi = - \hbar^{2} \nabla^{2} A_{0} \psi = - \hbar^{2} \vec{\nabla} \cdot ( ( \vec{\nabla} A_{0} ) \psi + A_{0} \vec{\nabla} \psi ) = - \hbar^{2} ( ( \nabla^{2} A_{0} ) \psi + 2 ( \vec{\nabla} A_{0} ) \cdot ( \vec{\nabla} \psi ) + A_{0} \nabla^{2} \psi )
@@ -605,19 +605,19 @@ Now we can **explicitly put in the potential** due to the nucleus $`\frac{Ze}{4 
 \begin{aligned} \frac{e \hbar^{2} \vec{\nabla} \cdot \vec{E}}{8 m^{2} c^{2}} &= \frac{e \hbar^{2} Ze}{8 m^{2} c^{2}} \delta^{3} ( \vec{r} ) = \frac{Ze^{2} \hbar^{2}}{8 m^{2} c^{2}} \delta^{3} ( \vec{r} ) \\ \left( \frac{p^{2}}{2 m} - \frac{Ze^{2}}{4 \pi r} - \frac{p^{4}}{8 m^{3} c^{2}} + \frac{Ze^{2} \vec{L} \cdot \vec{S}}{8 \pi m^{2} c^{2} r^{3}} + \frac{Ze^{2} \hbar^{2}}{8 m^{2} c^{2}} \delta^{3} ( \vec{r} ) \right) \psi &= E^{( NR )} \psi \end{aligned}
 ```
 
-This **“Schrödinger equation”, derived from the Dirac equation**, agrees well with the one we used to understand the fine structure of Hydrogen. The first two terms are the kinetic and potential energy terms for the unperturbed Hydrogen Hamiltonian. Note that our units now put a $`4 \pi`$ in the denominator here. (The 4$`\pi`$ will be absorbed into the new formula for $`\alpha`$.) The third term is the relativistic **correction to the kinetic energy**. The fourth term is the correct **spin-orbit** **interaction**, including the **Thomas Precession** effect that we did not take the time to understand when we did the NR fine structure. The fifth term is the so called **Darwin term** which we said would come from the Dirac equation; and now it has.
+This **“Schrödinger equation”, derived from the Dirac equation**, agrees well with the one we used to understand the fine structure of Hydrogen. The first two terms are the kinetic and potential energy terms for the unperturbed Hydrogen Hamiltonian. Note that our units now put a $`4 \pi`$ in the denominator here. (The 4$`\pi`$ will be absorbed into the new formula for $`\alpha`$.) The third term is the relativistic **correction to the kinetic energy**. The fourth term is the correct **spin-orbit interaction**, including the **Thomas Precession** effect that we did not take the time to understand when we did the NR fine structure. The fifth term is the so called **Darwin term** which we said would come from the Dirac equation; and now it has.
 
 <div align="right"><a href="book.pdf#page=494" target="_blank" title="This page in the PDF"><sup>[p. 494]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p495" href="book.pdf#page=495" target="_blank" title="This page in the PDF"><sup>[p. 495]</sup></a>
 
-This was an important test of the Dirac equation and it passed with flying colors. The **Dirac equa-** **tion naturally incorporates** relativistic corrections, the interaction with electron spin, and gives an additional correction for s states that is found to be correct experimentally. When the Dirac equation is used to make a quantum field theory of electrons and photons, Quantum ElectroDynamics, we can calculate effects to very high order and compare the calculations with experiment, finding good agreement.
+This was an important test of the Dirac equation and it passed with flying colors. The **Dirac equation naturally incorporates** relativistic corrections, the interaction with electron spin, and gives an additional correction for s states that is found to be correct experimentally. When the Dirac equation is used to make a quantum field theory of electrons and photons, Quantum ElectroDynamics, we can calculate effects to very high order and compare the calculations with experiment, finding good agreement.
 
 # <a id="s-36-6-solution-of-dirac-equation-for-a-free-particle"></a>36.6 Solution of Dirac Equation for a Free Particle
 
-As with the Schrödinger equation, the simplest solutions of the Dirac equation are those for a free particle. They are also quite important to understand. We will find that **each component of the** **Dirac spinor represents a state of a free particle at rest** that we can interpret fairly easily.
+As with the Schrödinger equation, the simplest solutions of the Dirac equation are those for a free particle. They are also quite important to understand. We will find that **each component of the Dirac spinor represents a state of a free particle at rest** that we can interpret fairly easily.
 
-We can show that a free particle solution can be written as a **constant spinor times the usual** **free particle exponential**. Start from the Dirac equation and attempt to develop an equation to show that each component has the free particle exponential. We will do this by making a second order differential equation, which turns out to be the Klein-Gordon equation.
+We can show that a free particle solution can be written as a **constant spinor times the usual free particle exponential**. Start from the Dirac equation and attempt to develop an equation to show that each component has the free particle exponential. We will do this by making a second order differential equation, which turns out to be the Klein-Gordon equation.
 
 ```math
 \left( \gamma_{\mu} \frac{\partial}{\partial x_{\mu}} + \frac{mc}{\hbar} \right) \psi = 0
@@ -691,7 +691,7 @@ E = \pm \sqrt{p^{2} c^{2} + m^{2} c^{4}}
 
 Note that the momentum operator is clearly still $`\tfrac{\hbar}{i} \vec{\nabla}`$ and the energy operator is still $`i \hbar \tfrac{\partial}{\partial t}`$ .
 
-There is no coupling between the different components in this equation, but, we will see that (unlike the equation differentiated again) the **Dirac equation will give us relations between the** **components of the constant spinor**. Again, the solution can be written as a constant spinor, which may depend on momentum $`u_{\vec{p}}`$, times the exponential.
+There is no coupling between the different components in this equation, but, we will see that (unlike the equation differentiated again) the **Dirac equation will give us relations between the components of the constant spinor**. Again, the solution can be written as a constant spinor, which may depend on momentum $`u_{\vec{p}}`$, times the exponential.
 
 ```math
 \psi_{\vec{p}} ( x ) = u_{\vec{p}} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
@@ -747,7 +747,7 @@ B_{1} = B_{2} = 0
 \psi_{0} = \begin{pmatrix} A_{1} \\ A_{2} \\ 0 \\ 0 \end{pmatrix}
 ```
 
-We see that the **positive energy solutions**, for a free particle at rest, are **described by the** **upper two component spinor**. what we have called $`\psi_{A}`$. We are free to choose each component of that spinor independently. For now, lets assume that the **two components can be used to** **designate the spin up and spin down** states according to some quantization axis.
+We see that the **positive energy solutions**, for a free particle at rest, are **described by the upper two component spinor**. what we have called $`\psi_{A}`$. We are free to choose each component of that spinor independently. For now, lets assume that the **two components can be used to designate the spin up and spin down** states according to some quantization axis.
 
 For the “negative energy solutions” we have.
 
@@ -765,7 +765,7 @@ A_{1} = A_{2} = 0
 
 We **can describe two spin states for the “negative energy solutions”**.
 
-Recall that we have demonstrated that the first two components of $`\psi`$ are large compared to the other two for a non-relativistic electron solution and that the first two components, $`\psi_{A}`$, can be used as the two component spinor in the Schrödinger equation (with a normalization factor). Lets identify the first component as spin up along the z axis and the second as spin down. (We do still have a choice of quantization axis.) **Define a 4 by 4 matrix which gives the z component of the** **spin**.
+Recall that we have demonstrated that the first two components of $`\psi`$ are large compared to the other two for a non-relativistic electron solution and that the first two components, $`\psi_{A}`$, can be used as the two component spinor in the Schrödinger equation (with a normalization factor). Lets identify the first component as spin up along the z axis and the second as spin down. (We do still have a choice of quantization axis.) **Define a 4 by 4 matrix which gives the z component of the spin**.
 
 ```math
 \Sigma_{z} = \frac{1}{2 i} ( \gamma_{1} \gamma_{2} - \gamma_{2} \gamma_{1} )
@@ -893,7 +893,7 @@ This reduces to the spin up positive energy solution for a particle at rest as t
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p500" href="book.pdf#page=500" target="_blank" title="This page in the PDF"><sup>[p. 500]</sup></a>
 
-We again see that for a non-relativistic electron, the last two components are small compared to the first. This solution is that for a **positive energy electron**. The fact that the **last two** **components are non-zero does not mean it contains “negative energy” solutions**.
+We again see that for a non-relativistic electron, the last two components are small compared to the first. This solution is that for a **positive energy electron**. The fact that the **last two components are non-zero does not mean it contains “negative energy” solutions**.
 
 If we make the upper two components those of a **spin down electron**, we get the next solution following the same procedure.
 
@@ -1183,21 +1183,21 @@ Consider the Dirac equation with the EM field term included. (While we are deali
 
 The $`\frac{\partial}{\partial x_{\mu}}`$ operating on the exponential produces $`\pm ip_{\mu} / \hbar`$. If we change the charge on the electron from $`- e`$ to +$`e`$ and change the sign of the exponent, the equation remains the same. Thus, we can turn the negative exponent solution (going backward in time) into the conventional positive exponent solution if we change the charge to +$`e`$. Recall that the momentum has already been inverted (and the spin also will be inverted).
 
-The **negative exponent electron solutions can be recast as conventional exponent positron** **solutions**.
+The **negative exponent electron solutions can be recast as conventional exponent positron solutions**.
 
 # <a id="s-36-7-negative-energy-solutions-hole-theory"></a>36.7 “Negative Energy” Solutions: Hole Theory
 
-Dirac’s goal had been to find a relativistic equation for electrons which was free of the negative probabilities and the “negative energy” states of the Klein-Gordon equation. By developing and<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=505" target="_blank" title="This page in the PDF"><sup>[p. 505]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p506" href="book.pdf#page=506" target="_blank" title="This page in the PDF"><sup>[p. 506]</sup></a></span> equation that was **first order in the time derivative**, he hoped to have an equation that behaved like the Schrödinger equation, an equation for a single particle. The **Dirac equation also has** **“negative energy” solutions**. While the probability is positive, the **flux that we have derived** **is in the opposite direction of the momentum vector** for the “negative energy” solutions.
+Dirac’s goal had been to find a relativistic equation for electrons which was free of the negative probabilities and the “negative energy” states of the Klein-Gordon equation. By developing and<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=505" target="_blank" title="This page in the PDF"><sup>[p. 505]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p506" href="book.pdf#page=506" target="_blank" title="This page in the PDF"><sup>[p. 506]</sup></a></span> equation that was **first order in the time derivative**, he hoped to have an equation that behaved like the Schrödinger equation, an equation for a single particle. The **Dirac equation also has “negative energy” solutions**. While the probability is positive, the **flux that we have derived is in the opposite direction of the momentum vector** for the “negative energy” solutions.
 
-We cannot discount the “negative energy” solutions since the **positive energy solutions alone** **do not form a complete set**. An electron which is localized in space, will have components of its wave function which are “negative energy”. (The infinite plane wave solutions we have found can be all positive energy.) **The more localized the state, the greater the “negative energy”** **content**.
+We cannot discount the “negative energy” solutions since the **positive energy solutions alone do not form a complete set**. An electron which is localized in space, will have components of its wave function which are “negative energy”. (The infinite plane wave solutions we have found can be all positive energy.) **The more localized the state, the greater the “negative energy” content**.
 
 One problem of the “negative energy” states is that an electron in a positive energy (bound or free) state should be able to **emit a photon and make a transition to a “negative energy” state**. The process could continue giving off an infinite amount of energy. Dirac postulated a solution to this problem. Suppose that **all of the “negative energy” states are all filled** and the Pauli exclusion principle keeps positive energy electrons from making transitions to them.
 
-The positive energies must all be bigger than $`mc^{2}`$ and the negative energies must all be less than $`- mc^{2}`$. There is an energy gap of 2$`mc^{2}`$. It would be possible for a **“negative energy” electron to** **absorb a photon and make a transition to a positive energy state**. The minimum photon energy that could cause this would be 2$`mc^{2}`$. (Actually to conserve momentum and energy, this must be done near a nucleus (for example)). A **hole would be left behind** in the usual vacuum which has a positive charge relative to the vacuum in which all the “negative energy” states are filled. This **hole has all the properties of a positron**. It has positive energy relative to the vacuum. It has **momentum and spin in the opposite direction of the empty “negative energy” state**. The process of moving an electron to a positive energy state is **like pair creation**; it produces both an electron and a hole which we interpret as a positron. The discovery of the positron gave a great deal of support to the hole theory.
+The positive energies must all be bigger than $`mc^{2}`$ and the negative energies must all be less than $`- mc^{2}`$. There is an energy gap of 2$`mc^{2}`$. It would be possible for a **“negative energy” electron to absorb a photon and make a transition to a positive energy state**. The minimum photon energy that could cause this would be 2$`mc^{2}`$. (Actually to conserve momentum and energy, this must be done near a nucleus (for example)). A **hole would be left behind** in the usual vacuum which has a positive charge relative to the vacuum in which all the “negative energy” states are filled. This **hole has all the properties of a positron**. It has positive energy relative to the vacuum. It has **momentum and spin in the opposite direction of the empty “negative energy” state**. The process of moving an electron to a positive energy state is **like pair creation**; it produces both an electron and a hole which we interpret as a positron. The discovery of the positron gave a great deal of support to the hole theory.
 
 The idea of an **infinite sea of “negative energy” electrons** is a strange one. What about all that charge and negative energy? Why is there an asymmetry in the vacuum between negative and positive energy when Dirac’s equation is symmetric? (We could also have said that positrons have positive energy and there is an infinite sea of electrons in negative energy states.) This is probably not the right answer but it has many elements of truth in it. It also gives the right result for some simple calculations. When the Dirac field is quantized, we will no longer need the infinite “negative energy” sea, but electrons and positrons will behave as if it were there.
 
-Another way to look at the “negative energy” solution is as a **positive energy solution moving** **backward in time**. This makes the same change of the sign in the exponential. The particle would move in the opposite direction of its momentum. It would also behave as if it had the opposite charge. We might just relabel $`\vec{p} \to - \vec{p}`$ since these solutions go in the opposite direction anyway and change the sign of $`E`$ so that it is positive. The exponential would be then change to
+Another way to look at the “negative energy” solution is as a **positive energy solution moving backward in time**. This makes the same change of the sign in the exponential. The particle would move in the opposite direction of its momentum. It would also behave as if it had the opposite charge. We might just relabel $`\vec{p} \to - \vec{p}`$ since these solutions go in the opposite direction anyway and change the sign of $`E`$ so that it is positive. The exponential would be then change to
 
 ```math
 e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \to e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
@@ -1459,7 +1459,7 @@ That one also checks. As a last test, try $`\gamma_{2}`$.
 \gamma_{2} = \gamma_{2}
 ```
 
-The Dirac equation is therefore shown to be **invariant under boosts along the** $`x_{i}`$ **direction if** **we transform the Dirac spinor according to** $`\psi^{\prime} = S_{boost} \psi`$ with the matrix
+The Dirac equation is therefore shown to be **invariant under boosts along the** $`x_{i}`$ **direction if we transform the Dirac spinor according to** $`\psi^{\prime} = S_{boost} \psi`$ with the matrix
 
 ```math
 S_{boost} = \cosh \frac{\chi}{2} + i\gamma_{i} \gamma_{4} \sinh \frac{\chi}{2}
@@ -1499,7 +1499,7 @@ For $`\mu = 3`$ or 4, $`a_{\mu \nu} = \delta_{\mu \nu}`$ and the requirement is 
 \gamma_{1} \cos \theta + \gamma_{2} \sin \theta = \cos \theta \gamma_{1} + \sin \theta \gamma_{2}
 ```
 
-This also proves to be the right transformation of $`\psi`$ so that the **Dirac equation is invariant** **under rotations** about the $`k`$ axis if we transform the Dirac spinor according to $`\psi^{\prime} = S_{rot} \psi`$ with the matrix
+This also proves to be the right transformation of $`\psi`$ so that the **Dirac equation is invariant under rotations** about the $`k`$ axis if we transform the Dirac spinor according to $`\psi^{\prime} = S_{rot} \psi`$ with the matrix
 
 ```math
 S_{rot} = \cos \frac{\theta}{2} + \gamma_{i} \gamma_{j} \sin \frac{\theta}{2}
@@ -1621,7 +1621,7 @@ S_{boost} = \cosh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2}
 = \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ \tanh \tfrac{\chi}{2} \end{pmatrix} e^{ip_{\rho} x_{\rho} / \hbar}
 ```
 
-In the last step the simple Lorentz contraction was used to set $`V^{\prime} = \frac{V}{\gamma}`$. This **boosted state** **matches the plane wave solution including the normalization**.
+In the last step the simple Lorentz contraction was used to set $`V^{\prime} = \frac{V}{\gamma}`$. This **boosted state matches the plane wave solution including the normalization**.
 
 # <a id="s-36-10parity"></a>36.10 Parity
 
@@ -1683,7 +1683,7 @@ Since $`\gamma_{4} = ( )`$ 0 $`0 - 1`$ 0 $`( )`$ , the third and fourth componen
 0 0 \quad 0 \quad - 1
 ```
 
-the first two don’t. Since we could have chosen $`- \gamma_{4}`$, all we know is that **components 3 and 4** **have the opposite parity of components 1 and 2**.
+the first two don’t. Since we could have chosen $`- \gamma_{4}`$, all we know is that **components 3 and 4 have the opposite parity of components 1 and 2**.
 
 # <a id="s-36-11bilinear-covariants"></a>36.11 Bilinear Covariants
 
@@ -1833,7 +1833,7 @@ The $`\gamma`$ matrices can be used along with Dirac spinors to make a Lorentz s
 
 # <a id="s-36-12constants-of-the-motion-for-a-free-particle"></a>36.12 Constants of the Motion for a Free Particle
 
-We know that operators representing **constants of the motion commute with the Hamilto-** **nian**. The form of the Dirac equation we have been using does not have a clear Hamiltonian. This is true essentially because of the covariant form we have been using. For a Hamiltonian formulation, we need to separate the space and time derivatives. Lets find the **Hamiltonian in the Dirac** **equation**.
+We know that operators representing **constants of the motion commute with the Hamiltonian**. The form of the Dirac equation we have been using does not have a clear Hamiltonian. This is true essentially because of the covariant form we have been using. For a Hamiltonian formulation, we need to separate the space and time derivatives. Lets find the **Hamiltonian in the Dirac equation**.
 
 ```math
 \left( \gamma_{\mu} \frac{\partial}{\partial x_{\mu}} + \frac{mc}{\hbar} \right) \psi = 0
@@ -1863,7 +1863,7 @@ We know that operators representing **constants of the motion commute with the H
 H = ic\gamma_{4} \gamma_{j} p_{j} + mc^{2} \gamma_{4}
 ```
 
-Its easy to see the $`p_{k}`$ commutes with the Hamiltonian for a free particle so that **momentum will** **be conserved**.
+Its easy to see the $`p_{k}`$ commutes with the Hamiltonian for a free particle so that **momentum will be conserved**.
 
 <div align="right"><a href="book.pdf#page=516" target="_blank" title="This page in the PDF"><sup>[p. 516]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -1895,7 +1895,7 @@ However, the **helicity**, or spin along the direction of motion does commute.
 [ H, \vec{S} \cdot \vec{p} ] = [ H, \vec{S} ] \cdot \vec{p} = \hbar c\gamma_{4} \vec{p} \times \vec{\gamma} \cdot \vec{p} = 0
 ```
 
-From the above commutators $`[ H,L_{z} ]`$ and $`[ H,S_{z} ]`$, the **components of total angular momentum** **do commute** with $`H`$.
+From the above commutators $`[ H,L_{z} ]`$ and $`[ H,S_{z} ]`$, the **components of total angular momentum do commute** with $`H`$.
 
 ```math
 [ H,J_{z} ] = [ H,L_{z} ] + [ H,S_{z} ] = \hbar c\gamma_{4} ( \gamma_{1} p_{y} - \gamma_{2} p_{x} ) + \hbar c\gamma_{4} [ \gamma_{2} p_{x} - \gamma_{1} p_{y} ] = 0
@@ -2107,7 +2107,7 @@ v_{x} = \pm c
 
 Thus, if we **measure the velocity component in any direction**, we should either get plus or minus $`c`$. This seems quite surprising, but we should note that a component of the velocity operator does not commute with momentum, the Hamiltonian, or even the other components of the velocity operator. If the electron were massless, velocity operators would commute with momentum. (In more speculative theories of particles, electrons are actually thought to be massless, getting an effective mass from interactions with particles present in the vacuum state.)
 
-The states of definite momentum are not eigenstates of velocity for a massive electron. The **velocity** **eigenstates** mix positive and “negative energy” states equally.
+The states of definite momentum are not eigenstates of velocity for a massive electron. The **velocity eigenstates** mix positive and “negative energy” states equally.
 
 ```math
 \begin{pmatrix} 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0 \end{pmatrix} \begin{pmatrix} a \\ b \\ c \\ d \end{pmatrix} = \lambda \begin{pmatrix} a \\ b \\ c \\ d \end{pmatrix}
@@ -2169,7 +2169,7 @@ There is a steady motion in the direction of the momentum with the correct magni
 
 ## <a id="s-36-14-2-expansion-of-a-state-in-plane-waves"></a>36.14.2 Expansion of a State in Plane Waves
 
-To show how the negative energy states play a role in Zitterbewegung, it is convenient to go back to the Schrödinger representation and expand an arbitrary state in terms of plane waves. As with non-relativistic quantum mechanics, the (free particle) **definite momentum states form a complete** **set** and we can expand any state in terms of them.
+To show how the negative energy states play a role in Zitterbewegung, it is convenient to go back to the Schrödinger representation and expand an arbitrary state in terms of plane waves. As with non-relativistic quantum mechanics, the (free particle) **definite momentum states form a complete set** and we can expand any state in terms of them.
 
 ```math
 \psi ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{r = 1}^{4} \sqrt{\frac{mc^{2}}{| E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
@@ -2177,7 +2177,7 @@ To show how the negative energy states play a role in Zitterbewegung, it is conv
 
 The $`r = 1 , 2`$ terms are positive energy plane waves and the $`r = 3 , 4`$ states are “negative energy”. The differing signs of the energy in the time behavior will give rise to rapid oscillations.
 
-The plane waves can be purely either positive or “negative energy”, however, **localized states have** **uncertainty in the momentum and tend to have both positive and “negative energy”** **components**. As the momentum components become relativistic, the “negative energy” amplitude becomes appreciable.
+The plane waves can be purely either positive or “negative energy”, however, **localized states have uncertainty in the momentum and tend to have both positive and “negative energy” components**. As the momentum components become relativistic, the “negative energy” amplitude becomes appreciable.
 
 ```math
 \frac{c_{3 , 4}}{c_{1 , 2}} \approx \frac{pc}{E + mc^{2}}
@@ -2229,13 +2229,13 @@ The expected value of a component of the velocity exhibits strange behavior when
 \begin{aligned} \langle v_{k} \rangle &= \sum_{\vec{p}} \sum_{r = 1}^{4} | c_{\vec{p} ,r} |^{2} \frac{p_{k} c^{2}}{| E |} + \sum_{\vec{p}} \sum_{r = 1}^{2} \sum_{r^{\prime} = 3}^{4} \frac{mc^{3}}{| E |} \left[ c_{\vec{p} ,r^{\prime}}^{*} c_{\vec{p} ,r} u_{\vec{p}}^{( r^{\prime} ) \dagger} i\gamma_{4} \gamma_{k} u_{\vec{p}}^{( r )} e^{- 2 i | E | t/ \hbar} \right. \\ & \quad \left. + c_{\vec{p} ,r^{\prime}} c_{\vec{p} ,r}^{*} u_{\vec{p}}^{( r ) \dagger} i\gamma_{4} \gamma_{k} u_{\vec{p}}^{( r^{\prime} )} e^{2 i | E | t/ \hbar} \right] \end{aligned}
 ```
 
-The last sum which contains the cross terms between negative and positive energy represents **ex-** **tremely high frequency oscillations in the expected value of the velocity**, known as **Zit-** **terbewegung**. The expected value of the position has similar rapid oscillations.
+The last sum which contains the cross terms between negative and positive energy represents **extremely high frequency oscillations in the expected value of the velocity**, known as **Zitterbewegung**. The expected value of the position has similar rapid oscillations.
 
 The Zitterbewegung again keeps electrons from being well localized in a deep potential raising the energy of s states. Its effect is already included in our calculation as it is the source of the Darwin term.
 
 # <a id="s-36-15solution-of-the-dirac-equation-for-hydrogen"></a>36.15 Solution of the Dirac Equation for Hydrogen
 
-The standard Hydrogen atom problem can be solved exactly using relativistic quantum mechanics. The full solution is a bit long but short compared to the complete effort we made in non-relativistic<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=522" target="_blank" title="This page in the PDF"><sup>[p. 522]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p523" href="book.pdf#page=523" target="_blank" title="This page in the PDF"><sup>[p. 523]</sup></a></span> QM. We have already seen that (even with no applied fields), while the **total angular momentum** **operator commutes with the Dirac Hamiltonian**, neither the orbital angular momentum operator nor the spin operators do commute with $`H`$. The addition of a spherically symmetric potential does not change these facts.
+The standard Hydrogen atom problem can be solved exactly using relativistic quantum mechanics. The full solution is a bit long but short compared to the complete effort we made in non-relativistic<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=522" target="_blank" title="This page in the PDF"><sup>[p. 522]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p523" href="book.pdf#page=523" target="_blank" title="This page in the PDF"><sup>[p. 523]</sup></a></span> QM. We have already seen that (even with no applied fields), while the **total angular momentum operator commutes with the Dirac Hamiltonian**, neither the orbital angular momentum operator nor the spin operators do commute with $`H`$. The addition of a spherically symmetric potential does not change these facts.
 
 We have shown in the section on conserved quantities that the operator
 
@@ -2243,7 +2243,7 @@ We have shown in the section on conserved quantities that the operator
 K = \gamma_{4} \vec{\Sigma} \cdot \vec{J} - \gamma_{4} \frac{\hbar}{2}
 ```
 
-**also commutes with the Hamiltonian and with** $`\vec{J} . K`$ is a measure of the component of spin along the total angular momentum direction. We will use $`K`$ to help solve problems with spherical symmetry and ultimately the problem of hydrogen. We therefore have **four mutually commuting** **operators** the eigenvalues of which can completely label the eigenstates:
+**also commutes with the Hamiltonian and with** $`\vec{J} . K`$ is a measure of the component of spin along the total angular momentum direction. We will use $`K`$ to help solve problems with spherical symmetry and ultimately the problem of hydrogen. We therefore have **four mutually commuting operators** the eigenvalues of which can completely label the eigenstates:
 
 ```math
 H,J^{2} ,J_{z} ,K \to n_{r} ,j,m_{j} ,\kappa .
@@ -2451,7 +2451,7 @@ The Dirac Equation then is.
 c \vec{\sigma} \cdot \vec{p} \begin{pmatrix} \psi_{B} \\ \psi_{A} \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix}
 ```
 
-We can use commutation and anticommutation relations to **write** $`\vec{\sigma} \cdot \vec{p}`$ **in terms of separate** **angular and radial operators**.
+We can use commutation and anticommutation relations to **write** $`\vec{\sigma} \cdot \vec{p}`$ **in terms of separate angular and radial operators**.
 
 ```math
 \sigma_{i} \hat{x}_{i} \sigma_{j} \hat{x}_{j} \sigma_{n} p_{n} = \sigma_{i} \sigma_{j} \hat{x}_{i} \hat{x}_{j} \sigma_{n} p_{n} = \frac{1}{2} ( \sigma_{i} \sigma_{j} + \sigma_{j} \sigma_{i} ) \hat{x}_{i} \hat{x}_{j} \sigma_{n} p_{n} = \frac{1}{2} 2 \delta_{ij} \hat{x}_{i} \hat{x}_{j} \sigma_{n} p_{n} = \sigma_{n} p_{n}
@@ -2575,7 +2575,7 @@ This is now a set of two coupled radial equations. We can simplify them a bit by
 \begin{pmatrix} \left( \tfrac{\partial F}{\partial r} - \tfrac{\kappa F}{r} \right) \\ \left( \tfrac{\partial G}{\partial r} + \tfrac{\kappa G}{r} \right) \end{pmatrix} = \begin{pmatrix} \tfrac{mc^{2} - E + V}{\hbar c} G \\ \tfrac{mc^{2} + E - V}{\hbar c} F \end{pmatrix}
 ```
 
-These equations are true for any spherically symmetric potential. Now it is time to **specialize to** **the hydrogen atom** for which $`\tfrac{V}{\hbar c} = - \tfrac{Z\alpha}{r}`$ . We define $`k_{1} = \frac{mc^{2} + E}{\hbar c}`$ and $`k_{2} = \frac{mc^{2} - E}{\hbar c}`$ and the dimensionless $`\rho = \sqrt{k_{1} k_{2}} r`$. The equations then become.
+These equations are true for any spherically symmetric potential. Now it is time to **specialize to the hydrogen atom** for which $`\tfrac{V}{\hbar c} = - \tfrac{Z\alpha}{r}`$ . We define $`k_{1} = \frac{mc^{2} + E}{\hbar c}`$ and $`k_{2} = \frac{mc^{2} - E}{\hbar c}`$ and the dimensionless $`\rho = \sqrt{k_{1} k_{2}} r`$. The equations then become.
 
 ```math
 \begin{pmatrix} \left( \tfrac{\partial F}{\partial r} - \tfrac{\kappa F}{r} \right) \\ \left( \tfrac{\partial G}{\partial r} + \tfrac{\kappa G}{r} \right) \end{pmatrix} = \begin{pmatrix} \left( k_{2} - \tfrac{Z\alpha}{r} \right) G \\ \left( k_{1} + \tfrac{Z\alpha}{r} \right) F \end{pmatrix}
@@ -2691,7 +2691,7 @@ b_{n_{r}} = - \sqrt{\frac{k_{1}}{k_{2}}} a_{n_{r}}
 
 These are the same equation, which is consistent with our assumption.
 
-The final step is to use this result in the **recursion relations for** $`m = n_{r} - 1`$ to find a **condition** **on** $`E`$ which must be satisfied for the series to terminate. Note that this choice of $`m`$ connects $`a_{n_{r}}`$ and $`b_{n_{r}}`$ to the rest of the series giving nontrivial conditions on $`E`$. We already have the information from the next step in the recursion which gives $`a_{n_{r} + 1} = b_{n_{r} + 1} = 0`$.
+The final step is to use this result in the **recursion relations for** $`m = n_{r} - 1`$ to find a **condition on** $`E`$ which must be satisfied for the series to terminate. Note that this choice of $`m`$ connects $`a_{n_{r}}`$ and $`b_{n_{r}}`$ to the rest of the series giving nontrivial conditions on $`E`$. We already have the information from the next step in the recursion which gives $`a_{n_{r} + 1} = b_{n_{r} + 1} = 0`$.
 
 ```math
 - a_{m} + ( s + m + 1 - \kappa ) a_{m + 1} - \sqrt{\frac{k_{2}}{k_{1}}} b_{m} + Z\alpha b_{m + 1} = 0
@@ -2789,7 +2789,7 @@ Using the quantum numbers from four mutually commuting operators, we have solved
 E = \frac{mc^{2}}{\sqrt{1 + \frac{Z^{2} \alpha^{2}}{\left( {}_{n_{r} +} \sqrt{( j + {}^{\tfrac{1}{2}} )^{2} - {}^{Z^{2} \alpha^{2}}} \right)^{2}}}}
 ```
 
-We can identify the standard principle quantum number in this case as $`n = n_{r} + j + \tfrac{1}{2}`$. This result gives the same answer as our non-relativistic calculation to order $`\alpha^{4}`$ but is also **correct to** **higher order**. It is an **exact solution to the quantum mechanics problem** posed but does not include the effects of **field theory**, such as the Lamb shift and the anomalous magnetic moment of the electron.
+We can identify the standard principle quantum number in this case as $`n = n_{r} + j + \tfrac{1}{2}`$. This result gives the same answer as our non-relativistic calculation to order $`\alpha^{4}`$ but is also **correct to higher order**. It is an **exact solution to the quantum mechanics problem** posed but does not include the effects of **field theory**, such as the Lamb shift and the anomalous magnetic moment of the electron.
 
 <div align="right"><a href="book.pdf#page=530" target="_blank" title="This page in the PDF"><sup>[p. 530]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -2799,7 +2799,7 @@ Relativistic corrections become quite important for high $`Z`$ atoms in which th
 
 # <a id="s-36-16thomson-scattering"></a>36.16 Thomson Scattering
 
-The cross section for **Thomson scattering illustrates the need for “negative energy” states** **in our calculations**. Recall that we got the correct cross section from the non-relativistic calculation and that Thomson also got the correct result from classical E&M.
+The cross section for **Thomson scattering illustrates the need for “negative energy” states in our calculations**. Recall that we got the correct cross section from the non-relativistic calculation and that Thomson also got the correct result from classical E&M.
 
 In the Dirac theory, we have only one term in the **interaction Hamiltonian**,
 
@@ -2813,7 +2813,7 @@ Because it is linear in $`A`$ it can create a photon or annihilate a photon. Pho
 A_{\mu} ( x ) = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right) .
 ```
 
-The initial and final states are **definite momentum states**, as are the intermediate electron states. We shall **first do the calculation assuming no electrons from the “negative energy” sea** **participate**, other than to exclude transitions to those “negative energy” states. The initial and final states are therefore the positive energy plane wave states $`\psi_{\vec{p}}^{( r )}`$ for $`r = 1 ,`$ 2. The intermediate states must also be positive energy states since the “negative energy” states are all filled.
+The initial and final states are **definite momentum states**, as are the intermediate electron states. We shall **first do the calculation assuming no electrons from the “negative energy” sea participate**, other than to exclude transitions to those “negative energy” states. The initial and final states are therefore the positive energy plane wave states $`\psi_{\vec{p}}^{( r )}`$ for $`r = 1 ,`$ 2. The intermediate states must also be positive energy states since the “negative energy” states are all filled.
 
 The computation of the scattering cross section follows the same steps made in the development of the Krammers-Heisenberg formula for photon scattering. There is no $`A^{2}`$ term so we are just computing the **two second order terms**.
 
@@ -2831,7 +2831,7 @@ c_{\vec{p}^{\prime} ,r^{\prime} ; \vec{k}^{\prime} , \hat{\epsilon}^{\prime}}^{(
 
 As in the earlier calculation, the photon states have been eliminated from the equation since they give a factor of 1 with the initial state photon being annihilated and the final state photon being created in each term.
 
-Now lets take a **look at one of the matrix elements**. Assume the **initial state electron is at** **rest and that the photon momentum is small**.
+Now lets take a **look at one of the matrix elements**. Assume the **initial state electron is at rest and that the photon momentum is small**.
 
 ```math
 \langle \vec{p}^{\prime \prime} r^{\prime \prime} | i\gamma_{4} \gamma_{n} \epsilon_{n} e^{i \vec{k} \cdot \vec{x}} | \vec{p} r \rangle
@@ -2957,7 +2957,7 @@ c_{\vec{p}^{\prime} ,r^{\prime} ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 2
 \frac{d\sigma}{d \Omega} = \left( \frac{e^{2}}{4 \pi mc^{2}} \right)^{2} | \hat{\epsilon} \cdot \hat{\epsilon}^{\prime} |^{2} \delta_{rr^{\prime}}
 ```
 
-This agrees with the other calculations and with experiment. The **“negative energy” sea is** **required** to get the right answer in Dirac theory. There are **alternatives** to the “negative energy” sea. Effectively we are allowing for the creation of electron positron pairs through the use of the filled negative energy states. The same result could be obtained with the possibility of pair creation, again with the hypothesis that a positron is a “negative energy” electron going backward in time.
+This agrees with the other calculations and with experiment. The **“negative energy” sea is required** to get the right answer in Dirac theory. There are **alternatives** to the “negative energy” sea. Effectively we are allowing for the creation of electron positron pairs through the use of the filled negative energy states. The same result could be obtained with the possibility of pair creation, again with the hypothesis that a positron is a “negative energy” electron going backward in time.
 
 # <a id="s-36-17hole-theory-and-charge-conjugation"></a>36.17 Hole Theory and Charge Conjugation
 
@@ -2965,7 +2965,7 @@ Dirac postulated that the “negative energy” sea was entirely filled with ele
 
 Similarly, any positive energy electron could make a transition to the now empty “negative energy” state. Energy would be given off, for example by the emission of two photons, and the system would return to the vacuum state. This is the process of **pair annihilation**.
 
-The tables below **compare an electron and a positron** with the same momentum and spin. For simplicity, the tables assume the momentum is along the z direction so that we can have spin up and spin down eigenstates. The electron and positron have opposite charge so the standard Electromagnetic currents are in opposite directions. The last row of the table shows the “negative energy” electron state that must be unoccupied to produce the positron state shown in the row above it. A **hole in the vacuum naturally produces a positron of opposite charge, momentum,** **and spin**. Because the probability flux for the “negative energy” electron states is in the opposite direction of the momentum, (and the charge and momentum are opposite the positron) the EM current of the positron and of the “negative energy” state are in opposite directions, due the product of three signs. This means the **velocities are in the same direction**.
+The tables below **compare an electron and a positron** with the same momentum and spin. For simplicity, the tables assume the momentum is along the z direction so that we can have spin up and spin down eigenstates. The electron and positron have opposite charge so the standard Electromagnetic currents are in opposite directions. The last row of the table shows the “negative energy” electron state that must be unoccupied to produce the positron state shown in the row above it. A **hole in the vacuum naturally produces a positron of opposite charge, momentum, and spin**. Because the probability flux for the “negative energy” electron states is in the opposite direction of the momentum, (and the charge and momentum are opposite the positron) the EM current of the positron and of the “negative energy” state are in opposite directions, due the product of three signs. This means the **velocities are in the same direction**.
 
 <div align="right"><a href="book.pdf#page=534" target="_blank" title="This page in the PDF"><sup>[p. 534]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -3005,7 +3005,7 @@ The strategy is to try to write the charge conjugate of this equation then show 
 \psi^{C} = S_{C} \psi^{*}
 ```
 
-where we are motivated by complex scalar field experience. $`S_{C}`$ is a 4 by 4 matrix. The **charge** **conjugate equation** then is
+where we are motivated by complex scalar field experience. $`S_{C}`$ is a 4 by 4 matrix. The **charge conjugate equation** then is
 
 ```math
 \left( \frac{\partial}{\partial x_{\mu}} - \frac{ie}{\hbar c} A_{\mu} \right) \gamma_{\mu} S_{C} \psi^{*} + \frac{mc}{\hbar} S_{C} \psi^{*} = 0 .
@@ -3091,9 +3091,9 @@ Applying this to the plane wave solutions gives.
 \psi_{\vec{p}}^{( 4 )} = \sqrt{\frac{mc^{2}}{| E | V}} u_{\vec{p}}^{( 4 )} e^{i ( \vec{p} \cdot \vec{x} + | E | t ) / \hbar} \quad \to - \sqrt{\frac{mc^{2}}{| E | V}} u_{- \vec{p}}^{( 1 )} e^{i ( - \vec{p} \cdot \vec{x} -| E | t ) / \hbar}
 ```
 
-**The charge conjugate of an electron state is the “negative energy” electron state, the** **absence of which would produce a positron of the same energy, momentum, spin, and** **velocity as the electron.** That is, the conjugate is the hole needed to make a positron with the same properties as the electron except that it has opposite charge.
+**The charge conjugate of an electron state is the “negative energy” electron state, the absence of which would produce a positron of the same energy, momentum, spin, and velocity as the electron.** That is, the conjugate is the hole needed to make a positron with the same properties as the electron except that it has opposite charge.
 
-Let us take one more look at a plane wave solution to the Dirac equation, for example $`\psi_{\vec{p}}^{( 1 )}`$ and its charge conjugate, from the point of view that **a positron is an electron moving backward in** **time**. Discard the idea of the “negative energy” sea. Assume that we have found a new solution to the field equations that moves backward in time rather than forward.
+Let us take one more look at a plane wave solution to the Dirac equation, for example $`\psi_{\vec{p}}^{( 1 )}`$ and its charge conjugate, from the point of view that **a positron is an electron moving backward in time**. Discard the idea of the “negative energy” sea. Assume that we have found a new solution to the field equations that moves backward in time rather than forward.
 
 ```math
 \psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{mc^{2}}{| E | V}} u_{\vec{p}}^{( 1 )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \to - \sqrt{\frac{mc^{2}}{| E | V}} u_{- \vec{p}}^{( 4 )} e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar} \equiv \sqrt{\frac{mc^{2}}{| E | V}} v_{\vec{p}}^{( 1 )} e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar}
@@ -3101,7 +3101,7 @@ Let us take one more look at a plane wave solution to the Dirac equation, for ex
 
 The charge conjugate of the electron solution is an electron with the same charge $`- e`$, opposite momentum $`- \vec{p}`$, and spin opposite to the original state. It satisfies the equation with the signs of the EM fields reversed and, because the sign of the $`Et`$ term in the exponential is reversed, it behaves as a positive energy solution moving backward in time, with the right momentum and spin.
 
-Our opinion of the “negative energy” solutions has been biased by living in a world of matter. We know about **matter waves oscillating as** $`e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}`$. There is a **symmetric set of solutions for** **the same particles moving “backward in time” oscillating as** $`e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar}`$. These solutions **behave like antiparticles moving forward in time**. Consider the following diagram (which contributes to Thomson scattering) **from two points of view**. From one point of view, an electron starts out at $`t_{1}`$, lets say in the state $`\psi_{\vec{p}}^{( 1 )}`$ . At time $`t_{3}`$, the electron interacts with the field and makes a transition to the state $`\psi_{\vec{p}^{\prime \prime}}^{( 4 )}`$ which travels backward in time to $`t_{2}`$ where it again interacts and makes a transition to $`\psi_{\vec{p}^{\prime}}^{( 1 )}`$ . From the other point of view, the electron starts out at $`t_{1}`$, then, at time $`t^{2}`$, the field causes the creation of an electron positron pair both of which propagate forward in time. At time $`t_{3}`$, the positron and initial electron annihilate interacting with the field. The electron produced at $`t_{2}`$ propagates on into the future.
+Our opinion of the “negative energy” solutions has been biased by living in a world of matter. We know about **matter waves oscillating as** $`e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}`$. There is a **symmetric set of solutions for the same particles moving “backward in time” oscillating as** $`e^{i ( - \vec{p} \cdot \vec{x} + Et ) / \hbar}`$. These solutions **behave like antiparticles moving forward in time**. Consider the following diagram (which contributes to Thomson scattering) **from two points of view**. From one point of view, an electron starts out at $`t_{1}`$, lets say in the state $`\psi_{\vec{p}}^{( 1 )}`$ . At time $`t_{3}`$, the electron interacts with the field and makes a transition to the state $`\psi_{\vec{p}^{\prime \prime}}^{( 4 )}`$ which travels backward in time to $`t_{2}`$ where it again interacts and makes a transition to $`\psi_{\vec{p}^{\prime}}^{( 1 )}`$ . From the other point of view, the electron starts out at $`t_{1}`$, then, at time $`t^{2}`$, the field causes the creation of an electron positron pair both of which propagate forward in time. At time $`t_{3}`$, the positron and initial electron annihilate interacting with the field. The electron produced at $`t_{2}`$ propagates on into the future.
 
 <div align="right"><a href="book.pdf#page=537" target="_blank" title="This page in the PDF"><sup>[p. 537]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -3111,9 +3111,9 @@ Our opinion of the “negative energy” solutions has been biased by living in 
 
 _Figure 108 (p. 538)_
 
-**No reference to the “negative energy” sea is needed**. **No change in the “negative** **energy” solutions is needed** although it will be helpful to relabel them with the properties of the positron rather than the properties of the electron moving backward in time.
+**No reference to the “negative energy” sea is needed**. **No change in the “negative energy” solutions is needed** although it will be helpful to relabel them with the properties of the positron rather than the properties of the electron moving backward in time.
 
-The charge conjugation operation is similar to parity. A parity operation changes the system to a symmetric one that also satisfies the equations of motion but is different from the original system. **Both parity and charge conjugation are good symmetries of the Dirac equation and** **of the electromagnetic interaction.** The charge conjugate solution is that of an electron going backward in time that can also be treated as a positron going forward in time.
+The charge conjugation operation is similar to parity. A parity operation changes the system to a symmetric one that also satisfies the equations of motion but is different from the original system. **Both parity and charge conjugation are good symmetries of the Dirac equation and of the electromagnetic interaction.** The charge conjugate solution is that of an electron going backward in time that can also be treated as a positron going forward in time.
 
 # <a id="s-36-19quantization-of-the-dirac-field"></a>36.19 Quantization of the Dirac Field
 
@@ -3123,7 +3123,7 @@ The classical **free field Lagrangian density** for the Dirac electron field is.
 \mathcal{L} = - c \hbar \bar{\psi} \gamma_{\mu} \frac{\partial}{\partial x_{\mu}} \psi - mc^{2} \bar{\psi} \psi
 ```
 
-The **independent fields** are considered to be the 4 components of $`\psi`$ and the four components of $`\bar{\psi}`$. This Lagrange density is a **Lorentz scalar** that depends only on the fields. The **Euler-Lagrange** **equation** using the $`\bar{\psi}`$ independent fields is simple since there is no derivative of $`\bar{\psi}`$ in the Lagrangian.
+The **independent fields** are considered to be the 4 components of $`\psi`$ and the four components of $`\bar{\psi}`$. This Lagrange density is a **Lorentz scalar** that depends only on the fields. The **Euler-Lagrange equation** using the $`\bar{\psi}`$ independent fields is simple since there is no derivative of $`\bar{\psi}`$ in the Lagrangian.
 
 ```math
 \frac{\partial}{\partial x_{\mu}} \left( \frac{\partial \mathcal{L}}{\partial ( \partial \bar{\psi} /\partial x_{\mu} )} \right) - \frac{\partial \mathcal{L}}{\partial \bar{\psi}} = 0
@@ -3163,7 +3163,7 @@ This **gives us the Dirac equation** indicating that this Lagrangian is the righ
 - \frac{\partial}{\partial x_{\mu}} \bar{\psi} \gamma_{\mu} + \frac{mc}{\hbar} \bar{\psi} = 0
 ```
 
-again indicating that this is the **correct Lagrangian if the Dirac equation is assumed to be** **correct**.
+again indicating that this is the **correct Lagrangian if the Dirac equation is assumed to be correct**.
 
 To compute the **Hamiltonian density**, we start by finding the momenta conjugate to the fields $`\psi`$.
 
@@ -3321,7 +3321,7 @@ The **creation an annihilation operators** $`b_{\vec{p}}^{( r )^{\dagger}}`$ and
 N_{\vec{p}}^{( r )} = b_{\vec{p}}^{( r )^{\dagger}} b_{\vec{p}}^{( r )}
 ```
 
-$`N_{\vec{p}}^{( r )}`$ is the occupation number operator. The anti-commutation relations constrain the **occupation** **number to be 1 or 0**.
+$`N_{\vec{p}}^{( r )}`$ is the occupation number operator. The anti-commutation relations constrain the **occupation number to be 1 or 0**.
 
 A **state of the electrons in a system** can be described by the occupation numbers (0 or 1 for each plane wave). The state can be generated by operation on the vacuum state with the appropriate set of creation operators.
 
@@ -3379,7 +3379,7 @@ H = \sum_{\vec{p}} \sum_{s = 1}^{2} E \left( b_{\vec{p}}^{( s )^{\dagger}} b_{\v
 
 All the **energies of these states are positive**.
 
-There is an (infinite) constant energy, similar but of opposite sign to the one for the quantized EM field, which we must add to make the vacuum state have zero energy. Note that, had we used commuting operators (Bose-Einstein) instead of anti-commuting, there would have been no lowest energy ground state so this Energy subtraction would not have been possible. **Fermi-Dirac** **statistics are required for particles satisfying the Dirac equation**.
+There is an (infinite) constant energy, similar but of opposite sign to the one for the quantized EM field, which we must add to make the vacuum state have zero energy. Note that, had we used commuting operators (Bose-Einstein) instead of anti-commuting, there would have been no lowest energy ground state so this Energy subtraction would not have been possible. **Fermi-Dirac statistics are required for particles satisfying the Dirac equation**.
 
 Since the **operators creating fermion states anti-commute**, fermion states must be antisymmetric under interchange. Assume $`b_{r}^{\dagger}`$ and $`b_{r}`$ are the creation and annihilation operators for fermions and that they anti-commute.
 

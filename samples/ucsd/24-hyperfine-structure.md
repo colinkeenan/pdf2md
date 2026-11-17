@@ -11,7 +11,7 @@ The interaction between the magnetic moment, due to the spin of the nucleus, and
 
 The hyperfine corrections may be difficult to measure in transitions between states of different $`n`$, however, they are quite measurable and important because they split the ground state. The different hyperfine levels of the ground state are populated thermally. Hyperfine transitions, which emit radio frequency waves, can be used to detect interstellar gas.
 
-This material is covered in **Gasiorowicz Chapter 17,** in **Cohen-Tannoudji et al. Chapter** **XII,** and briefly in **Griffiths 6.5**.
+This material is covered in **Gasiorowicz Chapter 17,** in **Cohen-Tannoudji et al. Chapter XII,** and briefly in **Griffiths 6.5**.
 
 # <a id="s-24-1-hyperfine-splitting"></a>24.1 Hyperfine Splitting
 
@@ -75,7 +75,7 @@ where the magnetic moments from orbital motion, electron spin, and nuclear spin 
 W_{z} = 2 \mu_{B} B \frac{S_{z}}{\hbar} .
 ```
 
-As an examples of perturbation theory, we will work this problem for weak fields, for strong fields, and also work the general case for intermediate fields. Just as in the Zeeman effect, **if one perturbation** **is much bigger than another, we choose the set of states in which the larger perturbation** **is diagonal**. In this case, the hyperfine splitting is diagonal in states of definite $`f`$ while the above perturbation due to the B field is diagonal in states of definite $`m_{s}`$. For a weak field, the hyperfine dominates and we use the states of definite $`f`$. For a strong field, we use the $`m_{s} ,m_{f}`$ states. If the two perturbations are of the same order, we must diagonalize the full perturbation matrix. This calculation will always be correct but more time consuming.
+As an examples of perturbation theory, we will work this problem for weak fields, for strong fields, and also work the general case for intermediate fields. Just as in the Zeeman effect, **if one perturbation is much bigger than another, we choose the set of states in which the larger perturbation is diagonal**. In this case, the hyperfine splitting is diagonal in states of definite $`f`$ while the above perturbation due to the B field is diagonal in states of definite $`m_{s}`$. For a weak field, the hyperfine dominates and we use the states of definite $`f`$. For a strong field, we use the $`m_{s} ,m_{f}`$ states. If the two perturbations are of the same order, we must diagonalize the full perturbation matrix. This calculation will always be correct but more time consuming.
 
 We can estimate the field at which the perturbations are the same size by comparing $`\mu_{B} B`$ to $`\tfrac{2}{3} \alpha^{4} \tfrac{m_{e}}{m_{p}} mc^{2} g_{N} = 2 . 9 \times 1 0^{- 6}`$. The weak field limit is achieved if $`B \ll 500`$ gauss.
 

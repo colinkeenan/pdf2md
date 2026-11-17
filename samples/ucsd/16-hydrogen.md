@@ -39,7 +39,7 @@ where $`\mu`$ is the reduced mass of the nucleus and electron.
 \mu = \frac{m_{e} m_{N}}{m_{e} + m_{N}}
 ```
 
-The differential equation can be solved (See section 16.3.1) using **techniques similar to those** **used to solve the 1D harmonic oscillator** equation. We find the **eigen-energies**
+The differential equation can be solved (See section 16.3.1) using **techniques similar to those used to solve the 1D harmonic oscillator** equation. We find the **eigen-energies**
 
 ```math
 E = - \frac{1}{2 n^{2}} Z^{2} \alpha^{2} \mu c^{2}

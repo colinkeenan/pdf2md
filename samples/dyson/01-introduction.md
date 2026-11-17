@@ -173,7 +173,7 @@ The theory can be carried through quite easily, if we make $`\psi`$ describe an 
 
 <a id="ref-11"></a>**[11]** W. Pauli, “The Connection Between Spin and Statistics”, _Phys. Rev._ **58** (1940) 716. In Schwinger, _Selected Papers in Quantum Electrodynamics_, pp 372–378. [↩](#refback-11-1)
 
-<a id="ref-12"></a>**[12]** W. Pauli and V. Weisskopf, “The quantization of the scalar relativistic wave equation”, _Helv. Phys._ _Acta_ **7** (1934) 709. In Miller, _Early Quantum Electrodynamics_, pp 188–205 (English). [↩](#refback-12-1)
+<a id="ref-12"></a>**[12]** W. Pauli and V. Weisskopf, “The quantization of the scalar relativistic wave equation”, _Helv. Phys. Acta_ **7** (1934) 709. In Miller, _Early Quantum Electrodynamics_, pp 188–205 (English). [↩](#refback-12-1)
 
 ---
 

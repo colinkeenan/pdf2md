@@ -75,7 +75,7 @@ L^{2} Y_{\ell m} ( \theta ,\varphi ) = \ell ( \ell + 1 ) \hbar^{2} Y_{\ell m} ( 
 \begin{aligned} L_{z} Y_{\ell m} ( \theta ,\varphi ) &= m \hbar Y_{\ell m} ( \theta ,\varphi ) \\ \frac{- \hbar^{2}}{2 \mu} \left[ \frac{1}{r^{2}} \left( r \frac{\partial}{\partial r} \right)^{2} + \frac{1}{r} \frac{\partial}{\partial r} - \frac{\ell ( \ell + 1 )}{r^{2}} \right] R_{E\ell} ( r ) + V ( r ) R_{E\ell} ( r ) &= ER_{E\ell} ( r ) \end{aligned}
 ```
 
-By assuming the eigenvalues of $`L^{2}`$ have the form $`\ell ( \ell + 1 ) \hbar^{2}`$, we have **anticipated the solution** **but not constrained it**, since the units of angular momentum are those of $`\hbar`$ and since we expect $`L^{2}`$ to have positive eigenvalues.
+By assuming the eigenvalues of $`L^{2}`$ have the form $`\ell ( \ell + 1 ) \hbar^{2}`$, we have **anticipated the solution but not constrained it**, since the units of angular momentum are those of $`\hbar`$ and since we expect $`L^{2}`$ to have positive eigenvalues.
 
 ```math
 \langle Y_{\ell m} | L^{2} | Y_{\ell m} \rangle = \langle L_{x} Y_{\ell m} | L_{x} Y_{\ell m} \rangle + \langle L_{y} Y_{\ell m} | L_{y} Y_{\ell m} \rangle + \langle L_{z} Y_{\ell m} | L_{z} Y_{\ell m} \rangle \geq 0
@@ -83,9 +83,9 @@ By assuming the eigenvalues of $`L^{2}`$ have the form $`\ell ( \ell + 1 ) \hbar
 
 The assumption that the eigenvalues of $`L_{z}`$ are some (dimensionless) number times $`\hbar`$ does not constrain our solutions at all.
 
-We will use the algebra of the angular momentum operators to help us **solve the angular part of** **the problem in general**.
+We will use the algebra of the angular momentum operators to help us **solve the angular part of the problem in general**.
 
-For any given problem with rotational symmetry, we will need to **solve a particular differential** **equation in one variable** $`r`$. This radial equation can be simplified a bit.
+For any given problem with rotational symmetry, we will need to **solve a particular differential equation in one variable** $`r`$. This radial equation can be simplified a bit.
 
 ```math
 \frac{- \hbar^{2}}{2 \mu} \left[ \frac{\partial^{2}}{\partial r^{2}} + \frac{2}{r} \frac{\partial}{\partial r} \right] R_{E\ell} ( r ) + \left( V ( r ) + \frac{\ell ( \ell + 1 ) \hbar^{2}}{2 \mu r^{2}} \right) R_{E\ell} ( r ) = ER_{E\ell} ( r )
@@ -113,7 +113,7 @@ We have already derived the **commutators of the angular momentum operators**
 [ L^{2} ,L_{i} ] = 0 .
 ```
 
-We have shown that angular momentum is quantized for a rotor with a single angular variable. To progress toward the possible quantization of angular momentum variables in 3D, we **define the** **operator** $`L_{+}`$ and its Hermitian conjugate $`L_{-}`$.
+We have shown that angular momentum is quantized for a rotor with a single angular variable. To progress toward the possible quantization of angular momentum variables in 3D, we **define the operator** $`L_{+}`$ and its Hermitian conjugate $`L_{-}`$.
 
 ```math
 L_{\pm} \equiv L_{x} \pm iL_{y} .
@@ -211,7 +211,7 @@ L_{z} Y_{\ell m} ( \theta ,\varphi ) = m \hbar Y_{\ell m} ( \theta ,\varphi )
 L^{2} Y_{\ell m} ( \theta ,\varphi ) = \ell ( \ell + 1 ) \hbar^{2} Y_{\ell m} ( \theta ,\varphi )
 ```
 
-All we know about the states are the two quantum numbers $`\ell`$ and $`m`$. We have no additional knowledge about $`L_{x}`$ and $`L_{y}`$ since these operators don’t commute with $`L_{z}`$. The **raising and** **lowering operators** $`L_{\pm} = L_{x} \pm iL_{y}`$ raise or lower $`m`$, leaving $`\ell`$ unchanged.
+All we know about the states are the two quantum numbers $`\ell`$ and $`m`$. We have no additional knowledge about $`L_{x}`$ and $`L_{y}`$ since these operators don’t commute with $`L_{z}`$. The **raising and lowering operators** $`L_{\pm} = L_{x} \pm iL_{y}`$ raise or lower $`m`$, leaving $`\ell`$ unchanged.
 
 ```math
 L_{\pm} Y_{\ell m} = \hbar \sqrt{\ell ( \ell + 1 ) - m ( m \pm 1 )} Y_{\ell ( m \pm 1 )}
@@ -271,7 +271,7 @@ Check the solution.
 
 Its correct.
 
-Here we should note that only the integer value of $`\ell`$ work for these solutions. If we were to use half-integers, the wave functions would not be single valued, for example at $`\varphi = 0`$ and $`\varphi = 2 \pi`$. Even though the probability may be single valued, discontinuities in the amplitude would lead to infinities in the Schrödinger equation. We will find later that the **half-integer angular momentum states** **are used** for internal angular momentum (spin), for which no $`\theta`$ or $`\varphi`$ coordinates exist.
+Here we should note that only the integer value of $`\ell`$ work for these solutions. If we were to use half-integers, the wave functions would not be single valued, for example at $`\varphi = 0`$ and $`\varphi = 2 \pi`$. Even though the probability may be single valued, discontinuities in the amplitude would lead to infinities in the Schrödinger equation. We will find later that the **half-integer angular momentum states are used** for internal angular momentum (spin), for which no $`\theta`$ or $`\varphi`$ coordinates exist.
 
 Therefore, **the eigenstate** $`Y_{\ell \ell}`$ **is**.
 
@@ -871,7 +871,7 @@ The raising and lowering operators change $`m`$ in integer steps, so, starting f
 m = - \ell , - \ell + 1 ,\dots ,\ell - 1 ,\ell
 ```
 
-Having the minimum at $`- \ell`$ and the maximum at +$`\ell`$ with integer steps only works if $`\ell`$ **is an integer** **or a half-integer**. There are 2$`\ell + 1`$ states with the same $`\ell`$ and different values of $`m`$. We now know what eigenstates are allowed.
+Having the minimum at $`- \ell`$ and the maximum at +$`\ell`$ with integer steps only works if $`\ell`$ **is an integer or a half-integer**. There are 2$`\ell + 1`$ states with the same $`\ell`$ and different values of $`m`$. We now know what eigenstates are allowed.
 
 The eigenstates of $`L^{2}`$ and $`L_{z}`$ should be normalized
 

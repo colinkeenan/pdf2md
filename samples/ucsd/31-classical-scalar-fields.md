@@ -9,11 +9,11 @@
 
 The **non-relativistic quantum mechanics** that we have studied so far developed largely between 1923 and 1925, based on the hypothesis of Plank from the late 19th century. It assumes that a particle has a probability that integrates to one over all space and that the particles are not created or destroyed. The theory neither deals with the **quantized electromagnetic field** nor with the relativistic energy equation.
 
-It was not long after the non-relativistic theory was completed that Dirac introduced a **relativistic** **theory for electrons**. By about 1928, relativistic theories, in which the electromagnetic field was quantized and the creation and absorption of particles was possible, had been developed by Dirac.
+It was not long after the non-relativistic theory was completed that Dirac introduced a **relativistic theory for electrons**. By about 1928, relativistic theories, in which the electromagnetic field was quantized and the creation and absorption of particles was possible, had been developed by Dirac.
 
-Quantum Mechanics became a **quantum theory of fields**, with the fields for **bosons and fermions** **treated in a symmetric way**, yet behaving quite differently. In 1940, Pauli proved the spinstatistics theorem which showed why spin one-half particles should behave like fermions and spin zero or spin one particles should have the properties of bosons.
+Quantum Mechanics became a **quantum theory of fields**, with the fields for **bosons and fermions treated in a symmetric way**, yet behaving quite differently. In 1940, Pauli proved the spinstatistics theorem which showed why spin one-half particles should behave like fermions and spin zero or spin one particles should have the properties of bosons.
 
-**Quantum Field Theory** (QFT) was quite successful in describing all detailed experiments in electromagnetic interactions and many aspects of the weak interactions. Nevertheless, by the 1960s, when our textbook was written, most particle theorists were doubtful that QFT was suitable for describing the strong interactions and some aspects of the weak interactions. This all changed dramatically around 1970 when very **successful Gauge Theories of the strong and weak** **interactions** were introduced. By now, the physics of the electromagnetic, weak, and strong interactions are well described by Quantum Field (Gauge) Theories that together from the Standard Model.
+**Quantum Field Theory** (QFT) was quite successful in describing all detailed experiments in electromagnetic interactions and many aspects of the weak interactions. Nevertheless, by the 1960s, when our textbook was written, most particle theorists were doubtful that QFT was suitable for describing the strong interactions and some aspects of the weak interactions. This all changed dramatically around 1970 when very **successful Gauge Theories of the strong and weak interactions** were introduced. By now, the physics of the electromagnetic, weak, and strong interactions are well described by Quantum Field (Gauge) Theories that together from the Standard Model.
 
 Dirac’s relativistic theory of electrons introduced many new ideas such as antiparticles and four component spinors. As we quantize the EM field, we must treat the propagation of photons relativistically. Hence we will work toward understanding relativistic QFT.
 
@@ -39,7 +39,7 @@ Lagrange’s equations are
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p427" href="book.pdf#page=427" target="_blank" title="This page in the PDF"><sup>[p. 427]</sup></a>
 
-where the $`q_{i}`$ are the coordinates of the particle. This equation is derivable from the **principle of** **least action**.
+where the $`q_{i}`$ are the coordinates of the particle. This equation is derivable from the **principle of least action**.
 
 ```math
 \delta \int_{t_{1}}^{t_{2}} L ( q_{i} , \dot{q}_{i} ) dt = 0
@@ -69,7 +69,7 @@ For example, for a string,
 \mathcal{L} = \frac{1}{2} \left[ \mu \dot{\eta}^{2} - Y \left( \frac{\partial \eta}{\partial x} \right)^{2} \right]
 ```
 
-where $`Y`$ is Young’s modulus for the material of the string and $`\mu`$ is the mass density. The **Euler-** **Lagrange Equation** for a continuous system is also derivable from the principle of least action states above. For the string, this would be.
+where $`Y`$ is Young’s modulus for the material of the string and $`\mu`$ is the mass density. The **Euler- Lagrange Equation** for a continuous system is also derivable from the principle of least action states above. For the string, this would be.
 
 ```math
 \frac{\partial}{\partial x} \left( \frac{\partial \mathcal{L}}{\partial ( \partial \eta /\partial x )} \right) + \frac{\partial}{\partial t} \left( \frac{\partial \mathcal{L}}{\partial ( \partial \eta /\partial t )} \right) - \frac{\partial \mathcal{L}}{\partial \eta} = 0
@@ -125,7 +125,7 @@ Assume we have a **field defined everywhere in space and time**. For simplicity 
 \varphi ( \vec{r} , t )
 ```
 
-The property that makes this a true scalar field is that it is **invariant under rotations and** **Lorentz boosts**.
+The property that makes this a true scalar field is that it is **invariant under rotations and Lorentz boosts**.
 
 ```math
 \varphi ( \vec{r} , t ) = \varphi^{\prime} ( \vec{r}^{\prime} ,t^{\prime} )
@@ -139,7 +139,7 @@ The Euler-Lagrange equation derived from the principle of least action is
 
 Note that since there is only one field, there is only one equation.
 
-Since we are aiming for a description of relativistic quantum mechanics, it will benefit us to write our equations in a **covariant way**. I think this also simplifies the equations. We will follow the **notation** **of Sakurai**. (The convention does not really matter and one should not get hung up on it.) As usual the Latin indices like $`i,j,k\dots`$ will run from 1 to 3 and represent the space coordinates. The Greek indices like $`\mu ,\nu ,\sigma ,\lambda \dots`$ will run from 1 to 4. Sakurai would give the **spacetime coordinate** **vector** either as
+Since we are aiming for a description of relativistic quantum mechanics, it will benefit us to write our equations in a **covariant way**. I think this also simplifies the equations. We will follow the **notation of Sakurai**. (The convention does not really matter and one should not get hung up on it.) As usual the Latin indices like $`i,j,k\dots`$ will run from 1 to 3 and represent the space coordinates. The Greek indices like $`\mu ,\nu ,\sigma ,\lambda \dots`$ will run from 1 to 4. Sakurai would give the **spacetime coordinate vector** either as
 
 ```math
 ( x_{1} ,x_{2} ,x_{3} ,x_{4} ) = ( x,y,z,ict )
@@ -167,7 +167,7 @@ The spacetime coordinate $`x_{\mu}`$ is a Lorentz vector transforming under rota
 x_{\mu}^{\prime} = a_{\mu \nu} x_{\nu}
 ```
 
-(Note that we will always **sum over repeated indices**, Latin or Greek.) The **Lorentz transfor-** **mation** is done with a 4 by 4 matrix with the property that the **inverse is the transpose of the** **matrix**.
+(Note that we will always **sum over repeated indices**, Latin or Greek.) The **Lorentz transformation** is done with a 4 by 4 matrix with the property that the **inverse is the transpose of the matrix**.
 
 ```math
 a_{\mu \nu}^{- 1} = a_{\nu \mu}
@@ -247,7 +247,7 @@ This is the **Euler-Lagrange equation for a single scalar field**. Each term in 
 \frac{\partial}{\partial x_{\mu}} \left( \frac{\partial \mathcal{L}}{\partial ( \partial \varphi /\partial x_{\mu} )} \right) - \frac{\partial \mathcal{L}}{\partial \varphi} = 0
 ```
 
-Now we want to **find a reasonable Lagrangian for a scalar field**. The Lagrangian depends on the $`\varphi`$ and its derivatives. It **should not depend explicitly on the coordinates** $`x_{\mu}`$, since that would violate translation and/or rotation invariance. We also want to come out with a **linear wave** **equation** so that high powers of the field should not appear. The only Lagrangian we can choose (up to unimportant constants) is
+Now we want to **find a reasonable Lagrangian for a scalar field**. The Lagrangian depends on the $`\varphi`$ and its derivatives. It **should not depend explicitly on the coordinates** $`x_{\mu}`$, since that would violate translation and/or rotation invariance. We also want to come out with a **linear wave equation** so that high powers of the field should not appear. The only Lagrangian we can choose (up to unimportant constants) is
 
 ```math
 \mathcal{L} = - \frac{1}{2} \left( \frac{\partial \varphi}{\partial x_{\nu}} \frac{\partial \varphi}{\partial x_{\nu}} + \mu^{2} \varphi^{2} \right)
@@ -269,7 +269,7 @@ With this Lagrangian, the Euler-Lagrange equation is.
 ✷ \varphi - \mu^{2} \varphi = 0
 ```
 
-This is the known as the **Klein-Gordon equation**. It is a good relativistic equation for a **massive** **scalar field**. It was also an early candidate for the relativistic equivalent of the Schrödinger equation for electrons because it basically has the **relativistic analog of the energy relation** inherent in<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=430" target="_blank" title="This page in the PDF"><sup>[p. 430]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p431" href="book.pdf#page=431" target="_blank" title="This page in the PDF"><sup>[p. 431]</sup></a></span> the Schrödinger equation. Writing that relation in the order terms appear in the Klein-Gordon equation above we get (letting $`c = 1`$ briefly).
+This is the known as the **Klein-Gordon equation**. It is a good relativistic equation for a **massive scalar field**. It was also an early candidate for the relativistic equivalent of the Schrödinger equation for electrons because it basically has the **relativistic analog of the energy relation** inherent in<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=430" target="_blank" title="This page in the PDF"><sup>[p. 430]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p431" href="book.pdf#page=431" target="_blank" title="This page in the PDF"><sup>[p. 431]</sup></a></span> the Schrödinger equation. Writing that relation in the order terms appear in the Klein-Gordon equation above we get (letting $`c = 1`$ briefly).
 
 ```math
 - p^{2} + E^{2} - m^{2} = 0
@@ -289,7 +289,7 @@ This adds a term to the wave equation.
 ✷ \varphi - \mu^{2} \varphi = \rho
 ```
 
-Any source density can be built up from point sources so it is useful to understand the **field gen-** **erated by a point source** as we do for electromagnetism.
+Any source density can be built up from point sources so it is useful to understand the **field generated by a point source** as we do for electromagnetism.
 
 ```math
 \rho ( \vec{x} , t ) = \rho ( x_{\mu} ) = G\delta^{3} ( \vec{x} )
@@ -313,7 +313,7 @@ We will solve this for the **field from a point source** below and get the resul
 \varphi ( \vec{x} ) = \frac{- Ge^{- \mu r}}{4 \pi r} .
 ```
 
-This solution should be familiar to us from the scalar potential for an electric point charge which satisfies the same equation with $`\mu = 0`$, $`\nabla^{2} \varphi = - \rho = - Q\delta^{3} ( \vec{x} )`$. This is a field that falls off much faster than $`\frac{1}{r}`$. **A massive scalar field falls off exponentially** and the larger the mass, the faster the fall off. (We also get a mathematical result which is useful in several applications. This is worked out another way in the section on hyperfine splitting) $`\nabla_{\overline{r}}^{2 1} = - 4 \pi \delta^{3} ( \vec{x} ) .`$
+This solution should be familiar to us from the scalar potential for an electric point charge which satisfies the same equation with $`\mu = 0`$, $`\nabla^{2} \varphi = - \rho = - Q\delta^{3} ( \vec{x} )`$. This is a field that falls off much faster than $`\frac{1}{r}`$. **A massive scalar field falls off exponentially** and the larger the mass, the faster the fall off. _(We also get a mathematical result which is useful in several applications. This is worked out another way in the section on hyperfine splitting)_ $`\nabla_{\overline{r}}^{2 1} = - 4 \pi \delta^{3} ( \vec{x} ) .`$
 
 Now we solve for the scalar field from a point source by Fourier transforming the wave equation. Define the Fourier transforms to be.
 
@@ -353,7 +353,7 @@ We now **take the transform of both sides** of the equation.
 
 To deal with the $`\nabla^{2}`$, we have integrated by parts twice assuming that the field falls off fast enough at infinity.
 
-We now have the **Fourier transform of the field of a point source**. If we can **transform back** **to position space**, we will have the field. This is a fairly standard type of problem in quantum mechanics.
+We now have the **Fourier transform of the field of a point source**. If we can **transform back to position space**, we will have the field. This is a fairly standard type of problem in quantum mechanics.
 
 ```math
 \begin{aligned} \varphi ( \vec{x} ) &= \frac{1}{( 2 \pi ) \tfrac{3}{2}} \int d^{3} ke^{i \vec{k} \cdot \vec{x}} \frac{- G}{( 2 \pi ) \tfrac{3}{2}} \frac{1}{( k^{2} + \mu^{2} )} \\ &= \frac{- G}{( 2 \pi )^{3}} \int d^{3} k \frac{e^{i \vec{k} \cdot \vec{x}}}{( k^{2} + \mu^{2} )} \\ &= \frac{- 2 \pi G}{( 2 \pi )^{3}} \int k^{2} dk \int^{1} \frac{e^{ikr \cos \theta_{k}}}{( k^{2} + \mu^{2} )} d \cos \theta_{k} \\ &= \frac{- G}{( 2 \pi )^{2}} \int \frac{k^{2}}{( k^{2} + \mu^{2} )}^{- 1} \int^{1} e^{ikr \cos \theta_{k}} d \cos \theta_{k} dk \\ &= \frac{- G}{( 2 \pi )^{2}} \int \frac{k^{2}}{( k^{2} + \mu^{2} )}^{- 1} \left[ \frac{1}{ikr} e^{ikr \cos \theta_{k}} \right]^{1} dk \\ &= \frac{- G}{( 2 \pi )^{2} ir} \int \frac{k}{( k^{2} + \mu^{2} )} \left( e^{ikr} - e^{- ikr} \right)^{- 1} dk \\ &= \frac{- G}{( 2 \pi )^{2} ir} \int_{0}^{\infty} \frac{k}{( k + i\mu ) ( k - i\mu )} \left( e^{ikr} - e^{- ikr} \right) dk \end{aligned}

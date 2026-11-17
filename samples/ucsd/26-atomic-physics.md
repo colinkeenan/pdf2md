@@ -7,7 +7,7 @@
 
 # 26 Atomic Physics
 
-This material is covered in **Gasiorowicz Chapter 19,** and in **Cohen-Tannoudji et al. Com-** **plement** $`A_{XIV}`$**.**
+This material is covered in **Gasiorowicz Chapter 19,** and in **Cohen-Tannoudji et al. Complement** $`A_{XIV}`$**.**
 
 # <a id="s-26-1-atomic-shell-model"></a>26.1 Atomic Shell Model
 
@@ -25,7 +25,7 @@ The physics of **closed shells** and angular momentum enable us to make sense of
 \sum_{m = - \ell}^{\ell} | Y_{\ell m} ( \theta ,\varphi ) |^{2} = \frac{2 \ell + 1}{4 \pi} .
 ```
 
-With all the states filled and the relative phases determined by the antisymmetry required by Pauli, the quantum numbers of the closed shell are determined. **There is only one possible state** **representing a closed shell.**
+With all the states filled and the relative phases determined by the antisymmetry required by Pauli, the quantum numbers of the closed shell are determined. **There is only one possible state representing a closed shell.**
 
 As in Helium, the two electrons in the same spatial state, $`\varphi_{n\ell m}`$, must by symmetric in space and hence antisymmetric in spin. This implies each pair of electrons has a total spin of 0. Adding these together gives a total spin state with $`s = 0`$, which is antisymmetric under interchange. The spatial state must be totally symmetric under interchange and, since all the states in the shell have the same $`n`$ and $`\ell`$, it is the different $`m`$ states which are symmetrized. This can be shown to give us a total $`\ell = 0`$ state.
 
@@ -166,13 +166,13 @@ Soon after, the periodicity is broken and special “series” are inserted to c
 
 # <a id="s-26-5-the-nuclear-shell-model"></a>26.5 The Nuclear Shell Model
 
-We see that the atomic shell model works even though the hydrogen states are not very good approximations due to the coulomb repulsion between electrons. It works because of the **tight** **binding and simplicity of closed shells**. This is **based on angular momentum and the** **Pauli principle**.
+We see that the atomic shell model works even though the hydrogen states are not very good approximations due to the coulomb repulsion between electrons. It works because of the **tight binding and simplicity of closed shells**. This is **based on angular momentum and the Pauli principle**.
 
 <div align="right"><a href="book.pdf#page=376" target="_blank" title="This page in the PDF"><sup>[p. 376]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p377" href="book.pdf#page=377" target="_blank" title="This page in the PDF"><sup>[p. 377]</sup></a>
 
-Even with the strong nuclear force, a shell model describes important features of nuclei. **Nuclei** **have tightly bound closed shells for both protons and neutrons**. Tightly bound nuclei correspond to the most abundant elements. What elements exist is governed by nuclear physics and we can get a good idea from a simple shell model. **Nuclear magic numbers** occur for neutron or proton number of 2, 8, 20, 28, 50, 82, and 126, as indicated in the figure below. Nuclei where the number of protons or neutrons is magic are more tightly bound and often more abundant. Heavier nuclei tend to have **more neutrons than protons because of the coulomb repulsion** of the protons (and the otherwise symmetric strong interactions). Nuclei which are **doubly magic** are very tightly bound compared to neighboring nuclei. $`8 2`$Pb<sup>208</sup> is a good example of a doubly magic nucleus with many more neutrons than protons.
+Even with the strong nuclear force, a shell model describes important features of nuclei. **Nuclei have tightly bound closed shells for both protons and neutrons**. Tightly bound nuclei correspond to the most abundant elements. What elements exist is governed by nuclear physics and we can get a good idea from a simple shell model. **Nuclear magic numbers** occur for neutron or proton number of 2, 8, 20, 28, 50, 82, and 126, as indicated in the figure below. Nuclei where the number of protons or neutrons is magic are more tightly bound and often more abundant. Heavier nuclei tend to have **more neutrons than protons because of the coulomb repulsion** of the protons (and the otherwise symmetric strong interactions). Nuclei which are **doubly magic** are very tightly bound compared to neighboring nuclei. $`8 2`$Pb<sup>208</sup> is a good example of a doubly magic nucleus with many more neutrons than protons.
 
 Remember, its only hydrogen states which are labeled with a principle quantum number $`n = n_{r} + \ell + 1`$. In the nuclear shell model, $`n`$ **refers only to the radial excitation** so states like the 1$`h_{\tfrac{9}{2}}`$ show up in real nuclei and on the following chart. The other feature of note in the nuclear shell model is that the nuclear **spin orbit interaction is strong** and of the opposite sign to that in atoms. The splitting between states of different $`j`$ is smaller than that but of the same order as splitting between radial or angular excitations. It is this effect and the shell model for which Maria Mayer got her Nobel prize.
 
@@ -184,7 +184,7 @@ Remember, its only hydrogen states which are labeled with a principle quantum nu
 
 _Figure 90 (p. 378)_
 
-Another feature of nuclei not shown in the table is that the **spin-spin force very much favors** **nucleons which are paired**. So nuclear isotopes with odd numbers of protons or odd numbers of neutrons have less binding energy and nuclei with odd numbers of both protons and neutrons are unstable (with one exception).
+Another feature of nuclei not shown in the table is that the **spin-spin force very much favors nucleons which are paired**. So nuclear isotopes with odd numbers of protons or odd numbers of neutrons have less binding energy and nuclei with odd numbers of both protons and neutrons are unstable (with one exception).
 
 # <a id="s-26-6-examples"></a>26.6 Examples
 

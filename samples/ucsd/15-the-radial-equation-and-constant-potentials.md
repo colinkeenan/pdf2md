@@ -292,7 +292,7 @@ ka \cot ( ka ) - 1 = - \kappa a - 1
 k \cot ( ka ) = - \kappa
 ```
 
-This is the **same transcendental equation that we had for the odd solution in one dimen-** **sion**.
+This is the **same transcendental equation that we had for the odd solution in one dimension**.
 
 ```math
 - \cot \left( \sqrt{\frac{2 \mu ( E + V_{0} )}{\hbar^{2}}} a \right) = \sqrt{\frac{- E}{V_{0} + E}}
@@ -344,7 +344,7 @@ so our plane wave becomes
 e^{ikz} \to - \sum_{\ell = 0}^{\infty} \sqrt{4 \pi ( 2 \ell + 1 )} i^{\ell} \frac{1}{2 ikr} \left( e^{- i ( kr - \ell \pi / 2 )} - e^{i ( kr - \ell \pi / 2 )} \right) Y_{\ell 0}
 ```
 
-The scattering potential will modify the plane wave, particularly the outgoing part. To maintain the outgoing flux equal to the incoming flux, the most the scattering can do is **change the relative** **phase of the incoming an outgoing waves**.
+The scattering potential will modify the plane wave, particularly the outgoing part. To maintain the outgoing flux equal to the incoming flux, the most the scattering can do is **change the relative phase of the incoming an outgoing waves**.
 
 ```math
 R_{\ell} ( r ) \to - \frac{1}{2 ikr} \left( e^{- i ( kr - \ell \pi / 2 )} - e^{2 i\delta_{\ell} ( k )} e^{i ( kr - \ell \pi / 2 )} \right)

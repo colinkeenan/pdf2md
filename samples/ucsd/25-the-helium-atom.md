@@ -9,7 +9,7 @@
 
 Hydrogen has been a great laboratory for Quantum Mechanics. After Hydrogen, Helium is the simplest atom we can use to begin to study atomic physics. Helium has two protons in the nucleus $`( Z = 2 )`$, usually two neutrons $`( A = 4 )`$, and two electrons bound to the nucleus.
 
-This material is covered in **Gasiorowicz Chapters 18,** in **Cohen-Tannoudji et al. Comple-** **ment** $`B_{XIV}`$**,** and briefly in Griffiths Chapter 7.
+This material is covered in **Gasiorowicz Chapters 18,** in **Cohen-Tannoudji et al. Complement** $`B_{XIV}`$**,** and briefly in Griffiths Chapter 7.
 
 # <a id="s-25-1-general-features-of-helium-states"></a>25.1 General Features of Helium States
 
@@ -87,7 +87,7 @@ u_{1}^{( s )} = \frac{1}{\sqrt{2}} ( \varphi_{1 0 0} \varphi_{2 \ell m} + \varph
 u_{1}^{( t )} = \frac{1}{\sqrt{2}} ( \varphi_{1 0 0} \varphi_{2 \ell m} - \varphi_{2 \ell m} \varphi_{1 0 0} ) \chi_{+} \chi_{+}
 ```
 
-The first state is $`s = 0`$ or spin **singlet**. The second state is $`s = 1`$ or spin **triplet** and has three $`m_{s}`$ states. Only the +1 state is shown. **Because the large correction due to electron repulsion** **is much larger for symmetric space states, the spin of the state determines the energy.**
+The first state is $`s = 0`$ or spin **singlet**. The second state is $`s = 1`$ or spin **triplet** and has three $`m_{s}`$ states. Only the +1 state is shown. **Because the large correction due to electron repulsion is much larger for symmetric space states, the spin of the state determines the energy.**
 
 We label the states according to the spin quantum numbers, singlet or triplet. We will treat V as a perturbation. It is very large, so first order perturbation theory will be quite inaccurate.
 

@@ -13,7 +13,7 @@ We will break the spherical symmetry by applying a weak magnetic field, further 
 
 We will use many of the tools of the last three sections to make our calculations. Nevertheless, a few of the correction terms we use will not be fully derived here.
 
-This material is covered in **Gasiorowicz Chapter 17,** in **Cohen-Tannoudji et al. Chapter** **XII,** and in **Griffiths 6.3 and 6.4**.
+This material is covered in **Gasiorowicz Chapter 17,** in **Cohen-Tannoudji et al. Chapter XII,** and in **Griffiths 6.3 and 6.4**.
 
 # <a id="s-23-1-hydrogen-fine-structure"></a>23.1 Hydrogen Fine Structure
 
@@ -39,7 +39,7 @@ Correction (1) comes from **relativity**. The electron’s velocity in hydrogen 
 H_{1} = - \frac{1}{8} \frac{p_{e}^{4}}{m^{3} c^{2}} .
 ```
 
-Our energy eigenstates are not eigenfunctions of this operator so we will have to **treat it as a** **perturbation.**
+Our energy eigenstates are not eigenfunctions of this operator so we will have to **treat it as a perturbation.**
 
 We can **estimate the size** of this correction compared to the Hydrogen binding energy by taking the ratio to the Hydrogen kinetic energy. (Remember that, in the hydrogen ground state, $`\langle \tfrac{p^{2}}{2 m} \langle \rangle = - E = \tfrac{1}{2} \alpha^{2} mc^{2}`$.)
 

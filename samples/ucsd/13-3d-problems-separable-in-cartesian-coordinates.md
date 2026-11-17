@@ -59,7 +59,7 @@ There are only a few problems which can be worked this way but they are importan
 
 # <a id="s-13-1-particle-in-a-3d-box"></a>13.1 Particle in a 3D Box
 
-An example of a problem which has a Hamiltonian of the separable form is the **particle in a 3D** **box**. The potential is zero inside the **cube of side** $`L`$ and infinite outside. It can be written as a sum of terms.
+An example of a problem which has a Hamiltonian of the separable form is the **particle in a 3D box**. The potential is zero inside the **cube of side** $`L`$ and infinite outside. It can be written as a sum of terms.
 
 ```math
 H = H_{x} + H_{y} + H_{z}
@@ -105,7 +105,7 @@ The number of states within the radius is
 N = ( 2 )_{spin} \frac{1}{8} \frac{4}{3} \pi r_{n}^{3}
 ```
 
-where we have added a factor of 2 because fermions have two spin states. This is an **approximate** **counting of the number of states** based on the volume of a sphere in $`n`$-space. The factor of $`\frac{1}{8}`$ indicates that we are just using one eighth of the sphere in $`n`$-space because all the quantum numbers must be positive.
+where we have added a factor of 2 because fermions have two spin states. This is an **approximate counting of the number of states** based on the volume of a sphere in $`n`$-space. The factor of $`\frac{1}{8}`$ indicates that we are just using one eighth of the sphere in $`n`$-space because all the quantum numbers must be positive.
 
 <div align="right"><a href="book.pdf#page=197" target="_blank" title="This page in the PDF"><sup>[p. 197]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">

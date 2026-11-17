@@ -193,7 +193,7 @@ H ( Au_{n} ) - E_{n} ( Au_{n} ) = - \hbar \omega Au_{n}
 H ( Au_{n} ) = ( E_{n} - \hbar \omega ) ( Au_{n} )
 ```
 
-This equation shows that $`Au_{n}`$ is an eigenfunction of $`H`$ with eigenvalue $`E_{n} - \hbar \omega`$. Therefore,$`A`$ **lowers** **the energy** by $`\hbar \omega`$.
+This equation shows that $`Au_{n}`$ is an eigenfunction of $`H`$ with eigenvalue $`E_{n} - \hbar \omega`$. Therefore,$`A`$ **lowers the energy** by $`\hbar \omega`$.
 
 <div align="right"><a href="book.pdf#page=174" target="_blank" title="This page in the PDF"><sup>[p. 174]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -299,7 +299,7 @@ Au_{n} = \sqrt{n} u_{n - 1} .
 
 These are extremely important equations for any computation in the HO problem.
 
-We can also **write any energy eigenstate in terms of the ground state and the raising** **operator**.
+We can also **write any energy eigenstate in terms of the ground state and the raising operator**.
 
 ```math
 u_{n} = \frac{1}{\sqrt{n !}} ( A^{\dagger} )^{n} u_{0}

@@ -23,7 +23,7 @@ The atomic state already accounts for electrons angular momentum around the nucl
 
 ## <a id="s-do-you-think-identical-atoms-will-make-a-difference"></a>Do you think identical atoms will make a difference?
 
-This material is covered in **Gasiorowicz Chapter 20,** and in **Cohen-Tannoudji et al. Com-** **plements** $`C_{V} I \boldsymbol{,} E_{VII} \boldsymbol{,} C_{XI}`$**.**
+This material is covered in **Gasiorowicz Chapter 20,** and in **Cohen-Tannoudji et al. Complements** $`C_{V} I \boldsymbol{,} E_{VII} \boldsymbol{,} C_{XI}`$**.**
 
 # <a id="s-27-1-the-h2-ion"></a>27.1 The H$`2 +`$ Ion
 
@@ -175,7 +175,7 @@ The strongest bonds come from s and p orbitals (not d,f).
 
 # <a id="s-27-4-molecular-orbitals"></a>27.4 Molecular Orbitals
 
-Even with additional parameters, parity symmetry in diatomic molecules implies we will have symmetric and antisymmetric wavefunctions for single electrons. The **symmetric or bonding state** **has a larger probability to be between the two nuclei**, sees more positive charge, and is therefore lower energy. As in our simple model of a molecule, the kinetic energy can be lowered by sharing an electron.
+Even with additional parameters, parity symmetry in diatomic molecules implies we will have symmetric and antisymmetric wavefunctions for single electrons. The **symmetric or bonding state has a larger probability to be between the two nuclei**, sees more positive charge, and is therefore lower energy. As in our simple model of a molecule, the kinetic energy can be lowered by sharing an electron.
 
 There is an axis of symmetry for **diatomic molecules**. This means $`L_{z}`$ commutes with $`H`$ and $`m_{\ell}`$ is a good quantum number. The different $`m_{\ell}`$ states, we have seen, have quite different shapes therefore bond differently. Imagine that a valence electron is in a $`d`$ state. The $`m_{\ell} = 0 , \pm 1 , \pm 2`$ are called molecular orbitals $`\sigma ,\pi ,\delta`$ respectively. Each has a bonding and an antibonding state.
 
@@ -215,7 +215,7 @@ E = ( n + \frac{1}{2} ) \hbar \omega_{vib}
 
 Complex molecules can have many different modes of vibration. Diatomic molecules have just one.
 
-The graph below shows the energy spectrum of electrons knocked out of molecular hydrogen by UV photons (photoelectric effect). The **different peaks correspond to the vibrational state of** **the final H**$`2 +`$ **ion**.
+The graph below shows the energy spectrum of electrons knocked out of molecular hydrogen by UV photons (photoelectric effect). The **different peaks correspond to the vibrational state of the final H**$`2 +`$ **ion**.
 
 ![Figure 95 (p. 388)](images/fig-p388-1.png)
 

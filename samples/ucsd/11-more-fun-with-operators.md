@@ -101,7 +101,7 @@ we can take the dot product by multiplying the components, as in 3D space.
 \langle \varphi | \psi \rangle = \sum_{i} b_{i}^{*} c_{i}
 ```
 
-The expansion in energy eigenfunctions is a very nice way to do the **time development of a wave** **function**.
+The expansion in energy eigenfunctions is a very nice way to do the **time development of a wave function**.
 
 ```math
 | \psi ( t ) \rangle = \sum_{i} \langle i | \psi ( 0 ) \rangle | i \rangle e^{- iE_{i} t/ \hbar}
@@ -547,7 +547,7 @@ it \sum_{n = 1}^{\infty} \frac{( it )^{n - 1} \hbar \omega AH^{n - 1}}{( n - 1 )
 ( H | u_{i} > = E_{i} | u_{i} > ) .
 ```
 
-a) Prove that $`<u_{i} | [ H,A ] | u_{i} > = 0`$ for an arbitrary linear operator $`A`$.
+a) Prove that $`<u_{i} | [ H,A ] | u_{i} >`$= 0 for an arbitrary linear operator $`A`$.
 
 b) For a particle of mass $`m`$ moving in 1-dimension, the Hamiltonian is given by $`H = \tfrac{p^{2}}{2 m} + V ( x )`$. Compute the commutator [H,X] where $`X`$ is the position operator.
 

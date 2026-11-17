@@ -4,17 +4,17 @@
 
 # 35 Electron Self Energy Corrections
 
-If one calculates the **energy of a point charge using classical electromagnetism**, the result is infinite, yet as far as we know, the electron is point charge. One can calculate the energy needed to assemble an electron due, essentially, to the interaction of the electron with its own field. A uniform charge distribution with the **classical radius of an electron**, would have an energy of the order of $`m_{e} c^{2}`$. Experiments have probed the electron’s charge distribution and found that it is consistent with a point charge down to distances much smaller than the classical radius. Beyond classical calculations, the **self energy of the electron calculated in the quantum theory of** **Dirac is still infinite** but the divergences are less severe.
+If one calculates the **energy of a point charge using classical electromagnetism**, the result is infinite, yet as far as we know, the electron is point charge. One can calculate the energy needed to assemble an electron due, essentially, to the interaction of the electron with its own field. A uniform charge distribution with the **classical radius of an electron**, would have an energy of the order of $`m_{e} c^{2}`$. Experiments have probed the electron’s charge distribution and found that it is consistent with a point charge down to distances much smaller than the classical radius. Beyond classical calculations, the **self energy of the electron calculated in the quantum theory of Dirac is still infinite** but the divergences are less severe.
 
-At this point we must take the unpleasant position that this (constant) **infinite energy should** **just be subtracted** when we consider the overall zero of energy (as we did for the field energy in the vacuum). Electrons exist and don’t carry infinite amount of energy baggage so we just subtract off the infinite constant. Nevertheless, we will find that the **electron’s self energy may** **change when it is a bound state** and that we should account for this change in our energy level calculations. This calculation will also give us the **opportunity to understand resonant** **behavior in scattering**.
+At this point we must take the unpleasant position that this (constant) **infinite energy should just be subtracted** when we consider the overall zero of energy (as we did for the field energy in the vacuum). Electrons exist and don’t carry infinite amount of energy baggage so we just subtract off the infinite constant. Nevertheless, we will find that the **electron’s self energy may change when it is a bound state** and that we should account for this change in our energy level calculations. This calculation will also give us the **opportunity to understand resonant behavior in scattering**.
 
-We can **calculate the lowest order self energy corrections represented by the two Feyn-** **man diagrams** below.
+We can **calculate the lowest order self energy corrections represented by the two Feynman diagrams** below.
 
 ![Figure 103 (p. 472)](images/fig-p472-1.png)
 
 _Figure 103 (p. 472)_
 
-In these, a photon is emitted then reabsorbed. As we now know, both of these amplitudes are of order $`e^{2}`$. The first one comes from the $`A^{2}`$ term in which the number of photons changes by zero or two and the second comes from the $`\vec{A} \cdot \vec{p}`$ term in second order time dependent perturbation theory. A calculation of the first diagram will give the same result for a free electron and a bound electron, while the second diagram will give different results because the intermediate states are different if<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=472" target="_blank" title="This page in the PDF"><sup>[p. 472]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p473" href="book.pdf#page=473" target="_blank" title="This page in the PDF"><sup>[p. 473]</sup></a></span> an electron is bound than they are if it is free. We will therefore **compute the amplitude from** **the second diagram**.
+In these, a photon is emitted then reabsorbed. As we now know, both of these amplitudes are of order $`e^{2}`$. The first one comes from the $`A^{2}`$ term in which the number of photons changes by zero or two and the second comes from the $`\vec{A} \cdot \vec{p}`$ term in second order time dependent perturbation theory. A calculation of the first diagram will give the same result for a free electron and a bound electron, while the second diagram will give different results because the intermediate states are different if<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=472" target="_blank" title="This page in the PDF"><sup>[p. 472]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p473" href="book.pdf#page=473" target="_blank" title="This page in the PDF"><sup>[p. 473]</sup></a></span> an electron is bound than they are if it is free. We will therefore **compute the amplitude from the second diagram**.
 
 ```math
 H_{int} = - \frac{e}{mc} \vec{A} \cdot \vec{p}
@@ -38,7 +38,7 @@ H^{abs} = - \sqrt{\frac{\hbar e^{2}}{2 m^{2} \omega V}} a_{\vec{k} ,\alpha} e^{i
 H^{emit} = - \sqrt{\frac{\hbar e^{2}}{2 m^{2} \omega V}} a_{\vec{k} ,\alpha}^{\dagger} e^{- i \vec{k} \cdot \vec{x}} \vec{p} \cdot \hat{\epsilon}^{( \alpha )}
 ```
 
-The initial and final state is the same $`| n \rangle`$, and second order perturbation theory will involve a **sum** **over intermediate atomic states,** $`| j \rangle`$ **and photon states**. We will use the matrix elements of the interaction Hamiltonian between those states.
+The initial and final state is the same $`| n \rangle`$, and second order perturbation theory will involve a **sum over intermediate atomic states,** $`| j \rangle`$ **and photon states**. We will use the matrix elements of the interaction Hamiltonian between those states.
 
 ```math
 H_{jn} = \langle j | H_{\vec{k} ,\alpha}^{emit} | n \rangle
@@ -76,7 +76,7 @@ i \hbar \frac{dc_{j}}{dt} = \sum_{\vec{k} ,\alpha} H_{jn} e^{i\omega t} c_{n} e^
 i \hbar \frac{dc_{n}}{dt} = \sum_{\vec{k} ,\alpha} \sum_{j} H_{nj} e^{- i\omega t} c_{j} e^{i\omega_{nj} t}
 ```
 
-In the equations for $`c_{n}`$, we **explicitly account for the fact that an intermediate state can** **make a transition back to the initial state**. Transitions through another intermediate state would be higher order and thus should be neglected. Note that the matrix elements for the transitions to and from the initial state are closely related. We also **include the effect that the initial state** **can become depleted** as intermediate states are populated by using $`c_{n}`$ (instead of 1) in the equation for $`c_{j}`$. Note also that all the photon states will make nonzero contributions to the sum.
+In the equations for $`c_{n}`$, we **explicitly account for the fact that an intermediate state can make a transition back to the initial state**. Transitions through another intermediate state would be higher order and thus should be neglected. Note that the matrix elements for the transitions to and from the initial state are closely related. We also **include the effect that the initial state can become depleted** as intermediate states are populated by using $`c_{n}`$ (instead of 1) in the equation for $`c_{j}`$. Note also that all the photon states will make nonzero contributions to the sum.
 
 Our task is to **solve these coupled equations**. Previously, we did this by integration, but needed the assumption that the amplitude to be in the initial state was 1.
 
@@ -112,7 +112,7 @@ c_{j} ( t ) = \sum_{\vec{k} ,\alpha} H_{jn} \left[ \frac{e^{i ( - \omega_{nj} - 
 c_{j} ( t ) = \sum_{\vec{k} ,\alpha} H_{jn} \frac{e^{i ( - \omega_{nj} - \Delta \omega_{n} + \omega ) t} - 1}{\hbar ( \omega_{nj} + \Delta \omega_{n} - \omega )}
 ```
 
-**Substitute** this back into the differential equation for $`c_{n}`$ to verify the solution and **to find out** **what** ∆$`E_{n}`$ **is**. Note that the double sum over photons reduces to a single sum because we must absorb the same type of photon that was emitted. (We have not explicitly carried along the photon state for economy.)
+**Substitute** this back into the differential equation for $`c_{n}`$ to verify the solution and **to find out what** ∆$`E_{n}`$ **is**. Note that the double sum over photons reduces to a single sum because we must absorb the same type of photon that was emitted. (We have not explicitly carried along the photon state for economy.)
 
 ```math
 i \hbar \frac{dc_{n}}{dt} = \sum_{\vec{k} ,\alpha} \sum_{j} H_{nj} e^{- i\omega t} c_{j} e^{i\omega_{nj} t}
@@ -178,7 +178,7 @@ Recalling that $`c_{n} e^{- iE_{n} t/ \hbar} = e^{\tfrac{- i \Delta Ent}{\hbar}}
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p476" href="book.pdf#page=476" target="_blank" title="This page in the PDF"><sup>[p. 476]</sup></a>
 
-**All photon energies contribute to the real part**. Only **photons that satisfy the delta** **function constraint contribute to the imaginary part**. Moreover, there will only be an imaginary part if there is a lower energy state into which the state in question can decay. We can relate this width to those we previously calculated.
+**All photon energies contribute to the real part**. Only **photons that satisfy the delta function constraint contribute to the imaginary part**. Moreover, there will only be an imaginary part if there is a lower energy state into which the state in question can decay. We can relate this width to those we previously calculated.
 
 ```math
 - \frac{2}{\hbar} ℑ ( \Delta E_{n} ) = \sum_{\vec{k} ,\alpha} \sum_{j} \frac{2 \pi | H_{nj} |^{2}}{\hbar} \delta ( E_{n} - E_{j} - \hbar \omega )
@@ -190,13 +190,13 @@ The right hand side of this equation is just what we previously derived for the 
 - \frac{2}{\hbar} ℑ ( \Delta E_{n} ) = \Gamma_{n}
 ```
 
-The **time dependence of the wavefunction for the state** $`n`$ **is modified by the self energy** **correction**.
+The **time dependence of the wavefunction for the state** $`n`$ **is modified by the self energy correction**.
 
 ```math
 \psi_{n} ( \vec{x} , t ) = \psi_{n} ( \vec{x} ) e^{- i ( E_{n} + ℜ ( \Delta E_{n} ) ) t/ \hbar} e^{\tfrac{- \Gamma nt}{2}}
 ```
 
-This also gives us the **exponential decay behavior** that we expect, **keeping resonant scattering** **cross sections from going to infinity**. So, the width just goes into the time dependence as expected and we don’t have to worry about it anymore. We can now **concentrate on the energy** **shift due to the real part** of ∆$`E_{n}`$.
+This also gives us the **exponential decay behavior** that we expect, **keeping resonant scattering cross sections from going to infinity**. So, the width just goes into the time dependence as expected and we don’t have to worry about it anymore. We can now **concentrate on the energy shift due to the real part** of ∆$`E_{n}`$.
 
 ```math
 \Delta E_{n} \equiv ℜ ( \Delta E_{n} ) = \sum_{\vec{k} ,\alpha} \sum_{j} \frac{| H_{nj} |^{2}}{\hbar ( \omega_{nj} - \omega )}
@@ -226,7 +226,7 @@ H^{abs} = - \sqrt{\frac{\hbar e^{2}}{2 m^{2} \omega V} e^{i \vec{k} \cdot \vec{x
 = \frac{e^{2}}{( 2 \pi )^{3} 2 m^{2} c^{3}} \sum_{j} \sum_{\alpha} \int d \Omega \int \frac{\omega | \langle n | e^{i \vec{k} \cdot \vec{x}} \vec{p} | j \rangle \cdot \hat{\epsilon}^{( \alpha )} |^{2}}{( \omega_{nj} - \omega )} d\omega
 ```
 
-In our calculation of the total decay rate summed over polarization and integrated over photon direction (See section 29.7), we computed the cosine of the angle between each polarization vector and the (vector) matrix element. Summing these two and integrating over photon direction we got a factor of<sup>8</sup>$`3 \pi`$ and the polarization is eliminated from the matrix element. The **same calculation** **applies** here.
+In our calculation of the total decay rate summed over polarization and integrated over photon direction (See section 29.7), we computed the cosine of the angle between each polarization vector and the (vector) matrix element. Summing these two and integrating over photon direction we got a factor of<sup>8</sup>$`3 \pi`$ and the polarization is eliminated from the matrix element. The **same calculation applies** here.
 
 ```math
 \Delta E_{n} = \frac{e^{2}}{( 2 \pi )^{3} 2 m^{2} c^{3}} \sum_{j} \frac{8 \pi}{3} \int \frac{\omega | \langle n | e^{i \vec{k} \cdot \vec{x}} \vec{p} | j \rangle |^{2}}{( \omega_{nj} - \omega )} d\omega
@@ -246,7 +246,7 @@ In our calculation of the total decay rate summed over polarization and integrat
 
 Note that we wish to use the **electric dipole approximation which is not valid** for large $`k = \tfrac{\omega}{c}`$. It is valid up to about 2000 eV so we wish to cut off the calculation around there. While this calculation clearly diverges, things are less clear here because of the eventually rapid oscillation of the $`e^{i \vec{k} \cdot \vec{x}}`$ term in the integrand as the E1 approximation fails. Nevertheless, the largest differences in corrections between free electrons and bound electrons occur in the region in which the E1 approximation is valid. For now we will just use it and assume the cut-off is low enough.
 
-It is the **difference between the bound electron’s self energy and that for a free electron** in which we are interested. Therefore, we will **start with the free electron with a definite** **momentum** $`\vec{p}`$. The normalized wave function for the free electron is $`\tfrac{1}{\sqrt{V}} e^{i \vec{p} \cdot \vec{x} / \hbar}`$.
+It is the **difference between the bound electron’s self energy and that for a free electron** in which we are interested. Therefore, we will **start with the free electron with a definite momentum** $`\vec{p}`$. The normalized wave function for the free electron is $`\tfrac{1}{\sqrt{V}} e^{i \vec{p} \cdot \vec{x} / \hbar}`$.
 
 ```math
 \Delta E_{free} = \frac{2 \alpha \hbar}{3 \pi m^{2} c^{2} V^{2}} \sum_{\vec{p}^{\prime}} \int \frac{\omega}{( \omega_{nj} - \omega )} \left| \int e^{- i \vec{p} \cdot \vec{x} / \hbar} \vec{p} e^{i \vec{p}^{\prime} \cdot \vec{x} / \hbar} d^{3} x \right|^{2} d\omega
@@ -296,9 +296,9 @@ It easy to see that this will go to negative infinity if the limit on the integr
 
 If we were hoping for little dependence on the cut-off we should be disappointed. This self energy calculated is **linear in the cut-off**.
 
-For a **non-relativistic free electron** the energy $`\frac{p^{2}}{2 m}`$ decreases as the mass of the electron increases, so the **negative sign corresponds to a positive shift in the electron’s mass**, and hence an increase in the real energy of the electron. Later, we will think of this as a **renormalization of** **the electron’s mass**. The electron starts off with some **bare mass**. The self-energy due to the interaction of the electron’s charge with its own radiation field **increases the mass to what is** **observed**.
+For a **non-relativistic free electron** the energy $`\frac{p^{2}}{2 m}`$ decreases as the mass of the electron increases, so the **negative sign corresponds to a positive shift in the electron’s mass**, and hence an increase in the real energy of the electron. Later, we will think of this as a **renormalization of the electron’s mass**. The electron starts off with some **bare mass**. The self-energy due to the interaction of the electron’s charge with its own radiation field **increases the mass to what is observed**.
 
-Note that the correction to the energy is a **constant times** $`p^{2}`$**, like the non-relativistic formula** **for the kinetic energy**.
+Note that the correction to the energy is a **constant times** $`p^{2}`$**, like the non-relativistic formula for the kinetic energy**.
 
 ```math
 C \equiv \frac{2 \alpha}{3 \pi m^{2} c^{2}} E_{cut - off}
@@ -324,7 +324,7 @@ If we **cut off the integral at** $`m_{e} c^{2}`$**, the correction to the mass 
 
 If we use the Dirac theory, then we will be justified to move the cut-off up to very high energy. It turns out that the relativistic correction diverges logarithmically (instead of linearly) and the difference between bound and free electrons is finite relativistically (while it diverges logarithmically for our non-relativistic calculation).
 
-Note that the self-energy of the free electron depends on the momentum of the electron, so we cannot simply subtract it from our bound state calculation. (What $`p^{2}`$ would we choose?) Rather me **must account for the mass renormalization**. We **used the observed electron mass in** **the calculation** of the Hydrogen bound state energies. In so doing, we have already included some of the self energy correction and we must not double correct. This is the subtraction we must make.
+Note that the self-energy of the free electron depends on the momentum of the electron, so we cannot simply subtract it from our bound state calculation. (What $`p^{2}`$ would we choose?) Rather me **must account for the mass renormalization**. We **used the observed electron mass in the calculation** of the Hydrogen bound state energies. In so doing, we have already included some of the self energy correction and we must not double correct. This is the subtraction we must make.
 
 Its hard to keep all the minus signs straight in this calculation, particularly if we consider the bound and continuum electron states separately. The free particle correction to the electron mass is positive. Because we ignore the rest energy of the electron in our non-relativistic calculations, This makes a negative energy correction to both the bound $`( E = - \tfrac{1}{2 n^{2}} \alpha^{2} mc^{2} )`$ and continuum ($`E \approx \tfrac{p^{2}}{2 m}`$ ). Bound states and continuum states have the same fractional change in the energy. We need to add back in a positive term in ∆$`E_{n}`$ to avoid double counting of the self-energy correction. Since the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=478" target="_blank" title="This page in the PDF"><sup>[p. 478]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p479" href="book.pdf#page=479" target="_blank" title="This page in the PDF"><sup>[p. 479]</sup></a></span> bound state and continuum state terms have the same fractional change, it is convenient to just use $`\frac{p^{2}}{2 m}`$ for all the corrections.
 
@@ -340,13 +340,13 @@ Because we are correcting for the mass used to calculate the base energy of the 
 
 # <a id="s-35-1-the-lamb-shift"></a>35.1 The Lamb Shift
 
-In 1947, Willis E. Lamb and R. C. Retherford used microwave techniques to determine the **splitting** **between the** $`2 S 1_{2}`$ **and** $`2 P_{2} 1`$ **states in Hydrogen** to have a frequency of 1.06 GHz, (a wavelength of about 30 cm). (The shift is now accurately measured to be 1057.864 MHz.) This is about the same size as the hyperfine splitting of the ground state.
+In 1947, Willis E. Lamb and R. C. Retherford used microwave techniques to determine the **splitting between the** $`2 S 1_{2}`$ **and** $`2 P_{2} 1`$ **states in Hydrogen** to have a frequency of 1.06 GHz, (a wavelength of about 30 cm). (The shift is now accurately measured to be 1057.864 MHz.) This is about the same size as the hyperfine splitting of the ground state.
 
 ![Figure 104 (p. 479)](images/fig-p479-1.png)
 
 _Figure 104 (p. 479)_
 
-The technique used was quite interesting. They made a **beam of Hydrogen atoms in the** $`2 S 1_{2}`$ **state**, which has a very long lifetime because of selection rules. **Microwave radiation** with a (fixed) frequency of 2395 MHz was used to cause transitions to the 2$`P_{\tfrac{3}{2}}`$ state and a **magnetic field** **was adjusted to shift the energy of the states** until the rate was largest. The **decay of the** $`2 P 3_{2}`$ **state to the ground state was observed** to determine the transition rate. From this, they were able to deduce the shift between the 2$`S \tfrac{1}{2}`$ and 2$`P \tfrac{1}{2}`$ states.
+The technique used was quite interesting. They made a **beam of Hydrogen atoms in the** $`2 S 1_{2}`$ **state**, which has a very long lifetime because of selection rules. **Microwave radiation** with a (fixed) frequency of 2395 MHz was used to cause transitions to the 2$`P_{\tfrac{3}{2}}`$ state and a **magnetic field was adjusted to shift the energy of the states** until the rate was largest. The **decay of the** $`2 P 3_{2}`$ **state to the ground state was observed** to determine the transition rate. From this, they were able to deduce the shift between the 2$`S \tfrac{1}{2}`$ and 2$`P \tfrac{1}{2}`$ states.
 
 **Hans Bethe used non-relativistic quantum mechanics** to calculate the self-energy correction to account for this observation.
 
@@ -414,13 +414,13 @@ It is now necessary to discuss **approximations needed** to complete this calcul
 = \frac{2 \alpha \hbar}{3 \pi m^{2} c^{2}} \sum_{j} \omega_{nj} \log \left( \frac{| \omega_{nj} |}{\omega_{cut - off}} \right) | \langle n | \vec{p} | j \rangle |^{2}
 ```
 
-The log term varies more slowly than does the rest of the terms in the sum. We can **approximate** **it by an average**. Bethe used numerical calculations to determine that the effective average of $`\hbar \omega_{nj}`$ is 8$`. 9 \alpha^{2} mc^{2}`$. We will do the same and pull the log term out as a constant.
+The log term varies more slowly than does the rest of the terms in the sum. We can **approximate it by an average**. Bethe used numerical calculations to determine that the effective average of $`\hbar \omega_{nj}`$ is 8$`. 9 \alpha^{2} mc^{2}`$. We will do the same and pull the log term out as a constant.
 
 ```math
 \Delta E_{n}^{( obs )} = \frac{2 \alpha \hbar}{3 \pi m^{2} c^{2}} \log \left( \frac{| \bar{\omega}_{nj} |}{\omega_{cut - off}} \right) \sum_{j} \omega_{nj} | \langle n | \vec{p} | j \rangle |^{2}
 ```
 
-This sum can now be reduced further to a simple expression proportional to the $`| \psi_{n} ( 0 ) |^{2}`$ **using a** **typical clever quantum mechanics calculation**. The basic Hamiltonian for the Hydrogen atom is $`H_{0} = \tfrac{p^{2}}{2 m} + V ( r )`$.
+This sum can now be reduced further to a simple expression proportional to the $`| \psi_{n} ( 0 ) |^{2}`$ **using a typical clever quantum mechanics calculation**. The basic Hamiltonian for the Hydrogen atom is $`H_{0} = \tfrac{p^{2}}{2 m} + V ( r )`$.
 
 ```math
 [ \vec{p} ,H_{0} ] = [ \vec{p} ,V ] = \frac{\hbar}{i} \vec{\nabla} V
@@ -494,7 +494,7 @@ Only the **s states will have a non-vanishing probability to be at the origin** 
 \nu = \frac{\Delta E_{2 s}^{( obs )}}{2 \pi \hbar} = \frac{\alpha^{5} mc^{2} c}{1 2 \pi^{2} \hbar c} \log \left( \frac{1}{8 . 9 \alpha^{2}} \right) = 1 . 0 4 1 GHz
 ```
 
-This **agrees far too well** with the measurement, considering the approximations made and the dependence on the cut-off. There is, however, justification in the relativistic calculation. Typically, the full calculation was made by using this non-relativistic approach up to some energy of the order of $`\alpha mc^{2}`$, and using the relativistic calculation above that. The **relativistic free electron** **self-energy correction diverges only logarithmically and a very high cutoff can be used** without a problem. The mass of the electron is renormalized as above. The **Lamb shift does not** **depend on the cutoff** and hence it is well calculated. We only need the non-relativistic part of the calculation up to photon energies for which the E1 approximation is OK. The **relativistic part** of the calculation down to $`\omega_{min}`$ yields.
+This **agrees far too well** with the measurement, considering the approximations made and the dependence on the cut-off. There is, however, justification in the relativistic calculation. Typically, the full calculation was made by using this non-relativistic approach up to some energy of the order of $`\alpha mc^{2}`$, and using the relativistic calculation above that. The **relativistic free electron self-energy correction diverges only logarithmically and a very high cutoff can be used** without a problem. The mass of the electron is renormalized as above. The **Lamb shift does not depend on the cutoff** and hence it is well calculated. We only need the non-relativistic part of the calculation up to photon energies for which the E1 approximation is OK. The **relativistic part** of the calculation down to $`\omega_{min}`$ yields.
 
 ```math
 \Delta E_{n} = \frac{4 \alpha^{5}}{3 \pi n^{3}} \left( \log \left( \frac{mc^{2}}{2 \hbar \omega_{min}} \right) + \frac{1 1}{2 4} - \frac{1}{5} \right) mc^{2}

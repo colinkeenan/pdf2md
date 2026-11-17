@@ -39,11 +39,11 @@ EM waves of wavelength $`\lambda`$ are emitted from a single light-source, like 
 
 _Figure 22 (p. 84)_
 
-The center of the diffraction pattern occurs at the location on the screen equidistant from each slit where the **waves from the two slits are in phase** (because they have traveled exactly the same distance) and the fields add, so the waves **interfere constructively** and there is an intensity maximum. Some distance off this center of the diffraction pattern, there will be destructive interference between waves from the two slits and the intensity will be zero. This will occur when<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=84" target="_blank" title="This page in the PDF"><sup>[p. 84]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p85" href="book.pdf#page=85" target="_blank" title="This page in the PDF"><sup>[p. 85]</sup></a></span> the distance traveled by two waves differs by $`\lambda / 2`$, so the **waves are 180 degrees out of phase** **and the fields from the two slits cancel**.
+The center of the diffraction pattern occurs at the location on the screen equidistant from each slit where the **waves from the two slits are in phase** (because they have traveled exactly the same distance) and the fields add, so the waves **interfere constructively** and there is an intensity maximum. Some distance off this center of the diffraction pattern, there will be destructive interference between waves from the two slits and the intensity will be zero. This will occur when<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=84" target="_blank" title="This page in the PDF"><sup>[p. 84]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p85" href="book.pdf#page=85" target="_blank" title="This page in the PDF"><sup>[p. 85]</sup></a></span> the distance traveled by two waves differs by $`\lambda / 2`$, so the **waves are 180 degrees out of phase and the fields from the two slits cancel**.
 
 We can compute this location by looking at the above diagram. We assume that the distance to the screen is much greater than $`d`$. For light detected at an angle $`\theta`$, the extra distance traveled from slit 1 is just $`d \sin \theta`$. So the angle of the **first minimum** (or null) can be found from the equation $`d \sin \theta = \tfrac{\lambda}{2}`$.
 
-More generally we will get a **maximum if the paths from the slits differ by an integer** **number of wavelengths** $`d \sin \theta = n\lambda`$ and we will get a **null when the paths differ by a half** **integer number wavelengths**. $`d \sin \theta_{null} = \tfrac{( n + 1 ) \lambda}{2}`$.
+More generally we will get a **maximum if the paths from the slits differ by an integer number of wavelengths** $`d \sin \theta = n\lambda`$ and we will get a **null when the paths differ by a half integer number wavelengths**. $`d \sin \theta_{null} = \tfrac{( n + 1 ) \lambda}{2}`$.
 
 Although it is very difficult because electrons are charged, **2 slit electron diffraction** has also been observed.
 
@@ -85,7 +85,7 @@ Diffraction off **polycrystalline material** gives concentric rings instead of s
 
 _Figure 25 (p. 87)_
 
-Diffraction from crystals is a powerful tool. First we see **x-ray diffraction from a single Sodium** **Crystal** which has periodic locations of the atoms.
+Diffraction from crystals is a powerful tool. First we see **x-ray diffraction from a single Sodium Crystal** which has periodic locations of the atoms.
 
 <div align="right"><a href="book.pdf#page=87" target="_blank" title="This page in the PDF"><sup>[p. 87]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -95,7 +95,7 @@ Diffraction from crystals is a powerful tool. First we see **x-ray diffraction f
 
 _Figure 26 (p. 88)_
 
-Another example of diffraction is shown below. Here **neutrons diffract from a single Sodium** **crystal**.
+Another example of diffraction is shown below. Here **neutrons diffract from a single Sodium crystal**.
 
 <div align="right"><a href="book.pdf#page=88" target="_blank" title="This page in the PDF"><sup>[p. 88]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -121,7 +121,7 @@ Energy and momentum form another.
 p^{\mu} = ( E, \vec{p} c )
 ```
 
-Recall that Lorentz vectors must be transformed but **Lorentz scalars are automatically invari-** **ant** under transformations. For example the scalar formed by dotting the 4-momentum into itself is
+Recall that Lorentz vectors must be transformed but **Lorentz scalars are automatically invariant** under transformations. For example the scalar formed by dotting the 4-momentum into itself is
 
 ```math
 p^{\mu} p_{\mu} = - E^{2} + p^{2} c^{2} = - m^{2} c^{4} .
@@ -169,7 +169,7 @@ The deBroglie wavelength will be our **primary physics input** for the developme
 
 We usually quote the energy of a particle in terms of its **kinetic energy** in electron Volts, eV (or Million electron Volts, MeV). The reason for this is that particles are usually accelerated to some energy by an electric field. If I let an electron (or proton...) be accelerated through a 100 Volt potential difference, it will have a kinetic energy of 100eV.
 
-The whole problem of computing a deBroglie wavelength is to convert from kinetic energy to momentum. If you always want to be correct without any need for thinking, use the **relativistically** **correct formula** for the kinetic energy
+The whole problem of computing a deBroglie wavelength is to convert from kinetic energy to momentum. If you always want to be correct without any need for thinking, use the **relativistically correct formula** for the kinetic energy
 
 ```math
 T = \sqrt{( mc^{2} )^{2} + p^{2} c^{2}} - mc^{2}
@@ -251,7 +251,7 @@ _Figure 30 (p. 93)_
 
 We use our detector to measure the diffraction pattern similar to the one for photons labeled $`P_{1 2}`$ below. If we **cover up slit 2** we get the distribution labeled $`P_{1}`$ and if we /emphtextcover up slit 1 we get the intensity distribution labeled $`P_{2}`$. We could have done the same with our photons above.
 
-Now we will try to see which slit each electron passes through. We put a **bright light source near** **the slits** and detect light bouncing off the electron so we can see which slit it passes through.
+Now we will try to see which slit each electron passes through. We put a **bright light source near the slits** and detect light bouncing off the electron so we can see which slit it passes through.
 
 <div align="right"><a href="book.pdf#page=93" target="_blank" title="This page in the PDF"><sup>[p. 93]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -261,7 +261,7 @@ Now we will try to see which slit each electron passes through. We put a **brigh
 
 _Figure 31 (p. 94)_
 
-What distribution do we see now? Actually we will see $`P_{1} + P_{2}`$ if we can tell which slit the electron went through. Our **observation of the electron as it passes through the slit has changed** **the resulting intensity distribution**. If we turn the light off, we go back to measuring $`P_{1 2}`$.
+What distribution do we see now? Actually we will see $`P_{1} + P_{2}`$ if we can tell which slit the electron went through. Our **observation of the electron as it passes through the slit has changed the resulting intensity distribution**. If we turn the light off, we go back to measuring $`P_{1 2}`$.
 
 Can you explain why the light causes the diffraction pattern to disappear?
 
@@ -281,7 +281,7 @@ _Figure 32 (p. 95)_
 
 No matter what distance between the slits we choose, we **never observe diffraction** for the bullets. They always give the $`P_{1} + P_{2}`$ pattern (probably different for the bullets). Can you explain this? The bullet’s wavelength is much much smaller than the actual size of the bullet.
 
-Why didn’t we see diffraction for the bullets. Bullets are **macroscopic objects** with huge momenta compared to individual particles. High momentum implies a small deBroglie wavelength. So to see diffraction, we must make the distance between the slits much smaller than we did for the photons (perhaps $`10^{20}`$ times smaller). But bullets are also big. They only fit through big slits which must them be further apart than the slits used for photons. For bullets, **the wavelength is tiny** **compared to any slit a bullet would fit through**. Therefore no bullet diffraction is possible.
+Why didn’t we see diffraction for the bullets. Bullets are **macroscopic objects** with huge momenta compared to individual particles. High momentum implies a small deBroglie wavelength. So to see diffraction, we must make the distance between the slits much smaller than we did for the photons (perhaps $`10^{20}`$ times smaller). But bullets are also big. They only fit through big slits which must them be further apart than the slits used for photons. For bullets, **the wavelength is tiny compared to any slit a bullet would fit through**. Therefore no bullet diffraction is possible.
 
 ## <a id="s-feynman-lectures-on-physics-vol-iii-chapter-1"></a>Feynman Lectures on Physics, Vol. III Chapter 1
 

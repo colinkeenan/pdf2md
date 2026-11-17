@@ -7,7 +7,7 @@
 
 # 22 Time Independent Perturbation Theory
 
-Perturbation Theory is developed to deal with **small corrections to problems which we have** **solved exactly**, like the harmonic oscillator and the hydrogen atom. We will make a series expansion of the energies and eigenstates for cases where there is only a small correction to the exactly soluble problem.
+Perturbation Theory is developed to deal with **small corrections to problems which we have solved exactly**, like the harmonic oscillator and the hydrogen atom. We will make a series expansion of the energies and eigenstates for cases where there is only a small correction to the exactly soluble problem.
 
 First order perturbation theory will give quite accurate answers if the energy shifts calculated are (nonzero and) much smaller than the zeroth order energy differences between eigenstates. If the first order correction is zero, we will go to second order. If the eigenstates are (nearly) degenerate to zeroth order, we will diagonalize the full Hamiltonian using only the (nearly) degenerate states.
 
@@ -51,7 +51,7 @@ c_{nk} = c_{nk}^{( 1 )} + c_{nk}^{( 2 )} + \dots
 
 where the superscript (0), (1), (2) are the zeroth, first, and second order terms in the series. $`N`$ is there to keep the wave function normalized but will not play an important role in our results.
 
-By solving the Schrödinger equation at each order of the perturbation series, we **compute the** **corrections to the energies and eigenfunctions.** (see section 22.4.1)
+By solving the Schrödinger equation at each order of the perturbation series, we **compute the corrections to the energies and eigenfunctions.** (see section 22.4.1)
 
 ```math
 E_{n}^{( 1 )} = \langle \varphi_{n} | H_{1} | \varphi_{n} \rangle
@@ -71,7 +71,7 @@ E_{n}^{( 2 )} = \sum_{k \neq n} \frac{| \langle \varphi_{k} | H_{1} | \varphi_{n
 
 audio
 
-So the **first order correction to the energy** of the $`n^{th}`$ eigenstate, $`E_{n}^{( 1 )}`$, is just the expectation value of the perturbation in the unperturbed state. The first order admixture of $`\varphi_{k}`$ in $`\psi_{n} , c_{nk}^{( 1 )}`$, depends on a matrix element and the energy difference between states. The **second order correc-** **tion to the energy**, $`E_{n}^{( 2 )}`$, has a similar dependence. Note that the higher order corrections may not be small if states are nearby in energy.
+So the **first order correction to the energy** of the $`n^{th}`$ eigenstate, $`E_{n}^{( 1 )}`$, is just the expectation value of the perturbation in the unperturbed state. The first order admixture of $`\varphi_{k}`$ in $`\psi_{n} , c_{nk}^{( 1 )}`$, depends on a matrix element and the energy difference between states. The **second order correction to the energy**, $`E_{n}^{( 2 )}`$, has a similar dependence. Note that the higher order corrections may not be small if states are nearby in energy.
 
 The application of the first order perturbation equations is quite simple in principal. The actual calculation of the matrix elements depends greatly on the problem being solved.
 
@@ -85,7 +85,7 @@ We will exercise the use of perturbation theory in section 23 when we compute th
 
 # <a id="s-22-2-degenerate-state-perturbation-theory"></a>22.2 Degenerate State Perturbation Theory
 
-The perturbation expansion has a problem for states very close in energy. The energy difference in the denominators goes to zero and the **corrections are no longer small.** The series does not converge. We can very effectively solve this problem by **treating all the (nearly) degenerate** **states like we did** $`\varphi_{n}`$ in the regular perturbation expansion. That is, the zeroth order state will be allowed to be an arbitrary linear combination of the degenerate states and the eigenvalue problem will be solved.
+The perturbation expansion has a problem for states very close in energy. The energy difference in the denominators goes to zero and the **corrections are no longer small.** The series does not converge. We can very effectively solve this problem by **treating all the (nearly) degenerate states like we did** $`\varphi_{n}`$ in the regular perturbation expansion. That is, the zeroth order state will be allowed to be an arbitrary linear combination of the degenerate states and the eigenvalue problem will be solved.
 
 Assume that two or more states are (nearly) degenerate. Define $`\mathcal{N}`$ to be the set of those nearly degenerate states. Choose a set of basis state in $`\mathcal{N}`$ which are orthonormal
 
@@ -477,7 +477,7 @@ By putting both terms together, our calculation gives us the full energy to firs
 \sum_{i \in \mathcal{N}} \langle \varphi^{( j )} | H | \varphi^{( i )} \rangle \alpha_{i} = E\alpha_{j} .
 ```
 
-This is just the standard eigenvalue problem for the full Hamiltonian in the **subspace of (nearly)** **degenerate states.**
+This is just the standard eigenvalue problem for the full Hamiltonian in the **subspace of (nearly) degenerate states.**
 
 # <a id="s-22-5-homework-problems"></a>22.5 Homework Problems
 

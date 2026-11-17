@@ -9,7 +9,7 @@
 
 # <a id="s-33-1-transverse-and-longitudinal-fields"></a>33.1 Transverse and Longitudinal Fields
 
-In non-relativistic Quantum Mechanics, the static Electric field is represented by a scalar potential, magnetic fields by the vector potential, and the radiation field also through the vector potential. It will be convenient to keep this separation between the large static atomic Electric field and the radiation fields, however, the equations we have contain the four-vector $`A_{\mu}`$ with all the fields mixed. When we quantize the field, all E and B fields as well as electromagnetic waves will be made up of photons. It is useful to be able to **separate the E fields due to fixed charges from the EM** **radiation from moving charges**. This separation is not Lorentz invariant, but it is still useful.
+In non-relativistic Quantum Mechanics, the static Electric field is represented by a scalar potential, magnetic fields by the vector potential, and the radiation field also through the vector potential. It will be convenient to keep this separation between the large static atomic Electric field and the radiation fields, however, the equations we have contain the four-vector $`A_{\mu}`$ with all the fields mixed. When we quantize the field, all E and B fields as well as electromagnetic waves will be made up of photons. It is useful to be able to **separate the E fields due to fixed charges from the EM radiation from moving charges**. This separation is not Lorentz invariant, but it is still useful.
 
 Enrico Fermi showed, in 1930, that $`A_{\|}`$ together with $`A_{0}`$ give rise to Coulomb interactions between particles, whereas $`A_{\perp}`$ gives rise to the EM radiation from moving charges. With this separation, we can maintain the form of our non-relativistic Hamiltonian,
 
@@ -73,7 +73,7 @@ We will now study the radiation field in a region with no sources so that $`\vec
 
 # <a id="s-33-2-fourier-decomposition-of-radiation-oscillators"></a>33.2 Fourier Decomposition of Radiation Oscillators
 
-Our goal is to write the Hamiltonian for the radiation field in terms of a sum of harmonic oscillator Hamiltonians. The first step is to write the radiation field in as simple a way as possible, as a sum of harmonic components. We will work in a cubic volume $`V = L^{3}`$ and apply **periodic boundary** **conditions** on our electromagnetic waves. We also assume for now that there are **no sources inside** **the region** so that we can make a gauge transformation to make $`A_{0} = 0`$ and hence $`\vec{\nabla} \cdot \vec{A} = 0`$. We **decompose the field into its Fourier components** at $`t = 0`$
+Our goal is to write the Hamiltonian for the radiation field in terms of a sum of harmonic oscillator Hamiltonians. The first step is to write the radiation field in as simple a way as possible, as a sum of harmonic components. We will work in a cubic volume $`V = L^{3}`$ and apply **periodic boundary conditions** on our electromagnetic waves. We also assume for now that there are **no sources inside the region** so that we can make a gauge transformation to make $`A_{0} = 0`$ and hence $`\vec{\nabla} \cdot \vec{A} = 0`$. We **decompose the field into its Fourier components** at $`t = 0`$
 
 ```math
 \vec{A} ( \vec{x} , t = 0 ) = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \hat{\epsilon}^{( \alpha )} \left( c_{k,\alpha} ( t = 0 ) e^{i \vec{k} \cdot \vec{x}} + c_{k,\alpha}^{*} ( t = 0 ) e^{- i \vec{k} \cdot \vec{x}} \right)
@@ -141,7 +141,7 @@ A convenient shorthand for calculations is possible by noticing that the second 
 \vec{A} ( \vec{x} , t ) = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \hat{\epsilon}^{( \alpha )} c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c.c.
 ```
 
-Note again that we have made this a transverse field by construction. The unit vectors $`\hat{\epsilon}^{( \alpha )}`$ are transverse to the direction of propagation. Also note that we are working in a gauge with $`A_{4} = 0`$, so this can also represent the 4-vector form of the potential. The **Fourier decomposition of the** **radiation field** can be written very simply.
+Note again that we have made this a transverse field by construction. The unit vectors $`\hat{\epsilon}^{( \alpha )}`$ are transverse to the direction of propagation. Also note that we are working in a gauge with $`A_{4} = 0`$, so this can also represent the 4-vector form of the potential. The **Fourier decomposition of the radiation field** can be written very simply.
 
 ```math
 A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \epsilon_{\mu}^{( \alpha )} c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c.c.
@@ -183,7 +183,7 @@ The result here is zero because $`\hat{\epsilon}^{( \alpha )} \cdot \vec{k} = 0`
 
 # <a id="s-33-3-the-hamiltonian-for-the-radiation-field"></a>33.3 The Hamiltonian for the Radiation Field
 
-We now wish to **compute the Hamiltonian in terms of the coefficients** $`c_{k,\alpha} ( t )`$. This is an important calculation because we will **use the Hamiltonian formalism to do the quantization** **of the field**. We will do the calculation using the covariant notation (while Sakurai outlines an alternate calculation using 3-vectors). We have already calculated **the Hamiltonian density for** **a classical EM field**.
+We now wish to **compute the Hamiltonian in terms of the coefficients** $`c_{k,\alpha} ( t )`$. This is an important calculation because we will **use the Hamiltonian formalism to do the quantization of the field**. We will do the calculation using the covariant notation (while Sakurai outlines an alternate calculation using 3-vectors). We have already calculated **the Hamiltonian density for a classical EM field**.
 
 ```math
 \mathcal{H} = F_{\mu 4} \frac{\partial A_{\mu}}{\partial x_{4}} + \frac{1}{4} F_{\mu \nu} F_{\mu \nu}
@@ -289,7 +289,7 @@ H = \sum_{k,\alpha} \left( \frac{\omega}{c} \right)^{2} \left[ c_{k,\alpha} ( t 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p448" href="book.pdf#page=448" target="_blank" title="This page in the PDF"><sup>[p. 448]</sup></a>
 
-It was **with the Hamiltonian that we first quantized the non-relativistic motion of parti-** **cles**. The **position and momentum became operators which did not commute**. Lets define $`c_{k,\alpha}`$ to be the time dependent Fourier coefficient.
+It was **with the Hamiltonian that we first quantized the non-relativistic motion of particles**. The **position and momentum became operators which did not commute**. Lets define $`c_{k,\alpha}`$ to be the time dependent Fourier coefficient.
 
 ```math
 \ddot{c}_{k,\alpha} = - \omega^{2} c_{k,\alpha}
@@ -385,7 +385,7 @@ We have a collection of uncoupled oscillators with identified canonical coordina
 
 # <a id="s-33-5-quantization-of-the-oscillators"></a>33.5 Quantization of the Oscillators
 
-To summarize the result of the calculations of the last section we have the **Hamiltonian for the** **radiation field**.
+To summarize the result of the calculations of the last section we have the **Hamiltonian for the radiation field**.
 
 ```math
 H = \sum_{k,\alpha} \left( \frac{\omega}{c} \right)^{2} \left[ c_{k,\alpha} c_{k,\alpha}^{*} + c_{k,\alpha}^{*} c_{k,\alpha} \right]
@@ -403,7 +403,7 @@ P_{k,\alpha} = - \frac{i\omega}{c} ( c_{k,\alpha} - c_{k,\alpha}^{*} )
 H = \frac{1}{2} \sum_{k,\alpha} \left[ P_{k,\alpha}^{2} + \omega^{2} Q_{k,\alpha}^{2} \right]
 ```
 
-Soon after the development of non-relativistic quantum mechanics, Dirac proposed that the canonical variables of the radiation oscillators be treated like $`p`$ and $`x`$ in the quantum mechanics we know. The place to start is with the commutators. **The coordinate and its corresponding momentum** **do not commute.** For example $`[ p_{x} ,x ] = \tfrac{\hbar}{i}`$. Coordinates and momenta that do not correspond, do commute. For example $`[ p_{y} ,x ] = 0`$. Different coordinates commute with each other as do different momenta. We will impose the same rules here.
+Soon after the development of non-relativistic quantum mechanics, Dirac proposed that the canonical variables of the radiation oscillators be treated like $`p`$ and $`x`$ in the quantum mechanics we know. The place to start is with the commutators. **The coordinate and its corresponding momentum do not commute.** For example $`[ p_{x} ,x ] = \tfrac{\hbar}{i}`$. Coordinates and momenta that do not correspond, do commute. For example $`[ p_{y} ,x ] = 0`$. Different coordinates commute with each other as do different momenta. We will impose the same rules here.
 
 ```math
 [ Q_{k,\alpha} ,P_{k^{\prime} ,\alpha^{\prime}} ] = i \hbar \delta_{kk^{\prime}} \delta_{\alpha \alpha^{\prime}}
@@ -423,7 +423,7 @@ By now we know that if the $`Q`$ and $`P`$ do not commute, neither do the $`c`$ 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p450" href="book.pdf#page=450" target="_blank" title="This page in the PDF"><sup>[p. 450]</sup></a>
 
-Since we are dealing with harmonic oscillators, we want to find the analog of the **raising and** **lowering operators**. We developed the raising and lowering operators by trying to write the Hamiltonian as $`H = A^{\dagger} A \hbar \omega`$. Following the same idea, we get
+Since we are dealing with harmonic oscillators, we want to find the analog of the **raising and lowering operators**. We developed the raising and lowering operators by trying to write the Hamiltonian as $`H = A^{\dagger} A \hbar \omega`$. Following the same idea, we get
 
 ```math
 a_{k,\alpha} = \frac{1}{\sqrt{2 \hbar \omega}} ( \omega Q_{k,\alpha} + iP_{k,\alpha} )
@@ -461,7 +461,7 @@ a_{k,\alpha}^{\dagger} a_{k,\alpha} + \frac{1}{2} = \frac{1}{2 \hbar \omega} ( \
 H = \left( a_{k,\alpha}^{\dagger} a_{k,\alpha} + \frac{1}{2} \right) \hbar \omega
 ```
 
-This is just the **same as the Hamiltonian that we had for the one dimensional harmonic** **oscillator**. We therefore have the raising and lowering operators, as long as $`[ a_{k,\alpha} ,a_{k,\alpha}^{\dagger} ] = 1`$, as we had for the 1D harmonic oscillator.
+This is just the **same as the Hamiltonian that we had for the one dimensional harmonic oscillator**. We therefore have the raising and lowering operators, as long as $`[ a_{k,\alpha} ,a_{k,\alpha}^{\dagger} ] = 1`$, as we had for the 1D harmonic oscillator.
 
 ```math
 \left[ a_{k,\alpha} ,a_{k,\alpha}^{\dagger} \right] = [ \frac{1}{\sqrt{2 \hbar \omega}} ( \omega Q_{k,\alpha} + iP_{k,\alpha} ) , \frac{1}{\sqrt{2 \hbar \omega}} ( \omega Q_{k,\alpha} - iP_{k,\alpha} ) ]
@@ -511,7 +511,7 @@ H = \left( a_{k,\alpha}^{\dagger} a_{k,\alpha} + \frac{1}{2} \right) \hbar \omeg
 N_{k,\alpha} = a_{k,\alpha}^{\dagger} a_{k,\alpha}
 ```
 
-The last step is to **compute the raising and lowering operators in terms of the original** **coefficients**.
+The last step is to **compute the raising and lowering operators in terms of the original coefficients**.
 
 ```math
 a_{k,\alpha} = \frac{1}{\sqrt{2 \hbar \omega}} ( \omega Q_{k,\alpha} + iP_{k,\alpha} )
@@ -555,7 +555,7 @@ Similarly we can compute that
 c_{k,\alpha}^{*} = \sqrt{\frac{\hbar c^{2}}{2 \omega}} a_{k,\alpha}^{\dagger}
 ```
 
-Since we now have the coefficients in our decomposition of the field equal to a constant times the raising or lowering operator, it is clear that **these coefficients have themselves become** **operators**.
+Since we now have the coefficients in our decomposition of the field equal to a constant times the raising or lowering operator, it is clear that **these coefficients have themselves become operators**.
 
 <div align="right"><a href="book.pdf#page=451" target="_blank" title="This page in the PDF"><sup>[p. 451]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -569,7 +569,7 @@ It is now obvious that the integer $`n_{k,\alpha}`$ is the **number of photons i
 | n_{k_{1} ,\alpha_{1}} ,n_{k_{2} ,\alpha_{2}} ,\dots ,n_{k_{i} ,\alpha_{i}} ,\dots \rangle = | n_{k_{1} ,\alpha_{1}} \rangle | n_{k_{2} ,\alpha_{2}} \rangle \dots , | n_{k_{i} ,\alpha_{i}} \rangle \dots
 ```
 
-The ground state for a particular oscillator cannot be lowered. The state in which **all the oscillators** **are in the ground state is called the vacuum state** and can be written simply as $`| 0 \rangle`$. We can generate any state we want by applying raising operators to the vacuum state.
+The ground state for a particular oscillator cannot be lowered. The state in which **all the oscillators are in the ground state is called the vacuum state** and can be written simply as $`| 0 \rangle`$. We can generate any state we want by applying raising operators to the vacuum state.
 
 ```math
 | n_{k_{1} ,\alpha_{1}} ,n_{k_{2} ,\alpha_{2}} ,\dots ,n_{k_{i} ,\alpha_{i}} ,\dots \rangle = \prod_{i} \frac{( a_{k_{i} ,\alpha_{i}}^{\dagger} )^{n_{ki,\alpha i}}}{\sqrt{n_{k_{i} ,\alpha_{i}} !}} | 0 \rangle
@@ -577,17 +577,17 @@ The ground state for a particular oscillator cannot be lowered. The state in whi
 
 The factorial on the bottom cancels all the $`\sqrt{n} + 1`$ we get from the raising operators.
 
-Any multi-photon state we construct is **automatically symmetric under the interchange of** **pairs of photons**. For example if we want to raise two photons out of the vacuum, we apply two raising operators. Since $`[ a_{k,\alpha}^{\dagger} ,a_{k^{\prime} ,\alpha^{\prime}}^{\dagger} ] = 0`$, interchanging the photons gives the same state.
+Any multi-photon state we construct is **automatically symmetric under the interchange of pairs of photons**. For example if we want to raise two photons out of the vacuum, we apply two raising operators. Since $`[ a_{k,\alpha}^{\dagger} ,a_{k^{\prime} ,\alpha^{\prime}}^{\dagger} ] = 0`$, interchanging the photons gives the same state.
 
 ```math
 a_{k,\alpha}^{\dagger} a_{k^{\prime} ,\alpha^{\prime}}^{\dagger} | 0 \rangle = a_{k^{\prime} ,\alpha^{\prime}}^{\dagger} a_{k,\alpha}^{\dagger} | 0 \rangle
 ```
 
-So the fact that the **creation operators commute dictates that photon states are symmetric** **under interchange**.
+So the fact that the **creation operators commute dictates that photon states are symmetric under interchange**.
 
 # <a id="s-33-7-fermion-operators"></a>33.7 Fermion Operators
 
-At this point, we can hypothesize that the **operators that create fermion states do not com-** **mute**. In fact, if we assume that the **operators creating fermion states anti-commute** (as do the Pauli matrices), then we can show that fermion states are antisymmetric under interchange. Assume $`b_{r}^{\dagger}`$ and $`b_{r}`$ are the creation and annihilation operators for fermions and that they anti-commute.
+At this point, we can hypothesize that the **operators that create fermion states do not commute**. In fact, if we assume that the **operators creating fermion states anti-commute** (as do the Pauli matrices), then we can show that fermion states are antisymmetric under interchange. Assume $`b_{r}^{\dagger}`$ and $`b_{r}`$ are the creation and annihilation operators for fermions and that they anti-commute.
 
 ```math
 \{ b_{r}^{\dagger} ,b_{r^{\prime}}^{\dagger} \} = 0
@@ -607,7 +607,7 @@ Its not hard to show that the **occupation number for fermion states is either z
 
 # <a id="s-33-8-quantized-radiation-field"></a>33.8 Quantized Radiation Field
 
-The Fourier coefficients of the expansion of the classical radiation field should now be **replaced by** **operators**.
+The Fourier coefficients of the expansion of the classical radiation field should now be **replaced by operators**.
 
 ```math
 c_{k,\alpha} \quad \to \quad \sqrt{\frac{\hbar c^{2}}{2 \omega}} a_{k,\alpha}
@@ -621,7 +621,7 @@ c_{k,\alpha}^{*} \quad \to \quad \sqrt{\frac{\hbar c^{2}}{2 \omega} a_{k,\alpha}
 A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + a_{k,\alpha}^{\dagger} ( t ) e^{- i \vec{k} \cdot \vec{x}} \right)}
 ```
 
-$`A`$ is now an operator that acts on state vectors in occupation number space. The operator is parameterized in terms of $`\vec{x}`$ and $`t`$. This type of operator is called a **field operator** or a **quantized** **field**.
+$`A`$ is now an operator that acts on state vectors in occupation number space. The operator is parameterized in terms of $`\vec{x}`$ and $`t`$. This type of operator is called a **field operator** or a **quantized field**.
 
 The Hamiltonian operator can also be written in terms of the creation and annihilation operators.
 
@@ -751,11 +751,11 @@ We can now write the quantized radiation field in terms of the operators at $`t 
 A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
-Again, the 4-vector $`x_{\rho}`$ is a **parameter of this field**, not the location of a photon. The **field** **operator is Hermitian** and the field itself is real.
+Again, the 4-vector $`x_{\rho}`$ is a **parameter of this field**, not the location of a photon. The **field operator is Hermitian** and the field itself is real.
 
 # <a id="s-33-10uncertainty-relations-and-rms-field-fluctuations"></a>33.10 Uncertainty Relations and RMS Field Fluctuations
 
-Since the fields are a sum of creation and annihilation operators, they **do not commute with the** **occupation number operators**
+Since the fields are a sum of creation and annihilation operators, they **do not commute with the occupation number operators**
 
 ```math
 N_{k,\alpha} = a_{k,\alpha}^{\dagger} a_{k,\alpha} .
@@ -827,11 +827,11 @@ There is a nonzero commutator of the two spacetime points are connected by a lig
 
 To make a narrow beam of light, one must adjust the phases of various components of the beam carefully. Another version of the uncertainty relation is that ∆$`N`$ ∆$`\varphi \geq 1`$, where $`phi`$ is the phase of a Fourier component and $`N`$ is the number of photons.
 
-Of course the Electromagnetic **waves of classical physics usually have very large numbers** **of photons** and the quantum effects are not apparent. A good condition to identify the boundary between classical and quantum behavior is that for the classical E&M to be correct the **number of** **photons per cubic wavelength should be much greater than 1**.
+Of course the Electromagnetic **waves of classical physics usually have very large numbers of photons** and the quantum effects are not apparent. A good condition to identify the boundary between classical and quantum behavior is that for the classical E&M to be correct the **number of photons per cubic wavelength should be much greater than 1**.
 
 # <a id="s-33-11emission-and-absorption-of-photons-by-atoms"></a>33.11 Emission and Absorption of Photons by Atoms
 
-The interaction of an electron (See section 29.1) with the quantized field is already in the **standard** **Hamiltonian**.
+The interaction of an electron (See section 29.1) with the quantized field is already in the **standard Hamiltonian**.
 
 ```math
 H = \frac{1}{2 m} \left( \vec{p} + \frac{e}{c} \vec{A} \right)^{2} + V ( r )
@@ -853,7 +853,7 @@ H_{int} = - \frac{e}{mc} \vec{A} \cdot \vec{p} + \frac{e^{2}}{2 mc^{2}} \vec{A} 
 
 For an atom with many electrons, we must **sum over all the electrons**. The field is evaluated at the coordinate $`x`$ which should be that of the electron.
 
-This interaction Hamiltonian contains operators to create and annihilate photons with transitions between atomic states. From our previous study of time dependent perturbation theory (See section 28.1), we know that transitions between initial and final states are proportional to the **matrix** **element of the perturbing Hamiltonian** between the states, $`\langle n | H_{int} | i \rangle`$. The initial state $`| i \rangle`$ should include a **direct product of the atomic state and the photon state**. Lets concentrate on one type of photon for now. We then could write
+This interaction Hamiltonian contains operators to create and annihilate photons with transitions between atomic states. From our previous study of time dependent perturbation theory (See section 28.1), we know that transitions between initial and final states are proportional to the **matrix element of the perturbing Hamiltonian** between the states, $`\langle n | H_{int} | i \rangle`$. The initial state $`| i \rangle`$ should include a **direct product of the atomic state and the photon state**. Lets concentrate on one type of photon for now. We then could write
 
 ```math
 | i \rangle = | \psi_{i} ; n_{\vec{k} ,\alpha} \rangle
@@ -905,7 +905,7 @@ These give the same result as our earlier guess to put an $`n + 1`$ in the emiss
 
 # <a id="s-33-12review-of-radiation-of-photons"></a>33.12 Review of Radiation of Photons
 
-In the previous section, we derived the same formulas for matrix elements (See Section 29.1) that we had earlier used to study decays of Hydrogen atom states with no applied EM field, that is **zero** **photons in the initial state**.
+In the previous section, we derived the same formulas for matrix elements (See Section 29.1) that we had earlier used to study decays of Hydrogen atom states with no applied EM field, that is **zero photons in the initial state**.
 
 ```math
 \Gamma_{i \to n} = \frac{( 2 \pi )^{2} e^{2}}{m^{2} \omega V} | \langle \varphi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon} \cdot \vec{p} | \varphi_{i} \rangle |^{2} \delta ( E_{n} - E_{i} + \hbar \omega )
@@ -937,7 +937,7 @@ Note that we have take the full binding energy as the energy difference between 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p459" href="book.pdf#page=459" target="_blank" title="This page in the PDF"><sup>[p. 459]</sup></a>
 
-The approximation that $`e^{- i \vec{k} \cdot \vec{r}} \approx 1`$ is a very good one and is called the **electric dipole or E1** **approximation**. We previously derived the E1 selection rules (See Section 29.5).
+The approximation that $`e^{- i \vec{k} \cdot \vec{r}} \approx 1`$ is a very good one and is called the **electric dipole or E1 approximation**. We previously derived the E1 selection rules (See Section 29.5).
 
 ```math
 \Delta \ell = \pm 1 .
@@ -981,7 +981,7 @@ The decay rate does not depend on the $`m`$ of the initial state.
 
 Some atomic states have no lower energy state that satisfies the E1 selection rules to decay to. Then, higher order processes must be considered. The next order term in the expansion of $`e^{- i \vec{k} \cdot \vec{r}} = 1 - i \vec{k} \cdot \vec{r} + \dots`$ will allow other transitions to take place but at lower rates. We will attempt to understand the **selection rules** when we include the $`i \vec{k} \cdot \vec{r}`$ term.
 
-The matrix element is proportional to $`- i \langle \varphi_{n} | ( \vec{k} \cdot \vec{r} )`$(ˆ$`\epsilon^{( \lambda )} \cdot \vec{p}_{e}`$) $`| \varphi_{i} \rangle`$ which we will **split up into two** **terms**. You might ask why split it. The reason is that we will essentially be **computing matrix** **elements of at tensor** and dotting it into two vectors that do not depend on the atomic state.
+The matrix element is proportional to $`- i \langle \varphi_{n} | ( \vec{k} \cdot \vec{r} )`$(ˆ$`\epsilon^{( \lambda )} \cdot \vec{p}_{e}`$) $`| \varphi_{i} \rangle`$ which we will **split up into two terms**. You might ask why split it. The reason is that we will essentially be **computing matrix elements of at tensor** and dotting it into two vectors that do not depend on the atomic state.
 
 ```math
 \vec{k} \cdot \langle \varphi_{n} | \vec{r} \vec{p}_{e} ) | \varphi_{i} \rangle \cdot \hat{\epsilon}^{( \lambda )}
@@ -991,13 +991,13 @@ The matrix element is proportional to $`- i \langle \varphi_{n} | ( \vec{k} \cdo
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p460" href="book.pdf#page=460" target="_blank" title="This page in the PDF"><sup>[p. 460]</sup></a>
 
-Putting these two vectors together is like adding to $`\ell = 1`$ states. We can get total angular momentum quantum numbers 2, 1, and 0. Each vector has three components. The **direct product tensor** **has 9**. Its another case of
+Putting these two vectors together is like adding to $`\ell = 1`$ states. We can get total angular momentum quantum numbers 2, 1, and 0. Each vector has three components. The **direct product tensor has 9**. Its another case of
 
 ```math
 3 \otimes 3 = 5_{S} \oplus 3_{A} \oplus 1_{S} .
 ```
 
-The **tensor we make when we just multiply two vectors together can be reduced into** **three irreducible (spherical) tensors**. These are the ones for which we can use the Wigner-Eckart theorem to derive selection rules. Under rotations of the coordinate axes, the rotation matrix for the 9 component Cartesian tensor will be block diagonal. It can be reduced into three spherical tensors. Under rotations the 5 component (traceless) symmetric tensor will always rotate into another 5 component symmetric tensor. The 3 component anti symmetric tensor will rotate into another antisymmetric tensor and the part proportional to the identity will rotate into the identity.
+The **tensor we make when we just multiply two vectors together can be reduced into three irreducible (spherical) tensors**. These are the ones for which we can use the Wigner-Eckart theorem to derive selection rules. Under rotations of the coordinate axes, the rotation matrix for the 9 component Cartesian tensor will be block diagonal. It can be reduced into three spherical tensors. Under rotations the 5 component (traceless) symmetric tensor will always rotate into another 5 component symmetric tensor. The 3 component anti symmetric tensor will rotate into another antisymmetric tensor and the part proportional to the identity will rotate into the identity.
 
 ```math
 ( \vec{k} \cdot \vec{r} ) ( \hat{\epsilon}^{( \lambda )} \cdot \vec{p}_{e} ) = \frac{1}{2} [ ( \vec{k} \cdot \vec{r} ) ( \hat{\epsilon}^{( \lambda )} \cdot \vec{p} ) + ( \vec{k} \cdot \vec{p} ) ( \hat{\epsilon}^{( \lambda )} \cdot \vec{r} ) ] + \frac{1}{2} [ ( \vec{k} \cdot \vec{r} ) ( \hat{\epsilon}^{( \lambda )} \cdot \vec{p} ) - ( \vec{k} \cdot \vec{p} ) ( \hat{\epsilon}^{( \lambda )} \cdot \vec{r} ) ]
@@ -1019,7 +1019,7 @@ The **first term can be rewritten**.
 = - \frac{im\omega}{2} \vec{k} \cdot \langle \varphi_{n} | \vec{r} \vec{r} | \varphi_{i} \rangle \cdot \hat{\epsilon}^{( \lambda )}
 ```
 
-This makes the symmetry clear. Its normal to **remove the trace of the tensor**: $`\vec{r} \vec{r} \to \vec{r} \vec{r} - \tfrac{\delta_{ij}}{3} r^{2}`$. The term proportional to $`\delta_{ij}`$ gives zero because $`\vec{k} \cdot \hat{\epsilon} = 0`$. The traceless symmetric tensor has 5 components like an $`\ell = 2`$ operator; The anti-symmetric tensor has 3 components; and the trace term has one. This is the separation of the Cartesian tensor into irreducible spherical tensors. The **five** **components of the traceless symmetric tensor can be written as a linear combination** **of the** $`Y_{2 m}`$.
+This makes the symmetry clear. Its normal to **remove the trace of the tensor**: $`\vec{r} \vec{r} \to \vec{r} \vec{r} - \tfrac{\delta_{ij}}{3} r^{2}`$. The term proportional to $`\delta_{ij}`$ gives zero because $`\vec{k} \cdot \hat{\epsilon} = 0`$. The traceless symmetric tensor has 5 components like an $`\ell = 2`$ operator; The anti-symmetric tensor has 3 components; and the trace term has one. This is the separation of the Cartesian tensor into irreducible spherical tensors. The **five components of the traceless symmetric tensor can be written as a linear combination of the** $`Y_{2 m}`$.
 
 Similarly, the **second (anti-symmetric) term can be rewritten** slightly.
 
@@ -1049,7 +1049,7 @@ Higher order terms can be computed but its not recommended.
 
 Some atomic states, such as the **2s state of Hydrogen**, cannot decay by any of these terms basically because the 2s to 1s is a 0 to 0 transition and there is no way to conserve angular momentum and parity. This state can only decay by the emission of two photons.
 
-While E1 transitions in hydrogen have lifetimes as small as $`1 0^{- 9}`$ seconds, the **E2 and M1 transi-** **tions have lifetimes of the order of** $`1 0^{- 3}`$ **seconds**, and the **2s state has a lifetime of about** $`7 1`$ **of a second**.
+While E1 transitions in hydrogen have lifetimes as small as $`1 0^{- 9}`$ seconds, the **E2 and M1 transitions have lifetimes of the order of** $`1 0^{- 3}`$ **seconds**, and the **2s state has a lifetime of about** $`7 1`$ **of a second**.
 
 # <a id="s-33-13black-body-radiation-spectrum"></a>33.13 Black Body Radiation Spectrum
 
@@ -1083,7 +1083,7 @@ where the sum is over atomic electrons. The matrix elements are closely related.
 \langle B | e^{- i \vec{k} \cdot \vec{r}_{i}} \hat{\epsilon}^{( \alpha )} \cdot \vec{p}_{i} | A \rangle = \langle A | \vec{p}_{i} \cdot \hat{\epsilon}^{( \alpha )} e^{i \vec{k} \cdot \vec{r}_{i}} | B \rangle^{*} = \langle A | e^{i \vec{k} \cdot \vec{r}_{i}} \hat{\epsilon}^{( \alpha )} \cdot \vec{p}_{i} | B \rangle^{*}
 ```
 
-We have used the fact that $`\vec{k} \cdot \epsilon = 0`$. **The two matrix elements are simple complex conjugates** **of each other** so that when we take the absolute square, they are the same. Therefore, we may cancel them.
+We have used the fact that $`\vec{k} \cdot \epsilon = 0`$. **The two matrix elements are simple complex conjugates of each other** so that when we take the absolute square, they are the same. Therefore, we may cancel them.
 
 ```math
 \frac{N_{B}}{N_{A}} = \frac{( n_{\vec{k} ,\alpha} + 1 )}{n_{\vec{k} ,\alpha}} = e^{\hbar \omega /kT}

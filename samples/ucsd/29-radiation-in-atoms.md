@@ -9,9 +9,9 @@
 
 Now we will go all the way back to **Plank** who proposed that the emission of radiation be in quanta with $`E = \hbar \omega`$ to solve the problem of Black Body Radiation. So far, in our treatment of atoms, we have not included the possibility to **emit or absorb real photons** nor have we worried about the fact that Electric and Magnetic fields are made up of virtual photons. This is really the realm of Quantum Electrodynamics, but we do have the tools to understand what happens as we quantize the EM field.
 
-We now have the solution of the Harmonic Oscillator problem using operator methods. Notice that the **emission of a quantum of radiation** with energy of $`\hbar \omega`$ is **like the raising of a Harmonic** **Oscillator state**. Similarly the absorption of a quantum of radiation is like the lowering of a HO state. Plank was already integrating over an infinite number of photon (like HO) states, the same integral we would do if we had an infinite number of Harmonic Oscillator states. Plank was also correctly counting this infinite number of states to get the correct Black Body formula. He did it by considering a cavity with some volume, setting the boundary conditions, then letting the volume go to infinity.
+We now have the solution of the Harmonic Oscillator problem using operator methods. Notice that the **emission of a quantum of radiation** with energy of $`\hbar \omega`$ is **like the raising of a Harmonic Oscillator state**. Similarly the absorption of a quantum of radiation is like the lowering of a HO state. Plank was already integrating over an infinite number of photon (like HO) states, the same integral we would do if we had an infinite number of Harmonic Oscillator states. Plank was also correctly counting this infinite number of states to get the correct Black Body formula. He did it by considering a cavity with some volume, setting the boundary conditions, then letting the volume go to infinity.
 
-This material is covered in **Gasiorowicz Chapter 22,** in **Cohen-Tannoudji et al. Chapter** **XIII,** and briefly in Griffiths Chapter 9.
+This material is covered in **Gasiorowicz Chapter 22,** in **Cohen-Tannoudji et al. Chapter XIII,** and briefly in Griffiths Chapter 9.
 
 # <a id="s-29-1-the-photon-field-in-the-quantum-hamiltonian"></a>29.1 The Photon Field in the Quantum Hamiltonian
 
@@ -61,9 +61,9 @@ We may then turn this around and write $`\vec{A}`$ **in terms of the number of p
 \vec{A} ( \vec{r} , t ) = \left[ \frac{2 \pi \hbar c^{2} N}{\omega V} \right]^{\tfrac{1}{2}} \hat{\epsilon} \left( e^{i ( \vec{k} \cdot \vec{r} - \omega t )} + e^{- i ( \vec{k} \cdot \vec{r} - \omega t )} \right)
 ```
 
-We have introduced the unit vector $`\hat{\epsilon}`$ to give the direction (or polarization) of the vector potential. We now have a perturbation that may induce radiative transitions. There are terms with both negative and positive $`\omega`$ so that we expect to see **both stimulated emission of quanta and** **absorption of quanta** in the the presence of a time dependent EM field.
+We have introduced the unit vector $`\hat{\epsilon}`$ to give the direction (or polarization) of the vector potential. We now have a perturbation that may induce radiative transitions. There are terms with both negative and positive $`\omega`$ so that we expect to see **both stimulated emission of quanta and absorption of quanta** in the the presence of a time dependent EM field.
 
-But what about decays of atoms with no applied field? Here we need to go beyond our classical E&M calculation and quantize the field. Since the terms in the perturbation above emit or absorb a photon, and the photon has energy $`\hbar \omega`$, lets **assume the number of photons in the field is** **the** $`n`$ **of a harmonic oscillator**. It has the right steps in energy. Essentially, we are postulating that the vacuum contains an infinite number of harmonic oscillators, one for each wave vector (or frequency...) of light.
+But what about decays of atoms with no applied field? Here we need to go beyond our classical E&M calculation and quantize the field. Since the terms in the perturbation above emit or absorb a photon, and the photon has energy $`\hbar \omega`$, lets **assume the number of photons in the field is the** $`n`$ **of a harmonic oscillator**. It has the right steps in energy. Essentially, we are postulating that the vacuum contains an infinite number of harmonic oscillators, one for each wave vector (or frequency...) of light.
 
 We now want to go from a classical harmonic oscillator to a quantum oscillator, in which the ground state energy is not zero, and the hence the perturbing field is never really zero. We do this by **changing** $`N`$ **to** $`N + 1`$ **in the term that creates a photon** in analogy to the raising operator $`A^{\dagger}`$ in the HO. With this change, our **perturbation becomes**
 
@@ -97,7 +97,7 @@ Our **expression for the decay rate** of an initial state $`\varphi_{i}`$ into s
 
 The delta function reminds us that we will have to integrate over final states to get a sensible answer. Nevertheless, we proceed to include the matrix element of the perturbing potential.
 
-Taking out the harmonic time dependence (to the delta function) as before, we have the **matrix** **element of the perturbing potential**.
+Taking out the harmonic time dependence (to the delta function) as before, we have the **matrix element of the perturbing potential**.
 
 ```math
 V_{ni} = \langle \varphi_{n} | \frac{e}{mc} \vec{A} \cdot \vec{p} | \varphi_{i} \rangle = \frac{e}{mc} \left[ \frac{2 \pi \hbar c^{2}}{\omega V} \right]^{\tfrac{1}{2}} \langle \varphi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon} \cdot \vec{p} | \varphi_{i} \rangle
@@ -275,7 +275,7 @@ We proceed with the calculation to find the E1 selection rules.
 
 We will attempt to clearly separate the terms due to $`\langle \varphi_{n} | \hat{\epsilon} \cdot \vec{r} | \varphi_{i} \rangle`$ for the sake of modularity of the calculation.
 
-The integral with **three spherical harmonics** in each term looks a bit difficult, but, we can use a **Clebsch-Gordan series like the one in addition of angular momentum** to help us solve the problem. We will write the product of two spherical harmonics in terms of a sum of spherical harmonics. Its very similar to adding the angular momentum from the two $`Y`$ s. **Its the same** **series as we had for addition of angular momentum (up to a constant)**. (Note that things will be very simple if either the initial or the final state have $`\ell = 0`$, a case we will work out below for transitions to s states.) The general formula for rewriting the product of two spherical harmonics (which are functions of the same coordinates) is
+The integral with **three spherical harmonics** in each term looks a bit difficult, but, we can use a **Clebsch-Gordan series like the one in addition of angular momentum** to help us solve the problem. We will write the product of two spherical harmonics in terms of a sum of spherical harmonics. Its very similar to adding the angular momentum from the two $`Y`$ s. **Its the same series as we had for addition of angular momentum (up to a constant)**. (Note that things will be very simple if either the initial or the final state have $`\ell = 0`$, a case we will work out below for transitions to s states.) The general formula for rewriting the product of two spherical harmonics (which are functions of the same coordinates) is
 
 ```math
 Y_{\ell_{1} m_{1}} ( \theta ,\varphi ) Y_{\ell_{2} m_{2}} ( \theta ,\varphi ) = \sum_{\ell = | \ell_{1} - \ell_{2} |}^{\ell_{1} + \ell_{2}} \sqrt{\frac{( 2 \ell_{1} + 1 ) ( 2 \ell_{2} + 1 )}{4 \pi ( 2 \ell + 1 )}} \langle \ell 0 | \ell_{1} \ell_{2} 0 0 \rangle \langle \ell ( m_{1} + m_{2} ) | \ell_{1} \ell_{2} m_{1} m_{2} \rangle Y_{\ell ( m_{1} + m_{2} )} ( \theta ,\varphi )
@@ -329,7 +329,7 @@ We can also easily note that we have no operators which can change the spin here
 
 We actually haven’t yet included the interaction between the spin and the field in our calculation, but, it is a small effect compared to the Electric Dipole term.
 
-The above selection rules apply only for the Electric Dipole (E1) approximation. Higher order terms in the expansion, like the Electric Quadrupole (E2) or the Magnetic Dipole (M1), allow other decays but the rates are down by a factor of $`\alpha^{2}`$ or more. There is one absolute selection rule coming from angular momentum conservation, since the photon is spin 1. **No** $`j = 0`$ **to** $`j = 0`$ **transitions in** **any order of approximation.**
+The above selection rules apply only for the Electric Dipole (E1) approximation. Higher order terms in the expansion, like the Electric Quadrupole (E2) or the Magnetic Dipole (M1), allow other decays but the rates are down by a factor of $`\alpha^{2}`$ or more. There is one absolute selection rule coming from angular momentum conservation, since the photon is spin 1. **No** $`j = 0`$ **to** $`j = 0`$ **transitions in any order of approximation.**
 
 As a summary of our calculations in the Electric Dipole approximation, lets write out the decay rate formula.
 

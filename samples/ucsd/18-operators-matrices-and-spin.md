@@ -9,7 +9,7 @@
 
 We have already solved many problems in Quantum Mechanics using wavefunctions and differential operators. Since the eigenfunctions of Hermitian operators are orthogonal (and we normalize them) we can now use the standard linear algebra to solve quantum problems with vectors and matrices. To include the spin of electrons and nuclei in our discussion of atomic energy levels, we will need the matrix representation.
 
-These topics are covered at very different levels in **Gasiorowicz Chapter 14, Griffiths Chapters** **3, 4** and, more rigorously, in **Cohen-Tannoudji et al. Chapters II, IV and IX.**
+These topics are covered at very different levels in **Gasiorowicz Chapter 14, Griffiths Chapters 3, 4** and, more rigorously, in **Cohen-Tannoudji et al. Chapters II, IV and IX.**
 
 # <a id="s-18-1-the-matrix-representation-of-operators-and-wavefunctions"></a>18.1 The Matrix Representation of Operators and Wavefunctions
 
@@ -187,7 +187,7 @@ The others will also prove orthogonal.
 
 Should $`\psi_{+ \hbar}^{( x )}`$ and $`\psi_{- \hbar}^{( z )}`$ be orthogonal?
 
-NO. They are eigenvectors of different hermitian operators.
+NO. They are eigenvectors of _different_ hermitian operators.
 
 The eigenvectors may be used to compute the probability or amplitude of a particular measurement. For example, if a particle is in a angular momentum state $`\chi`$ and the angular momentum in the x direction is measured, the probability to measure +$`\hbar`$ is
 
@@ -219,7 +219,7 @@ For the electron mass, in normal atoms, the magnitude of $`\vec{\mu}`$ is one **
 \mu_{B} = \frac{e \hbar}{2 m_{e} c} .
 ```
 
-If we choose the direction of $`B`$ to be the $`z`$ direction, then the **magnetic moment term in the** **Hamiltonian** becomes
+If we choose the direction of $`B`$ to be the $`z`$ direction, then the **magnetic moment term in the Hamiltonian** becomes
 
 ```math
 H = \frac{\mu_{B} B}{\hbar} L_{z} = \mu_{B} B \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & - 1 \end{pmatrix} .
@@ -390,7 +390,7 @@ Note that both of the above **rotation matrices** reduce to the identity matrix 
 
 # <a id="s-18-7-a-rotated-stern-gerlach-apparatus"></a>18.7 A Rotated Stern-Gerlach Apparatus\*
 
-Imagine a Stern-Gerlach apparatus that first separates an $`\ell = 1`$ atomic beam with a strong B-field gradient in the z-direction. Let’s assume the beam has atoms moving in the y-direction. The apparatus blocks two separated beams, leaving only the eigenstate of $`L_{z}`$ with eigenvalue +$`\hbar`$. We follow this with an apparatus which separates in the u-direction, which is at an angle $`\theta`$ from the z-direction, but still perpendicular to the direction of travel of the beam, y. **What fraction of the** **(remaining) beam will go into each of the three beams which are split in the u-direction?**
+Imagine a Stern-Gerlach apparatus that first separates an $`\ell = 1`$ atomic beam with a strong B-field gradient in the z-direction. Let’s assume the beam has atoms moving in the y-direction. The apparatus blocks two separated beams, leaving only the eigenstate of $`L_{z}`$ with eigenvalue +$`\hbar`$. We follow this with an apparatus which separates in the u-direction, which is at an angle $`\theta`$ from the z-direction, but still perpendicular to the direction of travel of the beam, y. **What fraction of the (remaining) beam will go into each of the three beams which are split in the u-direction?**
 
 We could represent this problem with the following **diagram**.
 
@@ -440,7 +440,7 @@ An alternate solution would be to use the $`L_{u} = \hat{u} \cdot \vec{L} = \cos
 
 Earlier, we showed that both integer and half integer angular momentum could satisfy (See section 14.4.5) the commutation relations for angular momentum operators but that there is no single valued functional representation for the half integer type.
 
-Some particles, like electrons, neutrinos, and quarks have half integer **internal angular momen-** **tum,** also called **spin.** We will now develop a **spinor representation** for spin $`\frac{1}{2}`$. There are no coordinates $`\theta`$ and $`\varphi`$ associated with internal angular momentum so the only thing we have is our spinor representation.
+Some particles, like electrons, neutrinos, and quarks have half integer **internal angular momentum,** also called **spin.** We will now develop a **spinor representation** for spin $`\frac{1}{2}`$. There are no coordinates $`\theta`$ and $`\varphi`$ associated with internal angular momentum so the only thing we have is our spinor representation.
 
 Electrons, for example, have total spin one half. There are no spin 3/2 electrons so there are only two possible spin states for an electron. The usual basis states are the eigenstates of $`S_{z}`$. We know from our study of angular momentum, that the eigenvalues of $`S_{z}`$ are +$`\tfrac{1}{2} \hbar`$ and $`- \tfrac{1}{2} \hbar`$. We will simply represent the +$`\tfrac{1}{2} \hbar`$ eigenstate as the upper component of a 2-component vector. The $`- \tfrac{1}{2} \hbar`$ eigenstate amplitude is in the lower component. So the pure eigenstates are.
 
@@ -918,7 +918,7 @@ Now that we have the **shorthand notation for a Stern-Gerlach** apparatus, we ca
 \text{ Oven } ( I_{0} ) \to \begin{Bmatrix} + | \\ 0 \\ - \end{Bmatrix}_{z} ( I_{1} ) \to \begin{Bmatrix} + \\ 0 | \\ - \end{Bmatrix}_{z} ( I_{2} ) \to \begin{Bmatrix} + | \\ 0 \\ -| \end{Bmatrix}_{z} ( I_{3} ) \to
 ```
 
-**If the intensity coming out of the oven is** $`I_{0}`$**, what are the intensities at positions 1,** **2, and 3?** We assume an unpolarized beam coming out of the oven so that 1/3 of the atoms will go into each initial beam in apparatus 1. This is essentially a classical calculation since we don’t know the exact state of the particles coming from the oven. Now apparatus 1 removes the $`m = 1`$ component of the beam, leaving a state with a mixture of $`m = 0`$ and $`m = - 1 .`$
+**If the intensity coming out of the oven is** $`I_{0}`$**, what are the intensities at positions 1, 2, and 3?** We assume an unpolarized beam coming out of the oven so that 1/3 of the atoms will go into each initial beam in apparatus 1. This is essentially a classical calculation since we don’t know the exact state of the particles coming from the oven. Now apparatus 1 removes the $`m = 1`$ component of the beam, leaving a state with a mixture of $`m = 0`$ and $`m = - 1 .`$
 
 ```math
 I_{1} = \frac{2}{3} I_{0}
@@ -954,7 +954,7 @@ The following is a more complex example using a field gradients in the z and x d
 \text{ Oven } ( I_{0} ) \to \begin{Bmatrix} + \\ 0 | \\ -| \end{Bmatrix}_{z} ( I_{1} ) \to \begin{Bmatrix} + | \\ 0 | \\ - \end{Bmatrix}_{x} ( I_{2} ) \to \begin{Bmatrix} + | \\ 0 \\ - \end{Bmatrix}_{z} ( I_{3} ) \to
 ```
 
-**If the intensity coming out of the oven is** $`I_{0}`$**, what are the intensities at positions 1, 2,** **and 3?**
+**If the intensity coming out of the oven is** $`I_{0}`$**, what are the intensities at positions 1, 2, and 3?**
 
 Now we have a Quantum Mechanics problem. After the first apparatus, we have an intensity as before
 
@@ -1348,7 +1348,7 @@ So again the spin precesses around the magnetic field. Because $`g = 2`$ the rat
 
 ## <a id="s-18-10-14nuclear-magnetic-resonance-nmr-and-mri"></a>18.10.14 Nuclear Magnetic Resonance (NMR and MRI)
 
-**Nuclear Magnetic Resonance** is an important tool in chemical analysis. As the name implies, it uses the spin magnetic moments of nuclei (particularly hydrogen) and resonant excitation. **Mag-** **netic Resonance Imaging** uses the same principle to get an image (of the inside of the body for example).
+**Nuclear Magnetic Resonance** is an important tool in chemical analysis. As the name implies, it uses the spin magnetic moments of nuclei (particularly hydrogen) and resonant excitation. **Magnetic Resonance Imaging** uses the same principle to get an image (of the inside of the body for example).
 
 In basic NMR, a strong static B field is applied. A spin $`\frac{1}{2}`$ proton in a hydrogen nucleus then has two energy eigenstates. After some time, most of the protons fall into the lower of the two states. We now use an electromagnetic wave (RF pulse) to excite some of the protons back into the higher energy state. Surprisingly, we can calculate this process already. The proton’s magnetic moment interacts with the oscillating B field of the EM wave.
 
@@ -1726,7 +1726,7 @@ a = 1 e^{i\omega_{0} t}
 \dot{b} = \frac{i\omega_{1}}{2} ( e^{i ( \omega + \omega_{0} ) t} + e^{- i ( \omega - \omega_{0} ) t} ) - i\omega_{0} b
 ```
 
-Now comes the one tricky part of the calculation. The diagonal terms in the Hamiltonian cause a very rapid time dependence to the amplitudes. To get b to grow, we need to keep adding $`\dot{b}`$ in phase with b. To see that clearly, let’s compute the time derivative of $`be^{i\omega_{0} t}`$.
+Now comes the one tricky part of the calculation. The diagonal terms in the Hamiltonian cause a very rapid time dependence to the amplitudes. To get b to grow, we need to keep adding $`\dot{b}`$ _in phase_ with b. To see that clearly, let’s compute the time derivative of $`be^{i\omega_{0} t}`$.
 
 ```math
 \frac{d}{dt} ( be^{i\omega_{0} t} ) = \frac{i\omega_{1}}{2} ( e^{i ( \omega + 2 \omega_{0} ) t} + e^{- i ( \omega - 2 \omega_{0} ) t} ) - i\omega_{0} be^{i\omega_{0} t} + i\omega_{0} be^{i\omega_{0} t}

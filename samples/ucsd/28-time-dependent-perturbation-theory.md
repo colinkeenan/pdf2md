@@ -9,7 +9,7 @@
 
 We have used time independent perturbation theory to find the energy shifts of states and to find the change in energy eigenstates in the presence of a small perturbation. We will now consider the case of a perturbation that is time dependent. Such a perturbation can cause transitions between energy eigenstates. We will calculate the rate of those transitions.
 
-This material is covered in **Gasiorowicz Chapter 21,** in **Cohen-Tannoudji et al. Chapter** **XIII,** and briefly in Griffiths Chapter 9.
+This material is covered in **Gasiorowicz Chapter 21,** in **Cohen-Tannoudji et al. Chapter XIII,** and briefly in Griffiths Chapter 9.
 
 # <a id="s-28-1-general-time-dependent-perturbations"></a>28.1 General Time Dependent Perturbations
 
@@ -59,7 +59,7 @@ Assume that at $`t = 0`$, we are in an **initial state** $`\psi ( t = 0 ) = \var
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p392" href="book.pdf#page=392" target="_blank" title="This page in the PDF"><sup>[p. 392]</sup></a>
 
-Now we want to calculate transition rates. To first order, all the $`c_{k} ( t )`$ are small compared to $`c_{i} ( t ) \approx = 1`$, so the sum can be neglected.
+Now we want to calculate transition rates. To first order, all the $`c_{k} ( t )`$ are small compared to $`c_{i} ( t ) \approx`$= 1, so the sum can be neglected.
 
 ```math
 \frac{\partial c_{n}^{( 1 )} ( t )}{\partial t} = \frac{1}{i \hbar} \mathcal{V}_{ni} ( t ) e^{i\omega_{ni} t}
@@ -69,7 +69,7 @@ Now we want to calculate transition rates. To first order, all the $`c_{k} ( t )
 c_{n}^{( 1 )} ( t ) = \frac{1}{i \hbar} \int_{0}^{t} e^{i\omega_{ni} t^{\prime}} \mathcal{V}_{ni} ( t^{\prime} ) dt^{\prime}
 ```
 
-This is the **equation to use to compute transition probabilities for a general time de-** **pendent perturbation**. We will also use it as a basis to compute transition rates for the specific problem of harmonic potentials. Again we are assuming $`t`$ is small enough that $`c_{i}`$ has not changed much. This is not a limitation. We can deal with the decrease of the population of the initial state later.
+This is the **equation to use to compute transition probabilities for a general time dependent perturbation**. We will also use it as a basis to compute transition rates for the specific problem of harmonic potentials. Again we are assuming $`t`$ is small enough that $`c_{i}`$ has not changed much. This is not a limitation. We can deal with the decrease of the population of the initial state later.
 
 Note that, if there is a large energy difference between the initial and final states, a slowly varying perturbation can average to zero. We will find that the perturbation will need frequency components compatible with $`\omega_{ni}`$ to cause transitions.
 
@@ -87,7 +87,7 @@ If the first order term is zero or higher accuracy is required, the second order
 
 # <a id="s-28-2-sinusoidal-perturbations"></a>28.2 Sinusoidal Perturbations
 
-An important case is a pure sinusoidal oscillating (harmonic) perturbation. We can **make up** **any time dependence from a linear combination** of sine and cosine waves. We define our<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=392" target="_blank" title="This page in the PDF"><sup>[p. 392]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p393" href="book.pdf#page=393" target="_blank" title="This page in the PDF"><sup>[p. 393]</sup></a></span> perturbation carefully.
+An important case is a pure sinusoidal oscillating (harmonic) perturbation. We can **make up any time dependence from a linear combination** of sine and cosine waves. We define our<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=392" target="_blank" title="This page in the PDF"><sup>[p. 392]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p393" href="book.pdf#page=393" target="_blank" title="This page in the PDF"><sup>[p. 393]</sup></a></span> perturbation carefully.
 
 ```math
 \mathcal{V} ( \vec{r} , t ) = 2 V ( \vec{r} ) \cos ( \omega t ) \to 2 V \cos ( \omega t ) = V \left( e^{i\omega t} + e^{- i\omega t} \right)
@@ -109,7 +109,7 @@ c_{n} ( t ) = \frac{1}{i \hbar} \int_{0}^{t} e^{i\omega_{ni} t^{\prime}} \mathca
 = \frac{1}{i \hbar} V_{ni} \int_{0}^{t} dt^{\prime} \left( e^{i ( \omega_{ni} + \omega ) t^{\prime}} + e^{i ( \omega_{ni} - \omega ) t^{\prime}} \right)
 ```
 
-Note that the terms in the time integral will **average to zero unless one of the exponents is** **nearly zero**. If one of the exponents is zero, the amplitude to be in the state $`\varphi_{n}`$ will increase with time. To make an exponent zero we must have one of two conditions satisfied.
+Note that the terms in the time integral will **average to zero unless one of the exponents is nearly zero**. If one of the exponents is zero, the amplitude to be in the state $`\varphi_{n}`$ will increase with time. To make an exponent zero we must have one of two conditions satisfied.
 
 ```math
 \omega = - \omega_{ni}
@@ -147,7 +147,7 @@ E_{i} = E_{n} - \hbar \omega
 
 This is energy conservation for the absorption of a quantum of energy $`\hbar \omega`$. We can see the possibility of absorption of radiation or of stimulated emission.
 
-For $`t \to \infty`$, the time integral of the exponential gives (some kind of) **delta function of energy** **conservation**. We will expend some effort to determine exactly what delta function it is.
+For $`t \to \infty`$, the time integral of the exponential gives (some kind of) **delta function of energy conservation**. We will expend some effort to determine exactly what delta function it is.
 
 Lets take the **case of radiation of an energy quantum** $`\hbar \omega`$. If the initial and final states have energies such that this transition goes, the absorption term is completely negligible. (We can just use one of the exponentials at a time to make our formulas simpler.)
 
