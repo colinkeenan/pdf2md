@@ -459,6 +459,7 @@ pub fn build_with(spans: &[MSpan], bars: &[Rule]) -> String {
     }
     let spans = raised_dots(spans);
     let spans = index_commas(spans);
+    let spans = script_brackets(spans);
     if std::env::var_os("PDF2MD_MATHDEBUG").is_some() {
         eprintln!("--- formula");
         for s in &spans {
@@ -607,6 +608,67 @@ fn bracket_rows(spans: Vec<MSpan>, bars: Vec<Rule>) -> (Vec<MSpan>, Vec<Rule>) {
         spans = rest;
     }
     (spans, bars)
+}
+
+/// Brackets of an exponent set in the size of the line: "e^{i(k·r − ωt)}"
+/// with the two brackets as large as the e (the book writes \left( … \right)
+/// up there), raised to the middle of the small letters between them.
+/// Left so, each would be a letter of the line and the exponent would fall
+/// apart around it. A full-size bracket level with a small piece right
+/// beside it, and off the line's own middle, is given that piece's size
+/// and height. The closing one may come in one piece with the sign after
+/// it (") ="): it is cut off first.
+fn script_brackets(mut spans: Vec<MSpan>) -> Vec<MSpan> {
+    let size = spans.iter().filter(|s| !s.cmex()).map(|s| s.size).fold(0.0f32, f32::max).max(1.0);
+    let small = |s: &MSpan| !s.cmex() && s.size < 0.85 * size;
+    let full = |s: &MSpan| !s.cmex() && s.atom.is_none() && s.size >= 0.9 * size;
+    // An opening bracket between two small pieces, level with both: the
+    // "(" of "i(k". (Its box: a bracket alone, as tall as the type.)
+    let opening: Vec<usize> = (0..spans.len())
+        .filter(|&k| {
+            let s = &spans[k];
+            let level = |n: &MSpan| small(n) && (n.cy() - s.cy()).abs() <= 0.2 * size;
+            full(s) && matches!(s.text.trim(), "(" | "[") && s.height() <= 1.1 * size && spans.iter().any(|n| level(n) && (n.right - s.left).abs() <= 2.5) && spans.iter().any(|n| level(n) && (n.left - s.right).abs() <= 2.5)
+        })
+        .collect();
+    for o in opening {
+        let open = spans[o].clone();
+        let want = if open.text.trim() == "(" { ')' } else { ']' };
+        // its partner: the next full-size closing bracket with its head at
+        // the same height, a small piece right before it; alone, or in one
+        // piece with what follows it on the line (") =")
+        let close = (0..spans.len())
+            .filter(|&k| {
+                let s = &spans[k];
+                full(s) && s.left >= open.right && s.text.trim_start().starts_with(want) && (s.top - open.top).abs() <= 1.5 && spans.iter().any(|n| small(n) && (n.right - s.left).abs() <= 2.5 && n.top >= open.top - 2.0 && n.bottom <= open.bottom + 2.0)
+            })
+            .min_by(|&a, &b| spans[a].left.total_cmp(&spans[b].left));
+        let Some(c) = close else { continue };
+        // (no other bracket of the line between them)
+        if spans.iter().any(|s| full(s) && s.left > open.right && s.right < spans[c].left && s.text.chars().any(|ch| "()[]".contains(ch))) {
+            continue;
+        }
+        let Some((ssize, top, bottom)) = spans.iter().filter(|n| small(n) && (n.left - open.right).abs() <= 2.5).map(|n| (n.size, n.top, n.bottom)).next() else { continue };
+        let whole = spans[c].clone();
+        let text = whole.text.trim_start().to_string();
+        let mut first = whole.clone();
+        (first.size, first.top, first.bottom) = (ssize, top, bottom);
+        if text.chars().count() > 1 {
+            let w = (whole.right - whole.left) / whole.text.chars().count() as f32;
+            let mut rest = whole.clone();
+            first.text = text.chars().take(1).collect();
+            first.right = whole.left + w;
+            rest.text = text.chars().skip(1).collect::<String>().trim_start().to_string();
+            (rest.left, rest.top) = (whole.right - w * rest.text.chars().count() as f32, whole.bottom - 0.9 * size);
+            spans[c] = first;
+            spans.push(rest);
+        } else {
+            spans[c] = first;
+        }
+        let s = &mut spans[o];
+        (s.size, s.top, s.bottom) = (ssize, top, bottom);
+    }
+    spans
 }
 
 /// Labelled underbraces: a row of brace pieces from the big-symbol font
@@ -1035,7 +1097,11 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
             // at one height: e^{−mr√(s²+1)})
             let goes_on = (0..spans.len()).any(|i| {
                 let n = &spans[i];
-                i != ri && !under.contains(&i) && !n.cmex() && n.size >= 0.9 * letters && n.size < 0.85 * size && n.right <= left + 1.0 && left - n.right < letters && (n.cy() - (top + bottom) / 2.0).abs() < 0.4 * letters
+                // (… or the small letters go on right behind its bar: the
+                // root opens the exponent, e^{√(−2mE) x/ħ})
+                let before = n.right <= left + 1.0 && left - n.right < letters;
+                let behind = n.left >= b.right - 1.0 && n.left - b.right <= 0.35 * letters;
+                i != ri && !under.contains(&i) && !n.cmex() && n.size >= 0.9 * letters && n.size < 0.85 * size && (before || behind) && (n.cy() - (top + bottom) / 2.0).abs() < 0.4 * letters
             });
             let (top, bottom, size) = if letters > 0.0 && letters < 0.85 * size && goes_on {
                 (top, bottom, letters)
