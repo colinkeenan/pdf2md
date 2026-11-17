@@ -1324,7 +1324,7 @@ fn picture_file(page: u32, area: &crate::layout::Figure) -> String {
 /// figures, and the unread equation images inside the text.
 /// Without pdftocairo or the PDF the Markdown still links them.
 pub(crate) fn write_figures(book: &Book, dir: &Path) {
-    let Some(pdf) = &book.source else { return };
+    let Some(pdf) = book.upright.as_ref().or(book.source.as_ref()) else { return };
     let cut = |page: u32, area: &crate::layout::Figure, name: &str, pad: f32| {
         let file = dir.join(name);
         if let Some(parent) = file.parent() {

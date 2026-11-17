@@ -804,6 +804,7 @@ mod tests {
             ],
             pages: Vec::new(),
             body_size: 22.0,
+            sideways: Vec::new(),
         };
         let st = Stats {
             left: 100.0,

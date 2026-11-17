@@ -188,6 +188,8 @@ pub struct Doc {
     /// Anything clearly bigger is a heading candidate; smaller is a
     /// footnote/superscript candidate.
     pub body_size: f32,
+    /// Pages whose text is set sideways (see [`crate::upright`]).
+    pub sideways: Vec<(u32, bool)>,
 }
 
 /// Fonts that only ever contain math symbols. TeX books use the Computer
@@ -385,7 +387,9 @@ pub fn read_text(path: &Path, pages: Option<(u32, u32)>) -> Result<Doc, String> 
     if !ok {
         return Err(format!("pdftohtml failed: {}", String::from_utf8_lossy(&stderr).trim()));
     }
-    let mut doc = parse_xml_with(&String::from_utf8_lossy(&stdout), &crate::glyphs::lost_fonts(path))?;
+    let xml = String::from_utf8_lossy(&stdout);
+    let mut doc = parse_xml_with(&xml, &crate::glyphs::lost_fonts(path))?;
+    doc.sideways = crate::upright::sideways_pages(&xml);
     add_link_positions(&mut doc, path);
     printed_page_marks(&mut doc);
     crate::progress::report(Step::Text, total, total);
@@ -2168,6 +2172,13 @@ fn insert_delims(doc: &mut Doc, delims: Vec<Vec<Delim>>) {
             if !tall_enough[di] && !partnered[di] {
                 continue;
             }
+            // (a bracket stands among the page's text: a curved stroke out
+            // in the margin, beyond every line, is none — a letter of a
+            // running head that stands sideways there)
+            let (text_left, text_right) = page.lines.iter().fold((f32::MAX, f32::MIN), |(l, r), line| (l.min(line.left), r.max(line.right)));
+            if d.right < text_left - body || d.left > text_right + body {
+                continue;
+            }
             for (k, l) in page.lines.iter_mut().enumerate() {
                 // A lost bracket can sit in the space inside a span ("c α"
                 // with the "(" between them): split such spans into words.
@@ -2771,7 +2782,7 @@ pub fn parse_xml_with(xml: &str, lost: &HashMap<String, bool>) -> Result<Doc, St
         })
         .collect();
 
-    let mut doc = Doc { fonts, pages, body_size };
+    let mut doc = Doc { fonts, pages, body_size, sideways: Vec::new() };
     split_accents(&mut doc);
     accents_over_letters(&mut doc);
     blank_pages(&mut doc);

@@ -20,6 +20,7 @@ mod brackets;
 pub mod course;
 pub mod emit;
 pub mod epub;
+pub mod upright;
 pub mod glyphs;
 pub mod layout;
 pub mod links;
@@ -235,6 +236,9 @@ pub struct Book {
     pub pdf_of: std::collections::HashMap<String, u32>,
     /// The PDF, to cut the pictures from when writing.
     pub source: Option<std::path::PathBuf>,
+    /// A copy of it with the pages that are set sideways turned upright
+    /// (see [`upright`]): what was read, and what the pictures are cut from.
+    pub upright: Option<std::path::PathBuf>,
     /// PDF pages whose places were all moved to the left by so much (see
     /// `layout::Page::shift`): what is cut from such a page is cut that
     /// much further right.
@@ -363,6 +367,13 @@ pub fn convert_pdf_pages(path: &Path, pages: Option<(u32, u32)>) -> Result<Book,
 /// program made of handwriting).
 pub fn convert_pdf_as(path: &Path, pages: Option<(u32, u32)>, pictures: bool) -> Result<Book, String> {
     let mut doc = layout::read_text(path, pages)?;
+    // Pages set sideways: read once more from a copy with them upright.
+    let original = path;
+    let turned = if doc.sideways.is_empty() || pictures { None } else { upright::upright_copy(path, &doc.sideways) };
+    if let Some(copy) = &turned {
+        doc = layout::read_text(copy, pages)?;
+    }
+    let path = turned.as_deref().unwrap_or(path);
     let mut book = if pictures || scan::looks_scanned(&doc, path, pages) {
         // pictures of pages: read by the page reader
         let (first, last) = pages.unwrap_or((1, doc.pages.len() as u32));
@@ -377,9 +388,10 @@ pub fn convert_pdf_as(path: &Path, pages: Option<(u32, u32)>, pictures: bool) ->
         ocr::read_picture_tables(&mut book, path);
         book
     };
-    book.title = book_title(path, &doc);
+    book.title = book_title(original, &doc);
     structure::half_titles_lead(&mut book.chapters, &book.title);
-    book.source = Some(path.to_path_buf());
+    book.source = Some(original.to_path_buf());
+    book.upright = turned;
     progress::report(progress::Step::Book, 1, 1);
     Ok(book)
 }
