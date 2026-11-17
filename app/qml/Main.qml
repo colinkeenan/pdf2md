@@ -227,7 +227,7 @@ Kirigami.ApplicationWindow {
                     QQC2.ToolTip.text: "How formulas are written in the books.\nmdBun reads both. GitHub needs the first;\nmost other programs need the second."
                 }
 
-                // the folder whose PDFs and courses are listed
+                // the folder whose PDFs, eBooks and courses are listed
                 RowLayout {
                     Kirigami.FormData.label: "Folder:"
                     Layout.fillWidth: true
@@ -316,7 +316,7 @@ Kirigami.ApplicationWindow {
                                 }
                             }
                             Kirigami.Icon {
-                                source: row.modelData.kind === "course" ? "folder-documents" : "application-pdf"
+                                source: row.modelData.kind === "course" ? "folder-documents" : row.modelData.kind === "epub" ? "application-epub+zip" : "application-pdf"
                                 implicitWidth: Kirigami.Units.iconSizes.smallMedium
                                 implicitHeight: Kirigami.Units.iconSizes.smallMedium
                             }
@@ -338,7 +338,7 @@ Kirigami.ApplicationWindow {
                                     // how it ended in this run; else what is known of it
                                     text: row.running ? "Converting…"
                                         : row.result !== undefined ? (row.result.ok ? "Converted just now. " : "Failed: ") + row.result.words
-                                        : (row.modelData.kind === "course" ? "A course: saved pages and PDFs. " : "")
+                                        : (row.modelData.kind === "course" ? "A course: saved pages and PDFs. " : row.modelData.kind === "epub" ? "An eBook. " : "")
                                           + (row.modelData.book !== "" ? "Converted " + row.modelData.when : "Not converted yet")
                                     // (the theme's own colours for good, undecided and bad
                                     // news, on the theme's background: none is set here)

@@ -19,6 +19,7 @@ pub mod blocks;
 mod brackets;
 pub mod course;
 pub mod emit;
+pub mod epub;
 pub mod glyphs;
 pub mod layout;
 pub mod links;

@@ -113,6 +113,10 @@ cargo run -p pdf2md-core --bin pdf2md-cli -- --math standard book.pdf out/  # fo
 
 Converting into a folder that already holds the book replaces it in place and keeps your corrections and notes.
 
+### An eBook
+
+An EPUB is converted too, from the app's list or with `pdf2md-cli book.epub <output-folder>`; it needs `unzip`. An eBook says what its headings, lists, links and footnotes are, so nothing is guessed from places on a page. Its math is kept exactly where the eBook holds it as MathML or carries the LaTeX it was made from; an equation the eBook holds only as a picture stays a picture. The book has a file for each chapter of the eBook's contents and no page markers, unless the eBook marks the printed pages. An eBook beside a PDF of the same name gets a folder of its own, `<name> (eBook)`.
+
 ### A course as a book
 
 A folder of a course's material becomes one book, a file for each PDF:

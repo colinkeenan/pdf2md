@@ -40,7 +40,7 @@ pub mod qobject {
         /// empty before a conversion has succeeded.
         #[qproperty(QString, last)]
         /// What can be converted in `folder`, by name, one per line: kind
-        /// ("pdf", or "course" for a folder of saved pages and PDFs), name,
+        /// ("pdf", "epub", or "course" for a folder of saved pages and PDFs), name,
         /// path, the folder its book goes into unless another is chosen,
         /// the book's folder if it has been converted (else empty), when
         /// that was, and the name of the book's folder; parted by tabs.
@@ -179,6 +179,7 @@ fn write_config(name: &str, text: &str) {
 fn is_book(dir: &Path) -> bool {
     dir.join(".pdf2md-written").is_file()
         || dir.join(".pdf2md-course").is_file()
+        || dir.join(".pdf2md-epub").is_file()
         || (dir.join("book.md").is_file() && (dir.join("00-front-matter.md").is_file() || dir.join("00a-title-pages.md").is_file()))
 }
 
@@ -203,11 +204,13 @@ fn ago(when: std::time::SystemTime, now: std::time::SystemTime) -> String {
     }
 }
 
-/// What a job converts: a PDF, or a course (a folder of saved pages and PDFs).
+/// What a job converts: a PDF, a course (a folder of saved pages and
+/// PDFs), or an eBook (EPUB).
 #[derive(Debug, Clone, Copy, PartialEq)]
 enum Kind {
     Pdf,
     Course,
+    Epub,
 }
 
 impl Kind {
@@ -215,6 +218,15 @@ impl Kind {
         match self {
             Kind::Pdf => "pdf",
             Kind::Course => "course",
+            Kind::Epub => "epub",
+        }
+    }
+
+    fn named(name: &str) -> Kind {
+        match name {
+            "course" => Kind::Course,
+            "epub" => Kind::Epub,
+            _ => Kind::Pdf,
         }
     }
 }
@@ -249,6 +261,17 @@ fn is_course(dir: &Path) -> bool {
 fn book_name(kind: Kind, input: &Path) -> String {
     match kind {
         Kind::Pdf => input.file_stem().map(|s| s.to_string_lossy().into_owned()).unwrap_or_else(|| "book".to_string()),
+        // (an eBook beside the PDF of the same name: the PDF's book has
+        // the plain name, so the two can be read side by side)
+        Kind::Epub => {
+            let stem = input.file_stem().map(|s| s.to_string_lossy().into_owned()).unwrap_or_else(|| "book".to_string());
+            let twin = ["pdf", "PDF", "Pdf"].iter().any(|x| input.with_extension(x).is_file());
+            if twin {
+                format!("{stem} (eBook)")
+            } else {
+                stem
+            }
+        }
         Kind::Course => {
             let name = input.file_name().map(|s| s.to_string_lossy().into_owned()).unwrap_or_else(|| "Course".to_string());
             match name.strip_suffix(" Downloads").map(str::trim).filter(|n| !n.is_empty()) {
@@ -259,7 +282,7 @@ fn book_name(kind: Kind, input: &Path) -> String {
     }
 }
 
-/// What can be converted in `folder`: its PDFs and its course folders, by name.
+/// What can be converted in `folder`: its PDFs, eBooks and course folders, by name.
 fn find_items(folder: &Path) -> Vec<(Kind, PathBuf)> {
     let Ok(entries) = std::fs::read_dir(folder) else { return Vec::new() };
     let mut items: Vec<(Kind, PathBuf)> = entries
@@ -270,7 +293,12 @@ fn find_items(folder: &Path) -> Vec<(Kind, PathBuf)> {
             if p.is_dir() {
                 is_course(&p).then_some((Kind::Course, p))
             } else {
-                p.extension().is_some_and(|x| x.eq_ignore_ascii_case("pdf")).then_some((Kind::Pdf, p))
+                let is = |e: &str| p.extension().is_some_and(|x| x.eq_ignore_ascii_case(e));
+                if is("pdf") {
+                    Some((Kind::Pdf, p))
+                } else {
+                    is("epub").then_some((Kind::Epub, p))
+                }
             }
         })
         .collect();
@@ -291,7 +319,7 @@ fn item_lines(folder: &Path) -> String {
             let name = book_name(*kind, path);
             let beside = folder.join(&name);
             let book = Some(beside).filter(|b| is_book(b)).or_else(|| noted.iter().find(|b| b.file_name().is_some_and(|n| n.to_string_lossy() == name.as_str()) && is_book(b)).cloned());
-            let when = book.as_ref().and_then(|b| [".pdf2md-written", ".pdf2md-course", "book.md"].iter().find_map(|f| std::fs::metadata(b.join(f)).and_then(|m| m.modified()).ok()));
+            let when = book.as_ref().and_then(|b| [".pdf2md-written", ".pdf2md-course", ".pdf2md-epub", "book.md"].iter().find_map(|f| std::fs::metadata(b.join(f)).and_then(|m| m.modified()).ok()));
             let out = book.as_ref().and_then(|b| b.parent()).unwrap_or(folder);
             format!(
                 "{}\t{}\t{}\t{}\t{}\t{}\t{name}",
@@ -331,7 +359,7 @@ fn parse_jobs(text: &str) -> Vec<Job> {
             let f: Vec<&str> = l.split('\t').collect();
             let (input, output) = (url_to_path(f.get(1)?), url_to_path(f.get(2)?));
             (!input.as_os_str().is_empty() && !output.as_os_str().is_empty()).then(|| Job {
-                kind: if f[0] == "course" { Kind::Course } else { Kind::Pdf },
+                kind: Kind::named(f[0]),
                 input,
                 output,
                 math: f.get(3).and_then(|m| MathForm::named(m)).unwrap_or_default(),
@@ -481,6 +509,15 @@ fn run(job: &Job, replace: bool) -> Result<(String, PathBuf), String> {
             dest = new_dir(&dest);
         }
         let files = pdf2md_core::course::write_course(&job.input, &dest)?;
+        note_book(&dest);
+        return Ok((format!("Wrote {} files to {}", files.len(), dest.display()), dest));
+    }
+    if job.kind == Kind::Epub {
+        // (an eBook's book is rebuilt in place too)
+        if dest.exists() && !replace {
+            dest = new_dir(&dest);
+        }
+        let files = pdf2md_core::epub::write_epub(&job.input, &dest)?;
         note_book(&dest);
         return Ok((format!("Wrote {} files to {}", files.len(), dest.display()), dest));
     }
@@ -784,13 +821,15 @@ mod tests {
     #[test]
     fn what_can_be_converted_is_found() {
         let tmp = std::env::temp_dir().join(format!("pdf2md-items-{}", std::process::id()));
-        for f in ["Zee.pdf", "b.PDF", "notes.txt", ".hidden.pdf", "Zee/.pdf2md-written", "QM 1 Downloads/syllabus.html", "QM 1 Downloads/Notes/1.pdf", "QM 1 Downloads/Notes/2.pdf", "QM 1/00-contents.md", "QM 1/pdf/1.pdf", "Site/index.html", "Site/a.html", "Site/one.pdf", "Read/page.html", "Read/a.pdf", "Read/a.md"] {
+        for f in ["Zee.pdf", "Zee.epub", "Other.EPUB", "b.PDF", "notes.txt", ".hidden.pdf", "Zee/.pdf2md-written", "QM 1 Downloads/syllabus.html", "QM 1 Downloads/Notes/1.pdf", "QM 1 Downloads/Notes/2.pdf", "QM 1/00-contents.md", "QM 1/pdf/1.pdf", "Site/index.html", "Site/a.html", "Site/one.pdf", "Read/page.html", "Read/a.pdf", "Read/a.md"] {
             std::fs::create_dir_all(tmp.join(f).parent().unwrap()).unwrap();
             std::fs::write(tmp.join(f), "x").unwrap();
         }
         // PDFs, and folders of pages and PDFs without Markdown (more PDFs than pages)
         let found: Vec<(Kind, String)> = find_items(&tmp).into_iter().map(|(k, p)| (k, p.file_name().unwrap().to_string_lossy().into_owned())).collect();
-        assert_eq!(found, [(Kind::Pdf, "b.PDF".to_string()), (Kind::Course, "QM 1 Downloads".to_string()), (Kind::Pdf, "Zee.pdf".to_string())]);
+        assert_eq!(found, [(Kind::Pdf, "b.PDF".to_string()), (Kind::Epub, "Other.EPUB".to_string()), (Kind::Course, "QM 1 Downloads".to_string()), (Kind::Epub, "Zee.epub".to_string()), (Kind::Pdf, "Zee.pdf".to_string())]);
+        // (an eBook beside its PDF gets a folder of its own)
+        assert_eq!((book_name(Kind::Epub, &tmp.join("Zee.epub")), book_name(Kind::Epub, &tmp.join("Other.EPUB"))), ("Zee (eBook)".to_string(), "Other".to_string()));
         assert_eq!(book_name(Kind::Course, &tmp.join("QM 1 Downloads")), "QM 1");
         assert_eq!(book_name(Kind::Course, &tmp.join("Course")), "Course (book)");
         // the book beside its source is known as converted

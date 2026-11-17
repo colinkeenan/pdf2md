@@ -353,6 +353,20 @@ Such a book sets a table on a grey panel, with a short rule under each cell of t
 
 A table that the book holds as a picture is read cell by cell. The picture is cut from the page again at higher resolution. Its rows are the lines of text on it, and its columns end where no row has ink. Each cell is then read on its own, as words, as a whole number or as a formula. A picture that does not split into rows and columns this way keeps the model's reading of it as one array. Each cell is set as it is in the picture: at the left of its column, in its middle or at its right, by where its ink stands between the column's edges (a cell that fills the column is set as most of the others are). Where the book sets the caption centered on a panel on top of such a table, the caption is the table's title: one cell across all its columns, above the rows. Such a table needs no caption: every large picture that was read as a formula is looked at once, and is a table if two or more rules run unbroken across it and it parts into rows and columns. (A table picture with neither a caption nor rules cannot be told from a formula of several lines.)
 
+## eBooks
+
+*Worked out on EPUBs made here (pandoc, from chapters of the UCSD notes, with and without the LaTeX kept beside the MathML) and on calibre's guide. No bought eBook has been through it yet: how publishers' files differ will show there.*
+
+An EPUB is a zip file of XHTML pages, a list of their reading order, and a table of contents. `unzip` unpacks it; the pages are read as XML (HTML's named characters are written by their numbers first, so an EPUB 2 page with `&nbsp;` is taken).
+
+* **Chapters.** Each entry of the first depth of the contents (the navigation page of EPUB 3, the NCX file of EPUB 2) begins a file, from its place to the next entry's. A chapter that begins inside a page is cut there, at the element the entry names. Pages before the first entry are the front matter. Without contents, every page is a file. The highest heading of a chapter becomes its title's level; a chapter without a heading gets the words of the contents.
+* **Text.** Headings, paragraphs, lists in lists, quotations, code, tables and line breaks are written as the Markdown for them; a table of one cell is its words. Italic and bold marks go inside the spaces at their ends.
+* **Links.** A link to a place in another page becomes a link to the chapter file that place is in. Only ids that something links to are written as anchors; an id that two pages use gets its page's name in front. A footnote's mark is raised.
+* **Pictures** are copied into `images/` under their own names.
+* **Math.** MathML is rewritten as LaTeX element by element: fractions, roots, indices and powers, limits under and over sums, accents (a bar, hat, tilde, arrow or dot over a letter), fenced groups, tables (a `matrix`, in its brackets a `pmatrix` or `bmatrix`; rows aligned right-left are `aligned`), labelled rows with their numbers. Where the eBook keeps the LaTeX the formula was made from (an `annotation` beside the MathML, the description of a formula's picture, or text between `\(` and `\)` for a script to draw), that LaTeX is used as it is. A formula that is only a picture stays a picture.
+* **Printed pages.** An eBook that marks where the pages of the printed book begin gets <sup>[p. N]</sup> at each; there is no PDF page to open.
+* **What is kept**: notes and prose fixes, as for a course's book. The book is rebuilt in place, and files it no longer writes are taken away.
+
 ## Scanned books
 
 *All of this section was worked out on one scan (Zee 1), which has since been lost; nothing here has been run on a second scan.*

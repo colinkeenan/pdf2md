@@ -35,8 +35,24 @@ fn main() {
         }
         return;
     }
+    // book.epub out: an eBook as a book
+    if args.len() == 2 && Path::new(&args[0]).extension().is_some_and(|x| x.eq_ignore_ascii_case("epub")) {
+        match pdf2md_core::epub::write_epub(Path::new(&args[0]), Path::new(&args[1])) {
+            Ok(files) => {
+                for f in &files {
+                    println!("{}", f.display());
+                }
+            }
+            Err(e) => {
+                eprintln!("error: {e}");
+                process::exit(1);
+            }
+        }
+        return;
+    }
     if args.len() != 2 && args.len() != 4 {
         eprintln!("usage: pdf2md-cli [--math github|standard] <input.pdf> <output-dir> [first-page last-page]");
+        eprintln!("       pdf2md-cli [--math github|standard] <input.epub> <output-dir>");
         eprintln!("       pdf2md-cli --course <folder of pages and PDFs> <output-dir>");
         eprintln!("       pdf2md-cli --dump <input.pdf> [first-page last-page]");
         process::exit(2);
