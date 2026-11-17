@@ -1518,12 +1518,17 @@ fn latex_text(t: &str) -> String {
 }
 
 /// A table as a LaTeX `array`: text cells become `\text{..}`, the rest math.
-fn table_latex(doc: &Doc, lines: &[Line], cols: &[f32]) -> String {
+fn table_latex(doc: &Doc, rules: &[Rule], lines: &[Line], cols: &[f32]) -> String {
     let spec = if cols.len() >= 3 {
         format!("l{}l", "c".repeat(cols.len() - 2))
     } else {
         "l".repeat(cols.len())
     };
+    if std::env::var_os("PDF2MD_TABLEDEBUG").is_some() {
+        for l in lines {
+            eprintln!("TROW top {:.0} {:?}", l.top, l.spans.iter().map(|s| format!("{}@{:.0},{:.0}", s.text, s.left, s.top)).collect::<Vec<_>>());
+        }
+    }
     let rows: Vec<String> = lines
         .iter()
         .map(|l| {
@@ -1540,7 +1545,10 @@ fn table_latex(doc: &Doc, lines: &[Line], cols: &[f32]) -> String {
                         format!("\\text{{{}}}", latex_text(&t.join(" ")))
                     } else {
                         let ms: Vec<MSpan> = spans.iter().map(|s| MSpan::new(doc, s)).collect();
-                        mathtex::build(&ms)
+                        // (the bars drawn in the cell: of its small fractions and its roots)
+                        let (x0, x1, y0, y1) = ms.iter().fold((f32::MAX, f32::MIN, f32::MAX, f32::MIN), |(a, b, c, d), s| (a.min(s.left), b.max(s.right), c.min(s.top), d.max(s.bottom)));
+                        let bars: Vec<Rule> = rules.iter().filter(|r| r.left >= x0 - 3.0 && r.right <= x1 + 3.0 && r.top >= y0 - 3.0 && r.bottom <= y1 + 3.0).copied().collect();
+                        mathtex::build_with(&ms, &bars)
                     }
                 })
                 .collect();
@@ -1928,7 +1936,7 @@ fn attach_fraction_rows(doc: &Doc, lines: &[Line], bars: &[Rule]) -> Vec<Line> {
             .flat_map(|l| l.spans.iter())
             .filter(|s| {
                 let c = s.left + s.width / 2.0;
-                narrow && c >= b.left - 2.0 && c <= b.right + 2.0 && (b.top - s.bottom()).max(s.top - b.bottom) <= 2.0
+                narrow && c >= b.left - 2.0 && c <= b.right + 2.0 && (b.top - s.bottom()).max(s.top - b.bottom) <= 3.0
             })
             .map(|s| (s.top, s.bottom(), s.left))
             .collect();
@@ -1988,7 +1996,11 @@ fn attach_fraction_rows(doc: &Doc, lines: &[Line], bars: &[Rule]) -> Vec<Line> {
                 let away = (b.top - s.bottom()).max(s.top - b.bottom) > 0.4 * size;
                 let side: Vec<&(f32, f32, f32)> = halves.iter().filter(|h| (s.bottom() <= b.top + 2.0) == (h.1 <= b.top + 2.0)).collect();
                 let behind = away && !side.is_empty() && !side.iter().any(|h| s.left >= h.2 - 1.0);
-                if inside && near && !others && !script_of_text && !behind && s.text.trim() != "." {
+                // (… or beyond that piece altogether, and in larger type: the
+                // minus sign that opens the next row of a table, under the 2
+                // of a ½)
+                let beyond = side.iter().any(|h| (s.top >= h.1 - 1.5 || s.bottom() <= h.0 + 1.5) && s.height > 1.2 * (h.1 - h.0));
+                if inside && near && !others && !script_of_text && !behind && !beyond && s.text.trim() != "." {
                     if std::env::var_os("PDF2MD_FRACDEBUG").is_some() {
                         eprintln!("FRAC bar {:.0}..{:.0}@{:.0} home top {:.0} takes {:?}@{},{} from line top {:.0} script {:?}", b.left, b.right, b.top, 0.0, s.text, s.left, s.top, line_top, s.script);
                     }
@@ -2613,7 +2625,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
             if let Some((_, j, cols)) = tables.iter().find(|t| t.0 == i && !on_table(t.0, t.1)).filter(|_| !b.index_mode) {
                 b.flush();
                 b.anchor_block();
-                b.push(Block::Equation { latex: table_latex(doc, &lines[i..*j], cols), tag: None, source: None });
+                b.push(Block::Equation { latex: table_latex(doc, &doc.pages[page.index].rules, &lines[i..*j], cols), tag: None, source: None });
                 prev_top = Some(lines[j - 1].top);
                 last_heading = None;
                 i = *j;
