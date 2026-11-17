@@ -1064,11 +1064,15 @@ u ( y ) = h ( y ) e^{- y^{2} / 2}
 into it to get
 
 ```math
-d^{2} h ( y )_{- y^{2} / 2} \frac{d^{2}}{dy^{2}} h ( y dh ( y ) ) e_{- y^{2} / 2}^{- y^{2} / 2} + \epsilon h ( y ) e^{- y^{2}} \frac{/ 2}{- y^{2} / 2} - y^{2} h ( y ) e_{2 - y^{2} / 2}^{- y^{2} / 2} = 0
+\frac{d^{2}}{dy^{2}} h ( y ) e^{- y^{2} / 2} + \epsilon h ( y ) e^{- y^{2} / 2} - y^{2} h ( y ) e^{- y^{2} / 2} = 0
 ```
 
 ```math
-dy^{2} e \quad - 2 dy ye + \epsilon h ( - h ( y ) e_{/ 2} y ) e^{- y^{2}} - y^{2} + h ( y ) y h ( y ) e^{- y^{2}} e^{/ 2} = 0
+\frac{d^{2} h ( y )}{dy^{2}} e^{- y^{2} / 2} - 2 \frac{dh ( y )}{dy} ye^{- y^{2} / 2} - h ( y ) e^{- y^{2} / 2} + h ( y ) y^{2} e^{- y^{2} / 2}
+```
+
+```math
++ \epsilon h ( y ) e^{- y^{2} / 2} - y^{2} h ( y ) e^{- y^{2} / 2} = 0
 ```
 
 ```math
@@ -1376,7 +1380,15 @@ Using the second pair of equations to eliminate the $`n`$ + 1 coefficients, we h
 Now we can eliminate all the coefficients.
 
 ```math
-\begin{aligned} \frac{( e^{i\varphi} - \cos ( ka ) ) ( e^{i\varphi} - \cos ( ka ) - \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) )}{2 i\varphi \quad i\varphi} &= \left( \frac{2 maV_{0}}{\hbar^{2} k} \cos ( ka ) - \sin ( ka ) \right) \sin ( ka ) \\ & \quad e \quad - e \quad \left( \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) + \cos ( ka ) + \cos ( ka ) \right) + \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) \cos ( ka ) + \cos^{2} ( ka ) \end{aligned}
+( e^{i\varphi} - \cos ( ka ) ) ( e^{i\varphi} - \cos ( ka ) - \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) )
+```
+
+```math
+= \left( \frac{2 maV_{0}}{\hbar^{2} k} \cos ( ka ) - \sin ( ka ) \right) \sin ( ka )
+```
+
+```math
+\begin{aligned} & \quad e^{2 i\varphi} - e^{i\varphi} \left( \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) + \cos ( ka ) + \cos ( ka ) \right) \\ & \quad + \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) \cos ( ka ) + \cos^{2} ( ka ) \end{aligned}
 ```
 
 ```math

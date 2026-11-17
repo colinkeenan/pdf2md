@@ -884,7 +884,7 @@ Potential energy $`\times`$ time of transit $`\ll \hbar`$
 <a id="eq-481"></a>
 
 ```math
-\text{ or } \text{ or } \quad \frac{Ze^{2}}{4 \pi \hbar v} \frac{Ze^{2}}{4 \pi r} \times \frac{r}{v} = \frac{Z}{1 3 7} \frac{c}{v} \ll \hbar \ll 1 \qquad \text{(481)}
+\begin{aligned} & \quad \text{ or } \quad \frac{Ze^{2}}{4 \pi r} \times \frac{r}{v} \ll \hbar \\ \text{ or } \quad \frac{Ze^{2}}{4 \pi \hbar v} &= \frac{Z}{1 3 7} \frac{c}{v} \ll 1 \end{aligned} \qquad \text{(481)}
 ```
 
 The treatment will only be good for _relativistic velocities_ $`v \sim c`$, and for _lighter atoms_ $`Z \ll 137`$. In fact for heavy atoms ($`Z`$ = 82 for lead) and $`v \sim c`$ the error from the Born approximation is about 10%.

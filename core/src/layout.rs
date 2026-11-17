@@ -2460,6 +2460,9 @@ fn mark_overlines(doc: &mut Doc) {
                     // line above sticks out past the bar of Ā)
                     let scripts: Vec<_> = all
                         .iter()
+                        // (a large bracket's box is short and begins at
+                        // the numerator's side: no script of it)
+                        .filter(|t| !t.5.starts_with("CMEX") && !t.4.trim().chars().all(|c| "()[]{}|".contains(c)))
                         .filter(|t| {
                             above.iter().any(|a| {
                                 (t.0 - a.1).abs() <= 1.5 && t.3 - t.2 < 0.85 * (a.3 - a.2) && t.2 < a.3 && t.3 > a.2

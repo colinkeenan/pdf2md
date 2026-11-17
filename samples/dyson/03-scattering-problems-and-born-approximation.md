@@ -737,7 +737,7 @@ The correctly normalized initial and final states in this problem are
 <a id="eq-154"></a>
 
 ```math
-\frac{1}{\sqrt{2}} \frac{1}{\sqrt{2}} \{ \psi_{1} ( 1 ) \psi_{2} ( 2 ) - \psi_{1} ( 2 ) \psi_{2} ( 1 ) \} \{ \psi_{1}^{\prime} ( 1 ) \psi_{2}^{\prime} ( 2 ) - \psi_{1}^{\prime} ( 2 ) \psi_{2}^{\prime} ( 1 ) \} \qquad \text{(154)}
+\begin{aligned} & \quad \frac{1}{\sqrt{2}} \{ \psi_{1} ( 1 ) \psi_{2} ( 2 ) - \psi_{1} ( 2 ) \psi_{2} ( 1 ) \} \\ & \quad \frac{1}{\sqrt{2}} \{ \psi_{1}^{\prime} ( 1 ) \psi_{2}^{\prime} ( 2 ) - \psi_{1}^{\prime} ( 2 ) \psi_{2}^{\prime} ( 1 ) \} \end{aligned} \qquad \text{(154)}
 ```
 
 where $`\psi_{2}`$(1) means the particle 2 in the state 1, and so on. With these states the matrix element $`M`$ is exactly as we have calculated it including the exchange term.

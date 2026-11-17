@@ -438,7 +438,11 @@ Recalling that for $`r \to \infty`$,
 and that our formula with the phase shift is
 
 ```math
-R ( r ) = \propto \quad \frac{1 \frac{\sin \left( \rho - \tfrac{\ell \pi}{2} + \delta_{\ell} ( k ) \right)}{\rho}}{\rho} \left[ \cos \delta_{\ell} \sin ( \rho - \frac{\ell \pi}{2} ) + \sin \delta_{\ell} \cos ( \rho - \frac{\ell \pi}{2} ) \right] ,
+R ( r ) \quad \propto \quad \frac{\sin \left( \rho - \tfrac{\ell \pi}{2} + \delta_{\ell} ( k ) \right)}{\rho}
+```
+
+```math
+= \frac{1}{\rho} \left[ \cos \delta_{\ell} \sin ( \rho - \frac{\ell \pi}{2} ) + \sin \delta_{\ell} \cos ( \rho - \frac{\ell \pi}{2} ) \right] ,
 ```
 
 we can **identify the phase shift** easily.

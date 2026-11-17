@@ -376,7 +376,11 @@ perform the radial integration,
 and perform the angular integration.
 
 ```math
-\int d \Omega \quad Y_{0 0}^{*} = \frac{1}{\sqrt{4 \pi}} \int^{\left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{2} \sqrt{Y_{1 - 1}} \right)} d \Omega \left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \right) Y_{1 m_{i}} Y_{1 m_{i}}
+\int d \Omega \quad Y_{0 0}^{*} \quad \left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \right) Y_{1 m_{i}}
+```
+
+```math
+= \frac{1}{\sqrt{4 \pi}} \int d \Omega \left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \right) Y_{1 m_{i}}
 ```
 
 ```math
@@ -554,7 +558,11 @@ We may also deduce the angular distribution of photons from our calculation. Let
 We have performed that radial integration which will be unchanged. Assume that we start in a polarized state with $`m_{i}`$ = 1. We then look at our result for the angular integration in the matrix element
 
 ```math
-\int^{|} d \Omega Y_{0 0}^{*} \left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \right) = \frac{1}{4 \pi} \left( \epsilon_{z}^{2} \delta_{m_{i} 0} + \frac{1}{2} ( \epsilon_{x}^{2} + \epsilon_{y}^{2} ) ( \delta_{m_{i} ( - 1 )} + \delta_{m_{i} 1} ) \right) Y_{1 m_{i}} |^{2}
+\left| \int d \Omega Y_{0 0}^{*} \left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \right) Y_{1 m_{i}} \right|^{2}
+```
+
+```math
+= \frac{1}{4 \pi} \left( \epsilon_{z}^{2} \delta_{m_{i} 0} + \frac{1}{2} ( \epsilon_{x}^{2} + \epsilon_{y}^{2} ) ( \delta_{m_{i} ( - 1 )} + \delta_{m_{i} 1} ) \right)
 ```
 
 ```math

@@ -536,7 +536,11 @@ We’ve defined $`\psi`$, the 2 component wavefunction we will use, in terms of 
 This equation is correct, but not exactly what we want for the Schrödinger equation. In particular, we want to **isolate the non-relativistic energy on the right of the equation** without other operators. We can solve the problem by multiplying both sides of the equation by $`\left( 1 - \tfrac{p^{2}}{8 m^{2} c^{2}} \right)`$.
 
 ```math
-\begin{aligned} \left( 1 - \frac{p^{2}}{8 m^{2} c^{2}} \right) \vec{\sigma} \cdot \vec{p} \frac{1}{2 m} \left( 1 - \frac{E^{( NR )} + eA_{0}}{2 mc^{2}} \right) \vec{\sigma} \cdot \vec{p} \left( 1 - \frac{p^{2}}{8 m^{2} c^{2}} \right) &= \left( 1 - \frac{p^{2}}{8 m^{2} c^{2}} \right) \psi ( E^{( NR )} + eA_{0} ) \left( 1 - \frac{p^{2}}{8 m^{2} c^{2}} \right) \psi \\ & \quad \left( \frac{\vec{\sigma} \cdot \vec{p} \vec{\sigma} \cdot \vec{p}}{2 m} - \frac{p^{2}}{8 m^{2} c^{2}} \frac{\vec{\sigma} \cdot \vec{p} \vec{\sigma} \cdot \vec{p}}{2 m} - \frac{\vec{\sigma} \cdot \vec{p}}{2 m} \frac{E^{( NR )} + eA_{0}}{2 mc^{2}} \vec{\sigma} \cdot \vec{p} - \frac{\vec{\sigma} \cdot \vec{p} \vec{\sigma} \cdot \vec{p}}{2 m} \frac{p^{2}}{8 m^{2} c^{2}} \right) \psi \end{aligned}
+\left( 1 - \frac{p^{2}}{8 m^{2} c^{2}} \right) \vec{\sigma} \cdot \vec{p} \frac{1}{2 m} \left( 1 - \frac{E^{( NR )} + eA_{0}}{2 mc^{2}} \right) \vec{\sigma} \cdot \vec{p} \left( 1 - \frac{p^{2}}{8 m^{2} c^{2}} \right) \psi
+```
+
+```math
+\begin{aligned} &= \left( 1 - \frac{p^{2}}{8 m^{2} c^{2}} \right) ( E^{( NR )} + eA_{0} ) \left( 1 - \frac{p^{2}}{8 m^{2} c^{2}} \right) \psi \\ & \quad \left( \frac{\vec{\sigma} \cdot \vec{p} \vec{\sigma} \cdot \vec{p}}{2 m} - \frac{p^{2}}{8 m^{2} c^{2}} \frac{\vec{\sigma} \cdot \vec{p} \vec{\sigma} \cdot \vec{p}}{2 m} - \frac{\vec{\sigma} \cdot \vec{p}}{2 m} \frac{E^{( NR )} + eA_{0}}{2 mc^{2}} \vec{\sigma} \cdot \vec{p} - \frac{\vec{\sigma} \cdot \vec{p} \vec{\sigma} \cdot \vec{p}}{2 m} \frac{p^{2}}{8 m^{2} c^{2}} \right) \psi \end{aligned}
 ```
 
 ```math
@@ -576,7 +580,11 @@ p^{2} A_{0} \psi = - \hbar^{2} \nabla^{2} A_{0} \psi = - \hbar^{2} \vec{\nabla} 
 Plugging this back into the equation, we can cancel several terms.
 
 ```math
-\begin{aligned} \left( \frac{p^{2}}{2 m} - eA_{0} - \frac{p^{4}}{8 m^{3} c^{2}} + \frac{e \hbar \vec{\sigma} \cdot \vec{E} \times \vec{p} - ie \hbar \vec{E} \cdot \vec{p} - eA_{0} p^{2}}{4 m^{2} c^{2}} \right) &= \left( E^{( NR )} - e \frac{- \hbar^{2} ( \nabla^{2} A_{0} ) + 2 i \hbar \vec{E} \cdot \vec{p} + A_{0} p^{2}}{8 m^{2} c^{2}} - eA_{0} \frac{p^{2}}{8 m^{2} c^{2}} \right) \psi \psi \\ \left( \frac{p^{2}}{2 m} - eA_{0} - \frac{p^{4}}{8 m^{2} c^{2}} + \frac{e \hbar \vec{\sigma} \cdot \vec{E} \times \vec{p} - ie \hbar \vec{E} \cdot \vec{p}}{4 m^{2} c^{2}} \right) \psi &= \left( E^{( NR )} - e \frac{- \hbar^{2} ( \nabla^{2} A_{0} ) + 2 i \hbar \vec{E} \cdot \vec{p}}{8 m^{2} c^{2}} \right) \psi \end{aligned}
+\left( \frac{p^{2}}{2 m} - eA_{0} - \frac{p^{4}}{8 m^{3} c^{2}} + \frac{e \hbar \vec{\sigma} \cdot \vec{E} \times \vec{p} - ie \hbar \vec{E} \cdot \vec{p} - eA_{0} p^{2}}{4 m^{2} c^{2}} \right) \psi
+```
+
+```math
+\begin{aligned} &= \left( E^{( NR )} - e \frac{- \hbar^{2} ( \nabla^{2} A_{0} ) + 2 i \hbar \vec{E} \cdot \vec{p} + A_{0} p^{2}}{8 m^{2} c^{2}} - eA_{0} \frac{p^{2}}{8 m^{2} c^{2}} \right) \psi \\ \left( \frac{p^{2}}{2 m} - eA_{0} - \frac{p^{4}}{8 m^{2} c^{2}} + \frac{e \hbar \vec{\sigma} \cdot \vec{E} \times \vec{p} - ie \hbar \vec{E} \cdot \vec{p}}{4 m^{2} c^{2}} \right) \psi &= \left( E^{( NR )} - e \frac{- \hbar^{2} ( \nabla^{2} A_{0} ) + 2 i \hbar \vec{E} \cdot \vec{p}}{8 m^{2} c^{2}} \right) \psi \end{aligned}
 ```
 
 ```math
@@ -2582,7 +2590,7 @@ These equations are true for any spherically symmetric potential. Now it is time
 ```
 
 ```math
-\begin{pmatrix} \left( \tfrac{\partial}{\partial \rho} - \tfrac{\kappa}{\overline{\rho}} \right) F - \left( \sqrt{\frac{k_{2}}{k_{1}}} - \tfrac{Z\alpha}{\rho} \right) G \\ \left( \tfrac{\partial}{\partial \rho} + \tfrac{\kappa}{\overline{\rho}} \right) G - \left( \sqrt{\frac{k_{1}}{k_{2}}} + \tfrac{Z\alpha}{\rho} \right) F \end{pmatrix} = 0
+\begin{pmatrix} \left( \tfrac{\partial}{\partial \rho} - \tfrac{\kappa}{\rho} \right) F - \left( \sqrt{\frac{k_{2}}{k_{1}}} - \tfrac{Z\alpha}{\rho} \right) G \\ \left( \tfrac{\partial}{\partial \rho} + \tfrac{\kappa}{\rho} \right) G - \left( \sqrt{\frac{k_{1}}{k_{2}}} + \tfrac{Z\alpha}{\rho} \right) F \end{pmatrix} = 0
 ```
 
 With the guidance of the non-relativistic solutions, we will **postulate a solution of the form**
@@ -2598,11 +2606,11 @@ G = e^{- \rho} \rho^{s} \sum_{m = 0}^{\infty} b_{m} \rho^{m} = e^{- \rho} \sum_{
 The exponential will make everything go to zero for large $`\rho`$ if the power series terminates. We need to verify that this is a solution near $`\rho`$ = 0 if we pick the right $`a_{0} , b_{0}`$, and $`s`$. We now substitute these postulated solutions into the equations to **obtain recursion relations**.
 
 ```math
-\left( \frac{\partial}{\partial \rho} - \frac{\kappa}{\overline{\rho}} \right) F - \left( \sqrt{\frac{k_{2}}{k_{1}}} - \frac{Z\alpha}{\rho} \right) G = 0
+\left( \frac{\partial}{\partial \rho} - \frac{\kappa}{\rho} \right) F - \left( \sqrt{\frac{k_{2}}{k_{1}}} - \frac{Z\alpha}{\rho} \right) G = 0
 ```
 
 ```math
-\left( \frac{\partial}{\partial \rho} + \frac{\kappa}{\overline{\rho}} \right) G - \left( \sqrt{\frac{k_{1}}{k_{2}}} + \frac{Z\alpha}{\rho} \right) F = 0
+\left( \frac{\partial}{\partial \rho} + \frac{\kappa}{\rho} \right) G - \left( \sqrt{\frac{k_{1}}{k_{2}}} + \frac{Z\alpha}{\rho} \right) F = 0
 ```
 
 ```math

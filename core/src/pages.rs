@@ -213,6 +213,12 @@ fn split_columns(doc: &Doc, lines: Vec<Line>, width: f32) -> Vec<Line> {
     if numbers * 5 >= both * 4 {
         return lines;
     }
+    // A page of a few displayed formulas that happen to have a gap at the
+    // same place is no page of two columns: columns are of words.
+    let worded = lines.iter().filter(|l| l.spans.iter().any(|s| s.left >= gutter) && l.spans.iter().any(|s| s.right() <= gutter) && l.spans.iter().any(|s| !doc.is_math(s) && s.text.split_whitespace().any(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 3))).count();
+    if worded * 2 < both {
+        return lines;
+    }
     let size_of = |s: &crate::layout::Span| doc.size_of(s);
     let mut left_col = Vec::new();
     let mut right_col = Vec::new();

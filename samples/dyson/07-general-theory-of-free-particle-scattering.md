@@ -904,7 +904,7 @@ is of order $`\epsilon`$ and tends to zero as $`T \to 0`$. This term may be drop
 <a id="eq-572"></a>
 
 ```math
-M_{2 2} = - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int G \left\{ \overline{u} /e ( q - \epsilon - \epsilon^{\prime} ) \frac{1}{p / + /\epsilon + /\epsilon^{\prime} - i\mu} ( - 6 \pi^{2} \mu R^{\prime} - I_{1} /\epsilon ) u \right\} ( \epsilon_{0} ) G ( \epsilon_{0}^{\prime} ) d\epsilon_{0} d\epsilon_{0}^{\prime} \times \qquad \text{(572)}
+\begin{aligned} M_{2 2} &= - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int G ( \epsilon_{0} ) G ( \epsilon_{0}^{\prime} ) d\epsilon_{0} d\epsilon_{0}^{\prime} \times \\ & \quad \left\{ \overline{u} /e ( q - \epsilon - \epsilon^{\prime} ) \frac{1}{p / + /\epsilon + /\epsilon^{\prime} - i\mu} ( - 6 \pi^{2} \mu R^{\prime} - I_{1} /\epsilon ) u \right\} \end{aligned} \qquad \text{(572)}
 ```
 
 Note that if $`I_{\alpha} ( p )`$ given by (567) were to be evaluated assuming that $`p^{2} + \mu^{2}`$ = 0 and $`p / - i\mu`$ = 0 operating both to the left and to the right, instead of only to the right as in (521), the result obtained would be just

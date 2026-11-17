@@ -1331,7 +1331,7 @@ the <a id="ix-139">fine structure constant</a>. Then
 <a id="eq-84"></a>
 
 ```math
-\begin{aligned} \left( - a_{1} + \frac{\alpha}{\overline{r}} \right) u &= \left( \frac{1 + K}{r} + \frac{\partial}{\partial r} \right) v \\ \left( a_{2} + \frac{\alpha}{r} \right) v &= \left( \frac{- 1 + K}{r} - \frac{\partial}{\partial r} \right) u \end{aligned} \qquad \text{(84)}
+\begin{aligned} \left( - a_{1} + \frac{\alpha}{r} \right) u &= \left( \frac{1 + K}{r} + \frac{\partial}{\partial r} \right) v \\ \left( a_{2} + \frac{\alpha}{r} \right) v &= \left( \frac{- 1 + K}{r} - \frac{\partial}{\partial r} \right) u \end{aligned} \qquad \text{(84)}
 ```
 
 Next put $`a = \sqrt{a_{1} a_{2}} = \sqrt{m^{2} c^{4} - E^{2}} / \hbar c`$ which is the magnitude of the imaginary <a id="ix-204">momentum</a> of a free electron of energy $`E`$. Then $`\psi \sim e^{- ar}`$ at infinity. Hence we write
@@ -2570,7 +2570,7 @@ The correctly normalized initial and final states in this problem are
 <a id="eq-154"></a>
 
 ```math
-\frac{1}{\sqrt{2}} \frac{1}{\sqrt{2}} \{ \psi_{1} ( 1 ) \psi_{2} ( 2 ) - \psi_{1} ( 2 ) \psi_{2} ( 1 ) \} \{ \psi_{1}^{\prime} ( 1 ) \psi_{2}^{\prime} ( 2 ) - \psi_{1}^{\prime} ( 2 ) \psi_{2}^{\prime} ( 1 ) \} \qquad \text{(154)}
+\begin{aligned} & \quad \frac{1}{\sqrt{2}} \{ \psi_{1} ( 1 ) \psi_{2} ( 2 ) - \psi_{1} ( 2 ) \psi_{2} ( 1 ) \} \\ & \quad \frac{1}{\sqrt{2}} \{ \psi_{1}^{\prime} ( 1 ) \psi_{2}^{\prime} ( 2 ) - \psi_{1}^{\prime} ( 2 ) \psi_{2}^{\prime} ( 1 ) \} \end{aligned} \qquad \text{(154)}
 ```
 
 where $`\psi_{2}`$(1) means the particle 2 in the state 1, and so on. With these states the matrix element $`M`$ is exactly as we have calculated it including the exchange term.
@@ -7066,7 +7066,7 @@ Potential energy $`\times`$ time of transit $`\ll \hbar`$
 <a id="eq-481"></a>
 
 ```math
-\text{ or } \text{ or } \quad \frac{Ze^{2}}{4 \pi \hbar v} \frac{Ze^{2}}{4 \pi r} \times \frac{r}{v} = \frac{Z}{1 3 7} \frac{c}{v} \ll \hbar \ll 1 \qquad \text{(481)}
+\begin{aligned} & \quad \text{ or } \quad \frac{Ze^{2}}{4 \pi r} \times \frac{r}{v} \ll \hbar \\ \text{ or } \quad \frac{Ze^{2}}{4 \pi \hbar v} &= \frac{Z}{1 3 7} \frac{c}{v} \ll 1 \end{aligned} \qquad \text{(481)}
 ```
 
 The treatment will only be good for _relativistic velocities_ $`v \sim c`$, and for _lighter atoms_ $`Z \ll 137`$. In fact for heavy atoms ($`Z`$ = 82 for lead) and $`v \sim c`$ the error from the Born approximation is about 10%.
@@ -8065,7 +8065,7 @@ is of order $`\epsilon`$ and tends to zero as $`T \to 0`$. This term may be drop
 <a id="eq-572"></a>
 
 ```math
-M_{2 2} = - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int G \left\{ \overline{u} /e ( q - \epsilon - \epsilon^{\prime} ) \frac{1}{p / + /\epsilon + /\epsilon^{\prime} - i\mu} ( - 6 \pi^{2} \mu R^{\prime} - I_{1} /\epsilon ) u \right\} ( \epsilon_{0} ) G ( \epsilon_{0}^{\prime} ) d\epsilon_{0} d\epsilon_{0}^{\prime} \times \qquad \text{(572)}
+\begin{aligned} M_{2 2} &= - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int G ( \epsilon_{0} ) G ( \epsilon_{0}^{\prime} ) d\epsilon_{0} d\epsilon_{0}^{\prime} \times \\ & \quad \left\{ \overline{u} /e ( q - \epsilon - \epsilon^{\prime} ) \frac{1}{p / + /\epsilon + /\epsilon^{\prime} - i\mu} ( - 6 \pi^{2} \mu R^{\prime} - I_{1} /\epsilon ) u \right\} \end{aligned} \qquad \text{(572)}
 ```
 
 Note that if $`I_{\alpha} ( p )`$ given by (567) were to be evaluated assuming that $`p^{2} + \mu^{2}`$ = 0 and $`p / - i\mu`$ = 0 operating both to the left and to the right, instead of only to the right as in (521), the result obtained would be just

@@ -84,7 +84,7 @@ then the first two Maxwell equations are automatically satisfied. Applying the s
 ```
 
 ```math
--\nabla^{2} \vec{A} + \frac{1}{c^{2}} \frac{\partial^{2} \vec{A}}{\partial t^{2}} + \vec{\nabla} \left( \vec{\nabla} \cdot \vec{A} + \frac{1}{c} \frac{\partial \varphi}{\overline{\partial t}} \right) = \frac{4 \pi}{c} \vec{J}
+-\nabla^{2} \vec{A} + \frac{1}{c^{2}} \frac{\partial^{2} \vec{A}}{\partial t^{2}} + \vec{\nabla} \left( \vec{\nabla} \cdot \vec{A} + \frac{1}{c} \frac{\partial \varphi}{\partial t} \right) = \frac{4 \pi}{c} \vec{J}
 ```
 
 These **derivations** (see section 20.5.1) are fairly simple using Einstein notation.

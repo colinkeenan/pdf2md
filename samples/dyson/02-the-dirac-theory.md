@@ -978,7 +978,7 @@ the <a id="ix-139">fine structure constant</a>. Then
 <a id="eq-84"></a>
 
 ```math
-\begin{aligned} \left( - a_{1} + \frac{\alpha}{\overline{r}} \right) u &= \left( \frac{1 + K}{r} + \frac{\partial}{\partial r} \right) v \\ \left( a_{2} + \frac{\alpha}{r} \right) v &= \left( \frac{- 1 + K}{r} - \frac{\partial}{\partial r} \right) u \end{aligned} \qquad \text{(84)}
+\begin{aligned} \left( - a_{1} + \frac{\alpha}{r} \right) u &= \left( \frac{1 + K}{r} + \frac{\partial}{\partial r} \right) v \\ \left( a_{2} + \frac{\alpha}{r} \right) v &= \left( \frac{- 1 + K}{r} - \frac{\partial}{\partial r} \right) u \end{aligned} \qquad \text{(84)}
 ```
 
 Next put $`a = \sqrt{a_{1} a_{2}} = \sqrt{m^{2} c^{4} - E^{2}} / \hbar c`$ which is the magnitude of the imaginary <a id="ix-204">momentum</a> of a free electron of energy $`E`$. Then $`\psi \sim e^{- ar}`$ at infinity. Hence we write

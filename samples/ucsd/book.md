@@ -7880,11 +7880,15 @@ u ( y ) = h ( y ) e^{- y^{2} / 2}
 into it to get
 
 ```math
-d^{2} h ( y )_{- y^{2} / 2} \frac{d^{2}}{dy^{2}} h ( y dh ( y ) ) e_{- y^{2} / 2}^{- y^{2} / 2} + \epsilon h ( y ) e^{- y^{2}} \frac{/ 2}{- y^{2} / 2} - y^{2} h ( y ) e_{2 - y^{2} / 2}^{- y^{2} / 2} = 0
+\frac{d^{2}}{dy^{2}} h ( y ) e^{- y^{2} / 2} + \epsilon h ( y ) e^{- y^{2} / 2} - y^{2} h ( y ) e^{- y^{2} / 2} = 0
 ```
 
 ```math
-dy^{2} e \quad - 2 dy ye + \epsilon h ( - h ( y ) e_{/ 2} y ) e^{- y^{2}} - y^{2} + h ( y ) y h ( y ) e^{- y^{2}} e^{/ 2} = 0
+\frac{d^{2} h ( y )}{dy^{2}} e^{- y^{2} / 2} - 2 \frac{dh ( y )}{dy} ye^{- y^{2} / 2} - h ( y ) e^{- y^{2} / 2} + h ( y ) y^{2} e^{- y^{2} / 2}
+```
+
+```math
++ \epsilon h ( y ) e^{- y^{2} / 2} - y^{2} h ( y ) e^{- y^{2} / 2} = 0
 ```
 
 ```math
@@ -8192,7 +8196,15 @@ Using the second pair of equations to eliminate the $`n`$ + 1 coefficients, we h
 Now we can eliminate all the coefficients.
 
 ```math
-\begin{aligned} \frac{( e^{i\varphi} - \cos ( ka ) ) ( e^{i\varphi} - \cos ( ka ) - \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) )}{2 i\varphi \quad i\varphi} &= \left( \frac{2 maV_{0}}{\hbar^{2} k} \cos ( ka ) - \sin ( ka ) \right) \sin ( ka ) \\ & \quad e \quad - e \quad \left( \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) + \cos ( ka ) + \cos ( ka ) \right) + \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) \cos ( ka ) + \cos^{2} ( ka ) \end{aligned}
+( e^{i\varphi} - \cos ( ka ) ) ( e^{i\varphi} - \cos ( ka ) - \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) )
+```
+
+```math
+= \left( \frac{2 maV_{0}}{\hbar^{2} k} \cos ( ka ) - \sin ( ka ) \right) \sin ( ka )
+```
+
+```math
+\begin{aligned} & \quad e^{2 i\varphi} - e^{i\varphi} \left( \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) + \cos ( ka ) + \cos ( ka ) \right) \\ & \quad + \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) \cos ( ka ) + \cos^{2} ( ka ) \end{aligned}
 ```
 
 ```math
@@ -11639,7 +11651,11 @@ Recalling that for $`r \to \infty`$,
 and that our formula with the phase shift is
 
 ```math
-R ( r ) = \propto \quad \frac{1 \frac{\sin \left( \rho - \tfrac{\ell \pi}{2} + \delta_{\ell} ( k ) \right)}{\rho}}{\rho} \left[ \cos \delta_{\ell} \sin ( \rho - \frac{\ell \pi}{2} ) + \sin \delta_{\ell} \cos ( \rho - \frac{\ell \pi}{2} ) \right] ,
+R ( r ) \quad \propto \quad \frac{\sin \left( \rho - \tfrac{\ell \pi}{2} + \delta_{\ell} ( k ) \right)}{\rho}
+```
+
+```math
+= \frac{1}{\rho} \left[ \cos \delta_{\ell} \sin ( \rho - \frac{\ell \pi}{2} ) + \sin \delta_{\ell} \cos ( \rho - \frac{\ell \pi}{2} ) \right] ,
 ```
 
 we can **identify the phase shift** easily.
@@ -15049,7 +15065,7 @@ then the first two Maxwell equations are automatically satisfied. Applying the s
 ```
 
 ```math
--\nabla^{2} \vec{A} + \frac{1}{c^{2}} \frac{\partial^{2} \vec{A}}{\partial t^{2}} + \vec{\nabla} \left( \vec{\nabla} \cdot \vec{A} + \frac{1}{c} \frac{\partial \varphi}{\overline{\partial t}} \right) = \frac{4 \pi}{c} \vec{J}
+-\nabla^{2} \vec{A} + \frac{1}{c^{2}} \frac{\partial^{2} \vec{A}}{\partial t^{2}} + \vec{\nabla} \left( \vec{\nabla} \cdot \vec{A} + \frac{1}{c} \frac{\partial \varphi}{\partial t} \right) = \frac{4 \pi}{c} \vec{J}
 ```
 
 These **derivations** (see section 20.5.1) are fairly simple using Einstein notation.
@@ -20247,7 +20263,11 @@ perform the radial integration,
 and perform the angular integration.
 
 ```math
-\int d \Omega \quad Y_{0 0}^{*} = \frac{1}{\sqrt{4 \pi}} \int^{\left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{2} \sqrt{Y_{1 - 1}} \right)} d \Omega \left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \right) Y_{1 m_{i}} Y_{1 m_{i}}
+\int d \Omega \quad Y_{0 0}^{*} \quad \left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \right) Y_{1 m_{i}}
+```
+
+```math
+= \frac{1}{\sqrt{4 \pi}} \int d \Omega \left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \right) Y_{1 m_{i}}
 ```
 
 ```math
@@ -20425,7 +20445,11 @@ We may also deduce the angular distribution of photons from our calculation. Let
 We have performed that radial integration which will be unchanged. Assume that we start in a polarized state with $`m_{i}`$ = 1. We then look at our result for the angular integration in the matrix element
 
 ```math
-\int^{|} d \Omega Y_{0 0}^{*} \left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \right) = \frac{1}{4 \pi} \left( \epsilon_{z}^{2} \delta_{m_{i} 0} + \frac{1}{2} ( \epsilon_{x}^{2} + \epsilon_{y}^{2} ) ( \delta_{m_{i} ( - 1 )} + \delta_{m_{i} 1} ) \right) Y_{1 m_{i}} |^{2}
+\left| \int d \Omega Y_{0 0}^{*} \left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \right) Y_{1 m_{i}} \right|^{2}
+```
+
+```math
+= \frac{1}{4 \pi} \left( \epsilon_{z}^{2} \delta_{m_{i} 0} + \frac{1}{2} ( \epsilon_{x}^{2} + \epsilon_{y}^{2} ) ( \delta_{m_{i} ( - 1 )} + \delta_{m_{i} 1} ) \right)
 ```
 
 ```math
@@ -24619,7 +24643,11 @@ We’ve defined $`\psi`$, the 2 component wavefunction we will use, in terms of 
 This equation is correct, but not exactly what we want for the Schrödinger equation. In particular, we want to **isolate the non-relativistic energy on the right of the equation** without other operators. We can solve the problem by multiplying both sides of the equation by $`\left( 1 - \tfrac{p^{2}}{8 m^{2} c^{2}} \right)`$.
 
 ```math
-\begin{aligned} \left( 1 - \frac{p^{2}}{8 m^{2} c^{2}} \right) \vec{\sigma} \cdot \vec{p} \frac{1}{2 m} \left( 1 - \frac{E^{( NR )} + eA_{0}}{2 mc^{2}} \right) \vec{\sigma} \cdot \vec{p} \left( 1 - \frac{p^{2}}{8 m^{2} c^{2}} \right) &= \left( 1 - \frac{p^{2}}{8 m^{2} c^{2}} \right) \psi ( E^{( NR )} + eA_{0} ) \left( 1 - \frac{p^{2}}{8 m^{2} c^{2}} \right) \psi \\ & \quad \left( \frac{\vec{\sigma} \cdot \vec{p} \vec{\sigma} \cdot \vec{p}}{2 m} - \frac{p^{2}}{8 m^{2} c^{2}} \frac{\vec{\sigma} \cdot \vec{p} \vec{\sigma} \cdot \vec{p}}{2 m} - \frac{\vec{\sigma} \cdot \vec{p}}{2 m} \frac{E^{( NR )} + eA_{0}}{2 mc^{2}} \vec{\sigma} \cdot \vec{p} - \frac{\vec{\sigma} \cdot \vec{p} \vec{\sigma} \cdot \vec{p}}{2 m} \frac{p^{2}}{8 m^{2} c^{2}} \right) \psi \end{aligned}
+\left( 1 - \frac{p^{2}}{8 m^{2} c^{2}} \right) \vec{\sigma} \cdot \vec{p} \frac{1}{2 m} \left( 1 - \frac{E^{( NR )} + eA_{0}}{2 mc^{2}} \right) \vec{\sigma} \cdot \vec{p} \left( 1 - \frac{p^{2}}{8 m^{2} c^{2}} \right) \psi
+```
+
+```math
+\begin{aligned} &= \left( 1 - \frac{p^{2}}{8 m^{2} c^{2}} \right) ( E^{( NR )} + eA_{0} ) \left( 1 - \frac{p^{2}}{8 m^{2} c^{2}} \right) \psi \\ & \quad \left( \frac{\vec{\sigma} \cdot \vec{p} \vec{\sigma} \cdot \vec{p}}{2 m} - \frac{p^{2}}{8 m^{2} c^{2}} \frac{\vec{\sigma} \cdot \vec{p} \vec{\sigma} \cdot \vec{p}}{2 m} - \frac{\vec{\sigma} \cdot \vec{p}}{2 m} \frac{E^{( NR )} + eA_{0}}{2 mc^{2}} \vec{\sigma} \cdot \vec{p} - \frac{\vec{\sigma} \cdot \vec{p} \vec{\sigma} \cdot \vec{p}}{2 m} \frac{p^{2}}{8 m^{2} c^{2}} \right) \psi \end{aligned}
 ```
 
 ```math
@@ -24659,7 +24687,11 @@ p^{2} A_{0} \psi = - \hbar^{2} \nabla^{2} A_{0} \psi = - \hbar^{2} \vec{\nabla} 
 Plugging this back into the equation, we can cancel several terms.
 
 ```math
-\begin{aligned} \left( \frac{p^{2}}{2 m} - eA_{0} - \frac{p^{4}}{8 m^{3} c^{2}} + \frac{e \hbar \vec{\sigma} \cdot \vec{E} \times \vec{p} - ie \hbar \vec{E} \cdot \vec{p} - eA_{0} p^{2}}{4 m^{2} c^{2}} \right) &= \left( E^{( NR )} - e \frac{- \hbar^{2} ( \nabla^{2} A_{0} ) + 2 i \hbar \vec{E} \cdot \vec{p} + A_{0} p^{2}}{8 m^{2} c^{2}} - eA_{0} \frac{p^{2}}{8 m^{2} c^{2}} \right) \psi \psi \\ \left( \frac{p^{2}}{2 m} - eA_{0} - \frac{p^{4}}{8 m^{2} c^{2}} + \frac{e \hbar \vec{\sigma} \cdot \vec{E} \times \vec{p} - ie \hbar \vec{E} \cdot \vec{p}}{4 m^{2} c^{2}} \right) \psi &= \left( E^{( NR )} - e \frac{- \hbar^{2} ( \nabla^{2} A_{0} ) + 2 i \hbar \vec{E} \cdot \vec{p}}{8 m^{2} c^{2}} \right) \psi \end{aligned}
+\left( \frac{p^{2}}{2 m} - eA_{0} - \frac{p^{4}}{8 m^{3} c^{2}} + \frac{e \hbar \vec{\sigma} \cdot \vec{E} \times \vec{p} - ie \hbar \vec{E} \cdot \vec{p} - eA_{0} p^{2}}{4 m^{2} c^{2}} \right) \psi
+```
+
+```math
+\begin{aligned} &= \left( E^{( NR )} - e \frac{- \hbar^{2} ( \nabla^{2} A_{0} ) + 2 i \hbar \vec{E} \cdot \vec{p} + A_{0} p^{2}}{8 m^{2} c^{2}} - eA_{0} \frac{p^{2}}{8 m^{2} c^{2}} \right) \psi \\ \left( \frac{p^{2}}{2 m} - eA_{0} - \frac{p^{4}}{8 m^{2} c^{2}} + \frac{e \hbar \vec{\sigma} \cdot \vec{E} \times \vec{p} - ie \hbar \vec{E} \cdot \vec{p}}{4 m^{2} c^{2}} \right) \psi &= \left( E^{( NR )} - e \frac{- \hbar^{2} ( \nabla^{2} A_{0} ) + 2 i \hbar \vec{E} \cdot \vec{p}}{8 m^{2} c^{2}} \right) \psi \end{aligned}
 ```
 
 ```math
@@ -26665,7 +26697,7 @@ These equations are true for any spherically symmetric potential. Now it is time
 ```
 
 ```math
-\begin{pmatrix} \left( \tfrac{\partial}{\partial \rho} - \tfrac{\kappa}{\overline{\rho}} \right) F - \left( \sqrt{\frac{k_{2}}{k_{1}}} - \tfrac{Z\alpha}{\rho} \right) G \\ \left( \tfrac{\partial}{\partial \rho} + \tfrac{\kappa}{\overline{\rho}} \right) G - \left( \sqrt{\frac{k_{1}}{k_{2}}} + \tfrac{Z\alpha}{\rho} \right) F \end{pmatrix} = 0
+\begin{pmatrix} \left( \tfrac{\partial}{\partial \rho} - \tfrac{\kappa}{\rho} \right) F - \left( \sqrt{\frac{k_{2}}{k_{1}}} - \tfrac{Z\alpha}{\rho} \right) G \\ \left( \tfrac{\partial}{\partial \rho} + \tfrac{\kappa}{\rho} \right) G - \left( \sqrt{\frac{k_{1}}{k_{2}}} + \tfrac{Z\alpha}{\rho} \right) F \end{pmatrix} = 0
 ```
 
 With the guidance of the non-relativistic solutions, we will **postulate a solution of the form**
@@ -26681,11 +26713,11 @@ G = e^{- \rho} \rho^{s} \sum_{m = 0}^{\infty} b_{m} \rho^{m} = e^{- \rho} \sum_{
 The exponential will make everything go to zero for large $`\rho`$ if the power series terminates. We need to verify that this is a solution near $`\rho`$ = 0 if we pick the right $`a_{0} , b_{0}`$, and $`s`$. We now substitute these postulated solutions into the equations to **obtain recursion relations**.
 
 ```math
-\left( \frac{\partial}{\partial \rho} - \frac{\kappa}{\overline{\rho}} \right) F - \left( \sqrt{\frac{k_{2}}{k_{1}}} - \frac{Z\alpha}{\rho} \right) G = 0
+\left( \frac{\partial}{\partial \rho} - \frac{\kappa}{\rho} \right) F - \left( \sqrt{\frac{k_{2}}{k_{1}}} - \frac{Z\alpha}{\rho} \right) G = 0
 ```
 
 ```math
-\left( \frac{\partial}{\partial \rho} + \frac{\kappa}{\overline{\rho}} \right) G - \left( \sqrt{\frac{k_{1}}{k_{2}}} + \frac{Z\alpha}{\rho} \right) F = 0
+\left( \frac{\partial}{\partial \rho} + \frac{\kappa}{\rho} \right) G - \left( \sqrt{\frac{k_{1}}{k_{2}}} + \frac{Z\alpha}{\rho} \right) F = 0
 ```
 
 ```math

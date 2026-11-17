@@ -2832,6 +2832,16 @@ pub fn display(
     let (tags, mut rest): (Vec<MSpan>, Vec<MSpan>) = spans
         .into_iter()
         .partition(|s| tag_of(&s.text).is_some() && s.right >= right_margin - 1.5 * body);
+    if let Some(cuts) = size_zones(&rest, bars) {
+        let zone = |y: f32| cuts.iter().filter(|&&c| y > c).count();
+        let mut out = Vec::new();
+        for z in 0..=cuts.len() {
+            let part: Vec<MSpan> = rest.iter().chain(&tags).filter(|s| zone(s.cy()) == z).cloned().collect();
+            let pbars: Vec<Rule> = bars.iter().filter(|b| zone((b.top + b.bottom) / 2.0) == z).copied().collect();
+            out.extend(display(part, &pbars, right_margin, body));
+        }
+        return out;
+    }
     level_punctuation(&mut rest);
     let rest = rest;
     if rest.is_empty() {
@@ -2850,10 +2860,11 @@ pub fn display(
         .fold(0.0f32, f32::max);
     let mut mains: Vec<&MSpan> = rest.iter().filter(|s| !s.cmex() && s.size >= 0.9 * max).collect();
     mains.sort_by(|a, b| a.cy().total_cmp(&b.cy()));
-    // (centre, has a relation sign, starts with + or −)
-    let mut rows: Vec<(f32, bool, bool, bool)> = Vec::new();
+    // (centre, has a relation sign, starts with + or −, starts with a
+    // relation sign, is more than punctuation, + or − is its very first piece)
+    let mut rows: Vec<(f32, bool, bool, bool, bool, bool)> = Vec::new();
     let mut cur: Vec<&MSpan> = Vec::new();
-    let close_row = |cur: &Vec<&MSpan>, rows: &mut Vec<(f32, bool, bool, bool)>| {
+    let close_row = |cur: &Vec<&MSpan>, rows: &mut Vec<(f32, bool, bool, bool, bool, bool)>| {
         if !cur.is_empty() {
             let c = cur.iter().map(|s| s.cy()).sum::<f32>() / cur.len() as f32;
             // (an arrow relates the two sides of its line as "=" does)
@@ -2861,10 +2872,14 @@ pub fn display(
             let in_fraction = |s: &MSpan| bars.iter().any(|b| s.left >= b.left - 2.0 && s.right <= b.right + 2.0 && (s.cy() - (b.top + b.bottom) / 2.0).abs() > 0.35 * max && (s.cy() - (b.top + b.bottom) / 2.0).abs() <= 1.3 * max);
             let rel = cur.iter().any(|s| is_relation(&s.text) || (s.text.contains('→') && !in_fraction(s)));
             let first = cur.iter().min_by(|a, b| a.left.total_cmp(&b.left)).unwrap();
+            // (… the line's first piece, not a sign behind a fraction that opens it)
+            let fraction_first = bars.iter().any(|b| b.left < first.left && ((b.top + b.bottom) / 2.0 - c).abs() <= 0.3 * max);
             let op = first.text.trim_start().starts_with(['+', '−', '-', '×', '·']);
             // (a line that begins with the sign goes on from the line above)
             let goes_on = is_relation(first.text.trim());
-            rows.push((c, rel, op, goes_on));
+            // (more than the full stop that ends a line of text)
+            let solid = cur.iter().any(|s| !s.text.trim().chars().all(|c| ",.;:".contains(c)));
+            rows.push((c, rel, op, goes_on, solid, op && !fraction_first));
         }
     };
     for s in mains {
@@ -2952,8 +2967,9 @@ pub fn display(
     };
     let mut skipped: Vec<f32> = Vec::new();
     let mut prev_row: Option<f32> = None;
+    let mut level_row: Option<f32> = None;
     let mut related = false;
-    for (c, rel, op, goes_on) in rows {
+    for (c, rel, op, goes_on, solid, leading_op) in rows {
         if std::env::var_os("PDF2MD_DISPDEBUG").is_some() {
             eprintln!("ROW {c} rel {rel} op {op} matrix {} inbr {} frac {}", matrix_row(c), in_bracket(c), fraction_row(c));
         }
@@ -2993,9 +3009,32 @@ pub fn display(
             anchors.push((above.iter().sum::<f32>() / above.len().max(1) as f32, false));
         }
         prev_row = Some(c);
+        // Two rows each at the height of fraction bars of its own, well
+        // apart and with no bar between them (they are no numerator and
+        // denominator of one fraction): two lines, though neither may have
+        // a relation sign to tell it. One that begins with a sign goes on
+        // from the line above.
+        // (… the row at the middle of every bracket around it: no row of
+        // a column)
+        let centred = |c: f32| !rest.iter().any(|s| s.cmex() && s.text.trim().is_empty()) && tall.iter().filter(|b| c > b.top - 0.5 * max && c < b.bottom + max).all(|b| (c - b.cy()).abs() < 0.5 * max);
+        // (… a bar of the line, not one of a fraction in a numerator)
+        let mid = |b: &Rule| (b.top + b.bottom) / 2.0;
+        let nested = |b: &Rule| bars.iter().any(|w| w.left <= b.left + 1.0 && w.right >= b.right - 1.0 && (mid(w) - mid(b)).abs() > 0.3 * max && (mid(w) - mid(b)).abs() <= 1.6 * max);
+        let level = solid && bars.iter().any(|b| (c - mid(b)).abs() <= 0.3 * max && !nested(b)) && (!in_bracket(c) || centred(c));
+        let two_lines = level
+            && level_row.is_some_and(|p| c - p >= 2.2 * max && !bars.iter().any(|b| (b.top + b.bottom) / 2.0 > p + 0.5 * max && (b.top + b.bottom) / 2.0 < c - 0.5 * max));
+        let opened = two_lines && anchors.is_empty();
+        if opened {
+            anchors.push((level_row.unwrap_or(c), false));
+        }
+        if level {
+            level_row = Some(c);
+        }
         let far = anchors.last().is_none_or(|&(a, _)| c - a >= 1.1 * max);
         let own_line = (!bars.is_empty() || apart) && !fraction_row(c) && !in_bracket(c);
-        if second_line || (rhs && far) {
+        if two_lines && far && (opened || !op) && (leading_op || !rel) {
+            anchors.push((c, leading_op));
+        } else if second_line || (rhs && far) {
             anchors.push((c, true));
         } else if far && (rel || tagged || own_line) {
             related |= rel;
@@ -3129,6 +3168,59 @@ pub fn display(
         .filter(|(r, t)| r.iter().any(|x| !x.is_empty()) || t.is_some())
         .map(|(r, t)| if r.len() == 1 { (r[0].clone(), t) } else { (aligned(&r), t) })
         .collect()
+}
+
+/// Displays in two sizes, one under the other with nothing between them
+/// (a derivation's steps set smaller than its result): where to cut them
+/// apart. "The size of the line" is one size for a whole display, and the
+/// letters of the smaller one would all read as indices of the larger.
+///
+/// The smaller size is that of small text (about five sixths), never that
+/// of an index (two thirds); its lines hold a relation sign of their own,
+/// and white space parts the two.
+fn size_zones(spans: &[MSpan], bars: &[Rule]) -> Option<Vec<f32>> {
+    let mark = |s: &MSpan| s.text.trim().chars().all(|c| ",.;:".contains(c));
+    // bands: (top, bottom, size of its letters, has a relation sign in that size)
+    let mut boxes: Vec<(f32, f32, Option<&MSpan>)> = spans.iter().map(|s| (s.top, s.bottom, Some(s))).collect();
+    boxes.extend(bars.iter().map(|b| (b.top, b.bottom, None)));
+    boxes.sort_by(|a, b| a.0.total_cmp(&b.0));
+    let mut bands: Vec<(f32, f32, Vec<&MSpan>)> = Vec::new();
+    for (top, bottom, s) in boxes {
+        match bands.last_mut() {
+            Some(b) if top <= b.1 + 2.0 => {
+                b.1 = b.1.max(bottom);
+                b.2.extend(s);
+            }
+            _ => bands.push((top, bottom, s.into_iter().collect())),
+        }
+    }
+    let size = |m: &[&MSpan]| m.iter().filter(|s| !s.cmex() && !mark(s)).map(|s| s.size).fold(0.0f32, f32::max);
+    let related = |m: &[&MSpan], size: f32| m.iter().any(|s| !s.cmex() && s.size >= 0.9 * size && s.text.split_whitespace().any(is_relation));
+    // runs of bands in one size: (members, top, bottom)
+    let mut runs: Vec<(Vec<&MSpan>, f32, f32)> = Vec::new();
+    for (top, bottom, members) in bands {
+        match runs.last_mut() {
+            Some(run) => {
+                let (a, b) = (size(&run.0), size(&members));
+                let (small, large) = (a.min(b), a.max(b));
+                if small > 0.76 * large && small < 0.9 * large && top - run.2 >= 0.5 * small {
+                    runs.push((members, top, bottom));
+                } else {
+                    run.0.extend(members);
+                    run.2 = bottom;
+                }
+            }
+            None => runs.push((members, top, bottom)),
+        }
+    }
+    let mut cuts = Vec::new();
+    for w in runs.windows(2) {
+        let (a, b) = (size(&w[0].0), size(&w[1].0));
+        if related(if a < b { &w[0].0 } else { &w[1].0 }, a.min(b)) {
+            cuts.push((w[0].2 + w[1].1) / 2.0);
+        }
+    }
+    (!cuts.is_empty()).then_some(cuts)
 }
 
 /// Rows of one `aligned` block, lined up at the first "=" (rows without
