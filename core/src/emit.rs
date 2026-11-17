@@ -1139,7 +1139,10 @@ fn chapter_body_marked(book: &Book, i: usize) -> String {
             // people in them, above the caption)
             let after = ch.blocks[bi + 1..].iter().filter(|o| !matches!(o.block, crate::Block::Anchor(_) | crate::Block::Figure { .. })).take_while(|o| o.page == b.page).nth(1);
             let named = next.is_some_and(|o| matches!(&o.block, crate::Block::Para(inl) if crate::plain(inl).len() <= 120) && o.page == b.page);
-            if let Some(own) = next.and_then(own_caption).or_else(|| after.filter(|_| named).and_then(own_caption)) {
+            // (or after the row it stands in, each picture over its name)
+            let row_end = ch.blocks[bi + 1..].iter().position(|o| matches!(o.block, crate::Block::ColumnsEnd)).filter(|k| ch.blocks[bi + 1..bi + 1 + k].iter().all(|o| o.page == b.page && !matches!(o.block, crate::Block::Columns(_))));
+            let under_row = row_end.and_then(|k| ch.blocks[bi + 2 + k..].iter().find(|o| !matches!(o.block, crate::Block::Anchor(_))));
+            if let Some(own) = next.and_then(own_caption).or_else(|| after.filter(|_| named).and_then(own_caption)).or_else(|| under_row.and_then(own_caption)) {
                 s.push_str(&format!("![Fig. {}]({})\n\n", own.1, figure_file(*page, *n)));
                 continue;
             }

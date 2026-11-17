@@ -2686,6 +2686,55 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
             // (a displayed equation, or a line that is nothing but a formula read from an image)
             let only_formula = |l: &Line| l.spans.iter().any(|s| s.tex.is_some()) && l.spans.iter().all(|s| s.tex.is_some() || s.text.trim().is_empty());
             let before_display = i + 1 < end && (disp[i + 1] || only_formula(&lines[i + 1]));
+            // A row of pictures side by side with a line of names under
+            // them, one name under each (portraits): each picture and its
+            // name are one cell of a row, as on the page. Left as they
+            // come, the pictures stand one under the other and the names
+            // run together in one line.
+            {
+                let first = b.out.iter().rposition(|o| !(o.page == pi && matches!(o.block, Block::Figure { .. }))).map_or(0, |k| k + 1);
+                let areas: Vec<Figure> = b.out[first..].iter().filter_map(|o| if let Block::Figure { area, .. } = &o.block { Some(*area) } else { None }).collect();
+                let beside = areas.len() >= 2 && areas.windows(2).all(|w| w[1].left >= w[0].right - 2.0 && w[1].top < w[0].bottom && w[1].bottom > w[0].top);
+                let foot = areas.iter().map(|a| a.bottom).fold(f32::MIN, f32::max);
+                let under = |s: &crate::layout::Span| {
+                    let c = s.left + s.width / 2.0;
+                    areas.iter().position(|a| c >= a.left - 0.2 * (a.right - a.left) && c <= a.right + 0.2 * (a.right - a.left))
+                };
+                let named = beside
+                    && b.para.is_empty()
+                    && l.top >= foot - 4.0
+                    && l.top - foot <= 2.5 * st.body
+                    && l.spans.iter().all(|s| under(s).is_some())
+                    && (0..areas.len()).all(|k| l.spans.iter().any(|s| under(s) == Some(k)));
+                if named {
+                    let figures = b.out.split_off(first);
+                    b.push(Block::Columns(areas.len()));
+                    for (k, figure) in figures.into_iter().enumerate() {
+                        if k > 0 {
+                            b.push(Block::ColumnBreak);
+                        }
+                        // (the picture is cut out with a little room around
+                        // it: not down into its name)
+                        let mut figure = figure;
+                        if let Block::Figure { area, .. } = &mut figure.block {
+                            area.bottom = area.bottom.min(l.top - 12.0).max(area.top + 1.0);
+                        }
+                        b.out.push(figure);
+                        let spans: Vec<crate::layout::Span> = l.spans.iter().filter(|s| under(s) == Some(k)).cloned().collect();
+                        let name = crate::layout::make_line(spans, &|s| doc.size_of(s));
+                        b.push(Block::Para(line_inlines(doc, &name, st)));
+                        if let Some(last) = b.out.last_mut() {
+                            last.centered = true;
+                        }
+                    }
+                    b.push(Block::ColumnsEnd);
+                    prev_top = Some(l.top);
+                    last_heading = None;
+                    b.prev = None;
+                    i += 1;
+                    continue;
+                }
+            }
             // On the book's first page, a line in large type that stands
             // well apart under the title and its subtitle is the author's
             // name or the date: a line of the title page, no heading of the
