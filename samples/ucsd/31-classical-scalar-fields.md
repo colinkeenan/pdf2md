@@ -313,7 +313,7 @@ We will solve this for the **field from a point source** below and get the resul
 \varphi ( \vec{x} ) = \frac{- Ge^{- \mu r}}{4 \pi r} .
 ```
 
-This solution should be familiar to us from the scalar potential for an electric point charge which satisfies the same equation with $`\mu = 0`$, $`\nabla^{2} \varphi = - \rho = - Q\delta^{3} ( \vec{x} )`$. This is a field that falls off much faster than $`\frac{1}{r}`$. **A massive scalar field falls off exponentially** and the larger the mass, the faster the fall off. _(We also get a mathematical result which is useful in several applications. This is worked out another way in the section on hyperfine splitting)_ $`\nabla_{\overline{r}}^{2 1} = - 4 \pi \delta^{3} ( \vec{x} ) .`$
+This solution should be familiar to us from the scalar potential for an electric point charge which satisfies the same equation with $`\mu = 0`$, $`\nabla^{2} \varphi = - \rho = - Q\delta^{3} ( \vec{x} )`$. This is a field that falls off much faster than $`\frac{1}{r}`$. **A massive scalar field falls off exponentially** and the larger the mass, the faster the fall off. _(We also get a mathematical result which is useful in several applications. This is worked out another way in the section on hyperfine splitting)_ $`\nabla^{2} \tfrac{1}{r} = - 4 \pi \delta^{3} ( \vec{x} ) .`$
 
 Now we solve for the scalar field from a point source by Fourier transforming the wave equation. Define the Fourier transforms to be.
 

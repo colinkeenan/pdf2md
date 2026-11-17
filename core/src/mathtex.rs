@@ -1940,7 +1940,9 @@ fn take_brackets(spans: &[MSpan], depth: usize) -> (Vec<MSpan>, Vec<Item>) {
             let body = matrix(&inside, depth, ' ', typed).unwrap_or_else(|| build_at(&inside, depth + 1));
             format!("\\left{} {body} \\right|{scripts}", delim_tex(open))
         } else {
-            matrix(&inside, depth, open, typed).unwrap_or_else(|| format!("\\left{} {} \\right{}", delim_tex(open), build_at(&inside, depth + 1), delim_tex(close)))
+            matrix(&inside, depth, open, typed)
+                .or_else(|| (typed && open == '{' && close == '}').then(|| system_rows(&inside, depth)).flatten())
+                .unwrap_or_else(|| format!("\\left{} {} \\right{}", delim_tex(open), build_at(&inside, depth + 1), delim_tex(close)))
         };
         if inside.is_empty() {
             continue; // nothing between them: nothing to write
@@ -2257,6 +2259,29 @@ fn text_rows(spans: &[MSpan]) -> Vec<Vec<MSpan>> {
         rows[k].push(c);
     }
     rows
+}
+
+/// The lines of a system of equations in braces that is no matrix: its
+/// equations are of unlike length, or one of them goes on in a second
+/// line that begins with a sign, so the lines share no columns. Each line
+/// has a relation sign or begins with a sign, and the lines stand a line
+/// apart (the fractions are pieces of their lines by now, so a numerator
+/// is no line). Lined up at their "=", a continuation set in under it.
+fn system_rows(spans: &[MSpan], depth: usize) -> Option<String> {
+    let size = spans.iter().filter(|s| !s.cmex()).map(|s| s.size).fold(0.0f32, f32::max).max(1.0);
+    let rows = text_rows(spans);
+    if rows.len() < 2 || rows.windows(2).any(|w| w[1][0].cy() - w[0][0].cy() < size) {
+        return None;
+    }
+    let line = |row: &Vec<MSpan>| {
+        let first = row.iter().filter(|s| !s.cmex() && s.size >= 0.9 * size).min_by(|a, b| a.left.total_cmp(&b.left));
+        row.iter().any(|s| s.atom.is_none() && s.size >= 0.9 * size && is_relation(&s.text)) || first.is_some_and(|s| s.atom.is_none() && s.text.trim_start().starts_with(['+', '−', '-', '=']))
+    };
+    if !rows.iter().all(line) {
+        return None;
+    }
+    let built: Vec<String> = rows.iter().map(|r| build_at(r, depth + 1)).collect();
+    Some(format!("\\left\\{{ {} \\right\\}}", aligned(&built)))
 }
 
 /// Rows grouped by a "}" on their right: "ūu = +1 for electron states /
@@ -2852,6 +2877,16 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
             // its height, right of the sign, are no limit — they and the
             // index are looked at with what follows)
             let sign_right = spans[op.src[0]].right;
+            // (a sign with a lower limit hanging at its foot, under the
+            // exponent's height and under the middle of the line (the limits
+            // of an integral inside an exponent all stand over it), is a
+            // sign of the line set small, with
+            // both its limits: "C₁² ∫_{−∞}^{−a/2} …" — the upper limit
+            // stands level with the 2 before the sign)
+            let lower_limit = !raised_dot(op) && op.src[1..].iter().chain(run.iter()).any(|&k| !spans[k].cmex() && spans[k].cy() > y_before + 0.6 * size_before && spans[k].cy() > y0 + 0.1 * h && spans[k].left >= spans[op.src[0]].left - 1.0 && spans[k].left <= sign_right + 0.8 * size_before);
+            if lower_limit {
+                break;
+            }
             let summed_in = op.src[1..].iter().filter(|&&k| !spans[k].cmex() && (spans[k].size - size_before).abs() <= 0.1 * size_before && (spans[k].cy() - y_before).abs() <= 0.4 * size_before && spans[k].left >= sign_right - 1.0).count();
             let widened = !taken && !raised_dot(op) && summed_in >= 2;
             let probe: Vec<usize> = if widened { op.src[1..].iter().copied().chain(run.iter().copied()).collect() } else { run.clone() };

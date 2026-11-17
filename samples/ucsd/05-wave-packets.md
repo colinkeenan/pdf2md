@@ -382,7 +382,7 @@ f ( x ) = \sqrt{\frac{\pi}{2}} \tfrac{1}{L} \sum_{n = -\infty}^{\infty} A_{n} e 
 ```
 
 ```math
-f ( x ) = \tfrac{\sqrt{\pi}}{\sqrt{2} L} \int_{-\infty}^{\infty} A ( k ) e_{\overline{\pi}}^{ikxL} dk \quad \text{ but is rewritten in new A and dk }
+f ( x ) = \tfrac{\sqrt{\pi}}{\sqrt{2} L} \int_{-\infty}^{\infty} A ( k ) e^{ikx} \tfrac{L}{\pi} dk \quad \text{ but is rewritten in new A and dk }
 ```
 
 ```math

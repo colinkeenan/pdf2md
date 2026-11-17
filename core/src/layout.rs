@@ -2464,7 +2464,36 @@ pub fn parse_svg_shades(svg: &str) -> Vec<Vec<(Rule, f32)>> {
 /// a fraction bar) and no root sign right before it, is an overline: Ā.
 fn mark_overlines(doc: &mut Doc) {
     let fonts = doc.fonts.clone();
+    let size_of = |s: &Span| fonts.get(s.font).map_or(s.height, |f| f.size);
     for page in doc.pages.iter_mut() {
+        // The numerator of a small fraction may come in one piece with the
+        // letters before it ("αx ∂" over "∂x": an exponent and, behind a
+        // gap, the ∂ of ∂/∂x). The word over the bar is cut off, or the
+        // bar would be a line over its denominator.
+        for r in page.rules.clone() {
+            let under = page.lines.iter().flat_map(|l| l.spans.iter()).any(|t| t.left >= r.left - 2.0 && t.right() <= r.right + 3.0 && t.top >= r.bottom - 3.0 && t.top <= r.bottom + 0.5 * t.height);
+            if !under {
+                continue;
+            }
+            for line in page.lines.iter_mut() {
+                let found = (0..line.spans.len()).find(|&k| {
+                    let s = &line.spans[k];
+                    let above = s.bottom() <= r.top + 3.0 && s.bottom() >= r.top - 0.5 * s.height && s.left < r.right && s.right() > r.left;
+                    let sticks_out = s.left < r.left - 2.0 || s.right() > r.right + 2.0;
+                    above && sticks_out && s.text.trim().contains(' ') && {
+                        let words = split_span_words(s);
+                        let over: Vec<&Span> = words.iter().filter(|w| w.left < r.right && w.right() > r.left).collect();
+                        over.len() == 1 && over[0].left >= r.left - 2.0 && over[0].right() <= r.right + 2.0
+                    }
+                });
+                if let Some(k) = found {
+                    let words = split_span_words(&line.spans[k]);
+                    line.spans.splice(k..=k, words);
+                    let (col, bars) = (line.col, std::mem::take(&mut line.bars));
+                    *line = Line { col, bars, ..make_line(std::mem::take(&mut line.spans), &size_of) };
+                }
+            }
+        }
         let all: Vec<(f32, f32, f32, f32, String, String)> = page
             .lines
             .iter()
