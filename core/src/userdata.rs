@@ -11,7 +11,15 @@
 //!   `<span class="fix" data-was="as converted">as in the book</span>`;
 //!   redone in the same paragraph.
 //!
-//! (Equation corrections are kept per picture by [`crate::ocr`].)
+//! * **Fixes of a displayed equation built from the PDF's text**: the
+//!   corrected ```` ```math ```` block under a mark that holds the equation
+//!   as converted, `<!-- pdf2md:fix as converted -->`. Every block of the
+//!   chapter that is converted to that LaTeX again is replaced. An alert
+//!   that begins "**Edited by Claude.**" right under the block is part of
+//!   the fix and goes wherever the fix goes.
+//!
+//! (Corrections of equations read from pictures are kept per picture by
+//! [`crate::ocr`].)
 
 use std::path::Path;
 
@@ -48,17 +56,67 @@ pub struct Mark {
     pub mark: String,
 }
 
+/// A displayed equation corrected by hand (one built from the PDF's
+/// text: it has no picture to be kept by).
+#[derive(Debug, Clone, PartialEq)]
+pub struct EqFix {
+    pub slug: Option<String>,
+    /// the equation's LaTeX as converted (what stands between the fences)
+    pub was: String,
+    /// the mark, the corrected block, and the alert that belongs to it
+    pub block: String,
+}
+
 #[derive(Debug, Clone, Default, PartialEq)]
 pub struct UserData {
     pub notes: Vec<Note>,
     pub fixes: Vec<Fix>,
     pub marks: Vec<Mark>,
+    pub eqs: Vec<EqFix>,
 }
 
 impl UserData {
     pub fn is_empty(&self) -> bool {
-        self.notes.is_empty() && self.fixes.is_empty() && self.marks.is_empty()
+        self.notes.is_empty() && self.fixes.is_empty() && self.marks.is_empty() && self.eqs.is_empty()
     }
+}
+
+const EQ_FIX: &str = "<!-- pdf2md:fix ";
+const BY_CLAUDE: &str = "\n\n> [!NOTE]\n> **Edited by Claude.**";
+
+/// The mark of a corrected equation for its LaTeX as converted (a comment
+/// cannot hold two hyphens in a row).
+pub fn eq_fix_mark(was: &str) -> String {
+    format!("{EQ_FIX}{} -->", was.replace("--", "-&#45;"))
+}
+
+/// The corrected equations of a text: (start, end, as converted).
+fn eq_fix_ranges(text: &str) -> Vec<(usize, usize, String)> {
+    let mut out = Vec::new();
+    let mut from = 0;
+    while let Some(i) = text[from..].find(EQ_FIX).map(|i| from + i) {
+        from = i + EQ_FIX.len();
+        if i > 0 && !text[..i].ends_with('\n') {
+            continue;
+        }
+        let Some(close) = text[from..].find(" -->\n\n```math\n").map(|c| from + c) else { continue };
+        let was = unescape(&text[from..close]);
+        let body = close + " -->\n\n```math\n".len();
+        let Some(mut end) = text[body..].find("\n```").map(|e| body + e + 4) else { continue };
+        if text[end..].starts_with(BY_CLAUDE) {
+            end += 2;
+            for line in text[end..].split_inclusive('\n') {
+                if !line.starts_with('>') {
+                    break;
+                }
+                end += line.len();
+            }
+            end = text[..end].trim_end().len();
+        }
+        out.push((i, end, was));
+        from = end;
+    }
+    out
 }
 
 /// Byte ranges of the reader's markers in a text.
@@ -215,7 +273,12 @@ fn equation_above(before: &str) -> Option<&str> {
 
 fn collect_file(text: &str, slug_at: &dyn Fn(usize) -> Option<String>) -> UserData {
     let mut data = UserData::default();
-    let notes = note_ranges(text);
+    let eqs = eq_fix_ranges(text);
+    for (a, b, was) in &eqs {
+        data.eqs.push(EqFix { slug: slug_at(*a), was: was.clone(), block: text[*a..*b].to_string() });
+    }
+    // (the alert of a corrected equation is part of its fix, no note)
+    let notes: Vec<(usize, usize)> = note_ranges(text).into_iter().filter(|&(a, _)| !eqs.iter().any(|(x, y, _)| a >= *x && a < *y)).collect();
     let inside = |p: usize| notes.iter().any(|&(a, b)| p >= a && p < b);
     for &(a, b) in &notes {
         // the block before it (skipping other notes)
@@ -358,6 +421,11 @@ pub fn collect(dir: &Path) -> UserData {
                 all.marks.push(m);
             }
         }
+        for e in data.eqs {
+            if !all.eqs.iter().any(|g| g.slug == e.slug && g.was == e.was) {
+                all.eqs.push(e);
+            }
+        }
     }
     all
 }
@@ -391,6 +459,9 @@ pub fn follow_renames(data: &mut UserData, files: &[(&str, &str)]) {
     for m in data.marks.iter_mut() {
         moved(&mut m.slug, &m.paragraph);
     }
+    for e in data.eqs.iter_mut() {
+        moved(&mut e.slug, "");
+    }
 }
 
 /// Put notes and fixes into a newly written Markdown file (`slug`: the
@@ -414,8 +485,29 @@ pub fn apply(text: &mut String, data: &UserData, slug: Option<&str>) -> Vec<Note
             pos += block.len() + 2;
         }
     }
-    // markers: in their paragraph after the same text, else at its end
     let mut lost = Vec::new();
+    // corrected equations: every block converted to that LaTeX again
+    // (one whose equation is converted differently now is kept with the
+    // notes that lost their place)
+    for e in data.eqs.iter().filter(|e| ours(&e.slug)) {
+        let needle = format!("```math\n{}\n```", e.was);
+        let mut from = 0;
+        let mut found = text.contains(&e.block);
+        while let Some(i) = text[from..].find(&needle).map(|i| from + i) {
+            let fresh = (i == 0 || text[..i].ends_with("\n\n")) && !text[..i].ends_with(" -->\n\n") && text[i + needle.len()..].chars().next().is_none_or(|c| c == '\n');
+            if fresh {
+                text.replace_range(i..i + needle.len(), &e.block);
+                from = i + e.block.len();
+                found = true;
+            } else {
+                from = i + needle.len();
+            }
+        }
+        if !found && slug.is_some() {
+            lost.push(Note { slug: e.slug.clone(), after: String::new(), anchor: None, text: e.block.clone() });
+        }
+    }
+    // markers: in their paragraph after the same text, else at its end
     for m in data.marks.iter().filter(|m| ours(&m.slug)) {
         let mut pos = 0;
         let mut placed = false;
@@ -530,6 +622,9 @@ pub fn backup(data: &UserData, book_dir: &Path) {
     for f in &data.fixes {
         s.push_str(&format!("<!-- fix in {} -->\n{}\n\n", f.slug.as_deref().unwrap_or("?"), f.span));
     }
+    for e in &data.eqs {
+        s.push_str(&format!("<!-- equation fix in {} -->\n{}\n\n", e.slug.as_deref().unwrap_or("?"), e.block));
+    }
     let _ = std::fs::write(dir.join(format!("{name}.md")), s);
 }
 
@@ -553,6 +648,27 @@ mod tests {
         // (a note that came to stand between the mark and the equation)
         let between = eq("u_{El} = A r", "").replace(" -->\n\n```math", " -->\n\n> [!NOTE]\n> The index was read as I.\n\n```math");
         assert_eq!(collect_file(&between, &|_| Some("c".into())), d);
+    }
+
+    #[test]
+    fn a_corrected_equation_of_a_text_pdf_is_corrected_again_wherever_it_comes_back() {
+        let was = "B_{2} = {}_{2} \\frac{a}{b}_{2} -- c";
+        let fixed = format!("{}\n\n```math\nB_{{2}} = \\frac{{a}}{{b}} - c\n```\n\n> [!NOTE]\n> **Edited by Claude.** Two stray indices taken out.", eq_fix_mark(was));
+        let edited = format!("# Ch\n\nSo\n\n{fixed}\n\n> [!NOTE]\n> My own note.\n\nand again\n\n{fixed}\n\nEnd.\n");
+        let d = collect_file(&edited, &|_| Some("c".into()));
+        assert_eq!(d.eqs.len(), 2);
+        assert_eq!(d.eqs[0].was, was);
+        assert_eq!(d.notes.len(), 1, "{:?}", d.notes);
+        let mut d = d;
+        d.eqs.truncate(1);
+        let mut new = format!("# Ch\n\nSo\n\n```math\n{was}\n```\n\nand again\n\n```math\n{was}\n```\n\nEnd.\n");
+        assert!(apply(&mut new, &d, Some("c")).is_empty());
+        assert_eq!(new, edited);
+        // (converted differently now: kept, at the chapter's end)
+        let mut other = "# Ch\n\nSo\n\n```math\nB_{2} = \\frac{a}{b}\n```\n\nEnd.\n".to_string();
+        let lost = apply(&mut other, &d, Some("c"));
+        assert_eq!(lost.len(), 2);
+        assert!(lost.iter().any(|n| n.text == fixed));
     }
 
     #[test]
