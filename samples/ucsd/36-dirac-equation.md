@@ -826,11 +826,11 @@ We now have simple solutions for spin up and spin down for both positive energy 
 ```
 
 ```math
-\sigma_{x} = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}_{2} \quad \sigma_{y} = \begin{pmatrix} 0 & - i \\ i & 0 \end{pmatrix} \quad \sigma_{z} = \begin{pmatrix} 1 & 0 \\ 0 & - 1 \end{pmatrix}
+\sigma_{x} = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \quad \sigma_{y} = \begin{pmatrix} 0 & - i \\ i & 0 \end{pmatrix} \quad \sigma_{z} = \begin{pmatrix} 1 & 0 \\ 0 & - 1 \end{pmatrix}
 ```
 
 ```math
-\begin{pmatrix} - E + mc & 0 & p_{z} c & ( p_{x} - ip_{y} ) c \\ 0 & - E + mc^{2} & ( p_{x} + ip_{y} ) c & - p_{z} c \\ - p_{z} c & - ( p_{x} - ip_{y} ) c & E + mc^{2} & 0 \\ - ( p_{x} + ip_{y} ) c & p_{z} c & 0 & E + mc^{2} \end{pmatrix} u_{\vec{p}} = 0
+\begin{pmatrix} - E + mc^{2} & 0 & p_{z} c & ( p_{x} - ip_{y} ) c \\ 0 & - E + mc^{2} & ( p_{x} + ip_{y} ) c & - p_{z} c \\ - p_{z} c & - ( p_{x} - ip_{y} ) c & E + mc^{2} & 0 \\ - ( p_{x} + ip_{y} ) c & p_{z} c & 0 & E + mc^{2} \end{pmatrix} u_{\vec{p}} = 0
 ```
 
 <div align="right"><a href="book.pdf#page=498" target="_blank" title="This page in the PDF"><sup>[p. 498]</sup></a></div>
@@ -854,11 +854,11 @@ B_{1} = \frac{p_{z} c}{E + mc^{2}}
 ```
 
 ```math
-B_{2} = {}_{2} \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}}_{2}
+B_{2} = \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}}
 ```
 
 ```math
-\begin{pmatrix} - E + mc^{2} + \tfrac{p c}{E + mc^{2}} \\ \frac{p_{z} ( p_{x} + ip_{y} ) c^{2} - p_{z} ( p_{x} + ip_{y} ) c^{2}}{E + mc^{2}} \\ 0 \\ 0 \end{pmatrix} = 0
+\begin{pmatrix} - E + mc^{2} + \tfrac{p^{2} c^{2}}{E + mc^{2}} \\ \frac{p_{z} ( p_{x} + ip_{y} ) c^{2} - p_{z} ( p_{x} + ip_{y} ) c^{2}}{E + mc^{2}} \\ 0 \\ 0 \end{pmatrix} = 0
 ```
 
 ```math
@@ -894,11 +894,11 @@ If we make the upper two components those of a **spin down electron**, we get th
 ```
 
 ```math
-\begin{aligned} B_{1} &= \frac{( p_{x} - ip_{y} ) c}{E + mc^{2}} \\ {}_{2} \quad B_{2} &= \frac{- p_{z} c}{E + mc^{2}}_{2} \end{aligned}
+\begin{aligned} B_{1} &= \frac{( p_{x} - ip_{y} ) c}{E + mc^{2}} \\ B_{2} &= \frac{- p_{z} c}{E + mc^{2}} \end{aligned}
 ```
 
 ```math
-\begin{pmatrix} \frac{p_{z} ( p_{x} - ip_{y} ) c - p_{z} ( p_{x} - ip_{y} ) c}{E + mc^{2}} \\ - E + mc^{2} + \tfrac{p^{2} c^{2}}{E + mc^{2}} \\ 0 \\ 0 \end{pmatrix} = 0
+\begin{pmatrix} \frac{p_{z} ( p_{x} - ip_{y} ) c^{2} - p_{z} ( p_{x} - ip_{y} ) c^{2}}{E + mc^{2}} \\ - E + mc^{2} + \tfrac{p^{2} c^{2}}{E + mc^{2}} \\ 0 \\ 0 \end{pmatrix} = 0
 ```
 
 ```math
@@ -2484,7 +2484,7 @@ c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \left( - i \hbar r \frac{\par
 ```
 
 ```math
-c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \left( - i \hbar r \frac{\partial}{\partial r} + i \vec{\sigma} \cdot \vec{L} \right) \begin{pmatrix} if ( r ) \mathcal{Y}_{j\ell}^{m} \\ {}_{m} \begin{matrix} j \\ B \\ j \\ A \end{matrix} \\ g ( r ) \mathcal{Y}_{j\ell} \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell}^{m} \\ {}_{m} \begin{matrix} j \\ A \\ j \\ B \end{matrix} \\ if ( r ) \mathcal{Y}_{j\ell} \end{pmatrix}
+c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \left( - i \hbar r \frac{\partial}{\partial r} + i \vec{\sigma} \cdot \vec{L} \right) \begin{pmatrix} if ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \\ g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \\ if ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \end{pmatrix}
 ```
 
 The **effect of the two operators related to angular momentum** can be deduced. First, $`\vec{\sigma} \cdot \vec{L}`$ is related to $`K`$. For positive $`\kappa , \psi_{A}`$ has $`\ell = j + \tfrac{1}{2}`$. For negative $`\kappa , \psi_{A}`$ has $`\ell = j - \tfrac{1}{2}`$. For either, $`\psi_{B}`$ has the opposite relation for $`\ell`$, indicating why the full spinor is not an eigenstate of $`L^{2}`$.
@@ -2534,19 +2534,19 @@ The phase factor depends on the conventions we choose for the states $`\mathcal{
 We now have everything we need to **get to the radial equations**.
 
 ```math
-\begin{aligned} c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \left( - i \hbar r \frac{\partial}{\partial r} + i \vec{\sigma} \cdot \vec{L} \right) \begin{pmatrix} if ( r ) \mathcal{Y}_{j\ell}^{m} \\ {}_{m} \begin{matrix} j \\ B \\ j \\ A \end{matrix} \\ g ( r ) \mathcal{Y}_{j\ell} \end{pmatrix} &= \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell}^{m} \\ {}_{m} \begin{matrix} j \\ A \\ j \\ B \end{matrix} \\ if ( r ) \mathcal{Y}_{j\ell} \end{pmatrix} \\ c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \begin{pmatrix} \left( - i \hbar r \tfrac{\partial}{\partial r} + i \vec{\sigma} \cdot \vec{L} \right) if ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \\ \left( - i \hbar r \tfrac{\partial}{\partial r} + i \vec{\sigma} \cdot \vec{L} \right) g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \end{pmatrix} &= \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell}^{m} \\ {}_{m} \begin{matrix} j \\ A \\ j \\ B \end{matrix} \\ if ( r ) \mathcal{Y}_{j\ell} \end{pmatrix} \end{aligned}
+\begin{aligned} c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \left( - i \hbar r \frac{\partial}{\partial r} + i \vec{\sigma} \cdot \vec{L} \right) \begin{pmatrix} if ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \\ g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \end{pmatrix} &= \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \\ if ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \end{pmatrix} \\ c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \begin{pmatrix} \left( - i \hbar r \tfrac{\partial}{\partial r} + i \vec{\sigma} \cdot \vec{L} \right) if ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \\ \left( - i \hbar r \tfrac{\partial}{\partial r} + i \vec{\sigma} \cdot \vec{L} \right) g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \end{pmatrix} &= \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \\ if ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \end{pmatrix} \end{aligned}
 ```
 
 ```math
-c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \begin{pmatrix} \begin{pmatrix} \hbar r \tfrac{\partial}{\partial r} - ( \kappa - 1 ) \hbar \\ \hbar r \tfrac{\partial}{\partial r} + i ( - \kappa - \end{pmatrix} f ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \\ \left( - i \quad 1 ) \hbar \right) g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \\ \hbar c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell}^{m} \\ {}_{m} \begin{matrix} j \\ A \\ j \\ B \end{matrix} \\ if ( r ) \mathcal{Y}_{j\ell} \end{pmatrix}
+c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \begin{pmatrix} \begin{pmatrix} \hbar r \tfrac{\partial}{\partial r} - ( \kappa - 1 ) \hbar \\ \hbar r \tfrac{\partial}{\partial r} + i ( - \kappa - \end{pmatrix} f ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \\ \left( - i \quad 1 ) \hbar \right) g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \\ \hbar c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \\ if ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \end{pmatrix}
 ```
 
 ```math
-\begin{pmatrix} \begin{pmatrix} r \tfrac{\partial}{\partial r} - ( \kappa - 1 ) \\ ir \tfrac{\partial}{\partial r} - i ( 1 + \end{pmatrix} f ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \\ \left( - \quad \kappa ) \right) g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell}^{m} \\ {}_{m} \begin{matrix} j \\ A \\ j \\ B \end{matrix} \\ if ( r ) \mathcal{Y}_{j\ell} \end{pmatrix}
+\begin{pmatrix} \begin{pmatrix} r \tfrac{\partial}{\partial r} - ( \kappa - 1 ) \\ ir \tfrac{\partial}{\partial r} - i ( 1 + \end{pmatrix} f ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \\ \left( - \quad \kappa ) \right) g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \\ if ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \end{pmatrix}
 ```
 
 ```math
-\hbar c \frac{1}{r} \begin{pmatrix} \left( - r \tfrac{\partial}{\partial r} + ( \kappa - 1 ) \right) f ( r ) \mathcal{Y}_{j\ell}^{m} \\ {}_{m} \begin{matrix} j \\ A \\ j \\ B \end{matrix} \\ \left( ir \tfrac{\partial}{\partial r} + i ( 1 + \kappa ) \right) g ( r ) \mathcal{Y}_{j\ell} \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell}^{m} \\ {}_{m} \begin{matrix} j \\ A \\ j \\ B \end{matrix} \\ if ( r ) \mathcal{Y}_{j\ell} \end{pmatrix}
+\hbar c \frac{1}{r} \begin{pmatrix} \left( - r \tfrac{\partial}{\partial r} + ( \kappa - 1 ) \right) f ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \\ \left( ir \tfrac{\partial}{\partial r} + i ( 1 + \kappa ) \right) g ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \mathcal{Y}_{j\ell_{A}}^{m_{j}} \\ if ( r ) \mathcal{Y}_{j\ell_{B}}^{m_{j}} \end{pmatrix}
 ```
 
 ```math

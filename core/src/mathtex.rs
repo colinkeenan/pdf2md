@@ -1807,9 +1807,20 @@ fn small_blocks(cells: Vec<MSpan>, size: f32, depth: usize) -> Vec<MSpan> {
     let big: Vec<&MSpan> = cells.iter().filter(|s| !small(s)).collect();
     let vgap = |a: &MSpan, b: &MSpan| (a.top - b.bottom).max(b.top - a.bottom);
     let hgap = |a: &MSpan, b: &MSpan| (a.left - b.right).max(b.left - a.right);
-    // a script touches the symbol it belongs to
-    let free = |s: &MSpan| !big.iter().any(|b| vgap(s, b) < 0.0 && hgap(s, b) <= 1.5);
-    let cand: Vec<usize> = (0..cells.len()).filter(|&i| small(&cells[i]) && free(&cells[i])).collect();
+    // a script touches the symbol it belongs to (the index of an index
+    // touches a small one: the A of ℓ_A under a Y)
+    let free = |s: &MSpan| !big.iter().any(|b| vgap(s, b) < 0.0 && hgap(s, b) <= 1.5) && !cells.iter().any(|b| !b.cmex() && b.atom.is_none() && b.size > 1.2 * s.size && vgap(s, b) < 0.0 && hgap(s, b) <= 1.5);
+    let mut cand: Vec<usize> = (0..cells.len()).filter(|&i| small(&cells[i]) && free(&cells[i])).collect();
+    // (… and so does what goes on from a script at its height: the
+    // "iE t/ħ" behind the "−" of e^{−iEt/ħ})
+    loop {
+        let on = |i: usize| {
+            let s = &cells[i];
+            (0..cells.len()).any(|j| small(&cells[j]) && !cand.contains(&j) && cells[j].right <= s.left + 1.0 && s.left - cells[j].right <= 2.0 && vgap(s, &cells[j]) < -0.5 * s.size.min(cells[j].size))
+        };
+        let Some(k) = (0..cand.len()).find(|&k| on(cand[k])) else { break };
+        cand.remove(k);
+    }
     if cand.len() < 3 {
         return cells;
     }
@@ -2909,9 +2920,20 @@ pub fn display(
             s.cy()
         };
         // (the last row of a column of small fractions has its middle at
-        // the bracket's foot: a point or two of play)
+        // the bracket's foot: a point or two of play; and the exponents of
+        // its first row's numerator stand out over the bracket's head)
+        // (… an exponent: it reaches into the bracket, behind a larger
+        // letter there that begins lower, and is no index of a letter of
+        // the line above)
+        let exponent = |b: &MSpan| {
+            !s.cmex()
+                && s.size < 0.85 * max
+                && s.bottom >= b.top + 1.0
+                && rest.iter().any(|n| !n.cmex() && n.cy() > b.top && (n.right - s.left).abs() <= 1.5 && n.top >= s.top && n.top <= s.bottom && s.size < 0.85 * n.size)
+                && !rest.iter().any(|m| !m.cmex() && (m.right - s.left).abs() <= 1.5 && m.top < s.top - 1.0 && m.bottom > s.top && m.size > 1.1 * s.size)
+        };
         tall.iter()
-            .filter(|b| s.cy() > b.top && s.cy() < b.bottom + 2.0 && b.right <= s.left + 1.0)
+            .filter(|b| (s.cy() > b.top || (s.cy() > b.top - 0.4 * max && exponent(b))) && s.cy() < b.bottom + 2.0 && b.right <= s.left + 1.0)
             .max_by(|a, b| a.right.total_cmp(&b.right))
             .filter(|b| {
                 // ... and a partner bracket to its right at the same height

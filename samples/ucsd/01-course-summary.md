@@ -254,7 +254,7 @@ The bra-ket $`\langle \varphi | \psi i \rangle`$ can be thought of as a dot prod
 we can use these eigenstates to follow the time development of an arbitrary state $`\varphi`$
 
 ```math
-\varphi ( t ) = \begin{pmatrix} \alpha_{1} e^{- t/ \hbar} \\ \alpha_{2} e^{-} \begin{matrix} iE_{1} \\ iE_{2} \\ iE_{3} \end{matrix}^{t/ \hbar} \\ \alpha_{3} e^{- t/ \hbar} \\ \dots \end{pmatrix}
+\varphi ( t ) = \begin{pmatrix} \alpha_{1} e^{- iE_{1} t/ \hbar} \\ \alpha_{2} e^{- iE_{2} t/ \hbar} \\ \alpha_{3} e^{- iE_{3} t/ \hbar} \\ \dots \end{pmatrix}
 ```
 
 simply by computing the coefficients $`\alpha_{i}`$ at $`t`$ = 0.

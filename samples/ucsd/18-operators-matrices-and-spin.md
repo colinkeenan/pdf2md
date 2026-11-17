@@ -1035,7 +1035,7 @@ We will choose the z axis so that the B field is in the z direction. Then we kno
 But we know how each of the energy eigenfunctions develops with time so its easy to write
 
 ```math
-\psi ( t ) = \begin{pmatrix} \psi_{+} e^{- t/ \hbar} \\ \psi_{0} e^{-} \begin{matrix} iE_{+} \\ iE_{0} \\ iE_{-} \end{matrix}^{t/ \hbar} \\ \psi_{-} e^{- t/ \hbar} \end{pmatrix} = \begin{pmatrix} \psi_{+} e^{- i\mu_{B} Bt/ \hbar} \\ \psi_{0} \\ \psi_{-} e^{i\mu_{B} Bt/ \hbar} \end{pmatrix} .
+\psi ( t ) = \begin{pmatrix} \psi_{+} e^{- iE_{+} t/ \hbar} \\ \psi_{0} e^{- iE_{0} t/ \hbar} \\ \psi_{-} e^{- iE_{-} t/ \hbar} \end{pmatrix} = \begin{pmatrix} \psi_{+} e^{- i\mu_{B} Bt/ \hbar} \\ \psi_{0} \\ \psi_{-} e^{i\mu_{B} Bt/ \hbar} \end{pmatrix} .
 ```
 
 As a concrete example, let’s assume we start out in the eigenstate of $`L_{x}`$ with eigenvalue +$`\hbar`$.
