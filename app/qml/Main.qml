@@ -122,6 +122,26 @@ Kirigami.ApplicationWindow {
         id: converter
     }
 
+    // A book that has been converted is done with: its box is unchecked as
+    // soon as it ends, so the next "Convert" takes only what is checked
+    // then. One that failed stays checked, to be tried again.
+    Connections {
+        target: converter
+        function onResultsChanged() {
+            var c = Object.assign({}, root.checked)
+            var changed = false
+            for (var path in root.results) {
+                if (root.results[path].ok && c[path] === true) {
+                    delete c[path]
+                    changed = true
+                }
+            }
+            if (changed) {
+                root.checked = c
+            }
+        }
+    }
+
     Component {
         id: browserComponent
         FileBrowser {}
