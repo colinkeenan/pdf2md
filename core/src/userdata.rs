@@ -14,8 +14,9 @@
 //! * **Fixes of a displayed equation built from the PDF's text**: the
 //!   corrected ```` ```math ```` block under a mark that holds the equation
 //!   as converted, `<!-- pdf2md:fix as converted -->`. Every block of the
-//!   chapter that is converted to that LaTeX again is replaced (by the
-//!   mark alone where the block was no equation of the book). An alert
+//!   chapter that is converted to that LaTeX again is replaced. A block
+//!   that was no equation of the book (a piece torn off a formula) is
+//!   taken out: `<!-- pdf2md:gone as converted -->` stands for it. An alert
 //!   that begins "**Edited by Claude.**" right under the block is part of
 //!   the fix and goes wherever the fix goes.
 //!
@@ -83,6 +84,7 @@ impl UserData {
 }
 
 const EQ_FIX: &str = "<!-- pdf2md:fix ";
+const EQ_GONE: &str = "<!-- pdf2md:gone ";
 const BY_CLAUDE: &str = "\n\n> [!NOTE]\n> **Edited by Claude.**";
 
 /// The mark of a corrected equation for its LaTeX as converted (a comment
@@ -91,20 +93,31 @@ pub fn eq_fix_mark(was: &str) -> String {
     format!("{EQ_FIX}{} -->", was.replace("--", "-&#45;"))
 }
 
+/// The mark that stands for a block taken out.
+pub fn eq_gone_mark(was: &str) -> String {
+    format!("{EQ_GONE}{} -->", was.replace("--", "-&#45;"))
+}
+
 /// The corrected equations of a text: (start, end, as converted).
 fn eq_fix_ranges(text: &str) -> Vec<(usize, usize, String)> {
     let mut out = Vec::new();
     let mut from = 0;
-    while let Some(i) = text[from..].find(EQ_FIX).map(|i| from + i) {
-        from = i + EQ_FIX.len();
+    loop {
+        // (the next mark of either kind; "gone": a block that was no
+        // equation of the book, taken out — its mark stands alone)
+        let next = [EQ_FIX, EQ_GONE].into_iter().filter_map(|m| text[from..].find(m).map(|i| (from + i, m))).min_by_key(|x| x.0);
+        let Some((i, kind)) = next else { break };
+        from = i + kind.len();
         if i > 0 && !text[..i].ends_with('\n') {
             continue;
         }
         let Some(close) = text[from..].find(" -->").map(|c| from + c) else { continue };
         let was = unescape(&text[from..close]);
-        // (the mark alone: a block that was no equation of the book, taken out)
         let mut end = close + 4;
-        if text[end..].starts_with("\n\n```math\n") {
+        if kind == EQ_FIX {
+            if !text[end..].starts_with("\n\n```math\n") {
+                continue;
+            }
             let body = end + "\n\n```math\n".len();
             let Some(e) = text[body..].find("\n```").map(|e| body + e + 4) else { continue };
             end = e;
@@ -500,7 +513,9 @@ pub fn apply(text: &mut String, data: &UserData, slug: Option<&str>) -> Vec<Note
         let mut from = 0;
         let mut found = text.contains(&e.block);
         while let Some(i) = text[from..].find(&needle).map(|i| from + i) {
-            let fresh = (i == 0 || text[..i].ends_with("\n\n")) && !text[..i].ends_with(" -->\n\n") && text[i + needle.len()..].chars().next().is_none_or(|c| c == '\n');
+            // (not the corrected block of a fix put back before this one)
+            let fixed = text[..i].trim_end().rsplit('\n').next().is_some_and(|l| l.starts_with(EQ_FIX));
+            let fresh = (i == 0 || text[..i].ends_with("\n\n")) && !fixed && text[i + needle.len()..].chars().next().is_none_or(|c| c == '\n');
             if fresh {
                 text.replace_range(i..i + needle.len(), &e.block);
                 from = i + e.block.len();
@@ -676,10 +691,12 @@ mod tests {
         assert_eq!(lost.len(), 2);
         assert!(lost.iter().any(|n| n.text == fixed));
         // (a block taken out: its mark alone)
-        let gone = format!("# Ch\n\nSo\n\n{}\n\nEnd.\n", eq_fix_mark("{}_{y} \\quad 0"));
+        // (… also right before another equation)
+        let gone = format!("# Ch\n\nSo\n\n{}\n\n```math\nx = 1\n```\n\nEnd.\n", eq_gone_mark("{}_{y} \\quad 0"));
         let d = collect_file(&gone, &|_| Some("c".into()));
         assert_eq!((d.eqs.len(), d.eqs[0].was.as_str()), (1, "{}_{y} \\quad 0"));
-        let mut new = "# Ch\n\nSo\n\n```math\n{}_{y} \\quad 0\n```\n\nEnd.\n".to_string();
+        assert_eq!(d.eqs[0].block, eq_gone_mark("{}_{y} \\quad 0"));
+        let mut new = "# Ch\n\nSo\n\n```math\n{}_{y} \\quad 0\n```\n\n```math\nx = 1\n```\n\nEnd.\n".to_string();
         assert!(apply(&mut new, &d, Some("c")).is_empty());
         assert_eq!(new, gone);
     }

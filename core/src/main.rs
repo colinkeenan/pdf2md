@@ -64,10 +64,11 @@ fn main() {
     pdf2md_core::userdata::backup(&user, Path::new(&args[1]));
     if !user.is_empty() {
         eprintln!(
-            "Kept {} note(s), {} marker(s) and {} fix(es) from the earlier conversion.",
+            "Kept {} note(s), {} marker(s), {} fix(es) and {} corrected equation(s) from the earlier conversion.",
             user.notes.len(),
             user.marks.len(),
-            user.fixes.len()
+            user.fixes.len(),
+            user.eqs.len()
         );
     }
     let mut book = convert_pdf_pages(Path::new(&args[0]), range).unwrap_or_else(|e| {
