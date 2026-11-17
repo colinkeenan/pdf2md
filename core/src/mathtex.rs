@@ -412,6 +412,35 @@ fn level_punctuation(spans: &mut [MSpan]) {
     }
 }
 
+/// A formula begun in the size of the text and gone on in small type on
+/// the same line ("L₃ =" and then a long right-hand side set \small to
+/// fit a table's row): the small letters stand on the line as the others
+/// do, and are letters of the line, not indices. Small type is about five
+/// sixths of the text's size; an index is two thirds.
+fn level_sizes(spans: &mut [MSpan]) {
+    let max = spans.iter().filter(|s| !s.cmex()).map(|s| s.size).fold(0.0f32, f32::max);
+    if max <= 0.0 {
+        return;
+    }
+    let between = |s: &MSpan| !s.cmex() && s.size > 0.76 * max && s.size < 0.9 * max;
+    // (in some books an index is that large. But an index hangs under
+    // the line or stands over it, beside its letter: where small type
+    // takes over from full size, the first small letter is level with
+    // the full-size one before it.)
+    let piece = |s: &MSpan| !s.cmex() && s.atom.is_none() && s.size > 0.76 * max && !s.text.trim().chars().all(|c| ",.;:".contains(c));
+    let before = |s: &MSpan| spans.iter().filter(|m| piece(m) && m.right <= s.left + 1.0 && m.top < s.cy() && m.bottom > s.cy()).max_by(|a, b| a.right.total_cmp(&b.right));
+    let turns: Vec<bool> = spans.iter().filter(|s| between(s)).filter_map(|s| before(s).filter(|m| m.size >= 0.9 * max).map(|m| (m.cy() - s.cy()).abs() <= 0.12 * max)).collect();
+    // (… and none stands right under or over a full-size piece, as the
+    // "ε → 0" under "lim" does)
+    let stacked = spans.iter().any(|s| between(s) && spans.iter().any(|m| piece(m) && m.size >= 0.9 * max && m.left < s.right && m.right > s.left && (m.bottom <= s.top + 2.0 || m.top >= s.bottom - 2.0) && (s.top - m.bottom).max(m.top - s.bottom) <= 0.8 * max));
+    if turns.is_empty() || turns.iter().any(|level| !level) || stacked {
+        return;
+    }
+    for s in spans.iter_mut().filter(|s| !s.cmex() && s.size > 0.76 * max && s.size < 0.9 * max) {
+        s.size = max;
+    }
+}
+
 pub fn build_with(spans: &[MSpan], bars: &[Rule]) -> String {
     // pdftohtml sometimes puts two big operators in one span ("X X")
     let spans: Vec<MSpan> = spans
@@ -429,6 +458,8 @@ pub fn build_with(spans: &[MSpan], bars: &[Rule]) -> String {
             }
         })
         .collect();
+    let mut spans = spans;
+    level_sizes(&mut spans);
     if std::env::var("PDF2MD_MATHDEBUG").is_ok_and(|v| v == "2") {
         eprintln!("--- before accents");
         for s in &spans {
@@ -2913,6 +2944,7 @@ pub fn display(
         return out;
     }
     level_punctuation(&mut rest);
+    level_sizes(&mut rest);
     let rest = rest;
     if rest.is_empty() {
         return tags

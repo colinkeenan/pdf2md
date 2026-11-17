@@ -2596,6 +2596,11 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                     _ => None,
                 };
                 let eqs = mathtex::display(spans, &bars, st.right, st.body);
+                if std::env::var_os("PDF2MD_DISPDEBUG").is_some() {
+                    for e in &eqs {
+                        eprintln!("EQ {}", e.0);
+                    }
+                }
                 let single = eqs.len() == 1;
                 for (latex, tag) in eqs {
                     if !latex.is_empty() || tag.is_some() {

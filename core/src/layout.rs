@@ -2110,7 +2110,19 @@ fn insert_delims(doc: &mut Doc, delims: Vec<Vec<Delim>>) {
     let size_of = |s: &Span| fonts.get(s.font).map_or(s.height, |f| f.size);
     for (page, ds) in doc.pages.iter_mut().zip(delims) {
         let mut changed = vec![false; page.lines.len()];
-        for d in ds {
+        // (a bracket no taller than the book's type, where the text has an
+        // empty piece of the big-symbol font, is that piece: "\\big[" in
+        // small type, and the outline says which bracket. So is its
+        // partner of the same height, whose piece pdftohtml dropped.)
+        let tall_enough: Vec<bool> = ds
+            .iter()
+            .map(|d| d.bottom - d.top >= 1.08 * body || page.lines.iter().flat_map(|l| &l.spans).any(|s| is_cmex(s) && s.text.trim().is_empty() && s.left < d.right - 0.5 && s.right() > d.left + 0.5 && s.top < d.bottom && s.bottom() > d.top))
+            .collect();
+        let partnered: Vec<bool> = ds
+            .iter()
+            .map(|d| ds.iter().zip(&tall_enough).any(|(p, ok)| *ok && (p.top - d.top).abs() <= 1.0 && (p.bottom - d.bottom).abs() <= 1.0 && (("([{".contains(p.kind) && ")]}".contains(d.kind)) || (")]}".contains(p.kind) && "([{".contains(d.kind)))))
+            .collect();
+        for (di, d) in ds.into_iter().enumerate() {
             let overlaps = |s: &Span| s.left < d.right - 0.5 && s.right() > d.left + 0.5 && s.top < d.bottom && s.bottom() > d.top;
             let as_text = page.lines.iter().flat_map(|l| &l.spans).any(|s| {
                 // (the bracket is in the text, or it is a stroke of a large
@@ -2136,7 +2148,7 @@ fn insert_delims(doc: &mut Doc, delims: Vec<Vec<Delim>>) {
             }
             // (taller than the book's ordinary type: in 12 pt type an
             // italic f is as tall as a tall bracket of a 10 pt book)
-            if d.bottom - d.top < 1.08 * body {
+            if !tall_enough[di] && !partnered[di] {
                 continue;
             }
             for (k, l) in page.lines.iter_mut().enumerate() {
