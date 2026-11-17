@@ -247,6 +247,14 @@ This is the path for a PDF made with TeX or by a publisher's typesetting system,
 * **The last line of a paragraph** that is all math is no displayed equation: it starts where the line above it starts, at the paragraph's line spacing (or under the words of an exercise whose number stands out at the margin). A word alone between two formulas of a passage in small type ("and", "becomes") is text.
 * **An indented block** (exercises, solutions) has paragraphs of its own, each with its first line set in: the second line, back at the block's edge, goes on with it.
 
+### Bulleted lists
+
+*Worked out on: Lucid (450 items; no other of the books has any).*
+
+A line that opens with "•" begins an item of a list. Its words begin a little right of the bullet, and what belongs to the item is set in to there: the further lines of its paragraph, the displayed equations under it, and the paragraphs after those. The item ends at the next bullet, at a heading, at a picture (it and its caption stand at the margin), or at a line of text that begins left of the item's words. A page may turn inside it: the page's bar and markers then stand in the item.
+
+It is written as a Markdown list item: "- " before its first line and every other line of it two spaces in, the fences of its equations too, so they stay part of the item. The reader's notes and corrected equations are put back before the items are written (every block still at the margin then), and are set in with their item; when the book is read again for what the reader changed, what stands two spaces in is read as if it stood at the margin. mdBun reads a math fence that is set in (it had to stand at the margin before).
+
 ### Displayed equations
 
 *Worked out on: Dyson, then Zee 2. Fitted: a different way of setting fractions or limits will show new faults here first.*

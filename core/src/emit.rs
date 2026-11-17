@@ -546,8 +546,13 @@ fn page_ends(text: &str, book: &Book) -> String {
         // (not above the first bar of a file: nothing of that page is there)
         if let Some((label, link)) = before.filter(|_| !out.trim().trim_end_matches(PAGE_BAR).trim().is_empty()) {
             let mark = if link.is_empty() { format!("<sup>[{label}]</sup>") } else { format!("<a{link}><sup>[{label}]</sup></a>") };
+            // (in a bulleted item the bar and the marker are set in under it)
+            let indent = out.len() - out.trim_end_matches(' ').len();
             if out.ends_with(&format!("{PAGE_BAR}\n")) {
                 out.insert_str(out.len() - PAGE_BAR.len() - 1, &format!("<div align=\"right\">{mark}</div>\n"));
+            } else if indent > 0 && out[..out.len() - indent].ends_with(&format!("{PAGE_BAR}\n")) {
+                let pad = " ".repeat(indent);
+                out.insert_str(out.len() - indent - PAGE_BAR.len() - 1, &format!("<div align=\"right\">{mark}</div>\n{pad}"));
             } else if out.ends_with(BAR_SPAN) {
                 out.insert_str(out.len() - BAR_SPAN.len(), &format!("<span style=\"display:block;text-align:right\">{mark}</span>"));
             }
@@ -769,6 +774,9 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
             out.push_str(&format!("```\n{code}\n```\n\n"));
         }
         Block::Rule => out.push_str("---\n\n"),
+        // (marks for `bulleted`, which writes the item when all of it is there)
+        Block::Bullet => out.push(ITEM_OPEN),
+        Block::BulletEnd => out.push(ITEM_CLOSE),
         Block::PageNote { label, text } => {
             out.push_str(&format!("{label}. {}\n\n", render_inlines(text)));
         }
@@ -825,7 +833,15 @@ fn render_note(n: &Note, label: &str, out: &mut String) {
 }
 
 pub fn chapter_markdown(book: &Book, i: usize) -> String {
-    let mut s = chapter_body(book, i);
+    bulleted(&chapter_markdown_marked(book, i))
+}
+
+/// [`chapter_markdown`] with the bulleted items still only marked (see
+/// [`bulleted`]): the reader's notes and fixes are put back into this
+/// text, where every block stands at the margin, and the items are
+/// written after that — so a note inside an item is set in with it.
+fn chapter_markdown_marked(book: &Book, i: usize) -> String {
+    let mut s = chapter_body_marked(book, i);
     let mut nav = Vec::new();
     if i > 0 {
         let p = &book.chapters[i - 1];
@@ -849,7 +865,11 @@ pub fn chapter_markdown(book: &Book, i: usize) -> String {
 /// more than one chapter (each chapter's "ref-4") gets the chapter's file
 /// name in front, in that chapter's links too.
 pub fn book_markdown(book: &Book) -> String {
-    let bodies: Vec<String> = (0..book.chapters.len()).map(|i| chapter_body(book, i)).collect();
+    bulleted(&book_markdown_marked(book))
+}
+
+fn book_markdown_marked(book: &Book) -> String {
+    let bodies: Vec<String> = (0..book.chapters.len()).map(|i| chapter_body_marked(book, i)).collect();
     let slugs: Vec<&str> = book.chapters.iter().map(|c| c.slug.as_str()).collect();
     join_bodies(&book.title, &slugs, &bodies, true)
 }
@@ -928,8 +948,48 @@ fn scan(s: &str, open: &str, close: char) -> Vec<(usize, usize)> {
     v
 }
 
+const ITEM_OPEN: char = '\u{1}';
+const ITEM_CLOSE: char = '\u{2}';
+
+/// The bulleted items of a text, marked where they begin and end, as
+/// Markdown list items: "- " before the item's first line, and every
+/// other line of it set in under that, so its equations and further
+/// paragraphs stay part of the item.
+fn bulleted(text: &str) -> String {
+    if !text.contains(ITEM_OPEN) {
+        return text.replace(ITEM_CLOSE, "");
+    }
+    let mut out = String::with_capacity(text.len() + text.len() / 20);
+    let mut parts = text.split(ITEM_OPEN);
+    out.push_str(&parts.next().unwrap_or("").replace(ITEM_CLOSE, ""));
+    for part in parts {
+        let (item, after) = part.split_once(ITEM_CLOSE).unwrap_or((part, ""));
+        if !out.is_empty() && !out.ends_with("\n\n") {
+            out.push_str(if out.ends_with('\n') { "\n" } else { "\n\n" });
+        }
+        let mut first = true;
+        for line in item.trim_matches('\n').lines() {
+            if line.is_empty() {
+                out.push('\n');
+            } else {
+                out.push_str(if first { "- " } else { "  " });
+                out.push_str(line);
+                out.push('\n');
+                first = false;
+            }
+        }
+        out.push('\n');
+        out.push_str(after.replace(ITEM_CLOSE, "").trim_start_matches('\n'));
+    }
+    out
+}
+
 /// A chapter's text without the links to the chapters before and after.
 pub(crate) fn chapter_body(book: &Book, i: usize) -> String {
+    bulleted(&chapter_body_marked(book, i))
+}
+
+fn chapter_body_marked(book: &Book, i: usize) -> String {
     let ch = &book.chapters[i];
     // (a title set centered, or in lines of its own: as it is set)
     let title = if ch.heading.is_empty() { ch.title.clone() } else { render_inlines(&crate::no_emph(ch.heading.clone())).replace("<br>\n", "<br>") };
@@ -1342,7 +1402,7 @@ pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
     crate::progress::report(Step::Files, 0, 1);
     let mut out = Vec::new();
     let mut written = Vec::new();
-    let texts: Vec<String> = (0..book.chapters.len()).map(|i| chapter_markdown(book, i)).collect();
+    let texts: Vec<String> = (0..book.chapters.len()).map(|i| chapter_markdown_marked(book, i)).collect();
     // notes made when the chapter files had other names go where their
     // chapters are now
     let mut user = book.user.clone();
@@ -1354,6 +1414,7 @@ pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
         // the reader's notes and fixes from the earlier conversion
         let lost = crate::userdata::apply(&mut s, &user, Some(&ch.slug));
         s.push_str(&lost_notes(&lost));
+        let s = bulleted(&s);
         std::fs::write(&p, &s)?;
         written.push(s);
         out.push(p);
@@ -1370,10 +1431,10 @@ pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
     }
     if book.chapters.len() > 1 {
         let p = dir.join("book.md");
-        let mut s = book_markdown(book);
+        let mut s = book_markdown_marked(book);
         let lost = crate::userdata::apply(&mut s, &user, None);
         s.push_str(&lost_notes(&lost));
-        std::fs::write(&p, s)?;
+        std::fs::write(&p, bulleted(&s))?;
         out.push(p);
     }
     if !book.unplaced.is_empty() {

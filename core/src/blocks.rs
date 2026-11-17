@@ -2035,6 +2035,9 @@ struct Builder<'a> {
     /// where in `para` the line breaks stand that the book made on purpose
     /// (hard returns): kept whether or not the paragraph is centered
     hard: Vec<usize>,
+    /// a bulleted item is open: where its text begins (the lines set in
+    /// under the bullet stand there)
+    item: Option<f32>,
 }
 
 impl Builder<'_> {
@@ -2084,7 +2087,16 @@ impl Builder<'_> {
         self.para_lines = 0;
     }
 
+    /// The open bulleted item ends here (its last paragraph is written).
+    fn close_item(&mut self) {
+        if self.item.take().is_some() {
+            self.push(Block::BulletEnd);
+        }
+    }
+
     /// Put the pending page anchor in front of the next block.
+    /// (Inside a bulleted item that goes on over the page, it stands in
+    /// the item.)
     fn anchor_block(&mut self) {
         if let Some(a) = self.anchor.take() {
             self.push(Block::Anchor(a));
@@ -2336,6 +2348,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
         index_mode: false,
         para_centered: false,
         hard: Vec::new(),
+        item: None,
         para_inset: 0.0,
     };
     // printed page marks (ebook PDFs without page numbers; see layout.rs)
@@ -2459,6 +2472,8 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
             }
             while fi < figs.len() && figs[fi].top <= l.top {
                 b.flush();
+                // (a picture and its caption stand at the margin)
+                b.close_item();
                 b.anchor_block();
                 b.push(Block::Figure { page: number, n: fi + 1, area: figs[fi], label: page.label.clone() });
                 fi += 1;
@@ -2608,6 +2623,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                     _ => size,
                 };
                 b.flush();
+                b.close_item();
                 let text = framed_title(doc, &doc.pages[page.index], l, st).unwrap_or_else(|| crate::no_emph(line_inlines(doc, l, st)));
                 // A title broken over two lines is one heading.
                 let mut merged = false;
@@ -2642,7 +2658,28 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 continue;
             }
             last_heading = None;
-            let inl = line_inlines(doc, l, st);
+            let mut inl = line_inlines(doc, l, st);
+            // A bulleted item: the line that opens with "•" begins it; the
+            // lines under it are set in to where its words begin, and so
+            // are the equations and paragraphs that belong to it. A line
+            // of text further left ends it.
+            let bullet = !b.index_mode && l.spans.first().is_some_and(|s| s.text.trim_start().starts_with('•')) && matches!(inl.first(), Some(Inline::Text(t)) if t.trim_start().starts_with('•'));
+            if bullet {
+                b.flush();
+                b.close_item();
+                b.anchor_block();
+                b.push(Block::Bullet);
+                b.item = Some(l.left + 0.9 * l.size);
+                if let Some(Inline::Text(t)) = inl.first_mut() {
+                    *t = t.trim_start().trim_start_matches('•').trim_start().to_string();
+                    if t.is_empty() {
+                        inl.remove(0);
+                    }
+                }
+            } else if b.item.is_some_and(|left| l.left < left - 0.5 * l.size) {
+                b.flush();
+                b.close_item();
+            }
             if b.index_mode {
                 let base = col_left.get(&l.col).copied().unwrap_or(st.left);
                 b.index_line(l, base, inl);
@@ -2791,6 +2828,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
         }
     }
     b.flush();
+    b.close_item();
     // where the equation pictures are on their pages
     let mut boxes: HashMap<String, (u32, Figure)> = HashMap::new();
     for page in &doc.pages {

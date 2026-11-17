@@ -171,6 +171,11 @@ pub enum Block {
     Columns(usize),
     ColumnBreak,
     ColumnsEnd,
+    /// A bulleted item of a list begins: what follows, up to `BulletEnd`,
+    /// is the item — its paragraph, and the equations and paragraphs set
+    /// in under it.
+    Bullet,
+    BulletEnd,
 }
 
 /// A block plus the page it starts on (index into the page list).

@@ -291,6 +291,26 @@ fn equation_above(before: &str) -> Option<&str> {
 }
 
 fn collect_file(text: &str, slug_at: &dyn Fn(usize) -> Option<String>) -> UserData {
+    // What stands in a bulleted item is set in two spaces under its
+    // bullet: read as if it stood at the margin (a note there, a
+    // corrected equation), so it is found, and kept without the indent —
+    // it is set in again with its item when the book is written.
+    let mut margin = String::with_capacity(text.len());
+    // (where each such line begins in the text read, and how much was
+    // taken out before it: to name the chapter a place is in)
+    let mut taken: Vec<(usize, usize)> = Vec::new();
+    for l in text.split_inclusive('\n') {
+        match l.strip_prefix("  ").filter(|r| !r.starts_with(' ')) {
+            Some(r) => {
+                taken.push((margin.len(), 2 * (taken.len() + 1)));
+                margin.push_str(r);
+            }
+            None => margin.push_str(l),
+        }
+    }
+    let slug_of = slug_at;
+    let slug_at = &|p: usize| slug_of(p + taken.iter().rev().find(|(at, _)| *at <= p).map_or(0, |(_, n)| *n));
+    let text = margin.as_str();
     let mut data = UserData::default();
     let eqs = eq_fix_ranges(text);
     for (a, b, was) in &eqs {
@@ -699,6 +719,21 @@ mod tests {
         let mut new = "# Ch\n\nSo\n\n```math\n{}_{y} \\quad 0\n```\n\n```math\nx = 1\n```\n\nEnd.\n".to_string();
         assert!(apply(&mut new, &d, Some("c")).is_empty());
         assert_eq!(new, gone);
+    }
+
+    #[test]
+    fn what_stands_in_a_bulleted_item_is_read_at_the_margin() {
+        let item = "# Ch\n\n- First point, as we see in\n\n  <!-- pdf2md:fix x = {}_{2} y -->\n\n  ```math\n  x = y^{2}\n  ```\n\n  > [!NOTE]\n  > **Edited by Claude.** The square.\n\n  and so on.\n\n  > [!NOTE]\n  > Mine.\n\nAfter.\n";
+        let d = collect_file(item, &|_| Some("c".into()));
+        assert_eq!(d.eqs.len(), 1);
+        assert_eq!(d.eqs[0].was, "x = {}_{2} y");
+        assert_eq!(d.eqs[0].block, "<!-- pdf2md:fix x = {}_{2} y -->\n\n```math\nx = y^{2}\n```\n\n> [!NOTE]\n> **Edited by Claude.** The square.");
+        assert_eq!(d.notes.len(), 1);
+        assert_eq!((d.notes[0].text.as_str(), d.notes[0].after.as_str()), ("> [!NOTE]\n> Mine.", "and so on"));
+        // (put back into the text as it is before its items are written)
+        let mut new = "# Ch\n\n\u{1}First point, as we see in\n\n```math\nx = {}_{2} y\n```\n\nand so on.\n\n\u{2}After.\n".to_string();
+        assert!(apply(&mut new, &d, Some("c")).is_empty());
+        assert!(new.contains("```math\nx = y^{2}\n```\n\n> [!NOTE]\n> **Edited by Claude.** The square.\n\nand so on.\n\n> [!NOTE]\n> Mine.\n\n\u{2}After."), "{new}");
     }
 
     #[test]
