@@ -1033,7 +1033,13 @@ pub fn link_equations(chapters: &mut [Chapter]) {
                     // (a number after "Problem", "Section", "Figure" … is
                     // that, not an equation with the same number)
                     let before = t[..cut].trim_end();
-                    let problem = ["Problem", "Problems", "Section", "Sections", "Figure", "Figures", "Fig.", "Figs.", "Table", "Tables", "Chapter", "Chapters", "Appendix"]
+                    // (the number may be a piece of its own, in the colour
+                    // of a link: the word is at the end of the piece before)
+                    let before = match (before.is_empty(), old[..k].iter().rev().find(|x| !matches!(x, Inline::Anchor(_)))) {
+                        (true, Some(Inline::Text(p) | Inline::Emph(p) | Inline::Strong(p))) => p.trim_end(),
+                        _ => before,
+                    };
+                    let problem = ["Problem", "Problems", "Section", "Sections", "Figure", "Figures", "Fig.", "Figs.", "Table", "Tables", "Chapter", "Chapters", "Appendix", "Example", "Examples"]
                         .iter()
                         .any(|w| before.ends_with(w));
                     if let Some(n) = crate::blocks::equation_ref(word).filter(|n| home.contains_key(*n) && !problem) {

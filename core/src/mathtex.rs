@@ -1360,6 +1360,9 @@ fn tidy(s: &str) -> String {
     let s = s.replace("^{{}^{\\prime} ", "^{\\prime ").replace("^{{}^{\\prime}}", "^{\\prime}");
     // (the sign of degrees is of the figure before it, also behind a space)
     let s = s.replace(" {}^{\\circ}", "^{\\circ}");
+    // (the long arrow, set as a minus sign run into an arrow)
+    let s = s.replace("-\\to ", "\\longrightarrow ").replace("- \\to ", "\\longrightarrow ");
+    let s = if let Some(head) = s.strip_suffix("-\\to") { format!("{head}\\longrightarrow") } else { s };
     slashed(&s.replace("\\not =", "\\neq").replace("\\not=", "\\neq").replace("\\not{=}", "\\neq"))
 }
 
@@ -2813,7 +2816,8 @@ pub fn tag_of(t: &str) -> Option<String> {
     // a number: not "(A)")
     let c: Vec<char> = inner.chars().collect();
     let start = c.first()?.is_ascii_digit() || (c.first()?.is_ascii_uppercase() && c.get(1) == Some(&'.') && c.get(2).is_some_and(char::is_ascii_digit));
-    let ok = !inner.is_empty() && inner.len() <= 6 && start && inner.chars().all(|c| c.is_ascii_alphanumeric() || c == '.');
+    // (… or, with its dots, as long as "10.2.27")
+    let ok = !inner.is_empty() && (inner.len() <= 6 || (inner.len() <= 8 && inner.matches('.').count() == 2)) && start && inner.chars().all(|c| c.is_ascii_alphanumeric() || c == '.');
     ok.then(|| inner.to_string())
 }
 

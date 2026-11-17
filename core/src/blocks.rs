@@ -193,8 +193,10 @@ pub fn equation_ref(t: &str) -> Option<&str> {
     let t = t.trim().trim_start_matches(['[', '(']).trim_end_matches([')', ']', ',', ';', '.']);
     let (a, b) = t.split_once('.')?;
     let b = b.trim_end_matches(|c: char| c.is_ascii_lowercase());
-    (!a.is_empty() && a.len() <= 2 && a.chars().all(|c| c.is_ascii_alphanumeric()) && !b.is_empty() && b.chars().all(|c| c.is_ascii_digit()))
-        .then_some(t)
+    // ("3.422", or numbered by section: "9.4.18")
+    let digits = |x: &str| !x.is_empty() && x.chars().all(|c| c.is_ascii_digit());
+    let number = digits(b) || b.split_once('.').is_some_and(|(x, y)| digits(x) && digits(y));
+    (!a.is_empty() && a.len() <= 2 && a.chars().all(|c| c.is_ascii_alphanumeric()) && number).then_some(t)
 }
 
 /// The PDF page a line links to, if its text is a link (a linked table of
