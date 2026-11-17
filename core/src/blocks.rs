@@ -1037,11 +1037,11 @@ fn grid_tables(doc: &Doc, page: &crate::layout::Page, lines: &[Line], st: &Stats
         if rows_n == 1 && cols_n == 1 {
             let within: Vec<&crate::layout::Span> = lines[first..end].iter().flat_map(|l| l.spans.iter()).filter(|s| s.left < right - 1.0).collect();
             let number = lines[first..end].iter().flat_map(|l| l.spans.iter()).filter(|s| s.left >= right - 1.0).find_map(|s| mathtex::tag_of(s.text.trim()));
-            // (a few words among the symbols, "if" and "and", are of the
-            // equation; a framed sentence stays text)
+            // (a few words among many symbols, "if" and "otherwise" and the
+            // names of units, are of the equation; a framed sentence stays text)
             let words = within.iter().filter(|s| !doc.is_math(s)).flat_map(|s| s.text.split_whitespace()).filter(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 3 && !crate::mathtex::is_function_word(w)).count();
             let symbols = within.iter().filter(|s| doc.is_math(s)).count();
-            if symbols > 0 && (words == 0 || (number.is_some() && words <= 4 && symbols > 2 * words)) {
+            if symbols > 0 && (words == 0 || symbols >= 3 * words) {
                 let spans: Vec<MSpan> = within.iter().map(|s| MSpan::new(doc, s)).collect();
                 let bars: Vec<Rule> = page.rules.iter().filter(|r| r.left >= left + 2.0 && r.right <= right - 2.0 && r.top >= top + 2.0 && r.bottom <= bottom - 2.0).copied().collect();
                 let eqs = mathtex::display(spans, &bars, st.right, st.body);
