@@ -49,7 +49,7 @@ u_{1} e^{ip_{1} \cdot x} \qquad \text{(422)}
 
 <div align="right"><a href="book.pdf#page=87" target="_blank" title="This page in the PDF"><sup>[p. 81]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p82" href="book.pdf#page=88" target="_blank" title="This page in the PDF"><sup>[p. 82]</sup></a>
+<a id="p82" href="book.pdf#page=88" target="_blank" title="This page in the PDF"><sup>[p. 82]</sup></a> <sup>FREE PARTICLE SCATTERING PROBLEMS</sup>
 
 normalized by $`( \overline{u}_{1} u_{1} ) = 1`$. With the wave function normalized in this way, (422) is just the matrix element of the operator $`\psi ( x )`$ between the vacuum state and the state containing electron 1. We can see this from
 
@@ -129,7 +129,7 @@ we have by (203) and (205)
 
 <div align="right"><a href="book.pdf#page=88" target="_blank" title="This page in the PDF"><sup>[p. 82]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p83" href="book.pdf#page=89" target="_blank" title="This page in the PDF"><sup>[p. 83]</sup></a>
+<a id="p83" href="book.pdf#page=89" target="_blank" title="This page in the PDF"><sup>[p. 83]</sup></a> <sup>FREE PARTICLE SCATTERING PROBLEMS</sup>
 
 according to (228). Obviously $`D_{F}`$ is an even function. It has the property that asymptotically as $`x_{0} \to \infty`$ in the future, $`D_{F} = 2 iD^{+}`$ contains only positive frequencies, while as $`x_{0} \to -\infty`$ in the past, $`D_{F} = - 2 iD^{-}`$ contains only negative frequencies. See Fierz, _Helv. Phys. Acta_ **23** (1950) 731 for a full discussion.
 
@@ -181,7 +181,7 @@ It is clear that the formula comes very directly out of (423), once we know the 
 
 <div align="right"><a href="book.pdf#page=89" target="_blank" title="This page in the PDF"><sup>[p. 83]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p84" href="book.pdf#page=90" target="_blank" title="This page in the PDF"><sup>[p. 84]</sup></a>
+<a id="p84" href="book.pdf#page=90" target="_blank" title="This page in the PDF"><sup>[p. 84]</sup></a> <sup>FREE PARTICLE SCATTERING PROBLEMS</sup>
 
 ### <a id="s-electron-positron-scattering"></a>Electron-Positron <a id="ix-261">Scattering</a>
 
@@ -273,7 +273,7 @@ Note that with <a id="ix-27">anticommuting</a> fields the expression $`\epsilon 
 
 <div align="right"><a href="book.pdf#page=90" target="_blank" title="This page in the PDF"><sup>[p. 84]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p85" href="book.pdf#page=91" target="_blank" title="This page in the PDF"><sup>[p. 85]</sup></a>
+<a id="p85" href="book.pdf#page=91" target="_blank" title="This page in the PDF"><sup>[p. 85]</sup></a> <sup>FREE PARTICLE SCATTERING PROBLEMS</sup>
 
 where $`S_{F}`$ is a new invariant function. Since
 
@@ -371,7 +371,7 @@ M_{2} = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu} ( 2 \pi )^{4} \delta^{4} ( p + k - p
 
 <div align="right"><a href="book.pdf#page=91" target="_blank" title="This page in the PDF"><sup>[p. 85]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p86" href="book.pdf#page=92" target="_blank" title="This page in the PDF"><sup>[p. 86]</sup></a>
+<a id="p86" href="book.pdf#page=92" target="_blank" title="This page in the PDF"><sup>[p. 86]</sup></a> <sup>FREE PARTICLE SCATTERING PROBLEMS</sup>
 
 ### <a id="s-calculation-of-cross-section"></a>Calculation of the Cross-Section
 
@@ -457,7 +457,7 @@ This gives the cross-section for a known electron spin in the initial and final 
 
 <div align="right"><a href="book.pdf#page=92" target="_blank" title="This page in the PDF"><sup>[p. 86]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p87" href="book.pdf#page=93" target="_blank" title="This page in the PDF"><sup>[p. 87]</sup></a>
+<a id="p87" href="book.pdf#page=93" target="_blank" title="This page in the PDF"><sup>[p. 87]</sup></a> <sup>FREE PARTICLE SCATTERING PROBLEMS</sup>
 
 ### <a id="s-sum-over-spins"></a>Sum over Spins
 
@@ -523,7 +523,7 @@ Since $`/p`$ <a id="ix-28">anticommutes</a> with $`/e , /e^{\prime} , \gamma_{k}
 
 <div align="right"><a href="book.pdf#page=93" target="_blank" title="This page in the PDF"><sup>[p. 87]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p88" href="book.pdf#page=94" target="_blank" title="This page in the PDF"><sup>[p. 88]</sup></a>
+<a id="p88" href="book.pdf#page=94" target="_blank" title="This page in the PDF"><sup>[p. 88]</sup></a> <sup>FREE PARTICLE SCATTERING PROBLEMS</sup>
 
 because, using 4), and again compare with remark after (451),<sup><a id="fnref-59" href="#fn-59">59</a></sup>
 
@@ -603,7 +603,7 @@ Hence $`k \cdot k^{\prime} = - \mu ( k_{0} - k_{0}^{\prime} )`$ and then
 
 <div align="right"><a href="book.pdf#page=94" target="_blank" title="This page in the PDF"><sup>[p. 88]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p89" href="book.pdf#page=95" target="_blank" title="This page in the PDF"><sup>[p. 89]</sup></a>
+<a id="p89" href="book.pdf#page=95" target="_blank" title="This page in the PDF"><sup>[p. 89]</sup></a> <sup>FREE PARTICLE SCATTERING PROBLEMS</sup>
 
 and so (464) is
 
@@ -697,7 +697,7 @@ Hence for the two directions perpendicular to $`k^{\prime}`$ we can write
 
 <div align="right"><a href="book.pdf#page=95" target="_blank" title="This page in the PDF"><sup>[p. 89]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p90" href="book.pdf#page=96" target="_blank" title="This page in the PDF"><sup>[p. 90]</sup></a>
+<a id="p90" href="book.pdf#page=96" target="_blank" title="This page in the PDF"><sup>[p. 90]</sup></a> <sup>FREE PARTICLE SCATTERING PROBLEMS</sup>
 
 Now we perform the other summation over the two polarization directions of photon $`k`$, using the same argument. This gives
 
@@ -777,7 +777,7 @@ w = 0 \qquad \text{(475)}
 
 <div align="right"><a href="book.pdf#page=96" target="_blank" title="This page in the PDF"><sup>[p. 90]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p91" href="book.pdf#page=97" target="_blank" title="This page in the PDF"><sup>[p. 91]</sup></a>
+<a id="p91" href="book.pdf#page=97" target="_blank" title="This page in the PDF"><sup>[p. 91]</sup></a> <sup>FREE PARTICLE SCATTERING PROBLEMS</sup>
 
 For _perpendicular_ polarizations, take coordinate axes 1 along $`e`$, 2 along $`e^{\prime}`$, and 3 along $`k`$. Then
 
@@ -859,7 +859,7 @@ proportional to $`\frac{1}{v}`$ just like neutron cross-sections at low (thermal
 
 <div align="right"><a href="book.pdf#page=97" target="_blank" title="This page in the PDF"><sup>[p. 91]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p92" href="book.pdf#page=98" target="_blank" title="This page in the PDF"><sup>[p. 92]</sup></a>
+<a id="p92" href="book.pdf#page=98" target="_blank" title="This page in the PDF"><sup>[p. 92]</sup></a> <sup>FREE PARTICLE SCATTERING PROBLEMS</sup>
 
 ## <a id="s-d-bremsstrahlung-and-pair-creation-in-the-coulomb-field-of-an-atom"></a>D. Bremsstrahlung and <a id="ix-22">Pair</a> Creation in the Coulomb Field of an Atom
 
@@ -927,7 +927,7 @@ M_{1} = - \frac{e^{2} ( 2 \pi )^{4} )}{\hbar^{2} c^{2}} \delta^{4} ( k + k^{\pri
 
 <div align="right"><a href="book.pdf#page=98" target="_blank" title="This page in the PDF"><sup>[p. 92]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p93" href="book.pdf#page=99" target="_blank" title="This page in the PDF"><sup>[p. 93]</sup></a>
+<a id="p93" href="book.pdf#page=99" target="_blank" title="This page in the PDF"><sup>[p. 93]</sup></a> <sup>FREE PARTICLE SCATTERING PROBLEMS</sup>
 
 and integrating over the components of the potential
 

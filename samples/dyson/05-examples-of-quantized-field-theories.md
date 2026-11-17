@@ -79,7 +79,7 @@ In the same way
 
 <div align="right"><a href="book.pdf#page=47" target="_blank" title="This page in the PDF"><sup>[p. 41]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p42" href="book.pdf#page=48" target="_blank" title="This page in the PDF"><sup>[p. 42]</sup></a>
+<a id="p42" href="book.pdf#page=48" target="_blank" title="This page in the PDF"><sup>[p. 42]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 where $`D_{A}`$ is the advanced potential of the same source,
 
@@ -159,7 +159,7 @@ _Figure 2 (p. 42)_
 
 <div align="right"><a href="book.pdf#page=48" target="_blank" title="This page in the PDF"><sup>[p. 42]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p43" href="book.pdf#page=49" target="_blank" title="This page in the PDF"><sup>[p. 43]</sup></a>
+<a id="p43" href="book.pdf#page=49" target="_blank" title="This page in the PDF"><sup>[p. 43]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 Evaluating the residues we have
 
@@ -252,7 +252,7 @@ $`\tilde{a}_{k\mu} = a_{k\mu}^{*}`$ = Hermitian conjugate of $`a_{k\mu} , \quad 
 
 <div align="right"><a href="book.pdf#page=49" target="_blank" title="This page in the PDF"><sup>[p. 43]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p44" href="book.pdf#page=50" target="_blank" title="This page in the PDF"><sup>[p. 44]</sup></a>
+<a id="p44" href="book.pdf#page=50" target="_blank" title="This page in the PDF"><sup>[p. 44]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 Computing the commutator $`\boldsymbol{[} A_{\mu} ( z ) ,A_{\lambda} ( y ) \boldsymbol{]}`$ from (211) and comparing the result with (203) in the momentum representation (210), we have first, since the result is a function of $`( z - y )`$ only<sup><a id="fnref-22" href="#fn-22">22</a></sup>
 
@@ -330,7 +330,7 @@ the condition imposed in order to simplify the Maxwell equations to the simple f
 
 <div align="right"><a href="book.pdf#page=50" target="_blank" title="This page in the PDF"><sup>[p. 44]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p45" href="book.pdf#page=51" target="_blank" title="This page in the PDF"><sup>[p. 45]</sup></a>
+<a id="p45" href="book.pdf#page=51" target="_blank" title="This page in the PDF"><sup>[p. 45]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 but this means that photons of a certain kind cannot be _emitted_ in a physical state which is physically difficult to understand and brings mathematical inconsistencies into the theory. So we assume only (216) which only says these photons are _not present_ and cannot be absorbed from a physical state, which makes good sense. Also in the classical limit $`\sum_{\mu} \partial A_{\mu} /\partial x_{\mu}`$ is a real quantity, and so $`\sum_{\mu} \partial A_{\mu} /\partial x_{\mu} = 0`$ follows correctly from (216) alone.
 
@@ -404,7 +404,7 @@ Given any operator $`\mathcal{Q}`$, we are interested in the “vacuum expectati
 
 <div align="right"><a href="book.pdf#page=51" target="_blank" title="This page in the PDF"><sup>[p. 45]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p46" href="book.pdf#page=52" target="_blank" title="This page in the PDF"><sup>[p. 46]</sup></a>
+<a id="p46" href="book.pdf#page=52" target="_blank" title="This page in the PDF"><sup>[p. 46]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 Then we have at once
 
@@ -520,7 +520,7 @@ D^{( 1 )} ( x ) = \frac{1}{( 2 \pi )^{3}} \int e^{ik \cdot x} \delta ( k^{2} ) d
 
 <div align="right"><a href="book.pdf#page=52" target="_blank" title="This page in the PDF"><sup>[p. 46]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p47" href="book.pdf#page=53" target="_blank" title="This page in the PDF"><sup>[p. 47]</sup></a>
+<a id="p47" href="book.pdf#page=53" target="_blank" title="This page in the PDF"><sup>[p. 47]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 Taking the integral in the Abelian sense
 
@@ -586,7 +586,7 @@ I = - \frac{1}{c} \int \sum_{\mu} j_{\mu A} ( r,t ) \langle A_{\mu} ( r,t ) \ran
 
 <div align="right"><a href="book.pdf#page=53" target="_blank" title="This page in the PDF"><sup>[p. 47]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p48" href="book.pdf#page=54" target="_blank" title="This page in the PDF"><sup>[p. 48]</sup></a>
+<a id="p48" href="book.pdf#page=54" target="_blank" title="This page in the PDF"><sup>[p. 48]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 for making a transition with emission of a photon. The total emission probability per unit time is obtained using time dependent perturbation theory:<sup><a id="fnref-28" href="#fn-28">28</a></sup>
 
@@ -648,7 +648,7 @@ and so
 
 <div align="right"><a href="book.pdf#page=54" target="_blank" title="This page in the PDF"><sup>[p. 48]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p49" href="book.pdf#page=55" target="_blank" title="This page in the PDF"><sup>[p. 49]</sup></a>
+<a id="p49" href="book.pdf#page=55" target="_blank" title="This page in the PDF"><sup>[p. 49]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 where 1 and 2 are the two directions of transverse polarization. This shows how the third and fourth polarization directions do not appear in real <a id="ix-240">emission</a> problems. The same result would be obtained if we used the indefinite metric explicitly, i.e.take the sum in (231) over the 4 polarization states $`\mu = 1 , 2 , 3 , 4 ,`$ with the $`\mu = 4`$ given a minus sign arising from the $`\eta`$ in (220c). But it is always simpler to work directly with the covariant formalism, than to bother with the non-physical photon states and then have to use $`\eta`$ to get the right answers.
 
@@ -712,7 +712,7 @@ To derive $`H`$ from the Lagrangian is also possible but much more tedious. From
 N_{k\lambda} = \tilde{a}_{k\lambda} a_{k\lambda} \quad ( \text{ not summed } )
 ```
 
-is an operator just representing the number of quanta in the frequency $`k`$ and polarization $`\lambda`$. It follows at once from the commutation rules (213), from the singular $`\delta`$-function factor which comes from the continuous spectrum, $`N_{k\lambda}`$ being in fact the number of quanta per unit frequency range, that $`\int N_{k\lambda} d^{3} \boldsymbol{k}`$ integrated over _any_ region of momentum-space has the integer eigenvalues 0, 1, 2, $`\dots`$. This is so, because the state with<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=55" target="_blank" title="This page in the PDF"><sup>[p. 49]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p50" href="book.pdf#page=56" target="_blank" title="This page in the PDF"><sup>[p. 50]</sup></a></span> $`n_{i}`$ particles with <a id="ix-210">momentum</a> $`k_{i}`$ is Ψ = $`\prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}} \Psi_{o}`$. Then taking $`\int_{\Omega} N_{k\lambda} d^{3} \boldsymbol{k}`$ over Ω including the momenta $`k_{1} ,k_{2} ,\dots ,k_{j}`$ we get
+is an operator just representing the number of quanta in the frequency $`k`$ and polarization $`\lambda`$. It follows at once from the commutation rules (213), from the singular $`\delta`$-function factor which comes from the continuous spectrum, $`N_{k\lambda}`$ being in fact the number of quanta per unit frequency range, that $`\int N_{k\lambda} d^{3} \boldsymbol{k}`$ integrated over _any_ region of momentum-space has the integer eigenvalues 0, 1, 2, $`\dots`$. This is so, because the state with<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=55" target="_blank" title="This page in the PDF"><sup>[p. 49]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p50" href="book.pdf#page=56" target="_blank" title="This page in the PDF"><sup>[p. 50]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup></span> $`n_{i}`$ particles with <a id="ix-210">momentum</a> $`k_{i}`$ is Ψ = $`\prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}} \Psi_{o}`$. Then taking $`\int_{\Omega} N_{k\lambda} d^{3} \boldsymbol{k}`$ over Ω including the momenta $`k_{1} ,k_{2} ,\dots ,k_{j}`$ we get
 
 ```math
 \int_{\Omega} N_{k\lambda} d^{3} \boldsymbol{k} \Psi = \int_{\Omega} \tilde{a}_{k\lambda} a_{k\lambda} \prod_{i = 1}^{\ell} ( \tilde{a}_{k_{i} \lambda} )^{n_{i}} \Psi_{o} d^{3} \boldsymbol{k}
@@ -750,7 +750,7 @@ averaged over some finite space-volume $`V`$ and also over a time $`T`$. Let $`V
 
 <div align="right"><a href="book.pdf#page=56" target="_blank" title="This page in the PDF"><sup>[p. 50]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p51" href="book.pdf#page=57" target="_blank" title="This page in the PDF"><sup>[p. 51]</sup></a>
+<a id="p51" href="book.pdf#page=57" target="_blank" title="This page in the PDF"><sup>[p. 51]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 Taking for $`V`$ any finite volume and $`T`$ a finite time, this mean-square fluctuation is finite. Example: a sphere of radius R gives
 
@@ -816,7 +816,7 @@ because $`\langle \delta \boldsymbol{r} \cdot \nabla V ( r ) \rangle_{o} = 0`$, 
 
 <div align="right"><a href="book.pdf#page=57" target="_blank" title="This page in the PDF"><sup>[p. 51]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p52" href="book.pdf#page=58" target="_blank" title="This page in the PDF"><sup>[p. 52]</sup></a>
+<a id="p52" href="book.pdf#page=58" target="_blank" title="This page in the PDF"><sup>[p. 52]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 because for the hydrogen atom<sup><a id="fnref-36" href="#fn-36">36</a></sup> $`( \rho = r \sqrt{- 8 m_{r} E_{n}} / \hbar )`$
 
@@ -876,7 +876,7 @@ For this sort of calculation it is always convenient to work in a special repres
 
 <div align="right"><a href="book.pdf#page=58" target="_blank" title="This page in the PDF"><sup>[p. 52]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p53" href="book.pdf#page=59" target="_blank" title="This page in the PDF"><sup>[p. 53]</sup></a>
+<a id="p53" href="book.pdf#page=59" target="_blank" title="This page in the PDF"><sup>[p. 53]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 ### <a id="s-the-interaction-representation"></a>The Interaction Representation
 
@@ -962,7 +962,7 @@ i. e., the time variation of $`A_{\mu} ( r,t )`$ is the same as that of $`A_{\mu
 
 <div align="right"><a href="book.pdf#page=59" target="_blank" title="This page in the PDF"><sup>[p. 53]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p54" href="book.pdf#page=60" target="_blank" title="This page in the PDF"><sup>[p. 54]</sup></a>
+<a id="p54" href="book.pdf#page=60" target="_blank" title="This page in the PDF"><sup>[p. 54]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 ### <a id="s-application-of-interaction-representation-to-line-shift-and-line-width"></a>The Application of the Interaction <a id="ix-266">Representation</a> to the Theory of Line-Shift and Line-Width
 
@@ -1024,7 +1024,7 @@ Hence we have
 
 <div align="right"><a href="book.pdf#page=60" target="_blank" title="This page in the PDF"><sup>[p. 54]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p55" href="book.pdf#page=61" target="_blank" title="This page in the PDF"><sup>[p. 55]</sup></a>
+<a id="p55" href="book.pdf#page=61" target="_blank" title="This page in the PDF"><sup>[p. 55]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 Using (247), (221) this gives<sup><a id="fnref-39" href="#fn-39">39</a></sup>
 
@@ -1114,7 +1114,7 @@ The state $`\Phi_{o}`$, as a result of the perturbation by the radiation <a id="
 
 <div align="right"><a href="book.pdf#page=61" target="_blank" title="This page in the PDF"><sup>[p. 55]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p56" href="book.pdf#page=62" target="_blank" title="This page in the PDF"><sup>[p. 56]</sup></a>
+<a id="p56" href="book.pdf#page=62" target="_blank" title="This page in the PDF"><sup>[p. 56]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 Comparing (232) and (262), we see that Γ is exactly the total probability per unit time of radiation from the state $`o`$ to all other states $`n`$, calculated neglecting radiation reaction. This gives the physical interpretation for the decay law (263/a). When the denominators in (261) have zeroes, the integration over $`| \boldsymbol{k} |`$ is to be taken as a Cauchy principal value. The energy shift ∆$`E`$ is exactly what would be obtained from elementary second-order perturbation theory, if the difficulties arising from vanishing denominators were just ignored.
 
@@ -1184,7 +1184,7 @@ This formula for P(k) gives the natural shape of a spectral line. The maximum in
 
 <div align="right"><a href="book.pdf#page=62" target="_blank" title="This page in the PDF"><sup>[p. 56]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p57" href="book.pdf#page=63" target="_blank" title="This page in the PDF"><sup>[p. 57]</sup></a>
+<a id="p57" href="book.pdf#page=63" target="_blank" title="This page in the PDF"><sup>[p. 57]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 i.e. at the difference between the energies of the two levels including the radiative level shifts. The width at half-maximum is
 
@@ -1252,7 +1252,7 @@ is a small correction to the kinetic energy, which would be produced by an incre
 
 <div align="right"><a href="book.pdf#page=63" target="_blank" title="This page in the PDF"><sup>[p. 57]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p58" href="book.pdf#page=64" target="_blank" title="This page in the PDF"><sup>[p. 58]</sup></a>
+<a id="p58" href="book.pdf#page=64" target="_blank" title="This page in the PDF"><sup>[p. 58]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 We must now take into account that the observed rest-mass of _any_ electron, bound or free, is not $`m`$ but $`m + \delta m`$. Therefore in (273) a part
 
@@ -1330,7 +1330,7 @@ H = \frac{1}{2 m} \boldsymbol{p}^{2} + V \quad V = - \frac{1}{4 \pi} \frac{e^{2}
 
 <div align="right"><a href="book.pdf#page=64" target="_blank" title="This page in the PDF"><sup>[p. 58]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p59" href="book.pdf#page=65" target="_blank" title="This page in the PDF"><sup>[p. 59]</sup></a>
+<a id="p59" href="book.pdf#page=65" target="_blank" title="This page in the PDF"><sup>[p. 59]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 <a id="eq-283"></a>
 
@@ -1372,7 +1372,7 @@ Lagrangian
 L_{o} = - \hbar c \overline{\psi} \left( \sum_{\lambda} \gamma_{\lambda} \frac{\partial}{\partial x_{\lambda}} + \mu \right) \psi \qquad \text{(285)}
 ```
 
-Note the factor $`\hbar`$ here. This means that the theory has no classical limit in the sense of the Correspondence Principle. In the classical limit, only charges and currents composed of many particles have any meaning; the $`\psi`$ field disappears entirely from view. The $`\hbar`$ has to be put into (285) to make the dimensions right, since $`\left( \overline{\psi} \psi \right)`$ has dimensions (1/Volume) just as in the 1-particle Dirac theory of which this is an extension.<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=65" target="_blank" title="This page in the PDF"><sup>[p. 59]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p60" href="book.pdf#page=66" target="_blank" title="This page in the PDF"><sup>[p. 60]</sup></a></span> <a id="ix-190">Field</a> equations
+Note the factor $`\hbar`$ here. This means that the theory has no classical limit in the sense of the Correspondence Principle. In the classical limit, only charges and currents composed of many particles have any meaning; the $`\psi`$ field disappears entirely from view. The $`\hbar`$ has to be put into (285) to make the dimensions right, since $`\left( \overline{\psi} \psi \right)`$ has dimensions (1/Volume) just as in the 1-particle Dirac theory of which this is an extension.<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=65" target="_blank" title="This page in the PDF"><sup>[p. 59]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p60" href="book.pdf#page=66" target="_blank" title="This page in the PDF"><sup>[p. 60]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup></span> <a id="ix-190">Field</a> equations
 
 <a id="eq-286"></a>
 
@@ -1451,7 +1451,7 @@ Then $`S_{R} ( x )`$ is a c-number <a id="ix-57">Dirac</a> matrix function of x,
 
 <div align="right"><a href="book.pdf#page=66" target="_blank" title="This page in the PDF"><sup>[p. 60]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p61" href="book.pdf#page=67" target="_blank" title="This page in the PDF"><sup>[p. 61]</sup></a>
+<a id="p61" href="book.pdf#page=67" target="_blank" title="This page in the PDF"><sup>[p. 61]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 and the $`4 \times 4`$ unit matrix $`\mathbb{I}`$ is understood on the right of (293).
 
@@ -1541,7 +1541,7 @@ with the boundary conditions as before. And the ∆-functions are exact analogue
 
 <div align="right"><a href="book.pdf#page=67" target="_blank" title="This page in the PDF"><sup>[p. 61]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p62" href="book.pdf#page=68" target="_blank" title="This page in the PDF"><sup>[p. 62]</sup></a>
+<a id="p62" href="book.pdf#page=68" target="_blank" title="This page in the PDF"><sup>[p. 62]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 where the contour in the $`k_{0}`$-plane goes above the two poles at $`k_{0} = \pm \sqrt{| \boldsymbol{k} |^{2} + \mu^{2}}`$. Similarly for (208). And instead of (210)
 
@@ -1633,7 +1633,7 @@ E_{k} = \hbar c \sqrt{| \boldsymbol{k} |^{2} + \mu^{2}} \qquad \text{(313)}
 
 <div align="right"><a href="book.pdf#page=68" target="_blank" title="This page in the PDF"><sup>[p. 62]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p63" href="book.pdf#page=69" target="_blank" title="This page in the PDF"><sup>[p. 63]</sup></a>
+<a id="p63" href="book.pdf#page=69" target="_blank" title="This page in the PDF"><sup>[p. 63]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 be the energy of an electron or a positron with momentum $`\hbar k`$. We apply the same argument which led to (215) for the Maxwell field. From this it follows that
 
@@ -1729,7 +1729,7 @@ the absorption operator for the positron state $`v`$. Then instead of (306), (30
 
 <div align="right"><a href="book.pdf#page=69" target="_blank" title="This page in the PDF"><sup>[p. 63]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p64" href="book.pdf#page=70" target="_blank" title="This page in the PDF"><sup>[p. 64]</sup></a>
+<a id="p64" href="book.pdf#page=70" target="_blank" title="This page in the PDF"><sup>[p. 64]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 The $`\psi`$ and $`\varphi`$ fields are thus entirely symmetrical between positrons and electrons; $`\varphi`$ could be taken as the starting-point and $`\psi`$ derived from it, just as easily as vice versa.
 
@@ -1793,7 +1793,7 @@ Thus the use of anticommuting fields is the only thing which gives us a proper p
 
 <div align="right"><a href="book.pdf#page=70" target="_blank" title="This page in the PDF"><sup>[p. 64]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p65" href="book.pdf#page=71" target="_blank" title="This page in the PDF"><sup>[p. 65]</sup></a>
+<a id="p65" href="book.pdf#page=71" target="_blank" title="This page in the PDF"><sup>[p. 65]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 ### <a id="s-the-exclusion-principle"></a>The Exclusion Principle
 
@@ -1889,7 +1889,7 @@ S^{( 1 )} ( x ) = \frac{i}{( 2 \pi )^{3}} \int e^{ik \cdot x} ( k / + i\mu ) \de
 
 <div align="right"><a href="book.pdf#page=71" target="_blank" title="This page in the PDF"><sup>[p. 65]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p66" href="book.pdf#page=72" target="_blank" title="This page in the PDF"><sup>[p. 66]</sup></a>
+<a id="p66" href="book.pdf#page=72" target="_blank" title="This page in the PDF"><sup>[p. 66]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 <a id="eq-330a"></a>
 
@@ -1957,7 +1957,7 @@ regarded as an equation for the c-number Dirac wave-function $`\psi_{n} ( r )`$ 
 
 We assume further the potentials to be such that the eigenfunctions $`\psi_{n}`$ separate clearly into two classes, the $`\psi_{n +}`$ with positive $`E_{n}`$ and the $`\psi_{n -}`$ with negative $`E_{n}`$. This is again true for all physically occurring potentials, though it would fail for the Coulomb field of a point nucleus with charge $`Z> 137`$.
 
-The time-independent potentials make the problem essentially non-covariant, and so we shall use the non-covariant notations in developing the theory. We write the equations as if all the levels $`n`$ are _discrete_, thus $`\sum n`$ means a sum over discrete levels plus an integral over continuous levels suitably normalized. We are now chiefly interested in discrete levels, and so we need not bother to write the formulae for normalizing<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=72" target="_blank" title="This page in the PDF"><sup>[p. 66]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p67" href="book.pdf#page=73" target="_blank" title="This page in the PDF"><sup>[p. 67]</sup></a></span> the continuous levels explicitly. This makes the picture apparently simpler than the free-particle theory, where the normalization of continuous levels was done at every stage accurately; the simplicity is only apparent, because we shall just be ignoring the complications arising from continuous levels.
+The time-independent potentials make the problem essentially non-covariant, and so we shall use the non-covariant notations in developing the theory. We write the equations as if all the levels $`n`$ are _discrete_, thus $`\sum n`$ means a sum over discrete levels plus an integral over continuous levels suitably normalized. We are now chiefly interested in discrete levels, and so we need not bother to write the formulae for normalizing<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=72" target="_blank" title="This page in the PDF"><sup>[p. 66]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p67" href="book.pdf#page=73" target="_blank" title="This page in the PDF"><sup>[p. 67]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup></span> the continuous levels explicitly. This makes the picture apparently simpler than the free-particle theory, where the normalization of continuous levels was done at every stage accurately; the simplicity is only apparent, because we shall just be ignoring the complications arising from continuous levels.
 
 The general solution of the <a id="ix-193">field</a> equations (332) is
 
@@ -2047,7 +2047,7 @@ For $`t>t_{o}`$, (343) is the change produced in $`\psi ( r,t )`$ by adding (344
 
 <div align="right"><a href="book.pdf#page=73" target="_blank" title="This page in the PDF"><sup>[p. 67]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p68" href="book.pdf#page=74" target="_blank" title="This page in the PDF"><sup>[p. 68]</sup></a>
+<a id="p68" href="book.pdf#page=74" target="_blank" title="This page in the PDF"><sup>[p. 68]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 and therefore
 
@@ -2140,7 +2140,7 @@ then we have
 
 <div align="right"><a href="book.pdf#page=74" target="_blank" title="This page in the PDF"><sup>[p. 68]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p69" href="book.pdf#page=75" target="_blank" title="This page in the PDF"><sup>[p. 69]</sup></a>
+<a id="p69" href="book.pdf#page=75" target="_blank" title="This page in the PDF"><sup>[p. 69]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 This gives an explicit matrix representation for the operators. Each of the states $`n`$ has its own two-valued row and column index. Thus for an atom with $`M`$ levels altogether the operators would be represented by $`( 2^{M} \times 2^{M} )`$ matrices.
 
@@ -2202,7 +2202,7 @@ The field theory thus gives the full force of the Fermi statistics for electrons
 
 <div align="right"><a href="book.pdf#page=75" target="_blank" title="This page in the PDF"><sup>[p. 69]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p70" href="book.pdf#page=76" target="_blank" title="This page in the PDF"><sup>[p. 70]</sup></a>
+<a id="p70" href="book.pdf#page=76" target="_blank" title="This page in the PDF"><sup>[p. 70]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 ### <a id="s-polarization-of-the-vacuum"></a>Polarization of the Vacuum
 
@@ -2244,7 +2244,7 @@ The electron field operator $`\psi_{H}`$ in the field (360) satisfies (332). Her
 
 Here $`S_{R}`$ is given by (293), (301), and (303), and $`\psi ( x )`$ is a solution of the free-field equation (286). In fact $`\psi ( x )`$ is the field operator of the interaction representation, when the effects of $`A_{\mu}`$ are represented in the wave-function instead of in the operators. Using the retarded potential in (361) means that the unperturbed states are specified in the past, as the initial states upon which $`A_{\mu}^{e}`$ later produces effects. Thus the vacuum state defined by (323a) is the state in which initially no electrons or positrons are present. This is the state which we wish to study, and we call it $`\Psi_{o}`$.
 
-Using the interaction representation operators $`\psi ( x ) , \Psi_{o}`$ is the vacuum state and remains so for all time; the physical state is initially $`\Psi_{o}`$ but does not remain $`\Psi_{o}`$. Using the Heisenberg operators $`\psi_{H} ( x ) , \Psi_{o}`$ is the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=76" target="_blank" title="This page in the PDF"><sup>[p. 70]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p71" href="book.pdf#page=77" target="_blank" title="This page in the PDF"><sup>[p. 71]</sup></a></span> physical state for all time; it is initially the vacuum state but does not remain so. In the remote past as $`x_{0} \to -\infty`$, because $`S_{R}`$ is a retarded potential $`\psi_{H} ( x )`$ and $`\psi ( x )`$ become identical.
+Using the interaction representation operators $`\psi ( x ) , \Psi_{o}`$ is the vacuum state and remains so for all time; the physical state is initially $`\Psi_{o}`$ but does not remain $`\Psi_{o}`$. Using the Heisenberg operators $`\psi_{H} ( x ) , \Psi_{o}`$ is the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=76" target="_blank" title="This page in the PDF"><sup>[p. 70]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p71" href="book.pdf#page=77" target="_blank" title="This page in the PDF"><sup>[p. 71]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup></span> physical state for all time; it is initially the vacuum state but does not remain so. In the remote past as $`x_{0} \to -\infty`$, because $`S_{R}`$ is a retarded potential $`\psi_{H} ( x )`$ and $`\psi ( x )`$ become identical.
 
 The expression (361) is useful because we know how to calculate matrix elements of $`\psi ( x )`$ from the state $`\Psi_{o}`$, whereas the matrix elements of $`\psi_{H}`$ do not have any simple form. We also need the adjoint equation
 
@@ -2308,7 +2308,7 @@ So using this principle we have by (328)
 
 <div align="right"><a href="book.pdf#page=77" target="_blank" title="This page in the PDF"><sup>[p. 71]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p72" href="book.pdf#page=78" target="_blank" title="This page in the PDF"><sup>[p. 72]</sup></a>
+<a id="p72" href="book.pdf#page=78" target="_blank" title="This page in the PDF"><sup>[p. 72]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 We use the momentum representation (303) for $`S_{R}`$. But instead of taking the contour along the real axis for $`k_{0}`$ we can use a path of integration running along a straight line parallel to the real axis a distance $`\delta_{o}`$ above it. That gives the momentum representation
 
@@ -2376,7 +2376,7 @@ _Figure 5 (p. 72)_
 
 <div align="right"><a href="book.pdf#page=78" target="_blank" title="This page in the PDF"><sup>[p. 72]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p73" href="book.pdf#page=79" target="_blank" title="This page in the PDF"><sup>[p. 73]</sup></a>
+<a id="p73" href="book.pdf#page=79" target="_blank" title="This page in the PDF"><sup>[p. 73]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 Hence
 
@@ -2448,7 +2448,7 @@ This integral is still badly divergent. So we again use a physical argument to g
 
 <div align="right"><a href="book.pdf#page=79" target="_blank" title="This page in the PDF"><sup>[p. 73]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p74" href="book.pdf#page=80" target="_blank" title="This page in the PDF"><sup>[p. 74]</sup></a>
+<a id="p74" href="book.pdf#page=80" target="_blank" title="This page in the PDF"><sup>[p. 74]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 identically. Therefore (374) gives (since we now take $`\delta = 0`$)
 
@@ -2530,7 +2530,7 @@ This is the analytic formula for $`J_{\nu}`$ valid for large $`\mu`$ in which ca
 
 <div align="right"><a href="book.pdf#page=80" target="_blank" title="This page in the PDF"><sup>[p. 74]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p75" href="book.pdf#page=81" target="_blank" title="This page in the PDF"><sup>[p. 75]</sup></a>
+<a id="p75" href="book.pdf#page=81" target="_blank" title="This page in the PDF"><sup>[p. 75]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 Writing now $`z`$ for 4$`( z - z^{2} )`$ and using (374), we go to the limit $`\delta_{0} = 0`$ and find<sup><a id="fnref-52" href="#fn-52">52</a></sup>
 
@@ -2600,7 +2600,7 @@ We now discuss the various physical effects arising from the calculation of
 
 <div align="right"><a href="book.pdf#page=81" target="_blank" title="This page in the PDF"><sup>[p. 75]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p76" href="book.pdf#page=82" target="_blank" title="This page in the PDF"><sup>[p. 76]</sup></a>
+<a id="p76" href="book.pdf#page=82" target="_blank" title="This page in the PDF"><sup>[p. 76]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 2) If the relation (382) had not been used in order to simplify (379), we should have had an addition to $`\langle j_{\nu H} ( x ) \rangle_{o}`$ of the form $`K^{\prime} e_{\nu} = KA_{\nu}^{e} ( x )`$ (see (360)) where $`K`$ is an indeterminate numerical factor containing the divergent integral standing on the left of (382). That is to say, an induced current proportional to the inducing potential. This would have destroyed the gauge-invariance of the result if $`K \neq 0`$. Therefore we can also use the physical requirement that the results must be gauge-invariant in order to give the value zero to the indeterminate $`K`$.
 
@@ -2646,7 +2646,7 @@ Everything here is now finite and observable.
 
 <div align="right"><a href="book.pdf#page=82" target="_blank" title="This page in the PDF"><sup>[p. 76]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p77" href="book.pdf#page=83" target="_blank" title="This page in the PDF"><sup>[p. 77]</sup></a>
+<a id="p77" href="book.pdf#page=83" target="_blank" title="This page in the PDF"><sup>[p. 77]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 We study the energy balance, remembering that the classical potentials $`A_{\nu}^{e} ( x )`$ must always be real quantities like
 
@@ -2716,7 +2716,7 @@ The result could of course have been found more easily by elementary methods. Th
 
 <div align="right"><a href="book.pdf#page=83" target="_blank" title="This page in the PDF"><sup>[p. 77]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p78" href="book.pdf#page=84" target="_blank" title="This page in the PDF"><sup>[p. 78]</sup></a>
+<a id="p78" href="book.pdf#page=84" target="_blank" title="This page in the PDF"><sup>[p. 78]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 ### <a id="s-slowly-varying-weak-fields-the-uehling-effect"></a>Vacuum Polarization For Slowly Varying Weak Fields. The Uehling Effect.
 
@@ -2792,7 +2792,7 @@ The result (409) was calculated many years ago by Uehling <a id="refback-17-1"><
 
 ### <a id="s-the-complete-relativistic-quantum-electrodynamics"></a>The Complete Relativistic Quantum Electrodynamics
 
-We now take the combined system of Dirac and Maxwell fields in interaction, and make out of it a relativistic quantum theory using the methods we have already developed. This will then be the complete theory of quantum electrodynamics, applicable to all problems in which electrons, positrons and photons are<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=84" target="_blank" title="This page in the PDF"><sup>[p. 78]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p79" href="book.pdf#page=85" target="_blank" title="This page in the PDF"><sup>[p. 79]</sup></a></span> concerned. We also include in the theory a classical Maxwell field, which acts on the electrons and positrons and represents the effects of external charges such as protons which may happen to be present.
+We now take the combined system of Dirac and Maxwell fields in interaction, and make out of it a relativistic quantum theory using the methods we have already developed. This will then be the complete theory of quantum electrodynamics, applicable to all problems in which electrons, positrons and photons are<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=84" target="_blank" title="This page in the PDF"><sup>[p. 78]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p79" href="book.pdf#page=85" target="_blank" title="This page in the PDF"><sup>[p. 79]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup></span> concerned. We also include in the theory a classical Maxwell field, which acts on the electrons and positrons and represents the effects of external charges such as protons which may happen to be present.
 
 Lagrangian
 
@@ -2858,7 +2858,7 @@ Using the BIR we can discuss the radiation of light by an atom, as it was done b
 
 <div align="right"><a href="book.pdf#page=85" target="_blank" title="This page in the PDF"><sup>[p. 79]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p80" href="book.pdf#page=86" target="_blank" title="This page in the PDF"><sup>[p. 80]</sup></a>
+<a id="p80" href="book.pdf#page=86" target="_blank" title="This page in the PDF"><sup>[p. 80]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
 ### <a id="s-free-interaction-representation"></a>Free Interaction Representation
 

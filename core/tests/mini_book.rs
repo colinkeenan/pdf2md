@@ -144,9 +144,10 @@ fn converts_a_small_book() {
     assert!(alpha.contains("**[1]** A. Author, A Book, Press, 1950. [↩](#refback-1-1)"), "{alpha}");
     // displayed equation with its number
     assert!(alpha.contains("```math\nE = mc^{2} \\qquad \\text{(1)}\n```"), "{alpha}");
-    // the running header is gone, the printed page number became an anchor
-    assert!(!alpha.contains("ALPHA"), "{alpha}");
-    assert!(alpha.contains("<a id=\"p2\"><sup>[p. 2]</sup></a>"), "{alpha}");
+    // the running header is out of the text: the printed page number became
+    // an anchor, and the running title stands behind it, once
+    assert_eq!(alpha.matches("ALPHA").count(), 1, "{alpha}");
+    assert!(alpha.contains("<a id=\"p2\"><sup>[p. 2]</sup></a> <sup>ALPHA</sup>"), "{alpha}");
 
     // aligned columns become a LaTeX array (a blank behind each "\\": see
     // emit's `display`)

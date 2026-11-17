@@ -224,6 +224,10 @@ pub struct Book {
     pub warnings: Vec<String>,
     /// Printed page number of every page (index = page index).
     pub labels: Vec<Option<String>>,
+    /// The running title at the head of every page and the line at its
+    /// foot, where the book has them (index = page index).
+    pub heads: Vec<Option<String>>,
+    pub feet: Vec<Option<String>>,
     /// PDF page number (1 = first sheet) of every page (index = page index).
     pub pdf_pages: Vec<u32>,
     /// The PDF page each printed page starts on, by the id of its page
@@ -438,6 +442,8 @@ pub fn convert_doc(doc: &layout::Doc) -> Book {
     let labels = pages.iter().map(|p| p.label.clone()).collect();
     let pdf_pages = pages.iter().map(|p| doc.pages[p.index].number).collect();
     let mut book = finish(blks, labels, pdf_pages, stats.chapter_size);
+    book.heads = pages.iter().map(|p| p.head.clone()).collect();
+    book.feet = pages.iter().map(|p| p.foot.clone()).collect();
     // (a book without page numbers, whose printed pages were found by the
     // links of its index: each starts on the page its mark is on)
     if pages.iter().all(|p| p.label.is_none()) {

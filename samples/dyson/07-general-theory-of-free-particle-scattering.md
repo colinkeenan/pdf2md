@@ -31,7 +31,7 @@ We wish to calculate the matrix element $`M`$ of $`S`$ for a particular scatteri
 
 <div align="right"><a href="book.pdf#page=100" target="_blank" title="This page in the PDF"><sup>[p. 94]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p95" href="book.pdf#page=101" target="_blank" title="This page in the PDF"><sup>[p. 95]</sup></a>
+<a id="p95" href="book.pdf#page=101" target="_blank" title="This page in the PDF"><sup>[p. 95]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup>
 
 Suppose $`t_{B}`$ to be a time so long in the future after the scattering process is over, that from $`t_{B}`$ to +$`\infty`$ the state $`B`$ consists of separated outward-traveling particles. Then the relation between $`\Psi_{B} ( t )`$ and $`\Phi_{B}`$ is simple. We imagine a fictitious world in which the charge $`e`$ occurring in the radiation interaction decreases infinitely slowly (adiabatically) from its actual value at time $`t_{B}`$ to zero at time (+$`\infty`$). In the fictitious world, the state $`\Psi_{B} ( t_{B} )`$ at time $`t_{B}`$ will grow into the bare-particle state $`\Phi_{B}`$ at time +$`\infty`$. Thus
 
@@ -95,7 +95,7 @@ The use of bare-particle wave-functions $`\Phi_{A}`$ and $`\Phi_{B}`$ in (487) i
 
 <div align="right"><a href="book.pdf#page=101" target="_blank" title="This page in the PDF"><sup>[p. 95]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p96" href="book.pdf#page=102" target="_blank" title="This page in the PDF"><sup>[p. 96]</sup></a>
+<a id="p96" href="book.pdf#page=102" target="_blank" title="This page in the PDF"><sup>[p. 96]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup>
 
 ## <a id="s-reduction-of-an-operator-to-normal-form"></a>The Reduction of an Operator to Normal Form
 
@@ -169,7 +169,7 @@ And in fact for _any_ two field operators $`\mathcal{P} , \mathcal{Q}`$ we have
 
 <div align="right"><a href="book.pdf#page=102" target="_blank" title="This page in the PDF"><sup>[p. 96]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p97" href="book.pdf#page=103" target="_blank" title="This page in the PDF"><sup>[p. 97]</sup></a>
+<a id="p97" href="book.pdf#page=103" target="_blank" title="This page in the PDF"><sup>[p. 97]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup>
 
 provided $`\mathcal{P}`$ and $`\mathcal{Q}`$ are both linear in emission and absorption operators. The proof of (503) has in effect been done by proving (501) and (502), because these include all of the possible products of two boson or two fermion operators, and (503) is trivial for the product of one boson and one fermion operator, because they commute. Equations (501) – (503) are operator identities, and hold whether or not the physical problem is directly concerned with the vacuum state of the fields. In fact we could if we wished define the “vacuum expectation values” as the functions appearing in (501) – (503) and so avoid speaking about the vacuum state at all.
 
@@ -223,7 +223,7 @@ where Σ is a sum of terms of the form (505). The theorem is true for each term 
 
 <div align="right"><a href="book.pdf#page=103" target="_blank" title="This page in the PDF"><sup>[p. 97]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p98" href="book.pdf#page=104" target="_blank" title="This page in the PDF"><sup>[p. 98]</sup></a>
+<a id="p98" href="book.pdf#page=104" target="_blank" title="This page in the PDF"><sup>[p. 98]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup>
 
 ## <a id="s-feynman-graphs"></a><a id="ix-132">Feynman</a> Graphs
 
@@ -261,7 +261,7 @@ _Figure 8 (p. 98)_
 
 <div align="right"><a href="book.pdf#page=104" target="_blank" title="This page in the PDF"><sup>[p. 98]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p99" href="book.pdf#page=105" target="_blank" title="This page in the PDF"><sup>[p. 99]</sup></a>
+<a id="p99" href="book.pdf#page=105" target="_blank" title="This page in the PDF"><sup>[p. 99]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup>
 
 ![Figure 9 (p. 99)](images/fig-p105-1.png)
 
@@ -307,7 +307,7 @@ A $`\psi`$ operator not only annihilates electrons but also creates positrons. A
 
 We have introduced the Feynman graphs simply as a convenient pictorial way of visualizing the analysis of an operator into its normal constituents. The graphs are just diagrams drawn on the paper. But according to Feynman<sup><a id="fnref-71" href="#fn-71">71</a></sup> , “Space-time Approach to Quantum Electrodynamics”, _Phys. Rev._ **76** (1949) 769, the graphs are more than this. He regards the graphs as a picture of an actual process which is occurring physically in space-time. Thus $`G_{2}`$ represents an electron and a photon coming together and interacting at the space-time point $`x_{1}`$, where the photon is absorbed; then the electron propagates through space-time along the line $`x_{1} x_{2}`$, until at $`x_{2}`$ it emits a photon, and the electron and photon then travel out along the outgoing lines at $`x_{2}`$. According to Feynman an internal undotted line running from $`x_{1}`$ to $`x_{2}`$ represents an electron propagating from $`x_{1}`$ to $`x_{2}`$ if the time $`x_{2}`$ is later than the time $`x_{1}`$, and represents a positron propagating from $`x_{2}`$ to $`x_{1}`$ if the time $`x_{2}`$ is earlier. In this sense a positron can be regarded as precisely equivalent to an electron which happens to propagate itself backwards instead of forwards in time.
 
-The space-time picture of Feynman is a perfectly consistent and reasonable one. It gives a correct account of everything that happens, including pair creation and annihilation and all the other phenomena<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=105" target="_blank" title="This page in the PDF"><sup>[p. 99]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p100" href="book.pdf#page=106" target="_blank" title="This page in the PDF"><sup>[p. 100]</sup></a></span> connected with positrons. It is in fact equivalent mathematically to the field-theory treatment we follow in this course.
+The space-time picture of Feynman is a perfectly consistent and reasonable one. It gives a correct account of everything that happens, including pair creation and annihilation and all the other phenomena<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=105" target="_blank" title="This page in the PDF"><sup>[p. 99]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p100" href="book.pdf#page=106" target="_blank" title="This page in the PDF"><sup>[p. 100]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup></span> connected with positrons. It is in fact equivalent mathematically to the field-theory treatment we follow in this course.
 
 The disadvantage of the Feynman theory is that it is constructed as a particle theory. The fact that there are many particles, indistinguishable from each other and obeying quantum statistics, has to be put into the theory as a special assumption. And the equations of motion of the particles become quite complicated when interactions between several particles, not to mention vacuum-polarization effects, are included. Thus the logical basis of the Feynman theory is much less simple than that of the field theory, where everything follows from general principles once the form of the Lagrangian is chosen.
 
@@ -351,7 +351,7 @@ and for every set of field operators $`\mathcal{R}_{1} \mathcal{R}_{2} \dots \ma
 
 The rules for writing down the normal constituents of (488) are therefore extremely simple. We are generally only interested in those normal constituents which give matrix elements for some specified type of scattering process. Then the rules are
 
-1) Draw all the graphs which have the right set of external lines corresponding to the particles absorbed and emitted in the process considered. Each <a id="ix-127">graph</a> $`G`$ will have the same external lines, but the number of vertices and of internal lines will vary from graph to graph. We shall always calculate only up to some definite order $`N`$ in the series (488), and so we draw only graphs with not more than $`N`$ vertices. The total number of such graphs is finite. Each vertex in each graph must have precisely 3 lines ending at it, one<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=106" target="_blank" title="This page in the PDF"><sup>[p. 100]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p101" href="book.pdf#page=107" target="_blank" title="This page in the PDF"><sup>[p. 101]</sup></a></span> incoming electron line, one outgoing electron line, and one photon line.
+1) Draw all the graphs which have the right set of external lines corresponding to the particles absorbed and emitted in the process considered. Each <a id="ix-127">graph</a> $`G`$ will have the same external lines, but the number of vertices and of internal lines will vary from graph to graph. We shall always calculate only up to some definite order $`N`$ in the series (488), and so we draw only graphs with not more than $`N`$ vertices. The total number of such graphs is finite. Each vertex in each graph must have precisely 3 lines ending at it, one<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=106" target="_blank" title="This page in the PDF"><sup>[p. 100]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p101" href="book.pdf#page=107" target="_blank" title="This page in the PDF"><sup>[p. 101]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup></span> incoming electron line, one outgoing electron line, and one photon line.
 
 2) To each <a id="ix-128">graph</a> $`G`$ with $`n`$ vertices corresponds one normal constituent $`S_{G}`$ of $`S`$.
 
@@ -389,7 +389,7 @@ corresponding to each internal photon line of $`G`$ at which the 3 lines associa
 
 In addition to these factors there will be numerical factors and Dirac matrices $`\gamma_{\alpha}`$ arising from the particular form of $`S_{n}`$. In practice it is easiest not to write down the $`S_{G}`$ directly in momentum space, but to use the rules (1) – (4) to obtain formulae in configuration space with the right numerical constants, and then transform to momentum space by (430) and (448).
 
-We shall now show how these general methods work by calculating in detail _the_ historic problem, the second-order radiative correction to the scattering of an electron by a weak external potential. This<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=107" target="_blank" title="This page in the PDF"><sup>[p. 101]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p102" href="book.pdf#page=108" target="_blank" title="This page in the PDF"><sup>[p. 102]</sup></a></span> problem has been first satisfactorily treated by Schwinger,<sup><a id="fnref-72" href="#fn-72">72</a></sup> _Phys. Rev._ **76** (1949) 790. Schwinger’s paper is outstandingly difficult to read, and I hope you will find my treatment at least slightly easier. But the problem is in its nature complicated and cannot be done without some fairly heavy mathematics. Once the calculations are done for this problem of scattering, it turns out that the results can be used without much further trouble for the relativistic calculation of the Lamb shift too. The scattering and Lamb shift problems are very closely related: in both cases one is calculating the second-order radiative corrections to the motion of an electron, only in one case the electron is in a high continuum state so that the external field can be treated as weak, in the other case the electron is in a discrete state and the potential must be treated as strong.
+We shall now show how these general methods work by calculating in detail _the_ historic problem, the second-order radiative correction to the scattering of an electron by a weak external potential. This<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=107" target="_blank" title="This page in the PDF"><sup>[p. 101]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p102" href="book.pdf#page=108" target="_blank" title="This page in the PDF"><sup>[p. 102]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup></span> problem has been first satisfactorily treated by Schwinger,<sup><a id="fnref-72" href="#fn-72">72</a></sup> _Phys. Rev._ **76** (1949) 790. Schwinger’s paper is outstandingly difficult to read, and I hope you will find my treatment at least slightly easier. But the problem is in its nature complicated and cannot be done without some fairly heavy mathematics. Once the calculations are done for this problem of scattering, it turns out that the results can be used without much further trouble for the relativistic calculation of the Lamb shift too. The scattering and Lamb shift problems are very closely related: in both cases one is calculating the second-order radiative corrections to the motion of an electron, only in one case the electron is in a high continuum state so that the external field can be treated as weak, in the other case the electron is in a discrete state and the potential must be treated as strong.
 
 ## <a id="s-the-self-energy-of-the-electron"></a>The Self-Energy of the Electron
 
@@ -431,7 +431,7 @@ We consider the Dirac operator
 
 <div align="right"><a href="book.pdf#page=108" target="_blank" title="This page in the PDF"><sup>[p. 102]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p103" href="book.pdf#page=109" target="_blank" title="This page in the PDF"><sup>[p. 103]</sup></a>
+<a id="p103" href="book.pdf#page=109" target="_blank" title="This page in the PDF"><sup>[p. 103]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup>
 
 appearing in (519). Since $`( p,u )`$ are the <a id="ix-208">momentum</a> and spin of a real electron, we may use the relations
 
@@ -511,7 +511,7 @@ M_{S} = - i \frac{\delta mc}{\hbar} ( 2 \pi )^{4} \delta ( p - p^{\prime} ) ( \o
 
 <div align="right"><a href="book.pdf#page=109" target="_blank" title="This page in the PDF"><sup>[p. 103]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p104" href="book.pdf#page=110" target="_blank" title="This page in the PDF"><sup>[p. 104]</sup></a>
+<a id="p104" href="book.pdf#page=110" target="_blank" title="This page in the PDF"><sup>[p. 104]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup>
 
 This is identical with (524) if we identify the self-mass $`\delta m`$ by the equation
 
@@ -565,7 +565,7 @@ Let an electron be scattered from the initial state $`( pu )`$ to the final stat
 A_{\mu}^{e} ( x ) = \frac{1}{( 2 \pi )^{4}} \int e^{iq \cdot x} e_{\mu} ( q ) dq \qquad \text{(534)}
 ```
 
-At the same time the electron is interacting with the quantized Maxwell field with the interaction (532), since we suppose the initial and final states to be defined with the observed mass of a free electron. The<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=110" target="_blank" title="This page in the PDF"><sup>[p. 104]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p105" href="book.pdf#page=111" target="_blank" title="This page in the PDF"><sup>[p. 105]</sup></a></span> scattering matrix element $`M`$ is then given by (419), with $`U`$ given by (421) after replacing each $`H_{R}`$ by $`H^{I}`$ according to (532).
+At the same time the electron is interacting with the quantized Maxwell field with the interaction (532), since we suppose the initial and final states to be defined with the observed mass of a free electron. The<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=110" target="_blank" title="This page in the PDF"><sup>[p. 104]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p105" href="book.pdf#page=111" target="_blank" title="This page in the PDF"><sup>[p. 105]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup></span> scattering matrix element $`M`$ is then given by (419), with $`U`$ given by (421) after replacing each $`H_{R}`$ by $`H^{I}`$ according to (532).
 
 We treat $`A_{\mu}^{e}`$ in the linear Born approximation. Thus we keep only terms of order 0 and 1 in $`A_{\mu}^{e}`$. The terms of order 0 give the effects of the radiation interaction alone; as we have seen, these effects are zero for an initial state consisting of a single <a id="ix-276">electron</a>.
 
@@ -659,7 +659,7 @@ M_{1} = \frac{e^{2}}{\hbar^{2} c^{2}} \left[ \frac{p \cdot e^{\prime}}{p \cdot k
 
 <div align="right"><a href="book.pdf#page=111" target="_blank" title="This page in the PDF"><sup>[p. 105]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p106" href="book.pdf#page=112" target="_blank" title="This page in the PDF"><sup>[p. 106]</sup></a>
+<a id="p106" href="book.pdf#page=112" target="_blank" title="This page in the PDF"><sup>[p. 106]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup>
 
 where we used (521) and rule (4) on page 87.
 
@@ -691,7 +691,7 @@ Hence, using the momentum integrals (430), (448), (534), (542) and carrying out 
 
 <div align="right"><a href="book.pdf#page=112" target="_blank" title="This page in the PDF"><sup>[p. 106]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p107" href="book.pdf#page=113" target="_blank" title="This page in the PDF"><sup>[p. 107]</sup></a>
+<a id="p107" href="book.pdf#page=113" target="_blank" title="This page in the PDF"><sup>[p. 107]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup>
 
 <a id="eq-548"></a>
 
@@ -749,7 +749,7 @@ M_{2 1} = \frac{2 \alpha}{\pi} \frac{q^{2}}{\mu^{2}} M_{0} \int_{0}^{1} ( z - z^
 
 <div align="right"><a href="book.pdf#page=113" target="_blank" title="This page in the PDF"><sup>[p. 107]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p108" href="book.pdf#page=114" target="_blank" title="This page in the PDF"><sup>[p. 108]</sup></a>
+<a id="p108" href="book.pdf#page=114" target="_blank" title="This page in the PDF"><sup>[p. 108]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup>
 
 Next we consider the contribution to $`M_{2}`$ from $`G_{2}`$. This is
 
@@ -833,7 +833,7 @@ M_{2 2} = - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int G ( \epsilon_
 
 <div align="right"><a href="book.pdf#page=114" target="_blank" title="This page in the PDF"><sup>[p. 108]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p109" href="book.pdf#page=115" target="_blank" title="This page in the PDF"><sup>[p. 109]</sup></a>
+<a id="p109" href="book.pdf#page=115" target="_blank" title="This page in the PDF"><sup>[p. 109]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup>
 
 In (564) the inadmissible factor (559) is replaced by something finite and mathematically well-defined. There will be a singularity in the integration of (564) over $`\epsilon_{0}`$, but this is an ordinary pole and the integration over $`\epsilon_{0}`$ will give a well-determined result when taken as a <a id="ix-124">Feynman</a> integral. We have as $`T \to \infty`$ and $`\epsilon_{0}`$ and
 
@@ -917,7 +917,7 @@ I_{\alpha} ( p ) = I_{1} \gamma_{\alpha} \qquad \text{(573)}
 
 <div align="right"><a href="book.pdf#page=115" target="_blank" title="This page in the PDF"><sup>[p. 109]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p110" href="book.pdf#page=116" target="_blank" title="This page in the PDF"><sup>[p. 110]</sup></a>
+<a id="p110" href="book.pdf#page=116" target="_blank" title="This page in the PDF"><sup>[p. 110]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup>
 
 This is a convenient definition of $`I_{1}`$ for future reference.
 
@@ -967,7 +967,7 @@ M_{2 2} + M_{2 2}^{\prime} = \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \frac{
 
 <div align="right"><a href="book.pdf#page=116" target="_blank" title="This page in the PDF"><sup>[p. 110]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p111" href="book.pdf#page=117" target="_blank" title="This page in the PDF"><sup>[p. 111]</sup></a>
+<a id="p111" href="book.pdf#page=117" target="_blank" title="This page in the PDF"><sup>[p. 111]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup>
 
 The graphs $`G_{3}`$ and $`G_{3}^{\prime}`$ give an exactly equal contribution. Hence
 
@@ -1031,7 +1031,7 @@ where
 \Lambda ( p,p^{\prime} ) = \int_{F} dk \sum_{\lambda} \left( \gamma_{\lambda} \frac{1}{/ k + p /^{\prime} - i\mu} /e \frac{1}{k / + p / - i\mu} \gamma_{\lambda} \right) \frac{1}{k^{2}} \qquad \text{(584)}
 ```
 
-There is no singular factor in (584) such as we had in (558). To perform the sum over $`\lambda`$ in (584), we use<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=117" target="_blank" title="This page in the PDF"><sup>[p. 111]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p112" href="book.pdf#page=118" target="_blank" title="This page in the PDF"><sup>[p. 112]</sup></a></span> the table
+There is no singular factor in (584) such as we had in (558). To perform the sum over $`\lambda`$ in (584), we use<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=117" target="_blank" title="This page in the PDF"><sup>[p. 111]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p112" href="book.pdf#page=118" target="_blank" title="This page in the PDF"><sup>[p. 112]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup></span> the table
 
 <a id="eq-585"></a>
 
@@ -1109,7 +1109,7 @@ e \cdot p = e \cdot p^{\prime} = e \cdot p_{y} = i\mu /e + \tfrac{1}{2} /e/q \qq
 
 <div align="right"><a href="book.pdf#page=118" target="_blank" title="This page in the PDF"><sup>[p. 112]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p113" href="book.pdf#page=119" target="_blank" title="This page in the PDF"><sup>[p. 113]</sup></a>
+<a id="p113" href="book.pdf#page=119" target="_blank" title="This page in the PDF"><sup>[p. 113]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup>
 
 <a id="eq-593"></a>
 
@@ -1185,7 +1185,7 @@ Integrating the logarithmic term by parts with respect to $`y`$,
 
 <div align="right"><a href="book.pdf#page=119" target="_blank" title="This page in the PDF"><sup>[p. 113]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p114" href="book.pdf#page=120" target="_blank" title="This page in the PDF"><sup>[p. 114]</sup></a>
+<a id="p114" href="book.pdf#page=120" target="_blank" title="This page in the PDF"><sup>[p. 114]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup>
 
 When $`q^{2} < - 4 \mu^{2}`$, the external potential is able to create real pairs, and the denominator in (600) has poles in the range of the $`y`$-integration. In this case the Feynman rule of adding a term $`( - i\epsilon )`$ to $`\mu^{2}`$, where $`\epsilon`$ is an infinitesimal positive real number, will give an unambiguous determination of the integral. Just as in the case of the vacuum polarization formula (389), the integral will split into a real part and an imaginary part describing the effects of the real pairs created. We shall not discuss these effects of real pairs since they are not practically important. So we assume $`q^{2} > - 4 \mu^{2}`$.
 
@@ -1243,7 +1243,7 @@ which is just the divergent part of (600). But the integration in (604) actually
 
 <div align="right"><a href="book.pdf#page=120" target="_blank" title="This page in the PDF"><sup>[p. 114]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p115" href="book.pdf#page=121" target="_blank" title="This page in the PDF"><sup>[p. 115]</sup></a>
+<a id="p115" href="book.pdf#page=121" target="_blank" title="This page in the PDF"><sup>[p. 115]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup>
 
 This integral is completely convergent for every finite $`r`$, the $`k`$-integration being restricted to $`k`$ satisfying (601). The formula (606) is exact except for terms which tend to zero with $`r`$.
 
@@ -1315,7 +1315,7 @@ The $`k`$-integration is now elementary, and after dropping terms which tend to 
 
 <div align="right"><a href="book.pdf#page=121" target="_blank" title="This page in the PDF"><sup>[p. 115]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p116" href="book.pdf#page=122" target="_blank" title="This page in the PDF"><sup>[p. 116]</sup></a>
+<a id="p116" href="book.pdf#page=122" target="_blank" title="This page in the PDF"><sup>[p. 116]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup>
 
 Putting $`p = p^{\prime} , q = 0`$ in (614), we find
 
@@ -1389,7 +1389,7 @@ neglecting terms of fourth order in the radiation interaction. If we consider in
 
 <div align="right"><a href="book.pdf#page=122" target="_blank" title="This page in the PDF"><sup>[p. 116]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p117" href="book.pdf#page=123" target="_blank" title="This page in the PDF"><sup>[p. 117]</sup></a>
+<a id="p117" href="book.pdf#page=123" target="_blank" title="This page in the PDF"><sup>[p. 117]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup>
 
 So the contributions to (617) from low-frequency virtual photons serve only to compensate exactly the probability for scattering with emission of low-frequency real photons. The non-radiative probability is decreased by the effects of low-frequency virtual photons, so that the total scattering probability, radiative plus non-radiative, is essentially independent of the presence of very low-frequency photons. The total scattering probability is thus a finite quantity free from any infra-red divergence.
 

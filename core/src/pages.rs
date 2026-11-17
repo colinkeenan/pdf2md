@@ -14,6 +14,11 @@ pub struct PageInfo {
     pub index: usize,
     /// Printed page number ("6", or "iv" in the front matter), if known.
     pub label: Option<String>,
+    /// The running title at the head of the page, without the page's
+    /// number ("CHAPTER 2. VECTOR ALGEBRA"), and the line that ends every
+    /// page ("© The Author"): shown beside the page's markers.
+    pub head: Option<String>,
+    pub foot: Option<String>,
     pub width: f32,
     pub height: f32,
     pub lines: Vec<Line>,
@@ -83,7 +88,9 @@ pub fn prepare(doc: &Doc) -> Vec<PageInfo> {
         .map(|(index, p)| {
             let mut lines = p.lines.clone();
             let mut label = None;
-            if foot(p).is_some_and(|t| feet.contains_key(&t)) {
+            let (mut head, mut foot_line) = (None, None);
+            if let Some(t) = foot(p).filter(|t| feet.contains_key(t)) {
+                foot_line = Some(t);
                 lines.pop();
             }
 
@@ -106,6 +113,10 @@ pub fn prepare(doc: &Doc) -> Vec<PageInfo> {
                             .flatten()
                             .find(|w| is_page_number(w))
                             .map(|w| w.to_string());
+                        // (the title beside the number; of two columns of
+                        // words set far apart, each with one blank between)
+                        let (from, to) = (usize::from(words.first().is_some_and(|w| label.as_deref() == Some(*w))), words.len() - usize::from(words.len() > 1 && words.last().is_some_and(|w| label.as_deref() == Some(*w))));
+                        head = words.get(from..to.max(from)).map(|w| w.join(" ").trim_matches(|c: char| c == '|' || c.is_whitespace()).to_string()).filter(|t| t.chars().any(char::is_alphabetic));
                         lines.remove(0);
                     }
                 }
@@ -132,7 +143,7 @@ pub fn prepare(doc: &Doc) -> Vec<PageInfo> {
                 }
             }
             let lines = split_columns(doc, lines, p.width);
-            PageInfo { index, label, width: p.width, height: p.height, lines }
+            PageInfo { index, label, head, foot: foot_line, width: p.width, height: p.height, lines }
         })
         .collect();
 

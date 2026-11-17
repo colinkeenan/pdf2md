@@ -65,7 +65,7 @@ j_{k} = c \left( \psi^{*} \alpha^{k} \psi \right) \qquad \text{(11)}
 
 <div align="right"><a href="book.pdf#page=10" target="_blank" title="This page in the PDF"><sup>[p. 4]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p5" href="book.pdf#page=11" target="_blank" title="This page in the PDF"><sup>[p. 5]</sup></a>
+<a id="p5" href="book.pdf#page=11" target="_blank" title="This page in the PDF"><sup>[p. 5]</sup></a> <sup>THE DIRAC THEORY</sup>
 
 Next what more do we want from equation (9)? Two things. (A) it must be consistent with the 2<sup>nd</sup> order equation (6) we started from; (B) the whole theory must be <a id="ix-175">Lorentz</a> invariant.
 
@@ -129,7 +129,7 @@ The Dirac equation is thus a set of 4 simultaneous linear partial differential<s
 
 <div align="right"><a href="book.pdf#page=11" target="_blank" title="This page in the PDF"><sup>[p. 5]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p6" href="book.pdf#page=12" target="_blank" title="This page in the PDF"><sup>[p. 6]</sup></a>
+<a id="p6" href="book.pdf#page=12" target="_blank" title="This page in the PDF"><sup>[p. 6]</sup></a> <sup>THE DIRAC THEORY</sup>
 
 ## <a id="s-lorentz-invariance-of-the-dirac-equation"></a><a id="ix-180">Lorentz</a> Invariance of the Dirac <a id="ix-72">Equation</a>
 
@@ -211,7 +211,7 @@ writing $`\alpha^{0} = \mathbb{I}`$.
 
 <div align="right"><a href="book.pdf#page=12" target="_blank" title="This page in the PDF"><sup>[p. 6]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p7" href="book.pdf#page=13" target="_blank" title="This page in the PDF"><sup>[p. 7]</sup></a>
+<a id="p7" href="book.pdf#page=13" target="_blank" title="This page in the PDF"><sup>[p. 7]</sup></a> <sup>THE DIRAC THEORY</sup>
 
 Thus we need
 
@@ -295,7 +295,7 @@ S = \cos \tfrac{1}{2} \theta + i\sigma_{3} \sin \tfrac{1}{2} \theta \qquad \text
 
 <div align="right"><a href="book.pdf#page=13" target="_blank" title="This page in the PDF"><sup>[p. 7]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p8" href="book.pdf#page=14" target="_blank" title="This page in the PDF"><sup>[p. 8]</sup></a>
+<a id="p8" href="book.pdf#page=14" target="_blank" title="This page in the PDF"><sup>[p. 8]</sup></a> <sup>THE DIRAC THEORY</sup>
 
 Here
 
@@ -401,7 +401,7 @@ In this coordinate system the four matrices<sup><a id="fnref-5" href="#fn-5">5</
 
 <div align="right"><a href="book.pdf#page=14" target="_blank" title="This page in the PDF"><sup>[p. 8]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p9" href="book.pdf#page=15" target="_blank" title="This page in the PDF"><sup>[p. 9]</sup></a>
+<a id="p9" href="book.pdf#page=15" target="_blank" title="This page in the PDF"><sup>[p. 9]</sup></a> <sup>THE DIRAC THEORY</sup>
 
 ```math
 \gamma_{1} = \begin{pmatrix} 0 & \begin{matrix} 0 & - i \\ - i & 0 \end{matrix} \\ \begin{matrix} 0 & i \\ i & 0 \end{matrix} & 0 \end{pmatrix} ; \quad \gamma_{2} = \begin{pmatrix} 0 & \begin{matrix} 0 & - 1 \\ 1 & 0 \end{matrix} \\ \begin{matrix} 0 & 1 \\ - 1 & 0 \end{matrix} & 0 \end{pmatrix} ; \quad \gamma_{3} = \begin{pmatrix} 0 & \begin{matrix} - i & 0 \\ 0 & i \end{matrix} \\ \begin{matrix} i & 0 \\ 0 & - i \end{matrix} & 0 \end{pmatrix} ; \quad \gamma_{4} = \begin{pmatrix} \begin{matrix} 1 & 0 \\ 0 & 1 \end{matrix} & 0 \\ 0 & \begin{matrix} - 1 & 0 \\ 0 & - 1 \end{matrix} \end{pmatrix}
@@ -503,7 +503,7 @@ Thus
 
 <div align="right"><a href="book.pdf#page=15" target="_blank" title="This page in the PDF"><sup>[p. 9]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p10" href="book.pdf#page=16" target="_blank" title="This page in the PDF"><sup>[p. 10]</sup></a>
+<a id="p10" href="book.pdf#page=16" target="_blank" title="This page in the PDF"><sup>[p. 10]</sup></a> <sup>THE DIRAC THEORY</sup>
 
 is a constant, the total <a id="ix-18">angular momentum</a>, because by (40), (41) and (42)
 
@@ -573,7 +573,7 @@ Certainly negative energy particles are not allowed physically. They can for exa
 
 <div align="right"><a href="book.pdf#page=16" target="_blank" title="This page in the PDF"><sup>[p. 10]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p11" href="book.pdf#page=17" target="_blank" title="This page in the PDF"><sup>[p. 11]</sup></a>
+<a id="p11" href="book.pdf#page=17" target="_blank" title="This page in the PDF"><sup>[p. 11]</sup></a> <sup>THE DIRAC THEORY</sup>
 
 ## <a id="s-the-hole-theory"></a>The <a id="ix-81">Hole Theory</a>
 
@@ -665,7 +665,7 @@ C = - i\beta \alpha^{2} = \gamma_{2} = \begin{pmatrix} 0 & \begin{matrix} 0 & - 
 
 <div align="right"><a href="book.pdf#page=17" target="_blank" title="This page in the PDF"><sup>[p. 11]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p12" href="book.pdf#page=18" target="_blank" title="This page in the PDF"><sup>[p. 12]</sup></a>
+<a id="p12" href="book.pdf#page=18" target="_blank" title="This page in the PDF"><sup>[p. 12]</sup></a> <sup>THE DIRAC THEORY</sup>
 
 The relation between $`\psi`$ and $`\varphi`$ is symmetrical because
 
@@ -761,7 +761,7 @@ i \hbar \frac{\partial \psi}{\partial t} = \left[ - e \Phi + \sum_{1}^{3} \left(
 
 <div align="right"><a href="book.pdf#page=18" target="_blank" title="This page in the PDF"><sup>[p. 12]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p13" href="book.pdf#page=19" target="_blank" title="This page in the PDF"><sup>[p. 13]</sup></a>
+<a id="p13" href="book.pdf#page=19" target="_blank" title="This page in the PDF"><sup>[p. 13]</sup></a> <sup>THE DIRAC THEORY</sup>
 
 since by (57), we have $`\overline{\psi} \gamma_{\mu} = \psi^{*} \beta \gamma_{\mu} = ( C\varphi^{+} )^{T} \beta \gamma_{\mu} = \varphi^{T} C^{T} \beta \gamma_{\mu}`$; the wave function $`\varphi = C\psi^{+}`$ of a positron satisfies by (65)
 
@@ -855,7 +855,7 @@ Therefore
 
 <div align="right"><a href="book.pdf#page=19" target="_blank" title="This page in the PDF"><sup>[p. 13]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p14" href="book.pdf#page=20" target="_blank" title="This page in the PDF"><sup>[p. 14]</sup></a>
+<a id="p14" href="book.pdf#page=20" target="_blank" title="This page in the PDF"><sup>[p. 14]</sup></a> <sup>THE DIRAC THEORY</sup>
 
 because
 
@@ -955,7 +955,7 @@ We may choose a two-component representation in which
 
 <div align="right"><a href="book.pdf#page=20" target="_blank" title="This page in the PDF"><sup>[p. 14]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p15" href="book.pdf#page=21" target="_blank" title="This page in the PDF"><sup>[p. 15]</sup></a>
+<a id="p15" href="book.pdf#page=21" target="_blank" title="This page in the PDF"><sup>[p. 15]</sup></a> <sup>THE DIRAC THEORY</sup>
 
 Then
 
@@ -1029,7 +1029,7 @@ e_{s + 1} = \frac{\left( a_{1}^{2} - a^{2} \right) \alpha + 2 saa_{1}}{a_{1} \al
 
 <div align="right"><a href="book.pdf#page=21" target="_blank" title="This page in the PDF"><sup>[p. 15]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p16" href="book.pdf#page=22" target="_blank" title="This page in the PDF"><sup>[p. 16]</sup></a>
+<a id="p16" href="book.pdf#page=22" target="_blank" title="This page in the PDF"><sup>[p. 16]</sup></a> <sup>THE DIRAC THEORY</sup>
 
 Suppose the series do not terminate. Then for large $`s`$
 
@@ -1119,7 +1119,7 @@ n = 0 , \quad k = + 1 , + 2 , + 3 ,\dots \qquad \text{(94)}
 
 <div align="right"><a href="book.pdf#page=22" target="_blank" title="This page in the PDF"><sup>[p. 16]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p17" href="book.pdf#page=23" target="_blank" title="This page in the PDF"><sup>[p. 17]</sup></a>
+<a id="p17" href="book.pdf#page=23" target="_blank" title="This page in the PDF"><sup>[p. 17]</sup></a> <sup>THE DIRAC THEORY</sup>
 
 The principal quantum number $`N`$ is
 
@@ -1205,7 +1205,7 @@ This is still exact.
 
 <div align="right"><a href="book.pdf#page=23" target="_blank" title="This page in the PDF"><sup>[p. 17]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p18" href="book.pdf#page=24" target="_blank" title="This page in the PDF"><sup>[p. 18]</sup></a>
+<a id="p18" href="book.pdf#page=24" target="_blank" title="This page in the PDF"><sup>[p. 18]</sup></a> <sup>THE DIRAC THEORY</sup>
 
 Now in the NR approximation
 
@@ -1282,7 +1282,7 @@ L_{z} = - i \hbar \left\{ x \frac{\partial}{\partial y} - y \frac{\partial}{\par
 
 <div align="right"><a href="book.pdf#page=24" target="_blank" title="This page in the PDF"><sup>[p. 18]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p19" href="book.pdf#page=25" target="_blank" title="This page in the PDF"><sup>[p. 19]</sup></a>
+<a id="p19" href="book.pdf#page=25" target="_blank" title="This page in the PDF"><sup>[p. 19]</sup></a> <sup>THE DIRAC THEORY</sup>
 
 is a constant of the motion, say $`L_{z} = \ell \hbar`$ where $`\ell`$ is an integer. And $`- i \hbar \frac{\partial}{\partial z} = p_{z}`$. Let $`\lambda = | eB \hbar c |`$. Then
 
@@ -1310,7 +1310,7 @@ The lowest state has energy exactly $`mc^{2}`$.
 
 <div align="right"><a href="book.pdf#page=25" target="_blank" title="This page in the PDF"><sup>[p. 19]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p20" href="book.pdf#page=26" target="_blank" title="This page in the PDF"><sup>[p. 20]</sup></a>
+<a id="p20" href="book.pdf#page=26" target="_blank" title="This page in the PDF"><sup>[p. 20]</sup></a> <sup>THE DIRAC THEORY</sup>
 
 <div align="center">
 
@@ -1386,7 +1386,7 @@ Latin indices: 1, 2, 3. Greek indices: 1, 2, 3, 4.
 
 <div align="right"><a href="book.pdf#page=26" target="_blank" title="This page in the PDF"><sup>[p. 20]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p21" href="book.pdf#page=27" target="_blank" title="This page in the PDF"><sup>[p. 21]</sup></a>
+<a id="p21" href="book.pdf#page=27" target="_blank" title="This page in the PDF"><sup>[p. 21]</sup></a> <sup>THE DIRAC THEORY</sup>
 
 <div align="center">
 

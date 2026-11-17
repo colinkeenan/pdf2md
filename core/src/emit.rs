@@ -530,6 +530,12 @@ fn page_ends(text: &str, book: &Book) -> String {
         // the number before this one.
         let sheet = unnumbered.or_else(|| book.pdf_of.get(id).copied()).and_then(|n| book.pdf_pages.iter().position(|p| *p == n));
         let by_sheet = sheet.filter(|&k| unnumbered.is_some() || book.labels.get(k).and_then(|l| l.as_deref()) == page_label(id));
+        // The running title of the page that begins, shown behind its
+        // marker, and the foot line of the page that ends, before that
+        // page's marker: small, as the markers are.
+        let small = |t: &String| format!("<sup>{}</sup>", t.replace('&', "&amp;").replace('<', "&lt;").replace('>', "&gt;"));
+        let head = by_sheet.and_then(|k| book.heads.get(k)).and_then(|h| h.as_ref()).map(small);
+        let foot = by_sheet.and_then(|k| k.checked_sub(1)).and_then(|k| book.feet.get(k)).and_then(|f| f.as_ref()).map(small);
         let before = match by_sheet {
             Some(0) => None,
             Some(k) => {
@@ -546,6 +552,7 @@ fn page_ends(text: &str, book: &Book) -> String {
         // (not above the first bar of a file: nothing of that page is there)
         if let Some((label, link)) = before.filter(|_| !out.trim().trim_end_matches(PAGE_BAR).trim().is_empty()) {
             let mark = if link.is_empty() { format!("<sup>[{label}]</sup>") } else { format!("<a{link}><sup>[{label}]</sup></a>") };
+            let mark = foot.map_or(mark.clone(), |f| format!("{f} {mark}"));
             // (in a bulleted item the bar and the marker are set in under it)
             let indent = out.len() - out.trim_end_matches(' ').len();
             if out.ends_with(&format!("{PAGE_BAR}\n")) {
@@ -560,6 +567,12 @@ fn page_ends(text: &str, book: &Book) -> String {
         last = Some((label.to_string(), link));
         out.push_str(tag);
         rest = &rest[tag_end + 1..];
+        if let (Some(head), Some(end)) = (head, rest.find("</a>")) {
+            out.push_str(&rest[..end + 4]);
+            out.push(' ');
+            out.push_str(&head);
+            rest = &rest[end + 4..];
+        }
     }
     out.push_str(rest);
     out
@@ -1576,5 +1589,21 @@ mod tests {
         assert_eq!(render_inlines(&inl), "$`a`$$`x`$<!-- pdf2md:eq k -->");
         let inl = vec![Inline::Source("k".into()), Inline::Math("x".into()), Inline::Text("2 times".into())];
         assert_eq!(render_inlines(&inl), "$`x`$<!-- pdf2md:eq k --> 2 times");
+    }
+
+    #[test]
+    fn running_title_and_foot_line_stand_at_the_page_turn() {
+        let book = Book {
+            labels: vec![Some("11".into()), Some("12".into())],
+            pdf_pages: vec![21, 22],
+            heads: vec![None, Some("CHAPTER 2. A & B".into())],
+            feet: vec![Some("© The Author".into()), None],
+            pdf_of: [("p12".to_string(), 22)].into(),
+            ..Default::default()
+        };
+        let text = format!("Words of page 11.\n\n{PAGE_BAR}\n<a id=\"p12\"><sup>[p. 12]</sup></a>\n\nWords of page 12.\n");
+        let out = page_ends(&text, &book);
+        assert!(out.contains("<div align=\"right\"><sup>© The Author</sup> <sup>[p. 11]</sup></div>\n<hr class=\"page\""), "{out}");
+        assert!(out.contains("<a id=\"p12\"><sup>[p. 12]</sup></a> <sup>CHAPTER 2. A &amp; B</sup>\n\nWords of page 12."), "{out}");
     }
 }

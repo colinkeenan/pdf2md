@@ -75,7 +75,7 @@ Summing over the final spin states, and averaging over the initial spin states, 
 
 <div align="right"><a href="book.pdf#page=124" target="_blank" title="This page in the PDF"><sup>[p. 118]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p119" href="book.pdf#page=125" target="_blank" title="This page in the PDF"><sup>[p. 119]</sup></a>
+<a id="p119" href="book.pdf#page=125" target="_blank" title="This page in the PDF"><sup>[p. 119]</sup></a> <sup>SCATTERING BY A STATIC POTENTIAL</sup>
 
 where $`\theta`$ is the angle between $`p`$ and $`p^{\prime}`$, and
 
@@ -153,7 +153,7 @@ To remove the dependence of (637) on $`r`$ we must consider the cross-section fo
 \hbar ck_{\max} = E - mc^{2} \approx \frac{\hbar^{2}}{2 m} | \boldsymbol{p} |^{2} \qquad \text{(638)}
 ```
 
-and therefore for all possible photons the momentum $`\hbar | \boldsymbol{k}^{\prime} |`$ will be very small compared with the electron momentum $`\hbar | \boldsymbol{p} |`$.<sup><a id="fnref-83" href="#fn-83">83</a></sup> Thus the recoil of the electron, arising from the momentum carried off by the photon,<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=125" target="_blank" title="This page in the PDF"><sup>[p. 119]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p120" href="book.pdf#page=126" target="_blank" title="This page in the PDF"><sup>[p. 120]</sup></a></span> can always be neglected. The matrix element and probability for radiative scattering will be given by (618) and (620), even when the photon takes away a large fraction of the kinetic energy of the electron.
+and therefore for all possible photons the momentum $`\hbar | \boldsymbol{k}^{\prime} |`$ will be very small compared with the electron momentum $`\hbar | \boldsymbol{p} |`$.<sup><a id="fnref-83" href="#fn-83">83</a></sup> Thus the recoil of the electron, arising from the momentum carried off by the photon,<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=125" target="_blank" title="This page in the PDF"><sup>[p. 119]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p120" href="book.pdf#page=126" target="_blank" title="This page in the PDF"><sup>[p. 120]</sup></a> <sup>SCATTERING BY A STATIC POTENTIAL</sup></span> can always be neglected. The matrix element and probability for radiative scattering will be given by (618) and (620), even when the photon takes away a large fraction of the kinetic energy of the electron.
 
 We imagine a scattering experiment in which only the direction of the emerging electron is measured and not its energy. Then the radiative <a id="ix-53">cross-section</a> $`\overline{\sigma}_{R}`$ will measure the total probability of scattering the electron into a <a id="ix-15">solid</a> angle $`d`$Ω with emission of a photon having any frequency between the lower limit $`r`$ and the upper limit $`k_{\max}`$ given by (638). The observed cross-section will be
 
@@ -227,7 +227,7 @@ Here we used the following trick: the integral over $`\lambda`$ blows up at $`\l
 
 <div align="right"><a href="book.pdf#page=126" target="_blank" title="This page in the PDF"><sup>[p. 120]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p121" href="book.pdf#page=127" target="_blank" title="This page in the PDF"><sup>[p. 121]</sup></a>
+<a id="p121" href="book.pdf#page=127" target="_blank" title="This page in the PDF"><sup>[p. 121]</sup></a> <sup>SCATTERING BY A STATIC POTENTIAL</sup>
 
 Formula (646) gives a result of the form
 
@@ -279,7 +279,7 @@ The scattering by an electrostatic potential, the two terms in (617) were lumped
 
 <div align="right"><a href="book.pdf#page=127" target="_blank" title="This page in the PDF"><sup>[p. 121]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p122" href="book.pdf#page=128" target="_blank" title="This page in the PDF"><sup>[p. 122]</sup></a>
+<a id="p122" href="book.pdf#page=128" target="_blank" title="This page in the PDF"><sup>[p. 122]</sup></a> <sup>SCATTERING BY A STATIC POTENTIAL</sup>
 
 Consider <a id="ix-243">scattering</a> of a slow electron by a slowly-varying<sup><a id="fnref-84" href="#fn-84">84</a></sup> magnetic field. The potentials (534) can then be taken to be a pure vector potential, so that
 
@@ -361,7 +361,7 @@ U_{M} = - i \frac{\delta M}{\hbar c} ( \overline{u}^{\prime} /e/qu ) \qquad \tex
 
 <div align="right"><a href="book.pdf#page=128" target="_blank" title="This page in the PDF"><sup>[p. 122]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p123" href="book.pdf#page=129" target="_blank" title="This page in the PDF"><sup>[p. 123]</sup></a>
+<a id="p123" href="book.pdf#page=129" target="_blank" title="This page in the PDF"><sup>[p. 123]</sup></a> <sup>SCATTERING BY A STATIC POTENTIAL</sup>
 
 Now comparing the matrix element (659) with (617), we see that the magnetic effect of the second-order radiative correction to scattering is exactly described by saying that the electron has an <a id="ix-104">anomalous magnetic moment</a> $`\delta M`$ given by
 
@@ -403,7 +403,7 @@ i \hbar \frac{\partial \Psi}{\partial t} = \left( H^{e} ( t ) + H^{I} ( t ) \rig
 
 <div align="right"><a href="book.pdf#page=129" target="_blank" title="This page in the PDF"><sup>[p. 123]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p124" href="book.pdf#page=130" target="_blank" title="This page in the PDF"><sup>[p. 124]</sup></a>
+<a id="p124" href="book.pdf#page=130" target="_blank" title="This page in the PDF"><sup>[p. 124]</sup></a> <sup>SCATTERING BY A STATIC POTENTIAL</sup>
 
 with $`H^{I}`$ given by (532) including the mass-renormalization term $`H_{S}`$. The first stage in the solution of (661) is to write
 
@@ -487,7 +487,7 @@ We write
 H_{T} ( t ) = H^{e} ( t ) + H_{T 1} ( t ) + H_{T 2} ( t ) \qquad \text{(671)}
 ```
 
-expanding $`H_{T}`$ in powers of the radiation interaction just as $`U`$ was expanded in (536)–(540). But the matrix elements of $`\left( U_{2} + U_{2}^{1} \right)`$ referring to one-electron transition have already been calculated and are given by (617) assuming non-relativistic velocities for the electron. This enables us to write down immediately a<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=130" target="_blank" title="This page in the PDF"><sup>[p. 124]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p125" href="book.pdf#page=131" target="_blank" title="This page in the PDF"><sup>[p. 125]</sup></a></span> formula for the operator $`H_{T 2}`$, valid for one-<a id="ix-105">electron</a> transitions at non-relativistic velocities. In (617) each factor $`q_{\lambda}`$ may be replaced by $`( - i\partial /\partial x_{\lambda} )`$ operating on the potentials (534). Then (617) becomes
+expanding $`H_{T}`$ in powers of the radiation interaction just as $`U`$ was expanded in (536)–(540). But the matrix elements of $`\left( U_{2} + U_{2}^{1} \right)`$ referring to one-electron transition have already been calculated and are given by (617) assuming non-relativistic velocities for the electron. This enables us to write down immediately a<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=130" target="_blank" title="This page in the PDF"><sup>[p. 124]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p125" href="book.pdf#page=131" target="_blank" title="This page in the PDF"><sup>[p. 125]</sup></a> <sup>SCATTERING BY A STATIC POTENTIAL</sup></span> formula for the operator $`H_{T 2}`$, valid for one-<a id="ix-105">electron</a> transitions at non-relativistic velocities. In (617) each factor $`q_{\lambda}`$ may be replaced by $`( - i\partial /\partial x_{\lambda} )`$ operating on the potentials (534). Then (617) becomes
 
 <a id="eq-672"></a>
 
@@ -559,7 +559,7 @@ p \cdot k^{\prime} = p^{\prime} \cdot k^{\prime} = - \mu k_{0}^{\prime}
 
 <div align="right"><a href="book.pdf#page=131" target="_blank" title="This page in the PDF"><sup>[p. 125]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p126" href="book.pdf#page=132" target="_blank" title="This page in the PDF"><sup>[p. 126]</sup></a>
+<a id="p126" href="book.pdf#page=132" target="_blank" title="This page in the PDF"><sup>[p. 126]</sup></a> <sup>SCATTERING BY A STATIC POTENTIAL</sup>
 
 and then
 
@@ -633,7 +633,7 @@ This completes the evaluation of $`H_{T}`$.
 
 To understand the effect of the <a id="ix-149">transformation</a> (662), we observe that if Ψ$`( t )`$ is the state of one real electron in the absence of an external field, then Φ$`( t )`$ will be independent of $`t`$ and will represent one “bare” electron with the same momentum as the real electron. In an actual hydrogen atom, we may consider the state $`\Psi ( t )`$ to a very good approximation as a superposition of states of a single real free electron; then Φ$`( t )`$ is a superposition of states of a single bare electron with the same distribution of momenta. Thus by the transformation from Ψ to Φ we have eliminated the radiation field surrounding the electron, all remaining effects of this radiation field being contained in the operator $`H_{T}`$.
 
-It is essential at this point to make sure that in the Φ representation the field-operators are still free-particle operators, with the correct equations of motion for operators in the FIR. Thus the transformation<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=132" target="_blank" title="This page in the PDF"><sup>[p. 126]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p127" href="book.pdf#page=133" target="_blank" title="This page in the PDF"><sup>[p. 127]</sup></a></span> (662) is only a transformation from one set of variables to another within the FIR, and does not take us out of the FIR. This point was never explained properly by Schwinger in his papers, although he no doubt understood it himself.
+It is essential at this point to make sure that in the Φ representation the field-operators are still free-particle operators, with the correct equations of motion for operators in the FIR. Thus the transformation<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=132" target="_blank" title="This page in the PDF"><sup>[p. 126]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p127" href="book.pdf#page=133" target="_blank" title="This page in the PDF"><sup>[p. 127]</sup></a> <sup>SCATTERING BY A STATIC POTENTIAL</sup></span> (662) is only a transformation from one set of variables to another within the FIR, and does not take us out of the FIR. This point was never explained properly by Schwinger in his papers, although he no doubt understood it himself.
 
 Let then $`Q ( x )`$ be a field-operator of the Ψ representation. Being a FIR operator, $`Q ( x )`$ satisfies
 
@@ -695,7 +695,7 @@ where $`H_{T 1}`$ and $`H_{T 2}`$ are given by (684) and (676), only now the $`\
 
 <div align="right"><a href="book.pdf#page=133" target="_blank" title="This page in the PDF"><sup>[p. 127]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p128" href="book.pdf#page=134" target="_blank" title="This page in the PDF"><sup>[p. 128]</sup></a>
+<a id="p128" href="book.pdf#page=134" target="_blank" title="This page in the PDF"><sup>[p. 128]</sup></a> <sup>SCATTERING BY A STATIC POTENTIAL</sup>
 
 To solve (690) we may now use precisely the method that we used for solving (245) in the non-relativistic treatment. There are only two differences, (i) we have now the extra term $`H_{T 2}`$, and (ii) the form of $`H_{T 1}`$ is different form (247).
 
@@ -773,7 +773,7 @@ The integral is now convergent at high frequencies and only divergent at low fre
 
 <div align="right"><a href="book.pdf#page=134" target="_blank" title="This page in the PDF"><sup>[p. 128]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p129" href="book.pdf#page=135" target="_blank" title="This page in the PDF"><sup>[p. 129]</sup></a>
+<a id="p129" href="book.pdf#page=135" target="_blank" title="This page in the PDF"><sup>[p. 129]</sup></a> <sup>SCATTERING BY A STATIC POTENTIAL</sup>
 
 Integrating (697) directly over $`k`$, and taking $`r`$ to be small compared with $`( E_{n} - E_{0} )`$, we find
 
@@ -849,7 +849,7 @@ with $`\boldsymbol{L}`$, the orbital angular momentum, is given by (39). In this
 
 <div align="right"><a href="book.pdf#page=135" target="_blank" title="This page in the PDF"><sup>[p. 129]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p130" href="book.pdf#page=136" target="_blank" title="This page in the PDF"><sup>[p. 130]</sup></a>
+<a id="p130" href="book.pdf#page=136" target="_blank" title="This page in the PDF"><sup>[p. 130]</sup></a> <sup>SCATTERING BY A STATIC POTENTIAL</sup>
 
 In the non-relativistic theory of the hydrogen atom, the quantum number $`j`$ given by (72) is related to the operator $`( \boldsymbol{\sigma} \cdot \boldsymbol{L} )`$ by
 
@@ -928,7 +928,7 @@ To correct these errors, very long calculations have been done. In connection wi
 
 <div align="right"><a href="book.pdf#page=136" target="_blank" title="This page in the PDF"><sup>[p. 130]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p131" href="book.pdf#page=137" target="_blank" title="This page in the PDF"><sup>[p. 131]</sup></a>
+<a id="p131" href="book.pdf#page=137" target="_blank" title="This page in the PDF"><sup>[p. 131]</sup></a> <sup>SCATTERING BY A STATIC POTENTIAL</sup>
 
 (iii) effects of fourth order in the radiation interaction. These are being looked at by Kroll and others
 

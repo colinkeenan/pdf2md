@@ -75,7 +75,7 @@ per volume $`dp_{1} dp_{2} dp_{3}`$ of momentum space, for _each_ direction of s
 
 <div align="right"><a href="book.pdf#page=28" target="_blank" title="This page in the PDF"><sup>[p. 22]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p23" href="book.pdf#page=29" target="_blank" title="This page in the PDF"><sup>[p. 23]</sup></a>
+<a id="p23" href="book.pdf#page=29" target="_blank" title="This page in the PDF"><sup>[p. 23]</sup></a> <sup>SCATTERING PROBLEMS AND BORN APPROXIMATION</sup>
 
 ## <a id="s-projection-operators"></a>Projection Operators
 
@@ -169,7 +169,7 @@ Note that here charge-conjugate wave functions are _not_ used. The positrons of 
 
 <div align="right"><a href="book.pdf#page=29" target="_blank" title="This page in the PDF"><sup>[p. 23]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p24" href="book.pdf#page=30" target="_blank" title="This page in the PDF"><sup>[p. 24]</sup></a>
+<a id="p24" href="book.pdf#page=30" target="_blank" title="This page in the PDF"><sup>[p. 24]</sup></a> <sup>SCATTERING PROBLEMS AND BORN APPROXIMATION</sup>
 
 ## <a id="s-calculation-of-spurs"></a>Calculation of Spurs
 
@@ -240,7 +240,7 @@ _Solution:_ Let ∆$`E`$ be the excitation energy, $`\rho_{N}`$ and $`\boldsymbo
 
 <div align="right"><a href="book.pdf#page=30" target="_blank" title="This page in the PDF"><sup>[p. 24]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p25" href="book.pdf#page=31" target="_blank" title="This page in the PDF"><sup>[p. 25]</sup></a>
+<a id="p25" href="book.pdf#page=31" target="_blank" title="This page in the PDF"><sup>[p. 25]</sup></a> <sup>SCATTERING PROBLEMS AND BORN APPROXIMATION</sup>
 
 The electrostatic potential $`V`$ of the nucleus has the matrix element given by
 
@@ -330,7 +330,7 @@ taking the <a id="ix-39">Coulomb potential</a> of the nuclear charge and ignorin
 
 <div align="right"><a href="book.pdf#page=31" target="_blank" title="This page in the PDF"><sup>[p. 25]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p26" href="book.pdf#page=32" target="_blank" title="This page in the PDF"><sup>[p. 26]</sup></a>
+<a id="p26" href="book.pdf#page=32" target="_blank" title="This page in the PDF"><sup>[p. 26]</sup></a> <sup>SCATTERING PROBLEMS AND BORN APPROXIMATION</sup>
 
 where $`\phi , A_{k}`$ are the scalar and vector potentials satisfying the Maxwell <a id="ix-186">equations</a>
 
@@ -412,7 +412,7 @@ w_{o} = \frac{4 Z^{2} e^{4} r_{o}^{4}}{2 5 \pi c^{4} \hbar^{7}} p_{1} p_{2} dE_{
 
 <div align="right"><a href="book.pdf#page=32" target="_blank" title="This page in the PDF"><sup>[p. 26]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p27" href="book.pdf#page=33" target="_blank" title="This page in the PDF"><sup>[p. 27]</sup></a>
+<a id="p27" href="book.pdf#page=33" target="_blank" title="This page in the PDF"><sup>[p. 27]</sup></a> <sup>SCATTERING PROBLEMS AND BORN APPROXIMATION</sup>
 
 Since
 
@@ -486,7 +486,7 @@ s_{\mu ( 1 )} = i ( \overline{u}_{1}^{\prime} \gamma_{\mu} u_{1} ) \exp \left\{ 
 
 <div align="right"><a href="book.pdf#page=33" target="_blank" title="This page in the PDF"><sup>[p. 27]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p28" href="book.pdf#page=34" target="_blank" title="This page in the PDF"><sup>[p. 28]</sup></a>
+<a id="p28" href="book.pdf#page=34" target="_blank" title="This page in the PDF"><sup>[p. 28]</sup></a> <sup>SCATTERING PROBLEMS AND BORN APPROXIMATION</sup>
 
 whence
 
@@ -560,7 +560,7 @@ Then what will be the cross-section in terms of $`K`$? We do this calculation on
 
 <div align="right"><a href="book.pdf#page=34" target="_blank" title="This page in the PDF"><sup>[p. 28]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p29" href="book.pdf#page=35" target="_blank" title="This page in the PDF"><sup>[p. 29]</sup></a>
+<a id="p29" href="book.pdf#page=35" target="_blank" title="This page in the PDF"><sup>[p. 29]</sup></a> <sup>SCATTERING PROBLEMS AND BORN APPROXIMATION</sup>
 
 ## <a id="s-relation-of-cross-sections-to-transition-amplitudes"></a>Relation of Cross-sections to <a id="ix-247">Transition</a> <a id="ix-5">Amplitudes</a>
 
@@ -644,7 +644,7 @@ Then the cross-section $`\sigma`$ is defined in this system by
 
 <div align="right"><a href="book.pdf#page=35" target="_blank" title="This page in the PDF"><sup>[p. 29]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p30" href="book.pdf#page=36" target="_blank" title="This page in the PDF"><sup>[p. 30]</sup></a>
+<a id="p30" href="book.pdf#page=36" target="_blank" title="This page in the PDF"><sup>[p. 30]</sup></a> <sup>SCATTERING PROBLEMS AND BORN APPROXIMATION</sup>
 
 where $`V_{1}`$ is the normalization volume for particle 1, and $`v_{1}`$ its velocity. In fact by (103)
 
@@ -728,7 +728,7 @@ Effect of spin is a measurable _increase_ of scattering over the Mott formula. E
 
 <div align="right"><a href="book.pdf#page=36" target="_blank" title="This page in the PDF"><sup>[p. 30]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
-<a id="p31" href="book.pdf#page=37" target="_blank" title="This page in the PDF"><sup>[p. 31]</sup></a>
+<a id="p31" href="book.pdf#page=37" target="_blank" title="This page in the PDF"><sup>[p. 31]</sup></a> <sup>SCATTERING PROBLEMS AND BORN APPROXIMATION</sup>
 
 ## <a id="s-note-on-the-treatment-of-exchange-effects"></a>Note on the Treatment of Exchange Effects
 
