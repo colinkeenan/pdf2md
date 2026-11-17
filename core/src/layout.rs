@@ -2483,7 +2483,8 @@ fn mark_overlines(doc: &mut Doc) {
                     above && sticks_out && s.text.trim().contains(' ') && {
                         let words = split_span_words(s);
                         let over: Vec<&Span> = words.iter().filter(|w| w.left < r.right && w.right() > r.left).collect();
-                        over.len() == 1 && over[0].left >= r.left - 2.0 && over[0].right() <= r.right + 2.0
+                        // (one word or several, all of them within the bar)
+                        !over.is_empty() && over.len() < words.len() && over.iter().all(|w| w.left >= r.left - 2.0 && w.right() <= r.right + 2.0)
                     }
                 });
                 if let Some(k) = found {
