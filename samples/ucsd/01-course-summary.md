@@ -2021,7 +2021,7 @@ The next step is to find the solutions with definite momentum. The four plane wa
 where the four spinors are given by.
 
 ```math
-\begin{aligned} u_{\vec{p}}^{( 1 )} &= \sqrt{\frac{E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} \quad u_{\vec{p}}^{( 2 )} = \sqrt{\frac{E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} -} 1_{ip_{y} ) c}}{\frac{- p_{z} c}{E + mc^{2}} E + mc^{2}} \end{pmatrix} \\ u_{\vec{p}}^{( 3 )} &= \sqrt{\frac{- E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} {}^{\tfrac{- \frac{- p_{z} c}{- E + mc^{2}} ( p_{x} + ip_{y} ) c}{- E + mc^{2}}} 1 \\ 0 \end{pmatrix} \quad u_{\vec{p}}^{( 4 )} = \sqrt{\frac{- E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} \frac{- ( p_{x} - ip_{y} ) c}{\frac{- E p + {}_{z} mc c^{2}}{{}^{- E +} 0^{mc^{2}}}} \\ 1 \end{pmatrix} \end{aligned}
+\begin{aligned} u_{\vec{p}}^{( 1 )} &= \sqrt{\frac{E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} 1 \\ 0 \\ \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \end{pmatrix} \quad u_{\vec{p}}^{( 2 )} = \sqrt{\frac{E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} 0 \\ 1 \\ \frac{( p_{x} - ip_{y} ) c}{E + mc^{2}} \\ \frac{- p_{z} c}{E + mc^{2}} \end{pmatrix} \\ u_{\vec{p}}^{( 3 )} &= \sqrt{\frac{- E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} \frac{- p_{z} c}{- E + mc^{2}} \\ \frac{- ( p_{x} + ip_{y} ) c}{- E + mc^{2}} \\ 1 \\ 0 \end{pmatrix} \quad u_{\vec{p}}^{( 4 )} = \sqrt{\frac{- E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} \frac{- ( p_{x} - ip_{y} ) c}{- E + mc^{2}} \\ \frac{p_{z} c}{- E + mc^{2}} \\ 0 \\ 1 \end{pmatrix} \end{aligned}
 ```
 
 <div align="right"><a href="book.pdf#page=55" target="_blank" title="This page in the PDF"><sup>[p. 55]</sup></a></div>
@@ -2051,19 +2051,19 @@ E \to - E
 so that all the energies are positive and the momenta point in the direction of the velocities. This means we change the signs in solutions 3 and 4 as follows.
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 1 \\ 0 \\ \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-\psi_{\vec{p}}^{( 2 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} -} 1_{ip_{y} ) c}}{E \frac{- p_{z} c}{E + mc^{2}} + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 2 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 0 \\ 1 \\ \frac{( p_{x} - ip_{y} ) c}{E + mc^{2}} \\ \frac{- p_{z} c}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-\psi_{\vec{p}}^{( 3 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} {}^{\tfrac{( p \frac{p_{z} c}{E + mc^{2}}_{x} + ip_{y} ) c}{E + mc^{2}}} 1 \\ 0 \end{pmatrix} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 3 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \\ 1 \\ 0 \end{pmatrix} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-\psi_{\vec{p}}^{( 4 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{( p_{x} - ip_{y} ) c}{\frac{E + mc^{2} - p_{z} c}{{}^{E + mc^{2}} 0}} \\ 1 \end{pmatrix} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 4 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{( p_{x} - ip_{y} ) c}{E + mc^{2}} \\ \frac{- p_{z} c}{E + mc^{2}} \\ 0 \\ 1 \end{pmatrix} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 We have plane waves of the form

@@ -469,7 +469,127 @@ pub fn build_with(spans: &[MSpan], bars: &[Rule]) -> String {
         }
     }
     let (spans, bars) = underbraces(spans, bars);
+    let (spans, bars) = bracket_rows(spans, bars);
     tidy(&build_at(&resolve_bars(spans, &bars, 0), 0))
+}
+
+/// The rows of a column between tall brackets are found before its
+/// fraction bars are resolved: each bar then takes its numerator and
+/// denominator from its own row only. The entries of a column are set in
+/// the small size of a fraction in a line of text, so close together that
+/// by distances alone the "0" of the row above reads as a piece of the
+/// numerator under it, and two fractions one over the other as one inside
+/// the other.
+///
+/// A row is told by a fraction bar or by a line of full-size letters;
+/// rows less than a line apart (a full-size numerator on its bar, a
+/// fraction inside a fraction) leave the bracket to [`resolve_bars`].
+fn bracket_rows(spans: Vec<MSpan>, bars: Vec<Rule>) -> (Vec<MSpan>, Vec<Rule>) {
+    if bars.is_empty() {
+        return (spans, bars);
+    }
+    let size = spans.iter().filter(|s| !s.cmex()).map(|s| s.size).fold(0.0f32, f32::max).max(1.0);
+    let tall = |s: &MSpan, which: &str| s.cmex() && s.atom.is_none() && s.height() > 2.5 * size && s.text.trim().chars().count() == 1 && which.contains(s.text.trim());
+    let mut pairs: Vec<(MSpan, MSpan)> = Vec::new();
+    for o in spans.iter().filter(|s| tall(s, "([")) {
+        let level = |c: &MSpan| (c.top - o.top).abs() <= 3.0 && (c.bottom - o.bottom).abs() <= 3.0 && c.left > o.right;
+        let Some(c) = spans.iter().filter(|c| tall(c, ")]") && level(c)).min_by(|a, b| a.left.total_cmp(&b.left)) else { continue };
+        // (another bracket opening between them: not this one's column)
+        if spans.iter().any(|x| tall(x, "([") && level(x) && x.left < c.left) {
+            continue;
+        }
+        pairs.push((o.clone(), c.clone()));
+    }
+    let (mut spans, mut bars) = (spans, bars);
+    for (o, c) in pairs {
+        let inside = |s: &MSpan| {
+            let x = (s.left + s.right) / 2.0;
+            x >= o.right - 1.0 && x <= c.left + 1.0 && s.cy() >= o.top - 0.8 * size && s.cy() <= o.bottom + 0.8 * size
+        };
+        let bar_in = |r: &Rule| {
+            let x = (r.left + r.right) / 2.0;
+            x >= o.right - 1.0 && x <= c.left + 1.0 && r.top >= o.top - size && r.bottom <= o.bottom + size
+        };
+        let root_bar = |r: &Rule| spans.iter().any(|s| is_radical(s) && (r.left - s.right).abs() <= 3.0 && s.top <= r.bottom + size && s.bottom >= r.top - 2.0);
+        // what tells a row: (height, is a bar)
+        let mut marks: Vec<(f32, bool)> = bars.iter().filter(|r| bar_in(r) && !root_bar(r)).map(|r| ((r.top + r.bottom) / 2.0, true)).collect();
+        if marks.is_empty() {
+            continue;
+        }
+        marks.extend(spans.iter().filter(|s| inside(s) && !s.cmex() && s.size >= 0.9 * size && !s.text.trim().is_empty()).map(|s| (s.cy(), false)));
+        marks.sort_by(|a, b| a.0.total_cmp(&b.0));
+        // (height, is a fraction's row)
+        let mut rows: Vec<(f32, bool)> = Vec::new();
+        let mut k = 0;
+        while k < marks.len() {
+            let mut m = k + 1;
+            while m < marks.len() && marks[m].0 - marks[k].0 <= 0.45 * size {
+                m += 1;
+            }
+            let group = &marks[k..m];
+            let fraction = group.iter().any(|g| g.1);
+            let of: Vec<f32> = group.iter().filter(|g| g.1 == fraction).map(|g| g.0).collect();
+            rows.push((of.iter().sum::<f32>() / of.len() as f32, fraction));
+            k = m;
+        }
+        if rows.len() < 2 || rows.windows(2).any(|w| w[1].0 - w[0].0 < 1.1 * size) {
+            continue;
+        }
+        // Between two rows the line is drawn nearer the row of full-size
+        // letters: a fraction's small rows reach further from its bar.
+        let cuts: Vec<f32> = rows
+            .windows(2)
+            .map(|w| {
+                let t = match (w[0].1, w[1].1) {
+                    (false, true) => 0.42,
+                    (true, false) => 0.58,
+                    _ => 0.5,
+                };
+                w[0].0 + t * (w[1].0 - w[0].0)
+            })
+            .collect();
+        let row_of = |y: f32| cuts.iter().filter(|&&c| y > c).count();
+        let mut parts: Vec<Vec<MSpan>> = vec![Vec::new(); rows.len()];
+        let mut part_bars: Vec<Vec<Rule>> = vec![Vec::new(); rows.len()];
+        for r in bars.iter().filter(|r| bar_in(r)) {
+            let y = if root_bar(r) {
+                // (a root's bar is of the row of what stands under it)
+                spans
+                    .iter()
+                    .filter(|s| inside(s) && !s.cmex() && (s.left + s.right) / 2.0 >= r.left && (s.left + s.right) / 2.0 <= r.right && s.top >= r.top - 2.0)
+                    .map(|s| s.cy())
+                    .fold(f32::MAX, f32::min)
+                    .min(r.bottom + size)
+            } else {
+                (r.top + r.bottom) / 2.0
+            };
+            part_bars[row_of(y)].push(*r);
+        }
+        let mut rest: Vec<MSpan> = Vec::new();
+        for s in spans {
+            if inside(&s) && !(s.cmex() && s.atom.is_none() && s.height() > 2.5 * size) {
+                parts[row_of(s.cy())].push(s);
+            } else {
+                rest.push(s);
+            }
+        }
+        bars.retain(|r| !bar_in(r));
+        for (part, pbars) in parts.into_iter().zip(part_bars) {
+            let full = part.iter().any(|s| !s.cmex() && s.size >= 0.9 * size);
+            let had: Vec<String> = part.iter().filter_map(|s| s.atom.clone()).collect();
+            for mut s in resolve_bars(part, &pbars, 1) {
+                // (a fraction that is all of its row is an entry of the
+                // column, of the size of the others)
+                if !full && s.atom.as_ref().is_some_and(|a| !had.contains(a)) && s.size < 0.9 * size {
+                    let y = (s.top + s.bottom) / 2.0;
+                    (s.top, s.bottom, s.size) = (y - size / 2.0, y + size / 2.0, size);
+                }
+                rest.push(s);
+            }
+        }
+        spans = rest;
+    }
+    (spans, bars)
 }
 
 /// Labelled underbraces: a row of brace pieces from the big-symbol font
@@ -936,7 +1056,13 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
         // each other (so it never reaches the equation on the line above);
         // the denominator likewise below.
         let above: Vec<usize> = (0..spans.len())
-            .filter(|&i| within(&spans[i]) && spans[i].bottom <= b.top + 2.0 && spans[i].cy() >= b.top - 3.5 * size)
+            .filter(|&i| {
+                let s = &spans[i];
+                // (the box of a sign of a symbol font hangs lower than the
+                // letters': the minus of −1 over 2 ends a little under the bar)
+                let sign = s.atom.is_none() && matches!(s.text.trim(), "−" | "±" | "∓") && s.bottom <= b.top + 0.35 * size && s.cy() <= b.top - 0.3 * size;
+                within(s) && (s.bottom <= b.top + 2.0 || sign) && s.cy() >= b.top - 3.5 * size
+            })
             .collect();
         // (a root sign in the denominator reaches up past the bar; its box
         // has its middle at the bar, a point over or under it)
@@ -3012,6 +3138,47 @@ mod tests {
         assert_eq!(
             build(&v),
             "\\beta = \\begin{pmatrix} \\begin{matrix} 1 & 0 \\\\ 0 & 1 \\end{matrix} & 0 \\\\ 0 & \\begin{matrix} - 1 & 0 \\\\ 0 & - 1 \\end{matrix} \\end{pmatrix}"
+        );
+    }
+
+    #[test]
+    fn column_of_small_fractions() {
+        // N (−p_z c/(−E+mc²), −(p_x+ip_y)c/(−E+mc²), 1, 0): each bar keeps
+        // to its own row of the column (UCSD Physics 130, the Dirac spinors)
+        let v = vec![
+            bx("N", 399.0, 411.0, 741.0, 756.0, 15.0, "CMMI10"),
+            bx("(", 419.6, 427.8, 712.8, 784.5, 15.0, "CMEX10"),
+            bx("−", 451.0, 460.0, 708.0, 720.0, 10.0, "CMSY7"),
+            bx("p", 460.0, 466.0, 708.0, 718.0, 10.0, "CMMI7"),
+            bx("z", 466.0, 471.0, 712.0, 719.0, 7.0, "CMMI5"),
+            bx("c", 472.0, 477.0, 708.0, 718.0, 10.0, "CMMI7"),
+            bx("−", 439.0, 448.0, 720.0, 732.0, 10.0, "CMSY7"),
+            bx("E", 449.0, 458.0, 720.0, 730.0, 10.0, "CMMI7"),
+            bx("+", 458.0, 467.0, 720.0, 730.0, 10.0, "CMR7"),
+            bx("mc", 467.0, 483.0, 720.0, 730.0, 10.0, "CMMI7"),
+            bx("2", 483.0, 488.0, 719.0, 726.0, 7.0, "CMR5"),
+            bx("−", 433.0, 442.0, 730.0, 742.0, 10.0, "CMSY7"),
+            bx("(", 442.0, 447.0, 731.0, 741.0, 10.0, "CMR7"),
+            bx("p", 447.0, 453.0, 731.0, 741.0, 10.0, "CMMI7"),
+            bx("x", 453.0, 459.0, 734.0, 741.0, 7.0, "CMMI5"),
+            bx("+", 459.0, 468.0, 731.0, 741.0, 10.0, "CMR7"),
+            bx("ip", 469.0, 479.0, 731.0, 741.0, 10.0, "CMMI7"),
+            bx("y", 479.0, 484.0, 734.0, 741.0, 7.0, "CMMI5"),
+            bx(")", 485.0, 490.0, 731.0, 741.0, 10.0, "CMR7"),
+            bx("c", 490.0, 495.0, 731.0, 741.0, 10.0, "CMMI7"),
+            bx("−", 439.0, 448.0, 743.0, 755.0, 10.0, "CMSY7"),
+            bx("E", 449.0, 458.0, 743.0, 753.0, 10.0, "CMMI7"),
+            bx("+", 458.0, 467.0, 743.0, 753.0, 10.0, "CMR7"),
+            bx("mc", 467.0, 483.0, 743.0, 753.0, 10.0, "CMMI7"),
+            bx("2", 483.0, 488.0, 743.0, 750.0, 7.0, "CMR5"),
+            bx("1", 460.0, 467.0, 753.0, 768.0, 15.0, "CMR10"),
+            bx("0", 460.0, 467.0, 771.0, 786.0, 15.0, "CMR10"),
+            bx(")", 500.1, 508.4, 712.8, 784.5, 15.0, "CMEX10"),
+        ];
+        let bars = [Rule { left: 439.2, right: 488.9, top: 718.6, bottom: 719.3 }, Rule { left: 432.5, right: 495.5, top: 742.0, bottom: 742.7 }];
+        assert_eq!(
+            build_with(&v, &bars),
+            "N \\begin{pmatrix} \\frac{- p_{z} c}{- E + mc^{2}} \\\\ \\frac{- ( p_{x} + ip_{y} ) c}{- E + mc^{2}} \\\\ 1 \\\\ 0 \\end{pmatrix}"
         );
     }
 

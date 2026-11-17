@@ -2634,7 +2634,7 @@ The next step is to find the solutions with definite momentum. The four plane wa
 where the four spinors are given by.
 
 ```math
-\begin{aligned} u_{\vec{p}}^{( 1 )} &= \sqrt{\frac{E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} \quad u_{\vec{p}}^{( 2 )} = \sqrt{\frac{E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} -} 1_{ip_{y} ) c}}{\frac{- p_{z} c}{E + mc^{2}} E + mc^{2}} \end{pmatrix} \\ u_{\vec{p}}^{( 3 )} &= \sqrt{\frac{- E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} {}^{\tfrac{- \frac{- p_{z} c}{- E + mc^{2}} ( p_{x} + ip_{y} ) c}{- E + mc^{2}}} 1 \\ 0 \end{pmatrix} \quad u_{\vec{p}}^{( 4 )} = \sqrt{\frac{- E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} \frac{- ( p_{x} - ip_{y} ) c}{\frac{- E p + {}_{z} mc c^{2}}{{}^{- E +} 0^{mc^{2}}}} \\ 1 \end{pmatrix} \end{aligned}
+\begin{aligned} u_{\vec{p}}^{( 1 )} &= \sqrt{\frac{E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} 1 \\ 0 \\ \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \end{pmatrix} \quad u_{\vec{p}}^{( 2 )} = \sqrt{\frac{E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} 0 \\ 1 \\ \frac{( p_{x} - ip_{y} ) c}{E + mc^{2}} \\ \frac{- p_{z} c}{E + mc^{2}} \end{pmatrix} \\ u_{\vec{p}}^{( 3 )} &= \sqrt{\frac{- E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} \frac{- p_{z} c}{- E + mc^{2}} \\ \frac{- ( p_{x} + ip_{y} ) c}{- E + mc^{2}} \\ 1 \\ 0 \end{pmatrix} \quad u_{\vec{p}}^{( 4 )} = \sqrt{\frac{- E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} \frac{- ( p_{x} - ip_{y} ) c}{- E + mc^{2}} \\ \frac{p_{z} c}{- E + mc^{2}} \\ 0 \\ 1 \end{pmatrix} \end{aligned}
 ```
 
 <div align="right"><a href="book.pdf#page=55" target="_blank" title="This page in the PDF"><sup>[p. 55]</sup></a></div>
@@ -2664,19 +2664,19 @@ E \to - E
 so that all the energies are positive and the momenta point in the direction of the velocities. This means we change the signs in solutions 3 and 4 as follows.
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 1 \\ 0 \\ \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-\psi_{\vec{p}}^{( 2 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} -} 1_{ip_{y} ) c}}{E \frac{- p_{z} c}{E + mc^{2}} + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 2 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 0 \\ 1 \\ \frac{( p_{x} - ip_{y} ) c}{E + mc^{2}} \\ \frac{- p_{z} c}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-\psi_{\vec{p}}^{( 3 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} {}^{\tfrac{( p \frac{p_{z} c}{E + mc^{2}}_{x} + ip_{y} ) c}{E + mc^{2}}} 1 \\ 0 \end{pmatrix} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 3 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \\ 1 \\ 0 \end{pmatrix} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-\psi_{\vec{p}}^{( 4 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{( p_{x} - ip_{y} ) c}{\frac{E + mc^{2} - p_{z} c}{{}^{E + mc^{2}} 0}} \\ 1 \end{pmatrix} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 4 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{( p_{x} - ip_{y} ) c}{E + mc^{2}} \\ \frac{- p_{z} c}{E + mc^{2}} \\ 0 \\ 1 \end{pmatrix} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 We have plane waves of the form
@@ -6730,7 +6730,7 @@ We can integrate this by parts, differentiating the $`\varphi`$ and integrating 
 
 So the Hermitian conjugate of $`\frac{\partial}{\partial x}`$ is $`- \tfrac{\partial}{\partial x}`$ .
 
-Note that the Hermitian conjugate of the momentum operator is $`\frac{\hbar}{- i} \frac{\partial}{\partial x}`$-which is the same as the original operator. So the momentum operator is Hermitian.
+Note that the Hermitian conjugate of the momentum operator is $`\frac{\hbar}{- i} \frac{- \partial}{\partial x}`$ which is the same as the original operator. So the momentum operator is Hermitian.
 
 # <a id="s-8-9-sample-test-problems"></a>8.9 Sample Test Problems
 
@@ -12928,7 +12928,7 @@ For the product to be zero, the **determinant** of the matrix must be zero. We s
 The eigenvectors computed in the above example show that the x axis is not really any different than the z axis. The **eigenvalues** are +$`\hbar`$, 0, and $`- \hbar`$, the same as for z. The normalized **eigenvectors** of $`L_{x}`$ are
 
 ```math
-\psi_{+ \hbar}^{( x )} = \left( \tfrac{\frac{1}{2} 1}{\frac{\frac{\surd}{1} 2}{2}} \right) \quad \psi_{0 \hbar}^{( x )} = \begin{pmatrix} \frac{1}{\sqrt{0^{2}}} \\ - \sqrt{\tfrac{1}{2}} \end{pmatrix} \quad \psi_{- \hbar}^{( x )} = \begin{pmatrix} {}^{- 1} \tfrac{1 2}{\sqrt{2}} \\ {}^{-} \tfrac{1}{2} \end{pmatrix} .
+\psi_{+ \hbar}^{( x )} = \begin{pmatrix} \frac{1}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{1}{2} \end{pmatrix} \quad \psi_{0 \hbar}^{( x )} = \begin{pmatrix} \frac{1}{\sqrt{2}} \\ 0 \\ - \sqrt{\tfrac{1}{2}} \end{pmatrix} \quad \psi_{- \hbar}^{( x )} = \begin{pmatrix} \frac{- 1}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{- 1}{2} \end{pmatrix} .
 ```
 
 These vectors, and any $`\ell`$ = 1 vectors, can be written in terms of the eigenvectors of $`S_{z}`$.
@@ -12936,7 +12936,7 @@ These vectors, and any $`\ell`$ = 1 vectors, can be written in terms of the eige
 We can check whether the **eigenvectors are orthogonal,** as they must be.
 
 ```math
-\langle \psi_{0 \hbar} | \psi_{+ \hbar} \rangle = \left( \tfrac{1}{\sqrt{2}}^{*} \quad 0 \quad - \tfrac{1}{\sqrt{2}}^{*} \right) \left( \tfrac{1 \frac{1}{2}}{\sqrt{2} \frac{1}{2}} \right) = 0
+\langle \psi_{0 \hbar} | \psi_{+ \hbar} \rangle = \left( \tfrac{1}{\sqrt{2}}^{*} \quad 0 \quad - \tfrac{1}{\sqrt{2}}^{*} \right) \begin{pmatrix} \frac{1}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{1}{2} \end{pmatrix} = 0
 ```
 
 The others will also prove orthogonal.
@@ -13131,7 +13131,7 @@ R_{z} ( \theta_{z} ) = \begin{pmatrix} e^{i\theta_{z}} & 0 & 0 \\ 0 & 1 & 0 \\ 0
 A **computation** (see section 18.11.5) of the operator for rotations about the y-axis yields
 
 ```math
-R_{y} ( \theta_{y} ) = \begin{pmatrix} \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) & \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) \\ - \sqrt{\tfrac{1}{2} \sin ( \theta_{y} )} & c \text{ os } ( \theta_{y} ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) \\ \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) & - \sqrt{\tfrac{1}{2} \sin ( \theta_{y} )} & \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) \end{pmatrix} .
+R_{y} ( \theta_{y} ) = \begin{pmatrix} \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) & \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) \\ - \sqrt{\tfrac{1}{2} \sin ( \theta_{y} )} & \cos ( \theta_{y} ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) \\ \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) & - \sqrt{\tfrac{1}{2} \sin ( \theta_{y} )} & \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) \end{pmatrix} .
 ```
 
 Try calculating the rotation operator for the x-axis yourself.
@@ -13171,11 +13171,11 @@ It is just $`\psi_{+}^{( z )} = ( 0 )`$ with the usual basis. Now we **rotate to
 **states** with the $`z^{\prime}`$ along the $`u`$ direction. This means a rotation through an angle $`\theta`$ about the y direction. The problem didn’t clearly define whether it is +$`\theta`$ or $`- \theta`$, but, if we only need to know the intensities, it doesn’t matter. So the **state coming out of the second apparatus** is
 
 ```math
-R_{y} ( \theta ) \psi_{+}^{( z )} = \begin{pmatrix} \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) & \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) \\ - \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) & c \text{ os } ( \theta_{y} ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) \\ \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) & - \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) & \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) \end{pmatrix} \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}
+R_{y} ( \theta ) \psi_{+}^{( z )} = \begin{pmatrix} \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) & \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) \\ - \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) & \cos ( \theta_{y} ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) \\ \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) & - \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) & \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) \end{pmatrix} \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}
 ```
 
 ```math
-= \begin{pmatrix} {}_{\tfrac{1}{2}} \quad \theta_{y} ) ) \\ - \frac{( 1 + \cos ( {}_{1}}{\sqrt{2}} \sin ( \theta_{y} ) \\ \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) \end{pmatrix}
+= \begin{pmatrix} \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) \\ - \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) \\ \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) \end{pmatrix}
 ```
 
 The 3 amplitudes in this vector just need to be (absolute) **squared to get the 3 intensities**.
@@ -13337,7 +13337,7 @@ The result is unaffected if we insert an additional apparatus that separates in 
 Now if we block one of the beams separated according to the x direction, particles can get through the whole apparatus. The middle part of the apparatus projects the state onto the positive eigenstate of $`S_{x}`$. This state has equal amplitudes to have spin up and spin down along the z direction. So now, 1/8 of the particles come out of the apparatus. By blocking one beam, the number of particles coming out increased from 0 to $`N/ 8`$. This seems a bit strange but the simple explanation is that the upper and lower beams of the middle part of the apparatus were interfering to give zero particles. With one beam blocked, the inteference is gone.
 
 ```math
-( N ) \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{z} \to \frac{N}{2} \begin{pmatrix} 0 \\ 1 \end{pmatrix} \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{x} \to \frac{N}{4} \left( \tfrac{\tfrac{1}{\sqrt{2}} 1}{\sqrt{2}} \right) \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \frac{N}{8} \begin{pmatrix} 1 \\ 0 \end{pmatrix} \to
+( N ) \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{z} \to \frac{N}{2} \begin{pmatrix} 0 \\ 1 \end{pmatrix} \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{x} \to \frac{N}{4} \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix} \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \frac{N}{8} \begin{pmatrix} 1 \\ 0 \end{pmatrix} \to
 ```
 
 Note that we can compute the number of particles coming out of the second (and third) part by squaring the amplitude to go from the input state to the output state
@@ -13353,7 +13353,7 @@ Note that we can compute the number of particles coming out of the second (and t
 or we can just use the projection operator $`\left( \sqrt{1 2}^{1} \right) \left( \tfrac{1}{\sqrt{2}} \quad \tfrac{1}{\sqrt{2}} \right) = \begin{pmatrix} 1 & 1 \\ 2 & 2 \\ 1 & 1 \end{pmatrix}`$.
 
 ```math
-\begin{pmatrix} \tfrac{1}{1 2} & \tfrac{1}{1 2} \\ 2 & 2 \end{pmatrix} \frac{N}{2} \sqrt{2} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{N}{4} \left( \frac{\tfrac{1}{\sqrt{2}}_{1}}{\sqrt{2}} \right)^{2 2}
+\begin{pmatrix} \tfrac{1}{1 2} & \tfrac{1}{1 2} \\ 2 & 2 \end{pmatrix} \frac{N}{2} \sqrt{2} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{N}{4} \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix}^{2 2}
 ```
 
 # <a id="s-18-9-other-two-state-systems"></a>18.9 Other Two State Systems\*
@@ -13423,11 +13423,11 @@ These are solved if $`b = \mp a`$. Substituting auspiciously, we get.
 So the eigenstates are
 
 ```math
-E = E_{0} - A \quad \left( \tfrac{\tfrac{1}{\sqrt{2}} 1}{\sqrt{2}} \right)
+E = E_{0} - A \quad \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix}
 ```
 
 ```math
-E = E_{0} + A \quad \left( - \sqrt{\tfrac{\tfrac{1}{\sqrt{2}} 1}{2}} \right)
+E = E_{0} + A \quad \begin{pmatrix} \frac{1}{\sqrt{2}} \\ - \sqrt{\tfrac{1}{2}} \end{pmatrix}
 ```
 
 The states are split by the interaction term.
@@ -13459,7 +13459,7 @@ Hu_{j} = E_{j} u_{j}
 The Kronecker delta gives us a diagonal matrix.
 
 ```math
-H = \hbar \omega \begin{pmatrix} \frac{1}{0^{2}} & 0 \quad 0 \quad \dots \\ & \frac{0_{3}}{0^{2}} \quad 0 \quad \dots \\ 0 & \frac{0_{5}}{0^{2}} \quad \dots \\ 0 & 0 \quad \frac{0_{7}}{2} \quad \dots \\ \dots & \dots \dots \dots \dots \end{pmatrix}
+H = \hbar \omega \begin{pmatrix} \tfrac{1}{2} & 0 \quad 0 \quad 0 \quad \dots \\ 0 & \tfrac{3}{2} \quad 0 \quad 0 \quad \dots \\ 0 & 0 \quad \tfrac{5}{2} \quad 0 \quad \dots \\ 0 & 0 \quad 0 \quad \tfrac{7}{2} \quad \dots \\ \dots & \dots \dots \dots \dots \end{pmatrix}
 ```
 
 ## <a id="s-18-10-2-harmonic-oscillator-raising-operator"></a>18.10.2 Harmonic Oscillator Raising Operator
@@ -13553,7 +13553,7 @@ There are three solutions to this equation: $`b`$ = 0, $`b`$ = +$`\sqrt{2}`$, an
 Up to a normalization constant, the solutions are:
 
 ```math
-\psi_{+ \hbar} = c \left( \frac{1}{\sqrt{2} 1}_{\tfrac{1}{\sqrt{2}}} \right) \quad \psi_{0 \hbar} = c \begin{pmatrix} 1 \\ 0 \\ - 1 \end{pmatrix} \quad \psi_{- \hbar} = c \left( \frac{- 1}{\sqrt{2} 1}_{\tfrac{- 1}{\sqrt{2}}} \right) .
+\psi_{+ \hbar} = c \begin{pmatrix} \frac{1}{\sqrt{2}} \\ 1 \\ \frac{1}{\sqrt{2}} \end{pmatrix} \quad \psi_{0 \hbar} = c \begin{pmatrix} 1 \\ 0 \\ - 1 \end{pmatrix} \quad \psi_{- \hbar} = c \begin{pmatrix} \frac{- 1}{\sqrt{2}} \\ 1 \\ \frac{- 1}{\sqrt{2}} \end{pmatrix} .
 ```
 
 We should normalize these eigenvectors to represent one particle. For example:
@@ -13563,7 +13563,7 @@ We should normalize these eigenvectors to represent one particle. For example:
 ```
 
 ```math
-| c |^{2} \left( \tfrac{1}{\sqrt{2}}^{*} \quad 1^{*} \quad \tfrac{1}{\sqrt{2}}^{*} \right) \left( \frac{1}{\sqrt{2} 1}_{\tfrac{1}{\sqrt{2}}} \right) = 2 | c |^{2} = 1
+| c |^{2} \left( \tfrac{1}{\sqrt{2}}^{*} \quad 1^{*} \quad \tfrac{1}{\sqrt{2}}^{*} \right) \begin{pmatrix} \frac{1}{\sqrt{2}} \\ 1 \\ \frac{1}{\sqrt{2}} \end{pmatrix} = 2 | c |^{2} = 1
 ```
 
 ```math
@@ -13593,13 +13593,13 @@ R_{z} ( \theta_{z} = 9 0 ) = \begin{pmatrix} i & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & -
 Before rotation the state is $`1`$
 
 ```math
-\psi_{+ \hbar}^{( x )} = \left( \tfrac{1 2}{\sqrt{1 2} 2} \right)
+\psi_{+ \hbar}^{( x )} = \begin{pmatrix} \frac{1}{\sqrt{2}}^{2} \\ \frac{1}{2} \end{pmatrix}
 ```
 
 The rotated state is.
 
 ```math
-\psi^{\prime} = \begin{pmatrix} i & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & - i \end{pmatrix} \left( \tfrac{\frac{1}{2} 1}{\sqrt{\frac{1}{2} 2}} \right) = \left( \tfrac{1 \frac{i}{2}}{- \frac{\sqrt{2 i}}{2}} \right)
+\psi^{\prime} = \begin{pmatrix} i & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & - i \end{pmatrix} \begin{pmatrix} \frac{1}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{1}{2} \end{pmatrix} = \begin{pmatrix} \frac{i}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{- i}{2} \end{pmatrix}
 ```
 
 Now, what remains is to check whether this state is the one we expect. What is $`\psi_{-}^{( y )}`$? We find that state by solving the eigenvalue problem.
@@ -13613,19 +13613,19 @@ L_{y} \psi_{-}^{( y )} = - \hbar \psi_{-}^{( y )}
 ```
 
 ```math
-\left( \tfrac{i ( c \frac{ib}{\sqrt{2}} - a )}{\frac{- \sqrt{ib 2}}{\sqrt{2}}} \right) = \begin{pmatrix} a \\ b \\ c \end{pmatrix}
+\begin{pmatrix} \frac{ib}{\sqrt{2}} \\ \frac{i ( c - a )}{\sqrt{2}} \\ \frac{- ib}{\sqrt{2}} \end{pmatrix} = \begin{pmatrix} a \\ b \\ c \end{pmatrix}
 ```
 
 Setting $`b`$ = 1, we get the unnormalized result.
 
 ```math
-\psi_{-}^{( y )} = C \left( \frac{i}{\sqrt{1^{2}}}_{\tfrac{i}{\sqrt{2}} -} \right)
+\psi_{-}^{( y )} = C \begin{pmatrix} \frac{i}{\sqrt{2}} \\ 1 \\ \frac{- i}{\sqrt{2}} \end{pmatrix}
 ```
 
 Normalizing, we get.
 
 ```math
-\psi_{-}^{( y )} = \left( \tfrac{1 \frac{i}{2}}{\frac{\sqrt{2 i}}{2} -} \right)
+\psi_{-}^{( y )} = \begin{pmatrix} \frac{i}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{- i}{2} \end{pmatrix}
 ```
 
 This is exactly the same as the rotated state. A 90 degree rotation about the z axis changes $`\psi_{+}^{( x )}`$ into $`\psi_{-}^{( y )}`$.
@@ -13745,7 +13745,7 @@ I_{2} = \frac{1}{4} I_{1} = \frac{1}{1 2} I_{0}
 The third apparatus goes back to a separation in z and blocks the $`m`$ = 1 component. The incoming state is
 
 ```math
-\psi_{-}^{( x )} = \left( \frac{- {}_{1} \tfrac{1}{2}}{- \sqrt{2 \frac{1}{2}}} \right)
+\psi_{-}^{( x )} = \begin{pmatrix} - \tfrac{1}{2} \\ \frac{1}{\sqrt{2}} \\ - \tfrac{1}{2} \end{pmatrix}
 ```
 
 Remember that the components of this vector are just the amplitudes to be in the different $`m`$ states (using the z axis). The probability to get through this apparatus is just the probability to be in the $`m`$ = 0 beam plus the probability to be in the $`m = - 1`$ beam.
@@ -13797,11 +13797,11 @@ But we know how each of the energy eigenfunctions develops with time so its easy
 As a concrete example, let’s assume we start out in the eigenstate of $`L_{x}`$ with eigenvalue +$`\hbar`$.
 
 ```math
-\psi ( t = 0 ) = \psi_{x +} = \left( \tfrac{1 \frac{1}{2}}{\sqrt{2} \frac{1}{2}} \right)
+\psi ( t = 0 ) = \psi_{x +} = \begin{pmatrix} \frac{1}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{1}{2} \end{pmatrix}
 ```
 
 ```math
-\psi ( t ) = \psi_{x +} = \left( \tfrac{e^{- i\mu BBt/ \hbar}}{e^{i\mu BB} \frac{1 2}{\sqrt{2}}^{t/ \hbar}}_{2} \right)
+\psi ( t ) = \psi_{x +} = \begin{pmatrix} \frac{e^{- i\mu BBt/ \hbar}}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{e^{i\mu BBt/ \hbar}}{2} \end{pmatrix}
 ```
 
 <div align="right"><a href="book.pdf#page=266" target="_blank" title="This page in the PDF"><sup>[p. 266]</sup></a></div>
@@ -13809,7 +13809,7 @@ As a concrete example, let’s assume we start out in the eigenstate of $`L_{x}`
 <a id="p267" href="book.pdf#page=267" target="_blank" title="This page in the PDF"><sup>[p. 267]</sup></a>
 
 ```math
-\langle \psi ( t ) | L_{x} | \psi ( t ) \rangle = \left( \tfrac{e^{+ i\mu BBt/ \hbar}}{2} \quad \tfrac{1}{\sqrt{2}} \quad \tfrac{e^{- i\mu BBt/ \hbar}}{2} \right) \frac{\hbar}{\sqrt{2}} \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix} \left( \tfrac{e^{- i\mu BBt/ \hbar}}{e^{i\mu BB} \frac{1 2}{\sqrt{2}}^{t/ \hbar}}_{2} \right)
+\langle \psi ( t ) | L_{x} | \psi ( t ) \rangle = \left( \tfrac{e^{+ i\mu BBt/ \hbar}}{2} \quad \tfrac{1}{\sqrt{2}} \quad \tfrac{e^{- i\mu BBt/ \hbar}}{2} \right) \frac{\hbar}{\sqrt{2}} \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix} \begin{pmatrix} \frac{e^{- i\mu BBt/ \hbar}}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{e^{i\mu BBt/ \hbar}}{2} \end{pmatrix}
 ```
 
 ```math
@@ -13855,11 +13855,11 @@ a = \pm b
 ```
 
 ```math
-\chi_{+}^{( x )} = \left( \tfrac{\tfrac{1}{\sqrt{2}} 1}{\sqrt{2}} \right)
+\chi_{+}^{( x )} = \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix}
 ```
 
 ```math
-\chi_{-}^{( x )} = \left( \tfrac{- \tfrac{1}{\sqrt{2}} 1}{\sqrt{2}} \right)
+\chi_{-}^{( x )} = \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{- 1}{\sqrt{2}} \end{pmatrix}
 ```
 
 These are the eigenvectors of $`S_{x}`$. We see that if we are in an eigenstate of $`S_{x}`$ the spin measured in the z direction is equally likely to be up and down since the absolute square of either amplitude is
@@ -14023,7 +14023,7 @@ which are both equivalent to $`\chi_{2} = i\chi_{1}`$. Repeating the process for
 As an example, lets take the $`u`$ direction to be in the $`xz`$ plane, between the positive $`x`$ and $`z`$ axes, 30 degrees from the x axis. The unit vector is then $`\hat{u}`$ = (cos(30)$`, 0 ,`$ sin(30)) = $`( \sqrt{\tfrac{3}{4} ,} 0 , \tfrac{1}{2} )`$. We may simply calculate the matrix $`S_{u} = \hat{u} \cdot \vec{S}`$.
 
 ```math
-S_{u} = \sqrt{\frac{3}{4}} S_{x} + \frac{1}{2} S_{z} = \frac{\hbar}{2} \begin{pmatrix} \tfrac{1}{2} & \sqrt{\frac{1}{2} \frac{3}{4}} \\ \sqrt{\frac{3}{4}} & - \end{pmatrix}
+S_{u} = \sqrt{\frac{3}{4}} S_{x} + \frac{1}{2} S_{z} = \frac{\hbar}{2} \begin{pmatrix} \frac{1}{2} & \sqrt{\frac{3}{4}} \\ \sqrt{\frac{3}{4}} & - \tfrac{1}{2} \end{pmatrix}
 ```
 
 We expect the eigenvalues to be $`\pm \tfrac{\hbar}{2}`$ as for all axes.
@@ -14031,11 +14031,11 @@ We expect the eigenvalues to be $`\pm \tfrac{\hbar}{2}`$ as for all axes.
 Factoring out the $`\frac{\hbar}{2}`$, the equation for the eigenvectors is.
 
 ```math
-\begin{pmatrix} \tfrac{1}{2} & \sqrt{\frac{1}{2} \frac{3}{4}} \\ \sqrt{\frac{3}{4}} & - \end{pmatrix} \begin{pmatrix} a \\ b \end{pmatrix} = \pm \begin{pmatrix} a \\ b \end{pmatrix}
+\begin{pmatrix} \frac{1}{2} & \sqrt{\frac{3}{4}} \\ \sqrt{\frac{3}{4}} & - \tfrac{1}{2} \end{pmatrix} \begin{pmatrix} a \\ b \end{pmatrix} = \pm \begin{pmatrix} a \\ b \end{pmatrix}
 ```
 
 ```math
-\begin{pmatrix} \tfrac{1}{2} a + \sqrt{\frac{1}{2} \frac{3}{4}} b \\ \sqrt{\frac{3}{4}} a - b \end{pmatrix} = \pm \begin{pmatrix} a \\ b \end{pmatrix} \quad \sqrt{\frac{3}{4}}
+\begin{pmatrix} \tfrac{1}{2} a + \sqrt{\frac{3}{4}} b \\ \sqrt{\frac{3}{4}} a - \tfrac{1}{2} b \end{pmatrix} = \pm \begin{pmatrix} a \\ b \end{pmatrix} \quad \sqrt{\frac{3}{4}}
 ```
 
 For the positive eigenvalue, we have $`a = \sqrt{3} b`$, giving the eigenvector $`\chi_{+}^{( u )} = \begin{pmatrix} 1 \\ 2 \end{pmatrix}`$. For the
@@ -14055,15 +14055,15 @@ these could be multiplied by an arbitrary phase factor.
 There is an alternate way to solve the problem using rotation matrices. We take the states $`\chi_{\pm}^{( z )}`$ and rotate the axes so that the $`u`$ axis is where the $`z`$ axis was. We must think carefully about exacty what rotation to do. Clearly we need a rotation about the $`y`$ axis. Thinking about the signs carefully, we see that a rotation of -60 degrees moves the $`u`$ axis to the old $`z`$ axis.
 
 ```math
-\begin{aligned} R_{y} &= \begin{pmatrix} \cos \tfrac{\theta}{2} & \sin \tfrac{\theta}{2} \\ - \sin \tfrac{\theta}{2} & \cos \tfrac{\theta}{2} \end{pmatrix} \\ R_{y} ( - 6 0 ) &= \begin{pmatrix} \cos ( 3 0 ) & - \sin ( 3 0 ) \\ \sin ( 3 0 ) & \cos ( 3 0 ) \end{pmatrix} = \begin{pmatrix} \sqrt{\frac{3}{4}} & - \tfrac{1}{2} \\ \tfrac{1}{2} & \sqrt{\frac{3}{4}} \end{pmatrix} \end{aligned}
+\begin{aligned} R_{y} &= \begin{pmatrix} \cos \tfrac{\theta}{2} & \sin \tfrac{\theta}{2} \\ - \sin \tfrac{\theta}{2} & \cos \tfrac{\theta}{2} \end{pmatrix} \\ R_{y} ( - 6 0 ) &= \begin{pmatrix} \cos ( 3 0 ) & - \sin ( 3 0 ) \\ \sin ( 3 0 ) & \cos ( 3 0 ) \end{pmatrix} = \begin{pmatrix} \sqrt{\frac{3}{4}} & - \tfrac{1}{2} \\ \frac{1}{2} & \sqrt{\frac{3}{4}} \end{pmatrix} \end{aligned}
 ```
 
 ```math
-\chi_{+}^{( u )} = \begin{pmatrix} \sqrt{\frac{3}{4}} & - \tfrac{1}{2} \\ \tfrac{1}{2} & \sqrt{\frac{3}{4}} \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \left( \sqrt{\frac{3}{4}}_{\tfrac{1}{2}} \right)
+\chi_{+}^{( u )} = \begin{pmatrix} \sqrt{\frac{3}{4}} & - \tfrac{1}{2} \\ \frac{1}{2} & \sqrt{\frac{3}{4}} \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} \sqrt{\frac{3}{4}} \\ \frac{1}{2} \end{pmatrix}
 ```
 
 ```math
-\chi_{-}^{( u )} = \begin{pmatrix} \sqrt{\frac{3}{4}} & - \tfrac{1}{2} \\ \tfrac{1}{2} & \sqrt{\frac{3}{4}} \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} - \tfrac{1}{2} \\ \sqrt{\frac{3}{4}} \end{pmatrix}
+\chi_{-}^{( u )} = \begin{pmatrix} \sqrt{\frac{3}{4}} & - \tfrac{1}{2} \\ \frac{1}{2} & \sqrt{\frac{3}{4}} \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} - \tfrac{1}{2} \\ \sqrt{\frac{3}{4}} \end{pmatrix}
 ```
 
 This gives the same answer. By using the rotation operator, the phase of the eigenvectors is consistent with the choice made for $`\chi_{\pm}^{( z )}`$. For most problems, this is not important but it is for some.
@@ -14085,15 +14085,15 @@ where $`\omega = \tfrac{\mu_{B} B}{\hbar}`$.
 So let’s say we start out in the state with spin up along the x axis, $`\chi`$(0) = $`\begin{pmatrix} 1 \\ \sqrt{1 2} \end{pmatrix}`$. We then have
 
 ```math
-\chi ( t ) = \left( \frac{1}{{}^{\sqrt{2}} \frac{{}_{1} e}{\sqrt{2}}} e^{- i\omega t i\omega t} \right) . \quad \sqrt{2}
+\chi ( t ) = \begin{pmatrix} \tfrac{1}{\sqrt{2}} e^{- i\omega t} \\ \tfrac{1}{\sqrt{2}} e^{i\omega t} \end{pmatrix} . \quad \sqrt{2}
 ```
 
 ```math
-\langle \chi ( t ) | S_{x} | \chi ( t ) \rangle = \left( \tfrac{1}{\sqrt{2}} e^{+ i\omega t} \quad \tfrac{1}{\sqrt{2}} e^{- i\omega t} \right) \frac{\hbar}{2} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \left( \frac{1}{{}^{\sqrt{2}} \frac{{}_{1} e}{\sqrt{2}}} e^{- i\omega t i\omega t} \right)
+\langle \chi ( t ) | S_{x} | \chi ( t ) \rangle = \left( \tfrac{1}{\sqrt{2}} e^{+ i\omega t} \quad \tfrac{1}{\sqrt{2}} e^{- i\omega t} \right) \frac{\hbar}{2} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} \tfrac{1}{\sqrt{2}} e^{- i\omega t} \\ \tfrac{1}{\sqrt{2}} e^{i\omega t} \end{pmatrix}
 ```
 
 ```math
-= \frac{\hbar}{2} \left( \tfrac{1}{\sqrt{2}} e^{+ i\omega t} \quad \tfrac{1}{\sqrt{2}} e^{- i\omega t} \right) \begin{pmatrix} e^{+ i\omega t} \\ \frac{\tfrac{1}{\sqrt{2}}_{1}}{\sqrt{2}} e^{- i\omega t} \end{pmatrix}
+= \frac{\hbar}{2} \left( \tfrac{1}{\sqrt{2}} e^{+ i\omega t} \quad \tfrac{1}{\sqrt{2}} e^{- i\omega t} \right) \begin{pmatrix} \tfrac{1}{\sqrt{2}} e^{+ i\omega t} \\ \tfrac{1}{\sqrt{2}} e^{- i\omega t} \end{pmatrix}
 ```
 
 ```math
@@ -14327,7 +14327,7 @@ e^{i\theta L_{y} / \hbar} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 
 Putting this all together, we get
 
 ```math
-R_{y} ( \theta_{y} ) = \begin{pmatrix} \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) & \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) \\ - \sqrt{\tfrac{1}{2} \sin ( \theta_{y} )} & c \text{ os } ( \theta_{y} ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) \\ \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) & - \sqrt{\tfrac{1}{2} \sin ( \theta_{y} )} & \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) \end{pmatrix} .
+R_{y} ( \theta_{y} ) = \begin{pmatrix} \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) & \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) \\ - \sqrt{\tfrac{1}{2} \sin ( \theta_{y} )} & \cos ( \theta_{y} ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) \\ \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) & - \sqrt{\tfrac{1}{2} \sin ( \theta_{y} )} & \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) \end{pmatrix} .
 ```
 
 ## <a id="s-18-11-6-derive-spin-2-1-operators"></a>18.11.6 Derive Spin $`\frac{1}{2}`$ Operators
@@ -14606,7 +14606,7 @@ probability that a measurement of the $`x`$ component of spin yields +$`\frac{1}
 
 8. A spin $`\frac{1}{2}`$ system is in the state $`\chi = \tfrac{1}{\sqrt{5}} \begin{pmatrix} i \\ 2 \end{pmatrix}`$ (in the usual $`S_{z}`$ eigenstate basis). What is the
 
-probability that a measurement of $`S_{x}`$ yields $`\frac{- \hbar}{2}`$? What is the probability that a measurement of $`S_{y}`$ yields $`\frac{\hbar}{2} -`$?
+probability that a measurement of $`S_{x}`$ yields $`\frac{- \hbar}{2}`$? What is the probability that a measurement of $`S_{y}`$ yields $`\frac{- \hbar}{2}`$?
 
 9. A spin $`\frac{1}{2}`$ object is in an eigenstate of $`S_{y}`$ with eigenvalue $`\frac{\hbar}{2}`$ at t=0. The particle is in a magnetic field **B** = $`( 0 , 0 ,B )`$ which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{z}`$. Find the probability to measure $`S_{y} = \tfrac{\hbar}{2}`$ as a function of time.
 
@@ -18101,7 +18101,7 @@ Now we will work the full problem with no assumptions about which perturbation i
 We continue on as in the last section but work in the states of $`| fm f \rangle`$. The matrix for $`\langle fm_{f} | H_{hf} + H_{B} | f^{\prime} m_{f}^{\prime} \rangle`$ is
 
 ```math
-1 \frac{1}{0 1} \quad - \frac{1}{0 0} 1 \begin{pmatrix} \frac{\mathcal{A}}{4} + \mu_{B} B & 0 & 0 & 0 \\ 0 & \frac{\mathcal{A}}{4} - \mu_{B} B & 0 & 0 \\ 0 & 0 & \tfrac{\mathcal{A}}{4} & \mu B \\ 0 & 0 & \mu_{B} B & \tfrac{B 3}{4}^{- \mathcal{A}} \end{pmatrix} .
+1 \frac{1}{0 1} \quad - \frac{1}{0 0} 1 \begin{pmatrix} \frac{\mathcal{A}}{4} + \mu_{B} B & 0 & 0 & 0 \\ 0 & \frac{\mathcal{A}}{4} - \mu_{B} B & 0 & 0 \\ 0 & 0 & \tfrac{\mathcal{A}}{4} & \mu_{B} B \\ 0 & 0 & \mu_{B} B & \tfrac{3}{4}^{- \mathcal{A}} \end{pmatrix} .
 ```
 
 <div align="right"><a href="book.pdf#page=352" target="_blank" title="This page in the PDF"><sup>[p. 352]</sup></a></div>
@@ -24941,17 +24941,17 @@ B_{2} = {}_{2} \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}}_{2}
 ```
 
 ```math
-\begin{pmatrix} \frac{{}_{p_{z} ( p_{x} + ip_{y} ) c^{2} - p_{z} (} - E + mc^{2} + \tfrac{p c}{p E + mc^{2}_{x} + ip_{y} )}_{c^{2}}}{{}^{E + mc^{2}} 0} \\ 0 \end{pmatrix} = 0
+\begin{pmatrix} - E + mc^{2} + \tfrac{p c}{E + mc^{2}} \\ \frac{p_{z} ( p_{x} + ip_{y} ) c^{2} - p_{z} ( p_{x} + ip_{y} ) c^{2}}{E + mc^{2}} \\ 0 \\ 0 \end{pmatrix} = 0
 ```
 
 ```math
-\begin{pmatrix} \frac{- E^{2} + ( mc^{2} )^{2} + p^{2} c^{2}}{{}^{E + mc^{2}} 0} \\ 0 \\ 0 \end{pmatrix} = 0
+\begin{pmatrix} \frac{- E^{2} + ( mc^{2} )^{2} + p^{2} c^{2}}{E + mc^{2}} \\ 0 \\ 0 \\ 0 \end{pmatrix} = 0
 ```
 
 This will be a solution as long as $`E^{2}`$ = $`p^{2} c^{2} + ( mc^{2} )^{2}`$, not a surprising condition. Adding a normalization factor, the solution is.
 
 ```math
-u_{\vec{p}} = N \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix}
+u_{\vec{p}} = N \begin{pmatrix} 1 \\ 0 \\ \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \end{pmatrix}
 ```
 
 ```math
@@ -24961,7 +24961,7 @@ u_{\vec{p} = 0} = N \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix}
 This reduces to the spin up positive energy solution for a particle at rest as the momentum goes to zero. We can therefore identify this as that same solution boosted to have momentum $`\vec{p}`$. The full solution is.
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = N \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 1 )} = N \begin{pmatrix} 1 \\ 0 \\ \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 <div align="right"><a href="book.pdf#page=499" target="_blank" title="This page in the PDF"><sup>[p. 499]</sup></a></div>
@@ -24981,11 +24981,11 @@ If we make the upper two components those of a **spin down electron**, we get th
 ```
 
 ```math
-\begin{pmatrix} \frac{p_{z} ( p_{x} - ip_{y} ) c - p_{z} ( p_{x} - ip_{y} ) c}{- E + mc \frac{E + mc^{2}}{0}^{2} + \tfrac{p^{2} c^{2}}{E + mc^{2}}} \\ 0 \end{pmatrix} = 0
+\begin{pmatrix} \frac{p_{z} ( p_{x} - ip_{y} ) c - p_{z} ( p_{x} - ip_{y} ) c}{E + mc^{2}} \\ - E + mc^{2} + \tfrac{p^{2} c^{2}}{E + mc^{2}} \\ 0 \\ 0 \end{pmatrix} = 0
 ```
 
 ```math
-\begin{pmatrix} \frac{{}_{- E^{2} + ( mc} 0_{{}^{2} )^{2} + p^{2} c^{2}}}{E + mc^{2}} \\ 0 \\ 0 \end{pmatrix} = 0
+\begin{pmatrix} 0 \\ \frac{- E^{2} + ( mc^{2} )^{2} + p^{2} c^{2}}{E + mc^{2}} \\ 0 \\ 0 \end{pmatrix} = 0
 ```
 
 ```math
@@ -24993,7 +24993,7 @@ E^{2} = p^{2} c^{2} + ( mc^{2} )^{2}
 ```
 
 ```math
-u_{\vec{p}} = N \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} -} 1_{ip_{y} ) c}}{\frac{- p_{z} c}{E + mc^{2}} E + mc^{2}} \end{pmatrix}
+u_{\vec{p}} = N \begin{pmatrix} 0 \\ 1 \\ \frac{( p_{x} - ip_{y} ) c}{E + mc^{2}} \\ \frac{- p_{z} c}{E + mc^{2}} \end{pmatrix}
 ```
 
 ```math
@@ -25003,7 +25003,7 @@ u_{\vec{p} = 0} = N \begin{pmatrix} 0 \\ 1 \\ 0 \\ 0 \end{pmatrix}
 This reduces to the spin down positive energy solution for a particle at rest as the momentum goes to zero. The full solution is.
 
 ```math
-\psi_{\vec{p}}^{( 2 )} = N \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} -} 1_{ip_{y} ) c}}{\frac{- p_{z} c}{E + mc^{2}} E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 2 )} = N \begin{pmatrix} 0 \\ 1 \\ \frac{( p_{x} - ip_{y} ) c}{E + mc^{2}} \\ \frac{- p_{z} c}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 Now we take a look at the **“negative energy” spin up solution** in the same way.
@@ -25025,7 +25025,7 @@ Now we take a look at the **“negative energy” spin up solution** in the same
 ```
 
 ```math
-\begin{pmatrix} 0 \\ \frac{{}_{- E^{2} + ( mc} 0_{{}^{2} )^{2} + p^{2} c^{2}}}{{}^{- E +} 0^{mc^{2}}} \end{pmatrix} = 0
+\begin{pmatrix} 0 \\ 0 \\ \frac{- E^{2} + ( mc^{2} )^{2} + p^{2} c^{2}}{- E + mc^{2}} \\ 0 \end{pmatrix} = 0
 ```
 
 ```math
@@ -25033,7 +25033,7 @@ E^{2} = p^{2} c^{2} + ( mc^{2} )^{2}
 ```
 
 ```math
-u_{\vec{p}} = N \begin{pmatrix} \frac{- \frac{- p_{z} c}{- E + mc^{2}} ( p_{x} + ip_{y} ) c}{{}^{- E +} 1^{mc^{2}}} \\ 0 \end{pmatrix}
+u_{\vec{p}} = N \begin{pmatrix} \frac{- p_{z} c}{- E + mc^{2}} \\ \frac{- ( p_{x} + ip_{y} ) c}{- E + mc^{2}} \\ 1 \\ 0 \end{pmatrix}
 ```
 
 ```math
@@ -25043,7 +25043,7 @@ u_{\vec{p} = 0} = N \begin{pmatrix} 0 \\ 0 \\ 1 \\ 0 \end{pmatrix}
 This reduces to the spin up “negative energy” solution for a particle at rest as the momentum goes to zero. The full solution is
 
 ```math
-\psi_{\vec{p}}^{( 3 )} = N \begin{pmatrix} \frac{- \frac{- p_{z} c}{- E + mc^{2}} ( p_{x} + ip_{y} ) c}{{}^{- E +} 1^{mc^{2}}} \\ 0 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 3 )} = N \begin{pmatrix} \frac{- p_{z} c}{- E + mc^{2}} \\ \frac{- ( p_{x} + ip_{y} ) c}{- E + mc^{2}} \\ 1 \\ 0 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 with $`E`$ being a negative number. We will eventually understand the “negative energy” solutions in terms of anti-electrons otherwise known as positrons.
@@ -25055,7 +25055,7 @@ Finally, the **“negative energy”, spin down solution** follows the same patt
 ```
 
 ```math
-\psi_{\vec{p}}^{( 4 )} = N \begin{pmatrix} \frac{- ( p_{x} - ip_{y} ) c}{\frac{- E p + {}_{z} mc c^{2}}{{}^{- E +} 0^{mc^{2}}}} \\ 1 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 4 )} = N \begin{pmatrix} \frac{- ( p_{x} - ip_{y} ) c}{- E + mc^{2}} \\ \frac{p_{z} c}{- E + mc^{2}} \\ 0 \\ 1 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 with $`E`$ being a negative number.
@@ -25093,11 +25093,11 @@ N = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}}
 We have the **four solutions with for a free particle with momentum** $`\vec{p}`$. For solutions 1 and 2, $`E`$ is a positive number. For solutions 3 and 4, $`E`$ is negative.
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 2 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} - ip_{y} ) c} 1}{E \frac{- p_{z} c}{E + mc^{2}} + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} 1 \\ 0 \\ \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 2 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} 0 \\ 1 \\ \frac{( p_{x} - ip_{y} ) c}{E + mc^{2}} \\ \frac{- p_{z} c}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-\psi_{\vec{p}}^{( 3 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{- \frac{- p_{z} c}{- E + mc^{2}} ( p_{x} + ip_{y} ) c}{{}^{- E +} 1^{mc^{2}}} \\ 0 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 4 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \tfrac{- ( p_{x} - ip_{y} ) c}{\frac{- E p + {}_{z} mc c^{2}}{- E + mc^{2}}} \\ 0 \\ 1 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 3 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{- p_{z} c}{- E + mc^{2}} \\ \frac{- ( p_{x} + ip_{y} ) c}{- E + mc^{2}} \\ 1 \\ 0 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 4 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{- ( p_{x} - ip_{y} ) c}{- E + mc^{2}} \\ \frac{p_{z} c}{- E + mc^{2}} \\ 0 \\ 1 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 The spinors are **orthogonal** for states with the same momentum and the free particle waves are orthogonal for different momenta. Note that the orthogonality condition is the same as for non-relativistic spinors
@@ -25113,7 +25113,7 @@ It is useful to write the plane wave states as a spinor $`u_{\vec{p}}^{( r )}`$ 
 ```
 
 ```math
-\begin{aligned} u_{\vec{p}}^{( 1 )} &= \sqrt{\frac{E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} \quad u_{\vec{p}}^{( 2 )} = \sqrt{\frac{E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} -} 1_{ip_{y} ) c}}{\frac{- p_{z} c}{E + mc^{2}} E + mc^{2}} \end{pmatrix} \\ u_{\vec{p}}^{( 3 )} &= \sqrt{\frac{- E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} \frac{- \frac{- p_{z} c}{- E + mc^{2}} ( p_{x} + ip_{y} ) c}{{}^{- E +} 1^{mc^{2}}} \\ 0 \end{pmatrix} \quad u_{\vec{p}}^{( 4 )} = \sqrt{\frac{- E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} \tfrac{- ( p_{x} - ip_{y} ) c}{\frac{- E p + {}_{z} mc c^{2}}{- E + mc^{2}}} \\ 0 \\ 1 \end{pmatrix} \end{aligned}
+\begin{aligned} u_{\vec{p}}^{( 1 )} &= \sqrt{\frac{E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} 1 \\ 0 \\ \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \end{pmatrix} \quad u_{\vec{p}}^{( 2 )} = \sqrt{\frac{E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} 0 \\ 1 \\ \frac{( p_{x} - ip_{y} ) c}{E + mc^{2}} \\ \frac{- p_{z} c}{E + mc^{2}} \end{pmatrix} \\ u_{\vec{p}}^{( 3 )} &= \sqrt{\frac{- E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} \frac{- p_{z} c}{- E + mc^{2}} \\ \frac{- ( p_{x} + ip_{y} ) c}{- E + mc^{2}} \\ 1 \\ 0 \end{pmatrix} \quad u_{\vec{p}}^{( 4 )} = \sqrt{\frac{- E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} \frac{- ( p_{x} - ip_{y} ) c}{- E + mc^{2}} \\ \frac{p_{z} c}{- E + mc^{2}} \\ 0 \\ 1 \end{pmatrix} \end{aligned}
 ```
 
 <div align="right"><a href="book.pdf#page=502" target="_blank" title="This page in the PDF"><sup>[p. 502]</sup></a></div>
@@ -25167,7 +25167,7 @@ j_{\mu} = ic ( A_{1}^{*} \quad A_{2}^{*} \quad - B_{1}^{*} \quad - B_{2}^{*} ) \
 Now compute it specifically for a positive energy plane wave, $`\psi_{\vec{p}}^{( 1 )}`$ , and a “negative energy” plane<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=503" target="_blank" title="This page in the PDF"><sup>[p. 503]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p504" href="book.pdf#page=504" target="_blank" title="This page in the PDF"><sup>[p. 504]</sup></a></span> wave, $`\psi_{\vec{p}}^{( 3 )}`$ .
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = N \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 1 )} = N \begin{pmatrix} 1 \\ 0 \\ \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
@@ -25183,7 +25183,7 @@ j_{\mu}^{( 1 )} = N^{2} \frac{2 c}{E + mc^{2}} ( p_{x} c,p_{y} c,p_{z} c,iE )
 ```
 
 ```math
-\psi_{\vec{p}}^{( 3 )} = N \begin{pmatrix} {}^{\tfrac{- \frac{- p_{z} c}{- E + mc^{2}} ( p_{x} + ip_{y} ) c}{- E + mc^{2}}} 1 \\ 0 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 3 )} = N \begin{pmatrix} \frac{- p_{z} c}{- E + mc^{2}} \\ \frac{- ( p_{x} + ip_{y} ) c}{- E + mc^{2}} \\ 1 \\ 0 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
@@ -25205,11 +25205,11 @@ Since $`E`$ is negative for the “negative energy” solution, the **probabilit
 Start from the four plane wave solutions: 1 and 2 with positive energy and 3 and 4 with negative. There are four solutions for each choice of momentum $`\vec{p}`$.
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 2 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} - ip_{y} ) c} 1}{E \frac{- p_{z} c}{E + mc^{2}} + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} 1 \\ 0 \\ \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 2 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} 0 \\ 1 \\ \frac{( p_{x} - ip_{y} ) c}{E + mc^{2}} \\ \frac{- p_{z} c}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-\psi_{\vec{p}}^{( 3 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{- \frac{- p_{z} c}{- E + mc^{2}} ( p_{x} + ip_{y} ) c}{{}^{- E +} 1^{mc^{2}}} \\ 0 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 4 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{- ( p_{x} - ip_{y} ) c}{\frac{- E p + {}_{z} mc c^{2}}{{}^{- E +} 0^{mc^{2}}}} \\ 1 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 3 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{- p_{z} c}{- E + mc^{2}} \\ \frac{- ( p_{x} + ip_{y} ) c}{- E + mc^{2}} \\ 1 \\ 0 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 4 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{- ( p_{x} - ip_{y} ) c}{- E + mc^{2}} \\ \frac{p_{z} c}{- E + mc^{2}} \\ 0 \\ 1 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 Concentrate on the exponential which determines the wave property. For solutions 3 and 4, both the phase and group velocity are in the opposite direction to the momentum, indicating we have a problem that was not seen in non-relativistic quantum mechanics.
@@ -25231,11 +25231,11 @@ Clearly, we want waves that propagate in the right direction. Perhaps the moment
 For solutions 3 and 4, pick the solution for $`- \vec{p}`$ to classify with solutions 1 and 2 with momentum $`\vec{p}`$ **write everything in terms of the positive square root** $`E = \sqrt{p^{2} c^{2} + m^{2} c^{4}}`$.
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 2 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} - ip_{y} ) c} 1}{E \frac{- p_{z} c}{E + mc^{2}} + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 1 \\ 0 \\ \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 2 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 0 \\ 1 \\ \frac{( p_{x} - ip_{y} ) c}{E + mc^{2}} \\ \frac{- p_{z} c}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-\psi_{\vec{p}}^{( 3 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} \frac{( p \frac{p_{z} c}{E + mc^{2}}_{x} + ip_{y} ) c}{{}^{E + mc^{2}} 1} \\ 0 \end{pmatrix} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 4 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{( p_{x} - ip_{y} ) c}{\frac{E + mc^{2} - p_{z} c}{{}^{E + mc^{2}} 0}} \\ 1 \end{pmatrix} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 3 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \\ 1 \\ 0 \end{pmatrix} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 4 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{( p_{x} - ip_{y} ) c}{E + mc^{2}} \\ \frac{- p_{z} c}{E + mc^{2}} \\ 0 \\ 1 \end{pmatrix} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 We have plane waves of the form
@@ -25593,7 +25593,7 @@ As an example, we might try our solution for a free electron with spin up along 
 The solution we found for a free particle with momentum $`\vec{p}`$ was.
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} e^{ip_{\rho} x_{\rho} / \hbar}
+\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 1 \\ 0 \\ \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \end{pmatrix} e^{ip_{\rho} x_{\rho} / \hbar}
 ```
 
 Imagine we boost the coordinate system along the $`- x`$ direction with $`\tfrac{v}{c} = \beta`$. We can transform the momentum of the electron to the new frame.
@@ -25605,7 +25605,7 @@ p_{\nu}^{\prime} = a_{\mu \nu}^{( boost )} p_{\nu} = \begin{pmatrix} \gamma & 0 
 The momentum along the x direction is $`p_{x} = \beta \gamma mc = mc \sinh \chi`$. We now have two ways to get the free particle state with momentum in the x direction. We can use our free particle state
 
 ```math
-\psi^{( 1 )} = \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ \frac{{}_{p_{x}} 0_{c}}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi^{( 1 )} = \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ \frac{p_{x} c}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 <div align="right"><a href="book.pdf#page=511" target="_blank" title="This page in the PDF"><sup>[p. 511]</sup></a></div>
@@ -25613,15 +25613,15 @@ The momentum along the x direction is $`p_{x} = \beta \gamma mc = mc \sinh \chi`
 <a id="p512" href="book.pdf#page=512" target="_blank" title="This page in the PDF"><sup>[p. 512]</sup></a>
 
 ```math
-= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ \frac{{}_{\beta \gamma mc^{2}} 0}{\gamma mc^{2} + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ \frac{\beta \gamma mc^{2}}{\gamma mc^{2} + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ \frac{{}_{\beta \gamma} 0}{\gamma + 1} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ \frac{\beta \gamma}{\gamma + 1} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ \frac{{}_{\sinh} 0_{\chi}}{\cosh \chi + 1} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ \frac{\sinh \chi}{\cosh \chi + 1} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
@@ -25657,7 +25657,7 @@ S_{boost} = \cosh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2}
 ```
 
 ```math
-= \begin{pmatrix} \cosh \tfrac{\chi}{2} & 0 & 0 & \sinh \tfrac{\chi}{2} \\ 0 & \cosh & \sinh & 0 \\ 0 & \sinh \frac{\tfrac{\chi}{\chi 2}}{2} & \cosh \frac{\tfrac{\chi}{\chi 2}}{2} & 0 \\ \sinh \tfrac{\chi}{2} & 0 & 0 & \cosh \tfrac{\chi}{2} \end{pmatrix}
+= \begin{pmatrix} \cosh \tfrac{\chi}{2} & 0 & 0 & \sinh \tfrac{\chi}{2} \\ 0 & \cosh \tfrac{\chi}{2} & \sinh \tfrac{\chi}{2} & 0 \\ 0 & \sinh \tfrac{\chi}{2} & \cosh \tfrac{\chi}{2} & 0 \\ \sinh \tfrac{\chi}{2} & 0 & 0 & \cosh \tfrac{\chi}{2} \end{pmatrix}
 ```
 
 <div align="right"><a href="book.pdf#page=512" target="_blank" title="This page in the PDF"><sup>[p. 512]</sup></a></div>
@@ -25665,7 +25665,7 @@ S_{boost} = \cosh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2}
 <a id="p513" href="book.pdf#page=513" target="_blank" title="This page in the PDF"><sup>[p. 513]</sup></a>
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = \begin{pmatrix} \cosh \tfrac{\chi}{2} & 0 & 0 & \sinh \tfrac{\chi}{2} \\ 0 & \cosh \frac{\chi}{\tfrac{\chi 2}{2}} & \sinh \frac{\chi}{\tfrac{\chi 2}{2}} & 0 \\ 0 & \sinh & \cosh & 0 \\ \sinh \tfrac{\chi}{2} & 0 & 0 & \cosh \tfrac{\chi}{2} \end{pmatrix} \frac{1}{\sqrt{V}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix} e^{ip_{\rho} x_{\rho} / \hbar}
+\psi_{\vec{p}}^{( 1 )} = \begin{pmatrix} \cosh \tfrac{\chi}{2} & 0 & 0 & \sinh \tfrac{\chi}{2} \\ 0 & \cosh \tfrac{\chi}{2} & \sinh \tfrac{\chi}{2} & 0 \\ 0 & \sinh \tfrac{\chi}{2} & \cosh \tfrac{\chi}{2} & 0 \\ \sinh \tfrac{\chi}{2} & 0 & 0 & \cosh \tfrac{\chi}{2} \end{pmatrix} \frac{1}{\sqrt{V}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix} e^{ip_{\rho} x_{\rho} / \hbar}
 ```
 
 ```math
@@ -26275,15 +26275,15 @@ The expected value of the velocity in a plane wave state can be simply calculate
 ```
 
 ```math
-( ic\gamma_{4} \gamma_{1} ) u_{\vec{p}}^{( 1 )} = c \begin{pmatrix} 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0 \end{pmatrix} \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix}
+( ic\gamma_{4} \gamma_{1} ) u_{\vec{p}}^{( 1 )} = c \begin{pmatrix} 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0 \end{pmatrix} \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 1 \\ 0 \\ \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \end{pmatrix}
 ```
 
 ```math
-( ic\gamma_{4} \gamma_{1} ) u_{\vec{p}}^{( 1 )} = c \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} \frac{( p_{x} + ip_{y} ) c}{\frac{E + p_{z} mc c^{2}}{{}^{E + mc^{2}} 0}} \\ 1 \end{pmatrix}
+( ic\gamma_{4} \gamma_{1} ) u_{\vec{p}}^{( 1 )} = c \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \\ \frac{p_{z} c}{E + mc^{2}} \\ 0 \\ 1 \end{pmatrix}
 ```
 
 ```math
-u_{\vec{p}}^{( 1 ) \dagger} ( ic\gamma_{4} \gamma_{1} ) u_{\vec{p}}^{( 1 )} = \frac{E + mc^{2}}{2 EV} c \left( 1 0 \quad \tfrac{p_{z} c}{E + mc^{2}}^{\tfrac{( p_{x} - ip_{y} ) c}{E + mc^{2}}} \right) \begin{pmatrix} \frac{( p_{x} + ip_{y} ) c}{\frac{E + p_{z} mc c^{2}}{{}^{E + mc^{2}} 0}} \\ 1 \end{pmatrix}
+u_{\vec{p}}^{( 1 ) \dagger} ( ic\gamma_{4} \gamma_{1} ) u_{\vec{p}}^{( 1 )} = \frac{E + mc^{2}}{2 EV} c \left( 1 0 \quad \tfrac{p_{z} c}{E + mc^{2}}^{\tfrac{( p_{x} - ip_{y} ) c}{E + mc^{2}}} \right) \begin{pmatrix} \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \\ \frac{p_{z} c}{E + mc^{2}} \\ 0 \\ 1 \end{pmatrix}
 ```
 
 ```math
@@ -26650,7 +26650,7 @@ This is now a set of two coupled radial equations. We can simplify them a bit by
 \left( \left( \begin{pmatrix} \tfrac{\partial F}{\partial r} - \tfrac{\kappa F}{r} \\ \tfrac{\partial G}{\partial r} + \tfrac{\kappa G}{r} \end{pmatrix} \right) \right) = \begin{pmatrix} \tfrac{mc^{2} - E + V}{{}_{2} \hbar c} G \\ \tfrac{mc + E - V}{\hbar c} F \end{pmatrix}
 ```
 
-These equations are true for any spherically symmetric potential. Now it is time to **specialize to** **the hydrogen atom** for which $`\tfrac{V}{\hbar c} = - \tfrac{Z\alpha}{r}`$ . We define $`k_{1}`$ = $`\frac{mc^{2} + E}{\hbar c}`$ and $`k_{2}`$ = $`\frac{mc^{2} \quad E}{\hbar c} -`$ and the dimensionless $`\rho = \sqrt{k_{1} k_{2}} r`$. The equations then become.
+These equations are true for any spherically symmetric potential. Now it is time to **specialize to** **the hydrogen atom** for which $`\tfrac{V}{\hbar c} = - \tfrac{Z\alpha}{r}`$ . We define $`k_{1}`$ = $`\frac{mc^{2} + E}{\hbar c}`$ and $`k_{2}`$ = $`\frac{mc^{2} - E}{\hbar c}`$ and the dimensionless $`\rho = \sqrt{k_{1} k_{2}} r`$. The equations then become.
 
 ```math
 \left( \left( \begin{pmatrix} \tfrac{\partial F}{\partial r} - \tfrac{\kappa F}{r} \\ \tfrac{\partial G}{\partial r} + \tfrac{\kappa G}{r} \end{pmatrix} \right) \right) = \begin{pmatrix} \left( \begin{pmatrix} k_{2} - \tfrac{Z\alpha}{r} \\ k_{1} + \tfrac{Z\alpha}{r} \end{pmatrix} \right) G \\ F \end{pmatrix}
@@ -26661,11 +26661,11 @@ These equations are true for any spherically symmetric potential. Now it is time
 <a id="p528" href="book.pdf#page=528" target="_blank" title="This page in the PDF"><sup>[p. 528]</sup></a>
 
 ```math
-\left( \left( \begin{pmatrix} \tfrac{\partial F}{\partial \rho} - \tfrac{\kappa F}{\rho} \\ \tfrac{\partial G}{\partial \rho} + \tfrac{\kappa G}{\rho} \end{pmatrix} \right) \right) = \begin{pmatrix} \left( \begin{pmatrix} \sqrt{\frac{\frac{k_{2}}{k_{1}}}{\frac{k_{1}}{k_{2}}}} - \tfrac{Z\alpha}{\rho} \\ \sqrt{\quad + \tfrac{Z\alpha}{\rho}} \end{pmatrix} \right) G \\ F \end{pmatrix}
+\left( \left( \begin{pmatrix} \tfrac{\partial F}{\partial \rho} - \tfrac{\kappa F}{\rho} \\ \tfrac{\partial G}{\partial \rho} + \tfrac{\kappa G}{\rho} \end{pmatrix} \right) \right) = \begin{pmatrix} \left( \begin{pmatrix} \sqrt{\frac{k_{2}}{k_{1}}} - \tfrac{Z\alpha}{\rho} \\ \sqrt{\frac{k_{1}}{k_{2}}} + \tfrac{Z\alpha}{\rho} \end{pmatrix} \right) G \\ F \end{pmatrix}
 ```
 
 ```math
-\begin{pmatrix} \left( \tfrac{\partial}{\partial \rho} \tfrac{\partial}{\partial \rho} + - \tfrac{\kappa}{\overline{\rho}}_{\overline{\rho}}^{\kappa} \right) F - \left( \begin{pmatrix} \sqrt{\frac{\frac{k_{2}}{k_{1}}}{\frac{k_{1}}{k_{2}}}} - \tfrac{Z\alpha}{\rho} \\ \sqrt{\quad + \tfrac{Z\alpha}{\rho}} \end{pmatrix} \right) G \\ G - \quad F \end{pmatrix} = 0
+\begin{pmatrix} \left( \tfrac{\partial}{\partial \rho} \tfrac{\partial}{\partial \rho} + - \tfrac{\kappa}{\overline{\rho}}_{\overline{\rho}}^{\kappa} \right) F - \left( \begin{pmatrix} \sqrt{\frac{k_{2}}{k_{1}}} - \tfrac{Z\alpha}{\rho} \\ \sqrt{\frac{k_{1}}{k_{2}}} + \tfrac{Z\alpha}{\rho} \end{pmatrix} \right) G \\ G - \quad F \end{pmatrix} = 0
 ```
 
 With the guidance of the non-relativistic solutions, we will **postulate a solution of the form**

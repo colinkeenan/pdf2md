@@ -858,17 +858,17 @@ B_{2} = {}_{2} \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}}_{2}
 ```
 
 ```math
-\begin{pmatrix} \frac{{}_{p_{z} ( p_{x} + ip_{y} ) c^{2} - p_{z} (} - E + mc^{2} + \tfrac{p c}{p E + mc^{2}_{x} + ip_{y} )}_{c^{2}}}{{}^{E + mc^{2}} 0} \\ 0 \end{pmatrix} = 0
+\begin{pmatrix} - E + mc^{2} + \tfrac{p c}{E + mc^{2}} \\ \frac{p_{z} ( p_{x} + ip_{y} ) c^{2} - p_{z} ( p_{x} + ip_{y} ) c^{2}}{E + mc^{2}} \\ 0 \\ 0 \end{pmatrix} = 0
 ```
 
 ```math
-\begin{pmatrix} \frac{- E^{2} + ( mc^{2} )^{2} + p^{2} c^{2}}{{}^{E + mc^{2}} 0} \\ 0 \\ 0 \end{pmatrix} = 0
+\begin{pmatrix} \frac{- E^{2} + ( mc^{2} )^{2} + p^{2} c^{2}}{E + mc^{2}} \\ 0 \\ 0 \\ 0 \end{pmatrix} = 0
 ```
 
 This will be a solution as long as $`E^{2}`$ = $`p^{2} c^{2} + ( mc^{2} )^{2}`$, not a surprising condition. Adding a normalization factor, the solution is.
 
 ```math
-u_{\vec{p}} = N \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix}
+u_{\vec{p}} = N \begin{pmatrix} 1 \\ 0 \\ \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \end{pmatrix}
 ```
 
 ```math
@@ -878,7 +878,7 @@ u_{\vec{p} = 0} = N \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix}
 This reduces to the spin up positive energy solution for a particle at rest as the momentum goes to zero. We can therefore identify this as that same solution boosted to have momentum $`\vec{p}`$. The full solution is.
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = N \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 1 )} = N \begin{pmatrix} 1 \\ 0 \\ \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 <div align="right"><a href="book.pdf#page=499" target="_blank" title="This page in the PDF"><sup>[p. 499]</sup></a></div>
@@ -898,11 +898,11 @@ If we make the upper two components those of a **spin down electron**, we get th
 ```
 
 ```math
-\begin{pmatrix} \frac{p_{z} ( p_{x} - ip_{y} ) c - p_{z} ( p_{x} - ip_{y} ) c}{- E + mc \frac{E + mc^{2}}{0}^{2} + \tfrac{p^{2} c^{2}}{E + mc^{2}}} \\ 0 \end{pmatrix} = 0
+\begin{pmatrix} \frac{p_{z} ( p_{x} - ip_{y} ) c - p_{z} ( p_{x} - ip_{y} ) c}{E + mc^{2}} \\ - E + mc^{2} + \tfrac{p^{2} c^{2}}{E + mc^{2}} \\ 0 \\ 0 \end{pmatrix} = 0
 ```
 
 ```math
-\begin{pmatrix} \frac{{}_{- E^{2} + ( mc} 0_{{}^{2} )^{2} + p^{2} c^{2}}}{E + mc^{2}} \\ 0 \\ 0 \end{pmatrix} = 0
+\begin{pmatrix} 0 \\ \frac{- E^{2} + ( mc^{2} )^{2} + p^{2} c^{2}}{E + mc^{2}} \\ 0 \\ 0 \end{pmatrix} = 0
 ```
 
 ```math
@@ -910,7 +910,7 @@ E^{2} = p^{2} c^{2} + ( mc^{2} )^{2}
 ```
 
 ```math
-u_{\vec{p}} = N \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} -} 1_{ip_{y} ) c}}{\frac{- p_{z} c}{E + mc^{2}} E + mc^{2}} \end{pmatrix}
+u_{\vec{p}} = N \begin{pmatrix} 0 \\ 1 \\ \frac{( p_{x} - ip_{y} ) c}{E + mc^{2}} \\ \frac{- p_{z} c}{E + mc^{2}} \end{pmatrix}
 ```
 
 ```math
@@ -920,7 +920,7 @@ u_{\vec{p} = 0} = N \begin{pmatrix} 0 \\ 1 \\ 0 \\ 0 \end{pmatrix}
 This reduces to the spin down positive energy solution for a particle at rest as the momentum goes to zero. The full solution is.
 
 ```math
-\psi_{\vec{p}}^{( 2 )} = N \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} -} 1_{ip_{y} ) c}}{\frac{- p_{z} c}{E + mc^{2}} E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 2 )} = N \begin{pmatrix} 0 \\ 1 \\ \frac{( p_{x} - ip_{y} ) c}{E + mc^{2}} \\ \frac{- p_{z} c}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 Now we take a look at the **“negative energy” spin up solution** in the same way.
@@ -942,7 +942,7 @@ Now we take a look at the **“negative energy” spin up solution** in the same
 ```
 
 ```math
-\begin{pmatrix} 0 \\ \frac{{}_{- E^{2} + ( mc} 0_{{}^{2} )^{2} + p^{2} c^{2}}}{{}^{- E +} 0^{mc^{2}}} \end{pmatrix} = 0
+\begin{pmatrix} 0 \\ 0 \\ \frac{- E^{2} + ( mc^{2} )^{2} + p^{2} c^{2}}{- E + mc^{2}} \\ 0 \end{pmatrix} = 0
 ```
 
 ```math
@@ -950,7 +950,7 @@ E^{2} = p^{2} c^{2} + ( mc^{2} )^{2}
 ```
 
 ```math
-u_{\vec{p}} = N \begin{pmatrix} \frac{- \frac{- p_{z} c}{- E + mc^{2}} ( p_{x} + ip_{y} ) c}{{}^{- E +} 1^{mc^{2}}} \\ 0 \end{pmatrix}
+u_{\vec{p}} = N \begin{pmatrix} \frac{- p_{z} c}{- E + mc^{2}} \\ \frac{- ( p_{x} + ip_{y} ) c}{- E + mc^{2}} \\ 1 \\ 0 \end{pmatrix}
 ```
 
 ```math
@@ -960,7 +960,7 @@ u_{\vec{p} = 0} = N \begin{pmatrix} 0 \\ 0 \\ 1 \\ 0 \end{pmatrix}
 This reduces to the spin up “negative energy” solution for a particle at rest as the momentum goes to zero. The full solution is
 
 ```math
-\psi_{\vec{p}}^{( 3 )} = N \begin{pmatrix} \frac{- \frac{- p_{z} c}{- E + mc^{2}} ( p_{x} + ip_{y} ) c}{{}^{- E +} 1^{mc^{2}}} \\ 0 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 3 )} = N \begin{pmatrix} \frac{- p_{z} c}{- E + mc^{2}} \\ \frac{- ( p_{x} + ip_{y} ) c}{- E + mc^{2}} \\ 1 \\ 0 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 with $`E`$ being a negative number. We will eventually understand the “negative energy” solutions in terms of anti-electrons otherwise known as positrons.
@@ -972,7 +972,7 @@ Finally, the **“negative energy”, spin down solution** follows the same patt
 ```
 
 ```math
-\psi_{\vec{p}}^{( 4 )} = N \begin{pmatrix} \frac{- ( p_{x} - ip_{y} ) c}{\frac{- E p + {}_{z} mc c^{2}}{{}^{- E +} 0^{mc^{2}}}} \\ 1 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 4 )} = N \begin{pmatrix} \frac{- ( p_{x} - ip_{y} ) c}{- E + mc^{2}} \\ \frac{p_{z} c}{- E + mc^{2}} \\ 0 \\ 1 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 with $`E`$ being a negative number.
@@ -1010,11 +1010,11 @@ N = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}}
 We have the **four solutions with for a free particle with momentum** $`\vec{p}`$. For solutions 1 and 2, $`E`$ is a positive number. For solutions 3 and 4, $`E`$ is negative.
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 2 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} - ip_{y} ) c} 1}{E \frac{- p_{z} c}{E + mc^{2}} + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} 1 \\ 0 \\ \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 2 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} 0 \\ 1 \\ \frac{( p_{x} - ip_{y} ) c}{E + mc^{2}} \\ \frac{- p_{z} c}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-\psi_{\vec{p}}^{( 3 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{- \frac{- p_{z} c}{- E + mc^{2}} ( p_{x} + ip_{y} ) c}{{}^{- E +} 1^{mc^{2}}} \\ 0 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 4 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \tfrac{- ( p_{x} - ip_{y} ) c}{\frac{- E p + {}_{z} mc c^{2}}{- E + mc^{2}}} \\ 0 \\ 1 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 3 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{- p_{z} c}{- E + mc^{2}} \\ \frac{- ( p_{x} + ip_{y} ) c}{- E + mc^{2}} \\ 1 \\ 0 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 4 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{- ( p_{x} - ip_{y} ) c}{- E + mc^{2}} \\ \frac{p_{z} c}{- E + mc^{2}} \\ 0 \\ 1 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 The spinors are **orthogonal** for states with the same momentum and the free particle waves are orthogonal for different momenta. Note that the orthogonality condition is the same as for non-relativistic spinors
@@ -1030,7 +1030,7 @@ It is useful to write the plane wave states as a spinor $`u_{\vec{p}}^{( r )}`$ 
 ```
 
 ```math
-\begin{aligned} u_{\vec{p}}^{( 1 )} &= \sqrt{\frac{E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} \quad u_{\vec{p}}^{( 2 )} = \sqrt{\frac{E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} -} 1_{ip_{y} ) c}}{\frac{- p_{z} c}{E + mc^{2}} E + mc^{2}} \end{pmatrix} \\ u_{\vec{p}}^{( 3 )} &= \sqrt{\frac{- E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} \frac{- \frac{- p_{z} c}{- E + mc^{2}} ( p_{x} + ip_{y} ) c}{{}^{- E +} 1^{mc^{2}}} \\ 0 \end{pmatrix} \quad u_{\vec{p}}^{( 4 )} = \sqrt{\frac{- E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} \tfrac{- ( p_{x} - ip_{y} ) c}{\frac{- E p + {}_{z} mc c^{2}}{- E + mc^{2}}} \\ 0 \\ 1 \end{pmatrix} \end{aligned}
+\begin{aligned} u_{\vec{p}}^{( 1 )} &= \sqrt{\frac{E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} 1 \\ 0 \\ \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \end{pmatrix} \quad u_{\vec{p}}^{( 2 )} = \sqrt{\frac{E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} 0 \\ 1 \\ \frac{( p_{x} - ip_{y} ) c}{E + mc^{2}} \\ \frac{- p_{z} c}{E + mc^{2}} \end{pmatrix} \\ u_{\vec{p}}^{( 3 )} &= \sqrt{\frac{- E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} \frac{- p_{z} c}{- E + mc^{2}} \\ \frac{- ( p_{x} + ip_{y} ) c}{- E + mc^{2}} \\ 1 \\ 0 \end{pmatrix} \quad u_{\vec{p}}^{( 4 )} = \sqrt{\frac{- E + mc^{2}}{2 mc^{2}}} \begin{pmatrix} \frac{- ( p_{x} - ip_{y} ) c}{- E + mc^{2}} \\ \frac{p_{z} c}{- E + mc^{2}} \\ 0 \\ 1 \end{pmatrix} \end{aligned}
 ```
 
 <div align="right"><a href="book.pdf#page=502" target="_blank" title="This page in the PDF"><sup>[p. 502]</sup></a></div>
@@ -1084,7 +1084,7 @@ j_{\mu} = ic ( A_{1}^{*} \quad A_{2}^{*} \quad - B_{1}^{*} \quad - B_{2}^{*} ) \
 Now compute it specifically for a positive energy plane wave, $`\psi_{\vec{p}}^{( 1 )}`$ , and a “negative energy” plane<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=503" target="_blank" title="This page in the PDF"><sup>[p. 503]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p504" href="book.pdf#page=504" target="_blank" title="This page in the PDF"><sup>[p. 504]</sup></a></span> wave, $`\psi_{\vec{p}}^{( 3 )}`$ .
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = N \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 1 )} = N \begin{pmatrix} 1 \\ 0 \\ \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
@@ -1100,7 +1100,7 @@ j_{\mu}^{( 1 )} = N^{2} \frac{2 c}{E + mc^{2}} ( p_{x} c,p_{y} c,p_{z} c,iE )
 ```
 
 ```math
-\psi_{\vec{p}}^{( 3 )} = N \begin{pmatrix} {}^{\tfrac{- \frac{- p_{z} c}{- E + mc^{2}} ( p_{x} + ip_{y} ) c}{- E + mc^{2}}} 1 \\ 0 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 3 )} = N \begin{pmatrix} \frac{- p_{z} c}{- E + mc^{2}} \\ \frac{- ( p_{x} + ip_{y} ) c}{- E + mc^{2}} \\ 1 \\ 0 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
@@ -1122,11 +1122,11 @@ Since $`E`$ is negative for the “negative energy” solution, the **probabilit
 Start from the four plane wave solutions: 1 and 2 with positive energy and 3 and 4 with negative. There are four solutions for each choice of momentum $`\vec{p}`$.
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 2 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} - ip_{y} ) c} 1}{E \frac{- p_{z} c}{E + mc^{2}} + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} 1 \\ 0 \\ \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 2 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} 0 \\ 1 \\ \frac{( p_{x} - ip_{y} ) c}{E + mc^{2}} \\ \frac{- p_{z} c}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-\psi_{\vec{p}}^{( 3 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{- \frac{- p_{z} c}{- E + mc^{2}} ( p_{x} + ip_{y} ) c}{{}^{- E +} 1^{mc^{2}}} \\ 0 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 4 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{- ( p_{x} - ip_{y} ) c}{\frac{- E p + {}_{z} mc c^{2}}{{}^{- E +} 0^{mc^{2}}}} \\ 1 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 3 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{- p_{z} c}{- E + mc^{2}} \\ \frac{- ( p_{x} + ip_{y} ) c}{- E + mc^{2}} \\ 1 \\ 0 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 4 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{- ( p_{x} - ip_{y} ) c}{- E + mc^{2}} \\ \frac{p_{z} c}{- E + mc^{2}} \\ 0 \\ 1 \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 Concentrate on the exponential which determines the wave property. For solutions 3 and 4, both the phase and group velocity are in the opposite direction to the momentum, indicating we have a problem that was not seen in non-relativistic quantum mechanics.
@@ -1148,11 +1148,11 @@ Clearly, we want waves that propagate in the right direction. Perhaps the moment
 For solutions 3 and 4, pick the solution for $`- \vec{p}`$ to classify with solutions 1 and 2 with momentum $`\vec{p}`$ **write everything in terms of the positive square root** $`E = \sqrt{p^{2} c^{2} + m^{2} c^{4}}`$.
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 2 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 0 \\ \frac{{}_{( p_{x} - ip_{y} ) c} 1}{E \frac{- p_{z} c}{E + mc^{2}} + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 1 \\ 0 \\ \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 2 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 0 \\ 1 \\ \frac{( p_{x} - ip_{y} ) c}{E + mc^{2}} \\ \frac{- p_{z} c}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-\psi_{\vec{p}}^{( 3 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} \frac{( p \frac{p_{z} c}{E + mc^{2}}_{x} + ip_{y} ) c}{{}^{E + mc^{2}} 1} \\ 0 \end{pmatrix} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 4 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{( p_{x} - ip_{y} ) c}{\frac{E + mc^{2} - p_{z} c}{{}^{E + mc^{2}} 0}} \\ 1 \end{pmatrix} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi_{\vec{p}}^{( 3 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \\ 1 \\ 0 \end{pmatrix} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \quad \psi_{\vec{p}}^{( 4 )} = \sqrt{\frac{| E | + mc^{2}}{2 | E | V}} \begin{pmatrix} \frac{( p_{x} - ip_{y} ) c}{E + mc^{2}} \\ \frac{- p_{z} c}{E + mc^{2}} \\ 0 \\ 1 \end{pmatrix} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 We have plane waves of the form
@@ -1510,7 +1510,7 @@ As an example, we might try our solution for a free electron with spin up along 
 The solution we found for a free particle with momentum $`\vec{p}`$ was.
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix} e^{ip_{\rho} x_{\rho} / \hbar}
+\psi_{\vec{p}}^{( 1 )} = \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 1 \\ 0 \\ \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \end{pmatrix} e^{ip_{\rho} x_{\rho} / \hbar}
 ```
 
 Imagine we boost the coordinate system along the $`- x`$ direction with $`\tfrac{v}{c} = \beta`$. We can transform the momentum of the electron to the new frame.
@@ -1522,7 +1522,7 @@ p_{\nu}^{\prime} = a_{\mu \nu}^{( boost )} p_{\nu} = \begin{pmatrix} \gamma & 0 
 The momentum along the x direction is $`p_{x} = \beta \gamma mc = mc \sinh \chi`$. We now have two ways to get the free particle state with momentum in the x direction. We can use our free particle state
 
 ```math
-\psi^{( 1 )} = \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ \frac{{}_{p_{x}} 0_{c}}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi^{( 1 )} = \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ \frac{p_{x} c}{E + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 <div align="right"><a href="book.pdf#page=511" target="_blank" title="This page in the PDF"><sup>[p. 511]</sup></a></div>
@@ -1530,15 +1530,15 @@ The momentum along the x direction is $`p_{x} = \beta \gamma mc = mc \sinh \chi`
 <a id="p512" href="book.pdf#page=512" target="_blank" title="This page in the PDF"><sup>[p. 512]</sup></a>
 
 ```math
-= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ \frac{{}_{\beta \gamma mc^{2}} 0}{\gamma mc^{2} + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ \frac{\beta \gamma mc^{2}}{\gamma mc^{2} + mc^{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ \frac{{}_{\beta \gamma} 0}{\gamma + 1} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ \frac{\beta \gamma}{\gamma + 1} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ \frac{{}_{\sinh} 0_{\chi}}{\cosh \chi + 1} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ \frac{\sinh \chi}{\cosh \chi + 1} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
@@ -1574,7 +1574,7 @@ S_{boost} = \cosh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2}
 ```
 
 ```math
-= \begin{pmatrix} \cosh \tfrac{\chi}{2} & 0 & 0 & \sinh \tfrac{\chi}{2} \\ 0 & \cosh & \sinh & 0 \\ 0 & \sinh \frac{\tfrac{\chi}{\chi 2}}{2} & \cosh \frac{\tfrac{\chi}{\chi 2}}{2} & 0 \\ \sinh \tfrac{\chi}{2} & 0 & 0 & \cosh \tfrac{\chi}{2} \end{pmatrix}
+= \begin{pmatrix} \cosh \tfrac{\chi}{2} & 0 & 0 & \sinh \tfrac{\chi}{2} \\ 0 & \cosh \tfrac{\chi}{2} & \sinh \tfrac{\chi}{2} & 0 \\ 0 & \sinh \tfrac{\chi}{2} & \cosh \tfrac{\chi}{2} & 0 \\ \sinh \tfrac{\chi}{2} & 0 & 0 & \cosh \tfrac{\chi}{2} \end{pmatrix}
 ```
 
 <div align="right"><a href="book.pdf#page=512" target="_blank" title="This page in the PDF"><sup>[p. 512]</sup></a></div>
@@ -1582,7 +1582,7 @@ S_{boost} = \cosh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2}
 <a id="p513" href="book.pdf#page=513" target="_blank" title="This page in the PDF"><sup>[p. 513]</sup></a>
 
 ```math
-\psi_{\vec{p}}^{( 1 )} = \begin{pmatrix} \cosh \tfrac{\chi}{2} & 0 & 0 & \sinh \tfrac{\chi}{2} \\ 0 & \cosh \frac{\chi}{\tfrac{\chi 2}{2}} & \sinh \frac{\chi}{\tfrac{\chi 2}{2}} & 0 \\ 0 & \sinh & \cosh & 0 \\ \sinh \tfrac{\chi}{2} & 0 & 0 & \cosh \tfrac{\chi}{2} \end{pmatrix} \frac{1}{\sqrt{V}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix} e^{ip_{\rho} x_{\rho} / \hbar}
+\psi_{\vec{p}}^{( 1 )} = \begin{pmatrix} \cosh \tfrac{\chi}{2} & 0 & 0 & \sinh \tfrac{\chi}{2} \\ 0 & \cosh \tfrac{\chi}{2} & \sinh \tfrac{\chi}{2} & 0 \\ 0 & \sinh \tfrac{\chi}{2} & \cosh \tfrac{\chi}{2} & 0 \\ \sinh \tfrac{\chi}{2} & 0 & 0 & \cosh \tfrac{\chi}{2} \end{pmatrix} \frac{1}{\sqrt{V}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix} e^{ip_{\rho} x_{\rho} / \hbar}
 ```
 
 ```math
@@ -2192,15 +2192,15 @@ The expected value of the velocity in a plane wave state can be simply calculate
 ```
 
 ```math
-( ic\gamma_{4} \gamma_{1} ) u_{\vec{p}}^{( 1 )} = c \begin{pmatrix} 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0 \end{pmatrix} \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 1 \\ \frac{{}_{(} \frac{{}_{p_{z}} 0_{c}}{p E + mc^{2}_{x} + ip_{y} )}_{c}}{E + mc^{2}} \end{pmatrix}
+( ic\gamma_{4} \gamma_{1} ) u_{\vec{p}}^{( 1 )} = c \begin{pmatrix} 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0 \end{pmatrix} \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} 1 \\ 0 \\ \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \end{pmatrix}
 ```
 
 ```math
-( ic\gamma_{4} \gamma_{1} ) u_{\vec{p}}^{( 1 )} = c \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} \frac{( p_{x} + ip_{y} ) c}{\frac{E + p_{z} mc c^{2}}{{}^{E + mc^{2}} 0}} \\ 1 \end{pmatrix}
+( ic\gamma_{4} \gamma_{1} ) u_{\vec{p}}^{( 1 )} = c \sqrt{\frac{E + mc^{2}}{2 EV}} \begin{pmatrix} \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \\ \frac{p_{z} c}{E + mc^{2}} \\ 0 \\ 1 \end{pmatrix}
 ```
 
 ```math
-u_{\vec{p}}^{( 1 ) \dagger} ( ic\gamma_{4} \gamma_{1} ) u_{\vec{p}}^{( 1 )} = \frac{E + mc^{2}}{2 EV} c \left( 1 0 \quad \tfrac{p_{z} c}{E + mc^{2}}^{\tfrac{( p_{x} - ip_{y} ) c}{E + mc^{2}}} \right) \begin{pmatrix} \frac{( p_{x} + ip_{y} ) c}{\frac{E + p_{z} mc c^{2}}{{}^{E + mc^{2}} 0}} \\ 1 \end{pmatrix}
+u_{\vec{p}}^{( 1 ) \dagger} ( ic\gamma_{4} \gamma_{1} ) u_{\vec{p}}^{( 1 )} = \frac{E + mc^{2}}{2 EV} c \left( 1 0 \quad \tfrac{p_{z} c}{E + mc^{2}}^{\tfrac{( p_{x} - ip_{y} ) c}{E + mc^{2}}} \right) \begin{pmatrix} \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \\ \frac{p_{z} c}{E + mc^{2}} \\ 0 \\ 1 \end{pmatrix}
 ```
 
 ```math
@@ -2567,7 +2567,7 @@ This is now a set of two coupled radial equations. We can simplify them a bit by
 \left( \left( \begin{pmatrix} \tfrac{\partial F}{\partial r} - \tfrac{\kappa F}{r} \\ \tfrac{\partial G}{\partial r} + \tfrac{\kappa G}{r} \end{pmatrix} \right) \right) = \begin{pmatrix} \tfrac{mc^{2} - E + V}{{}_{2} \hbar c} G \\ \tfrac{mc + E - V}{\hbar c} F \end{pmatrix}
 ```
 
-These equations are true for any spherically symmetric potential. Now it is time to **specialize to** **the hydrogen atom** for which $`\tfrac{V}{\hbar c} = - \tfrac{Z\alpha}{r}`$ . We define $`k_{1}`$ = $`\frac{mc^{2} + E}{\hbar c}`$ and $`k_{2}`$ = $`\frac{mc^{2} \quad E}{\hbar c} -`$ and the dimensionless $`\rho = \sqrt{k_{1} k_{2}} r`$. The equations then become.
+These equations are true for any spherically symmetric potential. Now it is time to **specialize to** **the hydrogen atom** for which $`\tfrac{V}{\hbar c} = - \tfrac{Z\alpha}{r}`$ . We define $`k_{1}`$ = $`\frac{mc^{2} + E}{\hbar c}`$ and $`k_{2}`$ = $`\frac{mc^{2} - E}{\hbar c}`$ and the dimensionless $`\rho = \sqrt{k_{1} k_{2}} r`$. The equations then become.
 
 ```math
 \left( \left( \begin{pmatrix} \tfrac{\partial F}{\partial r} - \tfrac{\kappa F}{r} \\ \tfrac{\partial G}{\partial r} + \tfrac{\kappa G}{r} \end{pmatrix} \right) \right) = \begin{pmatrix} \left( \begin{pmatrix} k_{2} - \tfrac{Z\alpha}{r} \\ k_{1} + \tfrac{Z\alpha}{r} \end{pmatrix} \right) G \\ F \end{pmatrix}
@@ -2578,11 +2578,11 @@ These equations are true for any spherically symmetric potential. Now it is time
 <a id="p528" href="book.pdf#page=528" target="_blank" title="This page in the PDF"><sup>[p. 528]</sup></a>
 
 ```math
-\left( \left( \begin{pmatrix} \tfrac{\partial F}{\partial \rho} - \tfrac{\kappa F}{\rho} \\ \tfrac{\partial G}{\partial \rho} + \tfrac{\kappa G}{\rho} \end{pmatrix} \right) \right) = \begin{pmatrix} \left( \begin{pmatrix} \sqrt{\frac{\frac{k_{2}}{k_{1}}}{\frac{k_{1}}{k_{2}}}} - \tfrac{Z\alpha}{\rho} \\ \sqrt{\quad + \tfrac{Z\alpha}{\rho}} \end{pmatrix} \right) G \\ F \end{pmatrix}
+\left( \left( \begin{pmatrix} \tfrac{\partial F}{\partial \rho} - \tfrac{\kappa F}{\rho} \\ \tfrac{\partial G}{\partial \rho} + \tfrac{\kappa G}{\rho} \end{pmatrix} \right) \right) = \begin{pmatrix} \left( \begin{pmatrix} \sqrt{\frac{k_{2}}{k_{1}}} - \tfrac{Z\alpha}{\rho} \\ \sqrt{\frac{k_{1}}{k_{2}}} + \tfrac{Z\alpha}{\rho} \end{pmatrix} \right) G \\ F \end{pmatrix}
 ```
 
 ```math
-\begin{pmatrix} \left( \tfrac{\partial}{\partial \rho} \tfrac{\partial}{\partial \rho} + - \tfrac{\kappa}{\overline{\rho}}_{\overline{\rho}}^{\kappa} \right) F - \left( \begin{pmatrix} \sqrt{\frac{\frac{k_{2}}{k_{1}}}{\frac{k_{1}}{k_{2}}}} - \tfrac{Z\alpha}{\rho} \\ \sqrt{\quad + \tfrac{Z\alpha}{\rho}} \end{pmatrix} \right) G \\ G - \quad F \end{pmatrix} = 0
+\begin{pmatrix} \left( \tfrac{\partial}{\partial \rho} \tfrac{\partial}{\partial \rho} + - \tfrac{\kappa}{\overline{\rho}}_{\overline{\rho}}^{\kappa} \right) F - \left( \begin{pmatrix} \sqrt{\frac{k_{2}}{k_{1}}} - \tfrac{Z\alpha}{\rho} \\ \sqrt{\frac{k_{1}}{k_{2}}} + \tfrac{Z\alpha}{\rho} \end{pmatrix} \right) G \\ G - \quad F \end{pmatrix} = 0
 ```
 
 With the guidance of the non-relativistic solutions, we will **postulate a solution of the form**
