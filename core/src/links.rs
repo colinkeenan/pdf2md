@@ -1196,6 +1196,11 @@ pub fn link_cross_refs(chapters: &mut [Chapter]) {
             match &mut b.block {
                 Block::Heading { text, id, .. } => {
                     let t = plain(text);
+                    // (a worked example under a title of its own: "Example 9.4.3")
+                    if let Some(n) = t.strip_prefix("Example ").and_then(|r| r.split_whitespace().next()).map(|n| n.trim_end_matches([':', '.'])).filter(|n| n.starts_with(|c: char| c.is_ascii_digit())) {
+                        target.entry(format!("example {n}")).or_insert(format!("{slug}.md#{id}"));
+                        continue;
+                    }
                     let Some(num) = t.split_whitespace().next() else { continue };
                     if num.contains('.') && num.chars().all(|c| c.is_ascii_alphanumeric() || c == '.') {
                         target.entry(format!("section {num}")).or_insert(format!("{slug}.md#{id}"));
@@ -1237,7 +1242,9 @@ pub fn link_cross_refs(chapters: &mut [Chapter]) {
     if target.is_empty() {
         return;
     }
-    let kinds: [(&str, &str); 10] = [
+    let kinds: [(&str, &str); 12] = [
+        ("Examples ", "example"),
+        ("Example ", "example"),
         ("Sections ", "section"),
         ("Section ", "section"),
         ("Chapter ", "chapter"),
