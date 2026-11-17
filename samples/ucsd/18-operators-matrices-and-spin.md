@@ -594,7 +594,7 @@ Note that we can compute the number of particles coming out of the second (and t
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p259" href="book.pdf#page=259" target="_blank" title="This page in the PDF"><sup>[p. 259]</sup></a>
 
-or we can just use the projection operator $`\left( \sqrt{1 2}^{1} \right) \left( \tfrac{1}{\sqrt{2}} \quad \tfrac{1}{\sqrt{2}} \right) = \begin{pmatrix} 1 & 1 \\ 2 & 2 \\ 1 & 1 \end{pmatrix}`$.
+or we can just use the projection operator $`\left( \sqrt{2} \frac{1}{1} \right) \left( \tfrac{1}{\sqrt{2}} \quad \tfrac{1}{\sqrt{2}} \right) = \begin{pmatrix} 1 & 1 \\ 2 & 2 \\ 1 & 1 \end{pmatrix}`$.
 
 ```math
 \begin{pmatrix} \frac{1}{2} & \frac{1}{2} \\ \frac{1}{2} & \frac{1}{2} \end{pmatrix} \frac{N}{2} \sqrt{2} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{N}{4} \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix}^{2 2}
@@ -1326,7 +1326,7 @@ Assume that we are in an arbitrary spin state $`\chi ( t = 0 )`$ = $`\begin{pmat
 
 where $`\omega = \tfrac{\mu_{B} B}{\hbar}`$.
 
-So let’s say we start out in the state with spin up along the x axis, $`\chi`$(0) = $`\begin{pmatrix} 1 \\ \sqrt{1 2} \end{pmatrix}`$. We then have
+So let’s say we start out in the state with spin up along the x axis, $`\chi`$(0) = $`\begin{pmatrix} 1 \\ \sqrt{2} \\ 1 \end{pmatrix}`$. We then have
 
 ```math
 \chi ( t ) = \begin{pmatrix} \tfrac{1}{\sqrt{2}} e^{- i\omega t} \\ \tfrac{1}{\sqrt{2}} e^{i\omega t} \end{pmatrix} . \quad \sqrt{2}

@@ -30,7 +30,7 @@ In **Rationalized Heaviside-Lorentz units** we decrease the field strength by a 
 ```
 
 ```math
-{}_{2} e \quad \to \quad e \sqrt{{}_{2} 4 \pi}
+{}_{2} e \quad \to \quad e \sqrt{4 \pi}_{2}
 ```
 
 ```math

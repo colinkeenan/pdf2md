@@ -1086,7 +1086,7 @@ fn root_depth(sign: &MSpan, size: f32) -> f32 {
         return 2.5 * size;
     }
     let steps = match (sign.family.get(..4), sign.text.trim()) {
-        (Some("CMSY"), "p") => 1.2,
+        (Some("CMSY"), "p" | "√") => 1.2,
         (Some("CMEX"), "p") => 1.4,
         (Some("CMEX"), "q") => 2.0,
         (Some("CMEX"), "r") => 2.6,
@@ -1156,7 +1156,9 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
                     r.top > b.bottom && r.bottom <= b.bottom + 3.5 * size
                 };
                 // nested bars are clearly narrower (same width = a sibling)
-                let narrower = r.right - r.left < 0.9 * (b.right - b.left);
+                // (… by more than the space TeX leaves at a fraction's two
+                // sides: two short bars of nearly one length are siblings)
+                let narrower = r.right - r.left < 0.9 * (b.right - b.left) && r.right - r.left <= b.right - b.left - 2.0;
                 if !used[k] && k != bi && narrower && c >= b.left - 2.0 && c <= b.right + 2.0 && side {
                     used[k] = true;
                     v.push(*r);
@@ -1289,7 +1291,7 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
         let root_bar = |r: &Rule| spans.iter().any(|s| is_radical(s) && (r.left - s.right).abs() <= 3.0 && s.top <= r.bottom + size && s.bottom >= r.top - 2.0);
         let nested = |r: &Rule| {
             let c = (r.left + r.right) / 2.0;
-            (r.right - r.left < 0.9 * width || root_bar(r)) && c >= b.left - 2.0 && c <= b.right + 2.0
+            ((r.right - r.left < 0.9 * width && r.right - r.left <= width - 2.0) || root_bar(r)) && c >= b.left - 2.0 && c <= b.right + 2.0
         };
         // Nothing beyond a bar that is not nested in this fraction belongs to it.
         let blocked = |s: &MSpan| {
