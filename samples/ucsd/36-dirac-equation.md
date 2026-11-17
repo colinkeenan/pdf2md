@@ -420,7 +420,7 @@ First, we can write the **two component equation that is equivalent to the Dirac
 Turn on the EM field by making the usual substitution $`\vec{p} \to \vec{p} + \tfrac{e}{c} \vec{A}`$ and adding the scalar potential term.
 
 ```math
-\begin{pmatrix} - \tfrac{1}{c} ( E + \quad mc^{2} ) & \vec{\sigma} \cdot \left( \vec{p} + \tfrac{e}{c} \vec{A} \right) \\ - \vec{\sigma} \cdot \begin{pmatrix} eA_{0} - \\ \vec{p} + \tfrac{e}{c} \vec{A} \end{pmatrix} & \tfrac{1}{c} ( E + eA_{0} + mc^{2} ) \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = 0
+\begin{pmatrix} - \tfrac{1}{c} ( E + eA_{0} - mc^{2} ) & \vec{\sigma} \cdot \left( \vec{p} + \tfrac{e}{c} \vec{A} \right) \\ - \vec{\sigma} \cdot \left( \vec{p} + \tfrac{e}{c} \vec{A} \right) & \tfrac{1}{c} ( E + eA_{0} + mc^{2} ) \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = 0
 ```
 
 ```math
@@ -2558,17 +2558,17 @@ c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \begin{pmatrix} \left( \hbar 
 ```
 
 ```math
-\hbar c \frac{1}{r} \begin{pmatrix} f ( r ) \\ \begin{pmatrix} - r \tfrac{\partial}{\partial r} + ( \kappa - 1 ) \\ r \tfrac{\partial}{\partial r} + ( 1 + \kappa ) \end{pmatrix} g ( r ) \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \\ f ( r ) \end{pmatrix}
+\hbar c \frac{1}{r} \begin{pmatrix} \left( - r \tfrac{\partial}{\partial r} + ( \kappa - 1 ) \right) f ( r ) \\ \left( r \tfrac{\partial}{\partial r} + ( 1 + \kappa ) \right) g ( r ) \end{pmatrix} = \begin{pmatrix} E - V ( r ) - mc^{2} & 0 \\ 0 & E - V ( r ) + mc^{2} \end{pmatrix} \begin{pmatrix} g ( r ) \\ f ( r ) \end{pmatrix}
 ```
 
 ```math
-\hbar c \begin{pmatrix} \left( \tfrac{\partial f}{\partial r} + \tfrac{( \kappa - 1 )}{r} f \right) \\ \begin{pmatrix} - \\ \tfrac{\partial g}{\partial r} + \tfrac{( 1 + \kappa )}{r} g \end{pmatrix} \end{pmatrix} = \begin{pmatrix} ( E - V - mc^{2} ) g \\ ( E - V + mc^{2} ) f \end{pmatrix}
+\hbar c \begin{pmatrix} \left( - \tfrac{\partial f}{\partial r} + \tfrac{( \kappa - 1 )}{r} f \right) \\ \left( \tfrac{\partial g}{\partial r} + \tfrac{( 1 + \kappa )}{r} g \right) \end{pmatrix} = \begin{pmatrix} ( E - V - mc^{2} ) g \\ ( E - V + mc^{2} ) f \end{pmatrix}
 ```
 
 This is now a set of two coupled radial equations. We can simplify them a bit by making the substitutions $`F = rf`$ and $`G = rg`$. The extra term from the derivative cancels the 1’s that are with $`\kappa`$s.
 
 ```math
-\begin{aligned} \hbar c \left( \begin{pmatrix} - \tfrac{1}{r} \tfrac{\partial F}{\partial r} + \tfrac{F}{r^{2}} + \tfrac{\kappa F}{r^{2}} - \tfrac{F}{r^{2}} \\ \tfrac{1}{r} \tfrac{\partial G}{\partial r} - \tfrac{G}{r^{2}} + \tfrac{G}{r^{2}} + \tfrac{\kappa G}{r^{2}} \end{pmatrix} \right) &= \begin{pmatrix} ( E - V - mc^{2} ) \tfrac{G}{r} \\ ( E - V + mc^{2} ) \tfrac{F}{r} \end{pmatrix} \\ \hbar c \left( \begin{pmatrix} - \tfrac{\partial F}{\partial r} + \tfrac{\kappa F}{r} \\ \tfrac{\partial G}{\partial r} + \tfrac{\kappa G}{r} \end{pmatrix} \right) &= \begin{pmatrix} ( E - V - mc^{2} ) G \\ ( E - V + mc^{2} ) F \end{pmatrix} \end{aligned}
+\begin{aligned} \hbar c \begin{pmatrix} \left( - \tfrac{1}{r} \tfrac{\partial F}{\partial r} + \tfrac{F}{r^{2}} + \tfrac{\kappa F}{r^{2}} - \tfrac{F}{r^{2}} \right) \\ \left( \tfrac{1}{r} \tfrac{\partial G}{\partial r} - \tfrac{G}{r^{2}} + \tfrac{G}{r^{2}} + \tfrac{\kappa G}{r^{2}} \right) \end{pmatrix} &= \begin{pmatrix} ( E - V - mc^{2} ) \tfrac{G}{r} \\ ( E - V + mc^{2} ) \tfrac{F}{r} \end{pmatrix} \\ \hbar c \begin{pmatrix} \left( - \tfrac{\partial F}{\partial r} + \tfrac{\kappa F}{r} \right) \\ \left( \tfrac{\partial G}{\partial r} + \tfrac{\kappa G}{r} \right) \end{pmatrix} &= \begin{pmatrix} ( E - V - mc^{2} ) G \\ ( E - V + mc^{2} ) F \end{pmatrix} \end{aligned}
 ```
 
 ```math

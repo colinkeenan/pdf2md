@@ -1075,6 +1075,27 @@ fn is_radical(s: &MSpan) -> bool {
         || (s.family.starts_with("CMSY") && s.text.trim() == "p")
 }
 
+/// How far down from its bar a root sign reaches: TeX has the sign in
+/// five heights, each its own character, and what stands under the bar
+/// is no taller than the sign. (Under a sign of another font: room for a
+/// fraction.)
+fn root_depth(sign: &MSpan, size: f32) -> f32 {
+    // (not the fonts of other makers read as "CMEX/MTEX": their signs
+    // have other heights)
+    if sign.family.contains('/') {
+        return 2.5 * size;
+    }
+    let steps = match (sign.family.get(..4), sign.text.trim()) {
+        (Some("CMSY"), "p") => 1.2,
+        (Some("CMEX"), "p") => 1.4,
+        (Some("CMEX"), "q") => 2.0,
+        (Some("CMEX"), "r") => 2.6,
+        (Some("CMEX"), "s") => 3.2,
+        _ => return 2.5 * size,
+    };
+    steps * sign.size.max(0.6 * size)
+}
+
 /// Turn fraction bars and root bars into ready-made pieces.
 ///
 /// A bar with symbols right above *and* right below it (within its width)
@@ -1151,19 +1172,28 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
         }) {
             let under: Vec<usize> = (0..spans.len())
                 // (the box of a sign, the minus of √−g, starts a little above the bar)
-                .filter(|&i| i != ri && within(&spans[i]) && (spans[i].top >= b.top - 2.0 || (spans[i].top >= b.top - 0.35 * size && spans[i].cy() >= b.bottom + 0.3 * size)) && spans[i].cy() <= b.bottom + 2.5 * size)
+                .filter(|&i| i != ri && within(&spans[i]) && (spans[i].top >= b.top - 2.0 || (spans[i].top >= b.top - 0.35 * size && spans[i].cy() >= b.bottom + 0.3 * size)) && spans[i].cy() <= b.bottom + root_depth(&spans[ri], size))
                 .collect();
             if under.is_empty() {
                 continue;
             }
             used[bi] = true;
             let mut nested = inner(&mut used, false);
+            // (… the bars under the sign: not that of a small fraction in
+            // the row below it)
+            let depth_down = b.bottom + root_depth(&spans[ri], size);
+            for (k, r) in bars.iter().enumerate() {
+                if nested.contains(r) && r.top > depth_down {
+                    used[k] = false;
+                }
+            }
+            nested.retain(|r| r.top <= depth_down);
             // (the bar of a fraction that fills the root is nearly as wide
             // as the root's own: under it and within its width, it is the
             // root's all the same)
             let mut under = under;
             for (k, r) in bars.iter().enumerate() {
-                if !used[k] && k != bi && r.top > b.bottom && r.bottom <= b.bottom + 3.5 * size && r.left >= b.left - 2.0 && r.right <= b.right + 2.0 && under.iter().any(|&i| spans[i].bottom <= r.top + 2.0 && spans[i].left < r.right && spans[i].right > r.left) {
+                if !used[k] && k != bi && r.top > b.bottom && r.top <= depth_down && r.bottom <= b.bottom + 3.5 * size && r.left >= b.left - 2.0 && r.right <= b.right + 2.0 && under.iter().any(|&i| spans[i].bottom <= r.top + 2.0 && spans[i].left < r.right && spans[i].right > r.left) {
                     used[k] = true;
                     nested.push(*r);
                 }
@@ -1299,6 +1329,9 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
                 && spans.iter().any(|t| {
                     let c = (t.left + t.right) / 2.0;
                     t.size >= 0.9 * size
+                        // (a sign has no index: the c of "−1/c²" set small,
+                        // close behind the minus, is the denominator's)
+                        && !(t.atom.is_none() && matches!(t.text.trim(), "−" | "+" | "=" | "±" | "∓" | "×" | "·"))
                         && (c < b.left || c > b.right)
                         && (s.left - t.right).abs() <= 1.5
                         && s.top < t.bottom
@@ -1771,7 +1804,7 @@ fn take_brackets(spans: &[MSpan], depth: usize) -> (Vec<MSpan>, Vec<Item>) {
         let ceiling = if shapeless && delims.iter().filter(other_row).any(|d| d.top < top - 0.8 * size) {
             top - 0.3 * size
         } else if typed_pair {
-            delims.iter().filter(other_row).filter(|d| d.top < top - 0.8 * size && d.bottom <= top + 0.25 * size).map(|d| d.bottom - 0.25 * size).fold(top - size, f32::max)
+            delims.iter().filter(other_row).filter(|d| d.top < top - 0.8 * size && d.bottom <= top + 0.25 * size).map(|d| d.bottom - 0.25 * size).fold(top - 0.4 * size, f32::max)
         } else {
             top - size
         };
