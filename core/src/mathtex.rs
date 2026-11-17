@@ -555,7 +555,10 @@ fn bracket_rows(spans: Vec<MSpan>, bars: Vec<Rule>) -> (Vec<MSpan>, Vec<Rule>) {
         // (not the bar of a fraction inside a fraction: narrower than
         // another's, within its width and less than a line from it)
         let nested = |r: &Rule| bars.iter().any(|w| bar_in(w) && !root_bar(w) && r.right - r.left < 0.9 * (w.right - w.left) && r.left >= w.left - 2.0 && r.right <= w.right + 2.0 && (r.top - w.top).abs() < 1.1 * size);
-        let mut marks: Vec<(f32, bool)> = bars.iter().filter(|r| bar_in(r) && !root_bar(r) && !nested(r)).map(|r| ((r.top + r.bottom) / 2.0, true)).collect();
+        // (nor the bar of a small fraction that is the limit of a sum,
+        // over the sign or under it: "n/2 − 1" on top of a Σ)
+        let of_limit = |r: &Rule| spans.iter().any(|b| matches!(big_op(b), Some("\\sum" | "\\prod")) && r.left < b.right && r.right > b.left && ((r.bottom <= b.top + 2.0 && b.top - r.bottom <= size) || (r.top >= b.top + 0.8 * size && r.top - b.top <= 2.6 * size)));
+        let mut marks: Vec<(f32, bool)> = bars.iter().filter(|r| bar_in(r) && !root_bar(r) && !nested(r) && !of_limit(r)).map(|r| ((r.top + r.bottom) / 2.0, true)).collect();
         if marks.is_empty() {
             continue;
         }
@@ -746,7 +749,7 @@ fn script_brackets(mut spans: Vec<MSpan>) -> Vec<MSpan> {
         // (a full-size letter right over or under the pair is the other
         // half of its fraction: the pair is of a full-size numerator, the
         // level piece beside it the limit of a sum)
-        let partner = spans.iter().any(|n| full(n) && n.left < close.right && n.right > open.left && ((n.top >= open.bottom - 1.0 && n.top - open.bottom <= 0.8 * size) || (n.bottom <= open.top + 1.0 && open.top - n.bottom <= 0.8 * size)));
+        let partner = spans.iter().any(|n| full(n) && n.left < close.right && n.right > open.left && ((n.top >= open.bottom - 1.0 && n.top - open.bottom <= 0.45 * size) || (n.bottom <= open.top + 1.0 && open.top - n.bottom <= 0.45 * size)));
         if inside <= 0.0 || inside >= 0.85 * size || !off_line || level <= 0.0 || partner {
             continue;
         }
@@ -1302,8 +1305,13 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
                         && s.bottom > t.top
                 })
         };
-        let above: Vec<usize> = above.into_iter().filter(|&i| !blocked(&spans[i]) && !hangs_outside(&spans[i])).collect();
-        let below: Vec<usize> = below.into_iter().filter(|&i| !blocked(&spans[i]) && !hangs_outside(&spans[i])).collect();
+        // (the lower limit of a sum over a small fraction that is the upper
+        // limit of the sum in the row below is no part of its numerator;
+        // nor the upper limit of the sum under a fraction part of its
+        // denominator)
+        let foreign = |s: &MSpan, up: bool| sum_limit(s, &spans, size).is_some_and(|(sign, lower)| if up { lower && b.top - sign > 2.2 * size + 2.0 } else { !lower && sign - b.bottom > 1.6 * size });
+        let above: Vec<usize> = above.into_iter().filter(|&i| !blocked(&spans[i]) && !hangs_outside(&spans[i]) && !foreign(&spans[i], true)).collect();
+        let below: Vec<usize> = below.into_iter().filter(|&i| !blocked(&spans[i]) && !hangs_outside(&spans[i]) && !foreign(&spans[i], false)).collect();
         // One row of text (plus its scripts) on each side, unless a nested
         // fraction's bar makes room for more.
         let reach_up = bars
@@ -1601,6 +1609,24 @@ fn split_words(s: &MSpan) -> Vec<MSpan> {
     out
 }
 
+/// The limit of a sum or product sign: a piece set under the sign or
+/// over it (the sign's box is only its top). Gives the sign's top and
+/// whether the piece is the lower limit.
+fn sum_limit(s: &MSpan, spans: &[MSpan], size: f32) -> Option<(f32, bool)> {
+    spans
+        .iter()
+        .filter(|b| matches!(big_op(b), Some("\\sum" | "\\prod")) && s.left < b.right && s.right > b.left && !s.cmex() && s.size < 0.9 * size)
+        .find_map(|b| {
+            if s.top >= b.top + 0.8 * size && s.top - b.top <= 2.2 * size {
+                Some((b.top, true))
+            } else if s.bottom <= b.top + 2.0 && b.top - s.bottom <= 0.8 * size {
+                Some((b.top, false))
+            } else {
+                None
+            }
+        })
+}
+
 /// Find tall brackets (empty glyphs of the big-symbol font, stacked pieces
 /// merged) and turn what is between each left/right pair into a matrix
 /// (several rows in aligned columns) or a parenthesised group.
@@ -1756,6 +1782,10 @@ fn take_brackets(spans: &[MSpan], depth: usize) -> (Vec<MSpan>, Vec<Item>) {
                 && r <= d1.left + 1.0
                 && s.cy() >= ceiling
                 && s.cy() < floor
+                // (the lower limit of a sum in the row above reaches down
+                // to the bracket's head, the upper limit of one in the row
+                // below up to its foot: each is of its own sign)
+                && !(typed_pair && sum_limit(s, spans, size).is_some_and(|(sign, lower)| if lower { sign < top - 0.5 * size } else { sign > bottom }))
                 // (a bracket read from its outline has its true height: what
                 // stands under its foot, in the row below, is not in it)
                 && s.cy() <= if typed_pair { bottom + 0.5 * size } else { (bottom + 1.5 * size).max((top + bottom) / 2.0 + 3.0 * size) }
@@ -1982,7 +2012,12 @@ fn small_blocks(cells: Vec<MSpan>, size: f32, depth: usize) -> Vec<MSpan> {
     // a script touches the symbol it belongs to (the index of an index
     // touches a small one: the A of ℓ_A under a Y)
     let free = |s: &MSpan| !big.iter().any(|b| vgap(s, b) < 0.0 && hgap(s, b) <= 1.5) && !cells.iter().any(|b| !b.cmex() && b.atom.is_none() && b.size > 1.2 * s.size && vgap(s, b) < 0.0 && hgap(s, b) <= 1.5);
-    let mut cand: Vec<usize> = (0..cells.len()).filter(|&i| small(&cells[i]) && free(&cells[i])).collect();
+    // (nor is the limit of a sum free: it stands over or under its sign,
+    // whose box is only the sign's top. The lower limit of one row's sum
+    // and the upper limit of the next row's, one over the other, are no
+    // block of a matrix.)
+    let limit = |s: &MSpan| sum_limit(s, &cells, size).is_some();
+    let mut cand: Vec<usize> = (0..cells.len()).filter(|&i| small(&cells[i]) && free(&cells[i]) && !limit(&cells[i])).collect();
     // (… and so does what goes on from a script at its height: the
     // "iE t/ħ" behind the "−" of e^{−iEt/ħ})
     loop {
