@@ -1009,13 +1009,20 @@ fn grid_tables(doc: &Doc, page: &crate::layout::Page, lines: &[Line], st: &Stats
     for g in &page.grids {
         let (left, right, top, bottom) = (g.xs[0], g.xs[g.xs.len() - 1], g.ys[0], g.ys[g.ys.len() - 1]);
         // (what stands right of the frame on a line of it: the equation's number)
-        let beside = |l: &Line| -> Vec<String> { l.spans.iter().filter(|s| s.left >= right - 1.0).map(|s| s.text.trim().to_string()).filter(|t| !t.is_empty()).collect() };
+        // (… not the comma or full stop that closes the equation, just outside the frame)
+        let beside = |l: &Line| -> Vec<String> { l.spans.iter().filter(|s| s.left >= right - 1.0).map(|s| s.text.trim().to_string()).filter(|t| !t.is_empty() && !t.chars().all(|c| ".,;:".contains(c))).collect() };
         let inside = |l: &Line| {
             let out = beside(l);
             // (the number may be a line of its own, at the middle of the frame's height)
             let number_only = l.left >= right - 1.0 && out.len() == 1 && mathtex::tag_of(&out[0]).is_some();
-            l.top >= top - 3.0 && l.top < bottom && ((l.left >= left - 3.0 && l.left < right && (l.right <= right + 3.0 || (out.len() == 1 && mathtex::tag_of(&out[0]).is_some()))) || number_only)
+            l.top >= top - 3.0 && l.top < bottom && ((l.left >= left - 3.0 && l.left < right && (l.right <= right + 0.6 * l.size || (out.len() == 1 && mathtex::tag_of(&out[0]).is_some()))) || number_only)
         };
+        if std::env::var_os("PDF2MD_TABLEDEBUG").is_some() {
+            eprintln!("GRID {left:.0}..{right:.0} x {top:.0}..{bottom:.0} ({} x {})", g.xs.len() - 1, g.ys.len() - 1);
+            for l in lines.iter().filter(|l| l.top >= top - 40.0 && l.top <= bottom + 10.0) {
+                eprintln!("  line {:.0}..{:.0} top {:.0} size {:.0} inside {} {:?}", l.left, l.right, l.top, l.size, inside(l), l.spans.iter().map(|s| s.text.chars().take(6).collect::<String>()).collect::<Vec<_>>());
+            }
+        }
         let Some(first) = lines.iter().position(inside) else { continue };
         let end = first + lines[first..].iter().take_while(|l| inside(l)).count();
         // (they must be a run of the page's lines)
@@ -1023,6 +1030,30 @@ fn grid_tables(doc: &Doc, page: &crate::layout::Page, lines: &[Line], st: &Stats
             continue;
         }
         let (rows_n, cols_n) = (g.ys.len() - 1, g.xs.len() - 1);
+        // A frame alone around a displayed equation (its number beside the
+        // frame, or nothing in it but symbols) is that equation in a box,
+        // not a table of one cell: built as any displayed equation is, of
+        // however many lines, with the bars drawn inside the frame.
+        if rows_n == 1 && cols_n == 1 {
+            let within: Vec<&crate::layout::Span> = lines[first..end].iter().flat_map(|l| l.spans.iter()).filter(|s| s.left < right - 1.0).collect();
+            let number = lines[first..end].iter().flat_map(|l| l.spans.iter()).filter(|s| s.left >= right - 1.0).find_map(|s| mathtex::tag_of(s.text.trim()));
+            // (a few words among the symbols, "if" and "and", are of the
+            // equation; a framed sentence stays text)
+            let words = within.iter().filter(|s| !doc.is_math(s)).flat_map(|s| s.text.split_whitespace()).filter(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 3 && !crate::mathtex::is_function_word(w)).count();
+            let symbols = within.iter().filter(|s| doc.is_math(s)).count();
+            if symbols > 0 && (words == 0 || (number.is_some() && words <= 4 && symbols > 2 * words)) {
+                let spans: Vec<MSpan> = within.iter().map(|s| MSpan::new(doc, s)).collect();
+                let bars: Vec<Rule> = page.rules.iter().filter(|r| r.left >= left + 2.0 && r.right <= right - 2.0 && r.top >= top + 2.0 && r.bottom <= bottom - 2.0).copied().collect();
+                let eqs = mathtex::display(spans, &bars, st.right, st.body);
+                if let [(latex, _)] = &eqs[..] {
+                    if !latex.is_empty() {
+                        let area = Figure { left, right, top, bottom };
+                        out.push((first, end, Some(Block::Equation { latex: format!("\\boxed{{{latex}}}"), tag: number, source: None }), area, false));
+                        continue;
+                    }
+                }
+            }
+        }
         let mut cells: Vec<Vec<Vec<Line>>> = vec![vec![Vec::new(); cols_n]; rows_n];
         for l in &lines[first..end] {
             let mid = l.top + l.size / 2.0;
@@ -2477,6 +2508,8 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                     }
                     let picture = Block::Picture { page: number, area, alt: crate::TABLE_SET.into() };
                     match (before, table) {
+                        // (an equation in a box: the equation, with its number)
+                        (_, equation @ Block::Equation { .. }) => b.push(equation),
                         // One table with the part of the page before: its
                         // rows go under that part's rows (the cells of that
                         // part keep their places, and the table its key),
