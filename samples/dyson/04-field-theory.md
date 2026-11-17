@@ -121,7 +121,7 @@ with all the new quantities on the RHS.
 
 In the case which is physically of importance, the actual motion is fixed uniquely by specifying the values of the $`\varphi^{\alpha}`$ everywhere on two space-time surfaces $`\sigma_{2}`$ and $`\sigma_{1}`$ which are the past and future boundaries of the volume Ω. A space-like surface is one on which every two points are outside each other’s light-cones, so that the fields can be fixed independently at every point.
 
-Special case of non-relativistic theory, both $`\sigma_{1}`$ and $`\sigma_{2}`$ are just space at the time $`t_{1}`$ and $`t_{2}`$, and $`\delta x_{\mu}`$ is $`ic`$ times a displacement of the time by $`\delta t_{1}`$ and $`\delta t_{2}`$. Then we may write $`n_{\mu}`$ = $`( 0 , 0 , 0 ,i ) , \pi_{\alpha} = \partial L /\partial \dot{\varphi}^{\alpha}`$, and then for the <a id="ix-147">Hamiltonian</a>
+Special case of non-relativistic theory, both $`\sigma_{1}`$ and $`\sigma_{2}`$ are just space at the time $`t_{1}`$ and $`t_{2}`$, and $`\delta x_{\mu}`$ is $`ic`$ times a displacement of the time by $`\delta t_{1}`$ and $`\delta t_{2}`$. Then we may write $`n_{\mu} = ( 0 , 0 , 0 ,i ) , \pi_{\alpha} = \partial L /\partial \dot{\varphi}^{\alpha}`$, and then for the <a id="ix-147">Hamiltonian</a>
 
 <a id="eq-164"></a>
 
@@ -323,7 +323,7 @@ Schwinger takes equation (177) as the fundamental principle for setting up the q
 
 ### <a id="s-a-the-field-equations"></a>A. The Field Equations
 
-If we take the special case of a variation $`\delta \varphi^{\alpha}`$ which vanishes on the boundary of Ω and $`\delta L = \delta x_{\mu}`$ = 0, then $`\langle \varphi_{1}^{\alpha \prime} ,\sigma_{1} \varphi_{2}^{\alpha \prime} ,\sigma_{2} \rangle`$ depends only on the operators $`\varphi^{\alpha}`$ on $`\sigma_{1}`$ and $`\sigma_{2}`$ and is unaffected by the variation. Therefore for all such variations
+If we take the special case of a variation $`\delta \varphi^{\alpha}`$ which vanishes on the boundary of Ω and $`\delta L = \delta x_{\mu} = 0`$, then $`\langle \varphi_{1}^{\alpha \prime} ,\sigma_{1} \varphi_{2}^{\alpha \prime} ,\sigma_{2} \rangle`$ depends only on the operators $`\varphi^{\alpha}`$ on $`\sigma_{1}`$ and $`\sigma_{2}`$ and is unaffected by the variation. Therefore for all such variations
 
 <a id="eq-171"></a>
 
@@ -351,7 +351,7 @@ Specialize $`\sigma_{1}`$ and $`\sigma_{2}`$ to be the whole space at the times 
 
 is a Schrödinger wave-function giving the probability amplitude for finding the system in the state $`\varphi_{1}^{\prime \alpha}`$ at the time $`t_{1}`$, given the initial conditions $`\varphi_{2}^{\prime \alpha}`$ at $`t_{2}`$. The development of Ψ $`( \varphi_{1}^{\prime \alpha} ,t_{1} )`$ with time $`t_{1}`$ is thus a description of the development of the state of the system with time in the Schrödinger representation.
 
-Take in (177) a variation in which $`\delta \varphi^{\alpha} = \delta L`$ = 0, the surface $`\sigma_{1}`$ being just moved through the displacement $`\delta t`$ in the time direction. Then using (165) and (164)
+Take in (177) a variation in which $`\delta \varphi^{\alpha} = \delta L = 0`$, the surface $`\sigma_{1}`$ being just moved through the displacement $`\delta t`$ in the time direction. Then using (165) and (164)
 
 ```math
 \delta \Psi ( \varphi_{1}^{\prime \alpha} ,t_{1} ) = - \frac{i}{\hbar} \langle \varphi_{1}^{\prime \alpha} ,t_{1} H ( t_{1} ) \varphi_{2}^{\prime \alpha} ,t_{2} \rangle \delta t_{1}
@@ -451,7 +451,7 @@ This is the Schwinger action principle in operator form. It is related to (177) 
 
 ### <a id="s-d-canonical-commutation-laws"></a>D. The Canonical Commutation Laws
 
-Taking for $`\sigma`$ the space at time $`t`$, for $`\mathcal{O} ( \sigma )`$ the operator $`\varphi^{\alpha} ( r,t )`$ at the space-point $`r`$, and $`\delta x_{\mu} = \delta L`$ = 0 we have by (182) and (186) for an arbitrary variation $`\delta \varphi^{\alpha}`$
+Taking for $`\sigma`$ the space at time $`t`$, for $`\mathcal{O} ( \sigma )`$ the operator $`\varphi^{\alpha} ( r,t )`$ at the space-point $`r`$, and $`\delta x_{\mu} = \delta L = 0`$ we have by (182) and (186) for an arbitrary variation $`\delta \varphi^{\alpha}`$
 
 <a id="eq-187"></a>
 
@@ -531,7 +531,7 @@ It is assumed that there is no intrinsic change $`\delta \varphi^{\alpha}`$ of $
 \begin{aligned} \boldsymbol{[} \mathcal{R} ( z ) , \mathcal{Q} ( y ) \boldsymbol{]} &= i \hbar c\delta_{\mathcal{R}} \mathcal{Q} ( y ) ( y_{0} >z_{0} ) \\ \boldsymbol{[} \mathcal{R} ( z ) , \mathcal{Q} ( y ) \boldsymbol{]} &= - i \hbar c\delta_{\mathcal{Q}} \mathcal{R} ( z ) ( z_{0} >y_{0} ) \end{aligned} \qquad \text{(193)}
 ```
 
-When $`y`$ and $`z`$ are separated by a space-like interval, the commutator is zero, because the disturbance $`\mathcal{R} ( z )`$ propagates with a velocity at most $`c`$ and therefore can affect things only in the future lightcone of $`z`$; this means $`\delta_{\mathcal{R}} \mathcal{Q} ( y )`$ = 0 in this case.
+When $`y`$ and $`z`$ are separated by a space-like interval, the commutator is zero, because the disturbance $`\mathcal{R} ( z )`$ propagates with a velocity at most $`c`$ and therefore can affect things only in the future lightcone of $`z`$; this means $`\delta_{\mathcal{R}} \mathcal{Q} ( y ) = 0`$ in this case.
 
 <a id="ix-222">Peierls</a>’ <a id="ix-220">formula</a>, valid for any pair of field operators, is
 

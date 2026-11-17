@@ -1620,6 +1620,33 @@ fn display_flags(doc: &Doc, lines: &[Line], st: &Stats) -> Vec<bool> {
             f[i] = false;
         }
     }
+    // A line of a bulleted item that opens with a word where the item's
+    // words begin ("• Additive Identity:" and under it "For a ∈ ℝ, a + 0 =
+    // a.") is a line of the item's text, however much of it is math: a
+    // formula set apart stands in the middle, not at the item's left.
+    let mut item: Option<f32> = None;
+    for i in 0..lines.len() {
+        let l = &lines[i];
+        let Some(first) = l.spans.first() else { continue };
+        if first.text.trim_start().starts_with('•') {
+            // (where its words begin: after the bullet, in its piece or in the next)
+            let own = first.text.trim_start().trim_start_matches('•').trim();
+            item = Some(if own.is_empty() { l.spans.get(1).map_or(l.left + 0.9 * l.size, |s| s.left) } else { l.left + 0.9 * l.size });
+            continue;
+        }
+        let Some(left) = item else { continue };
+        if l.left < left - 0.5 * l.size {
+            // (a line further left ends the item; not a row of a formula of it)
+            if !f[i] {
+                item = None;
+            }
+            continue;
+        }
+        let word_first = !doc.is_math(first) && first.script == Script::Normal && first.tex.is_none() && first.text.split_whitespace().next().is_some_and(|w| w.chars().count() >= 2 && w.chars().all(char::is_alphabetic));
+        if f[i] && !info[i].2 && word_first && (l.left - left).abs() <= 0.6 * l.size && l.size >= 0.9 * st.body {
+            f[i] = false;
+        }
+    }
     // The short last line of a paragraph may be all math ("in (M − I).}"):
     // it starts where the line of prose above it starts, at the paragraph's
     // line spacing, and that line runs to the right margin. A formula set
@@ -2721,7 +2748,21 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 && b.prev.as_ref().is_some_and(|p| {
                     p.page == pi && l.top - p.top > 1.4 * pitch && (hard || (p.plain_size == Some(l.size) && words_only(doc, l)))
                 });
-            if starts || spaced {
+            // In a bulleted item, a line that begins where the item's words
+            // begin, right under a line that ended early, at the spacing of
+            // the lines of a paragraph: a new line of the item's text, not
+            // a new paragraph (no space stands between them in the book).
+            let item_line = !bullet
+                && starts
+                && !b.para.is_empty()
+                && b.item.is_some_and(|left| (l.left - left).abs() <= 0.6 * l.size)
+                // (a paragraph of its own inside an item has a little more
+                // room above it than a line has)
+                && b.prev.as_ref().is_some_and(|p| p.page == pi && l.top - p.top <= 1.15 * st.spacing * l.size.max(p.size) / st.body && l.top > p.top);
+            // (… under a line that runs to the right margin it is that
+            // line's sentence going on, "(i.e." and the rest: no new line)
+            let goes_on = item_line && b.prev.as_ref().is_some_and(|p| p.right >= st.right - 2.0 * st.body);
+            if (starts || spaced) && !item_line {
                 b.flush();
                 b.anchor_block();
                 b.para_page = pi;
@@ -2734,6 +2775,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 }
                 // centered lines keep their line breaks
                 let centered = b.para_centered && is_centered(l, st);
+                let hard = hard || (item_line && !goes_on);
                 if centered || hard {
                     if hard {
                         b.hard.push(b.para.len());
@@ -2747,10 +2789,13 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 b.para_inset = b.para_inset.max(inset(l, st));
             }
             b.para_lines += 1;
+            // (the bullet's box begins higher than the words of its line:
+            // the line's top is that of its words)
+            let top = if bullet { l.spans.iter().filter(|s| !s.text.trim_start().starts_with('•') && !s.text.trim().is_empty()).map(|s| s.top).fold(f32::MAX, f32::min) } else { l.top };
             b.prev = Some(Prev {
                 left: l.left,
                 right: l.right,
-                top: l.top,
+                top: if top == f32::MAX { l.top } else { top },
                 page: pi,
                 ends_sentence: ends_sentence(&plain_text(l)),
                 plain_size: words_only(doc, l).then_some(l.size),

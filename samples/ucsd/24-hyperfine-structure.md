@@ -23,9 +23,9 @@ We can think of the nucleus as a single particle with spin $`\vec{I}`$. This par
 
 where $`\vec{I}`$ is the **nuclear spin** vector. Because the nucleus has internal structure, the nuclear gyromagnetic ratio is not just 2. For the proton, it is $`g_{p} \approx 5 . 56`$. This is the nucleus of hydrogen upon which we will concentrate. Even though the neutron is neutral, the gyromagnetic ratio is about -3.83. (The quarks have gyromagnetic ratios of 2 (plus corrections) like the electron but the problem is complicated by the strong interactions which make it hard to define a quark’s mass.) We can compute (to some accuracy) the gyromagnetic ratio of nuclei from that of protons and neutrons as we can compute the proton’s gyromagnetic ratio from its quark constituents.
 
-In any case, the nuclear dipole moment is about 1000 times smaller than that for e-spin or $`\vec{L}`$. We will calculate ∆$`E`$ for $`\ell`$ = 0 states (see Condon and Shortley for more details). This is particularly important because it will break the degeneracy of the Hydrogen ground state.
+In any case, the nuclear dipole moment is about 1000 times smaller than that for e-spin or $`\vec{L}`$. We will calculate ∆$`E`$ for $`\ell = 0`$ states (see Condon and Shortley for more details). This is particularly important because it will break the degeneracy of the Hydrogen ground state.
 
-To get the perturbation, we should find $`\vec{B}`$ from $`\vec{\mu}`$ (see Gasiorowicz page 287) then calculate the energy change in first order perturbation theory ∆$`E = \left\langle - \vec{\mu}_{e} \cdot \vec{B} \right\rangle`$. **Calculating** (see section 24.4.1) the energy shift for $`\ell`$ = 0 states.
+To get the perturbation, we should find $`\vec{B}`$ from $`\vec{\mu}`$ (see Gasiorowicz page 287) then calculate the energy change in first order perturbation theory ∆$`E = \left\langle - \vec{\mu}_{e} \cdot \vec{B} \right\rangle`$. **Calculating** (see section 24.4.1) the energy shift for $`\ell = 0`$ states.
 
 ```math
 \Delta E = \left\langle \frac{e}{mc} \vec{S} \cdot \vec{B} \right\rangle = \frac{4}{3} ( Z\alpha )^{4} \left( \frac{m}{M_{N}} \right) ( mc^{2} ) g_{N} \frac{1}{n^{3}} \frac{\vec{S} \cdot \vec{I}}{\hbar^{2}}
@@ -51,11 +51,11 @@ It is in the states of definite $`f`$ and $`m_{f}`$ that the hyperfine perturbat
 \Delta E = \tfrac{2}{3} ( Z\alpha )^{4} \left( \tfrac{m}{M_{N}} \right) ( mc^{2} ) g_{N} \tfrac{1}{n^{3}} \left( f ( f + 1 ) - \tfrac{3}{2} \right) \equiv \tfrac{\mathcal{A}}{2} \left( f ( f + 1 ) - \tfrac{3}{2} \right)
 ```
 
-For the hydrogen ground state we are just adding two spin $`\frac{1}{2}`$ particles so the possible values are $`f`$ = 0$`, 1 .`$
+For the hydrogen ground state we are just adding two spin $`\frac{1}{2}`$ particles so the possible values are $`f = 0 , 1 .`$
 
 \* See Example 24.3.1: The Hyperfine Splitting of the Hydrogen Ground State.\*
 
-The transition between the two states gives rise to EM waves with $`\lambda`$ = 21 cm.
+The transition between the two states gives rise to EM waves with $`\lambda = 21`$ cm.
 
 # <a id="s-24-2-hyperfine-splitting-in-a-b-field"></a>24.2 Hyperfine Splitting in a B Field
 
@@ -77,7 +77,7 @@ W_{z} = 2 \mu_{B} B \frac{S_{z}}{\hbar} .
 
 As an examples of perturbation theory, we will work this problem for weak fields, for strong fields, and also work the general case for intermediate fields. Just as in the Zeeman effect, **if one perturbation** **is much bigger than another, we choose the set of states in which the larger perturbation** **is diagonal**. In this case, the hyperfine splitting is diagonal in states of definite $`f`$ while the above perturbation due to the B field is diagonal in states of definite $`m_{s}`$. For a weak field, the hyperfine dominates and we use the states of definite $`f`$. For a strong field, we use the $`m_{s} ,m_{f}`$ states. If the two perturbations are of the same order, we must diagonalize the full perturbation matrix. This calculation will always be correct but more time consuming.
 
-We can estimate the field at which the perturbations are the same size by comparing $`\mu_{B} B`$ to $`\tfrac{2}{3} \alpha^{4} \tfrac{m_{e}}{m_{p}} mc^{2} g_{N}`$ = 2$`. 9 \times 1 0^{- 6}`$. The weak field limit is achieved if $`B \ll 500`$ gauss.
+We can estimate the field at which the perturbations are the same size by comparing $`\mu_{B} B`$ to $`\tfrac{2}{3} \alpha^{4} \tfrac{m_{e}}{m_{p}} mc^{2} g_{N} = 2 . 9 \times 1 0^{- 6}`$. The weak field limit is achieved if $`B \ll 500`$ gauss.
 
 <div align="right"><a href="book.pdf#page=348" target="_blank" title="This page in the PDF"><sup>[p. 348]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -87,7 +87,7 @@ We can estimate the field at which the perturbations are the same size by compar
 
 The result of this is example is quite simple $`E = E_{n 0 0} + \tfrac{\mathcal{A}}{2} ( f ( f ) + 1 ) - \tfrac{3}{2} ( ) + \mu_{B} Bm_{f}`$. It has the hyperfine term we computed before and adds a term proportional to $`B`$ which depends on $`m_{f}`$.
 
-In the strong field limit we use states $`| m_{s} m_{i} \rangle`$ and treat the hyperfine interaction as a perturbation. The unperturbed energies of these states are $`E = E_{n 0 0}`$ + 2$`\mu_{B} Bm_{s} + g\mu_{N} Bm_{I}`$. We kept the small term due to the nuclear moment in the B field without extra effort.
+In the strong field limit we use states $`| m_{s} m_{i} \rangle`$ and treat the hyperfine interaction as a perturbation. The unperturbed energies of these states are $`E = E_{n 0 0} + 2 \mu_{B} Bm_{s} + g\mu_{N} Bm_{I}`$. We kept the small term due to the nuclear moment in the B field without extra effort.
 
 \* See Example 24.3.3: The Hyperfine Splitting in a Strong B Field.\*
 
@@ -128,7 +128,7 @@ We can make a more general calculation, in which the interaction of the nuclear 
 
 ## <a id="s-24-3-1-splitting-of-the-hydrogen-ground-state"></a>24.3.1 Splitting of the Hydrogen Ground State
 
-The ground state of Hydrogen has a spin $`\frac{1}{2}`$ electron coupled to a spin $`\frac{1}{2}`$ proton, giving total angular momentum state of $`f`$ = 0$`,`$ 1. We have computed in first order perturbation theory that
+The ground state of Hydrogen has a spin $`\frac{1}{2}`$ electron coupled to a spin $`\frac{1}{2}`$ proton, giving total angular momentum state of $`f = 0 ,`$ 1. We have computed in first order perturbation theory that
 
 ```math
 \Delta E = \frac{2}{3} ( Z\alpha )^{4} \left( \frac{m}{M_{N}} \right) ( mc^{2} ) g_{N} \frac{1}{n^{3}} \left( f ( f + 1 ) - \frac{3}{2} \right) .
@@ -140,7 +140,7 @@ The energy difference between the two hyperfine levels determines the wave lengt
 \Delta E_{f = 1} - \Delta E_{f = 0} = \frac{4}{3} ( Z\alpha )^{4} \left( \frac{m}{M_{N}} \right) ( mc^{2} ) g_{N} \frac{1}{n^{3}}
 ```
 
-For $`n`$ = 1 Hydrogen, this gives
+For $`n = 1`$ Hydrogen, this gives
 
 <div align="right"><a href="book.pdf#page=350" target="_blank" title="This page in the PDF"><sup>[p. 350]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -156,7 +156,7 @@ Recall that at room temperature, $`k_{B} t`$ is about $`\frac{1}{4 0}`$ eV, so t
 \lambda = 2 \pi \frac{\hbar c}{E} = 2 \pi \frac{1 9 7 3}{5 . 8 4 \times 1 0^{- 6}} ˚ A = 2 \times 1 0^{9} ˚ A = 2 1 . 2 \text{ cm }
 ```
 
-This transition is seen in interstellar gas. The $`f`$ = 1 state is excited by collisions. Electromagnetic transitions are slow because of the selection rule ∆$`\ell = \pm 1`$ we will learn later, and because of the small energy difference. The $`f`$ = 1 state does emit a photon to de-excite and those photons have a long mean free path in the gas.
+This transition is seen in interstellar gas. The $`f = 1`$ state is excited by collisions. Electromagnetic transitions are slow because of the selection rule ∆$`\ell = \pm 1`$ we will learn later, and because of the small energy difference. The $`f = 1`$ state does emit a photon to de-excite and those photons have a long mean free path in the gas.
 
 ## <a id="s-24-3-2-hyperfine-splitting-in-a-weak-b-field"></a>24.3.2 Hyperfine Splitting in a Weak B Field
 
@@ -178,13 +178,13 @@ Since the field is weak we work in the states $`| fm_{f} \rangle`$ in which the 
 \sigma_{z} | 0 0 \rangle = \sigma_{z} \tfrac{1}{\sqrt{2}} ( | + - \rangle - | - + \rangle ) = \tfrac{1}{\sqrt{2}} ( | + - \rangle + |- + \rangle ) = | 1 0 \rangle
 ```
 
-Now since the three $`( f = 1 )`$ states are degenerate, we have to make sure all the matrix elements between those states are zero, otherwise we should bite the bullet and do the full problem as in the intermediate field case. The $`f`$ = 1 matrix is diagonal, as we could have guessed.
+Now since the three $`( f = 1 )`$ states are degenerate, we have to make sure all the matrix elements between those states are zero, otherwise we should bite the bullet and do the full problem as in the intermediate field case. The $`f = 1`$ matrix is diagonal, as we could have guessed.
 
 ```math
 \mu_{B} B \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & - 1 \end{pmatrix}
 ```
 
-The only nonzero connection between states is between $`f`$ = 1 and $`f`$ = 0 and we are assuming the hyperfine splitting between these states is large compared to the matrix element.
+The only nonzero connection between states is between $`f = 1`$ and $`f = 0`$ and we are assuming the hyperfine splitting between these states is large compared to the matrix element.
 
 So the full answer is
 
@@ -200,7 +200,7 @@ which is correct for both $`f`$ states.
 
 ## <a id="s-24-3-3-hydrogen-in-a-strong-b-field"></a>24.3.3 Hydrogen in a Strong B Field
 
-We need to compute the matrix elements of the hyperfine perturbation using $`| m_{s} m_{i} \rangle`$ as a basis with energies $`E = E_{n 0 0}`$ + 2$`\mu_{B} Bm_{s}`$. The perturbation is
+We need to compute the matrix elements of the hyperfine perturbation using $`| m_{s} m_{i} \rangle`$ as a basis with energies $`E = E_{n 0 0} + 2 \mu_{B} Bm_{s}`$. The perturbation is
 
 ```math
 H_{hf} = \mathcal{A} \frac{\vec{S} \cdot \vec{I}}{\hbar^{2}}
@@ -280,7 +280,7 @@ Setting the determinant equal to zero, we get
 = - A \pm \sqrt{4 A^{2} + B^{2}}
 ```
 
-The eigenvalues for the $`m_{f}`$ = 0 states, which mix differently as a function of the field strength, are
+The eigenvalues for the $`m_{f} = 0`$ states, which mix differently as a function of the field strength, are
 
 ```math
 E = - \frac{\mathcal{A}}{4} \pm \sqrt{\left( \frac{\mathcal{A}}{2} \right)^{2} + ( \mu_{B} B )^{2} .}
@@ -448,9 +448,9 @@ Now working out the $`\nabla^{2}`$ term in spherical coordinates,
 \left( \frac{\partial^{2}}{\partial r^{2}} + \frac{2}{r} \frac{\partial}{\partial r} \right) \frac{1}{r} = \frac{2}{r^{3}} + \frac{2}{r} \left( \frac{- 1}{r^{2}} \right) = 0
 ```
 
-we find that it is zero everywhere but we must be careful at $`r`$ = 0.
+we find that it is zero everywhere but we must be careful at $`r = 0`$.
 
-To find the effect at $`r`$ = 0 we will integrate.
+To find the effect at $`r = 0`$ we will integrate.
 
 ```math
 \begin{aligned} \int_{r = 0}^{\epsilon} \vec{\nabla}^{2} \frac{1}{r} d^{3} r &= \int_{r = 0}^{\epsilon} \vec{\nabla} \cdot ( \vec{\nabla} \frac{1}{r} ) d^{3} r = \int ( \vec{\nabla} \frac{1}{r} ) \cdot d \vec{S} = \int \frac{\partial}{\partial r} \frac{1}{r} dS \\ &= \int_{r = 0}^{\epsilon} \frac{- 1}{r^{2}} dS = ( 4 \pi \epsilon^{2} ) ( \frac{- 1}{\epsilon^{2}} ) = - 4 \pi \end{aligned}
@@ -498,7 +498,7 @@ We will sometimes group the constants such that
 
 1. Calculate the shifts in the hydrogen ground states due to a 1 kilogauss magnetic field.
 
-2. Consider positronium, a hydrogen-like atom consisting of an electron and a positron (antielectron). Calculate the fine structure of positronium for $`n`$ = 1 and $`n`$ = 2. Determine the hyperfine structure for the ground state. Compute the energy shifts in eV.
+2. Consider positronium, a hydrogen-like atom consisting of an electron and a positron (antielectron). Calculate the fine structure of positronium for $`n = 1`$ and $`n = 2`$. Determine the hyperfine structure for the ground state. Compute the energy shifts in eV.
 
 3. List the spectroscopic states allowed that arise from combining $`( s = \tfrac{1}{2} \ \text{with} l = 3 )`$, $`( s = 2 \ \text{with} l = 1 )`$, and $`( s_{1} = \tfrac{1}{2} , \quad s_{2} = 1 \text{ and } l = 4 )`$.
 

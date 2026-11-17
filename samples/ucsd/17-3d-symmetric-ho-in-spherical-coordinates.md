@@ -157,7 +157,7 @@ The terms for large $`y`$ which go like $`y^{\ell + k + 2}`$ and some of the ter
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p245" href="book.pdf#page=245" target="_blank" title="This page in the PDF"><sup>[p. 245]</sup></a>
 
-Now as usual, the coefficient for each power of $`y`$ must be zero for this sum to be zero for all $`y`$. Before shifting terms, we must examine the first few terms of this sum to learn about conditions on $`a_{0}`$ and $`a_{1}`$. The first term in the sum runs the risk of giving us a power of $`y`$ which cannot be canceled by the second term if $`k< 2`$. For $`k`$ = 0, there is no problem because the term is zero. For $`k`$ = 1 the term is (2$`\ell`$ + 2)$`y^{\ell - 1}`$ which cannot be made zero unless
+Now as usual, the coefficient for each power of $`y`$ must be zero for this sum to be zero for all $`y`$. Before shifting terms, we must examine the first few terms of this sum to learn about conditions on $`a_{0}`$ and $`a_{1}`$. The first term in the sum runs the risk of giving us a power of $`y`$ which cannot be canceled by the second term if $`k< 2`$. For $`k = 0`$, there is no problem because the term is zero. For $`k = 1`$ the term is (2$`\ell + 2`$)$`y^{\ell - 1}`$ which cannot be made zero unless
 
 ```math
 a_{1} = 0 .
@@ -227,7 +227,7 @@ R_{n_{r} \ell} = \sum_{k = 0}^{\infty} a_{k} y^{\ell + 2 k} e^{- y^{2} / 2}
 E = \left( 2 n_{r} + \ell + \frac{3}{2} \right) \hbar \omega
 ```
 
-The table shows the quantum numbers for the states of each energy for our separation in spherical coordinates, and for separation in Cartesian coordinates. Remember that there are 2$`\ell`$ + 1 states with different $`z`$ components of angular momentum for the spherical coordinate states.
+The table shows the quantum numbers for the states of each energy for our separation in spherical coordinates, and for separation in Cartesian coordinates. Remember that there are 2$`\ell + 1`$ states with different $`z`$ components of angular momentum for the spherical coordinate states.
 
 ```math
 \frac{E}{\frac{\hbar \hbar \omega \omega}{\tfrac{\frac{\frac{7 2}{2}}{1 1} \frac{9}{2}}{2} \hbar \omega} \hbar \omega} \tfrac{3}{5 2} \hbar \omega \quad \frac{n_{r} \ell}{\frac{1 0 , 0 2 0 1}{2 0 , 1 2 , 0 4} 1 1 , 0 3} 0 0 \quad \frac{n_{x} n_{y} n_{z}}{0 0 3 ( 3 \text{ perm } ) , 2 1 0 ( 6 \text{ perm } ) , 1 1 1 \frac{0 0 2 ( 3 \text{ perm } ) , 0 1 1 ( 3 \text{ perm } ) 0 0 1 ( 3 \text{ perm } )}{0 0 4 ( 3 ) , 3 1 0 ( 6 ) , 2 2 0 ( 3 ) , 2 1 1 ( 3 )}} 0 0 0 \quad \frac{N_{Spherical}}{1 0 \frac{6 3}{1 5}} 1 \quad \frac{N_{Cartesian}}{1 0 \frac{6 3}{1 5}} 1

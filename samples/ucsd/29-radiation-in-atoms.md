@@ -21,7 +21,7 @@ The Hamiltonian for a charged particle in an ElectroMagnetic field (See Section 
 H = \frac{1}{2 m} \left( \vec{p} + \frac{e}{c} \vec{A} \right)^{2} + V ( r ) .
 ```
 
-Lets **assume that there is some ElectroMagnetic field around the atom**. The field is not extremely strong so that the $`A^{2}`$ term can be neglected (for our purposes) and we will work in the **Coulomb gauge** for which $`\vec{p} \cdot \vec{A} = \tfrac{\hbar}{i} \vec{\nabla} \cdot \vec{A}`$ = 0. The Hamiltonian then becomes
+Lets **assume that there is some ElectroMagnetic field around the atom**. The field is not extremely strong so that the $`A^{2}`$ term can be neglected (for our purposes) and we will work in the **Coulomb gauge** for which $`\vec{p} \cdot \vec{A} = \tfrac{\hbar}{i} \vec{\nabla} \cdot \vec{A} = 0`$. The Hamiltonian then becomes
 
 ```math
 H \approx \frac{p^{2}}{2 m} + \frac{e}{mc} \vec{A} \cdot \vec{p} + V ( r ) .
@@ -41,7 +41,7 @@ Lets also assume that the field has **some frequency** $`\omega`$ and correspond
 
 where $`\vec{A}_{0}`$ is a real vector and we have again introduced the factor of 2 for convenience of splitting the cosine into two exponentials.
 
-We need to quantize the EM field into photons satisfying Plank’s original hypothesis, $`E = \hbar \omega`$. Lets start by writing $`A`$ **in terms of the number of photons in the field** (at frequency $`\omega`$ and wave<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=398" target="_blank" title="This page in the PDF"><sup>[p. 398]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p399" href="book.pdf#page=399" target="_blank" title="This page in the PDF"><sup>[p. 399]</sup></a></span> vector $`\vec{k}`$). Using classical E&M to compute the energy in a field (See Section 29.14.1) represented by a vector potential $`\vec{A} ( \vec{r} , t )`$ = 2$`\vec{A}_{0} \cos ( \vec{k} \cdot \vec{r} - \omega t )`$, we find that the energy inside a volume $`V`$ is
+We need to quantize the EM field into photons satisfying Plank’s original hypothesis, $`E = \hbar \omega`$. Lets start by writing $`A`$ **in terms of the number of photons in the field** (at frequency $`\omega`$ and wave<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=398" target="_blank" title="This page in the PDF"><sup>[p. 398]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p399" href="book.pdf#page=399" target="_blank" title="This page in the PDF"><sup>[p. 399]</sup></a></span> vector $`\vec{k}`$). Using classical E&M to compute the energy in a field (See Section 29.14.1) represented by a vector potential $`\vec{A} ( \vec{r} , t ) = 2 \vec{A}_{0} \cos ( \vec{k} \cdot \vec{r} - \omega t )`$, we find that the energy inside a volume $`V`$ is
 
 ```math
 Energy = \frac{\omega^{2}}{2 \pi c^{2}} V | A_{0} |^{2} = N \hbar \omega .
@@ -65,7 +65,7 @@ We have introduced the unit vector $`\hat{\epsilon}`$ to give the direction (or 
 
 But what about decays of atoms with no applied field? Here we need to go beyond our classical E&M calculation and quantize the field. Since the terms in the perturbation above emit or absorb a photon, and the photon has energy $`\hbar \omega`$, lets **assume the number of photons in the field is** **the** $`n`$ **of a harmonic oscillator**. It has the right steps in energy. Essentially, we are postulating that the vacuum contains an infinite number of harmonic oscillators, one for each wave vector (or frequency...) of light.
 
-We now want to go from a classical harmonic oscillator to a quantum oscillator, in which the ground state energy is not zero, and the hence the perturbing field is never really zero. We do this by **changing** $`N`$ **to** $`N`$ + 1 **in the term that creates a photon** in analogy to the raising operator $`A^{\dagger}`$ in the HO. With this change, our **perturbation becomes**
+We now want to go from a classical harmonic oscillator to a quantum oscillator, in which the ground state energy is not zero, and the hence the perturbing field is never really zero. We do this by **changing** $`N`$ **to** $`N + 1`$ **in the term that creates a photon** in analogy to the raising operator $`A^{\dagger}`$ in the HO. With this change, our **perturbation becomes**
 
 ```math
 \vec{A} ( \vec{r} , t ) = \left[ \frac{2 \pi \hbar c^{2}}{\omega V} \right]^{\tfrac{1}{2}} \hat{\epsilon} \left( \sqrt{N} e^{i ( \vec{k} \cdot \vec{r} - \omega t )} + \sqrt{N + 1} e^{- i ( \vec{k} \cdot \vec{r} - \omega t )} \right)
@@ -191,7 +191,7 @@ e^{- i \vec{k} \cdot \vec{r}} \approx 1 .
 
 This is called the **Electric dipole approximation**.
 
-In this Electric Dipole approximation, we can make general progress on computation of the matrix element. If the Hamiltonian is of the form $`H = \tfrac{p^{2}}{2 m} + V`$ and $`[ V , \vec{r} ]`$ = 0, then
+In this Electric Dipole approximation, we can make general progress on computation of the matrix element. If the Hamiltonian is of the form $`H = \tfrac{p^{2}}{2 m} + V`$ and $`[ V , \vec{r} ] = 0`$, then
 
 ```math
 [ H , \vec{r} ] = \frac{\hbar}{i} \frac{p}{m}
@@ -275,7 +275,7 @@ We proceed with the calculation to find the E1 selection rules.
 
 We will attempt to clearly separate the terms due to $`\langle \varphi_{n} | \hat{\epsilon} \cdot \vec{r} | \varphi_{i} \rangle`$ for the sake of modularity of the calculation.
 
-The integral with **three spherical harmonics** in each term looks a bit difficult, but, we can use a **Clebsch-Gordan series like the one in addition of angular momentum** to help us solve the problem. We will write the product of two spherical harmonics in terms of a sum of spherical harmonics. Its very similar to adding the angular momentum from the two $`Y`$ s. **Its the same** **series as we had for addition of angular momentum (up to a constant)**. (Note that things will be very simple if either the initial or the final state have $`\ell`$ = 0, a case we will work out below for transitions to s states.) The general formula for rewriting the product of two spherical harmonics (which are functions of the same coordinates) is
+The integral with **three spherical harmonics** in each term looks a bit difficult, but, we can use a **Clebsch-Gordan series like the one in addition of angular momentum** to help us solve the problem. We will write the product of two spherical harmonics in terms of a sum of spherical harmonics. Its very similar to adding the angular momentum from the two $`Y`$ s. **Its the same** **series as we had for addition of angular momentum (up to a constant)**. (Note that things will be very simple if either the initial or the final state have $`\ell = 0`$, a case we will work out below for transitions to s states.) The general formula for rewriting the product of two spherical harmonics (which are functions of the same coordinates) is
 
 ```math
 Y_{\ell_{1} m_{1}} ( \theta ,\varphi ) Y_{\ell_{2} m_{2}} ( \theta ,\varphi ) = \sum_{\ell = | \ell_{1} - \ell_{2} |}^{\ell_{1} + \ell_{2}} \sqrt{\frac{( 2 \ell_{1} + 1 ) ( 2 \ell_{2} + 1 )}{4 \pi ( 2 \ell + 1 )}} \langle \ell 0 | \ell_{1} \ell_{2} 0 0 \rangle \langle \ell ( m_{1} + m_{2} ) | \ell_{1} \ell_{2} m_{1} m_{2} \rangle Y_{\ell ( m_{1} + m_{2} )} ( \theta ,\varphi )
@@ -307,7 +307,7 @@ I remind you that the Clebsch-Gordan coefficients in these equations are just nu
 \begin{aligned} \langle \varphi_{n} | \hat{\epsilon} \cdot \vec{r} | \varphi_{i} \rangle &= \sqrt{\frac{( 2 \ell_{i} + 1 )}{( 2 \ell_{n} + 1 )}} \langle \ell_{n} 0 | \ell_{i} 1 0 0 \rangle \int^{\infty} r^{3} drR_{n_{n} \ell_{n}}^{*} R_{n_{i} \ell_{i}} \\ & \quad \left( \epsilon_{z} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} 0 \rangle + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} 1 \rangle + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} - 1 \rangle \right)^{0} \end{aligned}
 ```
 
-We know, from the addition of angular momentum, that adding angular momentum 1 to $`\ell_{1}`$ can only give answers in the range $`| \ell_{1} - 1 | <\ell_{n} <\ell_{1}`$ + 1 so the change in in $`\ell`$ between the initial and final state can only be ∆$`\ell`$ = 0$`, \pm 1`$. For other values, all the Clebsch-Gordan coefficients above will be zero.
+We know, from the addition of angular momentum, that adding angular momentum 1 to $`\ell_{1}`$ can only give answers in the range $`| \ell_{1} - 1 | <\ell_{n} <\ell_{1} + 1`$ so the change in in $`\ell`$ between the initial and final state can only be ∆$`\ell = 0 , \pm 1`$. For other values, all the Clebsch-Gordan coefficients above will be zero.
 
 We also know that the $`Y_{1 m}`$ are odd under parity so the other two spherical harmonics must have opposite parity to each other implying that $`\ell_{n} \neq \ell_{i}`$, therefore
 
@@ -329,7 +329,7 @@ We can also easily note that we have no operators which can change the spin here
 
 We actually haven’t yet included the interaction between the spin and the field in our calculation, but, it is a small effect compared to the Electric Dipole term.
 
-The above selection rules apply only for the Electric Dipole (E1) approximation. Higher order terms in the expansion, like the Electric Quadrupole (E2) or the Magnetic Dipole (M1), allow other decays but the rates are down by a factor of $`\alpha^{2}`$ or more. There is one absolute selection rule coming from angular momentum conservation, since the photon is spin 1. **No** $`j`$ = 0 **to** $`j`$ = 0 **transitions in** **any order of approximation.**
+The above selection rules apply only for the Electric Dipole (E1) approximation. Higher order terms in the expansion, like the Electric Quadrupole (E2) or the Magnetic Dipole (M1), allow other decays but the rates are down by a factor of $`\alpha^{2}`$ or more. There is one absolute selection rule coming from angular momentum conservation, since the photon is spin 1. **No** $`j = 0`$ **to** $`j = 0`$ **transitions in** **any order of approximation.**
 
 As a summary of our calculations in the Electric Dipole approximation, lets write out the decay rate formula.
 
@@ -535,7 +535,7 @@ We still need to sum over the final atomic states as necessary. For the case of 
 
 The result is independent of $`m`$ as we would expect from rotational symmetry.
 
-As a simple check, lets recompute the 2p to 1s decay rate for hydrogen. We must choose the $`\ell^{\prime} = \ell - 1`$ case and $`\ell`$ = 1.
+As a simple check, lets recompute the 2p to 1s decay rate for hydrogen. We must choose the $`\ell^{\prime} = \ell - 1`$ case and $`\ell = 1`$.
 
 ```math
 \Gamma_{tot} = \frac{4 \alpha \omega_{in}^{3}}{3 c^{2}} \frac{\ell}{2 \ell + 1} \left| \int_{0}^{\infty} R_{1 0}^{*} R_{2 1} r^{3} dr \right|^{2} = \frac{4 \alpha \omega_{in}^{3}}{9 c^{2}} \left| \int_{0}^{\infty} R_{1 0}^{*} R_{2 1} r^{3} dr \right|^{2}
@@ -555,7 +555,7 @@ We may also deduce the angular distribution of photons from our calculation. Let
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p409" href="book.pdf#page=409" target="_blank" title="This page in the PDF"><sup>[p. 409]</sup></a>
 
-We have performed that radial integration which will be unchanged. Assume that we start in a polarized state with $`m_{i}`$ = 1. We then look at our result for the angular integration in the matrix element
+We have performed that radial integration which will be unchanged. Assume that we start in a polarized state with $`m_{i} = 1`$. We then look at our result for the angular integration in the matrix element
 
 ```math
 \left| \int d \Omega Y_{0 0}^{*} \left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \right) Y_{1 m_{i}} \right|^{2}
@@ -569,17 +569,17 @@ We have performed that radial integration which will be unchanged. Assume that w
 = \frac{1}{4 \pi} \left( \frac{1}{2} ( \epsilon_{x}^{2} + \epsilon_{y}^{2} ) \right)
 ```
 
-where we have set $`m_{i}`$ = 1 eliminating two terms.
+where we have set $`m_{i} = 1`$ eliminating two terms.
 
-Lets study the rate as a function of the angle of the photon from the z axis, $`\theta_{\gamma}`$. The rate will be independent of the azimuthal angle. We see that the rate is proportional to $`\epsilon_{x}^{2} + \epsilon_{y}^{2}`$. We still must sum over the two independent transverse polarizations. For clarity, assume that $`\varphi`$ = 0 and the photon is therefore emitted in the x-z plane. One transverse polarization can be in the y direction. The other is in the x-z plane perpendicular to the direction of the photon. The x component is proportional to $`\cos \theta_{\gamma}`$. So the rate is proportional to $`\epsilon_{x}^{2} + \epsilon_{y}^{2}`$ = 1 + $`\cos^{2} \theta_{\gamma}`$.
+Lets study the rate as a function of the angle of the photon from the z axis, $`\theta_{\gamma}`$. The rate will be independent of the azimuthal angle. We see that the rate is proportional to $`\epsilon_{x}^{2} + \epsilon_{y}^{2}`$. We still must sum over the two independent transverse polarizations. For clarity, assume that $`\varphi = 0`$ and the photon is therefore emitted in the x-z plane. One transverse polarization can be in the y direction. The other is in the x-z plane perpendicular to the direction of the photon. The x component is proportional to $`\cos \theta_{\gamma}`$. So the rate is proportional to $`\epsilon_{x}^{2} + \epsilon_{y}^{2} = 1 + \cos^{2} \theta_{\gamma}`$.
 
-If we assume that $`m_{i}`$ = 0 then only the $`\epsilon_{z}`$ term remains and the rate is proportional to $`\epsilon_{z}^{2}`$. The angular distribution then goes like $`\sin^{2} \theta_{\gamma}`$.
+If we assume that $`m_{i} = 0`$ then only the $`\epsilon_{z}`$ term remains and the rate is proportional to $`\epsilon_{z}^{2}`$. The angular distribution then goes like $`\sin^{2} \theta_{\gamma}`$.
 
 # <a id="s-29-9-vector-operators-and-the-wigner-eckart-theorem"></a>29.9 Vector Operators and the Wigner Eckart Theorem
 
 There are some general features that we can derive about operators which are vectors, that is, operators that transform like a vector under rotations. We have seen in the sections on the Electric Dipole approximation and subsequent calculations that the vector operator $`\vec{r}`$ could be written as its magnitude $`r`$ and the spherical harmonics $`Y_{1 m}`$. We found that the $`Y_{1 m}`$ could change the orbital angular momentum (from initial to final state) by zero or one unit. This will be true for any vector operator.
 
-In fact, because the vector operator is very much like adding an additional $`\ell`$ = 1 to the initial state angular momentum, Wigner and Eckart proved that all matrix elements of vector operators can be written as a **reduced matrix element** which does not depend on any of the $`m`$, and Clebsch-Gordan coefficients. The basic reason for this is that all vectors transform the same way under rotations, so all have the same angular properties, being written in terms of the $`Y_{1 m}`$.
+In fact, because the vector operator is very much like adding an additional $`\ell = 1`$ to the initial state angular momentum, Wigner and Eckart proved that all matrix elements of vector operators can be written as a **reduced matrix element** which does not depend on any of the $`m`$, and Clebsch-Gordan coefficients. The basic reason for this is that all vectors transform the same way under rotations, so all have the same angular properties, being written in terms of the $`Y_{1 m}`$.
 
 Note that it makes sense to write a vector $`\vec{V}`$ in terms of the spherical harmonics using
 
@@ -605,13 +605,13 @@ Lets consider our vector $`V^{q}`$ where the integer $`q`$ runs from -1 to +1. T
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p410" href="book.pdf#page=410" target="_blank" title="This page in the PDF"><sup>[p. 410]</sup></a>
 
-Here $`\alpha`$ represents all the (other) quantum numbers of the state, not the angular momentum quantum numbers. $`jm`$ represent the usual angular momentum quantum numbers of the states. $`\langle \alpha^{\prime} j^{\prime} || V || \alpha j \rangle`$ is a reduced matrix element. Its the same for all values of $`m`$ and $`q`$. (Its easy to understand that if we take a matrix element of 10$`r`$ it will be 10 times the matrix element of $`r`$. Nevertheless, all the angular part is the same. This theorem states that all vectors have essentially the same angular behavior. This theorem again allows us to deduce that ∆$`\ell = - 1 , 0 .`$ + 1.
+Here $`\alpha`$ represents all the (other) quantum numbers of the state, not the angular momentum quantum numbers. $`jm`$ represent the usual angular momentum quantum numbers of the states. $`\langle \alpha^{\prime} j^{\prime} || V || \alpha j \rangle`$ is a reduced matrix element. Its the same for all values of $`m`$ and $`q`$. (Its easy to understand that if we take a matrix element of 10$`r`$ it will be 10 times the matrix element of $`r`$. Nevertheless, all the angular part is the same. This theorem states that all vectors have essentially the same angular behavior. This theorem again allows us to deduce that ∆$`\ell = - 1 , 0 . + 1`$.
 
 The theorem can be generalized for spherical tensors of higher (or even lower) rank than a vector.
 
 # <a id="s-29-10exponential-decay"></a>29.10 Exponential Decay
 
-We have computed transition rates using our theory of radiation. In doing this, we have assumed that our calculations need only be valid near $`t`$ = 0. More specifically, we have assumed that we start out in some initial state $`i`$ and that the amplitude to be in that initial state is one. The probability to be in the initial state will become depleted for times on the order of the lifetime of the state. We can account for this in terms of the probability to remain in the initial state.
+We have computed transition rates using our theory of radiation. In doing this, we have assumed that our calculations need only be valid near $`t = 0`$. More specifically, we have assumed that we start out in some initial state $`i`$ and that the amplitude to be in that initial state is one. The probability to be in the initial state will become depleted for times on the order of the lifetime of the state. We can account for this in terms of the probability to remain in the initial state.
 
 Assume we have computed the total transition rate.
 
@@ -619,7 +619,7 @@ Assume we have computed the total transition rate.
 \Gamma_{tot} = \sum_{n} \Gamma_{i \to n}
 ```
 
-This transition rate is the probability per unit time to make a transition away from the initial state evaluated at $`t`$ = 0. Writing this as an equation we have.
+This transition rate is the probability per unit time to make a transition away from the initial state evaluated at $`t = 0`$. Writing this as an equation we have.
 
 ```math
 \frac{dP_{i}}{dt} |_{t = 0} = - \Gamma_{tot}
@@ -637,7 +637,7 @@ The solution to this simple first order differential equation is
 P_{i} ( t ) = P_{i} ( t = 0 ) e^{- \Gamma_{tot} t}
 ```
 
-If you are having any trouble buying this calculation, think of a large ensemble of hydrogen atoms prepared to be in the 2p state at $`t`$ = 0. Clearly the number of atoms remaining in the 2p state will obey the equation
+If you are having any trouble buying this calculation, think of a large ensemble of hydrogen atoms prepared to be in the 2p state at $`t = 0`$. Clearly the number of atoms remaining in the 2p state will obey the equation
 
 ```math
 \frac{dN_{2 p} ( t )}{dt} = - \Gamma_{tot} N_{2 p} ( t )
@@ -975,7 +975,7 @@ This gives a life time of about 50 psec.
 
 2. Magnetic dipole transitions are due to an axial vector operator and hence are proportional to the $`Y_{1 m}`$ but do not change parity (unlike a vector operator). What are the M1 selection rules?
 
-3. Draw the energy level diagram for hydrogen up to $`n`$ = 3. Show the allowed E1 transitions.
+3. Draw the energy level diagram for hydrogen up to $`n = 3`$. Show the allowed E1 transitions.
 
 Use another color to show the allowed E2 and M1 transitions.
 
@@ -993,11 +993,11 @@ Use another color to show the allowed E2 and M1 transitions.
 
 # <a id="s-29-16sample-test-problems"></a>29.16 Sample Test Problems
 
-1. A hydrogen atom is in the $`n`$ = 5, $`{}^{3} D_{\tfrac{5}{2}}`$ state. To which states is it allowed to decay via electric dipole transitions? What will be the polarization for a photon emitted along the $`z`$-axis if $`m_{l}`$ decreases by one unit in the decay?
+1. A hydrogen atom is in the $`n = 5`$, $`{}^{3} D_{\tfrac{5}{2}}`$ state. To which states is it allowed to decay via electric dipole transitions? What will be the polarization for a photon emitted along the $`z`$-axis if $`m_{l}`$ decreases by one unit in the decay?
 
 2. Derive the selection rules for radiative transitions between hydrogen atom states in the electric dipole approximation. These are rules for the change in $`l,m`$, and $`s`$.
 
-3. State the selection rules for radiative transitions between hydrogen atom states in the electric dipole approximation. These are rules for the allowed changes in $`l,m , s`$, and parity. They can be easily derived from the matrix element given on the front of the test. Draw an energy level diagram (up to $`n`$ = 3) for hydrogen atoms in a weak $`B`$ field. Show the allowed E1 transitions from $`n`$ = 3 to $`n`$ = 1 on that diagram.
+3. State the selection rules for radiative transitions between hydrogen atom states in the electric dipole approximation. These are rules for the allowed changes in $`l,m , s`$, and parity. They can be easily derived from the matrix element given on the front of the test. Draw an energy level diagram (up to $`n = 3`$) for hydrogen atoms in a weak $`B`$ field. Show the allowed E1 transitions from $`n = 3`$ to $`n = 1`$ on that diagram.
 
 4. Calculate the differential cross section, $`\frac{d\sigma}{d \Omega}`$, for high energy scattering of particles of momentum p, from a spherical shell delta function
 

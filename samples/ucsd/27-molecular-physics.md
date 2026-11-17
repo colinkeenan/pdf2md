@@ -107,7 +107,7 @@ The antisymmetric state shows no minimum and never goes below -13.6 eV so there 
 
 _Figure 93 (p. 385)_
 
-By setting $`\frac{d \langle H \rangle}{dy}`$ = 0, we can get the distance between atoms and the energy.
+By setting $`\frac{d \langle H \rangle}{dy} = 0`$, we can get the distance between atoms and the energy.
 
 Distance Energy
 
@@ -177,7 +177,7 @@ The strongest bonds come from s and p orbitals (not d,f).
 
 Even with additional parameters, parity symmetry in diatomic molecules implies we will have symmetric and antisymmetric wavefunctions for single electrons. The **symmetric or bonding state** **has a larger probability to be between the two nuclei**, sees more positive charge, and is therefore lower energy. As in our simple model of a molecule, the kinetic energy can be lowered by sharing an electron.
 
-There is an axis of symmetry for **diatomic molecules**. This means $`L_{z}`$ commutes with $`H`$ and $`m_{\ell}`$ is a good quantum number. The different $`m_{\ell}`$ states, we have seen, have quite different shapes therefore bond differently. Imagine that a valence electron is in a $`d`$ state. The $`m_{\ell}`$ = 0$`, \pm 1 , \pm 2`$ are called molecular orbitals $`\sigma ,\pi ,\delta`$ respectively. Each has a bonding and an antibonding state.
+There is an axis of symmetry for **diatomic molecules**. This means $`L_{z}`$ commutes with $`H`$ and $`m_{\ell}`$ is a good quantum number. The different $`m_{\ell}`$ states, we have seen, have quite different shapes therefore bond differently. Imagine that a valence electron is in a $`d`$ state. The $`m_{\ell} = 0 , \pm 1 , \pm 2`$ are called molecular orbitals $`\sigma ,\pi ,\delta`$ respectively. Each has a bonding and an antibonding state.
 
 Pictures of **molecular orbitals** are shown for $`s`$ and $`p`$ states in the following figure. Both bonding and antibonding orbitals are shown first as atomic states then as molecular. The antibonding states are denoted by a \*.
 
@@ -237,7 +237,7 @@ E_{rot} = \frac{1}{2} \frac{L^{2}}{I} = \frac{\ell ( \ell + 1 ) \hbar^{2}}{2 I} 
 
 where we have used $`a_{0} = \tfrac{\hbar}{\alpha mc}`$ . These states are strongly excited at room temperature.
 
-Let’s look at the energy changes between states as we might get in a radiative transition with ∆$`\ell`$ = 1..
+Let’s look at the energy changes between states as we might get in a radiative transition with ∆$`\ell = 1`$..
 
 ```math
 E = \frac{\ell ( \ell + 1 ) \hbar^{2}}{2 I}
@@ -273,7 +273,7 @@ _Figure 96 (p. 390)_
 
 1. In HCl, absorption lines with wave numbers in inverse centimeters of 83.03, 103.73, 124.30, 145.05, 165.51 and 185.86 have been observed. Are these rotational or vibrational transitions? Estimate some physical parameters of the molecule from these data.
 
-2. What is the ratio of the number of HCl molecules in the $`j`$ = 10 rotational state to that in the $`j`$ = 0 state if the gas is at room temperature?
+2. What is the ratio of the number of HCl molecules in the $`j = 10`$ rotational state to that in the $`j = 0`$ state if the gas is at room temperature?
 
 # <a id="s-27-10sample-test-problems"></a>27.10 Sample Test Problems
 

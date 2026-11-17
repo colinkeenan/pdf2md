@@ -7,7 +7,7 @@
 
 # General Theory of Free Particle Scattering
 
-We have shown how (421) leads to matrix elements for standard scattering processes, from which cross-sections can be calculated. In each case we used only the term $`n`$ = 2 in (421), which happened to be the lowest term giving a contribution to these processes. The higher terms $`n`$ = 4$`, 6 ,\dots`$ will also give contributions to the matrix elements for these processes, contributions which are collectively called “radiative corrections”. It turns out that the results without radiative corrections agree with the experimental scattering cross-sections in all cases. The experiments are never accurate to better than a few percent, and the radiative corrections are always smaller than the lowest-order terms by at least one power of $`( e^{2} / 4 \pi \hbar c )`$ = ($`1 / 137`$). Thus the study of the radiative corrections for scattering processes will not lead to any directly observable effects.
+We have shown how (421) leads to matrix elements for standard scattering processes, from which cross-sections can be calculated. In each case we used only the term $`n = 2`$ in (421), which happened to be the lowest term giving a contribution to these processes. The higher terms $`n = 4 , 6 ,\dots`$ will also give contributions to the matrix elements for these processes, contributions which are collectively called “radiative corrections”. It turns out that the results without radiative corrections agree with the experimental scattering cross-sections in all cases. The experiments are never accurate to better than a few percent, and the radiative corrections are always smaller than the lowest-order terms by at least one power of $`( e^{2} / 4 \pi \hbar c )`$ = ($`1 / 137`$). Thus the study of the radiative corrections for scattering processes will not lead to any directly observable effects.
 
 Nevertheless we shall work out a method of calculating the high-order terms of (421). This method turns out to be simplest and easiest to explain when we are discussing scattering problems. Incidentally we shall see what the radiative corrections to scattering look like, and we shall learn something about the nature of radiative corrections in general. Finally at the end we shall be able to use the method of calculation in order to find the radiative corrections to the motion of an electron in a hydrogen atom, which is the case in which these small effects can be accurately observed, but where the pure scattering theory is not directly applicable.
 
@@ -89,7 +89,7 @@ Of course (493) is independent of the times $`t_{A}`$ and $`t_{B}`$. When $`t_{A
 
 and $`g ( t )`$ is a function increasing adiabatically from 0 to 1 for $`-\infty <t<t_{A}`$, equal to 1 for $`t_{A} \leq t \leq t_{B}`$, and decreasing adiabatically from 1 to 0 for $`t_{A} <t< \infty`$. Thus we come to the important conclusion that formula (487) for the matrix element is correct, using the bare particle state-functions $`\Phi_{A}`$ and $`\Phi_{B}`$, provided that formula (488) for $`S`$ is interpreted by putting in the slowly varying cut-off function $`g ( t_{i} )`$ to make the integrals converge at $`t_{i} = \pm \infty`$. The cut-off functions are to be put in as they appear in (495), and then $`S`$ is defined as the limit to which (495) tends as the rate of variation of $`g ( t )`$ is made infinitely slow.
 
-The main practical effect of this limiting process in the definition of $`S`$ is to justify us in throwing away all terms in the integrals which oscillate finitely at $`t_{i} = \pm \infty`$. There are however certain cases in which the integral (488) is in a more serious way ambiguous due to bad convergence at $`t_{i} = \pm \infty`$. In these cases the cut-off functions have to be kept explicitly until a late stage of the calculations before going to the limit $`g ( t )`$ = 1. In all cases, if the limiting process is done in this way, the matrix element $`M`$ is obtained correctly and unambiguously.
+The main practical effect of this limiting process in the definition of $`S`$ is to justify us in throwing away all terms in the integrals which oscillate finitely at $`t_{i} = \pm \infty`$. There are however certain cases in which the integral (488) is in a more serious way ambiguous due to bad convergence at $`t_{i} = \pm \infty`$. In these cases the cut-off functions have to be kept explicitly until a late stage of the calculations before going to the limit $`g ( t ) = 1`$. In all cases, if the limiting process is done in this way, the matrix element $`M`$ is obtained correctly and unambiguously.
 
 The use of bare-particle wave-functions $`\Phi_{A}`$ and $`\Phi_{B}`$ in (487) is thus justified. This makes the calculation of $`M`$ in principle simple. It is only necessary to pick out from (488) the terms which contain the right combination of elementary emission and absorption operators to annihilate the particles in $`A`$ and to create those in $`B`$. We shall next describe a general method of systematically picking out those terms, which is due originally to Feynman. It was first explained in published form by G. C Ẇick, _Phys. Rev._ **80** (1950) 268. Feynman and Wick have applied the method only to chronologically ordered products such as appear in (488). However the method applies in the same way to all products whether chronological or not, and we shall describe it in full generality.
 
@@ -187,7 +187,7 @@ _Every operator product_ $`\mathcal{O}`$ _is identically equal to the sum of the
 
 This theorem gives the decomposition of $`\mathcal{O}`$ into its normal constituents. Equations (501) – (503) are just special cases of it. Clearly non-zero $`\mathcal{O}_{n}`$ are only obtained when each pair of factors is either a $`\overline{\psi}`$ and a $`\psi`$ operator or two $`A_{\mu}`$ operators. We shall therefore suppose that the factor-pairings are always restricted in this way.
 
-The proof of the theorem is very simple, by induction on $`m`$, the number of factors in $`\mathcal{O}`$. The theorem is true when $`m`$ = 1 or 2, so we need only prove it true for $`m`$ assuming it true for $`m - 2`$. Let then $`\mathcal{O}^{\prime}`$ be a product of $`( m - 2 )`$ factors. First we show that the theorem is true for
+The proof of the theorem is very simple, by induction on $`m`$, the number of factors in $`\mathcal{O}`$. The theorem is true when $`m = 1`$ or 2, so we need only prove it true for $`m`$ assuming it true for $`m - 2`$. Let then $`\mathcal{O}^{\prime}`$ be a product of $`( m - 2 )`$ factors. First we show that the theorem is true for
 
 <a id="eq-505"></a>
 
@@ -211,7 +211,7 @@ But $`\sum \mathcal{O}_{n}^{\prime} = \mathcal{O}^{\prime}`$, and
 \langle \mathcal{P} \mathcal{Q} \rangle_{o} \pm \langle \mathcal{Q} \mathcal{P} \rangle_{o} = ( \mathcal{P} \mathcal{Q} \pm \mathcal{Q} \mathcal{P} ) \qquad \text{(507)}
 ```
 
-this being a number and not an operator. Therefore (506) gives $`\sum \mathcal{O} n`$ = 0, and the theorem is proved for $`\mathcal{O}`$ given by (505). Next let $`\mathcal{O}`$ be any product of $`m`$ factors. Then by using the commutation relations we can write
+this being a number and not an operator. Therefore (506) gives $`\sum \mathcal{O} n = 0`$, and the theorem is proved for $`\mathcal{O}`$ given by (505). Next let $`\mathcal{O}`$ be any product of $`m`$ factors. Then by using the commutation relations we can write
 
 <a id="eq-508"></a>
 
@@ -219,7 +219,7 @@ this being a number and not an operator. Therefore (506) gives $`\sum \mathcal{O
 \mathcal{O} = N ( \mathcal{O} ) + \Sigma \qquad \text{(508)}
 ```
 
-where Σ is a sum of terms of the form (505). The theorem is true for each term (505) and so is true for Σ. The theorem is trivially true for $`N ( \mathcal{O} )`$, because $`\langle \mathcal{P} \mathcal{Q} \rangle_{o}`$ = 0 for every pair of factors $`\mathcal{P} , \mathcal{Q}`$ in the order in which they occur in $`N ( \mathcal{O} )`$, and so all normal constituents (504) of $`N ( \mathcal{O} )`$ are zero except the constituent $`N ( \mathcal{O} )`$ itself. Therefore the theorem holds for every $`\mathcal{O}`$ given by (508), and this completes the proof.
+where Σ is a sum of terms of the form (505). The theorem is true for each term (505) and so is true for Σ. The theorem is trivially true for $`N ( \mathcal{O} )`$, because $`\langle \mathcal{P} \mathcal{Q} \rangle_{o} = 0`$ for every pair of factors $`\mathcal{P} , \mathcal{Q}`$ in the order in which they occur in $`N ( \mathcal{O} )`$, and so all normal constituents (504) of $`N ( \mathcal{O} )`$ are zero except the constituent $`N ( \mathcal{O} )`$ itself. Therefore the theorem holds for every $`\mathcal{O}`$ given by (508), and this completes the proof.
 
 <div align="right"><a href="book.pdf#page=103" target="_blank" title="This page in the PDF"><sup>[p. 97]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -707,7 +707,7 @@ with $`q`$ given by (544) and<sup><a id="fnref-76" href="#fn-76">76</a></sup>
 J_{\mu} = \int_{F} F_{\mu} ( k ) dk \qquad \text{(549)}
 ```
 
-the function $`F_{\mu} ( k )`$ being identical with (371) for $`\delta`$ = 0. Note that (549) is a Feynman integral, which is precisely the same thing as the contour integral (374) with the contour drawn in the diagram. The effect of the $`\epsilon`$ in (431) is just equivalent to the contour $`C`$. Hence<sup><a id="fnref-77" href="#fn-77">77</a></sup> using (388) for $`J_{\mu}`$,
+the function $`F_{\mu} ( k )`$ being identical with (371) for $`\delta = 0`$. Note that (549) is a Feynman integral, which is precisely the same thing as the contour integral (374) with the contour drawn in the diagram. The effect of the $`\epsilon`$ in (431) is just equivalent to the contour $`C`$. Hence<sup><a id="fnref-77" href="#fn-77">77</a></sup> using (388) for $`J_{\mu}`$,
 
 <a id="eq-550"></a>
 
@@ -791,7 +791,7 @@ Before discussing Σ$`( p )`$ we must look at the factor $`\frac{1}{p / - i\mu}`
 \frac{p / + i\mu}{p^{2} + \mu^{2}} \qquad \text{(559)}
 ```
 
-But since $`p`$ is the momentum vector of a real electron, $`p^{2} + \mu^{2}`$ = 0 and the factor (559) is singular. This means that the integrals over $`x_{1}`$ and $`x_{2}`$ are really divergent and not merely finitely oscillating at $`t = \pm \infty`$, and the transformation into momentum integrals is not allowable. Eq. (558) as it stands is strictly meaningless.
+But since $`p`$ is the momentum vector of a real electron, $`p^{2} + \mu^{2} = 0`$ and the factor (559) is singular. This means that the integrals over $`x_{1}`$ and $`x_{2}`$ are really divergent and not merely finitely oscillating at $`t = \pm \infty`$, and the transformation into momentum integrals is not allowable. Eq. (558) as it stands is strictly meaningless.
 
 This is the place where we have to take explicitly into our calculations the slowly-varying cut-off functions $`g ( t_{i} )`$ appearing in (495), which are put in for the purpose of defining unambiguously the initial and final states of the problem. So we write instead of (555)
 
@@ -907,7 +907,7 @@ is of order $`\epsilon`$ and tends to zero as $`T \to 0`$. This term may be drop
 \begin{aligned} M_{2 2} &= - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int G ( \epsilon_{0} ) G ( \epsilon_{0}^{\prime} ) d\epsilon_{0} d\epsilon_{0}^{\prime} \times \\ & \quad \left\{ \overline{u} /e ( q - \epsilon - \epsilon^{\prime} ) \frac{1}{p / + /\epsilon + /\epsilon^{\prime} - i\mu} ( - 6 \pi^{2} \mu R^{\prime} - I_{1} /\epsilon ) u \right\} \end{aligned} \qquad \text{(572)}
 ```
 
-Note that if $`I_{\alpha} ( p )`$ given by (567) were to be evaluated assuming that $`p^{2} + \mu^{2}`$ = 0 and $`p / - i\mu`$ = 0 operating both to the left and to the right, instead of only to the right as in (521), the result obtained would be just
+Note that if $`I_{\alpha} ( p )`$ given by (567) were to be evaluated assuming that $`p^{2} + \mu^{2} = 0`$ and $`p / - i\mu = 0`$ operating both to the left and to the right, instead of only to the right as in (521), the result obtained would be just
 
 <a id="eq-573"></a>
 
@@ -1041,7 +1041,7 @@ There is no singular factor in (584) such as we had in (558). To perform the sum
 
 valid for any vectors $`a , b , c`$. These formulae can be deduced from the following recursive formula:
 
-Denote $`/q_{( n )} = q /_{1} /q_{2} \dots /q_{n}`$ where $`q_{i}`$ are arbitrary vectors, and $`\chi_{n} = \sum_{\lambda} \gamma_{\lambda} q /_{( n )} \gamma_{\lambda} , \chi_{o}`$ = 4. Then we have
+Denote $`/q_{( n )} = q /_{1} /q_{2} \dots /q_{n}`$ where $`q_{i}`$ are arbitrary vectors, and $`\chi_{n} = \sum_{\lambda} \gamma_{\lambda} q /_{( n )} \gamma_{\lambda} , \chi_{o} = 4`$. Then we have
 
 ```math
 \chi_{n + 1} = \sum_{\lambda} \gamma_{\lambda} /q_{( n )} /q_{n + 1} \gamma_{\lambda} = \sum_{\lambda} \sum_{\mu} \gamma_{\lambda} /q_{( n )} \gamma_{\mu} \gamma_{\lambda} ( q_{n + 1} )_{\mu} = \sum_{\lambda} \sum_{\mu} \gamma_{\lambda} /q_{( n )} [ 2 \delta_{\lambda \mu} - \gamma_{\lambda} \gamma_{\mu} ] ( q_{n + 1} )_{\mu}
@@ -1051,7 +1051,7 @@ Denote $`/q_{( n )} = q /_{1} /q_{2} \dots /q_{n}`$ where $`q_{i}`$ are arbitrar
 = 2 /q_{n + 1} /q_{( n )} - \chi_{n} q /_{n + 1}
 ```
 
-which then gives (585) for $`n`$ = 1$`, 2 ,`$ 3. Thus
+which then gives (585) for $`n = 1 , 2 ,`$ 3. Thus
 
 <a id="eq-586"></a>
 
@@ -1125,7 +1125,7 @@ Collecting terms from (592), (593), we have
 \Lambda ( p,p^{\prime} ) = - 4 \int \int xdxdy \int_{F} dk \frac{/ k/e/ k + ( 1 - xy ) ( 1 - x + xy ) q^{2} /e - ( x - x^{2} ) i\mu /e/q + ( 2 - 2 x - x^{2} ) \mu^{2} /e}{[ k^{2} + x^{2} ( \mu^{2} + ( y - y^{2} ) q^{2} ) ]^{3}} \qquad \text{(594)}
 ```
 
-Now we saw earlier that the integral (567), evaluated using the conditions $`p^{2} + \mu^{2}`$ = 0$`,/p - i\mu`$ = 0, has the value (573). Comparing (567) with (584), this implies that
+Now we saw earlier that the integral (567), evaluated using the conditions $`p^{2} + \mu^{2} = 0 ,/p - i\mu = 0`$, has the value (573). Comparing (567) with (584), this implies that
 
 <a id="eq-595"></a>
 
@@ -1317,7 +1317,7 @@ The $`k`$-integration is now elementary, and after dropping terms which tend to 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p116" href="book.pdf#page=122" target="_blank" title="This page in the PDF"><sup>[p. 116]</sup></a>
 
-Putting $`p = p^{\prime} , q`$ = 0 in (614), we find
+Putting $`p = p^{\prime} , q = 0`$ in (614), we find
 
 <a id="eq-615"></a>
 

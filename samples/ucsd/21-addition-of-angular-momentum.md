@@ -21,7 +21,7 @@ This material is covered in **Gasiorowicz Chapter 15,** in **Cohen-Tannoudji et 
 
 # <a id="s-21-1-adding-the-spins-of-two-electrons"></a>21.1 Adding the Spins of Two Electrons
 
-The coordinates of two particles commute with each other: $`[ p_{( 1 ) i} ,x_{( 2 ) j} ]`$ = 0. They are independent variables except that the overall wave functions for identical particles must satisfy the (anti)symmetrization requirements. This will also be the case for the spin coordinates.
+The coordinates of two particles commute with each other: $`[ p_{( 1 ) i} ,x_{( 2 ) j} ] = 0`$. They are independent variables except that the overall wave functions for identical particles must satisfy the (anti)symmetrization requirements. This will also be the case for the spin coordinates.
 
 ```math
 [ S_{( 1 ) i} ,S_{( 2 ) j} ] = 0
@@ -75,7 +75,7 @@ audio
 
 Verify the quoted eigenvalues by calculation using the operator $`S_{z} = S_{( 1 ) z} + S_{( 2 ) z}`$.
 
-We expect to be able to form **eigenstates of** $`S^{2}`$ from linear combinations of these four states. From pure counting of the number of states for each $`S_{z}`$ eigenvalue, we can guess that we can make one $`s`$ = 1 **multiplet** plus one $`s`$ = 0 multiplet. The $`s`$ = 1 multiplet has three component states, two of which are obvious from the list above. We can use the lowering operator to **derive** (see section 21.8.2) the other eigenstates of $`S^{2}`$.
+We expect to be able to form **eigenstates of** $`S^{2}`$ from linear combinations of these four states. From pure counting of the number of states for each $`S_{z}`$ eigenvalue, we can guess that we can make one $`s = 1`$ **multiplet** plus one $`s = 0`$ multiplet. The $`s = 1`$ multiplet has three component states, two of which are obvious from the list above. We can use the lowering operator to **derive** (see section 21.8.2) the other eigenstates of $`S^{2}`$.
 
 ```math
 \chi_{s = 1 ,m = 1} = \chi_{+}^{( 1 )} \chi_{+}^{( 2 )}
@@ -131,11 +131,11 @@ Since our eigenstates of $`J^{2}`$ and $`J_{z}`$ are also eigenstates of $`L^{2}
 
 # <a id="s-21-3-adding-spin-2-1-to-integer-orbital-angular-momentum"></a>21.3 Adding Spin $`\frac{1}{2}`$ to Integer Orbital Angular Momentum
 
-Our goal is to add orbital angular momentum with quantum number $`\ell`$ to spin $`\frac{1}{2}`$. We can show in several ways that, for $`\ell \neq 0`$, that the total angular momentum quantum number has **two possible** **values** $`j = \ell + \tfrac{1}{2}`$ **or** $`j = \ell - \tfrac{1}{2}`$**.** For $`\ell`$ = 0, only $`j = \tfrac{1}{2}`$ is allowed. First lets argue that this makes sense when we are adding two **vectors.** For example if we add a vector of length 3 to a vector of length 0.5, the resulting vector could take on a length between 2.5 and 3.5 For quantized angular momentum, we will only have the half integers allowed, rather than a continuous range. Also we know that the quantum numbers like $`\ell`$ are not exactly the length of the vector but are close. So these two values make sense physically.
+Our goal is to add orbital angular momentum with quantum number $`\ell`$ to spin $`\frac{1}{2}`$. We can show in several ways that, for $`\ell \neq 0`$, that the total angular momentum quantum number has **two possible** **values** $`j = \ell + \tfrac{1}{2}`$ **or** $`j = \ell - \tfrac{1}{2}`$**.** For $`\ell = 0`$, only $`j = \tfrac{1}{2}`$ is allowed. First lets argue that this makes sense when we are adding two **vectors.** For example if we add a vector of length 3 to a vector of length 0.5, the resulting vector could take on a length between 2.5 and 3.5 For quantized angular momentum, we will only have the half integers allowed, rather than a continuous range. Also we know that the quantum numbers like $`\ell`$ are not exactly the length of the vector but are close. So these two values make sense physically.
 
 We can also count states for each eigenvalue of $`J_{z}`$ as in the following examples.
 
-\* See Example 21.7.1: Counting states for $`\ell`$ = 3 plus spin $`\frac{1}{2} . *`$<br>
+\* See Example 21.7.1: Counting states for $`\ell = 3`$ plus spin $`\frac{1}{2} . *`$<br>
 \* See Example 21.7.2: Counting states for any $`\ell`$ plus spin $`\frac{1}{2} . *`$<br>
 As in the last section, we could start with the highest $`J_{z}`$ state, $`Y_{\ell \ell} \chi_{+}`$, and apply the **lowering** **operator** to find the rest of the multiplet with $`j = \ell + \tfrac{1}{2}`$. This works well for some specific $`\ell`$ but is hard to generalize.
 
@@ -161,7 +161,7 @@ We have made a choice in how to write these equations: $`m`$ must be the same th
 
 # <a id="s-21-4-spectroscopic-notation"></a>21.4 Spectroscopic Notation
 
-A common way to name states in atomic physics is to use **spectroscopic notation**. It is essentially a standard way to write down the angular momementum quantum numbers of a state. The **general** **form** is $`N^{2 s + 1} L_{j}`$, where $`N`$ is the principal quantum number and will often be omitted, $`s`$ is the total spin quantum number ((2$`s`$ + 1) is the number of spin states), $`L`$ refers to the orbital angular<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=313" target="_blank" title="This page in the PDF"><sup>[p. 313]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p314" href="book.pdf#page=314" target="_blank" title="This page in the PDF"><sup>[p. 314]</sup></a></span> momentum quantum number $`\ell`$ but is written as $`S,P,D,F,\dots`$ for $`\ell`$ = 0$`, 1 , 2 , 3 ,\dots`$, and $`j`$ is the total angular momentum quantum number.
+A common way to name states in atomic physics is to use **spectroscopic notation**. It is essentially a standard way to write down the angular momementum quantum numbers of a state. The **general** **form** is $`N^{2 s + 1} L_{j}`$, where $`N`$ is the principal quantum number and will often be omitted, $`s`$ is the total spin quantum number ((2$`s + 1`$) is the number of spin states), $`L`$ refers to the orbital angular<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=313" target="_blank" title="This page in the PDF"><sup>[p. 313]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p314" href="book.pdf#page=314" target="_blank" title="This page in the PDF"><sup>[p. 314]</sup></a></span> momentum quantum number $`\ell`$ but is written as $`S,P,D,F,\dots`$ for $`\ell = 0 , 1 , 2 , 3 ,\dots`$, and $`j`$ is the total angular momentum quantum number.
 
 A quick example is the single electron states, as we find in Hydrogen. These are:
 
@@ -177,9 +177,9 @@ For atoms with more than one electron, the total spin state has more possibiliti
 
 We have already worked several examples of addition of angular momentum. Lets work one more.
 
-\* See Example 21.7.3: Adding $`\ell`$ = 4 to $`\ell`$ = 2.\*
+\* See Example 21.7.3: Adding $`\ell = 4`$ to $`\ell = 2`$.\*
 
-The result, in agreement with our classical vector model, is multiplets with $`j`$ = 2$`, 3 , 4 , 5 , 6 .`$
+The result, in agreement with our classical vector model, is multiplets with $`j = 2 , 3 , 4 , 5 , 6 .`$
 
 The vector model qualitatively explains the limits.
 
@@ -219,7 +219,7 @@ The Clebsch-Gordan coefficients are tabulated. We have computed some of them her
 
 # <a id="s-21-6-interchange-symmetry-for-states-with-identical-particles"></a>21.6 Interchange Symmetry for States with Identical Particles
 
-If we are combining the angular momentum from two identical particles, like two electrons in an atom, we will be interested in the symmetry under interchange of the angular momentum state. Lets use the combination of two spin $`\frac{1}{2}`$ particles as an example. We know that we get total spin states of $`s`$ = 1 and $`s`$ = 0. The $`s`$ = 1 state is called a **triplet** because there are three states with different $`m`$ values. The $`s`$ = 0 state is called a **singlet.** The triplet state is symmetric under interchange. The **highest total angular momentum state,** $`s = s_{1} + s_{2}`$, will always be **symmetric under** **interchange.** We can see this by looking at the highest $`m`$ state, $`m = s`$. To get the maximum $`m`$, both spins to have the maximum $`z`$ component. So the product state has just one term and it is symmetric under interchange, in this case,
+If we are combining the angular momentum from two identical particles, like two electrons in an atom, we will be interested in the symmetry under interchange of the angular momentum state. Lets use the combination of two spin $`\frac{1}{2}`$ particles as an example. We know that we get total spin states of $`s = 1`$ and $`s = 0`$. The $`s = 1`$ state is called a **triplet** because there are three states with different $`m`$ values. The $`s = 0`$ state is called a **singlet.** The triplet state is symmetric under interchange. The **highest total angular momentum state,** $`s = s_{1} + s_{2}`$, will always be **symmetric under** **interchange.** We can see this by looking at the highest $`m`$ state, $`m = s`$. To get the maximum $`m`$, both spins to have the maximum $`z`$ component. So the product state has just one term and it is symmetric under interchange, in this case,
 
 ```math
 \chi_{1 1} = \chi_{+}^{( 1 )} \chi_{+}^{( 2 )} .
@@ -244,17 +244,17 @@ where the numbers are the number of states in the multiplet.
 
 # <a id="s-21-7-examples"></a>21.7 Examples
 
-## <a id="s-21-7-1-counting-states-for-ell-3-plus-spin-2-1"></a>21.7.1 Counting states for $`\ell`$ = 3 Plus spin $`\frac{1}{2}`$
+## <a id="s-21-7-1-counting-states-for-ell-3-plus-spin-2-1"></a>21.7.1 Counting states for $`\ell = 3`$ Plus spin $`\frac{1}{2}`$
 
-For $`\ell`$ = 3 there are 2$`\ell`$ + 1 = 7 different eigenstates of $`L_{z}`$. There are two different eigenstates of $`S_{z}`$ for spin $`\frac{1}{2}`$. We can have any combination of these states, implying $`2 \times 7`$ = 14 possible product states like $`Y_{3 1} \chi_{+}`$.
+For $`\ell = 3`$ there are 2$`\ell + 1 = 7`$ different eigenstates of $`L_{z}`$. There are two different eigenstates of $`S_{z}`$ for spin $`\frac{1}{2}`$. We can have any combination of these states, implying $`2 \times 7 = 14`$ possible product states like $`Y_{3 1} \chi_{+}`$.
 
-We will argue based on adding vectors... that there will be two total angular momentum states that can be made up from the 14 product states, $`j = \ell \pm \tfrac{1}{2}`$, in this case $`j = \tfrac{5}{2}`$ and $`j = \tfrac{7}{2}`$. Each of these has 2$`j`$ + 1 states, that is 6 and 8 states respectively. Since 6 + 8 = 14 this gives us the right number of states.
+We will argue based on adding vectors... that there will be two total angular momentum states that can be made up from the 14 product states, $`j = \ell \pm \tfrac{1}{2}`$, in this case $`j = \tfrac{5}{2}`$ and $`j = \tfrac{7}{2}`$. Each of these has 2$`j + 1`$ states, that is 6 and 8 states respectively. Since 6 + 8 = 14 this gives us the right number of states.
 
 ## <a id="s-21-7-2-counting-states-for-arbitrary-ell-plus-spin-2-1"></a>21.7.2 Counting states for Arbitrary $`\ell`$ Plus spin $`\frac{1}{2}`$
 
-For angular momentum quantum number $`\ell`$, there are (2$`\ell`$ + 1) different m states, while for spin we have 2 states $`\chi_{\pm}`$. Hence the composite system has 2(2$`\ell`$ + 1) states total.
+For angular momentum quantum number $`\ell`$, there are (2$`\ell + 1`$) different m states, while for spin we have 2 states $`\chi_{\pm}`$. Hence the composite system has 2(2$`\ell + 1`$) states total.
 
-Max $`j_{z} = \ell + \tfrac{1}{2}`$ so we have a state with $`j = \ell + \tfrac{1}{2}`$. This makes up (2$`j`$ + 1) = (2$`\ell`$ + 2) states, leaving
+Max $`j_{z} = \ell + \tfrac{1}{2}`$ so we have a state with $`j = \ell + \tfrac{1}{2}`$. This makes up (2$`j + 1`$) = (2$`\ell + 2`$) states, leaving
 
 ```math
 ( 4 \ell + 2 ) - ( 2 \ell + 2 ) = 2 \ell = \left( 2 \left( \ell - \frac{1}{2} \right) + 1 \right)
@@ -262,9 +262,9 @@ Max $`j_{z} = \ell + \tfrac{1}{2}`$ so we have a state with $`j = \ell + \tfrac{
 
 Thus we have a state with $`j = \ell - \tfrac{1}{2}`$ and that’s all.
 
-## <a id="s-21-7-3-adding-ell-4-to-ell-2"></a>21.7.3 Adding $`\ell`$ = 4 to $`\ell`$ = 2
+## <a id="s-21-7-3-adding-ell-4-to-ell-2"></a>21.7.3 Adding $`\ell = 4`$ to $`\ell = 2`$
 
-As an example, we count the states for each value of total m (z component quantum number) if we add $`\ell_{1}`$ = 4 to $`\ell_{2}`$ = 2.
+As an example, we count the states for each value of total m (z component quantum number) if we add $`\ell_{1} = 4`$ to $`\ell_{2} = 2`$.
 
 audio
 
@@ -276,7 +276,7 @@ audio
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p317" href="book.pdf#page=317" target="_blank" title="This page in the PDF"><sup>[p. 317]</sup></a>
 
-Since the highest m value is 6, we expect to have a $`j`$ = 6 state which uses up one state for each m value from -6 to +6. Now the highest m value left is 5, so a $`j`$ = 5 states uses up a state at each m value between -5 and +5. Similarly we find a $`j`$ = 4, $`j`$ = 3, and $`j`$ = 2 state. This uses up all the states, and uses up the states at each value of m. So we find in this case,
+Since the highest m value is 6, we expect to have a $`j = 6`$ state which uses up one state for each m value from -6 to +6. Now the highest m value left is 5, so a $`j = 5`$ states uses up a state at each m value between -5 and +5. Similarly we find a $`j = 4`$, $`j = 3`$, and $`j = 2`$ state. This uses up all the states, and uses up the states at each value of m. So we find in this case,
 
 ```math
 | \ell_{1} - \ell_{2} |\leq j \leq | \ell_{1} + \ell_{2} |
@@ -288,7 +288,7 @@ and that $`j`$ takes on every integer value between the limits. This makes sense
 
 If we have two atomic electrons in a P state with no external fields applied, **states of definite** **total angular momentum will be the energy eigenstates**. We will learn later that closed shells in atoms (or nuclei) have a total angular momentum of zero, allowing us to treat only the valence electrons. Examples of atoms like this would be Carbon, Silicon, and Germanium.
 
-Our two electrons each have $`ell`$ = 1 (P state) and $`s = \tfrac{1}{2}`$ (electrons). We need to add four angluar momenta together to get the total.
+Our two electrons each have $`ell = 1`$ (P state) and $`s = \tfrac{1}{2}`$ (electrons). We need to add four angluar momenta together to get the total.
 
 ```math
 \vec{J} = \vec{L}_{1} + \vec{L}_{2} + \vec{S}_{1} + \vec{S}_{2}
@@ -310,7 +310,7 @@ Since the electrons are identical particles and they are in the same radial stat
 s = 0 , 1
 ```
 
-These states have a definite symmetry under interchange. Before going on to make the total angular momentum states, lets note the symmetry of each of the above states. The maximum allowed state will always need to be symmetric in order to achieve the maximum. The symmetry will alternate as we go down in the quantum number. So, for example, the $`\ell`$ = 2 and $`\ell`$ = 0 states are symmetric, while the $`\ell`$ = 1 state is antisymmetric. The $`s`$ = 1 state is symmetric and the $`s`$ = 0 state is antisymmetric. The overall symmetry of a state will be a product of the these two symmetries (since when we add $`\ell`$ and $`s`$ to give $`j`$ we are not adding identical things anymore). The overall state must be antisymmetic so we can use:
+These states have a definite symmetry under interchange. Before going on to make the total angular momentum states, lets note the symmetry of each of the above states. The maximum allowed state will always need to be symmetric in order to achieve the maximum. The symmetry will alternate as we go down in the quantum number. So, for example, the $`\ell = 2`$ and $`\ell = 0`$ states are symmetric, while the $`\ell = 1`$ state is antisymmetric. The $`s = 1`$ state is symmetric and the $`s = 0`$ state is antisymmetric. The overall symmetry of a state will be a product of the these two symmetries (since when we add $`\ell`$ and $`s`$ to give $`j`$ we are not adding identical things anymore). The overall state must be antisymmetic so we can use:
 
 ```math
 \ell = 1 s = 1 j = 0 , 1 , 2^{3} P_{0} , {}^{3} P_{1} , {}^{3} P_{2}
@@ -342,7 +342,7 @@ In the atomic physics section, we will even deal with more than two electrons ou
 
 audio
 
-We can determine the internal parity of the pion by studying **pion capture by a deuteron**, $`\pi + d \to n + n.`$ The pion is known to have spin 0, the deuteron spin 1, and the neutron spin $`\frac{1}{2}`$. The internal parity of the deuteron is +1. The pion is captured by the deuteron from a 1S states, implying $`\ell`$ = 0 in the initial state. So the total angular momentum quantum number of the initial state is $`j`$ = 1.
+We can determine the internal parity of the pion by studying **pion capture by a deuteron**, $`\pi + d \to n + n.`$ The pion is known to have spin 0, the deuteron spin 1, and the neutron spin $`\frac{1}{2}`$. The internal parity of the deuteron is +1. The pion is captured by the deuteron from a 1S states, implying $`\ell = 0`$ in the initial state. So the total angular momentum quantum number of the initial state is $`j = 1`$.
 
 So the parity of the initial state is
 
@@ -364,7 +364,7 @@ P_{\pi} = ( - 1 )^{\ell} .
 
 Because the neutrons are identical fermions, the allowed states of two neutrons are<sup>1</sup>$`S_{0}`$,<sup>3</sup>$`P_{0 , 1 , 2}`$,<sup>1</sup>$`D_{2}`$,
 
-<sup>3</sup>$`F_{2 , 3 , 4} \dots`$ The only state with $`j`$ = 1 is the<sup>3</sup>$`P_{1}`$ state, so $`\ell`$ = 1
+<sup>3</sup>$`F_{2 , 3 , 4} \dots`$ The only state with $`j = 1`$ is the<sup>3</sup>$`P_{1}`$ state, so $`\ell = 1`$
 
 ```math
 \Rightarrow P_{\pi} = - 1 .
@@ -456,7 +456,7 @@ There is one state left over which is orthogonal to the three states we identifi
 \chi_{0 0} = \frac{1}{\sqrt{2}} \left( \chi_{+}^{( 1 )} \chi_{-}^{( 2 )} - \chi_{-}^{( 1 )} \chi_{+}^{( 2 )} \right)
 ```
 
-We have guessed that this is an $`s`$ = 0 state since there is only one state and it has m=0. We could verify this by using the $`S^{2}`$ operator.
+We have guessed that this is an $`s = 0`$ state since there is only one state and it has m=0. We could verify this by using the $`S^{2}`$ operator.
 
 <div align="right"><a href="book.pdf#page=319" target="_blank" title="This page in the PDF"><sup>[p. 319]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -506,7 +506,7 @@ S^{2} \chi_{+}^{( 1 )} \chi_{+}^{( 2 )} = \frac{3}{2} \hbar^{2} \chi_{+}^{( 1 )}
 = \frac{3}{2} \hbar^{2} \chi_{+}^{( 1 )} \chi_{+}^{( 2 )} + \frac{\hbar^{2}}{2} \chi_{+}^{( 1 )} \chi_{+}^{( 2 )} = 2 \hbar^{2} \chi_{+}^{( 1 )} \chi_{+}^{( 2 )}
 ```
 
-Note that $`s ( s + 1 )`$ = 2, so that the 2$`\hbar`$ is what we expected to get. This confirms that we have an s=1 state.
+Note that $`s ( s + 1 ) = 2`$, so that the 2$`\hbar`$ is what we expected to get. This confirms that we have an s=1 state.
 
 Now lets do the $`\chi_{0 0}`$ state.
 
@@ -650,7 +650,7 @@ Plugging $`j = \ell + \tfrac{1}{2}`$ into our first equation,
 ( \ell - m ) \alpha = \sqrt{( \ell - m ) ( \ell + m + 1 )} \beta
 ```
 
-we get the ratio between $`\beta`$ and $`\alpha`$. We will normalize the wave function by setting $`\alpha^{2} + \beta^{2}`$ = 1. So lets get the squares.
+we get the ratio between $`\beta`$ and $`\alpha`$. We will normalize the wave function by setting $`\alpha^{2} + \beta^{2} = 1`$. So lets get the squares.
 
 ```math
 \beta^{2} = \frac{( \ell - m )^{2}}{( \ell - m ) ( \ell + m + 1 )} \alpha^{2} = \frac{( \ell - m )}{( \ell + m + 1 )} \alpha^{2}
@@ -712,7 +712,7 @@ Similarly
 
 ## <a id="s-21-8-5-counting-the-states-for-ell-1-ell-2-leq-j-leq-ell-1-ell-2"></a>21.8.5 Counting the States for $`| \ell_{1} - \ell_{2} |\leq j \leq \ell_{1} + \ell_{2}`$.
 
-If we add $`\ell_{1}`$ to $`\ell_{2}`$ there are (2$`\ell_{1}`$ + 1)(2$`\ell_{2}`$ + 1) product states. Lets add up the number of states of total $`\ell`$. To keep things simple we assume we ordered things so $`\ell_{1} \geq \ell_{2}`$.
+If we add $`\ell_{1}`$ to $`\ell_{2}`$ there are (2$`\ell_{1} + 1`$)(2$`\ell_{2} + 1`$) product states. Lets add up the number of states of total $`\ell`$. To keep things simple we assume we ordered things so $`\ell_{1} \geq \ell_{2}`$.
 
 ```math
 \sum_{\ell = \ell_{1} - \ell_{2}}^{\ell_{1} + \ell_{2}} ( 2 \ell + 1 ) = \sum_{n = 0}^{2 \ell_{2}} ( 2 ( \ell_{1} - \ell_{2} + n ) + 1 ) = ( 2 \ell_{2} + 1 ) ( 2 \ell_{1} - 2 \ell_{2} + 1 ) + 2 \sum_{n = 0}^{2 \ell_{2}} n
@@ -740,13 +740,13 @@ This is what we expect.
 
 5. The state of an electron is given by $`\psi = R ( r ) [ \sqrt{\frac{1}{3}} Y_{1 0} ( \theta ,\varphi ) \chi_{+} + \sqrt{\frac{2}{3}} Y_{1 1} ( \theta ,\varphi ) \chi_{-} ]`$. Find the possible values and the probabilities of the $`z`$ component of the electron’s total angular momentum. Do the same for the total angular momentum squared. What is the probability density for finding an electron with spin up at $`r,\theta ,\varphi`$? What is it for spin down? What is the probability density independent of spin? (Do not leave your answer in terms of spherical harmonics.)
 
-6. The $`n`$ = 2 states of hydrogen have an 8-fold degeneracy due to the various $`l`$ and $`m`$ states allowed and the two spin states of the electron. The spin orbit interaction partially breaks the degeneracy by adding a term to the Hamiltonian $`H_{1}`$ = $`\tfrac{Ae^{2}}{2 m^{2} c^{2} r^{3}} \vec{L} \cdot \vec{S}`$. Use first order perturbation theory to find how the degeneracy is broken under the full Hamiltonian and write the approximate energy eigenstates in terms of $`R_{nl} , Y_{lm}`$, and $`\chi_{\pm}`$.
+6. The $`n = 2`$ states of hydrogen have an 8-fold degeneracy due to the various $`l`$ and $`m`$ states allowed and the two spin states of the electron. The spin orbit interaction partially breaks the degeneracy by adding a term to the Hamiltonian $`H_{1} = \tfrac{Ae^{2}}{2 m^{2} c^{2} r^{3}} \vec{L} \cdot \vec{S}`$. Use first order perturbation theory to find how the degeneracy is broken under the full Hamiltonian and write the approximate energy eigenstates in terms of $`R_{nl} , Y_{lm}`$, and $`\chi_{\pm}`$.
 
 7. The nucleus of a deuterium (A=2 isotope of H) atom is found to have spin 1. With a neutral atom, we have three angular momenta to add, the nuclear spin, the electron spin, and the orbital angular momentum. Define $`\vec{J} = \vec{L} + \vec{S}`$ in the usual way and $`\vec{F} = \vec{J} + \vec{I}`$ where $`I`$ denotes the nuclear spin operator. What are the possible quantum numbers $`j`$ and $`f`$ for an atom in the ground state? What are the possible quantum numbers for an atom in the 2p state?
 
 # <a id="s-21-10sample-test-problems"></a>21.10 Sample Test Problems
 
-1. Two identical spin $`\frac{3}{2}`$ particles are bound together into a state with total angular momentum $`l`$. a) What are the allowed states of total spin for $`l`$ = 0 and for $`l`$ = 1? b) List the allowed states using spectroscopic notation for $`l`$ = 0 and 1. (<sup>2</sup>$`{}^{s + 1} L_{j}`$)
+1. Two identical spin $`\frac{3}{2}`$ particles are bound together into a state with total angular momentum $`l`$. a) What are the allowed states of total spin for $`l = 0`$ and for $`l = 1`$? b) List the allowed states using spectroscopic notation for $`l = 0`$ and 1. (<sup>2</sup>$`{}^{s + 1} L_{j}`$)
 
 2. A hydrogen atom is in the state $`\psi = R_{4 3} Y_{3 0} \chi_{+}`$. A combined measurement of of $`J^{2}`$ and of $`J_{z}`$ is made. What are the possible outcomes of this combined measurement and what are the probabilities of each? You may ignore nuclear spin in this problem.
 
@@ -756,27 +756,27 @@ This is what we expect.
 
 (b) Write down the states of maximum $`m_{s}`$ for the maximum $`s`$ state. Use $`| sm_{s} \rangle`$ notation and $`| s_{1} m_{1} \rangle | s_{2} m_{2} \rangle`$ for the product states.
 
-(c) Now apply the lowering operator to get the other $`m_{s}`$ states. You only need to go down to $`m_{s}`$ = 0 because of the obvious symmetry.
+(c) Now apply the lowering operator to get the other $`m_{s}`$ states. You only need to go down to $`m_{s} = 0`$ because of the obvious symmetry.
 
 (d) Now find the states with the other values of $`s`$ in a similar way.
 
-4. Two (identical) electrons are bound in a Helium atom. What are the allowed states $`| jlsl_{1} l_{2} \rangle`$ if both electrons have principal quantum number $`n`$ = 1? What are the states if one has $`n`$ = 1 and the other $`n`$ = 2?
+4. Two (identical) electrons are bound in a Helium atom. What are the allowed states $`| jlsl_{1} l_{2} \rangle`$ if both electrons have principal quantum number $`n = 1`$? What are the states if one has $`n = 1`$ and the other $`n = 2`$?
 
 <div align="right"><a href="book.pdf#page=324" target="_blank" title="This page in the PDF"><sup>[p. 324]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p325" href="book.pdf#page=325" target="_blank" title="This page in the PDF"><sup>[p. 325]</sup></a>
 
-5. A hydrogen atom is in an eigenstate $`( \psi )`$ of $`J^{2} , L^{2}`$, and of $`J_{z}`$ such that $`J^{2} \psi`$ = $`\tfrac{1 5}{4} \hbar^{2} \psi`$, $`L^{2} \psi`$ = 6$`\hbar^{2} \psi , J_{z} \psi = - \tfrac{1}{2} \hbar \psi`$, and of course the electron’s spin is $`\frac{1}{2}`$. Determine the quantum numbers of this state as well as you can. If a measurement of $`L_{z}`$ is made, what are the possible outcomes and what are the probabilities of each.
+5. A hydrogen atom is in an eigenstate $`( \psi )`$ of $`J^{2} , L^{2}`$, and of $`J_{z}`$ such that $`J^{2} \psi = \tfrac{1 5}{4} \hbar^{2} \psi`$, $`L^{2} \psi = 6 \hbar^{2} \psi , J_{z} \psi = - \tfrac{1}{2} \hbar \psi`$, and of course the electron’s spin is $`\frac{1}{2}`$. Determine the quantum numbers of this state as well as you can. If a measurement of $`L_{z}`$ is made, what are the possible outcomes and what are the probabilities of each.
 
 6. A hydrogen atom is in the state $`\psi = R_{3 2} Y_{2 1} \chi_{-}`$. If a measurement of $`J^{2}`$ and of $`J_{z}`$ is made, what are the possible outcomes of this measurement and what are the probabilities for each outcome? If a measurement of the energy of the state is made, what are the possible energies and the probabilities of each? You may ignore the nuclear spin in this problem.
 
-7. Two identical spin 1 particles are bound together into a state with orbital angular momentum $`l`$. What are the allowed states of total spin (s) for $`l`$ = 2, for $`l`$ = 1, and for $`l`$ = 0? List all the allowed states giving, for each state, the values of the quantum numbers for total angular momentum $`( j )`$, orbital angular momentum $`( l )`$ and spin angular momentum $`( s )`$ if $`l`$ is 2 or less. You need not list all the different $`m_{j}`$ values.
+7. Two identical spin 1 particles are bound together into a state with orbital angular momentum $`l`$. What are the allowed states of total spin (s) for $`l = 2`$, for $`l = 1`$, and for $`l = 0`$? List all the allowed states giving, for each state, the values of the quantum numbers for total angular momentum $`( j )`$, orbital angular momentum $`( l )`$ and spin angular momentum $`( s )`$ if $`l`$ is 2 or less. You need not list all the different $`m_{j}`$ values.
 
-8. List all the allowed states of total spin and total z-component of spin for 2 identical spin 1 particles. What $`\ell`$ values are allowed for each of these states? Explicitly write down the (2$`s`$+ 1) states for the highest $`s`$ in terms of $`\chi_{+}^{( 1 )} ,\chi_{+}^{( 2 )} ,\chi_{0}^{( 1 )} ,\chi_{0}^{( 2 )} ,\chi_{-}^{( 1 )}`$ , and $`\chi_{-}^{( 2 )}`$ .
+8. List all the allowed states of total spin and total z-component of spin for 2 identical spin 1 particles. What $`\ell`$ values are allowed for each of these states? Explicitly write down the (2$`s + 1`$) states for the highest $`s`$ in terms of $`\chi_{+}^{( 1 )} ,\chi_{+}^{( 2 )} ,\chi_{0}^{( 1 )} ,\chi_{0}^{( 2 )} ,\chi_{-}^{( 1 )}`$ , and $`\chi_{-}^{( 2 )}`$ .
 
 9. Two different spin $`\frac{1}{2}`$ particles have a Hamiltonian given by $`H = E_{0} + \tfrac{A}{\hbar^{2}} \vec{S}_{1} \cdot \vec{S}_{2} + \tfrac{B}{\hbar} ( S_{1 z} + S_{2 z} )`$. Find the allowed energies and the energy eigenstates in terms of the four basis states $`|`$ + +$`\rangle`$, $`| + - \rangle , |- + \rangle`$, and $`| - - \rangle`$.
 
-10. A spin 1 particle is in an $`\ell`$ = 2 state. Find the allowed values of the total angular momentum quantum number, $`j`$. Write out the $`| j,m j \rangle`$ states for the largest allowed $`j`$ value, in terms of the $`| m l ,m s \rangle`$ basis. (That is give one state for every $`m_{j}`$ value.) If the particle is prepared in the state $`| m_{l}`$ = 0$`,m_{s}`$ = 0$`\rangle`$, what is the probability to measure $`J^{2}`$ = 12$`\hbar^{2}`$?
+10. A spin 1 particle is in an $`\ell = 2`$ state. Find the allowed values of the total angular momentum quantum number, $`j`$. Write out the $`| j,m j \rangle`$ states for the largest allowed $`j`$ value, in terms of the $`| m l ,m s \rangle`$ basis. (That is give one state for every $`m_{j}`$ value.) If the particle is prepared in the state $`| m_{l} = 0 ,m_{s} = 0 \rangle`$, what is the probability to measure $`J^{2} = 12 \hbar^{2}`$?
 
 11. Two different spin $`\frac{1}{2}`$ particles have a Hamiltonian given by $`H = E_{0} + A \vec{S}_{1} \cdot \vec{S}_{2} + B ( S_{1 z} + S_{2 z} )`$. Find the allowed energies and the energy eigenstates in terms of the four product states $`\chi_{+}^{( 1 )} \chi_{+}^{( 2 )}`$ , $`\chi_{+}^{( 1 )} \chi_{-}^{( 2 )}`$ , $`\chi_{-}^{( 1 )} \chi_{+}^{( 2 )}`$ , and $`\chi_{-}^{( 1 )} \chi_{-}^{( 2 )}`$ .
 

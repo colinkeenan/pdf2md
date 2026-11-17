@@ -105,7 +105,7 @@ The Maxwell equations are invariant under a **gauge transformation** of the pote
 \varphi \quad \to \quad \varphi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t}
 ```
 
-Note that when we quantize the field, the potentials will play the role that wave functions do for the electron, so this gauge symmetry will be important in quantum mechanics. We can use the gauge symmetry to simplify our equations. For time independent charge and current distributions, the **coulomb gauge,** $`\vec{\nabla} \cdot \vec{A}`$ = 0, is often used. For time dependent conditions, the **Lorentz gauge,** $`\vec{\nabla} \cdot \vec{A} + \tfrac{1}{c} \tfrac{\partial \varphi}{\partial t}`$ = 0, is often convenient. These greatly simplify the above wave equations in an obvious way.
+Note that when we quantize the field, the potentials will play the role that wave functions do for the electron, so this gauge symmetry will be important in quantum mechanics. We can use the gauge symmetry to simplify our equations. For time independent charge and current distributions, the **coulomb gauge,** $`\vec{\nabla} \cdot \vec{A} = 0`$, is often used. For time dependent conditions, the **Lorentz gauge,** $`\vec{\nabla} \cdot \vec{A} + \tfrac{1}{c} \tfrac{\partial \varphi}{\partial t} = 0`$, is often convenient. These greatly simplify the above wave equations in an obvious way.
 
 Finally, the classical **Hamiltonian for electrons in an electromagnetic field** becomes
 
@@ -235,7 +235,7 @@ We will write our **standard gauge transformation** in the traditional way to co
 \psi ( \vec{r} , t ) \quad \to \quad e^{- i \tfrac{e}{\hbar c} f ( \vec{r} ,t )} \psi ( \vec{r} , t )
 ```
 
-There are measurable **quantum physics consequences** of this symmetry. We can understand a number of them by looking at the **vector potential in a field free regions**. If $`B`$ = 0 then $`\vec{A}`$ can be written as the gradient of a function $`f ( \vec{r} )`$. To be specific, take our gauge transformation of the vector potential. Make a gauge transformation such that $`\vec{A}^{\prime}`$ = 0. This of course is still consistent with $`\vec{B}`$ = 0.
+There are measurable **quantum physics consequences** of this symmetry. We can understand a number of them by looking at the **vector potential in a field free regions**. If $`B = 0`$ then $`\vec{A}`$ can be written as the gradient of a function $`f ( \vec{r} )`$. To be specific, take our gauge transformation of the vector potential. Make a gauge transformation such that $`\vec{A}^{\prime} = 0`$. This of course is still consistent with $`\vec{B} = 0`$.
 
 ```math
 \vec{A}^{\prime} = \vec{A} - \vec{\nabla} f ( \vec{r} ) = 0
@@ -253,7 +253,7 @@ Integrating this equation, we can write the function $`f ( \vec{r} )`$ in terms 
 \int_{\vec{r}_{0}}^{\vec{r}} d \vec{r} \cdot \vec{A} = \int_{\vec{r}_{0}}^{\vec{r}} d \vec{r} \cdot \vec{\nabla} f = f ( \vec{r} ) - f ( \vec{r}_{0} )
 ```
 
-If we choose $`f`$ so that $`f ( \vec{r}_{0} )`$ = 0, then we have a **very useful relation between the gauge** **function and the vector potential in a field free region.**
+If we choose $`f`$ so that $`f ( \vec{r}_{0} ) = 0`$, then we have a **very useful relation between the gauge** **function and the vector potential in a field free region.**
 
 ```math
 f ( \vec{r} ) = \int_{\vec{r}_{0}}^{\vec{r}} d \vec{r} \cdot \vec{A} .
@@ -265,7 +265,7 @@ We can **derive** (see section 20.5.8) the quantization of magnetic flux by calc
 \Phi = \frac{2 n\pi \hbar c}{e}
 ```
 
-A good example of a $`B`$ = 0 region is a **superconductor**. Magnetic flux is excluded from the superconducting region. If we have a superconducting ring, we have a B=0 region surrounding some flux. We have shown then, that the flux going through a ring of superconductor is quantized.
+A good example of a $`B = 0`$ region is a **superconductor**. Magnetic flux is excluded from the superconducting region. If we have a superconducting ring, we have a B=0 region surrounding some flux. We have shown then, that the flux going through a ring of superconductor is quantized.
 
 <div align="right"><a href="book.pdf#page=296" target="_blank" title="This page in the PDF"><sup>[p. 296]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -289,7 +289,7 @@ The **Aharanov Böhm Effect** brings us back to the two slit diffraction experim
 
 _Figure 78 (p. 297)_
 
-The electron beams travel through two slits in field free regions but we have the ability to vary a magnetic field enclosed by the path of the electrons. At the screen, the amplitudes from the two<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=297" target="_blank" title="This page in the PDF"><sup>[p. 297]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p298" href="book.pdf#page=298" target="_blank" title="This page in the PDF"><sup>[p. 298]</sup></a></span> slits interfere $`\psi = \psi_{1} + \psi_{2}`$. Let’s start with $`B`$ = 0 and $`A`$ = 0 everywhere. When we change the $`B`$ field, the wavefunctions must change.
+The electron beams travel through two slits in field free regions but we have the ability to vary a magnetic field enclosed by the path of the electrons. At the screen, the amplitudes from the two<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=297" target="_blank" title="This page in the PDF"><sup>[p. 297]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p298" href="book.pdf#page=298" target="_blank" title="This page in the PDF"><sup>[p. 298]</sup></a></span> slits interfere $`\psi = \psi_{1} + \psi_{2}`$. Let’s start with $`B = 0`$ and $`A = 0`$ everywhere. When we change the $`B`$ field, the wavefunctions must change.
 
 ```math
 \psi_{1} \quad \to \quad \psi_{1} e_{e} \int^{- i \tfrac{e}{\hbar c}_{1} d \vec{r} \cdot \vec{A}} \int_{\vec{\jmath}}
@@ -303,7 +303,7 @@ The electron beams travel through two slits in field free regions but we have th
 \psi = \left( \psi_{1} e^{- i \tfrac{e \Phi}{\hbar c}} + \psi_{2} \right) e^{- i_{\hbar c 2} d \vec{r} \cdot A}
 ```
 
-The relative phase from the two slits depends on the flux between the slits. By varying the $`B`$ field, we will **shift the diffraction pattern** even though $`B`$ = 0 along the whole path of the electrons. While this may at first seem amazing, we have seen similar effects in classical E&M with an EMF induced in a loop by a changing $`B`$ field which does not touch the actual loop.
+The relative phase from the two slits depends on the flux between the slits. By varying the $`B`$ field, we will **shift the diffraction pattern** even though $`B = 0`$ along the whole path of the electrons. While this may at first seem amazing, we have seen similar effects in classical E&M with an EMF induced in a loop by a changing $`B`$ field which does not touch the actual loop.
 
 # <a id="s-20-4-examples"></a>20.4 Examples
 
@@ -415,9 +415,9 @@ We could also just interchange the index names $`i`$ and $`m`$ then switch those
 \vec{\nabla} \cdot \vec{B} = \frac{\partial}{\partial x_{m}} \frac{\partial}{\partial x_{i}} A_{n} \epsilon_{inm} = - \frac{\partial}{\partial x_{m}} \frac{\partial}{\partial x_{i}} A_{n} \epsilon_{mni}
 ```
 
-We have the same expression except for a minus sign which means that $`\vec{\nabla} \cdot \vec{B}`$ = 0.
+We have the same expression except for a minus sign which means that $`\vec{\nabla} \cdot \vec{B} = 0`$.
 
-For the second equation, we write it out in terms of the potentials and notice that the first term $`\tfrac{\partial}{\partial x_{i}} \tfrac{\partial}{\partial x_{j}} \varphi \epsilon_{ijk}`$ = 0 for the same reason as above.
+For the second equation, we write it out in terms of the potentials and notice that the first term $`\tfrac{\partial}{\partial x_{i}} \tfrac{\partial}{\partial x_{j}} \varphi \epsilon_{ijk} = 0`$ for the same reason as above.
 
 ```math
 \frac{\partial}{\partial x_{i}} E_{j} \epsilon_{ijk} + \frac{1}{c} \frac{\partial B_{k}}{\partial t} = - \frac{\partial}{\partial x_{i}} \left( \frac{\partial}{\partial x_{j}} \varphi + \frac{1}{c} \frac{\partial A_{j}}{\partial t} \right) \epsilon_{ijk} + \frac{1}{c} \frac{\partial}{\partial t} \frac{\partial}{\partial x_{m}} A_{n} \epsilon_{mnk}
@@ -453,7 +453,7 @@ For the fourth equation we have.
 \frac{\partial}{\partial x_{i}} \frac{\partial}{\partial x_{m}} A_{n} \epsilon_{mnj} \epsilon_{ijk} + \frac{1}{c} \frac{\partial}{\partial t} \left( \frac{\partial}{\partial x_{k}} \varphi + \frac{1}{c} \frac{\partial A_{k}}{\partial t} \right) = \frac{4 \pi}{c} J_{k}
 ```
 
-Its easy to derive an identity for the product of two totally antisymmetric tensors $`\epsilon_{mnj} \epsilon_{ijk}`$ as occurs above. All the indices of any tensor have to be different in order to get a nonzero result. Since the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=300" target="_blank" title="This page in the PDF"><sup>[p. 300]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p301" href="book.pdf#page=301" target="_blank" title="This page in the PDF"><sup>[p. 301]</sup></a></span> $`j`$ occurs in both tensors (and is summed over) we can simplify things. Take the case that $`i`$ = 1 and $`k`$ = 2. We only have a nonzero term if $`j`$ = 3 so the other 2 terms in the sum are zero. But if $`j`$ = 3, we must have either $`m`$ = 1 and $`n`$ = 2 or vice versa. We also must not have $`i = k`$ since all the indices have to be different on each epsilon. So we can write.
+Its easy to derive an identity for the product of two totally antisymmetric tensors $`\epsilon_{mnj} \epsilon_{ijk}`$ as occurs above. All the indices of any tensor have to be different in order to get a nonzero result. Since the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=300" target="_blank" title="This page in the PDF"><sup>[p. 300]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p301" href="book.pdf#page=301" target="_blank" title="This page in the PDF"><sup>[p. 301]</sup></a></span> $`j`$ occurs in both tensors (and is summed over) we can simplify things. Take the case that $`i = 1`$ and $`k = 2`$. We only have a nonzero term if $`j = 3`$ so the other 2 terms in the sum are zero. But if $`j = 3`$, we must have either $`m = 1`$ and $`n = 2`$ or vice versa. We also must not have $`i = k`$ since all the indices have to be different on each epsilon. So we can write.
 
 ```math
 \epsilon_{mnj} \epsilon_{ijk} = \epsilon_{mnj} \epsilon_{kij} = ( \delta_{km} \delta_{in} - \delta_{kn} \delta_{im} )
@@ -613,7 +613,7 @@ Now write the **Schrödinger equation**.
 \begin{aligned} \frac{1}{2 \mu} \left( \frac{\hbar}{i} \vec{\nabla} + \frac{e}{c} \vec{A} \right) \cdot \left( \frac{\hbar}{i} \vec{\nabla} \psi + \frac{e}{c} \vec{A} \psi \right) &= ( E + e\varphi ) \psi \\ \frac{- \hbar^{2}}{2 \mu} \nabla^{2} \psi - \frac{ie \hbar}{2 \mu c} \vec{\nabla} \cdot \left( \vec{A} \psi \right) - \frac{ie \hbar}{2 \mu c} \vec{A} \cdot \vec{\nabla} \psi + \frac{e^{2}}{2 mc^{2}} A^{2} \psi &= ( E + e\varphi ) \psi \\ \frac{- \hbar^{2}}{2 \mu} \nabla^{2} \psi - \frac{ie \hbar}{2 \mu c} \left( \vec{\nabla} \cdot \vec{A} \right) \psi - \frac{ie \hbar}{\mu c} \vec{A} \cdot \vec{\nabla} \psi + \frac{e^{2}}{2 mc^{2}} A^{2} \psi &= ( E + e\varphi ) \psi \end{aligned}
 ```
 
-The second term vanishes in the **Coulomb gauge** i.e., $`\vec{\nabla} \cdot \vec{A}`$ = 0, so
+The second term vanishes in the **Coulomb gauge** i.e., $`\vec{\nabla} \cdot \vec{A} = 0`$, so
 
 ```math
 - \frac{\hbar^{2}}{2 \mu} \nabla^{2} \psi - \frac{ie \hbar}{\mu c} \vec{A} \cdot \vec{\nabla} \psi + \frac{e^{2}}{2 mc^{2}} A^{2} \psi = ( E + e\varphi ) \psi
@@ -721,7 +721,7 @@ For uniform $`\vec{B}`$ field, cylindrical symmetry $`\Rightarrow`$ apply **cyli
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p305" href="book.pdf#page=305" target="_blank" title="This page in the PDF"><sup>[p. 305]</sup></a>
 
-From the symmetry of the problem, we can guess (and verify) that $`[ H,p_{z} ]`$ = $`[ H,L_{z} ]`$ = 0. These variables will be constants of the motion and we therefore choose
+From the symmetry of the problem, we can guess (and verify) that $`[ H,p_{z} ] = [ H,L_{z} ] = 0`$. These variables will be constants of the motion and we therefore choose
 
 ```math
 \psi ( \vec{r} ) = u_{mk} ( \rho ) e^{im\varphi} e^{ikz} .
@@ -811,7 +811,7 @@ Compare this to the equation we had for hydrogen
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p306" href="book.pdf#page=306" target="_blank" title="This page in the PDF"><sup>[p. 306]</sup></a>
 
-with $`\lambda = n_{r} + \ell`$ + 1. The equations are the same if WE set our $`\tfrac{\lambda}{4} = n_{r} + \tfrac{1 + | m |}{2}`$ where $`n_{r} = 0 , 1 , 2 ,\dots`$. Recall that our $`\lambda =`$<sup>4</sup>$`\tfrac{m_{e} c}{eB \hbar} \left( E - \tfrac{\hbar^{2} k^{2}}{2 m_{e}} \right) - 2 m`$. This gives us the **energy eigenvalues**
+with $`\lambda = n_{r} + \ell + 1`$. The equations are the same if WE set our $`\tfrac{\lambda}{4} = n_{r} + \tfrac{1 + | m |}{2}`$ where $`n_{r} = 0 , 1 , 2 ,\dots`$. Recall that our $`\lambda =`$<sup>4</sup>$`\tfrac{m_{e} c}{eB \hbar} \left( E - \tfrac{\hbar^{2} k^{2}}{2 m_{e}} \right) - 2 m`$. This gives us the **energy eigenvalues**
 
 ```math
 \Rightarrow \quad E - \frac{\hbar^{2} k^{2}}{2 m_{e}} = \frac{eB \hbar}{m_{e} c} \left( n_{r} + \frac{1 + | m | + m}{2} \right) .
@@ -849,7 +849,7 @@ This can be compared to the purely classical calculation for an electron with an
 
 ## <a id="s-20-5-6-energy-states-of-electrons-in-a-plasma-ii"></a>20.5.6 Energy States of Electrons in a Plasma II
 
-We are going to solve the same plasma in a constant B field in a different gauge. If $`\vec{A}`$ = $`( 0 ,Bx, 0 ) ,`$ then
+We are going to solve the same plasma in a constant B field in a different gauge. If $`\vec{A} = ( 0 ,Bx, 0 ) ,`$ then
 
 ```math
 \vec{B} = \vec{\nabla} \times \vec{A} = \frac{\partial A_{y}}{\partial x} \hat{z} = B \hat{z} .
@@ -1039,15 +1039,15 @@ is given by
 \vec{j} = \frac{\hbar}{2 i\mu} [ \psi^{*} \vec{\nabla} \psi - ( \vec{\nabla} \psi^{*} ) \psi + \frac{2 ie}{\hbar c} \vec{A} \psi^{*} \psi ] .
 ```
 
-Remember the flux satisfies the equations $`\tfrac{\partial ( \psi^{*} \psi )}{\partial t} + \vec{\nabla} \vec{j}`$ = 0.
+Remember the flux satisfies the equations $`\tfrac{\partial ( \psi^{*} \psi )}{\partial t} + \vec{\nabla} \vec{j} = 0`$.
 
-4. Consider the problem of a charged particle in an external magnetic field $`\vec{B}`$ = $`( 0 , 0 ,B )`$ with the gauge chosen so that $`\vec{A} = ( - yB, 0 , 0 )`$. What are the constants of the motion? Go as far as you can in solving the equations of motion and obtain the energy spectrum. Can you explain why the same problem in the gauges $`\vec{A} = ( - yB/ 2 ,xB/ 2 , 0 )`$ and $`\vec{A}`$ = (0$`,xB, 0`$) can represent the same physical situation? Why do the solutions look so different?
+4. Consider the problem of a charged particle in an external magnetic field $`\vec{B} = ( 0 , 0 ,B )`$ with the gauge chosen so that $`\vec{A} = ( - yB, 0 , 0 )`$. What are the constants of the motion? Go as far as you can in solving the equations of motion and obtain the energy spectrum. Can you explain why the same problem in the gauges $`\vec{A} = ( - yB/ 2 ,xB/ 2 , 0 )`$ and $`\vec{A}`$ = (0$`,xB, 0`$) can represent the same physical situation? Why do the solutions look so different?
 
 5. Calculate the top left $`4 \times 4`$ corner of the matrix representation of $`x^{4}`$ for the harmonic oscillator.
 
 Use the energy eigenstates as the basis states.
 
-6. The Hamiltonian for an electron in a electromagnetic field can be written as $`H`$ = $`\tfrac{1}{2 m} [ \vec{p} + \tfrac{e}{c} \vec{A} ( \vec{r} , t ) ]^{2} - e\varphi ( \vec{r} , t ) + \tfrac{e \hbar}{2 mc} \vec{\sigma} \cdot B ( \vec{\hbar} r,t )`$. Show that this can be written as the Pauli Hamiltonian
+6. The Hamiltonian for an electron in a electromagnetic field can be written as $`H = \tfrac{1}{2 m} [ \vec{p} + \tfrac{e}{c} \vec{A} ( \vec{r} , t ) ]^{2} - e\varphi ( \vec{r} , t ) + \tfrac{e \hbar}{2 mc} \vec{\sigma} \cdot B ( \vec{\hbar} r,t )`$. Show that this can be written as the Pauli Hamiltonian
 
 ```math
 H = \frac{1}{2 m} \left( \vec{\sigma} \cdot [ \vec{p} + \frac{e}{c} \vec{A} ( \vec{r} , t ) ] \right)^{2} - e\varphi ( \vec{r} , t ) .

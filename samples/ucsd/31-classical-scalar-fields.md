@@ -269,7 +269,7 @@ With this Lagrangian, the Euler-Lagrange equation is.
 ✷ \varphi - \mu^{2} \varphi = 0
 ```
 
-This is the known as the **Klein-Gordon equation**. It is a good relativistic equation for a **massive** **scalar field**. It was also an early candidate for the relativistic equivalent of the Schrödinger equation for electrons because it basically has the **relativistic analog of the energy relation** inherent in<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=430" target="_blank" title="This page in the PDF"><sup>[p. 430]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p431" href="book.pdf#page=431" target="_blank" title="This page in the PDF"><sup>[p. 431]</sup></a></span> the Schrödinger equation. Writing that relation in the order terms appear in the Klein-Gordon equation above we get (letting $`c`$ = 1 briefly).
+This is the known as the **Klein-Gordon equation**. It is a good relativistic equation for a **massive** **scalar field**. It was also an early candidate for the relativistic equivalent of the Schrödinger equation for electrons because it basically has the **relativistic analog of the energy relation** inherent in<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=430" target="_blank" title="This page in the PDF"><sup>[p. 430]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p431" href="book.pdf#page=431" target="_blank" title="This page in the PDF"><sup>[p. 431]</sup></a></span> the Schrödinger equation. Writing that relation in the order terms appear in the Klein-Gordon equation above we get (letting $`c = 1`$ briefly).
 
 ```math
 - p^{2} + E^{2} - m^{2} = 0
@@ -313,7 +313,7 @@ We will solve this for the **field from a point source** below and get the resul
 \varphi ( \vec{x} ) = \frac{- Ge^{- \mu r}}{4 \pi r} .
 ```
 
-This solution should be familiar to us from the scalar potential for an electric point charge which satisfies the same equation with $`\mu`$ = 0, $`\nabla^{2} \varphi = - \rho = - Q\delta^{3} ( \vec{x} )`$. This is a field that falls off much faster than $`\frac{1}{r}`$. **A massive scalar field falls off exponentially** and the larger the mass, the faster the fall off. (We also get a mathematical result which is useful in several applications. This is worked out another way in the section on hyperfine splitting) $`\nabla_{\overline{r}}^{2 1} = - 4 \pi \delta^{3} ( \vec{x} ) .`$
+This solution should be familiar to us from the scalar potential for an electric point charge which satisfies the same equation with $`\mu = 0`$, $`\nabla^{2} \varphi = - \rho = - Q\delta^{3} ( \vec{x} )`$. This is a field that falls off much faster than $`\frac{1}{r}`$. **A massive scalar field falls off exponentially** and the larger the mass, the faster the fall off. (We also get a mathematical result which is useful in several applications. This is worked out another way in the section on hyperfine splitting) $`\nabla_{\overline{r}}^{2 1} = - 4 \pi \delta^{3} ( \vec{x} ) .`$
 
 Now we solve for the scalar field from a point source by Fourier transforming the wave equation. Define the Fourier transforms to be.
 

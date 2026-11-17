@@ -17,7 +17,7 @@ Enrico Fermi showed, in 1930, that $`A_{\|}`$ together with $`A_{0}`$ give rise 
 H = \sum_{j} \frac{1}{2 m_{j}} \left( \vec{p} - \frac{e}{c} \vec{A}_{\perp} ( \vec{x}_{j} ) \right)^{2} + \sum_{i>j} \frac{e_{i} e_{j}}{4 \pi | \vec{x}_{i} - \vec{x}_{j} |} + H_{rad}
 ```
 
-where $`H_{rad}`$ is purely the Hamiltonian of the radiation (containing only $`\vec{A}_{\perp}`$), and $`\vec{A}_{\perp}`$ is the part of the vector potential which satisfies $`\vec{\nabla} \cdot \vec{A}_{\perp}`$ = 0. Note that $`\vec{A}_{\|}`$ and $`A_{4}`$ appear nowhere in the Hamiltonian. Instead, we have the Coulomb potential. This separation allows us to continue with our standard Hydrogen solution and just add radiation. We will not derive this result.
+where $`H_{rad}`$ is purely the Hamiltonian of the radiation (containing only $`\vec{A}_{\perp}`$), and $`\vec{A}_{\perp}`$ is the part of the vector potential which satisfies $`\vec{\nabla} \cdot \vec{A}_{\perp} = 0`$. Note that $`\vec{A}_{\|}`$ and $`A_{4}`$ appear nowhere in the Hamiltonian. Instead, we have the Coulomb potential. This separation allows us to continue with our standard Hydrogen solution and just add radiation. We will not derive this result.
 
 In a **region in which there are no source terms**,
 
@@ -57,7 +57,7 @@ If $`j_{\mu} \neq 0`$, then we cannot eliminate $`A_{0}`$, since ✷$`A_{0} = \t
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p444" href="book.pdf#page=444" target="_blank" title="This page in the PDF"><sup>[p. 444]</sup></a>
 
-We will now study the radiation field in a region with no sources so that $`\vec{\nabla} \cdot \vec{A}`$ = 0. We will use the equations
+We will now study the radiation field in a region with no sources so that $`\vec{\nabla} \cdot \vec{A} = 0`$. We will use the equations
 
 ```math
 \vec{B} = \vec{\nabla} \times \vec{A}
@@ -73,7 +73,7 @@ We will now study the radiation field in a region with no sources so that $`\vec
 
 # <a id="s-33-2-fourier-decomposition-of-radiation-oscillators"></a>33.2 Fourier Decomposition of Radiation Oscillators
 
-Our goal is to write the Hamiltonian for the radiation field in terms of a sum of harmonic oscillator Hamiltonians. The first step is to write the radiation field in as simple a way as possible, as a sum of harmonic components. We will work in a cubic volume $`V = L^{3}`$ and apply **periodic boundary** **conditions** on our electromagnetic waves. We also assume for now that there are **no sources inside** **the region** so that we can make a gauge transformation to make $`A_{0}`$ = 0 and hence $`\vec{\nabla} \cdot \vec{A}`$ = 0. We **decompose the field into its Fourier components** at $`t`$ = 0
+Our goal is to write the Hamiltonian for the radiation field in terms of a sum of harmonic oscillator Hamiltonians. The first step is to write the radiation field in as simple a way as possible, as a sum of harmonic components. We will work in a cubic volume $`V = L^{3}`$ and apply **periodic boundary** **conditions** on our electromagnetic waves. We also assume for now that there are **no sources inside** **the region** so that we can make a gauge transformation to make $`A_{0} = 0`$ and hence $`\vec{\nabla} \cdot \vec{A} = 0`$. We **decompose the field into its Fourier components** at $`t = 0`$
 
 ```math
 \vec{A} ( \vec{x} , t = 0 ) = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \hat{\epsilon}^{( \alpha )} \left( c_{k,\alpha} ( t = 0 ) e^{i \vec{k} \cdot \vec{x}} + c_{k,\alpha}^{*} ( t = 0 ) e^{- i \vec{k} \cdot \vec{x}} \right)
@@ -141,7 +141,7 @@ A convenient shorthand for calculations is possible by noticing that the second 
 \vec{A} ( \vec{x} , t ) = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \hat{\epsilon}^{( \alpha )} c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c.c.
 ```
 
-Note again that we have made this a transverse field by construction. The unit vectors $`\hat{\epsilon}^{( \alpha )}`$ are transverse to the direction of propagation. Also note that we are working in a gauge with $`A_{4}`$ = 0, so this can also represent the 4-vector form of the potential. The **Fourier decomposition of the** **radiation field** can be written very simply.
+Note again that we have made this a transverse field by construction. The unit vectors $`\hat{\epsilon}^{( \alpha )}`$ are transverse to the direction of propagation. Also note that we are working in a gauge with $`A_{4} = 0`$, so this can also represent the 4-vector form of the potential. The **Fourier decomposition of the** **radiation field** can be written very simply.
 
 ```math
 A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \epsilon_{\mu}^{( \alpha )} c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c.c.
@@ -163,9 +163,9 @@ Let’s **verify that this decomposition of the radiation field satisfies the Ma
 = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \epsilon_{\mu}^{( \alpha )} c_{k,\alpha} ( 0 ) ( - k_{\nu} k_{\nu} ) e^{ik_{\rho} x_{\rho}} + c.c. = 0
 ```
 
-The result is zero since $`k_{\nu} k_{\nu} = k^{2} - k^{2}`$ = 0.
+The result is zero since $`k_{\nu} k_{\nu} = k^{2} - k^{2} = 0`$.
 
-Let’s also **verify that** $`\vec{\nabla} \cdot \vec{A}`$ = 0.
+Let’s also **verify that** $`\vec{\nabla} \cdot \vec{A} = 0`$.
 
 ```math
 \vec{\nabla} \cdot \left( \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \hat{\epsilon}^{( \alpha )} c_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + c.c. \right) = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} c_{k,\alpha} ( t ) \hat{\epsilon}^{( \alpha )} \cdot \vec{\nabla} e^{i \vec{k} \cdot \vec{x}} + c.c.
@@ -175,7 +175,7 @@ Let’s also **verify that** $`\vec{\nabla} \cdot \vec{A}`$ = 0.
 = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} c_{k,\alpha} ( t ) \hat{\epsilon}^{( \alpha )} \cdot \vec{k} e^{i \vec{k} \cdot \vec{x}} + c.c. = 0
 ```
 
-The result here is zero because $`\hat{\epsilon}^{( \alpha )} \cdot \vec{k}`$ = 0.
+The result here is zero because $`\hat{\epsilon}^{( \alpha )} \cdot \vec{k} = 0`$.
 
 <div align="right"><a href="book.pdf#page=445" target="_blank" title="This page in the PDF"><sup>[p. 445]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -403,7 +403,7 @@ P_{k,\alpha} = - \frac{i\omega}{c} ( c_{k,\alpha} - c_{k,\alpha}^{*} )
 H = \frac{1}{2} \sum_{k,\alpha} \left[ P_{k,\alpha}^{2} + \omega^{2} Q_{k,\alpha}^{2} \right]
 ```
 
-Soon after the development of non-relativistic quantum mechanics, Dirac proposed that the canonical variables of the radiation oscillators be treated like $`p`$ and $`x`$ in the quantum mechanics we know. The place to start is with the commutators. **The coordinate and its corresponding momentum** **do not commute.** For example $`[ p_{x} ,x ] = \tfrac{\hbar}{i}`$. Coordinates and momenta that do not correspond, do commute. For example $`[ p_{y} ,x ]`$ = 0. Different coordinates commute with each other as do different momenta. We will impose the same rules here.
+Soon after the development of non-relativistic quantum mechanics, Dirac proposed that the canonical variables of the radiation oscillators be treated like $`p`$ and $`x`$ in the quantum mechanics we know. The place to start is with the commutators. **The coordinate and its corresponding momentum** **do not commute.** For example $`[ p_{x} ,x ] = \tfrac{\hbar}{i}`$. Coordinates and momenta that do not correspond, do commute. For example $`[ p_{y} ,x ] = 0`$. Different coordinates commute with each other as do different momenta. We will impose the same rules here.
 
 ```math
 [ Q_{k,\alpha} ,P_{k^{\prime} ,\alpha^{\prime}} ] = i \hbar \delta_{kk^{\prime}} \delta_{\alpha \alpha^{\prime}}
@@ -461,7 +461,7 @@ a_{k,\alpha}^{\dagger} a_{k,\alpha} + \frac{1}{2} = \frac{1}{2 \hbar \omega} ( \
 H = \left( a_{k,\alpha}^{\dagger} a_{k,\alpha} + \frac{1}{2} \right) \hbar \omega
 ```
 
-This is just the **same as the Hamiltonian that we had for the one dimensional harmonic** **oscillator**. We therefore have the raising and lowering operators, as long as $`[ a_{k,\alpha} ,a_{k,\alpha}^{\dagger} ]`$ = 1, as we had for the 1D harmonic oscillator.
+This is just the **same as the Hamiltonian that we had for the one dimensional harmonic** **oscillator**. We therefore have the raising and lowering operators, as long as $`[ a_{k,\alpha} ,a_{k,\alpha}^{\dagger} ] = 1`$, as we had for the 1D harmonic oscillator.
 
 ```math
 \left[ a_{k,\alpha} ,a_{k,\alpha}^{\dagger} \right] = [ \frac{1}{\sqrt{2 \hbar \omega}} ( \omega Q_{k,\alpha} + iP_{k,\alpha} ) , \frac{1}{\sqrt{2 \hbar \omega}} ( \omega Q_{k,\alpha} - iP_{k,\alpha} ) ]
@@ -575,9 +575,9 @@ The ground state for a particular oscillator cannot be lowered. The state in whi
 | n_{k_{1} ,\alpha_{1}} ,n_{k_{2} ,\alpha_{2}} ,\dots ,n_{k_{i} ,\alpha_{i}} ,\dots \rangle = \prod_{i} \frac{( a_{k_{i} ,\alpha_{i}}^{\dagger} )^{n_{ki,\alpha i}}}{\sqrt{n_{k_{i} ,\alpha_{i}} !}} | 0 \rangle
 ```
 
-The factorial on the bottom cancels all the $`\sqrt{n}`$ + 1 we get from the raising operators.
+The factorial on the bottom cancels all the $`\sqrt{n} + 1`$ we get from the raising operators.
 
-Any multi-photon state we construct is **automatically symmetric under the interchange of** **pairs of photons**. For example if we want to raise two photons out of the vacuum, we apply two raising operators. Since $`[ a_{k,\alpha}^{\dagger} ,a_{k^{\prime} ,\alpha^{\prime}}^{\dagger} ]`$ = 0, interchanging the photons gives the same state.
+Any multi-photon state we construct is **automatically symmetric under the interchange of** **pairs of photons**. For example if we want to raise two photons out of the vacuum, we apply two raising operators. Since $`[ a_{k,\alpha}^{\dagger} ,a_{k^{\prime} ,\alpha^{\prime}}^{\dagger} ] = 0`$, interchanging the photons gives the same state.
 
 ```math
 a_{k,\alpha}^{\dagger} a_{k^{\prime} ,\alpha^{\prime}}^{\dagger} | 0 \rangle = a_{k^{\prime} ,\alpha^{\prime}}^{\dagger} a_{k,\alpha}^{\dagger} | 0 \rangle
@@ -701,7 +701,7 @@ Of course we could equally well use circular polarizations which are related to 
 \hat{\epsilon}^{( \pm )} = \mp \frac{1}{\sqrt{2}} ( \hat{\epsilon}^{( 1 )} \pm i \hat{\epsilon}^{( 2 )} ) .
 ```
 
-The polarization $`\hat{\epsilon}^{( \pm )}`$ is associated with the $`m = \pm 1`$ component of the photon’s spin. These are the transverse mode of the photon, $`\vec{k} \cdot \hat{\epsilon}^{( \pm )}`$ = 0. We have separated the field into transverse and longitudinal parts. The longitudinal part is partially responsible for static E and B fields, while the transverse part makes up radiation. The $`m`$ = 0 component of the photon is not present in radiation but is important in understanding static fields.
+The polarization $`\hat{\epsilon}^{( \pm )}`$ is associated with the $`m = \pm 1`$ component of the photon’s spin. These are the transverse mode of the photon, $`\vec{k} \cdot \hat{\epsilon}^{( \pm )} = 0`$. We have separated the field into transverse and longitudinal parts. The longitudinal part is partially responsible for static E and B fields, while the transverse part makes up radiation. The $`m = 0`$ component of the photon is not present in radiation but is important in understanding static fields.
 
 By assuming the canonical coordinates and momenta in the Hamiltonian have commutators like those of the position and momentum of a particle, led to an understanding that radiation is made up of spin-1 particles with mass zero. All fields correspond to a particle of definite mass and spin. We now have a pretty good idea how to quantize the field for any particle.
 
@@ -745,7 +745,7 @@ a_{k,\alpha} ( t ) = a_{k,\alpha} ( 0 ) e^{- i\omega t}
 a_{k,\alpha}^{\dagger} ( t ) = a_{k,\alpha}^{\dagger} ( 0 ) e^{i\omega t}
 ```
 
-We can now write the quantized radiation field in terms of the operators at $`t`$ = 0.
+We can now write the quantized radiation field in terms of the operators at $`t = 0`$.
 
 ```math
 A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
@@ -901,7 +901,7 @@ Similarly, for the **emission of a photon** the matrix element is.
 = - \frac{e}{m} \frac{1}{\sqrt{V}} \sqrt{\frac{\hbar ( n_{\vec{k} ,\alpha} + 1 )}{2 \omega} \langle \psi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \alpha )} \cdot \vec{p} | \psi_{i} \rangle e^{i\omega t}}
 ```
 
-These give the same result as our earlier guess to put an $`n`$+ 1 in the emission operator (See Section 29.1).
+These give the same result as our earlier guess to put an $`n + 1`$ in the emission operator (See Section 29.1).
 
 # <a id="s-33-12review-of-radiation-of-photons"></a>33.12 Review of Radiation of Photons
 
@@ -991,7 +991,7 @@ The matrix element is proportional to $`- i \langle \varphi_{n} | ( \vec{k} \cdo
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p460" href="book.pdf#page=460" target="_blank" title="This page in the PDF"><sup>[p. 460]</sup></a>
 
-Putting these two vectors together is like adding to $`\ell`$ = 1 states. We can get total angular momentum quantum numbers 2, 1, and 0. Each vector has three components. The **direct product tensor** **has 9**. Its another case of
+Putting these two vectors together is like adding to $`\ell = 1`$ states. We can get total angular momentum quantum numbers 2, 1, and 0. Each vector has three components. The **direct product tensor** **has 9**. Its another case of
 
 ```math
 3 \otimes 3 = 5_{S} \oplus 3_{A} \oplus 1_{S} .
@@ -1019,7 +1019,7 @@ The **first term can be rewritten**.
 = - \frac{im\omega}{2} \vec{k} \cdot \langle \varphi_{n} | \vec{r} \vec{r} | \varphi_{i} \rangle \cdot \hat{\epsilon}^{( \lambda )}
 ```
 
-This makes the symmetry clear. Its normal to **remove the trace of the tensor**: $`\vec{r} \vec{r} \to \vec{r} \vec{r} - \tfrac{\delta_{ij}}{3} r^{2}`$. The term proportional to $`\delta_{ij}`$ gives zero because $`\vec{k} \cdot \hat{\epsilon}`$ = 0. The traceless symmetric tensor has 5 components like an $`\ell`$ = 2 operator; The anti-symmetric tensor has 3 components; and the trace term has one. This is the separation of the Cartesian tensor into irreducible spherical tensors. The **five** **components of the traceless symmetric tensor can be written as a linear combination** **of the** $`Y_{2 m}`$.
+This makes the symmetry clear. Its normal to **remove the trace of the tensor**: $`\vec{r} \vec{r} \to \vec{r} \vec{r} - \tfrac{\delta_{ij}}{3} r^{2}`$. The term proportional to $`\delta_{ij}`$ gives zero because $`\vec{k} \cdot \hat{\epsilon} = 0`$. The traceless symmetric tensor has 5 components like an $`\ell = 2`$ operator; The anti-symmetric tensor has 3 components; and the trace term has one. This is the separation of the Cartesian tensor into irreducible spherical tensors. The **five** **components of the traceless symmetric tensor can be written as a linear combination** **of the** $`Y_{2 m}`$.
 
 Similarly, the **second (anti-symmetric) term can be rewritten** slightly.
 
@@ -1027,7 +1027,7 @@ Similarly, the **second (anti-symmetric) term can be rewritten** slightly.
 \frac{1}{2} [ ( \vec{k} \cdot \vec{r} ) ( \hat{\epsilon}^{( \lambda )} \cdot \vec{p} ) - ( \vec{k} \cdot \vec{p} ) ( \hat{\epsilon}^{( \lambda )} \cdot \vec{r} ) ] = ( \vec{k} \times \hat{\epsilon}^{( \lambda )} ) \cdot ( \vec{r} \times \vec{p} )
 ```
 
-The **atomic state dependent part of this,** $`\vec{r} \times \vec{p}`$**, is an axial vector** and therefore has three components. (Remember and axial vector is the same thing as an anti-symmetric tensor.) So this is clearly an $`\ell`$ = 1 operator and can be **expanded in terms of the** $`Y_{1 m}`$. Note that it is actually a constant times the **orbital angular momentum operator** $`\vec{L}`$.
+The **atomic state dependent part of this,** $`\vec{r} \times \vec{p}`$**, is an axial vector** and therefore has three components. (Remember and axial vector is the same thing as an anti-symmetric tensor.) So this is clearly an $`\ell = 1`$ operator and can be **expanded in terms of the** $`Y_{1 m}`$. Note that it is actually a constant times the **orbital angular momentum operator** $`\vec{L}`$.
 
 So the **first term is reasonably named the Electric Quadrupole** term because it depends on the quadrupole moment of the state. It **does not change parity** and gives us the selection rule.
 
@@ -1083,7 +1083,7 @@ where the sum is over atomic electrons. The matrix elements are closely related.
 \langle B | e^{- i \vec{k} \cdot \vec{r}_{i}} \hat{\epsilon}^{( \alpha )} \cdot \vec{p}_{i} | A \rangle = \langle A | \vec{p}_{i} \cdot \hat{\epsilon}^{( \alpha )} e^{i \vec{k} \cdot \vec{r}_{i}} | B \rangle^{*} = \langle A | e^{i \vec{k} \cdot \vec{r}_{i}} \hat{\epsilon}^{( \alpha )} \cdot \vec{p}_{i} | B \rangle^{*}
 ```
 
-We have used the fact that $`\vec{k} \cdot \epsilon`$ = 0. **The two matrix elements are simple complex conjugates** **of each other** so that when we take the absolute square, they are the same. Therefore, we may cancel them.
+We have used the fact that $`\vec{k} \cdot \epsilon = 0`$. **The two matrix elements are simple complex conjugates** **of each other** so that when we take the absolute square, they are the same. Therefore, we may cancel them.
 
 ```math
 \frac{N_{B}}{N_{A}} = \frac{( n_{\vec{k} ,\alpha} + 1 )}{n_{\vec{k} ,\alpha}} = e^{\hbar \omega /kT}

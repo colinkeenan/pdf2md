@@ -23,7 +23,7 @@ E^{2} = p^{2} c^{2} + ( mc^{2} )^{2}
 
 This is just the **Klein-Gordon equation** that we derived for a scalar field. It did not take physicists long to come up with this equation.
 
-Because the Schrödinger equation is **first order in the time derivative**, the initial conditions needed to determine a solution to the equation are just $`\psi ( t = 0 )`$. In an equation that is second order in the time derivative, we also need to specify some information about the time derivatives at $`t`$ = 0 to determine the solution at a later time. It seemed strange to give up the concept that all information is contained in the wave function to go to the relativistically correct equation.
+Because the Schrödinger equation is **first order in the time derivative**, the initial conditions needed to determine a solution to the equation are just $`\psi ( t = 0 )`$. In an equation that is second order in the time derivative, we also need to specify some information about the time derivatives at $`t = 0`$ to determine the solution at a later time. It seemed strange to give up the concept that all information is contained in the wave function to go to the relativistically correct equation.
 
 If we have a complex scalar field that satisfies the (Euler-Lagrange = Klein-Gordon) equations
 
@@ -65,7 +65,7 @@ In the homework on electrons in an electromagnetic field, we showed that **the S
 H = \frac{1}{2 m} \left( \vec{\sigma} \cdot [ \vec{p} + \frac{e}{c} \vec{A} ( \vec{r} , t ) ] \right)^{2} - e\varphi ( \vec{r} , t )
 ```
 
-The derivation is repeated here. Recall that $`\{ \sigma_{i} ,\sigma_{j} \}`$ = 2$`\delta_{ij} , [ \sigma_{i} ,\sigma_{j} ]`$ = 2$`\epsilon_{ijk} \sigma_{k}`$, and that the momentum operator differentiates both $`\vec{A}`$ and the wavefunction.
+The derivation is repeated here. Recall that $`\{ \sigma_{i} ,\sigma_{j} \} = 2 \delta_{ij} , [ \sigma_{i} ,\sigma_{j} ] = 2 \epsilon_{ijk} \sigma_{k}`$, and that the momentum operator differentiates both $`\vec{A}`$ and the wavefunction.
 
 ```math
 \left( \vec{\sigma} \cdot [ \vec{p} + \frac{e}{c} \vec{A} ( \vec{r} , t ) ] \right)^{2} = \sigma_{i} \sigma_{j} \left( p_{i} p_{j} + \frac{e^{2}}{c^{2}} A_{i} A_{j} + \frac{e}{c} ( p_{i} A_{j} + A_{i} p_{j} ) \right)
@@ -163,7 +163,7 @@ Including the two components of $`\varphi^{( L )}`$ and the two components of $`
 \left( i \hbar \frac{\partial}{\partial x_{0}} - i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \varphi^{( L )} = mc\varphi^{( R )}
 ```
 
-These (last) two equations couple the 4 components together unless $`m`$ = 0. Both of the above equations are first order in the time derivative. We could continue with this set of coupled equations but it is more reasonable to **write a single equation in terms of a 4 component wave function**. This will also be a first order equation. First rewrite the two equations together, putting all the terms on one side.
+These (last) two equations couple the 4 components together unless $`m = 0`$. Both of the above equations are first order in the time derivative. We could continue with this set of coupled equations but it is more reasonable to **write a single equation in terms of a 4 component wave function**. This will also be a first order equation. First rewrite the two equations together, putting all the terms on one side.
 
 ```math
 \left( i \hbar \vec{\sigma} \cdot \vec{\nabla} - i \hbar \frac{\partial}{\partial x_{0}} \right) \varphi^{( L )} + mc\varphi^{( R )} = 0
@@ -279,7 +279,7 @@ It is easy to see by inspection that the $`\gamma`$ matrices are **Hermitian and
 \{ \gamma_{\mu} ,\gamma_{\nu} \} = 2 \delta_{\mu \nu}
 ```
 
-Sakurai shows that the anticommutation is all that is needed to determine the physics. That is, for **any set of 4 by 4 matrices that satisfy** $`\{ \gamma_{\mu} ,\gamma_{\nu} \}`$ = 2$`\delta_{\mu \nu}`$**,**
+Sakurai shows that the anticommutation is all that is needed to determine the physics. That is, for **any set of 4 by 4 matrices that satisfy** $`\{ \gamma_{\mu} ,\gamma_{\nu} \} = 2 \delta_{\mu \nu}`$**,**
 
 ```math
 \left( \gamma_{\mu} \frac{\partial}{\partial x_{\mu}} + \frac{mc}{\hbar} \right) \psi = 0
@@ -463,7 +463,7 @@ j_{0} = \bar{\psi} \gamma_{4} \psi = \psi^{\dagger} \gamma_{4} \gamma_{4} \psi =
 
 ## <a id="s-36-5-3-the-non-relativistic-equation"></a>36.5.3 The Non-Relativistic Equation
 
-Now we will calculate the **prediction of the Dirac equation for the non-relativistic coulomb** **problem**, aiming to directly compare to what we have done with the Schrödinger equation for Hydrogen. As for previous Hydrogen solutions, we will set $`\vec{A}`$ = 0 but have a scalar potential due to the nucleus $`\varphi = A_{0}`$. The energy we have been using in our non-relativistic formulation is $`E^{( NR )} = E - mc^{2}`$. We will **work with the equation for the large component** $`\psi_{A}`$. Note that $`A_{0}`$ is a function of the coordinates and the momentum operator will differentiate it.
+Now we will calculate the **prediction of the Dirac equation for the non-relativistic coulomb** **problem**, aiming to directly compare to what we have done with the Schrödinger equation for Hydrogen. As for previous Hydrogen solutions, we will set $`\vec{A} = 0`$ but have a scalar potential due to the nucleus $`\varphi = A_{0}`$. The energy we have been using in our non-relativistic formulation is $`E^{( NR )} = E - mc^{2}`$. We will **work with the equation for the large component** $`\psi_{A}`$. Note that $`A_{0}`$ is a function of the coordinates and the momentum operator will differentiate it.
 
 ```math
 \vec{\sigma} \cdot \left( \vec{p} + \frac{e}{c} \vec{A} \right) \frac{c^{2}}{( E + eA_{0} + mc^{2} )} \vec{\sigma} \cdot \left( \vec{p} + \frac{e}{c} \vec{A} \right) \psi_{A} = ( E + eA_{0} - mc^{2} ) \psi_{A}
@@ -701,7 +701,7 @@ We should normalize the state if we want to describe one particle per unit volum
 
 ## <a id="s-36-6-1-dirac-particle-at-rest"></a>36.6.1 Dirac Particle at Rest
 
-To study this further, lets take the simple case of the free particle at rest. This is just the $`\vec{p}`$ = 0 case of the the solution above so the energy equation gives $`E = \pm mc^{2}`$. The Dirac equation can now be used.
+To study this further, lets take the simple case of the free particle at rest. This is just the $`\vec{p} = 0`$ case of the the solution above so the energy equation gives $`E = \pm mc^{2}`$. The Dirac equation can now be used.
 
 ```math
 \left( \gamma_{\mu} \frac{\partial}{\partial x_{\mu}} + \frac{mc}{\hbar} \right) \psi = 0
@@ -873,7 +873,7 @@ B_{2} = \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}}
 \begin{pmatrix} \frac{- E^{2} + ( mc^{2} )^{2} + p^{2} c^{2}}{E + mc^{2}} \\ 0 \\ 0 \\ 0 \end{pmatrix} = 0
 ```
 
-This will be a solution as long as $`E^{2}`$ = $`p^{2} c^{2} + ( mc^{2} )^{2}`$, not a surprising condition. Adding a normalization factor, the solution is.
+This will be a solution as long as $`E^{2} = p^{2} c^{2} + ( mc^{2} )^{2}`$, not a surprising condition. Adding a normalization factor, the solution is.
 
 ```math
 u_{\vec{p}} = N \begin{pmatrix} 1 \\ 0 \\ \frac{p_{z} c}{E + mc^{2}} \\ \frac{( p_{x} + ip_{y} ) c}{E + mc^{2}} \end{pmatrix}
@@ -1061,7 +1061,7 @@ Are the free particle states still eigenstates of $`\Sigma_{z} =`$ as were the s
 
 rest? In general, they are not. To have an eigenvalue of +1, a spinor must have zero second and fourth components and to have an eigenvalue of -1, the first and third components must be zero. So **boosting our Dirac particle to a frame in which it is moving, mixes up the spin states**.
 
-There is one case for which these are still spin eigenstates. If the particle’s momentum is in the z direction, then we have just the spinors we need to be eigenstates of $`\Sigma_{z}`$. That is, if we boost along the quantization axis, the spin eigenstates are preserved. These are called **helicity eigenstates**. Helicity is the spin component along the direction of the particle. While it is possible to make definite momentum solutions which are eigenstates of helicity, it is not possible to make definite momentum states which are eigenstates of spin along some other direction (except in the trivial case of $`\vec{p}`$ = 0 as we have shown).
+There is one case for which these are still spin eigenstates. If the particle’s momentum is in the z direction, then we have just the spinors we need to be eigenstates of $`\Sigma_{z}`$. That is, if we boost along the quantization axis, the spin eigenstates are preserved. These are called **helicity eigenstates**. Helicity is the spin component along the direction of the particle. While it is possible to make definite momentum solutions which are eigenstates of helicity, it is not possible to make definite momentum states which are eigenstates of spin along some other direction (except in the trivial case of $`\vec{p} = 0`$ as we have shown).
 
 To further understand these solutions, we can compute the conserved probability current. First, compute it in general for a Dirac spinor
 
@@ -1371,13 +1371,13 @@ Lets **verify that this choice works for a boost**.
 \left( \cosh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} \right) \gamma_{\mu} \left( \cosh \frac{\chi}{2} + i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} \right) = a_{\mu \nu} \gamma_{\nu}
 ```
 
-$`\cosh \frac{\chi}{2} \gamma_{\mu} \cosh \frac{\chi}{2} + \cosh \frac{\chi}{2} \gamma_{\mu} i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} \gamma_{\mu} \cosh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} \gamma_{\mu} i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2}`$ = $`a_{\mu \nu} \gamma_{\nu}`$
+$`\cosh \frac{\chi}{2} \gamma_{\mu} \cosh \frac{\chi}{2} + \cosh \frac{\chi}{2} \gamma_{\mu} i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} \gamma_{\mu} \cosh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} \gamma_{\mu} i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2} = a_{\mu \nu} \gamma_{\nu}`$
 
 ```math
 \gamma_{\mu} \cosh^{2} \frac{\chi}{2} + i\gamma_{\mu} \gamma_{1} \gamma_{4} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \gamma_{\mu} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} + \gamma_{1} \gamma_{4} \gamma_{\mu} \gamma_{1} \gamma_{4} \sinh^{2} \frac{\chi}{2} = a_{\mu \nu} \gamma_{\nu}
 ```
 
-The equation we must satisfy can be checked for each $`\gamma`$ matrix. First check $`\gamma_{1}`$. The operations with the $`\gamma`$ matrices all come from the anticommutator, $`\{ \gamma_{\mu} ,\gamma_{\nu} \}`$ = 2$`\delta_{\mu \nu}`$, which tells us that the square of any gamma matrix is one and that commuting a pair of (unequal) matrices changes the sign.
+The equation we must satisfy can be checked for each $`\gamma`$ matrix. First check $`\gamma_{1}`$. The operations with the $`\gamma`$ matrices all come from the anticommutator, $`\{ \gamma_{\mu} ,\gamma_{\nu} \} = 2 \delta_{\mu \nu}`$, which tells us that the square of any gamma matrix is one and that commuting a pair of (unequal) matrices changes the sign.
 
 ```math
 \gamma_{1} \cosh^{2} \frac{\chi}{2} + i\gamma_{1} \gamma_{1} \gamma_{4} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \gamma_{1} \cosh \frac{\chi}{2} \sinh \frac{\chi}{2} + \gamma_{1} \gamma_{4} \gamma_{1} \gamma_{1} \gamma_{4} \sinh^{2} \frac{\chi}{2} = a_{1 \nu} \gamma_{\nu}
@@ -1485,7 +1485,7 @@ The pure rotation about the z axis should also be verified.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p511" href="book.pdf#page=511" target="_blank" title="This page in the PDF"><sup>[p. 511]</sup></a>
 
-For $`\mu`$ = 3 or 4, $`a_{\mu \nu} = \delta_{\mu \nu}`$ and the requirement is fairly obviously satisfied. Checking the requirement for $`\mu`$ = 1, we get.
+For $`\mu = 3`$ or 4, $`a_{\mu \nu} = \delta_{\mu \nu}`$ and the requirement is fairly obviously satisfied. Checking the requirement for $`\mu = 1`$, we get.
 
 ```math
 \begin{aligned} \gamma_{1} \cos^{2} \frac{\theta}{2} + \gamma_{1} \gamma_{1} \gamma_{2} \cos \frac{\theta}{2} \sin \frac{\theta}{2} - \gamma_{1} \gamma_{2} \gamma_{1} \cos \frac{\theta}{2} \sin \frac{\theta}{2} - \gamma_{1} \gamma_{2} \gamma_{1} \gamma_{1} \gamma_{2} \sin^{2} \frac{\theta}{2} &= a_{1 \nu} \gamma_{\nu} \\ a_{\mu \nu} &= \begin{pmatrix} \cos \theta & \sin \theta & 0 & 0 \\ - \sin \theta & \cos \theta & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} \end{aligned}
@@ -1621,7 +1621,7 @@ S_{boost} = \cosh \frac{\chi}{2} - i\gamma_{1} \gamma_{4} \sinh \frac{\chi}{2}
 = \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ \tanh \tfrac{\chi}{2} \end{pmatrix} e^{ip_{\rho} x_{\rho} / \hbar}
 ```
 
-In the last step the simple Lorentz contraction was used to set $`V^{\prime}`$ = $`\frac{V}{\gamma}`$. This **boosted state** **matches the plane wave solution including the normalization**.
+In the last step the simple Lorentz contraction was used to set $`V^{\prime} = \frac{V}{\gamma}`$. This **boosted state** **matches the plane wave solution including the normalization**.
 
 # <a id="s-36-10parity"></a>36.10 Parity
 
@@ -1815,7 +1815,7 @@ which obviously **anticommutes** with all the gamma matrices.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p516" href="book.pdf#page=516" target="_blank" title="This page in the PDF"><sup>[p. 516]</sup></a>
 
-For rotations and boosts, $`\gamma_{5}`$ commutes with $`S`$ since it commutes with the pair of gamma matrices. For a parity inversion, it anticommutes with $`S_{P}`$ = $`\gamma_{4}`$. Therefore its easy to show that $`\bar{\psi} \gamma_{5} \psi`$ transforms like a **pseudoscalar** and $`\bar{\psi} i\gamma_{5} \gamma_{\mu} \psi`$ transforms like an **axial vector**. This now brings our total to 16 components of bilinear (in the spinor) covariants. Note that things like $`\gamma_{5} \sigma_{1 2} = i\gamma_{1} \gamma_{2} \gamma_{3} \gamma_{4} \gamma_{1} \gamma_{2} = - i\gamma_{3} \gamma_{4}`$ is just a constant times another antisymmetric tensor element, so its nothing new.
+For rotations and boosts, $`\gamma_{5}`$ commutes with $`S`$ since it commutes with the pair of gamma matrices. For a parity inversion, it anticommutes with $`S_{P} = \gamma_{4}`$. Therefore its easy to show that $`\bar{\psi} \gamma_{5} \psi`$ transforms like a **pseudoscalar** and $`\bar{\psi} i\gamma_{5} \gamma_{\mu} \psi`$ transforms like an **axial vector**. This now brings our total to 16 components of bilinear (in the spinor) covariants. Note that things like $`\gamma_{5} \sigma_{1 2} = i\gamma_{1} \gamma_{2} \gamma_{3} \gamma_{4} \gamma_{1} \gamma_{2} = - i\gamma_{3} \gamma_{4}`$ is just a constant times another antisymmetric tensor element, so its nothing new.
 
 <div align="center">
 
@@ -1903,7 +1903,7 @@ From the above commutators $`[ H,L_{z} ]`$ and $`[ H,S_{z} ]`$, the **components
 
 The Dirac equation naturally **conserves total angular momentum** but not conserve the orbital or spin parts of it.
 
-We will need another conserved quantity for the solution to the Hydrogen atom; something akin to the $`\pm`$ in $`j = \ell \pm \tfrac{1}{2}`$ we used in the NR solution. We can show that $`[ H,K ]`$ = 0 for
+We will need another conserved quantity for the solution to the Hydrogen atom; something akin to the $`\pm`$ in $`j = \ell \pm \tfrac{1}{2}`$ we used in the NR solution. We can show that $`[ H,K ] = 0`$ for
 
 ```math
 K = \gamma_{4} \vec{\Sigma} \cdot \vec{J} - \frac{\hbar}{2} \gamma_{4} .
@@ -1987,13 +1987,13 @@ H = ic\gamma_{4} \vec{\gamma} \cdot \vec{p} + mc^{2} \gamma_{4}
 [ H,K ] = 2 c \frac{\hbar}{2} ( i \vec{p} \cdot \vec{\gamma} - i ( \vec{\gamma} \cdot \vec{p} ) ) = 0
 ```
 
-It is also useful to show that $`[ K, \vec{J} ]`$ = 0 so that we have a mutually commuting set of operators to define our eigenstates.
+It is also useful to show that $`[ K, \vec{J} ] = 0`$ so that we have a mutually commuting set of operators to define our eigenstates.
 
 ```math
 [ K, \vec{J} ] = [ \gamma_{4} \vec{\Sigma} \cdot \vec{J} - \frac{\hbar}{2} \gamma_{4} , \vec{J} ] = [ \gamma_{4} , \vec{J} ] \vec{\Sigma} \cdot \vec{J} + \gamma_{4} [ \vec{\Sigma} \cdot \vec{J} , \vec{J} ] - \frac{\hbar}{2} [ \gamma_{4} , \vec{J} ]
 ```
 
-This will be zero if $`[ \gamma_{4} , \vec{J} ]`$ = 0 and $`[ \vec{\Sigma} \cdot \vec{J} , \vec{J} ]`$ = 0.
+This will be zero if $`[ \gamma_{4} , \vec{J} ] = 0`$ and $`[ \vec{\Sigma} \cdot \vec{J} , \vec{J} ] = 0`$.
 
 ```math
 \left[ \gamma_{4} , \vec{J} \right] = [ \gamma_{4} , \vec{L} + \frac{\hbar}{2} \vec{\Sigma} ] = \frac{\hbar}{2} [ \gamma_{4} , \vec{\Sigma} ] = 0
@@ -2039,7 +2039,7 @@ H_{int} = ie\gamma_{4} \gamma_{\mu} A_{\mu}
 
 Note the difference between this interaction and the one we used in the non-relativistic case. The relativistic interaction has just one term, is linear in $`A`$, and is naturally proportional to the coupling $`e`$. There is **no longer an** $`A^{2}`$ **term** with a different power of $`e`$. This will make our perturbation series also a series in powers of $`\alpha`$.
 
-We may still assume that $`A`$ is **transverse** and that $`A_{0}`$ = 0 by choice of gauge.
+We may still assume that $`A`$ is **transverse** and that $`A_{0} = 0`$ by choice of gauge.
 
 ```math
 H_{int} = ie\gamma_{4} \gamma_{k} A_{k}
@@ -2165,7 +2165,7 @@ This checks so the solution for the velocity as a function of time is correct.
 v_{j} ( t ) = c^{2} p_{j} /E + ( v_{j} ( 0 ) - c^{2} p_{j} /E ) e^{- 2 iEt/ \hbar}
 ```
 
-There is a steady motion in the direction of the momentum with the correct magnitude $`\beta c`$. There are also very rapid oscillations with some amplitude. Since the energy includes $`mc^{2}`$, the period of these oscillations is at most $`\tfrac{2 \pi \hbar}{2 mc^{2}} = \tfrac{\pi \hbar c}{mc^{2} c} = \tfrac{( 3 . 1 4 ) ( 1 9 7 . 3 MeVF )}{0 . 5 MeV ( c )}`$ = 1200$`F/c = \tfrac{1 2 0 0 \times 1 0^{- 1 3}}{3 \times 1 0^{1 0}}`$ = $`4 \times 1 0^{- 2 1}`$ seconds. This very rapid oscillation is known as Zitterbewegung. Obviously, we would see the same kind of oscillation in the position if we integrate the above solution for the velocity. This very rapid motion of the electron means we cannot localize the electron extremely well and gives rise to the Darwin term. This operator analysis is not sufficient to fully understand the effect of Zitterbewegung but it illustrates the behavior.
+There is a steady motion in the direction of the momentum with the correct magnitude $`\beta c`$. There are also very rapid oscillations with some amplitude. Since the energy includes $`mc^{2}`$, the period of these oscillations is at most $`\tfrac{2 \pi \hbar}{2 mc^{2}} = \tfrac{\pi \hbar c}{mc^{2} c} = \tfrac{( 3 . 1 4 ) ( 1 9 7 . 3 MeVF )}{0 . 5 MeV ( c )} = 1200 F/c = \tfrac{1 2 0 0 \times 1 0^{- 1 3}}{3 \times 1 0^{1 0}} = 4 \times 1 0^{- 2 1}`$ seconds. This very rapid oscillation is known as Zitterbewegung. Obviously, we would see the same kind of oscillation in the position if we integrate the above solution for the velocity. This very rapid motion of the electron means we cannot localize the electron extremely well and gives rise to the Darwin term. This operator analysis is not sufficient to fully understand the effect of Zitterbewegung but it illustrates the behavior.
 
 ## <a id="s-36-14-2-expansion-of-a-state-in-plane-waves"></a>36.14.2 Expansion of a State in Plane Waves
 
@@ -2175,7 +2175,7 @@ To show how the negative energy states play a role in Zitterbewegung, it is conv
 \psi ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{r = 1}^{4} \sqrt{\frac{mc^{2}}{| E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
-The $`r`$ = 1$`, 2`$ terms are positive energy plane waves and the $`r`$ = 3$`, 4`$ states are “negative energy”. The differing signs of the energy in the time behavior will give rise to rapid oscillations.
+The $`r = 1 , 2`$ terms are positive energy plane waves and the $`r = 3 , 4`$ states are “negative energy”. The differing signs of the energy in the time behavior will give rise to rapid oscillations.
 
 The plane waves can be purely either positive or “negative energy”, however, **localized states have** **uncertainty in the momentum and tend to have both positive and “negative energy”** **components**. As the momentum components become relativistic, the “negative energy” amplitude becomes appreciable.
 
@@ -2575,7 +2575,7 @@ This is now a set of two coupled radial equations. We can simplify them a bit by
 \begin{pmatrix} \left( \tfrac{\partial F}{\partial r} - \tfrac{\kappa F}{r} \right) \\ \left( \tfrac{\partial G}{\partial r} + \tfrac{\kappa G}{r} \right) \end{pmatrix} = \begin{pmatrix} \tfrac{mc^{2} - E + V}{\hbar c} G \\ \tfrac{mc^{2} + E - V}{\hbar c} F \end{pmatrix}
 ```
 
-These equations are true for any spherically symmetric potential. Now it is time to **specialize to** **the hydrogen atom** for which $`\tfrac{V}{\hbar c} = - \tfrac{Z\alpha}{r}`$ . We define $`k_{1}`$ = $`\frac{mc^{2} + E}{\hbar c}`$ and $`k_{2}`$ = $`\frac{mc^{2} - E}{\hbar c}`$ and the dimensionless $`\rho = \sqrt{k_{1} k_{2}} r`$. The equations then become.
+These equations are true for any spherically symmetric potential. Now it is time to **specialize to** **the hydrogen atom** for which $`\tfrac{V}{\hbar c} = - \tfrac{Z\alpha}{r}`$ . We define $`k_{1} = \frac{mc^{2} + E}{\hbar c}`$ and $`k_{2} = \frac{mc^{2} - E}{\hbar c}`$ and the dimensionless $`\rho = \sqrt{k_{1} k_{2}} r`$. The equations then become.
 
 ```math
 \begin{pmatrix} \left( \tfrac{\partial F}{\partial r} - \tfrac{\kappa F}{r} \right) \\ \left( \tfrac{\partial G}{\partial r} + \tfrac{\kappa G}{r} \right) \end{pmatrix} = \begin{pmatrix} \left( k_{2} - \tfrac{Z\alpha}{r} \right) G \\ \left( k_{1} + \tfrac{Z\alpha}{r} \right) F \end{pmatrix}
@@ -2603,7 +2603,7 @@ F = e^{- \rho} \rho^{s} \sum_{m = 0}^{\infty} a_{m} \rho^{m} = e^{- \rho} \sum_{
 G = e^{- \rho} \rho^{s} \sum_{m = 0}^{\infty} b_{m} \rho^{m} = e^{- \rho} \sum_{m = 0}^{\infty} b_{m} \rho^{s + m} .
 ```
 
-The exponential will make everything go to zero for large $`\rho`$ if the power series terminates. We need to verify that this is a solution near $`\rho`$ = 0 if we pick the right $`a_{0} , b_{0}`$, and $`s`$. We now substitute these postulated solutions into the equations to **obtain recursion relations**.
+The exponential will make everything go to zero for large $`\rho`$ if the power series terminates. We need to verify that this is a solution near $`\rho = 0`$ if we pick the right $`a_{0} , b_{0}`$, and $`s`$. We now substitute these postulated solutions into the equations to **obtain recursion relations**.
 
 ```math
 \left( \frac{\partial}{\partial \rho} - \frac{\kappa}{\rho} \right) F - \left( \sqrt{\frac{k_{2}}{k_{1}}} - \frac{Z\alpha}{\rho} \right) G = 0
@@ -2645,7 +2645,7 @@ The exponential will make everything go to zero for large $`\rho`$ if the power 
 - \sqrt{\frac{k_{1}}{k_{2}} a_{m} - Z\alpha a_{m + 1} - b_{m} + ( s + m + 1 + \kappa ) b_{m + 1}} = 0
 ```
 
-For the lowest order term $`\rho^{s}`$, we need to have a solution without lower powers. This means that we<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=528" target="_blank" title="This page in the PDF"><sup>[p. 528]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p529" href="book.pdf#page=529" target="_blank" title="This page in the PDF"><sup>[p. 529]</sup></a></span> **look at the** $`m = - 1`$ **recursion relations** with $`a_{m} = b_{m}`$ = 0 and solve the equations.
+For the lowest order term $`\rho^{s}`$, we need to have a solution without lower powers. This means that we<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=528" target="_blank" title="This page in the PDF"><sup>[p. 528]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p529" href="book.pdf#page=529" target="_blank" title="This page in the PDF"><sup>[p. 529]</sup></a></span> **look at the** $`m = - 1`$ **recursion relations** with $`a_{m} = b_{m} = 0`$ and solve the equations.
 
 ```math
 ( s - \kappa ) a_{0} + Z\alpha b_{0} = 0
@@ -2679,7 +2679,7 @@ s = + \sqrt{\kappa^{2} - Z^{2} \alpha^{2}}
 
 As usual, the **series must terminate at some** $`m = n_{r}`$ for the state to normalizable. This can be seen approximately by assuming either the $`a`$’s or the $`b`$’s are small and noting that the series is that of a positive exponential.
 
-Assume the series for $`F`$ and $`G`$ **terminate at the same** $`n_{r}`$. We can then take the equations in the coefficients and set $`a_{n_{r} + 1} = b_{n_{r} + 1}`$ = 0 to get relationships between $`a_{n_{r}}`$ and $`b_{n_{r}}`$.
+Assume the series for $`F`$ and $`G`$ **terminate at the same** $`n_{r}`$. We can then take the equations in the coefficients and set $`a_{n_{r} + 1} = b_{n_{r} + 1} = 0`$ to get relationships between $`a_{n_{r}}`$ and $`b_{n_{r}}`$.
 
 ```math
 a_{n_{r}} = - \sqrt{\frac{k_{2}}{k_{1}}} b_{n_{r}}
@@ -2691,7 +2691,7 @@ b_{n_{r}} = - \sqrt{\frac{k_{1}}{k_{2}}} a_{n_{r}}
 
 These are the same equation, which is consistent with our assumption.
 
-The final step is to use this result in the **recursion relations for** $`m = n_{r} - 1`$ to find a **condition** **on** $`E`$ which must be satisfied for the series to terminate. Note that this choice of $`m`$ connects $`a_{n_{r}}`$ and $`b_{n_{r}}`$ to the rest of the series giving nontrivial conditions on $`E`$. We already have the information from the next step in the recursion which gives $`a_{n_{r} + 1} = b_{n_{r} + 1}`$ = 0.
+The final step is to use this result in the **recursion relations for** $`m = n_{r} - 1`$ to find a **condition** **on** $`E`$ which must be satisfied for the series to terminate. Note that this choice of $`m`$ connects $`a_{n_{r}}`$ and $`b_{n_{r}}`$ to the rest of the series giving nontrivial conditions on $`E`$. We already have the information from the next step in the recursion which gives $`a_{n_{r} + 1} = b_{n_{r} + 1} = 0`$.
 
 ```math
 - a_{m} + ( s + m + 1 - \kappa ) a_{m + 1} - \sqrt{\frac{k_{2}}{k_{1}}} b_{m} + Z\alpha b_{m + 1} = 0
@@ -2813,7 +2813,7 @@ Because it is linear in $`A`$ it can create a photon or annihilate a photon. Pho
 A_{\mu} ( x ) = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right) .
 ```
 
-The initial and final states are **definite momentum states**, as are the intermediate electron states. We shall **first do the calculation assuming no electrons from the “negative energy” sea** **participate**, other than to exclude transitions to those “negative energy” states. The initial and final states are therefore the positive energy plane wave states $`\psi_{\vec{p}}^{( r )}`$ for $`r`$ = 1$`,`$ 2. The intermediate states must also be positive energy states since the “negative energy” states are all filled.
+The initial and final states are **definite momentum states**, as are the intermediate electron states. We shall **first do the calculation assuming no electrons from the “negative energy” sea** **participate**, other than to exclude transitions to those “negative energy” states. The initial and final states are therefore the positive energy plane wave states $`\psi_{\vec{p}}^{( r )}`$ for $`r = 1 ,`$ 2. The intermediate states must also be positive energy states since the “negative energy” states are all filled.
 
 The computation of the scattering cross section follows the same steps made in the development of the Krammers-Heisenberg formula for photon scattering. There is no $`A^{2}`$ term so we are just computing the **two second order terms**.
 
@@ -2841,7 +2841,7 @@ Now lets take a **look at one of the matrix elements**. Assume the **initial sta
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p532" href="book.pdf#page=532" target="_blank" title="This page in the PDF"><sup>[p. 532]</sup></a>
 
-For $`\vec{p}`$ = 0 and $`\vec{k}`$ = 0, a delta function requires that $`\vec{p}^{\prime \prime}`$ = 0. It turns out that $`u_{0}^{( r^{\prime \prime} ) \dagger} \gamma_{4} \gamma_{n} u_{0}^{( r )}`$ = 0, so that the cross section is zero in this limit.
+For $`\vec{p} = 0`$ and $`\vec{k} = 0`$, a delta function requires that $`\vec{p}^{\prime \prime} = 0`$. It turns out that $`u_{0}^{( r^{\prime \prime} ) \dagger} \gamma_{4} \gamma_{n} u_{0}^{( r )} = 0`$, so that the cross section is zero in this limit.
 
 ```math
 \gamma_{i} = \begin{pmatrix} 0 & - i\sigma_{i} \\ i\sigma_{i} & 0 \end{pmatrix}
@@ -2855,7 +2855,7 @@ For $`\vec{p}`$ = 0 and $`\vec{k}`$ = 0, a delta function requires that $`\vec{p
 \gamma_{4} \gamma_{i} = \begin{pmatrix} 0 & - i\sigma_{i} \\ - i\sigma_{i} & 0 \end{pmatrix}
 ```
 
-This matrix only connects $`r`$ = 1$`,`$ 2 spinors to $`r`$ = 3$`,`$ 4 spinors because of its off diagonal nature. So, the calculation yields zero for a cross section in contradiction to the other two calculations. In fact, since the photon momentum is not quite zero, there is a small contribution, but far too small.
+This matrix only connects $`r = 1 ,`$ 2 spinors to $`r = 3 ,`$ 4 spinors because of its off diagonal nature. So, the calculation yields zero for a cross section in contradiction to the other two calculations. In fact, since the photon momentum is not quite zero, there is a small contribution, but far too small.
 
 The above calculation misses some **important terms due to the “negative energy” sea**. There are additional terms if we consider the possibility that the photon can elevate a “negative energy” electron to have positive energy.
 
@@ -3197,7 +3197,7 @@ There is no time derivative of $`\bar{\psi}`$ so those momenta are zero. The Ham
 H = \int \psi^{\dagger} \left( \hbar c\gamma_{4} \gamma_{k} \frac{\partial}{\partial x_{k}} + mc^{2} \gamma_{4} \right) \psi d^{3} x
 ```
 
-We may expand the field $`\psi`$ in the **complete set of plane waves** either using the four spinors $`u_{\vec{p}}^{( r )}`$ for $`r`$ = 1$`, 2 , 3 , 4`$ or using the electron and positron spinors $`u_{\vec{p}}^{( r )}`$ and $`v_{\vec{p}}^{( r )}`$ for $`r`$ = 1$`, 2`$. For economy of notation, we choose the former with a plan to change to the later once the quantization is completed.
+We may expand the field $`\psi`$ in the **complete set of plane waves** either using the four spinors $`u_{\vec{p}}^{( r )}`$ for $`r = 1 , 2 , 3 , 4`$ or using the electron and positron spinors $`u_{\vec{p}}^{( r )}`$ and $`v_{\vec{p}}^{( r )}`$ for $`r = 1 , 2`$. For economy of notation, we choose the former with a plan to change to the later once the quantization is completed.
 
 ```math
 \psi ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{r = 1}^{4} \sqrt{\frac{mc^{2}}{| E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
@@ -3429,7 +3429,7 @@ _Figure 109 (p. 543)_
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p544" href="book.pdf#page=544" target="_blank" title="This page in the PDF"><sup>[p. 544]</sup></a>
 
-We can estimate the distance an electron might jump as it undergoes this process. First the time for which the virtual pair exists can be estimated from the uncertainty principle. Energy conservation is violated by 2$`mc^{2}`$ at least so ∆$`t = \tfrac{\hbar}{2 mc^{2}}`$ (which is approximately the reciprocal of the Zitterbewegung frequency). The distance the electron appears to jump then is of the order of $`c`$∆$`t = \tfrac{\hbar c}{2 mc^{2}}`$ = 0$`. 0 0 2`$ Angstroms. This is the aproximate size of the fast back and forth motion of Zitterbewegung.
+We can estimate the distance an electron might jump as it undergoes this process. First the time for which the virtual pair exists can be estimated from the uncertainty principle. Energy conservation is violated by 2$`mc^{2}`$ at least so ∆$`t = \tfrac{\hbar}{2 mc^{2}}`$ (which is approximately the reciprocal of the Zitterbewegung frequency). The distance the electron appears to jump then is of the order of $`c`$∆$`t = \tfrac{\hbar c}{2 mc^{2}} = 0 . 0 0 2`$ Angstroms. This is the aproximate size of the fast back and forth motion of Zitterbewegung.
 
 # <a id="s-36-22the-qed-lagrangian-and-gauge-invariance"></a>36.22 The QED LaGrangian and Gauge Invariance
 

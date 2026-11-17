@@ -275,13 +275,13 @@ This is just the eigenvalue equation for $`H_{1}`$ which we can write out in (ps
 \left( H_{1} \right) \begin{pmatrix} \alpha_{1} \\ \alpha_{2} \\ \alpha_{3} \\ \alpha_{4} \end{pmatrix} = E^{( 1 )} \begin{pmatrix} \alpha_{1} \\ \alpha_{2} \\ \alpha_{3} \\ \alpha_{4} \end{pmatrix}
 ```
 
-Now, in fact, most of the matrix elements of $`H_{1}`$ are zero. We will show that because $`[ L_{z} ,z ]`$ = 0, that all the matrix elements between states of unequal $`m`$ are zero. Another way of saying this is that the operator z doesn’t “change” $`m`$. Here is a little proof.
+Now, in fact, most of the matrix elements of $`H_{1}`$ are zero. We will show that because $`[ L_{z} ,z ] = 0`$, that all the matrix elements between states of unequal $`m`$ are zero. Another way of saying this is that the operator z doesn’t “change” $`m`$. Here is a little proof.
 
 ```math
 \langle Y_{lm} | [ L_{z} ,z ] | Y_{l^{\prime} m^{\prime}} \rangle = 0 = ( m - m^{\prime} ) \langle Y_{lm} | z | Y_{l^{\prime} m^{\prime}} \rangle
 ```
 
-This implies that $`\langle Y_{lm} | z | Y_{l^{\prime} m^{\prime}} \rangle`$ = 0 unless $`m = m^{\prime}`$.
+This implies that $`\langle Y_{lm} | z | Y_{l^{\prime} m^{\prime}} \rangle = 0`$ unless $`m = m^{\prime}`$.
 
 Lets define the one remaining nonzero (real) matrix element to be $`\gamma`$.
 
@@ -485,9 +485,9 @@ This is just the standard eigenvalue problem for the full Hamiltonian in the **s
 
 2. A particle is in a box from $`- a`$ to $`a`$ in one dimension. A small additional potential $`V_{1} = \lambda \cos ( \tfrac{\pi x}{2 b} )`$ is applied. Calculate the energies of the first and second excited states in this new potential.
 
-3. The proton in the hydrogen nucleus is not really a point particle like the electron is. It has a complicated structure, but, a good approximation to its charge distribution is a uniform charge density over a sphere of radius 0.5 fermis. Calculate the effect of this potential change for the energy of the ground state of hydrogen. Calculate the effect for the $`n`$ = 2 states.
+3. The proton in the hydrogen nucleus is not really a point particle like the electron is. It has a complicated structure, but, a good approximation to its charge distribution is a uniform charge density over a sphere of radius 0.5 fermis. Calculate the effect of this potential change for the energy of the ground state of hydrogen. Calculate the effect for the $`n = 2`$ states.
 
-4. Consider a two dimensional harmonic oscillator problem described by the Hamiltonian $`H_{0} = \tfrac{p_{x}^{2} + p_{y}^{2}}{2 m} + \tfrac{1}{2} m\omega^{2} ( x^{2} + y^{2} )`$. Calculate the energy shifts of the ground state and the degenerate first excited states, to first order, if the additional potential $`V`$ = 2$`\lambda xy`$ is applied. Now solve the problem exactly. Compare the exact result for the ground state to that from second order perturbation theory.
+4. Consider a two dimensional harmonic oscillator problem described by the Hamiltonian $`H_{0} = \tfrac{p_{x}^{2} + p_{y}^{2}}{2 m} + \tfrac{1}{2} m\omega^{2} ( x^{2} + y^{2} )`$. Calculate the energy shifts of the ground state and the degenerate first excited states, to first order, if the additional potential $`V = 2 \lambda xy`$ is applied. Now solve the problem exactly. Compare the exact result for the ground state to that from second order perturbation theory.
 
 5. Prove that $`\sum ( E_{n} - E_{a} ) | \langle n | x | a \rangle |^{2} = \tfrac{\hbar^{2}}{2 m}`$ by starting from the expectation value of the commu-
 
@@ -507,11 +507,11 @@ tator $`[ p,x ]`$ in the state $`a`$ and summing over all energy eigenstates. As
 
 1. Assume an electron is bound to a heavy positive particle with a harmonic potential $`V ( x ) = \tfrac{1}{2} m\omega^{2} x^{2}`$. Calculate the energy shifts to all the energy eigenstates in an electric field $`E`$ (in the $`x`$ direction).
 
-2. Find the energies of the $`n`$ = 2 hydrogen states in a strong uniform electric field in the z-direction. (Note, since spin plays no role here there are just 4 degenerate states. Ignore the fine structure corrections to the energy since the E-field is strong. Remember to use the fact that $`[ L_{z} ,z ]`$ = 0. If you are pressed for time, don’t bother to evaluate the radial integrals.)
+2. Find the energies of the $`n = 2`$ hydrogen states in a strong uniform electric field in the z-direction. (Note, since spin plays no role here there are just 4 degenerate states. Ignore the fine structure corrections to the energy since the E-field is strong. Remember to use the fact that $`[ L_{z} ,z ] = 0`$. If you are pressed for time, don’t bother to evaluate the radial integrals.)
 
 3. An electron is in a three dimensional harmonic oscillator potential $`V ( r ) = \tfrac{1}{2} m\omega^{2} r^{2}`$. A small electric field, of strength $`E_{z}`$, is applied in the $`z`$ direction. Calculate the lowest order nonzero correction to the ground state energy.
 
-4. Hydrogen atoms in the $`n`$ = 2 state are put in a strong Electric field. Assume that the 2s and 2p states of Hydrogen are degenerate and spin is not important. Under these assumptions, there are 4 states: the 2s and three 2p states. Calculate the shifts in energy due to the E-field and give the states that have those energies. Please work out the problem in principle before attempting any integrals.
+4. Hydrogen atoms in the $`n = 2`$ state are put in a strong Electric field. Assume that the 2s and 2p states of Hydrogen are degenerate and spin is not important. Under these assumptions, there are 4 states: the 2s and three 2p states. Calculate the shifts in energy due to the E-field and give the states that have those energies. Please work out the problem in principle before attempting any integrals.
 
 ---
 

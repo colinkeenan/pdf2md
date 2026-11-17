@@ -479,7 +479,7 @@ The expectation value of $`\frac{p^{2}}{2 m}`$ is
 
 ## <a id="s-10-6-6-time-development-example"></a>10.6.6 Time Development Example
 
-Start off in the state at $`t`$ = 0.
+Start off in the state at $`t = 0`$.
 
 ```math
 \psi ( t = 0 ) = \frac{1}{\sqrt{2}} ( u_{1} + u_{2} )
@@ -558,7 +558,7 @@ p = \sqrt{\frac{m \hbar \omega}{2}} \frac{A - A^{\dagger}}{i}
 3. Evaluate the “uncertainty” in $`x`$ for the 1D HO ground state $`\sqrt{\langle u_{0} | ( x - \bar{x} )}`$<sup>2</sup>$`| u_{0} \rangle`$ where $`\bar{x} = \langle u_{0} | x | u_{0} \rangle`$. Similarly, evaluate the uncertainty in $`p`$ for the ground state. What is the product ∆$`p`$∆$`x`$?
 
 **Answer**<br>
-Its easy to see that $`\bar{x}`$ = 0 either from the integral or using operators. I’ll use operators to compute the rest.
+Its easy to see that $`\bar{x} = 0`$ either from the integral or using operators. I’ll use operators to compute the rest.
 
 ```math
 x = \sqrt{\frac{\hbar}{2 m\omega}} ( A + A^{\dagger} )
@@ -598,11 +598,11 @@ p = \frac{1}{i} \sqrt{\frac{m \hbar \omega}{2} ( A - A^{\dagger} )}
 
 4. Use the commutator relation between $`A`$ and $`A^{\dagger}`$ to derive $`[ H,A ]`$. Now show that $`A`$ is the **lowering operator for the harmonic oscillator** energy.
 
-5. At $`t`$ = 0, a **one dimensional harmonic oscillator** is in the state $`\psi ( t = 0 )`$ = $`\sqrt{\frac{3}{4}} u_{0} + i \sqrt{\frac{1}{4}} u_{1}`$.
+5. At $`t = 0`$, a **one dimensional harmonic oscillator** is in the state $`\psi ( t = 0 ) = \sqrt{\frac{3}{4}} u_{0} + i \sqrt{\frac{1}{4}} u_{1}`$.
 
 Calculate the expected value of $`p`$ as a function of time.
 
-6. At $`t`$ = 0, a harmonic oscillator is in a linear combination of the $`n`$ = 1 and $`n`$ = 2 states.
+6. At $`t = 0`$, a harmonic oscillator is in a linear combination of the $`n = 1`$ and $`n = 2`$ states.
 
 ```math
 \psi = \sqrt{\frac{2}{3}} u_{1} - \sqrt{\frac{1}{3}} u_{2}

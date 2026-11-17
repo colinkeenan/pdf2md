@@ -199,11 +199,11 @@ The figure shows the transitions between Hydrogen atom states.
 
 _Figure 69 (p. 233)_
 
-The ground state of Hydrogen has $`n`$ = 1 and $`\ell`$ = 0. This is conventionally called the 1s state. The convention is to name $`\ell`$ = 0 states “s”, $`\ell`$ = 1 states “p”, $`\ell`$ = 2 states “d”, and $`\ell`$ = 3 states “f”. From there on follow the alphabet with g, h, i, ...
+The ground state of Hydrogen has $`n = 1`$ and $`\ell = 0`$. This is conventionally called the 1s state. The convention is to name $`\ell = 0`$ states “s”, $`\ell = 1`$ states “p”, $`\ell = 2`$ states “d”, and $`\ell = 3`$ states “f”. From there on follow the alphabet with g, h, i, ...
 
-The first excited state of Hydrogen has $`n`$ = 2. There are actually four degenerate states (not counting different spin states) for $`n`$ = 2. In terms of $`\psi_{n\ell m}`$, these are $`\psi_{2 0 0} , \psi_{2 1 1} , \psi_{2 1 0}`$, and $`\psi_{2 1 - 1}`$. These would be called the 2s and 2p states. Remember, all values of $`\ell <n`$ are allowed.
+The first excited state of Hydrogen has $`n = 2`$. There are actually four degenerate states (not counting different spin states) for $`n = 2`$. In terms of $`\psi_{n\ell m}`$, these are $`\psi_{2 0 0} , \psi_{2 1 1} , \psi_{2 1 0}`$, and $`\psi_{2 1 - 1}`$. These would be called the 2s and 2p states. Remember, all values of $`\ell <n`$ are allowed.
 
-The second excited state has $`n`$ = 3 with the 3s, 3p and 3d states being degenerate. This totals 9 states with the different allowed $`m`$ values.
+The second excited state has $`n = 3`$ with the 3s, 3p and 3d states being degenerate. This totals 9 states with the different allowed $`m`$ values.
 
 In general there are $`n^{2}`$ degenerate states, again not counting different spin states.
 
@@ -569,7 +569,7 @@ We can compute the expectation value of the potential energy.
 
 ## <a id="s-16-4-4-the-expectation-value-of-v-r-in-the-ground-state"></a>16.4.4 The Expectation Value of $`v_{r}`$ in the Ground State
 
-For $`\ell`$ = 0, there is no angular dependence to the wavefunction so no velocity except in the radial direction. So it makes sense to compute the radial component of the velocity which is the full velocity.
+For $`\ell = 0`$, there is no angular dependence to the wavefunction so no velocity except in the radial direction. So it makes sense to compute the radial component of the velocity which is the full velocity.
 
 We can find the term for $`\frac{p_{r}^{2}}{2 m}`$ in the radial equation.
 
@@ -595,7 +595,7 @@ Since $`a_{0} = \tfrac{\hbar}{\alpha mc}`$ , we get
 \langle \psi_{1 0 0} | ( v_{r} )^{2} | \psi_{1 0 0} \rangle = Z^{2} \alpha^{2} c^{2}
 ```
 
-For $`Z`$ = 1, the RMS velocity is $`\alpha c`$ or
+For $`Z = 1`$, the RMS velocity is $`\alpha c`$ or
 
 ```math
 \beta = \alpha = \frac{1}{1 3 7}
@@ -612,7 +612,7 @@ This is what we expect from the Virial theorem.
 # <a id="s-16-5-sample-test-problems"></a>16.5 Sample Test Problems
 
 1. A Hydrogen atom is in its 4D state $`( n = 4 ,\ell = 2 )`$. The atom decays to a lower state by emitting a photon. Find the possible photon energies that may be observed. Give your answers in eV. **Answer**The $`n`$<br>
-= 4 state can decay into states with $`n`$ = 1$`, 2 ,`$ 3. (Really the $`n`$ = 1 state will be suppressed due to selection rules but this is supposed to be a simple question.) The energies of the states are
+= 4 state can decay into states with $`n = 1 , 2 ,`$ 3. (Really the $`n = 1`$ state will be suppressed due to selection rules but this is supposed to be a simple question.) The energies of the states are
 
 ```math
 E_{n} = - \frac{1 3 . 6}{n^{2}} eV.
@@ -624,13 +624,13 @@ The photon energy is given by the energy difference between the states.
 E_{\gamma} = 1 3 . 6 \left( \frac{1}{n^{2}} - \frac{1}{4^{2}} \right)
 ```
 
-For the $`n`$ = 1 final state, $`E = \tfrac{1 5}{1 6} 1 3 . 6`$ = 12$`. 8`$ eV.
+For the $`n = 1`$ final state, $`E = \tfrac{1 5}{1 6} 1 3 . 6`$ = 12$`. 8`$ eV.
 
-For the $`n`$ = 2 final state, $`E = \tfrac{3}{1 6} 1 3 . 6`$ = 2$`. 6`$ eV.
+For the $`n = 2`$ final state, $`E = \tfrac{3}{1 6} 1 3 . 6`$ = 2$`. 6`$ eV.
 
-For the $`n`$ = 3 final state, $`E = \tfrac{7}{1 4 4} 1 3 . 6`$ = 0$`. 7`$ eV.
+For the $`n = 3`$ final state, $`E = \tfrac{7}{1 4 4} 1 3 . 6`$ = 0$`. 7`$ eV.
 
-2. Using the $`\psi_{n\ell m}`$ notation, list all the $`n`$ = 1$`, 2 ,`$ 3 hydrogen states. (Neglect the existence of spin.)<br>
+2. Using the $`\psi_{n\ell m}`$ notation, list all the $`n = 1 , 2 ,`$ 3 hydrogen states. (Neglect the existence of spin.)<br>
 **Answer**The states are,
 
 ```math
@@ -669,13 +669,13 @@ a) What is the ground state energy of muonic hydrogen (in eV).
 
 b) What is the“Bohr Radius” of the ground state of muonic hydrogen.
 
-12. A hydrogen atom is in the state: $`\psi`$(**r**$`) = \frac{1}{\langle \sqrt{1 0} \rangle} ( \psi_{3 2 2}`$ + 2$`\psi_{2 2 1}`$ + 2$`i\psi_{2 2 0} + \psi_{1 1 - 1}`$) Find the possible measured energies and the probabilities of each. Find the expected value of $`L_{z}`$.
+12. A hydrogen atom is in the state: $`\psi`$(**r**$`) = \frac{1}{\langle \sqrt{1 0} \rangle} ( \psi_{3 2 2} + 2 \psi_{2 2 1} + 2 i\psi_{2 2 0} + \psi_{1 1 - 1}`$) Find the possible measured energies and the probabilities of each. Find the expected value of $`L_{z}`$.
 
 13. Find the difference in frequency between light emitted from the 2$`P \to 1 S`$ transition in Hydrogen and light from the same transition in Deuterium. (Deuterium is an isotope of Hydrogen with a proton and a neutron in the nucleus.)
 
 14. Tritium is an isotope of hydrogen having 1 proton and 2 neutrons in the nucleus. The nucleus is unstable and decays by changing one of the neutrons into a proton with the emission of a positron and a neutrino. The atomic electron is undisturbed by this decay process and therefore finds itself in exactly the same state immediately after the decay as before it. If the electron started off in the $`\psi_{2 0 0} ( n = 2 , l = 0 )`$ state of tritium, compute the probability to find the electron in the ground state of the new atom with Z=2.
 
-15. At $`t`$ = 0 a hydrogen atom is in the state $`\psi ( t = 0 )`$ = $`\tfrac{1}{\sqrt{2}} ( \psi_{1 0 0} - \psi_{2 0 0} )`$. Calculate the expected value of $`r`$ as a function of time.
+15. At $`t = 0`$ a hydrogen atom is in the state $`\psi ( t = 0 ) = \tfrac{1}{\sqrt{2}} ( \psi_{1 0 0} - \psi_{2 0 0} )`$. Calculate the expected value of $`r`$ as a function of time.
 
 **Answer**
 

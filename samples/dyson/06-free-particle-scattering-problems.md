@@ -51,7 +51,7 @@ u_{1} e^{ip_{1} \cdot x} \qquad \text{(422)}
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p82" href="book.pdf#page=88" target="_blank" title="This page in the PDF"><sup>[p. 82]</sup></a>
 
-normalized by $`( \overline{u}_{1} u_{1} )`$ = 1. With the wave function normalized in this way, (422) is just the matrix element of the operator $`\psi ( x )`$ between the vacuum state and the state containing electron 1. We can see this from
+normalized by $`( \overline{u}_{1} u_{1} ) = 1`$. With the wave function normalized in this way, (422) is just the matrix element of the operator $`\psi ( x )`$ between the vacuum state and the state containing electron 1. We can see this from
 
 ```math
 \psi ( x ) = \sum_{p,u} b_{pu} ue^{ip \cdot x}
@@ -61,7 +61,7 @@ where $`\{ b_{pu} ,b_{p^{\prime} u^{\prime}}^{*} \} = \delta_{pp^{\prime}} \delt
 
 Thus we consider the states 1, 2 and $`1^{\prime} , 2^{\prime}`$ as if they were discrete states, the $`\psi`$ operator being given by the expansion (337). It would also be possible to use the continuous-state expansion (306) for $`\psi`$, but then the normalization of the initial and final states would have to be considered afresh. Since we fixed the normalization (472) when we previously derived the Møller formula (144), we shall now stick to it.
 
-We shall calculate in the Born approximation as before, thus keeping only the term $`n`$ = 2 in (421) which gives the matrix element $`M`$ proportional to $`e^{2}`$. In this problem the external potential $`A^{e}`$ is zero. The term $`n`$ = 2 in (421) is
+We shall calculate in the Born approximation as before, thus keeping only the term $`n = 2`$ in (421) which gives the matrix element $`M`$ proportional to $`e^{2}`$. In this problem the external potential $`A^{e}`$ is zero. The term $`n = 2`$ in (421) is
 
 <a id="eq-423"></a>
 
@@ -131,7 +131,7 @@ we have by (203) and (205)
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p83" href="book.pdf#page=89" target="_blank" title="This page in the PDF"><sup>[p. 83]</sup></a>
 
-according to (228). Obviously $`D_{F}`$ is an even function. It has the property that asymptotically as $`x_{0} \to \infty`$ in the future, $`D_{F}`$ = 2$`iD^{+}`$ contains only positive frequencies, while as $`x_{0} \to -\infty`$ in the past, $`D_{F} = - 2 iD^{-}`$ contains only negative frequencies. See Fierz, _Helv. Phys. Acta_ **23** (1950) 731 for a full discussion.
+according to (228). Obviously $`D_{F}`$ is an even function. It has the property that asymptotically as $`x_{0} \to \infty`$ in the future, $`D_{F} = 2 iD^{+}`$ contains only positive frequencies, while as $`x_{0} \to -\infty`$ in the past, $`D_{F} = - 2 iD^{-}`$ contains only negative frequencies. See Fierz, _Helv. Phys. Acta_ **23** (1950) 731 for a full discussion.
 
 Thus $`D_{F}`$ is the potential arising from a point source disturbance at the origin, when all the potential travelling out in the future represents particles <a id="ix-40">created</a>, and all the potential travelling in from<sup><a id="fnref-56" href="#fn-56">56</a></sup> the past represents particles to be absorbed, all particles having positive energy. It is thus the potential which maintains the correct causal time-sequence of events, and in this way it was discovered by Stueckelberg. But the definition (427) is easier to understand and use.
 
@@ -175,7 +175,7 @@ Using (427) and (431) in (426), the integrations over $`x_{1}`$ and $`x_{2}`$ ca
 M_{2} = \sum_{\lambda} \frac{- ie^{2}}{\hbar c} ( 2 \pi )^{4} \delta^{4} ( p_{1} + p_{2} - p_{1}^{\prime} - p_{2}^{\prime} ) \left\{ \frac{( \overline{u}_{1}^{\prime} \gamma_{\lambda} u_{1} ) ( \overline{u}_{2}^{\prime} \gamma_{\lambda} u_{2} )}{( p_{1} - p_{1}^{\prime} )^{2} - i\epsilon} - \frac{( \overline{u}_{2}^{\prime} \gamma_{\lambda} u_{1} ) ( \overline{u}_{1}^{\prime} \gamma_{\lambda} u_{2} )}{( p_{1} - p_{2}^{\prime} )^{2} - i\epsilon} \right\} \qquad \text{(432)}
 ```
 
-Now $`p_{1}`$ and $`p_{1}^{\prime}`$ are both electron momentum 4-vectors and hence $`( p_{1} - p_{1}^{\prime} )`$ is a space-like vector and its square cannot be zero. Hence we can go directly to the limit by putting $`\epsilon`$ = 0 in (432). This gives us the Møller formula (144) allowing for a difference in units in $`p`$ and $`e`$.
+Now $`p_{1}`$ and $`p_{1}^{\prime}`$ are both electron momentum 4-vectors and hence $`( p_{1} - p_{1}^{\prime} )`$ is a space-like vector and its square cannot be zero. Hence we can go directly to the limit by putting $`\epsilon = 0`$ in (432). This gives us the Møller formula (144) allowing for a difference in units in $`p`$ and $`e`$.
 
 It is clear that the formula comes very directly out of (423), once we know the momentum expansion (431) of the $`D_{F}`$ function. And we shall find that things are equally simple in other free-particle scattering problems.
 
@@ -345,7 +345,7 @@ and similarly
 ( p + k )^{2} + \mu^{2} = - 2 \mu k_{0} \qquad \text{(450)}
 ```
 
-because $`k^{\prime 2}`$ = 0 and $`p^{2} = - \mu^{2} ; \boldsymbol{p}`$ = 0 because the electron is at rest.
+because $`k^{\prime 2} = 0`$ and $`p^{2} = - \mu^{2} ; \boldsymbol{p} = 0`$ because the electron is at rest.
 
 <a id="eq-451"></a>
 
@@ -353,7 +353,7 @@ because $`k^{\prime 2}`$ = 0 and $`p^{2} = - \mu^{2} ; \boldsymbol{p}`$ = 0 beca
 M_{2} = \frac{- e^{2}}{2 \hbar^{2} c^{2} \mu} ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \overline{u}^{\prime} \left[ \frac{1}{k_{0}^{\prime}} /e ( p / - / k^{\prime} + i\mu ) /e^{\prime} - \frac{1}{k_{0}} /e^{\prime} ( p / + / k + i\mu ) /e \right] u \qquad \text{(451)}
 ```
 
-Now we can simplify (451) further. Since the photon is not polarized in time, $`e_{4} = e_{4}^{\prime}`$ = 0; since the electron is at rest, $`\boldsymbol{p}`$ = 0. Hence $`e \cdot p`$ = 0, and thus $`/e/p = - p/e /`$ + 2$`\mathbb{I} e \cdot p = - p/e /`$ , i.e. $`p /`$ and $`/e`$ anticommute. This plus the fact that $`u`$ is a spin state of momentum $`\hbar p`$, i.e.
+Now we can simplify (451) further. Since the photon is not polarized in time, $`e_{4} = e_{4}^{\prime} = 0`$; since the electron is at rest, $`\boldsymbol{p} = 0`$. Hence $`e \cdot p = 0`$, and thus $`/e/p = - p/e / + 2 \mathbb{I} e \cdot p = - p/e /`$ , i.e. $`p /`$ and $`/e`$ anticommute. This plus the fact that $`u`$ is a spin state of momentum $`\hbar p`$, i.e.
 
 <a id="eq-452"></a>
 
@@ -399,7 +399,7 @@ The number of final states for the electron is
 \frac{1}{( 2 \pi )^{3}} \left( \frac{mc^{2}}{E^{\prime}} \right) dp_{1}^{\prime} dp_{2}^{\prime} dp_{3}^{\prime} \qquad \text{(456)}
 ```
 
-The photon with potentials (440), when $`e_{\mu}^{\prime}`$ is a space-like vector having $`( e_{\mu}^{\prime} )^{2}`$ = 1 is normalized to one particle per volume $`\hbar c/ 2 k_{0}^{\prime}`$. This can be seen at once, comparing (440) with (211) and (214), and taking into account the difference of $`( 2 \pi )^{3}`$ between the continuous and discrete normalizations. Hence the number of final states for the photon is
+The photon with potentials (440), when $`e_{\mu}^{\prime}`$ is a space-like vector having $`( e_{\mu}^{\prime} )^{2} = 1`$ is normalized to one particle per volume $`\hbar c/ 2 k_{0}^{\prime}`$. This can be seen at once, comparing (440) with (211) and (214), and taking into account the difference of $`( 2 \pi )^{3}`$ between the continuous and discrete normalizations. Hence the number of final states for the photon is
 
 <a id="eq-457"></a>
 
@@ -437,7 +437,7 @@ The differential cross-section for scattering the photon of frequency $`k_{0}`$ 
 \sigma = \frac{wV_{1} V_{2}}{c}
 ```
 
-where $`V_{1}`$ is according to (149) the electron normalization volume $`\frac{mc^{2}}{E}`$ = 1 and $`V_{2}`$ is the photon volume,
+where $`V_{1}`$ is according to (149) the electron normalization volume $`\frac{mc^{2}}{E} = 1`$ and $`V_{2}`$ is the photon volume,
 
 $`V_{2} = \frac{\hbar c}{2 k_{0}}`$. Thus
 
@@ -471,7 +471,7 @@ $`\xi`$ is a Dirac matrix in general.
 
 </div>
 
-1) Spur $`\left( \xi^{( 1 )} \xi^{( 2 )} \dots \xi^{( 2 k - 1 )} \right)`$ = 0, i.e.the spur of an odd number of factors is 0.
+1) Spur $`\left( \xi^{( 1 )} \xi^{( 2 )} \dots \xi^{( 2 k - 1 )} \right) = 0`$, i.e.the spur of an odd number of factors is 0.
 
 2) Spur $`\left( \xi^{( 1 )} \xi^{( 2 )} \dots \xi^{( 2 k )} \right)`$ = Spur $`\left\{ P \left( \xi^{( 1 )} \xi^{( 2 )} \dots \xi^{( 2 k )} \right) \right\}`$ where $`P`$ is any cyclic permutation.
 
@@ -543,7 +543,7 @@ so adding the terms gives
 - \left( /e \frac{/ k}{k_{0}} /e^{\prime} + /e^{\prime} \frac{k /^{\prime}}{k_{0}^{\prime}} /e \right) p / + 2 \mu \{ /e,/e^{\prime} \} = - \left( /e \frac{/ k}{k_{0}} /e^{\prime} + /e^{\prime} \frac{k /^{\prime}}{k_{0}^{\prime}} /e \right) p / + 4 \mu ( e \cdot e^{\prime} )
 ```
 
-Now since $`k/ / k = / k^{\prime} k /^{\prime} = p/p / + \mu^{2}`$ = 0 (for the photons because they are on the lightcone, for the electron because $`p^{2} = - \mu^{2}`$), we get for $`| K |^{2}`$
+Now since $`k/ / k = / k^{\prime} k /^{\prime} = p/p / + \mu^{2} = 0`$ (for the photons because they are on the lightcone, for the electron because $`p^{2} = - \mu^{2}`$), we get for $`| K |^{2}`$
 
 <a id="eq-464"></a>
 
@@ -753,7 +753,7 @@ The decay probability per unit volume per unit time into a solid angle $`d`$Ω 
 w = c | K |^{2} \frac{1}{( 2 \pi )^{2}} \left( \frac{\hbar c}{2 \mu} \right)^{2} \frac{dk_{1} dk_{2} dk_{3}}{d ( k_{0} + k_{0}^{\prime} )}
 ```
 
-(because $`k_{0} = \mu`$ here) in analogy to (458). But now $`d ( k_{0} + k_{0}^{\prime} )`$ = 2$`dk_{0}^{\prime}`$ and so
+(because $`k_{0} = \mu`$ here) in analogy to (458). But now $`d ( k_{0} + k_{0}^{\prime} ) = 2 dk_{0}^{\prime}`$ and so
 
 <a id="eq-474"></a>
 
@@ -887,7 +887,7 @@ Potential energy $`\times`$ time of transit $`\ll \hbar`$
 \begin{aligned} & \quad \text{ or } \quad \frac{Ze^{2}}{4 \pi r} \times \frac{r}{v} \ll \hbar \\ \text{ or } \quad \frac{Ze^{2}}{4 \pi \hbar v} &= \frac{Z}{1 3 7} \frac{c}{v} \ll 1 \end{aligned} \qquad \text{(481)}
 ```
 
-The treatment will only be good for _relativistic velocities_ $`v \sim c`$, and for _lighter atoms_ $`Z \ll 137`$. In fact for heavy atoms ($`Z`$ = 82 for lead) and $`v \sim c`$ the error from the Born approximation is about 10%.
+The treatment will only be good for _relativistic velocities_ $`v \sim c`$, and for _lighter atoms_ $`Z \ll 137`$. In fact for heavy atoms ($`Z = 82`$ for lead) and $`v \sim c`$ the error from the Born approximation is about 10%.
 
 The processes arise in the Born approximation just from the term linear in $`A_{\mu}`$ and linear in $`A_{\mu}^{e}`$ in (421). This term is
 

@@ -131,7 +131,7 @@ The commutator with $`L_{z}`$ is.
 [ L_{\pm} ,L_{z} ] = [ L_{x} ,L_{z} ] \pm i [ L_{y} ,L_{z} ] = i \hbar ( - L_{y} \pm iL_{x} ) = \mp \hbar L_{\pm} .
 ```
 
-From the commutators $`[ L^{2} ,L_{\pm} ]`$ = 0 and $`[ L_{\pm} ,L_{z} ] = \mp \hbar L_{\pm}`$, we can derive the effect of the operators (See section 14.4.5) $`L_{\pm}`$ on the eigenstates $`Y_{\ell m}`$, and in so doing, show that $`\ell`$ is an integer greater than or equal to 0, and that $`m`$ is also an integer
+From the commutators $`[ L^{2} ,L_{\pm} ] = 0`$ and $`[ L_{\pm} ,L_{z} ] = \mp \hbar L_{\pm}`$, we can derive the effect of the operators (See section 14.4.5) $`L_{\pm}`$ on the eigenstates $`Y_{\ell m}`$, and in so doing, show that $`\ell`$ is an integer greater than or equal to 0, and that $`m`$ is also an integer
 
 ```math
 \ell = 0 , 1 , 2 ,\dots
@@ -149,7 +149,7 @@ m = - \ell , - \ell + 1 ,\dots ,\ell
 L_{\pm} Y_{\ell m} = \hbar \sqrt{\ell ( \ell + 1 ) - m ( m \pm 1 ) Y_{\ell ( m \pm 1 )}}
 ```
 
-Therefore, $`L_{+}`$ raises the $`z`$ component of angular momentum by one unit of $`\hbar`$ and $`L_{-}`$ lowers it by one unit. The raising stops when $`m = \ell`$ and the operation gives zero, $`L_{+} Y_{\ell \ell}`$ = 0. Similarly, the lowering stops because $`L_{-} Y_{\ell - \ell}`$ = 0.
+Therefore, $`L_{+}`$ raises the $`z`$ component of angular momentum by one unit of $`\hbar`$ and $`L_{-}`$ lowers it by one unit. The raising stops when $`m = \ell`$ and the operation gives zero, $`L_{+} Y_{\ell \ell} = 0`$. Similarly, the lowering stops because $`L_{-} Y_{\ell - \ell} = 0`$.
 
 ![Figure 45 (p. 204)](images/fig-p204-1.png)
 
@@ -271,7 +271,7 @@ Check the solution.
 
 Its correct.
 
-Here we should note that only the integer value of $`\ell`$ work for these solutions. If we were to use half-integers, the wave functions would not be single valued, for example at $`\varphi`$ = 0 and $`\varphi`$ = 2$`\pi`$. Even though the probability may be single valued, discontinuities in the amplitude would lead to infinities in the Schrödinger equation. We will find later that the **half-integer angular momentum states** **are used** for internal angular momentum (spin), for which no $`\theta`$ or $`\varphi`$ coordinates exist.
+Here we should note that only the integer value of $`\ell`$ work for these solutions. If we were to use half-integers, the wave functions would not be single valued, for example at $`\varphi = 0`$ and $`\varphi = 2 \pi`$. Even though the probability may be single valued, discontinuities in the amplitude would lead to infinities in the Schrödinger equation. We will find later that the **half-integer angular momentum states** **are used** for internal angular momentum (spin), for which no $`\theta`$ or $`\varphi`$ coordinates exist.
 
 Therefore, **the eigenstate** $`Y_{\ell \ell}`$ **is**.
 
@@ -871,7 +871,7 @@ The raising and lowering operators change $`m`$ in integer steps, so, starting f
 m = - \ell , - \ell + 1 ,\dots ,\ell - 1 ,\ell
 ```
 
-Having the minimum at $`- \ell`$ and the maximum at +$`\ell`$ with integer steps only works if $`\ell`$ **is an integer** **or a half-integer**. There are 2$`\ell`$+ 1 states with the same $`\ell`$ and different values of $`m`$. We now know what eigenstates are allowed.
+Having the minimum at $`- \ell`$ and the maximum at +$`\ell`$ with integer steps only works if $`\ell`$ **is an integer** **or a half-integer**. There are 2$`\ell + 1`$ states with the same $`\ell`$ and different values of $`m`$. We now know what eigenstates are allowed.
 
 The eigenstates of $`L^{2}`$ and $`L_{z}`$ should be normalized
 
@@ -1013,9 +1013,9 @@ L_{z} ( L_{+} Y_{\ell m} ) = ( m + 1 ) \hbar ( L_{+} Y_{\ell m} )
 
 So, $`L_{+}`$ raises the eigenvalue of $`L_{z}`$.
 
-2. Write the (normalized) state which is an eigenstate of $`L^{2}`$ with eigenvalue $`\ell ( \ell + 1 ) \hbar^{2}`$ = 2$`\hbar^{2}`$ and also an **eigenstate of** $`L_{x}`$ with eigenvalue 0$`\hbar`$ in terms of the usual $`Y_{\ell m}`$.
+2. Write the (normalized) state which is an eigenstate of $`L^{2}`$ with eigenvalue $`\ell ( \ell + 1 ) \hbar^{2} = 2 \hbar^{2}`$ and also an **eigenstate of** $`L_{x}`$ with eigenvalue 0$`\hbar`$ in terms of the usual $`Y_{\ell m}`$.
 
-**Answer**<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=216" target="_blank" title="This page in the PDF"><sup>[p. 216]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p217" href="book.pdf#page=217" target="_blank" title="This page in the PDF"><sup>[p. 217]</sup></a></span> An eigenvalue of $`\ell ( \ell + 1 ) \hbar^{2}`$ = 2$`\hbar^{2}`$ implies $`\ell`$ = 1. We will need a linear combination of the $`Y_{1 m}`$ to get the eigenstate of $`L_{x} = \tfrac{L_{+} + L_{-}}{2}`$.
+**Answer**<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=216" target="_blank" title="This page in the PDF"><sup>[p. 216]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p217" href="book.pdf#page=217" target="_blank" title="This page in the PDF"><sup>[p. 217]</sup></a></span> An eigenvalue of $`\ell ( \ell + 1 ) \hbar^{2} = 2 \hbar^{2}`$ implies $`\ell = 1`$. We will need a linear combination of the $`Y_{1 m}`$ to get the eigenstate of $`L_{x} = \tfrac{L_{+} + L_{-}}{2}`$.
 
 ```math
 \frac{L_{+} + L_{-}}{2} ( AY_{1 1} + BY_{1 0} + CY_{1 - 1} ) = 0
@@ -1045,19 +1045,19 @@ The state is
 \frac{1}{\sqrt{2}} ( Y_{1 1} - Y_{1 - 1} )
 ```
 
-The trivial solution that $`A = B = C`$ = 0 is just a zero state, not normalizable to 1.
+The trivial solution that $`A = B = C = 0`$ is just a zero state, not normalizable to 1.
 
-3. Write the (normalized) state which is an eigenstate of $`L^{2}`$ with eigenvalue $`\ell ( \ell + 1 ) \hbar^{2}`$ = 2$`\hbar^{2}`$ and also an **eigenstate of** $`L_{y}`$ with eigenvalue 1$`\hbar`$ in terms of the usual $`Y_{\ell m}`$.
+3. Write the (normalized) state which is an eigenstate of $`L^{2}`$ with eigenvalue $`\ell ( \ell + 1 ) \hbar^{2} = 2 \hbar^{2}`$ and also an **eigenstate of** $`L_{y}`$ with eigenvalue 1$`\hbar`$ in terms of the usual $`Y_{\ell m}`$.
 
 4. Calculate the **commutators** $`[ p_{z} ,L_{x} ]`$ and $`[ L_{x}^{2} ,L_{z} ]`$.
 
-5. **Derive** the relation $`L_{+} Y_{\ell m} = \hbar \sqrt{\ell ( \ell}`$ + 1) $`- m ( m + 1 ) Y_{\ell ( m + 1 )}`$.
+5. **Derive** the relation $`L_{+} Y_{\ell m} = \hbar \sqrt{\ell ( \ell} + 1`$) $`- m ( m + 1 ) Y_{\ell ( m + 1 )}`$.
 
-6. A particle is in a $`l`$ = 1 state and is known to have angular momentum in the $`x`$ direction equal to +$`\hbar`$. That is $`L_{x} \psi = \hbar \psi`$. Since we know $`l`$ = 1, $`\psi`$ must have the form $`\psi = R ( r ) ( aY_{1 , 1} + bY_{1 , 0} + cY_{1 , - 1} )`$. Find the coefficients $`a,b,`$ and $`c`$ for $`\psi`$ normalized.
+6. A particle is in a $`l = 1`$ state and is known to have angular momentum in the $`x`$ direction equal to +$`\hbar`$. That is $`L_{x} \psi = \hbar \psi`$. Since we know $`l = 1`$, $`\psi`$ must have the form $`\psi = R ( r ) ( aY_{1 , 1} + bY_{1 , 0} + cY_{1 , - 1} )`$. Find the coefficients $`a,b,`$ and $`c`$ for $`\psi`$ normalized.
 
 7. Calculate the following commutators: $`[ x,L_{z} ]`$, $`[ L_{+} ,L^{2} ]`$, $`[ \tfrac{1}{2} m\omega^{2} r^{2} ,p_{x} ]`$.
 
-8. Prove that, if the Hamiltonian is symmetric under rotations, then $`[ H,L_{z} ]`$ = 0.
+8. Prove that, if the Hamiltonian is symmetric under rotations, then $`[ H,L_{z} ] = 0`$.
 
 9. In 3 dimensions, a particle is in the state:
 
@@ -1077,7 +1077,7 @@ b) If a measurement of $`L_{z}`$ is made, what are the possible measured values 
 
 c) Find the expected value of $`<L_{x} >`$ in the above state.
 
-10. Two (different) atoms of masses $`M_{1}`$ and $`M_{2}`$ are bound together into the ground state of a diatomic molecule. The binding is such that radial excitations can be neglected at low energy and that the atoms can be assumed to be a constant distance $`a`$ = 3˚$`A`$ apart. (We will ignore the small spread around $`r = a`$.)
+10. Two (different) atoms of masses $`M_{1}`$ and $`M_{2}`$ are bound together into the ground state of a diatomic molecule. The binding is such that radial excitations can be neglected at low energy and that the atoms can be assumed to be a constant distance $`a = 3`$˚$`A`$ apart. (We will ignore the small spread around $`r = a`$.)
 
 a) What is the energy spectrum due to rotations of the molecule?
 

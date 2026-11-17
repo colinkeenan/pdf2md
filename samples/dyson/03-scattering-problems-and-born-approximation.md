@@ -113,7 +113,7 @@ The two spin states with momentum 4-vector $`- p`$ satisfy
 \left( p / + imc \right) u = 0 \qquad \text{(112)}
 ```
 
-As one can easily show from (48), these 4 states are all orthogonal in the sense that $`( \overline{u}^{\prime} u )`$ = 0 for each pair $`u^{\prime} u`$. Therefore the identity operator may be written in the form
+As one can easily show from (48), these 4 states are all orthogonal in the sense that $`( \overline{u}^{\prime} u ) = 0`$ for each pair $`u^{\prime} u`$. Therefore the identity operator may be written in the form
 
 <a id="eq-113"></a>
 
@@ -224,11 +224,11 @@ _Problem 3:_ Given a steady potential $`V`$ a function of position, and a beam o
 a) By stationary perturbation theory<br>
 b) By time-dependent perturbation theory.
 
-Show that the results agree, with a <a id="ix-246">transition</a> probability per unit time given by $`w`$ = $`( 2 \pi / \hbar ) \rho_{E} | V_{BA} |^{2}`$. Evaluate the cross section in the case $`V = - Ze^{2} /r`$, averaging spin over initial state and summing over final state.
+Show that the results agree, with a <a id="ix-246">transition</a> probability per unit time given by $`w = ( 2 \pi / \hbar ) \rho_{E} | V_{BA} |^{2}`$. Evaluate the cross section in the case $`V = - Ze^{2} /r`$, averaging spin over initial state and summing over final state.
 
 c) Repeat the calculation with particles obeying the <a id="ix-164">Klein-Gordon equation</a>, leaving out the $`V^{2}`$ term, by either method. Compare the <a id="ix-99">angular</a> <a id="ix-98">distribution</a> in the two cases.
 
-_Problem 4:_ A nucleus (O<sup>16</sup>) has an even<sup><a id="fnref-11" href="#fn-11">11</a></sup> $`j`$ = 0 ground state and an even $`j`$ = 0 excited state at 6 MeV. Calculate the total rate of emission of pairs, and the angular and <a id="ix-101">momentum</a> distributions.
+_Problem 4:_ A nucleus (O<sup>16</sup>) has an even<sup><a id="fnref-11" href="#fn-11">11</a></sup> $`j = 0`$ ground state and an even $`j = 0`$ excited state at 6 MeV. Calculate the total rate of emission of pairs, and the angular and <a id="ix-101">momentum</a> distributions.
 
 _Solution:_ Let ∆$`E`$ be the excitation energy, $`\rho_{N}`$ and $`\boldsymbol{j}_{N}`$ the charge and current density operators of the nucleus. Then for the transition we are interested in $`\rho_{N}`$ and $`\boldsymbol{j}_{N}`$ are functions of position $`r`$ with the time-variation of the single matrix element given by $`\exp \{- i`$∆$`E/ \hbar \}`$. Also
 
@@ -354,7 +354,7 @@ Incidentally, since $`\phi = V ( r )`$, the second Maxwell equation reduces to
 \nabla^{2} \boldsymbol{A} - \frac{1}{c^{2}} \frac{\partial^{2} \boldsymbol{A}}{\partial t^{2}} - = - \frac{4 \pi}{c} \boldsymbol{j}_{N}
 ```
 
-Now, since there is no free radiation present, also $`\nabla \times \boldsymbol{A}`$ = 0, and hence $`\boldsymbol{A}`$ = 0, in this gauge, and therefore we can indeed ignore all electrodynamic effects.
+Now, since there is no free radiation present, also $`\nabla \times \boldsymbol{A} = 0`$, and hence $`\boldsymbol{A} = 0`$, in this gauge, and therefore we can indeed ignore all electrodynamic effects.
 
 Let us calculate then the <a id="ix-241">probability</a> of <a id="ix-47">pair</a> emission with the interaction (126). A typical final state has an electron of momentum $`p_{1}`$ and a <a id="ix-226">positron</a> of momentum $`p_{2}`$, with energies $`E_{1} , E_{2}`$ and spins $`u_{1} , u_{2}`$ respectively. For the <a id="ix-44">creation</a> of this pair the matrix element of $`I`$ is
 
@@ -462,7 +462,7 @@ We calculate now the transition scattering matrix element $`M`$ between an initi
 
 We treat the interaction in Born approximation i.e. consider the particles to go directly from the free-particle state $`A`$ to the free-particle state $`B`$ by applying the interaction operator once to state $`A`$. For electrons at reasonably high or relativistic velocities this will be a very good approximation $`( e^{2} / \hbar v \ll 1 )`$. Also we treat the electromagnetic interaction classically, just as in the O<sup>16</sup> problem, taking the field produced by particle 1 according to classical Maxwell <a id="ix-187">equations</a> to act directly on particle 2. This ignores the fact that the field consists of quanta. We shall see later, after we have developed the quantum field theories, that this introduces _no error_ so long as we are in the Born approximation.
 
-For the field produced by particle 1 in a transition from the state $`p_{1} ,u_{1}`$ to $`p_{1}^{\prime} ,u_{1}^{\prime}`$ we have the matrix elements $`\phi_{( 1 )} , \boldsymbol{A}_{( 1 )}`$ say. We use now not the <a id="ix-144">gauge</a> in which $`\nabla \boldsymbol{\cdot} \boldsymbol{A}`$ = 0, but the covariant gauge in which<sup><a id="fnref-14" href="#fn-14">14</a></sup>
+For the field produced by particle 1 in a transition from the state $`p_{1} ,u_{1}`$ to $`p_{1}^{\prime} ,u_{1}^{\prime}`$ we have the matrix elements $`\phi_{( 1 )} , \boldsymbol{A}_{( 1 )}`$ say. We use now not the <a id="ix-144">gauge</a> in which $`\nabla \boldsymbol{\cdot} \boldsymbol{A} = 0`$, but the covariant gauge in which<sup><a id="fnref-14" href="#fn-14">14</a></sup>
 
 <a id="eq-135"></a>
 
@@ -774,7 +774,7 @@ V ( r ) = - 4 \pi \int_{0}^{r} \frac{1}{r_{1}^{2}} dr_{1} \int_{0}^{r_{1}} r_{2}
 
 <a id="fn-13"></a>**13.** In the second edition, the factor “$`dE_{1}`$” was missing [↩](#fnref-13)
 
-<a id="fn-14"></a>**14.** In the literature, the gauge condition $`\nabla \boldsymbol{\cdot} \boldsymbol{A}`$ = 0 is now called “Coulomb gauge”; the choice of the gauge condition $`\partial_{\mu} A^{\mu}`$ = 0 (using the Einstein summation convention) is called “Lorentz gauge”. (See also Eq. (588).) In the first edition, Dyson uses Einstein’s convention; in the second edition, Moravcsik does not. See also the parenthetical remark following Eq. (234a). [↩](#fnref-14)
+<a id="fn-14"></a>**14.** In the literature, the gauge condition $`\nabla \boldsymbol{\cdot} \boldsymbol{A} = 0`$ is now called “Coulomb gauge”; the choice of the gauge condition $`\partial_{\mu} A^{\mu} = 0`$ (using the Einstein summation convention) is called “Lorentz gauge”. (See also Eq. (588).) In the first edition, Dyson uses Einstein’s convention; in the second edition, Moravcsik does not. See also the parenthetical remark following Eq. (234a). [↩](#fnref-14)
 
 <a id="fn-15"></a>**15.** Rewritten. In v.1, Dyson writes “The factor $`\boldsymbol{p}_{1} E_{2} - \boldsymbol{p}_{2} E_{1}`$ is invariant for a Lorentz transformation parallel to the 3 axis.” In v.2, Moravcsik writes “It is worth noting that the factor $`\boldsymbol{p}_{1} E_{2} - \boldsymbol{p}_{2} E_{1}`$ is invariant under Lorentz transformations leaving the $`x_{1}`$ and $`x_{2}`$ components unchanged.” [↩](#fnref-15)
 

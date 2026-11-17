@@ -49,7 +49,7 @@ This is exactly the formula for a state vector equals a **matrix operator** time
 \begin{pmatrix} ( O\psi )_{1} \\ ( O\psi )_{2} \\ \dots \\ ( O\psi )_{i} \\ \dots \end{pmatrix} = \begin{pmatrix} O_{1 1} & O_{1 2} & \dots & O_{1 j} & \dots \\ O_{2 1} & O_{2 2} & \dots & O_{2 j} & \dots \\ \dots & \dots & \dots & \dots & \dots \\ O_{i 1} & O_{i 2} & \dots & O_{ij} & \dots \\ \dots & \dots & \dots & \dots & \dots \end{pmatrix} \begin{pmatrix} \psi_{1} \\ \psi_{2} \\ \dots \\ \psi_{j} \\ \dots \end{pmatrix}
 ```
 
-Similarly, we can look at the **product of two operators** (using the identity $`\sum | u_{k} \rangle \langle u_{k} |`$ = 1).
+Similarly, we can look at the **product of two operators** (using the identity $`\sum | u_{k} \rangle \langle u_{k} | = 1`$).
 
 ```math
 ( OP )_{ij} = \langle u_{i} | OP | u_{j} \rangle = \sum_{k} \langle u_{i} | O | u_{k} \rangle \langle u_{k} | P | u_{j} \rangle = \sum_{k} O_{ik} P_{kj}^{k}
@@ -101,7 +101,7 @@ The bra vector is the conjugate transpose of the ket vector. The both represent 
 
 # <a id="s-18-2-the-angular-momentum-matrices"></a>18.2 The Angular Momentum Matrices\*
 
-An important case of the use of the matrix form of operators is that of Angular Momentum (See Section14.1) Assume we have an atomic state with $`\ell`$ = 1 (fixed) but $`m`$ free. We may use the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=248" target="_blank" title="This page in the PDF"><sup>[p. 248]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p249" href="book.pdf#page=249" target="_blank" title="This page in the PDF"><sup>[p. 249]</sup></a></span> eigenstates of $`L_{z}`$ as a basis for our states and operators. Ignoring the (fixed) radial part of the wavefunction, our state vectors for $`\ell`$ = 1 must be a linear combination of the $`Y_{1 m}`$
+An important case of the use of the matrix form of operators is that of Angular Momentum (See Section14.1) Assume we have an atomic state with $`\ell = 1`$ (fixed) but $`m`$ free. We may use the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=248" target="_blank" title="This page in the PDF"><sup>[p. 248]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p249" href="book.pdf#page=249" target="_blank" title="This page in the PDF"><sup>[p. 249]</sup></a></span> eigenstates of $`L_{z}`$ as a basis for our states and operators. Ignoring the (fixed) radial part of the wavefunction, our state vectors for $`\ell = 1`$ must be a linear combination of the $`Y_{1 m}`$
 
 ```math
 \psi = \psi_{+} Y_{1 1} + \psi_{0} Y_{1 0} + \psi_{-} Y_{1 1}
@@ -115,7 +115,7 @@ We will write our **3 component vectors** like
 \psi = \begin{pmatrix} \psi_{+} \\ \psi_{0} \\ \psi_{-} \end{pmatrix} .
 ```
 
-The angular momentum operators are therefore 3X3 matrices. We can easily **derive** (see section 18.11.1) the matrices representing the angular momentum operators for $`\ell`$ = 1.
+The angular momentum operators are therefore 3X3 matrices. We can easily **derive** (see section 18.11.1) the matrices representing the angular momentum operators for $`\ell = 1`$.
 
 <a id="eq-1"></a>
 
@@ -175,7 +175,7 @@ The eigenvectors computed in the above example show that the x axis is not reall
 \psi_{+ \hbar}^{( x )} = \begin{pmatrix} \frac{1}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{1}{2} \end{pmatrix} \quad \psi_{0 \hbar}^{( x )} = \begin{pmatrix} \frac{1}{\sqrt{2}} \\ 0 \\ - \tfrac{1}{\sqrt{2}} \end{pmatrix} \quad \psi_{- \hbar}^{( x )} = \begin{pmatrix} \frac{- 1}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{- 1}{2} \end{pmatrix} .
 ```
 
-These vectors, and any $`\ell`$ = 1 vectors, can be written in terms of the eigenvectors of $`S_{z}`$.
+These vectors, and any $`\ell = 1`$ vectors, can be written in terms of the eigenvectors of $`S_{z}`$.
 
 We can check whether the **eigenvectors are orthogonal,** as they must be.
 
@@ -199,7 +199,7 @@ P_{+ \hbar} = \left| \langle \psi_{+ \hbar}^{( x )} | \chi \rangle \right|^{2}
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p251" href="book.pdf#page=251" target="_blank" title="This page in the PDF"><sup>[p. 251]</sup></a>
 
-# <a id="s-18-4-an-ell-1-system-in-a-magnetic-field"></a>18.4 An $`\ell`$ = 1 System in a Magnetic Field\*
+# <a id="s-18-4-an-ell-1-system-in-a-magnetic-field"></a>18.4 An $`\ell = 1`$ System in a Magnetic Field\*
 
 We will derive the Hamiltonian terms added when an atom is put in a magnetic field in section 20. For now, we can be satisfied with the classical explanation that the circulating current associated with nonzero angular momentum generates a **magnetic moment,** as does a classical current loop. This magnetic moment has the same interaction as in classical EM,
 
@@ -227,7 +227,7 @@ H = \frac{\mu_{B} B}{\hbar} L_{z} = \mu_{B} B \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0
 
 So the eigenstates of this magnetic interaction are the eigenstates of $`L_{z}`$ and the **energy eigenvalues** are +$`\mu_{B} B`$, 0, and $`- \mu_{B} B`$.
 
-\* See Example 18.10.6: The energy eigenstates of an $`\ell`$ = 1 system in a B-field.\*<br>
+\* See Example 18.10.6: The energy eigenstates of an $`\ell = 1`$ system in a B-field.\*<br>
 \* See Example 18.10.8: Time development of a state in a B field.\*
 
 # <a id="s-18-5-splitting-the-eigenstates-with-stern-gerlach"></a>18.5 Splitting the Eigenstates with Stern-Gerlach
@@ -262,13 +262,13 @@ _Figure 71 (p. 252)_
 
 Lets assume the field gradient is in the z direction.
 
-In the Stern-Gerlach experiment, a **beam of atoms** (assume $`\ell`$ = 1) is sent into a magnet with a strong field gradient. The atoms come from an oven through some collimator to form a beam. The beam is said to be unpolarized since the three m states are equally likely no particular state has been prepared. An unpolarized, $`\ell`$ = 1 beam of atoms will be split into the three beams (of equal intensity) corresponding to the different eigenvalues of $`L_{z}`$.
+In the Stern-Gerlach experiment, a **beam of atoms** (assume $`\ell = 1`$) is sent into a magnet with a strong field gradient. The atoms come from an oven through some collimator to form a beam. The beam is said to be unpolarized since the three m states are equally likely no particular state has been prepared. An unpolarized, $`\ell = 1`$ beam of atoms will be split into the three beams (of equal intensity) corresponding to the different eigenvalues of $`L_{z}`$.
 
 ![Figure 72 (p. 252)](images/fig-p252-2.png)
 
 _Figure 72 (p. 252)_
 
-The atoms in the top beam are in the $`m`$ = 1 state. If we put them through another Stern-Gerlach apparatus, they will **all** go into the top beam again. Similarly for the middle beam in the $`m`$ = 0 state and the lower beam in the $`m = - 1`$ state.
+The atoms in the top beam are in the $`m = 1`$ state. If we put them through another Stern-Gerlach apparatus, they will **all** go into the top beam again. Similarly for the middle beam in the $`m = 0`$ state and the lower beam in the $`m = - 1`$ state.
 
 We can make a **fancy Stern-Gerlach apparatus** which puts the beam back together as shown below.
 
@@ -286,7 +286,7 @@ We can represent the apparatus by the symbol to the right.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p253" href="book.pdf#page=253" target="_blank" title="This page in the PDF"><sup>[p. 253]</sup></a>
 
-We can use this apparatus to **prepare an eigenstate**. The apparatus below picks out the $`m`$ = 1 state
+We can use this apparatus to **prepare an eigenstate**. The apparatus below picks out the $`m = 1`$ state
 
 ![Figure 74 (p. 253)](images/fig-p253-1.png)
 
@@ -330,7 +330,7 @@ Similarly, an apparatus with no blocking could be written as the sum of the thre
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p254" href="book.pdf#page=254" target="_blank" title="This page in the PDF"><sup>[p. 254]</sup></a>
 
-If we block only the $`m`$ = 1 beam, the apparatus would be represented by
+If we block only the $`m = 1`$ beam, the apparatus would be represented by
 
 ```math
 \begin{Bmatrix} + | \\ 0 \\ - \end{Bmatrix}_{z} \to = | 0 \rangle \langle 0 | \quad + | - \rangle \langle - | .
@@ -338,7 +338,7 @@ If we block only the $`m`$ = 1 beam, the apparatus would be represented by
 
 \* See Example 18.10.7: A series of Stern-Gerlachs.\*
 
-# <a id="s-18-6-rotation-operators-for-ell-1"></a>18.6 Rotation operators for $`\ell`$ = 1 \*
+# <a id="s-18-6-rotation-operators-for-ell-1"></a>18.6 Rotation operators for $`\ell = 1`$ \*
 
 We have chosen the $`z`$ axis arbitrarily. We could choose any other direction to define our basis states. We wish to know how to **transform from one coordinate system to another.** Experience has shown that knowing how an object transforms under rotations is important in classifying the object: scalars, vectors, tensors...
 
@@ -390,7 +390,7 @@ Note that both of the above **rotation matrices** reduce to the identity matrix 
 
 # <a id="s-18-7-a-rotated-stern-gerlach-apparatus"></a>18.7 A Rotated Stern-Gerlach Apparatus\*
 
-Imagine a Stern-Gerlach apparatus that first separates an $`\ell`$ = 1 atomic beam with a strong B-field gradient in the z-direction. Let’s assume the beam has atoms moving in the y-direction. The apparatus blocks two separated beams, leaving only the eigenstate of $`L_{z}`$ with eigenvalue +$`\hbar`$. We follow this with an apparatus which separates in the u-direction, which is at an angle $`\theta`$ from the z-direction, but still perpendicular to the direction of travel of the beam, y. **What fraction of the** **(remaining) beam will go into each of the three beams which are split in the u-direction?**
+Imagine a Stern-Gerlach apparatus that first separates an $`\ell = 1`$ atomic beam with a strong B-field gradient in the z-direction. Let’s assume the beam has atoms moving in the y-direction. The apparatus blocks two separated beams, leaving only the eigenstate of $`L_{z}`$ with eigenvalue +$`\hbar`$. We follow this with an apparatus which separates in the u-direction, which is at an angle $`\theta`$ from the z-direction, but still perpendicular to the direction of travel of the beam, y. **What fraction of the** **(remaining) beam will go into each of the three beams which are split in the u-direction?**
 
 We could represent this problem with the following **diagram**.
 
@@ -458,7 +458,7 @@ An arbitrary spin one half state can be represented by a spinor.
 \chi = \begin{pmatrix} a \\ b \end{pmatrix}
 ```
 
-with the normalization condition that $`| a |^{2} + | b |^{2}`$ = 1.
+with the normalization condition that $`| a |^{2} + | b |^{2} = 1`$.
 
 It is easy to **derive** (see section 18.11.6) the matrix operators for spin.
 
@@ -540,7 +540,7 @@ As for orbital angular momentum $`( \vec{L} )`$, there is also a **magnetic mome
 \vec{\mu}_{spin} = - \frac{eg}{2 mc} \vec{S}
 ```
 
-This formula has an additional factor of $`g`$, the **gyromagnetic ratio,** compared to the formula for orbital angular momenta. For point-like particles, like the electron, $`g`$ has been computed in Quantum ElectroDynamics to be a bit over 2, $`g`$ = 2 + $`\tfrac{\alpha}{\pi} + \dots`$. For particles with structure, like the proton or neutron, $`g`$ is hard to compute, but has been measured. Because the factor of 2 from $`g`$ cancels the factor of 2 from $`s = \tfrac{1}{2}`$, the magnetic moment due to the spin of an electron is almost exactly equal to the magnetic moment due to the orbital angular momentum in an $`\ell`$ = 1 state. Both are 1 **Bohr Magneton,** $`\mu_{B} = \tfrac{e \hbar}{2 mc}`$ .
+This formula has an additional factor of $`g`$, the **gyromagnetic ratio,** compared to the formula for orbital angular momenta. For point-like particles, like the electron, $`g`$ has been computed in Quantum ElectroDynamics to be a bit over 2, $`g = 2 + \tfrac{\alpha}{\pi} + \dots`$. For particles with structure, like the proton or neutron, $`g`$ is hard to compute, but has been measured. Because the factor of 2 from $`g`$ cancels the factor of 2 from $`s = \tfrac{1}{2}`$, the magnetic moment due to the spin of an electron is almost exactly equal to the magnetic moment due to the orbital angular momentum in an $`\ell = 1`$ state. Both are 1 **Bohr Magneton,** $`\mu_{B} = \tfrac{e \hbar}{2 mc}`$ .
 
 ```math
 H = - \vec{\mu} \cdot \vec{B} = \frac{eg \hbar}{4 mc} \vec{\sigma} \cdot \vec{B} = \mu_{B} \vec{\sigma} \cdot \vec{B}
@@ -784,7 +784,7 @@ where $`a = \tfrac{\hbar}{\sqrt{2}} b`$.
 b ( b^{2} - 2 ) = 0
 ```
 
-There are three solutions to this equation: $`b`$ = 0, $`b`$ = +$`\sqrt{2}`$, and $`b = - \sqrt{2}`$ or $`a`$ = 0, $`a`$ = +$`\hbar`$, and $`a = - \hbar`$. These are the eigenvalues we expected for $`\ell`$ = 1. For each of these three eigenvalues, we should go back and find the corresponding eigenvector by using the matrix equation.
+There are three solutions to this equation: $`b = 0`$, $`b`$ = +$`\sqrt{2}`$, and $`b = - \sqrt{2}`$ or $`a = 0`$, $`a`$ = +$`\hbar`$, and $`a = - \hbar`$. These are the eigenvalues we expected for $`\ell = 1`$. For each of these three eigenvalues, we should go back and find the corresponding eigenvector by using the matrix equation.
 
 ```math
 \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix} \begin{pmatrix} \psi_{1} \\ \psi_{2} \\ \psi_{3} \end{pmatrix} = b \begin{pmatrix} \psi_{1} \\ \psi_{2} \\ \psi_{3} \end{pmatrix}
@@ -860,7 +860,7 @@ L_{y} \psi_{-}^{( y )} = - \hbar \psi_{-}^{( y )}
 \begin{pmatrix} \frac{ib}{\sqrt{2}} \\ \frac{i ( c - a )}{\sqrt{2}} \\ \frac{- ib}{\sqrt{2}} \end{pmatrix} = \begin{pmatrix} a \\ b \\ c \end{pmatrix}
 ```
 
-Setting $`b`$ = 1, we get the unnormalized result.
+Setting $`b = 1`$, we get the unnormalized result.
 
 ```math
 \psi_{-}^{( y )} = C \begin{pmatrix} \frac{i}{\sqrt{2}} \\ 1 \\ \frac{- i}{\sqrt{2}} \end{pmatrix}
@@ -874,7 +874,7 @@ Normalizing, we get.
 
 This is exactly the same as the rotated state. A 90 degree rotation about the z axis changes $`\psi_{+}^{( x )}`$ into $`\psi_{-}^{( y )}`$.
 
-## <a id="s-18-10-6-energy-eigenstates-of-an-ell-1-system-in-a-b-field"></a>18.10.6 Energy Eigenstates of an $`\ell`$ = 1 System in a B-field
+## <a id="s-18-10-6-energy-eigenstates-of-an-ell-1-system-in-a-b-field"></a>18.10.6 Energy Eigenstates of an $`\ell = 1`$ System in a B-field
 
 Recall that the Hamiltonian for a magnetic moment in an external B-field is
 
@@ -918,7 +918,7 @@ Now that we have the **shorthand notation for a Stern-Gerlach** apparatus, we ca
 \text{ Oven } ( I_{0} ) \to \begin{Bmatrix} + | \\ 0 \\ - \end{Bmatrix}_{z} ( I_{1} ) \to \begin{Bmatrix} + \\ 0 | \\ - \end{Bmatrix}_{z} ( I_{2} ) \to \begin{Bmatrix} + | \\ 0 \\ -| \end{Bmatrix}_{z} ( I_{3} ) \to
 ```
 
-**If the intensity coming out of the oven is** $`I_{0}`$**, what are the intensities at positions 1,** **2, and 3?** We assume an unpolarized beam coming out of the oven so that 1/3 of the atoms will go into each initial beam in apparatus 1. This is essentially a classical calculation since we don’t know the exact state of the particles coming from the oven. Now apparatus 1 removes the $`m`$ = 1 component of the beam, leaving a state with a mixture of $`m`$ = 0 and $`m = - 1 .`$
+**If the intensity coming out of the oven is** $`I_{0}`$**, what are the intensities at positions 1,** **2, and 3?** We assume an unpolarized beam coming out of the oven so that 1/3 of the atoms will go into each initial beam in apparatus 1. This is essentially a classical calculation since we don’t know the exact state of the particles coming from the oven. Now apparatus 1 removes the $`m = 1`$ component of the beam, leaving a state with a mixture of $`m = 0`$ and $`m = - 1 .`$
 
 ```math
 I_{1} = \frac{2}{3} I_{0}
@@ -926,7 +926,7 @@ I_{1} = \frac{2}{3} I_{0}
 
 We still don’t know the relative phase of those two components and, in fact, different atoms in the beam will have different phases.
 
-The beam will split into only two parts in the second apparatus since there is no $`m`$ = 1 component left. Apparatus 2 blocks the $`m`$ = 0 part, now leaving us with a state that we can write.
+The beam will split into only two parts in the second apparatus since there is no $`m = 1`$ component left. Apparatus 2 blocks the $`m = 0`$ part, now leaving us with a state that we can write.
 
 ```math
 I_{2} = \frac{1}{3} I_{0}
@@ -986,13 +986,13 @@ So the probability is $`\frac{1}{4}`$.
 I_{2} = \frac{1}{4} I_{1} = \frac{1}{1 2} I_{0}
 ```
 
-The third apparatus goes back to a separation in z and blocks the $`m`$ = 1 component. The incoming state is
+The third apparatus goes back to a separation in z and blocks the $`m = 1`$ component. The incoming state is
 
 ```math
 \psi_{-}^{( x )} = \begin{pmatrix} - \tfrac{1}{2} \\ \frac{1}{\sqrt{2}} \\ - \tfrac{1}{2} \end{pmatrix}
 ```
 
-Remember that the components of this vector are just the amplitudes to be in the different $`m`$ states (using the z axis). The probability to get through this apparatus is just the probability to be in the $`m`$ = 0 beam plus the probability to be in the $`m = - 1`$ beam.
+Remember that the components of this vector are just the amplitudes to be in the different $`m`$ states (using the z axis). The probability to get through this apparatus is just the probability to be in the $`m = 0`$ beam plus the probability to be in the $`m = - 1`$ beam.
 
 ```math
 P = \left| - \frac{1}{\sqrt{2}} \right|^{2} + \left| \frac{1}{2} \right|^{2} = \frac{3}{4}
@@ -1022,11 +1022,11 @@ I_{3} = 0
 
 ## <a id="s-what-would-happen-if-there-were-bright-lights-in-apparatus-2"></a>What would happen if there were bright lights in apparatus 2?
 
-## <a id="s-18-10-8-time-development-of-an-ell-1-system-in-a-b-field-version-i"></a>18.10.8 Time Development of an $`\ell`$ = 1 System in a B-field: Version I
+## <a id="s-18-10-8-time-development-of-an-ell-1-system-in-a-b-field-version-i"></a>18.10.8 Time Development of an $`\ell = 1`$ System in a B-field: Version I
 
 We wish to determine how an angular momentum 1 state develops with time (See Section 7.4), develops with time, in an applied B field. In particular, if an atom is in the state with x component of angular momentum equal to +$`\hbar , \psi_{+}^{( x )}`$, what is the state at a later time $`t`$? What is the expected value of $`L_{x}`$ as a function of time?
 
-We will choose the z axis so that the B field is in the z direction. Then we know the energy eigenstates are the eigenstates of $`L_{z}`$ and are the basis states for our vector representation of the wave function. Assume that we start with a general state which is known at $`t`$ = 0.
+We will choose the z axis so that the B field is in the z direction. Then we know the energy eigenstates are the eigenstates of $`L_{z}`$ and are the basis states for our vector representation of the wave function. Assume that we start with a general state which is known at $`t = 0`$.
 
 ```math
 \psi ( t = 0 ) = \begin{pmatrix} \psi_{+} \\ \psi_{0} \\ \psi_{-} \end{pmatrix} .
@@ -1064,7 +1064,7 @@ As a concrete example, let’s assume we start out in the eigenstate of $`L_{x}`
 = \frac{\hbar}{4} ( 4 \cos ( \frac{\mu_{B} Bt}{\hbar} ) ) = \hbar \cos ( \frac{\mu_{B} Bt}{\hbar} )
 ```
 
-Note that this agrees with what we expect at $`t`$ = 0 and is consistent with the angular momentum precessing about the z axis. If we checked $`\langle \psi | L_{y} | \psi \rangle`$, we would see a sine instead of a cosine, confirming the precession.
+Note that this agrees with what we expect at $`t = 0`$ and is consistent with the angular momentum precessing about the z axis. If we checked $`\langle \psi | L_{y} | \psi \rangle`$, we would see a sine instead of a cosine, confirming the precession.
 
 ## <a id="s-18-10-9-expectation-of-s-x-in-general-spin-2-1-state"></a>18.10.9 Expectation of $`S_{x}`$ in General Spin $`\frac{1}{2}`$ State
 
@@ -1166,7 +1166,7 @@ and solve for $`\chi_{1}`$ and $`\chi_{2}`$.
 0 1
 ```
 
-Now specifically, for the operator $`A = S_{x} = \tfrac{\hbar}{2}`$, the eigenvalue equation $`( S_{x} - \alpha ) \chi`$ = 0
+Now specifically, for the operator $`A = S_{x} = \tfrac{\hbar}{2}`$, the eigenvalue equation $`( S_{x} - \alpha ) \chi = 0`$
 
 ```math
 1 0
@@ -1178,7 +1178,7 @@ becomes, in matrix notation,
 \begin{aligned} \frac{\hbar}{2} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} \chi_{1} \\ \chi_{2} \end{pmatrix} - \begin{pmatrix} \alpha & 0 \\ 0 & \alpha \end{pmatrix} \begin{pmatrix} \chi_{1} \\ \chi_{2} \end{pmatrix} &= 0 \\ \Rightarrow \quad \begin{pmatrix} - \alpha & \hbar / 2 \\ \hbar / 2 & - \alpha \end{pmatrix} \begin{pmatrix} \chi_{1} \\ \chi_{2} \end{pmatrix} &= 0 \end{aligned}
 ```
 
-The characteristic equation is $`det | S_{x} - \alpha |`$ = 0, or
+The characteristic equation is $`det | S_{x} - \alpha | = 0`$, or
 
 ```math
 \alpha^{2} - \frac{\hbar^{2}}{4} = 0 \quad \Rightarrow \quad \alpha = \pm \frac{\hbar}{2}
@@ -1210,7 +1210,7 @@ Similarly, we find for the eigenvalue $`\alpha = - \hbar / 2 ,`$
 
 To find the eigenvectors of the operator $`S_{y}`$ we follow precisely the same procedure as we did for $`S_{x}`$ (see previous example for details). The steps are:
 
-1. Write the eigenvalue equation $`( S_{y} - \alpha ) \chi`$ = 0
+1. Write the eigenvalue equation $`( S_{y} - \alpha ) \chi = 0`$
 
 2. Solve the characteristic equation for the eigenvalues $`\alpha_{\pm}`$
 
@@ -1230,7 +1230,7 @@ becomes
 \begin{pmatrix} - \alpha & - i \hbar / 2 \\ i \hbar / 2 & - \alpha \end{pmatrix} \begin{pmatrix} \chi_{1} \\ \chi_{2} \end{pmatrix} = 0
 ```
 
-The characteristic equation is $`det | S y - \alpha |`$ = 0, or
+The characteristic equation is $`det | S y - \alpha | = 0`$, or
 
 ```math
 \alpha^{2} - \frac{\hbar^{2}}{4} = 0 \quad \Rightarrow \quad \alpha = \pm \frac{\hbar}{2}
@@ -1318,7 +1318,7 @@ This gives the same answer. By using the rotation operator, the phase of the eig
 
 ## <a id="s-18-10-13time-development-of-a-spin-2-1-state-in-a-b-field"></a>18.10.13 Time Development of a Spin $`\frac{1}{2}`$ State in a B field
 
-Assume that we are in an arbitrary spin state $`\chi ( t = 0 )`$ = $`\begin{pmatrix} a \\ b \end{pmatrix}`$ and we have chosen the z axis to be in the field direction. The upper component of the vector (a) is the amplitude to have spin up along the z direction, and the lower component (b) is the amplitude to have spin down. Because of our choice of axes, the spin up and spin down states are also the energy eigenstates with energy eigenvalues of $`\mu_{B} B`$ and $`- \mu_{B} B`$ respectively. We know that the energy eigenstates evolve with time quite simply (recall the separation of the Schrödinger equation where $`T ( t ) = e^{- iEt/ \hbar}`$). So its simple to write down the time evolved state vector.
+Assume that we are in an arbitrary spin state $`\chi ( t = 0 ) = \begin{pmatrix} a \\ b \end{pmatrix}`$ and we have chosen the z axis to be in the field direction. The upper component of the vector (a) is the amplitude to have spin up along the z direction, and the lower component (b) is the amplitude to have spin down. Because of our choice of axes, the spin up and spin down states are also the energy eigenstates with energy eigenvalues of $`\mu_{B} B`$ and $`- \mu_{B} B`$ respectively. We know that the energy eigenstates evolve with time quite simply (recall the separation of the Schrödinger equation where $`T ( t ) = e^{- iEt/ \hbar}`$). So its simple to write down the time evolved state vector.
 
 ```math
 \chi ( t ) = \begin{pmatrix} ae^{- i\mu_{B} Bt/ \hbar} \\ be^{i\mu_{B} Bt/ \hbar} \end{pmatrix} = \begin{pmatrix} ae^{- i\omega t} \\ be^{i\omega t} \end{pmatrix}
@@ -1344,7 +1344,7 @@ So let’s say we start out in the state with spin up along the x axis, $`\chi`$
 = \frac{\hbar}{2} \frac{1}{2} \left( e^{+ 2 i\omega t} + e^{- 2 i\omega t} \right) = \frac{\hbar}{2} \cos ( 2 \mu_{B} Bt/ \hbar )
 ```
 
-So again the spin precesses around the magnetic field. Because $`g`$ = 2 the rate is twice as high as for $`\ell`$ = 1.
+So again the spin precesses around the magnetic field. Because $`g = 2`$ the rate is twice as high as for $`\ell = 1`$.
 
 ## <a id="s-18-10-14nuclear-magnetic-resonance-nmr-and-mri"></a>18.10.14 Nuclear Magnetic Resonance (NMR and MRI)
 
@@ -1396,7 +1396,7 @@ The **solution** (see section 18.11.8) of these equations represents and early e
 \frac{d}{dt} ( be^{i\omega_{0} t} ) = \frac{i\omega_{1}}{2} ( e^{i ( \omega + 2 \omega_{0} ) t} + e^{- i ( \omega - 2 \omega_{0} t )} )
 ```
 
-Terms that oscillate rapidly will average to zero. The first term oscillates very rapidly. The second term will only cause significant transitions if $`\omega \approx 2 \omega_{0}`$. Note that this is exactly the condition that<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=272" target="_blank" title="This page in the PDF"><sup>[p. 272]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p273" href="book.pdf#page=273" target="_blank" title="This page in the PDF"><sup>[p. 273]</sup></a></span> requires the energy of the photons in the EM field $`E = \hbar \omega`$ to be equal to the energy difference between the two spin states ∆$`E`$ = 2$`\hbar \omega_{0}`$. The conservation of energy condition must be satisfied well enough to get a significant transition rate. Actually we will find later that for rapid transitions, energy conservation does not have to be exact.
+Terms that oscillate rapidly will average to zero. The first term oscillates very rapidly. The second term will only cause significant transitions if $`\omega \approx 2 \omega_{0}`$. Note that this is exactly the condition that<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=272" target="_blank" title="This page in the PDF"><sup>[p. 272]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p273" href="book.pdf#page=273" target="_blank" title="This page in the PDF"><sup>[p. 273]</sup></a></span> requires the energy of the photons in the EM field $`E = \hbar \omega`$ to be equal to the energy difference between the two spin states ∆$`E = 2 \hbar \omega_{0}`$. The conservation of energy condition must be satisfied well enough to get a significant transition rate. Actually we will find later that for rapid transitions, energy conservation does not have to be exact.
 
 So we have proven that we should set the frequency $`\omega`$ of our EM wave according to the energy difference between the two spin states. This allows us to cause transitions to the higher energy state. In NMR, we observe the transitions back to the lower energy state. These emit EM radiation at the same frequency and we can detect it after the stronger input pulse ends (or by more complex methods). We don’t yet know why the higher energy state will spontaneously decay to the lower energy state. To calculate this, we will have to quantize the field. But we already see that the energy terms $`e^{- iEt/ \hbar}`$ of standard wave mechanics will require energy conservation with photon energies of $`E = \hbar \omega`$.
 
@@ -1406,7 +1406,7 @@ In MRI, we typically concentrate on one nucleus like hydrogen. We can put a grad
 
 # <a id="s-18-11derivations-and-computations"></a>18.11 Derivations and Computations
 
-## <a id="s-18-11-1-the-ell-1-angular-momentum-operators"></a>18.11.1 The $`\ell`$ = 1 Angular Momentum Operators\*
+## <a id="s-18-11-1-the-ell-1-angular-momentum-operators"></a>18.11.1 The $`\ell = 1`$ Angular Momentum Operators\*
 
 We will use states of definite $`L_{z}`$, the $`Y_{1 m}`$.
 
@@ -1442,9 +1442,9 @@ L_{x} = \frac{1}{2} ( L_{+} + L_{-} ) = \frac{\hbar}{\sqrt{2}} \begin{pmatrix} 0
 L_{y} = \frac{1}{2 i} ( L_{+} - L_{-} ) = \frac{\hbar}{\sqrt{2} i} \begin{pmatrix} 0 & 1 & 0 \\ - 1 & 0 & 1 \\ 0 & - 1 & 0 \end{pmatrix}
 ```
 
-What is the dimension of the matrices for $`\ell`$ = 2?
+What is the dimension of the matrices for $`\ell = 2`$?
 
-Dimension 5. Derive the matrix operators for $`\ell`$ = 2.
+Dimension 5. Derive the matrix operators for $`\ell = 2`$.
 
 Just do it.
 
@@ -1490,7 +1490,7 @@ A finite rotation can be made by applying the operator for an infinitesimal rota
 R_{z} ( \theta_{z} ) = \lim_{n \to \infty} ( 1 + \frac{i}{\hbar} \frac{\theta_{z}}{n} L_{z} )^{n} = e^{i\theta_{z} L_{z} / \hbar} .
 ```
 
-The last step, converting the limit to an exponential is a known identity. We can verify it by using the log of the quantity. First we expand $`ln ( x )`$ about $`x`$ = 1: $`ln ( x ) = ln`$(1) + $`\left( \tfrac{1}{x} \right)_{x = 1} ( x - 1 )`$ = $`( x - 1 ) .`$
+The last step, converting the limit to an exponential is a known identity. We can verify it by using the log of the quantity. First we expand $`ln ( x )`$ about $`x = 1`$: $`ln ( x ) = ln`$(1) + $`\left( \tfrac{1}{x} \right)_{x = 1} ( x - 1 ) = ( x - 1 ) .`$
 
 ```math
 \lim_{n \to \infty} ln ( 1 + \frac{i}{\hbar} \frac{\theta_{z}}{n} L_{z} )^{n} = n ( \frac{i}{\hbar} \frac{\theta_{z}}{n} L_{z} ) = \frac{i}{\hbar} \theta_{z} L_{z}
@@ -1502,7 +1502,7 @@ So exponentiating, we get the identity.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p275" href="book.pdf#page=275" target="_blank" title="This page in the PDF"><sup>[p. 275]</sup></a>
 
-## <a id="s-18-11-4-compute-the-ell-1-rotation-operator-r-z-theta-z"></a>18.11.4 Compute the $`\ell`$ = 1 Rotation Operator $`R_{z} ( \theta_{z} )`$ \*
+## <a id="s-18-11-4-compute-the-ell-1-rotation-operator-r-z-theta-z"></a>18.11.4 Compute the $`\ell = 1`$ Rotation Operator $`R_{z} ( \theta_{z} )`$ \*
 
 ```math
 e^{i\theta L_{z} / \hbar} = \sum_{n = 0}^{\infty} \frac{\left( \frac{i\theta L_{z}}{\hbar} \right) n}{n !}
@@ -1524,13 +1524,13 @@ e^{i\theta L_{z} / \hbar} = \sum_{n = 0}^{\infty} \frac{\left( \frac{i\theta L_{
 \left( \frac{L_{z}}{\hbar} \right)^{3} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & - 1 \end{pmatrix} \dots = L_{z} / \hbar
 ```
 
-All the odd powers are the same. All the nonzero even powers are the same. The $`\hbar`$s all cancel out. We now must look at the sums for each term in the matrix and identify the function it represents. If we look at the sum for the upper left term of the matrix, we get a 1 times $`\frac{( i\theta )^{n}}{n !}`$. This is just $`e^{i\theta}`$. There is only one contribution to the middle term, that is a one from $`n`$ = 0. The lower right term is like the upper left except the odd terms have a minus sign. We get $`\frac{( - i\theta )^{n}}{n !}`$ term n. This is just $`e^{- i\theta}`$. The rest of the terms are zero.
+All the odd powers are the same. All the nonzero even powers are the same. The $`\hbar`$s all cancel out. We now must look at the sums for each term in the matrix and identify the function it represents. If we look at the sum for the upper left term of the matrix, we get a 1 times $`\frac{( i\theta )^{n}}{n !}`$. This is just $`e^{i\theta}`$. There is only one contribution to the middle term, that is a one from $`n = 0`$. The lower right term is like the upper left except the odd terms have a minus sign. We get $`\frac{( - i\theta )^{n}}{n !}`$ term n. This is just $`e^{- i\theta}`$. The rest of the terms are zero.
 
 ```math
 R_{z} ( \theta_{z} ) = \begin{pmatrix} e^{i\theta_{z}} & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & e^{- i\theta_{z}} \end{pmatrix} .
 ```
 
-## <a id="s-18-11-5-compute-the-ell-1-rotation-operator-r-y-theta-y"></a>18.11.5 Compute the $`\ell`$ = 1 Rotation Operator $`R_{y} ( \theta_{y} )`$ \*
+## <a id="s-18-11-5-compute-the-ell-1-rotation-operator-r-y-theta-y"></a>18.11.5 Compute the $`\ell = 1`$ Rotation Operator $`R_{y} ( \theta_{y} )`$ \*
 
 ```math
 e^{i\theta L_{y} / \hbar} = \sum_{n = 0}^{\infty} \frac{\left( \frac{i\theta L_{y}}{\hbar} \right) n}{n !}
@@ -1558,11 +1558,11 @@ e^{i\theta L_{y} / \hbar} = \sum_{n = 0}^{\infty} \frac{\left( \frac{i\theta L_{
 
 All the odd powers are the same. All the nonzero even powers are the same. The $`\hbar`$s all cancel out. We now must look at the sums for each term in the matrix and identify the function it represents.
 
-$`\bullet`$ The $`n`$ = 0 term contributes 1 on the diagonals.
+$`\bullet`$ The $`n = 0`$ term contributes 1 on the diagonals.
 
-$`\bullet`$ The $`n`$ = 1$`, 3 , 5 ,\dots`$ terms sum to $`\sin ( \theta ) \left( \tfrac{iL_{y}}{\hbar} \right)`$.
+$`\bullet`$ The $`n = 1 , 3 , 5 ,\dots`$ terms sum to $`\sin ( \theta ) \left( \tfrac{iL_{y}}{\hbar} \right)`$.
 
-$`\bullet`$ The $`n`$ = 2$`, 4 , 6 ,\dots`$ terms (with a -1 in the matrix) are nearly the series for $`\frac{1}{2} \cos ( \theta )`$. The $`n`$ = 0 term is is missing so subtract 1. The middle matrix element is twice the other even terms.
+$`\bullet`$ The $`n = 2 , 4 , 6 ,\dots`$ terms (with a -1 in the matrix) are nearly the series for $`\frac{1}{2} \cos ( \theta )`$. The $`n = 0`$ term is is missing so subtract 1. The middle matrix element is twice the other even terms.
 
 ```math
 e^{i\theta L_{y} / \hbar} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} + \sin ( \theta ) \frac{1}{\sqrt{2}} \begin{pmatrix} 0 & 1 & 0 \\ - 1 & 0 & 1 \\ 0 & - 1 & 0 \end{pmatrix} + \frac{1}{2} ( \cos ( \theta ) - 1 ) \begin{pmatrix} 1 & 0 & - 1 \\ 0 & 2 & 0 \\ - 1 & 0 & 1 \end{pmatrix}
@@ -1708,7 +1708,7 @@ i \hbar \begin{pmatrix} \dot{a} \\ \dot{b} \end{pmatrix} = - \frac{g_{p}}{2} \mu
 \begin{pmatrix} \dot{a} \\ \dot{b} \end{pmatrix} = i \frac{g_{p} \mu_{N}}{2 \hbar} \begin{pmatrix} B_{z} & B_{x} \cos \omega t \\ B_{x} \cos \omega t & - B_{z} \end{pmatrix} \begin{pmatrix} a \\ b \end{pmatrix} = i \begin{pmatrix} \omega_{0} & \omega_{1} \cos \omega t \\ \omega_{1} \cos \omega t & - \omega_{0} \end{pmatrix} \begin{pmatrix} a \\ b \end{pmatrix}
 ```
 
-So far all we have done is plugged things into the Schrödinger equation. Now we have to solve this system of two equations. This could be hard but we will do it only near $`t`$ = 0, when the EM wave starts. Assume that at $`t`$ = 0, $`a`$ = 1 and $`b`$ = 0, that is, the nucleus is in the lower energy state. Then we have
+So far all we have done is plugged things into the Schrödinger equation. Now we have to solve this system of two equations. This could be hard but we will do it only near $`t = 0`$, when the EM wave starts. Assume that at $`t = 0`$, $`a = 1`$ and $`b = 0`$, that is, the nucleus is in the lower energy state. Then we have
 
 ```math
 \dot{a} = i\omega_{0} a
@@ -1736,7 +1736,7 @@ Now comes the one tricky part of the calculation. The diagonal terms in the Hami
 = \frac{i\omega_{1}}{2} ( e^{i ( \omega + 2 \omega_{0} ) t} + e^{- i ( \omega - 2 \omega_{0} ) t} )
 ```
 
-Terms that oscillate rapidly will average to zero. To get a net change in $`be^{i\omega_{0} t}`$, we need to have $`\omega \approx 2 \omega_{0}`$. Then the first term is important and we can neglect the second which oscillates with a frequency of the order of $`10^{11}`$. Note that this is exactly the condition that requires the energy of the photons in the EM field $`E = \hbar \omega`$ to be equal to the energy difference between the two spin states ∆$`E`$ = 2$`\hbar \omega_{0}`$.
+Terms that oscillate rapidly will average to zero. To get a net change in $`be^{i\omega_{0} t}`$, we need to have $`\omega \approx 2 \omega_{0}`$. Then the first term is important and we can neglect the second which oscillates with a frequency of the order of $`10^{11}`$. Note that this is exactly the condition that requires the energy of the photons in the EM field $`E = \hbar \omega`$ to be equal to the energy difference between the two spin states ∆$`E = 2 \hbar \omega_{0}`$.
 
 <div align="right"><a href="book.pdf#page=278" target="_blank" title="This page in the PDF"><sup>[p. 278]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -1766,7 +1766,7 @@ In any case, we can only cause transitions if the EM field is tuned so that $`\o
 a \text{ measurement of } L_{x} \text{ yields a value of } 0 ? \quad 4
 ```
 
-2. A spin $`\frac{1}{2}`$ particle is in an eigenstate of $`S_{y}`$ with eigenvalue +$`\frac{\hbar}{2}`$ at time $`t`$ = 0. At that time it is placed in a constant magnetic field $`B`$ in the $`z`$ direction. The spin is allowed to precess for a time $`T`$. At that instant, the magnetic field is very quickly switched to the $`x`$ direction. After another time interval $`T`$, a measurement of the $`y`$ component of the spin is made. What is the probability that the value $`- \tfrac{\hbar}{2}`$ will be found?
+2. A spin $`\frac{1}{2}`$ particle is in an eigenstate of $`S_{y}`$ with eigenvalue +$`\frac{\hbar}{2}`$ at time $`t = 0`$. At that time it is placed in a constant magnetic field $`B`$ in the $`z`$ direction. The spin is allowed to precess for a time $`T`$. At that instant, the magnetic field is very quickly switched to the $`x`$ direction. After another time interval $`T`$, a measurement of the $`y`$ component of the spin is made. What is the probability that the value $`- \tfrac{\hbar}{2}`$ will be found?
 
 3. Consider a system of spin $`\frac{1}{2}`$. What are the eigenstates and eigenvalues of the operator $`S_{x} + S_{y}`$? Suppose a measurement of this quantity is made, and the system is found to be in the eigenstate with the larger eigenvalue. What is the probability that a subsequent measurement of $`S_{y}`$ yields
 
@@ -1784,7 +1784,7 @@ What are the eigen-energies and corresponding eigenstates of the system? (This i
 
 5. What are the eigenfunctions and eigenvalues of the operator $`L_{x} L_{y} + L_{y} L_{x}`$ for a spin 1 system?
 
-6. Calculate the $`\ell`$ = 1 operator for arbitrary rotations about the x-axis. Use the usual $`L_{z}`$ eigenstates as a basis.
+6. Calculate the $`\ell = 1`$ operator for arbitrary rotations about the x-axis. Use the usual $`L_{z}`$ eigenstates as a basis.
 
 7. An electron is in an eigenstate of $`S_{x}`$ with eigenvalue $`\frac{\hbar}{2}`$. What are the amplitudes to find the electron with a) $`S_{z}`$ = +$`\frac{\hbar}{2}`$, b) $`S_{z} = - \tfrac{\hbar}{2} , S_{y}`$ = +$`\tfrac{\hbar}{2} , S_{u}`$ = +$`\frac{\hbar}{2}`$, where the $`u`$-axis is assumed to be in the $`x - y`$ plane rotated by and angle $`\theta`$ from the $`x`$-axis.
 
@@ -1794,7 +1794,7 @@ What are the eigen-energies and corresponding eigenstates of the system? (This i
 
 8. Particles with angular momentum 1 are passed through a Stern-Gerlach apparatus which separates them according to the z-component of their angular momentum. Only the $`m = - 1`$ component is allowed to pass through the apparatus. A second apparatus separates the beam according to its angular momentum component along the u-axis. The u-axis and the z-axis are both perpendicular to the beam direction but have an angle $`\theta`$ between them. Find the relative intensities of the three beams separated in the second apparatus.
 
-9. Find the eigenstates of the harmonic oscillator lowering operator $`A`$. They should satisfy the equation $`A | \alpha \rangle = \alpha | \alpha \rangle`$. Do this by finding the coefficients $`\langle n | \alpha \rangle`$ where $`| n \rangle`$ is the $`n^{th}`$ energy eigenstate. Make sure that the states $`| \alpha \rangle`$ are normalized so that $`\langle \alpha | \alpha \rangle`$ = 1. Suppose $`| \alpha^{\prime} \rangle`$ is another such state with a different eigenvalue. Compute $`\langle \alpha^{\prime} | \alpha \rangle`$. Would you expect these states to be orthogonal?
+9. Find the eigenstates of the harmonic oscillator lowering operator $`A`$. They should satisfy the equation $`A | \alpha \rangle = \alpha | \alpha \rangle`$. Do this by finding the coefficients $`\langle n | \alpha \rangle`$ where $`| n \rangle`$ is the $`n^{th}`$ energy eigenstate. Make sure that the states $`| \alpha \rangle`$ are normalized so that $`\langle \alpha | \alpha \rangle = 1`$. Suppose $`| \alpha^{\prime} \rangle`$ is another such state with a different eigenvalue. Compute $`\langle \alpha^{\prime} | \alpha \rangle`$. Would you expect these states to be orthogonal?
 
 10. Find the matrix which represents the $`p^{2}`$ operator for a 1D harmonic oscillator. Write out the upper left $`5 \times 5`$ part of the matrix.
 
@@ -1826,15 +1826,15 @@ What are the eigen-energies and corresponding eigenstates of the system? (This i
 
 is the probability that a measurement of the $`x`$ component of spin yields zero? What is the probability that a measurement of the $`y`$ component of spin yields +$`\hbar`$?
 
-4. In a three state system, the matrix elements are given as $`\langle \psi_{1} | H | \psi_{1} \rangle = E_{1} , \langle \psi_{2} | H | \psi_{2} \rangle = \langle \psi_{3} | H | \psi_{3} \rangle = E_{2} , \langle \psi_{1} | H | \psi_{2} \rangle`$ = 0, $`\langle \psi_{1} | H | \psi_{3} \rangle`$ = 0, and $`\langle \psi_{2} | H | \psi_{3} \rangle = \alpha`$. Assume all of the matrix elements are real. What are the energy eigenvalues and eigenstates of the system? At $`t`$ = 0 the system is in the state $`\psi_{2}`$. What is $`\psi ( t )`$?
+4. In a three state system, the matrix elements are given as $`\langle \psi_{1} | H | \psi_{1} \rangle = E_{1} , \langle \psi_{2} | H | \psi_{2} \rangle = \langle \psi_{3} | H | \psi_{3} \rangle = E_{2} , \langle \psi_{1} | H | \psi_{2} \rangle = 0`$, $`\langle \psi_{1} | H | \psi_{3} \rangle = 0`$, and $`\langle \psi_{2} | H | \psi_{3} \rangle = \alpha`$. Assume all of the matrix elements are real. What are the energy eigenvalues and eigenstates of the system? At $`t = 0`$ the system is in the state $`\psi_{2}`$. What is $`\psi ( t )`$?
 
 <div align="right"><a href="book.pdf#page=280" target="_blank" title="This page in the PDF"><sup>[p. 280]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p281" href="book.pdf#page=281" target="_blank" title="This page in the PDF"><sup>[p. 281]</sup></a>
 
-5. Find the (normalized) eigenvectors and eigenvalues of the $`S_{x}`$ (matrix) operator for $`s`$ = 1 in the usual $`( S_{z} )`$ basis.
+5. Find the (normalized) eigenvectors and eigenvalues of the $`S_{x}`$ (matrix) operator for $`s = 1`$ in the usual $`( S_{z} )`$ basis.
 
-6. **\*** A spin $`\frac{1}{2}`$ particle is in a magnetic field in the $`x`$ direction giving a Hamiltonian $`H = \mu_{B} B\sigma_{x}`$. Find the time development (matrix) operator $`e^{- iHt/ \hbar}`$ in the usual basis. If $`\chi ( t = 0 )`$ = $`\begin{pmatrix} 1 \\ 0 \end{pmatrix}`$,
+6. **\*** A spin $`\frac{1}{2}`$ particle is in a magnetic field in the $`x`$ direction giving a Hamiltonian $`H = \mu_{B} B\sigma_{x}`$. Find the time development (matrix) operator $`e^{- iHt/ \hbar}`$ in the usual basis. If $`\chi ( t = 0 ) = \begin{pmatrix} 1 \\ 0 \end{pmatrix}`$,
 
 ```math
 \text{ find } \chi ( t ) . \quad \sqrt{3}
@@ -1892,7 +1892,7 @@ Find the energy eigenstates and eigenvalues.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p282" href="book.pdf#page=282" target="_blank" title="This page in the PDF"><sup>[p. 282]</sup></a>
 
-16. A (spin $`\tfrac{1}{2}`$) electron is in an eigenstate of $`S_{y}`$ with eigenvalue $`- \tfrac{\hbar}{2}`$ at $`t`$ = 0. The particle is in a magnetic field $`\vec{B}`$ = $`( 0 , 0 ,B )`$ which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{z}`$. Find the spin state of the particle as a function of time. Find the probability to measure $`S_{y}`$ = +$`\frac{\hbar}{2}`$ as a function of time.
+16. A (spin $`\tfrac{1}{2}`$) electron is in an eigenstate of $`S_{y}`$ with eigenvalue $`- \tfrac{\hbar}{2}`$ at $`t = 0`$. The particle is in a magnetic field $`\vec{B} = ( 0 , 0 ,B )`$ which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{z}`$. Find the spin state of the particle as a function of time. Find the probability to measure $`S_{y}`$ = +$`\frac{\hbar}{2}`$ as a function of time.
 
 ---
 

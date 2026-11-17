@@ -39,7 +39,7 @@ These are not eigenfunctions of H because of $`V`$, the electron coulomb repulsi
 ( H_{1} + H_{2} ) u = Eu
 ```
 
-We can write these **zeroth order energies** in terms of the principal quantum numbers of the two electrons, $`n_{1}`$ and $`n_{2}`$. Recalling that there is a factor of $`Z^{2}`$ = 4 in these energies compared to hydrogen, we get
+We can write these **zeroth order energies** in terms of the principal quantum numbers of the two electrons, $`n_{1}`$ and $`n_{2}`$. Recalling that there is a factor of $`Z^{2} = 4`$ in these energies compared to hydrogen, we get
 
 ```math
 E = E_{n_{1}} + E_{n_{2}} = - \frac{1}{2} Z^{2} \alpha^{2} m_{e} c^{2} \left( \frac{1}{n_{1}^{2}} + \frac{1}{n_{2}^{2}} \right) = - 5 4 . 4 e V \left( \frac{1}{n_{1}^{2}} + \frac{1}{n_{2}^{2}} \right) .
@@ -71,7 +71,7 @@ Note that $`E_{2 2}`$ is above ionization energy, so the state can decay rapidly
 
 _Figure 84 (p. 359)_
 
-Now let’s look at the (anti) **symmetry of the states** of two identical electrons. For the ground state, the spatial state is symmetric, so the spin state must be antisymmetric $`\Rightarrow s`$ = 0.
+Now let’s look at the (anti) **symmetry of the states** of two identical electrons. For the ground state, the spatial state is symmetric, so the spin state must be antisymmetric $`\Rightarrow s = 0`$.
 
 ```math
 u_{0} = \varphi_{1 0 0} \varphi_{1 0 0} \frac{1}{\sqrt{2}} ( \chi_{+} \chi_{-} - \chi_{-} \chi_{+} )
@@ -87,7 +87,7 @@ u_{1}^{( s )} = \frac{1}{\sqrt{2}} ( \varphi_{1 0 0} \varphi_{2 \ell m} + \varph
 u_{1}^{( t )} = \frac{1}{\sqrt{2}} ( \varphi_{1 0 0} \varphi_{2 \ell m} - \varphi_{2 \ell m} \varphi_{1 0 0} ) \chi_{+} \chi_{+}
 ```
 
-The first state is $`s`$ = 0 or spin **singlet**. The second state is $`s`$ = 1 or spin **triplet** and has three $`m_{s}`$ states. Only the +1 state is shown. **Because the large correction due to electron repulsion** **is much larger for symmetric space states, the spin of the state determines the energy.**
+The first state is $`s = 0`$ or spin **singlet**. The second state is $`s = 1`$ or spin **triplet** and has three $`m_{s}`$ states. Only the +1 state is shown. **Because the large correction due to electron repulsion** **is much larger for symmetric space states, the spin of the state determines the energy.**
 
 We label the states according to the spin quantum numbers, singlet or triplet. We will treat V as a perturbation. It is very large, so first order perturbation theory will be quite inaccurate.
 
@@ -357,7 +357,7 @@ Use
 \psi = \left( a^{2} - x^{2} \right)^{2} \quad | x |\leq a
 ```
 
-and $`\psi`$ = 0 otherwise as a trial wave function. Recall the actual wave function is $`e^{- m\omega x^{2} / 2 \hbar^{2}}`$. The energy estimate is
+and $`\psi = 0`$ otherwise as a trial wave function. Recall the actual wave function is $`e^{- m\omega x^{2} / 2 \hbar^{2}}`$. The energy estimate is
 
 ```math
 E^{\prime} = \frac{\left\langle \left( a^{2} - x^{2} \right)^{2} |^{-} \tfrac{\hbar^{2}}{2 m} \tfrac{d^{2}}{dx^{2}} + \tfrac{1}{2} m\omega^{2} x^{2} | \left( a^{2} - x^{2} \right)^{2} \right\rangle}{\left\langle ( a^{2} - x^{2} )^{2} | ( a^{2} - x^{2} )^{2} \right\rangle} .
@@ -535,7 +535,7 @@ We can do the integral for $`r_{2} <r_{1}`$ and simplify the expression. Because
 
 # <a id="s-25-8-homework-problems"></a>25.8 Homework Problems
 
-1. Calculate the lowest order energy shift for the (0th order degenerate first) excited states of Helium ∆$`E_{2 ,l}^{( s,t )}`$ where $`\ell`$ = 0$`,`$ 1. This problem is set up in the discussion of the first excited states (See section 25.3). The following formulas will aid you in the computation. First, we can expand the formula for the inverse distance between the two electrons as follows.
+1. Calculate the lowest order energy shift for the (0th order degenerate first) excited states of Helium ∆$`E_{2 ,l}^{( s,t )}`$ where $`\ell = 0 ,`$ 1. This problem is set up in the discussion of the first excited states (See section 25.3). The following formulas will aid you in the computation. First, we can expand the formula for the inverse distance between the two electrons as follows.
 
 ```math
 \frac{1}{| \vec{r}_{1} - \vec{r}_{2} |} = \sum_{\ell = 0}^{\infty} \frac{r_{<}^{\ell}}{r_{>}^{\ell + 1}} P_{\ell} ( \cos \theta_{1 2} )
@@ -551,7 +551,7 @@ Using the equation $`Y_{\ell ( - m )} = ( - 1 )^{\ell} Y_{\ell m}^{*}`$ , this s
 
 2. Consider the lowest state of ortho-helium. What is the magnetic moment? That is what is the interaction with an external magnetic field?
 
-3. A proton and neutron are bound together into a deuteron, the nucleus of an isotope of hydrogen. The binding energy is found to be -2.23 MeV for the nuclear ground state, an $`\ell`$ = 0 state. Assuming a potential of the form $`V ( r ) = V_{0} \tfrac{e^{- r/r 0}}{r/r_{0}}`$, with $`r_{0}`$ = 2$`. 8`$ Fermis, use the variational principle to estimate the strength of the potential.
+3. A proton and neutron are bound together into a deuteron, the nucleus of an isotope of hydrogen. The binding energy is found to be -2.23 MeV for the nuclear ground state, an $`\ell = 0`$ state. Assuming a potential of the form $`V ( r ) = V_{0} \tfrac{e^{- r/r 0}}{r/r_{0}}`$, with $`r_{0} = 2 . 8`$ Fermis, use the variational principle to estimate the strength of the potential.
 
 4. Use the variational principle with a gaussian trial wave function to prove that a one dimensional attractive potential will always have a bound state.
 
@@ -569,13 +569,13 @@ H = \tfrac{p^{2}}{2 m} + \lambda x^{4} .
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p370" href="book.pdf#page=370" target="_blank" title="This page in the PDF"><sup>[p. 370]</sup></a>
 
-2. A Helium atom has two electrons bound to a $`Z`$ = 2 nucleus. We have to add the coulomb repulsion term (between the two electrons) to the zeroth order Hamiltonian.
+2. A Helium atom has two electrons bound to a $`Z = 2`$ nucleus. We have to add the coulomb repulsion term (between the two electrons) to the zeroth order Hamiltonian.
 
 ```math
 H = \frac{p_{1}^{2}}{2 m} - \frac{Ze^{2}}{r_{1}} + \frac{p_{2}^{2}}{2 m} - \frac{Ze^{2}}{r_{2}} + \frac{e^{2}}{| \vec{r}_{1} - \vec{r}_{2} |} = H_{1} + H_{2} + V
 ```
 
-The first excited state of Helium has one electron in the 1S state and the other in the 2S state. Calculate the energy of this state to zeroth order in the perturbation V. Give the answer in eV. The spins of the two electrons can be added to give states of total spin $`\vec{S}`$. The possible total spin states are $`s`$ = 0 and $`s`$ = 1. Write out the full first excited Helium state which has $`s`$ = 1 and $`m_{s} = - 1`$. Include the spatial wave function and don’t forget the Pauli principle. Use bra-ket notation to calculate the energy shift to this state in first order perturbation theory. Don’t do any integrals.
+The first excited state of Helium has one electron in the 1S state and the other in the 2S state. Calculate the energy of this state to zeroth order in the perturbation V. Give the answer in eV. The spins of the two electrons can be added to give states of total spin $`\vec{S}`$. The possible total spin states are $`s = 0`$ and $`s = 1`$. Write out the full first excited Helium state which has $`s = 1`$ and $`m_{s} = - 1`$. Include the spatial wave function and don’t forget the Pauli principle. Use bra-ket notation to calculate the energy shift to this state in first order perturbation theory. Don’t do any integrals.
 
 ---
 

@@ -87,7 +87,7 @@ _Figure 35 (p. 146)_
 
 There are **two unknown coefficients** $`R`$ and $`T`$ which will be determined by matching boundary conditions. We will not require normalization to one particle, since we have a beam with definite momentum, which cannot be so normalized. (A more physical problem to solve would use an incoming wave packet with a spread in momentum.)
 
-**Continuity of the wave function** at $`x`$ = 0 implies
+**Continuity of the wave function** at $`x = 0`$ implies
 
 ```math
 1 + R = T.
@@ -99,7 +99,7 @@ The exponentials are all equal to 1 there so the equation is simple.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p147" href="book.pdf#page=147" target="_blank" title="This page in the PDF"><sup>[p. 147]</sup></a>
 
-**Continuity of the derivative of the wavefunction** at $`x`$ = 0 gives
+**Continuity of the derivative of the wavefunction** at $`x = 0`$ gives
 
 ```math
 [ ike^{ikx} - ikRe^{- ikx} ]_{x = 0} = [ ik^{\prime} Te^{ik^{\prime} x} ]_{x = 0}
@@ -149,7 +149,7 @@ P_{\text{ transmission }} = 1 - P_{\text{ reflection }} = \frac{4 kk^{\prime}}{(
 
 We’ll get the same answers for the reflection and transmission coefficients using the probability flux (See section 9.7.1) to solve the problem.
 
-The transmission probability goes to 1 one $`k = k^{\prime}`$ (since there is no step). The transmission probability goes to 0 for $`k^{\prime}`$ = 0 (since the kinetic energy is zero).
+The transmission probability goes to 1 one $`k = k^{\prime}`$ (since there is no step). The transmission probability goes to 0 for $`k^{\prime} = 0`$ (since the kinetic energy is zero).
 
 ## <a id="s-9-1-3-the-potential-well-with-e-0"></a>9.1.3 The Potential Well with $`E> 0`$ \*
 
@@ -409,7 +409,7 @@ The **energy eigenvalues** are
 E_{n} = \left( n + \frac{1}{2} \right) \hbar \omega
 ```
 
-for $`n`$ = 0$`, 1 , 2 ,\dots`$. There are a countably infinite number of solutions with **equal energy spacing**. We have been forced to have quantized energies by the requirement that the wave functions be normalizable.
+for $`n = 0 , 1 , 2 ,\dots`$. There are a countably infinite number of solutions with **equal energy spacing**. We have been forced to have quantized energies by the requirement that the wave functions be normalizable.
 
 The **ground state wave function** is.
 
@@ -481,13 +481,13 @@ where
 \kappa = \sqrt{\frac{- 2 mE}{\hbar^{2}}} .
 ```
 
-There are only two regions, above and below the delta function. We don’t need to worry about the one point at $`x`$ = 0 – the two solutions will match there. We have already made the wave function continuous at $`x`$ = 0 by using the same coefficient, $`A`$, for the solution in both regions.
+There are only two regions, above and below the delta function. We don’t need to worry about the one point at $`x = 0`$ – the two solutions will match there. We have already made the wave function continuous at $`x = 0`$ by using the same coefficient, $`A`$, for the solution in both regions.
 
 ![Figure 40 (p. 155)](images/fig-p155-1.png)
 
 _Figure 40 (p. 155)_
 
-We now need to meet the boundary condition on the first derivative at $`x`$ = 0. Recall that the delta function causes a known discontinuity in the first derivative (See section 8.7.2).
+We now need to meet the boundary condition on the first derivative at $`x = 0`$. Recall that the delta function causes a known discontinuity in the first derivative (See section 8.7.2).
 
 ```math
 \frac{d\psi}{dx} |_{+ \epsilon} - \frac{d\psi}{dx} |_{- \epsilon} = - \frac{2 maV_{0}}{\hbar^{2}} \psi ( 0 )
@@ -533,7 +533,7 @@ with attractive delta functions at $`x = \pm d`$. This is a parity symmetric pot
 \begin{aligned} \psi ( x ) &= \begin{cases} e^{\kappa x} & x< - d \\ A ( e^{\kappa x} + e^{- \kappa x} ) & - d<x<d \\ e^{- \kappa x} & x>d \end{cases} \\ \kappa &= \sqrt{\frac{- 2 mE}{\hbar^{2}}} . \end{aligned}
 ```
 
-Since the solution is designed to be symmetric about $`x`$ = 0, the boundary conditions at $`- d`$ are the same as at $`d`$. The boundary conditions determine the constant $`A`$ and constrain $`\kappa`$.
+Since the solution is designed to be symmetric about $`x = 0`$, the boundary conditions at $`- d`$ are the same as at $`d`$. The boundary conditions determine the constant $`A`$ and constrain $`\kappa`$.
 
 A little calculation gives (See section 9.7.5)
 
@@ -569,7 +569,7 @@ The figure below shows the two solutions plotted on the same graph as the potent
 
 _Figure 41 (p. 157)_
 
-Two Hydrogen atoms bind together to form a molecule with a separation of 0.74 Angstroms, just larger than the Bohr radius of 0.53 Angstroms. The binding energy (for the two electrons) is about 4.5 eV. If we approximate the Coulomb potential by with a delta function, setting $`aV_{0}`$ = $`( 0 . 5 3 ) ( 2 ) ( 1 3 . 6 )`$ eV Angstroms, our very naive calculation would give 1.48 eV for one electron, which is at least the right order of magnitude.
+Two Hydrogen atoms bind together to form a molecule with a separation of 0.74 Angstroms, just larger than the Bohr radius of 0.53 Angstroms. The binding energy (for the two electrons) is about 4.5 eV. If we approximate the Coulomb potential by with a delta function, setting $`aV_{0} = ( 0 . 5 3 ) ( 2 ) ( 1 3 . 6 )`$ eV Angstroms, our very naive calculation would give 1.48 eV for one electron, which is at least the right order of magnitude.
 
 The **odd parity solution** has an energy that satisfies the equation
 
@@ -653,7 +653,7 @@ It is useful to simply investigate **angular momentum with just one free rotatio
 
 Lets assume we have a **mass** $`m`$ **constrained to move in a circle of radius** $`r`$. Assume the motion in the circle is free, so there is no potential. The kinetic energy is $`\tfrac{1}{2} mv^{2} = \tfrac{p^{2}}{2 m}`$ for $`p = mr \tfrac{d\varphi}{dt}`$.
 
-If we measure distance around the circle, then $`x = r\varphi`$ and the one problem we have is that once I go completely around the circle, I am back to $`x`$ = 0. Lets just go ahead and write our wavefunction.
+If we measure distance around the circle, then $`x = r\varphi`$ and the one problem we have is that once I go completely around the circle, I am back to $`x = 0`$. Lets just go ahead and write our wavefunction.
 
 ```math
 e^{i ( px - Et ) / \hbar} = e^{i ( pr\varphi - Et ) / \hbar}
@@ -961,13 +961,13 @@ Now lets use one equation.
 \kappa = \frac{A \sin ( ka ) + B \cos ( ka )}{A \cos ( ka ) - B \sin ( ka )} k
 ```
 
-k If we set $`B`$ = 0, the even states have the constraint on the energy that
+k If we set $`B = 0`$, the even states have the constraint on the energy that
 
 ```math
 \kappa = \tan ( ka ) k
 ```
 
-and, if we set $`A`$ = 0, the odd states have the constraint
+and, if we set $`A = 0`$, the odd states have the constraint
 
 ```math
 \kappa = - \cot ( ka ) k.
@@ -1103,7 +1103,7 @@ We now want ot shift terms in the sum so that we see the coefficient of $`y^{m}`
 \sum_{m = 0}^{\infty} [ a_{m + 2} ( m + 2 ) ( m + 1 ) - 2 a_{m} ( m ) + ( \epsilon - 1 ) a_{m} ] y^{m} = 0
 ```
 
-(Note that in doing this shift the first term for $`m`$ = 0 and for $`m`$ = 1 get shifted out of the sum. This is OK since $`a_{m} ( m ) ( m - 1 ) y^{m - 2}`$ is zero for $`m`$ = 0 or $`m`$ = 1.)
+(Note that in doing this shift the first term for $`m = 0`$ and for $`m = 1`$ get shifted out of the sum. This is OK since $`a_{m} ( m ) ( m - 1 ) y^{m - 2}`$ is zero for $`m = 0`$ or $`m = 1`$.)
 
 For the sum to be zero for all $`y`$, each coefficient of $`y^{m}`$ must be zero.
 
@@ -1135,7 +1135,7 @@ The series for
 y^{2} e^{y^{2} / 2} = \sum \frac{y^{2 n + 2}}{2^{n} n !}
 ```
 
-has the coefficient of $`y^{2 n + 2}`$ equal to $`\frac{1}{2^{n} n !}`$ and the coefficient of $`y^{2 n}`$ equal to $`\frac{1}{2^{n - 1} ( n - 1 ) !}`$. If $`m`$ = 2$`n`$,
+has the coefficient of $`y^{2 n + 2}`$ equal to $`\frac{1}{2^{n} n !}`$ and the coefficient of $`y^{2 n}`$ equal to $`\frac{1}{2^{n - 1} ( n - 1 ) !}`$. If $`m = 2 n`$,
 
 ```math
 a_{m + 2} = \frac{1}{2 n} a_{m} = \frac{1}{m} a_{m} .
@@ -1203,7 +1203,7 @@ u_{0} ( x ) = \left( \frac{m\omega}{\pi \hbar} \right)^{\tfrac{1}{4}} e^{- m\ome
 \begin{aligned} \psi ( x ) &= \begin{cases} e^{\kappa x} & x< - d \\ A ( e^{\kappa x} + e^{- \kappa x} ) & - d<x<d \\ e^{- \kappa x} & x>d \end{cases} \\ \kappa &= \sqrt{\frac{- 2 mE}{\hbar^{2}}} . \end{aligned}
 ```
 
-Since the solution is designed to be symmetric about $`x`$ = 0, the boundary conditions at $`- d`$ are the same as at $`d`$. The boundary conditions determine the constant $`A`$ and constrain $`\kappa`$.
+Since the solution is designed to be symmetric about $`x = 0`$, the boundary conditions at $`- d`$ are the same as at $`d`$. The boundary conditions determine the constant $`A`$ and constrain $`\kappa`$.
 
 Continuity of $`\psi`$ gives.
 
@@ -1349,7 +1349,7 @@ B_{n + 1} = \frac{2 maV_{0}}{\hbar^{2} k} B_{n} \sin ( ka ) + B_{n} \cos ( ka ) 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p169" href="book.pdf#page=169" target="_blank" title="This page in the PDF"><sup>[p. 169]</sup></a>
 
-We now have two pairs of equations for the $`n`$ + 1 coefficients in terms of the $`n`$ coefficients.
+We now have two pairs of equations for the $`n + 1`$ coefficients in terms of the $`n`$ coefficients.
 
 ```math
 A_{n + 1} = \frac{2 maV_{0}}{\hbar^{2} k} B_{n} \cos ( ka ) - B_{n} \sin ( ka ) + A_{n} \cos ( ka )
@@ -1367,7 +1367,7 @@ A_{n + 1} = e^{i\varphi} A_{n}
 B_{n + 1} = e^{i\varphi} B_{n}
 ```
 
-Using the second pair of equations to eliminate the $`n`$ + 1 coefficients, we have
+Using the second pair of equations to eliminate the $`n + 1`$ coefficients, we have
 
 ```math
 ( e^{i\varphi} - \cos ( ka ) ) A_{n} = \left( \frac{2 maV_{0}}{\hbar^{2} k} \cos ( ka ) - \sin ( ka ) \right) B_{n}
@@ -1421,7 +1421,7 @@ This whole section is examples.
 
 # <a id="s-9-9-sample-test-problems"></a>9.9 Sample Test Problems
 
-1. A beam of 100 eV (kinetic energy) electrons is incident upon a **potential step** of height $`V_{0}`$ = 10 eV. Calculate the probability to be transmitted. Get a numerical answer.
+1. A beam of 100 eV (kinetic energy) electrons is incident upon a **potential step** of height $`V_{0} = 10`$ eV. Calculate the probability to be transmitted. Get a numerical answer.
 
 2. **\*** Find the energy eigenstates (and energy eigenvalues) of a particle of mass $`m`$ bound in the 1D potential $`V ( x ) = - V_{0} \delta ( x )`$. Assume $`V_{0}`$ is a positive real number. (Don’t assume that $`V_{0}`$ has the units of energy.) You need not normalize the state.
 
@@ -1472,7 +1472,7 @@ T = \frac{2 ik}{2 ik + \tfrac{2 ma}{\hbar^{2}}}
 P_{T} = | T |^{2} = \frac{4 k^{2}}{4 k^{2} + \tfrac{4 m^{2} a^{2}}{\hbar^{4}}}
 ```
 
-Transmission probability starts at zero for $`k`$ = 0 then approaches $`P`$ = 1 asymptotically for $`k> \tfrac{ma}{\hbar^{2}}`$ .
+Transmission probability starts at zero for $`k = 0`$ then approaches $`P = 1`$ asymptotically for $`k> \tfrac{ma}{\hbar^{2}}`$ .
 
 4. **\*** A beam of particles of energy $`E> 0`$ coming from $`-\infty`$ is incident upon a delta function potential in one dimension. That is $`V ( x ) = \lambda \delta ( x )`$.
 
@@ -1506,7 +1506,7 @@ b) Use the requirement that this polynomial series must terminate to find the al
 
 c) Find $`h ( y )`$ for the ground state and second excited state.
 
-6. A beam of particles of energy $`E> 0`$ coming from $`-\infty`$ is incident upon a potential step in one dimension. That is $`V ( x )`$ = 0 for $`x< 0`$ and $`V ( x ) = - V_{0}`$ for $`x> 0`$ where $`V_{0}`$ is a positive real number.
+6. A beam of particles of energy $`E> 0`$ coming from $`-\infty`$ is incident upon a potential step in one dimension. That is $`V ( x ) = 0`$ for $`x< 0`$ and $`V ( x ) = - V_{0}`$ for $`x> 0`$ where $`V_{0}`$ is a positive real number.
 
 a) Find the solution to the Schrödinger equation for this problem.
 
@@ -1514,7 +1514,7 @@ b) Determine the coefficients needed to satisfy the boundary conditions.
 
 c) Calculate the probability for a particle in the beam to be reflected by the potential step and the probability to be transmitted.
 
-7. **\*** A particle is in the ground state ($`\psi ( x )`$ = $`( \tfrac{m\omega}{\pi \hbar} ) \tfrac{1}{4} e \tfrac{- m\omega x 2}{2 \hbar}`$.) of a harmonic oscillator potential. Suddenly the potential is removed without affecting the particle’s state. Find the probability distribution $`P ( p )`$ for the particle’s momentum after the potential has been removed.
+7. **\*** A particle is in the ground state ($`\psi ( x ) = ( \tfrac{m\omega}{\pi \hbar} ) \tfrac{1}{4} e \tfrac{- m\omega x 2}{2 \hbar}`$.) of a harmonic oscillator potential. Suddenly the potential is removed without affecting the particle’s state. Find the probability distribution $`P ( p )`$ for the particle’s momentum after the potential has been removed.
 
 8. **\*** A particle is in the third excited state (n=3) of the one dimensional harmonic oscillator potential.
 
@@ -1522,7 +1522,7 @@ a) Calculate this energy eigenfunction, up to a normalization factor, from the r
 
 b) Give, but do not evaluate, the expression for the normalization factor.
 
-c) At $`t`$ = 0 the potential is suddenly removed so that the particle is free. Assume that the wave function of the particle is unchanged by removing the potential. Write an expression for the probability that the particle has momentum in the range $`( p,p + dp )`$ for $`t> 0`$. You need not evaluate the integral.
+c) At $`t = 0`$ the potential is suddenly removed so that the particle is free. Assume that the wave function of the particle is unchanged by removing the potential. Write an expression for the probability that the particle has momentum in the range $`( p,p + dp )`$ for $`t> 0`$. You need not evaluate the integral.
 
 9. **\*** The Schrödinger equation for the one dimensional harmonic oscillator is reduced to the following equation for the polynomial $`h ( y )`$:
 

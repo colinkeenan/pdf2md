@@ -129,7 +129,7 @@ $`\omega`$ is the angular frequency. It changes by 2$`\pi`$ every cycle. The fre
 
 There is no reason to memorize these equations. They should be obvious.
 
-Lets see how fast one of the peaks of the wave moves. This is called the phase velocity. At time $`t`$ = 0, there is a peak at $`x`$ = 0. This is the peak for which the argument of cosine is 0. At time $`t`$ = 1, the argument is zero when $`kx = \omega t`$ or at $`x = \tfrac{\omega}{k}`$. If we compute the phase velocity by taking $`\frac{\Delta x}{\Delta t}`$, we get
+Lets see how fast one of the peaks of the wave moves. This is called the phase velocity. At time $`t = 0`$, there is a peak at $`x = 0`$. This is the peak for which the argument of cosine is 0. At time $`t = 1`$, the argument is zero when $`kx = \omega t`$ or at $`x = \tfrac{\omega}{k}`$. If we compute the phase velocity by taking $`\frac{\Delta x}{\Delta t}`$, we get
 
 ```math
 v_{\text{ phase }} = \frac{\omega}{k} .

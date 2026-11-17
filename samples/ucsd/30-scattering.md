@@ -49,7 +49,7 @@ Clearly there is more information available from scattering than whether a parti
 
 The idea of cross sections and incident fluxes translates well to the quantum mechanics we are using. If the **incoming beam is a plane wave**, that is a beam of particles of definite momentum or wave number, we can describe it simply in terms of the number or particles per unit area per second, the incident flux. The **scattered particle is also a plane wave** going in the direction defined by $`d`$Ω. What is left is the interaction between the target particle and the beam particle which causes the transition from the initial plane wave state to the final plane wave state.
 
-We have already studied one approximation method for scattering called a partial wave analysis (See section 15.6) . It is good for scattering potentials of limited range and for low energy scattering. It divides the incoming plane wave in to partial waves with definite angular momentum. The high angular momentum components of the wave will not scatter (much) because they are at large distance from the scattering potential where that potential is very small. We may then deal with just the first few terms (or even just the $`\ell`$ = 0 term) in the expansion. We showed that the incoming partial wave and the outgoing wave can differ only by a phase shift for elastic scattering. If we calculate this phase shift $`\delta_{\ell}`$, we can then determine the differential scattering cross section.
+We have already studied one approximation method for scattering called a partial wave analysis (See section 15.6) . It is good for scattering potentials of limited range and for low energy scattering. It divides the incoming plane wave in to partial waves with definite angular momentum. The high angular momentum components of the wave will not scatter (much) because they are at large distance from the scattering potential where that potential is very small. We may then deal with just the first few terms (or even just the $`\ell = 0`$ term) in the expansion. We showed that the incoming partial wave and the outgoing wave can differ only by a phase shift for elastic scattering. If we calculate this phase shift $`\delta_{\ell}`$, we can then determine the differential scattering cross section.
 
 Let’s review some of the equations. A plane wave can be decomposed into a sum of spherical waves with definite angular momenta which goes to a simple sum of incoming and outgoing spherical waves at large $`r`$.
 
@@ -83,7 +83,7 @@ f ( \theta ,\varphi ) = \frac{1}{k} \sum_{\ell} ( 2 \ell + 1 ) e^{i\delta_{\ell}
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p421" href="book.pdf#page=421" target="_blank" title="This page in the PDF"><sup>[p. 421]</sup></a>
 
-As an example, this has been used to compute the cross section for scattering from a spherical potential well (See section 15.7) assuming only the $`\ell`$ = 0 phase shift was significant. By matching the boundary conditions at the boundary of the spherical well, we determined the phase shift.
+As an example, this has been used to compute the cross section for scattering from a spherical potential well (See section 15.7) assuming only the $`\ell = 0`$ phase shift was significant. By matching the boundary conditions at the boundary of the spherical well, we determined the phase shift.
 
 ```math
 \tan \delta_{0} = - \frac{C}{B} = \frac{k \cos ( ka ) \sin ( k^{\prime} a ) - k^{\prime} \cos ( k^{\prime} a ) \sin ( ka )}{k \sin ( ka ) \sin ( k^{\prime} a ) + k^{\prime} \cos ( k^{\prime} a ) \cos ( ka )}
@@ -115,7 +115,7 @@ We can compute the total scattering cross section using the relation $`\int d`$�
 = \frac{4 \pi}{k^{2}} \sum_{\ell} ( 2 \ell + 1 ) \sin ( \delta_{\ell} ( k ) )^{2}
 ```
 
-It is interesting that we can relate the total cross section to the scattering amplitude at $`\theta`$ = 0, for which $`P_{\ell}`$(1) = 1.
+It is interesting that we can relate the total cross section to the scattering amplitude at $`\theta = 0`$, for which $`P_{\ell}`$(1) = 1.
 
 ```math
 f ( \theta = 0 ,\varphi ) = \frac{1}{k} \sum_{\ell} ( 2 \ell + 1 ) e^{i\delta_{\ell} ( k )} \sin ( \delta_{\ell} ( k ) )
@@ -129,7 +129,7 @@ Im [ f ( \theta = 0 ,\varphi ) ] = \frac{1}{k} \sum_{\ell} ( 2 \ell + 1 ) \sin^{
 \sigma_{tot} = \frac{4 \pi}{k} Im [ f ( \theta = 0 ,\varphi ) ]
 ```
 
-The total cross section is related to the imaginary part of the forward elastic scattering amplitude. This seemingly strange relation is known as the **Optical Theorem**. It can be understood in terms of removal of flux from the incoming plane wave. Remember we have an incoming plane wave plus scattered spherical waves. The total cross section corresponds to removal of flux from the plane wave. The only way to do this is destructive interference with the scattered waves. Since the plane wave is at $`\theta`$ = 0 it is only the scattered amplitude at $`\theta`$ = 0 that can interfere. It is therefore reasonable that a relation like the Optical Theorem is correct, even when elastic and inelastic processes are possible.
+The total cross section is related to the imaginary part of the forward elastic scattering amplitude. This seemingly strange relation is known as the **Optical Theorem**. It can be understood in terms of removal of flux from the incoming plane wave. Remember we have an incoming plane wave plus scattered spherical waves. The total cross section corresponds to removal of flux from the plane wave. The only way to do this is destructive interference with the scattered waves. Since the plane wave is at $`\theta = 0`$ it is only the scattered amplitude at $`\theta = 0`$ that can interfere. It is therefore reasonable that a relation like the Optical Theorem is correct, even when elastic and inelastic processes are possible.
 
 We have not treated inelastic scattering. **Inelastic scattering** can be a complex and interesting process. It was with high energy inelastic scattering of electrons from protons that the quark structure of the proton was “seen”. In fact, the electrons appeared to be scattering from essentially free quarks inside the proton. The proton was broken up into sometimes many particles in the process but the data could be simply analyzed using the scatter electron. In a phase shift analysis, inelastic scattering removes flux from the outgoing spherical waves.
 
@@ -187,7 +187,7 @@ R_{i \to f} = \frac{2 \pi}{\hbar} \int \frac{Vd \Omega_{f} k_{f}^{2} dk_{f}}{( 2
 = \frac{1}{4 \pi^{2} \hbar^{3} V} \int d \Omega_{f} \mu k_{f} \left| \tilde{V} ( \vec{\Delta} ) \right|^{2}
 ```
 
-We now need to convert this transition rate to a cross section. Our wave functions are normalize to one particle per unit volume and we should modify that so that there is a flux of one particle<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=422" target="_blank" title="This page in the PDF"><sup>[p. 422]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p423" href="book.pdf#page=423" target="_blank" title="This page in the PDF"><sup>[p. 423]</sup></a></span> per square centimeter per second to get a cross section. To do this we set the volume to be $`V`$ = $`( 1 cm^{2} ) ( v_{rel} ) ( 1 \quad second )`$. The relative velocity is just the momentum divided by the reduced mass.
+We now need to convert this transition rate to a cross section. Our wave functions are normalize to one particle per unit volume and we should modify that so that there is a flux of one particle<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=422" target="_blank" title="This page in the PDF"><sup>[p. 422]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p423" href="book.pdf#page=423" target="_blank" title="This page in the PDF"><sup>[p. 423]</sup></a></span> per square centimeter per second to get a cross section. To do this we set the volume to be $`V = ( 1 cm^{2} ) ( v_{rel} ) ( 1 \quad second )`$. The relative velocity is just the momentum divided by the reduced mass.
 
 ```math
 \sigma = \frac{1}{4 \pi^{2} \hbar^{3} v_{rel}} \int d \Omega_{f} \mu k_{f} \left| \tilde{V} ( \vec{\Delta} ) \right|^{2}
@@ -291,7 +291,7 @@ The total cross section diverges in due to the region around zero scattering ang
 
 # <a id="s-30-2-scattering-from-a-hard-sphere"></a>30.2 Scattering from a Hard Sphere
 
-Assume a low energy beam is incident upon a small, hard sphere of radius $`r_{0}`$. We will assume that $`\hbar kr_{0} < \hbar`$ so that only the $`\ell`$ = 0 partial wave is significantly affected by the sphere. As with the particle in a box, the boundary condition on a hard surface is that the wavefunction is zero. Outside the sphere, the potential is zero and the wavefunction solution will have reached its form for large $`r`$. So we set
+Assume a low energy beam is incident upon a small, hard sphere of radius $`r_{0}`$. We will assume that $`\hbar kr_{0} < \hbar`$ so that only the $`\ell = 0`$ partial wave is significantly affected by the sphere. As with the particle in a box, the boundary condition on a hard surface is that the wavefunction is zero. Outside the sphere, the potential is zero and the wavefunction solution will have reached its form for large $`r`$. So we set
 
 ```math
 \left( e^{- i ( kr_{0} - \ell \pi / 2 )} - e^{2 i\delta_{\ell} ( k )} e^{i ( kr_{0} - \ell \pi / 2 )} \right) = \left( e^{- ikr_{0}} - e^{2 i\delta_{0} ( k )} e^{ikr_{0}} \right) = 0
@@ -327,7 +327,7 @@ For very low energy, $`kr_{0} << 1`$ and
 \frac{d\sigma}{d \Omega} \approx \frac{( kr_{0} )^{2}}{k^{2}} = r_{0}^{2}
 ```
 
-The total cross section is then $`\sigma`$ = 4$`\pi r_{0}^{2}`$ which is 4 times the area of the hard sphere.
+The total cross section is then $`\sigma = 4 \pi r_{0}^{2}`$ which is 4 times the area of the hard sphere.
 
 # <a id="s-30-3-homework-problems"></a>30.3 Homework Problems
 

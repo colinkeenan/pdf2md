@@ -249,7 +249,7 @@ The properties of the scalar product are easy to derive from the integral.
 \langle \lambda_{1} \varphi_{1} + \lambda_{2} \varphi_{2} | \psi \rangle = \lambda_{1}^{*} \langle \varphi_{1} | \psi \rangle + \lambda_{2}^{*} \langle \varphi_{2} | \psi \rangle
 ```
 
-$`\langle \psi | \psi \rangle`$ is real and greater than 0. It equals zero iff $`\psi`$ = 0. We may also derive the Schwartz inequality.
+$`\langle \psi | \psi \rangle`$ is real and greater than 0. It equals zero iff $`\psi = 0`$. We may also derive the Schwartz inequality.
 
 ```math
 \langle \psi_{1} | \psi_{2} \rangle \leq \sqrt{\langle \psi_{1} | \psi_{1} \rangle \langle \psi_{2} | \psi_{2} \rangle}
@@ -269,7 +269,7 @@ As a simple example, we will solve the 1D **Particle in a Box** problem. That is
 V ( x ) = \begin{cases} 0 & 0 <x<a \\ \infty & \text{ elsewhere } \end{cases}
 ```
 
-Because of the infinite potential, this problem has very **unusual boundary conditions**. (Normally we will require continuity of the wave function and its first derivative.) The wave function must be zero at $`x`$ = 0 and $`x = a`$ since it must be continuous and it is zero in the region of infinite potential. The first derivative does not need to be continuous at the boundary (unlike other problems), because of the infinite discontinuity in the potential.
+Because of the infinite potential, this problem has very **unusual boundary conditions**. (Normally we will require continuity of the wave function and its first derivative.) The wave function must be zero at $`x = 0`$ and $`x = a`$ since it must be continuous and it is zero in the region of infinite potential. The first derivative does not need to be continuous at the boundary (unlike other problems), because of the infinite discontinuity in the potential.
 
 The time independent **Schrödinger equation** (also called the energy eigenvalue equation) is
 
@@ -297,7 +297,7 @@ The **solution inside the box** could be written as
 u_{j} = e^{ikx}
 ```
 
-where $`k`$ can be positive or negative. We do **need to choose linear combinations that satisfy** **the boundary condition** that $`u_{j} ( x = 0 )`$ = $`u_{j} ( x = a )`$ = 0.
+where $`k`$ can be positive or negative. We do **need to choose linear combinations that satisfy** **the boundary condition** that $`u_{j} ( x = 0 ) = u_{j} ( x = a ) = 0`$.
 
 We can do this easily by **choosing**
 
@@ -349,7 +349,7 @@ _Figure 34 (p. 137)_
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p138" href="book.pdf#page=138" target="_blank" title="This page in the PDF"><sup>[p. 138]</sup></a>
 
-Note that these states would have a definite parity if $`x`$ = 0 were at the center of the box.
+Note that these states would have a definite parity if $`x = 0`$ were at the center of the box.
 
 The **expansion** of an arbitrary wave function in these eigenfunctions is essentially our **original** **Fourier Series**. This is a good example of the energy eigenfunctions being orthogonal and covering the space.
 
@@ -583,7 +583,7 @@ We can use the Schrödinger Equation to show that the **first derivative of the 
 \frac{d^{2} \psi}{dx^{2}} = \frac{2 m}{\hbar^{2}} ( V ( x ) - E ) \psi
 ```
 
-Integrate both sides from just below a boundary (assumed to be at $`x`$ = 0) to just above.
+Integrate both sides from just below a boundary (assumed to be at $`x = 0`$) to just above.
 
 ```math
 \int_{- \epsilon}^{+ \epsilon} \frac{d^{2} \psi}{dx^{2}} dx = \frac{2 m}{\hbar^{2}} \int_{- \epsilon}^{+ \epsilon} ( V ( x ) - E ) \psi dx \to 0

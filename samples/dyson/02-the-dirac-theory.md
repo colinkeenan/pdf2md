@@ -123,7 +123,7 @@ In particular
 \alpha^{1} = \begin{pmatrix} 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0 \end{pmatrix} \quad \alpha^{2} = \begin{pmatrix} 0 & 0 & 0 & - i \\ 0 & 0 & i & 0 \\ 0 & - i & 0 & 0 \\ i & 0 & 0 & 0 \end{pmatrix} \quad \alpha^{3} = \begin{pmatrix} 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & - 1 \\ 1 & 0 & 0 & 0 \\ 0 & - 1 & 0 & 0 \end{pmatrix}
 ```
 
-These are hermitian as required. Of course if $`\alpha^{k}`$ and $`\beta`$ are any set satisfying (13) then $`S\alpha^{k} S^{- 1}`$ and $`S\beta S^{- 1}`$ are another set, where $`S`$ is any _unitary_ matrix $`SS^{*}`$ = 1. And conversely it can be proved that every possible $`4 \times 4`$ matrices $`\alpha^{k}`$ and $`\beta`$ are of this form with _some_ such matrix $`S`$. We do not prove this here.
+These are hermitian as required. Of course if $`\alpha^{k}`$ and $`\beta`$ are any set satisfying (13) then $`S\alpha^{k} S^{- 1}`$ and $`S\beta S^{- 1}`$ are another set, where $`S`$ is any _unitary_ matrix $`SS^{*} = 1`$. And conversely it can be proved that every possible $`4 \times 4`$ matrices $`\alpha^{k}`$ and $`\beta`$ are of this form with _some_ such matrix $`S`$. We do not prove this here.
 
 The Dirac equation is thus a set of 4 simultaneous linear partial differential<sup><a id="fnref-4" href="#fn-4">4</a></sup> equations in the four functions $`\psi_{\alpha}`$.
 
@@ -835,7 +835,7 @@ Then we have
 [ H,Q ] = [ H,\beta \boldsymbol{\sigma} \boldsymbol{\cdot} \boldsymbol{J} ] = [ H,\beta \boldsymbol{\sigma} ] \boldsymbol{\cdot} \boldsymbol{J} + \beta \boldsymbol{\sigma} \boldsymbol{\cdot} [ H, \boldsymbol{J} ]
 ```
 
-But $`[ H, \boldsymbol{J} ]`$ = 0; furthermore, since
+But $`[ H, \boldsymbol{J} ] = 0`$; furthermore, since
 
 ```math
 \alpha^{k} \beta \sigma_{\ell} = \beta \sigma_{\ell} \alpha^{k} \quad k \neq \ell \quad \text{ and } \quad \alpha^{k} \beta \sigma_{k} = - \beta \sigma_{k} \alpha^{k}
@@ -1099,7 +1099,7 @@ Given this positive $`E , \left( a_{1}^{2} - a^{2} \right)`$ is negative (see (8
 
 solutions exist, with $`E`$ given by (92).
 
-The alternative possibility is that _all_ $`e_{s}`$ _are zero_. Suppose not both of $`c_{\epsilon}`$ and $`d_{\epsilon}`$ are zero. Then $`\alpha^{2} + \epsilon^{2} - k^{2}`$ = 0 as before and so $`\epsilon = \sqrt{k^{2} - \alpha^{2}}`$. But now
+The alternative possibility is that _all_ $`e_{s}`$ _are zero_. Suppose not both of $`c_{\epsilon}`$ and $`d_{\epsilon}`$ are zero. Then $`\alpha^{2} + \epsilon^{2} - k^{2} = 0`$ as before and so $`\epsilon = \sqrt{k^{2} - \alpha^{2}}`$. But now
 
 ```math
 a_{1} c_{\epsilon} - ad_{\epsilon} = 0
@@ -1109,7 +1109,7 @@ a_{1} c_{\epsilon} - ad_{\epsilon} = 0
 \alpha c_{\epsilon} - ( \epsilon + k ) d_{\epsilon} = 0
 ```
 
-Hence $`a\alpha - a_{1} ( \epsilon + k )`$ = 0 and $`k`$ must be positive to make $`\epsilon + k = \sqrt{k^{2} - \alpha^{2}} + k> 0`$. After this the solution goes as before. So solutions (92) exist for
+Hence $`a\alpha - a_{1} ( \epsilon + k ) = 0`$ and $`k`$ must be positive to make $`\epsilon + k = \sqrt{k^{2} - \alpha^{2}} + k> 0`$. After this the solution goes as before. So solutions (92) exist for
 
 <a id="eq-94"></a>
 
@@ -1165,7 +1165,7 @@ Multiplying the Dirac <a id="ix-65">equation</a> (64) by $`\sum \gamma_{\nu} \le
 \sum_{\mu} \sum_{\nu} \gamma_{\mu} \gamma_{\nu} \left( \frac{\partial}{\partial x_{\mu}} + i \frac{e}{\hbar c} A_{\mu} \right)^{\nu} \left( \frac{\partial}{\partial x_{\nu}} + i \frac{e}{\hbar c} A_{\nu} \right) \psi - \frac{m^{2} c^{2}}{\hbar^{2}} \psi = 0 \qquad \text{(96)}
 ```
 
-Using $`\gamma_{\mu}^{2}`$ = 1$`,\gamma_{\mu} \gamma_{\nu} + \gamma_{\nu} \gamma_{\mu}`$ = 0 this gives
+Using $`\gamma_{\mu}^{2} = 1 ,\gamma_{\mu} \gamma_{\nu} + \gamma_{\nu} \gamma_{\mu} = 0`$ this gives
 
 <a id="eq-97"></a>
 
@@ -1298,7 +1298,7 @@ Thus
 E^{2} = m^{2} c^{4} + c^{2} p_{z}^{2} + \lambda \{ n \pm ( \ell_{z} \pm 1 ) \}
 ```
 
-where $`\ell_{z}`$ = 0$`, \pm 1 , \pm 2 ,\dots , \pm ( n - 1 ) .`$
+where $`\ell_{z} = 0 , \pm 1 , \pm 2 ,\dots , \pm ( n - 1 ) .`$
 
 So the eigenvalues are
 

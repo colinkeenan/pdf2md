@@ -187,7 +187,7 @@ then use this handy formula to get the answer.
 \lambda = \frac{h}{p} = \frac{2 \pi \hbar c}{pc}
 ```
 
-I remember that $`\hbar c`$ = 1973 eV˚A allowing me to keep the whole calculation in eV. I also know the masses of the particles.
+I remember that $`\hbar c = 1973`$ eV˚A allowing me to keep the whole calculation in eV. I also know the masses of the particles.
 
 ```math
 m_{e} c^{2} = 0 . 5 1 \text{ MeV }
@@ -308,7 +308,7 @@ Derive the location of the nodes in the diffraction pattern from one slit of wid
 1. What is the deBroglie wavelength of an electron with 13.6 eV of kinetic energy? What is the deBroglie wavelength of an electron with 10 MeV of kinetic energy?
 
 **Answer**<br>
-13.6 eV is much less than $`mc^{2}`$ = 0$`. 5 1 1 MeV`$ so this is non-relativistic.
+13.6 eV is much less than $`mc^{2} = 0 . 5 1 1 MeV`$ so this is non-relativistic.
 
 ```math
 \frac{p^{2}}{2 m} = 1 3 . 6

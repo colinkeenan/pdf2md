@@ -23,7 +23,7 @@ We now have a wave function for a **free particle with a definite momentum** $`p
 \psi ( x,t ) = e^{i ( px - Et ) / \hbar} = e^{i ( kx - \omega t )}
 ```
 
-where the wave number $`k`$ is defined by $`p = \hbar k`$ and the angular frequency $`\omega`$ satisfies $`E = \hbar \omega`$. It is not localized since $`P ( x,t ) = | \psi ( x,t ) |^{2}`$ = 1 everywhere.
+where the wave number $`k`$ is defined by $`p = \hbar k`$ and the angular frequency $`\omega`$ satisfies $`E = \hbar \omega`$. It is not localized since $`P ( x,t ) = | \psi ( x,t ) |^{2} = 1`$ everywhere.
 
 We would like a state which is localized and **normalized to one particle**.
 
@@ -53,7 +53,7 @@ We understand $`f ( x )`$ as a **wave packet** made up of definite momentum term
 
 # <a id="s-5-2-two-examples-of-localized-wave-packets"></a>5.2 Two Examples of Localized Wave Packets
 
-Lets now try **two examples of a wave packet localized in** $`k`$ and properly normalized at $`t`$ = 0.
+Lets now try **two examples of a wave packet localized in** $`k`$ and properly normalized at $`t = 0`$.
 
 1. A “square” packet: $`A ( k ) = \tfrac{1}{\sqrt{a}}`$ for $`k_{0} - \tfrac{a}{2} <k<k_{0} + \tfrac{a}{2}`$ and 0 elsewhere.
 
@@ -91,7 +91,7 @@ f ( x ) = \frac{1}{\sqrt{2 \pi a}} \frac{1}{ix} \left[ e^{ikx} \right]_{k_{0} - 
 f ( x ) = \frac{1}{\sqrt{2 \pi a}} \frac{1}{ix} e^{ik_{0} x} \left[ 2 i \sin \left( \frac{ax}{2} \right) \right] = \sqrt{\frac{a}{2 \pi}} e^{ik_{0} x} \frac{2 \sin \left( \tfrac{ax}{2} \right)}{ax}
 ```
 
-Note that $`\tfrac{2 \sin}{ax} ( \tfrac{ax}{2} )`$ is equal to 1 at $`x`$ = 0 and that it decreases from there. If you square this, it should remind you of a single slit diffraction pattern! In fact, the single slit gives us a square localization in position space and the F.T. is this $`\frac{\sin ( x )}{x}`$ function.
+Note that $`\tfrac{2 \sin}{ax} ( \tfrac{ax}{2} )`$ is equal to 1 at $`x = 0`$ and that it decreases from there. If you square this, it should remind you of a single slit diffraction pattern! In fact, the single slit gives us a square localization in position space and the F.T. is this $`\frac{\sin ( x )}{x}`$ function.
 
 The Fourier Transform of a Gaussian (See section 5.6.4) wave packet $`A ( k ) = \left( \tfrac{2 \alpha}{\pi} \right)^{1 / 4} e^{- \alpha ( k - k_{0} )^{2}}`$ is
 
@@ -249,9 +249,9 @@ We will find that there are other ways to represent Quantum states. This was a p
 
 # <a id="s-5-5-time-development-of-a-gaussian-wave-packet"></a>5.5 Time Development of a Gaussian Wave Packet \*
 
-So far, we have performed our Fourier Transforms at $`t`$ = 0 and looked at the result only at $`t`$ = 0. We will now put time back into the wave function and look at the wave packet at later times. We will see that the behavior of photons and non-relativistic electrons is quite different.
+So far, we have performed our Fourier Transforms at $`t = 0`$ and looked at the result only at $`t = 0`$. We will now put time back into the wave function and look at the wave packet at later times. We will see that the behavior of photons and non-relativistic electrons is quite different.
 
-Assume we **start with our Gaussian** (minimum uncertainty) wavepacket $`A ( k ) = e^{- \alpha ( k - k_{0} )^{2}}`$ at $`t`$ = 0. We can do the Fourier Transform to position space, including the time dependence.
+Assume we **start with our Gaussian** (minimum uncertainty) wavepacket $`A ( k ) = e^{- \alpha ( k - k_{0} )^{2}}`$ at $`t = 0`$. We can do the Fourier Transform to position space, including the time dependence.
 
 ```math
 \psi ( x,t ) = \int_{-\infty}^{\infty} A ( k ) e^{i ( kx - \omega ( k ) t )} dk
@@ -275,7 +275,7 @@ We anticipate the outcome a bit and name the coefficients.
 \omega ( k ) = \omega_{0} + v_{g} ( k - k_{0} ) + \beta ( k - k_{0} )^{2}
 ```
 
-For the photon, $`v_{g} = c`$ and $`\beta`$ = 0. For the NR electron, $`v_{g} = \tfrac{\hbar k_{0}}{m}`$ and $`\beta = \tfrac{\hbar}{2 m}`$.
+For the photon, $`v_{g} = c`$ and $`\beta = 0`$. For the NR electron, $`v_{g} = \tfrac{\hbar k_{0}}{m}`$ and $`\beta = \tfrac{\hbar}{2 m}`$.
 
 Performing the Fourier Transform (See section 5.6.5), we get
 
@@ -287,7 +287,7 @@ Performing the Fourier Transform (See section 5.6.5), we get
 | \psi ( x,t ) |^{2} = \frac{\pi}{\sqrt{\alpha^{2} + \beta^{2} t^{2}}} e^{\tfrac{- \alpha ( x - vgt ) 2}{2 ( \alpha 2 + \beta 2 t 2 )}} .
 ```
 
-We see that the photon will move with the velocity of light and that the wave packet will not disperse, because $`\beta`$ = 0.
+We see that the photon will move with the velocity of light and that the wave packet will not disperse, because $`\beta = 0`$.
 
 For the NR electron, the wave packet moves with the correct **group velocity**, $`v_{g} = \tfrac{p}{m}`$, but the wave packet **spreads with time**. The RMS width is $`\sigma = \sqrt{\alpha^{2} + \left( \tfrac{\hbar t}{2 m} \right)^{2}}`$.
 
@@ -573,7 +573,7 @@ so the Gaussian wave packets seem to saturate the bound!
 
 ## <a id="s-5-6-5-time-dependence-of-a-gaussian-wave-packet"></a>5.6.5 Time Dependence of a Gaussian Wave Packet \*
 
-Assume we start with our Gaussian (minimum uncertainty) wavepacket $`A ( k ) = e^{- \alpha ( k - k_{0} )^{2}}`$ at $`t`$ = 0. We are not interested in careful normalization here so we will drop constants.
+Assume we start with our Gaussian (minimum uncertainty) wavepacket $`A ( k ) = e^{- \alpha ( k - k_{0} )^{2}}`$ at $`t = 0`$. We are not interested in careful normalization here so we will drop constants.
 
 ```math
 \psi ( x,t ) = \int_{-\infty}^{\infty} A ( k ) e^{i ( kx - \omega ( k ) t )} dk
@@ -727,7 +727,7 @@ Given the following one dimensional probability amplitude in the position variab
 \psi ( x ) = \frac{1}{\sqrt{2 a}}
 ```
 
-for $`- a<x<a`$, otherwise $`\psi ( x )`$ = 0.
+for $`- a<x<a`$, otherwise $`\psi ( x ) = 0`$.
 
 Its normalized.
 
@@ -773,13 +773,13 @@ Now estimate the width of the two probability distributions.
 
 ## <a id="s-5-7-2-the-gaussian-wave-packet"></a>5.7.2 The Gaussian Wave Packet \*
 
-Given the following one dimensional probability amplitude in the position variable x, compute the probability distribution in momentum space. Show that the uncertainty principle is roughly satisfied. $`\psi ( x )`$ = $`( \tfrac{\alpha}{\pi} ) \tfrac{1}{4} e^{- \alpha x^{2} / 2}`$<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=112" target="_blank" title="This page in the PDF"><sup>[p. 112]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p113" href="book.pdf#page=113" target="_blank" title="This page in the PDF"><sup>[p. 113]</sup></a></span> **5.7.3 The Dirac Delta Function Wave Packet \***
+Given the following one dimensional probability amplitude in the position variable x, compute the probability distribution in momentum space. Show that the uncertainty principle is roughly satisfied. $`\psi ( x ) = ( \tfrac{\alpha}{\pi} ) \tfrac{1}{4} e^{- \alpha x^{2} / 2}`$<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=112" target="_blank" title="This page in the PDF"><sup>[p. 112]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p113" href="book.pdf#page=113" target="_blank" title="This page in the PDF"><sup>[p. 113]</sup></a></span> **5.7.3 The Dirac Delta Function Wave Packet \***
 
 Given the following one dimensional probability amplitude in the position variable x, compute the probability distribution in momentum space. Show that the uncertainty principle is roughly satisfied. $`\psi ( x ) = \delta ( x - x_{0} )`$
 
 ## <a id="s-5-7-4-can-i-see-inside-an-atom"></a>5.7.4 Can I “See” inside an Atom
 
-To see inside an atom, we must use light with a wavelength smaller than the size of the atom. With normal light, once a surface is polished down to the .25 micron level, it looks shiny. You can no longer see defects. So to see inside the atom, we would need light with $`\lambda = \tfrac{h}{p}`$ = 0$`. 1`$ A.$`( )`$˚
+To see inside an atom, we must use light with a wavelength smaller than the size of the atom. With normal light, once a surface is polished down to the .25 micron level, it looks shiny. You can no longer see defects. So to see inside the atom, we would need light with $`\lambda = \tfrac{h}{p} = 0 . 1`$ A.$`( )`$˚
 
 ```math
 p = \frac{2 \pi \hbar}{0 . 1}
@@ -817,7 +817,7 @@ We can probe atoms with high energy photons (for example). These will blow the a
 
 ## <a id="s-5-7-5-can-i-see-inside-a-nucleus"></a>5.7.5 Can I “See” inside a Nucleus
 
-In a similar fashion to the previous section, $`E_{\gamma} \geq \tfrac{\hbar c}{2 ( 0 . 1 F )}`$ = 1000 MeV $`.`$
+In a similar fashion to the previous section, $`E_{\gamma} \geq \tfrac{\hbar c}{2 ( 0 . 1 F )} = 1000`$ MeV $`.`$
 
 The binding energy per nucleon is a few MeV, so, we will also blow nuclei apart to look carefully inside them. We again can just use lots of nuclei to allow us to learn about internal nuclear structure.<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=113" target="_blank" title="This page in the PDF"><sup>[p. 113]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p114" href="book.pdf#page=114" target="_blank" title="This page in the PDF"><sup>[p. 114]</sup></a></span> **5.7.6 Estimate the Hydrogen Ground State Energy**
 
@@ -919,7 +919,7 @@ pr \approx \hbar
 E = pc = \frac{\hbar c}{r} = \frac{1 9 7 . 3 MeVF}{4 F} \approx 5 0 MeV
 ```
 
-2. **\*** Assume that the potential for a neutron near a heavy nucleus is given by $`V ( r )`$ = 0 for $`r> 5`$ Fermis and $`V ( r ) = - V_{0}`$ for $`r< 5`$ Fermis. Use the uncertainty principle to estimate the minimum value of $`V_{0}`$ needed for the neutron to be bound to the nucleus.
+2. **\*** Assume that the potential for a neutron near a heavy nucleus is given by $`V ( r ) = 0`$ for $`r> 5`$ Fermis and $`V ( r ) = - V_{0}`$ for $`r< 5`$ Fermis. Use the uncertainty principle to estimate the minimum value of $`V_{0}`$ needed for the neutron to be bound to the nucleus.
 
 3. Use the uncertainty principle to estimate the ground state energy of Hydrogen.
 
@@ -969,7 +969,7 @@ E = - \frac{1}{2} \alpha^{2} mc^{2}
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p116" href="book.pdf#page=116" target="_blank" title="This page in the PDF"><sup>[p. 116]</sup></a>
 
-a $`\psi ( x ) = \tfrac{1}{\sqrt{2 a}}`$ for $`- a<x<a`$, otherwise $`\psi ( x )`$ = 0.
+a $`\psi ( x ) = \tfrac{1}{\sqrt{2 a}}`$ for $`- a<x<a`$, otherwise $`\psi ( x ) = 0`$.
 
 ```math
 b \psi ( x ) = ( \tfrac{\alpha}{\pi} ) \tfrac{1}{4} e^{- \alpha x^{2} / 2}
@@ -987,9 +987,9 @@ c \psi ( x ) = \delta ( x - x_{0} )
 \delta ( p - p_{0} ) .
 ```
 
-7. **\*** Find the one dimensional wave function in position space $`\psi ( x )`$ that corresponds to $`\varphi ( p ) = \frac{1}{\sqrt{2 b}}`$ for $`- b<p<b`$, and $`\varphi ( p )`$ = 0 otherwise.
+7. **\*** Find the one dimensional wave function in position space $`\psi ( x )`$ that corresponds to $`\varphi ( p ) = \frac{1}{\sqrt{2 b}}`$ for $`- b<p<b`$, and $`\varphi ( p ) = 0`$ otherwise.
 
-8. **\*** Assume that a particle is localized such that $`\psi ( x ) = \tfrac{1}{\sqrt{a}}`$ for $`0 <x<a`$ and that $`\psi ( x )`$ = 0 elsewhere. What is the probability for the particle to have a momentum between $`p`$ and $`p + dp`$?
+8. **\*** Assume that a particle is localized such that $`\psi ( x ) = \tfrac{1}{\sqrt{a}}`$ for $`0 <x<a`$ and that $`\psi ( x ) = 0`$ elsewhere. What is the probability for the particle to have a momentum between $`p`$ and $`p + dp`$?
 
 9. A beam of photons of momentum $`p`$ is incident upon a slit of width $`a`$. The resulting diffraction pattern is viewed on screen which is a distance $`d`$ from the slit. Use the **uncertainty principle** to estimate the width of the central maximum of the diffraction pattern in terms of the variables given.
 
@@ -999,13 +999,13 @@ c \psi ( x ) = \delta ( x - x_{0} )
 
 12. A hydrogen atom has the potential $`V ( r ) = \tfrac{e^{2}}{r}^{-}`$. Use the uncertainty principle to estimate the ground state energy.
 
-13. **\*** Assume that $`\varphi ( p ) = \tfrac{1}{\sqrt{2 a}}`$ for $`| p | <a`$ and $`\varphi ( p )`$ = 0 elsewhere. What is $`\psi ( x )`$? What is the probability to find the particle between $`x`$ and $`x + dx`$?
+13. **\*** Assume that $`\varphi ( p ) = \tfrac{1}{\sqrt{2 a}}`$ for $`| p | <a`$ and $`\varphi ( p ) = 0`$ elsewhere. What is $`\psi ( x )`$? What is the probability to find the particle between $`x`$ and $`x + dx`$?
 
 14. The hydrogen atom is made up of a proton and an electron bound together by the Coulomb potential, $`V ( r ) = \tfrac{- e^{2}}{r}`$. It is also possible to make a hydrogen-like atom from a proton and a muon. The force binding the muon to the proton is identical to that for the electron but the muon’s mass is 106 MeV/c<sup>2</sup>. Use the uncertainty principle to estimate the energy and the radius of the ground state of muonic hydrogen.
 
 15. **\*** Given the following one dimensional probability amplitudes in the momentum representation, compute the probability amplitude in the position representation, $`\psi ( x )`$. Show that the uncertainty principle is satisfied.
 
-(a) $`\bar{\psi} ( p ) = \tfrac{1}{\sqrt{2 a}}`$ for $`- a<p<a , \bar{\psi} ( p )`$ = 0 elsewhere.
+(a) $`\bar{\psi} ( p ) = \tfrac{1}{\sqrt{2 a}}`$ for $`- a<p<a , \bar{\psi} ( p ) = 0`$ elsewhere.
 
 ```math
 ( b ) \bar{\psi} ( p ) = \delta ( p - p_{0} )

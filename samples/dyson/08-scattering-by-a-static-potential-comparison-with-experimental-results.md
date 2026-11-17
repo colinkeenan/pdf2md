@@ -223,7 +223,7 @@ Now we can combine (637) and (644) to give by (639) and (629)
 \begin{aligned} \sigma_{T} &= \left( 1 - \frac{2 \alpha}{3 \pi} \left( \log \frac{mc^{2}}{2 T} + \tfrac{5}{6} - \tfrac{1}{5} \right) 4 \beta^{2} \sin^{2} \frac{\theta}{2} \right) \overline{\sigma}_{0} \\ & \quad + \frac{2 \alpha}{3 \pi} \left( \frac{e}{2 \pi \hbar c} \right)^{2} d \Omega \times \int_{0}^{1} \frac{2 \lambda d\lambda}{1 - \lambda^{2}} \left\{ \lambda | \boldsymbol{p} - \lambda \boldsymbol{p}^{\prime} |^{2} | V ( p - \lambda p^{\prime} ) |^{2} -| \boldsymbol{p} - \boldsymbol{p}^{\prime} |^{2} | V ( p - p^{\prime} ) |^{2} \right\} \end{aligned} \qquad \text{(646)}
 ```
 
-Here we used the following trick: the integral over $`\lambda`$ blows up at $`\lambda`$ = 1. Therefore we subtract from the numerator its value at $`\lambda`$ = 1, which makes the integral behave decently and permits us to change the upper limit from $`\lambda_{m}`$ to 1, for small ∆$`E`$’s. We also have to add then the integrand with the numerator having $`\lambda`$ = 1; this gives then a logarithmic term which combines with (637) to give the first part of (646).
+Here we used the following trick: the integral over $`\lambda`$ blows up at $`\lambda = 1`$. Therefore we subtract from the numerator its value at $`\lambda = 1`$, which makes the integral behave decently and permits us to change the upper limit from $`\lambda_{m}`$ to 1, for small ∆$`E`$’s. We also have to add then the integrand with the numerator having $`\lambda = 1`$; this gives then a logarithmic term which combines with (637) to give the first part of (646).
 
 <div align="right"><a href="book.pdf#page=126" target="_blank" title="This page in the PDF"><sup>[p. 120]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -421,7 +421,7 @@ where Ω$`{}_{1} ( t )`$ is defined as in (492), only with $`e \overline{\psi} 
 i \hbar \frac{\partial \Omega_{1} ( t )}{\partial t} = H^{I} ( t ) \Omega_{1} ( t ) \qquad \text{(663)}
 ```
 
-for any value of $`t`$ not in the remote past, so that we may take $`g_{A} ( t )`$ = 1. Hence the <a id="ix-70">equation</a> of motion for $`\Phi ( t )`$ derived from (661) is just
+for any value of $`t`$ not in the remote past, so that we may take $`g_{A} ( t ) = 1`$. Hence the <a id="ix-70">equation</a> of motion for $`\Phi ( t )`$ derived from (661) is just
 
 <a id="eq-664"></a>
 
@@ -651,7 +651,7 @@ where $`H_{0}`$ is the Hamiltonian of the <a id="ix-87">Dirac</a> and Maxwell fi
 Q^{\prime} ( x ) = ( \Omega_{1} ( t ) )^{- 1} Q ( x ) \Omega_{1} ( t ) \qquad \text{(686)}
 ```
 
-Now Ω$`{}_{1} ( t )`$ is given by (492) where we now take the limit $`g_{A}`$ = 1. The operators appearing in (492) are all FIR operators satisfying equations of motion of the form (685). When the integrations in (492) are carried out, the integrated terms will still have the same time variation given by (685), except for those terms which correspond to transitions in which energy is conserved. The energy-conserving matrix elements will have an explicit linear dependence on $`t`$ after integration, which is not in accordance with (685). Therefore we conclude that the equation of motion
+Now Ω$`{}_{1} ( t )`$ is given by (492) where we now take the limit $`g_{A} = 1`$. The operators appearing in (492) are all FIR operators satisfying equations of motion of the form (685). When the integrations in (492) are carried out, the integrated terms will still have the same time variation given by (685), except for those terms which correspond to transitions in which energy is conserved. The energy-conserving matrix elements will have an explicit linear dependence on $`t`$ after integration, which is not in accordance with (685). Therefore we conclude that the equation of motion
 
 <a id="eq-687"></a>
 
@@ -751,7 +751,7 @@ the difference between (692) and (693) becomes
 J_{\mu}^{k} ( nm ) - j_{\mu}^{k} ( nm ) = \frac{ie}{\hbar \mu | \boldsymbol{k} |} \left\{ \int \psi_{n}^{*} \frac{\partial \psi}{\partial x_{\mu}} d^{3} \boldsymbol{r} \right\} ( E_{m} - E_{n} - hc | \boldsymbol{k} | ) \qquad \text{(695)}
 ```
 
-where we used $`\boldsymbol{[} p^{2} ,p_{\mu} \boldsymbol{]}`$ = 0 and $`\int p_{\mu} \psi_{n}^{*} p^{2} \psi_{m} d^{3} \boldsymbol{r} = - \int \psi_{n}^{*} p_{\mu} p^{2} \psi_{m} d^{3} \boldsymbol{r}`$. This difference vanishes for transitions in which energy is conserved. Hence the value of Γ given by (262) is unaffected by the change from $`j`$ to $`J`$. The value Γ calculated previously is still valid in the relativistic theory, except for very small effects from magnetic radiation which we have neglected.
+where we used $`\boldsymbol{[} p^{2} ,p_{\mu} \boldsymbol{]} = 0`$ and $`\int p_{\mu} \psi_{n}^{*} p^{2} \psi_{m} d^{3} \boldsymbol{r} = - \int \psi_{n}^{*} p_{\mu} p^{2} \psi_{m} d^{3} \boldsymbol{r}`$. This difference vanishes for transitions in which energy is conserved. Hence the value of Γ given by (262) is unaffected by the change from $`j`$ to $`J`$. The value Γ calculated previously is still valid in the relativistic theory, except for very small effects from magnetic radiation which we have neglected.
 
 Using (695) we have the simple relation between $`j_{\mu}`$ and $`J_{\mu}`$,
 
@@ -815,7 +815,7 @@ mc^{2} \gamma_{4} \psi_{0} = ( E_{0} - V ) \psi_{0} + i \hbar c ( \boldsymbol{\a
 mc^{2} \psi_{0}^{*} \gamma_{4} = \psi_{0}^{*} ( E_{0} - V ) - i \hbar c ( \nabla \psi_{0}^{*} \boldsymbol{\cdot} \boldsymbol{\alpha} ) \qquad \text{(702)}
 ```
 
-Using both (701) and (702) in turn in the second term of (700) and adding the results using $`\alpha^{i} \gamma_{4} + \gamma_{4} \alpha^{i}`$ = 0 the terms in $`( E_{0} - V )`$ cancel and we find<sup><a id="fnref-93" href="#fn-93">93</a></sup>
+Using both (701) and (702) in turn in the second term of (700) and adding the results using $`\alpha^{i} \gamma_{4} + \gamma_{4} \alpha^{i} = 0`$ the terms in $`( E_{0} - V )`$ cancel and we find<sup><a id="fnref-93" href="#fn-93">93</a></sup>
 
 <a id="eq-703"></a>
 
@@ -869,7 +869,7 @@ Therefore for the hydrogen atom
 
 where $`q`$ is the coefficient (706).
 
-For $`s`$-states we have $`q`$ = 0 and so the shift reduces to (see (284))
+For $`s`$-states we have $`q = 0`$ and so the shift reduces to (see (284))
 
 <a id="eq-708"></a>
 

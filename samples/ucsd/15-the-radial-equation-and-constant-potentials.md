@@ -272,7 +272,7 @@ k \left[ \frac{\frac{dj_{\ell} ( \rho )}{d\rho}}{j_{\ell} ( \rho )} \right]_{\rh
 
 This is often called matching the **logarithmic derivative**.
 
-Often, the $`\ell`$ = 0 term will be sufficient to describe scattering. For $`\ell`$ = 0, the boundary condition is
+Often, the $`\ell = 0`$ term will be sufficient to describe scattering. For $`\ell = 0`$, the boundary condition is
 
 ```math
 k \left[ \frac{\tfrac{\cos \rho}{\rho} - \tfrac{\sin \rho}{\rho^{2}}}{\frac{\sin \rho}{\rho}} \right]_{\rho = ka} = ( i\kappa ) \left[ \frac{\tfrac{ie^{i\rho}}{i\rho} - \tfrac{e^{i\rho}}{i\rho^{2}}}{\frac{e^{i\rho}}{i\rho}} \right]_{\rho = i\kappa a} .
@@ -322,7 +322,7 @@ _Figure 58 (p. 223)_
 
 # <a id="s-15-6-partial-wave-analysis-of-scattering"></a>15.6 Partial Wave Analysis of Scattering \*
 
-We can take a quick look at **scattering from a potential in 3D** We assume that $`V`$ = 0 far from the origin so the incoming and outgoing waves can be written in terms of our solutions for a constant potential.
+We can take a quick look at **scattering from a potential in 3D** We assume that $`V = 0`$ far from the origin so the incoming and outgoing waves can be written in terms of our solutions for a constant potential.
 
 In fact, an **incoming plane wave along the** $`z`$ **direction** can be expanded in Bessel functions.
 
@@ -369,7 +369,7 @@ in terms of the phase shifts.
 
 The phase shifts must be computed by actually solving the problem for the particular potential.
 
-In fact, for low energy scattering and short range potentials, the first term $`\ell`$ = 0 is often enough to solve the problem.
+In fact, for low energy scattering and short range potentials, the first term $`\ell = 0`$ is often enough to solve the problem.
 
 ![Figure 59 (p. 224)](images/fig-p224-1.png)
 
@@ -453,7 +453,7 @@ we can **identify the phase shift** easily.
 
 We need to use the boundary condition to get this phase shift.
 
-For $`\ell`$ = 0, we get
+For $`\ell = 0`$, we get
 
 ```math
 k^{\prime} \frac{\cos ( k^{\prime} a )}{\sin ( k^{\prime} a )} = k \frac{B \cos ( ka ) + C \sin ( ka )}{B \sin ( ka ) - C \cos ( ka )}
@@ -477,7 +477,7 @@ We can now get the phase shift.
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p226" href="book.pdf#page=226" target="_blank" title="This page in the PDF"><sup>[p. 226]</sup></a>
 
-With just the $`\ell`$ = 0 term, the differential scattering cross section is.
+With just the $`\ell = 0`$ term, the differential scattering cross section is.
 
 ```math
 \frac{d\sigma}{d \Omega} \to \frac{\sin^{2} ( \delta_{\ell} )}{k^{2}}
@@ -553,15 +553,15 @@ For the case of a constant potential $`V_{0}`$, we define $`k = \sqrt{\frac{2 \m
 \frac{d^{2} u ( \rho )}{d\rho^{2}} - \frac{\ell ( \ell + 1 )}{\rho^{2}} u ( \rho ) + u ( \rho ) = 0
 ```
 
-For $`\ell`$ = 0, its easy to see that $`\sin \rho`$ and $`\cos \rho`$ are solutions. Dividing by $`r`$ to get $`R ( \rho )`$, we see that these are $`j_{0}`$ and $`n_{0}`$. The solutions can be checked for other $`\ell`$, with some work.
+For $`\ell = 0`$, its easy to see that $`\sin \rho`$ and $`\cos \rho`$ are solutions. Dividing by $`r`$ to get $`R ( \rho )`$, we see that these are $`j_{0}`$ and $`n_{0}`$. The solutions can be checked for other $`\ell`$, with some work.
 
 # <a id="s-15-9-sample-test-problems"></a>15.9 Sample Test Problems
 
-1. A particle has orbital angular momentum quantum number $`l`$ = 1 and is bound in the potential well $`V ( r ) = - V_{0}`$ for $`r<a`$ and $`V ( r )`$ = 0 elsewhere. Write down the form of the solution (in terms of known functions) in the two regions. Your solution should satisfy constraints at the origin and at infinity. Be sure to include angular dependence. Now use the boundary condition at $`r = a`$ to get one equation, the solution of which will quantize the energies. Do not bother to solve the equation.
+1. A particle has orbital angular momentum quantum number $`l = 1`$ and is bound in the potential well $`V ( r ) = - V_{0}`$ for $`r<a`$ and $`V ( r ) = 0`$ elsewhere. Write down the form of the solution (in terms of known functions) in the two regions. Your solution should satisfy constraints at the origin and at infinity. Be sure to include angular dependence. Now use the boundary condition at $`r = a`$ to get one equation, the solution of which will quantize the energies. Do not bother to solve the equation.
 
-2. A particle of mass $`m`$ with 0 total angular momentum is in a 3 dimensional potential well $`V ( r ) = - V_{0}`$ for $`r<a`$ (otherwise $`V ( r )`$ = 0).
+2. A particle of mass $`m`$ with 0 total angular momentum is in a 3 dimensional potential well $`V ( r ) = - V_{0}`$ for $`r<a`$ (otherwise $`V ( r ) = 0`$).
 
-a) Write down the form of the $`( l = 0 )`$ solution, to the time independent Schrödinger equation, inside the well, which is well behaved at at $`r`$ = 0. Specify the relationship between the particles energy and any parameters in your solution.
+a) Write down the form of the $`( l = 0 )`$ solution, to the time independent Schrödinger equation, inside the well, which is well behaved at at $`r = 0`$. Specify the relationship between the particles energy and any parameters in your solution.
 
 b) Write down the form of the solution to the time independent Schrödinger equation, outside the well, which has the right behavior as $`r \to \infty`$. Again specify how the parameters depend on energy.
 
@@ -571,9 +571,9 @@ Use $`u ( r ) = rR ( r )`$ to simplify the calculation.
 
 d) Find the transcendental equation which will determine the energy eigenvalues.
 
-3. A particle has orbital angular momentum quantum number $`l`$ = 1 and is bound in the potential well $`V ( r ) = - V_{0}`$ for $`r<a`$ and $`V ( r )`$ = 0 elsewhere. Write down the form of the solution (in terms of known functions) in the two regions. Your solution should satisfy constraints at the origin and at infinity. Be sure to include angular dependence. Now use the boundary condition at $`r = a`$ to get one equation, the solution of which will quantize the energies. Do not bother to solve the equation.
+3. A particle has orbital angular momentum quantum number $`l = 1`$ and is bound in the potential well $`V ( r ) = - V_{0}`$ for $`r<a`$ and $`V ( r ) = 0`$ elsewhere. Write down the form of the solution (in terms of known functions) in the two regions. Your solution should satisfy constraints at the origin and at infinity. Be sure to include angular dependence. Now use the boundary condition at $`r = a`$ to get one equation, the solution of which will quantize the energies. Do not bother to solve the equation.
 
-4. A particle is confined to the inside of a sphere of radius $`a`$. Find the energies of the two lowest energy states for $`\ell`$ = 0. Write down (but do not solve) the equation for the energies for $`\ell`$ = 1.
+4. A particle is confined to the inside of a sphere of radius $`a`$. Find the energies of the two lowest energy states for $`\ell = 0`$. Write down (but do not solve) the equation for the energies for $`\ell = 1`$.
 
 5.
 

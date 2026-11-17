@@ -290,7 +290,7 @@ We will use the momentum operator to get this result.
 = \left( \frac{1}{2 \pi \alpha} \right)^{1 / 2} \frac{\hbar}{i} \int_{-\infty}^{\infty} \left( ik_{0} e^{- \tfrac{x 2}{2 \alpha}} - \frac{2 x}{4 \alpha} e^{- \tfrac{x 2}{2 \alpha}} \right) dx
 ```
 
-The second term gives zero because the integral is odd about $`x`$ = 0.
+The second term gives zero because the integral is odd about $`x = 0`$.
 
 ```math
 \langle \psi | p | \psi \rangle = \left( \frac{1}{2 \pi \alpha} \right)^{1 / 2} \frac{\hbar}{i} \int_{-\infty}^{\infty} \left( ik_{0} e^{- \tfrac{x 2}{2 \alpha}} \right) dx
@@ -340,7 +340,7 @@ Again use the crutch of keeping a wave function on the right to avoid mistakes.
 = \left( i \hbar x \frac{\partial}{\partial t} - i \hbar x \frac{\partial}{\partial t} \right) \psi ( x,t ) = 0
 ```
 
-Since $`\frac{\partial x}{\partial t}`$ = 0.
+Since $`\frac{\partial x}{\partial t} = 0`$.
 
 ## <a id="s-6-7-4-commutator-of-p-and-x-n"></a>6.7.4 Commutator of $`p`$ and $`x^{n}`$
 

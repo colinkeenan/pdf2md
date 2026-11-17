@@ -89,7 +89,7 @@ The first order perturbation **energy shift from the spin orbit correction** is 
 \left( \frac{g}{2} \right) \frac{E_{n}^{( 0 )}}{2 mc^{2}} 2 \begin{bmatrix} \frac{n}{( \ell + \tfrac{1}{2} ) ( \ell + 1 )} \\ \frac{- n}{\ell ( \ell + \tfrac{1}{2} )} \end{bmatrix} \quad j = \ell - \tfrac{1}{2}
 ```
 
-Actually, the $`\vec{L} \cdot \vec{S}`$ term should give 0 for $`\ell`$ = 0! In the above calculation there is an $`\frac{\ell}{\ell}`$ factor which makes the result for $`\ell`$ = 0 undefined. There is an additional Dirac Equation contribution called the **“Darwin term”** (see section 23.4.5) which is important for $`\ell`$ = 0 and surprisingly makes the above calculation right, even for $`\ell`$ = 0!
+Actually, the $`\vec{L} \cdot \vec{S}`$ term should give 0 for $`\ell = 0`$! In the above calculation there is an $`\frac{\ell}{\ell}`$ factor which makes the result for $`\ell = 0`$ undefined. There is an additional Dirac Equation contribution called the **“Darwin term”** (see section 23.4.5) which is important for $`\ell = 0`$ and surprisingly makes the above calculation right, even for $`\ell = 0`$!
 
 We will now add these three fine structure corrections together for states of definite $`j`$. We start with a formula which has slightly different forms for $`j = \ell \pm \tfrac{1}{2}`$.
 
@@ -173,7 +173,7 @@ In the strong field limit we could use states of definite $`m_{\ell}`$ and $`m_{
 E = E_{n}^{0} + \frac{eB \hbar}{2 mc} ( m_{\ell} + 2 m_{s} )
 ```
 
-In this limit, the field has partially removed the degeneracy in $`m_{\ell}`$ and $`m_{s}`$, but not $`\ell`$. For example, the energies of all these $`n`$ = 3 states are the same.
+In this limit, the field has partially removed the degeneracy in $`m_{\ell}`$ and $`m_{s}`$, but not $`\ell`$. For example, the energies of all these $`n = 3`$ states are the same.
 
 ```math
 \ell = 2 \quad m_{\ell} = 0 \quad m_{s} = \tfrac{1}{2}
@@ -203,7 +203,7 @@ Moving from the non-relativistic formula for the energy of an electron to the re
 mc^{2} + \frac{p_{e}^{2}}{2 m} \to \left( p^{2} c^{2} + m^{2} c^{4} \right)^{1 / 2} = mc^{2} \left( 1 + \frac{p^{2} c^{2}}{m^{2} c^{4}} \right)^{1 / 2} .
 ```
 
-Taylor expanding the square root around $`p^{2}`$ = 0, we find
+Taylor expanding the square root around $`p^{2} = 0`$, we find
 
 ```math
 \left( p^{2} c^{2} + m^{2} c^{4} \right)^{1 / 2} = mc^{2} + \frac{1}{2} \frac{p^{2} c^{2}}{mc^{2}} - \frac{1}{8} \frac{p^{4} c^{4}}{m^{3} c^{6}} + \cdot \cdot \cdot \approx mc^{2} + \frac{p^{2}}{2 m} - \frac{p^{4}}{8 m^{3} c^{2}}
@@ -355,7 +355,7 @@ We now calculate the expectation value of $`H_{2}`$. We will immediately use the
 \left. \tfrac{n}{( \ell \frac{+ \tfrac{1}{2} - n ) ( \ell}{\ell ( \ell + \tfrac{1}{2} )} + 1 )} \right] \quad j = \ell - \tfrac{1}{2}
 ```
 
-Note that in the above equation, we have canceled a term $`\frac{\ell}{\ell}`$ which is not defined for $`\ell`$ = 0. We will return to this later.
+Note that in the above equation, we have canceled a term $`\frac{\ell}{\ell}`$ which is not defined for $`\ell = 0`$. We will return to this later.
 
 ## <a id="s-23-4-5-the-darwin-term"></a>23.4.5 The Darwin Term
 
@@ -371,13 +371,13 @@ When we take the expectation value of this, we get the probability for the elect
 \langle \psi | H_{D} | \psi \rangle = {}_{3 / 2} \frac{\pi e^{2} \hbar^{2}}{2 m_{e}^{2} c^{2}} | \psi ( 0 ) |^{2}
 ```
 
-Now, $`\psi`$(0) = 0 for $`\ell > 0`$ and $`\psi`$(0) = $`\tfrac{1}{\sqrt{4 \pi}} 2 \left( \tfrac{z}{na_{0}} \right)`$ for $`\ell`$ = 0, so
+Now, $`\psi`$(0) = 0 for $`\ell > 0`$ and $`\psi`$(0) = $`\tfrac{1}{\sqrt{4 \pi}} 2 \left( \tfrac{z}{na_{0}} \right)`$ for $`\ell = 0`$, so
 
 ```math
 \langle H_{D} \rangle_{n 0 0} = \frac{4 e^{2} \hbar^{2}}{8 n^{3} a_{0}^{3} m^{2} c^{2}} = \frac{e^{2} \hbar^{2} \alpha^{2} m^{2} c^{2}}{2 n^{3} a_{0} m^{2} c^{2} \hbar^{2}} = \frac{2 nE_{n}^{2}}{mc^{2}}
 ```
 
-This is the same as $`\ell`$ = 0 term that we got for the spin orbit correction. This actually replaces the $`\ell`$ = 0 term in the spin-orbit correction (which should be zero) making the formula correct!
+This is the same as $`\ell = 0`$ term that we got for the spin orbit correction. This actually replaces the $`\ell = 0`$ term in the spin-orbit correction (which should be zero) making the formula correct!
 
 <div align="right"><a href="book.pdf#page=343" target="_blank" title="This page in the PDF"><sup>[p. 343]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -477,11 +477,11 @@ To this we add the anomalous Zeeman effect
 
 # <a id="s-23-5-homework-problems"></a>23.5 Homework Problems
 
-1. Consider the fine structure of the $`n`$ = 2 states of the hydrogen atom. What is the spectrum in the absence of a magnetic field? How is the spectrum changed when the atom is placed in a magnetic field of 25,000 gauss? Give numerical values for the energy shifts in each of the above cases. Now, try to estimate the binding energy for the lowest energy $`n`$ = 2 state including the relativistic, spin-orbit, and magnetic field.
+1. Consider the fine structure of the $`n = 2`$ states of the hydrogen atom. What is the spectrum in the absence of a magnetic field? How is the spectrum changed when the atom is placed in a magnetic field of 25,000 gauss? Give numerical values for the energy shifts in each of the above cases. Now, try to estimate the binding energy for the lowest energy $`n = 2`$ state including the relativistic, spin-orbit, and magnetic field.
 
-2. Verify the relations used for $`\tfrac{1}{r} , \tfrac{1}{r^{2}}`$, and $`\frac{1}{r^{3}}`$ for hydrogen atom states up to $`n`$ = 3 and for any $`n`$ if $`l = n - 1 .`$
+2. Verify the relations used for $`\tfrac{1}{r} , \tfrac{1}{r^{2}}`$, and $`\frac{1}{r^{3}}`$ for hydrogen atom states up to $`n = 3`$ and for any $`n`$ if $`l = n - 1 .`$
 
-3. Calculate the fine structure of hydrogen atoms for spin 1 electrons for $`n`$ = 1 and $`n`$ = 2.
+3. Calculate the fine structure of hydrogen atoms for spin 1 electrons for $`n = 1`$ and $`n = 2`$.
 
 Compute the energy shifts in eV.
 
@@ -489,9 +489,9 @@ Compute the energy shifts in eV.
 
 1. The relativistic correction to the Hydrogen Hamiltonian is $`H_{1} = - \tfrac{p^{4}}{8 m^{3} c^{2}}`$. Assume that electrons have spin zero and that there is therefore no spin orbit correction. Calculate the energy shifts and draw an energy diagram for the n=3 states of Hydrogen. You may use $`\langle \psi_{nlm} | \tfrac{1}{r} | \psi_{nlm} \rangle = \tfrac{1}{n^{2} a_{0}}`$ and $`\langle \psi_{nlm} | \tfrac{1}{r^{2}} | \psi_{nlm} \rangle = \tfrac{1}{n^{3} a_{0}^{2} ( l + \tfrac{1}{2} )}`$.
 
-2. Calculate the fine structure energy shifts (in eV!) for the $`n`$ = 1, $`n`$ = 2, and $`n`$ = 3 states of Hydrogen. Include the effects of relativistic corrections, the spin-orbit interaction, and the so-called Darwin term (due to Dirac equation). Do not include hyperfine splitting or the effects of an external magnetic field. (Note: I am not asking you to derive the equations.) Clearly list the states in spectroscopic notation and make a diagram showing the allowed electric dipole decays of these states.
+2. Calculate the fine structure energy shifts (in eV!) for the $`n = 1`$, $`n = 2`$, and $`n = 3`$ states of Hydrogen. Include the effects of relativistic corrections, the spin-orbit interaction, and the so-called Darwin term (due to Dirac equation). Do not include hyperfine splitting or the effects of an external magnetic field. (Note: I am not asking you to derive the equations.) Clearly list the states in spectroscopic notation and make a diagram showing the allowed electric dipole decays of these states.
 
-3. Calculate and show the splitting of the $`n`$ = 3 states (as in the previous problem) in a weak magnetic field B. Draw a diagram showing the states before and after the field is applied
+3. Calculate and show the splitting of the $`n = 3`$ states (as in the previous problem) in a weak magnetic field B. Draw a diagram showing the states before and after the field is applied
 
 4. If the general form of the spin-orbit coupling for a particle of mass $`m`$ and spin $`\vec{S}`$ moving in a potential $`V ( r )`$ is $`H_{SO} = \tfrac{1}{2 m^{2} c^{2}} \vec{L} \cdot \vec{S} \tfrac{1}{r} \tfrac{dV}{dr}`$, what is the effect of that coupling on the spectrum of<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=345" target="_blank" title="This page in the PDF"><sup>[p. 345]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p346" href="book.pdf#page=346" target="_blank" title="This page in the PDF"><sup>[p. 346]</sup></a></span> an electron bound in a 3D harmonic oscillator? Give the energy shifts and and draw a diagram for the 0$`s`$ and 1$`p`$ states.
 
@@ -511,7 +511,7 @@ V = \tfrac{1}{2} m\omega^{2} r^{2}
 \langle H_{SO} \rangle = \tfrac{\hbar^{2} \omega^{2}}{4 mc^{2}} [ j ( j + 1 ) - l ( l + 1 ) - s ( s + 1 ) ]
 ```
 
-for the 0$`S \tfrac{1}{2}`$, ∆$`E`$ = 0,
+for the 0$`S \tfrac{1}{2}`$, ∆$`E = 0`$,
 
 ```math
 \text{ for the } 1 P_{\tfrac{1}{2}} , \Delta E = - 2 \tfrac{\hbar^{2} \omega^{2}}{4 mc^{2}} ,
@@ -521,7 +521,7 @@ for the 1$`P_{\tfrac{3}{2}}`$, ∆$`E`$ = +1$`\frac{\hbar^{2} \omega^{2}}{4 mc^{
 
 5. We computed that the energies after the fine structure corrections to the hydrogen spectrum are $`E_{nlj} = - \tfrac{\alpha^{2} mc^{2}}{2 n^{2}} + \tfrac{\alpha^{4} mc^{2}}{8 n^{4}} ( 3 - \tfrac{4 n}{j + \tfrac{1}{2}} )`$. Now a weak magnetic field $`B`$ is applied to hydrogen atoms in the 3$`d`$ state. Calculate the energies of all the 3$`d`$ states (ignoring hyperfine effects). Draw an energy level diagram, showing the quantum numbers of the states and the energy splittings.
 
-6. In Hydrogen, the $`n`$ = 3 state is split by fine structure corrections into states of definite $`j , m_{j} , \ell`$, and $`s`$. According to our calculations of the fine structure, the energy only depends on $`j`$. We label these states in spectroscopic notation: $`N^{2 s + 1} L_{j}`$. Draw an energy diagram for the $`n`$ = 3 states, labeling each state in spectroscopic notation. Give the energy shift due to the fine structure corrections in units of $`\alpha^{4} mc^{2}`$.
+6. In Hydrogen, the $`n = 3`$ state is split by fine structure corrections into states of definite $`j , m_{j} , \ell`$, and $`s`$. According to our calculations of the fine structure, the energy only depends on $`j`$. We label these states in spectroscopic notation: $`N^{2 s + 1} L_{j}`$. Draw an energy diagram for the $`n = 3`$ states, labeling each state in spectroscopic notation. Give the energy shift due to the fine structure corrections in units of $`\alpha^{4} mc^{2}`$.
 
 7. The energies of photons emitted in the Hydrogen atom transition between the 3S and the 2P states are measured, first with no external field, then, with the atoms in a uniform magnetic field B. Explain in detail the spectrum of photons before and after the field is applied. Be sure to give an expression for any relevant energy differences.
 

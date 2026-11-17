@@ -347,6 +347,57 @@ fn begins_open(m: &str) -> bool {
     BETWEEN.contains(&&rest[..name])
 }
 
+/// Signs and figures a text begins with behind a formula (" + 0 = ",
+/// " = 1."): the formula goes on through them. Their length and their
+/// LaTeX, and whether they end with a figure (else the formula must go on
+/// behind them). The full stop after the last figure is the sentence's.
+fn sign_run(t: &str) -> Option<(usize, String, bool)> {
+    let mut at = 0;
+    let mut out: Vec<String> = Vec::new();
+    let (mut want_sign, mut figure_last, mut end) = (true, false, 0);
+    while at < t.len() {
+        let rest = &t[at..];
+        let lead = rest.len() - rest.trim_start_matches(' ').len();
+        let word = rest[lead..].split(' ').next().unwrap_or("");
+        if word.is_empty() {
+            break;
+        }
+        let sign = match word {
+            "=" | "+" | "<" | ">" | "*" => Some(word.to_string()),
+            "−" | "-" => Some("-".to_string()),
+            "≤" => Some("\\leq".to_string()),
+            "≥" => Some("\\geq".to_string()),
+            "≈" => Some("\\approx".to_string()),
+            "×" => Some("\\times".to_string()),
+            _ => None,
+        };
+        if let (true, Some(s)) = (want_sign, sign) {
+            out.push(s);
+            (want_sign, figure_last) = (false, false);
+            at += lead + word.len();
+            end = at;
+            continue;
+        }
+        // a figure, a decimal too; the punctuation behind it stays
+        let digits = word.len() - word.trim_start_matches(|c: char| c.is_ascii_digit()).len();
+        let mut n = digits;
+        if digits > 0 && word[n..].starts_with('.') && word[n + 1..].starts_with(|c: char| c.is_ascii_digit()) {
+            n += 1 + word[n + 1..].len() - word[n + 1..].trim_start_matches(|c: char| c.is_ascii_digit()).len();
+        }
+        if want_sign || n == 0 || word[n..].starts_with(|c: char| c.is_alphanumeric()) {
+            break;
+        }
+        out.push(word[..n].to_string());
+        (want_sign, figure_last) = (true, true);
+        at += lead + n;
+        end = at;
+        if n < word.len() {
+            break;
+        }
+    }
+    (!out.is_empty()).then(|| (end, out.join(" "), figure_last))
+}
+
 /// The figure a text begins with ("1 dimension", " 2, and"): its length.
 fn figure_first(t: &str) -> Option<usize> {
     let lead = t.len() - t.trim_start_matches(' ').len();
@@ -457,6 +508,23 @@ pub(crate) fn sides(mut v: Vec<Inline>) -> Vec<Inline> {
                     t.replace_range(..n, "");
                 } else if let (true, Some(n)) = (ends_open(m) || m.trim_end().ends_with(','), dots_first(t)) {
                     *m = joined(m, if m.trim_end().ends_with(',') { "\\ldots" } else { "\\cdots" });
+                    t.replace_range(..n, "");
+                }
+            }
+        }
+        // (signs and figures behind a formula, set in the text's font: "a"
+        // + " + 0 = " + "a" is one formula, "a ∗ a⁻¹" + " = 1." ends with
+        // the 1. A sign alone is taken only where a formula follows it.)
+        if k + 1 < v.len() && matches!(&v[k], Inline::Math(_)) {
+            let run = match &v[k + 1] {
+                Inline::Text(t) => sign_run(t).filter(|(n, _, figure)| *figure || (t[*n..].trim().is_empty() && matches!(v.get(k + 2), Some(Inline::Math(_))))),
+                _ => None,
+            };
+            if let Some((n, tex, _)) = run {
+                if let Inline::Math(m) = &mut v[k] {
+                    *m = joined(m, &tex);
+                }
+                if let Inline::Text(t) = &mut v[k + 1] {
                     t.replace_range(..n, "");
                 }
             }
@@ -675,6 +743,16 @@ mod tests {
     }
     fn t(t: &str) -> Inline {
         Inline::Text(t.into())
+    }
+
+    #[test]
+    fn signs_and_figures_behind_a_formula_are_the_formulas() {
+        // "+ 0 =" set in the text's font between two letters of a formula
+        assert_eq!(sides(vec![m("a \\in \\mathbb{R} , a"), t(" + 0 = "), m("a"), t(".")]), vec![m("a \\in \\mathbb{R} , a + 0 = a"), t(".")]);
+        // the full stop behind the figure is the sentence's
+        assert_eq!(sides(vec![m("a * a^{- 1}"), t(" = 1.")]), vec![m("a * a^{- 1} = 1"), t(".")]);
+        // a sign alone before a word is left to the text
+        assert_eq!(sides(vec![m("x"), t(" = the length")]), vec![m("x"), t(" = the length")]);
     }
 
     #[test]

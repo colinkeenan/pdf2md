@@ -15,7 +15,7 @@ $`\bullet`$ Black Body Radiation (See section 2.1): Classical physics predicted 
 
 $`\bullet`$ The Photoelectric Effect (See section 2.2): When light was used to knock electrons out of solids, the results were completely different than expected from Maxwell’s equations. The measurements were easy to explain (for Einstein) if light is made up of particles with the energies Plank postulated.
 
-$`\bullet`$ Atoms: After Rutherford (See section 2.3) found that the positive charge in atoms was concentrated in a very tiny nucleus, classical physics predicted that the atomic electrons orbiting the nucleus would radiate their energy away and spiral into the nucleus. This clearly did not happen. The energy radiated by atoms (See section 2.4) also came out in quantized amounts in contradiction to the predictions of classical physics. The Bohr Atom (See section 2.4.1) postulated an angular momentum quantization rule, $`L = n \hbar`$ for $`n`$ = 1$`, 2 , 3 \dots`$, that gave the right result for hydrogen, but turned out to be wrong since the ground state of hydrogen has zero angular momentum. It took a full understanding of Quantum Mechanics to explain the atomic energy spectra.
+$`\bullet`$ Atoms: After Rutherford (See section 2.3) found that the positive charge in atoms was concentrated in a very tiny nucleus, classical physics predicted that the atomic electrons orbiting the nucleus would radiate their energy away and spiral into the nucleus. This clearly did not happen. The energy radiated by atoms (See section 2.4) also came out in quantized amounts in contradiction to the predictions of classical physics. The Bohr Atom (See section 2.4.1) postulated an angular momentum quantization rule, $`L = n \hbar`$ for $`n = 1 , 2 , 3 \dots`$, that gave the right result for hydrogen, but turned out to be wrong since the ground state of hydrogen has zero angular momentum. It took a full understanding of Quantum Mechanics to explain the atomic energy spectra.
 
 $`\bullet`$ Compton Scattering (See section 2.6.3): When light was scattered off electrons, it behaved just like a particle but changes wave length in the scattering; more evidence for the particle nature of light and Plank’s postulate.
 
@@ -133,7 +133,7 @@ His formula fit the data so well that he tried to find a way to derive it. In a 
 
 _Figure 8 (p. 68)_
 
-It is interesting to note that classical EM waves would suck all the thermal energy out of matter, making the universe a very cold place for us. The figure below compares the two calculations to some data at $`T`$ = 1600 degrees. (It is also surprising that the start of the Quantum revolution came from Black Body radiation.)
+It is interesting to note that classical EM waves would suck all the thermal energy out of matter, making the universe a very cold place for us. The figure below compares the two calculations to some data at $`T = 1600`$ degrees. (It is also surprising that the start of the Quantum revolution came from Black Body radiation.)
 
 ![Figure 9 (p. 68)](images/fig-p068-2.png)
 
@@ -267,7 +267,7 @@ _Figure 18 (p. 75)_
 
 ## <a id="s-2-4-1-the-bohr-atom"></a>2.4.1 The Bohr Atom \*
 
-Bohr postulated that electrons orbited the nucleus like planets orbiting the sun. He managed to fit the data for Hydrogen by postulating that **electrons orbited the nucleus in circular orbits,**<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=75" target="_blank" title="This page in the PDF"><sup>[p. 75]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p76" href="book.pdf#page=76" target="_blank" title="This page in the PDF"><sup>[p. 76]</sup></a></span> **and that angular momentum is quantized** such that $`L = n \hbar`$, for $`n`$ = 1$`, 2 , 3 \dots`$. This is natural since $`\hbar`$ has units of angular momentum. Bohr correctly postdicted the Hydrogen energies and the size of the atom.
+Bohr postulated that electrons orbited the nucleus like planets orbiting the sun. He managed to fit the data for Hydrogen by postulating that **electrons orbited the nucleus in circular orbits,**<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=75" target="_blank" title="This page in the PDF"><sup>[p. 75]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p76" href="book.pdf#page=76" target="_blank" title="This page in the PDF"><sup>[p. 76]</sup></a></span> **and that angular momentum is quantized** such that $`L = n \hbar`$, for $`n = 1 , 2 , 3 \dots`$. This is natural since $`\hbar`$ has units of angular momentum. Bohr correctly postdicted the Hydrogen energies and the size of the atom.
 
 Balance of forces for circular orbits.
 
@@ -333,7 +333,7 @@ E = \frac{1}{2} m \left( \frac{\alpha c}{n} \right)^{2} - \frac{\alpha^{2} mc^{2
 E = \frac{1}{2} \left( \frac{\alpha^{2} mc^{2}}{n^{2}} \right) - \frac{\alpha^{2} mc^{2}}{n^{2}} = - \frac{\alpha^{2} mc^{2}}{2 n^{2}}
 ```
 
-The constant $`\frac{\alpha^{2} mc^{2}}{2}`$ = $`\frac{5 1 1 0 0 0}{2 ( 1 3 7 )^{2}}`$ = 13$`. 6`$ eV. Bohr’s formula gives the **right Hydrogen energy** **spectrum**.
+The constant $`\frac{\alpha^{2} mc^{2}}{2} = \frac{5 1 1 0 0 0}{2 ( 1 3 7 )^{2}} = 13 . 6`$ eV. Bohr’s formula gives the **right Hydrogen energy** **spectrum**.
 
 <div align="right"><a href="book.pdf#page=76" target="_blank" title="This page in the PDF"><sup>[p. 76]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -401,7 +401,7 @@ V ( r ) = \frac{- \alpha \hbar c}{r}
 
 ## <a id="s-2-6-1-the-solar-temperature"></a>Estimate the solar temperature using
 
-$`\bullet`$ the solar radiation intensity on the earth of 1.4 kilowatts per square meter. $`( r_{sun}`$ = $`7 \times 1 0^{8}`$
+$`\bullet`$ the solar radiation intensity on the earth of 1.4 kilowatts per square meter. $`( r_{sun} = 7 \times 1 0^{8}`$
 
 ```math
 m , d_{sun} = 1 . 5 \times 1 0^{1 1} m )
@@ -479,13 +479,13 @@ Lets set $`y = h\nu /kT`$ and solve the equation
 y = 5 ( 1 - e^{- y} )
 ```
 
-I solved this iteratively starting at y=5 and got $`y`$ = 4$`. 97`$ implying
+I solved this iteratively starting at y=5 and got $`y = 4 . 97`$ implying
 
 ```math
 h\nu = 4 . 9 7 kT
 ```
 
-If we take $`\lambda`$ = 500 nm, them $`\nu`$ = $`6 \times 1 0^{1 4}`$.
+If we take $`\lambda = 500`$ nm, them $`\nu = 6 \times 1 0^{1 4}`$.
 
 ```math
 T = \frac{h\nu}{5 k} = \frac{( 6 . 6 \times 1 0^{- 3 4} ) ( 6 \times 1 0^{1 4} )}{( 5 ) ( 1 . 4 \times 1 0^{- 2 3} )} = 6 \times 1 0^{3} = 5 7 0 0
@@ -531,7 +531,7 @@ Similarly the peak in $`\nu`$ occurs when
 
 _Figure 19 (p. 80)_
 
-We solve the problem using only conservation of energy and momentum. Lets work in **units in** **which** $`c`$ = 1 for now. We’ll put the $`c`$ back in at the end. Assume the photon is initially moving in the $`z`$ direction with energy E and that it scatters in the $`yz`$ plane so that $`p_{x}`$ = 0. **Conservation of** **momentum** gives
+We solve the problem using only conservation of energy and momentum. Lets work in **units in** **which** $`c = 1`$ for now. We’ll put the $`c`$ back in at the end. Assume the photon is initially moving in the $`z`$ direction with energy E and that it scatters in the $`yz`$ plane so that $`p_{x} = 0`$. **Conservation of** **momentum** gives
 
 ```math
 E = E^{\prime} \cos \theta + p_{e} \cos \varphi

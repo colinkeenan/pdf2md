@@ -158,7 +158,7 @@ If we think of $`x`$ as a complex number, our integral goes along the real axis.
 \lim_{t \to \infty} \frac{1 - e^{ixt}}{x} = - \lim_{\epsilon \to 0 +} i \int_{0}^{\infty} e^{ixt^{\prime}} dt^{\prime} = \lim_{\epsilon \to 0 +} \frac{1}{x + i\epsilon} = \lim_{\epsilon \to 0 +} \left[ \frac{x}{x^{2} + \epsilon^{2}} - \frac{i\epsilon}{x^{2} + \epsilon^{2}} \right]
 ```
 
-This is well behaved everywhere except at $`x`$ = 0. The second term goes to $`-\infty`$ there. A little further analysis could show that the **second term is a delta function**.
+This is well behaved everywhere except at $`x = 0`$. The second term goes to $`-\infty`$ there. A little further analysis could show that the **second term is a delta function**.
 
 ```math
 \lim_{t \to \infty} \frac{1 - e^{ixt}}{x} = \frac{1}{x} - i\pi \delta ( x )
@@ -268,7 +268,7 @@ It is the **difference between the bound electron’s self energy and that for a
 = \frac{2 \alpha \hbar}{3 \pi m^{2} c^{2}} | \vec{p} |^{2} \int_{0}^{\infty} \frac{\omega}{( \omega_{nj} - \omega )} d\omega \to -\infty
 ```
 
-It easy to see that this will go to negative infinity if the limit on the integral is infinite. It is quite reasonable to **cut off the integral at some energy** beyond which the theory we are using is invalid. Since we are still using non-relativistic quantum mechanics, the cut-off should have $`\hbar \omega <<mc^{2}`$. For the E1 approximation, it should be $`\hbar \omega << 2 \pi \hbar c/ 1`$ = 10$`keV`$. We will approximate $`\tfrac{\omega}{( \omega_{nj} - \omega )} \approx - 1`$ since the integral is just giving us a number and we are not interested in high accuracy here. We will be more interested in accuracy in the next section when we compute the difference between free electron and bound electron self energy corrections.
+It easy to see that this will go to negative infinity if the limit on the integral is infinite. It is quite reasonable to **cut off the integral at some energy** beyond which the theory we are using is invalid. Since we are still using non-relativistic quantum mechanics, the cut-off should have $`\hbar \omega <<mc^{2}`$. For the E1 approximation, it should be $`\hbar \omega << 2 \pi \hbar c/ 1 = 10 keV`$. We will approximate $`\tfrac{\omega}{( \omega_{nj} - \omega )} \approx - 1`$ since the integral is just giving us a number and we are not interested in high accuracy here. We will be more interested in accuracy in the next section when we compute the difference between free electron and bound electron self energy corrections.
 
 ```math
 \Delta E_{free} = \frac{2 \alpha \hbar}{3 \pi m^{2} c^{2}} | \vec{p} |^{2} \int_{0}^{E_{cut - off} / \hbar} \frac{\omega}{( \omega_{nj} - \omega )} d\omega
