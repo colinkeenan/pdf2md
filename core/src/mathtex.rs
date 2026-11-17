@@ -624,11 +624,15 @@ fn script_brackets(mut spans: Vec<MSpan>) -> Vec<MSpan> {
     let full = |s: &MSpan| !s.cmex() && s.atom.is_none() && s.size >= 0.9 * size;
     // An opening bracket between two small pieces, level with both: the
     // "(" of "i(k". (Its box: a bracket alone, as tall as the type.)
+    // (… or with the one before it, the one after it smaller still and
+    // within the bracket's height: the numerator of a fraction that opens
+    // the bracket, in the denominator of a fraction set small)
+    let within = |n: &MSpan, s: &MSpan| small(n) && n.top >= s.top - 2.0 && n.bottom <= s.bottom + 2.0 && n.size < 0.8 * spans.iter().filter(|m| small(m) && (m.cy() - s.cy()).abs() <= 0.2 * size && (m.right - s.left).abs() <= 2.5).map(|m| m.size).fold(0.0f32, f32::max);
     let opening: Vec<usize> = (0..spans.len())
         .filter(|&k| {
             let s = &spans[k];
             let level = |n: &MSpan| small(n) && (n.cy() - s.cy()).abs() <= 0.2 * size;
-            full(s) && matches!(s.text.trim(), "(" | "[") && s.height() <= 1.1 * size && spans.iter().any(|n| level(n) && (n.right - s.left).abs() <= 2.5) && spans.iter().any(|n| level(n) && (n.left - s.right).abs() <= 2.5)
+            full(s) && matches!(s.text.trim(), "(" | "[") && s.height() <= 1.1 * size && spans.iter().any(|n| level(n) && (n.right - s.left).abs() <= 2.5) && spans.iter().any(|n| (level(n) || within(n, s)) && (n.left - s.right).abs() <= 2.5)
         })
         .collect();
     for o in opening {
@@ -645,10 +649,11 @@ fn script_brackets(mut spans: Vec<MSpan>) -> Vec<MSpan> {
             .min_by(|&a, &b| spans[a].left.total_cmp(&spans[b].left));
         let Some(c) = close else { continue };
         // (no other bracket of the line between them)
-        if spans.iter().any(|s| full(s) && s.left > open.right && s.right < spans[c].left && s.text.chars().any(|ch| "()[]".contains(ch))) {
+        if spans.iter().any(|s| full(s) && s.left > open.right && s.right < spans[c].left && s.top < open.bottom && s.bottom > open.top && s.text.chars().any(|ch| "()[]".contains(ch))) {
             continue;
         }
-        let Some((ssize, top, bottom)) = spans.iter().filter(|n| small(n) && (n.left - open.right).abs() <= 2.5).map(|n| (n.size, n.top, n.bottom)).next() else { continue };
+        // (the size of the larger of its neighbours, level with it)
+        let Some((ssize, top, bottom)) = spans.iter().filter(|n| small(n) && (n.cy() - open.cy()).abs() <= 0.2 * size && ((n.left - open.right).abs() <= 2.5 || (n.right - open.left).abs() <= 2.5)).max_by(|a, b| a.size.total_cmp(&b.size)).map(|n| (n.size, n.top, n.bottom)) else { continue };
         let whole = spans[c].clone();
         let text = whole.text.trim_start().to_string();
         let mut first = whole.clone();
@@ -667,6 +672,59 @@ fn script_brackets(mut spans: Vec<MSpan>) -> Vec<MSpan> {
         }
         let s = &mut spans[o];
         (s.size, s.top, s.bottom) = (ssize, top, bottom);
+    }
+    // A pair of full-size brackets off the line, with nothing but small
+    // pieces between them: the brackets of a numerator or a denominator
+    // set small, grown around a smaller fraction inside. They take the
+    // size of the largest piece they hold.
+    for o in 0..spans.len() {
+        let open = spans[o].clone();
+        if !(full(&open) && matches!(open.text.trim(), "(" | "[") && open.height() <= 1.1 * size) {
+            continue;
+        }
+        let want = if open.text.trim() == "(" { ")" } else { "]" };
+        let Some(c) = (0..spans.len())
+            .filter(|&k| full(&spans[k]) && spans[k].left >= open.right && spans[k].text.trim() == want && (spans[k].top - open.top).abs() <= 1.5)
+            .min_by(|&a, &b| spans[a].left.total_cmp(&spans[b].left))
+        else {
+            continue;
+        };
+        let close = spans[c].clone();
+        let boxed = |n: &MSpan| !n.cmex() && n.left >= open.right - 1.0 && n.right <= close.left + 1.0 && n.bottom > open.top && n.top < open.bottom;
+        let inside = spans.iter().filter(|n| boxed(n)).map(|n| n.size).fold(0.0f32, f32::max);
+        // (off the line: the nearest letter of the line beside the pair,
+        // at its height, has its middle clearly higher or lower. With no
+        // such letter there is no line to be off: a bracket around a small
+        // fraction in a line of text.)
+        let beside = spans
+            .iter()
+            .filter(|n| full(n) && !n.text.trim().chars().all(|ch| "()[]".contains(ch)) && n.bottom > open.top && n.top < open.bottom && (n.right <= open.left + 1.0 || n.left >= close.right - 1.0))
+            .min_by(|a, b| (a.left - close.right).max(open.left - a.right).total_cmp(&(b.left - close.right).max(open.left - b.right)));
+        let off_line = beside.is_some_and(|n| (n.cy() - open.cy()).abs() > 0.25 * size);
+        // (… and a small piece stands right beside one of the two, level
+        // with it: the pair is of that piece's row. The brackets of
+        // "(iθ/2)ⁿ" over a full-size "n!" have only the halves of their
+        // fraction and an exponent beside them. Level to the point: a
+        // bracket is set at the middle of its row's letters, and the
+        // numerator of a small fraction inside it only a little higher.)
+        let level = spans
+            .iter()
+            .filter(|n| small(n) && (n.cy() - open.cy()).abs() <= 0.1 * size && [open.left, open.right, close.left, close.right].iter().any(|x| (n.left - x).abs() <= 2.5 || (n.right - x).abs() <= 2.5))
+            .map(|n| n.size)
+            .fold(0.0f32, f32::max);
+        // (a full-size letter right over or under the pair is the other
+        // half of its fraction: the pair is of a full-size numerator, the
+        // level piece beside it the limit of a sum)
+        let partner = spans.iter().any(|n| full(n) && n.left < close.right && n.right > open.left && ((n.top >= open.bottom - 1.0 && n.top - open.bottom <= 0.8 * size) || (n.bottom <= open.top + 1.0 && open.top - n.bottom <= 0.8 * size)));
+        if inside <= 0.0 || inside >= 0.85 * size || !off_line || level <= 0.0 || partner {
+            continue;
+        }
+        let inside = inside.max(level);
+        for k in [o, c] {
+            let s = &mut spans[k];
+            let cy = s.cy();
+            (s.size, s.top, s.bottom) = (inside, cy - inside / 2.0, cy + inside / 2.0);
+        }
     }
     spans
 }
@@ -1248,10 +1306,22 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
             continue;
         }
         used[bi] = true;
-        let nbars = inner(&mut used, true);
-        let dbars = inner(&mut used, false);
         let n: Vec<MSpan> = num.iter().map(|&i| spans[i].clone()).collect();
         let d: Vec<MSpan> = den.iter().map(|&i| spans[i].clone()).collect();
+        // (the bars among its numerator's pieces and among its
+        // denominator's: not those of the fraction of the row above or
+        // below, a little narrower than this one, in a system of equations)
+        let (n_top, d_bottom) = (n.iter().map(|s| s.top).fold(f32::MAX, f32::min), d.iter().map(|s| s.bottom).fold(f32::MIN, f32::max));
+        let mut nbars = inner(&mut used, true);
+        let mut dbars = inner(&mut used, false);
+        for (k, r) in bars.iter().enumerate() {
+            let beyond = (nbars.contains(r) && r.bottom < n_top - 0.6 * size) || (dbars.contains(r) && r.top > d_bottom + 0.6 * size);
+            if beyond {
+                used[k] = false;
+            }
+        }
+        nbars.retain(|r| r.bottom >= n_top - 0.6 * size);
+        dbars.retain(|r| r.top <= d_bottom + 0.6 * size);
         // small numbers in a line of normal size: a text-style fraction (½)
         let small = n.iter().chain(&d).all(|s| s.size < 0.85 * size);
         // (its own size and height, for the box of one that is an exponent)
