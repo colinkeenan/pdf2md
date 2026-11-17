@@ -86,7 +86,7 @@ The first order perturbation **energy shift from the spin orbit correction** is 
 ```
 
 ```math
-\left( \frac{g}{2} \right) \frac{E_{n}}{2 mc^{2}} 2 \left[ \tfrac{n}{( \ell \frac{+ \tfrac{1}{2} - n ) ( \ell}{\ell ( \ell + \tfrac{1}{2} )} + 1 )} \right] \quad j = \ell - \tfrac{1}{2}
+\left( \frac{g}{2} \right) \frac{E_{n}}{2 mc^{2}} 2 \begin{bmatrix} \frac{n}{( \ell + \tfrac{1}{2} ) ( \ell + 1 )} \\ \frac{- n}{\ell ( \ell + \tfrac{1}{2} )} \end{bmatrix} \quad j = \ell - \tfrac{1}{2}
 ```
 
 Actually, the $`\vec{L} \cdot \vec{S}`$ term should give 0 for $`\ell`$ = 0! In the above calculation there is an $`\frac{\ell}{\ell}`$ factor which makes the result for $`\ell`$ = 0 undefined. There is an additional Dirac Equation contribution called the **“Darwin term”** (see section 23.4.5) which is important for $`\ell`$ = 0 and surprisingly makes the above calculation right, even for $`\ell`$ = 0!

@@ -13283,7 +13283,7 @@ The $`\sigma`$ matrices are the **Hermitian, Traceless matrices** of dimension 2
 The (passive) **rotation operators,** for rotations of the coordinate axes can be **computed** (see section 18.11.7) from the formula $`R_{i} ( \theta_{i} ) = e^{iS_{i} \theta_{i} / \hbar}`$.
 
 ```math
-R_{z} ( \theta ) = \begin{pmatrix} e^{i\theta / 2} & 0 \\ 0 & e^{- i\theta / 2} \end{pmatrix} \quad R_{x} ( \theta ) = \begin{pmatrix} \cos \tfrac{\theta}{2 \theta} & i \sin \tfrac{\theta}{\theta 2} \\ i \sin_{2} & \cos_{2} \end{pmatrix} \quad R_{y} ( \theta ) = \begin{pmatrix} \cos \tfrac{\theta}{2} & \sin \tfrac{\theta}{\theta 2} \\ - \sin \tfrac{\theta}{2} & \cos_{2} \end{pmatrix}
+R_{z} ( \theta ) = \begin{pmatrix} e^{i\theta / 2} & 0 \\ 0 & e^{- i\theta / 2} \end{pmatrix} \quad R_{x} ( \theta ) = \begin{pmatrix} \cos \tfrac{\theta}{2} & i \sin \tfrac{\theta}{2} \\ i \sin \tfrac{\theta}{2} & \cos \tfrac{\theta}{2} \end{pmatrix} \quad R_{y} ( \theta ) = \begin{pmatrix} \cos \tfrac{\theta}{2} & \sin \tfrac{\theta}{2} \\ - \sin \tfrac{\theta}{2} & \cos \tfrac{\theta}{2} \end{pmatrix}
 ```
 
 Note that the operator for a rotation through 2$`\pi`$ radians is minus the identity matrix for any of the axes (because $`\frac{\theta}{2}`$ appears everywhere). The **surprising result** is that the sign of the wave function of all fermions is changed if we **rotate through 360 degrees.**
@@ -13353,7 +13353,7 @@ Note that we can compute the number of particles coming out of the second (and t
 or we can just use the projection operator $`\left( \sqrt{1 2}^{1} \right) \left( \tfrac{1}{\sqrt{2}} \quad \tfrac{1}{\sqrt{2}} \right) = \begin{pmatrix} 1 & 1 \\ 2 & 2 \\ 1 & 1 \end{pmatrix}`$.
 
 ```math
-\begin{pmatrix} \tfrac{1}{1 2} & \tfrac{1}{1 2} \\ 2 & 2 \end{pmatrix} \frac{N}{2} \sqrt{2} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{N}{4} \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix}^{2 2}
+\begin{pmatrix} \frac{1}{2} & \frac{1}{2} \\ \frac{1}{2} & \frac{1}{2} \end{pmatrix} \frac{N}{2} \sqrt{2} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{N}{4} \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix}^{2 2}
 ```
 
 # <a id="s-18-9-other-two-state-systems"></a>18.9 Other Two State Systems\*
@@ -17411,7 +17411,7 @@ The first order perturbation **energy shift from the spin orbit correction** is 
 ```
 
 ```math
-\left( \frac{g}{2} \right) \frac{E_{n}}{2 mc^{2}} 2 \left[ \tfrac{n}{( \ell \frac{+ \tfrac{1}{2} - n ) ( \ell}{\ell ( \ell + \tfrac{1}{2} )} + 1 )} \right] \quad j = \ell - \tfrac{1}{2}
+\left( \frac{g}{2} \right) \frac{E_{n}}{2 mc^{2}} 2 \begin{bmatrix} \frac{n}{( \ell + \tfrac{1}{2} ) ( \ell + 1 )} \\ \frac{- n}{\ell ( \ell + \tfrac{1}{2} )} \end{bmatrix} \quad j = \ell - \tfrac{1}{2}
 ```
 
 Actually, the $`\vec{L} \cdot \vec{S}`$ term should give 0 for $`\ell`$ = 0! In the above calculation there is an $`\frac{\ell}{\ell}`$ factor which makes the result for $`\ell`$ = 0 undefined. There is an additional Dirac Equation contribution called the **“Darwin term”** (see section 23.4.5) which is important for $`\ell`$ = 0 and surprisingly makes the above calculation right, even for $`\ell`$ = 0!
@@ -25625,11 +25625,11 @@ The momentum along the x direction is $`p_{x} = \beta \gamma mc = mc \sinh \chi`
 ```
 
 ```math
-= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ \frac{{}_{2 \sinh_{\overline{2}}^{\chi}} 0_{\cosh \tfrac{\chi}{2}}}{\cosh^{2} \tfrac{\chi}{2} + \sinh^{2} \tfrac{\chi}{2} + \cosh^{2} \tfrac{\chi}{2} - \sinh^{2} \tfrac{\chi}{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ \frac{2 \sinh_{\overline{2}}^{\chi} \cosh \tfrac{\chi}{2}}{\cosh^{2} \tfrac{\chi}{2} + \sinh^{2} \tfrac{\chi}{2} + \cosh^{2} \tfrac{\chi}{2} - \sinh^{2} \tfrac{\chi}{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ \frac{{}_{2 \sinh_{\overline{2}}^{\chi}} 0_{\cosh \tfrac{\chi}{2}}}{2 \cosh^{2} \tfrac{\chi}{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ \frac{2 \sinh_{\overline{2}}^{\chi} \cosh \tfrac{\chi}{2}}{2 \cosh^{2} \tfrac{\chi}{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
@@ -26431,35 +26431,35 @@ L^{2} = J^{2} - \hbar \vec{\sigma} \cdot \vec{L} - \frac{3}{4} \hbar
 We may solve for the effect of $`\vec{\sigma} \cdot \vec{L}`$ on the spinor $`\psi`$, then, solve for the effect of $`L^{2}`$. Note that since $`\psi_{A}`$ and $`\psi_{B}`$ are eigenstates of $`J^{2}`$ and $`\vec{\sigma} \cdot \vec{L}`$, they are eigenstates of $`L^{2}`$ but have different eigenvalues.
 
 ```math
-\left( \vec{\sigma} \cdot \vec{L} + \hbar 0 \quad - \vec{\sigma} \cdot 0 \vec{L} - \hbar \right) \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = \hbar \begin{pmatrix} ( \pm ( j + \frac{1}{\tfrac{1 2}{2}} ) \psi_{A} \\ ( \pm ( j + ) \psi_{B} \end{pmatrix}
+\left( \vec{\sigma} \cdot \vec{L} + \hbar 0 \quad - \vec{\sigma} \cdot 0 \vec{L} - \hbar \right) \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = \hbar \begin{pmatrix} ( \pm ( j + \tfrac{1}{2} ) \psi_{A} \\ ( \pm ( j + \tfrac{1}{2} ) \psi_{B} \end{pmatrix}
 ```
 
 ```math
-\begin{pmatrix} \vec{\sigma} \cdot \vec{L} & 0 \\ 0 & - \vec{\sigma} \cdot \vec{L} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = \hbar \begin{pmatrix} ( \pm ( j + {}^{1} \mp 1 ) \psi_{A} \\ ( \pm ( j + {}^{\tfrac{1 2}{2}} \pm 1 ) \psi_{B} \end{pmatrix}
+\begin{pmatrix} \vec{\sigma} \cdot \vec{L} & 0 \\ 0 & - \vec{\sigma} \cdot \vec{L} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = \hbar \begin{pmatrix} ( \pm ( j + \tfrac{1}{2} \mp 1 ) \psi_{A} \\ ( \pm ( j + \tfrac{1}{2} \pm 1 ) \psi_{B} \end{pmatrix}
 ```
 
 ```math
-\vec{\sigma} \cdot \vec{L} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = \hbar \begin{pmatrix} ( \pm ( j + {}^{1} \mp 1 ) \psi_{A} \\ ( \mp ( j + {}^{\tfrac{1 2}{2}} \pm 1 ) \psi_{B} \end{pmatrix}
+\vec{\sigma} \cdot \vec{L} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = \hbar \begin{pmatrix} ( \pm ( j + \tfrac{1}{2} \mp 1 ) \psi_{A} \\ ( \mp ( j + \tfrac{1}{2} \pm 1 ) \psi_{B} \end{pmatrix}
 ```
 
 ```math
-L^{2} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = j ( j + 1 ) \hbar^{2} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} - \hbar^{2} \begin{pmatrix} ( \pm ( j + \quad \mp 1 ) \psi_{A} \\ ( \mp ( j + \frac{\tfrac{1}{1 2}}{2} \pm 1 ) \psi_{B} \end{pmatrix} - \frac{3}{4} \hbar^{2} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix}
+L^{2} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = j ( j + 1 ) \hbar^{2} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} - \hbar^{2} \begin{pmatrix} ( \pm ( j + \tfrac{1}{2} \mp 1 ) \psi_{A} \\ ( \mp ( j + \tfrac{1}{2} \pm 1 ) \psi_{B} \end{pmatrix} - \frac{3}{4} \hbar^{2} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix}
 ```
 
 ```math
-= \hbar^{2} \left( \left( j ( j + 1 ) - \frac{3}{4} \right) \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} - \begin{pmatrix} ( \pm ( j + \quad \mp 1 ) \psi_{A} \\ ( \mp ( j + \frac{\tfrac{1}{1 2}}{2} \pm 1 ) \psi_{B} \end{pmatrix} \right)
+= \hbar^{2} \left( \left( j ( j + 1 ) - \frac{3}{4} \right) \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} - \begin{pmatrix} ( \pm ( j + \tfrac{1}{2} \mp 1 ) \psi_{A} \\ ( \mp ( j + \tfrac{1}{2} \pm 1 ) \psi_{B} \end{pmatrix} \right)
 ```
 
 ```math
-= \hbar^{2} \begin{pmatrix} ( j ( j + 1 ) - \quad \mp ( j + {}^{1} \mp 1 ) ) \psi_{A} \\ ( j ( j + 1 ) - \frac{\tfrac{3}{3 4}}{4} \pm ( j + {}^{\tfrac{1 2}{2}} \pm 1 ) ) \psi_{B} \end{pmatrix}
+= \hbar^{2} \begin{pmatrix} ( j ( j + 1 ) - \tfrac{3}{4} \mp ( j + \tfrac{1}{2} \mp 1 ) ) \psi_{A} \\ ( j ( j + 1 ) - \tfrac{3}{4} \pm ( j + \tfrac{1}{2} \pm 1 ) ) \psi_{B} \end{pmatrix}
 ```
 
 ```math
-= \hbar^{2} \begin{pmatrix} ( j^{2} + j \mp j \mp {}^{1} + 1 - ) \psi_{A} \\ ( j^{2} + j \pm j \pm {}^{\tfrac{1 2}{2}} + 1 - \frac{\tfrac{3}{3 4}}{4} ) \psi_{B} \end{pmatrix}
+= \hbar^{2} \begin{pmatrix} ( j^{2} + j \mp j \mp \tfrac{1}{2} + 1 - \tfrac{3}{4} ) \psi_{A} \\ ( j^{2} + j \pm j \pm \tfrac{1}{2} + 1 - \tfrac{3}{4} ) \psi_{B} \end{pmatrix}
 ```
 
 ```math
-= \hbar^{2} \begin{pmatrix} ( j^{2} + j \mp j \mp {}^{1} + ) \psi_{A} \\ ( j^{2} + j \pm j \pm {}^{\tfrac{1 2}{2}} + \frac{\tfrac{1}{1 4}}{4} ) \psi_{B} \end{pmatrix}
+= \hbar^{2} \begin{pmatrix} ( j^{2} + j \mp j \mp \tfrac{1}{2} + \tfrac{1}{4} ) \psi_{A} \\ ( j^{2} + j \pm j \pm \tfrac{1}{2} + \tfrac{1}{4} ) \psi_{B} \end{pmatrix}
 ```
 
 <div align="right"><a href="book.pdf#page=524" target="_blank" title="This page in the PDF"><sup>[p. 524]</sup></a></div>
@@ -26643,11 +26643,11 @@ c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \begin{pmatrix} ( r ) \mathca
 This is now a set of two coupled radial equations. We can simplify them a bit by making the substitutions $`F = rf`$ and $`G = rg`$. The extra term from the derivative cancels the 1’s that are with $`\kappa`$s.
 
 ```math
-\begin{aligned} \hbar c \left( \left( \begin{pmatrix} - {}_{r} \quad + \tfrac{F}{r^{2}} + \frac{\kappa F}{\tfrac{G r}{2}^{2} +} & 2 \\ \tfrac{1}{r} \frac{{}_{\partial G} \tfrac{\partial F}{\partial r}}{\partial r} - \tfrac{G}{r^{2}} + {}_{r} & \frac{- {}_{\kappa G} \tfrac{F}{r}}{r^{2}} \end{pmatrix}^{1} \right) \right) &= \begin{pmatrix} ( E - V - mc^{2} ) \tfrac{G}{r} \\ ( E - V + mc^{2} ) \tfrac{F}{r} \end{pmatrix} \\ \hbar c \left( \left( \begin{pmatrix} - \tfrac{\partial F}{\partial r} + \tfrac{\kappa F}{r} \\ \tfrac{\partial G}{\partial r} + \tfrac{\kappa G}{r} \end{pmatrix} \right) \right) &= \begin{pmatrix} ( E - V - mc^{2} ) G \\ ( E - V + mc^{2} ) F \end{pmatrix} \end{aligned}
+\begin{aligned} \hbar c \left( \left( \begin{pmatrix} - \tfrac{1}{r} \tfrac{\partial F}{\partial r} + \tfrac{F}{r^{2}} + \tfrac{\kappa F}{r^{2}} - \tfrac{F}{r^{2}} \\ \tfrac{1}{r} \tfrac{\partial G}{\partial r} - \tfrac{G}{r^{2}} + \tfrac{G}{r^{2}} + \tfrac{\kappa G}{r^{2}} \end{pmatrix} \right) \right) &= \begin{pmatrix} ( E - V - mc^{2} ) \tfrac{G}{r} \\ ( E - V + mc^{2} ) \tfrac{F}{r} \end{pmatrix} \\ \hbar c \left( \left( \begin{pmatrix} - \tfrac{\partial F}{\partial r} + \tfrac{\kappa F}{r} \\ \tfrac{\partial G}{\partial r} + \tfrac{\kappa G}{r} \end{pmatrix} \right) \right) &= \begin{pmatrix} ( E - V - mc^{2} ) G \\ ( E - V + mc^{2} ) F \end{pmatrix} \end{aligned}
 ```
 
 ```math
-\left( \left( \begin{pmatrix} \tfrac{\partial F}{\partial r} - \tfrac{\kappa F}{r} \\ \tfrac{\partial G}{\partial r} + \tfrac{\kappa G}{r} \end{pmatrix} \right) \right) = \begin{pmatrix} \tfrac{mc^{2} - E + V}{{}_{2} \hbar c} G \\ \tfrac{mc + E - V}{\hbar c} F \end{pmatrix}
+\left( \left( \begin{pmatrix} \tfrac{\partial F}{\partial r} - \tfrac{\kappa F}{r} \\ \tfrac{\partial G}{\partial r} + \tfrac{\kappa G}{r} \end{pmatrix} \right) \right) = \begin{pmatrix} \tfrac{mc^{2} - E + V}{\hbar c} G \\ \tfrac{mc^{2} + E - V}{\hbar c} F \end{pmatrix}
 ```
 
 These equations are true for any spherically symmetric potential. Now it is time to **specialize to** **the hydrogen atom** for which $`\tfrac{V}{\hbar c} = - \tfrac{Z\alpha}{r}`$ . We define $`k_{1}`$ = $`\frac{mc^{2} + E}{\hbar c}`$ and $`k_{2}`$ = $`\frac{mc^{2} - E}{\hbar c}`$ and the dimensionless $`\rho = \sqrt{k_{1} k_{2}} r`$. The equations then become.

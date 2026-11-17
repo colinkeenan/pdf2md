@@ -527,7 +527,7 @@ The $`\sigma`$ matrices are the **Hermitian, Traceless matrices** of dimension 2
 The (passive) **rotation operators,** for rotations of the coordinate axes can be **computed** (see section 18.11.7) from the formula $`R_{i} ( \theta_{i} ) = e^{iS_{i} \theta_{i} / \hbar}`$.
 
 ```math
-R_{z} ( \theta ) = \begin{pmatrix} e^{i\theta / 2} & 0 \\ 0 & e^{- i\theta / 2} \end{pmatrix} \quad R_{x} ( \theta ) = \begin{pmatrix} \cos \tfrac{\theta}{2 \theta} & i \sin \tfrac{\theta}{\theta 2} \\ i \sin_{2} & \cos_{2} \end{pmatrix} \quad R_{y} ( \theta ) = \begin{pmatrix} \cos \tfrac{\theta}{2} & \sin \tfrac{\theta}{\theta 2} \\ - \sin \tfrac{\theta}{2} & \cos_{2} \end{pmatrix}
+R_{z} ( \theta ) = \begin{pmatrix} e^{i\theta / 2} & 0 \\ 0 & e^{- i\theta / 2} \end{pmatrix} \quad R_{x} ( \theta ) = \begin{pmatrix} \cos \tfrac{\theta}{2} & i \sin \tfrac{\theta}{2} \\ i \sin \tfrac{\theta}{2} & \cos \tfrac{\theta}{2} \end{pmatrix} \quad R_{y} ( \theta ) = \begin{pmatrix} \cos \tfrac{\theta}{2} & \sin \tfrac{\theta}{2} \\ - \sin \tfrac{\theta}{2} & \cos \tfrac{\theta}{2} \end{pmatrix}
 ```
 
 Note that the operator for a rotation through 2$`\pi`$ radians is minus the identity matrix for any of the axes (because $`\frac{\theta}{2}`$ appears everywhere). The **surprising result** is that the sign of the wave function of all fermions is changed if we **rotate through 360 degrees.**
@@ -597,7 +597,7 @@ Note that we can compute the number of particles coming out of the second (and t
 or we can just use the projection operator $`\left( \sqrt{1 2}^{1} \right) \left( \tfrac{1}{\sqrt{2}} \quad \tfrac{1}{\sqrt{2}} \right) = \begin{pmatrix} 1 & 1 \\ 2 & 2 \\ 1 & 1 \end{pmatrix}`$.
 
 ```math
-\begin{pmatrix} \tfrac{1}{1 2} & \tfrac{1}{1 2} \\ 2 & 2 \end{pmatrix} \frac{N}{2} \sqrt{2} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{N}{4} \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix}^{2 2}
+\begin{pmatrix} \frac{1}{2} & \frac{1}{2} \\ \frac{1}{2} & \frac{1}{2} \end{pmatrix} \frac{N}{2} \sqrt{2} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{N}{4} \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix}^{2 2}
 ```
 
 # <a id="s-18-9-other-two-state-systems"></a>18.9 Other Two State Systems\*

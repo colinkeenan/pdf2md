@@ -489,7 +489,7 @@ fn bracket_rows(spans: Vec<MSpan>, bars: Vec<Rule>) -> (Vec<MSpan>, Vec<Rule>) {
         return (spans, bars);
     }
     let size = spans.iter().filter(|s| !s.cmex()).map(|s| s.size).fold(0.0f32, f32::max).max(1.0);
-    let tall = |s: &MSpan, which: &str| s.cmex() && s.atom.is_none() && s.height() > 2.5 * size && s.text.trim().chars().count() == 1 && which.contains(s.text.trim());
+    let tall = |s: &MSpan, which: &str| s.cmex() && s.atom.is_none() && s.height() > 2.0 * size && s.text.trim().chars().count() == 1 && which.contains(s.text.trim());
     let mut pairs: Vec<(MSpan, MSpan)> = Vec::new();
     for o in spans.iter().filter(|s| tall(s, "([")) {
         let level = |c: &MSpan| (c.top - o.top).abs() <= 3.0 && (c.bottom - o.bottom).abs() <= 3.0 && c.left > o.right;
@@ -507,16 +507,28 @@ fn bracket_rows(spans: Vec<MSpan>, bars: Vec<Rule>) -> (Vec<MSpan>, Vec<Rule>) {
             x >= o.right - 1.0 && x <= c.left + 1.0 && s.cy() >= o.top - 0.8 * size && s.cy() <= o.bottom + 0.8 * size
         };
         let bar_in = |r: &Rule| {
-            let x = (r.left + r.right) / 2.0;
-            x >= o.right - 1.0 && x <= c.left + 1.0 && r.top >= o.top - size && r.bottom <= o.bottom + size
+            r.left >= o.right - 2.0 && r.right <= c.left + 2.0 && r.top >= o.top - size && r.bottom <= o.bottom + size
         };
-        let root_bar = |r: &Rule| spans.iter().any(|s| is_radical(s) && (r.left - s.right).abs() <= 3.0 && s.top <= r.bottom + size && s.bottom >= r.top - 2.0);
+        // (a root sign's bar: of those that begin where the sign ends, the
+        // one at its height — the fraction bar of the row above begins
+        // there as well when the entries stand one under the other)
+        let sign_bar = |s: &MSpan| {
+            bars.iter()
+                .filter(|r| is_radical(s) && bar_in(r) && (r.left - s.right).abs() <= 3.0 && s.top <= r.bottom + size && s.bottom >= r.top - 2.0)
+                .min_by(|a, b| (a.top - s.cy()).abs().total_cmp(&(b.top - s.cy()).abs()))
+                .copied()
+        };
+        let root_bar = |r: &Rule| spans.iter().any(|s| sign_bar(s) == Some(*r));
         // what tells a row: (height, is a bar)
-        let mut marks: Vec<(f32, bool)> = bars.iter().filter(|r| bar_in(r) && !root_bar(r)).map(|r| ((r.top + r.bottom) / 2.0, true)).collect();
+        // (not the bar of a fraction inside a fraction: narrower than
+        // another's, within its width and less than a line from it)
+        let nested = |r: &Rule| bars.iter().any(|w| bar_in(w) && !root_bar(w) && r.right - r.left < 0.9 * (w.right - w.left) && r.left >= w.left - 2.0 && r.right <= w.right + 2.0 && (r.top - w.top).abs() < 1.1 * size);
+        let mut marks: Vec<(f32, bool)> = bars.iter().filter(|r| bar_in(r) && !root_bar(r) && !nested(r)).map(|r| ((r.top + r.bottom) / 2.0, true)).collect();
         if marks.is_empty() {
             continue;
         }
-        marks.extend(spans.iter().filter(|s| inside(s) && !s.cmex() && s.size >= 0.9 * size && !s.text.trim().is_empty()).map(|s| (s.cy(), false)));
+        // (a root sign tells none: its box is not where it is drawn)
+        marks.extend(spans.iter().filter(|s| inside(s) && !s.cmex() && !is_radical(s) && s.size >= 0.9 * size && !s.text.trim().is_empty()).map(|s| (s.cy(), false)));
         marks.sort_by(|a, b| a.0.total_cmp(&b.0));
         // (height, is a fraction's row)
         let mut rows: Vec<(f32, bool)> = Vec::new();
@@ -535,40 +547,45 @@ fn bracket_rows(spans: Vec<MSpan>, bars: Vec<Rule>) -> (Vec<MSpan>, Vec<Rule>) {
         if rows.len() < 2 || rows.windows(2).any(|w| w[1].0 - w[0].0 < 1.1 * size) {
             continue;
         }
-        // Between two rows the line is drawn nearer the row of full-size
-        // letters: a fraction's small rows reach further from its bar.
+        // Between two rows the line is drawn close to the row of full-size
+        // letters, just clear of their indices and exponents: a fraction's
+        // small rows, with exponents and fractions of their own, reach far
+        // from its bar, to the foot of the letters above and the head of
+        // those below.
         let cuts: Vec<f32> = rows
             .windows(2)
-            .map(|w| {
-                let t = match (w[0].1, w[1].1) {
-                    (false, true) => 0.42,
-                    (true, false) => 0.58,
-                    _ => 0.5,
-                };
-                w[0].0 + t * (w[1].0 - w[0].0)
+            .map(|w| match (w[0].1, w[1].1) {
+                (false, true) => w[0].0 + 0.33 * size,
+                (true, false) => w[1].0 - 0.57 * size,
+                _ => (w[0].0 + w[1].0) / 2.0,
             })
             .collect();
         let row_of = |y: f32| cuts.iter().filter(|&&c| y > c).count();
         let mut parts: Vec<Vec<MSpan>> = vec![Vec::new(); rows.len()];
         let mut part_bars: Vec<Vec<Rule>> = vec![Vec::new(); rows.len()];
+        // (a root's bar is of the row of what stands under it)
+        let under_root = |r: &Rule| {
+            spans
+                .iter()
+                .filter(|s| inside(s) && !s.cmex() && !is_radical(s) && (s.left + s.right) / 2.0 >= r.left && (s.left + s.right) / 2.0 <= r.right && s.top >= r.top - 2.0)
+                .map(|s| s.cy())
+                .fold(f32::MAX, f32::min)
+                .min(r.bottom + size)
+        };
         for r in bars.iter().filter(|r| bar_in(r)) {
-            let y = if root_bar(r) {
-                // (a root's bar is of the row of what stands under it)
-                spans
-                    .iter()
-                    .filter(|s| inside(s) && !s.cmex() && (s.left + s.right) / 2.0 >= r.left && (s.left + s.right) / 2.0 <= r.right && s.top >= r.top - 2.0)
-                    .map(|s| s.cy())
-                    .fold(f32::MAX, f32::min)
-                    .min(r.bottom + size)
-            } else {
-                (r.top + r.bottom) / 2.0
-            };
+            let y = if root_bar(r) { under_root(r) } else { (r.top + r.bottom) / 2.0 };
             part_bars[row_of(y)].push(*r);
         }
+        // (and the root sign of the row of its bar)
+        let height = |s: &MSpan| match sign_bar(s) {
+            Some(r) => under_root(&r),
+            None => s.cy(),
+        };
+        let heights: Vec<f32> = spans.iter().map(height).collect();
         let mut rest: Vec<MSpan> = Vec::new();
-        for s in spans {
-            if inside(&s) && !(s.cmex() && s.atom.is_none() && s.height() > 2.5 * size) {
-                parts[row_of(s.cy())].push(s);
+        for (s, y) in spans.into_iter().zip(heights) {
+            if inside(&s) && !(s.cmex() && s.atom.is_none() && s.height() > 2.0 * size) {
+                parts[row_of(y)].push(s);
             } else {
                 rest.push(s);
             }
