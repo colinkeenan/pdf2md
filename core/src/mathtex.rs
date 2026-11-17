@@ -1530,6 +1530,10 @@ fn take_brackets(spans: &[MSpan], depth: usize) -> (Vec<MSpan>, Vec<Item>) {
         if opens[k] {
             stack.push(k);
         } else if let Some(pos) = stack.iter().rposition(|&o| same_height(&delims[o], &delims[k])) {
+            // (of two rows that each have brackets of their own, one row
+            // right under the other, a bracket closes the one of its row)
+            let level = |o: usize| delims[o].kind.is_some() == delims[k].kind.is_some() && (delims[o].top - delims[k].top).abs() <= 2.0 && (delims[o].bottom - delims[k].bottom).abs() <= 2.0;
+            let pos = stack.iter().rposition(|&o| same_height(&delims[o], &delims[k]) && level(o)).unwrap_or(pos);
             pairs.push((stack.remove(pos), k));
         } else {
             lone.push(k);
@@ -1560,12 +1564,28 @@ fn take_brackets(spans: &[MSpan], depth: usize) -> (Vec<MSpan>, Vec<Item>) {
         let (top, bottom) = (d0.top.min(d1.top), d0.bottom.max(d1.bottom));
         // (a big ∫ or a slanted "/p" right after a bracket reaches back over
         // its edge: the middle of a span counts)
+        // (the brackets of a row with brackets of the row under it, or
+        // over it, at the same place: what they hold ends where those
+        // begin, and begins where those end. Of shapeless ones only the
+        // top is known.)
+        let shapeless = d0.kind.is_none() && d1.kind.is_none();
+        let typed_pair = d0.kind.is_some() && d1.kind.is_some();
+        let other_row = |d: &&Delim| d.left < d1.right && d.right > d0.left && ((shapeless && d.kind.is_none()) || (typed_pair && d.kind.is_some()));
+        let floor = delims.iter().filter(other_row).filter(|d| d.top > top + 0.8 * size && (shapeless || d.top >= bottom - 0.25 * size)).map(|d| d.top).fold(f32::MAX, f32::min);
+        let ceiling = if shapeless && delims.iter().filter(other_row).any(|d| d.top < top - 0.8 * size) {
+            top - 0.3 * size
+        } else if typed_pair {
+            delims.iter().filter(other_row).filter(|d| d.top < top - 0.8 * size && d.bottom <= top + 0.25 * size).map(|d| d.bottom - 0.25 * size).fold(top - size, f32::max)
+        } else {
+            top - size
+        };
         let (inside, outside): (Vec<MSpan>, Vec<MSpan>) = rest.into_iter().partition(|s| {
             let c = (s.left + s.right) / 2.0;
             let (l, r) = (s.left.max(c.min(d0.right)), s.right.min(c.max(d1.left)));
             l >= d0.right - 1.0
                 && r <= d1.left + 1.0
-                && s.cy() >= top - size
+                && s.cy() >= ceiling
+                && s.cy() < floor
                 && s.cy() <= (bottom + 1.5 * size).max((top + bottom) / 2.0 + 3.0 * size)
         });
         rest = outside;
