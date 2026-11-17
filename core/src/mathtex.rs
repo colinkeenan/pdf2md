@@ -3606,6 +3606,70 @@ mod tests {
     }
 
     #[test]
+    fn a_root_ends_at_its_sign() {
+        // { s = √(x² + y²), ϕ = arctan(y/x), z = z } .  The bracket of the
+        // second row stands under the root's bar; the root is one line
+        // high, as its sign is (Lucid, Advanced Theoretical Physics, 1.2.2)
+        let v = vec![
+            bx("s", 260.0, 268.0, 868.0, 884.0, 18.0, "CMMI12"),
+            bx("=", 285.0, 299.0, 868.0, 884.0, 18.0, "CMR12"),
+            bx("p", 314.0, 332.0, 865.0, 873.0, 18.0, "CMEX10"),
+            bx("x", 332.0, 342.0, 868.0, 884.0, 18.0, "CMMI12"),
+            bx("2", 342.0, 348.0, 867.0, 878.0, 12.0, "CMR8"),
+            bx("+", 353.0, 367.0, 868.0, 884.0, 18.0, "CMR12"),
+            bx("y", 371.0, 380.0, 868.0, 884.0, 18.0, "CMMI12"),
+            bx("2", 380.0, 386.0, 867.0, 878.0, 12.0, "CMR8"),
+            bx("{", 247.1, 256.9, 865.1, 929.6, 18.0, "CMEX10"),
+            bx("ϕ", 260.0, 270.0, 890.0, 906.0, 18.0, "CMMI12"),
+            bx("= arctan", 285.0, 362.0, 890.0, 906.0, 18.0, "CMR12"),
+            bx("(", 368.4, 373.1, 887.4, 908.9, 18.0, "CMEX10"),
+            bx("y", 376.0, 382.0, 886.0, 897.0, 12.0, "CMMI8"),
+            bx("x", 376.0, 383.0, 901.0, 912.0, 12.0, "CMMI8"),
+            bx(")", 385.4, 390.1, 887.4, 908.9, 18.0, "CMEX10"),
+            bx("}", 395.9, 405.7, 865.1, 929.6, 18.0, "CMEX10"),
+            bx(".", 412.0, 417.0, 889.0, 905.0, 18.0, "CMMI12"),
+            bx("z", 260.0, 268.0, 912.0, 928.0, 18.0, "CMMI12"),
+            bx("=", 285.0, 299.0, 912.0, 928.0, 18.0, "CMR12"),
+            bx("z", 314.0, 322.0, 912.0, 928.0, 18.0, "CMMI12"),
+        ];
+        let bars = [Rule { left: 331.8, right: 386.8, top: 864.6, bottom: 865.3 }, Rule { left: 375.7, right: 382.8, top: 897.8, bottom: 898.5 }];
+        assert_eq!(
+            build_with(&v, &bars),
+            "\\begin{Bmatrix} s & = & \\sqrt{x^{2} + y^{2}} \\\\ \\phi & = & \\arctan \\left( \\tfrac{y}{x} \\right) \\\\ z & = & z \\end{Bmatrix} ."
+        );
+    }
+
+    #[test]
+    fn displays_in_two_sizes_are_two() {
+        // a line in the size of the text, and under it a step set small:
+        // its letters are no indices of the line above
+        let v = vec![
+            bx("a", 100.0, 110.0, 100.0, 116.0, 18.0, "CMMI12"),
+            bx("=", 116.0, 130.0, 100.0, 116.0, 18.0, "CMR12"),
+            bx("b", 136.0, 146.0, 100.0, 116.0, 18.0, "CMMI12"),
+            bx("=", 116.0, 128.0, 140.0, 153.0, 15.0, "CMR10"),
+            bx("c", 134.0, 142.0, 140.0, 153.0, 15.0, "CMMI10"),
+        ];
+        let got: Vec<String> = display(v, &[], 600.0, 18.0).into_iter().map(|e| e.0).collect();
+        assert_eq!(got, ["a = b", "= c"]);
+    }
+
+    #[test]
+    fn small_type_on_the_line_is_of_the_line() {
+        // "L =" in the size of the text, the right-hand side set small to
+        // fit: level with the "=", it is no index of it
+        let v = vec![
+            bx("L", 156.0, 168.0, 269.0, 285.0, 18.0, "CMMI12"),
+            bx("=", 195.0, 209.0, 269.0, 285.0, 18.0, "CMR12"),
+            bx("x", 245.0, 254.0, 271.0, 284.0, 15.0, "CMMI10"),
+            bx("+", 258.0, 270.0, 271.0, 284.0, 15.0, "CMR10"),
+            bx("y", 274.0, 283.0, 271.0, 284.0, 15.0, "CMMI10"),
+            bx("2", 283.0, 289.0, 269.0, 278.0, 10.0, "CMR7"),
+        ];
+        assert_eq!(build_with(&v, &[]), "L = x + y^{2}");
+    }
+
+    #[test]
     fn column_of_small_fractions() {
         // N (−p_z c/(−E+mc²), −(p_x+ip_y)c/(−E+mc²), 1, 0): each bar keeps
         // to its own row of the column (UCSD Physics 130, the Dirac spinors)

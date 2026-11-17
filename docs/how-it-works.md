@@ -301,6 +301,25 @@ Brackets are then paired as in text, nested ones included, and written as `\left
 
 TeX's symbol font has a quirk: in the PDF's text, ⟨ ⟩ come out as "h" and "i", | and ‖ as "j" and "k", { } as "f" and "g", and capitals as calligraphic letters. These are mapped back.
 
+### Formulas set small, and systems of them
+
+*Worked out on: Lucid, whose long derivations are set in small type and whose systems of equations stand in braces. The rules are general; they also mended formulas in UCSD, Dyson and Zee 2. The heights of root signs are those of TeX's fonts.*
+
+"The size of the line" decides what is a letter of the line and what is an index, so a formula in two sizes, or with two rows close together, needs more care.
+
+* **Displays in two sizes.** A result in the size of the text and its steps in small type, one under the other with nothing between them, are cut apart where the size changes. Small type is about five sixths of the text's size and an index two thirds, and the small lines have a relation sign of their own. Left as one display, every letter of the small lines reads as an index of the large one.
+* **Small type going on a line.** "L₃ =" in the size of the text and a long right-hand side set small to fit a table's row: where the first small letter stands level with the full-size one before it, the small letters are letters of the line. An index hangs under the line or stands over it, and what stands under "lim" is its index.
+* **Two lines of fractions with no relation sign in the first.** Two rows, each at the height of fraction bars of its own, well apart and with no bar between them, are two lines. A bar between them would make them the numerator and denominator of one fraction; so would a row that holds only the full stop of the text above.
+* **A fraction takes only the bars among its own pieces.** In a system of equations the fraction of the next row has a bar a little shorter or longer than this one's, right under it. It is that row's own. Two short bars of nearly one length are siblings as well, not one fraction inside the other.
+* **A root reaches no further down than its sign.** TeX has the root sign in five heights, each its own character, and what stands under the bar is no taller than the sign. Without this a root in one row of a system takes the bracket that stands under its bar in the next row.
+* **Brackets grown around a small fraction.** In a numerator or denominator set small, `\left( … \right)` around a still smaller fraction grows to the size of the line. Such a pair (off the line's middle, only small pieces between them, a small piece level with it right beside it) takes the size of that row. Left full size, it would be a letter of the line and the numerator would fall apart around it.
+* **A drawn bracket no taller than the type** is read from its outline only where the text has the empty piece `pdftohtml` gives for it, or where its partner of the same height is read so. That tells `\big[` in small type from an italic letter as tall.
+* **A drawn bracket holds nothing well above its head.** The indices of the row above are a little over it and are not in it.
+* **Each sum keeps its limits.** The lower limit of one row's sum and the upper limit of the next row's stand one over the other. They are no block of a matrix and no row of a bracket; and a limit is no part of the fraction over or under it.
+* **A sign has no index.** The small "c" of −1/c², close behind the minus, is the denominator's.
+* **A bracket beside a numerator** leaves its bar a fraction bar. A bar over a single piece of text with nothing above it is an overline (Ā); the short box of a large bracket that begins at the numerator's side is not "something sticking out past the bar".
+* **A page of a few formulas is no page of two columns.** Two columns need lines of words on both sides of the gap; a white gap that runs through two displayed formulas is chance.
+
 ### Symbols the text leaves out
 
 *Worked out on: Zee 2. One kind of PDF: MathTime fonts. The method (names from the font, places from the SVG) is general; the table of names is not.*
