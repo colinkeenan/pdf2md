@@ -441,6 +441,33 @@ fn level_sizes(spans: &mut [MSpan]) {
     }
 }
 
+/// A line begun in the size of the text and gone on, to its end, in the
+/// size of an index ("H = H_fs +" and then two long terms set small to
+/// fit the line): where the small part begins. It is a formula of its
+/// own size — in the size of the line, its letters would be indices and
+/// its small fractions fall apart.
+///
+/// It begins behind the last full-size letter and the index on it; it
+/// has fractions or tall brackets, and letters of its own size level
+/// with the line (an exponent, however long, stands over the line).
+fn small_tail(spans: &[MSpan]) -> Option<f32> {
+    let max = spans.iter().filter(|s| !s.cmex()).map(|s| s.size).fold(0.0f32, f32::max);
+    let word = |s: &MSpan| !s.cmex() && !s.text.trim().chars().all(|c| ",.;:".contains(c));
+    let last = spans.iter().filter(|s| word(s) && s.atom.is_none() && s.size >= 0.9 * max).max_by(|a, b| a.right.total_cmp(&b.right))?;
+    // (the index on the last letter: what touches it, and what touches that)
+    let mut x = last.right;
+    while let Some(n) = spans.iter().filter(|s| word(s) && s.left >= x - 2.0 && s.left <= x + 2.5 && s.right > x).map(|s| s.right).reduce(f32::max) {
+        x = n;
+    }
+    let x = x + 1.0;
+    let tail: Vec<&MSpan> = spans.iter().filter(|s| s.left >= x).collect();
+    let letters: Vec<&&MSpan> = tail.iter().filter(|s| word(s)).collect();
+    let size = letters.iter().map(|s| s.size).fold(0.0f32, f32::max);
+    let level = letters.iter().filter(|s| s.size >= 0.9 * size && (s.cy() - last.cy()).abs() <= 0.15 * max).count();
+    let built = tail.iter().any(|s| s.cmex() && s.height() > 1.1 * size);
+    (letters.len() >= 8 && size >= 0.6 * max && size < 0.76 * max && level >= 2 && built).then_some(x)
+}
+
 pub fn build_with(spans: &[MSpan], bars: &[Rule]) -> String {
     // pdftohtml sometimes puts two big operators in one span ("X X")
     let spans: Vec<MSpan> = spans
@@ -460,6 +487,18 @@ pub fn build_with(spans: &[MSpan], bars: &[Rule]) -> String {
         .collect();
     let mut spans = spans;
     level_sizes(&mut spans);
+    if let Some(x) = small_tail(&spans) {
+        let (head, tail): (Vec<MSpan>, Vec<MSpan>) = spans.iter().cloned().partition(|s| s.left < x);
+        let (hbars, tbars): (Vec<Rule>, Vec<Rule>) = bars.iter().copied().partition(|b| b.left < x);
+        // (the sign that joins the two, set small in one piece with the
+        // index before it: "fs +" under the H)
+        let head = build_with(&head, &hbars);
+        let head = match head.strip_suffix(" +}") {
+            Some(h) if h.contains("_{") => format!("{h}}} +"),
+            _ => head,
+        };
+        return format!("{head} {}", build_with(&tail, &tbars)).trim().to_string();
+    }
     if std::env::var("PDF2MD_MATHDEBUG").is_ok_and(|v| v == "2") {
         eprintln!("--- before accents");
         for s in &spans {

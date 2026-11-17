@@ -608,6 +608,20 @@ pub(crate) fn sides(mut v: Vec<Inline>) -> Vec<Inline> {
                 }
             }
         }
+        // (an upright letter or two set right against a raised or lowered
+        // piece that has nothing else under it: "e" + "⁻", "K" + "⁺" — the
+        // letter is what the piece stands on)
+        if k > 0 {
+            let (a, b) = v.split_at_mut(k);
+            if let (Inline::Text(t), Inline::Math(m)) = (&mut a[k - 1], &mut b[0]) {
+                let n = t.len() - t.trim_end_matches(|c: char| c.is_ascii_alphabetic()).len();
+                let alone = !t[..t.len() - n].ends_with(|c: char| c.is_alphanumeric() || c == '\'' || c == '’');
+                if (m.starts_with("{}^{") || m.starts_with("{}_{")) && (1..=2).contains(&n) && alone {
+                    *m = format!("\\mathrm{{{}}}{}", &t[t.len() - n..], &m[2..]);
+                    t.truncate(t.len() - n);
+                }
+            }
+        }
         // (the text before a formula)
         if k > 0 {
             let (a, b) = v.split_at_mut(k);
