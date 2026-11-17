@@ -622,7 +622,7 @@ Assume we have computed the total transition rate.
 This transition rate is the probability per unit time to make a transition away from the initial state evaluated at $`t = 0`$. Writing this as an equation we have.
 
 ```math
-\frac{dP_{i}}{dt} |_{t = 0} = - \Gamma_{tot}
+\frac{dP_{i}}{dt} \Bigg|_{t = 0} = - \Gamma_{tot}
 ```
 
 For larger times we can assume that the probability to make a transition away from the initial state is proportional to the probability to be in the initial state.

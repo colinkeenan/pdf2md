@@ -490,7 +490,7 @@ _Figure 40 (p. 155)_
 We now need to meet the boundary condition on the first derivative at $`x = 0`$. Recall that the delta function causes a known discontinuity in the first derivative (See section 8.7.2).
 
 ```math
-\frac{d\psi}{dx} |_{+ \epsilon} - \frac{d\psi}{dx} |_{- \epsilon} = - \frac{2 maV_{0}}{\hbar^{2}} \psi ( 0 )
+\frac{d\psi}{dx} \Bigg|_{+ \epsilon} \quad - \frac{d\psi}{dx} \Bigg|_{- \epsilon} = - \frac{2 maV_{0}}{\hbar^{2}} \psi ( 0 )
 ```
 
 ```math
@@ -1294,7 +1294,7 @@ B_{n + 1} = \frac{B_{n} + A_{n + 1} \sin ( ka )}{\cos ( ka )} .
 The discontinuity in the first derivative is
 
 ```math
-\frac{d\psi_{n + 1}}{dx} |_{na} - \frac{d\psi_{n}}{dx} |_{na} = \frac{2 maV_{0}}{\hbar^{2}} \psi_{n} ( na )
+\frac{d\psi_{n + 1}}{dx} \Bigg|_{na} \quad - \frac{d\psi_{n}}{dx} \Bigg|_{na} = \frac{2 maV_{0}}{\hbar^{2}} \psi_{n} ( na )
 ```
 
 ```math
@@ -1432,7 +1432,7 @@ This whole section is examples.
 ```
 
 ```math
-\begin{aligned} \frac{du}{dx} |_{+} - \frac{du}{dx} |_{-} &= \frac{- 2 mV_{0}}{\hbar^{2}} e^{\kappa 0} \\ - \kappa - ( + \kappa ) &= \frac{- 2 mV_{0}}{\hbar^{2}} \end{aligned}
+\begin{aligned} \frac{du}{dx} \Bigg|_{+} \quad - \frac{du}{dx} \Bigg|_{-} &= \frac{- 2 mV_{0}}{\hbar^{2}} e^{\kappa 0} \\ - \kappa - ( + \kappa ) &= \frac{- 2 mV_{0}}{\hbar^{2}} \end{aligned}
 ```
 
 ```math

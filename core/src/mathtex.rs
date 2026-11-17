@@ -1266,7 +1266,11 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
                 let behind = n.left >= b.right - 1.0 && n.left - b.right <= 0.35 * letters;
                 i != ri && !under.contains(&i) && !n.cmex() && n.size >= 0.9 * letters && n.size < 0.85 * size && (before || behind) && (n.cy() - (top + bottom) / 2.0).abs() < 0.4 * letters
             });
-            let (top, bottom, size) = if letters > 0.0 && letters < 0.85 * size && goes_on {
+            // (a root over a fraction that fills it has small letters though
+            // it stands on the line: the fraction's halves are set small. In
+            // an exponent they would be smaller still.)
+            let on_line_fraction = letters >= 0.6 * size && nested.iter().any(|r| r.right - r.left >= 0.6 * (b.right - b.left));
+            let (top, bottom, size) = if letters > 0.0 && letters < 0.85 * size && goes_on && !on_line_fraction {
                 (top, bottom, letters)
             } else if let Some(f) = nested.iter().filter(|r| r.right - r.left >= 0.6 * (b.right - b.left)).min_by(|x, y| x.top.total_cmp(&y.top)) {
                 // (a root over a fraction stands on the line at the fraction's bar)
@@ -1704,6 +1708,39 @@ fn sum_limit(s: &MSpan, spans: &[MSpan], size: f32) -> Option<(f32, bool)> {
         })
 }
 
+/// What hangs at the foot of a tall bar and stands at its head, right
+/// behind it ("taken at x = a/2", "from 0 to a/2"): taken out of `rest`
+/// and written as the bar's index and exponent.
+fn bar_scripts(rest: &mut Vec<MSpan>, d: &Delim, size: f32, depth: usize) -> String {
+    let (mid, quarter) = ((d.top + d.bottom) / 2.0, 0.25 * (d.bottom - d.top));
+    let mut out = String::new();
+    for (lower, mark) in [(true, '_'), (false, '^')] {
+        let small = |s: &MSpan| !s.cmex() && s.size < 0.9 * size;
+        let side = |s: &MSpan| if lower { s.cy() >= mid + quarter } else { s.cy() <= mid - quarter };
+        let Some(seed) = rest.iter().filter(|s| small(s) && side(s) && s.left >= d.right - 1.0 && s.left <= d.right + 0.4 * size).min_by(|a, b| a.left.total_cmp(&b.left)).cloned() else { continue };
+        // (and what goes on from it at its height)
+        let mut reach = seed.right;
+        let mut taken: Vec<usize> = Vec::new();
+        loop {
+            let next = (0..rest.len()).find(|&i| !taken.contains(&i) && small(&rest[i]) && side(&rest[i]) && rest[i].left >= d.right - 1.0 && rest[i].left <= reach + 0.5 * size && (rest[i].cy() - seed.cy()).abs() <= 0.6 * size);
+            let Some(i) = next else { break };
+            reach = reach.max(rest[i].right);
+            taken.push(i);
+        }
+        let part: Vec<MSpan> = taken.iter().map(|&i| rest[i].clone()).collect();
+        let mut k = 0;
+        rest.retain(|_| {
+            k += 1;
+            !taken.contains(&(k - 1))
+        });
+        let tex = build_at(&part, depth + 1);
+        if !tex.is_empty() {
+            out.push_str(&format!("{mark}{{{tex}}}"));
+        }
+    }
+    out
+}
+
 /// Find tall brackets (empty glyphs of the big-symbol font, stacked pieces
 /// merged) and turn what is between each left/right pair into a matrix
 /// (several rows in aligned columns) or a parenthesised group.
@@ -1749,6 +1786,9 @@ fn take_brackets(spans: &[MSpan], depth: usize) -> (Vec<MSpan>, Vec<Item>) {
     // (a bar with a small index at its foot is the bar of "taken at": it
     // closes, and opens nothing — "dψ/dx |_{+ε} − dψ/dx |_{−ε}" is no
     // absolute value of what stands between the two bars)
+    // (such a bar closes no bracket of another kind: the brace of a system
+    // of equations stays open past the bar in one of its rows)
+    let mut taken_at = vec![false; delims.len()];
     for k in 0..delims.len() {
         let d = delims[k];
         let foot = rest.iter().any(|s| !s.cmex() && s.size < 0.9 * size && s.left >= d.right - 1.0 && s.left <= d.right + 0.4 * size && s.cy() > (d.top + d.bottom) / 2.0 + 0.2 * (d.bottom - d.top) && s.top < d.bottom + 0.5 * size);
@@ -1760,6 +1800,7 @@ fn take_brackets(spans: &[MSpan], depth: usize) -> (Vec<MSpan>, Vec<Item>) {
         let foot = foot && !behind;
         if side[k].is_none() && d.kind == Some('|') && foot {
             side[k] = Some(false);
+            taken_at[k] = true;
         }
     }
     for k in 0..delims.len() {
@@ -1796,17 +1837,20 @@ fn take_brackets(spans: &[MSpan], depth: usize) -> (Vec<MSpan>, Vec<Item>) {
 
     // Match them like brackets in text: each closing bracket closes the
     // most recent open one at its height.
+    // (… unless that bracket is as tall as the bar, head and foot:
+    // "\left\{ … \right|" with the limits at the bar)
+    let closes = |o: usize, k: usize| matches!(delims[o].kind, Some('|') | None) || ((delims[o].top - delims[k].top).abs() <= 3.0 && (delims[o].bottom - delims[k].bottom).abs() <= 3.0);
     let mut stack: Vec<usize> = Vec::new();
     let mut pairs: Vec<(usize, usize)> = Vec::new();
     let mut lone: Vec<usize> = Vec::new();
     for k in 0..delims.len() {
         if opens[k] {
             stack.push(k);
-        } else if let Some(pos) = stack.iter().rposition(|&o| same_height(&delims[o], &delims[k])) {
+        } else if let Some(pos) = stack.iter().rposition(|&o| same_height(&delims[o], &delims[k]) && !(taken_at[k] && !closes(o, k))) {
             // (of two rows that each have brackets of their own, one row
             // right under the other, a bracket closes the one of its row)
             let level = |o: usize| delims[o].kind.is_some() == delims[k].kind.is_some() && (delims[o].top - delims[k].top).abs() <= 2.0 && (delims[o].bottom - delims[k].bottom).abs() <= 2.0;
-            let pos = stack.iter().rposition(|&o| same_height(&delims[o], &delims[k]) && level(o)).unwrap_or(pos);
+            let pos = stack.iter().rposition(|&o| same_height(&delims[o], &delims[k]) && level(o) && !(taken_at[k] && !closes(o, k))).unwrap_or(pos);
             pairs.push((stack.remove(pos), k));
         } else {
             lone.push(k);
@@ -1830,6 +1874,17 @@ fn take_brackets(spans: &[MSpan], depth: usize) -> (Vec<MSpan>, Vec<Item>) {
         bold: false,
         atom: Some(tex),
     };
+    // A bar of "taken at" that closed nothing stands where it is, a piece
+    // of its row (in a system of equations: inside the brace), with its
+    // index hanging on it.
+    lone.retain(|&k| {
+        if taken_at[k] {
+            let d = delims[k];
+            let scripts = bar_scripts(&mut rest, &d, size, depth);
+            rest.push(piece(d.left, d.right, (d.top + d.bottom) / 2.0, format!("{}{scripts}", if d.bottom - d.top > 2.0 * size { "\\Bigg|" } else { "\\Big|" })));
+        }
+        !taken_at[k]
+    });
     for (o, c) in pairs {
         let (d0, d1) = (delims[o], delims[c]);
         // boxes of shapeless pieces mark only the tops of the pieces; the
@@ -1877,9 +1932,16 @@ fn take_brackets(spans: &[MSpan], depth: usize) -> (Vec<MSpan>, Vec<Item>) {
             _ => ')',
         });
         let typed = d0.kind.is_some() && d1.kind.is_some();
-        let tex = matrix(&inside, depth, open, typed).unwrap_or_else(|| {
-            format!("\\left{} {} \\right{}", delim_tex(open), build_at(&inside, depth + 1), delim_tex(close))
-        });
+        // (closed by a bar of "taken at": the rows in the open bracket and
+        // the bar, with what hangs at the bar)
+        let by_bar = close == '|' && open != '|' && taken_at[c];
+        let tex = if by_bar {
+            let scripts = bar_scripts(&mut rest, &d1, size, depth);
+            let body = matrix(&inside, depth, ' ', typed).unwrap_or_else(|| build_at(&inside, depth + 1));
+            format!("\\left{} {body} \\right|{scripts}", delim_tex(open))
+        } else {
+            matrix(&inside, depth, open, typed).unwrap_or_else(|| format!("\\left{} {} \\right{}", delim_tex(open), build_at(&inside, depth + 1), delim_tex(close)))
+        };
         if inside.is_empty() {
             continue; // nothing between them: nothing to write
         }

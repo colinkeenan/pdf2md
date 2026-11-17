@@ -4487,7 +4487,7 @@ We write explicitly that $`\omega`$ depends on $`k`$. For our free particle, thi
 To cover the general case, lets expand $`\omega ( k )`$ around the center of the wave packet in k-space.
 
 ```math
-\omega ( k ) = \omega ( k_{0} ) + \frac{d\omega}{dk} |_{k_{0}} ( k - k_{0} ) + \frac{1}{2} \frac{d^{2} \omega}{dk^{2}} |_{k_{0}} ( k - k_{0} )^{2}
+\omega ( k ) = \omega ( k_{0} ) + \frac{d\omega}{dk} \Bigg|_{k_{0}} \quad ( k - k_{0} ) + \frac{1}{2} \frac{d^{2} \omega}{dk^{2}} \Bigg|_{k_{0}} \quad ( k - k_{0} )^{2}
 ```
 
 We anticipate the outcome a bit and name the coefficients.
@@ -6673,7 +6673,7 @@ Integrate both sides from just below a boundary (assumed to be at $`x = 0`$) to 
 Let $`\epsilon`$ go to zero and the right hand side must go to zero for finite potentials.
 
 ```math
-\frac{d\psi}{dx} |_{+ \epsilon} - \frac{d\psi}{dx} |_{- \epsilon} \to 0
+\frac{d\psi}{dx} \Bigg|_{+ \epsilon} \quad - \frac{d\psi}{dx} \Bigg|_{- \epsilon} \quad \to 0
 ```
 
 Infinite potentials are unphysical but often handy. The delta function potential is very handy, so we will derive a special continuity equation for it. Assume $`V ( x ) = V_{0} \delta ( x )`$. Integrating the Schrödinger Equation, we get
@@ -6689,7 +6689,7 @@ Infinite potentials are unphysical but often handy. The delta function potential
 As before, finite terms in the right hand integral go to zero as $`\epsilon \to 0`$, but now the delta function gives a fixed contribution to the integral.
 
 ```math
-\frac{d\psi}{dx} |_{+ \epsilon} - \frac{d\psi}{dx} |_{- \epsilon} = \frac{2 m}{\hbar^{2}} V_{0} \psi ( 0 )
+\frac{d\psi}{dx} \Bigg|_{+ \epsilon} \quad - \frac{d\psi}{dx} \Bigg|_{- \epsilon} = \frac{2 m}{\hbar^{2}} V_{0} \psi ( 0 )
 ```
 
 There is a **discontinuity in the derivative of the wave function** proportional to the wave function at that point (and to the strength of the delta function potential).
@@ -7304,7 +7304,7 @@ _Figure 40 (p. 155)_
 We now need to meet the boundary condition on the first derivative at $`x = 0`$. Recall that the delta function causes a known discontinuity in the first derivative (See section 8.7.2).
 
 ```math
-\frac{d\psi}{dx} |_{+ \epsilon} - \frac{d\psi}{dx} |_{- \epsilon} = - \frac{2 maV_{0}}{\hbar^{2}} \psi ( 0 )
+\frac{d\psi}{dx} \Bigg|_{+ \epsilon} \quad - \frac{d\psi}{dx} \Bigg|_{- \epsilon} = - \frac{2 maV_{0}}{\hbar^{2}} \psi ( 0 )
 ```
 
 ```math
@@ -8108,7 +8108,7 @@ B_{n + 1} = \frac{B_{n} + A_{n + 1} \sin ( ka )}{\cos ( ka )} .
 The discontinuity in the first derivative is
 
 ```math
-\frac{d\psi_{n + 1}}{dx} |_{na} - \frac{d\psi_{n}}{dx} |_{na} = \frac{2 maV_{0}}{\hbar^{2}} \psi_{n} ( na )
+\frac{d\psi_{n + 1}}{dx} \Bigg|_{na} \quad - \frac{d\psi_{n}}{dx} \Bigg|_{na} = \frac{2 maV_{0}}{\hbar^{2}} \psi_{n} ( na )
 ```
 
 ```math
@@ -8246,7 +8246,7 @@ This whole section is examples.
 ```
 
 ```math
-\begin{aligned} \frac{du}{dx} |_{+} - \frac{du}{dx} |_{-} &= \frac{- 2 mV_{0}}{\hbar^{2}} e^{\kappa 0} \\ - \kappa - ( + \kappa ) &= \frac{- 2 mV_{0}}{\hbar^{2}} \end{aligned}
+\begin{aligned} \frac{du}{dx} \Bigg|_{+} \quad - \frac{du}{dx} \Bigg|_{-} &= \frac{- 2 mV_{0}}{\hbar^{2}} e^{\kappa 0} \\ - \kappa - ( + \kappa ) &= \frac{- 2 mV_{0}}{\hbar^{2}} \end{aligned}
 ```
 
 ```math
@@ -18592,7 +18592,7 @@ E^{\prime} = \frac{\langle \psi_{E} + \alpha \varphi | H | \psi_{E} + \alpha \va
 Assume $`\alpha`$ is real since we do this for any arbitrary function $`\varphi`$. Now we differentiate with respect to $`\alpha`$ and evaluate at zero.
 
 ```math
-\frac{dE^{\prime}}{d\alpha} |_{\alpha = 0} = \frac{\langle \psi_{E} | \psi_{E} \rangle ( \langle \varphi | H | \psi_{E} \rangle + \langle \psi_{E} | H | \varphi \rangle ) - \langle \psi_{E} | H | \psi_{E} \rangle ( \langle \varphi | \psi_{E} \rangle + \langle \psi_{E} | \varphi \rangle )}{\langle \psi_{E} | \psi_{E} \rangle^{2}}
+\frac{dE^{\prime}}{d\alpha} \Bigg|_{\alpha = 0} = \frac{\langle \psi_{E} | \psi_{E} \rangle ( \langle \varphi | H | \psi_{E} \rangle + \langle \psi_{E} | H | \varphi \rangle ) - \langle \psi_{E} | H | \psi_{E} \rangle ( \langle \varphi | \psi_{E} \rangle + \langle \psi_{E} | \varphi \rangle )}{\langle \psi_{E} | \psi_{E} \rangle^{2}}
 ```
 
 ```math
@@ -20481,7 +20481,7 @@ Assume we have computed the total transition rate.
 This transition rate is the probability per unit time to make a transition away from the initial state evaluated at $`t = 0`$. Writing this as an equation we have.
 
 ```math
-\frac{dP_{i}}{dt} |_{t = 0} = - \Gamma_{tot}
+\frac{dP_{i}}{dt} \Bigg|_{t = 0} = - \Gamma_{tot}
 ```
 
 For larger times we can assume that the probability to make a transition away from the initial state is proportional to the probability to be in the initial state.
