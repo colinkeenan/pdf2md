@@ -2686,6 +2686,28 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
             // (a displayed equation, or a line that is nothing but a formula read from an image)
             let only_formula = |l: &Line| l.spans.iter().any(|s| s.tex.is_some()) && l.spans.iter().all(|s| s.tex.is_some() || s.text.trim().is_empty());
             let before_display = i + 1 < end && (disp[i + 1] || only_formula(&lines[i + 1]));
+            // On the book's first page, a line in large type that stands
+            // well apart under the title and its subtitle is the author's
+            // name or the date: a line of the title page, no heading of the
+            // book (it would be a section of its contents).
+            let byline = page.index == 0
+                && prev_top.is_some_and(|p| l.top - p > 2.0 * l.size)
+                && page.lines.iter().any(|o| o.size > l.size + 0.5)
+                && is_centered(l, st)
+                && heading_size(doc, l, prev_top, next_top, before_display, st).is_some();
+            if byline {
+                b.flush();
+                b.close_item();
+                b.anchor_block();
+                b.push(Block::Para(vec![Inline::Strong(plain(&line_inlines(doc, l, st)))]));
+                if let Some(last) = b.out.last_mut() {
+                    last.centered = true;
+                }
+                prev_top = Some(l.top);
+                last_heading = None;
+                i += 1;
+                continue;
+            }
             if let Some(size) = heading_size(doc, l, prev_top, next_top, before_display, st) {
                 // A page that opens well down from its top with a title
                 // clearly larger than the sections' opens a chapter too,
