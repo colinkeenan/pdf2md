@@ -2079,7 +2079,17 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
             // and the symbol: the 1 of M^{λ₁…}, level with the M's middle)
             // (nor what stands under or over a sum sign, a little before
             // it: its limit, "k ≠ n", wider than the sign)
-            let limit = bases.iter().any(|&o| matches!(big_op(&spans[o]), Some("\\sum" | "\\prod")) && s.right > spans[o].left && s.left < spans[o].right && (s.cy() - y0).abs() > 0.5 * h);
+            // (… or begins a run of small pieces at one height that reaches
+            // under it: the n of "n = 1, 3, 5 …")
+            let mut reach = s.right;
+            loop {
+                let next = spans.iter().filter(|n| n.size < 0.9 * max && !n.cmex() && (n.cy() - s.cy()).abs() <= 0.25 * s.size && n.left >= s.left && n.left <= reach + 0.3 * max && n.right > reach).map(|n| n.right).fold(reach, f32::max);
+                if next <= reach {
+                    break;
+                }
+                reach = next;
+            }
+            let limit = bases.iter().any(|&o| matches!(big_op(&spans[o]), Some("\\sum" | "\\prod")) && reach > spans[o].left && s.left < spans[o].right && (s.cy() - y0).abs() > 0.5 * h);
             if limit {
                 return false;
             }

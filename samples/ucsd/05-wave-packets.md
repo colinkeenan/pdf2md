@@ -362,7 +362,7 @@ dk = \frac{\pi}{L} dn.
 If we define $`A ( k ) = \sqrt{\frac{2}{\pi}} La_{n}`$, we can make the transform come out with the constants we want.
 
 ```math
-f ( x ) = {}_{n =} \sum^{\infty}_{-\infty} a_{n} e^{\tfrac{in\pi x}{L}} \quad \text{ Standard Fourier Series }
+f ( x ) = \sum_{n = -\infty}^{\infty} a_{n} e^{\tfrac{in\pi x}{L}} \quad \text{ Standard Fourier Series }
 ```
 
 ```math
@@ -378,7 +378,7 @@ A_{n} = \tfrac{1}{\sqrt{2 \pi}} \int_{- L}^{L} f ( x ) e \tfrac{- in\pi x}{L} dx
 ```
 
 ```math
-f ( x ) = \sqrt{\frac{\pi}{2}} \tfrac{1}{L}_{\infty n =} \sum_{-\infty}^{\infty} A_{n} e \tfrac{in\pi x}{L} \quad f \text{ stays the same }
+f ( x ) = \sqrt{\frac{\pi}{2}} \tfrac{1}{L} \sum_{\infty n = -\infty}^{\infty} A_{n} e \tfrac{in\pi x}{L} \quad f \text{ stays the same }
 ```
 
 <div align="center">

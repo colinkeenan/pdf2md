@@ -26,7 +26,7 @@ k_{B} = 1 . 3 8 \times 1 0^{- 1 6} \text{ erg } /^{\circ} K \quad g_{e} = 2 + \t
 $`\int_{-\infty}^{\infty} dxf ( x ) \delta ( x - a ) = f ( a ) \int_{-\infty}^{\infty} dxe^{- ax^{2}} = \sqrt{\frac{\pi}{a}}`$ use $`\frac{\partial}{\partial a}`$ for other forms
 
 ```math
-e^{A} = \sum_{n = 0}^{\infty} \tfrac{A^{n}}{n !} \quad \sin \theta = {}_{n = 1} \sum^{\infty}_{, 3 , 5 \dots} \tfrac{\theta^{n}}{n !} ( - 1 )^{\tfrac{n - 1}{2}} \quad \cos \theta = {}_{n = 0} \sum^{\infty}_{, 2 , 4 \dots} \tfrac{\theta^{n}}{n !} ( - 1 )^{\tfrac{n}{2}}
+e^{A} = \sum_{n = 0}^{\infty} \tfrac{A^{n}}{n !} \quad \sin \theta = \sum_{n = 1 , 3 , 5 \dots}^{\infty} \tfrac{\theta^{n}}{n !} ( - 1 )^{\tfrac{n - 1}{2}} \quad \cos \theta = \sum_{n = 0 , 2 , 4 \dots}^{\infty} \tfrac{\theta^{n}}{n !} ( - 1 )^{\tfrac{n}{2}}
 ```
 
 ```math

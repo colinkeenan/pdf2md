@@ -1679,7 +1679,7 @@ R_{z} ( \theta ) = e^{i \tfrac{\theta}{2} \sigma_{z}} = \begin{pmatrix} \sum_{n 
 ```
 
 ```math
-R_{y} ( \theta ) = \begin{pmatrix} \sum_{n = 0 , 2 , 4 \dots}^{\infty} \frac{( \tfrac{i\theta}{2} )^{n}}{n !} & - i_{n = 1} \sum^{\infty}_{, 3 , 5} \frac{( \tfrac{i\theta}{2} )^{n}}{n !} \\ i \sum_{n = 1 , 3 , 5 \dots}^{\infty} \frac{( \tfrac{i\theta}{2} )^{n}}{n !} & \sum_{n = 0 , 2 , 4 \dots}^{\infty} \frac{{}^{\dots} ( \tfrac{i\theta}{2} )^{n}}{n !} \end{pmatrix} = \begin{pmatrix} \cos \tfrac{\theta}{2} & \sin \tfrac{\theta}{2} \\ - \sin \tfrac{\theta}{2} & \cos \tfrac{\theta}{2} \end{pmatrix}
+R_{y} ( \theta ) = \begin{pmatrix} \sum_{n = 0 , 2 , 4 \dots}^{\infty} \frac{( \tfrac{i\theta}{2} )^{n}}{n !} & - i \sum_{n = 1 , 3 , 5}^{\infty} \frac{( \tfrac{i\theta}{2} )^{n}}{n !} \\ i \sum_{n = 1 , 3 , 5 \dots}^{\infty} \frac{( \tfrac{i\theta}{2} )^{n}}{n !} & \sum_{n = 0 , 2 , 4 \dots}^{\infty} \frac{{}^{\dots} ( \tfrac{i\theta}{2} )^{n}}{n !} \end{pmatrix} = \begin{pmatrix} \cos \tfrac{\theta}{2} & \sin \tfrac{\theta}{2} \\ - \sin \tfrac{\theta}{2} & \cos \tfrac{\theta}{2} \end{pmatrix}
 ```
 
 <div align="right"><a href="book.pdf#page=277" target="_blank" title="This page in the PDF"><sup>[p. 277]</sup></a></div>

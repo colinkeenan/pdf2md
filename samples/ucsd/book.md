@@ -4583,7 +4583,7 @@ dk = \frac{\pi}{L} dn.
 If we define $`A ( k ) = \sqrt{\frac{2}{\pi}} La_{n}`$, we can make the transform come out with the constants we want.
 
 ```math
-f ( x ) = {}_{n =} \sum^{\infty}_{-\infty} a_{n} e^{\tfrac{in\pi x}{L}} \quad \text{ Standard Fourier Series }
+f ( x ) = \sum_{n = -\infty}^{\infty} a_{n} e^{\tfrac{in\pi x}{L}} \quad \text{ Standard Fourier Series }
 ```
 
 ```math
@@ -4599,7 +4599,7 @@ A_{n} = \tfrac{1}{\sqrt{2 \pi}} \int_{- L}^{L} f ( x ) e \tfrac{- in\pi x}{L} dx
 ```
 
 ```math
-f ( x ) = \sqrt{\frac{\pi}{2}} \tfrac{1}{L}_{\infty n =} \sum_{-\infty}^{\infty} A_{n} e \tfrac{in\pi x}{L} \quad f \text{ stays the same }
+f ( x ) = \sqrt{\frac{\pi}{2}} \tfrac{1}{L} \sum_{\infty n = -\infty}^{\infty} A_{n} e \tfrac{in\pi x}{L} \quad f \text{ stays the same }
 ```
 
 <div align="center">
@@ -14435,7 +14435,7 @@ R_{z} ( \theta ) = e^{i \tfrac{\theta}{2} \sigma_{z}} = \begin{pmatrix} \sum_{n 
 ```
 
 ```math
-R_{y} ( \theta ) = \begin{pmatrix} \sum_{n = 0 , 2 , 4 \dots}^{\infty} \frac{( \tfrac{i\theta}{2} )^{n}}{n !} & - i_{n = 1} \sum^{\infty}_{, 3 , 5} \frac{( \tfrac{i\theta}{2} )^{n}}{n !} \\ i \sum_{n = 1 , 3 , 5 \dots}^{\infty} \frac{( \tfrac{i\theta}{2} )^{n}}{n !} & \sum_{n = 0 , 2 , 4 \dots}^{\infty} \frac{{}^{\dots} ( \tfrac{i\theta}{2} )^{n}}{n !} \end{pmatrix} = \begin{pmatrix} \cos \tfrac{\theta}{2} & \sin \tfrac{\theta}{2} \\ - \sin \tfrac{\theta}{2} & \cos \tfrac{\theta}{2} \end{pmatrix}
+R_{y} ( \theta ) = \begin{pmatrix} \sum_{n = 0 , 2 , 4 \dots}^{\infty} \frac{( \tfrac{i\theta}{2} )^{n}}{n !} & - i \sum_{n = 1 , 3 , 5}^{\infty} \frac{( \tfrac{i\theta}{2} )^{n}}{n !} \\ i \sum_{n = 1 , 3 , 5 \dots}^{\infty} \frac{( \tfrac{i\theta}{2} )^{n}}{n !} & \sum_{n = 0 , 2 , 4 \dots}^{\infty} \frac{{}^{\dots} ( \tfrac{i\theta}{2} )^{n}}{n !} \end{pmatrix} = \begin{pmatrix} \cos \tfrac{\theta}{2} & \sin \tfrac{\theta}{2} \\ - \sin \tfrac{\theta}{2} & \cos \tfrac{\theta}{2} \end{pmatrix}
 ```
 
 <div align="right"><a href="book.pdf#page=277" target="_blank" title="This page in the PDF"><sup>[p. 277]</sup></a></div>
@@ -27610,7 +27610,7 @@ k_{B} = 1 . 3 8 \times 1 0^{- 1 6} \text{ erg } /^{\circ} K \quad g_{e} = 2 + \t
 $`\int_{-\infty}^{\infty} dxf ( x ) \delta ( x - a ) = f ( a ) \int_{-\infty}^{\infty} dxe^{- ax^{2}} = \sqrt{\frac{\pi}{a}}`$ use $`\frac{\partial}{\partial a}`$ for other forms
 
 ```math
-e^{A} = \sum_{n = 0}^{\infty} \tfrac{A^{n}}{n !} \quad \sin \theta = {}_{n = 1} \sum^{\infty}_{, 3 , 5 \dots} \tfrac{\theta^{n}}{n !} ( - 1 )^{\tfrac{n - 1}{2}} \quad \cos \theta = {}_{n = 0} \sum^{\infty}_{, 2 , 4 \dots} \tfrac{\theta^{n}}{n !} ( - 1 )^{\tfrac{n}{2}}
+e^{A} = \sum_{n = 0}^{\infty} \tfrac{A^{n}}{n !} \quad \sin \theta = \sum_{n = 1 , 3 , 5 \dots}^{\infty} \tfrac{\theta^{n}}{n !} ( - 1 )^{\tfrac{n - 1}{2}} \quad \cos \theta = \sum_{n = 0 , 2 , 4 \dots}^{\infty} \tfrac{\theta^{n}}{n !} ( - 1 )^{\tfrac{n}{2}}
 ```
 
 ```math
