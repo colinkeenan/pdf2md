@@ -1338,6 +1338,8 @@ pub(crate) fn write_figures(book: &Book, dir: &Path) {
         let px = |v: f32| (v / 1.5 * dpi / 72.0).round().max(0.0) as i64;
         // (on the page itself: see `layout::Page::shift`)
         let shift = book.shifts.get(&page).copied().unwrap_or(0.0);
+        // (… and where it was before the page was unfolded from two columns)
+        let area = &book.unfolds.get(&page).map_or(*area, |s| crate::columns::printed(s, area));
         let (x, y) = (px(area.left + shift - pad), px(area.top - pad));
         let (w, h) = (px(area.right - area.left + 2.0 * pad), px(area.bottom - area.top + 2.0 * pad));
         let stem = file.with_extension("");

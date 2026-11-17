@@ -37,6 +37,8 @@ pub struct Stats {
     /// Hyphenated words seen inside lines ("wave-function"), used to decide
     /// whether a hyphen at a line end is part of the word.
     pub hyphenated: HashSet<String>,
+    /// An article, not a book: see [`stats`].
+    pub article: bool,
 }
 
 /// The most common value (rounded to whole pixels).
@@ -88,7 +90,9 @@ pub(crate) fn is_chapter_label(t: &str) -> bool {
 
 pub fn stats(doc: &Doc, pages: &[PageInfo]) -> Stats {
     let body = doc.body_size;
-    let full = |p: &PageInfo, l: &Line| l.size == body && l.right - l.left > 0.5 * p.width;
+    // (in two columns a full line is a column wide)
+    let share = if doc.gutter.is_some() { 0.3 } else { 0.5 };
+    let full = |p: &PageInfo, l: &Line| l.size == body && l.right - l.left > share * p.width;
     let left = mode(pages.iter().flat_map(|p| p.lines.iter().filter(|l| full(p, l)).map(|l| l.left)))
         .unwrap_or(0.0);
     let right = mode(pages.iter().flat_map(|p| p.lines.iter().filter(|l| full(p, l)).map(|l| l.right)))
@@ -183,7 +187,52 @@ pub fn stats(doc: &Doc, pages: &[PageInfo]) -> Stats {
         }
     }
 
-    Stats { left, right, body, spacing, chapter_size, section_size, toc_pages, hyphenated }
+    // An article: no chapters, and sections with numbers of their own
+    // ("IV. THE UNISTOCHASTIC FORMULATION"). Its sections are what the
+    // chapters are in a book: each a file of its own.
+    let sections = pages.iter().flat_map(|p| p.lines.iter()).filter(|l| section_title(doc, l).is_some()).count();
+    let article = chapter_size.is_none() && sections >= 2;
+    let chapter_size = if article { Some(ARTICLE_SECTION) } else { chapter_size };
+    if std::env::var_os("PDF2MD_STATSDEBUG").is_some() {
+        eprintln!("STATS left {left} right {right} body {body} spacing {spacing} chapter {chapter_size:?} section {section_size:?} article {article} gutter {:?}", doc.gutter);
+    }
+    Stats { left, right, body, spacing, chapter_size, section_size, toc_pages, hyphenated, article }
+}
+
+/// The size a section title of an article is given: larger than any
+/// type, so that it heads its file as a chapter's title does.
+pub const ARTICLE_SECTION: f32 = 999.0;
+
+fn bold_words(doc: &Doc, l: &Line) -> bool {
+    let words: Vec<_> = l.spans.iter().filter(|s| !doc.is_math(s) && s.text.chars().any(|c| c.is_alphabetic())).collect();
+    !words.is_empty() && words.iter().all(|s| s.bold || crate::layout::is_bold_font(doc.family(s)))
+}
+
+/// The title of a numbered section of an article, in bold: "IV. THE
+/// UNISTOCHASTIC FORMULATION OF QUANTUM THEORY", "2. Method". Its number.
+pub(crate) fn section_title(doc: &Doc, l: &Line) -> Option<u32> {
+    let text = plain_text(l);
+    let (number, title) = text.trim().split_once(". ")?;
+    let n = if !number.is_empty() && number.len() <= 2 && number.chars().all(|c| c.is_ascii_digit()) {
+        number.parse().ok()?
+    } else if !number.is_empty() && number.len() <= 5 && number.chars().all(|c| "IVXL".contains(c)) {
+        roman(number)?
+    } else {
+        return None;
+    };
+    let titled = title.trim().starts_with(char::is_uppercase) && title.chars().count() <= 100 && !title.trim_end().ends_with(['.', ',', ';', ':']);
+    (titled && bold_words(doc, l)).then_some(n)
+}
+
+fn roman(t: &str) -> Option<u32> {
+    let value = |c: char| match c {
+        'I' => 1,
+        'V' => 5,
+        'X' => 10,
+        _ => 50,
+    };
+    let d: Vec<i64> = t.chars().map(value).collect();
+    u32::try_from((0..d.len()).map(|k| if d.get(k + 1).is_some_and(|n| *n > d[k]) { -d[k] } else { d[k] }).sum::<i64>()).ok().filter(|n| *n > 0)
 }
 
 /// "Subject Matter . . . . 1" -> ("Subject Matter", "1").
@@ -1820,6 +1869,15 @@ fn heading_size(
     if crate::links::starts_like_caption(&text) {
         return None;
     }
+    // An article's section: its numbered title, or a title without a
+    // number set as those are, in bold capitals ("ACKNOWLEDGMENTS", and
+    // the second line of a long title).
+    if st.article {
+        let capitals = bold_words(doc, l) && text.chars().filter(|c| c.is_alphabetic()).count() >= 4 && !text.chars().any(|c| c.is_lowercase()) && text.split_whitespace().count() <= 10;
+        if section_title(doc, l).is_some() || capitals {
+            return Some(ARTICLE_SECTION);
+        }
+    }
     if big_text_line(doc, l, st.body) {
         return Some(l.size);
     }
@@ -2082,6 +2140,9 @@ struct Builder<'a> {
     para_centered: bool,
     /// how far its most inset line is in from the margins
     para_inset: f32,
+    /// How far every line of the open paragraph is in from the left
+    /// margin and from the right one, at least (a quotation: both).
+    para_in: (f32, f32),
     /// where in `para` the line breaks stand that the book made on purpose
     /// (hard returns): kept whether or not the paragraph is centered
     hard: Vec<usize>,
@@ -2104,10 +2165,34 @@ impl Builder<'_> {
             let centered = self.para_centered && self.para_inset >= 2.5 * self.st.body;
             // not centered after all: its kept line breaks become spaces
             // (but not the hard returns)
-            let p = if centered {
+            let p: Vec<Inline> = if centered {
                 p
             } else {
-                p.into_iter().enumerate().map(|(k, i)| if i == Inline::Break && !hard.contains(&k) { Inline::Text(" ".into()) } else { i }).collect()
+                // (… and a word cut at the end of such a line is put together)
+                let mut out: Vec<Inline> = Vec::with_capacity(p.len());
+                let mut k = 0;
+                while k < p.len() {
+                    if p[k] == Inline::Break && !hard.contains(&k) {
+                        let cut = match (out.last(), p.get(k + 1)) {
+                            (Some(Inline::Text(a)), Some(Inline::Text(b))) => {
+                                let word: String = a.trim_end_matches('-').chars().rev().take_while(|c| c.is_alphabetic()).collect::<Vec<_>>().into_iter().rev().collect();
+                                let next: String = b.chars().take_while(|c| c.is_alphabetic()).collect();
+                                a.ends_with('-') && !word.is_empty() && b.starts_with(|c: char| c.is_lowercase()) && !self.st.hyphenated.contains(&format!("{word}-{next}").to_lowercase())
+                            }
+                            _ => false,
+                        };
+                        match (cut, out.last_mut()) {
+                            (true, Some(Inline::Text(a))) => {
+                                a.pop();
+                            }
+                            _ => out.push(Inline::Text(" ".into())),
+                        }
+                    } else {
+                        out.push(p[k].clone());
+                    }
+                    k += 1;
+                }
+                out
             };
             // (a book with math fonts sets a formula's figures and brackets
             // in the text's font: the pieces of one formula, put together)
@@ -2130,6 +2215,15 @@ impl Builder<'_> {
                 let block = Block::Equation { latex, tag: None, source: Some(key.to_string()) };
                 self.out.push(Blk { block, page: self.para_page, centered: false });
             } else {
+                // A paragraph of several lines, each set in from both
+                // margins and not centered: a quotation set apart. Written
+                // as a block quotation ("> "). Not in a bulleted item,
+                // whose lines are all set in.
+                let (left, right) = self.para_in;
+                let quoted = !centered && self.item.is_none() && self.para_lines >= 2 && left >= 0.8 * self.st.body && right >= 0.8 * self.st.body && left <= 6.0 * self.st.body && !self.index_mode;
+                // (not written yet: the mark is escaped on the way out, and
+                // the test also takes the set-in parts of problems in books)
+                let _ = quoted;
                 self.out.push(Blk { block: Block::Para(p), page: self.para_page, centered });
             }
         }
@@ -2214,7 +2308,10 @@ impl Builder<'_> {
             // book's: the line above is one, full to the right margin; not a
             // name set to the right over its place)
             let first_line = self.para_lines == 1 && p.left > l.left && p.left - l.left <= 2.0 * st.body && p.right >= st.right - st.body && !p.ends_sentence && p.right - p.left >= 0.6 * (st.right - st.left);
-            return !(hanging || same_indent || first_line);
+            // (… or a quotation's: set in from both margins, its lines end
+            // where this one ends, short of the right margin)
+            let quoted_first = self.para_lines == 1 && p.left > l.left && p.left - l.left <= 2.0 * st.body && (p.right - l.right).abs() <= step && l.right < st.right - st.body && !p.ends_sentence;
+            return !(hanging || same_indent || first_line || quoted_first);
         }
         false
     }
@@ -2238,6 +2335,20 @@ impl Builder<'_> {
             if ha == hb && (ha.starts_with("http") || ha.starts_with("mailto:")) {
                 a.push_str(b);
                 self.para.extend(inl.into_iter().skip(1));
+                return;
+            }
+        }
+        // (a word cut at the end of a line that holds a linked reference:
+        // the link's mark stands behind the line's text, between the two
+        // halves of the word. The hyphen goes; the mark stays where it is.)
+        if let ([.., Inline::Text(a), Inline::PageLink(_)], Some(Inline::Text(b))) = (self.para.as_mut_slice(), inl.first()) {
+            let a_word: String = a.trim_end_matches('-').chars().rev().take_while(|c| c.is_alphabetic()).collect::<Vec<_>>().into_iter().rev().collect();
+            if a.ends_with('-') && !a_word.is_empty() && b.starts_with(|c: char| c.is_lowercase()) {
+                let b_word: String = b.chars().take_while(|c| c.is_alphabetic()).collect();
+                if !self.st.hyphenated.contains(&format!("{a_word}-{b_word}").to_lowercase()) {
+                    a.pop();
+                }
+                self.para.extend(inl);
                 return;
             }
         }
@@ -2420,6 +2531,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
         hard: Vec::new(),
         item: None,
         para_inset: 0.0,
+        para_in: (0.0, 0.0),
     };
     // printed page marks (ebook PDFs without page numbers; see layout.rs)
     let use_marks = pages.iter().all(|p| p.label.is_none());
@@ -2749,7 +2861,8 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 && prev_top.is_some_and(|p| l.top - p > 2.0 * l.size)
                 && page.lines.iter().any(|o| o.size > l.size + 0.5)
                 && is_centered(l, st)
-                && heading_size(doc, l, prev_top, next_top, before_display, st).is_some();
+                // (not the title of an article's first section, on its first page)
+                && heading_size(doc, l, prev_top, next_top, before_display, st).is_some_and(|s| s != ARTICLE_SECTION);
             if byline {
                 b.flush();
                 b.close_item();
@@ -2810,6 +2923,13 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 continue;
             }
             last_heading = None;
+            // (the next column of a page that was unfolded goes on as a new
+            // page does: no space above its first line is a paragraph's end)
+            if let Some(prev) = b.prev.as_mut() {
+                if prev.page == pi && doc.pages[page.index].turns.iter().any(|t| prev.top < *t && l.top >= *t) {
+                    prev.page = usize::MAX;
+                }
+            }
             let mut inl = line_inlines(doc, l, st);
             // A bulleted item: the line that opens with "•" begins it; the
             // lines under it are set in to where its words begin, and so
@@ -2889,6 +3009,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 b.para = inl;
                 b.para_centered = is_centered(l, st);
                 b.para_inset = inset(l, st);
+                b.para_in = (l.left - st.left, st.right - l.right);
             } else {
                 if let Some(a) = b.anchor.take() {
                     b.para.push(Inline::Anchor(a));
@@ -2907,6 +3028,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 }
                 b.para_centered &= is_centered(l, st);
                 b.para_inset = b.para_inset.max(inset(l, st));
+                b.para_in = (b.para_in.0.min(l.left - st.left), b.para_in.1.min(st.right - l.right));
             }
             b.para_lines += 1;
             // (the bullet's box begins higher than the words of its line:
@@ -3072,7 +3194,7 @@ mod table_tests {
 
     #[test]
     fn the_rows_of_a_table_are_found_by_how_its_cells_stand() {
-        let st = Stats { left: 0.0, right: 500.0, body: 25.0, spacing: 26.0, chapter_size: None, section_size: None, toc_pages: Default::default(), hyphenated: Default::default() };
+        let st = Stats { left: 0.0, right: 500.0, body: 25.0, spacing: 26.0, chapter_size: None, section_size: None, toc_pages: Default::default(), hyphenated: Default::default(), article: false };
         // cells in the middle of their rows: a name beside two and three lines
         let names = [line("ket", 838.0), line("observable", 906.0), line("base", 998.0)];
         let texts = [line("a1", 826.0), line("a2", 852.0), line("b1", 880.0), line("b2", 906.0), line("b3", 932.0), line("c1", 960.0), line("c2", 986.0), line("c3", 1012.0), line("c4", 1037.0)];

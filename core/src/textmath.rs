@@ -805,6 +805,7 @@ mod tests {
             pages: Vec::new(),
             body_size: 22.0,
             sideways: Vec::new(),
+            gutter: None,
         };
         let st = Stats {
             left: 100.0,
@@ -815,6 +816,7 @@ mod tests {
             section_size: None,
             toc_pages: Default::default(),
             hyphenated: Default::default(),
+            article: false,
         };
         let mut x = 100.0;
         let mut spans = Vec::new();

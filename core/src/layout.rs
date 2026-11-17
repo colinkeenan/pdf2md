@@ -158,6 +158,12 @@ pub struct Page {
     /// `even_margins`); 0 on most pages. A place on the PDF page itself is
     /// this much further right.
     pub shift: f32,
+    /// The printed page's height, where the page was unfolded from two
+    /// columns into one (see [`crate::columns`]); else 0.
+    pub unfolded: f32,
+    /// … and where, on the unfolded page, a column begins that goes on
+    /// from the one before it (the right column under the left one).
+    pub turns: Vec<f32>,
 }
 
 /// A frame drawn in lines around text, or a grid of such lines: where its
@@ -190,6 +196,9 @@ pub struct Doc {
     pub body_size: f32,
     /// Pages whose text is set sideways (see [`crate::upright`]).
     pub sideways: Vec<(u32, bool)>,
+    /// Where the gutter is, in a document set in two columns
+    /// (see [`crate::columns`]).
+    pub gutter: Option<f32>,
 }
 
 /// Fonts that only ever contain math symbols. TeX books use the Computer
@@ -2791,15 +2800,25 @@ pub fn parse_xml_with(xml: &str, lost: &HashMap<String, bool>) -> Result<Doc, St
     }
     let body_size = counts.iter().max_by_key(|(_, c)| *c).map_or(0.0, |(s, _)| *s);
 
+    // (a document in two columns: the lines of each column are found on
+    // their own, so that a line of one never takes pieces of the other
+    // that stand at nearly its height — see `crate::columns`)
+    let gutter = crate::columns::gutter_of(&pages.iter().map(|(_, width, _, spans)| (*width, spans.as_slice())).collect::<Vec<_>>());
+    let big_symbol = |s: &Span| fonts.get(s.font).is_some_and(|f| f.family.starts_with("CMEX"));
     let pages = pages
         .into_iter()
         .map(|(number, width, height, spans)| Page {
             number,
             width,
             height,
-            lines: group_lines(spans, &size_of, &|s: &Span| {
-                fonts.get(s.font).is_some_and(|f| f.family.starts_with("CMEX"))
-            }),
+            lines: match gutter {
+                Some(g) => {
+                    let mut lines: Vec<Line> = crate::columns::parts(spans, g).into_iter().flat_map(|part| group_lines(part, &size_of, &big_symbol)).collect();
+                    lines.sort_by(|a, b| a.top.total_cmp(&b.top));
+                    lines
+                }
+                None => group_lines(spans, &size_of, &big_symbol),
+            },
             rules: Vec::new(),
             shades: Vec::new(),
             figures: Vec::new(),
@@ -2809,10 +2828,12 @@ pub fn parse_xml_with(xml: &str, lost: &HashMap<String, bool>) -> Result<Doc, St
             marks: Vec::new(),
             codes: Vec::new(),
             shift: 0.0,
+            unfolded: 0.0,
+            turns: Vec::new(),
         })
         .collect();
 
-    let mut doc = Doc { fonts, pages, body_size, sideways: Vec::new() };
+    let mut doc = Doc { fonts, pages, body_size, sideways: Vec::new(), gutter };
     split_accents(&mut doc);
     accents_over_letters(&mut doc);
     blank_pages(&mut doc);

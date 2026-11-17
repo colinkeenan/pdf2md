@@ -103,8 +103,13 @@ pub fn prepare(doc: &Doc) -> Vec<PageInfo> {
                 // (a page number alone, with that gap under it, is the
                 // page's number a little further down, too: on wider
                 // paper the head stands lower)
-                let number_alone = is_page_number(plain_text(first).trim()) && first.top < p.height * 0.13 && lines.len() > 1;
-                if (first.top < p.height * 0.09 || number_alone) && gap_ok {
+                // (of the printed page, where it was unfolded from two columns)
+                let printed = if p.unfolded > 0.0 { p.unfolded } else { p.height };
+                let number_alone = is_page_number(plain_text(first).trim()) && first.top < printed * 0.13 && lines.len() > 1;
+                // (the title that opens an article, on its first page, in
+                // larger type and with no page number, is no running head)
+                let title = index == 0 && first.size > doc.body_size + 0.5 && !plain_text(first).split_whitespace().any(is_page_number);
+                if (first.top < printed * 0.09 || number_alone) && gap_ok && !title {
                     let text = plain_text(first);
                     let words: Vec<&str> = text.split_whitespace().collect();
                     if words.len() <= 15 {

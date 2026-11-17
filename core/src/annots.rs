@@ -20,6 +20,8 @@ pub struct LinkAnnot {
     pub dest_page: u32,
     /// height on that page it goes to, if the link says
     pub dest_top: Option<f32>,
+    /// … and how far in from the left (which column of two)
+    pub dest_left: Option<f32>,
 }
 
 /// The internal links of every page, by page number. Empty if the PDF
@@ -67,6 +69,10 @@ pub fn read_links(path: &Path) -> HashMap<u32, Vec<LinkAnnot>> {
                 Some(b"FitH") | Some(b"FitBH") => arr.get(2).and_then(num).map(|y| (dh - y) * 1.5),
                 _ => None,
             };
+            let dest_left = match arr.get(1).and_then(|o| o.as_name().ok()) {
+                Some(b"XYZ") => arr.get(2).and_then(num).map(|x| x * 1.5),
+                _ => None,
+            };
             let (x1, y1, x2, y2) = (r[0].min(r[2]), r[1].min(r[3]), r[0].max(r[2]), r[1].max(r[3]));
             out.entry(n).or_default().push(LinkAnnot {
                 left: x1 * 1.5,
@@ -75,6 +81,7 @@ pub fn read_links(path: &Path) -> HashMap<u32, Vec<LinkAnnot>> {
                 bottom: (h - y1) * 1.5,
                 dest_page,
                 dest_top,
+                dest_left,
             });
         }
     }

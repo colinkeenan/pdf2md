@@ -21,6 +21,7 @@ pub mod course;
 pub mod emit;
 pub mod epub;
 pub mod upright;
+pub mod columns;
 pub mod glyphs;
 pub mod layout;
 pub mod links;
@@ -243,6 +244,9 @@ pub struct Book {
     /// `layout::Page::shift`): what is cut from such a page is cut that
     /// much further right.
     pub shifts: std::collections::HashMap<u32, f32>,
+    /// Pages unfolded from two columns into one (see [`columns`]): where
+    /// each stretch of such a page is on the printed page.
+    pub unfolds: std::collections::HashMap<u32, Vec<columns::Segment>>,
     /// The book's title (for the top of book.md).
     pub title: String,
     /// The reader's notes and prose fixes from an earlier conversion, put
@@ -383,7 +387,9 @@ pub fn convert_pdf_as(path: &Path, pages: Option<(u32, u32)>, pictures: bool) ->
     } else {
         layout::read_drawings(&mut doc, path, pages);
         progress::report(progress::Step::Book, 0, 1);
+        let unfolds = columns::unfold(&mut doc, path);
         let mut book = convert_doc(&doc);
+        book.unfolds = unfolds;
         book.shifts = doc.pages.iter().filter(|p| p.shift != 0.0).map(|p| (p.number, p.shift)).collect();
         ocr::read_picture_tables(&mut book, path);
         book
