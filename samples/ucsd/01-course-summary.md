@@ -1625,7 +1625,7 @@ The Hamiltonian for the Maxwell field may be used to quantize the field (See sec
 We **decompose the radiation field into its Fourier components**
 
 ```math
-\vec{A} ( \vec{x} , t ) = \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \hat{\epsilon}^{( \alpha )} \left( c_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + c_{k,\alpha}^{*} ( t ) e^{- i \vec{k} \cdot \vec{x}} \right)
+\vec{A} ( \vec{x} , t ) = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \hat{\epsilon}^{( \alpha )} \left( c_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + c_{k,\alpha}^{*} ( t ) e^{- i \vec{k} \cdot \vec{x}} \right)
 ```
 
 where $`\hat{\epsilon}^{( \alpha )}`$ are real unit vectors, and $`c_{k,\alpha}`$ is the coefficient of the wave with wave vector $`\vec{k}`$ and polarization vector $`\hat{\epsilon}^{( \alpha )}`$. Once the wave vector is chosen, the two polarization vectors must be picked so that $`\hat{\epsilon}^{( 1 )} , \hat{\epsilon}^{( 2 )}`$, and $`\vec{k}`$ **form a right handed orthogonal system**.
@@ -2209,7 +2209,7 @@ The Dirac equation has some unexpected phenomena which we can derive. Velocity e
 Localized states, expanded in plane waves, contain all four components of the plane wave solutions. Mixing components 1 and 2 with components 3 and 4 gives rise to **Zitterbewegung**, the very rapid oscillation of an electrons velocity and position.
 
 ```math
-\begin{aligned} \langle v k \rangle &= \sum_{\vec{p}} \sum_{r = 1}^{4} | c_{\vec{p} ,r} |^{2} \frac{p_{k} c^{2}}{E} \\ & \quad + \sum_{\vec{p}} \sum_{r = 1 r^{\prime} = 3}^{2} \sum^{4} \frac{mc^{3}}{| E |} \left[ c_{\vec{p} ,r^{\prime}}^{*} c_{\vec{p} ,r} u_{\vec{p}}^{( r^{\prime} ) \dagger} i\gamma_{4} \gamma_{k} u_{\vec{p}}^{( r )} e^{- 2 i | E | t/ \hbar} c_{\vec{p} ,r^{\prime}} c_{\vec{p} ,r}^{*} u_{\vec{p}}^{( r ) \dagger} i\gamma_{4} \gamma_{k} u_{\vec{p}}^{( r^{\prime} )} e^{2 i | E | t/ \hbar} \right] \end{aligned}
+\begin{aligned} \langle v k \rangle &= \sum_{\vec{p}} \sum_{r = 1}^{4} | c_{\vec{p} ,r} |^{2} \frac{p_{k} c^{2}}{E} \\ & \quad + \sum_{\vec{p}} \sum_{r = 1}^{2} \sum_{r^{\prime} = 3}^{4} \frac{mc^{3}}{| E |} \left[ c_{\vec{p} ,r^{\prime}}^{*} c_{\vec{p} ,r} u_{\vec{p}}^{( r^{\prime} ) \dagger} i\gamma_{4} \gamma_{k} u_{\vec{p}}^{( r )} e^{- 2 i | E | t/ \hbar} c_{\vec{p} ,r^{\prime}} c_{\vec{p} ,r}^{*} u_{\vec{p}}^{( r ) \dagger} i\gamma_{4} \gamma_{k} u_{\vec{p}}^{( r^{\prime} )} e^{2 i | E | t/ \hbar} \right] \end{aligned}
 ```
 
 The last sum which contains the cross terms between negative and positive energy represents **ex-** **tremely high frequency oscillations in the expected value of the velocity**, known as Zitterbewegung. The expected value of the position has similar rapid oscillations.
@@ -2289,7 +2289,7 @@ H = \int \psi^{\dagger} \left( \hbar c\gamma_{4} \gamma_{k} \frac{\partial}{\par
 We may expand $`\psi`$ in plane waves to understand the Hamiltonian as a sum of oscillators.
 
 ```math
-\psi ( \vec{x} , t ) = \sum_{\vec{p} \quad r = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{r = 1}^{4} \sqrt{\frac{mc^{2}}{| E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
@@ -2305,15 +2305,15 @@ H = \sum_{\vec{p}} \sum_{r = 1}^{4} Ec_{\vec{p} ,r}^{*} c_{\vec{p} ,r} .
 By analogy with electromagnetism, we can replace the Fourier coefficients for the Dirac plane waves by operators.
 
 ```math
-H = \sum_{\vec{p} \quad r = 1} \sum^{4} Eb_{\vec{p}}^{( r )^{\dagger}} b_{\vec{p}}^{( r )}
+H = \sum_{\vec{p}} \sum_{r = 1}^{4} Eb_{\vec{p}}^{( r )^{\dagger}} b_{\vec{p}}^{( r )}
 ```
 
 ```math
-\psi ( \vec{x} , t ) = \sum_{\vec{p} \quad r = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E | V}} b_{\vec{p}}^{( r )} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{r = 1}^{4} \sqrt{\frac{mc^{2}}{| E | V}} b_{\vec{p}}^{( r )} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p} \quad r = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E | V}}_{\dagger} b_{\vec{p}}^{( r )^{\dagger}} u_{\vec{p}}^{( r ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{r = 1}^{4} \sqrt{\frac{mc^{2}}{| E | V}}_{\dagger} b_{\vec{p}}^{( r )^{\dagger}} u_{\vec{p}}^{( r ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 The **creation an annihilation operators** $`b_{\vec{p}}^{( r )}`$ and $`b_{\vec{p}}^{( r )}`$ satisfy **anticommutation relations**.
@@ -2355,19 +2355,19 @@ These **anti-commute** with everything else with the exception that
 Now rewrite the fields and Hamiltonian.
 
 ```math
-\psi ( \vec{x} , t ) = \sum_{\vec{p} \quad s = 1} \sum^{2} \sqrt{\frac{mc^{2}}{EV}} \left( b_{\vec{p}}^{( s )} u_{\vec{p}}^{( s )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s ) \dagger} v_{\vec{p}}^{( s )} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
+\psi ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{s = 1}^{2} \sqrt{\frac{mc^{2}}{EV}} \left( b_{\vec{p}}^{( s )} u_{\vec{p}}^{( s )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s ) \dagger} v_{\vec{p}}^{( s )} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
 ```
 
 ```math
-\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p} \quad s = 1} \sum^{2} \sqrt{\frac{mc^{2}}{EV}} \left( b_{\vec{p}}^{( s ) \dagger} u_{\vec{p}}^{( s ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s )} v_{\vec{p}}^{( s ) \dagger} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
+\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{s = 1}^{2} \sqrt{\frac{mc^{2}}{EV}} \left( b_{\vec{p}}^{( s ) \dagger} u_{\vec{p}}^{( s ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s )} v_{\vec{p}}^{( s ) \dagger} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
 ```
 
 ```math
-H = \sum_{\vec{p} \quad s = 1} \sum^{2} E \left( b_{\vec{p}}^{( s )^{\dagger}} b_{\vec{p}}^{( s )} - d_{\vec{p}}^{( s )} d_{\vec{p}}^{( s )^{\dagger}} \right)
+H = \sum_{\vec{p}} \sum_{s = 1}^{2} E \left( b_{\vec{p}}^{( s )^{\dagger}} b_{\vec{p}}^{( s )} - d_{\vec{p}}^{( s )} d_{\vec{p}}^{( s )^{\dagger}} \right)
 ```
 
 ```math
-= \sum_{\vec{p} \quad s = 1} \sum^{2} E \left( b_{\vec{p}}^{( s )^{\dagger}} b_{\vec{p}}^{( s )} + d_{\vec{p}}^{( s )^{\dagger}} d_{\vec{p}}^{( s )} - 1 \right)
+= \sum_{\vec{p}} \sum_{s = 1}^{2} E \left( b_{\vec{p}}^{( s )^{\dagger}} b_{\vec{p}}^{( s )} + d_{\vec{p}}^{( s )^{\dagger}} d_{\vec{p}}^{( s )} - 1 \right)
 ```
 
 All the **energies of these states are positive**.

@@ -2161,6 +2161,61 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
     let tol = 0.35 * max;
     let above = clusters(spans, (0..spans.len()).filter(|&i| role[i] == Role::Above).collect(), tol);
     let below = clusters(spans, (0..spans.len()).filter(|&i| role[i] == Role::Below).collect(), tol);
+    // (big signs side by side: the limits of the two, level and close
+    // together, are one group by their places — "p⃗" and "r = 1" under
+    // Σ Σ, "Ω" and "α, μ" under ∫ Σ. It is cut at its widest gaps, one
+    // for each sign more than the first.)
+    let big_signs = |sums_only: bool| -> Vec<(f32, f32)> {
+        let mut v: Vec<(f32, f32)> = bases.iter().map(|&b| &spans[b]).filter(|s| if sums_only { matches!(big_op(s), Some("\\sum" | "\\prod")) } else { big_op(s).is_some() }).map(|s| (s.left, s.right)).collect();
+        v.sort_by(|a, b| a.0.total_cmp(&b.0));
+        v
+    };
+    let (signs, all_signs) = (big_signs(true), big_signs(false));
+    let cut_at_signs = |groups: Vec<Vec<usize>>, under: bool| -> Vec<Vec<usize>> {
+        let mut out = Vec::new();
+        for mut g in groups {
+            let r = range(spans, &g);
+            let over: Vec<&(f32, f32)> = all_signs.iter().filter(|s| overlaps(r, (s.0 - 0.2 * max, s.1 + 0.2 * max))).collect();
+            if over.len() < 2 || !signs.iter().any(|s| overlaps(r, (s.0 - 0.2 * max, s.1 + 0.2 * max))) {
+                out.push(g);
+                continue;
+            }
+            g.sort_by(|&a, &b| spans[a].left.total_cmp(&spans[b].left));
+            // where a cut may fall: before a piece that is no index of the
+            // piece before it (place in the group, middle of the gap)
+            let mut reach = f32::MIN;
+            let mut gaps: Vec<(usize, f32, f32)> = Vec::new();
+            for (k, &i) in g.iter().enumerate() {
+                let index = k > 0 && spans[i].size < 0.9 * spans[g[k - 1]].size && spans[i].left - spans[g[k - 1]].right <= 1.5;
+                if k > 0 && !index && spans[i].left >= reach - 1.0 {
+                    gaps.push((k, (spans[i].left + reach) / 2.0, spans[i].left - reach));
+                }
+                reach = reach.max(spans[i].right);
+            }
+            // for each two signs, the gap nearest the middle between them
+            let mut at: Vec<usize> = over
+                .windows(2)
+                .filter_map(|w| {
+                    let x = (w[0].1 + w[1].0) / 2.0;
+                    // (the limits of sums are set under and over their
+                    // middle; an integral's stand behind it, and its upper
+                    // one may reach over the next sign: "ω_cut−off". Beside
+                    // an integral only lower limits are cut, at a real gap.)
+                    let sums = signs.contains(w[0]) && signs.contains(w[1]);
+                    gaps.iter().filter(|g| sums || (under && g.2 >= 0.15 * max)).min_by(|a, b| (a.1 - x).abs().total_cmp(&(b.1 - x).abs())).map(|g| g.0)
+                })
+                .collect();
+            at.sort();
+            at.dedup();
+            let mut from = 0;
+            for k in at.into_iter().chain([g.len()]) {
+                out.push(g[from..k].to_vec());
+                from = k;
+            }
+        }
+        out
+    };
+    let (above, below) = (cut_at_signs(above, false), cut_at_signs(below, true));
     let mut used_a = vec![false; above.len()];
     let mut used_b = vec![false; below.len()];
     let mut items: Vec<Item> = bracket_items;
@@ -2177,7 +2232,11 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
                     // on its left and end at it: the exponent the sign is in)
                     let (gl, gr) = range(spans, g);
                     let leads_up = gl < s.left - 1.5 * max && gr <= s.left + 0.3 * (s.right - s.left);
-                    if !used[k] && overlaps((gl, gr), r) && !leads_up {
+                    // (nor what stands under the sum sign beside this one,
+                    // nearer that sign's middle)
+                    let (gc, sc) = ((gl + gr) / 2.0, (s.left + s.right) / 2.0);
+                    let neighbours = signs.iter().any(|q| (q.0 - s.left).abs() > 1.0 && overlaps((gl, gr), (q.0 - 0.2 * max, q.1 + 0.2 * max)) && ((q.0 + q.1) / 2.0 - gc).abs() < (sc - gc).abs());
+                    if !used[k] && overlaps((gl, gr), r) && !leads_up && !neighbours {
                         used[k] = true;
                         v.extend(g);
                     }

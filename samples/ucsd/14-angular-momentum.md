@@ -342,13 +342,13 @@ Y_{\ell ( - m )} = ( - 1 )^{m} Y_{\ell m}^{*}
 Any function of $`\theta`$ and $`\varphi`$ can be **expanded in the spherical harmonics**.
 
 ```math
-f ( \theta ,\varphi ) = \sum_{\ell = 0 m = - \ell}^{\infty} \sum^{\ell} C_{\ell m} Y_{\ell m} ( \theta ,\varphi )
+f ( \theta ,\varphi ) = \sum_{\ell = 0}^{\infty} \sum_{m = - \ell}^{\ell} C_{\ell m} Y_{\ell m} ( \theta ,\varphi )
 ```
 
 The spherical harmonics form a **complete set**.
 
 ```math
-\sum_{\ell = 0 m = - \ell}^{\infty} \sum^{\ell} | Y_{\ell m} \rangle \langle Y_{\ell m} | = \sum_{\ell = 0 m = - \ell}^{\infty} \sum^{\ell} | \ell m \rangle \langle \ell m | = 1
+\sum_{\ell = 0}^{\infty} \sum_{m = - \ell}^{\ell} | Y_{\ell m} \rangle \langle Y_{\ell m} | = \sum_{\ell = 0}^{\infty} \sum_{m = - \ell}^{\ell} | \ell m \rangle \langle \ell m | = 1
 ```
 
 When using bra-ket notation, $`| \ell m \rangle`$ is sufficient to identify the state.

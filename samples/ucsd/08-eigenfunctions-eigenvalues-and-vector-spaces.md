@@ -216,11 +216,11 @@ In normal 3D space, we can compute the **dot product between two vectors** using
 In our vector space, we **define the dot product** to be
 
 ```math
-\langle \psi | \varphi \rangle = \langle \sum_{i = 1}^{\infty} \alpha_{i} \psi_{i} | \sum_{j = 1}^{\infty} \beta_{j} \psi_{j} \rangle = \sum_{i = 1 j = 1}^{\infty} \sum^{\infty} \alpha_{i}^{*} \beta_{j} \langle \psi_{i} | \psi_{j} \rangle
+\langle \psi | \varphi \rangle = \langle \sum_{i = 1}^{\infty} \alpha_{i} \psi_{i} | \sum_{j = 1}^{\infty} \beta_{j} \psi_{j} \rangle = \sum_{i = 1}^{\infty} \sum_{j = 1}^{\infty} \alpha_{i}^{*} \beta_{j} \langle \psi_{i} | \psi_{j} \rangle
 ```
 
 ```math
-= \sum_{i = 1 j = 1}^{\infty} \sum^{\infty} \alpha_{i}^{*} \beta_{j} \delta_{ij} = \sum_{i = 1}^{\infty} \alpha_{i}^{*} \beta_{i}
+= \sum_{i = 1}^{\infty} \sum_{j = 1}^{\infty} \alpha_{i}^{*} \beta_{j} \delta_{ij} = \sum_{i = 1}^{\infty} \alpha_{i}^{*} \beta_{i}
 ```
 
 We also can compute the dot product from the components of the vectors. Our vector space is a little bit different because of the complex conjugate involved in the definition of our dot product.

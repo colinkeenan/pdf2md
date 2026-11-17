@@ -14,7 +14,8 @@
 //! * **Fixes of a displayed equation built from the PDF's text**: the
 //!   corrected ```` ```math ```` block under a mark that holds the equation
 //!   as converted, `<!-- pdf2md:fix as converted -->`. Every block of the
-//!   chapter that is converted to that LaTeX again is replaced. An alert
+//!   chapter that is converted to that LaTeX again is replaced (by the
+//!   mark alone where the block was no equation of the book). An alert
 //!   that begins "**Edited by Claude.**" right under the block is part of
 //!   the fix and goes wherever the fix goes.
 //!
@@ -99,10 +100,15 @@ fn eq_fix_ranges(text: &str) -> Vec<(usize, usize, String)> {
         if i > 0 && !text[..i].ends_with('\n') {
             continue;
         }
-        let Some(close) = text[from..].find(" -->\n\n```math\n").map(|c| from + c) else { continue };
+        let Some(close) = text[from..].find(" -->").map(|c| from + c) else { continue };
         let was = unescape(&text[from..close]);
-        let body = close + " -->\n\n```math\n".len();
-        let Some(mut end) = text[body..].find("\n```").map(|e| body + e + 4) else { continue };
+        // (the mark alone: a block that was no equation of the book, taken out)
+        let mut end = close + 4;
+        if text[end..].starts_with("\n\n```math\n") {
+            let body = end + "\n\n```math\n".len();
+            let Some(e) = text[body..].find("\n```").map(|e| body + e + 4) else { continue };
+            end = e;
+        }
         if text[end..].starts_with(BY_CLAUDE) {
             end += 2;
             for line in text[end..].split_inclusive('\n') {
@@ -669,6 +675,13 @@ mod tests {
         let lost = apply(&mut other, &d, Some("c"));
         assert_eq!(lost.len(), 2);
         assert!(lost.iter().any(|n| n.text == fixed));
+        // (a block taken out: its mark alone)
+        let gone = format!("# Ch\n\nSo\n\n{}\n\nEnd.\n", eq_fix_mark("{}_{y} \\quad 0"));
+        let d = collect_file(&gone, &|_| Some("c".into()));
+        assert_eq!((d.eqs.len(), d.eqs[0].was.as_str()), (1, "{}_{y} \\quad 0"));
+        let mut new = "# Ch\n\nSo\n\n```math\n{}_{y} \\quad 0\n```\n\nEnd.\n".to_string();
+        assert!(apply(&mut new, &d, Some("c")).is_empty());
+        assert_eq!(new, gone);
     }
 
     #[test]

@@ -76,7 +76,7 @@ We will now study the radiation field in a region with no sources so that $`\vec
 Our goal is to write the Hamiltonian for the radiation field in terms of a sum of harmonic oscillator Hamiltonians. The first step is to write the radiation field in as simple a way as possible, as a sum of harmonic components. We will work in a cubic volume $`V = L^{3}`$ and apply **periodic boundary** **conditions** on our electromagnetic waves. We also assume for now that there are **no sources inside** **the region** so that we can make a gauge transformation to make $`A_{0}`$ = 0 and hence $`\vec{\nabla} \cdot \vec{A}`$ = 0. We **decompose the field into its Fourier components** at $`t`$ = 0
 
 ```math
-\vec{A} ( \vec{x} , t = 0 ) = \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \hat{\epsilon}^{( \alpha )} \left( c_{k,\alpha} ( t = 0 ) e^{i \vec{k} \cdot \vec{x}} + c_{k,\alpha}^{*} ( t = 0 ) e^{- i \vec{k} \cdot \vec{x}} \right)
+\vec{A} ( \vec{x} , t = 0 ) = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \hat{\epsilon}^{( \alpha )} \left( c_{k,\alpha} ( t = 0 ) e^{i \vec{k} \cdot \vec{x}} + c_{k,\alpha}^{*} ( t = 0 ) e^{- i \vec{k} \cdot \vec{x}} \right)
 ```
 
 where $`\hat{\epsilon}^{( \alpha )}`$ are real unit vectors, and $`c_{k,\alpha}`$ is the coefficient of the wave with wave vector $`\vec{k}`$ and polarization vector $`\hat{\epsilon}^{( \alpha )}`$. Once the wave vector is chosen, the two polarization vectors must be picked so that $`\hat{\epsilon}^{( 1 )} , \hat{\epsilon}^{( 2 )}`$, and $`\vec{k}`$ **form a right handed orthogonal system**. The components of the wave vector must satisfy
@@ -106,7 +106,7 @@ c_{k,\alpha} ( t ) = c_{k,\alpha} ( 0 ) e^{- i\omega t}
 where $`\omega = kc`$. We can now write the **vector potential as a function of position and time**.
 
 ```math
-\vec{A} ( \vec{x} , t ) = \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \hat{\epsilon}^{( \alpha )} \left( c_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + c_{k,\alpha}^{*} ( t ) e^{- i \vec{k} \cdot \vec{x}} \right)
+\vec{A} ( \vec{x} , t ) = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \hat{\epsilon}^{( \alpha )} \left( c_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + c_{k,\alpha}^{*} ( t ) e^{- i \vec{k} \cdot \vec{x}} \right)
 ```
 
 We may write this solution in several different ways, and use the best one for the calculation being performed. One nice way to write this is in terms 4-vector $`k_{\mu}`$, the wave number,
@@ -128,23 +128,23 @@ k_{\rho} x_{\rho} = k \cdot x = \vec{k} \cdot \vec{x} - \omega t.
 We can then write the radiation field in a more covariant way.
 
 ```math
-\vec{A} ( \vec{x} , t ) = \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \hat{\epsilon}^{( \alpha )} \left( c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c_{k,\alpha}^{*} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
+\vec{A} ( \vec{x} , t ) = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \hat{\epsilon}^{( \alpha )} \left( c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c_{k,\alpha}^{*} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 A convenient shorthand for calculations is possible by noticing that the second term is just the complex conjugate of the first.
 
 ```math
-\vec{A} ( \vec{x} , t ) = \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \hat{\epsilon}^{( \alpha )} \left( c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c.c. \right)
+\vec{A} ( \vec{x} , t ) = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \hat{\epsilon}^{( \alpha )} \left( c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c.c. \right)
 ```
 
 ```math
-\vec{A} ( \vec{x} , t ) = \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \hat{\epsilon}^{( \alpha )} c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c.c.
+\vec{A} ( \vec{x} , t ) = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \hat{\epsilon}^{( \alpha )} c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c.c.
 ```
 
 Note again that we have made this a transverse field by construction. The unit vectors $`\hat{\epsilon}^{( \alpha )}`$ are transverse to the direction of propagation. Also note that we are working in a gauge with $`A_{4}`$ = 0, so this can also represent the 4-vector form of the potential. The **Fourier decomposition of the** **radiation field** can be written very simply.
 
 ```math
-A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \epsilon_{\mu}^{( \alpha )} c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c.c.
+A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \epsilon_{\mu}^{( \alpha )} c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c.c.
 ```
 
 This choice of gauge makes switching between 4-vector and 3-vector expressions for the potential trivial.
@@ -156,11 +156,11 @@ Let’s **verify that this decomposition of the radiation field satisfies the Ma
 ```
 
 ```math
-✷ \left( \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \epsilon_{\mu}^{( \alpha )} c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c.c. \right) = \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \epsilon_{\mu}^{( \alpha )} c_{k,\alpha} ( 0 ) ✷ e^{ik_{\rho} x_{\rho}} + c.c.
+✷ \left( \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \epsilon_{\mu}^{( \alpha )} c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c.c. \right) = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \epsilon_{\mu}^{( \alpha )} c_{k,\alpha} ( 0 ) ✷ e^{ik_{\rho} x_{\rho}} + c.c.
 ```
 
 ```math
-= \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \epsilon_{\mu}^{( \alpha )} c_{k,\alpha} ( 0 ) ( - k_{\nu} k_{\nu} ) e^{ik_{\rho} x_{\rho}} + c.c. = 0
+= \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \epsilon_{\mu}^{( \alpha )} c_{k,\alpha} ( 0 ) ( - k_{\nu} k_{\nu} ) e^{ik_{\rho} x_{\rho}} + c.c. = 0
 ```
 
 The result is zero since $`k_{\nu} k_{\nu} = k^{2} - k^{2}`$ = 0.
@@ -168,7 +168,7 @@ The result is zero since $`k_{\nu} k_{\nu} = k^{2} - k^{2}`$ = 0.
 Let’s also **verify that** $`\vec{\nabla} \cdot \vec{A}`$ = 0.
 
 ```math
-\vec{\nabla} \cdot \left( \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \hat{\epsilon}^{( \alpha )} c_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + c.c. \right) = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} c_{k,\alpha} ( t ) \hat{\epsilon}^{( \alpha )} \cdot \vec{\nabla} e^{i \vec{k} \cdot \vec{x}} + c.c.
+\vec{\nabla} \cdot \left( \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \hat{\epsilon}^{( \alpha )} c_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + c.c. \right) = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} c_{k,\alpha} ( t ) \hat{\epsilon}^{( \alpha )} \cdot \vec{\nabla} e^{i \vec{k} \cdot \vec{x}} + c.c.
 ```
 
 ```math
@@ -200,19 +200,19 @@ We now wish to **compute the Hamiltonian in terms of the coefficients** $`c_{k,\
 Now lets **compute the basic element of the above formula** for our decomposed radiation field.
 
 ```math
-A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \epsilon_{\mu}^{( \alpha )} \left( c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c_{k,\alpha}^{*} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
+A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \epsilon_{\mu}^{( \alpha )} \left( c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c_{k,\alpha}^{*} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 ```math
-\frac{\partial A_{\mu}}{\partial x_{\nu}} = \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \epsilon_{\mu}^{( \alpha )} \left( c_{k,\alpha} ( 0 ) ( ik_{\nu} ) e^{ik_{\rho} x_{\rho}} + c_{k,\alpha}^{*} ( 0 ) ( - ik_{\nu} ) e^{- ik_{\rho} x_{\rho}} \right)
+\frac{\partial A_{\mu}}{\partial x_{\nu}} = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \epsilon_{\mu}^{( \alpha )} \left( c_{k,\alpha} ( 0 ) ( ik_{\nu} ) e^{ik_{\rho} x_{\rho}} + c_{k,\alpha}^{*} ( 0 ) ( - ik_{\nu} ) e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 ```math
-\frac{\partial A_{\mu}}{\partial x_{\nu}} = i \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \epsilon_{\mu}^{( \alpha )} k_{\nu} \left( c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} - c_{k,\alpha}^{*} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
+\frac{\partial A_{\mu}}{\partial x_{\nu}} = i \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \epsilon_{\mu}^{( \alpha )} k_{\nu} \left( c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} - c_{k,\alpha}^{*} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 ```math
-\frac{\partial A_{\mu}}{\partial x_{4}} = - \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \epsilon_{\mu}^{( \alpha )} \frac{\omega}{c} \left( c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} - c_{k,\alpha}^{*} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
+\frac{\partial A_{\mu}}{\partial x_{4}} = - \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \epsilon_{\mu}^{( \alpha )} \frac{\omega}{c} \left( c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} - c_{k,\alpha}^{*} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 We have all the elements to finish the calculation of the Hamiltonian. Before pulling this all together in a brute force way, its good to realize that **almost all the terms will give zero**. We see that the derivative of $`A_{\mu}`$ is proportional to a 4-vector, say $`k_{\nu}`$ and to a polarization vector, say $`\epsilon_{\mu}^{( \alpha )}`$. The dot products of the 4-vectors, either $`k`$ with itself or $`k`$ with $`\epsilon`$ are zero. Going back to our expression for the Hamiltonian density, we can eliminate some terms.
@@ -250,7 +250,7 @@ H = \int d^{3} x \mathcal{H}
 ```
 
 ```math
-\frac{\partial A_{\mu}}{\partial x_{4}} = - \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \epsilon_{\mu}^{( \alpha )} \left( c_{k,\alpha} ( 0 ) \frac{\omega}{c} e^{ik_{\rho} x_{\rho}} - c_{k,\alpha}^{*} ( 0 ) \frac{\omega}{c} e^{- ik_{\rho} x_{\rho}} \right)
+\frac{\partial A_{\mu}}{\partial x_{4}} = - \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \epsilon_{\mu}^{( \alpha )} \left( c_{k,\alpha} ( 0 ) \frac{\omega}{c} e^{ik_{\rho} x_{\rho}} - c_{k,\alpha}^{*} ( 0 ) \frac{\omega}{c} e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 ```math
@@ -258,15 +258,15 @@ H = - \int d^{3} x \frac{\partial A_{\mu}}{\partial x_{4}} \frac{\partial A_{\mu
 ```
 
 ```math
-H = - \int d^{3} x \frac{1}{V} \sum_{k \quad \alpha = 1} \sum^{2} \left( c_{k,\alpha} ( 0 ) \frac{\omega}{c} e^{ik_{\rho} x_{\rho}} - c_{k,\alpha}^{*} ( 0 ) \frac{\omega}{c} e^{- ik_{\rho} x_{\rho}} \right)^{2}
+H = - \int d^{3} x \frac{1}{V} \sum_{k} \sum_{\alpha = 1}^{2} \left( c_{k,\alpha} ( 0 ) \frac{\omega}{c} e^{ik_{\rho} x_{\rho}} - c_{k,\alpha}^{*} ( 0 ) \frac{\omega}{c} e^{- ik_{\rho} x_{\rho}} \right)^{2}
 ```
 
 ```math
-H = - \sum_{k \quad \alpha = 1} \sum^{2} \left( \frac{\omega}{c} \right)^{2} \left[ - c_{k,\alpha} ( t ) c_{k,\alpha}^{*} ( t ) - c_{k,\alpha}^{*} ( t ) c_{k,\alpha} ( t ) \right]
+H = - \sum_{k} \sum_{\alpha = 1}^{2} \left( \frac{\omega}{c} \right)^{2} \left[ - c_{k,\alpha} ( t ) c_{k,\alpha}^{*} ( t ) - c_{k,\alpha}^{*} ( t ) c_{k,\alpha} ( t ) \right]
 ```
 
 ```math
-H = \sum_{k \quad \alpha = 1} \sum^{2} \left( \frac{\omega}{c} \right)^{2} \left[ c_{k,\alpha} ( t ) c_{k,\alpha}^{*} ( t ) + c_{k,\alpha}^{*} ( t ) c_{k,\alpha} ( t ) \right]
+H = \sum_{k} \sum_{\alpha = 1}^{2} \left( \frac{\omega}{c} \right)^{2} \left[ c_{k,\alpha} ( t ) c_{k,\alpha}^{*} ( t ) + c_{k,\alpha}^{*} ( t ) c_{k,\alpha} ( t ) \right]
 ```
 
 ```math

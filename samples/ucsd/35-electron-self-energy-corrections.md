@@ -97,11 +97,11 @@ c_{n} = e_{t}^{\tfrac{- i \Delta Ent}{\hbar}}
 ```
 
 ```math
-c_{j} ( t ) = \frac{1}{i \hbar} \sum \int_{\vec{k} ,\alpha 0} dt^{\prime} H_{jn} e^{i\omega t^{\prime}} e^{\tfrac{- i \Delta Ent \prime}{\hbar}} e^{- i\omega_{nj} t^{\prime}}
+c_{j} ( t ) = \frac{1}{i \hbar} \sum_{\vec{k} ,\alpha} \int_{0} dt^{\prime} H_{jn} e^{i\omega t^{\prime}} e^{\tfrac{- i \Delta Ent \prime}{\hbar}} e^{- i\omega_{nj} t^{\prime}}
 ```
 
 ```math
-c_{j} ( t ) = \frac{1}{i \hbar} \sum \int_{\vec{k} ,\alpha 0}^{t} dt^{\prime} H_{jn} e^{i ( - \omega_{nj} - \Delta \omega_{n} + \omega ) t^{\prime}}
+c_{j} ( t ) = \frac{1}{i \hbar} \sum_{\vec{k} ,\alpha} \int_{0}^{t} dt^{\prime} H_{jn} e^{i ( - \omega_{nj} - \Delta \omega_{n} + \omega ) t^{\prime}}
 ```
 
 ```math

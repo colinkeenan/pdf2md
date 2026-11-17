@@ -234,7 +234,7 @@ Now the original Dirac equation for $`\psi`$ expressed in terms of the new coord
 <a id="eq-25"></a>
 
 ```math
-\sum_{\mu = 0 \nu = 0}^{3} \sum^{3} \alpha^{\mu} \frac{\partial}{\partial x_{\nu}^{\prime}} a_{\nu \mu} S^{- 1} \psi^{\prime} + i \frac{mc}{\hbar} \beta S^{- 1} \psi^{\prime} = 0 \qquad \text{(25)}
+\sum_{\mu = 0}^{3} \sum_{\nu = 0}^{3} \alpha^{\mu} \frac{\partial}{\partial x_{\nu}^{\prime}} a_{\nu \mu} S^{- 1} \psi^{\prime} + i \frac{mc}{\hbar} \beta S^{- 1} \psi^{\prime} = 0 \qquad \text{(25)}
 ```
 
 The sets of equations (24) and (25) have to be equivalent, not identical. Thus (25) must be the same as (24) multiplied by $`\beta S^{- 1} \beta`$. The condition for this is

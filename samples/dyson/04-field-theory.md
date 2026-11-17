@@ -52,7 +52,7 @@ Then
 <a id="eq-159"></a>
 
 ```math
-\begin{aligned} c\delta I ( \Omega ) &= \int_{\Omega} \sum_{\alpha} \left( \frac{\partial L}{\partial \varphi^{\alpha}} \delta \varphi^{\alpha} + \sum_{\mu} \frac{\partial L}{\partial \varphi_{\mu}^{\alpha}} \delta \varphi_{\mu}^{\alpha} \right) d^{4} x \\ &= \int_{\Omega} \sum_{\alpha} \left\{ \frac{\partial L}{\partial \varphi^{\alpha}} - \sum_{\mu} \frac{\partial}{\partial x_{\mu}} \left( \frac{\partial L}{\partial \varphi_{\mu}^{\alpha}} \right) \right\} \delta \varphi^{\alpha} d^{4} x + \int_{\Sigma \alpha ,\mu} \sum n_{\mu} \frac{\partial L}{\partial \varphi_{\mu}^{\alpha}} \delta \varphi^{\alpha} d\sigma \end{aligned} \qquad \text{(159)}
+\begin{aligned} c\delta I ( \Omega ) &= \int_{\Omega} \sum_{\alpha} \left( \frac{\partial L}{\partial \varphi^{\alpha}} \delta \varphi^{\alpha} + \sum_{\mu} \frac{\partial L}{\partial \varphi_{\mu}^{\alpha}} \delta \varphi_{\mu}^{\alpha} \right) d^{4} x \\ &= \int_{\Omega} \sum_{\alpha} \left\{ \frac{\partial L}{\partial \varphi^{\alpha}} - \sum_{\mu} \frac{\partial}{\partial x_{\mu}} \left( \frac{\partial L}{\partial \varphi_{\mu}^{\alpha}} \right) \right\} \delta \varphi^{\alpha} d^{4} x + \int_{\Sigma} \sum_{\alpha ,\mu} n_{\mu} \frac{\partial L}{\partial \varphi_{\mu}^{\alpha}} \delta \varphi^{\alpha} d\sigma \end{aligned} \qquad \text{(159)}
 ```
 
 So the principle of action gives the field equations
@@ -98,7 +98,7 @@ c\delta I ( \Omega ) = \int_{\Omega_{N}} L \left( {}_{N} \varphi^{\alpha} ( x ) 
 ```
 
 ```math
-= \int_{\Sigma \alpha ,\mu} \sum n_{\mu} \delta x_{\mu} L \left( {}_{N} \varphi^{\alpha} ( x ) , {}_{N} \varphi_{\mu}^{\alpha} ( x ) \right) d\sigma + c \int_{\Sigma} \sum_{\alpha} \pi_{\alpha} ( x ) \Delta \varphi^{\alpha} ( x ) d\sigma
+= \int_{\Sigma} \sum_{\alpha ,\mu} n_{\mu} \delta x_{\mu} L \left( {}_{N} \varphi^{\alpha} ( x ) , {}_{N} \varphi_{\mu}^{\alpha} ( x ) \right) d\sigma + c \int_{\Sigma} \sum_{\alpha} \pi_{\alpha} ( x ) \Delta \varphi^{\alpha} ( x ) d\sigma
 ```
 
 the latter being true by (159) if we assume (160).
@@ -114,7 +114,7 @@ hence we get finally
 <a id="eq-163"></a>
 
 ```math
-\delta I ( \Omega ) = \int_{\Omega \alpha ,\mu} \sum \left\{ \pi_{\alpha} \delta \varphi^{\alpha} + \left( \frac{1}{c} n_{\mu} L - \varphi_{\mu}^{\alpha} \pi^{\alpha} \right) \delta x_{\mu} \right\} d\sigma \qquad \text{(163)}
+\delta I ( \Omega ) = \int_{\Omega} \sum_{\alpha ,\mu} \left\{ \pi_{\alpha} \delta \varphi^{\alpha} + \left( \frac{1}{c} n_{\mu} L - \varphi_{\mu}^{\alpha} \pi^{\alpha} \right) \delta x_{\mu} \right\} d\sigma \qquad \text{(163)}
 ```
 
 with all the new quantities on the RHS.
@@ -390,7 +390,7 @@ Suppose that a reference surface $`\sigma_{o}`$ is chosen in the remote past. Le
 <a id="eq-182"></a>
 
 ```math
-\delta I ( \Omega ) = \frac{1}{c} \int_{\Omega} \delta L d^{4} x + \int_{\sigma \alpha ,\mu} \sum \left\{ \pi_{\alpha} \delta \varphi^{\alpha} + \left( \frac{1}{c} n_{\mu} L - \varphi_{\mu}^{\alpha} \pi_{\alpha} \right) \delta x_{\mu} \right\} d\sigma \qquad \text{(182)}
+\delta I ( \Omega ) = \frac{1}{c} \int_{\Omega} \delta L d^{4} x + \int_{\sigma} \sum_{\alpha ,\mu} \left\{ \pi_{\alpha} \delta \varphi^{\alpha} + \left( \frac{1}{c} n_{\mu} L - \varphi_{\mu}^{\alpha} \pi_{\alpha} \right) \delta x_{\mu} \right\} d\sigma \qquad \text{(182)}
 ```
 
 where Ω is the region bounded by $`\sigma_{o}`$ and $`\sigma`$. Let us now first calculate the variation of (181) arising from the change in the meaning of the states $`| \varphi^{\prime \alpha} ,\sigma \rangle`$ and $`| \varphi^{\prime \prime \alpha} ,\sigma \rangle`$. The operator $`\mathcal{O}`$ itself is at this point fixed and not affected by the variations in $`\varphi^{\alpha} , \sigma`$ and $`L`$. Then

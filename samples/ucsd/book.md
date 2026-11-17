@@ -2238,7 +2238,7 @@ The Hamiltonian for the Maxwell field may be used to quantize the field (See sec
 We **decompose the radiation field into its Fourier components**
 
 ```math
-\vec{A} ( \vec{x} , t ) = \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \hat{\epsilon}^{( \alpha )} \left( c_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + c_{k,\alpha}^{*} ( t ) e^{- i \vec{k} \cdot \vec{x}} \right)
+\vec{A} ( \vec{x} , t ) = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \hat{\epsilon}^{( \alpha )} \left( c_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + c_{k,\alpha}^{*} ( t ) e^{- i \vec{k} \cdot \vec{x}} \right)
 ```
 
 where $`\hat{\epsilon}^{( \alpha )}`$ are real unit vectors, and $`c_{k,\alpha}`$ is the coefficient of the wave with wave vector $`\vec{k}`$ and polarization vector $`\hat{\epsilon}^{( \alpha )}`$. Once the wave vector is chosen, the two polarization vectors must be picked so that $`\hat{\epsilon}^{( 1 )} , \hat{\epsilon}^{( 2 )}`$, and $`\vec{k}`$ **form a right handed orthogonal system**.
@@ -2822,7 +2822,7 @@ The Dirac equation has some unexpected phenomena which we can derive. Velocity e
 Localized states, expanded in plane waves, contain all four components of the plane wave solutions. Mixing components 1 and 2 with components 3 and 4 gives rise to **Zitterbewegung**, the very rapid oscillation of an electrons velocity and position.
 
 ```math
-\begin{aligned} \langle v k \rangle &= \sum_{\vec{p}} \sum_{r = 1}^{4} | c_{\vec{p} ,r} |^{2} \frac{p_{k} c^{2}}{E} \\ & \quad + \sum_{\vec{p}} \sum_{r = 1 r^{\prime} = 3}^{2} \sum^{4} \frac{mc^{3}}{| E |} \left[ c_{\vec{p} ,r^{\prime}}^{*} c_{\vec{p} ,r} u_{\vec{p}}^{( r^{\prime} ) \dagger} i\gamma_{4} \gamma_{k} u_{\vec{p}}^{( r )} e^{- 2 i | E | t/ \hbar} c_{\vec{p} ,r^{\prime}} c_{\vec{p} ,r}^{*} u_{\vec{p}}^{( r ) \dagger} i\gamma_{4} \gamma_{k} u_{\vec{p}}^{( r^{\prime} )} e^{2 i | E | t/ \hbar} \right] \end{aligned}
+\begin{aligned} \langle v k \rangle &= \sum_{\vec{p}} \sum_{r = 1}^{4} | c_{\vec{p} ,r} |^{2} \frac{p_{k} c^{2}}{E} \\ & \quad + \sum_{\vec{p}} \sum_{r = 1}^{2} \sum_{r^{\prime} = 3}^{4} \frac{mc^{3}}{| E |} \left[ c_{\vec{p} ,r^{\prime}}^{*} c_{\vec{p} ,r} u_{\vec{p}}^{( r^{\prime} ) \dagger} i\gamma_{4} \gamma_{k} u_{\vec{p}}^{( r )} e^{- 2 i | E | t/ \hbar} c_{\vec{p} ,r^{\prime}} c_{\vec{p} ,r}^{*} u_{\vec{p}}^{( r ) \dagger} i\gamma_{4} \gamma_{k} u_{\vec{p}}^{( r^{\prime} )} e^{2 i | E | t/ \hbar} \right] \end{aligned}
 ```
 
 The last sum which contains the cross terms between negative and positive energy represents **ex-** **tremely high frequency oscillations in the expected value of the velocity**, known as Zitterbewegung. The expected value of the position has similar rapid oscillations.
@@ -2902,7 +2902,7 @@ H = \int \psi^{\dagger} \left( \hbar c\gamma_{4} \gamma_{k} \frac{\partial}{\par
 We may expand $`\psi`$ in plane waves to understand the Hamiltonian as a sum of oscillators.
 
 ```math
-\psi ( \vec{x} , t ) = \sum_{\vec{p} \quad r = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{r = 1}^{4} \sqrt{\frac{mc^{2}}{| E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
@@ -2918,15 +2918,15 @@ H = \sum_{\vec{p}} \sum_{r = 1}^{4} Ec_{\vec{p} ,r}^{*} c_{\vec{p} ,r} .
 By analogy with electromagnetism, we can replace the Fourier coefficients for the Dirac plane waves by operators.
 
 ```math
-H = \sum_{\vec{p} \quad r = 1} \sum^{4} Eb_{\vec{p}}^{( r )^{\dagger}} b_{\vec{p}}^{( r )}
+H = \sum_{\vec{p}} \sum_{r = 1}^{4} Eb_{\vec{p}}^{( r )^{\dagger}} b_{\vec{p}}^{( r )}
 ```
 
 ```math
-\psi ( \vec{x} , t ) = \sum_{\vec{p} \quad r = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E | V}} b_{\vec{p}}^{( r )} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{r = 1}^{4} \sqrt{\frac{mc^{2}}{| E | V}} b_{\vec{p}}^{( r )} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p} \quad r = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E | V}}_{\dagger} b_{\vec{p}}^{( r )^{\dagger}} u_{\vec{p}}^{( r ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{r = 1}^{4} \sqrt{\frac{mc^{2}}{| E | V}}_{\dagger} b_{\vec{p}}^{( r )^{\dagger}} u_{\vec{p}}^{( r ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 The **creation an annihilation operators** $`b_{\vec{p}}^{( r )}`$ and $`b_{\vec{p}}^{( r )}`$ satisfy **anticommutation relations**.
@@ -2968,19 +2968,19 @@ These **anti-commute** with everything else with the exception that
 Now rewrite the fields and Hamiltonian.
 
 ```math
-\psi ( \vec{x} , t ) = \sum_{\vec{p} \quad s = 1} \sum^{2} \sqrt{\frac{mc^{2}}{EV}} \left( b_{\vec{p}}^{( s )} u_{\vec{p}}^{( s )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s ) \dagger} v_{\vec{p}}^{( s )} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
+\psi ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{s = 1}^{2} \sqrt{\frac{mc^{2}}{EV}} \left( b_{\vec{p}}^{( s )} u_{\vec{p}}^{( s )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s ) \dagger} v_{\vec{p}}^{( s )} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
 ```
 
 ```math
-\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p} \quad s = 1} \sum^{2} \sqrt{\frac{mc^{2}}{EV}} \left( b_{\vec{p}}^{( s ) \dagger} u_{\vec{p}}^{( s ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s )} v_{\vec{p}}^{( s ) \dagger} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
+\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{s = 1}^{2} \sqrt{\frac{mc^{2}}{EV}} \left( b_{\vec{p}}^{( s ) \dagger} u_{\vec{p}}^{( s ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s )} v_{\vec{p}}^{( s ) \dagger} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
 ```
 
 ```math
-H = \sum_{\vec{p} \quad s = 1} \sum^{2} E \left( b_{\vec{p}}^{( s )^{\dagger}} b_{\vec{p}}^{( s )} - d_{\vec{p}}^{( s )} d_{\vec{p}}^{( s )^{\dagger}} \right)
+H = \sum_{\vec{p}} \sum_{s = 1}^{2} E \left( b_{\vec{p}}^{( s )^{\dagger}} b_{\vec{p}}^{( s )} - d_{\vec{p}}^{( s )} d_{\vec{p}}^{( s )^{\dagger}} \right)
 ```
 
 ```math
-= \sum_{\vec{p} \quad s = 1} \sum^{2} E \left( b_{\vec{p}}^{( s )^{\dagger}} b_{\vec{p}}^{( s )} + d_{\vec{p}}^{( s )^{\dagger}} d_{\vec{p}}^{( s )} - 1 \right)
+= \sum_{\vec{p}} \sum_{s = 1}^{2} E \left( b_{\vec{p}}^{( s )^{\dagger}} b_{\vec{p}}^{( s )} + d_{\vec{p}}^{( s )^{\dagger}} d_{\vec{p}}^{( s )} - 1 \right)
 ```
 
 All the **energies of these states are positive**.
@@ -6299,11 +6299,11 @@ In normal 3D space, we can compute the **dot product between two vectors** using
 In our vector space, we **define the dot product** to be
 
 ```math
-\langle \psi | \varphi \rangle = \langle \sum_{i = 1}^{\infty} \alpha_{i} \psi_{i} | \sum_{j = 1}^{\infty} \beta_{j} \psi_{j} \rangle = \sum_{i = 1 j = 1}^{\infty} \sum^{\infty} \alpha_{i}^{*} \beta_{j} \langle \psi_{i} | \psi_{j} \rangle
+\langle \psi | \varphi \rangle = \langle \sum_{i = 1}^{\infty} \alpha_{i} \psi_{i} | \sum_{j = 1}^{\infty} \beta_{j} \psi_{j} \rangle = \sum_{i = 1}^{\infty} \sum_{j = 1}^{\infty} \alpha_{i}^{*} \beta_{j} \langle \psi_{i} | \psi_{j} \rangle
 ```
 
 ```math
-= \sum_{i = 1 j = 1}^{\infty} \sum^{\infty} \alpha_{i}^{*} \beta_{j} \delta_{ij} = \sum_{i = 1}^{\infty} \alpha_{i}^{*} \beta_{i}
+= \sum_{i = 1}^{\infty} \sum_{j = 1}^{\infty} \alpha_{i}^{*} \beta_{j} \delta_{ij} = \sum_{i = 1}^{\infty} \alpha_{i}^{*} \beta_{i}
 ```
 
 We also can compute the dot product from the components of the vectors. Our vector space is a little bit different because of the complex conjugate involved in the definition of our dot product.
@@ -10452,13 +10452,13 @@ Y_{\ell ( - m )} = ( - 1 )^{m} Y_{\ell m}^{*}
 Any function of $`\theta`$ and $`\varphi`$ can be **expanded in the spherical harmonics**.
 
 ```math
-f ( \theta ,\varphi ) = \sum_{\ell = 0 m = - \ell}^{\infty} \sum^{\ell} C_{\ell m} Y_{\ell m} ( \theta ,\varphi )
+f ( \theta ,\varphi ) = \sum_{\ell = 0}^{\infty} \sum_{m = - \ell}^{\ell} C_{\ell m} Y_{\ell m} ( \theta ,\varphi )
 ```
 
 The spherical harmonics form a **complete set**.
 
 ```math
-\sum_{\ell = 0 m = - \ell}^{\infty} \sum^{\ell} | Y_{\ell m} \rangle \langle Y_{\ell m} | = \sum_{\ell = 0 m = - \ell}^{\infty} \sum^{\ell} | \ell m \rangle \langle \ell m | = 1
+\sum_{\ell = 0}^{\infty} \sum_{m = - \ell}^{\ell} | Y_{\ell m} \rangle \langle Y_{\ell m} | = \sum_{\ell = 0}^{\infty} \sum_{m = - \ell}^{\ell} | \ell m \rangle \langle \ell m | = 1
 ```
 
 When using bra-ket notation, $`| \ell m \rangle`$ is sufficient to identify the state.
@@ -19608,7 +19608,7 @@ If the first order term is zero or higher accuracy is required, the second order
 ```
 
 ```math
-\begin{aligned} \frac{\partial c_{n} ( t )}{\partial t} &= \frac{1}{i \hbar} \left( \mathcal{V}_{ni} ( t ) e^{i\omega_{ni} t} + \sum_{k \neq i} \mathcal{V}_{nk} ( t ) \frac{1}{i \hbar} e^{i\omega_{nk} t} \int_{0}^{t} e^{i\omega_{ki} t^{\prime}} \mathcal{V}_{ki} ( t^{\prime} ) dt^{\prime} \right) \\ c_{n}^{( 2 )} ( t ) &= \frac{- 1}{\hbar^{2}} \sum \int_{k \neq i 0}^{t} dt^{\prime \prime} \mathcal{V}_{nk} ( t^{\prime \prime} ) e^{i\omega_{nk} t^{\prime \prime}} \int_{0}^{t^{\prime \prime}} dt^{\prime} e^{i\omega_{ki} t^{\prime}} \mathcal{V}_{ki} ( t^{\prime} ) \\ c_{n}^{( 2 )} ( t ) &= \frac{- 1}{\hbar^{2}} \sum \int_{k \neq i 0}^{t} dt^{\prime \prime} \mathcal{V}_{nk} ( t^{\prime \prime} ) e^{i\omega_{nk} t^{\prime \prime}} \int_{0}^{t^{\prime \prime}} dt^{\prime} e^{i\omega_{ki} t^{\prime}} \mathcal{V}_{ki} ( t^{\prime} ) \end{aligned}
+\begin{aligned} \frac{\partial c_{n} ( t )}{\partial t} &= \frac{1}{i \hbar} \left( \mathcal{V}_{ni} ( t ) e^{i\omega_{ni} t} + \sum_{k \neq i} \mathcal{V}_{nk} ( t ) \frac{1}{i \hbar} e^{i\omega_{nk} t} \int_{0}^{t} e^{i\omega_{ki} t^{\prime}} \mathcal{V}_{ki} ( t^{\prime} ) dt^{\prime} \right) \\ c_{n}^{( 2 )} ( t ) &= \frac{- 1}{\hbar^{2}} \sum_{k \neq i} \int_{0}^{t} dt^{\prime \prime} \mathcal{V}_{nk} ( t^{\prime \prime} ) e^{i\omega_{nk} t^{\prime \prime}} \int_{0}^{t^{\prime \prime}} dt^{\prime} e^{i\omega_{ki} t^{\prime}} \mathcal{V}_{ki} ( t^{\prime} ) \\ c_{n}^{( 2 )} ( t ) &= \frac{- 1}{\hbar^{2}} \sum_{k \neq i} \int_{0}^{t} dt^{\prime \prime} \mathcal{V}_{nk} ( t^{\prime \prime} ) e^{i\omega_{nk} t^{\prime \prime}} \int_{0}^{t^{\prime \prime}} dt^{\prime} e^{i\omega_{ki} t^{\prime}} \mathcal{V}_{ki} ( t^{\prime} ) \end{aligned}
 ```
 
 \* See Example 28.3.1: Transitions of a 1D harmonic oscillator in a transient E field.\*
@@ -22141,7 +22141,7 @@ We will now study the radiation field in a region with no sources so that $`\vec
 Our goal is to write the Hamiltonian for the radiation field in terms of a sum of harmonic oscillator Hamiltonians. The first step is to write the radiation field in as simple a way as possible, as a sum of harmonic components. We will work in a cubic volume $`V = L^{3}`$ and apply **periodic boundary** **conditions** on our electromagnetic waves. We also assume for now that there are **no sources inside** **the region** so that we can make a gauge transformation to make $`A_{0}`$ = 0 and hence $`\vec{\nabla} \cdot \vec{A}`$ = 0. We **decompose the field into its Fourier components** at $`t`$ = 0
 
 ```math
-\vec{A} ( \vec{x} , t = 0 ) = \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \hat{\epsilon}^{( \alpha )} \left( c_{k,\alpha} ( t = 0 ) e^{i \vec{k} \cdot \vec{x}} + c_{k,\alpha}^{*} ( t = 0 ) e^{- i \vec{k} \cdot \vec{x}} \right)
+\vec{A} ( \vec{x} , t = 0 ) = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \hat{\epsilon}^{( \alpha )} \left( c_{k,\alpha} ( t = 0 ) e^{i \vec{k} \cdot \vec{x}} + c_{k,\alpha}^{*} ( t = 0 ) e^{- i \vec{k} \cdot \vec{x}} \right)
 ```
 
 where $`\hat{\epsilon}^{( \alpha )}`$ are real unit vectors, and $`c_{k,\alpha}`$ is the coefficient of the wave with wave vector $`\vec{k}`$ and polarization vector $`\hat{\epsilon}^{( \alpha )}`$. Once the wave vector is chosen, the two polarization vectors must be picked so that $`\hat{\epsilon}^{( 1 )} , \hat{\epsilon}^{( 2 )}`$, and $`\vec{k}`$ **form a right handed orthogonal system**. The components of the wave vector must satisfy
@@ -22171,7 +22171,7 @@ c_{k,\alpha} ( t ) = c_{k,\alpha} ( 0 ) e^{- i\omega t}
 where $`\omega = kc`$. We can now write the **vector potential as a function of position and time**.
 
 ```math
-\vec{A} ( \vec{x} , t ) = \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \hat{\epsilon}^{( \alpha )} \left( c_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + c_{k,\alpha}^{*} ( t ) e^{- i \vec{k} \cdot \vec{x}} \right)
+\vec{A} ( \vec{x} , t ) = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \hat{\epsilon}^{( \alpha )} \left( c_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + c_{k,\alpha}^{*} ( t ) e^{- i \vec{k} \cdot \vec{x}} \right)
 ```
 
 We may write this solution in several different ways, and use the best one for the calculation being performed. One nice way to write this is in terms 4-vector $`k_{\mu}`$, the wave number,
@@ -22193,23 +22193,23 @@ k_{\rho} x_{\rho} = k \cdot x = \vec{k} \cdot \vec{x} - \omega t.
 We can then write the radiation field in a more covariant way.
 
 ```math
-\vec{A} ( \vec{x} , t ) = \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \hat{\epsilon}^{( \alpha )} \left( c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c_{k,\alpha}^{*} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
+\vec{A} ( \vec{x} , t ) = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \hat{\epsilon}^{( \alpha )} \left( c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c_{k,\alpha}^{*} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 A convenient shorthand for calculations is possible by noticing that the second term is just the complex conjugate of the first.
 
 ```math
-\vec{A} ( \vec{x} , t ) = \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \hat{\epsilon}^{( \alpha )} \left( c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c.c. \right)
+\vec{A} ( \vec{x} , t ) = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \hat{\epsilon}^{( \alpha )} \left( c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c.c. \right)
 ```
 
 ```math
-\vec{A} ( \vec{x} , t ) = \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \hat{\epsilon}^{( \alpha )} c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c.c.
+\vec{A} ( \vec{x} , t ) = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \hat{\epsilon}^{( \alpha )} c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c.c.
 ```
 
 Note again that we have made this a transverse field by construction. The unit vectors $`\hat{\epsilon}^{( \alpha )}`$ are transverse to the direction of propagation. Also note that we are working in a gauge with $`A_{4}`$ = 0, so this can also represent the 4-vector form of the potential. The **Fourier decomposition of the** **radiation field** can be written very simply.
 
 ```math
-A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \epsilon_{\mu}^{( \alpha )} c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c.c.
+A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \epsilon_{\mu}^{( \alpha )} c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c.c.
 ```
 
 This choice of gauge makes switching between 4-vector and 3-vector expressions for the potential trivial.
@@ -22221,11 +22221,11 @@ Let’s **verify that this decomposition of the radiation field satisfies the Ma
 ```
 
 ```math
-✷ \left( \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \epsilon_{\mu}^{( \alpha )} c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c.c. \right) = \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \epsilon_{\mu}^{( \alpha )} c_{k,\alpha} ( 0 ) ✷ e^{ik_{\rho} x_{\rho}} + c.c.
+✷ \left( \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \epsilon_{\mu}^{( \alpha )} c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c.c. \right) = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \epsilon_{\mu}^{( \alpha )} c_{k,\alpha} ( 0 ) ✷ e^{ik_{\rho} x_{\rho}} + c.c.
 ```
 
 ```math
-= \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \epsilon_{\mu}^{( \alpha )} c_{k,\alpha} ( 0 ) ( - k_{\nu} k_{\nu} ) e^{ik_{\rho} x_{\rho}} + c.c. = 0
+= \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \epsilon_{\mu}^{( \alpha )} c_{k,\alpha} ( 0 ) ( - k_{\nu} k_{\nu} ) e^{ik_{\rho} x_{\rho}} + c.c. = 0
 ```
 
 The result is zero since $`k_{\nu} k_{\nu} = k^{2} - k^{2}`$ = 0.
@@ -22233,7 +22233,7 @@ The result is zero since $`k_{\nu} k_{\nu} = k^{2} - k^{2}`$ = 0.
 Let’s also **verify that** $`\vec{\nabla} \cdot \vec{A}`$ = 0.
 
 ```math
-\vec{\nabla} \cdot \left( \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \hat{\epsilon}^{( \alpha )} c_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + c.c. \right) = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} c_{k,\alpha} ( t ) \hat{\epsilon}^{( \alpha )} \cdot \vec{\nabla} e^{i \vec{k} \cdot \vec{x}} + c.c.
+\vec{\nabla} \cdot \left( \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \hat{\epsilon}^{( \alpha )} c_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + c.c. \right) = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} c_{k,\alpha} ( t ) \hat{\epsilon}^{( \alpha )} \cdot \vec{\nabla} e^{i \vec{k} \cdot \vec{x}} + c.c.
 ```
 
 ```math
@@ -22265,19 +22265,19 @@ We now wish to **compute the Hamiltonian in terms of the coefficients** $`c_{k,\
 Now lets **compute the basic element of the above formula** for our decomposed radiation field.
 
 ```math
-A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \epsilon_{\mu}^{( \alpha )} \left( c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c_{k,\alpha}^{*} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
+A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \epsilon_{\mu}^{( \alpha )} \left( c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c_{k,\alpha}^{*} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 ```math
-\frac{\partial A_{\mu}}{\partial x_{\nu}} = \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \epsilon_{\mu}^{( \alpha )} \left( c_{k,\alpha} ( 0 ) ( ik_{\nu} ) e^{ik_{\rho} x_{\rho}} + c_{k,\alpha}^{*} ( 0 ) ( - ik_{\nu} ) e^{- ik_{\rho} x_{\rho}} \right)
+\frac{\partial A_{\mu}}{\partial x_{\nu}} = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \epsilon_{\mu}^{( \alpha )} \left( c_{k,\alpha} ( 0 ) ( ik_{\nu} ) e^{ik_{\rho} x_{\rho}} + c_{k,\alpha}^{*} ( 0 ) ( - ik_{\nu} ) e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 ```math
-\frac{\partial A_{\mu}}{\partial x_{\nu}} = i \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \epsilon_{\mu}^{( \alpha )} k_{\nu} \left( c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} - c_{k,\alpha}^{*} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
+\frac{\partial A_{\mu}}{\partial x_{\nu}} = i \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \epsilon_{\mu}^{( \alpha )} k_{\nu} \left( c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} - c_{k,\alpha}^{*} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 ```math
-\frac{\partial A_{\mu}}{\partial x_{4}} = - \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \epsilon_{\mu}^{( \alpha )} \frac{\omega}{c} \left( c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} - c_{k,\alpha}^{*} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
+\frac{\partial A_{\mu}}{\partial x_{4}} = - \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \epsilon_{\mu}^{( \alpha )} \frac{\omega}{c} \left( c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} - c_{k,\alpha}^{*} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 We have all the elements to finish the calculation of the Hamiltonian. Before pulling this all together in a brute force way, its good to realize that **almost all the terms will give zero**. We see that the derivative of $`A_{\mu}`$ is proportional to a 4-vector, say $`k_{\nu}`$ and to a polarization vector, say $`\epsilon_{\mu}^{( \alpha )}`$. The dot products of the 4-vectors, either $`k`$ with itself or $`k`$ with $`\epsilon`$ are zero. Going back to our expression for the Hamiltonian density, we can eliminate some terms.
@@ -22315,7 +22315,7 @@ H = \int d^{3} x \mathcal{H}
 ```
 
 ```math
-\frac{\partial A_{\mu}}{\partial x_{4}} = - \frac{1}{\sqrt{V}} \sum_{k \quad \alpha = 1} \sum^{2} \epsilon_{\mu}^{( \alpha )} \left( c_{k,\alpha} ( 0 ) \frac{\omega}{c} e^{ik_{\rho} x_{\rho}} - c_{k,\alpha}^{*} ( 0 ) \frac{\omega}{c} e^{- ik_{\rho} x_{\rho}} \right)
+\frac{\partial A_{\mu}}{\partial x_{4}} = - \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \epsilon_{\mu}^{( \alpha )} \left( c_{k,\alpha} ( 0 ) \frac{\omega}{c} e^{ik_{\rho} x_{\rho}} - c_{k,\alpha}^{*} ( 0 ) \frac{\omega}{c} e^{- ik_{\rho} x_{\rho}} \right)
 ```
 
 ```math
@@ -22323,15 +22323,15 @@ H = - \int d^{3} x \frac{\partial A_{\mu}}{\partial x_{4}} \frac{\partial A_{\mu
 ```
 
 ```math
-H = - \int d^{3} x \frac{1}{V} \sum_{k \quad \alpha = 1} \sum^{2} \left( c_{k,\alpha} ( 0 ) \frac{\omega}{c} e^{ik_{\rho} x_{\rho}} - c_{k,\alpha}^{*} ( 0 ) \frac{\omega}{c} e^{- ik_{\rho} x_{\rho}} \right)^{2}
+H = - \int d^{3} x \frac{1}{V} \sum_{k} \sum_{\alpha = 1}^{2} \left( c_{k,\alpha} ( 0 ) \frac{\omega}{c} e^{ik_{\rho} x_{\rho}} - c_{k,\alpha}^{*} ( 0 ) \frac{\omega}{c} e^{- ik_{\rho} x_{\rho}} \right)^{2}
 ```
 
 ```math
-H = - \sum_{k \quad \alpha = 1} \sum^{2} \left( \frac{\omega}{c} \right)^{2} \left[ - c_{k,\alpha} ( t ) c_{k,\alpha}^{*} ( t ) - c_{k,\alpha}^{*} ( t ) c_{k,\alpha} ( t ) \right]
+H = - \sum_{k} \sum_{\alpha = 1}^{2} \left( \frac{\omega}{c} \right)^{2} \left[ - c_{k,\alpha} ( t ) c_{k,\alpha}^{*} ( t ) - c_{k,\alpha}^{*} ( t ) c_{k,\alpha} ( t ) \right]
 ```
 
 ```math
-H = \sum_{k \quad \alpha = 1} \sum^{2} \left( \frac{\omega}{c} \right)^{2} \left[ c_{k,\alpha} ( t ) c_{k,\alpha}^{*} ( t ) + c_{k,\alpha}^{*} ( t ) c_{k,\alpha} ( t ) \right]
+H = \sum_{k} \sum_{\alpha = 1}^{2} \left( \frac{\omega}{c} \right)^{2} \left[ c_{k,\alpha} ( t ) c_{k,\alpha}^{*} ( t ) + c_{k,\alpha}^{*} ( t ) c_{k,\alpha} ( t ) \right]
 ```
 
 ```math
@@ -23660,11 +23660,11 @@ c_{n} = e_{t}^{\tfrac{- i \Delta Ent}{\hbar}}
 ```
 
 ```math
-c_{j} ( t ) = \frac{1}{i \hbar} \sum \int_{\vec{k} ,\alpha 0} dt^{\prime} H_{jn} e^{i\omega t^{\prime}} e^{\tfrac{- i \Delta Ent \prime}{\hbar}} e^{- i\omega_{nj} t^{\prime}}
+c_{j} ( t ) = \frac{1}{i \hbar} \sum_{\vec{k} ,\alpha} \int_{0} dt^{\prime} H_{jn} e^{i\omega t^{\prime}} e^{\tfrac{- i \Delta Ent \prime}{\hbar}} e^{- i\omega_{nj} t^{\prime}}
 ```
 
 ```math
-c_{j} ( t ) = \frac{1}{i \hbar} \sum \int_{\vec{k} ,\alpha 0}^{t} dt^{\prime} H_{jn} e^{i ( - \omega_{nj} - \Delta \omega_{n} + \omega ) t^{\prime}}
+c_{j} ( t ) = \frac{1}{i \hbar} \sum_{\vec{k} ,\alpha} \int_{0}^{t} dt^{\prime} H_{jn} e^{i ( - \omega_{nj} - \Delta \omega_{n} + \omega ) t^{\prime}}
 ```
 
 ```math
@@ -26301,7 +26301,7 @@ The expected value of a component of the velocity exhibits strange behavior when
 ```
 
 ```math
-\begin{aligned} \langle v_{k} \rangle &= \sum_{\vec{p} \quad r = 1} \sum^{4} | c_{\vec{p} ,r} |^{2} \frac{p_{k} c^{2}}{| E |} + \sum_{\vec{p}} \sum_{r = 1 r^{\prime} = 3}^{2} \sum^{4} \frac{mc^{3}}{| E |} \left[ c_{\vec{p} ,r^{\prime}}^{*} c_{\vec{p} ,r} u_{\vec{p}}^{( r^{\prime} ) \dagger} i\gamma_{4} \gamma_{k} u_{\vec{p}}^{( r )} e^{- 2 i | E | t/ \hbar} \right. \\ & \quad \left. + c_{\vec{p} ,r^{\prime}} c_{\vec{p} ,r}^{*} u_{\vec{p}}^{( r ) \dagger} i\gamma_{4} \gamma_{k} u_{\vec{p}}^{( r^{\prime} )} e^{2 i | E | t/ \hbar} \right] \end{aligned}
+\begin{aligned} \langle v_{k} \rangle &= \sum_{\vec{p}} \sum_{r = 1}^{4} | c_{\vec{p} ,r} |^{2} \frac{p_{k} c^{2}}{| E |} + \sum_{\vec{p}} \sum_{r = 1}^{2} \sum_{r^{\prime} = 3}^{4} \frac{mc^{3}}{| E |} \left[ c_{\vec{p} ,r^{\prime}}^{*} c_{\vec{p} ,r} u_{\vec{p}}^{( r^{\prime} ) \dagger} i\gamma_{4} \gamma_{k} u_{\vec{p}}^{( r )} e^{- 2 i | E | t/ \hbar} \right. \\ & \quad \left. + c_{\vec{p} ,r^{\prime}} c_{\vec{p} ,r}^{*} u_{\vec{p}}^{( r ) \dagger} i\gamma_{4} \gamma_{k} u_{\vec{p}}^{( r^{\prime} )} e^{2 i | E | t/ \hbar} \right] \end{aligned}
 ```
 
 The last sum which contains the cross terms between negative and positive energy represents **ex-** **tremely high frequency oscillations in the expected value of the velocity**, known as **Zit-** **terbewegung**. The expected value of the position has similar rapid oscillations.
@@ -27275,7 +27275,7 @@ H = \int \psi^{\dagger} \left( \hbar c\gamma_{4} \gamma_{k} \frac{\partial}{\par
 We may expand the field $`\psi`$ in the **complete set of plane waves** either using the four spinors $`u_{\vec{p}}^{( r )}`$ for $`r`$ = 1$`, 2 , 3 , 4`$ or using the electron and positron spinors $`u_{\vec{p}}^{( r )}`$ and $`v_{\vec{p}}^{( r )}`$ for $`r`$ = 1$`, 2`$. For economy of notation, we choose the former with a plan to change to the later once the quantization is completed.
 
 ```math
-\psi ( \vec{x} , t ) = \sum_{\vec{p} \quad r = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{r = 1}^{4} \sqrt{\frac{mc^{2}}{| E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 The conjugate can also be written out.
@@ -27295,15 +27295,15 @@ H = \int \psi^{\dagger} \left( \hbar c\gamma_{4} \gamma_{k} \frac{\partial}{\par
 ```
 
 ```math
-H = \int \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} \quad r^{\prime} = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E^{\prime} | V}} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \left( \hbar c\gamma_{4} \gamma_{k} \frac{\partial}{\partial x_{k}} + mc^{2} \gamma_{4} \right) \sqrt{\frac{mc^{2}}{| E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x
+H = \int \sum_{\vec{p}} \sum_{r = 1}^{4} \sum_{\vec{p}^{\prime}} \sum_{r^{\prime} = 1}^{4} \sqrt{\frac{mc^{2}}{| E^{\prime} | V}} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \left( \hbar c\gamma_{4} \gamma_{k} \frac{\partial}{\partial x_{k}} + mc^{2} \gamma_{4} \right) \sqrt{\frac{mc^{2}}{| E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x
 ```
 
 ```math
-H = \int \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} \quad r^{\prime} = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E^{\prime} | V}} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \left( \hbar c\gamma_{4} \gamma_{k} \frac{ip_{k}}{\hbar} + mc^{2} \gamma_{4} \right) \sqrt{\frac{mc^{2}}{| E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x
+H = \int \sum_{\vec{p}} \sum_{r = 1}^{4} \sum_{\vec{p}^{\prime}} \sum_{r^{\prime} = 1}^{4} \sqrt{\frac{mc^{2}}{| E^{\prime} | V}} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \left( \hbar c\gamma_{4} \gamma_{k} \frac{ip_{k}}{\hbar} + mc^{2} \gamma_{4} \right) \sqrt{\frac{mc^{2}}{| E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x
 ```
 
 ```math
-H = \int \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} \quad r^{\prime} = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E^{\prime} | V}} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \left( ic\gamma_{4} \gamma_{k} p_{k} + mc^{2} \gamma_{4} \right) \sqrt{\frac{mc^{2}}{| E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x
+H = \int \sum_{\vec{p}} \sum_{r = 1}^{4} \sum_{\vec{p}^{\prime}} \sum_{r^{\prime} = 1}^{4} \sqrt{\frac{mc^{2}}{| E^{\prime} | V}} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \left( ic\gamma_{4} \gamma_{k} p_{k} + mc^{2} \gamma_{4} \right) \sqrt{\frac{mc^{2}}{| E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x
 ```
 
 ```math
@@ -27311,15 +27311,15 @@ H = \int \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} \quad r^{\pr
 ```
 
 ```math
-H = \int \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} \quad r^{\prime} = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E^{\prime} | V} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} ( E ) \surd \frac{mc^{2}}{| E | V} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x}
+H = \int \sum_{\vec{p}} \sum_{r = 1}^{4} \sum_{\vec{p}^{\prime}} \sum_{r^{\prime} = 1}^{4} \sqrt{\frac{mc^{2}}{| E^{\prime} | V} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} ( E ) \surd \frac{mc^{2}}{| E | V} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x}
 ```
 
 ```math
-H = \sum_{\vec{p} \quad r = 1} \sum^{4} \sum_{\vec{p}^{\prime} r^{\prime} = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E^{\prime} |}} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} ( E ) \sqrt{\frac{mc^{2}}{| E |}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} \delta_{\vec{p} \vec{p}^{\prime}}
+H = \sum_{\vec{p}} \sum_{r = 1}^{4} \sum_{\vec{p}^{\prime}} \sum_{r^{\prime} = 1}^{4} \sqrt{\frac{mc^{2}}{| E^{\prime} |}} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} ( E ) \sqrt{\frac{mc^{2}}{| E |}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} \delta_{\vec{p} \vec{p}^{\prime}}
 ```
 
 ```math
-H = \sum_{\vec{p} \quad r = 1 r^{\prime} = 1} \sum^{4} \sum^{4} \frac{mc^{2}}{| E |} c_{\vec{p} ,r^{\prime}}^{*} c_{\vec{p} ,r} u_{\vec{p}}^{( r^{\prime} ) \dagger} ( E ) u_{\vec{p}}^{( r )}
+H = \sum_{\vec{p}} \sum_{r = 1}^{4} \sum_{r^{\prime} = 1}^{4} \frac{mc^{2}}{| E |} c_{\vec{p} ,r^{\prime}}^{*} c_{\vec{p} ,r} u_{\vec{p}}^{( r^{\prime} ) \dagger} ( E ) u_{\vec{p}}^{( r )}
 ```
 
 ```math
@@ -27327,11 +27327,11 @@ u_{\vec{p}}^{( r ) \dagger} u_{\vec{p}}^{( r^{\prime} )} = \frac{| E |}{mc^{2}} 
 ```
 
 ```math
-H = \sum_{\vec{p} \quad r = 1 r^{\prime} = 1} \sum^{4} \sum^{4} \frac{mc^{2} E}{| E |} c_{\vec{p} ,r^{\prime}}^{*} c_{\vec{p} ,r} \frac{| E |}{mc^{2}} \delta_{rr^{\prime}}
+H = \sum_{\vec{p}} \sum_{r = 1}^{4} \sum_{r^{\prime} = 1}^{4} \frac{mc^{2} E}{| E |} c_{\vec{p} ,r^{\prime}}^{*} c_{\vec{p} ,r} \frac{| E |}{mc^{2}} \delta_{rr^{\prime}}
 ```
 
 ```math
-H = \sum_{\vec{p} \quad r = 1} \sum^{4} Ec_{\vec{p} ,r}^{*} c_{\vec{p} ,r}
+H = \sum_{\vec{p}} \sum_{r = 1}^{4} Ec_{\vec{p} ,r}^{*} c_{\vec{p} ,r}
 ```
 
 where previous results from the Hamiltonian form of the Dirac equation and the normalization of the Dirac spinors have been used to simplify the formula greatly.
@@ -27365,15 +27365,15 @@ H = \frac{1}{2} \sum_{k,\alpha} \hbar \omega \left[ a_{k,\alpha} a_{k,\alpha}^{\
 By analogy, we can skip the steps of making coordinates and momenta for the individual oscillators, and just **replace the Fourier coefficients for the Dirac plane waves by operators**.
 
 ```math
-H = \sum_{\vec{p} \quad r = 1} \sum^{4} Eb_{\vec{p}}^{( r )^{\dagger}} b_{\vec{p}}^{( r )}
+H = \sum_{\vec{p}} \sum_{r = 1}^{4} Eb_{\vec{p}}^{( r )^{\dagger}} b_{\vec{p}}^{( r )}
 ```
 
 ```math
-\psi ( \vec{x} , t ) = \sum_{\vec{p} \quad r = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E | V}} b_{\vec{p}}^{( r )} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{r = 1}^{4} \sqrt{\frac{mc^{2}}{| E | V}} b_{\vec{p}}^{( r )} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p} \quad r = 1} \sum^{4} \sqrt{\frac{mc^{2}}{| E | V}} b_{\vec{p}}^{( r )^{\dagger}} u_{\vec{p}}^{( r ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{r = 1}^{4} \sqrt{\frac{mc^{2}}{| E | V}} b_{\vec{p}}^{( r )^{\dagger}} u_{\vec{p}}^{( r ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 (Since the Fermi-Dirac operators will anti-commute, the analogy is imperfect.)
@@ -27437,19 +27437,19 @@ These **anti-commute** with everything else with the exception that
 The Dirac field and Hamiltonian can now be **rewritten**.
 
 ```math
-\psi ( \vec{x} , t ) = \sum_{\vec{p} \quad s = 1} \sum^{2} \sqrt{\frac{mc^{2}}{EV}} \left( b_{\vec{p}}^{( s )} u_{\vec{p}}^{( s )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s ) \dagger} v_{\vec{p}}^{( s )} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
+\psi ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{s = 1}^{2} \sqrt{\frac{mc^{2}}{EV}} \left( b_{\vec{p}}^{( s )} u_{\vec{p}}^{( s )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s ) \dagger} v_{\vec{p}}^{( s )} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
 ```
 
 ```math
-\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p} \quad s = 1} \sum^{2} \sqrt{\frac{mc^{2}}{EV}} \left( b_{\vec{p}}^{( s ) \dagger} u_{\vec{p}}^{( s ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s )} v_{\vec{p}}^{( s ) \dagger} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
+\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{s = 1}^{2} \sqrt{\frac{mc^{2}}{EV}} \left( b_{\vec{p}}^{( s ) \dagger} u_{\vec{p}}^{( s ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s )} v_{\vec{p}}^{( s ) \dagger} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
 ```
 
 ```math
-H = \sum_{\vec{p} \quad s = 1} \sum^{2} E \left( b_{\vec{p}}^{( s )^{\dagger}} b_{\vec{p}}^{( s )} - d_{\vec{p}}^{( s )} d_{\vec{p}}^{( s )^{\dagger}} \right)
+H = \sum_{\vec{p}} \sum_{s = 1}^{2} E \left( b_{\vec{p}}^{( s )^{\dagger}} b_{\vec{p}}^{( s )} - d_{\vec{p}}^{( s )} d_{\vec{p}}^{( s )^{\dagger}} \right)
 ```
 
 ```math
-= \sum_{\vec{p} \quad s = 1} \sum^{2} E \left( b_{\vec{p}}^{( s )^{\dagger}} b_{\vec{p}}^{( s )} + d_{\vec{p}}^{( s )^{\dagger}} d_{\vec{p}}^{( s )} - 1 \right)
+= \sum_{\vec{p}} \sum_{s = 1}^{2} E \left( b_{\vec{p}}^{( s )^{\dagger}} b_{\vec{p}}^{( s )} + d_{\vec{p}}^{( s )^{\dagger}} d_{\vec{p}}^{( s )} - 1 \right)
 ```
 
 All the **energies of these states are positive**.
@@ -27523,11 +27523,11 @@ A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} 
 ```
 
 ```math
-\psi ( \vec{x} , t ) = \sum_{\vec{p} \quad s = 1} \sum^{2} \sqrt{\frac{mc^{2}}{EV}} \left( b_{\vec{p}}^{( s )} u_{\vec{p}}^{( s )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s ) \dagger} v_{\vec{p}}^{( s )} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
+\psi ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{s = 1}^{2} \sqrt{\frac{mc^{2}}{EV}} \left( b_{\vec{p}}^{( s )} u_{\vec{p}}^{( s )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s ) \dagger} v_{\vec{p}}^{( s )} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
 ```
 
 ```math
-\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p} \quad s = 1} \sum^{2} \sqrt{\frac{mc^{2}}{EV}} \left( b_{\vec{p}}^{( s ) \dagger} u_{\vec{p}}^{( s ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s )} v_{\vec{p}}^{( s ) \dagger} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
+\psi^{\dagger} ( \vec{x} , t ) = \sum_{\vec{p}} \sum_{s = 1}^{2} \sqrt{\frac{mc^{2}}{EV}} \left( b_{\vec{p}}^{( s ) \dagger} u_{\vec{p}}^{( s ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} + d_{\vec{p}}^{( s )} v_{\vec{p}}^{( s ) \dagger} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} \right)
 ```
 
 Note that in the interaction term $`- ie \bar{\psi} \gamma_{\mu} A_{\mu} \psi`$ photons can be created or destroyed singly but that electrons must be created and destroyed along with a positron.
