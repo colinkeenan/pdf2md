@@ -3221,7 +3221,9 @@ fn group_lines(
     // a root sign is of the line its foot stands in
     for s in roots {
         let low = s.bottom() - 2.0;
-        let stands = groups.iter().position(|g| size_of(&g[0]) >= 0.85 * size_of(&s) && g[0].top <= low && g[0].bottom() >= low);
+        // (… or begins a point under its foot: the sign's box ends where
+        // the line of its radicand begins)
+        let stands = groups.iter().position(|g| size_of(&g[0]) >= 0.85 * size_of(&s) && g[0].top <= low + 2.0 && g[0].bottom() >= low);
         // (a root in an exponent stands above its line's letters: it is
         // of the line of the piece right after it, which it is the root of)
         let radicand = || {
@@ -3415,12 +3417,61 @@ fn group_lines(
         let found = (0..loose.len()).find_map(|i| {
             let s = &loose[i];
             let beside = limits.iter().find(|&&(l, r, top, bottom, _)| level(s, top, bottom) && (l - s.right()).max(s.left - r) < 0.7 * s.height).map(|l| l.4);
-            beside.or_else(|| groups.iter().position(|g| g.iter().any(|n| big_symbol(n) && under_sign(n, s)))).map(|k| (i, k))
+            // (… or under the tall sign of a sum set apart, clear of its line)
+            let under_tall = |sign: &Span| {
+                let (tall, mid) = (size_of(sign), s.left + (s.right() - s.left) / 2.0);
+                matches!(sign.text.trim(), "P" | "X" | "Q" | "Y" | "∑" | "∏") && mid > sign.left - 1.0 && mid < sign.right() + 1.0 && s.top >= sign.top + 0.8 * tall && s.top - sign.top <= 2.4 * tall
+            };
+            beside.or_else(|| groups.iter().position(|g| g.iter().any(|n| big_symbol(n) && (under_sign(n, s) || under_tall(n))))).map(|k| (i, k))
         });
         let Some((i, k)) = found else { break };
         let s = loose.remove(i);
         limits.push((s.left, s.right(), s.top, s.bottom(), k));
         groups[k].push(s);
+    }
+    // (the lower limit of a sum set apart, under its tall sign and clear
+    // of every line: its letters made a line of their own, which the next
+    // line of text would take. It is of the sign's line.)
+    if std::env::var_os("PDF2MD_LIMITDEBUG").is_some() {
+        for g in &groups {
+            eprintln!("LG {:?}", g.iter().map(|s| format!("{}@{},{}+{} big={} sz={}", s.text, s.left, s.top, s.height, big_symbol(s), size_of(s))).collect::<Vec<_>>());
+        }
+    }
+    loop {
+        let found = (0..groups.len()).find_map(|m| {
+            (0..groups.len()).filter(|&k| k != m).find(|&k| {
+                let size = size_of(&groups[k][0]);
+                let small = groups[m].iter().all(|n| !big_symbol(n) && size_of(n) < 0.85 * size);
+                // (not where the line also holds the upper limit of a sign
+                // of the row below, at that sign's head: rows set close,
+                // which the formula's own reading tells apart)
+                let of_next = groups[m].iter().any(|s| {
+                    groups.iter().flatten().any(|sign| big_symbol(sign) && sign.top >= s.top - 2.0 && sign.top - s.bottom() <= 0.6 * size_of(sign) && s.right() >= sign.left - 2.0 && s.left - sign.right() <= 0.5 * size_of(sign))
+                });
+                small
+                    && !of_next
+                    && groups[k].iter().any(|sign| {
+                        let tall = size_of(sign);
+                        big_symbol(sign) && matches!(sign.text.trim(), "P" | "X" | "Q" | "Y" | "∑" | "∏") && groups[m].iter().any(|s| {
+                            let mid = s.left + (s.right() - s.left) / 2.0;
+                            mid > sign.left - 1.0 && mid < sign.right() + 1.0 && s.top >= sign.top + 0.8 * tall && s.top - sign.top <= 2.4 * tall
+                        })
+                    })
+            })
+            .map(|k| (m, k))
+        });
+        let Some((m, k)) = found else { break };
+        let moved = std::mem::take(&mut groups[m]);
+        for s in moved {
+            limits.push((s.left, s.right(), s.top, s.bottom(), k));
+            groups[k].push(s);
+        }
+        groups.remove(m);
+        for l in &mut limits {
+            if l.4 > m {
+                l.4 -= 1;
+            }
+        }
     }
     // (… also where the letters made a line of their own under the sign
     // and only the "=", in its tall box, waited)

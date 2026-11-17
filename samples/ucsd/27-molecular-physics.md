@@ -201,7 +201,7 @@ _Figure 94 (p. 387)_
 
 We have seen that the energy of a molecule has a minimum for some particular separation between atoms. This **looks just like a harmonic oscillator potential** for small variations from the minimum. The molecule can “vibrate” in this potential giving rise to a harmonic oscillator energy spectrum.
 
-We can **estimate the energy of the vibrational levels**. If $`E_{e} \sim \hbar \omega = \hbar \sqrt{\frac{k}{m_{e}}}`$, then crudely the proton has the same spring constant $`\sqrt{k} \approx \tfrac{E_{e} \sqrt{m_{e}}}{\hbar}`$.
+We can **estimate the energy of the vibrational levels**. If $`E_{e} \sim \hbar \omega = \hbar \sqrt{\frac{k}{m_{e}}}`$, then crudely the proton has the same spring constant $`\sqrt{k} \approx \tfrac{E e \sqrt{m_{e}}}{\hbar}`$.
 
 ```math
 E_{vib} \sim \hbar \sqrt{\frac{k}{M}} = \sqrt{\frac{m}{M}} E_{e} \sim \frac{1}{1 0} \text{ eV }

@@ -19,13 +19,7 @@ Assume that we solve the unperturbed energy eigenvalue problem exactly: $`H_{0} 
 ( H_{0} + \mathcal{V} ( t ) ) \psi ( t ) = i \hbar \frac{\partial \psi ( t )}{\partial t}
 ```
 
-We will **expand** $`\psi`$ in terms of the eigenfunctions: $`\psi ( t ) = \sum c_{k} ( t ) \varphi_{k} e^{- iE_{k} t/ \hbar}`$ with $`c_{k} ( t ) e^{- iE_{k} t/ \hbar} =`$
-
-```math
-k
-```
-
-$`\langle \varphi_{k} | \psi ( t ) \rangle`$. The time dependent Schrödinger equations is
+We will **expand** $`\psi`$ in terms of the eigenfunctions: $`\psi ( t ) = \sum_{k} c_{k} ( t ) \varphi_{k} e^{- iE_{k} t/ \hbar}`$ with $`c_{k} ( t ) e^{- iE_{k} t/ \hbar} = \langle \varphi_{k} | \psi ( t ) \rangle`$. The time dependent Schrödinger equations is
 
 ```math
 \sum_{k} ( H_{0} + \mathcal{V} ( t ) ) c_{k} ( t ) e^{- iE_{k} t/ \hbar} \varphi_{k} = i \hbar \sum_{k} \frac{\partial c_{k} ( t ) e^{- iE_{k} t/ \hbar}}{\partial t} \varphi_{k}

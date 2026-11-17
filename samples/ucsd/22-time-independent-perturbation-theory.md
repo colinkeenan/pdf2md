@@ -489,11 +489,7 @@ This is just the standard eigenvalue problem for the full Hamiltonian in the **s
 
 4. Consider a two dimensional harmonic oscillator problem described by the Hamiltonian $`H_{0} = \tfrac{p_{x}^{2} + p_{y}^{2}}{2 m} + \tfrac{1}{2} m\omega^{2} ( x^{2} + y^{2} )`$. Calculate the energy shifts of the ground state and the degenerate first excited states, to first order, if the additional potential $`V = 2 \lambda xy`$ is applied. Now solve the problem exactly. Compare the exact result for the ground state to that from second order perturbation theory.
 
-5. Prove that $`\sum ( E_{n} - E_{a} ) | \langle n | x | a \rangle |^{2} = \tfrac{\hbar^{2}}{2 m}`$ by starting from the expectation value of the commu-
-
-```math
-n
-```
+5. Prove that $`\sum_{n} ( E_{n} - E_{a} ) | \langle n | x | a \rangle |^{2} = \tfrac{\hbar^{2}}{2 m}`$ by starting from the expectation value of the commu-
 
 tator $`[ p,x ]`$ in the state $`a`$ and summing over all energy eigenstates. Assume $`p = m \tfrac{dx}{dt}`$ and write $`\frac{dx}{dt}`$ in terms of the commutator $`[ H,x ]`$ to get the result.
 

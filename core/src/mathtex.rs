@@ -1279,7 +1279,10 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
                 // (a sign of a symbol font has a box taller than the letters':
                 // the minus of √−g starts a little above the bar it is under)
                 let tall_under = s.top >= b.bottom - 0.35 * size && s.cy() >= b.bottom + 0.3 * size;
-                within(s) && (s.top >= b.bottom - 2.0 || tall_under || (is_radical(s) && s.cy() >= b.top - 2.0)) && s.cy() <= b.bottom + 3.5 * size
+                // (… or, a larger sign set a little higher: its own bar begins
+                // where it ends, right under this bar)
+                let own_bar_under = is_radical(s) && bars.iter().any(|r| r.top > b.bottom - 0.5 && r.top <= b.bottom + 0.5 * size && (r.left - s.right).abs() <= 3.0);
+                within(s) && (s.top >= b.bottom - 2.0 || tall_under || (is_radical(s) && s.cy() >= b.top - 2.0) || own_bar_under) && s.cy() <= b.bottom + 3.5 * size
             })
             .collect();
         // A fraction nested inside this one has a clearly narrower bar; a

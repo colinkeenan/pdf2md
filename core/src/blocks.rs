@@ -1606,7 +1606,10 @@ fn display_flags(doc: &Doc, lines: &[Line], st: &Stats) -> Vec<bool> {
         .iter()
         .zip(&info)
         .map(|(l, &(ratio, words, tag))| {
-            tag || (words <= 2 && ((indented(l) && ratio >= 0.25) || ratio >= 0.7))
+            // (a line set in with a sum or integral sign of the large kind
+            // is set apart, with the few words of a label beside it)
+            let big_sign = l.spans.iter().any(|s| doc.family(s).starts_with("CMEX") && matches!(s.text.trim(), "P" | "X" | "Z" | "R" | "Q" | "Y"));
+            tag || (words <= 2 && ((indented(l) && ratio >= 0.25) || ratio >= 0.7)) || (big_sign && words <= 4 && indented(l) && ratio >= 0.25)
         })
         .collect();
     // A line that opens with a word at the margin, in the size of the

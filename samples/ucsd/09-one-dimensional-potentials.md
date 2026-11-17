@@ -1494,13 +1494,9 @@ c) Calculate the probability for a particle in the beam to be reflected by the p
 
 <div align="center">
 
-a) Assume $`h ( y ) = \sum^{\infty} a_{m} y^{m}`$ and find the recursion relation for the coefficients $`a_{m}`$.
+a) Assume $`h ( y ) = \sum_{m = 0}^{\infty} a_{m} y^{m}`$ and find the recursion relation for the coefficients $`a_{m}`$.
 
 </div>
-
-```math
-m = 0
-```
 
 b) Use the requirement that this polynomial series must terminate to find the allowed energies in terms of $`\alpha`$.
 
@@ -1532,13 +1528,9 @@ c) At $`t = 0`$ the potential is suddenly removed so that the particle is free. 
 
 <div align="center">
 
-a) Assume $`h ( y ) = \sum^{\infty} a_{m} y^{m}`$ and find the recursion relation for the coefficients $`a_{m}`$.
+a) Assume $`h ( y ) = \sum_{m = 0}^{\infty} a_{m} y^{m}`$ and find the recursion relation for the coefficients $`a_{m}`$.
 
 </div>
-
-```math
-m = 0
-```
 
 b) Use the requirement that this polynomial series must terminate to find the allowed energies in terms of $`\alpha`$.
 

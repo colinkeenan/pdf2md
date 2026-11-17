@@ -49,10 +49,10 @@ This is exactly the formula for a state vector equals a **matrix operator** time
 \begin{pmatrix} ( O\psi )_{1} \\ ( O\psi )_{2} \\ \dots \\ ( O\psi )_{i} \\ \dots \end{pmatrix} = \begin{pmatrix} O_{1 1} & O_{1 2} & \dots & O_{1 j} & \dots \\ O_{2 1} & O_{2 2} & \dots & O_{2 j} & \dots \\ \dots & \dots & \dots & \dots & \dots \\ O_{i 1} & O_{i 2} & \dots & O_{ij} & \dots \\ \dots & \dots & \dots & \dots & \dots \end{pmatrix} \begin{pmatrix} \psi_{1} \\ \psi_{2} \\ \dots \\ \psi_{j} \\ \dots \end{pmatrix}
 ```
 
-Similarly, we can look at the **product of two operators** (using the identity $`\sum | u_{k} \rangle \langle u_{k} | = 1`$).
+Similarly, we can look at the **product of two operators** (using the identity $`\sum_{k} | u_{k} \rangle \langle u_{k} | = 1`$).
 
 ```math
-( OP )_{ij} = \langle u_{i} | OP | u_{j} \rangle = \sum_{k} \langle u_{i} | O | u_{k} \rangle \langle u_{k} | P | u_{j} \rangle = \sum_{k} O_{ik} P_{kj}^{k}
+( OP )_{ij} = \langle u_{i} | OP | u_{j} \rangle = \sum_{k} \langle u_{i} | O | u_{k} \rangle \langle u_{k} | P | u_{j} \rangle = \sum_{k} O_{ik} P_{kj}
 ```
 
 <div align="right"><a href="book.pdf#page=247" target="_blank" title="This page in the PDF"><sup>[p. 247]</sup></a></div>
@@ -85,10 +85,10 @@ The Hermitian Conjugate matrix is the (complex) **conjugate transpose.**
 
 Check that this is true for $`A`$ and $`A^{\dagger}`$.
 
-We know that there is a difference between a **bra vector** and a ket vector. This becomes explicit in the matrix representation. If $`\psi = \sum \psi_{j} u_{j}`$ and $`\varphi = \sum \varphi_{k} u_{k}`$ then, the dot product is
+We know that there is a difference between a **bra vector** and a ket vector. This becomes explicit in the matrix representation. If $`\psi = \sum_{j} \psi_{j} u_{j}`$ and $`\varphi = \sum_{k} \varphi_{k} u_{k}`$ then, the dot product is
 
 ```math
-\langle \psi | \varphi \rangle = \sum_{j,k} \psi_{j}^{* j} \varphi_{k} \langle u_{j} | u_{k} \rangle = \sum_{j,k}^{k} \psi_{j}^{*} \varphi_{k} \delta_{jk} = \sum_{k} \psi_{k}^{*} \varphi_{k} .
+\langle \psi | \varphi \rangle = \sum_{j,k} \psi_{j}^{*} \varphi_{k} \langle u_{j} | u_{k} \rangle = \sum_{j,k} \psi_{j}^{*} \varphi_{k} \delta_{jk} = \sum_{k} \psi_{k}^{*} \varphi_{k} .
 ```
 
 We can write this in **dot product in matrix notation** as

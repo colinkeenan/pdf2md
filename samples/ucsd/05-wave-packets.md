@@ -378,17 +378,15 @@ A_{n} = \tfrac{1}{\sqrt{2 \pi}} \int_{- L}^{L} f ( x ) e \tfrac{- in\pi x}{L} dx
 ```
 
 ```math
-f ( x ) = \sqrt{\frac{\pi}{2}} \tfrac{1}{L} \sum_{\infty n = -\infty}^{\infty} A_{n} e \tfrac{in\pi x}{L} \quad f \text{ stays the same }
+f ( x ) = \sqrt{\frac{\pi}{2}} \tfrac{1}{L} \sum_{n = -\infty}^{\infty} A_{n} e \tfrac{in\pi x}{L} \quad f \text{ stays the same }
 ```
 
-<div align="center">
-
-$`f ( x ) = \tfrac{\sqrt{\pi}}{\sqrt{2} L} \int A ( k ) e_{\overline{\pi}}^{ikxL} dk`$ but is rewritten in new A and dk
-
-</div>
+```math
+f ( x ) = \tfrac{\sqrt{\pi}}{\sqrt{2} L} \int_{-\infty}^{\infty} A ( k ) e_{\overline{\pi}}^{ikxL} dk \quad \text{ but is rewritten in new A and dk }
+```
 
 ```math
-f ( x ) = \tfrac{1}{\sqrt{2 \pi}} \int_{-\infty}^{-\infty \infty} A ( k ) e^{ikx} dk \quad \text{ result }
+f ( x ) = \tfrac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} A ( k ) e^{ikx} dk \quad \text{ result }
 ```
 
 ```math

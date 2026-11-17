@@ -968,7 +968,7 @@ First, we calculate the probability the a particle of energy $`E`$ is reflected 
 2
 ```
 
-section 9.1.2) of height $`V_{0} : P_{R} = \sqrt{\frac{E - \quad E - V_{0}}{\sqrt{E} + \sqrt{E - V_{0}}} ( \surd )}`$ . We also use this example to understand the probability current $`j = \tfrac{\hbar}{2 im} [ u^{*} \tfrac{du}{dx} - \tfrac{du^{*}}{dx} ( ) u ]`$.
+section 9.1.2) of height $`V_{0} : P_{R} = \frac{\sqrt{E - \sqrt{E - V_{0}}}}{\sqrt{E} \sqrt{+ \sqrt{E - V_{0}} \surd}} ( )`$ . We also use this example to understand the probability current $`j = \tfrac{\hbar}{2 im} [ u^{*} \tfrac{du}{dx} - \tfrac{du^{*}}{dx} ( ) u ]`$.
 
 Second we investigate the square potential well (See section 9.1.3) square potential well $`( V ( x ) = - V_{0} \ \text{for} - a<x<a \text{ and } V ( x ) = 0 \ \text{elsewhere} )`$, for the case where the particle is not bound $`E> 0`$. Assuming a beam of particles incident from the left, we need to match solutions in the three regions at the boundaries at $`x = \pm a`$. After some difficult arithmetic, the probabilities to be transmitted or reflected are computed. It is found that the probability to be transmitted goes to 1 for some particular energies.
 
@@ -4599,17 +4599,15 @@ A_{n} = \tfrac{1}{\sqrt{2 \pi}} \int_{- L}^{L} f ( x ) e \tfrac{- in\pi x}{L} dx
 ```
 
 ```math
-f ( x ) = \sqrt{\frac{\pi}{2}} \tfrac{1}{L} \sum_{\infty n = -\infty}^{\infty} A_{n} e \tfrac{in\pi x}{L} \quad f \text{ stays the same }
+f ( x ) = \sqrt{\frac{\pi}{2}} \tfrac{1}{L} \sum_{n = -\infty}^{\infty} A_{n} e \tfrac{in\pi x}{L} \quad f \text{ stays the same }
 ```
 
-<div align="center">
-
-$`f ( x ) = \tfrac{\sqrt{\pi}}{\sqrt{2} L} \int A ( k ) e_{\overline{\pi}}^{ikxL} dk`$ but is rewritten in new A and dk
-
-</div>
+```math
+f ( x ) = \tfrac{\sqrt{\pi}}{\sqrt{2} L} \int_{-\infty}^{\infty} A ( k ) e_{\overline{\pi}}^{ikxL} dk \quad \text{ but is rewritten in new A and dk }
+```
 
 ```math
-f ( x ) = \tfrac{1}{\sqrt{2 \pi}} \int_{-\infty}^{-\infty \infty} A ( k ) e^{ikx} dk \quad \text{ result }
+f ( x ) = \tfrac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} A ( k ) e^{ikx} dk \quad \text{ result }
 ```
 
 ```math
@@ -8310,13 +8308,9 @@ c) Calculate the probability for a particle in the beam to be reflected by the p
 
 <div align="center">
 
-a) Assume $`h ( y ) = \sum^{\infty} a_{m} y^{m}`$ and find the recursion relation for the coefficients $`a_{m}`$.
+a) Assume $`h ( y ) = \sum_{m = 0}^{\infty} a_{m} y^{m}`$ and find the recursion relation for the coefficients $`a_{m}`$.
 
 </div>
-
-```math
-m = 0
-```
 
 b) Use the requirement that this polynomial series must terminate to find the allowed energies in terms of $`\alpha`$.
 
@@ -8348,13 +8342,9 @@ c) At $`t = 0`$ the potential is suddenly removed so that the particle is free. 
 
 <div align="center">
 
-a) Assume $`h ( y ) = \sum^{\infty} a_{m} y^{m}`$ and find the recursion relation for the coefficients $`a_{m}`$.
+a) Assume $`h ( y ) = \sum_{m = 0}^{\infty} a_{m} y^{m}`$ and find the recursion relation for the coefficients $`a_{m}`$.
 
 </div>
-
-```math
-m = 0
-```
 
 b) Use the requirement that this polynomial series must terminate to find the allowed energies in terms of $`\alpha`$.
 
@@ -12821,10 +12811,10 @@ This is exactly the formula for a state vector equals a **matrix operator** time
 \begin{pmatrix} ( O\psi )_{1} \\ ( O\psi )_{2} \\ \dots \\ ( O\psi )_{i} \\ \dots \end{pmatrix} = \begin{pmatrix} O_{1 1} & O_{1 2} & \dots & O_{1 j} & \dots \\ O_{2 1} & O_{2 2} & \dots & O_{2 j} & \dots \\ \dots & \dots & \dots & \dots & \dots \\ O_{i 1} & O_{i 2} & \dots & O_{ij} & \dots \\ \dots & \dots & \dots & \dots & \dots \end{pmatrix} \begin{pmatrix} \psi_{1} \\ \psi_{2} \\ \dots \\ \psi_{j} \\ \dots \end{pmatrix}
 ```
 
-Similarly, we can look at the **product of two operators** (using the identity $`\sum | u_{k} \rangle \langle u_{k} | = 1`$).
+Similarly, we can look at the **product of two operators** (using the identity $`\sum_{k} | u_{k} \rangle \langle u_{k} | = 1`$).
 
 ```math
-( OP )_{ij} = \langle u_{i} | OP | u_{j} \rangle = \sum_{k} \langle u_{i} | O | u_{k} \rangle \langle u_{k} | P | u_{j} \rangle = \sum_{k} O_{ik} P_{kj}^{k}
+( OP )_{ij} = \langle u_{i} | OP | u_{j} \rangle = \sum_{k} \langle u_{i} | O | u_{k} \rangle \langle u_{k} | P | u_{j} \rangle = \sum_{k} O_{ik} P_{kj}
 ```
 
 <div align="right"><a href="book.pdf#page=247" target="_blank" title="This page in the PDF"><sup>[p. 247]</sup></a></div>
@@ -12857,10 +12847,10 @@ The Hermitian Conjugate matrix is the (complex) **conjugate transpose.**
 
 Check that this is true for $`A`$ and $`A^{\dagger}`$.
 
-We know that there is a difference between a **bra vector** and a ket vector. This becomes explicit in the matrix representation. If $`\psi = \sum \psi_{j} u_{j}`$ and $`\varphi = \sum \varphi_{k} u_{k}`$ then, the dot product is
+We know that there is a difference between a **bra vector** and a ket vector. This becomes explicit in the matrix representation. If $`\psi = \sum_{j} \psi_{j} u_{j}`$ and $`\varphi = \sum_{k} \varphi_{k} u_{k}`$ then, the dot product is
 
 ```math
-\langle \psi | \varphi \rangle = \sum_{j,k} \psi_{j}^{* j} \varphi_{k} \langle u_{j} | u_{k} \rangle = \sum_{j,k}^{k} \psi_{j}^{*} \varphi_{k} \delta_{jk} = \sum_{k} \psi_{k}^{*} \varphi_{k} .
+\langle \psi | \varphi \rangle = \sum_{j,k} \psi_{j}^{*} \varphi_{k} \langle u_{j} | u_{k} \rangle = \sum_{j,k} \psi_{j}^{*} \varphi_{k} \delta_{jk} = \sum_{k} \psi_{k}^{*} \varphi_{k} .
 ```
 
 We can write this in **dot product in matrix notation** as
@@ -14865,11 +14855,7 @@ Find the expected value of $`p`$ as a function of time using operator methods.
 
 5. Calculate $`\langle u_{i} | x | u_{j} \rangle`$ and $`\langle u_{i} | p | u_{j} \rangle`$.
 
-6. Calculate $`\langle u_{i} | xp | u_{j} \rangle`$ by direct calculation. Now calculate the same thing using $`\sum \langle u_{i} | x | u_{k} \rangle \langle u_{k} | p | u_{j} \rangle`$.
-
-```math
-k
-```
+6. Calculate $`\langle u_{i} | xp | u_{j} \rangle`$ by direct calculation. Now calculate the same thing using $`\sum_{k} \langle u_{i} | x | u_{k} \rangle \langle u_{k} | p | u_{j} \rangle`$.
 
 7. If $`h ( A^{\dagger} )`$ is a polynomial in the operator $`A^{\dagger}`$, show that $`Ah ( A^{\dagger} ) u_{0} = \tfrac{dh ( A^{\dagger} )}{dA^{\dagger}} u_{0}`$. As a result of this, note that since any energy eigenstate can be written as a series of raising operators times the ground state, we can represent $`A`$ by $`\frac{d}{dA^{\dagger}}`$.
 
@@ -17315,11 +17301,7 @@ This is just the standard eigenvalue problem for the full Hamiltonian in the **s
 
 4. Consider a two dimensional harmonic oscillator problem described by the Hamiltonian $`H_{0} = \tfrac{p_{x}^{2} + p_{y}^{2}}{2 m} + \tfrac{1}{2} m\omega^{2} ( x^{2} + y^{2} )`$. Calculate the energy shifts of the ground state and the degenerate first excited states, to first order, if the additional potential $`V = 2 \lambda xy`$ is applied. Now solve the problem exactly. Compare the exact result for the ground state to that from second order perturbation theory.
 
-5. Prove that $`\sum ( E_{n} - E_{a} ) | \langle n | x | a \rangle |^{2} = \tfrac{\hbar^{2}}{2 m}`$ by starting from the expectation value of the commu-
-
-```math
-n
-```
+5. Prove that $`\sum_{n} ( E_{n} - E_{a} ) | \langle n | x | a \rangle |^{2} = \tfrac{\hbar^{2}}{2 m}`$ by starting from the expectation value of the commu-
 
 tator $`[ p,x ]`$ in the state $`a`$ and summing over all energy eigenstates. Assume $`p = m \tfrac{dx}{dt}`$ and write $`\frac{dx}{dt}`$ in terms of the commutator $`[ H,x ]`$ to get the result.
 
@@ -19024,11 +19006,7 @@ The Hartree method allows us to to change the 3$`Z`$ dimensional Schrödinger eq
 \begin{aligned} \psi &= \varphi_{1} ( \vec{r}_{1} ) \varphi_{2} ( \vec{r}_{2} ) \dots \varphi_{Z} ( \vec{r}_{Z} ) \\ \left[ \frac{- \hbar^{2}}{2 m} \nabla_{i}^{2} - \frac{Ze^{2}}{r_{i}} + e^{2} \sum_{j \neq i} \int d^{3} r_{j} \frac{| \varphi_{j} ( \vec{r}_{j} ) |^{2}}{| \vec{r} i - \vec{r} j |} \right] \varphi_{i} ( \vec{r}_{i} ) &= \epsilon_{i} \varphi_{i} ( \vec{r}_{i} ) \end{aligned}
 ```
 
-In the Hartree equation above, $`\epsilon_{i}`$ represents the energy contribution of electron $`i`$. The term $`e^{2} \sum \int d^{3} r_{j} \tfrac{| \varphi_{j} ( \vec{r}_{j} ) |^{2}}{| \vec{r}_{i} - \vec{r}_{j} |}`$ represents the potential due to the other electrons in which electron $`i`$ moves.
-
-```math
-j \neq i
-```
+In the Hartree equation above, $`\epsilon_{i}`$ represents the energy contribution of electron $`i`$. The term $`e^{2} \sum_{j \neq i} \int d^{3} r_{j} \tfrac{| \varphi_{j} ( \vec{r}_{j} ) |^{2}}{| \vec{r}_{i} - \vec{r}_{j} |}`$ represents the potential due to the other electrons in which electron $`i`$ moves.
 
 In this equation we can formally see the effect of screening by the other electrons. The equation is derived (see Gasiorowicz pp 309-311) from the Schrödinger equation using $`\psi = \varphi_{1} \varphi_{2} \dots \varphi_{Z}`$. Since we will not apply these equations to solve problems, we will not go into the derivation, however, it is useful to know how one might proceed to solve more difficult problems.
 
@@ -19466,7 +19444,7 @@ _Figure 94 (p. 387)_
 
 We have seen that the energy of a molecule has a minimum for some particular separation between atoms. This **looks just like a harmonic oscillator potential** for small variations from the minimum. The molecule can “vibrate” in this potential giving rise to a harmonic oscillator energy spectrum.
 
-We can **estimate the energy of the vibrational levels**. If $`E_{e} \sim \hbar \omega = \hbar \sqrt{\frac{k}{m_{e}}}`$, then crudely the proton has the same spring constant $`\sqrt{k} \approx \tfrac{E_{e} \sqrt{m_{e}}}{\hbar}`$.
+We can **estimate the energy of the vibrational levels**. If $`E_{e} \sim \hbar \omega = \hbar \sqrt{\frac{k}{m_{e}}}`$, then crudely the proton has the same spring constant $`\sqrt{k} \approx \tfrac{E e \sqrt{m_{e}}}{\hbar}`$.
 
 ```math
 E_{vib} \sim \hbar \sqrt{\frac{k}{M}} = \sqrt{\frac{m}{M}} E_{e} \sim \frac{1}{1 0} \text{ eV }
@@ -19563,13 +19541,7 @@ Assume that we solve the unperturbed energy eigenvalue problem exactly: $`H_{0} 
 ( H_{0} + \mathcal{V} ( t ) ) \psi ( t ) = i \hbar \frac{\partial \psi ( t )}{\partial t}
 ```
 
-We will **expand** $`\psi`$ in terms of the eigenfunctions: $`\psi ( t ) = \sum c_{k} ( t ) \varphi_{k} e^{- iE_{k} t/ \hbar}`$ with $`c_{k} ( t ) e^{- iE_{k} t/ \hbar} =`$
-
-```math
-k
-```
-
-$`\langle \varphi_{k} | \psi ( t ) \rangle`$. The time dependent Schrödinger equations is
+We will **expand** $`\psi`$ in terms of the eigenfunctions: $`\psi ( t ) = \sum_{k} c_{k} ( t ) \varphi_{k} e^{- iE_{k} t/ \hbar}`$ with $`c_{k} ( t ) e^{- iE_{k} t/ \hbar} = \langle \varphi_{k} | \psi ( t ) \rangle`$. The time dependent Schrödinger equations is
 
 ```math
 \sum_{k} ( H_{0} + \mathcal{V} ( t ) ) c_{k} ( t ) e^{- iE_{k} t/ \hbar} \varphi_{k} = i \hbar \sum_{k} \frac{\partial c_{k} ( t ) e^{- iE_{k} t/ \hbar}}{\partial t} \varphi_{k}
@@ -27861,10 +27833,10 @@ c_{n} ( t ) = \tfrac{1}{i \hbar} \int^{t}_{0} dt^{\prime} e^{i ( E_{n} - E_{i} )
 \text{ Fermi } ’ s \text{ Golden Rule } : \quad \Gamma_{i \to f} = \tfrac{2 \pi}{\hbar} | \langle \psi_{f} | V | \psi_{i} \rangle |^{2} \rho_{f} ( E )
 ```
 
-$`\Gamma_{i \to f} =`$<sup>2</sup>$`\tfrac{\pi}{\hbar} \int \prod ( \tfrac{Vd^{3} p_{k}}{( 2 \pi \hbar )^{3}} ) | M_{fi} |^{2} \delta^{3}`$(momentum conservation) $`\delta`$(Energy conservation)
+$`\Gamma_{i \to f} =`$<sup>2</sup>$`\tfrac{\pi}{\hbar} \int \prod_{k} ( \tfrac{Vd^{3} p_{k}}{( 2 \pi \hbar )^{3}} ) | M_{fi} |^{2} \delta^{3}`$(momentum conservation) $`\delta`$(Energy conservation)
 
 ```math
-\Gamma_{m \to k}^{rad} = \tfrac{\alpha k}{2 \pi m^{2} c^{2}} \int d \Omega_{p} \omega_{km} | \langle \varphi_{m} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon} \cdot \vec{p} | \varphi_{k} \rangle |^{2}
+\Gamma_{m \to k}^{rad} = \tfrac{\alpha}{2 \pi m^{2} c^{2}} \int d \Omega_{p} \omega_{km} | \langle \varphi_{m} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon} \cdot \vec{p} | \varphi_{k} \rangle |^{2}
 ```
 
 ```math

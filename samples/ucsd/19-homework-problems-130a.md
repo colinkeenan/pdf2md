@@ -197,11 +197,7 @@ Find the expected value of $`p`$ as a function of time using operator methods.
 
 5. Calculate $`\langle u_{i} | x | u_{j} \rangle`$ and $`\langle u_{i} | p | u_{j} \rangle`$.
 
-6. Calculate $`\langle u_{i} | xp | u_{j} \rangle`$ by direct calculation. Now calculate the same thing using $`\sum \langle u_{i} | x | u_{k} \rangle \langle u_{k} | p | u_{j} \rangle`$.
-
-```math
-k
-```
+6. Calculate $`\langle u_{i} | xp | u_{j} \rangle`$ by direct calculation. Now calculate the same thing using $`\sum_{k} \langle u_{i} | x | u_{k} \rangle \langle u_{k} | p | u_{j} \rangle`$.
 
 7. If $`h ( A^{\dagger} )`$ is a polynomial in the operator $`A^{\dagger}`$, show that $`Ah ( A^{\dagger} ) u_{0} = \tfrac{dh ( A^{\dagger} )}{dA^{\dagger}} u_{0}`$. As a result of this, note that since any energy eigenstate can be written as a series of raising operators times the ground state, we can represent $`A`$ by $`\frac{d}{dA^{\dagger}}`$.
 
