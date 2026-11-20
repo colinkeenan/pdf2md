@@ -649,14 +649,14 @@ For the $`n = 3`$ final state, $`E = \tfrac{7}{1 4 4} 1 3 . 6`$ = 0$`. 7`$ eV.
 
 6. Calculate the **expected value of** $`r`$ in the Hydrogen state $`\psi_{2 0 0}`$.
 
-7. Write down the wave function of the hydrogen atom state $`\psi_{3 2 1}`$(**r**).
+7. Write down the wave function of the hydrogen atom state $`\psi_{3 2 1} ( \mathbf{r} )`$.
 
 8. A Hydrogen atom is in its 4$`D`$ state $`( n = 4 ,l = 2 )`$. The atom decays to a lower state by emitting a photon. Find the possible photon energies that may be observed. Give your answers in $`eV`$.
 
 9. A Hydrogen atom is in the state:
 
 ```math
-\psi ( \boldsymbol{r} ) = \frac{1}{\sqrt{3 0}} ( \psi_{1 0 0} + 2 \psi_{2 1 1} - \psi_{3 2 2} - 2 i\psi_{3 1 0} + 2 i\psi_{3 0 0} - 4 \psi_{4 3 3} )
+\psi ( \mathbf{r} ) = \frac{1}{\sqrt{3 0}} ( \psi_{1 0 0} + 2 \psi_{2 1 1} - \psi_{3 2 2} - 2 i\psi_{3 1 0} + 2 i\psi_{3 0 0} - 4 \psi_{4 3 3} )
 ```
 
 For the Hydrogen eigenstates, $`\langle \psi_{nlm} | \tfrac{1}{r} | \psi_{nlm} \rangle = \tfrac{Z}{a_{0} n^{2}}`$. Find the expected value of the potential energy for this state. Find the expected value of $`L_{x}`$.
@@ -669,7 +669,7 @@ a) What is the ground state energy of muonic hydrogen (in eV).
 
 b) What is the“Bohr Radius” of the ground state of muonic hydrogen.
 
-12. A hydrogen atom is in the state: $`\psi`$(**r**$`) = \frac{1}{\langle \sqrt{1 0} \rangle} ( \psi_{3 2 2} + 2 \psi_{2 2 1} + 2 i\psi_{2 2 0} + \psi_{1 1 - 1}`$) Find the possible measured energies and the probabilities of each. Find the expected value of $`L_{z}`$.
+12. A hydrogen atom is in the state: $`\psi ( \mathbf{r} ) = \frac{1}{\langle \sqrt{1 0} \rangle} ( \psi_{3 2 2} + 2 \psi_{2 2 1} + 2 i\psi_{2 2 0} + \psi_{1 1 - 1} )`$ Find the possible measured energies and the probabilities of each. Find the expected value of $`L_{z}`$.
 
 13. Find the difference in frequency between light emitted from the 2$`P \to 1 S`$ transition in Hydrogen and light from the same transition in Deuterium. (Deuterium is an isotope of Hydrogen with a proton and a neutron in the nucleus.)
 

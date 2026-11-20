@@ -297,7 +297,12 @@ pub fn tex(s: &MSpan) -> String {
     let mut t = tex_plain(s);
     // bold symbols (vectors) stay bold; spacing commands like \text stay as they are
     if s.bold && !t.is_empty() && !t.starts_with("\\text") {
-        t = format!("\\boldsymbol{{{t}}}");
+        // (a letter of a bold text font stands upright, **r**; one of a
+        // bold math font is slanted)
+        // (TeX's bold roman: other books' bold letters are left as they were)
+        let roman = s.family.to_uppercase().starts_with("CMBX") && !s.family.to_uppercase().starts_with("CMBXTI");
+        let upright = roman && !s.math && t.len() == 1 && t.starts_with(|c: char| c.is_ascii_alphabetic());
+        t = if upright { format!("\\mathbf{{{t}}}") } else { format!("\\boldsymbol{{{t}}}") };
     }
     if s.over && !t.is_empty() {
         format!("\\overline{{{t}}}")

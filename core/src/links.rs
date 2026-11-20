@@ -992,6 +992,119 @@ fn link_problem_refs(t: &str, target: &HashMap<String, String>, out: &mut Vec<In
     }
 }
 
+/// An article: its citations ("[9]", "[1, 2]", "[10–16]") link to the
+/// entries of its list of references, which is a file of its own, and
+/// "Section IV" to that section's file.
+pub fn link_article(chapters: &mut [Chapter]) {
+    let mut refs: HashMap<String, String> = HashMap::new();
+    if let Some(ch) = chapters.iter_mut().find(|c| key(&c.title) == "references") {
+        let slug = ch.slug.clone();
+        for b in ch.blocks.iter_mut() {
+            let Block::Para(inl) = &mut b.block else { continue };
+            let Some(k) = inl.iter().position(|x| !matches!(x, Inline::Anchor(_))) else { continue };
+            let Inline::Text(t) = &inl[k] else { continue };
+            let Some(n) = t.trim_start().strip_prefix('[').and_then(|r| r.split_once(']')).map(|(n, _)| n.to_string()).filter(|n| !n.is_empty() && n.len() <= 3 && n.bytes().all(|c| c.is_ascii_digit())) else { continue };
+            inl.insert(k, Inline::Anchor(format!("ref-{n}")));
+            refs.insert(n.clone(), format!("{slug}.md#ref-{n}"));
+        }
+    }
+    let sections: HashMap<String, String> = chapters
+        .iter()
+        .filter_map(|c| {
+            let (n, _) = c.title.split_once(". ")?;
+            (!n.is_empty() && n.chars().all(|c| "IVXL".contains(c))).then(|| (n.to_string(), format!("{}.md", c.slug)))
+        })
+        .collect();
+    for ch in chapters.iter_mut() {
+        if key(&ch.title) == "references" {
+            continue;
+        }
+        for inl in text_runs(ch) {
+            let old = std::mem::take(inl);
+            for x in old {
+                let Inline::Text(t) = x else {
+                    inl.push(x);
+                    continue;
+                };
+                let mut cited = Vec::new();
+                cite(&t, &refs, &mut cited);
+                for y in cited {
+                    match y {
+                        Inline::Text(t) => to_sections(&t, &sections, inl),
+                        y => inl.push(y),
+                    }
+                }
+            }
+        }
+    }
+}
+
+/// The citations in a piece of text, each number a link to its reference.
+fn cite(t: &str, refs: &HashMap<String, String>, out: &mut Vec<Inline>) {
+    let mut rest = t;
+    let mut buf = String::new();
+    while let Some(p) = rest.find('[') {
+        let inner = rest[p + 1..].split_once(']').map(|(i, _)| i).filter(|i| {
+            let numbers: Vec<&str> = i.split(|c: char| !c.is_ascii_digit()).filter(|n| !n.is_empty()).collect();
+            i.len() <= 40 && !numbers.is_empty() && i.chars().all(|c| c.is_ascii_digit() || ", –-".contains(c)) && numbers.iter().all(|n| refs.contains_key(*n))
+        });
+        let Some(inner) = inner else {
+            buf.push_str(&rest[..=p]);
+            rest = &rest[p + 1..];
+            continue;
+        };
+        buf.push_str(&rest[..=p]);
+        let mut number = String::new();
+        for c in inner.chars().chain(std::iter::once(']')) {
+            if c.is_ascii_digit() {
+                number.push(c);
+                continue;
+            }
+            if !number.is_empty() {
+                if !buf.is_empty() {
+                    out.push(Inline::Text(std::mem::take(&mut buf)));
+                }
+                out.push(Inline::Link { text: number.clone(), href: refs[&number].clone() });
+                number.clear();
+            }
+            buf.push(c);
+        }
+        rest = &rest[p + 1 + inner.len() + 1..];
+    }
+    buf.push_str(rest);
+    if !buf.is_empty() {
+        out.push(Inline::Text(buf));
+    }
+}
+
+/// "Section IV" in a piece of text, as a link to that section.
+fn to_sections(t: &str, sections: &HashMap<String, String>, out: &mut Vec<Inline>) {
+    let mut rest = t;
+    let mut buf = String::new();
+    while let Some(p) = rest.find("Section ") {
+        let after = &rest[p + 8..];
+        let numeral: String = after.chars().take_while(|c| "IVXL".contains(*c)).collect();
+        match sections.get(&numeral).filter(|_| !after[numeral.len()..].starts_with(char::is_alphanumeric)) {
+            Some(href) => {
+                buf.push_str(&rest[..p]);
+                if !buf.is_empty() {
+                    out.push(Inline::Text(std::mem::take(&mut buf)));
+                }
+                out.push(Inline::Link { text: format!("Section {numeral}"), href: href.clone() });
+                rest = &after[numeral.len()..];
+            }
+            None => {
+                buf.push_str(&rest[..p + 8]);
+                rest = after;
+            }
+        }
+    }
+    buf.push_str(rest);
+    if !buf.is_empty() {
+        out.push(Inline::Text(buf));
+    }
+}
+
 /// Linked references to equations ("(3.422)" that is a link in the PDF)
 /// become links to the equation's anchor, in whichever chapter it is.
 pub fn link_equations(chapters: &mut [Chapter]) {
@@ -1042,7 +1155,9 @@ pub fn link_equations(chapters: &mut [Chapter]) {
                     let problem = ["Problem", "Problems", "Section", "Sections", "Figure", "Figures", "Fig.", "Figs.", "Table", "Tables", "Chapter", "Chapters", "Appendix", "Example", "Examples"]
                         .iter()
                         .any(|w| before.ends_with(w));
-                    if let Some(n) = crate::blocks::equation_ref(word).filter(|n| home.contains_key(*n) && !problem) {
+                    // (… or, where equations are numbered through, "(4)")
+                    let whole = word.strip_prefix('(').map(|w| w.trim_end_matches([')', ',', ';', '.', ':'])).filter(|w| !w.is_empty() && w.len() <= 3 && w.bytes().all(|c| c.is_ascii_digit()));
+                    if let Some(n) = crate::blocks::equation_ref(word).or(whole).filter(|n| home.contains_key(*n) && !problem) {
                         let (slug, anchor) = &home[n];
                         // keep the parentheses and punctuation around the link
                         let start = cut + word.find(n).unwrap_or(0);
@@ -1132,7 +1247,10 @@ pub fn caption(inl: &[Inline]) -> Option<(&'static str, String)> {
     let first = inl.iter().find(|x| !matches!(x, Inline::Anchor(_) | Inline::PageLink(_) | Inline::Source(_)))?;
     // (or, in ordinary type, with a colon after the number, as LaTeX sets
     // a caption: "Figure 4.1: The levels of …")
-    let colon = |t: &str| t.split_whitespace().nth(1).is_some_and(|n| n.ends_with(':') && n.len() > 1);
+    // (… or a whole number and a full stop, as an article's: "Figure 2. A
+    // spacetime diagram …")
+    let whole = |n: &str| n.strip_suffix('.').is_some_and(|d| !d.is_empty() && d.len() <= 3 && d.bytes().all(|c| c.is_ascii_digit()));
+    let colon = |t: &str| t.split_whitespace().nth(1).is_some_and(|n| (n.ends_with(':') && n.len() > 1) || (whole(n) && t.split_whitespace().nth(2).is_some_and(|w| w.starts_with(char::is_uppercase))));
     let t = match first {
         Inline::Strong(t) => t,
         Inline::Text(t) if colon(t) => t,
@@ -1144,8 +1262,9 @@ pub fn caption(inl: &[Inline]) -> Option<(&'static str, String)> {
         _ => return None,
     };
     let n: String = rest.trim_start().chars().take_while(|c| c.is_ascii_alphanumeric() || *c == '.').collect();
+    let numbered = whole(&n);
     let n = n.trim_end_matches('.');
-    (n.contains('.') && n.starts_with(|c: char| c.is_ascii_alphanumeric())).then(|| (kind, n.to_string()))
+    ((n.contains('.') || numbered) && n.starts_with(|c: char| c.is_ascii_alphanumeric())).then(|| (kind, n.to_string()))
 }
 
 /// Does a line start like a caption ("Fig. 1.1", "Figure 4.1", "Table 2.1")?
@@ -1368,7 +1487,28 @@ mod tests {
     use super::*;
 
     #[test]
+    fn an_article_links_its_citations_and_sections() {
+        let para = |t: &str| crate::Blk { block: Block::Para(vec![Inline::Text(t.into())]), page: 0, centered: false };
+        let mut chapters = vec![
+            Chapter { title: "I. INTRODUCTION".into(), slug: "01-introduction".into(), blocks: vec![para("As shown in [1, 2] and [3–4], see Section II; x[5] is an entry, [sic] a word.")], ..Default::default() },
+            Chapter { title: "II. METHOD".into(), slug: "02-method".into(), ..Default::default() },
+            Chapter { title: "References".into(), slug: "03-references".into(), blocks: (1..=4).map(|n| para(&format!("[{n}] A. Author. Title."))).collect(), ..Default::default() },
+        ];
+        link_article(&mut chapters);
+        let Block::Para(inl) = &chapters[0].blocks[0].block else { panic!() };
+        let links: Vec<(&str, &str)> = inl.iter().filter_map(|x| if let Inline::Link { text, href } = x { Some((text.as_str(), href.as_str())) } else { None }).collect();
+        assert_eq!(links, [("1", "03-references.md#ref-1"), ("2", "03-references.md#ref-2"), ("3", "03-references.md#ref-3"), ("4", "03-references.md#ref-4"), ("Section II", "02-method.md")]);
+        // (nothing is lost: what is no citation stays as it was)
+        assert_eq!(plain(inl), "As shown in [1, 2] and [3–4], see Section II; x[5] is an entry, [sic] a word.");
+        let Block::Para(entry) = &chapters[2].blocks[1].block else { panic!() };
+        assert_eq!(entry[0], Inline::Anchor("ref-2".into()));
+    }
+
+    #[test]
     fn captions_and_reference_lists() {
+        // (an article's: a whole number and a full stop)
+        assert_eq!(caption(&[Inline::Text("Figure 2. A spacetime diagram".into())]), Some(("figure", "2".into())));
+        assert_eq!(caption(&[Inline::Text("Figure 2. shows the levels".into())]), None);
         assert_eq!(caption(&[Inline::Strong("Fig. 1.1".into()), Inline::Text(" The apparatus".into())]), Some(("figure", "1.1".into())));
         assert_eq!(caption(&[Inline::Anchor("p9".into()), Inline::Strong("Figure 4.1".into())]), Some(("figure", "4.1".into())));
         assert_eq!(caption(&[Inline::Strong("Table 2.1".into())]), Some(("table", "2.1".into())));

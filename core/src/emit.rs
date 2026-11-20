@@ -790,6 +790,8 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
         // (marks for `bulleted`, which writes the item when all of it is there)
         Block::Bullet => out.push(ITEM_OPEN),
         Block::BulletEnd => out.push(ITEM_CLOSE),
+        Block::Quote => out.push(QUOTE_OPEN),
+        Block::QuoteEnd => out.push(QUOTE_CLOSE),
         Block::PageNote { label, text } => {
             out.push_str(&format!("{label}. {}\n\n", render_inlines(text)));
         }
@@ -961,6 +963,31 @@ fn scan(s: &str, open: &str, close: char) -> Vec<(usize, usize)> {
     v
 }
 
+const QUOTE_OPEN: char = '\u{3}';
+const QUOTE_CLOSE: char = '\u{4}';
+
+/// The quotations of a text, marked where they begin and end, as
+/// Markdown block quotations: "> " before each of their lines.
+fn quoted(text: &str) -> String {
+    if !text.contains(QUOTE_OPEN) {
+        return text.replace(QUOTE_CLOSE, "");
+    }
+    let mut out = String::with_capacity(text.len() + text.len() / 50);
+    let mut parts = text.split(QUOTE_OPEN);
+    out.push_str(&parts.next().unwrap_or("").replace(QUOTE_CLOSE, ""));
+    for part in parts {
+        let (quote, after) = part.split_once(QUOTE_CLOSE).unwrap_or((part, ""));
+        for line in quote.trim_matches('\n').lines() {
+            out.push_str(if line.is_empty() { ">" } else { "> " });
+            out.push_str(line);
+            out.push('\n');
+        }
+        out.push('\n');
+        out.push_str(after.replace(QUOTE_CLOSE, "").trim_start_matches('\n'));
+    }
+    out
+}
+
 const ITEM_OPEN: char = '\u{1}';
 const ITEM_CLOSE: char = '\u{2}';
 
@@ -969,6 +996,7 @@ const ITEM_CLOSE: char = '\u{2}';
 /// other line of it set in under that, so its equations and further
 /// paragraphs stay part of the item.
 fn bulleted(text: &str) -> String {
+    let text = &quoted(text);
     if !text.contains(ITEM_OPEN) {
         return text.replace(ITEM_CLOSE, "");
     }
@@ -1473,6 +1501,12 @@ pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn a_quotation_is_written_as_a_block_quotation() {
+        let marked = format!("before\n\n{QUOTE_OPEN}It is rather\ndiscomforting.\n\n{QUOTE_CLOSE}after\n");
+        assert_eq!(bulleted(&marked), "before\n\n> It is rather\n> discomforting.\n\nafter\n");
+    }
 
     #[test]
     fn a_page_marker_opens_its_page_of_the_pdf() {

@@ -40,6 +40,17 @@ struct Band {
     columns: bool,
     /// where it begins on the unfolded page
     out: f32,
+    /// where, on the printed page, the footnotes of its left column
+    /// begin: they go under the right column, to the foot of the page
+    notes: Option<f32>,
+}
+
+impl Band {
+    /// How high it is unfolded.
+    fn unfolded(&self) -> f32 {
+        let h = self.bottom - self.top;
+        if self.columns { 2.0 * h + self.notes.map_or(0.0, |n| self.bottom - n) } else { h }
+    }
 }
 
 struct Plan {
@@ -52,6 +63,9 @@ impl Plan {
     fn moved(&self, x: f32, y: f32, gutter: f32, dx: f32) -> (f32, f32) {
         let Some(b) = self.bands.iter().find(|b| y < b.bottom).or(self.bands.last()) else { return (0.0, 0.0) };
         let right = b.columns && x >= gutter;
+        if let Some(n) = b.notes.filter(|n| b.columns && !right && y >= *n) {
+            return (0.0, b.out + 2.0 * (b.bottom - b.top) - n);
+        }
         (if right { -dx } else { 0.0 }, b.out - b.top + if right { b.bottom - b.top } else { 0.0 })
     }
 }
@@ -121,7 +135,26 @@ fn offset(doc: &Doc, g: f32) -> Option<f32> {
     Some(edge(true)? - edge(false)?)
 }
 
-fn plan(lines: &[Line], figures: &[Figure], height: f32, gutter: f32) -> Plan {
+/// Where the footnotes of the left column begin, in a stretch of two
+/// columns: its last lines, in smaller type, under the short rule that
+/// stands over footnotes or beginning with a note's mark.
+fn left_notes(lines: &[Line], rules: &[Rule], band: &Band, gutter: f32, body: f32) -> Option<f32> {
+    let mut left: Vec<&Line> = lines.iter().filter(|l| l.top >= band.top && l.top < band.bottom && l.right < gutter + 3.0 && !l.spans.is_empty()).collect();
+    left.sort_by(|a, b| a.top.total_cmp(&b.top));
+    let mut k = left.len();
+    while k > 0 && left[k - 1].size <= 0.9 * body {
+        k -= 1;
+    }
+    let first = left.get(k)?;
+    let rule = rules.iter().find(|r| r.right < gutter && r.right - r.left >= 2.0 * body && r.bottom - r.top <= 3.0 && r.top < first.top && first.top - r.top <= 3.0 * body && r.left <= first.left + 0.5 * body && k.checked_sub(1).is_none_or(|a| left[a].top < r.top));
+    let mark = first.spans.first().is_some_and(|s| !s.text.trim().is_empty() && s.text.trim().chars().all(|c| c.is_ascii_digit() || "*∗†‡§¶".contains(c)));
+    match rule {
+        Some(r) => Some(r.top - 2.0),
+        None => mark.then_some(first.top - 2.0),
+    }
+}
+
+fn plan(lines: &[Line], figures: &[Figure], rules: &[Rule], height: f32, gutter: f32, body: f32) -> Plan {
     // what runs across the gutter: (top, bottom)
     let mut wide: Vec<(f32, f32)> = lines.iter().filter(|l| l.spans.iter().any(|s| crosses(s.left, s.right(), gutter))).map(|l| (l.top, l.top + l.size)).collect();
     wide.extend(figures.iter().filter(|f| crosses(f.left, f.right, gutter) && f.left < gutter - 30.0 && f.right > gutter + 30.0).map(|f| (f.top, f.bottom)));
@@ -134,7 +167,7 @@ fn plan(lines: &[Line], figures: &[Figure], height: f32, gutter: f32) -> Plan {
     for (top, bottom, columns) in marks {
         match bands.last_mut() {
             Some(b) if b.columns == columns || top < b.bottom - 1.0 => b.bottom = b.bottom.max(bottom),
-            _ => bands.push(Band { top, bottom, columns, out: 0.0 }),
+            _ => bands.push(Band { top, bottom, columns, out: 0.0, notes: None }),
         }
     }
     // each band reaches down to the next one; the first begins at the top
@@ -144,7 +177,11 @@ fn plan(lines: &[Line], figures: &[Figure], height: f32, gutter: f32) -> Plan {
         b.top = if k == 0 { 0.0 } else { tops[k] - 2.0 };
         b.bottom = tops.get(k + 1).map_or(height.max(b.bottom + 2.0), |t| t - 2.0);
         b.out = out;
-        out += (b.bottom - b.top) * if b.columns { 2.0 } else { 1.0 };
+        // (footnotes stand at the foot of the page: of its last stretch)
+        if b.columns && k + 1 == tops.len() {
+            b.notes = left_notes(lines, rules, b, gutter, body);
+        }
+        out += b.unfolded();
     }
     Plan { bands, height: out.max(height) }
 }
@@ -155,9 +192,10 @@ fn plan(lines: &[Line], figures: &[Figure], height: f32, gutter: f32) -> Plan {
 pub fn unfold(doc: &mut Doc, path: &Path) -> HashMap<u32, Vec<Segment>> {
     let mut out = HashMap::new();
     let Some((g, dx)) = doc.gutter.and_then(|g| Some((g, offset(doc, g)?))) else { return out };
+    doc.column_offset = dx;
     let fonts = doc.fonts.clone();
     let size_of = |s: &Span| fonts.get(s.font).map_or(s.height, |f| f.size);
-    let plans: HashMap<u32, Plan> = doc.pages.iter().map(|p| (p.number, plan(&p.lines, &p.figures, p.height, g))).collect();
+    let plans: HashMap<u32, Plan> = doc.pages.iter().map(|p| (p.number, plan(&p.lines, &p.figures, &p.rules, p.height, g, doc.body_size))).collect();
     // where the links go: a place on the page they lead to, as unfolded
     let links = crate::annots::read_links(path);
     for page in doc.pages.iter_mut() {
@@ -231,7 +269,14 @@ pub fn unfold(doc: &mut Doc, path: &Path) -> HashMap<u32, Vec<Segment>> {
             .flat_map(|b| {
                 let h = b.bottom - b.top;
                 let first = Segment { top: b.out, bottom: b.out + h, dx: 0.0, dy: b.out - b.top };
-                if b.columns { vec![first, Segment { top: b.out + h, bottom: b.out + 2.0 * h, dx, dy: b.out + h - b.top }] } else { vec![first] }
+                let mut segments = vec![first];
+                if b.columns {
+                    segments.push(Segment { top: b.out + h, bottom: b.out + 2.0 * h, dx, dy: b.out + h - b.top });
+                    if let Some(n) = b.notes {
+                        segments.push(Segment { top: b.out + 2.0 * h, bottom: b.out + b.unfolded(), dx: 0.0, dy: b.out + 2.0 * h - n });
+                    }
+                }
+                segments
             })
             .collect();
         out.insert(page.number, segments);

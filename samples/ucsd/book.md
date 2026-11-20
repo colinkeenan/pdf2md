@@ -10074,11 +10074,11 @@ n_{x} + n_{y} + n_{z} = \frac{E_{F}}{\hbar \omega} - \frac{3}{2}
 
 2. **\*** N identical fermions are bound (at low temperature) in a potential $`V ( r ) = \tfrac{1}{2} m\omega^{2} r^{2}`$. Use separation in Cartesian coordinates to find the energy eigenvalues in terms of a set of three quantum numbers (which correspond to 3 mutually commuting operators). Find the Fermi energy of the system. If you are having trouble finding the number of states with energy less than $`E_{F}`$, you may assume that it is $`\alpha ( E_{F} / \hbar \omega )^{3}`$.
 
-3. A particle of mass m is in the potential $`V`$(**r**) $`= \tfrac{1}{2} m\omega^{2} ( x^{2} + y^{2} )`$. Find operators that commute with the Hamiltonian and use them to simplify the Schrödinger equation. Solve this problem in the simplest way possible to find the eigen-energies in terms of a set of ”quantum numbers” that describe the system.
+3. A particle of mass m is in the potential $`V ( \mathbf{r} ) = \tfrac{1}{2} m\omega^{2} ( x^{2} + y^{2} )`$. Find operators that commute with the Hamiltonian and use them to simplify the Schrödinger equation. Solve this problem in the simplest way possible to find the eigen-energies in terms of a set of ”quantum numbers” that describe the system.
 
 4. A particle is in a cubic box. That is, the potential is zero inside a cube of side L and infinite outside the cube. Find the 3 lowest allowed energies. Find the number of states (level of degeneracy) at each of these 3 energies.
 
-5. A particle of mass m is bound in the 3 dimensional potential $`V`$(**r**) $`= kr^{2}`$.
+5. A particle of mass m is bound in the 3 dimensional potential $`V ( \mathbf{r} ) = kr^{2}`$.
 
 a) Find the energy levels for this particle.
 
@@ -10098,13 +10098,13 @@ c) Find the Fermi Energy $`E_{F}`$ for $`N`$ particles in the box. (N is large.)
 
 7. A particle is confined in a rectangular box of length $`L`$, width $`W`$, and “tallness” $`T`$. Find the energy eigenvalues in terms of a set of three quantum numbers (which correspond to 3 mutually commuting operators). What are the energies of the three lowest energy states if $`L = 2 a , W = 1 a`$, and $`T = 0 . 5 a`$.
 
-8. A particle of mass m is bound in the 3 dimensional potential $`V`$(**r**) $`= kr^{2}`$.
+8. A particle of mass m is bound in the 3 dimensional potential $`V ( \mathbf{r} ) = kr^{2}`$.
 
 9. a) Find the energy levels for this particle.
 
 10. b) Determine the number of degenerate states for the first three energy levels.
 
-11. In 3 dimensions, a particle of mass $`m`$ is bound in a potential $`V`$(**r**) $`= \tfrac{e^{2}}{\sqrt{x^{2} + z^{2}}}^{-}`$.
+11. In 3 dimensions, a particle of mass $`m`$ is bound in a potential $`V ( \mathbf{r} ) = \tfrac{e^{2}}{\sqrt{x^{2} + z^{2}}}^{-}`$.
 
 a) The definite energy states will, of course, be eigenfunctions of $`H`$. What other operators can they be eigenfunctions of?
 
@@ -10267,7 +10267,7 @@ Therefore, $`L_{+}`$ raises the $`z`$ component of angular momentum by one unit 
 
 _Figure 45 (p. 204)_
 
-**Angular momentum is quantized**. Any measurement of a component of angular momentum will give some integer times $`\hbar`$. Any measurement of the total angular momentum gives the somewhat curious result **L**
+**Angular momentum is quantized**. Any measurement of a component of angular momentum will give some integer times $`\hbar`$. Any measurement of the total angular momentum gives the somewhat curious result $`\boldsymbol{L}`$
 
 ```math
 | L | = \sqrt{\ell ( \ell + 1 )} \hbar
@@ -11174,7 +11174,7 @@ The trivial solution that $`A = B = C = 0`$ is just a zero state, not normalizab
 9. In 3 dimensions, a particle is in the state:
 
 ```math
-\psi ( \boldsymbol{r} ) = C ( iY_{3 3} - 2 Y_{3 0} + 3 Y_{3 1} ) R ( r )
+\psi ( \mathbf{r} ) = C ( iY_{3 3} - 2 Y_{3 0} + 3 Y_{3 1} ) R ( r )
 ```
 
 where $`R ( r )`$ is some arbitrary radial wave function normalized such that
@@ -12431,14 +12431,14 @@ For the $`n = 3`$ final state, $`E = \tfrac{7}{1 4 4} 1 3 . 6`$ = 0$`. 7`$ eV.
 
 6. Calculate the **expected value of** $`r`$ in the Hydrogen state $`\psi_{2 0 0}`$.
 
-7. Write down the wave function of the hydrogen atom state $`\psi_{3 2 1}`$(**r**).
+7. Write down the wave function of the hydrogen atom state $`\psi_{3 2 1} ( \mathbf{r} )`$.
 
 8. A Hydrogen atom is in its 4$`D`$ state $`( n = 4 ,l = 2 )`$. The atom decays to a lower state by emitting a photon. Find the possible photon energies that may be observed. Give your answers in $`eV`$.
 
 9. A Hydrogen atom is in the state:
 
 ```math
-\psi ( \boldsymbol{r} ) = \frac{1}{\sqrt{3 0}} ( \psi_{1 0 0} + 2 \psi_{2 1 1} - \psi_{3 2 2} - 2 i\psi_{3 1 0} + 2 i\psi_{3 0 0} - 4 \psi_{4 3 3} )
+\psi ( \mathbf{r} ) = \frac{1}{\sqrt{3 0}} ( \psi_{1 0 0} + 2 \psi_{2 1 1} - \psi_{3 2 2} - 2 i\psi_{3 1 0} + 2 i\psi_{3 0 0} - 4 \psi_{4 3 3} )
 ```
 
 For the Hydrogen eigenstates, $`\langle \psi_{nlm} | \tfrac{1}{r} | \psi_{nlm} \rangle = \tfrac{Z}{a_{0} n^{2}}`$. Find the expected value of the potential energy for this state. Find the expected value of $`L_{x}`$.
@@ -12451,7 +12451,7 @@ a) What is the ground state energy of muonic hydrogen (in eV).
 
 b) What is the“Bohr Radius” of the ground state of muonic hydrogen.
 
-12. A hydrogen atom is in the state: $`\psi`$(**r**$`) = \frac{1}{\langle \sqrt{1 0} \rangle} ( \psi_{3 2 2} + 2 \psi_{2 2 1} + 2 i\psi_{2 2 0} + \psi_{1 1 - 1}`$) Find the possible measured energies and the probabilities of each. Find the expected value of $`L_{z}`$.
+12. A hydrogen atom is in the state: $`\psi ( \mathbf{r} ) = \frac{1}{\langle \sqrt{1 0} \rangle} ( \psi_{3 2 2} + 2 \psi_{2 2 1} + 2 i\psi_{2 2 0} + \psi_{1 1 - 1} )`$ Find the possible measured energies and the probabilities of each. Find the expected value of $`L_{z}`$.
 
 13. Find the difference in frequency between light emitted from the 2$`P \to 1 S`$ transition in Hydrogen and light from the same transition in Deuterium. (Deuterium is an isotope of Hydrogen with a proton and a neutron in the nucleus.)
 
@@ -14614,7 +14614,7 @@ probability that a measurement of the $`x`$ component of spin yields +$`\frac{1}
 
 probability that a measurement of $`S_{x}`$ yields $`\frac{- \hbar}{2}`$? What is the probability that a measurement of $`S_{y}`$ yields $`\frac{- \hbar}{2}`$?
 
-9. A spin $`\frac{1}{2}`$ object is in an eigenstate of $`S_{y}`$ with eigenvalue $`\frac{\hbar}{2}`$ at t=0. The particle is in a magnetic field **B** = $`( 0 , 0 ,B )`$ which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{z}`$. Find the probability to measure $`S_{y} = \tfrac{\hbar}{2}`$ as a function of time.
+9. A spin $`\frac{1}{2}`$ object is in an eigenstate of $`S_{y}`$ with eigenvalue $`\frac{\hbar}{2}`$ at t=0. The particle is in a magnetic field $`\mathbf{B} = ( 0 , 0 ,B )`$ which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{z}`$. Find the probability to measure $`S_{y} = \tfrac{\hbar}{2}`$ as a function of time.
 
 10. Two degenerate eigenfunctions of the Hamiltonian are properly normalized and have the following properties.
 
@@ -14630,7 +14630,7 @@ What are the properly normalized states that are eigenfunctions of H and P? What
 
 11. What are the eigenvectors and eigenvalues for the spin $`\frac{1}{2}`$ operator $`S_{x} + S_{z}`$?
 
-12. A spin $`\frac{1}{2}`$ object is in an eigenstate of $`S_{y}`$ with eigenvalue $`\frac{\hbar}{2}`$ at t=0. The particle is in a magnetic field **B** = $`( 0 , 0 ,B )`$ which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{z}`$. Find the probability to measure $`S_{y} = \tfrac{\hbar}{2}`$ as a function of time.
+12. A spin $`\frac{1}{2}`$ object is in an eigenstate of $`S_{y}`$ with eigenvalue $`\frac{\hbar}{2}`$ at t=0. The particle is in a magnetic field $`\mathbf{B} = ( 0 , 0 ,B )`$ which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{z}`$. Find the probability to measure $`S_{y} = \tfrac{\hbar}{2}`$ as a function of time.
 
 13. A spin 1 system is in the following state, (in the usual $`L_{z}`$ eigenstate basis):
 
@@ -14640,7 +14640,7 @@ What are the properly normalized states that are eigenfunctions of H and P? What
 
 What is the probability that a measurement of $`L_{x}`$ yields 0? What is the probability that a measurement of $`L_{y}`$ yields $`- \hbar`$?
 
-14. A spin $`\frac{1}{2}`$ object is in an eigenstate of $`S_{z}`$ with eigenvalue $`\frac{\hbar}{2}`$ at t=0. The particle is in a magnetic field **B** = (0$`,B, 0`$) which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{y}`$. Find the probability to measure $`S_{z} = \tfrac{\hbar}{2}`$ as a function of time.
+14. A spin $`\frac{1}{2}`$ object is in an eigenstate of $`S_{z}`$ with eigenvalue $`\frac{\hbar}{2}`$ at t=0. The particle is in a magnetic field $`\mathbf{B}`$ = (0$`,B, 0`$) which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{y}`$. Find the probability to measure $`S_{z} = \tfrac{\hbar}{2}`$ as a function of time.
 
 15. A spin 1 particle is placed in an external field in the $`u`$ direction such that the Hamiltonian is given by
 
@@ -16022,9 +16022,9 @@ H = \frac{1}{2 m} \left( \vec{\sigma} \cdot [ \vec{p} + \frac{e}{c} \vec{A} ( \v
 
 # <a id="s-20-7-sample-test-problems"></a>20.7 Sample Test Problems
 
-1. A charged particle is in an external magnetic field. The vector potential is given by **A** = $`( - yB, 0 , 0 )`$. What are the constants of the motion? Prove that these are constants by evaluating their commutator with the Hamiltonian.
+1. A charged particle is in an external magnetic field. The vector potential is given by $`\mathbf{A} = ( - yB, 0 , 0 )`$. What are the constants of the motion? Prove that these are constants by evaluating their commutator with the Hamiltonian.
 
-2. A charged particle is in an external magnetic field. The vector potential is given by **A** = $`( 0 ,xB, 0 )`$. What are the constants of the motion? Prove that these are constants by evaluating their commutator with the Hamiltonian.
+2. A charged particle is in an external magnetic field. The vector potential is given by $`\mathbf{A} = ( 0 ,xB, 0 )`$. What are the constants of the motion? Prove that these are constants by evaluating their commutator with the Hamiltonian.
 
 3. Gauge symmetry was noticed in electromagnetism before the advent of Quantum Mechanics. What is the symmetry transformation for the wave function of an electron from which the gauge symmetry for EM can be derived?
 
@@ -16780,7 +16780,7 @@ This is what we expect.
 
 2. A hydrogen atom is in the state $`\psi = R_{4 3} Y_{3 0} \chi_{+}`$. A combined measurement of of $`J^{2}`$ and of $`J_{z}`$ is made. What are the possible outcomes of this combined measurement and what are the probabilities of each? You may ignore nuclear spin in this problem.
 
-3. We want to find the eigenstates of total $`S^{2}`$ and $`S_{z}`$ for two spin 1 particles which have an $`S_{1} \cdot S_{2}`$ interaction. (**S** = **S**$`{}_{\boldsymbol{1}} +`$ **S**$`{}_{\boldsymbol{2}}`$)
+3. We want to find the eigenstates of total $`S^{2}`$ and $`S_{z}`$ for two spin 1 particles which have an $`S_{1} \cdot S_{2}`$ interaction. $`( \mathbf{S} = \mathbf{S}_{\boldsymbol{1}} + \mathbf{S}_{\boldsymbol{2}} )`$
 
 (a) What are the allowed values of $`s`$, the total spin quantum number.
 
@@ -20861,7 +20861,7 @@ Use another color to show the allowed E2 and M1 transitions.
 4. Calculate the differential cross section, $`\frac{d\sigma}{d \Omega}`$, for high energy scattering of particles of momentum p, from a spherical shell delta function
 
 ```math
-V ( \boldsymbol{r} ) = \lambda \delta ( r - r_{0} )
+V ( \mathbf{r} ) = \lambda \delta ( r - r_{0} )
 ```
 
 Assume that the potential is weak so that perturbation theory can be used. Be sure to write your answer in terms of the scattering angles.
@@ -21208,7 +21208,7 @@ The total cross section is then $`\sigma = 4 \pi r_{0}^{2}`$ which is 4 times th
 1. Calculate the differential cross section, $`\frac{d\sigma}{d \Omega}`$, for high energy scattering of particles of momentum p, from a spherical shell delta function
 
 ```math
-V ( \boldsymbol{r} ) = \lambda \delta ( r - r_{0} )
+V ( \mathbf{r} ) = \lambda \delta ( r - r_{0} )
 ```
 
 Assume that the potential is weak so that perturbation theory can be used. Be sure to write your answer in terms of the scattering angles.

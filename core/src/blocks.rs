@@ -41,9 +41,22 @@ pub struct Stats {
     pub words: HashSet<String>,
     /// An article, not a book: see [`stats`].
     pub article: bool,
+    /// In a document unfolded from two columns: the margins of what runs
+    /// across both columns (the title, the authors, the abstract).
+    pub wide: Option<(f32, f32)>,
 }
 
 impl Stats {
+    /// The margins a line is set between: the text's — or, for a line
+    /// that runs out over the right margin of a column, the margins of
+    /// what is set across both columns.
+    fn frame(&self, l: &Line) -> (f32, f32) {
+        match self.wide {
+            Some(w) if l.right > self.right + self.body => w,
+            _ => (self.left, self.right),
+        }
+    }
+
     /// A word cut by a hyphen at a line's end, "a-" and "b": is the hyphen
     /// the word's own ("four-dimensional")? It is if the book writes the
     /// word so within a line; or if it never writes the two as one word
@@ -223,7 +236,7 @@ pub fn stats(doc: &Doc, pages: &[PageInfo]) -> Stats {
     if std::env::var_os("PDF2MD_STATSDEBUG").is_some() {
         eprintln!("STATS left {left} right {right} body {body} spacing {spacing} chapter {chapter_size:?} section {section_size:?} article {article} gutter {:?}", doc.gutter);
     }
-    Stats { left, right, body, spacing, chapter_size, section_size, toc_pages, hyphenated, words, article }
+    Stats { left, right, body, spacing, chapter_size, section_size, toc_pages, hyphenated, words, article, wide: (doc.column_offset > 0.0).then_some((left, right + doc.column_offset)) }
 }
 
 /// The size a section title of an article is given: larger than any
@@ -251,7 +264,7 @@ pub(crate) fn section_title(doc: &Doc, l: &Line) -> Option<u32> {
     (titled && bold_words(doc, l)).then_some(n)
 }
 
-fn roman(t: &str) -> Option<u32> {
+pub(crate) fn roman(t: &str) -> Option<u32> {
     let value = |c: char| match c {
         'I' => 1,
         'V' => 5,
@@ -489,21 +502,29 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
             let s = &spans[i];
             let math = doc.is_math(s);
             let t = s.text.trim();
-            if s.script == Script::Super && !math {
+            // (a note's sign may be of a math font: the star of an author's name)
+            let sign = !t.is_empty() && t.chars().all(|c| "∗†‡".contains(c));
+            if s.script == Script::Super && (!math || sign) {
                 // (after a bracket that closes a formula, "(pc)" and a
                 // raised 2, it is the formula's power: the bracket alone in
                 // the text font, with math before it)
                 let closes_math = i >= 2 && matches!(spans[i - 1].text.trim(), ")" | "]" | "|") && (doc.is_math(&spans[i - 2]) || spans[i - 2].script != Script::Normal);
-                let after_word = i > 0
+                // (several marks in a row, "1, 2," and a star: the places an
+                // author works at, and a note)
+                let marks = |t: &str| t.starts_with(|c: char| c.is_ascii_digit()) && t.len() <= 8 && t.contains(',') && t.chars().all(|c| c.is_ascii_digit() || c == ',' || c == ' ');
+                let after_marks = i > 0 && spans[i - 1].script == Script::Super && !doc.is_math(&spans[i - 1]) && marks(spans[i - 1].text.trim()) && gap(i - 1, i) < 0.5 * st.body;
+                let after_word = (i > 0
                     && !doc.is_math(&spans[i - 1])
                     && spans[i - 1].script == Script::Normal
                     && !closes_math
-                    && gap(i - 1, i) < 0.5 * st.body;
+                    && gap(i - 1, i) < 0.5 * st.body)
+                    || after_marks;
                 let stacked = spans
                     .get(i + 1)
                     .is_some_and(|nx| (nx.left - s.left).abs() < 3.0 && (nx.script == Script::Sub || (nx.top >= s.bottom() - 1.0 && nx.height < 0.85 * l.size && nx.top < s.bottom() + 0.5 * l.size)));
                 let digits = !t.is_empty() && t.len() <= 3 && t.bytes().all(|b| b.is_ascii_digit());
-                let symbol = !t.is_empty() && t.chars().all(|c| "*†‡§¶".contains(c));
+                let symbol = !t.is_empty() && t.chars().all(|c| "*∗†‡§¶".contains(c));
+                let list = marks(t) && i > 0 && spans[i - 1].text.trim_end().ends_with(char::is_alphabetic);
                 let ordinal = matches!(t, "st" | "nd" | "rd" | "th");
                 // (a raised number on a number is its power where the
                 // exponent goes on in math, 2 and a raised 10/2 − 1, or the
@@ -512,14 +533,23 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
                 let goes_on = spans.get(i + 1).is_some_and(|nx| nx.script == Script::Super && doc.is_math(nx) && gap(i, i + 1) < 0.15 * st.body);
                 let in_formula = i >= 2 && doc.is_math(&spans[i - 2]) && gap(i - 2, i - 1) < 0.5 * st.body;
                 let power = digits && on_number && (goes_on || in_formula);
-                if ((digits || symbol) && (after_word || i == 0) && !stacked && !power) || (ordinal && i > 0) {
+                // (a star of a math font is a note's sign only behind such
+                // marks or a word: on a letter it is the letter's own)
+                let on_word = i > 0 && spans[i - 1].text.trim_end().chars().rev().take_while(|c| c.is_lowercase()).count() >= 3;
+                let sign_ok = !math || after_marks || on_word || i == 0;
+                if ((digits || symbol || list) && sign_ok && (after_word || i == 0) && !stacked && !power) || (ordinal && i > 0) {
                     return K::Marker;
                 }
             }
             // an accent drawn over a math symbol (˜ over a) is part of it
             let accent_over_math = matches!(t, "˜" | "ˆ" | "˙" | "¨" | "¯" | "ˇ")
                 && spans.iter().any(|o| doc.is_math(o) && o.left < s.right() && o.right() > s.left);
-            if math || s.script != Script::Normal || accent_over_math {
+            // (one letter alone in a bold font is a symbol of a formula: a
+            // vector **r**, with whatever index it bears)
+            // (not in a line that is bold altogether, a title)
+            let is_bold = |s: &crate::layout::Span| s.bold || crate::layout::is_bold_font(doc.family(s));
+            let bold_letter = is_bold(s) && t.len() == 1 && t.starts_with(|c: char| c.is_ascii_alphabetic()) && s.link.is_none() && spans.iter().any(|o| !doc.is_math(o) && !is_bold(o) && o.text.chars().filter(|c| c.is_alphabetic()).count() >= 3);
+            if math || s.script != Script::Normal || accent_over_math || bold_letter {
                 K::Math
             } else if !reference(i) && !t.is_empty() && t.chars().all(|c| c.is_ascii_digit() || "=+−-–()[]/<>|,.;:·×*!′".contains(c)) {
                 K::Op
@@ -690,7 +720,10 @@ fn emit_line(doc: &Doc, l: &Line, st: &Stats, spans: &[crate::layout::Span], kin
                     if !before.trim().is_empty() {
                         push_text(&mut out, before);
                     }
-                    out.push(Inline::Link { text: crate::emit::escape_text(link), href });
+                    // (an address whose "_" is a drawn line, not a letter:
+                    // written as the link has it)
+                    let address = href.strip_prefix("mailto:").filter(|a| a.replace('_', " ") == link.trim() || a.replace('_', "") == link.trim());
+                    out.push(Inline::Link { text: crate::emit::escape_text(address.unwrap_or(link)), href: href.clone() });
                 }
                 if !after.is_empty() {
                     push_text(&mut out, after);
@@ -1652,8 +1685,15 @@ fn math_info(doc: &Doc, l: &Line, st: &Stats) -> (f32, usize, bool) {
     let mut mathc = 0usize;
     let mut other = 0usize;
     let mut words = 0usize;
+    // (the raised marks behind a name, "1, 2," and a star, are no math)
+    let mut named = false;
     for s in &l.spans {
         let c = s.text.chars().filter(|c| !c.is_whitespace()).count();
+        let mark = s.script == Script::Super && !s.text.trim().is_empty() && s.text.chars().all(|c| c.is_ascii_digit() || c.is_whitespace() || ",*∗†‡§¶".contains(c));
+        if mark && named {
+            continue;
+        }
+        named = !doc.is_math(s) && s.script == Script::Normal && s.text.trim_end().ends_with(|c: char| c.is_alphabetic() || c == '.' || c == ',') && s.text.chars().filter(|c| c.is_alphabetic()).count() >= 3;
         if doc.is_math(s) || s.script != Script::Normal {
             mathc += c;
         } else {
@@ -1811,19 +1851,67 @@ fn display_flags(doc: &Doc, lines: &[Line], st: &Stats) -> Vec<bool> {
     f
 }
 
+/// A statement in words set apart as a formula is, with a tall brace at
+/// its right and an equation's number: lines of text beside a line that
+/// is nothing but the brace and the number. From line `i`: where it ends,
+/// and the statement as a formula of text lines closed by the brace.
+fn braced_statement(doc: &Doc, lines: &[Line], disp: &[bool], i: usize, end: usize, st: &Stats) -> Option<(usize, String, Option<String>)> {
+    let brace = |s: &crate::layout::Span| doc.family(s).starts_with("CMEX") && s.bottom() - s.top >= 1.5 * st.body && !s.text.trim().is_empty() && s.text.trim().chars().all(|c| c == '}' || c == 'o' || c == ')');
+    let k = (i..end.min(i + 4)).find(|k| {
+        let spans = &lines[*k].spans;
+        disp[*k] && spans.iter().filter(|s| brace(s)).count() == 1 && spans.iter().all(|s| brace(s) || mathtex::tag_of(&s.text).is_some() || s.text.trim().is_empty())
+    })?;
+    let closing = lines[k].spans.iter().find(|s| brace(s))?;
+    if closing.text.trim() != "}" {
+        return None;
+    }
+    let row = |l: &Line| {
+        let mid = l.top + l.size / 2.0;
+        mid >= closing.top - 2.0 && mid <= closing.bottom() + 2.0 && l.right <= closing.left + 2.0 && math_info(doc, l, st).1 >= 1
+    };
+    let mut j = i;
+    while j < end && (j == k || row(&lines[j])) {
+        j += 1;
+    }
+    if j <= k || j - i < 2 {
+        return None;
+    }
+    let rows: Vec<String> = (i..j)
+        .filter(|n| *n != k)
+        .map(|n| {
+            tidy(line_inlines(doc, &lines[n], st))
+                .into_iter()
+                .filter_map(|x| match x {
+                    Inline::Text(t) if t.trim().is_empty() => None,
+                    Inline::Text(t) => Some(format!("\\text{{{}}}", latex_text(&t))),
+                    Inline::Emph(t) => Some(format!("\\textit{{{}}}", latex_text(&t))),
+                    Inline::Strong(t) => Some(format!("\\textbf{{{}}}", latex_text(&t))),
+                    Inline::Math(t) => Some(t),
+                    other => Some(format!("\\text{{{}}}", latex_text(&plain(&[other])))).filter(|t| t.len() > 7),
+                })
+                .collect::<Vec<_>>()
+                .join("")
+        })
+        .collect();
+    let tag = lines[k].spans.iter().find_map(|s| mathtex::tag_of(&s.text));
+    Some((j, format!("\\left. \\begin{{array}}{{l}} {} \\end{{array}} \\right\\}}", rows.join(" \\\\ ")), tag))
+}
+
 /// A line set in the middle of the text column: its middle at the
 /// column's middle, and clearly in from both margins (a paragraph's
 /// indented first line or its short last line is not).
 fn is_centered(l: &Line, st: &Stats) -> bool {
-    let mid = (st.left + st.right) / 2.0;
+    let (left, right) = st.frame(l);
+    let mid = (left + right) / 2.0;
     ((l.left + l.right) / 2.0 - mid).abs() <= 0.4 * st.body
-        && l.left - st.left >= st.body
-        && st.right - l.right >= st.body
+        && l.left - left >= st.body
+        && right - l.right >= st.body
 }
 
 /// How far a line is in from the nearer margin.
 fn inset(l: &Line, st: &Stats) -> f32 {
-    (l.left - st.left).min(st.right - l.right)
+    let (left, right) = st.frame(l);
+    (l.left - left).min(right - l.right)
 }
 
 fn ends_sentence(t: &str) -> bool {
@@ -1953,7 +2041,7 @@ fn heading_size(
 /// Footnotes at the bottom of a page: the last lines, in a smaller font,
 /// starting with a marker. Returns the index where they start.
 /// `note_open`: the page before ended in a note (which may go on here).
-fn page_notes_start(doc: &Doc, lines: &[Line], st: &Stats, note_open: bool) -> usize {
+fn page_notes_start(doc: &Doc, lines: &[Line], st: &Stats, note_open: bool, rules: &[Rule]) -> usize {
     // a line's type size, not counting equation images (given body size)
     let text_size = |l: &Line| {
         l.spans.iter().filter(|s| s.tex.is_none()).map(|s| doc.size_of(s)).fold(0.0f32, f32::max).max(if l.spans.iter().all(|s| s.tex.is_some()) { l.size } else { 0.0 })
@@ -1971,8 +2059,15 @@ fn page_notes_start(doc: &Doc, lines: &[Line], st: &Stats, note_open: bool) -> u
     let ok = lines.get(k).is_some_and(|l| {
         let first = l.spans.first().map(|s| s.text.trim().to_string()).unwrap_or_default();
         let marker = !first.is_empty()
-            && first.chars().all(|c| c.is_ascii_digit() || "*†‡§¶".contains(c));
+            && first.chars().all(|c| c.is_ascii_digit() || "*∗†‡§¶".contains(c));
         let (_, words, _) = math_info(doc, l, st);
+        // (a note that goes on from the page before: its lines stand, as
+        // notes do, under the short rule drawn over the notes of a page)
+        let above = k.checked_sub(1).map_or(f32::MIN, |a| lines[a].top);
+        let ruled = note_open && rules.iter().any(|r| r.bottom - r.top <= 3.0 && r.right - r.left >= 2.0 * st.body && r.right - r.left <= 0.5 * (st.right - st.left) && r.left <= l.left + 0.5 * st.body && r.top < l.top && l.top - r.top <= 3.0 * st.body && r.top > above);
+        if ruled && words >= 2 {
+            return true;
+        }
         // (the note's number can stand raised on a line of its own, its
         // text on the line just below)
         let lone = l.spans.len() == 1 && lines.get(k + 1).is_some_and(|n| math_info(doc, n, st).1 >= 2);
@@ -2170,6 +2265,8 @@ struct Builder<'a> {
     /// How far every line of the open paragraph is in from the left
     /// margin and from the right one, at least (a quotation: both).
     para_in: (f32, f32),
+    /// the list of references of an article has begun
+    refs: bool,
     /// where in `para` the line breaks stand that the book made on purpose
     /// (hard returns): kept whether or not the paragraph is centered
     hard: Vec<usize>,
@@ -2190,6 +2287,16 @@ impl Builder<'_> {
             // (one line at least clearly in from the margins: an indented
             // one-line paragraph that ends early is centered by chance)
             let centered = self.para_centered && self.para_inset >= 2.5 * self.st.body;
+            // A paragraph of several lines, each set in from both margins
+            // and not centered: a quotation set apart, written as a block
+            // quotation ("> "). Not in a bulleted item, whose lines are all
+            // set in. (In an article: in books the test also takes the
+            // set-in parts of problems.)
+            let (left, right) = self.para_in;
+            let quoted = self.st.article && !centered && self.item.is_none() && self.para_lines >= 2 && left >= 0.8 * self.st.body && right >= 0.8 * self.st.body && left <= 6.0 * self.st.body && !self.index_mode;
+            // (its lines end short of the text's margin: none of them ends
+            // early on purpose)
+            let hard = if quoted { Vec::new() } else { hard };
             // not centered after all: its kept line breaks become spaces
             // (but not the hard returns)
             let p: Vec<Inline> = if centered {
@@ -2242,16 +2349,22 @@ impl Builder<'_> {
                 let block = Block::Equation { latex, tag: None, source: Some(key.to_string()) };
                 self.out.push(Blk { block, page: self.para_page, centered: false });
             } else {
-                // A paragraph of several lines, each set in from both
-                // margins and not centered: a quotation set apart. Written
-                // as a block quotation ("> "). Not in a bulleted item,
-                // whose lines are all set in.
-                let (left, right) = self.para_in;
-                let quoted = !centered && self.item.is_none() && self.para_lines >= 2 && left >= 0.8 * self.st.body && right >= 0.8 * self.st.body && left <= 6.0 * self.st.body && !self.index_mode;
-                // (not written yet: the mark is escaped on the way out, and
-                // the test also takes the set-in parts of problems in books)
-                let _ = quoted;
+                // The list of references of an article that gives it no
+                // title: it begins with entry "[1]", after the text.
+                if self.st.article && !self.refs && plain(&p).trim_start().starts_with("[1] ") && 2 * self.para_page >= self.doc.pages.len() {
+                    self.refs = true;
+                    let titled = self.out.iter().rev().find_map(|o| if let Block::Heading { text, .. } = &o.block { Some(key(&plain(text)) == "references") } else { None }).unwrap_or(false);
+                    if !titled {
+                        self.out.push(Blk { block: Block::Heading { level: 0, size: ARTICLE_SECTION, id: String::new(), text: vec![Inline::Text("References".into())] }, page: self.para_page, centered: false });
+                    }
+                }
+                if quoted {
+                    self.out.push(Blk { block: Block::Quote, page: self.para_page, centered: false });
+                }
                 self.out.push(Blk { block: Block::Para(p), page: self.para_page, centered });
+                if quoted {
+                    self.out.push(Blk { block: Block::QuoteEnd, page: self.para_page, centered: false });
+                }
             }
         }
         self.prev = None;
@@ -2558,6 +2671,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
         item: None,
         para_inset: 0.0,
         para_in: (0.0, 0.0),
+        refs: false,
     };
     // printed page marks (ebook PDFs without page numbers; see layout.rs)
     let use_marks = pages.iter().all(|p| p.label.is_none());
@@ -2593,7 +2707,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
         }
         let lines = &attach_fraction_rows(doc, &page.lines, &doc.pages[page.index].rules);
         let note_open = matches!(b.out.last(), Some(Blk { block: Block::PageNote { .. }, .. }));
-        let mut end = page_notes_start(doc, lines, st, note_open);
+        let mut end = page_notes_start(doc, lines, st, note_open, &doc.pages[page.index].rules);
         // tables set on a panel of grey, with a rule under each cell of
         // their head: real tables. (A raised mark in such a table, or the
         // note under it on a panel of its own, is not where the page's
@@ -2616,7 +2730,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
         if let Some(last) = panels.iter().map(|t| t.1).max().filter(|last| end < *last) {
             let on_panel = |l: &Line| doc.pages[page.index].shades.iter().any(|(p, _)| l.top >= p.top - 3.0 && l.top < p.bottom && l.left >= p.left - 3.0 && l.right <= p.right + 3.0);
             let below = last + lines[last..].iter().take_while(|l| on_panel(l)).count();
-            end = below + page_notes_start(doc, &lines[below..], st, false);
+            end = below + page_notes_start(doc, &lines[below..], st, false, &[]);
         }
         let mut disp = display_flags(doc, &lines[..end], st);
         // (a line of a table is no displayed formula, and none runs on into one)
@@ -2773,6 +2887,15 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 prev_top = Some(lines[j - 1].top);
                 last_heading = None;
                 i = *j;
+                continue;
+            }
+            if let Some((j, latex, tag)) = braced_statement(doc, lines, &disp, i, end, st).filter(|_| !b.index_mode) {
+                b.flush();
+                b.anchor_block();
+                b.push(Block::Equation { latex, tag, source: None });
+                prev_top = Some(lines[j - 1].top);
+                last_heading = None;
+                i = j;
                 continue;
             }
             if disp[i] && !b.index_mode {
@@ -3111,8 +3234,11 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
             mi += 1;
         }
         // Footnotes at the bottom of the page.
-        let is_marker = |t: &str| !t.is_empty() && t.chars().all(|c| c.is_ascii_digit() || "*†‡§¶".contains(c));
+        let is_marker = |t: &str| !t.is_empty() && t.chars().all(|c| c.is_ascii_digit() || "*∗†‡§¶".contains(c));
         let mut lone_label: Option<String> = None;
+        // (the note of the page before that goes on at the foot of this page)
+        let open_note = if note_open { b.out.iter().rposition(|o| matches!(o.block, Block::PageNote { .. })) } else { None };
+        let mut began = false;
         for l in &lines[end..] {
             let inl = line_inlines(doc, l, st);
             let first = l.spans.first().map(|s| s.text.trim().to_string()).unwrap_or_default();
@@ -3139,14 +3265,34 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                     _ => {}
                 }
                 b.out.push(Blk { block: Block::PageNote { label: first, text: tidy(text) }, page: pi, centered: false });
-            } else if let Some(Blk { block: Block::PageNote { text, .. }, .. }) = b.out.last_mut() {
-                push_text(text, " ");
-                text.extend(inl);
+                began = true;
+            } else if let Some(at) = if began { Some(b.out.len() - 1) } else { open_note } {
+                // (as the lines of a paragraph are joined: a word cut at
+                // the line's end is put together)
+                if let Block::PageNote { text, .. } = &mut b.out[at].block {
+                    let so_far = std::mem::take(text);
+                    // (the open paragraph of the page's text is put aside meanwhile)
+                    let open = std::mem::replace(&mut b.para, so_far);
+                    b.join(inl);
+                    let joined = std::mem::replace(&mut b.para, open);
+                    if let Block::PageNote { text, .. } = &mut b.out[at].block {
+                        *text = joined;
+                    }
+                }
             }
         }
     }
     b.flush();
     b.close_item();
+    // (the text of a note is mended as a paragraph's is: the pieces of
+    // one formula, set in two fonts, put together)
+    if !is_text_math(doc) {
+        for o in b.out.iter_mut() {
+            if let Block::PageNote { text, .. } = &mut o.block {
+                *text = tidy(crate::brackets::sides(tidy(crate::brackets::mend(crate::brackets::sides(tidy(std::mem::take(text)))))));
+            }
+        }
+    }
     // where the equation pictures are on their pages
     let mut boxes: HashMap<String, (u32, Figure)> = HashMap::new();
     for page in &doc.pages {
@@ -3219,8 +3365,22 @@ mod table_tests {
     }
 
     #[test]
+    fn a_word_cut_at_a_line_end_keeps_the_hyphen_that_is_its_own() {
+        let words = |list: &[&str]| list.iter().map(|w| w.to_string()).collect();
+        let st = Stats { left: 0.0, right: 500.0, body: 25.0, spacing: 26.0, chapter_size: None, section_size: None, toc_pages: Default::default(), hyphenated: words(&["two-dimensional"]), words: words(&["four", "dimensional", "space", "time", "spacetime", "the", "oretically"]), article: false, wide: None };
+        // written so within a line
+        assert!(st.keeps_hyphen("two", "dimensional"));
+        // both halves are words, and the book never writes them as one
+        assert!(st.keeps_hyphen("four", "dimensional"));
+        // the book writes them as one
+        assert!(!st.keeps_hyphen("space", "time"));
+        // a half that is no word
+        assert!(!st.keeps_hyphen("in", "tegrate"));
+    }
+
+    #[test]
     fn the_rows_of_a_table_are_found_by_how_its_cells_stand() {
-        let st = Stats { left: 0.0, right: 500.0, body: 25.0, spacing: 26.0, chapter_size: None, section_size: None, toc_pages: Default::default(), hyphenated: Default::default(), words: Default::default(), article: false };
+        let st = Stats { left: 0.0, right: 500.0, body: 25.0, spacing: 26.0, chapter_size: None, section_size: None, toc_pages: Default::default(), hyphenated: Default::default(), words: Default::default(), article: false, wide: None };
         // cells in the middle of their rows: a name beside two and three lines
         let names = [line("ket", 838.0), line("observable", 906.0), line("base", 998.0)];
         let texts = [line("a1", 826.0), line("a2", 852.0), line("b1", 880.0), line("b2", 906.0), line("b3", 932.0), line("c1", 960.0), line("c2", 986.0), line("c3", 1012.0), line("c4", 1037.0)];

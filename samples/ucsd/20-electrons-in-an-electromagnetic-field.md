@@ -1055,9 +1055,9 @@ H = \frac{1}{2 m} \left( \vec{\sigma} \cdot [ \vec{p} + \frac{e}{c} \vec{A} ( \v
 
 # <a id="s-20-7-sample-test-problems"></a>20.7 Sample Test Problems
 
-1. A charged particle is in an external magnetic field. The vector potential is given by **A** = $`( - yB, 0 , 0 )`$. What are the constants of the motion? Prove that these are constants by evaluating their commutator with the Hamiltonian.
+1. A charged particle is in an external magnetic field. The vector potential is given by $`\mathbf{A} = ( - yB, 0 , 0 )`$. What are the constants of the motion? Prove that these are constants by evaluating their commutator with the Hamiltonian.
 
-2. A charged particle is in an external magnetic field. The vector potential is given by **A** = $`( 0 ,xB, 0 )`$. What are the constants of the motion? Prove that these are constants by evaluating their commutator with the Hamiltonian.
+2. A charged particle is in an external magnetic field. The vector potential is given by $`\mathbf{A} = ( 0 ,xB, 0 )`$. What are the constants of the motion? Prove that these are constants by evaluating their commutator with the Hamiltonian.
 
 3. Gauge symmetry was noticed in electromagnetism before the advent of Quantum Mechanics. What is the symmetry transformation for the wave function of an electron from which the gauge symmetry for EM can be derived?
 

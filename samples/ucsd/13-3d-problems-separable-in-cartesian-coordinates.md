@@ -287,11 +287,11 @@ n_{x} + n_{y} + n_{z} = \frac{E_{F}}{\hbar \omega} - \frac{3}{2}
 
 2. **\*** N identical fermions are bound (at low temperature) in a potential $`V ( r ) = \tfrac{1}{2} m\omega^{2} r^{2}`$. Use separation in Cartesian coordinates to find the energy eigenvalues in terms of a set of three quantum numbers (which correspond to 3 mutually commuting operators). Find the Fermi energy of the system. If you are having trouble finding the number of states with energy less than $`E_{F}`$, you may assume that it is $`\alpha ( E_{F} / \hbar \omega )^{3}`$.
 
-3. A particle of mass m is in the potential $`V`$(**r**) $`= \tfrac{1}{2} m\omega^{2} ( x^{2} + y^{2} )`$. Find operators that commute with the Hamiltonian and use them to simplify the Schrödinger equation. Solve this problem in the simplest way possible to find the eigen-energies in terms of a set of ”quantum numbers” that describe the system.
+3. A particle of mass m is in the potential $`V ( \mathbf{r} ) = \tfrac{1}{2} m\omega^{2} ( x^{2} + y^{2} )`$. Find operators that commute with the Hamiltonian and use them to simplify the Schrödinger equation. Solve this problem in the simplest way possible to find the eigen-energies in terms of a set of ”quantum numbers” that describe the system.
 
 4. A particle is in a cubic box. That is, the potential is zero inside a cube of side L and infinite outside the cube. Find the 3 lowest allowed energies. Find the number of states (level of degeneracy) at each of these 3 energies.
 
-5. A particle of mass m is bound in the 3 dimensional potential $`V`$(**r**) $`= kr^{2}`$.
+5. A particle of mass m is bound in the 3 dimensional potential $`V ( \mathbf{r} ) = kr^{2}`$.
 
 a) Find the energy levels for this particle.
 
@@ -311,13 +311,13 @@ c) Find the Fermi Energy $`E_{F}`$ for $`N`$ particles in the box. (N is large.)
 
 7. A particle is confined in a rectangular box of length $`L`$, width $`W`$, and “tallness” $`T`$. Find the energy eigenvalues in terms of a set of three quantum numbers (which correspond to 3 mutually commuting operators). What are the energies of the three lowest energy states if $`L = 2 a , W = 1 a`$, and $`T = 0 . 5 a`$.
 
-8. A particle of mass m is bound in the 3 dimensional potential $`V`$(**r**) $`= kr^{2}`$.
+8. A particle of mass m is bound in the 3 dimensional potential $`V ( \mathbf{r} ) = kr^{2}`$.
 
 9. a) Find the energy levels for this particle.
 
 10. b) Determine the number of degenerate states for the first three energy levels.
 
-11. In 3 dimensions, a particle of mass $`m`$ is bound in a potential $`V`$(**r**) $`= \tfrac{e^{2}}{\sqrt{x^{2} + z^{2}}}^{-}`$.
+11. In 3 dimensions, a particle of mass $`m`$ is bound in a potential $`V ( \mathbf{r} ) = \tfrac{e^{2}}{\sqrt{x^{2} + z^{2}}}^{-}`$.
 
 a) The definite energy states will, of course, be eigenfunctions of $`H`$. What other operators can they be eigenfunctions of?
 

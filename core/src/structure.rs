@@ -132,6 +132,13 @@ pub fn slugify(s: &str) -> String {
 /// The number a chapter has in the book: its title starts with it
 /// ("3 Theory of …", "Chapter 3"), or its sections do ("3.1 Rotations").
 /// Appendices (sections "A.1") and unnumbered chapters have none.
+/// "IV. THE UNISTOCHASTIC FORMULATION": 4 and the title after the numeral.
+fn roman_number(title: &str) -> Option<(u32, &str)> {
+    let (numeral, name) = title.trim_start().split_once(". ")?;
+    let ok = !numeral.is_empty() && numeral.len() <= 5 && numeral.chars().all(|c| "IVXL".contains(c)) && name.starts_with(char::is_uppercase);
+    ok.then(|| crate::blocks::roman(numeral).map(|n| (n, name)))?
+}
+
 pub fn chapter_number(ch: &Chapter) -> Option<u32> {
     let number = |t: &str| -> Option<u32> {
         let t = t.trim_start();
@@ -142,6 +149,10 @@ pub fn chapter_number(ch: &Chapter) -> Option<u32> {
     };
     if let Some(n) = number(&ch.title).filter(|_| ch.title.chars().any(char::is_alphabetic) || ch.title.trim().len() <= 3) {
         return Some(n);
+    }
+    // (the sections of an article: "IV. THE UNISTOCHASTIC FORMULATION")
+    if let Some(n) = roman_number(&ch.title) {
+        return Some(n.0);
     }
     ch.blocks.iter().find_map(|b| match &b.block {
         Block::Heading { text, .. } => {
@@ -354,7 +365,12 @@ pub fn assign_slugs(chapters: &mut [Chapter]) {
         let title = match numbers[i] {
             Some(n) => {
                 let t = named(&ch.title);
-                t.trim_start().strip_prefix(&n.to_string()).filter(|rest| rest.starts_with(' ')).map(str::to_string).unwrap_or(t)
+                // ("IV. THE UNISTOCHASTIC FORMULATION" is "04-the-unistochastic-formulation")
+                if let Some((_, name)) = roman_number(&t) {
+                    name.to_string()
+                } else {
+                    t.trim_start().strip_prefix(&n.to_string()).filter(|rest| rest.starts_with(' ')).map(str::to_string).unwrap_or(t)
+                }
             }
             None => ch.title.clone(),
         };
@@ -472,6 +488,16 @@ pub fn heading_levels(chapters: &mut [Chapter], chapter_size: Option<f32>) {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn the_sections_of_an_article_are_files_by_their_numbers() {
+        let mut chapters: Vec<Chapter> = ["Front Matter", "I. INTRODUCTION", "II. EINSTEIN, PODOLSKY, ROSEN, AND BELL", "III. CONCLUSION", "ACKNOWLEDGMENTS", "References"].iter().map(|t| Chapter { title: t.to_string(), ..Default::default() }).collect();
+        assign_slugs(&mut chapters);
+        let slugs: Vec<&str> = chapters.iter().map(|c| c.slug.as_str()).collect();
+        assert_eq!(slugs, ["00-front-matter", "01-introduction", "02-einstein-podolsky-rosen-and-bell", "03-conclusion", "04-acknowledgments", "05-references"]);
+        // (a chapter's "I.1 Who Needs It?" is no such numeral)
+        assert_eq!(roman_number("I.1 Who Needs It?"), None);
+    }
 
     fn chapter(title: &str, section: Option<&str>) -> Chapter {
         let blocks = section

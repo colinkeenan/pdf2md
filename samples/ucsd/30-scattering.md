@@ -338,7 +338,7 @@ The total cross section is then $`\sigma = 4 \pi r_{0}^{2}`$ which is 4 times th
 1. Calculate the differential cross section, $`\frac{d\sigma}{d \Omega}`$, for high energy scattering of particles of momentum p, from a spherical shell delta function
 
 ```math
-V ( \boldsymbol{r} ) = \lambda \delta ( r - r_{0} )
+V ( \mathbf{r} ) = \lambda \delta ( r - r_{0} )
 ```
 
 Assume that the potential is weak so that perturbation theory can be used. Be sure to write your answer in terms of the scattering angles.

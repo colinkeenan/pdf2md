@@ -117,7 +117,11 @@ fn dump(args: &[String]) {
     };
     let range = page_range(&args[1..]);
     match pdf2md_core::layout::read_pdf(Path::new(input), range) {
-        Ok(doc) => print!("{}", pdf2md_core::layout::dump(&doc)),
+        Ok(mut doc) => {
+            // (as the converter reads it: two columns unfolded into one)
+            pdf2md_core::columns::unfold(&mut doc, Path::new(input));
+            print!("{}", pdf2md_core::layout::dump(&doc))
+        }
         Err(e) => {
             eprintln!("error reading PDF: {e}");
             process::exit(1);

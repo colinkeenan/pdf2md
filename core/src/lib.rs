@@ -178,6 +178,10 @@ pub enum Block {
     /// in under it.
     Bullet,
     BulletEnd,
+    /// A quotation set apart begins: what follows, up to `QuoteEnd`, is
+    /// written as a block quotation.
+    Quote,
+    QuoteEnd,
 }
 
 /// A block plus the page it starts on (index into the page list).
@@ -419,6 +423,15 @@ fn book_title(path: &Path, doc: &layout::Doc) -> String {
     if let Some(t) = meta {
         return t;
     }
+    // an article in two columns: the lines in larger type that open its
+    // first page
+    if doc.gutter.is_some() {
+        let lines: Vec<String> = doc.pages.first().map(|p| p.lines.iter().take_while(|l| l.size > doc.body_size + 0.5).map(|l| layout::plain_text(l).trim().to_string()).collect()).unwrap_or_default();
+        let t = lines.join(" ");
+        if words(&t) >= 2 {
+            return t;
+        }
+    }
     // the biggest type on the first pages, all its lines together
     // ("ADVANCED" / "QUANTUM MECHANICS"), in normal capitals
     let has_words = |l: &layout::Line| words(&layout::plain_text(l)) >= 1;
@@ -486,7 +499,9 @@ fn finish(blks: Vec<Blk>, labels: Vec<Option<String>>, pdf_pages: Vec<u32>, chap
             book.pdf_of.entry(format!("p{l}")).or_insert(*n);
         }
     }
-    let removed = notes::attach(&mut chapters, &mut book);
+    // (an article keeps its list of references, a file of its own)
+    let article = chapter_size == Some(blocks::ARTICLE_SECTION);
+    let removed = notes::attach(&mut chapters, &mut book, article);
     // (after the notes: their names count the chapters, and stay as they
     // were before the contents were a file of their own)
     structure::split_contents(&mut chapters);
@@ -497,6 +512,9 @@ fn finish(blks: Vec<Blk>, labels: Vec<Option<String>>, pdf_pages: Vec<u32>, chap
     links::link_problems(&mut chapters);
     links::link_cross_refs(&mut chapters);
     links::link_equations(&mut chapters);
+    if article {
+        links::link_article(&mut chapters);
+    }
     book.chapters = chapters;
     book
 }

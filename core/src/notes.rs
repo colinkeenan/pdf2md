@@ -16,7 +16,7 @@
 //!
 //! Every link goes both ways: marker -> note and note -> marker (↩).
 
-use crate::{key, plain, Block, Book, Chapter, Inline, Note};
+use crate::{key, plain, Blk, Block, Book, Chapter, Inline, Note};
 use std::collections::HashMap;
 
 /// Split "[12] rest" into (12, rest).
@@ -128,7 +128,7 @@ fn blocks_text(blocks: &[Block]) -> String {
 
 /// Remove the Notes and References chapters, link everything, and return
 /// the keys of the removed chapter titles (their TOC entries are dropped).
-pub fn attach(chapters: &mut Vec<Chapter>, book: &mut Book) -> Vec<String> {
+pub fn attach(chapters: &mut Vec<Chapter>, book: &mut Book, article: bool) -> Vec<String> {
     let pdf = book.pdf_pages.clone();
     let mut removed = Vec::new();
     let mut notes: Vec<Note> = Vec::new();
@@ -137,7 +137,7 @@ pub fn attach(chapters: &mut Vec<Chapter>, book: &mut Book) -> Vec<String> {
     while i < chapters.len() {
         let k = key(&chapters[i].title);
         let is_notes = matches!(k.as_str(), "notes" | "footnotes" | "endnotes");
-        let is_refs = matches!(k.as_str(), "references" | "bibliography");
+        let is_refs = !article && matches!(k.as_str(), "references" | "bibliography");
         if is_notes || is_refs {
             let ch = chapters.remove(i);
             let blocks: Vec<Block> = ch.blocks.into_iter().map(|b| b.block).collect();
@@ -153,6 +153,44 @@ pub fn attach(chapters: &mut Vec<Chapter>, book: &mut Book) -> Vec<String> {
     }
 
     // ---- footnotes ---------------------------------------------------------
+    // A page that holds the end of one chapter and the beginning of the
+    // next (the sections of an article): a note at its foot stands with
+    // the chapter the page ends in, though its marker may be in a chapter
+    // before, on the same page. It goes to the chapter of its marker.
+    let marked = |ch: &Chapter, label: &str, page: usize| {
+        ch.blocks.iter().any(|b| {
+            let (Block::Para(inl) | Block::Heading { text: inl, .. }) = &b.block else { return false };
+            let mut at = b.page;
+            inl.iter().any(|i| match i {
+                Inline::Anchor(a) if crate::page_label(a).is_some() => {
+                    at += 1;
+                    false
+                }
+                Inline::Sup(s) => s == label && at == page,
+                _ => false,
+            })
+        })
+    };
+    for ci in 1..chapters.len() {
+        let mut k = 0;
+        while k < chapters[ci].blocks.len() {
+            let (label, page) = match &chapters[ci].blocks[k] {
+                Blk { block: Block::PageNote { label, .. }, page, .. } => (label.clone(), *page),
+                _ => {
+                    k += 1;
+                    continue;
+                }
+            };
+            let home = if marked(&chapters[ci], &label, page) { None } else { (0..ci).rev().take_while(|c| chapters[*c].blocks.last().is_some_and(|b| b.page >= page)).find(|c| marked(&chapters[*c], &label, page)) };
+            match home {
+                Some(c) => {
+                    let note = chapters[ci].blocks.remove(k);
+                    chapters[c].blocks.push(note);
+                }
+                None => k += 1,
+            }
+        }
+    }
     // Page footnotes first: a marker matches a note printed on its own page.
     for (ci, ch) in chapters.iter_mut().enumerate() {
         // (by page, in order, so unmatched notes are listed the same way every run)

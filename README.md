@@ -18,6 +18,8 @@ The books are best read with [mdBun](https://github.com/colinkeenan/mdBun), a sm
 * **Bulleted lists** as lists: each item with the equations and the paragraphs the book sets in under its bullet.
 * **Footnotes** at the foot of their page, end notes at the end of the chapter that cites them.
 
+An **article** is recognised by itself: it has no chapters, and its sections carry numbers ("IV. The Method"). Two columns are written as one; each numbered section is a file named by its number (`04-the-method.md`), with the title, authors and abstract in `00-front-matter.md` and the list of references in a file of its own at the end. Citations like [9] link to their entry in that list, and "Section IV" to that section. Quotations set apart are block quotations.
+
 ## Three kinds of PDF
 
 pdf2md looks at the PDF and picks the way to read it. What you need to install depends on the kind.
@@ -179,6 +181,7 @@ Any other edit to the text is lost at the next conversion. A note whose place ca
 
 * **Recognized math is good, not perfect.** A misread formula does not always look broken. Check equations you rely on against the book; the page markers make that one click.
 * **Bold letters in recognized math are unsure.** The recognizer mixes up bold and ordinary letters, which matters where a bold letter is a vector. pdf2md takes the bold away where the equation's picture has no bold letter at all, and marks doubtful equations in `check-equations.md`, but it cannot tell which letters of an equation are the bold ones.
+* **Articles have been tried on one paper** (two columns, made with TeX). Another journal's layout may need rules of its own.
 * **Each new book brings cases not seen before.** pdf2md has been worked through three books. The rules that tell a heading from a line of text, or a formula from prose, are tuned on those.
 * **TeX-made PDFs need known math fonts**: Computer Modern, AMS, or fonts named "Math", "Symbol" or "STIX". Other fonts must be added in the source.
 * **Pictures are images**, so the labels inside them cannot be searched. A picture made of only one or two strokes is not found.

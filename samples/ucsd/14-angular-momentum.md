@@ -155,7 +155,7 @@ Therefore, $`L_{+}`$ raises the $`z`$ component of angular momentum by one unit 
 
 _Figure 45 (p. 204)_
 
-**Angular momentum is quantized**. Any measurement of a component of angular momentum will give some integer times $`\hbar`$. Any measurement of the total angular momentum gives the somewhat curious result **L**
+**Angular momentum is quantized**. Any measurement of a component of angular momentum will give some integer times $`\hbar`$. Any measurement of the total angular momentum gives the somewhat curious result $`\boldsymbol{L}`$
 
 ```math
 | L | = \sqrt{\ell ( \ell + 1 )} \hbar
@@ -1062,7 +1062,7 @@ The trivial solution that $`A = B = C = 0`$ is just a zero state, not normalizab
 9. In 3 dimensions, a particle is in the state:
 
 ```math
-\psi ( \boldsymbol{r} ) = C ( iY_{3 3} - 2 Y_{3 0} + 3 Y_{3 1} ) R ( r )
+\psi ( \mathbf{r} ) = C ( iY_{3 3} - 2 Y_{3 0} + 3 Y_{3 1} ) R ( r )
 ```
 
 where $`R ( r )`$ is some arbitrary radial wave function normalized such that

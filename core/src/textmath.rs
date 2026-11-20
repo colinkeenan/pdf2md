@@ -806,6 +806,7 @@ mod tests {
             body_size: 22.0,
             sideways: Vec::new(),
             gutter: None,
+            column_offset: 0.0,
         };
         let st = Stats {
             left: 100.0,
@@ -818,6 +819,7 @@ mod tests {
             hyphenated: Default::default(),
             words: Default::default(),
             article: false,
+            wide: None,
         };
         let mut x = 100.0;
         let mut spans = Vec::new();

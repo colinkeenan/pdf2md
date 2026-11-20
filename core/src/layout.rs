@@ -199,6 +199,10 @@ pub struct Doc {
     /// Where the gutter is, in a document set in two columns
     /// (see [`crate::columns`]).
     pub gutter: Option<f32>,
+    /// … and, once its pages are unfolded, how far its right column stood
+    /// from its left one (else 0): what runs across both columns is that
+    /// much wider than a column.
+    pub column_offset: f32,
 }
 
 /// Fonts that only ever contain math symbols. TeX books use the Computer
@@ -1312,6 +1316,10 @@ fn take_figure_labels(doc: &mut Doc) {
                             .all(|o| label.iter().all(|k| apart(k, o) >= 2.0 * m))
                 };
                 let mut kept = Vec::new();
+                // (where the piece taken last ends, and how many letters
+                // were taken for standing right behind such a piece)
+                let mut taken: Option<f32> = None;
+                let mut chained = 0;
                 for s in spans.iter() {
                     // (… or a letter or two of its lettering across the picture's edge, within
                     // its height, as the picture stands with the labels taken
@@ -1320,8 +1328,16 @@ fn take_figure_labels(doc: &mut Doc) {
                     let inside = inside(s) || across;
                     let near = s.left < r && s.right() > l && s.top < b && s.bottom() > t;
                     let around = lettered || near && (line_inside || lonely(s));
+                    // (… or the rest of a label whose first piece is in the
+                    // picture: "(" at its edge, and "R, B)" right behind it)
+                    let count = s.text.trim().chars().count();
+                    let follows = !inside && !around && count <= 4 && chained + count <= 6 && s.top >= f.top - 1.0 && s.bottom() <= f.bottom + 1.0 && taken.is_some_and(|x| s.left >= x - 1.0 && s.left - x < 0.35 * m);
+                    if follows {
+                        chained += count;
+                    }
                     let s = s.clone();
-                    if inside || around {
+                    if inside || around || follows {
+                        taken = Some(s.right());
                         f.left = f.left.min(s.left);
                         f.right = f.right.max(s.right());
                         f.top = f.top.min(s.top);
@@ -2833,7 +2849,7 @@ pub fn parse_xml_with(xml: &str, lost: &HashMap<String, bool>) -> Result<Doc, St
         })
         .collect();
 
-    let mut doc = Doc { fonts, pages, body_size, sideways: Vec::new(), gutter };
+    let mut doc = Doc { fonts, pages, body_size, sideways: Vec::new(), gutter, column_offset: 0.0 };
     split_accents(&mut doc);
     accents_over_letters(&mut doc);
     blank_pages(&mut doc);
