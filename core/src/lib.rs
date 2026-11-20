@@ -402,7 +402,7 @@ pub fn convert_pdf_as(path: &Path, pages: Option<(u32, u32)>, pictures: bool) ->
         book
     };
     book.title = book_title(original, &doc);
-    book.by = book_by(original, &doc);
+    book.by = book_by(original, &doc, &book.title);
     structure::half_titles_lead(&mut book.chapters, &book.title);
     book.source = Some(original.to_path_buf());
     book.upright = turned;
@@ -410,11 +410,22 @@ pub fn convert_pdf_as(path: &Path, pages: Option<(u32, u32)>, pictures: bool) ->
     Ok(book)
 }
 
-/// The first author's last name: from the PDF's author metadata, else from
-/// the line of a name on the first page (a few capitalized words in type
-/// larger than the text's, standing well apart under the title and its
-/// subtitle: "Nick Lucid"). Empty where neither tells.
-fn book_by(path: &Path, doc: &layout::Doc) -> String {
+/// Whom the book is by, in a word. A course's notes are by their school:
+/// the title names the course by it ("Quantum Physics (UCSD Physics 130)":
+/// capitals, a subject, a number). Else the first author's last name: from
+/// the PDF's author metadata, else from the line of a name on the first
+/// page — a name with initials on a line of its own ("F. J. Dyson"), or a
+/// few capitalized words in type larger than the text's, standing well
+/// apart under the title and its subtitle ("Nick Lucid"). Empty where
+/// nothing tells.
+fn book_by(path: &Path, doc: &layout::Doc, title: &str) -> String {
+    let parts: Vec<&str> = title.split(|c: char| !c.is_alphanumeric()).filter(|w| !w.is_empty()).collect();
+    let roman = |w: &str| w.chars().all(|c| "IVXLC".contains(c));
+    for w in parts.windows(3) {
+        if w[0].chars().count() >= 3 && w[0].chars().all(char::is_uppercase) && !roman(w[0]) && w[1].chars().next().is_some_and(char::is_uppercase) && w[1].chars().any(char::is_lowercase) && w[2].chars().all(|c| c.is_ascii_digit()) {
+            return w[0].to_string();
+        }
+    }
     let meta = std::process::Command::new("pdfinfo")
         .arg(path)
         .output()
@@ -431,11 +442,13 @@ fn book_by(path: &Path, doc: &layout::Doc) -> String {
     let Some(page) = doc.pages.first() else { return String::new() };
     let lines: Vec<&layout::Line> = page.lines.iter().filter(|l| !layout::plain_text(l).trim().is_empty()).collect();
     let largest = lines.iter().map(|l| l.size).fold(0.0, f32::max);
-    for pair in lines.windows(2) {
-        let (above, l) = (pair[0], pair[1]);
+    for (k, l) in lines.iter().enumerate() {
         let text = layout::plain_text(l);
         let words: Vec<&str> = text.split_whitespace().collect();
-        if l.size > doc.body_size + 0.5 && l.size + 0.5 < largest && l.top - above.top > 2.0 * l.size && (2..=4).contains(&words.len()) && words.iter().all(|w| name(w)) && words.last().is_some_and(|w| w.len() > 2) {
+        let named = (2..=4).contains(&words.len()) && words.iter().all(|w| name(w)) && words.last().is_some_and(|w| w.len() > 2 && !w.ends_with('.'));
+        let initial = |w: &&str| w.chars().count() == 2 && w.ends_with('.');
+        let apart = k > 0 && l.size > doc.body_size + 0.5 && l.top - lines[k - 1].top > 2.0 * l.size;
+        if named && l.size + 0.5 < largest && (apart || words.iter().any(initial)) {
             return words.last().unwrap_or(&"").to_string();
         }
     }
