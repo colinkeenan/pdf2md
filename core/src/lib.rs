@@ -435,12 +435,19 @@ fn book_title(path: &Path, doc: &layout::Doc) -> String {
     // the biggest type on the first pages, all its lines together
     // ("ADVANCED" / "QUANTUM MECHANICS"), in normal capitals
     let has_words = |l: &layout::Line| words(&layout::plain_text(l)) >= 1;
-    let big = doc.pages.iter().take(4).flat_map(|p| p.lines.iter().filter(|l| has_words(l)).map(move |l| (p, l))).max_by(|a, b| a.1.size.total_cmp(&b.1.size));
-    let title = big.filter(|(_, l)| l.size > doc.body_size * 1.3).map(|(page, top)| {
+    // (the first page that has such type: the heading "Contents" two pages
+    // on may be set larger than the title; of lines equally large the
+    // first, the second being the title's second line or what is under it)
+    let big = doc.pages.iter().take(4).find_map(|p| {
+        let top = p.lines.iter().filter(|l| has_words(l)).fold(None::<&layout::Line>, |m, l| if m.is_some_and(|m| m.size >= l.size) { m } else { Some(l) })?;
+        (top.size > doc.body_size * 1.3).then_some((p, top))
+    });
+    let title = big.map(|(page, top)| {
         // the lines just above and below it in large type belong to it
         let lines: Vec<&layout::Line> = page.lines.iter().filter(|l| has_words(l)).collect();
         let k = lines.iter().position(|l| std::ptr::eq(*l, top)).unwrap_or(0);
-        let part_of = |a: &layout::Line, b: &layout::Line| b.size >= 0.75 * top.size && (b.top - a.top).abs() <= 2.5 * top.size;
+        // (a line as large as the largest is of the title from further off)
+        let part_of = |a: &layout::Line, b: &layout::Line| b.size >= 0.75 * top.size && (b.top - a.top).abs() <= if b.size >= 0.95 * top.size { 3.5 } else { 2.5 } * top.size;
         let (mut first, mut last) = (k, k);
         while first > 0 && part_of(lines[first], lines[first - 1]) {
             first -= 1;

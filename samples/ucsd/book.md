@@ -1,4 +1,4 @@
-# (UCSD Physics 130)
+# Quantum Physics (UCSD Physics 130)
 
 <a id="00a-title-pages"></a>
 
