@@ -37,8 +37,24 @@ pub struct Stats {
     /// Hyphenated words seen inside lines ("wave-function"), used to decide
     /// whether a hyphen at a line end is part of the word.
     pub hyphenated: HashSet<String>,
+    /// The words that stand whole within the lines (in small letters).
+    pub words: HashSet<String>,
     /// An article, not a book: see [`stats`].
     pub article: bool,
+}
+
+impl Stats {
+    /// A word cut by a hyphen at a line's end, "a-" and "b": is the hyphen
+    /// the word's own ("four-dimensional")? It is if the book writes the
+    /// word so within a line; or if it never writes the two as one word
+    /// and both halves are words of their own in it.
+    pub(crate) fn keeps_hyphen(&self, a: &str, b: &str) -> bool {
+        let (a, b) = (a.to_lowercase(), b.to_lowercase());
+        if self.hyphenated.contains(&format!("{a}-{b}")) {
+            return true;
+        }
+        !self.words.contains(&format!("{a}{b}")) && self.words.contains(&a) && self.words.contains(&b)
+    }
 }
 
 /// The most common value (rounded to whole pixels).
@@ -172,11 +188,21 @@ pub fn stats(doc: &Doc, pages: &[PageInfo]) -> Stats {
         .map(|s| s as f32 / 10.0);
 
     let mut hyphenated = HashSet::new();
+    let mut words = HashSet::new();
     for p in &doc.pages {
+        // (the line before ended in a hyphen: its last word and the first
+        // of this line are halves, not words)
+        let mut cut = false;
         for l in &p.lines {
-            for s in &l.spans {
-                for w in s.text.split_whitespace() {
+            let last = l.spans.len().saturating_sub(1);
+            for (k, s) in l.spans.iter().enumerate() {
+                let count = s.text.split_whitespace().count();
+                for (n, w) in s.text.split_whitespace().enumerate() {
+                    let half = (cut && k == 0 && n == 0) || (k == last && n + 1 == count && w.ends_with('-'));
                     let w = w.trim_matches(|c: char| !c.is_alphanumeric());
+                    if !half && w.chars().count() >= 3 && w.chars().all(char::is_alphabetic) {
+                        words.insert(w.to_lowercase());
+                    }
                     if let Some((a, b)) = w.split_once('-') {
                         if !a.is_empty() && !b.is_empty() {
                             hyphenated.insert(w.to_lowercase());
@@ -184,6 +210,7 @@ pub fn stats(doc: &Doc, pages: &[PageInfo]) -> Stats {
                     }
                 }
             }
+            cut = l.spans.last().is_some_and(|s| s.text.trim_end().ends_with('-'));
         }
     }
 
@@ -196,7 +223,7 @@ pub fn stats(doc: &Doc, pages: &[PageInfo]) -> Stats {
     if std::env::var_os("PDF2MD_STATSDEBUG").is_some() {
         eprintln!("STATS left {left} right {right} body {body} spacing {spacing} chapter {chapter_size:?} section {section_size:?} article {article} gutter {:?}", doc.gutter);
     }
-    Stats { left, right, body, spacing, chapter_size, section_size, toc_pages, hyphenated, article }
+    Stats { left, right, body, spacing, chapter_size, section_size, toc_pages, hyphenated, words, article }
 }
 
 /// The size a section title of an article is given: larger than any
@@ -2177,7 +2204,7 @@ impl Builder<'_> {
                             (Some(Inline::Text(a)), Some(Inline::Text(b))) => {
                                 let word: String = a.trim_end_matches('-').chars().rev().take_while(|c| c.is_alphabetic()).collect::<Vec<_>>().into_iter().rev().collect();
                                 let next: String = b.chars().take_while(|c| c.is_alphabetic()).collect();
-                                a.ends_with('-') && !word.is_empty() && b.starts_with(|c: char| c.is_lowercase()) && !self.st.hyphenated.contains(&format!("{word}-{next}").to_lowercase())
+                                a.ends_with('-') && !word.is_empty() && b.starts_with(|c: char| c.is_lowercase()) && !self.st.keeps_hyphen(&word, &next)
                             }
                             _ => false,
                         };
@@ -2345,7 +2372,7 @@ impl Builder<'_> {
             let a_word: String = a.trim_end_matches('-').chars().rev().take_while(|c| c.is_alphabetic()).collect::<Vec<_>>().into_iter().rev().collect();
             if a.ends_with('-') && !a_word.is_empty() && b.starts_with(|c: char| c.is_lowercase()) {
                 let b_word: String = b.chars().take_while(|c| c.is_alphabetic()).collect();
-                if !self.st.hyphenated.contains(&format!("{a_word}-{b_word}").to_lowercase()) {
+                if !self.st.keeps_hyphen(&a_word, &b_word) {
                     a.pop();
                 }
                 self.para.extend(inl);
@@ -2364,8 +2391,7 @@ impl Builder<'_> {
                 .collect();
             if a.ends_with('-') && !a_word.is_empty() && b.starts_with(|c: char| c.is_lowercase()) {
                 let b_word: String = b.chars().take_while(|c| c.is_alphabetic()).collect();
-                let compound = format!("{}-{}", a_word, b_word).to_lowercase();
-                if !self.st.hyphenated.contains(&compound) {
+                if !self.st.keeps_hyphen(&a_word, &b_word) {
                     a.pop();
                 }
                 a.push_str(b);
@@ -2382,7 +2408,7 @@ impl Builder<'_> {
                 let a_word: String = a.trim_end_matches('-').chars().rev().take_while(|c| c.is_alphabetic()).collect::<Vec<_>>().into_iter().rev().collect();
                 if a.ends_with('-') && !a_word.is_empty() && b.starts_with(|c: char| c.is_lowercase()) {
                     let b_word: String = b.chars().take_while(|c| c.is_alphabetic()).collect();
-                    if !self.st.hyphenated.contains(&format!("{a_word}-{b_word}").to_lowercase()) {
+                    if !self.st.keeps_hyphen(&a_word, &b_word) {
                         a.pop();
                     }
                 } else {
@@ -3194,7 +3220,7 @@ mod table_tests {
 
     #[test]
     fn the_rows_of_a_table_are_found_by_how_its_cells_stand() {
-        let st = Stats { left: 0.0, right: 500.0, body: 25.0, spacing: 26.0, chapter_size: None, section_size: None, toc_pages: Default::default(), hyphenated: Default::default(), article: false };
+        let st = Stats { left: 0.0, right: 500.0, body: 25.0, spacing: 26.0, chapter_size: None, section_size: None, toc_pages: Default::default(), hyphenated: Default::default(), words: Default::default(), article: false };
         // cells in the middle of their rows: a name beside two and three lines
         let names = [line("ket", 838.0), line("observable", 906.0), line("base", 998.0)];
         let texts = [line("a1", 826.0), line("a2", 852.0), line("b1", 880.0), line("b2", 906.0), line("b3", 932.0), line("c1", 960.0), line("c2", 986.0), line("c3", 1012.0), line("c4", 1037.0)];

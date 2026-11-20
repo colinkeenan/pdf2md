@@ -13644,7 +13644,7 @@ Recall that the Hamiltonian for a magnetic moment in an external B-field is
 H = \frac{\mu_{B} B}{\hbar} L_{z} .
 ```
 
-As usual, we find the eigenstates (eigenvectors) and eigenvalues of a system by solving the timeindependent Schrödinger equation $`H\psi = E\psi`$. We see that everything in the Hamiltonian above is a (scalar) constant except the operator $`L_{z}`$, so that
+As usual, we find the eigenstates (eigenvectors) and eigenvalues of a system by solving the time-independent Schrödinger equation $`H\psi = E\psi`$. We see that everything in the Hamiltonian above is a (scalar) constant except the operator $`L_{z}`$, so that
 
 ```math
 H\psi = \frac{\mu_{B} B}{\hbar} L_{z} \psi = constant * ( L_{z} \psi ) .
@@ -18348,7 +18348,7 @@ We will sometimes group the constants such that
 
 1. Calculate the shifts in the hydrogen ground states due to a 1 kilogauss magnetic field.
 
-2. Consider positronium, a hydrogen-like atom consisting of an electron and a positron (antielectron). Calculate the fine structure of positronium for $`n = 1`$ and $`n = 2`$. Determine the hyperfine structure for the ground state. Compute the energy shifts in eV.
+2. Consider positronium, a hydrogen-like atom consisting of an electron and a positron (anti-electron). Calculate the fine structure of positronium for $`n = 1`$ and $`n = 2`$. Determine the hyperfine structure for the ground state. Compute the energy shifts in eV.
 
 3. List the spectroscopic states allowed that arise from combining $`( s = \tfrac{1}{2} \ \text{with} l = 3 )`$, $`( s = 2 \ \text{with} l = 1 )`$, and $`( s_{1} = \tfrac{1}{2} , \quad s_{2} = 1 \text{ and } l = 4 )`$.
 
@@ -21228,7 +21228,7 @@ The **non-relativistic quantum mechanics** that we have studied so far developed
 
 It was not long after the non-relativistic theory was completed that Dirac introduced a **relativistic theory for electrons**. By about 1928, relativistic theories, in which the electromagnetic field was quantized and the creation and absorption of particles was possible, had been developed by Dirac.
 
-Quantum Mechanics became a **quantum theory of fields**, with the fields for **bosons and fermions treated in a symmetric way**, yet behaving quite differently. In 1940, Pauli proved the spinstatistics theorem which showed why spin one-half particles should behave like fermions and spin zero or spin one particles should have the properties of bosons.
+Quantum Mechanics became a **quantum theory of fields**, with the fields for **bosons and fermions treated in a symmetric way**, yet behaving quite differently. In 1940, Pauli proved the spin-statistics theorem which showed why spin one-half particles should behave like fermions and spin zero or spin one particles should have the properties of bosons.
 
 **Quantum Field Theory** (QFT) was quite successful in describing all detailed experiments in electromagnetic interactions and many aspects of the weak interactions. Nevertheless, by the 1960s, when our textbook was written, most particle theorists were doubtful that QFT was suitable for describing the strong interactions and some aspects of the weak interactions. This all changed dramatically around 1970 when very **successful Gauge Theories of the strong and weak interactions** were introduced. By now, the physics of the electromagnetic, weak, and strong interactions are well described by Quantum Field (Gauge) Theories that together from the Standard Model.
 
@@ -27040,7 +27040,7 @@ This agrees with the other calculations and with experiment. The **“negative e
 
 # <a id="s-36-17hole-theory-and-charge-conjugation"></a>36.17 Hole Theory and Charge Conjugation
 
-Dirac postulated that the “negative energy” sea was entirely filled with electrons and that an antielectron would be formed if one of the “negative energy” electrons were elevated to a positive energy state. This would yield a positive energy electron plus a hole in the “negative energy” sea. The hole also has positive energy compared to the vacuum since it is lacking the negative energy present in the vacuum state. Therefore, both the electron and the positron would have positive energy. This describes the process of **pair creation**.
+Dirac postulated that the “negative energy” sea was entirely filled with electrons and that an anti-electron would be formed if one of the “negative energy” electrons were elevated to a positive energy state. This would yield a positive energy electron plus a hole in the “negative energy” sea. The hole also has positive energy compared to the vacuum since it is lacking the negative energy present in the vacuum state. Therefore, both the electron and the positron would have positive energy. This describes the process of **pair creation**.
 
 Similarly, any positive energy electron could make a transition to the now empty “negative energy” state. Energy would be given off, for example by the emission of two photons, and the system would return to the vacuum state. This is the process of **pair annihilation**.
 

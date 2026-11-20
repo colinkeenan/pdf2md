@@ -882,7 +882,7 @@ Recall that the Hamiltonian for a magnetic moment in an external B-field is
 H = \frac{\mu_{B} B}{\hbar} L_{z} .
 ```
 
-As usual, we find the eigenstates (eigenvectors) and eigenvalues of a system by solving the timeindependent Schrödinger equation $`H\psi = E\psi`$. We see that everything in the Hamiltonian above is a (scalar) constant except the operator $`L_{z}`$, so that
+As usual, we find the eigenstates (eigenvectors) and eigenvalues of a system by solving the time-independent Schrödinger equation $`H\psi = E\psi`$. We see that everything in the Hamiltonian above is a (scalar) constant except the operator $`L_{z}`$, so that
 
 ```math
 H\psi = \frac{\mu_{B} B}{\hbar} L_{z} \psi = constant * ( L_{z} \psi ) .

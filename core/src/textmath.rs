@@ -816,6 +816,7 @@ mod tests {
             section_size: None,
             toc_pages: Default::default(),
             hyphenated: Default::default(),
+            words: Default::default(),
             article: false,
         };
         let mut x = 100.0;

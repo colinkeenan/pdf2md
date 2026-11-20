@@ -11,7 +11,7 @@ The **non-relativistic quantum mechanics** that we have studied so far developed
 
 It was not long after the non-relativistic theory was completed that Dirac introduced a **relativistic theory for electrons**. By about 1928, relativistic theories, in which the electromagnetic field was quantized and the creation and absorption of particles was possible, had been developed by Dirac.
 
-Quantum Mechanics became a **quantum theory of fields**, with the fields for **bosons and fermions treated in a symmetric way**, yet behaving quite differently. In 1940, Pauli proved the spinstatistics theorem which showed why spin one-half particles should behave like fermions and spin zero or spin one particles should have the properties of bosons.
+Quantum Mechanics became a **quantum theory of fields**, with the fields for **bosons and fermions treated in a symmetric way**, yet behaving quite differently. In 1940, Pauli proved the spin-statistics theorem which showed why spin one-half particles should behave like fermions and spin zero or spin one particles should have the properties of bosons.
 
 **Quantum Field Theory** (QFT) was quite successful in describing all detailed experiments in electromagnetic interactions and many aspects of the weak interactions. Nevertheless, by the 1960s, when our textbook was written, most particle theorists were doubtful that QFT was suitable for describing the strong interactions and some aspects of the weak interactions. This all changed dramatically around 1970 when very **successful Gauge Theories of the strong and weak interactions** were introduced. By now, the physics of the electromagnetic, weak, and strong interactions are well described by Quantum Field (Gauge) Theories that together from the Standard Model.
 

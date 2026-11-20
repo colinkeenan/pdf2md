@@ -2961,7 +2961,7 @@ This agrees with the other calculations and with experiment. The **“negative e
 
 # <a id="s-36-17hole-theory-and-charge-conjugation"></a>36.17 Hole Theory and Charge Conjugation
 
-Dirac postulated that the “negative energy” sea was entirely filled with electrons and that an antielectron would be formed if one of the “negative energy” electrons were elevated to a positive energy state. This would yield a positive energy electron plus a hole in the “negative energy” sea. The hole also has positive energy compared to the vacuum since it is lacking the negative energy present in the vacuum state. Therefore, both the electron and the positron would have positive energy. This describes the process of **pair creation**.
+Dirac postulated that the “negative energy” sea was entirely filled with electrons and that an anti-electron would be formed if one of the “negative energy” electrons were elevated to a positive energy state. This would yield a positive energy electron plus a hole in the “negative energy” sea. The hole also has positive energy compared to the vacuum since it is lacking the negative energy present in the vacuum state. Therefore, both the electron and the positron would have positive energy. This describes the process of **pair creation**.
 
 Similarly, any positive energy electron could make a transition to the now empty “negative energy” state. Energy would be given off, for example by the emission of two photons, and the system would return to the vacuum state. This is the process of **pair annihilation**.
 

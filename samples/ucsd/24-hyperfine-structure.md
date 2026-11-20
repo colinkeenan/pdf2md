@@ -498,7 +498,7 @@ We will sometimes group the constants such that
 
 1. Calculate the shifts in the hydrogen ground states due to a 1 kilogauss magnetic field.
 
-2. Consider positronium, a hydrogen-like atom consisting of an electron and a positron (antielectron). Calculate the fine structure of positronium for $`n = 1`$ and $`n = 2`$. Determine the hyperfine structure for the ground state. Compute the energy shifts in eV.
+2. Consider positronium, a hydrogen-like atom consisting of an electron and a positron (anti-electron). Calculate the fine structure of positronium for $`n = 1`$ and $`n = 2`$. Determine the hyperfine structure for the ground state. Compute the energy shifts in eV.
 
 3. List the spectroscopic states allowed that arise from combining $`( s = \tfrac{1}{2} \ \text{with} l = 3 )`$, $`( s = 2 \ \text{with} l = 1 )`$, and $`( s_{1} = \tfrac{1}{2} , \quad s_{2} = 1 \text{ and } l = 4 )`$.
 
