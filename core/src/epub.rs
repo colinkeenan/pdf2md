@@ -1230,6 +1230,7 @@ fn write_unpacked(root: &Path, epub: &Path, out: &Path) -> Result<Vec<PathBuf>, 
         let lost = crate::userdata::apply(&mut all, &user, None);
         all.push_str(&emit::lost_notes(&lost));
         let p = out.join("book.md");
+        let all = emit::by_line(out, "") + &all;
         std::fs::write(&p, all).map_err(|e| format!("{}: {e}", p.display()))?;
         written.push(p);
     }

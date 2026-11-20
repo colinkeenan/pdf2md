@@ -253,6 +253,9 @@ pub struct Book {
     pub unfolds: std::collections::HashMap<u32, Vec<columns::Segment>>,
     /// The book's title (for the top of book.md).
     pub title: String,
+    /// Whom the book is by, in a word (its first author's last name), where
+    /// the PDF tells: a reader names the book's tabs by it.
+    pub by: String,
     /// The reader's notes and prose fixes from an earlier conversion, put
     /// back when the book is written (see `userdata`).
     pub user: userdata::UserData,
@@ -399,11 +402,44 @@ pub fn convert_pdf_as(path: &Path, pages: Option<(u32, u32)>, pictures: bool) ->
         book
     };
     book.title = book_title(original, &doc);
+    book.by = book_by(original, &doc);
     structure::half_titles_lead(&mut book.chapters, &book.title);
     book.source = Some(original.to_path_buf());
     book.upright = turned;
     progress::report(progress::Step::Book, 1, 1);
     Ok(book)
+}
+
+/// The first author's last name: from the PDF's author metadata, else from
+/// the line of a name on the first page (a few capitalized words in type
+/// larger than the text's, standing well apart under the title and its
+/// subtitle: "Nick Lucid"). Empty where neither tells.
+fn book_by(path: &Path, doc: &layout::Doc) -> String {
+    let meta = std::process::Command::new("pdfinfo")
+        .arg(path)
+        .output()
+        .ok()
+        .and_then(|o| String::from_utf8_lossy(&o.stdout).lines().find_map(|l| l.strip_prefix("Author:").map(|t| t.trim().to_string())))
+        .unwrap_or_default();
+    let name = |w: &str| w.chars().next().is_some_and(char::is_uppercase) && w.chars().all(|c| c.is_alphabetic() || c == '.' || c == '-' || c == '’' || c == '\'');
+    if let Some(first) = meta.split([',', ';', '&']).next().and_then(|a| a.split(" and ").next()) {
+        let words: Vec<&str> = first.split_whitespace().collect();
+        if (1..=4).contains(&words.len()) && words.iter().all(|w| name(w)) && words.last().is_some_and(|w| w.len() > 2) {
+            return words.last().unwrap_or(&"").to_string();
+        }
+    }
+    let Some(page) = doc.pages.first() else { return String::new() };
+    let lines: Vec<&layout::Line> = page.lines.iter().filter(|l| !layout::plain_text(l).trim().is_empty()).collect();
+    let largest = lines.iter().map(|l| l.size).fold(0.0, f32::max);
+    for pair in lines.windows(2) {
+        let (above, l) = (pair[0], pair[1]);
+        let text = layout::plain_text(l);
+        let words: Vec<&str> = text.split_whitespace().collect();
+        if l.size > doc.body_size + 0.5 && l.size + 0.5 < largest && l.top - above.top > 2.0 * l.size && (2..=4).contains(&words.len()) && words.iter().all(|w| name(w)) && words.last().is_some_and(|w| w.len() > 2) {
+            return words.last().unwrap_or(&"").to_string();
+        }
+    }
+    String::new()
 }
 
 /// The book's title: the PDF's title metadata if it reads like one (not an

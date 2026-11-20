@@ -145,7 +145,7 @@ Each chapter is a file named by its number, such as `03-theory-of-angular-moment
 
 `00-front-matter.md` holds everything before chapter 1, each title page or preface under its own heading. The table of contents is a file of its own right after it. Where the book prints prefaces or a foreword after its contents, the files follow the book: `00a-title-pages.md` holds what comes before the contents, `00c-additional-front-matter.md` what comes after them. A page printed after the contents that holds only a title (the title of the lectures, before the first chapter) heads the file after the contents, with its page marker. A half-title, the book's title printed once more on a page of its own, stands at the top of the file that follows it, above that file's title: above the word "Contents", or above the first part. It is never the last thing in the file before. An empty page belongs to what comes before it.
 
-`book.md` is the whole book in one file, with all links pointing inside it, so one search covers the book.
+`book.md` is the whole book in one file, with all links pointing inside it, so one search covers the book. Where the PDF tells whom the book is by, `book.md` opens with a hidden line, `<!-- pdf2md:by Lucid -->`: the first author's last name, from the PDF's author field or from the name on the title page; for a course, the school its name opens with ("MIT"). mdBun names the book's tabs by it. If the name is missing or wrong, write the line yourself: a line that is there is kept when the book is converted again.
 
 ### Page markers
 

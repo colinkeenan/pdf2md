@@ -1203,6 +1203,9 @@ pub fn write_course(folder: &Path, out: &Path) -> Result<Vec<PathBuf>, String> {
     let lost = crate::userdata::apply(&mut all, &user, None);
     all.push_str(&emit::lost_notes(&lost));
     let p = out.join("book.md");
+    // (the school, where the course's name opens with it: "MIT …")
+    let school = title.split_whitespace().next().filter(|w| w.len() >= 2 && w.chars().all(char::is_uppercase)).unwrap_or("");
+    let all = emit::by_line(out, school) + &all;
     std::fs::write(&p, all).map_err(|e| format!("{}: {e}", p.display()))?;
     written.push(p);
     // The files written last time that are not written now (a file's

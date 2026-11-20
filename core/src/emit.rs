@@ -889,6 +889,17 @@ fn book_markdown_marked(book: &Book) -> String {
     join_bodies(&book.title, &slugs, &bodies, true)
 }
 
+/// The line that opens book.md where it is known whom the book is by (a
+/// reader names the book's tabs by it): the line of the book.md that is
+/// there already, so a name the reader has put in or set right stays, else
+/// `found`. Empty if there is neither.
+pub(crate) fn by_line(dir: &Path, found: &str) -> String {
+    const OPEN: &str = "<!-- pdf2md:by ";
+    let old = std::fs::read_to_string(dir.join("book.md")).ok().and_then(|t| t.lines().next().and_then(|l| l.strip_prefix(OPEN)).and_then(|l| l.strip_suffix(" -->")).map(|l| l.trim().to_string()));
+    let by = old.unwrap_or_else(|| found.trim().to_string()).replace("--", "-");
+    if by.is_empty() { String::new() } else { format!("{OPEN}{by} -->\n\n") }
+}
+
 /// Files as one text: `names` (without .md) and what each holds. Links
 /// between them become links inside the page, and an id that more than one
 /// of them uses gets its file's name in front. `rules`: a line between.
@@ -1477,10 +1488,11 @@ pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
     }
     if book.chapters.len() > 1 {
         let p = dir.join("book.md");
+        let by = by_line(dir, &book.by);
         let mut s = book_markdown_marked(book);
         let lost = crate::userdata::apply(&mut s, &user, None);
         s.push_str(&lost_notes(&lost));
-        std::fs::write(&p, bulleted(&s))?;
+        std::fs::write(&p, by + &bulleted(&s))?;
         out.push(p);
     }
     if !book.unplaced.is_empty() {
