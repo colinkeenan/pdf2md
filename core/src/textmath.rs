@@ -819,6 +819,7 @@ mod tests {
             hyphenated: Default::default(),
             words: Default::default(),
             article: false,
+            indents: false,
             wide: None,
         };
         let mut x = 100.0;

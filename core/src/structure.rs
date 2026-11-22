@@ -186,6 +186,7 @@ pub fn merge_front_matter(chapters: &mut Vec<Chapter>, chapter_size: Option<f32>
             block: Block::Heading { level: 1, size: chapter_size.unwrap_or(0.0), id: String::new(), text: vec![crate::Inline::Text(ch.title)] },
             page,
             centered: false,
+            goes_on: false,
         });
         front.blocks.extend(blocks);
     }
@@ -501,7 +502,7 @@ mod tests {
 
     fn chapter(title: &str, section: Option<&str>) -> Chapter {
         let blocks = section
-            .map(|s| Blk { block: Block::Heading { level: 2, size: 0.0, id: String::new(), text: vec![crate::Inline::Text(s.into())] }, page: 0, centered: false })
+            .map(|s| Blk { block: Block::Heading { level: 2, size: 0.0, id: String::new(), text: vec![crate::Inline::Text(s.into())] }, page: 0, centered: false, goes_on: false })
             .into_iter()
             .collect();
         Chapter { title: title.into(), blocks, ..Default::default() }
@@ -560,8 +561,8 @@ mod tests {
     #[test]
     fn sections_come_below_a_clearly_larger_chapter_title() {
         let book = || {
-            let h = |t: &str, size: f32| Blk { block: Block::Heading { level: 2, size, id: String::new(), text: vec![crate::Inline::Text(t.into())] }, page: 0, centered: false };
-            let mut blocks = vec![Blk { block: Block::Para(vec![crate::Inline::Text("Words.".into())]), page: 0, centered: false }];
+            let h = |t: &str, size: f32| Blk { block: Block::Heading { level: 2, size, id: String::new(), text: vec![crate::Inline::Text(t.into())] }, page: 0, centered: false, goes_on: false };
+            let mut blocks = vec![Blk { block: Block::Para(vec![crate::Inline::Text("Words.".into())]), page: 0, centered: false, goes_on: false }];
             for n in 1..=3 {
                 blocks.push(h(&format!("1.{n} A Section"), 32.0));
                 blocks.push(h(&format!("1.{n}.1 A Subsection"), 25.0));

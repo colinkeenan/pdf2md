@@ -97,7 +97,7 @@ pub fn link_toc(
                 end = from;
                 // contents set in columns: a table; else a list
                 let blocks = if entries.iter().any(|e| e.columns) { vec![contents_table(entries, of_page)] } else { of_page };
-                chapters[tc].blocks.splice(bi..=bi, blocks.into_iter().map(|block| crate::Blk { block, page, centered: false }));
+                chapters[tc].blocks.splice(bi..=bi, blocks.into_iter().map(|block| crate::Blk { block, page, centered: false, goes_on: false }));
             }
         }
     }
@@ -371,7 +371,7 @@ fn link_entries(
                 let page = chapters[ci].blocks[bi].page;
                 match &mut chapters[ci].blocks[bi].block {
                     Block::Para(inl) => inl.insert(0, Inline::Anchor(new_id.clone())),
-                    _ => chapters[ci].blocks.insert(bi, crate::Blk { block: Block::Anchor(new_id.clone()), page, centered: false }),
+                    _ => chapters[ci].blocks.insert(bi, crate::Blk { block: Block::Anchor(new_id.clone()), page, centered: false, goes_on: false }),
                 }
                 let mut t = vec![Inline::Link { text, href: format!("{}.md#{}", chapters[ci].slug, new_id) }];
                 t.extend(page_link(&page_at(chapters, ci, bi + 1).unwrap_or_default()));
@@ -818,7 +818,7 @@ pub fn link_index(chapters: &mut [Chapter], pdf: &[u32]) {
         let page = chapters[ci].blocks[bi].page;
         match &mut chapters[ci].blocks[bi].block {
             Block::Para(inl) => inl.insert(0, Inline::Anchor(id)),
-            _ => chapters[ci].blocks.insert(bi, crate::Blk { block: Block::Anchor(id), page, centered: false }),
+            _ => chapters[ci].blocks.insert(bi, crate::Blk { block: Block::Anchor(id), page, centered: false, goes_on: false }),
         }
     }
 }
@@ -880,7 +880,7 @@ pub fn link_problems(chapters: &mut [Chapter]) {
                         if let Some(Inline::Text(t)) = p.first_mut() {
                             *t = t.trim_start().to_string();
                         }
-                        ch.blocks.push(crate::Blk { block: Block::Para(p), page: b.page, centered: b.centered });
+                        ch.blocks.push(crate::Blk { block: Block::Para(p), page: b.page, centered: b.centered, goes_on: false });
                     }
                     continue;
                 }
@@ -1488,7 +1488,7 @@ mod tests {
 
     #[test]
     fn an_article_links_its_citations_and_sections() {
-        let para = |t: &str| crate::Blk { block: Block::Para(vec![Inline::Text(t.into())]), page: 0, centered: false };
+        let para = |t: &str| crate::Blk { block: Block::Para(vec![Inline::Text(t.into())]), page: 0, centered: false, goes_on: false };
         let mut chapters = vec![
             Chapter { title: "I. INTRODUCTION".into(), slug: "01-introduction".into(), blocks: vec![para("As shown in [1, 2] and [3–4], see Section II; x[5] is an entry, [sic] a word.")], ..Default::default() },
             Chapter { title: "II. METHOD".into(), slug: "02-method".into(), ..Default::default() },

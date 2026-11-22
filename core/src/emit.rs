@@ -497,6 +497,27 @@ fn link_pages(text: &str, book: &Book) -> String {
     out
 }
 
+/// A paragraph that pictures break off in the middle of a sentence, at
+/// the top of the next page mostly: the sentence stops at the end of a
+/// full line, and goes on under the pictures and their captions. Written
+/// as two paragraphs with the pictures between, the first would end in a
+/// short line, and the caption under it would read as its next words. So
+/// the two parts stand in one block, and what is between them in a float
+/// as wide as the text: a viewer that sets the two parts as one run of
+/// words (`.over-page > p { display: inline }` in its style sheet, as
+/// mdBun has it) puts the float under the line the first part ends in and
+/// fills that line with the words that follow, as `page_mark_span` does
+/// for a page that turns with nothing between. Any other viewer shows two
+/// paragraphs with the pictures between them.
+const OVER_PAGE: &str = "<div class=\"over-page\" style=\"margin:1em 0\">\n\n";
+const OVER_FLOAT: &str = "<div style=\"float:left;width:100%;margin-top:0.4em\">\n\n";
+/// (the block ends under its float, however short the last part is)
+const OVER_END: &str = "<div style=\"clear:both\"></div>\n</div>\n\n";
+
+/// A caption of several lines is set closer than the text, so that it
+/// reads as one thing under its picture and not as the next paragraph.
+const CAPTION: &str = "<div style=\"line-height:1.25\">\n\n";
+
 /// The bar of the page marker written into a paragraph (see `page_mark_span`).
 const BAR_SPAN: &str = "<span style=\"display:block;height:2px;background:currentColor;opacity:0.25\"></span>";
 
@@ -1097,6 +1118,11 @@ fn chapter_body_marked(book: &Book, i: usize) -> String {
     // bar of the next page (inside the bar's own block, where the page
     // turns in the middle of a paragraph), or at the chapter's end.
     let mut foot: std::collections::VecDeque<&Note> = ch.notes.iter().filter(|n| n.page.is_some()).collect();
+    // The paragraphs that pictures break off in the middle of a sentence
+    // (see `OVER_PAGE`): where each of them stops.
+    let breaks: HashSet<usize> = (0..ch.blocks.len()).filter(|c| ch.blocks[*c].goes_on).filter_map(|c| crate::before_floats(&ch.blocks, c)).filter(|p| *p >= opening).collect();
+    // (such a block is open: what is written goes into its float)
+    let mut over = false;
     for (bi, b) in ch.blocks.iter().enumerate().skip(opening) {
         // (what stands on a later page: the notes of the pages before it first)
         while foot.front().is_some_and(|n| n.page.is_some_and(|p| p < b.page)) {
@@ -1192,6 +1218,16 @@ fn chapter_body_marked(book: &Book, i: usize) -> String {
             s.push_str(&format!("![{caption}]({})\n\n_{caption}_\n\n", figure_file(*page, *n)));
             continue;
         }
+        let para = if let crate::Block::Para(inl) = &b.block { Some(inl) } else { None };
+        let (resumes, stops) = (over && para.is_some() && b.goes_on, para.is_some() && breaks.contains(&bi));
+        // (a caption in lines as long as the text's: set closer)
+        let caption = !resumes && !stops && !b.centered && para.is_some_and(|inl| crate::links::caption(inl).is_some());
+        if (resumes || stops || caption) && in_list {
+            s.push('\n');
+            in_list = false;
+        }
+        s.push_str(if resumes { "</div>\n\n" } else if stops { OVER_PAGE } else if caption { CAPTION } else { "" });
+        let mut written = false;
         // A paragraph that goes on over a page: the notes of the page
         // that ends in it go into the bar's block, above the bar. (Only
         // where its markers are the pages of the PDF, one after another.)
@@ -1227,13 +1263,28 @@ fn chapter_body_marked(book: &Book, i: usize) -> String {
                     }
                 }
                 s.push_str(&text);
-                continue;
+                written = true;
             }
         }
-        render_block(&b.block, &mut s, &mut in_list);
+        if !written {
+            render_block(&b.block, &mut s, &mut in_list);
+        }
+        if stops {
+            s.push_str(OVER_FLOAT);
+            over = true;
+        } else if resumes {
+            s.push_str(OVER_END);
+            over = false;
+        } else if caption {
+            s.push_str("</div>\n\n");
+        }
     }
     if in_list {
         s.push('\n');
+    }
+    if over {
+        s.push_str("</div>\n\n");
+        s.push_str(OVER_END);
     }
     if centered {
         s.push_str("</div>\n\n");
@@ -1521,8 +1572,38 @@ mod tests {
     }
 
     #[test]
+    fn a_sentence_goes_on_behind_the_pictures_of_the_next_page() {
+        let blk = |block: Block, page: usize, goes_on: bool| crate::Blk { block, page, centered: false, goes_on };
+        let para = |t: &str| Block::Para(vec![Inline::Text(t.into())]);
+        let chapter = |blocks: Vec<crate::Blk>| {
+            let mut book = Book::default();
+            book.chapters.push(crate::Chapter { title: "T".into(), slug: "t".into(), blocks, ..Default::default() });
+            chapter_body(&book, 0)
+        };
+        let out = chapter(vec![
+            blk(para("The sentence stops at this"), 0, false),
+            blk(Block::Anchor("p8".into()), 1, false),
+            blk(para("Figure 1.2: What the picture shows."), 1, false),
+            blk(para("word and goes on."), 1, true),
+            blk(para("The next paragraph."), 1, false),
+        ]);
+        // one block: the first part, the float with the page's bar and the
+        // caption (set closer), the part that goes on
+        // (above the bar, the page that ends)
+        let float = format!("{OVER_FLOAT}<div align=\"right\"><sup>[p. 7]</sup></div>\n{PAGE_BAR}\n<a id=\"p8\"><sup>[p. 8]</sup></a>\n\n{CAPTION}Figure 1.2: What the picture shows.\n\n</div>\n\n</div>\n\n");
+        assert_eq!(out, format!("# T\n\n{OVER_PAGE}The sentence stops at this\n\n{float}word and goes on.\n\n{OVER_END}The next paragraph.\n\n"));
+        // a heading between: two paragraphs, as they come
+        let out = chapter(vec![
+            blk(para("The sentence stops at this"), 0, false),
+            blk(Block::Heading { level: 2, size: 0.0, id: "s".into(), text: vec![Inline::Text("Title".into())] }, 1, false),
+            blk(para("word and goes on."), 1, true),
+        ]);
+        assert!(!out.contains("over-page") && !out.contains("float"), "{out}");
+    }
+
+    #[test]
     fn a_page_marker_opens_its_page_of_the_pdf() {
-        let blk = |block: Block, page: usize| crate::Blk { block, page, centered: false };
+        let blk = |block: Block, page: usize| crate::Blk { block, page, centered: false, goes_on: false };
         let long = "word ".repeat(40);
         let mut book = Book {
             labels: vec![None, None, Some("1".into())],
@@ -1565,7 +1646,7 @@ mod tests {
 
     #[test]
     fn a_page_marker_inside_a_list_leaves_the_list_whole() {
-        let blk = |block: Block, page: usize| crate::Blk { block, page, centered: false };
+        let blk = |block: Block, page: usize| crate::Blk { block, page, centered: false, goes_on: false };
         let item = |level: usize, t: &str| Block::Item { level, text: vec![Inline::Text(t.into())] };
         let mut book = Book { labels: vec![None, None], pdf_pages: vec![4, 5], source: Some("x.pdf".into()), ..Default::default() };
         let mut blocks = vec![blk(item(0, "One"), 0), blk(item(2, "deep"), 0)];

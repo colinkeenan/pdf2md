@@ -191,6 +191,44 @@ pub struct Blk {
     pub page: usize,
     /// Every line of it is centered on the page (title pages, dedications).
     pub centered: bool,
+    /// A paragraph that goes on with the sentence of the paragraph before
+    /// the pictures above it: they were set into the sentence, at a page's
+    /// top mostly (see `before_floats`).
+    pub goes_on: bool,
+}
+
+/// The paragraph that stops in front of the pictures, their captions,
+/// tables and page marks that end before block `end`: its place, if
+/// nothing else stands between. (A book sets such things at the top of a
+/// page, or where there is room, whether or not a sentence is going on
+/// there.)
+pub(crate) fn before_floats(blocks: &[Blk], end: usize) -> Option<usize> {
+    let mut k = end.min(blocks.len());
+    while k > 0 {
+        k -= 1;
+        match &blocks[k].block {
+            Block::Anchor(_) | Block::Figure { .. } | Block::Picture { .. } | Block::Table { .. } | Block::PageNote { .. } => {}
+            Block::Para(inl) if links::caption(inl).is_some() => {}
+            // (a name under its picture)
+            Block::Para(_) if blocks[k].centered && blocks[..k].iter().rev().find(|b| !matches!(b.block, Block::Anchor(_))).is_some_and(|b| matches!(b.block, Block::Figure { .. })) => {}
+            // (a row of pictures, each over its name)
+            Block::ColumnsEnd => {
+                let open = blocks[..k].iter().rposition(|b| matches!(b.block, Block::Columns(_)))?;
+                let pictures = blocks[open + 1..k].iter().all(|b| match b.block {
+                    Block::Figure { .. } | Block::ColumnBreak | Block::Anchor(_) => true,
+                    Block::Para(_) => b.centered,
+                    _ => false,
+                });
+                if !pictures {
+                    return None;
+                }
+                k = open;
+            }
+            Block::Para(_) if !blocks[k].centered => return Some(k),
+            _ => return None,
+        }
+    }
+    None
 }
 
 #[derive(Debug, Clone, Default)]

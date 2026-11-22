@@ -2032,9 +2032,9 @@ fn toc(blks: &mut Vec<Blk>, pi: usize, entries: Vec<TocEntry>, anchor: &mut Opti
         }
     }
     if let Some(a) = anchor.take() {
-        blks.push(Blk { block: Block::Anchor(a), page: pi, centered: false });
+        blks.push(Blk { block: Block::Anchor(a), page: pi, centered: false, goes_on: false });
     }
-    blks.push(Blk { block: Block::Toc(entries), page: pi, centered: false });
+    blks.push(Blk { block: Block::Toc(entries), page: pi, centered: false, goes_on: false });
 }
 
 /// How much of block `a` lies inside block `b`, 0 to 1.
@@ -2085,7 +2085,7 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
         let all_centered = centered_page(page);
         let push = |blks: &mut Vec<Blk>, block: Block| {
             let centered = all_centered && !matches!(block, Block::Anchor(_));
-            blks.push(Blk { block, page: pi, centered })
+            blks.push(Blk { block, page: pi, centered, goes_on: false })
         };
         // where the lines of this page end at the latest
         let (_, right) = margins(page, measure);
@@ -2182,7 +2182,7 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
                 if let Some(a) = anchor.take() {
                     push(&mut blks, Block::Anchor(a));
                 }
-                blks.extend(mark.map(|block| Blk { block, page: pi, centered: false }));
+                blks.extend(mark.map(|block| Blk { block, page: pi, centered: false, goes_on: false }));
                 first_text = false;
                 continue;
             };
@@ -2196,7 +2196,7 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
                 }
                 for text in entries(b) {
                     if has_words(&text) {
-                        blks.push(Blk { block: Block::Item { level: 0, text }, page: pi, centered: false });
+                        blks.push(Blk { block: Block::Item { level: 0, text }, page: pi, centered: false, goes_on: false });
                     }
                 }
                 first_text = false;

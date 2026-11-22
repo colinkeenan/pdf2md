@@ -41,6 +41,9 @@ pub struct Stats {
     pub words: HashSet<String>,
     /// An article, not a book: see [`stats`].
     pub article: bool,
+    /// The first line of a paragraph is set in from the margin (so a line
+    /// at the margin goes on with the paragraph before it).
+    pub indents: bool,
     /// In a document unfolded from two columns: the margins of what runs
     /// across both columns (the title, the authors, the abstract).
     pub wide: Option<(f32, f32)>,
@@ -233,10 +236,31 @@ pub fn stats(doc: &Doc, pages: &[PageInfo]) -> Stats {
     let sections = pages.iter().flat_map(|p| p.lines.iter()).filter(|l| section_title(doc, l).is_some()).count();
     let article = chapter_size.is_none() && sections >= 2;
     let chapter_size = if article { Some(ARTICLE_SECTION) } else { chapter_size };
-    if std::env::var_os("PDF2MD_STATSDEBUG").is_some() {
-        eprintln!("STATS left {left} right {right} body {body} spacing {spacing} chapter {chapter_size:?} section {section_size:?} article {article} gutter {:?}", doc.gutter);
+    // Are the paragraphs' first lines set in? Counted where a paragraph
+    // clearly ends: a line that stops short with a full stop, and the
+    // next line right under it.
+    let (mut set_in, mut flat) = (0, 0);
+    for (pi, p) in pages.iter().enumerate() {
+        if toc_pages.contains(&pi) {
+            continue;
+        }
+        for w in p.lines.windows(2) {
+            let d = w[1].top - w[0].top;
+            let ends = w[0].right < right - 3.0 * body && w[0].right - w[0].left > 0.2 * (right - left) && (w[0].left - left).abs() < 0.6 * body && ends_sentence(&plain_text(&w[0]));
+            if w[0].size == body && w[1].size == body && d >= 0.8 * spacing && d <= 1.6 * spacing && ends && w[1].right >= right - body {
+                match w[1].left - left {
+                    x if x.abs() < 0.6 * body => flat += 1,
+                    x if x > 0.0 && x <= 4.0 * body => set_in += 1,
+                    _ => {}
+                }
+            }
+        }
     }
-    Stats { left, right, body, spacing, chapter_size, section_size, toc_pages, hyphenated, words, article, wide: (doc.column_offset > 0.0).then_some((left, right + doc.column_offset)) }
+    let indents = set_in >= 10 && set_in >= 4 * flat;
+    if std::env::var_os("PDF2MD_STATSDEBUG").is_some() {
+        eprintln!("STATS left {left} right {right} body {body} spacing {spacing} chapter {chapter_size:?} section {section_size:?} article {article} gutter {:?} paragraphs set in {set_in}, not {flat}", doc.gutter);
+    }
+    Stats { left, right, body, spacing, chapter_size, section_size, toc_pages, hyphenated, words, article, indents, wide: (doc.column_offset > 0.0).then_some((left, right + doc.column_offset)) }
 }
 
 /// The size a section title of an article is given: larger than any
@@ -863,7 +887,7 @@ fn picture_tables(blks: Vec<Blk>, boxes: &HashMap<String, (u32, Figure)>) -> Vec
             let page = blk.page;
             out.push(blk);
             if let Some((number, area)) = large {
-                out.push(Blk { block: Block::Picture { page: number, area, alt: crate::TABLE_MAYBE.into() }, page, centered: false });
+                out.push(Blk { block: Block::Picture { page: number, area, alt: crate::TABLE_MAYBE.into() }, page, centered: false, goes_on: false });
             }
             continue;
         };
@@ -879,13 +903,13 @@ fn picture_tables(blks: Vec<Blk>, boxes: &HashMap<String, (u32, Figure)>) -> Vec
             title.extend(before.clone());
             title = tidy(title.into_iter().map(|i| if i == Inline::Break { Inline::Text(" ".into()) } else { i }).collect());
         } else if has_text(&before) {
-            out.push(Blk { block: Block::Para(tidy(before)), page, centered });
+            out.push(Blk { block: Block::Para(tidy(before)), page, centered, goes_on: false });
         }
         // (keyed by the picture it was read from)
         let table = Block::Table { key: crate::table_key(boxes.get(&key).map_or(0, |b| b.0), &rows), rows, widths: Vec::new(), title, note: Vec::new() };
-        out.push(Blk { block: table, page, centered: false });
+        out.push(Blk { block: table, page, centered: false, goes_on: false });
         if let Some((number, area)) = boxes.get(&key) {
-            out.push(Blk { block: Block::Picture { page: *number, area: *area, alt: crate::TABLE_READ.into() }, page, centered: false });
+            out.push(Blk { block: Block::Picture { page: *number, area: *area, alt: crate::TABLE_READ.into() }, page, centered: false, goes_on: false });
         }
     }
     out
@@ -2247,6 +2271,35 @@ fn signs_quote(text: &str) -> bool {
     name.trim_start().starts_with(char::is_uppercase) && text.split_whitespace().count() <= 12
 }
 
+/// A paragraph that stops in the middle of its sentence.
+struct Held {
+    /// its last line
+    last: Prev,
+    /// where its block is in the builder's `out`
+    at: usize,
+    /// how many lines it has
+    lines: usize,
+    /// the bulleted item it stands in (where the item's text begins)
+    item: Option<f32>,
+}
+
+/// A word cut by a hyphen where a paragraph stops in front of pictures
+/// ("coordi-"), the paragraph going on behind them ("nate systems"): its
+/// first half goes over to the part that goes on, where the word is whole
+/// (with its hyphen if that is the word's own, see `Stats::keeps_hyphen`).
+fn carry_cut_word(before: &mut [Inline], after: &mut [Inline], st: &Stats) {
+    let (Some(Inline::Text(a)), Some(Inline::Text(b))) = (before.last_mut(), after.first_mut()) else { return };
+    let word: String = a.trim_end_matches('-').chars().rev().take_while(|c| c.is_alphabetic()).collect::<Vec<_>>().into_iter().rev().collect();
+    let rest: String = b.chars().take_while(|c| c.is_alphabetic()).collect();
+    if !a.ends_with('-') || a.ends_with("--") || word.is_empty() || !b.starts_with(|c: char| c.is_lowercase()) {
+        return;
+    }
+    let end = if st.keeps_hyphen(&word, &rest) { a.len() } else { a.len() - 1 };
+    let cut = a.len() - word.len() - 1;
+    b.insert_str(0, &a[cut..end]);
+    a.truncate(cut);
+}
+
 struct Builder<'a> {
     doc: &'a Doc,
     st: &'a Stats,
@@ -2273,11 +2326,18 @@ struct Builder<'a> {
     /// a bulleted item is open: where its text begins (the lines set in
     /// under the bullet stand there)
     item: Option<f32>,
+    /// The last line of a paragraph that stops in the middle of its
+    /// sentence, full to the right margin. If only pictures, captions and
+    /// page marks follow it, the next line of text may go on with the
+    /// sentence (see `goes_on_behind`).
+    held: Option<Held>,
+    /// the open paragraph goes on with such a sentence
+    para_goes_on: bool,
 }
 
 impl Builder<'_> {
     fn push(&mut self, block: Block) {
-        self.out.push(Blk { block, page: self.page, centered: false });
+        self.out.push(Blk { block, page: self.page, centered: false, goes_on: false });
     }
 
     fn flush(&mut self) {
@@ -2347,7 +2407,7 @@ impl Builder<'_> {
                 let points: String = p.iter().filter_map(|i| if let Inline::Text(t) = i { Some(t.trim()) } else { None }).collect();
                 let latex = if points.is_empty() || tex.trim_end().ends_with(['.', ',', ';']) { tex.to_string() } else { format!("{} {points}", tex.trim_end()) };
                 let block = Block::Equation { latex, tag: None, source: Some(key.to_string()) };
-                self.out.push(Blk { block, page: self.para_page, centered: false });
+                self.out.push(Blk { block, page: self.para_page, centered: false, goes_on: false });
             } else {
                 // The list of references of an article that gives it no
                 // title: it begins with entry "[1]", after the text.
@@ -2355,20 +2415,87 @@ impl Builder<'_> {
                     self.refs = true;
                     let titled = self.out.iter().rev().find_map(|o| if let Block::Heading { text, .. } = &o.block { Some(key(&plain(text)) == "references") } else { None }).unwrap_or(false);
                     if !titled {
-                        self.out.push(Blk { block: Block::Heading { level: 0, size: ARTICLE_SECTION, id: String::new(), text: vec![Inline::Text("References".into())] }, page: self.para_page, centered: false });
+                        self.out.push(Blk { block: Block::Heading { level: 0, size: ARTICLE_SECTION, id: String::new(), text: vec![Inline::Text("References".into())] }, page: self.para_page, centered: false, goes_on: false });
                     }
                 }
                 if quoted {
-                    self.out.push(Blk { block: Block::Quote, page: self.para_page, centered: false });
+                    self.out.push(Blk { block: Block::Quote, page: self.para_page, centered: false, goes_on: false });
                 }
-                self.out.push(Blk { block: Block::Para(p), page: self.para_page, centered });
+                // The sentence may go on behind the pictures that follow:
+                // its last line is kept to try the next line of text on.
+                // (A caption between them leaves it as it is, and a line
+                // set centered: a letter or a name under a picture.)
+                let plain_para = !quoted && !centered && !self.index_mode;
+                if crate::links::caption(&p).is_none() && !centered {
+                    self.held = match self.prev.take() {
+                        Some(last) if plain_para && !last.ends_sentence && last.right >= self.st.right - self.st.body => Some(Held { last, at: self.out.len(), lines: self.para_lines, item: self.item }),
+                        _ => None,
+                    };
+                }
+                let goes_on = plain_para && std::mem::take(&mut self.para_goes_on);
+                self.out.push(Blk { block: Block::Para(p), page: self.para_page, centered, goes_on });
                 if quoted {
-                    self.out.push(Blk { block: Block::QuoteEnd, page: self.para_page, centered: false });
+                    self.out.push(Blk { block: Block::QuoteEnd, page: self.para_page, centered: false, goes_on: false });
                 }
             }
         }
         self.prev = None;
         self.para_lines = 0;
+        self.para_goes_on = false;
+    }
+
+    /// Does the paragraph that line `l` opens go on with a sentence that
+    /// pictures broke off? A book sets its pictures at the top of a page
+    /// or where there is room, in the middle of a sentence too: the
+    /// sentence stops at the end of a full line and goes on under the
+    /// pictures and their captions. It does if the line would be the
+    /// next line of that paragraph, were it the first line of a new page.
+    /// (A word cut there is put together, in the part that goes on.)
+    fn goes_on_behind(&mut self, l: &Line, inl: &mut [Inline], next: Option<&Line>, pi: usize) -> bool {
+        let Some(h) = &self.held else { return false };
+        if h.last.page > pi || self.item.is_some() || self.index_mode || crate::links::starts_like_caption(&plain_text(l)) {
+            return false;
+        }
+        let Some(Held { last, at, lines, item }) = self.held.take() else { return false };
+        let page = last.page;
+        // A bulleted item that the pictures ended (they stand at the
+        // margin): it goes on if the line is set in as its text is, and
+        // its end mark is taken out again.
+        let end_mark = item.is_some() && matches!(self.out.get(at + 1), Some(Blk { block: Block::BulletEnd, .. }));
+        if item.is_some_and(|left| !end_mark || l.left < left - 0.5 * l.size) {
+            return false;
+        }
+        let mark = end_mark.then(|| self.out.remove(at + 1));
+        // (nothing but pictures and such since, and one of them at least)
+        let floats = crate::before_floats(&self.out, self.out.len()) == Some(at) && !self.out[at + 1..].iter().all(|o| matches!(o.block, Block::Anchor(_)));
+        let starts = !floats || {
+            // (as over a page: the room the pictures take is no paragraph's end)
+            let open = (self.prev.take(), self.para_lines, self.item);
+            (self.prev, self.para_lines, self.item) = (Some(Prev { page: usize::MAX, ..last }), lines, item);
+            let starts = self.starts_para(l, next, pi);
+            let last = self.prev.take().map(|p| Prev { page, ..p });
+            (self.prev, self.para_lines, self.item) = open;
+            // (a line that begins something of its own may be a letter
+            // or a name under a picture: the sentence is still open)
+            self.held = last.map(|last| Held { last, at, lines, item });
+            starts
+        };
+        // A line that opens with a capital letter may begin a sentence, and
+        // a paragraph: it goes on only in a book that sets a paragraph's
+        // first line in (this one is at the margin).
+        let capital = plain_text(l).trim_start().starts_with(char::is_uppercase) && (item.is_some() || !self.st.indents);
+        if starts || capital {
+            if let Some(mark) = mark {
+                self.out.insert(at + 1, mark);
+            }
+            return false;
+        }
+        self.held = None;
+        self.item = item;
+        if let Some(Blk { block: Block::Para(before), .. }) = self.out.get_mut(at) {
+            carry_cut_word(before, inl, self.st);
+        }
+        true
     }
 
     /// The open bulleted item ends here (its last paragraph is written).
@@ -2669,6 +2796,8 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
         para_centered: false,
         hard: Vec::new(),
         item: None,
+        held: None,
+        para_goes_on: false,
         para_inset: 0.0,
         para_in: (0.0, 0.0),
         refs: false,
@@ -2862,7 +2991,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                             }
                             let at = k + 1 + b.out[k + 1..].iter().take_while(|o| matches!(o.block, Block::Picture { .. })).count();
                             let page = b.out[k].page;
-                            b.out.insert(at, Blk { block: picture, page, centered: false });
+                            b.out.insert(at, Blk { block: picture, page, centered: false, goes_on: false });
                         }
                         (_, table) => {
                             b.push(table);
@@ -3154,6 +3283,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
             if (starts || spaced) && !item_line {
                 b.flush();
                 b.anchor_block();
+                b.para_goes_on = !bullet && b.goes_on_behind(l, &mut inl, next, pi);
                 b.para_page = pi;
                 b.para = inl;
                 b.para_centered = is_centered(l, st);
@@ -3248,7 +3378,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 continue;
             }
             if let Some(label) = lone_label.take() {
-                b.out.push(Blk { block: Block::PageNote { label, text: tidy(inl) }, page: pi, centered: false });
+                b.out.push(Blk { block: Block::PageNote { label, text: tidy(inl) }, page: pi, centered: false, goes_on: false });
                 continue;
             }
             let is_start = is_marker(&first);
@@ -3264,7 +3394,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                     }
                     _ => {}
                 }
-                b.out.push(Blk { block: Block::PageNote { label: first, text: tidy(text) }, page: pi, centered: false });
+                b.out.push(Blk { block: Block::PageNote { label: first, text: tidy(text) }, page: pi, centered: false, goes_on: false });
                 began = true;
             } else if let Some(at) = if began { Some(b.out.len() - 1) } else { open_note } {
                 // (as the lines of a paragraph are joined: a word cut at
@@ -3365,9 +3495,29 @@ mod table_tests {
     }
 
     #[test]
+    fn a_word_cut_in_front_of_pictures_is_whole_behind_them() {
+        let words = |w: &[&str]| w.iter().map(|w| w.to_string()).collect::<HashSet<String>>();
+        let st = Stats { left: 0.0, right: 500.0, body: 25.0, spacing: 26.0, chapter_size: None, section_size: None, toc_pages: Default::default(), hyphenated: words(&["two-dimensional"]), words: words(&["coordinate"]), article: false, indents: true, wide: None };
+        let text = |t: &str| vec![Inline::Text(t.into())];
+        let (mut before, mut after) = (text("This is the coordi-"), text("nate option."));
+        carry_cut_word(&mut before, &mut after, &st);
+        assert_eq!((before, after), (text("This is the "), text("coordinate option.")));
+        // the word's own hyphen stays
+        let (mut before, mut after) = (text("in a two-"), text("dimensional grid"));
+        carry_cut_word(&mut before, &mut after, &st);
+        assert_eq!((before, after), (text("in a "), text("two-dimensional grid")));
+        // no word is cut: a dash, a capital letter behind
+        for (a, b) in [("as he said --", "then"), ("the contri-", "Together with")] {
+            let (mut before, mut after) = (text(a), text(b));
+            carry_cut_word(&mut before, &mut after, &st);
+            assert_eq!((before, after), (text(a), text(b)));
+        }
+    }
+
+    #[test]
     fn a_word_cut_at_a_line_end_keeps_the_hyphen_that_is_its_own() {
         let words = |list: &[&str]| list.iter().map(|w| w.to_string()).collect();
-        let st = Stats { left: 0.0, right: 500.0, body: 25.0, spacing: 26.0, chapter_size: None, section_size: None, toc_pages: Default::default(), hyphenated: words(&["two-dimensional"]), words: words(&["four", "dimensional", "space", "time", "spacetime", "the", "oretically"]), article: false, wide: None };
+        let st = Stats { left: 0.0, right: 500.0, body: 25.0, spacing: 26.0, chapter_size: None, section_size: None, toc_pages: Default::default(), hyphenated: words(&["two-dimensional"]), words: words(&["four", "dimensional", "space", "time", "spacetime", "the", "oretically"]), article: false, indents: false, wide: None };
         // written so within a line
         assert!(st.keeps_hyphen("two", "dimensional"));
         // both halves are words, and the book never writes them as one
@@ -3380,7 +3530,7 @@ mod table_tests {
 
     #[test]
     fn the_rows_of_a_table_are_found_by_how_its_cells_stand() {
-        let st = Stats { left: 0.0, right: 500.0, body: 25.0, spacing: 26.0, chapter_size: None, section_size: None, toc_pages: Default::default(), hyphenated: Default::default(), words: Default::default(), article: false, wide: None };
+        let st = Stats { left: 0.0, right: 500.0, body: 25.0, spacing: 26.0, chapter_size: None, section_size: None, toc_pages: Default::default(), hyphenated: Default::default(), words: Default::default(), article: false, indents: false, wide: None };
         // cells in the middle of their rows: a name beside two and three lines
         let names = [line("ket", 838.0), line("observable", 906.0), line("base", 998.0)];
         let texts = [line("a1", 826.0), line("a2", 852.0), line("b1", 880.0), line("b2", 906.0), line("b3", 932.0), line("c1", 960.0), line("c2", 986.0), line("c3", 1012.0), line("c4", 1037.0)];
