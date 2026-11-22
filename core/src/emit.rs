@@ -724,7 +724,10 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
             out.push_str(&format!("{}- {}\n", "  ".repeat(*level), render_inlines(text)));
         }
         // columns side by side: a table of one row, Markdown in its cells
-        Block::Columns(n) => out.push_str(&format!("<table width=\"100%\"><tr>\n<td valign=\"top\" width=\"{}%\">\n\n", 100 / (*n).max(1))),
+        // (columns of one width, whatever is in them: on a narrow window a
+        // picture wider than its column is made smaller and a name longer
+        // than it is broken, not the page made wider)
+        Block::Columns(n) => out.push_str(&format!("<table width=\"100%\" style=\"table-layout:fixed;overflow-wrap:anywhere\"><tr>\n<td valign=\"top\" width=\"{}%\">\n\n", 100 / (*n).max(1))),
         Block::ColumnBreak => out.push_str("</td>\n<td valign=\"top\">\n\n"),
         Block::ColumnsEnd => out.push_str("</td>\n</tr></table>\n\n"),
         // The printed table under a table: to check the table against,

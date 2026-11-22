@@ -1,3 +1,5 @@
+<!-- pdf2md:by Dyson -->
+
 # Advanced Quantum Mechanics
 
 <a id="00-front-matter"></a>
@@ -9672,7 +9674,7 @@ University of Chicago loki@uchicago.edu
 
 # Index
 
-<table width="100%"><tr>
+<table width="100%" style="table-layout:fixed;overflow-wrap:anywhere"><tr>
 <td valign="top" width="50%">
 
 - $`a_{o}`$, _see_ Bohr radius
@@ -9759,7 +9761,7 @@ University of Chicago loki@uchicago.edu
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p141" href="book.pdf#page=147" target="_blank" title="This page in the PDF"><sup>[p. 141]</sup></a>
 
-<table width="100%"><tr>
+<table width="100%" style="table-layout:fixed;overflow-wrap:anywhere"><tr>
 <td valign="top" width="50%">
 
   - ket, [35](#ix-83)
@@ -9862,7 +9864,7 @@ University of Chicago loki@uchicago.edu
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p142" href="book.pdf#page=148" target="_blank" title="This page in the PDF"><sup>[p. 142]</sup></a>
 
-<table width="100%"><tr>
+<table width="100%" style="table-layout:fixed;overflow-wrap:anywhere"><tr>
 <td valign="top" width="50%">
 
 - interaction representation, [81–82](#ix-162), [96](#p96), [106](#p106)
@@ -9960,7 +9962,7 @@ University of Chicago loki@uchicago.edu
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p143" href="book.pdf#page=149" target="_blank" title="This page in the PDF"><sup>[p. 143]</sup></a>
 
-<table width="100%"><tr>
+<table width="100%" style="table-layout:fixed;overflow-wrap:anywhere"><tr>
 <td valign="top" width="50%">
 
   - transition, [22](#ix-245), [24](#ix-246), [29](#ix-247) radiative, [57](#ix-248)

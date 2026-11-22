@@ -7,7 +7,7 @@
 
 # Index
 
-<table width="100%"><tr>
+<table width="100%" style="table-layout:fixed;overflow-wrap:anywhere"><tr>
 <td valign="top" width="50%">
 
 - $`a_{o}`$, _see_ Bohr radius
@@ -94,7 +94,7 @@
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p141" href="book.pdf#page=147" target="_blank" title="This page in the PDF"><sup>[p. 141]</sup></a>
 
-<table width="100%"><tr>
+<table width="100%" style="table-layout:fixed;overflow-wrap:anywhere"><tr>
 <td valign="top" width="50%">
 
   - ket, [35](04-field-theory.md#ix-83)
@@ -197,7 +197,7 @@
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p142" href="book.pdf#page=148" target="_blank" title="This page in the PDF"><sup>[p. 142]</sup></a>
 
-<table width="100%"><tr>
+<table width="100%" style="table-layout:fixed;overflow-wrap:anywhere"><tr>
 <td valign="top" width="50%">
 
 - interaction representation, [81–82](06-free-particle-scattering-problems.md#ix-162), [96](07-general-theory-of-free-particle-scattering.md#p96), [106](07-general-theory-of-free-particle-scattering.md#p106)
@@ -295,7 +295,7 @@
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p143" href="book.pdf#page=149" target="_blank" title="This page in the PDF"><sup>[p. 143]</sup></a>
 
-<table width="100%"><tr>
+<table width="100%" style="table-layout:fixed;overflow-wrap:anywhere"><tr>
 <td valign="top" width="50%">
 
   - transition, [22](03-scattering-problems-and-born-approximation.md#ix-245), [24](03-scattering-problems-and-born-approximation.md#ix-246), [29](03-scattering-problems-and-born-approximation.md#ix-247) radiative, [57](05-examples-of-quantized-field-theories.md#ix-248)
