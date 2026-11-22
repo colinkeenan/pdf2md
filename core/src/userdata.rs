@@ -403,6 +403,20 @@ fn undo_fixes(t: &str) -> String {
     out
 }
 
+/// Where the chapters begin in the text of book.md, each with its file's
+/// name: they start with `<a id="slug"></a>`; their title follows, under
+/// the bar and marker of the page they open on.
+fn chapter_starts(text: &str) -> Vec<(usize, String)> {
+    text.match_indices("<a id=\"")
+        .filter_map(|(i, _)| {
+            let id = text[i + 7..].split('"').next()?;
+            let line_end = text[i..].find('\n').map_or(text.len(), |k| i + k);
+            (text[i..line_end].trim() == format!("<a id=\"{id}\"></a>") && text[line_end..].lines().filter(|l| !l.trim().is_empty()).take(8).any(|l| l.starts_with("# ")) && id.chars().next().is_some_and(|c| c.is_ascii_digit()))
+                .then(|| (i, id.to_string()))
+        })
+        .collect()
+}
+
 /// Notes and fixes in a converted book's folder (chapter files and
 /// book.md; the same note found in both counts once).
 pub fn collect(dir: &Path) -> UserData {
@@ -415,17 +429,7 @@ pub fn collect(dir: &Path) -> UserData {
         let Ok(text) = std::fs::read_to_string(&p) else { continue };
         let name = p.file_stem().map(|s| s.to_string_lossy().into_owned()).unwrap_or_default();
         let data = if name == "book" {
-            // chapters start with <a id="slug"></a>; their title follows, under
-            // the bar and marker of the page they open on
-            let starts: Vec<(usize, String)> = text
-                .match_indices("<a id=\"")
-                .filter_map(|(i, _)| {
-                    let id = text[i + 7..].split('"').next()?;
-                    let line_end = text[i..].find('\n').map_or(text.len(), |k| i + k);
-                    (text[i..line_end].trim() == format!("<a id=\"{id}\"></a>") && text[line_end..].lines().filter(|l| !l.trim().is_empty()).take(8).any(|l| l.starts_with("# ")) && id.chars().next().is_some_and(|c| c.is_ascii_digit()))
-                        .then(|| (i, id.to_string()))
-                })
-                .collect();
+            let starts = chapter_starts(&text);
             collect_file(&text, &|pos| starts.iter().rev().find(|(i, _)| *i <= pos).map(|(_, s)| s.clone()))
         } else if name == "check-equations" {
             continue;
@@ -506,7 +510,46 @@ pub fn follow_renames(data: &mut UserData, files: &[(&str, &str)]) {
 /// Put notes and fixes into a newly written Markdown file (`slug`: the
 /// chapter file it is; None for book.md). Returns the notes that found no
 /// place (for the end of their chapter).
+///
+/// In book.md each chapter's notes and fixes go into that chapter's part
+/// of the text: a sentence or an equation that two chapters share (a
+/// summary repeats it) is corrected where the reader corrected it, not in
+/// the first chapter that has it, nor in both. (Read again from book.md
+/// it would be taken for a correction of the other chapter too.)
 pub fn apply(text: &mut String, data: &UserData, slug: Option<&str>) -> Vec<Note> {
+    if slug.is_some() {
+        return apply_in(text, data, slug, false);
+    }
+    let starts = chapter_starts(text);
+    if starts.is_empty() {
+        return apply_in(text, data, None, true);
+    }
+    let mut lost = Vec::new();
+    let mut out = String::with_capacity(text.len() + text.len() / 8);
+    out.push_str(&text[..starts[0].0]);
+    for (k, (from, name)) in starts.iter().enumerate() {
+        let to = starts.get(k + 1).map_or(text.len(), |s| s.0);
+        let mut part = text[*from..to].to_string();
+        lost.extend(apply_in(&mut part, data, Some(name), true));
+        out.push_str(&part);
+    }
+    // (what belongs to no chapter of the book as it is now: wherever it fits)
+    let known = |s: &Option<String>| s.as_ref().is_some_and(|s| starts.iter().any(|(_, name)| name == s));
+    let rest = UserData {
+        notes: data.notes.iter().filter(|n| !known(&n.slug)).cloned().collect(),
+        fixes: data.fixes.iter().filter(|f| !known(&f.slug)).cloned().collect(),
+        marks: data.marks.iter().filter(|m| !known(&m.slug)).cloned().collect(),
+        eqs: data.eqs.iter().filter(|e| !known(&e.slug)).cloned().collect(),
+    };
+    if !rest.is_empty() {
+        lost.extend(apply_in(&mut out, &rest, None, true));
+    }
+    *text = out;
+    lost
+}
+
+/// (`book`: the text is book.md's, or a part of it.)
+fn apply_in(text: &mut String, data: &UserData, slug: Option<&str>, book: bool) -> Vec<Note> {
     let ours = |s: &Option<String>| slug.is_none() || s.as_deref() == slug;
     // fixes: in the paragraph with the same first words
     for f in data.fixes.iter().filter(|f| ours(&f.slug)) {
@@ -544,7 +587,7 @@ pub fn apply(text: &mut String, data: &UserData, slug: Option<&str>) -> Vec<Note
                 from = i + needle.len();
             }
         }
-        if !found && slug.is_some() {
+        if !found && !book {
             lost.push(Note { slug: e.slug.clone(), after: String::new(), anchor: None, text: e.block.clone() });
         }
     }
@@ -824,5 +867,28 @@ mod tests {
         // applying again to the result changes nothing
         let d2 = collect_file(&new, &|_| Some("01-ch".into()));
         assert_eq!(d2, d);
+    }
+
+    #[test]
+    fn a_correction_stays_in_its_chapter_of_the_whole_book() {
+        // two chapters hold the same equation and the same sentence; the
+        // reader corrected them in the second
+        let chapter = |n: &str| format!("<a id=\"{n}\"></a>\n\n# Title {n}\n\nThe same words here.\n\n```math\na b\n```\n\n");
+        let book = format!("# Book\n\n{}{}", chapter("01-one"), chapter("02-two"));
+        let block = format!("{} a b -->\n\n```math\na + b\n```", EQ_FIX);
+        let d = UserData {
+            eqs: vec![EqFix { slug: Some("02-two".into()), was: "a b".into(), block: block.clone() }],
+            fixes: vec![Fix { slug: Some("02-two".into()), paragraph: fingerprint("The same words here."), was: "same".into(), span: "<span class=\"fix\" data-was=\"same\">very</span>".into() }],
+            ..Default::default()
+        };
+        let mut new = book.clone();
+        assert!(apply(&mut new, &d, None).is_empty());
+        let two = new.find("<a id=\"02-two\"").unwrap();
+        assert!(new[..two].contains("```math\na b\n```") && new[..two].contains("The same words here."), "{new}");
+        assert!(new[two..].contains(&block) && !new[two..].contains("```math\na b\n```") && new[two..].contains("The <span class=\"fix\" data-was=\"same\">very</span> words here."), "{new}");
+        // read again from the book, each is the second chapter's alone
+        let read = collect_file(&new, &|pos| chapter_starts(&new).iter().rev().find(|(i, _)| *i <= pos).map(|(_, s)| s.clone()));
+        assert_eq!(read.eqs.iter().map(|e| e.slug.as_deref()).collect::<Vec<_>>(), [Some("02-two")]);
+        assert_eq!(read.fixes.iter().map(|f| f.slug.as_deref()).collect::<Vec<_>>(), [Some("02-two")]);
     }
 }
