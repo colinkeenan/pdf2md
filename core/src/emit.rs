@@ -514,9 +514,10 @@ const OVER_FLOAT: &str = "<div style=\"float:left;width:100%;margin-top:0.4em\">
 /// (the block ends under its float, however short the last part is)
 const OVER_END: &str = "<div style=\"clear:both\"></div>\n</div>\n\n";
 
-/// A caption of several lines is set closer than the text, so that it
-/// reads as one thing under its picture and not as the next paragraph.
-const CAPTION: &str = "<div style=\"line-height:1.25\">\n\n";
+/// A caption of several lines is set single-spaced, much closer than the
+/// text, so that it reads as one thing under its picture and not as the
+/// next paragraph. (At 1.0 the letters of one line touch the next.)
+const CAPTION: &str = "<div style=\"line-height:1.1\">\n\n";
 
 /// The bar of the page marker written into a paragraph (see `page_mark_span`).
 const BAR_SPAN: &str = "<span style=\"display:block;height:2px;background:currentColor;opacity:0.25\"></span>";

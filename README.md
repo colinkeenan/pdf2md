@@ -13,7 +13,7 @@ The books are best read with [mdBun](https://github.com/colinkeenan/mdBun), a sm
 * **Previous and next** file are linked at the top and at the bottom of every file.
 * **Links**: contents entries go to their chapters and sections, index page numbers go to the word on that page, footnote markers go to their notes and back, and "Section 3.5", "Figure 1.1" or "(3.422)" go to what they name. The words an index entry points to are marked as its target; mdBun shows them in blue, though they are not links themselves.
 * **Math** as LaTeX, in sentences and as displayed equations with their numbers.
-* **Pictures** cut from the PDF into `images/`, with captions numbered through the book. A long caption of the book's own is set in closer lines than the text.
+* **Pictures** cut from the PDF into `images/`, with captions numbered through the book. A long caption of the book's own is set single-spaced.
 * **Tables** as tables, each with a picture of the printed table under it to check against. Text set in a drawn frame is a one-cell table. Where the book sets a table's title or its note as part of the table, they are cells across the top and the foot of it. A table that runs over a page turn is one table.
 * **Bulleted lists** as lists: each item with the equations and the paragraphs the book sets in under its bullet.
 * **Footnotes** at the foot of their page, end notes at the end of the chapter that cites them.

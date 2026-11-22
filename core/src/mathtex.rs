@@ -2115,11 +2115,10 @@ fn matrix(spans: &[MSpan], depth: usize, open: char, typed: bool) -> Option<Stri
     if cols.iter().any(|c| filled(c) * 4 < rows.len() * 3) {
         return None;
     }
-    let body: Vec<String> = rows
+    let body: Vec<Vec<String>> = rows
         .iter()
         .map(|r| {
-            let cells = cols
-                .iter()
+            cols.iter()
                 .map(|&(l, rr)| {
                     let cell: Vec<MSpan> = r
                         .iter()
@@ -2131,10 +2130,49 @@ fn matrix(spans: &[MSpan], depth: usize, open: char, typed: bool) -> Option<Stri
                         .collect();
                     build_at(&cell, depth + 1)
                 })
-                .collect::<Vec<_>>();
-            cells.join(" & ")
+                .collect::<Vec<_>>()
         })
         .collect();
+    // A system of equations in braces, one equation a row: lined up at
+    // the "=" as a book sets it, the left sides ending there and the right
+    // sides beginning there (the columns of a matrix are centered, which
+    // leaves a short right side in the middle under a long one, and rows
+    // that are one column each not lined up at all).
+    if open == '{' {
+        const RELATIONS: [&str; 15] = ["=", "\\approx", "\\equiv", "\\sim", "\\simeq", "\\propto", "<", ">", "\\leq", "\\geq", "\\rightarrow", "\\Rightarrow", "\\longrightarrow", "\\leftrightarrow", "\\Leftrightarrow"];
+        // (a long arrow is a minus sign and an arrow as the cells are built)
+        let arrow = |sign: &str| match sign.trim() {
+            "-\\to" | "- \\to" => "\\longrightarrow",
+            "\\to" => "\\rightarrow",
+            sign => RELATIONS.iter().find(|r| **r == sign).copied().unwrap_or(""),
+        };
+        // (a last row of words alone, "etc.", stands under the right sides)
+        let words = |cells: &[String]| {
+            let row = cells.iter().map(|c| c.trim()).filter(|c| !c.is_empty()).collect::<Vec<_>>().join(" ");
+            (row.starts_with("\\text{") && !row.contains('=')).then_some(row)
+        };
+        let lines: Option<Vec<String>> = body
+            .iter()
+            .enumerate()
+            .map(|(k, cells)| match cells.as_slice() {
+                cells if k >= 2 && k + 1 == body.len() && words(cells).is_some() => words(cells).map(|row| format!("& {row}")),
+                [one] => top_level_equals(one).map(|p| format!("{} &= {}", &one[..p], &one[p + 3..])),
+                [left, sign, right] if RELATIONS.contains(&arrow(sign)) && !left.trim().is_empty() => Some(format!("{left} &{} {right}", arrow(sign))),
+                // (more columns, where the book lined its rows up at other
+                // places as well: one equation a row still — not two side
+                // by side, each with its "=", nor with a word between)
+                cells if cells.iter().filter(|c| top_level_equals(c).is_some()).count() <= 1 && !cells.iter().any(|c| c.trim_start().starts_with("\\text{")) => {
+                    let row = cells.iter().map(|c| c.trim()).filter(|c| !c.is_empty()).collect::<Vec<_>>().join(" ");
+                    top_level_equals(&row).map(|p| format!("{} &= {}", &row[..p], &row[p + 3..]))
+                }
+                _ => None,
+            })
+            .collect();
+        if let Some(lines) = lines {
+            return Some(format!("\\left\\{{ \\begin{{aligned}} {} \\end{{aligned}} \\right\\}}", lines.join(" \\\\ ")));
+        }
+    }
+    let body: Vec<String> = body.iter().map(|cells| cells.join(" & ")).collect();
     let env = match open {
         ' ' => "matrix",
         '[' => "bmatrix",
@@ -3546,11 +3584,20 @@ fn size_zones(spans: &[MSpan], bars: &[Rule]) -> Option<Vec<f32>> {
 fn top_level_equals(t: &str) -> Option<usize> {
     // (groups, and brackets of any kind: one may open what another closes,
     // "( a , b \\}")
-    let (mut group, mut bracket) = (0i32, 0i32);
+    // (nor in a matrix or a system of its own, "\\begin{Bmatrix} x & = & …":
+    // its "=" is a column of that block)
+    let (mut group, mut bracket, mut block) = (0i32, 0i32, 0i32);
     let mut escaped = false;
     for (i, c) in t.char_indices() {
         let was = escaped;
         escaped = c == '\\' && !was;
+        if c == '\\' && !was {
+            if t[i..].starts_with("\\begin{") {
+                block += 1;
+            } else if t[i..].starts_with("\\end{") {
+                block = (block - 1).max(0);
+            }
+        }
         match c {
             '{' if was => bracket += 1,
             '}' if was => bracket = (bracket - 1).max(0),
@@ -3558,7 +3605,7 @@ fn top_level_equals(t: &str) -> Option<usize> {
             '}' => group -= 1,
             '(' | '[' => bracket += 1,
             ')' | ']' => bracket = (bracket - 1).max(0),
-            ' ' if group == 0 && bracket == 0 && t[i..].starts_with(" = ") => return Some(i),
+            ' ' if group == 0 && bracket == 0 && block == 0 && t[i..].starts_with(" = ") => return Some(i),
             _ => {}
         }
     }
@@ -3566,6 +3613,10 @@ fn top_level_equals(t: &str) -> Option<usize> {
 }
 
 fn aligned(rows: &[String]) -> String {
+    // (one row: nothing to line up)
+    if let [one] = rows.iter().filter(|t| !t.is_empty()).collect::<Vec<_>>().as_slice() {
+        return one.to_string();
+    }
     let body: Vec<String> = rows
         .iter()
         .filter(|t| !t.is_empty())
@@ -3581,6 +3632,16 @@ fn aligned(rows: &[String]) -> String {
 
 #[cfg(test)]
 mod tests {
+    #[test]
+    fn the_equals_sign_of_a_block_is_not_the_rows() {
+        // a matrix's own "=" is a column of the matrix
+        assert_eq!(super::top_level_equals("\\begin{Bmatrix} x & = & a \\\\ y & = & b \\end{Bmatrix} ."), None);
+        assert_eq!(super::top_level_equals("\\begin{pmatrix} a \\\\ b \\end{pmatrix} = 0"), Some(36));
+        // one row: nothing to line up
+        assert_eq!(super::aligned(&["".to_string(), "x = 1".to_string()]), "x = 1");
+        assert_eq!(super::aligned(&["x = 1".to_string(), "= 2".to_string()]), "\\begin{aligned} x &= 1 \\\\ &= 2 \\end{aligned}");
+    }
+
     #[test]
     fn arrows_after_their_letter() {
         assert_eq!(super::late_arrows("a x \u{20d7} - \\nabla \u{20d7}"), "a \\vec{x} - \\vec{\\nabla}");
@@ -3779,7 +3840,7 @@ mod tests {
         let bars = [Rule { left: 331.8, right: 386.8, top: 864.6, bottom: 865.3 }, Rule { left: 375.7, right: 382.8, top: 897.8, bottom: 898.5 }];
         assert_eq!(
             build_with(&v, &bars),
-            "\\begin{Bmatrix} s & = & \\sqrt{x^{2} + y^{2}} \\\\ \\phi & = & \\arctan \\left( \\tfrac{y}{x} \\right) \\\\ z & = & z \\end{Bmatrix} ."
+            "\\left\\{ \\begin{aligned} s &= \\sqrt{x^{2} + y^{2}} \\\\ \\phi &= \\arctan \\left( \\tfrac{y}{x} \\right) \\\\ z &= z \\end{aligned} \\right\\} ."
         );
     }
 

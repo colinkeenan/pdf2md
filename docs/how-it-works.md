@@ -184,7 +184,7 @@ A footnote printed at the foot of a page is written at the foot of that page, ju
 
 Pictures are cut from the PDF as PNG files in `images/`; `fig-p049-1.png` is the first picture on PDF page 49. Labels that belong to a picture are part of the image, not of the text. Each picture gets a caption numbered through the book with its printed page, such as _Figure 3 (p. 43)_.
 
-The book's own caption in lines as long as the text's ("Figure 1.2: This is the Cartesian plane …") is set closer than the text, in a block with `line-height:1.25`, so that it reads as one thing under its picture and not as the next paragraph. A short caption set centered stays as it is.
+The book's own caption in lines as long as the text's ("Figure 1.2: This is the Cartesian plane …") is set single-spaced, in a block with `line-height:1.1` (the text has 1.6 in mdBun), so that it reads as one thing under its picture and not as the next paragraph. A short caption set centered stays as it is.
 
 A page that is one picture and no text, such as the book's cover, is kept as that picture on its own page. On the PDF's first page it is the cover: it has no figure number and no caption.
 
@@ -297,6 +297,7 @@ A displayed equation is a line that is mostly math and indented, or one with an 
 
 Brackets are then paired as in text, nested ones included, and written as `\left[ … \right]`, `bmatrix`, `vmatrix` and so on. A bracket read from its outline has its true height: what stands under its foot, in the row below, is not in it (the exponent of the next row of a `cases` under a bracketed fraction).
 
+* **A system of equations between braces**, one equation a row, is lined up at its "=" as the book sets it: `\left\{ \begin{aligned} x &= a \cosh \mu \cos \nu \\ y &= a \sinh \mu \sin \nu \end{aligned} \right\}`, the left sides ending at the sign and the right sides beginning there. (As a `Bmatrix` its columns were centered, a short right side standing in the middle under a long one, and rows that are one column each were not lined up at all; Lucid has 105 such systems.) It is a system if every row has one "=" outside brackets, or `→`, `≈` and the like in a column of its own; two equations side by side in a row, or a word between them ("and"), stay a matrix. A last row of words ("etc.") stands under the right sides. The "=" inside a matrix is never what the lines of a display are lined up at.
 * A lone `{` followed by two or more rows becomes `cases`.
 * A lone `}` after several rows groups them: `\left. \begin{aligned} … \end{aligned} \right\}`.
 * A tall bar with a small index at its foot is the bar of "taken at": it closes and opens nothing (`\frac{d\psi}{dx} |_{+\epsilon} - \frac{d\psi}{dx} |_{-\epsilon}`), unless a sign of the formula stands right behind it.
