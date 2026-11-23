@@ -510,7 +510,7 @@ def read(files, dst, ext: str, scale: int, state: dict):
 # Equations built from the letters of a PDF's page (a TeX book): a second
 # reading, by the recognizer, of the place on the page each was built from.
 
-PLACES = "places 7"
+PLACES = "places 8"
 # pixels of a cut-out for each pixel of the page reader's measure (it has
 # 1.5 to a point: 216 dots to the inch, twice the size of an ebook's pictures)
 ZOOM = 2.0
@@ -691,6 +691,9 @@ def places(pdf: str, jobs_file: str, dst: Path):
              halves), with the same matrices and no more fractions of
              fractions, and
              read them so twice: its reading is the formula
+             Also where the rules' formula holds a glyph the PDF does
+             not name ("\ufffd"), and the recognizer reads the place twice
+             the same: there the PDF's letters are not the surer ones
       check  the readings differ in more than that, or its two readings
              differ: to be looked at
       unread it gave no formula (words, or nothing)"""
@@ -720,7 +723,14 @@ def places(pdf: str, jobs_file: str, dst: Path):
             again = reading(j, "surya3")
             twice = again is not None and same_formula(other, again)
             (grids, stacked), (other_grids, other_stacked) = shape(j["rule"]), shape(other)
-            verdict = "take" if twice and signs(j["rule"]) == signs(other) and grids == other_grids and other_stacked <= stacked else "check"
+            if "\ufffd" in j["rule"]:
+                # (a glyph the PDF does not name: its letters are not the
+                # surer ones here. The recognizer's reading, read twice the
+                # same and about as long, is the formula)
+                mine, its = sum(signs(j["rule"]).values()), sum(signs(other).values())
+                verdict = "take" if twice and 0.6 * mine <= its <= 1.6 * mine else "check"
+            else:
+                verdict = "take" if twice and signs(j["rule"]) == signs(other) and grids == other_grids and other_stacked <= stacked else "check"
         counts[verdict] += 1
         (dst / f"{j['key']}.second").write_text(f"{verdict}\n{j['stamp']}\n{other or ''}\n")
     print(f"  {len(jobs)} equations built from the page's letters: {counts['same']} read the same by the recognizer, {counts['take']} written as it read them, {counts['check']} listed to check, {counts['unread']} not read", file=sys.stderr, flush=True)

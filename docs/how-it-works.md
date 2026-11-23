@@ -424,6 +424,7 @@ The rules above know every letter of a formula, because the PDF names them, but 
 
 * **The same formula** (ways of writing aside): nothing is done.
 * **The same letters and signs, each as often, put together otherwise**, and the recognizer reads them so a second time from a picture half as large again: its reading is written. The count of letters and signs is the check on the recognizer, which now and then invents a bar or a minus sign; brackets and bars count, what only orders the signs (`^`, `_`, `\frac`, the rows of an array) does not. Two more things must hold, because the recognizer reads two rows of fractions between brackets as one fraction of fractions: its reading has the same matrices, cases and arrays as the rules' (rows and cells counted), and no more fractions whose two halves are fractions themselves.
+* **A glyph the PDF does not name** in the rules' formula (it stands there as "�": some lecture notes' PDFs give no character for their primes, Greek letters, angle brackets or integral signs): there the PDF's letters are not the surer ones, and the recognizer's reading is written if it reads the place the same twice and about as long as the rules' formula.
 * **Anything else** (other letters or signs, or two readings that differ): the equation stays as the rules built it and is listed in `check-equations.md` with the recognizer's reading under it.
 * **No formula read** (the recognizer saw words, or wrote nothing): the equation stays.
 
