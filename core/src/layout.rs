@@ -3700,6 +3700,36 @@ fn group_lines(
         groups[k].extend(moved);
         groups.remove(m);
     }
+    // (small pieces that made a line of their own in the row of the raised
+    // pieces of a line of words, among that line's pieces: they are of
+    // that row — the numerator of a small fraction set in a sentence, one
+    // root sign of which stood a hair higher than the other and with it
+    // the exponent of the fraction's bracket)
+    loop {
+        let found = (0..groups.len()).find_map(|m| {
+            let k = (0..groups.len()).find(|&k| {
+                let main = &groups[k][0];
+                let size = size_of(main);
+                let words = groups[k].iter().any(|n| size_of(n) >= 0.85 * size && n.text.split_whitespace().filter(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 3).count() >= 2);
+                let (left, right) = groups[k].iter().fold((f32::MAX, f32::MIN), |(l, r), s| (l.min(s.left), r.max(s.right())));
+                let raised = |b: &Span| size_of(b) < 0.85 * size && b.top < main.top && b.bottom() > main.top - 0.2 * size;
+                k != m
+                    && words
+                    && groups[m].iter().all(|s| {
+                        size_of(s) < 0.85 * size
+                            && s.left > left
+                            && s.right() < right
+                            && s.bottom() <= main.top + 0.1 * size
+                            && groups[k].iter().any(|b| raised(b) && (b.top - s.top).abs() <= 2.0 && b.left - s.right() <= 4.0 * size && s.left - b.right() <= 4.0 * size)
+                    })
+            })?;
+            Some((m, k))
+        });
+        let Some((m, k)) = found else { break };
+        let moved = std::mem::take(&mut groups[m]);
+        groups[k].extend(moved);
+        groups.remove(m);
+    }
     // PDF2MD_LINEDEBUG=1: the pieces of each line, as grouped
     if std::env::var_os("PDF2MD_LINEDEBUG").is_some() {
         for g in &groups {

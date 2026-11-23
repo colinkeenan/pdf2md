@@ -532,7 +532,10 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
                 // (after a bracket that closes a formula, "(pc)" and a
                 // raised 2, it is the formula's power: the bracket alone in
                 // the text font, with math before it)
-                let closes_math = i >= 2 && matches!(spans[i - 1].text.trim(), ")" | "]" | "|") && (doc.is_math(&spans[i - 2]) || spans[i - 2].script != Script::Normal);
+                // (an accent drawn over the letter before the bracket, the
+                // bar of x̄, is a piece of its own between the two)
+                let accent = |o: &crate::layout::Span| matches!(o.text.trim(), "˜" | "ˆ" | "˙" | "¨" | "¯" | "ˇ");
+                let closes_math = i >= 2 && matches!(spans[i - 1].text.trim(), ")" | "]" | "|") && spans[..i - 1].iter().rev().find(|o| !accent(o)).is_some_and(|o| doc.is_math(o) || o.script != Script::Normal);
                 // (several marks in a row, "1, 2," and a star: the places an
                 // author works at, and a note)
                 let marks = |t: &str| t.starts_with(|c: char| c.is_ascii_digit()) && t.len() <= 8 && t.contains(',') && t.chars().all(|c| c.is_ascii_digit() || c == ',' || c == ' ');
@@ -557,11 +560,22 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
                 let goes_on = spans.get(i + 1).is_some_and(|nx| nx.script == Script::Super && doc.is_math(nx) && gap(i, i + 1) < 0.15 * st.body);
                 let in_formula = i >= 2 && doc.is_math(&spans[i - 2]) && gap(i - 2, i - 1) < 0.5 * st.body;
                 let power = digits && on_number && (goes_on || in_formula);
+                // (a raised number over a drawn bar is a small fraction's
+                // numerator, or begins it: the 2 of 2π/λ)
+                let numerator = digits && l.bars.iter().any(|b| b.left <= s.left + 1.0 && b.right >= s.right() - 1.0 && b.top >= s.bottom() - 2.0 && b.top <= s.bottom() + 0.5 * s.height);
+                // (and one that stands right against a capital letter of a
+                // formula, off the word before it, is that letter's own: the
+                // multiplicity of a term, "the ³P₁ state"; so is what is
+                // raised with it, the 2s+1 before L)
+                let run = (i + 1..n).take_while(|&k| spans[k].script == Script::Super && gap(k - 1, k) < 0.15 * st.body).last().unwrap_or(i);
+                let term = digits
+                    && spans.get(run + 1).is_some_and(|nx| nx.script == Script::Normal && doc.is_math(nx) && nx.text.trim().starts_with(char::is_uppercase) && gap(run, run + 1) < 0.15 * st.body)
+                    && (i == 0 || gap(i - 1, i) > gap(run, run + 1) + 0.1 * st.body);
                 // (a star of a math font is a note's sign only behind such
                 // marks or a word: on a letter it is the letter's own)
                 let on_word = i > 0 && spans[i - 1].text.trim_end().chars().rev().take_while(|c| c.is_lowercase()).count() >= 3;
                 let sign_ok = !math || after_marks || on_word || i == 0;
-                if ((digits || symbol || list) && sign_ok && (after_word || i == 0) && !stacked && !power) || (ordinal && i > 0) {
+                if ((digits || symbol || list) && sign_ok && (after_word || i == 0) && !stacked && !power && !numerator && !term) || (ordinal && i > 0) {
                     return K::Marker;
                 }
             }
@@ -714,6 +728,22 @@ fn emit_line(doc: &Doc, l: &Line, st: &Stats, spans: &[crate::layout::Span], kin
                 continue;
             }
             K::Marker => {
+                // (a raised figure that goes on right behind it with a
+                // slash and a figure is one raised fraction, "7/2": the
+                // power of what it stands on)
+                let slash = i + 2 < n
+                    && (i + 1..=i + 2).all(|k| kinds[k] == K::Math && spans[k].script == Script::Super && spans[k].left - spans[k - 1].right() < 0.15 * st.body)
+                    && spans[i + 1].text.trim() == "/"
+                    && s.text.trim().bytes().all(|b| b.is_ascii_digit())
+                    && !spans[i + 2].text.trim().is_empty()
+                    && spans[i + 2].text.trim().bytes().all(|b| b.is_ascii_digit())
+                    && spans.get(i + 3).is_none_or(|nx| nx.script != Script::Super || nx.left - spans[i + 2].right() >= 0.15 * st.body);
+                if slash {
+                    out.push(Inline::Sup(format!("{}/{}", s.text.trim(), spans[i + 2].text.trim())));
+                    prev_right = Some(spans[i + 2].right());
+                    i += 3;
+                    continue;
+                }
                 out.push(Inline::Sup(s.text.trim().to_string()));
                 // a marker that links to its note's page (an ebook's notes
                 // at the end of the chapter)

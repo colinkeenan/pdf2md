@@ -147,7 +147,7 @@ e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 
 is Lorentz invariant.
 
-To read off the wavelength, lets pick off the part of the expression that corresponds to $`e^{2 \pi i ( x/\lambda - \nu t )}`$. We see that<sup>2</sup>$`\tfrac{\pi}{\lambda} = \tfrac{p}{\hbar}`$ and therefore the DeBroglie wavelength is.
+To read off the wavelength, lets pick off the part of the expression that corresponds to $`e^{2 \pi i ( x/\lambda - \nu t )}`$. We see that $`\tfrac{2 \pi}{\lambda} = \tfrac{p}{\hbar}`$ and therefore the DeBroglie wavelength is.
 
 ```math
 \lambda = \frac{2 \pi \hbar}{p} = \frac{h}{p}

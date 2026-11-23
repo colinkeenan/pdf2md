@@ -186,7 +186,7 @@ Another feature of nuclei not shown in the table is that the **spin-spin force v
 
 ## <a id="s-26-6-1-boron-ground-state"></a>26.6.1 Boron Ground State
 
-Boron, with $`Z = 5`$ has the 1S and 2S levels filled. They add up to $`j = 0`$ as do all closed shells. The valence electron is in the 2P state and hence has $`\ell = 1`$ and $`s = \tfrac{1}{2}`$. Since the shell is not half full we couple to the the lowest $`j = | \ell - s | = \tfrac{1}{2}`$. So the ground state is<sup>2</sup>$`P_{\tfrac{1}{2}}`$.
+Boron, with $`Z = 5`$ has the 1S and 2S levels filled. They add up to $`j = 0`$ as do all closed shells. The valence electron is in the 2P state and hence has $`\ell = 1`$ and $`s = \tfrac{1}{2}`$. Since the shell is not half full we couple to the the lowest $`j = | \ell - s | = \tfrac{1}{2}`$. So the ground state is $`{}^{2} P_{\tfrac{1}{2}}`$.
 
 <div align="right"><a href="book.pdf#page=378" target="_blank" title="This page in the PDF"><sup>[p. 378]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -214,7 +214,7 @@ s = \sum m_{s} = \tfrac{1}{2}
 
 ## <a id="s-26-6-2-carbon-ground-state"></a>26.6.2 Carbon Ground State
 
-Carbon, with $`Z = 6`$ has the 1S and 2S levels filled giving $`j = 0`$ as a base. It has two valence 2P electrons. Hund’s first rule , maximum total $`s`$, tells us to couple the two electron spins to $`s = 1`$. This is the symmetric spin state so we’ll need to make the space state antisymmetric. Hund’s second rule, maximum $`\ell`$, doesn’t play a role because only the $`\ell = 1`$ state is antisymmetric. Remember, adding two P states together, we get total $`\ell = 0 , 1 , 2`$. The maximum state is symmetric, the next antisymmetric, and the $`\ell = 0`$ state is again symmetric under interchange. This means $`\ell = 1`$ is the only option. Since the shell is not half full we couple to the the lowest $`j = | \ell - s | = 0`$. So the ground state is<sup>3</sup>$`P_{0}`$. The simpler way works with a table.
+Carbon, with $`Z = 6`$ has the 1S and 2S levels filled giving $`j = 0`$ as a base. It has two valence 2P electrons. Hund’s first rule , maximum total $`s`$, tells us to couple the two electron spins to $`s = 1`$. This is the symmetric spin state so we’ll need to make the space state antisymmetric. Hund’s second rule, maximum $`\ell`$, doesn’t play a role because only the $`\ell = 1`$ state is antisymmetric. Remember, adding two P states together, we get total $`\ell = 0 , 1 , 2`$. The maximum state is symmetric, the next antisymmetric, and the $`\ell = 0`$ state is again symmetric under interchange. This means $`\ell = 1`$ is the only option. Since the shell is not half full we couple to the the lowest $`j = | \ell - s | = 0`$. So the ground state is $`{}^{3} P_{0}`$. The simpler way works with a table.
 
 ```math
 s \frac{m_{\ell} 1}{- 1} 0 = \sum m_{s} ↑ \frac{e}{↑} = 1
@@ -238,7 +238,7 @@ The ground state has $`s = 1`$ and $`\ell = 1`$ as we predicted. Other states la
 
 ## <a id="s-26-6-3-nitrogen-ground-state"></a>26.6.3 Nitrogen Ground State
 
-Now, with $`Z = 7`$ we have three valence 2P electrons and the shell is half full. Hund’s first rule , maximum total $`s`$, tells us to couple the three electron spins to $`s = \tfrac{3}{2}`$. This is again the symmetric spin state so we’ll need to make the space state antisymmetric. We now have the truly nasty problem of figuring out which total $`\ell`$ states are totally antisymmetric. All I have to say is $`3 \otimes 3 \otimes 3 = 7_{S} \oplus 5_{MS} \oplus 3_{MS} \oplus 5_{MA} \oplus 3_{MA} \oplus 1_{A} \oplus 3_{MS}`$. Here MS means mixed symmetric. That is; it is symmetric under the interchange of two of the electrons but not with the third. Remember, adding two P states together, we get total $`\ell_{1 2} = 0 , 1 ,`$ 2. Adding another P state to each of these gives total $`\ell = 1`$ for $`\ell_{1 2} = 0`$, $`\ell = 0 , 1 ,`$ 2 for $`\ell_{1 2} = 1`$, and $`\ell = 1 , 2 ,`$ 3 for $`\ell_{1 2} = 2`$. Hund’s second rule, maximum $`\ell`$,<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=380" target="_blank" title="This page in the PDF"><sup>[p. 380]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p381" href="book.pdf#page=381" target="_blank" title="This page in the PDF"><sup>[p. 381]</sup></a></span> doesn’t play a role, again, because only the $`\ell = 0`$ state is totally antisymmetric. Since the shell is just half full we couple to the the lowest $`j = | \ell - s | = \tfrac{3}{2}`$. So the ground state is<sup>4</sup>$`S_{\tfrac{3}{2}}`$.
+Now, with $`Z = 7`$ we have three valence 2P electrons and the shell is half full. Hund’s first rule , maximum total $`s`$, tells us to couple the three electron spins to $`s = \tfrac{3}{2}`$. This is again the symmetric spin state so we’ll need to make the space state antisymmetric. We now have the truly nasty problem of figuring out which total $`\ell`$ states are totally antisymmetric. All I have to say is $`3 \otimes 3 \otimes 3 = 7_{S} \oplus 5_{MS} \oplus 3_{MS} \oplus 5_{MA} \oplus 3_{MA} \oplus 1_{A} \oplus 3_{MS}`$. Here MS means mixed symmetric. That is; it is symmetric under the interchange of two of the electrons but not with the third. Remember, adding two P states together, we get total $`\ell_{1 2} = 0 , 1 ,`$ 2. Adding another P state to each of these gives total $`\ell = 1`$ for $`\ell_{1 2} = 0`$, $`\ell = 0 , 1 ,`$ 2 for $`\ell_{1 2} = 1`$, and $`\ell = 1 , 2 ,`$ 3 for $`\ell_{1 2} = 2`$. Hund’s second rule, maximum $`\ell`$,<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=380" target="_blank" title="This page in the PDF"><sup>[p. 380]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p381" href="book.pdf#page=381" target="_blank" title="This page in the PDF"><sup>[p. 381]</sup></a></span> doesn’t play a role, again, because only the $`\ell = 0`$ state is totally antisymmetric. Since the shell is just half full we couple to the the lowest $`j = | \ell - s | = \tfrac{3}{2}`$. So the ground state is $`{}^{4} S_{\tfrac{3}{2}}`$.
 
 ```math
 m_{\ell} \quad e
@@ -272,7 +272,7 @@ _Figure 92 (p. 381)_
 
 ## <a id="s-26-6-4-oxygen-ground-state"></a>26.6.4 Oxygen Ground State
 
-Oxygen, with $`Z = 8`$ has the 1S and 2S levels filled giving $`j = 0`$ as a base. It has four valence 2P electrons which we will treat as two valence 2P holes. Hund’s first rule , maximum total $`s`$, tells us to couple the two hole spins to $`s = 1`$. This is the symmetric spin state so we’ll need to make the space state antisymmetric. Hund’s second rule, maximum $`\ell`$, doesn’t play a role because only the $`\ell = 1`$ state is antisymmetric. Since the shell is more than half full we couple to the the highest $`j = \ell + s = 2`$. So the ground state is<sup>3</sup>$`P_{2}`$.
+Oxygen, with $`Z = 8`$ has the 1S and 2S levels filled giving $`j = 0`$ as a base. It has four valence 2P electrons which we will treat as two valence 2P holes. Hund’s first rule , maximum total $`s`$, tells us to couple the two hole spins to $`s = 1`$. This is the symmetric spin state so we’ll need to make the space state antisymmetric. Hund’s second rule, maximum $`\ell`$, doesn’t play a role because only the $`\ell = 1`$ state is antisymmetric. Since the shell is more than half full we couple to the the highest $`j = \ell + s = 2`$. So the ground state is $`{}^{3} P_{2}`$.
 
 ```math
 s \frac{m_{\ell} 1}{- 1} 0 = \sum m \frac{↑↓ e}{↑} ↑_{s} = 1
@@ -294,7 +294,7 @@ s \frac{m_{\ell} 1}{- 1} 0 = \sum m \frac{↑↓ e}{↑} ↑_{s} = 1
 
 1. Write down the electron configuration and ground state for the elements from $`Z = 1`$ to $`Z = 10`$.
 
-Use the standard<sup>2</sup>$`{}^{s + 1} L_{j}`$ notation.
+Use the standard $`{}^{2 s + 1} L_{j}`$ notation.
 
 2. Write down the ground state (in spectroscopic notation) for the element Oxygen $`( Z = 8 )`$.
 

@@ -3339,11 +3339,7 @@ The positron spinor is actually just the same as the negative energy spinor when
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p542" href="book.pdf#page=542" target="_blank" title="This page in the PDF"><sup>[p. 542]</sup></a>
 
-```math
-\dagger
-```
-
-We name the **creation and annihilation operators for the positron states** to be $`d_{\vec{p}}^{( s )}`$ and $`d_{\vec{p}}^{( s )}`$ and identify them to be.
+We name the **creation and annihilation operators for the positron states** to be $`d_{\vec{p}}^{( s )^{\dagger}}`$ and $`d_{\vec{p}}^{( s )}`$ and identify them to be.
 
 ```math
 d_{\vec{p}}^{( 1 )} = - b_{\vec{p}}^{( 4 )^{\dagger}}

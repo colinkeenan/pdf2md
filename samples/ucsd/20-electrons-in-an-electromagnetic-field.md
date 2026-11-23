@@ -743,7 +743,7 @@ p_{z} \psi = \frac{\hbar}{i} \frac{\partial}{\partial z} \psi = \hbar k\psi
 \frac{d^{2} u}{d\rho^{2}} + \frac{1}{\rho} \frac{du}{d\rho} - \frac{m^{2}}{\rho^{2}} u - \frac{e^{2} B^{2}}{4 \hbar^{2} c^{2}} \rho^{2} u + \left( \frac{2 m_{e} E}{\hbar^{2}} - \frac{eBm}{\hbar c} - k^{2} \right) u = 0
 ```
 
-Let $`x = \sqrt{\frac{eB}{2 \hbar c}} \rho`$ (dummy variable, not the coordinate) and $`\lambda =`$<sup>4</sup>$`\frac{m_{e} c}{eB \hbar} \left( E - \tfrac{\hbar^{2} k^{2}}{2 m_{e}} \right) - 2 m`$. Then
+Let $`x = \sqrt{\frac{eB}{2 \hbar c}} \rho`$ (dummy variable, not the coordinate) and $`\lambda = \tfrac{4 m_{e} c}{eB \hbar} \left( E - \tfrac{\hbar^{2} k^{2}}{2 m_{e}} \right) - 2 m`$. Then
 
 ```math
 \frac{d^{2} u}{dx^{2}} + \frac{1}{x} \frac{du}{dx} - \frac{m^{2}}{x^{2}} u - x^{2} u + \lambda = 0
@@ -811,7 +811,7 @@ Compare this to the equation we had for hydrogen
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p306" href="book.pdf#page=306" target="_blank" title="This page in the PDF"><sup>[p. 306]</sup></a>
 
-with $`\lambda = n_{r} + \ell + 1`$. The equations are the same if WE set our $`\tfrac{\lambda}{4} = n_{r} + \tfrac{1 + | m |}{2}`$ where $`n_{r} = 0 , 1 , 2 ,\dots`$. Recall that our $`\lambda =`$<sup>4</sup>$`\tfrac{m_{e} c}{eB \hbar} \left( E - \tfrac{\hbar^{2} k^{2}}{2 m_{e}} \right) - 2 m`$. This gives us the **energy eigenvalues**
+with $`\lambda = n_{r} + \ell + 1`$. The equations are the same if WE set our $`\tfrac{\lambda}{4} = n_{r} + \tfrac{1 + | m |}{2}`$ where $`n_{r} = 0 , 1 , 2 ,\dots`$. Recall that our $`\lambda = \tfrac{4 m_{e} c}{eB \hbar} \left( E - \tfrac{\hbar^{2} k^{2}}{2 m_{e}} \right) - 2 m`$. This gives us the **energy eigenvalues**
 
 ```math
 \Rightarrow \quad E - \frac{\hbar^{2} k^{2}}{2 m_{e}} = \frac{eB \hbar}{m_{e} c} \left( n_{r} + \frac{1 + | m | + m}{2} \right) .

@@ -119,7 +119,7 @@ We have achieved our goal of finding **states that represent one free particle**
 
 The wave packets we tried above satisfy an **uncertainty principle which is a property of waves**. That is ∆$`k`$∆$`x \geq \tfrac{1}{2}`$.
 
-For the “square” packet the full width in $`k`$ is ∆$`k = a`$. The width in $`x`$ is a little hard to define, but, lets use the first node in the probability found at $`\tfrac{ax}{2} = \pi`$ or $`x =`$<sup>2</sup>$`a \pi`$. So the width is twice this or ∆$`x =`$<sup>4</sup>$`a \pi`$. This gives us
+For the “square” packet the full width in $`k`$ is ∆$`k = a`$. The width in $`x`$ is a little hard to define, but, lets use the first node in the probability found at $`\tfrac{ax}{2} = \pi`$ or $`x = \tfrac{2 \pi}{a}`$. So the width is twice this or ∆$`x = \tfrac{4 \pi}{a}`$. This gives us
 
 ```math
 \Delta k \Delta x = 4 \pi

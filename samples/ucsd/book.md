@@ -964,13 +964,7 @@ u ( x ) = Ae^{\kappa x} + Be^{- \kappa x}
 
 with $`\kappa = \sqrt{\frac{2 m ( V - E )}{\hbar^{2}}}`$. (Both $`k`$ and $`\kappa`$ are positive real numbers.) The 1D scattering problems are often analogous to problems where light is reflected or transmitted when it at the surface of glass.
 
-First, we calculate the probability the a particle of energy $`E`$ is reflected by a potential step (See
-
-```math
-2
-```
-
-section 9.1.2) of height $`V_{0} : P_{R} = \frac{\sqrt{E - \sqrt{E - V_{0}}}}{\sqrt{E} \sqrt{+ \sqrt{E - V_{0}} \surd}} ( )`$ . We also use this example to understand the probability current $`j = \tfrac{\hbar}{2 im} [ u^{*} \tfrac{du}{dx} - \tfrac{du^{*}}{dx} ( ) u ]`$.
+First, we calculate the probability the a particle of energy $`E`$ is reflected by a potential step (See section 9.1.2) of height $`V_{0} : P_{R} = \frac{\sqrt{E} - \sqrt{E - V_{0}}}{\sqrt{E} \sqrt{+ \sqrt{E - V_{0}} \surd}} ( ) 2`$. We also use this example to understand the probability current $`j = \tfrac{\hbar}{2 im} [ u^{*} \tfrac{du}{dx} - \tfrac{du^{*}}{dx} ( ) u ]`$.
 
 Second we investigate the square potential well (See section 9.1.3) square potential well $`( V ( x ) = - V_{0} \ \text{for} - a<x<a \text{ and } V ( x ) = 0 \ \text{elsewhere} )`$, for the case where the particle is not bound $`E> 0`$. Assuming a beam of particles incident from the left, we need to match solutions in the three regions at the boundaries at $`x = \pm a`$. After some difficult arithmetic, the probabilities to be transmitted or reflected are computed. It is found that the probability to be transmitted goes to 1 for some particular energies.
 
@@ -3849,7 +3843,7 @@ e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 
 is Lorentz invariant.
 
-To read off the wavelength, lets pick off the part of the expression that corresponds to $`e^{2 \pi i ( x/\lambda - \nu t )}`$. We see that<sup>2</sup>$`\tfrac{\pi}{\lambda} = \tfrac{p}{\hbar}`$ and therefore the DeBroglie wavelength is.
+To read off the wavelength, lets pick off the part of the expression that corresponds to $`e^{2 \pi i ( x/\lambda - \nu t )}`$. We see that $`\tfrac{2 \pi}{\lambda} = \tfrac{p}{\hbar}`$ and therefore the DeBroglie wavelength is.
 
 ```math
 \lambda = \frac{2 \pi \hbar}{p} = \frac{h}{p}
@@ -4342,7 +4336,7 @@ We have achieved our goal of finding **states that represent one free particle**
 
 The wave packets we tried above satisfy an **uncertainty principle which is a property of waves**. That is ∆$`k`$∆$`x \geq \tfrac{1}{2}`$.
 
-For the “square” packet the full width in $`k`$ is ∆$`k = a`$. The width in $`x`$ is a little hard to define, but, lets use the first node in the probability found at $`\tfrac{ax}{2} = \pi`$ or $`x =`$<sup>2</sup>$`a \pi`$. So the width is twice this or ∆$`x =`$<sup>4</sup>$`a \pi`$. This gives us
+For the “square” packet the full width in $`k`$ is ∆$`k = a`$. The width in $`x`$ is a little hard to define, but, lets use the first node in the probability found at $`\tfrac{ax}{2} = \pi`$ or $`x = \tfrac{2 \pi}{a}`$. So the width is twice this or ∆$`x = \tfrac{4 \pi}{a}`$. This gives us
 
 ```math
 \Delta k \Delta x = 4 \pi
@@ -8913,7 +8907,7 @@ p = \sqrt{\frac{m \hbar \omega}{2}} \frac{A - A^{\dagger}}{i}
 = - i \sqrt{\frac{m \hbar \omega}{2}} ( \sqrt{m} \delta_{n ( m - 1 )} - \sqrt{m + 1} \delta_{n ( m + 1 )} )
 ```
 
-3. Evaluate the “uncertainty” in $`x`$ for the 1D HO ground state $`\sqrt{\langle u_{0} | ( x - \bar{x} )}`$<sup>2</sup>$`| u_{0} \rangle`$ where $`\bar{x} = \langle u_{0} | x | u_{0} \rangle`$. Similarly, evaluate the uncertainty in $`p`$ for the ground state. What is the product ∆$`p`$∆$`x`$?
+3. Evaluate the “uncertainty” in $`x`$ for the 1D HO ground state $`\sqrt{\langle u_{0} | ( x - \bar{x} )^{2} | u_{0} \rangle}`$ where $`\bar{x} = \langle u_{0} | x | u_{0} \rangle`$. Similarly, evaluate the uncertainty in $`p`$ for the ground state. What is the product ∆$`p`$∆$`x`$?
 
 **Answer**<br>
 Its easy to see that $`\bar{x} = 0`$ either from the integral or using operators. I’ll use operators to compute the rest.
@@ -14815,7 +14809,7 @@ and that the particle has mass $`m`$ and energy $`e> 0`$. Estimate the lifetime 
 \cos ( \varphi ) = \cos ( ka ) + \frac{ma^{2} V_{0}}{\hbar^{2}} \frac{\sin ( ka )}{ka}
 ```
 
-Assume that $`\tfrac{ma^{2} V_{0}}{\hbar^{2}} =`$<sup>3</sup>$`2 \pi`$ and plot the constraint as a function of $`ka`$. Plot the allowed energy bands on an energy axis assuming $`V_{0} = 2`$ eV and the spacing between atoms is 5 Angstroms.
+Assume that $`\tfrac{ma^{2} V_{0}}{\hbar^{2}} = \tfrac{3 \pi}{2}`$ and plot the constraint as a function of $`ka`$. Plot the allowed energy bands on an energy axis assuming $`V_{0} = 2`$ eV and the spacing between atoms is 5 Angstroms.
 
 2. In a 1D square well, there is always at least one bound state. Assume the width of the square well is $`a`$. By the uncertainty principle, the kinetic energy of an electron localized to that width is $`\frac{\hbar^{2}}{2 ma^{2}}`$. How can there be a bound state even for small values of $`V_{0}`$?
 
@@ -14849,7 +14843,7 @@ c) Calculate the probability for a particle in the beam to be reflected by the p
 
 Find the expected value of $`p`$ as a function of time using operator methods.
 
-2. Evaluate the “uncertainty” in $`x`$ for the 1D HO ground state $`\sqrt{\langle u_{0} | ( x - \bar{x} )}`$<sup>2</sup>$`| u_{0} \rangle`$ where $`\bar{x} = \langle u_{0} | x | u_{0} \rangle`$. Similarly, evaluate the uncertainty in $`p`$ for the ground state. What is the product ∆$`p`$∆$`x`$? Now do the same for the first excited state. What is the product ∆$`p`$∆$`x`$ for this state?
+2. Evaluate the “uncertainty” in $`x`$ for the 1D HO ground state $`\sqrt{\langle u_{0} | ( x - \bar{x} )^{2} | u_{0} \rangle}`$ where $`\bar{x} = \langle u_{0} | x | u_{0} \rangle`$. Similarly, evaluate the uncertainty in $`p`$ for the ground state. What is the product ∆$`p`$∆$`x`$? Now do the same for the first excited state. What is the product ∆$`p`$∆$`x`$ for this state?
 
 3. An operator is Unitary if $`UU^{\dagger} = U^{\dagger} U = 1`$. Prove that a unitary operator preserves inner products, that is $`\langle U\psi | U\varphi \rangle = \langle \psi | \varphi \rangle`$. Show that if the states $`| u_{i} \rangle`$ are orthonormal, that the states $`U | u_{i} \rangle`$ are also orthonormal. Show that if the states $`| u_{i} \rangle`$ form a complete set, then the states $`U | u_{i} \rangle`$ also form a complete set.
 
@@ -15712,7 +15706,7 @@ p_{z} \psi = \frac{\hbar}{i} \frac{\partial}{\partial z} \psi = \hbar k\psi
 \frac{d^{2} u}{d\rho^{2}} + \frac{1}{\rho} \frac{du}{d\rho} - \frac{m^{2}}{\rho^{2}} u - \frac{e^{2} B^{2}}{4 \hbar^{2} c^{2}} \rho^{2} u + \left( \frac{2 m_{e} E}{\hbar^{2}} - \frac{eBm}{\hbar c} - k^{2} \right) u = 0
 ```
 
-Let $`x = \sqrt{\frac{eB}{2 \hbar c}} \rho`$ (dummy variable, not the coordinate) and $`\lambda =`$<sup>4</sup>$`\frac{m_{e} c}{eB \hbar} \left( E - \tfrac{\hbar^{2} k^{2}}{2 m_{e}} \right) - 2 m`$. Then
+Let $`x = \sqrt{\frac{eB}{2 \hbar c}} \rho`$ (dummy variable, not the coordinate) and $`\lambda = \tfrac{4 m_{e} c}{eB \hbar} \left( E - \tfrac{\hbar^{2} k^{2}}{2 m_{e}} \right) - 2 m`$. Then
 
 ```math
 \frac{d^{2} u}{dx^{2}} + \frac{1}{x} \frac{du}{dx} - \frac{m^{2}}{x^{2}} u - x^{2} u + \lambda = 0
@@ -15780,7 +15774,7 @@ Compare this to the equation we had for hydrogen
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p306" href="book.pdf#page=306" target="_blank" title="This page in the PDF"><sup>[p. 306]</sup></a>
 
-with $`\lambda = n_{r} + \ell + 1`$. The equations are the same if WE set our $`\tfrac{\lambda}{4} = n_{r} + \tfrac{1 + | m |}{2}`$ where $`n_{r} = 0 , 1 , 2 ,\dots`$. Recall that our $`\lambda =`$<sup>4</sup>$`\tfrac{m_{e} c}{eB \hbar} \left( E - \tfrac{\hbar^{2} k^{2}}{2 m_{e}} \right) - 2 m`$. This gives us the **energy eigenvalues**
+with $`\lambda = n_{r} + \ell + 1`$. The equations are the same if WE set our $`\tfrac{\lambda}{4} = n_{r} + \tfrac{1 + | m |}{2}`$ where $`n_{r} = 0 , 1 , 2 ,\dots`$. Recall that our $`\lambda = \tfrac{4 m_{e} c}{eB \hbar} \left( E - \tfrac{\hbar^{2} k^{2}}{2 m_{e}} \right) - 2 m`$. This gives us the **energy eigenvalues**
 
 ```math
 \Rightarrow \quad E - \frac{\hbar^{2} k^{2}}{2 m_{e}} = \frac{eB \hbar}{m_{e} c} \left( n_{r} + \frac{1 + | m | + m}{2} \right) .
@@ -16394,7 +16388,7 @@ Therefore,
 P_{\pi} = ( - 1 )^{\ell} .
 ```
 
-Because the neutrons are identical fermions, the allowed states of two neutrons are<sup>1</sup>$`S_{0}`$,<sup>3</sup>$`P_{0 , 1 , 2}`$,<sup>1</sup>$`D_{2}`$, <sup>3</sup>$`F_{2 , 3 , 4} \dots`$ The only state with $`j = 1`$ is the<sup>3</sup>$`P_{1}`$ state, so $`\ell = 1`$
+Because the neutrons are identical fermions, the allowed states of two neutrons are $`{}^{1} S_{0} , {}^{3} P_{0 , 1 , 2} , {}^{1} D_{2}`$, $`{}^{3} F_{2 , 3 , 4} \dots`$ The only state with $`j = 1`$ is the $`{}^{3} P_{1}`$ state, so $`\ell = 1`$
 
 ```math
 \Rightarrow P_{\pi} = - 1 .
@@ -19121,7 +19115,7 @@ Another feature of nuclei not shown in the table is that the **spin-spin force v
 
 ## <a id="s-26-6-1-boron-ground-state"></a>26.6.1 Boron Ground State
 
-Boron, with $`Z = 5`$ has the 1S and 2S levels filled. They add up to $`j = 0`$ as do all closed shells. The valence electron is in the 2P state and hence has $`\ell = 1`$ and $`s = \tfrac{1}{2}`$. Since the shell is not half full we couple to the the lowest $`j = | \ell - s | = \tfrac{1}{2}`$. So the ground state is<sup>2</sup>$`P_{\tfrac{1}{2}}`$.
+Boron, with $`Z = 5`$ has the 1S and 2S levels filled. They add up to $`j = 0`$ as do all closed shells. The valence electron is in the 2P state and hence has $`\ell = 1`$ and $`s = \tfrac{1}{2}`$. Since the shell is not half full we couple to the the lowest $`j = | \ell - s | = \tfrac{1}{2}`$. So the ground state is $`{}^{2} P_{\tfrac{1}{2}}`$.
 
 <div align="right"><a href="book.pdf#page=378" target="_blank" title="This page in the PDF"><sup>[p. 378]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -19149,7 +19143,7 @@ s = \sum m_{s} = \tfrac{1}{2}
 
 ## <a id="s-26-6-2-carbon-ground-state"></a>26.6.2 Carbon Ground State
 
-Carbon, with $`Z = 6`$ has the 1S and 2S levels filled giving $`j = 0`$ as a base. It has two valence 2P electrons. Hund’s first rule , maximum total $`s`$, tells us to couple the two electron spins to $`s = 1`$. This is the symmetric spin state so we’ll need to make the space state antisymmetric. Hund’s second rule, maximum $`\ell`$, doesn’t play a role because only the $`\ell = 1`$ state is antisymmetric. Remember, adding two P states together, we get total $`\ell = 0 , 1 , 2`$. The maximum state is symmetric, the next antisymmetric, and the $`\ell = 0`$ state is again symmetric under interchange. This means $`\ell = 1`$ is the only option. Since the shell is not half full we couple to the the lowest $`j = | \ell - s | = 0`$. So the ground state is<sup>3</sup>$`P_{0}`$. The simpler way works with a table.
+Carbon, with $`Z = 6`$ has the 1S and 2S levels filled giving $`j = 0`$ as a base. It has two valence 2P electrons. Hund’s first rule , maximum total $`s`$, tells us to couple the two electron spins to $`s = 1`$. This is the symmetric spin state so we’ll need to make the space state antisymmetric. Hund’s second rule, maximum $`\ell`$, doesn’t play a role because only the $`\ell = 1`$ state is antisymmetric. Remember, adding two P states together, we get total $`\ell = 0 , 1 , 2`$. The maximum state is symmetric, the next antisymmetric, and the $`\ell = 0`$ state is again symmetric under interchange. This means $`\ell = 1`$ is the only option. Since the shell is not half full we couple to the the lowest $`j = | \ell - s | = 0`$. So the ground state is $`{}^{3} P_{0}`$. The simpler way works with a table.
 
 ```math
 s \frac{m_{\ell} 1}{- 1} 0 = \sum m_{s} ↑ \frac{e}{↑} = 1
@@ -19173,7 +19167,7 @@ The ground state has $`s = 1`$ and $`\ell = 1`$ as we predicted. Other states la
 
 ## <a id="s-26-6-3-nitrogen-ground-state"></a>26.6.3 Nitrogen Ground State
 
-Now, with $`Z = 7`$ we have three valence 2P electrons and the shell is half full. Hund’s first rule , maximum total $`s`$, tells us to couple the three electron spins to $`s = \tfrac{3}{2}`$. This is again the symmetric spin state so we’ll need to make the space state antisymmetric. We now have the truly nasty problem of figuring out which total $`\ell`$ states are totally antisymmetric. All I have to say is $`3 \otimes 3 \otimes 3 = 7_{S} \oplus 5_{MS} \oplus 3_{MS} \oplus 5_{MA} \oplus 3_{MA} \oplus 1_{A} \oplus 3_{MS}`$. Here MS means mixed symmetric. That is; it is symmetric under the interchange of two of the electrons but not with the third. Remember, adding two P states together, we get total $`\ell_{1 2} = 0 , 1 ,`$ 2. Adding another P state to each of these gives total $`\ell = 1`$ for $`\ell_{1 2} = 0`$, $`\ell = 0 , 1 ,`$ 2 for $`\ell_{1 2} = 1`$, and $`\ell = 1 , 2 ,`$ 3 for $`\ell_{1 2} = 2`$. Hund’s second rule, maximum $`\ell`$,<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=380" target="_blank" title="This page in the PDF"><sup>[p. 380]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p381" href="book.pdf#page=381" target="_blank" title="This page in the PDF"><sup>[p. 381]</sup></a></span> doesn’t play a role, again, because only the $`\ell = 0`$ state is totally antisymmetric. Since the shell is just half full we couple to the the lowest $`j = | \ell - s | = \tfrac{3}{2}`$. So the ground state is<sup>4</sup>$`S_{\tfrac{3}{2}}`$.
+Now, with $`Z = 7`$ we have three valence 2P electrons and the shell is half full. Hund’s first rule , maximum total $`s`$, tells us to couple the three electron spins to $`s = \tfrac{3}{2}`$. This is again the symmetric spin state so we’ll need to make the space state antisymmetric. We now have the truly nasty problem of figuring out which total $`\ell`$ states are totally antisymmetric. All I have to say is $`3 \otimes 3 \otimes 3 = 7_{S} \oplus 5_{MS} \oplus 3_{MS} \oplus 5_{MA} \oplus 3_{MA} \oplus 1_{A} \oplus 3_{MS}`$. Here MS means mixed symmetric. That is; it is symmetric under the interchange of two of the electrons but not with the third. Remember, adding two P states together, we get total $`\ell_{1 2} = 0 , 1 ,`$ 2. Adding another P state to each of these gives total $`\ell = 1`$ for $`\ell_{1 2} = 0`$, $`\ell = 0 , 1 ,`$ 2 for $`\ell_{1 2} = 1`$, and $`\ell = 1 , 2 ,`$ 3 for $`\ell_{1 2} = 2`$. Hund’s second rule, maximum $`\ell`$,<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=380" target="_blank" title="This page in the PDF"><sup>[p. 380]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p381" href="book.pdf#page=381" target="_blank" title="This page in the PDF"><sup>[p. 381]</sup></a></span> doesn’t play a role, again, because only the $`\ell = 0`$ state is totally antisymmetric. Since the shell is just half full we couple to the the lowest $`j = | \ell - s | = \tfrac{3}{2}`$. So the ground state is $`{}^{4} S_{\tfrac{3}{2}}`$.
 
 ```math
 m_{\ell} \quad e
@@ -19207,7 +19201,7 @@ _Figure 92 (p. 381)_
 
 ## <a id="s-26-6-4-oxygen-ground-state"></a>26.6.4 Oxygen Ground State
 
-Oxygen, with $`Z = 8`$ has the 1S and 2S levels filled giving $`j = 0`$ as a base. It has four valence 2P electrons which we will treat as two valence 2P holes. Hund’s first rule , maximum total $`s`$, tells us to couple the two hole spins to $`s = 1`$. This is the symmetric spin state so we’ll need to make the space state antisymmetric. Hund’s second rule, maximum $`\ell`$, doesn’t play a role because only the $`\ell = 1`$ state is antisymmetric. Since the shell is more than half full we couple to the the highest $`j = \ell + s = 2`$. So the ground state is<sup>3</sup>$`P_{2}`$.
+Oxygen, with $`Z = 8`$ has the 1S and 2S levels filled giving $`j = 0`$ as a base. It has four valence 2P electrons which we will treat as two valence 2P holes. Hund’s first rule , maximum total $`s`$, tells us to couple the two hole spins to $`s = 1`$. This is the symmetric spin state so we’ll need to make the space state antisymmetric. Hund’s second rule, maximum $`\ell`$, doesn’t play a role because only the $`\ell = 1`$ state is antisymmetric. Since the shell is more than half full we couple to the the highest $`j = \ell + s = 2`$. So the ground state is $`{}^{3} P_{2}`$.
 
 ```math
 s \frac{m_{\ell} 1}{- 1} 0 = \sum m \frac{↑↓ e}{↑} ↑_{s} = 1
@@ -19229,7 +19223,7 @@ s \frac{m_{\ell} 1}{- 1} 0 = \sum m \frac{↑↓ e}{↑} ↑_{s} = 1
 
 1. Write down the electron configuration and ground state for the elements from $`Z = 1`$ to $`Z = 10`$.
 
-Use the standard<sup>2</sup>$`{}^{s + 1} L_{j}`$ notation.
+Use the standard $`{}^{2 s + 1} L_{j}`$ notation.
 
 2. Write down the ground state (in spectroscopic notation) for the element Oxygen $`( Z = 8 )`$.
 
@@ -23777,7 +23771,7 @@ H^{abs} = - \sqrt{\frac{\hbar e^{2}}{2 m^{2} \omega V}} e^{i \vec{k} \cdot \vec{
 = \frac{e^{2}}{( 2 \pi )^{3} 2 m^{2} c^{3}} \sum_{j} \sum_{\alpha} \int d \Omega \int \frac{\omega | \langle n | e^{i \vec{k} \cdot \vec{x}} \vec{p} | j \rangle \cdot \hat{\epsilon}^{( \alpha )} |^{2}}{( \omega_{nj} - \omega )} d\omega
 ```
 
-In our calculation of the total decay rate summed over polarization and integrated over photon direction (See section 29.7), we computed the cosine of the angle between each polarization vector and the (vector) matrix element. Summing these two and integrating over photon direction we got a factor of<sup>8</sup>$`3 \pi`$ and the polarization is eliminated from the matrix element. The **same calculation applies** here.
+In our calculation of the total decay rate summed over polarization and integrated over photon direction (See section 29.7), we computed the cosine of the angle between each polarization vector and the (vector) matrix element. Summing these two and integrating over photon direction we got a factor of $`\frac{8 \pi}{3}`$ and the polarization is eliminated from the matrix element. The **same calculation applies** here.
 
 ```math
 \Delta E_{n} = \frac{e^{2}}{( 2 \pi )^{3} 2 m^{2} c^{3}} \sum_{j} \frac{8 \pi}{3} \int \frac{\omega | \langle n | e^{i \vec{k} \cdot \vec{x}} \vec{p} | j \rangle |^{2}}{( \omega_{nj} - \omega )} d\omega
@@ -27410,11 +27404,7 @@ The positron spinor is actually just the same as the negative energy spinor when
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p542" href="book.pdf#page=542" target="_blank" title="This page in the PDF"><sup>[p. 542]</sup></a>
 
-```math
-\dagger
-```
-
-We name the **creation and annihilation operators for the positron states** to be $`d_{\vec{p}}^{( s )}`$ and $`d_{\vec{p}}^{( s )}`$ and identify them to be.
+We name the **creation and annihilation operators for the positron states** to be $`d_{\vec{p}}^{( s )^{\dagger}}`$ and $`d_{\vec{p}}^{( s )}`$ and identify them to be.
 
 ```math
 d_{\vec{p}}^{( 1 )} = - b_{\vec{p}}^{( 4 )^{\dagger}}
@@ -27825,7 +27815,7 @@ c_{n} ( t ) = \tfrac{1}{i \hbar} \int^{t}_{0} dt^{\prime} e^{i ( E_{n} - E_{i} )
 \text{ Fermi } ’ s \text{ Golden Rule } : \quad \Gamma_{i \to f} = \tfrac{2 \pi}{\hbar} | \langle \psi_{f} | V | \psi_{i} \rangle |^{2} \rho_{f} ( E )
 ```
 
-$`\Gamma_{i \to f} =`$<sup>2</sup>$`\tfrac{\pi}{\hbar} \int \prod_{k} ( \tfrac{Vd^{3} p_{k}}{( 2 \pi \hbar )^{3}} ) | M_{fi} |^{2} \delta^{3}`$(momentum conservation) $`\delta`$(Energy conservation)
+$`\Gamma_{i \to f} = \tfrac{2 \pi}{\hbar} \int \prod_{k} ( \tfrac{Vd^{3} p_{k}}{( 2 \pi \hbar )^{3}} ) | M_{fi} |^{2} \delta^{3}`$(momentum conservation) $`\delta`$(Energy conservation)
 
 ```math
 \Gamma_{m \to k}^{rad} = \tfrac{\alpha}{2 \pi m^{2} c^{2}} \int d \Omega_{p} \omega_{km} | \langle \varphi_{m} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon} \cdot \vec{p} | \varphi_{k} \rangle |^{2}

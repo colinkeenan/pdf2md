@@ -454,7 +454,7 @@ pub(crate) fn sides(mut v: Vec<Inline>) -> Vec<Inline> {
     let mut k = 0;
     while k < v.len() {
         // (a raised figure of the text's font: the power of what it stands on)
-        if let Some(Inline::Sup(d)) = v.get(k + 1).filter(|x| matches!(x, Inline::Sup(d) if !d.is_empty() && d.chars().all(|c| c.is_ascii_digit()))).cloned() {
+        if let Some(Inline::Sup(d)) = v.get(k + 1).filter(|x| matches!(x, Inline::Sup(d) if !d.is_empty() && d.split('/').count() <= 2 && d.split('/').all(|p| !p.is_empty() && p.chars().all(|c| c.is_ascii_digit())))).cloned() {
             let after = match (v.get(k + 2), v.get(k + 3)) {
                 (Some(Inline::Math(m)), _) => Some((1, m.clone())),
                 (Some(Inline::Text(t)), Some(Inline::Math(m))) if t == " " => Some((2, m.clone())),

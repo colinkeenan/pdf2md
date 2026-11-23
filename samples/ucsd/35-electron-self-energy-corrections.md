@@ -226,7 +226,7 @@ H^{abs} = - \sqrt{\frac{\hbar e^{2}}{2 m^{2} \omega V}} e^{i \vec{k} \cdot \vec{
 = \frac{e^{2}}{( 2 \pi )^{3} 2 m^{2} c^{3}} \sum_{j} \sum_{\alpha} \int d \Omega \int \frac{\omega | \langle n | e^{i \vec{k} \cdot \vec{x}} \vec{p} | j \rangle \cdot \hat{\epsilon}^{( \alpha )} |^{2}}{( \omega_{nj} - \omega )} d\omega
 ```
 
-In our calculation of the total decay rate summed over polarization and integrated over photon direction (See section 29.7), we computed the cosine of the angle between each polarization vector and the (vector) matrix element. Summing these two and integrating over photon direction we got a factor of<sup>8</sup>$`3 \pi`$ and the polarization is eliminated from the matrix element. The **same calculation applies** here.
+In our calculation of the total decay rate summed over polarization and integrated over photon direction (See section 29.7), we computed the cosine of the angle between each polarization vector and the (vector) matrix element. Summing these two and integrating over photon direction we got a factor of $`\frac{8 \pi}{3}`$ and the polarization is eliminated from the matrix element. The **same calculation applies** here.
 
 ```math
 \Delta E_{n} = \frac{e^{2}}{( 2 \pi )^{3} 2 m^{2} c^{3}} \sum_{j} \frac{8 \pi}{3} \int \frac{\omega | \langle n | e^{i \vec{k} \cdot \vec{x}} \vec{p} | j \rangle |^{2}}{( \omega_{nj} - \omega )} d\omega

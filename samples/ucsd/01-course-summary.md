@@ -349,13 +349,7 @@ u ( x ) = Ae^{\kappa x} + Be^{- \kappa x}
 
 with $`\kappa = \sqrt{\frac{2 m ( V - E )}{\hbar^{2}}}`$. (Both $`k`$ and $`\kappa`$ are positive real numbers.) The 1D scattering problems are often analogous to problems where light is reflected or transmitted when it at the surface of glass.
 
-First, we calculate the probability the a particle of energy $`E`$ is reflected by a potential step (See
-
-```math
-2
-```
-
-section 9.1.2) of height $`V_{0} : P_{R} = \frac{\sqrt{E - \sqrt{E - V_{0}}}}{\sqrt{E} \sqrt{+ \sqrt{E - V_{0}} \surd}} ( )`$ . We also use this example to understand the probability current $`j = \tfrac{\hbar}{2 im} [ u^{*} \tfrac{du}{dx} - \tfrac{du^{*}}{dx} ( ) u ]`$.
+First, we calculate the probability the a particle of energy $`E`$ is reflected by a potential step (See section 9.1.2) of height $`V_{0} : P_{R} = \frac{\sqrt{E} - \sqrt{E - V_{0}}}{\sqrt{E} \sqrt{+ \sqrt{E - V_{0}} \surd}} ( ) 2`$. We also use this example to understand the probability current $`j = \tfrac{\hbar}{2 im} [ u^{*} \tfrac{du}{dx} - \tfrac{du^{*}}{dx} ( ) u ]`$.
 
 Second we investigate the square potential well (See section 9.1.3) square potential well $`( V ( x ) = - V_{0} \ \text{for} - a<x<a \text{ and } V ( x ) = 0 \ \text{elsewhere} )`$, for the case where the particle is not bound $`E> 0`$. Assuming a beam of particles incident from the left, we need to match solutions in the three regions at the boundaries at $`x = \pm a`$. After some difficult arithmetic, the probabilities to be transmitted or reflected are computed. It is found that the probability to be transmitted goes to 1 for some particular energies.
 

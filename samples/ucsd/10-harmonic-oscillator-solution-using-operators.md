@@ -555,7 +555,7 @@ p = \sqrt{\frac{m \hbar \omega}{2}} \frac{A - A^{\dagger}}{i}
 = - i \sqrt{\frac{m \hbar \omega}{2}} ( \sqrt{m} \delta_{n ( m - 1 )} - \sqrt{m + 1} \delta_{n ( m + 1 )} )
 ```
 
-3. Evaluate the “uncertainty” in $`x`$ for the 1D HO ground state $`\sqrt{\langle u_{0} | ( x - \bar{x} )}`$<sup>2</sup>$`| u_{0} \rangle`$ where $`\bar{x} = \langle u_{0} | x | u_{0} \rangle`$. Similarly, evaluate the uncertainty in $`p`$ for the ground state. What is the product ∆$`p`$∆$`x`$?
+3. Evaluate the “uncertainty” in $`x`$ for the 1D HO ground state $`\sqrt{\langle u_{0} | ( x - \bar{x} )^{2} | u_{0} \rangle}`$ where $`\bar{x} = \langle u_{0} | x | u_{0} \rangle`$. Similarly, evaluate the uncertainty in $`p`$ for the ground state. What is the product ∆$`p`$∆$`x`$?
 
 **Answer**<br>
 Its easy to see that $`\bar{x} = 0`$ either from the integral or using operators. I’ll use operators to compute the rest.
