@@ -1060,6 +1060,50 @@ fn put_accents(mut spans: Vec<MSpan>) -> Vec<MSpan> {
             }
         })
         .collect();
+    // The same stroke in one piece with its letter, "/e" as wide as the e
+    // alone: the slash moves the type on by nothing, so the piece is as
+    // wide as its other letters. It is taken out and set over the letter
+    // behind it.
+    spans = spans
+        .into_iter()
+        .flat_map(|s| {
+            let chars: Vec<char> = s.text.chars().collect();
+            let slashes = chars.iter().filter(|&&c| c == '/').count();
+            let units = |skip: bool| -> f32 { chars.iter().filter(|&&c| !(skip && c == '/')).map(|&c| crate::layout::char_width(c)).sum() };
+            let width = s.right - s.left;
+            // (nearer the width of its letters without the slash than with it)
+            // (told by the widths of TeX's own letters: in another font a
+            // piece with a dividing slash may be as narrow, Zee's "Y/")
+            let overlaid = s.atom.is_none() && slashes > 0 && chars.len() > slashes && s.math && s.family.to_uppercase().starts_with("CMMI") && (width - s.size * units(true)).abs() < (width - s.size * units(false)).abs();
+            if !overlaid {
+                return vec![s];
+            }
+            let rest: Vec<char> = chars.iter().copied().filter(|&c| c != '/').collect();
+            let scale = width / units(true).max(0.01);
+            let mut edges = vec![s.left];
+            for &c in &rest {
+                edges.push(edges[edges.len() - 1] + crate::layout::char_width(c) * scale);
+            }
+            let mut out = Vec::new();
+            let mut at = 0; // letters before the slash
+            for &c in &chars {
+                if c != '/' {
+                    at += 1;
+                    continue;
+                }
+                if at < rest.len() {
+                    let mut stroke = s.clone();
+                    stroke.text = "\u{338}".into();
+                    (stroke.left, stroke.right) = (edges[at], edges[at + 1]);
+                    out.push(stroke);
+                }
+            }
+            let mut letters = s;
+            letters.text = rest.into_iter().collect();
+            out.insert(0, letters);
+            out
+        })
+        .collect();
     // A slash set over a letter, with no room of its own: the stroke of
     // Feynman's p̸, which some books make of the plain "/" (a slash that
     // divides stands between its two sides, in room of its own).

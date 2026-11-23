@@ -510,7 +510,7 @@ def read(files, dst, ext: str, scale: int, state: dict):
 # Equations built from the letters of a PDF's page (a TeX book): a second
 # reading, by the recognizer, of the place on the page each was built from.
 
-PLACES = "places 4"
+PLACES = "places 5"
 # pixels of a cut-out for each pixel of the page reader's measure (it has
 # 1.5 to a point: 216 dots to the inch, twice the size of an ebook's pictures)
 ZOOM = 2.0
@@ -531,6 +531,10 @@ def tidy(t: str) -> str:
     t = re.sub(r"\\surd(?![a-zA-Z])", r"\\sqrt", t)
     t = re.sub(r"\.\s*\.\s*\.", r"\\dots ", t)
     t = re.sub(r"^\s*(\\bullet|•)\s*", "", t)
+    # (a letter with a stroke through it, as the rules write it and as a
+    # recognizer does)
+    t = re.sub(r"\{\s*([^{}]+?)\s*\\!\\!\\!/\s*\}", r"\\not \1 ", t)
+    t = re.sub(r"\\(slashed|cancel)(?![a-zA-Z])", r"\\not", t)
     # (a script letter is the page's to say: the recognizer reads 𝒜 as A)
     t = re.sub(r"\\(mathcal|cal|mathscr)(?![a-zA-Z])", "", t)
     return re.sub(r"\\(quad|qquad)(?![a-zA-Z])", " ", t)

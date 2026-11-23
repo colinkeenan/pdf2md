@@ -5521,7 +5521,7 @@ We use the momentum representation (303) for $`S_{R}`$. But instead of taking th
 <a id="eq-368"></a>
 
 ```math
-e^{- \delta_{0}} S_{R} ( x ) = \frac{i}{( 2 \pi )^{4}} \int e^{ik \cdot x} \frac{{k\!\!\!/} + i/\delta + i\mu}{( k + i\delta )^{2} + \mu^{2}} d^{4} k \qquad \text{(368)}
+e^{- \delta_{0}} S_{R} ( x ) = \frac{i}{( 2 \pi )^{4}} \int e^{ik \cdot x} \frac{{k\!\!\!/} + i {\delta\!\!\!/} + i\mu}{( k + i\delta )^{2} + \mu^{2}} d^{4} k \qquad \text{(368)}
 ```
 
 where $`\delta_{0}`$ is any positive real number, $`\delta`$ is the vector with components $`( 0 , 0 , 0 ,\delta_{0} )`$ and the integral is along the real axis. The poles of (368) in the $`k_{0}`$ plane are displaced away from the real axis and so the integrand is free from singularities on the path of integration. Similarly
@@ -5529,7 +5529,7 @@ where $`\delta_{0}`$ is any positive real number, $`\delta`$ is the vector with 
 <a id="eq-369"></a>
 
 ```math
-e^{+ \delta_{0}} S_{A} ( x ) = \frac{i}{( 2 \pi )^{4}} \int e^{ik \cdot x} \frac{{k\!\!\!/} - i/\delta + i\mu}{( k - i\delta )^{2} + \mu^{2}} d^{4} k \qquad \text{(369)}
+e^{+ \delta_{0}} S_{A} ( x ) = \frac{i}{( 2 \pi )^{4}} \int e^{ik \cdot x} \frac{{k\!\!\!/} - i {\delta\!\!\!/} + i\mu}{( k - i\delta )^{2} + \mu^{2}} d^{4} k \qquad \text{(369)}
 ```
 
 When using (368) and (369) we shall usually make $`\delta_{0} \to 0`$ after carrying out the integrations, so that the convergence factors $`e^{\pm \delta_{0} x_{0}}`$ will tend to 1 for every finite $`x`$.
@@ -5537,7 +5537,7 @@ When using (368) and (369) we shall usually make $`\delta_{0} \to 0`$ after carr
 Thus the momentum representation of (367) will be
 
 ```math
-\begin{aligned} \langle j_{\mu H} ( x ) \rangle_{o} &= - \frac{e^{2}}{\hbar} \frac{1}{( 2 \pi )^{7}} \int d^{4} x^{\prime} \int \int d^{4} k_{1} d^{4} k_{2} \exp \{ iq \cdot x^{\prime} + i ( k_{1} - k_{2} ) \cdot ( x^{\prime} - x ) + \delta_{0} x_{0} \}\times \\ & \quad \times \left\{ \operatorname{Spur} \{ /e ( {k\!\!\!/}_{1} + i\mu ) \gamma_{\mu} ( {k\!\!\!/}_{2} + i/\delta + i\mu ) \} \frac{\delta ( k_{1}^{2} + \mu^{2} ) \Theta ( - k_{1} )}{( k_{2} + i\delta )^{2} + \mu^{2}} \right. \\ & \quad \left. + \operatorname{Spur} \{ /e ( {k\!\!\!/}_{1} - i/\delta + i\mu ) \gamma_{\mu} ( {k\!\!\!/}_{2} + i\mu ) \} \frac{\delta ( k_{2}^{2} + \mu^{2} ) \Theta ( - k_{2} )}{( k_{1} - i\delta )^{2} + \mu^{2}} \right\} \end{aligned}
+\begin{aligned} \langle j_{\mu H} ( x ) \rangle_{o} &= - \frac{e^{2}}{\hbar} \frac{1}{( 2 \pi )^{7}} \int d^{4} x^{\prime} \int \int d^{4} k_{1} d^{4} k_{2} \exp \{ iq \cdot x^{\prime} + i ( k_{1} - k_{2} ) \cdot ( x^{\prime} - x ) + \delta_{0} x_{0} \}\times \\ & \quad \times \left\{ \operatorname{Spur} \{ {e\!\!\!/} ( {k\!\!\!/}_{1} + i\mu ) \gamma_{\mu} ( {k\!\!\!/}_{2} + i {\delta\!\!\!/} + i\mu ) \} \frac{\delta ( k_{1}^{2} + \mu^{2} ) \Theta ( - k_{1} )}{( k_{2} + i\delta )^{2} + \mu^{2}} \right. \\ & \quad \left. + \operatorname{Spur} \{ {e\!\!\!/} ( {k\!\!\!/}_{1} - i {\delta\!\!\!/} + i\mu ) \gamma_{\mu} ( {k\!\!\!/}_{2} + i\mu ) \} \frac{\delta ( k_{2}^{2} + \mu^{2} ) \Theta ( - k_{2} )}{( k_{1} - i\delta )^{2} + \mu^{2}} \right\} \end{aligned}
 ```
 
 The integration of $`x^{\prime}`$ is immediate and gives $`( 2 \pi )^{4} \delta^{4} ( k_{1} - k_{2} + q )`$. Hence
@@ -5545,7 +5545,7 @@ The integration of $`x^{\prime}`$ is immediate and gives $`( 2 \pi )^{4} \delta^
 <a id="eq-370"></a>
 
 ```math
-\begin{aligned} \langle j_{\mu H} ( x ) \rangle_{o} &= - \frac{e^{2}}{( 2 \pi )^{3} \hbar} e^{iq \cdot x + \delta_{0} x_{0}} \times \\ & \quad \times \int d^{4} k \left\{ \operatorname{Spur} \{ /e ( {k\!\!\!/} + i\mu ) \gamma_{\mu} ( {k\!\!\!/} + {q\!\!\!/} + i/\delta + i\mu ) \} \frac{\delta ( k^{2} + \mu^{2} ) \Theta ( - k )}{( k + q + i\delta )^{2} + \mu^{2}} \right. \\ & \quad \left. + \operatorname{Spur} \{ /e ( {k\!\!\!/} - i/\delta + i\mu ) \gamma_{\mu} ( {k\!\!\!/} + {q\!\!\!/} + i\mu ) \} \frac{\delta \{ ( k + q )^{2} + \mu^{2} \} \Theta ( - k - q )}{( k - i\delta )^{2} + \mu^{2}} \right\} \end{aligned} \qquad \text{(370)}
+\begin{aligned} \langle j_{\mu H} ( x ) \rangle_{o} &= - \frac{e^{2}}{( 2 \pi )^{3} \hbar} e^{iq \cdot x + \delta_{0} x_{0}} \times \\ & \quad \times \int d^{4} k \left\{ \operatorname{Spur} \{ {e\!\!\!/} ( {k\!\!\!/} + i\mu ) \gamma_{\mu} ( {k\!\!\!/} + {q\!\!\!/} + i {\delta\!\!\!/} + i\mu ) \} \frac{\delta ( k^{2} + \mu^{2} ) \Theta ( - k )}{( k + q + i\delta )^{2} + \mu^{2}} \right. \\ & \quad \left. + \operatorname{Spur} \{ {e\!\!\!/} ( {k\!\!\!/} - i {\delta\!\!\!/} + i\mu ) \gamma_{\mu} ( {k\!\!\!/} + {q\!\!\!/} + i\mu ) \} \frac{\delta \{ ( k + q )^{2} + \mu^{2} \} \Theta ( - k - q )}{( k - i\delta )^{2} + \mu^{2}} \right\} \end{aligned} \qquad \text{(370)}
 ```
 
 Now consider the function<sup><a id="fnref-48" href="#fn-48">48</a></sup>
@@ -5553,7 +5553,7 @@ Now consider the function<sup><a id="fnref-48" href="#fn-48">48</a></sup>
 <a id="eq-371"></a>
 
 ```math
-F_{\nu} ( k ) = \operatorname{Spur} \{ /e ( {k\!\!\!/} + i\mu ) \gamma_{\nu} ( {k\!\!\!/} + /q + i/\delta + i\mu ) \} \frac{1}{( k^{2} + \mu^{2} ) [ ( k + q + i\delta )^{2} + \mu^{2} ]} \qquad \text{(371)}
+F_{\nu} ( k ) = \operatorname{Spur} \{ {e\!\!\!/} ( {k\!\!\!/} + i\mu ) \gamma_{\nu} ( {k\!\!\!/} + {q\!\!\!/} + i {\delta\!\!\!/} + i\mu ) \} \frac{1}{( k^{2} + \mu^{2} ) [ ( k + q + i\delta )^{2} + \mu^{2} ]} \qquad \text{(371)}
 ```
 
 This has poles at 4 points in the $`k_{0}`$ plane
@@ -5619,7 +5619,7 @@ which we can get at once simply from the definite integral of the RHS.<sup><a id
 <a id="eq-377"></a>
 
 ```math
-\begin{aligned} J_{\nu} &= \int_{0}^{1} dz \int_{C} dk \operatorname{Spur} \{ /e ( {k\!\!\!/} + i\mu ) \gamma_{\nu} ( {k\!\!\!/} + /q + i\mu ) \} \frac{1}{\{ k^{2} + \mu^{2} + z ( 2 k \cdot q + q^{2} ) \}^{2}} \\ &= \int_{0}^{1} dz \int_{C} dk \operatorname{Spur} \{ /e ( {k\!\!\!/} - z/q + i\mu ) \gamma_{\nu} ( {k\!\!\!/} + ( 1 - z ) /q + i\mu ) \} \frac{1}{\{ k^{2} + \mu^{2} + ( z - z^{2} ) q^{2} \}^{2}} \end{aligned} \qquad \text{(377)}
+\begin{aligned} J_{\nu} &= \int_{0}^{1} dz \int_{C} dk \operatorname{Spur} \{ {e\!\!\!/} ( {k\!\!\!/} + i\mu ) \gamma_{\nu} ( {k\!\!\!/} + {q\!\!\!/} + i\mu ) \} \frac{1}{\{ k^{2} + \mu^{2} + z ( 2 k \cdot q + q^{2} ) \}^{2}} \\ &= \int_{0}^{1} dz \int_{C} dk \operatorname{Spur} \{ {e\!\!\!/} ( {k\!\!\!/} - z {q\!\!\!/} + i\mu ) \gamma_{\nu} ( {k\!\!\!/} + ( 1 - z ) {q\!\!\!/} + i\mu ) \} \frac{1}{\{ k^{2} + \mu^{2} + ( z - z^{2} ) q^{2} \}^{2}} \end{aligned} \qquad \text{(377)}
 ```
 
 In the last step a shift of origin was made in the $`k`$–integration replacing $`k`$ by $`( k - zq )`$. Again in (377) the poles in the $`k_{0}`$–plane for every $`z`$ are well separated by the imaginary axis, provided that $`\mu`$ is large. Evaluating the spur and dropping terms are odd in $`k`$, and using (33),<sup><a id="fnref-51" href="#fn-51">51</a></sup> Spur $`\gamma_{\nu} = 0`$, Spur $`\gamma_{\mu} \gamma_{\nu} = 4 \delta_{\mu \nu}`$, we get
@@ -6512,7 +6512,7 @@ Now substituting from (448) into (441), just like for (432)
 <a id="eq-449"></a>
 
 ```math
-M_{2} = \frac{- e^{2}}{\hbar^{2} c^{2}} ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \overline{u}^{\prime} \left[ /e \frac{1}{{p\!\!\!/} - {k\!\!\!/}^{\prime} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{{p\!\!\!/} + {k\!\!\!/} - i\mu} /e \right] u \qquad \text{(449)}
+M_{2} = \frac{- e^{2}}{\hbar^{2} c^{2}} ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \overline{u}^{\prime} \left[ {e\!\!\!/} \frac{1}{{p\!\!\!/} - {k\!\!\!/}^{\prime} - i\mu} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} \frac{1}{{p\!\!\!/} + {k\!\!\!/} - i\mu} {e\!\!\!/} \right] u \qquad \text{(449)}
 ```
 
 Again the denominators $`( p - k )^{2} + \mu^{2}`$ can never vanish so the $`\epsilon`$ can be put equal to zero in (447). In fact if the electron is initially at rest
@@ -6534,10 +6534,10 @@ because $`k^{\prime 2} = 0`$ and $`p^{2} = - \mu^{2} ; \boldsymbol{p} = 0`$ beca
 <a id="eq-451"></a>
 
 ```math
-M_{2} = \frac{- e^{2}}{2 \hbar^{2} c^{2} \mu} ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \overline{u}^{\prime} \left[ \frac{1}{k_{0}^{\prime}} /e ( {p\!\!\!/} - {k\!\!\!/}^{\prime} + i\mu ) /e^{\prime} - \frac{1}{k_{0}} /e^{\prime} ( {p\!\!\!/} + {k\!\!\!/} + i\mu ) /e \right] u \qquad \text{(451)}
+M_{2} = \frac{- e^{2}}{2 \hbar^{2} c^{2} \mu} ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \overline{u}^{\prime} \left[ \frac{1}{k_{0}^{\prime}} {e\!\!\!/} ( {p\!\!\!/} - {k\!\!\!/}^{\prime} + i\mu ) {e\!\!\!/}^{\prime} - \frac{1}{k_{0}} {e\!\!\!/}^{\prime} ( {p\!\!\!/} + {k\!\!\!/} + i\mu ) {e\!\!\!/} \right] u \qquad \text{(451)}
 ```
 
-Now we can simplify (451) further. Since the photon is not polarized in time, $`e_{4} = e_{4}^{\prime} = 0`$; since the electron is at rest, $`\boldsymbol{p} = 0`$. Hence $`e \cdot p = 0`$, and thus $`/e/p = - {p\!\!\!/} /e + 2 \mathbb{I} e \cdot p = - {p\!\!\!/} /e`$ , i.e. $`{p\!\!\!/}`$ and $`/e`$ anticommute. This plus the fact that $`u`$ is a spin state of momentum $`\hbar p`$, i.e.
+Now we can simplify (451) further. Since the photon is not polarized in time, $`e_{4} = e_{4}^{\prime} = 0`$; since the electron is at rest, $`\boldsymbol{p} = 0`$. Hence $`e \cdot p = 0`$, and thus $`{e\!\!\!/} {p\!\!\!/} = - {p\!\!\!/} {e\!\!\!/} + 2 \mathbb{I} e \cdot p = - {p\!\!\!/} {e\!\!\!/}`$ , i.e. $`{p\!\!\!/}`$ and $`{e\!\!\!/}`$ anticommute. This plus the fact that $`u`$ is a spin state of momentum $`\hbar p`$, i.e.
 
 <a id="eq-452"></a>
 
@@ -6550,7 +6550,7 @@ mean that the term $`{p\!\!\!/} + i\mu`$ in (451) can be omitted. Thus we get
 <a id="eq-453"></a>
 
 ```math
-M_{2} = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu} ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \overline{u}^{\prime} \left[ /e \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e^{\prime} \frac{{k\!\!\!/}}{k_{0}} /e \right] u \qquad \text{(453)}
+M_{2} = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu} ( 2 \pi )^{4} \delta^{4} ( p + k - p^{\prime} - k^{\prime} ) \overline{u}^{\prime} \left[ {e\!\!\!/} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/} \right] u \qquad \text{(453)}
 ```
 
 <div align="right"><a href="book.pdf#page=91" target="_blank" title="This page in the PDF"><sup>[p. 85]</sup></a></div>
@@ -6634,7 +6634,7 @@ $`V_{2} = \frac{\hbar c}{2 k_{0}}`$. Thus
 <a id="eq-462"></a>
 
 ```math
-K = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu} \overline{u}^{\prime} \left[ /e \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e^{\prime} \frac{{k\!\!\!/}}{k_{0}} /e \right] u \qquad \text{(462)}
+K = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu} \overline{u}^{\prime} \left[ {e\!\!\!/} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/} \right] u \qquad \text{(462)}
 ```
 
 This gives the cross-section for a known electron spin in the initial and final states.
@@ -6678,13 +6678,13 @@ and for two square <a id="ix-88">matrices</a><sup><a id="fnref-58" href="#fn-58"
 To show this, it is enough to assume that all $`\xi^{( i )}`$ are different; by the commutation rules of the $`\gamma`$’s we can always reduce the product to this form. Then, since each inversion (of neighbors) brings in a minus sign, and since there are an even number of inversions, we get our rule immediately.
 
 ```math
-4 ) {a\!\!\!/} /b = - /b/a + 2 \mathbb{I} ( a \cdot b )
+4 ) {a\!\!\!/} {b\!\!\!/} = - {b\!\!\!/} {a\!\!\!/} + 2 \mathbb{I} ( a \cdot b )
 ```
 
 In particular
 
 ```math
-/e/e = \mathbb{I} ( e \cdot e ) \quad /e/ k = - {k\!\!\!/} /e \quad /e^{\prime} {k\!\!\!/}^{\prime} = - {k\!\!\!/}^{\prime} /e^{\prime}
+{e\!\!\!/} {e\!\!\!/} = \mathbb{I} ( e \cdot e ) \quad /e/ k = - {k\!\!\!/} {e\!\!\!/} \quad {e\!\!\!/}^{\prime} {k\!\!\!/}^{\prime} = - {k\!\!\!/}^{\prime} {e\!\!\!/}^{\prime}
 ```
 
 5) By 2), one can cyclically permute a product of dagger operators without changing its spur.
@@ -6694,15 +6694,15 @@ Now we can proceed to evaluate the sum over spins. We have
 <a id="eq-463"></a>
 
 ```math
-\begin{aligned} \tfrac{1}{2} \sum_{u} \sum_{u^{\prime}} | K |^{2} &= - \frac{e^{4}}{8 \hbar^{4} c^{4} \mu^{2}} \sum_{u} \sum_{u^{\prime}} \left\{ \overline{u}^{\prime} \left( /e \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e^{\prime} \frac{{k\!\!\!/}}{k_{0}} /e \right) u \right\} \left\{ \overline{u} \left( /e \frac{{k\!\!\!/}}{k_{0}} /e^{\prime} + /e^{\prime} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} /e \right) u^{\prime} \right\} \\ &= \frac{e^{4}}{3 2 \hbar^{4} c^{4} \mu^{4}} \operatorname{Spur} \left\{ ( {p\!\!\!/} + i\mu ) \left( /e \frac{{k\!\!\!/}}{k_{0}} /e^{\prime} + /e^{\prime} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} /e \right) ( {p\!\!\!/}^{\prime} + i\mu ) \left( /e \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e^{\prime} \frac{{k\!\!\!/}}{k_{0}} /e \right) \right\} \\ \text{ Now } \frac{{k\!\!\!/}}{k_{0}} &= i\beta + \frac{k_{1} \gamma_{1} + k_{2} \gamma_{2} + k_{3} \gamma_{3}}{k_{0}} = i\beta + \gamma_{k} , \text{ say } . \end{aligned} \qquad \text{(463)}
+\begin{aligned} \tfrac{1}{2} \sum_{u} \sum_{u^{\prime}} | K |^{2} &= - \frac{e^{4}}{8 \hbar^{4} c^{4} \mu^{2}} \sum_{u} \sum_{u^{\prime}} \left\{ \overline{u}^{\prime} \left( {e\!\!\!/} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/} \right) u \right\} \left\{ \overline{u} \left( {e\!\!\!/} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/} \right) u^{\prime} \right\} \\ &= \frac{e^{4}}{3 2 \hbar^{4} c^{4} \mu^{4}} \operatorname{Spur} \left\{ ( {p\!\!\!/} + i\mu ) \left( {e\!\!\!/} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/} \right) ( {p\!\!\!/}^{\prime} + i\mu ) \left( {e\!\!\!/} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/} \right) \right\} \\ \text{ Now } \frac{{k\!\!\!/}}{k_{0}} &= i\beta + \frac{k_{1} \gamma_{1} + k_{2} \gamma_{2} + k_{3} \gamma_{3}}{k_{0}} = i\beta + \gamma_{k} , \text{ say } . \end{aligned} \qquad \text{(463)}
 ```
 
 Similarly $`\frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} = i\beta + \gamma_{k^{\prime}}`$.
 
-Since $`/p`$ <a id="ix-28">anticommutes</a> with $`/e , /e^{\prime} , \gamma_{k}`$ and $`\gamma_{k^{\prime}}`$, (compare with remark after (451)) we may write (463) in the form
+Since $`{p\!\!\!/}`$ <a id="ix-28">anticommutes</a> with $`{e\!\!\!/} , {e\!\!\!/}^{\prime} , \gamma_{k}`$ and $`\gamma_{k^{\prime}}`$, (compare with remark after (451)) we may write (463) in the form
 
 ```math
-\frac{e^{4}}{3 2 \hbar^{4} c^{4} \mu^{4}} \operatorname{Spur} \left[ \left\{ \left( /e \frac{{k\!\!\!/}}{k_{0}} /e^{\prime} + /e^{\prime} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} /e \right) ( i\mu - {p\!\!\!/} ) + 4 \mu ( e \cdot e^{\prime} ) \right\} ( {p\!\!\!/}^{\prime} + i\mu ) \left\{ /e \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e^{\prime} \frac{{k\!\!\!/}}{k_{0}} /e \right\} \right]
+\frac{e^{4}}{3 2 \hbar^{4} c^{4} \mu^{4}} \operatorname{Spur} \left[ \left\{ \left( {e\!\!\!/} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/} \right) ( i\mu - {p\!\!\!/} ) + 4 \mu ( e \cdot e^{\prime} ) \right\} ( {p\!\!\!/}^{\prime} + i\mu ) \left\{ {e\!\!\!/} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/} \right\} \right]
 ```
 
 <div align="right"><a href="book.pdf#page=93" target="_blank" title="This page in the PDF"><sup>[p. 87]</sup></a></div>
@@ -6712,59 +6712,59 @@ Since $`/p`$ <a id="ix-28">anticommutes</a> with $`/e , /e^{\prime} , \gamma_{k}
 because, using 4), and again compare with remark after (451),<sup><a id="fnref-59" href="#fn-59">59</a></sup>
 
 ```math
-{p\!\!\!/} /e \frac{{k\!\!\!/}}{k_{0}} /e^{\prime} = - /e/p \frac{{k\!\!\!/}}{k_{0}} /e^{\prime} = + /e \frac{{k\!\!\!/}}{k_{0}} {p\!\!\!/} /e^{\prime} - 2 /e \frac{k \cdot p}{k_{0}} /e^{\prime} = - /e \frac{{k\!\!\!/}}{k_{0}} /e^{\prime} {p\!\!\!/} + 2 \mu /e/e^{\prime}
+{p\!\!\!/} {e\!\!\!/} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/}^{\prime} = - {e\!\!\!/} {p\!\!\!/} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/}^{\prime} = + {e\!\!\!/} \frac{{k\!\!\!/}}{k_{0}} {p\!\!\!/} {e\!\!\!/}^{\prime} - 2 {e\!\!\!/} \frac{k \cdot p}{k_{0}} {e\!\!\!/}^{\prime} = - {e\!\!\!/} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/}^{\prime} {p\!\!\!/} + 2 \mu {e\!\!\!/} {e\!\!\!/}^{\prime}
 ```
 
 and similarly<sup><a id="fnref-60" href="#fn-60">60</a></sup>
 
 ```math
-{p\!\!\!/} /e^{\prime} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} /e = - /e^{\prime} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} /e/p + 2 \mu /e^{\prime} /e
+{p\!\!\!/} {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/} = - {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/} {p\!\!\!/} + 2 \mu {e\!\!\!/}^{\prime} {e\!\!\!/}
 ```
 
 so adding the terms gives
 
 ```math
-- \left( /e \frac{{k\!\!\!/}}{k_{0}} /e^{\prime} + /e^{\prime} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} /e \right) {p\!\!\!/} + 2 \mu \{ /e,/e^{\prime} \} = - \left( /e \frac{{k\!\!\!/}}{k_{0}} /e^{\prime} + /e^{\prime} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} /e \right) {p\!\!\!/} + 4 \mu ( e \cdot e^{\prime} )
+- \left( {e\!\!\!/} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/} \right) {p\!\!\!/} + 2 \mu \{ {e\!\!\!/} , {e\!\!\!/}^{\prime} \} = - \left( {e\!\!\!/} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/} \right) {p\!\!\!/} + 4 \mu ( e \cdot e^{\prime} )
 ```
 
-Now since $`{k\!\!\!/} / k = {k\!\!\!/}^{\prime} {k\!\!\!/}^{\prime} = {p\!\!\!/} /p + \mu^{2} = 0`$ (for the photons because they are on the lightcone, for the electron because $`p^{2} = - \mu^{2}`$), we get for $`| K |^{2}`$
+Now since $`{k\!\!\!/} / k = {k\!\!\!/}^{\prime} {k\!\!\!/}^{\prime} = {p\!\!\!/} {p\!\!\!/} + \mu^{2} = 0`$ (for the photons because they are on the lightcone, for the electron because $`p^{2} = - \mu^{2}`$), we get for $`| K |^{2}`$
 
 <a id="eq-464"></a>
 
 ```math
-\frac{e^{4}}{3 2 \hbar^{4} c^{4} \mu^{4}} \operatorname{Spur} \left[ 4 \mu ( e \cdot e^{\prime} ) ( {p\!\!\!/}^{\prime} + i\mu ) ( /e \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e^{\prime} \frac{{k\!\!\!/}}{k_{0}} /e ) + ( /e \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} /e^{\prime} /e \frac{{k\!\!\!/}}{k_{0}} /e^{\prime} + /e^{\prime} \frac{{k\!\!\!/}}{k_{0}} /e/e^{\prime} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} /e ) ( i\mu - {p\!\!\!/} ) ( {k\!\!\!/} - {k\!\!\!/}^{\prime} ) \right] \qquad \text{(464)}
+\frac{e^{4}}{3 2 \hbar^{4} c^{4} \mu^{4}} \operatorname{Spur} \left[ 4 \mu ( e \cdot e^{\prime} ) ( {p\!\!\!/}^{\prime} + i\mu ) ( {e\!\!\!/} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/} ) + ( {e\!\!\!/} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/}^{\prime} {e\!\!\!/} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/} {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/} ) ( i\mu - {p\!\!\!/} ) ( {k\!\!\!/} - {k\!\!\!/}^{\prime} ) \right] \qquad \text{(464)}
 ```
 
 because
 
 ```math
-( i\mu - {p\!\!\!/} ) ( {p\!\!\!/}^{\prime} + i\mu ) = i\mu ( {p\!\!\!/}^{\prime} - {p\!\!\!/} ) - \mu^{2} - {p\!\!\!/} /p^{\prime} = i\mu ( {k\!\!\!/} - {k\!\!\!/}^{\prime} ) - \mu^{2} - {p\!\!\!/} ( {p\!\!\!/} - {k\!\!\!/}^{\prime} + {k\!\!\!/} ) = ( i\mu - {p\!\!\!/} ) ( {k\!\!\!/} - {k\!\!\!/}^{\prime} )
+( i\mu - {p\!\!\!/} ) ( {p\!\!\!/}^{\prime} + i\mu ) = i\mu ( {p\!\!\!/}^{\prime} - {p\!\!\!/} ) - \mu^{2} - {p\!\!\!/} {p\!\!\!/}^{\prime} = i\mu ( {k\!\!\!/} - {k\!\!\!/}^{\prime} ) - \mu^{2} - {p\!\!\!/} ( {p\!\!\!/} - {k\!\!\!/}^{\prime} + {k\!\!\!/} ) = ( i\mu - {p\!\!\!/} ) ( {k\!\!\!/} - {k\!\!\!/}^{\prime} )
 ```
 
 We consider the second part of (464) first:
 
 ```math
-\operatorname{Spur} \left[ /e \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} /e^{\prime} /e \frac{{k\!\!\!/}}{k_{0}} /e^{\prime} \left\{ - {p\!\!\!/} ( {k\!\!\!/} - {k\!\!\!/}^{\prime} ) - ( {k\!\!\!/} - {k\!\!\!/}^{\prime} ) {p\!\!\!/} \right\} \right] = 2 p_{0} ( k_{0} - k_{0}^{\prime} ) \operatorname{Spur} \left[ /e/e^{\prime} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} \frac{{k\!\!\!/}}{k_{0}} /e/e^{\prime} \right]
+\operatorname{Spur} \left[ {e\!\!\!/} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/}^{\prime} {e\!\!\!/} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/}^{\prime} \left\{ - {p\!\!\!/} ( {k\!\!\!/} - {k\!\!\!/}^{\prime} ) - ( {k\!\!\!/} - {k\!\!\!/}^{\prime} ) {p\!\!\!/} \right\} \right] = 2 p_{0} ( k_{0} - k_{0}^{\prime} ) \operatorname{Spur} \left[ {e\!\!\!/} {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/} {e\!\!\!/}^{\prime} \right]
 ```
 
 ```math
-= 2 \mu ( k_{0} - k_{0}^{\prime} ) \operatorname{Spur} \left[ - 2 ( e \cdot e^{\prime} ) \left( \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} /e^{\prime} \frac{{k\!\!\!/}}{k_{0}} /e \right) - \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} \frac{{k\!\!\!/}}{k_{0}} \right]
+= 2 \mu ( k_{0} - k_{0}^{\prime} ) \operatorname{Spur} \left[ - 2 ( e \cdot e^{\prime} ) \left( \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/} \right) - \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} \frac{{k\!\!\!/}}{k_{0}} \right]
 ```
 
 ```math
-= - 8 \mu \frac{k_{0} - k_{0}^{\prime}}{k_{0} k_{0}^{\prime}} ( k \cdot k^{\prime} ) + 4 \mu ( e \cdot e^{\prime} ) \operatorname{Spur} \left[ - {k\!\!\!/} /e \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} /e^{\prime} + {k\!\!\!/}^{\prime} /e^{\prime} \frac{{k\!\!\!/}}{k_{0}} /e \right]
+= - 8 \mu \frac{k_{0} - k_{0}^{\prime}}{k_{0} k_{0}^{\prime}} ( k \cdot k^{\prime} ) + 4 \mu ( e \cdot e^{\prime} ) \operatorname{Spur} \left[ - {k\!\!\!/} {e\!\!\!/} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/}^{\prime} + {k\!\!\!/}^{\prime} {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/} \right]
 ```
 
 since
 
 ```math
-\operatorname{Sp} \left[ /e/e^{\prime} {k\!\!\!/}^{\prime} {k\!\!\!/} /e/e^{\prime} \right] = \operatorname{Sp} \left[ /e/e^{\prime} /e/e^{\prime} {k\!\!\!/}^{\prime} {k\!\!\!/} \right] = \operatorname{Sp} \left[ - /e/e/e^{\prime} /e^{\prime} {k\!\!\!/}^{\prime} {k\!\!\!/} + 2 \mathbb{I} {e\!\!\!/} /e^{\prime} {k\!\!\!/}^{\prime} {k\!\!\!/} ( e \cdot e^{\prime} ) \right] = \operatorname{Sp} \left[ - {k\!\!\!/}^{\prime} {k\!\!\!/} - 2 ( e \cdot e^{\prime} ) {k\!\!\!/}^{\prime} /e^{\prime} {k\!\!\!/} /e \right]
+\operatorname{Sp} \left[ {e\!\!\!/} {e\!\!\!/}^{\prime} {k\!\!\!/}^{\prime} {k\!\!\!/} {e\!\!\!/} {e\!\!\!/}^{\prime} \right] = \operatorname{Sp} \left[ {e\!\!\!/} {e\!\!\!/}^{\prime} {e\!\!\!/} {e\!\!\!/}^{\prime} {k\!\!\!/}^{\prime} {k\!\!\!/} \right] = \operatorname{Sp} \left[ - {e\!\!\!/} {e\!\!\!/} {e\!\!\!/}^{\prime} {e\!\!\!/}^{\prime} {k\!\!\!/}^{\prime} {k\!\!\!/} + 2 \mathbb{I} {e\!\!\!/} {e\!\!\!/}^{\prime} {k\!\!\!/}^{\prime} {k\!\!\!/} ( e \cdot e^{\prime} ) \right] = \operatorname{Sp} \left[ - {k\!\!\!/}^{\prime} {k\!\!\!/} - 2 ( e \cdot e^{\prime} ) {k\!\!\!/}^{\prime} {e\!\!\!/}^{\prime} {k\!\!\!/} {e\!\!\!/} \right]
 ```
 
 Hence altogether (464) becomes
 
 ```math
-\begin{aligned} & \quad \frac{e^{4}}{3 2 \hbar^{4} c^{4} \mu^{4}} \left\{ - 8 \mu \frac{k_{0} - k_{0}^{\prime}}{k_{0} k_{0}^{\prime}} ( k \cdot k^{\prime} ) + 4 \mu ( e \cdot e^{\prime} ) \operatorname{Spur} \left[ ( {p\!\!\!/} - {k\!\!\!/}^{\prime} ) /e \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} /e^{\prime} + ( {p\!\!\!/} + {k\!\!\!/} ) /e^{\prime} \frac{{k\!\!\!/}}{k_{0}} /e \right] \right\} \\ \text{ But } {k\!\!\!/} /e/ k &= {k\!\!\!/}^{\prime} /e^{\prime} {k\!\!\!/}^{\prime} = 0 \text{ and } \end{aligned}
+\begin{aligned} & \quad \frac{e^{4}}{3 2 \hbar^{4} c^{4} \mu^{4}} \left\{ - 8 \mu \frac{k_{0} - k_{0}^{\prime}}{k_{0} k_{0}^{\prime}} ( k \cdot k^{\prime} ) + 4 \mu ( e \cdot e^{\prime} ) \operatorname{Spur} \left[ ( {p\!\!\!/} - {k\!\!\!/}^{\prime} ) {e\!\!\!/} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/}^{\prime} + ( {p\!\!\!/} + {k\!\!\!/} ) {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/} \right] \right\} \\ \text{ But } {k\!\!\!/} /e/ k &= {k\!\!\!/}^{\prime} {e\!\!\!/}^{\prime} {k\!\!\!/}^{\prime} = 0 \text{ and } \end{aligned}
 ```
 
 ```math
@@ -6778,11 +6778,11 @@ Hence altogether (464) becomes
 Hence $`k \cdot k^{\prime} = - \mu ( k_{0} - k_{0}^{\prime} )`$ and then
 
 ```math
-\operatorname{Sp} \left[ ( /p - {k\!\!\!/}^{\prime} ) /e \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} /e^{\prime} + ( {p\!\!\!/} + {k\!\!\!/} ) /e^{\prime} \frac{{k\!\!\!/}}{k_{0}} /e \right] = \operatorname{Sp} \left[ {p\!\!\!/} /e \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} /e^{\prime} - {k\!\!\!/}^{\prime} /e^{\prime} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} /e + {p\!\!\!/} /e^{\prime} \frac{{k\!\!\!/}}{k_{0}} /e + {k\!\!\!/} /e \frac{{k\!\!\!/}}{k_{0}} /e^{\prime} \right]
+\operatorname{Sp} \left[ ( {p\!\!\!/} - {k\!\!\!/}^{\prime} ) {e\!\!\!/} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/}^{\prime} + ( {p\!\!\!/} + {k\!\!\!/} ) {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/} \right] = \operatorname{Sp} \left[ {p\!\!\!/} {e\!\!\!/} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/}^{\prime} - {k\!\!\!/}^{\prime} {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/} + {p\!\!\!/} {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/} + {k\!\!\!/} {e\!\!\!/} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/}^{\prime} \right]
 ```
 
 ```math
-= \operatorname{Sp} \left[ {p\!\!\!/} /e \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} /e^{\prime} + /e \frac{{k\!\!\!/}}{k_{0}} /e^{\prime} {p\!\!\!/} \right] = \operatorname{Sp} \left[ {p\!\!\!/} /e \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} /e^{\prime} + {p\!\!\!/} /e \frac{{k\!\!\!/}}{k_{0}} /e^{\prime} \right]
+= \operatorname{Sp} \left[ {p\!\!\!/} {e\!\!\!/} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/}^{\prime} + {e\!\!\!/} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/}^{\prime} {p\!\!\!/} \right] = \operatorname{Sp} \left[ {p\!\!\!/} {e\!\!\!/} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/}^{\prime} + {p\!\!\!/} {e\!\!\!/} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/}^{\prime} \right]
 ```
 
 <div align="right"><a href="book.pdf#page=94" target="_blank" title="This page in the PDF"><sup>[p. 88]</sup></a></div>
@@ -6794,7 +6794,7 @@ and so (464) is
 <a id="eq-465"></a>
 
 ```math
-\frac{e^{4}}{8 \hbar^{4} c^{4} \mu^{4}} \left\{ \frac{2 \mu^{2} ( k_{0} - k_{0}^{\prime} )^{2}}{k_{0} k_{0}^{\prime}} + 2 \mu ( e \cdot e^{\prime} ) \operatorname{Spur} \left[ {p\!\!\!/} /ei\beta /e^{\prime} \right] \right\} = \frac{e^{4}}{4 \hbar^{4} c^{4} \mu^{2}} \left\{ \frac{( k_{0} - k_{0}^{\prime} )^{2}}{k_{0} k_{0}^{\prime}} + 4 ( e \cdot e^{\prime} )^{2} \right\} \qquad \text{(465)}
+\frac{e^{4}}{8 \hbar^{4} c^{4} \mu^{4}} \left\{ \frac{2 \mu^{2} ( k_{0} - k_{0}^{\prime} )^{2}}{k_{0} k_{0}^{\prime}} + 2 \mu ( e \cdot e^{\prime} ) \operatorname{Spur} \left[ {p\!\!\!/} {e\!\!\!/} i\beta {e\!\!\!/}^{\prime} \right] \right\} = \frac{e^{4}}{4 \hbar^{4} c^{4} \mu^{2}} \left\{ \frac{( k_{0} - k_{0}^{\prime} )^{2}}{k_{0} k_{0}^{\prime}} + 4 ( e \cdot e^{\prime} )^{2} \right\} \qquad \text{(465)}
 ```
 
 Hence by (461) the cross-section averaged over electron spins is
@@ -6910,7 +6910,7 @@ This annihilation process will again be effected by the operator $`U_{2}`$ given
 <a id="eq-471"></a>
 
 ```math
-\begin{aligned} M_{2} &= - \frac{e^{2} ( 2 \pi )^{4}}{\hbar^{2} c^{2}} \delta^{4} ( p + p_{+} - k - k^{\prime} ) \overline{u}^{\prime} \left\{ /e \frac{1}{{p\!\!\!/} - {k\!\!\!/}^{\prime} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{{p\!\!\!/} - {k\!\!\!/} - i\mu} /e \right\} u \\ &= K ( 2 \pi )^{4} \delta^{4} ( p + p_{+} - k - k^{\prime} ) \end{aligned} \qquad \text{(471)}
+\begin{aligned} M_{2} &= - \frac{e^{2} ( 2 \pi )^{4}}{\hbar^{2} c^{2}} \delta^{4} ( p + p_{+} - k - k^{\prime} ) \overline{u}^{\prime} \left\{ {e\!\!\!/} \frac{1}{{p\!\!\!/} - {k\!\!\!/}^{\prime} - i\mu} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} \frac{1}{{p\!\!\!/} - {k\!\!\!/} - i\mu} {e\!\!\!/} \right\} u \\ &= K ( 2 \pi )^{4} \delta^{4} ( p + p_{+} - k - k^{\prime} ) \end{aligned} \qquad \text{(471)}
 ```
 
 We consider the probability for this process for an electron and positron _both at rest_. The result will then apply to the decay of a positronium atom, where the velocities are only of the order of $`\alpha c`$ and can be treated as zero to a good approximation.
@@ -6928,7 +6928,7 @@ As in (453) we have
 <a id="eq-473"></a>
 
 ```math
-K = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu^{2}} \overline{u}^{\prime} ( /e/ k^{\prime} /e^{\prime} + /e^{\prime} {k\!\!\!/} /e ) u \qquad \text{(473)}
+K = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu^{2}} \overline{u}^{\prime} ( /e/ k^{\prime} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} {k\!\!\!/} {e\!\!\!/} ) u \qquad \text{(473)}
 ```
 
 The decay probability per unit volume per unit time into a solid angle $`d`$Ω for _one_ of the photons is
@@ -6948,7 +6948,7 @@ w = c | K |^{2} \frac{1}{( 2 \pi )^{2}} \frac{1}{8} \hbar^{2} c^{2} d \Omega \qq
 For _parallel_ polarizations, $`e = e^{\prime}`$, and
 
 ```math
-( /e/ k^{\prime} /e^{\prime} + /e^{\prime} {k\!\!\!/} /e ) = - ( {k\!\!\!/}^{\prime} + {k\!\!\!/} ) = - 2 i\mu \beta
+( /e/ k^{\prime} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} {k\!\!\!/} {e\!\!\!/} ) = - ( {k\!\!\!/}^{\prime} + {k\!\!\!/} ) = - 2 i\mu \beta
 ```
 
 But $`\beta`$ has zero matrix element between the spin-states $`u`$ and $`u^{\prime}`$, which are positive and negative-frequency states both of zero momentum. Hence for parallel polarizations
@@ -6968,13 +6968,13 @@ For _perpendicular_ polarizations, take coordinate axes 1 along $`e`$, 2 along $
 <a id="eq-476"></a>
 
 ```math
-( /e/ k^{\prime} /e^{\prime} + /e^{\prime} {k\!\!\!/} /e ) = \mu \{ \gamma_{1} ( - \gamma_{3} + i\beta ) \gamma_{2} + \gamma_{2} ( \gamma_{3} + i\beta ) \gamma_{1} \} = 2 \mu \gamma_{1} \gamma_{2} \gamma_{3} \qquad \text{(476)}
+( /e/ k^{\prime} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} {k\!\!\!/} {e\!\!\!/} ) = \mu \{ \gamma_{1} ( - \gamma_{3} + i\beta ) \gamma_{2} + \gamma_{2} ( \gamma_{3} + i\beta ) \gamma_{1} \} = 2 \mu \gamma_{1} \gamma_{2} \gamma_{3} \qquad \text{(476)}
 ```
 
 Hence for perpendicular polarizations<sup><a id="fnref-64" href="#fn-64">64</a></sup>
 
 ```math
-\overline{u} [ /e/ k^{\prime} /e^{\prime} + /e^{\prime} {k\!\!\!/} /e ] u = 2 \mu v^{T} C\gamma_{4} \gamma_{1} \gamma_{2} \gamma_{3} u = - 2 \mu iv^{T} \gamma_{4} \sigma_{2} u
+\overline{u} [ /e/ k^{\prime} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} {k\!\!\!/} {e\!\!\!/} ] u = 2 \mu v^{T} C\gamma_{4} \gamma_{1} \gamma_{2} \gamma_{3} u = - 2 \mu iv^{T} \gamma_{4} \sigma_{2} u
 ```
 
 ```math
@@ -7096,7 +7096,7 @@ For bremsstrahlung the formula for $`M_{1}`$ is (449), identically the same as f
 <a id="eq-484"></a>
 
 ```math
-M_{1} = - \frac{e^{2}}{\hbar^{2} c^{2}} f ( p^{\prime} + k^{\prime} - p ) \overline{u}^{\prime} \left\{ /e \frac{1}{{p\!\!\!/} - {k\!\!\!/}^{\prime} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{{p\!\!\!/}^{\prime} + {k\!\!\!/}^{\prime} - i\mu} /e \right\} u \qquad \text{(484)}
+M_{1} = - \frac{e^{2}}{\hbar^{2} c^{2}} f ( p^{\prime} + k^{\prime} - p ) \overline{u}^{\prime} \left\{ {e\!\!\!/} \frac{1}{{p\!\!\!/} - {k\!\!\!/}^{\prime} - i\mu} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} \frac{1}{{p\!\!\!/}^{\prime} + {k\!\!\!/}^{\prime} - i\mu} {e\!\!\!/} \right\} u \qquad \text{(484)}
 ```
 
 The factor 2 difference between (482) and (423) is just compensated by the fact that the photon $`k^{\prime} e^{\prime}`$ can be emitted by two operators $`A_{\mu}`$ in (423) and by only one in (482). The bremsstrahlung <a id="ix-54">cross section</a> is then calculated by squaring (484) and integrating over $`k^{\prime}`$ and $`p^{\prime}`$ with appropriate normalization factors. For the details see Heitler’s book $`§ 1 7 .`$<sup><a id="fnref-66" href="#fn-66">66</a></sup>
@@ -7106,7 +7106,7 @@ For pair creation the same formula (449) gives the matrix element $`M_{1}`$, all
 <a id="eq-485"></a>
 
 ```math
-M_{1} = - \frac{e^{2} ( 2 \pi )^{4} )}{\hbar^{2} c^{2}} \delta^{4} ( k + k^{\prime} - p - p_{+} ) \overline{u} \left\{ /e \frac{1}{{k\!\!\!/}^{\prime} - {p\!\!\!/}_{+} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{{k\!\!\!/} - {p\!\!\!/}_{+} - i\mu} /e \right\} u^{\prime} \qquad \text{(485)}
+M_{1} = - \frac{e^{2} ( 2 \pi )^{4} )}{\hbar^{2} c^{2}} \delta^{4} ( k + k^{\prime} - p - p_{+} ) \overline{u} \left\{ {e\!\!\!/} \frac{1}{{k\!\!\!/}^{\prime} - {p\!\!\!/}_{+} - i\mu} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} \frac{1}{{k\!\!\!/} - {p\!\!\!/}_{+} - i\mu} {e\!\!\!/} \right\} u^{\prime} \qquad \text{(485)}
 ```
 
 <div align="right"><a href="book.pdf#page=98" target="_blank" title="This page in the PDF"><sup>[p. 92]</sup></a></div>
@@ -7118,7 +7118,7 @@ and integrating over the components of the potential
 <a id="eq-486"></a>
 
 ```math
-M_{1} = - \frac{e^{2}}{\hbar^{2} c^{2}} f ( p + p_{+} - k^{\prime} ) \overline{u} \left\{ /e \frac{1}{{k\!\!\!/}^{\prime} - {p\!\!\!/}_{+} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{{p\!\!\!/} - {k\!\!\!/}^{\prime} - i\mu} /e \right\} u^{\prime} \qquad \text{(486)}
+M_{1} = - \frac{e^{2}}{\hbar^{2} c^{2}} f ( p + p_{+} - k^{\prime} ) \overline{u} \left\{ {e\!\!\!/} \frac{1}{{k\!\!\!/}^{\prime} - {p\!\!\!/}_{+} - i\mu} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} \frac{1}{{p\!\!\!/} - {k\!\!\!/}^{\prime} - i\mu} {e\!\!\!/} \right\} u^{\prime} \qquad \text{(486)}
 ```
 
 For the <a id="ix-21">cross-section</a> calculation see again Heitler, $`§ 2 0 .`$<sup><a id="fnref-67" href="#fn-67">67</a></sup>
@@ -7185,7 +7185,7 @@ M = ( \Phi_{B}^{*} S \Phi_{A} ) \qquad \text{(487)}
 <a id="eq-488"></a>
 
 ```math
-S = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int \dots \int dx_{1} \dots dx_{n} P \left\{ \psi / A\psi ( x_{1} ) ,\dots , \psi / A\psi ( x_{n} ) \right\} \qquad \text{(488)}
+S = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int \dots \int dx_{1} \dots dx_{n} P \left\{ \psi / A\psi ( x_{1} ) ,\dots , \psi A\psi ( x_{n} ) \right\} \qquad \text{(488)}
 ```
 
 The operators in (488) are field-operators of the interaction representation, the integrations over the points $`x_{1} ,\dots x_{n}`$ extend over all space-time, and the initial and final states $`A`$ and $`B`$ are entirely arbitrary.
@@ -7609,7 +7609,7 @@ when we evaluate Σ$`( p )`$ in (519). So using (376), (585) and following the s
 <a id="eq-522"></a>
 
 ```math
-\begin{aligned} \Sigma ( p ) &= \int_{F} dk \sum_{\lambda} \frac{\gamma_{\lambda} ( {k\!\!\!/} + {p\!\!\!/} + i\mu ) \gamma_{\lambda}}{k^{2} ( k^{2} + 2 p \cdot k )} = \int_{F} dk \frac{4 i\mu - 2 {k\!\!\!/} - 2 {p\!\!\!/}}{k^{2} ( k^{2} + 2 p \cdot k )} \\ &= 2 \int_{0}^{1} dz \int_{F} dK \frac{i\mu - {k\!\!\!/}}{[ k^{2} + 2 zp \cdot k ]^{2}} = 2 \int_{0}^{1} \int_{F} dk \frac{( i\mu - {k\!\!\!/} + z/p )}{[ k^{2} - z^{2} p^{2} ]^{2}} \\ &= 2 \int_{0}^{1} dz \int_{F} dk \frac{i\mu ( 1 + z )}{[ k^{2} + z^{2} \mu^{2} ]^{2}} \end{aligned} \qquad \text{(522)}
+\begin{aligned} \Sigma ( p ) &= \int_{F} dk \sum_{\lambda} \frac{\gamma_{\lambda} ( {k\!\!\!/} + {p\!\!\!/} + i\mu ) \gamma_{\lambda}}{k^{2} ( k^{2} + 2 p \cdot k )} = \int_{F} dk \frac{4 i\mu - 2 {k\!\!\!/} - 2 {p\!\!\!/}}{k^{2} ( k^{2} + 2 p \cdot k )} \\ &= 2 \int_{0}^{1} dz \int_{F} dK \frac{i\mu - {k\!\!\!/}}{[ k^{2} + 2 zp \cdot k ]^{2}} = 2 \int_{0}^{1} \int_{F} dk \frac{( i\mu - {k\!\!\!/} + z {p\!\!\!/} )}{[ k^{2} - z^{2} p^{2} ]^{2}} \\ &= 2 \int_{0}^{1} dz \int_{F} dk \frac{i\mu ( 1 + z )}{[ k^{2} + z^{2} \mu^{2} ]^{2}} \end{aligned} \qquad \text{(522)}
 ```
 
 where we changed the origin of the $`k`$ integration by the replacement $`k \to k - zp`$ and we eliminated the odd terms. Using (386) and introducing the logarithmic divergence $`R`$ again according to (387),
@@ -7793,7 +7793,7 @@ Then by (534) we have
 <a id="eq-543"></a>
 
 ```math
-M_{0} = \frac{e}{\hbar c} ( u^{\prime} /eu ) \qquad \text{(543)}
+M_{0} = \frac{e}{\hbar c} ( u^{\prime} {e\!\!\!/} u ) \qquad \text{(543)}
 ```
 
 where $`q`$ is the constant vector
@@ -7817,7 +7817,7 @@ The operator $`U_{1}`$ gives transitions from a one-electron state only to state
 <a id="eq-546"></a>
 
 ```math
-M_{1} = \frac{e^{2}}{\hbar^{2} c^{2}} \left[ \frac{p \cdot e^{\prime}}{p \cdot k^{\prime}} - \frac{p^{\prime} \cdot e^{\prime}}{p^{\prime} \cdot k^{\prime}} \right] ( \overline{u}^{\prime} /eu ) = \frac{e}{\hbar c} \left[ \frac{p \cdot e^{\prime}}{p \cdot k^{\prime}} - \frac{p^{\prime} \cdot e^{\prime}}{p^{\prime} \cdot k^{\prime}} \right] M_{0} \qquad \text{(546)}
+M_{1} = \frac{e^{2}}{\hbar^{2} c^{2}} \left[ \frac{p \cdot e^{\prime}}{p \cdot k^{\prime}} - \frac{p^{\prime} \cdot e^{\prime}}{p^{\prime} \cdot k^{\prime}} \right] ( \overline{u}^{\prime} {e\!\!\!/} u ) = \frac{e}{\hbar c} \left[ \frac{p \cdot e^{\prime}}{p \cdot k^{\prime}} - \frac{p^{\prime} \cdot e^{\prime}}{p^{\prime} \cdot k^{\prime}} \right] M_{0} \qquad \text{(546)}
 ```
 
 <div align="right"><a href="book.pdf#page=111" target="_blank" title="This page in the PDF"><sup>[p. 105]</sup></a></div>
@@ -7859,7 +7859,7 @@ Hence, using the momentum integrals (430), (448), (534), (542) and carrying out 
 <a id="eq-548"></a>
 
 ```math
-\begin{aligned} & \quad ( x,x_{1} ,x_{2} ) , \\ M_{2 1} &= \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int \int \int dk_{1} dk_{2} dk_{3} dq \sum_{\mu} \operatorname{Spur} \left\{ /e ( q ) \frac{1}{{k\!\!\!/}_{1} - i\mu} \gamma_{\mu} \frac{1}{{k\!\!\!/}_{2} - i\mu} \right\} \frac{1}{k_{3}^{2}} ( \overline{u}^{\prime} \gamma_{\mu} u ) \times \\ & \quad \times \delta ( q + k_{1} - k_{2} ) \delta ( - k_{1} + k_{2} + k_{3} ) \delta ( - k_{3} - p^{\prime} + p ) \\ &= \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int_{F} dk \sum_{\mu} \operatorname{Spur} \left\{ /e \frac{1}{{k\!\!\!/} - i\mu} \gamma_{\mu} \frac{1}{{k\!\!\!/} + /q - i\mu} \right\} \frac{1}{q^{2}} ( \overline{u}^{\prime} \gamma_{\mu} u ) \\ &= \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \sum_{\mu} \frac{1}{q^{2}} ( \overline{u}^{\prime} \gamma_{\mu} u ) J_{\mu} \end{aligned} \qquad \text{(548)}
+\begin{aligned} & \quad ( x,x_{1} ,x_{2} ) , \\ M_{2 1} &= \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int \int \int dk_{1} dk_{2} dk_{3} dq \sum_{\mu} \operatorname{Spur} \left\{ {e\!\!\!/} ( q ) \frac{1}{{k\!\!\!/}_{1} - i\mu} \gamma_{\mu} \frac{1}{{k\!\!\!/}_{2} - i\mu} \right\} \frac{1}{k_{3}^{2}} ( \overline{u}^{\prime} \gamma_{\mu} u ) \times \\ & \quad \times \delta ( q + k_{1} - k_{2} ) \delta ( - k_{1} + k_{2} + k_{3} ) \delta ( - k_{3} - p^{\prime} + p ) \\ &= \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int_{F} dk \sum_{\mu} \operatorname{Spur} \left\{ {e\!\!\!/} \frac{1}{{k\!\!\!/} - i\mu} \gamma_{\mu} \frac{1}{{k\!\!\!/} + {q\!\!\!/} - i\mu} \right\} \frac{1}{q^{2}} ( \overline{u}^{\prime} \gamma_{\mu} u ) \\ &= \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \sum_{\mu} \frac{1}{q^{2}} ( \overline{u}^{\prime} \gamma_{\mu} u ) J_{\mu} \end{aligned} \qquad \text{(548)}
 ```
 
 with $`q`$ given by (544) and<sup><a id="fnref-76" href="#fn-76">76</a></sup>
@@ -7875,7 +7875,7 @@ the function $`F_{\mu} ( k )`$ being identical with (371) for $`\delta = 0`$. No
 <a id="eq-550"></a>
 
 ```math
-M_{2 1} = - \frac{e^{3}}{2 \pi^{2} \hbar^{2} c^{2}} ( \overline{u}^{\prime} /eu ) \left\{ \tfrac{1}{3} R - \int_{0}^{1} ( z - z^{2} ) \log \left( 1 + ( z - z^{2} ) \frac{q^{2}}{\mu^{2}} \right) dz \right\} \qquad \text{(550)}
+M_{2 1} = - \frac{e^{3}}{2 \pi^{2} \hbar^{2} c^{2}} ( \overline{u}^{\prime} {e\!\!\!/} u ) \left\{ \tfrac{1}{3} R - \int_{0}^{1} ( z - z^{2} ) \log \left( 1 + ( z - z^{2} ) \frac{q^{2}}{\mu^{2}} \right) dz \right\} \qquad \text{(550)}
 ```
 
 where we have also dropped the term $`q_{\mu}`$ in(388), since
@@ -7883,7 +7883,7 @@ where we have also dropped the term $`q_{\mu}`$ in(388), since
 <a id="eq-551"></a>
 
 ```math
-( \overline{u}^{\prime} /qu ) = \{ u^{\prime} ( {p\!\!\!/}^{\prime} - i\mu ) u \}-\{ u^{\prime} ( {p\!\!\!/} - i\mu ) u \} = 0 \qquad \text{(551)}
+( \overline{u}^{\prime} {q\!\!\!/} u ) = \{ u^{\prime} ( {p\!\!\!/}^{\prime} - i\mu ) u \}-\{ u^{\prime} ( {p\!\!\!/} - i\mu ) u \} = 0 \qquad \text{(551)}
 ```
 
 Writing $`\alpha = \frac{e^{2}}{4 \pi \hbar c}`$, (550) becomes
@@ -7923,7 +7923,7 @@ M_{2 2} = \frac{e^{3}}{8 \hbar^{2} c^{2}} \int \int \int dxdx_{1} dx_{2} \sum_{\
 ```
 
 ```math
-= - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int \int \int dk_{1} dk_{2} dk_{3} dq \sum_{\lambda} \left\{ \overline{u}^{\prime} /e ( q ) \frac{1}{{k\!\!\!/}_{1} - i\mu} \gamma_{\lambda} \frac{1}{{k\!\!\!/}_{2} - i\mu} \gamma_{\lambda} u \right\} \frac{1}{k_{3}^{2}} \times
+= - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int \int \int dk_{1} dk_{2} dk_{3} dq \sum_{\lambda} \left\{ \overline{u}^{\prime} {e\!\!\!/} ( q ) \frac{1}{{k\!\!\!/}_{1} - i\mu} \gamma_{\lambda} \frac{1}{{k\!\!\!/}_{2} - i\mu} \gamma_{\lambda} u \right\} \frac{1}{k_{3}^{2}} \times
 ```
 
 <a id="eq-556"></a>
@@ -7935,13 +7935,13 @@ M_{2 2} = \frac{e^{3}}{8 \hbar^{2} c^{2}} \int \int \int dxdx_{1} dx_{2} \sum_{\
 <a id="eq-557"></a>
 
 ```math
-= - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \sum_{\lambda} \int_{F} dk \left( \overline{u}^{\prime} /e \frac{1}{{p\!\!\!/} - i\mu} \gamma_{\lambda} \frac{1}{{k\!\!\!/} + {p\!\!\!/} - i\mu} \gamma_{\lambda} u \right) \frac{1}{k^{2}} \qquad \text{(557)}
+= - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \sum_{\lambda} \int_{F} dk \left( \overline{u}^{\prime} {e\!\!\!/} \frac{1}{{p\!\!\!/} - i\mu} \gamma_{\lambda} \frac{1}{{k\!\!\!/} + {p\!\!\!/} - i\mu} \gamma_{\lambda} u \right) \frac{1}{k^{2}} \qquad \text{(557)}
 ```
 
 <a id="eq-558"></a>
 
 ```math
-= - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \left( \overline{u}^{\prime} /e \frac{1}{{p\!\!\!/} - i\mu} \Sigma ( p ) u \right) \qquad \text{(558)}
+= - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \left( \overline{u}^{\prime} {e\!\!\!/} \frac{1}{{p\!\!\!/} - i\mu} \Sigma ( p ) u \right) \qquad \text{(558)}
 ```
 
 with Σ$`( p )`$ given by(520).
@@ -7991,7 +7991,7 @@ and we suppose that $`G ( \epsilon_{0} )`$ is “almost” a $`\delta`$-function
 <a id="eq-564"></a>
 
 ```math
-M_{2 2} = - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int G ( \epsilon_{0} ) G ( \epsilon_{0}^{\prime} ) d\epsilon_{0} d\epsilon_{0}^{\prime} \left\{ \overline{u} /e ( q - \epsilon - \epsilon^{\prime} ) \frac{1}{{p\!\!\!/} + /\epsilon + /\epsilon^{\prime} - i\mu} \Sigma ( p + \epsilon ) u \right\} \qquad \text{(564)}
+M_{2 2} = - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int G ( \epsilon_{0} ) G ( \epsilon_{0}^{\prime} ) d\epsilon_{0} d\epsilon_{0}^{\prime} \left\{ \overline{u} {e\!\!\!/} ( q - \epsilon - \epsilon^{\prime} ) \frac{1}{{p\!\!\!/} + {\epsilon\!\!\!/} + {\epsilon\!\!\!/}^{\prime} - i\mu} \Sigma ( p + \epsilon ) u \right\} \qquad \text{(564)}
 ```
 
 <div align="right"><a href="book.pdf#page=114" target="_blank" title="This page in the PDF"><sup>[p. 108]</sup></a></div>
@@ -8003,7 +8003,7 @@ In (564) the inadmissible factor (559) is replaced by something finite and mathe
 <a id="eq-565"></a>
 
 ```math
-\begin{aligned} & \quad \epsilon_{0}^{\prime} \to 0 \\ \frac{1}{{p\!\!\!/} + /\epsilon + /\epsilon^{\prime} - i\mu} &= \frac{{p\!\!\!/} + /\epsilon + /\epsilon^{\prime} + i\mu}{2 p \cdot ( \epsilon + \epsilon^{\prime} ) + ( \epsilon + \epsilon^{\prime} )^{2}} \sim - \frac{{p\!\!\!/} + i\mu}{2 p_{0} ( \epsilon_{0} + \epsilon_{0}^{\prime} )} \end{aligned} \qquad \text{(565)}
+\begin{aligned} & \quad \epsilon_{0}^{\prime} \to 0 \\ \frac{1}{{p\!\!\!/} + {\epsilon\!\!\!/} + {\epsilon\!\!\!/}^{\prime} - i\mu} &= \frac{{p\!\!\!/} + {\epsilon\!\!\!/} + {\epsilon\!\!\!/}^{\prime} + i\mu}{2 p \cdot ( \epsilon + \epsilon^{\prime} ) + ( \epsilon + \epsilon^{\prime} )^{2}} \sim - \frac{{p\!\!\!/} + i\mu}{2 p_{0} ( \epsilon_{0} + \epsilon_{0}^{\prime} )} \end{aligned} \qquad \text{(565)}
 ```
 
 Hence when evaluating Σ$`( p + \epsilon )`$ we need retain only terms of order zero and one in $`\epsilon_{0}`$; the terms of order two and higher are negligible, because even when multiplied by (565) they tend to zero as $`T \to \infty`$.
@@ -8037,7 +8037,7 @@ In (564) we may use the conditions (521), and these give for Σ$`( p )`$ the con
 <a id="eq-569"></a>
 
 ```math
-I_{\alpha} ( p ) = F_{1} ( p^{2} ) \gamma_{\alpha} + F_{2} ( p^{2} ) ( {p\!\!\!/} - i\mu ) \gamma_{\alpha} + F_{3} ( p^{2} ) \gamma_{\alpha} ( /p - i\mu ) + F_{4} ( p^{2} ) ( {p\!\!\!/} - i\mu ) \gamma_{\alpha} ( {p\!\!\!/} - i\mu ) \qquad \text{(569)}
+I_{\alpha} ( p ) = F_{1} ( p^{2} ) \gamma_{\alpha} + F_{2} ( p^{2} ) ( {p\!\!\!/} - i\mu ) \gamma_{\alpha} + F_{3} ( p^{2} ) \gamma_{\alpha} ( {p\!\!\!/} - i\mu ) + F_{4} ( p^{2} ) ( {p\!\!\!/} - i\mu ) \gamma_{\alpha} ( {p\!\!\!/} - i\mu ) \qquad \text{(569)}
 ```
 
 where $`F_{1} ,\dots ,F_{4}`$ are functions of the scalar $`p^{2}`$. Hence using (521) and (523), we see that in (564) we may put
@@ -8045,7 +8045,7 @@ where $`F_{1} ,\dots ,F_{4}`$ are functions of the scalar $`p^{2}`$. Hence using
 <a id="eq-570"></a>
 
 ```math
-\Sigma ( p + \epsilon ) = - 6 \pi^{2} \mu R^{\prime} - I_{1} /\epsilon - I_{2} ( {p\!\!\!/} - i\mu ) /\epsilon \qquad \text{(570)}
+\Sigma ( p + \epsilon ) = - 6 \pi^{2} \mu R^{\prime} - I_{1} {\epsilon\!\!\!/} - I_{2} ( {p\!\!\!/} - i\mu ) {\epsilon\!\!\!/} \qquad \text{(570)}
 ```
 
 where $`I_{1}`$ and $`I_{2}`$ are new absolute constants, and in particular
@@ -8059,7 +8059,7 @@ I_{1} = F_{1} ( - \mu^{2} ) \qquad \text{(571)}
 But in (564) the term
 
 ```math
-\left( \frac{1}{{p\!\!\!/} + /\epsilon + /\epsilon^{\prime} - i\mu} \right) ( {p\!\!\!/} - i\mu ) /\epsilon = /\epsilon - \frac{1}{( {p\!\!\!/} + /\epsilon + /\epsilon^{\prime} - i\mu )} ( /\epsilon + /\epsilon^{\prime} ) /\epsilon
+\left( \frac{1}{{p\!\!\!/} + {\epsilon\!\!\!/} + {\epsilon\!\!\!/}^{\prime} - i\mu} \right) ( {p\!\!\!/} - i\mu ) {\epsilon\!\!\!/} = {\epsilon\!\!\!/} - \frac{1}{( {p\!\!\!/} + {\epsilon\!\!\!/} + {\epsilon\!\!\!/}^{\prime} - i\mu )} ( {\epsilon\!\!\!/} + {\epsilon\!\!\!/}^{\prime} ) {\epsilon\!\!\!/}
 ```
 
 is of order $`\epsilon`$ and tends to zero as $`T \to 0`$. This term may be dropped, and then (564) becomes<sup><a id="fnref-78" href="#fn-78">78</a></sup>
@@ -8067,7 +8067,7 @@ is of order $`\epsilon`$ and tends to zero as $`T \to 0`$. This term may be drop
 <a id="eq-572"></a>
 
 ```math
-\begin{aligned} M_{2 2} &= - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int G ( \epsilon_{0} ) G ( \epsilon_{0}^{\prime} ) d\epsilon_{0} d\epsilon_{0}^{\prime} \times \\ & \quad \left\{ \overline{u} /e ( q - \epsilon - \epsilon^{\prime} ) \frac{1}{{p\!\!\!/} + /\epsilon + /\epsilon^{\prime} - i\mu} ( - 6 \pi^{2} \mu R^{\prime} - I_{1} /\epsilon ) u \right\} \end{aligned} \qquad \text{(572)}
+\begin{aligned} M_{2 2} &= - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int G ( \epsilon_{0} ) G ( \epsilon_{0}^{\prime} ) d\epsilon_{0} d\epsilon_{0}^{\prime} \times \\ & \quad \left\{ \overline{u} {e\!\!\!/} ( q - \epsilon - \epsilon^{\prime} ) \frac{1}{{p\!\!\!/} + {\epsilon\!\!\!/} + {\epsilon\!\!\!/}^{\prime} - i\mu} ( - 6 \pi^{2} \mu R^{\prime} - I_{1} {\epsilon\!\!\!/} ) u \right\} \end{aligned} \qquad \text{(572)}
 ```
 
 Note that if $`I_{\alpha} ( p )`$ given by (567) were to be evaluated assuming that $`p^{2} + \mu^{2} = 0`$ and $`{p\!\!\!/} - i\mu = 0`$ operating both to the left and to the right, instead of only to the right as in (521), the result obtained would be just
@@ -8115,17 +8115,17 @@ Using (561) and performing the integrations as before, this becomes
 <a id="eq-576"></a>
 
 ```math
-M_{2 2}^{\prime} = - \frac{ie\delta m}{2 \hbar^{2}} \int \int G ( \epsilon_{0} ) G ( \epsilon_{0}^{\prime} ) d\epsilon_{0} d\epsilon_{0}^{\prime} \left\{ \overline{u}^{\prime} /e ( q - \epsilon - \epsilon^{\prime} ) \left( \frac{1}{{p\!\!\!/} + /\epsilon + /\epsilon^{\prime} - i\mu} \right) u \right\} \qquad \text{(576)}
+M_{2 2}^{\prime} = - \frac{ie\delta m}{2 \hbar^{2}} \int \int G ( \epsilon_{0} ) G ( \epsilon_{0}^{\prime} ) d\epsilon_{0} d\epsilon_{0}^{\prime} \left\{ \overline{u}^{\prime} {e\!\!\!/} ( q - \epsilon - \epsilon^{\prime} ) \left( \frac{1}{{p\!\!\!/} + {\epsilon\!\!\!/} + {\epsilon\!\!\!/}^{\prime} - i\mu} \right) u \right\} \qquad \text{(576)}
 ```
 
 In virtue of (530), this term does precisely cancel the term in $`R^{\prime}`$ in (572), as was to be expected.
 
-To simplify the term in $`I_{1}`$ in (572), we may replace $`/\epsilon`$ by $`\tfrac{1}{2} ( /\epsilon + /\epsilon^{\prime} )`$ since the integrand is otherwise symmetrical between $`\epsilon`$ and $`\epsilon^{\prime}`$. And using (521) we may replace this in turn by $`\tfrac{1}{2} ( {p\!\!\!/} + /\epsilon + /\epsilon^{\prime} - i\mu )`$. This cancels the denominator of (572) precisely. After the denominator is cancelled, the expression is non-singular and we may go to the limit $`T \to \infty`$, using (563) to perform the integration over $`\epsilon_{0}`$ and $`\epsilon_{0}^{\prime}`$. Since it is assumed that the external potential is of a limited duration not tending to infinity with $`T`$, the factor $`/e ( q - \epsilon - \epsilon^{\prime} )`$ is a continuous function of $`\epsilon + \epsilon^{\prime}`$ and tends to $`/e ( q )`$ as $`T \to \infty`$.<sup><a id="fnref-79" href="#fn-79">79</a></sup> Hence in the limit $`T \to \infty`$ we have
+To simplify the term in $`I_{1}`$ in (572), we may replace $`{\epsilon\!\!\!/}`$ by $`\tfrac{1}{2} ( {\epsilon\!\!\!/} + {\epsilon\!\!\!/}^{\prime} )`$ since the integrand is otherwise symmetrical between $`\epsilon`$ and $`\epsilon^{\prime}`$. And using (521) we may replace this in turn by $`\tfrac{1}{2} ( {p\!\!\!/} + {\epsilon\!\!\!/} + {\epsilon\!\!\!/}^{\prime} - i\mu )`$. This cancels the denominator of (572) precisely. After the denominator is cancelled, the expression is non-singular and we may go to the limit $`T \to \infty`$, using (563) to perform the integration over $`\epsilon_{0}`$ and $`\epsilon_{0}^{\prime}`$. Since it is assumed that the external potential is of a limited duration not tending to infinity with $`T`$, the factor $`{e\!\!\!/} ( q - \epsilon - \epsilon^{\prime} )`$ is a continuous function of $`\epsilon + \epsilon^{\prime}`$ and tends to $`{e\!\!\!/} ( q )`$ as $`T \to \infty`$.<sup><a id="fnref-79" href="#fn-79">79</a></sup> Hence in the limit $`T \to \infty`$ we have
 
 <a id="eq-577"></a>
 
 ```math
-M_{2 2} + M_{2 2}^{\prime} = \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \frac{1}{2} I_{1} ( \overline{u}^{\prime} /\epsilon u ) = \frac{i\alpha}{( 2 \pi )^{3}} I_{1} M_{o} \qquad \text{(577)}
+M_{2 2} + M_{2 2}^{\prime} = \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \frac{1}{2} I_{1} ( \overline{u}^{\prime} {\epsilon\!\!\!/} u ) = \frac{i\alpha}{( 2 \pi )^{3}} I_{1} M_{o} \qquad \text{(577)}
 ```
 
 <div align="right"><a href="book.pdf#page=116" target="_blank" title="This page in the PDF"><sup>[p. 110]</sup></a></div>
@@ -8191,7 +8191,7 @@ where
 <a id="eq-584"></a>
 
 ```math
-\Lambda ( p,p^{\prime} ) = \int_{F} dk \sum_{\lambda} \left( \gamma_{\lambda} \frac{1}{{k\!\!\!/} + {p\!\!\!/}^{\prime} - i\mu} /e \frac{1}{{k\!\!\!/} + {p\!\!\!/} - i\mu} \gamma_{\lambda} \right) \frac{1}{k^{2}} \qquad \text{(584)}
+\Lambda ( p,p^{\prime} ) = \int_{F} dk \sum_{\lambda} \left( \gamma_{\lambda} \frac{1}{{k\!\!\!/} + {p\!\!\!/}^{\prime} - i\mu} {e\!\!\!/} \frac{1}{{k\!\!\!/} + {p\!\!\!/} - i\mu} \gamma_{\lambda} \right) \frac{1}{k^{2}} \qquad \text{(584)}
 ```
 
 There is no singular factor in (584) such as we had in (558). To perform the sum over $`\lambda`$ in (584), we use<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=117" target="_blank" title="This page in the PDF"><sup>[p. 111]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p112" href="book.pdf#page=118" target="_blank" title="This page in the PDF"><sup>[p. 112]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup></span> the table
@@ -8199,19 +8199,19 @@ There is no singular factor in (584) such as we had in (558). To perform the sum
 <a id="eq-585"></a>
 
 ```math
-\begin{aligned} \sum_{\lambda} \gamma_{\lambda} \gamma_{\lambda} &= 4 \\ \sum_{\lambda} \gamma_{\lambda} {a\!\!\!/} \gamma_{\lambda} &= - 2 {a\!\!\!/} \\ \sum_{\lambda} \gamma_{\lambda} {a\!\!\!/} /b\gamma_{\lambda} &= 4 ( a \cdot b ) \\ \sum_{\lambda} \gamma_{\lambda} {a\!\!\!/} /b/c\gamma_{\lambda} &= - 2 /c/b/ a \end{aligned} \qquad \text{(585)}
+\begin{aligned} \sum_{\lambda} \gamma_{\lambda} \gamma_{\lambda} &= 4 \\ \sum_{\lambda} \gamma_{\lambda} {a\!\!\!/} \gamma_{\lambda} &= - 2 {a\!\!\!/} \\ \sum_{\lambda} \gamma_{\lambda} {a\!\!\!/} {b\!\!\!/} \gamma_{\lambda} &= 4 ( a \cdot b ) \\ \sum_{\lambda} \gamma_{\lambda} {a\!\!\!/} {b\!\!\!/} {c\!\!\!/} \gamma_{\lambda} &= - 2 {c\!\!\!/} {b\!\!\!/} a \end{aligned} \qquad \text{(585)}
 ```
 
 valid for any vectors $`a , b , c`$. These formulae can be deduced from the following recursive formula:
 
-Denote $`/q_{( n )} = {q\!\!\!/}_{1} /q_{2} \dots /q_{n}`$ where $`q_{i}`$ are arbitrary vectors, and $`\chi_{n} = \sum_{\lambda} \gamma_{\lambda} {q\!\!\!/}_{( n )} \gamma_{\lambda} , \chi_{o} = 4`$. Then we have
+Denote $`{q\!\!\!/}_{( n )} = {q\!\!\!/}_{1} {q\!\!\!/}_{2} \dots {q\!\!\!/}_{n}`$ where $`q_{i}`$ are arbitrary vectors, and $`\chi_{n} = \sum_{\lambda} \gamma_{\lambda} {q\!\!\!/}_{( n )} \gamma_{\lambda} , \chi_{o} = 4`$. Then we have
 
 ```math
-\chi_{n + 1} = \sum_{\lambda} \gamma_{\lambda} /q_{( n )} /q_{n + 1} \gamma_{\lambda} = \sum_{\lambda} \sum_{\mu} \gamma_{\lambda} /q_{( n )} \gamma_{\mu} \gamma_{\lambda} ( q_{n + 1} )_{\mu} = \sum_{\lambda} \sum_{\mu} \gamma_{\lambda} /q_{( n )} [ 2 \delta_{\lambda \mu} - \gamma_{\lambda} \gamma_{\mu} ] ( q_{n + 1} )_{\mu}
+\chi_{n + 1} = \sum_{\lambda} \gamma_{\lambda} {q\!\!\!/}_{( n )} {q\!\!\!/}_{n + 1} \gamma_{\lambda} = \sum_{\lambda} \sum_{\mu} \gamma_{\lambda} {q\!\!\!/}_{( n )} \gamma_{\mu} \gamma_{\lambda} ( q_{n + 1} )_{\mu} = \sum_{\lambda} \sum_{\mu} \gamma_{\lambda} {q\!\!\!/}_{( n )} [ 2 \delta_{\lambda \mu} - \gamma_{\lambda} \gamma_{\mu} ] ( q_{n + 1} )_{\mu}
 ```
 
 ```math
-= 2 /q_{n + 1} /q_{( n )} - \chi_{n} {q\!\!\!/}_{n + 1}
+= 2 {q\!\!\!/}_{n + 1} {q\!\!\!/}_{( n )} - \chi_{n} {q\!\!\!/}_{n + 1}
 ```
 
 which then gives (585) for $`n = 1 , 2 ,`$ 3. Thus
@@ -8219,7 +8219,7 @@ which then gives (585) for $`n = 1 , 2 ,`$ 3. Thus
 <a id="eq-586"></a>
 
 ```math
-\Lambda ( p,p^{\prime} ) = - 2 \int_{F} dk \frac{( {k\!\!\!/} + {p\!\!\!/} ) /e ( {k\!\!\!/} + {p\!\!\!/}^{\prime} ) - 2 i\mu ( 2 e \cdot k + e \cdot p + e \cdot p^{\prime} ) - \mu^{2} /e}{k^{2} [ k^{2} + 2 k \cdot p^{\prime} ] [ k^{2} + 2 k \cdot p ]} \qquad \text{(586)}
+\Lambda ( p,p^{\prime} ) = - 2 \int_{F} dk \frac{( {k\!\!\!/} + {p\!\!\!/} ) {e\!\!\!/} ( {k\!\!\!/} + {p\!\!\!/}^{\prime} ) - 2 i\mu ( 2 e \cdot k + e \cdot p + e \cdot p^{\prime} ) - \mu^{2} {e\!\!\!/}}{k^{2} [ k^{2} + 2 k \cdot p^{\prime} ] [ k^{2} + 2 k \cdot p ]} \qquad \text{(586)}
 ```
 
 In (583) we may use the relations
@@ -8259,7 +8259,7 @@ Then changing the origin of the $`k`$-integration by the substitution $`k \to k 
 <a id="eq-591"></a>
 
 ```math
-\Lambda ( p,p^{\prime} ) = - 4 \int \int xdxdy \int_{F} dk \frac{( {k\!\!\!/} - x/p_{y} + {p\!\!\!/} ) /e ( {k\!\!\!/} - x/p_{y} + {p\!\!\!/}^{\prime} ) - 2 i\mu e \cdot ( 2 k - 2 xp_{y} + p + p^{\prime} ) - \mu^{2} /e}{\left[ k^{2} - x^{2} p_{y}^{2} \right]^{3}} \qquad \text{(591)}
+\Lambda ( p,p^{\prime} ) = - 4 \int \int xdxdy \int_{F} dk \frac{( {k\!\!\!/} - x {p\!\!\!/}_{y} + {p\!\!\!/} ) {e\!\!\!/} ( {k\!\!\!/} - x {p\!\!\!/}_{y} + {p\!\!\!/}^{\prime} ) - 2 i\mu e \cdot ( 2 k - 2 xp_{y} + p + p^{\prime} ) - \mu^{2} {e\!\!\!/}}{\left[ k^{2} - x^{2} p_{y}^{2} \right]^{3}} \qquad \text{(591)}
 ```
 
 In (591) we may drop terms which are odd in $`k`$. Also using (587) and (588) we may put
@@ -8267,7 +8267,7 @@ In (591) we may drop terms which are odd in $`k`$. Also using (587) and (588) we
 <a id="eq-592"></a>
 
 ```math
-e \cdot p = e \cdot p^{\prime} = e \cdot p_{y} = i\mu /e + \tfrac{1}{2} /e/q \qquad \text{(592)}
+e \cdot p = e \cdot p^{\prime} = e \cdot p_{y} = i\mu {e\!\!\!/} + \tfrac{1}{2} {e\!\!\!/} {q\!\!\!/} \qquad \text{(592)}
 ```
 
 <div align="right"><a href="book.pdf#page=118" target="_blank" title="This page in the PDF"><sup>[p. 112]</sup></a></div>
@@ -8277,7 +8277,7 @@ e \cdot p = e \cdot p^{\prime} = e \cdot p_{y} = i\mu /e + \tfrac{1}{2} /e/q \qq
 <a id="eq-593"></a>
 
 ```math
-\begin{aligned} ( /p - x/p_{y} ) /e ( {p\!\!\!/}^{\prime} - x/p_{y} ) &= \left\{ ( 1 - x ) i\mu - ( 1 - xy ) /q \right\} /e \left\{ ( 1 - x ) i\mu + ( 1 - x + xy ) /q \right\} \\ &= - ( 1 - x )^{2} \mu^{2} /e + ( 1 - x ) i\mu /e/q ( 2 - x ) + ( 1 - xy ) ( 1 - x + xy ) q^{2} /e \end{aligned} \qquad \text{(593)}
+\begin{aligned} ( {p\!\!\!/} - x {p\!\!\!/}_{y} ) {e\!\!\!/} ( {p\!\!\!/}^{\prime} - x {p\!\!\!/}_{y} ) &= \left\{ ( 1 - x ) i\mu - ( 1 - xy ) {q\!\!\!/} \right\} {e\!\!\!/} \left\{ ( 1 - x ) i\mu + ( 1 - x + xy ) {q\!\!\!/} \right\} \\ &= - ( 1 - x )^{2} \mu^{2} {e\!\!\!/} + ( 1 - x ) i\mu {e\!\!\!/} {q\!\!\!/} ( 2 - x ) + ( 1 - xy ) ( 1 - x + xy ) q^{2} {e\!\!\!/} \end{aligned} \qquad \text{(593)}
 ```
 
 Collecting terms from (592), (593), we have
@@ -8285,18 +8285,18 @@ Collecting terms from (592), (593), we have
 <a id="eq-594"></a>
 
 ```math
-\Lambda ( p,p^{\prime} ) = - 4 \int \int xdxdy \int_{F} dk \frac{{k\!\!\!/} /e/ k + ( 1 - xy ) ( 1 - x + xy ) q^{2} /e - ( x - x^{2} ) i\mu /e/q + ( 2 - 2 x - x^{2} ) \mu^{2} /e}{[ k^{2} + x^{2} ( \mu^{2} + ( y - y^{2} ) q^{2} ) ]^{3}} \qquad \text{(594)}
+\Lambda ( p,p^{\prime} ) = - 4 \int \int xdxdy \int_{F} dk \frac{{k\!\!\!/} /e/ k + ( 1 - xy ) ( 1 - x + xy ) q^{2} {e\!\!\!/} - ( x - x^{2} ) i\mu {e\!\!\!/} {q\!\!\!/} + ( 2 - 2 x - x^{2} ) \mu^{2} {e\!\!\!/}}{[ k^{2} + x^{2} ( \mu^{2} + ( y - y^{2} ) q^{2} ) ]^{3}} \qquad \text{(594)}
 ```
 
-Now we saw earlier that the integral (567), evaluated using the conditions $`p^{2} + \mu^{2} = 0 ,/p - i\mu = 0`$, has the value (573). Comparing (567) with (584), this implies that
+Now we saw earlier that the integral (567), evaluated using the conditions $`p^{2} + \mu^{2} = 0 , {p\!\!\!/} - i\mu = 0`$, has the value (573). Comparing (567) with (584), this implies that
 
 <a id="eq-595"></a>
 
 ```math
-\Lambda ( p,p ) = \Lambda ( p^{\prime} ,p^{\prime} ) = I_{1} /e \qquad \text{(595)}
+\Lambda ( p,p ) = \Lambda ( p^{\prime} ,p^{\prime} ) = I_{1} {e\!\!\!/} \qquad \text{(595)}
 ```
 
-when the conditions (587) with $`p^{\prime} = p`$ are assumed to hold. Thus $`( I_{1} /e )`$ is just the value of (594) for $`p^{\prime} = p`$. Adding together (583) and (578), this gives
+when the conditions (587) with $`p^{\prime} = p`$ are assumed to hold. Thus $`( I_{1} {e\!\!\!/} )`$ is just the value of (594) for $`p^{\prime} = p`$. Adding together (583) and (578), this gives
 
 <a id="eq-596"></a>
 
@@ -8311,7 +8311,7 @@ M_{2 T} = M_{2 4} + M_{2 2} + M_{2 2}^{\prime} + M_{2 3} + M_{2 3}^{\prime} = - 
 <a id="eq-597"></a>
 
 ```math
-\begin{aligned} &= - 4 \int \int xdxdy \left\{ \int_{F} dk \left[ {k\!\!\!/} /e/ k + ( 2 - 2 x - x^{2} ) \mu^{2} /e \right] \left( \frac{1}{[ k^{2} + x^{2} ( \mu^{2} + ( y - y^{2} ) q^{2} ) ]^{3}} - \frac{1}{[ k^{2} + x^{2} \mu^{2} ]^{3}} \right) \right. \\ & \quad \left. + \left[ ( 1 - xy ) ( 1 - x + xy ) q^{2} /e - ( x - x^{2} ) i\mu /e/q \right] \int_{F} dk \frac{1}{[ k^{2} + x^{2} ( \mu^{2} + ( y - y^{2} ) q^{2} ) ]^{3}} \right\} \end{aligned} \qquad \text{(597)}
+\begin{aligned} &= - 4 \int \int xdxdy \left\{ \int_{F} dk \left[ {k\!\!\!/} /e/ k + ( 2 - 2 x - x^{2} ) \mu^{2} {e\!\!\!/} \right] \left( \frac{1}{[ k^{2} + x^{2} ( \mu^{2} + ( y - y^{2} ) q^{2} ) ]^{3}} - \frac{1}{[ k^{2} + x^{2} \mu^{2} ]^{3}} \right) \right. \\ & \quad \left. + \left[ ( 1 - xy ) ( 1 - x + xy ) q^{2} {e\!\!\!/} - ( x - x^{2} ) i\mu {e\!\!\!/} {q\!\!\!/} \right] \int_{F} dk \frac{1}{[ k^{2} + x^{2} ( \mu^{2} + ( y - y^{2} ) q^{2} ) ]^{3}} \right\} \end{aligned} \qquad \text{(597)}
 ```
 
 The $`k`$-integrals in (597) are now convergent. Thus the effect of the “<a id="ix-258">wave-function</a> <a id="ix-256">renormalization</a>” term (578) is just to cancel out the part of $`M_{2 4}`$ which is independent of $`q`$ and divergent at high frequencies.
@@ -8321,7 +8321,7 @@ To evaluate (597) we use (385) and (386). First, in the term $`{k\!\!\!/} /e/ k`
 <a id="eq-598"></a>
 
 ```math
-{k\!\!\!/} /e/ k = \sum_{\alpha} \tfrac{1}{4} k^{2} \gamma_{\alpha} /e\gamma_{\alpha} = - \tfrac{1}{2} k^{2} /e \qquad \text{(598)}
+{k\!\!\!/} /e/ k = \sum_{\alpha} \tfrac{1}{4} k^{2} \gamma_{\alpha} {e\!\!\!/} \gamma_{\alpha} = - \tfrac{1}{2} k^{2} {e\!\!\!/} \qquad \text{(598)}
 ```
 
 Then by (385) and (386)
@@ -8335,7 +8335,7 @@ Then by (385) and (386)
 and (597) becomes
 
 ```math
-\begin{aligned} \Lambda_{c} ( p,p^{\prime} ) &= 2 \pi^{2} i \int \int xdxdy \left\{ - /e \log \left[ 1 + ( y - y^{2} ) \frac{q^{2}}{\mu^{2}} \right] \right. \\ & \quad \left. + \frac{\{ x - 1 + 2 ( y - y^{2} ) ( 1 - x - x^{2} ) \} q^{2} /e + ( x - x^{2} ) i\mu /e/q}{x^{2} ( \mu^{2} + ( y - y^{2} ) q^{2}} \right\} \end{aligned}
+\begin{aligned} \Lambda_{c} ( p,p^{\prime} ) &= 2 \pi^{2} i \int \int xdxdy \left\{ - {e\!\!\!/} \log \left[ 1 + ( y - y^{2} ) \frac{q^{2}}{\mu^{2}} \right] \right. \\ & \quad \left. + \frac{\{ x - 1 + 2 ( y - y^{2} ) ( 1 - x - x^{2} ) \} q^{2} {e\!\!\!/} + ( x - x^{2} ) i\mu {e\!\!\!/} {q\!\!\!/}}{x^{2} ( \mu^{2} + ( y - y^{2} ) q^{2}} \right\} \end{aligned}
 ```
 
 Integrating the logarithmic term by parts with respect to $`y`$,
@@ -8343,7 +8343,7 @@ Integrating the logarithmic term by parts with respect to $`y`$,
 <a id="eq-600"></a>
 
 ```math
-\Lambda_{c} ( p,p^{\prime} ) = - 2 \pi^{2} i \int_{0}^{1} \int_{0}^{1} dxdy \frac{1}{x [ \mu^{2} + ( y - y^{2} ) q^{2} ]} \left\{ \left[ ( 1 - x ) ( 1 - 2 y + 2 y^{2} ) + x^{2} y \right] q^{2} /e - ( x - x^{2} ) i\mu /e/q \right\} \qquad \text{(600)}
+\Lambda_{c} ( p,p^{\prime} ) = - 2 \pi^{2} i \int_{0}^{1} \int_{0}^{1} dxdy \frac{1}{x [ \mu^{2} + ( y - y^{2} ) q^{2} ]} \left\{ \left[ ( 1 - x ) ( 1 - 2 y + 2 y^{2} ) + x^{2} y \right] q^{2} {e\!\!\!/} - ( x - x^{2} ) i\mu {e\!\!\!/} {q\!\!\!/} \right\} \qquad \text{(600)}
 ```
 
 <div align="right"><a href="book.pdf#page=119" target="_blank" title="This page in the PDF"><sup>[p. 113]</sup></a></div>
@@ -8377,7 +8377,7 @@ In (583) there is just one factor $`D_{F}`$. Thus $`\Lambda^{r} ( p,p^{\prime} )
 <a id="eq-603"></a>
 
 ```math
-\Lambda ( p,p^{\prime} ) - \Lambda^{r} ( p,p^{\prime} ) = - 4 \int \int xdxdy ( q^{2} + 2 \mu^{2} ) /e \int_{F} \frac{dk}{[ k^{2} + 2 xk \cdot p_{y} ]^{3}} \qquad \text{(603)}
+\Lambda ( p,p^{\prime} ) - \Lambda^{r} ( p,p^{\prime} ) = - 4 \int \int xdxdy ( q^{2} + 2 \mu^{2} ) {e\!\!\!/} \int_{F} \frac{dk}{[ k^{2} + 2 xk \cdot p_{y} ]^{3}} \qquad \text{(603)}
 ```
 
 Hence by (597)
@@ -8385,7 +8385,7 @@ Hence by (597)
 <a id="eq-604"></a>
 
 ```math
-\begin{aligned} & \quad \Lambda_{c} ( p,p^{\prime} ) - \Lambda_{c}^{r} ( p,p^{\prime} ) = \\ &= - 4 \int \int xdxdy/e \int_{F} dk \left\{ \frac{q^{2} + 2 \mu^{2}}{[ k^{2} + 2 xk \cdot p_{y} ]^{3}} - \frac{\mu^{2}}{[ k^{2} + 2 xk \cdot p ]^{3}} - \frac{\mu^{2}}{[ k^{2} + 2 xk \cdot p^{\prime} ]^{3}} \right\} \end{aligned} \qquad \text{(604)}
+\begin{aligned} & \quad \Lambda_{c} ( p,p^{\prime} ) - \Lambda_{c}^{r} ( p,p^{\prime} ) = \\ &= - 4 \int \int xdxdy {e\!\!\!/} \int_{F} dk \left\{ \frac{q^{2} + 2 \mu^{2}}{[ k^{2} + 2 xk \cdot p_{y} ]^{3}} - \frac{\mu^{2}}{[ k^{2} + 2 xk \cdot p ]^{3}} - \frac{\mu^{2}}{[ k^{2} + 2 xk \cdot p^{\prime} ]^{3}} \right\} \end{aligned} \qquad \text{(604)}
 ```
 
 The integral (604), with the integration extended over the whole $`k`$-space, would give, using (385), (587), and the substitutions $`k \to k - xp_{y} ,k \to k - xp,k \to xp^{\prime}`$, respectively in the three integrals,
@@ -8393,7 +8393,7 @@ The integral (604), with the integration extended over the whole $`k`$-space, wo
 <a id="eq-605"></a>
 
 ```math
-- 2 \pi i \int \int dxdy \frac{( 1 - 2 y + 2 y^{2} ) q^{2}}{x ( \mu^{2} + ( y - y^{2} ) q^{2} )} /e \qquad \text{(605)}
+- 2 \pi i \int \int dxdy \frac{( 1 - 2 y + 2 y^{2} ) q^{2}}{x ( \mu^{2} + ( y - y^{2} ) q^{2} )} {e\!\!\!/} \qquad \text{(605)}
 ```
 
 which is just the divergent part of (600). But the integration in (604) actually extends over $`k`$ not satisfying (601). Therefore subtracting (604) from (600) and using (605), we find for $`\Lambda_{c}^{r} ( p,p^{\prime} )`$ the final result
@@ -8401,7 +8401,7 @@ which is just the divergent part of (600). But the integration in (604) actually
 <a id="eq-606"></a>
 
 ```math
-\begin{aligned} \Lambda_{c}^{r} ( p,p^{\prime} ) &= - 2 \pi^{2} i \int_{0}^{1} dy \frac{1}{\mu^{2} + ( y - y^{2} ) q^{2}} \left\{ ( - 1 + \tfrac{5}{2} y - 2 y^{2} ) q^{2} /e - \tfrac{1}{2} i\mu /e/q \right\} \\ & \quad - 4 \int \int xdxdy/e \int_{F} dk \left\{ \frac{q^{2} + 2 \mu^{2}}{[ k^{2} + 2 xk \cdot p_{y} ]^{3}} - \frac{\mu^{2}}{[ k^{2} + 2 xk \cdot p ]^{3}} - \frac{\mu^{2}}{[ k^{2} + 2 xk \cdot p^{\prime} ]^{3}} \right\} \end{aligned} \qquad \text{(606)}
+\begin{aligned} \Lambda_{c}^{r} ( p,p^{\prime} ) &= - 2 \pi^{2} i \int_{0}^{1} dy \frac{1}{\mu^{2} + ( y - y^{2} ) q^{2}} \left\{ ( - 1 + \tfrac{5}{2} y - 2 y^{2} ) q^{2} {e\!\!\!/} - \tfrac{1}{2} i\mu {e\!\!\!/} {q\!\!\!/} \right\} \\ & \quad - 4 \int \int xdxdy {e\!\!\!/} \int_{F} dk \left\{ \frac{q^{2} + 2 \mu^{2}}{[ k^{2} + 2 xk \cdot p_{y} ]^{3}} - \frac{\mu^{2}}{[ k^{2} + 2 xk \cdot p ]^{3}} - \frac{\mu^{2}}{[ k^{2} + 2 xk \cdot p^{\prime} ]^{3}} \right\} \end{aligned} \qquad \text{(606)}
 ```
 
 <div align="right"><a href="book.pdf#page=120" target="_blank" title="This page in the PDF"><sup>[p. 114]</sup></a></div>
@@ -8493,7 +8493,7 @@ Substituting (614) and (615) into (606) and dropping terms of higher order than 
 <a id="eq-616"></a>
 
 ```math
-\begin{aligned} \Lambda_{c}^{r} ( p,p^{\prime} ) &= - 2 \pi^{2} i \left\{ - \tfrac{5}{1 2} \frac{q^{2}}{\mu^{2}} /e - \tfrac{1}{2} \frac{i}{\mu} /e/q \right\} - 4 /e \frac{3 i\pi^{2}}{2 \mu^{2}} \left\{ \tfrac{1}{3} q^{2} \left( \log \frac{\mu}{2 r} + 1 \right) - \tfrac{1}{1 8} q^{2} \left( 2 \log \frac{\mu}{2 r} + \tfrac{5}{3} \right) \right\} \\ &= - \tfrac{4}{3} \pi^{2} i \frac{q^{2}}{\mu^{2}} /e \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} \right\} - \frac{\pi^{2}}{\mu} /e/q \end{aligned} \qquad \text{(616)}
+\begin{aligned} \Lambda_{c}^{r} ( p,p^{\prime} ) &= - 2 \pi^{2} i \left\{ - \tfrac{5}{1 2} \frac{q^{2}}{\mu^{2}} {e\!\!\!/} - \tfrac{1}{2} \frac{i}{\mu} {e\!\!\!/} {q\!\!\!/} \right\} - 4 {e\!\!\!/} \frac{3 i\pi^{2}}{2 \mu^{2}} \left\{ \tfrac{1}{3} q^{2} \left( \log \frac{\mu}{2 r} + 1 \right) - \tfrac{1}{1 8} q^{2} \left( 2 \log \frac{\mu}{2 r} + \tfrac{5}{3} \right) \right\} \\ &= - \tfrac{4}{3} \pi^{2} i \frac{q^{2}}{\mu^{2}} {e\!\!\!/} \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} \right\} - \frac{\pi^{2}}{\mu} {e\!\!\!/} {q\!\!\!/} \end{aligned} \qquad \text{(616)}
 ```
 
 Using (596) and adding the contribution (554) from $`G_{1}`$, we find for the second-order terms in (541) the value
@@ -8501,7 +8501,7 @@ Using (596) and adding the contribution (554) from $`G_{1}`$, we find for the se
 <a id="eq-617"></a>
 
 ```math
-M_{2} + M_{2}^{\prime} = - \frac{\alpha}{3 \pi} \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right\} \frac{q^{2}}{\mu^{2}} M_{0} + \frac{\alpha}{4 \pi} \frac{ie}{mc^{2}} \left( \overline{u}^{\prime} /e/qu \right) \qquad \text{(617)}
+M_{2} + M_{2}^{\prime} = - \frac{\alpha}{3 \pi} \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right\} \frac{q^{2}}{\mu^{2}} M_{0} + \frac{\alpha}{4 \pi} \frac{ie}{mc^{2}} \left( \overline{u}^{\prime} {e\!\!\!/} {q\!\!\!/} u \right) \qquad \text{(617)}
 ```
 
 ## <a id="s-treatment-of-low-frequency-photons-the-infra-red-catastrophe"></a>The Treatment of Low-Frequency Photons. The Infra-Red Catastrophe.
@@ -8606,7 +8606,7 @@ the contractions being equal to the propagators $`S_{F} , D_{F}`$, and so on.
 
 <a id="fn-78"></a>**78.** The times symbol $`\times`$ was inserted. [↩](#fnref-78)
 
-<a id="fn-79"></a>**79.** This sentence read formerly “. . . the factor $`\epsilon ( q - \epsilon - \epsilon^{\prime} )`$ is a continuous function of $`( \epsilon + \epsilon^{\prime} )`$ and tends to $`/\epsilon ( ( q ) )`$ . . . ” [↩](#fnref-79)
+<a id="fn-79"></a>**79.** This sentence read formerly “. . . the factor $`\epsilon ( q - \epsilon - \epsilon^{\prime} )`$ is a continuous function of $`( \epsilon + \epsilon^{\prime} )`$ and tends to $`{\epsilon\!\!\!/} ( ( q ) )`$ . . . ” [↩](#fnref-79)
 
 <a id="fn-80"></a>**80.** A sentence, “Here, $`( k \cdot p_{y} )_{3}`$ denotes the scalar product of the space-like parts of the vectors $`k`$ and $`p_{y}`$.”, was deleted, because the expression $`\boldsymbol{k} \cdot \boldsymbol{p}_{y}`$ is self-explanatory. In both the first and second editions, scant attention was paid to three-vectors; sometimes an overhead arrow was used, but these were very few. In this typed version care has been taken to represent three-vectors with bold type, thus: $`( A_{x} ,A_{y} ,A_{z} ) = \boldsymbol{A}`$. [↩](#fnref-80)
 
@@ -8690,7 +8690,7 @@ Summing over the final spin states, and averaging over the initial spin states, 
 <a id="eq-629"></a>
 
 ```math
-\begin{aligned} \tfrac{1}{2} \sum_{u} \sum_{u^{\prime}} | u^{\prime *} u |^{2} &= \tfrac{1}{2} \frac{1}{( 2 i\mu )^{2}} \operatorname{Spur} \left\{ ( {p\!\!\!/} + i\mu ) \gamma_{4} ( /p^{\prime} + i\mu ) \gamma_{4} \right\} \\ &= \frac{1}{2 \mu^{2}} \left\{ \mu^{2} + p_{0} p_{0}^{\prime} + \boldsymbol{p} \cdot \boldsymbol{p}^{\prime} \right\} = \frac{1}{2 \mu^{2}} \left\{ 2 p_{0}^{2} - \tfrac{1}{2} | \boldsymbol{q} |^{2} \right\} \\ &= \frac{p_{o}^{2}}{\mu^{2}} \left\{ 1 - \tfrac{1}{4} \frac{| \boldsymbol{p} |^{2} - 2 \boldsymbol{p} \cdot \boldsymbol{p}^{\prime} + | \boldsymbol{p}^{\prime} |^{2}}{p_{0}^{2}} \right\} = \frac{p_{o}^{2}}{\mu^{2}} \left( 1 - \beta^{2} \sin^{2} \frac{\theta}{2} \right) \end{aligned} \qquad \text{(629)}
+\begin{aligned} \tfrac{1}{2} \sum_{u} \sum_{u^{\prime}} | u^{\prime *} u |^{2} &= \tfrac{1}{2} \frac{1}{( 2 i\mu )^{2}} \operatorname{Spur} \left\{ ( {p\!\!\!/} + i\mu ) \gamma_{4} ( {p\!\!\!/}^{\prime} + i\mu ) \gamma_{4} \right\} \\ &= \frac{1}{2 \mu^{2}} \left\{ \mu^{2} + p_{0} p_{0}^{\prime} + \boldsymbol{p} \cdot \boldsymbol{p}^{\prime} \right\} = \frac{1}{2 \mu^{2}} \left\{ 2 p_{0}^{2} - \tfrac{1}{2} | \boldsymbol{q} |^{2} \right\} \\ &= \frac{p_{o}^{2}}{\mu^{2}} \left\{ 1 - \tfrac{1}{4} \frac{| \boldsymbol{p} |^{2} - 2 \boldsymbol{p} \cdot \boldsymbol{p}^{\prime} + | \boldsymbol{p}^{\prime} |^{2}}{p_{0}^{2}} \right\} = \frac{p_{o}^{2}}{\mu^{2}} \left( 1 - \beta^{2} \sin^{2} \frac{\theta}{2} \right) \end{aligned} \qquad \text{(629)}
 ```
 
 <div align="right"><a href="book.pdf#page=124" target="_blank" title="This page in the PDF"><sup>[p. 118]</sup></a></div>
@@ -8720,7 +8720,7 @@ The second-order radiative correction to $`M_{0}`$ is given by (617), which in t
 <a id="eq-632"></a>
 
 ```math
-M_{2} + M_{2}^{\prime} = - \frac{\alpha}{3 \pi} \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right\} \frac{q^{2}}{\mu^{2}} M_{0} - \frac{\alpha}{2} \frac{e}{\hbar c\mu} ( u^{\prime *} /qu ) V ( \boldsymbol{q} ) \delta ( q_{0} ) \qquad \text{(632)}
+M_{2} + M_{2}^{\prime} = - \frac{\alpha}{3 \pi} \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right\} \frac{q^{2}}{\mu^{2}} M_{0} - \frac{\alpha}{2} \frac{e}{\hbar c\mu} ( u^{\prime *} {q\!\!\!/} u ) V ( \boldsymbol{q} ) \delta ( q_{0} ) \qquad \text{(632)}
 ```
 
 This gives a second order correction to the cross-section $`\sigma_{0}`$ according to (621). The total non-radiative cross-section, for <a id="ix-242">scattering</a> without the emission of a photon of energy greater than ∆$`E`$, becomes
@@ -8728,7 +8728,7 @@ This gives a second order correction to the cross-section $`\sigma_{0}`$ accordi
 <a id="eq-633"></a>
 
 ```math
-\begin{aligned} \sigma_{N} &= \sigma_{0} + \sigma_{2 N} \\ &= \left( \frac{em}{2 \pi \hbar^{2}} \right)^{2} | V ( \boldsymbol{q} ) |^{2} d \Omega \left| \left\{ 1 - \frac{\alpha}{3 \pi} \left( \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right) \frac{q^{2}}{\mu^{2}} \right\} ( u^{\prime *} u ) + \frac{i\alpha}{4 \pi \mu} ( u^{\prime *} /qu ) \right|^{2} \end{aligned} \qquad \text{(633)}
+\begin{aligned} \sigma_{N} &= \sigma_{0} + \sigma_{2 N} \\ &= \left( \frac{em}{2 \pi \hbar^{2}} \right)^{2} | V ( \boldsymbol{q} ) |^{2} d \Omega \left| \left\{ 1 - \frac{\alpha}{3 \pi} \left( \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right) \frac{q^{2}}{\mu^{2}} \right\} ( u^{\prime *} u ) + \frac{i\alpha}{4 \pi \mu} ( u^{\prime *} {q\!\!\!/} u ) \right|^{2} \end{aligned} \qquad \text{(633)}
 ```
 
 Summing and averaging over the spin-states
@@ -8736,7 +8736,7 @@ Summing and averaging over the spin-states
 <a id="eq-634"></a>
 
 ```math
-\begin{aligned} \tfrac{1}{2} \sum_{u} \sum_{u^{\prime}} ( u^{\prime *} /qu ) ( u^{*} u^{\prime} ) &= \frac{1}{2 ( 2 i\mu )^{2}} \operatorname{Spur} \left\{ ( {p\!\!\!/} + i\mu ) \gamma_{4} ( {p\!\!\!/}^{\prime} + i\mu ) \gamma_{4} /q \right\} \\ &= - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu \left( /p\gamma_{4} \gamma_{4} /q + \gamma_{4} {p\!\!\!/}^{\prime} \gamma_{4} /q \right) \right\} = - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu ( {p\!\!\!/} /p^{\prime} - {p\!\!\!/} /p - {p\!\!\!/}^{\prime} {p\!\!\!/}^{\prime} + {p\!\!\!/}^{\prime} {p\!\!\!/} ) \right\} \\ &= - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu ( {p\!\!\!/}^{\prime} - {p\!\!\!/} ) ( {p\!\!\!/}^{\prime} - {p\!\!\!/} ) \right\} = \frac{i}{2 \mu} q^{2} \end{aligned} \qquad \text{(634)}
+\begin{aligned} \tfrac{1}{2} \sum_{u} \sum_{u^{\prime}} ( u^{\prime *} {q\!\!\!/} u ) ( u^{*} u^{\prime} ) &= \frac{1}{2 ( 2 i\mu )^{2}} \operatorname{Spur} \left\{ ( {p\!\!\!/} + i\mu ) \gamma_{4} ( {p\!\!\!/}^{\prime} + i\mu ) \gamma_{4} {q\!\!\!/} \right\} \\ &= - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu \left( /p\gamma_{4} \gamma_{4} {q\!\!\!/} + \gamma_{4} {p\!\!\!/}^{\prime} \gamma_{4} {q\!\!\!/} \right) \right\} = - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu ( {p\!\!\!/} {p\!\!\!/}^{\prime} - {p\!\!\!/} {p\!\!\!/} - {p\!\!\!/}^{\prime} {p\!\!\!/}^{\prime} + {p\!\!\!/}^{\prime} {p\!\!\!/} ) \right\} \\ &= - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu ( {p\!\!\!/}^{\prime} - {p\!\!\!/} ) ( {p\!\!\!/}^{\prime} - {p\!\!\!/} ) \right\} = \frac{i}{2 \mu} q^{2} \end{aligned} \qquad \text{(634)}
 ```
 
 Hence for an unpolarized electron beam the non-radiative cross-section is
@@ -8968,7 +8968,7 @@ the integral being over all space-time. Using (542) for the initial and final el
 <a id="eq-658"></a>
 
 ```math
-U_{M} = i \frac{\delta M}{2 \hbar c} \sum_{\mu ,\nu} ( \overline{u}^{\prime} \sigma_{\mu \nu} u ) ( q_{\mu} e_{\nu} - q_{\nu} e_{\mu} ) = i \frac{\delta M}{2 \hbar c} \left[ u^{\prime} ( /q/e - /e/q ) u \right] \qquad \text{(658)}
+U_{M} = i \frac{\delta M}{2 \hbar c} \sum_{\mu ,\nu} ( \overline{u}^{\prime} \sigma_{\mu \nu} u ) ( q_{\mu} e_{\nu} - q_{\nu} e_{\mu} ) = i \frac{\delta M}{2 \hbar c} \left[ u^{\prime} ( {q\!\!\!/} {e\!\!\!/} - {e\!\!\!/} {q\!\!\!/} ) u \right] \qquad \text{(658)}
 ```
 
 where we used $`\gamma_{k} \gamma_{\ell} = i\sigma_{m} ,k,\ell ,m`$ = (1$`, 2 , 3`$) cyclically permuted. Since we have also assumed (588) we may write simply
@@ -8976,7 +8976,7 @@ where we used $`\gamma_{k} \gamma_{\ell} = i\sigma_{m} ,k,\ell ,m`$ = (1$`, 2 , 
 <a id="eq-659"></a>
 
 ```math
-U_{M} = - i \frac{\delta M}{\hbar c} ( \overline{u}^{\prime} /e/qu ) \qquad \text{(659)}
+U_{M} = - i \frac{\delta M}{\hbar c} ( \overline{u}^{\prime} {e\!\!\!/} {q\!\!\!/} u ) \qquad \text{(659)}
 ```
 
 <div align="right"><a href="book.pdf#page=128" target="_blank" title="This page in the PDF"><sup>[p. 122]</sup></a></div>
@@ -9152,7 +9152,7 @@ We next turn to the evaluation of $`H_{T 1}`$, which is related to $`U_{1}`$ in 
 <a id="eq-676a"></a>
 
 ```math
-M_{1} = - \frac{e^{2}}{\hbar^{2} c^{2}} \overline{u}^{\prime} \left\{ /e \frac{1}{{p\!\!\!/} - {k\!\!\!/}^{\prime} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{{p\!\!\!/}^{\prime} + {k\!\!\!/}^{\prime} - i\mu} /e \right\} u \qquad \text{(676a)}
+M_{1} = - \frac{e^{2}}{\hbar^{2} c^{2}} \overline{u}^{\prime} \left\{ {e\!\!\!/} \frac{1}{{p\!\!\!/} - {k\!\!\!/}^{\prime} - i\mu} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} \frac{1}{{p\!\!\!/}^{\prime} + {k\!\!\!/}^{\prime} - i\mu} {e\!\!\!/} \right\} u \qquad \text{(676a)}
 ```
 
 where now
@@ -9168,7 +9168,7 @@ is given by the Fourier expansion (534). Note that we cannot yet use the simple 
 <a id="eq-677a"></a>
 
 ```math
-M_{1} = - \frac{e^{2}}{2 \hbar^{2} c^{2}} \overline{u}^{\prime} \left\{ \frac{/e/ k^{\prime} /e^{\prime} - 2 ( p \cdot e^{\prime} ) /e}{p \cdot k^{\prime}} + \frac{/e^{\prime} {k\!\!\!/}^{\prime} /e + 2 ( p^{\prime} \cdot e^{\prime} ) /e}{p^{\prime} \cdot k^{\prime}} \right\} u \qquad \text{(677a)}
+M_{1} = - \frac{e^{2}}{2 \hbar^{2} c^{2}} \overline{u}^{\prime} \left\{ \frac{/e/ k^{\prime} {e\!\!\!/}^{\prime} - 2 ( p \cdot e^{\prime} ) {e\!\!\!/}}{p \cdot k^{\prime}} + \frac{{e\!\!\!/}^{\prime} {k\!\!\!/}^{\prime} {e\!\!\!/} + 2 ( p^{\prime} \cdot e^{\prime} ) {e\!\!\!/}}{p^{\prime} \cdot k^{\prime}} \right\} u \qquad \text{(677a)}
 ```
 
 Since $`p`$ and $`p^{\prime}`$ are assumed non-relativistic we may write
@@ -9186,13 +9186,13 @@ and then
 <a id="eq-678"></a>
 
 ```math
-M_{1} = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu k_{0}^{\prime}} \overline{u}^{\prime} \left\{ 2 ( ( p^{\prime} - p ) \cdot e^{\prime} ) /e + /e^{\prime} {k\!\!\!/}^{\prime} /e + /e/ k^{\prime} /e^{\prime} \right\} u \qquad \text{(678)}
+M_{1} = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu k_{0}^{\prime}} \overline{u}^{\prime} \left\{ 2 ( ( p^{\prime} - p ) \cdot e^{\prime} ) {e\!\!\!/} + {e\!\!\!/}^{\prime} {k\!\!\!/}^{\prime} {e\!\!\!/} + /e/ k^{\prime} {e\!\!\!/}^{\prime} \right\} u \qquad \text{(678)}
 ```
 
-Now because we shall be considering only an electrostatic potential (674), $`/e`$ is a multiple of $`\gamma_{4}`$ simply. Then if $`k_{3}^{\prime}`$ is the space-like part of the vector $`k^{\prime}`$, we have
+Now because we shall be considering only an electrostatic potential (674), $`{e\!\!\!/}`$ is a multiple of $`\gamma_{4}`$ simply. Then if $`k_{3}^{\prime}`$ is the space-like part of the vector $`k^{\prime}`$, we have
 
 ```math
-/e^{\prime} {k\!\!\!/}_{3}^{\prime} /e + /e/ k_{3}^{\prime} /e^{\prime} = /e \left\{ /e^{\prime} {k\!\!\!/}_{3}^{\prime} + {k\!\!\!/}_{3}^{\prime} /e^{\prime} \right\} = 0
+{e\!\!\!/}^{\prime} {k\!\!\!/}_{3}^{\prime} {e\!\!\!/} + /e/ k_{3}^{\prime} {e\!\!\!/}^{\prime} = {e\!\!\!/} \left\{ {e\!\!\!/}^{\prime} {k\!\!\!/}_{3}^{\prime} + {k\!\!\!/}_{3}^{\prime} {e\!\!\!/}^{\prime} \right\} = 0
 ```
 
 Therefore
@@ -9200,15 +9200,15 @@ Therefore
 <a id="eq-679"></a>
 
 ```math
-/e^{\prime} {k\!\!\!/}_{3}^{\prime} /e + /e/ k_{3}^{\prime} /e^{\prime} = ik_{0}^{\prime} /e^{\prime} ( 2 \gamma_{4} /e ) \qquad \text{(679)}
+{e\!\!\!/}^{\prime} {k\!\!\!/}_{3}^{\prime} {e\!\!\!/} + /e/ k_{3}^{\prime} {e\!\!\!/}^{\prime} = ik_{0}^{\prime} {e\!\!\!/}^{\prime} ( 2 \gamma_{4} {e\!\!\!/} ) \qquad \text{(679)}
 ```
 
-Now this term (679) is small compared to the other term in (678), because $`/e^{\prime}`$ involves the matrices $`\gamma_{1} ,\gamma_{2} ,\gamma_{3}`$ while $`/e`$ involves $`\gamma_{4}`$, and the matrix elements of $`\gamma_{1} ,\gamma_{2} ,\gamma_{3}`$ for non-relativistic transitions are small, of the order of $`( v/c )`$. The term (679) in fact describes magnetic radiation, whereas the other term in (678) gives electric. The electric term gives an effect of the order of the <a id="ix-161">Lamb shift</a>. Hence in our approximation we may neglect the magnetic term and write
+Now this term (679) is small compared to the other term in (678), because $`{e\!\!\!/}^{\prime}`$ involves the matrices $`\gamma_{1} ,\gamma_{2} ,\gamma_{3}`$ while $`{e\!\!\!/}`$ involves $`\gamma_{4}`$, and the matrix elements of $`\gamma_{1} ,\gamma_{2} ,\gamma_{3}`$ for non-relativistic transitions are small, of the order of $`( v/c )`$. The term (679) in fact describes magnetic radiation, whereas the other term in (678) gives electric. The electric term gives an effect of the order of the <a id="ix-161">Lamb shift</a>. Hence in our approximation we may neglect the magnetic term and write
 
 <a id="eq-680"></a>
 
 ```math
-M_{1} = \frac{e^{2}}{\hbar^{2} c^{2} \mu k_{0}^{\prime}} ( ( p^{\prime} - p ) \cdot e^{\prime} ) ( \overline{u}^{\prime} /eu ) \qquad \text{(680)}
+M_{1} = \frac{e^{2}}{\hbar^{2} c^{2} \mu k_{0}^{\prime}} ( ( p^{\prime} - p ) \cdot e^{\prime} ) ( \overline{u}^{\prime} {e\!\!\!/} u ) \qquad \text{(680)}
 ```
 
 which is the same result as we should have obtained from (546).

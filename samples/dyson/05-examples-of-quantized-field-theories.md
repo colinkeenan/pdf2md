@@ -2315,7 +2315,7 @@ We use the momentum representation (303) for $`S_{R}`$. But instead of taking th
 <a id="eq-368"></a>
 
 ```math
-e^{- \delta_{0}} S_{R} ( x ) = \frac{i}{( 2 \pi )^{4}} \int e^{ik \cdot x} \frac{{k\!\!\!/} + i/\delta + i\mu}{( k + i\delta )^{2} + \mu^{2}} d^{4} k \qquad \text{(368)}
+e^{- \delta_{0}} S_{R} ( x ) = \frac{i}{( 2 \pi )^{4}} \int e^{ik \cdot x} \frac{{k\!\!\!/} + i {\delta\!\!\!/} + i\mu}{( k + i\delta )^{2} + \mu^{2}} d^{4} k \qquad \text{(368)}
 ```
 
 where $`\delta_{0}`$ is any positive real number, $`\delta`$ is the vector with components $`( 0 , 0 , 0 ,\delta_{0} )`$ and the integral is along the real axis. The poles of (368) in the $`k_{0}`$ plane are displaced away from the real axis and so the integrand is free from singularities on the path of integration. Similarly
@@ -2323,7 +2323,7 @@ where $`\delta_{0}`$ is any positive real number, $`\delta`$ is the vector with 
 <a id="eq-369"></a>
 
 ```math
-e^{+ \delta_{0}} S_{A} ( x ) = \frac{i}{( 2 \pi )^{4}} \int e^{ik \cdot x} \frac{{k\!\!\!/} - i/\delta + i\mu}{( k - i\delta )^{2} + \mu^{2}} d^{4} k \qquad \text{(369)}
+e^{+ \delta_{0}} S_{A} ( x ) = \frac{i}{( 2 \pi )^{4}} \int e^{ik \cdot x} \frac{{k\!\!\!/} - i {\delta\!\!\!/} + i\mu}{( k - i\delta )^{2} + \mu^{2}} d^{4} k \qquad \text{(369)}
 ```
 
 When using (368) and (369) we shall usually make $`\delta_{0} \to 0`$ after carrying out the integrations, so that the convergence factors $`e^{\pm \delta_{0} x_{0}}`$ will tend to 1 for every finite $`x`$.
@@ -2331,7 +2331,7 @@ When using (368) and (369) we shall usually make $`\delta_{0} \to 0`$ after carr
 Thus the momentum representation of (367) will be
 
 ```math
-\begin{aligned} \langle j_{\mu H} ( x ) \rangle_{o} &= - \frac{e^{2}}{\hbar} \frac{1}{( 2 \pi )^{7}} \int d^{4} x^{\prime} \int \int d^{4} k_{1} d^{4} k_{2} \exp \{ iq \cdot x^{\prime} + i ( k_{1} - k_{2} ) \cdot ( x^{\prime} - x ) + \delta_{0} x_{0} \}\times \\ & \quad \times \left\{ \operatorname{Spur} \{ /e ( {k\!\!\!/}_{1} + i\mu ) \gamma_{\mu} ( {k\!\!\!/}_{2} + i/\delta + i\mu ) \} \frac{\delta ( k_{1}^{2} + \mu^{2} ) \Theta ( - k_{1} )}{( k_{2} + i\delta )^{2} + \mu^{2}} \right. \\ & \quad \left. + \operatorname{Spur} \{ /e ( {k\!\!\!/}_{1} - i/\delta + i\mu ) \gamma_{\mu} ( {k\!\!\!/}_{2} + i\mu ) \} \frac{\delta ( k_{2}^{2} + \mu^{2} ) \Theta ( - k_{2} )}{( k_{1} - i\delta )^{2} + \mu^{2}} \right\} \end{aligned}
+\begin{aligned} \langle j_{\mu H} ( x ) \rangle_{o} &= - \frac{e^{2}}{\hbar} \frac{1}{( 2 \pi )^{7}} \int d^{4} x^{\prime} \int \int d^{4} k_{1} d^{4} k_{2} \exp \{ iq \cdot x^{\prime} + i ( k_{1} - k_{2} ) \cdot ( x^{\prime} - x ) + \delta_{0} x_{0} \}\times \\ & \quad \times \left\{ \operatorname{Spur} \{ {e\!\!\!/} ( {k\!\!\!/}_{1} + i\mu ) \gamma_{\mu} ( {k\!\!\!/}_{2} + i {\delta\!\!\!/} + i\mu ) \} \frac{\delta ( k_{1}^{2} + \mu^{2} ) \Theta ( - k_{1} )}{( k_{2} + i\delta )^{2} + \mu^{2}} \right. \\ & \quad \left. + \operatorname{Spur} \{ {e\!\!\!/} ( {k\!\!\!/}_{1} - i {\delta\!\!\!/} + i\mu ) \gamma_{\mu} ( {k\!\!\!/}_{2} + i\mu ) \} \frac{\delta ( k_{2}^{2} + \mu^{2} ) \Theta ( - k_{2} )}{( k_{1} - i\delta )^{2} + \mu^{2}} \right\} \end{aligned}
 ```
 
 The integration of $`x^{\prime}`$ is immediate and gives $`( 2 \pi )^{4} \delta^{4} ( k_{1} - k_{2} + q )`$. Hence
@@ -2339,7 +2339,7 @@ The integration of $`x^{\prime}`$ is immediate and gives $`( 2 \pi )^{4} \delta^
 <a id="eq-370"></a>
 
 ```math
-\begin{aligned} \langle j_{\mu H} ( x ) \rangle_{o} &= - \frac{e^{2}}{( 2 \pi )^{3} \hbar} e^{iq \cdot x + \delta_{0} x_{0}} \times \\ & \quad \times \int d^{4} k \left\{ \operatorname{Spur} \{ /e ( {k\!\!\!/} + i\mu ) \gamma_{\mu} ( {k\!\!\!/} + {q\!\!\!/} + i/\delta + i\mu ) \} \frac{\delta ( k^{2} + \mu^{2} ) \Theta ( - k )}{( k + q + i\delta )^{2} + \mu^{2}} \right. \\ & \quad \left. + \operatorname{Spur} \{ /e ( {k\!\!\!/} - i/\delta + i\mu ) \gamma_{\mu} ( {k\!\!\!/} + {q\!\!\!/} + i\mu ) \} \frac{\delta \{ ( k + q )^{2} + \mu^{2} \} \Theta ( - k - q )}{( k - i\delta )^{2} + \mu^{2}} \right\} \end{aligned} \qquad \text{(370)}
+\begin{aligned} \langle j_{\mu H} ( x ) \rangle_{o} &= - \frac{e^{2}}{( 2 \pi )^{3} \hbar} e^{iq \cdot x + \delta_{0} x_{0}} \times \\ & \quad \times \int d^{4} k \left\{ \operatorname{Spur} \{ {e\!\!\!/} ( {k\!\!\!/} + i\mu ) \gamma_{\mu} ( {k\!\!\!/} + {q\!\!\!/} + i {\delta\!\!\!/} + i\mu ) \} \frac{\delta ( k^{2} + \mu^{2} ) \Theta ( - k )}{( k + q + i\delta )^{2} + \mu^{2}} \right. \\ & \quad \left. + \operatorname{Spur} \{ {e\!\!\!/} ( {k\!\!\!/} - i {\delta\!\!\!/} + i\mu ) \gamma_{\mu} ( {k\!\!\!/} + {q\!\!\!/} + i\mu ) \} \frac{\delta \{ ( k + q )^{2} + \mu^{2} \} \Theta ( - k - q )}{( k - i\delta )^{2} + \mu^{2}} \right\} \end{aligned} \qquad \text{(370)}
 ```
 
 Now consider the function<sup><a id="fnref-48" href="#fn-48">48</a></sup>
@@ -2347,7 +2347,7 @@ Now consider the function<sup><a id="fnref-48" href="#fn-48">48</a></sup>
 <a id="eq-371"></a>
 
 ```math
-F_{\nu} ( k ) = \operatorname{Spur} \{ /e ( {k\!\!\!/} + i\mu ) \gamma_{\nu} ( {k\!\!\!/} + /q + i/\delta + i\mu ) \} \frac{1}{( k^{2} + \mu^{2} ) [ ( k + q + i\delta )^{2} + \mu^{2} ]} \qquad \text{(371)}
+F_{\nu} ( k ) = \operatorname{Spur} \{ {e\!\!\!/} ( {k\!\!\!/} + i\mu ) \gamma_{\nu} ( {k\!\!\!/} + {q\!\!\!/} + i {\delta\!\!\!/} + i\mu ) \} \frac{1}{( k^{2} + \mu^{2} ) [ ( k + q + i\delta )^{2} + \mu^{2} ]} \qquad \text{(371)}
 ```
 
 This has poles at 4 points in the $`k_{0}`$ plane
@@ -2413,7 +2413,7 @@ which we can get at once simply from the definite integral of the RHS.<sup><a id
 <a id="eq-377"></a>
 
 ```math
-\begin{aligned} J_{\nu} &= \int_{0}^{1} dz \int_{C} dk \operatorname{Spur} \{ /e ( {k\!\!\!/} + i\mu ) \gamma_{\nu} ( {k\!\!\!/} + /q + i\mu ) \} \frac{1}{\{ k^{2} + \mu^{2} + z ( 2 k \cdot q + q^{2} ) \}^{2}} \\ &= \int_{0}^{1} dz \int_{C} dk \operatorname{Spur} \{ /e ( {k\!\!\!/} - z/q + i\mu ) \gamma_{\nu} ( {k\!\!\!/} + ( 1 - z ) /q + i\mu ) \} \frac{1}{\{ k^{2} + \mu^{2} + ( z - z^{2} ) q^{2} \}^{2}} \end{aligned} \qquad \text{(377)}
+\begin{aligned} J_{\nu} &= \int_{0}^{1} dz \int_{C} dk \operatorname{Spur} \{ {e\!\!\!/} ( {k\!\!\!/} + i\mu ) \gamma_{\nu} ( {k\!\!\!/} + {q\!\!\!/} + i\mu ) \} \frac{1}{\{ k^{2} + \mu^{2} + z ( 2 k \cdot q + q^{2} ) \}^{2}} \\ &= \int_{0}^{1} dz \int_{C} dk \operatorname{Spur} \{ {e\!\!\!/} ( {k\!\!\!/} - z {q\!\!\!/} + i\mu ) \gamma_{\nu} ( {k\!\!\!/} + ( 1 - z ) {q\!\!\!/} + i\mu ) \} \frac{1}{\{ k^{2} + \mu^{2} + ( z - z^{2} ) q^{2} \}^{2}} \end{aligned} \qquad \text{(377)}
 ```
 
 In the last step a shift of origin was made in the $`k`$–integration replacing $`k`$ by $`( k - zq )`$. Again in (377) the poles in the $`k_{0}`$–plane for every $`z`$ are well separated by the imaginary axis, provided that $`\mu`$ is large. Evaluating the spur and dropping terms are odd in $`k`$, and using (33),<sup><a id="fnref-51" href="#fn-51">51</a></sup> Spur $`\gamma_{\nu} = 0`$, Spur $`\gamma_{\mu} \gamma_{\nu} = 4 \delta_{\mu \nu}`$, we get

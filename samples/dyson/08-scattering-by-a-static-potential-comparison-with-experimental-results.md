@@ -70,7 +70,7 @@ Summing over the final spin states, and averaging over the initial spin states, 
 <a id="eq-629"></a>
 
 ```math
-\begin{aligned} \tfrac{1}{2} \sum_{u} \sum_{u^{\prime}} | u^{\prime *} u |^{2} &= \tfrac{1}{2} \frac{1}{( 2 i\mu )^{2}} \operatorname{Spur} \left\{ ( {p\!\!\!/} + i\mu ) \gamma_{4} ( /p^{\prime} + i\mu ) \gamma_{4} \right\} \\ &= \frac{1}{2 \mu^{2}} \left\{ \mu^{2} + p_{0} p_{0}^{\prime} + \boldsymbol{p} \cdot \boldsymbol{p}^{\prime} \right\} = \frac{1}{2 \mu^{2}} \left\{ 2 p_{0}^{2} - \tfrac{1}{2} | \boldsymbol{q} |^{2} \right\} \\ &= \frac{p_{o}^{2}}{\mu^{2}} \left\{ 1 - \tfrac{1}{4} \frac{| \boldsymbol{p} |^{2} - 2 \boldsymbol{p} \cdot \boldsymbol{p}^{\prime} + | \boldsymbol{p}^{\prime} |^{2}}{p_{0}^{2}} \right\} = \frac{p_{o}^{2}}{\mu^{2}} \left( 1 - \beta^{2} \sin^{2} \frac{\theta}{2} \right) \end{aligned} \qquad \text{(629)}
+\begin{aligned} \tfrac{1}{2} \sum_{u} \sum_{u^{\prime}} | u^{\prime *} u |^{2} &= \tfrac{1}{2} \frac{1}{( 2 i\mu )^{2}} \operatorname{Spur} \left\{ ( {p\!\!\!/} + i\mu ) \gamma_{4} ( {p\!\!\!/}^{\prime} + i\mu ) \gamma_{4} \right\} \\ &= \frac{1}{2 \mu^{2}} \left\{ \mu^{2} + p_{0} p_{0}^{\prime} + \boldsymbol{p} \cdot \boldsymbol{p}^{\prime} \right\} = \frac{1}{2 \mu^{2}} \left\{ 2 p_{0}^{2} - \tfrac{1}{2} | \boldsymbol{q} |^{2} \right\} \\ &= \frac{p_{o}^{2}}{\mu^{2}} \left\{ 1 - \tfrac{1}{4} \frac{| \boldsymbol{p} |^{2} - 2 \boldsymbol{p} \cdot \boldsymbol{p}^{\prime} + | \boldsymbol{p}^{\prime} |^{2}}{p_{0}^{2}} \right\} = \frac{p_{o}^{2}}{\mu^{2}} \left( 1 - \beta^{2} \sin^{2} \frac{\theta}{2} \right) \end{aligned} \qquad \text{(629)}
 ```
 
 <div align="right"><a href="book.pdf#page=124" target="_blank" title="This page in the PDF"><sup>[p. 118]</sup></a></div>
@@ -100,7 +100,7 @@ The second-order radiative correction to $`M_{0}`$ is given by (617), which in t
 <a id="eq-632"></a>
 
 ```math
-M_{2} + M_{2}^{\prime} = - \frac{\alpha}{3 \pi} \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right\} \frac{q^{2}}{\mu^{2}} M_{0} - \frac{\alpha}{2} \frac{e}{\hbar c\mu} ( u^{\prime *} /qu ) V ( \boldsymbol{q} ) \delta ( q_{0} ) \qquad \text{(632)}
+M_{2} + M_{2}^{\prime} = - \frac{\alpha}{3 \pi} \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right\} \frac{q^{2}}{\mu^{2}} M_{0} - \frac{\alpha}{2} \frac{e}{\hbar c\mu} ( u^{\prime *} {q\!\!\!/} u ) V ( \boldsymbol{q} ) \delta ( q_{0} ) \qquad \text{(632)}
 ```
 
 This gives a second order correction to the cross-section $`\sigma_{0}`$ according to (621). The total non-radiative cross-section, for <a id="ix-242">scattering</a> without the emission of a photon of energy greater than ∆$`E`$, becomes
@@ -108,7 +108,7 @@ This gives a second order correction to the cross-section $`\sigma_{0}`$ accordi
 <a id="eq-633"></a>
 
 ```math
-\begin{aligned} \sigma_{N} &= \sigma_{0} + \sigma_{2 N} \\ &= \left( \frac{em}{2 \pi \hbar^{2}} \right)^{2} | V ( \boldsymbol{q} ) |^{2} d \Omega \left| \left\{ 1 - \frac{\alpha}{3 \pi} \left( \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right) \frac{q^{2}}{\mu^{2}} \right\} ( u^{\prime *} u ) + \frac{i\alpha}{4 \pi \mu} ( u^{\prime *} /qu ) \right|^{2} \end{aligned} \qquad \text{(633)}
+\begin{aligned} \sigma_{N} &= \sigma_{0} + \sigma_{2 N} \\ &= \left( \frac{em}{2 \pi \hbar^{2}} \right)^{2} | V ( \boldsymbol{q} ) |^{2} d \Omega \left| \left\{ 1 - \frac{\alpha}{3 \pi} \left( \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right) \frac{q^{2}}{\mu^{2}} \right\} ( u^{\prime *} u ) + \frac{i\alpha}{4 \pi \mu} ( u^{\prime *} {q\!\!\!/} u ) \right|^{2} \end{aligned} \qquad \text{(633)}
 ```
 
 Summing and averaging over the spin-states
@@ -116,7 +116,7 @@ Summing and averaging over the spin-states
 <a id="eq-634"></a>
 
 ```math
-\begin{aligned} \tfrac{1}{2} \sum_{u} \sum_{u^{\prime}} ( u^{\prime *} /qu ) ( u^{*} u^{\prime} ) &= \frac{1}{2 ( 2 i\mu )^{2}} \operatorname{Spur} \left\{ ( {p\!\!\!/} + i\mu ) \gamma_{4} ( {p\!\!\!/}^{\prime} + i\mu ) \gamma_{4} /q \right\} \\ &= - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu \left( /p\gamma_{4} \gamma_{4} /q + \gamma_{4} {p\!\!\!/}^{\prime} \gamma_{4} /q \right) \right\} = - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu ( {p\!\!\!/} /p^{\prime} - {p\!\!\!/} /p - {p\!\!\!/}^{\prime} {p\!\!\!/}^{\prime} + {p\!\!\!/}^{\prime} {p\!\!\!/} ) \right\} \\ &= - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu ( {p\!\!\!/}^{\prime} - {p\!\!\!/} ) ( {p\!\!\!/}^{\prime} - {p\!\!\!/} ) \right\} = \frac{i}{2 \mu} q^{2} \end{aligned} \qquad \text{(634)}
+\begin{aligned} \tfrac{1}{2} \sum_{u} \sum_{u^{\prime}} ( u^{\prime *} {q\!\!\!/} u ) ( u^{*} u^{\prime} ) &= \frac{1}{2 ( 2 i\mu )^{2}} \operatorname{Spur} \left\{ ( {p\!\!\!/} + i\mu ) \gamma_{4} ( {p\!\!\!/}^{\prime} + i\mu ) \gamma_{4} {q\!\!\!/} \right\} \\ &= - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu \left( /p\gamma_{4} \gamma_{4} {q\!\!\!/} + \gamma_{4} {p\!\!\!/}^{\prime} \gamma_{4} {q\!\!\!/} \right) \right\} = - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu ( {p\!\!\!/} {p\!\!\!/}^{\prime} - {p\!\!\!/} {p\!\!\!/} - {p\!\!\!/}^{\prime} {p\!\!\!/}^{\prime} + {p\!\!\!/}^{\prime} {p\!\!\!/} ) \right\} \\ &= - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu ( {p\!\!\!/}^{\prime} - {p\!\!\!/} ) ( {p\!\!\!/}^{\prime} - {p\!\!\!/} ) \right\} = \frac{i}{2 \mu} q^{2} \end{aligned} \qquad \text{(634)}
 ```
 
 Hence for an unpolarized electron beam the non-radiative cross-section is
@@ -348,7 +348,7 @@ the integral being over all space-time. Using (542) for the initial and final el
 <a id="eq-658"></a>
 
 ```math
-U_{M} = i \frac{\delta M}{2 \hbar c} \sum_{\mu ,\nu} ( \overline{u}^{\prime} \sigma_{\mu \nu} u ) ( q_{\mu} e_{\nu} - q_{\nu} e_{\mu} ) = i \frac{\delta M}{2 \hbar c} \left[ u^{\prime} ( /q/e - /e/q ) u \right] \qquad \text{(658)}
+U_{M} = i \frac{\delta M}{2 \hbar c} \sum_{\mu ,\nu} ( \overline{u}^{\prime} \sigma_{\mu \nu} u ) ( q_{\mu} e_{\nu} - q_{\nu} e_{\mu} ) = i \frac{\delta M}{2 \hbar c} \left[ u^{\prime} ( {q\!\!\!/} {e\!\!\!/} - {e\!\!\!/} {q\!\!\!/} ) u \right] \qquad \text{(658)}
 ```
 
 where we used $`\gamma_{k} \gamma_{\ell} = i\sigma_{m} ,k,\ell ,m`$ = (1$`, 2 , 3`$) cyclically permuted. Since we have also assumed (588) we may write simply
@@ -356,7 +356,7 @@ where we used $`\gamma_{k} \gamma_{\ell} = i\sigma_{m} ,k,\ell ,m`$ = (1$`, 2 , 
 <a id="eq-659"></a>
 
 ```math
-U_{M} = - i \frac{\delta M}{\hbar c} ( \overline{u}^{\prime} /e/qu ) \qquad \text{(659)}
+U_{M} = - i \frac{\delta M}{\hbar c} ( \overline{u}^{\prime} {e\!\!\!/} {q\!\!\!/} u ) \qquad \text{(659)}
 ```
 
 <div align="right"><a href="book.pdf#page=128" target="_blank" title="This page in the PDF"><sup>[p. 122]</sup></a></div>
@@ -532,7 +532,7 @@ We next turn to the evaluation of $`H_{T 1}`$, which is related to $`U_{1}`$ in 
 <a id="eq-676a"></a>
 
 ```math
-M_{1} = - \frac{e^{2}}{\hbar^{2} c^{2}} \overline{u}^{\prime} \left\{ /e \frac{1}{{p\!\!\!/} - {k\!\!\!/}^{\prime} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{{p\!\!\!/}^{\prime} + {k\!\!\!/}^{\prime} - i\mu} /e \right\} u \qquad \text{(676a)}
+M_{1} = - \frac{e^{2}}{\hbar^{2} c^{2}} \overline{u}^{\prime} \left\{ {e\!\!\!/} \frac{1}{{p\!\!\!/} - {k\!\!\!/}^{\prime} - i\mu} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} \frac{1}{{p\!\!\!/}^{\prime} + {k\!\!\!/}^{\prime} - i\mu} {e\!\!\!/} \right\} u \qquad \text{(676a)}
 ```
 
 where now
@@ -548,7 +548,7 @@ is given by the Fourier expansion (534). Note that we cannot yet use the simple 
 <a id="eq-677a"></a>
 
 ```math
-M_{1} = - \frac{e^{2}}{2 \hbar^{2} c^{2}} \overline{u}^{\prime} \left\{ \frac{/e/ k^{\prime} /e^{\prime} - 2 ( p \cdot e^{\prime} ) /e}{p \cdot k^{\prime}} + \frac{/e^{\prime} {k\!\!\!/}^{\prime} /e + 2 ( p^{\prime} \cdot e^{\prime} ) /e}{p^{\prime} \cdot k^{\prime}} \right\} u \qquad \text{(677a)}
+M_{1} = - \frac{e^{2}}{2 \hbar^{2} c^{2}} \overline{u}^{\prime} \left\{ \frac{/e/ k^{\prime} {e\!\!\!/}^{\prime} - 2 ( p \cdot e^{\prime} ) {e\!\!\!/}}{p \cdot k^{\prime}} + \frac{{e\!\!\!/}^{\prime} {k\!\!\!/}^{\prime} {e\!\!\!/} + 2 ( p^{\prime} \cdot e^{\prime} ) {e\!\!\!/}}{p^{\prime} \cdot k^{\prime}} \right\} u \qquad \text{(677a)}
 ```
 
 Since $`p`$ and $`p^{\prime}`$ are assumed non-relativistic we may write
@@ -566,13 +566,13 @@ and then
 <a id="eq-678"></a>
 
 ```math
-M_{1} = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu k_{0}^{\prime}} \overline{u}^{\prime} \left\{ 2 ( ( p^{\prime} - p ) \cdot e^{\prime} ) /e + /e^{\prime} {k\!\!\!/}^{\prime} /e + /e/ k^{\prime} /e^{\prime} \right\} u \qquad \text{(678)}
+M_{1} = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu k_{0}^{\prime}} \overline{u}^{\prime} \left\{ 2 ( ( p^{\prime} - p ) \cdot e^{\prime} ) {e\!\!\!/} + {e\!\!\!/}^{\prime} {k\!\!\!/}^{\prime} {e\!\!\!/} + /e/ k^{\prime} {e\!\!\!/}^{\prime} \right\} u \qquad \text{(678)}
 ```
 
-Now because we shall be considering only an electrostatic potential (674), $`/e`$ is a multiple of $`\gamma_{4}`$ simply. Then if $`k_{3}^{\prime}`$ is the space-like part of the vector $`k^{\prime}`$, we have
+Now because we shall be considering only an electrostatic potential (674), $`{e\!\!\!/}`$ is a multiple of $`\gamma_{4}`$ simply. Then if $`k_{3}^{\prime}`$ is the space-like part of the vector $`k^{\prime}`$, we have
 
 ```math
-/e^{\prime} {k\!\!\!/}_{3}^{\prime} /e + /e/ k_{3}^{\prime} /e^{\prime} = /e \left\{ /e^{\prime} {k\!\!\!/}_{3}^{\prime} + {k\!\!\!/}_{3}^{\prime} /e^{\prime} \right\} = 0
+{e\!\!\!/}^{\prime} {k\!\!\!/}_{3}^{\prime} {e\!\!\!/} + /e/ k_{3}^{\prime} {e\!\!\!/}^{\prime} = {e\!\!\!/} \left\{ {e\!\!\!/}^{\prime} {k\!\!\!/}_{3}^{\prime} + {k\!\!\!/}_{3}^{\prime} {e\!\!\!/}^{\prime} \right\} = 0
 ```
 
 Therefore
@@ -580,15 +580,15 @@ Therefore
 <a id="eq-679"></a>
 
 ```math
-/e^{\prime} {k\!\!\!/}_{3}^{\prime} /e + /e/ k_{3}^{\prime} /e^{\prime} = ik_{0}^{\prime} /e^{\prime} ( 2 \gamma_{4} /e ) \qquad \text{(679)}
+{e\!\!\!/}^{\prime} {k\!\!\!/}_{3}^{\prime} {e\!\!\!/} + /e/ k_{3}^{\prime} {e\!\!\!/}^{\prime} = ik_{0}^{\prime} {e\!\!\!/}^{\prime} ( 2 \gamma_{4} {e\!\!\!/} ) \qquad \text{(679)}
 ```
 
-Now this term (679) is small compared to the other term in (678), because $`/e^{\prime}`$ involves the matrices $`\gamma_{1} ,\gamma_{2} ,\gamma_{3}`$ while $`/e`$ involves $`\gamma_{4}`$, and the matrix elements of $`\gamma_{1} ,\gamma_{2} ,\gamma_{3}`$ for non-relativistic transitions are small, of the order of $`( v/c )`$. The term (679) in fact describes magnetic radiation, whereas the other term in (678) gives electric. The electric term gives an effect of the order of the <a id="ix-161">Lamb shift</a>. Hence in our approximation we may neglect the magnetic term and write
+Now this term (679) is small compared to the other term in (678), because $`{e\!\!\!/}^{\prime}`$ involves the matrices $`\gamma_{1} ,\gamma_{2} ,\gamma_{3}`$ while $`{e\!\!\!/}`$ involves $`\gamma_{4}`$, and the matrix elements of $`\gamma_{1} ,\gamma_{2} ,\gamma_{3}`$ for non-relativistic transitions are small, of the order of $`( v/c )`$. The term (679) in fact describes magnetic radiation, whereas the other term in (678) gives electric. The electric term gives an effect of the order of the <a id="ix-161">Lamb shift</a>. Hence in our approximation we may neglect the magnetic term and write
 
 <a id="eq-680"></a>
 
 ```math
-M_{1} = \frac{e^{2}}{\hbar^{2} c^{2} \mu k_{0}^{\prime}} ( ( p^{\prime} - p ) \cdot e^{\prime} ) ( \overline{u}^{\prime} /eu ) \qquad \text{(680)}
+M_{1} = \frac{e^{2}}{\hbar^{2} c^{2} \mu k_{0}^{\prime}} ( ( p^{\prime} - p ) \cdot e^{\prime} ) ( \overline{u}^{\prime} {e\!\!\!/} u ) \qquad \text{(680)}
 ```
 
 which is the same result as we should have obtained from (546).
