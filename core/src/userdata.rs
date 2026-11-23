@@ -22,7 +22,14 @@
 //!
 //! (Corrections of equations read from pictures are kept per picture by
 //! [`crate::ocr`].)
+//!
+//! mdBun's mark of an equation changed to improve on the original, not to
+//! match it (`<!-- mdBun:improved -->` on the line under the block), is
+//! part of a corrected block here, and a note under such an equation
+//! stands under the mark. (Under an equation read from a picture the mark
+//! is kept per picture, like the correction.)
 
+use crate::ocr::IMPROVED;
 use std::path::Path;
 
 #[derive(Debug, Clone, PartialEq)]
@@ -121,6 +128,11 @@ fn eq_fix_ranges(text: &str) -> Vec<(usize, usize, String)> {
             let body = end + "\n\n```math\n".len();
             let Some(e) = text[body..].find("\n```").map(|e| body + e + 4) else { continue };
             end = e;
+            // (mdBun's mark of an improvement, on the line under the
+            // block: part of the fix)
+            if text[end..].strip_prefix('\n').is_some_and(|l| l.starts_with(IMPROVED)) {
+                end += 1 + IMPROVED.len();
+            }
         }
         if text[end..].starts_with(BY_CLAUDE) {
             end += 2;
@@ -280,6 +292,8 @@ const EQUATION: &str = "pdf2md:eq ";
 /// the mark alone (a note that came to stand between the two).
 fn equation_above(before: &str) -> Option<&str> {
     let before = before.trim_end();
+    // (mdBun's mark of an improvement stands under the block)
+    let before = before.strip_suffix(IMPROVED).map_or(before, str::trim_end);
     fn mark(t: &str) -> Option<&str> {
         t.trim_end().rsplit('\n').next()?.strip_prefix("<!-- pdf2md:eq ")?.strip_suffix(" -->")
     }
@@ -641,7 +655,10 @@ fn apply_in(text: &mut String, data: &UserData, slug: Option<&str>, book: bool) 
             let open = format!("<!-- pdf2md:eq {k} -->\n\n```math\n");
             at = text.find(&open).and_then(|i| {
                 let from = i + open.len();
-                text[from..].find("\n```").map(|j| from + j + 4)
+                let end = text[from..].find("\n```").map(|j| from + j + 4)?;
+                // (under mdBun's mark of an improvement, which has to
+                // stay on the line right under the block)
+                Some(end + text[end..].strip_prefix('\n').filter(|l| l.starts_with(IMPROVED)).map_or(0, |_| 1 + IMPROVED.len()))
             });
         }
         for block in text.split("\n\n") {
@@ -732,6 +749,33 @@ mod tests {
         // (a note that came to stand between the mark and the equation)
         let between = eq("u_{El} = A r", "").replace(" -->\n\n```math", " -->\n\n> [!NOTE]\n> The index was read as I.\n\n```math");
         assert_eq!(collect_file(&between, &|_| Some("c".into())), d);
+    }
+
+    #[test]
+    fn the_mark_of_an_improvement_stays_right_under_its_equation() {
+        // read from a picture: the conversion writes the mark again (kept
+        // by picture), and a note under the equation goes under the mark
+        let eq = |note: &str| format!("Before it.\n\n<a id=\"img-0123456789abcdef\"></a>\n<!-- pdf2md:eq 0123456789abcdef -->\n\n```math\nu = A r\n```\n{IMPROVED}{note}\n\nAfter it.\n");
+        let note = "\n\n> [!WARNING]\n> The book has B here.";
+        let d = collect_file(&eq(note), &|_| Some("c".into()));
+        assert_eq!(d.notes[0].after, "pdf2md:eq 0123456789abcdef");
+        let mut new = eq("");
+        assert!(apply(&mut new, &d, Some("c")).is_empty());
+        assert_eq!(new, eq(note));
+        // built from the PDF's text: the mark is part of the corrected
+        // block, between the block and the alert that belongs to it
+        let was = "x = {}_{2} y";
+        let fixed = format!("{}\n\n```math\nx = y^{{2}}\n```\n{IMPROVED}\n\n> [!NOTE]\n> **Edited by Claude.** The square.", eq_fix_mark(was));
+        let edited = format!("# Ch\n\nSo\n\n{fixed}\n\nEnd.\n");
+        let d = collect_file(&edited, &|_| Some("c".into()));
+        assert_eq!((d.eqs.len(), d.notes.len()), (1, 0), "{d:?}");
+        assert_eq!(d.eqs[0].block, fixed);
+        let mut new = format!("# Ch\n\nSo\n\n```math\n{was}\n```\n\nEnd.\n");
+        assert!(apply(&mut new, &d, Some("c")).is_empty());
+        assert_eq!(new, edited);
+        // (in a list item, two spaces in)
+        let item = edited.replace("So\n\n", "- So\n\n").replace(&fixed, &fixed.lines().map(|l| if l.is_empty() { String::new() } else { format!("  {l}") }).collect::<Vec<_>>().join("\n"));
+        assert_eq!(collect_file(&item, &|_| Some("c".into())).eqs[0].block, fixed);
     }
 
     #[test]

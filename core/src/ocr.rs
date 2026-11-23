@@ -150,6 +150,18 @@ pub(crate) fn read_correction(k: &str) -> Option<String> {
     (!t.is_empty()).then(|| t.to_string())
 }
 
+/// The mark mdBun puts behind an equation that the reader changed to
+/// improve on the original, not to match it (mdBun shows such an equation
+/// in a colour of its own): right behind a formula in a sentence, behind
+/// its picture's mark; on the line under a displayed one.
+pub const IMPROVED: &str = "<!-- mdBun:improved -->";
+
+/// Did the reader mark the equation of this picture so? Kept by picture
+/// like the correction itself, as an empty file beside it.
+pub(crate) fn read_improved(k: &str) -> bool {
+    corrections_dir().is_some_and(|d| d.join(format!("{k}.improved")).exists())
+}
+
 /// Before a book is converted again: find the equations the reader has
 /// corrected by hand in the old Markdown (each displayed equation read
 /// from an image carries `<!-- pdf2md:eq KEY -->` above it) and keep each
@@ -161,6 +173,8 @@ pub fn collect_corrections(dir: &std::path::Path) -> usize {
     let written_then = read_written(dir);
     // image -> (time of the file, LaTeX as it stands there)
     let mut found: HashMap<String, (std::time::SystemTime, String)> = HashMap::new();
+    // image -> (time of the file, is it marked there as an improvement)
+    let mut improved: HashMap<String, (std::time::SystemTime, bool)> = HashMap::new();
     for e in entries.flatten() {
         let p = e.path();
         if p.extension().is_none_or(|x| x != "md") {
@@ -168,7 +182,16 @@ pub fn collect_corrections(dir: &std::path::Path) -> usize {
         }
         let (Ok(text), Ok(meta)) = (std::fs::read_to_string(&p), e.metadata()) else { continue };
         let time = meta.modified().unwrap_or(std::time::UNIX_EPOCH);
-        for (k, latex) in marked_equations(&text) {
+        for (k, latex, marked) in marked_and_improved(&text) {
+            // (the mark of an improvement: put there or taken away since
+            // the conversion wrote the file)
+            let was = match &written_then {
+                Some(w) => w.contains_key(&format!("{k}.improved")),
+                None => read_improved(&k),
+            };
+            if marked != was && improved.get(&k).is_none_or(|(t, _)| *t < time) {
+                improved.insert(k.clone(), (time, marked));
+            }
             let changed = match &written_then {
                 // compared with exactly what was written
                 Some(w) => w.get(&k).is_some_and(|w| *w != norm(&latex)),
@@ -234,10 +257,16 @@ pub fn collect_corrections(dir: &std::path::Path) -> usize {
             }
         }
     }
-    if (found.is_empty() && cells.is_empty() && pictures.is_empty()) || std::fs::create_dir_all(&cdir).is_err() {
+    if (found.is_empty() && cells.is_empty() && pictures.is_empty() && improved.is_empty()) || std::fs::create_dir_all(&cdir).is_err() {
         return 0;
     }
     let mut kept = 0;
+    for (k, (_, marked)) in &improved {
+        let file = cdir.join(format!("{k}.improved"));
+        // (no longer an improvement: nothing to keep any more)
+        let done = if *marked { std::fs::write(&file, "").is_ok() } else { std::fs::remove_file(&file).is_ok() };
+        kept += usize::from(done);
+    }
     for (id, (_, state)) in &pictures {
         // (shown again: nothing to keep any more)
         let done = if state == "open" { std::fs::remove_file(cdir.join(id)).is_ok() } else { std::fs::write(cdir.join(id), format!("{state}\n")).is_ok() };
@@ -262,7 +291,19 @@ fn norm(t: &str) -> String {
 /// between `$` and `$$`, the marker in front in sentences too: read as
 /// well, the corrections made in it count.
 pub fn marked_equations(text: &str) -> Vec<(String, String)> {
+    marked_and_improved(text).into_iter().map(|(k, latex, _)| (k, latex)).collect()
+}
+
+/// The same, each with whether the reader marked it as an improvement on
+/// the original ([`IMPROVED`] behind it).
+fn marked_and_improved(text: &str) -> Vec<(String, String, bool)> {
     use crate::emit::{DISPLAY_CLOSE, DISPLAY_OPEN, MATH_CLOSE, MATH_OPEN};
+    // (What stands in a bulleted item is set in two spaces under its
+    // bullet, the fences of an equation too: read as if it stood at the
+    // margin, as the reader's notes are. Else such a block would not end
+    // at its own fence.)
+    let margin: String = text.split_inclusive('\n').map(|l| l.strip_prefix("  ").filter(|r| !r.starts_with(' ')).unwrap_or(l)).collect();
+    let text = margin.as_str();
     const MARK: &str = "<!-- pdf2md:eq ";
     let mut out = Vec::new();
     let mut from = 0;
@@ -271,22 +312,25 @@ pub fn marked_equations(text: &str) -> Vec<(String, String)> {
         let Some(k) = text.get(from..from + 16).filter(|k| k.chars().all(|c| c.is_ascii_hexdigit())) else { continue };
         let after = text.get(from + 20..).unwrap_or("");
         let before = &text[..at];
-        let latex = if let Some(inline) = before.strip_suffix(MATH_CLOSE) {
+        // (what follows the formula: the mark of an improvement, if any)
+        let (latex, behind) = if let Some(inline) = before.strip_suffix(MATH_CLOSE) {
             let Some(start) = inline.rfind(MATH_OPEN) else { continue };
-            &inline[start + MATH_OPEN.len()..]
+            (&inline[start + MATH_OPEN.len()..], after)
         } else if let Some(inline) = after.strip_prefix('$').filter(|i| !i.starts_with('$')) {
             let Some(end) = inline.find('$') else { break };
             from = text.len() - inline.len() + end;
-            &inline[..end]
+            (&inline[..end], &inline[end + 1..])
         } else {
             let forms = [(DISPLAY_OPEN, DISPLAY_CLOSE), ("$$\n", "\n$$")];
             let Some((start, open, close)) = forms.iter().filter_map(|(o, c)| after.find(o).map(|i| (i, o, c))).min() else { break };
             let body = &after[start + open.len()..];
             let Some(end) = body.find(close) else { break };
             from = text.len() - body.len() + end;
-            &body[..end]
+            // (on the line under the block)
+            let under = &body[end + close.len()..];
+            (&body[..end], under.strip_prefix('\n').unwrap_or(under))
         };
-        out.push((k.to_string(), strip_numbers(latex)));
+        out.push((k.to_string(), strip_numbers(latex), behind.starts_with(IMPROVED)));
     }
     out
 }
@@ -300,9 +344,14 @@ pub fn record_written(dir: &std::path::Path, texts: &[&str]) -> std::io::Result<
     let mut seen = std::collections::HashSet::new();
     let mut s = String::new();
     for t in texts {
-        for (k, latex) in marked_equations(t) {
+        for (k, latex, improved) in marked_and_improved(t) {
             if seen.insert(k.clone()) {
                 s.push_str(&format!("{k}\t{}\n", norm(&latex)));
+                // (written as an improvement: so the mark taken away
+                // later is known for the reader's doing)
+                if improved {
+                    s.push_str(&format!("{k}.improved\tyes\n"));
+                }
             }
         }
     }
@@ -1228,6 +1277,23 @@ mod tests {
             let found: Vec<String> = marked_equations(&text).into_iter().map(|(_, l)| norm(&l)).collect();
             assert_eq!(found, ["a \\\\ b", "x^{*}"], "{text}");
         }
+    }
+
+    #[test]
+    fn the_mark_of_an_improvement_is_read_behind_each_kind_of_equation() {
+        let (a, b, c, d) = ("0123456789abcdef", "1123456789abcdef", "2123456789abcdef", "3123456789abcdef");
+        // displayed (also in a list item), in a sentence, and one of each without the mark
+        let now = format!(
+            "<!-- pdf2md:eq {a} -->\n\n```math\na\n```\n{IMPROVED}\n\n- Item\n\n  <!-- pdf2md:eq {b} -->\n\n  ```math\n  b\n  ```\n  {IMPROVED}\n\nSee $`c`$<!-- pdf2md:eq {c} -->{IMPROVED} and $`d`$<!-- pdf2md:eq {d} --> here.\n\n<!-- pdf2md:eq {d} -->\n\n```math\nd\n```\n\n{IMPROVED}"
+        );
+        let before = format!("<!-- pdf2md:eq {a} -->\n$$\na\n$$\n{IMPROVED}\n\nSee <!-- pdf2md:eq {c} -->$c${IMPROVED} and <!-- pdf2md:eq {d} -->$d$ here.");
+        let read = |text: &str| -> Vec<(String, bool)> { marked_and_improved(text).into_iter().map(|(k, _, i)| (k, i)).collect() };
+        let yes = |k: &str| (k.to_string(), true);
+        let no = |k: &str| (k.to_string(), false);
+        assert_eq!(read(&now), [yes(a), yes(b), yes(c), no(d), no(d)]);
+        assert_eq!(read(&before), [yes(a), yes(c), no(d)]);
+        // (the LaTeX is read as it was, without the mark)
+        assert_eq!(marked_equations(&now).into_iter().map(|(_, l)| l).collect::<Vec<_>>(), ["a", "b", "c", "d", "d"]);
     }
 
     #[test]
