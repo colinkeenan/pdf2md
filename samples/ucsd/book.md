@@ -17590,11 +17590,7 @@ and we will therefore want to work with states of definite $`j , \ell`$, and $`s
 
 ## <a id="s-23-4-3-perturbation-calculation-for-relativistic-energy-shift"></a>23.4.3 Perturbation Calculation for Relativistic Energy Shift
 
-```math
-2
-```
-
-Rewriting $`H_{1} = - \tfrac{1}{8} \tfrac{p_{e}^{4}}{m^{3} c^{2}}`$ as $`H_{1} = - \tfrac{1}{2 mc^{2}} \left( \tfrac{p^{2}}{2 m} \right)`$ we calculate the energy shift for a state $`\psi_{njm_{j} \ell s}`$. While there is no spin involved here, we will need to use these states for the spin-orbit interaction
+Rewriting $`H_{1} = - \tfrac{1}{8} \tfrac{p_{e}^{4}}{m^{3} c^{2}}`$ as $`H_{1} = - \tfrac{1}{2 mc^{2}} \left( \tfrac{p^{2}}{2 m} \right)^{2}`$ we calculate the energy shift for a state $`\psi_{njm_{j} \ell s}`$. While there is no spin involved here, we will need to use these states for the spin-orbit interaction
 
 ```math
 \left\langle \psi_{njm_{j} \ell s} | H_{1} | \psi_{njm_{j} \ell s} \right\rangle = - \frac{1}{2 mc^{2}} \left\langle \psi_{njm_{j} \ell s} \left| \left( \frac{p^{2}}{2 m} \right)^{2} \right| \psi_{njm_{j} \ell s} \right\rangle
@@ -17693,10 +17689,10 @@ H_{D} = \frac{\pi e^{2} \hbar^{2}}{2 m_{e}^{2} c^{2}} \delta^{3} ( \vec{r} )
 When we take the expectation value of this, we get the probability for the electron and proton to be at the same point.
 
 ```math
-\langle \psi | H_{D} | \psi \rangle = {}_{3 / 2} \frac{\pi e^{2} \hbar^{2}}{2 m_{e}^{2} c^{2}} | \psi ( 0 ) |^{2}
+\langle \psi | H_{D} | \psi \rangle = \frac{\pi e^{2} \hbar^{2}}{2 m_{e}^{2} c^{2}} | \psi ( 0 ) |^{2}
 ```
 
-Now, $`\psi`$(0) = 0 for $`\ell > 0`$ and $`\psi`$(0) = $`\tfrac{1}{\sqrt{4 \pi}} 2 \left( \tfrac{z}{na_{0}} \right)`$ for $`\ell = 0`$, so
+Now, $`\psi`$(0) = 0 for $`\ell > 0`$ and $`\psi`$(0) = $`\tfrac{1}{\sqrt{4 \pi}} 2 \left( \tfrac{z}{na_{0}} \right)^{3 / 2}`$ for $`\ell = 0`$, so
 
 ```math
 \langle H_{D} \rangle_{n 0 0} = \frac{4 e^{2} \hbar^{2}}{8 n^{3} a_{0}^{3} m^{2} c^{2}} = \frac{e^{2} \hbar^{2} \alpha^{2} m^{2} c^{2}}{2 n^{3} a_{0} m^{2} c^{2} \hbar^{2}} = \frac{2 nE_{n}^{2}}{mc^{2}}

@@ -3671,6 +3671,35 @@ fn group_lines(
         let s = groups[m].remove(j);
         groups[k].push(s);
     }
+    // (small pieces that made a line of their own right over a line,
+    // behind the head of a tall bracket of that line: the bracket's
+    // exponent, "(…)^{3/2}", which stands clear of the line's letters)
+    loop {
+        let found = (0..groups.len()).find_map(|m| {
+            let (left, top, bottom) = groups[m].iter().fold((f32::MAX, f32::MAX, f32::MIN), |(l, t, b), s| (l.min(s.left), t.min(s.top), b.max(s.bottom())));
+            let k = (0..groups.len()).find(|&k| {
+                let main = &groups[k][0];
+                let size = size_of(main);
+                // (no piece over another: a small fraction up there is left
+                // to be read as it was)
+                let row = !groups[m].iter().any(|a| groups[m].iter().any(|b| a.bottom() <= b.top + 1.0 && a.left < b.right() && a.right() > b.left));
+                // (nor the upper half of a small fraction whose lower half is
+                // in the line: "¼", the 1 right over the 4)
+                let half = groups[m].iter().any(|a| groups[k].iter().any(|b| !big_symbol(b) && size_of(b) < 0.85 * size && (b.top - a.bottom()).abs() <= 3.0 && a.left < b.right() && a.right() > b.left));
+                k != m
+                    && row
+                    && !half
+                    && groups[m].iter().all(|s| !big_symbol(s) && size_of(s) < 0.85 * size)
+                    && (main.top - bottom).abs() <= 0.3 * size
+                    && groups[k].iter().any(|b| big_symbol(b) && b.text.trim().chars().all(|c| ")]}".contains(c)) && left >= b.right() - 1.0 && left - b.right() <= 0.8 * size && b.top >= top - 0.6 * size && b.top <= bottom + 0.6 * size && b.left > main.left)
+            })?;
+            Some((m, k))
+        });
+        let Some((m, k)) = found else { break };
+        let moved = std::mem::take(&mut groups[m]);
+        groups[k].extend(moved);
+        groups.remove(m);
+    }
     // PDF2MD_LINEDEBUG=1: the pieces of each line, as grouped
     if std::env::var_os("PDF2MD_LINEDEBUG").is_some() {
         for g in &groups {
