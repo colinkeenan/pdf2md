@@ -28,11 +28,11 @@ Because the Schrödinger equation is **first order in the time derivative**, the
 If we have a complex scalar field that satisfies the (Euler-Lagrange = Klein-Gordon) equations
 
 ```math
-✷ \phi - m^{2} \phi = 0
+\Box \phi - m^{2} \phi = 0
 ```
 
 ```math
-✷ \phi^{*} - m^{2} \phi^{*} = 0 ,
+\Box \phi^{*} - m^{2} \phi^{*} = 0 ,
 ```
 
 it can be shown that the bilinear quantity
@@ -44,7 +44,7 @@ s_{\mu} = \frac{\hbar}{2 mi} \left( \phi^{*} \frac{\partial \phi}{\partial x_{\m
 satisfies the **flux conservation equation**
 
 ```math
-\frac{\partial s_{\mu}}{\partial x_{\mu}} = \frac{\hbar}{2 mi} \left( \frac{\partial \phi^{*}}{\partial x_{\mu}} \frac{\partial \phi}{\partial x_{\mu}} + \phi^{*} ✷ \phi - ( ✷ \phi^{*} ) \phi - \frac{\partial \phi^{*}}{\partial x_{\mu}} \frac{\partial \phi}{\partial x_{\mu}} \right) = \frac{\hbar}{2 mi} m^{2} ( \phi^{*} \phi - \phi^{*} \phi ) = 0
+\frac{\partial s_{\mu}}{\partial x_{\mu}} = \frac{\hbar}{2 mi} \left( \frac{\partial \phi^{*}}{\partial x_{\mu}} \frac{\partial \phi}{\partial x_{\mu}} + \phi^{*} \Box \phi - ( \Box \phi^{*} ) \phi - \frac{\partial \phi^{*}}{\partial x_{\mu}} \frac{\partial \phi}{\partial x_{\mu}} \right) = \frac{\hbar}{2 mi} m^{2} ( \phi^{*} \phi - \phi^{*} \phi ) = 0
 ```
 
 and reduces to the probability flux we used with the Schrödinger equation, in the non-relativistic limit. The fourth component of the vector is just $`c`$ times the probability density, so that’s fine too (using $`e^{imc^{2} t/ \hbar}`$ as the time dependence.).
@@ -658,7 +658,7 @@ We can show that a free particle solution can be written as a **constant spinor 
 The **free electron solutions all satisfy the wave equation**.
 
 ```math
-\left( ✷ - \left( \frac{mc}{\hbar} \right)^{2} \right) \psi = 0
+\left( \Box - \left( \frac{mc}{\hbar} \right)^{2} \right) \psi = 0
 ```
 
 Because we have eliminated the $`\gamma`$ matrices from the equation, this is an equation for each component of the Dirac spinor $`\psi`$. **Each component satisfies the wave (Klein-Gordon) equation** and a solution can be written as a constant spinor times the usual exponential representing a wave.

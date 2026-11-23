@@ -366,13 +366,13 @@ A_{\mu} \to A_{\mu} + \frac{\partial \chi}{\partial x_{\mu}}
 <a id="p442" href="book.pdf#page=442" target="_blank" title="This page in the PDF"><sup>[p. 442]</sup></a>
 
 ```math
-✷ \chi = - \left[ \frac{\partial A_{\nu}}{\partial x_{\nu}} \right]_{old}
+\Box \chi = - \left[ \frac{\partial A_{\nu}}{\partial x_{\nu}} \right]_{old}
 ```
 
 The **Maxwell equation with the Lorentz condition** now reads
 
 ```math
-✷ A_{\mu} = - \frac{j_{\mu}}{c} .
+\Box A_{\mu} = - \frac{j_{\mu}}{c} .
 ```
 
 There is **still substantial gauge freedom** possible. The second derivative of Λ is set by the Lorentz condition but there is still freedom in the first derivative which will modify $`A`$. Gauge transformations can be made as shown below.

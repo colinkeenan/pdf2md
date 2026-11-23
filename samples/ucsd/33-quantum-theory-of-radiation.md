@@ -152,11 +152,11 @@ This choice of gauge makes switching between 4-vector and 3-vector expressions f
 Let’s **verify that this decomposition of the radiation field satisfies the Maxwell equation**, just for some practice. Its most convenient to use the covariant form of the equation and field.
 
 ```math
-✷ A_{\mu} = 0
+\Box A_{\mu} = 0
 ```
 
 ```math
-✷ \left( \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \epsilon_{\mu}^{( \alpha )} c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c.c. \right) = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \epsilon_{\mu}^{( \alpha )} c_{k,\alpha} ( 0 ) ✷ e^{ik_{\rho} x_{\rho}} + c.c.
+\Box \left( \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \epsilon_{\mu}^{( \alpha )} c_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + c.c. \right) = \frac{1}{\sqrt{V}} \sum_{k} \sum_{\alpha = 1}^{2} \epsilon_{\mu}^{( \alpha )} c_{k,\alpha} ( 0 ) \Box e^{ik_{\rho} x_{\rho}} + c.c.
 ```
 
 ```math

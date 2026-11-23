@@ -122,6 +122,8 @@ pub fn sym(c: char) -> Option<&'static str> {
         '\u{2126}' => "\\Omega ", // the ohm sign, as some fonts encode Ω
         'ℓ' => "\\ell ",
         '□' => "\\Box ",
+        // (the d'Alembertian of a symbol font whose box comes under this code)
+        '✷' => "\\Box ",
         'ı' => "\\imath ",
         '∂' => "\\partial ",
         '∇' => "\\nabla ",
@@ -405,6 +407,19 @@ fn tex_plain(s: &MSpan) -> String {
     if s.family.starts_with("CMSY") {
         if t == "6" {
             return "\\not".into();
+        }
+        // (the slash in one piece with the sign it strikes, "6∈N" for ∉ 𝒩:
+        // the symbol font has no figures, a 6 in it is always the slash)
+        if t.contains('6') {
+            let parts: Vec<String> = t
+                .split('6')
+                .map(|p| {
+                    let mut piece = s.clone();
+                    piece.text = p.to_string();
+                    if p.trim().is_empty() { String::new() } else { tex_plain(&piece) }
+                })
+                .collect();
+            return parts.join(" \\not ").trim().to_string();
         }
         // letters in the symbol font: calligraphic capitals, and symbols
         // that sit in letter slots

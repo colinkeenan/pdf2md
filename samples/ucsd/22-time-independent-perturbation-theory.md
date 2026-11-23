@@ -444,7 +444,7 @@ These results are rewritten with all the $`\lambda`$ removed in section 22.1.
 To deal with the problem of degenerate states, we will allow an arbitrary linear combination of those states at zeroth order. In the following equation, the sum over $`i`$ is the sum over all the states degenerate with $`\phi_{n}`$ and the sum over k runs over all the other states.
 
 ```math
-\psi_{n} = N ( \lambda ) \left( \sum_{i \in \mathcal{N}} \alpha_{i} \phi^{( i )} + \sum_{k 6 \in \mathcal{N}} \lambda c_{nk}^{( 1 )} \phi_{k} + \dots \right)
+\psi_{n} = N ( \lambda ) \left( \sum_{i \in \mathcal{N}} \alpha_{i} \phi^{( i )} + \sum_{k \not \in \mathcal{N}} \lambda c_{nk}^{( 1 )} \phi_{k} + \dots \right)
 ```
 
 where $`\mathcal{N}`$ is the set of zeroth order states which are (nearly) degenerate with $`\phi_{n}`$. We will only go to first order in this derivation and we will use $`\lambda`$ as in the previous derivation to keep track of the order in the perturbation.
@@ -456,13 +456,13 @@ where $`\mathcal{N}`$ is the set of zeroth order states which are (nearly) degen
 The full Schrödinger equation is.
 
 ```math
-( H_{0} + \lambda H_{1} ) \left( \sum_{i \in \mathcal{N}} \alpha_{i} \phi^{( i )} + \sum_{k 6 \in \mathcal{N}} c_{nk} ( \lambda ) \phi_{k} \right) = ( E_{n}^{( 0 )} + \lambda E^{( 1 )} + \dots ) \left( \sum_{i \in \mathcal{N}} \alpha_{i} \phi^{( i )} + \sum_{k 6 \in \mathcal{N}} c_{nk} ( \lambda ) \phi_{k} \right)
+( H_{0} + \lambda H_{1} ) \left( \sum_{i \in \mathcal{N}} \alpha_{i} \phi^{( i )} + \sum_{k \not \in \mathcal{N}} c_{nk} ( \lambda ) \phi_{k} \right) = ( E_{n}^{( 0 )} + \lambda E^{( 1 )} + \dots ) \left( \sum_{i \in \mathcal{N}} \alpha_{i} \phi^{( i )} + \sum_{k \not \in \mathcal{N}} c_{nk} ( \lambda ) \phi_{k} \right)
 ```
 
 If we keep the zeroth and first order terms, we have
 
 ```math
-( H_{0} + \lambda H_{1} ) \sum_{i \in \mathcal{N}} \alpha_{i} \phi^{( i )} + H_{0} \sum_{k 6 \in \mathcal{N}} \lambda c_{nk}^{( 1 )} \phi_{k} = ( E_{n}^{( 0 )} + \lambda E^{( 1 )} ) \sum_{i \in \mathcal{N}} \alpha_{i} \phi^{( i )} + E_{n}^{( 0 )} \sum_{k 6 \in \mathcal{N}} \lambda c_{nk}^{( 1 )} \phi_{k} .
+( H_{0} + \lambda H_{1} ) \sum_{i \in \mathcal{N}} \alpha_{i} \phi^{( i )} + H_{0} \sum_{k \not \in \mathcal{N}} \lambda c_{nk}^{( 1 )} \phi_{k} = ( E_{n}^{( 0 )} + \lambda E^{( 1 )} ) \sum_{i \in \mathcal{N}} \alpha_{i} \phi^{( i )} + E_{n}^{( 0 )} \sum_{k \not \in \mathcal{N}} \lambda c_{nk}^{( 1 )} \phi_{k} .
 ```
 
 Projecting this onto one of the degenerate states $`\phi^{( j )}`$, we get

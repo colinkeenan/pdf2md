@@ -510,7 +510,7 @@ def read(files, dst, ext: str, scale: int, state: dict):
 # Equations built from the letters of a PDF's page (a TeX book): a second
 # reading, by the recognizer, of the place on the page each was built from.
 
-PLACES = "places 3"
+PLACES = "places 4"
 # pixels of a cut-out for each pixel of the page reader's measure (it has
 # 1.5 to a point: 216 dots to the inch, twice the size of an ebook's pictures)
 ZOOM = 2.0
@@ -531,6 +531,8 @@ def tidy(t: str) -> str:
     t = re.sub(r"\\surd(?![a-zA-Z])", r"\\sqrt", t)
     t = re.sub(r"\.\s*\.\s*\.", r"\\dots ", t)
     t = re.sub(r"^\s*(\\bullet|•)\s*", "", t)
+    # (a script letter is the page's to say: the recognizer reads 𝒜 as A)
+    t = re.sub(r"\\(mathcal|cal|mathscr)(?![a-zA-Z])", "", t)
     return re.sub(r"\\(quad|qquad)(?![a-zA-Z])", " ", t)
 
 
@@ -581,6 +583,28 @@ def same_formula(a: str, b: str) -> bool:
         return loose(tidy(a)) == loose(tidy(b))
     except Exception:
         return False
+
+
+def columns_as_fractions(t: str) -> str:
+    """A formula with each column of two rows between brackets written as
+    the recognizer misreads it: a fraction between those brackets."""
+    brackets = {"pmatrix": ("(", ")"), "bmatrix": ("[", "]"), "Bmatrix": ("\\{", "\\}"), "vmatrix": ("|", "|"), "matrix": ("", "")}
+
+    def one(f):
+        rows = f.group(2).split("\\\\")
+        if len(rows) != 2 or "&" in f.group(2) or "\\begin" in f.group(2):
+            return f.group(0)
+        a, b = brackets[f.group(1)]
+        return a + "\\frac{" + rows[0].strip() + "}{" + rows[1].strip() + "}" + b
+
+    return re.sub(r"\\begin\{([pbBv]?matrix)\}(.*?)\\end\{\1\}", one, t, flags=re.S)
+
+
+def agree(rule: str, other: str) -> bool:
+    """Did the recognizer read the formula the rules built? Also where it
+    read their columns of two rows as fractions: its known misreading, and
+    the rules, which have the rows from the page, are right."""
+    return same_formula(rule, other) or same_formula(columns_as_fractions(rule), other)
 
 
 def page_picture(pdf: str, page: int, state: dict) -> Image.Image:
@@ -667,14 +691,14 @@ def places(pdf: str, jobs_file: str, dst: Path):
         return as_latex(f.read_text()) if f.exists() else None
 
     # (where it reads other than the rules built: once more, larger)
-    differs = [j for j in jobs if (o := reading(j, "surya")) is not None and not same_formula(j["rule"], o)]
+    differs = [j for j in jobs if (o := reading(j, "surya")) is not None and not agree(j["rule"], o)]
     read_places(pdf, [j for j in differs if not (dst / f"{j['key']}.surya3").exists()], dst, "surya3", 1.5, state)
     counts = {"same": 0, "take": 0, "check": 0, "unread": 0}
     for j in jobs:
         other = reading(j, "surya")
         if other is None:
             verdict = "unread"
-        elif same_formula(j["rule"], other):
+        elif agree(j["rule"], other):
             verdict = "same"
         else:
             again = reading(j, "surya3")
