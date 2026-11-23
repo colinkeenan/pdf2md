@@ -68,6 +68,13 @@ impl FontInfo {
         self.names.values().any(|n| symbol(n).is_some_and(|(_, ext)| ext))
     }
 
+    /// Is this the ϵ of TeX's math italic font in a PDF that does not say
+    /// what its letters mean? pdftohtml has no character for its name
+    /// ("epsilon1"; without names it is the font's own place 15).
+    pub fn unnamed_epsilon(&self, code: u8) -> bool {
+        self.unicode.is_none() && !self.wide && self.base.to_uppercase().starts_with("CMMI") && self.names.get(&code).map_or(code == 15, |n| n == "epsilon1")
+    }
+
     fn loses(&self) -> bool {
         self.names.keys().any(|&c| matches!(self.glyph(c), Glyph::Lost(_)))
     }
@@ -402,6 +409,11 @@ pub struct Glyphs {
 /// The glyphs of the pages `first..=last` that show a glyph pdftohtml
 /// loses. None if the PDF has no such font (or cannot be read this way).
 pub fn read(path: &Path, first: u32, last: u32) -> Option<Glyphs> {
+    read_where(path, first, last, &|font, code| !tex_font(&font.base) && matches!(font.glyph(code), Glyph::Lost(_)))
+}
+
+/// The glyphs of the pages `first..=last` that show a glyph `wanted`.
+pub fn read_where(path: &Path, first: u32, last: u32, wanted: &dyn Fn(&FontInfo, u8) -> bool) -> Option<Glyphs> {
     let doc = Document::load(path).ok()?;
     let mut out = Glyphs { fonts: Vec::new(), pages: HashMap::new() };
     let mut known: HashMap<ObjectId, usize> = HashMap::new();
@@ -415,8 +427,7 @@ pub fn read(path: &Path, first: u32, last: u32) -> Option<Glyphs> {
         let content = doc.get_page_content(page);
         let mut shown = Vec::new();
         show(&doc, &content, &resources, &mut out.fonts, &mut known, &mut shown, 0);
-        let loses = shown.iter().any(|&(f, c)| !tex_font(&out.fonts[f].base) && matches!(out.fonts[f].glyph(c), Glyph::Lost(_)));
-        if loses {
+        if shown.iter().any(|&(f, c)| wanted(&out.fonts[f], c)) {
             out.pages.insert(number, shown);
         }
     }

@@ -424,6 +424,7 @@ pub fn read_drawings(doc: &mut Doc, path: &Path, pages: Option<(u32, u32)>) {
         drop_empty(doc, &lost);
     }
     if let Some(parts) = &parts {
+        restore_epsilons(doc, path, parts);
         split_shifted(doc, parts);
     }
     if let Some(parts) = parts {
@@ -727,6 +728,115 @@ fn split_shifted(doc: &mut Doc, parts: &[(usize, String)]) {
                 si += n - 1;
             }
         }
+    }
+}
+
+/// TeX's ϵ among other letters. In a PDF that does not say what its
+/// letters mean pdftohtml has no character for the ϵ of the math italic
+/// font: alone it comes as an empty piece (see [`parse_xml_with`]), among
+/// other letters of its font it is left out without a trace, "iH/" for
+/// "iϵH/". The PDF's own list of the glyphs it draws has it, and the
+/// page's drawing says where each glyph stands: the ϵ is written into its
+/// piece, where it stands among the piece's letters. A piece whose letters
+/// and glyphs do not count the same with it is left alone.
+fn restore_epsilons(doc: &mut Doc, path: &Path, parts: &[(usize, String)]) {
+    if !doc.fonts.iter().any(|f| f.family.to_uppercase().starts_with("CMMI")) {
+        return;
+    }
+    let (Some(first), Some(last)) = (doc.pages.first().map(|p| p.number), doc.pages.last().map(|p| p.number)) else { return };
+    let Some(glyphs) = crate::glyphs::read_where(path, first, last, &|font, code| font.unnamed_epsilon(code)) else { return };
+    let debug = std::env::var_os("PDF2MD_GLYPHDEBUG").is_some();
+    let mut uses: Vec<Vec<Placed>> = Vec::new();
+    for (pages, svg) in parts {
+        let mut of_part = parse_svg_uses(svg);
+        of_part.resize_with(*pages, Vec::new);
+        uses.append(&mut of_part);
+    }
+    let families: Vec<String> = doc.fonts.iter().map(|f| f.family.clone()).collect();
+    let same = |base: &str, family: &str| base == family || base.strip_prefix(family).is_some_and(|rest| rest.starts_with('-'));
+    let (mut written, mut left) = (0, 0);
+    for (page, placed) in doc.pages.iter_mut().zip(uses) {
+        let Some(shown) = glyphs.pages.get(&page.number) else { continue };
+        // (a space is a glyph that draws nothing: it may not be in the SVG)
+        let drawn: Vec<(usize, u8)> = if shown.len() == placed.len() { shown.clone() } else { shown.iter().copied().filter(|&(_, code)| code != b' ').collect() };
+        if drawn.len() != placed.len() {
+            if debug {
+                eprintln!("EPSILON page {}: {} shown, {} drawn", page.number, shown.len(), placed.len());
+            }
+            continue;
+        }
+        let at = |k: usize| (1.5 * placed[k].x, 1.5 * placed[k].y);
+        // the pieces an ϵ stands in, each with the height of its line
+        let mut pieces: Vec<(usize, usize, f32)> = Vec::new();
+        for gi in (0..drawn.len()).filter(|&gi| glyphs.fonts[drawn[gi].0].unnamed_epsilon(drawn[gi].1)) {
+            let (x, y) = at(gi);
+            let base = &glyphs.fonts[drawn[gi].0].base;
+            let mut best: Option<((usize, usize), f32)> = None;
+            for (li, line) in page.lines.iter().enumerate() {
+                for (si, s) in line.spans.iter().enumerate() {
+                    if !same(base, &families[s.font]) || y < s.top - 3.0 || y > s.bottom() + 3.0 {
+                        continue;
+                    }
+                    // (a glyph that starts at the right edge of one piece
+                    // and the left edge of the next is the next one's)
+                    let off = (s.left - x).max(x - (s.right() - 1.0).max(s.left)).max(0.0);
+                    let score = f32::from(x >= s.right() - 1.5) + 0.01 * (x - s.left).abs();
+                    if off <= 1.5 && best.is_none_or(|(_, o)| score < o) {
+                        best = Some(((li, si), score));
+                    }
+                }
+            }
+            match best {
+                Some(((li, si), _)) if !pieces.iter().any(|p| (p.0, p.1) == (li, si)) => pieces.push((li, si, y)),
+                Some(_) => {}
+                None => {
+                    left += 1;
+                    if debug {
+                        eprintln!("EPSILON page {}: no piece at {x:.0},{y:.0}", page.number);
+                    }
+                }
+            }
+        }
+        for (li, si, y) in pieces {
+            let s = &page.lines[li].spans[si];
+            // its glyphs, left to right (those on the ϵ's line: the row of
+            // a limit set right over it is another piece): which are the ϵ
+            let mut inside: Vec<(f32, bool)> = (0..drawn.len())
+                .filter(|&k| same(&glyphs.fonts[drawn[k].0].base, &families[s.font]))
+                .filter(|&k| at(k).0 >= s.left - 1.5 && at(k).0 < s.right() - 0.5 && (at(k).1 - y).abs() <= 0.8)
+                .map(|k| (at(k).0, glyphs.fonts[drawn[k].0].unnamed_epsilon(drawn[k].1)))
+                .collect();
+            inside.sort_by(|a, b| a.0.total_cmp(&b.0));
+            let letters = s.text.chars().filter(|c| !c.is_whitespace()).count();
+            let lost = inside.iter().filter(|g| g.1).count();
+            if letters == inside.len() {
+                continue;
+            }
+            if letters + lost != inside.len() {
+                left += lost;
+                if debug {
+                    eprintln!("EPSILON page {}: {:?} has {} glyphs, {lost} of them ϵ", page.number, s.text, inside.len());
+                }
+                continue;
+            }
+            let (mut text, mut g) = (String::new(), 0);
+            for c in s.text.chars() {
+                if !c.is_whitespace() {
+                    while inside.get(g).is_some_and(|i| i.1) {
+                        text.push('ϵ');
+                        g += 1;
+                    }
+                    g += 1;
+                }
+                text.push(c);
+            }
+            text.extend(inside[g.min(inside.len())..].iter().filter(|i| i.1).map(|_| 'ϵ'));
+            page.lines[li].spans[si].text = text;
+            written += lost;
+        }
+    }
+    if debug {
+        eprintln!("EPSILON {written} written into their pieces, {left} left");
     }
 }
 
@@ -2373,7 +2483,9 @@ fn insert_delims(doc: &mut Doc, delims: Vec<Vec<Delim>>) {
         for (k, l) in page.lines.iter_mut().enumerate() {
             if changed[k] && !l.spans.is_empty() {
                 let col = l.col;
-                *l = make_line(std::mem::take(&mut l.spans), &size_of);
+                // (an integral sign that begins the line is not what the
+                // line's height is told by: its box stands high over it)
+                *l = make_line_but(std::mem::take(&mut l.spans), &size_of, &|s: &Span| is_cmex(s) && matches!(s.text.trim(), "Z" | "R" | "I" | "H"));
                 l.col = col;
             }
         }
@@ -3559,12 +3671,34 @@ fn group_lines(
         // text parts the words before it from those after; the words under
         // a brace are its label)
         let in_words = |k: usize| groups[k].iter().any(|n| n.left < s.left - 1.0 && n.right() > s.right() + 1.0 && n.top <= s.top + 0.3 * s.height && n.text.split_whitespace().filter(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 3).count() >= 2);
-        let below = (0..groups.len())
-            .filter(|&k| groups[k][0].top >= s.top - 0.3 * s.height && groups[k][0].top <= s.top + 3.0 * s.height)
-            .filter(|&k| !in_words(k))
-            .min_by(|&a, &b| groups[a][0].top.total_cmp(&groups[b][0].top));
+        // (nor the last line of a paragraph that ends well before the
+        // sign: TeX sets a formula close under a short line, and the
+        // integral sign of the formula begins at that line's height. With
+        // the sign goes its upper limit, which stands in that line too.)
+        let wordy = |k: usize| groups[k].iter().flat_map(|n| n.text.split_whitespace()).filter(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 3).count() >= 2;
+        let far = |k: usize, n: &Span| (n.left - s.right()).max(s.left - n.right()) > 2.0 * size_of(&groups[k][0]);
+        let display_sign = matches!(s.text.trim(), "Z" | "I");
+        let candidates: Vec<usize> = (0..groups.len()).filter(|&k| groups[k][0].top >= s.top - 0.3 * s.height && groups[k][0].top <= s.top + 3.0 * s.height).filter(|&k| !in_words(k)).collect();
+        let at_head = |n: &Span| !big_symbol(n) && n.left >= s.right() - 2.0 && n.left - s.right() < size_of(n) && n.top >= s.top - 2.0 && n.top <= s.bottom();
+        let short_line = |k: usize| display_sign && wordy(k) && groups[k].iter().all(|n| far(k, n) || (at_head(n) && size_of(n) < 0.85 * size_of(&groups[k][0]))) && candidates.iter().any(|&m| groups[m][0].top > groups[k][0].top);
+        let over: Option<usize> = candidates.iter().copied().find(|&k| short_line(k));
+        let below = candidates.iter().copied().filter(|&k| Some(k) != over).min_by(|&a, &b| groups[a][0].top.total_cmp(&groups[b][0].top));
+        let limits: Vec<Span> = match (over, below) {
+            (Some(o), Some(_)) => {
+                let (mut with_sign, mut rest) = (Vec::new(), Vec::new());
+                for (j, n) in groups[o].iter().enumerate() {
+                    if j > 0 && at_head(n) { with_sign.push(n.clone()) } else { rest.push(n.clone()) }
+                }
+                groups[o] = rest;
+                with_sign
+            }
+            _ => Vec::new(),
+        };
         match below {
-            Some(k) => groups[k].push(s),
+            Some(k) => {
+                groups[k].push(s);
+                groups[k].extend(limits);
+            }
             None => groups.push(vec![s]),
         }
     }
