@@ -60,10 +60,10 @@ The effect of screening not only breaks the degeneracy between states with the s
 The Hartree method allows us to to change the 3$`Z`$ dimensional Schrödinger equation ($`Z`$ electrons in 3 dimensions) into a 3 dimensional **equation for each electron**. This equation depends on the wavefunctions of the other electrons but can be solved in a self consistent way using the variational principle and iterating.
 
 ```math
-\begin{aligned} \psi &= \phi_{1} ( \vec{r}_{1} ) \phi_{2} ( \vec{r}_{2} ) \dots \phi_{Z} ( \vec{r}_{Z} ) \\ \left[ \frac{- \hbar^{2}}{2 m} \nabla_{i}^{2} - \frac{Ze^{2}}{r_{i}} + e^{2} \sum_{j \neq i} \int d^{3} r_{j} \frac{| \phi_{j} ( \vec{r}_{j} ) |^{2}}{| \vec{r}_{i} - \vec{r}_{j} |} \right] \phi_{i} ( \vec{r}_{i} ) &= \epsilon_{i} \phi_{i} ( \vec{r}_{i} ) \end{aligned}
+\begin{aligned} \psi &= \phi_{1} ( \vec{r}_{1} ) \phi_{2} ( \vec{r}_{2} ) \dots \phi_{Z} ( \vec{r}_{Z} ) \\ \left[ \frac{- \hbar^{2}}{2 m} \nabla_{i}^{2} - \frac{Ze^{2}}{r_{i}} + e^{2} \sum_{j \neq i} \int d^{3} r_{j} \frac{| \phi_{j} ( \vec{r}_{j} ) |^{2}}{| \vec{r}_{i} - \vec{r}_{j} |} \right] \phi_{i} ( \vec{r}_{i} ) &= \varepsilon_{i} \phi_{i} ( \vec{r}_{i} ) \end{aligned}
 ```
 
-In the Hartree equation above, $`\epsilon_{i}`$ represents the energy contribution of electron $`i`$. The term $`e^{2} \sum_{j \neq i} \int d^{3} r_{j} \tfrac{| \phi_{j} ( \vec{r}_{j} ) |^{2}}{| \vec{r}_{i} - \vec{r}_{j} |}`$ represents the potential due to the other electrons in which electron $`i`$ moves.
+In the Hartree equation above, $`\varepsilon_{i}`$ represents the energy contribution of electron $`i`$. The term $`e^{2} \sum_{j \neq i} \int d^{3} r_{j} \tfrac{| \phi_{j} ( \vec{r}_{j} ) |^{2}}{| \vec{r}_{i} - \vec{r}_{j} |}`$ represents the potential due to the other electrons in which electron $`i`$ moves.
 
 In this equation we can formally see the effect of screening by the other electrons. The equation is derived (see Gasiorowicz pp 309-311) from the Schrödinger equation using $`\psi = \phi_{1} \phi_{2} \dots \phi_{Z}`$. Since we will not apply these equations to solve problems, we will not go into the derivation, however, it is useful to know how one might proceed to solve more difficult problems.
 

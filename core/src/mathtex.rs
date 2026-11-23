@@ -84,7 +84,9 @@ pub fn sym(c: char) -> Option<&'static str> {
         'β' => "\\beta ",
         'γ' => "\\gamma ",
         'δ' => "\\delta ",
-        'ε' | 'ϵ' | 'ǫ' | 'ɛ' => "\\epsilon ",
+        // (two letters: the curly ε, and the ϵ like a small "∈")
+        'ε' => "\\varepsilon ",
+        'ϵ' | 'ǫ' | 'ɛ' => "\\epsilon ",
         'ζ' => "\\zeta ",
         'η' => "\\eta ",
         'θ' => "\\theta ",
@@ -474,7 +476,12 @@ fn tex_plain(s: &MSpan) -> String {
         // (TeX's math italic has two phis, and a PDF gives the usual one,
         // \phi with its straight stroke, under either of two character
         // codes, depending on what made the PDF: see `set_phi`)
-        if PHI_OTHER.load(std::sync::atomic::Ordering::Relaxed) && s.family.to_uppercase().starts_with("CMMI") && (tex.contains("\\varphi") || tex.contains("\\phi")) {
+        // (the MathTime italic draws the curly phi for the code ϕ and the
+        // straight one for φ, always: the recognizer, which sees the
+        // shapes, named Zee's 852 to 10 so)
+        let family = s.family.to_uppercase();
+        let other = (PHI_OTHER.load(std::sync::atomic::Ordering::Relaxed) && family.starts_with("CMMI")) || family.starts_with("MTMI");
+        if other && (tex.contains("\\varphi") || tex.contains("\\phi")) {
             return tex.replace("\\varphi", "\u{1}").replace("\\phi", "\\varphi").replace('\u{1}', "\\phi");
         }
         tex

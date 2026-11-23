@@ -453,7 +453,7 @@ we find that it is zero everywhere but we must be careful at $`r = 0`$.
 To find the effect at $`r = 0`$ we will integrate.
 
 ```math
-\begin{aligned} \int_{r = 0}^{\epsilon} \vec{\nabla}^{2} \frac{1}{r} d^{3} r &= \int_{r = 0}^{\epsilon} \vec{\nabla} \cdot ( \vec{\nabla} \frac{1}{r} ) d^{3} r = \int ( \vec{\nabla} \frac{1}{r} ) \cdot d \vec{S} = \int \frac{\partial}{\partial r} \frac{1}{r} dS \\ &= \int_{r = 0}^{\epsilon} \frac{- 1}{r^{2}} dS = ( 4 \pi \epsilon^{2} ) ( \frac{- 1}{\epsilon^{2}} ) = - 4 \pi \end{aligned}
+\begin{aligned} \int_{r = 0}^{\varepsilon} \vec{\nabla}^{2} \frac{1}{r} d^{3} r &= \int_{r = 0}^{\varepsilon} \vec{\nabla} \cdot ( \vec{\nabla} \frac{1}{r} ) d^{3} r = \int ( \vec{\nabla} \frac{1}{r} ) \cdot d \vec{S} = \int \frac{\partial}{\partial r} \frac{1}{r} dS \\ &= \int_{r = 0}^{\varepsilon} \frac{- 1}{r^{2}} dS = ( 4 \pi \varepsilon^{2} ) ( \frac{- 1}{\varepsilon^{2}} ) = - 4 \pi \end{aligned}
 ```
 
 So the integral is nonzero for any region including the origin, which implies

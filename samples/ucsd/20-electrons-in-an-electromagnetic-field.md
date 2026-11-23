@@ -578,11 +578,11 @@ We need only prove that
 To prove this, we will expand the expression using the totally antisymmetric tensor.
 
 ```math
-\left( \vec{v} \times \vec{B} \right)_{i} = \left( \vec{v} \times \left( \nabla \times \vec{A} \right) \right)_{i} = v_{j} \left( \frac{\partial A_{n}}{\partial x_{m}} \epsilon_{mnk} \right) \epsilon_{jki} = v_{j} \frac{\partial A_{n}}{\partial x_{m}} ( \epsilon_{mnk} \epsilon_{jki} )
+\left( \vec{v} \times \vec{B} \right)_{i} = \left( \vec{v} \times \left( \nabla \times \vec{A} \right) \right)_{i} = v_{j} \left( \frac{\partial A_{n}}{\partial x_{m}} \varepsilon_{mnk} \right) \varepsilon_{jki} = v_{j} \frac{\partial A_{n}}{\partial x_{m}} ( \varepsilon_{mnk} \varepsilon_{jki} )
 ```
 
 ```math
-= - v_{j} \frac{\partial A_{n}}{\partial x_{m}} ( \epsilon_{mnk} \epsilon_{jik} ) = - v_{j} \frac{\partial A_{n}}{\partial x_{m}} ( \delta_{mj} \delta_{ni} - \delta_{mi} \delta_{nj} ) = + v_{j} \left( \frac{\partial A_{j}}{\partial x_{i}} - \frac{\partial A_{i}}{\partial x_{j}} \right) .
+= - v_{j} \frac{\partial A_{n}}{\partial x_{m}} ( \varepsilon_{mnk} \varepsilon_{jik} ) = - v_{j} \frac{\partial A_{n}}{\partial x_{m}} ( \delta_{mj} \delta_{ni} - \delta_{mi} \delta_{nj} ) = + v_{j} \left( \frac{\partial A_{j}}{\partial x_{i}} - \frac{\partial A_{i}}{\partial x_{j}} \right) .
 ```
 
 <div align="right"><a href="book.pdf#page=302" target="_blank" title="This page in the PDF"><sup>[p. 302]</sup></a></div>
@@ -628,15 +628,15 @@ Now for constant $`B_{z}`$, we **choose the vector potential**
 since
 
 ```math
-\left( \vec{\nabla} \times \vec{A} \right)_{k} = \frac{\partial}{\partial x_{i}} A_{j} \epsilon_{ijk} = - \frac{1}{2} \frac{\partial}{\partial x_{i}} ( x_{m} B_{n} \epsilon_{mnj} ) \epsilon_{ijk}
+\left( \vec{\nabla} \times \vec{A} \right)_{k} = \frac{\partial}{\partial x_{i}} A_{j} \varepsilon_{ijk} = - \frac{1}{2} \frac{\partial}{\partial x_{i}} ( x_{m} B_{n} \varepsilon_{mnj} ) \varepsilon_{ijk}
 ```
 
 ```math
-= - \frac{1}{2} \delta_{im} B_{n} \epsilon_{mnj} \epsilon_{ijk} = - \frac{1}{2} B_{n} \epsilon_{inj} \epsilon_{ijk}
+= - \frac{1}{2} \delta_{im} B_{n} \varepsilon_{mnj} \varepsilon_{ijk} = - \frac{1}{2} B_{n} \varepsilon_{inj} \varepsilon_{ijk}
 ```
 
 ```math
-= \frac{1}{2} B_{n} \left( \sum_{i} \sum_{j} \epsilon_{ijn} \epsilon_{ijk} \right) = \frac{1}{2} B_{k} \left( \sum_{i} \sum_{j} \epsilon_{ijk}^{2} \right) = B_{k}
+= \frac{1}{2} B_{n} \left( \sum_{i} \sum_{j} \varepsilon_{ijn} \varepsilon_{ijk} \right) = \frac{1}{2} B_{k} \left( \sum_{i} \sum_{j} \varepsilon_{ijk}^{2} \right) = B_{k}
 ```
 
 it gives the right field and satisfies the Coulomb gauge condition.
@@ -650,7 +650,7 @@ Substituting back, we obtain
 Now let’s work on the **vector arithmetic**.
 
 ```math
-\left( \vec{r} \times \vec{B} \cdot \vec{\nabla} \psi \right) = r_{i} B_{j} \epsilon_{ijk} \frac{\partial \psi}{\partial x_{k}} = - B_{j} \left( r_{i} \frac{\partial \psi}{\partial x_{k}} \epsilon_{ikj} \right) = - \vec{B} \cdot \vec{r} \times \vec{\nabla} \psi = - \frac{i}{\hbar} \vec{B} \cdot \vec{L} \psi
+\left( \vec{r} \times \vec{B} \cdot \vec{\nabla} \psi \right) = r_{i} B_{j} \varepsilon_{ijk} \frac{\partial \psi}{\partial x_{k}} = - B_{j} \left( r_{i} \frac{\partial \psi}{\partial x_{k}} \varepsilon_{ikj} \right) = - \vec{B} \cdot \vec{r} \times \vec{\nabla} \psi = - \frac{i}{\hbar} \vec{B} \cdot \vec{L} \psi
 ```
 
 <div align="right"><a href="book.pdf#page=303" target="_blank" title="This page in the PDF"><sup>[p. 303]</sup></a></div>
@@ -658,7 +658,7 @@ Now let’s work on the **vector arithmetic**.
 <a id="p304" href="book.pdf#page=304" target="_blank" title="This page in the PDF"><sup>[p. 304]</sup></a>
 
 ```math
-\left( \vec{r} \times \vec{B} \right)^{2} = r_{i} B_{j} \epsilon_{ijk} r_{m} B_{n} \epsilon_{mnk} = ( r_{i} B_{j} r_{i} B_{j} - r_{i} B_{j} r_{j} B_{i} )
+\left( \vec{r} \times \vec{B} \right)^{2} = r_{i} B_{j} \varepsilon_{ijk} r_{m} B_{n} \varepsilon_{mnk} = ( r_{i} B_{j} r_{i} B_{j} - r_{i} B_{j} r_{j} B_{i} )
 ```
 
 ```math
