@@ -342,6 +342,24 @@ TeX's symbol font has a quirk: in the PDF's text, ⟨ ⟩ come out as "h" and "i
 * **A row of pictures with a name under each** (portraits) is written as a row: each picture and its name one cell, and the caption under the row is the caption of each picture.
 * **On the title page**, a line in large type that stands well apart under the title and subtitle (the author's name, the date) is a line of the page in bold, not a heading of the book.
 
+### From the hand corrections of UCSD: lines of a display, limits, roots, matrices
+
+*Worked out on: the 66 displayed equations of UCSD that had been corrected by hand; 35 of them are now converted right. Each rule was kept only where Dyson, Zee, Lucid, Sakurai and the article lost nothing by it. The heights of TeX's big signs are fitted.*
+
+* **A small piece between two lines of a display goes with what it hangs on,** not with the line whose middle is nearer. An exponent or index is of the letter right before it (the square of a numerator's letter stands halfway up to the line above); what goes on at one height from a small piece is of that piece's line; the two halves of a small fraction (½) go with their short bar; an exponent at the head or an index at the foot of a tall closing bracket goes with the bracket. What stands between a pair of tall brackets stays with them.
+* **Limits go with their sign.** A big operator's box is only the font's height around its baseline; the sign hangs from there, 1.0 to 2.2 em deep by its character. A small piece right over its top or right under its foot is its limit and of its line. Where lines stand so close that the lower limit of one sign is at the place of an upper limit of the next line's, the nearer line decides as before. Only TeX's own extension font is measured so.
+* **A fraction's half that holds an integral or a sum** reaches as far as the sign and its limits; and the row of such a denominator, lower than a plain one, is no line of its own.
+* **A root's bar is of the line of its sign,** at the middle of the sign's height. Over a fraction the bar stands nearer the line above; given to that line, the root was left without its bar and took the rest of its own line.
+* **Pieces at the head and foot of a tall square bracket or brace** ("taken from 0 to ∞"; the "(+)" and "(−)" that mark a brace's two rows) hang on it as exponent and index. One over the other behind it they read as a fraction.
+* **Matrix columns.** The space around a sign in an entry ("σ·L + ħ") is wider than letters stand apart and narrower than columns: where it cut an entry in two, a column that most rows lack, the columns are told again with more room. Dots side by side in a matrix's last row are entries each.
+* **An index by the letters' height.** A small letter close behind a full-size one is its index when it stands a tenth of the letters' height off the row's middle; the taller boxes of signs in the row (a minus) do not count.
+* **Round brackets of full size around letters that are all small** take the letters' size (the denominator of a small fraction under a root, with a ½ inside the brackets): left large they alone would be the line, and every letter an index.
+* **A root sign with one small piece over another behind it** is the root of a small fraction, `\sqrt{\tfrac{2}{3}}`; **an index with a bar over it under an exponent** is a small fraction too (sinh χ/2).
+* **The small minus of a small fraction's numerator** is over the bar by its own size.
+* **In the text:** the upper limit standing on the head of a sum set in a line of words is of the sum's line, not an index of the line above; small pieces left as a line of their own right over a line, behind the head of a tall bracket of that line, are the bracket's exponent.
+
+What these rules do not mend, and stays corrected by hand in the user's book (see [What is kept between conversions](#what-is-kept-between-conversions)): matrices set inside a sentence, tables and lists of states set as formulas, rows set beside a bracket's rows, a product of matrices broken over two lines, fractions whose halves each begin with a sign in an aligned block, equations that run off the page.
+
 ### Symbols the text leaves out
 
 *Worked out on: Zee 2. One kind of PDF: MathTime fonts. The method (names from the font, places from the SVG) is general; the table of names is not.*
