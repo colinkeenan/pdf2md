@@ -614,11 +614,11 @@ c_{k,\alpha} \quad \to \quad \sqrt{\frac{\hbar c^{2}}{2 \omega}} a_{k,\alpha}
 ```
 
 ```math
-c_{k,\alpha}^{*} \quad \to \quad \sqrt{\frac{\hbar c^{2}}{2 \omega} a_{k,\alpha}^{\dagger}}
+c_{k,\alpha}^{*} \quad \to \quad \sqrt{\frac{\hbar c^{2}}{2 \omega}} a_{k,\alpha}^{\dagger}
 ```
 
 ```math
-A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + a_{k,\alpha}^{\dagger} ( t ) e^{- i \vec{k} \cdot \vec{x}} \right)}
+A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + a_{k,\alpha}^{\dagger} ( t ) e^{- i \vec{k} \cdot \vec{x}} \right)
 ```
 
 $`A`$ is now an operator that acts on state vectors in occupation number space. The operator is parameterized in terms of $`\vec{x}`$ and $`t`$. This type of operator is called a **field operator** or a **quantized field**.
@@ -868,7 +868,7 @@ We will first consider the **absorption of one photon from the field**. Assume t
 ```
 
 ```math
-= - \frac{e}{mc} \langle \psi_{n} ; n_{\vec{k} ,\alpha} - 1 | \frac{1}{\sqrt{V}} \sqrt{\frac{\hbar c^{2}}{2 \omega} \hat{\epsilon}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right) \cdot \vec{p} | \psi_{i} ; n_{\vec{k} ,\alpha} \rangle}
+= - \frac{e}{mc} \langle \psi_{n} ; n_{\vec{k} ,\alpha} - 1 | \frac{1}{\sqrt{V}} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \hat{\epsilon}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right) \cdot \vec{p} | \psi_{i} ; n_{\vec{k} ,\alpha} \rangle
 ```
 
 <div align="right"><a href="book.pdf#page=457" target="_blank" title="This page in the PDF"><sup>[p. 457]</sup></a></div>
@@ -884,7 +884,7 @@ We will first consider the **absorption of one photon from the field**. Assume t
 ```
 
 ```math
-= - \frac{e}{m} \frac{1}{\sqrt{V}} \sqrt{\frac{\hbar n_{\vec{k} ,\alpha}}{2 \omega} \langle \psi_{n} | e^{i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \alpha )} \cdot \vec{p} | \psi_{i} \rangle e^{- i\omega t}}
+= - \frac{e}{m} \frac{1}{\sqrt{V}} \sqrt{\frac{\hbar n_{\vec{k} ,\alpha}}{2 \omega}} \langle \psi_{n} | e^{i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \alpha )} \cdot \vec{p} | \psi_{i} \rangle e^{- i\omega t}
 ```
 
 Similarly, for the **emission of a photon** the matrix element is.
@@ -894,11 +894,11 @@ Similarly, for the **emission of a photon** the matrix element is.
 ```
 
 ```math
-\langle n | H_{int}^{( emit )} | i \rangle = - \frac{e}{mc} \frac{1}{\sqrt{V}} \sqrt{\frac{\hbar c^{2}}{2 \omega} \langle \psi_{n} ; n_{\vec{k} ,\alpha} + 1 | \hat{\epsilon}^{( \alpha )} \cdot \vec{p} a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} | \psi_{i} ; n_{\vec{k} ,\alpha} \rangle}
+\langle n | H_{int}^{( emit )} | i \rangle = - \frac{e}{mc} \frac{1}{\sqrt{V}} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \langle \psi_{n} ; n_{\vec{k} ,\alpha} + 1 | \hat{\epsilon}^{( \alpha )} \cdot \vec{p} a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} | \psi_{i} ; n_{\vec{k} ,\alpha} \rangle
 ```
 
 ```math
-= - \frac{e}{m} \frac{1}{\sqrt{V}} \sqrt{\frac{\hbar ( n_{\vec{k} ,\alpha} + 1 )}{2 \omega} \langle \psi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \alpha )} \cdot \vec{p} | \psi_{i} \rangle e^{i\omega t}}
+= - \frac{e}{m} \frac{1}{\sqrt{V}} \sqrt{\frac{\hbar ( n_{\vec{k} ,\alpha} + 1 )}{2 \omega}} \langle \psi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \alpha )} \cdot \vec{p} | \psi_{i} \rangle e^{i\omega t}
 ```
 
 These give the same result as our earlier guess to put an $`n + 1`$ in the emission operator (See Section 29.1).

@@ -232,7 +232,7 @@ We can proceed further, with the angular part of the (matrix element) integral.
 ```
 
 ```math
-= \sqrt{\frac{4 \pi}{3} \left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \right)}
+= \sqrt{\frac{4 \pi}{3}} \left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \right)
 ```
 
 ```math

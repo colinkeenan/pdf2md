@@ -2642,7 +2642,7 @@ The exponential will make everything go to zero for large $`\rho`$ if the power 
 ```
 
 ```math
-- \sqrt{\frac{k_{1}}{k_{2}} a_{m} - Z\alpha a_{m + 1} - b_{m} + ( s + m + 1 + \kappa ) b_{m + 1}} = 0
+- \sqrt{\frac{k_{1}}{k_{2}}} a_{m} - Z\alpha a_{m + 1} - b_{m} + ( s + m + 1 + \kappa ) b_{m + 1} = 0
 ```
 
 For the lowest order term $`\rho^{s}`$, we need to have a solution without lower powers. This means that we<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=528" target="_blank" title="This page in the PDF"><sup>[p. 528]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p529" href="book.pdf#page=529" target="_blank" title="This page in the PDF"><sup>[p. 529]</sup></a></span> **look at the** $`m = - 1`$ **recursion relations** with $`a_{m} = b_{m} = 0`$ and solve the equations.
@@ -3236,7 +3236,7 @@ H = \int \sum_{\vec{p}} \sum_{r = 1}^{4} \sum_{\vec{p}^{\prime}} \sum_{r^{\prime
 ```
 
 ```math
-H = \int \sum_{\vec{p}} \sum_{r = 1}^{4} \sum_{\vec{p}^{\prime}} \sum_{r^{\prime} = 1}^{4} \sqrt{\frac{mc^{2}}{| E^{\prime} | V} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} ( E ) \surd \frac{mc^{2}}{| E | V} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x}
+H = \int \sum_{\vec{p}} \sum_{r = 1}^{4} \sum_{\vec{p}^{\prime}} \sum_{r^{\prime} = 1}^{4} \sqrt{\frac{mc^{2}}{| E^{\prime} | V}} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} ( E ) \sqrt{\frac{mc^{2}}{| E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x
 ```
 
 ```math

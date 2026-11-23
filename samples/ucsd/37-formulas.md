@@ -134,11 +134,11 @@ L_{\pm} = L_{x} \pm iL_{y} \quad L_{\pm} Y_{\ell m} = \hbar \sqrt{\ell ( \ell + 
 ```
 
 ```math
-Y_{0 0} = \tfrac{1}{\sqrt{4 \pi}} \quad Y_{1 1} = - \sqrt{\tfrac{3}{8 \pi} e^{i\varphi} \sin \theta \quad Y_{1 0}} = \sqrt{\tfrac{3}{4 \pi} \cos \theta}
+Y_{0 0} = \tfrac{1}{\sqrt{4 \pi}} \quad Y_{1 1} = - \sqrt{\frac{3}{8 \pi}} e^{i\varphi} \sin \theta \quad Y_{1 0} = \sqrt{\frac{3}{4 \pi}} \cos \theta
 ```
 
 ```math
-Y_{2 2} = \sqrt{\tfrac{1 5}{3 2 \pi} e^{2 i\varphi} \sin^{2} \theta \quad Y_{2 1}} = - \sqrt{\tfrac{1 5}{8 \pi} e^{i\varphi} \sin \theta \cos \theta \quad Y_{2 0}} = \sqrt{\tfrac{5}{1 6 \pi} ( 3 \cos^{2} \theta - 1 )}
+Y_{2 2} = \sqrt{\frac{1 5}{3 2 \pi}} e^{2 i\varphi} \sin^{2} \theta \quad Y_{2 1} = - \sqrt{\frac{1 5}{8 \pi}} e^{i\varphi} \sin \theta \cos \theta \quad Y_{2 0} = \sqrt{\frac{5}{1 6 \pi}} ( 3 \cos^{2} \theta - 1 )
 ```
 
 ```math
@@ -184,7 +184,7 @@ n = n_{r} + \ell + 1 \quad a_{0} = \tfrac{\hbar}{\alpha \mu c} \quad \ell = 0 , 
 ```
 
 ```math
-R_{n\ell} ( \rho ) = \rho^{\ell} \sum_{k = 0}^{\infty} a_{k} \rho^{k} e^{- \rho / 2} \quad a_{k + 1} = \tfrac{k + \ell + 1 - n}{( k + 1 ) ( k + 2 \ell + 2 )} a_{k} \quad \rho = \sqrt{\tfrac{- 8 \mu E}{\hbar^{2}} r} = \tfrac{2 r}{na_{0}}
+R_{n\ell} ( \rho ) = \rho^{\ell} \sum_{k = 0}^{\infty} a_{k} \rho^{k} e^{- \rho / 2} \quad a_{k + 1} = \tfrac{k + \ell + 1 - n}{( k + 1 ) ( k + 2 \ell + 2 )} a_{k} \quad \rho = \sqrt{\frac{- 8 \mu E}{\hbar^{2}}} r = \tfrac{2 r}{na_{0}}
 ```
 
 ```math
@@ -256,7 +256,7 @@ $`\Gamma_{i \to f} =`$<sup>2</sup>$`\tfrac{\pi}{\hbar} \int \prod_{k} ( \tfrac{V
 ```
 
 ```math
-\hat{\epsilon} \cdot \hat{r} = \sqrt{\tfrac{4 \pi}{3} ( \epsilon_{z} Y_{1 0} + \tfrac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \tfrac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} ) \quad \hat{\epsilon} \cdot \vec{k}} = 0
+\hat{\epsilon} \cdot \hat{r} = \sqrt{\frac{4 \pi}{3}} ( \epsilon_{z} Y_{1 0} + \tfrac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \tfrac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} ) \quad \hat{\epsilon} \cdot \vec{k} = 0
 ```
 
 ```math

@@ -207,7 +207,7 @@ H_{nj} = \langle n | H_{\vec{k} ,\alpha}^{abs} | j \rangle
 ```
 
 ```math
-H^{abs} = - \sqrt{\frac{\hbar e^{2}}{2 m^{2} \omega V} e^{i \vec{k} \cdot \vec{x}} \vec{p} \cdot \hat{\epsilon}^{( \alpha )}}
+H^{abs} = - \sqrt{\frac{\hbar e^{2}}{2 m^{2} \omega V}} e^{i \vec{k} \cdot \vec{x}} \vec{p} \cdot \hat{\epsilon}^{( \alpha )}
 ```
 
 ```math

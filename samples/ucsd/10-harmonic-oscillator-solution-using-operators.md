@@ -416,7 +416,7 @@ We should have seen that coming. Since each term in the $`x`$ operator changes t
 ```
 
 ```math
-= \sqrt{\frac{\hbar}{8 m\omega} ( 1 + 1 )}
+= \sqrt{\frac{\hbar}{8 m\omega}} ( 1 + 1 )
 ```
 
 ```math
@@ -573,7 +573,7 @@ x = \sqrt{\frac{\hbar}{2 m\omega}} ( A + A^{\dagger} )
 ```
 
 ```math
-p = \frac{1}{i} \sqrt{\frac{m \hbar \omega}{2} ( A - A^{\dagger} )}
+p = \frac{1}{i} \sqrt{\frac{m \hbar \omega}{2}} ( A - A^{\dagger} )
 ```
 
 ```math

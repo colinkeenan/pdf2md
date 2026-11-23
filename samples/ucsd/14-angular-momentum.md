@@ -146,7 +146,7 @@ m = - \ell , - \ell + 1 ,\dots ,\ell
 ```
 
 ```math
-L_{\pm} Y_{\ell m} = \hbar \sqrt{\ell ( \ell + 1 ) - m ( m \pm 1 ) Y_{\ell ( m \pm 1 )}}
+L_{\pm} Y_{\ell m} = \hbar \sqrt{\ell ( \ell + 1 ) - m ( m \pm 1 )} Y_{\ell ( m \pm 1 )}
 ```
 
 Therefore, $`L_{+}`$ raises the $`z`$ component of angular momentum by one unit of $`\hbar`$ and $`L_{-}`$ lowers it by one unit. The raising stops when $`m = \ell`$ and the operation gives zero, $`L_{+} Y_{\ell \ell} = 0`$. Similarly, the lowering stops because $`L_{-} Y_{\ell - \ell} = 0`$.
@@ -187,16 +187,16 @@ We will also find the following equations useful (and easy to compute).
 L^{2} = L_{+} L_{-} + L_{z}^{2} - \hbar L_{z} .
 ```
 
-\* See Example 14.5.1: What is the expectation value of $`L_{z}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \surd_{3}^{2} Y_{1 1} ( \theta ,\varphi ) -`$
+\* See Example 14.5.1: What is the expectation value of $`L_{z}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\tfrac{2}{3}} Y_{1 1} ( \theta ,\varphi ) -`$
 
 ```math
-i \surd_{3}^{1} Y_{1 - 1} ( \theta ,\varphi ) ) ? *
+i \sqrt{\tfrac{1}{3}} Y_{1 - 1} ( \theta ,\varphi ) ) ? *
 ```
 
-\* See Example 14.5.2: What is the expectation value of $`L_{x}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \surd_{3}^{2} Y_{1 1} ( \theta ,\varphi ) -`$
+\* See Example 14.5.2: What is the expectation value of $`L_{x}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\tfrac{2}{3}} Y_{1 1} ( \theta ,\varphi ) -`$
 
 ```math
-\surd_{3}^{1} Y_{1 0} ( \theta ,\varphi ) ) ? *
+\sqrt{\tfrac{1}{3}} Y_{1 0} ( \theta ,\varphi ) ) ? *
 ```
 
 # <a id="s-14-3-the-angular-momentum-eigenfunctions"></a>14.3 The Angular Momentum Eigenfunctions

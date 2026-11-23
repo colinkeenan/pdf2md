@@ -1181,6 +1181,17 @@ fn root_depth(sign: &MSpan, size: f32) -> f32 {
     steps * sign.size.max(0.6 * size)
 }
 
+/// How far under its bar the middle of a root sign is: half the sign's
+/// height (the line of a fraction under a tall sign), half a line for a
+/// sign of another maker's font, whose height is not known.
+fn sign_middle(sign: &MSpan, size: f32) -> f32 {
+    if sign.family.contains('/') {
+        0.5 * size
+    } else {
+        (0.5 * root_depth(sign, size)).max(0.5 * size)
+    }
+}
+
 /// Turn fraction bars and root bars into ready-made pieces.
 ///
 /// A bar with symbols right above *and* right below it (within its width)
@@ -1613,7 +1624,57 @@ fn tidy(s: &str) -> String {
     // (the long arrow, set as a minus sign run into an arrow)
     let s = s.replace("-\\to ", "\\longrightarrow ").replace("- \\to ", "\\longrightarrow ");
     let s = if let Some(head) = s.strip_suffix("-\\to") { format!("{head}\\longrightarrow") } else { s };
+    let s = rooted_fraction(&s);
     slashed(&s.replace("\\not =", "\\neq").replace("\\not=", "\\neq").replace("\\not{=}", "\\neq"))
+}
+
+/// A root sign with one small piece over another right behind it is the
+/// root of a small fraction, √⅔: the bars of the root and of the fraction
+/// are too short to have been read, and the two pieces come out as the
+/// sign's exponent and index, which a root sign does not have.
+fn rooted_fraction(s: &str) -> String {
+    const SIGN: &str = "\\surd_{";
+    let mut out = String::with_capacity(s.len());
+    let mut rest = s;
+    // (the group in braces that `t` opens with: its inside and what follows)
+    let group = |t: &str| -> Option<(usize, usize)> {
+        let mut depth = 0usize;
+        for (i, c) in t.char_indices() {
+            match c {
+                '{' => depth += 1,
+                '}' => {
+                    depth -= 1;
+                    if depth == 0 {
+                        return Some((1, i));
+                    }
+                }
+                _ => {}
+            }
+        }
+        None
+    };
+    while let Some(i) = rest.find(SIGN) {
+        let from = i + SIGN.len() - 1;
+        let parts = group(&rest[from..]).and_then(|(a, b)| {
+            let under = &rest[from + a..from + b];
+            let after = &rest[from + b + 1..];
+            let (c, d) = group(after.strip_prefix('^')?)?;
+            Some((under, &after[1 + c..1 + d], from + b + 1 + 1 + d + 1))
+        });
+        match parts {
+            Some((under, over, end)) => {
+                out.push_str(&rest[..i]);
+                out.push_str(&format!("\\sqrt{{\\tfrac{{{over}}}{{{under}}}}}"));
+                rest = &rest[end..];
+            }
+            None => {
+                out.push_str(&rest[..from]);
+                rest = &rest[from..];
+            }
+        }
+    }
+    out.push_str(rest);
+    out
 }
 
 /// The stroke through a letter (Feynman's slash: p̸, ∂̸) as the letter with
@@ -3555,7 +3616,9 @@ pub fn display(
         // of a fraction under or over the root; a tall root, read from its
         // outline, has its true middle)
         let own = if is_radical(s) && s.bottom - s.top <= 1.5 * max {
-            bars.iter().filter(|b| (b.left - s.right).abs() <= 3.0 && b.top >= s.top - 2.0 && s.bottom >= b.top - 2.0).min_by(|a, b| a.top.total_cmp(&b.top)).map_or(s.cy(), |b| b.bottom + 0.5 * max)
+            // (… as far under the bar as half the sign's height: a tall
+            // sign's middle is the line of the fraction under it)
+            bars.iter().filter(|b| (b.left - s.right).abs() <= 3.0 && b.top >= s.top - 2.0 && s.bottom >= b.top - 2.0).min_by(|a, b| a.top.total_cmp(&b.top)).map_or(s.cy(), |b| b.bottom + sign_middle(s, max))
         } else if let Some(depth) = op_depth(s) {
             // (a big operator's box is only its top: its true middle)
             op_top(s) + 0.5 * depth * s.size
@@ -3587,6 +3650,10 @@ pub fn display(
     // (a fraction's bar between a pair of tall brackets is of their line too)
     let bar_home = |r: &Rule| -> f32 {
         let y = (r.top + r.bottom) / 2.0;
+        // (the bar of a root is of the line of its sign, which hangs
+        // under it: over a fraction it stands nearer the line above)
+        let sign = rest.iter().find(|s| is_radical(s) && s.bottom - s.top <= 1.5 * max && (r.left - s.right).abs() <= 3.0 && r.top >= s.top - 2.0 && s.bottom >= r.top - 2.0);
+        let y = sign.map_or(y, |s| r.bottom + sign_middle(s, max));
         tall.iter()
             .filter(|b| y > b.top && y < b.bottom && b.right <= r.left + 1.0)
             .max_by(|a, b| a.right.total_cmp(&b.right))
@@ -3802,6 +3869,13 @@ mod tests {
         // one row: nothing to line up
         assert_eq!(super::aligned(&["".to_string(), "x = 1".to_string()]), "x = 1");
         assert_eq!(super::aligned(&["x = 1".to_string(), "= 2".to_string()]), "\\begin{aligned} x &= 1 \\\\ &= 2 \\end{aligned}");
+    }
+
+    #[test]
+    fn a_root_sign_with_a_small_fraction_behind_it() {
+        assert_eq!(rooted_fraction("i \\surd_{3}^{1} Y_{1 - 1}"), "i \\sqrt{\\tfrac{1}{3}} Y_{1 - 1}");
+        assert_eq!(rooted_fraction("\\surd_{a_{0}}^{2 x} + \\surd x"), "\\sqrt{\\tfrac{2 x}{a_{0}}} + \\surd x");
+        assert_eq!(rooted_fraction("\\surd_{3} y"), "\\surd_{3} y");
     }
 
     #[test]

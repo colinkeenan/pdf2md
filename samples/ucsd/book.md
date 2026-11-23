@@ -8774,7 +8774,7 @@ We should have seen that coming. Since each term in the $`x`$ operator changes t
 ```
 
 ```math
-= \sqrt{\frac{\hbar}{8 m\omega} ( 1 + 1 )}
+= \sqrt{\frac{\hbar}{8 m\omega}} ( 1 + 1 )
 ```
 
 ```math
@@ -8931,7 +8931,7 @@ x = \sqrt{\frac{\hbar}{2 m\omega}} ( A + A^{\dagger} )
 ```
 
 ```math
-p = \frac{1}{i} \sqrt{\frac{m \hbar \omega}{2} ( A - A^{\dagger} )}
+p = \frac{1}{i} \sqrt{\frac{m \hbar \omega}{2}} ( A - A^{\dagger} )
 ```
 
 ```math
@@ -10260,7 +10260,7 @@ m = - \ell , - \ell + 1 ,\dots ,\ell
 ```
 
 ```math
-L_{\pm} Y_{\ell m} = \hbar \sqrt{\ell ( \ell + 1 ) - m ( m \pm 1 ) Y_{\ell ( m \pm 1 )}}
+L_{\pm} Y_{\ell m} = \hbar \sqrt{\ell ( \ell + 1 ) - m ( m \pm 1 )} Y_{\ell ( m \pm 1 )}
 ```
 
 Therefore, $`L_{+}`$ raises the $`z`$ component of angular momentum by one unit of $`\hbar`$ and $`L_{-}`$ lowers it by one unit. The raising stops when $`m = \ell`$ and the operation gives zero, $`L_{+} Y_{\ell \ell} = 0`$. Similarly, the lowering stops because $`L_{-} Y_{\ell - \ell} = 0`$.
@@ -10301,16 +10301,16 @@ We will also find the following equations useful (and easy to compute).
 L^{2} = L_{+} L_{-} + L_{z}^{2} - \hbar L_{z} .
 ```
 
-\* See Example 14.5.1: What is the expectation value of $`L_{z}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \surd_{3}^{2} Y_{1 1} ( \theta ,\varphi ) -`$
+\* See Example 14.5.1: What is the expectation value of $`L_{z}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\tfrac{2}{3}} Y_{1 1} ( \theta ,\varphi ) -`$
 
 ```math
-i \surd_{3}^{1} Y_{1 - 1} ( \theta ,\varphi ) ) ? *
+i \sqrt{\tfrac{1}{3}} Y_{1 - 1} ( \theta ,\varphi ) ) ? *
 ```
 
-\* See Example 14.5.2: What is the expectation value of $`L_{x}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \surd_{3}^{2} Y_{1 1} ( \theta ,\varphi ) -`$
+\* See Example 14.5.2: What is the expectation value of $`L_{x}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\tfrac{2}{3}} Y_{1 1} ( \theta ,\varphi ) -`$
 
 ```math
-\surd_{3}^{1} Y_{1 0} ( \theta ,\varphi ) ) ? *
+\sqrt{\tfrac{1}{3}} Y_{1 0} ( \theta ,\varphi ) ) ? *
 ```
 
 # <a id="s-14-3-the-angular-momentum-eigenfunctions"></a>14.3 The Angular Momentum Eigenfunctions
@@ -20089,7 +20089,7 @@ We can proceed further, with the angular part of the (matrix element) integral.
 ```
 
 ```math
-= \sqrt{\frac{4 \pi}{3} \left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \right)}
+= \sqrt{\frac{4 \pi}{3}} \left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \right)
 ```
 
 ```math
@@ -22673,11 +22673,11 @@ c_{k,\alpha} \quad \to \quad \sqrt{\frac{\hbar c^{2}}{2 \omega}} a_{k,\alpha}
 ```
 
 ```math
-c_{k,\alpha}^{*} \quad \to \quad \sqrt{\frac{\hbar c^{2}}{2 \omega} a_{k,\alpha}^{\dagger}}
+c_{k,\alpha}^{*} \quad \to \quad \sqrt{\frac{\hbar c^{2}}{2 \omega}} a_{k,\alpha}^{\dagger}
 ```
 
 ```math
-A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + a_{k,\alpha}^{\dagger} ( t ) e^{- i \vec{k} \cdot \vec{x}} \right)}
+A_{\mu} = \frac{1}{\sqrt{V}} \sum_{k\alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \epsilon_{\mu}^{( \alpha )} \left( a_{k,\alpha} ( t ) e^{i \vec{k} \cdot \vec{x}} + a_{k,\alpha}^{\dagger} ( t ) e^{- i \vec{k} \cdot \vec{x}} \right)
 ```
 
 $`A`$ is now an operator that acts on state vectors in occupation number space. The operator is parameterized in terms of $`\vec{x}`$ and $`t`$. This type of operator is called a **field operator** or a **quantized field**.
@@ -22927,7 +22927,7 @@ We will first consider the **absorption of one photon from the field**. Assume t
 ```
 
 ```math
-= - \frac{e}{mc} \langle \psi_{n} ; n_{\vec{k} ,\alpha} - 1 | \frac{1}{\sqrt{V}} \sqrt{\frac{\hbar c^{2}}{2 \omega} \hat{\epsilon}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right) \cdot \vec{p} | \psi_{i} ; n_{\vec{k} ,\alpha} \rangle}
+= - \frac{e}{mc} \langle \psi_{n} ; n_{\vec{k} ,\alpha} - 1 | \frac{1}{\sqrt{V}} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \hat{\epsilon}^{( \alpha )} \left( a_{k,\alpha} ( 0 ) e^{ik_{\rho} x_{\rho}} + a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} \right) \cdot \vec{p} | \psi_{i} ; n_{\vec{k} ,\alpha} \rangle
 ```
 
 <div align="right"><a href="book.pdf#page=457" target="_blank" title="This page in the PDF"><sup>[p. 457]</sup></a></div>
@@ -22943,7 +22943,7 @@ We will first consider the **absorption of one photon from the field**. Assume t
 ```
 
 ```math
-= - \frac{e}{m} \frac{1}{\sqrt{V}} \sqrt{\frac{\hbar n_{\vec{k} ,\alpha}}{2 \omega} \langle \psi_{n} | e^{i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \alpha )} \cdot \vec{p} | \psi_{i} \rangle e^{- i\omega t}}
+= - \frac{e}{m} \frac{1}{\sqrt{V}} \sqrt{\frac{\hbar n_{\vec{k} ,\alpha}}{2 \omega}} \langle \psi_{n} | e^{i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \alpha )} \cdot \vec{p} | \psi_{i} \rangle e^{- i\omega t}
 ```
 
 Similarly, for the **emission of a photon** the matrix element is.
@@ -22953,11 +22953,11 @@ Similarly, for the **emission of a photon** the matrix element is.
 ```
 
 ```math
-\langle n | H_{int}^{( emit )} | i \rangle = - \frac{e}{mc} \frac{1}{\sqrt{V}} \sqrt{\frac{\hbar c^{2}}{2 \omega} \langle \psi_{n} ; n_{\vec{k} ,\alpha} + 1 | \hat{\epsilon}^{( \alpha )} \cdot \vec{p} a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} | \psi_{i} ; n_{\vec{k} ,\alpha} \rangle}
+\langle n | H_{int}^{( emit )} | i \rangle = - \frac{e}{mc} \frac{1}{\sqrt{V}} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \langle \psi_{n} ; n_{\vec{k} ,\alpha} + 1 | \hat{\epsilon}^{( \alpha )} \cdot \vec{p} a_{k,\alpha}^{\dagger} ( 0 ) e^{- ik_{\rho} x_{\rho}} | \psi_{i} ; n_{\vec{k} ,\alpha} \rangle
 ```
 
 ```math
-= - \frac{e}{m} \frac{1}{\sqrt{V}} \sqrt{\frac{\hbar ( n_{\vec{k} ,\alpha} + 1 )}{2 \omega} \langle \psi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \alpha )} \cdot \vec{p} | \psi_{i} \rangle e^{i\omega t}}
+= - \frac{e}{m} \frac{1}{\sqrt{V}} \sqrt{\frac{\hbar ( n_{\vec{k} ,\alpha} + 1 )}{2 \omega}} \langle \psi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \alpha )} \cdot \vec{p} | \psi_{i} \rangle e^{i\omega t}
 ```
 
 These give the same result as our earlier guess to put an $`n + 1`$ in the emission operator (See Section 29.1).
@@ -23764,7 +23764,7 @@ H_{nj} = \langle n | H_{\vec{k} ,\alpha}^{abs} | j \rangle
 ```
 
 ```math
-H^{abs} = - \sqrt{\frac{\hbar e^{2}}{2 m^{2} \omega V} e^{i \vec{k} \cdot \vec{x}} \vec{p} \cdot \hat{\epsilon}^{( \alpha )}}
+H^{abs} = - \sqrt{\frac{\hbar e^{2}}{2 m^{2} \omega V}} e^{i \vec{k} \cdot \vec{x}} \vec{p} \cdot \hat{\epsilon}^{( \alpha )}
 ```
 
 ```math
@@ -26719,7 +26719,7 @@ The exponential will make everything go to zero for large $`\rho`$ if the power 
 ```
 
 ```math
-- \sqrt{\frac{k_{1}}{k_{2}} a_{m} - Z\alpha a_{m + 1} - b_{m} + ( s + m + 1 + \kappa ) b_{m + 1}} = 0
+- \sqrt{\frac{k_{1}}{k_{2}}} a_{m} - Z\alpha a_{m + 1} - b_{m} + ( s + m + 1 + \kappa ) b_{m + 1} = 0
 ```
 
 For the lowest order term $`\rho^{s}`$, we need to have a solution without lower powers. This means that we<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=528" target="_blank" title="This page in the PDF"><sup>[p. 528]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p529" href="book.pdf#page=529" target="_blank" title="This page in the PDF"><sup>[p. 529]</sup></a></span> **look at the** $`m = - 1`$ **recursion relations** with $`a_{m} = b_{m} = 0`$ and solve the equations.
@@ -27313,7 +27313,7 @@ H = \int \sum_{\vec{p}} \sum_{r = 1}^{4} \sum_{\vec{p}^{\prime}} \sum_{r^{\prime
 ```
 
 ```math
-H = \int \sum_{\vec{p}} \sum_{r = 1}^{4} \sum_{\vec{p}^{\prime}} \sum_{r^{\prime} = 1}^{4} \sqrt{\frac{mc^{2}}{| E^{\prime} | V} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} ( E ) \surd \frac{mc^{2}}{| E | V} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x}
+H = \int \sum_{\vec{p}} \sum_{r = 1}^{4} \sum_{\vec{p}^{\prime}} \sum_{r^{\prime} = 1}^{4} \sqrt{\frac{mc^{2}}{| E^{\prime} | V}} c_{\vec{p}^{\prime} ,r^{\prime}}^{*} u_{\vec{p}^{\prime}}^{( r^{\prime} ) \dagger} e^{- i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} ( E ) \sqrt{\frac{mc^{2}}{| E | V}} c_{\vec{p} ,r} u_{\vec{p}}^{( r )} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar} d^{3} x
 ```
 
 ```math
@@ -27720,11 +27720,11 @@ L_{\pm} = L_{x} \pm iL_{y} \quad L_{\pm} Y_{\ell m} = \hbar \sqrt{\ell ( \ell + 
 ```
 
 ```math
-Y_{0 0} = \tfrac{1}{\sqrt{4 \pi}} \quad Y_{1 1} = - \sqrt{\tfrac{3}{8 \pi} e^{i\varphi} \sin \theta \quad Y_{1 0}} = \sqrt{\tfrac{3}{4 \pi} \cos \theta}
+Y_{0 0} = \tfrac{1}{\sqrt{4 \pi}} \quad Y_{1 1} = - \sqrt{\frac{3}{8 \pi}} e^{i\varphi} \sin \theta \quad Y_{1 0} = \sqrt{\frac{3}{4 \pi}} \cos \theta
 ```
 
 ```math
-Y_{2 2} = \sqrt{\tfrac{1 5}{3 2 \pi} e^{2 i\varphi} \sin^{2} \theta \quad Y_{2 1}} = - \sqrt{\tfrac{1 5}{8 \pi} e^{i\varphi} \sin \theta \cos \theta \quad Y_{2 0}} = \sqrt{\tfrac{5}{1 6 \pi} ( 3 \cos^{2} \theta - 1 )}
+Y_{2 2} = \sqrt{\frac{1 5}{3 2 \pi}} e^{2 i\varphi} \sin^{2} \theta \quad Y_{2 1} = - \sqrt{\frac{1 5}{8 \pi}} e^{i\varphi} \sin \theta \cos \theta \quad Y_{2 0} = \sqrt{\frac{5}{1 6 \pi}} ( 3 \cos^{2} \theta - 1 )
 ```
 
 ```math
@@ -27770,7 +27770,7 @@ n = n_{r} + \ell + 1 \quad a_{0} = \tfrac{\hbar}{\alpha \mu c} \quad \ell = 0 , 
 ```
 
 ```math
-R_{n\ell} ( \rho ) = \rho^{\ell} \sum_{k = 0}^{\infty} a_{k} \rho^{k} e^{- \rho / 2} \quad a_{k + 1} = \tfrac{k + \ell + 1 - n}{( k + 1 ) ( k + 2 \ell + 2 )} a_{k} \quad \rho = \sqrt{\tfrac{- 8 \mu E}{\hbar^{2}} r} = \tfrac{2 r}{na_{0}}
+R_{n\ell} ( \rho ) = \rho^{\ell} \sum_{k = 0}^{\infty} a_{k} \rho^{k} e^{- \rho / 2} \quad a_{k + 1} = \tfrac{k + \ell + 1 - n}{( k + 1 ) ( k + 2 \ell + 2 )} a_{k} \quad \rho = \sqrt{\frac{- 8 \mu E}{\hbar^{2}}} r = \tfrac{2 r}{na_{0}}
 ```
 
 ```math
@@ -27842,7 +27842,7 @@ $`\Gamma_{i \to f} =`$<sup>2</sup>$`\tfrac{\pi}{\hbar} \int \prod_{k} ( \tfrac{V
 ```
 
 ```math
-\hat{\epsilon} \cdot \hat{r} = \sqrt{\tfrac{4 \pi}{3} ( \epsilon_{z} Y_{1 0} + \tfrac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \tfrac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} ) \quad \hat{\epsilon} \cdot \vec{k}} = 0
+\hat{\epsilon} \cdot \hat{r} = \sqrt{\frac{4 \pi}{3}} ( \epsilon_{z} Y_{1 0} + \tfrac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \tfrac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} ) \quad \hat{\epsilon} \cdot \vec{k} = 0
 ```
 
 ```math
