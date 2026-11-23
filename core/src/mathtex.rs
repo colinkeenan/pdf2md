@@ -488,7 +488,7 @@ fn tex_plain(s: &MSpan) -> String {
         return t.chars().map(|c| format!("\\mathscr{{{c}}}")).collect::<Vec<_>>().join(" ");
     }
     // Blackboard bold (𝕀, ℝ ...): the AMS font stores them as plain letters.
-    if s.family.starts_with("MSBM") && t.chars().all(|c| c.is_ascii_alphabetic()) && !t.is_empty() {
+    if (s.family.starts_with("MSBM") || crate::layout::doubled_font(&s.family)) && t.chars().all(|c| c.is_ascii_alphabetic()) && !t.is_empty() {
         return t.chars().map(|c| format!("\\mathbb{{{c}}}")).collect::<Vec<_>>().join(" ");
     }
     if s.math {
@@ -3672,11 +3672,33 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
             Some(p) => p,
             None => "{}".to_string(),
         };
-        if !sub.is_empty() {
-            t += &format!("_{{{sub}}}");
-        }
-        if !sup.is_empty() {
-            t += &format!("^{{{sup}}}");
+        // The indices of a tensor, one after the other: Λ^μ_ν with the ν
+        // behind the μ, not under it. Each keeps its place in the row.
+        // (Not the limits of an integral sign, which slants: its upper
+        // limit begins where the lower one ends.)
+        // (An upper index that only begins where a narrow lower one ends
+        // stands over it all the same, moved right by the slant of its
+        // letter, Y with ℓ under m: the upper one must begin clear of it.)
+        let behind = |first: &[&Item], then: &[&Item], by: f32| first.last().zip(then.first()).is_some_and(|(a, b)| a.right <= b.left + by);
+        // (In a book set by TeX, where that is meant: the pages of an
+        // ebook set every upper index behind the lower one, having no
+        // way to set it over it.)
+        let tex_set = sups.iter().chain(subs.iter()).flat_map(|it| it.src.iter()).any(|&k| {
+            let f = spans[k].family.to_uppercase();
+            ["CM", "MT", "MS", "EU", "RSFS"].iter().any(|p| f.starts_with(p))
+        });
+        let sign = !tex_set || ["\\int", "\\oint", "\\sum", "\\prod", "\\lim", "{}"].iter().any(|op| t.trim_start().starts_with(op));
+        if !sub.is_empty() && !sup.is_empty() && !sign && behind(&sups, &subs, 1.0) {
+            t += &format!("^{{{sup}}}{{}}_{{{sub}}}");
+        } else if !sub.is_empty() && !sup.is_empty() && !sign && behind(&subs, &sups, -1.0) {
+            t += &format!("_{{{sub}}}{{}}^{{{sup}}}");
+        } else {
+            if !sub.is_empty() {
+                t += &format!("_{{{sub}}}");
+            }
+            if !sup.is_empty() {
+                t += &format!("^{{{sup}}}");
+            }
         }
         out.push(t);
     }

@@ -210,7 +210,17 @@ pub struct Doc {
 
 /// Fonts that only ever contain math symbols. TeX books use the Computer
 /// Modern / AMS fonts; others use names containing "Math" or "Symbol".
+/// The fonts of letters with a doubled stem that TeX has besides its own
+/// (the packages dsfont, bbm, bbold): ℝ, and the 1 of the identity.
+pub fn doubled_font(family: &str) -> bool {
+    let f = family.to_uppercase();
+    ["DSROM", "DSSS", "BBM", "BBOLD"].iter().any(|p| f.starts_with(p))
+}
+
 pub fn is_math_font(family: &str) -> bool {
+    if doubled_font(family) {
+        return true;
+    }
     const PREFIXES: &[&str] = &["CMMI", "CMSY", "CMEX", "MSAM", "MSBM", "EUFM", "EUEX", "RSFS", "MTMI", "MTSY", "MTEX"];
     const CONTAINS: &[&str] = &["MATH", "SYMBOL", "STIX", "EULER"];
     let f = family.to_uppercase();
@@ -2969,6 +2979,8 @@ pub fn parse_xml_with(xml: &str, lost: &HashMap<String, bool>) -> Result<Doc, St
                 // PDF that does not say what its letters mean gives "0")
                 let symbols = fonts.get(num(n, "font") as usize).is_some_and(|f| f.family.starts_with("CMSY"));
                 let text = if symbols && !text.trim().is_empty() && text.trim().chars().all(|c| c == '0') { text.replace('0', "′") } else { text };
+                // (the 1 of a font of doubled letters is the identity's)
+                let text = if fonts.get(num(n, "font") as usize).is_some_and(|f| doubled_font(&f.family)) { text.replace('1', "𝟙") } else { text };
                 // (… and the foot of "↦" where the figure 7 is: TeX draws
                 // that arrow as the foot and "→" over it)
                 let text = if symbols && text.contains('7') { text.replace("7→", "↦").replace("7 →", "↦") } else { text };

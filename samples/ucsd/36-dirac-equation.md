@@ -2922,7 +2922,7 @@ c_{\vec{p}^{\prime} ,r^{\prime} ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 2
 ```
 
 ```math
-c_{\vec{p}^{\prime} ,r^{\prime} ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 2 )} ( t ) = \frac{ie^{2}}{4 mV \sqrt{\omega^{\prime} \omega}} \chi^{( r^{\prime} ) \dagger} [ \sigma_{i} \sigma_{j} + \sigma_{j} \sigma_{i} ] \hat{\epsilon}_{i} \hat{\epsilon}_{j}^{\prime} \chi^{( r )} \int_{0}^{t} dt_{2} e^{i ( E^{\prime} - E + \hbar \omega^{\prime} - \hbar \omega ) t_{2} / \hbar}
+c_{\vec{p}^{\prime} ,r^{\prime} ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 2 )} ( t ) = \frac{ie^{2}}{4 mV \sqrt{\omega^{\prime} \omega}} \chi^{( r^{\prime} ) \dagger} [ \sigma_{i} \sigma_{j} + \sigma_{j} \sigma_{i} ] \hat{\epsilon}_{i} \hat{\epsilon}^{\prime}{}_{j} \chi^{( r )} \int_{0}^{t} dt_{2} e^{i ( E^{\prime} - E + \hbar \omega^{\prime} - \hbar \omega ) t_{2} / \hbar}
 ```
 
 ```math

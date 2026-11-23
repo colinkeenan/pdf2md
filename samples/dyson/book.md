@@ -2604,7 +2604,7 @@ The process of reinterpreting a one-particle wave-function like the Dirac $`\psi
 <a id="fn-12"></a>**12.** This equation differs from the form given in the first edition by a factor of $`- \tfrac{6}{\pi}`$, but this form also seems incorrect; perhaps the correct relation is [↩](#fnref-12)
 
 ```math
-V ( r ) = - 4 \pi \int_{0}^{r} \frac{1}{r_{1}^{2}} dr_{1} \int_{0}^{r_{1}} r_{2}^{2} \rho ( r_{2} ) dr_{2}
+V ( r ) = - 4 \pi \int_{0}^{r} \frac{1}{r_{1}^{2}} dr_{1} \int_{0}^{r_{1}} r_{2}{}^{2} \rho ( r_{2} ) dr_{2}
 ```
 
 <a id="fn-13"></a>**13.** In the second edition, the factor “$`dE_{1}`$” was missing [↩](#fnref-13)

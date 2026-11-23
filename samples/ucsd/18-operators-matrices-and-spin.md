@@ -1651,7 +1651,7 @@ R_{x} ( \theta ) = e^{i \tfrac{\theta}{2} \sigma_{x}}
 ```
 
 ```math
-R_{y} ( \theta ) = e_{n}^{i \tfrac{\theta}{2} \sigma_{y}}
+R_{y} ( \theta ) = e^{i \tfrac{\theta}{2} \sigma_{y}}{}_{n}
 ```
 
 ```math
