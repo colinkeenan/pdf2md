@@ -2780,13 +2780,13 @@ E = \frac{mc^{2}}{\sqrt{1 + \tfrac{Z^{2} \alpha^{2}}{( n_{r} + \sqrt{\kappa^{2} 
 ```
 
 ```math
-E = \frac{mc^{2}}{\sqrt{1 + \frac{Z^{2} \alpha^{2}}{\left( {}_{n_{r} +} \sqrt{( j + {}_{\tfrac{1}{2}} )^{2} - \tfrac{2}{Z} \frac{2}{\alpha}} \right)^{2}}}}
+E = \frac{mc^{2}}{\sqrt{1 + \frac{Z^{2} \alpha^{2}}{\left( n_{r} + \sqrt{( j + \tfrac{1}{2} )^{2} - Z^{2} \alpha^{2}} \right)^{2}}}}
 ```
 
 Using the quantum numbers from four mutually commuting operators, we have solved the radial equation in a similar way as for the non-relativistic case yielding the exact **energy relation** for relativistic Quantum Mechanics.
 
 ```math
-E = \frac{mc^{2}}{\sqrt{1 + \frac{Z^{2} \alpha^{2}}{\left( {}_{n_{r} +} \sqrt{( j + {}^{\tfrac{1}{2}} )^{2} - {}^{Z^{2} \alpha^{2}}} \right)^{2}}}}
+E = \frac{mc^{2}}{\sqrt{1 + \frac{Z^{2} \alpha^{2}}{\left( n_{r} + \sqrt{( j + \tfrac{1}{2} )^{2} - Z^{2} \alpha^{2}} \right)^{2}}}}
 ```
 
 We can identify the standard principle quantum number in this case as $`n = n_{r} + j + \tfrac{1}{2}`$. This result gives the same answer as our non-relativistic calculation to order $`\alpha^{4}`$ but is also **correct to higher order**. It is an **exact solution to the quantum mechanics problem** posed but does not include the effects of **field theory**, such as the Lamb shift and the anomalous magnetic moment of the electron.

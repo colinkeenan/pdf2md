@@ -458,6 +458,33 @@ fn level_punctuation(spans: &mut [MSpan]) {
     }
 }
 
+/// Round brackets of full size around letters that are all small (the
+/// brackets of "(j + ½)² − Z²α²" under a root in a small fraction's
+/// denominator, set a size larger to hold the ½): they take the letters'
+/// size, about their middle. Left large, they alone would be "the line"
+/// and every letter beside them an index.
+fn level_brackets(spans: &mut [MSpan]) {
+    let max = spans.iter().filter(|s| !s.cmex()).map(|s| s.size).fold(0.0f32, f32::max);
+    let bracket = |s: &MSpan| !s.cmex() && s.atom.is_none() && !s.text.trim().is_empty() && s.text.trim().chars().all(|c| "()".contains(c));
+    if max <= 0.0 || spans.iter().any(|s| !s.cmex() && s.size >= 0.9 * max && !bracket(s)) {
+        return;
+    }
+    // (a pair of them: a lone one is a piece of something not read whole)
+    let has = |c: char| spans.iter().any(|s| bracket(s) && s.size >= 0.9 * max && s.text.contains(c));
+    if !has('(') || !has(')') {
+        return;
+    }
+    let letter = |s: &MSpan| !s.cmex() && s.atom.is_none() && s.size < 0.9 * max && s.text.chars().any(char::is_alphabetic);
+    let next = spans.iter().filter(|s| letter(s)).map(|s| s.size).fold(0.0f32, f32::max);
+    if next < 0.6 * max {
+        return;
+    }
+    for s in spans.iter_mut().filter(|s| !s.cmex() && s.size >= 0.9 * max) {
+        let shrink = (s.bottom - s.top) * (1.0 - next / s.size);
+        (s.size, s.top, s.bottom) = (next, s.top + 0.5 * shrink, s.bottom - 0.5 * shrink);
+    }
+}
+
 /// A formula begun in the size of the text and gone on in small type on
 /// the same line ("L₃ =" and then a long right-hand side set \small to
 /// fit a table's row): the small letters stand on the line as the others
@@ -1305,13 +1332,14 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
                     }
                 }
             }
-            let body: Vec<MSpan> = under.iter().map(|&i| spans[i].clone()).collect();
-            let t = format!("\\sqrt{{{}}}", build_at(&resolve_bars(body, &nested, depth + 1), depth + 1));
+            let mut body: Vec<MSpan> = under.iter().map(|&i| spans[i].clone()).collect();
+            level_brackets(&mut body);
+            let t = format!("\\sqrt{{{}}}", build_at(&resolve_bars(body.clone(), &nested, depth + 1), depth + 1));
             let left = spans[ri].left;
             // (a root of small letters, in an exponent, is a small piece
             // at their height)
-            let letters = under.iter().map(|&i| &spans[i]).filter(|s| !s.cmex()).map(|s| s.size).fold(0.0f32, f32::max);
-            let main: Vec<&MSpan> = under.iter().map(|&i| &spans[i]).filter(|s| !s.cmex() && s.size >= 0.9 * letters).collect();
+            let letters = body.iter().filter(|s| !s.cmex()).map(|s| s.size).fold(0.0f32, f32::max);
+            let main: Vec<&MSpan> = body.iter().filter(|s| !s.cmex() && s.size >= 0.9 * letters).collect();
             let (top, bottom) = (main.iter().map(|s| s.top).fold(f32::MAX, f32::min), main.iter().map(|s| s.bottom).fold(f32::MIN, f32::max));
             // (the small letters go on from those right before the sign,
             // at one height: e^{−mr√(s²+1)})
@@ -2569,7 +2597,9 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
     if depth > 6 {
         return linear(spans);
     }
-    let (owned, bracket_items) = take_brackets(spans, depth);
+    let mut levelled = spans.to_vec();
+    level_brackets(&mut levelled);
+    let (owned, bracket_items) = take_brackets(&levelled, depth);
     let spans = &owned[..];
     if spans.is_empty() || (spans.len() == 1 && bracket_items.is_empty()) {
         let mut v: Vec<String> = bracket_items.into_iter().map(|i| i.tex).collect();

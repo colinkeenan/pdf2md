@@ -2217,7 +2217,7 @@ The last sum which contains the cross terms between negative and positive energy
 It is possible to solve the Dirac equation exactly for Hydrogen in a way very similar to the non-relativistic solution. One difference is that it is clear from the beginning that the total angular momentum is a constant of the motion and is used as a basic quantum number. There is another conserved quantum number related to the component of spin along the direction of $`\vec{J}`$. With these quantum numbers, the radial equation can be solved in a similar way as for the non-relativistic case yielding the **energy relation**.
 
 ```math
-E = \frac{mc^{2}}{\sqrt{1 + \frac{Z^{2} \alpha^{2}}{\left( {}_{n_{r} +} \sqrt{( j + {}_{\tfrac{1}{2}} )^{2} - \tfrac{2 2}{Z \alpha}} \right)^{2}}}}
+E = \frac{mc^{2}}{\sqrt{1 + \frac{Z^{2} \alpha^{2}}{\left( n_{r} + \sqrt{( j + \tfrac{1}{2} )^{2} - Z^{2} \alpha^{2}} \right)^{2}}}}
 ```
 
 We can identify the standard principle quantum number in this case as $`n = n_{r} + j + \tfrac{1}{2}`$. This result gives the same answer as our non-relativistic calculation to order $`\alpha^{4}`$ but is also **correct to higher order**. It is an **exact solution to the quantum mechanics problem** posed but does not include the effects of **field theory**, such as the Lamb shift and the anomalous magnetic moment of the electron.
