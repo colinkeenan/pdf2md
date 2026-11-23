@@ -92,13 +92,13 @@ That is, $`H^{\dagger}`$ must operate on the conjugate of $`\psi`$ and give the 
 The definition of the **Hermitian Conjugate of an operator** can be simply written in Bra-Ket notation.
 
 ```math
-\langle A^{\dagger} \varphi | \psi \rangle = \langle \varphi | A\psi \rangle
+\langle A^{\dagger} \phi | \psi \rangle = \langle \phi | A\psi \rangle
 ```
 
 Starting from this definition, we can prove some simple things. Taking the complex conjugate
 
 ```math
-\langle \psi | A^{\dagger} \varphi \rangle = \langle A\psi | \varphi \rangle
+\langle \psi | A^{\dagger} \phi \rangle = \langle A\psi | \phi \rangle
 ```
 
 <div align="right"><a href="book.pdf#page=133" target="_blank" title="This page in the PDF"><sup>[p. 133]</sup></a></div>
@@ -108,7 +108,7 @@ Starting from this definition, we can prove some simple things. Taking the compl
 Now taking the Hermitian conjugate of $`A^{\dagger}`$.
 
 ```math
-\langle \left( A^{\dagger} \right)^{\dagger} \psi | \varphi \rangle = \langle A\psi | \varphi \rangle
+\langle \left( A^{\dagger} \right)^{\dagger} \psi | \phi \rangle = \langle A\psi | \phi \rangle
 ```
 
 ```math
@@ -138,7 +138,7 @@ We can also show that
 ```
 
 ```math
-\langle \varphi | AB\psi \rangle = \langle A^{\dagger} \varphi | B\psi \rangle = \langle B^{\dagger} A^{\dagger} \varphi | \psi \rangle
+\langle \phi | AB\psi \rangle = \langle A^{\dagger} \phi | B\psi \rangle = \langle B^{\dagger} A^{\dagger} \phi | \psi \rangle
 ```
 
 \* See Example 8.8.1: Find the Hermitian conjugate of the operator $`a + ib . *`$
@@ -204,7 +204,7 @@ We represent our **wavefunctions – the vectors in our space** – as linear co
 ```
 
 ```math
-\varphi = \sum_{j = 1}^{\infty} \beta_{j} \psi_{j}
+\phi = \sum_{j = 1}^{\infty} \beta_{j} \psi_{j}
 ```
 
 In normal 3D space, we can compute the **dot product between two vectors** using the components.
@@ -216,7 +216,7 @@ In normal 3D space, we can compute the **dot product between two vectors** using
 In our vector space, we **define the dot product** to be
 
 ```math
-\langle \psi | \varphi \rangle = \langle \sum_{i = 1}^{\infty} \alpha_{i} \psi_{i} | \sum_{j = 1}^{\infty} \beta_{j} \psi_{j} \rangle = \sum_{i = 1}^{\infty} \sum_{j = 1}^{\infty} \alpha_{i}^{*} \beta_{j} \langle \psi_{i} | \psi_{j} \rangle
+\langle \psi | \phi \rangle = \langle \sum_{i = 1}^{\infty} \alpha_{i} \psi_{i} | \sum_{j = 1}^{\infty} \beta_{j} \psi_{j} \rangle = \sum_{i = 1}^{\infty} \sum_{j = 1}^{\infty} \alpha_{i}^{*} \beta_{j} \langle \psi_{i} | \psi_{j} \rangle
 ```
 
 ```math
@@ -228,13 +228,13 @@ We also can compute the dot product from the components of the vectors. Our vect
 From a more mathematical point of view, the square integrable functions form a (vector) Hilbert Space. The scalar product is defined as above.
 
 ```math
-\langle \varphi | \psi \rangle = \int_{-\infty}^{\infty} d^{3} r\varphi^{*} \psi
+\langle \phi | \psi \rangle = \int_{-\infty}^{\infty} d^{3} r\phi^{*} \psi
 ```
 
 The properties of the scalar product are easy to derive from the integral.
 
 ```math
-\langle \varphi | \psi \rangle = \langle \psi | \varphi \rangle^{*}
+\langle \phi | \psi \rangle = \langle \psi | \phi \rangle^{*}
 ```
 
 <div align="right"><a href="book.pdf#page=135" target="_blank" title="This page in the PDF"><sup>[p. 135]</sup></a></div>
@@ -242,11 +242,11 @@ The properties of the scalar product are easy to derive from the integral.
 <a id="p136" href="book.pdf#page=136" target="_blank" title="This page in the PDF"><sup>[p. 136]</sup></a>
 
 ```math
-\langle \varphi | \lambda_{1} \psi_{1} + \lambda_{2} \psi_{2} \rangle = \lambda_{1} \langle \varphi | \psi_{1} \rangle + \lambda_{2} \langle \varphi | \psi_{2} \rangle
+\langle \phi | \lambda_{1} \psi_{1} + \lambda_{2} \psi_{2} \rangle = \lambda_{1} \langle \phi | \psi_{1} \rangle + \lambda_{2} \langle \phi | \psi_{2} \rangle
 ```
 
 ```math
-\langle \lambda_{1} \varphi_{1} + \lambda_{2} \varphi_{2} | \psi \rangle = \lambda_{1}^{*} \langle \varphi_{1} | \psi \rangle + \lambda_{2}^{*} \langle \varphi_{2} | \psi \rangle
+\langle \lambda_{1} \phi_{1} + \lambda_{2} \phi_{2} | \psi \rangle = \lambda_{1}^{*} \langle \phi_{1} | \psi \rangle + \lambda_{2}^{*} \langle \phi_{2} | \psi \rangle
 ```
 
 $`\langle \psi | \psi \rangle`$ is real and greater than 0. It equals zero iff $`\psi = 0`$. We may also derive the Schwartz inequality.
@@ -620,13 +620,13 @@ There is a **discontinuity in the derivative of the wave function** proportional
 If we have the operator $`O = a + ib`$ where $`a`$ and $`b`$ are real, what is its Hermitian conjugate? By the definition of the Hermitian conjugate
 
 ```math
-\langle \varphi | O\psi \rangle = \langle O^{\dagger} \varphi | \psi \rangle .
+\langle \phi | O\psi \rangle = \langle O^{\dagger} \phi | \psi \rangle .
 ```
 
 It is easy to see from the integral that
 
 ```math
-\langle ( a - ib ) \varphi | \psi \rangle = \langle \varphi | ( a + ib ) \psi \rangle = ( a + ib ) \langle \varphi | \psi \rangle
+\langle ( a - ib ) \phi | \psi \rangle = \langle \phi | ( a + ib ) \psi \rangle = ( a + ib ) \langle \phi | \psi \rangle
 ```
 
 So the Hermitian conjugate of a constant operator is its complex conjugate.
@@ -636,13 +636,13 @@ So the Hermitian conjugate of a constant operator is its complex conjugate.
 We wish to compute the Hermitian conjugate of the operator $`\frac{\partial}{\partial x}`$ . We will use the integral to derive the result.
 
 ```math
-\langle \varphi \left| \frac{\partial}{\partial x} \psi \right\rangle \rangle = \int_{-\infty}^{\infty} \varphi^{*} ( x ) \frac{\partial \psi ( x )}{\partial x} dx
+\langle \phi \left| \frac{\partial}{\partial x} \psi \right\rangle \rangle = \int_{-\infty}^{\infty} \phi^{*} ( x ) \frac{\partial \psi ( x )}{\partial x} dx
 ```
 
-We can integrate this by parts, differentiating the $`\varphi`$ and integrating to get $`\psi`$.
+We can integrate this by parts, differentiating the $`\phi`$ and integrating to get $`\psi`$.
 
 ```math
-\left\langle \varphi \left| \frac{\partial}{\partial x} \psi \right\rangle = [ \varphi^{*} ( x ) \psi ( x ) ]_{-\infty}^{\infty} - \int_{-\infty}^{\infty} \frac{\partial \varphi^{*} ( x )}{\partial x} \psi ( x ) dx = \left\langle \frac{- \partial}{\partial x} \varphi \right| \psi \right\rangle
+\left\langle \phi \left| \frac{\partial}{\partial x} \psi \right\rangle = [ \phi^{*} ( x ) \psi ( x ) ]_{-\infty}^{\infty} - \int_{-\infty}^{\infty} \frac{\partial \phi^{*} ( x )}{\partial x} \psi ( x ) dx = \left\langle \frac{- \partial}{\partial x} \phi \right| \psi \right\rangle
 ```
 
 So the Hermitian conjugate of $`\frac{\partial}{\partial x}`$ is $`- \tfrac{\partial}{\partial x}`$ .
@@ -709,7 +709,7 @@ What are the properly normalized states that are eigenfunctions of H and P? What
 
 5. A particle is in the first excited state of a box of length $`L`$. What is that state? Now one wall of the box is suddenly moved outward so that the new box has length $`D`$. What is the probability for the particle to be in the ground state of the new box? What is the probability for the particle to be in the first excited state of the new box?
 
-6. **\*** Assume that $`\varphi ( p ) = \delta ( p - p_{0} )`$. What is $`\psi ( x )`$? What is $`<p^{2} >`$? What is $`<x^{2} >`$?
+6. **\*** Assume that $`\phi ( p ) = \delta ( p - p_{0} )`$. What is $`\psi ( x )`$? What is $`<p^{2} >`$? What is $`<x^{2} >`$?
 
 7. For a free particle, the Hamiltonian operator H is given by $`H = p_{op}^{2} / 2 m`$. Find the functions, $`\psi ( x )`$, which are eigenfunction of both the Hamiltonian and of $`p`$. Write the eigenfunction that has energy eigenvalue $`E_{0}`$ and momentum eigenvalue $`p_{0}`$. Now write the corresponding eigenfunctions in momentum space.
 

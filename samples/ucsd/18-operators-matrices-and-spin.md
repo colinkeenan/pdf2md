@@ -85,16 +85,16 @@ The Hermitian Conjugate matrix is the (complex) **conjugate transpose.**
 
 Check that this is true for $`A`$ and $`A^{\dagger}`$.
 
-We know that there is a difference between a **bra vector** and a ket vector. This becomes explicit in the matrix representation. If $`\psi = \sum_{j} \psi_{j} u_{j}`$ and $`\varphi = \sum_{k} \varphi_{k} u_{k}`$ then, the dot product is
+We know that there is a difference between a **bra vector** and a ket vector. This becomes explicit in the matrix representation. If $`\psi = \sum_{j} \psi_{j} u_{j}`$ and $`\phi = \sum_{k} \phi_{k} u_{k}`$ then, the dot product is
 
 ```math
-\langle \psi | \varphi \rangle = \sum_{j,k} \psi_{j}^{*} \varphi_{k} \langle u_{j} | u_{k} \rangle = \sum_{j,k} \psi_{j}^{*} \varphi_{k} \delta_{jk} = \sum_{k} \psi_{k}^{*} \varphi_{k} .
+\langle \psi | \phi \rangle = \sum_{j,k} \psi_{j}^{*} \phi_{k} \langle u_{j} | u_{k} \rangle = \sum_{j,k} \psi_{j}^{*} \phi_{k} \delta_{jk} = \sum_{k} \psi_{k}^{*} \phi_{k} .
 ```
 
 We can write this in **dot product in matrix notation** as
 
 ```math
-\langle \psi | \varphi \rangle = ( \psi_{1}^{*} \quad \psi_{2}^{*} \quad \psi_{3}^{*} \quad \dots ) \begin{pmatrix} \varphi_{1} \\ \varphi_{2} \\ \varphi_{3} \\ \dots \end{pmatrix}
+\langle \psi | \phi \rangle = ( \psi_{1}^{*} \quad \psi_{2}^{*} \quad \psi_{3}^{*} \quad \dots ) \begin{pmatrix} \phi_{1} \\ \phi_{2} \\ \phi_{3} \\ \dots \end{pmatrix}
 ```
 
 The bra vector is the conjugate transpose of the ket vector. The both represent the same state but are different mathematical objects.
@@ -440,7 +440,7 @@ An alternate solution would be to use the $`L_{u} = \hat{u} \cdot \vec{L} = \cos
 
 Earlier, we showed that both integer and half integer angular momentum could satisfy (See section 14.4.5) the commutation relations for angular momentum operators but that there is no single valued functional representation for the half integer type.
 
-Some particles, like electrons, neutrinos, and quarks have half integer **internal angular momentum,** also called **spin.** We will now develop a **spinor representation** for spin $`\frac{1}{2}`$. There are no coordinates $`\theta`$ and $`\varphi`$ associated with internal angular momentum so the only thing we have is our spinor representation.
+Some particles, like electrons, neutrinos, and quarks have half integer **internal angular momentum,** also called **spin.** We will now develop a **spinor representation** for spin $`\frac{1}{2}`$. There are no coordinates $`\theta`$ and $`\phi`$ associated with internal angular momentum so the only thing we have is our spinor representation.
 
 Electrons, for example, have total spin one half. There are no spin 3/2 electrons so there are only two possible spin states for an electron. The usual basis states are the eigenstates of $`S_{z}`$. We know from our study of angular momentum, that the eigenvalues of $`S_{z}`$ are +$`\tfrac{1}{2} \hbar`$ and $`- \tfrac{1}{2} \hbar`$. We will simply represent the +$`\tfrac{1}{2} \hbar`$ eigenstate as the upper component of a 2-component vector. The $`- \tfrac{1}{2} \hbar`$ eigenstate amplitude is in the lower component. So the pure eigenstates are.
 
@@ -1462,29 +1462,29 @@ The other relations will prove to be correct too, as they must. Its a reassuring
 
 ## <a id="s-18-11-3-derive-the-expression-for-rotation-operator-r-z"></a>18.11.3 Derive the Expression for Rotation Operator $`R_{z}`$ \*
 
-The laws of physics do not depend on what axes we choose for our coordinate system- There is rotational symmetry. If we make an infinitesimal rotation (through and angle $`d\varphi`$) about the z-axis, we get the transformed coordinates
+The laws of physics do not depend on what axes we choose for our coordinate system- There is rotational symmetry. If we make an infinitesimal rotation (through and angle $`d\phi`$) about the z-axis, we get the transformed coordinates
 
 ```math
-x^{\prime} = x - d\varphi y
+x^{\prime} = x - d\phi y
 ```
 
 ```math
-y^{\prime} = y + d\varphi x.
+y^{\prime} = y + d\phi x.
 ```
 
 We can Taylor expand any function $`f`$,
 
 ```math
-f ( x^{\prime} ,y^{\prime} ) = f ( x,y ) - \frac{\partial f}{\partial x} d\varphi y + \frac{\partial f}{\partial y} d\varphi x = ( 1 + \frac{i}{\hbar} d\varphi L_{z} ) f ( x,y ) .
+f ( x^{\prime} ,y^{\prime} ) = f ( x,y ) - \frac{\partial f}{\partial x} d\phi y + \frac{\partial f}{\partial y} d\phi x = ( 1 + \frac{i}{\hbar} d\phi L_{z} ) f ( x,y ) .
 ```
 
 So the rotation operator for the function is
 
 ```math
-R_{z} ( d\varphi ) = ( 1 + \frac{i}{\hbar} d\varphi L_{z} )
+R_{z} ( d\phi ) = ( 1 + \frac{i}{\hbar} d\phi L_{z} )
 ```
 
-A finite rotation can be made by applying the operator for an infinitesimal rotation over and over. Let $`\theta_{z} = nd\varphi`$. Then
+A finite rotation can be made by applying the operator for an infinitesimal rotation over and over. Let $`\theta_{z} = nd\phi`$. Then
 
 ```math
 R_{z} ( \theta_{z} ) = \lim_{n \to \infty} ( 1 + \frac{i}{\hbar} \frac{\theta_{z}}{n} L_{z} )^{n} = e^{i\theta_{z} L_{z} / \hbar} .
@@ -1810,7 +1810,7 @@ What are the eigen-energies and corresponding eigenstates of the system? (This i
 
 # <a id="s-18-13sample-test-problems"></a>18.13 Sample Test Problems
 
-1. **\*** We have shown that the Hermitian conjugate of a rotation operator $`R ( \vec{\theta} )`$ is $`R ( - \vec{\theta} )`$. Use this to prove that if the $`\varphi_{i}`$ form an orthonormal complete set, then the set $`\varphi_{i}^{\prime} = R ( \vec{\theta} ) \varphi_{i}`$ are also orthonormal and complete.
+1. **\*** We have shown that the Hermitian conjugate of a rotation operator $`R ( \vec{\theta} )`$ is $`R ( - \vec{\theta} )`$. Use this to prove that if the $`\phi_{i}`$ form an orthonormal complete set, then the set $`\phi_{i}^{\prime} = R ( \vec{\theta} ) \phi_{i}`$ are also orthonormal and complete.
 
 2. Given that $`u_{n}`$ is the $`n^{th}`$ one dimensional harmonic oscillator energy eigenstate: a) Evaluate the matrix element $`\langle u_{m} | p^{2} | u_{n} \rangle`$. b) Write the upper left 5 by 5 part of the $`p^{2}`$ matrix.
 

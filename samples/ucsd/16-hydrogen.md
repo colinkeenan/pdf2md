@@ -22,7 +22,7 @@ V ( r ) = - \frac{Ze^{2}}{r}
 Since the potential is **spherically symmetric**, the problem separates and the solutions will be a product of a radial wavefunction and one of the spherical harmonics.
 
 ```math
-\psi_{n\ell m} ( \vec{r} ) = R_{n\ell} ( r ) Y_{\ell m} ( \theta ,\varphi )
+\psi_{n\ell m} ( \vec{r} ) = R_{n\ell} ( r ) Y_{\ell m} ( \theta ,\phi )
 ```
 
 We have already studied the spherical harmonics.
@@ -645,7 +645,7 @@ For the $`n = 3`$ final state, $`E = \tfrac{7}{1 4 4} 1 3 . 6`$ = 0$`. 7`$ eV.
 
 4. An **electron in the Coulomb field of a proton** is in the state described by the wave function $`\tfrac{1}{6} ( 4 \psi_{1 0 0} + 3 \psi_{2 1 1} - \psi_{2 1 0} + \sqrt{1 0} \psi_{2 1 - 1} )`$. Find the expected value of the Energy, $`L^{2}`$ and $`L_{z}`$. Now find the expected value of $`L_{y}`$.
 
-5. **\*** Write out the (normalized) **hydrogen energy eigenstate** $`\psi_{3 1 1} ( r,\theta ,\varphi )`$.
+5. **\*** Write out the (normalized) **hydrogen energy eigenstate** $`\psi_{3 1 1} ( r,\theta ,\phi )`$.
 
 6. Calculate the **expected value of** $`r`$ in the Hydrogen state $`\psi_{2 0 0}`$.
 

@@ -590,7 +590,7 @@ So which wave-function will describe a positron with momentum $`p`$ and energy $
 <a id="eq-49"></a>
 
 ```math
-\varphi ( x,t ) = v \exp \left( i \frac{\boldsymbol{p} \boldsymbol{\cdot} \boldsymbol{x}}{\hbar} - i \frac{Et}{\hbar} \right) \qquad \text{(49)}
+\phi ( x,t ) = v \exp \left( i \frac{\boldsymbol{p} \boldsymbol{\cdot} \boldsymbol{x}}{\hbar} - i \frac{Et}{\hbar} \right) \qquad \text{(49)}
 ```
 
 as always in quantum mechanics. But the negative-energy electron whose _absence is_ the positron has a wave-function
@@ -608,7 +608,7 @@ Thus we must take
 <a id="eq-51"></a>
 
 ```math
-\varphi = C\psi^{+} , \quad i . e . \quad v = Cu^{+} \qquad \text{(51)}
+\phi = C\psi^{+} , \quad i . e . \quad v = Cu^{+} \qquad \text{(51)}
 ```
 
 where $`\psi^{+}`$ is $`\psi`$ with complex conjugate elements but _not_ transposed, and $`C`$ is a suitable constant matrix;
@@ -667,20 +667,20 @@ C = - i\beta \alpha^{2} = \gamma_{2} = \begin{pmatrix} 0 & \begin{matrix} 0 & - 
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p12" href="book.pdf#page=18" target="_blank" title="This page in the PDF"><sup>[p. 12]</sup></a> <sup>THE DIRAC THEORY</sup>
 
-The relation between $`\psi`$ and $`\varphi`$ is symmetrical because
+The relation between $`\psi`$ and $`\phi`$ is symmetrical because
 
 <a id="eq-57"></a>
 
 ```math
-C^{2} = \mathbb{I} \quad \text{ Hence } \quad \psi = C\varphi^{+} \qquad \text{(57)}
+C^{2} = \mathbb{I} \quad \text{ Hence } \quad \psi = C\phi^{+} \qquad \text{(57)}
 ```
 
-The $`\varphi`$ is called the _charge-conjugate_ wave-function corresponding to the <a id="ix-116">negative-energy</a> electron $`\psi`$. Clearly
+The $`\phi`$ is called the _charge-conjugate_ wave-function corresponding to the <a id="ix-116">negative-energy</a> electron $`\psi`$. Clearly
 
 <a id="eq-58"></a>
 
 ```math
-\varphi^{*} \varphi = \left( C\psi^{+} \right)^{*} \left( C\psi^{+} \right) = \psi^{T} C^{*} C\psi^{+} = \psi^{*} ( C^{*} C )^{T} \psi = \psi^{*} \psi \qquad \text{(58)}
+\phi^{*} \phi = \left( C\psi^{+} \right)^{*} \left( C\psi^{+} \right) = \psi^{T} C^{*} C\psi^{+} = \psi^{*} ( C^{*} C )^{T} \psi = \psi^{*} \psi \qquad \text{(58)}
 ```
 
 And
@@ -688,12 +688,12 @@ And
 <a id="eq-59"></a>
 
 ```math
-\varphi^{*} \alpha^{k} \varphi = \psi^{T} C^{*} \alpha^{k} C\psi^{+} = \psi^{*} C\alpha^{kT} C\psi = \psi^{*} \alpha^{k} \psi \qquad \text{(59)}
+\phi^{*} \alpha^{k} \phi = \psi^{T} C^{*} \alpha^{k} C\psi^{+} = \psi^{*} C\alpha^{kT} C\psi = \psi^{*} \alpha^{k} \psi \qquad \text{(59)}
 ```
 
 Thus the <a id="ix-238">probability</a> and flow densities are the same for a positron as for the conjugate negative electron.
 
-For many purposes it is easier to represent positrons directly by the $`\overline{\psi}`$ wave-function, e.g. in computing cross-sections for <a id="ix-52">pair </a><a id="ix-43">creation</a> and so forth as we shall do later. But if you actually want to _see_ the positron, e.g. in describing the details of a positronium experiment, it is necessary to use the $`\varphi`$ wave-function to represent e.g. the way the spin is pointing.
+For many purposes it is easier to represent positrons directly by the $`\overline{\psi}`$ wave-function, e.g. in computing cross-sections for <a id="ix-52">pair </a><a id="ix-43">creation</a> and so forth as we shall do later. But if you actually want to _see_ the positron, e.g. in describing the details of a positronium experiment, it is necessary to use the $`\phi`$ wave-function to represent e.g. the way the spin is pointing.
 
 This is all we shall say about free electrons and positrons.
 
@@ -763,12 +763,12 @@ i \hbar \frac{\partial \psi}{\partial t} = \left[ - e \Phi + \sum_{1}^{3} \left(
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p13" href="book.pdf#page=19" target="_blank" title="This page in the PDF"><sup>[p. 13]</sup></a> <sup>THE DIRAC THEORY</sup>
 
-since by (57), we have $`\overline{\psi} \gamma_{\mu} = \psi^{*} \beta \gamma_{\mu} = ( C\varphi^{+} )^{T} \beta \gamma_{\mu} = \varphi^{T} C^{T} \beta \gamma_{\mu}`$; the wave function $`\varphi = C\psi^{+}`$ of a positron satisfies by (65)
+since by (57), we have $`\overline{\psi} \gamma_{\mu} = \psi^{*} \beta \gamma_{\mu} = ( C\phi^{+} )^{T} \beta \gamma_{\mu} = \phi^{T} C^{T} \beta \gamma_{\mu}`$; the wave function $`\phi = C\psi^{+}`$ of a positron satisfies by (65)
 
 <a id="eq-67"></a>
 
 ```math
-\sum \left( \frac{\partial}{\partial x_{\mu}} - \frac{ie}{\hbar c} A_{\mu} \right) \gamma_{\mu}^{T} \beta C\varphi - \frac{mc}{\hbar} \beta C\varphi = 0 \qquad \text{(67)}
+\sum \left( \frac{\partial}{\partial x_{\mu}} - \frac{ie}{\hbar c} A_{\mu} \right) \gamma_{\mu}^{T} \beta C\phi - \frac{mc}{\hbar} \beta C\phi = 0 \qquad \text{(67)}
 ```
 
 Multiplying by $`C\beta`$ this gives
@@ -776,7 +776,7 @@ Multiplying by $`C\beta`$ this gives
 <a id="eq-68"></a>
 
 ```math
-\sum \left( \frac{\partial}{\partial x_{\mu}} - \frac{ie}{\hbar c} A_{\mu} \right) \gamma_{\mu} \varphi + \frac{mc}{\hbar} \varphi = 0 \qquad \text{(68)}
+\sum \left( \frac{\partial}{\partial x_{\mu}} - \frac{ie}{\hbar c} A_{\mu} \right) \gamma_{\mu} \phi + \frac{mc}{\hbar} \phi = 0 \qquad \text{(68)}
 ```
 
 This is exactly the Dirac <a id="ix-63">equation</a> for a particle of positive charge (+e). We have used

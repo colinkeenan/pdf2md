@@ -74,17 +74,17 @@ If we derive the fields from **potentials,**
 ```
 
 ```math
-\vec{E} = - \vec{\nabla} \varphi - \frac{1}{c} \frac{\partial A}{\partial t}
+\vec{E} = - \vec{\nabla} \phi - \frac{1}{c} \frac{\partial A}{\partial t}
 ```
 
 then the first two Maxwell equations are automatically satisfied. Applying the second two equations we get **wave equations** in the potentials.
 
 ```math
--\nabla^{2} \varphi - \frac{1}{c} \frac{\partial}{\partial t} ( \vec{\nabla} \cdot \vec{A} ) = 4 \pi \rho
+-\nabla^{2} \phi - \frac{1}{c} \frac{\partial}{\partial t} ( \vec{\nabla} \cdot \vec{A} ) = 4 \pi \rho
 ```
 
 ```math
--\nabla^{2} \vec{A} + \frac{1}{c^{2}} \frac{\partial^{2} \vec{A}}{\partial t^{2}} + \vec{\nabla} \left( \vec{\nabla} \cdot \vec{A} + \frac{1}{c} \frac{\partial \varphi}{\partial t} \right) = \frac{4 \pi}{c} \vec{J}
+-\nabla^{2} \vec{A} + \frac{1}{c^{2}} \frac{\partial^{2} \vec{A}}{\partial t^{2}} + \vec{\nabla} \left( \vec{\nabla} \cdot \vec{A} + \frac{1}{c} \frac{\partial \phi}{\partial t} \right) = \frac{4 \pi}{c} \vec{J}
 ```
 
 These **derivations** (see section 20.5.1) are fairly simple using Einstein notation.
@@ -102,15 +102,15 @@ The Maxwell equations are invariant under a **gauge transformation** of the pote
 ```
 
 ```math
-\varphi \quad \to \quad \varphi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t}
+\phi \quad \to \quad \phi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t}
 ```
 
-Note that when we quantize the field, the potentials will play the role that wave functions do for the electron, so this gauge symmetry will be important in quantum mechanics. We can use the gauge symmetry to simplify our equations. For time independent charge and current distributions, the **coulomb gauge,** $`\vec{\nabla} \cdot \vec{A} = 0`$, is often used. For time dependent conditions, the **Lorentz gauge,** $`\vec{\nabla} \cdot \vec{A} + \tfrac{1}{c} \tfrac{\partial \varphi}{\partial t} = 0`$, is often convenient. These greatly simplify the above wave equations in an obvious way.
+Note that when we quantize the field, the potentials will play the role that wave functions do for the electron, so this gauge symmetry will be important in quantum mechanics. We can use the gauge symmetry to simplify our equations. For time independent charge and current distributions, the **coulomb gauge,** $`\vec{\nabla} \cdot \vec{A} = 0`$, is often used. For time dependent conditions, the **Lorentz gauge,** $`\vec{\nabla} \cdot \vec{A} + \tfrac{1}{c} \tfrac{\partial \phi}{\partial t} = 0`$, is often convenient. These greatly simplify the above wave equations in an obvious way.
 
 Finally, the classical **Hamiltonian for electrons in an electromagnetic field** becomes
 
 ```math
-H = \frac{p^{2}}{2 m} \to \frac{1}{2 m} \left( \vec{p} + \frac{e}{c} \vec{A} \right)^{2} - e\varphi
+H = \frac{p^{2}}{2 m} \to \frac{1}{2 m} \left( \vec{p} + \frac{e}{c} \vec{A} \right)^{2} - e\phi
 ```
 
 The magnetic force is not a conservative one so we cannot just add a scalar potential. We know that there is momentum contained in the field so the additional momentum term, as well as the usual force due to an electric field, makes sense. The electron generates an E-field and if there is a B-field present, $`\vec{E} \times \vec{B}`$ gives rise to momentum density in the field. The evidence that this is the correct classical Hamiltonian is that we can **derive** (see section 20.5.2) the Lorentz Force from it.
@@ -120,7 +120,7 @@ The magnetic force is not a conservative one so we cannot just add a scalar pote
 We will quantize the Hamiltonian
 
 ```math
-H = \frac{1}{2 m} \left( \vec{p} + \frac{e}{c} \vec{A} \right)^{2} - e\varphi
+H = \frac{1}{2 m} \left( \vec{p} + \frac{e}{c} \vec{A} \right)^{2} - e\phi
 ```
 
 <div align="right"><a href="book.pdf#page=293" target="_blank" title="This page in the PDF"><sup>[p. 293]</sup></a></div>
@@ -140,7 +140,7 @@ as seen in our derivation of the Lorentz force (See Section 20.5.2).
 The **computation** (see section 20.5.3) yields
 
 ```math
-\frac{- \hbar^{2}}{2 m} \nabla^{2} \psi + \frac{e}{2 mc} \vec{B} \cdot \vec{L} \psi + \frac{e^{2}}{8 mc^{2}} \left( r^{2} B^{2} - ( \vec{r} \cdot \vec{B} )^{2} \right) \psi = ( E + e\varphi ) \psi .
+\frac{- \hbar^{2}}{2 m} \nabla^{2} \psi + \frac{e}{2 mc} \vec{B} \cdot \vec{L} \psi + \frac{e^{2}}{8 mc^{2}} \left( r^{2} B^{2} - ( \vec{r} \cdot \vec{B} )^{2} \right) \psi = ( E + e\phi ) \psi .
 ```
 
 The usual kinetic energy term, the first term on the left side, has been recovered. The standard potential energy of an electron in an Electric field is visible on the right side. We see two additional terms due to the magnetic field. An **estimate** (see section 20.5.4) of the size of the two B field terms for atoms shows that, for realizable magnetic fields, the first term is fairly small (down by a factor of $`\frac{B}{2 . 4 \times 1 0^{9}}`$ gauss compared to hydrogen binding energy), and the second can be neglected. The second term may be important in very high magnetic fields like those produced near neutron stars or if distance scales are larger than in atoms like in a plasma (see example below).
@@ -198,7 +198,7 @@ That is, we can change the phase by a different amount at each point in spacetim
 Its clear that this transformation leaves the **absolute square of the wavefunction the same**, but what about the Schrödinger equation? It must also be unchanged. The **derivatives in the Schrödinger equation** will act on $`\lambda ( \vec{r} , t )`$ changing the equation unless we do something else to cancel the changes.
 
 ```math
-\frac{1}{2 m} \left( \vec{p} + \frac{e}{c} \vec{A} \right)^{2} \psi = ( E + e\varphi ) \psi
+\frac{1}{2 m} \left( \vec{p} + \frac{e}{c} \vec{A} \right)^{2} \psi = ( E + e\phi ) \psi
 ```
 
 A little **calculation** (see section 20.5.7) shows that the equation remains unchanged if we also transform the potentials
@@ -208,7 +208,7 @@ A little **calculation** (see section 20.5.7) shows that the equation remains un
 ```
 
 ```math
-\varphi \quad \to \quad \varphi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t}
+\phi \quad \to \quad \phi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t}
 ```
 
 ```math
@@ -228,7 +228,7 @@ We will write our **standard gauge transformation** in the traditional way to co
 ```
 
 ```math
-\varphi \quad \to \quad \varphi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t}
+\phi \quad \to \quad \phi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t}
 ```
 
 ```math
@@ -325,16 +325,16 @@ This would be a really nice tool to study the number of degenerate states in eac
 
 ## <a id="s-20-4-2-a-plasma-in-a-magnetic-field"></a>20.4.2 A Plasma in a Magnetic Field
 
-An important place where both magnetic terms come into play is in a **plasma.** There, many electrons are not bound to atoms and external Electric fields are screened out. Let’s assume there is a constant (enough) B field in the z direction. We then have cylindrical symmetry and will work in the coordinates, $`\rho , \varphi`$, and $`z`$.
+An important place where both magnetic terms come into play is in a **plasma.** There, many electrons are not bound to atoms and external Electric fields are screened out. Let’s assume there is a constant (enough) B field in the z direction. We then have cylindrical symmetry and will work in the coordinates, $`\rho , \phi`$, and $`z`$.
 
 ```math
-\frac{- \hbar^{2}}{2 m_{e}} \nabla^{2} \psi + \frac{eB}{2 m_{e} c} L_{z} \psi + \frac{e^{2} B^{2}}{8 m_{e} c^{2}} ( x^{2} + y^{2} ) \psi = ( E + e\varphi ) \psi
+\frac{- \hbar^{2}}{2 m_{e}} \nabla^{2} \psi + \frac{eB}{2 m_{e} c} L_{z} \psi + \frac{e^{2} B^{2}}{8 m_{e} c^{2}} ( x^{2} + y^{2} ) \psi = ( E + e\phi ) \psi
 ```
 
 The problem clearly has **translational symmetry along the z direction and rotational symmetry around the z axis**. Given the symmetry, we know that $`L_{z}`$ and $`p_{z}`$ commute with the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=298" target="_blank" title="This page in the PDF"><sup>[p. 298]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p299" href="book.pdf#page=299" target="_blank" title="This page in the PDF"><sup>[p. 299]</sup></a></span> Hamiltonian and will give constants of the motion. We therefore will be able to separate variables in the usual way.
 
 ```math
-\psi ( \vec{r} ) = u_{nmk} ( \rho ) e^{im\varphi} e^{ikz}
+\psi ( \vec{r} ) = u_{nmk} ( \rho ) e^{im\phi} e^{ikz}
 ```
 
 In **solving** (see section 20.5.5) the equation in $`\rho`$ we may reuse the Hydrogen solution ultimately get the energies
@@ -400,7 +400,7 @@ We take Maxwell’s equations and the fields written in terms of the potentials 
 ```
 
 ```math
-\vec{E} = - \vec{\nabla} \varphi - \frac{1}{c} \frac{\partial A}{\partial t} \quad E_{k} = - \frac{\partial}{\partial x_{k}} \varphi - \frac{1}{c} \frac{\partial A_{k}}{\partial t}
+\vec{E} = - \vec{\nabla} \phi - \frac{1}{c} \frac{\partial A}{\partial t} \quad E_{k} = - \frac{\partial}{\partial x_{k}} \phi - \frac{1}{c} \frac{\partial A_{k}}{\partial t}
 ```
 
 If the fields are written in terms of potentials, then the first two Maxwell equations are automatically satisfied. Lets verify the first equation by plugging in the B field in terms of the potential and noticing that we can interchange the order of differentiation.
@@ -417,10 +417,10 @@ We could also just interchange the index names $`i`$ and $`m`$ then switch those
 
 We have the same expression except for a minus sign which means that $`\vec{\nabla} \cdot \vec{B} = 0`$.
 
-For the second equation, we write it out in terms of the potentials and notice that the first term $`\tfrac{\partial}{\partial x_{i}} \tfrac{\partial}{\partial x_{j}} \varphi \epsilon_{ijk} = 0`$ for the same reason as above.
+For the second equation, we write it out in terms of the potentials and notice that the first term $`\tfrac{\partial}{\partial x_{i}} \tfrac{\partial}{\partial x_{j}} \phi \epsilon_{ijk} = 0`$ for the same reason as above.
 
 ```math
-\frac{\partial}{\partial x_{i}} E_{j} \epsilon_{ijk} + \frac{1}{c} \frac{\partial B_{k}}{\partial t} = - \frac{\partial}{\partial x_{i}} \left( \frac{\partial}{\partial x_{j}} \varphi + \frac{1}{c} \frac{\partial A_{j}}{\partial t} \right) \epsilon_{ijk} + \frac{1}{c} \frac{\partial}{\partial t} \frac{\partial}{\partial x_{m}} A_{n} \epsilon_{mnk}
+\frac{\partial}{\partial x_{i}} E_{j} \epsilon_{ijk} + \frac{1}{c} \frac{\partial B_{k}}{\partial t} = - \frac{\partial}{\partial x_{i}} \left( \frac{\partial}{\partial x_{j}} \phi + \frac{1}{c} \frac{\partial A_{j}}{\partial t} \right) \epsilon_{ijk} + \frac{1}{c} \frac{\partial}{\partial t} \frac{\partial}{\partial x_{m}} A_{n} \epsilon_{mnk}
 ```
 
 ```math
@@ -436,11 +436,11 @@ The last step was simply done by renaming dummy indices (that are summed over) s
 Similarly we may work with the Gauss’s law equation
 
 ```math
-\vec{\nabla} \cdot \vec{E} = \frac{\partial}{\partial x_{k}} E_{k} = - \frac{\partial}{\partial x_{k}} \left( \frac{\partial}{\partial x_{k}} \varphi + \frac{1}{c} \frac{\partial A_{k}}{\partial t} \right) = 4 \pi \rho
+\vec{\nabla} \cdot \vec{E} = \frac{\partial}{\partial x_{k}} E_{k} = - \frac{\partial}{\partial x_{k}} \left( \frac{\partial}{\partial x_{k}} \phi + \frac{1}{c} \frac{\partial A_{k}}{\partial t} \right) = 4 \pi \rho
 ```
 
 ```math
--\nabla^{2} \varphi - \frac{1}{c} \frac{\partial}{\partial t} ( \vec{\nabla} \cdot \vec{A} ) = 4 \pi \rho
+-\nabla^{2} \phi - \frac{1}{c} \frac{\partial}{\partial t} ( \vec{\nabla} \cdot \vec{A} ) = 4 \pi \rho
 ```
 
 For the fourth equation we have.
@@ -450,7 +450,7 @@ For the fourth equation we have.
 ```
 
 ```math
-\frac{\partial}{\partial x_{i}} \frac{\partial}{\partial x_{m}} A_{n} \epsilon_{mnj} \epsilon_{ijk} + \frac{1}{c} \frac{\partial}{\partial t} \left( \frac{\partial}{\partial x_{k}} \varphi + \frac{1}{c} \frac{\partial A_{k}}{\partial t} \right) = \frac{4 \pi}{c} J_{k}
+\frac{\partial}{\partial x_{i}} \frac{\partial}{\partial x_{m}} A_{n} \epsilon_{mnj} \epsilon_{ijk} + \frac{1}{c} \frac{\partial}{\partial t} \left( \frac{\partial}{\partial x_{k}} \phi + \frac{1}{c} \frac{\partial A_{k}}{\partial t} \right) = \frac{4 \pi}{c} J_{k}
 ```
 
 Its easy to derive an identity for the product of two totally antisymmetric tensors $`\epsilon_{mnj} \epsilon_{ijk}`$ as occurs above. All the indices of any tensor have to be different in order to get a nonzero result. Since the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=300" target="_blank" title="This page in the PDF"><sup>[p. 300]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p301" href="book.pdf#page=301" target="_blank" title="This page in the PDF"><sup>[p. 301]</sup></a></span> $`j`$ occurs in both tensors (and is summed over) we can simplify things. Take the case that $`i = 1`$ and $`k = 2`$. We only have a nonzero term if $`j = 3`$ so the other 2 terms in the sum are zero. But if $`j = 3`$, we must have either $`m = 1`$ and $`n = 2`$ or vice versa. We also must not have $`i = k`$ since all the indices have to be different on each epsilon. So we can write.
@@ -462,19 +462,19 @@ Its easy to derive an identity for the product of two totally antisymmetric tens
 Applying this identity to the Maxwell equation above, we get.
 
 ```math
-\frac{\partial}{\partial x_{i}} \frac{\partial}{\partial x_{k}} A_{i} - \frac{\partial}{\partial x_{i}} \frac{\partial}{\partial x_{i}} A_{k} + \frac{1}{c} \frac{\partial}{\partial x_{k}} \frac{\partial \varphi}{\partial t} + \frac{1}{c^{2}} \frac{\partial^{2} A_{k}}{\partial t^{2}} = \frac{4 \pi}{c} J_{k}
+\frac{\partial}{\partial x_{i}} \frac{\partial}{\partial x_{k}} A_{i} - \frac{\partial}{\partial x_{i}} \frac{\partial}{\partial x_{i}} A_{k} + \frac{1}{c} \frac{\partial}{\partial x_{k}} \frac{\partial \phi}{\partial t} + \frac{1}{c^{2}} \frac{\partial^{2} A_{k}}{\partial t^{2}} = \frac{4 \pi}{c} J_{k}
 ```
 
 ```math
-\frac{\partial}{\partial x_{k}} \vec{\nabla} \cdot \vec{A} -\nabla^{2} A_{k} + \frac{1}{c} \frac{\partial}{\partial x_{k}} \frac{\partial \varphi}{\partial t} + \frac{1}{c^{2}} \frac{\partial^{2} A_{k}}{\partial t^{2}} = \frac{4 \pi}{c} J_{k}
+\frac{\partial}{\partial x_{k}} \vec{\nabla} \cdot \vec{A} -\nabla^{2} A_{k} + \frac{1}{c} \frac{\partial}{\partial x_{k}} \frac{\partial \phi}{\partial t} + \frac{1}{c^{2}} \frac{\partial^{2} A_{k}}{\partial t^{2}} = \frac{4 \pi}{c} J_{k}
 ```
 
 ```math
--\nabla^{2} A_{k} + \frac{1}{c^{2}} \frac{\partial^{2} A_{k}}{\partial t^{2}} + \frac{\partial}{\partial x_{k}} \left( \vec{\nabla} \cdot \vec{A} + \frac{1}{c} \frac{\partial \varphi}{\partial t} \right) = \frac{4 \pi}{c} J_{k}
+-\nabla^{2} A_{k} + \frac{1}{c^{2}} \frac{\partial^{2} A_{k}}{\partial t^{2}} + \frac{\partial}{\partial x_{k}} \left( \vec{\nabla} \cdot \vec{A} + \frac{1}{c} \frac{\partial \phi}{\partial t} \right) = \frac{4 \pi}{c} J_{k}
 ```
 
 ```math
--\nabla^{2} \vec{A} + \frac{1}{c^{2}} \frac{\partial^{2} \vec{A}}{\partial t^{2}} + \vec{\nabla} \left( \vec{\nabla} \cdot \vec{A} + \frac{1}{c} \frac{\partial \varphi}{\partial t} \right) = \frac{4 \pi}{c} \vec{J}
+-\nabla^{2} \vec{A} + \frac{1}{c^{2}} \frac{\partial^{2} \vec{A}}{\partial t^{2}} + \vec{\nabla} \left( \vec{\nabla} \cdot \vec{A} + \frac{1}{c} \frac{\partial \phi}{\partial t} \right) = \frac{4 \pi}{c} \vec{J}
 ```
 
 The last two equations derived are wave equations with source terms obeyed by the potentials. As discussed in the opening section of this chapter, they can be simplified with a choice of gauge.
@@ -484,7 +484,7 @@ The last two equations derived are wave equations with source terms obeyed by th
 In this section, we wish to verify that the Hamiltonian
 
 ```math
-H = \frac{1}{2 m} \left( \vec{p} + \frac{e}{c} \vec{A} \right)^{2} - e\varphi
+H = \frac{1}{2 m} \left( \vec{p} + \frac{e}{c} \vec{A} \right)^{2} - e\phi
 ```
 
 gives the correct Lorentz Force law in classical physics. We will then proceed to use this Hamiltonian in Quantum Mechanics.
@@ -528,17 +528,17 @@ Note that $`\vec{p} \neq m \vec{v}`$. The momentum conjugate to $`\vec{r}`$ incl
 Similarly for the other Hamilton equation (in each vector component) $`\dot{p}_{i} = - \tfrac{\partial H}{\partial x_{i}}`$, we have
 
 ```math
-\frac{dp_{i}}{dt} = \dot{p}_{i} = - \frac{e}{mc} \left( \vec{p} + \frac{e}{c} \vec{A} \right) \cdot \frac{\partial \vec{A}}{\partial x_{i}} + e \frac{\vec{\partial} \varphi}{\partial x_{i}} .
+\frac{dp_{i}}{dt} = \dot{p}_{i} = - \frac{e}{mc} \left( \vec{p} + \frac{e}{c} \vec{A} \right) \cdot \frac{\partial \vec{A}}{\partial x_{i}} + e \frac{\vec{\partial} \phi}{\partial x_{i}} .
 ```
 
 We now have two equations for $`\frac{dp_{i}}{dt}`$ derived from the two Hamilton equations. We equate the two right hand sides yielding
 
 ```math
-ma_{i} = m \frac{dv_{i}}{dt} = - \frac{e}{mc} \left( \vec{p} + \frac{e}{c} \vec{A} \right) \cdot \frac{\partial \vec{A}}{\partial x_{i}} + e \frac{\partial \varphi}{\partial x_{i}} + \frac{e}{c} \frac{dA_{i}}{dt} .
+ma_{i} = m \frac{dv_{i}}{dt} = - \frac{e}{mc} \left( \vec{p} + \frac{e}{c} \vec{A} \right) \cdot \frac{\partial \vec{A}}{\partial x_{i}} + e \frac{\partial \phi}{\partial x_{i}} + \frac{e}{c} \frac{dA_{i}}{dt} .
 ```
 
 ```math
-ma_{i} = - \frac{e}{mc} ( m \vec{v} ) \cdot \frac{\partial \vec{A}}{\partial x_{i}} + e \frac{\partial \varphi}{\partial x_{i}} + \frac{e}{c} \frac{dA_{i}}{dt} .
+ma_{i} = - \frac{e}{mc} ( m \vec{v} ) \cdot \frac{\partial \vec{A}}{\partial x_{i}} + e \frac{\partial \phi}{\partial x_{i}} + \frac{e}{c} \frac{dA_{i}}{dt} .
 ```
 
 The **total time derivative** of $`A`$ has one part from $`A`$ changing with time and another from the particle moving and $`A`$ changing in space.
@@ -550,13 +550,13 @@ The **total time derivative** of $`A`$ has one part from $`A`$ changing with tim
 so that
 
 ```math
-F_{i} = ma_{i} = - \frac{e}{c} \vec{v} \cdot \frac{\partial \vec{A}}{\partial x_{i}} + e \frac{\partial \varphi}{\partial x_{i}} + \frac{e}{c} \frac{\partial A_{i}}{\partial t} + \frac{e}{c} \left( \vec{v} \cdot \vec{\nabla} \right) A_{i} .
+F_{i} = ma_{i} = - \frac{e}{c} \vec{v} \cdot \frac{\partial \vec{A}}{\partial x_{i}} + e \frac{\partial \phi}{\partial x_{i}} + \frac{e}{c} \frac{\partial A_{i}}{\partial t} + \frac{e}{c} \left( \vec{v} \cdot \vec{\nabla} \right) A_{i} .
 ```
 
 We notice the electric field term in this equation.
 
 ```math
-e \frac{\partial \varphi}{\partial x_{i}} + \frac{e}{c} \frac{\partial A_{i}}{\partial t} = - eE_{i}
+e \frac{\partial \phi}{\partial x_{i}} + \frac{e}{c} \frac{\partial A_{i}}{\partial t} = - eE_{i}
 ```
 
 ```math
@@ -604,19 +604,19 @@ which is the Lorentz force law. So this is the right Hamiltonian for an electron
 Start with the **Hamiltonian**
 
 ```math
-H = \frac{1}{2 \mu} \left( \vec{p} + \frac{e}{c} \vec{A} \right)^{2} - e\varphi
+H = \frac{1}{2 \mu} \left( \vec{p} + \frac{e}{c} \vec{A} \right)^{2} - e\phi
 ```
 
 Now write the **Schrödinger equation**.
 
 ```math
-\begin{aligned} \frac{1}{2 \mu} \left( \frac{\hbar}{i} \vec{\nabla} + \frac{e}{c} \vec{A} \right) \cdot \left( \frac{\hbar}{i} \vec{\nabla} \psi + \frac{e}{c} \vec{A} \psi \right) &= ( E + e\varphi ) \psi \\ \frac{- \hbar^{2}}{2 \mu} \nabla^{2} \psi - \frac{ie \hbar}{2 \mu c} \vec{\nabla} \cdot \left( \vec{A} \psi \right) - \frac{ie \hbar}{2 \mu c} \vec{A} \cdot \vec{\nabla} \psi + \frac{e^{2}}{2 mc^{2}} A^{2} \psi &= ( E + e\varphi ) \psi \\ \frac{- \hbar^{2}}{2 \mu} \nabla^{2} \psi - \frac{ie \hbar}{2 \mu c} \left( \vec{\nabla} \cdot \vec{A} \right) \psi - \frac{ie \hbar}{\mu c} \vec{A} \cdot \vec{\nabla} \psi + \frac{e^{2}}{2 mc^{2}} A^{2} \psi &= ( E + e\varphi ) \psi \end{aligned}
+\begin{aligned} \frac{1}{2 \mu} \left( \frac{\hbar}{i} \vec{\nabla} + \frac{e}{c} \vec{A} \right) \cdot \left( \frac{\hbar}{i} \vec{\nabla} \psi + \frac{e}{c} \vec{A} \psi \right) &= ( E + e\phi ) \psi \\ \frac{- \hbar^{2}}{2 \mu} \nabla^{2} \psi - \frac{ie \hbar}{2 \mu c} \vec{\nabla} \cdot \left( \vec{A} \psi \right) - \frac{ie \hbar}{2 \mu c} \vec{A} \cdot \vec{\nabla} \psi + \frac{e^{2}}{2 mc^{2}} A^{2} \psi &= ( E + e\phi ) \psi \\ \frac{- \hbar^{2}}{2 \mu} \nabla^{2} \psi - \frac{ie \hbar}{2 \mu c} \left( \vec{\nabla} \cdot \vec{A} \right) \psi - \frac{ie \hbar}{\mu c} \vec{A} \cdot \vec{\nabla} \psi + \frac{e^{2}}{2 mc^{2}} A^{2} \psi &= ( E + e\phi ) \psi \end{aligned}
 ```
 
 The second term vanishes in the **Coulomb gauge** i.e., $`\vec{\nabla} \cdot \vec{A} = 0`$, so
 
 ```math
-- \frac{\hbar^{2}}{2 \mu} \nabla^{2} \psi - \frac{ie \hbar}{\mu c} \vec{A} \cdot \vec{\nabla} \psi + \frac{e^{2}}{2 mc^{2}} A^{2} \psi = ( E + e\varphi ) \psi
+- \frac{\hbar^{2}}{2 \mu} \nabla^{2} \psi - \frac{ie \hbar}{\mu c} \vec{A} \cdot \vec{\nabla} \psi + \frac{e^{2}}{2 mc^{2}} A^{2} \psi = ( E + e\phi ) \psi
 ```
 
 Now for constant $`B_{z}`$, we **choose the vector potential**
@@ -644,7 +644,7 @@ it gives the right field and satisfies the Coulomb gauge condition.
 Substituting back, we obtain
 
 ```math
-\frac{- \hbar^{2}}{2 \mu} \nabla^{2} \psi + \frac{ie \hbar}{2 \mu c} \vec{r} \times \vec{B} \cdot \vec{\nabla} \psi + \frac{e^{2}}{8 mc^{2}} \left( \vec{r} \times \vec{B} \right)^{2} \psi = ( E + e\varphi ) \psi
+\frac{- \hbar^{2}}{2 \mu} \nabla^{2} \psi + \frac{ie \hbar}{2 \mu c} \vec{r} \times \vec{B} \cdot \vec{\nabla} \psi + \frac{e^{2}}{8 mc^{2}} \left( \vec{r} \times \vec{B} \right)^{2} \psi = ( E + e\phi ) \psi
 ```
 
 Now let’s work on the **vector arithmetic**.
@@ -668,7 +668,7 @@ Now let’s work on the **vector arithmetic**.
 So, plugging these two equations in, we get
 
 ```math
-\frac{- \hbar^{2}}{2 \mu} \nabla^{2} \psi + \frac{e}{2 \mu c} \vec{B} \cdot \vec{L} \psi + \frac{e^{2}}{8 mc^{2}} \left[ r^{2} B^{2} - \left( \vec{r} \cdot \vec{B} \right)^{2} \right] \psi = ( E + e\varphi ) \psi .
+\frac{- \hbar^{2}}{2 \mu} \nabla^{2} \psi + \frac{e}{2 \mu c} \vec{B} \cdot \vec{L} \psi + \frac{e^{2}}{8 mc^{2}} \left[ r^{2} B^{2} - \left( \vec{r} \cdot \vec{B} \right)^{2} \right] \psi = ( E + e\phi ) \psi .
 ```
 
 We see that there are two new terms due to the magnetic field. The first one is the magnetic moment term we have already used and the second will be negligible in atoms.
@@ -678,7 +678,7 @@ We see that there are two new terms due to the magnetic field. The first one is 
 In the equation
 
 ```math
-\frac{- \hbar^{2}}{2 \mu} \nabla^{2} \psi + \frac{e}{2 \mu c} \vec{B} \cdot \vec{L} \psi + \frac{e^{2}}{8 mc^{2}} \left[ r^{2} B^{2} - \left( \vec{r} \cdot \vec{B} \right)^{2} \right] \psi = ( E + e\varphi ) \psi .
+\frac{- \hbar^{2}}{2 \mu} \nabla^{2} \psi + \frac{e}{2 \mu c} \vec{B} \cdot \vec{L} \psi + \frac{e^{2}}{8 mc^{2}} \left[ r^{2} B^{2} - \left( \vec{r} \cdot \vec{B} \right)^{2} \right] \psi = ( E + e\phi ) \psi .
 ```
 
 the second term divided by $`( e^{2} /a_{0} )`$
@@ -711,10 +711,10 @@ Divide the third term by the second:
 - \frac{\hbar^{2}}{2 m_{e}} \nabla^{2} \psi + \frac{eB}{2 m_{e} c} L_{z} \psi + \frac{e^{2} B^{2}}{8 m_{e} c^{2}} \left( x^{2} + y^{2} \right) \psi = E\psi
 ```
 
-For uniform $`\vec{B}`$ field, cylindrical symmetry $`\Rightarrow`$ apply **cylindrical coordinates** $`\rho , \varphi , z`$. Then
+For uniform $`\vec{B}`$ field, cylindrical symmetry $`\Rightarrow`$ apply **cylindrical coordinates** $`\rho , \phi , z`$. Then
 
 ```math
-\nabla^{2} = \frac{\partial^{2}}{\partial z^{2}} + \frac{\partial^{2}}{\partial \rho^{2}} + \frac{1}{\rho} \frac{\partial}{\partial \rho} + \frac{1}{\rho^{2}} \frac{\partial^{2}}{\partial \varphi^{2}}
+\nabla^{2} = \frac{\partial^{2}}{\partial z^{2}} + \frac{\partial^{2}}{\partial \rho^{2}} + \frac{1}{\rho} \frac{\partial}{\partial \rho} + \frac{1}{\rho^{2}} \frac{\partial^{2}}{\partial \phi^{2}}
 ```
 
 <div align="right"><a href="book.pdf#page=304" target="_blank" title="This page in the PDF"><sup>[p. 304]</sup></a></div>
@@ -724,11 +724,11 @@ For uniform $`\vec{B}`$ field, cylindrical symmetry $`\Rightarrow`$ apply **cyli
 From the symmetry of the problem, we can guess (and verify) that $`[ H,p_{z} ] = [ H,L_{z} ] = 0`$. These variables will be constants of the motion and we therefore choose
 
 ```math
-\psi ( \vec{r} ) = u_{mk} ( \rho ) e^{im\varphi} e^{ikz} .
+\psi ( \vec{r} ) = u_{mk} ( \rho ) e^{im\phi} e^{ikz} .
 ```
 
 ```math
-L_{z} \psi = \frac{\hbar}{i} \frac{\partial}{\partial \varphi} \psi = m \hbar \psi
+L_{z} \psi = \frac{\hbar}{i} \frac{\partial}{\partial \phi} \psi = m \hbar \psi
 ```
 
 ```math
@@ -736,7 +736,7 @@ p_{z} \psi = \frac{\hbar}{i} \frac{\partial}{\partial z} \psi = \hbar k\psi
 ```
 
 ```math
-\nabla^{2} \psi = - k^{2} \psi - \frac{m^{2}}{\rho^{2}} \psi + \frac{\partial^{2} u}{\partial \rho^{2}} e^{im\varphi} e^{ikz} + \frac{1}{\rho} \frac{\partial u}{\partial \rho} e^{im\varphi} e^{ikz}
+\nabla^{2} \psi = - k^{2} \psi - \frac{m^{2}}{\rho^{2}} \psi + \frac{\partial^{2} u}{\partial \rho^{2}} e^{im\phi} e^{ikz} + \frac{1}{\rho} \frac{\partial u}{\partial \rho} e^{im\phi} e^{ikz}
 ```
 
 ```math
@@ -904,7 +904,7 @@ We want to investigate what it takes for the **Hamiltonian to be invariant under
 That is, we can change the phase by a different amount at each point in spacetime and the physics will remain unchanged. We know that the absolute square of the wavefunction is the same. The Schrödinger must also be unchanged.
 
 ```math
-\left( \vec{p} + \frac{e}{c} \vec{A} \right)^{2} \psi = ( E + e\varphi ) \psi
+\left( \vec{p} + \frac{e}{c} \vec{A} \right)^{2} \psi = ( E + e\phi ) \psi
 ```
 
 So let’s **postulate the following transformation** then see what we need to keep the equation invariant.
@@ -918,13 +918,13 @@ So let’s **postulate the following transformation** then see what we need to k
 ```
 
 ```math
-\varphi \quad \to \quad \varphi + \Delta \varphi
+\phi \quad \to \quad \phi + \Delta \phi
 ```
 
 We now need to apply this transformation to the Schrödinger equation.
 
 ```math
-\left( \frac{\hbar}{i} \vec{\nabla} + \frac{e}{c} \vec{A} + \frac{e}{c} \vec{\Delta} A \right)^{2} e^{i\lambda ( \vec{r} ,t )} \psi = \left( i \hbar \frac{\partial}{\partial t} + e\varphi + e \Delta \varphi \right) e^{i\lambda ( \vec{r} ,t )} \psi
+\left( \frac{\hbar}{i} \vec{\nabla} + \frac{e}{c} \vec{A} + \frac{e}{c} \vec{\Delta} A \right)^{2} e^{i\lambda ( \vec{r} ,t )} \psi = \left( i \hbar \frac{\partial}{\partial t} + e\phi + e \Delta \phi \right) e^{i\lambda ( \vec{r} ,t )} \psi
 ```
 
 <div align="right"><a href="book.pdf#page=307" target="_blank" title="This page in the PDF"><sup>[p. 307]</sup></a></div>
@@ -934,11 +934,11 @@ We now need to apply this transformation to the Schrödinger equation.
 Now we will **apply the differential operator to the exponential** to identify the new terms. Note that $`\vec{\nabla} e^{i\lambda ( \vec{r} ,t )} = e^{i\lambda ( \vec{r} ,t )} i \vec{\nabla} \lambda ( \vec{r} , t )`$.
 
 ```math
-e^{i\lambda ( \vec{r} ,t )} \left( \frac{\hbar}{i} \vec{\nabla} + \frac{e}{c} \vec{A} + \frac{e}{c} \vec{\Delta} A + \hbar \left( \vec{\nabla} \lambda ( \vec{r} , t ) \right) \right)^{2} \psi = e^{i\lambda ( \vec{r} ,t )} \left( i \hbar \frac{\partial}{\partial t} + e\varphi + e \Delta \varphi - \hbar \frac{\partial \lambda ( \vec{r} , t )}{\partial t} \right) \psi
+e^{i\lambda ( \vec{r} ,t )} \left( \frac{\hbar}{i} \vec{\nabla} + \frac{e}{c} \vec{A} + \frac{e}{c} \vec{\Delta} A + \hbar \left( \vec{\nabla} \lambda ( \vec{r} , t ) \right) \right)^{2} \psi = e^{i\lambda ( \vec{r} ,t )} \left( i \hbar \frac{\partial}{\partial t} + e\phi + e \Delta \phi - \hbar \frac{\partial \lambda ( \vec{r} , t )}{\partial t} \right) \psi
 ```
 
 ```math
-\left( \frac{\hbar}{i} \vec{\nabla} + \frac{e}{c} \vec{A} + \frac{e}{c} \vec{\Delta} A + \hbar \left( \vec{\nabla} \lambda ( \vec{r} , t ) \right) \right)^{2} \psi = \left( i \hbar \frac{\partial}{\partial t} + e\varphi + e \Delta \varphi - \hbar \frac{\partial \lambda ( \vec{r} , t )}{\partial t} \right) \psi
+\left( \frac{\hbar}{i} \vec{\nabla} + \frac{e}{c} \vec{A} + \frac{e}{c} \vec{\Delta} A + \hbar \left( \vec{\nabla} \lambda ( \vec{r} , t ) \right) \right)^{2} \psi = \left( i \hbar \frac{\partial}{\partial t} + e\phi + e \Delta \phi - \hbar \frac{\partial \lambda ( \vec{r} , t )}{\partial t} \right) \psi
 ```
 
 Its easy to see that we can **leave this equation invariant with the following choices.**
@@ -948,7 +948,7 @@ Its easy to see that we can **leave this equation invariant with the following c
 ```
 
 ```math
-\Delta \varphi = \frac{\hbar}{e} \frac{\partial \lambda ( \vec{r} , t )}{\partial t}
+\Delta \phi = \frac{\hbar}{e} \frac{\partial \lambda ( \vec{r} , t )}{\partial t}
 ```
 
 We can argue that **we need Electromagnetism to give us the local phase transformation symmetry** for electrons. We now rewrite the gauge transformation in the more conventional way, the convention being set before quantum mechanics.
@@ -962,7 +962,7 @@ We can argue that **we need Electromagnetism to give us the local phase transfor
 ```
 
 ```math
-\varphi \quad \to \quad \varphi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t}
+\phi \quad \to \quad \phi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t}
 ```
 
 ```math
@@ -1019,7 +1019,7 @@ Magnetic flux is observed to be quantized in a region enclosed by a superconduct
 
 # <a id="s-20-6-homework-problems"></a>20.6 Homework Problems
 
-1. Show that the Hamiltonian $`H = \tfrac{1}{2 \mu} [ \vec{p} + \tfrac{e}{c} \vec{A} ( \vec{r} , t ) ]^{2} - e\varphi ( \vec{r} , t )`$ yields the Lorentz force law for an electron. Note that the fields must be evaluated at the position of the electron. This means that the total time derivative of $`\vec{A}`$ must also account for the motion of the electron.
+1. Show that the Hamiltonian $`H = \tfrac{1}{2 \mu} [ \vec{p} + \tfrac{e}{c} \vec{A} ( \vec{r} , t ) ]^{2} - e\phi ( \vec{r} , t )`$ yields the Lorentz force law for an electron. Note that the fields must be evaluated at the position of the electron. This means that the total time derivative of $`\vec{A}`$ must also account for the motion of the electron.
 
 2. Calculate the wavelengths of the three Zeeman lines in the 3$`d \to 2 p`$ transition in Hydrogen atoms in a $`10^{4}`$ gauss field.
 
@@ -1047,10 +1047,10 @@ Remember the flux satisfies the equations $`\tfrac{\partial ( \psi^{*} \psi )}{\
 
 Use the energy eigenstates as the basis states.
 
-6. The Hamiltonian for an electron in a electromagnetic field can be written as $`H = \tfrac{1}{2 m} [ \vec{p} + \tfrac{e}{c} \vec{A} ( \vec{r} , t ) ]^{2} - e\varphi ( \vec{r} , t ) + \tfrac{e \hbar}{2 mc} \vec{\sigma} \cdot B ( \vec{\hbar} r,t )`$. Show that this can be written as the Pauli Hamiltonian
+6. The Hamiltonian for an electron in a electromagnetic field can be written as $`H = \tfrac{1}{2 m} [ \vec{p} + \tfrac{e}{c} \vec{A} ( \vec{r} , t ) ]^{2} - e\phi ( \vec{r} , t ) + \tfrac{e \hbar}{2 mc} \vec{\sigma} \cdot B ( \vec{\hbar} r,t )`$. Show that this can be written as the Pauli Hamiltonian
 
 ```math
-H = \frac{1}{2 m} \left( \vec{\sigma} \cdot [ \vec{p} + \frac{e}{c} \vec{A} ( \vec{r} , t ) ] \right)^{2} - e\varphi ( \vec{r} , t ) .
+H = \frac{1}{2 m} \left( \vec{\sigma} \cdot [ \vec{p} + \frac{e}{c} \vec{A} ( \vec{r} , t ) ] \right)^{2} - e\phi ( \vec{r} , t ) .
 ```
 
 # <a id="s-20-7-sample-test-problems"></a>20.7 Sample Test Problems

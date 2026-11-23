@@ -28,23 +28,23 @@ Because the Schrödinger equation is **first order in the time derivative**, the
 If we have a complex scalar field that satisfies the (Euler-Lagrange = Klein-Gordon) equations
 
 ```math
-✷ \varphi - m^{2} \varphi = 0
+✷ \phi - m^{2} \phi = 0
 ```
 
 ```math
-✷ \varphi^{*} - m^{2} \varphi^{*} = 0 ,
+✷ \phi^{*} - m^{2} \phi^{*} = 0 ,
 ```
 
 it can be shown that the bilinear quantity
 
 ```math
-s_{\mu} = \frac{\hbar}{2 mi} \left( \varphi^{*} \frac{\partial \varphi}{\partial x_{\mu}} - \frac{\partial \varphi^{*}}{\partial x_{\mu}} \varphi \right)
+s_{\mu} = \frac{\hbar}{2 mi} \left( \phi^{*} \frac{\partial \phi}{\partial x_{\mu}} - \frac{\partial \phi^{*}}{\partial x_{\mu}} \phi \right)
 ```
 
 satisfies the **flux conservation equation**
 
 ```math
-\frac{\partial s_{\mu}}{\partial x_{\mu}} = \frac{\hbar}{2 mi} \left( \frac{\partial \varphi^{*}}{\partial x_{\mu}} \frac{\partial \varphi}{\partial x_{\mu}} + \varphi^{*} ✷ \varphi - ( ✷ \varphi^{*} ) \varphi - \frac{\partial \varphi^{*}}{\partial x_{\mu}} \frac{\partial \varphi}{\partial x_{\mu}} \right) = \frac{\hbar}{2 mi} m^{2} ( \varphi^{*} \varphi - \varphi^{*} \varphi ) = 0
+\frac{\partial s_{\mu}}{\partial x_{\mu}} = \frac{\hbar}{2 mi} \left( \frac{\partial \phi^{*}}{\partial x_{\mu}} \frac{\partial \phi}{\partial x_{\mu}} + \phi^{*} ✷ \phi - ( ✷ \phi^{*} ) \phi - \frac{\partial \phi^{*}}{\partial x_{\mu}} \frac{\partial \phi}{\partial x_{\mu}} \right) = \frac{\hbar}{2 mi} m^{2} ( \phi^{*} \phi - \phi^{*} \phi ) = 0
 ```
 
 and reduces to the probability flux we used with the Schrödinger equation, in the non-relativistic limit. The fourth component of the vector is just $`c`$ times the probability density, so that’s fine too (using $`e^{imc^{2} t/ \hbar}`$ as the time dependence.).
@@ -62,7 +62,7 @@ Dirac sought to solve the perceived problem by finding an equation that was some
 In the homework on electrons in an electromagnetic field, we showed that **the Schrödinger-Pauli Hamiltonian gives the same result as the non-relativistic Hamiltonian we have been using and automatically includes the interaction of the electron’s spin with the magnetic field**.
 
 ```math
-H = \frac{1}{2 m} \left( \vec{\sigma} \cdot [ \vec{p} + \frac{e}{c} \vec{A} ( \vec{r} , t ) ] \right)^{2} - e\varphi ( \vec{r} , t )
+H = \frac{1}{2 m} \left( \vec{\sigma} \cdot [ \vec{p} + \frac{e}{c} \vec{A} ( \vec{r} , t ) ] \right)^{2} - e\phi ( \vec{r} , t )
 ```
 
 The derivation is repeated here. Recall that $`\{ \sigma_{i} ,\sigma_{j} \} = 2 \delta_{ij} , [ \sigma_{i} ,\sigma_{j} ] = 2 \epsilon_{ijk} \sigma_{k}`$, and that the momentum operator differentiates both $`\vec{A}`$ and the wavefunction.
@@ -100,11 +100,11 @@ The derivation is repeated here. Recall that $`\{ \sigma_{i} ,\sigma_{j} \} = 2 
 ```
 
 ```math
-H = \frac{p^{2}}{2 m} + \frac{e}{mc} \vec{A} \cdot \vec{p} + \frac{e^{2}}{2 mc^{2}} A^{2} - e\varphi + \frac{e \hbar}{2 mc} \vec{\sigma} \cdot \vec{B}
+H = \frac{p^{2}}{2 m} + \frac{e}{mc} \vec{A} \cdot \vec{p} + \frac{e^{2}}{2 mc^{2}} A^{2} - e\phi + \frac{e \hbar}{2 mc} \vec{\sigma} \cdot \vec{B}
 ```
 
 ```math
-H = \frac{1}{2 m} [ \vec{p} + \frac{e}{c} \vec{A} ( \vec{r} , t ) ]^{2} - e\varphi ( \vec{r} , t ) + \frac{e \hbar}{2 mc} \vec{\sigma} \cdot \vec{B} ( \vec{r} , t )
+H = \frac{1}{2 m} [ \vec{p} + \frac{e}{c} \vec{A} ( \vec{r} , t ) ]^{2} - e\phi ( \vec{r} , t ) + \frac{e \hbar}{2 mc} \vec{\sigma} \cdot \vec{B} ( \vec{r} , t )
 ```
 
 We assume the Lorentz condition applies. This is a step in the right direction. The **wavefunction now has two components** (a spinor) and the effect of spin is included. Note that this form of the NR Hamiltonian yields the coupling of the electron spin to a magnetic field with the **correct** $`g`$ **factor of 2**. The spin-orbit interaction can be correctly derived from this.
@@ -126,51 +126,51 @@ We can **extend this concept to use the relativistic energy equation** (for now 
 ```
 
 ```math
-\left( \frac{i \hbar}{c} \frac{\partial}{\partial t} + i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \left( \frac{i \hbar}{c} \frac{\partial}{\partial t} - i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \varphi = ( mc )^{2} \varphi
+\left( \frac{i \hbar}{c} \frac{\partial}{\partial t} + i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \left( \frac{i \hbar}{c} \frac{\partial}{\partial t} - i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \phi = ( mc )^{2} \phi
 ```
 
 ```math
-\left( i \hbar \frac{\partial}{\partial x_{0}} + i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \left( i \hbar \frac{\partial}{\partial x_{0}} - i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \varphi = ( mc )^{2} \varphi
+\left( i \hbar \frac{\partial}{\partial x_{0}} + i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \left( i \hbar \frac{\partial}{\partial x_{0}} - i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \phi = ( mc )^{2} \phi
 ```
 
-This is again written in terms of a **2 component spinor** $`\varphi`$.
+This is again written in terms of a **2 component spinor** $`\phi`$.
 
-This equation is clearly headed toward being second order in the time derivative. As with Maxwell’s equation, which is first order when written in terms of the field tensor, we can try to write a first order equation in terms of a quantity derived from $`\varphi`$. Define
-
-```math
-\varphi^{( L )} = \varphi
-```
+This equation is clearly headed toward being second order in the time derivative. As with Maxwell’s equation, which is first order when written in terms of the field tensor, we can try to write a first order equation in terms of a quantity derived from $`\phi`$. Define
 
 ```math
-\varphi^{( R )} = \frac{1}{mc} \left( i \hbar \frac{\partial}{\partial x_{0}} - i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \varphi^{( L )}
-```
-
-Including the two components of $`\varphi^{( L )}`$ and the two components of $`\varphi^{( R )}`$, we now have four components which satisfy the equations.
-
-```math
-\left( i \hbar \frac{\partial}{\partial x_{0}} + i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \left( i \hbar \frac{\partial}{\partial x_{0}} - i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \varphi^{( L )} = ( mc )^{2} \varphi^{( L )}
+\phi^{( L )} = \phi
 ```
 
 ```math
-\left( i \hbar \frac{\partial}{\partial x_{0}} + i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) mc\varphi^{( R )} = ( mc )^{2} \varphi^{( L )}
+\phi^{( R )} = \frac{1}{mc} \left( i \hbar \frac{\partial}{\partial x_{0}} - i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \phi^{( L )}
+```
+
+Including the two components of $`\phi^{( L )}`$ and the two components of $`\phi^{( R )}`$, we now have four components which satisfy the equations.
+
+```math
+\left( i \hbar \frac{\partial}{\partial x_{0}} + i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \left( i \hbar \frac{\partial}{\partial x_{0}} - i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \phi^{( L )} = ( mc )^{2} \phi^{( L )}
 ```
 
 ```math
-\left( i \hbar \frac{\partial}{\partial x_{0}} + i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \varphi^{( R )} = mc\varphi^{( L )}
+\left( i \hbar \frac{\partial}{\partial x_{0}} + i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) mc\phi^{( R )} = ( mc )^{2} \phi^{( L )}
 ```
 
 ```math
-\left( i \hbar \frac{\partial}{\partial x_{0}} - i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \varphi^{( L )} = mc\varphi^{( R )}
+\left( i \hbar \frac{\partial}{\partial x_{0}} + i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \phi^{( R )} = mc\phi^{( L )}
+```
+
+```math
+\left( i \hbar \frac{\partial}{\partial x_{0}} - i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \phi^{( L )} = mc\phi^{( R )}
 ```
 
 These (last) two equations couple the 4 components together unless $`m = 0`$. Both of the above equations are first order in the time derivative. We could continue with this set of coupled equations but it is more reasonable to **write a single equation in terms of a 4 component wave function**. This will also be a first order equation. First rewrite the two equations together, putting all the terms on one side.
 
 ```math
-\left( i \hbar \vec{\sigma} \cdot \vec{\nabla} - i \hbar \frac{\partial}{\partial x_{0}} \right) \varphi^{( L )} + mc\varphi^{( R )} = 0
+\left( i \hbar \vec{\sigma} \cdot \vec{\nabla} - i \hbar \frac{\partial}{\partial x_{0}} \right) \phi^{( L )} + mc\phi^{( R )} = 0
 ```
 
 ```math
-\left( - i \hbar \vec{\sigma} \cdot \vec{\nabla} - i \hbar \frac{\partial}{\partial x_{0}} \right) \varphi^{( R )} + mc\varphi^{( L )} = 0
+\left( - i \hbar \vec{\sigma} \cdot \vec{\nabla} - i \hbar \frac{\partial}{\partial x_{0}} \right) \phi^{( R )} + mc\phi^{( L )} = 0
 ```
 
 <div align="right"><a href="book.pdf#page=486" target="_blank" title="This page in the PDF"><sup>[p. 486]</sup></a></div>
@@ -180,29 +180,29 @@ These (last) two equations couple the 4 components together unless $`m = 0`$. Bo
 Now take the sum and the difference of the two equations.
 
 ```math
-i \hbar \vec{\sigma} \cdot \vec{\nabla} ( \varphi^{( L )} - \varphi^{( R )} ) - i \hbar \frac{\partial}{\partial x_{0}} ( \varphi^{( R )} + \varphi^{( L )} ) + mc ( \varphi^{( R )} + \varphi^{( L )} ) = 0
+i \hbar \vec{\sigma} \cdot \vec{\nabla} ( \phi^{( L )} - \phi^{( R )} ) - i \hbar \frac{\partial}{\partial x_{0}} ( \phi^{( R )} + \phi^{( L )} ) + mc ( \phi^{( R )} + \phi^{( L )} ) = 0
 ```
 
 ```math
-i \hbar \vec{\sigma} \cdot \vec{\nabla} ( \varphi^{( R )} + \varphi^{( L )} ) - i \hbar \frac{\partial}{\partial x_{0}} ( \varphi^{( L )} - \varphi^{( R )} ) + mc ( \varphi^{( R )} - \varphi^{( L )} ) = 0
+i \hbar \vec{\sigma} \cdot \vec{\nabla} ( \phi^{( R )} + \phi^{( L )} ) - i \hbar \frac{\partial}{\partial x_{0}} ( \phi^{( L )} - \phi^{( R )} ) + mc ( \phi^{( R )} - \phi^{( L )} ) = 0
 ```
 
-Now rewriting in terms of $`\psi_{A} = \varphi^{( R )} + \varphi^{( L )}`$ and $`\psi_{B} = \varphi^{( R )} - \varphi^{( L )}`$ and ordering it as a matrix equation, we get.
+Now rewriting in terms of $`\psi_{A} = \phi^{( R )} + \phi^{( L )}`$ and $`\psi_{B} = \phi^{( R )} - \phi^{( L )}`$ and ordering it as a matrix equation, we get.
 
 ```math
-- i \hbar \vec{\sigma} \cdot \vec{\nabla} ( \varphi^{( R )} - \varphi^{( L )} ) - i \hbar \frac{\partial}{\partial x_{0}} ( \varphi^{( R )} + \varphi^{( L )} ) + mc ( \varphi^{( R )} + \varphi^{( L )} ) = 0
-```
-
-```math
-i \hbar \vec{\sigma} \cdot \vec{\nabla} ( \varphi^{( R )} + \varphi^{( L )} ) + i \hbar \frac{\partial}{\partial x_{0}} ( \varphi^{( R )} - \varphi^{( L )} ) + mc ( \varphi^{( R )} - \varphi^{( L )} ) = 0
+- i \hbar \vec{\sigma} \cdot \vec{\nabla} ( \phi^{( R )} - \phi^{( L )} ) - i \hbar \frac{\partial}{\partial x_{0}} ( \phi^{( R )} + \phi^{( L )} ) + mc ( \phi^{( R )} + \phi^{( L )} ) = 0
 ```
 
 ```math
-- i \hbar \frac{\partial}{\partial x_{0}} ( \varphi^{( R )} + \varphi^{( L )} ) - i \hbar \vec{\sigma} \cdot \vec{\nabla} ( \varphi^{( R )} - \varphi^{( L )} ) + mc ( \varphi^{( R )} + \varphi^{( L )} ) = 0
+i \hbar \vec{\sigma} \cdot \vec{\nabla} ( \phi^{( R )} + \phi^{( L )} ) + i \hbar \frac{\partial}{\partial x_{0}} ( \phi^{( R )} - \phi^{( L )} ) + mc ( \phi^{( R )} - \phi^{( L )} ) = 0
 ```
 
 ```math
-i \hbar \vec{\sigma} \cdot \vec{\nabla} ( \varphi^{( R )} + \varphi^{( L )} ) + i \hbar \frac{\partial}{\partial x_{0}} ( \varphi^{( R )} - \varphi^{( L )} ) + mc ( \varphi^{( R )} - \varphi^{( L )} ) = 0
+- i \hbar \frac{\partial}{\partial x_{0}} ( \phi^{( R )} + \phi^{( L )} ) - i \hbar \vec{\sigma} \cdot \vec{\nabla} ( \phi^{( R )} - \phi^{( L )} ) + mc ( \phi^{( R )} + \phi^{( L )} ) = 0
+```
+
+```math
+i \hbar \vec{\sigma} \cdot \vec{\nabla} ( \phi^{( R )} + \phi^{( L )} ) + i \hbar \frac{\partial}{\partial x_{0}} ( \phi^{( R )} - \phi^{( L )} ) + mc ( \phi^{( R )} - \phi^{( L )} ) = 0
 ```
 
 ```math
@@ -299,10 +299,10 @@ It is interesting to note that the **primary physics input was the choice of the
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p489" href="book.pdf#page=489" target="_blank" title="This page in the PDF"><sup>[p. 489]</sup></a>
 
-that gave us the correct interaction with the electron’s spin. We have applied this same momentum operator relativistically, not much of a stretch. We have also written the equation in terms of four components, but there was no new physics in that since everything could be computed from two components, say $`\varphi^{( L )}`$ since
+that gave us the correct interaction with the electron’s spin. We have applied this same momentum operator relativistically, not much of a stretch. We have also written the equation in terms of four components, but there was no new physics in that since everything could be computed from two components, say $`\phi^{( L )}`$ since
 
 ```math
-\varphi^{( R )} = \frac{1}{mc} \left( i \hbar \frac{\partial}{\partial x_{0}} - i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \varphi^{( L )} .
+\phi^{( R )} = \frac{1}{mc} \left( i \hbar \frac{\partial}{\partial x_{0}} - i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \phi^{( L )} .
 ```
 
 Dirac’s paper did not follow the same line of reasoning. Historically, the Schrödinger-Pauli Hamiltonian was derived from the Dirac equation. It was Dirac who produced the correct equation for electrons and went on to interpret it to gain new insight into physics.
@@ -463,7 +463,7 @@ j_{0} = \bar{\psi} \gamma_{4} \psi = \psi^{\dagger} \gamma_{4} \gamma_{4} \psi =
 
 ## <a id="s-36-5-3-the-non-relativistic-equation"></a>36.5.3 The Non-Relativistic Equation
 
-Now we will calculate the **prediction of the Dirac equation for the non-relativistic coulomb problem**, aiming to directly compare to what we have done with the Schrödinger equation for Hydrogen. As for previous Hydrogen solutions, we will set $`\vec{A} = 0`$ but have a scalar potential due to the nucleus $`\varphi = A_{0}`$. The energy we have been using in our non-relativistic formulation is $`E^{( NR )} = E - mc^{2}`$. We will **work with the equation for the large component** $`\psi_{A}`$. Note that $`A_{0}`$ is a function of the coordinates and the momentum operator will differentiate it.
+Now we will calculate the **prediction of the Dirac equation for the non-relativistic coulomb problem**, aiming to directly compare to what we have done with the Schrödinger equation for Hydrogen. As for previous Hydrogen solutions, we will set $`\vec{A} = 0`$ but have a scalar potential due to the nucleus $`\phi = A_{0}`$. The energy we have been using in our non-relativistic formulation is $`E^{( NR )} = E - mc^{2}`$. We will **work with the equation for the large component** $`\psi_{A}`$. Note that $`A_{0}`$ is a function of the coordinates and the momentum operator will differentiate it.
 
 ```math
 \vec{\sigma} \cdot \left( \vec{p} + \frac{e}{c} \vec{A} \right) \frac{c^{2}}{( E + eA_{0} + mc^{2} )} \vec{\sigma} \cdot \left( \vec{p} + \frac{e}{c} \vec{A} \right) \psi_{A} = ( E + eA_{0} - mc^{2} ) \psi_{A}
@@ -594,7 +594,7 @@ Plugging this back into the equation, we can cancel several terms.
 Now we can **explicitly put in the potential** due to the nucleus $`\frac{Ze}{4 \pi r}`$ in our new units. We identify $`\vec{r} \times \vec{p}`$ as the orbital angular momentum. Note that $`\vec{\nabla} \cdot \vec{E} = \rho = Ze\delta^{3} ( \vec{r} )`$. The equation can now be cast in a more familiar form.
 
 ```math
-- eA_{0} = - e\varphi = - e \frac{Ze}{4 \pi r}
+- eA_{0} = - e\phi = - e \frac{Ze}{4 \pi r}
 ```
 
 ```math

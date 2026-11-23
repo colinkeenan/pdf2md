@@ -48,7 +48,7 @@ E = h\nu = \hbar \omega \quad \lambda = h/p \quad p = \hbar k
 ```
 
 ```math
-\psi ( x ) = \tfrac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{\infty} dp\varphi ( p ) e^{ipx/ \hbar} \quad \varphi ( p ) = \tfrac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{\infty} dx\psi ( x ) e^{- ipx/ \hbar}
+\psi ( x ) = \tfrac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{\infty} dp\phi ( p ) e^{ipx/ \hbar} \quad \phi ( p ) = \tfrac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{\infty} dx\psi ( x ) e^{- ipx/ \hbar}
 ```
 
 ```math
@@ -66,15 +66,15 @@ $`\psi ( x )`$ continuous $`\frac{d\psi}{dx}`$ continous if $`V`$ finite
 ```
 
 ```math
-\langle \varphi | \psi \rangle = \int_{-\infty}^{\infty} dx\varphi^{*} ( x ) \psi ( x ) \quad \langle u_{i} | u_{j} \rangle = \delta_{ij} \sum_{i} | u_{i} \rangle \langle u_{i} | = 1
+\langle \phi | \psi \rangle = \int_{-\infty}^{\infty} dx\phi^{*} ( x ) \psi ( x ) \quad \langle u_{i} | u_{j} \rangle = \delta_{ij} \sum_{i} | u_{i} \rangle \langle u_{i} | = 1
 ```
 
 ```math
-\varphi = \sum_{i} a_{i} u_{i} \quad a_{i} = \langle u_{i} | \varphi \rangle \quad \psi ( x ) = \langle x | \psi \rangle
+\phi = \sum_{i} a_{i} u_{i} \quad a_{i} = \langle u_{i} | \phi \rangle \quad \psi ( x ) = \langle x | \psi \rangle
 ```
 
 ```math
-\langle \varphi | A | \psi \rangle = \langle \varphi | A\psi \rangle = \langle A^{\dagger} \varphi | \psi \rangle = \langle \psi | A_{\dagger} | \varphi \rangle^{*} \quad \varphi ( p ) = \langle p | \psi \rangle
+\langle \phi | A | \psi \rangle = \langle \phi | A\psi \rangle = \langle A^{\dagger} \phi | \psi \rangle = \langle \psi | A_{\dagger} | \phi \rangle^{*} \quad \phi ( p ) = \langle p | \psi \rangle
 ```
 
 ```math
@@ -134,15 +134,15 @@ L_{\pm} = L_{x} \pm iL_{y} \quad L_{\pm} Y_{\ell m} = \hbar \sqrt{\ell ( \ell + 
 ```
 
 ```math
-Y_{0 0} = \tfrac{1}{\sqrt{4 \pi}} \quad Y_{1 1} = - \sqrt{\frac{3}{8 \pi}} e^{i\varphi} \sin \theta \quad Y_{1 0} = \sqrt{\frac{3}{4 \pi}} \cos \theta
+Y_{0 0} = \tfrac{1}{\sqrt{4 \pi}} \quad Y_{1 1} = - \sqrt{\frac{3}{8 \pi}} e^{i\phi} \sin \theta \quad Y_{1 0} = \sqrt{\frac{3}{4 \pi}} \cos \theta
 ```
 
 ```math
-Y_{2 2} = \sqrt{\frac{1 5}{3 2 \pi}} e^{2 i\varphi} \sin^{2} \theta \quad Y_{2 1} = - \sqrt{\frac{1 5}{8 \pi}} e^{i\varphi} \sin \theta \cos \theta \quad Y_{2 0} = \sqrt{\frac{5}{1 6 \pi}} ( 3 \cos^{2} \theta - 1 )
+Y_{2 2} = \sqrt{\frac{1 5}{3 2 \pi}} e^{2 i\phi} \sin^{2} \theta \quad Y_{2 1} = - \sqrt{\frac{1 5}{8 \pi}} e^{i\phi} \sin \theta \cos \theta \quad Y_{2 0} = \sqrt{\frac{5}{1 6 \pi}} ( 3 \cos^{2} \theta - 1 )
 ```
 
 ```math
-Y_{\ell \ell} = e^{i\ell \varphi} \sin^{\ell} \theta \quad Y_{\ell ( - m )} = ( - 1 )^{m} Y_{\ell m}^{*} \quad Y_{\ell m} ( \pi - \theta ,\varphi + \pi ) = ( - 1 )^{\ell} Y_{\ell m} ( \theta ,\varphi )
+Y_{\ell \ell} = e^{i\ell \phi} \sin^{\ell} \theta \quad Y_{\ell ( - m )} = ( - 1 )^{m} Y_{\ell m}^{*} \quad Y_{\ell m} ( \pi - \theta ,\phi + \pi ) = ( - 1 )^{\ell} Y_{\ell m} ( \theta ,\phi )
 ```
 
 ```math
@@ -176,7 +176,7 @@ S_{x} = \hbar \begin{pmatrix} 0 & \tfrac{1}{\sqrt{2}} & 0 \\ \tfrac{1}{\sqrt{2}}
 </div>
 
 ```math
-H = \tfrac{p^{2}}{2 \mu} - \tfrac{Ze^{2}}{r} \quad \psi_{n\ell m} = R_{n\ell} ( r ) Y_{\ell m} ( \theta ,\varphi ) \quad E_{n} = - \tfrac{Z^{2} \alpha^{2} \mu c^{2}}{2 n^{2}} = - \tfrac{1 3 . 6}{n^{2}} \text{ eV }
+H = \tfrac{p^{2}}{2 \mu} - \tfrac{Ze^{2}}{r} \quad \psi_{n\ell m} = R_{n\ell} ( r ) Y_{\ell m} ( \theta ,\phi ) \quad E_{n} = - \tfrac{Z^{2} \alpha^{2} \mu c^{2}}{2 n^{2}} = - \tfrac{1 3 . 6}{n^{2}} \text{ eV }
 ```
 
 ```math
@@ -234,11 +234,11 @@ $`\psi_{j,m_{j}} = \psi_{\ell + \tfrac{1}{2} ,m + \tfrac{1}{2}} = \sqrt{\frac{\e
 </div>
 
 ```math
-E_{n}^{( 1 )} = \langle \varphi_{n} | H_{1} | \varphi_{n} \rangle \quad E_{n}^{( 2 )} = \sum_{k \neq n} \tfrac{| \langle \varphi_{k} | H_{1} | \varphi_{n} \rangle |^{2}}{E_{n}^{( 0 )} - E_{k}^{( 0 )}} \quad c_{nk}^{( 1 )} = \tfrac{\langle \varphi_{k} | H_{1} | \varphi_{n} \rangle}{E_{n}^{( 0 )} - E_{k}^{( 0 )}}
+E_{n}^{( 1 )} = \langle \phi_{n} | H_{1} | \phi_{n} \rangle \quad E_{n}^{( 2 )} = \sum_{k \neq n} \tfrac{| \langle \phi_{k} | H_{1} | \phi_{n} \rangle |^{2}}{E_{n}^{( 0 )} - E_{k}^{( 0 )}} \quad c_{nk}^{( 1 )} = \tfrac{\langle \phi_{k} | H_{1} | \phi_{n} \rangle}{E_{n}^{( 0 )} - E_{k}^{( 0 )}}
 ```
 
 ```math
-c_{n} ( t ) = \tfrac{1}{i \hbar} \int^{t}_{0} dt^{\prime} e^{i ( E_{n} - E_{i} ) t^{\prime} / \hbar} \langle \varphi_{n} | V ( t^{\prime} ) | \varphi_{i} \rangle
+c_{n} ( t ) = \tfrac{1}{i \hbar} \int^{t}_{0} dt^{\prime} e^{i ( E_{n} - E_{i} ) t^{\prime} / \hbar} \langle \phi_{n} | V ( t^{\prime} ) | \phi_{i} \rangle
 ```
 
 ```math
@@ -248,11 +248,11 @@ c_{n} ( t ) = \tfrac{1}{i \hbar} \int^{t}_{0} dt^{\prime} e^{i ( E_{n} - E_{i} )
 $`\Gamma_{i \to f} = \tfrac{2 \pi}{\hbar} \int \prod_{k} ( \tfrac{Vd^{3} p_{k}}{( 2 \pi \hbar )^{3}} ) | M_{fi} |^{2} \delta^{3}`$(momentum conservation) $`\delta`$(Energy conservation)
 
 ```math
-\Gamma_{m \to k}^{rad} = \tfrac{\alpha}{2 \pi m^{2} c^{2}} \int d \Omega_{p} \omega_{km} | \langle \varphi_{m} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon} \cdot \vec{p} | \varphi_{k} \rangle |^{2}
+\Gamma_{m \to k}^{rad} = \tfrac{\alpha}{2 \pi m^{2} c^{2}} \int d \Omega_{p} \omega_{km} | \langle \phi_{m} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon} \cdot \vec{p} | \phi_{k} \rangle |^{2}
 ```
 
 ```math
-\Gamma_{m \to k}^{E 1} = \tfrac{\alpha}{2 \pi c^{2}} \int d \Omega_{p} \omega_{km}^{3} | \langle \varphi_{m} | \hat{\epsilon} \cdot \vec{r} | \varphi_{k} \rangle |^{2} \quad \Delta l = \pm 1 , \Delta s = 0
+\Gamma_{m \to k}^{E 1} = \tfrac{\alpha}{2 \pi c^{2}} \int d \Omega_{p} \omega_{km}^{3} | \langle \phi_{m} | \hat{\epsilon} \cdot \vec{r} | \phi_{k} \rangle |^{2} \quad \Delta l = \pm 1 , \Delta s = 0
 ```
 
 ```math

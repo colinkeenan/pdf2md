@@ -232,17 +232,17 @@ H_{2} = \frac{ge}{2 mc} \vec{S} \cdot \vec{B} = - \frac{ge}{2 mc^{2}} \vec{S} \c
 ```
 
 ```math
-= \frac{ge}{2 m^{2} c^{2}} \vec{S} \cdot \vec{p} \times \vec{\nabla} \varphi .
+= \frac{ge}{2 m^{2} c^{2}} \vec{S} \cdot \vec{p} \times \vec{\nabla} \phi .
 ```
 
-$`\varphi`$ only depends on $`r \Rightarrow \nabla \varphi = \hat{r} \tfrac{d\varphi}{dr} = \tfrac{\vec{r}}{r} \tfrac{d\varphi}{dr}`$
+$`\phi`$ only depends on $`r \Rightarrow \nabla \phi = \hat{r} \tfrac{d\phi}{dr} = \tfrac{\vec{r}}{r} \tfrac{d\phi}{dr}`$
 
 ```math
-H_{2} = \frac{ge}{2 m^{2} c^{2}} \vec{S} \cdot \vec{p} \times \vec{r} \frac{1}{r} \frac{d\varphi}{dr} = \frac{- ge}{2 m^{2} c^{2}} \vec{S} \cdot \vec{L} \frac{1}{r} \frac{d\varphi}{dr}
+H_{2} = \frac{ge}{2 m^{2} c^{2}} \vec{S} \cdot \vec{p} \times \vec{r} \frac{1}{r} \frac{d\phi}{dr} = \frac{- ge}{2 m^{2} c^{2}} \vec{S} \cdot \vec{L} \frac{1}{r} \frac{d\phi}{dr}
 ```
 
 ```math
-\varphi = \frac{e}{r} \quad \Rightarrow \quad \frac{d\varphi}{dr} = - \frac{e}{r^{2}}
+\phi = \frac{e}{r} \quad \Rightarrow \quad \frac{d\phi}{dr} = - \frac{e}{r^{2}}
 ```
 
 ```math

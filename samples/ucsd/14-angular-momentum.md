@@ -60,7 +60,7 @@ This leads to a great simplification of the 3D problem.
 It is possible to **separate the Schrödinger equation** since $`r`$ and $`L^{2}`$ appear separately. Write the solution as a product
 
 ```math
-u_{E} ( \vec{r} ) = R_{E\ell} ( r ) Y_{\ell m} ( \theta ,\varphi )
+u_{E} ( \vec{r} ) = R_{E\ell} ( r ) Y_{\ell m} ( \theta ,\phi )
 ```
 
 where $`\ell`$ labels the eigenvalue of the $`L^{2}`$ operator and $`m`$ labels the eigenvalue of the $`L_{z}`$ operator. Since $`L_{z}`$ does not appear in the Schrödinger equation, we only label the radial solutions with the energy and the eigenvalues of $`\ell`$.
@@ -68,11 +68,11 @@ where $`\ell`$ labels the eigenvalue of the $`L^{2}`$ operator and $`m`$ labels 
 We get the three equations.
 
 ```math
-L^{2} Y_{\ell m} ( \theta ,\varphi ) = \ell ( \ell + 1 ) \hbar^{2} Y_{\ell m} ( \theta ,\varphi )
+L^{2} Y_{\ell m} ( \theta ,\phi ) = \ell ( \ell + 1 ) \hbar^{2} Y_{\ell m} ( \theta ,\phi )
 ```
 
 ```math
-\begin{aligned} L_{z} Y_{\ell m} ( \theta ,\varphi ) &= m \hbar Y_{\ell m} ( \theta ,\varphi ) \\ \frac{- \hbar^{2}}{2 \mu} \left[ \frac{1}{r^{2}} \left( r \frac{\partial}{\partial r} \right)^{2} + \frac{1}{r} \frac{\partial}{\partial r} - \frac{\ell ( \ell + 1 )}{r^{2}} \right] R_{E\ell} ( r ) + V ( r ) R_{E\ell} ( r ) &= ER_{E\ell} ( r ) \end{aligned}
+\begin{aligned} L_{z} Y_{\ell m} ( \theta ,\phi ) &= m \hbar Y_{\ell m} ( \theta ,\phi ) \\ \frac{- \hbar^{2}}{2 \mu} \left[ \frac{1}{r^{2}} \left( r \frac{\partial}{\partial r} \right)^{2} + \frac{1}{r} \frac{\partial}{\partial r} - \frac{\ell ( \ell + 1 )}{r^{2}} \right] R_{E\ell} ( r ) + V ( r ) R_{E\ell} ( r ) &= ER_{E\ell} ( r ) \end{aligned}
 ```
 
 By assuming the eigenvalues of $`L^{2}`$ have the form $`\ell ( \ell + 1 ) \hbar^{2}`$, we have **anticipated the solution but not constrained it**, since the units of angular momentum are those of $`\hbar`$ and since we expect $`L^{2}`$ to have positive eigenvalues.
@@ -187,16 +187,16 @@ We will also find the following equations useful (and easy to compute).
 L^{2} = L_{+} L_{-} + L_{z}^{2} - \hbar L_{z} .
 ```
 
-\* See Example 14.5.1: What is the expectation value of $`L_{z}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\tfrac{2}{3}} Y_{1 1} ( \theta ,\varphi ) -`$
+\* See Example 14.5.1: What is the expectation value of $`L_{z}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\tfrac{2}{3}} Y_{1 1} ( \theta ,\phi ) -`$
 
 ```math
-i \sqrt{\tfrac{1}{3}} Y_{1 - 1} ( \theta ,\varphi ) ) ? *
+i \sqrt{\tfrac{1}{3}} Y_{1 - 1} ( \theta ,\phi ) ) ? *
 ```
 
-\* See Example 14.5.2: What is the expectation value of $`L_{x}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\tfrac{2}{3}} Y_{1 1} ( \theta ,\varphi ) -`$
+\* See Example 14.5.2: What is the expectation value of $`L_{x}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\tfrac{2}{3}} Y_{1 1} ( \theta ,\phi ) -`$
 
 ```math
-\sqrt{\tfrac{1}{3}} Y_{1 0} ( \theta ,\varphi ) ) ? *
+\sqrt{\tfrac{1}{3}} Y_{1 0} ( \theta ,\phi ) ) ? *
 ```
 
 # <a id="s-14-3-the-angular-momentum-eigenfunctions"></a>14.3 The Angular Momentum Eigenfunctions
@@ -204,11 +204,11 @@ i \sqrt{\tfrac{1}{3}} Y_{1 - 1} ( \theta ,\varphi ) ) ? *
 The angular momentum eigenstates are **eigenstates of two operators**.
 
 ```math
-L_{z} Y_{\ell m} ( \theta ,\varphi ) = m \hbar Y_{\ell m} ( \theta ,\varphi )
+L_{z} Y_{\ell m} ( \theta ,\phi ) = m \hbar Y_{\ell m} ( \theta ,\phi )
 ```
 
 ```math
-L^{2} Y_{\ell m} ( \theta ,\varphi ) = \ell ( \ell + 1 ) \hbar^{2} Y_{\ell m} ( \theta ,\varphi )
+L^{2} Y_{\ell m} ( \theta ,\phi ) = \ell ( \ell + 1 ) \hbar^{2} Y_{\ell m} ( \theta ,\phi )
 ```
 
 All we know about the states are the two quantum numbers $`\ell`$ and $`m`$. We have no additional knowledge about $`L_{x}`$ and $`L_{y}`$ since these operators don’t commute with $`L_{z}`$. The **raising and lowering operators** $`L_{\pm} = L_{x} \pm iL_{y}`$ raise or lower $`m`$, leaving $`\ell`$ unchanged.
@@ -220,11 +220,11 @@ L_{\pm} Y_{\ell m} = \hbar \sqrt{\ell ( \ell + 1 ) - m ( m \pm 1 )} Y_{\ell ( m 
 The differential operators take some work to derive (See section 14.4.4).
 
 ```math
-L_{z} = \frac{\hbar}{i} \frac{\partial}{\partial \varphi}
+L_{z} = \frac{\hbar}{i} \frac{\partial}{\partial \phi}
 ```
 
 ```math
-L_{\pm} = \hbar e^{\pm i\varphi} \left( \pm \frac{\partial}{\partial \theta} + i \cot \theta \frac{\partial}{\partial \varphi} \right)
+L_{\pm} = \hbar e^{\pm i\phi} \left( \pm \frac{\partial}{\partial \theta} + i \cot \theta \frac{\partial}{\partial \phi} \right)
 ```
 
 <div align="right"><a href="book.pdf#page=205" target="_blank" title="This page in the PDF"><sup>[p. 205]</sup></a></div>
@@ -234,17 +234,17 @@ L_{\pm} = \hbar e^{\pm i\varphi} \left( \pm \frac{\partial}{\partial \theta} + i
 Its easy to find functions that give the eigenvalue of $`L_{z}`$.
 
 ```math
-Y_{\ell m} ( \theta ,\varphi ) = \Theta ( \theta ) \Phi ( \varphi ) = \Theta ( \theta ) e^{im\varphi}
+Y_{\ell m} ( \theta ,\phi ) = \Theta ( \theta ) \Phi ( \phi ) = \Theta ( \theta ) e^{im\phi}
 ```
 
 ```math
-L_{z} Y_{\ell m} ( \theta ,\varphi ) = \frac{\hbar}{i} \frac{\partial}{\partial \varphi} \Theta ( \theta ) e^{im\varphi} = \frac{\hbar}{i} im \Theta ( \theta ) e^{im\varphi} = m \hbar Y_{\ell m} ( \theta ,\varphi )
+L_{z} Y_{\ell m} ( \theta ,\phi ) = \frac{\hbar}{i} \frac{\partial}{\partial \phi} \Theta ( \theta ) e^{im\phi} = \frac{\hbar}{i} im \Theta ( \theta ) e^{im\phi} = m \hbar Y_{\ell m} ( \theta ,\phi )
 ```
 
 To find the $`\theta`$ dependence, we will use the fact that there are limits on $`m`$. The state with maximum $`m`$ must give zero when raised.
 
 ```math
-L_{+} Y_{\ell \ell} = \hbar e^{i\varphi} \left( \frac{\partial}{\partial \theta} + i \cot \theta \frac{\partial}{\partial \varphi} \right) \Theta_{\ell} ( \theta ) e^{i\ell \varphi} = 0
+L_{+} Y_{\ell \ell} = \hbar e^{i\phi} \left( \frac{\partial}{\partial \theta} + i \cot \theta \frac{\partial}{\partial \phi} \right) \Theta_{\ell} ( \theta ) e^{i\ell \phi} = 0
 ```
 
 This gives us a differential equation for that state.
@@ -271,12 +271,12 @@ Check the solution.
 
 Its correct.
 
-Here we should note that only the integer value of $`\ell`$ work for these solutions. If we were to use half-integers, the wave functions would not be single valued, for example at $`\varphi = 0`$ and $`\varphi = 2 \pi`$. Even though the probability may be single valued, discontinuities in the amplitude would lead to infinities in the Schrödinger equation. We will find later that the **half-integer angular momentum states are used** for internal angular momentum (spin), for which no $`\theta`$ or $`\varphi`$ coordinates exist.
+Here we should note that only the integer value of $`\ell`$ work for these solutions. If we were to use half-integers, the wave functions would not be single valued, for example at $`\phi = 0`$ and $`\phi = 2 \pi`$. Even though the probability may be single valued, discontinuities in the amplitude would lead to infinities in the Schrödinger equation. We will find later that the **half-integer angular momentum states are used** for internal angular momentum (spin), for which no $`\theta`$ or $`\phi`$ coordinates exist.
 
 Therefore, **the eigenstate** $`Y_{\ell \ell}`$ **is**.
 
 ```math
-Y_{\ell \ell} = C \sin^{\ell} ( \theta ) e^{i\ell \varphi}
+Y_{\ell \ell} = C \sin^{\ell} ( \theta ) e^{i\ell \phi}
 ```
 
 We can compute the next state down by operating with $`L_{-}`$.
@@ -290,7 +290,7 @@ We can continue to lower $`m`$ to get all of the eigenfunctions.
 We call these eigenstates the **Spherical Harmonics**. The spherical harmonics are **normalized**.
 
 ```math
-\int_{- 1}^{1} d ( \cos \theta ) \int_{0}^{2 \pi} d\varphi Y_{\ell m}^{*} Y_{\ell m} = 1
+\int_{- 1}^{1} d ( \cos \theta ) \int_{0}^{2 \pi} d\phi Y_{\ell m}^{*} Y_{\ell m} = 1
 ```
 
 ```math
@@ -314,7 +314,7 @@ Y_{0 0} = \frac{1}{\sqrt{4 \pi}}
 ```
 
 ```math
-Y_{1 1} = - \sqrt{\frac{3}{8 \pi}} e^{i\varphi} \sin \theta
+Y_{1 1} = - \sqrt{\frac{3}{8 \pi}} e^{i\phi} \sin \theta
 ```
 
 ```math
@@ -322,11 +322,11 @@ Y_{1 0} = \sqrt{\frac{3}{4 \pi}} \cos \theta
 ```
 
 ```math
-Y_{2 2} = \sqrt{\frac{1 5}{3 2 \pi}} e^{2 i\varphi} \sin^{2} \theta
+Y_{2 2} = \sqrt{\frac{1 5}{3 2 \pi}} e^{2 i\phi} \sin^{2} \theta
 ```
 
 ```math
-Y_{2 1} = - \sqrt{\frac{1 5}{8 \pi}} e^{i\varphi} \sin \theta \cos \theta
+Y_{2 1} = - \sqrt{\frac{1 5}{8 \pi}} e^{i\phi} \sin \theta \cos \theta
 ```
 
 ```math
@@ -339,10 +339,10 @@ The spherical harmonics with negative $`m`$ can be easily compute from those wit
 Y_{\ell ( - m )} = ( - 1 )^{m} Y_{\ell m}^{*}
 ```
 
-Any function of $`\theta`$ and $`\varphi`$ can be **expanded in the spherical harmonics**.
+Any function of $`\theta`$ and $`\phi`$ can be **expanded in the spherical harmonics**.
 
 ```math
-f ( \theta ,\varphi ) = \sum_{\ell = 0}^{\infty} \sum_{m = - \ell}^{\ell} C_{\ell m} Y_{\ell m} ( \theta ,\varphi )
+f ( \theta ,\phi ) = \sum_{\ell = 0}^{\infty} \sum_{m = - \ell}^{\ell} C_{\ell m} Y_{\ell m} ( \theta ,\phi )
 ```
 
 The spherical harmonics form a **complete set**.
@@ -356,11 +356,11 @@ When using bra-ket notation, $`| \ell m \rangle`$ is sufficient to identify the 
 The spherical harmonics are **related to the Legendre polynomials** which are functions of $`\theta`$.
 
 ```math
-Y_{\ell 0} ( \theta ,\varphi ) = \left( \frac{2 \ell + 1}{4 \pi} \right)^{\tfrac{1}{2}} P_{\ell} ( \cos \theta )
+Y_{\ell 0} ( \theta ,\phi ) = \left( \frac{2 \ell + 1}{4 \pi} \right)^{\tfrac{1}{2}} P_{\ell} ( \cos \theta )
 ```
 
 ```math
-Y_{\ell m} = ( - 1 )^{m} \left[ \frac{2 \ell + 1}{4 \pi} \frac{( \ell - m ) !}{( \ell + m ) !} \right]^{\tfrac{1}{2}} P_{\ell}^{m} ( \cos \theta ) e^{im\varphi}
+Y_{\ell m} = ( - 1 )^{m} \left[ \frac{2 \ell + 1}{4 \pi} \frac{( \ell - m ) !}{( \ell + m ) !} \right]^{\tfrac{1}{2}} P_{\ell}^{m} ( \cos \theta ) e^{im\phi}
 ```
 
 <div align="right"><a href="book.pdf#page=207" target="_blank" title="This page in the PDF"><sup>[p. 207]</sup></a></div>
@@ -380,7 +380,7 @@ r \quad \to \quad r
 ```
 
 ```math
-\varphi \quad \to \quad \varphi + \pi .
+\phi \quad \to \quad \phi + \pi .
 ```
 
 The radial part of the wavefunction, therefore, is unchanged and the
@@ -392,7 +392,7 @@ R ( r ) \to R ( r )
 **parity of the state is determined from the angular part**. We know the state $`Y_{\ell \ell}`$ in general. A parity transformation gives.
 
 ```math
-Y_{\ell \ell} ( \theta ,\varphi ) \to Y_{\ell \ell} ( \pi - \theta ,\varphi + \pi ) = e^{i\ell \varphi} e^{i\ell \pi} \sin^{\ell} ( \theta ) = e^{i\ell \pi} Y_{\ell \ell} = ( - 1 )^{\ell} Y_{\ell \ell}
+Y_{\ell \ell} ( \theta ,\phi ) \to Y_{\ell \ell} ( \pi - \theta ,\phi + \pi ) = e^{i\ell \phi} e^{i\ell \pi} \sin^{\ell} ( \theta ) = e^{i\ell \pi} Y_{\ell \ell} = ( - 1 )^{\ell} Y_{\ell \ell}
 ```
 
 The states are either even or odd parity depending on the quantum number $`\ell`$.
@@ -408,7 +408,7 @@ L_{-} Y_{\ell \ell} \to ( - 1 )^{\ell} L_{-} Y_{\ell \ell}
 ```
 
 ```math
-Y_{\ell m} ( \pi - \theta ,\varphi + \pi ) = ( - 1 )^{\ell} Y_{\ell m} ( \theta ,\varphi )
+Y_{\ell m} ( \pi - \theta ,\phi + \pi ) = ( - 1 )^{\ell} Y_{\ell m} ( \theta ,\phi )
 ```
 
 # <a id="s-14-4-derivations-and-computations"></a>14.4 Derivations and Computations
@@ -619,8 +619,8 @@ The transformation from spherical coordinates to Cartesian coordinate is.
 
 ```math
 \begin{array}{lccl}
-x & = & r \sin & \theta \cos \varphi \\ 
-y & = & r \sin & \theta \sin \varphi \\ 
+x & = & r \sin & \theta \cos \phi \\ 
+y & = & r \sin & \theta \sin \phi \\ 
 z & = & r \cos & \theta \\ 
 \end{array}
 ```
@@ -636,7 +636,7 @@ r = \sqrt{x^{2} + y^{2} + z^{2}}
 ```
 
 ```math
-\tan \varphi = \frac{y}{x}
+\tan \phi = \frac{y}{x}
 ```
 
 <div align="right"><a href="book.pdf#page=211" target="_blank" title="This page in the PDF"><sup>[p. 211]</sup></a></div>
@@ -655,42 +655,42 @@ _Figure 47 (p. 212)_
 
 _Figure 48 (p. 212)_
 
-We now proceed to calculate the angular momentum operators in spherical coordinates. The first step is to write the $`\frac{\partial}{\partial x_{i}}`$ in spherical coordinates. We use the chain rule and the above transformation from Cartesian to spherical. We have used $`d \cos \theta = - \sin \theta d\theta`$ and $`d \tan \varphi = \tfrac{1}{\cos^{2} \varphi} d\varphi`$. Ultimately all of these should be written in the sperical cooridnates but its convenient to use $`x`$ for example in intermediate steps of the calculation.
+We now proceed to calculate the angular momentum operators in spherical coordinates. The first step is to write the $`\frac{\partial}{\partial x_{i}}`$ in spherical coordinates. We use the chain rule and the above transformation from Cartesian to spherical. We have used $`d \cos \theta = - \sin \theta d\theta`$ and $`d \tan \phi = \tfrac{1}{\cos^{2} \phi} d\phi`$. Ultimately all of these should be written in the sperical cooridnates but its convenient to use $`x`$ for example in intermediate steps of the calculation.
 
 ```math
-\frac{\partial}{\partial x} = \frac{\partial r}{\partial x} \frac{\partial}{\partial r} + \frac{\partial \cos \theta}{\partial x} \frac{\partial}{\partial \cos \theta} + \frac{\partial \tan \varphi}{\partial x} \frac{\partial}{\partial \tan \varphi}
+\frac{\partial}{\partial x} = \frac{\partial r}{\partial x} \frac{\partial}{\partial r} + \frac{\partial \cos \theta}{\partial x} \frac{\partial}{\partial \cos \theta} + \frac{\partial \tan \phi}{\partial x} \frac{\partial}{\partial \tan \phi}
 ```
 
 ```math
-= \frac{x}{r} \frac{\partial}{\partial r} + \frac{- xz}{r^{3}} \frac{- 1}{\sin \theta} \frac{\partial}{\partial \theta} - \frac{y}{x^{2}} \cos^{2} \varphi \frac{\partial}{\partial \varphi}
+= \frac{x}{r} \frac{\partial}{\partial r} + \frac{- xz}{r^{3}} \frac{- 1}{\sin \theta} \frac{\partial}{\partial \theta} - \frac{y}{x^{2}} \cos^{2} \phi \frac{\partial}{\partial \phi}
 ```
 
 ```math
-= \sin \theta \cos \varphi \frac{\partial}{\partial r} + \frac{1}{r} \sin \theta \cos \varphi \cos \theta \frac{1}{\sin \theta} \frac{\partial}{\partial \theta} - \frac{1}{r} \frac{\sin \theta \sin \varphi}{\sin^{2} \theta \cos^{2} \varphi} \cos^{2} \varphi \frac{\partial}{\partial \varphi}
+= \sin \theta \cos \phi \frac{\partial}{\partial r} + \frac{1}{r} \sin \theta \cos \phi \cos \theta \frac{1}{\sin \theta} \frac{\partial}{\partial \theta} - \frac{1}{r} \frac{\sin \theta \sin \phi}{\sin^{2} \theta \cos^{2} \phi} \cos^{2} \phi \frac{\partial}{\partial \phi}
 ```
 
 ```math
-= \sin \theta \cos \varphi \frac{\partial}{\partial r} + \frac{1}{r} \cos \varphi \cos \theta \frac{\partial}{\partial \theta} - \frac{1}{r} \frac{\sin \varphi}{\sin \theta} \frac{\partial}{\partial \varphi}
+= \sin \theta \cos \phi \frac{\partial}{\partial r} + \frac{1}{r} \cos \phi \cos \theta \frac{\partial}{\partial \theta} - \frac{1}{r} \frac{\sin \phi}{\sin \theta} \frac{\partial}{\partial \phi}
 ```
 
 ```math
-\frac{\partial}{\partial y} = \frac{\partial r}{\partial y} \frac{\partial}{\partial r} + \frac{\partial \cos \theta}{\partial y} \frac{\partial}{\partial \cos \theta} + \frac{\partial \tan \varphi}{\partial y} \frac{\partial}{\partial \tan \varphi}
+\frac{\partial}{\partial y} = \frac{\partial r}{\partial y} \frac{\partial}{\partial r} + \frac{\partial \cos \theta}{\partial y} \frac{\partial}{\partial \cos \theta} + \frac{\partial \tan \phi}{\partial y} \frac{\partial}{\partial \tan \phi}
 ```
 
 ```math
-= \frac{y}{r} \frac{\partial}{\partial r} + \frac{- yz}{r^{3}} \frac{- 1}{\sin \theta} \frac{\partial}{\partial \theta} + \frac{1}{x} \cos^{2} \varphi \frac{\partial}{\partial \varphi}
+= \frac{y}{r} \frac{\partial}{\partial r} + \frac{- yz}{r^{3}} \frac{- 1}{\sin \theta} \frac{\partial}{\partial \theta} + \frac{1}{x} \cos^{2} \phi \frac{\partial}{\partial \phi}
 ```
 
 ```math
-= \sin \theta \sin \varphi \frac{\partial}{\partial r} + \frac{1}{r} \sin \theta \sin \varphi \cos \theta \frac{1}{\sin \theta} \frac{\partial}{\partial \theta} + \frac{1}{r} \frac{1}{\sin \theta \cos \varphi} \cos^{2} \varphi \frac{\partial}{\partial \varphi}
+= \sin \theta \sin \phi \frac{\partial}{\partial r} + \frac{1}{r} \sin \theta \sin \phi \cos \theta \frac{1}{\sin \theta} \frac{\partial}{\partial \theta} + \frac{1}{r} \frac{1}{\sin \theta \cos \phi} \cos^{2} \phi \frac{\partial}{\partial \phi}
 ```
 
 ```math
-= \sin \theta \sin \varphi \frac{\partial}{\partial r} + \frac{1}{r} \sin \varphi \cos \theta \frac{\partial}{\partial \theta} + \frac{1}{r} \frac{\cos \varphi}{\sin \theta} \frac{\partial}{\partial \varphi}
+= \sin \theta \sin \phi \frac{\partial}{\partial r} + \frac{1}{r} \sin \phi \cos \theta \frac{\partial}{\partial \theta} + \frac{1}{r} \frac{\cos \phi}{\sin \theta} \frac{\partial}{\partial \phi}
 ```
 
 ```math
-\frac{\partial}{\partial z} = \frac{\partial r}{\partial z} \frac{\partial}{\partial r} + \frac{\partial \cos \theta}{\partial z} \frac{\partial}{\partial \cos \theta} + \frac{\partial \tan \varphi}{\partial z} \frac{\partial}{\partial \tan \varphi}
+\frac{\partial}{\partial z} = \frac{\partial r}{\partial z} \frac{\partial}{\partial r} + \frac{\partial \cos \theta}{\partial z} \frac{\partial}{\partial \cos \theta} + \frac{\partial \tan \phi}{\partial z} \frac{\partial}{\partial \tan \phi}
 ```
 
 ```math
@@ -712,11 +712,11 @@ We now proceed to calculate the angular momentum operators in spherical coordina
 Bringing together the above results, we have.
 
 ```math
-\frac{\partial}{\partial x} = \sin \theta \cos \varphi \frac{\partial}{\partial r} + \frac{1}{r} \cos \varphi \cos \theta \frac{\partial}{\partial \theta} - \frac{1}{r} \frac{\sin \varphi}{\sin \theta} \frac{\partial}{\partial \varphi}
+\frac{\partial}{\partial x} = \sin \theta \cos \phi \frac{\partial}{\partial r} + \frac{1}{r} \cos \phi \cos \theta \frac{\partial}{\partial \theta} - \frac{1}{r} \frac{\sin \phi}{\sin \theta} \frac{\partial}{\partial \phi}
 ```
 
 ```math
-\frac{\partial}{\partial y} = \sin \theta \sin \varphi \frac{\partial}{\partial r} + \frac{1}{r} \sin \varphi \cos \theta \frac{\partial}{\partial \theta} + \frac{1}{r} \frac{\cos \varphi}{\sin \theta} \frac{\partial}{\partial \varphi}
+\frac{\partial}{\partial y} = \sin \theta \sin \phi \frac{\partial}{\partial r} + \frac{1}{r} \sin \phi \cos \theta \frac{\partial}{\partial \theta} + \frac{1}{r} \frac{\cos \phi}{\sin \theta} \frac{\partial}{\partial \phi}
 ```
 
 ```math
@@ -726,7 +726,7 @@ Bringing together the above results, we have.
 Now simply plug these into the angular momentum formulae.
 
 ```math
-L_{z} = \frac{\hbar}{i} \left( x \frac{\partial}{\partial y} - y \frac{\partial}{\partial x} \right) = \frac{\hbar}{i} \frac{\partial}{\partial \varphi}
+L_{z} = \frac{\hbar}{i} \left( x \frac{\partial}{\partial y} - y \frac{\partial}{\partial x} \right) = \frac{\hbar}{i} \frac{\partial}{\partial \phi}
 ```
 
 ```math
@@ -738,29 +738,29 @@ L_{\pm} = L_{x} \pm iL_{y} = \frac{\hbar}{i} \left( y \frac{\partial}{\partial z
 ```
 
 ```math
-= \hbar r \left( \mp \sin \theta e^{\pm i\varphi} \frac{\partial}{\partial z} \pm \cos \theta \left( \frac{\partial}{\partial x} \pm i \frac{\partial}{\partial y} \right) \right)
+= \hbar r \left( \mp \sin \theta e^{\pm i\phi} \frac{\partial}{\partial z} \pm \cos \theta \left( \frac{\partial}{\partial x} \pm i \frac{\partial}{\partial y} \right) \right)
 ```
 
 ```math
-= \hbar \left( \mp \sin \theta e^{\pm i\varphi} \left( r \cos \theta \frac{\partial}{\partial r} - \sin \theta \frac{\partial}{\partial \theta} \right) \pm \cos \theta \left( r \sin \theta e^{\pm i\varphi} \frac{\partial}{\partial r} + \cos \theta e^{\pm i\varphi} \frac{\partial}{\partial \theta} \pm \frac{ie^{\pm i\varphi}}{\sin \theta} \frac{\partial}{\partial \varphi} \right) \right)
+= \hbar \left( \mp \sin \theta e^{\pm i\phi} \left( r \cos \theta \frac{\partial}{\partial r} - \sin \theta \frac{\partial}{\partial \theta} \right) \pm \cos \theta \left( r \sin \theta e^{\pm i\phi} \frac{\partial}{\partial r} + \cos \theta e^{\pm i\phi} \frac{\partial}{\partial \theta} \pm \frac{ie^{\pm i\phi}}{\sin \theta} \frac{\partial}{\partial \phi} \right) \right)
 ```
 
 ```math
-= \hbar e^{\pm i\varphi} \left( \pm \sin^{2} \theta \frac{\partial}{\partial \theta} \pm \left( \cos^{2} \theta \frac{\partial}{\partial \theta} \pm \frac{i \cos \theta}{\sin \theta} \frac{\partial}{\partial \varphi} \right) \right)
+= \hbar e^{\pm i\phi} \left( \pm \sin^{2} \theta \frac{\partial}{\partial \theta} \pm \left( \cos^{2} \theta \frac{\partial}{\partial \theta} \pm \frac{i \cos \theta}{\sin \theta} \frac{\partial}{\partial \phi} \right) \right)
 ```
 
 ```math
-= \hbar e^{\pm i\varphi} \left( \pm \frac{\partial}{\partial \theta} + i \cot \theta \frac{\partial}{\partial \varphi} \right)
+= \hbar e^{\pm i\phi} \left( \pm \frac{\partial}{\partial \theta} + i \cot \theta \frac{\partial}{\partial \phi} \right)
 ```
 
 We will use these results to find the actual eigenfunctions of angular momentum.
 
 ```math
-L_{z} = \frac{\hbar}{i} \frac{\partial}{\partial \varphi}
+L_{z} = \frac{\hbar}{i} \frac{\partial}{\partial \phi}
 ```
 
 ```math
-L_{\pm} = \hbar e^{\pm i\varphi} \left( \pm \frac{\partial}{\partial \theta} + i \cot \theta \frac{\partial}{\partial \varphi} \right)
+L_{\pm} = \hbar e^{\pm i\phi} \left( \pm \frac{\partial}{\partial \theta} + i \cot \theta \frac{\partial}{\partial \phi} \right)
 ```
 
 ## <a id="s-14-4-5-the-operators-l-pm"></a>14.4.5 The Operators $`L_{\pm}`$
@@ -925,7 +925,7 @@ L_{\pm} Y_{\ell m} = \hbar \sqrt{\ell ( \ell + 1 ) - m ( m \pm 1 )} Y_{\ell ( m 
 
 ## <a id="s-14-5-1-the-expectation-value-of-l-z"></a>14.5.1 The Expectation Value of $`L_{z}`$
 
-What is the expectation value of $`L_{z}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\frac{2}{3}} Y_{1 1} ( \theta ,\varphi ) - i \sqrt{\frac{1}{3}} Y_{1 - 1} ( \theta ,\varphi ) )`$?
+What is the expectation value of $`L_{z}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\frac{2}{3}} Y_{1 1} ( \theta ,\phi ) - i \sqrt{\frac{1}{3}} Y_{1 - 1} ( \theta ,\phi ) )`$?
 
 The radial part plays no role. The angular part is properly normalized.
 
@@ -947,7 +947,7 @@ The radial part plays no role. The angular part is properly normalized.
 
 ## <a id="s-14-5-2-the-expectation-value-of-l-x"></a>14.5.2 The Expectation Value of $`L_{x}`$
 
-What is the expectation value of $`L_{x}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\frac{2}{3}} Y_{1 1} ( \theta ,\varphi ) - \sqrt{\frac{1}{3}} Y_{1 0} ( \theta ,\varphi ) )`$?
+What is the expectation value of $`L_{x}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\frac{2}{3}} Y_{1 1} ( \theta ,\phi ) - \sqrt{\frac{1}{3}} Y_{1 0} ( \theta ,\phi ) )`$?
 
 We need $`L_{x} = ( L_{+} + L_{-} ) / 2 .`$
 
@@ -1029,7 +1029,7 @@ So, $`L_{+}`$ raises the eigenvalue of $`L_{z}`$.
 ( BY_{1 1} + ( A + C ) Y_{1 0} + BY_{1 - 1} ) = 0
 ```
 
-Since this is true for all $`\theta`$ and $`\varphi`$, each term must be zero.
+Since this is true for all $`\theta`$ and $`\phi`$, each term must be zero.
 
 ```math
 B = 0

@@ -580,6 +580,11 @@ fn book_title(path: &Path, doc: &layout::Doc) -> String {
 
 /// Convert an already-read document.
 pub fn convert_doc(doc: &layout::Doc) -> Book {
+    // (which of TeX's two phis is the book's usual one)
+    let phis = |c: char| -> usize {
+        doc.pages.iter().flat_map(|p| &p.lines).flat_map(|l| &l.spans).filter(|s| doc.family(s).to_uppercase().starts_with("CMMI")).map(|s| s.text.matches(c).count()).sum()
+    };
+    mathtex::set_phi(phis('φ'), phis('ϕ'));
     let pages = pages::prepare(doc);
     let stats = blocks::stats(doc, &pages);
     let blks = blocks::build(doc, &pages, &stats);

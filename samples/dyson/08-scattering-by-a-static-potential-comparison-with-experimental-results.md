@@ -508,7 +508,7 @@ Specializing now to the case of a time-independent electrostatic potential given
 <a id="eq-674"></a>
 
 ```math
-A_{4} = i\phi ( r ) , \quad V = - e\phi , \qquad \text{(674)}
+A_{4} = i\varphi ( r ) , \quad V = - e\varphi , \qquad \text{(674)}
 ```
 
 <a id="eq-675"></a>

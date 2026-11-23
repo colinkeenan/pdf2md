@@ -20,7 +20,7 @@ This material is covered in **Gasiorowicz Chapter 16,** in **Cohen-Tannoudji et 
 Assume that the energy eigenvalue problem for the Hamiltonian $`H_{0}`$ can be **solved exactly**
 
 ```math
-H_{0} \varphi_{n} = E_{n}^{( 0 )} \varphi_{n}
+H_{0} \phi_{n} = E_{n}^{( 0 )} \phi_{n}
 ```
 
 but that the true Hamiltonian has a small additional term or **perturbation** $`H_{1}`$.
@@ -42,7 +42,7 @@ E_{n} = E_{n}^{( 0 )} + E_{n}^{( 1 )} + E_{n}^{( 2 )} + \dots
 ```
 
 ```math
-\psi_{n} = N \left( \varphi_{n} + \sum_{k \neq n} c_{nk} \varphi_{k} \right)
+\psi_{n} = N \left( \phi_{n} + \sum_{k \neq n} c_{nk} \phi_{k} \right)
 ```
 
 ```math
@@ -54,7 +54,7 @@ where the superscript (0), (1), (2) are the zeroth, first, and second order term
 By solving the Schrödinger equation at each order of the perturbation series, we **compute the corrections to the energies and eigenfunctions.** (see section 22.4.1)
 
 ```math
-E_{n}^{( 1 )} = \langle \varphi_{n} | H_{1} | \varphi_{n} \rangle
+E_{n}^{( 1 )} = \langle \phi_{n} | H_{1} | \phi_{n} \rangle
 ```
 
 <div align="right"><a href="book.pdf#page=326" target="_blank" title="This page in the PDF"><sup>[p. 326]</sup></a></div>
@@ -62,16 +62,16 @@ E_{n}^{( 1 )} = \langle \varphi_{n} | H_{1} | \varphi_{n} \rangle
 <a id="p327" href="book.pdf#page=327" target="_blank" title="This page in the PDF"><sup>[p. 327]</sup></a>
 
 ```math
-c_{nk}^{( 1 )} = \frac{\langle \varphi_{k} | H_{1} | \varphi_{n} \rangle}{E_{n}^{( 0 )} - E_{k}^{( 0 )}}
+c_{nk}^{( 1 )} = \frac{\langle \phi_{k} | H_{1} | \phi_{n} \rangle}{E_{n}^{( 0 )} - E_{k}^{( 0 )}}
 ```
 
 ```math
-E_{n}^{( 2 )} = \sum_{k \neq n} \frac{| \langle \varphi_{k} | H_{1} | \varphi_{n} \rangle |^{2}}{E_{n}^{( 0 )} - E_{k}^{( 0 )}}
+E_{n}^{( 2 )} = \sum_{k \neq n} \frac{| \langle \phi_{k} | H_{1} | \phi_{n} \rangle |^{2}}{E_{n}^{( 0 )} - E_{k}^{( 0 )}}
 ```
 
 audio
 
-So the **first order correction to the energy** of the $`n^{th}`$ eigenstate, $`E_{n}^{( 1 )}`$, is just the expectation value of the perturbation in the unperturbed state. The first order admixture of $`\varphi_{k}`$ in $`\psi_{n} , c_{nk}^{( 1 )}`$, depends on a matrix element and the energy difference between states. The **second order correction to the energy**, $`E_{n}^{( 2 )}`$, has a similar dependence. Note that the higher order corrections may not be small if states are nearby in energy.
+So the **first order correction to the energy** of the $`n^{th}`$ eigenstate, $`E_{n}^{( 1 )}`$, is just the expectation value of the perturbation in the unperturbed state. The first order admixture of $`\phi_{k}`$ in $`\psi_{n} , c_{nk}^{( 1 )}`$, depends on a matrix element and the energy difference between states. The **second order correction to the energy**, $`E_{n}^{( 2 )}`$, has a similar dependence. Note that the higher order corrections may not be small if states are nearby in energy.
 
 The application of the first order perturbation equations is quite simple in principal. The actual calculation of the matrix elements depends greatly on the problem being solved.
 
@@ -85,20 +85,20 @@ We will exercise the use of perturbation theory in section 23 when we compute th
 
 # <a id="s-22-2-degenerate-state-perturbation-theory"></a>22.2 Degenerate State Perturbation Theory
 
-The perturbation expansion has a problem for states very close in energy. The energy difference in the denominators goes to zero and the **corrections are no longer small.** The series does not converge. We can very effectively solve this problem by **treating all the (nearly) degenerate states like we did** $`\varphi_{n}`$ in the regular perturbation expansion. That is, the zeroth order state will be allowed to be an arbitrary linear combination of the degenerate states and the eigenvalue problem will be solved.
+The perturbation expansion has a problem for states very close in energy. The energy difference in the denominators goes to zero and the **corrections are no longer small.** The series does not converge. We can very effectively solve this problem by **treating all the (nearly) degenerate states like we did** $`\phi_{n}`$ in the regular perturbation expansion. That is, the zeroth order state will be allowed to be an arbitrary linear combination of the degenerate states and the eigenvalue problem will be solved.
 
 Assume that two or more states are (nearly) degenerate. Define $`\mathcal{N}`$ to be the set of those nearly degenerate states. Choose a set of basis state in $`\mathcal{N}`$ which are orthonormal
 
 ```math
-\langle \varphi^{( j )} | \varphi^{( i )} \rangle = \delta_{ji}
+\langle \phi^{( j )} | \phi^{( i )} \rangle = \delta_{ji}
 ```
 
 where $`i`$ and $`j`$ are in the set $`\mathcal{N}`$. We will use the indices $`i`$ and $`j`$ to label the states in $`\mathcal{N}`$.
 
-By looking at the zeroth and first order terms in the Schrödinger equation and dotting it into one of the degenerate states $`\varphi^{( j )}`$, we **derive** (see section 22.4.2) the energy equation for first order (nearly)<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=327" target="_blank" title="This page in the PDF"><sup>[p. 327]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p328" href="book.pdf#page=328" target="_blank" title="This page in the PDF"><sup>[p. 328]</sup></a></span> degenerate state perturbation theory
+By looking at the zeroth and first order terms in the Schrödinger equation and dotting it into one of the degenerate states $`\phi^{( j )}`$, we **derive** (see section 22.4.2) the energy equation for first order (nearly)<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=327" target="_blank" title="This page in the PDF"><sup>[p. 327]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p328" href="book.pdf#page=328" target="_blank" title="This page in the PDF"><sup>[p. 328]</sup></a></span> degenerate state perturbation theory
 
 ```math
-\sum_{i \in \mathcal{N}} \langle \varphi^{( j )} | H_{0} + H_{1} | \varphi^{( i )} \rangle \alpha_{i} = E\alpha_{j} ,
+\sum_{i \in \mathcal{N}} \langle \phi^{( j )} | H_{0} + H_{1} | \phi^{( i )} \rangle \alpha_{i} = E\alpha_{j} ,
 ```
 
 This is an eigenvalue equation with as many solutions as there are degnerate states in our set. audio
@@ -111,13 +111,13 @@ Written as a matrix, the equation is
 \begin{pmatrix} H_{1 1} & H_{1 2} & \dots & H_{1 n} \\ H_{2 1} & H_{2 2} & \dots & H_{2 n} \\ \dots & \dots & \dots & \dots \\ H_{n 1} & H_{n 2} & \dots & H_{nn} \end{pmatrix} \begin{pmatrix} \alpha_{1} \\ \alpha_{2} \\ \dots \\ \alpha_{n} \end{pmatrix} = E \begin{pmatrix} \alpha_{1} \\ \alpha_{2} \\ \dots \\ \alpha_{n} \end{pmatrix}
 ```
 
-where $`H_{ji} = \langle \varphi^{( j )} | H_{0} + H_{1} | \varphi^{( i )} \rangle`$ is the matrix element of the full Hamiltonian. If there are n nearly degenerate states, there are n solutions to this equation.
+where $`H_{ji} = \langle \phi^{( j )} | H_{0} + H_{1} | \phi^{( i )} \rangle`$ is the matrix element of the full Hamiltonian. If there are n nearly degenerate states, there are n solutions to this equation.
 
-The Stark effect for the (principle quantum number) n=2 states of hydrogen requires the use of degenerate state perturbation theory since there are four states with (nearly) the same energies. For our first calculation, we will ignore the hydrogen fine structure and assume that the four states are exactly degenerate, each with unperturbed energy of $`E_{0}`$. That is $`H_{0} \varphi_{2 \ell m} = E_{0} \varphi_{2 \ell m}`$. The degenerate states $`\varphi_{2 0 0} , \varphi_{2 1 1} , \varphi_{2 1 0}`$, and $`\varphi_{2 1 ( - 1 )}`$.
+The Stark effect for the (principle quantum number) n=2 states of hydrogen requires the use of degenerate state perturbation theory since there are four states with (nearly) the same energies. For our first calculation, we will ignore the hydrogen fine structure and assume that the four states are exactly degenerate, each with unperturbed energy of $`E_{0}`$. That is $`H_{0} \phi_{2 \ell m} = E_{0} \phi_{2 \ell m}`$. The degenerate states $`\phi_{2 0 0} , \phi_{2 1 1} , \phi_{2 1 0}`$, and $`\phi_{2 1 ( - 1 )}`$.
 
 \* See Example 22.3.3: The Stark Effect for n=2 States.\*
 
-The perturbation due to an electric field in the z direction is $`H_{1}`$ = +$`e \mathcal{E} z`$. The linear combinations that are found to diagonalize the full Hamiltonian in the subspace of degenerate states are: $`\varphi_{2 1 1}`$, $`\varphi_{2 1 ( - 1 )}`$ and $`\tfrac{1}{\sqrt{2}} ( \varphi_{2 0 0} \pm \varphi_{2 1 0} )`$ with energies of $`E_{2} , E_{2}`$, and $`E_{2} \mp 3 e \mathcal{E} a_{0}`$.
+The perturbation due to an electric field in the z direction is $`H_{1}`$ = +$`e \mathcal{E} z`$. The linear combinations that are found to diagonalize the full Hamiltonian in the subspace of degenerate states are: $`\phi_{2 1 1}`$, $`\phi_{2 1 ( - 1 )}`$ and $`\tfrac{1}{\sqrt{2}} ( \phi_{2 0 0} \pm \phi_{2 1 0} )`$ with energies of $`E_{2} , E_{2}`$, and $`E_{2} \mp 3 e \mathcal{E} a_{0}`$.
 
 # <a id="s-22-3-examples"></a>22.3 Examples
 
@@ -168,19 +168,19 @@ H_{1} = e \mathcal{E} z
 It is typically a small perturbation. **For non-degenerate states**, the first order correction to the energy is zero because the expectation value of z is an odd function.
 
 ```math
-E_{nlm}^{( 1 )} = e \mathcal{E} \langle \varphi_{nlm} | z | \varphi_{nlm} \rangle = 0
+E_{nlm}^{( 1 )} = e \mathcal{E} \langle \phi_{nlm} | z | \phi_{nlm} \rangle = 0
 ```
 
 We therefore need to calculate the **second order correction**. This involves a sum over all the other states.
 
 ```math
-E_{1 0 0}^{( 2 )} = e^{2} \mathcal{E}^{2} \sum_{nlm \neq 1 0 0} \frac{| \langle \varphi_{nlm} | z | \varphi_{1 0 0} \rangle |^{2}}{E_{1}^{( 0 )} - E_{n}^{( 0 )}}
+E_{1 0 0}^{( 2 )} = e^{2} \mathcal{E}^{2} \sum_{nlm \neq 1 0 0} \frac{| \langle \phi_{nlm} | z | \phi_{1 0 0} \rangle |^{2}}{E_{1}^{( 0 )} - E_{n}^{( 0 )}}
 ```
 
 We need to compute all the matrix elements of z between the ground state and the other Hydrogen states.
 
 ```math
-\langle \varphi_{nlm} | z | \varphi_{1 0 0} \rangle = \int d^{3} rR_{nl}^{*} ( r \cos \theta ) R_{1 0} Y_{lm}^{*} Y_{0 0}
+\langle \phi_{nlm} | z | \phi_{1 0 0} \rangle = \int d^{3} rR_{nl}^{*} ( r \cos \theta ) R_{1 0} Y_{lm}^{*} Y_{0 0}
 ```
 
 We can do the angular integral by converting the $`\cos \theta`$ term into a spherical harmonic.
@@ -192,7 +192,7 @@ Y_{0 0} \cos \theta = \frac{1}{\sqrt{4 \pi}} \sqrt{\frac{4 \pi}{3}} Y_{1 0}
 The we can just use the orthonormality of the spherical harmonics to do the angular integral, leaving us with a radial integral to do.
 
 ```math
-\langle \varphi_{nlm} | z | \varphi_{1 0 0} \rangle = \frac{1}{\sqrt{3}} \int r^{3} drR_{nl}^{*} R_{1 0} \int d \Omega Y_{lm}^{*} Y_{1 0}
+\langle \phi_{nlm} | z | \phi_{1 0 0} \rangle = \frac{1}{\sqrt{3}} \int r^{3} drR_{nl}^{*} R_{1 0} \int d \Omega Y_{lm}^{*} Y_{1 0}
 ```
 
 ```math
@@ -202,7 +202,7 @@ The we can just use the orthonormality of the spherical harmonics to do the angu
 The radial part of the integral can be done with some work, yielding.
 
 ```math
-| \langle \varphi_{nlm} | z | \varphi_{1 0 0} \rangle |^{2} = \frac{1}{3} \frac{2^{8} n^{7} ( n - 1 )^{2 n - 5}}{( n + 1 )^{2 n + 5}} a_{0}^{2} \delta_{\ell 0} \delta m 0 \equiv f ( n ) a_{0}^{2} \delta_{\ell 0} \delta m 0
+| \langle \phi_{nlm} | z | \phi_{1 0 0} \rangle |^{2} = \frac{1}{3} \frac{2^{8} n^{7} ( n - 1 )^{2 n - 5}}{( n + 1 )^{2 n + 5}} a_{0}^{2} \delta_{\ell 0} \delta m 0 \equiv f ( n ) a_{0}^{2} \delta_{\ell 0} \delta m 0
 ```
 
 We put this back into the sum. The Kronecker deltas eliminate the sums over $`\ell`$ and $`m`$. We write the energy denominators in terms of the Bohr radius.
@@ -241,28 +241,28 @@ The dipole moment is proportional to the Electric field, indicating that it is i
 
 ## <a id="s-22-3-3-the-stark-effect-for-n-2-hydrogen"></a>22.3.3 The Stark Effect for n=2 Hydrogen.
 
-The Stark effect for the n=2 states of hydrogen requires the use of degenerate state perturbation theory since there are four states with (nearly) the same energies. For our first calculation, we will ignore the hydrogen fine structure and assume that the four states are exactly degenerate, each with unperturbed energy of $`E_{0}`$. That is $`H_{0} \varphi_{2 \ell m} = E_{0} \varphi_{2 \ell m}`$. The degenerate states $`\varphi_{2 0 0} , \varphi_{2 1 1} , \varphi_{2 1 0}`$, and $`\varphi_{2 1 ( - 1 )}`$.
+The Stark effect for the n=2 states of hydrogen requires the use of degenerate state perturbation theory since there are four states with (nearly) the same energies. For our first calculation, we will ignore the hydrogen fine structure and assume that the four states are exactly degenerate, each with unperturbed energy of $`E_{0}`$. That is $`H_{0} \phi_{2 \ell m} = E_{0} \phi_{2 \ell m}`$. The degenerate states $`\phi_{2 0 0} , \phi_{2 1 1} , \phi_{2 1 0}`$, and $`\phi_{2 1 ( - 1 )}`$.
 
 The perturbation due to an electric field in the z direction is $`H_{1}`$ = +$`e \mathcal{E} z`$. So our first order degenerate state perturbation theory equation is
 
 ```math
-\sum_{i} \alpha_{i} \left\langle \varphi^{( j )} | H_{0} + e \mathcal{E} z | \varphi^{( i )} \right\rangle = ( E_{0} + E^{( 1 )} ) \alpha_{j} .
+\sum_{i} \alpha_{i} \left\langle \phi^{( j )} | H_{0} + e \mathcal{E} z | \phi^{( i )} \right\rangle = ( E_{0} + E^{( 1 )} ) \alpha_{j} .
 ```
 
 This is esentially a 4X4 matrix eigenvalue equation. There are 4 eigenvalues $`( E_{0} + E^{( 1 )} )`$, distinguished by the index $`n`$.
 
-Because of the exact degeneracy $`( H_{0} \varphi^{( j )} = E_{0} \varphi^{( j )} ) , H_{0}`$ and $`E_{0}`$ can be eliminated from the equation.
+Because of the exact degeneracy $`( H_{0} \phi^{( j )} = E_{0} \phi^{( j )} ) , H_{0}`$ and $`E_{0}`$ can be eliminated from the equation.
 
 ```math
-\sum_{i} \alpha_{i} ( E_{0} \delta_{ij} + \left\langle \varphi^{( j )} | e \mathcal{E} z | \varphi^{( i )} \right\rangle ) = ( E_{0} + E^{( 1 )} ) \alpha_{j}
+\sum_{i} \alpha_{i} ( E_{0} \delta_{ij} + \left\langle \phi^{( j )} | e \mathcal{E} z | \phi^{( i )} \right\rangle ) = ( E_{0} + E^{( 1 )} ) \alpha_{j}
 ```
 
 ```math
-E_{0} \alpha_{j} + \sum_{i} \alpha_{i} \left\langle \varphi^{( j )} | e \mathcal{E} z | \varphi^{( i )} \right\rangle = E_{0} \alpha_{j} + E^{( 1 )} \alpha_{j}
+E_{0} \alpha_{j} + \sum_{i} \alpha_{i} \left\langle \phi^{( j )} | e \mathcal{E} z | \phi^{( i )} \right\rangle = E_{0} \alpha_{j} + E^{( 1 )} \alpha_{j}
 ```
 
 ```math
-\sum_{i} \alpha_{i} \left\langle \varphi^{( j )} | e \mathcal{E} z | \varphi^{( i )} \right\rangle = E^{( 1 )} \alpha_{j}
+\sum_{i} \alpha_{i} \left\langle \phi^{( j )} | e \mathcal{E} z | \phi^{( i )} \right\rangle = E^{( 1 )} \alpha_{j}
 ```
 
 <div align="right"><a href="book.pdf#page=330" target="_blank" title="This page in the PDF"><sup>[p. 330]</sup></a></div>
@@ -286,16 +286,16 @@ This implies that $`\langle Y_{lm} | z | Y_{l^{\prime} m^{\prime}} \rangle = 0`$
 Lets define the one remaining nonzero (real) matrix element to be $`\gamma`$.
 
 ```math
-\gamma = e \mathcal{E} \langle \varphi_{2 0 0} | z | \varphi_{2 1 0} \rangle
+\gamma = e \mathcal{E} \langle \phi_{2 0 0} | z | \phi_{2 1 0} \rangle
 ```
 
 The equation (labeled with the basis states to define the order) is.
 
 ```math
-\frac{\varphi \varphi_{2 0 0 2 1 1}}{\varphi \varphi_{2 1 0 2 1 - 1}} \begin{pmatrix} 0 & 0 & \gamma & 0 \\ 0 & 0 & 0 & 0 \\ \gamma & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix} \begin{pmatrix} \alpha_{1} \\ \alpha_{2} \\ \alpha_{3} \\ \alpha_{4} \end{pmatrix} = E^{( 1 )} \begin{pmatrix} \alpha_{1} \\ \alpha_{2} \\ \alpha_{3} \\ \alpha_{4} \end{pmatrix}
+\frac{\phi \phi_{2 0 0 2 1 1}}{\phi \phi_{2 1 0 2 1 - 1}} \begin{pmatrix} 0 & 0 & \gamma & 0 \\ 0 & 0 & 0 & 0 \\ \gamma & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix} \begin{pmatrix} \alpha_{1} \\ \alpha_{2} \\ \alpha_{3} \\ \alpha_{4} \end{pmatrix} = E^{( 1 )} \begin{pmatrix} \alpha_{1} \\ \alpha_{2} \\ \alpha_{3} \\ \alpha_{4} \end{pmatrix}
 ```
 
-We can see by inspection that the eigenfunctions of this operator are $`\varphi_{2 1 1} , \varphi_{2 1 - 1}`$, and $`\tfrac{1}{\sqrt{2}} ( \varphi_{2 0 0} \pm \varphi_{2 1 0} )`$ with eigenvalues (of $`H_{1}`$) of 0, 0, and $`\pm \gamma`$.
+We can see by inspection that the eigenfunctions of this operator are $`\phi_{2 1 1} , \phi_{2 1 - 1}`$, and $`\tfrac{1}{\sqrt{2}} ( \phi_{2 0 0} \pm \phi_{2 1 0} )`$ with eigenvalues (of $`H_{1}`$) of 0, 0, and $`\pm \gamma`$.
 
 What remains is to compute $`\gamma`$. Recall $`Y_{0 0} = \tfrac{1}{\sqrt{4 \pi}}`$ and $`Y_{1 0} = \sqrt{\frac{3}{4 \pi}} \cos \theta`$.
 
@@ -329,7 +329,7 @@ What remains is to compute $`\gamma`$. Recall $`Y_{0 0} = \tfrac{1}{\sqrt{4 \pi}
 
 This is first order in the electric field, as we would expect in first order (degenerate) perturbation theory.
 
-If the states are not exactly degenerate, we have to leave in the diagonal terms of $`H_{0}`$. Assume that the energies of the two (mixed) states are $`E_{0} \pm`$ ∆, where ∆ comes from some other perturbation, like the hydrogen fine structure. (The $`\varphi_{2 1 1}`$ and $`\varphi_{2 1 ( - 1 )}`$ are still not mixed by the electric field.)
+If the states are not exactly degenerate, we have to leave in the diagonal terms of $`H_{0}`$. Assume that the energies of the two (mixed) states are $`E_{0} \pm`$ ∆, where ∆ comes from some other perturbation, like the hydrogen fine structure. (The $`\phi_{2 1 1}`$ and $`\phi_{2 1 ( - 1 )}`$ are still not mixed by the electric field.)
 
 ```math
 \begin{pmatrix} E_{0} - \Delta & \gamma \\ \gamma & E_{0} + \Delta \end{pmatrix} \begin{pmatrix} \alpha_{1} \\ \alpha_{2} \end{pmatrix} = E \begin{pmatrix} \alpha_{1} \\ \alpha_{2} \end{pmatrix}
@@ -358,7 +358,7 @@ E_{n} = E_{n}^{( 0 )} + \lambda E_{n}^{( 1 )} + \lambda^{2} E_{n}^{( 2 )} + \dot
 ```
 
 ```math
-\psi_{n} = N ( \lambda ) \left( \varphi_{n} + \sum_{k \neq n} c_{nk} ( \lambda ) \varphi_{k} \right)
+\psi_{n} = N ( \lambda ) \left( \phi_{n} + \sum_{k \neq n} c_{nk} ( \lambda ) \phi_{k} \right)
 ```
 
 ```math
@@ -368,67 +368,67 @@ c_{nk} ( \lambda ) = \lambda c_{nk}^{( 1 )} + \lambda^{2} c_{nk}^{( 2 )} + \dots
 The **full Schrödinger equation** is
 
 ```math
-( H_{0} + \lambda H_{1} ) \left( \varphi_{n} + \sum_{k \neq n} c_{nk} ( \lambda ) \varphi_{k} \right) = ( E_{n}^{( 0 )} + \lambda E_{n}^{( 1 )} + \lambda^{2} E_{n}^{( 2 )} + \dots ) \left( \varphi_{n} + \sum_{k \neq n} c_{nk} ( \lambda ) \varphi_{k} \right)
+( H_{0} + \lambda H_{1} ) \left( \phi_{n} + \sum_{k \neq n} c_{nk} ( \lambda ) \phi_{k} \right) = ( E_{n}^{( 0 )} + \lambda E_{n}^{( 1 )} + \lambda^{2} E_{n}^{( 2 )} + \dots ) \left( \phi_{n} + \sum_{k \neq n} c_{nk} ( \lambda ) \phi_{k} \right)
 ```
 
 where the $`N ( \lambda )`$ has been factored out on both sides. For this equation to hold as we vary $`\lambda`$, it must hold for each power of $`\lambda`$. We will investigate the first three terms.
 
 ```math
-\lambda^{0} \quad H_{0} \varphi_{n} = E_{n}^{( 0 )} \varphi_{n}
+\lambda^{0} \quad H_{0} \phi_{n} = E_{n}^{( 0 )} \phi_{n}
 ```
 
 ```math
-\lambda^{1} \quad \lambda H_{1} \varphi_{n} + H_{0} \lambda \sum_{k \neq n} c_{nk}^{( 1 )} \varphi_{k} = \lambda E_{n}^{( 1 )} \varphi_{n} + \lambda E_{n}^{( 0 )} \sum_{k \neq n} c_{nk}^{( 1 )} \varphi_{k}
+\lambda^{1} \quad \lambda H_{1} \phi_{n} + H_{0} \lambda \sum_{k \neq n} c_{nk}^{( 1 )} \phi_{k} = \lambda E_{n}^{( 1 )} \phi_{n} + \lambda E_{n}^{( 0 )} \sum_{k \neq n} c_{nk}^{( 1 )} \phi_{k}
 ```
 
 ```math
-\lambda^{2} \quad H_{0} \sum_{k \neq n} \lambda^{2} c_{nk}^{( 2 )} \varphi_{k} + \lambda H_{1} \sum_{k \neq n} \lambda c_{nk}^{( 1 )} \varphi_{k} = E_{n}^{( 0 )} \sum_{k \neq n} \lambda^{2} c_{nk}^{( 2 )} \varphi_{k} + \lambda E_{n}^{( 1 )} \sum_{k \neq n} \lambda c_{nk}^{( 1 )} \varphi_{k} + \lambda^{2} E_{n}^{( 2 )} \varphi_{n}
+\lambda^{2} \quad H_{0} \sum_{k \neq n} \lambda^{2} c_{nk}^{( 2 )} \phi_{k} + \lambda H_{1} \sum_{k \neq n} \lambda c_{nk}^{( 1 )} \phi_{k} = E_{n}^{( 0 )} \sum_{k \neq n} \lambda^{2} c_{nk}^{( 2 )} \phi_{k} + \lambda E_{n}^{( 1 )} \sum_{k \neq n} \lambda c_{nk}^{( 1 )} \phi_{k} + \lambda^{2} E_{n}^{( 2 )} \phi_{n}
 ```
 
-The zero order term is just the solution to the unperturbed problem so there is no new information there. The other two terms contain linear combinations of the orthonormal functions $`\varphi_{i}`$. This means we can dot the equations into each of the $`\varphi_{i}`$ to get information, much like getting the components of a vector individually. Since $`\varphi_{n}`$ is treated separately in this analysis, we will dot the equation into $`\varphi_{n}`$ and separately into all the other functions $`\varphi_{k}`$.
+The zero order term is just the solution to the unperturbed problem so there is no new information there. The other two terms contain linear combinations of the orthonormal functions $`\phi_{i}`$. This means we can dot the equations into each of the $`\phi_{i}`$ to get information, much like getting the components of a vector individually. Since $`\phi_{n}`$ is treated separately in this analysis, we will dot the equation into $`\phi_{n}`$ and separately into all the other functions $`\phi_{k}`$.
 
-The first order equation dotted into $`\varphi_{n}`$ yields
+The first order equation dotted into $`\phi_{n}`$ yields
 
 ```math
-\langle \varphi_{n} | \lambda H_{1} | \varphi_{n} \rangle = \lambda E_{n}^{( 1 )}
+\langle \phi_{n} | \lambda H_{1} | \phi_{n} \rangle = \lambda E_{n}^{( 1 )}
 ```
 
 <div align="right"><a href="book.pdf#page=332" target="_blank" title="This page in the PDF"><sup>[p. 332]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p333" href="book.pdf#page=333" target="_blank" title="This page in the PDF"><sup>[p. 333]</sup></a>
 
-and dotted into $`\varphi_{k}`$ yields
+and dotted into $`\phi_{k}`$ yields
 
 ```math
-\langle \varphi_{k} | \lambda H_{1} | \varphi_{n} \rangle + E_{k}^{( 0 )} \lambda c_{nk}^{( 1 )} = E_{n}^{( 0 )} \lambda c_{nk}^{( 1 )} .
+\langle \phi_{k} | \lambda H_{1} | \phi_{n} \rangle + E_{k}^{( 0 )} \lambda c_{nk}^{( 1 )} = E_{n}^{( 0 )} \lambda c_{nk}^{( 1 )} .
 ```
 
 From these it is simple to derive **the first order corrections**
 
 ```math
-\lambda E_{n}^{( 1 )} = \langle \varphi_{n} | \lambda H_{1} | \varphi_{n} \rangle
+\lambda E_{n}^{( 1 )} = \langle \phi_{n} | \lambda H_{1} | \phi_{n} \rangle
 ```
 
 ```math
-\lambda c_{nk}^{( 1 )} = \frac{\langle \varphi_{k} | \lambda H_{1} | \varphi_{n} \rangle}{E_{n}^{( 0 )} - E_{k}^{( 0 )}}
+\lambda c_{nk}^{( 1 )} = \frac{\langle \phi_{k} | \lambda H_{1} | \phi_{n} \rangle}{E_{n}^{( 0 )} - E_{k}^{( 0 )}}
 ```
 
-The second order equation projected on $`\varphi_{n}`$ yields
+The second order equation projected on $`\phi_{n}`$ yields
 
 ```math
-\sum_{k \neq n} \lambda c_{nk}^{( 1 )} \langle \varphi_{n} | \lambda H_{1} | \varphi_{k} \rangle = \lambda^{2} E_{N}^{( 2 )} .
+\sum_{k \neq n} \lambda c_{nk}^{( 1 )} \langle \phi_{n} | \lambda H_{1} | \phi_{k} \rangle = \lambda^{2} E_{N}^{( 2 )} .
 ```
 
-We will not need the projection on $`\varphi_{k}`$ but could proceed with it to get the second order correction to the wave function, if that were needed. Solving for the **second order correction to the energy** and substituting for $`c_{nk}^{( 1 )}`$, we have
+We will not need the projection on $`\phi_{k}`$ but could proceed with it to get the second order correction to the wave function, if that were needed. Solving for the **second order correction to the energy** and substituting for $`c_{nk}^{( 1 )}`$, we have
 
 ```math
-\lambda^{2} E_{n}^{( 2 )} = \sum_{k \neq n} \frac{| \langle \varphi_{k} | \lambda H_{1} | \varphi_{n} \rangle |^{2}}{E_{n}^{( 0 )} - E_{k}^{( 0 )}} .
+\lambda^{2} E_{n}^{( 2 )} = \sum_{k \neq n} \frac{| \langle \phi_{k} | \lambda H_{1} | \phi_{n} \rangle |^{2}}{E_{n}^{( 0 )} - E_{k}^{( 0 )}} .
 ```
 
 The **normalization factor** $`N ( \lambda )`$ played no role in the solutions to the Schrödinger equation since that equation is independent of normalization. We do need to go back and check whether the first order corrected wavefunction needs normalization.
 
 ```math
-\tfrac{1}{N ( \lambda )^{2}} = \langle \varphi_{n} + \sum_{k \neq n} \lambda c_{nk}^{( 1 )} \varphi_{k} | \varphi_{n} + \sum_{k \neq n} \lambda c_{nk}^{( 1 )} \varphi_{k} \rangle = 1 + \sum_{k \neq n} \lambda^{2} | c_{nk}^{( 1 )} |^{2}
+\tfrac{1}{N ( \lambda )^{2}} = \langle \phi_{n} + \sum_{k \neq n} \lambda c_{nk}^{( 1 )} \phi_{k} | \phi_{n} + \sum_{k \neq n} \lambda c_{nk}^{( 1 )} \phi_{k} \rangle = 1 + \sum_{k \neq n} \lambda^{2} | c_{nk}^{( 1 )} |^{2}
 ```
 
 ```math
@@ -441,13 +441,13 @@ These results are rewritten with all the $`\lambda`$ removed in section 22.1.
 
 ## <a id="s-22-4-2-derivation-of-1st-order-degenerate-perturbation-equations"></a>22.4.2 Derivation of 1st Order Degenerate Perturbation Equations
 
-To deal with the problem of degenerate states, we will allow an arbitrary linear combination of those states at zeroth order. In the following equation, the sum over $`i`$ is the sum over all the states degenerate with $`\varphi_{n}`$ and the sum over k runs over all the other states.
+To deal with the problem of degenerate states, we will allow an arbitrary linear combination of those states at zeroth order. In the following equation, the sum over $`i`$ is the sum over all the states degenerate with $`\phi_{n}`$ and the sum over k runs over all the other states.
 
 ```math
-\psi_{n} = N ( \lambda ) \left( \sum_{i \in \mathcal{N}} \alpha_{i} \varphi^{( i )} + \sum_{k 6 \in \mathcal{N}} \lambda c_{nk}^{( 1 )} \varphi_{k} + \dots \right)
+\psi_{n} = N ( \lambda ) \left( \sum_{i \in \mathcal{N}} \alpha_{i} \phi^{( i )} + \sum_{k 6 \in \mathcal{N}} \lambda c_{nk}^{( 1 )} \phi_{k} + \dots \right)
 ```
 
-where $`\mathcal{N}`$ is the set of zeroth order states which are (nearly) degenerate with $`\varphi_{n}`$. We will only go to first order in this derivation and we will use $`\lambda`$ as in the previous derivation to keep track of the order in the perturbation.
+where $`\mathcal{N}`$ is the set of zeroth order states which are (nearly) degenerate with $`\phi_{n}`$. We will only go to first order in this derivation and we will use $`\lambda`$ as in the previous derivation to keep track of the order in the perturbation.
 
 <div align="right"><a href="book.pdf#page=333" target="_blank" title="This page in the PDF"><sup>[p. 333]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -456,25 +456,25 @@ where $`\mathcal{N}`$ is the set of zeroth order states which are (nearly) degen
 The full Schrödinger equation is.
 
 ```math
-( H_{0} + \lambda H_{1} ) \left( \sum_{i \in \mathcal{N}} \alpha_{i} \varphi^{( i )} + \sum_{k 6 \in \mathcal{N}} c_{nk} ( \lambda ) \varphi_{k} \right) = ( E_{n}^{( 0 )} + \lambda E^{( 1 )} + \dots ) \left( \sum_{i \in \mathcal{N}} \alpha_{i} \varphi^{( i )} + \sum_{k 6 \in \mathcal{N}} c_{nk} ( \lambda ) \varphi_{k} \right)
+( H_{0} + \lambda H_{1} ) \left( \sum_{i \in \mathcal{N}} \alpha_{i} \phi^{( i )} + \sum_{k 6 \in \mathcal{N}} c_{nk} ( \lambda ) \phi_{k} \right) = ( E_{n}^{( 0 )} + \lambda E^{( 1 )} + \dots ) \left( \sum_{i \in \mathcal{N}} \alpha_{i} \phi^{( i )} + \sum_{k 6 \in \mathcal{N}} c_{nk} ( \lambda ) \phi_{k} \right)
 ```
 
 If we keep the zeroth and first order terms, we have
 
 ```math
-( H_{0} + \lambda H_{1} ) \sum_{i \in \mathcal{N}} \alpha_{i} \varphi^{( i )} + H_{0} \sum_{k 6 \in \mathcal{N}} \lambda c_{nk}^{( 1 )} \varphi_{k} = ( E_{n}^{( 0 )} + \lambda E^{( 1 )} ) \sum_{i \in \mathcal{N}} \alpha_{i} \varphi^{( i )} + E_{n}^{( 0 )} \sum_{k 6 \in \mathcal{N}} \lambda c_{nk}^{( 1 )} \varphi_{k} .
+( H_{0} + \lambda H_{1} ) \sum_{i \in \mathcal{N}} \alpha_{i} \phi^{( i )} + H_{0} \sum_{k 6 \in \mathcal{N}} \lambda c_{nk}^{( 1 )} \phi_{k} = ( E_{n}^{( 0 )} + \lambda E^{( 1 )} ) \sum_{i \in \mathcal{N}} \alpha_{i} \phi^{( i )} + E_{n}^{( 0 )} \sum_{k 6 \in \mathcal{N}} \lambda c_{nk}^{( 1 )} \phi_{k} .
 ```
 
-Projecting this onto one of the degenerate states $`\varphi^{( j )}`$, we get
+Projecting this onto one of the degenerate states $`\phi^{( j )}`$, we get
 
 ```math
-\sum_{i \in \mathcal{N}} \langle \varphi^{( j )} | H_{0} + \lambda H_{1} | \varphi^{( i )} \rangle \alpha_{i} = ( E_{n}^{( 0 )} + \lambda E^{( 1 )} ) \alpha_{j} .
+\sum_{i \in \mathcal{N}} \langle \phi^{( j )} | H_{0} + \lambda H_{1} | \phi^{( i )} \rangle \alpha_{i} = ( E_{n}^{( 0 )} + \lambda E^{( 1 )} ) \alpha_{j} .
 ```
 
 By putting both terms together, our calculation gives us the full energy to first order, not just the correction. It is useful both for degenerate states and for nearly degenerate states. The result may be simplified to
 
 ```math
-\sum_{i \in \mathcal{N}} \langle \varphi^{( j )} | H | \varphi^{( i )} \rangle \alpha_{i} = E\alpha_{j} .
+\sum_{i \in \mathcal{N}} \langle \phi^{( j )} | H | \phi^{( i )} \rangle \alpha_{i} = E\alpha_{j} .
 ```
 
 This is just the standard eigenvalue problem for the full Hamiltonian in the **subspace of (nearly) degenerate states.**

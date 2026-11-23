@@ -167,7 +167,7 @@ If we try to localize a particle to a very small region of space, its momentum b
 
 # <a id="s-5-4-position-space-and-momentum-space"></a>5.4 Position Space and Momentum Space
 
-We can represent a state with either $`\psi ( x )`$ or with $`\varphi ( p )`$. We can (Fourier) transform from one to the other.
+We can represent a state with either $`\psi ( x )`$ or with $`\phi ( p )`$. We can (Fourier) transform from one to the other.
 
 We have the symmetric Fourier Transform.
 
@@ -182,11 +182,11 @@ A ( k ) = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f ( x ) e^{- ikx} dx
 When we change variable from $`k`$ to $`p`$, we get the **Fourier Transforms in terms of** $`x`$ **and** $`p`$.
 
 ```math
-\psi ( x ) = \frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{\infty} \varphi ( p ) e^{ipx/ \hbar} dp
+\psi ( x ) = \frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{\infty} \phi ( p ) e^{ipx/ \hbar} dp
 ```
 
 ```math
-\varphi ( p ) = \frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{\infty} \psi ( x ) e^{- ipx/ \hbar} dx
+\phi ( p ) = \frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{\infty} \psi ( x ) e^{- ipx/ \hbar} dx
 ```
 
 These formulas are worth a little study. If we define $`u_{p} ( x )`$ to be the **state with definite momentum** $`p`$, (in position space) our formula for it is
@@ -210,13 +210,13 @@ These states cannot be normalized to 1 but they do have a normalization conventi
 Our Fourier Transform can now be read to say that we **add up states of definite momentum to get** $`\psi ( x )`$
 
 ```math
-\psi ( x ) = \int_{-\infty}^{\infty} \varphi ( p ) u_{p} ( x ) dp
+\psi ( x ) = \int_{-\infty}^{\infty} \phi ( p ) u_{p} ( x ) dp
 ```
 
-and we add up states of definite position to get $`\varphi ( p )`$.
+and we add up states of definite position to get $`\phi ( p )`$.
 
 ```math
-\varphi ( p ) = \int_{-\infty}^{\infty} \psi ( x ) v_{x} ( p ) dx
+\phi ( p ) = \int_{-\infty}^{\infty} \psi ( x ) v_{x} ( p ) dx
 ```
 
 There is a more abstract way to write these states. Using the notation of Dirac, the state with definite momentum $`p_{0} , u_{p 0} ( x ) = \tfrac{1}{\sqrt{2 \pi \hbar}} e^{ip_{0} x/ \hbar}`$ might be written as
@@ -231,7 +231,7 @@ and the state with definite position $`x_{1} , v_{x 1} ( p ) = \tfrac{1}{\sqrt{2
 | x_{1} \rangle .
 ```
 
-The arbitrary state represented by either $`\psi ( x )`$ or $`\varphi ( p )`$, might be written simple as
+The arbitrary state represented by either $`\psi ( x )`$ or $`\phi ( p )`$, might be written simple as
 
 ```math
 | \psi \rangle .
@@ -736,19 +736,19 @@ Its normalized.
 Take the Fourier Transform.
 
 ```math
-\varphi ( k ) = \frac{1}{\sqrt{2 \pi}} \int_{- a}^{a} \frac{1}{\sqrt{2 a}} e^{- ikx} dx
+\phi ( k ) = \frac{1}{\sqrt{2 \pi}} \int_{- a}^{a} \frac{1}{\sqrt{2 a}} e^{- ikx} dx
 ```
 
 ```math
-\varphi ( k ) = \frac{1}{\sqrt{4 \pi a}} \left[ \frac{- 1}{ik} e^{- ikx} \right]_{- a}^{a}
+\phi ( k ) = \frac{1}{\sqrt{4 \pi a}} \left[ \frac{- 1}{ik} e^{- ikx} \right]_{- a}^{a}
 ```
 
 ```math
-\varphi ( k ) = \frac{1}{ik \sqrt{4 \pi a}} \left[ e^{- ika} - e^{ika} \right]
+\phi ( k ) = \frac{1}{ik \sqrt{4 \pi a}} \left[ e^{- ika} - e^{ika} \right]
 ```
 
 ```math
-\varphi ( k ) = \frac{1}{ik \sqrt{4 \pi a}} [ - 2 i \sin ka ] = - \sqrt{\frac{1}{\pi a}} \frac{\sin ( ka )}{k}
+\phi ( k ) = \frac{1}{ik \sqrt{4 \pi a}} [ - 2 i \sin ka ] = - \sqrt{\frac{1}{\pi a}} \frac{\sin ( ka )}{k}
 ```
 
 Now estimate the width of the two probability distributions.
@@ -758,7 +758,7 @@ Now estimate the width of the two probability distributions.
 ```
 
 ```math
-| \varphi ( k ) |^{2} = \frac{1}{\pi a} \frac{\sin^{2} ( ka )}{k^{2}}
+| \phi ( k ) |^{2} = \frac{1}{\pi a} \frac{\sin^{2} ( ka )}{k^{2}}
 ```
 
 ```math
@@ -979,13 +979,13 @@ c \psi ( x ) = \delta ( x - x_{0} )
 
 5. Use the Heisenberg uncertainty principle to estimate the ground state energy for a particle of mass $`m`$ in the potential $`V ( x ) = \tfrac{1}{2} kx^{2}`$.
 
-6. **\*** Find the one dimensional wave function in position space $`\psi ( x )`$ that corresponds to $`\varphi ( p ) =`$
+6. **\*** Find the one dimensional wave function in position space $`\psi ( x )`$ that corresponds to $`\phi ( p ) =`$
 
 ```math
 \delta ( p - p_{0} ) .
 ```
 
-7. **\*** Find the one dimensional wave function in position space $`\psi ( x )`$ that corresponds to $`\varphi ( p ) = \frac{1}{\sqrt{2 b}}`$ for $`- b<p<b`$, and $`\varphi ( p ) = 0`$ otherwise.
+7. **\*** Find the one dimensional wave function in position space $`\psi ( x )`$ that corresponds to $`\phi ( p ) = \frac{1}{\sqrt{2 b}}`$ for $`- b<p<b`$, and $`\phi ( p ) = 0`$ otherwise.
 
 8. **\*** Assume that a particle is localized such that $`\psi ( x ) = \tfrac{1}{\sqrt{a}}`$ for $`0 <x<a`$ and that $`\psi ( x ) = 0`$ elsewhere. What is the probability for the particle to have a momentum between $`p`$ and $`p + dp`$?
 
@@ -997,7 +997,7 @@ c \psi ( x ) = \delta ( x - x_{0} )
 
 12. A hydrogen atom has the potential $`V ( r ) = \tfrac{- e^{2}}{r}`$. Use the uncertainty principle to estimate the ground state energy.
 
-13. **\*** Assume that $`\varphi ( p ) = \tfrac{1}{\sqrt{2 a}}`$ for $`| p | <a`$ and $`\varphi ( p ) = 0`$ elsewhere. What is $`\psi ( x )`$? What is the probability to find the particle between $`x`$ and $`x + dx`$?
+13. **\*** Assume that $`\phi ( p ) = \tfrac{1}{\sqrt{2 a}}`$ for $`| p | <a`$ and $`\phi ( p ) = 0`$ elsewhere. What is $`\psi ( x )`$? What is the probability to find the particle between $`x`$ and $`x + dx`$?
 
 14. The hydrogen atom is made up of a proton and an electron bound together by the Coulomb potential, $`V ( r ) = \tfrac{- e^{2}}{r}`$. It is also possible to make a hydrogen-like atom from a proton and a muon. The force binding the muon to the proton is identical to that for the electron but the muon’s mass is 106 MeV/c<sup>2</sup>. Use the uncertainty principle to estimate the energy and the radius of the ground state of muonic hydrogen.
 
@@ -1013,7 +1013,7 @@ c \psi ( x ) = \delta ( x - x_{0} )
 ( c ) \bar{\psi} ( p ) = ( \tfrac{\alpha}{\pi} ) \tfrac{1}{4} e^{- \alpha p^{2} / 2}
 ```
 
-16. **\*** Assume that $`\varphi ( p ) = \delta ( p - p_{0} )`$. What is $`\psi ( x )`$? What is $`<p^{2} >`$? What is $`<x^{2} >`$?
+16. **\*** Assume that $`\phi ( p ) = \delta ( p - p_{0} )`$. What is $`\psi ( x )`$? What is $`<p^{2} >`$? What is $`<x^{2} >`$?
 
 17.
 

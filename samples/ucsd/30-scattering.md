@@ -72,11 +72,11 @@ We can compute the differential cross section for elastic scattering.
 It is useful to write this in terms of the amplitudes of the scattered waves.
 
 ```math
-\frac{d\sigma}{d \Omega} = | f ( \theta ,\varphi ) |^{2}
+\frac{d\sigma}{d \Omega} = | f ( \theta ,\phi ) |^{2}
 ```
 
 ```math
-f ( \theta ,\varphi ) = \frac{1}{k} \sum_{\ell} ( 2 \ell + 1 ) e^{i\delta_{\ell} ( k )} \sin ( \delta_{\ell} ( k ) ) P_{\ell} ( \cos \theta ) = \sum_{\ell} f_{\ell} ( \theta ,\varphi )
+f ( \theta ,\phi ) = \frac{1}{k} \sum_{\ell} ( 2 \ell + 1 ) e^{i\delta_{\ell} ( k )} \sin ( \delta_{\ell} ( k ) ) P_{\ell} ( \cos \theta ) = \sum_{\ell} f_{\ell} ( \theta ,\phi )
 ```
 
 <div align="right"><a href="book.pdf#page=420" target="_blank" title="This page in the PDF"><sup>[p. 420]</sup></a></div>
@@ -104,7 +104,7 @@ k^{\prime} \cot ( k^{\prime} a ) = k \cot ( ka ) .
 We can compute the total scattering cross section using the relation $`\int d`$â„¦$`P_{\ell} ( \cos \theta ) P_{\ell}^{\prime} ( \cos \theta ) =`$
 
 ```math
-\begin{aligned} & \quad \tfrac{4 \pi}{2 \ell + 1} \delta_{\ell \ell^{\prime}} . \\ \sigma_{tot} &= \int d \Omega | f ( \theta ,\varphi ) |^{2} \end{aligned}
+\begin{aligned} & \quad \tfrac{4 \pi}{2 \ell + 1} \delta_{\ell \ell^{\prime}} . \\ \sigma_{tot} &= \int d \Omega | f ( \theta ,\phi ) |^{2} \end{aligned}
 ```
 
 ```math
@@ -118,15 +118,15 @@ We can compute the total scattering cross section using the relation $`\int d`$â
 It is interesting that we can relate the total cross section to the scattering amplitude at $`\theta = 0`$, for which $`P_{\ell}`$(1) = 1.
 
 ```math
-f ( \theta = 0 ,\varphi ) = \frac{1}{k} \sum_{\ell} ( 2 \ell + 1 ) e^{i\delta_{\ell} ( k )} \sin ( \delta_{\ell} ( k ) )
+f ( \theta = 0 ,\phi ) = \frac{1}{k} \sum_{\ell} ( 2 \ell + 1 ) e^{i\delta_{\ell} ( k )} \sin ( \delta_{\ell} ( k ) )
 ```
 
 ```math
-Im [ f ( \theta = 0 ,\varphi ) ] = \frac{1}{k} \sum_{\ell} ( 2 \ell + 1 ) \sin^{2} ( \delta_{\ell} ( k ) )
+Im [ f ( \theta = 0 ,\phi ) ] = \frac{1}{k} \sum_{\ell} ( 2 \ell + 1 ) \sin^{2} ( \delta_{\ell} ( k ) )
 ```
 
 ```math
-\sigma_{tot} = \frac{4 \pi}{k} Im [ f ( \theta = 0 ,\varphi ) ]
+\sigma_{tot} = \frac{4 \pi}{k} Im [ f ( \theta = 0 ,\phi ) ]
 ```
 
 The total cross section is related to the imaginary part of the forward elastic scattering amplitude. This seemingly strange relation is known as the **Optical Theorem**. It can be understood in terms of removal of flux from the incoming plane wave. Remember we have an incoming plane wave plus scattered spherical waves. The total cross section corresponds to removal of flux from the plane wave. The only way to do this is destructive interference with the scattered waves. Since the plane wave is at $`\theta = 0`$ it is only the scattered amplitude at $`\theta = 0`$ that can interfere. It is therefore reasonable that a relation like the Optical Theorem is correct, even when elastic and inelastic processes are possible.
@@ -205,7 +205,7 @@ This is a very useful formula for scattering from a weak potential or for scatte
 
 # <a id="s-30-1-scattering-from-a-screened-coulomb-potential"></a>30.1 Scattering from a Screened Coulomb Potential
 
-A standard Born approximation example is Rutherford Scattering, that is, Coulomb scattering of a particle of charge $`Z_{1} e`$ in a screened Coulomb potential $`\varphi ( r ) = \tfrac{Z_{2} e}{r} e^{- r/a}`$. The exponential represents the screening of the nuclear charge by atomic electrons. Without screening, the total Coulomb scattering cross section is infinite because the range of the force in infinite.
+A standard Born approximation example is Rutherford Scattering, that is, Coulomb scattering of a particle of charge $`Z_{1} e`$ in a screened Coulomb potential $`\phi ( r ) = \tfrac{Z_{2} e}{r} e^{- r/a}`$. The exponential represents the screening of the nuclear charge by atomic electrons. Without screening, the total Coulomb scattering cross section is infinite because the range of the force in infinite.
 
 The potential energy then is
 

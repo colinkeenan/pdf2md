@@ -26,13 +26,13 @@ in 3D space becomes
 The **scalar product** is defined as
 
 ```math
-\langle \varphi | \psi \rangle = \int_{-\infty}^{\infty} dx\varphi^{*} ( x ) \psi ( x )
+\langle \phi | \psi \rangle = \int_{-\infty}^{\infty} dx\phi^{*} ( x ) \psi ( x )
 ```
 
 and many of its properties can be easily deduced from the integral.
 
 ```math
-\langle \varphi | \psi \rangle^{*} = \langle \psi | \varphi \rangle
+\langle \phi | \psi \rangle^{*} = \langle \psi | \phi \rangle
 ```
 
 As in 3D space,
@@ -44,7 +44,7 @@ As in 3D space,
 the magnitude of the dot product is limited by the magnitude of the vectors.
 
 ```math
-\langle \psi | \varphi \rangle \leq \sqrt{\langle \psi | \psi \rangle \langle \varphi | \varphi \rangle}
+\langle \psi | \phi \rangle \leq \sqrt{\langle \psi | \psi \rangle \langle \phi | \phi \rangle}
 ```
 
 This is called the **Schwartz inequality**.
@@ -58,7 +58,7 @@ AB | \psi \rangle = A ( B | \psi \rangle ) = ( AB ) | \psi \rangle
 An **operator transforms one vector into another vector**.
 
 ```math
-| \varphi^{\prime} \rangle = O | \varphi \rangle
+| \phi^{\prime} \rangle = O | \phi \rangle
 ```
 
 Eigenfunctions of **Hermitian operators**
@@ -85,10 +85,10 @@ form an **orthonormal**
 
 Note that we can simply describe the $`j^{th}`$ eigenstate at $`| j \rangle`$.
 
-Expanding the vectors $`| \varphi \rangle`$ and $`| \psi \rangle`$,
+Expanding the vectors $`| \phi \rangle`$ and $`| \psi \rangle`$,
 
 ```math
-| \varphi \rangle = \sum_{i} b_{i} | i \rangle
+| \phi \rangle = \sum_{i} b_{i} | i \rangle
 ```
 
 ```math
@@ -98,7 +98,7 @@ Expanding the vectors $`| \varphi \rangle`$ and $`| \psi \rangle`$,
 we can take the dot product by multiplying the components, as in 3D space.
 
 ```math
-\langle \varphi | \psi \rangle = \sum_{i} b_{i}^{*} c_{i}
+\langle \phi | \psi \rangle = \sum_{i} b_{i}^{*} c_{i}
 ```
 
 The expansion in energy eigenfunctions is a very nice way to do the **time development of a wave function**.
@@ -110,7 +110,7 @@ The expansion in energy eigenfunctions is a very nice way to do the **time devel
 The basis of **definite momentum states** is not in the vector space, yet we can use this basis to form any state in the vector space.
 
 ```math
-| \psi \rangle = \frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{\infty} dp\varphi ( p ) | p \rangle
+| \psi \rangle = \frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{\infty} dp\phi ( p ) | p \rangle
 ```
 
 Any of these amplitudes can be used to define the state.
@@ -124,7 +124,7 @@ c_{i} = \langle i | \psi \rangle
 ```
 
 ```math
-\varphi ( p ) = \langle p | \psi \rangle
+\phi ( p ) = \langle p | \psi \rangle
 ```
 
 ## <a id="s-11-1-2-projection-operators-j-rangle-langle-j-and-completeness"></a>11.1.2 Projection Operators $`| j \rangle \langle j |`$ and Completeness
@@ -172,7 +172,7 @@ We could use this to project out the odd parity states, for example.
 **Unitary operators** preserve a scalar product.
 
 ```math
-\langle \varphi | \psi \rangle = \langle U\varphi | U\psi \rangle = \langle \varphi | U^{\dagger} U\psi \rangle
+\langle \phi | \psi \rangle = \langle U\phi | U\psi \rangle = \langle \phi | U^{\dagger} U\psi \rangle
 ```
 
 This means that

@@ -521,7 +521,7 @@ Similarly the peak in $`\nu`$ occurs when
 
 ## <a id="s-2-6-3-compton-scattering"></a>2.6.3 Compton Scattering \*
 
-**Compton scattered high energy photons from (essentially) free electrons** in 1923. He measured the wavelength of the scattered photons as a function of the scattering angle. The figure below shows both the initial state (a) and the final state, with the photon scattered by an angle $`\theta`$ and the electron recoiling at an angle $`\varphi`$. The photons were from nuclear decay and so they were of high enough energy that it didn’t matter that the electrons were actually bound in atoms. We wish to derive the formula for the **wavelength of the scattered photon as a function of angle**.
+**Compton scattered high energy photons from (essentially) free electrons** in 1923. He measured the wavelength of the scattered photons as a function of the scattering angle. The figure below shows both the initial state (a) and the final state, with the photon scattered by an angle $`\theta`$ and the electron recoiling at an angle $`\phi`$. The photons were from nuclear decay and so they were of high enough energy that it didn’t matter that the electrons were actually bound in atoms. We wish to derive the formula for the **wavelength of the scattered photon as a function of angle**.
 
 <div align="right"><a href="book.pdf#page=79" target="_blank" title="This page in the PDF"><sup>[p. 79]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -534,13 +534,13 @@ _Figure 19 (p. 80)_
 We solve the problem using only conservation of energy and momentum. Lets work in **units in which** $`c = 1`$ for now. We’ll put the $`c`$ back in at the end. Assume the photon is initially moving in the $`z`$ direction with energy E and that it scatters in the $`yz`$ plane so that $`p_{x} = 0`$. **Conservation of momentum** gives
 
 ```math
-E = E^{\prime} \cos \theta + p_{e} \cos \varphi
+E = E^{\prime} \cos \theta + p_{e} \cos \phi
 ```
 
 **and**
 
 ```math
-E^{\prime} \sin \theta = p_{e} \sin \varphi .
+E^{\prime} \sin \theta = p_{e} \sin \phi .
 ```
 
 **Conservation of energy** gives
@@ -549,7 +549,7 @@ E^{\prime} \sin \theta = p_{e} \sin \varphi .
 E + m = E^{\prime} + \sqrt{p_{e}^{2} + m^{2}}
 ```
 
-Our goal is to solve for $`E^{\prime}`$ in terms of $`\cos \theta`$ so lets make sure we eliminate the $`\varphi`$. Continuing from the energy equation
+Our goal is to solve for $`E^{\prime}`$ in terms of $`\cos \theta`$ so lets make sure we eliminate the $`\phi`$. Continuing from the energy equation
 
 ```math
 E - E^{\prime} + m = \sqrt{p_{e}^{2} + m^{2}}
@@ -603,7 +603,7 @@ We now apply the speed of light to make the units come out to be a length.
 \lambda^{\prime} - \lambda = \frac{hc}{mc^{2}} ( 1 - \cos \theta )
 ```
 
-These calculations can be fairly frustrating if you don’t decide which variables you want to keep and which you need to eliminate from your equations. In this case we eliminated $`\varphi`$ by using the energy equation and computing $`p_{e}^{2}`$.
+These calculations can be fairly frustrating if you don’t decide which variables you want to keep and which you need to eliminate from your equations. In this case we eliminated $`\phi`$ by using the energy equation and computing $`p_{e}^{2}`$.
 
 ## <a id="s-2-6-4-rutherford-s-nuclear-size"></a>2.6.4 Rutherford’s Nuclear Size \*
 

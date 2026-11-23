@@ -610,7 +610,7 @@ This potential has a new symmetry, that a **translation by the lattice spacing**
 which means that the wave function differs by a phase at most.
 
 ```math
-\psi ( x + a ) = e^{i\varphi} \psi ( x )
+\psi ( x + a ) = e^{i\phi} \psi ( x )
 ```
 
 The general solution in the region $`( n - 1 ) a<x<na`$ is
@@ -626,10 +626,10 @@ k = \sqrt{\frac{2 mE}{\hbar^{2}}}
 By matching the boundary conditions and requiring that the probability be periodic, we derive a constraint on $`k`$ (See section 9.7.6) similar to the quantized energies for bound states.
 
 ```math
-\cos ( \varphi ) = \cos ( ka ) + \frac{maV_{0}}{\hbar^{2} k} \sin ( ka )
+\cos ( \phi ) = \cos ( ka ) + \frac{maV_{0}}{\hbar^{2} k} \sin ( ka )
 ```
 
-Since $`\cos ( \varphi )`$ can only take on values between -1 and 1, there are **allowed bands of** $`k`$ **and gaps between those bands**.
+Since $`\cos ( \phi )`$ can only take on values between -1 and 1, there are **allowed bands of** $`k`$ **and gaps between those bands**.
 
 The graph below shows $`\cos ( ka ) + \tfrac{maV_{0}}{\hbar^{2} k} \sin ( ka )`$ as a function of $`k`$. If this is not between -1 and 1, there is no solution, that value of $`k`$ and the corresponding energy are not allowed.
 
@@ -651,15 +651,15 @@ This energy band phenomenon is found in solids. Solids with partially filled ban
 
 It is useful to simply investigate **angular momentum with just one free rotation angle**. This might be the quantum plane propeller. We will do a good job of this in 3 dimensions later.
 
-Lets assume we have a **mass** $`m`$ **constrained to move in a circle of radius** $`r`$. Assume the motion in the circle is free, so there is no potential. The kinetic energy is $`\tfrac{1}{2} mv^{2} = \tfrac{p^{2}}{2 m}`$ for $`p = mr \tfrac{d\varphi}{dt}`$.
+Lets assume we have a **mass** $`m`$ **constrained to move in a circle of radius** $`r`$. Assume the motion in the circle is free, so there is no potential. The kinetic energy is $`\tfrac{1}{2} mv^{2} = \tfrac{p^{2}}{2 m}`$ for $`p = mr \tfrac{d\phi}{dt}`$.
 
-If we measure distance around the circle, then $`x = r\varphi`$ and the one problem we have is that once I go completely around the circle, I am back to $`x = 0`$. Lets just go ahead and write our wavefunction.
+If we measure distance around the circle, then $`x = r\phi`$ and the one problem we have is that once I go completely around the circle, I am back to $`x = 0`$. Lets just go ahead and write our wavefunction.
 
 ```math
-e^{i ( px - Et ) / \hbar} = e^{i ( pr\varphi - Et ) / \hbar}
+e^{i ( px - Et ) / \hbar} = e^{i ( pr\phi - Et ) / \hbar}
 ```
 
-Remembering angular momentum, lets call the combination $`pr = L`$. Our wave is $`e^{i ( L\varphi - Et ) / \hbar}`$.
+Remembering angular momentum, lets call the combination $`pr = L`$. Our wave is $`e^{i ( L\phi - Et ) / \hbar}`$.
 
 This must be **single valued** so we need to require that
 
@@ -1256,7 +1256,7 @@ Our states have positive energy. This potential has the symmetry that a translat
 which means that the wave function differs by a phase at most.
 
 ```math
-\psi ( x + a ) = e^{i\varphi} \psi ( x )
+\psi ( x + a ) = e^{i\phi} \psi ( x )
 ```
 
 <div align="right"><a href="book.pdf#page=167" target="_blank" title="This page in the PDF"><sup>[p. 167]</sup></a></div>
@@ -1360,27 +1360,27 @@ B_{n + 1} = \frac{2 maV_{0}}{\hbar^{2} k} B_{n} \sin ( ka ) + B_{n} \cos ( ka ) 
 ```
 
 ```math
-A_{n + 1} = e^{i\varphi} A_{n}
+A_{n + 1} = e^{i\phi} A_{n}
 ```
 
 ```math
-B_{n + 1} = e^{i\varphi} B_{n}
+B_{n + 1} = e^{i\phi} B_{n}
 ```
 
 Using the second pair of equations to eliminate the $`n + 1`$ coefficients, we have
 
 ```math
-( e^{i\varphi} - \cos ( ka ) ) A_{n} = \left( \frac{2 maV_{0}}{\hbar^{2} k} \cos ( ka ) - \sin ( ka ) \right) B_{n}
+( e^{i\phi} - \cos ( ka ) ) A_{n} = \left( \frac{2 maV_{0}}{\hbar^{2} k} \cos ( ka ) - \sin ( ka ) \right) B_{n}
 ```
 
 ```math
-\left( e^{i\varphi} - \cos ( ka ) - \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) \right) B_{n} = \sin ( ka ) A_{n} .
+\left( e^{i\phi} - \cos ( ka ) - \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) \right) B_{n} = \sin ( ka ) A_{n} .
 ```
 
 Now we can eliminate all the coefficients.
 
 ```math
-( e^{i\varphi} - \cos ( ka ) ) ( e^{i\varphi} - \cos ( ka ) - \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) )
+( e^{i\phi} - \cos ( ka ) ) ( e^{i\phi} - \cos ( ka ) - \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) )
 ```
 
 ```math
@@ -1388,7 +1388,7 @@ Now we can eliminate all the coefficients.
 ```
 
 ```math
-\begin{aligned} & \quad e^{2 i\varphi} - e^{i\varphi} \left( \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) + \cos ( ka ) + \cos ( ka ) \right) \\ & \quad + \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) \cos ( ka ) + \cos^{2} ( ka ) \end{aligned}
+\begin{aligned} & \quad e^{2 i\phi} - e^{i\phi} \left( \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) + \cos ( ka ) + \cos ( ka ) \right) \\ & \quad + \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) \cos ( ka ) + \cos^{2} ( ka ) \end{aligned}
 ```
 
 ```math
@@ -1396,20 +1396,20 @@ Now we can eliminate all the coefficients.
 ```
 
 ```math
-e^{2 i\varphi} - e^{i\varphi} \left( \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) + 2 \cos ( ka ) \right) + 1 = 0
+e^{2 i\phi} - e^{i\phi} \left( \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) + 2 \cos ( ka ) \right) + 1 = 0
 ```
 
-Multiply by $`e^{- i\varphi}`$.
+Multiply by $`e^{- i\phi}`$.
 
 ```math
-e^{i\varphi} + e^{- i\varphi} - \left( \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) + 2 \cos ( ka ) \right) = 0
+e^{i\phi} + e^{- i\phi} - \left( \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) + 2 \cos ( ka ) \right) = 0
 ```
 
 ```math
-\cos ( \varphi ) = \cos ( ka ) + \frac{maV_{0}}{\hbar^{2} k} \sin ( ka )
+\cos ( \phi ) = \cos ( ka ) + \frac{maV_{0}}{\hbar^{2} k} \sin ( ka )
 ```
 
-This relation puts constraints on $`k`$, like the constraints that give us quantized energies for bound states. Since $`\cos ( \varphi )`$ can only take on values between -1 and 1, there are allowed bands of $`k`$ and gaps between those bands.
+This relation puts constraints on $`k`$, like the constraints that give us quantized energies for bound states. Since $`\cos ( \phi )`$ can only take on values between -1 and 1, there are allowed bands of $`k`$ and gaps between those bands.
 
 # <a id="s-9-8-examples"></a>9.8 Examples
 

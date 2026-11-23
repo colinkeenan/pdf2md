@@ -733,7 +733,8 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
                 Some(rule) if rule_stays(&display(&format!("{}{number}", mend(rule)), math_form())) => rule,
                 _ => latex,
             };
-            if let Some(s) = second.filter(|s| s.doubt.is_some()) {
+            // (one the reader has corrected is in no doubt any more)
+            if let Some(s) = second.filter(|s| s.doubt.is_some() && !rule_stays(&display(&format!("{}{number}", mend(latex)), math_form()))) {
                 out.push_str(&format!("<a id=\"second-{}\"></a>\n\n", s.key));
             }
             // an invisible anchor per equation number, for references to it
@@ -1440,8 +1441,11 @@ fn check_list(book: &Book) -> Option<String> {
                         lacking.push(format!("- [{name}]({}.md#img-{k}) — {}{at}", ch.slug, ch.title));
                     }
                 }
-                Block::Equation { tag, place: Some(crate::Place { second: Some(s), .. }), .. } => {
-                    if let Some(reading) = &s.doubt {
+                Block::Equation { tag, latex, place: Some(crate::Place { second: Some(s), .. }), .. } => {
+                    // (not one the reader has corrected by hand)
+                    let number = tag.as_ref().map(|t| format!(" \\tag{{{t}}}")).unwrap_or_default();
+                    let corrected = rule_stays(&display(&format!("{}{number}", mend(latex)), math_form()));
+                    if let Some(reading) = s.doubt.as_ref().filter(|_| !corrected) {
                         let name = tag.as_ref().map_or("equation".to_string(), |t| format!("({t})"));
                         let at = page.as_ref().map(|p| format!(", {p}")).unwrap_or_default();
                         let other: String = display(&mend(&crate::ocr::tidy_reading(reading)), math_form()).trim_end().lines().map(|l| format!("  {l}\n")).collect();

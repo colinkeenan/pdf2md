@@ -326,10 +326,10 @@ H_{rel} = - \frac{1}{8} \frac{p_{1}^{4} + p_{2}^{4}}{m^{3} c^{2}} = - \frac{1}{4
 
 This is just half the correction we had in Hydrogen (with $`m_{e}`$ essentially replaced by $`\mu`$).
 
-The spin-orbit correction should be checked also. We had $`H_{SO} = \tfrac{ge}{2 mc^{2}} \vec{S} \cdot \vec{v} \times \vec{\nabla} \varphi`$ as the interaction between the spin and the B field producded by the orbital motion. Since $`\vec{p} = \mu \vec{v}`$, we have
+The spin-orbit correction should be checked also. We had $`H_{SO} = \tfrac{ge}{2 mc^{2}} \vec{S} \cdot \vec{v} \times \vec{\nabla} \phi`$ as the interaction between the spin and the B field producded by the orbital motion. Since $`\vec{p} = \mu \vec{v}`$, we have
 
 ```math
-H_{SO} = \frac{ge}{2 m\mu c^{2}} \vec{S} \cdot \vec{p} \times \vec{\nabla} \varphi
+H_{SO} = \frac{ge}{2 m\mu c^{2}} \vec{S} \cdot \vec{p} \times \vec{\nabla} \phi
 ```
 
 for the electron. We just need to add the positron. A little thinking about signs shows that we just at the positron spin. Lets assume the Thomas precession is also the same. We have the same fomula as in the fine structure section except that we have $`m\mu`$ in the denominator. The final formula then is
@@ -433,7 +433,7 @@ Then we compute the energy shift in first order perturbation theory for s states
 The second term can be simplified because of the spherical symmetry of s states. (Basically the derivative with respect to x is odd in x so when the integral is done, only the terms where $`i = j`$ are nonzero).
 
 ```math
-\int d^{3} r | \varphi_{n 0 0} ( \vec{r} ) |^{2} \frac{\partial}{\partial x_{i}} \frac{\partial}{\partial x_{j}} \frac{1}{r} = \frac{\delta_{ij}}{3} \int d^{3} r | \varphi_{n 0 0} ( \vec{r} ) |^{2} \nabla^{2} \frac{1}{r}
+\int d^{3} r | \phi_{n 0 0} ( \vec{r} ) |^{2} \frac{\partial}{\partial x_{i}} \frac{\partial}{\partial x_{j}} \frac{1}{r} = \frac{\delta_{ij}}{3} \int d^{3} r | \phi_{n 0 0} ( \vec{r} ) |^{2} \nabla^{2} \frac{1}{r}
 ```
 
 So we have
@@ -465,11 +465,11 @@ So the integral is nonzero for any region including the origin, which implies
 We can now evaluate the expectation value.
 
 ```math
-\Delta E = - \frac{2}{3} \frac{Ze^{2} g_{N}}{2 m_{e} M_{N} c^{2}} \vec{S} \cdot \vec{I} ( - 4 \pi | \varphi_{n 0 0} ( 0 ) |^{2} )
+\Delta E = - \frac{2}{3} \frac{Ze^{2} g_{N}}{2 m_{e} M_{N} c^{2}} \vec{S} \cdot \vec{I} ( - 4 \pi | \phi_{n 0 0} ( 0 ) |^{2} )
 ```
 
 ```math
-4 \pi | \varphi_{n 0 0} ( 0 ) |^{2} = | R_{n 0} ( 0 ) |^{2} = \frac{4}{n^{3}} \left( \frac{Z\alpha m_{e} c}{\hbar} \right)^{3}
+4 \pi | \phi_{n 0 0} ( 0 ) |^{2} = | R_{n 0} ( 0 ) |^{2} = \frac{4}{n^{3}} \left( \frac{Z\alpha m_{e} c}{\hbar} \right)^{3}
 ```
 
 ```math

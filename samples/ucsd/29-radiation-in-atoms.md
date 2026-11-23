@@ -89,7 +89,7 @@ We have taken a step toward quantization of the EM field, at least when we emit 
 
 # <a id="s-29-2-decay-rates-for-the-emission-of-photons"></a>29.2 Decay Rates for the Emission of Photons
 
-Our **expression for the decay rate** of an initial state $`\varphi_{i}`$ into some particular final state $`\varphi_{n}`$ is
+Our **expression for the decay rate** of an initial state $`\phi_{i}`$ into some particular final state $`\phi_{n}`$ is
 
 ```math
 \Gamma_{i \to n} = \frac{2 \pi V_{ni}^{2}}{\hbar} \delta ( E_{n} - E_{i} + \hbar \omega ) .
@@ -100,17 +100,17 @@ The delta function reminds us that we will have to integrate over final states t
 Taking out the harmonic time dependence (to the delta function) as before, we have the **matrix element of the perturbing potential**.
 
 ```math
-V_{ni} = \langle \varphi_{n} | \frac{e}{mc} \vec{A} \cdot \vec{p} | \varphi_{i} \rangle = \frac{e}{mc} \left[ \frac{2 \pi \hbar c^{2}}{\omega V} \right]^{\tfrac{1}{2}} \langle \varphi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon} \cdot \vec{p} | \varphi_{i} \rangle
+V_{ni} = \langle \phi_{n} | \frac{e}{mc} \vec{A} \cdot \vec{p} | \phi_{i} \rangle = \frac{e}{mc} \left[ \frac{2 \pi \hbar c^{2}}{\omega V} \right]^{\tfrac{1}{2}} \langle \phi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon} \cdot \vec{p} | \phi_{i} \rangle
 ```
 
 We just put these together to get
 
 ```math
-\Gamma_{i \to n} = \frac{2 \pi}{\hbar} \frac{e^{2}}{m^{2} c^{2}} \left[ \frac{2 \pi \hbar c^{2}}{\omega V} \right] | \langle \varphi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon} \cdot \vec{p} | \varphi_{i} \rangle |^{2} \delta ( E_{n} - E_{i} + \hbar \omega )
+\Gamma_{i \to n} = \frac{2 \pi}{\hbar} \frac{e^{2}}{m^{2} c^{2}} \left[ \frac{2 \pi \hbar c^{2}}{\omega V} \right] | \langle \phi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon} \cdot \vec{p} | \phi_{i} \rangle |^{2} \delta ( E_{n} - E_{i} + \hbar \omega )
 ```
 
 ```math
-\Gamma_{i \to n} = \frac{( 2 \pi )^{2} e^{2}}{m^{2} \omega V} | \langle \varphi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon} \cdot \vec{p} | \varphi_{i} \rangle |^{2} \delta ( E_{n} - E_{i} + \hbar \omega )
+\Gamma_{i \to n} = \frac{( 2 \pi )^{2} e^{2}}{m^{2} \omega V} | \langle \phi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon} \cdot \vec{p} | \phi_{i} \rangle |^{2} \delta ( E_{n} - E_{i} + \hbar \omega )
 ```
 
 We must sum (or integrate) over final states. The states are distinguishable so we add the decay rates, not the amplitudes. We will integrate over photon energies and directions, with the aid of the delta function. We will sum over photon polarizations. We will sum over the final atomic states when that is applicable. All of this is quite doable. Our first step is to understand the number of states of photons as Plank (and even Rayleigh) did to get the Black Body formulas.
@@ -146,27 +146,27 @@ Now we are ready to sum over final (photon) states to get the total transition r
 ```
 
 ```math
-= \sum_{\lambda} \int \frac{Vd^{3} p}{( 2 \pi \hbar )^{3}} \frac{( 2 \pi )^{2} e^{2}}{m^{2} \omega V} | \langle \varphi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \lambda )} \cdot \vec{p}_{e} | \varphi_{i} \rangle |^{2} \delta ( E_{n} - E_{i} + \hbar \omega )
+= \sum_{\lambda} \int \frac{Vd^{3} p}{( 2 \pi \hbar )^{3}} \frac{( 2 \pi )^{2} e^{2}}{m^{2} \omega V} | \langle \phi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \lambda )} \cdot \vec{p}_{e} | \phi_{i} \rangle |^{2} \delta ( E_{n} - E_{i} + \hbar \omega )
 ```
 
 ```math
-= \frac{e^{2}}{2 \pi \hbar^{3} m^{2}} \sum_{\lambda} \int \frac{d^{3} p}{\omega} | \langle \varphi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \lambda )} \cdot \vec{p}_{e} | \varphi_{i} \rangle |^{2} \delta ( E_{n} - E_{i} + \hbar \omega )
+= \frac{e^{2}}{2 \pi \hbar^{3} m^{2}} \sum_{\lambda} \int \frac{d^{3} p}{\omega} | \langle \phi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \lambda )} \cdot \vec{p}_{e} | \phi_{i} \rangle |^{2} \delta ( E_{n} - E_{i} + \hbar \omega )
 ```
 
 ```math
-= \frac{e^{2}}{2 \pi \hbar^{3} m^{2}} \sum_{\lambda} \int \frac{p^{2} d ( \hbar \omega ) d \Omega_{\gamma}}{pc} \frac{\hbar}{c} | \langle \varphi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \lambda )} \cdot \vec{p}_{e} | \varphi_{i} \rangle |^{2} \delta ( E_{n} - E_{i} + \hbar \omega )
+= \frac{e^{2}}{2 \pi \hbar^{3} m^{2}} \sum_{\lambda} \int \frac{p^{2} d ( \hbar \omega ) d \Omega_{\gamma}}{pc} \frac{\hbar}{c} | \langle \phi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \lambda )} \cdot \vec{p}_{e} | \phi_{i} \rangle |^{2} \delta ( E_{n} - E_{i} + \hbar \omega )
 ```
 
 ```math
-= \frac{e^{2}}{2 \pi \hbar^{2} m^{2} c^{2}} \sum_{\lambda} \int pd ( \hbar \omega ) d \Omega_{\gamma} | \langle \varphi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \lambda )} \cdot \vec{p}_{e} | \varphi_{i} \rangle |^{2} \delta ( E_{n} - E_{i} + \hbar \omega )
+= \frac{e^{2}}{2 \pi \hbar^{2} m^{2} c^{2}} \sum_{\lambda} \int pd ( \hbar \omega ) d \Omega_{\gamma} | \langle \phi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \lambda )} \cdot \vec{p}_{e} | \phi_{i} \rangle |^{2} \delta ( E_{n} - E_{i} + \hbar \omega )
 ```
 
 ```math
-= \frac{e^{2}}{2 \pi \hbar^{2} m^{2} c^{2}} \sum_{\lambda} \int \frac{E_{i} - E_{n}}{c} d \Omega_{\gamma} | \langle \varphi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \lambda )} \cdot \vec{p}_{e} | \varphi_{i} \rangle |^{2}
+= \frac{e^{2}}{2 \pi \hbar^{2} m^{2} c^{2}} \sum_{\lambda} \int \frac{E_{i} - E_{n}}{c} d \Omega_{\gamma} | \langle \phi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \lambda )} \cdot \vec{p}_{e} | \phi_{i} \rangle |^{2}
 ```
 
 ```math
-\Gamma_{tot} = \frac{e^{2} ( E_{i} - E_{n} )}{2 \pi \hbar^{2} m^{2} c^{3}} \sum_{\lambda} \int d \Omega_{\gamma} | \langle \varphi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \lambda )} \cdot \vec{p}_{e} | \varphi_{i} \rangle |^{2}
+\Gamma_{tot} = \frac{e^{2} ( E_{i} - E_{n} )}{2 \pi \hbar^{2} m^{2} c^{3}} \sum_{\lambda} \int d \Omega_{\gamma} | \langle \phi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \lambda )} \cdot \vec{p}_{e} | \phi_{i} \rangle |^{2}
 ```
 
 This is the general formula for the decay rate emitting one photon. Depending on the problem, we may also need to sum over final states of the atom. The two polarizations are transverse to the photon direction, so they must vary inside the integral.
@@ -200,19 +200,19 @@ In this Electric Dipole approximation, we can make general progress on computati
 and we can write $`\vec{p} = \tfrac{im}{\hbar} [ H , \vec{r} ]`$ in terms of the commutator.
 
 ```math
-\langle \varphi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon} \cdot \vec{p}_{e} | \varphi_{i} \rangle \approx \hat{\epsilon} \cdot \langle \varphi_{n} | \vec{p}_{e} | \varphi_{i} \rangle
+\langle \phi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon} \cdot \vec{p}_{e} | \phi_{i} \rangle \approx \hat{\epsilon} \cdot \langle \phi_{n} | \vec{p}_{e} | \phi_{i} \rangle
 ```
 
 ```math
-= \frac{im}{\hbar} \hat{\epsilon} \cdot \langle \varphi_{n} | [ H , \vec{r} ] | \varphi_{i} \rangle
+= \frac{im}{\hbar} \hat{\epsilon} \cdot \langle \phi_{n} | [ H , \vec{r} ] | \phi_{i} \rangle
 ```
 
 ```math
-= \frac{im}{\hbar} ( E_{n} - E_{i} ) \hat{\epsilon} \cdot \langle \varphi_{n} | \vec{r} | \varphi_{i} \rangle
+= \frac{im}{\hbar} ( E_{n} - E_{i} ) \hat{\epsilon} \cdot \langle \phi_{n} | \vec{r} | \phi_{i} \rangle
 ```
 
 ```math
-= \frac{im ( E_{n} - E_{i} )}{\hbar} \langle \varphi_{n} | \hat{\epsilon} \cdot \vec{r} | \varphi_{i} \rangle
+= \frac{im ( E_{n} - E_{i} )}{\hbar} \langle \phi_{n} | \hat{\epsilon} \cdot \vec{r} | \phi_{i} \rangle
 ```
 
 This equation indicates the origin of the name Electric Dipole: the matrix element is of the vector $`\vec{r}`$ which is a dipole.
@@ -220,7 +220,7 @@ This equation indicates the origin of the name Electric Dipole: the matrix eleme
 We can proceed further, with the angular part of the (matrix element) integral.
 
 ```math
-\langle \varphi_{n} | \hat{\epsilon} \cdot \vec{r} | \varphi_{i} \rangle = \int_{0}^{\infty} r^{2} drR_{n_{n} \ell_{n}}^{*} R_{n_{i} \ell_{i}} \int d \Omega Y_{\ell_{n} m_{n}}^{*} \hat{\epsilon} \cdot \vec{r} Y_{\ell_{i} m_{i}}
+\langle \phi_{n} | \hat{\epsilon} \cdot \vec{r} | \phi_{i} \rangle = \int_{0}^{\infty} r^{2} drR_{n_{n} \ell_{n}}^{*} R_{n_{i} \ell_{i}} \int d \Omega Y_{\ell_{n} m_{n}}^{*} \hat{\epsilon} \cdot \vec{r} Y_{\ell_{i} m_{i}}
 ```
 
 ```math
@@ -228,7 +228,7 @@ We can proceed further, with the angular part of the (matrix element) integral.
 ```
 
 ```math
-\hat{\epsilon} \cdot \hat{r} = \epsilon_{x} \sin \theta \cos \varphi + \epsilon_{y} \sin \theta \sin \varphi + \epsilon_{z} \cos \theta
+\hat{\epsilon} \cdot \hat{r} = \epsilon_{x} \sin \theta \cos \phi + \epsilon_{y} \sin \theta \sin \phi + \epsilon_{z} \cos \theta
 ```
 
 ```math
@@ -236,13 +236,13 @@ We can proceed further, with the angular part of the (matrix element) integral.
 ```
 
 ```math
-\langle \varphi_{n} | \hat{\epsilon} \cdot \vec{r} | \varphi_{i} \rangle = \sqrt{\frac{4 \pi}{3}} \int_{0}^{\infty} r^{3} drR_{n_{n} \ell_{n}}^{*} R_{n_{i} \ell_{i}} \int d \Omega Y_{\ell_{n} m_{n}}^{*} \left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \right) Y_{\ell_{i} m_{i}}
+\langle \phi_{n} | \hat{\epsilon} \cdot \vec{r} | \phi_{i} \rangle = \sqrt{\frac{4 \pi}{3}} \int_{0}^{\infty} r^{3} drR_{n_{n} \ell_{n}}^{*} R_{n_{i} \ell_{i}} \int d \Omega Y_{\ell_{n} m_{n}}^{*} \left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \right) Y_{\ell_{i} m_{i}}
 ```
 
 At this point, lets bring all the terms in the formula back together so we know what we are doing.
 
 ```math
-\Gamma_{tot} = \frac{e^{2} ( E_{i} - E_{n} )}{2 \pi \hbar^{2} m^{2} c^{3}} \sum_{\lambda} \int d \Omega_{\gamma} | \langle \varphi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \lambda )} \cdot \vec{p}_{e} | \varphi_{i} \rangle |^{2}
+\Gamma_{tot} = \frac{e^{2} ( E_{i} - E_{n} )}{2 \pi \hbar^{2} m^{2} c^{3}} \sum_{\lambda} \int d \Omega_{\gamma} | \langle \phi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \lambda )} \cdot \vec{p}_{e} | \phi_{i} \rangle |^{2}
 ```
 
 <div align="right"><a href="book.pdf#page=402" target="_blank" title="This page in the PDF"><sup>[p. 402]</sup></a></div>
@@ -250,35 +250,35 @@ At this point, lets bring all the terms in the formula back together so we know 
 <a id="p403" href="book.pdf#page=403" target="_blank" title="This page in the PDF"><sup>[p. 403]</sup></a>
 
 ```math
-= \frac{e^{2} ( E_{i} - E_{n} )}{2 \pi \hbar^{2} m^{2} c^{3}} \sum_{\lambda} \int d \Omega_{\gamma} \left| \frac{im ( E_{n} - E_{i} )}{\hbar} \langle \varphi_{n} | \hat{\epsilon} \cdot \vec{r} | \varphi_{i} \rangle \right|^{2}
+= \frac{e^{2} ( E_{i} - E_{n} )}{2 \pi \hbar^{2} m^{2} c^{3}} \sum_{\lambda} \int d \Omega_{\gamma} \left| \frac{im ( E_{n} - E_{i} )}{\hbar} \langle \phi_{n} | \hat{\epsilon} \cdot \vec{r} | \phi_{i} \rangle \right|^{2}
 ```
 
 ```math
-= \frac{\alpha \omega_{in}^{3}}{2 \pi c^{2}} \sum_{\lambda} \int d \Omega_{\gamma} | \langle \varphi_{n} | \hat{\epsilon} \cdot \vec{r} | \varphi_{i} \rangle |^{2}
+= \frac{\alpha \omega_{in}^{3}}{2 \pi c^{2}} \sum_{\lambda} \int d \Omega_{\gamma} | \langle \phi_{n} | \hat{\epsilon} \cdot \vec{r} | \phi_{i} \rangle |^{2}
 ```
 
 This is a useful version of the **total decay rate formula** to remember.
 
 ```math
-\Gamma_{tot} = \frac{\alpha \omega_{in}^{3}}{2 \pi c^{2}} \sum_{\lambda} \int d \Omega_{\gamma} | \langle \varphi_{n} | \hat{\epsilon} \cdot \vec{r} | \varphi_{i} \rangle |^{2}
+\Gamma_{tot} = \frac{\alpha \omega_{in}^{3}}{2 \pi c^{2}} \sum_{\lambda} \int d \Omega_{\gamma} | \langle \phi_{n} | \hat{\epsilon} \cdot \vec{r} | \phi_{i} \rangle |^{2}
 ```
 
 We proceed with the calculation to find the E1 selection rules.
 
 ```math
-= \frac{\alpha \omega_{in}^{3}}{2 \pi c^{2}} \sum_{\lambda} \int d \Omega_{\gamma} \left| \sqrt{\frac{4 \pi}{3}} \left\langle \varphi_{n} \right| \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \left| \varphi_{i} \right\rangle \right|^{2}
+= \frac{\alpha \omega_{in}^{3}}{2 \pi c^{2}} \sum_{\lambda} \int d \Omega_{\gamma} \left| \sqrt{\frac{4 \pi}{3}} \left\langle \phi_{n} \right| \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \left| \phi_{i} \right\rangle \right|^{2}
 ```
 
 ```math
 = \frac{\alpha \omega_{in}^{3}}{2 \pi c^{2}} \sum_{\lambda} \int d \Omega_{\gamma} \left| \sqrt{\frac{4 \pi}{3}} \int_{0}^{\infty} r^{3} drR_{n_{n} \ell_{n}}^{*} R_{n_{i} \ell_{i}} \int d \Omega Y_{\ell_{n} m_{n}}^{*} \left( \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \right) Y_{\ell_{i} m_{i}} \right|^{2}
 ```
 
-We will attempt to clearly separate the terms due to $`\langle \varphi_{n} | \hat{\epsilon} \cdot \vec{r} | \varphi_{i} \rangle`$ for the sake of modularity of the calculation.
+We will attempt to clearly separate the terms due to $`\langle \phi_{n} | \hat{\epsilon} \cdot \vec{r} | \phi_{i} \rangle`$ for the sake of modularity of the calculation.
 
 The integral with **three spherical harmonics** in each term looks a bit difficult, but, we can use a **Clebsch-Gordan series like the one in addition of angular momentum** to help us solve the problem. We will write the product of two spherical harmonics in terms of a sum of spherical harmonics. Its very similar to adding the angular momentum from the two $`Y`$ s. **Its the same series as we had for addition of angular momentum (up to a constant)**. (Note that things will be very simple if either the initial or the final state have $`\ell = 0`$, a case we will work out below for transitions to s states.) The general formula for rewriting the product of two spherical harmonics (which are functions of the same coordinates) is
 
 ```math
-Y_{\ell_{1} m_{1}} ( \theta ,\varphi ) Y_{\ell_{2} m_{2}} ( \theta ,\varphi ) = \sum_{\ell = | \ell_{1} - \ell_{2} |}^{\ell_{1} + \ell_{2}} \sqrt{\frac{( 2 \ell_{1} + 1 ) ( 2 \ell_{2} + 1 )}{4 \pi ( 2 \ell + 1 )}} \langle \ell 0 | \ell_{1} \ell_{2} 0 0 \rangle \langle \ell ( m_{1} + m_{2} ) | \ell_{1} \ell_{2} m_{1} m_{2} \rangle Y_{\ell ( m_{1} + m_{2} )} ( \theta ,\varphi )
+Y_{\ell_{1} m_{1}} ( \theta ,\phi ) Y_{\ell_{2} m_{2}} ( \theta ,\phi ) = \sum_{\ell = | \ell_{1} - \ell_{2} |}^{\ell_{1} + \ell_{2}} \sqrt{\frac{( 2 \ell_{1} + 1 ) ( 2 \ell_{2} + 1 )}{4 \pi ( 2 \ell + 1 )}} \langle \ell 0 | \ell_{1} \ell_{2} 0 0 \rangle \langle \ell ( m_{1} + m_{2} ) | \ell_{1} \ell_{2} m_{1} m_{2} \rangle Y_{\ell ( m_{1} + m_{2} )} ( \theta ,\phi )
 ```
 
 The square root and $`\langle \ell 0 | \ell_{1} \ell_{2} 0 0 \rangle`$ can be thought of as a normalization constant in an otherwise normal Clebsch-Gordan series. (Note that the normal addition of the orbital angular momenta of two particles would have product states of two spherical harmonics in **different coordinates**, the coordinates of particle one and of particle two.) (The derivation of the above equation involves a somewhat detailed study of the properties of rotation matrices and would take us pretty far off the current track (See Merzbacher page 396).)
@@ -286,7 +286,7 @@ The square root and $`\langle \ell 0 | \ell_{1} \ell_{2} 0 0 \rangle`$ can be th
 First add the angular momentum from the initial state $`( Y_{\ell_{i} m_{i}} )`$ and the photon $`( Y_{1 m} )`$ using the Clebsch-Gordan series, with the usual notation for the **Clebsch-Gordan coefficients** $`\langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} m \rangle`$.
 
 ```math
-Y_{1 m} ( \theta ,\varphi ) Y_{\ell_{i} m_{i}} ( \theta ,\varphi ) = \sum_{\ell = | \ell_{i} - 1 |}^{\ell_{i} + 1} \sqrt{\frac{3 ( 2 \ell_{i} + 1 )}{4 \pi ( 2 \ell + 1 )}} \langle \ell 0 | \ell_{i} 1 0 0 \rangle \langle \ell ( m + m_{i} ) | \ell_{i} 1 m_{i} m \rangle Y_{\ell ( m_{i} + m )} ( \theta ,\varphi )
+Y_{1 m} ( \theta ,\phi ) Y_{\ell_{i} m_{i}} ( \theta ,\phi ) = \sum_{\ell = | \ell_{i} - 1 |}^{\ell_{i} + 1} \sqrt{\frac{3 ( 2 \ell_{i} + 1 )}{4 \pi ( 2 \ell + 1 )}} \langle \ell 0 | \ell_{i} 1 0 0 \rangle \langle \ell ( m + m_{i} ) | \ell_{i} 1 m_{i} m \rangle Y_{\ell ( m_{i} + m )} ( \theta ,\phi )
 ```
 
 <div align="right"><a href="book.pdf#page=403" target="_blank" title="This page in the PDF"><sup>[p. 403]</sup></a></div>
@@ -304,7 +304,7 @@ Y_{1 m} ( \theta ,\varphi ) Y_{\ell_{i} m_{i}} ( \theta ,\varphi ) = \sum_{\ell 
 I remind you that the Clebsch-Gordan coefficients in these equations are just numbers which are less than one. They can often be shown to be zero if the angular momentum doesn’t add up. The equation we derive can be used to give us a great deal of information.
 
 ```math
-\begin{aligned} \langle \varphi_{n} | \hat{\epsilon} \cdot \vec{r} | \varphi_{i} \rangle &= \sqrt{\frac{( 2 \ell_{i} + 1 )}{( 2 \ell_{n} + 1 )}} \langle \ell_{n} 0 | \ell_{i} 1 0 0 \rangle \int_{0}^{\infty} r^{3} drR_{n_{n} \ell_{n}}^{*} R_{n_{i} \ell_{i}} \\ & \quad \left( \epsilon_{z} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} 0 \rangle + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} 1 \rangle + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} - 1 \rangle \right) \end{aligned}
+\begin{aligned} \langle \phi_{n} | \hat{\epsilon} \cdot \vec{r} | \phi_{i} \rangle &= \sqrt{\frac{( 2 \ell_{i} + 1 )}{( 2 \ell_{n} + 1 )}} \langle \ell_{n} 0 | \ell_{i} 1 0 0 \rangle \int_{0}^{\infty} r^{3} drR_{n_{n} \ell_{n}}^{*} R_{n_{i} \ell_{i}} \\ & \quad \left( \epsilon_{z} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} 0 \rangle + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} 1 \rangle + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} - 1 \rangle \right) \end{aligned}
 ```
 
 We know, from the addition of angular momentum, that adding angular momentum 1 to $`\ell_{1}`$ can only give answers in the range $`| \ell_{1} - 1 | <\ell_{n} <\ell_{1} + 1`$ so the change in in $`\ell`$ between the initial and final state can only be ∆$`\ell = 0 , \pm 1`$. For other values, all the Clebsch-Gordan coefficients above will be zero.
@@ -436,11 +436,11 @@ The integral over photon direction clearly just gives a factor of 4$`\pi`$ since
 If we are just interested in the total decay rate, we can go further. The decay rate should not depend on the polarization of the initial state, based on the rotational symmetry of our theory. Usually we only want the total decay rate to some final state so we sum over polarizations of the photon, integrate over photon directions, and (eventually) sum over the different $`m_{n}`$ of the final state atoms. We begin with a simple version of the total decay rate formula in the E1 approximation.
 
 ```math
-\Gamma_{tot} = \frac{\alpha \omega_{in}^{3}}{2 \pi c^{2}} \sum_{\lambda} \int d \Omega_{\gamma} | \langle \varphi_{n} | \hat{\epsilon} \cdot \vec{r} | \varphi_{i} \rangle |^{2}
+\Gamma_{tot} = \frac{\alpha \omega_{in}^{3}}{2 \pi c^{2}} \sum_{\lambda} \int d \Omega_{\gamma} | \langle \phi_{n} | \hat{\epsilon} \cdot \vec{r} | \phi_{i} \rangle |^{2}
 ```
 
 ```math
-\Gamma_{tot} = \frac{\alpha \omega_{in}^{3}}{2 \pi c^{2}} \sum_{\lambda} \int d \Omega_{\gamma} | \langle \varphi_{n} | \vec{r} | \varphi_{i} \rangle \cdot \hat{\epsilon} |^{2}
+\Gamma_{tot} = \frac{\alpha \omega_{in}^{3}}{2 \pi c^{2}} \sum_{\lambda} \int d \Omega_{\gamma} | \langle \phi_{n} | \vec{r} | \phi_{i} \rangle \cdot \hat{\epsilon} |^{2}
 ```
 
 ```math
@@ -472,11 +472,11 @@ _Figure 97 (p. 407)_
 The projection of the vector $`\vec{r}_{ni}`$ into the transverse plan gives a factor of $`\sin \theta`$. It is then easy to see that
 
 ```math
-\cos \Theta_{1} = \sin \theta \cos \varphi
+\cos \Theta_{1} = \sin \theta \cos \phi
 ```
 
 ```math
-\cos \Theta_{2} = \sin \theta \sin \varphi
+\cos \Theta_{2} = \sin \theta \sin \phi
 ```
 
 The sum of cos<sup>2</sup> Θ over the two polarizations then just gives $`\sin^{2} \theta`$. Therefore the decay rate becomes
@@ -571,7 +571,7 @@ We have performed that radial integration which will be unchanged. Assume that w
 
 where we have set $`m_{i} = 1`$ eliminating two terms.
 
-Lets study the rate as a function of the angle of the photon from the z axis, $`\theta_{\gamma}`$. The rate will be independent of the azimuthal angle. We see that the rate is proportional to $`\epsilon_{x}^{2} + \epsilon_{y}^{2}`$. We still must sum over the two independent transverse polarizations. For clarity, assume that $`\varphi = 0`$ and the photon is therefore emitted in the x-z plane. One transverse polarization can be in the y direction. The other is in the x-z plane perpendicular to the direction of the photon. The x component is proportional to $`\cos \theta_{\gamma}`$. So the rate is proportional to $`\epsilon_{x}^{2} + \epsilon_{y}^{2} = 1 + \cos^{2} \theta_{\gamma}`$.
+Lets study the rate as a function of the angle of the photon from the z axis, $`\theta_{\gamma}`$. The rate will be independent of the azimuthal angle. We see that the rate is proportional to $`\epsilon_{x}^{2} + \epsilon_{y}^{2}`$. We still must sum over the two independent transverse polarizations. For clarity, assume that $`\phi = 0`$ and the photon is therefore emitted in the x-z plane. One transverse polarization can be in the y direction. The other is in the x-z plane perpendicular to the direction of the photon. The x component is proportional to $`\cos \theta_{\gamma}`$. So the rate is proportional to $`\epsilon_{x}^{2} + \epsilon_{y}^{2} = 1 + \cos^{2} \theta_{\gamma}`$.
 
 If we assume that $`m_{i} = 0`$ then only the $`\epsilon_{z}`$ term remains and the rate is proportional to $`\epsilon_{z}^{2}`$. The angular distribution then goes like $`\sin^{2} \theta_{\gamma}`$.
 
@@ -686,7 +686,7 @@ We may be more quantitative. If the probability to be in the initial state is pr
 We may take the Fourier transform of this time function to the the amplitude as a function of frequency.
 
 ```math
-\varphi_{i} ( \omega ) \quad \propto \int_{0}^{\infty} \psi_{i} ( t ) e^{i\omega t} dt
+\phi_{i} ( \omega ) \quad \propto \int_{0}^{\infty} \psi_{i} ( t ) e^{i\omega t} dt
 ```
 
 ```math
@@ -712,7 +712,7 @@ We may take the Fourier transform of this time function to the the amplitude as 
 We may square this to get the probability or intensity as a function of $`\omega`$ (and hence $`E = \hbar \omega`$).
 
 ```math
-I_{i} ( \omega ) = | \varphi_{i} ( \omega ) |^{2} = \frac{1}{( \omega - \omega_{0} )^{2} + \tfrac{\Gamma^{2}}{4}}
+I_{i} ( \omega ) = | \phi_{i} ( \omega ) |^{2} = \frac{1}{( \omega - \omega_{0} )^{2} + \tfrac{\Gamma^{2}}{4}}
 ```
 
 This gives the energy distribution of an unstable state. It is called **the Breit-Wigner line shape**. It can be characterized by its Full Width at Half Maximum (FWHM) of Γ.
@@ -926,7 +926,7 @@ In our case, for example, of an atom decaying by the emission of one photon, we 
 We have the formula
 
 ```math
-\Gamma_{tot} = \frac{e^{2} ( E_{i} - E_{n} )}{2 \pi \hbar^{2} m^{2} c^{3}} \int d \Omega_{\gamma} | \langle \varphi_{n} | e^{- i ( \vec{k} \cdot \vec{r} )} \hat{\epsilon} \cdot \vec{p}_{e} | \varphi_{i} \rangle |^{2}
+\Gamma_{tot} = \frac{e^{2} ( E_{i} - E_{n} )}{2 \pi \hbar^{2} m^{2} c^{3}} \int d \Omega_{\gamma} | \langle \phi_{n} | e^{- i ( \vec{k} \cdot \vec{r} )} \hat{\epsilon} \cdot \vec{p}_{e} | \phi_{i} \rangle |^{2}
 ```
 
 Lets make some approximations.

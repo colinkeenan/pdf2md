@@ -369,6 +369,20 @@ pub fn tex(s: &MSpan) -> String {
     }
 }
 
+/// Is the usual phi of the book being converted the one that comes as φ?
+static PHI_OTHER: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+
+/// Tell which of the two phis is the book's usual one, from how often each
+/// character stands in TeX's math italic: `curly` times as φ (the code of
+/// TeX's glyph "phi" in one way of making a PDF), `stroked` times as ϕ (its
+/// code in another). A book writes \phi far more often than \varphi, if
+/// it has both at all: the more frequent character is \phi, the other
+/// \varphi. (Read without this, φ is \varphi and ϕ is \phi, as the
+/// characters are named.)
+pub fn set_phi(curly: usize, stroked: usize) {
+    PHI_OTHER.store(curly > stroked, std::sync::atomic::Ordering::Relaxed);
+}
+
 fn tex_plain(s: &MSpan) -> String {
     let t = s.text.trim();
     if s.cmex() {
@@ -437,7 +451,14 @@ fn tex_plain(s: &MSpan) -> String {
         return t.chars().map(|c| format!("\\mathbb{{{c}}}")).collect::<Vec<_>>().join(" ");
     }
     if s.math {
-        chars_tex(t)
+        let tex = chars_tex(t);
+        // (TeX's math italic has two phis, and a PDF gives the usual one,
+        // \phi with its straight stroke, under either of two character
+        // codes, depending on what made the PDF: see `set_phi`)
+        if PHI_OTHER.load(std::sync::atomic::Ordering::Relaxed) && s.family.to_uppercase().starts_with("CMMI") && (tex.contains("\\varphi") || tex.contains("\\phi")) {
+            return tex.replace("\\varphi", "\u{1}").replace("\\phi", "\\varphi").replace('\u{1}', "\\phi");
+        }
+        tex
     } else {
         text_font_tex(t)
     }

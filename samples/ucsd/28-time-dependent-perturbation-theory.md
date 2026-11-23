@@ -13,27 +13,27 @@ This material is covered in **Gasiorowicz Chapter 21,** in **Cohen-Tannoudji et 
 
 # <a id="s-28-1-general-time-dependent-perturbations"></a>28.1 General Time Dependent Perturbations
 
-Assume that we solve the unperturbed energy eigenvalue problem exactly: $`H_{0} \varphi_{n} = E_{n} \varphi_{n}`$. Now we add a perturbation that depends on time, $`\mathcal{V} ( t )`$. Our problem is now inherently time dependent so we go back to the **time dependent Schrödinger equation**.
+Assume that we solve the unperturbed energy eigenvalue problem exactly: $`H_{0} \phi_{n} = E_{n} \phi_{n}`$. Now we add a perturbation that depends on time, $`\mathcal{V} ( t )`$. Our problem is now inherently time dependent so we go back to the **time dependent Schrödinger equation**.
 
 ```math
 ( H_{0} + \mathcal{V} ( t ) ) \psi ( t ) = i \hbar \frac{\partial \psi ( t )}{\partial t}
 ```
 
-We will **expand** $`\psi`$ in terms of the eigenfunctions: $`\psi ( t ) = \sum_{k} c_{k} ( t ) \varphi_{k} e^{- iE_{k} t/ \hbar}`$ with $`c_{k} ( t ) e^{- iE_{k} t/ \hbar} = \langle \varphi_{k} | \psi ( t ) \rangle`$. The time dependent Schrödinger equations is
+We will **expand** $`\psi`$ in terms of the eigenfunctions: $`\psi ( t ) = \sum_{k} c_{k} ( t ) \phi_{k} e^{- iE_{k} t/ \hbar}`$ with $`c_{k} ( t ) e^{- iE_{k} t/ \hbar} = \langle \phi_{k} | \psi ( t ) \rangle`$. The time dependent Schrödinger equations is
 
 ```math
-\sum_{k} ( H_{0} + \mathcal{V} ( t ) ) c_{k} ( t ) e^{- iE_{k} t/ \hbar} \varphi_{k} = i \hbar \sum_{k} \frac{\partial c_{k} ( t ) e^{- iE_{k} t/ \hbar}}{\partial t} \varphi_{k}
+\sum_{k} ( H_{0} + \mathcal{V} ( t ) ) c_{k} ( t ) e^{- iE_{k} t/ \hbar} \phi_{k} = i \hbar \sum_{k} \frac{\partial c_{k} ( t ) e^{- iE_{k} t/ \hbar}}{\partial t} \phi_{k}
 ```
 
 ```math
-\sum_{k} c_{k} ( t ) e^{- iE_{k} t/ \hbar} ( E_{k} + \mathcal{V} ( t ) ) \varphi_{k} = \sum_{k} \left( i \hbar \frac{\partial c_{k} ( t )}{\partial t} + E_{k} c_{k} ( t ) \right) e^{- iE_{k} t/ \hbar} \varphi_{k}
+\sum_{k} c_{k} ( t ) e^{- iE_{k} t/ \hbar} ( E_{k} + \mathcal{V} ( t ) ) \phi_{k} = \sum_{k} \left( i \hbar \frac{\partial c_{k} ( t )}{\partial t} + E_{k} c_{k} ( t ) \right) e^{- iE_{k} t/ \hbar} \phi_{k}
 ```
 
 ```math
-\sum_{k} \mathcal{V} ( t ) c_{k} ( t ) e^{- iE_{k} t/ \hbar} \varphi_{k} = i \hbar \sum_{k} \frac{\partial c_{k} ( t )}{\partial t} e^{- iE_{k} t/ \hbar} \varphi_{k}
+\sum_{k} \mathcal{V} ( t ) c_{k} ( t ) e^{- iE_{k} t/ \hbar} \phi_{k} = i \hbar \sum_{k} \frac{\partial c_{k} ( t )}{\partial t} e^{- iE_{k} t/ \hbar} \phi_{k}
 ```
 
-Now dot $`\langle \varphi_{n} |`$ into this equation to get the time dependence of one coefficient.
+Now dot $`\langle \phi_{n} |`$ into this equation to get the time dependence of one coefficient.
 
 ```math
 \sum_{k} \mathcal{V}_{nk} ( t ) c_{k} ( t ) e^{- iE_{k} t/ \hbar} = i \hbar \frac{\partial c_{n} ( t )}{\partial t} e^{- iE_{n} t/ \hbar}
@@ -43,7 +43,7 @@ Now dot $`\langle \varphi_{n} |`$ into this equation to get the time dependence 
 \frac{\partial c_{n} ( t )}{\partial t} = \frac{1}{i \hbar} \sum_{k} \mathcal{V}_{nk} ( t ) c_{k} ( t ) e^{i ( E_{n} - E_{k} ) t/ \hbar}
 ```
 
-Assume that at $`t = 0`$, we are in an **initial state** $`\psi ( t = 0 ) = \varphi_{i}`$ and hence all the other $`c_{k}`$ are equal to zero: $`c_{k} = \delta_{ki}`$.
+Assume that at $`t = 0`$, we are in an **initial state** $`\psi ( t = 0 ) = \phi_{i}`$ and hence all the other $`c_{k}`$ are equal to zero: $`c_{k} = \delta_{ki}`$.
 
 ```math
 \frac{\partial c_{n} ( t )}{\partial t} = \frac{1}{i \hbar} \left( \mathcal{V}_{ni} ( t ) e^{i\omega_{ni} t} + \sum_{k \neq i} \mathcal{V}_{nk} ( t ) c_{k} ( t ) e^{i\omega_{nk} t} \right)
@@ -67,7 +67,7 @@ This is the **equation to use to compute transition probabilities for a general 
 
 Note that, if there is a large energy difference between the initial and final states, a slowly varying perturbation can average to zero. We will find that the perturbation will need frequency components compatible with $`\omega_{ni}`$ to cause transitions.
 
-If the first order term is zero or higher accuracy is required, the second order term can be computed. In second order, a transition can be made to an intermediate state $`\varphi_{k}`$, then a transition to $`\varphi_{n}`$. We just put the first order $`c_{k}^{( 1 )} ( t )`$ into the sum.
+If the first order term is zero or higher accuracy is required, the second order term can be computed. In second order, a transition can be made to an intermediate state $`\phi_{k}`$, then a transition to $`\phi_{n}`$. We just put the first order $`c_{k}^{( 1 )} ( t )`$ into the sum.
 
 ```math
 \frac{\partial c_{n} ( t )}{\partial t} = \frac{1}{i \hbar} \left( \mathcal{V}_{ni} ( t ) e^{i\omega_{ni} t} + \sum_{k \neq i} \mathcal{V}_{nk} ( t ) c_{k}^{( 1 )} ( t ) e^{i\omega_{nk} t} \right)
@@ -103,7 +103,7 @@ c_{n} ( t ) = \frac{1}{i \hbar} \int_{0}^{t} e^{i\omega_{ni} t^{\prime}} \mathca
 = \frac{1}{i \hbar} V_{ni} \int_{0}^{t} dt^{\prime} \left( e^{i ( \omega_{ni} + \omega ) t^{\prime}} + e^{i ( \omega_{ni} - \omega ) t^{\prime}} \right)
 ```
 
-Note that the terms in the time integral will **average to zero unless one of the exponents is nearly zero**. If one of the exponents is zero, the amplitude to be in the state $`\varphi_{n}`$ will increase with time. To make an exponent zero we must have one of two conditions satisfied.
+Note that the terms in the time integral will **average to zero unless one of the exponents is nearly zero**. If one of the exponents is zero, the amplitude to be in the state $`\phi_{n}`$ will increase with time. To make an exponent zero we must have one of two conditions satisfied.
 
 ```math
 \omega = - \omega_{ni}
@@ -145,7 +145,7 @@ For $`t \to \infty`$, the time integral of the exponential gives (some kind of) 
 
 Lets take the **case of radiation of an energy quantum** $`\hbar \omega`$. If the initial and final states have energies such that this transition goes, the absorption term is completely negligible. (We can just use one of the exponentials at a time to make our formulas simpler.)
 
-The amplitude to be in state $`\varphi_{n}`$ as a function of time is
+The amplitude to be in state $`\phi_{n}`$ as a function of time is
 
 ```math
 c_{n} ( t ) = \frac{1}{i \hbar} V_{ni} \int_{0}^{t} dt^{\prime} e^{i ( \omega_{ni} + \omega ) t^{\prime}}
@@ -177,13 +177,13 @@ P_{n} ( t ) = \frac{V_{ni}^{2}}{\hbar^{2}} \left[ \frac{4 \sin^{2} ( ( \omega_{n
 
 In the last line above we have squared the amplitude to get the probability to be in the final state. The last formula is appropriate to use, as is, for short times. For long times (compared to $`\frac{1}{\omega_{ni} + \omega}`$ which can be a VERY short time), the term in square brackets looks like some kind of delta function.
 
-We will show (See section 28.4.1), that the quantity in square brackets in the last equation is $`2 \pi t\delta ( \omega_{ni} + \omega )`$. The probability to be in state $`\varphi_{n}`$ then is
+We will show (See section 28.4.1), that the quantity in square brackets in the last equation is $`2 \pi t\delta ( \omega_{ni} + \omega )`$. The probability to be in state $`\phi_{n}`$ then is
 
 ```math
 P_{n} ( t ) = \frac{V_{ni}^{2}}{\hbar^{2}} 2 \pi t\delta ( \omega_{ni} + \omega ) = \frac{2 \pi V_{ni}^{2}}{\hbar^{2}} \delta ( \omega_{ni} + \omega ) t = \frac{2 \pi V_{ni}^{2}}{\hbar} \delta ( E_{n} - E_{i} + \hbar \omega ) t
 ```
 
-The probability to be in the final state $`\varphi_{n}`$ increases linearly with time. There is a delta function expressing energy conservation. The frequency of the harmonic perturbation must be set so that $`\hbar \omega`$ is the energy difference between initial and final states. This is true both for the (stimulated) emission of a quantum of energy and for the absorption of a quantum.
+The probability to be in the final state $`\phi_{n}`$ increases linearly with time. There is a delta function expressing energy conservation. The frequency of the harmonic perturbation must be set so that $`\hbar \omega`$ is the energy difference between initial and final states. This is true both for the (stimulated) emission of a quantum of energy and for the absorption of a quantum.
 
 Since the probability to be in the final state increases linearly with time, it is reasonable to describe this in terms of a **transition rate**. The transition rate is then given by
 
@@ -199,7 +199,7 @@ We would get a similar result for increasing $`E`$ (absorbing energy) from the o
 
 It does not make a lot of sense to use this equation with a delta function to calculate the transition rate from a discrete state to a discrete state. If we tune the frequency just right we get infinity otherwise we get zero. This formula is what we need if either the initial or final state is a continuum state. If there is a free particle in the initial state or the final state, we have a continuum state. So, the absorption or emission of a particle, satisfies this condition.
 
-The above results are very close to a transition rate formula known as **Fermi’s Golden Rule**. Imagine that instead of one final state $`\varphi_{n}`$ there are a **continuum of final states**. The total rate to that continuum would be obtained by integrating over final state energy, an integral done simply with the delta function. We then have
+The above results are very close to a transition rate formula known as **Fermi’s Golden Rule**. Imagine that instead of one final state $`\phi_{n}`$ there are a **continuum of final states**. The total rate to that continuum would be obtained by integrating over final state energy, an integral done simply with the delta function. We then have
 
 <div align="right"><a href="book.pdf#page=394" target="_blank" title="This page in the PDF"><sup>[p. 394]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -273,7 +273,7 @@ Clearly the probability to make a transition to the second excited state is zero
 
 ## <a id="s-28-4-1-the-delta-function-of-energy-conservation"></a>28.4.1 The Delta Function of Energy Conservation
 
-For harmonic perturbations, we have derived a probability to be in the final state $`\varphi_{n}`$ proportional to the following.
+For harmonic perturbations, we have derived a probability to be in the final state $`\phi_{n}`$ proportional to the following.
 
 ```math
 P_{n} \propto \left[ \frac{4 \sin^{2} ( ( \omega_{ni} + \omega ) t/ 2 )}{( \omega_{ni} + \omega )^{2}} \right]

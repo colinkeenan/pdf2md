@@ -825,7 +825,7 @@ There is a nonzero commutator of the two spacetime points are connected by a lig
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p457" href="book.pdf#page=457" target="_blank" title="This page in the PDF"><sup>[p. 457]</sup></a>
 
-To make a narrow beam of light, one must adjust the phases of various components of the beam carefully. Another version of the uncertainty relation is that ∆$`N`$ ∆$`\varphi \geq 1`$, where $`phi`$ is the phase of a Fourier component and $`N`$ is the number of photons.
+To make a narrow beam of light, one must adjust the phases of various components of the beam carefully. Another version of the uncertainty relation is that ∆$`N`$ ∆$`\phi \geq 1`$, where $`phi`$ is the phase of a Fourier component and $`N`$ is the number of photons.
 
 Of course the Electromagnetic **waves of classical physics usually have very large numbers of photons** and the quantum effects are not apparent. A good condition to identify the boundary between classical and quantum behavior is that for the classical E&M to be correct the **number of photons per cubic wavelength should be much greater than 1**.
 
@@ -908,13 +908,13 @@ These give the same result as our earlier guess to put an $`n + 1`$ in the emiss
 In the previous section, we derived the same formulas for matrix elements (See Section 29.1) that we had earlier used to study decays of Hydrogen atom states with no applied EM field, that is **zero photons in the initial state**.
 
 ```math
-\Gamma_{i \to n} = \frac{( 2 \pi )^{2} e^{2}}{m^{2} \omega V} | \langle \varphi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon} \cdot \vec{p} | \varphi_{i} \rangle |^{2} \delta ( E_{n} - E_{i} + \hbar \omega )
+\Gamma_{i \to n} = \frac{( 2 \pi )^{2} e^{2}}{m^{2} \omega V} | \langle \phi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon} \cdot \vec{p} | \phi_{i} \rangle |^{2} \delta ( E_{n} - E_{i} + \hbar \omega )
 ```
 
 With the inclusion of the **phase space integral** over final states this became
 
 ```math
-\Gamma_{tot} = \frac{e^{2} ( E_{i} - E_{n} )}{2 \pi \hbar^{2} m^{2} c^{3}} \sum_{\lambda} \int d \Omega_{p} | \langle \varphi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \lambda )} \cdot \vec{p}_{e} | \varphi_{i} \rangle |^{2}
+\Gamma_{tot} = \frac{e^{2} ( E_{i} - E_{n} )}{2 \pi \hbar^{2} m^{2} c^{3}} \sum_{\lambda} \int d \Omega_{p} | \langle \phi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \lambda )} \cdot \vec{p}_{e} | \phi_{i} \rangle |^{2}
 ```
 
 The quantity $`\vec{k} \cdot \vec{r}`$ is typically small for atomic transitions
@@ -954,7 +954,7 @@ The approximation that $`e^{- i \vec{k} \cdot \vec{r}} \approx 1`$ is a very goo
 The **general E1 decay result depends on photon direction and polarization**. If information about angular distributions or polarization is needed, it can be pried out of this formula.
 
 ```math
-\Gamma_{tot} = \frac{e^{2} ( E_{i} - E_{n} )}{2 \pi \hbar^{2} m^{2} c^{3}} \sum_{\lambda} \int d \Omega_{\gamma} | \langle \varphi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \lambda )} \cdot \vec{p}_{e} | \varphi_{i} \rangle |^{2}
+\Gamma_{tot} = \frac{e^{2} ( E_{i} - E_{n} )}{2 \pi \hbar^{2} m^{2} c^{3}} \sum_{\lambda} \int d \Omega_{\gamma} | \langle \phi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \lambda )} \cdot \vec{p}_{e} | \phi_{i} \rangle |^{2}
 ```
 
 ```math
@@ -981,10 +981,10 @@ The decay rate does not depend on the $`m`$ of the initial state.
 
 Some atomic states have no lower energy state that satisfies the E1 selection rules to decay to. Then, higher order processes must be considered. The next order term in the expansion of $`e^{- i \vec{k} \cdot \vec{r}} = 1 - i \vec{k} \cdot \vec{r} + \dots`$ will allow other transitions to take place but at lower rates. We will attempt to understand the **selection rules** when we include the $`i \vec{k} \cdot \vec{r}`$ term.
 
-The matrix element is proportional to $`- i \langle \varphi_{n} | ( \vec{k} \cdot \vec{r} )`$(ˆ$`\epsilon^{( \lambda )} \cdot \vec{p}_{e}`$) $`| \varphi_{i} \rangle`$ which we will **split up into two terms**. You might ask why split it. The reason is that we will essentially be **computing matrix elements of at tensor** and dotting it into two vectors that do not depend on the atomic state.
+The matrix element is proportional to $`- i \langle \phi_{n} | ( \vec{k} \cdot \vec{r} )`$(ˆ$`\epsilon^{( \lambda )} \cdot \vec{p}_{e}`$) $`| \phi_{i} \rangle`$ which we will **split up into two terms**. You might ask why split it. The reason is that we will essentially be **computing matrix elements of at tensor** and dotting it into two vectors that do not depend on the atomic state.
 
 ```math
-\vec{k} \cdot \langle \varphi_{n} | \vec{r} \vec{p}_{e} ) | \varphi_{i} \rangle \cdot \hat{\epsilon}^{( \lambda )}
+\vec{k} \cdot \langle \phi_{n} | \vec{r} \vec{p}_{e} ) | \phi_{i} \rangle \cdot \hat{\epsilon}^{( \lambda )}
 ```
 
 <div align="right"><a href="book.pdf#page=459" target="_blank" title="This page in the PDF"><sup>[p. 459]</sup></a></div>
@@ -1008,15 +1008,15 @@ The **first term is symmetric and the second anti-symmetric** by construction.
 The **first term can be rewritten**.
 
 ```math
-\frac{1}{2} \langle \varphi_{n} | [ ( \vec{k} \cdot \vec{r} ) ( \hat{\epsilon}^{( \lambda )} \cdot \vec{p} ) + ( \vec{k} \cdot \vec{p} ) ( \hat{\epsilon}^{( \lambda )} \cdot \vec{r} ) ] | \varphi_{i} \rangle = \frac{1}{2} \vec{k} \cdot \langle \varphi_{n} | [ \vec{r} \vec{p} + \vec{p} \vec{r} ] | \varphi_{i} \rangle \cdot \hat{\epsilon}^{( \lambda )}
+\frac{1}{2} \langle \phi_{n} | [ ( \vec{k} \cdot \vec{r} ) ( \hat{\epsilon}^{( \lambda )} \cdot \vec{p} ) + ( \vec{k} \cdot \vec{p} ) ( \hat{\epsilon}^{( \lambda )} \cdot \vec{r} ) ] | \phi_{i} \rangle = \frac{1}{2} \vec{k} \cdot \langle \phi_{n} | [ \vec{r} \vec{p} + \vec{p} \vec{r} ] | \phi_{i} \rangle \cdot \hat{\epsilon}^{( \lambda )}
 ```
 
 ```math
-= \frac{1}{2} \vec{k} \cdot \frac{im}{\hbar} \langle \varphi_{n} | [ H_{0} , \vec{r} \vec{r} ] | \varphi_{i} \rangle \cdot \hat{\epsilon}^{( \lambda )}
+= \frac{1}{2} \vec{k} \cdot \frac{im}{\hbar} \langle \phi_{n} | [ H_{0} , \vec{r} \vec{r} ] | \phi_{i} \rangle \cdot \hat{\epsilon}^{( \lambda )}
 ```
 
 ```math
-= - \frac{im\omega}{2} \vec{k} \cdot \langle \varphi_{n} | \vec{r} \vec{r} | \varphi_{i} \rangle \cdot \hat{\epsilon}^{( \lambda )}
+= - \frac{im\omega}{2} \vec{k} \cdot \langle \phi_{n} | \vec{r} \vec{r} | \phi_{i} \rangle \cdot \hat{\epsilon}^{( \lambda )}
 ```
 
 This makes the symmetry clear. Its normal to **remove the trace of the tensor**: $`\vec{r} \vec{r} \to \vec{r} \vec{r} - \tfrac{\delta_{ij}}{3} r^{2}`$. The term proportional to $`\delta_{ij}`$ gives zero because $`\vec{k} \cdot \hat{\epsilon} = 0`$. The traceless symmetric tensor has 5 components like an $`\ell = 2`$ operator; The anti-symmetric tensor has 3 components; and the trace term has one. This is the separation of the Cartesian tensor into irreducible spherical tensors. The **five components of the traceless symmetric tensor can be written as a linear combination of the** $`Y_{2 m}`$.

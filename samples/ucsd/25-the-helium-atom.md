@@ -30,7 +30,7 @@ where $`V ( \vec{r}_{1} , \vec{r}_{2} ) = \tfrac{e^{2}}{| \vec{r}_{1} - \vec{r}_
 For our zeroth order energy eigenstates, we will use **product states of Hydrogen wavefunctions**.
 
 ```math
-u ( \vec{r}_{1} , \vec{r}_{2} ) = \varphi_{n_{1} \ell_{1} m_{1}} ( \vec{r}_{1} ) \varphi_{n_{2} \ell_{2} m_{2}} ( \vec{r}_{2} )
+u ( \vec{r}_{1} , \vec{r}_{2} ) = \phi_{n_{1} \ell_{1} m_{1}} ( \vec{r}_{1} ) \phi_{n_{2} \ell_{2} m_{2}} ( \vec{r}_{2} )
 ```
 
 These are not eigenfunctions of H because of $`V`$, the electron coulomb repulsion term. Ignoring $`V`$, the problem separates into the energy for electron 1 and the energy for electron 2 and we can solve the problem exactly.
@@ -74,17 +74,17 @@ _Figure 84 (p. 359)_
 Now let’s look at the (anti) **symmetry of the states** of two identical electrons. For the ground state, the spatial state is symmetric, so the spin state must be antisymmetric $`\Rightarrow s = 0`$.
 
 ```math
-u_{0} = \varphi_{1 0 0} \varphi_{1 0 0} \frac{1}{\sqrt{2}} ( \chi_{+} \chi_{-} - \chi_{-} \chi_{+} )
+u_{0} = \phi_{1 0 0} \phi_{1 0 0} \frac{1}{\sqrt{2}} ( \chi_{+} \chi_{-} - \chi_{-} \chi_{+} )
 ```
 
 For excited states, we can make either symmetric or antisymmetric space states.
 
 ```math
-u_{1}^{( s )} = \frac{1}{\sqrt{2}} ( \varphi_{1 0 0} \varphi_{2 \ell m} + \varphi_{2 \ell m} \varphi_{1 0 0} ) \frac{1}{\sqrt{2}} ( \chi_{+} \chi_{-} - \chi_{-} \chi_{+} )
+u_{1}^{( s )} = \frac{1}{\sqrt{2}} ( \phi_{1 0 0} \phi_{2 \ell m} + \phi_{2 \ell m} \phi_{1 0 0} ) \frac{1}{\sqrt{2}} ( \chi_{+} \chi_{-} - \chi_{-} \chi_{+} )
 ```
 
 ```math
-u_{1}^{( t )} = \frac{1}{\sqrt{2}} ( \varphi_{1 0 0} \varphi_{2 \ell m} - \varphi_{2 \ell m} \varphi_{1 0 0} ) \chi_{+} \chi_{+}
+u_{1}^{( t )} = \frac{1}{\sqrt{2}} ( \phi_{1 0 0} \phi_{2 \ell m} - \phi_{2 \ell m} \phi_{1 0 0} ) \chi_{+} \chi_{+}
 ```
 
 The first state is $`s = 0`$ or spin **singlet**. The second state is $`s = 1`$ or spin **triplet** and has three $`m_{s}`$ states. Only the +1 state is shown. **Because the large correction due to electron repulsion is much larger for symmetric space states, the spin of the state determines the energy.**
@@ -100,7 +100,7 @@ We label the states according to the spin quantum numbers, singlet or triplet. W
 Calculating the first order correction to the ground state is simple in principle.
 
 ```math
-\Delta E_{gs} = \langle u_{0} | V | u_{0} \rangle = \int d^{3} r_{1} d^{3} r_{2} | \varphi_{1 0 0} ( \vec{r}_{1} ) |^{2} | \varphi_{1 0 0} ( \vec{r}_{2} ) |^{2} \frac{e^{2}}{| \vec{r}_{1} - \vec{r}_{2} |}
+\Delta E_{gs} = \langle u_{0} | V | u_{0} \rangle = \int d^{3} r_{1} d^{3} r_{2} | \phi_{1 0 0} ( \vec{r}_{1} ) |^{2} | \phi_{1 0 0} ( \vec{r}_{2} ) |^{2} \frac{e^{2}}{| \vec{r}_{1} - \vec{r}_{2} |}
 ```
 
 ```math
@@ -122,11 +122,11 @@ compared to -78.975 eV from experiment. A 10% error is not bad considering the s
 Now we will look at the energies of the excited states. The Pauli principle will cause big energy differences between the different spin states, even though we neglect all spin contribution in $`H_{1}`$ This effect is called the exchange interaction. In the equation below, the $`s`$ stands for singlet corresponding to the plus sign.
 
 ```math
-E_{1 st}^{( s,t )} = \frac{e^{2}}{2} \left\langle \varphi_{1 0 0} \varphi_{2 \ell m} \pm \varphi_{2 \ell m} \varphi_{1 0 0} \left| \frac{1}{| \vec{r}_{1} - \vec{r}_{2} |} \right| \varphi_{1 0 0} \varphi_{2 \ell m} \pm \varphi_{2 \ell m} \varphi_{1 0 0} \right\rangle
+E_{1 st}^{( s,t )} = \frac{e^{2}}{2} \left\langle \phi_{1 0 0} \phi_{2 \ell m} \pm \phi_{2 \ell m} \phi_{1 0 0} \left| \frac{1}{| \vec{r}_{1} - \vec{r}_{2} |} \right| \phi_{1 0 0} \phi_{2 \ell m} \pm \phi_{2 \ell m} \phi_{1 0 0} \right\rangle
 ```
 
 ```math
-= \frac{e^{2}}{2} \left\{ 2 \left\langle \varphi_{1 0 0} \varphi_{2 \ell m} \left| \frac{1}{| \vec{r}_{1} - \vec{r}_{2} |} \right| \varphi_{1 0 0} \varphi_{2 \ell m} \right\rangle \pm 2 \left\langle \varphi_{1 0 0} \varphi_{2 \ell m} \left| \frac{1}{| \vec{r}_{1} - \vec{r}_{2} |} \right| \varphi_{2 \ell m} \varphi_{1 0 0} \right\rangle \right\}
+= \frac{e^{2}}{2} \left\{ 2 \left\langle \phi_{1 0 0} \phi_{2 \ell m} \left| \frac{1}{| \vec{r}_{1} - \vec{r}_{2} |} \right| \phi_{1 0 0} \phi_{2 \ell m} \right\rangle \pm 2 \left\langle \phi_{1 0 0} \phi_{2 \ell m} \left| \frac{1}{| \vec{r}_{1} - \vec{r}_{2} |} \right| \phi_{2 \ell m} \phi_{1 0 0} \right\rangle \right\}
 ```
 
 ```math
@@ -219,20 +219,20 @@ We wish to show that $`E^{\prime}`$ errors are second order in $`\delta \psi`$
 
 at eigenenergies.
 
-To do this, we will add a variable amount of an arbitrary function $`\varphi`$ to the energy eigenstate.
+To do this, we will add a variable amount of an arbitrary function $`\phi`$ to the energy eigenstate.
 
 ```math
-E^{\prime} = \frac{\langle \psi_{E} + \alpha \varphi | H | \psi_{E} + \alpha \varphi \rangle}{\langle \psi_{E} + \alpha \varphi | \psi_{E} + \alpha \varphi \rangle}
+E^{\prime} = \frac{\langle \psi_{E} + \alpha \phi | H | \psi_{E} + \alpha \phi \rangle}{\langle \psi_{E} + \alpha \phi | \psi_{E} + \alpha \phi \rangle}
 ```
 
-Assume $`\alpha`$ is real since we do this for any arbitrary function $`\varphi`$. Now we differentiate with respect to $`\alpha`$ and evaluate at zero.
+Assume $`\alpha`$ is real since we do this for any arbitrary function $`\phi`$. Now we differentiate with respect to $`\alpha`$ and evaluate at zero.
 
 ```math
-\frac{dE^{\prime}}{d\alpha} \Bigg|_{\alpha = 0} = \frac{\langle \psi_{E} | \psi_{E} \rangle ( \langle \varphi | H | \psi_{E} \rangle + \langle \psi_{E} | H | \varphi \rangle ) - \langle \psi_{E} | H | \psi_{E} \rangle ( \langle \varphi | \psi_{E} \rangle + \langle \psi_{E} | \varphi \rangle )}{\langle \psi_{E} | \psi_{E} \rangle^{2}}
+\frac{dE^{\prime}}{d\alpha} \Bigg|_{\alpha = 0} = \frac{\langle \psi_{E} | \psi_{E} \rangle ( \langle \phi | H | \psi_{E} \rangle + \langle \psi_{E} | H | \phi \rangle ) - \langle \psi_{E} | H | \psi_{E} \rangle ( \langle \phi | \psi_{E} \rangle + \langle \psi_{E} | \phi \rangle )}{\langle \psi_{E} | \psi_{E} \rangle^{2}}
 ```
 
 ```math
-= E \langle \varphi | \psi_{E} \rangle + E \langle \psi_{E} | \varphi \rangle - E \langle \varphi | \psi_{E} \rangle - E \langle \psi_{E} | \varphi \rangle = 0
+= E \langle \phi | \psi_{E} \rangle + E \langle \psi_{E} | \phi \rangle - E \langle \phi | \psi_{E} \rangle - E \langle \psi_{E} | \phi \rangle = 0
 ```
 
 We find that the derivative is zero around any eigenfunction, proving that variations of the energy are second order in variations in the wavefunction.
@@ -264,7 +264,7 @@ Of course the $`Z`$ in the Hamiltonian doesn’t change.
 So our ground state trial function is
 
 ```math
-\psi \to \varphi_{1 0 0}^{Z^{*}} ( \vec{r}_{1} ) \varphi_{1 0 0}^{Z^{*}} ( \vec{r}_{2} ) .
+\psi \to \phi_{1 0 0}^{Z^{*}} ( \vec{r}_{1} ) \phi_{1 0 0}^{Z^{*}} ( \vec{r}_{2} ) .
 ```
 
 <div align="right"><a href="book.pdf#page=364" target="_blank" title="This page in the PDF"><sup>[p. 364]</sup></a></div>
@@ -274,21 +274,21 @@ So our ground state trial function is
 Minimize the energy.
 
 ```math
-\langle \psi | H | \psi \rangle = \int d^{3} r_{1} d^{3} r_{2} \varphi_{1 0 0}^{*} ( \vec{r}_{1} ) \varphi_{1 0 0}^{*} ( \vec{r}_{2} ) \left[ \frac{p_{1}^{2}}{2 m} - \frac{Ze^{2}}{r_{1}} + \frac{p_{2}^{2}}{2 m} - \frac{Ze^{2}}{r_{2}} + \frac{e^{2}}{| \vec{r}_{1} - \vec{r}_{2} |} \right] \varphi_{1 0 0} ( \vec{r}_{1} ) \varphi_{1 0 0} ( \vec{r}_{2} )
+\langle \psi | H | \psi \rangle = \int d^{3} r_{1} d^{3} r_{2} \phi_{1 0 0}^{*} ( \vec{r}_{1} ) \phi_{1 0 0}^{*} ( \vec{r}_{2} ) \left[ \frac{p_{1}^{2}}{2 m} - \frac{Ze^{2}}{r_{1}} + \frac{p_{2}^{2}}{2 m} - \frac{Ze^{2}}{r_{2}} + \frac{e^{2}}{| \vec{r}_{1} - \vec{r}_{2} |} \right] \phi_{1 0 0} ( \vec{r}_{1} ) \phi_{1 0 0} ( \vec{r}_{2} )
 ```
 
 We can recycle our previous work to do these integrals. First, replace the $`Z`$ in $`H_{1}`$ with a $`Z^{*}`$ and put in a correction term. This makes the $`H_{1}`$ part just a hydrogen energy. The correction term is just a constant over $`r`$ so we can also write that in terms of the hydrogen ground state energy.
 
 ```math
-x = \int d^{3} r_{1} \varphi_{1 0 0}^{*} \left( \frac{p_{1}^{2}}{2 m} - \frac{Ze^{2}}{r_{1}} \right) \varphi_{1 0 0}
+x = \int d^{3} r_{1} \phi_{1 0 0}^{*} \left( \frac{p_{1}^{2}}{2 m} - \frac{Ze^{2}}{r_{1}} \right) \phi_{1 0 0}
 ```
 
 ```math
-= \int d^{3} r_{1} \varphi_{1 0 0}^{*} \left( \frac{p_{1}^{2}}{2 m} - \frac{Z^{*} e^{2}}{r_{1}} + \frac{( Z^{*} - Z ) e^{2}}{r_{1}} \right) \varphi_{1 0 0}
+= \int d^{3} r_{1} \phi_{1 0 0}^{*} \left( \frac{p_{1}^{2}}{2 m} - \frac{Z^{*} e^{2}}{r_{1}} + \frac{( Z^{*} - Z ) e^{2}}{r_{1}} \right) \phi_{1 0 0}
 ```
 
 ```math
-= Z^{* 2} ( - 1 3 . 6 e V ) + ( Z^{*} - Z ) e^{2} \int d^{3} r_{1} | \varphi_{1 0 0} |^{2} \frac{1}{r_{1}}
+= Z^{* 2} ( - 1 3 . 6 e V ) + ( Z^{*} - Z ) e^{2} \int d^{3} r_{1} | \phi_{1 0 0} |^{2} \frac{1}{r_{1}}
 ```
 
 ```math
@@ -446,7 +446,7 @@ OK.
 To calculate the first order correction to the He ground state energy, we gotta do this integral.
 
 ```math
-\Delta E_{gs} = \langle u_{0} | V | u_{0} \rangle = \int d^{3} r_{1} d^{3} r_{2} | \varphi_{1 0 0} ( \vec{r}_{1} ) |^{2} | \varphi_{1 0 0} ( \vec{r}_{2} ) |^{2} \frac{e^{2}}{| \vec{r}_{1} - \vec{r}_{2} |}
+\Delta E_{gs} = \langle u_{0} | V | u_{0} \rangle = \int d^{3} r_{1} d^{3} r_{2} | \phi_{1 0 0} ( \vec{r}_{1} ) |^{2} | \phi_{1 0 0} ( \vec{r}_{2} ) |^{2} \frac{e^{2}}{| \vec{r}_{1} - \vec{r}_{2} |}
 ```
 
 First, plug in the Hydrogen ground state wave function (twice).
@@ -466,7 +466,7 @@ First, plug in the Hydrogen ground state wave function (twice).
 Do the $`d`$Ω$`1`$ integral and prepare the other.
 
 ```math
-\Delta E_{gs} = \frac{4 \pi}{\pi^{2}} e^{2} \left( \frac{Z}{a_{0}} \right)^{6} \int_{0}^{\infty} r_{1}^{2} dr_{1} e^{- 2 Zr_{1} /a_{0}} \int_{0}^{\infty} r_{2}^{2} dr_{2} e^{- 2 Zr_{2} /a_{0}} \int d\varphi_{2} d \cos \theta_{2} \frac{1}{\sqrt{r_{1}^{2} + r_{2}^{2} - 2 r_{1} r_{2} \cos \theta_{2}}}
+\Delta E_{gs} = \frac{4 \pi}{\pi^{2}} e^{2} \left( \frac{Z}{a_{0}} \right)^{6} \int_{0}^{\infty} r_{1}^{2} dr_{1} e^{- 2 Zr_{1} /a_{0}} \int_{0}^{\infty} r_{2}^{2} dr_{2} e^{- 2 Zr_{2} /a_{0}} \int d\phi_{2} d \cos \theta_{2} \frac{1}{\sqrt{r_{1}^{2} + r_{2}^{2} - 2 r_{1} r_{2} \cos \theta_{2}}}
 ```
 
 The angular integrals are not hard to do.
@@ -540,7 +540,7 @@ We can do the integral for $`r_{2} <r_{1}`$ and simplify the expression. Because
 Here $`r_{<}`$ is the smaller of the two radii and $`r_{>}`$ is the larger. As in the ground state calculation, we can use the symmetry of the problem to specify which radius is the larger. Then we can use a version of the addition theorem to write the Legendre Polynomial $`P_{\ell} ( \cos \theta_{1 2} )`$ in terms of the spherical hamonics for each electron.
 
 ```math
-P_{\ell} ( \cos \theta_{1 2} ) = \frac{4 \pi}{2 \ell + 1} \sum_{m = - \ell}^{\ell} ( - 1 )^{m} Y_{\ell m} ( \theta_{1} ,\varphi_{1} ) Y_{\ell ( - m )} ( \theta_{2} ,\varphi_{2} )
+P_{\ell} ( \cos \theta_{1 2} ) = \frac{4 \pi}{2 \ell + 1} \sum_{m = - \ell}^{\ell} ( - 1 )^{m} Y_{\ell m} ( \theta_{1} ,\phi_{1} ) Y_{\ell ( - m )} ( \theta_{2} ,\phi_{2} )
 ```
 
 Using the equation $`Y_{\ell ( - m )} = ( - 1 )^{\ell} Y_{\ell m}^{*}`$ , this sets us up to do our integrals nicely.

@@ -72,19 +72,19 @@ Note that $`| \psi |^{2} = 1`$ everywhere so this does not represent a localized
 We can build up localized wave packets that represent single particles(See section 5.1) by adding up these free particle wave functions (with some coefficients).
 
 ```math
-\psi ( x,t ) = \frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{+ \infty} \varphi ( p ) e^{i ( px - Et ) / \hbar} dp
+\psi ( x,t ) = \frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{+ \infty} \phi ( p ) e^{i ( px - Et ) / \hbar} dp
 ```
 
 (We have moved to one dimension for simplicity.) Similarly we can compute the coefficient for each momentum
 
 ```math
-\varphi ( p ) = \frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{\infty} \psi ( x ) e^{- ipx/ \hbar} dx.
+\phi ( p ) = \frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{\infty} \psi ( x ) e^{- ipx/ \hbar} dx.
 ```
 
-These coefficients, $`\varphi ( p )`$, are actually the state function of the particle in momentum space. We can describe the state of a particle either in position space with $`\psi ( x )`$ or in momentum space with $`\varphi ( p )`$. We can use $`\varphi ( p )`$ to compute the probability distribution function for momentum.
+These coefficients, $`\phi ( p )`$, are actually the state function of the particle in momentum space. We can describe the state of a particle either in position space with $`\psi ( x )`$ or in momentum space with $`\phi ( p )`$. We can use $`\phi ( p )`$ to compute the probability distribution function for momentum.
 
 ```math
-P ( p ) = | \varphi ( p ) |^{2}
+P ( p ) = | \phi ( p ) |^{2}
 ```
 
 We will show that wave packets like these behave correctly in the classical limit, vindicating the choice we made for $`\psi_{f reeparticle} ( \vec{x} , t )`$.
@@ -146,7 +146,7 @@ We have a shorthand notation for the expectation value of a variable $`v`$ in th
 We extend the notation from just expectation values to
 
 ```math
-\langle \psi | v | \varphi \rangle \equiv \int_{-\infty}^{\infty} \psi^{*} ( x ) v^{( op )} \varphi ( x ) dx
+\langle \psi | v | \phi \rangle \equiv \int_{-\infty}^{\infty} \psi^{*} ( x ) v^{( op )} \phi ( x ) dx
 ```
 
 <div align="right"><a href="book.pdf#page=19" target="_blank" title="This page in the PDF"><sup>[p. 19]</sup></a></div>
@@ -156,7 +156,7 @@ We extend the notation from just expectation values to
 and
 
 ```math
-\langle \psi | \varphi \rangle \equiv \int_{-\infty}^{\infty} \psi^{*} ( x ) \varphi ( x ) dx
+\langle \psi | \phi \rangle \equiv \int_{-\infty}^{\infty} \psi^{*} ( x ) \phi ( x ) dx
 ```
 
 We use this shorthand **Dirac Bra-Ket notation** a great deal.
@@ -228,33 +228,33 @@ Operators for physical variables must have real eigenvalues. They are called Her
 (In the case of eigenfunctions with the same eigenvalue, called degenerate eigenfunctions, we can must choose linear combinations which are orthogonal to each other.) We will assume that the eigenfunctions also form a complete set so that any wavefunction can be expanded in them,
 
 ```math
-\varphi ( \vec{x} ) = \sum_{i} \alpha_{i} \psi_{i} ( \vec{x} )
+\phi ( \vec{x} ) = \sum_{i} \alpha_{i} \psi_{i} ( \vec{x} )
 ```
 
 where the $`\alpha_{i}`$ are coefficients which can be easily computed (due to orthonormality) by
 
 ```math
-\alpha_{i} = \langle \psi_{i} | \varphi \rangle .
+\alpha_{i} = \langle \psi_{i} | \phi \rangle .
 ```
 
-So now we have another way to represent a state (in addition to position space and momentum space). We can represent a state by giving the coefficients in sum above. (Note that $`\psi_{p} ( x ) = e^{i ( px - Et ) / \hbar}`$ is just an eigenfunction of the momentum operator and $`\varphi_{x} ( p ) = e^{- i ( px - Et ) / \hbar}`$ is just an eigenfunction of the position operator (in p-space) so they also represent and expansion of the state in terms of eigenfunctions.)
+So now we have another way to represent a state (in addition to position space and momentum space). We can represent a state by giving the coefficients in sum above. (Note that $`\psi_{p} ( x ) = e^{i ( px - Et ) / \hbar}`$ is just an eigenfunction of the momentum operator and $`\phi_{x} ( p ) = e^{- i ( px - Et ) / \hbar}`$ is just an eigenfunction of the position operator (in p-space) so they also represent and expansion of the state in terms of eigenfunctions.)
 
-Since the $`\psi_{i}`$ form an orthonormal, complete set, they can be thought of as the unit vectors of a vector space (See section 8.4). The arbitrary wavefunction $`\varphi`$ would then be a vector in that space and could be represented by its coefficients.
+Since the $`\psi_{i}`$ form an orthonormal, complete set, they can be thought of as the unit vectors of a vector space (See section 8.4). The arbitrary wavefunction $`\phi`$ would then be a vector in that space and could be represented by its coefficients.
 
 ```math
-\varphi = \begin{pmatrix} \alpha_{1} \\ \alpha_{2} \\ \alpha_{3} \\ \dots \end{pmatrix}
+\phi = \begin{pmatrix} \alpha_{1} \\ \alpha_{2} \\ \alpha_{3} \\ \dots \end{pmatrix}
 ```
 
-The bra-ket $`\langle \varphi | \psi_{i} \rangle`$ can be thought of as a dot product between the arbitrary vector $`\varphi`$ and one of the unit vectors. We can use the expansion in terms of energy eigenstates to compute many things. In particular, since the time development of the energy eigenstates is very simple,
+The bra-ket $`\langle \phi | \psi_{i} \rangle`$ can be thought of as a dot product between the arbitrary vector $`\phi`$ and one of the unit vectors. We can use the expansion in terms of energy eigenstates to compute many things. In particular, since the time development of the energy eigenstates is very simple,
 
 ```math
 \psi ( \vec{x} , t ) = \psi ( \vec{x} ) e^{- iE_{i} t/ \hbar}
 ```
 
-we can use these eigenstates to follow the time development of an arbitrary state $`\varphi`$
+we can use these eigenstates to follow the time development of an arbitrary state $`\phi`$
 
 ```math
-\varphi ( t ) = \begin{pmatrix} \alpha_{1} e^{- iE_{1} t/ \hbar} \\ \alpha_{2} e^{- iE_{2} t/ \hbar} \\ \alpha_{3} e^{- iE_{3} t/ \hbar} \\ \dots \end{pmatrix}
+\phi ( t ) = \begin{pmatrix} \alpha_{1} e^{- iE_{1} t/ \hbar} \\ \alpha_{2} e^{- iE_{2} t/ \hbar} \\ \alpha_{3} e^{- iE_{3} t/ \hbar} \\ \dots \end{pmatrix}
 ```
 
 simply by computing the coefficients $`\alpha_{i}`$ at $`t = 0`$.
@@ -408,7 +408,7 @@ V ( x ) = - aV_{0} \sum_{n = -\infty}^{\infty} \delta ( x - na )
 This has a infinite, periodic array of delta functions, so this might be applicable to a crystal. The solution to this is a bit tricky but it comes down to
 
 ```math
-\cos ( \varphi ) = \cos ( ka ) + \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) .
+\cos ( \phi ) = \cos ( ka ) + \frac{2 maV_{0}}{\hbar^{2} k} \sin ( ka ) .
 ```
 
 Since the right hand side of the equation can be bigger than 1.0 (or less than -1), there are regions of $`E = \tfrac{\hbar^{2} k^{2}}{2 m}`$ which do not have solutions. There are also bands of energies with solutions. These energy bands are seen in crystals (like Si).
@@ -696,13 +696,13 @@ With this the kinetic energy part of our equation will only have derivatives in 
 The **Schrödinger equation thus separates** into an angular part (the $`L^{2}`$ term) and a radial part (the rest). With this separation we expect (anticipating the angular solution a bit)
 
 ```math
-u_{E} ( \vec{r} ) = R_{E\ell} ( r ) Y_{\ell m} ( \theta ,\varphi )
+u_{E} ( \vec{r} ) = R_{E\ell} ( r ) Y_{\ell m} ( \theta ,\phi )
 ```
 
-will be a solution. The $`Y_{\ell m} ( \theta ,\varphi )`$ will be eigenfunctions of $`L^{2}`$
+will be a solution. The $`Y_{\ell m} ( \theta ,\phi )`$ will be eigenfunctions of $`L^{2}`$
 
 ```math
-L^{2} Y_{\ell m} ( \theta ,\varphi ) = \ell ( \ell + 1 ) \hbar^{2} Y_{\ell m} ( \theta ,\varphi )
+L^{2} Y_{\ell m} ( \theta ,\phi ) = \ell ( \ell + 1 ) \hbar^{2} Y_{\ell m} ( \theta ,\phi )
 ```
 
 so the radial equation becomes
@@ -716,11 +716,11 @@ We must come back to this equation for each $`V ( r )`$ which we want to solve.
 We **solve the angular part of the problem in general** using angular momentum operators. We find that **angular momentum is quantized**.
 
 ```math
-L_{z} Y_{\ell m} ( \theta ,\varphi ) = m \hbar Y_{\ell m} ( \theta ,\varphi )
+L_{z} Y_{\ell m} ( \theta ,\phi ) = m \hbar Y_{\ell m} ( \theta ,\phi )
 ```
 
 ```math
-L^{2} Y_{\ell m} ( \theta ,\varphi ) = \ell ( \ell + 1 ) \hbar^{2} Y_{\ell m} ( \theta ,\varphi )
+L^{2} Y_{\ell m} ( \theta ,\phi ) = \ell ( \ell + 1 ) \hbar^{2} Y_{\ell m} ( \theta ,\phi )
 ```
 
 with $`\ell`$ and $`m`$ integers satisfying the condition $`- \ell \leq m \leq \ell`$. The operators that **raise and lower the** $`z`$ **component** of angular momentum are
@@ -733,7 +733,7 @@ L_{\pm} = L_{x} \pm iL_{y}
 L_{\pm} Y_{\ell m} = \hbar \sqrt{\ell ( \ell + 1 ) - m ( m \pm 1 )} Y_{\ell ( m \pm 1 )}
 ```
 
-We derive the functional form of the **Spherical Harmonics** $`Y_{\ell m} ( \theta ,\varphi )`$ using the differential form of the angular momentum operators.
+We derive the functional form of the **Spherical Harmonics** $`Y_{\ell m} ( \theta ,\phi )`$ using the differential form of the angular momentum operators.
 
 <div align="right"><a href="book.pdf#page=29" target="_blank" title="This page in the PDF"><sup>[p. 29]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
@@ -781,7 +781,7 @@ n = n_{r} + \ell + 1
 
 where $`n_{r}`$ is the number of nodes in the radial wavefunction. It is an odd feature of Hydrogen that a radial excitation and an angular excitation have the same energy.
 
-So a Hydrogen **energy eigenstate** $`\psi_{n\ell m} ( \vec{x} ) = R_{n\ell} ( r ) Y_{\ell m} ( \theta ,\varphi )`$ is described by three integer quantum numbers with the requirements that $`n \geq 1`$, $`\ell <n`$ and also an integer, and $`- l \leq m \leq \ell`$. The ground state of Hydrogen is $`\psi_{1 0 0}`$ and has energy of -13.6 eV. We compute several of the lowest energy eigenstates.
+So a Hydrogen **energy eigenstate** $`\psi_{n\ell m} ( \vec{x} ) = R_{n\ell} ( r ) Y_{\ell m} ( \theta ,\phi )`$ is described by three integer quantum numbers with the requirements that $`n \geq 1`$, $`\ell <n`$ and also an integer, and $`- l \leq m \leq \ell`$. The ground state of Hydrogen is $`\psi_{1 0 0}`$ and has energy of -13.6 eV. We compute several of the lowest energy eigenstates.
 
 The diagram below shows the lowest energy bound states of Hydrogen and their typical decays.
 
@@ -916,7 +916,7 @@ The last two lines state that the Pauli matrices anti-commute. The $`\sigma`$ ma
 The **classical Hamiltonian** for a particle in an Electromagnetic field is
 
 ```math
-H = \frac{1}{2 m} \left( \vec{p} + \frac{e}{c} \vec{A} \right)^{2} - e\varphi
+H = \frac{1}{2 m} \left( \vec{p} + \frac{e}{c} \vec{A} \right)^{2} - e\phi
 ```
 
 where $`e`$ is defined to be a positive number. This Hamiltonian gives the correct Lorentz force law. Note that the momentum operator will now include momentum in the field, not just the particle’s momentum. As this Hamiltonian is written, $`\vec{p}`$ is the variable conjugate to $`\vec{r}`$ and is related to the velocity by $`\vec{p} = m \vec{v} - \tfrac{e}{c} \vec{A}`$.
@@ -934,7 +934,7 @@ In Quantum Mechanics, the momentum operator is replaced (See section 20) in the 
 Starting from the above Hamiltonian, we derive the **Hamiltonian for a particle in a constant magnetic field**.
 
 ```math
-\frac{- \hbar^{2}}{2 m} \nabla^{2} \psi + \frac{e}{2 mc} \vec{B} \cdot \vec{L} \psi + \frac{e^{2}}{8 mc^{2}} \left( r^{2} B^{2} - ( \vec{r} \cdot \vec{B} )^{2} \right) \psi = ( E + e\varphi ) \psi
+\frac{- \hbar^{2}}{2 m} \nabla^{2} \psi + \frac{e}{2 mc} \vec{B} \cdot \vec{L} \psi + \frac{e^{2}}{8 mc^{2}} \left( r^{2} B^{2} - ( \vec{r} \cdot \vec{B} )^{2} \right) \psi = ( E + e\phi ) \psi
 ```
 
 This has the familiar effect of a magnetic moment parallel to the angular momentum vector, plus some additional terms which are very small for atoms in fields realizable in the laboratory.
@@ -968,7 +968,7 @@ There is a symmetry in physics which we might call the **Local Phase Symmetry** 
 ```
 
 ```math
-\varphi \quad \to \quad \varphi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t}
+\phi \quad \to \quad \phi + \frac{1}{c} \frac{\partial f ( \vec{r} , t )}{\partial t}
 ```
 
 The local phase symmetry requires that Electromagnetism exist and have a gauge symmetry so that we can keep the Schrödinger Equation invariant under this phase transformation.
@@ -1093,7 +1093,7 @@ E_{n} = E_{n}^{( 0 )} + E_{n}^{( 1 )} + E_{n}^{( 2 )} + \dots
 ```
 
 ```math
-\psi_{n} = N \left( \varphi_{n} + \sum_{k \neq n} c_{nk} \varphi_{k} \right)
+\psi_{n} = N \left( \phi_{n} + \sum_{k \neq n} c_{nk} \phi_{k} \right)
 ```
 
 ```math
@@ -1105,15 +1105,15 @@ where the superscript (0), (1), (2) are the zeroth, first, and second order term
 By solving the Schrödinger equation at each order of the perturbation series, we **compute the corrections to the energies and eigenfunctions.** (see section 22.4.1) We just give the first few terms above.
 
 ```math
-E_{n}^{( 1 )} = \langle \varphi_{n} | H_{1} | \varphi_{n} \rangle
+E_{n}^{( 1 )} = \langle \phi_{n} | H_{1} | \phi_{n} \rangle
 ```
 
 ```math
-c_{nk}^{( 1 )} = \tfrac{\langle \varphi_{k} | H_{1} | \varphi_{n} \rangle}{E_{n}^{( 0 )} - E_{k}^{( 0 )}}
+c_{nk}^{( 1 )} = \tfrac{\langle \phi_{k} | H_{1} | \phi_{n} \rangle}{E_{n}^{( 0 )} - E_{k}^{( 0 )}}
 ```
 
 ```math
-E_{n}^{( 2 )} = \sum_{k \neq n} \tfrac{| \langle \varphi_{k} | H_{1} | \varphi_{n} \rangle |^{2}}{E_{n}^{( 0 )} - E_{k}^{( 0 )}}
+E_{n}^{( 2 )} = \sum_{k \neq n} \tfrac{| \langle \phi_{k} | H_{1} | \phi_{n} \rangle |^{2}}{E_{n}^{( 0 )} - E_{k}^{( 0 )}}
 ```
 
 <div align="right"><a href="book.pdf#page=37" target="_blank" title="This page in the PDF"><sup>[p. 37]</sup></a></div>
@@ -1123,7 +1123,7 @@ E_{n}^{( 2 )} = \sum_{k \neq n} \tfrac{| \langle \varphi_{k} | H_{1} | \varphi_{
 A problem arises in the case of **degenerate states** or nearly degenerate states. The energy denominator in the last equation above is small and the series does not converge. To handle this case, we need to rediagonalize the full Hamiltonian in the subspace of nearly degenerate states.
 
 ```math
-\sum_{i \in \mathcal{N}} \langle \varphi_{n}^{( j )} | H | \varphi_{n}^{( i )} \rangle \alpha_{i} = E_{n} \alpha_{j} .
+\sum_{i \in \mathcal{N}} \langle \phi_{n}^{( j )} | H | \phi_{n}^{( i )} \rangle \alpha_{i} = E_{n} \alpha_{j} .
 ```
 
 This is just the standard eigenvalue problem for the full Hamiltonian in the **subspace of (nearly) degenerate states.**
@@ -1229,7 +1229,7 @@ Note that the **perturbation due to the repulsion between the two electrons** is
 The **Helium ground state has two electrons in the 1s level**. Since the spatial state is symmetric, the spin part of the state must be antisymmetric so $`s = 0`$ (as it always is for closed shells). For our zeroth order energy eigenstates, we will use **product states of Hydrogen wavefunctions**
 
 ```math
-u ( \vec{r}_{1} , \vec{r}_{2} ) = \varphi_{n_{1} \ell_{1} m_{1}} ( \vec{r}_{1} ) \varphi_{n_{2} \ell_{2} m_{2}} ( \vec{r}_{2} )
+u ( \vec{r}_{1} , \vec{r}_{2} ) = \phi_{n_{1} \ell_{1} m_{1}} ( \vec{r}_{1} ) \phi_{n_{2} \ell_{2} m_{2}} ( \vec{r}_{2} )
 ```
 
 and ignore the perturbation. The energy for two electrons in the (1s) state for $`Z = 2`$ is then $`4 \alpha^{2} mc^{2} = 108 . 8`$ eV.
@@ -1273,7 +1273,7 @@ We have seen that the coulomb repulsion between electrons is a very large correc
 The physics of **closed shells** and angular momentum enable us to make sense of even the most complex atoms. When we have enough electrons to fill a shell, say the 1s or 2p, The resulting electron distribution is spherically symmetric because
 
 ```math
-\sum_{m = - \ell}^{\ell} | Y_{\ell m} ( \theta ,\varphi ) |^{2} = \frac{2 \ell + 1}{4 \pi} .
+\sum_{m = - \ell}^{\ell} | Y_{\ell m} ( \theta ,\phi ) |^{2} = \frac{2 \ell + 1}{4 \pi} .
 ```
 
 With all the states filled and the relative phases determined by the antisymmetry required by Pauli, the quantum numbers of the closed shell are determined. **There is only one possible state representing a closed shell** and the quantum numbers are
@@ -1346,7 +1346,7 @@ We derive an equation for the **rate of change of the amplitude to be in the** $
 i \hbar \frac{\partial c_{n} ( t )}{\partial t} = \sum_{k} \mathcal{V}_{nk} ( t ) c_{k} ( t ) e^{i ( E_{n} - E_{k} ) t/ \hbar}
 ```
 
-Assuming that at $`t = 0`$ the quantum system starts out in some **initial state** $`\varphi_{i}`$, we derive the **amplitude to be in a final state** $`\varphi_{n}`$.
+Assuming that at $`t = 0`$ the quantum system starts out in some **initial state** $`\phi_{i}`$, we derive the **amplitude to be in a final state** $`\phi_{n}`$.
 
 ```math
 c_{n} ( t ) = \frac{1}{i \hbar} \int_{0}^{t} e^{i\omega_{ni} t^{\prime}} \mathcal{V}_{ni} ( t^{\prime} ) dt^{\prime}
@@ -1409,7 +1409,7 @@ which can cause decays of atomic states.
 Plugging this $`N = 0`$ field into the first order time dependent perturbation equations, the decay rate for an atomic state can be computed.
 
 ```math
-\Gamma_{i \to n} = \frac{( 2 \pi )^{2} e^{2}}{m^{2} \omega V} | \langle \varphi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon} \cdot \vec{p} | \varphi_{i} \rangle |^{2} \delta ( E_{n} - E_{i} + \hbar \omega )
+\Gamma_{i \to n} = \frac{( 2 \pi )^{2} e^{2}}{m^{2} \omega V} | \langle \phi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon} \cdot \vec{p} | \phi_{i} \rangle |^{2} \delta ( E_{n} - E_{i} + \hbar \omega )
 ```
 
 The absolute square of the time integral from perturbation theory yields the delta function of energy conservation.
@@ -1439,7 +1439,7 @@ d^{3} n = \tfrac{L^{3}}{( 2 \pi )^{3}} d^{3} k = \tfrac{V}{( 2 \pi )^{3}} d^{3} 
 With this **phase space integral** done aided by the delta function, the general formula for the decay rate is
 
 ```math
-\Gamma_{tot} = \frac{e^{2} ( E_{i} - E_{n} )}{2 \pi \hbar^{2} m^{2} c^{3}} \sum_{\lambda} \int d \Omega_{\gamma} | \langle \varphi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \lambda )} \cdot \vec{p}_{e} | \varphi_{i} \rangle |^{2} .
+\Gamma_{tot} = \frac{e^{2} ( E_{i} - E_{n} )}{2 \pi \hbar^{2} m^{2} c^{3}} \sum_{\lambda} \int d \Omega_{\gamma} | \langle \phi_{n} | e^{- i \vec{k} \cdot \vec{r}} \hat{\epsilon}^{( \lambda )} \cdot \vec{p}_{e} | \phi_{i} \rangle |^{2} .
 ```
 
 This decay rate still contains the integral over photon directions and a sum over final state polarization.
@@ -1453,7 +1453,7 @@ e^{- i \vec{k} \cdot \vec{r}} \approx 1
 which is valid if the wavelength of the photon is much larger than the size of the atom. With the help of some commutation relations, the decay rate formula becomes
 
 ```math
-\Gamma_{tot} = \frac{\alpha \omega_{in}^{3}}{2 \pi c^{2}} \sum_{\lambda} \int d \Omega_{\gamma} | \hat{\epsilon} \cdot \langle \varphi_{n} | \vec{r} | \varphi_{i} \rangle |^{2} .
+\Gamma_{tot} = \frac{\alpha \omega_{in}^{3}}{2 \pi c^{2}} \sum_{\lambda} \int d \Omega_{\gamma} | \hat{\epsilon} \cdot \langle \phi_{n} | \vec{r} | \phi_{i} \rangle |^{2} .
 ```
 
 The atomic matrix element of the vector operator $`\vec{r}`$ is zero unless certain constraints on the angular momentum of initial and final states are satisfied. The selection rules for electric dipole (E1) transitions are:
@@ -1493,7 +1493,7 @@ This can be used to easily compute decay rates for Hydrogen, for example the 2p 
 The total decay rate is related to the energy width of an excited state, as might be expected from the uncertainty principle. The Full Width at Half Maximum (FWHM) of the energy distribution of a state is $`\hbar \Gamma_{tot}`$. The distribution in frequency follows a Breit-Wigner distribution.
 
 ```math
-I_{i} ( \omega ) = | \varphi_{i} ( \omega ) |^{2} = \frac{1}{( \omega - \omega_{0} )^{2} + \tfrac{\Gamma^{2}}{4}}
+I_{i} ( \omega ) = | \phi_{i} ( \omega ) |^{2} = \frac{1}{( \omega - \omega_{0} )^{2} + \tfrac{\Gamma^{2}}{4}}
 ```
 
 In addition to the inherent energy width of a state, other effects can influence measured widths, including collision broadening, Doppler broadening, and atomic recoil.
@@ -1513,19 +1513,19 @@ using the $`i`$ to get a $`-`$ in the time term in a dot product (instead of usi
 A Lorentz scalar Lagrangian density will be derived for each field theory we construct. From the Lagrangian we can derive a field equation called the Euler-Lagrange equation.
 
 ```math
-\frac{\partial}{\partial x_{\mu}} \left( \frac{\partial \mathcal{L}}{\partial ( \partial \varphi /\partial x_{\mu} )} \right) - \frac{\partial \mathcal{L}}{\partial \varphi} = 0
+\frac{\partial}{\partial x_{\mu}} \left( \frac{\partial \mathcal{L}}{\partial ( \partial \phi /\partial x_{\mu} )} \right) - \frac{\partial \mathcal{L}}{\partial \phi} = 0
 ```
 
-The Lagrangian for a massive scalar field $`\varphi`$ can be deduced from the requirement that it be a scalar
+The Lagrangian for a massive scalar field $`\phi`$ can be deduced from the requirement that it be a scalar
 
 ```math
-\mathcal{L} = - \frac{1}{2} \left( \frac{\partial \varphi}{\partial x_{\nu}} \frac{\partial \varphi}{\partial x_{\nu}} + \mu^{2} \varphi^{2} \right) + \varphi \rho
+\mathcal{L} = - \frac{1}{2} \left( \frac{\partial \phi}{\partial x_{\nu}} \frac{\partial \phi}{\partial x_{\nu}} + \mu^{2} \phi^{2} \right) + \phi \rho
 ```
 
 where the last term is the interaction with a source. The Euler-Lagrange equation gives
 
 ```math
-\frac{\partial}{\partial x_{\mu}} \frac{\partial}{\partial x_{\mu}} \varphi - \mu^{2} \varphi = \rho
+\frac{\partial}{\partial x_{\mu}} \frac{\partial}{\partial x_{\mu}} \phi - \mu^{2} \phi = \rho
 ```
 
 which is the known as the **Klein-Gordon equation** with a source and is a reasonable relativistic equation for a scalar field.
@@ -1533,7 +1533,7 @@ which is the known as the **Klein-Gordon equation** with a source and is a reaso
 Using Fourier transforms, the field from a point source can be computed.
 
 ```math
-\varphi ( \vec{x} ) = \frac{- Ge^{- \mu r}}{4 \pi r}
+\phi ( \vec{x} ) = \frac{- Ge^{- \mu r}}{4 \pi r}
 ```
 
 <div align="right"><a href="book.pdf#page=46" target="_blank" title="This page in the PDF"><sup>[p. 46]</sup></a></div>
@@ -1555,7 +1555,7 @@ F_{\mu \nu} = \begin{pmatrix} 0 & B_{z} & - B_{y} & - iE_{x} \\ - B_{z} & 0 & B_
 This field tensor can simply be written in terms of the **vector potential**, (which is a Lorentz vector).
 
 ```math
-A_{\mu} = ( \vec{A} ,i\varphi )
+A_{\mu} = ( \vec{A} ,i\phi )
 ```
 
 ```math
@@ -1808,7 +1808,7 @@ Even in classical electromagnetism, if one can calculates the energy needed to a
 
 The quantum self energy correction has important, measurable effects. It causes observable energy shifts in Hydrogen and it helps us solve the problem of infinities due to energy denominators from intermediate states.
 
-The coupled differential equations from first order perturbation theory for the state under study $`\varphi_{n}`$ and intermediate states $`\psi_{j}`$ may be solved for the self energy correction.
+The coupled differential equations from first order perturbation theory for the state under study $`\phi_{n}`$ and intermediate states $`\psi_{j}`$ may be solved for the self energy correction.
 
 ```math
 \Delta E_{n} = \sum_{\vec{k} ,\alpha} \sum_{j} | H_{nj} |^{2} \frac{1 - e^{i ( \omega_{nj} - \omega ) t}}{\hbar ( \omega_{nj} - \omega )}
@@ -1859,13 +1859,13 @@ In 1947, Willis E. Lamb and R. C. Retherford used microwave techniques to determ
 Our goal is to find the analog of the Schrödinger equation for relativistic spin one-half particles (See section 36), however, we should note that even in the Schrödinger equation, the interaction of the field with spin was rather ad hoc. There was no explanation of the gyromagnetic ratio of 2. One can incorporate spin into the non-relativistic equation by using the **Schrödinger-Pauli Hamiltonian** which contains the dot product of the Pauli matrices with the momentum operator.
 
 ```math
-H = \frac{1}{2 m} \left( \vec{\sigma} \cdot [ \vec{p} + \frac{e}{c} \vec{A} ( \vec{r} , t ) ] \right)^{2} - e\varphi ( \vec{r} , t )
+H = \frac{1}{2 m} \left( \vec{\sigma} \cdot [ \vec{p} + \frac{e}{c} \vec{A} ( \vec{r} , t ) ] \right)^{2} - e\phi ( \vec{r} , t )
 ```
 
 A little computation shows that this gives the correct interaction with spin.
 
 ```math
-H = \frac{1}{2 m} [ \vec{p} + \frac{e}{c} \vec{A} ( \vec{r} , t ) ]^{2} - e\varphi ( \vec{r} , t ) + \frac{e \hbar}{2 mc} \vec{\sigma} \cdot \vec{B} ( \vec{r} , t )
+H = \frac{1}{2 m} [ \vec{p} + \frac{e}{c} \vec{A} ( \vec{r} , t ) ]^{2} - e\phi ( \vec{r} , t ) + \frac{e \hbar}{2 mc} \vec{\sigma} \cdot \vec{B} ( \vec{r} , t )
 ```
 
 This Hamiltonian acts on a two component spinor.
@@ -1881,20 +1881,20 @@ We can **extend this concept to use the relativistic energy equation**. The idea
 ```
 
 ```math
-\left( i \hbar \frac{\partial}{\partial x_{0}} + i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \left( i \hbar \frac{\partial}{\partial x_{0}} - i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \varphi = ( mc )^{2} \varphi
+\left( i \hbar \frac{\partial}{\partial x_{0}} + i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \left( i \hbar \frac{\partial}{\partial x_{0}} - i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \phi = ( mc )^{2} \phi
 ```
 
 Instead of an equation which is second order in the time derivative, we can make a first order equation, like the Schrödinger equation, by extending this equation to four components.
 
 ```math
-\varphi^{( L )} = \varphi
+\phi^{( L )} = \phi
 ```
 
 ```math
-\varphi^{( R )} = \frac{1}{mc} \left( i \hbar \frac{\partial}{\partial x_{0}} - i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \varphi^{( L )}
+\phi^{( R )} = \frac{1}{mc} \left( i \hbar \frac{\partial}{\partial x_{0}} - i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \phi^{( L )}
 ```
 
-Now rewriting in terms of $`\psi_{A} = \varphi^{( R )} + \varphi^{( L )}`$ and $`\psi_{B} = \varphi^{( R )} - \varphi^{( L )}`$ and ordering it as a matrix equation, we get an equation that can be written as a dot product between 4-vectors.
+Now rewriting in terms of $`\psi_{A} = \phi^{( R )} + \phi^{( L )}`$ and $`\psi_{B} = \phi^{( R )} - \phi^{( L )}`$ and ordering it as a matrix equation, we get an equation that can be written as a dot product between 4-vectors.
 
 ```math
 \begin{pmatrix} - i \hbar \tfrac{\partial}{\partial x_{0}} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} = \hbar \left[ \begin{pmatrix} 0 & - i \vec{\sigma} \cdot \vec{\nabla} \\ i \vec{\sigma} \cdot \vec{\nabla} & 0 \end{pmatrix} + \begin{pmatrix} \tfrac{\partial}{\partial x_{4}} & 0 \\ 0 & - \tfrac{\partial}{\partial x_{4}} \end{pmatrix} \right]

@@ -22,12 +22,12 @@ We have seen that the coulomb repulsion between electrons is a very large correc
 The physics of **closed shells** and angular momentum enable us to make sense of even the most complex atoms. Because of the Pauli principle, we can put only one electron into each state. When we have enough electrons to fill a shell, say the 1s or 2p, The resulting electron distribution is spherically symmetric because
 
 ```math
-\sum_{m = - \ell}^{\ell} | Y_{\ell m} ( \theta ,\varphi ) |^{2} = \frac{2 \ell + 1}{4 \pi} .
+\sum_{m = - \ell}^{\ell} | Y_{\ell m} ( \theta ,\phi ) |^{2} = \frac{2 \ell + 1}{4 \pi} .
 ```
 
 With all the states filled and the relative phases determined by the antisymmetry required by Pauli, the quantum numbers of the closed shell are determined. **There is only one possible state representing a closed shell.**
 
-As in Helium, the two electrons in the same spatial state, $`\varphi_{n\ell m}`$, must by symmetric in space and hence antisymmetric in spin. This implies each pair of electrons has a total spin of 0. Adding these together gives a total spin state with $`s = 0`$, which is antisymmetric under interchange. The spatial state must be totally symmetric under interchange and, since all the states in the shell have the same $`n`$ and $`\ell`$, it is the different $`m`$ states which are symmetrized. This can be shown to give us a total $`\ell = 0`$ state.
+As in Helium, the two electrons in the same spatial state, $`\phi_{n\ell m}`$, must by symmetric in space and hence antisymmetric in spin. This implies each pair of electrons has a total spin of 0. Adding these together gives a total spin state with $`s = 0`$, which is antisymmetric under interchange. The spatial state must be totally symmetric under interchange and, since all the states in the shell have the same $`n`$ and $`\ell`$, it is the different $`m`$ states which are symmetrized. This can be shown to give us a total $`\ell = 0`$ state.
 
 So the **closed shell contributes a spherically symmetric charge and spin distribution** with the quantum numbers
 
@@ -60,12 +60,12 @@ The effect of screening not only breaks the degeneracy between states with the s
 The Hartree method allows us to to change the 3$`Z`$ dimensional Schrödinger equation ($`Z`$ electrons in 3 dimensions) into a 3 dimensional **equation for each electron**. This equation depends on the wavefunctions of the other electrons but can be solved in a self consistent way using the variational principle and iterating.
 
 ```math
-\begin{aligned} \psi &= \varphi_{1} ( \vec{r}_{1} ) \varphi_{2} ( \vec{r}_{2} ) \dots \varphi_{Z} ( \vec{r}_{Z} ) \\ \left[ \frac{- \hbar^{2}}{2 m} \nabla_{i}^{2} - \frac{Ze^{2}}{r_{i}} + e^{2} \sum_{j \neq i} \int d^{3} r_{j} \frac{| \varphi_{j} ( \vec{r}_{j} ) |^{2}}{| \vec{r}_{i} - \vec{r}_{j} |} \right] \varphi_{i} ( \vec{r}_{i} ) &= \epsilon_{i} \varphi_{i} ( \vec{r}_{i} ) \end{aligned}
+\begin{aligned} \psi &= \phi_{1} ( \vec{r}_{1} ) \phi_{2} ( \vec{r}_{2} ) \dots \phi_{Z} ( \vec{r}_{Z} ) \\ \left[ \frac{- \hbar^{2}}{2 m} \nabla_{i}^{2} - \frac{Ze^{2}}{r_{i}} + e^{2} \sum_{j \neq i} \int d^{3} r_{j} \frac{| \phi_{j} ( \vec{r}_{j} ) |^{2}}{| \vec{r}_{i} - \vec{r}_{j} |} \right] \phi_{i} ( \vec{r}_{i} ) &= \epsilon_{i} \phi_{i} ( \vec{r}_{i} ) \end{aligned}
 ```
 
-In the Hartree equation above, $`\epsilon_{i}`$ represents the energy contribution of electron $`i`$. The term $`e^{2} \sum_{j \neq i} \int d^{3} r_{j} \tfrac{| \varphi_{j} ( \vec{r}_{j} ) |^{2}}{| \vec{r}_{i} - \vec{r}_{j} |}`$ represents the potential due to the other electrons in which electron $`i`$ moves.
+In the Hartree equation above, $`\epsilon_{i}`$ represents the energy contribution of electron $`i`$. The term $`e^{2} \sum_{j \neq i} \int d^{3} r_{j} \tfrac{| \phi_{j} ( \vec{r}_{j} ) |^{2}}{| \vec{r}_{i} - \vec{r}_{j} |}`$ represents the potential due to the other electrons in which electron $`i`$ moves.
 
-In this equation we can formally see the effect of screening by the other electrons. The equation is derived (see Gasiorowicz pp 309-311) from the Schrödinger equation using $`\psi = \varphi_{1} \varphi_{2} \dots \varphi_{Z}`$. Since we will not apply these equations to solve problems, we will not go into the derivation, however, it is useful to know how one might proceed to solve more difficult problems.
+In this equation we can formally see the effect of screening by the other electrons. The equation is derived (see Gasiorowicz pp 309-311) from the Schrödinger equation using $`\psi = \phi_{1} \phi_{2} \dots \phi_{Z}`$. Since we will not apply these equations to solve problems, we will not go into the derivation, however, it is useful to know how one might proceed to solve more difficult problems.
 
 An improved formalism known as the Hartree-Fock equations, accounts for the required antisymmetry and gives slightly different results.
 

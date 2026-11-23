@@ -630,10 +630,10 @@ Hence
 <a id="eq-466"></a>
 
 ```math
-\overline{\sigma} = \tfrac{1}{4} r_{o}^{2} d \Omega \left( \frac{k_{0}^{\prime}}{k_{0}} \right)^{2} \left\{ \frac{( k_{0} - k_{0}^{\prime} )^{2}}{k_{0} k_{0}^{\prime}} + 4 \cos^{2} \varphi \right\} \qquad \text{(466)}
+\overline{\sigma} = \tfrac{1}{4} r_{o}^{2} d \Omega \left( \frac{k_{0}^{\prime}}{k_{0}} \right)^{2} \left\{ \frac{( k_{0} - k_{0}^{\prime} )^{2}}{k_{0} k_{0}^{\prime}} + 4 \cos^{2} \phi \right\} \qquad \text{(466)}
 ```
 
-where $`\varphi`$ is the angle between the polarizations of the incident quantum $`k_{0}`$ and the emitted quantum $`k_{0}^{\prime}`$. This is the famous _Klein-Nishina formula_.
+where $`\phi`$ is the angle between the polarizations of the incident quantum $`k_{0}`$ and the emitted quantum $`k_{0}^{\prime}`$. This is the famous _Klein-Nishina formula_.
 
 To put $`\overline{\sigma}`$ explicitly as a function of the scattering angle $`\theta`$, we must use the equations<sup><a id="fnref-61" href="#fn-61">61</a></sup>
 
@@ -664,7 +664,7 @@ Then
 <a id="eq-467"></a>
 
 ```math
-\overline{\sigma} = \tfrac{1}{4} r_{o}^{2} d \Omega \frac{\left( \frac{( 1 - \cos \theta )^{2} \epsilon^{2}}{1 + \epsilon ( 1 - \cos \theta )} + 4 \cos^{2} \varphi \right)}{[ 1 + \epsilon ( 1 - \cos \theta ) ]^{2}} \qquad \text{(467)}
+\overline{\sigma} = \tfrac{1}{4} r_{o}^{2} d \Omega \frac{\left( \frac{( 1 - \cos \theta )^{2} \epsilon^{2}}{1 + \epsilon ( 1 - \cos \theta )} + 4 \cos^{2} \phi \right)}{[ 1 + \epsilon ( 1 - \cos \theta ) ]^{2}} \qquad \text{(467)}
 ```
 
 Thus for large $`\epsilon`$ the scattered photons are mainly unpolarized and concentrated in the forward direction. For small $`\epsilon`$ (non-relativistic problem) we have simply<sup><a id="fnref-62" href="#fn-62">62</a></sup>
@@ -672,7 +672,7 @@ Thus for large $`\epsilon`$ the scattered photons are mainly unpolarized and con
 <a id="eq-468"></a>
 
 ```math
-\overline{\sigma} = r_{o}^{2} \cos^{2} \varphi d \Omega \qquad \text{(468)}
+\overline{\sigma} = r_{o}^{2} \cos^{2} \phi d \Omega \qquad \text{(468)}
 ```
 
 the classical result. Summing over the two polarizations of the photon $`k^{\prime}`$ and averaging over all polarizations of $`k`$, this gives the cross-section for all polarizations

@@ -212,10 +212,10 @@ Here, $`E`$ is a constant. The **full time dependent solution** is.
 <a id="p130" href="book.pdf#page=130" target="_blank" title="This page in the PDF"><sup>[p. 130]</sup></a>
 
 ```math
-L ( a\psi + b\varphi ) = aL\psi + bL\varphi
+L ( a\psi + b\phi ) = aL\psi + bL\phi
 ```
 
-where $`a`$ and $`b`$ are arbitrary constants and $`\psi`$ and $`\varphi`$ are arbitrary wave-functions. A multiplicative constant is a simple linear operator. Differential operators clearly are linear also.
+where $`a`$ and $`b`$ are arbitrary constants and $`\psi`$ and $`\phi`$ are arbitrary wave-functions. A multiplicative constant is a simple linear operator. Differential operators clearly are linear also.
 
 An example of a non-linear operator (which we will not use) is $`N`$ which has the property
 

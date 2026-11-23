@@ -22,7 +22,7 @@ u_{p 0} ( x,t ) = \frac{1}{\sqrt{2 \pi \hbar}} e^{i ( p_{0} x - E_{0} t ) / \hba
 We can build any other state from superpositions of these states using the Fourier Transform.
 
 ```math
-\psi ( x,t ) = \int_{-\infty}^{\infty} \varphi ( p ) u_{p} ( x,t ) dp
+\psi ( x,t ) = \int_{-\infty}^{\infty} \phi ( p ) u_{p} ( x,t ) dp
 ```
 
 ## <a id="s-6-1-1-the-momentum-operator"></a>6.1.1 The Momentum Operator
@@ -44,7 +44,7 @@ We can verify (See section 6.6.1) that this works by explicit calculation.
 If we take our momentum operator and **act on a arbitrary state**,
 
 ```math
-p^{( op )} \psi ( x,t ) = p^{( op )} \int_{-\infty}^{\infty} \varphi ( p ) u_{p} ( x,t ) dp = \int_{-\infty}^{\infty} \varphi ( p ) pu_{p} ( x,t ) dp
+p^{( op )} \psi ( x,t ) = p^{( op )} \int_{-\infty}^{\infty} \phi ( p ) u_{p} ( x,t ) dp = \int_{-\infty}^{\infty} \phi ( p ) pu_{p} ( x,t ) dp
 ```
 
 it gives us the right $`p`$ for each term in the integral. This will allow us to compute expectation values for any variable we can represent by an operator.
@@ -109,7 +109,7 @@ and
 p^{( op )} = p.
 ```
 
-The $`( op )`$ notation used above is usually dropped. If we see the variable $`p`$, use of the operator is implied (except in state written in terms of $`p`$ like $`\varphi ( p )`$).
+The $`( op )`$ notation used above is usually dropped. If we see the variable $`p`$, use of the operator is implied (except in state written in terms of $`p`$ like $`\phi ( p )`$).
 
 ## <a id="s-gasiorowicz-chapter-3"></a>Gasiorowicz Chapter 3
 
@@ -173,7 +173,7 @@ This dot product projects the state $`\psi_{2}`$ onto $`\psi_{1}`$ and represent
 
 To find the probability amplitude for our particle to by at any position $`x`$, we dot the state of definite $`x`$ into our state $`\psi . \psi ( x ) = \langle x | \psi \rangle`$
 
-To find the probability amplitude for our particle to have a momentum $`p`$, we dot the state of definite $`x`$ into our state $`\psi . \varphi ( p ) = \langle p | \psi \rangle`$
+To find the probability amplitude for our particle to have a momentum $`p`$, we dot the state of definite $`x`$ into our state $`\psi . \phi ( p ) = \langle p | \psi \rangle`$
 
 # <a id="s-6-5-commutators"></a>6.5 Commutators
 
@@ -212,7 +212,7 @@ We will also use commutators to solve several important problems.
 We can compute the **same commutator in momentum space**.
 
 ```math
-[ p,x ] \varphi = [ p,i \hbar \frac{d}{dp} ] \varphi = i \hbar \left( p \frac{d}{dp} \varphi - \frac{d}{dp} p\varphi \right) = i \hbar ( - \varphi ) = \frac{\hbar}{i} \varphi
+[ p,x ] \phi = [ p,i \hbar \frac{d}{dp} ] \phi = i \hbar \left( p \frac{d}{dp} \phi - \frac{d}{dp} p\phi \right) = i \hbar ( - \phi ) = \frac{\hbar}{i} \phi
 ```
 
 ```math

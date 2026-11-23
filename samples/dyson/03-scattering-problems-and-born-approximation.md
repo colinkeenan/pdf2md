@@ -325,30 +325,30 @@ taking the <a id="ix-39">Coulomb potential</a> of the nuclear charge and ignorin
 <a id="eq-128"></a>
 
 ```math
-\int \left\{ \phi ( - e\psi^{*} \psi ) - \sum_{k} A_{k} ( - e\psi^{*} \alpha_{k} \psi ) \right\} d\tau \qquad \text{(128)}
+\int \left\{ \varphi ( - e\psi^{*} \psi ) - \sum_{k} A_{k} ( - e\psi^{*} \alpha_{k} \psi ) \right\} d\tau \qquad \text{(128)}
 ```
 
 <div align="right"><a href="book.pdf#page=31" target="_blank" title="This page in the PDF"><sup>[p. 25]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p26" href="book.pdf#page=32" target="_blank" title="This page in the PDF"><sup>[p. 26]</sup></a> <sup>SCATTERING PROBLEMS AND BORN APPROXIMATION</sup>
 
-where $`\phi , A_{k}`$ are the scalar and vector potentials satisfying the Maxwell <a id="ix-186">equations</a>
+where $`\varphi , A_{k}`$ are the scalar and vector potentials satisfying the Maxwell <a id="ix-186">equations</a>
 
 ```math
-\nabla^{2} \phi + \frac{1}{c} \nabla \boldsymbol{\cdot} \frac{\partial \boldsymbol{A}}{\partial t} = - 4 \pi \rho_{N}
+\nabla^{2} \varphi + \frac{1}{c} \nabla \boldsymbol{\cdot} \frac{\partial \boldsymbol{A}}{\partial t} = - 4 \pi \rho_{N}
 ```
 
 ```math
-\nabla^{2} \boldsymbol{A} - \frac{1}{c^{2}} \frac{\partial^{2} \boldsymbol{A}}{\partial t^{2}} -\nabla \left\{ \nabla \boldsymbol{\cdot} \boldsymbol{A} + \frac{1}{c} \frac{\partial \phi}{\partial t} \right\} = - \frac{4 \pi}{c} \boldsymbol{j}_{N}
+\nabla^{2} \boldsymbol{A} - \frac{1}{c^{2}} \frac{\partial^{2} \boldsymbol{A}}{\partial t^{2}} -\nabla \left\{ \nabla \boldsymbol{\cdot} \boldsymbol{A} + \frac{1}{c} \frac{\partial \varphi}{\partial t} \right\} = - \frac{4 \pi}{c} \boldsymbol{j}_{N}
 ```
 
-The matrix element of the interaction (128) is unchanged by any <a id="ix-143">gauge</a> <a id="ix-146">transformation</a> of the $`( \boldsymbol{A} ,\phi )`$. Therefore we may take the gauge in which
+The matrix element of the interaction (128) is unchanged by any <a id="ix-143">gauge</a> <a id="ix-146">transformation</a> of the $`( \boldsymbol{A} ,\varphi )`$. Therefore we may take the gauge in which
 
 ```math
 \nabla \boldsymbol{\cdot} \boldsymbol{A} = 0
 ```
 
-Incidentally, since $`\phi = V ( r )`$, the second Maxwell equation reduces to
+Incidentally, since $`\varphi = V ( r )`$, the second Maxwell equation reduces to
 
 ```math
 \nabla^{2} \boldsymbol{A} - \frac{1}{c^{2}} \frac{\partial^{2} \boldsymbol{A}}{\partial t^{2}} - = - \frac{4 \pi}{c} \boldsymbol{j}_{N}
@@ -462,12 +462,12 @@ We calculate now the transition scattering matrix element $`M`$ between an initi
 
 We treat the interaction in Born approximation i.e. consider the particles to go directly from the free-particle state $`A`$ to the free-particle state $`B`$ by applying the interaction operator once to state $`A`$. For electrons at reasonably high or relativistic velocities this will be a very good approximation $`( e^{2} / \hbar v \ll 1 )`$. Also we treat the electromagnetic interaction classically, just as in the O<sup>16</sup> problem, taking the field produced by particle 1 according to classical Maxwell <a id="ix-187">equations</a> to act directly on particle 2. This ignores the fact that the field consists of quanta. We shall see later, after we have developed the quantum field theories, that this introduces _no error_ so long as we are in the Born approximation.
 
-For the field produced by particle 1 in a transition from the state $`p_{1} ,u_{1}`$ to $`p_{1}^{\prime} ,u_{1}^{\prime}`$ we have the matrix elements $`\phi_{( 1 )} , \boldsymbol{A}_{( 1 )}`$ say. We use now not the <a id="ix-144">gauge</a> in which $`\nabla \boldsymbol{\cdot} \boldsymbol{A} = 0`$, but the covariant gauge in which<sup><a id="fnref-14" href="#fn-14">14</a></sup>
+For the field produced by particle 1 in a transition from the state $`p_{1} ,u_{1}`$ to $`p_{1}^{\prime} ,u_{1}^{\prime}`$ we have the matrix elements $`\varphi_{( 1 )} , \boldsymbol{A}_{( 1 )}`$ say. We use now not the <a id="ix-144">gauge</a> in which $`\nabla \boldsymbol{\cdot} \boldsymbol{A} = 0`$, but the covariant gauge in which<sup><a id="fnref-14" href="#fn-14">14</a></sup>
 
 <a id="eq-135"></a>
 
 ```math
-\sum_{\mu} \frac{\partial A_{\mu}}{\partial x_{\mu}} = 0 \quad A_{4} = i\phi \qquad \text{(135)}
+\sum_{\mu} \frac{\partial A_{\mu}}{\partial x_{\mu}} = 0 \quad A_{4} = i\varphi \qquad \text{(135)}
 ```
 
 So using covariant notations we have in this gauge
@@ -509,7 +509,7 @@ The effect of the field (138) on particle 2 is given by the interaction term in 
 <a id="eq-140"></a>
 
 ```math
-- e\phi + e \boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{A} = ie\beta \sum_{\mu} \gamma_{\mu} A_{\mu} \qquad \text{(140)}
+- e\varphi + e \boldsymbol{\alpha} \boldsymbol{\cdot} \boldsymbol{A} = ie\beta \sum_{\mu} \gamma_{\mu} A_{\mu} \qquad \text{(140)}
 ```
 
 This gives for particle 2 for the transition from state $`p_{2} ,u_{2}`$ to $`p_{2}^{\prime} ,u_{2}^{\prime}`$ a transition matrix element
@@ -675,19 +675,19 @@ It is worth noting that the factor $`\boldsymbol{p}_{1} E_{2} - \boldsymbol{p}_{
 Since $`E^{2} = p^{2} c^{2} + m^{2} c^{4}`$, we can write
 
 ```math
-E = mc^{2} \cosh \varphi \quad pc = mc^{2} \sinh \varphi , \quad \text{ which makes }
+E = mc^{2} \cosh \phi \quad pc = mc^{2} \sinh \phi , \quad \text{ which makes }
 ```
 
 ```math
-\tilde{E} = mc^{2} \cosh ( \varphi - \theta ) \quad \tilde{p} c = mc^{2} \sinh ( \varphi - \theta ) \quad \text{ and thus }
+\tilde{E} = mc^{2} \cosh ( \phi - \theta ) \quad \tilde{p} c = mc^{2} \sinh ( \phi - \theta ) \quad \text{ and thus }
 ```
 
 ```math
-\tilde{E}_{2} \tilde{p}_{1 3} - \tilde{E}_{1} \tilde{p}_{2 3} = m^{2} c^{3} \{ \cosh ( \varphi_{2} - \theta ) \sinh ( \varphi_{1} - \theta ) - \cosh ( \varphi_{1} - \theta ) \sinh ( \varphi_{2} - \theta ) \}
+\tilde{E}_{2} \tilde{p}_{1 3} - \tilde{E}_{1} \tilde{p}_{2 3} = m^{2} c^{3} \{ \cosh ( \phi_{2} - \theta ) \sinh ( \phi_{1} - \theta ) - \cosh ( \phi_{1} - \theta ) \sinh ( \phi_{2} - \theta ) \}
 ```
 
 ```math
-= m^{2} c^{3} \sinh ( \varphi_{1} - \varphi_{2} )
+= m^{2} c^{3} \sinh ( \phi_{1} - \phi_{2} )
 ```
 
 independently of $`\theta`$. Hence we see that $`\sigma`$ is invariant under Lorentz transformations parallel to the $`x_{3}`$ axis.

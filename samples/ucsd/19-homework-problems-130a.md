@@ -33,7 +33,7 @@ to calculate the emissive power of a black body $`E ( \lambda ,T )`$ as a functi
 
 5. The Dirac delta function has the property that $`\int_{-\infty}^{\infty} f ( x ) \delta ( x - x_{0} ) dx = f ( x_{0} )`$ Find the
 
-momentum space wave function $`\varphi ( p )`$ if $`\psi ( x ) = \delta ( x - x_{0} )`$.
+momentum space wave function $`\phi ( p )`$ if $`\psi ( x ) = \delta ( x - x_{0} )`$.
 
 6. Use the calculation of a spreading Gaussian wave packet to find the fractional change in size of a wave packet between $`t = 0`$ and $`t = 1`$ second for an electron localized to 1 Angstrom. Now find the fraction change for a 1 gram weight localized to 1 nanometer.
 
@@ -50,7 +50,7 @@ momentum space wave function $`\varphi ( p )`$ if $`\psi ( x ) = \delta ( x - x_
 1. Show that
 
 ```math
-\int^{\infty} \psi^{*} ( x ) x\psi ( x ) dx = \int^{\infty} \varphi^{*} ( p ) \left( i \hbar \frac{\partial}{\partial p} \right) \varphi ( p ) dp.
+\int^{\infty} \psi^{*} ( x ) x\psi ( x ) dx = \int^{\infty} \phi^{*} ( p ) \left( i \hbar \frac{\partial}{\partial p} \right) \phi ( p ) dp.
 ```
 
 Remember that the wave functions go to zero at infinity.$`-\infty \quad -\infty`$
@@ -79,7 +79,7 @@ Remember that the wave functions go to zero at infinity.$`-\infty \quad -\infty`
 
 7. A particle is initially in the $`n^{th}`$ eigenstate of a box of length L. Suddenly the walls of the box are completely removed. Calculate the probability to find that the particle has momentum between $`p`$ and $`p + dp`$. Is energy conserved?
 
-8. A particle is in a box with solid walls at $`x = \pm \tfrac{a}{2}`$. The state at $`t = 0`$ is constant $`\psi ( x, 0 ) = \sqrt{\frac{2}{a}}`$ for $`- \tfrac{a}{2} <x< 0`$ and the $`\psi ( x, 0 ) = 0`$ everywhere else. Write this state as a sum of energy eigenstates of the particle in a box. Write $`\psi ( x,t )`$ in terms of the energy eigenstates. Write the state at $`t = 0`$ as $`\varphi ( p )`$. Would it be correct (and why) to use $`\varphi ( p )`$ to compute $`\psi ( x,t )`$?
+8. A particle is in a box with solid walls at $`x = \pm \tfrac{a}{2}`$. The state at $`t = 0`$ is constant $`\psi ( x, 0 ) = \sqrt{\frac{2}{a}}`$ for $`- \tfrac{a}{2} <x< 0`$ and the $`\psi ( x, 0 ) = 0`$ everywhere else. Write this state as a sum of energy eigenstates of the particle in a box. Write $`\psi ( x,t )`$ in terms of the energy eigenstates. Write the state at $`t = 0`$ as $`\phi ( p )`$. Would it be correct (and why) to use $`\phi ( p )`$ to compute $`\psi ( x,t )`$?
 
 9. The wave function for a particle is initially $`\psi ( x ) = Ae^{ikx} + Be^{- ikx}`$. What is the probability flux $`j ( x )`$?
 
@@ -152,7 +152,7 @@ and that the particle has mass $`m`$ and energy $`e> 0`$. Estimate the lifetime 
 1. The 1D model of a crystal puts the following constraint on the wave number $`k`$.
 
 ```math
-\cos ( \varphi ) = \cos ( ka ) + \frac{ma^{2} V_{0}}{\hbar^{2}} \frac{\sin ( ka )}{ka}
+\cos ( \phi ) = \cos ( ka ) + \frac{ma^{2} V_{0}}{\hbar^{2}} \frac{\sin ( ka )}{ka}
 ```
 
 Assume that $`\tfrac{ma^{2} V_{0}}{\hbar^{2}} = \tfrac{3 \pi}{2}`$ and plot the constraint as a function of $`ka`$. Plot the allowed energy bands on an energy axis assuming $`V_{0} = 2`$ eV and the spacing between atoms is 5 Angstroms.
@@ -161,7 +161,7 @@ Assume that $`\tfrac{ma^{2} V_{0}}{\hbar^{2}} = \tfrac{3 \pi}{2}`$ and plot the 
 
 3. At $`t = 0`$ a particle is in the one dimensional Harmonic Oscillator state $`\psi ( t = 0 ) = \tfrac{1}{\sqrt{2}} ( u_{0} + u_{1} )`$. Is $`\psi`$ correctly normalized? Compute the expected value of $`x`$ as a function of time by doing the integrals in the $`x`$ representation.
 
-4. Prove the Schwartz inequality $`| \langle \psi | \varphi \rangle |^{2} \leq \langle \psi | \psi \rangle \langle \varphi | \varphi \rangle`$. (Start from the fact that $`\langle \psi + C\varphi | \psi + C\varphi \rangle \geq 0`$ for any $`C`$.
+4. Prove the Schwartz inequality $`| \langle \psi | \phi \rangle |^{2} \leq \langle \psi | \psi \rangle \langle \phi | \phi \rangle`$. (Start from the fact that $`\langle \psi + C\phi | \psi + C\phi \rangle \geq 0`$ for any $`C`$.
 
 5. The hyper-parity operator $`H`$ has the property that $`H^{4} \psi = \psi`$ for any state $`\psi`$. Find the eigenvalues of $`H`$ for the case that it is not Hermitian and the case that it is Hermitian.
 
@@ -191,7 +191,7 @@ Find the expected value of $`p`$ as a function of time using operator methods.
 
 2. Evaluate the “uncertainty” in $`x`$ for the 1D HO ground state $`\sqrt{\langle u_{0} | ( x - \bar{x} )^{2} | u_{0} \rangle}`$ where $`\bar{x} = \langle u_{0} | x | u_{0} \rangle`$. Similarly, evaluate the uncertainty in $`p`$ for the ground state. What is the product ∆$`p`$∆$`x`$? Now do the same for the first excited state. What is the product ∆$`p`$∆$`x`$ for this state?
 
-3. An operator is Unitary if $`UU^{\dagger} = U^{\dagger} U = 1`$. Prove that a unitary operator preserves inner products, that is $`\langle U\psi | U\varphi \rangle = \langle \psi | \varphi \rangle`$. Show that if the states $`| u_{i} \rangle`$ are orthonormal, that the states $`U | u_{i} \rangle`$ are also orthonormal. Show that if the states $`| u_{i} \rangle`$ form a complete set, then the states $`U | u_{i} \rangle`$ also form a complete set.
+3. An operator is Unitary if $`UU^{\dagger} = U^{\dagger} U = 1`$. Prove that a unitary operator preserves inner products, that is $`\langle U\psi | U\phi \rangle = \langle \psi | \phi \rangle`$. Show that if the states $`| u_{i} \rangle`$ are orthonormal, that the states $`U | u_{i} \rangle`$ are also orthonormal. Show that if the states $`| u_{i} \rangle`$ form a complete set, then the states $`U | u_{i} \rangle`$ also form a complete set.
 
 4. Show at if an operator $`H`$ is hermitian, then the operator $`e^{iH}`$ is unitary.
 
@@ -267,7 +267,7 @@ L^{2} , L_{z} , L_{x} , \text{ and } L_{y} .
 
 2. Calculate the $`\ell = 0`$ phase shift for a hard sphere $`V = \infty`$ for $`r<a`$ and $`V = 0`$ for $`r>a`$. What are the limits for $`ka`$ large and small?
 
-3. Show that at large $`r`$, the radial flux is large compared to the angular components of the flux for wave-functions of the form $`C \tfrac{e^{\pm ikr}}{r} Y_{\ell m} ( \theta ,\varphi )`$.
+3. Show that at large $`r`$, the radial flux is large compared to the angular components of the flux for wave-functions of the form $`C \tfrac{e^{\pm ikr}}{r} Y_{\ell m} ( \theta ,\phi )`$.
 
 4. Calculate the difference in wavelengths of the 2p to 1s transition in Hydrogen and Deuterium.
 
@@ -281,7 +281,7 @@ Calculate the wavelength of the 2p to 1s transition in positronium.
 
 You may find the expansion of $`e^{ikz}`$ in terms of Bessel functions useful.
 
-8. The differential equation for the 3D harmonic oscillator $`H = \tfrac{p^{2}}{2 m} + \tfrac{1}{2} m\omega^{2} r^{2}`$ has been solved in the notes, using the same techniques as we used for Hydrogen. Use the recursion relations derived there to write out the wave functions $`\psi_{n\ell m} ( r,\theta ,\varphi )`$ for the three lowest energies. You may write them in terms of the standard $`Y_{\ell m}`$ but please write out the radial parts of the wavefunction completely. Note that there is a good deal of degeneracy in this problem so the three lowest energies actually means 4 radial wavefunctions and 10 total states. Try to write the solutions $`\psi_{0 0 0}`$ and $`\psi_{0 1 0}`$ in terms of the solutions in cartesian coordinates with the same energy $`\psi_{nx,ny,nz}`$.
+8. The differential equation for the 3D harmonic oscillator $`H = \tfrac{p^{2}}{2 m} + \tfrac{1}{2} m\omega^{2} r^{2}`$ has been solved in the notes, using the same techniques as we used for Hydrogen. Use the recursion relations derived there to write out the wave functions $`\psi_{n\ell m} ( r,\theta ,\phi )`$ for the three lowest energies. You may write them in terms of the standard $`Y_{\ell m}`$ but please write out the radial parts of the wavefunction completely. Note that there is a good deal of degeneracy in this problem so the three lowest energies actually means 4 radial wavefunctions and 10 total states. Try to write the solutions $`\psi_{0 0 0}`$ and $`\psi_{0 1 0}`$ in terms of the solutions in cartesian coordinates with the same energy $`\psi_{nx,ny,nz}`$.
 
 <div align="right"><a href="book.pdf#page=290" target="_blank" title="This page in the PDF"><sup>[p. 290]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">

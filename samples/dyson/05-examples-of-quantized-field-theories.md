@@ -764,7 +764,7 @@ But if either $`R`$ or $`T`$ tends to zero, the fluctuations tend to $`\infty`$ 
 
 ### <a id="s-the-lamb-shift-fluctuation-of-position-of-electron"></a>Fluctuation of Position of an Electron in a Quantized Electromagnetic Field. The Lamb Shift.
 
-Consider an electron represented by an extended spherical charge of radius R, lying in a stationary state in the potential $`\varphi ( r )`$ of a hydrogen atom. It has a certain wave-function $`\psi ( r )`$. We consider everything non-relativistically except for the quantized radiation field with which the electron interacts. The effect of this fluctuating field is to produce a rapid fluctuation in position of the electron. In fact we have for rapid fluctuations
+Consider an electron represented by an extended spherical charge of radius R, lying in a stationary state in the potential $`\phi ( r )`$ of a hydrogen atom. It has a certain wave-function $`\psi ( r )`$. We consider everything non-relativistically except for the quantized radiation field with which the electron interacts. The effect of this fluctuating field is to produce a rapid fluctuation in position of the electron. In fact we have for rapid fluctuations
 
 ```math
 m \ddot{\boldsymbol{r}} = - e \boldsymbol{E}
@@ -821,13 +821,13 @@ because $`\langle \delta \boldsymbol{r} \cdot \nabla V ( r ) \rangle_{o} = 0`$, 
 because for the hydrogen atom<sup><a id="fnref-36" href="#fn-36">36</a></sup> $`( \rho = r \sqrt{- 8 m_{r} E_{n}} / \hbar )`$
 
 ```math
-\psi_{n\ell m} ( r,\theta ,\phi ) = - \frac{1}{\sqrt{2 \pi}} e^{im\phi} \left\{ \frac{( 2 \ell + 1 ) ( \ell -| m | ) !}{2 ( \ell + | m | ) !} \right\}^{1 / 2} P_{\ell}^{| m |} ( \cos \theta ) \left[ \left( \frac{2}{na_{o}} \right)^{3} \frac{( n - \ell - 1 ) !}{2 n [ ( n + \ell ) ! ]^{3}} \right]^{1 / 2} e^{- \rho / 2} \rho^{\ell} L_{n + \ell}^{2 \ell + 1} ( \rho )
+\psi_{n\ell m} ( r,\theta ,\varphi ) = - \frac{1}{\sqrt{2 \pi}} e^{im\varphi} \left\{ \frac{( 2 \ell + 1 ) ( \ell -| m | ) !}{2 ( \ell + | m | ) !} \right\}^{1 / 2} P_{\ell}^{| m |} ( \cos \theta ) \left[ \left( \frac{2}{na_{o}} \right)^{3} \frac{( n - \ell - 1 ) !}{2 n [ ( n + \ell ) ! ]^{3}} \right]^{1 / 2} e^{- \rho / 2} \rho^{\ell} L_{n + \ell}^{2 \ell + 1} ( \rho )
 ```
 
 and
 
 ```math
-\psi_{n 0 0} ( 0 ,\theta ,\phi ) = \frac{1}{\sqrt{2 \pi}} \frac{\sqrt{2}}{2} \left\{ - \left[ \left( \frac{2}{na_{o}} \right)^{3} \frac{( n - 1 ) !}{2 n ( n ! )^{3}} \right]^{1 / 2} \right\} \left( - \frac{( n ! )^{2}}{( n - 1 ) !} \right) = \frac{1}{\pi^{1 / 2} a_{o}^{3 / 2} n^{3 / 2}}
+\psi_{n 0 0} ( 0 ,\theta ,\varphi ) = \frac{1}{\sqrt{2 \pi}} \frac{\sqrt{2}}{2} \left\{ - \left[ \left( \frac{2}{na_{o}} \right)^{3} \frac{( n - 1 ) !}{2 n ( n ! )^{3}} \right]^{1 / 2} \right\} \left( - \frac{( n ! )^{2}}{( n - 1 ) !} \right) = \frac{1}{\pi^{1 / 2} a_{o}^{3 / 2} n^{3 / 2}}
 ```
 
 There will also be a (much bigger) addition to kinetic energy, arising from the fluctuations. We ignore this on the grounds that it will be the same for all atomic states and so will not give any relativistic displacement. Of course this is not a good argument.
@@ -1380,10 +1380,10 @@ Note the factor $`\hbar`$ here. This means that the theory has no classical limi
 \begin{aligned} \sum_{\lambda} \gamma_{\lambda} \frac{\partial \psi}{\partial x_{\lambda}} + \mu \psi &= 0 \\ \sum_{\lambda} \frac{\partial \overline{\psi}}{\partial x_{\lambda}} \gamma_{\lambda} - \mu \overline{\psi} &= 0 \end{aligned} \qquad \text{(286)}
 ```
 
-The charge-conjugate field $`\varphi`$ can be defined by
+The charge-conjugate field $`\phi`$ can be defined by
 
 ```math
-\varphi = C\psi^{+}
+\phi = C\psi^{+}
 ```
 
 according to (51), and it also satisfies
@@ -1391,7 +1391,7 @@ according to (51), and it also satisfies
 <a id="eq-287"></a>
 
 ```math
-\left( \sum_{\lambda} \gamma_{\lambda} \frac{\partial}{\partial x_{\lambda}} + \mu \right) \varphi = 0 \qquad \text{(287)}
+\left( \sum_{\lambda} \gamma_{\lambda} \frac{\partial}{\partial x_{\lambda}} + \mu \right) \phi = 0 \qquad \text{(287)}
 ```
 
 ### <a id="s-covariant-commutation-rules"></a>Covariant Commutation Rules
@@ -1697,7 +1697,7 @@ b_{ku}^{*} \text{ for electrons }
 
 ### <a id="s-charge-symmetrical-representation"></a>Charge-Symmetrical Representation
 
-We use the charge-<a id="ix-157">conjugate</a> field $`\varphi`$ defined by (51), in order to put the whole theory into a form where there is complete symmetry between electrons and positrons. This symmetry is known as the charge-symmetry of the theory.
+We use the charge-<a id="ix-157">conjugate</a> field $`\phi`$ defined by (51), in order to put the whole theory into a form where there is complete symmetry between electrons and positrons. This symmetry is known as the charge-symmetry of the theory.
 
 Let $`k`$ be given, and a spinor $`u`$ satisfying (308), representing a positron state. We represent the positron state alternatively by the charge conjugate spinor
 
@@ -1724,14 +1724,14 @@ the absorption operator for the positron state $`v`$. Then instead of (306), (30
 <a id="eq-318"></a>
 
 ```math
-\varphi_{\alpha} ( x ) = Q \int d^{3} \boldsymbol{k} \left( \frac{\mu^{2}}{| \boldsymbol{k} |^{2} + \mu^{2}} \right)^{1 / 4} \left\{ \sum_{v^{+}} v_{\alpha} e^{i \boldsymbol{k} \cdot \boldsymbol{x}} b_{kv}^{C} + \sum_{u^{+}} \left\{ Cu^{+} \right\}_{\alpha} e^{- i \boldsymbol{k} \cdot \boldsymbol{x}} b_{ku}^{*} \right\} \qquad \text{(318)}
+\phi_{\alpha} ( x ) = Q \int d^{3} \boldsymbol{k} \left( \frac{\mu^{2}}{| \boldsymbol{k} |^{2} + \mu^{2}} \right)^{1 / 4} \left\{ \sum_{v^{+}} v_{\alpha} e^{i \boldsymbol{k} \cdot \boldsymbol{x}} b_{kv}^{C} + \sum_{u^{+}} \left\{ Cu^{+} \right\}_{\alpha} e^{- i \boldsymbol{k} \cdot \boldsymbol{x}} b_{ku}^{*} \right\} \qquad \text{(318)}
 ```
 
 <div align="right"><a href="book.pdf#page=69" target="_blank" title="This page in the PDF"><sup>[p. 63]</sup></a></div>
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p64" href="book.pdf#page=70" target="_blank" title="This page in the PDF"><sup>[p. 64]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup>
 
-The $`\psi`$ and $`\varphi`$ fields are thus entirely symmetrical between positrons and electrons; $`\varphi`$ could be taken as the starting-point and $`\psi`$ derived from it, just as easily as vice versa.
+The $`\psi`$ and $`\phi`$ fields are thus entirely symmetrical between positrons and electrons; $`\phi`$ could be taken as the starting-point and $`\psi`$ derived from it, just as easily as vice versa.
 
 The commutation rules (311) become
 
@@ -1745,7 +1745,7 @@ These are also symmetrical between <a id="ix-103">electron</a> and <a id="ix-227
 
 ### <a id="s-the-hamiltonian"></a>The Hamiltonian
 
-The Hamiltonian $`H`$ has commutation rules with the emission and absorption operators as for the Maxwell <a id="ix-191">field</a>. These rules come straight from the Heisenberg equations of motion for $`\psi`$ and $`\varphi`$. For any electron state $`u`$ or positron $`v`$
+The Hamiltonian $`H`$ has commutation rules with the emission and absorption operators as for the Maxwell <a id="ix-191">field</a>. These rules come straight from the Heisenberg equations of motion for $`\psi`$ and $`\phi`$. For any electron state $`u`$ or positron $`v`$
 
 <a id="eq-319"></a>
 

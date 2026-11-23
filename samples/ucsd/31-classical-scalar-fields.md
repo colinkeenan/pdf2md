@@ -122,19 +122,19 @@ This is the **wave equation for the string**. There are easier ways to get to th
 Assume we have a **field defined everywhere in space and time**. For simplicity we will start with a **scalar field** (instead of the vector... fields of E&M).
 
 ```math
-\varphi ( \vec{r} , t )
+\phi ( \vec{r} , t )
 ```
 
 The property that makes this a true scalar field is that it is **invariant under rotations and Lorentz boosts**.
 
 ```math
-\varphi ( \vec{r} , t ) = \varphi^{\prime} ( \vec{r}^{\prime} ,t^{\prime} )
+\phi ( \vec{r} , t ) = \phi^{\prime} ( \vec{r}^{\prime} ,t^{\prime} )
 ```
 
 The Euler-Lagrange equation derived from the principle of least action is
 
 ```math
-\sum_{k} \frac{\partial}{\partial x_{k}} \left( \frac{\partial \mathcal{L}}{\partial ( \partial \varphi /\partial x_{k} )} \right) + \frac{\partial}{\partial t} \left( \frac{\partial \mathcal{L}}{\partial ( \partial \varphi /\partial t )} \right) - \frac{\partial \mathcal{L}}{\partial \varphi} = 0 .
+\sum_{k} \frac{\partial}{\partial x_{k}} \left( \frac{\partial \mathcal{L}}{\partial ( \partial \phi /\partial x_{k} )} \right) + \frac{\partial}{\partial t} \left( \frac{\partial \mathcal{L}}{\partial ( \partial \phi /\partial t )} \right) - \frac{\partial \mathcal{L}}{\partial \phi} = 0 .
 ```
 
 Note that since there is only one field, there is only one equation.
@@ -227,46 +227,46 @@ x_{\mu}^{\prime} = a_{\mu \nu} x_{\nu}
 
 We may safely assume that all our derivatives with one index transform as a vector.
 
-With this, lets work on the Euler-Lagrange equation to get it into covariant shape. Remember that the field $`\varphi`$ is a Lorentz scalar.
+With this, lets work on the Euler-Lagrange equation to get it into covariant shape. Remember that the field $`\phi`$ is a Lorentz scalar.
 
 ```math
-\sum_{k} \frac{\partial}{\partial x_{k}} \left( \frac{\partial \mathcal{L}}{\partial ( \partial \varphi /\partial x_{k} )} \right) + \frac{\partial}{\partial t} \left( \frac{\partial \mathcal{L}}{\partial ( \partial \varphi /\partial t )} \right) - \frac{\partial \mathcal{L}}{\partial \varphi} = 0
+\sum_{k} \frac{\partial}{\partial x_{k}} \left( \frac{\partial \mathcal{L}}{\partial ( \partial \phi /\partial x_{k} )} \right) + \frac{\partial}{\partial t} \left( \frac{\partial \mathcal{L}}{\partial ( \partial \phi /\partial t )} \right) - \frac{\partial \mathcal{L}}{\partial \phi} = 0
 ```
 
 ```math
-\sum_{k} \frac{\partial}{\partial x_{k}} \left( \frac{\partial \mathcal{L}}{\partial ( \partial \varphi /\partial x_{k} )} \right) + \frac{\partial}{\partial ( ict )} \left( \frac{\partial \mathcal{L}}{\partial ( \partial \varphi /\partial ( ict ) )} \right) - \frac{\partial \mathcal{L}}{\partial \varphi} = 0
+\sum_{k} \frac{\partial}{\partial x_{k}} \left( \frac{\partial \mathcal{L}}{\partial ( \partial \phi /\partial x_{k} )} \right) + \frac{\partial}{\partial ( ict )} \left( \frac{\partial \mathcal{L}}{\partial ( \partial \phi /\partial ( ict ) )} \right) - \frac{\partial \mathcal{L}}{\partial \phi} = 0
 ```
 
 ```math
-\frac{\partial}{\partial x_{\mu}} \left( \frac{\partial \mathcal{L}}{\partial ( \partial \varphi /\partial x_{\mu} )} \right) - \frac{\partial \mathcal{L}}{\partial \varphi} = 0
+\frac{\partial}{\partial x_{\mu}} \left( \frac{\partial \mathcal{L}}{\partial ( \partial \phi /\partial x_{\mu} )} \right) - \frac{\partial \mathcal{L}}{\partial \phi} = 0
 ```
 
 This is the **Euler-Lagrange equation for a single scalar field**. Each term in this equation is a Lorentz scalar, if $`\mathcal{L}`$ is a scalar.
 
 ```math
-\frac{\partial}{\partial x_{\mu}} \left( \frac{\partial \mathcal{L}}{\partial ( \partial \varphi /\partial x_{\mu} )} \right) - \frac{\partial \mathcal{L}}{\partial \varphi} = 0
+\frac{\partial}{\partial x_{\mu}} \left( \frac{\partial \mathcal{L}}{\partial ( \partial \phi /\partial x_{\mu} )} \right) - \frac{\partial \mathcal{L}}{\partial \phi} = 0
 ```
 
-Now we want to **find a reasonable Lagrangian for a scalar field**. The Lagrangian depends on the $`\varphi`$ and its derivatives. It **should not depend explicitly on the coordinates** $`x_{\mu}`$, since that would violate translation and/or rotation invariance. We also want to come out with a **linear wave equation** so that high powers of the field should not appear. The only Lagrangian we can choose (up to unimportant constants) is
+Now we want to **find a reasonable Lagrangian for a scalar field**. The Lagrangian depends on the $`\phi`$ and its derivatives. It **should not depend explicitly on the coordinates** $`x_{\mu}`$, since that would violate translation and/or rotation invariance. We also want to come out with a **linear wave equation** so that high powers of the field should not appear. The only Lagrangian we can choose (up to unimportant constants) is
 
 ```math
-\mathcal{L} = - \frac{1}{2} \left( \frac{\partial \varphi}{\partial x_{\nu}} \frac{\partial \varphi}{\partial x_{\nu}} + \mu^{2} \varphi^{2} \right)
+\mathcal{L} = - \frac{1}{2} \left( \frac{\partial \phi}{\partial x_{\nu}} \frac{\partial \phi}{\partial x_{\nu}} + \mu^{2} \phi^{2} \right)
 ```
 
-The one constant $`\mu`$ sets the ratio of the two terms. The overall constant is not important except to match the $`T - V`$ definition. Remember that $`\varphi`$ is a function of the coordinates.
+The one constant $`\mu`$ sets the ratio of the two terms. The overall constant is not important except to match the $`T - V`$ definition. Remember that $`\phi`$ is a function of the coordinates.
 
 With this Lagrangian, the Euler-Lagrange equation is.
 
 ```math
-\frac{\partial}{\partial x_{\mu}} \left( - \frac{\partial \varphi}{\partial x_{\mu}} \right) + \mu^{2} \varphi = 0
+\frac{\partial}{\partial x_{\mu}} \left( - \frac{\partial \phi}{\partial x_{\mu}} \right) + \mu^{2} \phi = 0
 ```
 
 ```math
-\frac{\partial}{\partial x_{\mu}} \frac{\partial}{\partial x_{\mu}} \varphi - \mu^{2} \varphi = 0
+\frac{\partial}{\partial x_{\mu}} \frac{\partial}{\partial x_{\mu}} \phi - \mu^{2} \phi = 0
 ```
 
 ```math
-✷ \varphi - \mu^{2} \varphi = 0
+✷ \phi - \mu^{2} \phi = 0
 ```
 
 This is the known as the **Klein-Gordon equation**. It is a good relativistic equation for a **massive scalar field**. It was also an early candidate for the relativistic equivalent of the Schrödinger equation for electrons because it basically has the **relativistic analog of the energy relation** inherent in<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=430" target="_blank" title="This page in the PDF"><sup>[p. 430]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p431" href="book.pdf#page=431" target="_blank" title="This page in the PDF"><sup>[p. 431]</sup></a></span> the Schrödinger equation. Writing that relation in the order terms appear in the Klein-Gordon equation above we get (letting $`c = 1`$ briefly).
@@ -277,16 +277,16 @@ This is the known as the **Klein-Gordon equation**. It is a good relativistic eq
 
 Its worth noting that this equation, unlike the non-relativistic Schrödinger equation, relates the second spatial derivative of the field to the **second time derivative**. (Remember the Schrödinger equation has $`i`$ times the first time derivative as the energy operator.)
 
-So far we have the Lagrangian and wave equation for a **“free” scalar field**. There are **no sources** of the field (the equivalent of charges and currents in electromagnetism.) Lets assume the source density is $`\rho ( x_{\mu} )`$. The source term must be a scalar function so, we add the term $`\varphi \rho`$ to the Lagrangian.
+So far we have the Lagrangian and wave equation for a **“free” scalar field**. There are **no sources** of the field (the equivalent of charges and currents in electromagnetism.) Lets assume the source density is $`\rho ( x_{\mu} )`$. The source term must be a scalar function so, we add the term $`\phi \rho`$ to the Lagrangian.
 
 ```math
-\mathcal{L} = - \frac{1}{2} \left( \frac{\partial \varphi}{\partial x_{\nu}} \frac{\partial \varphi}{\partial x_{\nu}} + \mu^{2} \varphi^{2} \right) + \varphi \rho
+\mathcal{L} = - \frac{1}{2} \left( \frac{\partial \phi}{\partial x_{\nu}} \frac{\partial \phi}{\partial x_{\nu}} + \mu^{2} \phi^{2} \right) + \phi \rho
 ```
 
 This adds a term to the wave equation.
 
 ```math
-✷ \varphi - \mu^{2} \varphi = \rho
+✷ \phi - \mu^{2} \phi = \rho
 ```
 
 Any source density can be built up from point sources so it is useful to understand the **field generated by a point source** as we do for electromagnetism.
@@ -298,31 +298,31 @@ Any source density can be built up from point sources so it is useful to underst
 This is a source of strength $`G`$ at the origin. It does not change with time so we expect a static field.
 
 ```math
-\frac{\partial \varphi}{\partial t} = 0
+\frac{\partial \phi}{\partial t} = 0
 ```
 
 The Euler-Lagrange equation becomes.
 
 ```math
-\nabla^{2} \varphi - \mu^{2} \varphi = G\delta^{3} ( \vec{x} )
+\nabla^{2} \phi - \mu^{2} \phi = G\delta^{3} ( \vec{x} )
 ```
 
 We will solve this for the **field from a point source** below and get the result
 
 ```math
-\varphi ( \vec{x} ) = \frac{- Ge^{- \mu r}}{4 \pi r} .
+\phi ( \vec{x} ) = \frac{- Ge^{- \mu r}}{4 \pi r} .
 ```
 
-This solution should be familiar to us from the scalar potential for an electric point charge which satisfies the same equation with $`\mu = 0`$, $`\nabla^{2} \varphi = - \rho = - Q\delta^{3} ( \vec{x} )`$. This is a field that falls off much faster than $`\frac{1}{r}`$. **A massive scalar field falls off exponentially** and the larger the mass, the faster the fall off. _(We also get a mathematical result which is useful in several applications. This is worked out another way in the section on hyperfine splitting)_ $`\nabla^{2} \tfrac{1}{r} = - 4 \pi \delta^{3} ( \vec{x} ) .`$
+This solution should be familiar to us from the scalar potential for an electric point charge which satisfies the same equation with $`\mu = 0`$, $`\nabla^{2} \phi = - \rho = - Q\delta^{3} ( \vec{x} )`$. This is a field that falls off much faster than $`\frac{1}{r}`$. **A massive scalar field falls off exponentially** and the larger the mass, the faster the fall off. _(We also get a mathematical result which is useful in several applications. This is worked out another way in the section on hyperfine splitting)_ $`\nabla^{2} \tfrac{1}{r} = - 4 \pi \delta^{3} ( \vec{x} ) .`$
 
 Now we solve for the scalar field from a point source by Fourier transforming the wave equation. Define the Fourier transforms to be.
 
 ```math
-\tilde{\varphi} ( \vec{k} ) = \frac{1}{( 2 \pi )^{\tfrac{3}{2}}} \int d^{3} xe^{- i \vec{k} \cdot \vec{x}} \varphi ( \vec{x} )
+\tilde{\phi} ( \vec{k} ) = \frac{1}{( 2 \pi )^{\tfrac{3}{2}}} \int d^{3} xe^{- i \vec{k} \cdot \vec{x}} \phi ( \vec{x} )
 ```
 
 ```math
-\varphi ( \vec{x} ) = \frac{1}{( 2 \pi ) \tfrac{3}{2}} \int d^{3} ke^{i \vec{k} \cdot \vec{x}} \tilde{\varphi} ( \vec{k} )
+\phi ( \vec{x} ) = \frac{1}{( 2 \pi ) \tfrac{3}{2}} \int d^{3} ke^{i \vec{k} \cdot \vec{x}} \tilde{\phi} ( \vec{k} )
 ```
 
 <div align="right"><a href="book.pdf#page=431" target="_blank" title="This page in the PDF"><sup>[p. 431]</sup></a></div>
@@ -332,23 +332,23 @@ Now we solve for the scalar field from a point source by Fourier transforming th
 We now **take the transform of both sides** of the equation.
 
 ```math
-\nabla^{2} \varphi - \mu^{2} \varphi = G\delta^{3} ( \vec{x} )
+\nabla^{2} \phi - \mu^{2} \phi = G\delta^{3} ( \vec{x} )
 ```
 
 ```math
-\frac{1}{( 2 \pi ) \tfrac{3}{2}} \int d^{3} xe^{- i \vec{k} \cdot \vec{x}} ( \nabla^{2} \varphi - \mu^{2} \varphi ) = \frac{1}{( 2 \pi ) \tfrac{3}{2}} \int d^{3} xe^{- i \vec{k} \cdot \vec{x}} G\delta^{3} ( \vec{x} )
+\frac{1}{( 2 \pi ) \tfrac{3}{2}} \int d^{3} xe^{- i \vec{k} \cdot \vec{x}} ( \nabla^{2} \phi - \mu^{2} \phi ) = \frac{1}{( 2 \pi ) \tfrac{3}{2}} \int d^{3} xe^{- i \vec{k} \cdot \vec{x}} G\delta^{3} ( \vec{x} )
 ```
 
 ```math
-\frac{1}{( 2 \pi ) \tfrac{3}{2}} \int d^{3} xe^{- i \vec{k} \cdot \vec{x}} ( \nabla^{2} \varphi - \mu^{2} \varphi ) = \frac{G}{( 2 \pi ) \tfrac{3}{2}}
+\frac{1}{( 2 \pi ) \tfrac{3}{2}} \int d^{3} xe^{- i \vec{k} \cdot \vec{x}} ( \nabla^{2} \phi - \mu^{2} \phi ) = \frac{G}{( 2 \pi ) \tfrac{3}{2}}
 ```
 
 ```math
-\frac{1}{( 2 \pi ) \tfrac{3}{2}} \int d^{3} xe^{- i \vec{k} \cdot \vec{x}} ( - k^{2} - \mu^{2} ) \varphi = \frac{G}{( 2 \pi ) \tfrac{3}{2}}
+\frac{1}{( 2 \pi ) \tfrac{3}{2}} \int d^{3} xe^{- i \vec{k} \cdot \vec{x}} ( - k^{2} - \mu^{2} ) \phi = \frac{G}{( 2 \pi ) \tfrac{3}{2}}
 ```
 
 ```math
-\begin{aligned} ( - k^{2} - \mu^{2} ) \tilde{\varphi} &= \frac{G}{( 2 \pi ) \tfrac{3}{2}} \\ \tilde{\varphi} &= \frac{- G}{( 2 \pi )^{\tfrac{3}{2}}} \frac{1}{( k^{2} + \mu^{2} )} \end{aligned}
+\begin{aligned} ( - k^{2} - \mu^{2} ) \tilde{\phi} &= \frac{G}{( 2 \pi ) \tfrac{3}{2}} \\ \tilde{\phi} &= \frac{- G}{( 2 \pi )^{\tfrac{3}{2}}} \frac{1}{( k^{2} + \mu^{2} )} \end{aligned}
 ```
 
 To deal with the $`\nabla^{2}`$, we have integrated by parts twice assuming that the field falls off fast enough at infinity.
@@ -356,7 +356,7 @@ To deal with the $`\nabla^{2}`$, we have integrated by parts twice assuming that
 We now have the **Fourier transform of the field of a point source**. If we can **transform back to position space**, we will have the field. This is a fairly standard type of problem in quantum mechanics.
 
 ```math
-\begin{aligned} \varphi ( \vec{x} ) &= \frac{1}{( 2 \pi ) \tfrac{3}{2}} \int d^{3} ke^{i \vec{k} \cdot \vec{x}} \frac{- G}{( 2 \pi ) \tfrac{3}{2}} \frac{1}{( k^{2} + \mu^{2} )} \\ &= \frac{- G}{( 2 \pi )^{3}} \int d^{3} k \frac{e^{i \vec{k} \cdot \vec{x}}}{( k^{2} + \mu^{2} )} \\ &= \frac{- 2 \pi G}{( 2 \pi )^{3}} \int k^{2} dk \int_{- 1}^{1} \frac{e^{ikr \cos \theta_{k}}}{( k^{2} + \mu^{2} )} d \cos \theta_{k} \\ &= \frac{- G}{( 2 \pi )^{2}} \int \frac{k^{2}}{( k^{2} + \mu^{2} )} \int_{- 1}^{1} e^{ikr \cos \theta_{k}} d \cos \theta_{k} dk \\ &= \frac{- G}{( 2 \pi )^{2}} \int \frac{k^{2}}{( k^{2} + \mu^{2} )} \left[ \frac{1}{ikr} e^{ikr \cos \theta_{k}} \right]_{- 1}^{1} dk \\ &= \frac{- G}{( 2 \pi )^{2} ir} \int \frac{k}{( k^{2} + \mu^{2} )} \left( e^{ikr} - e^{- ikr} \right) dk \\ &= \frac{- G}{( 2 \pi )^{2} ir} \int_{0}^{\infty} \frac{k}{( k + i\mu ) ( k - i\mu )} \left( e^{ikr} - e^{- ikr} \right) dk \end{aligned}
+\begin{aligned} \phi ( \vec{x} ) &= \frac{1}{( 2 \pi ) \tfrac{3}{2}} \int d^{3} ke^{i \vec{k} \cdot \vec{x}} \frac{- G}{( 2 \pi ) \tfrac{3}{2}} \frac{1}{( k^{2} + \mu^{2} )} \\ &= \frac{- G}{( 2 \pi )^{3}} \int d^{3} k \frac{e^{i \vec{k} \cdot \vec{x}}}{( k^{2} + \mu^{2} )} \\ &= \frac{- 2 \pi G}{( 2 \pi )^{3}} \int k^{2} dk \int_{- 1}^{1} \frac{e^{ikr \cos \theta_{k}}}{( k^{2} + \mu^{2} )} d \cos \theta_{k} \\ &= \frac{- G}{( 2 \pi )^{2}} \int \frac{k^{2}}{( k^{2} + \mu^{2} )} \int_{- 1}^{1} e^{ikr \cos \theta_{k}} d \cos \theta_{k} dk \\ &= \frac{- G}{( 2 \pi )^{2}} \int \frac{k^{2}}{( k^{2} + \mu^{2} )} \left[ \frac{1}{ikr} e^{ikr \cos \theta_{k}} \right]_{- 1}^{1} dk \\ &= \frac{- G}{( 2 \pi )^{2} ir} \int \frac{k}{( k^{2} + \mu^{2} )} \left( e^{ikr} - e^{- ikr} \right) dk \\ &= \frac{- G}{( 2 \pi )^{2} ir} \int_{0}^{\infty} \frac{k}{( k + i\mu ) ( k - i\mu )} \left( e^{ikr} - e^{- ikr} \right) dk \end{aligned}
 ```
 
 This is now of a form for which we can use Cauchy’s theorem for **contour integrals**. The theorem says that an **integral around a closed contour in the complex plane** is equal to 2$`\pi i`$ times the sum of the residues at the poles enclosed in the contour. Contour Integration is a powerful technique often used in quantum mechanics.
@@ -420,7 +420,7 @@ This is exactly the integral we wanted to do.
 Plug the integral into the Fourier transform we were computing.
 
 ```math
-\begin{aligned} \varphi ( \vec{x} ) &= \frac{- G}{( 2 \pi )^{2} ir} \int_{0}^{\infty} \frac{k}{k^{2} + \mu^{2}} \left( e^{ikr} - e^{- ikr} \right) dk \\ \varphi ( \vec{x} ) &= \frac{- G}{( 2 \pi )^{2} ir} \pi ie^{- \mu r} \\ \varphi ( \vec{x} ) &= \frac{- Ge^{- \mu r}}{4 \pi r} \end{aligned}
+\begin{aligned} \phi ( \vec{x} ) &= \frac{- G}{( 2 \pi )^{2} ir} \int_{0}^{\infty} \frac{k}{k^{2} + \mu^{2}} \left( e^{ikr} - e^{- ikr} \right) dk \\ \phi ( \vec{x} ) &= \frac{- G}{( 2 \pi )^{2} ir} \pi ie^{- \mu r} \\ \phi ( \vec{x} ) &= \frac{- Ge^{- \mu r}}{4 \pi r} \end{aligned}
 ```
 
 In this case, it is simple to compute the **interaction Hamiltonian** from the interaction Lagrangian and the **potential between two particles**. Lets assume we have two particles, each with the same interaction with the field.
@@ -432,15 +432,15 @@ In this case, it is simple to compute the **interaction Hamiltonian** from the i
 Now compute the Hamiltonian.
 
 ```math
-\mathcal{L}_{int} = - \varphi \rho
+\mathcal{L}_{int} = - \phi \rho
 ```
 
 ```math
-\mathcal{H}_{int} = \dot{\varphi} \frac{\partial \mathcal{L}_{int}}{\partial \dot{\varphi}} - \mathcal{L}_{int} = - \mathcal{L}_{int} = \varphi \rho
+\mathcal{H}_{int} = \dot{\phi} \frac{\partial \mathcal{L}_{int}}{\partial \dot{\phi}} - \mathcal{L}_{int} = - \mathcal{L}_{int} = \phi \rho
 ```
 
 ```math
-\begin{aligned} H_{int} &= \int \mathcal{H}_{int} d^{3} x_{2} \\ H_{int}^{( 1 , 2 )} &= \int \varphi_{1} \rho_{2} d^{3} x_{2} = \int \frac{- Ge^{- \mu r}}{4 \pi r} G\delta^{3} ( \vec{x}_{2} ) d^{3} x_{2} = \frac{- G^{2} e^{- \mu r_{1 2}}}{4 \pi r_{1 2}} \end{aligned}
+\begin{aligned} H_{int} &= \int \mathcal{H}_{int} d^{3} x_{2} \\ H_{int}^{( 1 , 2 )} &= \int \phi_{1} \rho_{2} d^{3} x_{2} = \int \frac{- Ge^{- \mu r}}{4 \pi r} G\delta^{3} ( \vec{x}_{2} ) d^{3} x_{2} = \frac{- G^{2} e^{- \mu r_{1 2}}}{4 \pi r_{1 2}} \end{aligned}
 ```
 
 We see that this is a short-range, attractive potential.
