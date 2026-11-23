@@ -3636,6 +3636,41 @@ fn group_lines(
     }
     // (once more, for the pieces that waited)
     lift(&mut groups);
+    // (a small piece right over a sum sign of another line, within the
+    // sign's width and standing on its head, is the sum's upper limit:
+    // the "∞" over a sum set in a line of text hangs between that line
+    // and the one above, and no letter of the line above carries it)
+    loop {
+        let found = (0..groups.len()).find_map(|m| {
+            (1..groups[m].len()).find_map(|j| {
+                let s = &groups[m][j];
+                let main = size_of(&groups[m][0]);
+                if big_symbol(s) || size_of(s) >= 0.85 * main || s.text.trim().is_empty() {
+                    return None;
+                }
+                // (not the index of a letter of its line)
+                let based = groups[m].iter().any(|n| !std::ptr::eq(n, s) && !big_symbol(n) && (n.right() - s.left).abs() <= 1.5 && n.bottom().min(s.bottom()) - n.top.max(s.top) >= 0.3 * s.height);
+                // (out of a line of words: between the rows of a display
+                // the formula's own reading tells whose it is)
+                let words = groups[m].iter().any(|n| size_of(n) >= 0.85 * main && n.text.split_whitespace().filter(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 3).count() >= 2);
+                if based || !words {
+                    return None;
+                }
+                let mid = s.left + (s.right() - s.left) / 2.0;
+                let k = (0..groups.len()).find(|&k| {
+                    k != m
+                        && groups[k].iter().any(|sign| {
+                            let tall = size_of(sign);
+                            big_symbol(sign) && matches!(sign.text.trim(), "P" | "X" | "Q" | "Y") && mid > sign.left - 1.0 && mid < sign.right() + 1.0 && s.bottom() >= sign.top - 0.2 * tall && s.bottom() <= sign.top + 0.3 * tall && s.top < sign.top
+                        })
+                })?;
+                Some((m, j, k))
+            })
+        });
+        let Some((m, j, k)) = found else { break };
+        let s = groups[m].remove(j);
+        groups[k].push(s);
+    }
     // PDF2MD_LINEDEBUG=1: the pieces of each line, as grouped
     if std::env::var_os("PDF2MD_LINEDEBUG").is_some() {
         for g in &groups {

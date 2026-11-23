@@ -1550,11 +1550,11 @@ The momentum along the x direction is $`p_{x} = \beta \gamma mc = mc \sinh \chi`
 ```
 
 ```math
-= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ \frac{2 \sinh_{\overline{2}}^{\chi} \cosh \tfrac{\chi}{2}}{\cosh^{2} \tfrac{\chi}{2} + \sinh^{2} \tfrac{\chi}{2} + \cosh^{2} \tfrac{\chi}{2} - \sinh^{2} \tfrac{\chi}{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ \frac{2 \sinh \tfrac{\chi}{2} \cosh \tfrac{\chi}{2}}{\cosh^{2} \tfrac{\chi}{2} + \sinh^{2} \tfrac{\chi}{2} + \cosh^{2} \tfrac{\chi}{2} - \sinh^{2} \tfrac{\chi}{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math
-= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ \frac{2 \sinh_{\overline{2}}^{\chi} \cosh \tfrac{\chi}{2}}{2 \cosh^{2} \tfrac{\chi}{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
+= \sqrt{\frac{E + mc^{2}}{2 EV^{\prime}}} \begin{pmatrix} 1 \\ 0 \\ 0 \\ \frac{2 \sinh \tfrac{\chi}{2} \cosh \tfrac{\chi}{2}}{2 \cosh^{2} \tfrac{\chi}{2}} \end{pmatrix} e^{i ( \vec{p} \cdot \vec{x} - Et ) / \hbar}
 ```
 
 ```math

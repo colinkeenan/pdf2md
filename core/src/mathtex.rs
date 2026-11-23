@@ -1652,8 +1652,58 @@ fn tidy(s: &str) -> String {
     // (the long arrow, set as a minus sign run into an arrow)
     let s = s.replace("-\\to ", "\\longrightarrow ").replace("- \\to ", "\\longrightarrow ");
     let s = if let Some(head) = s.strip_suffix("-\\to") { format!("{head}\\longrightarrow") } else { s };
-    let s = rooted_fraction(&s);
+    let s = barred_index(&rooted_fraction(&s));
     slashed(&s.replace("\\not =", "\\neq").replace("\\not=", "\\neq").replace("\\not{=}", "\\neq"))
+}
+
+/// The group in braces that `t` opens with: where its inside ends.
+fn braced(t: &str) -> Option<usize> {
+    let mut depth = 0usize;
+    for (i, c) in t.char_indices() {
+        match c {
+            '{' => depth += 1,
+            '}' => {
+                depth = depth.checked_sub(1)?;
+                if depth == 0 {
+                    return Some(i);
+                }
+            }
+            _ if depth == 0 => return None,
+            _ => {}
+        }
+    }
+    None
+}
+
+/// An index with a bar over it under an exponent, "sinh" with χ raised
+/// and a barred 2 lowered: a small fraction, χ/2, whose bar was read as
+/// drawn over its lower half.
+fn barred_index(s: &str) -> String {
+    const OPEN: &str = "_{\\overline{";
+    let mut out = String::with_capacity(s.len());
+    let mut rest = s;
+    while let Some(i) = rest.find(OPEN) {
+        let inner = i + OPEN.len() - 1;
+        let parts = braced(&rest[inner..]).and_then(|b| {
+            let under = &rest[inner + 1..inner + b];
+            let after = rest[inner + b + 1..].strip_prefix("}^")?;
+            let e = braced(after)?;
+            Some((under, &after[1..e], rest.len() - after.len() + e + 1))
+        });
+        match parts {
+            Some((under, over, end)) => {
+                out.push_str(&rest[..i]);
+                out.push_str(&format!(" \\tfrac{{{over}}}{{{under}}}"));
+                rest = &rest[end..];
+            }
+            None => {
+                out.push_str(&rest[..inner]);
+                rest = &rest[inner..];
+            }
+        }
+    }
+    out.push_str(rest);
+    out
 }
 
 /// A root sign with one small piece over another right behind it is the
@@ -3899,6 +3949,12 @@ mod tests {
         // one row: nothing to line up
         assert_eq!(super::aligned(&["".to_string(), "x = 1".to_string()]), "x = 1");
         assert_eq!(super::aligned(&["x = 1".to_string(), "= 2".to_string()]), "\\begin{aligned} x &= 1 \\\\ &= 2 \\end{aligned}");
+    }
+
+    #[test]
+    fn an_index_with_a_bar_under_an_exponent_is_a_small_fraction() {
+        assert_eq!(barred_index("2 \\sinh_{\\overline{2}}^{\\chi} \\cosh x"), "2 \\sinh \\tfrac{\\chi}{2} \\cosh x");
+        assert_eq!(barred_index("a_{\\overline{z}} + b_{\\overline{x_{1}}}^{y^{2}}"), "a_{\\overline{z}} + b \\tfrac{y^{2}}{x_{1}}");
     }
 
     #[test]
