@@ -211,11 +211,112 @@ fn numbers_into_formulas(mut inl: Vec<Inline>) -> Vec<Inline> {
     inl
 }
 
+/// `\left` and `\right` have to pair within one cell of a formula set in
+/// rows (between two "&" or line ends): a tall bracket that opens in one
+/// cell and closes in another, or does not close, stops the whole formula
+/// from rendering. Such a bracket is written at its plain size (an
+/// invisible one, `\left.`, is dropped).
+fn paired_in_cells(latex: &str) -> String {
+    if !latex.contains("\\left") && !latex.contains("\\right") {
+        return latex.to_string();
+    }
+    // the pieces: "\left(", "\right\}", "&", "\\\\", "\begin{…}", "\end{…}", anything else
+    let mut pieces: Vec<String> = Vec::new();
+    let b = latex.as_bytes();
+    let mut i = 0;
+    let mut plain = String::new();
+    let delimiter = |from: usize| -> usize {
+        let mut k = from;
+        while k < b.len() && b[k] == b' ' {
+            k += 1;
+        }
+        if k < b.len() && b[k] == b'\\' {
+            let mut e = k + 1;
+            while e < b.len() && b[e].is_ascii_alphabetic() {
+                e += 1;
+            }
+            if e == k + 1 && e < b.len() {
+                e += 1;
+            }
+            e
+        } else if k < b.len() {
+            k + latex[k..].chars().next().map_or(1, char::len_utf8)
+        } else {
+            k
+        }
+    };
+    while i < b.len() {
+        let rest = &latex[i..];
+        let word = |w: &str| rest.starts_with(w) && !rest[w.len()..].starts_with(|c: char| c.is_ascii_alphabetic());
+        let end = if word("\\left") {
+            delimiter(i + 5)
+        } else if word("\\right") {
+            delimiter(i + 6)
+        } else if rest.starts_with("\\begin{") || rest.starts_with("\\end{") {
+            i + rest.find('}').map_or(rest.len(), |k| k + 1)
+        } else if rest.starts_with("\\\\") {
+            i + 2
+        } else if rest.starts_with('&') {
+            i + 1
+        } else if rest.starts_with('\\') {
+            // (any other command, or an escaped sign: not looked into)
+            plain.push_str(&rest[..rest.chars().take(2).map(char::len_utf8).sum::<usize>().min(rest.len())]);
+            i += rest.chars().take(2).map(char::len_utf8).sum::<usize>().min(rest.len());
+            continue;
+        } else {
+            let n = rest.chars().next().map_or(1, char::len_utf8);
+            plain.push_str(&rest[..n]);
+            i += n;
+            continue;
+        };
+        if !plain.is_empty() {
+            pieces.push(std::mem::take(&mut plain));
+        }
+        pieces.push(latex[i..end].to_string());
+        i = end;
+    }
+    if !plain.is_empty() {
+        pieces.push(plain);
+    }
+    // each scope (the formula, each environment in it) has the tall
+    // brackets open in its present cell
+    let mut scopes: Vec<Vec<usize>> = vec![Vec::new()];
+    let mut loose: Vec<usize> = Vec::new();
+    for (k, p) in pieces.iter().enumerate() {
+        if p.starts_with("\\left") && !p.starts_with("\\leftarrow") && !p.starts_with("\\leftrightarrow") {
+            scopes.last_mut().unwrap().push(k);
+        } else if p.starts_with("\\right") && !p.starts_with("\\rightarrow") && !p.starts_with("\\rightleftarrows") {
+            if scopes.last_mut().unwrap().pop().is_none() {
+                loose.push(k);
+            }
+        } else if p == "&" || p == "\\\\" {
+            loose.append(scopes.last_mut().unwrap());
+        } else if p.starts_with("\\begin{") {
+            scopes.push(Vec::new());
+        } else if p.starts_with("\\end{") {
+            loose.append(scopes.last_mut().unwrap());
+            if scopes.len() > 1 {
+                scopes.pop();
+            }
+        }
+    }
+    loose.append(scopes.last_mut().unwrap());
+    if loose.is_empty() {
+        return latex.to_string();
+    }
+    for k in loose {
+        let p = &pieces[k];
+        let d = p.trim_start_matches("\\left").trim_start_matches("\\right").trim();
+        pieces[k] = if d == "." { String::new() } else { format!("{d} ") };
+    }
+    pieces.concat()
+}
+
 /// LaTeX that would not render, made to: math inside `\text{…}` ("^" and
 /// "_" mean nothing in text) is taken out of it, and two subscripts or
 /// two superscripts on one symbol are one.
 pub fn mend(latex: &str) -> String {
-    let mut t = latex.to_string();
+    let mut t = paired_in_cells(latex);
     // \text{ R^{-1}=1 \Rightarrow … }: a formula, no words in it
     let mut from = 0;
     while let Some(at) = t[from..].find("\\text{").map(|i| i + from) {
@@ -1402,6 +1503,41 @@ pub(crate) fn lost_notes(lost: &[crate::userdata::Note]) -> String {
 /// as a different formula a second time, not corrected since. Links with
 /// each equation's number and printed page, biggest differences first,
 /// each group in book order. None if there are none.
+/// The part of the list of equations to check that holds those built from
+/// a page's letters which the recognizer read otherwise (see `second`).
+pub(crate) fn doubts_section(doubts: &[String]) -> String {
+    if doubts.is_empty() {
+        return String::new();
+    }
+    format!(
+        "## Built from the page's letters, read otherwise by the recognizer ({})\n\nThese equations were put together by rule from where the letters stand on the page. The recognizer, reading the same place as a picture, saw another formula: other letters or signs, or the same ones put together otherwise without reading them so twice. Under each is what it read. The letters are surer in the book's equation (the PDF names them); how they are put together, exponents, small fractions and rows, is often surer in the recognizer's. Compare with the PDF page and correct the equation where it is wrong.\n\n{}\n",
+        doubts.len(),
+        doubts.join("\n")
+    )
+}
+
+/// The equations of a book (one PDF of a course) that the second reading
+/// leaves in doubt: the key of each (its anchor is `second-KEY`), its
+/// name, and the recognizer's reading as it stands under its line of the
+/// list.
+pub(crate) fn doubts(book: &Book) -> Vec<(String, String, String)> {
+    let mut out = Vec::new();
+    for ch in &book.chapters {
+        for b in &ch.blocks {
+            if let Block::Equation { tag, latex, place: Some(crate::Place { second: Some(s), .. }), .. } = &b.block {
+                let number = tag.as_ref().map(|t| format!(" \\tag{{{t}}}")).unwrap_or_default();
+                let corrected = rule_stays(&display(&format!("{}{number}", mend(latex)), math_form()));
+                if let Some(reading) = s.doubt.as_ref().filter(|_| !corrected) {
+                    let name = tag.as_ref().map_or("equation".to_string(), |t| format!("({t})"));
+                    let other: String = display(&mend(&crate::ocr::tidy_reading(reading)), math_form()).trim_end().lines().map(|l| format!("  {l}\n")).collect();
+                    out.push((s.key.clone(), name, other));
+                }
+            }
+        }
+    }
+    out
+}
+
 fn check_list(book: &Book) -> Option<String> {
     // (symbols that differ, line of the list)
     let mut items: Vec<(usize, String)> = Vec::new();
@@ -1456,15 +1592,7 @@ fn check_list(book: &Book) -> Option<String> {
             }
         }
     }
-    let doubts = if doubts.is_empty() {
-        String::new()
-    } else {
-        format!(
-            "## Built from the page's letters, read otherwise by the recognizer ({})\n\nThese equations were put together by rule from where the letters stand on the page. The recognizer, reading the same place as a picture, saw another formula: other letters or signs, or the same ones put together otherwise without reading them so twice. Under each is what it read. The letters are surer in the book's equation (the PDF names them); how they are put together, exponents, small fractions and rows, is often surer in the recognizer's. Compare with the PDF page and correct the equation where it is wrong.\n\n{}\n",
-            doubts.len(),
-            doubts.join("\n")
-        )
-    };
+    let doubts = doubts_section(&doubts);
     if items.is_empty() && lacking.is_empty() {
         return (!doubts.is_empty()).then(|| format!("# Equations to check\n\n{doubts}"));
     }
@@ -1726,6 +1854,17 @@ pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn tall_brackets_pair_within_a_cell() {
+        // paired in its cell, or around a whole matrix: left alone
+        let fine = "\\begin{aligned} a &= \\left( \\frac{1}{2} \\right)^{2} \\\\ &= \\left( \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} \\right) \\end{aligned}";
+        assert_eq!(paired_in_cells(fine), fine);
+        // opened in one cell, closed in another; an invisible one alone
+        let squeezed = |t: &str| paired_in_cells(t).split_whitespace().collect::<Vec<_>>().join(" ");
+        assert_eq!(squeezed("\\begin{aligned} \\left. \\left( 1 - e \\right)^{2} &= \\left( a \\right) b \\right) \\\\ \\left. &= c \\end{aligned}"), "\\begin{aligned} \\left( 1 - e \\right)^{2} &= \\left( a \\right) b ) \\\\ &= c \\end{aligned}");
+        assert_eq!(squeezed("x \\leftarrow \\left[ y"), "x \\leftarrow [ y");
+    }
 
     #[test]
     fn a_second_reading_is_written_unless_the_rules_latex_was_corrected_by_hand() {

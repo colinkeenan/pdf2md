@@ -542,6 +542,10 @@ fn slug_words(t: &str) -> String {
 /// headings a step down (the file's title stands above them), the links to
 /// the PDF and to the pictures as they are in the course's folder. Also
 /// gives the page that only says where the PDF is from, if it has one.
+/// The equations of the course being written that are to be checked (see
+/// [`emit::doubts`]): gathered PDF by PDF, listed when all are written.
+static DOUBTS: std::sync::Mutex<Vec<(String, String, String)>> = std::sync::Mutex::new(Vec::new());
+
 fn pdf_text(pdf: &Path, stem: &str, out: &Path) -> Result<(String, Option<String>), String> {
     // (the last page of each of a course's PDFs only says where it is from:
     // it is left out, and told once in the contents)
@@ -568,6 +572,11 @@ fn pdf_text(pdf: &Path, stem: &str, out: &Path) -> Result<(String, Option<String
     // each page's picture given under what was read, to check it by)
     let pictured = !written_by_hand && pictures_of_print(pdf);
     let book = crate::convert_pdf_as(pdf, range, written_by_hand || pictured)?;
+    // (its equations that the second reading leaves in doubt: for the
+    // course's list of equations to check)
+    if let Ok(mut d) = DOUBTS.lock() {
+        d.extend(emit::doubts(&book));
+    }
     // the pictures, named after the PDF
     let tmp = out.join(format!(".course-{stem}"));
     let _ = std::fs::remove_dir_all(&tmp);
@@ -912,6 +921,9 @@ pub fn write_course(folder: &Path, out: &Path) -> Result<Vec<PathBuf>, String> {
     // the reader's notes and fixes from the earlier conversion
     let mut user = crate::userdata::collect(out);
     emit::set_fixed(&user);
+    if let Ok(mut d) = DOUBTS.lock() {
+        d.clear();
+    }
     crate::userdata::backup(&user, out);
 
     // the PDFs of each folder, by the name a page's link has for them
@@ -1216,6 +1228,26 @@ pub fn write_course(folder: &Path, out: &Path) -> Result<Vec<PathBuf>, String> {
     let all = emit::by_line(out, school) + &all;
     emit::write_changed(&p, all).map_err(|e| format!("{}: {e}", p.display()))?;
     written.push(p);
+    // the equations to check, each with the file its anchor is in
+    let check = out.join("check-equations.md");
+    let doubts: Vec<String> = DOUBTS
+        .lock()
+        .map(|d| {
+            d.iter()
+                .filter_map(|(key, name, reading)| {
+                    let k = texts.iter().position(|t| t.contains(&format!("id=\"second-{key}\"")))?;
+                    Some(format!("- [{name}]({}.md#second-{key}) — {}. The recognizer read:\n\n{reading}", files[k].slug, files[k].title))
+                })
+                .collect()
+        })
+        .unwrap_or_default();
+    if doubts.is_empty() {
+        if std::fs::read_to_string(&check).is_ok_and(|t| t.starts_with("# Equations to check")) {
+            let _ = std::fs::remove_file(&check);
+        }
+    } else {
+        emit::write_changed(&check, format!("# Equations to check\n\n{}", emit::doubts_section(&doubts))).map_err(|e| format!("{}: {e}", check.display()))?;
+    }
     // The files written last time that are not written now (a file's
     // name changed with its title or its place) are taken away: the list
     // of what was written is kept in the folder.
