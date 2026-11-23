@@ -224,11 +224,11 @@ We can proceed further, with the angular part of the (matrix element) integral.
 ```
 
 ```math
-= \int^{\infty} r^{3} drR_{n_{n} \ell_{n}}^{*} R_{n_{i} \ell_{i}} \int d \Omega Y_{\ell_{n} m_{n}}^{*} \hat{\epsilon} \cdot \hat{r} Y_{\ell_{i} m_{i}}
+= \int_{0}^{\infty} r^{3} drR_{n_{n} \ell_{n}}^{*} R_{n_{i} \ell_{i}} \int d \Omega Y_{\ell_{n} m_{n}}^{*} \hat{\epsilon} \cdot \hat{r} Y_{\ell_{i} m_{i}}
 ```
 
 ```math
-\hat{\epsilon} \cdot \hat{r} = \epsilon_{x}^{0} \sin \theta \cos \varphi + \epsilon_{y} \sin \theta \sin \varphi + \epsilon_{z} \cos \theta
+\hat{\epsilon} \cdot \hat{r} = \epsilon_{x} \sin \theta \cos \varphi + \epsilon_{y} \sin \theta \sin \varphi + \epsilon_{z} \cos \theta
 ```
 
 ```math
@@ -304,7 +304,7 @@ Y_{1 m} ( \theta ,\varphi ) Y_{\ell_{i} m_{i}} ( \theta ,\varphi ) = \sum_{\ell 
 I remind you that the Clebsch-Gordan coefficients in these equations are just numbers which are less than one. They can often be shown to be zero if the angular momentum doesn’t add up. The equation we derive can be used to give us a great deal of information.
 
 ```math
-\begin{aligned} \langle \varphi_{n} | \hat{\epsilon} \cdot \vec{r} | \varphi_{i} \rangle &= \sqrt{\frac{( 2 \ell_{i} + 1 )}{( 2 \ell_{n} + 1 )}} \langle \ell_{n} 0 | \ell_{i} 1 0 0 \rangle \int^{\infty} r^{3} drR_{n_{n} \ell_{n}}^{*} R_{n_{i} \ell_{i}} \\ & \quad \left( \epsilon_{z} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} 0 \rangle + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} 1 \rangle + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} - 1 \rangle \right)^{0} \end{aligned}
+\begin{aligned} \langle \varphi_{n} | \hat{\epsilon} \cdot \vec{r} | \varphi_{i} \rangle &= \sqrt{\frac{( 2 \ell_{i} + 1 )}{( 2 \ell_{n} + 1 )}} \langle \ell_{n} 0 | \ell_{i} 1 0 0 \rangle \int_{0}^{\infty} r^{3} drR_{n_{n} \ell_{n}}^{*} R_{n_{i} \ell_{i}} \\ & \quad \left( \epsilon_{z} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} 0 \rangle + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} 1 \rangle + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} - 1 \rangle \right) \end{aligned}
 ```
 
 We know, from the addition of angular momentum, that adding angular momentum 1 to $`\ell_{1}`$ can only give answers in the range $`| \ell_{1} - 1 | <\ell_{n} <\ell_{1} + 1`$ so the change in in $`\ell`$ between the initial and final state can only be ∆$`\ell = 0 , \pm 1`$. For other values, all the Clebsch-Gordan coefficients above will be zero.
@@ -506,7 +506,7 @@ The sum of cos<sup>2</sup> Θ over the two polarizations then just gives $`\sin^
 ```
 
 ```math
-\Gamma_{tot} = \frac{\alpha \omega_{in}^{3}}{2 \pi c^{2}} | \vec{r}_{ni} |^{2} 2 \pi \left[ x - \frac{x^{3}}{3} \right] \frac{1}{- 1}
+\Gamma_{tot} = \frac{\alpha \omega_{in}^{3}}{2 \pi c^{2}} | \vec{r}_{ni} |^{2} 2 \pi \left[ x - \frac{x^{3}}{3} \right]_{- 1}^{1}
 ```
 
 ```math
@@ -702,7 +702,7 @@ We may take the Fourier transform of this time function to the the amplitude as 
 ```
 
 ```math
-= \left[ \frac{1}{i ( \omega - \omega_{0} + i \tfrac{\Gamma}{2} )} e^{i ( \omega - \omega_{0} + i \tfrac{\Gamma}{2} ) t} \right] \frac{\infty}{0}
+= \left[ \frac{1}{i ( \omega - \omega_{0} + i \tfrac{\Gamma}{2} )} e^{i ( \omega - \omega_{0} + i \tfrac{\Gamma}{2} ) t} \right]_{0}^{\infty}
 ```
 
 ```math
@@ -932,11 +932,11 @@ We have the formula
 Lets make some approximations.
 
 ```math
-\hat{\epsilon} \cdot \vec{p} \approx | p | = m | v |\approx m\alpha c_{1} = \alpha mc
+\hat{\epsilon} \cdot \vec{p} \approx | p | = m | v |\approx m\alpha c = \alpha mc
 ```
 
 ```math
-\vec{k} \cdot \vec{r} \approx ka_{0} = \frac{\hbar \omega}{\hbar c} a_{0} \approx \frac{{}_{2} \alpha^{2} mc^{2}}{\hbar c} a_{0} = \frac{\alpha^{2} mc^{2}}{2 \hbar c} \frac{\hbar}{\alpha mc} = \frac{\alpha}{2}
+\vec{k} \cdot \vec{r} \approx ka_{0} = \frac{\hbar \omega}{\hbar c} a_{0} \approx \frac{\tfrac{1}{2} \alpha^{2} mc^{2}}{\hbar c} a_{0} = \frac{\alpha^{2} mc^{2}}{2 \hbar c} \frac{\hbar}{\alpha mc} = \frac{\alpha}{2}
 ```
 
 ```math

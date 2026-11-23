@@ -1651,11 +1651,11 @@ R_{x} ( \theta ) = e^{i \tfrac{\theta}{2} \sigma_{x}}
 ```
 
 ```math
-R_{y} ( \theta ) = e_{\infty n}^{i \tfrac{\theta}{2} \sigma_{y}}
+R_{y} ( \theta ) = e_{n}^{i \tfrac{\theta}{2} \sigma_{y}}
 ```
 
 ```math
-e^{i \tfrac{\theta}{2} \sigma_{j}} = \sum_{n = 0} \frac{\left( \frac{i\theta}{2} \right)}{n !} \sigma_{j}^{n}
+e^{i \tfrac{\theta}{2} \sigma_{j}} = \sum_{n = 0}^{\infty} \frac{\left( \frac{i\theta}{2} \right)}{n !} \sigma_{j}^{n}
 ```
 
 We now can compute the series by looking at the behavior of $`\sigma_{j}^{n}`$.
@@ -1801,7 +1801,7 @@ What are the eigen-energies and corresponding eigenstates of the system? (This i
 11. Let’s define the u axis to be in the x-z plane, between the positive x and z axes and at an angle of 30 degrees to the x axis. Given an unpolarized spin $`\frac{1}{2}`$ beam of intensity $`I`$ going into the following Stern-Gerlach apparati, what intensity comes out?
 
 ```math
-\begin{aligned} & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{x} \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix} \quad \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{u} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{z}^{u} \to ? \end{aligned}
+\begin{aligned} & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{x} \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{u} \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{u} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{z} \to ? \end{aligned}
 ```
 
 ```math

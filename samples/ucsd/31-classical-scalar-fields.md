@@ -356,7 +356,7 @@ To deal with the $`\nabla^{2}`$, we have integrated by parts twice assuming that
 We now have the **Fourier transform of the field of a point source**. If we can **transform back to position space**, we will have the field. This is a fairly standard type of problem in quantum mechanics.
 
 ```math
-\begin{aligned} \varphi ( \vec{x} ) &= \frac{1}{( 2 \pi ) \tfrac{3}{2}} \int d^{3} ke^{i \vec{k} \cdot \vec{x}} \frac{- G}{( 2 \pi ) \tfrac{3}{2}} \frac{1}{( k^{2} + \mu^{2} )} \\ &= \frac{- G}{( 2 \pi )^{3}} \int d^{3} k \frac{e^{i \vec{k} \cdot \vec{x}}}{( k^{2} + \mu^{2} )} \\ &= \frac{- 2 \pi G}{( 2 \pi )^{3}} \int k^{2} dk \int^{1} \frac{e^{ikr \cos \theta_{k}}}{( k^{2} + \mu^{2} )} d \cos \theta_{k} \\ &= \frac{- G}{( 2 \pi )^{2}} \int \frac{k^{2}}{( k^{2} + \mu^{2} )}^{- 1} \int^{1} e^{ikr \cos \theta_{k}} d \cos \theta_{k} dk \\ &= \frac{- G}{( 2 \pi )^{2}} \int \frac{k^{2}}{( k^{2} + \mu^{2} )}^{- 1} \left[ \frac{1}{ikr} e^{ikr \cos \theta_{k}} \right]^{1} dk \\ &= \frac{- G}{( 2 \pi )^{2} ir} \int \frac{k}{( k^{2} + \mu^{2} )} \left( e^{ikr} - e^{- ikr} \right)^{- 1} dk \\ &= \frac{- G}{( 2 \pi )^{2} ir} \int_{0}^{\infty} \frac{k}{( k + i\mu ) ( k - i\mu )} \left( e^{ikr} - e^{- ikr} \right) dk \end{aligned}
+\begin{aligned} \varphi ( \vec{x} ) &= \frac{1}{( 2 \pi ) \tfrac{3}{2}} \int d^{3} ke^{i \vec{k} \cdot \vec{x}} \frac{- G}{( 2 \pi ) \tfrac{3}{2}} \frac{1}{( k^{2} + \mu^{2} )} \\ &= \frac{- G}{( 2 \pi )^{3}} \int d^{3} k \frac{e^{i \vec{k} \cdot \vec{x}}}{( k^{2} + \mu^{2} )} \\ &= \frac{- 2 \pi G}{( 2 \pi )^{3}} \int k^{2} dk \int_{- 1}^{1} \frac{e^{ikr \cos \theta_{k}}}{( k^{2} + \mu^{2} )} d \cos \theta_{k} \\ &= \frac{- G}{( 2 \pi )^{2}} \int \frac{k^{2}}{( k^{2} + \mu^{2} )} \int_{- 1}^{1} e^{ikr \cos \theta_{k}} d \cos \theta_{k} dk \\ &= \frac{- G}{( 2 \pi )^{2}} \int \frac{k^{2}}{( k^{2} + \mu^{2} )} \left[ \frac{1}{ikr} e^{ikr \cos \theta_{k}} \right]_{- 1}^{1} dk \\ &= \frac{- G}{( 2 \pi )^{2} ir} \int \frac{k}{( k^{2} + \mu^{2} )} \left( e^{ikr} - e^{- ikr} \right) dk \\ &= \frac{- G}{( 2 \pi )^{2} ir} \int_{0}^{\infty} \frac{k}{( k + i\mu ) ( k - i\mu )} \left( e^{ikr} - e^{- ikr} \right) dk \end{aligned}
 ```
 
 This is now of a form for which we can use Cauchy’s theorem for **contour integrals**. The theorem says that an **integral around a closed contour in the complex plane** is equal to 2$`\pi i`$ times the sum of the residues at the poles enclosed in the contour. Contour Integration is a powerful technique often used in quantum mechanics.
@@ -384,11 +384,11 @@ The integrand goes to zero exponentially on the semicircle at infinity so only t
 ```
 
 ```math
-\int^{0} \frac{k}{( k + i\mu ) ( k - i\mu )} e^{ikr} dk + \int^{\infty} \frac{k}{( k + i\mu ) ( k - i\mu )} e^{ikr} dk = 2 \pi i \frac{1}{2} e^{- \mu r}
+\int_{-\infty}^{0} \frac{k}{( k + i\mu ) ( k - i\mu )} e^{ikr} dk + \int_{0}^{\infty} \frac{k}{( k + i\mu ) ( k - i\mu )} e^{ikr} dk = 2 \pi i \frac{1}{2} e^{- \mu r}
 ```
 
 ```math
-\begin{aligned} {}^{-\infty 0} \quad k^{\prime} &= - k \\ \int_{\infty}^{0} \frac{- k^{\prime}}{( - k^{\prime} + i\mu ) ( - k^{\prime} - i\mu )} e^{- ik^{\prime} r} ( - dk^{\prime} ) + \int_{0}^{\infty} \frac{k}{( k + i\mu ) ( k - i\mu )} e^{ikr} dk &= \pi ie^{- \mu r} \end{aligned}
+\begin{aligned} k^{\prime} &= - k \\ \int_{\infty}^{0} \frac{- k^{\prime}}{( - k^{\prime} + i\mu ) ( - k^{\prime} - i\mu )} e^{- ik^{\prime} r} ( - dk^{\prime} ) + \int_{0}^{\infty} \frac{k}{( k + i\mu ) ( k - i\mu )} e^{ikr} dk &= \pi ie^{- \mu r} \end{aligned}
 ```
 
 ```math
@@ -400,11 +400,11 @@ The integrand goes to zero exponentially on the semicircle at infinity so only t
 <a id="p434" href="book.pdf#page=434" target="_blank" title="This page in the PDF"><sup>[p. 434]</sup></a>
 
 ```math
-{}_{\infty \infty} \quad k = k^{\prime}
+k = k^{\prime}
 ```
 
 ```math
-- \int_{0} \frac{k}{k^{2} + \mu^{2}} e^{- ikr} dk + \int_{0} \frac{k}{k^{2} + \mu^{2}} e^{ikr} dk = \pi ie^{- \mu r}
+- \int_{0}^{\infty} \frac{k}{k^{2} + \mu^{2}} e^{- ikr} dk + \int_{0}^{\infty} \frac{k}{k^{2} + \mu^{2}} e^{ikr} dk = \pi ie^{- \mu r}
 ```
 
 ```math
@@ -420,7 +420,7 @@ This is exactly the integral we wanted to do.
 Plug the integral into the Fourier transform we were computing.
 
 ```math
-\begin{aligned} \varphi ( \vec{x} ) &= \frac{- G}{( 2 \pi )^{2} ir} \int^{\infty} \frac{k}{k^{2} + \mu^{2}} \left( e^{ikr} - e^{- ikr} \right) dk \\ \varphi ( \vec{x} ) &= \frac{- G}{( 2 \pi )^{2} ir} \pi ie^{0 - \mu r} \\ \varphi ( \vec{x} ) &= \frac{- Ge^{- \mu r}}{4 \pi r} \end{aligned}
+\begin{aligned} \varphi ( \vec{x} ) &= \frac{- G}{( 2 \pi )^{2} ir} \int_{0}^{\infty} \frac{k}{k^{2} + \mu^{2}} \left( e^{ikr} - e^{- ikr} \right) dk \\ \varphi ( \vec{x} ) &= \frac{- G}{( 2 \pi )^{2} ir} \pi ie^{- \mu r} \\ \varphi ( \vec{x} ) &= \frac{- Ge^{- \mu r}}{4 \pi r} \end{aligned}
 ```
 
 In this case, it is simple to compute the **interaction Hamiltonian** from the interaction Lagrangian and the **potential between two particles**. Lets assume we have two particles, each with the same interaction with the field.

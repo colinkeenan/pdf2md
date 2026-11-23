@@ -664,15 +664,15 @@ Note that the Hermitian conjugate of the momentum operator is $`\frac{\hbar}{- i
 **Answer**
 
 ```math
-P = | \langle_{L} u_{0}^{( L )} | u_{0}^{( 3 L )} \rangle |_{L}^{2}
+P = | \langle u_{0}^{( L )} | u_{0}^{( 3 L )} \rangle |^{2}
 ```
 
 ```math
-\langle u_{0}^{( L )} | u_{0}^{( 3 L )} \rangle = \int_{0} \sqrt{\frac{2}{L}} \sin \frac{\pi x}{L} \sqrt{\frac{2}{3 L}} \sin \frac{\pi x}{3 L} = \frac{2}{\sqrt{3 L}} \int_{0} \sin \frac{\pi x}{L} \sin \frac{\pi x}{3 L} dx
+\langle u_{0}^{( L )} | u_{0}^{( 3 L )} \rangle = \int_{0}^{L} \sqrt{\frac{2}{L}} \sin \frac{\pi x}{L} \sqrt{\frac{2}{3 L}} \sin \frac{\pi x}{3 L} = \frac{2}{\sqrt{3 L}} \int_{0}^{L} \sin \frac{\pi x}{L} \sin \frac{\pi x}{3 L} dx
 ```
 
 ```math
-= \frac{2}{\sqrt{3 L}} \left[ \frac{\sin \tfrac{2 \pi x}{3 L}}{2 \tfrac{2 \pi}{3 L}} - \frac{\sin \tfrac{4 \pi x}{3 L}}{2 \tfrac{4 \pi}{3 L}} \right] \frac{L}{0} = \frac{2}{\sqrt{3 L}} \frac{3 L}{4 \pi} \left( \sin \frac{2 \pi}{3} - \frac{1}{2} \sin \frac{4 \pi}{3} \right)
+= \frac{2}{\sqrt{3 L}} \left[ \frac{\sin \tfrac{2 \pi x}{3 L}}{2 \tfrac{2 \pi}{3 L}} - \frac{\sin \tfrac{4 \pi x}{3 L}}{2 \tfrac{4 \pi}{3 L}} \right]_{0}^{L} = \frac{2}{\sqrt{3 L}} \frac{3 L}{4 \pi} \left( \sin \frac{2 \pi}{3} - \frac{1}{2} \sin \frac{4 \pi}{3} \right)
 ```
 
 ```math

@@ -156,7 +156,7 @@ c_{n} ( t ) = \frac{1}{i \hbar} V_{ni} \int_{0}^{t} dt^{\prime} e^{i ( \omega_{n
 <a id="p394" href="book.pdf#page=394" target="_blank" title="This page in the PDF"><sup>[p. 394]</sup></a>
 
 ```math
-= \frac{V_{ni}}{i \hbar} \left[ \frac{e^{i ( \omega_{ni} + \omega ) t^{\prime}}}{i ( \omega_{ni} + \omega )} \right] \frac{t^{\prime} = t}{t^{\prime} = 0}
+= \frac{V_{ni}}{i \hbar} \left[ \frac{e^{i ( \omega_{ni} + \omega ) t^{\prime}}}{i ( \omega_{ni} + \omega )} \right]_{t^{\prime} = 0}^{t^{\prime} = t}
 ```
 
 ```math
@@ -238,7 +238,7 @@ c_{1} = \frac{1}{i \hbar} eE \sqrt{\frac{\hbar}{2 m\omega}} \int_{0}^{T} e^{i\om
 ```
 
 ```math
-= \frac{eE}{i \hbar} \sqrt{\frac{\hbar}{2 m\omega}} \left[ \frac{e^{i\omega t^{\prime}}}{i\omega} \right] \frac{T}{0}
+= \frac{eE}{i \hbar} \sqrt{\frac{\hbar}{2 m\omega}} \left[ \frac{e^{i\omega t^{\prime}}}{i\omega} \right]_{0}^{T}
 ```
 
 ```math

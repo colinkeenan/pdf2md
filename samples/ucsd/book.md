@@ -1615,15 +1615,15 @@ _Figure 2 (p. 35)_
 The electron beams travel through two slits in field free regions but we have the ability to vary a magnetic field enclosed by the path of the electrons. At the screen, the amplitudes from the two slits interfere $`\psi = \psi_{1} + \psi_{2}`$. Let’s start with $`B = 0`$ and $`A = 0`$ everywhere. When we change the $`B`$ field, the wavefunctions must change.
 
 ```math
-\psi_{1} \quad \to \quad \psi_{1} e_{e} \int^{- i \tfrac{e}{\hbar c}_{1} d \vec{r} \cdot \vec{A}} \int_{\vec{\jmath}}
+\psi_{1} \quad \to \quad \psi_{1} e \int^{- i \tfrac{e}{\hbar c}_{1} d \vec{r} \cdot \vec{A}}
 ```
 
 ```math
-\psi_{2} \quad \to \quad \psi_{2} e_{e}^{- i_{\hbar c 2} d \vec{r} \cdot A} \int_{\vec{\jmath}}
+\psi_{2} \quad \to \quad \psi_{2} e \int^{- i \tfrac{e}{\hbar c}_{2} d \vec{r} \cdot \vec{A}}
 ```
 
 ```math
-\psi = \left( \psi_{1} e^{- i \tfrac{e \Phi}{\hbar c}} + \psi_{2} \right) e^{- i_{\hbar c 2} d \vec{r} \cdot A}
+\psi = \left( \psi_{1} e^{- i \tfrac{e \Phi}{\hbar c}} + \psi_{2} \right) e \int^{- i \tfrac{e}{\hbar c}_{2} d \vec{r} \cdot \vec{A}}
 ```
 
 The relative phase from the two slits depends on the flux between the slits. By varying the $`B`$ field, we will **shift the diffraction pattern** even though $`B = 0`$ along the whole path of the electrons.
@@ -4303,11 +4303,11 @@ Check the normalization of (2) using the result for a definite integral of a Gau
 So now we take the Fourier Transform of (1) right here.
 
 ```math
-f ( x ) = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} A ( k ) e^{ikx} dk = \frac{1}{\sqrt{2 \pi}} \frac{1}{\sqrt{a}} \int_{k_{0} - {}^{a}}^{k_{0} + \tfrac{a}{2}} e^{ikx} dk
+f ( x ) = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} A ( k ) e^{ikx} dk = \frac{1}{\sqrt{2 \pi}} \frac{1}{\sqrt{a}} \int_{k_{0} - \tfrac{a}{2}}^{k_{0} + \tfrac{a}{2}} e^{ikx} dk
 ```
 
 ```math
-f ( x ) = \frac{1}{\sqrt{2 \pi a}} \frac{1}{ix} \left[ e^{ikx} \right]_{k_{0} - \tfrac{\tfrac{a}{2}_{a}}{2}}^{k_{0} +} = \frac{1}{\sqrt{2 \pi a}} \frac{1}{ix} e^{ik_{0} x^{2}} \left[ e^{iax/ 2} - e^{- iax/ 2} \right]
+f ( x ) = \frac{1}{\sqrt{2 \pi a}} \frac{1}{ix} \left[ e^{ikx} \right]_{k_{0} - \tfrac{\tfrac{a}{2}_{a}}{2}}^{k_{0} +} = \frac{1}{\sqrt{2 \pi a}} \frac{1}{ix} e^{ik_{0} x} \left[ e^{iax/ 2} - e^{- iax/ 2} \right]
 ```
 
 ```math
@@ -4649,7 +4649,7 @@ I^{2} = \int_{-\infty}^{\infty} dxe^{- ax^{2}} \int_{-\infty}^{\infty} dye^{- ay
 Transform to polar coordinates.
 
 ```math
-I^{2} = 2 \pi \int_{0}^{\infty} rdre^{- ar^{2}} = \pi \int_{0}^{\infty} d ( r^{2} ) e^{- ar^{2}} = \pi \left[ - \frac{1}{a} e^{- ar^{2}} \right] \frac{\infty}{0} = \frac{\pi}{a}
+I^{2} = 2 \pi \int_{0}^{\infty} rdre^{- ar^{2}} = \pi \int_{0}^{\infty} d ( r^{2} ) e^{- ar^{2}} = \pi \left[ - \frac{1}{a} e^{- ar^{2}} \right]_{0}^{\infty} = \frac{\pi}{a}
 ```
 
 Now just take the square root to get the answer above.
@@ -4963,7 +4963,7 @@ Take the Fourier Transform.
 ```
 
 ```math
-\varphi ( k ) = \frac{1}{\sqrt{4 \pi a}} \left[ \frac{- 1}{ik} e^{- ikx} \right] \frac{a}{- a}
+\varphi ( k ) = \frac{1}{\sqrt{4 \pi a}} \left[ \frac{- 1}{ik} e^{- ikx} \right]_{- a}^{a}
 ```
 
 ```math
@@ -4977,11 +4977,11 @@ Take the Fourier Transform.
 Now estimate the width of the two probability distributions.
 
 ```math
-\Delta x_{2} = 2 a
+\Delta x = 2 a
 ```
 
 ```math
-| \varphi ( k ) |^{2} = \frac{1}{\pi a} \frac{\sin ( ka )}{k^{2}}
+| \varphi ( k ) |^{2} = \frac{1}{\pi a} \frac{\sin^{2} ( ka )}{k^{2}}
 ```
 
 ```math
@@ -6747,15 +6747,15 @@ Note that the Hermitian conjugate of the momentum operator is $`\frac{\hbar}{- i
 **Answer**
 
 ```math
-P = | \langle_{L} u_{0}^{( L )} | u_{0}^{( 3 L )} \rangle |_{L}^{2}
+P = | \langle u_{0}^{( L )} | u_{0}^{( 3 L )} \rangle |^{2}
 ```
 
 ```math
-\langle u_{0}^{( L )} | u_{0}^{( 3 L )} \rangle = \int_{0} \sqrt{\frac{2}{L}} \sin \frac{\pi x}{L} \sqrt{\frac{2}{3 L}} \sin \frac{\pi x}{3 L} = \frac{2}{\sqrt{3 L}} \int_{0} \sin \frac{\pi x}{L} \sin \frac{\pi x}{3 L} dx
+\langle u_{0}^{( L )} | u_{0}^{( 3 L )} \rangle = \int_{0}^{L} \sqrt{\frac{2}{L}} \sin \frac{\pi x}{L} \sqrt{\frac{2}{3 L}} \sin \frac{\pi x}{3 L} = \frac{2}{\sqrt{3 L}} \int_{0}^{L} \sin \frac{\pi x}{L} \sin \frac{\pi x}{3 L} dx
 ```
 
 ```math
-= \frac{2}{\sqrt{3 L}} \left[ \frac{\sin \tfrac{2 \pi x}{3 L}}{2 \tfrac{2 \pi}{3 L}} - \frac{\sin \tfrac{4 \pi x}{3 L}}{2 \tfrac{4 \pi}{3 L}} \right] \frac{L}{0} = \frac{2}{\sqrt{3 L}} \frac{3 L}{4 \pi} \left( \sin \frac{2 \pi}{3} - \frac{1}{2} \sin \frac{4 \pi}{3} \right)
+= \frac{2}{\sqrt{3 L}} \left[ \frac{\sin \tfrac{2 \pi x}{3 L}}{2 \tfrac{2 \pi}{3 L}} - \frac{\sin \tfrac{4 \pi x}{3 L}}{2 \tfrac{4 \pi}{3 L}} \right]_{0}^{L} = \frac{2}{\sqrt{3 L}} \frac{3 L}{4 \pi} \left( \sin \frac{2 \pi}{3} - \frac{1}{2} \sin \frac{4 \pi}{3} \right)
 ```
 
 ```math
@@ -12366,7 +12366,7 @@ We can find the term for $`\frac{p_{r}^{2}}{2 m}`$ in the radial equation.
 <a id="p240" href="book.pdf#page=240" target="_blank" title="This page in the PDF"><sup>[p. 240]</sup></a>
 
 ```math
-\begin{aligned} &= \frac{- \hbar^{2}}{m^{2}} 4 \left( \frac{Z}{a_{0}} \right)^{3} \int^{\infty} r^{2} e^{\tfrac{- Zr}{a 0}} \left( \frac{Z^{2}}{a_{0}^{2}} - \frac{2 Z}{a_{0} r} \right) e^{\tfrac{- Zr}{a 0}} dr \\ &= \frac{- \hbar^{2}}{m^{2}} 4 \left( \frac{Z}{a_{0}} \right)^{3 0} \left( \frac{Z^{2}}{a_{0}^{2}} 2 \left( \frac{a_{0}}{2 Z} \right)^{3} - \frac{2 Z}{a_{0}} \left( \frac{a_{0}}{2 Z} \right)^{2} \right) \end{aligned}
+\begin{aligned} &= \frac{- \hbar^{2}}{m^{2}} 4 \left( \frac{Z}{a_{0}} \right)^{3} \int_{0}^{\infty} r^{2} e^{\tfrac{- Zr}{a 0}} \left( \frac{Z^{2}}{a_{0}^{2}} - \frac{2 Z}{a_{0} r} \right) e^{\tfrac{- Zr}{a 0}} dr \\ &= \frac{- \hbar^{2}}{m^{2}} 4 \left( \frac{Z}{a_{0}} \right)^{3} \left( \frac{Z^{2}}{a_{0}^{2}} 2 \left( \frac{a_{0}}{2 Z} \right)^{3} - \frac{2 Z}{a_{0}} \left( \frac{a_{0}}{2 Z} \right)^{2} \right) \end{aligned}
 ```
 
 ```math
@@ -12635,11 +12635,11 @@ We’ll need to compute the derivatives.
 ```
 
 ```math
-- ( \ell_{\infty} + k + 1 ) y^{\ell + k} + y^{\ell + k + 2} ] e^{- y^{2} / 2}
+- ( \ell + k + 1 ) y^{\ell + k} + y^{\ell + k + 2} ] e^{- y^{2} / 2}
 ```
 
 ```math
-\frac{d^{2} R}{dy^{2}} = \sum_{k = 0} a_{k} [ ( \ell + k ) ( \ell + k - 1 ) y^{\ell + k - 2}
+\frac{d^{2} R}{dy^{2}} = \sum_{k = 0}^{\infty} a_{k} [ ( \ell + k ) ( \ell + k - 1 ) y^{\ell + k - 2}
 ```
 
 ```math
@@ -12669,11 +12669,11 @@ The terms for large $`y`$ which go like $`y^{\ell + k + 2}`$ and some of the ter
 ```
 
 ```math
-\left. \sum_{{}^{\infty} a} \left[ [ \ell ( \ell - 1 ) + k ( 2 \ell + k - 1 ) - \ell ( \ell + 1 ) + 2 \ell + 2 k ] y^{\ell + k - 2} \right. + \left[ \frac{2 E}{\hbar \omega} - 2 - ( 2 \ell + 2 k + 1 ) \right] y^{\ell + k} \right] = 0
+\left. \sum_{\frac{\infty}{k = 0} a_{k}} \left[ [ \ell ( \ell - 1 ) + k ( 2 \ell + k - 1 ) - \ell ( \ell + 1 ) + 2 \ell + 2 k ] y^{\ell + k - 2} \right. + \left[ \frac{2 E}{\hbar \omega} - 2 - ( 2 \ell + 2 k + 1 ) \right] y^{\ell + k} \right] = 0
 ```
 
 ```math
-\left. {}^{k = 0 k} \quad + \left[ \frac{2 E}{\hbar \omega} - 2 - ( 2 \ell + 2 k + 1 ) \right] y^{\ell + k} \right] = 0
+\left. + \left[ \frac{2 E}{\hbar \omega} - 2 - ( 2 \ell + 2 k + 1 ) \right] y^{\ell + k} \right] = 0
 ```
 
 ```math
@@ -12695,11 +12695,11 @@ This indicates that all the odd terms in the sum will be zero, as we will see fr
 Now we will do the usual shift of the first term of the sum so that everything has a $`y^{\ell + k}`$ in it.
 
 ```math
-{}_{\infty} \quad k \to k + 2
+k \to k + 2
 ```
 
 ```math
-\sum_{k = 0} \left[ a_{k + 2} ( k + 2 ) ( 2 \ell + k + 3 ) y^{\ell + k} + a_{k} \left[ \frac{2 E}{\hbar \omega} - ( 2 \ell + 2 k + 3 ) \right] y^{\ell + k} \right] = 0
+\sum_{k = 0}^{\infty} \left[ a_{k + 2} ( k + 2 ) ( 2 \ell + k + 3 ) y^{\ell + k} + a_{k} \left[ \frac{2 E}{\hbar \omega} - ( 2 \ell + 2 k + 3 ) \right] y^{\ell + k} \right] = 0
 ```
 
 ```math
@@ -14415,11 +14415,11 @@ R_{x} ( \theta ) = e^{i \tfrac{\theta}{2} \sigma_{x}}
 ```
 
 ```math
-R_{y} ( \theta ) = e_{\infty n}^{i \tfrac{\theta}{2} \sigma_{y}}
+R_{y} ( \theta ) = e_{n}^{i \tfrac{\theta}{2} \sigma_{y}}
 ```
 
 ```math
-e^{i \tfrac{\theta}{2} \sigma_{j}} = \sum_{n = 0} \frac{\left( \frac{i\theta}{2} \right)}{n !} \sigma_{j}^{n}
+e^{i \tfrac{\theta}{2} \sigma_{j}} = \sum_{n = 0}^{\infty} \frac{\left( \frac{i\theta}{2} \right)}{n !} \sigma_{j}^{n}
 ```
 
 We now can compute the series by looking at the behavior of $`\sigma_{j}^{n}`$.
@@ -14565,7 +14565,7 @@ What are the eigen-energies and corresponding eigenstates of the system? (This i
 11. Let’s define the u axis to be in the x-z plane, between the positive x and z axes and at an angle of 30 degrees to the x axis. Given an unpolarized spin $`\frac{1}{2}`$ beam of intensity $`I`$ going into the following Stern-Gerlach apparati, what intensity comes out?
 
 ```math
-\begin{aligned} & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{x} \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix} \quad \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{u} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{z}^{u} \to ? \end{aligned}
+\begin{aligned} & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{x} \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{u} \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{u} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{z} \to ? \end{aligned}
 ```
 
 ```math
@@ -14964,7 +14964,7 @@ You may find the expansion of $`e^{ikz}`$ in terms of Bessel functions useful.
 5. Let’s define the u axis to be in the x-z plane, between the positive x and z axes and at an angle of 30 degrees to the x axis. Given an unpolarized spin $`\frac{1}{2}`$ beam of intensity $`I`$ going into the following Stern-Gerlach apparati, what intensity comes out?
 
 ```math
-\begin{aligned} & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{x} \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix} \quad \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{u} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}^{u} \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + \\ - \end{Bmatrix}_{u} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}^{z} \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{u} \to \begin{Bmatrix} + | \\ - \end{Bmatrix} \frac{z}{x} \to ? \end{aligned}
+\begin{aligned} & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{x} \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{u} \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{u} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{z} \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + \\ - \end{Bmatrix}_{u} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{z} \to ? \\ & \quad I \to \begin{Bmatrix} + \\ -| \end{Bmatrix}_{z} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{u} \to \begin{Bmatrix} + | \\ - \end{Bmatrix}_{x} \to ? \end{aligned}
 ```
 
 ---
@@ -15261,15 +15261,15 @@ _Figure 78 (p. 297)_
 The electron beams travel through two slits in field free regions but we have the ability to vary a magnetic field enclosed by the path of the electrons. At the screen, the amplitudes from the two<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=297" target="_blank" title="This page in the PDF"><sup>[p. 297]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p298" href="book.pdf#page=298" target="_blank" title="This page in the PDF"><sup>[p. 298]</sup></a></span> slits interfere $`\psi = \psi_{1} + \psi_{2}`$. Let’s start with $`B = 0`$ and $`A = 0`$ everywhere. When we change the $`B`$ field, the wavefunctions must change.
 
 ```math
-\psi_{1} \quad \to \quad \psi_{1} e_{e} \int^{- i \tfrac{e}{\hbar c}_{1} d \vec{r} \cdot \vec{A}} \int_{\vec{\jmath}}
+\psi_{1} \quad \to \quad \psi_{1} e \int^{- i \tfrac{e}{\hbar c}_{1} d \vec{r} \cdot \vec{A}}
 ```
 
 ```math
-\psi_{2} \quad \to \quad \psi_{2} e_{e}^{- i_{\hbar c 2} d \vec{r} \cdot A} \int_{\vec{\jmath}}
+\psi_{2} \quad \to \quad \psi_{2} e \int^{- i \tfrac{e}{\hbar c}_{2} d \vec{r} \cdot \vec{A}}
 ```
 
 ```math
-\psi = \left( \psi_{1} e^{- i \tfrac{e \Phi}{\hbar c}} + \psi_{2} \right) e^{- i_{\hbar c 2} d \vec{r} \cdot A}
+\psi = \left( \psi_{1} e^{- i \tfrac{e \Phi}{\hbar c}} + \psi_{2} \right) e \int^{- i \tfrac{e}{\hbar c}_{2} d \vec{r} \cdot \vec{A}}
 ```
 
 The relative phase from the two slits depends on the flux between the slits. By varying the $`B`$ field, we will **shift the diffraction pattern** even though $`B = 0`$ along the whole path of the electrons. While this may at first seem amazing, we have seen similar effects in classical E&M with an EMF induced in a loop by a changing $`B`$ field which does not touch the actual loop.
@@ -16148,11 +16148,11 @@ audio
 ```
 
 ```math
-J^{2} = L^{2} + 2 \vec{L} \cdot \vec{S} + S_{2}^{2}
+J^{2} = L^{2} + 2 \vec{L} \cdot \vec{S} + S^{2}
 ```
 
 ```math
-\vec{L} \cdot \vec{S} = \frac{1}{2} ( J^{2} - L^{2} - S^{2} ) \to \frac{\hbar}{2} ( j ( j + 1 ) - \ell ( \ell + 1 ) - s ( s + 1 ) )
+\vec{L} \cdot \vec{S} = \frac{1}{2} ( J^{2} - L^{2} - S^{2} ) \to \frac{\hbar^{2}}{2} ( j ( j + 1 ) - \ell ( \ell + 1 ) - s ( s + 1 ) )
 ```
 
 <div align="right"><a href="book.pdf#page=312" target="_blank" title="This page in the PDF"><sup>[p. 312]</sup></a></div>
@@ -17407,11 +17407,11 @@ The first order perturbation **energy shift from the spin orbit correction** is 
 ```
 
 ```math
-= {}^{2} \quad j = \ell + \tfrac{1}{2}
+= j = \ell + \tfrac{1}{2}
 ```
 
 ```math
-\left( \frac{g}{2} \right) \frac{E_{n}^{( 0 )}}{2 mc^{2}} 2 \begin{bmatrix} \frac{n}{( \ell + \tfrac{1}{2} ) ( \ell + 1 )} \\ \frac{- n}{\ell ( \ell + \tfrac{1}{2} )} \end{bmatrix} \quad j = \ell - \tfrac{1}{2}
+\left( \frac{g}{2} \right) \frac{E_{n}^{( 0 ) 2}}{2 mc^{2}} 2 \begin{bmatrix} \frac{n}{( \ell + \tfrac{1}{2} ) ( \ell + 1 )} \\ \frac{- n}{\ell ( \ell + \tfrac{1}{2} )} \end{bmatrix} \quad j = \ell - \tfrac{1}{2}
 ```
 
 Actually, the $`\vec{L} \cdot \vec{S}`$ term should give 0 for $`\ell = 0`$! In the above calculation there is an $`\frac{\ell}{\ell}`$ factor which makes the result for $`\ell = 0`$ undefined. There is an additional Dirac Equation contribution called the **“Darwin term”** (see section 23.4.5) which is important for $`\ell = 0`$ and surprisingly makes the above calculation right, even for $`\ell = 0`$!
@@ -17419,11 +17419,11 @@ Actually, the $`\vec{L} \cdot \vec{S}`$ term should give 0 for $`\ell = 0`$! In 
 We will now add these three fine structure corrections together for states of definite $`j`$. We start with a formula which has slightly different forms for $`j = \ell \pm \tfrac{1}{2}`$.
 
 ```math
-E_{njm_{j} \ell s} = E_{n}^{( 0 )} + \frac{E_{n}^{( 0 )}}{2 mc^{2}}^{2} \left[ 3 - \frac{4 n}{\ell + \tfrac{1}{2}} + \left\{ \frac{2 n}{{}^{( \ell +} - \tfrac{\tfrac{1}{2} ) ( 2 n \ell + 1 )}{\ell ( \ell + \tfrac{1}{2} )}} \right\} \frac{( + )}{( - )} \right]
+E_{njm_{j} \ell s} = E_{n}^{( 0 )} + \frac{E_{n}^{( 0 )}}{2 mc^{2}}^{2} \left[ 3 - \frac{4 n}{\ell + \tfrac{1}{2}} + \left\{ \frac{2 n}{{}^{( \ell +} - \tfrac{\tfrac{1}{2} ) ( 2 n \ell + 1 )}{\ell ( \ell + \tfrac{1}{2} )}} \right\}_{( - )}^{( + )} \right]
 ```
 
 ```math
-E_{njm_{j} \ell s} = E_{n}^{( 0 )} + \frac{E_{n}^{( 0 )}}{2 mc^{2}}^{2} \left[ 3 - \frac{n}{( \ell + \tfrac{1}{2} )} \begin{Bmatrix} 4 - \tfrac{2}{\ell + 1 \frac{2}{\ell}} \\ 4 + \end{Bmatrix} \frac{( + )}{( - )} \right]
+E_{njm_{j} \ell s} = E_{n}^{( 0 )} + \frac{E_{n}^{( 0 )}}{2 mc^{2}}^{2} \left[ 3 - \frac{n}{( \ell + \tfrac{1}{2} )} \begin{Bmatrix} 4 - \tfrac{2}{\ell + 1 \frac{2}{\ell}} \\ 4 + \end{Bmatrix}_{( - )}^{( + )} \right]
 ```
 
 <div align="right"><a href="book.pdf#page=337" target="_blank" title="This page in the PDF"><sup>[p. 337]</sup></a></div>
@@ -17665,11 +17665,11 @@ We now calculate the expectation value of $`H_{2}`$. We will immediately use the
 ```
 
 ```math
-= \left( \frac{g}{2} \right) \left( \frac{- E_{n}}{2 mc^{2}} \right) \frac{\hbar^{2}}{ma_{0}^{2} n^{2}} \begin{bmatrix} \ell \\ - ( \ell + 1 ) \end{bmatrix} \frac{( + )}{( - )} \frac{n}{\ell ( \ell + \tfrac{1}{2} ) ( \ell + 1 )}
+= \left( \frac{g}{2} \right) \left( \frac{- E_{n}}{2 mc^{2}} \right) \frac{\hbar^{2}}{ma_{0}^{2} n^{2}} \begin{bmatrix} \ell \\ - ( \ell + 1 ) \end{bmatrix}_{( - )}^{( + )} \frac{n}{\ell ( \ell + \tfrac{1}{2} ) ( \ell + 1 )}
 ```
 
 ```math
-= \left( \frac{g}{2} \right) \left( \frac{- E_{n}}{2 mc^{2}} \right) \frac{\hbar^{2} \alpha^{2} m^{2} c^{2}}{m \hbar^{2} n^{2}} \begin{bmatrix} \ell \\ - ( \ell + 1 ) \end{bmatrix} \frac{( + )}{( - )} \frac{n}{\ell ( \ell + \tfrac{1}{2} ) ( \ell + 1 )}
+= \left( \frac{g}{2} \right) \left( \frac{- E_{n}}{2 mc^{2}} \right) \frac{\hbar^{2} \alpha^{2} m^{2} c^{2}}{m \hbar^{2} n^{2}} \begin{bmatrix} \ell \\ - ( \ell + 1 ) \end{bmatrix}_{( - )}^{( + )} \frac{n}{\ell ( \ell + \tfrac{1}{2} ) ( \ell + 1 )}
 ```
 
 ```math
@@ -18756,11 +18756,11 @@ This is close to the right answer. As always, it is treated as an upper limit on
 As a check of the procedure, take trial function $`e^{- ax^{2} / 2}`$. This should give us the actual ground state energy.
 
 ```math
-E^{\prime} = \frac{\int_{-\infty}^{\infty} \psi^{*} \left[ - \tfrac{\hbar^{2}}{2 m} \tfrac{\partial^{2} \psi}{\partial x^{2}} + \tfrac{1}{2} m\omega^{2} x^{2} \psi \right] dx}{\infty}
+E^{\prime} = {}^{-\infty} \int^{\infty} \psi^{*} \left[ - \tfrac{\hbar^{2}}{2 m} \tfrac{\partial^{2} \psi}{\partial x^{2}} + \tfrac{1}{2} m\omega^{2} x^{2} \psi \right] dx
 ```
 
 ```math
-\int_{-\infty} \psi^{*} \psi dx
+\int_{-\infty}^{\infty} \psi^{*} \psi dx
 ```
 
 ```math
@@ -18842,7 +18842,7 @@ Do the $`d`$Ω$`1`$ integral and prepare the other.
 The angular integrals are not hard to do.
 
 ```math
-\Delta E_{gs} = \frac{4 \pi}{\pi^{2}} e^{2} \left( \frac{Z}{a_{0}} \right)^{6} \int_{0}^{\infty} r_{1}^{2} dr_{1} e^{- 2 Zr_{1} /a_{0}} \int_{0}^{\infty} r_{2}^{2} dr_{2} e^{- 2 Zr_{2} /a_{0}} 2 \pi \left[ \frac{- 2}{2 r_{1} r_{2}} \sqrt{r_{1}^{2} + r_{2}^{2} - 2 r_{1} r_{2} \cos \theta_{2}} \right] \frac{1}{- 1}
+\Delta E_{gs} = \frac{4 \pi}{\pi^{2}} e^{2} \left( \frac{Z}{a_{0}} \right)^{6} \int_{0}^{\infty} r_{1}^{2} dr_{1} e^{- 2 Zr_{1} /a_{0}} \int_{0}^{\infty} r_{2}^{2} dr_{2} e^{- 2 Zr_{2} /a_{0}} 2 \pi \left[ \frac{- 2}{2 r_{1} r_{2}} \sqrt{r_{1}^{2} + r_{2}^{2} - 2 r_{1} r_{2} \cos \theta_{2}} \right]_{- 1}^{1}
 ```
 
 ```math
@@ -19680,7 +19680,7 @@ c_{n} ( t ) = \frac{1}{i \hbar} V_{ni} \int_{0}^{t} dt^{\prime} e^{i ( \omega_{n
 <a id="p394" href="book.pdf#page=394" target="_blank" title="This page in the PDF"><sup>[p. 394]</sup></a>
 
 ```math
-= \frac{V_{ni}}{i \hbar} \left[ \frac{e^{i ( \omega_{ni} + \omega ) t^{\prime}}}{i ( \omega_{ni} + \omega )} \right] \frac{t^{\prime} = t}{t^{\prime} = 0}
+= \frac{V_{ni}}{i \hbar} \left[ \frac{e^{i ( \omega_{ni} + \omega ) t^{\prime}}}{i ( \omega_{ni} + \omega )} \right]_{t^{\prime} = 0}^{t^{\prime} = t}
 ```
 
 ```math
@@ -19762,7 +19762,7 @@ c_{1} = \frac{1}{i \hbar} eE \sqrt{\frac{\hbar}{2 m\omega}} \int_{0}^{T} e^{i\om
 ```
 
 ```math
-= \frac{eE}{i \hbar} \sqrt{\frac{\hbar}{2 m\omega}} \left[ \frac{e^{i\omega t^{\prime}}}{i\omega} \right] \frac{T}{0}
+= \frac{eE}{i \hbar} \sqrt{\frac{\hbar}{2 m\omega}} \left[ \frac{e^{i\omega t^{\prime}}}{i\omega} \right]_{0}^{T}
 ```
 
 ```math
@@ -20085,11 +20085,11 @@ We can proceed further, with the angular part of the (matrix element) integral.
 ```
 
 ```math
-= \int^{\infty} r^{3} drR_{n_{n} \ell_{n}}^{*} R_{n_{i} \ell_{i}} \int d \Omega Y_{\ell_{n} m_{n}}^{*} \hat{\epsilon} \cdot \hat{r} Y_{\ell_{i} m_{i}}
+= \int_{0}^{\infty} r^{3} drR_{n_{n} \ell_{n}}^{*} R_{n_{i} \ell_{i}} \int d \Omega Y_{\ell_{n} m_{n}}^{*} \hat{\epsilon} \cdot \hat{r} Y_{\ell_{i} m_{i}}
 ```
 
 ```math
-\hat{\epsilon} \cdot \hat{r} = \epsilon_{x}^{0} \sin \theta \cos \varphi + \epsilon_{y} \sin \theta \sin \varphi + \epsilon_{z} \cos \theta
+\hat{\epsilon} \cdot \hat{r} = \epsilon_{x} \sin \theta \cos \varphi + \epsilon_{y} \sin \theta \sin \varphi + \epsilon_{z} \cos \theta
 ```
 
 ```math
@@ -20165,7 +20165,7 @@ Y_{1 m} ( \theta ,\varphi ) Y_{\ell_{i} m_{i}} ( \theta ,\varphi ) = \sum_{\ell 
 I remind you that the Clebsch-Gordan coefficients in these equations are just numbers which are less than one. They can often be shown to be zero if the angular momentum doesn’t add up. The equation we derive can be used to give us a great deal of information.
 
 ```math
-\begin{aligned} \langle \varphi_{n} | \hat{\epsilon} \cdot \vec{r} | \varphi_{i} \rangle &= \sqrt{\frac{( 2 \ell_{i} + 1 )}{( 2 \ell_{n} + 1 )}} \langle \ell_{n} 0 | \ell_{i} 1 0 0 \rangle \int^{\infty} r^{3} drR_{n_{n} \ell_{n}}^{*} R_{n_{i} \ell_{i}} \\ & \quad \left( \epsilon_{z} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} 0 \rangle + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} 1 \rangle + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} - 1 \rangle \right)^{0} \end{aligned}
+\begin{aligned} \langle \varphi_{n} | \hat{\epsilon} \cdot \vec{r} | \varphi_{i} \rangle &= \sqrt{\frac{( 2 \ell_{i} + 1 )}{( 2 \ell_{n} + 1 )}} \langle \ell_{n} 0 | \ell_{i} 1 0 0 \rangle \int_{0}^{\infty} r^{3} drR_{n_{n} \ell_{n}}^{*} R_{n_{i} \ell_{i}} \\ & \quad \left( \epsilon_{z} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} 0 \rangle + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} 1 \rangle + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} \langle \ell_{n} m_{n} | \ell_{i} 1 m_{i} - 1 \rangle \right) \end{aligned}
 ```
 
 We know, from the addition of angular momentum, that adding angular momentum 1 to $`\ell_{1}`$ can only give answers in the range $`| \ell_{1} - 1 | <\ell_{n} <\ell_{1} + 1`$ so the change in in $`\ell`$ between the initial and final state can only be ∆$`\ell = 0 , \pm 1`$. For other values, all the Clebsch-Gordan coefficients above will be zero.
@@ -20367,7 +20367,7 @@ The sum of cos<sup>2</sup> Θ over the two polarizations then just gives $`\sin^
 ```
 
 ```math
-\Gamma_{tot} = \frac{\alpha \omega_{in}^{3}}{2 \pi c^{2}} | \vec{r}_{ni} |^{2} 2 \pi \left[ x - \frac{x^{3}}{3} \right] \frac{1}{- 1}
+\Gamma_{tot} = \frac{\alpha \omega_{in}^{3}}{2 \pi c^{2}} | \vec{r}_{ni} |^{2} 2 \pi \left[ x - \frac{x^{3}}{3} \right]_{- 1}^{1}
 ```
 
 ```math
@@ -20563,7 +20563,7 @@ We may take the Fourier transform of this time function to the the amplitude as 
 ```
 
 ```math
-= \left[ \frac{1}{i ( \omega - \omega_{0} + i \tfrac{\Gamma}{2} )} e^{i ( \omega - \omega_{0} + i \tfrac{\Gamma}{2} ) t} \right] \frac{\infty}{0}
+= \left[ \frac{1}{i ( \omega - \omega_{0} + i \tfrac{\Gamma}{2} )} e^{i ( \omega - \omega_{0} + i \tfrac{\Gamma}{2} ) t} \right]_{0}^{\infty}
 ```
 
 ```math
@@ -20793,11 +20793,11 @@ We have the formula
 Lets make some approximations.
 
 ```math
-\hat{\epsilon} \cdot \vec{p} \approx | p | = m | v |\approx m\alpha c_{1} = \alpha mc
+\hat{\epsilon} \cdot \vec{p} \approx | p | = m | v |\approx m\alpha c = \alpha mc
 ```
 
 ```math
-\vec{k} \cdot \vec{r} \approx ka_{0} = \frac{\hbar \omega}{\hbar c} a_{0} \approx \frac{{}_{2} \alpha^{2} mc^{2}}{\hbar c} a_{0} = \frac{\alpha^{2} mc^{2}}{2 \hbar c} \frac{\hbar}{\alpha mc} = \frac{\alpha}{2}
+\vec{k} \cdot \vec{r} \approx ka_{0} = \frac{\hbar \omega}{\hbar c} a_{0} \approx \frac{\tfrac{1}{2} \alpha^{2} mc^{2}}{\hbar c} a_{0} = \frac{\alpha^{2} mc^{2}}{2 \hbar c} \frac{\hbar}{\alpha mc} = \frac{\alpha}{2}
 ```
 
 ```math
@@ -21098,7 +21098,7 @@ Since the potential has spherical symmetry, we can choose ∆ to be in the $`z`$
 ```
 
 ```math
-= Z_{1} Z_{2} e^{2} 2 \pi \int_{0}^{\infty} r^{2} dr \left[ \frac{e^{- i \Delta rx}}{- i \Delta r} \right] \frac{x = 1}{x = - 1} \frac{e^{- r/a}}{r}
+= Z_{1} Z_{2} e^{2} 2 \pi \int_{0}^{\infty} r^{2} dr \left[ \frac{e^{- i \Delta rx}}{- i \Delta r} \right]_{x = - 1}^{x = 1} \frac{e^{- r/a}}{r}
 ```
 
 ```math
@@ -21114,7 +21114,7 @@ Since the potential has spherical symmetry, we can choose ∆ to be in the $`z`$
 <a id="p424" href="book.pdf#page=424" target="_blank" title="This page in the PDF"><sup>[p. 424]</sup></a>
 
 ```math
-= Z_{1} Z_{2} e^{2} \frac{2 \pi}{- i \Delta} \left[ - \frac{e^{- ( \tfrac{1}{a} + i \Delta ) r}}{\tfrac{1}{a} + i \Delta} + \frac{e^{- ( \tfrac{1}{a} - i \Delta ) r}}{\tfrac{1}{a} - i \Delta} \right] \frac{\infty}{0}
+= Z_{1} Z_{2} e^{2} \frac{2 \pi}{- i \Delta} \left[ - \frac{e^{- ( \tfrac{1}{a} + i \Delta ) r}}{\tfrac{1}{a} + i \Delta} + \frac{e^{- ( \tfrac{1}{a} - i \Delta ) r}}{\tfrac{1}{a} - i \Delta} \right]_{0}^{\infty}
 ```
 
 ```math
@@ -21575,7 +21575,7 @@ To deal with the $`\nabla^{2}`$, we have integrated by parts twice assuming that
 We now have the **Fourier transform of the field of a point source**. If we can **transform back to position space**, we will have the field. This is a fairly standard type of problem in quantum mechanics.
 
 ```math
-\begin{aligned} \varphi ( \vec{x} ) &= \frac{1}{( 2 \pi ) \tfrac{3}{2}} \int d^{3} ke^{i \vec{k} \cdot \vec{x}} \frac{- G}{( 2 \pi ) \tfrac{3}{2}} \frac{1}{( k^{2} + \mu^{2} )} \\ &= \frac{- G}{( 2 \pi )^{3}} \int d^{3} k \frac{e^{i \vec{k} \cdot \vec{x}}}{( k^{2} + \mu^{2} )} \\ &= \frac{- 2 \pi G}{( 2 \pi )^{3}} \int k^{2} dk \int^{1} \frac{e^{ikr \cos \theta_{k}}}{( k^{2} + \mu^{2} )} d \cos \theta_{k} \\ &= \frac{- G}{( 2 \pi )^{2}} \int \frac{k^{2}}{( k^{2} + \mu^{2} )}^{- 1} \int^{1} e^{ikr \cos \theta_{k}} d \cos \theta_{k} dk \\ &= \frac{- G}{( 2 \pi )^{2}} \int \frac{k^{2}}{( k^{2} + \mu^{2} )}^{- 1} \left[ \frac{1}{ikr} e^{ikr \cos \theta_{k}} \right]^{1} dk \\ &= \frac{- G}{( 2 \pi )^{2} ir} \int \frac{k}{( k^{2} + \mu^{2} )} \left( e^{ikr} - e^{- ikr} \right)^{- 1} dk \\ &= \frac{- G}{( 2 \pi )^{2} ir} \int_{0}^{\infty} \frac{k}{( k + i\mu ) ( k - i\mu )} \left( e^{ikr} - e^{- ikr} \right) dk \end{aligned}
+\begin{aligned} \varphi ( \vec{x} ) &= \frac{1}{( 2 \pi ) \tfrac{3}{2}} \int d^{3} ke^{i \vec{k} \cdot \vec{x}} \frac{- G}{( 2 \pi ) \tfrac{3}{2}} \frac{1}{( k^{2} + \mu^{2} )} \\ &= \frac{- G}{( 2 \pi )^{3}} \int d^{3} k \frac{e^{i \vec{k} \cdot \vec{x}}}{( k^{2} + \mu^{2} )} \\ &= \frac{- 2 \pi G}{( 2 \pi )^{3}} \int k^{2} dk \int_{- 1}^{1} \frac{e^{ikr \cos \theta_{k}}}{( k^{2} + \mu^{2} )} d \cos \theta_{k} \\ &= \frac{- G}{( 2 \pi )^{2}} \int \frac{k^{2}}{( k^{2} + \mu^{2} )} \int_{- 1}^{1} e^{ikr \cos \theta_{k}} d \cos \theta_{k} dk \\ &= \frac{- G}{( 2 \pi )^{2}} \int \frac{k^{2}}{( k^{2} + \mu^{2} )} \left[ \frac{1}{ikr} e^{ikr \cos \theta_{k}} \right]_{- 1}^{1} dk \\ &= \frac{- G}{( 2 \pi )^{2} ir} \int \frac{k}{( k^{2} + \mu^{2} )} \left( e^{ikr} - e^{- ikr} \right) dk \\ &= \frac{- G}{( 2 \pi )^{2} ir} \int_{0}^{\infty} \frac{k}{( k + i\mu ) ( k - i\mu )} \left( e^{ikr} - e^{- ikr} \right) dk \end{aligned}
 ```
 
 This is now of a form for which we can use Cauchy’s theorem for **contour integrals**. The theorem says that an **integral around a closed contour in the complex plane** is equal to 2$`\pi i`$ times the sum of the residues at the poles enclosed in the contour. Contour Integration is a powerful technique often used in quantum mechanics.
@@ -21603,11 +21603,11 @@ The integrand goes to zero exponentially on the semicircle at infinity so only t
 ```
 
 ```math
-\int^{0} \frac{k}{( k + i\mu ) ( k - i\mu )} e^{ikr} dk + \int^{\infty} \frac{k}{( k + i\mu ) ( k - i\mu )} e^{ikr} dk = 2 \pi i \frac{1}{2} e^{- \mu r}
+\int_{-\infty}^{0} \frac{k}{( k + i\mu ) ( k - i\mu )} e^{ikr} dk + \int_{0}^{\infty} \frac{k}{( k + i\mu ) ( k - i\mu )} e^{ikr} dk = 2 \pi i \frac{1}{2} e^{- \mu r}
 ```
 
 ```math
-\begin{aligned} {}^{-\infty 0} \quad k^{\prime} &= - k \\ \int_{\infty}^{0} \frac{- k^{\prime}}{( - k^{\prime} + i\mu ) ( - k^{\prime} - i\mu )} e^{- ik^{\prime} r} ( - dk^{\prime} ) + \int_{0}^{\infty} \frac{k}{( k + i\mu ) ( k - i\mu )} e^{ikr} dk &= \pi ie^{- \mu r} \end{aligned}
+\begin{aligned} k^{\prime} &= - k \\ \int_{\infty}^{0} \frac{- k^{\prime}}{( - k^{\prime} + i\mu ) ( - k^{\prime} - i\mu )} e^{- ik^{\prime} r} ( - dk^{\prime} ) + \int_{0}^{\infty} \frac{k}{( k + i\mu ) ( k - i\mu )} e^{ikr} dk &= \pi ie^{- \mu r} \end{aligned}
 ```
 
 ```math
@@ -21619,11 +21619,11 @@ The integrand goes to zero exponentially on the semicircle at infinity so only t
 <a id="p434" href="book.pdf#page=434" target="_blank" title="This page in the PDF"><sup>[p. 434]</sup></a>
 
 ```math
-{}_{\infty \infty} \quad k = k^{\prime}
+k = k^{\prime}
 ```
 
 ```math
-- \int_{0} \frac{k}{k^{2} + \mu^{2}} e^{- ikr} dk + \int_{0} \frac{k}{k^{2} + \mu^{2}} e^{ikr} dk = \pi ie^{- \mu r}
+- \int_{0}^{\infty} \frac{k}{k^{2} + \mu^{2}} e^{- ikr} dk + \int_{0}^{\infty} \frac{k}{k^{2} + \mu^{2}} e^{ikr} dk = \pi ie^{- \mu r}
 ```
 
 ```math
@@ -21639,7 +21639,7 @@ This is exactly the integral we wanted to do.
 Plug the integral into the Fourier transform we were computing.
 
 ```math
-\begin{aligned} \varphi ( \vec{x} ) &= \frac{- G}{( 2 \pi )^{2} ir} \int^{\infty} \frac{k}{k^{2} + \mu^{2}} \left( e^{ikr} - e^{- ikr} \right) dk \\ \varphi ( \vec{x} ) &= \frac{- G}{( 2 \pi )^{2} ir} \pi ie^{0 - \mu r} \\ \varphi ( \vec{x} ) &= \frac{- Ge^{- \mu r}}{4 \pi r} \end{aligned}
+\begin{aligned} \varphi ( \vec{x} ) &= \frac{- G}{( 2 \pi )^{2} ir} \int_{0}^{\infty} \frac{k}{k^{2} + \mu^{2}} \left( e^{ikr} - e^{- ikr} \right) dk \\ \varphi ( \vec{x} ) &= \frac{- G}{( 2 \pi )^{2} ir} \pi ie^{- \mu r} \\ \varphi ( \vec{x} ) &= \frac{- Ge^{- \mu r}}{4 \pi r} \end{aligned}
 ```
 
 In this case, it is simple to compute the **interaction Hamiltonian** from the interaction Lagrangian and the **potential between two particles**. Lets assume we have two particles, each with the same interaction with the field.
@@ -21706,11 +21706,11 @@ In **Rationalized Heaviside-Lorentz units** we decrease the field strength by a 
 ```
 
 ```math
-{}_{2} e \quad \to \quad e \sqrt{4 \pi}_{2}
+e \quad \to \quad e \sqrt{4 \pi}
 ```
 
 ```math
-\alpha = \frac{e}{\hbar c} \quad \to \quad \frac{e}{4 \pi \hbar c} \approx \frac{1}{1 3 7}
+\alpha = \frac{e^{2}}{\hbar c} \quad \to \quad \frac{e^{2}}{4 \pi \hbar c} \approx \frac{1}{1 3 7}
 ```
 
 Its not a very big change but it would have been nice if Maxwell had started with this set of units. Of course the value of $`\alpha`$ cannot change, but, the formula for it does because we have redefined the charge $`e`$.
@@ -23250,7 +23250,7 @@ Recall that the absolute square of the time integral will turn into 2$`\pi t\del
 Now we very carefully put the interaction term into the formula for **second order time dependent perturbation theory**, again using $`e^{i \vec{k} \cdot \vec{x}} \approx 1`$. Our notation is that the **intermediate state of atom and field is called** $`| I \rangle = | j,n_{\vec{k} ,\alpha} ,n_{\vec{k}^{\prime} ,\alpha^{\prime}} \rangle`$ where $`j`$ represents the state of the atom and we may have zero or two photons, as indicated in the diagram.
 
 ```math
-\begin{aligned} \mathcal{V} &= - \frac{e}{mc} \vec{A} \cdot \vec{p} = - \frac{e}{mc} \frac{1}{\sqrt{V}} \sum_{\vec{k} \alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \hat{\epsilon}^{( \alpha )} \cdot \vec{p} \left( a_{k,\alpha} e^{- i\omega t} + a_{k,\alpha}^{\dagger} e^{i\omega t} \right) \\ c_{n}^{( 2 )} ( t ) &= \frac{- 1}{\hbar^{2}} \sum \int^{t} dt_{2} \mathcal{V}_{nI} ( t_{2} ) e^{i\omega_{nj} t_{2}} \int^{t_{2}} dt_{1} e^{i\omega_{ji} t_{1}} \mathcal{V}_{Ii} ( t_{1} ) \\ c_{n ; \vec{k}^{\prime} \hat{\epsilon}^{( \alpha \prime )}}^{( 2 )} ( t ) &= \frac{- e^{2}}{m^{2} c^{2} \hbar^{2}} \sum_{I}^{j, \vec{k} ,\alpha 0} \frac{1}{V} \frac{\hbar c^{2}}{2 \sqrt{\omega^{\prime} \omega}} \int_{0}^{t} dt_{2}^{0} \langle n ; \vec{k}^{\prime} \hat{\epsilon}^{( \alpha^{\prime} )} | ( \hat{\epsilon}^{( \alpha )} a_{k,\alpha} e^{- i\omega t_{2}} + \hat{\epsilon}^{( \alpha^{\prime} )} a_{k^{\prime} ,\alpha^{\prime}}^{\dagger} e^{i\omega^{\prime} t_{2}} ) \cdot \vec{p} | I \rangle e^{i\omega_{nj} t_{2}} \end{aligned}
+\begin{aligned} \mathcal{V} &= - \frac{e}{mc} \vec{A} \cdot \vec{p} = - \frac{e}{mc} \frac{1}{\sqrt{V}} \sum_{\vec{k} \alpha} \sqrt{\frac{\hbar c^{2}}{2 \omega}} \hat{\epsilon}^{( \alpha )} \cdot \vec{p} \left( a_{k,\alpha} e^{- i\omega t} + a_{k,\alpha}^{\dagger} e^{i\omega t} \right) \\ c_{n}^{( 2 )} ( t ) &= \frac{- 1}{\hbar^{2}} \sum_{j, \vec{k} ,\alpha} \int_{0}^{t} dt_{2} \mathcal{V}_{nI} ( t_{2} ) e^{i\omega_{nj} t_{2}} \int_{0}^{t_{2}} dt_{1} e^{i\omega_{ji} t_{1}} \mathcal{V}_{Ii} ( t_{1} ) \\ c_{n ; \vec{k}^{\prime} \hat{\epsilon}^{( \alpha \prime )}}^{( 2 )} ( t ) &= \frac{- e^{2}}{m^{2} c^{2} \hbar^{2}} \sum_{I} \frac{1}{V} \frac{\hbar c^{2}}{2 \sqrt{\omega^{\prime} \omega}} \int_{0}^{t} dt_{2} \langle n ; \vec{k}^{\prime} \hat{\epsilon}^{( \alpha^{\prime} )} | ( \hat{\epsilon}^{( \alpha )} a_{k,\alpha} e^{- i\omega t_{2}} + \hat{\epsilon}^{( \alpha^{\prime} )} a_{k^{\prime} ,\alpha^{\prime}}^{\dagger} e^{i\omega^{\prime} t_{2}} ) \cdot \vec{p} | I \rangle e^{i\omega_{nj} t_{2}} \end{aligned}
 ```
 
 ```math
@@ -23272,7 +23272,7 @@ Looking again at the formula for the second order scattering amplitude, note tha
 Now, reduce to the two nonzero terms. The operators just give a factor of 1 and make the photon states work out. If $`| j \rangle`$ is the intermediate atomic state, the **second order term reduces to**.
 
 ```math
-\begin{aligned} c_{n ; \vec{k}^{\prime} \hat{\epsilon}^{( \alpha \prime )}}^{( 2 )} ( t ) &= \frac{- e^{2}}{2 Vm^{2} \hbar \sqrt{\omega^{\prime} \omega}} \sum_{j} \int_{0}^{t} dt_{2} \int_{0}^{t_{2}} dt_{1} \left[ e^{i ( \omega^{\prime} + \omega_{nj} ) t_{2}} \langle n | \hat{\epsilon}^{( \alpha^{\prime} )} \cdot \vec{p} | j \rangle \langle j | \hat{\epsilon}^{( \alpha )} \cdot \vec{p} | i \rangle e^{i ( \omega_{ji} - \omega ) t_{1}} \right. \\ & \quad \left. + \quad e^{i ( \omega_{nj} - \omega ) t_{2}} \langle n | \hat{\epsilon}^{( \alpha )} \cdot \vec{p} | j \rangle \langle j | \hat{\epsilon}^{( \alpha )^{\prime}} \cdot \vec{p} | i \rangle e^{i ( \omega^{\prime} + \omega_{ji} ) t_{1}} \right] \\ c_{n ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 2 )} ( t ) &= \frac{- e^{2}}{2 Vm^{2} \hbar \sqrt{\omega^{\prime} \omega}} \sum_{j} \int_{0}^{t} dt_{2} \left[ e^{i ( \omega^{\prime} + \omega_{nj} ) t_{2}} \langle n | \hat{\epsilon}^{\prime} \cdot \vec{p} | j \rangle \langle j | \hat{\epsilon} \cdot \vec{p} | i \rangle \left[ \frac{e^{i ( \omega_{ji} - \omega ) t_{1}}}{i ( \omega_{ji} - \omega )} \right] \frac{t_{2}}{0} \right. \\ & \quad \left. + \quad e^{i ( \omega_{nj} - \omega ) t_{2}} \langle n | \hat{\epsilon} \cdot \vec{p} | j \rangle \langle j | \hat{\epsilon}^{\prime} \cdot \vec{p} | i \rangle \left[ \frac{e^{i ( \omega^{\prime} + \omega_{ji} ) t_{1}}}{i ( \omega^{\prime} + \omega_{ji} )} \right] \frac{t_{2}}{0} \right] \\ c_{n ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 2 )} ( t ) &= \frac{- e^{2}}{2 Vm^{2} \hbar \sqrt{\omega^{\prime} \omega}} \sum_{j} \int_{0}^{t} dt_{2} \left[ e^{i ( \omega^{\prime} + \omega_{nj} ) t_{2}} \langle n | \hat{\epsilon}^{\prime} \cdot \vec{p} | j \rangle \langle j | \hat{\epsilon} \cdot \vec{p} | i \rangle \left[ \frac{e^{i ( \omega_{ji} - \omega ) t_{2}} - 1}{i ( \omega_{ji} - \omega )} \right] \right. \\ & \quad \left. + \quad e^{i ( \omega_{nj} - \omega ) t_{2}} \langle n | \hat{\epsilon} \cdot \vec{p} | j \rangle \langle j | \hat{\epsilon}^{\prime} \cdot \vec{p} | i \rangle \left[ \frac{e^{i ( \omega^{\prime} + \omega_{ji} ) t_{2}} - 1}{i ( \omega^{\prime} + \omega_{ji} )} \right] \right] \end{aligned}
+\begin{aligned} c_{n ; \vec{k}^{\prime} \hat{\epsilon}^{( \alpha \prime )}}^{( 2 )} ( t ) &= \frac{- e^{2}}{2 Vm^{2} \hbar \sqrt{\omega^{\prime} \omega}} \sum_{j} \int_{0}^{t} dt_{2} \int_{0}^{t_{2}} dt_{1} \left[ e^{i ( \omega^{\prime} + \omega_{nj} ) t_{2}} \langle n | \hat{\epsilon}^{( \alpha^{\prime} )} \cdot \vec{p} | j \rangle \langle j | \hat{\epsilon}^{( \alpha )} \cdot \vec{p} | i \rangle e^{i ( \omega_{ji} - \omega ) t_{1}} \right. \\ & \quad \left. + \quad e^{i ( \omega_{nj} - \omega ) t_{2}} \langle n | \hat{\epsilon}^{( \alpha )} \cdot \vec{p} | j \rangle \langle j | \hat{\epsilon}^{( \alpha )^{\prime}} \cdot \vec{p} | i \rangle e^{i ( \omega^{\prime} + \omega_{ji} ) t_{1}} \right] \\ c_{n ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 2 )} ( t ) &= \frac{- e^{2}}{2 Vm^{2} \hbar \sqrt{\omega^{\prime} \omega}} \sum_{j} \int_{0}^{t} dt_{2} \left[ e^{i ( \omega^{\prime} + \omega_{nj} ) t_{2}} \langle n | \hat{\epsilon}^{\prime} \cdot \vec{p} | j \rangle \langle j | \hat{\epsilon} \cdot \vec{p} | i \rangle \left[ \frac{e^{i ( \omega_{ji} - \omega ) t_{1}}}{i ( \omega_{ji} - \omega )} \right]_{0}^{t_{2}} \right. \\ & \quad \left. + \quad e^{i ( \omega_{nj} - \omega ) t_{2}} \langle n | \hat{\epsilon} \cdot \vec{p} | j \rangle \langle j | \hat{\epsilon}^{\prime} \cdot \vec{p} | i \rangle \left[ \frac{e^{i ( \omega^{\prime} + \omega_{ji} ) t_{1}}}{i ( \omega^{\prime} + \omega_{ji} )} \right]_{0}^{t_{2}} \right] \\ c_{n ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 2 )} ( t ) &= \frac{- e^{2}}{2 Vm^{2} \hbar \sqrt{\omega^{\prime} \omega}} \sum_{j} \int_{0}^{t} dt_{2} \left[ e^{i ( \omega^{\prime} + \omega_{nj} ) t_{2}} \langle n | \hat{\epsilon}^{\prime} \cdot \vec{p} | j \rangle \langle j | \hat{\epsilon} \cdot \vec{p} | i \rangle \left[ \frac{e^{i ( \omega_{ji} - \omega ) t_{2}} - 1}{i ( \omega_{ji} - \omega )} \right] \right. \\ & \quad \left. + \quad e^{i ( \omega_{nj} - \omega ) t_{2}} \langle n | \hat{\epsilon} \cdot \vec{p} | j \rangle \langle j | \hat{\epsilon}^{\prime} \cdot \vec{p} | i \rangle \left[ \frac{e^{i ( \omega^{\prime} + \omega_{ji} ) t_{2}} - 1}{i ( \omega^{\prime} + \omega_{ji} )} \right] \right] \end{aligned}
 ```
 
 The $`- 1`$ terms coming from the integration over $`t_{1}`$ can be dropped. We can anticipate that the integral over $`t_{2}`$ will eventually give us a delta function of energy conservation, going to infinity when energy is conserved and going to zero when it is not. Those $`- 1`$ terms can never go to infinity and can therefore be neglected. When the energy conservation is satisfied, those terms are negligible and when it is not, the whole thing goes to zero.
@@ -23292,11 +23292,11 @@ The $`- 1`$ terms coming from the integration over $`t_{1}`$ can be dropped. We 
 We have calculated all the amplitudes. The **first order and second order amplitudes should be combined, then squared**.
 
 ```math
-c_{n} ( t ) = c_{n}^{( 1 )} ( t ) + c_{n}^{( 2 )} ( t )_{t}
+c_{n} ( t ) = c_{n}^{( 1 )} ( t ) + c_{n}^{( 2 )} ( t )
 ```
 
 ```math
-\begin{aligned} c_{n ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 1 )} ( t ) &= \frac{e^{2}}{2 iVm \sqrt{\omega^{\prime} \omega}} \hat{\epsilon} \cdot \hat{\epsilon}^{\prime} \delta_{ni} \int_{0} e^{i ( \omega_{ni} + \omega^{\prime} - \omega ) t^{\prime}} dt^{\prime} \\ c_{n ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 2 )} ( t ) &= \frac{- e^{2}}{2 iVm^{2} \hbar \sqrt{\omega^{\prime} \omega}} \sum_{j} \left[ \frac{\langle n | \hat{\epsilon}^{\prime} \cdot \vec{p} | j \rangle \langle j | \hat{\epsilon} \cdot \vec{p} | i \rangle}{\omega_{ji} - \omega} + \frac{\langle n | \hat{\epsilon} \cdot \vec{p} | j \rangle \langle j | \hat{\epsilon}^{\prime} \cdot \vec{p} | i \rangle}{\omega^{\prime} + \omega_{ji}} \right] \int_{0}^{t} dt_{2} e^{i ( \omega_{ni} + \omega^{\prime} - \omega ) t_{2}} \end{aligned}
+\begin{aligned} c_{n ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 1 )} ( t ) &= \frac{e^{2}}{2 iVm \sqrt{\omega^{\prime} \omega}} \hat{\epsilon} \cdot \hat{\epsilon}^{\prime} \delta_{ni} \int_{0}^{t} e^{i ( \omega_{ni} + \omega^{\prime} - \omega ) t^{\prime}} dt^{\prime} \\ c_{n ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 2 )} ( t ) &= \frac{- e^{2}}{2 iVm^{2} \hbar \sqrt{\omega^{\prime} \omega}} \sum_{j} \left[ \frac{\langle n | \hat{\epsilon}^{\prime} \cdot \vec{p} | j \rangle \langle j | \hat{\epsilon} \cdot \vec{p} | i \rangle}{\omega_{ji} - \omega} + \frac{\langle n | \hat{\epsilon} \cdot \vec{p} | j \rangle \langle j | \hat{\epsilon}^{\prime} \cdot \vec{p} | i \rangle}{\omega^{\prime} + \omega_{ji}} \right] \int_{0}^{t} dt_{2} e^{i ( \omega_{ni} + \omega^{\prime} - \omega ) t_{2}} \end{aligned}
 ```
 
 ```math
@@ -23312,11 +23312,11 @@ c_{n} ( t ) = c_{n}^{( 1 )} ( t ) + c_{n}^{( 2 )} ( t )_{t}
 ```
 
 ```math
-\begin{aligned} \Gamma &= \int \frac{Vd^{3} k^{\prime}}{( 2 \pi )^{3}} \left| \delta_{ni} \hat{\epsilon} \cdot \hat{\epsilon}^{\prime} - \frac{1}{m \hbar} \sum_{j} \left[ \frac{\langle n | \hat{\epsilon}^{\prime} \cdot \vec{p} | j \rangle \langle j | \hat{\epsilon} \cdot \vec{p} | i \rangle}{\omega_{ji} - \omega} + \frac{\langle n | \hat{\epsilon} \cdot \vec{p} | j \rangle \langle j | \hat{\epsilon}^{\prime} \cdot \vec{p} | i \rangle}{\omega^{\prime} + \omega_{ji}} \right] \right|^{2} \\ & \quad \times \quad \frac{e^{4}}{4 V^{2} m^{2} \omega^{\prime} \omega} 2 \pi \delta ( \omega_{ni} + \omega^{\prime} - \omega )_{2} \end{aligned}
+\begin{aligned} \Gamma &= \int \frac{Vd^{3} k^{\prime}}{( 2 \pi )^{3}} \left| \delta_{ni} \hat{\epsilon} \cdot \hat{\epsilon}^{\prime} - \frac{1}{m \hbar} \sum_{j} \left[ \frac{\langle n | \hat{\epsilon}^{\prime} \cdot \vec{p} | j \rangle \langle j | \hat{\epsilon} \cdot \vec{p} | i \rangle}{\omega_{ji} - \omega} + \frac{\langle n | \hat{\epsilon} \cdot \vec{p} | j \rangle \langle j | \hat{\epsilon}^{\prime} \cdot \vec{p} | i \rangle}{\omega^{\prime} + \omega_{ji}} \right] \right|^{2} \\ & \quad \times \quad \frac{e^{4}}{4 V^{2} m^{2} \omega^{\prime} \omega} 2 \pi \delta ( \omega_{ni} + \omega^{\prime} - \omega ) \end{aligned}
 ```
 
 ```math
-\begin{aligned} \Gamma &= \int \frac{V\omega^{\prime 2} d\omega^{\prime} d \Omega}{( 2 \pi c )^{3}} \left| \delta_{ni} \hat{\epsilon} \cdot \hat{\epsilon}^{\prime} - \frac{1}{m \hbar} \sum_{j} \left[ \frac{\langle n | \hat{\epsilon}^{\prime} \cdot \vec{p} | j \rangle \langle j | \hat{\epsilon} \cdot \vec{p} | i \rangle}{\omega_{ji} - \omega} + \frac{\langle n | \hat{\epsilon} \cdot \vec{p} | j \rangle \langle j | \hat{\epsilon}^{\prime} \cdot \vec{p} | i \rangle}{\omega^{\prime} + \omega_{ji}} \right] \right| \\ & \quad \times \quad \frac{e^{4}}{4 V^{2} m^{2} \omega^{\prime} \omega} 2 \pi \delta ( \omega_{ni} + \omega^{\prime} - \omega ) \end{aligned}
+\begin{aligned} \Gamma &= \int \frac{V\omega^{\prime 2} d\omega^{\prime} d \Omega}{( 2 \pi c )^{3}} \left| \delta_{ni} \hat{\epsilon} \cdot \hat{\epsilon}^{\prime} - \frac{1}{m \hbar} \sum_{j} \left[ \frac{\langle n | \hat{\epsilon}^{\prime} \cdot \vec{p} | j \rangle \langle j | \hat{\epsilon} \cdot \vec{p} | i \rangle}{\omega_{ji} - \omega} + \frac{\langle n | \hat{\epsilon} \cdot \vec{p} | j \rangle \langle j | \hat{\epsilon}^{\prime} \cdot \vec{p} | i \rangle}{\omega^{\prime} + \omega_{ji}} \right] \right|^{2} \\ & \quad \times \quad \frac{e^{4}}{4 V^{2} m^{2} \omega^{\prime} \omega} 2 \pi \delta ( \omega_{ni} + \omega^{\prime} - \omega ) \end{aligned}
 ```
 
 <div align="right"><a href="book.pdf#page=466" target="_blank" title="This page in the PDF"><sup>[p. 466]</sup></a></div>
@@ -23438,7 +23438,7 @@ i \hbar \hat{\epsilon} \cdot \hat{\epsilon}^{\prime} = \sum_{j} [ ( \hat{\epsilo
 ```
 
 ```math
-\begin{aligned} &= \hbar \omega_{ij} ( \hat{\epsilon} \cdot \vec{x} )_{ij} \\ ( \hat{\epsilon} \cdot \vec{x} )_{ij} &= \frac{- i}{m\omega} ( \hat{\epsilon} \cdot \vec{p} )_{ij} \\ i \hbar \hat{\epsilon} \cdot \hat{\epsilon}^{\prime} &= \sum^{ij} \left[ \frac{- i}{m\omega_{ij}} ( \hat{\epsilon} \cdot \vec{p} )_{ij} ( \hat{\epsilon}^{\prime} \cdot p )_{ji} - \frac{- i}{m\omega_{ji}} ( \hat{\epsilon}^{\prime} \cdot \vec{p} )_{ij} ( \hat{\epsilon} \cdot \vec{p} )_{ji} \right] \\ &= \sum^{j} \left[ \frac{- i}{m\omega_{ij}} ( \hat{\epsilon} \cdot \vec{p} )_{ij} ( \hat{\epsilon}^{\prime} \cdot p )_{ji} + \frac{- i}{m\omega_{ij}} ( \hat{\epsilon}^{\prime} \cdot \vec{p} )_{ij} ( \hat{\epsilon} \cdot \vec{p} )_{ji} \right] \\ &= \sum^{j} \frac{- i}{m\omega_{ij}} [ ( \hat{\epsilon} \cdot \vec{p} )_{ij} ( \hat{\epsilon}^{\prime} \cdot p )_{ji} + ( \hat{\epsilon}^{\prime} \cdot \vec{p} )_{ij} ( \hat{\epsilon} \cdot \vec{p} )_{ji} ] \\ \hat{\epsilon} \cdot \hat{\epsilon}^{\prime} &= \frac{- 1}{m \hbar}^{j} \sum_{j} \frac{1}{\omega_{ij}} [ ( \hat{\epsilon}^{\prime} \cdot \vec{p} )_{ij} ( \hat{\epsilon} \cdot \vec{p} )_{ji} + ( \hat{\epsilon} \cdot \vec{p} )_{ij} ( \hat{\epsilon}^{\prime} \cdot \vec{p} )_{ji} ] \end{aligned}
+\begin{aligned} &= \hbar \omega_{ij} ( \hat{\epsilon} \cdot \vec{x} )_{ij} \\ ( \hat{\epsilon} \cdot \vec{x} )_{ij} &= \frac{- i}{m\omega_{ij}} ( \hat{\epsilon} \cdot \vec{p} )_{ij} \\ i \hbar \hat{\epsilon} \cdot \hat{\epsilon}^{\prime} &= \sum_{j} \left[ \frac{- i}{m\omega_{ij}} ( \hat{\epsilon} \cdot \vec{p} )_{ij} ( \hat{\epsilon}^{\prime} \cdot p )_{ji} - \frac{- i}{m\omega_{ji}} ( \hat{\epsilon}^{\prime} \cdot \vec{p} )_{ij} ( \hat{\epsilon} \cdot \vec{p} )_{ji} \right] \\ &= \sum_{j} \left[ \frac{- i}{m\omega_{ij}} ( \hat{\epsilon} \cdot \vec{p} )_{ij} ( \hat{\epsilon}^{\prime} \cdot p )_{ji} + \frac{- i}{m\omega_{ij}} ( \hat{\epsilon}^{\prime} \cdot \vec{p} )_{ij} ( \hat{\epsilon} \cdot \vec{p} )_{ji} \right] \\ &= \sum_{j} \frac{- i}{m\omega_{ij}} [ ( \hat{\epsilon} \cdot \vec{p} )_{ij} ( \hat{\epsilon}^{\prime} \cdot p )_{ji} + ( \hat{\epsilon}^{\prime} \cdot \vec{p} )_{ij} ( \hat{\epsilon} \cdot \vec{p} )_{ji} ] \\ \hat{\epsilon} \cdot \hat{\epsilon}^{\prime} &= \frac{- 1}{m \hbar} \sum_{j} \frac{1}{\omega_{ij}} [ ( \hat{\epsilon}^{\prime} \cdot \vec{p} )_{ij} ( \hat{\epsilon} \cdot \vec{p} )_{ji} + ( \hat{\epsilon} \cdot \vec{p} )_{ij} ( \hat{\epsilon}^{\prime} \cdot \vec{p} )_{ji} ] \end{aligned}
 ```
 
 (Reminder: $`\omega_{ij} = \tfrac{E_{i} - E_{j}}{\hbar}`$ is just a number. $`( \hat{\epsilon} \cdot \vec{p} )_{ij} = \langle i | \hat{\epsilon} \cdot \vec{p} | j \rangle`$ is a matrix element between states.)
@@ -23480,11 +23480,11 @@ Lord Rayleigh calculated **low energy elastic scattering of light** from atoms u
 ```
 
 ```math
-\begin{aligned} &= \left( \frac{e^{2}}{4 \pi mc^{2}} \right)^{2} \left( \frac{m\omega}{\hbar} \right)^{2} | \sum_{j} [ ( \langle i | \hat{\epsilon}^{\prime} \cdot \vec{x} | j \rangle \langle j | \hat{\epsilon} \cdot \vec{x} | i \rangle - \langle i | \hat{\epsilon} \cdot \vec{x} | j \rangle \langle j | \hat{\epsilon}^{\prime} \cdot \vec{x} | i \rangle ) \\ & \quad \left. + \frac{\omega}{\omega_{ji}} ( \langle i | \hat{\epsilon}^{\prime} \cdot \vec{x} | j \rangle \langle j | \hat{\epsilon} \cdot \vec{x} | i \rangle + \langle i | \hat{\epsilon} \cdot \vec{x} | j \rangle \langle j | \hat{\epsilon}^{\prime} \cdot \vec{x} | i \rangle ) \right] |_{2}^{2} \end{aligned}
+\begin{aligned} &= \left( \frac{e^{2}}{4 \pi mc^{2}} \right)^{2} \left( \frac{m\omega}{\hbar} \right)^{2} | \sum_{j} [ ( \langle i | \hat{\epsilon}^{\prime} \cdot \vec{x} | j \rangle \langle j | \hat{\epsilon} \cdot \vec{x} | i \rangle - \langle i | \hat{\epsilon} \cdot \vec{x} | j \rangle \langle j | \hat{\epsilon}^{\prime} \cdot \vec{x} | i \rangle ) \\ & \quad \left. + \frac{\omega}{\omega_{ji}} ( \langle i | \hat{\epsilon}^{\prime} \cdot \vec{x} | j \rangle \langle j | \hat{\epsilon} \cdot \vec{x} | i \rangle + \langle i | \hat{\epsilon} \cdot \vec{x} | j \rangle \langle j | \hat{\epsilon}^{\prime} \cdot \vec{x} | i \rangle ) \right] |^{2} \end{aligned}
 ```
 
 ```math
-= \left( \frac{e^{2}}{4 \pi mc^{2}} \right)^{2} \left( \frac{m}{\hbar} \right)^{2} \omega^{4} \left| \sum_{j} \left[ \frac{1}{\omega_{ji}} ( \langle i | \hat{\epsilon}^{\prime} \cdot \vec{x} | j \rangle \langle j | \hat{\epsilon} \cdot \vec{x} | i \rangle + \langle i | \hat{\epsilon} \cdot \vec{x} | j \rangle \langle j | \hat{\epsilon}^{\prime} \cdot \vec{x} | i \rangle ) \right] \right|
+= \left( \frac{e^{2}}{4 \pi mc^{2}} \right)^{2} \left( \frac{m}{\hbar} \right)^{2} \omega^{4} \left| \sum_{j} \left[ \frac{1}{\omega_{ji}} ( \langle i | \hat{\epsilon}^{\prime} \cdot \vec{x} | j \rangle \langle j | \hat{\epsilon} \cdot \vec{x} | i \rangle + \langle i | \hat{\epsilon} \cdot \vec{x} | j \rangle \langle j | \hat{\epsilon}^{\prime} \cdot \vec{x} | i \rangle ) \right] \right|^{2}
 ```
 
 For the **colorless gasses** (like the ones in our atmosphere), the first excited state in the UV, so the scattering of visible light with be proportional to $`\omega^{4}`$, which explains why the sky is blue and sunsets are red. Atoms with intermediate states in the visible will appear to be colored due to the strong resonances in the scattering. **Rayleigh** got the same dependence from classical physics.
@@ -23654,11 +23654,11 @@ i \hbar \frac{dc_{j}}{dt} = \sum_{\vec{k} ,\alpha} H_{jn} e^{i\omega t} c_{n} e^
 ```
 
 ```math
-c_{n} = e_{t}^{\tfrac{- i \Delta Ent}{\hbar}}
+c_{n} = e^{\tfrac{- i \Delta Ent}{\hbar}}
 ```
 
 ```math
-c_{j} ( t ) = \frac{1}{i \hbar} \sum_{\vec{k} ,\alpha} \int_{0} dt^{\prime} H_{jn} e^{i\omega t^{\prime}} e^{\tfrac{- i \Delta Ent \prime}{\hbar}} e^{- i\omega_{nj} t^{\prime}}
+c_{j} ( t ) = \frac{1}{i \hbar} \sum_{\vec{k} ,\alpha} \int_{0}^{t} dt^{\prime} H_{jn} e^{i\omega t^{\prime}} e^{\tfrac{- i \Delta Ent \prime}{\hbar}} e^{- i\omega_{nj} t^{\prime}}
 ```
 
 ```math
@@ -23666,7 +23666,7 @@ c_{j} ( t ) = \frac{1}{i \hbar} \sum_{\vec{k} ,\alpha} \int_{0}^{t} dt^{\prime} 
 ```
 
 ```math
-c_{j} ( t ) = \sum_{\vec{k} ,\alpha} H_{jn} \left[ \frac{e^{i ( - \omega_{nj} - \Delta \omega_{n} + \omega ) t^{\prime}}}{\hbar ( \omega_{nj} + \Delta \omega_{n} - \omega )} \right] \frac{t}{0}
+c_{j} ( t ) = \sum_{\vec{k} ,\alpha} H_{jn} \left[ \frac{e^{i ( - \omega_{nj} - \Delta \omega_{n} + \omega ) t^{\prime}}}{\hbar ( \omega_{nj} + \Delta \omega_{n} - \omega )} \right]_{0}^{t}
 ```
 
 ```math
@@ -25023,7 +25023,7 @@ Now we take a look at the **“negative energy” spin up solution** in the same
 <a id="p501" href="book.pdf#page=501" target="_blank" title="This page in the PDF"><sup>[p. 501]</sup></a>
 
 ```math
-\begin{aligned} \begin{pmatrix} A_{1} ( - E + mc^{2} ) + p_{z} c \\ A_{2} ( - E + mc^{2} ) + ( p_{x} + ip_{y} ) c \\ - A_{1} p_{z} c - A_{2} ( p_{x} - ip_{y} ) c + ( E + mc^{2} ) \\ - A_{1} ( p_{x} + ip_{y} ) c + A_{2} p_{z} c \end{pmatrix} &= 0 \\ A &= - p_{z} c \\ & \quad {}^{1} \quad - E + mc^{2} \\ A &= - ( p_{x} + ip_{y} ) c \\ & \quad {}^{2} \quad - E + mc^{2} \end{aligned}
+\begin{aligned} \begin{pmatrix} A_{1} ( - E + mc^{2} ) + p_{z} c \\ A_{2} ( - E + mc^{2} ) + ( p_{x} + ip_{y} ) c \\ - A_{1} p_{z} c - A_{2} ( p_{x} - ip_{y} ) c + ( E + mc^{2} ) \\ - A_{1} ( p_{x} + ip_{y} ) c + A_{2} p_{z} c \end{pmatrix} &= 0 \\ A_{1} &= - p_{z} c \\ & \quad - E + mc^{2} \\ A_{2} &= - ( p_{x} + ip_{y} ) c \\ & \quad - E + mc^{2} \end{aligned}
 ```
 
 ```math
@@ -25405,11 +25405,11 @@ The **boost is just another rotation in Minkowski space** through and angle $`i\
 ```
 
 ```math
-\gamma = \frac{1}{\sqrt{1 - \beta^{2}}} = \frac{1}{\sqrt{1 - \tanh^{2} \chi}} = \frac{1}{\sqrt{( 1 + \tanh \chi ) ( 1 - \tanh \chi} )} = \frac{1}{\sqrt{\frac{2 e^{\chi}}{\chi \quad - \chi} \frac{2 e^{- \chi}}{\chi \quad - \chi}}} = \frac{e^{\chi} + e^{- \chi}}{2} = \cosh \chi
+\gamma = \frac{1}{\sqrt{1 - \beta^{2}}} = \frac{1}{\sqrt{1 - \tanh^{2} \chi}} = \frac{1}{\sqrt{( 1 + \tanh \chi ) ( 1 - \tanh \chi} )} = \frac{1}{\sqrt{2 e^{\chi} \quad 2 e^{- \chi}}} = \frac{e^{\chi} + e^{- \chi}}{2} = \cosh \chi
 ```
 
 ```math
-\beta \gamma = \tanh \chi \cosh \chi = \sinh \chi^{e + e e + e}
+\beta \gamma = \tanh \chi \cosh \chi = \sinh \chi^{e^{\chi} + e^{- \chi} e^{\chi} + e^{- \chi}}
 ```
 
 ```math
@@ -26389,11 +26389,11 @@ K^{2} = L_{i} L_{j} ( \delta_{ij} + i\epsilon_{ijk} \Sigma_{k} ) + 2 \hbar \vec{
 ```
 
 ```math
-K^{2} = L^{2} - \hbar \vec{\Sigma} \cdot \vec{L} + 2 \hbar \vec{\Sigma} \cdot \vec{L} + \hbar^{2} = {}_{2} L^{2} + \hbar \vec{\Sigma} \cdot \vec{L} + \hbar^{2}
+K^{2} = L^{2} - \hbar \vec{\Sigma} \cdot \vec{L} + 2 \hbar \vec{\Sigma} \cdot \vec{L} + \hbar^{2} = L^{2} + \hbar \vec{\Sigma} \cdot \vec{L} + \hbar^{2}
 ```
 
 ```math
-J^{2} = L^{2} + \hbar \vec{\Sigma} \cdot \vec{L} + \frac{3}{4} \hbar^{2} = K^{2} - \frac{\hbar}{4}
+J^{2} = L^{2} + \hbar \vec{\Sigma} \cdot \vec{L} + \frac{3}{4} \hbar^{2} = K^{2} - \frac{\hbar^{2}}{4}
 ```
 
 <div align="right"><a href="book.pdf#page=523" target="_blank" title="This page in the PDF"><sup>[p. 523]</sup></a></div>
@@ -26987,11 +26987,11 @@ c_{\vec{p}^{\prime} ,r^{\prime} ; \vec{k}^{\prime} \epsilon^{\hat{\prime}}}^{( 2
 ```
 
 ```math
-c_{\vec{p}^{\prime} ,r^{\prime} ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 2 )} ( t ) = \int_{t} \frac{ie^{2}}{4 mV \sqrt{\omega^{\prime} \omega}} \sum_{i ( E^{\prime} - E + \hbar \omega^{\prime} - \hbar \omega ) t r^{\prime \prime} = 3 , 4 / \hbar} \left[ ( \chi^{( r^{\prime \prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon}^{\prime} \chi^{( r )} ) ( \chi^{( r^{\prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon} \chi^{( r^{\prime \prime} )} ) + ( \chi^{( r^{\prime \prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon} \chi^{( r )} ) ( \chi^{( r^{\prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon}^{\prime} \chi^{( r^{\prime \prime} )} ) \right]
+c_{\vec{p}^{\prime} ,r^{\prime} ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 2 )} ( t ) = \frac{ie^{2}}{4 mV \sqrt{\omega^{\prime} \omega}} \sum_{- E + \hbar \omega^{\prime} - \hbar \omega ) t_{2} / \hbar r^{\prime \prime} = 3 , 4} \left[ ( \chi^{( r^{\prime \prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon}^{\prime} \chi^{( r )} ) ( \chi^{( r^{\prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon} \chi^{( r^{\prime \prime} )} ) + ( \chi^{( r^{\prime \prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon} \chi^{( r )} ) ( \chi^{( r^{\prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon}^{\prime} \chi^{( r^{\prime \prime} )} ) \right]
 ```
 
 ```math
-c_{\vec{p}^{\prime} ,r^{\prime} ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 2 )} ( t ) = {}^{0} \frac{ie^{2}}{4 mV \sqrt{\omega^{\prime} \omega}} dt_{2} e \sum_{r^{\prime \prime} = 3 , 4} \left[ ( \chi^{( r^{\prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon} \chi^{( r^{\prime \prime} )} ) ( \chi^{( r^{\prime \prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon}^{\prime} \chi^{( r )} ) + ( \chi^{( r^{\prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon}^{\prime} \chi^{( r^{\prime \prime} )} ) ( \chi^{( r^{\prime \prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon} \chi^{( r )} ) \right]^{2}
+c_{\vec{p}^{\prime} ,r^{\prime} ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 2 )} ( t ) = \int^{0 t} \frac{ie^{2}}{4 mV \sqrt{\omega^{\prime} \omega}} dt_{2} e^{i ( E^{\prime}} \sum_{r^{\prime \prime} = 3 , 4} \left[ ( \chi^{( r^{\prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon} \chi^{( r^{\prime \prime} )} ) ( \chi^{( r^{\prime \prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon}^{\prime} \chi^{( r )} ) + ( \chi^{( r^{\prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon}^{\prime} \chi^{( r^{\prime \prime} )} ) ( \chi^{( r^{\prime \prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon} \chi^{( r )} ) \right]
 ```
 
 ```math

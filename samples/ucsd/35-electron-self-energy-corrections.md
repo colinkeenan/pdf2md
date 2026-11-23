@@ -93,11 +93,11 @@ i \hbar \frac{dc_{j}}{dt} = \sum_{\vec{k} ,\alpha} H_{jn} e^{i\omega t} c_{n} e^
 ```
 
 ```math
-c_{n} = e_{t}^{\tfrac{- i \Delta Ent}{\hbar}}
+c_{n} = e^{\tfrac{- i \Delta Ent}{\hbar}}
 ```
 
 ```math
-c_{j} ( t ) = \frac{1}{i \hbar} \sum_{\vec{k} ,\alpha} \int_{0} dt^{\prime} H_{jn} e^{i\omega t^{\prime}} e^{\tfrac{- i \Delta Ent \prime}{\hbar}} e^{- i\omega_{nj} t^{\prime}}
+c_{j} ( t ) = \frac{1}{i \hbar} \sum_{\vec{k} ,\alpha} \int_{0}^{t} dt^{\prime} H_{jn} e^{i\omega t^{\prime}} e^{\tfrac{- i \Delta Ent \prime}{\hbar}} e^{- i\omega_{nj} t^{\prime}}
 ```
 
 ```math
@@ -105,7 +105,7 @@ c_{j} ( t ) = \frac{1}{i \hbar} \sum_{\vec{k} ,\alpha} \int_{0}^{t} dt^{\prime} 
 ```
 
 ```math
-c_{j} ( t ) = \sum_{\vec{k} ,\alpha} H_{jn} \left[ \frac{e^{i ( - \omega_{nj} - \Delta \omega_{n} + \omega ) t^{\prime}}}{\hbar ( \omega_{nj} + \Delta \omega_{n} - \omega )} \right] \frac{t}{0}
+c_{j} ( t ) = \sum_{\vec{k} ,\alpha} H_{jn} \left[ \frac{e^{i ( - \omega_{nj} - \Delta \omega_{n} + \omega ) t^{\prime}}}{\hbar ( \omega_{nj} + \Delta \omega_{n} - \omega )} \right]_{0}^{t}
 ```
 
 ```math

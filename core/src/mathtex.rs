@@ -289,6 +289,47 @@ fn big_op(s: &MSpan) -> Option<&'static str> {
     }
 }
 
+/// How tall a big operator of TeX's extension font is, in ems: the box
+/// the PDF reports for it is only its top. (The large one of a displayed
+/// line, the small one of a line of text or a fraction's half.)
+fn op_depth(s: &MSpan) -> Option<f32> {
+    // (not the fonts of other makers read as "CMEX/MTEX": their signs
+    // have other heights, and boxes of their own)
+    if !s.cmex() || s.family.contains('/') {
+        return None;
+    }
+    match s.text.trim() {
+        "X" | "Y" => Some(1.4),
+        "P" | "Q" => Some(1.0),
+        "Z" | "I" => Some(2.22),
+        "R" | "H" => Some(1.11),
+        _ => None,
+    }
+}
+
+/// Where a big operator's top is. Its glyph hangs from its baseline, and
+/// the box reported for it is the font's height around that line: more
+/// in one PDF than in another above the sign, the same under it.
+fn op_top(op: &MSpan) -> f32 {
+    op.bottom - 0.45 * op.size
+}
+
+/// Is the small piece `s` a limit of the big operator `op`: right over
+/// its top, or right under its foot (set under and over the sign, or
+/// behind it as an integral's)?
+fn limit_of(s: &MSpan, op: &MSpan) -> bool {
+    let Some(depth) = op_depth(op) else { return false };
+    let (size, top) = (op.size, op_top(op));
+    if s.cmex() || s.size >= 0.85 * size {
+        return false;
+    }
+    let beside = s.right > op.left - 0.2 * size && s.left <= op.right + 0.5 * size;
+    let upper = s.bottom >= top - 0.3 * size && s.bottom <= top + 0.8 * size;
+    let foot = s.top - top;
+    let lower = foot >= (depth - 0.6) * size && foot <= (depth + 0.5) * size;
+    beside && (upper || lower)
+}
+
 /// LaTeX for one span on its own.
 pub fn tex(s: &MSpan) -> String {
     if let Some(a) = &s.atom {
@@ -1952,6 +1993,28 @@ fn take_brackets(spans: &[MSpan], depth: usize) -> (Vec<MSpan>, Vec<Item>) {
         if inside.is_empty() {
             continue; // nothing between them: nothing to write
         }
+        // (a square bracket or a brace with a piece at its foot and one at
+        // its head: "taken from −1 to 1", the marks of its two rows; both
+        // hang on it — one over the other behind it they would read as a
+        // fraction)
+        // (… pieces at its own head and foot, not the index of the bracket
+        // of the row above)
+        let mut reach = d1.right;
+        let tex = if typed && matches!(close, ']' | '}') && !by_bar && d1.bottom - d1.top > 1.5 * size {
+            let (mut probe, others): (Vec<MSpan>, Vec<MSpan>) = rest.iter().cloned().partition(|s| s.cy() >= d1.top - 0.3 * size && s.cy() <= d1.bottom + 0.4 * size);
+            let before = probe.clone();
+            let scripts = bar_scripts(&mut probe, &d1, size, depth);
+            if scripts.starts_with("_{") && scripts.contains("}^{") {
+                let gone = |s: &&MSpan| !probe.iter().any(|p| p.left == s.left && p.top == s.top && p.text == s.text);
+                reach = before.iter().filter(gone).map(|s| s.right).fold(reach, f32::max);
+                rest = probe.into_iter().chain(others).collect();
+                format!("{tex}{scripts}")
+            } else {
+                tex
+            }
+        } else {
+            tex
+        };
         // A bracket read from its outline has its true height, centred on
         // the formula's main line; shapeless pieces only mark their tops,
         // so then the middle of the contents is used.
@@ -1960,7 +2023,7 @@ fn take_brackets(spans: &[MSpan], depth: usize) -> (Vec<MSpan>, Vec<Item>) {
             (_, Some(_)) => (d1.top + d1.bottom) / 2.0,
             _ => inside.iter().map(|s| s.cy()).sum::<f32>() / inside.len() as f32,
         };
-        rest.push(piece(d0.left, d1.right, mid, tex));
+        rest.push(piece(d0.left, reach, mid, tex));
     }
     // A lone bracket (its partner was lost): marked, and its partner is put
     // back when the formula is written out (see `finish`).
@@ -3450,6 +3513,9 @@ pub fn display(
         // outline, has its true middle)
         let own = if is_radical(s) && s.bottom - s.top <= 1.5 * max {
             bars.iter().filter(|b| (b.left - s.right).abs() <= 3.0 && b.top >= s.top - 2.0 && s.bottom >= b.top - 2.0).min_by(|a, b| a.top.total_cmp(&b.top)).map_or(s.cy(), |b| b.bottom + 0.5 * max)
+        } else if let Some(depth) = op_depth(s) {
+            // (a big operator's box is only its top: its true middle)
+            op_top(s) + 0.5 * depth * s.size
         } else {
             s.cy()
         };
@@ -3484,9 +3550,62 @@ pub fn display(
             .filter(|b| tall.iter().any(|q| q.left >= r.right - 1.0 && (q.cy() - b.cy()).abs() < 0.5 * max))
             .map_or(y, |b| b.cy())
     };
-    let homes: Vec<f32> = rest.iter().map(home).collect();
+    let mut homes: Vec<f32> = rest.iter().map(home).collect();
     let bar_homes: Vec<f32> = bars.iter().map(bar_home).collect();
+    // A small piece between two lines is of the line of what it hangs on,
+    // not of the line whose middle happens to be nearer: the limits of an
+    // integral or a sum go with their sign (the lower one reaches far
+    // down towards the next line), an exponent or an index with the
+    // letter right before it (the square of a numerator's letter stands
+    // halfway up to the line above).
+    let mut order: Vec<usize> = (0..rest.len()).filter(|&i| !rest[i].cmex() && rest[i].size < 0.85 * max).collect();
+    order.sort_by(|&a, &b| rest[a].left.total_cmp(&rest[b].left));
+    for &i in &order {
+        let s = &rest[i];
+        // (what stands between a pair of tall brackets is of their line)
+        if (homes[i] - s.cy()).abs() > 0.01 {
+            continue;
+        }
+        // (the half of a small fraction: with its bar)
+        // (a short bar with small pieces right over and right under it: not
+        // the bar of a root, nor a line's fraction with an index near it)
+        let touches = |t: &MSpan, b: &Rule| !t.cmex() && t.size < 0.85 * max && t.left >= b.left - 1.5 && t.right <= b.right + 1.5 && ((t.bottom - b.top).abs() <= 2.5 || (t.top - b.bottom).abs() <= 2.5);
+        if let Some(k) = (0..bars.len()).find(|&k| {
+            let b = &bars[k];
+            b.right - b.left <= 2.0 * max && touches(s, b) && rest.iter().any(|t| touches(t, b) && (t.cy() < b.top) != (s.cy() < b.top))
+        }) {
+            homes[i] = bar_homes[k];
+            continue;
+        }
+        // (what goes on at one height from a piece of its own size, or
+        // stands raised or lowered behind a larger one)
+        let hangs_on = |n: &MSpan| !n.cmex() && (n.right - s.left).abs() <= 1.5 && if n.size >= 1.15 * s.size { n.bottom.min(s.bottom) - n.top.max(s.top) >= 0.3 * s.height() } else { n.size >= 0.95 * s.size && (n.cy() - s.cy()).abs() <= 0.45 * s.size };
+        // (… or with the tall bracket it stands at the head or foot of)
+        let closes = |n: &MSpan| {
+            let at = |y: f32, above: f32, below: f32| s.cy() >= y - above * max && s.cy() <= y + below * max;
+            n.cmex() && matches!(n.text.trim(), ")" | "]" | "}" | "⟩" | "|") && n.height() > 1.5 * max && s.left >= n.right - 1.0 && s.left - n.right <= 0.3 * max && (at(n.top, 0.4, 0.5) || at(n.bottom, 0.5, 0.3))
+        };
+        let lines: Vec<usize> = (0..rest.len()).filter(|&k| k != i && (hangs_on(&rest[k]) || closes(&rest[k]))).collect();
+        if let Some(&k) = lines.first() {
+            if lines.iter().all(|&j| nearest(homes[j]) == nearest(homes[k])) {
+                homes[i] = homes[k];
+            }
+            continue;
+        }
+        // (a limit: where the lines stand close, the lower limit of one
+        // line's sign is at the place of an upper limit of the next
+        // line's, and only its distance tells)
+        let signs: Vec<usize> = (0..rest.len()).filter(|&k| limit_of(s, &rest[k])).collect();
+        if let Some(&k) = signs.first() {
+            if signs.iter().all(|&j| nearest(homes[j]) == nearest(homes[k])) {
+                homes[i] = homes[k];
+            }
+        }
+    }
     for (s, y) in rest.into_iter().zip(homes) {
+        if std::env::var("PDF2MD_DISPDEBUG").is_ok_and(|v| v == "2") {
+            eprintln!("  G{} {:7.1} {:7.1} {:7.1} {:7.1} {:4.1} {:8} {:?} home {y:.1}", nearest(y), s.left, s.right, s.top, s.bottom, s.size, s.family, s.text);
+        }
         groups[nearest(y)].push(s);
     }
     for t in &tags {

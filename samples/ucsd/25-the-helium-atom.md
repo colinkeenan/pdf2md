@@ -390,11 +390,11 @@ This is close to the right answer. As always, it is treated as an upper limit on
 As a check of the procedure, take trial function $`e^{- ax^{2} / 2}`$. This should give us the actual ground state energy.
 
 ```math
-E^{\prime} = \frac{\int_{-\infty}^{\infty} \psi^{*} \left[ - \tfrac{\hbar^{2}}{2 m} \tfrac{\partial^{2} \psi}{\partial x^{2}} + \tfrac{1}{2} m\omega^{2} x^{2} \psi \right] dx}{\infty}
+E^{\prime} = {}^{-\infty} \int^{\infty} \psi^{*} \left[ - \tfrac{\hbar^{2}}{2 m} \tfrac{\partial^{2} \psi}{\partial x^{2}} + \tfrac{1}{2} m\omega^{2} x^{2} \psi \right] dx
 ```
 
 ```math
-\int_{-\infty} \psi^{*} \psi dx
+\int_{-\infty}^{\infty} \psi^{*} \psi dx
 ```
 
 ```math
@@ -476,7 +476,7 @@ Do the $`d`$Ω$`1`$ integral and prepare the other.
 The angular integrals are not hard to do.
 
 ```math
-\Delta E_{gs} = \frac{4 \pi}{\pi^{2}} e^{2} \left( \frac{Z}{a_{0}} \right)^{6} \int_{0}^{\infty} r_{1}^{2} dr_{1} e^{- 2 Zr_{1} /a_{0}} \int_{0}^{\infty} r_{2}^{2} dr_{2} e^{- 2 Zr_{2} /a_{0}} 2 \pi \left[ \frac{- 2}{2 r_{1} r_{2}} \sqrt{r_{1}^{2} + r_{2}^{2} - 2 r_{1} r_{2} \cos \theta_{2}} \right] \frac{1}{- 1}
+\Delta E_{gs} = \frac{4 \pi}{\pi^{2}} e^{2} \left( \frac{Z}{a_{0}} \right)^{6} \int_{0}^{\infty} r_{1}^{2} dr_{1} e^{- 2 Zr_{1} /a_{0}} \int_{0}^{\infty} r_{2}^{2} dr_{2} e^{- 2 Zr_{2} /a_{0}} 2 \pi \left[ \frac{- 2}{2 r_{1} r_{2}} \sqrt{r_{1}^{2} + r_{2}^{2} - 2 r_{1} r_{2} \cos \theta_{2}} \right]_{- 1}^{1}
 ```
 
 ```math

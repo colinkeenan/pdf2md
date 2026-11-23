@@ -226,7 +226,7 @@ Since the potential has spherical symmetry, we can choose ∆ to be in the $`z`$
 ```
 
 ```math
-= Z_{1} Z_{2} e^{2} 2 \pi \int_{0}^{\infty} r^{2} dr \left[ \frac{e^{- i \Delta rx}}{- i \Delta r} \right] \frac{x = 1}{x = - 1} \frac{e^{- r/a}}{r}
+= Z_{1} Z_{2} e^{2} 2 \pi \int_{0}^{\infty} r^{2} dr \left[ \frac{e^{- i \Delta rx}}{- i \Delta r} \right]_{x = - 1}^{x = 1} \frac{e^{- r/a}}{r}
 ```
 
 ```math
@@ -242,7 +242,7 @@ Since the potential has spherical symmetry, we can choose ∆ to be in the $`z`$
 <a id="p424" href="book.pdf#page=424" target="_blank" title="This page in the PDF"><sup>[p. 424]</sup></a>
 
 ```math
-= Z_{1} Z_{2} e^{2} \frac{2 \pi}{- i \Delta} \left[ - \frac{e^{- ( \tfrac{1}{a} + i \Delta ) r}}{\tfrac{1}{a} + i \Delta} + \frac{e^{- ( \tfrac{1}{a} - i \Delta ) r}}{\tfrac{1}{a} - i \Delta} \right] \frac{\infty}{0}
+= Z_{1} Z_{2} e^{2} \frac{2 \pi}{- i \Delta} \left[ - \frac{e^{- ( \tfrac{1}{a} + i \Delta ) r}}{\tfrac{1}{a} + i \Delta} + \frac{e^{- ( \tfrac{1}{a} - i \Delta ) r}}{\tfrac{1}{a} - i \Delta} \right]_{0}^{\infty}
 ```
 
 ```math

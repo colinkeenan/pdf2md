@@ -1000,15 +1000,15 @@ _Figure 2 (p. 35)_
 The electron beams travel through two slits in field free regions but we have the ability to vary a magnetic field enclosed by the path of the electrons. At the screen, the amplitudes from the two slits interfere $`\psi = \psi_{1} + \psi_{2}`$. Let’s start with $`B = 0`$ and $`A = 0`$ everywhere. When we change the $`B`$ field, the wavefunctions must change.
 
 ```math
-\psi_{1} \quad \to \quad \psi_{1} e_{e} \int^{- i \tfrac{e}{\hbar c}_{1} d \vec{r} \cdot \vec{A}} \int_{\vec{\jmath}}
+\psi_{1} \quad \to \quad \psi_{1} e \int^{- i \tfrac{e}{\hbar c}_{1} d \vec{r} \cdot \vec{A}}
 ```
 
 ```math
-\psi_{2} \quad \to \quad \psi_{2} e_{e}^{- i_{\hbar c 2} d \vec{r} \cdot A} \int_{\vec{\jmath}}
+\psi_{2} \quad \to \quad \psi_{2} e \int^{- i \tfrac{e}{\hbar c}_{2} d \vec{r} \cdot \vec{A}}
 ```
 
 ```math
-\psi = \left( \psi_{1} e^{- i \tfrac{e \Phi}{\hbar c}} + \psi_{2} \right) e^{- i_{\hbar c 2} d \vec{r} \cdot A}
+\psi = \left( \psi_{1} e^{- i \tfrac{e \Phi}{\hbar c}} + \psi_{2} \right) e \int^{- i \tfrac{e}{\hbar c}_{2} d \vec{r} \cdot \vec{A}}
 ```
 
 The relative phase from the two slits depends on the flux between the slits. By varying the $`B`$ field, we will **shift the diffraction pattern** even though $`B = 0`$ along the whole path of the electrons.

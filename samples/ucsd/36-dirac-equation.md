@@ -942,7 +942,7 @@ Now we take a look at the **“negative energy” spin up solution** in the same
 <a id="p501" href="book.pdf#page=501" target="_blank" title="This page in the PDF"><sup>[p. 501]</sup></a>
 
 ```math
-\begin{aligned} \begin{pmatrix} A_{1} ( - E + mc^{2} ) + p_{z} c \\ A_{2} ( - E + mc^{2} ) + ( p_{x} + ip_{y} ) c \\ - A_{1} p_{z} c - A_{2} ( p_{x} - ip_{y} ) c + ( E + mc^{2} ) \\ - A_{1} ( p_{x} + ip_{y} ) c + A_{2} p_{z} c \end{pmatrix} &= 0 \\ A &= - p_{z} c \\ & \quad {}^{1} \quad - E + mc^{2} \\ A &= - ( p_{x} + ip_{y} ) c \\ & \quad {}^{2} \quad - E + mc^{2} \end{aligned}
+\begin{aligned} \begin{pmatrix} A_{1} ( - E + mc^{2} ) + p_{z} c \\ A_{2} ( - E + mc^{2} ) + ( p_{x} + ip_{y} ) c \\ - A_{1} p_{z} c - A_{2} ( p_{x} - ip_{y} ) c + ( E + mc^{2} ) \\ - A_{1} ( p_{x} + ip_{y} ) c + A_{2} p_{z} c \end{pmatrix} &= 0 \\ A_{1} &= - p_{z} c \\ & \quad - E + mc^{2} \\ A_{2} &= - ( p_{x} + ip_{y} ) c \\ & \quad - E + mc^{2} \end{aligned}
 ```
 
 ```math
@@ -1324,11 +1324,11 @@ The **boost is just another rotation in Minkowski space** through and angle $`i\
 ```
 
 ```math
-\gamma = \frac{1}{\sqrt{1 - \beta^{2}}} = \frac{1}{\sqrt{1 - \tanh^{2} \chi}} = \frac{1}{\sqrt{( 1 + \tanh \chi ) ( 1 - \tanh \chi} )} = \frac{1}{\sqrt{\frac{2 e^{\chi}}{\chi \quad - \chi} \frac{2 e^{- \chi}}{\chi \quad - \chi}}} = \frac{e^{\chi} + e^{- \chi}}{2} = \cosh \chi
+\gamma = \frac{1}{\sqrt{1 - \beta^{2}}} = \frac{1}{\sqrt{1 - \tanh^{2} \chi}} = \frac{1}{\sqrt{( 1 + \tanh \chi ) ( 1 - \tanh \chi} )} = \frac{1}{\sqrt{2 e^{\chi} \quad 2 e^{- \chi}}} = \frac{e^{\chi} + e^{- \chi}}{2} = \cosh \chi
 ```
 
 ```math
-\beta \gamma = \tanh \chi \cosh \chi = \sinh \chi^{e + e e + e}
+\beta \gamma = \tanh \chi \cosh \chi = \sinh \chi^{e^{\chi} + e^{- \chi} e^{\chi} + e^{- \chi}}
 ```
 
 ```math
@@ -2308,11 +2308,11 @@ K^{2} = L_{i} L_{j} ( \delta_{ij} + i\epsilon_{ijk} \Sigma_{k} ) + 2 \hbar \vec{
 ```
 
 ```math
-K^{2} = L^{2} - \hbar \vec{\Sigma} \cdot \vec{L} + 2 \hbar \vec{\Sigma} \cdot \vec{L} + \hbar^{2} = {}_{2} L^{2} + \hbar \vec{\Sigma} \cdot \vec{L} + \hbar^{2}
+K^{2} = L^{2} - \hbar \vec{\Sigma} \cdot \vec{L} + 2 \hbar \vec{\Sigma} \cdot \vec{L} + \hbar^{2} = L^{2} + \hbar \vec{\Sigma} \cdot \vec{L} + \hbar^{2}
 ```
 
 ```math
-J^{2} = L^{2} + \hbar \vec{\Sigma} \cdot \vec{L} + \frac{3}{4} \hbar^{2} = K^{2} - \frac{\hbar}{4}
+J^{2} = L^{2} + \hbar \vec{\Sigma} \cdot \vec{L} + \frac{3}{4} \hbar^{2} = K^{2} - \frac{\hbar^{2}}{4}
 ```
 
 <div align="right"><a href="book.pdf#page=523" target="_blank" title="This page in the PDF"><sup>[p. 523]</sup></a></div>
@@ -2906,11 +2906,11 @@ c_{\vec{p}^{\prime} ,r^{\prime} ; \vec{k}^{\prime} \epsilon^{\hat{\prime}}}^{( 2
 ```
 
 ```math
-c_{\vec{p}^{\prime} ,r^{\prime} ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 2 )} ( t ) = \int_{t} \frac{ie^{2}}{4 mV \sqrt{\omega^{\prime} \omega}} \sum_{i ( E^{\prime} - E + \hbar \omega^{\prime} - \hbar \omega ) t r^{\prime \prime} = 3 , 4 / \hbar} \left[ ( \chi^{( r^{\prime \prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon}^{\prime} \chi^{( r )} ) ( \chi^{( r^{\prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon} \chi^{( r^{\prime \prime} )} ) + ( \chi^{( r^{\prime \prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon} \chi^{( r )} ) ( \chi^{( r^{\prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon}^{\prime} \chi^{( r^{\prime \prime} )} ) \right]
+c_{\vec{p}^{\prime} ,r^{\prime} ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 2 )} ( t ) = \frac{ie^{2}}{4 mV \sqrt{\omega^{\prime} \omega}} \sum_{- E + \hbar \omega^{\prime} - \hbar \omega ) t_{2} / \hbar r^{\prime \prime} = 3 , 4} \left[ ( \chi^{( r^{\prime \prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon}^{\prime} \chi^{( r )} ) ( \chi^{( r^{\prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon} \chi^{( r^{\prime \prime} )} ) + ( \chi^{( r^{\prime \prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon} \chi^{( r )} ) ( \chi^{( r^{\prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon}^{\prime} \chi^{( r^{\prime \prime} )} ) \right]
 ```
 
 ```math
-c_{\vec{p}^{\prime} ,r^{\prime} ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 2 )} ( t ) = {}^{0} \frac{ie^{2}}{4 mV \sqrt{\omega^{\prime} \omega}} dt_{2} e \sum_{r^{\prime \prime} = 3 , 4} \left[ ( \chi^{( r^{\prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon} \chi^{( r^{\prime \prime} )} ) ( \chi^{( r^{\prime \prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon}^{\prime} \chi^{( r )} ) + ( \chi^{( r^{\prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon}^{\prime} \chi^{( r^{\prime \prime} )} ) ( \chi^{( r^{\prime \prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon} \chi^{( r )} ) \right]^{2}
+c_{\vec{p}^{\prime} ,r^{\prime} ; \vec{k}^{\prime} \hat{\epsilon}^{\prime}}^{( 2 )} ( t ) = \int^{0 t} \frac{ie^{2}}{4 mV \sqrt{\omega^{\prime} \omega}} dt_{2} e^{i ( E^{\prime}} \sum_{r^{\prime \prime} = 3 , 4} \left[ ( \chi^{( r^{\prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon} \chi^{( r^{\prime \prime} )} ) ( \chi^{( r^{\prime \prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon}^{\prime} \chi^{( r )} ) + ( \chi^{( r^{\prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon}^{\prime} \chi^{( r^{\prime \prime} )} ) ( \chi^{( r^{\prime \prime} ) \dagger} \vec{\sigma} \cdot \hat{\epsilon} \chi^{( r )} ) \right]
 ```
 
 ```math

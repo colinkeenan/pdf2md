@@ -30,11 +30,11 @@ In **Rationalized Heaviside-Lorentz units** we decrease the field strength by a 
 ```
 
 ```math
-{}_{2} e \quad \to \quad e \sqrt{4 \pi}_{2}
+e \quad \to \quad e \sqrt{4 \pi}
 ```
 
 ```math
-\alpha = \frac{e}{\hbar c} \quad \to \quad \frac{e}{4 \pi \hbar c} \approx \frac{1}{1 3 7}
+\alpha = \frac{e^{2}}{\hbar c} \quad \to \quad \frac{e^{2}}{4 \pi \hbar c} \approx \frac{1}{1 3 7}
 ```
 
 Its not a very big change but it would have been nice if Maxwell had started with this set of units. Of course the value of $`\alpha`$ cannot change, but, the formula for it does because we have redefined the charge $`e`$.

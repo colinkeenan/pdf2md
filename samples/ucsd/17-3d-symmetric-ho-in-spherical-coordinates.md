@@ -108,11 +108,11 @@ We’ll need to compute the derivatives.
 ```
 
 ```math
-- ( \ell_{\infty} + k + 1 ) y^{\ell + k} + y^{\ell + k + 2} ] e^{- y^{2} / 2}
+- ( \ell + k + 1 ) y^{\ell + k} + y^{\ell + k + 2} ] e^{- y^{2} / 2}
 ```
 
 ```math
-\frac{d^{2} R}{dy^{2}} = \sum_{k = 0} a_{k} [ ( \ell + k ) ( \ell + k - 1 ) y^{\ell + k - 2}
+\frac{d^{2} R}{dy^{2}} = \sum_{k = 0}^{\infty} a_{k} [ ( \ell + k ) ( \ell + k - 1 ) y^{\ell + k - 2}
 ```
 
 ```math
@@ -142,11 +142,11 @@ The terms for large $`y`$ which go like $`y^{\ell + k + 2}`$ and some of the ter
 ```
 
 ```math
-\left. \sum_{{}^{\infty} a} \left[ [ \ell ( \ell - 1 ) + k ( 2 \ell + k - 1 ) - \ell ( \ell + 1 ) + 2 \ell + 2 k ] y^{\ell + k - 2} \right. + \left[ \frac{2 E}{\hbar \omega} - 2 - ( 2 \ell + 2 k + 1 ) \right] y^{\ell + k} \right] = 0
+\left. \sum_{\frac{\infty}{k = 0} a_{k}} \left[ [ \ell ( \ell - 1 ) + k ( 2 \ell + k - 1 ) - \ell ( \ell + 1 ) + 2 \ell + 2 k ] y^{\ell + k - 2} \right. + \left[ \frac{2 E}{\hbar \omega} - 2 - ( 2 \ell + 2 k + 1 ) \right] y^{\ell + k} \right] = 0
 ```
 
 ```math
-\left. {}^{k = 0 k} \quad + \left[ \frac{2 E}{\hbar \omega} - 2 - ( 2 \ell + 2 k + 1 ) \right] y^{\ell + k} \right] = 0
+\left. + \left[ \frac{2 E}{\hbar \omega} - 2 - ( 2 \ell + 2 k + 1 ) \right] y^{\ell + k} \right] = 0
 ```
 
 ```math
@@ -168,11 +168,11 @@ This indicates that all the odd terms in the sum will be zero, as we will see fr
 Now we will do the usual shift of the first term of the sum so that everything has a $`y^{\ell + k}`$ in it.
 
 ```math
-{}_{\infty} \quad k \to k + 2
+k \to k + 2
 ```
 
 ```math
-\sum_{k = 0} \left[ a_{k + 2} ( k + 2 ) ( 2 \ell + k + 3 ) y^{\ell + k} + a_{k} \left[ \frac{2 E}{\hbar \omega} - ( 2 \ell + 2 k + 3 ) \right] y^{\ell + k} \right] = 0
+\sum_{k = 0}^{\infty} \left[ a_{k + 2} ( k + 2 ) ( 2 \ell + k + 3 ) y^{\ell + k} + a_{k} \left[ \frac{2 E}{\hbar \omega} - ( 2 \ell + 2 k + 3 ) \right] y^{\ell + k} \right] = 0
 ```
 
 ```math

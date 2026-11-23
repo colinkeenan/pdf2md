@@ -80,11 +80,11 @@ Check the normalization of (2) using the result for a definite integral of a Gau
 So now we take the Fourier Transform of (1) right here.
 
 ```math
-f ( x ) = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} A ( k ) e^{ikx} dk = \frac{1}{\sqrt{2 \pi}} \frac{1}{\sqrt{a}} \int_{k_{0} - {}^{a}}^{k_{0} + \tfrac{a}{2}} e^{ikx} dk
+f ( x ) = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} A ( k ) e^{ikx} dk = \frac{1}{\sqrt{2 \pi}} \frac{1}{\sqrt{a}} \int_{k_{0} - \tfrac{a}{2}}^{k_{0} + \tfrac{a}{2}} e^{ikx} dk
 ```
 
 ```math
-f ( x ) = \frac{1}{\sqrt{2 \pi a}} \frac{1}{ix} \left[ e^{ikx} \right]_{k_{0} - \tfrac{\tfrac{a}{2}_{a}}{2}}^{k_{0} +} = \frac{1}{\sqrt{2 \pi a}} \frac{1}{ix} e^{ik_{0} x^{2}} \left[ e^{iax/ 2} - e^{- iax/ 2} \right]
+f ( x ) = \frac{1}{\sqrt{2 \pi a}} \frac{1}{ix} \left[ e^{ikx} \right]_{k_{0} - \tfrac{\tfrac{a}{2}_{a}}{2}}^{k_{0} +} = \frac{1}{\sqrt{2 \pi a}} \frac{1}{ix} e^{ik_{0} x} \left[ e^{iax/ 2} - e^{- iax/ 2} \right]
 ```
 
 ```math
@@ -426,7 +426,7 @@ I^{2} = \int_{-\infty}^{\infty} dxe^{- ax^{2}} \int_{-\infty}^{\infty} dye^{- ay
 Transform to polar coordinates.
 
 ```math
-I^{2} = 2 \pi \int_{0}^{\infty} rdre^{- ar^{2}} = \pi \int_{0}^{\infty} d ( r^{2} ) e^{- ar^{2}} = \pi \left[ - \frac{1}{a} e^{- ar^{2}} \right] \frac{\infty}{0} = \frac{\pi}{a}
+I^{2} = 2 \pi \int_{0}^{\infty} rdre^{- ar^{2}} = \pi \int_{0}^{\infty} d ( r^{2} ) e^{- ar^{2}} = \pi \left[ - \frac{1}{a} e^{- ar^{2}} \right]_{0}^{\infty} = \frac{\pi}{a}
 ```
 
 Now just take the square root to get the answer above.
@@ -740,7 +740,7 @@ Take the Fourier Transform.
 ```
 
 ```math
-\varphi ( k ) = \frac{1}{\sqrt{4 \pi a}} \left[ \frac{- 1}{ik} e^{- ikx} \right] \frac{a}{- a}
+\varphi ( k ) = \frac{1}{\sqrt{4 \pi a}} \left[ \frac{- 1}{ik} e^{- ikx} \right]_{- a}^{a}
 ```
 
 ```math
@@ -754,11 +754,11 @@ Take the Fourier Transform.
 Now estimate the width of the two probability distributions.
 
 ```math
-\Delta x_{2} = 2 a
+\Delta x = 2 a
 ```
 
 ```math
-| \varphi ( k ) |^{2} = \frac{1}{\pi a} \frac{\sin ( ka )}{k^{2}}
+| \varphi ( k ) |^{2} = \frac{1}{\pi a} \frac{\sin^{2} ( ka )}{k^{2}}
 ```
 
 ```math

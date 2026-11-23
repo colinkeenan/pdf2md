@@ -116,11 +116,11 @@ audio
 ```
 
 ```math
-J^{2} = L^{2} + 2 \vec{L} \cdot \vec{S} + S_{2}^{2}
+J^{2} = L^{2} + 2 \vec{L} \cdot \vec{S} + S^{2}
 ```
 
 ```math
-\vec{L} \cdot \vec{S} = \frac{1}{2} ( J^{2} - L^{2} - S^{2} ) \to \frac{\hbar}{2} ( j ( j + 1 ) - \ell ( \ell + 1 ) - s ( s + 1 ) )
+\vec{L} \cdot \vec{S} = \frac{1}{2} ( J^{2} - L^{2} - S^{2} ) \to \frac{\hbar^{2}}{2} ( j ( j + 1 ) - \ell ( \ell + 1 ) - s ( s + 1 ) )
 ```
 
 <div align="right"><a href="book.pdf#page=312" target="_blank" title="This page in the PDF"><sup>[p. 312]</sup></a></div>

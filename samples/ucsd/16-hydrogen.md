@@ -582,7 +582,7 @@ We can find the term for $`\frac{p_{r}^{2}}{2 m}`$ in the radial equation.
 <a id="p240" href="book.pdf#page=240" target="_blank" title="This page in the PDF"><sup>[p. 240]</sup></a>
 
 ```math
-\begin{aligned} &= \frac{- \hbar^{2}}{m^{2}} 4 \left( \frac{Z}{a_{0}} \right)^{3} \int^{\infty} r^{2} e^{\tfrac{- Zr}{a 0}} \left( \frac{Z^{2}}{a_{0}^{2}} - \frac{2 Z}{a_{0} r} \right) e^{\tfrac{- Zr}{a 0}} dr \\ &= \frac{- \hbar^{2}}{m^{2}} 4 \left( \frac{Z}{a_{0}} \right)^{3 0} \left( \frac{Z^{2}}{a_{0}^{2}} 2 \left( \frac{a_{0}}{2 Z} \right)^{3} - \frac{2 Z}{a_{0}} \left( \frac{a_{0}}{2 Z} \right)^{2} \right) \end{aligned}
+\begin{aligned} &= \frac{- \hbar^{2}}{m^{2}} 4 \left( \frac{Z}{a_{0}} \right)^{3} \int_{0}^{\infty} r^{2} e^{\tfrac{- Zr}{a 0}} \left( \frac{Z^{2}}{a_{0}^{2}} - \frac{2 Z}{a_{0} r} \right) e^{\tfrac{- Zr}{a 0}} dr \\ &= \frac{- \hbar^{2}}{m^{2}} 4 \left( \frac{Z}{a_{0}} \right)^{3} \left( \frac{Z^{2}}{a_{0}^{2}} 2 \left( \frac{a_{0}}{2 Z} \right)^{3} - \frac{2 Z}{a_{0}} \left( \frac{a_{0}}{2 Z} \right)^{2} \right) \end{aligned}
 ```
 
 ```math

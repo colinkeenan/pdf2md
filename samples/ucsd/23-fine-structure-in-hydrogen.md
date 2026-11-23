@@ -82,11 +82,11 @@ The first order perturbation **energy shift from the spin orbit correction** is 
 ```
 
 ```math
-= {}^{2} \quad j = \ell + \tfrac{1}{2}
+= j = \ell + \tfrac{1}{2}
 ```
 
 ```math
-\left( \frac{g}{2} \right) \frac{E_{n}^{( 0 )}}{2 mc^{2}} 2 \begin{bmatrix} \frac{n}{( \ell + \tfrac{1}{2} ) ( \ell + 1 )} \\ \frac{- n}{\ell ( \ell + \tfrac{1}{2} )} \end{bmatrix} \quad j = \ell - \tfrac{1}{2}
+\left( \frac{g}{2} \right) \frac{E_{n}^{( 0 ) 2}}{2 mc^{2}} 2 \begin{bmatrix} \frac{n}{( \ell + \tfrac{1}{2} ) ( \ell + 1 )} \\ \frac{- n}{\ell ( \ell + \tfrac{1}{2} )} \end{bmatrix} \quad j = \ell - \tfrac{1}{2}
 ```
 
 Actually, the $`\vec{L} \cdot \vec{S}`$ term should give 0 for $`\ell = 0`$! In the above calculation there is an $`\frac{\ell}{\ell}`$ factor which makes the result for $`\ell = 0`$ undefined. There is an additional Dirac Equation contribution called the **“Darwin term”** (see section 23.4.5) which is important for $`\ell = 0`$ and surprisingly makes the above calculation right, even for $`\ell = 0`$!
@@ -94,11 +94,11 @@ Actually, the $`\vec{L} \cdot \vec{S}`$ term should give 0 for $`\ell = 0`$! In 
 We will now add these three fine structure corrections together for states of definite $`j`$. We start with a formula which has slightly different forms for $`j = \ell \pm \tfrac{1}{2}`$.
 
 ```math
-E_{njm_{j} \ell s} = E_{n}^{( 0 )} + \frac{E_{n}^{( 0 )}}{2 mc^{2}}^{2} \left[ 3 - \frac{4 n}{\ell + \tfrac{1}{2}} + \left\{ \frac{2 n}{{}^{( \ell +} - \tfrac{\tfrac{1}{2} ) ( 2 n \ell + 1 )}{\ell ( \ell + \tfrac{1}{2} )}} \right\} \frac{( + )}{( - )} \right]
+E_{njm_{j} \ell s} = E_{n}^{( 0 )} + \frac{E_{n}^{( 0 )}}{2 mc^{2}}^{2} \left[ 3 - \frac{4 n}{\ell + \tfrac{1}{2}} + \left\{ \frac{2 n}{{}^{( \ell +} - \tfrac{\tfrac{1}{2} ) ( 2 n \ell + 1 )}{\ell ( \ell + \tfrac{1}{2} )}} \right\}_{( - )}^{( + )} \right]
 ```
 
 ```math
-E_{njm_{j} \ell s} = E_{n}^{( 0 )} + \frac{E_{n}^{( 0 )}}{2 mc^{2}}^{2} \left[ 3 - \frac{n}{( \ell + \tfrac{1}{2} )} \begin{Bmatrix} 4 - \tfrac{2}{\ell + 1 \frac{2}{\ell}} \\ 4 + \end{Bmatrix} \frac{( + )}{( - )} \right]
+E_{njm_{j} \ell s} = E_{n}^{( 0 )} + \frac{E_{n}^{( 0 )}}{2 mc^{2}}^{2} \left[ 3 - \frac{n}{( \ell + \tfrac{1}{2} )} \begin{Bmatrix} 4 - \tfrac{2}{\ell + 1 \frac{2}{\ell}} \\ 4 + \end{Bmatrix}_{( - )}^{( + )} \right]
 ```
 
 <div align="right"><a href="book.pdf#page=337" target="_blank" title="This page in the PDF"><sup>[p. 337]</sup></a></div>
@@ -340,11 +340,11 @@ We now calculate the expectation value of $`H_{2}`$. We will immediately use the
 ```
 
 ```math
-= \left( \frac{g}{2} \right) \left( \frac{- E_{n}}{2 mc^{2}} \right) \frac{\hbar^{2}}{ma_{0}^{2} n^{2}} \begin{bmatrix} \ell \\ - ( \ell + 1 ) \end{bmatrix} \frac{( + )}{( - )} \frac{n}{\ell ( \ell + \tfrac{1}{2} ) ( \ell + 1 )}
+= \left( \frac{g}{2} \right) \left( \frac{- E_{n}}{2 mc^{2}} \right) \frac{\hbar^{2}}{ma_{0}^{2} n^{2}} \begin{bmatrix} \ell \\ - ( \ell + 1 ) \end{bmatrix}_{( - )}^{( + )} \frac{n}{\ell ( \ell + \tfrac{1}{2} ) ( \ell + 1 )}
 ```
 
 ```math
-= \left( \frac{g}{2} \right) \left( \frac{- E_{n}}{2 mc^{2}} \right) \frac{\hbar^{2} \alpha^{2} m^{2} c^{2}}{m \hbar^{2} n^{2}} \begin{bmatrix} \ell \\ - ( \ell + 1 ) \end{bmatrix} \frac{( + )}{( - )} \frac{n}{\ell ( \ell + \tfrac{1}{2} ) ( \ell + 1 )}
+= \left( \frac{g}{2} \right) \left( \frac{- E_{n}}{2 mc^{2}} \right) \frac{\hbar^{2} \alpha^{2} m^{2} c^{2}}{m \hbar^{2} n^{2}} \begin{bmatrix} \ell \\ - ( \ell + 1 ) \end{bmatrix}_{( - )}^{( + )} \frac{n}{\ell ( \ell + \tfrac{1}{2} ) ( \ell + 1 )}
 ```
 
 ```math
