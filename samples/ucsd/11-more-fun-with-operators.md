@@ -294,17 +294,17 @@ For momentum and position, this agrees with the uncertainty principle we know.
 We wish to compute the time derivative of the expectation value of an operator $`A`$ in the state $`\psi`$. Thinking about the integral, this has three terms.
 
 ```math
-\begin{aligned} \frac{d}{dt} \langle \psi | A | \psi \rangle &= \left\langle \frac{d\psi}{dt} | A | \psi \right\rangle + \left\langle \psi \left| \frac{\partial A}{\partial t} \right| \psi \right\rangle + \left\langle \psi | A | \frac{d\psi}{dt} \right\rangle \\ &= \frac{- 1}{i \hbar} \langle H\psi | A | \psi \rangle + \frac{1}{i \hbar} \langle \psi | A | H\psi \rangle + \left\langle \psi \left| \frac{\partial A}{\partial t} \right| \psi \right\rangle \end{aligned}
+\begin{aligned} \frac{d}{dt} \langle \psi | A | \psi \rangle &= \left\langle \frac{d\psi}{dt} | A | \psi \right\rangle + \left\langle \psi \middle| \frac{\partial A}{\partial t} \middle| \psi \right\rangle + \left\langle \psi | A | \frac{d\psi}{dt} \right\rangle \\ &= \frac{- 1}{i \hbar} \langle H\psi | A | \psi \rangle + \frac{1}{i \hbar} \langle \psi | A | H\psi \rangle + \left\langle \psi \middle| \frac{\partial A}{\partial t} \middle| \psi \right\rangle \end{aligned}
 ```
 
 ```math
-= \frac{i}{\hbar} \langle \psi | [ H,A ] | \psi \rangle + \left\langle \psi \left| \frac{\partial A}{\partial t} \right| \psi \right\rangle
+= \frac{i}{\hbar} \langle \psi | [ H,A ] | \psi \rangle + \left\langle \psi \middle| \frac{\partial A}{\partial t} \middle| \psi \right\rangle
 ```
 
 This is an important general result for the **time derivative of expectation values**.
 
 ```math
-\frac{d}{dt} \langle \psi | A | \psi \rangle = \frac{i}{\hbar} \langle \psi | [ H,A ] | \psi \rangle + \left\langle \psi \left| \frac{\partial A}{\partial t} \right| \psi \right\rangle
+\frac{d}{dt} \langle \psi | A | \psi \rangle = \frac{i}{\hbar} \langle \psi | [ H,A ] | \psi \rangle + \left\langle \psi \middle| \frac{\partial A}{\partial t} \middle| \psi \right\rangle
 ```
 
 <div align="right"><a href="book.pdf#page=186" target="_blank" title="This page in the PDF"><sup>[p. 186]</sup></a></div>

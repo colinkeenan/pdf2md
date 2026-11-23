@@ -143,7 +143,7 @@ We can also show that
 
 \* See Example 8.8.1: Find the Hermitian conjugate of the operator $`a + ib . *`$
 
-\* See Example 8.8.2: Find the Hermitian conjugate of the operator $`\partial x \partial`$ .\*
+\* See Example 8.8.2: Find the Hermitian conjugate of the operator $`\frac{\partial}{\partial x}`$ .\*
 
 # <a id="s-8-3-hermitian-operators"></a>8.3 Hermitian Operators
 
@@ -636,13 +636,13 @@ So the Hermitian conjugate of a constant operator is its complex conjugate.
 We wish to compute the Hermitian conjugate of the operator $`\frac{\partial}{\partial x}`$ . We will use the integral to derive the result.
 
 ```math
-\langle \phi \left| \frac{\partial}{\partial x} \psi \right\rangle \rangle = \int_{-\infty}^{\infty} \phi^{*} ( x ) \frac{\partial \psi ( x )}{\partial x} dx
+\left\langle \phi \middle| \frac{\partial}{\partial x} \psi \right\rangle = \int_{-\infty}^{\infty} \phi^{*} ( x ) \frac{\partial \psi ( x )}{\partial x} dx
 ```
 
 We can integrate this by parts, differentiating the $`\phi`$ and integrating to get $`\psi`$.
 
 ```math
-\left\langle \phi \left| \frac{\partial}{\partial x} \psi \right\rangle = [ \phi^{*} ( x ) \psi ( x ) ]_{-\infty}^{\infty} - \int_{-\infty}^{\infty} \frac{\partial \phi^{*} ( x )}{\partial x} \psi ( x ) dx = \left\langle \frac{- \partial}{\partial x} \phi \right| \psi \right\rangle
+\left\langle \phi \middle| \frac{\partial}{\partial x} \psi \right\rangle = [ \phi^{*} ( x ) \psi ( x ) ]_{-\infty}^{\infty} - \int_{-\infty}^{\infty} \frac{\partial \phi^{*} ( x )}{\partial x} \psi ( x ) dx = \left\langle \frac{- \partial}{\partial x} \phi \middle| \psi \right\rangle
 ```
 
 So the Hermitian conjugate of $`\frac{\partial}{\partial x}`$ is $`- \tfrac{\partial}{\partial x}`$ .

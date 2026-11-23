@@ -187,16 +187,16 @@ We will also find the following equations useful (and easy to compute).
 L^{2} = L_{+} L_{-} + L_{z}^{2} - \hbar L_{z} .
 ```
 
-\* See Example 14.5.1: What is the expectation value of $`L_{z}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\tfrac{2}{3}} Y_{1 1} ( \theta ,\phi ) -`$
+\* See Example 14.5.1: What is the expectation value of $`L_{z}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\frac{2}{3}} Y_{1 1} ( \theta ,\phi ) -`$
 
 ```math
-i \sqrt{\tfrac{1}{3}} Y_{1 - 1} ( \theta ,\phi ) ) ? *
+i \sqrt{\frac{1}{3}} Y_{1 - 1} ( \theta ,\phi ) ) ? *
 ```
 
-\* See Example 14.5.2: What is the expectation value of $`L_{x}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\tfrac{2}{3}} Y_{1 1} ( \theta ,\phi ) -`$
+\* See Example 14.5.2: What is the expectation value of $`L_{x}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\frac{2}{3}} Y_{1 1} ( \theta ,\phi ) -`$
 
 ```math
-\sqrt{\tfrac{1}{3}} Y_{1 0} ( \theta ,\phi ) ) ? *
+\sqrt{\frac{1}{3}} Y_{1 0} ( \theta ,\phi ) ) ? *
 ```
 
 # <a id="s-14-3-the-angular-momentum-eigenfunctions"></a>14.3 The Angular Momentum Eigenfunctions

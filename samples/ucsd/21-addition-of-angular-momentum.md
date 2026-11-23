@@ -135,8 +135,8 @@ Our goal is to add orbital angular momentum with quantum number $`\ell`$ to spin
 
 We can also count states for each eigenvalue of $`J_{z}`$ as in the following examples.
 
-\* See Example 21.7.1: Counting states for $`\ell = 3`$ plus spin $`\frac{1}{2} . *`$<br>
-\* See Example 21.7.2: Counting states for any $`\ell`$ plus spin $`\frac{1}{2} . *`$<br>
+\* See Example 21.7.1: Counting states for $`\ell = 3`$ plus spin $`\tfrac{1}{2} . *`$<br>
+\* See Example 21.7.2: Counting states for any $`\ell`$ plus spin $`\tfrac{1}{2} . *`$<br>
 As in the last section, we could start with the highest $`J_{z}`$ state, $`Y_{\ell \ell} \chi_{+}`$, and apply the **lowering operator** to find the rest of the multiplet with $`j = \ell + \tfrac{1}{2}`$. This works well for some specific $`\ell`$ but is hard to generalize.
 
 We can work the problem in general. We know that each eigenstate of $`J^{2}`$ and $`J_{z}`$ will be a **linear combination of the two product states** with the right $`m`$.
@@ -683,29 +683,29 @@ we get.
 audio
 
 ```math
-\left\langle \left( \ell + \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell m \frac{1}{2} \frac{1}{2} \right\rangle = \alpha = \sqrt{\frac{\ell + m + 1}{2 \ell + 1}} \right.
+\left\langle \left( \ell + \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \middle| \ell m \frac{1}{2} \frac{1}{2} \right\rangle = \alpha = \sqrt{\frac{\ell + m + 1}{2 \ell + 1}}
 ```
 
 ```math
-\left\langle \left( \ell + \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell ( m + 1 ) \frac{1}{2} \frac{- 1}{2} \right\rangle = \beta = \sqrt{\frac{\ell - m}{2 \ell + 1}} \right.
+\left\langle \left( \ell + \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \middle| \ell ( m + 1 ) \frac{1}{2} \frac{- 1}{2} \right\rangle = \beta = \sqrt{\frac{\ell - m}{2 \ell + 1}}
 ```
 
 ```math
-\left\langle \left( \ell + \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell m \frac{1}{2} \frac{- 1}{2} \right\rangle = 0 \right.
+\left\langle \left( \ell + \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \middle| \ell m \frac{1}{2} \frac{- 1}{2} \right\rangle = 0
 ```
 
 ```math
-\left\langle \left( \ell + \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell ( m + 1 ) \frac{1}{2} \frac{1}{2} \right\rangle = 0 \right.
+\left\langle \left( \ell + \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \middle| \ell ( m + 1 ) \frac{1}{2} \frac{1}{2} \right\rangle = 0
 ```
 
 Similarly
 
 ```math
-\left\langle \left( \ell - \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell m \frac{1}{2} \frac{1}{2} \right\rangle = \sqrt{\frac{\ell - m}{2 \ell + 1}} \right.
+\left\langle \left( \ell - \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \middle| \ell m \frac{1}{2} \frac{1}{2} \right\rangle = \sqrt{\frac{\ell - m}{2 \ell + 1}}
 ```
 
 ```math
-\left\langle \left( \ell - \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell ( m + 1 ) \frac{1}{2} \frac{- 1}{2} \right\rangle = - \sqrt{\frac{\ell + m + 1}{2 \ell + 1}} \right.
+\left\langle \left( \ell - \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \middle| \ell ( m + 1 ) \frac{1}{2} \frac{- 1}{2} \right\rangle = - \sqrt{\frac{\ell + m + 1}{2 \ell + 1}}
 ```
 
 ## <a id="s-21-8-5-counting-the-states-for-ell-1-ell-2-leq-j-leq-ell-1-ell-2"></a>21.8.5 Counting the States for $`| \ell_{1} - \ell_{2} |\leq j \leq \ell_{1} + \ell_{2}`$.

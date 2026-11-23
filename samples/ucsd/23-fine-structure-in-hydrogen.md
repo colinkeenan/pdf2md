@@ -146,7 +146,7 @@ is the term due to the weak magnetic field.
 We now run into a problem because $`H_{1} + H_{2}`$ picks eigenstates of $`J^{2}`$ and $`J_{z}`$ while $`H_{3}`$ picks eigenstates of $`L_{z}`$ and $`S_{z}`$. In the weak field limit, we can do perturbation theory using the states of definite $`j`$. A direct **calculation** (see section 23.4.6) of the Anomalous Zeeman Effect gives the energy shifts in a weak B field.
 
 ```math
-\Delta E = \left\langle \psi_{n\ell jm_{j}} \left| \tfrac{eB}{2 mc} ( L_{z} + 2 S_{z} ) \right| \psi_{n\ell jm_{j}} \right\rangle = \tfrac{e \hbar B}{2 mc} m_{j} \left( 1 \pm \tfrac{1}{2 \ell + 1} \right)
+\Delta E = \left\langle \psi_{n\ell jm_{j}} \middle| \tfrac{eB}{2 mc} ( L_{z} + 2 S_{z} ) \middle| \psi_{n\ell jm_{j}} \right\rangle = \tfrac{e \hbar B}{2 mc} m_{j} \left( 1 \pm \tfrac{1}{2 \ell + 1} \right)
 ```
 
 This is the correction, due to a weak magnetic field, which we should add to the fine structure energies.
@@ -206,7 +206,7 @@ mc^{2} + \frac{p_{e}^{2}}{2 m} \to \left( p^{2} c^{2} + m^{2} c^{4} \right)^{1 /
 Taylor expanding the square root around $`p^{2} = 0`$, we find
 
 ```math
-\left( p^{2} c^{2} + m^{2} c^{4} \right)^{1 / 2} = mc^{2} + \frac{1}{2} \frac{p^{2} c^{2}}{mc^{2}} - \frac{1}{8} \frac{p^{4} c^{4}}{m^{3} c^{6}} + \cdot \cdot \cdot \approx mc^{2} + \frac{p^{2}}{2 m} - \frac{p^{4}}{8 m^{3} c^{2}}
+\left( p^{2} c^{2} + m^{2} c^{4} \right)^{1 / 2} = mc^{2} + \frac{1}{2} \frac{p^{2} c^{2}}{mc^{2}} - \frac{1}{8} \frac{p^{4} c^{4}}{m^{3} c^{6}} + \cdots \approx mc^{2} + \frac{p^{2}}{2 m} - \frac{p^{4}}{8 m^{3} c^{2}}
 ```
 
 So we have our next order correction term. Notice that $`\frac{p^{2}}{2 m}`$ was just the lowest order correction to $`mc^{2}`$.
@@ -268,19 +268,19 @@ and we will therefore want to work with states of definite $`j , \ell`$, and $`s
 Rewriting $`H_{1} = - \tfrac{1}{8} \tfrac{p_{e}^{4}}{m^{3} c^{2}}`$ as $`H_{1} = - \tfrac{1}{2 mc^{2}} \left( \tfrac{p^{2}}{2 m} \right)^{2}`$ we calculate the energy shift for a state $`\psi_{njm_{j} \ell s}`$. While there is no spin involved here, we will need to use these states for the spin-orbit interaction
 
 ```math
-\left\langle \psi_{njm_{j} \ell s} | H_{1} | \psi_{njm_{j} \ell s} \right\rangle = - \frac{1}{2 mc^{2}} \left\langle \psi_{njm_{j} \ell s} \left| \left( \frac{p^{2}}{2 m} \right)^{2} \right| \psi_{njm_{j} \ell s} \right\rangle
+\left\langle \psi_{njm_{j} \ell s} | H_{1} | \psi_{njm_{j} \ell s} \right\rangle = - \frac{1}{2 mc^{2}} \left\langle \psi_{njm_{j} \ell s} \middle| \left( \frac{p^{2}}{2 m} \right)^{2} \middle| \psi_{njm_{j} \ell s} \right\rangle
 ```
 
 ```math
-= - \frac{1}{2 mc^{2}} \left\langle \psi_{njm_{j} \ell s} \left| \left( H_{0} + \frac{e^{2}}{r} \right)^{2} \right| \psi_{njm_{j} \ell s} \right\rangle
+= - \frac{1}{2 mc^{2}} \left\langle \psi_{njm_{j} \ell s} \middle| \left( H_{0} + \frac{e^{2}}{r} \right)^{2} \middle| \psi_{njm_{j} \ell s} \right\rangle
 ```
 
 ```math
-= - \frac{1}{2 mc^{2}} \left\langle \psi_{njm_{j} \ell s} \left| H_{0}^{2} + \frac{e^{2}}{r} H_{0} + H_{0} \frac{e^{2}}{r} + \frac{e^{4}}{r^{2}} \right| \psi_{njm_{j} \ell s} \right\rangle
+= - \frac{1}{2 mc^{2}} \left\langle \psi_{njm_{j} \ell s} \middle| H_{0}^{2} + \frac{e^{2}}{r} H_{0} + H_{0} \frac{e^{2}}{r} + \frac{e^{4}}{r^{2}} \middle| \psi_{njm_{j} \ell s} \right\rangle
 ```
 
 ```math
-\begin{aligned} &= - \frac{1}{2 mc^{2}} \left[ E_{n}^{2} + \left\langle \psi_{njm_{j} \ell s} \left| \frac{e^{2}}{r} \right| H_{0} \psi_{njm_{j} \ell s} \right\rangle \right. \\ & \quad + \left\langle H_{0} \psi_{njm_{j} \ell s} \left| \frac{e^{2}}{r} \right| \psi_{njm_{j} \ell s} \right\rangle \\ & \quad \left. + \left\langle \psi_{njm_{j} \ell s} \left| \frac{e^{4}}{r^{2}} \right| \psi_{njm_{j} \ell s} \right\rangle \right] \end{aligned}
+\begin{aligned} &= - \frac{1}{2 mc^{2}} \left[ E_{n}^{2} + \left\langle \psi_{njm_{j} \ell s} \middle| \frac{e^{2}}{r} \middle| H_{0} \psi_{njm_{j} \ell s} \right\rangle \right. \\ & \quad + \left\langle H_{0} \psi_{njm_{j} \ell s} \middle| \frac{e^{2}}{r} \middle| \psi_{njm_{j} \ell s} \right\rangle \\ & \quad \left. + \left\langle \psi_{njm_{j} \ell s} \middle| \frac{e^{4}}{r^{2}} \middle| \psi_{njm_{j} \ell s} \right\rangle \right] \end{aligned}
 ```
 
 ```math
@@ -384,19 +384,19 @@ This is the same as $`\ell = 0`$ term that we got for the spin orbit correction.
 We compute the energy change due to a weak magnetic field using first order Perturbation Theory.
 
 ```math
-\begin{aligned} & \quad \left\langle \psi_{n\ell jm_{j}} \left| \frac{eB}{2 mc} ( L_{z} + 2 S_{z} ) \right| \psi_{n\ell jm_{j}} \right\rangle \\ ( L_{z} + 2 S_{z} ) &= J_{z} + S_{z} \end{aligned}
+\begin{aligned} & \quad \left\langle \psi_{n\ell jm_{j}} \middle| \frac{eB}{2 mc} ( L_{z} + 2 S_{z} ) \middle| \psi_{n\ell jm_{j}} \right\rangle \\ ( L_{z} + 2 S_{z} ) &= J_{z} + S_{z} \end{aligned}
 ```
 
 The $`J_{z}`$ part is easy since we are in eigenstates of that operator.
 
 ```math
-\left\langle \psi_{n\ell jm_{j}} \left| \frac{eB}{2 mc} J_{z} \right| \psi_{n\ell jm_{j}} \right\rangle = \frac{eB}{2 mc} \hbar m_{j}
+\left\langle \psi_{n\ell jm_{j}} \middle| \frac{eB}{2 mc} J_{z} \middle| \psi_{n\ell jm_{j}} \right\rangle = \frac{eB}{2 mc} \hbar m_{j}
 ```
 
-The $`S_{z}`$ is harder since we are not in eigenstates of that one. We need $`\left\langle \psi_{n\ell jm_{j}} \left| \tfrac{eB}{2 mc} S_{z} \right| \psi_{n\ell jm_{j}} \right\rangle`$, but we don’t know how $`S_{z}`$ acts on these. So, we must write $`\left| \psi_{njm_{j} \ell s} \right\rangle`$ in terms of $`| \psi_{n\ell m_{\ell} sm_{s}} \rangle`$.
+The $`S_{z}`$ is harder since we are not in eigenstates of that one. We need $`\left\langle \psi_{n\ell jm_{j}} \middle| \tfrac{eB}{2 mc} S_{z} \middle| \psi_{n\ell jm_{j}} \right\rangle`$, but we don’t know how $`S_{z}`$ acts on these. So, we must write $`\left| \psi_{njm_{j} \ell s} \right\rangle`$ in terms of $`| \psi_{n\ell m_{\ell} sm_{s}} \rangle`$.
 
 ```math
-E_{n}^{( 1 )} = \left\langle \psi_{nj\ell m_{j}} \left| \frac{eB}{2 mc} ( J_{z} + S_{z} ) \right| \psi_{nj\ell m_{j}} \right\rangle
+E_{n}^{( 1 )} = \left\langle \psi_{nj\ell m_{j}} \middle| \frac{eB}{2 mc} ( J_{z} + S_{z} ) \middle| \psi_{nj\ell m_{j}} \right\rangle
 ```
 
 ```math

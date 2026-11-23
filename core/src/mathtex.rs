@@ -2481,7 +2481,21 @@ fn take_brackets(spans: &[MSpan], depth: usize) -> (Vec<MSpan>, Vec<Item>) {
         // (closed by a bar of "taken at": the rows in the open bracket and
         // the bar, with what hangs at the bar)
         let by_bar = close == '|' && open != '|' && taken_at[c];
-        let tex = if by_bar {
+        // (what a bracket ⟨a|b|c⟩ holds, part by part between its bars:
+        // a part of two rows is rows of its own, not of the whole bracket)
+        let bars: Vec<f32> = inside.iter().filter(|s| s.atom.as_deref() == Some("\\middle|")).map(|s| s.left).collect();
+        let parted = (open == '⟨' && close == '⟩' && !bars.is_empty()).then(|| {
+            let mut parts: Vec<Vec<MSpan>> = vec![Vec::new(); bars.len() + 1];
+            for s in inside.iter().filter(|s| s.atom.as_deref() != Some("\\middle|")) {
+                let c = (s.left + s.right) / 2.0;
+                parts[bars.iter().filter(|&&b| b < c).count()].push(s.clone());
+            }
+            let built: Vec<String> = parts.iter().map(|p| matrix(p, depth, ' ', typed_pair).unwrap_or_else(|| build_at(p, depth + 1))).collect();
+            format!("\\left\\langle {} \\right\\rangle", built.join(" \\middle| "))
+        });
+        let tex = if let Some(parted) = parted {
+            parted
+        } else if by_bar {
             let scripts = bar_scripts(&mut rest, &d1, size, depth);
             let body = matrix(&inside, depth, ' ', typed).unwrap_or_else(|| build_at(&inside, depth + 1));
             format!("\\left{} {body} \\right|{scripts}", delim_tex(open))

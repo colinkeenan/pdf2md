@@ -34,6 +34,9 @@ pub struct Font {
     pub family: String,
     /// True for fonts that are only used for mathematics (see [`is_math_font`]).
     pub math: bool,
+    /// The colour its text is printed in (red, green, blue): a bar drawn in
+    /// the colour of the text beside it is a bar of the text.
+    pub color: [u8; 3],
 }
 
 /// Is a span raised (superscript), lowered (subscript) or on the baseline?
@@ -444,8 +447,29 @@ pub fn read_drawings(doc: &mut Doc, path: &Path, pages: Option<(u32, u32)>) {
             }
             out
         }
-        for (page, r) in doc.pages.iter_mut().zip(all(&parts, parse_svg_rules)) {
-            page.rules = r;
+        // (black rules, and those in the colour of the text they stand by:
+        // a fraction bar among blue letters is blue. A coloured line with
+        // no text of its colour near it is of a drawing.)
+        let fonts = doc.fonts.clone();
+        let mut tinted: Vec<Vec<Rule>> = Vec::new();
+        for (page, r) in doc.pages.iter_mut().zip(all(&parts, parse_svg_rules_inked)) {
+            let of_text = |rule: &Rule, ink: [u8; 3]| {
+                page.lines.iter().flat_map(|l| &l.spans).any(|s| {
+                    let Some(f) = fonts.get(s.font) else { return false };
+                    (0..3).all(|k| f.color[k].abs_diff(ink[k]) <= 10) && !s.text.trim().is_empty() && s.right() >= rule.left - f.size && s.left <= rule.right + f.size && s.bottom() >= rule.top - 1.5 * f.size && s.top <= rule.bottom + 1.5 * f.size
+                })
+            };
+            // (… the colour of words on the page: the letters set in a
+            // drawing by the program that drew it, in its own black, are
+            // single ones, and a bar among them is of the drawing)
+            let of_words = |ink: [u8; 3]| {
+                page.lines.iter().flat_map(|l| &l.spans).any(|s| {
+                    fonts.get(s.font).is_some_and(|f| (0..3).all(|k| f.color[k].abs_diff(ink[k]) <= 10)) && s.text.split(|c: char| !c.is_alphabetic()).any(|w| w.chars().count() >= 4)
+                })
+            };
+            let kept: Vec<(Rule, [u8; 3])> = r.into_iter().filter(|(rule, ink)| *ink == [0; 3] || (of_words(*ink) && of_text(rule, *ink))).collect();
+            tinted.push(kept.iter().filter(|(_, ink)| *ink != [0; 3]).map(|(rule, _)| *rule).collect());
+            page.rules = kept.into_iter().map(|(rule, _)| rule).collect();
         }
         // Frames and grids of lines with text in them are tables. (Not the
         // frame of a chapter's number or title, in larger type.) Their
@@ -519,6 +543,12 @@ pub fn read_drawings(doc: &mut Doc, path: &Path, pages: Option<(u32, u32)>) {
         // tables stand on drawn panels)
         if tex_math {
             lettered_figures(doc, pieces);
+        }
+        // (a coloured bar inside a drawn picture is of the drawing, or of
+        // a label in it: "1/z" beside a line of a diagram)
+        for (page, tinted) in doc.pages.iter_mut().zip(&tinted) {
+            let figures = page.figures.clone();
+            page.rules.retain(|r| !(tinted.contains(r) && figures.iter().any(|f| r.left >= f.left - 4.0 && r.right <= f.right + 4.0 && r.top >= f.top - 4.0 && r.bottom <= f.bottom + 4.0)));
         }
         // labels of drawn pictures (text pieces); an embedded image has
         // its labels in its pixels, so text around it is never one
@@ -1250,7 +1280,8 @@ fn figures_and_pieces(svg: &str) -> Vec<(Vec<Figure>, Vec<Figure>)> {
                     // (a fraction bar drawn as a thin stroke is a piece of a
                     // drawing only together with something else: a formula
                     // of many stacked fractions is no drawing)
-                    if stroked_rule(tag.trim_start()).is_none() {
+                    // (a black one: a coloured line is a line of the drawing)
+                    if stroked_rule(tag.trim_start()).is_none_or(|(_, ink)| ink != [0; 3]) {
                         drawn.push((l, r, t, b));
                         if tag.contains("stroke=") && d.contains('C') && r - l >= 30.0 && b - t >= 30.0 {
                             curves.push((l, r, t, b));
@@ -1736,9 +1767,9 @@ fn place_images(doc: &mut Doc) {
     }
     let readings = crate::ocr::recognize(&wanted);
     let font = doc.fonts.len();
-    doc.fonts.push(Font { size: doc.body_size, family: "ImageMath".into(), math: true });
+    doc.fonts.push(Font { size: doc.body_size, family: "ImageMath".into(), math: true, color: [0; 3] });
     let picture_font = doc.fonts.len();
-    doc.fonts.push(Font { size: doc.body_size, family: "ImagePicture".into(), math: false });
+    doc.fonts.push(Font { size: doc.body_size, family: "ImagePicture".into(), math: false, color: [0; 3] });
     let fonts = doc.fonts.clone();
     let size_of = |s: &Span| fonts.get(s.font).map_or(s.height, |f| f.size);
     for (page, &nx) in doc.pages.iter_mut().zip(&next_starts) {
@@ -2349,7 +2380,7 @@ fn insert_delims(doc: &mut Doc, delims: Vec<Vec<Delim>>) {
     let font = match doc.fonts.iter().position(|f| f.family.starts_with("CMEX")) {
         Some(i) => i,
         None => {
-            doc.fonts.push(Font { size: doc.body_size, family: "CMEX10".into(), math: true });
+            doc.fonts.push(Font { size: doc.body_size, family: "CMEX10".into(), math: true, color: [0; 3] });
             doc.fonts.len() - 1
         }
     };
@@ -2575,11 +2606,12 @@ fn find_grids(segments: &[(f32, f32, f32, f32)]) -> Vec<Grid> {
 /// across to another,
 /// `<path fill="none" stroke-width="0.448" … stroke="rgb(0%, 0%, 0%)" …
 /// d="M 0.0007 -0.0005 L 10.53 -0.0005" transform="matrix(1, 0, 0, -1, 158, 320)"/>`.
-fn stroked_rule(tag: &str) -> Option<Rule> {
+fn stroked_rule(tag: &str) -> Option<(Rule, [u8; 3])> {
     let attr = |name: &str| tag.split(&format!("{name}=\"")).nth(1)?.split('"').next();
-    if attr("fill") != Some("none") || attr("stroke") != Some("rgb(0%, 0%, 0%)") || tag.contains("stroke-dasharray") {
+    if attr("fill") != Some("none") || tag.contains("stroke-dasharray") {
         return None;
     }
+    let ink = svg_color(attr("stroke")?)?;
     let width: f32 = attr("stroke-width")?.parse().ok()?;
     let d = attr(" d")?;
     let mut words = d.split_whitespace();
@@ -2596,7 +2628,13 @@ fn stroked_rule(tag: &str) -> Option<Rule> {
     let (x0, x1) = ((m[0] * x0 + m[4]).min(m[0] * x1 + m[4]), (m[0] * x0 + m[4]).max(m[0] * x1 + m[4]));
     let (y0, y1) = (m[3] * y0 + m[5], m[3] * y1 + m[5]);
     let width = width * m[3].abs();
-    ((y1 - y0).abs() < 0.05 && width <= 1.5 && x1 - x0 >= 2.0).then(|| Rule { left: x0 * 1.5, right: x1 * 1.5, top: (y0 - width / 2.0) * 1.5, bottom: (y0 + width / 2.0) * 1.5 })
+    ((y1 - y0).abs() < 0.05 && width <= 1.5 && x1 - x0 >= 2.0).then(|| (Rule { left: x0 * 1.5, right: x1 * 1.5, top: (y0 - width / 2.0) * 1.5, bottom: (y0 + width / 2.0) * 1.5 }, ink))
+}
+
+/// A colour as the SVG writes it, "rgb(0%, 0%, 100%)": red, green, blue.
+fn svg_color(c: &str) -> Option<[u8; 3]> {
+    let parts: Vec<f32> = c.strip_prefix("rgb(")?.trim_end_matches(')').split(',').filter_map(|v| v.trim().trim_end_matches('%').parse().ok()).collect();
+    (parts.len() == 3).then(|| [0, 1, 2].map(|k| (parts[k] * 2.55).round().clamp(0.0, 255.0) as u8))
 }
 
 /// Thin horizontal black rectangles on each page of `pdftocairo -svg`
@@ -2607,6 +2645,13 @@ fn stroked_rule(tag: &str) -> Option<Rule> {
 /// Glyph outlines live in `<defs>` with an `id`, and figures use strokes
 /// or curves, so those are skipped.
 pub fn parse_svg_rules(svg: &str) -> Vec<Vec<Rule>> {
+    parse_svg_rules_inked(svg).into_iter().map(|page| page.into_iter().filter(|r| r.1 == [0; 3]).map(|r| r.0).collect()).collect()
+}
+
+/// As [`parse_svg_rules`], in whatever colour: each rule with its colour.
+/// (The answers to a problem set are printed in blue, fraction bars and
+/// all: see [`read_drawings`], which keeps the bars of the text.)
+fn parse_svg_rules_inked(svg: &str) -> Vec<Vec<(Rule, [u8; 3])>> {
     let mut pages = Vec::new();
     for chunk in svg_pages(svg) {
         let mut rules = Vec::new();
@@ -2616,7 +2661,8 @@ pub fn parse_svg_rules(svg: &str) -> Vec<Vec<Rule>> {
                 rules.push(rule);
                 continue;
             }
-            if !tag.contains("fill=\"rgb(0%, 0%, 0%)\"") || tag.contains("id=\"") || tag.contains("transform=") {
+            let Some(ink) = tag.split("fill=\"").nth(1).and_then(|c| c.split('"').next()).and_then(svg_color) else { continue };
+            if tag.contains("id=\"") || tag.contains("transform=") {
                 continue;
             }
             let Some(d) = tag.split("d=\"").nth(1).and_then(|r| r.split('"').next()) else { continue };
@@ -2637,7 +2683,7 @@ pub fn parse_svg_rules(svg: &str) -> Vec<Vec<Rule>> {
                 let (x0, x1) = xs.fold((f32::MAX, f32::MIN), |(a, b), &x| (a.min(x), b.max(x)));
                 let (y0, y1) = ys.fold((f32::MAX, f32::MIN), |(a, b), &y| (a.min(y), b.max(y)));
                 if y1 - y0 <= 1.5 && x1 - x0 >= 2.0 {
-                    rules.push(Rule { left: x0 * 1.5, right: x1 * 1.5, top: y0 * 1.5, bottom: y1 * 1.5 });
+                    rules.push((Rule { left: x0 * 1.5, right: x1 * 1.5, top: y0 * 1.5, bottom: y1 * 1.5 }, ink));
                 }
             }
         }
@@ -2896,13 +2942,16 @@ pub fn parse_xml_with(xml: &str, lost: &HashMap<String, bool>) -> Result<Doc, St
                 if fonts.len() <= id {
                     fonts.resize(
                         id + 1,
-                        Font { size: 0.0, family: String::new(), math: false },
+                        Font { size: 0.0, family: String::new(), math: false, color: [0; 3] },
                     );
                 }
+                // color="#0000ff"
+                let color = n.attribute("color").and_then(|c| c.strip_prefix('#')).filter(|c| c.len() == 6 && c.is_ascii()).map_or([0; 3], |c| [0, 2, 4].map(|k| u8::from_str_radix(&c[k..k + 2], 16).unwrap_or(0)));
                 fonts[id] = Font {
                     size: num(n, "size"),
                     math: is_math_font(&family),
                     family,
+                    color,
                 };
             } else if n.has_tag_name("text") {
                 // The text may be wrapped in <b>, <i> or <a> tags; collect
@@ -3009,6 +3058,29 @@ pub fn parse_xml_with(xml: &str, lost: &HashMap<String, bool>) -> Result<Doc, St
             num(page_node, "height"),
             spans,
         ));
+    }
+
+    // The 1 with a doubled stem, the identity. TeX has that figure only in
+    // a font drawn dot by dot, which the PDF holds without a name ("F67")
+    // and gives in a size that says nothing: the "1" came out as a small
+    // index of what follows it. Where all that such a font prints is that
+    // figure, it is written as the sign it is, in the math font nearest
+    // to its height.
+    let nameless = |f: &Font| f.family.len() >= 2 && f.family.starts_with('F') && f.family[1..].chars().all(|c| c.is_ascii_digit());
+    for id in 0..fonts.len() {
+        if !nameless(&fonts[id]) || !fonts.iter().any(|f| f.family.starts_with("CMMI")) {
+            continue;
+        }
+        let mut uses = pages.iter().flat_map(|p| &p.3).filter(|s| s.font == id).peekable();
+        if uses.peek().is_none() || !uses.all(|s| s.text.trim() == "1") {
+            continue;
+        }
+        for s in pages.iter_mut().flat_map(|p| p.3.iter_mut()).filter(|s| s.font == id) {
+            let near = |k: &usize| (fonts[*k].size - 1.1 * s.height).abs();
+            if let Some(k) = (0..fonts.len()).filter(|&k| fonts[k].family.starts_with("CMMI")).min_by(|a, b| near(a).total_cmp(&near(b))) {
+                (s.text, s.font) = ("𝟙".to_string(), k);
+            }
+        }
     }
 
     let size_of = |s: &Span| fonts.get(s.font).map_or(s.height, |f| f.size);
@@ -3522,7 +3594,23 @@ fn group_lines(
         let low = s.bottom() - 2.0;
         // (… or begins a point under its foot: the sign's box ends where
         // the line of its radicand begins)
+        // (of two such lines, a fraction's own and its denominator's half
+        // a line lower, the one whose letters begin right behind the sign:
+        // the root in "1 over √2ω" is the denominator's)
+        // (where the first has nothing near behind the sign, and the other
+        // begins under it, less than a line lower, in the first's size and
+        // the sign's: the halves of a small fraction are found later)
+        let behind = |k: usize| groups[k].iter().filter(|n| n.left >= s.right() - 2.0).map(|n| n.left - s.right()).fold(f32::MAX, f32::min);
+        let foot = |k: usize| size_of(&groups[k][0]) >= 0.85 * size_of(&s) && groups[k][0].top <= low + 2.0 && groups[k][0].bottom() >= low;
         let stands = groups.iter().position(|g| size_of(&g[0]) >= 0.85 * size_of(&s) && g[0].top <= low + 2.0 && g[0].bottom() >= low);
+        let stands = stands.map(|first| {
+            let size = size_of(&s);
+            let lower = (0..groups.len()).find(|&k| k != first && foot(k) && size_of(&groups[k][0]) >= 0.85 * size_of(&groups[first][0]) && size >= 0.85 * size_of(&groups[k][0]) && groups[k][0].top > groups[first][0].top + 0.3 * size && groups[k][0].top < groups[first][0].top + size && behind(k) <= 2.0);
+            // (not out of a line of words: the fraction set in a sentence
+            // is put together from its three lines later, root and all)
+            let words = groups[first].iter().flat_map(|n| n.text.split_whitespace()).filter(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 3).count() >= 2;
+            lower.filter(|_| behind(first) >= 0.5 * size && !words).unwrap_or(first)
+        });
         // (a root in an exponent stands above its line's letters: it is
         // of the line of the piece right after it, which it is the root of)
         let radicand = || {

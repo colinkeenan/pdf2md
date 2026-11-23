@@ -139,7 +139,7 @@ If the variable we wish to compute the expectation value of (like $`p`$) is not 
 
 The Dirac Bra-ket notation (See section 6.4) shown above is a convenient way to represent the expectation value of a variable given some state.
 
-\* See Example 6.7.1: A particle is in the state $`\psi ( x ) = \begin{pmatrix} 1 \\ 2 \pi \alpha \end{pmatrix}^{1 / 4} e^{ik_{0} x} e^{- \tfrac{x 2}{4 \alpha}}`$. What is the expectation value of $`p`$?\*
+\* See Example 6.7.1: A particle is in the state $`\psi ( x ) = \left( \tfrac{1}{2 \pi \alpha} \right)^{1 / 4} e^{ik_{0} x} e^{- \tfrac{x 2}{4 \alpha}}`$. What is the expectation value of $`p`$?\*
 
 For any physical quantity $`v`$, the expectation value of $`v`$ in an arbitrary state $`\psi`$ is
 

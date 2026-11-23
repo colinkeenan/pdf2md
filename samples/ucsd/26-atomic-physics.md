@@ -197,7 +197,7 @@ m_{\ell} \quad e
 ```
 
 ```math
-1 \quad ↑
+1 \quad \uparrow
 ```
 
 ```math
@@ -217,7 +217,7 @@ s = \sum m_{s} = \tfrac{1}{2}
 Carbon, with $`Z = 6`$ has the 1S and 2S levels filled giving $`j = 0`$ as a base. It has two valence 2P electrons. Hund’s first rule , maximum total $`s`$, tells us to couple the two electron spins to $`s = 1`$. This is the symmetric spin state so we’ll need to make the space state antisymmetric. Hund’s second rule, maximum $`\ell`$, doesn’t play a role because only the $`\ell = 1`$ state is antisymmetric. Remember, adding two P states together, we get total $`\ell = 0 , 1 , 2`$. The maximum state is symmetric, the next antisymmetric, and the $`\ell = 0`$ state is again symmetric under interchange. This means $`\ell = 1`$ is the only option. Since the shell is not half full we couple to the the lowest $`j = | \ell - s | = 0`$. So the ground state is $`{}^{3} P_{0}`$. The simpler way works with a table.
 
 ```math
-s \frac{m_{\ell} 1}{- 1} 0 = \sum m_{s} ↑ \frac{e}{↑} = 1
+s \frac{m_{\ell} 1}{- 1} 0 = \sum m_{s} \uparrow \frac{e}{\uparrow} = 1
 ```
 
 ```math
@@ -245,11 +245,11 @@ m_{\ell} \quad e
 ```
 
 ```math
-1 \quad ↑
+1 \quad \uparrow
 ```
 
 ```math
-\begin{aligned} & \quad 0 \quad ↑ \\ & \quad - 1 \quad ↑ \end{aligned}
+\begin{aligned} & \quad 0 \quad \uparrow \\ & \quad - 1 \quad \uparrow \end{aligned}
 ```
 
 ```math
@@ -275,7 +275,7 @@ _Figure 92 (p. 381)_
 Oxygen, with $`Z = 8`$ has the 1S and 2S levels filled giving $`j = 0`$ as a base. It has four valence 2P electrons which we will treat as two valence 2P holes. Hund’s first rule , maximum total $`s`$, tells us to couple the two hole spins to $`s = 1`$. This is the symmetric spin state so we’ll need to make the space state antisymmetric. Hund’s second rule, maximum $`\ell`$, doesn’t play a role because only the $`\ell = 1`$ state is antisymmetric. Since the shell is more than half full we couple to the the highest $`j = \ell + s = 2`$. So the ground state is $`{}^{3} P_{2}`$.
 
 ```math
-s \frac{m_{\ell} 1}{- 1} 0 = \sum m \frac{↑↓ e}{↑} ↑_{s} = 1
+s \frac{m_{\ell} 1}{- 1} 0 = \sum m \frac{\uparrow \downarrow e}{\uparrow} \uparrow_{s} = 1
 ```
 
 ```math

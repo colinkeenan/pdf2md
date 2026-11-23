@@ -528,7 +528,7 @@ which gives the result we deduced from wave packets for $`p`$ and $`x`$.
 Again we use operator methods to calculate the time derivative of an expectation value (See section 11.4).
 
 ```math
-\frac{d}{dt} \langle \psi | A | \psi \rangle = \frac{i}{\hbar} \langle \psi | [ H,A ] | \psi \rangle + \left\langle \psi \left| \frac{\partial A}{\partial t} \right| \psi \right\rangle_{\psi}
+\frac{d}{dt} \langle \psi | A | \psi \rangle = \frac{i}{\hbar} \langle \psi | [ H,A ] | \psi \rangle + \left\langle \psi \middle| \frac{\partial A}{\partial t} \middle| \psi \right\rangle_{\psi}
 ```
 
 (Most operators we use don’t have explicit time dependence so the second term is usually zero.) This again shows the importance of the Hamiltonian operator for time development. We can use this to show that in Quantum mechanics the expectation values for $`p`$ and $`x`$ behave as we would expect from Newtonian mechanics **(Ehrenfest Theorem)**.
@@ -1153,7 +1153,7 @@ We also compute the **Zeeman effect** in which an external magnetic field is app
 The correction due to a **weak magnetic field** is found to be
 
 ```math
-\Delta E = \left\langle \psi_{n\ell jm_{j}} \left| \frac{eB}{2 mc} ( L_{z} + 2 S_{z} ) \right| \psi_{n\ell jm_{j}} \right\rangle = \frac{e \hbar B}{2 mc} m_{j} \left( 1 \pm \frac{1}{2 \ell + 1} \right)
+\Delta E = \left\langle \psi_{n\ell jm_{j}} \middle| \frac{eB}{2 mc} ( L_{z} + 2 S_{z} ) \middle| \psi_{n\ell jm_{j}} \right\rangle = \frac{e \hbar B}{2 mc} m_{j} \left( 1 \pm \frac{1}{2 \ell + 1} \right)
 ```
 
 The factor $`\left( 1 \pm \tfrac{1}{2 \ell + 1} \right)`$ is known as the **Lande** $`g`$ **Factor** because the state splits as if it had this gyromagnetic ratio. We know that it is in fact a combination of the orbital and spin g factors in<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=38" target="_blank" title="This page in the PDF"><sup>[p. 38]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p39" href="book.pdf#page=39" target="_blank" title="This page in the PDF"><sup>[p. 39]</sup></a></span> a state of definite $`j`$. We have assumed that the effect of the field is small compared to the fine structure corrections. We can write the full energy in a weak magnetic field.
@@ -1321,7 +1321,7 @@ where $`\psi_{A} = \sqrt{\frac{1}{\pi a_{0}^{3}}} e^{- r_{1 A} /a_{0}}`$ is g.s.
 **The** H$`2`$ **molecule is also simple** and its energy can be computed with the help of the previous calculation. The space symmetric state will be the ground state.
 
 ```math
-\langle \psi | H | \psi \rangle = 2 E_{H_{2}^{+}} ( R_{AB} ) - \frac{e^{2}}{R_{AB}} + \left\langle \psi \left| \frac{e^{2}}{r_{1 2}} \right| \psi \right\rangle
+\langle \psi | H | \psi \rangle = 2 E_{H_{2}^{+}} ( R_{AB} ) - \frac{e^{2}}{R_{AB}} + \left\langle \psi \middle| \frac{e^{2}}{r_{1 2}} \middle| \psi \right\rangle
 ```
 
 The molecule can **vibrate** in the potential created when the shared electron binds the atoms together, giving rise to a harmonic oscillator energy spectrum.
@@ -1848,7 +1848,7 @@ Since the observed mass of the electron already accounts for most of the self en
 \Delta E_{n}^{( obs )} = \Delta E_{n} + \frac{2 \alpha E_{cut - off}}{3 \pi m^{2} c^{2}} \langle n | p^{2} | n \rangle
 ```
 
-In 1947, Willis E. Lamb and R. C. Retherford used microwave techniques to determine the **splitting between the** $`2 S 1_{2}`$ **and** $`2 P 1_{2}`$ **states in Hydrogen**. The result can be well accounted for by the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=52" target="_blank" title="This page in the PDF"><sup>[p. 52]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p53" href="book.pdf#page=53" target="_blank" title="This page in the PDF"><sup>[p. 53]</sup></a></span> self energy correction, at least when relativistic quantum mechanics is used. Our non-relativistic calculation gives a qualitative explanation of the effect.
+In 1947, Willis E. Lamb and R. C. Retherford used microwave techniques to determine the **splitting between the** $`2 S_{\tfrac{1}{2}}`$ **and** $`2 P_{\tfrac{1}{2}}`$ **states in Hydrogen**. The result can be well accounted for by the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=52" target="_blank" title="This page in the PDF"><sup>[p. 52]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p53" href="book.pdf#page=53" target="_blank" title="This page in the PDF"><sup>[p. 53]</sup></a></span> self energy correction, at least when relativistic quantum mechanics is used. Our non-relativistic calculation gives a qualitative explanation of the effect.
 
 ```math
 \Delta E_{n}^{( obs )} = \frac{4 \alpha^{5}}{3 \pi n^{3}} \left( \log \left( \frac{mc^{2}}{2 \hbar \bar{\omega}_{nj}} \right) + \frac{1 1}{2 4} - \frac{1}{5} \right) mc^{2}

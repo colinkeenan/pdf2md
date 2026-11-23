@@ -1049,7 +1049,7 @@ Higher order terms can be computed but its not recommended.
 
 Some atomic states, such as the **2s state of Hydrogen**, cannot decay by any of these terms basically because the 2s to 1s is a 0 to 0 transition and there is no way to conserve angular momentum and parity. This state can only decay by the emission of two photons.
 
-While E1 transitions in hydrogen have lifetimes as small as $`1 0^{- 9}`$ seconds, the **E2 and M1 transitions have lifetimes of the order of** $`1 0^{- 3}`$ **seconds**, and the **2s state has a lifetime of about** $`7 1`$ **of a second**.
+While E1 transitions in hydrogen have lifetimes as small as $`1 0^{- 9}`$ seconds, the **E2 and M1 transitions have lifetimes of the order of** $`1 0^{- 3}`$ **seconds**, and the **2s state has a lifetime of about** $`\frac{1}{7}`$ **of a second**.
 
 # <a id="s-33-13black-body-radiation-spectrum"></a>33.13 Black Body Radiation Spectrum
 

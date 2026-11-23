@@ -122,11 +122,11 @@ compared to -78.975 eV from experiment. A 10% error is not bad considering the s
 Now we will look at the energies of the excited states. The Pauli principle will cause big energy differences between the different spin states, even though we neglect all spin contribution in $`H_{1}`$ This effect is called the exchange interaction. In the equation below, the $`s`$ stands for singlet corresponding to the plus sign.
 
 ```math
-E_{1 st}^{( s,t )} = \frac{e^{2}}{2} \left\langle \phi_{1 0 0} \phi_{2 \ell m} \pm \phi_{2 \ell m} \phi_{1 0 0} \left| \frac{1}{| \vec{r}_{1} - \vec{r}_{2} |} \right| \phi_{1 0 0} \phi_{2 \ell m} \pm \phi_{2 \ell m} \phi_{1 0 0} \right\rangle
+E_{1 st}^{( s,t )} = \frac{e^{2}}{2} \left\langle \phi_{1 0 0} \phi_{2 \ell m} \pm \phi_{2 \ell m} \phi_{1 0 0} \middle| \frac{1}{| \vec{r}_{1} - \vec{r}_{2} |} \middle| \phi_{1 0 0} \phi_{2 \ell m} \pm \phi_{2 \ell m} \phi_{1 0 0} \right\rangle
 ```
 
 ```math
-= \frac{e^{2}}{2} \left\{ 2 \left\langle \phi_{1 0 0} \phi_{2 \ell m} \left| \frac{1}{| \vec{r}_{1} - \vec{r}_{2} |} \right| \phi_{1 0 0} \phi_{2 \ell m} \right\rangle \pm 2 \left\langle \phi_{1 0 0} \phi_{2 \ell m} \left| \frac{1}{| \vec{r}_{1} - \vec{r}_{2} |} \right| \phi_{2 \ell m} \phi_{1 0 0} \right\rangle \right\}
+= \frac{e^{2}}{2} \left\{ 2 \left\langle \phi_{1 0 0} \phi_{2 \ell m} \middle| \frac{1}{| \vec{r}_{1} - \vec{r}_{2} |} \middle| \phi_{1 0 0} \phi_{2 \ell m} \right\rangle \pm 2 \left\langle \phi_{1 0 0} \phi_{2 \ell m} \middle| \frac{1}{| \vec{r}_{1} - \vec{r}_{2} |} \middle| \phi_{2 \ell m} \phi_{1 0 0} \right\rangle \right\}
 ```
 
 ```math

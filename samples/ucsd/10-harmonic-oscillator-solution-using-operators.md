@@ -321,12 +321,12 @@ This will allow for any computation.
 
 \* See Example 10.6.1: The expectation value of $`x`$ for any energy eigenstate is zero.\*<br>
 \* See Example 10.6.2: The expectation value of $`p`$ for any energy eigenstate is zero.\*<br>
-\* See Example 10.6.3: The expectation value of $`x`$ in the state $`\frac{\sqrt{1}}{2} ( u_{0} + u_{1} ) . *`$<br>
-\* See Example 10.6.4: The expectation value of $`\frac{1}{2} m\omega^{2} x^{2}`$ for any energy eigenstate is $`\frac{1}{2} \left( n + \tfrac{1}{2} \right) \hbar \omega . *`$ \* See Example 10.6.5: The expectation value of $`2 p^{2} m`$ for any energy eigenstate is $`\frac{1}{2} \left( n + \tfrac{1}{2} \right) \hbar \omega . *`$<br>
+\* See Example 10.6.3: The expectation value of $`x`$ in the state $`\tfrac{1}{\sqrt{2}} ( u_{0} + u_{1} ) . *`$<br>
+\* See Example 10.6.4: The expectation value of $`\tfrac{1}{2} m\omega^{2} x^{2}`$ for any energy eigenstate is $`\tfrac{1}{2} \left( n + \tfrac{1}{2} \right) \hbar \omega . *`$ \* See Example 10.6.5: The expectation value of $`\frac{p^{2}}{2 m}`$ for any energy eigenstate is $`\tfrac{1}{2} \left( n + \tfrac{1}{2} \right) \hbar \omega . *`$<br>
 \* See Example 10.6.6: The expectation value of $`p`$ as a function of time for the state $`\psi ( t = 0 )`$ =
 
 ```math
-\frac{\sqrt{1}}{2} ( u_{1} + u_{2} ) \text{ is } - \sqrt{m \hbar \omega \sin ( \omega t ) . *}
+\tfrac{1}{\sqrt{2}} ( u_{1} + u_{2} ) \text{ is } - \sqrt{m \hbar \omega} \sin ( \omega t ) . *
 ```
 
 # <a id="s-10-5-the-wavefunction-for-the-ho-ground-state"></a>10.5 The Wavefunction for the HO Ground State

@@ -1143,7 +1143,7 @@ which gives the result we deduced from wave packets for $`p`$ and $`x`$.
 Again we use operator methods to calculate the time derivative of an expectation value (See section 11.4).
 
 ```math
-\frac{d}{dt} \langle \psi | A | \psi \rangle = \frac{i}{\hbar} \langle \psi | [ H,A ] | \psi \rangle + \left\langle \psi \left| \frac{\partial A}{\partial t} \right| \psi \right\rangle_{\psi}
+\frac{d}{dt} \langle \psi | A | \psi \rangle = \frac{i}{\hbar} \langle \psi | [ H,A ] | \psi \rangle + \left\langle \psi \middle| \frac{\partial A}{\partial t} \middle| \psi \right\rangle_{\psi}
 ```
 
 (Most operators we use don’t have explicit time dependence so the second term is usually zero.) This again shows the importance of the Hamiltonian operator for time development. We can use this to show that in Quantum mechanics the expectation values for $`p`$ and $`x`$ behave as we would expect from Newtonian mechanics **(Ehrenfest Theorem)**.
@@ -1768,7 +1768,7 @@ We also compute the **Zeeman effect** in which an external magnetic field is app
 The correction due to a **weak magnetic field** is found to be
 
 ```math
-\Delta E = \left\langle \psi_{n\ell jm_{j}} \left| \frac{eB}{2 mc} ( L_{z} + 2 S_{z} ) \right| \psi_{n\ell jm_{j}} \right\rangle = \frac{e \hbar B}{2 mc} m_{j} \left( 1 \pm \frac{1}{2 \ell + 1} \right)
+\Delta E = \left\langle \psi_{n\ell jm_{j}} \middle| \frac{eB}{2 mc} ( L_{z} + 2 S_{z} ) \middle| \psi_{n\ell jm_{j}} \right\rangle = \frac{e \hbar B}{2 mc} m_{j} \left( 1 \pm \frac{1}{2 \ell + 1} \right)
 ```
 
 The factor $`\left( 1 \pm \tfrac{1}{2 \ell + 1} \right)`$ is known as the **Lande** $`g`$ **Factor** because the state splits as if it had this gyromagnetic ratio. We know that it is in fact a combination of the orbital and spin g factors in<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=38" target="_blank" title="This page in the PDF"><sup>[p. 38]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p39" href="book.pdf#page=39" target="_blank" title="This page in the PDF"><sup>[p. 39]</sup></a></span> a state of definite $`j`$. We have assumed that the effect of the field is small compared to the fine structure corrections. We can write the full energy in a weak magnetic field.
@@ -1936,7 +1936,7 @@ where $`\psi_{A} = \sqrt{\frac{1}{\pi a_{0}^{3}}} e^{- r_{1 A} /a_{0}}`$ is g.s.
 **The** H$`2`$ **molecule is also simple** and its energy can be computed with the help of the previous calculation. The space symmetric state will be the ground state.
 
 ```math
-\langle \psi | H | \psi \rangle = 2 E_{H_{2}^{+}} ( R_{AB} ) - \frac{e^{2}}{R_{AB}} + \left\langle \psi \left| \frac{e^{2}}{r_{1 2}} \right| \psi \right\rangle
+\langle \psi | H | \psi \rangle = 2 E_{H_{2}^{+}} ( R_{AB} ) - \frac{e^{2}}{R_{AB}} + \left\langle \psi \middle| \frac{e^{2}}{r_{1 2}} \middle| \psi \right\rangle
 ```
 
 The molecule can **vibrate** in the potential created when the shared electron binds the atoms together, giving rise to a harmonic oscillator energy spectrum.
@@ -2463,7 +2463,7 @@ Since the observed mass of the electron already accounts for most of the self en
 \Delta E_{n}^{( obs )} = \Delta E_{n} + \frac{2 \alpha E_{cut - off}}{3 \pi m^{2} c^{2}} \langle n | p^{2} | n \rangle
 ```
 
-In 1947, Willis E. Lamb and R. C. Retherford used microwave techniques to determine the **splitting between the** $`2 S 1_{2}`$ **and** $`2 P 1_{2}`$ **states in Hydrogen**. The result can be well accounted for by the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=52" target="_blank" title="This page in the PDF"><sup>[p. 52]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p53" href="book.pdf#page=53" target="_blank" title="This page in the PDF"><sup>[p. 53]</sup></a></span> self energy correction, at least when relativistic quantum mechanics is used. Our non-relativistic calculation gives a qualitative explanation of the effect.
+In 1947, Willis E. Lamb and R. C. Retherford used microwave techniques to determine the **splitting between the** $`2 S_{\tfrac{1}{2}}`$ **and** $`2 P_{\tfrac{1}{2}}`$ **states in Hydrogen**. The result can be well accounted for by the<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=52" target="_blank" title="This page in the PDF"><sup>[p. 52]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p53" href="book.pdf#page=53" target="_blank" title="This page in the PDF"><sup>[p. 53]</sup></a></span> self energy correction, at least when relativistic quantum mechanics is used. Our non-relativistic calculation gives a qualitative explanation of the effect.
 
 ```math
 \Delta E_{n}^{( obs )} = \frac{4 \alpha^{5}}{3 \pi n^{3}} \left( \log \left( \frac{mc^{2}}{2 \hbar \bar{\omega}_{nj}} \right) + \frac{1 1}{2 4} - \frac{1}{5} \right) mc^{2}
@@ -5375,7 +5375,7 @@ If the variable we wish to compute the expectation value of (like $`p`$) is not 
 
 The Dirac Bra-ket notation (See section 6.4) shown above is a convenient way to represent the expectation value of a variable given some state.
 
-\* See Example 6.7.1: A particle is in the state $`\psi ( x ) = \begin{pmatrix} 1 \\ 2 \pi \alpha \end{pmatrix}^{1 / 4} e^{ik_{0} x} e^{- \tfrac{x 2}{4 \alpha}}`$. What is the expectation value of $`p`$?\*
+\* See Example 6.7.1: A particle is in the state $`\psi ( x ) = \left( \tfrac{1}{2 \pi \alpha} \right)^{1 / 4} e^{ik_{0} x} e^{- \tfrac{x 2}{4 \alpha}}`$. What is the expectation value of $`p`$?\*
 
 For any physical quantity $`v`$, the expectation value of $`v`$ in an arbitrary state $`\psi`$ is
 
@@ -6220,7 +6220,7 @@ We can also show that
 
 \* See Example 8.8.1: Find the Hermitian conjugate of the operator $`a + ib . *`$
 
-\* See Example 8.8.2: Find the Hermitian conjugate of the operator $`\partial x \partial`$ .\*
+\* See Example 8.8.2: Find the Hermitian conjugate of the operator $`\frac{\partial}{\partial x}`$ .\*
 
 # <a id="s-8-3-hermitian-operators"></a>8.3 Hermitian Operators
 
@@ -6713,13 +6713,13 @@ So the Hermitian conjugate of a constant operator is its complex conjugate.
 We wish to compute the Hermitian conjugate of the operator $`\frac{\partial}{\partial x}`$ . We will use the integral to derive the result.
 
 ```math
-\langle \phi \left| \frac{\partial}{\partial x} \psi \right\rangle \rangle = \int_{-\infty}^{\infty} \phi^{*} ( x ) \frac{\partial \psi ( x )}{\partial x} dx
+\left\langle \phi \middle| \frac{\partial}{\partial x} \psi \right\rangle = \int_{-\infty}^{\infty} \phi^{*} ( x ) \frac{\partial \psi ( x )}{\partial x} dx
 ```
 
 We can integrate this by parts, differentiating the $`\phi`$ and integrating to get $`\psi`$.
 
 ```math
-\left\langle \phi \left| \frac{\partial}{\partial x} \psi \right\rangle = [ \phi^{*} ( x ) \psi ( x ) ]_{-\infty}^{\infty} - \int_{-\infty}^{\infty} \frac{\partial \phi^{*} ( x )}{\partial x} \psi ( x ) dx = \left\langle \frac{- \partial}{\partial x} \phi \right| \psi \right\rangle
+\left\langle \phi \middle| \frac{\partial}{\partial x} \psi \right\rangle = [ \phi^{*} ( x ) \psi ( x ) ]_{-\infty}^{\infty} - \int_{-\infty}^{\infty} \frac{\partial \phi^{*} ( x )}{\partial x} \psi ( x ) dx = \left\langle \frac{- \partial}{\partial x} \phi \middle| \psi \right\rangle
 ```
 
 So the Hermitian conjugate of $`\frac{\partial}{\partial x}`$ is $`- \tfrac{\partial}{\partial x}`$ .
@@ -8673,12 +8673,12 @@ This will allow for any computation.
 
 \* See Example 10.6.1: The expectation value of $`x`$ for any energy eigenstate is zero.\*<br>
 \* See Example 10.6.2: The expectation value of $`p`$ for any energy eigenstate is zero.\*<br>
-\* See Example 10.6.3: The expectation value of $`x`$ in the state $`\frac{\sqrt{1}}{2} ( u_{0} + u_{1} ) . *`$<br>
-\* See Example 10.6.4: The expectation value of $`\frac{1}{2} m\omega^{2} x^{2}`$ for any energy eigenstate is $`\frac{1}{2} \left( n + \tfrac{1}{2} \right) \hbar \omega . *`$ \* See Example 10.6.5: The expectation value of $`2 p^{2} m`$ for any energy eigenstate is $`\frac{1}{2} \left( n + \tfrac{1}{2} \right) \hbar \omega . *`$<br>
+\* See Example 10.6.3: The expectation value of $`x`$ in the state $`\tfrac{1}{\sqrt{2}} ( u_{0} + u_{1} ) . *`$<br>
+\* See Example 10.6.4: The expectation value of $`\tfrac{1}{2} m\omega^{2} x^{2}`$ for any energy eigenstate is $`\tfrac{1}{2} \left( n + \tfrac{1}{2} \right) \hbar \omega . *`$ \* See Example 10.6.5: The expectation value of $`\frac{p^{2}}{2 m}`$ for any energy eigenstate is $`\tfrac{1}{2} \left( n + \tfrac{1}{2} \right) \hbar \omega . *`$<br>
 \* See Example 10.6.6: The expectation value of $`p`$ as a function of time for the state $`\psi ( t = 0 )`$ =
 
 ```math
-\frac{\sqrt{1}}{2} ( u_{1} + u_{2} ) \text{ is } - \sqrt{m \hbar \omega \sin ( \omega t ) . *}
+\tfrac{1}{\sqrt{2}} ( u_{1} + u_{2} ) \text{ is } - \sqrt{m \hbar \omega} \sin ( \omega t ) . *
 ```
 
 # <a id="s-10-5-the-wavefunction-for-the-ho-ground-state"></a>10.5 The Wavefunction for the HO Ground State
@@ -9268,17 +9268,17 @@ For momentum and position, this agrees with the uncertainty principle we know.
 We wish to compute the time derivative of the expectation value of an operator $`A`$ in the state $`\psi`$. Thinking about the integral, this has three terms.
 
 ```math
-\begin{aligned} \frac{d}{dt} \langle \psi | A | \psi \rangle &= \left\langle \frac{d\psi}{dt} | A | \psi \right\rangle + \left\langle \psi \left| \frac{\partial A}{\partial t} \right| \psi \right\rangle + \left\langle \psi | A | \frac{d\psi}{dt} \right\rangle \\ &= \frac{- 1}{i \hbar} \langle H\psi | A | \psi \rangle + \frac{1}{i \hbar} \langle \psi | A | H\psi \rangle + \left\langle \psi \left| \frac{\partial A}{\partial t} \right| \psi \right\rangle \end{aligned}
+\begin{aligned} \frac{d}{dt} \langle \psi | A | \psi \rangle &= \left\langle \frac{d\psi}{dt} | A | \psi \right\rangle + \left\langle \psi \middle| \frac{\partial A}{\partial t} \middle| \psi \right\rangle + \left\langle \psi | A | \frac{d\psi}{dt} \right\rangle \\ &= \frac{- 1}{i \hbar} \langle H\psi | A | \psi \rangle + \frac{1}{i \hbar} \langle \psi | A | H\psi \rangle + \left\langle \psi \middle| \frac{\partial A}{\partial t} \middle| \psi \right\rangle \end{aligned}
 ```
 
 ```math
-= \frac{i}{\hbar} \langle \psi | [ H,A ] | \psi \rangle + \left\langle \psi \left| \frac{\partial A}{\partial t} \right| \psi \right\rangle
+= \frac{i}{\hbar} \langle \psi | [ H,A ] | \psi \rangle + \left\langle \psi \middle| \frac{\partial A}{\partial t} \middle| \psi \right\rangle
 ```
 
 This is an important general result for the **time derivative of expectation values**.
 
 ```math
-\frac{d}{dt} \langle \psi | A | \psi \rangle = \frac{i}{\hbar} \langle \psi | [ H,A ] | \psi \rangle + \left\langle \psi \left| \frac{\partial A}{\partial t} \right| \psi \right\rangle
+\frac{d}{dt} \langle \psi | A | \psi \rangle = \frac{i}{\hbar} \langle \psi | [ H,A ] | \psi \rangle + \left\langle \psi \middle| \frac{\partial A}{\partial t} \middle| \psi \right\rangle
 ```
 
 <div align="right"><a href="book.pdf#page=186" target="_blank" title="This page in the PDF"><sup>[p. 186]</sup></a></div>
@@ -10295,16 +10295,16 @@ We will also find the following equations useful (and easy to compute).
 L^{2} = L_{+} L_{-} + L_{z}^{2} - \hbar L_{z} .
 ```
 
-\* See Example 14.5.1: What is the expectation value of $`L_{z}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\tfrac{2}{3}} Y_{1 1} ( \theta ,\phi ) -`$
+\* See Example 14.5.1: What is the expectation value of $`L_{z}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\frac{2}{3}} Y_{1 1} ( \theta ,\phi ) -`$
 
 ```math
-i \sqrt{\tfrac{1}{3}} Y_{1 - 1} ( \theta ,\phi ) ) ? *
+i \sqrt{\frac{1}{3}} Y_{1 - 1} ( \theta ,\phi ) ) ? *
 ```
 
-\* See Example 14.5.2: What is the expectation value of $`L_{x}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\tfrac{2}{3}} Y_{1 1} ( \theta ,\phi ) -`$
+\* See Example 14.5.2: What is the expectation value of $`L_{x}`$ in the state $`\psi ( \vec{r} ) = R ( r ) ( \sqrt{\frac{2}{3}} Y_{1 1} ( \theta ,\phi ) -`$
 
 ```math
-\sqrt{\tfrac{1}{3}} Y_{1 0} ( \theta ,\phi ) ) ? *
+\sqrt{\frac{1}{3}} Y_{1 0} ( \theta ,\phi ) ) ? *
 ```
 
 # <a id="s-14-3-the-angular-momentum-eigenfunctions"></a>14.3 The Angular Momentum Eigenfunctions
@@ -11918,7 +11918,7 @@ The radial wavefunctions should be **normalized** as below.
 \* See Example 16.4.2: Compute the expected values of $`E , L^{2} , L_{z}`$, and $`L_{y}`$ in the Hydrogen state
 
 ```math
-\frac{1}{6} ( 4 \psi_{1 0 0} + 3 \psi_{2 1 1} - i\psi_{2 1 0} + \sqrt{1 0 \psi_{2 1 - 1} ) . *}
+\tfrac{1}{6} ( 4 \psi_{1 0 0} + 3 \psi_{2 1 1} - i\psi_{2 1 0} + \sqrt{1 0} \psi_{2 1 - 1} ) . *
 ```
 
 The pictures below depict the probability distributions in space for the Hydrogen wavefunctions.
@@ -11955,7 +11955,7 @@ A **useful integral** for Hydrogen atom calculations is.
 \int_{0}^{\infty} dxx^{n} e^{- ax} = \frac{n !}{a^{n + 1}}
 ```
 
-\* See Example 16.4.2: What is the expectation value of $`r 1`$ in the state $`\psi_{1 0 0}`$?\*
+\* See Example 16.4.2: What is the expectation value of $`\frac{1}{r}`$ in the state $`\psi_{1 0 0}`$?\*
 
 \* See Example 16.4.3: What is the expectation value of $`r`$ in the state $`\psi_{1 0 0}`$?\*
 
@@ -16161,8 +16161,8 @@ Our goal is to add orbital angular momentum with quantum number $`\ell`$ to spin
 
 We can also count states for each eigenvalue of $`J_{z}`$ as in the following examples.
 
-\* See Example 21.7.1: Counting states for $`\ell = 3`$ plus spin $`\frac{1}{2} . *`$<br>
-\* See Example 21.7.2: Counting states for any $`\ell`$ plus spin $`\frac{1}{2} . *`$<br>
+\* See Example 21.7.1: Counting states for $`\ell = 3`$ plus spin $`\tfrac{1}{2} . *`$<br>
+\* See Example 21.7.2: Counting states for any $`\ell`$ plus spin $`\tfrac{1}{2} . *`$<br>
 As in the last section, we could start with the highest $`J_{z}`$ state, $`Y_{\ell \ell} \chi_{+}`$, and apply the **lowering operator** to find the rest of the multiplet with $`j = \ell + \tfrac{1}{2}`$. This works well for some specific $`\ell`$ but is hard to generalize.
 
 We can work the problem in general. We know that each eigenstate of $`J^{2}`$ and $`J_{z}`$ will be a **linear combination of the two product states** with the right $`m`$.
@@ -16709,29 +16709,29 @@ we get.
 audio
 
 ```math
-\left\langle \left( \ell + \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell m \frac{1}{2} \frac{1}{2} \right\rangle = \alpha = \sqrt{\frac{\ell + m + 1}{2 \ell + 1}} \right.
+\left\langle \left( \ell + \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \middle| \ell m \frac{1}{2} \frac{1}{2} \right\rangle = \alpha = \sqrt{\frac{\ell + m + 1}{2 \ell + 1}}
 ```
 
 ```math
-\left\langle \left( \ell + \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell ( m + 1 ) \frac{1}{2} \frac{- 1}{2} \right\rangle = \beta = \sqrt{\frac{\ell - m}{2 \ell + 1}} \right.
+\left\langle \left( \ell + \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \middle| \ell ( m + 1 ) \frac{1}{2} \frac{- 1}{2} \right\rangle = \beta = \sqrt{\frac{\ell - m}{2 \ell + 1}}
 ```
 
 ```math
-\left\langle \left( \ell + \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell m \frac{1}{2} \frac{- 1}{2} \right\rangle = 0 \right.
+\left\langle \left( \ell + \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \middle| \ell m \frac{1}{2} \frac{- 1}{2} \right\rangle = 0
 ```
 
 ```math
-\left\langle \left( \ell + \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell ( m + 1 ) \frac{1}{2} \frac{1}{2} \right\rangle = 0 \right.
+\left\langle \left( \ell + \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \middle| \ell ( m + 1 ) \frac{1}{2} \frac{1}{2} \right\rangle = 0
 ```
 
 Similarly
 
 ```math
-\left\langle \left( \ell - \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell m \frac{1}{2} \frac{1}{2} \right\rangle = \sqrt{\frac{\ell - m}{2 \ell + 1}} \right.
+\left\langle \left( \ell - \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \middle| \ell m \frac{1}{2} \frac{1}{2} \right\rangle = \sqrt{\frac{\ell - m}{2 \ell + 1}}
 ```
 
 ```math
-\left\langle \left( \ell - \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \left| \ell ( m + 1 ) \frac{1}{2} \frac{- 1}{2} \right\rangle = - \sqrt{\frac{\ell + m + 1}{2 \ell + 1}} \right.
+\left\langle \left( \ell - \frac{1}{2} \right) \left( m + \frac{1}{2} \right) \ell \frac{1}{2} \middle| \ell ( m + 1 ) \frac{1}{2} \frac{- 1}{2} \right\rangle = - \sqrt{\frac{\ell + m + 1}{2 \ell + 1}}
 ```
 
 ## <a id="s-21-8-5-counting-the-states-for-ell-1-ell-2-leq-j-leq-ell-1-ell-2"></a>21.8.5 Counting the States for $`| \ell_{1} - \ell_{2} |\leq j \leq \ell_{1} + \ell_{2}`$.
@@ -17463,7 +17463,7 @@ is the term due to the weak magnetic field.
 We now run into a problem because $`H_{1} + H_{2}`$ picks eigenstates of $`J^{2}`$ and $`J_{z}`$ while $`H_{3}`$ picks eigenstates of $`L_{z}`$ and $`S_{z}`$. In the weak field limit, we can do perturbation theory using the states of definite $`j`$. A direct **calculation** (see section 23.4.6) of the Anomalous Zeeman Effect gives the energy shifts in a weak B field.
 
 ```math
-\Delta E = \left\langle \psi_{n\ell jm_{j}} \left| \tfrac{eB}{2 mc} ( L_{z} + 2 S_{z} ) \right| \psi_{n\ell jm_{j}} \right\rangle = \tfrac{e \hbar B}{2 mc} m_{j} \left( 1 \pm \tfrac{1}{2 \ell + 1} \right)
+\Delta E = \left\langle \psi_{n\ell jm_{j}} \middle| \tfrac{eB}{2 mc} ( L_{z} + 2 S_{z} ) \middle| \psi_{n\ell jm_{j}} \right\rangle = \tfrac{e \hbar B}{2 mc} m_{j} \left( 1 \pm \tfrac{1}{2 \ell + 1} \right)
 ```
 
 This is the correction, due to a weak magnetic field, which we should add to the fine structure energies.
@@ -17523,7 +17523,7 @@ mc^{2} + \frac{p_{e}^{2}}{2 m} \to \left( p^{2} c^{2} + m^{2} c^{4} \right)^{1 /
 Taylor expanding the square root around $`p^{2} = 0`$, we find
 
 ```math
-\left( p^{2} c^{2} + m^{2} c^{4} \right)^{1 / 2} = mc^{2} + \frac{1}{2} \frac{p^{2} c^{2}}{mc^{2}} - \frac{1}{8} \frac{p^{4} c^{4}}{m^{3} c^{6}} + \cdot \cdot \cdot \approx mc^{2} + \frac{p^{2}}{2 m} - \frac{p^{4}}{8 m^{3} c^{2}}
+\left( p^{2} c^{2} + m^{2} c^{4} \right)^{1 / 2} = mc^{2} + \frac{1}{2} \frac{p^{2} c^{2}}{mc^{2}} - \frac{1}{8} \frac{p^{4} c^{4}}{m^{3} c^{6}} + \cdots \approx mc^{2} + \frac{p^{2}}{2 m} - \frac{p^{4}}{8 m^{3} c^{2}}
 ```
 
 So we have our next order correction term. Notice that $`\frac{p^{2}}{2 m}`$ was just the lowest order correction to $`mc^{2}`$.
@@ -17585,19 +17585,19 @@ and we will therefore want to work with states of definite $`j , \ell`$, and $`s
 Rewriting $`H_{1} = - \tfrac{1}{8} \tfrac{p_{e}^{4}}{m^{3} c^{2}}`$ as $`H_{1} = - \tfrac{1}{2 mc^{2}} \left( \tfrac{p^{2}}{2 m} \right)^{2}`$ we calculate the energy shift for a state $`\psi_{njm_{j} \ell s}`$. While there is no spin involved here, we will need to use these states for the spin-orbit interaction
 
 ```math
-\left\langle \psi_{njm_{j} \ell s} | H_{1} | \psi_{njm_{j} \ell s} \right\rangle = - \frac{1}{2 mc^{2}} \left\langle \psi_{njm_{j} \ell s} \left| \left( \frac{p^{2}}{2 m} \right)^{2} \right| \psi_{njm_{j} \ell s} \right\rangle
+\left\langle \psi_{njm_{j} \ell s} | H_{1} | \psi_{njm_{j} \ell s} \right\rangle = - \frac{1}{2 mc^{2}} \left\langle \psi_{njm_{j} \ell s} \middle| \left( \frac{p^{2}}{2 m} \right)^{2} \middle| \psi_{njm_{j} \ell s} \right\rangle
 ```
 
 ```math
-= - \frac{1}{2 mc^{2}} \left\langle \psi_{njm_{j} \ell s} \left| \left( H_{0} + \frac{e^{2}}{r} \right)^{2} \right| \psi_{njm_{j} \ell s} \right\rangle
+= - \frac{1}{2 mc^{2}} \left\langle \psi_{njm_{j} \ell s} \middle| \left( H_{0} + \frac{e^{2}}{r} \right)^{2} \middle| \psi_{njm_{j} \ell s} \right\rangle
 ```
 
 ```math
-= - \frac{1}{2 mc^{2}} \left\langle \psi_{njm_{j} \ell s} \left| H_{0}^{2} + \frac{e^{2}}{r} H_{0} + H_{0} \frac{e^{2}}{r} + \frac{e^{4}}{r^{2}} \right| \psi_{njm_{j} \ell s} \right\rangle
+= - \frac{1}{2 mc^{2}} \left\langle \psi_{njm_{j} \ell s} \middle| H_{0}^{2} + \frac{e^{2}}{r} H_{0} + H_{0} \frac{e^{2}}{r} + \frac{e^{4}}{r^{2}} \middle| \psi_{njm_{j} \ell s} \right\rangle
 ```
 
 ```math
-\begin{aligned} &= - \frac{1}{2 mc^{2}} \left[ E_{n}^{2} + \left\langle \psi_{njm_{j} \ell s} \left| \frac{e^{2}}{r} \right| H_{0} \psi_{njm_{j} \ell s} \right\rangle \right. \\ & \quad + \left\langle H_{0} \psi_{njm_{j} \ell s} \left| \frac{e^{2}}{r} \right| \psi_{njm_{j} \ell s} \right\rangle \\ & \quad \left. + \left\langle \psi_{njm_{j} \ell s} \left| \frac{e^{4}}{r^{2}} \right| \psi_{njm_{j} \ell s} \right\rangle \right] \end{aligned}
+\begin{aligned} &= - \frac{1}{2 mc^{2}} \left[ E_{n}^{2} + \left\langle \psi_{njm_{j} \ell s} \middle| \frac{e^{2}}{r} \middle| H_{0} \psi_{njm_{j} \ell s} \right\rangle \right. \\ & \quad + \left\langle H_{0} \psi_{njm_{j} \ell s} \middle| \frac{e^{2}}{r} \middle| \psi_{njm_{j} \ell s} \right\rangle \\ & \quad \left. + \left\langle \psi_{njm_{j} \ell s} \middle| \frac{e^{4}}{r^{2}} \middle| \psi_{njm_{j} \ell s} \right\rangle \right] \end{aligned}
 ```
 
 ```math
@@ -17701,19 +17701,19 @@ This is the same as $`\ell = 0`$ term that we got for the spin orbit correction.
 We compute the energy change due to a weak magnetic field using first order Perturbation Theory.
 
 ```math
-\begin{aligned} & \quad \left\langle \psi_{n\ell jm_{j}} \left| \frac{eB}{2 mc} ( L_{z} + 2 S_{z} ) \right| \psi_{n\ell jm_{j}} \right\rangle \\ ( L_{z} + 2 S_{z} ) &= J_{z} + S_{z} \end{aligned}
+\begin{aligned} & \quad \left\langle \psi_{n\ell jm_{j}} \middle| \frac{eB}{2 mc} ( L_{z} + 2 S_{z} ) \middle| \psi_{n\ell jm_{j}} \right\rangle \\ ( L_{z} + 2 S_{z} ) &= J_{z} + S_{z} \end{aligned}
 ```
 
 The $`J_{z}`$ part is easy since we are in eigenstates of that operator.
 
 ```math
-\left\langle \psi_{n\ell jm_{j}} \left| \frac{eB}{2 mc} J_{z} \right| \psi_{n\ell jm_{j}} \right\rangle = \frac{eB}{2 mc} \hbar m_{j}
+\left\langle \psi_{n\ell jm_{j}} \middle| \frac{eB}{2 mc} J_{z} \middle| \psi_{n\ell jm_{j}} \right\rangle = \frac{eB}{2 mc} \hbar m_{j}
 ```
 
-The $`S_{z}`$ is harder since we are not in eigenstates of that one. We need $`\left\langle \psi_{n\ell jm_{j}} \left| \tfrac{eB}{2 mc} S_{z} \right| \psi_{n\ell jm_{j}} \right\rangle`$, but we don’t know how $`S_{z}`$ acts on these. So, we must write $`\left| \psi_{njm_{j} \ell s} \right\rangle`$ in terms of $`| \psi_{n\ell m_{\ell} sm_{s}} \rangle`$.
+The $`S_{z}`$ is harder since we are not in eigenstates of that one. We need $`\left\langle \psi_{n\ell jm_{j}} \middle| \tfrac{eB}{2 mc} S_{z} \middle| \psi_{n\ell jm_{j}} \right\rangle`$, but we don’t know how $`S_{z}`$ acts on these. So, we must write $`\left| \psi_{njm_{j} \ell s} \right\rangle`$ in terms of $`| \psi_{n\ell m_{\ell} sm_{s}} \rangle`$.
 
 ```math
-E_{n}^{( 1 )} = \left\langle \psi_{nj\ell m_{j}} \left| \frac{eB}{2 mc} ( J_{z} + S_{z} ) \right| \psi_{nj\ell m_{j}} \right\rangle
+E_{n}^{( 1 )} = \left\langle \psi_{nj\ell m_{j}} \middle| \frac{eB}{2 mc} ( J_{z} + S_{z} ) \middle| \psi_{nj\ell m_{j}} \right\rangle
 ```
 
 ```math
@@ -18057,7 +18057,7 @@ Recalling that we can write
 the matrix elements can be easily computed. Note that the terms like $`I_{-} S_{+}`$ which change the state will give zero.
 
 ```math
-\frac{\mathcal{A}}{\hbar^{2}} \left\langle + - \left| \vec{I} \cdot \vec{S} \right| + - \right\rangle = \frac{\mathcal{A}}{\hbar^{2}} \left\langle + - \left| I_{z} S_{z} + \frac{1}{2} I_{+} S_{-} + \frac{1}{2} I_{-} S_{+} \right| + - \right\rangle
+\frac{\mathcal{A}}{\hbar^{2}} \left\langle + - \middle| \vec{I} \cdot \vec{S} \middle| + - \right\rangle = \frac{\mathcal{A}}{\hbar^{2}} \left\langle + - \middle| I_{z} S_{z} + \frac{1}{2} I_{+} S_{-} + \frac{1}{2} I_{-} S_{+} \middle| + - \right\rangle
 ```
 
 ```math
@@ -18476,11 +18476,11 @@ compared to -78.975 eV from experiment. A 10% error is not bad considering the s
 Now we will look at the energies of the excited states. The Pauli principle will cause big energy differences between the different spin states, even though we neglect all spin contribution in $`H_{1}`$ This effect is called the exchange interaction. In the equation below, the $`s`$ stands for singlet corresponding to the plus sign.
 
 ```math
-E_{1 st}^{( s,t )} = \frac{e^{2}}{2} \left\langle \phi_{1 0 0} \phi_{2 \ell m} \pm \phi_{2 \ell m} \phi_{1 0 0} \left| \frac{1}{| \vec{r}_{1} - \vec{r}_{2} |} \right| \phi_{1 0 0} \phi_{2 \ell m} \pm \phi_{2 \ell m} \phi_{1 0 0} \right\rangle
+E_{1 st}^{( s,t )} = \frac{e^{2}}{2} \left\langle \phi_{1 0 0} \phi_{2 \ell m} \pm \phi_{2 \ell m} \phi_{1 0 0} \middle| \frac{1}{| \vec{r}_{1} - \vec{r}_{2} |} \middle| \phi_{1 0 0} \phi_{2 \ell m} \pm \phi_{2 \ell m} \phi_{1 0 0} \right\rangle
 ```
 
 ```math
-= \frac{e^{2}}{2} \left\{ 2 \left\langle \phi_{1 0 0} \phi_{2 \ell m} \left| \frac{1}{| \vec{r}_{1} - \vec{r}_{2} |} \right| \phi_{1 0 0} \phi_{2 \ell m} \right\rangle \pm 2 \left\langle \phi_{1 0 0} \phi_{2 \ell m} \left| \frac{1}{| \vec{r}_{1} - \vec{r}_{2} |} \right| \phi_{2 \ell m} \phi_{1 0 0} \right\rangle \right\}
+= \frac{e^{2}}{2} \left\{ 2 \left\langle \phi_{1 0 0} \phi_{2 \ell m} \middle| \frac{1}{| \vec{r}_{1} - \vec{r}_{2} |} \middle| \phi_{1 0 0} \phi_{2 \ell m} \right\rangle \pm 2 \left\langle \phi_{1 0 0} \phi_{2 \ell m} \middle| \frac{1}{| \vec{r}_{1} - \vec{r}_{2} |} \middle| \phi_{2 \ell m} \phi_{1 0 0} \right\rangle \right\}
 ```
 
 ```math
@@ -19126,7 +19126,7 @@ m_{\ell} \quad e
 ```
 
 ```math
-1 \quad ↑
+1 \quad \uparrow
 ```
 
 ```math
@@ -19146,7 +19146,7 @@ s = \sum m_{s} = \tfrac{1}{2}
 Carbon, with $`Z = 6`$ has the 1S and 2S levels filled giving $`j = 0`$ as a base. It has two valence 2P electrons. Hund’s first rule , maximum total $`s`$, tells us to couple the two electron spins to $`s = 1`$. This is the symmetric spin state so we’ll need to make the space state antisymmetric. Hund’s second rule, maximum $`\ell`$, doesn’t play a role because only the $`\ell = 1`$ state is antisymmetric. Remember, adding two P states together, we get total $`\ell = 0 , 1 , 2`$. The maximum state is symmetric, the next antisymmetric, and the $`\ell = 0`$ state is again symmetric under interchange. This means $`\ell = 1`$ is the only option. Since the shell is not half full we couple to the the lowest $`j = | \ell - s | = 0`$. So the ground state is $`{}^{3} P_{0}`$. The simpler way works with a table.
 
 ```math
-s \frac{m_{\ell} 1}{- 1} 0 = \sum m_{s} ↑ \frac{e}{↑} = 1
+s \frac{m_{\ell} 1}{- 1} 0 = \sum m_{s} \uparrow \frac{e}{\uparrow} = 1
 ```
 
 ```math
@@ -19174,11 +19174,11 @@ m_{\ell} \quad e
 ```
 
 ```math
-1 \quad ↑
+1 \quad \uparrow
 ```
 
 ```math
-\begin{aligned} & \quad 0 \quad ↑ \\ & \quad - 1 \quad ↑ \end{aligned}
+\begin{aligned} & \quad 0 \quad \uparrow \\ & \quad - 1 \quad \uparrow \end{aligned}
 ```
 
 ```math
@@ -19204,7 +19204,7 @@ _Figure 92 (p. 381)_
 Oxygen, with $`Z = 8`$ has the 1S and 2S levels filled giving $`j = 0`$ as a base. It has four valence 2P electrons which we will treat as two valence 2P holes. Hund’s first rule , maximum total $`s`$, tells us to couple the two hole spins to $`s = 1`$. This is the symmetric spin state so we’ll need to make the space state antisymmetric. Hund’s second rule, maximum $`\ell`$, doesn’t play a role because only the $`\ell = 1`$ state is antisymmetric. Since the shell is more than half full we couple to the the highest $`j = \ell + s = 2`$. So the ground state is $`{}^{3} P_{2}`$.
 
 ```math
-s \frac{m_{\ell} 1}{- 1} 0 = \sum m \frac{↑↓ e}{↑} ↑_{s} = 1
+s \frac{m_{\ell} 1}{- 1} 0 = \sum m \frac{\uparrow \downarrow e}{\uparrow} \uparrow_{s} = 1
 ```
 
 ```math
@@ -19378,7 +19378,7 @@ where the spin singlet is required because the spatial wfn is symmetric under in
 The space symmetric state will be the ground state as before.
 
 ```math
-\langle \psi | H | \psi \rangle = 2 E_{H_{2}^{+}} ( R_{AB} ) - \frac{e^{2}}{R_{AB}} + \left\langle \psi \left| \frac{e^{2}}{r_{1 2}} \right| \psi \right\rangle
+\langle \psi | H | \psi \rangle = 2 E_{H_{2}^{+}} ( R_{AB} ) - \frac{e^{2}}{R_{AB}} + \left\langle \psi \middle| \frac{e^{2}}{r_{1 2}} \middle| \psi \right\rangle
 ```
 
 ## <a id="s-from-this-point-we-can-do-the-calculation-to-obtain"></a>From this point, we can do the calculation to obtain
@@ -19398,7 +19398,7 @@ wIth a multiterm wavefunction, we could get good agreement.
 
 Inner (closed shell) electrons stick close to nucleus so they do not get near to other atoms. The outer (valence) electrons may participate in bonding either by sharing or migrating to the other atom. **Electrons which are paired into spin singlets don’t bond**. If we try to share one of the paired electrons, in a bonding state, with another atom, the electron from the other atom is not antisymmetric with the (other) paired electron. Therefore only the antibonding (or some excited state) will work and binding is unlikely. Unpaired electrons don’t have this problem.
 
-$`↓↑↓↑↑`$ . . . first four don’t bond!
+$`\downarrow \uparrow \downarrow \uparrow \uparrow`$ . . . first four don’t bond!
 
 The strongest bonds come from s and p orbitals (not d,f).
 
@@ -20111,7 +20111,7 @@ This is a useful version of the **total decay rate formula** to remember.
 We proceed with the calculation to find the E1 selection rules.
 
 ```math
-= \frac{\alpha \omega_{in}^{3}}{2 \pi c^{2}} \sum_{\lambda} \int d \Omega_{\gamma} \left| \sqrt{\frac{4 \pi}{3}} \left\langle \phi_{n} \right| \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \left| \phi_{i} \right\rangle \right|^{2}
+= \frac{\alpha \omega_{in}^{3}}{2 \pi c^{2}} \sum_{\lambda} \int d \Omega_{\gamma} \left| \sqrt{\frac{4 \pi}{3}} \left\langle \phi_{n} \middle| \epsilon_{z} Y_{1 0} + \frac{- \epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 1} + \frac{\epsilon_{x} + i\epsilon_{y}}{\sqrt{2}} Y_{1 - 1} \middle| \phi_{i} \right\rangle \right|^{2}
 ```
 
 ```math
@@ -23096,7 +23096,7 @@ Higher order terms can be computed but its not recommended.
 
 Some atomic states, such as the **2s state of Hydrogen**, cannot decay by any of these terms basically because the 2s to 1s is a 0 to 0 transition and there is no way to conserve angular momentum and parity. This state can only decay by the emission of two photons.
 
-While E1 transitions in hydrogen have lifetimes as small as $`1 0^{- 9}`$ seconds, the **E2 and M1 transitions have lifetimes of the order of** $`1 0^{- 3}`$ **seconds**, and the **2s state has a lifetime of about** $`7 1`$ **of a second**.
+While E1 transitions in hydrogen have lifetimes as small as $`1 0^{- 9}`$ seconds, the **E2 and M1 transitions have lifetimes of the order of** $`1 0^{- 3}`$ **seconds**, and the **2s state has a lifetime of about** $`\frac{1}{7}`$ **of a second**.
 
 # <a id="s-33-13black-body-radiation-spectrum"></a>33.13 Black Body Radiation Spectrum
 
@@ -23187,7 +23187,7 @@ H_{ni} = \langle n ; \vec{k}^{\prime} \hat{\epsilon}^{( \alpha^{\prime} )} | H_{
 H_{int} = - \frac{e}{mc} \vec{A} ( x ) \cdot \vec{p} + \frac{e^{2}}{2 mc^{2}} \vec{A} \cdot \vec{A}
 ```
 
-The scattering process clearly requires terms in $`H_{int}`$ that **annihilate one photon and create another**. The order does not matter. The $`\tfrac{e^{2}}{2 mc^{2}} \vec{A} \cdot \vec{A}`$ is the square of the Fourier decomposition of the radiation field so it contains terms like $`a_{k^{\prime} ,\alpha^{\prime}}^{\dagger} a_{k,\alpha}`$ and $`a_{k,\alpha} a_{k^{\prime} ,\alpha^{\prime}}^{\dagger}`$ which are just what we want. The $`- \tfrac{e}{mc} \vec{A} \cdot \vec{p}`$ term has both creation and annihilation operators in it but not products of them. It changes the number of photons by plus or minus one, not by zero as required for the scattering process. Nevertheless this part of the interaction could contribute in second order perturbation theory, by absorbing one photon in a transition from the initial atomic state to an intermediate state, then emitting another photon and making a transition to the final atomic state. While this is higher order in perturbation theory, it is the same order in the electromagnetic coupling constant $`e`$, which is what really counts when expanding in powers of $`\alpha`$. Therefore, we will need to **consider the** $`\frac{e^{2}}{2 mc^{2}} \vec{A} \cdot \vec{A}`$ **term in first order and the** $`- \tfrac{e}{mc} \vec{A} \cdot \vec{p}`$ **term in second order** perturbation theory to get an order $`\alpha`$ calculation of the matrix element.
+The scattering process clearly requires terms in $`H_{int}`$ that **annihilate one photon and create another**. The order does not matter. The $`\tfrac{e^{2}}{2 mc^{2}} \vec{A} \cdot \vec{A}`$ is the square of the Fourier decomposition of the radiation field so it contains terms like $`a_{k^{\prime} ,\alpha^{\prime}}^{\dagger} a_{k,\alpha}`$ and $`a_{k,\alpha} a_{k^{\prime} ,\alpha^{\prime}}^{\dagger}`$ which are just what we want. The $`- \tfrac{e}{mc} \vec{A} \cdot \vec{p}`$ term has both creation and annihilation operators in it but not products of them. It changes the number of photons by plus or minus one, not by zero as required for the scattering process. Nevertheless this part of the interaction could contribute in second order perturbation theory, by absorbing one photon in a transition from the initial atomic state to an intermediate state, then emitting another photon and making a transition to the final atomic state. While this is higher order in perturbation theory, it is the same order in the electromagnetic coupling constant $`e`$, which is what really counts when expanding in powers of $`\alpha`$. Therefore, we will need to **consider the** $`\tfrac{e^{2}}{2 mc^{2}} \vec{A} \cdot \vec{A}`$ **term in first order and the** $`- \tfrac{e}{mc} \vec{A} \cdot \vec{p}`$ **term in second order** perturbation theory to get an order $`\alpha`$ calculation of the matrix element.
 
 Start with the first order perturbation theory term. All the terms in the sum that do not annihilate the initial state photon and create the final state photon give zero. We will assume that the wavelength of the photon’s is long compared to the size of the atom so that $`e^{i \vec{k} \cdot \vec{r}} \approx 1`$.
 
@@ -23885,13 +23885,13 @@ Because we are correcting for the mass used to calculate the base energy of the 
 
 # <a id="s-35-1-the-lamb-shift"></a>35.1 The Lamb Shift
 
-In 1947, Willis E. Lamb and R. C. Retherford used microwave techniques to determine the **splitting between the** $`2 S 1_{2}`$ **and** $`2 P_{2} 1`$ **states in Hydrogen** to have a frequency of 1.06 GHz, (a wavelength of about 30 cm). (The shift is now accurately measured to be 1057.864 MHz.) This is about the same size as the hyperfine splitting of the ground state.
+In 1947, Willis E. Lamb and R. C. Retherford used microwave techniques to determine the **splitting between the** $`2 S \tfrac{1}{2}`$ **and** $`2 P \tfrac{1}{2}`$ **states in Hydrogen** to have a frequency of 1.06 GHz, (a wavelength of about 30 cm). (The shift is now accurately measured to be 1057.864 MHz.) This is about the same size as the hyperfine splitting of the ground state.
 
 ![Figure 104 (p. 479)](images/fig-p479-1.png)
 
 _Figure 104 (p. 479)_
 
-The technique used was quite interesting. They made a **beam of Hydrogen atoms in the** $`2 S 1_{2}`$ **state**, which has a very long lifetime because of selection rules. **Microwave radiation** with a (fixed) frequency of 2395 MHz was used to cause transitions to the 2$`P_{\tfrac{3}{2}}`$ state and a **magnetic field was adjusted to shift the energy of the states** until the rate was largest. The **decay of the** $`2 P 3_{2}`$ **state to the ground state was observed** to determine the transition rate. From this, they were able to deduce the shift between the 2$`S \tfrac{1}{2}`$ and 2$`P \tfrac{1}{2}`$ states.
+The technique used was quite interesting. They made a **beam of Hydrogen atoms in the** $`2 S_{\tfrac{1}{2}}`$ **state**, which has a very long lifetime because of selection rules. **Microwave radiation** with a (fixed) frequency of 2395 MHz was used to cause transitions to the 2$`P_{\tfrac{3}{2}}`$ state and a **magnetic field was adjusted to shift the energy of the states** until the rate was largest. The **decay of the** $`2 P \tfrac{3}{2}`$ **state to the ground state was observed** to determine the transition rate. From this, they were able to deduce the shift between the 2$`S \tfrac{1}{2}`$ and 2$`P \tfrac{1}{2}`$ states.
 
 **Hans Bethe used non-relativistic quantum mechanics** to calculate the self-energy correction to account for this observation.
 
@@ -24059,7 +24059,7 @@ So the **sum of the two gives**.
 
 The **dependence on** $`\omega_{min}`$ **cancels**. In this calculation, the $`mc^{2}`$ in the log is the outcome of the relativistic calculation, not the cutoff. The electric dipole approximation is even pretty good since we did not need to go up to large photon energies non-relativistically and no E1 approximation is needed for the relativistic part. That’s how we (and Bethe) got about the right answer.
 
-The **Lamb shift splits the** $`2 S 1_{2}`$ **and** $`2 P 1_{2}`$ **states which are otherwise degenerate**. Its origin is **purely from field theory**. The experimental **measurement of the Lamb shift stimulated**<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=482" target="_blank" title="This page in the PDF"><sup>[p. 482]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p483" href="book.pdf#page=483" target="_blank" title="This page in the PDF"><sup>[p. 483]</sup></a></span> **theorists to develop Quantum ElectroDynamics**. The correction increases the energy of s states. One may think of the physical origin as the electron becoming less pointlike as virtual photons are emitted and reabsorbed. Spreading the electron out a bit decreases the effect of being in the deepest part of the potential, right at the origin. Based on the energy shift, I estimate that the **electron in the 2s state is spread out by about 0.005 Angstroms**, much more than the size of the nucleus.
+The **Lamb shift splits the** $`2 S_{\tfrac{1}{2}}`$ **and** $`2 P_{\tfrac{1}{2}}`$ **states which are otherwise degenerate**. Its origin is **purely from field theory**. The experimental **measurement of the Lamb shift stimulated**<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=482" target="_blank" title="This page in the PDF"><sup>[p. 482]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p483" href="book.pdf#page=483" target="_blank" title="This page in the PDF"><sup>[p. 483]</sup></a></span> **theorists to develop Quantum ElectroDynamics**. The correction increases the energy of s states. One may think of the physical origin as the electron becoming less pointlike as virtual photons are emitted and reabsorbed. Spreading the electron out a bit decreases the effect of being in the deepest part of the potential, right at the origin. Based on the energy shift, I estimate that the **electron in the 2s state is spread out by about 0.005 Angstroms**, much more than the size of the nucleus.
 
 The **anomalous magnetic moment of the electron**, $`g - 2`$, which can also be calculated in field theory, makes a small contribution to the Lamb shift.
 
@@ -24520,7 +24520,7 @@ Returning to the pair of equations in $`\psi_{A}`$ and $`\psi_{B}`$. Note that f
 \psi_{B} \approx \frac{c}{2 mc^{2}} \vec{\sigma} \cdot \left( \vec{p} + \frac{e}{c} \vec{A} \right) \psi_{A} \approx \frac{pc}{2 mc^{2}} \psi_{A}
 ```
 
-In the Hydrogen atom, $`\psi_{B}`$ **would be of order** $`\alpha 2`$ **times smaller**, so we call $`\psi_{A}`$ the large component and $`\psi_{B}`$ the small component. When we include relativistic corrections for the fine structure of Hydrogen, we must consider the effect $`\psi_{B}`$ has on the normalization. Remember that the conserved current indicates that the normalization condition for the four component Dirac spinor is.
+In the Hydrogen atom, $`\psi_{B}`$ **would be of order** $`\frac{\alpha}{2}`$ **times smaller**, so we call $`\psi_{A}`$ the large component and $`\psi_{B}`$ the small component. When we include relativistic corrections for the fine structure of Hydrogen, we must consider the effect $`\psi_{B}`$ has on the normalization. Remember that the conserved current indicates that the normalization condition for the four component Dirac spinor is.
 
 ```math
 j_{0} = \bar{\psi} \gamma_{4} \psi = \psi^{\dagger} \gamma_{4} \gamma_{4} \psi = \psi^{\dagger} \psi
@@ -25278,7 +25278,7 @@ Even though it is a second order differential equation, we only need to specify 
 
 # <a id="s-36-9-relativistic-covariance"></a>36.9 Relativistic Covariance
 
-It is important to show that the Dirac equation, with its constant $`\gamma`$ matrices, can be **covariant**. This will come down to finding the right **transformation of the Dirac spinor** $`\psi`$. Remember that spinors transform under rotations in a way quite different from normal vectors. The four components if the Dirac spinor do not represent x, y, z, and t. We have already solved a similar problem. We derived the **rotation matrices for spin** $`2 1`$ **states**, finding that they are quite different than rotation matrices for vectors. For a rotation about the $`j`$ axis, the result was.
+It is important to show that the Dirac equation, with its constant $`\gamma`$ matrices, can be **covariant**. This will come down to finding the right **transformation of the Dirac spinor** $`\psi`$. Remember that spinors transform under rotations in a way quite different from normal vectors. The four components if the Dirac spinor do not represent x, y, z, and t. We have already solved a similar problem. We derived the **rotation matrices for spin** $`\frac{1}{2}`$ **states**, finding that they are quite different than rotation matrices for vectors. For a rotation about the $`j`$ axis, the result was.
 
 ```math
 R ( \theta ) = \cos \frac{\theta}{2} + i\sigma_{j} \sin \frac{\theta}{2}

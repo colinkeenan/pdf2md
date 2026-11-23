@@ -26,7 +26,7 @@ use std::path::{Path, PathBuf};
 
 /// The rules by which a verdict is reached (here and in `math_check.py`):
 /// a verdict made by older rules is made again from the readings kept.
-const RULES: &str = "places 9";
+const RULES: &str = "places 10";
 
 /// What became of an equation's second reading.
 #[derive(Debug, Clone, PartialEq, Default)]
@@ -146,7 +146,10 @@ pub(crate) fn read(book: &mut Book, pdf: &Path) {
     for (i, (latex, place)) in eqs.iter_mut().enumerate() {
         let (key, _, _, stamp) = &jobs[i];
         let mut second = Second { key: key.clone(), ..Default::default() };
-        match verdict(key, stamp) {
+        // (the 1 with a doubled stem: the sign itself, which is drawn so
+        // where "\mathbb{1}" comes out as a plain 1)
+        let verdict = verdict(key, stamp).map(|(v, reading)| (v, reading.replace("\\mathbb{1}", "𝟙").replace("\\mathbb 1", "𝟙").replace("\\mathbbm{1}", "𝟙")));
+        match verdict {
             Some((v, reading)) if v == "take" && !reading.is_empty() => {
                 second.rule = Some(std::mem::replace(*latex, crate::ocr::tidy_reading(&reading)));
             }

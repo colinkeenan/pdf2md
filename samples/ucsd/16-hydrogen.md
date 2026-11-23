@@ -140,7 +140,7 @@ The radial wavefunctions should be **normalized** as below.
 \* See Example 16.4.2: Compute the expected values of $`E , L^{2} , L_{z}`$, and $`L_{y}`$ in the Hydrogen state
 
 ```math
-\frac{1}{6} ( 4 \psi_{1 0 0} + 3 \psi_{2 1 1} - i\psi_{2 1 0} + \sqrt{1 0 \psi_{2 1 - 1} ) . *}
+\tfrac{1}{6} ( 4 \psi_{1 0 0} + 3 \psi_{2 1 1} - i\psi_{2 1 0} + \sqrt{1 0} \psi_{2 1 - 1} ) . *
 ```
 
 The pictures below depict the probability distributions in space for the Hydrogen wavefunctions.
@@ -177,7 +177,7 @@ A **useful integral** for Hydrogen atom calculations is.
 \int_{0}^{\infty} dxx^{n} e^{- ax} = \frac{n !}{a^{n + 1}}
 ```
 
-\* See Example 16.4.2: What is the expectation value of $`r 1`$ in the state $`\psi_{1 0 0}`$?\*
+\* See Example 16.4.2: What is the expectation value of $`\frac{1}{r}`$ in the state $`\psi_{1 0 0}`$?\*
 
 \* See Example 16.4.3: What is the expectation value of $`r`$ in the state $`\psi_{1 0 0}`$?\*
 

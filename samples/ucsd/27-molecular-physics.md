@@ -149,7 +149,7 @@ where the spin singlet is required because the spatial wfn is symmetric under in
 The space symmetric state will be the ground state as before.
 
 ```math
-\langle \psi | H | \psi \rangle = 2 E_{H_{2}^{+}} ( R_{AB} ) - \frac{e^{2}}{R_{AB}} + \left\langle \psi \left| \frac{e^{2}}{r_{1 2}} \right| \psi \right\rangle
+\langle \psi | H | \psi \rangle = 2 E_{H_{2}^{+}} ( R_{AB} ) - \frac{e^{2}}{R_{AB}} + \left\langle \psi \middle| \frac{e^{2}}{r_{1 2}} \middle| \psi \right\rangle
 ```
 
 ## <a id="s-from-this-point-we-can-do-the-calculation-to-obtain"></a>From this point, we can do the calculation to obtain
@@ -169,7 +169,7 @@ wIth a multiterm wavefunction, we could get good agreement.
 
 Inner (closed shell) electrons stick close to nucleus so they do not get near to other atoms. The outer (valence) electrons may participate in bonding either by sharing or migrating to the other atom. **Electrons which are paired into spin singlets don’t bond**. If we try to share one of the paired electrons, in a bonding state, with another atom, the electron from the other atom is not antisymmetric with the (other) paired electron. Therefore only the antibonding (or some excited state) will work and binding is unlikely. Unpaired electrons don’t have this problem.
 
-$`↓↑↓↑↑`$ . . . first four don’t bond!
+$`\downarrow \uparrow \downarrow \uparrow \uparrow`$ . . . first four don’t bond!
 
 The strongest bonds come from s and p orbitals (not d,f).
 

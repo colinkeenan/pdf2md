@@ -455,7 +455,7 @@ Returning to the pair of equations in $`\psi_{A}`$ and $`\psi_{B}`$. Note that f
 \psi_{B} \approx \frac{c}{2 mc^{2}} \vec{\sigma} \cdot \left( \vec{p} + \frac{e}{c} \vec{A} \right) \psi_{A} \approx \frac{pc}{2 mc^{2}} \psi_{A}
 ```
 
-In the Hydrogen atom, $`\psi_{B}`$ **would be of order** $`\alpha 2`$ **times smaller**, so we call $`\psi_{A}`$ the large component and $`\psi_{B}`$ the small component. When we include relativistic corrections for the fine structure of Hydrogen, we must consider the effect $`\psi_{B}`$ has on the normalization. Remember that the conserved current indicates that the normalization condition for the four component Dirac spinor is.
+In the Hydrogen atom, $`\psi_{B}`$ **would be of order** $`\frac{\alpha}{2}`$ **times smaller**, so we call $`\psi_{A}`$ the large component and $`\psi_{B}`$ the small component. When we include relativistic corrections for the fine structure of Hydrogen, we must consider the effect $`\psi_{B}`$ has on the normalization. Remember that the conserved current indicates that the normalization condition for the four component Dirac spinor is.
 
 ```math
 j_{0} = \bar{\psi} \gamma_{4} \psi = \psi^{\dagger} \gamma_{4} \gamma_{4} \psi = \psi^{\dagger} \psi
@@ -1213,7 +1213,7 @@ Even though it is a second order differential equation, we only need to specify 
 
 # <a id="s-36-9-relativistic-covariance"></a>36.9 Relativistic Covariance
 
-It is important to show that the Dirac equation, with its constant $`\gamma`$ matrices, can be **covariant**. This will come down to finding the right **transformation of the Dirac spinor** $`\psi`$. Remember that spinors transform under rotations in a way quite different from normal vectors. The four components if the Dirac spinor do not represent x, y, z, and t. We have already solved a similar problem. We derived the **rotation matrices for spin** $`2 1`$ **states**, finding that they are quite different than rotation matrices for vectors. For a rotation about the $`j`$ axis, the result was.
+It is important to show that the Dirac equation, with its constant $`\gamma`$ matrices, can be **covariant**. This will come down to finding the right **transformation of the Dirac spinor** $`\psi`$. Remember that spinors transform under rotations in a way quite different from normal vectors. The four components if the Dirac spinor do not represent x, y, z, and t. We have already solved a similar problem. We derived the **rotation matrices for spin** $`\frac{1}{2}`$ **states**, finding that they are quite different than rotation matrices for vectors. For a rotation about the $`j`$ axis, the result was.
 
 ```math
 R ( \theta ) = \cos \frac{\theta}{2} + i\sigma_{j} \sin \frac{\theta}{2}

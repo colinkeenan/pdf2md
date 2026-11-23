@@ -871,8 +871,8 @@ mod tests {
     fn line(pieces: &[(&str, &str)]) -> String {
         let doc = Doc {
             fonts: vec![
-                Font { size: 22.0, family: "TimesNewRomanPSMT".into(), math: false },
-                Font { size: 17.0, family: "TimesNewRomanPSMT".into(), math: false },
+                Font { size: 22.0, family: "TimesNewRomanPSMT".into(), math: false, color: [0; 3] },
+                Font { size: 17.0, family: "TimesNewRomanPSMT".into(), math: false, color: [0; 3] },
             ],
             pages: Vec::new(),
             body_size: 22.0,

@@ -217,7 +217,7 @@ Recalling that we can write
 the matrix elements can be easily computed. Note that the terms like $`I_{-} S_{+}`$ which change the state will give zero.
 
 ```math
-\frac{\mathcal{A}}{\hbar^{2}} \left\langle + - \left| \vec{I} \cdot \vec{S} \right| + - \right\rangle = \frac{\mathcal{A}}{\hbar^{2}} \left\langle + - \left| I_{z} S_{z} + \frac{1}{2} I_{+} S_{-} + \frac{1}{2} I_{-} S_{+} \right| + - \right\rangle
+\frac{\mathcal{A}}{\hbar^{2}} \left\langle + - \middle| \vec{I} \cdot \vec{S} \middle| + - \right\rangle = \frac{\mathcal{A}}{\hbar^{2}} \left\langle + - \middle| I_{z} S_{z} + \frac{1}{2} I_{+} S_{-} + \frac{1}{2} I_{-} S_{+} \middle| + - \right\rangle
 ```
 
 ```math
