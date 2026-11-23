@@ -256,7 +256,7 @@ fn paired_in_cells(latex: &str) -> String {
             i + rest.find('}').map_or(rest.len(), |k| k + 1)
         } else if rest.starts_with("\\\\") {
             i + 2
-        } else if rest.starts_with('&') {
+        } else if rest.starts_with(['&', '{', '}']) {
             i + 1
         } else if rest.starts_with('\\') {
             // (any other command, or an escaped sign: not looked into)
@@ -291,9 +291,10 @@ fn paired_in_cells(latex: &str) -> String {
             }
         } else if p == "&" || p == "\\\\" {
             loose.append(scopes.last_mut().unwrap());
-        } else if p.starts_with("\\begin{") {
+        } else if p.starts_with("\\begin{") || p == "{" {
+            // (a group in braces is closed in itself as an environment is)
             scopes.push(Vec::new());
-        } else if p.starts_with("\\end{") {
+        } else if p.starts_with("\\end{") || p == "}" {
             loose.append(scopes.last_mut().unwrap());
             if scopes.len() > 1 {
                 scopes.pop();
@@ -1864,6 +1865,8 @@ mod tests {
         let squeezed = |t: &str| paired_in_cells(t).split_whitespace().collect::<Vec<_>>().join(" ");
         assert_eq!(squeezed("\\begin{aligned} \\left. \\left( 1 - e \\right)^{2} &= \\left( a \\right) b \\right) \\\\ \\left. &= c \\end{aligned}"), "\\begin{aligned} \\left( 1 - e \\right)^{2} &= \\left( a \\right) b ) \\\\ &= c \\end{aligned}");
         assert_eq!(squeezed("x \\leftarrow \\left[ y"), "x \\leftarrow [ y");
+        // … nor across the braces of a group
+        assert_eq!(squeezed("\\left. a^{b \\right.} + \\left( \\frac{1}{2} \\right)"), "a^{b } + \\left( \\frac{1}{2} \\right)");
     }
 
     #[test]
