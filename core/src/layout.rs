@@ -2732,8 +2732,11 @@ pub fn parse_xml_with(xml: &str, lost: &HashMap<String, bool>) -> Result<Doc, St
                 // margin); it is not part of the book's text. Except the
                 // slash of ≠ (CMSY "6" overprinted on "="): pdftohtml gives
                 // it no width, so it gets the width of the sign it strikes.
-                let not_slash = text.trim() == "6"
-                    && fonts.get(num(n, "font") as usize).is_some_and(|f| f.family.contains("CMSY"));
+                // (in another way of making a PDF the slash comes named as
+                // what it is, a stroke over the next sign: the same glyph)
+                let symbol_font = fonts.get(num(n, "font") as usize).is_some_and(|f| f.family.contains("CMSY"));
+                let text = if symbol_font && text.trim() == "\u{338}" { "6".to_string() } else { text };
+                let not_slash = text.trim() == "6" && symbol_font;
                 let width = if not_slash { 0.8 * num(n, "height") } else { num(n, "width") };
                 // (nor is an empty piece kept to be filled in: an accent
                 // moves the type on by nothing)
