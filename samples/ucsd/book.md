@@ -4497,7 +4497,7 @@ For the photon, $`v_{g} = c`$ and $`\beta = 0`$. For the NR electron, $`v_{g} = 
 Performing the Fourier Transform (See section 5.6.5), we get
 
 ```math
-\psi ( x,t ) = \sqrt{\frac{\pi}{\alpha + i\beta t}} e^{i ( k_{0} x - \omega_{0} t )} e^{\tfrac{- ( x - vgt ) 2}{4 ( \alpha + i\beta t )}}
+\psi ( x,t ) = \sqrt{\frac{\pi}{\alpha + i\beta t}} e^{i ( k_{0} x - \omega_{0} t )} e^{\tfrac{- ( x - v_{g} t ) 2}{4 ( \alpha + i\beta t )}}
 ```
 
 ```math
@@ -4837,11 +4837,11 @@ Our new integral is the same with the **substitutions** $`k_{0} x \to k_{0} x - 
 ```
 
 ```math
-| \psi ( x,t ) |^{2} = \sqrt{\frac{\pi}{\alpha + i\beta t}} \sqrt{\frac{\pi}{\alpha - i\beta t}} e^{\tfrac{- ( x - v_{g} t ) 2}{4 ( \alpha + i\beta t )}} e^{\tfrac{- ( x - vgt ) 2}{4 ( \alpha - i\beta t )}}
+| \psi ( x,t ) |^{2} = \sqrt{\frac{\pi}{\alpha + i\beta t}} \sqrt{\frac{\pi}{\alpha - i\beta t}} e^{\tfrac{- ( x - v_{g} t ) 2}{4 ( \alpha + i\beta t )}} e^{\tfrac{- ( x - v_{g} t ) 2}{4 ( \alpha - i\beta t )}}
 ```
 
 ```math
-| \psi ( x,t ) |^{2} = \frac{\pi}{\sqrt{\alpha^{2} + \beta^{2} t^{2}}} e^{\tfrac{- \alpha ( x - v_{g} t ) 2}{2 ( \alpha 2 + \beta 2 t^{2} )}}
+| \psi ( x,t ) |^{2} = \frac{\pi}{\sqrt{\alpha^{2} + \beta^{2} t^{2}}} e^{\tfrac{- \alpha ( x - v_{g} t ) 2}{2 ( \alpha^{2} + \beta 2 t^{2} )}}
 ```
 
 ## <a id="s-5-6-6-numbers"></a>5.6.6 Numbers
@@ -13803,7 +13803,7 @@ As a concrete example, let’s assume we start out in the eigenstate of $`L_{x}`
 ```
 
 ```math
-\psi ( t ) = \psi_{x +} = \begin{pmatrix} \frac{e^{- i\mu BBt/ \hbar}}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{e^{i\mu BBt/ \hbar}}{2} \end{pmatrix}
+\psi ( t ) = \psi_{x +} = \begin{pmatrix} \frac{e^{- i\mu_{B} Bt/ \hbar}}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{e^{i\mu_{B} Bt/ \hbar}}{2} \end{pmatrix}
 ```
 
 <div align="right"><a href="book.pdf#page=266" target="_blank" title="This page in the PDF"><sup>[p. 266]</sup></a></div>
@@ -13811,7 +13811,7 @@ As a concrete example, let’s assume we start out in the eigenstate of $`L_{x}`
 <a id="p267" href="book.pdf#page=267" target="_blank" title="This page in the PDF"><sup>[p. 267]</sup></a>
 
 ```math
-\langle \psi ( t ) | L_{x} | \psi ( t ) \rangle = \left( \tfrac{e^{+ i\mu BBt/ \hbar}}{2} \quad \tfrac{1}{\sqrt{2}} \quad \tfrac{e^{- i\mu_{B} Bt/ \hbar}}{2} \right) \frac{\hbar}{\sqrt{2}} \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix} \begin{pmatrix} \frac{e^{- i\mu_{B} Bt/ \hbar}}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{e^{i\mu_{B} Bt/ \hbar}}{2} \end{pmatrix}
+\langle \psi ( t ) | L_{x} | \psi ( t ) \rangle = \left( \tfrac{e^{+ i\mu_{B} Bt/ \hbar}}{2} \quad \tfrac{1}{\sqrt{2}} \quad \tfrac{e^{- i\mu_{B} Bt/ \hbar}}{2} \right) \frac{\hbar}{\sqrt{2}} \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix} \begin{pmatrix} \frac{e^{- i\mu_{B} Bt/ \hbar}}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{e^{i\mu_{B} Bt/ \hbar}}{2} \end{pmatrix}
 ```
 
 ```math

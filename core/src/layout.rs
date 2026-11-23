@@ -687,8 +687,10 @@ fn split_shifted(doc: &mut Doc, parts: &[(usize, String)]) {
                     continue;
                 }
                 // its glyphs, left to right, each with the height it stands at
-                let mut inside: Vec<(f32, f32)> = placed.iter().map(|g| (1.5 * g.x, 1.5 * g.y)).filter(|&(x, y)| x >= s.left - 1.5 && x < s.right() - 0.5 && y >= s.top && y <= s.bottom() + 2.0).collect();
+                let mut inside: Vec<(f32, f32)> = placed.iter().map(|g| (1.5 * g.x, 1.5 * g.y)).filter(|&(x, y)| x >= s.left - 1.5 && x < s.right() - 1.5 && y >= s.top && y <= s.bottom() + 2.0).collect();
                 inside.sort_by(|a, b| a.0.total_cmp(&b.0));
+                // (a glyph begins at its left edge: the last of the piece
+                // well before the piece's end, the first of the next at it)
                 if inside.len() != chars.len() {
                     continue;
                 }

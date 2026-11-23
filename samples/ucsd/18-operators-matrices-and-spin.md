@@ -1045,7 +1045,7 @@ As a concrete example, let’s assume we start out in the eigenstate of $`L_{x}`
 ```
 
 ```math
-\psi ( t ) = \psi_{x +} = \begin{pmatrix} \frac{e^{- i\mu BBt/ \hbar}}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{e^{i\mu BBt/ \hbar}}{2} \end{pmatrix}
+\psi ( t ) = \psi_{x +} = \begin{pmatrix} \frac{e^{- i\mu_{B} Bt/ \hbar}}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{e^{i\mu_{B} Bt/ \hbar}}{2} \end{pmatrix}
 ```
 
 <div align="right"><a href="book.pdf#page=266" target="_blank" title="This page in the PDF"><sup>[p. 266]</sup></a></div>
@@ -1053,7 +1053,7 @@ As a concrete example, let’s assume we start out in the eigenstate of $`L_{x}`
 <a id="p267" href="book.pdf#page=267" target="_blank" title="This page in the PDF"><sup>[p. 267]</sup></a>
 
 ```math
-\langle \psi ( t ) | L_{x} | \psi ( t ) \rangle = \left( \tfrac{e^{+ i\mu BBt/ \hbar}}{2} \quad \tfrac{1}{\sqrt{2}} \quad \tfrac{e^{- i\mu_{B} Bt/ \hbar}}{2} \right) \frac{\hbar}{\sqrt{2}} \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix} \begin{pmatrix} \frac{e^{- i\mu_{B} Bt/ \hbar}}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{e^{i\mu_{B} Bt/ \hbar}}{2} \end{pmatrix}
+\langle \psi ( t ) | L_{x} | \psi ( t ) \rangle = \left( \tfrac{e^{+ i\mu_{B} Bt/ \hbar}}{2} \quad \tfrac{1}{\sqrt{2}} \quad \tfrac{e^{- i\mu_{B} Bt/ \hbar}}{2} \right) \frac{\hbar}{\sqrt{2}} \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix} \begin{pmatrix} \frac{e^{- i\mu_{B} Bt/ \hbar}}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{e^{i\mu_{B} Bt/ \hbar}}{2} \end{pmatrix}
 ```
 
 ```math
