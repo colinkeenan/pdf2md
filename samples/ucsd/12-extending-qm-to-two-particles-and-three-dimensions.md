@@ -134,7 +134,7 @@ In three dimensions we would have.
 Putting this into the **Hamiltonian** we get
 
 ```math
-\begin{aligned} H &= \frac{- \hbar^{2}}{2 m_{1}} \left[ \vec{\nabla}_{r}^{2} + \left( \frac{m_{1}}{m_{1} + m_{2}} \right)^{2} \vec{\nabla}_{R}^{2} + \frac{2 m_{1}}{m_{1} + m_{2}} \vec{\nabla}_{r} \cdot \vec{\nabla}_{R} \right] \\ & \quad + \frac{- \hbar^{2}}{2 m_{2}} \left[ \vec{\nabla}_{r}^{2} + \left( \frac{m_{2}}{m_{1} + m_{2}} \right)^{2} \vec{\nabla}_{R}^{2} - \frac{2 m_{2}}{m_{1} + m_{2}} \vec{\nabla} r \cdot \vec{\nabla} R \right] + V ( \vec{r} ) \end{aligned}
+\begin{aligned} H &= \frac{- \hbar^{2}}{2 m_{1}} \left[ \vec{\nabla}_{r}^{2} + \left( \frac{m_{1}}{m_{1} + m_{2}} \right)^{2} \vec{\nabla}_{R}^{2} + \frac{2 m_{1}}{m_{1} + m_{2}} \vec{\nabla}_{r} \cdot \vec{\nabla}_{R} \right] \\ & \quad + \frac{- \hbar^{2}}{2 m_{2}} \left[ \vec{\nabla}_{r}^{2} + \left( \frac{m_{2}}{m_{1} + m_{2}} \right)^{2} \vec{\nabla}_{R}^{2} - \frac{2 m_{2}}{m_{1} + m_{2}} \vec{\nabla}_{r} \cdot \vec{\nabla}_{R} \right] + V ( \vec{r} ) \end{aligned}
 ```
 
 ```math

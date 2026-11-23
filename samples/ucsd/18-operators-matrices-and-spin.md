@@ -703,7 +703,7 @@ Hu_{j} = E_{j} u_{j}
 The Kronecker delta gives us a diagonal matrix.
 
 ```math
-H = \hbar \omega \begin{pmatrix} \tfrac{1}{2} & 0 \quad 0 \quad 0 \quad \dots \\ 0 & \tfrac{3}{2} \quad 0 \quad 0 \quad \dots \\ 0 & 0 \quad \tfrac{5}{2} \quad 0 \quad \dots \\ 0 & 0 \quad 0 \quad \tfrac{7}{2} \quad \dots \\ \dots & \dots \dots \dots \dots \end{pmatrix}
+H = \hbar \omega \begin{pmatrix} \tfrac{1}{2} & 0 & 0 & 0 & \dots \\ 0 & \tfrac{3}{2} & 0 & 0 & \dots \\ 0 & 0 & \tfrac{5}{2} & 0 & \dots \\ 0 & 0 & 0 & \tfrac{7}{2} & \dots \\ \dots & \dots & \dots & \dots & \dots \end{pmatrix}
 ```
 
 ## <a id="s-18-10-2-harmonic-oscillator-raising-operator"></a>18.10.2 Harmonic Oscillator Raising Operator
@@ -1230,7 +1230,7 @@ becomes
 \begin{pmatrix} - \alpha & - i \hbar / 2 \\ i \hbar / 2 & - \alpha \end{pmatrix} \begin{pmatrix} \chi_{1} \\ \chi_{2} \end{pmatrix} = 0
 ```
 
-The characteristic equation is $`det | S y - \alpha | = 0`$, or
+The characteristic equation is $`det | S_{y} - \alpha | = 0`$, or
 
 ```math
 \alpha^{2} - \frac{\hbar^{2}}{4} = 0 \quad \Rightarrow \quad \alpha = \pm \frac{\hbar}{2}

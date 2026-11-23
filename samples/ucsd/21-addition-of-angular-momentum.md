@@ -776,7 +776,7 @@ This is what we expect.
 
 9. Two different spin $`\frac{1}{2}`$ particles have a Hamiltonian given by $`H = E_{0} + \tfrac{A}{\hbar^{2}} \vec{S}_{1} \cdot \vec{S}_{2} + \tfrac{B}{\hbar} ( S_{1 z} + S_{2 z} )`$. Find the allowed energies and the energy eigenstates in terms of the four basis states $`|`$ + +$`\rangle`$, $`| + - \rangle , |- + \rangle`$, and $`| - - \rangle`$.
 
-10. A spin 1 particle is in an $`\ell = 2`$ state. Find the allowed values of the total angular momentum quantum number, $`j`$. Write out the $`| j,m j \rangle`$ states for the largest allowed $`j`$ value, in terms of the $`| m l ,m s \rangle`$ basis. (That is give one state for every $`m_{j}`$ value.) If the particle is prepared in the state $`| m_{l} = 0 ,m_{s} = 0 \rangle`$, what is the probability to measure $`J^{2} = 12 \hbar^{2}`$?
+10. A spin 1 particle is in an $`\ell = 2`$ state. Find the allowed values of the total angular momentum quantum number, $`j`$. Write out the $`| j,m_{j} \rangle`$ states for the largest allowed $`j`$ value, in terms of the $`| m_{l} ,m_{s} \rangle`$ basis. (That is give one state for every $`m_{j}`$ value.) If the particle is prepared in the state $`| m_{l} = 0 ,m_{s} = 0 \rangle`$, what is the probability to measure $`J^{2} = 12 \hbar^{2}`$?
 
 11. Two different spin $`\frac{1}{2}`$ particles have a Hamiltonian given by $`H = E_{0} + A \vec{S}_{1} \cdot \vec{S}_{2} + B ( S_{1 z} + S_{2 z} )`$. Find the allowed energies and the energy eigenstates in terms of the four product states $`\chi_{+}^{( 1 )} \chi_{+}^{( 2 )}`$ , $`\chi_{+}^{( 1 )} \chi_{-}^{( 2 )}`$ , $`\chi_{-}^{( 1 )} \chi_{+}^{( 2 )}`$ , and $`\chi_{-}^{( 1 )} \chi_{-}^{( 2 )}`$ .
 

@@ -2160,28 +2160,28 @@ fn matrix(spans: &[MSpan], depth: usize, open: char, typed: bool) -> Option<Stri
             .unwrap_or(0);
         rows[k].push(c);
     }
+    if std::env::var("PDF2MD_MATHDEBUG").is_ok_and(|v| v == "4") {
+        eprintln!("MATRIX rows {} size {size}", rows.len());
+        for r in &rows {
+            eprintln!("  row {:?}", r.iter().map(|s| format!("{}@{:.0}-{:.0},{:.0}-{:.0}/{}", s.atom.clone().unwrap_or(s.text.clone()), s.left, s.right, s.top, s.bottom, s.size)).collect::<Vec<_>>());
+        }
+    }
     if rows.len() < 2 {
         return None;
     }
     // columns: clusters of x positions shared by all rows
-    let mut xs: Vec<(f32, f32)> = rows
-        .iter()
-        .flat_map(|r| clusters_of(r, 0.5 * size))
-        .collect();
-    xs.sort_by(|a, b| a.0.total_cmp(&b.0));
-    let mut cols: Vec<(f32, f32)> = Vec::new();
-    for (l, r) in xs {
-        match cols.last_mut() {
-            Some(c) if l <= c.1 => c.1 = c.1.max(r),
-            _ => cols.push((l, r)),
+    let columns = |tol: f32| {
+        let mut xs: Vec<(f32, f32)> = rows.iter().flat_map(|r| clusters_of(r, tol)).collect();
+        xs.sort_by(|a, b| a.0.total_cmp(&b.0));
+        let mut cols: Vec<(f32, f32)> = Vec::new();
+        for (l, r) in xs {
+            match cols.last_mut() {
+                Some(c) if l <= c.1 => c.1 = c.1.max(r),
+                _ => cols.push((l, r)),
+            }
         }
-    }
-    // Two rows with one column is as likely a fraction as a vector, unless
-    // the bracket was read from its outline (then fraction bars were also
-    // read and fractions are already resolved).
-    if rows.len() == 2 && cols.len() < 2 && !typed {
-        return None;
-    }
+        cols
+    };
     // In a matrix every column has an entry in (nearly) every row. Fractions
     // inside big brackets do not: "i" on the middle row, "p·x" above "ħ".
     let filled = |&(l, r): &(f32, f32)| {
@@ -2189,7 +2189,21 @@ fn matrix(spans: &[MSpan], depth: usize, open: char, typed: bool) -> Option<Stri
             .filter(|row| row.iter().any(|s| s.left < r && s.right > l))
             .count()
     };
-    if cols.iter().any(|c| filled(c) * 4 < rows.len() * 3) {
+    let full = |cols: &[(f32, f32)]| !cols.iter().any(|c| filled(c) * 4 < rows.len() * 3);
+    // (the space around a sign in an entry, "σ·L + ħ", is wider than the
+    // letters stand apart, narrower than the columns: where it cut an
+    // entry in two, a column of its own that most rows lack, the entries
+    // are told with more room)
+    // (not the rows of a system in braces: they are lines, not entries)
+    let rooms: &[f32] = if open == '{' { &[0.5] } else { &[0.5, 0.8] };
+    let cols = rooms.iter().map(|t| columns(t * size)).find(|c| full(c)).unwrap_or_else(|| columns(0.5 * size));
+    // Two rows with one column is as likely a fraction as a vector, unless
+    // the bracket was read from its outline (then fraction bars were also
+    // read and fractions are already resolved).
+    if rows.len() == 2 && cols.len() < 2 && !typed {
+        return None;
+    }
+    if !full(&cols) {
         return None;
     }
     let body: Vec<Vec<String>> = rows
@@ -2473,11 +2487,16 @@ fn clusters_of(row: &[MSpan], tol: f32) -> Vec<(f32, f32)> {
     let mut v: Vec<&MSpan> = row.iter().collect();
     v.sort_by(|a, b| a.left.total_cmp(&b.left));
     let mut out: Vec<(f32, f32)> = Vec::new();
+    // (the dots that stand for an entry, ". . .", one beside the other in
+    // a matrix's last row: each is an entry, close as they stand)
+    let dots = |s: &MSpan| s.atom.is_none() && matches!(s.text.trim(), "..." | "…" | "· · ·" | "···" | ". . .");
+    let mut last_dots = false;
     for s in v {
         match out.last_mut() {
-            Some(c) if s.left <= c.1 + tol => c.1 = c.1.max(s.right),
+            Some(c) if s.left <= c.1 + tol && !(last_dots && dots(s) && s.left > c.1) => c.1 = c.1.max(s.right),
             _ => out.push((s.left, s.right)),
         }
+        last_dots = dots(s);
     }
     out
 }
@@ -2592,7 +2611,9 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
             let prime = matches!(s.text.trim(), "′" | "″" | "‴");
             role[i] = if prime {
                 Role::Sup // k′ in a subscript sits level with the k
-            } else if d.abs() < 0.1 * h {
+            // (by the letters' height: the taller boxes of signs in the row,
+            // a minus, lower its middle towards an index)
+            } else if d.abs() < 0.1 * h.min(max) {
                 Role::Base
             } else if d < 0.0 {
                 Role::Sup

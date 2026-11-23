@@ -860,7 +860,7 @@ Since the $`\psi_{i}`$ form an orthonormal, complete set, they can be thought of
 \varphi = \begin{pmatrix} \alpha_{1} \\ \alpha_{2} \\ \alpha_{3} \\ \dots \end{pmatrix}
 ```
 
-The bra-ket $`\langle \varphi | \psi i \rangle`$ can be thought of as a dot product between the arbitrary vector $`\varphi`$ and one of the unit vectors. We can use the expansion in terms of energy eigenstates to compute many things. In particular, since the time development of the energy eigenstates is very simple,
+The bra-ket $`\langle \varphi | \psi_{i} \rangle`$ can be thought of as a dot product between the arbitrary vector $`\varphi`$ and one of the unit vectors. We can use the expansion in terms of energy eigenstates to compute many things. In particular, since the time development of the energy eigenstates is very simple,
 
 ```math
 \psi ( \vec{x} , t ) = \psi ( \vec{x} ) e^{- iE_{i} t/ \hbar}
@@ -1431,7 +1431,7 @@ where $`n_{r}`$ is the number of nodes in the radial wave function and $`\ell`$ 
 We may define the **components of a state vector** $`\psi`$ as the projections of the state on a complete, orthonormal set of states, like the eigenfunctions of a Hermitian operator.
 
 ```math
-\psi i \equiv \langle u i | \psi \rangle
+\psi_{i} \equiv \langle u_{i} | \psi \rangle
 ```
 
 ```math
@@ -2824,7 +2824,7 @@ The Dirac equation has some unexpected phenomena which we can derive. Velocity e
 Localized states, expanded in plane waves, contain all four components of the plane wave solutions. Mixing components 1 and 2 with components 3 and 4 gives rise to **Zitterbewegung**, the very rapid oscillation of an electrons velocity and position.
 
 ```math
-\begin{aligned} \langle v k \rangle &= \sum_{\vec{p}} \sum_{r = 1}^{4} | c_{\vec{p} ,r} |^{2} \frac{p_{k} c^{2}}{E} \\ & \quad + \sum_{\vec{p}} \sum_{r = 1}^{2} \sum_{r^{\prime} = 3}^{4} \frac{mc^{3}}{| E |} \left[ c_{\vec{p} ,r^{\prime}}^{*} c_{\vec{p} ,r} u_{\vec{p}}^{( r^{\prime} ) \dagger} i\gamma_{4} \gamma_{k} u_{\vec{p}}^{( r )} e^{- 2 i | E | t/ \hbar} c_{\vec{p} ,r^{\prime}} c_{\vec{p} ,r}^{*} u_{\vec{p}}^{( r ) \dagger} i\gamma_{4} \gamma_{k} u_{\vec{p}}^{( r^{\prime} )} e^{2 i | E | t/ \hbar} \right] \end{aligned}
+\begin{aligned} \langle v_{k} \rangle &= \sum_{\vec{p}} \sum_{r = 1}^{4} | c_{\vec{p} ,r} |^{2} \frac{p_{k} c^{2}}{E} \\ & \quad + \sum_{\vec{p}} \sum_{r = 1}^{2} \sum_{r^{\prime} = 3}^{4} \frac{mc^{3}}{| E |} \left[ c_{\vec{p} ,r^{\prime}}^{*} c_{\vec{p} ,r} u_{\vec{p}}^{( r^{\prime} ) \dagger} i\gamma_{4} \gamma_{k} u_{\vec{p}}^{( r )} e^{- 2 i | E | t/ \hbar} c_{\vec{p} ,r^{\prime}} c_{\vec{p} ,r}^{*} u_{\vec{p}}^{( r ) \dagger} i\gamma_{4} \gamma_{k} u_{\vec{p}}^{( r^{\prime} )} e^{2 i | E | t/ \hbar} \right] \end{aligned}
 ```
 
 The last sum which contains the cross terms between negative and positive energy represents **extremely high frequency oscillations in the expected value of the velocity**, known as Zitterbewegung. The expected value of the position has similar rapid oscillations.
@@ -6603,7 +6603,7 @@ A\psi_{2} = a_{2} \psi_{2} .
 Now we compute $`\langle \psi_{2} | A | \psi_{1} \rangle`$ two ways.
 
 ```math
-\langle \psi 2 | A\psi 1 \rangle = a 1 \langle \psi 2 | \psi 1 \rangle
+\langle \psi_{2} | A\psi_{1} \rangle = a_{1} \langle \psi_{2} | \psi_{1} \rangle
 ```
 
 ```math
@@ -8906,7 +8906,7 @@ p = \sqrt{\frac{m \hbar \omega}{2}} \frac{A - A^{\dagger}}{i}
 ```
 
 ```math
-\langle u n | p | u m \rangle = - i \sqrt{\frac{m \hbar \omega}{2}} \langle u n | A - A^{\dagger} | u m \rangle
+\langle u_{n} | p | u_{m} \rangle = - i \sqrt{\frac{m \hbar \omega}{2}} \langle u_{n} | A - A^{\dagger} | u_{m} \rangle
 ```
 
 ```math
@@ -9671,7 +9671,7 @@ In three dimensions we would have.
 Putting this into the **Hamiltonian** we get
 
 ```math
-\begin{aligned} H &= \frac{- \hbar^{2}}{2 m_{1}} \left[ \vec{\nabla}_{r}^{2} + \left( \frac{m_{1}}{m_{1} + m_{2}} \right)^{2} \vec{\nabla}_{R}^{2} + \frac{2 m_{1}}{m_{1} + m_{2}} \vec{\nabla}_{r} \cdot \vec{\nabla}_{R} \right] \\ & \quad + \frac{- \hbar^{2}}{2 m_{2}} \left[ \vec{\nabla}_{r}^{2} + \left( \frac{m_{2}}{m_{1} + m_{2}} \right)^{2} \vec{\nabla}_{R}^{2} - \frac{2 m_{2}}{m_{1} + m_{2}} \vec{\nabla} r \cdot \vec{\nabla} R \right] + V ( \vec{r} ) \end{aligned}
+\begin{aligned} H &= \frac{- \hbar^{2}}{2 m_{1}} \left[ \vec{\nabla}_{r}^{2} + \left( \frac{m_{1}}{m_{1} + m_{2}} \right)^{2} \vec{\nabla}_{R}^{2} + \frac{2 m_{1}}{m_{1} + m_{2}} \vec{\nabla}_{r} \cdot \vec{\nabla}_{R} \right] \\ & \quad + \frac{- \hbar^{2}}{2 m_{2}} \left[ \vec{\nabla}_{r}^{2} + \left( \frac{m_{2}}{m_{1} + m_{2}} \right)^{2} \vec{\nabla}_{R}^{2} - \frac{2 m_{2}}{m_{1} + m_{2}} \vec{\nabla}_{r} \cdot \vec{\nabla}_{R} \right] + V ( \vec{r} ) \end{aligned}
 ```
 
 ```math
@@ -13467,7 +13467,7 @@ Hu_{j} = E_{j} u_{j}
 The Kronecker delta gives us a diagonal matrix.
 
 ```math
-H = \hbar \omega \begin{pmatrix} \tfrac{1}{2} & 0 \quad 0 \quad 0 \quad \dots \\ 0 & \tfrac{3}{2} \quad 0 \quad 0 \quad \dots \\ 0 & 0 \quad \tfrac{5}{2} \quad 0 \quad \dots \\ 0 & 0 \quad 0 \quad \tfrac{7}{2} \quad \dots \\ \dots & \dots \dots \dots \dots \end{pmatrix}
+H = \hbar \omega \begin{pmatrix} \tfrac{1}{2} & 0 & 0 & 0 & \dots \\ 0 & \tfrac{3}{2} & 0 & 0 & \dots \\ 0 & 0 & \tfrac{5}{2} & 0 & \dots \\ 0 & 0 & 0 & \tfrac{7}{2} & \dots \\ \dots & \dots & \dots & \dots & \dots \end{pmatrix}
 ```
 
 ## <a id="s-18-10-2-harmonic-oscillator-raising-operator"></a>18.10.2 Harmonic Oscillator Raising Operator
@@ -13994,7 +13994,7 @@ becomes
 \begin{pmatrix} - \alpha & - i \hbar / 2 \\ i \hbar / 2 & - \alpha \end{pmatrix} \begin{pmatrix} \chi_{1} \\ \chi_{2} \end{pmatrix} = 0
 ```
 
-The characteristic equation is $`det | S y - \alpha | = 0`$, or
+The characteristic equation is $`det | S_{y} - \alpha | = 0`$, or
 
 ```math
 \alpha^{2} - \frac{\hbar^{2}}{4} = 0 \quad \Rightarrow \quad \alpha = \pm \frac{\hbar}{2}
@@ -14849,7 +14849,7 @@ c) Calculate the probability for a particle in the beam to be reflected by the p
 
 Find the expected value of $`p`$ as a function of time using operator methods.
 
-2. Evaluate the “uncertainty” in $`x`$ for the 1D HO ground state $`\sqrt{\langle u_{0} | ( x - \bar{x} )}`$<sup>2</sup>$`| u 0 \rangle`$ where $`\bar{x} = \langle u_{0} | x | u_{0} \rangle`$. Similarly, evaluate the uncertainty in $`p`$ for the ground state. What is the product ∆$`p`$∆$`x`$? Now do the same for the first excited state. What is the product ∆$`p`$∆$`x`$ for this state?
+2. Evaluate the “uncertainty” in $`x`$ for the 1D HO ground state $`\sqrt{\langle u_{0} | ( x - \bar{x} )}`$<sup>2</sup>$`| u_{0} \rangle`$ where $`\bar{x} = \langle u_{0} | x | u_{0} \rangle`$. Similarly, evaluate the uncertainty in $`p`$ for the ground state. What is the product ∆$`p`$∆$`x`$? Now do the same for the first excited state. What is the product ∆$`p`$∆$`x`$ for this state?
 
 3. An operator is Unitary if $`UU^{\dagger} = U^{\dagger} U = 1`$. Prove that a unitary operator preserves inner products, that is $`\langle U\psi | U\varphi \rangle = \langle \psi | \varphi \rangle`$. Show that if the states $`| u_{i} \rangle`$ are orthonormal, that the states $`U | u_{i} \rangle`$ are also orthonormal. Show that if the states $`| u_{i} \rangle`$ form a complete set, then the states $`U | u_{i} \rangle`$ also form a complete set.
 
@@ -16808,7 +16808,7 @@ This is what we expect.
 
 9. Two different spin $`\frac{1}{2}`$ particles have a Hamiltonian given by $`H = E_{0} + \tfrac{A}{\hbar^{2}} \vec{S}_{1} \cdot \vec{S}_{2} + \tfrac{B}{\hbar} ( S_{1 z} + S_{2 z} )`$. Find the allowed energies and the energy eigenstates in terms of the four basis states $`|`$ + +$`\rangle`$, $`| + - \rangle , |- + \rangle`$, and $`| - - \rangle`$.
 
-10. A spin 1 particle is in an $`\ell = 2`$ state. Find the allowed values of the total angular momentum quantum number, $`j`$. Write out the $`| j,m j \rangle`$ states for the largest allowed $`j`$ value, in terms of the $`| m l ,m s \rangle`$ basis. (That is give one state for every $`m_{j}`$ value.) If the particle is prepared in the state $`| m_{l} = 0 ,m_{s} = 0 \rangle`$, what is the probability to measure $`J^{2} = 12 \hbar^{2}`$?
+10. A spin 1 particle is in an $`\ell = 2`$ state. Find the allowed values of the total angular momentum quantum number, $`j`$. Write out the $`| j,m_{j} \rangle`$ states for the largest allowed $`j`$ value, in terms of the $`| m_{l} ,m_{s} \rangle`$ basis. (That is give one state for every $`m_{j}`$ value.) If the particle is prepared in the state $`| m_{l} = 0 ,m_{s} = 0 \rangle`$, what is the probability to measure $`J^{2} = 12 \hbar^{2}`$?
 
 11. Two different spin $`\frac{1}{2}`$ particles have a Hamiltonian given by $`H = E_{0} + A \vec{S}_{1} \cdot \vec{S}_{2} + B ( S_{1 z} + S_{2 z} )`$. Find the allowed energies and the energy eigenstates in terms of the four product states $`\chi_{+}^{( 1 )} \chi_{+}^{( 2 )}`$ , $`\chi_{+}^{( 1 )} \chi_{-}^{( 2 )}`$ , $`\chi_{-}^{( 1 )} \chi_{+}^{( 2 )}`$ , and $`\chi_{-}^{( 1 )} \chi_{-}^{( 2 )}`$ .
 
@@ -17146,7 +17146,7 @@ This is first order in the electric field, as we would expect in first order (de
 If the states are not exactly degenerate, we have to leave in the diagonal terms of $`H_{0}`$. Assume that the energies of the two (mixed) states are $`E_{0} \pm`$ ∆, where ∆ comes from some other perturbation, like the hydrogen fine structure. (The $`\varphi_{2 1 1}`$ and $`\varphi_{2 1 ( - 1 )}`$ are still not mixed by the electric field.)
 
 ```math
-\left( E_{0} \gamma - \Delta \quad E_{0} + \Delta \gamma \right) \begin{pmatrix} \alpha_{1} \\ \alpha_{2} \end{pmatrix} = E \begin{pmatrix} \alpha_{1} \\ \alpha_{2} \end{pmatrix}
+\begin{pmatrix} E_{0} - \Delta & \gamma \\ \gamma & E_{0} + \Delta \end{pmatrix} \begin{pmatrix} \alpha_{1} \\ \alpha_{2} \end{pmatrix} = E \begin{pmatrix} \alpha_{1} \\ \alpha_{2} \end{pmatrix}
 ```
 
 <div align="right"><a href="book.pdf#page=331" target="_blank" title="This page in the PDF"><sup>[p. 331]</sup></a></div>
@@ -18098,7 +18098,7 @@ E = E_{n 0 0} + 2 \mu_{B} Bm_{s} \pm \frac{\mathcal{A}}{4} = E_{n 0 0} + 2 \mu_{
 
 Now we will work the full problem with no assumptions about which perturbation is stronger. This is really not that hard so if we were just doing this problem on the homework, this assumption free method would be the one to use. The reason we work the problem all three ways is as an example of how to apply degenerate state perturbation theory to other problems.
 
-We continue on as in the last section but work in the states of $`| fm f \rangle`$. The matrix for $`\langle fm_{f} | H_{hf} + H_{B} | f^{\prime} m_{f}^{\prime} \rangle`$ is
+We continue on as in the last section but work in the states of $`| fm_{f} \rangle`$. The matrix for $`\langle fm_{f} | H_{hf} + H_{B} | f^{\prime} m_{f}^{\prime} \rangle`$ is
 
 ```math
 1 \frac{1}{0 1} \quad - \frac{1}{0 0} 1 \begin{pmatrix} \frac{\mathcal{A}}{4} + \mu_{B} B & 0 & 0 & 0 \\ 0 & \frac{\mathcal{A}}{4} - \mu_{B} B & 0 & 0 \\ 0 & 0 & \tfrac{\mathcal{A}}{4} & \mu_{B} B \\ 0 & 0 & \mu_{B} B & \tfrac{- 3}{4}^{\mathcal{A}} \end{pmatrix} .
@@ -19001,7 +19001,7 @@ The effect of screening not only breaks the degeneracy between states with the s
 The Hartree method allows us to to change the 3$`Z`$ dimensional Schrödinger equation ($`Z`$ electrons in 3 dimensions) into a 3 dimensional **equation for each electron**. This equation depends on the wavefunctions of the other electrons but can be solved in a self consistent way using the variational principle and iterating.
 
 ```math
-\begin{aligned} \psi &= \varphi_{1} ( \vec{r}_{1} ) \varphi_{2} ( \vec{r}_{2} ) \dots \varphi_{Z} ( \vec{r}_{Z} ) \\ \left[ \frac{- \hbar^{2}}{2 m} \nabla_{i}^{2} - \frac{Ze^{2}}{r_{i}} + e^{2} \sum_{j \neq i} \int d^{3} r_{j} \frac{| \varphi_{j} ( \vec{r}_{j} ) |^{2}}{| \vec{r} i - \vec{r} j |} \right] \varphi_{i} ( \vec{r}_{i} ) &= \epsilon_{i} \varphi_{i} ( \vec{r}_{i} ) \end{aligned}
+\begin{aligned} \psi &= \varphi_{1} ( \vec{r}_{1} ) \varphi_{2} ( \vec{r}_{2} ) \dots \varphi_{Z} ( \vec{r}_{Z} ) \\ \left[ \frac{- \hbar^{2}}{2 m} \nabla_{i}^{2} - \frac{Ze^{2}}{r_{i}} + e^{2} \sum_{j \neq i} \int d^{3} r_{j} \frac{| \varphi_{j} ( \vec{r}_{j} ) |^{2}}{| \vec{r}_{i} - \vec{r}_{j} |} \right] \varphi_{i} ( \vec{r}_{i} ) &= \epsilon_{i} \varphi_{i} ( \vec{r}_{i} ) \end{aligned}
 ```
 
 In the Hartree equation above, $`\epsilon_{i}`$ represents the energy contribution of electron $`i`$. The term $`e^{2} \sum_{j \neq i} \int d^{3} r_{j} \tfrac{| \varphi_{j} ( \vec{r}_{j} ) |^{2}}{| \vec{r}_{i} - \vec{r}_{j} |}`$ represents the potential due to the other electrons in which electron $`i`$ moves.
@@ -21651,7 +21651,7 @@ Now compute the Hamiltonian.
 ```
 
 ```math
-\mathcal{H}_{int} = \dot{\varphi} \frac{\partial \mathcal{L} int}{\partial \dot{\varphi}} - \mathcal{L}_{int} = - \mathcal{L}_{int} = \varphi \rho
+\mathcal{H}_{int} = \dot{\varphi} \frac{\partial \mathcal{L}_{int}}{\partial \dot{\varphi}} - \mathcal{L}_{int} = - \mathcal{L}_{int} = \varphi \rho
 ```
 
 ```math
@@ -24813,7 +24813,7 @@ Lets take the case of positive energy first.
 ```
 
 ```math
-\begin{pmatrix} A_{1} \\ A_{2} \\ - B 1 \\ - B_{2} \end{pmatrix} = + \begin{pmatrix} A_{1} \\ A_{2} \\ B_{1} \\ B_{2} \end{pmatrix}
+\begin{pmatrix} A_{1} \\ A_{2} \\ - B_{1} \\ - B_{2} \end{pmatrix} = + \begin{pmatrix} A_{1} \\ A_{2} \\ B_{1} \\ B_{2} \end{pmatrix}
 ```
 
 ```math
@@ -26333,7 +26333,7 @@ K = \gamma_{4} \vec{\Sigma} \cdot \vec{J} - \gamma_{4} \frac{\hbar}{2} = \gamma_
 ```
 
 ```math
-= \gamma_{4} \vec{\Sigma} \cdot \vec{L} + \hbar \gamma_{4} = \left( \vec{\sigma} \cdot \vec{L} + \hbar 0 \quad - \vec{\sigma} \cdot 0 \vec{L} - \hbar \right)
+= \gamma_{4} \vec{\Sigma} \cdot \vec{L} + \hbar \gamma_{4} = \begin{pmatrix} \vec{\sigma} \cdot \vec{L} + \hbar & 0 \\ 0 & - \vec{\sigma} \cdot \vec{L} - \hbar \end{pmatrix}
 ```
 
 Assume that the **eigenvalues of** $`K`$ are given by
@@ -26421,7 +26421,7 @@ The eigenvalues of $`K`$ are
 We may explicitly write out the eigenvalue equation for $`K`$ for $`\kappa = \pm \left( j + \tfrac{1}{2} \right) \hbar`$.
 
 ```math
-K\psi = - \kappa \hbar \psi = \left( \vec{\sigma} \cdot \vec{L} + \hbar 0 \quad - \vec{\sigma} \cdot \vec{L} 0 - \hbar \right) \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = \mp \left( j + \frac{1}{2} \right) \hbar \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix}
+K\psi = - \kappa \hbar \psi = \begin{pmatrix} \vec{\sigma} \cdot \vec{L} + \hbar & 0 \\ 0 & - \vec{\sigma} \cdot \vec{L} - \hbar \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = \mp \left( j + \frac{1}{2} \right) \hbar \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix}
 ```
 
 The difference between $`J^{2}`$ and $`L^{2}`$ is related to $`\vec{\sigma} \cdot \vec{L}`$.
@@ -26433,7 +26433,7 @@ L^{2} = J^{2} - \hbar \vec{\sigma} \cdot \vec{L} - \frac{3}{4} \hbar
 We may solve for the effect of $`\vec{\sigma} \cdot \vec{L}`$ on the spinor $`\psi`$, then, solve for the effect of $`L^{2}`$. Note that since $`\psi_{A}`$ and $`\psi_{B}`$ are eigenstates of $`J^{2}`$ and $`\vec{\sigma} \cdot \vec{L}`$, they are eigenstates of $`L^{2}`$ but have different eigenvalues.
 
 ```math
-\left( \vec{\sigma} \cdot \vec{L} + \hbar 0 \quad - \vec{\sigma} \cdot 0 \vec{L} - \hbar \right) \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = \hbar \begin{pmatrix} ( \pm ( j + \tfrac{1}{2} ) \psi_{A} \\ ( \pm ( j + \tfrac{1}{2} ) \psi_{B} \end{pmatrix}
+\begin{pmatrix} \vec{\sigma} \cdot \vec{L} + \hbar & 0 \\ 0 & - \vec{\sigma} \cdot \vec{L} - \hbar \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = \hbar \begin{pmatrix} ( \pm ( j + \tfrac{1}{2} ) \psi_{A} \\ ( \pm ( j + \tfrac{1}{2} ) \psi_{B} \end{pmatrix}
 ```
 
 ```math
@@ -26575,7 +26575,7 @@ c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \left( - i \hbar r \frac{\par
 The **effect of the two operators related to angular momentum** can be deduced. First, $`\vec{\sigma} \cdot \vec{L}`$ is related to $`K`$. For positive $`\kappa , \psi_{A}`$ has $`\ell = j + \tfrac{1}{2}`$. For negative $`\kappa , \psi_{A}`$ has $`\ell = j - \tfrac{1}{2}`$. For either, $`\psi_{B}`$ has the opposite relation for $`\ell`$, indicating why the full spinor is not an eigenstate of $`L^{2}`$.
 
 ```math
-\begin{aligned} K &= \left( \vec{\sigma} \cdot \vec{L} + \hbar 0 \quad - \vec{\sigma} \cdot \vec{L} 0 + - \hbar \right) \\ K\psi &= - \kappa \hbar \psi = \left( \vec{\sigma} \cdot \vec{L} + \hbar 0 \quad - \vec{\sigma} \cdot 0 \vec{L} - \hbar \right) \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = \mp \left( j + \frac{1}{2} \right) \hbar \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} \end{aligned}
+\begin{aligned} K &= \begin{pmatrix} \vec{\sigma} \cdot \vec{L} + \hbar & 0 \\ 0 & - \vec{\sigma} \cdot \vec{L} + - \hbar \end{pmatrix} \\ K\psi &= - \kappa \hbar \psi = \begin{pmatrix} \vec{\sigma} \cdot \vec{L} + \hbar & 0 \\ 0 & - \vec{\sigma} \cdot \vec{L} - \hbar \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = \mp \left( j + \frac{1}{2} \right) \hbar \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} \end{aligned}
 ```
 
 ```math
@@ -26967,7 +26967,7 @@ u_{0}^{( r^{\prime \prime} )} = \begin{pmatrix} 0_{\prime \prime} \\ \chi^{( r )
 The matrix $`\gamma_{4} \gamma_{i}`$ connect the positive and “negative energy” spinors so that the amplitude can be written in terms of two component spinors and Pauli matrices.
 
 ```math
-\gamma_{4} \gamma_{i} = \begin{pmatrix} 0 & - i\sigma_{i} \\ - i\sigma i & 0 \end{pmatrix}
+\gamma_{4} \gamma_{i} = \begin{pmatrix} 0 & - i\sigma_{i} \\ - i\sigma_{i} & 0 \end{pmatrix}
 ```
 
 ```math

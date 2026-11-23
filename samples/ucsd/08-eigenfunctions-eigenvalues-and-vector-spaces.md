@@ -520,7 +520,7 @@ A\psi_{2} = a_{2} \psi_{2} .
 Now we compute $`\langle \psi_{2} | A | \psi_{1} \rangle`$ two ways.
 
 ```math
-\langle \psi 2 | A\psi 1 \rangle = a 1 \langle \psi 2 | \psi 1 \rangle
+\langle \psi_{2} | A\psi_{1} \rangle = a_{1} \langle \psi_{2} | \psi_{1} \rangle
 ```
 
 ```math

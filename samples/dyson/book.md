@@ -2878,7 +2878,7 @@ To establish a connection between the Feynman method and the ordinary method of 
 \langle \varphi_{1}^{\prime \alpha} ,\sigma_{1} \mathcal{O} ( x ) \varphi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = N \sum_{H} \mathcal{O}_{H} ( x ) \exp \left\{ \frac{i}{\hbar} I_{H} ( \Omega ) \right\} \qquad \text{(175)}
 ```
 
-The number $`\mathcal{O} H`$ is just the value which the expression $`\mathcal{O}`$ takes when the $`\varphi^{\alpha}`$ are given the values which they have in the history $`H`$. It is easily verified that the definitions (174) and (175) are physically reasonable and give the right formal properties of transition <a id="ix-7">amplitudes</a> and operator matrix elements.
+The number $`\mathcal{O}_{H}`$ is just the value which the expression $`\mathcal{O}`$ takes when the $`\varphi^{\alpha}`$ are given the values which they have in the history $`H`$. It is easily verified that the definitions (174) and (175) are physically reasonable and give the right formal properties of transition <a id="ix-7">amplitudes</a> and operator matrix elements.
 
 The Feynman method has one fatal drawback: we cannot use it until we have some way of calculating or at least using the sums over histories, and so far nobody has suggested a practical way of doing this. But Schwinger has shown how to derive from the Feynman method an <a id="ix-2">Action</a> Principle formulation of the theory which avoids this difficulty.
 
@@ -7344,9 +7344,9 @@ Next we shall state the generalization of the rule (503) to any product $`\mathc
 \mathcal{O}_{n} = \pm \langle \mathcal{P} \mathcal{Q} \rangle_{o} \langle \mathcal{P}^{\prime} \mathcal{Q}^{\prime} \rangle_{o} \dots N ( \mathcal{R}_{1} , \mathcal{R}_{2} ,\dots \mathcal{R}_{m} ) \qquad \text{(504)}
 ```
 
-the sign in front being + or $`-`$ according to the even or odd character of the permutation of the electron-positron operators from the order in which they are written in $`\mathcal{O}`$ to the order in which they are written in (504). With this definition of (504) of $`\mathcal{O} n`$, we have the following theorem:
+the sign in front being + or $`-`$ according to the even or odd character of the permutation of the electron-positron operators from the order in which they are written in $`\mathcal{O}`$ to the order in which they are written in (504). With this definition of (504) of $`\mathcal{O}_{n}`$, we have the following theorem:
 
-_Every operator product_ $`\mathcal{O}`$ _is identically equal to the sum of the_ $`\mathcal{O} n`$ _obtained from all its factor-pairings._
+_Every operator product_ $`\mathcal{O}`$ _is identically equal to the sum of the_ $`\mathcal{O}_{n}`$ _obtained from all its factor-pairings._
 
 This theorem gives the decomposition of $`\mathcal{O}`$ into its normal constituents. Equations (501) – (503) are just special cases of it. Clearly non-zero $`\mathcal{O}_{n}`$ are only obtained when each pair of factors is either a $`\overline{\psi}`$ and a $`\psi`$ operator or two $`A_{\mu}`$ operators. We shall therefore suppose that the factor-pairings are always restricted in this way.
 
@@ -7363,7 +7363,7 @@ where $`\mathcal{P}`$ and $`\mathcal{Q}`$ are field operators and the plus sign 
 <a id="eq-506"></a>
 
 ```math
-\sum \mathcal{O} n = \{ \langle \mathcal{P} \mathcal{Q} \rangle_{o} \pm \langle \mathcal{Q} \mathcal{P} \rangle_{o} \} \sum \mathcal{O}_{n}^{\prime} \qquad \text{(506)}
+\sum \mathcal{O}_{n} = \{ \langle \mathcal{P} \mathcal{Q} \rangle_{o} \pm \langle \mathcal{Q} \mathcal{P} \rangle_{o} \} \sum \mathcal{O}_{n}^{\prime} \qquad \text{(506)}
 ```
 
 But $`\sum \mathcal{O}_{n}^{\prime} = \mathcal{O}^{\prime}`$, and
@@ -7374,7 +7374,7 @@ But $`\sum \mathcal{O}_{n}^{\prime} = \mathcal{O}^{\prime}`$, and
 \langle \mathcal{P} \mathcal{Q} \rangle_{o} \pm \langle \mathcal{Q} \mathcal{P} \rangle_{o} = ( \mathcal{P} \mathcal{Q} \pm \mathcal{Q} \mathcal{P} ) \qquad \text{(507)}
 ```
 
-this being a number and not an operator. Therefore (506) gives $`\sum \mathcal{O} n = 0`$, and the theorem is proved for $`\mathcal{O}`$ given by (505). Next let $`\mathcal{O}`$ be any product of $`m`$ factors. Then by using the commutation relations we can write
+this being a number and not an operator. Therefore (506) gives $`\sum \mathcal{O}_{n} = 0`$, and the theorem is proved for $`\mathcal{O}`$ given by (505). Next let $`\mathcal{O}`$ be any product of $`m`$ factors. Then by using the commutation relations we can write
 
 <a id="eq-508"></a>
 

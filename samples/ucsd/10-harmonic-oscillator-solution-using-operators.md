@@ -548,7 +548,7 @@ p = \sqrt{\frac{m \hbar \omega}{2}} \frac{A - A^{\dagger}}{i}
 ```
 
 ```math
-\langle u n | p | u m \rangle = - i \sqrt{\frac{m \hbar \omega}{2}} \langle u n | A - A^{\dagger} | u m \rangle
+\langle u_{n} | p | u_{m} \rangle = - i \sqrt{\frac{m \hbar \omega}{2}} \langle u_{n} | A - A^{\dagger} | u_{m} \rangle
 ```
 
 ```math

@@ -436,7 +436,7 @@ Now compute the Hamiltonian.
 ```
 
 ```math
-\mathcal{H}_{int} = \dot{\varphi} \frac{\partial \mathcal{L} int}{\partial \dot{\varphi}} - \mathcal{L}_{int} = - \mathcal{L}_{int} = \varphi \rho
+\mathcal{H}_{int} = \dot{\varphi} \frac{\partial \mathcal{L}_{int}}{\partial \dot{\varphi}} - \mathcal{L}_{int} = - \mathcal{L}_{int} = \varphi \rho
 ```
 
 ```math

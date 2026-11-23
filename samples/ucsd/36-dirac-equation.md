@@ -736,7 +736,7 @@ Lets take the case of positive energy first.
 ```
 
 ```math
-\begin{pmatrix} A_{1} \\ A_{2} \\ - B 1 \\ - B_{2} \end{pmatrix} = + \begin{pmatrix} A_{1} \\ A_{2} \\ B_{1} \\ B_{2} \end{pmatrix}
+\begin{pmatrix} A_{1} \\ A_{2} \\ - B_{1} \\ - B_{2} \end{pmatrix} = + \begin{pmatrix} A_{1} \\ A_{2} \\ B_{1} \\ B_{2} \end{pmatrix}
 ```
 
 ```math
@@ -2256,7 +2256,7 @@ K = \gamma_{4} \vec{\Sigma} \cdot \vec{J} - \gamma_{4} \frac{\hbar}{2} = \gamma_
 ```
 
 ```math
-= \gamma_{4} \vec{\Sigma} \cdot \vec{L} + \hbar \gamma_{4} = \left( \vec{\sigma} \cdot \vec{L} + \hbar 0 \quad - \vec{\sigma} \cdot 0 \vec{L} - \hbar \right)
+= \gamma_{4} \vec{\Sigma} \cdot \vec{L} + \hbar \gamma_{4} = \begin{pmatrix} \vec{\sigma} \cdot \vec{L} + \hbar & 0 \\ 0 & - \vec{\sigma} \cdot \vec{L} - \hbar \end{pmatrix}
 ```
 
 Assume that the **eigenvalues of** $`K`$ are given by
@@ -2344,7 +2344,7 @@ The eigenvalues of $`K`$ are
 We may explicitly write out the eigenvalue equation for $`K`$ for $`\kappa = \pm \left( j + \tfrac{1}{2} \right) \hbar`$.
 
 ```math
-K\psi = - \kappa \hbar \psi = \left( \vec{\sigma} \cdot \vec{L} + \hbar 0 \quad - \vec{\sigma} \cdot \vec{L} 0 - \hbar \right) \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = \mp \left( j + \frac{1}{2} \right) \hbar \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix}
+K\psi = - \kappa \hbar \psi = \begin{pmatrix} \vec{\sigma} \cdot \vec{L} + \hbar & 0 \\ 0 & - \vec{\sigma} \cdot \vec{L} - \hbar \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = \mp \left( j + \frac{1}{2} \right) \hbar \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix}
 ```
 
 The difference between $`J^{2}`$ and $`L^{2}`$ is related to $`\vec{\sigma} \cdot \vec{L}`$.
@@ -2356,7 +2356,7 @@ L^{2} = J^{2} - \hbar \vec{\sigma} \cdot \vec{L} - \frac{3}{4} \hbar
 We may solve for the effect of $`\vec{\sigma} \cdot \vec{L}`$ on the spinor $`\psi`$, then, solve for the effect of $`L^{2}`$. Note that since $`\psi_{A}`$ and $`\psi_{B}`$ are eigenstates of $`J^{2}`$ and $`\vec{\sigma} \cdot \vec{L}`$, they are eigenstates of $`L^{2}`$ but have different eigenvalues.
 
 ```math
-\left( \vec{\sigma} \cdot \vec{L} + \hbar 0 \quad - \vec{\sigma} \cdot 0 \vec{L} - \hbar \right) \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = \hbar \begin{pmatrix} ( \pm ( j + \tfrac{1}{2} ) \psi_{A} \\ ( \pm ( j + \tfrac{1}{2} ) \psi_{B} \end{pmatrix}
+\begin{pmatrix} \vec{\sigma} \cdot \vec{L} + \hbar & 0 \\ 0 & - \vec{\sigma} \cdot \vec{L} - \hbar \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = \hbar \begin{pmatrix} ( \pm ( j + \tfrac{1}{2} ) \psi_{A} \\ ( \pm ( j + \tfrac{1}{2} ) \psi_{B} \end{pmatrix}
 ```
 
 ```math
@@ -2498,7 +2498,7 @@ c \frac{1}{r} \frac{\vec{\sigma} \cdot \vec{x}}{r} \left( - i \hbar r \frac{\par
 The **effect of the two operators related to angular momentum** can be deduced. First, $`\vec{\sigma} \cdot \vec{L}`$ is related to $`K`$. For positive $`\kappa , \psi_{A}`$ has $`\ell = j + \tfrac{1}{2}`$. For negative $`\kappa , \psi_{A}`$ has $`\ell = j - \tfrac{1}{2}`$. For either, $`\psi_{B}`$ has the opposite relation for $`\ell`$, indicating why the full spinor is not an eigenstate of $`L^{2}`$.
 
 ```math
-\begin{aligned} K &= \left( \vec{\sigma} \cdot \vec{L} + \hbar 0 \quad - \vec{\sigma} \cdot \vec{L} 0 + - \hbar \right) \\ K\psi &= - \kappa \hbar \psi = \left( \vec{\sigma} \cdot \vec{L} + \hbar 0 \quad - \vec{\sigma} \cdot 0 \vec{L} - \hbar \right) \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = \mp \left( j + \frac{1}{2} \right) \hbar \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} \end{aligned}
+\begin{aligned} K &= \begin{pmatrix} \vec{\sigma} \cdot \vec{L} + \hbar & 0 \\ 0 & - \vec{\sigma} \cdot \vec{L} + - \hbar \end{pmatrix} \\ K\psi &= - \kappa \hbar \psi = \begin{pmatrix} \vec{\sigma} \cdot \vec{L} + \hbar & 0 \\ 0 & - \vec{\sigma} \cdot \vec{L} - \hbar \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = \mp \left( j + \frac{1}{2} \right) \hbar \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} \end{aligned}
 ```
 
 ```math
@@ -2890,7 +2890,7 @@ u_{0}^{( r^{\prime \prime} )} = \begin{pmatrix} 0_{\prime \prime} \\ \chi^{( r )
 The matrix $`\gamma_{4} \gamma_{i}`$ connect the positive and “negative energy” spinors so that the amplitude can be written in terms of two component spinors and Pauli matrices.
 
 ```math
-\gamma_{4} \gamma_{i} = \begin{pmatrix} 0 & - i\sigma_{i} \\ - i\sigma i & 0 \end{pmatrix}
+\gamma_{4} \gamma_{i} = \begin{pmatrix} 0 & - i\sigma_{i} \\ - i\sigma_{i} & 0 \end{pmatrix}
 ```
 
 ```math

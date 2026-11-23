@@ -246,7 +246,7 @@ E = E_{n 0 0} + 2 \mu_{B} Bm_{s} \pm \frac{\mathcal{A}}{4} = E_{n 0 0} + 2 \mu_{
 
 Now we will work the full problem with no assumptions about which perturbation is stronger. This is really not that hard so if we were just doing this problem on the homework, this assumption free method would be the one to use. The reason we work the problem all three ways is as an example of how to apply degenerate state perturbation theory to other problems.
 
-We continue on as in the last section but work in the states of $`| fm f \rangle`$. The matrix for $`\langle fm_{f} | H_{hf} + H_{B} | f^{\prime} m_{f}^{\prime} \rangle`$ is
+We continue on as in the last section but work in the states of $`| fm_{f} \rangle`$. The matrix for $`\langle fm_{f} | H_{hf} + H_{B} | f^{\prime} m_{f}^{\prime} \rangle`$ is
 
 ```math
 1 \frac{1}{0 1} \quad - \frac{1}{0 0} 1 \begin{pmatrix} \frac{\mathcal{A}}{4} + \mu_{B} B & 0 & 0 & 0 \\ 0 & \frac{\mathcal{A}}{4} - \mu_{B} B & 0 & 0 \\ 0 & 0 & \tfrac{\mathcal{A}}{4} & \mu_{B} B \\ 0 & 0 & \mu_{B} B & \tfrac{- 3}{4}^{\mathcal{A}} \end{pmatrix} .

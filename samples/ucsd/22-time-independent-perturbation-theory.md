@@ -332,7 +332,7 @@ This is first order in the electric field, as we would expect in first order (de
 If the states are not exactly degenerate, we have to leave in the diagonal terms of $`H_{0}`$. Assume that the energies of the two (mixed) states are $`E_{0} \pm`$ ∆, where ∆ comes from some other perturbation, like the hydrogen fine structure. (The $`\varphi_{2 1 1}`$ and $`\varphi_{2 1 ( - 1 )}`$ are still not mixed by the electric field.)
 
 ```math
-\left( E_{0} \gamma - \Delta \quad E_{0} + \Delta \gamma \right) \begin{pmatrix} \alpha_{1} \\ \alpha_{2} \end{pmatrix} = E \begin{pmatrix} \alpha_{1} \\ \alpha_{2} \end{pmatrix}
+\begin{pmatrix} E_{0} - \Delta & \gamma \\ \gamma & E_{0} + \Delta \end{pmatrix} \begin{pmatrix} \alpha_{1} \\ \alpha_{2} \end{pmatrix} = E \begin{pmatrix} \alpha_{1} \\ \alpha_{2} \end{pmatrix}
 ```
 
 <div align="right"><a href="book.pdf#page=331" target="_blank" title="This page in the PDF"><sup>[p. 331]</sup></a></div>
