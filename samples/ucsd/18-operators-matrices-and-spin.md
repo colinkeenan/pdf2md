@@ -1053,7 +1053,7 @@ As a concrete example, let’s assume we start out in the eigenstate of $`L_{x}`
 <a id="p267" href="book.pdf#page=267" target="_blank" title="This page in the PDF"><sup>[p. 267]</sup></a>
 
 ```math
-\langle \psi ( t ) | L_{x} | \psi ( t ) \rangle = \left( \tfrac{e^{+ i\mu BBt/ \hbar}}{2} \quad \tfrac{1}{\sqrt{2}} \quad \tfrac{e^{- i\mu BBt/ \hbar}}{2} \right) \frac{\hbar}{\sqrt{2}} \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix} \begin{pmatrix} \frac{e^{- i\mu BBt/ \hbar}}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{e^{i\mu BBt/ \hbar}}{2} \end{pmatrix}
+\langle \psi ( t ) | L_{x} | \psi ( t ) \rangle = \left( \tfrac{e^{+ i\mu BBt/ \hbar}}{2} \quad \tfrac{1}{\sqrt{2}} \quad \tfrac{e^{- i\mu_{B} Bt/ \hbar}}{2} \right) \frac{\hbar}{\sqrt{2}} \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix} \begin{pmatrix} \frac{e^{- i\mu_{B} Bt/ \hbar}}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{e^{i\mu_{B} Bt/ \hbar}}{2} \end{pmatrix}
 ```
 
 ```math
@@ -1643,7 +1643,7 @@ These are again Hermitian, Traceless matrices.
 In section 18.11.3, we derived the expression for the rotation operator for orbital angular momentum vectors. The rotation operators for internal angular momentum will follow the same formula.
 
 ```math
-R_{z} ( \theta ) = e^{\tfrac{i\theta Sz}{\hbar}} = e^{i \tfrac{\theta}{2} \sigma_{z}}
+R_{z} ( \theta ) = e^{\tfrac{i\theta S_{z}}{\hbar}} = e^{i \tfrac{\theta}{2} \sigma_{z}}
 ```
 
 ```math

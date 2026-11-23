@@ -1717,7 +1717,7 @@ H = \frac{1}{2} \sum_{k,\alpha} \hbar \omega \left[ a_{k,\alpha} a_{k,\alpha}^{\
 States of the field are given by the occupation number of each possible photon state.
 
 ```math
-| n_{k_{1} ,\alpha_{1}} ,n_{k_{2} ,\alpha_{2}} ,\dots ,n_{k_{i} ,\alpha_{i}} ,\dots \rangle = \prod_{i} \frac{( a_{k_{i} ,\alpha_{i}}^{\dagger} )^{n_{ki,\alpha i}}}{\sqrt{n_{k_{i} ,\alpha_{i}} !}} | 0 \rangle
+| n_{k_{1} ,\alpha_{1}} ,n_{k_{2} ,\alpha_{2}} ,\dots ,n_{k_{i} ,\alpha_{i}} ,\dots \rangle = \prod_{i} \frac{( a_{k_{i} ,\alpha_{i}}^{\dagger} )^{n_{k_{i} ,\alpha_{i}}}}{\sqrt{n_{k_{i} ,\alpha_{i}} !}} | 0 \rangle
 ```
 
 Any state can be constructed by operating with creation operators on the vacuum state. Any state with multiple photons will automatically be symmetric under the interchange of pairs of photons because the operators commute.

@@ -423,6 +423,9 @@ pub fn read_drawings(doc: &mut Doc, path: &Path, pages: Option<(u32, u32)>) {
         }
         drop_empty(doc, &lost);
     }
+    if let Some(parts) = &parts {
+        split_shifted(doc, parts);
+    }
     if let Some(parts) = parts {
         // Lost big brackets are a TeX font problem; in books without
         // TeX's math fonts, outlines of large text glyphs are no brackets.
@@ -636,6 +639,94 @@ fn parse_svg_uses(svg: &str) -> Vec<Vec<Placed>> {
 /// Glyphs drawn over the letter they belong to: their place is where they
 /// are drawn, not where the type moves on.
 const OVER: [&str; 4] = ["\u{20d7}", "\u{338}", "˜", "ˆ"];
+
+/// The index of an index in TeX's smallest type. TeX has no smaller type
+/// for it, so it sets it in the same size, only lower (the B of μ_B in an
+/// exponent's exponent), and pdftohtml gives letter and index as one piece,
+/// "iµB Bt/": nothing in the piece says which letters hang lower. Its box
+/// does, by being taller than its type; and the drawing of the page has
+/// each glyph's own height. Such a piece is cut where its glyphs change
+/// height, and the lowered (or raised) letters get a type a step smaller,
+/// as an index has everywhere else, so that they are read as one.
+fn split_shifted(doc: &mut Doc, parts: &[(usize, String)]) {
+    // (the design size a TeX font is named by: "CMMI5" is of 5 points)
+    let smallest = |f: &Font| {
+        let digits: String = f.family.chars().rev().take_while(char::is_ascii_digit).collect::<Vec<_>>().into_iter().rev().collect();
+        f.family.to_uppercase().starts_with("CM") && !f.family.to_uppercase().starts_with("CMEX") && digits.parse::<u32>().is_ok_and(|d| d <= 6)
+    };
+    let small: HashMap<usize, usize> = (0..doc.fonts.len())
+        .filter(|&i| smallest(&doc.fonts[i]))
+        .collect::<Vec<_>>()
+        .into_iter()
+        .map(|i| {
+            let mut f = doc.fonts[i].clone();
+            f.size *= 0.7;
+            doc.fonts.push(f);
+            (i, doc.fonts.len() - 1)
+        })
+        .collect();
+    if small.is_empty() {
+        return;
+    }
+    let sizes: Vec<f32> = doc.fonts.iter().map(|f| f.size).collect();
+    let mut uses: Vec<Vec<Placed>> = Vec::new();
+    for (pages, svg) in parts {
+        let mut of_part = parse_svg_uses(svg);
+        of_part.resize_with(*pages, Vec::new);
+        uses.append(&mut of_part);
+    }
+    for (page, placed) in doc.pages.iter_mut().zip(uses) {
+        for line in page.lines.iter_mut() {
+            let mut si = 0;
+            while si < line.spans.len() {
+                let s = line.spans[si].clone();
+                si += 1;
+                let (Some(&index_font), size) = (small.get(&s.font), sizes[s.font]) else { continue };
+                let chars: Vec<char> = s.text.chars().filter(|c| !c.is_whitespace()).collect();
+                if s.height < size + 2.0 || chars.len() < 2 {
+                    continue;
+                }
+                // its glyphs, left to right, each with the height it stands at
+                let mut inside: Vec<(f32, f32)> = placed.iter().map(|g| (1.5 * g.x, 1.5 * g.y)).filter(|&(x, y)| x >= s.left - 1.5 && x < s.right() - 0.5 && y >= s.top && y <= s.bottom() + 2.0).collect();
+                inside.sort_by(|a, b| a.0.total_cmp(&b.0));
+                if inside.len() != chars.len() {
+                    continue;
+                }
+                // (the height most of them stand at is the piece's line)
+                let line_y = inside.iter().map(|&(_, y)| y).max_by_key(|&y| inside.iter().filter(|&&(_, o)| (o - y).abs() < 0.8).count()).unwrap_or(0.0);
+                let step = |y: f32| if y - line_y >= 0.8 { 1 } else if line_y - y >= 0.8 { -1 } else { 0 };
+                if inside.iter().all(|&(_, y)| step(y) == 0) {
+                    continue;
+                }
+                let highest = inside.iter().map(|&(_, y)| y - line_y).fold(0.0f32, f32::min);
+                let mut pieces: Vec<Span> = Vec::new();
+                let mut k = 0;
+                while k < chars.len() {
+                    let mut e = k + 1;
+                    while e < chars.len() && step(inside[e].1) == step(inside[k].1) {
+                        e += 1;
+                    }
+                    let mut piece = s.clone();
+                    piece.text = chars[k..e].iter().collect();
+                    piece.left = if k == 0 { s.left } else { inside[k].0 };
+                    piece.width = (if e < chars.len() { inside[e].0 } else { s.right() } - piece.left).max(1.0);
+                    let moved = inside[k].1 - line_y;
+                    if step(inside[k].1) == 0 {
+                        (piece.top, piece.height) = (s.top - highest, size);
+                    } else {
+                        piece.font = index_font;
+                        (piece.top, piece.height) = (s.top - highest + moved + if moved > 0.0 { 0.3 * size } else { 0.0 }, 0.7 * size);
+                    }
+                    pieces.push(piece);
+                    k = e;
+                }
+                let n = pieces.len();
+                line.spans.splice(si - 1..si, pieces);
+                si += n - 1;
+            }
+        }
+    }
+}
 
 /// Write the glyphs pdftohtml left out into the empty pieces of text it
 /// gave for them. What each glyph is, the PDF's fonts say by its name

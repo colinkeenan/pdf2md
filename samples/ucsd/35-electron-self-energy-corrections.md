@@ -83,7 +83,7 @@ Our task is to **solve these coupled equations**. Previously, we did this by int
 Since we are attempting to **calculate an energy shift, let us make that assumption** and plug it into the equations to verify the solution.
 
 ```math
-c_{n} = e^{\tfrac{- i \Delta Ent}{\hbar}}
+c_{n} = e^{\tfrac{- i \Delta E_{n} t}{\hbar}}
 ```
 
 ∆$`E_{n}`$ will be a complex number, the **real part of which represents an energy shift**, and the **imaginary part of which represents the lifetime (and energy width)** of the state.
@@ -93,11 +93,11 @@ i \hbar \frac{dc_{j}}{dt} = \sum_{\vec{k} ,\alpha} H_{jn} e^{i\omega t} c_{n} e^
 ```
 
 ```math
-c_{n} = e^{\tfrac{- i \Delta Ent}{\hbar}}
+c_{n} = e^{\tfrac{- i \Delta E_{n} t}{\hbar}}
 ```
 
 ```math
-c_{j} ( t ) = \frac{1}{i \hbar} \sum_{\vec{k} ,\alpha} \int_{0}^{t} dt^{\prime} H_{jn} e^{i\omega t^{\prime}} e^{\tfrac{- i \Delta Ent \prime}{\hbar}} e^{- i\omega_{nj} t^{\prime}}
+c_{j} ( t ) = \frac{1}{i \hbar} \sum_{\vec{k} ,\alpha} \int_{0}^{t} dt^{\prime} H_{jn} e^{i\omega t^{\prime}} e^{\tfrac{- i \Delta E_{n} t \prime}{\hbar}} e^{- i\omega_{nj} t^{\prime}}
 ```
 
 ```math
@@ -164,7 +164,7 @@ This is well behaved everywhere except at $`x = 0`$. The second term goes to $`-
 \lim_{t \to \infty} \frac{1 - e^{ixt}}{x} = \frac{1}{x} - i\pi \delta ( x )
 ```
 
-Recalling that $`c_{n} e^{- iE_{n} t/ \hbar} = e^{\tfrac{- i \Delta Ent}{\hbar}} e^{- iE_{n} t/ \hbar} = e^{- i ( E_{n} + \Delta E_{n} ) t/ \hbar}`$, the real part of ∆$`E_{n}`$ corresponds to an **energy shift in the state** $`| n \rangle`$ and the **imaginary part corresponds to a width**.
+Recalling that $`c_{n} e^{- iE_{n} t/ \hbar} = e^{\tfrac{- i \Delta E_{n} t}{\hbar}} e^{- iE_{n} t/ \hbar} = e^{- i ( E_{n} + \Delta E_{n} ) t/ \hbar}`$, the real part of ∆$`E_{n}`$ corresponds to an **energy shift in the state** $`| n \rangle`$ and the **imaginary part corresponds to a width**.
 
 ```math
 ℜ ( \Delta E_{n} ) = \sum_{\vec{k} ,\alpha} \sum_{j} \frac{| H_{nj} |^{2}}{\hbar ( \omega_{nj} - \omega )}

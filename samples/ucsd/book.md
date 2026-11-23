@@ -2332,7 +2332,7 @@ H = \frac{1}{2} \sum_{k,\alpha} \hbar \omega \left[ a_{k,\alpha} a_{k,\alpha}^{\
 States of the field are given by the occupation number of each possible photon state.
 
 ```math
-| n_{k_{1} ,\alpha_{1}} ,n_{k_{2} ,\alpha_{2}} ,\dots ,n_{k_{i} ,\alpha_{i}} ,\dots \rangle = \prod_{i} \frac{( a_{k_{i} ,\alpha_{i}}^{\dagger} )^{n_{ki,\alpha i}}}{\sqrt{n_{k_{i} ,\alpha_{i}} !}} | 0 \rangle
+| n_{k_{1} ,\alpha_{1}} ,n_{k_{2} ,\alpha_{2}} ,\dots ,n_{k_{i} ,\alpha_{i}} ,\dots \rangle = \prod_{i} \frac{( a_{k_{i} ,\alpha_{i}}^{\dagger} )^{n_{k_{i} ,\alpha_{i}}}}{\sqrt{n_{k_{i} ,\alpha_{i}} !}} | 0 \rangle
 ```
 
 Any state can be constructed by operating with creation operators on the vacuum state. Any state with multiple photons will automatically be symmetric under the interchange of pairs of photons because the operators commute.
@@ -4501,7 +4501,7 @@ Performing the Fourier Transform (See section 5.6.5), we get
 ```
 
 ```math
-| \psi ( x,t ) |^{2} = \frac{\pi}{\sqrt{\alpha^{2} + \beta^{2} t^{2}}} e^{\tfrac{- \alpha ( x - vgt ) 2}{2 ( \alpha 2 + \beta 2 t 2 )}} .
+| \psi ( x,t ) |^{2} = \frac{\pi}{\sqrt{\alpha^{2} + \beta^{2} t^{2}}} e^{\tfrac{- \alpha ( x - v_{g} t ) 2}{2 ( \alpha^{2} + \beta 2 t^{2} )}} .
 ```
 
 We see that the photon will move with the velocity of light and that the wave packet will not disperse, because $`\beta = 0`$.
@@ -4833,15 +4833,15 @@ f ( x ) = e^{ik_{0} x} \int_{-\infty}^{\infty} e^{- \alpha k^{\prime 2}} e^{ik^{
 Our new integral is the same with the **substitutions** $`k_{0} x \to k_{0} x - \omega_{0} t , k^{\prime} x \to k^{\prime} ( x - v_{g} t )`$, and $`\alpha \to ( \alpha + i\beta t )`$. We can then write down the answer
 
 ```math
-\psi ( x,t ) = \sqrt{\frac{\pi}{\alpha + i\beta t}} e^{i ( k_{0} x - \omega_{0} t )} e^{\tfrac{- ( x - vgt ) 2}{4 ( \alpha + i\beta t )}}
+\psi ( x,t ) = \sqrt{\frac{\pi}{\alpha + i\beta t}} e^{i ( k_{0} x - \omega_{0} t )} e^{\tfrac{- ( x - v_{g} t ) 2}{4 ( \alpha + i\beta t )}}
 ```
 
 ```math
-| \psi ( x,t ) |^{2} = \sqrt{\frac{\pi}{\alpha + i\beta t}} \sqrt{\frac{\pi}{\alpha - i\beta t}} e^{\tfrac{- ( x - vgt ) 2}{4 ( \alpha + i\beta t )}} e^{\tfrac{- ( x - vgt ) 2}{4 ( \alpha - i\beta t )}}
+| \psi ( x,t ) |^{2} = \sqrt{\frac{\pi}{\alpha + i\beta t}} \sqrt{\frac{\pi}{\alpha - i\beta t}} e^{\tfrac{- ( x - v_{g} t ) 2}{4 ( \alpha + i\beta t )}} e^{\tfrac{- ( x - vgt ) 2}{4 ( \alpha - i\beta t )}}
 ```
 
 ```math
-| \psi ( x,t ) |^{2} = \frac{\pi}{\sqrt{\alpha^{2} + \beta^{2} t^{2}}} e^{\tfrac{- \alpha ( x - vgt ) 2}{2 ( \alpha 2 + \beta 2 t 2 )}}
+| \psi ( x,t ) |^{2} = \frac{\pi}{\sqrt{\alpha^{2} + \beta^{2} t^{2}}} e^{\tfrac{- \alpha ( x - v_{g} t ) 2}{2 ( \alpha 2 + \beta 2 t^{2} )}}
 ```
 
 ## <a id="s-5-6-6-numbers"></a>5.6.6 Numbers
@@ -13811,7 +13811,7 @@ As a concrete example, let’s assume we start out in the eigenstate of $`L_{x}`
 <a id="p267" href="book.pdf#page=267" target="_blank" title="This page in the PDF"><sup>[p. 267]</sup></a>
 
 ```math
-\langle \psi ( t ) | L_{x} | \psi ( t ) \rangle = \left( \tfrac{e^{+ i\mu BBt/ \hbar}}{2} \quad \tfrac{1}{\sqrt{2}} \quad \tfrac{e^{- i\mu BBt/ \hbar}}{2} \right) \frac{\hbar}{\sqrt{2}} \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix} \begin{pmatrix} \frac{e^{- i\mu BBt/ \hbar}}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{e^{i\mu BBt/ \hbar}}{2} \end{pmatrix}
+\langle \psi ( t ) | L_{x} | \psi ( t ) \rangle = \left( \tfrac{e^{+ i\mu BBt/ \hbar}}{2} \quad \tfrac{1}{\sqrt{2}} \quad \tfrac{e^{- i\mu_{B} Bt/ \hbar}}{2} \right) \frac{\hbar}{\sqrt{2}} \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix} \begin{pmatrix} \frac{e^{- i\mu_{B} Bt/ \hbar}}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{e^{i\mu_{B} Bt/ \hbar}}{2} \end{pmatrix}
 ```
 
 ```math
@@ -14401,7 +14401,7 @@ These are again Hermitian, Traceless matrices.
 In section 18.11.3, we derived the expression for the rotation operator for orbital angular momentum vectors. The rotation operators for internal angular momentum will follow the same formula.
 
 ```math
-R_{z} ( \theta ) = e^{\tfrac{i\theta Sz}{\hbar}} = e^{i \tfrac{\theta}{2} \sigma_{z}}
+R_{z} ( \theta ) = e^{\tfrac{i\theta S_{z}}{\hbar}} = e^{i \tfrac{\theta}{2} \sigma_{z}}
 ```
 
 ```math
@@ -16010,7 +16010,7 @@ Remember the flux satisfies the equations $`\tfrac{\partial ( \psi^{*} \psi )}{\
 
 Use the energy eigenstates as the basis states.
 
-6. The Hamiltonian for an electron in a electromagnetic field can be written as $`H = \tfrac{1}{2 m} [ \vec{p} + \tfrac{e}{c} \vec{A} ( \vec{r} , t ) ]^{2} - e\phi ( \vec{r} , t ) + \tfrac{e \hbar}{2 mc} \vec{\sigma} \cdot B ( \vec{\hbar} r,t )`$. Show that this can be written as the Pauli Hamiltonian
+6. The Hamiltonian for an electron in a electromagnetic field can be written as $`H = \tfrac{1}{2 m} [ \vec{p} + \tfrac{e}{c} \vec{A} ( \vec{r} , t ) ]^{2} - e\phi ( \vec{r} , t ) + \tfrac{e \hbar}{2 mc} \vec{\sigma} \cdot B ( \vec{r} ,t )`$. Show that this can be written as the Pauli Hamiltonian
 
 ```math
 H = \frac{1}{2 m} \left( \vec{\sigma} \cdot [ \vec{p} + \frac{e}{c} \vec{A} ( \vec{r} , t ) ] \right)^{2} - e\phi ( \vec{r} , t ) .
@@ -18152,7 +18152,7 @@ E_{n} = \frac{1}{2} \alpha^{2} \mu c^{2} \frac{1}{n^{2}}
 
 where the reduced mass is given by $`\mu = \tfrac{m_{e}}{2} .`$
 
-The relativistic correction must take account of both the motion of the electron and the positron. We use $`\vec{r} \equiv \vec{r}_{1} - \vec{r}_{2}`$ and $`\vec{p} = \mu \dot{\hbar} r = \tfrac{m \vec{r} ˙_{1} - m \vec{r} ˙_{2}}{2}`$. Since the electron and positron are of equal mass, they<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=353" target="_blank" title="This page in the PDF"><sup>[p. 353]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p354" href="book.pdf#page=354" target="_blank" title="This page in the PDF"><sup>[p. 354]</sup></a></span> are always exactly oposite each other in the center of mass and so the momentum vector we use is easily related to an individual momentum.
+The relativistic correction must take account of both the motion of the electron and the positron. We use $`\vec{r} \equiv \vec{r}_{1} - \vec{r}_{2}`$ and $`\vec{p} = \mu \dot{\vec{r}} = \tfrac{m \dot{\vec{r}}_{1} - m \dot{\vec{r}}_{2}}{2}`$. Since the electron and positron are of equal mass, they<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=353" target="_blank" title="This page in the PDF"><sup>[p. 353]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p354" href="book.pdf#page=354" target="_blank" title="This page in the PDF"><sup>[p. 354]</sup></a></span> are always exactly oposite each other in the center of mass and so the momentum vector we use is easily related to an individual momentum.
 
 ```math
 \vec{p} = \frac{\vec{p}_{1} - \vec{p}_{2}}{2} = \vec{p}_{1}
@@ -22619,7 +22619,7 @@ It is now obvious that the integer $`n_{k,\alpha}`$ is the **number of photons i
 The ground state for a particular oscillator cannot be lowered. The state in which **all the oscillators are in the ground state is called the vacuum state** and can be written simply as $`| 0 \rangle`$. We can generate any state we want by applying raising operators to the vacuum state.
 
 ```math
-| n_{k_{1} ,\alpha_{1}} ,n_{k_{2} ,\alpha_{2}} ,\dots ,n_{k_{i} ,\alpha_{i}} ,\dots \rangle = \prod_{i} \frac{( a_{k_{i} ,\alpha_{i}}^{\dagger} )^{n_{ki,\alpha i}}}{\sqrt{n_{k_{i} ,\alpha_{i}} !}} | 0 \rangle
+| n_{k_{1} ,\alpha_{1}} ,n_{k_{2} ,\alpha_{2}} ,\dots ,n_{k_{i} ,\alpha_{i}} ,\dots \rangle = \prod_{i} \frac{( a_{k_{i} ,\alpha_{i}}^{\dagger} )^{n_{k_{i} ,\alpha_{i}}}}{\sqrt{n_{k_{i} ,\alpha_{i}} !}} | 0 \rangle
 ```
 
 The factorial on the bottom cancels all the $`\sqrt{n} + 1`$ we get from the raising operators.
@@ -23628,7 +23628,7 @@ Our task is to **solve these coupled equations**. Previously, we did this by int
 Since we are attempting to **calculate an energy shift, let us make that assumption** and plug it into the equations to verify the solution.
 
 ```math
-c_{n} = e^{\tfrac{- i \Delta Ent}{\hbar}}
+c_{n} = e^{\tfrac{- i \Delta E_{n} t}{\hbar}}
 ```
 
 ∆$`E_{n}`$ will be a complex number, the **real part of which represents an energy shift**, and the **imaginary part of which represents the lifetime (and energy width)** of the state.
@@ -23638,11 +23638,11 @@ i \hbar \frac{dc_{j}}{dt} = \sum_{\vec{k} ,\alpha} H_{jn} e^{i\omega t} c_{n} e^
 ```
 
 ```math
-c_{n} = e^{\tfrac{- i \Delta Ent}{\hbar}}
+c_{n} = e^{\tfrac{- i \Delta E_{n} t}{\hbar}}
 ```
 
 ```math
-c_{j} ( t ) = \frac{1}{i \hbar} \sum_{\vec{k} ,\alpha} \int_{0}^{t} dt^{\prime} H_{jn} e^{i\omega t^{\prime}} e^{\tfrac{- i \Delta Ent \prime}{\hbar}} e^{- i\omega_{nj} t^{\prime}}
+c_{j} ( t ) = \frac{1}{i \hbar} \sum_{\vec{k} ,\alpha} \int_{0}^{t} dt^{\prime} H_{jn} e^{i\omega t^{\prime}} e^{\tfrac{- i \Delta E_{n} t \prime}{\hbar}} e^{- i\omega_{nj} t^{\prime}}
 ```
 
 ```math
@@ -23709,7 +23709,7 @@ This is well behaved everywhere except at $`x = 0`$. The second term goes to $`-
 \lim_{t \to \infty} \frac{1 - e^{ixt}}{x} = \frac{1}{x} - i\pi \delta ( x )
 ```
 
-Recalling that $`c_{n} e^{- iE_{n} t/ \hbar} = e^{\tfrac{- i \Delta Ent}{\hbar}} e^{- iE_{n} t/ \hbar} = e^{- i ( E_{n} + \Delta E_{n} ) t/ \hbar}`$, the real part of ∆$`E_{n}`$ corresponds to an **energy shift in the state** $`| n \rangle`$ and the **imaginary part corresponds to a width**.
+Recalling that $`c_{n} e^{- iE_{n} t/ \hbar} = e^{\tfrac{- i \Delta E_{n} t}{\hbar}} e^{- iE_{n} t/ \hbar} = e^{- i ( E_{n} + \Delta E_{n} ) t/ \hbar}`$, the real part of ∆$`E_{n}`$ corresponds to an **energy shift in the state** $`| n \rangle`$ and the **imaginary part corresponds to a width**.
 
 ```math
 ℜ ( \Delta E_{n} ) = \sum_{\vec{k} ,\alpha} \sum_{j} \frac{| H_{nj} |^{2}}{\hbar ( \omega_{nj} - \omega )}

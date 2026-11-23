@@ -572,7 +572,7 @@ It is now obvious that the integer $`n_{k,\alpha}`$ is the **number of photons i
 The ground state for a particular oscillator cannot be lowered. The state in which **all the oscillators are in the ground state is called the vacuum state** and can be written simply as $`| 0 \rangle`$. We can generate any state we want by applying raising operators to the vacuum state.
 
 ```math
-| n_{k_{1} ,\alpha_{1}} ,n_{k_{2} ,\alpha_{2}} ,\dots ,n_{k_{i} ,\alpha_{i}} ,\dots \rangle = \prod_{i} \frac{( a_{k_{i} ,\alpha_{i}}^{\dagger} )^{n_{ki,\alpha i}}}{\sqrt{n_{k_{i} ,\alpha_{i}} !}} | 0 \rangle
+| n_{k_{1} ,\alpha_{1}} ,n_{k_{2} ,\alpha_{2}} ,\dots ,n_{k_{i} ,\alpha_{i}} ,\dots \rangle = \prod_{i} \frac{( a_{k_{i} ,\alpha_{i}}^{\dagger} )^{n_{k_{i} ,\alpha_{i}}}}{\sqrt{n_{k_{i} ,\alpha_{i}} !}} | 0 \rangle
 ```
 
 The factorial on the bottom cancels all the $`\sqrt{n} + 1`$ we get from the raising operators.

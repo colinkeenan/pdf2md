@@ -1047,7 +1047,7 @@ Remember the flux satisfies the equations $`\tfrac{\partial ( \psi^{*} \psi )}{\
 
 Use the energy eigenstates as the basis states.
 
-6. The Hamiltonian for an electron in a electromagnetic field can be written as $`H = \tfrac{1}{2 m} [ \vec{p} + \tfrac{e}{c} \vec{A} ( \vec{r} , t ) ]^{2} - e\phi ( \vec{r} , t ) + \tfrac{e \hbar}{2 mc} \vec{\sigma} \cdot B ( \vec{\hbar} r,t )`$. Show that this can be written as the Pauli Hamiltonian
+6. The Hamiltonian for an electron in a electromagnetic field can be written as $`H = \tfrac{1}{2 m} [ \vec{p} + \tfrac{e}{c} \vec{A} ( \vec{r} , t ) ]^{2} - e\phi ( \vec{r} , t ) + \tfrac{e \hbar}{2 mc} \vec{\sigma} \cdot B ( \vec{r} ,t )`$. Show that this can be written as the Pauli Hamiltonian
 
 ```math
 H = \frac{1}{2 m} \left( \vec{\sigma} \cdot [ \vec{p} + \frac{e}{c} \vec{A} ( \vec{r} , t ) ] \right)^{2} - e\phi ( \vec{r} , t ) .
