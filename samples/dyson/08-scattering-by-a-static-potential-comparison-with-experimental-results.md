@@ -330,7 +330,7 @@ is added to the Lagrangian. This refers still to the one-electron Dirac equation
 <a id="eq-656"></a>
 
 ```math
-L_{M} = - \tfrac{1}{2} i\delta M \overline{\psi} \sum_{\mu} \sum_{\nu} \sigma_{\mu \nu} \psi F_{\mu \nu}^{e} \qquad \text{(656)}
+\mathscr{L}_{M} = - \tfrac{1}{2} i\delta M \overline{\psi} \sum_{\mu} \sum_{\nu} \sigma_{\mu \nu} \psi F_{\mu \nu}^{e} \qquad \text{(656)}
 ```
 
 where it is supposed that the anomalous moment is interacting with the external Maxwell field. The addition (656) to the Lagrangian<sup><a id="fnref-85" href="#fn-85">85</a></sup> gives a relativistically invariant description of an anomalous moment.

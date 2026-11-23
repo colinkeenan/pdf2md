@@ -14,7 +14,7 @@ Lagrangian
 <a id="eq-168"></a>
 
 ```math
-L_{M} = - \tfrac{1}{4} \sum_{\mu ,\nu} \left( \frac{\partial A_{\nu}}{\partial x_{\mu}} - \frac{\partial A_{\mu}}{\partial x_{\nu}} \right)^{2} - \tfrac{1}{2} \sum_{\mu} \left( \frac{\partial A_{\mu}}{\partial x_{\mu}} \right)^{2} \qquad \text{(168)}
+\mathscr{L}_{M} = - \tfrac{1}{4} \sum_{\mu ,\nu} \left( \frac{\partial A_{\nu}}{\partial x_{\mu}} - \frac{\partial A_{\mu}}{\partial x_{\nu}} \right)^{2} - \tfrac{1}{2} \sum_{\mu} \left( \frac{\partial A_{\mu}}{\partial x_{\mu}} \right)^{2} \qquad \text{(168)}
 ```
 
 Field equations
@@ -25,7 +25,7 @@ Field equations
 \sum_{\mu} \frac{\partial^{2}}{\partial x_{\mu}^{2}} A_{\lambda} = \Box^{2} A_{\lambda} = 0 \qquad \text{(197)}
 ```
 
-Commutation rules for the $`A_{\lambda}`$: To find these we uses the Peierls method. Take two points $`y`$ and $`z`$ with $`z_{0} >y_{0}`$. Let $`\mathcal{Q} ( y ) = A_{\lambda} ( y ) , \mathcal{R} ( z ) = A_{\mu} ( z )`$. Note: in this section $`x,y,z,k`$ etc. are meant to have components 1, 2, 3 and 0, while in $`x_{\mu} ,y_{\mu} ,z_{\mu} ,k_{\mu}`$, etc. we mean $`\mu = 1 , 2 ,`$ 3 and 4. When $`\delta_{\mathcal{Q}} ( L ) = \epsilon \delta^{4} ( x - y ) A_{\lambda} ( y )`$ is added to $`L_{M}`$, the field <a id="ix-264">equation</a> for $`A_{\mu}`$ becomes
+Commutation rules for the $`A_{\lambda}`$: To find these we uses the Peierls method. Take two points $`y`$ and $`z`$ with $`z_{0} >y_{0}`$. Let $`\mathcal{Q} ( y ) = A_{\lambda} ( y ) , \mathcal{R} ( z ) = A_{\mu} ( z )`$. Note: in this section $`x,y,z,k`$ etc. are meant to have components 1, 2, 3 and 0, while in $`x_{\mu} ,y_{\mu} ,z_{\mu} ,k_{\mu}`$, etc. we mean $`\mu = 1 , 2 ,`$ 3 and 4. When $`\delta_{\mathcal{Q}} ( \mathscr{L} ) = \epsilon \delta^{4} ( x - y ) A_{\lambda} ( y )`$ is added to $`\mathscr{L}_{M}`$, the field <a id="ix-264">equation</a> for $`A_{\mu}`$ becomes
 
 <a id="eq-198"></a>
 
@@ -904,7 +904,7 @@ where $`H_{A}`$ is the Hamiltonian operator for the atom, and $`H_{M}`$ that for
 H_{I}^{S} = - \frac{1}{c} \int \sum_{\mu} j_{\mu}^{S} ( r ) A_{\mu}^{S} ( r ) d^{3} \boldsymbol{r} \qquad \text{(243)}
 ```
 
-because $`j_{\mu}^{S} ( r ) = ie \overline{\psi} \gamma_{\mu} \psi`$, and in this case $`H = \sum_{\mu} \pi_{\mu} A_{\mu} - L = - L`$ because $`\pi_{\mu} = \partial L /\partial \dot{A}_{\mu}`$, and $`L_{I}`$ does not contain $`\dot{A}_{\mu}`$. All the operators in (242), (243) are time-independent<sup><a id="fnref-38" href="#fn-38">38</a></sup>, Schrödinger representation operators, and so are the given the label $`S`$.
+because $`j_{\mu}^{S} ( r ) = ie \overline{\psi} \gamma_{\mu} \psi`$, and in this case $`\mathscr{H} = \sum_{\mu} \pi_{\mu} A_{\mu} - \mathscr{L} = - \mathscr{L}`$ because $`\pi_{\mu} = \partial \mathscr{L} /\partial \dot{A}_{\mu}`$, and $`\mathscr{L}_{I}`$ does not contain $`\dot{A}_{\mu}`$. All the operators in (242), (243) are time-independent<sup><a id="fnref-38" href="#fn-38">38</a></sup>, Schrödinger representation operators, and so are the given the label $`S`$.
 
 Now we choose a new wave function Φ$`( t )`$ which is given in terms of Ψ by
 
@@ -1369,7 +1369,7 @@ Lagrangian
 <a id="eq-285"></a>
 
 ```math
-L_{o} = - \hbar c \overline{\psi} \left( \sum_{\lambda} \gamma_{\lambda} \frac{\partial}{\partial x_{\lambda}} + \mu \right) \psi \qquad \text{(285)}
+\mathscr{L}_{o} = - \hbar c \overline{\psi} \left( \sum_{\lambda} \gamma_{\lambda} \frac{\partial}{\partial x_{\lambda}} + \mu \right) \psi \qquad \text{(285)}
 ```
 
 Note the factor $`\hbar`$ here. This means that the theory has no classical limit in the sense of the Correspondence Principle. In the classical limit, only charges and currents composed of many particles have any meaning; the $`\psi`$ field disappears entirely from view. The $`\hbar`$ has to be put into (285) to make the dimensions right, since $`\left( \overline{\psi} \psi \right)`$ has dimensions (1/Volume) just as in the 1-particle Dirac theory of which this is an extension.<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=65" target="_blank" title="This page in the PDF"><sup>[p. 59]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p60" href="book.pdf#page=66" target="_blank" title="This page in the PDF"><sup>[p. 60]</sup></a> <sup>EXAMPLES OF QUANTIZED FIELD THEORIES</sup></span> <a id="ix-190">Field</a> equations
@@ -1409,10 +1409,10 @@ Here $`u`$ and $`v`$ are spinor operators, not depending on $`y`$ or $`z`$ and a
 <a id="eq-289"></a>
 
 ```math
-\delta_{\mathcal{Q}} L = \epsilon \delta^{4} ( x - y ) \overline{\psi} ( y ) u \qquad \text{(289)}
+\delta_{\mathcal{Q}} \mathscr{L} = \epsilon \delta^{4} ( x - y ) \overline{\psi} ( y ) u \qquad \text{(289)}
 ```
 
-The factor $`u`$ must be put in to make $`\delta_{\mathcal{Q}} L`$ a bilinear expression, which is necessary for the Peierls method to be applicable. In fact only bilinear expressions have a physically observable meaning, and it is never meaningful under any circumstances to add together a term linear and a term bilinear in the field operators.
+The factor $`u`$ must be put in to make $`\delta_{\mathcal{Q}} \mathscr{L}`$ a bilinear expression, which is necessary for the Peierls method to be applicable. In fact only bilinear expressions have a physically observable meaning, and it is never meaningful under any circumstances to add together a term linear and a term bilinear in the field operators.
 
 The changed field equations for $`\psi`$ and $`\overline{\psi}`$ are
 
@@ -1906,7 +1906,7 @@ Lagrangian
 <a id="eq-331"></a>
 
 ```math
-L = L_{D} - ie \overline{\psi} {A\!\!\!/}^{e} \psi \qquad \text{(331)}
+\mathscr{L} = \mathscr{L}_{D} - ie \overline{\psi} {A\!\!\!/}^{e} \psi \qquad \text{(331)}
 ```
 
 Field equations
@@ -1927,7 +1927,7 @@ These equations are still _linear_, the $`A_{\mu}^{e}`$ being given functions of
 
 ### <a id="s-covariant-commutation-rules-2"></a>Covariant Commutation Rules
 
-Because of the linearity, a change $`\overline{v} \psi ( z )`$ in $`L`$ makes no difference to the field equation for $`\psi ( y )`$. Therefore for every two space-time points $`y`$ and $`z`$ we still have, as in (298),
+Because of the linearity, a change $`\overline{v} \psi ( z )`$ in $`\mathscr{L}`$ makes no difference to the field equation for $`\psi ( y )`$. Therefore for every two space-time points $`y`$ and $`z`$ we still have, as in (298),
 
 <a id="eq-334"></a>
 
@@ -1990,7 +1990,7 @@ We want still to find the continuous rules between $`\psi`$ and $`\psi^{*}`$, or
 <a id="eq-339"></a>
 
 ```math
-\delta L ( r,t ) = \epsilon \delta ( t - t_{o} ) \psi^{*} ( r,t_{o} ) \psi_{n} ( r ) u \qquad \text{(339)}
+\delta \mathscr{L} ( r,t ) = \epsilon \delta ( t - t_{o} ) \psi^{*} ( r,t_{o} ) \psi_{n} ( r ) u \qquad \text{(339)}
 ```
 
 where $`u`$ is an operator anticommuting with $`\psi`$ and $`\psi^{*}`$ as in (288). This produces a change in the field equation for $`\psi`$ which now becomes
@@ -2001,7 +2001,7 @@ where $`u`$ is an operator anticommuting with $`\psi`$ and $`\psi^{*}`$ as in (2
 \left\{ \sum_{\lambda} \gamma_{\lambda} \left( \frac{\partial}{\partial x_{\lambda}} + \frac{ie}{\hbar c} A_{\lambda}^{e} \right) + \mu \right\} \psi = \frac{\epsilon}{\hbar c} \delta ( t - t_{o} ) \beta \psi_{n} ( r ) u \qquad \text{(340)}
 ```
 
-So the change $`\delta \psi`$ produced in $`\psi`$ by the addition of $`\delta L`$ satisfies (341) with the initial condition $`\delta \psi ( r,t ) = 0`$ for $`t<t_{o}`$. (Compare with (198) and (290).) Now the solution of (341) will obviously be of the form
+So the change $`\delta \psi`$ produced in $`\psi`$ by the addition of $`\delta \mathscr{L}`$ satisfies (341) with the initial condition $`\delta \psi ( r,t ) = 0`$ for $`t<t_{o}`$. (Compare with (198) and (290).) Now the solution of (341) will obviously be of the form
 
 <a id="eq-341"></a>
 
@@ -2036,7 +2036,7 @@ Integrating (340) over space-time gives by (339)
 <a id="eq-344"></a>
 
 ```math
-c \int \int \delta L ( r,t ) d^{3} \boldsymbol{r} dt = \epsilon cb_{n}^{*} \exp \left\{ i \frac{E_{n}}{\hbar} t_{o} \right\} u \qquad \text{(344)}
+c \int \int \delta \mathscr{L} ( r,t ) d^{3} \boldsymbol{r} dt = \epsilon cb_{n}^{*} \exp \left\{ i \frac{E_{n}}{\hbar} t_{o} \right\} u \qquad \text{(344)}
 ```
 
 For $`t>t_{o}`$, (343) is the change produced in $`\psi ( r,t )`$ by adding (344) to the action integral. Hence by the Peierls commutation rule, using (193), (343) and (344),
@@ -2799,7 +2799,7 @@ Lagrangian
 <a id="eq-410"></a>
 
 ```math
-L = L_{D} + L_{M} - ie \overline{\psi} {A\!\!\!/} \psi - ie \overline{\psi} {A\!\!\!/}^{e} \psi \qquad \text{(410)}
+\mathscr{L} = \mathscr{L}_{D} + \mathscr{L}_{M} - ie \overline{\psi} {A\!\!\!/} \psi - ie \overline{\psi} {A\!\!\!/}^{e} \psi \qquad \text{(410)}
 ```
 
 Here we use $`A_{\nu} ( x )`$ for the Maxwell potential operators and $`A_{\nu}^{e} ( x )`$ for the potentials of the classical external field.

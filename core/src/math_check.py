@@ -510,7 +510,7 @@ def read(files, dst, ext: str, scale: int, state: dict):
 # Equations built from the letters of a PDF's page (a TeX book): a second
 # reading, by the recognizer, of the place on the page each was built from.
 
-PLACES = "places 5"
+PLACES = "places 6"
 # pixels of a cut-out for each pixel of the page reader's measure (it has
 # 1.5 to a point: 216 dots to the inch, twice the size of an ebook's pictures)
 ZOOM = 2.0
@@ -535,6 +535,9 @@ def tidy(t: str) -> str:
     # recognizer does)
     t = re.sub(r"\{\s*([^{}]+?)\s*\\!\\!\\!/\s*\}", r"\\not \1 ", t)
     t = re.sub(r"\\(slashed|cancel)(?![a-zA-Z])", r"\\not", t)
+    # (… which is the page's to say: the recognizer often reads p̸ as p.
+    # Not the stroke of a sign: "=" and "≠" are two formulas)
+    t = re.sub(r"\\not\s*\{?\s*(?=[A-Za-z]|\\(?:alpha|beta|gamma|delta|epsilon|varepsilon|partial|nabla|sigma|pi|mu|nu|kappa|lambda|xi|eta|zeta|theta|rho|tau|phi|varphi|chi|psi|omega|ell|Gamma|Delta|Sigma|Pi|Phi|Psi|Omega|Lambda)(?![a-zA-Z]))", "", t)
     # (a script letter is the page's to say: the recognizer reads 𝒜 as A)
     t = re.sub(r"\\(mathcal|cal|mathscr)(?![a-zA-Z])", "", t)
     return re.sub(r"\\(quad|qquad)(?![a-zA-Z])", " ", t)

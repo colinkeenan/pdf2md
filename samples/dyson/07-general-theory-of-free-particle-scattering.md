@@ -480,7 +480,7 @@ where $`m_{o}`$ is the mass of the bare electron without interaction and $`\delt
 <a id="eq-526"></a>
 
 ```math
-L_{S} = - \delta mc^{2} \overline{\psi} \psi \qquad \text{(526)}
+\mathscr{L}_{S} = - \delta mc^{2} \overline{\psi} \psi \qquad \text{(526)}
 ```
 
 in the Lagrangian density (410). This would produce an interaction energy
@@ -527,15 +527,15 @@ The self-mass $`\delta m`$ is an unobservable quantity. The observed mass of an 
 
 The reason why $`\delta m`$ still appears explicitly is just that we have _not_ used the observed mass $`m`$ in defining the initial and final states of the system. We defined these states as states of a free electron with the bare mass $`m_{o}`$. Wherever we used the letter $`m`$ for the electron mass in the theory up to this point, in fact it was an inconsistency of notation and we meant by $`m`$ the mass of a _bare_ electron.
 
-It is much better not to change the notation, but to keep the notation and change the interpretation, so that $`m`$ everywhere in the theory is now intended to mean the mass of a real electron. In particular, we set up the interaction representation operators with the real electron mass $`m`$, and the initial and final states of scattering problems are defined as free particles with the correct mass $`m`$. With this changed interpretation, the whole of the theory up to this point is correct, except that in $`L_{D}`$ which appears in the Lagrangian (410) of quantum electrodynamics, and in the field equations (411), (412) satisfied by the Heisenberg operators, the bare mass $`m_{o}`$ must be used instead of $`m`$. We prefer to keep the observed mass $`m`$ in $`L_{D}`$, and correct for it by writing instead of (410)<sup><a id="fnref-75" href="#fn-75">75</a></sup>
+It is much better not to change the notation, but to keep the notation and change the interpretation, so that $`m`$ everywhere in the theory is now intended to mean the mass of a real electron. In particular, we set up the interaction representation operators with the real electron mass $`m`$, and the initial and final states of scattering problems are defined as free particles with the correct mass $`m`$. With this changed interpretation, the whole of the theory up to this point is correct, except that in $`\mathscr{L}_{D}`$ which appears in the Lagrangian (410) of quantum electrodynamics, and in the field equations (411), (412) satisfied by the Heisenberg operators, the bare mass $`m_{o}`$ must be used instead of $`m`$. We prefer to keep the observed mass $`m`$ in $`\mathscr{L}_{D}`$, and correct for it by writing instead of (410)<sup><a id="fnref-75" href="#fn-75">75</a></sup>
 
 <a id="eq-531"></a>
 
 ```math
-L = L_{D} + L_{M} - ie \overline{\psi} {A\!\!\!/} \psi - ie \overline{\psi} {A\!\!\!/}^{e} \psi - L_{S} \qquad \text{(531)}
+\mathscr{L} = \mathscr{L}_{D} + \mathscr{L}_{M} - ie \overline{\psi} {A\!\!\!/} \psi - ie \overline{\psi} {A\!\!\!/}^{e} \psi - \mathscr{L}_{S} \qquad \text{(531)}
 ```
 
-with $`L_{S}`$ given by (526). The radiation interaction becomes then
+with $`\mathscr{L}_{S}`$ given by (526). The radiation interaction becomes then
 
 <a id="eq-532"></a>
 
@@ -553,7 +553,7 @@ In particular, one result of (532) is that for one-electron states the scatterin
 S = 1 + U_{2} - U_{S} \qquad \text{(533)}
 ```
 
-instead of (517), keeping only terms of order $`e^{2}`$. The matrix elements of $`( U_{2} - U_{S} )`$ for one-electron states are all zero. Thus, if we use the correct mass $`m`$ in defining the states of an electron, _there are no longer any observable effects of the radiation interaction on the motion of a free electron._ This shows that the mass-renormalization, the procedure of inserting the term $`( - L_{S} )`$ in (531), is consistent and is likely to give sensible results.
+instead of (517), keeping only terms of order $`e^{2}`$. The matrix elements of $`( U_{2} - U_{S} )`$ for one-electron states are all zero. Thus, if we use the correct mass $`m`$ in defining the states of an electron, _there are no longer any observable effects of the radiation interaction on the motion of a free electron._ This shows that the mass-renormalization, the procedure of inserting the term $`( - \mathscr{L}_{S} )`$ in (531), is consistent and is likely to give sensible results.
 
 ## <a id="s-second-order-radiative-corrections-to-scattering"></a>Second-Order Radiative Corrections to Scattering
 
@@ -1435,7 +1435,7 @@ the contractions being equal to the propagators $`S_{F} , D_{F}`$, and so on.
 
 <a id="fn-74"></a>**74.** Unlike Dyson, Moravcsik cited Eq. (585) as well as Eq. (376). In Eq. (585) are Dirac matrix identities which establish the equality between the first two integrals in Eq. (522). Logically these identities should have been introduced before Chapter 6, but nothing prevents a reader making use of a “forward” reference. [↩](#fnref-74)
 
-<a id="fn-75"></a>**75.** The subscript on the second $`L`$ was originally “$`O`$”. It has been replaced with a subscript “$`D`$”. [↩](#fnref-75)
+<a id="fn-75"></a>**75.** The subscript on the second $`\mathscr{L}`$ was originally “$`O`$”. It has been replaced with a subscript “$`D`$”. [↩](#fnref-75)
 
 <a id="fn-76"></a>**76.** Again, a subscript $`\mu`$ has been appended to the function $`F ( k )`$ to make it a Lorentz vector. See note 31 at Eq. (371). [↩](#fnref-76)
 
