@@ -179,6 +179,8 @@ Any other edit to the text is lost at the next conversion. A note whose place ca
 
 **Equations to check.** For ebook-made and scanned books, each displayed equation is read twice, and for ebook-made books a third time by the page reader's recognizer where that is installed (see [scanned books](#three-kinds-of-pdf)); its reading is the one written where the two recognizers differ in more than bold letters. Where no two readings agree (the two recognizers', or one recognizer's two), the equation is listed in `check-equations.md` in the book's folder, biggest differences first. An entry marked **bold?** is one where the two readings set different letters bold. A last group lists equations whose pictures have bold letters while the reading has none. An equation you correct drops off the list.
 
+For a PDF that holds its math as text (a TeX book), the page reader's recognizer reads the place of each displayed equation a second time, where it is installed. The PDF's own letters are the check: where the recognizer reads the same letters and signs put together otherwise (an exponent the rules left on the line, a small fraction taken apart), and reads them so twice, its reading is written. Where the two differ in more, the equation stays as built and is listed in `check-equations.md` with the recognizer's reading under it. This makes the first conversion of such a book slower (about a quarter of an hour for 4,000 equations); `PDF2MD_SECOND=0` turns it off.
+
 ## Limitations
 
 * **Recognized math is good, not perfect.** A misread formula does not always look broken. Check equations you rely on against the book; the page markers make that one click.

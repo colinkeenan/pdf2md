@@ -19,6 +19,7 @@ pub mod blocks;
 mod brackets;
 pub mod course;
 pub mod emit;
+pub mod second;
 pub mod epub;
 pub mod upright;
 pub mod columns;
@@ -129,6 +130,17 @@ pub struct Cell {
     pub span: usize,
 }
 
+/// Where on a PDF page something stands: the page's number and the area
+/// there, in the page reader's pixels (left, top, right, bottom), as the
+/// lines of the page have it (see `layout::Page::shift`).
+#[derive(Debug, Clone, PartialEq)]
+pub struct Place {
+    pub page: u32,
+    pub area: [f32; 4],
+    /// What its second reading came to (see [`second`]).
+    pub second: Option<second::Second>,
+}
+
 #[derive(Debug, Clone)]
 pub enum Block {
     /// `level` 0 = not decided yet (see `structure` and `links`).
@@ -136,7 +148,10 @@ pub enum Block {
     Para(Vec<Inline>),
     /// `source`: the equation image it was read from, when it is exactly
     /// one (so a hand correction of it can be kept; see `ocr`).
-    Equation { latex: String, tag: Option<String>, source: Option<String> },
+    /// `place`: for an equation built from the page's letters, the page
+    /// and the area there it was built from (a second reading of it is
+    /// cut from there; see `second`).
+    Equation { latex: String, tag: Option<String>, source: Option<String>, place: Option<Place> },
     Anchor(String),
     Toc(Vec<TocEntry>),
     /// A bulleted line: index entries and the linked TOC.
@@ -439,6 +454,8 @@ pub fn convert_pdf_as(path: &Path, pages: Option<(u32, u32)>, pictures: bool) ->
         book.unfolds = unfolds;
         book.shifts = doc.pages.iter().filter(|p| p.shift != 0.0).map(|p| (p.number, p.shift)).collect();
         ocr::read_picture_tables(&mut book, path);
+        // the equations built from the pages' letters, read a second time
+        second::read(&mut book, path);
         book
     };
     book.title = book_title(original, &doc);

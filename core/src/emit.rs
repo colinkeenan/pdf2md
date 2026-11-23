@@ -86,6 +86,26 @@ pub fn set_math_form(form: MathForm) {
     FORM.store(form as u8, std::sync::atomic::Ordering::Relaxed);
 }
 
+/// The LaTeX, as converted, of the equations the reader has corrected by
+/// hand (the `was` of each `pdf2md:fix` and `pdf2md:gone` mark), for the
+/// book being written: see [`rule_stays`].
+static FIXED: std::sync::RwLock<Vec<String>> = std::sync::RwLock::new(Vec::new());
+
+/// Tell which equations of the book that is written next were corrected
+/// by hand.
+pub(crate) fn set_fixed(user: &crate::userdata::UserData) {
+    if let Ok(mut f) = FIXED.write() {
+        *f = user.eqs.iter().map(|e| e.was.clone()).collect();
+    }
+}
+
+/// Is this block, written from what the rules built, one the reader has
+/// corrected? Then it is written so again, though a second reading would
+/// take its place: the correction is of that LaTeX and finds it by it.
+fn rule_stays(block: &str) -> bool {
+    FIXED.read().is_ok_and(|f| f.iter().any(|was| [(DISPLAY_OPEN, DISPLAY_CLOSE), ("$$\n", "\n$$")].iter().any(|(open, close)| block.contains(&format!("{open}{was}{close}")))))
+}
+
 pub fn math_form() -> MathForm {
     if FORM.load(std::sync::atomic::Ordering::Relaxed) == MathForm::Dollar as u8 {
         MathForm::Dollar
@@ -702,7 +722,20 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
                 out.push_str("\n\n");
             }
         }
-        Block::Equation { latex, tag, source } => {
+        Block::Equation { latex, tag, source, place } => {
+            // (what the second reading of an equation built from the
+            // page's letters came to: the recognizer's LaTeX in place of
+            // the rules', unless the reader corrected the rules' by hand;
+            // or a doubt, and then an anchor for the list of those)
+            let second = place.as_ref().and_then(|p| p.second.as_ref());
+            let number = tag.as_ref().map(|t| format!(" \\tag{{{t}}}")).unwrap_or_default();
+            let latex = match second.and_then(|s| s.rule.as_ref()) {
+                Some(rule) if rule_stays(&display(&format!("{}{number}", mend(rule)), math_form())) => rule,
+                _ => latex,
+            };
+            if let Some(s) = second.filter(|s| s.doubt.is_some()) {
+                out.push_str(&format!("<a id=\"second-{}\"></a>\n\n", s.key));
+            }
             // an invisible anchor per equation number, for references to it
             for t in crate::equation_numbers(latex, tag.as_deref()) {
                 out.push_str(&format!("<a id=\"{}\"></a>\n\n", crate::equation_id(&t)));
@@ -1373,6 +1406,9 @@ fn check_list(book: &Book) -> Option<String> {
     let mut items: Vec<(usize, String)> = Vec::new();
     // equations whose picture has bold letters and whose reading has none
     let mut lacking: Vec<String> = Vec::new();
+    // equations built from a page's letters that the recognizer read
+    // otherwise (see `second`): each with that reading under it
+    let mut doubts: Vec<String> = Vec::new();
     for ch in &book.chapters {
         let mut page: Option<String> = None;
         let see = |id: &str, page: &mut Option<String>| {
@@ -1404,12 +1440,29 @@ fn check_list(book: &Book) -> Option<String> {
                         lacking.push(format!("- [{name}]({}.md#img-{k}) — {}{at}", ch.slug, ch.title));
                     }
                 }
+                Block::Equation { tag, place: Some(crate::Place { second: Some(s), .. }), .. } => {
+                    if let Some(reading) = &s.doubt {
+                        let name = tag.as_ref().map_or("equation".to_string(), |t| format!("({t})"));
+                        let at = page.as_ref().map(|p| format!(", {p}")).unwrap_or_default();
+                        let other: String = display(&mend(&crate::ocr::tidy_reading(reading)), math_form()).trim_end().lines().map(|l| format!("  {l}\n")).collect();
+                        doubts.push(format!("- [{name}]({}.md#second-{}) — {}{at}. The recognizer read:\n\n{other}", ch.slug, s.key, ch.title));
+                    }
+                }
                 _ => {}
             }
         }
     }
+    let doubts = if doubts.is_empty() {
+        String::new()
+    } else {
+        format!(
+            "## Built from the page's letters, read otherwise by the recognizer ({})\n\nThese equations were put together by rule from where the letters stand on the page. The recognizer, reading the same place as a picture, saw another formula: other letters or signs, or the same ones put together otherwise without reading them so twice. Under each is what it read. The letters are surer in the book's equation (the PDF names them); how they are put together, exponents, small fractions and rows, is often surer in the recognizer's. Compare with the PDF page and correct the equation where it is wrong.\n\n{}\n",
+            doubts.len(),
+            doubts.join("\n")
+        )
+    };
     if items.is_empty() && lacking.is_empty() {
-        return None;
+        return (!doubts.is_empty()).then(|| format!("# Equations to check\n\n{doubts}"));
     }
     let lacking = if lacking.is_empty() {
         String::new()
@@ -1431,7 +1484,7 @@ fn check_list(book: &Book) -> Option<String> {
     let bold = items.iter().filter(|(_, l)| l.ends_with("**bold?**")).count();
     let bold = if bold == 0 { String::new() } else { format!(" In {bold} of them the two readings set different letters bold: those are marked **bold?**, for a look at which letters are bold in the book.") };
     Some(format!(
-        "# Equations to check\n\nThese equations were read from their pictures as different formulas (formatting aside) by the two recognizers, or by the one in its two readings, so compare them with the book. The bigger the difference, the likelier the reading is wrong. Correct one in the chapter file (or in book.md); the next conversion keeps your correction and drops it from this list.{bold}\n\n{}{}{}{lacking}",
+        "# Equations to check\n\nThese equations were read from their pictures as different formulas (formatting aside) by the two recognizers, or by the one in its two readings, so compare them with the book. The bigger the difference, the likelier the reading is wrong. Correct one in the chapter file (or in book.md); the next conversion keeps your correction and drops it from this list.{bold}\n\n{}{}{}{lacking}{doubts}",
         group("Big differences (more than 10 symbols)", &|n| n > 10),
         group("Medium differences (4–10 symbols)", &|n| (4..=10).contains(&n)),
         group("Small differences (1–3 symbols)", &|n| n <= 3),
@@ -1607,6 +1660,7 @@ pub(crate) fn relative(dir: &Path, file: &Path) -> PathBuf {
 
 pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
     std::fs::create_dir_all(dir)?;
+    set_fixed(&book.user);
     if let Some(pdf) = &book.source {
         link_pdf(pdf, dir);
     }
@@ -1668,6 +1722,31 @@ pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn a_second_reading_is_written_unless_the_rules_latex_was_corrected_by_hand() {
+        let rule = "e^{- \\tfrac{x 2}{4}}";
+        let second = crate::second::Second { rule: Some(rule.into()), doubt: None, key: "0123456789abcdef".into() };
+        let place = crate::Place { page: 3, area: [0.0, 0.0, 10.0, 10.0], second: Some(second) };
+        let eq = Block::Equation { latex: "e^{-\\frac{x^2}{4}}".into(), tag: Some("1.2".into()), source: None, place: Some(place.clone()) };
+        let written = |b: &Block| {
+            let mut out = String::new();
+            render_block(b, &mut out, &mut false);
+            out
+        };
+        assert!(written(&eq).contains("e^{-\\frac{x^2}{4}} \\qquad \\text{(1.2)}"), "{}", written(&eq));
+        // the reader corrected what the rules built: that is written, for
+        // the correction to find it
+        let fix = crate::userdata::EqFix { slug: None, was: format!("{rule} \\qquad \\text{{(1.2)}}"), block: String::new() };
+        set_fixed(&crate::userdata::UserData { eqs: vec![fix], ..Default::default() });
+        assert!(written(&eq).contains(rule), "{}", written(&eq));
+        set_fixed(&Default::default());
+        // an equation the recognizer read otherwise without being taken:
+        // an anchor above it, for the list of equations to check
+        let doubt = crate::second::Second { rule: None, doubt: Some("x".into()), key: "0123456789abcdef".into() };
+        let eq = Block::Equation { latex: "y".into(), tag: None, source: None, place: Some(crate::Place { second: Some(doubt), ..place }) };
+        assert!(written(&eq).starts_with("<a id=\"second-0123456789abcdef\"></a>\n\n"), "{}", written(&eq));
+    }
 
     #[test]
     fn a_file_that_comes_out_the_same_keeps_its_date() {

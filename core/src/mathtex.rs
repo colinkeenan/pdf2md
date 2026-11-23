@@ -3432,12 +3432,31 @@ pub fn tag_of(t: &str) -> Option<String> {
 
 /// Split a displayed block (all spans of its lines) into equations, each
 /// with its LaTeX and optional equation number.
-pub fn display(
+pub fn display(spans: Vec<MSpan>, bars: &[Rule], right_margin: f32, body: f32) -> Vec<(String, Option<String>)> {
+    display_areas(spans, bars, right_margin, body).into_iter().map(|(latex, tag, _)| (latex, tag)).collect()
+}
+
+/// Where on the page pieces and bars stand, all of them together: left,
+/// top, right, bottom.
+pub type Area = [f32; 4];
+
+fn bounds(spans: &[MSpan], bars: &[Rule]) -> Area {
+    let a = spans.iter().fold([f32::MAX, f32::MAX, f32::MIN, f32::MIN], |a, s| [a[0].min(s.left), a[1].min(s.top), a[2].max(s.right), a[3].max(s.bottom)]);
+    bars.iter().fold(a, |a, b| [a[0].min(b.left), a[1].min(b.top), a[2].max(b.right), a[3].max(b.bottom)])
+}
+
+fn both(a: Area, b: Area) -> Area {
+    [a[0].min(b[0]), a[1].min(b[1]), a[2].max(b[2]), a[3].max(b[3])]
+}
+
+/// [`display`], each equation with the area of the page it was built
+/// from (without its number): the place a second reading of it is cut from.
+pub fn display_areas(
     spans: Vec<MSpan>,
     bars: &[Rule],
     right_margin: f32,
     body: f32,
-) -> Vec<(String, Option<String>)> {
+) -> Vec<(String, Option<String>, Area)> {
     let (tags, mut rest): (Vec<MSpan>, Vec<MSpan>) = spans
         .into_iter()
         .partition(|s| tag_of(&s.text).is_some() && s.right >= right_margin - 1.5 * body);
@@ -3447,7 +3466,7 @@ pub fn display(
         for z in 0..=cuts.len() {
             let part: Vec<MSpan> = rest.iter().chain(&tags).filter(|s| zone(s.cy()) == z).cloned().collect();
             let pbars: Vec<Rule> = bars.iter().filter(|b| zone((b.top + b.bottom) / 2.0) == z).copied().collect();
-            out.extend(display(part, &pbars, right_margin, body));
+            out.extend(display_areas(part, &pbars, right_margin, body));
         }
         return out;
     }
@@ -3457,7 +3476,7 @@ pub fn display(
     if rest.is_empty() {
         return tags
             .iter()
-            .map(|t| (String::new(), tag_of(&t.text)))
+            .map(|t| (String::new(), tag_of(&t.text), bounds(std::slice::from_ref(t), &[])))
             .collect();
     }
 
@@ -3681,7 +3700,8 @@ pub fn display(
     }
     if anchors.len() <= 1 {
         let tag = tags.first().and_then(|t| tag_of(&t.text));
-        return vec![(build_with(&rest, bars), tag)];
+        let area = bounds(&rest, bars);
+        return vec![(build_with(&rest, bars), tag, area)];
     }
     let nearest = |y: f32| -> usize {
         (0..anchors.len())
@@ -3823,30 +3843,33 @@ pub fn display(
     }
 
     // Equations: a row plus the continuation rows below it.
-    let mut eqs: Vec<(Vec<String>, Option<String>)> = Vec::new();
+    let mut eqs: Vec<(Vec<String>, Option<String>, Area)> = Vec::new();
     for k in 0..anchors.len() {
         MULTILINE.with(|m| m.set(true));
         let t = build_with(&groups[k], &gbars[k]);
         MULTILINE.with(|m| m.set(false));
+        let area = bounds(&groups[k], &gbars[k]);
         match eqs.last_mut() {
             Some(e) if anchors[k].1 => {
                 e.0.push(t);
                 if e.1.is_none() {
                     e.1 = gtags[k].clone();
                 }
+                e.2 = both(e.2, area);
             }
-            _ => eqs.push((vec![t], gtags[k].clone())),
+            _ => eqs.push((vec![t], gtags[k].clone(), area)),
         }
     }
     // One equation number for several equations: a system, one block.
     if tags.len() == 1 && eqs.len() > 1 {
+        let area = eqs.iter().map(|e| e.2).reduce(both).unwrap_or([0.0; 4]);
         let rows: Vec<String> = eqs.into_iter().flat_map(|e| e.0).collect();
         let tag = tags.first().and_then(|t| tag_of(&t.text));
-        return vec![(aligned(&rows), tag)];
+        return vec![(aligned(&rows), tag, area)];
     }
     eqs.into_iter()
-        .filter(|(r, t)| r.iter().any(|x| !x.is_empty()) || t.is_some())
-        .map(|(r, t)| if r.len() == 1 { (r[0].clone(), t) } else { (aligned(&r), t) })
+        .filter(|(r, t, _)| r.iter().any(|x| !x.is_empty()) || t.is_some())
+        .map(|(r, t, a)| if r.len() == 1 { (r[0].clone(), t, a) } else { (aligned(&r), t, a) })
         .collect()
 }
 

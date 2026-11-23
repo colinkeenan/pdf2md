@@ -1215,7 +1215,7 @@ fn grid_tables(doc: &Doc, page: &crate::layout::Page, lines: &[Line], st: &Stats
                 if let [(latex, _)] = &eqs[..] {
                     if !latex.is_empty() {
                         let area = Figure { left, right, top, bottom };
-                        out.push((first, end, Some(Block::Equation { latex: format!("\\boxed{{{latex}}}"), tag: number, source: None }), area, false));
+                        out.push((first, end, Some(Block::Equation { latex: format!("\\boxed{{{latex}}}"), tag: number, source: None, place: None }), area, false));
                         continue;
                     }
                 }
@@ -2457,7 +2457,7 @@ impl Builder<'_> {
             if let ([key], [tex], true) = (sources.as_slice(), formulas.as_slice(), rest_is_points) {
                 let points: String = p.iter().filter_map(|i| if let Inline::Text(t) = i { Some(t.trim()) } else { None }).collect();
                 let latex = if points.is_empty() || tex.trim_end().ends_with(['.', ',', ';']) { tex.to_string() } else { format!("{} {points}", tex.trim_end()) };
-                let block = Block::Equation { latex, tag: None, source: Some(key.to_string()) };
+                let block = Block::Equation { latex, tag: None, source: Some(key.to_string()), place: None };
                 self.out.push(Blk { block, page: self.para_page, centered: false, goes_on: false });
             } else {
                 // The list of references of an article that gives it no
@@ -3050,7 +3050,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                             b.push(picture);
                             // (a framed equation's number, with its anchor)
                             if let Some(tag) = grid_tags.get(&i) {
-                                b.push(Block::Equation { latex: String::new(), tag: Some(tag.clone()), source: None });
+                                b.push(Block::Equation { latex: String::new(), tag: Some(tag.clone()), source: None, place: None });
                             }
                         }
                     }
@@ -3063,7 +3063,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
             if let Some((_, j, cols)) = tables.iter().find(|t| t.0 == i && !on_table(t.0, t.1)).filter(|_| !b.index_mode) {
                 b.flush();
                 b.anchor_block();
-                b.push(Block::Equation { latex: table_latex(doc, &doc.pages[page.index].rules, &lines[i..*j], cols), tag: None, source: None });
+                b.push(Block::Equation { latex: table_latex(doc, &doc.pages[page.index].rules, &lines[i..*j], cols), tag: None, source: None, place: None });
                 prev_top = Some(lines[j - 1].top);
                 last_heading = None;
                 i = *j;
@@ -3072,7 +3072,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
             if let Some((j, latex, tag)) = braced_statement(doc, lines, &disp, i, end, st).filter(|_| !b.index_mode) {
                 b.flush();
                 b.anchor_block();
-                b.push(Block::Equation { latex, tag, source: None });
+                b.push(Block::Equation { latex, tag, source: None, place: None });
                 prev_top = Some(lines[j - 1].top);
                 last_heading = None;
                 i = j;
@@ -3106,16 +3106,28 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                     [one] => one.image_key.clone(),
                     _ => None,
                 };
-                let eqs = mathtex::display(spans, &bars, st.right, st.body);
+                let eqs = mathtex::display_areas(spans, &bars, st.right, st.body);
                 if std::env::var_os("PDF2MD_DISPDEBUG").is_some() {
                     for e in &eqs {
                         eprintln!("EQ {}", e.0);
                     }
                 }
+                // PDF2MD_DISPDEBUG=3: where each displayed equation stands on
+                // its page (number, left, top, right, bottom), and its LaTeX
+                if std::env::var("PDF2MD_DISPDEBUG").is_ok_and(|v| v == "3") {
+                    let shift = doc.pages[page.index].shift;
+                    for e in &eqs {
+                        eprintln!("DEQ\t{number}\t{:.1}\t{:.1}\t{:.1}\t{:.1}\t{}\t{}", e.2[0] + shift, e.2[1], e.2[2] + shift, e.2[3], e.1.clone().unwrap_or_default(), e.0.replace('\n', " "));
+                    }
+                }
                 let single = eqs.len() == 1;
-                for (latex, tag) in eqs {
+                let from_letters = lines[i..j].iter().all(|l| l.spans.iter().all(|s| s.tex.is_none() && s.picture.is_none()));
+                for (latex, tag, area) in eqs {
                     if !latex.is_empty() || tag.is_some() {
-                        b.push(Block::Equation { latex, tag, source: if single { source.clone() } else { None } });
+                        // (where it stands: only what was built from the page's
+                        // letters has a second reading to be made of it)
+                        let place = (from_letters && !latex.is_empty() && area[2] > area[0] && area[3] > area[1]).then_some(crate::Place { page: number, area, second: None });
+                        b.push(Block::Equation { latex, tag, source: if single { source.clone() } else { None }, place });
                     }
                 }
                 prev_top = Some(lines[j - 1].top);

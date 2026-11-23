@@ -404,6 +404,23 @@ Three rules that came out of this work apply to every PDF with text:
 * **One letter alone in a bold font** is a symbol of a formula, with whatever index it bears (a vector **r**₁ had come out as a bold word and a stray index). Not in a line that is bold altogether, a title. A letter of TeX's bold roman font is written upright (`\mathbf`), one of a bold math font slanted (`\boldsymbol`).
 * **The rest of a label at a picture's edge** ("(" just inside the picture, "R, B)" right behind it) goes into the picture with its first piece: up to six characters, each piece right behind the one before.
 
+### A second reading of the displayed equations
+
+*General in its way of working; the numbers are UCSD's. Needs the page reader's recognizer (the environment of scanned books); without it this step is left out.*
+
+On UCSD's 3,966 displayed equations: 3,642 are read the same by both, 62 are written as the recognizer read them, 214 are listed to check, 48 it did not read as a formula. Of the 62, 40 were compared with the page by eye and all 40 are right. Of the 23 equations that had been corrected by hand, 5 are among the 62 and 12 are on the list. The first conversion takes about a quarter of an hour longer (RTX 5080), later ones no longer.
+
+The rules above know every letter of a formula, because the PDF names them, but they have to work out from the letters' places how the formula is put together, and that is where they go wrong: an exponent left on the line, the halves of a small fraction taken apart, the rows of a matrix mixed. A recognizer that reads the formula as a picture has the opposite strengths. So the place of each displayed equation is cut out of its page (216 dots to the inch) and read by the recognizer, and the two readings are compared:
+
+* **The same formula** (ways of writing aside): nothing is done.
+* **The same letters and signs, each as often, put together otherwise**, and the recognizer reads them so a second time from a picture half as large again: its reading is written. The count of letters and signs is the check on the recognizer, which now and then invents a bar or a minus sign; brackets and bars count, what only orders the signs (`^`, `_`, `\frac`, the rows of an array) does not. Two more things must hold, because the recognizer reads two rows of fractions between brackets as one fraction of fractions: its reading has the same matrices, cases and arrays as the rules' (rows and cells counted), and no more fractions whose two halves are fractions themselves.
+* **Anything else** (other letters or signs, or two readings that differ): the equation stays as the rules built it and is listed in `check-equations.md` with the recognizer's reading under it.
+* **No formula read** (the recognizer saw words, or wrote nothing): the equation stays.
+
+An equation's number is not part of the place cut out; it stays as the rules found it. The readings are kept in `~/.cache/pdf2md/second/` by PDF, page and place, so each place is read once; the verdict is made again when the rules build other LaTeX for it. A batch is given no more room than the rules' LaTeX says its longest formula can need, because the recognizer sometimes writes the columns of an array on and on. `PDF2MD_SECOND=0` turns the step off.
+
+A correction made by hand is of what the rules built (the `pdf2md:fix` mark holds that LaTeX). Where such a mark exists the rules' LaTeX is written, not the recognizer's, so the correction finds its equation.
+
 ## PDFs made from ebooks
 
 A PDF made from an ebook, with calibre or from Kindle, holds its prose as text but its math in two other ways: larger formulas as small pictures, and simple math inside sentences in the ordinary text font. pdf2md takes this path when the book has no Computer Modern fonts.

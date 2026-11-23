@@ -28,9 +28,9 @@ pub enum Reading {
 }
 
 /// The recognizer script, written next to the cache when it is run.
-const SCRIPT: &str = include_str!("math_ocr.py");
+pub(crate) const SCRIPT: &str = include_str!("math_ocr.py");
 /// The second opinion on each reading, from the page reader's recognizer.
-const CHECK_SCRIPT: &str = include_str!("math_check.py");
+pub(crate) const CHECK_SCRIPT: &str = include_str!("math_check.py");
 /// The rules its choices are made by (RULES in math_check.py).
 const CHECK_RULES: &str = "rules 5";
 
@@ -472,6 +472,12 @@ fn python() -> Option<PathBuf> {
     let home = PathBuf::from(std::env::var_os("HOME")?);
     let p = home.join(".local/share/pdf2md/ocr/.venv/bin/python");
     p.exists().then_some(p)
+}
+
+/// A recognizer's LaTeX as it is written: without the equation's number,
+/// a table of one cell unwrapped, its rows lined up at their signs.
+pub(crate) fn tidy_reading(t: &str) -> String {
+    align_rows(&unglue(unwrap_cell(&strip_numbers(t))))
 }
 
 fn read_cached(dir: &std::path::Path, k: &str) -> Option<Reading> {
@@ -1195,7 +1201,7 @@ fn read_tables(book: &mut crate::Book, pdf: &std::path::Path) {
 /// Run the recognizer, passing on what it says and reporting how far it
 /// is: it prints lines like "  reading 16/420", with one word for each of
 /// its steps.
-fn run_recognizer(cmd: &mut Command) -> bool {
+pub(crate) fn run_recognizer(cmd: &mut Command) -> bool {
     use std::io::BufRead;
     let Ok(mut child) = cmd.stderr(std::process::Stdio::piped()).spawn() else { return false };
     if let Some(pipe) = child.stderr.take() {

@@ -911,6 +911,7 @@ pub fn write_course(folder: &Path, out: &Path) -> Result<Vec<PathBuf>, String> {
     std::fs::create_dir_all(out).map_err(|e| format!("{}: {e}", out.display()))?;
     // the reader's notes and fixes from the earlier conversion
     let mut user = crate::userdata::collect(out);
+    emit::set_fixed(&user);
     crate::userdata::backup(&user, out);
 
     // the PDFs of each folder, by the name a page's link has for them

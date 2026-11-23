@@ -1131,7 +1131,7 @@ fn equation(maths: &[String], beside: &str, key: String) -> Block {
     if let Some(fixed) = crate::ocr::read_correction(&key) {
         latex = fixed;
     }
-    Block::Equation { latex, tag, source: Some(key) }
+    Block::Equation { latex, tag, source: Some(key), place: None }
 }
 
 fn plain(inl: &[Inline]) -> String {
@@ -2277,7 +2277,7 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
                                 let number = table_number(&mut rows);
                                 made.push(Block::Table { key: crate::table_key(page.number, &rows), rows, widths: Vec::new(), title: Vec::new(), note: Vec::new() });
                                 if number.is_some() {
-                                    made.push(Block::Equation { latex: String::new(), tag: number, source: None });
+                                    made.push(Block::Equation { latex: String::new(), tag: number, source: None, place: None });
                                 }
                                 made.push(Block::Picture { page: page.number, area, alt: crate::TABLE_READ.into() });
                             }
@@ -2342,7 +2342,7 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
                 let under_table = matches!(blks.as_slice(), [.., Blk { block: Block::Table { .. }, .. }, Blk { block: Block::Picture { .. }, page, .. }] if *page == pi);
                 if number.is_some() && under_table {
                     let picture = blks.pop();
-                    push(&mut blks, Block::Equation { latex: String::new(), tag: number, source: None });
+                    push(&mut blks, Block::Equation { latex: String::new(), tag: number, source: None, place: None });
                     blks.extend(picture);
                     continue;
                 }

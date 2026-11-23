@@ -506,7 +506,189 @@ def read(files, dst, ext: str, scale: int, state: dict):
         tell("comparing", min(i + BATCH, len(files)), len(files))
 
 
+# ---------------------------------------------------------------------------
+# Equations built from the letters of a PDF's page (a TeX book): a second
+# reading, by the recognizer, of the place on the page each was built from.
+
+PLACES = "places 3"
+# pixels of a cut-out for each pixel of the page reader's measure (it has
+# 1.5 to a point: 216 dots to the inch, twice the size of an ebook's pictures)
+ZOOM = 2.0
+
+
+def tidy(t: str) -> str:
+    """The ways of writing in which the LaTeX built by rule differs from a
+    recognizer's: a space before a bracket (which made "u ( x )" at a
+    line's end look like an equation's number), the ångström, the
+    variants of Greek letters (the page's letter is the one that counts),
+    a root sign left bare, dots, a bullet in front."""
+    t = re.sub(r"\s+(?=[()\[\]|,.;:!])", "", t)
+    t = t.replace("˚ A", "Å").replace("˚A", "Å")
+    t = re.sub(r"\\mathring\s*\{?\s*A\s*\}?", "Å", t)
+    t = re.sub(r"\\text\s*\{\s*Å\s*\}", "Å", t)
+    t = t.replace("ℑ", "\\Im ").replace("ℜ", "\\Re ")
+    t = re.sub(r"\\var(phi|epsilon|theta|rho)(?![a-zA-Z])", r"\\\1", t)
+    t = re.sub(r"\\surd(?![a-zA-Z])", r"\\sqrt", t)
+    t = re.sub(r"\.\s*\.\s*\.", r"\\dots ", t)
+    t = re.sub(r"^\s*(\\bullet|•)\s*", "", t)
+    return re.sub(r"\\(quad|qquad)(?![a-zA-Z])", " ", t)
+
+
+# what says how a formula's signs stand to each other, and is no sign itself
+STRUCTURE = {"^", "_", "\\frac", "\\beginarray", "\\endarray", "\\hline", "\\B", "\\over", ".", ",", ";", "\\begin", "\\end"}
+
+
+def signs(t: str):
+    """The letters and signs of a formula, each with how often it occurs:
+    brackets and bars too, but not what only orders them (an exponent's
+    "^", a fraction's command, the rows of an array)."""
+    import collections
+
+    return collections.Counter(tok for tok in m.canonical(tidy(t)) if tok not in STRUCTURE)
+
+
+COLUMNS = r"\\begin\{(pmatrix|bmatrix|Bmatrix|vmatrix|Vmatrix|matrix|smallmatrix|cases|array)\}"
+
+
+def shape(t: str):
+    """The matrices, cases and arrays of a formula: of each, how many rows
+    and how many cell marks. And how many fractions it has whose two
+    halves are fractions themselves. The recognizer reads two rows of
+    fractions between brackets as one such fraction of fractions: a
+    reading with other matrices than the rules built, or more of those
+    fractions, is not taken unseen."""
+    grids = []
+    for f in re.finditer(COLUMNS, t):
+        end = t.find("\\end{" + f.group(1) + "}", f.end())
+        body = t[f.end() : end if end > 0 else len(t)]
+        grids.append((body.count("\\\\") + 1, body.count("&")))
+    fraction = r"\\[td]?frac(?![a-zA-Z])"
+
+    def leads(half: str) -> bool:
+        # (a half that is a fraction: with its sign, in its brackets)
+        return re.match(r"[\s\-+({\[]*(\\left\s*[(\[]\s*)?" + fraction, half) is not None
+
+    stacked = 0
+    for f in re.finditer(fraction, t):
+        top = group_at(t, f.end())
+        under = group_at(t, top[1]) if top else None
+        stacked += bool(top and under and leads(top[0]) and leads(under[0]))
+    return sorted(grids), stacked
+
+
+def same_formula(a: str, b: str) -> bool:
+    try:
+        return loose(tidy(a)) == loose(tidy(b))
+    except Exception:
+        return False
+
+
+def page_picture(pdf: str, page: int, state: dict) -> Image.Image:
+    """A page of the PDF as a picture, at the size the cut-outs are made
+    (the last few pages are kept: equations come page by page)."""
+    import subprocess
+    import tempfile
+
+    kept = state.setdefault("pages", {})
+    if page not in kept:
+        if len(kept) >= 4:
+            kept.clear()
+        with tempfile.TemporaryDirectory() as tmp:
+            stem = os.path.join(tmp, "p")
+            subprocess.run(["pdftoppm", "-r", str(72 * 1.5 * ZOOM), "-f", str(page), "-l", str(page), "-singlefile", "-png", pdf, stem], check=True, capture_output=True)
+            kept[page] = Image.open(stem + ".png").convert("RGB")
+    return kept[page]
+
+
+def cut_out(pdf: str, job, state: dict, scale: float = 1.0) -> Image.Image:
+    """The place of an equation on its page, on a white ground."""
+    page = page_picture(pdf, job["page"], state)
+    x0, y0, x1, y1 = (v * ZOOM for v in job["area"])
+    edge = 8
+    img = page.crop((max(0, int(x0 - edge)), max(0, int(y0 - edge)), min(page.width, int(x1 + edge)), min(page.height, int(y1 + edge))))
+    if scale != 1.0:
+        img = img.resize((max(1, int(img.width * scale)), max(1, int(img.height * scale))), Image.LANCZOS)
+    out = Image.new("RGB", (img.width + 40, img.height + 40), "white")
+    out.paste(img, (20, 20))
+    return out
+
+
+def read_places(pdf: str, jobs, dst, ext: str, scale: float, state: dict):
+    """Read the places of these equations; what the recognizer gives is
+    kept as KEY.`ext`. The widest go together: a batch takes as long as
+    its largest picture."""
+    if not jobs:
+        return
+    rec = page_reader(state)
+    done = 0
+    tell("comparing", 0, len(jobs))
+    # (a few pages at a time, so each page is drawn once; within that by
+    # length: a batch takes as long as its longest formula, and no longer
+    # than the LaTeX the rules built says it can be — the recognizer now
+    # and then writes the columns of an array on and on, to its limit)
+    order = sorted(jobs, key=lambda j: (j["page"] // 8, len(j["rule"])))
+    for i in range(0, len(order), BATCH):
+        part = order[i : i + BATCH]
+        imgs = [cut_out(pdf, j, state, scale) for j in part]
+        limit = min(1024, 96 + max(len(j["rule"]) for j in part))
+        preds = rec(images=imgs, bboxes=[[[0, 0, im.width, im.height]] for im in imgs], task_names=["block_without_boxes"] * len(imgs), math_mode=True, max_tokens=limit)
+        for j, p in zip(part, preds):
+            (dst / f"{j['key']}.{ext}").write_text(" ".join(line.text for line in p.text_lines) + "\n")
+        done += len(part)
+        tell("comparing", done, len(jobs))
+
+
+def places(pdf: str, jobs_file: str, dst: Path):
+    """The second reading of equations built from a page's letters. Each
+    line of the jobs: key, page, the area (four numbers), a stamp (the
+    rules' version and a print of the LaTeX built), that LaTeX.
+
+    Written for each, KEY.second: the verdict, the stamp, and the
+    recognizer's LaTeX.
+      same   the recognizer read the formula the rules built
+      take   it read the same letters and signs in another order (an
+             exponent that the rules left on the line, a small fraction's
+             halves), with the same matrices and no more fractions of
+             fractions, and
+             read them so twice: its reading is the formula
+      check  the readings differ in more than that, or its two readings
+             differ: to be looked at
+      unread it gave no formula (words, or nothing)"""
+    jobs = []
+    for line in open(jobs_file, encoding="utf-8"):
+        f = line.rstrip("\n").split("\t")
+        if len(f) >= 8:
+            jobs.append({"key": f[0], "page": int(f[1]), "area": [float(x) for x in f[2:6]], "stamp": f[6], "rule": f[7]})
+    state = {}
+    read_places(pdf, [j for j in jobs if not (dst / f"{j['key']}.surya").exists()], dst, "surya", 1.0, state)
+
+    def reading(j, ext):
+        f = dst / f"{j['key']}.{ext}"
+        return as_latex(f.read_text()) if f.exists() else None
+
+    # (where it reads other than the rules built: once more, larger)
+    differs = [j for j in jobs if (o := reading(j, "surya")) is not None and not same_formula(j["rule"], o)]
+    read_places(pdf, [j for j in differs if not (dst / f"{j['key']}.surya3").exists()], dst, "surya3", 1.5, state)
+    counts = {"same": 0, "take": 0, "check": 0, "unread": 0}
+    for j in jobs:
+        other = reading(j, "surya")
+        if other is None:
+            verdict = "unread"
+        elif same_formula(j["rule"], other):
+            verdict = "same"
+        else:
+            again = reading(j, "surya3")
+            twice = again is not None and same_formula(other, again)
+            (grids, stacked), (other_grids, other_stacked) = shape(j["rule"]), shape(other)
+            verdict = "take" if twice and signs(j["rule"]) == signs(other) and grids == other_grids and other_stacked <= stacked else "check"
+        counts[verdict] += 1
+        (dst / f"{j['key']}.second").write_text(f"{verdict}\n{j['stamp']}\n{other or ''}\n")
+    print(f"  {len(jobs)} equations built from the page's letters: {counts['same']} read the same by the recognizer, {counts['take']} written as it read them, {counts['check']} listed to check, {counts['unread']} not read", file=sys.stderr, flush=True)
+
+
 def main():
+    if len(sys.argv) > 4 and sys.argv[1] == "--places":
+        return places(sys.argv[2], sys.argv[3], Path(sys.argv[4]))
     src, dst = Path(sys.argv[1]), Path(sys.argv[2])
     files = sorted(src.glob("*.png"))
     math = []
