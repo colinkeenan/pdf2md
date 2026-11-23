@@ -1356,7 +1356,8 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
                 let s = &spans[i];
                 // (the box of a sign of a symbol font hangs lower than the
                 // letters': the minus of −1 over 2 ends a little under the bar)
-                let sign = s.atom.is_none() && matches!(s.text.trim(), "−" | "±" | "∓") && s.bottom <= b.top + 0.35 * size && s.cy() <= b.top - 0.3 * size;
+                // (… by its own size: the small minus of a small fraction)
+                let sign = s.atom.is_none() && matches!(s.text.trim(), "−" | "±" | "∓") && s.bottom <= b.top + 0.35 * s.size.min(size) && s.cy() <= b.top - 0.3 * s.size.min(size);
                 within(s) && (s.bottom <= b.top + 2.0 || sign) && s.cy() >= b.top - 3.5 * size
             })
             .collect();
@@ -1463,7 +1464,20 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
                 .map(|s| if up { b.top - s.top } else { s.bottom - b.bottom } + 0.7 * size)
                 .fold(0.0f32, f32::max)
         };
-        let (reach_up, reach_down) = (reach_up.max(tall_reach(true)), reach_down.max(tall_reach(false)));
+        // ... and as far as an integral or a sum that stands right at the
+        // bar reaches, with its limits
+        let op_reach = |up: bool| {
+            above
+                .iter()
+                .chain(&below)
+                .map(|&i| &spans[i])
+                .filter(|s| within(s))
+                .filter_map(|s| op_depth(s).map(|d| (op_top(s), d * s.size, s.size)))
+                .filter(|&(top, depth, em)| if up { top < b.top && b.top - (top + depth) <= 1.2 * em } else { top >= b.bottom - 2.0 && top - b.bottom <= 0.9 * em })
+                .map(|(top, depth, em)| if up { b.top - top + 1.0 * em } else { top + depth - b.bottom + 1.0 * em })
+                .fold(0.0f32, f32::max)
+        };
+        let (reach_up, reach_down) = (reach_up.max(tall_reach(true)).max(op_reach(true)), reach_down.max(tall_reach(false)).max(op_reach(false)));
         let above: Vec<usize> = above.into_iter().filter(|&i| b.top - spans[i].top <= reach_up).collect();
         let below: Vec<usize> = below.into_iter().filter(|&i| spans[i].bottom - b.bottom <= reach_down).collect();
         let num = stack(&spans, &above, |s| b.top - s.bottom, size);
@@ -3315,8 +3329,16 @@ pub fn display(
     let mut anchors: Vec<(f32, bool)> = Vec::new(); // (centre, continuation)
     // A row right above or below a fraction bar is a numerator or
     // denominator, not a line of its own.
+    // (… a denominator that opens with an integral stands lower: the row
+    // of the sign, under the bar and within its width)
     let fraction_row = |c: f32| {
         bars.iter().any(|r| (c - (r.top + r.bottom) / 2.0).abs() <= 1.3 * max)
+            || bars.iter().any(|r| {
+                let under = c - (r.top + r.bottom) / 2.0;
+                let members: Vec<&MSpan> = rest.iter().filter(|s| !s.cmex() && s.size >= 0.9 * max && (s.cy() - c).abs() <= 0.3 * max).collect();
+                let sign = rest.iter().any(|s| op_depth(s).is_some() && s.left >= r.left - 2.0 && s.right <= r.right + 2.0 && (op_top(s) + 0.5 * op_depth(s).unwrap_or(0.0) * s.size - c).abs() <= 0.5 * max && op_top(s) >= r.bottom - 2.0);
+                under > 1.3 * max && under <= 1.9 * max && sign && !members.is_empty() && members.iter().all(|s| s.left >= r.left - 2.0 && s.right <= r.right + 2.0)
+            })
     };
     // Rows inside a tall bracket are rows of a matrix, not lines.
     let in_bracket = |c: f32| {

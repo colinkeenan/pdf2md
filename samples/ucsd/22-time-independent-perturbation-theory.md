@@ -208,7 +208,7 @@ The radial part of the integral can be done with some work, yielding.
 We put this back into the sum. The Kronecker deltas eliminate the sums over $`\ell`$ and $`m`$. We write the energy denominators in terms of the Bohr radius.
 
 ```math
-E_{1 0 0}^{( 2 )} = e^{2} \mathcal{E}^{2} \sum_{n = 2}^{\infty} \frac{f ( n ) a_{0}^{2}}{\tfrac{e^{2}}{2 a_{0}}^{-} + \tfrac{e^{2}}{2 a_{0} n^{2}}}
+E_{1 0 0}^{( 2 )} = e^{2} \mathcal{E}^{2} \sum_{n = 2}^{\infty} \frac{f ( n ) a_{0}^{2}}{\tfrac{- e^{2}}{2 a_{0}} + \tfrac{e^{2}}{2 a_{0} n^{2}}}
 ```
 
 <div align="right"><a href="book.pdf#page=329" target="_blank" title="This page in the PDF"><sup>[p. 329]</sup></a></div>

@@ -89,7 +89,7 @@ e^{- i\theta} = \cos \theta - i \sin \theta
 
 You can verify that the absolute square of these exponentials is always 1. They are often called a phase factor.
 
-We can write $`\sin \theta = \tfrac{e^{i\theta} \quad e^{- i\theta}}{2 i}^{-}`$ and $`\cos \theta = \tfrac{e^{i\theta} + e^{- i\theta}}{2}`$.
+We can write $`\sin \theta = \tfrac{e^{i\theta} - e^{- i\theta}}{2 i}`$ and $`\cos \theta = \tfrac{e^{i\theta} + e^{- i\theta}}{2}`$.
 
 As with other exponentials, we can multiply them by adding the exponents.
 

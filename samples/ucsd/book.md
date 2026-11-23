@@ -4149,7 +4149,7 @@ e^{- i\theta} = \cos \theta - i \sin \theta
 
 You can verify that the absolute square of these exponentials is always 1. They are often called a phase factor.
 
-We can write $`\sin \theta = \tfrac{e^{i\theta} \quad e^{- i\theta}}{2 i}^{-}`$ and $`\cos \theta = \tfrac{e^{i\theta} + e^{- i\theta}}{2}`$.
+We can write $`\sin \theta = \tfrac{e^{i\theta} - e^{- i\theta}}{2 i}`$ and $`\cos \theta = \tfrac{e^{i\theta} + e^{- i\theta}}{2}`$.
 
 As with other exponentials, we can multiply them by adding the exponents.
 
@@ -5218,7 +5218,7 @@ c \psi ( x ) = \delta ( x - x_{0} )
 
 11. **\*** A particle is in the state $`\psi ( x ) = Ae^{- \alpha x^{2} / 2}`$. What is the probability for the particle to have a momentum between $`p`$ and $`p + dp`$?
 
-12. A hydrogen atom has the potential $`V ( r ) = \tfrac{e^{2}}{r}^{-}`$. Use the uncertainty principle to estimate the ground state energy.
+12. A hydrogen atom has the potential $`V ( r ) = \tfrac{- e^{2}}{r}`$. Use the uncertainty principle to estimate the ground state energy.
 
 13. **\*** Assume that $`\varphi ( p ) = \tfrac{1}{\sqrt{2 a}}`$ for $`| p | <a`$ and $`\varphi ( p ) = 0`$ elsewhere. What is $`\psi ( x )`$? What is the probability to find the particle between $`x`$ and $`x + dx`$?
 
@@ -5910,7 +5910,7 @@ Plug this into the Schrödinger Equation.
 Put everything that depends on $`x`$ on the left and everything that depends on $`t`$ on the right.
 
 ```math
-\frac{\left( \tfrac{\hbar^{2}}{2 m}^{-} \tfrac{\partial^{2} u ( x )}{\partial x^{2}} + V ( x ) u ( x ) \right)}{u ( x )} = \frac{i \hbar \tfrac{\partial T ( t )}{\partial t}}{T ( t )} = const. = E
+\frac{\left( \tfrac{- \hbar^{2}}{2 m} \tfrac{\partial^{2} u ( x )}{\partial x^{2}} + V ( x ) u ( x ) \right)}{u ( x )} = \frac{i \hbar \tfrac{\partial T ( t )}{\partial t}}{T ( t )} = const. = E
 ```
 
 Since we have a function of only $`x`$ set equal to a function of only $`t`$, they **both must equal a constant**. In the equation above, we call the constant $`E`$, (with some knowledge of the outcome). We now have an equation in $`t`$ set equal to a constant
@@ -6944,7 +6944,7 @@ T = 1 + R = \frac{2 k}{k + k^{\prime}} .
 We now have the **full solution**, given our assumption of particles incident from the left.
 
 ```math
-u ( x ) = \begin{cases} e^{ikx} + \tfrac{k \quad k^{\prime}}{k + k ik^{\prime}}^{-} e^{- ikx} & x< 0 \\ \tfrac{2 k}{k + k^{\prime}} e^{\prime x} & x> 0 \end{cases}
+u ( x ) = \begin{cases} e^{ikx} + \tfrac{k - k^{\prime}}{k + k ik^{\prime}} e^{- ikx} & x< 0 \\ \tfrac{2 k}{k + k^{\prime}} e^{\prime x} & x> 0 \end{cases}
 ```
 
 **Classically**, all of the particles would be transmitted, continuing on to infinity.
@@ -10106,7 +10106,7 @@ c) Find the Fermi Energy $`E_{F}`$ for $`N`$ particles in the box. (N is large.)
 
 10. b) Determine the number of degenerate states for the first three energy levels.
 
-11. In 3 dimensions, a particle of mass $`m`$ is bound in a potential $`V ( \mathbf{r} ) = \tfrac{e^{2}}{\sqrt{x^{2} + z^{2}}}^{-}`$.
+11. In 3 dimensions, a particle of mass $`m`$ is bound in a potential $`V ( \mathbf{r} ) = \tfrac{- e^{2}}{\sqrt{x^{2} + z^{2}}}`$.
 
 a) The definite energy states will, of course, be eigenfunctions of $`H`$. What other operators can they be eigenfunctions of?
 
@@ -17022,7 +17022,7 @@ The radial part of the integral can be done with some work, yielding.
 We put this back into the sum. The Kronecker deltas eliminate the sums over $`\ell`$ and $`m`$. We write the energy denominators in terms of the Bohr radius.
 
 ```math
-E_{1 0 0}^{( 2 )} = e^{2} \mathcal{E}^{2} \sum_{n = 2}^{\infty} \frac{f ( n ) a_{0}^{2}}{\tfrac{e^{2}}{2 a_{0}}^{-} + \tfrac{e^{2}}{2 a_{0} n^{2}}}
+E_{1 0 0}^{( 2 )} = e^{2} \mathcal{E}^{2} \sum_{n = 2}^{\infty} \frac{f ( n ) a_{0}^{2}}{\tfrac{- e^{2}}{2 a_{0}} + \tfrac{e^{2}}{2 a_{0} n^{2}}}
 ```
 
 <div align="right"><a href="book.pdf#page=329" target="_blank" title="This page in the PDF"><sup>[p. 329]</sup></a></div>
@@ -18101,7 +18101,7 @@ Now we will work the full problem with no assumptions about which perturbation i
 We continue on as in the last section but work in the states of $`| fm f \rangle`$. The matrix for $`\langle fm_{f} | H_{hf} + H_{B} | f^{\prime} m_{f}^{\prime} \rangle`$ is
 
 ```math
-1 \frac{1}{0 1} \quad - \frac{1}{0 0} 1 \begin{pmatrix} \frac{\mathcal{A}}{4} + \mu_{B} B & 0 & 0 & 0 \\ 0 & \frac{\mathcal{A}}{4} - \mu_{B} B & 0 & 0 \\ 0 & 0 & \tfrac{\mathcal{A}}{4} & \mu_{B} B \\ 0 & 0 & \mu_{B} B & \tfrac{3}{4}^{- \mathcal{A}} \end{pmatrix} .
+1 \frac{1}{0 1} \quad - \frac{1}{0 0} 1 \begin{pmatrix} \frac{\mathcal{A}}{4} + \mu_{B} B & 0 & 0 & 0 \\ 0 & \frac{\mathcal{A}}{4} - \mu_{B} B & 0 & 0 \\ 0 & 0 & \tfrac{\mathcal{A}}{4} & \mu_{B} B \\ 0 & 0 & \mu_{B} B & \tfrac{- 3}{4}^{\mathcal{A}} \end{pmatrix} .
 ```
 
 <div align="right"><a href="book.pdf#page=352" target="_blank" title="This page in the PDF"><sup>[p. 352]</sup></a></div>
@@ -18726,7 +18726,7 @@ Use
 and $`\psi = 0`$ otherwise as a trial wave function. Recall the actual wave function is $`e^{- m\omega x^{2} / 2 \hbar^{2}}`$. The energy estimate is
 
 ```math
-E^{\prime} = \frac{\left\langle \left( a^{2} - x^{2} \right)^{2} |^{-} \tfrac{\hbar^{2}}{2 m} \tfrac{d^{2}}{dx^{2}} + \tfrac{1}{2} m\omega^{2} x^{2} | \left( a^{2} - x^{2} \right)^{2} \right\rangle}{\left\langle ( a^{2} - x^{2} )^{2} | ( a^{2} - x^{2} )^{2} \right\rangle} .
+E^{\prime} = \frac{\left\langle \left( a^{2} - x^{2} \right)^{2} | \tfrac{- \hbar^{2}}{2 m} \tfrac{d^{2}}{dx^{2}} + \tfrac{1}{2} m\omega^{2} x^{2} | \left( a^{2} - x^{2} \right)^{2} \right\rangle}{\left\langle ( a^{2} - x^{2} )^{2} | ( a^{2} - x^{2} )^{2} \right\rangle} .
 ```
 
 We need to do some integrals of polynomials to compute
@@ -18756,15 +18756,11 @@ This is close to the right answer. As always, it is treated as an upper limit on
 As a check of the procedure, take trial function $`e^{- ax^{2} / 2}`$. This should give us the actual ground state energy.
 
 ```math
-E^{\prime} = {}^{-\infty} \int^{\infty} \psi^{*} \left[ - \tfrac{\hbar^{2}}{2 m} \tfrac{\partial^{2} \psi}{\partial x^{2}} + \tfrac{1}{2} m\omega^{2} x^{2} \psi \right] dx
+E^{\prime} = \frac{\int_{-\infty}^{\infty} \psi^{*} \left[ - \tfrac{\hbar^{2}}{2 m} \tfrac{\partial^{2} \psi}{\partial x^{2}} + \tfrac{1}{2} m\omega^{2} x^{2} \psi \right] dx}{\int_{-\infty}^{\infty} \psi^{*} \psi dx}
 ```
 
 ```math
-\int_{-\infty}^{\infty} \psi^{*} \psi dx
-```
-
-```math
-= \frac{\left\{ {}^{-} \tfrac{\hbar^{2}}{2 m} \int_{-\infty}^{\infty} e^{- ax^{2}} \left[ a^{2} x^{2} - a \right] dx + \tfrac{1}{2} m\omega^{2} \int_{-\infty}^{\infty} x^{2} e^{- ax^{2}} dx \right\}}{\int^{\infty} - ax^{2}} {}_{-\infty} e dx
+= \frac{\left\{ \tfrac{- \hbar^{2}}{2 m} \int_{-\infty}^{\infty} e^{- ax^{2}} \left[ a^{2} x^{2} - a \right] dx + \tfrac{1}{2} m\omega^{2} \int_{-\infty}^{\infty} x^{2} e^{- ax^{2}} dx \right\}}{\int_{-\infty}^{\infty} e^{- ax^{2}} dx}
 ```
 
 <div align="right"><a href="book.pdf#page=366" target="_blank" title="This page in the PDF"><sup>[p. 366]</sup></a></div>
@@ -18772,7 +18768,7 @@ E^{\prime} = {}^{-\infty} \int^{\infty} \psi^{*} \left[ - \tfrac{\hbar^{2}}{2 m}
 <a id="p367" href="book.pdf#page=367" target="_blank" title="This page in the PDF"><sup>[p. 367]</sup></a>
 
 ```math
-= \left[ \frac{- a^{2} \hbar^{2}}{2 m} + \frac{1}{2} m\omega^{2} \right] \frac{-\infty}{\int^{\infty} - ax^{2}} \int_{{}_{-\infty} e}^{\infty} \frac{x^{2} e^{- ax^{2}} dx}{dx} + \left[ \frac{\hbar^{2} a}{2 m} \right]
+= \left[ \frac{- a^{2} \hbar^{2}}{2 m} + \frac{1}{2} m\omega^{2} \right] \frac{\int_{-\infty}^{\infty} x^{2} e^{- ax^{2}} dx}{\int_{-\infty}^{\infty} e^{- ax^{2}} dx} + \left[ \frac{\hbar^{2} a}{2 m} \right]
 ```
 
 ```math
@@ -27756,7 +27752,7 @@ S_{i} = \tfrac{\hbar}{2} \sigma_{i} \quad [ \sigma_{i} ,\sigma_{j} ] = 2 i\epsil
 ```
 
 ```math
-S_{x} = \hbar \begin{pmatrix} 0 & \tfrac{1}{\sqrt{2}} & 0 \\ \tfrac{1}{\sqrt{2}} & 0 & \tfrac{1}{\sqrt{2}} \\ 0 & \tfrac{1}{\sqrt{2}} & 0 \end{pmatrix} \quad S_{y} = \hbar \begin{pmatrix} 0 & \tfrac{- i}{\sqrt{2}} & 0 \\ \tfrac{i}{\sqrt{2}} & 0 & \tfrac{i}{\sqrt{2}}^{-} \\ 0 & \tfrac{i}{\sqrt{2}} & 0 \end{pmatrix} \quad S_{z} = \hbar \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & - 1 \end{pmatrix} 1
+S_{x} = \hbar \begin{pmatrix} 0 & \tfrac{1}{\sqrt{2}} & 0 \\ \tfrac{1}{\sqrt{2}} & 0 & \tfrac{1}{\sqrt{2}} \\ 0 & \tfrac{1}{\sqrt{2}} & 0 \end{pmatrix} \quad S_{y} = \hbar \begin{pmatrix} 0 & \tfrac{- i}{\sqrt{2}} & 0 \\ \tfrac{i}{\sqrt{2}} & 0 & \tfrac{- i}{\sqrt{2}} \\ 0 & \tfrac{i}{\sqrt{2}} & 0 \end{pmatrix} \quad S_{z} = \hbar \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & - 1 \end{pmatrix} 1
 ```
 
 <div align="center">
@@ -27774,7 +27770,7 @@ n = n_{r} + \ell + 1 \quad a_{0} = \tfrac{\hbar}{\alpha \mu c} \quad \ell = 0 , 
 ```
 
 ```math
-R_{n\ell} ( \rho ) = \rho^{\ell} \sum_{k = 0}^{\infty} a_{k} \rho^{k} e^{- \rho / 2} \quad a_{k + 1} = \tfrac{k + \ell + 1 n}{( k + 1 ) ( k + 2 \ell + 2 )}^{-} a_{k} \quad \rho = \sqrt{\tfrac{- 8 \mu E}{\hbar^{2}} r} = \tfrac{2 r}{na_{0}}
+R_{n\ell} ( \rho ) = \rho^{\ell} \sum_{k = 0}^{\infty} a_{k} \rho^{k} e^{- \rho / 2} \quad a_{k + 1} = \tfrac{k + \ell + 1 - n}{( k + 1 ) ( k + 2 \ell + 2 )} a_{k} \quad \rho = \sqrt{\tfrac{- 8 \mu E}{\hbar^{2}} r} = \tfrac{2 r}{na_{0}}
 ```
 
 ```math

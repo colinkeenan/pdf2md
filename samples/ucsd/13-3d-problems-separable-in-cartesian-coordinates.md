@@ -317,7 +317,7 @@ c) Find the Fermi Energy $`E_{F}`$ for $`N`$ particles in the box. (N is large.)
 
 10. b) Determine the number of degenerate states for the first three energy levels.
 
-11. In 3 dimensions, a particle of mass $`m`$ is bound in a potential $`V ( \mathbf{r} ) = \tfrac{e^{2}}{\sqrt{x^{2} + z^{2}}}^{-}`$.
+11. In 3 dimensions, a particle of mass $`m`$ is bound in a potential $`V ( \mathbf{r} ) = \tfrac{- e^{2}}{\sqrt{x^{2} + z^{2}}}`$.
 
 a) The definite energy states will, of course, be eigenfunctions of $`H`$. What other operators can they be eigenfunctions of?
 

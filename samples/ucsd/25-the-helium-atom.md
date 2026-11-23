@@ -360,7 +360,7 @@ Use
 and $`\psi = 0`$ otherwise as a trial wave function. Recall the actual wave function is $`e^{- m\omega x^{2} / 2 \hbar^{2}}`$. The energy estimate is
 
 ```math
-E^{\prime} = \frac{\left\langle \left( a^{2} - x^{2} \right)^{2} |^{-} \tfrac{\hbar^{2}}{2 m} \tfrac{d^{2}}{dx^{2}} + \tfrac{1}{2} m\omega^{2} x^{2} | \left( a^{2} - x^{2} \right)^{2} \right\rangle}{\left\langle ( a^{2} - x^{2} )^{2} | ( a^{2} - x^{2} )^{2} \right\rangle} .
+E^{\prime} = \frac{\left\langle \left( a^{2} - x^{2} \right)^{2} | \tfrac{- \hbar^{2}}{2 m} \tfrac{d^{2}}{dx^{2}} + \tfrac{1}{2} m\omega^{2} x^{2} | \left( a^{2} - x^{2} \right)^{2} \right\rangle}{\left\langle ( a^{2} - x^{2} )^{2} | ( a^{2} - x^{2} )^{2} \right\rangle} .
 ```
 
 We need to do some integrals of polynomials to compute
@@ -390,15 +390,11 @@ This is close to the right answer. As always, it is treated as an upper limit on
 As a check of the procedure, take trial function $`e^{- ax^{2} / 2}`$. This should give us the actual ground state energy.
 
 ```math
-E^{\prime} = {}^{-\infty} \int^{\infty} \psi^{*} \left[ - \tfrac{\hbar^{2}}{2 m} \tfrac{\partial^{2} \psi}{\partial x^{2}} + \tfrac{1}{2} m\omega^{2} x^{2} \psi \right] dx
+E^{\prime} = \frac{\int_{-\infty}^{\infty} \psi^{*} \left[ - \tfrac{\hbar^{2}}{2 m} \tfrac{\partial^{2} \psi}{\partial x^{2}} + \tfrac{1}{2} m\omega^{2} x^{2} \psi \right] dx}{\int_{-\infty}^{\infty} \psi^{*} \psi dx}
 ```
 
 ```math
-\int_{-\infty}^{\infty} \psi^{*} \psi dx
-```
-
-```math
-= \frac{\left\{ {}^{-} \tfrac{\hbar^{2}}{2 m} \int_{-\infty}^{\infty} e^{- ax^{2}} \left[ a^{2} x^{2} - a \right] dx + \tfrac{1}{2} m\omega^{2} \int_{-\infty}^{\infty} x^{2} e^{- ax^{2}} dx \right\}}{\int^{\infty} - ax^{2}} {}_{-\infty} e dx
+= \frac{\left\{ \tfrac{- \hbar^{2}}{2 m} \int_{-\infty}^{\infty} e^{- ax^{2}} \left[ a^{2} x^{2} - a \right] dx + \tfrac{1}{2} m\omega^{2} \int_{-\infty}^{\infty} x^{2} e^{- ax^{2}} dx \right\}}{\int_{-\infty}^{\infty} e^{- ax^{2}} dx}
 ```
 
 <div align="right"><a href="book.pdf#page=366" target="_blank" title="This page in the PDF"><sup>[p. 366]</sup></a></div>
@@ -406,7 +402,7 @@ E^{\prime} = {}^{-\infty} \int^{\infty} \psi^{*} \left[ - \tfrac{\hbar^{2}}{2 m}
 <a id="p367" href="book.pdf#page=367" target="_blank" title="This page in the PDF"><sup>[p. 367]</sup></a>
 
 ```math
-= \left[ \frac{- a^{2} \hbar^{2}}{2 m} + \frac{1}{2} m\omega^{2} \right] \frac{-\infty}{\int^{\infty} - ax^{2}} \int_{{}_{-\infty} e}^{\infty} \frac{x^{2} e^{- ax^{2}} dx}{dx} + \left[ \frac{\hbar^{2} a}{2 m} \right]
+= \left[ \frac{- a^{2} \hbar^{2}}{2 m} + \frac{1}{2} m\omega^{2} \right] \frac{\int_{-\infty}^{\infty} x^{2} e^{- ax^{2}} dx}{\int_{-\infty}^{\infty} e^{- ax^{2}} dx} + \left[ \frac{\hbar^{2} a}{2 m} \right]
 ```
 
 ```math

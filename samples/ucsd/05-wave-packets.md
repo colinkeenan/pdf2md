@@ -995,7 +995,7 @@ c \psi ( x ) = \delta ( x - x_{0} )
 
 11. **\*** A particle is in the state $`\psi ( x ) = Ae^{- \alpha x^{2} / 2}`$. What is the probability for the particle to have a momentum between $`p`$ and $`p + dp`$?
 
-12. A hydrogen atom has the potential $`V ( r ) = \tfrac{e^{2}}{r}^{-}`$. Use the uncertainty principle to estimate the ground state energy.
+12. A hydrogen atom has the potential $`V ( r ) = \tfrac{- e^{2}}{r}`$. Use the uncertainty principle to estimate the ground state energy.
 
 13. **\*** Assume that $`\varphi ( p ) = \tfrac{1}{\sqrt{2 a}}`$ for $`| p | <a`$ and $`\varphi ( p ) = 0`$ elsewhere. What is $`\psi ( x )`$? What is the probability to find the particle between $`x`$ and $`x + dx`$?
 
