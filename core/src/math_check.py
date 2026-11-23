@@ -510,7 +510,7 @@ def read(files, dst, ext: str, scale: int, state: dict):
 # Equations built from the letters of a PDF's page (a TeX book): a second
 # reading, by the recognizer, of the place on the page each was built from.
 
-PLACES = "places 8"
+PLACES = "places 9"
 # pixels of a cut-out for each pixel of the page reader's measure (it has
 # 1.5 to a point: 216 dots to the inch, twice the size of an ebook's pictures)
 ZOOM = 2.0
@@ -538,6 +538,10 @@ def tidy(t: str) -> str:
     # (… which is the page's to say: the recognizer often reads p̸ as p.
     # Not the stroke of a sign: "=" and "≠" are two formulas)
     t = re.sub(r"\\not\s*\{?\s*(?=[A-Za-z]|\\(?:alpha|beta|gamma|delta|epsilon|varepsilon|partial|nabla|sigma|pi|mu|nu|kappa|lambda|xi|eta|zeta|theta|rho|tau|phi|varphi|chi|psi|omega|ell|Gamma|Delta|Sigma|Pi|Phi|Psi|Omega|Lambda)(?![a-zA-Z]))", "", t)
+    # (a bar in the middle of a bracket, as tall as the bracket or not)
+    t = re.sub(r"\\middle(?![a-zA-Z])", "", t)
+    # (so is the stroke through the stem of a d, which it reads as d)
+    t = t.replace("đ", "d")
     # (the double bar of a norm, three ways; three integral signs, two; a
     # heavy dot between two vectors and a light one)
     t = re.sub(r"\\parallel(?![a-zA-Z])|\\\||\\Vert(?![a-zA-Z])|\\lVert(?![a-zA-Z])|\\rVert(?![a-zA-Z])", "||", t)
@@ -588,6 +592,37 @@ def shape(t: str):
         under = group_at(t, top[1]) if top else None
         stacked += bool(top and under and leads(top[0]) and leads(under[0]))
     return sorted(grids), stacked
+
+
+def marks(t: str):
+    """What only the page can say of a formula's letters, and the comparison
+    does not count: script letters, a stroke through a letter, which of its
+    two shapes a Greek letter has. A reading that has other marks than the
+    rules' formula is not written in its place: the marks would be lost."""
+    t = re.sub(r"\{\s*([^{}]+?)\s*\\!\\!\\!/\s*\}", r"\\not \1 ", t)
+    t = re.sub(r"\\not\s*\{?\s*=", "", t)
+    count = lambda pattern: len(re.findall(pattern, t))
+    out = {
+        "script": count(r"\\(mathcal|cal|mathscr)(?![a-zA-Z])"),
+        "stroke": count(r"\\(slashed|cancel|not)(?![a-zA-Z])") + t.count("đ"),
+    }
+    for letter in ("phi", "epsilon", "theta", "rho"):
+        out[letter] = count(r"\\var" + letter + r"(?![a-zA-Z])")
+    return out
+
+
+def with_shapes(rule: str, other: str) -> str:
+    """The recognizer's reading with each Greek letter in the shape the
+    page has it, where the rules' formula has the letter in one shape
+    only: which of the two it is, the PDF names and the recognizer guesses."""
+    for letter in ("phi", "epsilon", "theta", "rho"):
+        curly, plain = r"\\var" + letter + r"(?![a-zA-Z])", r"\\" + letter + r"(?![a-zA-Z])"
+        has_curly, has_plain = re.search(curly, rule) is not None, re.search(plain, rule) is not None
+        if has_plain and not has_curly:
+            other = re.sub(curly, lambda _: "\\" + letter, other)
+        elif has_curly and not has_plain:
+            other = re.sub(plain, lambda _: "\\var" + letter, other)
+    return other
 
 
 def same_formula(a: str, b: str) -> bool:
@@ -689,7 +724,8 @@ def places(pdf: str, jobs_file: str, dst: Path):
       take   it read the same letters and signs in another order (an
              exponent that the rules left on the line, a small fraction's
              halves), with the same matrices and no more fractions of
-             fractions, and
+             fractions, the same script letters, strokes and shapes of
+             Greek letters (which only the page can say), and
              read them so twice: its reading is the formula
              Also where the rules' formula holds a glyph the PDF does
              not name ("\ufffd"), and the recognizer reads the place twice
@@ -715,6 +751,8 @@ def places(pdf: str, jobs_file: str, dst: Path):
     counts = {"same": 0, "take": 0, "check": 0, "unread": 0}
     for j in jobs:
         other = reading(j, "surya")
+        if other is not None:
+            other = with_shapes(j["rule"], other)
         if other is None:
             verdict = "unread"
         elif agree(j["rule"], other):
@@ -730,7 +768,7 @@ def places(pdf: str, jobs_file: str, dst: Path):
                 mine, its = sum(signs(j["rule"]).values()), sum(signs(other).values())
                 verdict = "take" if twice and 0.6 * mine <= its <= 1.6 * mine else "check"
             else:
-                verdict = "take" if twice and signs(j["rule"]) == signs(other) and grids == other_grids and other_stacked <= stacked else "check"
+                verdict = "take" if twice and signs(j["rule"]) == signs(other) and marks(j["rule"]) == marks(other) and grids == other_grids and other_stacked <= stacked else "check"
         counts[verdict] += 1
         (dst / f"{j['key']}.second").write_text(f"{verdict}\n{j['stamp']}\n{other or ''}\n")
     print(f"  {len(jobs)} equations built from the page's letters: {counts['same']} read the same by the recognizer, {counts['take']} written as it read them, {counts['check']} listed to check, {counts['unread']} not read", file=sys.stderr, flush=True)

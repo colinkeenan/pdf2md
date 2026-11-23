@@ -310,7 +310,8 @@ fn paired_in_cells(latex: &str) -> String {
         let d = p.trim_start_matches("\\left").trim_start_matches("\\right").trim();
         pieces[k] = if d == "." { String::new() } else { format!("{d} ") };
     }
-    pieces.concat()
+    // (a bar as tall as a bracket that is tall no more is a plain bar)
+    crate::mathtex::settle_middles(&pieces.concat())
 }
 
 /// LaTeX that would not render, made to: math inside `\text{…}` ("^" and

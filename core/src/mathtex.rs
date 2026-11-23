@@ -1325,8 +1325,13 @@ fn put_accents(mut spans: Vec<MSpan>) -> Vec<MSpan> {
                 // (a bar through the stem of an h is ħ, which TeX draws so)
                 // (an arrow over a letter that has its arrow already, drawn
                 // and marked: one arrow)
+                // (and one through the stem of a d, at the letter's own
+                // height where a bar over it stands higher, is đ: the "d"
+                // of an integral that takes its 2π with it)
                 p.atom = Some(if name == "bar" && inner.trim() == "h" {
                     "\\hbar".to_string()
+                } else if name == "bar" && inner.trim() == "d" && (a.top - b.top).abs() <= 1.5 && a.left > b.left {
+                    "đ".to_string()
                 } else if name == "vec" && inner.trim().starts_with("\\vec{") {
                     inner.trim().to_string()
                 } else {
@@ -1906,8 +1911,60 @@ fn late_arrows(s: &str) -> String {
     out
 }
 
+/// `\middle|` is a bar as tall as the bracket it stands in, and is only
+/// read right inside a `\left … \right`: one that has come to stand
+/// elsewhere (in a group of its own, a row of a matrix, outside every
+/// bracket) is a plain bar.
+pub(crate) fn settle_middles(s: &str) -> String {
+    if !s.contains("\\middle") {
+        return s.to_string();
+    }
+    let mut out = String::with_capacity(s.len());
+    // what is open: a tall bracket ('l'), a group or an environment
+    let mut open: Vec<char> = Vec::new();
+    let mut rest = s;
+    while let Some(c) = rest.chars().next() {
+        if c == '\\' {
+            let word: String = rest[1..].chars().take_while(char::is_ascii_alphabetic).collect();
+            let n = if word.is_empty() { 1 + rest[1..].chars().next().map_or(0, char::len_utf8) } else { 1 + word.len() };
+            match word.as_str() {
+                "left" => open.push('l'),
+                "right" => {
+                    if open.last() == Some(&'l') {
+                        open.pop();
+                    }
+                }
+                "begin" => open.push('e'),
+                "end" => {
+                    if open.last() == Some(&'e') {
+                        open.pop();
+                    }
+                }
+                "middle" if open.last() != Some(&'l') => {
+                    rest = &rest[n..];
+                    continue;
+                }
+                _ => {}
+            }
+            out.push_str(&rest[..n]);
+            rest = &rest[n..];
+            continue;
+        }
+        match c {
+            '{' => open.push('g'),
+            '}' if open.last() == Some(&'g') => {
+                open.pop();
+            }
+            _ => {}
+        }
+        out.push(c);
+        rest = &rest[c.len_utf8()..];
+    }
+    out
+}
+
 fn tidy(s: &str) -> String {
-    let s = s.split_whitespace().collect::<Vec<_>>().join(" ");
+    let s = settle_middles(&s.split_whitespace().collect::<Vec<_>>().join(" "));
     let s = if s.contains('\u{20d7}') { late_arrows(&s) } else { s };
     // (a prime that opens an exponent stands a little higher than the
     // number after it, m′²: one exponent)
@@ -2271,8 +2328,20 @@ fn take_brackets(spans: &[MSpan], depth: usize) -> (Vec<MSpan>, Vec<Item>) {
             taken_at[k] = true;
         }
     }
+    // (a bar between "⟨" and "⟩", the angle brackets nearest to it on
+    // either side at its height: the bar in the middle of ⟨a|b⟩. It opens
+    // and closes nothing, and stands where it is in what the bracket holds)
+    let angle = |k: usize| matches!(delims[k].kind, Some('⟨' | '⟩'));
+    let mid_bar: Vec<bool> = (0..delims.len())
+        .map(|k| {
+            let at_height = |o: &usize| angle(*o) && same_height(&delims[*o], &delims[k]);
+            let before = (0..k).rev().find(at_height).map(|o| delims[o].kind);
+            let after = (k + 1..delims.len()).find(at_height).map(|o| delims[o].kind);
+            delims[k].kind == Some('|') && side[k].is_none() && before == Some(Some('⟨')) && after == Some(Some('⟩'))
+        })
+        .collect();
     for k in 0..delims.len() {
-        if side[k].is_some() {
+        if side[k].is_some() || mid_bar[k] {
             continue;
         }
         let d0 = delims[k];
@@ -2283,7 +2352,7 @@ fn take_brackets(spans: &[MSpan], depth: usize) -> (Vec<MSpan>, Vec<Item>) {
                 .filter(|s| s.left >= d0.right - 1.0 && s.right <= d1.left + 1.0 && (s.cy() - (d0.top + d0.bottom) / 2.0).abs() <= 3.0 * size)
                 .collect();
             let relation = between.iter().any(|s| s.size >= 0.9 * size && is_relation(&s.text));
-            side[m].is_none() && same_height(&d0, &d1) && !between.is_empty() && !relation
+            side[m].is_none() && !mid_bar[m] && same_height(&d0, &d1) && !between.is_empty() && !relation
         });
         if let Some(m) = m {
             side[k] = Some(true);
@@ -2311,8 +2380,11 @@ fn take_brackets(spans: &[MSpan], depth: usize) -> (Vec<MSpan>, Vec<Item>) {
     let mut stack: Vec<usize> = Vec::new();
     let mut pairs: Vec<(usize, usize)> = Vec::new();
     let mut lone: Vec<usize> = Vec::new();
+    let mut middle: Vec<usize> = Vec::new();
     for k in 0..delims.len() {
-        if opens[k] {
+        if mid_bar[k] {
+            middle.push(k);
+        } else if opens[k] {
             stack.push(k);
         } else if let Some(pos) = stack.iter().rposition(|&o| same_height(&delims[o], &delims[k]) && !(taken_at[k] && !closes(o, k))) {
             // (of two rows that each have brackets of their own, one row
@@ -2342,6 +2414,12 @@ fn take_brackets(spans: &[MSpan], depth: usize) -> (Vec<MSpan>, Vec<Item>) {
         bold: false,
         atom: Some(tex),
     };
+    // (the bar in the middle of ⟨a|b⟩ is a piece of what the bracket
+    // holds, as tall as the bracket: see `settle_middles`)
+    for k in middle {
+        let d = delims[k];
+        rest.push(piece(d.left, d.right, (d.top + d.bottom) / 2.0, "\\middle|".to_string()));
+    }
     // A bar of "taken at" that closed nothing stands where it is, a piece
     // of its row (in a system of equations: inside the brace), with its
     // index hanging on it.
@@ -4716,6 +4794,15 @@ pub fn fix_double_scripts(t: &str) -> String {
 #[cfg(test)]
 mod double_script_tests {
     use super::fix_double_scripts as f;
+    use super::settle_middles;
+    #[test]
+    fn middle_bars() {
+        assert_eq!(settle_middles("\\left\\langle a \\middle| b \\right\\rangle"), "\\left\\langle a \\middle| b \\right\\rangle");
+        assert_eq!(settle_middles("\\langle a \\middle| b \\rangle"), "\\langle a | b \\rangle");
+        assert_eq!(settle_middles("\\left\\langle a \\frac{x \\middle| y}{2} \\middle| b \\right\\rangle \\middle| c"), "\\left\\langle a \\frac{x | y}{2} \\middle| b \\right\\rangle | c");
+        assert_eq!(settle_middles("\\left( \\begin{aligned} a \\middle| b \\end{aligned} \\right)"), "\\left( \\begin{aligned} a | b \\end{aligned} \\right)");
+    }
+
     #[test]
     fn empty_base_for_second_scripts() {
         assert_eq!(f("r_{i}^{2}_{i}^{j}"), "r_{i}^{2}{}_{i}^{j}");
