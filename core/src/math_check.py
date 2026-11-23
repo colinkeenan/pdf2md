@@ -510,7 +510,7 @@ def read(files, dst, ext: str, scale: int, state: dict):
 # Equations built from the letters of a PDF's page (a TeX book): a second
 # reading, by the recognizer, of the place on the page each was built from.
 
-PLACES = "places 6"
+PLACES = "places 7"
 # pixels of a cut-out for each pixel of the page reader's measure (it has
 # 1.5 to a point: 216 dots to the inch, twice the size of an ebook's pictures)
 ZOOM = 2.0
@@ -538,6 +538,11 @@ def tidy(t: str) -> str:
     # (… which is the page's to say: the recognizer often reads p̸ as p.
     # Not the stroke of a sign: "=" and "≠" are two formulas)
     t = re.sub(r"\\not\s*\{?\s*(?=[A-Za-z]|\\(?:alpha|beta|gamma|delta|epsilon|varepsilon|partial|nabla|sigma|pi|mu|nu|kappa|lambda|xi|eta|zeta|theta|rho|tau|phi|varphi|chi|psi|omega|ell|Gamma|Delta|Sigma|Pi|Phi|Psi|Omega|Lambda)(?![a-zA-Z]))", "", t)
+    # (the double bar of a norm, three ways; three integral signs, two; a
+    # heavy dot between two vectors and a light one)
+    t = re.sub(r"\\parallel(?![a-zA-Z])|\\\||\\Vert(?![a-zA-Z])|\\lVert(?![a-zA-Z])|\\rVert(?![a-zA-Z])", "||", t)
+    t = re.sub(r"\\iiint(?![a-zA-Z])", r"\\int\\int\\int ", t)
+    t = re.sub(r"\\bullet(?![a-zA-Z])", r"\\cdot ", t)
     # (a script letter is the page's to say: the recognizer reads 𝒜 as A)
     t = re.sub(r"\\(mathcal|cal|mathscr)(?![a-zA-Z])", "", t)
     return re.sub(r"\\(quad|qquad)(?![a-zA-Z])", " ", t)
@@ -609,9 +614,13 @@ def columns_as_fractions(t: str) -> str:
 
 def agree(rule: str, other: str) -> bool:
     """Did the recognizer read the formula the rules built? Also where it
-    read their columns of two rows as fractions: its known misreading, and
-    the rules, which have the rows from the page, are right."""
-    return same_formula(rule, other) or same_formula(columns_as_fractions(rule), other)
+    read their columns of two rows as fractions, its known misreading (the
+    rules, which have the rows from the page, are right); and where it
+    wrote a system set between two braces as cases, which have only the
+    left one."""
+    if same_formula(rule, other) or same_formula(columns_as_fractions(rule), other):
+        return True
+    return "\\begin{cases}" in other and same_formula(re.sub(r"\\right\s*\\\}", "", rule), other)
 
 
 def page_picture(pdf: str, page: int, state: dict) -> Image.Image:
