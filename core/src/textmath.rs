@@ -146,23 +146,6 @@ fn plain_signs(spans: &[Span]) -> Vec<Span> {
                 continue;
             }
         }
-        // (the star at the head of a piece, right against a letter that is
-        // a piece of its own: that letter's star, ψ∗(x) — the sign of a
-        // complex conjugate, raised, not the star of a product)
-        let lone = |b: &Span| b.tex.is_none() && b.script == Script::Normal && !b.bold && b.text.trim().chars().count() == 1 && b.text.trim().chars().all(|c| c.is_alphabetic());
-        if text.starts_with('∗') && s.script == Script::Normal && out.last().is_some_and(|b| lone(b) && s.left - b.right() < 0.15 * s.height) {
-            let n = text.chars().count().max(1) as f32;
-            if let Some(b) = out.last_mut() {
-                b.tex = Some(format!("{}^{{*}}", crate::mathtex::chars_tex(b.text.trim()).trim()));
-                b.width += s.width / n;
-            }
-            text = text['∗'.len_utf8()..].to_string();
-            s.left += s.width / n;
-            s.width -= s.width / n;
-            if text.trim().is_empty() {
-                continue;
-            }
-        }
         s.text = text;
         out.push(s);
     }
@@ -955,8 +938,9 @@ mod tests {
         assert_eq!(line(&[("presence of ", ""), ("A", "b"), ("\u{303} must satisfy", "")]), "presence of $`\\boldsymbol{\\tilde{A}}`$ must satisfy");
         assert_eq!(line(&[("the left by C˜", ""), (".", ""), (" The result is", "")]), "the left by C\u{303}. The result is");
         assert_eq!(line(&[("only if |0\u{303}", ""), ("⟩", ""), (" coincides", "")]), "only if $`| \\tilde{0} \\rangle`$ coincides");
-        // the star of a complex conjugate
-        assert_eq!(line(&[("However, ", ""), ("ψ", "i"), ("∗", ""), ("(", ""), ("x", "b"), (", −", ""), ("t", "i"), (") is a solution", "")]), "However, $`\\psi^{*} ( \\boldsymbol{x} , - t )`$ is a solution");
+        // a star set on the line stays on the line (the book's own way of
+        // writing a complex conjugate here), in the formula
+        assert_eq!(line(&[("However, ", ""), ("ψ", "i"), ("∗", ""), ("(", ""), ("x", "b"), (", −", ""), ("t", "i"), (") is a solution", "")]), "However, $`\\psi * ( \\boldsymbol{x} , - t )`$ is a solution");
     }
 
     #[test]
