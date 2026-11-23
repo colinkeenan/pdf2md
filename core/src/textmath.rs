@@ -65,7 +65,7 @@ fn is_greek(c: char) -> bool {
 
 /// Relations, operators and brackets that prose never uses.
 fn is_operator(c: char) -> bool {
-    "=≈≡≠≤≥→←↔⇒∼≃≅∝±∓×∞∂∇∑∫√⟨⟩〈〉\u{2329}\u{232a}|ħℏћ∈⊗⊕≪≫∥⊥".contains(c)
+    "=≈≡≠≤≥→←↔⇒⇄∠∼≃≅∝±∓×∞∂∇∑∫√⟨⟩〈〉\u{2329}\u{232a}|ħℏћ∈⊗⊕≪≫∥⊥".contains(c)
 }
 
 fn is_sure(c: char) -> bool {
@@ -87,12 +87,94 @@ fn dotted(c: char) -> Option<char> {
     "xyzprabcdefghmnostwXYZPRABCDEFGHMNOSTW".chars().nth(k)
 }
 
+/// The signs and accented letters of a formula that an ebook takes from
+/// odd places of its fonts, as the signs and letters they stand for: the
+/// arrowhead "˂" for "<", the upper half of a tall integral sign for "∫",
+/// the ohm sign for Ω; an accent that comes as a character of its own
+/// behind its letter ("C˜"), or at the head of the next piece of text
+/// (bold A, then the tilde), as the combining accent on that letter; and
+/// a letter with its accent in one character (α with a tilde, z with a
+/// hat, standing alone) as the letter and the accent.
+fn plain_signs(spans: &[Span]) -> Vec<Span> {
+    let mut out: Vec<Span> = Vec::with_capacity(spans.len());
+    for s in spans {
+        let mut s = s.clone();
+        if s.tex.is_some() || s.text.is_ascii() {
+            out.push(s);
+            continue;
+        }
+        let cs: Vec<char> = s.text.chars().collect();
+        let mut text = String::with_capacity(s.text.len() + 2);
+        for (i, &c) in cs.iter().enumerate() {
+            let letter = |k: Option<usize>| k.and_then(|k| cs.get(k)).is_some_and(|c| c.is_alphabetic());
+            let alone = !letter(i.checked_sub(1)) && !letter(Some(i + 1));
+            match c {
+                '˂' => text.push('<'),
+                '˃' => text.push('>'),
+                '⌠' => text.push('∫'),
+                '\u{2126}' => text.push('Ω'),
+                'ᾶ' => text.push_str("α\u{303}"),
+                'ẑ' | 'ŷ' | 'ĉ' | 'ĵ' | 'ĥ' | 'ĝ' | 'ŝ' | 'ŵ' if alone => {
+                    let k = "ẑŷĉĵĥĝŝŵ".chars().position(|h| h == c).unwrap_or(0);
+                    text.push("zycjhgsw".chars().nth(k).unwrap_or('z'));
+                    text.push('\u{302}');
+                }
+                // (behind one letter that stands alone)
+                '˜' | 'ˆ' if letter(i.checked_sub(1)) && !letter(i.checked_sub(2)) => text.push(if c == '˜' { '\u{303}' } else { '\u{302}' }),
+                c => text.push(c),
+            }
+        }
+        // (an accent at the head of a piece is of the letter the piece
+        // before ends with; so is one cut off the end of that piece, where
+        // the piece ends with a letter that stands alone)
+        let ends_alone = |b: &Span| {
+            let mut back = b.text.trim_end().chars().rev();
+            back.next().is_some_and(|c| c.is_alphabetic()) && !back.next().is_some_and(|c| c.is_alphabetic())
+        };
+        if let Some(c) = text.chars().next().filter(|c| matches!(c, '˜' | 'ˆ') && out.last().is_some_and(ends_alone)) {
+            text = format!("{}{}", if c == '˜' { '\u{303}' } else { '\u{302}' }, &text[c.len_utf8()..]);
+        }
+        let lead: String = text.chars().take_while(|c| is_combining(*c)).collect();
+        if let (false, Some(before)) = (lead.is_empty(), out.last_mut().filter(|b| b.tex.is_none() && b.text.trim_end().ends_with(char::is_alphanumeric) && s.left - b.right() < 0.5 * s.height)) {
+            before.text = format!("{}{lead}", before.text.trim_end());
+            // (the letter's piece reaches as far as its accent did)
+            let part = lead.chars().count() as f32 / text.chars().count().max(1) as f32;
+            before.width = before.width.max(s.left + s.width * part - before.left);
+            (s.left, s.width) = (s.left + s.width * part, s.width * (1.0 - part));
+            text = text[lead.len()..].to_string();
+            if text.trim().is_empty() {
+                continue;
+            }
+        }
+        // (the star at the head of a piece, right against a letter that is
+        // a piece of its own: that letter's star, ψ∗(x) — the sign of a
+        // complex conjugate, raised, not the star of a product)
+        let lone = |b: &Span| b.tex.is_none() && b.script == Script::Normal && !b.bold && b.text.trim().chars().count() == 1 && b.text.trim().chars().all(|c| c.is_alphabetic());
+        if text.starts_with('∗') && s.script == Script::Normal && out.last().is_some_and(|b| lone(b) && s.left - b.right() < 0.15 * s.height) {
+            let n = text.chars().count().max(1) as f32;
+            if let Some(b) = out.last_mut() {
+                b.tex = Some(format!("{}^{{*}}", crate::mathtex::chars_tex(b.text.trim()).trim()));
+                b.width += s.width / n;
+            }
+            text = text['∗'.len_utf8()..].to_string();
+            s.left += s.width / n;
+            s.width -= s.width / n;
+            if text.trim().is_empty() {
+                continue;
+            }
+        }
+        s.text = text;
+        out.push(s);
+    }
+    out
+}
+
 fn is_prime(c: char, symbols: bool) -> bool {
     "′″‴".contains(c) || (symbols && (c == '\'' || c == '"'))
 }
 
 fn is_loose(c: char) -> bool {
-    "+−/*<>·†′″‴!".contains(c)
+    "+−/*∗<>·†′″‴!".contains(c)
 }
 
 struct Tok {
@@ -227,7 +309,9 @@ fn tokens(cs: &[char], italic: bool) -> Vec<Tok> {
         }
         let word = |a: usize, b: usize| -> Option<Role> {
             let w: String = cs[a..b].iter().collect();
-            if b - a == 1 && cs[a].is_ascii_alphabetic() && !matches!(cs[a], 'a' | 'A' | 'I') {
+            // (or one letter with its accent: "ẑ", "C̃")
+            let accented = b - a == 2 && is_combining(cs[a + 1]);
+            if (b - a == 1 || accented) && cs[a].is_ascii_alphabetic() && (accented || !matches!(cs[a], 'a' | 'A' | 'I')) {
                 Some(Role::Letter)
             } else if crate::mathtex::is_function_word(&w) {
                 Some(Role::Func)
@@ -275,6 +359,7 @@ fn bold_font(doc: &Doc, s: &Span) -> bool {
 /// The pieces of a line cut into tokens, and what each is: text, math or
 /// a note marker.
 pub(crate) fn classify(doc: &Doc, spans: &[Span], st: &Stats) -> (Vec<Span>, Vec<K>) {
+    let spans = &plain_signs(spans)[..];
     let mut toks: Vec<Span> = Vec::with_capacity(spans.len() * 2);
     let mut roles: Vec<Role> = Vec::with_capacity(spans.len() * 2);
     // raised numbers after a closing bracket: a power, or a footnote marker
@@ -492,6 +577,10 @@ pub(crate) fn classify(doc: &Doc, spans: &[Span], st: &Stats) -> (Vec<Span>, Vec
             // (a letter with its dot as one character: the letter, then the dot)
             if tok.role == Role::Atom && piece.text.chars().any(|c| dotted(c).is_some()) {
                 piece.text = piece.text.chars().flat_map(|c| match dotted(c) { Some(l) => vec![l, '\u{307}'], None => vec![c] }).collect();
+            }
+            // (a figure with an accent, the 0̃ of a ket: written as it is to be)
+            if tok.role == Role::Number && piece.text.chars().any(is_combining) {
+                piece.tex = Some(crate::mathtex::chars_tex(&piece.text));
             }
             if (s.italic || bold) && tok.role != Role::Word {
                 // primes typed as quotes
@@ -851,6 +940,23 @@ mod tests {
         }
         let l = Line { top: 100.0, left: 100.0, right: x, size: 22.0, col: 0, bars: Vec::new(), spans };
         render_inlines(&line_inlines(&doc, &l, &st))
+    }
+
+    #[test]
+    fn signs_and_accents_from_odd_places_of_an_ebooks_fonts() {
+        // Sakurai: "˂" for "<", the ohm sign, half an integral sign
+        assert_eq!(line(&[("and ", ""), ("V", "i"), ("(", ""), ("r", "i"), (")", ""), (" ˂ 0 everywhere", "")]), "and $`V ( r ) < 0`$ everywhere");
+        assert_eq!(line(&[("the element ", ""), ("d", "i"), ("\u{2126}; clearly", "")]), "the element $`d \\Omega`$; clearly");
+        assert_eq!(line(&[("[", ""), ("σ", "i"), (" = ⌠(", ""), ("dσ", "i"), ("/", ""), ("d", "i"), ("Ω)", ""), ("d", "i"), ("Ω]", "")]), "[$`\\sigma = \\int ( d \\sigma / d \\Omega ) d \\Omega`$]");
+        // accents: in one character with the letter, behind it, or at the
+        // head of the next piece
+        assert_eq!(line(&[("state |", ""), ("ᾶ", ""), ("⟩", ""), (", that is", "")]), "state $`| \\tilde{\\alpha} \\rangle`$, that is");
+        assert_eq!(line(&[("momentum ", ""), ("p", "b"), (" = ", ""), ("p", "i"), ("ẑ, that is", "")]), "momentum $`\\boldsymbol{p} = p \\hat{z}`$, that is");
+        assert_eq!(line(&[("presence of ", ""), ("A", "b"), ("\u{303} must satisfy", "")]), "presence of $`\\boldsymbol{\\tilde{A}}`$ must satisfy");
+        assert_eq!(line(&[("the left by C˜", ""), (".", ""), (" The result is", "")]), "the left by C\u{303}. The result is");
+        assert_eq!(line(&[("only if |0\u{303}", ""), ("⟩", ""), (" coincides", "")]), "only if $`| \\tilde{0} \\rangle`$ coincides");
+        // the star of a complex conjugate
+        assert_eq!(line(&[("However, ", ""), ("ψ", "i"), ("∗", ""), ("(", ""), ("x", "b"), (", −", ""), ("t", "i"), (") is a solution", "")]), "However, $`\\psi^{*} ( \\boldsymbol{x} , - t )`$ is a solution");
     }
 
     #[test]

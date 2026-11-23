@@ -145,6 +145,8 @@ pub fn sym(c: char) -> Option<&'static str> {
         '←' => "\\leftarrow ",
         '↔' => "\\leftrightarrow ",
         '⇒' => "\\Rightarrow ",
+        '⇄' => "\\rightleftarrows ",
+        '∠' => "\\angle ",
         '∞' => "\\infty ",
         '±' => "\\pm ",
         '∓' => "\\mp ",
@@ -176,13 +178,36 @@ pub fn sym(c: char) -> Option<&'static str> {
     })
 }
 
-fn chars_tex(t: &str) -> String {
+/// The LaTeX name of an accent typed after its letter (a combining mark).
+fn accent_after(c: char) -> Option<&'static str> {
+    match c {
+        '\u{303}' => Some("tilde"),
+        '\u{302}' => Some("hat"),
+        '\u{304}' | '\u{305}' => Some("bar"),
+        '\u{307}' => Some("dot"),
+        '\u{308}' => Some("ddot"),
+        '\u{20d7}' => Some("vec"),
+        _ => None,
+    }
+}
+
+pub(crate) fn chars_tex(t: &str) -> String {
     let t = t.replace(". . .", "…").replace("...", "…");
     let mut out = String::new();
+    // (where the last sign written begins: an accent typed after it, the
+    // tilde of "0̃", goes over it)
+    let mut last = 0;
     for c in t.chars() {
         if c.is_whitespace() {
             continue;
         }
+        if let Some(a) = accent_after(c).filter(|_| out.len() > last) {
+            let sign = out[last..].trim().to_string();
+            out.truncate(last);
+            out.push_str(&format!("\\{a}{{{sign}}}"));
+            continue;
+        }
+        last = out.len();
         match sym(c) {
             Some(s) => out.push_str(s),
             None => out.push(c),
@@ -255,15 +280,7 @@ fn text_font_tex(t: &str) -> String {
             continue;
         }
         // an accent typed after its letter: α̃
-        let accent = match c {
-            '\u{303}' => Some("tilde"),
-            '\u{302}' => Some("hat"),
-            '\u{304}' | '\u{305}' => Some("bar"),
-            '\u{307}' => Some("dot"),
-            '\u{308}' => Some("ddot"),
-            '\u{20d7}' => Some("vec"),
-            _ => None,
-        };
+        let accent = accent_after(c);
         if let (Some(a), Some(last)) = (accent, out.last_mut()) {
             *last = format!("\\{a}{{{}}}", last.trim());
             continue;

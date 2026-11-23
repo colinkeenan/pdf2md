@@ -436,6 +436,7 @@ Inside a sentence, an italic letter is a variable and the brackets and "=" aroun
 * **Where a formula ends:** at a word, and at a comma, semicolon or full stop that is followed by a space and is not inside brackets. Brackets around a whole formula are prose. So are the hyphen in "x-polarized" and the apostrophe in "Green's".
 * **Raised numbers.** After a word, a small raised number is a footnote marker. After a symbol, a number or a bracketed formula it is a power.
 * **Linked numbers**, such as an equation reference or an index page, are never part of the formula beside them.
+* **Signs and accents from odd places of the fonts.** An ebook may set "<" as the arrowhead `˂`, the integral sign as the upper half of a tall one, Ω as the ohm sign: each is read as the sign it stands for. An accent that comes as a character of its own behind its letter (`C˜`), at the head of the next piece (a bold **A**, then the tilde), or in one character with its letter (α with a tilde, z with a hat, standing alone) goes over that letter. A star right against a letter that is a piece of its own is the letter's raised star, the complex conjugate ψ*.
 
 ### Tables
 
