@@ -1553,7 +1553,7 @@ fn place_images(doc: &mut Doc) {
             let fig = Figure { left: im.left, right: im.right, top: im.top, bottom: im.bottom };
             let reading = if captioned(page, im) { None } else { readings.get(&crate::ocr::key(&im.png_base64)) };
             if let Some(crate::ocr::Reading::Code(code)) = reading {
-                page.codes.push((im.top, crate::Block::Code(code.clone())));
+                page.codes.push((im.top, crate::Block::Code { text: code.clone(), key: Some(crate::ocr::key(&im.png_base64)) }));
                 continue;
             }
             let tex = match reading {

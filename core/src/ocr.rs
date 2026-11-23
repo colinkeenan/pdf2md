@@ -150,6 +150,54 @@ pub(crate) fn read_correction(k: &str) -> Option<String> {
     (!t.is_empty()).then(|| t.to_string())
 }
 
+/// The reader's correction of program code read from a picture (`KEY.code`
+/// among the corrections; the text as it stands between the fences).
+pub(crate) fn read_code_correction(k: &str) -> Option<String> {
+    let t = std::fs::read_to_string(corrections_dir()?.join(format!("{k}.code"))).ok()?;
+    let t = t.trim_end();
+    (!t.trim().is_empty()).then(|| t.to_string())
+}
+
+/// What stands above program code read from a picture, before the
+/// picture's key: `<!-- pdf2md:code KEY -->`, an empty line, the fence.
+pub const CODE_MARK: &str = "<!-- pdf2md:code ";
+
+/// The marked code blocks of a Markdown text: picture key and the text
+/// between the fences. (In a bulleted item the block is set in under its
+/// bullet: read as if it stood at the margin.)
+pub fn marked_code(text: &str) -> Vec<(String, String)> {
+    let mut out = Vec::new();
+    let mut from = 0;
+    while let Some(at) = text[from..].find(CODE_MARK).map(|i| from + i) {
+        from = at + CODE_MARK.len();
+        let Some(k) = text.get(from..from + 16).filter(|k| k.chars().all(|c| c.is_ascii_hexdigit())) else { continue };
+        let indent = &text[text[..at].rfind('\n').map_or(0, |i| i + 1)..at];
+        let Some(rest) = text[from + 16..].strip_prefix(" -->\n").filter(|_| indent.chars().all(|c| c == ' ')) else { continue };
+        let mut lines = rest.split('\n').map(|l| l.strip_prefix(indent).unwrap_or(l)).skip_while(|l| l.trim().is_empty());
+        if lines.next() != Some("```") {
+            continue;
+        }
+        let mut body: Vec<&str> = Vec::new();
+        let mut closed = false;
+        for l in lines {
+            if l == "```" {
+                closed = true;
+                break;
+            }
+            body.push(l);
+        }
+        if closed {
+            out.push((k.to_string(), body.join("\n")));
+        }
+    }
+    out
+}
+
+/// Program code on one line, as the record of what was written keeps it.
+fn one_line(code: &str) -> String {
+    code.trim_end().replace('\\', "\\\\").replace('\n', "\\n")
+}
+
 /// The mark mdBun puts behind an equation that the reader changed to
 /// improve on the original, not to match it (mdBun shows such an equation
 /// in a colour of its own): right behind a formula in a sentence, behind
@@ -175,6 +223,8 @@ pub fn collect_corrections(dir: &std::path::Path) -> usize {
     let mut found: HashMap<String, (std::time::SystemTime, String)> = HashMap::new();
     // image -> (time of the file, is it marked there as an improvement)
     let mut improved: HashMap<String, (std::time::SystemTime, bool)> = HashMap::new();
+    // image -> (time of the file, program code as it stands there)
+    let mut codes: HashMap<String, (std::time::SystemTime, String)> = HashMap::new();
     for e in entries.flatten() {
         let p = e.path();
         if p.extension().is_none_or(|x| x != "md") {
@@ -182,6 +232,18 @@ pub fn collect_corrections(dir: &std::path::Path) -> usize {
         }
         let (Ok(text), Ok(meta)) = (std::fs::read_to_string(&p), e.metadata()) else { continue };
         let time = meta.modified().unwrap_or(std::time::UNIX_EPOCH);
+        // (program code read from a picture: changed if it is not what the
+        // conversion wrote; only with the record of that)
+        if let Some(w) = &written_then {
+            for (k, code) in marked_code(&text) {
+                if w.get(&format!("{k}.code")).is_none_or(|was| *was == one_line(&code)) {
+                    continue;
+                }
+                if codes.get(&k).is_none_or(|(t, _)| *t < time) {
+                    codes.insert(k, (time, code));
+                }
+            }
+        }
         for (k, latex, marked) in marked_and_improved(&text) {
             // (the mark of an improvement: put there or taken away since
             // the conversion wrote the file)
@@ -257,7 +319,7 @@ pub fn collect_corrections(dir: &std::path::Path) -> usize {
             }
         }
     }
-    if (found.is_empty() && cells.is_empty() && pictures.is_empty() && improved.is_empty()) || std::fs::create_dir_all(&cdir).is_err() {
+    if (found.is_empty() && cells.is_empty() && pictures.is_empty() && improved.is_empty() && codes.is_empty()) || std::fs::create_dir_all(&cdir).is_err() {
         return 0;
     }
     let mut kept = 0;
@@ -274,6 +336,7 @@ pub fn collect_corrections(dir: &std::path::Path) -> usize {
     }
     found.iter().filter(|(k, (_, latex))| std::fs::write(cdir.join(format!("{k}.tex")), format!("{latex}\n")).is_ok()).count()
         + cells.iter().filter(|(id, (_, cell))| std::fs::write(cdir.join(format!("{id}.cell")), format!("{cell}\n")).is_ok()).count()
+        + codes.iter().filter(|(k, (_, code))| std::fs::write(cdir.join(format!("{k}.code")), format!("{}\n", code.trim_end())).is_ok()).count()
         + kept
 }
 
@@ -355,6 +418,15 @@ pub fn record_written(dir: &std::path::Path, texts: &[&str]) -> std::io::Result<
             }
         }
     }
+    // (and program code read from a picture: "KEY.code", on one line)
+    for t in texts {
+        for (k, code) in marked_code(t) {
+            let id = format!("{k}.code");
+            if seen.insert(id.clone()) {
+                s.push_str(&format!("{id}\t{}\n", one_line(&code)));
+            }
+        }
+    }
     // (and each cell of each table that has a key: "KEY.row.column")
     for t in texts {
         for (id, cell) in marked_tables(t) {
@@ -405,6 +477,10 @@ fn python() -> Option<PathBuf> {
 fn read_cached(dir: &std::path::Path, k: &str) -> Option<Reading> {
     let t = std::fs::read_to_string(dir.join(format!("{k}.tex"))).ok()?;
     if let Some(code) = t.strip_prefix("%CODE\n") {
+        // (as the page reader's recognizer read it, where that is
+        // installed: it reads program text better than the plain reader)
+        let best = std::fs::read_to_string(dir.join(format!("{k}.best"))).unwrap_or_default();
+        let code = best.strip_prefix("%CODE\n").filter(|b| !b.trim().is_empty()).unwrap_or(code);
         return Some(Reading::Code(code.trim_end().to_string()));
     }
     let t = t.trim();
@@ -422,7 +498,8 @@ fn read_cached(dir: &std::path::Path, k: &str) -> Option<Reading> {
         // (the reading chosen from the two recognizers', where it is not
         // the math recognizer's own)
         let best = std::fs::read_to_string(dir.join(format!("{k}.best"))).unwrap_or_default();
-        let t = if best.trim().is_empty() { t } else { best.trim() };
+        // (not one kept from when the picture was taken for program code)
+        let t = if best.trim().is_empty() || best.starts_with('%') { t } else { best.trim() };
         let latex = align_rows(&unglue(unwrap_cell(&strip_numbers(t))));
         // words set small under parts of the equation, found in the image
         let labels: Vec<(f32, String)> = std::fs::read_to_string(dir.join(format!("{k}.labels")))
@@ -781,7 +858,9 @@ fn second_opinion(images: &[&str], out: &mut HashMap<String, Reading>) {
         let math = matches!(out.get(&k), Some(Reading::Latex(_))) && read_correction(&k).is_none();
         // (not chosen yet, or chosen by older rules)
         let chosen = std::fs::read_to_string(dir.join(format!("{k}.agree"))).is_ok_and(|t| t.lines().nth(1) == Some(CHECK_RULES));
-        if math && !chosen && !todo.iter().any(|(t, _)| *t == k) {
+        // (program code: read once more, by this recognizer)
+        let code = matches!(out.get(&k), Some(Reading::Code(_))) && read_code_correction(&k).is_none() && !dir.join(format!("{k}.surya-code")).exists();
+        if ((math && !chosen) || code) && !todo.iter().any(|(t, _)| *t == k) {
             todo.push((k, img));
         }
     }
@@ -826,6 +905,10 @@ fn read_images(images: &[&str]) -> HashMap<String, Reading> {
             continue;
         }
         // the reader's own correction comes first
+        if let Some(c) = read_code_correction(&k) {
+            out.insert(k, Reading::Code(c));
+            continue;
+        }
         if let Some(c) = read_correction(&k) {
             out.insert(k, Reading::Latex(c));
             continue;
@@ -1383,6 +1466,10 @@ mod tests {
     #[test]
     fn decodes_base64() {
         assert_eq!(base64_decode("aGVsbG8=").unwrap(), b"hello");
+        // program code under its mark, at the margin and in a bulleted item
+        let text = "So:\n\n<!-- pdf2md:code 0123456789abcdef -->\n\n```\nf[x_] = x\n\n  g[x]\n```\n\n- item\n\n  <!-- pdf2md:code 0123456789abcdee -->\n\n  ```\n  a\\b\n    c\n  ```\n\n```\nno mark\n```\n";
+        assert_eq!(marked_code(text), vec![("0123456789abcdef".to_string(), "f[x_] = x\n\n  g[x]".to_string()), ("0123456789abcdee".to_string(), "a\\b\n  c".to_string())]);
+        assert_eq!(one_line("a\\b\n  c\n"), "a\\\\b\\n  c");
         assert_eq!(base64_decode("aGVsbG8hIQ==").unwrap(), b"hello!!");
         assert_eq!(base64_decode("YWJj").unwrap(), b"abc");
     }

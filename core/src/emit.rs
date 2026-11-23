@@ -827,8 +827,15 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
         Block::Figure { page, n, .. } => {
             out.push_str(&format!("![Figure]({})\n\n", figure_file(*page, *n)));
         }
-        Block::Code(code) => {
-            out.push_str(&format!("```\n{code}\n```\n\n"));
+        Block::Code { text, key } => {
+            // which image this was read from (invisible): a correction of
+            // the text below is kept for the next conversion
+            // (an empty line under it: the fence would else be part of the
+            // HTML of the mark's line)
+            if let Some(k) = key {
+                out.push_str(&format!("{}{k} -->\n\n", crate::ocr::CODE_MARK));
+            }
+            out.push_str(&format!("```\n{text}\n```\n\n"));
         }
         Block::Rule => out.push_str("---\n\n"),
         // (marks for `bulleted`, which writes the item when all of it is there)

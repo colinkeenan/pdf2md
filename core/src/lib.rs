@@ -148,7 +148,9 @@ pub enum Block {
     /// `label`: the printed page number, for the caption.
     Figure { page: u32, n: usize, area: layout::Figure, label: Option<String> },
     /// Program code (read from an image of it), written as a code block.
-    Code(String),
+    /// `key`: the image it was read from, by which the reader's correction
+    /// of the text is kept (see [`ocr::collect_corrections`]).
+    Code { text: String, key: Option<String> },
     /// A horizontal line across the page (drawn as an image).
     Rule,
     /// A table: its rows of cells (a table of contents set in columns, a

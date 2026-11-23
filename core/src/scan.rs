@@ -2292,7 +2292,7 @@ fn build(pages: &[PageRead], book: &str) -> Scan {
                     let text: String = pieces(&b.html).iter().filter_map(|p| if let Piece::Text(t) = p { Some(unescape(t)) } else { None }).collect();
                     // (marker calls lists of names and numbers code, too)
                     if looks_like_code(&text) {
-                        made.push(Block::Code(text.trim().to_string()));
+                        made.push(Block::Code { text: text.trim().to_string(), key: None });
                     } else {
                         let words = all_inline(&b.html);
                         if has_words(&words) {

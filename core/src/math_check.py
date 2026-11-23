@@ -396,11 +396,8 @@ def choose(first: str, second: str, other):
     return other, max(1, m.difference(first, other))
 
 
-def read(files, dst, ext: str, scale: int, state: dict):
-    """Read the pictures with the page reader's recognizer, enlarged
-    `scale` times; what it gives is kept as NAME.`ext`."""
-    if not files:
-        return
+def page_reader(state: dict):
+    """The page reader's recognizer, loaded when first needed."""
     if "rec" not in state:
         from surya.foundation import FoundationPredictor
         from surya.recognition import RecognitionPredictor
@@ -409,7 +406,90 @@ def read(files, dst, ext: str, scale: int, state: dict):
         state["rec"] = RecognitionPredictor(FoundationPredictor())
         state["rec"].disable_tqdm = True
         tell("loading", 1, 1)
-    rec = state["rec"]
+    return state["rec"]
+
+
+def code_lines(raw: str):
+    """The lines of program text in what the recognizer gave (it may mark
+    the ends of lines with <br>)."""
+    import html
+
+    t = html.unescape(re.sub(r"<br\s*/?>", "\n", raw))
+    return [line.strip() for line in t.splitlines() if line.strip()]
+
+
+def set_in(img: Image.Image, lines):
+    """The lines of program text, each set in as far as it is in the
+    picture (the recognizer gives them all from the margin; in some
+    languages the indent is part of the program). Program text is set in
+    type of one width: the lines stand at one pitch, and each is as wide
+    as its letters are many. Where the picture does not bear that out
+    (an empty line in it, a line read short), the lines stay as read."""
+    g = img.convert("L")
+    w, h = g.size
+    px = g.load()
+    dark = [[x for x in range(w) if px[x, y] < 190] for y in range(h)]
+    rows = [y for y in range(h) if dark[y]]
+    if not rows or len(lines) < 2:
+        return lines
+    top, pitch = rows[0], (rows[-1] + 1 - rows[0]) / len(lines)
+    edges = []
+    for i in range(len(lines)):
+        # (the middle of the line's height: clear of its neighbours)
+        a = int(top + (i + 0.25) * pitch)
+        b = max(a + 1, int(top + (i + 0.75) * pitch))
+        xs = [x for y in range(a, min(b, h)) for x in dark[y]]
+        if not xs:
+            return lines
+        edges.append((min(xs), max(xs) + 1))
+    widths = sorted((r - l) / len(t) for (l, r), t in zip(edges, lines) if len(t) >= 8)
+    if not widths:
+        return lines
+    cw = widths[len(widths) // 2]
+    if any(abs((r - l) - len(t) * cw) > max(1.5 * cw, 0.1 * len(t) * cw) for (l, r), t in zip(edges, lines)):
+        return lines
+    left = min(l for l, _ in edges)
+    ins = [round((l - left) / cw) for l, _ in edges]
+    return [" " * n + t for n, t in zip(ins, lines)] if max(ins) <= 40 else lines
+
+
+def read_code(files, dst, state: dict):
+    """Program code (what the plain-text reader gave stands in NAME.tex
+    under "%CODE"): the page reader's recognizer reads such text far
+    better — the plain reader takes named characters like \\[Psi] apart.
+    Its reading is written to NAME.best where it is program text too and
+    about as long as the plain reader's; what it gave is kept as
+    NAME.surya-code, so each picture is read once."""
+    if not files:
+        return
+    rec = page_reader(state)
+    better = 0
+    for n, f in enumerate(files):
+        plain = (dst / f"{f.stem}.tex").read_text().split("\n", 1)[1]
+        size = len(re.sub(r"\s", "", plain))
+        raw = ""
+        for scale in (2, 3):
+            img = prepared(f, scale)
+            p = rec(images=[img], bboxes=[[[0, 0, img.width, img.height]]], task_names=["block_without_boxes"], math_mode=False, max_tokens=1024)[0]
+            raw = "\n".join(line.text for line in p.text_lines)
+            lines = code_lines(raw)
+            text = "\n".join(lines)
+            got = len(re.sub(r"\s", "", text))
+            if not re.search(r"</?[a-z]+\d?>", text) and m.looks_like_code(text) and m.balanced(text) and 0.8 * size <= got <= 1.25 * size:
+                (dst / f"{f.stem}.best").write_text("%CODE\n" + "\n".join(set_in(Image.open(f), lines)) + "\n")
+                better += 1
+                break
+        (dst / f"{f.stem}.surya-code").write_text(raw + "\n")
+        tell("comparing", n + 1, len(files))
+    print(f"  {better} of {len(files)} pieces of program code are written as the page reader's recognizer read them", file=sys.stderr, flush=True)
+
+
+def read(files, dst, ext: str, scale: int, state: dict):
+    """Read the pictures with the page reader's recognizer, enlarged
+    `scale` times; what it gives is kept as NAME.`ext`."""
+    if not files:
+        return
+    rec = page_reader(state)
     tell("comparing", 0, len(files))
     for i in range(0, len(files), BATCH):
         part = files[i : i + BATCH]
@@ -435,6 +515,8 @@ def main():
         if tex.exists() and not tex.read_text().startswith("%"):
             math.append(f)
     state = {}
+    code = [f for f in files if (dst / f"{f.stem}.tex").exists() and (dst / f"{f.stem}.tex").read_text().startswith("%CODE\n")]
+    read_code([f for f in code if not (dst / f"{f.stem}.surya-code").exists()], dst, state)
     read([f for f in math if not (dst / f"{f.stem}.surya").exists()], dst, "surya", 2, state)
 
     def readings(f):

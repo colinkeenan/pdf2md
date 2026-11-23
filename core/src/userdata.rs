@@ -307,6 +307,22 @@ fn equation_above(before: &str) -> Option<&str> {
     (before[start + 2..].starts_with("```math") && before.ends_with("```")).then(|| mark(&before[..start]))?
 }
 
+/// What `Note::after` begins with for a note under program code read
+/// from a picture, before the picture's key.
+const CODE: &str = "pdf2md:code ";
+
+/// The picture of the program code that ends this text: its fenced block
+/// under its mark (`<!-- pdf2md:code KEY -->`).
+fn code_above(before: &str) -> Option<&str> {
+    use crate::ocr::CODE_MARK;
+    let before = before.trim_end();
+    let at = before.rfind(CODE_MARK)?;
+    let (k, rest) = before[at + CODE_MARK.len()..].split_once(" -->\n")?;
+    let inner = rest.trim_start_matches('\n').strip_prefix("```\n")?.strip_suffix("```")?;
+    // (the block that ends here is that mark's own: no fence between)
+    (inner.is_empty() || (inner.ends_with('\n') && !inner.contains("\n```") && !inner.starts_with("```"))).then_some(k)
+}
+
 fn collect_file(text: &str, slug_at: &dyn Fn(usize) -> Option<String>) -> UserData {
     // What stands in a bulleted item is set in two spaces under its
     // bullet: read as if it stood at the margin (a note there, a
@@ -351,6 +367,11 @@ fn collect_file(text: &str, slug_at: &dyn Fn(usize) -> Option<String>) -> UserDa
             // picture, for the equation's LaTeX may be corrected since)
             if let Some(k) = equation_above(before) {
                 after = format!("{EQUATION}{k}");
+                break;
+            }
+            // (under program code read from a picture: kept by the picture too)
+            if let Some(k) = code_above(before) {
+                after = format!("{CODE}{k}");
                 break;
             }
             // (as converted: fixes undone, so it is found with or without them)
@@ -673,8 +694,15 @@ fn apply_in(text: &mut String, data: &UserData, slug: Option<&str>, book: bool) 
                 Some(end + text[end..].strip_prefix('\n').filter(|l| l.starts_with(IMPROVED)).map_or(0, |_| 1 + IMPROVED.len()))
             });
         }
+        if let Some(k) = n.after.strip_prefix(CODE) {
+            let open = format!("{}{k} -->\n\n```\n", crate::ocr::CODE_MARK);
+            at = text.find(&open).and_then(|i| {
+                let from = i + open.len() - 1;
+                text[from..].find("\n```").map(|j| from + j + 4)
+            });
+        }
         for block in text.split("\n\n") {
-            if at.is_some() || n.after.starts_with(EQUATION) {
+            if at.is_some() || n.after.starts_with(EQUATION) || n.after.starts_with(CODE) {
                 break;
             }
             if !n.after.is_empty() && fingerprint(&undo_fixes(block)) == n.after {
@@ -761,6 +789,22 @@ mod tests {
         // (a note that came to stand between the mark and the equation)
         let between = eq("u_{El} = A r", "").replace(" -->\n\n```math", " -->\n\n> [!NOTE]\n> The index was read as I.\n\n```math");
         assert_eq!(collect_file(&between, &|_| Some("c".into())), d);
+    }
+
+    #[test]
+    fn a_note_under_program_code_stays_under_it_when_the_code_is_corrected() {
+        let code = |text: &str, note: &str| format!("Before it.\n\n<!-- pdf2md:code 0123456789abcdef -->\n\n```\n{text}\n```{note}\n\nAfter it.\n");
+        let note = "\n\n> [!NOTE]\n> The letter l was read as 1.";
+        // (a listing with an empty line in it: the note is under all of it)
+        let d = collect_file(&code("f[1_] = 1\n\n  g[x]", note), &|_| Some("c".into()));
+        assert_eq!(d.notes[0].after, "pdf2md:code 0123456789abcdef");
+        let mut new = code("f[l_] = l\n\n  g[x]", "");
+        assert!(apply(&mut new, &d, Some("c")).is_empty());
+        assert_eq!(new, code("f[l_] = l\n\n  g[x]", note));
+        assert_eq!(collect_file(&new, &|_| Some("c".into())), d);
+        // (a block of code that has no mark, or another block's: by its words)
+        let plain = "Before it.\n\n<!-- pdf2md:code 0123456789abcdef -->\n\n```\na\n```\n\nSo:\n\n```\nb\n```\n\n> [!NOTE]\n> Mine.\n";
+        assert!(!collect_file(plain, &|_| Some("c".into())).notes[0].after.starts_with(CODE));
     }
 
     #[test]
