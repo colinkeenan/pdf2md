@@ -1135,7 +1135,8 @@ fn write_unpacked(root: &Path, epub: &Path, out: &Path) -> Result<Vec<PathBuf>, 
                 k += 1;
             }
             std::fs::create_dir_all(&images).map_err(|e| format!("{}: {e}", images.display()))?;
-            std::fs::copy(root.join(&path), images.join(&new)).map_err(|e| format!("{path}: {e}"))?;
+            let bytes = std::fs::read(root.join(&path)).map_err(|e| format!("{path}: {e}"))?;
+            emit::write_changed(&images.join(&new), bytes).map_err(|e| format!("{path}: {e}"))?;
             pictures.insert(path, new);
         }
     }
@@ -1220,7 +1221,7 @@ fn write_unpacked(root: &Path, epub: &Path, out: &Path) -> Result<Vec<PathBuf>, 
         let lost = crate::userdata::apply(&mut s, &user, Some(&c.slug));
         s.push_str(&emit::lost_notes(&lost));
         let p = out.join(format!("{}.md", c.slug));
-        std::fs::write(&p, s).map_err(|e| format!("{}: {e}", p.display()))?;
+        emit::write_changed(&p, s).map_err(|e| format!("{}: {e}", p.display()))?;
         written.push(p);
     }
     if chapters.len() > 1 {
@@ -1231,7 +1232,7 @@ fn write_unpacked(root: &Path, epub: &Path, out: &Path) -> Result<Vec<PathBuf>, 
         all.push_str(&emit::lost_notes(&lost));
         let p = out.join("book.md");
         let all = emit::by_line(out, "") + &all;
-        std::fs::write(&p, all).map_err(|e| format!("{}: {e}", p.display()))?;
+        emit::write_changed(&p, all).map_err(|e| format!("{}: {e}", p.display()))?;
         written.push(p);
     }
     // The files written last time that are not written now are taken away.
@@ -1242,7 +1243,7 @@ fn write_unpacked(root: &Path, epub: &Path, out: &Path) -> Result<Vec<PathBuf>, 
             let _ = std::fs::remove_file(out.join(old));
         }
     }
-    let _ = std::fs::write(&list, now.join("\n") + "\n");
+    let _ = emit::write_changed(&list, now.join("\n") + "\n");
     for w in warnings {
         eprintln!("warning: {w}");
     }

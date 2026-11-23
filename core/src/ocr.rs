@@ -448,7 +448,7 @@ pub fn record_written(dir: &std::path::Path, texts: &[&str]) -> std::io::Result<
         let _ = std::fs::remove_file(dir.join(WRITTEN));
         return Ok(());
     }
-    std::fs::write(dir.join(WRITTEN), s)
+    crate::emit::write_changed(&dir.join(WRITTEN), s)
 }
 
 fn read_written(dir: &std::path::Path) -> Option<HashMap<String, String>> {

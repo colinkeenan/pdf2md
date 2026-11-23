@@ -530,16 +530,23 @@ fn run(job: &Job, replace: bool) -> Result<(String, PathBuf), String> {
     let mut book = convert_pdf(&job.input)?;
     book.user = user;
     // only touch the old folder once the new book is ready
+    let mut dates = None;
     if dest.exists() {
         if replace {
             // the old conversion to the Trash (restorable), but the folder
             // itself stays: terminals and editors inside it see the new files
+            // (what each file was, to give the ones that come out the same
+            // their dates back)
+            dates = Some(pdf2md_core::emit::file_dates(&dest));
             trash_contents(&dest)?;
         } else {
             dest = new_dir(&dest);
         }
     }
     let files = write_book(&book, &dest).map_err(|e| e.to_string())?;
+    if let Some(before) = &dates {
+        pdf2md_core::emit::keep_dates(&dest, before);
+    }
     let mut msg = format!("Wrote {} files to {}", files.len(), dest.display());
     if kept > 0 {
         msg.push_str(&format!("; kept {kept} hand correction(s) (equations, table cells, pictures under tables folded away)"));

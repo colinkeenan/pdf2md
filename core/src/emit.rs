@@ -1462,7 +1462,9 @@ pub(crate) fn write_figures(book: &Book, dir: &Path) {
         let area = &book.unfolds.get(&page).map_or(*area, |s| crate::columns::printed(s, area));
         let (x, y) = (px(area.left + shift - pad), px(area.top - pad));
         let (w, h) = (px(area.right - area.left + 2.0 * pad), px(area.bottom - area.top + 2.0 * pad));
-        let stem = file.with_extension("");
+        // (cut to a name of its own first: a picture that comes out as it
+        // was is not written again, see `write_changed`)
+        let stem = file.with_file_name(format!(".new-{}", file.file_stem().map(|s| s.to_string_lossy().into_owned()).unwrap_or_default()));
         let _ = std::process::Command::new("pdftocairo")
             .args(["-png", "-singlefile", "-r", "150"])
             .args(["-f", &page.to_string(), "-l", &page.to_string()])
@@ -1470,6 +1472,7 @@ pub(crate) fn write_figures(book: &Book, dir: &Path) {
             .arg(pdf)
             .arg(&stem)
             .status();
+        move_changed(&stem.with_extension("png"), &file);
     };
     // which pictures there are, then one by one (to tell how far it is)
     let mut todo: Vec<(u32, &crate::layout::Figure, String, f32)> = Vec::new();
@@ -1497,19 +1500,90 @@ pub(crate) fn write_figures(book: &Book, dir: &Path) {
     crate::progress::report(Step::Pictures, todo.len(), todo.len());
 }
 
+/// Write a file of a book, unless it stands there with these very bytes
+/// already: what a new conversion leaves as it was keeps its date, so that
+/// whatever copies the book elsewhere (to a phone, to a drive on the web)
+/// takes only what has changed.
+pub(crate) fn write_changed(path: &Path, bytes: impl AsRef<[u8]>) -> std::io::Result<()> {
+    if std::fs::read(path).is_ok_and(|old| old == bytes.as_ref()) {
+        return Ok(());
+    }
+    std::fs::write(path, bytes)
+}
+
+/// Put a file just made in its place in the book: thrown away if the file
+/// there has the same bytes (see [`write_changed`]).
+pub(crate) fn move_changed(new: &Path, to: &Path) {
+    let same = match (std::fs::read(new), std::fs::read(to)) {
+        (Ok(a), Ok(b)) => a == b,
+        _ => false,
+    };
+    let _ = if same { std::fs::remove_file(new) } else { std::fs::rename(new, to) };
+}
+
+/// Each file in a book's folder (its pictures too; links left out): how
+/// long it is, a print of its bytes, and its date. Taken before the folder
+/// is emptied for a new conversion, for [`keep_dates`].
+pub fn file_dates(dir: &Path) -> HashMap<PathBuf, (u64, u64, std::time::SystemTime)> {
+    fn walk(base: &Path, dir: &Path, out: &mut HashMap<PathBuf, (u64, u64, std::time::SystemTime)>) {
+        let Ok(entries) = std::fs::read_dir(dir) else { return };
+        for e in entries.flatten() {
+            let p = e.path();
+            let Ok(meta) = std::fs::symlink_metadata(&p) else { continue };
+            if meta.is_dir() {
+                walk(base, &p, out);
+            } else if meta.is_file() {
+                if let (Ok(bytes), Ok(time), Ok(rel)) = (std::fs::read(&p), meta.modified(), p.strip_prefix(base)) {
+                    out.insert(rel.to_path_buf(), (meta.len(), print(&bytes), time));
+                }
+            }
+        }
+    }
+    let mut out = HashMap::new();
+    walk(dir, dir, &mut out);
+    out
+}
+
+fn print(bytes: &[u8]) -> u64 {
+    use std::hash::{Hash, Hasher};
+    let mut h = std::collections::hash_map::DefaultHasher::new();
+    bytes.hash(&mut h);
+    h.finish()
+}
+
+/// After a conversion into a folder that was emptied for it: each file
+/// that is again what it was `before` gets the date it had (see
+/// [`write_changed`]). Returns how many files that were.
+pub fn keep_dates(dir: &Path, before: &HashMap<PathBuf, (u64, u64, std::time::SystemTime)>) -> usize {
+    let mut kept = 0;
+    for (rel, (len, hash, time)) in before {
+        let p = dir.join(rel);
+        let same = std::fs::symlink_metadata(&p).is_ok_and(|m| m.is_file() && m.len() == *len) && std::fs::read(&p).is_ok_and(|b| print(&b) == *hash);
+        if same && std::fs::File::options().write(true).open(&p).and_then(|f| f.set_modified(*time)).is_ok() {
+            kept += 1;
+        }
+    }
+    kept
+}
+
 /// The PDF in the book's folder, as `book.pdf`: a link to where it is (no
-/// second copy), for the page markers to open. Written anew with every
+/// second copy), for the page markers to open. Set right with every
 /// conversion; a file of that name that is no such link is left alone.
 fn link_pdf(pdf: &Path, dir: &Path) {
     let at = dir.join(PDF_NAME);
-    match std::fs::symlink_metadata(&at) {
-        Ok(m) if m.file_type().is_symlink() => {
-            let _ = std::fs::remove_file(&at);
-        }
+    let linked = match std::fs::symlink_metadata(&at) {
+        Ok(m) if m.file_type().is_symlink() => true,
         Ok(_) => return,
-        Err(_) => {}
-    }
+        Err(_) => false,
+    };
     let (Ok(pdf), Ok(dir)) = (pdf.canonicalize(), dir.canonicalize()) else { return };
+    // (a link that goes there already stays as it is)
+    if linked && std::fs::read_link(&at).is_ok_and(|to| to == relative(&dir, &pdf)) {
+        return;
+    }
+    if linked {
+        let _ = std::fs::remove_file(&at);
+    }
     #[cfg(unix)]
     let _ = std::os::unix::fs::symlink(relative(&dir, &pdf), &at);
     #[cfg(not(unix))]
@@ -1553,7 +1627,7 @@ pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
         let lost = crate::userdata::apply(&mut s, &user, Some(&ch.slug));
         s.push_str(&lost_notes(&lost));
         let s = bulleted(&s);
-        std::fs::write(&p, &s)?;
+        write_changed(&p, &s)?;
         written.push(s);
         out.push(p);
     }
@@ -1561,7 +1635,7 @@ pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
     crate::ocr::record_written(dir, &written.iter().map(String::as_str).collect::<Vec<_>>())?;
     let p = dir.join("check-equations.md");
     if let Some(list) = check_list(book) {
-        std::fs::write(&p, list)?;
+        write_changed(&p, list)?;
         out.push(p);
     } else if std::fs::read_to_string(&p).is_ok_and(|t| t.starts_with("# Equations to check")) {
         // (nothing left to check: the list of an earlier conversion goes)
@@ -1573,7 +1647,7 @@ pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
         let mut s = book_markdown_marked(book);
         let lost = crate::userdata::apply(&mut s, &user, None);
         s.push_str(&lost_notes(&lost));
-        std::fs::write(&p, by + &bulleted(&s))?;
+        write_changed(&p, by + &bulleted(&s))?;
         out.push(p);
     }
     if !book.unplaced.is_empty() {
@@ -1584,7 +1658,7 @@ pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
         for u in &book.unplaced {
             s.push_str(&format!("- {}\n", u));
         }
-        std::fs::write(&p, s)?;
+        write_changed(&p, s)?;
         out.push(p);
     }
     crate::progress::report(Step::Files, 1, 1);
@@ -1594,6 +1668,47 @@ pub fn write_book(book: &Book, dir: &Path) -> std::io::Result<Vec<PathBuf>> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn a_file_that_comes_out_the_same_keeps_its_date() {
+        let dir = std::env::temp_dir().join(format!("pdf2md-dates-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&dir);
+        std::fs::create_dir_all(dir.join("images")).unwrap();
+        let old = std::time::SystemTime::UNIX_EPOCH + std::time::Duration::from_secs(1_700_000_000);
+        let dated = |name: &str, text: &str| {
+            std::fs::write(dir.join(name), text).unwrap();
+            std::fs::File::options().write(true).open(dir.join(name)).unwrap().set_modified(old).unwrap();
+        };
+        let date = |name: &str| std::fs::metadata(dir.join(name)).unwrap().modified().unwrap();
+        dated("01-a.md", "one");
+        dated("02-b.md", "two");
+        dated("images/fig.png", "png");
+        // written in place: only what differs is written
+        write_changed(&dir.join("01-a.md"), "one").unwrap();
+        write_changed(&dir.join("02-b.md"), "two, changed").unwrap();
+        assert_eq!(date("01-a.md"), old);
+        assert!(date("02-b.md") > old);
+        assert_eq!(std::fs::read_to_string(dir.join("02-b.md")).unwrap(), "two, changed");
+        // a picture made anew beside its place: thrown away if it is the same
+        std::fs::write(dir.join("images/.new-fig.png"), "png").unwrap();
+        move_changed(&dir.join("images/.new-fig.png"), &dir.join("images/fig.png"));
+        assert!(!dir.join("images/.new-fig.png").exists());
+        assert_eq!(date("images/fig.png"), old);
+        // the folder emptied and written anew (the app's Replace): the
+        // files that are what they were get their dates back
+        dated("02-b.md", "two");
+        let before = file_dates(&dir);
+        for name in ["01-a.md", "02-b.md", "images/fig.png"] {
+            std::fs::remove_file(dir.join(name)).unwrap();
+        }
+        std::fs::write(dir.join("01-a.md"), "one").unwrap();
+        std::fs::write(dir.join("02-b.md"), "2").unwrap();
+        std::fs::write(dir.join("images/fig.png"), "png").unwrap();
+        assert_eq!(keep_dates(&dir, &before), 2);
+        assert_eq!((date("01-a.md"), date("images/fig.png")), (old, old));
+        assert!(date("02-b.md") > old);
+        std::fs::remove_dir_all(&dir).unwrap();
+    }
 
     #[test]
     fn a_quotation_is_written_as_a_block_quotation() {

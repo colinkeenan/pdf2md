@@ -575,7 +575,7 @@ fn pdf_text(pdf: &Path, stem: &str, out: &Path) -> Result<(String, Option<String
     if let Ok(files) = std::fs::read_dir(tmp.join("images")) {
         let _ = std::fs::create_dir_all(out.join("images"));
         for f in files.flatten() {
-            let _ = std::fs::rename(f.path(), out.join("images").join(format!("{stem}-{}", f.file_name().to_string_lossy())));
+            emit::move_changed(&f.path(), &out.join("images").join(format!("{stem}-{}", f.file_name().to_string_lossy())));
         }
     }
     let _ = std::fs::remove_dir_all(&tmp);
@@ -755,13 +755,17 @@ fn pictures_of_print(pdf: &Path) -> bool {
 fn page_picture(pdf: &Path, stem: &str, out: &Path, n: u32) -> Option<String> {
     let _ = std::fs::create_dir_all(out.join("images"));
     let name = format!("images/{stem}-page-{n:03}");
-    std::process::Command::new("pdftocairo")
+    // (made beside its place first: a picture that comes out as it was is
+    // not written again, see `emit::write_changed`)
+    let new = out.join(format!("images/.new-{stem}-page-{n:03}"));
+    let made = std::process::Command::new("pdftocairo")
         .args(["-png", "-gray", "-r", "110", "-singlefile", "-f", &n.to_string(), "-l", &n.to_string()])
         .arg(pdf)
-        .arg(out.join(&name))
+        .arg(&new)
         .status()
-        .is_ok_and(|st| st.success())
-        .then(|| format!("{name}.png"))
+        .is_ok_and(|st| st.success());
+    emit::move_changed(&new.with_extension("png"), &out.join(format!("{name}.png")));
+    made.then(|| format!("{name}.png"))
 }
 
 /// The text of a handwritten PDF, page by page: each page as its picture,
@@ -1041,10 +1045,13 @@ pub fn write_course(folder: &Path, out: &Path) -> Result<Vec<PathBuf>, String> {
         }
         // the PDF beside the book, for the page markers to open
         let at = out.join("pdf").join(format!("{name}.pdf"));
-        if std::fs::symlink_metadata(&at).is_ok_and(|m| m.file_type().is_symlink()) {
+        let linked = std::fs::symlink_metadata(&at).is_ok_and(|m| m.file_type().is_symlink());
+        // (a link that goes there already stays as it is)
+        let right = linked && matches!((pdf.canonicalize(), out.join("pdf").canonicalize()), (Ok(p), Ok(d)) if std::fs::read_link(&at).is_ok_and(|to| to == emit::relative(&d, &p)));
+        if linked && !right {
             let _ = std::fs::remove_file(&at);
         }
-        if let (Ok(p), Ok(d)) = (pdf.canonicalize(), out.join("pdf").canonicalize()) {
+        if let (false, Ok(p), Ok(d)) = (right, pdf.canonicalize(), out.join("pdf").canonicalize()) {
             #[cfg(unix)]
             let _ = std::os::unix::fs::symlink(emit::relative(&d, &p), &at);
             #[cfg(not(unix))]
@@ -1194,7 +1201,7 @@ pub fn write_course(folder: &Path, out: &Path) -> Result<Vec<PathBuf>, String> {
         let lost = crate::userdata::apply(&mut s, &user, Some(&f.slug));
         s.push_str(&emit::lost_notes(&lost));
         let p = out.join(format!("{}.md", f.slug));
-        std::fs::write(&p, s).map_err(|e| format!("{}: {e}", p.display()))?;
+        emit::write_changed(&p, s).map_err(|e| format!("{}: {e}", p.display()))?;
         written.push(p);
     }
     // the whole course in one file, to search all of it at once
@@ -1206,7 +1213,7 @@ pub fn write_course(folder: &Path, out: &Path) -> Result<Vec<PathBuf>, String> {
     // (the school, where the course's name opens with it: "MIT …")
     let school = title.split_whitespace().next().filter(|w| w.len() >= 2 && w.chars().all(char::is_uppercase)).unwrap_or("");
     let all = emit::by_line(out, school) + &all;
-    std::fs::write(&p, all).map_err(|e| format!("{}: {e}", p.display()))?;
+    emit::write_changed(&p, all).map_err(|e| format!("{}: {e}", p.display()))?;
     written.push(p);
     // The files written last time that are not written now (a file's
     // name changed with its title or its place) are taken away: the list
@@ -1218,7 +1225,7 @@ pub fn write_course(folder: &Path, out: &Path) -> Result<Vec<PathBuf>, String> {
             let _ = std::fs::remove_file(out.join(old));
         }
     }
-    let _ = std::fs::write(&list, now.join("\n") + "\n");
+    let _ = emit::write_changed(&list, now.join("\n") + "\n");
     for w in warnings {
         eprintln!("warning: {w}");
     }

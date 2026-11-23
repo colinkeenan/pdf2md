@@ -101,7 +101,7 @@ Start pdf2md from your app launcher, or with `cargo run --release -p pdf2md-app`
 
 * **A different folder, different math.** Check one of the two boxes under the list, and each checked book gets its own output folder or math form to set.
 
-* **Converting again.** If a book's folder exists, the app asks whether to replace it or keep both. Replace moves the old files to the Trash and keeps your corrections and notes (see below).
+* **Converting again.** If a book's folder exists, the app asks whether to replace it or keep both. Replace moves the old files to the Trash and keeps your corrections and notes (see below). A file that comes out the same as before keeps its date, so a sync of the folder (to a phone, to a drive on the web) takes only what changed.
 * **Reader** is the command of your Markdown viewer, for example `md` for mdBun. "Open" beside a converted book starts it with the book's folder. It is the same for all books. Write `{file}` in the command to pass `book.md` instead, as in `okular {file}`.
 * **Math** chooses how formulas are written (next section).
 * **Progress.** A bar shows how far the conversion is; a long conversion also lists its steps. The first time estimates are deliberately high.
