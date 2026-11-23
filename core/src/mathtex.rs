@@ -1060,6 +1060,28 @@ fn put_accents(mut spans: Vec<MSpan>) -> Vec<MSpan> {
             }
         })
         .collect();
+    // A slash set over a letter, with no room of its own: the stroke of
+    // Feynman's p̸, which some books make of the plain "/" (a slash that
+    // divides stands between its two sides, in room of its own).
+    for k in 0..spans.len() {
+        if spans[k].text.trim() != "/" || spans[k].atom.is_some() {
+            continue;
+        }
+        let s = &spans[k];
+        let (width, height) = (s.right - s.left, s.bottom - s.top);
+        let over = spans.iter().enumerate().any(|(j, b)| {
+            j != k
+                && b.atom.is_none()
+                && !b.cmex()
+                && b.text.chars().any(char::is_alphabetic)
+                && (b.size - s.size).abs() <= 0.1 * s.size
+                && b.right.min(s.right) - b.left.max(s.left) >= 0.6 * width
+                && b.bottom.min(s.bottom) - b.top.max(s.top) >= 0.5 * height
+        });
+        if over {
+            spans[k].text = "\u{338}".into();
+        }
+    }
     let mut k = 0;
     while k < spans.len() {
         let Some(name) = accent(&spans[k].text) else {

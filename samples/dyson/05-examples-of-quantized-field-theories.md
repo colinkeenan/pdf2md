@@ -1556,7 +1556,7 @@ Hence using (301) and the notation (110)
 <a id="eq-305"></a>
 
 ```math
-S ( x ) = \frac{1}{( 2 \pi )^{3}} \int e^{ik \cdot x} ( k / + i\mu ) \delta ( k^{2} + \mu^{2} ) \epsilon ( k ) d^{4} k \qquad \text{(305)}
+S ( x ) = \frac{1}{( 2 \pi )^{3}} \int e^{ik \cdot x} ( {k\!\!\!/} + i\mu ) \delta ( k^{2} + \mu^{2} ) \epsilon ( k ) d^{4} k \qquad \text{(305)}
 ```
 
 Note the projection operator $`\Lambda_{+}`$ appearing here, as defined by (115) with the <a id="ix-211">momentum</a> $`p = \hbar k`$. Thus the $`S`$-function distinguishes automatically between the electron states $`k_{0}`$ = +$`\sqrt{| \boldsymbol{k} |^{2} + \mu^{2}}`$ and the positron states $`k_{0} = - \sqrt{| \boldsymbol{k} |^{2} + \mu^{2}}`$
@@ -1576,7 +1576,7 @@ where, as in (211), the factor $`\left( \mu^{2} / ( | \boldsymbol{k} |^{2} + \mu
 <a id="eq-307"></a>
 
 ```math
-( / k - i\mu ) u = 0 \qquad \text{(307)}
+( {k\!\!\!/} - i\mu ) u = 0 \qquad \text{(307)}
 ```
 
 and the sum $`\sum u -`$ is over the two spin-states $`u`$ satisfying by (112)
@@ -1584,7 +1584,7 @@ and the sum $`\sum u -`$ is over the two spin-states $`u`$ satisfying by (112)
 <a id="eq-308"></a>
 
 ```math
-( / k + i\mu ) u = 0 \qquad \text{(308)}
+( {k\!\!\!/} + i\mu ) u = 0 \qquad \text{(308)}
 ```
 
 the normalization being given by (106) and (113). The $`b_{ku}`$ are operators independent of $`x`$ and $`\alpha`$, whose properties are to be determined.
@@ -1852,7 +1852,7 @@ Hence by (306) and (309) the expectation value $`\left\langle \psi_{\alpha} ( z 
 <a id="eq-326"></a>
 
 ```math
-S^{+} ( x ) = \frac{1}{( 2 \pi )^{3}} \int e^{ik \cdot x} ( k / + i\mu ) \delta ( k^{2} + \mu^{2} ) \Theta ( k ) d^{4} k \qquad \text{(326)}
+S^{+} ( x ) = \frac{1}{( 2 \pi )^{3}} \int e^{ik \cdot x} ( {k\!\!\!/} + i\mu ) \delta ( k^{2} + \mu^{2} ) \Theta ( k ) d^{4} k \qquad \text{(326)}
 ```
 
 where
@@ -1884,7 +1884,7 @@ S^{+} = \tfrac{1}{2} \left( S - iS^{( 1 )} \right) \quad S^{-} = \tfrac{1}{2} \l
 <a id="eq-330"></a>
 
 ```math
-S^{( 1 )} ( x ) = \frac{i}{( 2 \pi )^{3}} \int e^{ik \cdot x} ( k / + i\mu ) \delta ( k^{2} + \mu^{2} ) d^{4} k \qquad \text{(330)}
+S^{( 1 )} ( x ) = \frac{i}{( 2 \pi )^{3}} \int e^{ik \cdot x} ( {k\!\!\!/} + i\mu ) \delta ( k^{2} + \mu^{2} ) d^{4} k \qquad \text{(330)}
 ```
 
 <div align="right"><a href="book.pdf#page=71" target="_blank" title="This page in the PDF"><sup>[p. 65]</sup></a></div>
@@ -1894,7 +1894,7 @@ S^{( 1 )} ( x ) = \frac{i}{( 2 \pi )^{3}} \int e^{ik \cdot x} ( k / + i\mu ) \de
 <a id="eq-330a"></a>
 
 ```math
-S^{-} ( x ) = - \frac{1}{( 2 \pi )^{3}} \int e^{ik \cdot x} ( k / + i\mu ) \delta ( k^{2} + \mu^{2} ) \Theta ( - k ) d^{4} k \qquad \text{(330a)}
+S^{-} ( x ) = - \frac{1}{( 2 \pi )^{3}} \int e^{ik \cdot x} ( {k\!\!\!/} + i\mu ) \delta ( k^{2} + \mu^{2} ) \Theta ( - k ) d^{4} k \qquad \text{(330a)}
 ```
 
 These results for the <a id="ix-82">Dirac</a> theory without electromagnetic interaction will be used a lot when we come to the complete quantum electrodynamics with both Dirac and Maxwell fields quantized. Meanwhile, we should say a little about the theory of quantized Dirac particles in a given c-number Maxwell field.
@@ -1906,7 +1906,7 @@ Lagrangian
 <a id="eq-331"></a>
 
 ```math
-L = L_{D} - ie \overline{\psi} / A^{e} \psi \qquad \text{(331)}
+L = L_{D} - ie \overline{\psi} {A\!\!\!/}^{e} \psi \qquad \text{(331)}
 ```
 
 Field equations
@@ -2239,7 +2239,7 @@ The electron field operator $`\psi_{H}`$ in the field (360) satisfies (332). Her
 <a id="eq-361"></a>
 
 ```math
-\psi_{H} ( x ) = \psi ( x ) + \frac{ie}{\hbar c} \int dx^{\prime} S_{R} ( x - x^{\prime} ) A /^{e} ( x^{\prime} ) \psi ( x^{\prime} ) \qquad \text{(361)}
+\psi_{H} ( x ) = \psi ( x ) + \frac{ie}{\hbar c} \int dx^{\prime} S_{R} ( x - x^{\prime} ) {A\!\!\!/}^{e} ( x^{\prime} ) \psi ( x^{\prime} ) \qquad \text{(361)}
 ```
 
 Here $`S_{R}`$ is given by (293), (301), and (303), and $`\psi ( x )`$ is a solution of the free-field equation (286). In fact $`\psi ( x )`$ is the field operator of the interaction representation, when the effects of $`A_{\mu}`$ are represented in the wave-function instead of in the operators. Using the retarded potential in (361) means that the unperturbed states are specified in the past, as the initial states upon which $`A_{\mu}^{e}`$ later produces effects. Thus the vacuum state defined by (323a) is the state in which initially no electrons or positrons are present. This is the state which we wish to study, and we call it $`\Psi_{o}`$.
@@ -2251,7 +2251,7 @@ The expression (361) is useful because we know how to calculate matrix elements 
 <a id="eq-362"></a>
 
 ```math
-\overline{\psi}_{H} ( x ) = \overline{\psi} ( x ) + \frac{ie}{\hbar c} \int dx^{\prime} \overline{\psi} ( x^{\prime} ) A /^{e} ( x^{\prime} ) S_{A} ( x^{\prime} - x ) \qquad \text{(362)}
+\overline{\psi}_{H} ( x ) = \overline{\psi} ( x ) + \frac{ie}{\hbar c} \int dx^{\prime} \overline{\psi} ( x^{\prime} ) {A\!\!\!/}^{e} ( x^{\prime} ) S_{A} ( x^{\prime} - x ) \qquad \text{(362)}
 ```
 
 where $`S_{A} ( x )`$ is given by (295).
@@ -2261,7 +2261,7 @@ The total current operator to first order in $`A_{\mu}`$ is
 <a id="eq-363"></a>
 
 ```math
-\begin{aligned} j_{\mu H} ( x ) &= - iec \overline{\psi}_{H} ( x ) \gamma_{\mu} \psi_{H} ( x ) \\ &= j_{\mu} ( x ) + \frac{e^{2}}{\hbar} \int d^{4} x^{\prime} \left\{ \psi ( x ) \gamma_{\mu} S_{R} ( x - x^{\prime} ) A /^{e} ( x^{\prime} ) \psi ( x^{\prime} ) + \overline{\psi} ( x^{\prime} ) A /^{e} ( x^{\prime} ) S_{A} ( x^{\prime} - x ) \gamma_{\mu} \psi ( x ) \right\} \end{aligned} \qquad \text{(363)}
+\begin{aligned} j_{\mu H} ( x ) &= - iec \overline{\psi}_{H} ( x ) \gamma_{\mu} \psi_{H} ( x ) \\ &= j_{\mu} ( x ) + \frac{e^{2}}{\hbar} \int d^{4} x^{\prime} \left\{ \psi ( x ) \gamma_{\mu} S_{R} ( x - x^{\prime} ) {A\!\!\!/}^{e} ( x^{\prime} ) \psi ( x^{\prime} ) + \overline{\psi} ( x^{\prime} ) {A\!\!\!/}^{e} ( x^{\prime} ) S_{A} ( x^{\prime} - x ) \gamma_{\mu} \psi ( x ) \right\} \end{aligned} \qquad \text{(363)}
 ```
 
 Here
@@ -2285,7 +2285,7 @@ is given by (328)
 <a id="eq-366"></a>
 
 ```math
-\begin{aligned} \langle j_{\mu} ( x ) \rangle_{o} &= - ec \operatorname{Spur} \left\{ \gamma_{\mu} S^{-} ( 0 ) \right\} \\ &= \frac{ec}{( 2 \pi )^{3}} \int d^{3} \boldsymbol{k} \delta ( k^{2} + \mu^{2} ) \Theta ( - k ) \operatorname{Spur} \{ \gamma_{\mu} [ / k - i\mu ] \} \\ &= \frac{4 ec}{( 2 \pi )^{3}} \int d^{3} \boldsymbol{k} \delta ( k^{2} + \mu^{2} ) \Theta ( - k ) k_{\mu} \end{aligned} \qquad \text{(366)}
+\begin{aligned} \langle j_{\mu} ( x ) \rangle_{o} &= - ec \operatorname{Spur} \left\{ \gamma_{\mu} S^{-} ( 0 ) \right\} \\ &= \frac{ec}{( 2 \pi )^{3}} \int d^{3} \boldsymbol{k} \delta ( k^{2} + \mu^{2} ) \Theta ( - k ) \operatorname{Spur} \{ \gamma_{\mu} [ {k\!\!\!/} - i\mu ] \} \\ &= \frac{4 ec}{( 2 \pi )^{3}} \int d^{3} \boldsymbol{k} \delta ( k^{2} + \mu^{2} ) \Theta ( - k ) k_{\mu} \end{aligned} \qquad \text{(366)}
 ```
 
 This is a highly divergent integral and is mathematically meaningless. This is one of the difficulties of the theory about which one can argue for a long time.
@@ -2303,7 +2303,7 @@ So using this principle we have by (328)
 <a id="eq-367"></a>
 
 ```math
-\langle j_{\mu H} ( x ) \rangle_{o} = - \frac{ie^{2}}{\hbar} \int d^{4} x^{\prime} \operatorname{Spur} \{ A /^{e} ( x^{\prime} ) S^{-} ( x^{\prime} - x ) \gamma_{\mu} S_{R} ( x - x^{\prime} ) + A /^{e} ( x^{\prime} ) S_{A} ( x^{\prime} - x ) \gamma_{\mu} S^{-} ( x - x^{\prime} ) \} \qquad \text{(367)}
+\langle j_{\mu H} ( x ) \rangle_{o} = - \frac{ie^{2}}{\hbar} \int d^{4} x^{\prime} \operatorname{Spur} \{ {A\!\!\!/}^{e} ( x^{\prime} ) S^{-} ( x^{\prime} - x ) \gamma_{\mu} S_{R} ( x - x^{\prime} ) + {A\!\!\!/}^{e} ( x^{\prime} ) S_{A} ( x^{\prime} - x ) \gamma_{\mu} S^{-} ( x - x^{\prime} ) \} \qquad \text{(367)}
 ```
 
 <div align="right"><a href="book.pdf#page=77" target="_blank" title="This page in the PDF"><sup>[p. 71]</sup></a></div>
@@ -2315,7 +2315,7 @@ We use the momentum representation (303) for $`S_{R}`$. But instead of taking th
 <a id="eq-368"></a>
 
 ```math
-e^{- \delta_{0}} S_{R} ( x ) = \frac{i}{( 2 \pi )^{4}} \int e^{ik \cdot x} \frac{/ k + i/\delta + i\mu}{( k + i\delta )^{2} + \mu^{2}} d^{4} k \qquad \text{(368)}
+e^{- \delta_{0}} S_{R} ( x ) = \frac{i}{( 2 \pi )^{4}} \int e^{ik \cdot x} \frac{{k\!\!\!/} + i/\delta + i\mu}{( k + i\delta )^{2} + \mu^{2}} d^{4} k \qquad \text{(368)}
 ```
 
 where $`\delta_{0}`$ is any positive real number, $`\delta`$ is the vector with components $`( 0 , 0 , 0 ,\delta_{0} )`$ and the integral is along the real axis. The poles of (368) in the $`k_{0}`$ plane are displaced away from the real axis and so the integrand is free from singularities on the path of integration. Similarly
@@ -2323,7 +2323,7 @@ where $`\delta_{0}`$ is any positive real number, $`\delta`$ is the vector with 
 <a id="eq-369"></a>
 
 ```math
-e^{+ \delta_{0}} S_{A} ( x ) = \frac{i}{( 2 \pi )^{4}} \int e^{ik \cdot x} \frac{/ k - i/\delta + i\mu}{( k - i\delta )^{2} + \mu^{2}} d^{4} k \qquad \text{(369)}
+e^{+ \delta_{0}} S_{A} ( x ) = \frac{i}{( 2 \pi )^{4}} \int e^{ik \cdot x} \frac{{k\!\!\!/} - i/\delta + i\mu}{( k - i\delta )^{2} + \mu^{2}} d^{4} k \qquad \text{(369)}
 ```
 
 When using (368) and (369) we shall usually make $`\delta_{0} \to 0`$ after carrying out the integrations, so that the convergence factors $`e^{\pm \delta_{0} x_{0}}`$ will tend to 1 for every finite $`x`$.
@@ -2331,7 +2331,7 @@ When using (368) and (369) we shall usually make $`\delta_{0} \to 0`$ after carr
 Thus the momentum representation of (367) will be
 
 ```math
-\begin{aligned} \langle j_{\mu H} ( x ) \rangle_{o} &= - \frac{e^{2}}{\hbar} \frac{1}{( 2 \pi )^{7}} \int d^{4} x^{\prime} \int \int d^{4} k_{1} d^{4} k_{2} \exp \{ iq \cdot x^{\prime} + i ( k_{1} - k_{2} ) \cdot ( x^{\prime} - x ) + \delta_{0} x_{0} \}\times \\ & \quad \times \left\{ \operatorname{Spur} \{ /e ( k /_{1} + i\mu ) \gamma_{\mu} ( / k_{2} + i/\delta + i\mu ) \} \frac{\delta ( k_{1}^{2} + \mu^{2} ) \Theta ( - k_{1} )}{( k_{2} + i\delta )^{2} + \mu^{2}} \right. \\ & \quad \left. + \operatorname{Spur} \{ /e ( / k_{1} - i/\delta + i\mu ) \gamma_{\mu} ( / k_{2} + i\mu ) \} \frac{\delta ( k_{2}^{2} + \mu^{2} ) \Theta ( - k_{2} )}{( k_{1} - i\delta )^{2} + \mu^{2}} \right\} \end{aligned}
+\begin{aligned} \langle j_{\mu H} ( x ) \rangle_{o} &= - \frac{e^{2}}{\hbar} \frac{1}{( 2 \pi )^{7}} \int d^{4} x^{\prime} \int \int d^{4} k_{1} d^{4} k_{2} \exp \{ iq \cdot x^{\prime} + i ( k_{1} - k_{2} ) \cdot ( x^{\prime} - x ) + \delta_{0} x_{0} \}\times \\ & \quad \times \left\{ \operatorname{Spur} \{ /e ( {k\!\!\!/}_{1} + i\mu ) \gamma_{\mu} ( {k\!\!\!/}_{2} + i/\delta + i\mu ) \} \frac{\delta ( k_{1}^{2} + \mu^{2} ) \Theta ( - k_{1} )}{( k_{2} + i\delta )^{2} + \mu^{2}} \right. \\ & \quad \left. + \operatorname{Spur} \{ /e ( {k\!\!\!/}_{1} - i/\delta + i\mu ) \gamma_{\mu} ( {k\!\!\!/}_{2} + i\mu ) \} \frac{\delta ( k_{2}^{2} + \mu^{2} ) \Theta ( - k_{2} )}{( k_{1} - i\delta )^{2} + \mu^{2}} \right\} \end{aligned}
 ```
 
 The integration of $`x^{\prime}`$ is immediate and gives $`( 2 \pi )^{4} \delta^{4} ( k_{1} - k_{2} + q )`$. Hence
@@ -2339,7 +2339,7 @@ The integration of $`x^{\prime}`$ is immediate and gives $`( 2 \pi )^{4} \delta^
 <a id="eq-370"></a>
 
 ```math
-\begin{aligned} \langle j_{\mu H} ( x ) \rangle_{o} &= - \frac{e^{2}}{( 2 \pi )^{3} \hbar} e^{iq \cdot x + \delta_{0} x_{0}} \times \\ & \quad \times \int d^{4} k \left\{ \operatorname{Spur} \{ /e ( / k + i\mu ) \gamma_{\mu} ( / k + q / + i/\delta + i\mu ) \} \frac{\delta ( k^{2} + \mu^{2} ) \Theta ( - k )}{( k + q + i\delta )^{2} + \mu^{2}} \right. \\ & \quad \left. + \operatorname{Spur} \{ /e ( k / - i/\delta + i\mu ) \gamma_{\mu} ( k / + q / + i\mu ) \} \frac{\delta \{ ( k + q )^{2} + \mu^{2} \} \Theta ( - k - q )}{( k - i\delta )^{2} + \mu^{2}} \right\} \end{aligned} \qquad \text{(370)}
+\begin{aligned} \langle j_{\mu H} ( x ) \rangle_{o} &= - \frac{e^{2}}{( 2 \pi )^{3} \hbar} e^{iq \cdot x + \delta_{0} x_{0}} \times \\ & \quad \times \int d^{4} k \left\{ \operatorname{Spur} \{ /e ( {k\!\!\!/} + i\mu ) \gamma_{\mu} ( {k\!\!\!/} + {q\!\!\!/} + i/\delta + i\mu ) \} \frac{\delta ( k^{2} + \mu^{2} ) \Theta ( - k )}{( k + q + i\delta )^{2} + \mu^{2}} \right. \\ & \quad \left. + \operatorname{Spur} \{ /e ( {k\!\!\!/} - i/\delta + i\mu ) \gamma_{\mu} ( {k\!\!\!/} + {q\!\!\!/} + i\mu ) \} \frac{\delta \{ ( k + q )^{2} + \mu^{2} \} \Theta ( - k - q )}{( k - i\delta )^{2} + \mu^{2}} \right\} \end{aligned} \qquad \text{(370)}
 ```
 
 Now consider the function<sup><a id="fnref-48" href="#fn-48">48</a></sup>
@@ -2347,7 +2347,7 @@ Now consider the function<sup><a id="fnref-48" href="#fn-48">48</a></sup>
 <a id="eq-371"></a>
 
 ```math
-F_{\nu} ( k ) = \operatorname{Spur} \{ /e ( / k + i\mu ) \gamma_{\nu} ( / k + /q + i/\delta + i\mu ) \} \frac{1}{( k^{2} + \mu^{2} ) [ ( k + q + i\delta )^{2} + \mu^{2} ]} \qquad \text{(371)}
+F_{\nu} ( k ) = \operatorname{Spur} \{ /e ( {k\!\!\!/} + i\mu ) \gamma_{\nu} ( {k\!\!\!/} + /q + i/\delta + i\mu ) \} \frac{1}{( k^{2} + \mu^{2} ) [ ( k + q + i\delta )^{2} + \mu^{2} ]} \qquad \text{(371)}
 ```
 
 This has poles at 4 points in the $`k_{0}`$ plane
@@ -2413,7 +2413,7 @@ which we can get at once simply from the definite integral of the RHS.<sup><a id
 <a id="eq-377"></a>
 
 ```math
-\begin{aligned} J_{\nu} &= \int_{0}^{1} dz \int_{C} dk \operatorname{Spur} \{ /e ( / k + i\mu ) \gamma_{\nu} ( k / + /q + i\mu ) \} \frac{1}{\{ k^{2} + \mu^{2} + z ( 2 k \cdot q + q^{2} ) \}^{2}} \\ &= \int_{0}^{1} dz \int_{C} dk \operatorname{Spur} \{ /e ( / k - z/q + i\mu ) \gamma_{\nu} ( / k + ( 1 - z ) /q + i\mu ) \} \frac{1}{\{ k^{2} + \mu^{2} + ( z - z^{2} ) q^{2} \}^{2}} \end{aligned} \qquad \text{(377)}
+\begin{aligned} J_{\nu} &= \int_{0}^{1} dz \int_{C} dk \operatorname{Spur} \{ /e ( {k\!\!\!/} + i\mu ) \gamma_{\nu} ( {k\!\!\!/} + /q + i\mu ) \} \frac{1}{\{ k^{2} + \mu^{2} + z ( 2 k \cdot q + q^{2} ) \}^{2}} \\ &= \int_{0}^{1} dz \int_{C} dk \operatorname{Spur} \{ /e ( {k\!\!\!/} - z/q + i\mu ) \gamma_{\nu} ( {k\!\!\!/} + ( 1 - z ) /q + i\mu ) \} \frac{1}{\{ k^{2} + \mu^{2} + ( z - z^{2} ) q^{2} \}^{2}} \end{aligned} \qquad \text{(377)}
 ```
 
 In the last step a shift of origin was made in the $`k`$–integration replacing $`k`$ by $`( k - zq )`$. Again in (377) the poles in the $`k_{0}`$–plane for every $`z`$ are well separated by the imaginary axis, provided that $`\mu`$ is large. Evaluating the spur and dropping terms are odd in $`k`$, and using (33),<sup><a id="fnref-51" href="#fn-51">51</a></sup> Spur $`\gamma_{\nu} = 0`$, Spur $`\gamma_{\mu} \gamma_{\nu} = 4 \delta_{\mu \nu}`$, we get
@@ -2799,7 +2799,7 @@ Lagrangian
 <a id="eq-410"></a>
 
 ```math
-L = L_{D} + L_{M} - ie \overline{\psi} / A\psi - ie \overline{\psi} / A^{e} \psi \qquad \text{(410)}
+L = L_{D} + L_{M} - ie \overline{\psi} {A\!\!\!/} \psi - ie \overline{\psi} {A\!\!\!/}^{e} \psi \qquad \text{(410)}
 ```
 
 Here we use $`A_{\nu} ( x )`$ for the Maxwell potential operators and $`A_{\nu}^{e} ( x )`$ for the potentials of the classical external field.
@@ -2849,7 +2849,7 @@ i \hbar \frac{\partial \Phi}{\partial t} = H_{R} ( t ) \Phi \qquad \text{(415)}
 <a id="eq-416"></a>
 
 ```math
-H_{R} ( t ) = ie \int \overline{\psi} ( r,t ) A / ( r,t ) \psi ( r,t ) d^{3} \boldsymbol{r} \qquad \text{(416)}
+H_{R} ( t ) = ie \int \overline{\psi} ( r,t ) {A\!\!\!/} ( r,t ) \psi ( r,t ) d^{3} \boldsymbol{r} \qquad \text{(416)}
 ```
 
 This $`H_{R} ( t )`$ is just the difference between the Hamiltonians of the theories with and without the radiation interaction. Because no derivatives of field operators occur in $`H_{R}`$, the difference is just minus the difference between the corresponding Lagrangians, and so has the simple form given by (416). (Compare with (243).)
@@ -2873,7 +2873,7 @@ i \hbar \frac{\partial \Phi}{\partial t} = \{ H^{e} ( t ) + H_{R} ( t ) \} \Phi 
 <a id="eq-418"></a>
 
 ```math
-H^{e} ( t ) = ie \int \overline{\psi} ( \boldsymbol{r} ,t ) A /^{e} ( \boldsymbol{r} ,t ) \psi ( r,t ) d^{3} \boldsymbol{r} \qquad \text{(418)}
+H^{e} ( t ) = ie \int \overline{\psi} ( \boldsymbol{r} ,t ) {A\!\!\!/}^{e} ( \boldsymbol{r} ,t ) \psi ( r,t ) d^{3} \boldsymbol{r} \qquad \text{(418)}
 ```
 
 with $`H_{R}`$ formally again given by (416). But here $`H_{R}`$ is not the same operator as in (415) because of the time-dependence of the $`\overline{\psi}`$ and $`\psi`$ in the two cases.

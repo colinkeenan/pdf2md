@@ -94,7 +94,7 @@ Let us write
 <a id="eq-110"></a>
 
 ```math
-p / = \sum_{\mu} p_{\mu} \gamma_{\mu} , \quad p_{4} = iE/c \qquad \text{(110)}
+{p\!\!\!/} = \sum_{\mu} p_{\mu} \gamma_{\mu} , \quad p_{4} = iE/c \qquad \text{(110)}
 ```
 
 The Dirac <a id="ix-67">equation</a> satisfied by $`u`$ is
@@ -102,7 +102,7 @@ The Dirac <a id="ix-67">equation</a> satisfied by $`u`$ is
 <a id="eq-111"></a>
 
 ```math
-\left( p / - imc \right) u = 0 \qquad \text{(111)}
+\left( {p\!\!\!/} - imc \right) u = 0 \qquad \text{(111)}
 ```
 
 The two spin states with momentum 4-vector $`- p`$ satisfy
@@ -110,7 +110,7 @@ The two spin states with momentum 4-vector $`- p`$ satisfy
 <a id="eq-112"></a>
 
 ```math
-\left( p / + imc \right) u = 0 \qquad \text{(112)}
+\left( {p\!\!\!/} + imc \right) u = 0 \qquad \text{(112)}
 ```
 
 As one can easily show from (48), these 4 states are all orthogonal in the sense that $`( \overline{u}^{\prime} u ) = 0`$ for each pair $`u^{\prime} u`$. Therefore the identity operator may be written in the form
@@ -126,7 +126,7 @@ summed over all 4 states with $`\epsilon`$ defined as earlier. Hence by (111) an
 <a id="eq-114"></a>
 
 ```math
-S = \sum_{4} \left( \overline{s} O \frac{p / + imc}{2 imc} \epsilon u \right) ( \overline{u} Pr ) = ( \overline{s} O \Lambda_{+} Pr ) \qquad \text{(114)}
+S = \sum_{4} \left( \overline{s} O \frac{{p\!\!\!/} + imc}{2 imc} \epsilon u \right) ( \overline{u} Pr ) = ( \overline{s} O \Lambda_{+} Pr ) \qquad \text{(114)}
 ```
 
 by virtue of (113); here the operator
@@ -134,7 +134,7 @@ by virtue of (113); here the operator
 <a id="eq-115"></a>
 
 ```math
-\Lambda_{+} = \frac{p / + imc}{2 imc} \qquad \text{(115)}
+\Lambda_{+} = \frac{{p\!\!\!/} + imc}{2 imc} \qquad \text{(115)}
 ```
 
 is a <a id="ix-250">projection operator</a> for _electrons_ of momentum $`p`$.
@@ -152,7 +152,7 @@ with
 <a id="eq-117"></a>
 
 ```math
-\Lambda_{-} = \frac{p / - imc}{2 imc} \qquad \text{(117)}
+\Lambda_{-} = \frac{{p\!\!\!/} - imc}{2 imc} \qquad \text{(117)}
 ```
 
 and we have
@@ -389,7 +389,7 @@ Now fixing $`p_{1}`$,
 and
 
 ```math
-\sum_{u_{1} ,u 2} | u_{1} \beta u_{2} |^{2} = \sum_{u_{1} ,u 2} ( \overline{u}_{1} \beta u_{2} ) ( \overline{u}_{2} \beta u_{1} ) = \operatorname{Spur} \left\{ \beta \frac{p /_{2} - imc}{2 imc} \beta \frac{p /_{1} + imc}{2 imc} \right\}
+\sum_{u_{1} ,u 2} | u_{1} \beta u_{2} |^{2} = \sum_{u_{1} ,u 2} ( \overline{u}_{1} \beta u_{2} ) ( \overline{u}_{2} \beta u_{1} ) = \operatorname{Spur} \left\{ \beta \frac{{p\!\!\!/}_{2} - imc}{2 imc} \beta \frac{{p\!\!\!/}_{1} + imc}{2 imc} \right\}
 ```
 
 ```math

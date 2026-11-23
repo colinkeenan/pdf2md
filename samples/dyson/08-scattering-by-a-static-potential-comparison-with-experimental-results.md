@@ -70,7 +70,7 @@ Summing over the final spin states, and averaging over the initial spin states, 
 <a id="eq-629"></a>
 
 ```math
-\begin{aligned} \tfrac{1}{2} \sum_{u} \sum_{u^{\prime}} | u^{\prime *} u |^{2} &= \tfrac{1}{2} \frac{1}{( 2 i\mu )^{2}} \operatorname{Spur} \left\{ ( p / + i\mu ) \gamma_{4} ( /p^{\prime} + i\mu ) \gamma_{4} \right\} \\ &= \frac{1}{2 \mu^{2}} \left\{ \mu^{2} + p_{0} p_{0}^{\prime} + \boldsymbol{p} \cdot \boldsymbol{p}^{\prime} \right\} = \frac{1}{2 \mu^{2}} \left\{ 2 p_{0}^{2} - \tfrac{1}{2} | \boldsymbol{q} |^{2} \right\} \\ &= \frac{p_{o}^{2}}{\mu^{2}} \left\{ 1 - \tfrac{1}{4} \frac{| \boldsymbol{p} |^{2} - 2 \boldsymbol{p} \cdot \boldsymbol{p}^{\prime} + | \boldsymbol{p}^{\prime} |^{2}}{p_{0}^{2}} \right\} = \frac{p_{o}^{2}}{\mu^{2}} \left( 1 - \beta^{2} \sin^{2} \frac{\theta}{2} \right) \end{aligned} \qquad \text{(629)}
+\begin{aligned} \tfrac{1}{2} \sum_{u} \sum_{u^{\prime}} | u^{\prime *} u |^{2} &= \tfrac{1}{2} \frac{1}{( 2 i\mu )^{2}} \operatorname{Spur} \left\{ ( {p\!\!\!/} + i\mu ) \gamma_{4} ( /p^{\prime} + i\mu ) \gamma_{4} \right\} \\ &= \frac{1}{2 \mu^{2}} \left\{ \mu^{2} + p_{0} p_{0}^{\prime} + \boldsymbol{p} \cdot \boldsymbol{p}^{\prime} \right\} = \frac{1}{2 \mu^{2}} \left\{ 2 p_{0}^{2} - \tfrac{1}{2} | \boldsymbol{q} |^{2} \right\} \\ &= \frac{p_{o}^{2}}{\mu^{2}} \left\{ 1 - \tfrac{1}{4} \frac{| \boldsymbol{p} |^{2} - 2 \boldsymbol{p} \cdot \boldsymbol{p}^{\prime} + | \boldsymbol{p}^{\prime} |^{2}}{p_{0}^{2}} \right\} = \frac{p_{o}^{2}}{\mu^{2}} \left( 1 - \beta^{2} \sin^{2} \frac{\theta}{2} \right) \end{aligned} \qquad \text{(629)}
 ```
 
 <div align="right"><a href="book.pdf#page=124" target="_blank" title="This page in the PDF"><sup>[p. 118]</sup></a></div>
@@ -116,7 +116,7 @@ Summing and averaging over the spin-states
 <a id="eq-634"></a>
 
 ```math
-\begin{aligned} \tfrac{1}{2} \sum_{u} \sum_{u^{\prime}} ( u^{\prime *} /qu ) ( u^{*} u^{\prime} ) &= \frac{1}{2 ( 2 i\mu )^{2}} \operatorname{Spur} \left\{ ( p / + i\mu ) \gamma_{4} ( p /^{\prime} + i\mu ) \gamma_{4} /q \right\} \\ &= - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu \left( /p\gamma_{4} \gamma_{4} /q + \gamma_{4} p /^{\prime} \gamma_{4} /q \right) \right\} = - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu ( p/p /^{\prime} - p/p / - p /^{\prime} p /^{\prime} + p /^{\prime} p / ) \right\} \\ &= - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu ( p /^{\prime} - p / ) ( p /^{\prime} - p / ) \right\} = \frac{i}{2 \mu} q^{2} \end{aligned} \qquad \text{(634)}
+\begin{aligned} \tfrac{1}{2} \sum_{u} \sum_{u^{\prime}} ( u^{\prime *} /qu ) ( u^{*} u^{\prime} ) &= \frac{1}{2 ( 2 i\mu )^{2}} \operatorname{Spur} \left\{ ( {p\!\!\!/} + i\mu ) \gamma_{4} ( {p\!\!\!/}^{\prime} + i\mu ) \gamma_{4} /q \right\} \\ &= - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu \left( /p\gamma_{4} \gamma_{4} /q + \gamma_{4} {p\!\!\!/}^{\prime} \gamma_{4} /q \right) \right\} = - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu ( {p\!\!\!/} /p^{\prime} - {p\!\!\!/} /p - {p\!\!\!/}^{\prime} {p\!\!\!/}^{\prime} + {p\!\!\!/}^{\prime} {p\!\!\!/} ) \right\} \\ &= - \frac{1}{8 \mu^{2}} \operatorname{Spur} \left\{ i\mu ( {p\!\!\!/}^{\prime} - {p\!\!\!/} ) ( {p\!\!\!/}^{\prime} - {p\!\!\!/} ) \right\} = \frac{i}{2 \mu} q^{2} \end{aligned} \qquad \text{(634)}
 ```
 
 Hence for an unpolarized electron beam the non-radiative cross-section is
@@ -413,7 +413,7 @@ with $`H^{I}`$ given by (532) including the mass-renormalization term $`H_{S}`$.
 \Psi ( t ) = \Omega_{1} \Phi ( t ) \qquad \text{(662)}
 ```
 
-where Ω$`{}_{1} ( t )`$ is defined as in (492), only with $`e \overline{\psi} / A\psi`$ replaced by $`[ e \overline{\psi} / A\psi + i\delta mc^{2} \overline{\psi} \psi ]`$, and the function $`g_{A} ( t )`$ is as before supposed to tend to the limiting form $`g_{A} ( t ) \to 1`$ at the end of the calculation. The operator Ω$`{}_{1} ( t )`$ satisfies
+where Ω$`{}_{1} ( t )`$ is defined as in (492), only with $`e \overline{\psi} {A\!\!\!/} \psi`$ replaced by $`[ e \overline{\psi} {A\!\!\!/} \psi + i\delta mc^{2} \overline{\psi} \psi ]`$, and the function $`g_{A} ( t )`$ is as before supposed to tend to the limiting form $`g_{A} ( t ) \to 1`$ at the end of the calculation. The operator Ω$`{}_{1} ( t )`$ satisfies
 
 <a id="eq-663"></a>
 
@@ -492,7 +492,7 @@ expanding $`H_{T}`$ in powers of the radiation interaction just as $`U`$ was exp
 <a id="eq-672"></a>
 
 ```math
-\begin{aligned} U_{2} + U_{2}^{\prime} &= \frac{1}{\mu^{2}} \frac{\alpha}{3 \pi} \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right\} \left( \frac{e}{\hbar c} \right) \int \overline{\psi} ( \Box^{2} A / ) \psi ( x ) dx \\ & \quad + \frac{\alpha}{4 \pi} \frac{e}{mc^{2}} \int \overline{\psi} \sum_{\lambda} \frac{\partial / A}{\partial x_{\lambda}} \gamma_{\lambda} \psi ( x ) dx \end{aligned} \qquad \text{(672)}
+\begin{aligned} U_{2} + U_{2}^{\prime} &= \frac{1}{\mu^{2}} \frac{\alpha}{3 \pi} \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right\} \left( \frac{e}{\hbar c} \right) \int \overline{\psi} ( \Box^{2} {A\!\!\!/} ) \psi ( x ) dx \\ & \quad + \frac{\alpha}{4 \pi} \frac{e}{mc^{2}} \int \overline{\psi} \sum_{\lambda} \frac{\partial / A}{\partial x_{\lambda}} \gamma_{\lambda} \psi ( x ) dx \end{aligned} \qquad \text{(672)}
 ```
 
 And using (670) and (668) we deduce
@@ -500,7 +500,7 @@ And using (670) and (668) we deduce
 <a id="eq-673"></a>
 
 ```math
-\begin{aligned} H_{T 2} &= \frac{ie}{\mu^{2}} \frac{\alpha}{3 \pi} \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right\} \int \overline{\psi} ( \Box^{2} A / ) \psi ( x ) d^{3} \boldsymbol{x} \\ & \quad + \frac{\alpha}{4 \pi} \frac{ie \hbar}{mc} \int \overline{\psi} \sum_{\lambda} \frac{\partial / A}{\partial x_{\lambda}} \gamma_{\lambda} \psi ( x ) d^{3} \boldsymbol{x} \end{aligned} \qquad \text{(673)}
+\begin{aligned} H_{T 2} &= \frac{ie}{\mu^{2}} \frac{\alpha}{3 \pi} \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right\} \int \overline{\psi} ( \Box^{2} {A\!\!\!/} ) \psi ( x ) d^{3} \boldsymbol{x} \\ & \quad + \frac{\alpha}{4 \pi} \frac{ie \hbar}{mc} \int \overline{\psi} \sum_{\lambda} \frac{\partial / A}{\partial x_{\lambda}} \gamma_{\lambda} \psi ( x ) d^{3} \boldsymbol{x} \end{aligned} \qquad \text{(673)}
 ```
 
 Specializing now to the case of a time-independent electrostatic potential given by
@@ -532,7 +532,7 @@ We next turn to the evaluation of $`H_{T 1}`$, which is related to $`U_{1}`$ in 
 <a id="eq-676a"></a>
 
 ```math
-M_{1} = - \frac{e^{2}}{\hbar^{2} c^{2}} \overline{u}^{\prime} \left\{ /e \frac{1}{p / - / k^{\prime} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{p /^{\prime} + k /^{\prime} - i\mu} /e \right\} u \qquad \text{(676a)}
+M_{1} = - \frac{e^{2}}{\hbar^{2} c^{2}} \overline{u}^{\prime} \left\{ /e \frac{1}{{p\!\!\!/} - {k\!\!\!/}^{\prime} - i\mu} /e^{\prime} + /e^{\prime} \frac{1}{{p\!\!\!/}^{\prime} + {k\!\!\!/}^{\prime} - i\mu} /e \right\} u \qquad \text{(676a)}
 ```
 
 where now
@@ -548,7 +548,7 @@ is given by the Fourier expansion (534). Note that we cannot yet use the simple 
 <a id="eq-677a"></a>
 
 ```math
-M_{1} = - \frac{e^{2}}{2 \hbar^{2} c^{2}} \overline{u}^{\prime} \left\{ \frac{/e/ k^{\prime} /e^{\prime} - 2 ( p \cdot e^{\prime} ) /e}{p \cdot k^{\prime}} + \frac{/e^{\prime} / k^{\prime} /e + 2 ( p^{\prime} \cdot e^{\prime} ) /e}{p^{\prime} \cdot k^{\prime}} \right\} u \qquad \text{(677a)}
+M_{1} = - \frac{e^{2}}{2 \hbar^{2} c^{2}} \overline{u}^{\prime} \left\{ \frac{/e/ k^{\prime} /e^{\prime} - 2 ( p \cdot e^{\prime} ) /e}{p \cdot k^{\prime}} + \frac{/e^{\prime} {k\!\!\!/}^{\prime} /e + 2 ( p^{\prime} \cdot e^{\prime} ) /e}{p^{\prime} \cdot k^{\prime}} \right\} u \qquad \text{(677a)}
 ```
 
 Since $`p`$ and $`p^{\prime}`$ are assumed non-relativistic we may write
@@ -566,13 +566,13 @@ and then
 <a id="eq-678"></a>
 
 ```math
-M_{1} = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu k_{0}^{\prime}} \overline{u}^{\prime} \left\{ 2 ( ( p^{\prime} - p ) \cdot e^{\prime} ) /e + /e^{\prime} / k^{\prime} /e + /e/ k^{\prime} /e^{\prime} \right\} u \qquad \text{(678)}
+M_{1} = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu k_{0}^{\prime}} \overline{u}^{\prime} \left\{ 2 ( ( p^{\prime} - p ) \cdot e^{\prime} ) /e + /e^{\prime} {k\!\!\!/}^{\prime} /e + /e/ k^{\prime} /e^{\prime} \right\} u \qquad \text{(678)}
 ```
 
 Now because we shall be considering only an electrostatic potential (674), $`/e`$ is a multiple of $`\gamma_{4}`$ simply. Then if $`k_{3}^{\prime}`$ is the space-like part of the vector $`k^{\prime}`$, we have
 
 ```math
-/e^{\prime} / k_{3}^{\prime} /e + /e/ k_{3}^{\prime} /e^{\prime} = /e \left\{ /e^{\prime} / k_{3}^{\prime} + k /_{3}^{\prime} /e^{\prime} \right\} = 0
+/e^{\prime} {k\!\!\!/}_{3}^{\prime} /e + /e/ k_{3}^{\prime} /e^{\prime} = /e \left\{ /e^{\prime} {k\!\!\!/}_{3}^{\prime} + {k\!\!\!/}_{3}^{\prime} /e^{\prime} \right\} = 0
 ```
 
 Therefore
@@ -580,7 +580,7 @@ Therefore
 <a id="eq-679"></a>
 
 ```math
-/e^{\prime} / k_{3}^{\prime} /e + /e/ k_{3}^{\prime} /e^{\prime} = ik_{0}^{\prime} /e^{\prime} ( 2 \gamma_{4} /e ) \qquad \text{(679)}
+/e^{\prime} {k\!\!\!/}_{3}^{\prime} /e + /e/ k_{3}^{\prime} /e^{\prime} = ik_{0}^{\prime} /e^{\prime} ( 2 \gamma_{4} /e ) \qquad \text{(679)}
 ```
 
 Now this term (679) is small compared to the other term in (678), because $`/e^{\prime}`$ involves the matrices $`\gamma_{1} ,\gamma_{2} ,\gamma_{3}`$ while $`/e`$ involves $`\gamma_{4}`$, and the matrix elements of $`\gamma_{1} ,\gamma_{2} ,\gamma_{3}`$ for non-relativistic transitions are small, of the order of $`( v/c )`$. The term (679) in fact describes magnetic radiation, whereas the other term in (678) gives electric. The electric term gives an effect of the order of the <a id="ix-161">Lamb shift</a>. Hence in our approximation we may neglect the magnetic term and write
@@ -616,7 +616,7 @@ Thus the operator $`U_{1}`$ which has the matrix element (680) may be written<su
 <a id="eq-683"></a>
 
 ```math
-U_{1} = \frac{e^{2}}{\hbar^{2} c\mu} \int dx \overline{\psi} ( Z \cdot \partial ) A /^{e} \psi ( x ) \qquad \text{(683)}
+U_{1} = \frac{e^{2}}{\hbar^{2} c\mu} \int dx \overline{\psi} ( Z \cdot \partial ) {A\!\!\!/}^{e} \psi ( x ) \qquad \text{(683)}
 ```
 
 Using (670) and specializing by means of (674), this gives
@@ -969,7 +969,7 @@ The End
 <a id="fn-92"></a>**92.** The integrand was originally written [↩](#fnref-92)
 
 ```math
-\overline{\psi} ( Z \boldsymbol{\cdot} \text{ grad } ) A /^{e} \psi ( x )
+\overline{\psi} ( Z \boldsymbol{\cdot} \text{ grad } ) {A\!\!\!/}^{e} \psi ( x )
 ```
 
 Since $`Z_{\lambda}`$ is a Lorentz vector, the gradient must likewise be. So “grad” here must be $`\partial_{\lambda}`$, not $`\nabla`$. One goes from (682) to (680) by an integration by parts; since there are in (680) apparently the dot product of two 4-vectors, this supports the identification here of grad = $`\partial_{\lambda}`$.
