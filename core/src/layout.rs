@@ -3188,11 +3188,11 @@ fn accents_over_letters(doc: &mut Doc) {
         while k < line.spans.len() {
             let s = &line.spans[k];
             let mut cs = s.text.chars();
-            let accent = cs.next().filter(|c| "ˆ˜".contains(*c));
+            let accent = cs.next().filter(|c| "ˆ˜¯˙".contains(*c));
             let rest: String = cs.collect();
             let over = accent.is_some()
                 && !rest.trim().is_empty()
-                && line.spans.iter().any(|p| !std::ptr::eq(p, s) && p.text.trim().chars().count() == 1 && p.text.trim().chars().all(char::is_alphabetic) && p.left <= s.left + 1.0 && p.right() >= s.left + 2.0 && (p.top - s.top).abs() < 0.5 * size_of(s));
+                && line.spans.iter().any(|p| !std::ptr::eq(p, s) && (p.text.trim().chars().count() == 1 || (accent.is_some_and(|a| "¯˙".contains(a)) && p.text.trim().chars().count() <= 3)) && p.text.trim().chars().all(char::is_alphabetic) && p.left <= s.left + 1.0 && p.right() >= s.left + 2.0 && (p.top - s.top).abs() < 0.5 * size_of(s));
             if let (true, Some(accent)) = (over, accent) {
                 let w = (0.5 * size_of(s)).min(0.5 * s.width);
                 let mut hat = s.clone();

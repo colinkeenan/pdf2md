@@ -22,7 +22,7 @@ M = ( \Phi_{B}^{*} S \Phi_{A} ) \qquad \text{(487)}
 <a id="eq-488"></a>
 
 ```math
-S = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int \dots \int dx_{1} \dots dx_{n} P \left\{ \psi / A\psi ( x_{1} ) ,\dots , \psi A\psi ( x_{n} ) \right\} \qquad \text{(488)}
+S = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int \dots \int dx_{1} \dots dx_{n} P \left\{ \psi / A\psi ( x_{1} ) ,\dots , \psi {A\!\!\!/} \psi ( x_{n} ) \right\} \qquad \text{(488)}
 ```
 
 The operators in (488) are field-operators of the interaction representation, the integrations over the points $`x_{1} ,\dots x_{n}`$ extend over all space-time, and the initial and final states $`A`$ and $`B`$ are entirely arbitrary.
@@ -1036,7 +1036,7 @@ There is no singular factor in (584) such as we had in (558). To perform the sum
 <a id="eq-585"></a>
 
 ```math
-\begin{aligned} \sum_{\lambda} \gamma_{\lambda} \gamma_{\lambda} &= 4 \\ \sum_{\lambda} \gamma_{\lambda} {a\!\!\!/} \gamma_{\lambda} &= - 2 {a\!\!\!/} \\ \sum_{\lambda} \gamma_{\lambda} {a\!\!\!/} {b\!\!\!/} \gamma_{\lambda} &= 4 ( a \cdot b ) \\ \sum_{\lambda} \gamma_{\lambda} {a\!\!\!/} {b\!\!\!/} {c\!\!\!/} \gamma_{\lambda} &= - 2 {c\!\!\!/} {b\!\!\!/} a \end{aligned} \qquad \text{(585)}
+\begin{aligned} \sum_{\lambda} \gamma_{\lambda} \gamma_{\lambda} &= 4 \\ \sum_{\lambda} \gamma_{\lambda} {a\!\!\!/} \gamma_{\lambda} &= - 2 {a\!\!\!/} \\ \sum_{\lambda} \gamma_{\lambda} {a\!\!\!/} {b\!\!\!/} \gamma_{\lambda} &= 4 ( a \cdot b ) \\ \sum_{\lambda} \gamma_{\lambda} {a\!\!\!/} {b\!\!\!/} {c\!\!\!/} \gamma_{\lambda} &= - 2 {c\!\!\!/} {b\!\!\!/} {a\!\!\!/} \end{aligned} \qquad \text{(585)}
 ```
 
 valid for any vectors $`a , b , c`$. These formulae can be deduced from the following recursive formula:

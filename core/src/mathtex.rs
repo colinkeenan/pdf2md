@@ -1195,10 +1195,13 @@ fn put_accents(mut spans: Vec<MSpan>) -> Vec<MSpan> {
                     at += 1;
                     continue;
                 }
-                if at < rest.len() {
+                // (… over the letter after it, or, at the piece's end, over
+                // the one before it: "∂/", the letter drawn first)
+                let under = if at < rest.len() { Some(at) } else { at.checked_sub(1) };
+                if let Some(under) = under {
                     let mut stroke = s.clone();
                     stroke.text = "\u{338}".into();
-                    (stroke.left, stroke.right) = (edges[at], edges[at + 1]);
+                    (stroke.left, stroke.right) = (edges[under], edges[under + 1]);
                     out.push(stroke);
                 }
             }
@@ -1976,6 +1979,10 @@ fn tidy(s: &str) -> String {
     let s = if let Some(head) = s.strip_suffix("-\\to") { format!("{head}\\longrightarrow") } else { s };
     // (and the long double arrows, an equals sign run into "⇒", "⇐" into "⇒")
     let s = s.replace("= \\Rightarrow", "\\Longrightarrow").replace("\\Leftarrow \\Rightarrow", "\\Longleftrightarrow").replace("\\Leftarrow\\Rightarrow", "\\Longleftrightarrow");
+    // (the arrow over a derivative that acts to its left, or to its right:
+    // TeX draws it of an arrow's head and a minus sign)
+    let s = s.replace("\\partial \\leftarrow - {}_{", "\\overleftarrow{\\partial}_{").replace("\\partial \\leftarrow -", "\\overleftarrow{\\partial}");
+    let s = s.replace("\\partial \\to - {}_{", "\\overrightarrow{\\partial}_{").replace("\\partial \\to -", "\\overrightarrow{\\partial}");
     // (three dots at the height of a minus sign are TeX's "and so on")
     let s = s.replace("\\cdot \\cdot \\cdot", "\\cdots");
     let s = barred_index(&rooted_fraction(&s));
