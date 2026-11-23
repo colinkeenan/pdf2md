@@ -160,6 +160,7 @@ pub fn sym(c: char) -> Option<&'static str> {
         '≡' => "\\equiv ",
         '∝' => "\\propto ",
         '∈' => "\\in ",
+        '⊙' => "\\odot ",
         '⊗' => "\\otimes ",
         '⊕' => "\\oplus ",
         '†' => "\\dagger ",
@@ -623,6 +624,32 @@ pub fn build_with(spans: &[MSpan], bars: &[Rule]) -> String {
         })
         .collect();
     let mut spans = spans;
+    // The circled signs of the extension font, which the PDF gives as the
+    // letters of their places there: ⊙ ("J"), ⊕ ("L"), ⊗ ("N"). Set small
+    // beside a letter it is that letter's index, the Sun's mass M_⊙: a
+    // sign like any other, with the box of its whole height (the font's
+    // boxes are only the tops of its signs). At the formula's own size it
+    // is a big operator.
+    let largest = spans.iter().filter(|s| !s.cmex()).map(|s| s.size).fold(0.0f32, f32::max);
+    for s in spans.iter_mut() {
+        if !s.cmex() || s.family.contains('/') || s.atom.is_some() {
+            continue;
+        }
+        let (sign, operator) = match s.text.trim() {
+            "J" | "K" => ("⊙", "\\bigodot"),
+            "L" | "M" => ("⊕", "\\bigoplus"),
+            "N" | "O" => ("⊗", "\\bigotimes"),
+            _ => continue,
+        };
+        if s.size < 0.85 * largest {
+            s.text = sign.into();
+            s.family = "CMSY10".into();
+            s.math = true;
+            s.bottom = s.top + s.size;
+        } else {
+            s.atom = Some(operator.into());
+        }
+    }
     // A full stop that stands free between two operands of its line, room
     // on both sides, is the dot of a product, p · q: some fonts give their
     // raised dot under the full stop's code (a decimal point stands tight
@@ -1192,6 +1219,31 @@ fn put_accents(mut spans: Vec<MSpan>) -> Vec<MSpan> {
         };
         let a = spans[k].clone();
         let mid = (a.left + a.right) / 2.0;
+        // A second accent over a letter that has one: the dots over an
+        // arrowed r, the arrow over a dotted p. The letter with its first
+        // accent is one piece already, written out; this one goes around
+        // it (the arrow inside the dots, as the book stacks them).
+        let accented = (0..spans.len()).find(|&j| {
+            let b = &spans[j];
+            j != k
+                && b.atom.as_ref().is_some_and(|x| ["\\vec{", "\\dot{", "\\ddot{", "\\hat{", "\\tilde{", "\\bar{"].iter().any(|p| x.starts_with(p)))
+                && b.left <= mid + 1.0
+                && b.right >= mid - 1.0
+                && (b.top - a.top).abs() <= 0.75 * a.size
+        });
+        if let Some(j) = accented {
+            let inner = spans[j].atom.clone().unwrap_or_default();
+            // (an arrow is of the letter itself: under dots that are there)
+            let dots = ["\\dot{", "\\ddot{"].iter().find(|p| inner.starts_with(**p));
+            spans[j].atom = Some(match (name, dots) {
+                ("vec", Some(p)) => format!("{p}\\vec{{{}}}}}", &inner[p.len()..inner.len() - 1]),
+                ("vec", None) if inner.starts_with("\\vec{") => inner.clone(),
+                _ => format!("\\{name}{{{inner}}}"),
+            });
+            spans.remove(k);
+            k = 0;
+            continue;
+        }
         // the letter under it: overlapping its middle, same line
         let base = (0..spans.len())
             .filter(|&j| j != k && accent(&spans[j].text).is_none() && spans[j].atom.is_none())
@@ -1231,8 +1283,17 @@ fn put_accents(mut spans: Vec<MSpan>) -> Vec<MSpan> {
             let other = (0..n).filter(|&i| !chars[i].is_whitespace()).min_by(|&x, &y| near(x).total_cmp(&near(y)));
             ci = other.unwrap_or(ci);
         }
+        // (the letter with the mark of its arrow, which this font sets
+        // before it as "~": the two are one, a dot goes over both)
+        let (from, to) = if chars.get(ci) == Some(&'~') && ci + 1 < n {
+            (ci, ci + 2)
+        } else if ci > 0 && chars[ci - 1] == '~' {
+            (ci - 1, ci + 1)
+        } else {
+            (ci, ci + 1)
+        };
         let mut pieces: Vec<MSpan> = Vec::new();
-        for (part, range) in [(0, 0..ci), (1, ci..ci + 1), (2, ci + 1..n)] {
+        for (part, range) in [(0, 0..from), (1, from..to), (2, to..n)] {
             if range.is_empty() {
                 continue;
             }
@@ -1243,7 +1304,15 @@ fn put_accents(mut spans: Vec<MSpan>) -> Vec<MSpan> {
             if part == 1 {
                 let inner = tex(&p);
                 // (a bar through the stem of an h is ħ, which TeX draws so)
-                p.atom = Some(if name == "bar" && inner.trim() == "h" { "\\hbar".to_string() } else { format!("\\{name}{{{}}}", inner.trim()) });
+                // (an arrow over a letter that has its arrow already, drawn
+                // and marked: one arrow)
+                p.atom = Some(if name == "bar" && inner.trim() == "h" {
+                    "\\hbar".to_string()
+                } else if name == "vec" && inner.trim().starts_with("\\vec{") {
+                    inner.trim().to_string()
+                } else {
+                    format!("\\{name}{{{}}}", inner.trim())
+                });
                 p.text = String::new();
             }
             pieces.push(p);
