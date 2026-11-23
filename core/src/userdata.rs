@@ -12,7 +12,8 @@
 //!   redone in the same paragraph.
 //!
 //! * **Fixes of a displayed equation built from the PDF's text**: the
-//!   corrected ```` ```math ```` block under a mark that holds the equation
+//!   corrected block (```` ```math ````, or between `$$` in a book written
+//!   in the standard form) under a mark that holds the equation
 //!   as converted, `<!-- pdf2md:fix as converted -->`. Every block of the
 //!   chapter that is converted to that LaTeX again is replaced. A block
 //!   that was no equation of the book (a piece torn off a formula) is
@@ -91,6 +92,9 @@ impl UserData {
 }
 
 const EQ_FIX: &str = "<!-- pdf2md:fix ";
+/// How a displayed equation's block opens and closes, in the two forms of
+/// math (see [`crate::emit::MathForm`]).
+const BLOCKS: [(&str, &str); 2] = [("```math\n", "\n```"), ("$$\n", "\n$$")];
 const EQ_GONE: &str = "<!-- pdf2md:gone ";
 const BY_CLAUDE: &str = "\n\n> [!NOTE]\n> **Edited by Claude.**";
 
@@ -122,11 +126,10 @@ fn eq_fix_ranges(text: &str) -> Vec<(usize, usize, String)> {
         let was = unescape(&text[from..close]);
         let mut end = close + 4;
         if kind == EQ_FIX {
-            if !text[end..].starts_with("\n\n```math\n") {
-                continue;
-            }
-            let body = end + "\n\n```math\n".len();
-            let Some(e) = text[body..].find("\n```").map(|e| body + e + 4) else { continue };
+            // (the corrected block, in either form of math)
+            let Some((open, close)) = BLOCKS.into_iter().find(|(open, _)| text[end..].strip_prefix("\n\n").is_some_and(|t| t.starts_with(open))) else { continue };
+            let body = end + 2 + open.len();
+            let Some(e) = text[body..].find(close).map(|e| body + e + close.len()) else { continue };
             end = e;
             // (mdBun's mark of an improvement, on the line under the
             // block: part of the fix)
@@ -586,19 +589,28 @@ fn apply_in(text: &mut String, data: &UserData, slug: Option<&str>, book: bool) 
     // (one whose equation is converted differently now is kept with the
     // notes that lost their place)
     for e in data.eqs.iter().filter(|e| ours(&e.slug)) {
-        let needle = format!("```math\n{}\n```", e.was);
-        let mut from = 0;
+        // (the equation as converted, in the form of math the corrected
+        // block is written in: a block of the other form is none of its
+        // kind. A block taken out has no form: it is looked for in both.)
+        let under = e.block.find(" -->").map_or("", |c| &e.block[c + 4..]);
+        let form = BLOCKS.into_iter().find(|(open, _)| under.strip_prefix("\n\n").is_some_and(|t| t.starts_with(open)));
         let mut found = text.contains(&e.block);
-        while let Some(i) = text[from..].find(&needle).map(|i| from + i) {
-            // (not the corrected block of a fix put back before this one)
-            let fixed = text[..i].trim_end().rsplit('\n').next().is_some_and(|l| l.starts_with(EQ_FIX));
-            let fresh = (i == 0 || text[..i].ends_with("\n\n")) && !fixed && text[i + needle.len()..].chars().next().is_none_or(|c| c == '\n');
-            if fresh {
-                text.replace_range(i..i + needle.len(), &e.block);
-                from = i + e.block.len();
-                found = true;
-            } else {
-                from = i + needle.len();
+        for (open, close) in BLOCKS.into_iter().filter(|f| form.is_none_or(|g| g == *f)) {
+            let needle = format!("{open}{}{close}", e.was);
+            let mut from = 0;
+            while let Some(i) = text[from..].find(&needle).map(|i| from + i) {
+                // (not the corrected block of a fix put back before this
+                // one: such a block stands under a mark, which may be of
+                // several lines)
+                let fixed = text[..i].strip_suffix(" -->\n\n").and_then(|t| t.rfind("<!-- ").map(|k| &t[k..])).is_some_and(|m| m.starts_with(EQ_FIX));
+                let fresh = (i == 0 || text[..i].ends_with("\n\n")) && !fixed && text[i + needle.len()..].chars().next().is_none_or(|c| c == '\n');
+                if fresh {
+                    text.replace_range(i..i + needle.len(), &e.block);
+                    from = i + e.block.len();
+                    found = true;
+                } else {
+                    from = i + needle.len();
+                }
             }
         }
         if !found && !book {
@@ -776,6 +788,35 @@ mod tests {
         // (in a list item, two spaces in)
         let item = edited.replace("So\n\n", "- So\n\n").replace(&fixed, &fixed.lines().map(|l| if l.is_empty() { String::new() } else { format!("  {l}") }).collect::<Vec<_>>().join("\n"));
         assert_eq!(collect_file(&item, &|_| Some("c".into())).eqs[0].block, fixed);
+    }
+
+    #[test]
+    fn a_corrected_equation_between_dollars_is_kept_like_a_fenced_one() {
+        // (a book written in the standard form; the mark of several lines)
+        let was = "a & = & b -- c \\\\\nd & = & e \\tag{1.2}";
+        let fixed = format!("{}\n\n$$\na & = & b - c \\\\\nd & = & e \\tag{{1.2}}\n$$\n{IMPROVED}", eq_fix_mark(was));
+        let edited = format!("# Ch\n\nSo\n\n{fixed}\n\n> [!NOTE]\n> Mine.\n\nand\n\n$$\nx = 1\n$$\n\nEnd.\n");
+        let d = collect_file(&edited, &|_| Some("c".into()));
+        assert_eq!((d.eqs.len(), d.notes.len()), (1, 1), "{d:?}");
+        assert_eq!((d.eqs[0].was.as_str(), d.eqs[0].block.as_str()), (was, fixed.as_str()));
+        let fresh = |form: [&str; 2]| format!("# Ch\n\nSo\n\n{}{was}{}\n\nand\n\n$$\nx = 1\n$$\n\nEnd.\n", form[0], form[1]);
+        let mut new = fresh(["$$\n", "\n$$"]);
+        assert!(apply(&mut new, &d, Some("c")).is_empty());
+        assert_eq!(new, edited);
+        // (put back once: the corrected block is not taken for a block to correct)
+        let mut again = new.clone();
+        apply(&mut again, &UserData { eqs: d.eqs.clone(), ..Default::default() }, Some("c"));
+        assert_eq!(again, new);
+        // (the same LaTeX in the other form is another block: the fix
+        // finds no place and is kept with the notes that lost theirs)
+        let mut other = fresh(["```math\n", "\n```"]);
+        let lost = apply(&mut other, &d, Some("c"));
+        assert!(other.contains(&format!("```math\n{was}\n```")) && lost.iter().any(|n| n.text == fixed), "{other}");
+        // (a block taken out is looked for in both forms)
+        let gone = UserData { eqs: vec![EqFix { slug: Some("c".into()), was: "x = 1".into(), block: eq_gone_mark("x = 1") }], ..Default::default() };
+        let mut new = fresh(["$$\n", "\n$$"]);
+        assert!(apply(&mut new, &gone, Some("c")).is_empty());
+        assert!(new.contains(&format!("and\n\n{}\n\nEnd.", eq_gone_mark("x = 1"))), "{new}");
     }
 
     #[test]
