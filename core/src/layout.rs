@@ -2920,6 +2920,9 @@ pub fn parse_xml_with(xml: &str, lost: &HashMap<String, bool>) -> Result<Doc, St
                 // PDF that does not say what its letters mean gives "0")
                 let symbols = fonts.get(num(n, "font") as usize).is_some_and(|f| f.family.starts_with("CMSY"));
                 let text = if symbols && !text.trim().is_empty() && text.trim().chars().all(|c| c == '0') { text.replace('0', "′") } else { text };
+                // (… and the foot of "↦" where the figure 7 is: TeX draws
+                // that arrow as the foot and "→" over it)
+                let text = if symbols && text.contains('7') { text.replace("7→", "↦").replace("7 →", "↦") } else { text };
                 // (TeX's math italic font has no bracket: what such a PDF
                 // gives as "(" is the arrow over a vector, as "~" elsewhere)
                 let italic_math = fonts.get(num(n, "font") as usize).is_some_and(|f| f.family.starts_with("CMMI"));

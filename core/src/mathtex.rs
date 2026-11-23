@@ -149,6 +149,25 @@ pub fn sym(c: char) -> Option<&'static str> {
         '←' => "\\leftarrow ",
         '↔' => "\\leftrightarrow ",
         '⇒' => "\\Rightarrow ",
+        '⇐' => "\\Leftarrow ",
+        '⇔' => "\\Leftrightarrow ",
+        '↦' => "\\mapsto ",
+        '↑' => "\\uparrow ",
+        '↓' => "\\downarrow ",
+        '∀' => "\\forall ",
+        '∃' => "\\exists ",
+        '∪' => "\\cup ",
+        '∩' => "\\cap ",
+        '⊂' => "\\subset ",
+        '⊃' => "\\supset ",
+        '⊆' => "\\subseteq ",
+        '⊇' => "\\supseteq ",
+        '∋' => "\\ni ",
+        '∧' => "\\wedge ",
+        '∨' => "\\vee ",
+        '⊺' => "\\intercal ",
+        '≳' => "\\gtrsim ",
+        '≲' => "\\lesssim ",
         '⇄' => "\\rightleftarrows ",
         '∠' => "\\angle ",
         '∞' => "\\infty ",
@@ -1898,6 +1917,10 @@ fn tidy(s: &str) -> String {
     // (the long arrow, set as a minus sign run into an arrow)
     let s = s.replace("-\\to ", "\\longrightarrow ").replace("- \\to ", "\\longrightarrow ");
     let s = if let Some(head) = s.strip_suffix("-\\to") { format!("{head}\\longrightarrow") } else { s };
+    // (and the long double arrows, an equals sign run into "⇒", "⇐" into "⇒")
+    let s = s.replace("= \\Rightarrow", "\\Longrightarrow").replace("\\Leftarrow \\Rightarrow", "\\Longleftrightarrow").replace("\\Leftarrow\\Rightarrow", "\\Longleftrightarrow");
+    // (three dots at the height of a minus sign are TeX's "and so on")
+    let s = s.replace("\\cdot \\cdot \\cdot", "\\cdots");
     let s = barred_index(&rooted_fraction(&s));
     slashed(&s.replace("\\not =", "\\neq").replace("\\not=", "\\neq").replace("\\not{=}", "\\neq"))
 }
