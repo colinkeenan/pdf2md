@@ -1077,6 +1077,27 @@ fn put_accents(mut spans: Vec<MSpan>) -> Vec<MSpan> {
         "´" => Some("acute"),
         _ => None,
     };
+    // "⃗a": an arrow at the head of a piece, before the letter it is drawn
+    // over (it moves the type on by nothing, so the piece is as wide as
+    // its letters alone): a piece of its own, over the first letter
+    spans = spans
+        .into_iter()
+        .flat_map(|s| {
+            let chars: Vec<char> = s.text.chars().collect();
+            if chars.len() < 2 || chars[0] != '\u{20d7}' || s.atom.is_some() || !chars[1].is_alphabetic() {
+                return vec![s];
+            }
+            let letters: Vec<char> = chars[1..].to_vec();
+            let units: f32 = letters.iter().map(|&c| crate::layout::char_width(c)).sum();
+            let first = (s.right - s.left) * crate::layout::char_width(letters[0]) / units.max(0.01);
+            let mut arrow = s.clone();
+            arrow.text = "\u{20d7}".into();
+            arrow.right = s.left + first;
+            let mut rest = s;
+            rest.text = letters.into_iter().collect();
+            vec![arrow, rest]
+        })
+        .collect();
     // "(˜": an accent at the end of a longer span gets a span of its own
     spans = spans
         .into_iter()
