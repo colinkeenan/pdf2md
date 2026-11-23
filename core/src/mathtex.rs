@@ -616,6 +616,32 @@ pub fn build_with(spans: &[MSpan], bars: &[Rule]) -> String {
         })
         .collect();
     let mut spans = spans;
+    // A full stop that stands free between two operands of its line, room
+    // on both sides, is the dot of a product, p · q: some fonts give their
+    // raised dot under the full stop's code (a decimal point stands tight
+    // in its number, the stop of a sentence has nothing behind it, and
+    // the dots of "and so on" have dots beside them).
+    for k in 0..spans.len() {
+        let s = &spans[k];
+        // (not in TeX's own fonts, whose product dot is a sign of the
+        // symbol font: there a free-standing full stop ends a sentence
+        // between two formulas)
+        if s.text.trim() != "." || s.math || s.atom.is_some() || s.family.to_uppercase().starts_with("CM") {
+            continue;
+        }
+        // (an arrow or a tilde over a letter is no neighbour: the letter is)
+        let accent = |b: &MSpan| matches!(b.text.trim(), "\u{20d7}" | "\u{338}" | "˜" | "ˆ" | "¯" | "˙" | "¨");
+        let row = |b: &MSpan| !b.cmex() && !accent(b) && b.bottom.min(s.bottom) - b.top.max(s.top) >= 0.5 * (s.bottom - s.top) && (b.size - s.size).abs() <= 0.15 * s.size;
+        let operand = |b: &MSpan| row(b) && b.text.chars().any(|c| c.is_alphanumeric() || ")]".contains(c) || "([".contains(c)) && !b.text.trim().chars().all(|c| ".,;:".contains(c));
+        let before = spans.iter().filter(|b| row(b) && b.right <= s.left + 0.5).max_by(|a, b| a.right.total_cmp(&b.right));
+        let behind = spans.iter().filter(|b| row(b) && b.left >= s.right - 0.5).min_by(|a, b| a.left.total_cmp(&b.left));
+        let room = |gap: f32| gap >= 0.12 * s.size && gap <= 0.8 * s.size;
+        if let (Some(a), Some(b)) = (before, behind) {
+            if operand(a) && operand(b) && room(s.left - a.right) && room(b.left - s.right) {
+                spans[k].text = "·".into();
+            }
+        }
+    }
     level_sizes(&mut spans);
     if let Some(x) = small_tail(&spans) {
         let (head, tail): (Vec<MSpan>, Vec<MSpan>) = spans.iter().cloned().partition(|s| s.left < x);
