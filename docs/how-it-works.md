@@ -237,7 +237,7 @@ This is the path for a PDF made with TeX or by a publisher's typesetting system,
 * **Italic and bold** become `_…_` and `**…**`. Headings carry neither.
 * **Centered text**, such as a title page, goes in `<div align="center">` and keeps its line breaks. A line counts as centered when its middle is at the middle of the column and it is clearly in from both margins.
 * **Hard returns** are kept. A line that ends early, although the next line's first word would have fit, was ended on purpose, as in an address. It stays a line of its own (`<br>`), and becomes its own paragraph when there is also extra space above it.
-* **Footnote markers** are small raised numbers attached to a word. End notes are matched by the longest run of rising marker numbers in reading order, so the 16 of "O¹⁶" cannot take note 16. Notes at the foot of a page match markers on that page. A line that begins with a small raised number begins a note's entry, unless a small number stands right under it: then the line begins with a stacked fraction ("½μ²ϕ² term") and goes on its paragraph.
+* **Footnote markers** are small raised numbers attached to a word. End notes are matched by the longest run of rising marker numbers in reading order, so the 16 of "O¹⁶" cannot take note 16. Notes at the foot of a page match markers on that page. A line that begins with a small raised number begins a note's entry, unless a small number stands right under it: then the line begins with a stacked fraction ("½μ²ϕ² term") and goes on its paragraph. Nor is it an entry if an element's symbol stands right against the number: that is an isotope's mass number ("¹³³Cs, of this alkali atom"), and a note's text stands off its number.
 
 * **The name under a quotation** ("—N. P. Ong, Princeton University") is the last line of the quotation's paragraph, on a line of its own, and ends it: what follows is another paragraph, also where the page ends with the name.
 * **Over a page** a paragraph goes on only in the type size it is set in.
@@ -380,7 +380,7 @@ The names cover the big symbols, brackets and roots of a big-symbol font, the an
 
 *Worked out on: Dyson. Fitted.*
 
-* **Aligned columns.** Three or more lines whose columns start at the same positions, with words in the last column, become a LaTeX `array`.
+* **Aligned columns.** Three or more lines whose columns start at the same positions, with words in the last column, become a LaTeX `array`. Not where the first column counts on by one ("8.4", "8.5", "8.6"): those are numbered sentences that happen to be a line each, such as short problems.
 * **Pictures** are found in the SVG: stroked or filled paths that are neither glyphs nor thin bars, and embedded images. Pieces close together are one picture. A group counts as a picture if it holds an image, or 3 or more pieces at least 15 pt square, or 8 or more pieces at least 40 pt wide, or one long curved stroke. Text inside the picture, and short text just beside it, is a label and becomes part of the image; so is a line under it in the fonts the book's drawings are lettered in ("(a) (b)" under the panels, the factor under a vertex), unless it stands in or nearer over the next picture. The picture is then rendered from the PDF with `pdftocairo -png`.
 * **An image** in such a book is a picture, with a caption or without. It is never read as a formula: the book's formulas are set in its math fonts.
 

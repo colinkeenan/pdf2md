@@ -16394,9 +16394,7 @@ Therefore,
 P_{\pi} = ( - 1 )^{\ell} .
 ```
 
-Because the neutrons are identical fermions, the allowed states of two neutrons are<sup>1</sup>$`S_{0}`$,<sup>3</sup>$`P_{0 , 1 , 2}`$,<sup>1</sup>$`D_{2}`$,
-
-<sup>3</sup>$`F_{2 , 3 , 4} \dots`$ The only state with $`j = 1`$ is the<sup>3</sup>$`P_{1}`$ state, so $`\ell = 1`$
+Because the neutrons are identical fermions, the allowed states of two neutrons are<sup>1</sup>$`S_{0}`$,<sup>3</sup>$`P_{0 , 1 , 2}`$,<sup>1</sup>$`D_{2}`$, <sup>3</sup>$`F_{2 , 3 , 4} \dots`$ The only state with $`j = 1`$ is the<sup>3</sup>$`P_{1}`$ state, so $`\ell = 1`$
 
 ```math
 \Rightarrow P_{\pi} = - 1 .

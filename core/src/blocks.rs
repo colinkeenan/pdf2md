@@ -1619,7 +1619,16 @@ fn find_tables(doc: &Doc, lines: &[Line], st: &Stats) -> Vec<(usize, usize, Vec<
         }
         // numbered notes ("²³ text") are entries, not a table
         let notes = lines[i..j].iter().any(|l| l.spans.first().is_some_and(|s| s.script == Script::Super));
-        if j - i >= 3 && !notes {
+        // nor are numbered sentences that happen to be a line each
+        // (problems "8.4 Show that …", "8.5 Derive …", "8.6 Show that …"):
+        // their numbers count on by one, a table's first column does not
+        let number = |l: &Line| -> Option<(String, u32)> {
+            let t = l.spans.first()?.text.trim().trim_end_matches('.').to_string();
+            let (head, n) = t.rsplit_once('.').map_or(("", t.as_str()), |(h, n)| (h, n));
+            Some((head.to_string(), n.parse().ok()?))
+        };
+        let counted = lines[i..j].windows(2).all(|w| matches!((number(&w[0]), number(&w[1])), (Some((a, m)), Some((b, n))) if a == b && n == m + 1));
+        if j - i >= 3 && !notes && !counted {
             let cols = columns(&lines[i..j]);
             let rows = j - i;
             // Prose runs to the right margin; a table's rows mostly stop short.
@@ -1982,12 +1991,24 @@ fn starts_entry(l: &Line) -> bool {
         let stacked = l.spans.iter().skip(1).any(|s| {
             s.script == Script::Sub && s.text.trim().bytes().all(|b| b.is_ascii_digit()) && !s.text.trim().is_empty() && s.left < first.right() + 1.0 && s.right() > first.left - 1.0 && s.top > first.top
         });
-        return !stacked;
+        // (nor the mass number of an isotope a line of a sentence begins
+        // with, "¹³³Cs, of this alkali atom": the element's symbol stands
+        // right against it, a note's text stands off its number)
+        let isotope = l.spans.get(1).is_some_and(|s| s.script == Script::Normal && s.left - first.right() < 0.15 * s.height && element_symbol(&s.text));
+        return !(stacked || isotope);
     }
     let p = plain_text(l);
     p.strip_prefix('[')
         .and_then(|r| r.split_once(']'))
         .is_some_and(|(n, _)| !n.is_empty() && n.bytes().all(|b| b.is_ascii_digit()))
+}
+
+/// Does this text begin with a chemical element's symbol, as a word of its
+/// own ("Cs, of this", "He atom")? (D and T, the heavy hydrogens, too.)
+fn element_symbol(text: &str) -> bool {
+    const SYMBOLS: &str = " H He Li Be B C N O F Ne Na Mg Al Si P S Cl Ar K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Kr Rb Sr Y Zr Nb Mo Tc Ru Rh Pd Ag Cd In Sn Sb Te I Xe Cs Ba La Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu Hf Ta W Re Os Ir Pt Au Hg Tl Pb Bi Po At Rn Fr Ra Ac Th Pa U Np Pu Am Cm Bk Cf Es Fm Md No Lr D T ";
+    let word: String = text.chars().take_while(|c| c.is_alphabetic()).collect();
+    !word.is_empty() && word.len() <= 2 && SYMBOLS.contains(&format!(" {word} "))
 }
 
 /// Is this a heading? Returns its font size.
