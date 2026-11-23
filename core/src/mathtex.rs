@@ -1211,6 +1211,27 @@ fn put_accents(mut spans: Vec<MSpan>) -> Vec<MSpan> {
             out
         })
         .collect();
+    // (the slash at the end of a piece, with the next letter beginning
+    // inside it, "i/" and a k that starts where the slash does: a piece of
+    // its own, for what follows)
+    let mut k = 0;
+    while k < spans.len() {
+        let s = &spans[k];
+        let chars: Vec<char> = s.text.chars().collect();
+        let units: f32 = chars.iter().map(|&c| crate::layout::char_width(c)).sum();
+        let slash = (s.right - s.left) * crate::layout::char_width('/') / units.max(0.01);
+        let struck = s.atom.is_none() && s.math && s.family.to_uppercase().starts_with("CMMI") && chars.len() >= 2 && chars.last() == Some(&'/') && spans.iter().any(|b| b.atom.is_none() && !b.cmex() && b.text.chars().next().is_some_and(|c| c.is_alphabetic() || c == '∂') && (b.size - s.size).abs() <= 0.1 * s.size && b.left >= s.right - slash - 1.0 && b.left <= s.right - 0.4 * slash && b.bottom.min(s.bottom) - b.top.max(s.top) >= 0.5 * (s.bottom - s.top));
+        if struck {
+            let mut stroke = s.clone();
+            (stroke.text, stroke.left) = ("/".to_string(), s.right - slash);
+            let s = &mut spans[k];
+            s.text = chars[..chars.len() - 1].iter().collect();
+            s.right -= slash;
+            spans.insert(k + 1, stroke);
+            k += 1;
+        }
+        k += 1;
+    }
     // A slash set over a letter, with no room of its own: the stroke of
     // Feynman's p̸, which some books make of the plain "/" (a slash that
     // divides stands between its two sides, in room of its own).
@@ -1224,7 +1245,7 @@ fn put_accents(mut spans: Vec<MSpan>) -> Vec<MSpan> {
             j != k
                 && b.atom.is_none()
                 && !b.cmex()
-                && b.text.chars().any(char::is_alphabetic)
+                && b.text.chars().any(|c| c.is_alphabetic() || c == '∂')
                 && (b.size - s.size).abs() <= 0.1 * s.size
                 && b.right.min(s.right) - b.left.max(s.left) >= 0.6 * width
                 && b.bottom.min(s.bottom) - b.top.max(s.top) >= 0.5 * height

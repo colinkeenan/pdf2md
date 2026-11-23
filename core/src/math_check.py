@@ -510,7 +510,7 @@ def read(files, dst, ext: str, scale: int, state: dict):
 # Equations built from the letters of a PDF's page (a TeX book): a second
 # reading, by the recognizer, of the place on the page each was built from.
 
-PLACES = "places 10"
+PLACES = "places 11"
 # pixels of a cut-out for each pixel of the page reader's measure (it has
 # 1.5 to a point: 216 dots to the inch, twice the size of an ebook's pictures)
 ZOOM = 2.0
@@ -540,6 +540,11 @@ def tidy(t: str) -> str:
     t = re.sub(r"\\not\s*\{?\s*(?=[A-Za-z]|\\(?:alpha|beta|gamma|delta|epsilon|varepsilon|partial|nabla|sigma|pi|mu|nu|kappa|lambda|xi|eta|zeta|theta|rho|tau|phi|varphi|chi|psi|omega|ell|Gamma|Delta|Sigma|Pi|Phi|Psi|Omega|Lambda)(?![a-zA-Z]))", "", t)
     # (the 1 with a doubled stem, as a sign and by its commands)
     t = re.sub(r"\\(mathbb|mathbbm|mathds)\s*(\{\s*1\s*\}|1)", "𝟙", t)
+    # (… which the recognizer often reads as a plain 1: the page's to say)
+    t = t.replace("𝟙", "1")
+    # (a Greek capital as a letter and by its name)
+    for letter, name in zip("ΓΔΘΛΞΠΣΥΦΨΩ", ("Gamma", "Delta", "Theta", "Lambda", "Xi", "Pi", "Sigma", "Upsilon", "Phi", "Psi", "Omega")):
+        t = t.replace(letter, "\\" + name + " ")
     # (a bar in the middle of a bracket, as tall as the bracket or not)
     t = re.sub(r"\\middle(?![a-zA-Z])", "", t)
     # (so is the stroke through the stem of a d, which it reads as d)
@@ -605,6 +610,7 @@ def marks(t: str):
     t = re.sub(r"\\not\s*\{?\s*=", "", t)
     count = lambda pattern: len(re.findall(pattern, t))
     out = {
+        "doubled": len(re.findall(r"\\(mathbb|mathbbm|mathds)\s*(\{\s*1\s*\}|1)|𝟙", t)),
         "script": count(r"\\(mathcal|cal|mathscr)(?![a-zA-Z])"),
         "stroke": count(r"\\(slashed|cancel|not)(?![a-zA-Z])") + t.count("đ"),
     }

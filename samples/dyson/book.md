@@ -6727,7 +6727,7 @@ so adding the terms gives
 - \left( {e\!\!\!/} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/} \right) {p\!\!\!/} + 2 \mu \{ {e\!\!\!/} , {e\!\!\!/}^{\prime} \} = - \left( {e\!\!\!/} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/} \right) {p\!\!\!/} + 4 \mu ( e \cdot e^{\prime} )
 ```
 
-Now since $`{k\!\!\!/} / k = {k\!\!\!/}^{\prime} {k\!\!\!/}^{\prime} = {p\!\!\!/} {p\!\!\!/} + \mu^{2} = 0`$ (for the photons because they are on the lightcone, for the electron because $`p^{2} = - \mu^{2}`$), we get for $`| K |^{2}`$
+Now since $`{k\!\!\!/} {k\!\!\!/} = {k\!\!\!/}^{\prime} {k\!\!\!/}^{\prime} = {p\!\!\!/} {p\!\!\!/} + \mu^{2} = 0`$ (for the photons because they are on the lightcone, for the electron because $`p^{2} = - \mu^{2}`$), we get for $`| K |^{2}`$
 
 <a id="eq-464"></a>
 

@@ -432,7 +432,22 @@ An equation's number is not part of the place cut out; it stays as the rules fou
 
 A course gathers the doubtful equations of its PDFs as each is converted and writes one `check-equations.md` for the whole course, each entry linked to the file its equation is in.
 
+What only the page can say is the page's: script letters, a stroke through a letter (the Feynman slash, đ), the 1 with a doubled stem, and which of its two shapes a Greek letter has. The recognizer reads 𝒜 as A and p̸ as p, so these do not count as differences; but a reading that has other such marks than the rules' formula is not written in its place (the marks would be lost with it), and a reading that is written gets the page's shape of each Greek letter.
+
 A correction made by hand is of what the rules built (the `pdf2md:fix` mark holds that LaTeX). Where such a mark exists the rules' LaTeX is written, not the recognizer's, so the correction finds its equation.
+
+### What the check lists of two lecture courses showed
+
+*Worked out on: the lists of MIT's Quantum Theory I (238 entries, then 131) and Relativistic Quantum Field Theory I (400, then 122). Read for what repeats: the same difference in many entries is a fault of the rules, not of the recognizer.*
+
+* **A letter the PDF does not name, among letters it does.** TeX's ϵ has a name `pdftohtml` knows no character for. Alone it comes as an empty piece; among other letters of its font it is left out without a trace ("iH/" for "iϵH/"). The PDF's own list of the glyphs it draws has it, the SVG says where each glyph stands, and the ϵ is written into its piece where it stands among the letters. A piece whose letters and glyphs do not count the same with it is left alone.
+* **The integral sign of a formula under a short line.** TeX sets a formula close under a last line that ends before the formula begins, and the box of the integral sign then starts at that line's height. The sign, and the upper limit at its head, are the formula's, not the sentence's.
+* **Bars in the colour of the text.** Answers to a problem set are printed in blue, fraction bars and root bars with them; UCSD prints sentences in colour. A bar counts where it is black, or where it has the colour of words on its page and text of that colour beside it. A coloured bar inside a drawn picture, or among the single letters a drawing program sets in its own black, is of the drawing.
+* **A root in a denominator.** The sign's box stands half a line above what it covers. Of a fraction's own line and its denominator's, the sign is of the one whose letters begin right behind it (full-size denominators of a displayed formula; the small fractions of a sentence are put together later).
+* **⟨a|b⟩ with a tall bar.** A bar between "⟨" and "⟩" opens and closes nothing: it is the bar in the middle of the bracket, written `\middle|`, and what the bracket holds is built part by part between its bars. (`\middle` is only valid right inside `\left … \right`; one that has come to stand elsewhere is written as a plain bar.)
+* **Indices of a tensor.** Where the lower index begins behind the upper one, or the upper one clear behind the lower, they are written in that order, `\Lambda^{\mu}{}_{\nu}`. Only in books set by TeX (an ebook's pages set every upper index behind the lower one), and not on integral signs, whose upper limit begins where the lower one ends. An upper index that only just begins where a narrow lower one ends stands over it all the same, moved right by the slant of its letter.
+* **Signs made of two.** Three dots at the height of a minus sign are `\cdots`; "7" of the symbol font before "→" is the foot of `\mapsto`; "=" run into "⇒" is `\Longrightarrow`; an arrow's head and a minus sign after ∂ are the arrow over it. A macron at the height of a d's own stem is đ (over the letter it stands higher); a bar or dot that begins the piece after its letter is that letter's accent; a slash drawn after its letter, or at the end of a piece with the next letter beginning inside it, strikes that letter.
+* **The 1 with a doubled stem.** From a font of doubled letters (dsfont, bbm), or from a font drawn dot by dot that the PDF holds without a name and that prints nothing else, it is written 𝟙: `\mathbb{1}` is drawn as a plain 1 by KaTeX and MathJax.
 
 ## PDFs made from ebooks
 
