@@ -869,9 +869,7 @@ for the differential form or the matrix form of the operators. For $`\ell = 1`$ 
 
 The angular momentum algebra defined by the commutation relations between the operators requires that the total angular momentum quantum number must either be an integer or a half integer. The half integer possibility was not useful for orbital angular momentum because there was no corresponding (single valued) spherical harmonic function to represent the amplitude for a particle to be at some position.
 
-The half integer possibility is used to represent the internal angular momentum of some particles. The simplest and most important case is spin one-half (See section 18.8). There are just two possible states with different z components of spin: spin up $`\begin{pmatrix} 1 \\ 0 \end{pmatrix}`$, with z component of angular
-
-momentum +$`\frac{\hbar}{2}`$, and spin down $`\begin{pmatrix} 0 \\ 1 \end{pmatrix}`$, with $`- \tfrac{\hbar}{2}`$. The corresponding spin operators are
+The half integer possibility is used to represent the internal angular momentum of some particles. The simplest and most important case is spin one-half (See section 18.8). There are just two possible states with different z components of spin: spin up $`\begin{pmatrix} 1 \\ 0 \end{pmatrix}`$, with z component of angular momentum +$`\frac{\hbar}{2}`$, and spin down $`\begin{pmatrix} 0 \\ 1 \end{pmatrix}`$, with $`- \tfrac{\hbar}{2}`$. The corresponding spin operators are
 
 ```math
 S_{x} = \frac{\hbar}{2} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \quad S_{y} = \frac{\hbar}{2} \begin{pmatrix} 0 & - i \\ i & 0 \end{pmatrix} \quad S_{z} = \frac{\hbar}{2} \begin{pmatrix} 1 & 0 \\ 0 & - 1 \end{pmatrix}

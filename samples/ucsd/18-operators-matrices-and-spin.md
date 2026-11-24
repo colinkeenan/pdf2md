@@ -400,11 +400,7 @@ We could represent this problem with the following **diagram**.
 
 We put a detector in each of the beams split in $`u`$ to determine the intensity.
 
-To solve this with the rotation matrices, we first determine the **state after the first apparatus**.
-
-It is just $`\psi_{+}^{( z )} = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}`$ with the usual basis. Now we **rotate to a new (primed) set of basis**
-
-**states** with the $`z^{\prime}`$ along the $`u`$ direction. This means a rotation through an angle $`\theta`$ about the y direction. The problem didn’t clearly define whether it is +$`\theta`$ or $`- \theta`$, but, if we only need to know the intensities, it doesn’t matter. So the **state coming out of the second apparatus** is
+To solve this with the rotation matrices, we first determine the **state after the first apparatus**. It is just $`\psi_{+}^{( z )} = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}`$ with the usual basis. Now we **rotate to a new (primed) set of basis states** with the $`z^{\prime}`$ along the $`u`$ direction. This means a rotation through an angle $`\theta`$ about the y direction. The problem didn’t clearly define whether it is +$`\theta`$ or $`- \theta`$, but, if we only need to know the intensities, it doesn’t matter. So the **state coming out of the second apparatus** is
 
 ```math
 R_{y} ( \theta ) \psi_{+}^{( z )} = \begin{pmatrix} \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) & \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) \\ - \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) & \cos ( \theta_{y} ) & \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) \\ \tfrac{1}{2} ( 1 - \cos ( \theta_{y} ) ) & - \tfrac{1}{\sqrt{2}} \sin ( \theta_{y} ) & \tfrac{1}{2} ( 1 + \cos ( \theta_{y} ) ) \end{pmatrix} \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}
@@ -1732,9 +1728,7 @@ In any case, we can only cause transitions if the EM field is tuned so that $`\o
 
 # <a id="s-18-12homework-problems"></a>18.12 Homework Problems
 
-1. An angular momentum 1 system is in the state $`\chi = \tfrac{1}{\sqrt{2 6}} \begin{pmatrix} 1 \\ 3 \\ 4 \end{pmatrix}`$. What is the probability that
-
-a measurement of $`L_{x}`$ yields a value of 0?
+1. An angular momentum 1 system is in the state $`\chi = \tfrac{1}{\sqrt{2 6}} \begin{pmatrix} 1 \\ 3 \\ 4 \end{pmatrix}`$. What is the probability that a measurement of $`L_{x}`$ yields a value of 0?
 
 2. A spin $`\frac{1}{2}`$ particle is in an eigenstate of $`S_{y}`$ with eigenvalue +$`\frac{\hbar}{2}`$ at time $`t = 0`$. At that time it is placed in a constant magnetic field $`B`$ in the $`z`$ direction. The spin is allowed to precess for a time $`T`$. At that instant, the magnetic field is very quickly switched to the $`x`$ direction. After another time interval $`T`$, a measurement of the $`y`$ component of the spin is made. What is the probability that the value $`- \tfrac{\hbar}{2}`$ will be found?
 
@@ -1784,9 +1778,7 @@ What are the eigen-energies and corresponding eigenstates of the system? (This i
 
 2. Given that $`u_{n}`$ is the $`n^{th}`$ one dimensional harmonic oscillator energy eigenstate: a) Evaluate the matrix element $`\langle u_{m} | p^{2} | u_{n} \rangle`$. b) Write the upper left 5 by 5 part of the $`p^{2}`$ matrix.
 
-3. A spin 1 system is in the following state in the usual $`Lz`$ basis: $`\chi = \tfrac{1}{\sqrt{5}} \begin{pmatrix} \sqrt{2} \\ 1 + i \\ - i \end{pmatrix}`$. What
-
-is the probability that a measurement of the $`x`$ component of spin yields zero? What is the probability that a measurement of the $`y`$ component of spin yields +$`\hbar`$?
+3. A spin 1 system is in the following state in the usual $`Lz`$ basis: $`\chi = \tfrac{1}{\sqrt{5}} \begin{pmatrix} \sqrt{2} \\ 1 + i \\ - i \end{pmatrix}`$. What is the probability that a measurement of the $`x`$ component of spin yields zero? What is the probability that a measurement of the $`y`$ component of spin yields +$`\hbar`$?
 
 4. In a three state system, the matrix elements are given as $`\langle \psi_{1} | H | \psi_{1} \rangle = E_{1} , \langle \psi_{2} | H | \psi_{2} \rangle = \langle \psi_{3} | H | \psi_{3} \rangle = E_{2} , \langle \psi_{1} | H | \psi_{2} \rangle = 0`$, $`\langle \psi_{1} | H | \psi_{3} \rangle = 0`$, and $`\langle \psi_{2} | H | \psi_{3} \rangle = \alpha`$. Assume all of the matrix elements are real. What are the energy eigenvalues and eigenstates of the system? At $`t = 0`$ the system is in the state $`\psi_{2}`$. What is $`\psi ( t )`$?
 
@@ -1800,9 +1792,7 @@ is the probability that a measurement of the $`x`$ component of spin yields zero
 
 7. A spin $`\frac{1}{2}`$ system is in the following state in the usual $`S_{z}`$ basis: $`\chi = \tfrac{1}{\sqrt{5}} \begin{pmatrix} \sqrt{3} \\ 1 + i \end{pmatrix}`$. What is the probability that a measurement of the $`x`$ component of spin yields +$`\frac{1}{2}`$?
 
-8. A spin $`\frac{1}{2}`$ system is in the state $`\chi = \tfrac{1}{\sqrt{5}} \begin{pmatrix} i \\ 2 \end{pmatrix}`$ (in the usual $`S_{z}`$ eigenstate basis). What is the
-
-probability that a measurement of $`S_{x}`$ yields $`\frac{- \hbar}{2}`$? What is the probability that a measurement of $`S_{y}`$ yields $`\frac{- \hbar}{2}`$?
+8. A spin $`\frac{1}{2}`$ system is in the state $`\chi = \tfrac{1}{\sqrt{5}} \begin{pmatrix} i \\ 2 \end{pmatrix}`$ (in the usual $`S_{z}`$ eigenstate basis). What is the probability that a measurement of $`S_{x}`$ yields $`\frac{- \hbar}{2}`$? What is the probability that a measurement of $`S_{y}`$ yields $`\frac{- \hbar}{2}`$?
 
 9. A spin $`\frac{1}{2}`$ object is in an eigenstate of $`S_{y}`$ with eigenvalue $`\frac{\hbar}{2}`$ at t=0. The particle is in a magnetic field $`\mathbf{B} = ( 0 , 0 ,B )`$ which makes the Hamiltonian for the system $`H = \mu_{B} B\sigma_{z}`$. Find the probability to measure $`S_{y} = \tfrac{\hbar}{2}`$ as a function of time.
 

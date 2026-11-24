@@ -2350,9 +2350,25 @@ struct Prev {
     last_url: Option<String>,
     /// its type size
     size: f32,
+    /// the top of its lowest row of full-size pieces: of the bottom row
+    /// of a column set in the sentence, else the line's own
+    low: f32,
     /// the line names who said what stands above it ("—N. P. Ong,
     /// Princeton University"): it ends its paragraph
     signs: bool,
+}
+
+/// The tops of a line's highest and lowest rows of full-size pieces: the
+/// rows of a column set in a sentence, between tall brackets, stand above
+/// and below the line of words. A line without such rows has its own top
+/// for both.
+fn row_tops(doc: &Doc, l: &Line) -> (f32, f32) {
+    let bracketed = l.spans.iter().filter(|s| doc.family(s).starts_with("CMEX") && matches!(s.text.trim(), "(" | ")" | "[" | "]")).count() >= 2;
+    if !bracketed {
+        return (l.top, l.top);
+    }
+    let rows = || l.spans.iter().filter(|s| !doc.family(s).starts_with("CMEX") && doc.size_of(s) >= 0.85 * l.size && (s.top - l.top).abs() <= 1.5 * l.size).map(|s| s.top);
+    (rows().fold(l.top, f32::min), rows().fold(l.top, f32::max))
 }
 
 /// A line that names the author of the words above it: a dash and a name,
@@ -2644,7 +2660,9 @@ impl Builder<'_> {
         if p.page != pi && (l.size - p.size).abs() > 0.5 {
             return true;
         }
-        if p.page == pi && l.top - p.top > 1.6 * st.spacing {
+        // (a line with a column of two or three rows set in it stands
+        // further from its neighbours: the distance is that of the rows)
+        if p.page == pi && l.top - p.top > 1.6 * st.spacing && row_tops(self.doc, l).0 - p.low > 1.6 * st.spacing {
             return true;
         }
         if p.right < st.right - 3.0 * st.body && p.ends_sentence {
@@ -3433,6 +3451,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 plain_size: words_only(doc, l).then_some(l.size),
                 last_url: l.spans.last().and_then(|s| s.url.clone()),
                 size: l.size,
+                low: row_tops(doc, l).1,
                 signs: signs_quote(&plain_text(l)) && l.right < st.right - 3.0 * st.body,
             });
             prev_top = Some(l.top);
