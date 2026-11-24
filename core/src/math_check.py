@@ -87,6 +87,76 @@ def group_at(t: str, k: int):
     return None
 
 
+# commands that take what stands behind them
+TAKES = r"\\(?:vec|hat|bar|tilde|dot|ddot|[td]?frac|sqrt|overline|underline|widehat|widetilde|mathbf|mathrm|mathcal|mathbb|mathit|mathsf|mathscr|mathfrak|boldsymbol|bm|text|left|right|[bB]igg?[lrm]?|not|operatorname|overrightarrow|overleftarrow|stackrel|overset|underset|binom|begin|end)"
+
+
+def on_and_on(t: str) -> bool:
+    """A reading that ends in the same thing written over and over: the
+    recognizer astray, to its limit."""
+    t = t.rstrip()
+    if m.REPEAT.search(t):
+        return True
+    # (… or a few things in turn, four times and more, up to its end)
+    turn = re.search(r"(\S.{5,79}?)(?:\s*\1){3,}.{0,80}$", t[-800:], re.S)
+    return turn is not None
+
+
+def finished(t: str) -> str:
+    """A reading that the recognizer broke off, closed so that it can be
+    typeset: without the command it ended on (one that takes what comes
+    behind it, an exponent's sign, a lone backslash), its braces and its
+    rows closed. Where it stopped in the middle of a group or of rows,
+    dots stand for what is missing. A fraction that ends the formula with
+    its upper half alone is no fraction: the recognizer's way of ending
+    a row of formulas set beside each other."""
+    if on_and_on(t):
+        return t
+    # (two indices on one letter: the second on its own)
+    t = re.sub(r"(?<!\\)([_^])(\s*(?:\{(?:[^{}]|\{[^{}]*\})*\}|[A-Za-z0-9]))\s*(?=\1)", r"\1\2{}", t)
+    whole = t.rstrip()
+    while True:
+        t = t.rstrip()
+        slashes = len(t) - len(t.rstrip("\\"))
+        end = re.search(TAKES + r"$|\\(begin|end)\s*\{[^{}]*$|(?<!\\)[\^_]$", t)
+        if slashes % 2:
+            t = t[:-1]
+        elif end:
+            t = t[: end.start()]
+        else:
+            break
+    # (… a lone backslash is a space it set at the end: nothing is missing)
+    cut = len(t) < len(whole) - 1
+    depth, k = 0, 0
+    while k < len(t):
+        if t[k] == "\\":
+            k += 2
+            continue
+        depth += (t[k] == "{") - (t[k] == "}")
+        if depth < 0:
+            return t
+        k += 1
+    stack = []
+    for e in re.finditer(r"\\(begin|end)\{([^}]*)\}", t):
+        if e.group(1) == "begin":
+            stack.append(e.group(2))
+        elif not stack:
+            return t
+        else:
+            stack.pop()
+    if depth or (stack and cut):
+        t += " \\cdots" + "}" * depth
+    # (a fraction's upper half with nothing behind it)
+    for f in reversed(list(re.finditer(r"\\[td]?frac(?![a-zA-Z])", t))):
+        top = group_at(t, f.end())
+        rest = t[top[1] :].strip() if top else "x"
+        if not rest and not t[: f.start()].strip() and not stack:
+            t = top[0]
+        elif not rest or rest.startswith("}"):
+            t = t[: top[1]] + "{}" + t[top[1] :]
+    return t + "".join(" \\end{" + name + "}" for name in reversed(stack))
+
+
 def mended(t: str) -> str:
     """What the page reader's recognizer leaves open, closed where there is
     one way to: rows it began and did not end, an environment ended by
@@ -138,9 +208,10 @@ def mended(t: str) -> str:
     return t
 
 
-def as_latex(raw: str):
+def as_latex(raw: str, whole: bool = False):
     """What the page reader gave for a formula, as LaTeX; None where it is
-    no formula (plain words, or marked up as text)."""
+    no formula (plain words, or marked up as text). `whole`: a formula it
+    broke off is closed (see `finished`), not given up."""
     raw = raw.strip()
     if not raw or "<math" not in raw:
         return None
@@ -167,7 +238,8 @@ def as_latex(raw: str):
             p = re.sub(r"\\label\{[^{}]*\}", "", p)
             p = p.replace("\\begin{split}", "\\begin{aligned}").replace("\\end{split}", "\\end{aligned}")
             p = re.sub(r"\\mbox(?![a-zA-Z])", r"\\text", p)
-            p = mended(m.fix(m.clean(p.strip())))
+            p = m.fix(m.clean(p.strip()))
+            p = mended(finished(p) if whole else p)
             if p:
                 pieces.append(lead + p)
                 lead = ""
@@ -510,7 +582,7 @@ def read(files, dst, ext: str, scale: int, state: dict):
 # Equations built from the letters of a PDF's page (a TeX book): a second
 # reading, by the recognizer, of the place on the page each was built from.
 
-PLACES = "places 11"
+PLACES = "places 12"
 # pixels of a cut-out for each pixel of the page reader's measure (it has
 # 1.5 to a point: 216 dots to the inch, twice the size of an ebook's pictures)
 ZOOM = 2.0
@@ -739,7 +811,9 @@ def places(pdf: str, jobs_file: str, dst: Path):
              not name ("\ufffd"), and the recognizer reads the place twice
              the same: there the PDF's letters are not the surer ones
       check  the readings differ in more than that, or its two readings
-             differ: to be looked at
+             differ: to be looked at. A reading that the recognizer
+             broke off is listed closed (see `finished`), so that it
+             can be typeset
       unread it gave no formula (words, or nothing)"""
     jobs = []
     for line in open(jobs_file, encoding="utf-8"):
@@ -751,7 +825,7 @@ def places(pdf: str, jobs_file: str, dst: Path):
 
     def reading(j, ext):
         f = dst / f"{j['key']}.{ext}"
-        return as_latex(f.read_text()) if f.exists() else None
+        return as_latex(f.read_text(), whole=True) if f.exists() else None
 
     # (where it reads other than the rules built: once more, larger)
     differs = [j for j in jobs if (o := reading(j, "surya")) is not None and not agree(j["rule"], o)]
@@ -767,7 +841,9 @@ def places(pdf: str, jobs_file: str, dst: Path):
             verdict = "same"
         else:
             again = reading(j, "surya3")
-            twice = again is not None and same_formula(other, again)
+            # (a reading that had to be closed is shown, never taken)
+            broken = as_latex((dst / f"{j['key']}.surya").read_text()) is None
+            twice = again is not None and not broken and same_formula(other, again)
             (grids, stacked), (other_grids, other_stacked) = shape(j["rule"]), shape(other)
             if "\ufffd" in j["rule"]:
                 # (a glyph the PDF does not name: its letters are not the
