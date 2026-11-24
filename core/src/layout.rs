@@ -705,22 +705,29 @@ fn split_woven(doc: &mut Doc, parts: &[(usize, String)]) {
         uses.append(&mut of_part);
     }
     for (page, placed) in doc.pages.iter_mut().zip(uses) {
-        // (left, right, top, bottom) of every piece that holds something
-        let boxes: Vec<(f32, f32, f32, f32)> = page.lines.iter().flat_map(|l| &l.spans).filter(|s| !s.text.trim().is_empty()).map(|s| (s.left, s.right(), s.top, s.bottom())).collect();
+        // (the brackets of bra-kets: bars and angle brackets — in TeX's
+        // symbol font, where the PDF does not name its glyphs, the letters
+        // j, h and i)
+        let is_brackets = |s: &Span| !s.text.trim().is_empty() && s.text.split_whitespace().all(|w| w.chars().all(|c| "|⟨⟩".contains(c) || (symbols.get(s.font).copied().unwrap_or(false) && "jhi".contains(c))));
+        // (left, right, top, bottom, is of brackets) of every piece that
+        // holds something
+        let boxes: Vec<(f32, f32, f32, f32, bool)> = page.lines.iter().flat_map(|l| &l.spans).filter(|s| !s.text.trim().is_empty()).map(|s| (s.left, s.right(), s.top, s.bottom(), is_brackets(s))).collect();
         for line in page.lines.iter_mut() {
             let mut si = 0;
             while si < line.spans.len() {
                 let s = line.spans[si].clone();
                 si += 1;
                 let chars: Vec<char> = s.text.chars().filter(|c| !c.is_whitespace()).collect();
-                // (the brackets of bra-kets only: bars and angle brackets —
-                // in TeX's symbol font, where the PDF does not name its
-                // glyphs, the letters j, h and i)
-                let brackets = s.text.split_whitespace().all(|w| w.chars().all(|c| "|⟨⟩".contains(c) || (symbols.get(s.font).copied().unwrap_or(false) && "jhi".contains(c))));
-                if !math.get(s.font).copied().unwrap_or(false) || !s.text.trim().contains(' ') || chars.len() > 24 || !brackets {
+                // (bra-kets only: a piece of brackets that reaches over
+                // another piece, and a piece of letters or signs — short
+                // ones, "A a", ") =" — that a piece of brackets reaches
+                // over: one stands in the other's blanks)
+                let brackets = is_brackets(&s);
+                if !(brackets || s.text.split_whitespace().all(|w| w.chars().count() <= 3)) || !(brackets || math.get(s.font).copied().unwrap_or(false) || chars.len() <= 4) || !s.text.trim().contains(' ') || chars.len() > 24 {
                     continue;
                 }
-                let held = boxes.iter().any(|b| b.0 > s.left + 1.0 && b.1 < s.right() - 1.0 && b.3 > s.top + 0.25 * s.height && b.2 < s.bottom() - 0.25 * s.height);
+                let same = |b: &(f32, f32, f32, f32, bool)| (b.0 - s.left).abs() < 0.1 && (b.2 - s.top).abs() < 0.1 && (b.1 - s.right()).abs() < 0.1;
+                let held = boxes.iter().any(|b| !same(b) && (brackets || b.4) && b.0.max(s.left) + 2.0 < b.1.min(s.right()) && (0.5 * (b.2 + b.3) - (s.top + 0.5 * s.height)).abs() <= 0.3 * s.height && !(b.0 >= s.right() - 2.0 || b.1 <= s.left + 2.0));
                 if !held {
                     continue;
                 }

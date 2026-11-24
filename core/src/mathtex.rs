@@ -3385,6 +3385,9 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
         out
     };
     let (above, below) = (cut_at_signs(above, false), cut_at_signs(below, true));
+    // (two runs under the line at different heights, one beside the other:
+    // "T → ∞" under lim and "n,m" under the sum sign next to it)
+    let below: Vec<Vec<usize>> = below.into_iter().flat_map(|g| side_by_side(spans, g)).collect();
     let mut used_a = vec![false; above.len()];
     let mut used_b = vec![false; below.len()];
     let mut items: Vec<Item> = bracket_items;
@@ -3994,6 +3997,37 @@ fn bounds(spans: &[MSpan], bars: &[Rule]) -> Area {
 
 fn both(a: Area, b: Area) -> Area {
     [a[0].min(b[0]), a[1].min(b[1]), a[2].max(b[2]), a[3].max(b[3])]
+}
+
+/// A run of small pieces that is two runs at different heights, one
+/// beside the other (each the limit of its own sign or word): the runs.
+/// Rows that stand one under the other stay one group.
+fn side_by_side(spans: &[MSpan], g: Vec<usize>) -> Vec<Vec<usize>> {
+    let size = g.iter().map(|&i| spans[i].size).fold(0.0f32, f32::max);
+    let mut mains: Vec<f32> = g.iter().map(|&i| &spans[i]).filter(|s| !s.cmex() && s.size >= 0.9 * size && s.text.chars().any(char::is_alphanumeric)).map(MSpan::cy).collect();
+    mains.sort_by(f32::total_cmp);
+    let mut rows: Vec<Vec<f32>> = Vec::new();
+    for y in mains {
+        match rows.last_mut().filter(|r| y - r.iter().sum::<f32>() / r.len() as f32 <= 0.5 * size) {
+            Some(r) => r.push(y),
+            None => rows.push(vec![y]),
+        }
+    }
+    if rows.len() != 2 {
+        return vec![g];
+    }
+    let centres: Vec<f32> = rows.iter().map(|r| r.iter().sum::<f32>() / r.len() as f32).collect();
+    let mut out: Vec<Vec<usize>> = vec![Vec::new(), Vec::new()];
+    for &i in &g {
+        out[usize::from((centres[1] - spans[i].cy()).abs() < (centres[0] - spans[i].cy()).abs())].push(i);
+    }
+    let reach = |v: &[usize]| v.iter().fold((f32::MAX, f32::MIN), |(l, r), &i| (l.min(spans[i].left), r.max(spans[i].right)));
+    let (a, b) = (reach(&out[0]), reach(&out[1]));
+    if out.iter().any(Vec::is_empty) || (a.1 > b.0 + 1.0 && b.1 > a.0 + 1.0) {
+        return vec![g];
+    }
+    out.sort_by(|x, y| reach(x).0.total_cmp(&reach(y).0));
+    out
 }
 
 /// The rows of what is set under "lim": one, or several conditions one
