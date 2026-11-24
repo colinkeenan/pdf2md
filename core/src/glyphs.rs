@@ -364,6 +364,7 @@ fn symbol(name: &str) -> Option<(&'static str, bool)> {
         "dagger" => "†",
         "daggerdbl" => "‡",
         "aleph" => "ℵ",
+        "bardbl" => "‖",
         "planckover2pi" | "planckover2pi1" | "hslash" => "ℏ",
         "angleleft" => "⟨",
         "angleright" => "⟩",

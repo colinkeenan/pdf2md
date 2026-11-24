@@ -212,6 +212,8 @@ pub fn sym(c: char) -> Option<&'static str> {
         '†' => "\\dagger ",
         '⊥' => "\\perp ",
         '∥' => "\\parallel ",
+        // (the double bar of a norm, where a font's glyph is named by its place)
+        '‖' => "\\| ",
         '⟨' | '〈' | '\u{2329}' => "\\langle ",
         '⟩' | '〉' | '\u{232a}' => "\\rangle ",
         '…' => "\\dots ",
