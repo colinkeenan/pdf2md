@@ -440,6 +440,7 @@ pub fn read_drawings(doc: &mut Doc, path: &Path, pages: Option<(u32, u32)>) {
         restore_slots(doc, path, parts);
         restore_epsilons(doc, path, parts);
         split_shifted(doc, parts);
+        split_woven(doc, parts);
     }
     if let Some(parts) = parts {
         // Lost big brackets are a TeX font problem; in books without
@@ -680,6 +681,75 @@ fn parse_svg_uses(svg: &str) -> Vec<Vec<Placed>> {
                 .collect()
         })
         .collect()
+}
+
+/// Pieces woven into each other. TeX sets ⟨a|A|a⟩ from two fonts, and
+/// pdftohtml gives the brackets as one piece, "⟨ | | ⟩", with blanks
+/// where the letters stand, and letters as another, "A a", with a blank
+/// where a bar stands: from the text alone, where each word of such a
+/// piece is can only be guessed. The page's drawing has each glyph's
+/// place. A piece of brackets with a blank in which another piece stands
+/// is cut into its words, each where its glyphs are drawn (a piece whose
+/// characters and glyphs do not count the same stays whole); the letters
+/// are then parted by the bars that stand in their blanks (`mathtex`).
+fn split_woven(doc: &mut Doc, parts: &[(usize, String)]) {
+    let math: Vec<bool> = doc.fonts.iter().map(|f| f.math).collect();
+    let symbols: Vec<bool> = doc.fonts.iter().map(|f| f.family.to_uppercase().starts_with("CMSY")).collect();
+    if !math.iter().any(|m| *m) {
+        return;
+    }
+    let mut uses: Vec<Vec<Placed>> = Vec::new();
+    for (pages, svg) in parts {
+        let mut of_part = parse_svg_uses(svg);
+        of_part.resize_with(*pages, Vec::new);
+        uses.append(&mut of_part);
+    }
+    for (page, placed) in doc.pages.iter_mut().zip(uses) {
+        // (left, right, top, bottom) of every piece that holds something
+        let boxes: Vec<(f32, f32, f32, f32)> = page.lines.iter().flat_map(|l| &l.spans).filter(|s| !s.text.trim().is_empty()).map(|s| (s.left, s.right(), s.top, s.bottom())).collect();
+        for line in page.lines.iter_mut() {
+            let mut si = 0;
+            while si < line.spans.len() {
+                let s = line.spans[si].clone();
+                si += 1;
+                let chars: Vec<char> = s.text.chars().filter(|c| !c.is_whitespace()).collect();
+                // (the brackets of bra-kets only: bars and angle brackets —
+                // in TeX's symbol font, where the PDF does not name its
+                // glyphs, the letters j, h and i)
+                let brackets = s.text.split_whitespace().all(|w| w.chars().all(|c| "|⟨⟩".contains(c) || (symbols.get(s.font).copied().unwrap_or(false) && "jhi".contains(c))));
+                if !math.get(s.font).copied().unwrap_or(false) || !s.text.trim().contains(' ') || chars.len() > 24 || !brackets {
+                    continue;
+                }
+                let held = boxes.iter().any(|b| b.0 > s.left + 1.0 && b.1 < s.right() - 1.0 && b.3 > s.top + 0.25 * s.height && b.2 < s.bottom() - 0.25 * s.height);
+                if !held {
+                    continue;
+                }
+                // its glyphs: those of one font of the drawing on one line,
+                // the font and line of the glyph at its left edge
+                let inside = |g: &&Placed| 1.5 * g.x >= s.left - 1.5 && 1.5 * g.x < s.right() - 0.5 && 1.5 * g.y >= s.top && 1.5 * g.y <= s.bottom() + 2.0;
+                let Some(first) = placed.iter().filter(inside).min_by(|a, b| (1.5 * a.x - s.left).abs().total_cmp(&(1.5 * b.x - s.left).abs())) else { continue };
+                let mut glyphs: Vec<&Placed> = placed.iter().filter(inside).filter(|g| g.font == first.font && (g.y - first.y).abs() < 0.6).collect();
+                glyphs.sort_by(|a, b| a.x.total_cmp(&b.x));
+                if glyphs.len() != chars.len() {
+                    continue;
+                }
+                let mut pieces: Vec<Span> = Vec::new();
+                let mut g = 0;
+                for word in s.text.split_whitespace() {
+                    let n = word.chars().count();
+                    let left = if g == 0 { s.left } else { 1.5 * glyphs[g].x };
+                    let right = if g + n == glyphs.len() { s.right() } else { (1.5 * glyphs[g + n - 1].ink.1).max(left + 1.0) };
+                    let mut piece = s.clone();
+                    (piece.text, piece.left, piece.width) = (word.to_string(), left, (right - left).max(1.0));
+                    pieces.push(piece);
+                    g += n;
+                }
+                let n = pieces.len();
+                line.spans.splice(si - 1..si, pieces);
+                si += n - 1;
+            }
+        }
+    }
 }
 
 /// Glyphs drawn over the letter they belong to: their place is where they
@@ -3231,6 +3301,15 @@ pub fn parse_xml_with(xml: &str, lost: &HashMap<String, bool>) -> Result<Doc, St
                 // (a word cut at the line's end with a hyphen that is only
                 // there when the word is cut)
                 let text = text.replace('\u{ad}', "-");
+                // (a piece of a tall bracket given in one piece with a sign
+                // beside it, the top of a brace and the integral sign of the
+                // first row behind it: the piece of the bracket has no
+                // character here, and the sign stands where its glyph is,
+                // not at the head of the two)
+                let piece = |c: &char| ('\u{E000}'..='\u{F8FF}').contains(c);
+                let (glyphs, before, behind) = (text.chars().count(), text.chars().take_while(piece).count(), text.chars().rev().take_while(piece).count());
+                let beside_piece = fonts.get(num(n, "font") as usize).is_some_and(|f| f.family.starts_with("CMEX")) && before + behind > 0 && before + behind < glyphs;
+                let (cut_left, cut_right) = if beside_piece { (before as f32 / glyphs as f32, behind as f32 / glyphs as f32) } else { (0.0, 0.0) };
                 let text = clean_text(&text);
                 // Zero-width text is rotated (e.g. the arXiv stamp in the
                 // margin); it is not part of the book's text. Except the
@@ -3241,7 +3320,7 @@ pub fn parse_xml_with(xml: &str, lost: &HashMap<String, bool>) -> Result<Doc, St
                 let symbol_font = fonts.get(num(n, "font") as usize).is_some_and(|f| f.family.contains("CMSY"));
                 let text = if symbol_font && text.trim() == "\u{338}" { "6".to_string() } else { text };
                 let not_slash = text.trim() == "6" && symbol_font;
-                let width = if not_slash { 0.8 * num(n, "height") } else { num(n, "width") };
+                let width = if not_slash { 0.8 * num(n, "height") } else { num(n, "width") * (1.0 - cut_left - cut_right) };
                 // (nor is an empty piece kept to be filled in: an accent
                 // moves the type on by nothing)
                 let to_fill = text.trim().is_empty() && fonts.get(num(n, "font") as usize).is_some_and(|f| lossy(&f.family, lost).is_some());
@@ -3266,7 +3345,7 @@ pub fn parse_xml_with(xml: &str, lost: &HashMap<String, bool>) -> Result<Doc, St
                 }
                 spans.push(Span {
                     text,
-                    left: num(n, "left"),
+                    left: num(n, "left") + cut_left * num(n, "width"),
                     top: num(n, "top"),
                     width,
                     height: num(n, "height"),

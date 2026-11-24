@@ -649,6 +649,59 @@ pub fn build_with(spans: &[MSpan], bars: &[Rule]) -> String {
         .collect();
     let mut spans = spans;
     arrows_over(&mut spans);
+    // "y <" in one piece, with the exponent of the y drawn in the blank
+    // between the two: its words become pieces, and the exponent finds the
+    // letter it stands behind ("y⁰ < 0" was "y < ⁰ 0").
+    let gapped: Vec<usize> = (0..spans.len())
+        .filter(|&k| {
+            let s = &spans[k];
+            // (… or with the bar of A|a⟩ drawn there)
+            // (at the letters' own height; and letters, not words: the
+            // label under a brace, "NR levels", is one thing)
+            let between = |n: &MSpan| (n.size < 0.85 * s.size && !n.cmex() && !n.text.trim().is_empty() && n.bottom > s.top - 0.3 * s.size && n.top < s.bottom) || (bar_or_angle(n) && (n.size - s.size).abs() <= 0.1 * s.size && (n.cy() - s.cy()).abs() <= 0.3 * s.size);
+            s.atom.is_none() && !s.cmex() && s.math && s.text.trim().contains(' ') && s.text.chars().any(char::is_alphanumeric) && s.text.split_whitespace().all(|w| w.chars().count() <= 3) && spans.iter().enumerate().any(|(j, n)| j != k && n.atom.is_none() && between(n) && n.left > s.left + 1.0 && n.right < s.right - 1.0)
+        })
+        .collect();
+    for &k in gapped.iter().rev() {
+        let mut words = words_apart(&spans[k]);
+        // (a bar in the blank between two of them parts them: where the
+        // words stand is only reckoned, the bar is where it is drawn)
+        for w in 0..words.len().saturating_sub(1) {
+            let (from, to) = (words[w].right - 3.0, words[w + 1].left + 3.0);
+            let bar = spans.iter().find(|n| n.atom.is_none() && bar_or_angle(n) && (n.left + n.right) / 2.0 >= from && (n.left + n.right) / 2.0 <= to && n.bottom > words[w].top && n.top < words[w].bottom).map(|n| (n.left, n.right));
+            if let Some((l, r)) = bar {
+                words[w].right = words[w].right.min(l).max(words[w].left + 0.5);
+                words[w + 1].left = words[w + 1].left.max(r).min(words[w + 1].right - 0.5);
+            }
+        }
+        spans.splice(k..=k, words);
+    }
+    // "Xa" in one piece, with the bar of X|a⟩ drawn between its two
+    // letters and no blank for it: the piece is cut where the bar stands.
+    let mut k = 0;
+    while k < spans.len() {
+        let s = &spans[k];
+        let chars: Vec<char> = s.text.trim().chars().collect();
+        let letters = s.atom.is_none() && !s.cmex() && s.math && chars.len() >= 2 && chars.iter().all(|c| c.is_alphabetic());
+        let bar = letters.then(|| spans.iter().enumerate().find(|(j, n)| *j != k && n.atom.is_none() && bar_or_angle(n) && (n.size - s.size).abs() <= 0.1 * s.size && n.left > s.left + 1.0 && n.right < s.right - 1.0 && n.bottom > s.top + 0.3 * s.size && n.top < s.bottom - 0.3 * s.size).map(|(_, n)| (n.left + n.right) / 2.0)).flatten();
+        let Some(at) = bar else {
+            k += 1;
+            continue;
+        };
+        let widths: Vec<f32> = chars.iter().map(|&c| crate::layout::char_width(c)).collect();
+        let scale = (s.right - s.left) / widths.iter().sum::<f32>().max(0.01);
+        let mut edges = vec![s.left];
+        for w in &widths {
+            edges.push(edges[edges.len() - 1] + w * scale);
+        }
+        // (the edge between two letters that is nearest the bar)
+        let cut = (1..chars.len()).min_by(|&a, &b| (edges[a] - at).abs().total_cmp(&(edges[b] - at).abs())).unwrap_or(1);
+        let (mut head, mut tail) = (s.clone(), s.clone());
+        (head.text, head.right) = (chars[..cut].iter().collect(), edges[cut].min(at));
+        (tail.text, tail.left) = (chars[cut..].iter().collect(), edges[cut].max(at));
+        spans.splice(k..=k, [head, tail]);
+        k += 1;
+    }
     // The circled signs of the extension font, which the PDF gives as the
     // letters of their places there: ⊙ ("J"), ⊕ ("L"), ⊗ ("N"). Set small
     // beside a letter it is that letter's index, the Sun's mass M_⊙: a
@@ -2268,6 +2321,38 @@ fn split_words(s: &MSpan) -> Vec<MSpan> {
         t.text = chars[start..i].iter().collect();
         t.left = s.left + w * start as f32 / n;
         t.right = s.left + w * i as f32 / n;
+        out.push(t);
+    }
+    out
+}
+
+/// A bar or an angle bracket of a bra-ket (in TeX's symbol font, where
+/// the PDF does not name its glyphs, the letters j, h and i).
+fn bar_or_angle(n: &MSpan) -> bool {
+    matches!(n.text.trim(), "|" | "⟩" | "⟨") || (n.family.to_uppercase().starts_with("CMSY") && matches!(n.text.trim(), "j" | "h" | "i"))
+}
+
+/// The words of a piece that has blanks, each where it stands: as wide
+/// as its letters usually are, the first at the piece's left edge, the
+/// last at its right one, the room that is left shared out between them
+/// (the blank of "ψ a" is as wide as what is drawn in it, a bar and more).
+fn words_apart(s: &MSpan) -> Vec<MSpan> {
+    let words: Vec<&str> = s.text.split_whitespace().collect();
+    if words.len() < 2 {
+        return vec![s.clone()];
+    }
+    let wide = |w: &str| s.size * w.chars().map(crate::layout::char_width).sum::<f32>();
+    let all: f32 = words.iter().map(|w| wide(w)).sum();
+    let room = s.right - s.left;
+    // (letters wider than the piece: by their share of it)
+    let (scale, gap) = if all >= room { (room / all.max(0.01), 0.0) } else { (1.0, (room - all) / (words.len() - 1) as f32) };
+    let mut out = Vec::new();
+    let mut x = s.left;
+    for w in words {
+        let mut t = s.clone();
+        t.text = w.to_string();
+        (t.left, t.right) = (x, x + scale * wide(w));
+        x = t.right + gap;
         out.push(t);
     }
     out
