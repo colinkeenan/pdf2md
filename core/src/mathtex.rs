@@ -687,7 +687,7 @@ pub fn build_with(spans: &[MSpan], bars: &[Rule]) -> String {
             // (… or with the bar of A|a⟩ drawn there)
             // (at the letters' own height; and letters, not words: the
             // label under a brace, "NR levels", is one thing)
-            let between = |n: &MSpan| (n.size < 0.85 * s.size && !n.cmex() && !n.text.trim().is_empty() && n.bottom > s.top - 0.3 * s.size && n.top < s.bottom) || (bar_or_angle(n) && (n.size - s.size).abs() <= 0.1 * s.size && (n.cy() - s.cy()).abs() <= 0.3 * s.size);
+            let between = |n: &MSpan| (n.size < 0.85 * s.size && !n.cmex() && !n.text.trim().is_empty() && n.bottom > s.top - 0.3 * s.size && n.top < s.bottom) || ((bar_or_angle(n) || product_sign(n)) && (n.size - s.size).abs() <= 0.1 * s.size && (n.cy() - s.cy()).abs() <= 0.3 * s.size);
             s.atom.is_none() && !s.cmex() && s.math && s.text.trim().contains(' ') && s.text.chars().any(char::is_alphanumeric) && s.text.split_whitespace().all(|w| w.chars().count() <= 3) && spans.iter().enumerate().any(|(j, n)| j != k && n.atom.is_none() && between(n) && n.left > s.left + 1.0 && n.right < s.right - 1.0)
         })
         .collect();
@@ -697,7 +697,7 @@ pub fn build_with(spans: &[MSpan], bars: &[Rule]) -> String {
         // words stand is only reckoned, the bar is where it is drawn)
         for w in 0..words.len().saturating_sub(1) {
             let (from, to) = (words[w].right - 3.0, words[w + 1].left + 3.0);
-            let bar = spans.iter().find(|n| n.atom.is_none() && bar_or_angle(n) && (n.left + n.right) / 2.0 >= from && (n.left + n.right) / 2.0 <= to && n.bottom > words[w].top && n.top < words[w].bottom).map(|n| (n.left, n.right));
+            let bar = spans.iter().find(|n| n.atom.is_none() && (bar_or_angle(n) || product_sign(n)) && (n.left + n.right) / 2.0 >= from && (n.left + n.right) / 2.0 <= to && n.bottom > words[w].top && n.top < words[w].bottom).map(|n| (n.left, n.right));
             if let Some((l, r)) = bar {
                 words[w].right = words[w].right.min(l).max(words[w].left + 0.5);
                 words[w + 1].left = words[w + 1].left.max(r).min(words[w + 1].right - 0.5);
@@ -1272,6 +1272,23 @@ fn put_accents(mut spans: Vec<MSpan>) -> Vec<MSpan> {
         "´" => Some("acute"),
         _ => None,
     };
+    // "Id⃗l": an arrow inside a piece of TeX's math letters stands before
+    // the letter it is drawn over, as at a piece's head: the piece is cut
+    // in front of it (by the letters' usual widths; the arrow has none)
+    spans = spans
+        .into_iter()
+        .flat_map(|s| {
+            let chars: Vec<char> = s.text.chars().collect();
+            let at = (1..chars.len().saturating_sub(1)).find(|&i| chars[i] == '\u{20d7}' && chars[i + 1].is_alphabetic() && chars[i - 1].is_alphabetic());
+            let Some(at) = at.filter(|_| s.atom.is_none() && s.family.to_uppercase().starts_with("CMMI")) else { return vec![s] };
+            let units = |cs: &[char]| -> f32 { cs.iter().filter(|c| **c != '\u{20d7}').map(|&c| crate::layout::char_width(c)).sum() };
+            let cut = s.left + (s.right - s.left) * units(&chars[..at]) / units(&chars).max(0.01);
+            let (mut head, mut tail) = (s.clone(), s);
+            (head.text, head.right) = (chars[..at].iter().collect(), cut);
+            (tail.text, tail.left) = (chars[at..].iter().collect(), cut);
+            vec![head, tail]
+        })
+        .collect();
     // "⃗a": an arrow at the head of a piece, before the letter it is drawn
     // over (it moves the type on by nothing, so the piece is as wide as
     // its letters alone): a piece of its own, over the first letter
@@ -2462,6 +2479,12 @@ fn split_words(s: &MSpan) -> Vec<MSpan> {
 /// the PDF does not name its glyphs, the letters j, h and i).
 fn bar_or_angle(n: &MSpan) -> bool {
     matches!(n.text.trim(), "|" | "⟩" | "⟨") || (n.family.to_uppercase().starts_with("CMSY") && matches!(n.text.trim(), "j" | "h" | "i"))
+}
+
+/// The dot or cross of a product, a piece of the symbol font: "g · v",
+/// whose two letters are one piece with the dot drawn in its blank.
+fn product_sign(n: &MSpan) -> bool {
+    matches!(n.text.trim(), "·" | "×") && n.family.to_uppercase().starts_with("CMSY")
 }
 
 /// The words of a piece that has blanks, each where it stands: as wide

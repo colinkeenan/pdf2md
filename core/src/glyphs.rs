@@ -478,7 +478,14 @@ fn font_info(doc: &Document, font: &Dictionary) -> FontInfo {
     if let Some(table) = &table {
         info.blanks = table.iter().filter(|(_, t)| !t.is_empty() && t.chars().all(char::is_whitespace)).map(|(&code, _)| code).collect();
     }
-    let gaps: Vec<u8> = table.iter().flatten().filter(|(_, t)| t.trim().is_empty() || t.chars().all(|c| c == '\u{fffd}' || c.is_control())).map(|(&code, _)| code).collect();
+    let mut gaps: Vec<u8> = table.iter().flatten().filter(|(_, t)| t.trim().is_empty() || t.chars().all(|c| c == '\u{fffd}' || c.is_control())).map(|(&code, _)| code).collect();
+    // (… and a glyph the font names that its table leaves out altogether,
+    // by a name pdftohtml does not know: the ℓ, "lscript", of a font cut
+    // down to the glyphs used — its piece came empty, and an empty piece
+    // of math letters is read as ϵ)
+    if let Some(table) = &table {
+        gaps.extend(info.names.iter().filter(|(code, name)| !table.contains_key(code) && matches!(name.as_str(), "lscript" | "ell")).map(|(&code, _)| code));
+    }
     info.unicode = table.map(known_only);
     // (… any font of TeX's whose table has no character for a glyph that
     // its place names: the prime of the symbol font, a Greek capital of
