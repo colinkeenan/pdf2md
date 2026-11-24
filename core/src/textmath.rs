@@ -99,6 +99,31 @@ fn plain_signs(spans: &[Span]) -> Vec<Span> {
     let mut out: Vec<Span> = Vec::with_capacity(spans.len());
     for s in spans {
         let mut s = s.clone();
+        // (a prime typed as an apostrophe at the head of an upright piece,
+        // right behind the letter of a formula: "p" in bold, then "')" —
+        // that letter's prime. Not the apostrophe of "A's", and not the
+        // quotation mark that closes one opened before the letter.)
+        let marks = s.text.chars().take_while(|c| matches!(c, '\'' | '’')).count();
+        if marks > 0 && s.tex.is_none() && !s.italic && s.picture.is_none() && s.url.is_none() && !s.text.chars().nth(marks).is_some_and(char::is_alphabetic) {
+            let opened = out.len() >= 2 && out[out.len() - 2].text.trim_end().ends_with(['‘', '\'', '“', '"']);
+            let symbol = |b: &Span| {
+                let t = b.text.trim();
+                let letters = t.chars().rev().take_while(|c| c.is_alphabetic()).count();
+                let greek = t.chars().last().is_some_and(is_greek);
+                b.tex.is_none() && b.picture.is_none() && b.url.is_none() && b.script == s.script && !b.text.ends_with(char::is_whitespace) && !t.starts_with(['‘', '\'', '“', '"'])
+                    && (letters == 1 && (b.italic || b.bold || greek) || (2..=3).contains(&letters) && letters == t.chars().count() && (b.italic || b.bold))
+            };
+            if let (false, Some(before)) = (opened, out.last_mut().filter(|b| symbol(b) && s.left - b.right() < 0.2 * s.height.max(1.0))) {
+                let part = marks as f32 / s.text.chars().count().max(1) as f32;
+                before.text = format!("{}{}", before.text, "′".repeat(marks));
+                before.width = before.width.max(s.left + s.width * part - before.left);
+                (s.left, s.width) = (s.left + s.width * part, s.width * (1.0 - part));
+                s.text = s.text.chars().skip(marks).collect();
+                if s.text.trim().is_empty() {
+                    continue;
+                }
+            }
+        }
         if s.tex.is_some() || s.text.is_ascii() {
             out.push(s);
             continue;
@@ -405,6 +430,7 @@ pub(crate) fn classify(doc: &Doc, spans: &[Span], st: &Stats) -> (Vec<Span>, Vec
     let mut after_close: Vec<usize> = Vec::new();
     // the tokens of each linked piece of text
     let mut linked: Vec<(usize, usize)> = Vec::new();
+    let touch = 0.15 * st.body;
     for (i, s) in spans.iter().enumerate() {
         let math = doc.is_math(s) || s.tex.is_some();
         let bold = s.bold || crate::layout::is_bold_font(doc.family(s));
@@ -579,6 +605,35 @@ pub(crate) fn classify(doc: &Doc, spans: &[Span], st: &Stats) -> (Vec<Span>, Vec
             let runs: Vec<String> = t.split(|c: char| !c.is_alphabetic()).filter(|w| !w.is_empty()).map(str::to_string).collect();
             let phrase = t.contains(char::is_whitespace) && runs.len() >= 2 && runs.iter().any(|w| w.chars().count() >= 4 || is_stop(w));
             if phrase || t.is_empty() {
+                // (the lone letter that ends the phrase, right against the
+                // formula behind it or before its relation, is that
+                // formula's: "not c" and "⟨α|" are "not" and "c⟨α|")
+                let opens = spans.get(i + 1).filter(|nx| nx.script == Script::Normal && nx.picture.is_none() && nx.url.is_none() && (nx.top - s.top).abs() < 0.5 * st.body).is_some_and(|nx| {
+                    let touches = !nx.text.starts_with(char::is_whitespace) && !s.text.ends_with(char::is_whitespace) && nx.left - s.right() < 0.15 * st.body;
+                    match nx.text.trim_start().chars().next() {
+                        Some(c) if is_operator(c) => touches || "=≈≡≠≤≥≃≅∝∈≪≫".contains(c),
+                        Some('(' | '[') => touches,
+                        _ => false,
+                    }
+                });
+                let lone = cs.len() >= 3 && cs[cs.len() - 1].is_alphabetic() && cs[cs.len() - 2].is_whitespace();
+                if phrase && opens && lone {
+                    let at = cs.len() - 1;
+                    let w = cs[..at].iter().map(|&c| char_width(c)).sum::<f32>() / cs.iter().map(|&c| char_width(c)).sum::<f32>().max(1e-3) * s.width;
+                    let mut head = s.clone();
+                    head.text = cs[..at].iter().collect();
+                    head.width = w;
+                    toks.push(head);
+                    roles.push(Role::Word);
+                    let mut one = s.clone();
+                    one.text = cs[at].to_string();
+                    one.left = s.left + w;
+                    one.width = s.width - w;
+                    one.link = None;
+                    toks.push(one);
+                    roles.push(Role::Atom);
+                    continue;
+                }
                 toks.push(s.clone());
                 roles.push(Role::Word);
                 continue;
@@ -627,6 +682,34 @@ pub(crate) fn classify(doc: &Doc, spans: &[Span], st: &Stats) -> (Vec<Span>, Vec
             }
             piece.left = x[tok.a];
             piece.width = x[tok.b] - x[tok.a];
+            // The star of the keyboard right behind a letter is that
+            // letter's star, c* for the complex conjugate of c: a text font
+            // draws it small and raised, as an exponent stands. (The star
+            // of a formula font, "∗", is drawn on the line, and stays there.)
+            if tok.role == Role::Loose && piece.text == "*" && s.script == Script::Normal {
+                let base = toks.last().filter(|b| {
+                    let t = b.text.trim();
+                    roles.last() == Some(&Role::Atom) && b.script == Script::Normal && b.picture.is_none() && b.url.is_none() && piece.left - b.right() < touch
+                        && !b.text.ends_with(char::is_whitespace)
+                        && t.chars().filter(|c| c.is_alphabetic()).count() == 1
+                        && t.chars().all(|c| c.is_alphabetic() || is_prime(c, true) || is_combining(c))
+                        && !b.tex.as_deref().is_some_and(|x| x.contains('^'))
+                });
+                if let Some(b) = base {
+                    let mut one = crate::mathtex::MSpan::new(doc, b);
+                    // (primes typed as quotes, as they are read further on)
+                    if one.atom.is_none() {
+                        one.text = one.text.trim().replace("''", "″").replace('\'', "′").replace('"', "″");
+                    }
+                    let letter = crate::mathtex::build(&[one]);
+                    if !letter.is_empty() {
+                        let b = toks.last_mut().expect("the letter before the star");
+                        b.tex = Some(format!("{letter}^{{*}}"));
+                        b.width = piece.right() - b.left;
+                        continue;
+                    }
+                }
+            }
             // punctuation set in italics is punctuation all the same
             if s.italic && !matches!(tok.role, Role::Word | Role::Maybe) {
                 piece.italic = tok.role == Role::Atom && piece.text.chars().any(char::is_alphabetic);
@@ -659,7 +742,6 @@ pub(crate) fn classify(doc: &Doc, spans: &[Span], st: &Stats) -> (Vec<Span>, Vec
     }
     let n = toks.len();
     let gap = |a: usize, b: usize| toks[b].left - toks[a].right();
-    let touch = 0.15 * st.body;
     let text = |i: usize| toks[i].text.trim();
 
     // a lone italic letter between italic words is a word of the phrase
@@ -995,6 +1077,21 @@ mod tests {
         assert_eq!(line(&[("presence of ", ""), ("A", "b"), ("\u{303} must satisfy", "")]), "presence of $`\\mathbf{\\tilde{A}}`$ must satisfy");
         assert_eq!(line(&[("the left by C˜", ""), (".", ""), (" The result is", "")]), "the left by C\u{303}. The result is");
         assert_eq!(line(&[("only if |0\u{303}", ""), ("⟩", ""), (" coincides", "")]), "only if $`| \\tilde{0} \\rangle`$ coincides");
+        // the star of the keyboard behind a letter is raised, as the text
+        // font draws it
+        assert_eq!(line(&[("is postulated to be ", ""), ("c*", "i"), ("⟨", ""), ("α", "i"), ("|, ", ""), ("not c", "i"), ("⟨", ""), ("α", "i"), ("|, which is", "")]), "is postulated to be $`c^{*} \\langle \\alpha |`$, _not_ $`c \\langle \\alpha |`$, which is");
+        assert_eq!(line(&[("difference ", ""), ("a′", "i"), (" − ", ""), ("a″*", "i"), (" that appears", "")]), "difference $`a' - a''^{*}`$ that appears");
+        assert_eq!(line(&[("that ", ""), ("ψ", "i"), ("*(", ""), ("x", "b"), (", −", ""), ("t", "i"), (") is the", "")]), "that $`\\psi^{*} ( \\mathbf{x} , - t )`$ is the");
+        assert_eq!(line(&[("of ", ""), ("z", "i"), (" and ", ""), ("z", "i"), ("* using ", ""), ("x", "i"), (" = (", ""), ("z", "i"), ("+", ""), ("z", "i"), ("*)/2 and", "")]), "of $`z`$ and $`z^{*}`$ using $`x = ( z + z^{*} ) / 2`$ and");
+        // a prime typed as an apostrophe behind the letter of a formula
+        assert_eq!(line(&[("or ", ""), ("ϕ", ""), ("*(−", ""), ("p", "b"), ("')", ""), (" in the", "")]), "or $`\\phi^{*} ( - \\mathbf{p'} )`$ in the");
+        assert_eq!(line(&[("in terms of |", ""), ("a", "i"), ("'", ""), ("⟩", ""), (" and ", ""), ("F", "i"), ("’’’(0) = 1", ""), (", then", "")]), "in terms of $`| a' \\rangle`$ and $`F''' ( 0 ) = 1`$, then");
+        assert_eq!(line(&[("the ", ""), ("A", "i"), ("'s and the ‘", ""), ("b", "i"), ("’ state", "")]), "the $`A`$'s and the ‘$`b`$’ state");
+        // (a star that follows a word or stands alone is a mark of the text)
+        assert_eq!(line(&[("the value* is", "")]), "the value\\* is");
+        // the lone letter that ends an italic phrase before a relation
+        assert_eq!(line(&[("at ", ""), ("some time t", "i"), (" = −", ""), ("δt", "i"), (" is", "")]), "at _some time_ $`t = - \\delta t`$ is");
+        assert_eq!(line(&[("for ", ""), ("any j", "i"), (" (integer or not)", "")]), "for _any j_ (integer or not)");
         // a star set on the line stays on the line (the book's own way of
         // writing a complex conjugate here), in the formula
         assert_eq!(line(&[("However, ", ""), ("ψ", "i"), ("∗", ""), ("(", ""), ("x", "b"), (", −", ""), ("t", "i"), (") is a solution", "")]), "However, $`\\psi * ( \\mathbf{x} , - t )`$ is a solution");
