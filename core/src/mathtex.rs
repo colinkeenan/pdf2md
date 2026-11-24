@@ -3109,7 +3109,10 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
             let d = s.cy() - y0;
             // (a big symbol set small, above or below the line: the integral
             // sign inside an exponent is part of the exponent)
-            let in_script = s.cmex() && s.size < 0.9 * max && d.abs() > 0.3 * h && !s.text.trim().is_empty();
+            // (set small: in 12-point type the big-symbol font is still
+            // the 10-point one, five sixths of the letters' size, and its
+            // signs are the line's; in an exponent it is 8-point or less)
+            let in_script = s.cmex() && s.size < 0.82 * max && d.abs() > 0.3 * h && !s.text.trim().is_empty();
             if (s.cmex() && !in_script) || (s.size >= 0.9 * max && d.abs() <= 0.3 * h) {
                 Role::Base
             } else if d < 0.0 {
