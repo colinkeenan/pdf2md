@@ -341,7 +341,11 @@ fn svg_parts(path: &Path, first: usize, total: usize) -> Option<Vec<(usize, Stri
             cmd.args(["-f", &from.to_string(), "-l", &to.to_string()]);
         }
         let out = cmd.arg(path).arg("-").stdin(std::process::Stdio::null()).output().ok()?;
-        out.status.success().then(|| String::from_utf8_lossy(&out.stdout).into_owned())
+        // (some pages make the program fail a check of its own when it is
+        // through, after the last page is written: what it wrote is whole
+        // if it ends as an SVG file ends)
+        let whole = String::from_utf8_lossy(&out.stdout).trim_end().ends_with("</svg>");
+        (out.status.success() || whole).then(|| String::from_utf8_lossy(&out.stdout).into_owned())
     };
     crate::progress::report(Step::Drawings, 0, total.max(1));
     if total == 0 {
@@ -364,6 +368,9 @@ fn svg_parts(path: &Path, first: usize, total: usize) -> Option<Vec<(usize, Stri
                     match run(Some(from), to) {
                         Some(svg) => *parts[i].lock().unwrap_or_else(|e| e.into_inner()) = Some(svg),
                         None => failed.store(true, Ordering::Relaxed),
+                    }
+                    if std::env::var_os("PDF2MD_SVGDEBUG").is_some() && failed.load(Ordering::Relaxed) {
+                        eprintln!("SVG pages {from} to {to}: pdftocairo failed");
                     }
                     let pages = done.fetch_add(to + 1 - from, Ordering::Relaxed) + to + 1 - from;
                     // (the step is over when the parts are read, below)
@@ -2966,7 +2973,13 @@ pub(crate) fn split_span_words(s: &Span) -> Vec<Span> {
 /// filling in the ones it dropped). Brackets that are ordinary text-font
 /// characters are already there and left alone.
 fn insert_delims(doc: &mut Doc, delims: Vec<Vec<Delim>>) {
-    let font = match doc.fonts.iter().position(|f| f.family.starts_with("CMEX")) {
+    // (TeX's own big-symbol font: not the font of another package's
+    // integral signs that goes by its name, in which a bracket is no sign)
+    // (… and of its fonts the one of the book's own size: a bracket written
+    // in a small one counts as small)
+    let own = |f: &Font| f.family.starts_with("CMEX") && !f.family.contains('-') && !f.family.contains('/');
+    let nearest = |fits: &dyn Fn(&Font) -> bool| (0..doc.fonts.len()).filter(|&k| fits(&doc.fonts[k])).min_by(|&a, &b| (doc.fonts[a].size - doc.body_size).abs().total_cmp(&(doc.fonts[b].size - doc.body_size).abs()));
+    let font = match nearest(&own).or_else(|| nearest(&|f: &Font| f.family.starts_with("CMEX/"))) {
         Some(i) => i,
         None => {
             doc.fonts.push(Font { size: doc.body_size, family: "CMEX10".into(), math: true, color: [0; 3] });
@@ -3076,7 +3089,9 @@ fn insert_delims(doc: &mut Doc, delims: Vec<Vec<Delim>>) {
                 }
                 let before = l.spans.len();
                 l.spans.retain(|s| {
-                    !(is_cmex(s) && overlaps(s) && (s.text.trim().is_empty() || "()[]|{}⟨⟩DE".contains(s.text.trim())))
+                    // (… or the character of a tall bracket's place in TeX's
+                    // font: "!" for the tallest ")")
+                    !(is_cmex(s) && overlaps(s) && (s.text.trim().is_empty() || "()[]|{}⟨⟩DE!\"#".contains(s.text.trim())))
                 });
                 changed[k] |= l.spans.len() != before;
             }
