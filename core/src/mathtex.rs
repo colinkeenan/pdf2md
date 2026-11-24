@@ -3848,6 +3848,48 @@ fn both(a: Area, b: Area) -> Area {
     [a[0].min(b[0]), a[1].min(b[1]), a[2].max(b[2]), a[3].max(b[3])]
 }
 
+/// Three dots set one over the other: TeX's sign for "and so on,
+/// downwards" in a column (z₁, ⋮, zₙ). pdftohtml gives two of them as one
+/// piece, "..", as narrow as one dot and taller than its type, and the
+/// third as a piece of its own. They are one sign, `\vdots`.
+fn stack_dots(spans: &mut Vec<MSpan>) {
+    let dots = |s: &MSpan| s.atom.is_none() && !s.cmex() && s.right - s.left <= 0.6 * s.size && s.text.contains('.') && s.text.chars().all(|c| c == '.' || c.is_whitespace());
+    let count = |s: &MSpan| s.text.chars().filter(|c| *c == '.').count();
+    loop {
+        let found = (0..spans.len()).find_map(|i| {
+            let s = &spans[i];
+            if !dots(s) {
+                return None;
+            }
+            let group: Vec<usize> = (0..spans.len())
+                .filter(|&j| {
+                    let n = &spans[j];
+                    dots(n) && (n.left - s.left).abs() <= 1.5 && (n.size - s.size).abs() < 0.5 && (n.cy() - s.cy()).abs() <= 1.1 * s.size
+                })
+                .collect();
+            // (close together: not the decimal points of three rows of
+            // figures, which stand over each other a line apart)
+            let (high, low) = group.iter().map(|&j| spans[j].cy()).fold((f32::MAX, f32::MIN), |(a, b), y| (a.min(y), b.max(y)));
+            (group.len() > 1 && low - high <= 1.1 * s.size && group.iter().map(|&j| count(&spans[j])).sum::<usize>() == 3).then_some(group)
+        });
+        let Some(group) = found else { break };
+        let mut sign = spans[group[0]].clone();
+        for &j in &group {
+            let n = &spans[j];
+            (sign.left, sign.right, sign.top, sign.bottom) = (sign.left.min(n.left), sign.right.max(n.right), sign.top.min(n.top), sign.bottom.max(n.bottom));
+        }
+        // (the box of the two dots given as one piece reaches a line too
+        // high: the sign stands where its dots do, about the lower piece)
+        let low = group.iter().map(|&j| spans[j].top).fold(f32::MIN, f32::max);
+        sign.top = sign.top.max(low - 0.8 * sign.size);
+        (sign.text, sign.atom) = ("⋮".to_string(), Some("\\vdots".to_string()));
+        for &j in group.iter().rev() {
+            spans.remove(j);
+        }
+        spans.push(sign);
+    }
+}
+
 /// [`display`], each equation with the area of the page it was built
 /// from (without its number): the place a second reading of it is cut from.
 pub fn display_areas(
@@ -3869,6 +3911,7 @@ pub fn display_areas(
         }
         return out;
     }
+    stack_dots(&mut rest);
     level_punctuation(&mut rest);
     level_sizes(&mut rest);
     let rest = rest;

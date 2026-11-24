@@ -825,8 +825,9 @@ fn restore_slots(doc: &mut Doc, path: &Path, parts: &[(usize, String)]) {
         let mut of_span: HashMap<(usize, usize), Vec<Rewritten>> = HashMap::new();
         for (&(f, code), at) in drawn.iter().zip(&placed) {
             let info = &glyphs.fonts[f];
-            // (a blank is no character of its piece)
-            if !info.misnamed() || info.blank(code) {
+            // (a blank is no character of its piece — unless it is a sign
+            // by its place: one font's table gives its sum sign as a blank)
+            if !info.misnamed() || (info.blank(code) && info.slot_text(code).is_none_or(|t| t.trim().is_empty())) {
                 continue;
             }
             let (x, y) = (1.5 * at.x, 1.5 * at.y);
@@ -858,6 +859,15 @@ fn restore_slots(doc: &mut Doc, path: &Path, parts: &[(usize, String)]) {
         for ((li, si), mut found) in of_span {
             let s = &mut page.lines[li].spans[si];
             found.sort_by(|a, b| a.0.total_cmp(&b.0));
+            // (a piece that is all blank: its glyphs are what it holds)
+            if s.text.trim().is_empty() {
+                let text: String = found.iter().filter_map(|f| f.1.as_deref()).collect();
+                if !text.trim().is_empty() {
+                    written += found.len();
+                    s.text = text;
+                }
+                continue;
+            }
             if s.text.chars().filter(|c| !c.is_whitespace()).count() != found.len() {
                 left += found.len();
                 if debug {
