@@ -3273,7 +3273,12 @@ fn small_blocks(cells: Vec<MSpan>, size: f32, depth: usize) -> Vec<MSpan> {
     let hgap = |a: &MSpan, b: &MSpan| (a.left - b.right).max(b.left - a.right);
     // a script touches the symbol it belongs to (the index of an index
     // touches a small one: the A of ℓ_A under a Y)
-    let free = |s: &MSpan| !big.iter().any(|b| vgap(s, b) < 0.0 && hgap(s, b) <= 1.5) && !cells.iter().any(|b| !b.cmex() && b.atom.is_none() && b.size > 1.2 * s.size && vgap(s, b) < 0.0 && hgap(s, b) <= 1.5);
+    // (… or stands a little way behind it, raised or lowered: a script
+    // letter leans, and its exponent is set clear of it — the upper
+    // indices of the three rows of a system, one under the other, are no
+    // column)
+    let behind = |s: &MSpan, b: &MSpan| s.left >= b.right - 1.0 && s.left - b.right <= 0.35 * size && vgap(s, b) < 0.0 && (s.cy() - b.cy()).abs() >= 0.15 * size && !b.cmex() && b.atom.is_none() && b.text.trim().chars().any(char::is_alphabetic);
+    let free = |s: &MSpan| !big.iter().any(|b| (vgap(s, b) < 0.0 && hgap(s, b) <= 1.5) || behind(s, b)) && !cells.iter().any(|b| !b.cmex() && b.atom.is_none() && b.size > 1.2 * s.size && vgap(s, b) < 0.0 && hgap(s, b) <= 1.5);
     // (nor is the limit of a sum free: it stands over or under its sign,
     // whose box is only the sign's top. The lower limit of one row's sum
     // and the upper limit of the next row's, one over the other, are no
