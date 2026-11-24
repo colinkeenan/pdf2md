@@ -3716,10 +3716,10 @@ fn accents_over_letters(doc: &mut Doc) {
             let mut cs = s.text.chars();
             let accent = cs.next().filter(|c| "ˆ˜¯˙".contains(*c));
             let rest: String = cs.collect();
-            let over = accent.is_some()
-                && !rest.trim().is_empty()
-                && line.spans.iter().any(|p| !std::ptr::eq(p, s) && (p.text.trim().chars().count() == 1 || (accent.is_some_and(|a| "¯˙".contains(a)) && p.text.trim().chars().count() <= 3)) && p.text.trim().chars().all(char::is_alphabetic) && p.left <= s.left + 1.0 && p.right() >= s.left + 2.0 && (p.top - s.top).abs() < 0.5 * size_of(s));
-            if let (true, Some(accent)) = (over, accent) {
+            let under = accent
+                .filter(|_| !rest.trim().is_empty())
+                .and_then(|accent| line.spans.iter().position(|p| !std::ptr::eq(p, s) && (p.text.trim().chars().count() == 1 || ("¯˙".contains(accent) && p.text.trim().chars().count() <= 3)) && p.text.trim().chars().all(char::is_alphabetic) && p.left <= s.left + 1.0 && p.right() >= s.left + 2.0 && (p.top - s.top).abs() < 0.5 * size_of(s)));
+            if let (Some(letter), Some(accent)) = (under, accent) {
                 let w = (0.5 * size_of(s)).min(0.5 * s.width);
                 let mut hat = s.clone();
                 (hat.text, hat.width) = (accent.to_string(), w);
@@ -3727,6 +3727,15 @@ fn accents_over_letters(doc: &mut Doc) {
                 (s.text, s.left, s.width) = (rest, s.left + w, s.width - w);
                 line.spans.insert(k, hat);
                 k += 1;
+                // (a letter that begins where the piece did stood behind it
+                // in the line, and now behind the words that follow its
+                // accent: "λ" after "¯) writing it in the form". It goes
+                // before its accent.)
+                if letter >= k {
+                    let p = line.spans.remove(letter + 1);
+                    line.spans.insert(k - 1, p);
+                    k += 1;
+                }
             }
             k += 1;
         }
