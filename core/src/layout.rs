@@ -825,7 +825,8 @@ fn restore_slots(doc: &mut Doc, path: &Path, parts: &[(usize, String)]) {
         let mut of_span: HashMap<(usize, usize), Vec<Rewritten>> = HashMap::new();
         for (&(f, code), at) in drawn.iter().zip(&placed) {
             let info = &glyphs.fonts[f];
-            if !info.misnamed() {
+            // (a blank is no character of its piece)
+            if !info.misnamed() || info.blank(code) {
                 continue;
             }
             let (x, y) = (1.5 * at.x, 1.5 * at.y);

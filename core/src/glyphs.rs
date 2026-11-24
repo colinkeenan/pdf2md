@@ -30,6 +30,8 @@ pub struct FontInfo {
     /// TeX's big-symbol font with a table that names its signs otherwise
     /// than pdftohtml gives them without one (see [`FontInfo::slot_text`])
     misnamed: bool,
+    /// the codes its table gives as a blank
+    blanks: Vec<u8>,
 }
 
 /// The glyphs of TeX's big-symbol font (CMEX), by their places in it.
@@ -127,6 +129,12 @@ impl FontInfo {
     /// ("epsilon1"; without names it is the font's own place 15).
     pub fn unnamed_epsilon(&self, code: u8) -> bool {
         self.unicode.is_none() && !self.wide && self.base.to_uppercase().starts_with("CMMI") && self.names.get(&code).map_or(code == 15, |n| n == "epsilon1")
+    }
+
+    /// A glyph that pdftohtml gives as a blank, or not at all: the
+    /// font's table says so, or its name.
+    pub fn blank(&self, code: u8) -> bool {
+        self.blanks.contains(&code) || self.name(code) == Some("space")
     }
 
     /// Is this TeX's big-symbol font with a table that gives its signs
@@ -384,6 +392,9 @@ fn font_info(doc: &Document, font: &Dictionary) -> FontInfo {
             greek && info.slot(code).and_then(greek_slot).is_some_and(|(letter, also)| t != letter && t != also)
         });
     }
+    if let Some(table) = &table {
+        info.blanks = table.iter().filter(|(_, t)| !t.is_empty() && t.chars().all(char::is_whitespace)).map(|(&code, _)| code).collect();
+    }
     info.unicode = table.map(known_only);
     info
 }
@@ -540,20 +551,51 @@ impl Glyphs {
         }
         // (in TeX's math fonts the code 32 is a sign: a bracket of CMEX)
         let space = |f: usize, code: u8| self.fonts[f].name(code) == Some("space") || (code == b' ' && self.fonts[f].name(code).is_none() && !is_math_base(&self.fonts[f].base));
+        // Which font of the PDF a font of the drawing is, is learned where
+        // it first comes. At a space that is a guess (the space may not be
+        // drawn, and the glyph drawn there the next letter's): where the
+        // lists then cease to match, the guess is taken back.
         let mut of: HashMap<u32, usize> = HashMap::new();
-        let mut out = Vec::with_capacity(fonts.len());
-        let mut matched = true;
-        for &(f, code) in shown {
-            match fonts.get(out.len()) {
-                Some(font) if *of.entry(*font).or_insert(f) == f => out.push((f, code)),
-                _ if space(f, code) => {}
-                _ => {
-                    matched = false;
-                    break;
-                }
+        let mut out: Vec<(usize, u8)> = Vec::with_capacity(fonts.len());
+        let mut guesses: Vec<(usize, usize, HashMap<u32, usize>)> = Vec::new();
+        let (mut i, mut steps) = (0, 0);
+        let matched = loop {
+            steps += 1;
+            if steps > 50 * shown.len().max(1) {
+                break false;
             }
-        }
-        if matched && out.len() == fonts.len() {
+            let fits = if i < shown.len() {
+                let (f, code) = shown[i];
+                match fonts.get(out.len()).map(|font| (font, of.get(font).copied())) {
+                    Some((_, Some(m))) if m == f => true,
+                    Some((font, None)) => {
+                        if space(f, code) {
+                            guesses.push((i, out.len(), of.clone()));
+                        }
+                        of.insert(*font, f);
+                        true
+                    }
+                    _ => false,
+                }
+            } else {
+                false
+            };
+            if fits {
+                out.push(shown[i]);
+                i += 1;
+            } else if i < shown.len() && space(shown[i].0, shown[i].1) {
+                i += 1;
+            } else if i == shown.len() && out.len() == fonts.len() {
+                break true;
+            } else {
+                // (the last space taken for drawn was not)
+                let Some((at, drawn, known)) = guesses.pop() else { break false };
+                out.truncate(drawn);
+                of = known;
+                i = at + 1;
+            }
+        };
+        if matched {
             return Some(out);
         }
         // (none of the page's spaces drawn)
@@ -688,6 +730,10 @@ mod tests {
         assert_eq!(g.drawn(&shown, &[7, 7, 7]), Some(vec![(0, b'a'), (0, b'b'), (0, b'c')]));
         // (a letter that is not drawn: no match)
         assert_eq!(g.drawn(&shown, &[7, 3, 3, 7]), None);
+        // a space that is not drawn, where a font of the drawing first comes: "a b" then a letter of a third font
+        let g = Glyphs { fonts: vec![font("CMR10"), font("Times-Roman"), font("CMSY7")], pages: HashMap::new() };
+        let shown = [(0, b'a'), (1, b' '), (2, b'1'), (0, b'b'), (2, b'1'), (1, b' '), (0, b'c')];
+        assert_eq!(g.drawn(&shown, &[7, 9, 7, 9, 3, 7]), Some(vec![(0, b'a'), (2, b'1'), (0, b'b'), (2, b'1'), (1, b' '), (0, b'c')]));
     }
 
     #[test]
