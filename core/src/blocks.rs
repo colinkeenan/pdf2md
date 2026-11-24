@@ -480,10 +480,16 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
         // (so is a capital Greek letter of the text font that has indices,
         // with the bracket that opens before it: "Then (Φ" and a raised *)
         let greek = word.trim_start_matches(['(', '[']);
-        let symbol = !greek.is_empty() && greek.chars().all(|c| "ΓΔΘΛΞΠΣΥΦΨΩ".contains(c)) && next.script != Script::Normal;
+        // (… or an arrow drawn over it, a piece of the math font at the
+        // letter's place: the kinematic momentum "Here Π" with its arrow)
+        let accented = matches!(next.text.trim(), "~" | "\u{20d7}") && doc.is_math(next) && next.left < s.right() - 1.0;
+        let symbol = !greek.is_empty() && greek.chars().all(|c| "ΓΔΘΛΞΠΣΥΦΨΩ".contains(c)) && (next.script != Script::Normal || accented);
         if cut > 0 && (FUNCTION_NAMES.contains(&word) || symbol) && before_math && !doc.is_math(s) && s.script == Script::Normal && !s.bold && !s.italic {
             let n = s.text.chars().count().max(1) as f32;
-            let split_x = s.left + s.width * cut as f32 / n;
+            // (an arrowed letter by the usual widths of the piece's
+            // characters: the arrow must find it where it stands)
+            let widths: Vec<f32> = s.text.chars().map(crate::layout::char_width).collect();
+            let split_x = if accented && symbol { s.left + s.width * widths[..cut.min(widths.len())].iter().sum::<f32>() / widths.iter().sum::<f32>().max(0.01) } else { s.left + s.width * cut as f32 / n };
             let (mut words, mut name) = (s.clone(), s.clone());
             (words.text, words.width) = (s.text.chars().take(cut).collect(), split_x - s.left);
             (name.text, name.left, name.width) = (word.to_string(), split_x, s.right() - split_x);

@@ -3741,10 +3741,11 @@ fn accents_over_letters(doc: &mut Doc) {
                     line.spans.iter().position(|p| {
                         let t = p.text.trim();
                         let n = t.chars().count();
-                        // (a bar also over the last letter of a run of math
-                        // letters, "DψDψ" with "¯." behind it, and over a
-                        // figure: the 3̄ of a representation, "¯ +" at its place)
-                        let letters = t.chars().all(char::is_alphabetic) && (n == 1 || ("¯˙".contains(accent) && (n <= 3 || (accent == '¯' && n <= 6 && fonts.get(p.font).is_some_and(|f| f.math)))));
+                        // (also over the last letter of a run of math letters,
+                        // "DψDψ" with "¯." behind it, "Bz" with "ˆ, we
+                        // obtained", and a bar over a figure: the 3̄ of a
+                        // representation, "¯ +" at its place)
+                        let letters = t.chars().all(char::is_alphabetic) && (n == 1 || ("¯˙".contains(accent) && n <= 3) || (n <= 6 && fonts.get(p.font).is_some_and(|f| f.math)));
                         let figure = accent == '¯' && n == 1 && t.chars().all(|c| c.is_ascii_digit()) && (size_of(p) - size_of(s)).abs() <= 0.2 * size_of(s);
                         !std::ptr::eq(p, s) && (letters || figure) && p.left <= s.left + 1.0 && p.right() >= s.left + 2.0 && (p.top - s.top).abs() < 0.5 * size_of(s)
                     })
