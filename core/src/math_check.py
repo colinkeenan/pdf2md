@@ -582,7 +582,7 @@ def read(files, dst, ext: str, scale: int, state: dict):
 # Equations built from the letters of a PDF's page (a TeX book): a second
 # reading, by the recognizer, of the place on the page each was built from.
 
-PLACES = "places 14"
+PLACES = "places 15"
 # pixels of a cut-out for each pixel of the page reader's measure (it has
 # 1.5 to a point: 216 dots to the inch, twice the size of an ebook's pictures)
 ZOOM = 2.0
@@ -594,6 +594,8 @@ def tidy(t: str) -> str:
     line's end look like an equation's number), the ångström, the
     variants of Greek letters (the page's letter is the one that counts),
     a root sign left bare, dots, a bullet in front."""
+    # (a forced space first: "\ |" must not become the double bar "\|")
+    t = re.sub(r"(?<!\\)((?:\\\\)*)\\\s", r"\1 ", t)
     t = re.sub(r"\s+(?=[()\[\]|,.;:!])", "", t)
     t = t.replace("˚ A", "Å").replace("˚A", "Å")
     t = re.sub(r"\\mathring\s*\{?\s*A\s*\}?", "Å", t)
@@ -607,6 +609,9 @@ def tidy(t: str) -> str:
     # recognizer does)
     t = re.sub(r"\{\s*([^{}]+?)\s*\\!\\!\\!/\s*\}", r"\\not \1 ", t)
     t = re.sub(r"\\(slashed|cancel)(?![a-zA-Z])", r"\\not", t)
+    # (… and as it writes it without the braces: "\partial \!\!\!/", two
+    # or three steps back)
+    t = re.sub(r"(\\[a-zA-Z]+|[A-Za-z])\s*(?:\\!\s*){2,3}/", r"\\not \1 ", t)
     # (… which is the page's to say: the recognizer often reads p̸ as p.
     # Not the stroke of a sign: "=" and "≠" are two formulas)
     t = re.sub(r"\\not\s*\{?\s*(?=[A-Za-z]|\\(?:alpha|beta|gamma|delta|epsilon|varepsilon|partial|nabla|sigma|pi|mu|nu|kappa|lambda|xi|eta|zeta|theta|rho|tau|phi|varphi|chi|psi|omega|ell|Gamma|Delta|Sigma|Pi|Phi|Psi|Omega|Lambda)(?![a-zA-Z]))", " ", t)
@@ -621,11 +626,33 @@ def tidy(t: str) -> str:
     t = re.sub(r"\\middle(?![a-zA-Z])", "", t)
     # (so is the stroke through the stem of a d, which it reads as d)
     t = t.replace("đ", "d")
+    # (a prime before the index "parallel" or after it: the same, and told
+    # here, before that index is written as two bars)
+    t = re.sub(r"((?:\^\s*\{\s*(?:\\prime\s*)+\}|')+)\s*(_\s*\{?\s*\\(?:parallel|perp)\s*\}?)", r"\2\1", t)
     # (the double bar of a norm, three ways; three integral signs, two; a
     # heavy dot between two vectors and a light one)
     t = re.sub(r"\\parallel(?![a-zA-Z])|\\\||\\Vert(?![a-zA-Z])|\\lVert(?![a-zA-Z])|\\rVert(?![a-zA-Z])", "||", t)
     t = re.sub(r"\\iiint(?![a-zA-Z])", r"\\int\\int\\int ", t)
     t = re.sub(r"\\bullet(?![a-zA-Z])", r"\\cdot ", t)
+    # (a wide accent and a narrow one; the sun's sign in two sizes; "it
+    # follows" in two spellings; the ohm sign for Ω; a frame around the
+    # whole, which the rules do not draw)
+    t = re.sub(r"\\wide(tilde|hat)(?![a-zA-Z])", r"\\\1", t)
+    t = re.sub(r"\\overline(?![a-zA-Z])", r"\\bar", t)
+    t = re.sub(r"\\bigodot(?![a-zA-Z])", r"\\odot", t)
+    t = re.sub(r"\\implies(?![a-zA-Z])", r"\\Rightarrow ", t)
+    t = re.sub(r"\\impliedby(?![a-zA-Z])", r"\\Leftarrow ", t)
+    t = re.sub(r"\\iff(?![a-zA-Z])", r"\\Leftrightarrow ", t)
+    t = t.replace("\u2126", "\\Omega ")
+    t = re.sub(r"\\boxed(?![a-zA-Z])", " ", t)
+    # (bold by another command, which the comparison does not count: the
+    # PDF's font says what is bold; a brace by its name)
+    t = re.sub(r"\\bm(?![a-zA-Z])", " ", t)
+    t = re.sub(r"\\lbrace(?![a-zA-Z])", r"\\{", t)
+    t = re.sub(r"\\rbrace(?![a-zA-Z])", r"\\}", t)
+    # (a row of "and so on" under a matrix, one in each column: how many
+    # there are, the recognizer does not count)
+    t = re.sub(r"(?:\\(?:dots|cdots|ldots)(?![a-zA-Z])\s*&?\s*){2,}", r"\\dots ", t)
     # (a script letter is the page's to say: the recognizer reads 𝒜 as A;
     # so is a Fraktur one, which it also reads as a script letter)
     # (a blank in its place: "\\mu}\\mathfrak{D}" must not become "\\muD")
@@ -715,6 +742,42 @@ def same_formula(a: str, b: str) -> bool:
         return False
 
 
+STROKED = r"\{\s*(\\[a-zA-Z]+|[A-Za-z])\s*\\!\\!\\!/\s*\}|\\not\s*\{?\s*(?:\\(?:partial|nabla|epsilon|varepsilon|[A-Za-z]{2,})(?![a-zA-Z])|[A-Za-z])\s*\}?"
+
+
+def strokes_blind(rule: str, other: str) -> bool:
+    """The same formula but for the letters that the page has with a stroke
+    through them: the recognizer reads e̸ as φ, ∂̸ as a script J, p̸ as p.
+    The PDF names the letter and its stroke, so whatever one letter the
+    reading has in such a place counts for it."""
+    if not re.search(STROKED, rule):
+        return False
+    try:
+        mine = loose(tidy(re.sub(STROKED, " § ", rule)))
+        its = loose(tidy(other))
+    except Exception:
+        return False
+    one = r"(?:\\not)?(?:\\[a-zA-Z]+|[A-Za-z])/?"
+    return re.fullmatch(re.escape(mine).replace("§", one), its) is not None
+
+
+def row_closed(rule: str, other: str) -> bool:
+    """The same formula, but that the recognizer closed a bracket which the
+    page closes in the equation's next row (or opened one that its row
+    before had opened): the rules' row has that bracket open, and the
+    reading has one more at its end (its beginning) and nothing else."""
+    try:
+        mine, its = loose(tidy(rule)), loose(tidy(other))
+    except Exception:
+        return False
+    for a, b in ("()", "[]"):
+        if mine.count(a) > mine.count(b) and its == mine + b:
+            return True
+        if mine.count(b) > mine.count(a) and its == a + mine:
+            return True
+    return False
+
+
 def columns_as_fractions(t: str) -> str:
     """A formula with each column of two rows between brackets written as
     the recognizer misreads it: a fraction between those brackets."""
@@ -736,9 +799,18 @@ def agree(rule: str, other: str) -> bool:
     rules, which have the rows from the page, are right); and where it
     wrote a system set between two braces as cases, which have only the
     left one."""
-    if same_formula(rule, other) or same_formula(columns_as_fractions(rule), other):
+    if same_formula(rule, other) or same_formula(columns_as_fractions(rule), other) or strokes_blind(rule, other) or row_closed(rule, other):
         return True
-    return "\\begin{cases}" in other and same_formula(re.sub(r"\\right\s*\\\}", "", rule), other)
+    # (a product typed with a full stop, "e^{-ip.x}", which the recognizer
+    # reads as a raised dot: the page's character is the rules' to say)
+    typed = re.sub(r"(?<=[A-Za-z}])\s*\.\s*(?=[A-Za-z\\])", r" \\cdot ", rule)
+    if typed != rule and same_formula(typed, other):
+        return True
+    if "\\begin{cases}" not in other:
+        return False
+    # (… between two braces drawn by the rules, or as a matrix in braces)
+    as_cases = rule.replace("\\begin{Bmatrix}", "\\begin{cases}").replace("\\end{Bmatrix}", "\\end{cases}")
+    return same_formula(re.sub(r"\\right\s*\\\}", "", rule), other) or same_formula(as_cases, other)
 
 
 def page_picture(pdf: str, page: int, state: dict) -> Image.Image:
