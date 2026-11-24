@@ -793,9 +793,12 @@ type Rewritten = (f32, Option<String>);
 /// So with TeX's font of math letters, where its table gives a Greek
 /// letter by another one (one lecture's notes have ν as "β" in the small
 /// type of indices, another as "δ"; the large type has it right): the
-/// glyph's place in the font says which letter it is.
+/// glyph's place in the font says which letter it is. And with a glyph of
+/// any of TeX's fonts that its table has no character for at all (the
+/// prime and the angle brackets of the symbol font, Λ of the upright one,
+/// ∂ and the arrow over a vector): it came as "\u{fffd}".
 fn restore_slots(doc: &mut Doc, path: &Path, parts: &[(usize, String)]) {
-    if !doc.fonts.iter().any(|f| ["CMEX", "CMMI"].iter().any(|p| f.family.to_uppercase().starts_with(p))) {
+    if !doc.fonts.iter().any(|f| f.family.to_uppercase().starts_with("CM")) {
         return;
     }
     let (Some(first), Some(last)) = (doc.pages.first().map(|p| p.number), doc.pages.last().map(|p| p.number)) else { return };
@@ -869,10 +872,21 @@ fn restore_slots(doc: &mut Doc, path: &Path, parts: &[(usize, String)]) {
                 }
                 continue;
             }
+            // (more glyphs than characters: the letter under an arrow is
+            // drawn at the arrow's place and has a piece of its own. Where
+            // the piece has as many characters without a name as glyphs
+            // that get one, each takes its glyph's, in their order)
+            let named: Vec<&str> = found.iter().filter_map(|f| f.1.as_deref()).collect();
+            if s.text.chars().filter(|c| !c.is_whitespace()).count() != found.len() && !named.is_empty() && s.text.chars().filter(|c| *c == '\u{fffd}').count() == named.len() {
+                let mut names = named.iter();
+                s.text = s.text.chars().map(|c| if c == '\u{fffd}' { names.next().map_or(String::new(), |t| t.to_string()) } else { c.to_string() }).collect();
+                written += named.len();
+                continue;
+            }
             if s.text.chars().filter(|c| !c.is_whitespace()).count() != found.len() {
                 left += found.len();
                 if debug {
-                    eprintln!("SLOTS page {}: {:?} has {} glyphs", page.number, s.text, found.len());
+                    eprintln!("SLOTS page {}: {:?} of {} has {} glyphs: {:?}", page.number, s.text, families[s.font], found.len(), found);
                 }
                 continue;
             }

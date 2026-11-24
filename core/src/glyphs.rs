@@ -77,6 +77,16 @@ fn greek_slot(slot: u8) -> Option<(&'static str, &'static str)> {
     Some((letter, also))
 }
 
+/// The signs of TeX's symbol font (CMSY), by their places in it, as the
+/// characters a font's table gives them by ("" where `mathtex` has its
+/// own reading of the place: the stroke of ≠, the foot of ↦).
+const CMSY_SLOTS: [&str; 128] = [
+    "−", "·", "×", "∗", "÷", "⋄", "±", "∓", "⊕", "⊖", "⊗", "⊘", "⊙", "◯", "∘", "•", "≍", "≡", "⊆", "⊇", "≤", "≥", "⪯", "⪰", "∼", "≈", "⊂", "⊃", "≪", "≫", "≺", "≻",
+    "←", "→", "↑", "↓", "↔", "↗", "↘", "≃", "⇐", "⇒", "⇑", "⇓", "⇔", "↖", "↙", "∝", "′", "∞", "∈", "∋", "△", "▽", "", "", "∀", "∃", "¬", "∅", "ℜ", "ℑ", "⊤", "⊥",
+    "ℵ", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "∪", "∩", "⊎", "∧", "∨",
+    "⊢", "⊣", "⌊", "⌋", "⌈", "⌉", "{", "}", "⟨", "⟩", "|", "‖", "↕", "⇕", "\\", "≀", "√", "⨿", "∇", "∫", "⊔", "⊓", "⊑", "⊒", "§", "†", "‡", "¶", "♣", "♢", "♡", "♠",
+];
+
 /// A place of CMEX that holds a sign in one of its sizes (a sum, an
 /// integral, a bracket, a root; not a piece that a tall bracket is built
 /// of): pdftohtml gives it, where the font has no table, as the letter of
@@ -150,7 +160,7 @@ impl FontInfo {
     /// letters only where it does not name them.)
     fn slot(&self, code: u8) -> Option<u8> {
         match self.names.get(&code) {
-            Some(_) if self.letters() => None,
+            Some(_) if !self.base.to_uppercase().starts_with("CMEX") => None,
             Some(name) => CMEX_SLOTS.iter().position(|n| n == name).map(|k| k as u8),
             None => (code < 128).then_some(code),
         }
@@ -168,8 +178,33 @@ impl FontInfo {
     pub fn slot_text(&self, code: u8) -> Option<String> {
         let known = self.unicode.as_ref().and_then(|u| u.get(&code)).cloned().unwrap_or_default();
         if self.letters() {
-            let (letter, also) = greek_slot(self.slot(code)?)?;
+            let slot = self.slot(code)?;
+            let Some((letter, also)) = greek_slot(slot) else {
+                // (… and a sign of that font the table has no character for;
+                // the arrow over a vector as `mathtex` reads it)
+                let sign = match slot {
+                    64 => "∂",
+                    96 => "ℓ",
+                    123 => "ı",
+                    124 => "ȷ",
+                    125 => "℘",
+                    126 => "~",
+                    _ => return None,
+                };
+                return known.trim().is_empty().then(|| sign.to_string());
+            };
             return (known.trim() != letter && known.trim() != also).then(|| letter.to_string());
+        }
+        // (the font of signs and the upright one: only where the table
+        // has no character for the glyph)
+        let upper = self.base.to_uppercase();
+        if upper.starts_with("CMSY") {
+            let sign = *CMSY_SLOTS.get(self.slot(code)? as usize)?;
+            return (known.trim().is_empty() && !sign.is_empty()).then(|| sign.to_string());
+        }
+        if upper.starts_with("CMR") || upper.starts_with("CMBX") {
+            let (capital, _) = greek_slot(self.slot(code).filter(|slot| *slot <= 10)?)?;
+            return known.trim().is_empty().then(|| capital.to_string());
         }
         match self.slot(code) {
             Some(slot) if sized_slot(slot) && slot > 32 => Some(char::from(slot).to_string()),
@@ -395,7 +430,14 @@ fn font_info(doc: &Document, font: &Dictionary) -> FontInfo {
     if let Some(table) = &table {
         info.blanks = table.iter().filter(|(_, t)| !t.is_empty() && t.chars().all(char::is_whitespace)).map(|(&code, _)| code).collect();
     }
+    let gaps: Vec<u8> = table.iter().flatten().filter(|(_, t)| t.trim().is_empty() || t.chars().all(|c| c == '\u{fffd}' || c.is_control())).map(|(&code, _)| code).collect();
     info.unicode = table.map(known_only);
+    // (… any font of TeX's whose table has no character for a glyph that
+    // its place names: the prime of the symbol font, a Greek capital of
+    // the upright one, ∂)
+    if !info.misnamed && tex_font(&info.base) {
+        info.misnamed = gaps.iter().any(|&code| !info.blanks.contains(&code) && info.slot_text(code).is_some_and(|t| !t.trim().is_empty()));
+    }
     info
 }
 
@@ -756,6 +798,17 @@ mod tests {
         assert_eq!(letters.slot_text(15), None);
         assert_eq!(letters.slot_text(107), None);
         assert_eq!(letters.slot_text(11), Some("α".into()));
+        assert_eq!(letters.slot_text(64), Some("∂".into()));
+        // the symbol font and the upright one: a glyph the table has no character for
+        let signs = FontInfo { base: "CMSY7".into(), unicode: table(&[(0, "−")]), misnamed: true, ..Default::default() };
+        assert_eq!(signs.slot_text(48), Some("′".into()));
+        assert_eq!(signs.slot_text(104), Some("⟨".into()));
+        assert_eq!(signs.slot_text(0), None);
+        assert_eq!(signs.slot_text(54), None);
+        let upright = FontInfo { base: "CMR7".into(), unicode: table(&[(49, "1")]), misnamed: true, ..Default::default() };
+        assert_eq!(upright.slot_text(3), Some("Λ".into()));
+        assert_eq!(upright.slot_text(49), None);
+        assert_eq!(upright.slot_text(11), None);
     }
 
     #[test]
