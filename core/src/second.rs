@@ -26,7 +26,7 @@ use std::path::{Path, PathBuf};
 
 /// The rules by which a verdict is reached (here and in `math_check.py`):
 /// a verdict made by older rules is made again from the readings kept.
-const RULES: &str = "places 13";
+const RULES: &str = "places 14";
 
 /// What became of an equation's second reading.
 #[derive(Debug, Clone, PartialEq, Default)]

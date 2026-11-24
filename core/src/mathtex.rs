@@ -1170,6 +1170,30 @@ fn put_accents(mut spans: Vec<MSpan>) -> Vec<MSpan> {
             }
         })
         .collect();
+    // "¯=0", "¯]": a bar that begins a longer piece, drawn back over the
+    // letter before it (η̄ = 0 in an index) — where a letter stands under
+    // it. It gets a piece of its own.
+    let heads: Vec<usize> = (0..spans.len())
+        .filter(|&k| {
+            let s = &spans[k];
+            let n = s.text.chars().count();
+            if n < 2 || s.atom.is_some() || !s.text.starts_with('¯') {
+                return false;
+            }
+            let mid = s.left + 0.5 * (s.right - s.left) / n as f32;
+            spans.iter().enumerate().any(|(j, b)| j != k && b.atom.is_none() && !b.cmex() && b.text.chars().any(char::is_alphabetic) && b.left <= mid && b.right >= mid && (b.top - s.top).abs() <= 0.75 * s.size)
+        })
+        .collect();
+    for &k in heads.iter().rev() {
+        let s = spans[k].clone();
+        let n = s.text.chars().count();
+        let w = (s.right - s.left) / n as f32;
+        let (mut bar, mut rest) = (s.clone(), s.clone());
+        (bar.text, bar.right) = ("¯".to_string(), s.left + w);
+        (rest.text, rest.left) = (s.text.chars().skip(1).collect(), s.left + w);
+        spans[k] = bar;
+        spans.insert(k + 1, rest);
+    }
     // The same stroke in one piece with its letter, "/e" as wide as the e
     // alone: the slash moves the type on by nothing, so the piece is as
     // wide as its other letters. It is taken out and set over the letter

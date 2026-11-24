@@ -582,7 +582,7 @@ def read(files, dst, ext: str, scale: int, state: dict):
 # Equations built from the letters of a PDF's page (a TeX book): a second
 # reading, by the recognizer, of the place on the page each was built from.
 
-PLACES = "places 13"
+PLACES = "places 14"
 # pixels of a cut-out for each pixel of the page reader's measure (it has
 # 1.5 to a point: 216 dots to the inch, twice the size of an ebook's pictures)
 ZOOM = 2.0
@@ -609,7 +609,7 @@ def tidy(t: str) -> str:
     t = re.sub(r"\\(slashed|cancel)(?![a-zA-Z])", r"\\not", t)
     # (… which is the page's to say: the recognizer often reads p̸ as p.
     # Not the stroke of a sign: "=" and "≠" are two formulas)
-    t = re.sub(r"\\not\s*\{?\s*(?=[A-Za-z]|\\(?:alpha|beta|gamma|delta|epsilon|varepsilon|partial|nabla|sigma|pi|mu|nu|kappa|lambda|xi|eta|zeta|theta|rho|tau|phi|varphi|chi|psi|omega|ell|Gamma|Delta|Sigma|Pi|Phi|Psi|Omega|Lambda)(?![a-zA-Z]))", "", t)
+    t = re.sub(r"\\not\s*\{?\s*(?=[A-Za-z]|\\(?:alpha|beta|gamma|delta|epsilon|varepsilon|partial|nabla|sigma|pi|mu|nu|kappa|lambda|xi|eta|zeta|theta|rho|tau|phi|varphi|chi|psi|omega|ell|Gamma|Delta|Sigma|Pi|Phi|Psi|Omega|Lambda)(?![a-zA-Z]))", " ", t)
     # (the 1 with a doubled stem, as a sign and by its commands)
     t = re.sub(r"\\(mathbb|mathbbm|mathds)\s*(\{\s*1\s*\}|1)", "𝟙", t)
     # (… which the recognizer often reads as a plain 1: the page's to say)
@@ -628,7 +628,8 @@ def tidy(t: str) -> str:
     t = re.sub(r"\\bullet(?![a-zA-Z])", r"\\cdot ", t)
     # (a script letter is the page's to say: the recognizer reads 𝒜 as A;
     # so is a Fraktur one, which it also reads as a script letter)
-    t = re.sub(r"\\(mathcal|cal|mathscr|mathfrak|frak)(?![a-zA-Z])", "", t)
+    # (a blank in its place: "\\mu}\\mathfrak{D}" must not become "\\muD")
+    t = re.sub(r"\\(mathcal|cal|mathscr|mathfrak|frak)(?![a-zA-Z])", " ", t)
     return re.sub(r"\\(quad|qquad)(?![a-zA-Z])", " ", t)
 
 
@@ -835,6 +836,10 @@ def places(pdf: str, jobs_file: str, dst: Path):
     counts = {"same": 0, "take": 0, "check": 0, "unread": 0}
     for j in jobs:
         other = reading(j, "surya")
+        # (one thing written on and on, "+ \\mu + \\mu + …" for a row of
+        # drawn diagrams, is no reading)
+        if other is not None and on_and_on(other):
+            other = None
         if other is not None:
             other = with_shapes(j["rule"], other)
         if other is None:
