@@ -937,6 +937,56 @@ fn restore_slots(doc: &mut Doc, path: &Path, parts: &[(usize, String)]) {
                 }
             }
         }
+        // A glyph that gets a name, found in a piece that has a character
+        // for each of its other glyphs: the arrow over a letter, drawn at
+        // the letter's place, whose nameless character pdftohtml put at
+        // the end of the piece before. That character goes, and the glyph
+        // is a piece of its own where it is drawn.
+        let mut strays: Vec<(f32, String, usize)> = Vec::new();
+        for (&(li, si), found) in of_span.iter_mut() {
+            let s = &page.lines[li].spans[si];
+            let chars = s.text.chars().filter(|c| !c.is_whitespace()).count();
+            let named = found.iter().filter(|f| f.1.as_deref().is_some_and(|t| !t.trim().is_empty())).count();
+            if chars > 0 && found.len() > chars && named == found.len() - chars && !s.text.contains('\u{fffd}') {
+                let (out, keep): (Vec<Rewritten>, Vec<Rewritten>) = std::mem::take(found).into_iter().partition(|f| f.1.as_deref().is_some_and(|t| !t.trim().is_empty()));
+                strays.extend(out.into_iter().filter_map(|f| Some((f.0, f.1?, s.font))));
+                *found = keep;
+            }
+        }
+        let mut emptied: Vec<(usize, usize)> = Vec::new();
+        for (x, name, font) in strays {
+            // the nearest piece that has a nameless character too many
+            let donor = (0..page.lines.len())
+                .flat_map(|li| (0..page.lines[li].spans.len()).map(move |si| (li, si)))
+                .filter(|&(li, si)| {
+                    let s = &page.lines[li].spans[si];
+                    // (of the glyph's own font)
+                    families.get(s.font) == families.get(font) && s.text.contains('\u{fffd}') && s.text.chars().filter(|c| !c.is_whitespace()).count() > of_span.get(&(li, si)).map_or(0, Vec::len)
+                })
+                .map(|(li, si)| {
+                    let s = &page.lines[li].spans[si];
+                    ((li, si), (s.left - x).max(x - s.right()).max(0.0))
+                })
+                .filter(|&((li, si), away)| away <= 4.0 * sizes.get(page.lines[li].spans[si].font).copied().unwrap_or(10.0))
+                .min_by(|a, b| a.1.total_cmp(&b.1));
+            let Some(((li, si), _)) = donor else { continue };
+            if debug {
+                eprintln!("SLOTS page {}: stray {name:?} at {x:.0} takes a place of {:?}", page.number, page.lines[li].spans[si].text);
+            }
+            let s = &mut page.lines[li].spans[si];
+            if let Some(at) = s.text.rfind('\u{fffd}') {
+                s.text.replace_range(at..at + '\u{fffd}'.len_utf8(), "");
+            }
+            let mut piece = s.clone();
+            // (the arrow over a vector as a mark that finds its letter)
+            piece.text = if name == "~" { "\u{20d7}".to_string() } else { name };
+            (piece.left, piece.width) = (x, (0.45 * sizes.get(piece.font).copied().unwrap_or(10.0)).max(1.0));
+            if s.text.trim().is_empty() {
+                emptied.push((li, si));
+            }
+            page.lines[li].spans.push(piece);
+            written += 1;
+        }
         for ((li, si), mut found) in of_span {
             let s = &mut page.lines[li].spans[si];
             found.sort_by(|a, b| a.0.total_cmp(&b.0));
@@ -954,6 +1004,14 @@ fn restore_slots(doc: &mut Doc, path: &Path, parts: &[(usize, String)]) {
             // the piece has as many characters without a name as glyphs
             // that get one, each takes its glyph's, in their order)
             let named: Vec<&str> = found.iter().filter_map(|f| f.1.as_deref()).collect();
+            // (… or all its glyphs get one and the same: the pieces of a
+            // tall bar, drawn one over the other)
+            let alike = found.len() > 1 && found.iter().all(|f| f.1.is_some() && f.1 == found[0].1) && s.text.contains('\u{fffd}') && s.text.trim().chars().all(|c| c == '\u{fffd}');
+            if alike {
+                s.text = found[0].1.clone().unwrap_or_default();
+                written += 1;
+                continue;
+            }
             if s.text.chars().filter(|c| !c.is_whitespace()).count() != found.len() && !named.is_empty() && s.text.chars().filter(|c| *c == '\u{fffd}').count() == named.len() {
                 let mut names = named.iter();
                 s.text = s.text.chars().map(|c| if c == '\u{fffd}' { names.next().map_or(String::new(), |t| t.to_string()) } else { c.to_string() }).collect();
@@ -980,6 +1038,12 @@ fn restore_slots(doc: &mut Doc, path: &Path, parts: &[(usize, String)]) {
             if text.trim() != s.text.trim() {
                 written += found.len();
                 s.text = if text.trim().is_empty() { String::new() } else { text };
+            }
+        }
+        emptied.sort_unstable_by(|a, b| b.cmp(a));
+        for (li, si) in emptied {
+            if page.lines[li].spans[si].text.trim().is_empty() {
+                page.lines[li].spans.remove(si);
             }
         }
         // (the page's lines were made of its pieces before the signs were

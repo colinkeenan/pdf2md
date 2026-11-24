@@ -177,6 +177,17 @@ impl FontInfo {
     /// glyph that stays as pdftohtml gave it.
     pub fn slot_text(&self, code: u8) -> Option<String> {
         let known = self.unicode.as_ref().and_then(|u| u.get(&code)).cloned().unwrap_or_default();
+        // (the code 32 that the table gives as a blank is a blank that the
+        // maker of the PDF set in this font, not the ψ or the arrow of
+        // that place)
+        if code == b' ' && self.blanks.contains(&code) && !self.base.to_uppercase().starts_with("CMEX") {
+            return None;
+        }
+        // (a glyph the font names, in a font cut down and numbered anew:
+        // by its name, where the table has no character for it)
+        if let Some(name) = self.names.get(&code).filter(|_| !self.base.to_uppercase().starts_with("CMEX")) {
+            return if known.trim().is_empty() { symbol(name).filter(|(_, big)| !big).map(|(t, _)| t.to_string()) } else { None };
+        }
         if self.letters() {
             let slot = self.slot(code)?;
             let Some((letter, also)) = greek_slot(slot) else {
@@ -205,6 +216,15 @@ impl FontInfo {
         if upper.starts_with("CMR") || upper.starts_with("CMBX") {
             let (capital, _) = greek_slot(self.slot(code).filter(|slot| *slot <= 10)?)?;
             return known.trim().is_empty().then(|| capital.to_string());
+        }
+        // (the first signs of the AMS symbol font: the centred dot of p·y)
+        if upper.starts_with("MSAM") {
+            let sign = *["⊡", "⊞", "⊠", "□", "■", "·", "◊", "⧫"].get(self.slot(code)? as usize)?;
+            return known.trim().is_empty().then(|| sign.to_string());
+        }
+        // (any other font of TeX's: as pdftohtml gave it)
+        if !upper.starts_with("CMEX") {
+            return None;
         }
         match self.slot(code) {
             Some(slot) if sized_slot(slot) && slot > 32 => Some(char::from(slot).to_string()),
@@ -435,7 +455,7 @@ fn font_info(doc: &Document, font: &Dictionary) -> FontInfo {
     // (… any font of TeX's whose table has no character for a glyph that
     // its place names: the prime of the symbol font, a Greek capital of
     // the upright one, ∂)
-    if !info.misnamed && tex_font(&info.base) {
+    if !info.misnamed && (tex_font(&info.base) || info.base.to_uppercase().starts_with("MSAM")) {
         info.misnamed = gaps.iter().any(|&code| !info.blanks.contains(&code) && info.slot_text(code).is_some_and(|t| !t.trim().is_empty()));
     }
     info
