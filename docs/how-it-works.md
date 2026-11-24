@@ -493,6 +493,27 @@ A correction made by hand is of what the rules built (the `pdf2md:fix` mark hold
 * **The lines around a column set in a sentence.** A line with a column of two or three rows in it stands further from the lines above and below than the text's lines do, and the sentence broke into two paragraphs there. The distance that tells a new paragraph is measured from the rows.
 * **A sign with its number before a tall bracket.** "= 2463" is one piece of the text font, with a blank in it, and counted as words: the formula was cut in two there, and the half that held the bracket, all small type, had its exponent on the line. Such a piece right before a tall bracket is the formula's.
 
+### What the check lists of nine books showed
+
+*Worked out on: the lists of all the books and courses converted so far (863 entries, then 564), read for what repeats, then Quantum Theory I's list gone through entry by entry against its pages.*
+
+Two kinds of entry repeat. In the first the two readings are the same formula and only the comparison did not know it; in the second the rules are wrong in the same way in many places.
+
+* **The comparison knows more spellings of one formula** (`tidy`, `loose` and `agree` in `math_check.py`): a stroked letter written without braces or read as the plain letter, wide accents and `\overline` for `\bar`, `\bm`, `\implies`, the sun's sign in two sizes, a frame around the formula, braces by name, a system between braces written as a matrix, a row of dots under a matrix, a product typed with a full stop ("p.x"), a bracket the recognizer closed for a row that goes on, `\colon`, an angle bracket written `\right>`. A forced space before a bar (`\ |`) and a row's end before a ket's bar (`\\ |`) are no double bar.
+* **A full stop that stands free in a formula is the dot of a product**: also inside a piece of figures ("5 . 3 . 1"), beside an index or a fraction, behind an arrowed letter, and between two letters of a sentence. A piece of letters is cut at the product dot drawn in its blank ("g · v" had been "gv ·").
+* **A tall brace drawn as one glyph.** With straight stems it is a brace, no angle bracket (Zee: 17 pairs).
+* **The bar of a bra-ket drawn as a rule.** TeX draws some bars as filled rules, not as glyphs. Between "⟨" and "⟩" such a rule is a bar of the formula; elsewhere it stays what it was (in UCSD's sheet of formulas the same rules are the lines of a table).
+* **An overline behind a bracket.** The bracket before a barred letter was taken for a root sign, and the bar for the root's; a root sign is told by its character. A piece's last stroke belongs to the letter drawn at its end (Dyson: bars in about 20 bra-kets, 34 ψ̄, 14 slashed letters).
+* **An arrow in the middle of a piece** is of the letter behind it ("I d l⃗", Lucid: 14 places).
+* **A letter a cut-down font names but its table leaves out.** "lscript" is ℓ, not the ϵ that an empty piece of that font otherwise is (field theory II: 58 places).
+* **The closing bracket of a ket lacks no partner.** "p|p′⟩" had a "⟨" put in front, by the rule that gives a lone bracket its other half.
+* **A long arrow with a label.** "Tends to, as ε → 0" is set as a row of minus signs and an arrow's head, with the condition in small type over or under it. The row is one arrow, written `\xrightarrow[under]{over}`; without a label it stays `\longrightarrow` (19 places in Zee and two courses had dashes and loose indices).
+* **A small ℏ in a fraction, given as "~".** The rule for a small ℏ over a bar holds for the one under it too, and where `pdftohtml` gives the glyph as "~" ("ℏ/2" in a sentence had been "2ℏ": twelve places in quantum theory I).
+* **A drawing that the drawing program wrote whole before it failed.** `pdftocairo` fails a check of its own on some pages when it is through, after the last page is written. What it wrote is used if it ends as an SVG file ends; one lecture had lost every drawn bar and tall bracket to this.
+* **A bracket found by its outline** is written in TeX's big-symbol font of the book's size, and the raw character it replaces ("!" and the like, where a font gives its brackets by their places) is taken out.
+
+What is left on a list after this is mostly the recognizer's misreading, and the rest are equations the rules cannot build: the entries of a matrix along its diagonal, cases between a brace and nothing, exponents set in type too small to tell their rows, a term struck through with an arrow to its 0. Those are corrected by hand, each with a note under it. An equation that was compared with its page and is right as the rules built it gets the mark alone, above its unchanged block, and leaves the list. Quantum Theory I: 41 entries, 32 corrected, 9 right as built.
+
 ## PDFs made from ebooks
 
 A PDF made from an ebook, with calibre or from Kindle, holds its prose as text but its math in two other ways: larger formulas as small pictures, and simple math inside sentences in the ordinary text font. pdf2md takes this path when the book has no Computer Modern fonts.
@@ -617,6 +638,8 @@ Before a book is converted again, pdf2md collects what the reader changed in the
 * **Equations built from the PDF's text** have no picture to be kept by. A corrected one stands under a mark that holds its LaTeX as converted, `<!-- pdf2md:fix … -->` (in either form of math: above a ```` ```math ```` block, or above a block between `$$`; mdBun writes the mark when an equation is corrected in it), and every displayed equation of the chapter that is converted to that LaTeX again is replaced by the corrected block. A displayed line that was no equation of the book (a piece torn off a formula in the sentence above it) is taken out: `<!-- pdf2md:gone … -->` stands for it. An alert that begins "**Edited by Claude.**" right under either is part of the fix and goes where the fix goes, and so is mdBun's mark of an improvement on the line under the corrected block. If a later version of pdf2md converts the equation differently, or the book is written in the other form of math, the fix no longer fits; it is kept with the notes whose place was not found, so it can be looked at again.
 
 **Files that do not change are not touched.** A chapter file, a picture or `book.md` is written only if its bytes differ from the file that is there; a picture is cut to a name of its own first and moved in only if it differs; the link `book.pdf` stays if it goes to the same place. The app's Replace empties the folder into the Trash first, so it notes each file's length, a print of its bytes and its date before, and gives the files that come out the same their dates back. A conversion that changes nothing leaves every date as it was: a tool that copies by date and size (rclone, rsync) then has nothing to send, where it had sent every file before.
+
+In a course's `book.md` each chapter gets the corrections of its own file. A chapter begins at the anchor of a file, not at an anchor inside one (an equation's anchor right before the next chapter's heading had been taken for one, and that equation's correction did not reach `book.md`).
 
 A copy of the notes and fixes is kept in `~/.local/share/pdf2md/notes/`. Notes follow a chapter whose file name changes. Any other edit to the text is not kept.
 
