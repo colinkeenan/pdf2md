@@ -764,10 +764,14 @@ fn split_woven(doc: &mut Doc, parts: &[(usize, String)]) {
         // symbol font, where the PDF does not name its glyphs, the letters
         // j, h and i)
         let is_brackets = |s: &Span| !s.text.trim().is_empty() && s.text.split_whitespace().all(|w| w.chars().all(|c| "|⟨⟩".contains(c) || (symbols.get(s.font).copied().unwrap_or(false) && "jhi".contains(c))));
+        // (first the brackets and the short pieces of letters; then, with
+        // each bracket where it is drawn, the runs of words they stand in)
+        for words in [false, true] {
         // (left, right, top, bottom, is of brackets) of every piece that
         // holds something
         let boxes: Vec<(f32, f32, f32, f32, bool)> = page.lines.iter().flat_map(|l| &l.spans).filter(|s| !s.text.trim().is_empty()).map(|s| (s.left, s.right(), s.top, s.bottom(), is_brackets(s))).collect();
         for line in page.lines.iter_mut() {
+            let pieces_before = line.spans.len();
             let mut si = 0;
             while si < line.spans.len() {
                 let s = line.spans[si].clone();
@@ -778,6 +782,56 @@ fn split_woven(doc: &mut Doc, parts: &[(usize, String)]) {
                 // ones, "A a", ") =" — that a piece of brackets reaches
                 // over: one stands in the other's blanks)
                 let brackets = is_brackets(&s);
+                // A run of words with the bar and bracket of a ket drawn
+                // inside it, "= + , while the south" around |+⟩: it is cut
+                // at each of them, by where its own glyphs are drawn.
+                let cuts: Vec<f32> = if !words || brackets || s.text.trim().chars().count() < 2 {
+                    Vec::new()
+                } else {
+                    let mut v: Vec<f32> = boxes.iter().filter(|b| b.4 && b.0 > s.left + 1.0 && b.1 < s.right() - 1.0 && (0.5 * (b.2 + b.3) - (s.top + 0.5 * s.height)).abs() <= 0.3 * s.height).map(|b| b.0).collect();
+                    v.sort_by(f32::total_cmp);
+                    v
+                };
+                if !cuts.is_empty() && !s.text.split_whitespace().all(|w| w.chars().count() <= 3) {
+                    let inside = |g: &&Placed| 1.5 * g.x >= s.left - 1.5 && 1.5 * g.x < s.right() - 0.5 && 1.5 * g.y >= s.top && 1.5 * g.y <= s.bottom() + 2.0;
+                    let Some(first) = placed.iter().filter(inside).min_by(|a, b| (1.5 * a.x - s.left).abs().total_cmp(&(1.5 * b.x - s.left).abs())) else { continue };
+                    let mut glyphs: Vec<&Placed> = placed.iter().filter(inside).filter(|g| g.font == first.font && (g.y - first.y).abs() < 0.6).collect();
+                    glyphs.sort_by(|a, b| a.x.total_cmp(&b.x));
+                    if glyphs.len() != chars.len() {
+                        continue;
+                    }
+                    // (each character with the part it is in: how many of
+                    // the brackets stand before it)
+                    let part = |g: usize| cuts.iter().filter(|c| 1.5 * glyphs[g].x >= **c - 0.5).count();
+                    let mut pieces: Vec<Span> = Vec::new();
+                    let (mut g, mut text, mut from) = (0, String::new(), 0);
+                    for c in s.text.chars() {
+                        if !c.is_whitespace() {
+                            if g > 0 && part(g) != part(g - 1) {
+                                let mut piece = s.clone();
+                                let left = if from == 0 { s.left } else { 1.5 * glyphs[from].x };
+                                (piece.text, piece.left, piece.width) = (std::mem::take(&mut text), left, (1.5 * glyphs[g - 1].ink.1 - left).max(1.0));
+                                pieces.push(piece);
+                                from = g;
+                            }
+                            g += 1;
+                        }
+                        text.push(c);
+                    }
+                    let mut piece = s.clone();
+                    let left = if from == 0 { s.left } else { 1.5 * glyphs[from].x };
+                    (piece.text, piece.left, piece.width) = (text, left, (s.right() - left).max(1.0));
+                    pieces.push(piece);
+                    if pieces.len() > 1 {
+                        let n = pieces.len();
+                        line.spans.splice(si - 1..si, pieces);
+                        si += n - 1;
+                    }
+                    continue;
+                }
+                if words {
+                    continue;
+                }
                 if !(brackets || s.text.split_whitespace().all(|w| w.chars().count() <= 3)) || !(brackets || math.get(s.font).copied().unwrap_or(false) || chars.len() <= 4) || !s.text.trim().contains(' ') || chars.len() > 24 {
                     continue;
                 }
@@ -810,6 +864,12 @@ fn split_woven(doc: &mut Doc, parts: &[(usize, String)]) {
                 line.spans.splice(si - 1..si, pieces);
                 si += n - 1;
             }
+            // (a line's pieces stand from the left: the words between two
+            // brackets come between them)
+            if line.spans.len() != pieces_before {
+                line.spans.sort_by(|a, b| a.left.total_cmp(&b.left));
+            }
+        }
         }
     }
 }
