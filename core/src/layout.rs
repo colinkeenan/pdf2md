@@ -1031,6 +1031,13 @@ fn restore_slots(doc: &mut Doc, path: &Path, parts: &[(usize, String)]) {
                 continue;
             }
             let (x, y) = (1.5 * at.x, 1.5 * at.y);
+            // (of two pieces at the glyph's place, a glyph without a
+            // character that gets a name is of the one without characters,
+            // and one that has a character of the other: the arrow over
+            // a p that begins "p, t p, t", with a nameless piece at the
+            // same place)
+            let has_character = matches!(info.glyph(code), crate::glyphs::Glyph::Known(t) if !t.trim().is_empty() && !t.contains('\u{fffd}'));
+            let gets_name = !has_character && info.slot_text(code).is_some_and(|t| !t.trim().is_empty());
             let mut best: Option<((usize, usize), f32)> = None;
             for (li, line) in page.lines.iter().enumerate() {
                 for (si, s) in line.spans.iter().enumerate() {
@@ -1043,7 +1050,9 @@ fn restore_slots(doc: &mut Doc, path: &Path, parts: &[(usize, String)]) {
                     // (a glyph that starts at the right edge of one piece
                     // and the left edge of the next is the next one's)
                     let off = (s.left - x).max(x - (s.right() - 1.0).max(s.left)).max(0.0);
-                    let score = f32::from(x >= s.right() - 1.5) + 0.01 * (x - s.left).abs();
+                    let nameless = s.text.contains('\u{fffd}') && s.text.trim().chars().all(|c| c == '\u{fffd}');
+                    let other_kind = !info.nameless() && ((gets_name && !s.text.contains('\u{fffd}') && !s.text.trim().is_empty()) || (has_character && nameless));
+                    let score = f32::from(x >= s.right() - 1.5) + 0.01 * (x - s.left).abs() + 0.5 * f32::from(other_kind);
                     if off <= 1.5 && best.is_none_or(|(_, o)| score < o) {
                         best = Some(((li, si), score));
                     }

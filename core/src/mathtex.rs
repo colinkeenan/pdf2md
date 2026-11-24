@@ -804,14 +804,45 @@ pub fn build_with(spans: &[MSpan], bars: &[Rule]) -> String {
     }
     // (TeX's arrow over a vector, "~" in its math italic font, where it is
     // a piece of its own or ends one: the accent of the letter it is over)
+    // (… or the arrow is drawn back over the letter before it, "p~" as
+    // wide as the p alone, and no letter begins where the piece ends:
+    // some PDFs set the letter first. Then the arrow is a piece at that
+    // letter's place.)
+    let drawn_back: Vec<bool> = spans
+        .iter()
+        .enumerate()
+        .map(|(k, s)| {
+            if !s.family.starts_with("CMMI") || s.atom.is_some() || !s.text.trim_end().ends_with('~') {
+                return false;
+            }
+            let kept = s.text.trim_end().trim_end_matches('~');
+            let units: f32 = kept.chars().map(crate::layout::char_width).sum();
+            let width = s.right - s.left;
+            let narrow = (width - s.size * units).abs() < (width - s.size * (units + crate::layout::char_width('~'))).abs();
+            let follows = spans.iter().enumerate().any(|(j, b)| j != k && !b.cmex() && b.text.trim_start().starts_with(char::is_alphabetic) && (b.left - s.right).abs() <= 0.3 * s.size && b.bottom.min(s.bottom) - b.top.max(s.top) >= 0.5 * (s.bottom - s.top));
+            kept.chars().last().is_some_and(char::is_alphabetic) && kept.chars().all(|c| c != '~') && narrow && !follows
+        })
+        .collect();
     let spans: Vec<MSpan> = spans
         .into_iter()
-        .map(|mut s| {
+        .zip(drawn_back)
+        .flat_map(|(mut s, back)| {
             if s.family.starts_with("CMMI") && s.atom.is_none() && s.text.trim_end().ends_with('~') {
                 let kept = s.text.trim_end().trim_end_matches('~').to_string();
+                let units: f32 = kept.chars().map(crate::layout::char_width).sum();
+                let width = s.right - s.left;
+                if back {
+                    let last = kept.chars().last().unwrap_or(' ');
+                    let at = s.right - width * crate::layout::char_width(last) / units.max(0.01);
+                    let (mut head, mut arrow, mut letter) = (s.clone(), s.clone(), s);
+                    (head.text, head.right) = (kept.chars().take(kept.chars().count() - 1).collect(), at);
+                    (arrow.text, arrow.left) = ("\u{20d7}".to_string(), at);
+                    (letter.text, letter.left) = (last.to_string(), at);
+                    return if head.text.trim().is_empty() { vec![arrow, letter] } else { vec![head, arrow, letter] };
+                }
                 s.text = format!("{kept}\u{20d7}");
             }
-            s
+            vec![s]
         })
         .collect();
     let mut spans = put_accents(spans);
