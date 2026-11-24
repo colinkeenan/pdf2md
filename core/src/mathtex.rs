@@ -1913,7 +1913,8 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
                 let sign = s.atom.is_none() && matches!(s.text.trim(), "−" | "±" | "∓") && s.bottom <= b.top + 0.35 * s.size.min(size) && s.cy() <= b.top - 0.3 * s.size.min(size);
                 // (so does the ℏ of the AMS font, a small one alone over
                 // the bar of ℏ/nm)
-                let hbar = s.atom.is_none() && s.text.trim() == "ℏ" && s.family.starts_with("MSBM") && s.bottom <= b.top + 0.35 * s.size.min(size) && s.cy() <= b.top - 0.15 * s.size.min(size);
+                // (which pdftohtml may give as "~", the character of its place)
+                let hbar = s.atom.is_none() && matches!(s.text.trim(), "ℏ" | "~") && s.family.starts_with("MSBM") && s.bottom <= b.top + 0.35 * s.size.min(size) && s.cy() <= b.top - 0.15 * s.size.min(size);
                 within(s) && (s.bottom <= b.top + 2.0 || sign || hbar) && s.cy() >= b.top - 3.5 * size
             })
             .collect();
@@ -1928,7 +1929,10 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
                 // (… or, a larger sign set a little higher: its own bar begins
                 // where it ends, right under this bar)
                 let own_bar_under = is_radical(s) && bars.iter().any(|r| r.top > b.bottom - 0.5 && r.top <= b.bottom + 0.5 * size && (r.left - s.right).abs() <= 3.0);
-                within(s) && (s.top >= b.bottom - 2.0 || tall_under || (is_radical(s) && s.cy() >= b.top - 2.0) || own_bar_under) && s.cy() <= b.bottom + 3.5 * size
+                // (… and the small ℏ of a denominator, "ie over ℏc", whose box
+                // begins higher than a letter's)
+                let hbar_under = s.atom.is_none() && matches!(s.text.trim(), "ℏ" | "~") && s.family.starts_with("MSBM") && s.top >= b.bottom - 0.45 * s.size.min(size) && s.cy() >= b.bottom + 0.2 * s.size.min(size);
+                within(s) && (s.top >= b.bottom - 2.0 || tall_under || hbar_under || (is_radical(s) && s.cy() >= b.top - 2.0) || own_bar_under) && s.cy() <= b.bottom + 3.5 * size
             })
             .collect();
         // A fraction nested inside this one has a clearly narrower bar; a
