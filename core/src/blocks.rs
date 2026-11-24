@@ -3348,7 +3348,15 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
             // (… under a line that runs to the right margin it is that
             // line's sentence going on, "(i.e." and the rest: no new line)
             let goes_on = item_line && b.prev.as_ref().is_some_and(|p| p.right >= st.right - 2.0 * st.body);
-            if (starts || spaced) && !item_line {
+            // A line under a centred one that ends where that one ends, in
+            // from both margins: the next row of what is set in the middle
+            // ("… becomes larger as k becomes smaller," over "… becomes
+            // smaller …", lined up at their ends), not a new paragraph.
+            let centred_row = !b.para.is_empty()
+                && b.para_centered
+                && inset(l, st) >= 2.5 * st.body
+                && b.prev.as_ref().is_some_and(|p| p.page == pi && l.top > p.top && l.top - p.top <= 2.5 * st.spacing && (l.right - p.right).abs() <= 1.5);
+            if (starts || spaced) && !item_line && !centred_row {
                 b.flush();
                 b.anchor_block();
                 b.para_goes_on = !bullet && b.goes_on_behind(l, &mut inl, next, pi);
@@ -3362,7 +3370,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                     b.para.push(Inline::Anchor(a));
                 }
                 // centered lines keep their line breaks
-                let centered = b.para_centered && is_centered(l, st);
+                let centered = b.para_centered && (is_centered(l, st) || centred_row);
                 let hard = hard || (item_line && !goes_on);
                 if centered || hard {
                     if hard {
@@ -3373,7 +3381,7 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 } else {
                     b.join(inl);
                 }
-                b.para_centered &= is_centered(l, st);
+                b.para_centered &= is_centered(l, st) || centred_row;
                 b.para_inset = b.para_inset.max(inset(l, st));
                 b.para_in = (b.para_in.0.min(l.left - st.left), b.para_in.1.min(st.right - l.right));
             }
