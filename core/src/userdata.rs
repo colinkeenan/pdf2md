@@ -444,12 +444,15 @@ fn undo_fixes(t: &str) -> String {
 /// Where the chapters begin in the text of book.md, each with its file's
 /// name: they start with `<a id="slug"></a>`; their title follows, under
 /// the bar and marker of the page they open on.
+// (not an anchor inside a chapter of a course, "28-recitation-3--eq-3.7":
+// the last equation of a chapter has the next chapter's heading within
+// a few lines of it, and its correction did not reach book.md)
 fn chapter_starts(text: &str) -> Vec<(usize, String)> {
     text.match_indices("<a id=\"")
         .filter_map(|(i, _)| {
             let id = text[i + 7..].split('"').next()?;
             let line_end = text[i..].find('\n').map_or(text.len(), |k| i + k);
-            (text[i..line_end].trim() == format!("<a id=\"{id}\"></a>") && text[line_end..].lines().filter(|l| !l.trim().is_empty()).take(8).any(|l| l.starts_with("# ")) && id.chars().next().is_some_and(|c| c.is_ascii_digit()))
+            (text[i..line_end].trim() == format!("<a id=\"{id}\"></a>") && text[line_end..].lines().filter(|l| !l.trim().is_empty()).take(8).any(|l| l.starts_with("# ")) && id.chars().next().is_some_and(|c| c.is_ascii_digit()) && !id.contains("--"))
                 .then(|| (i, id.to_string()))
         })
         .collect()
