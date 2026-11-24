@@ -3397,7 +3397,9 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
     // an index of what stands before, nor one half of it.
     let mut k = 0;
     while k < items.len() {
-        let word = items[k].tex.trim().to_string();
+        // (the word alone, or with one after it in its piece: "lim Im")
+        let whole = items[k].tex.trim().to_string();
+        let (word, after) = whole.split_once(' ').map_or((whole.clone(), String::new()), |(w, rest)| (w.to_string(), format!(" {rest}")));
         if items[k].kind != Kind::Atom || !["\\lim", "\\max", "\\min", "\\sup", "\\inf"].contains(&word.as_str()) {
             k += 1;
             continue;
@@ -3419,8 +3421,18 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
         }
         take.sort_by(|&a, &b| items[a].left.total_cmp(&items[b].left));
         let src: Vec<usize> = take.iter().flat_map(|&j| items[j].src.iter().copied()).collect();
-        let index = if take.iter().all(|&j| !items[j].src.is_empty()) { build_at(&subset(spans, &src), depth + 1) } else { take.iter().map(|&j| items[j].tex.as_str()).collect::<Vec<_>>().join(" ") };
-        items[k].tex = format!("{word}_{{{index}}}");
+        let index = if take.iter().all(|&j| !items[j].src.is_empty()) {
+            // (conditions set one under the other, "ε → 0", "N → ∞",
+            // "Nε = t": each row is built on its own)
+            let rows = limit_rows(&subset(spans, &src));
+            match rows.len() {
+                1 => build_at(&rows[0], depth + 1),
+                _ => format!("\\substack{{{}}}", rows.iter().map(|r| build_at(r, depth + 1)).collect::<Vec<_>>().join(" \\\\ ")),
+            }
+        } else {
+            take.iter().map(|&j| items[j].tex.as_str()).collect::<Vec<_>>().join(" ")
+        };
+        items[k].tex = format!("{word}_{{{index}}}{after}");
         items[k].left = take.iter().map(|&j| items[j].left).fold(items[k].left, f32::min);
         items[k].right = take.iter().map(|&j| items[j].right).fold(items[k].right, f32::max);
         let mut gone = take.clone();
@@ -3846,6 +3858,35 @@ fn bounds(spans: &[MSpan], bars: &[Rule]) -> Area {
 
 fn both(a: Area, b: Area) -> Area {
     [a[0].min(b[0]), a[1].min(b[1]), a[2].max(b[2]), a[3].max(b[3])]
+}
+
+/// The rows of what is set under "lim": one, or several conditions one
+/// under the other (`\\substack`). The rows are told by the letters of
+/// the limit's own size, more than half a letter apart in height; an
+/// index of one of them goes with the row it is nearest to.
+fn limit_rows(spans: &[MSpan]) -> Vec<Vec<MSpan>> {
+    let size = spans.iter().filter(|s| !s.cmex()).map(|s| s.size).fold(0.0f32, f32::max);
+    let mut mains: Vec<f32> = spans.iter().filter(|s| !s.cmex() && s.size >= 0.9 * size && !s.text.trim().chars().all(|c| ",.;".contains(c))).map(MSpan::cy).collect();
+    mains.sort_by(f32::total_cmp);
+    // (each row: the heights of its letters)
+    let mut rows: Vec<Vec<f32>> = Vec::new();
+    for y in mains {
+        match rows.last_mut().filter(|r| y - r.iter().sum::<f32>() / r.len() as f32 <= 0.6 * size) {
+            Some(r) => r.push(y),
+            None => rows.push(vec![y]),
+        }
+    }
+    if rows.len() < 2 {
+        return vec![spans.to_vec()];
+    }
+    let centres: Vec<f32> = rows.iter().map(|r| r.iter().sum::<f32>() / r.len() as f32).collect();
+    let mut out: Vec<Vec<MSpan>> = vec![Vec::new(); centres.len()];
+    for s in spans {
+        let row = (0..centres.len()).min_by(|&a, &b| (centres[a] - s.cy()).abs().total_cmp(&(centres[b] - s.cy()).abs())).unwrap_or(0);
+        out[row].push(s.clone());
+    }
+    out.retain(|r| !r.is_empty());
+    out
 }
 
 /// Three dots set one over the other: TeX's sign for "and so on,
