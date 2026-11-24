@@ -4492,6 +4492,72 @@ fn stack_dots(spans: &mut Vec<MSpan>) {
     }
 }
 
+/// Where a display parts into systems between braces set one under the
+/// other: the heights between them. A system is what stands at the height
+/// of a pair of tall braces, "{" and "}" read from their outlines; rows of
+/// the display over, under or between systems are parts of their own
+/// (their fractions' halves kept together). None unless there are two
+/// parts at least, a system among them, that do not overlap in height.
+fn stacked_systems(rest: &[MSpan], bars: &[Rule]) -> Option<Vec<f32>> {
+    let max = rest.iter().filter(|s| !s.cmex()).map(|s| s.size).fold(0.0f32, f32::max);
+    let brace = |s: &&MSpan| s.cmex() && matches!(s.text.trim(), "{" | "}") && s.bottom - s.top > 2.5 * max;
+    let mut bands: Vec<(f32, f32, f32, f32)> = Vec::new(); // top, bottom, right edge of "{", left edge of "}"
+    let mut braces: Vec<&MSpan> = rest.iter().filter(brace).collect();
+    braces.sort_by(|a, b| a.top.total_cmp(&b.top));
+    for b in braces {
+        let (open, close) = if b.text.trim() == "{" { (b.right, f32::MIN) } else { (f32::MAX, b.left) };
+        match bands.iter_mut().find(|d| b.top < d.1 && b.bottom > d.0) {
+            Some(d) => *d = (d.0.min(b.top), d.1.max(b.bottom), d.2.min(open), d.3.max(close)),
+            None => bands.push((b.top, b.bottom, open, close)),
+        }
+    }
+    // (a system: two rows at least between its braces, each with its "=" —
+    // not the braces around a sum or a fraction in one row of a display)
+    bands.retain(|d| {
+        let mut signs: Vec<f32> = rest
+            .iter()
+            .filter(|s| !s.cmex() && s.size >= 0.9 * max && s.cy() > d.0 && s.cy() < d.1 && s.left >= d.2 - 1.0 && s.right <= d.3 + 1.0 && s.text.split_whitespace().any(is_relation))
+            .map(|s| s.cy())
+            .collect();
+        signs.sort_by(f32::total_cmp);
+        signs.dedup_by(|a, b| (*a - *b).abs() <= 0.5 * max);
+        d.2 < d.3 && signs.len() >= 2
+    });
+    if bands.is_empty() || max <= 0.0 {
+        return None;
+    }
+    // (top, bottom) of each part: the systems, then the rows outside them
+    let mut parts: Vec<(f32, f32)> = bands.iter().map(|d| (d.0, d.1)).collect();
+    let inside = |y: f32| bands.iter().any(|d| y > d.0 - 0.3 * max && y < d.1 + 0.3 * max);
+    let mut outside: Vec<&MSpan> = rest.iter().filter(|s| !s.cmex() && s.size >= 0.9 * max && !inside(s.cy())).collect();
+    outside.sort_by(|a, b| a.cy().total_cmp(&b.cy()));
+    let mut row: Option<(f32, f32)> = None;
+    for s in outside {
+        // (more than the full stop behind a system)
+        if s.text.trim().chars().all(|c| ",.;:".contains(c)) {
+            continue;
+        }
+        row = match row {
+            Some((top, bottom)) if s.top <= bottom + 1.5 * max => Some((top.min(s.top), bottom.max(s.bottom))),
+            Some(done) => {
+                parts.push(done);
+                Some((s.top, s.bottom))
+            }
+            None => Some((s.top, s.bottom)),
+        };
+    }
+    parts.extend(row);
+    if parts.len() < 2 {
+        return None;
+    }
+    parts.sort_by(|a, b| a.0.total_cmp(&b.0));
+    // (parts clear of each other; a bar of a fraction lies in one of them)
+    let clear = parts.windows(2).all(|w| w[1].0 >= w[0].1 - 0.2 * max);
+    let cuts: Vec<f32> = parts.windows(2).map(|w| (w[0].1 + w[1].0) / 2.0).collect();
+    let bars_clear = bars.iter().all(|b| cuts.iter().all(|c| ((b.top + b.bottom) / 2.0 - c).abs() > 0.3 * max));
+    (clear && bars_clear).then_some(cuts)
+}
+
 /// [`display`], each equation with the area of the page it was built
 /// from (without its number): the place a second reading of it is cut from.
 pub fn display_areas(
@@ -4512,6 +4578,32 @@ pub fn display_areas(
             out.extend(display_areas(part, &pbars, right_margin, body));
         }
         return out;
+    }
+    // Systems between braces that stand one under the other (and a row of
+    // the display over or under a system): each is built by itself, and
+    // they are set one under the other as on the page — in one line they
+    // came out side by side, the wider one first.
+    if let Some(cuts) = stacked_systems(&rest, bars) {
+        let zone = |y: f32| cuts.iter().filter(|&&c| y > c).count();
+        let mut rows: Vec<String> = Vec::new();
+        let mut area: Option<Area> = None;
+        for z in 0..=cuts.len() {
+            let part: Vec<MSpan> = rest.iter().filter(|s| zone(s.cy()) == z).cloned().collect();
+            let pbars: Vec<Rule> = bars.iter().filter(|b| zone((b.top + b.bottom) / 2.0) == z).copied().collect();
+            let mut built = display_areas(part, &pbars, right_margin, body);
+            // (each part one equation, or it is no such display)
+            if built.len() != 1 || built[0].0.is_empty() {
+                rows.clear();
+                break;
+            }
+            let (tex, _, a) = built.remove(0);
+            rows.push(tex);
+            area = Some(area.map_or(a, |b| both(a, b)));
+        }
+        if let (false, Some(area)) = (rows.is_empty(), area) {
+            let tag = tags.first().and_then(|t| tag_of(&t.text));
+            return vec![(format!("\\begin{{gathered}} {} \\end{{gathered}}", rows.join(" \\\\ ")), tag, area)];
+        }
     }
     stack_dots(&mut rest);
     arrows_over(&mut rest);
