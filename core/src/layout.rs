@@ -2953,16 +2953,18 @@ fn insert_delims(doc: &mut Doc, delims: Vec<Vec<Delim>>) {
             .iter()
             .map(|d| d.bottom - d.top >= 1.08 * body || page.lines.iter().flat_map(|l| &l.spans).any(|s| is_cmex(s) && s.text.trim().is_empty() && s.left < d.right - 0.5 && s.right() > d.left + 0.5 && s.top < d.bottom && s.bottom() > d.top))
             .collect();
+        // (a bracket at whose place a piece of the big-symbol font without
+        // a character stands is surely a bracket, and not in the text yet;
+        // so is its partner of the same height, whose piece pdftohtml dropped)
+        let nameless: Vec<bool> = ds.iter().map(|d| page.lines.iter().flat_map(|l| &l.spans).any(|s| is_cmex(s) && s.left < d.right - 0.5 && s.right() > d.left + 0.5 && s.top < d.bottom && s.bottom() > d.top && s.text.chars().all(|c| c.is_whitespace() || c == '\u{fffd}'))).collect();
+        let sure: Vec<bool> = ds.iter().enumerate().map(|(k, d)| nameless[k] || ds.iter().zip(&nameless).any(|(p, ok)| *ok && (p.top - d.top).abs() <= 1.0 && (p.bottom - d.bottom).abs() <= 1.0 && "([{".contains(d.kind) && ")]}".contains(p.kind) && p.left > d.right)).collect();
         let partnered: Vec<bool> = ds
             .iter()
             .map(|d| ds.iter().zip(&tall_enough).any(|(p, ok)| *ok && (p.top - d.top).abs() <= 1.0 && (p.bottom - d.bottom).abs() <= 1.0 && (("([{".contains(p.kind) && ")]}".contains(d.kind)) || (")]}".contains(p.kind) && "([{".contains(d.kind)))))
             .collect();
         for (di, d) in ds.into_iter().enumerate() {
             let overlaps = |s: &Span| s.left < d.right - 0.5 && s.right() > d.left + 0.5 && s.top < d.bottom && s.bottom() > d.top;
-            // (a piece of the big-symbol font without a character stands at
-            // the bracket's place: the bracket is surely one, and not in
-            // the text yet)
-            let has_piece = page.lines.iter().flat_map(|l| &l.spans).any(|s| is_cmex(s) && overlaps(s) && s.text.chars().all(|c| c.is_whitespace() || c == '\u{fffd}'));
+            let has_piece = sure[di];
             let as_text = page.lines.iter().flat_map(|l| &l.spans).any(|s| {
                 // (the bracket is in the text, or it is a stroke of a large
                 // letter or figure of a title: the "1" of a chapter's number)

@@ -1838,7 +1838,10 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
                 // letters': the minus of −1 over 2 ends a little under the bar)
                 // (… by its own size: the small minus of a small fraction)
                 let sign = s.atom.is_none() && matches!(s.text.trim(), "−" | "±" | "∓") && s.bottom <= b.top + 0.35 * s.size.min(size) && s.cy() <= b.top - 0.3 * s.size.min(size);
-                within(s) && (s.bottom <= b.top + 2.0 || sign) && s.cy() >= b.top - 3.5 * size
+                // (so does the ℏ of the AMS font, a small one alone over
+                // the bar of ℏ/nm)
+                let hbar = s.atom.is_none() && s.text.trim() == "ℏ" && s.family.starts_with("MSBM") && s.bottom <= b.top + 0.35 * s.size.min(size) && s.cy() <= b.top - 0.15 * s.size.min(size);
+                within(s) && (s.bottom <= b.top + 2.0 || sign || hbar) && s.cy() >= b.top - 3.5 * size
             })
             .collect();
         // (a root sign in the denominator reaches up past the bar; its box
