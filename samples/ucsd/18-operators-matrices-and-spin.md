@@ -402,15 +402,7 @@ We put a detector in each of the beams split in $`u`$ to determine the intensity
 
 To solve this with the rotation matrices, we first determine the **state after the first apparatus**.
 
-```math
-( ) 1
-```
-
-It is just $`\psi_{+}^{( z )} = ( 0 )`$ with the usual basis. Now we **rotate to a new (primed) set of basis**
-
-```math
-( ) 0
-```
+It is just $`\psi_{+}^{( z )} = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}`$ with the usual basis. Now we **rotate to a new (primed) set of basis**
 
 **states** with the $`z^{\prime}`$ along the $`u`$ direction. This means a rotation through an angle $`\theta`$ about the y direction. The problem didn’t clearly define whether it is +$`\theta`$ or $`- \theta`$, but, if we only need to know the intensities, it doesn’t matter. So the **state coming out of the second apparatus** is
 
@@ -1740,15 +1732,9 @@ In any case, we can only cause transitions if the EM field is tuned so that $`\o
 
 # <a id="s-18-12homework-problems"></a>18.12 Homework Problems
 
-```math
-1
-```
+1. An angular momentum 1 system is in the state $`\chi = \tfrac{1}{\sqrt{2 6}} \begin{pmatrix} 1 \\ 3 \\ 4 \end{pmatrix}`$. What is the probability that
 
-1. An angular momentum 1 system is in the state $`\chi = \tfrac{1}{\sqrt{2 6}} \left( 3 \right)`$. What is the probability that
-
-```math
-a \text{ measurement of } L_{x} \text{ yields a value of } 0 ? \quad 4
-```
+a measurement of $`L_{x}`$ yields a value of 0?
 
 2. A spin $`\frac{1}{2}`$ particle is in an eigenstate of $`S_{y}`$ with eigenvalue +$`\frac{\hbar}{2}`$ at time $`t = 0`$. At that time it is placed in a constant magnetic field $`B`$ in the $`z`$ direction. The spin is allowed to precess for a time $`T`$. At that instant, the magnetic field is very quickly switched to the $`x`$ direction. After another time interval $`T`$, a measurement of the $`y`$ component of the spin is made. What is the probability that the value $`- \tfrac{\hbar}{2}`$ will be found?
 
@@ -1798,15 +1784,7 @@ What are the eigen-energies and corresponding eigenstates of the system? (This i
 
 2. Given that $`u_{n}`$ is the $`n^{th}`$ one dimensional harmonic oscillator energy eigenstate: a) Evaluate the matrix element $`\langle u_{m} | p^{2} | u_{n} \rangle`$. b) Write the upper left 5 by 5 part of the $`p^{2}`$ matrix.
 
-```math
-\sqrt{2}
-```
-
-3. A spin 1 system is in the following state in the usual $`Lz`$ basis: $`\chi = \tfrac{1}{\sqrt{5}} \left( 1 + i \right)`$. What
-
-```math
-- i
-```
+3. A spin 1 system is in the following state in the usual $`Lz`$ basis: $`\chi = \tfrac{1}{\sqrt{5}} \begin{pmatrix} \sqrt{2} \\ 1 + i \\ - i \end{pmatrix}`$. What
 
 is the probability that a measurement of the $`x`$ component of spin yields zero? What is the probability that a measurement of the $`y`$ component of spin yields +$`\hbar`$?
 

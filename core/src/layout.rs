@@ -2688,6 +2688,8 @@ struct Outline {
     pieces: usize,
     /// left, right, top, bottom
     bbox: (f32, f32, f32, f32),
+    /// the number of the page's font that a placed glyph is of
+    font: Option<u32>,
 }
 
 fn outline(d: &str) -> Outline {
@@ -2722,7 +2724,7 @@ fn outline(d: &str) -> Outline {
     let bbox = pts.iter().fold((f32::MAX, f32::MIN, f32::MAX, f32::MIN), |(a, b, c, e), p| {
         (a.min(p.0), b.max(p.0), c.min(p.1), e.max(p.1))
     });
-    Outline { pts, straight, curve, curves: d.matches('C').count(), pieces: 1, bbox }
+    Outline { pts, straight, curve, curves: d.matches('C').count(), pieces: 1, bbox, font: None }
 }
 
 /// Classify an outline (one glyph, or the stacked pieces of a tall
@@ -2840,6 +2842,8 @@ pub fn parse_svg_delims(svg: &str) -> Vec<Vec<Delim>> {
                     let x: f32 = attr(&tag, "x")?.parse().ok()?;
                     let y: f32 = attr(&tag, "y")?.parse().ok()?;
                     let mut o = o.clone();
+                    // ("glyph-4-5": the fifth glyph of the page's font 4)
+                    o.font = id.strip_prefix("glyph-").and_then(|r| r.split('-').next()).and_then(|f| f.parse().ok());
                     for p in o.pts.iter_mut() {
                         p.0 += x;
                         p.1 += y;
@@ -2859,8 +2863,11 @@ pub fn parse_svg_delims(svg: &str) -> Vec<Vec<Delim>> {
             for o in placed {
                 let (l, r, t, _) = bbox(&o);
                 let narrow = r - l <= 8.0;
+                // (the pieces of one bracket are glyphs of one font: the
+                // prime of the line below, right under a bracket's foot,
+                // is no piece of it)
                 let joined = narrow
-                    && stacks.iter_mut().rev().filter(|s| s.bbox.1 - s.bbox.0 <= 8.0 && s.bbox.3 >= t - 3.0).any(|s| {
+                    && stacks.iter_mut().rev().filter(|s| s.bbox.1 - s.bbox.0 <= 8.0 && s.bbox.3 >= t - 3.0 && s.font == o.font).any(|s| {
                         let (sl, sr, _, sb) = bbox(s);
                         let overlap = r.min(sr) - l.max(sl);
                         // (the pieces of a brace share only its thin stem)
@@ -4368,7 +4375,11 @@ fn group_lines(
                 if count < 4 {
                     return None;
                 }
-                let row = |n: &Span| between(n) && size_of(n) >= 0.85 * size_of(words) && (n.top - words.top).abs() > 2.0 && (n.top - words.top).abs() <= 0.8 * words.height;
+                // (nothing between the brackets on the line itself — or the
+                // middle one of three rows, the others a whole line away)
+                let on_line = groups[line].iter().any(|n| between(n) && size_of(n) >= 0.85 * size_of(words) && (n.top - words.top).abs() <= 2.0);
+                let reach = if on_line { 1.5 } else { 0.8 };
+                let row = |n: &Span| between(n) && size_of(n) >= 0.85 * size_of(words) && (n.top - words.top).abs() > 2.0 && (n.top - words.top).abs() <= reach * words.height;
                 let mut rows: Vec<(usize, usize)> = (0..groups.len()).flat_map(|k| (0..groups[k].len()).map(move |j| (k, j))).filter(|&(k, j)| row(&groups[k][j])).collect();
                 let above = rows.iter().any(|&(k, j)| groups[k][j].top < words.top);
                 let below = rows.iter().any(|&(k, j)| groups[k][j].top > words.top);
@@ -4382,9 +4393,11 @@ fn group_lines(
                     })
                     .collect();
                 rows.extend(signs);
-                // (nothing between the brackets on the line itself)
-                let on_line = groups[line].iter().any(|n| between(n) && size_of(n) >= 0.85 * size_of(words) && (n.top - words.top).abs() <= 2.0);
-                (above && below && !on_line && rows.iter().any(|&(k, _)| k != line)).then_some((a, b, rows, line))
+                // (a row of three is of a line that holds nothing else: a
+                // line of the sentence above or below, its words set one by
+                // one, has words outside the brackets too)
+                let own_lines = rows.iter().all(|&(k, _)| k == line || groups[k].iter().all(&between));
+                (above && below && (!on_line || own_lines) && rows.iter().any(|&(k, _)| k != line)).then_some((a, b, rows, line))
             })
         });
         let Some((a, b, mut rows, line)) = found else { break };
@@ -4400,8 +4413,15 @@ fn group_lines(
             }
         }
         let (first, second) = (a.max(b), a.min(b));
-        moved.push(symbols.remove(first));
-        moved.push(symbols.remove(second));
+        let (close, open) = (symbols.remove(first), symbols.remove(second));
+        // (the lower pieces of brackets drawn in pieces go with them)
+        let reach = 3.0 * open.height.max(size_of(&open));
+        let pieces: Vec<usize> = (0..symbols.len()).filter(|&k| [&open, &close].iter().any(|c| (symbols[k].left - c.left).abs() <= 1.0 && symbols[k].top > c.top && symbols[k].top - c.top <= reach && symbols[k].text.trim() == c.text.trim())).collect();
+        for k in pieces.into_iter().rev() {
+            moved.push(symbols.remove(k));
+        }
+        moved.push(close);
+        moved.push(open);
         groups[line].extend(moved);
         // (what a row's line had taken besides goes to the line it touches most)
         let body = size_of(&groups[line][0]);

@@ -1443,7 +1443,7 @@ the contractions being equal to the propagators $`S_{F} , D_{F}`$, and so on.
 
 <a id="fn-78"></a>**78.** The times symbol $`\times`$ was inserted. [↩](#fnref-78)
 
-<a id="fn-79"></a>**79.** This sentence read formerly “. . . the factor $`\epsilon ( q - \epsilon - \epsilon^{\prime} )`$ is a continuous function of $`( \epsilon + \epsilon^{\prime} )`$ and tends to $`{\epsilon\!\!\!/} ( ( q ) )`$ . . . ” [↩](#fnref-79)
+<a id="fn-79"></a>**79.** This sentence read formerly “. . . the factor $`\epsilon ( q - \epsilon - \epsilon^{\prime} )`$ is a continuous function of $`( \epsilon + \epsilon^{\prime} )`$ and tends to $`{\epsilon\!\!\!/} ( q )`$ . . . ” [↩](#fnref-79)
 
 <a id="fn-80"></a>**80.** A sentence, “Here, $`( k \cdot p_{y} )_{3}`$ denotes the scalar product of the space-like parts of the vectors $`k`$ and $`p_{y}`$.”, was deleted, because the expression $`\boldsymbol{k} \cdot \boldsymbol{p}_{y}`$ is self-explanatory. In both the first and second editions, scant attention was paid to three-vectors; sometimes an overhead arrow was used, but these were very few. In this typed version care has been taken to represent three-vectors with bold type, thus: $`( A_{x} ,A_{y} ,A_{z} ) = \boldsymbol{A}`$. [↩](#fnref-80)
 

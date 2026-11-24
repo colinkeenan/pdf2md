@@ -41,7 +41,7 @@ H_{1} = - \frac{1}{8} \frac{p_{e}^{4}}{m^{3} c^{2}} .
 
 Our energy eigenstates are not eigenfunctions of this operator so we will have to **treat it as a perturbation.**
 
-We can **estimate the size** of this correction compared to the Hydrogen binding energy by taking the ratio to the Hydrogen kinetic energy. (Remember that, in the hydrogen ground state, $`\langle \tfrac{p^{2}}{2 m} \langle \rangle = - E = \tfrac{1}{2} \alpha^{2} mc^{2}`$.)
+We can **estimate the size** of this correction compared to the Hydrogen binding energy by taking the ratio to the Hydrogen kinetic energy. (Remember that, in the hydrogen ground state, $`\left\langle \tfrac{p^{2}}{2 m} \right\rangle = - E = \tfrac{1}{2} \alpha^{2} mc^{2}`$.)
 
 ```math
 \frac{p^{4}}{8 m^{3} c^{2}} ÷ \frac{p^{2}}{2 m} = \frac{p^{2}}{4 m^{2} c^{2}} = \frac{( p^{2} / 2 m )}{2 mc^{2}} = \frac{1}{4} \alpha^{2}

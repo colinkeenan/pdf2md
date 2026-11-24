@@ -2512,7 +2512,7 @@ Instead of an equation which is second order in the time derivative, we can make
 Now rewriting in terms of $`\psi_{A} = \phi^{( R )} + \phi^{( L )}`$ and $`\psi_{B} = \phi^{( R )} - \phi^{( L )}`$ and ordering it as a matrix equation, we get an equation that can be written as a dot product between 4-vectors.
 
 ```math
-\begin{pmatrix} - i \hbar \tfrac{\partial}{\partial x_{0}} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} = \hbar \left[ \begin{pmatrix} 0 & - i \vec{\sigma} \cdot \vec{\nabla} \\ i \vec{\sigma} \cdot \vec{\nabla} & 0 \end{pmatrix} + \begin{pmatrix} \tfrac{\partial}{\partial x_{4}} & 0 \\ 0 & - \tfrac{\partial}{\partial x_{4}} \end{pmatrix} \right]
+\begin{pmatrix} - i \hbar \tfrac{\partial}{\partial x_{0}} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \vec{\nabla} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} = \hbar \left[ \begin{pmatrix} 0 & - i \vec{\sigma} \cdot \vec{\nabla} \\ i \vec{\sigma} \cdot \vec{\nabla} & 0 \end{pmatrix} + \begin{pmatrix} \tfrac{\partial}{\partial x_{4}} & 0 \\ 0 & - \tfrac{\partial}{\partial x_{4}} \end{pmatrix} \right]
 ```
 
 ```math
@@ -12443,7 +12443,7 @@ a) What is the ground state energy of muonic hydrogen (in eV).
 
 b) What is the“Bohr Radius” of the ground state of muonic hydrogen.
 
-12. A hydrogen atom is in the state: $`\psi ( \mathbf{r} ) = \frac{1}{\langle \sqrt{1 0} \rangle} ( \psi_{3 2 2} + 2 \psi_{2 2 1} + 2 i\psi_{2 2 0} + \psi_{1 1 - 1} )`$ Find the possible measured energies and the probabilities of each. Find the expected value of $`L_{z}`$.
+12. A hydrogen atom is in the state: $`\psi ( \mathbf{r} ) = \tfrac{1}{\sqrt{1 0}} ( \psi_{3 2 2} + 2 \psi_{2 2 1} + 2 i\psi_{2 2 0} + \psi_{1 1 - 1} )`$ Find the possible measured energies and the probabilities of each. Find the expected value of $`L_{z}`$.
 
 13. Find the difference in frequency between light emitted from the 2$`P \to 1 S`$ transition in Hydrogen and light from the same transition in Deuterium. (Deuterium is an isotope of Hydrogen with a proton and a neutron in the nucleus.)
 
@@ -13156,15 +13156,7 @@ We put a detector in each of the beams split in $`u`$ to determine the intensity
 
 To solve this with the rotation matrices, we first determine the **state after the first apparatus**.
 
-```math
-( ) 1
-```
-
-It is just $`\psi_{+}^{( z )} = ( 0 )`$ with the usual basis. Now we **rotate to a new (primed) set of basis**
-
-```math
-( ) 0
-```
+It is just $`\psi_{+}^{( z )} = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}`$ with the usual basis. Now we **rotate to a new (primed) set of basis**
 
 **states** with the $`z^{\prime}`$ along the $`u`$ direction. This means a rotation through an angle $`\theta`$ about the y direction. The problem didn’t clearly define whether it is +$`\theta`$ or $`- \theta`$, but, if we only need to know the intensities, it doesn’t matter. So the **state coming out of the second apparatus** is
 
@@ -14494,15 +14486,9 @@ In any case, we can only cause transitions if the EM field is tuned so that $`\o
 
 # <a id="s-18-12homework-problems"></a>18.12 Homework Problems
 
-```math
-1
-```
+1. An angular momentum 1 system is in the state $`\chi = \tfrac{1}{\sqrt{2 6}} \begin{pmatrix} 1 \\ 3 \\ 4 \end{pmatrix}`$. What is the probability that
 
-1. An angular momentum 1 system is in the state $`\chi = \tfrac{1}{\sqrt{2 6}} \left( 3 \right)`$. What is the probability that
-
-```math
-a \text{ measurement of } L_{x} \text{ yields a value of } 0 ? \quad 4
-```
+a measurement of $`L_{x}`$ yields a value of 0?
 
 2. A spin $`\frac{1}{2}`$ particle is in an eigenstate of $`S_{y}`$ with eigenvalue +$`\frac{\hbar}{2}`$ at time $`t = 0`$. At that time it is placed in a constant magnetic field $`B`$ in the $`z`$ direction. The spin is allowed to precess for a time $`T`$. At that instant, the magnetic field is very quickly switched to the $`x`$ direction. After another time interval $`T`$, a measurement of the $`y`$ component of the spin is made. What is the probability that the value $`- \tfrac{\hbar}{2}`$ will be found?
 
@@ -14552,15 +14538,7 @@ What are the eigen-energies and corresponding eigenstates of the system? (This i
 
 2. Given that $`u_{n}`$ is the $`n^{th}`$ one dimensional harmonic oscillator energy eigenstate: a) Evaluate the matrix element $`\langle u_{m} | p^{2} | u_{n} \rangle`$. b) Write the upper left 5 by 5 part of the $`p^{2}`$ matrix.
 
-```math
-\sqrt{2}
-```
-
-3. A spin 1 system is in the following state in the usual $`Lz`$ basis: $`\chi = \tfrac{1}{\sqrt{5}} \left( 1 + i \right)`$. What
-
-```math
-- i
-```
+3. A spin 1 system is in the following state in the usual $`Lz`$ basis: $`\chi = \tfrac{1}{\sqrt{5}} \begin{pmatrix} \sqrt{2} \\ 1 + i \\ - i \end{pmatrix}`$. What
 
 is the probability that a measurement of the $`x`$ component of spin yields zero? What is the probability that a measurement of the $`y`$ component of spin yields +$`\hbar`$?
 
@@ -17328,7 +17306,7 @@ H_{1} = - \frac{1}{8} \frac{p_{e}^{4}}{m^{3} c^{2}} .
 
 Our energy eigenstates are not eigenfunctions of this operator so we will have to **treat it as a perturbation.**
 
-We can **estimate the size** of this correction compared to the Hydrogen binding energy by taking the ratio to the Hydrogen kinetic energy. (Remember that, in the hydrogen ground state, $`\langle \tfrac{p^{2}}{2 m} \langle \rangle = - E = \tfrac{1}{2} \alpha^{2} mc^{2}`$.)
+We can **estimate the size** of this correction compared to the Hydrogen binding energy by taking the ratio to the Hydrogen kinetic energy. (Remember that, in the hydrogen ground state, $`\left\langle \tfrac{p^{2}}{2 m} \right\rangle = - E = \tfrac{1}{2} \alpha^{2} mc^{2}`$.)
 
 ```math
 \frac{p^{4}}{8 m^{3} c^{2}} ÷ \frac{p^{2}}{2 m} = \frac{p^{2}}{4 m^{2} c^{2}} = \frac{( p^{2} / 2 m )}{2 mc^{2}} = \frac{1}{4} \alpha^{2}
@@ -24249,7 +24227,7 @@ i \hbar \vec{\sigma} \cdot \vec{\nabla} \psi_{A} + i \hbar \frac{\partial}{\part
 ```
 
 ```math
-\begin{pmatrix} - i \hbar \tfrac{\partial}{\partial x_{0}} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} + mc \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = 0
+\begin{pmatrix} - i \hbar \tfrac{\partial}{\partial x_{0}} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \vec{\nabla} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} + mc \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = 0
 ```
 
 Remember that $`\psi_{A}`$ and $`\psi_{B}`$ are two component spinors so **this is an equation in 4 components**.
@@ -24257,7 +24235,7 @@ Remember that $`\psi_{A}`$ and $`\psi_{B}`$ are two component spinors so **this 
 We can rewrite the matrix above as a dot product between 4-vectors. The matrix has a dot product in 3 dimensions and a time component
 
 ```math
-\begin{pmatrix} - i \hbar \tfrac{\partial}{\partial x_{0}} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} = \hbar \left[ \begin{pmatrix} 0 & - i \vec{\sigma} \cdot \vec{\nabla} \\ i \vec{\sigma} \cdot \vec{\nabla} & 0 \end{pmatrix} + \begin{pmatrix} \tfrac{\partial}{\partial x_{4}} & 0 \\ 0 & - \tfrac{\partial}{\partial x_{4}} \end{pmatrix} \right]
+\begin{pmatrix} - i \hbar \tfrac{\partial}{\partial x_{0}} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \vec{\nabla} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} = \hbar \left[ \begin{pmatrix} 0 & - i \vec{\sigma} \cdot \vec{\nabla} \\ i \vec{\sigma} \cdot \vec{\nabla} & 0 \end{pmatrix} + \begin{pmatrix} \tfrac{\partial}{\partial x_{4}} & 0 \\ 0 & - \tfrac{\partial}{\partial x_{4}} \end{pmatrix} \right]
 ```
 
 ```math
@@ -24277,7 +24255,7 @@ The **4 by 4 matrices** $`\gamma_{\mu}`$ are given by.
 With this definition, the relativistic equation can be simplified a great deal.
 
 ```math
-\begin{pmatrix} - i \hbar \tfrac{\partial}{\partial x_{0}} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} + mc \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = 0
+\begin{pmatrix} - i \hbar \tfrac{\partial}{\partial x_{0}} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \vec{\nabla} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} + mc \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = 0
 ```
 
 ```math
@@ -24445,7 +24423,7 @@ We know that our non-relativistic Quantum Mechanics only needed a two component 
 First, we can write the **two component equation that is equivalent to the Dirac equation**. Assume that the solution has the **usual time dependence** $`e^{- iEt/ \hbar}`$. We start from the equation in $`\psi_{A}`$ and $`\psi_{B}`$.
 
 ```math
-\begin{pmatrix} - i \hbar \tfrac{\partial}{\partial x_{0}} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \nabla \vec{\{} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} + mc \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = 0
+\begin{pmatrix} - i \hbar \tfrac{\partial}{\partial x_{0}} & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\ i \hbar \vec{\sigma} \cdot \vec{\nabla} & i \hbar \tfrac{\partial}{\partial x_{0}} \end{pmatrix} \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} + mc \begin{pmatrix} \psi_{A} \\ \psi_{B} \end{pmatrix} = 0
 ```
 
 ```math

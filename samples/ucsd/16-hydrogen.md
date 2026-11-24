@@ -669,7 +669,7 @@ a) What is the ground state energy of muonic hydrogen (in eV).
 
 b) What is the“Bohr Radius” of the ground state of muonic hydrogen.
 
-12. A hydrogen atom is in the state: $`\psi ( \mathbf{r} ) = \frac{1}{\langle \sqrt{1 0} \rangle} ( \psi_{3 2 2} + 2 \psi_{2 2 1} + 2 i\psi_{2 2 0} + \psi_{1 1 - 1} )`$ Find the possible measured energies and the probabilities of each. Find the expected value of $`L_{z}`$.
+12. A hydrogen atom is in the state: $`\psi ( \mathbf{r} ) = \tfrac{1}{\sqrt{1 0}} ( \psi_{3 2 2} + 2 \psi_{2 2 1} + 2 i\psi_{2 2 0} + \psi_{1 1 - 1} )`$ Find the possible measured energies and the probabilities of each. Find the expected value of $`L_{z}`$.
 
 13. Find the difference in frequency between light emitted from the 2$`P \to 1 S`$ transition in Hydrogen and light from the same transition in Deuterium. (Deuterium is an isotope of Hydrogen with a proton and a neutron in the nucleus.)
 

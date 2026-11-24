@@ -3750,7 +3750,7 @@ There is one difficulty in the preceding theory. We assume according to (220)
 \langle a_{k\mu} a_{k^{\prime} \lambda}^{*} \rangle_{o} = \pm \delta^{3} ( \boldsymbol{k} - \boldsymbol{k}^{\prime} ) \delta_{\mu \lambda} \qquad \text{(220a)}
 ```
 
-Here the plus sign holds for $`\mu = 1 , 2 , 3`$; the minus sign for $`\mu = 4`$. Now if the operators $`a_{k\mu} ,a_{k\mu}^{*}`$ are represented in the usual way by matrices, as it is done in the elementary theory of the harmonic oscillator$`( )`$ (see Wentzel p. 33, Eq. (6.16)), the vacuum expectation values of a product $`( a_{k\mu} a_{k\mu}^{*} )`$ will always be _positive_, i.e. the plus sign should hold in (220a) for $`\mu = 4`$ also. In fact $`( a_{k\mu} a_{k\mu}^{*} )`$ will have a positive expectation value in any state whatever, if the photon oscillators are treated as ordinary$`( )`$ elementary oscillators.
+Here the plus sign holds for $`\mu = 1 , 2 , 3`$; the minus sign for $`\mu = 4`$. Now if the operators $`a_{k\mu} ,a_{k\mu}^{*}`$ are represented in the usual way by matrices, as it is done in the elementary theory of the harmonic oscillator (see Wentzel p. 33, Eq. (6.16)), the vacuum expectation values of a product $`( a_{k\mu} a_{k\mu}^{*} )`$ will always be _positive_, i.e. the plus sign should hold in (220a) for $`\mu = 4`$ also. In fact $`( a_{k\mu} a_{k\mu}^{*} )`$ will have a positive expectation value in any state whatever, if the photon oscillators are treated as ordinary elementary oscillators.
 
 Therefore we must distinguish between the scalar product $`( \Psi_{1}^{*} , \Psi_{2} )`$ as we have defined it by our covariant theory, and the scalar product $`( \Psi_{1}^{*} , \Psi_{2} )_{E}`$ which one would calculate using the explicit matrix representation of the operators. The product $`( \Psi_{1}^{*} , \Psi_{2} )_{E}`$ has no physical significance, because the matrix representations of the $`a_{k 4}`$ refer to states with photons polarized purely in the time dimension, which cannot occur physically. However, it is convenient also to be able to use the matrix representations in practice.
 
@@ -8600,7 +8600,7 @@ the contractions being equal to the propagators $`S_{F} , D_{F}`$, and so on.
 
 <a id="fn-78"></a>**78.** The times symbol $`\times`$ was inserted. [↩](#fnref-78)
 
-<a id="fn-79"></a>**79.** This sentence read formerly “. . . the factor $`\epsilon ( q - \epsilon - \epsilon^{\prime} )`$ is a continuous function of $`( \epsilon + \epsilon^{\prime} )`$ and tends to $`{\epsilon\!\!\!/} ( ( q ) )`$ . . . ” [↩](#fnref-79)
+<a id="fn-79"></a>**79.** This sentence read formerly “. . . the factor $`\epsilon ( q - \epsilon - \epsilon^{\prime} )`$ is a continuous function of $`( \epsilon + \epsilon^{\prime} )`$ and tends to $`{\epsilon\!\!\!/} ( q )`$ . . . ” [↩](#fnref-79)
 
 <a id="fn-80"></a>**80.** A sentence, “Here, $`( k \cdot p_{y} )_{3}`$ denotes the scalar product of the space-like parts of the vectors $`k`$ and $`p_{y}`$.”, was deleted, because the expression $`\boldsymbol{k} \cdot \boldsymbol{p}_{y}`$ is self-explanatory. In both the first and second editions, scant attention was paid to three-vectors; sometimes an overhead arrow was used, but these were very few. In this typed version care has been taken to represent three-vectors with bold type, thus: $`( A_{x} ,A_{y} ,A_{z} ) = \boldsymbol{A}`$. [↩](#fnref-80)
 
