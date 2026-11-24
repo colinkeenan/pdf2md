@@ -371,7 +371,37 @@ pub fn mend(latex: &str) -> String {
     }
     // (what is left of them, inside an index of its own or apart: an
     // empty base for the second)
-    bold_symbols(&crate::mathtex::fix_double_scripts(&t))
+    word_hyphens(&bold_symbols(&crate::mathtex::fix_double_scripts(&t)))
+}
+
+/// Words with a hyphen that a recognizer set as upright math
+/// ("x\mathrm{-direction}", "\mathrm{half-integer}") are set as text:
+/// in math the hyphen is a minus sign, with a minus sign's length and
+/// spaces. Only letters, spaces and stops beside the hyphen: "\mathrm{-1}"
+/// and what holds a command or an index stay as they are.
+fn word_hyphens(latex: &str) -> String {
+    const OPEN: &str = "\\mathrm{";
+    let mut out = String::with_capacity(latex.len());
+    let mut rest = latex;
+    while let Some(at) = rest.find(OPEN) {
+        let inside = &rest[at + OPEN.len()..];
+        let words = inside.find('}').map(|end| &inside[..end]).filter(|w| {
+            w.contains('-') && w.chars().any(char::is_alphabetic) || w.starts_with("-,")
+        });
+        match words.filter(|w| w.chars().all(|c| c.is_alphabetic() || " ~,.;:-".contains(c))) {
+            Some(w) => {
+                out.push_str(&rest[..at]);
+                out.push_str(&format!("\\text{{{w}}}"));
+                rest = &inside[w.len() + 1..];
+            }
+            None => {
+                out.push_str(&rest[..at + OPEN.len()]);
+                rest = inside;
+            }
+        }
+    }
+    out.push_str(rest);
+    out
 }
 
 /// A bold Greek letter is written `\boldsymbol{\mu}`: `\mathbf{\mu}`, as
@@ -2127,6 +2157,15 @@ mod tests {
         assert_eq!(bold_symbols("F_{z}=(\\mathbf{\\mu}\\cdot\\mathbf{B})"), "F_{z}=(\\boldsymbol{\\mu}\\cdot\\mathbf{B})");
         assert_eq!(bold_symbols("\\mathbf{ \\nabla } \\times \\mathbf{\\hat{n}} + \\mathbf{\\Sigma}"), "\\boldsymbol{\\nabla} \\times \\mathbf{\\hat{n}} + \\mathbf{\\Sigma}");
         assert_eq!(bold_symbols("\\mathbf{x^{\\prime}} \\mathbf{"), "\\mathbf{x^{\\prime}} \\mathbf{");
+    }
+
+    #[test]
+    fn a_hyphen_in_upright_words_is_no_minus() {
+        assert_eq!(word_hyphens("S_{z}+\\rightarrow\\hat{\\epsilon}\\quad\\mathrm{in~}x\\mathrm{-direction},"), "S_{z}+\\rightarrow\\hat{\\epsilon}\\quad\\mathrm{in~}x\\text{-direction},");
+        assert_eq!(word_hyphens("x\\mathrm{-,~}y\\mathrm{-polarized~light} \\mathrm{half-integer}"), "x\\text{-,~}y\\text{-polarized~light} \\text{half-integer}");
+        // (a number, an index, a command, or no hyphen: as they are)
+        let stay = "\\mathrm{-1} \\mathrm{cm^{-1}} \\mathrm{e-\\mu} \\mathrm{erg} \\mathrm{-} \\mathrm{";
+        assert_eq!(word_hyphens(stay), stay);
     }
 
     #[test]
