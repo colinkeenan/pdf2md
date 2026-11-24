@@ -3869,7 +3869,10 @@ fn group_lines(
     // (dots of "and so on" after the rest of their size: raised among the
     // indices of a symbol, they would begin the line with a box half a line
     // too high, and the lower indices of the line above would fall into it)
-    let dots_only = |s: &Span| !s.text.trim().is_empty() && s.text.chars().all(|c| c.is_whitespace() || matches!(c, '.' | '…' | '·' | '⋯'));
+    // (so is the arrow set over a vector: its box stands higher than the
+    // letters', and the letters of an index under the line would only
+    // touch it)
+    let dots_only = |s: &Span| !s.text.trim().is_empty() && (s.text.chars().all(|c| c.is_whitespace() || matches!(c, '.' | '…' | '·' | '⋯')) || s.text.trim() == "\u{20d7}");
     spans.sort_by(|a, b| {
         size_of(b)
             .total_cmp(&size_of(a))
@@ -4736,7 +4739,10 @@ pub fn make_line_but(mut g: Vec<Span>, size_of: &dyn Fn(&Span) -> f32, big_symbo
             }
         }
     }
-    g.sort_by(|a, b| a.left.total_cmp(&b.left));
+    // (an arrow at its letter's place stands before the letter, as it
+    // did when it was the first piece of its line)
+    let arrow = |s: &Span| s.text.trim() == "\u{20d7}";
+    g.sort_by(|a, b| a.left.total_cmp(&b.left).then(arrow(b).cmp(&arrow(a))));
     Line {
         top: main_top,
         left: g.first().map_or(0.0, |s| s.left),
