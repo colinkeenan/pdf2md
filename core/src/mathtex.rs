@@ -1273,6 +1273,16 @@ fn put_accents(mut spans: Vec<MSpan>) -> Vec<MSpan> {
         "´" => Some("acute"),
         _ => None,
     };
+    // The wide tilde and the wide hat of TeX's big-symbol font come as the
+    // letters of their places there, "e" to "g" and "b" to "d" (three
+    // sizes each): they are the accent of the letter they are drawn over
+    for s in spans.iter_mut().filter(|s| s.atom.is_none() && s.cmex() && !s.family.contains('/')) {
+        match s.text.trim() {
+            "e" | "f" | "g" => s.text = "˜".into(),
+            "b" | "c" | "d" => s.text = "ˆ".into(),
+            _ => {}
+        }
+    }
     // "Id⃗l": an arrow inside a piece of TeX's math letters stands before
     // the letter it is drawn over, as at a piece's head: the piece is cut
     // in front of it (by the letters' usual widths; the arrow has none)
