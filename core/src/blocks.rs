@@ -593,9 +593,19 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
             // (not in a line that is bold altogether, a title)
             let is_bold = |s: &crate::layout::Span| s.bold || crate::layout::is_bold_font(doc.family(s));
             let bold_letter = is_bold(s) && t.len() == 1 && t.starts_with(|c: char| c.is_ascii_alphabetic()) && s.link.is_none() && spans.iter().any(|o| !doc.is_math(o) && !is_bold(o) && o.text.chars().filter(|c| c.is_alphabetic()).count() >= 3);
+            // (a sign with its number behind a blank, "= 2463", right before
+            // a tall bracket: one piece of the text font between the
+            // formula's letters and its bracket. Left as words, it cut the
+            // formula in two, and the bracket's half, all small type, had
+            // its exponent on the line.)
+            let before_bracket = t.starts_with(['=', '+', '−', '<', '>'])
+                && t.split_whitespace().count() == 2
+                && t.split_whitespace().next().is_some_and(|w| w.chars().count() == 1)
+                && t.split_whitespace().nth(1).is_some_and(|w| w.chars().all(|c| c.is_ascii_digit() || c == '.') && w.starts_with(|c: char| c.is_ascii_digit()) && w.ends_with(|c: char| c.is_ascii_digit()))
+                && spans.get(i + 1).is_some_and(|nx| doc.family(nx).starts_with("CMEX") && matches!(nx.text.trim(), "(" | "[") && nx.left - s.right() < st.body);
             if math || s.script != Script::Normal || accent_over_math || bold_letter {
                 K::Math
-            } else if !reference(i) && !t.is_empty() && t.chars().all(|c| c.is_ascii_digit() || "=+−-–()[]/<>|,.;:·×*!′".contains(c)) {
+            } else if !reference(i) && !t.is_empty() && (t.chars().all(|c| c.is_ascii_digit() || "=+−-–()[]/<>|,.;:·×*!′".contains(c)) || before_bracket) {
                 K::Op
             } else {
                 K::Text
