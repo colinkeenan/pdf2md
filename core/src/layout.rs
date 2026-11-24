@@ -2931,13 +2931,23 @@ fn insert_delims(doc: &mut Doc, delims: Vec<Vec<Delim>>) {
             .collect();
         for (di, d) in ds.into_iter().enumerate() {
             let overlaps = |s: &Span| s.left < d.right - 0.5 && s.right() > d.left + 0.5 && s.top < d.bottom && s.bottom() > d.top;
+            // (a piece of the big-symbol font without a character stands at
+            // the bracket's place: the bracket is surely one, and not in
+            // the text yet)
+            let has_piece = page.lines.iter().flat_map(|l| &l.spans).any(|s| is_cmex(s) && overlaps(s) && s.text.chars().all(|c| c.is_whitespace() || c == '\u{fffd}'));
             let as_text = page.lines.iter().flat_map(|l| &l.spans).any(|s| {
                 // (the bracket is in the text, or it is a stroke of a large
                 // letter or figure of a title: the "1" of a chapter's number)
                 // (in TeX's symbol font the brackets are the letters h i ⟨⟩,
                 // f g {}, j |: the ket of "\left| ψ \right>" at its usual size)
                 let symbols = fonts.get(s.font).is_some_and(|f| f.family.starts_with("CMSY"));
-                !is_cmex(s) && overlaps(s) && (s.text.trim().chars().any(|c| "()[]|{}⟨⟩".contains(c)) || (symbols && s.text.trim().chars().any(|c| "hifgj".contains(c))) || (size_of(s) >= 1.3 * body && s.text.chars().any(char::is_alphanumeric)))
+                // (a piece of several words with another bracket in it is not
+                // this one, which stands in a blank of the piece: "1)  log"
+                // with a tall "[" before the "log" — unless the word at the
+                // bracket's place has one)
+                let brackets = |t: &str| t.chars().any(|c| "()[]|{}⟨⟩".contains(c));
+                let in_text = if has_piece && s.text.trim().contains(' ') && !s.text.contains(d.kind) { split_span_words(s).iter().any(|w| overlaps(w) && brackets(&w.text)) } else { brackets(s.text.trim()) };
+                !is_cmex(s) && overlaps(s) && (in_text || (symbols && s.text.trim().chars().any(|c| "hifgj".contains(c))) || (size_of(s) >= 1.3 * body && s.text.chars().any(char::is_alphanumeric)))
             });
             // (a stroke of a letter drawn as a bare outline — a glyph the PDF
             // uses once may come so: the "j" of a heading — lies inside a
