@@ -589,6 +589,7 @@ pub fn read_drawings(doc: &mut Doc, path: &Path, pages: Option<(u32, u32)>) {
         for (page, s) in doc.pages.iter_mut().zip(all(&parts, parse_svg_shades)) {
             page.shades = s;
         }
+        roots_to_radicands(doc);
         mark_overlines(doc);
         if tex_math {
             insert_delims(doc, all(&parts, parse_svg_delims));
@@ -3382,6 +3383,76 @@ pub fn parse_svg_shades(svg: &str) -> Vec<Vec<(Rule, f32)>> {
         pages.push(shades);
     }
     pages
+}
+
+/// A root sign is of the line that holds what stands under its bar. Lines
+/// are put together from the heights of their pieces, and the box of a
+/// root sign stands high: between a sentence and the display under it the
+/// sign went to the sentence (the display then read "e = e_B" for
+/// e = √Z₃ e_B), or the root of a small matrix in a sentence to the
+/// display over it. The bar begins at the sign's right edge, in its box; the
+/// line with the most pieces right under the bar, within its width, is
+/// the sign's.
+fn roots_to_radicands(doc: &mut Doc) {
+    let fonts = doc.fonts.clone();
+    let size_of = |s: &Span| fonts.get(s.font).map_or(s.height, |f| f.size);
+    // (the sign by its character, or by its place in TeX's fonts of signs)
+    let root = |s: &Span| {
+        let family = fonts.get(s.font).map_or("", |f| f.family.as_str()).to_uppercase();
+        let t = s.text.trim();
+        t == "√" || (family.starts_with("CMEX") && matches!(t, "p" | "q" | "r" | "s")) || (family.starts_with("CMSY") && t == "p")
+    };
+    for page in doc.pages.iter_mut() {
+        loop {
+            let mut step: Option<(usize, usize, usize)> = None;
+            'find: for (li, line) in page.lines.iter().enumerate() {
+                for (si, s) in line.spans.iter().enumerate() {
+                    if !root(s) {
+                        continue;
+                    }
+                    if std::env::var_os("PDF2MD_ROOTDEBUG").is_some() {
+                        let near: Vec<_> = page.rules.iter().filter(|r| (r.top - s.top).abs() < 30.0 && (r.left - s.right()).abs() < 40.0).map(|r| (r.left.round(), r.right.round(), r.top.round())).collect();
+                        eprintln!("ROOT {:?} line {li} left {:.1} right {:.1} top {:.1} h {:.1} near {:?}", s.text, s.left, s.right(), s.top, s.height, near);
+                    }
+                    let Some(bar) = page.rules.iter().find(|r| (r.left - s.right()).abs() <= 3.0 && r.top >= s.top - 3.0 && r.top <= s.bottom() + 3.0 && r.right - r.left >= 2.0) else { continue };
+                    let reach = 1.3 * size_of(s).max(s.height);
+                    let under = |l: &Line| l.spans.iter().filter(|n| !root(n) && !n.text.trim().is_empty() && n.left >= bar.left - 2.0 && n.left + n.width / 2.0 <= bar.right + 2.0 && n.top >= bar.bottom - 3.0 && n.top <= bar.bottom + reach).map(|n| n.top - bar.bottom).fold(f32::MAX, f32::min);
+                    // (its own line has nothing at all under the bar: a
+                    // radicand that is part of a longer piece stays)
+                    let here = line.spans.iter().filter(|n| !root(n) && !n.text.trim().is_empty() && n.left < bar.right && n.right() > bar.left && n.top >= bar.bottom - 0.6 * reach && n.top <= bar.bottom + reach).count();
+                    // (the line whose piece stands nearest under the bar; a
+                    // line in type as large as the sign's own: the halves
+                    // of a small fraction in a sentence are put together
+                    // later, root and all)
+                    let best = (0..page.lines.len()).filter(|&m| m != li).map(|m| (under(&page.lines[m]), m)).min_by(|a, b| a.0.total_cmp(&b.0));
+                    if let Some((gap, m)) = best {
+                        // (… and clear of its own line: the rows of a
+                        // fraction that stands in a sentence reach into
+                        // the sentence's line, and are put together later)
+                        let clear = page.lines[m].top >= line.top + line.size - 2.0 || page.lines[m].top + page.lines[m].size <= line.top + 2.0;
+                        if here == 0 && gap < f32::MAX && page.lines[m].size >= 0.85 * line.size && clear {
+                            if std::env::var_os("PDF2MD_ROOTDEBUG").is_some() {
+                                eprintln!("ROOTMOVE from line {li} (size {:.1}, top {:.1}, {:?}) to {m} (size {:.1}, top {:.1}, {:?}) gap {gap:.1} bar {:?}", line.size, line.top, line.spans.iter().map(|n| n.text.chars().take(12).collect::<String>()).collect::<Vec<_>>(), page.lines[m].size, page.lines[m].top, page.lines[m].spans.iter().map(|n| n.text.chars().take(12).collect::<String>()).take(8).collect::<Vec<_>>(), (bar.left.round(), bar.right.round(), bar.top.round()));
+                            }
+                            step = Some((li, si, m));
+                            break 'find;
+                        }
+                    }
+                }
+            }
+            let Some((li, si, m)) = step else { break };
+            let s = page.lines[li].spans.remove(si);
+            page.lines[m].spans.push(s);
+            for k in [li, m] {
+                let line = &mut page.lines[k];
+                if !line.spans.is_empty() {
+                    let (col, bars) = (line.col, std::mem::take(&mut line.bars));
+                    *line = Line { col, bars, ..make_line(std::mem::take(&mut line.spans), &size_of) };
+                }
+            }
+            page.lines.retain(|l| !l.spans.is_empty());
+        }
+    }
 }
 
 /// A bar just above a single span, with nothing above the bar (so it is not

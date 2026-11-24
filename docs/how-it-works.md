@@ -376,6 +376,17 @@ The names cover the big symbols, brackets and roots of a big-symbol font, the an
 |---|---|
 | `PDF2MD_GLYPHDEBUG=1` | glyphs without a known name, glyphs that found no place, and the count written |
 
+
+### From the hand corrections of nine books: faults that came again
+
+*Worked out on: the equations corrected by hand in Lucid and in MIT's Field Theory II. Each rule was run over all nine books and every changed equation looked at; 39 hand corrections are made by rule now.*
+
+* **A bar of "taken at" inside a bracket.** A tall bar with a small condition at its foot closes the tall bracket before it only if no bracket of that one's own kind comes behind the bar to close it: in "det [ δf/δΛ |_{Λ=0} ]" the bar had closed the "[", and the "]" was left over with an opening one made up for it further left.
+* **A line over several pieces.** A bar drawn close over the pieces of one row that fill its width, with nothing over it, is a line over them all (`\overline`: the mean of |ℳ|²). The bar over one piece is found on the page already. Not a bar with something over it within a line's height (a fraction whose upper half the rules lost), not one of two bars of one length (a root's bar drawn twice, the edges of a frame), not a root's bar whose sign stands a little way off.
+* **A raised index a little way behind its letter.** In a matrix or a system, small pieces that touch no letter and stand one under the other are a small column of their own (the 2×2 blocks of β). A script letter leans, and its exponent is set clear of it: the upper indices of the three rows of a system, one under the other behind ℱ, had been gathered into a column on the middle row. A small piece raised or lowered within a third of a letter's size behind a letter is that letter's.
+* **Systems one under the other.** A display of two systems between braces, one under the other, came out as one line with the two side by side, the wider one first. Where tall braces in pairs, each around two rows at least that have their own "=", stand clear of each other in height (and of a row of the display over or under them), each part is built by itself and they are written as the rows of `gathered` (21 displays in Lucid, 6 of them corrected by hand before).
+* **A root sign and its line.** Lines are put together from the heights of their pieces, and the box of a root sign stands high: between a sentence and the display under it the sign went to the sentence ("e = e_B" for e = √Z₃ e_B). The sign goes to the line whose pieces stand nearest under its bar, if its own line has nothing there and the other is in type as large and clear of it in height (the rows of a fraction that stands in a sentence are left to be put together later).
+
 ### Notation lists and pictures
 
 *Worked out on: Dyson. Fitted.*
