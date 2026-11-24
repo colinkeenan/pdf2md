@@ -149,6 +149,11 @@ impl FontInfo {
     fn doubled(&self, code: u8) -> Option<char> {
         const LETTERS: [char; 26] = ['𝔸', '𝔹', 'ℂ', '𝔻', '𝔼', '𝔽', '𝔾', 'ℍ', '𝕀', '𝕁', '𝕂', '𝕃', '𝕄', 'ℕ', '𝕆', 'ℙ', 'ℚ', 'ℝ', '𝕊', '𝕋', '𝕌', '𝕍', '𝕎', '𝕏', '𝕐', 'ℤ'];
         let name = self.names.get(&code)?;
+        // (… or it holds one glyph only, at the place of the figure 1:
+        // the 1 with a doubled stem, the identity)
+        if self.names.len() == 1 && code == b'1' {
+            return Some('𝟙');
+        }
         let letter = u8::from_str_radix(name.strip_prefix('x')?, 16).ok().filter(|_| name.len() == 3)?;
         letter.is_ascii_uppercase().then(|| LETTERS[(letter - b'A') as usize])
     }

@@ -476,6 +476,8 @@ A correction made by hand is of what the rules built (the `pdf2md:fix` mark hold
 * **A bar over a letter of the text font.** Ψ̄ written with an upright capital, the 3̄ of a representation in bold: the bar is a piece of its own, and only over a letter of a math font did a rule set it. Over an upright Greek capital or a figure of the text font it is written into that letter's piece (not over an h: that bar is the stroke of ħ).
 * **Rows of a centred block.** A line under a centred one that ends where it ends, in from both margins, is the next row of the same block.
 * **A slash between a letter and its index** ("k/_{2}") is the letter's stroke.
+* **Blackboard capitals from a font without a name.** Some of these PDFs hold TeX's blackboard letters only as drawings, dot by dot, in a font with no name and no table of characters: `pdftohtml` gives each as "�" in a font it calls by another's name, at a size that says nothing. The glyphs are named by their codes there ("x52" for the R of the reals), so they are written ℝ, ℤ, 𝕀, as letters of the math font nearest their height, and are part of their formulas (`\mathbb{R}^{1,3}`, `S^3/\mathbb{Z}_2`). Where such a font holds one glyph only, at the place of the figure 1, it is the 1 with a doubled stem; a piece given no height at all stands on its line's foot, at the book's size.
+* **A bar that leans.** Over a tall slanted letter (b, d) the bar stands to the right, and its middle may fall just behind the letter's box, over the letter's index: it is the letter's where it begins well inside it.
 
 ## PDFs made from ebooks
 

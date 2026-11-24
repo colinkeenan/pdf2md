@@ -1005,6 +1005,7 @@ fn restore_slots(doc: &mut Doc, path: &Path, parts: &[(usize, String)]) {
     let families: Vec<String> = doc.fonts.iter().map(|f| f.family.clone()).collect();
     let sizes: Vec<f32> = doc.fonts.iter().map(|f| f.size).collect();
     let one_column = doc.gutter.is_none();
+    let body = doc.body_size;
     let same = |base: &str, family: &str| base == family || base.strip_prefix(family).is_some_and(|rest| rest.starts_with('-'));
     let (mut written, mut left) = (0, 0);
     for (page, placed) in doc.pages.iter_mut().zip(uses) {
@@ -1168,9 +1169,16 @@ fn restore_slots(doc: &mut Doc, path: &Path, parts: &[(usize, String)]) {
         }
         for (li, si) in drawn_letters {
             let s = &mut page.lines[li].spans[si];
-            let near = |k: &usize| (sizes[*k] - 1.1 * s.height).abs();
+            // (a piece given no height at all stands on its line's foot: it
+            // is a letter of the book's own size there)
+            let flat = s.height < 2.0;
+            let want = if flat { body } else { 1.1 * s.height };
+            let near = |k: &usize| (sizes[*k] - want).abs();
             if let Some(k) = (0..families.len()).filter(|&k| families[k].starts_with("CMMI")).min_by(|a, b| near(a).total_cmp(&near(b))).filter(|_| !s.text.contains('\u{fffd}')) {
                 s.font = k;
+                if flat {
+                    (s.top, s.height) = (s.top - 0.75 * sizes[k], 0.87 * sizes[k]);
+                }
             }
         }
         emptied.sort_unstable_by(|a, b| b.cmp(a));
