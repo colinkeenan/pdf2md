@@ -490,6 +490,8 @@ A correction made by hand is of what the rules built (the `pdf2md:fix` mark hold
 * **A stroke inside a word.** One problem set has the stroke that makes ≠ of = set inside the word "matrix", where the page shows a speck at most. Between two pieces of words of the text font it is no piece.
 * **A small ħ as a numerator.** The box of the AMS font's ℏ hangs lower than a letter's and reaches under the bar it stands on: "49.63 ħ/nm" came with ħ and nm as exponent and index, and √(ħ/mω) as √(mωħ). A small ℏ alone over a bar is its numerator.
 * **A dropped bracket found by its partner.** `pdftohtml` leaves out some tall opening brackets altogether; the one in a blank of a piece of words that holds another bracket ("02234 nm) 49") is found by its outline where its partner of the same height has a nameless piece at its place.
+* **The lines around a column set in a sentence.** A line with a column of two or three rows in it stands further from the lines above and below than the text's lines do, and the sentence broke into two paragraphs there. The distance that tells a new paragraph is measured from the rows.
+* **A sign with its number before a tall bracket.** "= 2463" is one piece of the text font, with a blank in it, and counted as words: the formula was cut in two there, and the half that held the bracket, all small type, had its exponent on the line. Such a piece right before a tall bracket is the formula's.
 
 ## PDFs made from ebooks
 
