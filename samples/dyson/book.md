@@ -3982,13 +3982,7 @@ Thus a fluctuating component of $`\boldsymbol{E}`$ with frequency $`c | \boldsym
 \left\langle r_{1}^{2} \right\rangle_{o} = \frac{e^{2}}{m^{2}} \frac{\hbar c}{1 6 \pi^{3} V^{2}} \int_{K_{H}}^{\infty} \frac{d^{3} \boldsymbol{K}}{| \boldsymbol{K} |} ( K_{2}^{2} + K_{3}^{2} ) | V ( K ) |^{2} \frac{1}{c^{4} | \boldsymbol{K} |^{4}}
 ```
 
-because lim $`\frac{\sin^{2} x}{x^{2}} = 1`$. The integral now converges at $`\infty`$, because of the finite size of the electron. Since
-
-```math
-x \to 0
-```
-
-$`R`$ is very small we may approximate (237) by
+because $`\lim_{x \to 0} \frac{\sin^{2} x}{x^{2}} = 1`$. The integral now converges at $`\infty`$, because of the finite size of the electron. Since $`R`$ is very small we may approximate (237) by
 
 ```math
 V ( K ) = \begin{cases} \tfrac{4}{3} \pi R^{3} = V & \text{ for } | \boldsymbol{K} | R< 1 \\ 0 & \text{ for } | \boldsymbol{K} | R> 1 \end{cases}

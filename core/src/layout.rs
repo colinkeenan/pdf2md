@@ -4130,6 +4130,30 @@ fn group_lines(
             None => k += 1,
         }
     }
+    // The limit set under "lim" in a line of text, "ε → 0" between this
+    // line and the next: small pieces right under the word, which ends its
+    // piece of words. They touch the line below and went to it (as an
+    // exponent of whatever stands there); they are of the word's line.
+    loop {
+        let found = (0..groups.len()).find_map(|k| {
+            let word = groups[k].iter().find(|w| w.text.trim_end().ends_with(" lim") || w.text.trim() == "lim")?;
+            let size = size_of(word);
+            // (where the word stands in its piece: its last three letters)
+            let (from, to) = (word.right() - 1.6 * size, word.right());
+            (0..groups.len()).filter(|&m| m != k).find_map(|m| {
+                let j = (0..groups[m].len()).find(|&j| {
+                    let p = &groups[m][j];
+                    let drop = p.top - word.top;
+                    size_of(p) < 0.85 * size && !big_symbol(p) && !p.text.trim().is_empty() && drop > 0.3 * size && drop <= 1.1 * size && p.left >= from - 0.8 * size && p.right() <= to + 1.0 * size && p.left < to
+                })?;
+                Some((k, m, j))
+            })
+        });
+        let Some((k, m, j)) = found else { break };
+        let piece = groups[m].remove(j);
+        groups[k].push(piece);
+    }
+    groups.retain(|g| !g.is_empty());
     // A few small letters that stand right over a line and touch none, at
     // the head of an integral sign: its upper limit, in a line of text or
     // in an exponent. They
