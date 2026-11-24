@@ -664,7 +664,13 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
             let reach = if operator { 0.5 } else { 0.25 } * st.body;
             let touch_left = i > 0 && kinds[i - 1] == K::Math && gap(i - 1, i) < reach;
             let touch_right = i + 1 < n && kinds[i + 1] == K::Math && gap(i, i + 1) < reach;
-            if touch_left || touch_right {
+            // (a full stop that stands free between two letters of a
+            // formula, room on both sides, is the dot of their product,
+            // "p · q" in a font that gives its raised dot under the full
+            // stop's code: the stop of a sentence stands tight behind its
+            // last letter)
+            let free_dot = t == "." && !doc.family(&spans[i]).to_uppercase().starts_with("CM") && i > 0 && i + 1 < n && kinds[i - 1] == K::Math && kinds[i + 1] == K::Math && gap(i - 1, i) >= 0.15 * st.body && gap(i - 1, i) < 0.6 * st.body && gap(i, i + 1) >= 0.12 * st.body && gap(i, i + 1) < 0.6 * st.body;
+            if touch_left || touch_right || free_dot {
                 kinds[i] = K::Math;
                 changed = true;
             }

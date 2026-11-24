@@ -10905,7 +10905,7 @@ L_{\pm} Y_{\ell m} = C_{\pm} ( \ell ,m ) Y_{\ell ( m \pm 1 )}
 
 These operators raise or lower the $`z`$ component of angular momentum by one unit of $`\hbar`$.
 
-Since $`L_{\pm}^{\dagger} \langle \rangle = L_{\mp}`$, its easy to show that the following is greater than zero.
+Since $`L_{\pm}^{\dagger} \{ \} = L_{\mp}`$, its easy to show that the following is greater than zero.
 
 ```math
 \langle L_{\pm} Y_{\ell m} | L_{\pm} Y_{\ell m} \rangle \geq 0

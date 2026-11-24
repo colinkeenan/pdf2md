@@ -767,18 +767,48 @@ pub fn build_with(spans: &[MSpan], bars: &[Rule]) -> String {
         // (not in TeX's own fonts, whose product dot is a sign of the
         // symbol font: there a free-standing full stop ends a sentence
         // between two formulas)
-        if s.text.trim() != "." || s.math || s.atom.is_some() || s.family.to_uppercase().starts_with("CM") {
+        if s.math || s.atom.is_some() || s.family.to_uppercase().starts_with("CM") {
             continue;
         }
-        // (an arrow or a tilde over a letter is no neighbour: the letter is)
-        let accent = |b: &MSpan| matches!(b.text.trim(), "\u{20d7}" | "\u{338}" | "˜" | "ˆ" | "¯" | "˙" | "¨");
-        let row = |b: &MSpan| !b.cmex() && !accent(b) && b.bottom.min(s.bottom) - b.top.max(s.top) >= 0.5 * (s.bottom - s.top) && (b.size - s.size).abs() <= 0.15 * s.size;
-        let operand = |b: &MSpan| row(b) && b.text.chars().any(|c| c.is_alphanumeric() || ")]".contains(c) || "([".contains(c)) && !b.text.trim().chars().all(|c| ".,;:".contains(c));
+        // (… or stands so inside its piece, "4 . 2" and "5 . 3 . 1" in one
+        // piece of figures: a blank on each side, an operand beyond each,
+        // no other dot beside it)
+        if s.text.trim() != "." {
+            let cs: Vec<char> = s.text.chars().collect();
+            let operand = |c: char| c.is_alphanumeric() || "()[]′".contains(c);
+            let mut out = String::with_capacity(s.text.len());
+            for (i, &c) in cs.iter().enumerate() {
+                let free = c == '.'
+                    && i > 0
+                    && cs[i - 1] == ' '
+                    && cs.get(i + 1) == Some(&' ')
+                    && cs[..i].iter().rev().find(|c| **c != ' ').is_some_and(|c| operand(*c))
+                    && cs[i + 1..].iter().find(|c| **c != ' ').is_some_and(|c| operand(*c));
+                out.push(if free { '·' } else { c });
+            }
+            if out != s.text {
+                spans[k].text = out;
+            }
+            continue;
+        }
+        // (an arrow or a tilde over a letter is no neighbour: the letter
+        // is — also an arrow that a font gives under a code of its own,
+        // a sign without a letter that stands over a letter's piece)
+        let over_letter = |b: &MSpan| !b.text.chars().any(char::is_alphanumeric) && spans.iter().any(|c| !std::ptr::eq(c, b) && c.text.chars().any(|x| x.is_alphanumeric() || x == '∂' || x == '∇') && c.left < b.left + 0.5 * (b.right - b.left) && c.right > b.left + 0.5 * (b.right - b.left) && c.top < b.bottom && c.bottom > b.top && (b.left - c.left).abs() <= 0.5 * s.size);
+        let accent = |b: &MSpan| matches!(b.text.trim(), "\u{20d7}" | "\u{338}" | "˜" | "ˆ" | "¯" | "˙" | "¨") || over_letter(b);
+        // (its neighbours: whatever stands next to it within its line's
+        // height, an index or a fraction's half too — "F_{ij} · D_k",
+        // "∂n/∂t · ∂n/∂t")
+        let row = |b: &MSpan| !std::ptr::eq(b, s) && !b.cmex() && !accent(b) && !b.text.trim().is_empty() && b.top < s.bottom + s.size && b.bottom > s.top - s.size;
+        let operand = |b: &MSpan| row(b) && !b.text.trim().chars().all(|c| ".,;:".contains(c));
         let before = spans.iter().filter(|b| row(b) && b.right <= s.left + 0.5).max_by(|a, b| a.right.total_cmp(&b.right));
         let behind = spans.iter().filter(|b| row(b) && b.left >= s.right - 0.5).min_by(|a, b| a.left.total_cmp(&b.left));
-        let room = |gap: f32| gap >= 0.12 * s.size && gap <= 0.8 * s.size;
+        let room = |gap: f32| gap >= 0.12 * s.size && gap <= 1.0 * s.size;
         if let (Some(a), Some(b)) = (before, behind) {
-            if operand(a) && operand(b) && room(s.left - a.right) && room(b.left - s.right) {
+            // (a dot set full size among the small letters of an exponent
+            // has its own rule, `raised_dots`, which keeps the exponent whole)
+            let in_exponent = a.size < 0.85 * s.size && b.size < 0.85 * s.size;
+            if operand(a) && operand(b) && room(s.left - a.right) && room(b.left - s.right) && !in_exponent {
                 spans[k].text = "·".into();
             }
         }

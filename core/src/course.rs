@@ -571,6 +571,10 @@ fn pdf_text(pdf: &Path, stem: &str, out: &Path) -> Result<(String, Option<String
     // letter by letter and have no names: read by the page reader, and
     // each page's picture given under what was read, to check it by)
     let pictured = !written_by_hand && pictures_of_print(pdf);
+    // (PDF2MD_DISPDEBUG=3: which PDF the equations that follow are of)
+    if std::env::var("PDF2MD_DISPDEBUG").is_ok_and(|v| v == "3") {
+        eprintln!("DEQFILE\t{}", pdf.display());
+    }
     let book = crate::convert_pdf_as(pdf, range, written_by_hand || pictured)?;
     // (its equations that the second reading leaves in doubt: for the
     // course's list of equations to check)

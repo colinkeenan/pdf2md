@@ -2794,9 +2794,11 @@ fn classify_outline(o: &Outline) -> Option<(char, f32, f32, f32, f32)> {
         } else if vert_right >= 1.5 * h && vert_left < 0.5 * h {
             ']'
         } else if reaches_mid(x0) && !reaches_mid(x1) {
-            '⟨'
+            // (a brace drawn as one glyph with long straight stems: an
+            // angle bracket has only slanted strokes)
+            if stems { '{' } else { '⟨' }
         } else if reaches_mid(x1) && !reaches_mid(x0) {
-            '⟩'
+            if stems { '}' } else { '⟩' }
         } else {
             return None;
         }
