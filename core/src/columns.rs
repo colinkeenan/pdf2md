@@ -156,9 +156,17 @@ fn left_notes(lines: &[Line], rules: &[Rule], band: &Band, gutter: f32, body: f3
 
 fn plan(lines: &[Line], figures: &[Figure], rules: &[Rule], height: f32, gutter: f32, body: f32) -> Plan {
     // what runs across the gutter: (top, bottom)
-    let mut wide: Vec<(f32, f32)> = lines.iter().filter(|l| l.spans.iter().any(|s| crosses(s.left, s.right(), gutter))).map(|l| (l.top, l.top + l.size)).collect();
+    // (… and the page's number alone at its head, over one column: it is
+    // the page's, not the first line of that column — which follows the
+    // other column's last line when the page is unfolded)
+    let number = |l: &Line| {
+        let text: String = l.spans.iter().map(|s| s.text.trim()).collect();
+        l.top < 0.09 * height && !text.is_empty() && text.len() <= 4 && text.chars().all(|c| c.is_ascii_digit()) && !lines.iter().any(|o| !std::ptr::eq(o, l) && o.top < l.top + l.size && o.top + o.size > l.top)
+    };
+    let across = |l: &Line| l.spans.iter().any(|s| crosses(s.left, s.right(), gutter)) || number(l);
+    let mut wide: Vec<(f32, f32)> = lines.iter().filter(|l| across(l)).map(|l| (l.top, l.top + l.size)).collect();
     wide.extend(figures.iter().filter(|f| crosses(f.left, f.right, gutter) && f.left < gutter - 30.0 && f.right > gutter + 30.0).map(|f| (f.top, f.bottom)));
-    let mut marks: Vec<(f32, f32, bool)> = lines.iter().filter(|l| !l.spans.iter().any(|s| crosses(s.left, s.right(), gutter))).map(|l| (l.top, l.top + l.size, true)).collect();
+    let mut marks: Vec<(f32, f32, bool)> = lines.iter().filter(|l| !across(l)).map(|l| (l.top, l.top + l.size, true)).collect();
     marks.extend(wide.iter().map(|w| (w.0, w.1, false)));
     marks.sort_by(|a, b| a.0.total_cmp(&b.0));
     // (a line of a column that stands beside a wide picture, within its
