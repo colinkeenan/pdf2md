@@ -2670,7 +2670,8 @@ thread_local! {
 fn matrix(spans: &[MSpan], depth: usize, open: char, typed: bool) -> Option<String> {
     let size = spans.iter().map(|s| s.size).fold(0.0f32, f32::max).max(1.0);
     // rows of full-size entries
-    let cells: Vec<MSpan> = spans.iter().flat_map(split_words).collect();
+    // (the dots of "and so on" are one entry, not three)
+    let cells: Vec<MSpan> = spans.iter().flat_map(|s| if matches!(s.text.trim(), ". . ." | "· · ·") { vec![s.clone()] } else { split_words(s) }).collect();
     let mut cells = small_blocks(cells, size, depth);
     cells.sort_by(|a, b| a.cy().total_cmp(&b.cy()));
     // Rows come from full-size entries only (big operators like Σ report
@@ -2723,7 +2724,15 @@ fn matrix(spans: &[MSpan], depth: usize, open: char, typed: bool) -> Option<Stri
             .filter(|row| row.iter().any(|s| s.left < r && s.right > l))
             .count()
     };
-    let full = |cols: &[(f32, f32)]| !cols.iter().any(|c| filled(c) * 4 < rows.len() * 3);
+    // (a column of dots, "and so on", stands in one row only: the rows
+    // of strokes over and under v₁ v₂ … vₙ have nothing there)
+    let dots = |&(l, r): &(f32, f32)| {
+        rows.iter().flat_map(|row| row.iter().filter(move |s| s.left < r && s.right > l)).all(|s| match &s.atom {
+            Some(a) => a.contains("dots"),
+            None => !s.text.trim().is_empty() && s.text.chars().all(|c| ".·…⋯".contains(c) || c.is_whitespace()),
+        })
+    };
+    let full = |cols: &[(f32, f32)]| !cols.iter().any(|c| filled(c) * 4 < rows.len() * 3 && !(rows.len() >= 3 && dots(c)));
     // (the space around a sign in an entry, "σ·L + ħ", is wider than the
     // letters stand apart, narrower than the columns: where it cut an
     // entry in two, a column of its own that most rows lack, the entries

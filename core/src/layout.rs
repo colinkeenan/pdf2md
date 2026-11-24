@@ -553,6 +553,7 @@ pub fn read_drawings(doc: &mut Doc, path: &Path, pages: Option<(u32, u32)>) {
         // (in a typeset book: an ebook's pages mix fonts freely, and its
         // tables stand on drawn panels)
         if tex_math {
+            formula_strokes(doc, all(&parts, parse_svg_segments), &pieces);
             lettered_figures(doc, pieces);
         }
         // (a coloured bar inside a drawn picture is of the drawing, or of
@@ -1476,6 +1477,100 @@ fn figures_and_pieces(svg: &str) -> Vec<(Vec<Figure>, Vec<Figure>)> {
             (figs, pieces)
         })
         .collect()
+}
+
+/// Upright strokes inside a formula: the columns of a matrix shown as a
+/// line over and under each column's name, "( | v₁ | )". They are thin
+/// black lines drawn up and down, a letter's height or a few, between the
+/// tall brackets of the formula. Such strokes are no drawing: a "picture"
+/// made of nothing else is none (the letters beside them went into it),
+/// and each stroke is a piece of the formula, "|", where its middle is.
+fn formula_strokes(doc: &mut Doc, segments: Vec<Vec<(f32, f32, f32, f32)>>, pieces: &[Vec<Figure>]) {
+    let body = doc.body_size;
+    let fonts = doc.fonts.clone();
+    let is_cmex = |s: &Span| fonts.get(s.font).is_some_and(|f| f.family.starts_with("CMEX"));
+    let size_of = |s: &Span| fonts.get(s.font).map_or(s.height, |f| f.size);
+    // (the stroke is written in the font of the formula's signs)
+    let Some(font) = ["CMSY", "CMR", "CMMI"].iter().find_map(|p| fonts.iter().position(|f| f.family.starts_with(p) && (f.size - body).abs() < 0.5)) else { return };
+    for ((page, segs), pieces) in doc.pages.iter_mut().zip(segments).zip(pieces) {
+        // the upright lines, those that go on from each other as one
+        let mut ups: Vec<(f32, f32, f32)> = segs.iter().filter(|s| (s.0 - s.2).abs() < 0.5).map(|s| (s.0, s.1.min(s.3), s.1.max(s.3))).collect();
+        ups.sort_by(|a, b| a.0.total_cmp(&b.0).then(a.1.total_cmp(&b.1)));
+        let mut joined: Vec<(f32, f32, f32)> = Vec::new();
+        for u in ups {
+            match joined.last_mut().filter(|j| (j.0 - u.0).abs() < 0.5 && u.1 <= j.2 + 1.0) {
+                Some(j) => j.2 = j.2.max(u.2),
+                None => joined.push(u),
+            }
+        }
+        let strokes: Vec<(f32, f32, f32)> = joined
+            .into_iter()
+            .filter(|&(x, top, bottom)| {
+                let tall = bottom - top;
+                if tall < 0.6 * body || tall > 6.0 * body || page.grids.iter().any(|g| x >= g.xs[0] - 3.0 && x <= g.xs[g.xs.len() - 1] + 3.0 && top >= g.ys[0] - 3.0 && bottom <= g.ys[g.ys.len() - 1] + 3.0) {
+                    return false;
+                }
+                // (a piece of a tall bracket on either side, at its height)
+                let bracket = |s: &Span| is_cmex(s) && !matches!(s.text.trim(), "X" | "P" | "Z" | "R" | "Y" | "Q" | "I" | "H") && s.top < bottom + body && s.bottom() > top - body;
+                let before = page.lines.iter().flat_map(|l| &l.spans).any(|s| bracket(s) && s.right() <= x + 1.0 && x - s.right() < 12.0 * body);
+                let behind = page.lines.iter().flat_map(|l| &l.spans).any(|s| bracket(s) && s.left >= x - 1.0 && s.left - x < 12.0 * body);
+                before && behind
+            })
+            .collect();
+        if strokes.is_empty() {
+            continue;
+        }
+        let is_stroke = |p: &Figure| strokes.iter().any(|&(x, top, bottom)| (p.left - x).abs() <= 1.5 && (p.right - x).abs() <= 1.5 && p.top >= top - 1.0 && p.bottom <= bottom + 1.0);
+        page.figures.retain(|f| {
+            let inside: Vec<&Figure> = pieces.iter().filter(|p| p.left >= f.left - 0.5 && p.right <= f.right + 0.5 && p.top >= f.top - 0.5 && p.bottom <= f.bottom + 0.5).collect();
+            inside.is_empty() || !inside.iter().all(|p| is_stroke(p))
+        });
+        // (not where the picture stays: its strokes are the picture's)
+        let free: Vec<(f32, f32, f32)> = strokes.into_iter().filter(|&(x, top, bottom)| !page.figures.iter().any(|f| x >= f.left - 1.0 && x <= f.right + 1.0 && top >= f.top - 1.0 && bottom <= f.bottom + 1.0)).collect();
+        if page.lines.is_empty() {
+            continue;
+        }
+        let mut changed = vec![false; page.lines.len()];
+        for (x, top, bottom) in free {
+            let c = (top + bottom) / 2.0;
+            let span = Span {
+                text: "|".to_string(),
+                left: x - 1.5,
+                top: c - 0.5 * body,
+                width: 3.0,
+                height: body,
+                font,
+                bold: false,
+                italic: false,
+                script: Script::Normal,
+                overline: false,
+                tex: None,
+                link: None,
+                url: None,
+                url_text: None,
+                link_top: None,
+                picture: None,
+                image_key: None,
+            };
+            // the line whose middle is nearest the stroke's
+            let k = (0..page.lines.len())
+                .min_by(|&a, &b| {
+                    let ca = page.lines[a].top + page.lines[a].size / 2.0;
+                    let cb = page.lines[b].top + page.lines[b].size / 2.0;
+                    (ca - c).abs().total_cmp(&(cb - c).abs())
+                })
+                .unwrap_or(0);
+            page.lines[k].spans.push(span);
+            changed[k] = true;
+        }
+        for (k, l) in page.lines.iter_mut().enumerate() {
+            if changed[k] {
+                let col = l.col;
+                *l = make_line_but(std::mem::take(&mut l.spans), &size_of, &|s: &Span| is_cmex(s));
+                l.col = col;
+            }
+        }
+    }
 }
 
 /// Font families that only letter the book's figures. A figure made in
