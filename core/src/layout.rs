@@ -63,6 +63,10 @@ pub struct Span {
     pub script: Script,
     /// A drawn bar sits right above it (Ā). Set by [`read_pdf`].
     pub overline: bool,
+    /// Where the piece is not in one weight throughout ("dx′" with only
+    /// its x bold): for each character, 1 if it is bold, 2 if italic, 3 if
+    /// both. Empty for a piece in one weight (see `textmath`).
+    pub styles: Vec<u8>,
     /// LaTeX read from an equation image (see [`crate::ocr`]); the span
     /// stands for that whole piece of math.
     pub tex: Option<String>,
@@ -1901,6 +1905,7 @@ fn formula_strokes(doc: &mut Doc, segments: Vec<Vec<(f32, f32, f32, f32)>>, fill
                 italic: false,
                 script: Script::Normal,
                 overline: false,
+            styles: Vec::new(),
                 tex: None,
                 link: None,
                 url: None,
@@ -2407,6 +2412,7 @@ fn place_images(doc: &mut Doc) {
                 italic: false,
                 script: Script::Normal,
                 overline: false,
+            styles: Vec::new(),
                 picture: tex.is_none().then_some(number),
                 tex,
                 link: None,
@@ -3107,6 +3113,7 @@ fn insert_delims(doc: &mut Doc, delims: Vec<Vec<Delim>>) {
                 italic: false,
                 script: Script::Normal,
                 overline: false,
+            styles: Vec::new(),
                 tex: None,
                 link: None,
                 url: None,
@@ -3752,6 +3759,16 @@ pub fn parse_xml_with(xml: &str, lost: &HashMap<String, bool>) -> Result<Doc, St
                 if text.trim().is_empty() && !cmex && !kept {
                     continue;
                 }
+                // (which of its characters are bold, where not all are)
+                let styles: Vec<u8> = {
+                    let mut v: Vec<u8> = Vec::new();
+                    for d in n.descendants().filter(|d| d.is_text()) {
+                        let within = |tag: &str| d.ancestors().take_while(|a| *a != n).any(|a| a.has_tag_name(tag));
+                        let style = within("b") as u8 | (within("i") as u8) << 1;
+                        v.extend(std::iter::repeat_n(style, d.text().map_or(0, |t| t.chars().count())));
+                    }
+                    if v.len() == text.chars().count() && v.iter().any(|x| x & 1 != v[0] & 1) { v } else { Vec::new() }
+                };
                 spans.push(Span {
                     text,
                     left: num(n, "left") + cut_left * num(n, "width"),
@@ -3763,6 +3780,7 @@ pub fn parse_xml_with(xml: &str, lost: &HashMap<String, bool>) -> Result<Doc, St
                     italic: n.descendants().any(|d| d.has_tag_name("i")),
                     script: Script::Normal,
                     overline: false,
+            styles,
                     tex: None,
                     link: n
                         .descendants()
@@ -5087,6 +5105,7 @@ mod tests {
             italic: false,
             script: Script::Normal,
             overline: false,
+            styles: Vec::new(),
             picture: None,
             tex: None,
             link: None,

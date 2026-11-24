@@ -408,9 +408,30 @@ fn word_hyphens(latex: &str) -> String {
 /// a recognizer may write it, sets only Latin letters and capitals bold,
 /// and the μ of a vector came out like any other. So does the bold ∇.
 fn bold_symbols(latex: &str) -> String {
-    const SIGNS: [&str; 33] = [
+    const SIGNS: [&str; 44] = [
         "alpha", "beta", "gamma", "delta", "epsilon", "varepsilon", "zeta", "eta", "theta", "vartheta", "iota", "kappa", "lambda", "mu", "nu", "xi", "pi", "varpi", "rho", "varrho", "sigma", "varsigma", "tau", "upsilon", "phi", "varphi", "chi", "psi", "omega", "nabla", "ell", "partial", "hbar",
+        "Gamma", "Delta", "Theta", "Lambda", "Xi", "Pi", "Sigma", "Upsilon", "Phi", "Psi", "Omega",
     ];
+    // ("{\\bf\\Pi}", the older way of writing it: the same letter)
+    let mut older = String::with_capacity(latex.len());
+    let mut rest = latex;
+    while let Some(at) = rest.find("{\\bf") {
+        let inside = rest[at + "{\\bf".len()..].trim_start();
+        let sign = inside.find('}').map(|end| inside[..end].trim()).and_then(|t| t.strip_prefix('\\')).filter(|name| SIGNS.contains(name));
+        match sign {
+            Some(name) => {
+                older.push_str(&rest[..at]);
+                older.push_str(&format!("\\boldsymbol{{\\{name}}}"));
+                rest = &inside[inside.find('}').map_or(inside.len(), |end| end + 1)..];
+            }
+            None => {
+                older.push_str(&rest[..at + "{\\bf".len()]);
+                rest = &rest[at + "{\\bf".len()..];
+            }
+        }
+    }
+    older.push_str(rest);
+    let latex = older.as_str();
     let mut out = String::with_capacity(latex.len());
     let mut rest = latex;
     while let Some(at) = rest.find("\\mathbf{") {
@@ -2155,8 +2176,10 @@ mod tests {
     #[test]
     fn a_bold_greek_letter_is_a_bold_symbol() {
         assert_eq!(bold_symbols("F_{z}=(\\mathbf{\\mu}\\cdot\\mathbf{B})"), "F_{z}=(\\boldsymbol{\\mu}\\cdot\\mathbf{B})");
-        assert_eq!(bold_symbols("\\mathbf{ \\nabla } \\times \\mathbf{\\hat{n}} + \\mathbf{\\Sigma}"), "\\boldsymbol{\\nabla} \\times \\mathbf{\\hat{n}} + \\mathbf{\\Sigma}");
+        assert_eq!(bold_symbols("\\mathbf{ \\nabla } \\times \\mathbf{\\hat{n}} + \\mathbf{\\Sigma}"), "\\boldsymbol{\\nabla} \\times \\mathbf{\\hat{n}} + \\boldsymbol{\\Sigma}");
         assert_eq!(bold_symbols("\\mathbf{x^{\\prime}} \\mathbf{"), "\\mathbf{x^{\\prime}} \\mathbf{");
+        // (capital Greek letters, and the older way of writing bold)
+        assert_eq!(bold_symbols("\\langle{\\bf\\Pi}\\rangle + {\\bf \\nabla} \\cdot {\\bf E} + \\mathbf{\\Sigma} {\\bf"), "\\langle\\boldsymbol{\\Pi}\\rangle + \\boldsymbol{\\nabla} \\cdot {\\bf E} + \\boldsymbol{\\Sigma} {\\bf");
     }
 
     #[test]

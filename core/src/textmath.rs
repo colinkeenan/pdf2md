@@ -354,7 +354,50 @@ fn bold_font(doc: &Doc, s: &Span) -> bool {
 
 /// The pieces of a line cut into tokens, and what each is: text, math or
 /// a note marker.
+/// A piece that is not in one weight throughout, cut where its letters
+/// change from bold to plain or back: "dx′" with only the x bold is a
+/// plain d and a bold x′ (a vector is bold, its differential's d is not),
+/// and "x′" with an italic prime is a bold upright x. Signs and spaces
+/// stay with the letters before them.
+fn by_weight(spans: &[Span]) -> Vec<Span> {
+    let mut out = Vec::with_capacity(spans.len());
+    for s in spans {
+        let cs: Vec<char> = s.text.chars().collect();
+        if s.styles.len() != cs.len() || cs.is_empty() {
+            out.push(s.clone());
+            continue;
+        }
+        // (runs of characters: a letter of another weight begins one)
+        let mut runs: Vec<(usize, usize, bool)> = Vec::new();
+        for (k, c) in cs.iter().enumerate() {
+            let bold = s.styles[k] & 1 == 1;
+            match runs.last_mut() {
+                Some(run) if !c.is_alphabetic() || run.2 == bold => run.1 = k + 1,
+                // (signs before the first letter are of its run)
+                Some(run) if !cs[run.0..run.1].iter().any(|c| c.is_alphabetic()) => *run = (run.0, k + 1, bold),
+                _ => runs.push((k, k + 1, bold)),
+            }
+        }
+        let total: f32 = cs.iter().map(|&c| char_width(c)).sum();
+        let scale = if total > 0.0 { s.width / total } else { 0.0 };
+        let mut at = s.left;
+        for (a, b, bold) in runs {
+            let mut piece = s.clone();
+            piece.text = cs[a..b].iter().collect();
+            piece.left = at;
+            piece.width = cs[a..b].iter().map(|&c| char_width(c)).sum::<f32>() * scale;
+            at += piece.width;
+            piece.bold = bold && cs[a..b].iter().any(|c| c.is_alphabetic());
+            piece.italic = (a..b).any(|k| cs[k].is_alphabetic() && s.styles[k] & 2 == 2);
+            piece.styles = Vec::new();
+            out.push(piece);
+        }
+    }
+    out
+}
+
 pub(crate) fn classify(doc: &Doc, spans: &[Span], st: &Stats) -> (Vec<Span>, Vec<K>) {
+    let spans = &by_weight(spans)[..];
     let spans = &plain_signs(spans)[..];
     let mut toks: Vec<Span> = Vec::with_capacity(spans.len() * 2);
     let mut roles: Vec<Role> = Vec::with_capacity(spans.len() * 2);
@@ -924,6 +967,7 @@ mod tests {
                 italic: style == "i",
                 script: if raised { Script::Super } else { Script::Normal },
                 overline: false,
+                styles: Vec::new(),
                 picture: None,
                 tex: None,
                 link: None,
@@ -947,13 +991,45 @@ mod tests {
         // accents: in one character with the letter, behind it, or at the
         // head of the next piece
         assert_eq!(line(&[("state |", ""), ("ᾶ", ""), ("⟩", ""), (", that is", "")]), "state $`| \\tilde{\\alpha} \\rangle`$, that is");
-        assert_eq!(line(&[("momentum ", ""), ("p", "b"), (" = ", ""), ("p", "i"), ("ẑ, that is", "")]), "momentum $`\\boldsymbol{p} = p \\hat{z}`$, that is");
-        assert_eq!(line(&[("presence of ", ""), ("A", "b"), ("\u{303} must satisfy", "")]), "presence of $`\\boldsymbol{\\tilde{A}}`$ must satisfy");
+        assert_eq!(line(&[("momentum ", ""), ("p", "b"), (" = ", ""), ("p", "i"), ("ẑ, that is", "")]), "momentum $`\\mathbf{p} = p \\hat{z}`$, that is");
+        assert_eq!(line(&[("presence of ", ""), ("A", "b"), ("\u{303} must satisfy", "")]), "presence of $`\\mathbf{\\tilde{A}}`$ must satisfy");
         assert_eq!(line(&[("the left by C˜", ""), (".", ""), (" The result is", "")]), "the left by C\u{303}. The result is");
         assert_eq!(line(&[("only if |0\u{303}", ""), ("⟩", ""), (" coincides", "")]), "only if $`| \\tilde{0} \\rangle`$ coincides");
         // a star set on the line stays on the line (the book's own way of
         // writing a complex conjugate here), in the formula
-        assert_eq!(line(&[("However, ", ""), ("ψ", "i"), ("∗", ""), ("(", ""), ("x", "b"), (", −", ""), ("t", "i"), (") is a solution", "")]), "However, $`\\psi * ( \\boldsymbol{x} , - t )`$ is a solution");
+        assert_eq!(line(&[("However, ", ""), ("ψ", "i"), ("∗", ""), ("(", ""), ("x", "b"), (", −", ""), ("t", "i"), (") is a solution", "")]), "However, $`\\psi * ( \\mathbf{x} , - t )`$ is a solution");
+    }
+
+    #[test]
+    fn a_piece_in_two_weights_is_cut_where_the_weight_changes() {
+        let piece = |text: &str, styles: &[u8]| Span {
+            text: text.into(),
+            left: 100.0,
+            top: 100.0,
+            width: 30.0,
+            height: 22.0,
+            font: 0,
+            bold: true,
+            italic: true,
+            script: Script::Normal,
+            overline: false,
+            styles: styles.to_vec(),
+            picture: None,
+            tex: None,
+            link: None,
+            url: None,
+            url_text: None,
+            link_top: None,
+            image_key: None,
+        };
+        // "dx′": an italic d, a bold upright x, an italic prime
+        let cut = super::by_weight(&[piece("dx′", &[2, 1, 2])]);
+        assert_eq!(cut.iter().map(|s| (s.text.as_str(), s.bold, s.italic)).collect::<Vec<_>>(), [("d", false, true), ("x′", true, false)]);
+        // "x′" alone: one piece, bold and upright
+        let cut = super::by_weight(&[piece("x′", &[1, 2])]);
+        assert_eq!(cut.iter().map(|s| (s.text.as_str(), s.bold, s.italic)).collect::<Vec<_>>(), [("x′", true, false)]);
+        // (a piece in one weight, or one whose marks do not fit its text, stays)
+        assert_eq!(super::by_weight(&[piece("dx′", &[])]).len(), 1);
     }
 
     #[test]
@@ -976,7 +1052,7 @@ mod tests {
     fn numbers_and_upright_letters_go_with_the_math_beside_them() {
         assert_eq!(line(&[("atoms with Z = 2 and ", ""), ("l", "i"), (" = 0, so", "")]), "atoms with $`Z = 2`$ and $`l = 0`$, so");
         assert_eq!(line(&[("a 2 × 2 matrix ", ""), ("f", "i"), ("(", ""), ("x", "i"), (", ", ""), ("y", "i"), (") of", "")]), "a $`2 \\times 2`$ matrix $`f ( x , y )`$ of");
-        assert_eq!(line(&[("vector ", ""), ("x′", "b"), (" and ", ""), ("kR", "i"), (" ≫ 1 here", "")]), "vector $`\\boldsymbol{x'}`$ and $`k R \\gg 1`$ here");
+        assert_eq!(line(&[("vector ", ""), ("x′", "b"), (" and ", ""), ("kR", "i"), (" ≫ 1 here", "")]), "vector $`\\mathbf{x'}`$ and $`k R \\gg 1`$ here");
         // the hyphen of a compound: at a line's end, and left hanging
         assert_eq!(line(&[("in the ", ""), ("z", "i"), ("-", "")]), "in the $`z`$\u{2010}");
         assert_eq!(line(&[("the ", ""), ("x", "i"), ("- and ", ""), ("y", "i"), ("-components", "")]), "the $`x`$- and $`y`$-components");

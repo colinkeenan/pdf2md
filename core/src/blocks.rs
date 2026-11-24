@@ -3630,6 +3630,7 @@ mod table_tests {
             italic: false,
             script: Script::Normal,
             overline: false,
+            styles: Vec::new(),
             tex: None,
             link: None,
             url: None,

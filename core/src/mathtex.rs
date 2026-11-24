@@ -36,6 +36,9 @@ pub struct MSpan {
     pub over: bool,
     /// set in a bold font (vectors like **r**, **p**)
     pub bold: bool,
+    /// … an upright one of the book's text, where the book sets its math
+    /// in its text font (an ebook): the letter stands upright, `\mathbf`
+    pub upright: bool,
     /// Already-built LaTeX standing in for a whole fraction or root (see
     /// [`resolve_bars`]); positioned where the fraction bar was.
     pub atom: Option<String>,
@@ -54,6 +57,7 @@ impl MSpan {
             math: doc.is_math(s),
             over: s.overline,
             bold: s.bold || crate::layout::is_bold_font(doc.family(s)),
+            upright: (s.bold || crate::layout::is_bold_font(doc.family(s))) && !s.italic && !doc.is_math(s) && crate::blocks::is_text_math(doc),
             atom: s.tex.clone(),
         }
     }
@@ -413,6 +417,14 @@ pub fn tex(s: &MSpan) -> String {
         // (TeX's bold roman: other books' bold letters are left as they were)
         let roman = s.family.to_uppercase().starts_with("CMBX") && !s.family.to_uppercase().starts_with("CMBXTI");
         let upright = roman && !s.math && t.len() == 1 && t.starts_with(|c: char| c.is_ascii_alphabetic());
+        // (a book that sets its math in its text font: its bold letters
+        // stand upright on the page, as they do in its equation pictures —
+        // letters and figures, with their primes, and a letter under an
+        // accent; a bold Greek letter needs \boldsymbol to be bold at all)
+        let accents = ["\\hat{", "\\tilde{", "\\bar{", "\\vec{", "\\dot{", "\\ddot{"];
+        let body = accents.iter().find_map(|a| t.strip_prefix(a)?.strip_suffix('}')).unwrap_or(&t);
+        let latin = body.chars().any(|c| c.is_ascii_alphanumeric()) && body.chars().all(|c| c.is_ascii_alphanumeric() || matches!(c, '\'' | ' ' | '.' | ','));
+        let upright = upright || (s.upright && latin);
         t = if upright { format!("\\mathbf{{{t}}}") } else { format!("\\boldsymbol{{{t}}}") };
     }
     if s.over && !t.is_empty() {
@@ -1247,7 +1259,7 @@ fn underbraces(spans: Vec<MSpan>, bars: &[Rule]) -> (Vec<MSpan>, Vec<Rule>) {
             family: String::new(),
             math: true,
             over: false,
-            bold: false,
+            bold: false, upright: false,
             atom: Some(tex),
         });
     }
@@ -1898,7 +1910,7 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
                 family: String::new(),
                 math: true,
                 over: false,
-                bold: false,
+                bold: false, upright: false,
                 atom: Some(t),
             };
             let mut k = 0;
@@ -2077,7 +2089,7 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
                 }
                 let body: Vec<MSpan> = row.iter().map(|&i| spans[i].clone()).collect();
                 let (top, bottom) = (letters.iter().map(|s| s.top).fold(f32::MAX, f32::min), letters.iter().map(|s| s.bottom).fold(f32::MIN, f32::max));
-                let atom = MSpan { text: String::new(), left, right, top, bottom, size, family: String::new(), math: true, over: false, bold: false, atom: Some(format!("\\overline{{{}}}", build_at(&body, depth + 1))) };
+                let atom = MSpan { text: String::new(), left, right, top, bottom, size, family: String::new(), math: true, over: false, bold: false, upright: false, atom: Some(format!("\\overline{{{}}}", build_at(&body, depth + 1))) };
                 let mut k = 0;
                 spans.retain(|_| {
                     k += 1;
@@ -2161,7 +2173,7 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
             family: String::new(),
             math: true,
             over: false,
-            bold: false,
+            bold: false, upright: false,
             atom: Some(t),
         };
         let mut k = 0;
@@ -2889,7 +2901,7 @@ fn take_brackets(spans: &[MSpan], depth: usize) -> (Vec<MSpan>, Vec<Item>) {
         family: String::new(),
         math: true,
         over: false,
-        bold: false,
+        bold: false, upright: false,
         atom: Some(tex),
     };
     // (the bar in the middle of ⟨a|b⟩ is a piece of what the bracket
@@ -3349,7 +3361,7 @@ fn small_blocks(cells: Vec<MSpan>, size: f32, depth: usize) -> Vec<MSpan> {
             family: String::new(),
             math: true,
             over: false,
-            bold: false,
+            bold: false, upright: false,
             atom: Some(tex),
         });
     }
@@ -5162,6 +5174,7 @@ mod tests {
             math: crate::layout::is_math_font(family),
             over: false,
             bold: crate::layout::is_bold_font(family),
+            upright: false,
             atom: None,
         }
     }
@@ -5443,7 +5456,7 @@ mod scripts_of_scripts {
         // a script
         let mk = |t: &str, l: f32, r: f32, top: f32, b: f32, size: f32, f: &str| MSpan {
             text: t.into(), left: l, right: r, top, bottom: b, size, family: f.into(),
-            math: true, over: false, bold: false, atom: None };
+            math: true, over: false, bold: false, upright: false, atom: None };
         let v = vec![
             mk("u", 434.0, 443.0, 1041.0, 1056.0, 15.0, "CMMI10"),
             mk("1", 442.0, 448.0, 1047.0, 1057.0, 10.0, "CMR7"),
@@ -5464,7 +5477,7 @@ mod groups_accents_underbraces {
     fn mk(t: &str, l: f32, r: f32, top: f32, b: f32, size: f32, f: &str) -> MSpan {
         MSpan {
             text: t.into(), left: l, right: r, top, bottom: b, size, family: f.into(),
-            math: crate::layout::is_math_font(f), over: false, bold: false, atom: None,
+            math: crate::layout::is_math_font(f), over: false, bold: false, upright: false, atom: None,
         }
     }
 
