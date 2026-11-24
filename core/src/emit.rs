@@ -520,7 +520,7 @@ fn render_inlines_as(inl: &[Inline], form: MathForm) -> String {
     let mut s = String::new();
     // the picture the next formula was read from
     let mut source: Option<&String> = None;
-    let mut improved = false;
+    let mut improved: Option<String> = None;
     for i in inl {
         match i {
             Inline::Text(t) => s.push_str(&escape(t)),
@@ -563,8 +563,8 @@ fn render_inlines_as(inl: &[Inline], form: MathForm) -> String {
                 let m = &mend(m);
                 s.push_str(m.trim());
                 s.push('$');
-                if std::mem::take(&mut improved) {
-                    s.push_str(crate::ocr::IMPROVED);
+                if let Some(mark) = improved.take() {
+                    s.push_str(&mark);
                 }
             }
             Inline::Math(m) => {
@@ -585,10 +585,10 @@ fn render_inlines_as(inl: &[Inline], form: MathForm) -> String {
                 // whole line for HTML and show it as it is)
                 if let Some(k) = source.take() {
                     s.push_str(&format!("<!-- pdf2md:eq {k} -->"));
-                    // (and that the reader changed it to improve on the
-                    // original: mdBun's mark, which it looks for there)
-                    if crate::ocr::read_improved(k) {
-                        s.push_str(crate::ocr::IMPROVED);
+                    // (and mdBun's mark of the reader's change of it,
+                    // which it looks for there)
+                    if let Some(mark) = crate::ocr::read_mark(k) {
+                        s.push_str(&mark);
                     }
                 }
             }
@@ -621,8 +621,8 @@ fn render_inlines_as(inl: &[Inline], form: MathForm) -> String {
             // it always did there)
             Inline::Source(k) if form == MathForm::Dollar => {
                 s.push_str(&format!("<!-- pdf2md:eq {k} -->"));
-                // (the mark of an improvement goes behind the formula)
-                improved = crate::ocr::read_improved(k);
+                // (mdBun's mark of a change goes behind the formula)
+                improved = crate::ocr::read_mark(k);
             }
             Inline::Source(k) => source = Some(k),
             Inline::Picture { page, area } => s.push_str(&format!("![equation]({})", picture_file(*page, area))),
@@ -941,11 +941,11 @@ fn render_block(b: &Block, out: &mut String, in_list: &mut bool) {
             }
             let tag = tag.as_ref().map(|t| format!(" \\tag{{{t}}}")).unwrap_or_default();
             out.push_str(&display(&format!("{}{tag}", mend(latex)), math_form()));
-            // (changed by the reader to improve on the original: mdBun's
-            // mark of that, on the line under the block)
-            if source.as_deref().is_some_and(crate::ocr::read_improved) {
+            // (changed by the reader: mdBun's mark of that, on the line
+            // under the block)
+            if let Some(mark) = source.as_deref().and_then(crate::ocr::read_mark) {
                 out.truncate(out.trim_end().len());
-                out.push_str(&format!("\n{}\n\n", crate::ocr::IMPROVED));
+                out.push_str(&format!("\n{mark}\n\n"));
             }
         }
         Block::Anchor(id) => match page_label(id) {

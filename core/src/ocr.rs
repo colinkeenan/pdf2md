@@ -204,10 +204,32 @@ fn one_line(code: &str) -> String {
 /// its picture's mark; on the line under a displayed one.
 pub const IMPROVED: &str = "<!-- mdBun:improved -->";
 
-/// Did the reader mark the equation of this picture so? Kept by picture
-/// like the correction itself, as an empty file beside it.
-pub(crate) fn read_improved(k: &str) -> bool {
-    corrections_dir().is_some_and(|d| d.join(format!("{k}.improved")).exists())
+/// mdBun's mark at the start of this text, all of it. The mark says more
+/// than that the equation was improved: who changed it and what it was
+/// before (`<!-- mdBun:improved by="Ann" was="E = m c^{3}" -->`), and an
+/// equation changed to match the original has one too
+/// (`<!-- mdBun:corrected by="Ann" was="…" -->`). It is of one line, and
+/// kept as it stands: what it says is mdBun's to read.
+pub fn mdbun_mark(t: &str) -> Option<&str> {
+    let rest = ["<!-- mdBun:improved", "<!-- mdBun:corrected"].iter().find_map(|p| t.strip_prefix(p))?;
+    let line = rest.split('\n').next().unwrap_or("");
+    let end = line.find(" -->")?;
+    (end == 0 || line.starts_with(' ')).then(|| &t[..t.len() - rest.len() + end + 4])
+}
+
+/// mdBun's mark of the equation of this picture, if the reader's change
+/// of it has one. Kept by picture like the correction itself, in a file
+/// beside it (`KEY.mark`; an empty `KEY.improved`, as the mark was kept
+/// when it said nothing more, is [`IMPROVED`]).
+pub(crate) fn read_mark(k: &str) -> Option<String> {
+    let dir = corrections_dir()?;
+    if let Ok(t) = std::fs::read_to_string(dir.join(format!("{k}.mark"))) {
+        let t = t.trim();
+        if mdbun_mark(t).is_some_and(|m| m.len() == t.len()) {
+            return Some(t.to_string());
+        }
+    }
+    dir.join(format!("{k}.improved")).exists().then(|| IMPROVED.to_string())
 }
 
 /// Before a book is converted again: find the equations the reader has
@@ -221,8 +243,8 @@ pub fn collect_corrections(dir: &std::path::Path) -> usize {
     let written_then = read_written(dir);
     // image -> (time of the file, LaTeX as it stands there)
     let mut found: HashMap<String, (std::time::SystemTime, String)> = HashMap::new();
-    // image -> (time of the file, is it marked there as an improvement)
-    let mut improved: HashMap<String, (std::time::SystemTime, bool)> = HashMap::new();
+    // image -> (time of the file, mdBun's mark of the change as it stands there)
+    let mut improved: HashMap<String, (std::time::SystemTime, Option<String>)> = HashMap::new();
     // image -> (time of the file, program code as it stands there)
     let mut codes: HashMap<String, (std::time::SystemTime, String)> = HashMap::new();
     for e in entries.flatten() {
@@ -245,11 +267,11 @@ pub fn collect_corrections(dir: &std::path::Path) -> usize {
             }
         }
         for (k, latex, marked) in marked_and_improved(&text) {
-            // (the mark of an improvement: put there or taken away since
-            // the conversion wrote the file)
+            // (mdBun's mark of the change: put there, changed or taken
+            // away since the conversion wrote the file)
             let was = match &written_then {
-                Some(w) => w.contains_key(&format!("{k}.improved")),
-                None => read_improved(&k),
+                Some(w) => w.get(&format!("{k}.mark")).cloned().or_else(|| w.contains_key(&format!("{k}.improved")).then(|| IMPROVED.to_string())),
+                None => read_mark(&k),
             };
             if marked != was && improved.get(&k).is_none_or(|(t, _)| *t < time) {
                 improved.insert(k.clone(), (time, marked));
@@ -324,9 +346,14 @@ pub fn collect_corrections(dir: &std::path::Path) -> usize {
     }
     let mut kept = 0;
     for (k, (_, marked)) in &improved {
-        let file = cdir.join(format!("{k}.improved"));
-        // (no longer an improvement: nothing to keep any more)
-        let done = if *marked { std::fs::write(&file, "").is_ok() } else { std::fs::remove_file(&file).is_ok() };
+        // (as it was kept when it said nothing more)
+        let old = std::fs::remove_file(cdir.join(format!("{k}.improved"))).is_ok();
+        let file = cdir.join(format!("{k}.mark"));
+        // (no mark any more: nothing to keep)
+        let done = match marked {
+            Some(m) => std::fs::write(&file, format!("{m}\n")).is_ok(),
+            None => std::fs::remove_file(&file).is_ok() || old,
+        };
         kept += usize::from(done);
     }
     for (id, (_, state)) in &pictures {
@@ -357,9 +384,9 @@ pub fn marked_equations(text: &str) -> Vec<(String, String)> {
     marked_and_improved(text).into_iter().map(|(k, latex, _)| (k, latex)).collect()
 }
 
-/// The same, each with whether the reader marked it as an improvement on
-/// the original ([`IMPROVED`] behind it).
-fn marked_and_improved(text: &str) -> Vec<(String, String, bool)> {
+/// The same, each with mdBun's mark of the reader's change behind it, if
+/// it has one (see [`mdbun_mark`]).
+fn marked_and_improved(text: &str) -> Vec<(String, String, Option<String>)> {
     use crate::emit::{DISPLAY_CLOSE, DISPLAY_OPEN, MATH_CLOSE, MATH_OPEN};
     // (What stands in a bulleted item is set in two spaces under its
     // bullet, the fences of an equation too: read as if it stood at the
@@ -393,7 +420,7 @@ fn marked_and_improved(text: &str) -> Vec<(String, String, bool)> {
             let under = &body[end + close.len()..];
             (&body[..end], under.strip_prefix('\n').unwrap_or(under))
         };
-        out.push((k.to_string(), strip_numbers(latex), behind.starts_with(IMPROVED)));
+        out.push((k.to_string(), strip_numbers(latex), mdbun_mark(behind).map(str::to_string)));
     }
     out
 }
@@ -410,10 +437,10 @@ pub fn record_written(dir: &std::path::Path, texts: &[&str]) -> std::io::Result<
         for (k, latex, improved) in marked_and_improved(t) {
             if seen.insert(k.clone()) {
                 s.push_str(&format!("{k}\t{}\n", norm(&latex)));
-                // (written as an improvement: so the mark taken away
-                // later is known for the reader's doing)
-                if improved {
-                    s.push_str(&format!("{k}.improved\tyes\n"));
+                // (written with mdBun's mark: so the mark changed or
+                // taken away later is known for the reader's doing)
+                if let Some(m) = improved {
+                    s.push_str(&format!("{k}.mark\t{m}\n"));
                 }
             }
         }
@@ -1462,13 +1489,28 @@ mod tests {
             "<!-- pdf2md:eq {a} -->\n\n```math\na\n```\n{IMPROVED}\n\n- Item\n\n  <!-- pdf2md:eq {b} -->\n\n  ```math\n  b\n  ```\n  {IMPROVED}\n\nSee $`c`$<!-- pdf2md:eq {c} -->{IMPROVED} and $`d`$<!-- pdf2md:eq {d} --> here.\n\n<!-- pdf2md:eq {d} -->\n\n```math\nd\n```\n\n{IMPROVED}"
         );
         let before = format!("<!-- pdf2md:eq {a} -->\n$$\na\n$$\n{IMPROVED}\n\nSee <!-- pdf2md:eq {c} -->$c${IMPROVED} and <!-- pdf2md:eq {d} -->$d$ here.");
-        let read = |text: &str| -> Vec<(String, bool)> { marked_and_improved(text).into_iter().map(|(k, _, i)| (k, i)).collect() };
+        let read = |text: &str| -> Vec<(String, bool)> { marked_and_improved(text).into_iter().map(|(k, _, i)| (k, i.as_deref() == Some(IMPROVED))).collect() };
         let yes = |k: &str| (k.to_string(), true);
         let no = |k: &str| (k.to_string(), false);
         assert_eq!(read(&now), [yes(a), yes(b), yes(c), no(d), no(d)]);
         assert_eq!(read(&before), [yes(a), yes(c), no(d)]);
         // (the LaTeX is read as it was, without the mark)
         assert_eq!(marked_equations(&now).into_iter().map(|(_, l)| l).collect::<Vec<_>>(), ["a", "b", "c", "d", "d"]);
+    }
+
+    #[test]
+    fn a_mark_that_says_who_changed_the_equation_and_what_it_was_is_read_whole() {
+        let (a, c) = ("0123456789abcdef", "2123456789abcdef");
+        let under = "<!-- mdBun:corrected by=\"Ann\" was=\"a -&#45; b &#10;c &gt; d\" -->";
+        let behind = "<!-- mdBun:improved by=\"Claude\" was=\"c'\" -->";
+        let text = format!("<!-- pdf2md:eq {a} -->\n\n```math\na\n```\n{under}\n\nSee $`c`$<!-- pdf2md:eq {c} -->{behind} here, <!-- mdBun:improvedly --> not this.");
+        let marks: Vec<Option<String>> = marked_and_improved(&text).into_iter().map(|(_, _, m)| m).collect();
+        assert_eq!(marks, [Some(under.to_string()), Some(behind.to_string())]);
+        assert_eq!(mdbun_mark(IMPROVED), Some(IMPROVED));
+        // (no mark of mdBun's: another word, one that does not end on its line)
+        for t in ["<!-- mdBun:improvedly -->", "<!-- mdBun:corrected by=\"Ann\"\n -->", "<!-- pdf2md:eq 0123456789abcdef -->"] {
+            assert_eq!(mdbun_mark(t), None, "{t}");
+        }
     }
 
     #[test]
