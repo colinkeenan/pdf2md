@@ -487,6 +487,11 @@ fn tex_plain(s: &MSpan) -> String {
     if s.family.to_uppercase().starts_with("RSFS") && t.chars().all(|c| c.is_ascii_alphabetic()) && !t.is_empty() {
         return t.chars().map(|c| format!("\\mathscr{{{c}}}")).collect::<Vec<_>>().join(" ");
     }
+    // Fraktur (𝔤 of a Lie algebra, the 𝔇 of a path integral, ℑ𝔪): Euler's
+    // font stores them as plain letters; the letters of a piece are one word.
+    if s.family.to_uppercase().starts_with("EUFM") && t.chars().all(|c| c.is_ascii_alphabetic()) && !t.is_empty() {
+        return format!("\\mathfrak{{{t}}}");
+    }
     // Blackboard bold (𝕀, ℝ ...): the AMS font stores them as plain letters.
     if (s.family.starts_with("MSBM") || crate::layout::doubled_font(&s.family)) && t.chars().all(|c| c.is_ascii_alphabetic()) && !t.is_empty() {
         return t.chars().map(|c| format!("\\mathbb{{{c}}}")).collect::<Vec<_>>().join(" ");

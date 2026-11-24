@@ -582,7 +582,7 @@ def read(files, dst, ext: str, scale: int, state: dict):
 # Equations built from the letters of a PDF's page (a TeX book): a second
 # reading, by the recognizer, of the place on the page each was built from.
 
-PLACES = "places 12"
+PLACES = "places 13"
 # pixels of a cut-out for each pixel of the page reader's measure (it has
 # 1.5 to a point: 216 dots to the inch, twice the size of an ebook's pictures)
 ZOOM = 2.0
@@ -626,8 +626,9 @@ def tidy(t: str) -> str:
     t = re.sub(r"\\parallel(?![a-zA-Z])|\\\||\\Vert(?![a-zA-Z])|\\lVert(?![a-zA-Z])|\\rVert(?![a-zA-Z])", "||", t)
     t = re.sub(r"\\iiint(?![a-zA-Z])", r"\\int\\int\\int ", t)
     t = re.sub(r"\\bullet(?![a-zA-Z])", r"\\cdot ", t)
-    # (a script letter is the page's to say: the recognizer reads 𝒜 as A)
-    t = re.sub(r"\\(mathcal|cal|mathscr)(?![a-zA-Z])", "", t)
+    # (a script letter is the page's to say: the recognizer reads 𝒜 as A;
+    # so is a Fraktur one, which it also reads as a script letter)
+    t = re.sub(r"\\(mathcal|cal|mathscr|mathfrak|frak)(?![a-zA-Z])", "", t)
     return re.sub(r"\\(quad|qquad)(?![a-zA-Z])", " ", t)
 
 
@@ -684,6 +685,7 @@ def marks(t: str):
     out = {
         "doubled": len(re.findall(r"\\(mathbb|mathbbm|mathds)\s*(\{\s*1\s*\}|1)|𝟙", t)),
         "script": count(r"\\(mathcal|cal|mathscr)(?![a-zA-Z])"),
+        "fraktur": count(r"\\(mathfrak|frak)(?![a-zA-Z])"),
         "stroke": count(r"\\(slashed|cancel|not)(?![a-zA-Z])") + t.count("đ"),
     }
     for letter in ("phi", "epsilon", "theta", "rho"):

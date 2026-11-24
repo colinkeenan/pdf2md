@@ -81,6 +81,19 @@ pub fn prepare(doc: &Doc) -> Vec<PageInfo> {
         }
     }
     feet.retain(|_, n| *n >= 8 && *n * 4 >= doc.pages.len());
+    // A number that the head of page after page begins or ends with is no
+    // page number: the year of "Lecture 10 … Fall 2010" over every page of
+    // a lecture's notes, which have their page numbers at the foot.
+    let mut heads: std::collections::HashMap<String, usize> = std::collections::HashMap::new();
+    for p in &doc.pages {
+        let Some(first) = p.lines.first().filter(|l| l.top < p.height * 0.13) else { continue };
+        let text = plain_text(first);
+        let ends: std::collections::HashSet<&str> = [text.split_whitespace().next(), text.split_whitespace().last()].into_iter().flatten().filter(|w| is_page_number(w)).collect();
+        for w in ends {
+            *heads.entry(w.to_string()).or_default() += 1;
+        }
+    }
+    heads.retain(|_, n| *n >= 3 || (*n == 2 && doc.pages.len() == 2));
     let mut pages: Vec<PageInfo> = doc
         .pages
         .iter()
@@ -116,7 +129,7 @@ pub fn prepare(doc: &Doc) -> Vec<PageInfo> {
                         label = [words.first(), words.last()]
                             .into_iter()
                             .flatten()
-                            .find(|w| is_page_number(w))
+                            .find(|w| is_page_number(w) && !heads.contains_key(**w))
                             .map(|w| w.to_string());
                         // (the title beside the number; of two columns of
                         // words set far apart, each with one blank between)
