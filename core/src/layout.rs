@@ -3792,6 +3792,30 @@ fn group_lines(
         }
     }
     groups.retain(|g| !g.is_empty());
+    // The arrow over a letter (an arrow's head and a minus sign run into
+    // it, see `mathtex::arrows_over`) stands a line's height over its
+    // letter; over a letter in a line of text nothing else stands so high,
+    // and the two made a line of their own. They are of their letter's line.
+    let mut k = 0;
+    while k < groups.len() {
+        let g = &groups[k];
+        let arrow = g.len() == 2 && g.iter().any(|p| matches!(p.text.trim(), "←" | "→")) && g.iter().any(|p| matches!(p.text.trim(), "−" | "-"));
+        let (left, right, top) = g.iter().fold((f32::MAX, f32::MIN, f32::MAX), |(l, r, t), p| (l.min(p.left), r.max(p.right()), t.min(p.top)));
+        let home = (0..groups.len()).filter(|&m| arrow && m != k).find(|&m| {
+            groups[m].iter().any(|n| {
+                let drop = n.top - top;
+                n.text.trim().chars().count() == 1 && n.text.trim().chars().all(|c| c.is_alphabetic() || c == '∂' || c == '∇') && drop >= 0.5 * size_of(n) && drop <= 1.1 * size_of(n) && n.left >= left - 2.0 && n.right() <= right + 2.0
+            })
+        });
+        match home {
+            Some(m) => {
+                let all = groups.remove(k);
+                let m = if m > k { m - 1 } else { m };
+                groups[m].extend(all);
+            }
+            None => k += 1,
+        }
+    }
     // A few small letters that stand right over a line and touch none, at
     // the head of an integral sign: its upper limit, in a line of text or
     // in an exponent. They

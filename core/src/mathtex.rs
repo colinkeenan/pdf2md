@@ -648,6 +648,7 @@ pub fn build_with(spans: &[MSpan], bars: &[Rule]) -> String {
         })
         .collect();
     let mut spans = spans;
+    arrows_over(&mut spans);
     // The circled signs of the extension font, which the PDF gives as the
     // letters of their places there: ⊙ ("J"), ⊕ ("L"), ⊗ ("N"). Set small
     // beside a letter it is that letter's index, the Sun's mass M_⊙: a
@@ -3889,6 +3890,48 @@ fn limit_rows(spans: &[MSpan]) -> Vec<Vec<MSpan>> {
     out
 }
 
+/// The arrow over a letter, `\\overleftarrow{\\partial}`: TeX draws it as an
+/// arrow's head with a minus sign run into it, a line's height over the
+/// letter, where the rows of what stands between tall brackets would
+/// take it for a row of its own. Head, minus sign and letter become one
+/// piece.
+fn arrows_over(spans: &mut Vec<MSpan>) {
+    loop {
+        let found = (0..spans.len()).find_map(|h| {
+            let head = &spans[h];
+            let way = match head.text.trim() {
+                "←" => "\\overleftarrow",
+                "→" => "\\overrightarrow",
+                _ => return None,
+            };
+            if head.atom.is_some() {
+                return None;
+            }
+            // (the minus sign that lengthens it, drawn over the head's end)
+            let shaft = (0..spans.len()).find(|&j| {
+                let m = &spans[j];
+                j != h && m.atom.is_none() && matches!(m.text.trim(), "−" | "-") && (m.top - head.top).abs() <= 1.5 && m.left < head.right && m.right > head.left && (m.left - head.left).abs() <= 0.5 * head.size
+            })?;
+            let (left, right) = (head.left.min(spans[shaft].left), head.right.max(spans[shaft].right));
+            // (one letter right under it)
+            let letter = (0..spans.len()).find(|&j| {
+                let n = &spans[j];
+                let drop = n.top - head.top;
+                j != h && j != shaft && n.atom.is_none() && !n.cmex() && n.text.trim().chars().count() == 1 && n.text.trim().chars().all(|c| c.is_alphabetic() || c == '∂' || c == '∇') && n.size >= 0.9 * head.size && drop >= 0.5 * head.size && drop <= 1.1 * head.size && n.left >= left - 2.0 && n.right <= right + 2.0
+            })?;
+            Some((h, shaft, letter, way))
+        });
+        let Some((h, shaft, letter, way)) = found else { break };
+        let inner = tex(&spans[letter]);
+        spans[letter].atom = Some(format!("{way}{{{}}}", inner.trim()));
+        let mut gone = [h, shaft];
+        gone.sort_unstable_by(|a, b| b.cmp(a));
+        for j in gone {
+            spans.remove(j);
+        }
+    }
+}
+
 /// Three dots set one over the other: TeX's sign for "and so on,
 /// downwards" in a column (z₁, ⋮, zₙ). pdftohtml gives two of them as one
 /// piece, "..", as narrow as one dot and taller than its type, and the
@@ -3953,6 +3996,7 @@ pub fn display_areas(
         return out;
     }
     stack_dots(&mut rest);
+    arrows_over(&mut rest);
     level_punctuation(&mut rest);
     level_sizes(&mut rest);
     let rest = rest;
