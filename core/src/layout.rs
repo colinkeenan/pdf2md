@@ -433,6 +433,25 @@ pub fn read_text(path: &Path, pages: Option<(u32, u32)>) -> Result<Doc, String> 
 fn text_macrons(doc: &mut Doc) {
     let math: Vec<bool> = doc.fonts.iter().map(|f| f.math).collect();
     let sizes: Vec<f32> = doc.fonts.iter().map(|f| f.size).collect();
+    // (A stroke of TeX's symbol font, the one that makes ≠ of =, set
+    // inside a word of the text font, "ma" and "trix": it strikes nothing,
+    // and the page shows a speck at most. It is no piece.)
+    let symbol_font: Vec<bool> = doc.fonts.iter().map(|f| f.family.to_uppercase().starts_with("CMSY")).collect();
+    for page in doc.pages.iter_mut() {
+        for line in page.lines.iter_mut() {
+            let word = |s: &Span| !math.get(s.font).copied().unwrap_or(false) && s.script == Script::Normal;
+            let strays: Vec<usize> = (1..line.spans.len().saturating_sub(1))
+                .filter(|&k| {
+                    let (before, s, after) = (&line.spans[k - 1], &line.spans[k], &line.spans[k + 1]);
+                    let size = sizes.get(s.font).copied().unwrap_or(s.height);
+                    s.text.trim() == "6" && symbol_font.get(s.font).copied().unwrap_or(false) && word(before) && word(after) && before.text.ends_with(char::is_alphabetic) && after.text.starts_with(char::is_alphabetic) && s.left - before.right() < 0.3 * size && after.left - s.left < 0.5 * size && after.left > s.left + 1.0
+                })
+                .collect();
+            for k in strays.into_iter().rev() {
+                line.spans.remove(k);
+            }
+        }
+    }
     for page in doc.pages.iter_mut() {
         for line in page.lines.iter_mut() {
             let mut k = 0;
@@ -4327,10 +4346,12 @@ fn group_lines(
     loop {
         let found = (0..symbols.len()).find_map(|a| {
             let open = &symbols[a];
-            let b = (0..symbols.len()).find(|&b| b != a && (symbols[b].top - open.top).abs() <= 2.0 && symbols[b].left > open.right() && symbols[b].left - open.right() < 4.0 * open.height)?;
+            let b = (0..symbols.len()).find(|&b| b != a && (symbols[b].top - open.top).abs() <= 2.0 && symbols[b].left > open.right() && symbols[b].left - open.right() < 4.0 * open.height.max(size_of(open)))?;
             let close = &symbols[b];
             // (brackets, drawn in pieces or whole: no sum or integral sign)
-            if ![open, close].iter().all(|s| matches!(s.text.trim(), "" | "(" | ")" | "[" | "]")) {
+            // (… or by the characters of their places in TeX's font, where
+            // pdftohtml gives those: "!" for the tallest ")")
+            if ![open, close].iter().all(|s| matches!(s.text.trim(), "" | "(" | ")" | "[" | "]" | "!" | "\"" | "#")) {
                 return None;
             }
             let between = |n: &Span| n.left >= open.right() - 1.0 && n.right() <= close.left + 1.0;
@@ -4339,16 +4360,26 @@ fn group_lines(
             // its size between them: one row above it, one below, each less
             // than a line away)
             (0..groups.len()).find_map(|line| {
-                let words = groups[line].iter().find(|n| wordy(n) && !between(n) && n.top >= open.top && n.top <= open.top + 2.0 * open.height)?;
+                let words = groups[line].iter().find(|n| wordy(n) && !between(n) && n.top >= open.top && n.top <= open.top + 2.0 * open.height.max(size_of(open)))?;
                 // (a sentence: a display too may hold a word or two, "and", "for all")
                 let count: usize = groups[line].iter().filter(|n| !between(n)).map(|n| n.text.split_whitespace().filter(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 3).count()).sum();
                 if count < 4 {
                     return None;
                 }
                 let row = |n: &Span| between(n) && size_of(n) >= 0.85 * size_of(words) && (n.top - words.top).abs() > 2.0 && (n.top - words.top).abs() <= 0.8 * words.height;
-                let rows: Vec<(usize, usize)> = (0..groups.len()).flat_map(|k| (0..groups[k].len()).map(move |j| (k, j))).filter(|&(k, j)| row(&groups[k][j])).collect();
+                let mut rows: Vec<(usize, usize)> = (0..groups.len()).flat_map(|k| (0..groups[k].len()).map(move |j| (k, j))).filter(|&(k, j)| row(&groups[k][j])).collect();
                 let above = rows.iter().any(|&(k, j)| groups[k][j].top < words.top);
                 let below = rows.iter().any(|&(k, j)| groups[k][j].top > words.top);
+                // (a root sign right before a figure of a row goes with it:
+                // its box stands higher than the row's)
+                let signs: Vec<(usize, usize)> = (0..groups.len())
+                    .flat_map(|k| (0..groups[k].len()).map(move |j| (k, j)))
+                    .filter(|&(k, j)| {
+                        let n = &groups[k][j];
+                        n.text.trim() == "√" && between(n) && rows.iter().any(|&(rk, rj)| rk == k && groups[rk][rj].left >= n.right() - 2.0 && groups[rk][rj].left - n.right() < size_of(&groups[rk][rj]))
+                    })
+                    .collect();
+                rows.extend(signs);
                 // (nothing between the brackets on the line itself)
                 let on_line = groups[line].iter().any(|n| between(n) && size_of(n) >= 0.85 * size_of(words) && (n.top - words.top).abs() <= 2.0);
                 (above && below && !on_line && rows.iter().any(|&(k, _)| k != line)).then_some((a, b, rows, line))

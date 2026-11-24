@@ -275,7 +275,7 @@ Calculate the wavelength of the 2p to 1s transition in positronium.
 
 5. Tritium is a unstable isotope of Hydrogen with a proton and two neutrons in the nucleus. Assume an atom of Tritium starts out in the ground state. The nucleus (beta) decays suddenly into that of He<sup>3</sup>. Calculate the probability that the electron remains in the ground state.
 
-6. A hydrogen atom is in the state $`\psi = \tfrac{1}{6} ( 4 \psi_{1 0 0} ) + 3 ( \psi_{2 1 1} - \psi_{2 1 0} + \sqrt{1 0} \psi_{2 1 - 1} )`$. What are the possible energies that can be measured and what are the probabilities of each? What is the expectation value of $`L^{2}`$? What is the expectation value of $`L_{z}`$? What is the expectation value of $`L_{x}`$?
+6. A hydrogen atom is in the state $`\psi = \tfrac{1}{6} \left( 4 \psi_{1 0 0} + 3 \psi_{2 1 1} - \psi_{2 1 0} + \sqrt{1 0} \psi_{2 1 - 1} \right)`$. What are the possible energies that can be measured and what are the probabilities of each? What is the expectation value of $`L^{2}`$? What is the expectation value of $`L_{z}`$? What is the expectation value of $`L_{x}`$?
 
 7. What is $`P ( p_{z} )`$, the probability distribution of $`p_{z}`$ for the Hydrogen energy eigenstate $`\psi_{2 1 0}`$?
 

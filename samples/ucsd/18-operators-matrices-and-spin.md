@@ -1162,17 +1162,7 @@ To find the eigenvectors, we simply replace (one at a time) each of the eigenval
 
 and solve for $`\chi_{1}`$ and $`\chi_{2}`$.
 
-```math
-0 1
-```
-
-Now specifically, for the operator $`A = S_{x} = \tfrac{\hbar}{2}`$, the eigenvalue equation $`( S_{x} - \alpha ) \chi = 0`$
-
-```math
-1 0
-```
-
-becomes, in matrix notation,
+Now specifically, for the operator $`A = S_{x} = \tfrac{\hbar}{2} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}`$, the eigenvalue equation $`( S_{x} - \alpha ) \chi = 0`$ becomes, in matrix notation,
 
 ```math
 \begin{aligned} \frac{\hbar}{2} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} \chi_{1} \\ \chi_{2} \end{pmatrix} - \begin{pmatrix} \alpha & 0 \\ 0 & \alpha \end{pmatrix} \begin{pmatrix} \chi_{1} \\ \chi_{2} \end{pmatrix} &= 0 \\ \Rightarrow \quad \begin{pmatrix} - \alpha & \hbar / 2 \\ \hbar / 2 & - \alpha \end{pmatrix} \begin{pmatrix} \chi_{1} \\ \chi_{2} \end{pmatrix} &= 0 \end{aligned}
@@ -1218,13 +1208,7 @@ To find the eigenvectors of the operator $`S_{y}`$ we follow precisely the same 
 
 4. Solve this equation for the eigenvectors
 
-Here we go! The operator $`S = \tfrac{\hbar}{2}`$ $`0 - i`$ , so that, in matrix notation the eigenvalue equation
-
-```math
-{}_{y} \quad \left( i \quad 0 \right)
-```
-
-becomes
+Here we go! The operator $`S_{y} = \tfrac{\hbar}{2} \begin{pmatrix} 0 & - i \\ i & 0 \end{pmatrix}`$, so that, in matrix notation the eigenvalue equation becomes
 
 ```math
 \begin{pmatrix} - \alpha & - i \hbar / 2 \\ i \hbar / 2 & - \alpha \end{pmatrix} \begin{pmatrix} \chi_{1} \\ \chi_{2} \end{pmatrix} = 0
@@ -1818,7 +1802,7 @@ What are the eigen-energies and corresponding eigenstates of the system? (This i
 \sqrt{2}
 ```
 
-3. A spin 1 system is in the following state in the usual $`Lz`$ basis: $`\chi = \tfrac{1}{\sqrt{5}} ( )`$ 1 + $`( i )`$. What
+3. A spin 1 system is in the following state in the usual $`Lz`$ basis: $`\chi = \tfrac{1}{\sqrt{5}} \left( 1 + i \right)`$. What
 
 ```math
 - i
@@ -1834,19 +1818,9 @@ is the probability that a measurement of the $`x`$ component of spin yields zero
 
 5. Find the (normalized) eigenvectors and eigenvalues of the $`S_{x}`$ (matrix) operator for $`s = 1`$ in the usual $`( S_{z} )`$ basis.
 
-6. **\*** A spin $`\frac{1}{2}`$ particle is in a magnetic field in the $`x`$ direction giving a Hamiltonian $`H = \mu_{B} B\sigma_{x}`$. Find the time development (matrix) operator $`e^{- iHt/ \hbar}`$ in the usual basis. If $`\chi ( t = 0 ) = \begin{pmatrix} 1 \\ 0 \end{pmatrix}`$,
+6. **\*** A spin $`\frac{1}{2}`$ particle is in a magnetic field in the $`x`$ direction giving a Hamiltonian $`H = \mu_{B} B\sigma_{x}`$. Find the time development (matrix) operator $`e^{- iHt/ \hbar}`$ in the usual basis. If $`\chi ( t = 0 ) = \begin{pmatrix} 1 \\ 0 \end{pmatrix}`$, find $`\chi ( t )`$.
 
-```math
-\text{ find } \chi ( t ) . \quad \sqrt{3}
-```
-
-7. A spin $`\frac{1}{2}`$ system is in the following state in the usual $`S_{z}`$ basis: $`\chi = \tfrac{1}{\sqrt{5}}`$. What is the
-
-```math
-1 + i
-```
-
-probability that a measurement of the $`x`$ component of spin yields +$`\frac{1}{2}`$?
+7. A spin $`\frac{1}{2}`$ system is in the following state in the usual $`S_{z}`$ basis: $`\chi = \tfrac{1}{\sqrt{5}} \begin{pmatrix} \sqrt{3} \\ 1 + i \end{pmatrix}`$. What is the probability that a measurement of the $`x`$ component of spin yields +$`\frac{1}{2}`$?
 
 8. A spin $`\frac{1}{2}`$ system is in the state $`\chi = \tfrac{1}{\sqrt{5}} \begin{pmatrix} i \\ 2 \end{pmatrix}`$ (in the usual $`S_{z}`$ eigenstate basis). What is the
 

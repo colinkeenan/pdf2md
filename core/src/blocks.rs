@@ -613,6 +613,23 @@ pub fn line_inlines(doc: &Doc, l: &Line, st: &Stats) -> Vec<Inline> {
             kinds[i] = K::Math;
         }
     }
+    // What stands between two tall brackets of the big-symbol font is the
+    // formula's: the rows of a small matrix set in the text's own figures,
+    // "1 0" over "0 0" (the piece of two figures with its blank is no
+    // operator by its characters, and the matrix fell apart).
+    for i in 0..n {
+        let big = |k: usize, which: &[&str]| doc.family(&spans[k]).starts_with("CMEX") && which.contains(&spans[k].text.trim());
+        if !big(i, &["(", "["]) {
+            continue;
+        }
+        let Some(j) = (i + 1..n).find(|&j| big(j, &["(", "[", ")", "]"])).filter(|&j| big(j, &[")", "]"])) else { continue };
+        let figures = |k: usize| kinds[k] == K::Math || (!reference(k) && !spans[k].text.trim().is_empty() && spans[k].text.chars().all(|c| c.is_ascii_digit() || c.is_whitespace() || "+−-".contains(c)));
+        if j > i + 1 && (i + 1..j).all(figures) {
+            for kind in &mut kinds[i + 1..j] {
+                *kind = K::Math;
+            }
+        }
+    }
     // The name of a function right before math is the formula's.
     for i in 0..n.saturating_sub(1) {
         let s = &spans[i];

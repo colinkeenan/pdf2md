@@ -4552,7 +4552,7 @@ Compare this with (239). It differs only in having the $`\log ( K/ ( E - E_{o} )
 
 The success of this calculation of the line shift shows that the correct treatment of the interaction between an <a id="ix-106">electron</a> and the Maxwell field, with the help of the idea of mass renormalization, will give sensible results in agreement with experiment. This calculation could be done non-relativistically because the line shift is mainly a low-frequency and non-relativistic effect.
 
-There are other effects of the radiation interaction, especially the anomalous increase in the observed magnetic moment of the electron by a factor $`( ) 1`$ + $`\frac{\alpha}{2 \pi} ( )`$ over the value given by the Dirac theory, which are essentially relativistic in character. For studying these effects, and for calculating the Lamb shift accurately without an arbitrary cut-off, we need to use a complete relativistic quantum electrodynamics, in which both electrons and the Maxwell field are handled relativistically.
+There are other effects of the radiation interaction, especially the anomalous increase in the observed magnetic moment of the electron by a factor $`\left( 1 + \frac{\alpha}{2 \pi} \right)`$ over the value given by the Dirac theory, which are essentially relativistic in character. For studying these effects, and for calculating the Lamb shift accurately without an arbitrary cut-off, we need to use a complete relativistic quantum electrodynamics, in which both electrons and the Maxwell field are handled relativistically.
 
 Therefore we must go back to where we left off the theory of the Dirac electron on page 31, and start to construct a relativistic field theory of electrons and positrons, similar to the quantized Maxwell field theory.
 

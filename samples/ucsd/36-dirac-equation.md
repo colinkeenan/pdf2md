@@ -1049,17 +1049,7 @@ It is useful to write the plane wave states as a spinor $`u_{\vec{p}}^{( r )}`$ 
 u_{\vec{p}}^{( r ) \dagger} u_{\vec{p}}^{( r^{\prime} )} = \frac{| E |}{mc^{2}} \delta_{rr^{\prime}}
 ```
 
-```math
-\sigma_{z} \quad 0
-```
-
-Are the free particle states still eigenstates of $`\Sigma_{z} =`$ as were the states of a particle at
-
-```math
-0 \quad \sigma_{z}
-```
-
-rest? In general, they are not. To have an eigenvalue of +1, a spinor must have zero second and fourth components and to have an eigenvalue of -1, the first and third components must be zero. So **boosting our Dirac particle to a frame in which it is moving, mixes up the spin states**.
+Are the free particle states still eigenstates of $`\Sigma_{z} = \begin{pmatrix} \sigma_{z} & 0 \\ 0 & \sigma_{z} \end{pmatrix}`$ as were the states of a particle at rest? In general, they are not. To have an eigenvalue of +1, a spinor must have zero second and fourth components and to have an eigenvalue of -1, the first and third components must be zero. So **boosting our Dirac particle to a frame in which it is moving, mixes up the spin states**.
 
 There is one case for which these are still spin eigenstates. If the particle’s momentum is in the z direction, then we have just the spinors we need to be eigenstates of $`\Sigma_{z}`$. That is, if we boost along the quantization axis, the spin eigenstates are preserved. These are called **helicity eigenstates**. Helicity is the spin component along the direction of the particle. While it is possible to make definite momentum solutions which are eigenstates of helicity, it is not possible to make definite momentum states which are eigenstates of spin along some other direction (except in the trivial case of $`\vec{p} = 0`$ as we have shown).
 
@@ -1677,7 +1667,7 @@ Therefore, under a **parity inversion operation**
 0 1 1 0 \quad 0 0 \quad 0 0
 ```
 
-Since $`\gamma_{4} = ( )`$ 0 $`0 - 1`$ 0 $`( )`$ , the third and fourth components of the spinor change sign while
+Since $`\gamma_{4} = \left( 0 0 \quad - 1 \quad 0 \right)`$ , the third and fourth components of the spinor change sign while
 
 ```math
 0 0 \quad 0 \quad - 1
