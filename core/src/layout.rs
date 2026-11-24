@@ -437,6 +437,7 @@ pub fn read_drawings(doc: &mut Doc, path: &Path, pages: Option<(u32, u32)>) {
         drop_empty(doc, &lost);
     }
     if let Some(parts) = &parts {
+        restore_slots(doc, path, parts);
         restore_epsilons(doc, path, parts);
         split_shifted(doc, parts);
     }
@@ -642,6 +643,8 @@ struct Placed {
     x: f32,
     y: f32,
     ink: (f32, f32, f32),
+    /// the drawing's number of the glyph's font ("glyph-3-12": 3)
+    font: u32,
 }
 
 /// The glyphs of each page in the order they are drawn.
@@ -670,7 +673,8 @@ fn parse_svg_uses(svg: &str) -> Vec<Vec<Placed>> {
                     let id = id.strip_prefix("#glyph")?;
                     let (x, y): (f32, f32) = (text(&tag, "x")?.parse().ok()?, text(&tag, "y")?.parse().ok()?);
                     let ink = inks.get(format!("glyph{id}").as_str()).map_or((x, x, y), |(l, r, t)| (x + l, x + r, y + t));
-                    Some(Placed { x, y, ink })
+                    let font = id.trim_start_matches('-').split('-').next().and_then(|n| n.parse().ok()).unwrap_or(0);
+                    Some(Placed { x, y, ink, font })
                 })
                 .collect()
         })
@@ -771,6 +775,123 @@ fn split_shifted(doc: &mut Doc, parts: &[(usize, String)]) {
     }
 }
 
+/// Where a glyph stands (from the left), and what it is to be written as
+/// (None: as pdftohtml gave it).
+type Rewritten = (f32, Option<String>);
+
+/// The signs of TeX's big-symbol font as `mathtex` reads them. pdftohtml
+/// gives a glyph of that font as the letter of its place in the font ("X"
+/// the sum sign of a display, "P" the one of a line, "Z" and "R" the
+/// integral signs), unless the PDF's font has a table of characters: then
+/// it gives what the table says, "∑" for both sums, or "\u{fffd}" where the
+/// table has none. The PDF's own list of the glyphs it draws says which
+/// each one is, and the page's drawing where it stands: each piece of
+/// such a font is written as it would have come without the table. A
+/// piece that has not as many characters as glyphs is left alone.
+///
+/// So with TeX's font of math letters, where its table gives a Greek
+/// letter by another one (one lecture's notes have ν as "β" in the small
+/// type of indices, another as "δ"; the large type has it right): the
+/// glyph's place in the font says which letter it is.
+fn restore_slots(doc: &mut Doc, path: &Path, parts: &[(usize, String)]) {
+    if !doc.fonts.iter().any(|f| ["CMEX", "CMMI"].iter().any(|p| f.family.to_uppercase().starts_with(p))) {
+        return;
+    }
+    let (Some(first), Some(last)) = (doc.pages.first().map(|p| p.number), doc.pages.last().map(|p| p.number)) else { return };
+    let Some(glyphs) = crate::glyphs::read_where(path, first, last, &|font, _| font.misnamed()) else { return };
+    let debug = std::env::var_os("PDF2MD_GLYPHDEBUG").is_some();
+    let mut uses: Vec<Vec<Placed>> = Vec::new();
+    for (pages, svg) in parts {
+        let mut of_part = parse_svg_uses(svg);
+        of_part.resize_with(*pages, Vec::new);
+        uses.append(&mut of_part);
+    }
+    let families: Vec<String> = doc.fonts.iter().map(|f| f.family.clone()).collect();
+    let sizes: Vec<f32> = doc.fonts.iter().map(|f| f.size).collect();
+    let one_column = doc.gutter.is_none();
+    let same = |base: &str, family: &str| base == family || base.strip_prefix(family).is_some_and(|rest| rest.starts_with('-'));
+    let (mut written, mut left) = (0, 0);
+    for (page, placed) in doc.pages.iter_mut().zip(uses) {
+        let Some(shown) = glyphs.pages.get(&page.number) else { continue };
+        // (a space is a glyph that draws nothing: it may not be in the SVG)
+        let Some(drawn) = glyphs.drawn(shown, &placed.iter().map(|g| g.font).collect::<Vec<_>>()) else {
+            if debug {
+                eprintln!("SLOTS page {}: {} shown, {} drawn", page.number, shown.len(), placed.len());
+            }
+            continue;
+        };
+        let before = written;
+        // the glyphs of each piece of such a font: where, and what
+        let mut of_span: HashMap<(usize, usize), Vec<Rewritten>> = HashMap::new();
+        for (&(f, code), at) in drawn.iter().zip(&placed) {
+            let info = &glyphs.fonts[f];
+            if !info.misnamed() {
+                continue;
+            }
+            let (x, y) = (1.5 * at.x, 1.5 * at.y);
+            let mut best: Option<((usize, usize), f32)> = None;
+            for (li, line) in page.lines.iter().enumerate() {
+                for (si, s) in line.spans.iter().enumerate() {
+                    if !same(&info.base, &families[s.font]) || y < s.top - 3.0 || y > s.bottom() + 3.0 {
+                        continue;
+                    }
+                    // (a glyph that starts at the right edge of one piece
+                    // and the left edge of the next is the next one's)
+                    let off = (s.left - x).max(x - (s.right() - 1.0).max(s.left)).max(0.0);
+                    let score = f32::from(x >= s.right() - 1.5) + 0.01 * (x - s.left).abs();
+                    if off <= 1.5 && best.is_none_or(|(_, o)| score < o) {
+                        best = Some(((li, si), score));
+                    }
+                }
+            }
+            match best {
+                Some((span, _)) => of_span.entry(span).or_default().push((x, info.slot_text(code))),
+                None => {
+                    left += 1;
+                    if debug {
+                        eprintln!("SLOTS page {}: no piece for {} {code} at {x:.0},{y:.0}", page.number, info.base);
+                    }
+                }
+            }
+        }
+        for ((li, si), mut found) in of_span {
+            let s = &mut page.lines[li].spans[si];
+            found.sort_by(|a, b| a.0.total_cmp(&b.0));
+            if s.text.chars().filter(|c| !c.is_whitespace()).count() != found.len() {
+                left += found.len();
+                if debug {
+                    eprintln!("SLOTS page {}: {:?} has {} glyphs", page.number, s.text, found.len());
+                }
+                continue;
+            }
+            // (each character is one glyph, in their order; a glyph that
+            // is to stay keeps its character, a space its place)
+            let mut glyph = found.iter();
+            let mut text = String::new();
+            for c in s.text.chars() {
+                match if c.is_whitespace() { None } else { glyph.next() } {
+                    Some((_, Some(t))) => text.push_str(t),
+                    _ => text.push(c),
+                }
+            }
+            if text.trim() != s.text.trim() {
+                written += found.len();
+                s.text = if text.trim().is_empty() { String::new() } else { text };
+            }
+        }
+        // (the page's lines were made of its pieces before the signs were
+        // known for what they are — which line a display's sum or integral
+        // sign is of goes by the sign: they are made again)
+        if written > before && one_column {
+            let spans: Vec<Span> = std::mem::take(&mut page.lines).into_iter().flat_map(|l| l.spans).collect();
+            page.lines = group_lines(spans, &|s| sizes.get(s.font).copied().unwrap_or(s.height), &|s| families.get(s.font).is_some_and(|f| f.starts_with("CMEX")));
+        }
+    }
+    if debug {
+        eprintln!("SLOTS {written} glyphs written by their places in the font, {left} left");
+    }
+}
+
 /// TeX's ϵ among other letters. In a PDF that does not say what its
 /// letters mean pdftohtml has no character for the ϵ of the math italic
 /// font: alone it comes as an empty piece (see [`parse_xml_with`]), among
@@ -798,13 +919,12 @@ fn restore_epsilons(doc: &mut Doc, path: &Path, parts: &[(usize, String)]) {
     for (page, placed) in doc.pages.iter_mut().zip(uses) {
         let Some(shown) = glyphs.pages.get(&page.number) else { continue };
         // (a space is a glyph that draws nothing: it may not be in the SVG)
-        let drawn: Vec<(usize, u8)> = if shown.len() == placed.len() { shown.clone() } else { shown.iter().copied().filter(|&(_, code)| code != b' ').collect() };
-        if drawn.len() != placed.len() {
+        let Some(drawn) = glyphs.drawn(shown, &placed.iter().map(|g| g.font).collect::<Vec<_>>()) else {
             if debug {
                 eprintln!("EPSILON page {}: {} shown, {} drawn", page.number, shown.len(), placed.len());
             }
             continue;
-        }
+        };
         let at = |k: usize| (1.5 * placed[k].x, 1.5 * placed[k].y);
         // the pieces an ϵ stands in, each with the height of its line
         let mut pieces: Vec<(usize, usize, f32)> = Vec::new();
@@ -906,18 +1026,13 @@ fn restore_glyphs(doc: &mut Doc, path: &Path, parts: &[(usize, String)], lost: &
     for (page, placed) in doc.pages.iter_mut().zip(uses) {
         let Some(shown) = glyphs.pages.get(&page.number) else { continue };
         // (a space is a glyph that draws nothing: it may not be in the SVG)
-        let drawn: Vec<(usize, u8)> = if shown.len() == placed.len() {
-            shown.clone()
-        } else {
-            shown.iter().copied().filter(|&(_, code)| code != b' ').collect()
-        };
-        if drawn.len() != placed.len() {
+        let Some(drawn) = glyphs.drawn(shown, &placed.iter().map(|g| g.font).collect::<Vec<_>>()) else {
             pages_off += 1;
             if debug {
                 eprintln!("GLYPHS page {}: {} shown, {} drawn", page.number, shown.len(), placed.len());
             }
             continue;
-        }
+        };
         // An arrow or stroke over a figure or letter of the text font (the
         // 0 of "(m, 0⃗)", which stands in a piece of prose, "0, 0"): the
         // character under it is cut out of its piece and is math, so the
@@ -983,7 +1098,7 @@ fn restore_glyphs(doc: &mut Doc, path: &Path, parts: &[(usize, String)], lost: &
             if debug && glyph == Glyph::Unknown {
                 eprintln!("GLYPHS unknown {} {:?} {code}", info.base, info.name(code));
             }
-            let at = Placed { x: 1.5 * at.x, y: 1.5 * at.y, ink: (1.5 * at.ink.0, 1.5 * at.ink.1, 1.5 * at.ink.2) };
+            let at = Placed { x: 1.5 * at.x, y: 1.5 * at.y, ink: (1.5 * at.ink.0, 1.5 * at.ink.1, 1.5 * at.ink.2), font: at.font };
             // the piece of this font the glyph starts in (its base line is
             // inside the piece's box, or at its top: big symbols hang)
             let mut best: Option<((usize, usize), f32)> = None;
@@ -3778,12 +3893,28 @@ fn group_lines(
         // sign: TeX sets a formula close under a short line, and the
         // integral sign of the formula begins at that line's height. With
         // the sign goes its upper limit, which stands in that line too.)
-        let wordy = |k: usize| groups[k].iter().flat_map(|n| n.text.split_whitespace()).filter(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 3).count() >= 2;
+        // (a line of one word too: "Expanding", and the sums under it)
+        let wordy = |k: usize| groups[k].iter().filter(|n| !big_symbol(n)).flat_map(|n| n.text.split_whitespace()).any(|w| w.chars().filter(|c| c.is_alphabetic()).count() >= 3);
         let far = |k: usize, n: &Span| (n.left - s.right()).max(s.left - n.right()) > 2.0 * size_of(&groups[k][0]);
-        let display_sign = matches!(s.text.trim(), "Z" | "I");
+        // (so does a tall bracket of the formula, which the sign may stand in)
+        // (… and the sum or product sign of a display)
+        let display_sign = matches!(s.text.trim(), "Z" | "I" | "X" | "Y" | "[" | "]" | "(" | ")" | "{" | "}");
         let candidates: Vec<usize> = (0..groups.len()).filter(|&k| groups[k][0].top >= s.top - 0.3 * s.height && groups[k][0].top <= s.top + 3.0 * s.height).filter(|&k| !in_words(k)).collect();
         let at_head = |n: &Span| !big_symbol(n) && n.left >= s.right() - 2.0 && n.left - s.right() < size_of(n) && n.top >= s.top - 2.0 && n.top <= s.bottom();
-        let short_line = |k: usize| display_sign && wordy(k) && groups[k].iter().all(|n| far(k, n) || (at_head(n) && size_of(n) < 0.85 * size_of(&groups[k][0]))) && candidates.iter().any(|&m| groups[m][0].top > groups[k][0].top);
+        // (a sum or integral sign hangs from the foot of the box given
+        // for it: one set large in a line of text, wide apart from the
+        // line's words where its limit is wide, hangs about that line's
+        // middle and is of it)
+        let hangs_in = |k: usize| {
+            let depth = match s.text.trim() {
+                "X" | "Y" => 1.4,
+                "Z" | "I" => 2.22,
+                _ => return false,
+            };
+            let main = &groups[k][0];
+            (s.bottom() + 0.5 * depth * size_of(&s) - (main.top + 0.5 * main.height)).abs() <= 0.8 * size_of(main)
+        };
+        let short_line = |k: usize| display_sign && !hangs_in(k) && wordy(k) && groups[k].iter().all(|n| far(k, n) || (at_head(n) && size_of(n) < 0.85 * size_of(&groups[k][0]))) && candidates.iter().any(|&m| groups[m][0].top > groups[k][0].top);
         let over: Option<usize> = candidates.iter().copied().find(|&k| short_line(k));
         let below = candidates.iter().copied().filter(|&k| Some(k) != over).min_by(|&a, &b| groups[a][0].top.total_cmp(&groups[b][0].top));
         let limits: Vec<Span> = match (over, below) {

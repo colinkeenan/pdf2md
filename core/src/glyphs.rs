@@ -27,6 +27,60 @@ pub struct FontInfo {
     pub wide: bool,
     names: HashMap<u8, String>,
     unicode: Option<HashMap<u8, String>>,
+    /// TeX's big-symbol font with a table that names its signs otherwise
+    /// than pdftohtml gives them without one (see [`FontInfo::slot_text`])
+    misnamed: bool,
+}
+
+/// The glyphs of TeX's big-symbol font (CMEX), by their places in it.
+const CMEX_SLOTS: [&str; 128] = [
+    "parenleftbig", "parenrightbig", "bracketleftbig", "bracketrightbig", "floorleftbig", "floorrightbig", "ceilingleftbig", "ceilingrightbig",
+    "braceleftbig", "bracerightbig", "angbracketleftbig", "angbracketrightbig", "vextendsingle", "vextenddouble", "slashbig", "backslashbig",
+    "parenleftBig", "parenrightBig", "parenleftbigg", "parenrightbigg", "bracketleftbigg", "bracketrightbigg", "floorleftbigg", "floorrightbigg",
+    "ceilingleftbigg", "ceilingrightbigg", "braceleftbigg", "bracerightbigg", "angbracketleftbigg", "angbracketrightbigg", "slashbigg", "backslashbigg",
+    "parenleftBigg", "parenrightBigg", "bracketleftBigg", "bracketrightBigg", "floorleftBigg", "floorrightBigg", "ceilingleftBigg", "ceilingrightBigg",
+    "braceleftBigg", "bracerightBigg", "angbracketleftBigg", "angbracketrightBigg", "slashBigg", "backslashBigg", "slashBig", "backslashBig",
+    "parenlefttp", "parenrighttp", "bracketlefttp", "bracketrighttp", "bracketleftbt", "bracketrightbt", "bracketleftex", "bracketrightex",
+    "bracelefttp", "bracerighttp", "braceleftbt", "bracerightbt", "braceleftmid", "bracerightmid", "braceex", "arrowvertex",
+    "parenleftbt", "parenrightbt", "parenleftex", "parenrightex", "angbracketleftBig", "angbracketrightBig", "unionsqtext", "unionsqdisplay",
+    "contintegraltext", "contintegraldisplay", "circledottext", "circledotdisplay", "circleplustext", "circleplusdisplay", "circlemultiplytext", "circlemultiplydisplay",
+    "summationtext", "producttext", "integraltext", "uniontext", "intersectiontext", "unionmultitext", "logicalandtext", "logicalortext",
+    "summationdisplay", "productdisplay", "integraldisplay", "uniondisplay", "intersectiondisplay", "unionmultidisplay", "logicalanddisplay", "logicalordisplay",
+    "coproducttext", "coproductdisplay", "hatwide", "hatwider", "hatwidest", "tildewide", "tildewider", "tildewidest",
+    "bracketleftBig", "bracketrightBig", "floorleftBig", "floorrightBig", "ceilingleftBig", "ceilingrightBig", "braceleftBig", "bracerightBig",
+    "radicalbig", "radicalBig", "radicalbigg", "radicalBigg", "radicalbt", "radicalvertex", "radicaltp", "arrowvertexdbl",
+    "arrowtp", "arrowbt", "bracehtipdownleft", "bracehtipdownright", "bracehtipupleft", "bracehtipupright", "arrowdbltp", "arrowdblbt",
+];
+
+/// The Greek letter at a place of TeX's font of math letters (CMMI), as
+/// pdftohtml gives it, and the other character a table may rightly give
+/// for it (the two shapes of ϵ and φ go by either name).
+fn greek_slot(slot: u8) -> Option<(&'static str, &'static str)> {
+    const LETTERS: [&str; 40] = [
+        "Γ", "Δ", "Θ", "Λ", "Ξ", "Π", "Σ", "Υ", "Φ", "Ψ", "Ω", "α", "β", "γ", "δ", "ϵ", "ζ", "η", "θ", "ι", "κ", "λ", "µ", "ν", "ξ", "π", "ρ", "σ", "τ", "υ", "φ", "χ", "ψ", "ω", "ε", "ϑ", "ϖ", "ϱ", "ς", "ϕ",
+    ];
+    let letter = *LETTERS.get(slot as usize)?;
+    let also = match slot {
+        1 => "∆",
+        6 => "∑",
+        5 => "∏",
+        10 => "Ω",
+        15 => "ε",
+        22 => "μ",
+        30 => "ϕ",
+        34 => "ϵ",
+        39 => "φ",
+        _ => letter,
+    };
+    Some((letter, also))
+}
+
+/// A place of CMEX that holds a sign in one of its sizes (a sum, an
+/// integral, a bracket, a root; not a piece that a tall bracket is built
+/// of): pdftohtml gives it, where the font has no table, as the letter of
+/// that place, and `mathtex` reads those letters.
+fn sized_slot(slot: u8) -> bool {
+    CMEX_SLOTS.get(slot as usize).is_some_and(|n| symbol(n).is_some_and(|(_, ext)| ext))
 }
 
 /// A glyph as it is to be written into the text.
@@ -73,6 +127,51 @@ impl FontInfo {
     /// ("epsilon1"; without names it is the font's own place 15).
     pub fn unnamed_epsilon(&self, code: u8) -> bool {
         self.unicode.is_none() && !self.wide && self.base.to_uppercase().starts_with("CMMI") && self.names.get(&code).map_or(code == 15, |n| n == "epsilon1")
+    }
+
+    /// Is this TeX's big-symbol font with a table that gives its signs
+    /// by other characters than their places' letters ("∑" for the sum
+    /// sign that `mathtex` knows as "X", or no character at all)?
+    pub fn misnamed(&self) -> bool {
+        self.misnamed
+    }
+
+    /// The place in CMEX of the glyph this font has at `code`: by its
+    /// name where the font names its glyphs (one cut down to those used
+    /// numbers them anew), else the code itself. (Of the font of math
+    /// letters only where it does not name them.)
+    fn slot(&self, code: u8) -> Option<u8> {
+        match self.names.get(&code) {
+            Some(_) if self.letters() => None,
+            Some(name) => CMEX_SLOTS.iter().position(|n| n == name).map(|k| k as u8),
+            None => (code < 128).then_some(code),
+        }
+    }
+
+    /// What pdftohtml would give for the glyph of such a font without its
+    /// table, which is what `mathtex` reads: the letter of a sized sign's
+    /// place ("X" for the sum of a display, "P" for the one of a line),
+    /// nothing for a place below the letters (the smaller brackets, which
+    /// are then found by their outlines) unless the table names it. A
+    /// piece of a tall bracket stays what the table says.
+    /// In the font of math letters: the Greek letter of the glyph's
+    /// place, where the table gives another letter or none. None for a
+    /// glyph that stays as pdftohtml gave it.
+    pub fn slot_text(&self, code: u8) -> Option<String> {
+        let known = self.unicode.as_ref().and_then(|u| u.get(&code)).cloned().unwrap_or_default();
+        if self.letters() {
+            let (letter, also) = greek_slot(self.slot(code)?)?;
+            return (known.trim() != letter && known.trim() != also).then(|| letter.to_string());
+        }
+        match self.slot(code) {
+            Some(slot) if sized_slot(slot) && slot > 32 => Some(char::from(slot).to_string()),
+            _ => Some(known),
+        }
+    }
+
+    /// TeX's font of math letters (CMMI)?
+    fn letters(&self) -> bool {
+        self.base.to_uppercase().starts_with("CMMI")
     }
 
     fn loses(&self) -> bool {
@@ -264,12 +363,28 @@ fn font_info(doc: &Document, font: &Dictionary) -> FontInfo {
             }
         }
     }
-    info.unicode = font
+    let table = font
         .get(b"ToUnicode")
         .ok()
         .and_then(|t| doc.dereference(t).ok())
         .and_then(|(_, t)| t.as_stream().ok())
-        .map(|s| to_unicode(&s.decompressed_content().unwrap_or_else(|_| s.content.clone())));
+        .map(|s| to_unicode_all(&s.decompressed_content().unwrap_or_else(|_| s.content.clone())));
+    // (TeX's big-symbol font, a sized sign of which the table gives by
+    // another character than its place's letter, or by none)
+    if let Some(table) = table.as_ref().filter(|_| info.base.to_uppercase().starts_with("CMEX")) {
+        info.misnamed = table.iter().any(|(&code, text)| info.slot(code).is_some_and(|slot| sized_slot(slot) && slot > 32 && text.trim() != char::from(slot).to_string()));
+    }
+    // (… its font of math letters, with a table that gives a Greek letter
+    // by another one: ν as "β" in the small type of one lecture's notes,
+    // where the large type has it right)
+    if let Some(table) = table.as_ref().filter(|_| info.letters()) {
+        info.misnamed = table.iter().any(|(&code, text)| {
+            let t = text.trim();
+            let greek = t.chars().count() == 1 && t.chars().all(|c| ('\u{370}'..='\u{3ff}').contains(&c) || c == 'µ');
+            greek && info.slot(code).and_then(greek_slot).is_some_and(|(letter, also)| t != letter && t != also)
+        });
+    }
+    info.unicode = table.map(known_only);
     info
 }
 
@@ -277,7 +392,14 @@ fn font_info(doc: &Document, font: &Dictionary) -> FontInfo {
 /// `<02> <2192>` between beginbfchar and endbfchar,
 /// `<7b> <7d> <007B>` or `<7b> <7d> [<007B> <007C> <007D>]` between
 /// beginbfrange and endbfrange.
-fn to_unicode(cmap: &[u8]) -> HashMap<u8, String> {
+/// (a code "mapped" to nothing or to a blank is not known)
+fn known_only(mut map: HashMap<u8, String>) -> HashMap<u8, String> {
+    map.retain(|_, t| !t.trim().is_empty() && !t.chars().all(|c| c == '\u{fffd}' || c.is_control()));
+    map
+}
+
+/// … with the codes it maps to nothing.
+fn to_unicode_all(cmap: &[u8]) -> HashMap<u8, String> {
     #[derive(Debug, PartialEq)]
     enum Tok {
         Hex(Vec<u8>),
@@ -358,8 +480,6 @@ fn to_unicode(cmap: &[u8]) -> HashMap<u8, String> {
         }
         i += 1;
     }
-    // (a code "mapped" to nothing or to a blank is not known)
-    map.retain(|_, t| !t.trim().is_empty() && !t.chars().all(|c| c == '\u{fffd}' || c.is_control()));
     map
 }
 
@@ -404,6 +524,47 @@ pub struct Glyphs {
     pub fonts: Vec<FontInfo>,
     /// PDF page number -> (font, character code) of every glyph
     pub pages: HashMap<u32, Vec<(usize, u8)>>,
+}
+
+impl Glyphs {
+    /// The glyphs of a page that its drawing (the SVG) has; `fonts` names
+    /// the drawing's font of each glyph there. A space is a glyph that
+    /// draws nothing, and may not be in the drawing: all of a page's, or
+    /// one here and there. The drawing's fonts tell which: each of them
+    /// is one font of the PDF (at one size), so a space is not drawn
+    /// where the next glyph of the drawing is of another font than its
+    /// own. None where the two lists cannot be matched so.
+    pub fn drawn(&self, shown: &[(usize, u8)], fonts: &[u32]) -> Option<Vec<(usize, u8)>> {
+        if shown.len() == fonts.len() {
+            return Some(shown.to_vec());
+        }
+        // (in TeX's math fonts the code 32 is a sign: a bracket of CMEX)
+        let space = |f: usize, code: u8| self.fonts[f].name(code) == Some("space") || (code == b' ' && self.fonts[f].name(code).is_none() && !is_math_base(&self.fonts[f].base));
+        let mut of: HashMap<u32, usize> = HashMap::new();
+        let mut out = Vec::with_capacity(fonts.len());
+        let mut matched = true;
+        for &(f, code) in shown {
+            match fonts.get(out.len()) {
+                Some(font) if *of.entry(*font).or_insert(f) == f => out.push((f, code)),
+                _ if space(f, code) => {}
+                _ => {
+                    matched = false;
+                    break;
+                }
+            }
+        }
+        if matched && out.len() == fonts.len() {
+            return Some(out);
+        }
+        // (none of the page's spaces drawn)
+        let plain: Vec<(usize, u8)> = shown.iter().copied().filter(|&(_, code)| code != b' ').collect();
+        (plain.len() == fonts.len()).then_some(plain)
+    }
+}
+
+fn is_math_base(base: &str) -> bool {
+    let u = base.to_uppercase();
+    ["CMEX", "CMSY", "CMMI", "MSAM", "MSBM"].iter().any(|p| u.starts_with(p))
 }
 
 /// The glyphs of the pages `first..=last` that show a glyph pdftohtml
@@ -516,8 +677,44 @@ mod tests {
     use super::*;
 
     #[test]
+    fn a_space_that_is_not_drawn_is_told_by_the_drawings_fonts() {
+        let font = |base: &str| FontInfo { base: base.into(), ..Default::default() };
+        let g = Glyphs { fonts: vec![font("CMR10"), font("Times-Roman")], pages: HashMap::new() };
+        // "a b c" with its spaces in another font; the drawing has the first space only
+        let shown = [(0, b'a'), (1, b' '), (0, b'b'), (1, b' '), (0, b'c')];
+        assert_eq!(g.drawn(&shown, &[7, 3, 7, 7]), Some(vec![(0, b'a'), (1, b' '), (0, b'b'), (0, b'c')]));
+        // (all drawn; none drawn)
+        assert_eq!(g.drawn(&shown, &[7, 3, 7, 3, 7]).map(|d| d.len()), Some(5));
+        assert_eq!(g.drawn(&shown, &[7, 7, 7]), Some(vec![(0, b'a'), (0, b'b'), (0, b'c')]));
+        // (a letter that is not drawn: no match)
+        assert_eq!(g.drawn(&shown, &[7, 3, 3, 7]), None);
+    }
+
+    #[test]
+    fn a_sign_the_table_misnames_goes_by_its_place_in_the_font() {
+        let table = |pairs: &[(u8, &str)]| Some(pairs.iter().map(|(c, t)| (*c, t.to_string())).collect::<HashMap<u8, String>>());
+        // TeX's big-symbol font: both sums come as "∑", a bracket rightly
+        let big = FontInfo { base: "CMEX10".into(), unicode: table(&[(88, "∑"), (80, "∑"), (0, "(")]), misnamed: true, ..Default::default() };
+        assert_eq!(big.slot_text(88), Some("X".into()));
+        assert_eq!(big.slot_text(80), Some("P".into()));
+        assert_eq!(big.slot_text(90), Some("Z".into()));
+        assert_eq!(big.slot_text(0), Some("(".into()));
+        // (a font cut down to the glyphs used names them, under new codes)
+        let mut cut = FontInfo { base: "CMEX10".into(), unicode: table(&[]), misnamed: true, ..Default::default() };
+        cut.names.insert(3, "integraldisplay".into());
+        assert_eq!(cut.slot_text(3), Some("Z".into()));
+        // the font of math letters: ν given as "β" is ν, µ stays
+        let letters = FontInfo { base: "CMMI7".into(), unicode: table(&[(23, "β"), (22, "µ"), (15, "ε"), (107, "k")]), misnamed: true, ..Default::default() };
+        assert_eq!(letters.slot_text(23), Some("ν".into()));
+        assert_eq!(letters.slot_text(22), None);
+        assert_eq!(letters.slot_text(15), None);
+        assert_eq!(letters.slot_text(107), None);
+        assert_eq!(letters.slot_text(11), Some("α".into()));
+    }
+
+    #[test]
     fn unicode_table() {
-        let map = to_unicode(b"1 begincodespacerange <02> <b1> endcodespacerange 2 beginbfchar <02> <2192> <3d> <003D> endbfchar 2 beginbfrange <7b> <7d> <007B> <80> <81> [<2212> <00B1>] endbfrange");
+        let map = known_only(to_unicode_all(b"1 begincodespacerange <02> <b1> endcodespacerange 2 beginbfchar <02> <2192> <3d> <003D> endbfchar 2 beginbfrange <7b> <7d> <007B> <80> <81> [<2212> <00B1>] endbfrange"));
         assert_eq!(map[&0x02], "→");
         assert_eq!(map[&0x3d], "=");
         assert_eq!(map[&0x7c], "|");
