@@ -39,7 +39,7 @@ from PIL import Image  # noqa: E402
 BATCH = 32
 # Which rules the choice was made by, on the second line of NAME.agree: a
 # choice made by older rules is made again (keep in step with ocr.rs).
-RULES = "rules 5"
+RULES = "rules 6"
 
 
 def tell(what: str, n: int, total: int):
@@ -340,11 +340,9 @@ def labels_beside(t: str) -> str:
     return t
 
 
-def loose(t: str) -> str:
-    """A reading without its bold and without the ways of writing that
-    differ between recognizers: letters and signs in order. A prime and an
-    index on one letter in either order; "lim", "max" as words or commands;
-    a label over an arrow as its exponent; rows in an array or not."""
+def loose_symbols(t: str) -> list:
+    """The symbols of a reading, one by one, without its bold and without
+    the ways of writing that differ between recognizers (see `loose`)."""
     t = re.sub(BOLD, "", t).replace('"', "")
     t = labels_beside(t)
     # (a matrix in its brackets, cases behind their brace; an array around
@@ -368,7 +366,15 @@ def loose(t: str) -> str:
     for a, b in SAME:
         # (a command's name ends where its letters end)
         t = re.sub(a + (r"(?![a-zA-Z])" if a[-1].isalpha() or (a.endswith(")") and not a.endswith("$)")) else ""), b, t)
-    s = "".join(tok for tok in m.canonical(t) if tok not in ".,;")
+    return [tok for tok in m.canonical(t) if tok not in ".,;"]
+
+
+def loose(t: str) -> str:
+    """A reading without its bold and without the ways of writing that
+    differ between recognizers: letters and signs in order. A prime and an
+    index on one letter in either order; "lim", "max" as words or commands;
+    a label over an arrow as its exponent; rows in an array or not."""
+    s = "".join(loose_symbols(t))
     # ("x'_i" and "x_i'": the same)
     s = s.replace("\\prime", "'")
     s = re.sub(r"('+)(_[A-Za-z0-9]|_\\[a-zA-Z]+)", r"\2\1", s)
@@ -466,6 +472,167 @@ def choose(first: str, second: str, other):
             return (other if misshapen(other) < misshapen(second) else second), 0
         return (other if bolds(other) >= bolds(second) else second), 0
     return other, max(1, m.difference(first, other))
+
+
+def text_lines(img: Image.Image) -> int:
+    """How many lines of an equation a picture shows: its bands of ink a
+    full line high, between bands at least 3 pixels high that are blank
+    or all but blank. (Two lines set close have a comma's tail or a
+    bracket's two strokes in the band between them, and 4 pixels of it
+    where `rows` of the math recognizer's script asks for 5.) A lower
+    band, the limits under a sum or a row of dots, is no line."""
+    g = img.convert("L")
+    w, h = g.size
+    px = g.load()
+    faint = [sum(px[x, y] < 160 for x in range(w)) <= 2 for y in range(h)]
+    cuts, y = [], 0
+    while y < h:
+        if faint[y]:
+            y0 = y
+            while y < h and faint[y]:
+                y += 1
+            if y0 > 0 and y < h and y - y0 >= 3:
+                cuts.append((y0 + y) // 2)
+        else:
+            y += 1
+    bounds = [0] + cuts + [h]
+    return sum(b - a >= m.FULL_LINE for a, b in zip(bounds, bounds[1:]))
+
+
+def rows_of(t: str):
+    """The lines of a reading that is a set of lines and nothing else
+    (one block of rows; the rows of a matrix inside a line are not
+    lines); None for a reading of one line."""
+    f = re.fullmatch(r"\\begin\{(aligned|split|gathered|array|align\*?)\}(?:\{[^{}]*\})?(.*)\\end\{\1\}", t.strip(), re.S)
+    if not f:
+        return None
+    body = f.group(2)
+    rows, depth, start, i = [], 0, 0, 0
+    while i < len(body):
+        if body.startswith("\\begin{", i):
+            depth += 1
+        elif body.startswith("\\end{", i):
+            depth -= 1
+            if depth < 0:
+                return None
+        elif body.startswith("\\\\", i):
+            if depth == 0:
+                rows.append(body[start:i])
+                start = i + 2
+            i += 2
+            continue
+        elif body[i] == "\\":
+            i += 2
+            continue
+        i += 1
+    rows.append(body[start:])
+    rows = [r.replace("&", " ") for r in rows if r.replace("&", "").strip()]
+    return rows if len(rows) >= 2 else None
+
+
+def line_ends(t: str):
+    """Where a line of the formula `t` can end: before each piece of it
+    that stands in no braces, in no bracket sized with \\left, in no
+    matrix, and is not the index, the exponent or the argument of the
+    piece before."""
+    depth, i = 0, 0
+    while i < len(t):
+        c = t[i]
+        f = re.compile(r"\\([a-zA-Z]+|.)", re.S).match(t, i)
+        name = f.group(1) if f else ""
+        if name in ("right", "end"):
+            depth -= 1
+        if i > 0 and depth == 0 and c not in "{}_^'& \n" and t[:i].rstrip()[-1:] not in ("_", "^", ""):
+            yield i
+        if name in ("left", "begin"):
+            depth += 1
+        elif name == "right":
+            # (the bracket it closes with is its own)
+            g = re.compile(r"\s*(\\[a-zA-Z]+|\\.|.)", re.S).match(t, f.end())
+            i = g.end() if g else f.end()
+            continue
+        elif name == "end":
+            g = re.compile(r"\{[^{}]*\}").match(t, f.end())
+            i = g.end() if g else f.end()
+            continue
+        elif c == "{":
+            depth += 1
+        elif c == "}":
+            depth -= 1
+        i = f.end() if f else i + 1
+
+
+def in_lines(t: str, rows):
+    """`t`, a reading in one line, cut into lines as `rows` are, the lines
+    of another reading of the same picture: each line ends where what
+    stands before it says most nearly what the other reading's lines up
+    to there say (of places that say the same, the last: a comma stays on
+    its line). None if a line then differs from the other reading's by
+    more than a symbol in seven."""
+    import difflib
+
+    def apart(a: list, b: list) -> int:
+        ops = difflib.SequenceMatcher(None, a, b, autojunk=False).get_opcodes()
+        return sum(max(i2 - i1, j2 - j1) for op, i1, i2, j1, j2 in ops if op != "equal")
+
+    def symbols(x: str) -> list:
+        # (symbols, not letters: a command's name is one of them; a prime
+        # before an index or after it, as in `loose`)
+        found = []
+        for s in loose_symbols(x):
+            if s == "*":
+                continue
+            found.append("'" if s == "\\prime" else s)
+            k = len(found) - 3
+            if k >= 0 and found[k + 1] == "_" and found[k] == "'":
+                while k >= 0 and found[k] == "'":
+                    k -= 1
+                primes = found[k + 1 : -2]
+                found[k + 1 :] = found[-2:] + primes
+        return found
+
+    places = [(p, symbols(t[:p])) for p in line_ends(t)]
+    cuts = []
+    for j in range(1, len(rows)):
+        said = symbols(" ".join(rows[:j]))
+        later = [(apart(head, said), -p) for p, head in places if not cuts or p > cuts[-1]]
+        if not later:
+            return None
+        cuts.append(-min(later)[1])
+    space = r"(?:\\q?quad(?![a-zA-Z])|\\[ ,;:!]|~|\s)+"
+    lines = []
+    for a, b in zip([0] + cuts, cuts + [len(t)]):
+        lines.append(re.sub("^" + space + "|" + space + "$", "", t[a:b]))
+    for line, row in zip(lines, rows):
+        said = symbols(row)
+        if not line or apart(symbols(line), said) > max(2, 0.15 * len(said)) or not m.plausible(line):
+            return None
+    return m.as_block(lines)
+
+
+def set_in_lines(img: Image.Image, written: str, readings):
+    """A formula of several lines written as one line, set in its lines
+    again: the picture shows as many lines as another reading of it has
+    (`readings`: all readings of the picture), and the reading written can
+    be cut as that one is. Where both recognizers read the same formula,
+    the lines of the one are lost with the choice of the other; and the
+    math recognizer runs lines together that stand close, or that hold
+    matrices. None where there is nothing to mend."""
+    if rows_of(written) is not None:
+        return None
+    seen = None
+    for other in readings:
+        rows = rows_of(other) if other else None
+        if rows is None:
+            continue
+        if seen is None:
+            seen = text_lines(img)
+        if len(rows) != seen:
+            continue
+        cut = in_lines(written, rows)
+        if cut is not None:
+            return cut
+    return None
 
 
 def page_reader(state: dict):
@@ -997,6 +1164,10 @@ def main():
                 again = choose(first, second, larger)
                 if again[1] == 0:
                     best, n = again
+        # (lines of the picture that the reading chosen runs together)
+        lined = set_in_lines(Image.open(f), best or first, [first, other, as_latex(third.read_text()) if third.exists() else None])
+        if lined is not None:
+            best = lined
         target = dst / f"{f.stem}.best"
         if best is None:
             if target.exists():

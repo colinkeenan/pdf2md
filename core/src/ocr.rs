@@ -32,7 +32,7 @@ pub(crate) const SCRIPT: &str = include_str!("math_ocr.py");
 /// The second opinion on each reading, from the page reader's recognizer.
 pub(crate) const CHECK_SCRIPT: &str = include_str!("math_check.py");
 /// The rules its choices are made by (RULES in math_check.py).
-const CHECK_RULES: &str = "rules 5";
+const CHECK_RULES: &str = "rules 6";
 
 /// Stable name for an image: FNV-1a 64 of its data.
 pub fn key(png_base64: &str) -> String {
@@ -629,6 +629,23 @@ fn continues(row: &str) -> u8 {
     }
 }
 
+/// The rows of an equation read line by line, without the full stops the
+/// math recognizer added: it ends a line read by itself with one now and
+/// then, as most equations it has seen end. A stop is the recognizer's
+/// where the next row goes on with the equation ("= …", "+ …"), or where
+/// it stands behind the row's own comma.
+fn without_added_stops(rows: &[&str]) -> Vec<String> {
+    const STOP: &str = "\\text{.}";
+    (0..rows.len())
+        .map(|i| {
+            let row = rows[i].trim_end();
+            let Some(head) = row.strip_suffix(STOP).map(str::trim_end) else { return rows[i].to_string() };
+            let goes_on = rows.get(i + 1).is_some_and(|next| continues(next.trim_start()) != 0);
+            if goes_on || head.ends_with(',') { head.to_string() } else { rows[i].to_string() }
+        })
+        .collect()
+}
+
 /// An equation read line by line (see `math_ocr.py`): its rows lined up
 /// at the "=", as in the book. A row that goes on with "=" has it under
 /// the "=" of the first row, a row that goes on with "+" or "×" starts to
@@ -648,6 +665,9 @@ pub(crate) fn align_rows(t: &str) -> String {
 }
 
 fn aligned(rows: &[&str]) -> String {
+    let rows = without_added_stops(rows);
+    let rows: Vec<&str> = rows.iter().map(String::as_str).collect();
+    let rows = rows.as_slice();
     let lined_up = top_relation(rows[0]).is_some_and(|i| i > 0);
     let rows: Vec<String> = rows
         .iter()
@@ -1439,6 +1459,10 @@ mod tests {
         assert_eq!(align_rows(table), table);
         // not read line by line: untouched
         assert_eq!(align_rows("a=b"), "a=b");
+        // a full stop the recognizer added to a row that goes on, or behind
+        // a comma; the stop of a sentence and the last one stay
+        assert_eq!(align_rows(&read(&["a=b \\text{.}", "=c \\text{.}", "+d, \\text{.}"])), block(&["a&=b", "&=c", "&\\quad +d,"]));
+        assert_eq!(align_rows(&read(&["\\text{Set 1: } a \\text{.}", "\\text{Set 2: } b \\text{.}"])), block(&["& \\text{Set 1: } a \\text{.}", "& \\text{Set 2: } b \\text{.}"]));
     }
 
     #[test]
