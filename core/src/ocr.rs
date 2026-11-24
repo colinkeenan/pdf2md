@@ -32,7 +32,7 @@ pub(crate) const SCRIPT: &str = include_str!("math_ocr.py");
 /// The second opinion on each reading, from the page reader's recognizer.
 pub(crate) const CHECK_SCRIPT: &str = include_str!("math_check.py");
 /// The rules its choices are made by (RULES in math_check.py).
-const CHECK_RULES: &str = "rules 6";
+const CHECK_RULES: &str = "rules 7";
 
 /// Stable name for an image: FNV-1a 64 of its data.
 pub fn key(png_base64: &str) -> String {
@@ -1077,6 +1077,72 @@ pub fn second_readings(equations: &[(String, String, Vec<u8>)]) {
 }
 
 const TABLE_SCRIPT: &str = include_str!("table_ocr.py");
+
+/// The script letters of equation pictures, in the alphabet the book's
+/// text sets them in. A recognizer does not tell a script capital from a
+/// calligraphic one (of one printed letter the one writes `\\mathcal`
+/// nearly always, the other either), but the book's own text does: where
+/// its letters, read from the page, are script capitals (`\\mathscr`, an
+/// rsfs font) and next to never calligraphic ones, the `\\mathcal` of a
+/// picture's reading is that same script letter. A reading the reader has
+/// corrected stays as it was written.
+pub fn script_letters(book: &mut crate::Book) {
+    use crate::{Block, Inline};
+    const CAL: &str = "\\mathcal{";
+    const SCR: &str = "\\mathscr{";
+    let (mut scr, mut cal) = (0usize, 0usize);
+    let mut count = |t: &str| {
+        scr += t.matches(SCR).count();
+        cal += t.matches(CAL).count();
+    };
+    for b in book.chapters.iter().flat_map(|ch| &ch.blocks) {
+        let inl = match &b.block {
+            Block::Para(inl) | Block::Heading { text: inl, .. } | Block::Item { text: inl, .. } | Block::PageNote { text: inl, .. } => inl,
+            // (only what was built from the page's letters alone)
+            Block::Equation { latex, place: Some(_), .. } => {
+                count(latex);
+                continue;
+            }
+            _ => continue,
+        };
+        for (i, x) in inl.iter().enumerate() {
+            if let Inline::Math(t) = x {
+                if i == 0 || !matches!(inl[i - 1], Inline::Source(_)) {
+                    count(t);
+                }
+            }
+        }
+    }
+    // (a book without equation pictures has every letter from its fonts)
+    let pictures = book.chapters.iter().flat_map(|ch| &ch.blocks).any(|b| matches!(b.block, Block::Equation { source: Some(_), .. }));
+    if scr < 10 || cal * 10 > scr || !pictures {
+        return;
+    }
+    // ("{\\mathcal J}" is the same letter written the older way)
+    let script = |t: &str| t.replace(CAL, SCR).replace("\\mathcal ", "\\mathscr ");
+    for b in book.chapters.iter_mut().flat_map(|ch| &mut ch.blocks) {
+        let inl = match &mut b.block {
+            Block::Para(inl) | Block::Heading { text: inl, .. } | Block::Item { text: inl, .. } | Block::PageNote { text: inl, .. } => inl,
+            // (one picture, or pictures and letters in one equation)
+            Block::Equation { latex, source, place: None, .. } => {
+                if latex.contains(CAL.trim_end_matches('{')) && source.as_ref().is_none_or(|k| read_correction(k).is_none()) {
+                    *latex = script(latex);
+                }
+                continue;
+            }
+            _ => continue,
+        };
+        for i in 1..inl.len() {
+            let Inline::Source(k) = &inl[i - 1] else { continue };
+            let corrected = read_correction(k).is_some();
+            if let Inline::Math(t) = &mut inl[i] {
+                if t.contains(CAL.trim_end_matches('{')) && !corrected {
+                    *t = script(t);
+                }
+            }
+        }
+    }
+}
 
 /// Tables that the book holds as pictures, read cell by cell. Read whole,
 /// as one formula, such a table comes out with cells in the wrong rows

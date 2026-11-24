@@ -454,6 +454,7 @@ pub fn convert_pdf_as(path: &Path, pages: Option<(u32, u32)>, pictures: bool) ->
         book.unfolds = unfolds;
         book.shifts = doc.pages.iter().filter(|p| p.shift != 0.0).map(|p| (p.number, p.shift)).collect();
         ocr::read_picture_tables(&mut book, path);
+        ocr::script_letters(&mut book);
         // the equations built from the pages' letters, read a second time
         second::read(&mut book, path);
         book

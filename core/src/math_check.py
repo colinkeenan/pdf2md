@@ -39,7 +39,7 @@ from PIL import Image  # noqa: E402
 BATCH = 32
 # Which rules the choice was made by, on the second line of NAME.agree: a
 # choice made by older rules is made again (keep in step with ocr.rs).
-RULES = "rules 6"
+RULES = "rules 7"
 
 
 def tell(what: str, n: int, total: int):
@@ -610,6 +610,53 @@ def in_lines(t: str, rows):
     return m.as_block(lines)
 
 
+STOP = re.compile(r"\s*(?:\\text\{\s*[.,;]\s*\}|[.,;])\s*(?:</math>)?\s*$")
+
+
+def ends_in_mark(img: Image.Image) -> bool:
+    """Does the picture end in a comma or a full stop: is its last piece
+    (the dark columns at its right end, up to the first blank one) no
+    wider than 4 pixels, no higher than 8, in one piece, and in the lower
+    half of the line? The last letter, bracket or figure is larger or
+    stands higher, and so does the 2 of a small fraction."""
+    g = img.convert("L")
+    w, h = g.size
+    px = g.load()
+    dark = [[y for y in range(h) if px[x, y] < 128] for x in range(w)]
+    rows = [y for col in dark for y in col]
+    x = w - 1
+    while x >= 0 and not dark[x]:
+        x -= 1
+    if x < 0:
+        return False
+    piece, x1 = [], x
+    while x >= 0 and dark[x]:
+        piece.extend(dark[x])
+        x -= 1
+    top, height = min(rows), max(rows) - min(rows) + 1
+    # (in one piece from top to bottom: the dot of an index i stands apart)
+    whole = len(set(piece)) == max(piece) - min(piece) + 1
+    return x1 - x <= 4 and max(piece) - min(piece) < 8 and min(piece) - top >= 0.45 * height and whole
+
+
+def without_unseen_stop(img: Image.Image, written: str, raw: str):
+    """A comma or full stop at the end of a reading that the picture does
+    not show: the math recognizer ends a formula with one where the
+    picture has a faint speck at its edge, or nothing (a formula in a
+    sentence then had "1/2, particle", or a full stop in mid-sentence).
+    Taken off where the other recognizer read none either and the picture
+    does not end in a small low mark (`ends_in_mark`); formulas of one
+    line only, without rows or cases, whose end is the end of the picture.
+    None where the reading stays."""
+    if not STOP.search(written) or STOP.search(raw.strip()) or "\\begin" in written or "\\\\" in written:
+        return None
+    if ends_in_mark(img):
+        return None
+    # (and the space set before it, "\\ ." or "\\,")
+    cut = re.sub(r"(?:\\[ ,;:!]|\\q?quad(?![a-zA-Z])|~|\s)+$", "", re.sub(r"(?:\\text\{\s*[.,;]\s*\}|[.,;])\s*$", "", written) + " ")
+    return cut if cut.strip() and m.plausible(cut) else None
+
+
 def set_in_lines(img: Image.Image, written: str, readings):
     """A formula of several lines written as one line, set in its lines
     again: the picture shows as many lines as another reading of it has
@@ -1168,6 +1215,10 @@ def main():
         lined = set_in_lines(Image.open(f), best or first, [first, other, as_latex(third.read_text()) if third.exists() else None])
         if lined is not None:
             best = lined
+        # (a comma or full stop only the math recognizer read)
+        bare = without_unseen_stop(Image.open(f), best or first, (dst / f"{f.stem}.surya").read_text())
+        if bare is not None:
+            best = bare
         target = dst / f"{f.stem}.best"
         if best is None:
             if target.exists():
