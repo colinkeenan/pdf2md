@@ -1823,6 +1823,18 @@ fn display_flags(doc: &Doc, lines: &[Line], st: &Stats) -> Vec<bool> {
         if f[i] && !info[i].2 && word_first && (l.left - st.left).abs() < 1.5 && l.size >= 0.9 * st.body {
             f[i] = false;
         }
+        // So does one that opens with the letter of a part of a problem
+        // and a word, "(e) As |k₃|² ≫ m², … we have Δ/m² → xyk₃²/m². Now":
+        // a sentence of that part, though all its other words are short.
+        let part_first = l.spans.first().is_some_and(|s| {
+            let mut words = s.text.split_whitespace();
+            let (mark, word) = (words.next().unwrap_or(""), words.next().unwrap_or(""));
+            let letter = mark.strip_prefix('(').and_then(|m| m.strip_suffix(')')).is_some_and(|m| !m.is_empty() && m.chars().count() <= 4 && m.chars().all(|c| c.is_ascii_lowercase()));
+            !doc.is_math(s) && s.script == Script::Normal && s.tex.is_none() && letter && word.chars().count() >= 2 && word.chars().all(char::is_alphabetic) && !mathtex::is_function_word(word)
+        });
+        if f[i] && !info[i].2 && part_first && l.size >= 0.9 * st.body {
+            f[i] = false;
+        }
     }
     // A line of a bulleted item that opens with a word where the item's
     // words begin ("• Additive Identity:" and under it "For a ∈ ℝ, a + 0 =
