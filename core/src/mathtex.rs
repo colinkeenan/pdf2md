@@ -1405,7 +1405,11 @@ fn put_accents(mut spans: Vec<MSpan>) -> Vec<MSpan> {
             // over the letter it shares most of its height with)
             .filter(|&j| {
                 let drawn_over = matches!(name, "vec" | "not") && a.top <= spans[j].top && a.bottom.min(spans[j].bottom) - spans[j].top >= 0.5 * (spans[j].bottom - spans[j].top);
-                spans[j].left <= mid && spans[j].right >= mid && ((spans[j].top - a.top).abs() <= 0.75 * a.size || drawn_over)
+                // (over a tall slanted letter, b or d, the bar stands to the
+                // right: its middle may fall just behind the letter's box,
+                // over the letter's index — it begins well inside the letter)
+                let leans = name == "bar" && spans[j].size >= 0.9 * a.size && a.left < spans[j].right - 0.15 * a.size && mid - spans[j].right <= 0.15 * a.size;
+                spans[j].left <= mid && (spans[j].right >= mid || leans) && ((spans[j].top - a.top).abs() <= 0.75 * a.size || drawn_over)
             })
             // (of a letter and its index, both under the accent's middle,
             // it is over the one it stands nearer above)
