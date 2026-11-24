@@ -2052,6 +2052,41 @@ fn resolve_bars(mut spans: Vec<MSpan>, bars: &[Rule], depth: usize) -> Vec<MSpan
         let below: Vec<usize> = below.into_iter().filter(|&i| spans[i].bottom - b.bottom <= reach_down).collect();
         let num = stack(&spans, &above, |s| b.top - s.bottom, size);
         let den = stack(&spans, &below, |s| s.top - b.bottom, size);
+        // A bar with nothing over it, close over several pieces of one row
+        // that fill its width: a line over them all, the mean of |ℳ|².
+        // (The bar over one piece is found on the page, see `layout`.)
+        if num.is_empty() && !den.is_empty() {
+            let row: Vec<usize> = (0..spans.len()).filter(|&i| within(&spans[i]) && spans[i].top >= b.bottom - 2.0 && spans[i].top <= b.bottom + 0.6 * size && spans[i].bottom <= b.bottom + 1.6 * size).collect();
+            let (left, right) = (row.iter().map(|&i| spans[i].left).fold(f32::MAX, f32::min), row.iter().map(|&i| spans[i].right).fold(f32::MIN, f32::max));
+            let letters: Vec<&MSpan> = row.iter().map(|&i| &spans[i]).filter(|s| s.size >= 0.9 * size || s.atom.is_some()).collect();
+            let fills = right - left >= 0.7 * (b.right - b.left) && left >= b.left - 3.0 && right <= b.right + 3.0;
+            let plain = row.iter().all(|&i| !is_radical(&spans[i]) && !spans[i].cmex());
+            // (not the bar of a fraction whose upper half the rules lost,
+            // which has something over it; nor one of two bars of one
+            // length, a root's bar drawn twice or the edges of a frame)
+            let over_it = spans.iter().any(|s| s.left < b.right && s.right > b.left && s.bottom <= b.top + 2.0 && b.top - s.bottom <= 1.2 * size);
+            let twin = bars.iter().any(|r| *r != b && (r.left - b.left).abs() <= 3.0 && (r.right - b.right).abs() <= 3.0 && (r.top - b.top).abs() <= 3.0 * size);
+            // (nor the bar of a root whose sign stands a little way off)
+            let twin = twin || spans.iter().any(|s| is_radical(s) && s.right <= b.left + 3.0 && b.left - s.right <= 2.0 * size && s.top <= b.bottom + size && s.bottom >= b.top - 2.0);
+            // (nor a piece of a longer bar drawn in pieces, a root's)
+            let twin = twin || bars.iter().any(|r| *r != b && r.left < b.right && r.right > b.left && (r.top - b.top).abs() <= 0.35 * size);
+            if row.len() >= 2 && !letters.is_empty() && fills && plain && !over_it && !twin && b.right - b.left <= 12.0 * size {
+                used[bi] = true;
+                if std::env::var("PDF2MD_MATHDEBUG").is_ok_and(|v| v == "5") {
+                    eprintln!("OVERLINE bar {:.1}..{:.1} top {:.1} size {size:.1}; bars {:?}; row {:?}", b.left, b.right, b.top, bars.iter().map(|r| (r.left.round(), r.right.round(), r.top.round(), r.bottom.round())).collect::<Vec<_>>(), row.iter().map(|&i| (spans[i].text.clone(), spans[i].top.round(), spans[i].left.round())).collect::<Vec<_>>());
+                }
+                let body: Vec<MSpan> = row.iter().map(|&i| spans[i].clone()).collect();
+                let (top, bottom) = (letters.iter().map(|s| s.top).fold(f32::MAX, f32::min), letters.iter().map(|s| s.bottom).fold(f32::MIN, f32::max));
+                let atom = MSpan { text: String::new(), left, right, top, bottom, size, family: String::new(), math: true, over: false, bold: false, atom: Some(format!("\\overline{{{}}}", build_at(&body, depth + 1))) };
+                let mut k = 0;
+                spans.retain(|_| {
+                    k += 1;
+                    !row.contains(&(k - 1))
+                });
+                spans.push(atom);
+            }
+            continue;
+        }
         if num.is_empty() || den.is_empty() {
             continue;
         }
@@ -2792,7 +2827,34 @@ fn take_brackets(spans: &[MSpan], depth: usize) -> (Vec<MSpan>, Vec<Item>) {
     // most recent open one at its height.
     // (… unless that bracket is as tall as the bar, head and foot:
     // "\left\{ … \right|" with the limits at the bar)
-    let closes = |o: usize, k: usize| matches!(delims[o].kind, Some('|') | None) || ((delims[o].top - delims[k].top).abs() <= 3.0 && (delims[o].bottom - delims[k].bottom).abs() <= 3.0);
+    // (… and no bracket of its own kind comes to close it behind the bar:
+    // in "det [ δf/δΛ |_{Λ=0} ]" the bar is a piece of what "[ ]" holds)
+    let own_close = |o: usize, k: usize| {
+        let Some(open) = delims[o].kind else { return false };
+        let close = match open {
+            '(' => ')',
+            '[' => ']',
+            '{' => '}',
+            '⟨' => '⟩',
+            _ => return false,
+        };
+        let mut depth = 0;
+        for d in &delims[k + 1..] {
+            if !same_height(&delims[o], d) {
+                continue;
+            }
+            if d.kind == Some(open) {
+                depth += 1;
+            } else if d.kind == Some(close) {
+                if depth == 0 {
+                    return true;
+                }
+                depth -= 1;
+            }
+        }
+        false
+    };
+    let closes = |o: usize, k: usize| matches!(delims[o].kind, Some('|') | None) || ((delims[o].top - delims[k].top).abs() <= 3.0 && (delims[o].bottom - delims[k].bottom).abs() <= 3.0 && !own_close(o, k));
     let mut stack: Vec<usize> = Vec::new();
     let mut pairs: Vec<(usize, usize)> = Vec::new();
     let mut lone: Vec<usize> = Vec::new();
