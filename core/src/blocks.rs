@@ -3211,13 +3211,29 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                     }
                 }
                 let single = eqs.len() == 1;
+                // (equations that follow one another without a line of
+                // text between them, (a), (b), (c): each is its own image,
+                // the one that stands in its area)
+                let own = |area: &mathtex::Area| -> Option<String> {
+                    let inside: Vec<&&crate::layout::Span> = parts
+                        .iter()
+                        .filter(|s| {
+                            let (x, y) = (s.left + s.width / 2.0, s.top + s.height / 2.0);
+                            x >= area[0] - 1.0 && x <= area[2] + 1.0 && y >= area[1] - 1.0 && y <= area[3] + 1.0
+                        })
+                        .collect();
+                    match inside.as_slice() {
+                        [one] => one.image_key.clone(),
+                        _ => None,
+                    }
+                };
                 let from_letters = lines[i..j].iter().all(|l| l.spans.iter().all(|s| s.tex.is_none() && s.picture.is_none()));
                 for (latex, tag, area) in eqs {
                     if !latex.is_empty() || tag.is_some() {
                         // (where it stands: only what was built from the page's
                         // letters has a second reading to be made of it)
                         let place = (from_letters && !latex.is_empty() && area[2] > area[0] && area[3] > area[1]).then_some(crate::Place { page: number, area, second: None });
-                        b.push(Block::Equation { latex, tag, source: if single { source.clone() } else { None }, place });
+                        b.push(Block::Equation { latex, tag, source: if single { source.clone() } else { own(&area) }, place });
                     }
                 }
                 prev_top = Some(lines[j - 1].top);
