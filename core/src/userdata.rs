@@ -619,21 +619,27 @@ fn apply_in(text: &mut String, data: &UserData, slug: Option<&str>, book: bool) 
         let under = e.block.find(" -->").map_or("", |c| &e.block[c + 4..]);
         let form = BLOCKS.into_iter().find(|(open, _)| under.strip_prefix("\n\n").is_some_and(|t| t.starts_with(open)));
         let mut found = text.contains(&e.block);
+        // (a text whose bulleted items are written already, a course's,
+        // has the block of an item two spaces in: there it is looked for
+        // so, and the corrected block is set in like it)
+        let set_in = |t: &str| t.split('\n').map(|l| if l.is_empty() { String::new() } else { format!("  {l}") }).collect::<Vec<_>>().join("\n");
         for (open, close) in BLOCKS.into_iter().filter(|f| form.is_none_or(|g| g == *f)) {
-            let needle = format!("{open}{}{close}", e.was);
-            let mut from = 0;
-            while let Some(i) = text[from..].find(&needle).map(|i| from + i) {
-                // (not the corrected block of a fix put back before this
-                // one: such a block stands under a mark, which may be of
-                // several lines)
-                let fixed = text[..i].strip_suffix(" -->\n\n").and_then(|t| t.rfind("<!-- ").map(|k| &t[k..])).is_some_and(|m| m.starts_with(EQ_FIX));
-                let fresh = (i == 0 || text[..i].ends_with("\n\n")) && !fixed && text[i + needle.len()..].chars().next().is_none_or(|c| c == '\n');
-                if fresh {
-                    text.replace_range(i..i + needle.len(), &e.block);
-                    from = i + e.block.len();
-                    found = true;
-                } else {
-                    from = i + needle.len();
+            let at_margin = format!("{open}{}{close}", e.was);
+            for (needle, block) in [(at_margin.clone(), e.block.clone()), (set_in(&at_margin), set_in(&e.block))] {
+                let mut from = 0;
+                while let Some(i) = text[from..].find(&needle).map(|i| from + i) {
+                    // (not the corrected block of a fix put back before this
+                    // one: such a block stands under a mark, which may be of
+                    // several lines)
+                    let fixed = text[..i].strip_suffix(" -->\n\n").and_then(|t| t.rfind("<!-- ").map(|k| &t[k..])).is_some_and(|m| m.starts_with(EQ_FIX));
+                    let fresh = (i == 0 || text[..i].ends_with("\n\n")) && !fixed && text[i + needle.len()..].chars().next().is_none_or(|c| c == '\n');
+                    if fresh {
+                        text.replace_range(i..i + needle.len(), &block);
+                        from = i + block.len();
+                        found = true;
+                    } else {
+                        from = i + needle.len();
+                    }
                 }
             }
         }
@@ -835,6 +841,10 @@ mod tests {
         // (in a list item, two spaces in)
         let item = edited.replace("So\n\n", "- So\n\n").replace(&fixed, &fixed.lines().map(|l| if l.is_empty() { String::new() } else { format!("  {l}") }).collect::<Vec<_>>().join("\n"));
         assert_eq!(collect_file(&item, &|_| Some("c".into())).eqs[0].block, fixed);
+        // (and put back into a text whose items are written already)
+        let mut new = format!("# Ch\n\n- So\n\n  ```math\n  {was}\n  ```\n\nEnd.\n");
+        assert!(apply(&mut new, &d, Some("c")).is_empty());
+        assert_eq!(new, item);
     }
 
     #[test]
