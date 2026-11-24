@@ -212,7 +212,7 @@ Formulas are written in one of two forms, chosen with "Math" in the window or `-
 
 **How GitHub draws math.** GitHub converts the LaTeX to MathML and leaves the drawing to the browser. Brackets, roots and sums grow only if the browser finds a math font it knows; Chrome on Linux looks for "Latin Modern Math". mdBun typesets with KaTeX, which brings its own fonts.
 
-**Mending.** In either form, a formula that would not render is mended when written: two formulas in a sentence with nothing between them become one, math inside `\text{…}` is taken out of it, and two subscripts or two superscripts on one symbol become one. A mended formula renders. Whether it is the book's formula is another matter.
+**Mending.** In either form, a formula that would not render is mended when written: two formulas in a sentence with nothing between them become one, math inside `\text{…}` is taken out of it, and two subscripts or two superscripts on one symbol become one. A mended formula renders. Whether it is the book's formula is another matter. A bold Greek letter that a recognizer wrote `\mathbf{\mu}` is written `\boldsymbol{\mu}` (so are ∇, ∂ and ℓ): `\mathbf` sets only Latin letters and Greek capitals bold, and the μ of a vector looked like any other.
 
 ## PDFs that hold text
 
@@ -526,6 +526,7 @@ Inside a sentence, an italic letter is a variable and the brackets and "=" aroun
 * **Raised numbers.** After a word, a small raised number is a footnote marker. After a symbol, a number or a bracketed formula it is a power.
 * **Linked numbers**, such as an equation reference or an index page, are never part of the formula beside them.
 * **Signs and accents from odd places of the fonts.** An ebook may set "<" as the arrowhead `˂`, the integral sign as the upper half of a tall one, Ω as the ohm sign: each is read as the sign it stands for. An accent that comes as a character of its own behind its letter (`C˜`), at the head of the next piece (a bold **A**, then the tilde), or in one character with its letter (α with a tilde, z with a hat, standing alone) goes over that letter. A star set on the line between a letter and its bracket joins the formula where it stands; it is not raised.
+* **The hyphen of a compound.** In "z-direction" the hyphen stands right behind an italic letter. Where the line ends behind it ("z-", then "direction" on the next line) it was taken for a minus sign of the formula, "z −" and a blank; so was the hyphen left hanging in "x- and y-axes". Both are hyphens: these books set the minus sign as "−", another character. The lines are joined at such a hyphen without a blank.
 
 ### Tables
 
