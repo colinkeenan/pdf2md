@@ -415,11 +415,66 @@ pub fn read_text(path: &Path, pages: Option<(u32, u32)>) -> Result<Doc, String> 
     }
     let xml = String::from_utf8_lossy(&stdout);
     let mut doc = parse_xml_with(&xml, &crate::glyphs::lost_fonts(path))?;
+    text_macrons(&mut doc);
     doc.sideways = crate::upright::sideways_pages(&xml);
     add_link_positions(&mut doc, path);
     printed_page_marks(&mut doc);
     crate::progress::report(Step::Text, total, total);
     Ok(doc)
+}
+
+/// A bar set over a letter of the text font: the Ψ̄ of a spinor written
+/// with an upright capital, the 3̄ of a representation in bold. TeX draws
+/// the bar as a piece of its own over the letter; over a letter of a
+/// math font the formula's rules set it (`mathtex::put_accents`), over
+/// one of the text font nothing did, and it stood loose beside the
+/// formula. It is written into the letter's piece, as the mark that
+/// follows its letter.
+fn text_macrons(doc: &mut Doc) {
+    let math: Vec<bool> = doc.fonts.iter().map(|f| f.math).collect();
+    let sizes: Vec<f32> = doc.fonts.iter().map(|f| f.size).collect();
+    for page in doc.pages.iter_mut() {
+        for line in page.lines.iter_mut() {
+            let mut k = 0;
+            while k < line.spans.len() {
+                let a = line.spans[k].clone();
+                let size = sizes.get(a.font).copied().unwrap_or(a.height);
+                let mid = a.left + a.width / 2.0;
+                let under = (a.text.trim() == "¯").then(|| {
+                    (0..line.spans.len()).find(|&j| {
+                        let b = &line.spans[j];
+                        j != k && !math.get(b.font).copied().unwrap_or(false) && b.left - 1.0 <= mid && b.right() >= mid && b.top >= a.top - 1.0 && b.top - a.top <= 0.75 * size && (sizes.get(b.font).copied().unwrap_or(b.height) - size).abs() <= 0.2 * size && b.text.chars().any(char::is_alphanumeric)
+                    })
+                });
+                let Some(Some(j)) = under else {
+                    k += 1;
+                    continue;
+                };
+                // which of the piece's characters: by their usual widths
+                let b = &mut line.spans[j];
+                let chars: Vec<char> = b.text.chars().collect();
+                let widths: Vec<f32> = chars.iter().map(|&c| char_width(c)).collect();
+                let scale = b.width / widths.iter().sum::<f32>().max(0.01);
+                let mut x = b.left;
+                let mut at = chars.len() - 1;
+                for (i, w) in widths.iter().enumerate() {
+                    x += w * scale;
+                    if mid < x {
+                        at = i;
+                        break;
+                    }
+                }
+                // (an upright Greek capital or a figure: the bar over an h
+                // is the stroke of ħ, and has its own rule)
+                if !(('\u{391}'..='\u{3a9}').contains(&chars[at]) || chars[at].is_ascii_digit()) {
+                    k += 1;
+                    continue;
+                }
+                b.text = chars[..=at].iter().chain(std::iter::once(&'\u{304}')).chain(chars[at + 1..].iter()).collect();
+                line.spans.remove(k);
+            }
+        }
+    }
 }
 
 /// What is drawn on the pages (`pdftocairo -svg`): bars, tall brackets,
