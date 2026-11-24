@@ -371,7 +371,35 @@ pub fn mend(latex: &str) -> String {
     }
     // (what is left of them, inside an index of its own or apart: an
     // empty base for the second)
-    crate::mathtex::fix_double_scripts(&t)
+    bold_symbols(&crate::mathtex::fix_double_scripts(&t))
+}
+
+/// A bold Greek letter is written `\boldsymbol{\mu}`: `\mathbf{\mu}`, as
+/// a recognizer may write it, sets only Latin letters and capitals bold,
+/// and the μ of a vector came out like any other. So does the bold ∇.
+fn bold_symbols(latex: &str) -> String {
+    const SIGNS: [&str; 33] = [
+        "alpha", "beta", "gamma", "delta", "epsilon", "varepsilon", "zeta", "eta", "theta", "vartheta", "iota", "kappa", "lambda", "mu", "nu", "xi", "pi", "varpi", "rho", "varrho", "sigma", "varsigma", "tau", "upsilon", "phi", "varphi", "chi", "psi", "omega", "nabla", "ell", "partial", "hbar",
+    ];
+    let mut out = String::with_capacity(latex.len());
+    let mut rest = latex;
+    while let Some(at) = rest.find("\\mathbf{") {
+        let inside = &rest[at + "\\mathbf{".len()..];
+        let sign = inside.find('}').map(|end| inside[..end].trim()).and_then(|t| t.strip_prefix('\\')).filter(|name| SIGNS.contains(name));
+        match sign {
+            Some(name) => {
+                out.push_str(&rest[..at]);
+                out.push_str(&format!("\\boldsymbol{{\\{name}}}"));
+                rest = &inside[inside.find('}').map_or(inside.len(), |end| end + 1)..];
+            }
+            None => {
+                out.push_str(&rest[..at + "\\mathbf{".len()]);
+                rest = inside;
+            }
+        }
+    }
+    out.push_str(rest);
+    out
 }
 
 /// The place of the "}" that closes the "{" at `open`.
@@ -2092,6 +2120,13 @@ mod tests {
         assert_eq!(render_inlines(&inl), "$`a`$$`x`$<!-- pdf2md:eq k -->");
         let inl = vec![Inline::Source("k".into()), Inline::Math("x".into()), Inline::Text("2 times".into())];
         assert_eq!(render_inlines(&inl), "$`x`$<!-- pdf2md:eq k --> 2 times");
+    }
+
+    #[test]
+    fn a_bold_greek_letter_is_a_bold_symbol() {
+        assert_eq!(bold_symbols("F_{z}=(\\mathbf{\\mu}\\cdot\\mathbf{B})"), "F_{z}=(\\boldsymbol{\\mu}\\cdot\\mathbf{B})");
+        assert_eq!(bold_symbols("\\mathbf{ \\nabla } \\times \\mathbf{\\hat{n}} + \\mathbf{\\Sigma}"), "\\boldsymbol{\\nabla} \\times \\mathbf{\\hat{n}} + \\mathbf{\\Sigma}");
+        assert_eq!(bold_symbols("\\mathbf{x^{\\prime}} \\mathbf{"), "\\mathbf{x^{\\prime}} \\mathbf{");
     }
 
     #[test]

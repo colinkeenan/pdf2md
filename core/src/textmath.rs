@@ -149,6 +149,15 @@ fn plain_signs(spans: &[Span]) -> Vec<Span> {
         s.text = text;
         out.push(s);
     }
+    // The hyphen that ends a line right behind a letter of a formula, "z-"
+    // with "direction" on the next line, is the hyphen of a compound and
+    // no minus sign (the minus of these books is "−"). It is written as
+    // the hyphen it is, and the lines are joined at it without a blank.
+    if let [.., before, last] = out.as_mut_slice() {
+        if last.text.trim() == "-" && last.tex.is_none() && before.text.trim_end().ends_with(|c: char| c.is_alphabetic() || "′″".contains(c)) && last.left - before.right() < 0.2 * last.height.max(1.0) {
+            last.text = "\u{2010}".into();
+        }
+    }
     out
 }
 
@@ -232,7 +241,11 @@ fn tokens(cs: &[char], italic: bool) -> Vec<Tok> {
         } else if c == '-' {
             // a minus sign, not the hyphen of "x-polarized"
             let free = |c: Option<char>| c.is_none_or(char::is_whitespace);
-            (next.is_some_and(|c| c.is_ascii_digit()) && !prev.is_some_and(char::is_alphanumeric) || (free(prev) && free(next))).then_some(Role::Loose)
+            // (nor the hyphen left hanging in "x- and y-components": at
+            // the head of its piece, with the joining word behind it)
+            let rest: String = cs[i + 1..].iter().collect();
+            let hanging = i == 0 && rest.starts_with(char::is_whitespace) && ["and", "or", "to"].iter().any(|w| rest.trim_start().strip_prefix(w).is_some_and(|r| r.starts_with(char::is_whitespace)));
+            ((next.is_some_and(|c| c.is_ascii_digit()) && !prev.is_some_and(char::is_alphanumeric) || (free(prev) && free(next))) && !hanging).then_some(Role::Loose)
         } else if c == '/' {
             (!(prev.is_some_and(char::is_alphabetic) && next.is_some_and(char::is_alphabetic)) || italic).then_some(Role::Loose)
         } else if is_loose(c) || (italic && is_prime(c, true)) {
@@ -964,5 +977,8 @@ mod tests {
         assert_eq!(line(&[("atoms with Z = 2 and ", ""), ("l", "i"), (" = 0, so", "")]), "atoms with $`Z = 2`$ and $`l = 0`$, so");
         assert_eq!(line(&[("a 2 × 2 matrix ", ""), ("f", "i"), ("(", ""), ("x", "i"), (", ", ""), ("y", "i"), (") of", "")]), "a $`2 \\times 2`$ matrix $`f ( x , y )`$ of");
         assert_eq!(line(&[("vector ", ""), ("x′", "b"), (" and ", ""), ("kR", "i"), (" ≫ 1 here", "")]), "vector $`\\boldsymbol{x'}`$ and $`k R \\gg 1`$ here");
+        // the hyphen of a compound: at a line's end, and left hanging
+        assert_eq!(line(&[("in the ", ""), ("z", "i"), ("-", "")]), "in the $`z`$\u{2010}");
+        assert_eq!(line(&[("the ", ""), ("x", "i"), ("- and ", ""), ("y", "i"), ("-components", "")]), "the $`x`$- and $`y`$-components");
     }
 }

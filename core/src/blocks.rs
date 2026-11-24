@@ -2716,6 +2716,22 @@ impl Builder<'_> {
                 return;
             }
         }
+        // the hyphen of a compound that ended the line behind a formula's
+        // letter ("z‐" / "direction", see `textmath::plain_signs`): the
+        // compound goes on with no blank, "z-direction"
+        if let Some(Inline::Text(a)) = self.para.last_mut() {
+            if a.ends_with('\u{2010}') {
+                a.pop();
+                a.push('-');
+                for i in inl {
+                    match i {
+                        Inline::Text(t) => push_text(&mut self.para, &t),
+                        other => self.para.push(other),
+                    }
+                }
+                return;
+            }
+        }
         // a web address continued on this line: one link, nothing between
         if let (Some(Inline::Link { text: a, href: ha }), Some(Inline::Link { text: b, href: hb })) = (self.para.last_mut(), inl.first()) {
             if ha == hb && (ha.starts_with("http") || ha.starts_with("mailto:")) {
