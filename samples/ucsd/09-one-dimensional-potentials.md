@@ -1492,11 +1492,7 @@ c) Calculate the probability for a particle in the beam to be reflected by the p
 \frac{d^{2} h ( y )}{dy^{2}} - 2 y \frac{dh ( y )}{dy} + ( \frac{E}{\alpha} - 1 ) h ( y ) = 0
 ```
 
-<div align="center">
-
 a) Assume $`h ( y ) = \sum_{m = 0}^{\infty} a_{m} y^{m}`$ and find the recursion relation for the coefficients $`a_{m}`$.
-
-</div>
 
 b) Use the requirement that this polynomial series must terminate to find the allowed energies in terms of $`\alpha`$.
 
@@ -1526,11 +1522,7 @@ c) At $`t = 0`$ the potential is suddenly removed so that the particle is free. 
 \frac{d^{2} h ( y )}{dy^{2}} - 2 y \frac{dh ( y )}{dy} + ( \frac{E}{\alpha} - 1 ) h ( y ) = 0
 ```
 
-<div align="center">
-
 a) Assume $`h ( y ) = \sum_{m = 0}^{\infty} a_{m} y^{m}`$ and find the recursion relation for the coefficients $`a_{m}`$.
-
-</div>
 
 b) Use the requirement that this polynomial series must terminate to find the allowed energies in terms of $`\alpha`$.
 

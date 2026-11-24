@@ -4687,6 +4687,26 @@ pub fn display_areas(
                 under > 1.3 * max && under <= 1.9 * max && sign && !members.is_empty() && members.iter().all(|s| s.left >= r.left - 2.0 && s.right <= r.right + 2.0)
             })
     };
+    // A row whose every piece stands over or under a fraction bar, within
+    // the bar's width, is the upper or lower half of fractions set side by
+    // side: an "=" in it ("⟨φ = 0, ∞| …" over a bar) starts no line of its
+    // own. (The halves had come out as two equations, the line between
+    // them — "Z₀ = … = … = …" — joined to the upper one.)
+    let half_row = |c: f32| {
+        let members: Vec<&MSpan> = rest.iter().filter(|s| !s.cmex() && s.size >= 0.9 * max && (s.cy() - c).abs() <= 0.3 * max).collect();
+        let at_a_bar = |s: &MSpan| {
+            bars.iter().any(|r| {
+                let mid = (r.top + r.bottom) / 2.0;
+                let off = (c - mid).abs();
+                // (a bar of the line: its "=" stands beside the bar, at the
+                // bar's height — not a ruled line of the page, nor the bar
+                // of a fraction in the line above)
+                let of_a_line = rest.iter().any(|t| !t.cmex() && t.size >= 0.9 * max && (t.cy() - mid).abs() <= 0.3 * max && (t.right <= r.left + 2.0 || t.left >= r.right - 2.0) && t.text.split_whitespace().any(is_relation));
+                s.left >= r.left - 2.0 && s.right <= r.right + 2.0 && off >= 0.3 * max && off <= 1.3 * max && of_a_line
+            })
+        };
+        !members.is_empty() && members.iter().all(|s| at_a_bar(s))
+    };
     // Rows inside a tall bracket are rows of a matrix, not lines.
     let in_bracket = |c: f32| {
         // shapeless bracket pieces, or brackets read from the SVG (tall)
@@ -4822,7 +4842,7 @@ pub fn display_areas(
             anchors.push((c, leading_op));
         } else if second_line || (rhs && far) {
             anchors.push((c, true));
-        } else if far && (rel || tagged || own_line) {
+        } else if far && ((rel && !half_row(c)) || tagged || own_line) {
             related |= rel;
             anchors.push((c, false));
         } else if far && op && !anchors.is_empty() {

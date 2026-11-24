@@ -716,7 +716,12 @@ fn emit_line(doc: &Doc, l: &Line, st: &Stats, spans: &[crate::layout::Span], kin
             let word_before = i > 0 && kinds[i - 1] != K::Math && kinds[i] == K::Math && spans[i - 1].text.ends_with(char::is_alphabetic);
             let first: String = s.text.chars().take_while(|c| c.is_alphabetic()).collect();
             let word_after = i > 0 && kinds[i - 1] == K::Math && kinds[i] == K::Text && !first.is_empty() && !["th", "st", "nd", "rd", "s"].contains(&first.as_str());
-            (word_before || word_after) && gap >= 0.12 * st.body.min(l.size) && gap >= 1.5
+            // (a formula that is a picture stands apart from the word before
+            // it however near its box begins: "the" and σ·n̂ in a caption's
+            // small type are no "theσ·n̂"; a single letter may be its base)
+            let word: usize = spans.get(i.wrapping_sub(1)).map_or(0, |p| p.text.chars().rev().take_while(|c| c.is_alphabetic()).count());
+            let picture = word_before && s.image_key.is_some() && word >= 2 && gap >= -0.5;
+            ((word_before || word_after) && gap >= 0.12 * st.body.min(l.size) && gap >= 1.5) || picture
         };
         // (a comma or full stop after an italic letter stands a little off it)
         let closes = kinds[i] != K::Math && s.text.starts_with([',', '.', ';', ':', ')', ']', '?', '!']) && !s.text.starts_with(". .") && !s.text.starts_with("..");
@@ -3463,7 +3468,16 @@ pub fn build(doc: &Doc, pages: &[PageInfo], st: &Stats) -> Vec<Blk> {
                 b.para_goes_on = !bullet && b.goes_on_behind(l, &mut inl, next, pi);
                 b.para_page = pi;
                 b.para = inl;
-                b.para_centered = is_centered(l, st);
+                // (not an item of a list that happens to end as far from the
+                // right margin as it begins from the left: it begins where the
+                // line above it or under it begins, and ends elsewhere)
+                let fellow = |left: f32, right: f32, top: f32| (left - l.left).abs() <= 1.5 && (right - l.right).abs() > st.body && (top - l.top).abs() <= 2.5 * st.spacing;
+                // (… and begins with an item's mark: "b.", "a)", "(c)", a dash)
+                let first: String = l.spans.iter().map(|s| s.text.as_str()).collect::<String>().split_whitespace().next().unwrap_or("").to_string();
+                let core = first.trim_start_matches('(').trim_end_matches(['.', ')']);
+                let marked = matches!(first.as_str(), "–" | "—" | "-" | "•" | "∗" | "*") || (first.ends_with(['.', ')']) && !core.is_empty() && core.chars().count() <= 3 && core.chars().all(char::is_alphanumeric));
+                let in_a_list = marked && (b.prev.as_ref().is_some_and(|p| p.page == pi && fellow(p.left, p.right, p.top)) || next.is_some_and(|n| fellow(n.left, n.right, n.top)));
+                b.para_centered = is_centered(l, st) && !in_a_list;
                 b.para_inset = inset(l, st);
                 b.para_in = (l.left - st.left, st.right - l.right);
             } else {

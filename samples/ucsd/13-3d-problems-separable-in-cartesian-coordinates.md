@@ -301,11 +301,7 @@ b) Determine the number of degenerate states for the first three energy levels.
 
 a) Find the three lowest allowed energies.
 
-<div align="center">
-
 b) Find the number of states (level of degeneracy) at each of these three energies.
-
-</div>
 
 c) Find the Fermi Energy $`E_{F}`$ for $`N`$ particles in the box. (N is large.)
 
