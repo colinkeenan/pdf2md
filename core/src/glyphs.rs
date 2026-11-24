@@ -141,6 +141,24 @@ impl FontInfo {
         self.unicode.is_none() && !self.wide && self.base.to_uppercase().starts_with("CMMI") && self.names.get(&code).map_or(code == 15, |n| n == "epsilon1")
     }
 
+    /// The capital with doubled strokes that a glyph of a nameless font
+    /// is. TeX's blackboard letters come from a font that some PDFs hold
+    /// only as drawings, dot by dot, without a name or a table of
+    /// characters; its glyphs are named by their codes there ("x52" for
+    /// the R of the reals), and `pdftohtml` gives each as "\u{fffd}".
+    fn doubled(&self, code: u8) -> Option<char> {
+        const LETTERS: [char; 26] = ['𝔸', '𝔹', 'ℂ', '𝔻', '𝔼', '𝔽', '𝔾', 'ℍ', '𝕀', '𝕁', '𝕂', '𝕃', '𝕄', 'ℕ', '𝕆', 'ℙ', 'ℚ', 'ℝ', '𝕊', '𝕋', '𝕌', '𝕍', '𝕎', '𝕏', '𝕐', 'ℤ'];
+        let name = self.names.get(&code)?;
+        let letter = u8::from_str_radix(name.strip_prefix('x')?, 16).ok().filter(|_| name.len() == 3)?;
+        letter.is_ascii_uppercase().then(|| LETTERS[(letter - b'A') as usize])
+    }
+
+    /// Is the font named as PDF fonts are, or (`family` being what
+    /// pdftohtml calls it) a nameless one, which goes by any name there?
+    pub fn nameless(&self) -> bool {
+        self.base.is_empty()
+    }
+
     /// A glyph that pdftohtml gives as a blank, or not at all: the
     /// font's table says so, or its name.
     pub fn blank(&self, code: u8) -> bool {
@@ -177,6 +195,10 @@ impl FontInfo {
     /// glyph that stays as pdftohtml gave it.
     pub fn slot_text(&self, code: u8) -> Option<String> {
         let known = self.unicode.as_ref().and_then(|u| u.get(&code)).cloned().unwrap_or_default();
+        // (a font drawn dot by dot, held without a name: see `doubled`)
+        if self.base.is_empty() {
+            return self.doubled(code).filter(|_| known.trim().is_empty()).map(|c| c.to_string());
+        }
         // (the code 32 that the table gives as a blank is a blank that the
         // maker of the PDF set in this font, not the ψ or the arrow of
         // that place)
@@ -455,6 +477,10 @@ fn font_info(doc: &Document, font: &Dictionary) -> FontInfo {
     // (… any font of TeX's whose table has no character for a glyph that
     // its place names: the prime of the symbol font, a Greek capital of
     // the upright one, ∂)
+    // (the nameless font of blackboard capitals)
+    if info.base.is_empty() && !info.wide {
+        info.misnamed = info.names.keys().any(|&code| info.slot_text(code).is_some());
+    }
     if !info.misnamed && (tex_font(&info.base) || info.base.to_uppercase().starts_with("MSAM")) {
         info.misnamed = gaps.iter().any(|&code| !info.blanks.contains(&code) && info.slot_text(code).is_some_and(|t| !t.trim().is_empty()));
     }

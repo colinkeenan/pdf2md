@@ -1019,6 +1019,9 @@ fn restore_slots(doc: &mut Doc, path: &Path, parts: &[(usize, String)]) {
         let before = written;
         // the glyphs of each piece of such a font: where, and what
         let mut of_span: HashMap<(usize, usize), Vec<Rewritten>> = HashMap::new();
+        // (pieces of a nameless font: letters of a formula, whatever font
+        // and size pdftohtml gives them)
+        let mut drawn_letters: Vec<(usize, usize)> = Vec::new();
         for (&(f, code), at) in drawn.iter().zip(&placed) {
             let info = &glyphs.fonts[f];
             // (a blank is no character of its piece — unless it is a sign
@@ -1030,7 +1033,10 @@ fn restore_slots(doc: &mut Doc, path: &Path, parts: &[(usize, String)]) {
             let mut best: Option<((usize, usize), f32)> = None;
             for (li, line) in page.lines.iter().enumerate() {
                 for (si, s) in line.spans.iter().enumerate() {
-                    if !same(&info.base, &families[s.font]) || y < s.top - 3.0 || y > s.bottom() + 3.0 {
+                    // (a nameless font goes by any name in pdftohtml's
+                    // text: its glyphs are the pieces without a character)
+                    let its_font = if info.nameless() { s.text.contains('\u{fffd}') } else { same(&info.base, &families[s.font]) };
+                    if !its_font || y < s.top - 3.0 || y > s.bottom() + 3.0 {
                         continue;
                     }
                     // (a glyph that starts at the right edge of one piece
@@ -1043,7 +1049,12 @@ fn restore_slots(doc: &mut Doc, path: &Path, parts: &[(usize, String)]) {
                 }
             }
             match best {
-                Some((span, _)) => of_span.entry(span).or_default().push((x, info.slot_text(code))),
+                Some((span, _)) => {
+                    if info.nameless() {
+                        drawn_letters.push(span);
+                    }
+                    of_span.entry(span).or_default().push((x, info.slot_text(code)))
+                }
                 None => {
                     left += 1;
                     if debug {
@@ -1153,6 +1164,13 @@ fn restore_slots(doc: &mut Doc, path: &Path, parts: &[(usize, String)]) {
             if text.trim() != s.text.trim() {
                 written += found.len();
                 s.text = if text.trim().is_empty() { String::new() } else { text };
+            }
+        }
+        for (li, si) in drawn_letters {
+            let s = &mut page.lines[li].spans[si];
+            let near = |k: &usize| (sizes[*k] - 1.1 * s.height).abs();
+            if let Some(k) = (0..families.len()).filter(|&k| families[k].starts_with("CMMI")).min_by(|a, b| near(a).total_cmp(&near(b))).filter(|_| !s.text.contains('\u{fffd}')) {
+                s.font = k;
             }
         }
         emptied.sort_unstable_by(|a, b| b.cmp(a));
