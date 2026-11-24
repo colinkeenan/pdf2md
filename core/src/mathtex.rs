@@ -3407,15 +3407,27 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
     // an index of what stands before, nor one half of it.
     let mut k = 0;
     while k < items.len() {
-        // (the word alone, or with one after it in its piece: "lim Im")
+        // (the word alone, or with others in its piece: "lim Im", ")) = lim (")
         let whole = items[k].tex.trim().to_string();
-        let (word, after) = whole.split_once(' ').map_or((whole.clone(), String::new()), |(w, rest)| (w.to_string(), format!(" {rest}")));
-        if items[k].kind != Kind::Atom || !["\\lim", "\\max", "\\min", "\\sup", "\\inf"].contains(&word.as_str()) {
+        let words: Vec<&str> = whole.split(' ').collect();
+        let Some(at) = words.iter().position(|w| ["\\lim", "\\max", "\\min", "\\sup", "\\inf"].contains(w)).filter(|_| items[k].kind == Kind::Atom) else {
             k += 1;
             continue;
-        }
+        };
+        let (word, before, after) = (words[at].to_string(), words[..at].iter().map(|w| format!("{w} ")).collect::<String>(), words[at + 1..].iter().map(|w| format!(" {w}")).collect::<String>());
+        // (where the word stands in a piece that holds more before it: by
+        // its letters' share of the piece)
+        let (word_left, word_right) = if at > 0 {
+            let len = |w: &str| w.trim_start_matches('\\').chars().count() as f32;
+            let all: f32 = words.iter().map(|w| len(w) + 1.0).sum::<f32>() - 1.0;
+            let from: f32 = words[..at].iter().map(|w| len(w) + 1.0).sum();
+            let wide = items[k].right - items[k].left;
+            (items[k].left + wide * from / all, items[k].left + wide * (from + len(&word)) / all)
+        } else {
+            (items[k].left, items[k].right)
+        };
         let under = |j: usize, l: f32, r: f32| items[j].kind == Kind::Sub && items[j].left < r + 0.6 * max && items[j].right > l - 0.6 * max;
-        let mut take: Vec<usize> = (0..items.len()).filter(|&j| under(j, items[k].left + 0.6 * max, items[k].right - 0.6 * max)).collect();
+        let mut take: Vec<usize> = (0..items.len()).filter(|&j| under(j, word_left + 0.6 * max, word_right - 0.6 * max)).collect();
         if take.is_empty() {
             k += 1;
             continue;
@@ -3442,9 +3454,11 @@ fn build_at(spans: &[MSpan], depth: usize) -> String {
         } else {
             take.iter().map(|&j| items[j].tex.as_str()).collect::<Vec<_>>().join(" ")
         };
-        items[k].tex = format!("{word}_{{{index}}}{after}");
-        items[k].left = take.iter().map(|&j| items[j].left).fold(items[k].left, f32::min);
-        items[k].right = take.iter().map(|&j| items[j].right).fold(items[k].right, f32::max);
+        items[k].tex = format!("{before}{word}_{{{index}}}{after}");
+        if at == 0 {
+            items[k].left = take.iter().map(|&j| items[j].left).fold(items[k].left, f32::min);
+            items[k].right = take.iter().map(|&j| items[j].right).fold(items[k].right, f32::max);
+        }
         let mut gone = take.clone();
         gone.sort_unstable_by(|a, b| b.cmp(a));
         for j in gone {

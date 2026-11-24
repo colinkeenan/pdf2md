@@ -1845,6 +1845,7 @@ fn display_flags(doc: &Doc, lines: &[Line], st: &Stats) -> Vec<bool> {
             f[i] = false;
         }
     }
+    let mut ends_paragraph = vec![false; lines.len()];
     // The short last line of a paragraph may be all math ("in (M − I).}"):
     // it starts where the line of prose above it starts, at the paragraph's
     // line spacing, and that line runs to the right margin. A formula set
@@ -1859,6 +1860,9 @@ fn display_flags(doc: &Doc, lines: &[Line], st: &Stats) -> Vec<bool> {
         // (the top of a line with raised letters is a little higher than its neighbours')
         if f[i] && !info[i].2 && prose_above && under && l.top - above.top <= (1.6 * l.size).max(if l.size >= 0.9 * st.body { 1.25 * st.spacing } else { 0.0 }) && l.size >= 0.75 * above.size {
             f[i] = false;
+            // (… and stays the paragraph's, with a formula right under it:
+            // "and taking / N → ∞," is no row of the equation that follows)
+            ends_paragraph[i] = l.right < st.right - 3.0 * st.body;
         }
     }
     // Grow each equation by the rows around it (numerators, limits...).
@@ -1902,7 +1906,8 @@ fn display_flags(doc: &Doc, lines: &[Line], st: &Stats) -> Vec<bool> {
                 changed = true;
                 continue;
             }
-            if candidate && ((i > 0 && near(i - 1)) || (i + 1 < lines.len() && near(i + 1)) || bracket_near) {
+            // (not by its nearness alone, where it ends a paragraph)
+            if candidate && !ends_paragraph[i] && ((i > 0 && near(i - 1)) || (i + 1 < lines.len() && near(i + 1)) || bracket_near) {
                 f[i] = true;
                 changed = true;
             }

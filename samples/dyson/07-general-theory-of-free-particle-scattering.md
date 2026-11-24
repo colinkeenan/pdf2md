@@ -835,12 +835,12 @@ M_{2 2} = - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int G ( \epsilon_
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p109" href="book.pdf#page=115" target="_blank" title="This page in the PDF"><sup>[p. 109]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup>
 
-In (564) the inadmissible factor (559) is replaced by something finite and mathematically well-defined. There will be a singularity in the integration of (564) over $`\epsilon_{0}`$, but this is an ordinary pole and the integration over $`\epsilon_{0}`$ will give a well-determined result when taken as a <a id="ix-124">Feynman</a> integral. We have as $`T \to \infty`$ and $`\epsilon_{0}`$ and
+In (564) the inadmissible factor (559) is replaced by something finite and mathematically well-defined. There will be a singularity in the integration of (564) over $`\epsilon_{0}`$, but this is an ordinary pole and the integration over $`\epsilon_{0}`$ will give a well-determined result when taken as a <a id="ix-124">Feynman</a> integral. We have as $`T \to \infty`$ and $`\epsilon_{0}`$ and $`\epsilon_{0}^{\prime} \to 0`$
 
 <a id="eq-565"></a>
 
 ```math
-\begin{aligned} & \quad \epsilon_{0}^{\prime} \to 0 \\ \frac{1}{{p\!\!\!/} + {\epsilon\!\!\!/} + {\epsilon\!\!\!/}^{\prime} - i\mu} &= \frac{{p\!\!\!/} + {\epsilon\!\!\!/} + {\epsilon\!\!\!/}^{\prime} + i\mu}{2 p \cdot ( \epsilon + \epsilon^{\prime} ) + ( \epsilon + \epsilon^{\prime} )^{2}} \sim - \frac{{p\!\!\!/} + i\mu}{2 p_{0} ( \epsilon_{0} + \epsilon_{0}^{\prime} )} \end{aligned} \qquad \text{(565)}
+\frac{1}{{p\!\!\!/} + {\epsilon\!\!\!/} + {\epsilon\!\!\!/}^{\prime} - i\mu} = \frac{{p\!\!\!/} + {\epsilon\!\!\!/} + {\epsilon\!\!\!/}^{\prime} + i\mu}{2 p \cdot ( \epsilon + \epsilon^{\prime} ) + ( \epsilon + \epsilon^{\prime} )^{2}} \sim - \frac{{p\!\!\!/} + i\mu}{2 p_{0} ( \epsilon_{0} + \epsilon_{0}^{\prime} )} \qquad \text{(565)}
 ```
 
 Hence when evaluating Σ$`( p + \epsilon )`$ we need retain only terms of order zero and one in $`\epsilon_{0}`$; the terms of order two and higher are negligible, because even when multiplied by (565) they tend to zero as $`T \to \infty`$.

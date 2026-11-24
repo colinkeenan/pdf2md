@@ -330,11 +330,7 @@ pc = \sqrt{2 mc^{2} ( 1 3 . 6 )}
 = \frac{2 \pi ( 1 9 7 3 eV ˚ A )}{\sqrt{2 ( 0 . 5 1 1 \times 1 0^{6} eV ) ( 1 3 . 6 eV )}} \approx 3 . 3 3 ˚ A
 ```
 
-10 MeV is much bigger than $`mc^{2}`$ for an electron so it is super-relativistic and we can use
-
-```math
-E = pc .
-```
+10 MeV is much bigger than $`mc^{2}`$ for an electron so it is super-relativistic and we can use $`E = pc`$.
 
 ```math
 \lambda = \frac{2 \pi \hbar c}{pc} = \frac{2 \pi ( 1 9 7 . 3 ) MeVF )}{1 0 MeV} \approx 1 2 0 F

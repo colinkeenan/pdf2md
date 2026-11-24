@@ -4737,12 +4737,12 @@ Then we have
 \begin{aligned} \left( \Box^{2} - \mu^{2} \right) \Delta_{R} ( x ) &= \left( \Box^{2} - \mu^{2} \right) \Delta_{A} ( x ) = - \delta^{4} ( x ) \\ \left( \Box^{2} - \mu^{2} \right) \Delta ( x ) &= 0 \quad \Delta ( x ) = ( \Delta_{A} - \Delta_{R} ) ( x ) \end{aligned} \qquad \text{(302)}
 ```
 
-with the boundary conditions as before. And the ∆-functions are exact analogues of the $`D`$-functions, the $`D`$-functions being the special case $`\mu = 0`$. Instead of (207) we have by making the formal substitution
+with the boundary conditions as before. And the ∆-functions are exact analogues of the $`D`$-functions, the $`D`$-functions being the special case $`\mu = 0`$. Instead of (207) we have by making the formal substitution $`k^{2} \to k^{2} + \mu^{2}`$
 
 <a id="eq-303"></a>
 
 ```math
-\begin{aligned} & \quad k^{2} \to k^{2} + \mu^{2} \\ \Delta_{R} ( x ) &= \frac{1}{( 2 \pi )^{4}} \int_{+} e^{ik \cdot x} \frac{1}{k^{2} + \mu^{2}} d^{4} k \end{aligned} \qquad \text{(303)}
+\Delta_{R} ( x ) = \frac{1}{( 2 \pi )^{4}} \int_{+} e^{ik \cdot x} \frac{1}{k^{2} + \mu^{2}} d^{4} k \qquad \text{(303)}
 ```
 
 <div align="right"><a href="book.pdf#page=67" target="_blank" title="This page in the PDF"><sup>[p. 61]</sup></a></div>
@@ -7998,12 +7998,12 @@ M_{2 2} = - \frac{ie^{3}}{( 2 \pi )^{4} \hbar^{2} c^{2}} \int \int G ( \epsilon_
 <hr class="page" style="height:2px;border:0;background:currentColor;opacity:0.25">
 <a id="p109" href="book.pdf#page=115" target="_blank" title="This page in the PDF"><sup>[p. 109]</sup></a> <sup>GENERAL THEORY OF FREE PARTICLE SCATTERING</sup>
 
-In (564) the inadmissible factor (559) is replaced by something finite and mathematically well-defined. There will be a singularity in the integration of (564) over $`\epsilon_{0}`$, but this is an ordinary pole and the integration over $`\epsilon_{0}`$ will give a well-determined result when taken as a <a id="ix-124">Feynman</a> integral. We have as $`T \to \infty`$ and $`\epsilon_{0}`$ and
+In (564) the inadmissible factor (559) is replaced by something finite and mathematically well-defined. There will be a singularity in the integration of (564) over $`\epsilon_{0}`$, but this is an ordinary pole and the integration over $`\epsilon_{0}`$ will give a well-determined result when taken as a <a id="ix-124">Feynman</a> integral. We have as $`T \to \infty`$ and $`\epsilon_{0}`$ and $`\epsilon_{0}^{\prime} \to 0`$
 
 <a id="eq-565"></a>
 
 ```math
-\begin{aligned} & \quad \epsilon_{0}^{\prime} \to 0 \\ \frac{1}{{p\!\!\!/} + {\epsilon\!\!\!/} + {\epsilon\!\!\!/}^{\prime} - i\mu} &= \frac{{p\!\!\!/} + {\epsilon\!\!\!/} + {\epsilon\!\!\!/}^{\prime} + i\mu}{2 p \cdot ( \epsilon + \epsilon^{\prime} ) + ( \epsilon + \epsilon^{\prime} )^{2}} \sim - \frac{{p\!\!\!/} + i\mu}{2 p_{0} ( \epsilon_{0} + \epsilon_{0}^{\prime} )} \end{aligned} \qquad \text{(565)}
+\frac{1}{{p\!\!\!/} + {\epsilon\!\!\!/} + {\epsilon\!\!\!/}^{\prime} - i\mu} = \frac{{p\!\!\!/} + {\epsilon\!\!\!/} + {\epsilon\!\!\!/}^{\prime} + i\mu}{2 p \cdot ( \epsilon + \epsilon^{\prime} ) + ( \epsilon + \epsilon^{\prime} )^{2}} \sim - \frac{{p\!\!\!/} + i\mu}{2 p_{0} ( \epsilon_{0} + \epsilon_{0}^{\prime} )} \qquad \text{(565)}
 ```
 
 Hence when evaluating Σ$`( p + \epsilon )`$ we need retain only terms of order zero and one in $`\epsilon_{0}`$; the terms of order two and higher are negligible, because even when multiplied by (565) they tend to zero as $`T \to \infty`$.

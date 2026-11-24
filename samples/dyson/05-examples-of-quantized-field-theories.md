@@ -1531,12 +1531,12 @@ Then we have
 \begin{aligned} \left( \Box^{2} - \mu^{2} \right) \Delta_{R} ( x ) &= \left( \Box^{2} - \mu^{2} \right) \Delta_{A} ( x ) = - \delta^{4} ( x ) \\ \left( \Box^{2} - \mu^{2} \right) \Delta ( x ) &= 0 \quad \Delta ( x ) = ( \Delta_{A} - \Delta_{R} ) ( x ) \end{aligned} \qquad \text{(302)}
 ```
 
-with the boundary conditions as before. And the ∆-functions are exact analogues of the $`D`$-functions, the $`D`$-functions being the special case $`\mu = 0`$. Instead of (207) we have by making the formal substitution
+with the boundary conditions as before. And the ∆-functions are exact analogues of the $`D`$-functions, the $`D`$-functions being the special case $`\mu = 0`$. Instead of (207) we have by making the formal substitution $`k^{2} \to k^{2} + \mu^{2}`$
 
 <a id="eq-303"></a>
 
 ```math
-\begin{aligned} & \quad k^{2} \to k^{2} + \mu^{2} \\ \Delta_{R} ( x ) &= \frac{1}{( 2 \pi )^{4}} \int_{+} e^{ik \cdot x} \frac{1}{k^{2} + \mu^{2}} d^{4} k \end{aligned} \qquad \text{(303)}
+\Delta_{R} ( x ) = \frac{1}{( 2 \pi )^{4}} \int_{+} e^{ik \cdot x} \frac{1}{k^{2} + \mu^{2}} d^{4} k \qquad \text{(303)}
 ```
 
 <div align="right"><a href="book.pdf#page=67" target="_blank" title="This page in the PDF"><sup>[p. 61]</sup></a></div>
