@@ -2090,6 +2090,16 @@ fn tidy(s: &str) -> String {
     // (three dots at the height of a minus sign are TeX's "and so on")
     let s = s.replace("\\cdot \\cdot \\cdot", "\\cdots");
     let s = barred_index(&rooted_fraction(&s));
+    // (a slash right after a letter that has an index, "k/_{2}": nothing
+    // is divided by an index — the stroke of k̸₂, drawn half beside its k)
+    let mut s = s;
+    while let Some(at) = s.find("/_{") {
+        let before: Vec<char> = s[..at].chars().rev().take(2).collect();
+        let letter = before.first().is_some_and(|c| c.is_ascii_alphabetic()) && before.get(1).is_none_or(|c| !c.is_ascii_alphabetic() && *c != '\\');
+        let with = if letter { format!("{{{}\\!\\!\\!/}}_{{", before[0]) } else { "/ _{".to_string() };
+        let from = if letter { at - 1 } else { at };
+        s.replace_range(from..at + 3, &with);
+    }
     slashed(&s.replace("\\not =", "\\neq").replace("\\not=", "\\neq").replace("\\not{=}", "\\neq"))
 }
 
