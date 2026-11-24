@@ -1337,6 +1337,31 @@ fn put_accents(mut spans: Vec<MSpan>) -> Vec<MSpan> {
         spans[k] = bar;
         spans.insert(k + 1, rest);
     }
+    // A piece that ends in such a stroke, "/e/", with the next letter drawn
+    // as a piece of its own where the piece ends: the last stroke is that
+    // letter's. It becomes a piece at the letter's place, and the rest ends
+    // where the letter begins.
+    let tails: Vec<(usize, usize)> = (0..spans.len())
+        .filter_map(|k| {
+            let s = &spans[k];
+            if s.atom.is_some() || !s.family.to_uppercase().starts_with("CMMI") || !s.text.ends_with('/') || s.text.chars().count() < 2 {
+                return None;
+            }
+            let under = (0..spans.len()).find(|&j| {
+                let b = &spans[j];
+                j != k && b.atom.is_none() && b.family.to_uppercase().starts_with("CMMI") && b.text.trim().chars().count() == 1 && b.text.trim().chars().all(char::is_alphabetic) && b.left >= s.left + 0.3 * s.size && b.left < s.right - 1.0 && (b.right - s.right).abs() <= 2.5 && (b.top - s.top).abs() <= 0.3 * s.size && (b.size - s.size).abs() < 0.5
+            })?;
+            Some((k, under))
+        })
+        .collect();
+    for &(k, under) in tails.iter().rev() {
+        let (left, right) = (spans[under].left, spans[under].right);
+        let mut stroke = spans[k].clone();
+        (stroke.text, stroke.left, stroke.right) = ("/".to_string(), left, right);
+        spans[k].text.pop();
+        spans[k].right = left;
+        spans.insert(k + 1, stroke);
+    }
     // The same stroke in one piece with its letter, "/e" as wide as the e
     // alone: the slash moves the type on by nothing, so the piece is as
     // wide as its other letters. It is taken out and set over the letter

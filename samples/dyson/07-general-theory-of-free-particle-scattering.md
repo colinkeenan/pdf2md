@@ -22,7 +22,7 @@ M = ( \Phi_{B}^{*} S \Phi_{A} ) \qquad \text{(487)}
 <a id="eq-488"></a>
 
 ```math
-S = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int \dots \int dx_{1} \dots dx_{n} P \left\{ \psi / A\psi ( x_{1} ) ,\dots , \psi {A\!\!\!/} \psi ( x_{n} ) \right\} \qquad \text{(488)}
+S = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int \dots \int dx_{1} \dots dx_{n} P \left\{ \overline{\psi} {A\!\!\!/} \psi ( x_{1} ) ,\dots , \psi {A\!\!\!/} \psi ( x_{n} ) \right\} \qquad \text{(488)}
 ```
 
 The operators in (488) are field-operators of the interaction representation, the integrations over the points $`x_{1} ,\dots x_{n}`$ extend over all space-time, and the initial and final states $`A`$ and $`B`$ are entirely arbitrary.
@@ -46,7 +46,7 @@ where<sup><a id="fnref-68" href="#fn-68">68</a></sup>
 <a id="eq-490"></a>
 
 ```math
-\Omega_{2} ( t_{B} ) = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int_{t_{B}}^{\infty} \dots \int_{t_{B}}^{\infty} dx_{1} \dots dx_{n} P \left\{ \psi / A\psi ( x_{1} ) ,\dots , \overline{\psi} {A\!\!\!/} \psi ( x_{n} ) \right\} g_{B} ( t_{1} ) \dots g_{B} ( t_{n} ) \qquad \text{(490)}
+\Omega_{2} ( t_{B} ) = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int_{t_{B}}^{\infty} \dots \int_{t_{B}}^{\infty} dx_{1} \dots dx_{n} P \left\{ \overline{\psi} {A\!\!\!/} \psi ( x_{1} ) ,\dots , \overline{\psi} {A\!\!\!/} \psi ( x_{n} ) \right\} g_{B} ( t_{1} ) \dots g_{B} ( t_{n} ) \qquad \text{(490)}
 ```
 
 and $`g_{B} ( t )`$ is a function decreasing adiabatically from the value 1 at $`t = t_{B}`$ to zero at $`t = \infty`$. Similarly, when $`t_{A}`$ is a time so far in the past that the state $`A`$ consists of separated converging particles from $`t = -\infty`$ to $`t = t_{A}`$ we have
@@ -60,7 +60,7 @@ and $`g_{B} ( t )`$ is a function decreasing adiabatically from the value 1 at $
 <a id="eq-492"></a>
 
 ```math
-\Omega_{1} ( t_{A} ) = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int_{-\infty}^{t_{A}} \dots \int_{-\infty}^{t_{A}} dx_{1} \dots dx_{n} P \left\{ \psi / A\psi ( x_{1} ) ,\dots , \overline{\psi} {A\!\!\!/} \psi ( x_{n} ) \right\} g_{A} ( t_{1} ) \dots g_{A} ( t_{n} ) \qquad \text{(492)}
+\Omega_{1} ( t_{A} ) = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int_{-\infty}^{t_{A}} \dots \int_{-\infty}^{t_{A}} dx_{1} \dots dx_{n} P \left\{ \overline{\psi} {A\!\!\!/} \psi ( x_{1} ) ,\dots , \overline{\psi} {A\!\!\!/} \psi ( x_{n} ) \right\} g_{A} ( t_{1} ) \dots g_{A} ( t_{n} ) \qquad \text{(492)}
 ```
 
 where $`g_{A} ( t )`$ is a function increasing adiabatically from $`t = -\infty`$ to $`t = t_{A}`$.
@@ -76,7 +76,7 @@ M = \left( \Psi_{B}^{*} ( t_{B} ) S_{t_{A}}^{t_{B}} \Psi_{A} ( t_{A} ) \right) \
 <a id="eq-494"></a>
 
 ```math
-S_{t_{A}}^{t_{B}} = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int_{t_{A}}^{t_{B}} \dots \int_{t_{A}}^{t_{B}} P \left\{ \psi / A\psi ( x_{1} ) ,\dots , \overline{\psi} {A\!\!\!/} \psi ( x_{n} ) \right\} dx_{1} \dots dx_{n} \qquad \text{(494)}
+S_{t_{A}}^{t_{B}} = \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int_{t_{A}}^{t_{B}} \dots \int_{t_{A}}^{t_{B}} P \left\{ \overline{\psi} {A\!\!\!/} \psi ( x_{1} ) ,\dots , \overline{\psi} {A\!\!\!/} \psi ( x_{n} ) \right\} dx_{1} \dots dx_{n} \qquad \text{(494)}
 ```
 
 Of course (493) is independent of the times $`t_{A}`$ and $`t_{B}`$. When $`t_{A}`$ and $`t_{B}`$ are chosen so far in the past that (489) and (491) are satisfied, then (493) may be written in the form (487), where now
@@ -84,7 +84,7 @@ Of course (493) is independent of the times $`t_{A}`$ and $`t_{B}`$. When $`t_{A
 <a id="eq-495"></a>
 
 ```math
-\begin{aligned} S &= \Omega_{2} ( t_{B} ) S_{t_{A}}^{t_{B}} \Omega_{1} ( t_{A} ) \\ &= \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int_{-\infty}^{\infty} \dots \int_{-\infty}^{\infty} dx_{1} \dots dx_{n} P \left\{ \psi / A\psi ( x_{1} ) ,\dots , \overline{\psi} {A\!\!\!/} \psi ( x_{n} ) \right\} g ( t_{1} ) \dots g ( t_{n} ) \end{aligned} \qquad \text{(495)}
+\begin{aligned} S &= \Omega_{2} ( t_{B} ) S_{t_{A}}^{t_{B}} \Omega_{1} ( t_{A} ) \\ &= \sum_{n = 0}^{\infty} \left( \frac{e}{\hbar c} \right)^{n} \frac{1}{n !} \int_{-\infty}^{\infty} \dots \int_{-\infty}^{\infty} dx_{1} \dots dx_{n} P \left\{ \overline{\psi} {A\!\!\!/} \psi ( x_{1} ) ,\dots , \overline{\psi} {A\!\!\!/} \psi ( x_{n} ) \right\} g ( t_{1} ) \dots g ( t_{n} ) \end{aligned} \qquad \text{(495)}
 ```
 
 and $`g ( t )`$ is a function increasing adiabatically from 0 to 1 for $`-\infty <t<t_{A}`$, equal to 1 for $`t_{A} \leq t \leq t_{B}`$, and decreasing adiabatically from 1 to 0 for $`t_{A} <t< \infty`$. Thus we come to the important conclusion that formula (487) for the matrix element is correct, using the bare particle state-functions $`\Phi_{A}`$ and $`\Phi_{B}`$, provided that formula (488) for $`S`$ is interpreted by putting in the slowly varying cut-off function $`g ( t_{i} )`$ to make the integrals converge at $`t_{i} = \pm \infty`$. The cut-off functions are to be put in as they appear in (495), and then $`S`$ is defined as the limit to which (495) tends as the rate of variation of $`g ( t )`$ is made infinitely slow.
@@ -246,7 +246,7 @@ In general, we must allow factor-pairings in which two operators at the same fie
 <a id="eq-509"></a>
 
 ```math
-\langle j_{\mu} ( x ) \rangle_{o} = - iec \left\langle \psi ( x ) \gamma_{\mu} \psi ( x ) \right\rangle_{o} \qquad \text{(509)}
+\langle j_{\mu} ( x ) \rangle_{o} = - iec \left\langle \overline{\psi} ( x ) \gamma_{\mu} \psi ( x ) \right\rangle_{o} \qquad \text{(509)}
 ```
 
 in the corresponding normal constituents (504). We saw in the discussion following (366) that the vacuum expectation value (509) is zero, the operators being IR operators. Therefore factor-pairings in which two factors at the same field-point are paired, in the analysis of quantum-electrodynamical operators such as (488), always give zero contributions. So we may add to our list of rules for the construction of $`G`$:
@@ -270,35 +270,35 @@ _Figure 9 (p. 99)_
 Corresponding to these $`G`$’s there will be just 8 normal constituents of $`\mathcal{O}`$, which we call $`\mathcal{O}_{1} \dots \mathcal{O}_{8}`$. These normal constituents are, in their respective order:
 
 ```math
-\mathcal{O}_{1} = \pm N \left\{ \psi ( x_{1} ) {A\!\!\!/} ( x_{1} ) \psi ( x_{1} ) \overline{\psi} ( x_{2} ) {A\!\!\!/} ( x_{2} ) \psi ( x_{2} ) \right\}
+\mathcal{O}_{1} = \pm N \left\{ \overline{\psi} ( x_{1} ) {A\!\!\!/} ( x_{1} ) \psi ( x_{1} ) \overline{\psi} ( x_{2} ) {A\!\!\!/} ( x_{2} ) \psi ( x_{2} ) \right\}
 ```
 
 ```math
-\mathcal{O}_{2} = \pm \left\langle \psi ( x_{1} ) \psi ( x_{2} ) \right\rangle_{o} N \left\{ {A\!\!\!/} ( x_{1} ) \psi ( x_{1} ) \overline{\psi} ( x_{2} ) {A\!\!\!/} ( x_{2} ) \right\}
+\mathcal{O}_{2} = \pm \left\langle \overline{\psi} ( x_{1} ) \psi ( x_{2} ) \right\rangle_{o} N \left\{ {A\!\!\!/} ( x_{1} ) \psi ( x_{1} ) \overline{\psi} ( x_{2} ) {A\!\!\!/} ( x_{2} ) \right\}
 ```
 
 ```math
-\mathcal{O}_{3} = \pm \left\langle \psi ( x_{2} ) \psi ( x_{1} ) \right\rangle_{o} N \left\{ \psi ( x_{1} ) {A\!\!\!/} ( x_{1} ) {A\!\!\!/} ( x_{2} ) \psi ( x_{2} ) \right\}
+\mathcal{O}_{3} = \pm \left\langle \overline{\psi} ( x_{2} ) \psi ( x_{1} ) \right\rangle_{o} N \left\{ \overline{\psi} ( x_{1} ) {A\!\!\!/} ( x_{1} ) {A\!\!\!/} ( x_{2} ) \psi ( x_{2} ) \right\}
 ```
 
 ```math
-\mathcal{O}_{4} = \pm \left\langle {A\!\!\!/} ( x_{1} ) {A\!\!\!/} ( x_{2} ) \right\rangle_{o} N \left\{ \psi ( x_{1} ) \psi ( x_{1} ) \overline{\psi} ( x_{2} ) \psi ( x_{2} ) \right\}
+\mathcal{O}_{4} = \pm \left\langle {A\!\!\!/} ( x_{1} ) {A\!\!\!/} ( x_{2} ) \right\rangle_{o} N \left\{ \overline{\psi} ( x_{1} ) \psi ( x_{1} ) \overline{\psi} ( x_{2} ) \psi ( x_{2} ) \right\}
 ```
 
 ```math
-\mathcal{O}_{5} = \pm \left\langle \psi ( x_{1} ) \psi ( x_{2} ) \right\rangle_{o} \left\langle {A\!\!\!/} ( x_{1} ) {A\!\!\!/} ( x_{2} ) \right\rangle_{o} N \left\{ \psi ( x_{2} ) \psi ( x_{1} ) \right\}
+\mathcal{O}_{5} = \pm \left\langle \overline{\psi} ( x_{1} ) \psi ( x_{2} ) \right\rangle_{o} \left\langle {A\!\!\!/} ( x_{1} ) {A\!\!\!/} ( x_{2} ) \right\rangle_{o} N \left\{ \overline{\psi} ( x_{2} ) \psi ( x_{1} ) \right\}
 ```
 
 ```math
-\mathcal{O}_{6} = \pm \left\langle \psi ( x_{2} ) \psi ( x_{1} ) \right\rangle_{o} \left\langle {A\!\!\!/} ( x_{1} ) {A\!\!\!/} ( x_{2} ) \right\rangle_{o} N \left\{ \psi ( x_{1} ) \psi ( x_{2} ) \right\}
+\mathcal{O}_{6} = \pm \left\langle \overline{\psi} ( x_{2} ) \psi ( x_{1} ) \right\rangle_{o} \left\langle {A\!\!\!/} ( x_{1} ) {A\!\!\!/} ( x_{2} ) \right\rangle_{o} N \left\{ \overline{\psi} ( x_{1} ) \psi ( x_{2} ) \right\}
 ```
 
 ```math
-\mathcal{O}_{7} = \pm \left\langle \psi ( x_{1} ) \psi ( x_{2} ) \right\rangle_{o} \left\langle \psi ( x_{2} ) \psi ( x_{1} ) \right\rangle_{o} N \left\{ {A\!\!\!/} ( x_{1} ) {A\!\!\!/} ( x_{2} ) \right\}
+\mathcal{O}_{7} = \pm \left\langle \overline{\psi} ( x_{1} ) \psi ( x_{2} ) \right\rangle_{o} \left\langle \overline{\psi} ( x_{2} ) \psi ( x_{1} ) \right\rangle_{o} N \left\{ {A\!\!\!/} ( x_{1} ) {A\!\!\!/} ( x_{2} ) \right\}
 ```
 
 ```math
-\mathcal{O}_{8} = \pm \left\langle \psi ( x_{1} ) \psi ( x_{2} ) \right\rangle_{o} \left\langle \psi ( x_{2} ) \psi ( x_{1} ) \right\rangle_{o} \left\langle {A\!\!\!/} ( x_{1} ) {A\!\!\!/} ( x_{2} ) \right\rangle_{o}
+\mathcal{O}_{8} = \pm \left\langle \overline{\psi} ( x_{1} ) \psi ( x_{2} ) \right\rangle_{o} \left\langle \overline{\psi} ( x_{2} ) \psi ( x_{1} ) \right\rangle_{o} \left\langle {A\!\!\!/} ( x_{1} ) {A\!\!\!/} ( x_{2} ) \right\rangle_{o}
 ```
 
 This type of process to which $`\mathcal{O}_{i}`$ gives matrix elements can be seen at once by looking at the _external_ lines of $`G_{i}`$, i.e. the lines which have one end free. Thus, for Møller scattering only $`G_{4}`$ contributes. For Compton scattering only $`G_{2}`$ and $`G_{3}`$. And for a transition from a one-electron atom to a one-electron state, which requires an operator of the form $`b_{2}^{*} b_{1}`$, and $`G_{5}`$ and $`G_{6}`$ will contribute.
@@ -594,19 +594,19 @@ U_{0} = \frac{e}{\hbar c} \int dx \overline{\psi} {A\!\!\!/}^{e} \psi ( x ) \qqu
 <a id="eq-538"></a>
 
 ```math
-U_{1} = \frac{e^{2}}{\hbar^{2} c^{2}} \int \int dxdx_{1} P \left\{ \psi / A^{e} \psi ( x ) , \overline{\psi} {A\!\!\!/} \psi ( x_{1} ) \right\} \qquad \text{(538)}
+U_{1} = \frac{e^{2}}{\hbar^{2} c^{2}} \int \int dxdx_{1} P \left\{ \overline{\psi} {A\!\!\!/}^{e} \psi ( x ) , \overline{\psi} {A\!\!\!/} \psi ( x_{1} ) \right\} \qquad \text{(538)}
 ```
 
 <a id="eq-539"></a>
 
 ```math
-U_{2} = \frac{e^{3}}{2 \hbar^{3} c^{3}} \int \int \int dxdx_{1} dx_{2} P \left\{ \psi / A^{e} \psi ( x ) , \overline{\psi} {A\!\!\!/} \psi ( x_{1} ) , \overline{\psi} {A\!\!\!/} \psi ( x_{2} ) \right\} \qquad \text{(539)}
+U_{2} = \frac{e^{3}}{2 \hbar^{3} c^{3}} \int \int \int dxdx_{1} dx_{2} P \left\{ \overline{\psi} {A\!\!\!/}^{e} \psi ( x ) , \overline{\psi} {A\!\!\!/} \psi ( x_{1} ) , \overline{\psi} {A\!\!\!/} \psi ( x_{2} ) \right\} \qquad \text{(539)}
 ```
 
 <a id="eq-540"></a>
 
 ```math
-U_{2}^{\prime} = \frac{ie\delta m}{\hbar^{2}} \int \int dxdx_{1} P \left\{ \psi / A^{e} \psi ( x ) , \overline{\psi} \psi ( x_{1} ) \right\} \qquad \text{(540)}
+U_{2}^{\prime} = \frac{ie\delta m}{\hbar^{2}} \int \int dxdx_{1} P \left\{ \overline{\psi} {A\!\!\!/}^{e} \psi ( x ) , \overline{\psi} \psi ( x_{1} ) \right\} \qquad \text{(540)}
 ```
 
 The matrix element we wish to calculate is then correspondingly
@@ -678,7 +678,7 @@ Using the Feynman rules, the contribution of $`G_{1}`$ to $`M_{2}`$ is (with the
 <a id="eq-547"></a>
 
 ```math
-\begin{aligned} M_{2 1} &= - \frac{e^{3}}{\hbar^{3} c^{3}} \int \int \int dxdx_{1} dx_{2} \sum_{\mu} \operatorname{Spur} \left\{ {A\!\!\!/}^{e} ( x ) \left\langle T \{ \psi ( x ) , \overline{\psi} ( x_{1} ) \} \right\rangle_{o} \gamma_{\mu} \left\langle T \{ \psi ( x_{1} ) , \overline{\psi} ( x ) \} \right\rangle_{o} \right\} \times \\ & \quad \times \overline{\psi} ( x_{2} ) \left\langle T \{ A_{\mu} ( x_{1} ) ,/ A ( x_{2} ) \} \right\rangle_{o} \psi ( x_{2} ) \end{aligned} \qquad \text{(547)}
+\begin{aligned} M_{2 1} &= - \frac{e^{3}}{\hbar^{3} c^{3}} \int \int \int dxdx_{1} dx_{2} \sum_{\mu} \operatorname{Spur} \left\{ {A\!\!\!/}^{e} ( x ) \left\langle T \{ \psi ( x ) , \overline{\psi} ( x_{1} ) \} \right\rangle_{o} \gamma_{\mu} \left\langle T \{ \psi ( x_{1} ) , \overline{\psi} ( x ) \} \right\rangle_{o} \right\} \times \\ & \quad \times \overline{\psi} ( x_{2} ) \left\langle T \{ A_{\mu} ( x_{1} ) , {A\!\!\!/} ( x_{2} ) \} \right\rangle_{o} \psi ( x_{2} ) \end{aligned} \qquad \text{(547)}
 ```
 
 where the spur appears because of the contraction according to rule 3, and the minus sign comes from the change in order of $`\overline{\psi}`$ and $`\psi`$ factors between (539) and (547). By (510) and (511)
@@ -720,7 +720,7 @@ where we have also dropped the term $`q_{\mu}`$ in(388), since
 <a id="eq-551"></a>
 
 ```math
-( \overline{u}^{\prime} {q\!\!\!/} u ) = \{ u^{\prime} ( {p\!\!\!/}^{\prime} - i\mu ) u \}-\{ u^{\prime} ( {p\!\!\!/} - i\mu ) u \} = 0 \qquad \text{(551)}
+( \overline{u}^{\prime} {q\!\!\!/} u ) = \{ \overline{u}^{\prime} ( {p\!\!\!/}^{\prime} - i\mu ) u \}-\{ u^{\prime} ( {p\!\!\!/} - i\mu ) u \} = 0 \qquad \text{(551)}
 ```
 
 Writing $`\alpha = \frac{e^{2}}{4 \pi \hbar c}`$, (550) becomes
@@ -1122,7 +1122,7 @@ Collecting terms from (592), (593), we have
 <a id="eq-594"></a>
 
 ```math
-\Lambda ( p,p^{\prime} ) = - 4 \int \int xdxdy \int_{F} dk \frac{{k\!\!\!/} /e/ k + ( 1 - xy ) ( 1 - x + xy ) q^{2} {e\!\!\!/} - ( x - x^{2} ) i\mu {e\!\!\!/} {q\!\!\!/} + ( 2 - 2 x - x^{2} ) \mu^{2} {e\!\!\!/}}{[ k^{2} + x^{2} ( \mu^{2} + ( y - y^{2} ) q^{2} ) ]^{3}} \qquad \text{(594)}
+\Lambda ( p,p^{\prime} ) = - 4 \int \int xdxdy \int_{F} dk \frac{{k\!\!\!/} {e\!\!\!/} {k\!\!\!/} + ( 1 - xy ) ( 1 - x + xy ) q^{2} {e\!\!\!/} - ( x - x^{2} ) i\mu {e\!\!\!/} {q\!\!\!/} + ( 2 - 2 x - x^{2} ) \mu^{2} {e\!\!\!/}}{[ k^{2} + x^{2} ( \mu^{2} + ( y - y^{2} ) q^{2} ) ]^{3}} \qquad \text{(594)}
 ```
 
 Now we saw earlier that the integral (567), evaluated using the conditions $`p^{2} + \mu^{2} = 0 , {p\!\!\!/} - i\mu = 0`$, has the value (573). Comparing (567) with (584), this implies that
@@ -1148,17 +1148,17 @@ M_{2 T} = M_{2 4} + M_{2 2} + M_{2 2}^{\prime} + M_{2 3} + M_{2 3}^{\prime} = - 
 <a id="eq-597"></a>
 
 ```math
-\begin{aligned} &= - 4 \int \int xdxdy \left\{ \int_{F} dk \left[ {k\!\!\!/} /e/ k + ( 2 - 2 x - x^{2} ) \mu^{2} {e\!\!\!/} \right] \left( \frac{1}{[ k^{2} + x^{2} ( \mu^{2} + ( y - y^{2} ) q^{2} ) ]^{3}} - \frac{1}{[ k^{2} + x^{2} \mu^{2} ]^{3}} \right) \right. \\ & \quad \left. + \left[ ( 1 - xy ) ( 1 - x + xy ) q^{2} {e\!\!\!/} - ( x - x^{2} ) i\mu {e\!\!\!/} {q\!\!\!/} \right] \int_{F} dk \frac{1}{[ k^{2} + x^{2} ( \mu^{2} + ( y - y^{2} ) q^{2} ) ]^{3}} \right\} \end{aligned} \qquad \text{(597)}
+\begin{aligned} &= - 4 \int \int xdxdy \left\{ \int_{F} dk \left[ {k\!\!\!/} {e\!\!\!/} {k\!\!\!/} + ( 2 - 2 x - x^{2} ) \mu^{2} {e\!\!\!/} \right] \left( \frac{1}{[ k^{2} + x^{2} ( \mu^{2} + ( y - y^{2} ) q^{2} ) ]^{3}} - \frac{1}{[ k^{2} + x^{2} \mu^{2} ]^{3}} \right) \right. \\ & \quad \left. + \left[ ( 1 - xy ) ( 1 - x + xy ) q^{2} {e\!\!\!/} - ( x - x^{2} ) i\mu {e\!\!\!/} {q\!\!\!/} \right] \int_{F} dk \frac{1}{[ k^{2} + x^{2} ( \mu^{2} + ( y - y^{2} ) q^{2} ) ]^{3}} \right\} \end{aligned} \qquad \text{(597)}
 ```
 
 The $`k`$-integrals in (597) are now convergent. Thus the effect of the “<a id="ix-258">wave-function</a> <a id="ix-256">renormalization</a>” term (578) is just to cancel out the part of $`M_{2 4}`$ which is independent of $`q`$ and divergent at high frequencies.
 
-To evaluate (597) we use (385) and (386). First, in the term $`{k\!\!\!/} /e/ k`$ we may replace $`k_{\mu} k_{\nu}`$ by $`\tfrac{1}{4} \delta_{\mu \nu} k^{2}`$ because of the symmetry of the integral in $`k`$-space. So we may write, using (585)
+To evaluate (597) we use (385) and (386). First, in the term $`{k\!\!\!/} {e\!\!\!/} {k\!\!\!/}`$ we may replace $`k_{\mu} k_{\nu}`$ by $`\tfrac{1}{4} \delta_{\mu \nu} k^{2}`$ because of the symmetry of the integral in $`k`$-space. So we may write, using (585)
 
 <a id="eq-598"></a>
 
 ```math
-{k\!\!\!/} /e/ k = \sum_{\alpha} \tfrac{1}{4} k^{2} \gamma_{\alpha} {e\!\!\!/} \gamma_{\alpha} = - \tfrac{1}{2} k^{2} {e\!\!\!/} \qquad \text{(598)}
+{k\!\!\!/} {e\!\!\!/} {k\!\!\!/} = \sum_{\alpha} \tfrac{1}{4} k^{2} \gamma_{\alpha} {e\!\!\!/} \gamma_{\alpha} = - \tfrac{1}{2} k^{2} {e\!\!\!/} \qquad \text{(598)}
 ```
 
 Then by (385) and (386)

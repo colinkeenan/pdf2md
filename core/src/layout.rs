@@ -628,7 +628,9 @@ pub fn read_drawings(doc: &mut Doc, path: &Path, pages: Option<(u32, u32)>) {
         // (in a typeset book: an ebook's pages mix fonts freely, and its
         // tables stand on drawn panels)
         if tex_math {
-            formula_strokes(doc, all(&parts, parse_svg_segments), &pieces);
+            // (… and the thin black bars filled in, up and down: TeX's own
+            // rule for the bar of a bra-ket)
+            formula_strokes(doc, all(&parts, parse_svg_segments), all(&parts, parse_svg_upright_bars), &pieces);
             lettered_figures(doc, pieces);
         }
         // (a coloured bar inside a drawn picture is of the drawing, or of
@@ -1809,14 +1811,14 @@ fn figures_and_pieces(svg: &str) -> Vec<(Vec<Figure>, Vec<Figure>)> {
 /// tall brackets of the formula. Such strokes are no drawing: a "picture"
 /// made of nothing else is none (the letters beside them went into it),
 /// and each stroke is a piece of the formula, "|", where its middle is.
-fn formula_strokes(doc: &mut Doc, segments: Vec<Vec<(f32, f32, f32, f32)>>, pieces: &[Vec<Figure>]) {
+fn formula_strokes(doc: &mut Doc, segments: Vec<Vec<(f32, f32, f32, f32)>>, filled: Vec<Vec<(f32, f32, f32, f32)>>, pieces: &[Vec<Figure>]) {
     let body = doc.body_size;
     let fonts = doc.fonts.clone();
     let is_cmex = |s: &Span| fonts.get(s.font).is_some_and(|f| f.family.starts_with("CMEX"));
     let size_of = |s: &Span| fonts.get(s.font).map_or(s.height, |f| f.size);
     // (the stroke is written in the font of the formula's signs)
     let Some(font) = ["CMSY", "CMR", "CMMI"].iter().find_map(|p| fonts.iter().position(|f| f.family.starts_with(p) && (f.size - body).abs() < 0.5)) else { return };
-    for ((page, segs), pieces) in doc.pages.iter_mut().zip(segments).zip(pieces) {
+    for (((page, segs), filled), pieces) in doc.pages.iter_mut().zip(segments).zip(filled).zip(pieces) {
         // the upright lines, those that go on from each other as one
         let mut ups: Vec<(f32, f32, f32)> = segs.iter().filter(|s| (s.0 - s.2).abs() < 0.5).map(|s| (s.0, s.1.min(s.3), s.1.max(s.3))).collect();
         ups.sort_by(|a, b| a.0.total_cmp(&b.0).then(a.1.total_cmp(&b.1)));
@@ -1827,19 +1829,42 @@ fn formula_strokes(doc: &mut Doc, segments: Vec<Vec<(f32, f32, f32, f32)>>, piec
                 None => joined.push(u),
             }
         }
+        // (a bar filled in, TeX's own rule, is a formula's only inside a
+        // bra-ket: such rules also part the columns of a table of formulas)
+        let drawn = joined.len();
+        joined.extend(filled.iter().map(|s| (s.0, s.1.min(s.3), s.1.max(s.3))));
         let strokes: Vec<(f32, f32, f32)> = joined
             .into_iter()
-            .filter(|&(x, top, bottom)| {
+            .enumerate()
+            .filter(|&(k, (x, top, bottom))| {
                 let tall = bottom - top;
                 if tall < 0.6 * body || tall > 6.0 * body || page.grids.iter().any(|g| x >= g.xs[0] - 3.0 && x <= g.xs[g.xs.len() - 1] + 3.0 && top >= g.ys[0] - 3.0 && bottom <= g.ys[g.ys.len() - 1] + 3.0) {
                     return false;
                 }
                 // (a piece of a tall bracket on either side, at its height)
-                let bracket = |s: &Span| is_cmex(s) && !matches!(s.text.trim(), "X" | "P" | "Z" | "R" | "Y" | "Q" | "I" | "H") && s.top < bottom + body && s.bottom() > top - body;
+                // (… or an angle bracket of the symbol font in the stroke's
+                // own line: the bar of a bra-ket drawn as a rule, "⟨φ, σ₁ |
+                // φ, σ₂⟩", of which the text has no character at all)
+                let angle = |s: &Span| fonts.get(s.font).is_some_and(|f| f.family.starts_with("CMSY")) && matches!(s.text.trim(), "h" | "i" | "⟨" | "⟩") && s.top < bottom && s.bottom() > top && tall <= 2.0 * body;
+                let bracket = |s: &Span| angle(s) || (is_cmex(s) && !matches!(s.text.trim(), "X" | "P" | "Z" | "R" | "Y" | "Q" | "I" | "H") && s.top < bottom + body && s.bottom() > top - body);
                 let before = page.lines.iter().flat_map(|l| &l.spans).any(|s| bracket(s) && s.right() <= x + 1.0 && x - s.right() < 12.0 * body);
                 let behind = page.lines.iter().flat_map(|l| &l.spans).any(|s| bracket(s) && s.left >= x - 1.0 && s.left - x < 12.0 * body);
-                before && behind
+                // (inside the bra-ket: the nearest angle bracket before it
+                // opens, the nearest behind it closes — a rule between two
+                // columns of formulas has a closed one before it)
+                let nearest = |left: bool| {
+                    page.lines
+                        .iter()
+                        .flat_map(|l| &l.spans)
+                        .filter(|s| angle(s) && if left { s.right() <= x + 1.0 } else { s.left >= x - 1.0 })
+                        .min_by(|a, b| (a.left - x).abs().total_cmp(&(b.left - x).abs()))
+                        .map(|s| s.text.trim().to_string())
+                };
+                let cmex_pair = |left: bool| page.lines.iter().flat_map(|l| &l.spans).any(|s| !angle(s) && bracket(s) && if left { s.right() <= x + 1.0 && x - s.right() < 12.0 * body } else { s.left >= x - 1.0 && s.left - x < 12.0 * body });
+                let in_braket = matches!(nearest(true).as_deref(), Some("h" | "⟨")) && matches!(nearest(false).as_deref(), Some("i" | "⟩"));
+                before && behind && (in_braket || (k < drawn && cmex_pair(true) && cmex_pair(false)))
             })
+            .map(|(_, stroke)| stroke)
             .collect();
         if strokes.is_empty() {
             continue;
@@ -3134,6 +3159,38 @@ fn parse_svg_segments(svg: &str) -> Vec<Vec<(f32, f32, f32, f32)>> {
         .collect()
 }
 
+/// The thin black bars filled in on each page that stand upright, each
+/// as the line down its middle: (x, top, x, bottom) in pdftohtml's pixels.
+/// TeX draws a rule so, "M x y L x y L x y L x y Z", not as a stroke.
+fn parse_svg_upright_bars(svg: &str) -> Vec<Vec<(f32, f32, f32, f32)>> {
+    svg_pages(svg)
+        .into_iter()
+        .map(|page| {
+            let body = page.split("</defs>").last().unwrap_or(page);
+            body.split("<path ")
+                .skip(1)
+                .filter_map(|tag| {
+                    let tag = tag.split("/>").next()?;
+                    let attr = |name: &str| tag.split(&format!("{name}=\"")).nth(1)?.split('"').next();
+                    if attr("fill") != Some("rgb(0%, 0%, 0%)") || tag.contains("stroke=") || tag.contains("transform=") {
+                        return None;
+                    }
+                    let nums: Vec<f32> = attr(" d")?.split_whitespace().filter_map(|w| w.parse().ok()).collect();
+                    let letters: String = attr(" d")?.split_whitespace().filter(|w| w.parse::<f32>().is_err()).collect();
+                    if !(letters == "MLLLZM" || letters == "MLLLZ") || nums.len() < 8 {
+                        return None;
+                    }
+                    let xs = [nums[0], nums[2], nums[4], nums[6]];
+                    let ys = [nums[1], nums[3], nums[5], nums[7]];
+                    let (x0, x1) = (xs.iter().copied().fold(f32::MAX, f32::min), xs.iter().copied().fold(f32::MIN, f32::max));
+                    let (y0, y1) = (ys.iter().copied().fold(f32::MAX, f32::min), ys.iter().copied().fold(f32::MIN, f32::max));
+                    (x1 - x0 <= 1.0 && y1 - y0 >= 5.0).then_some((0.75 * (x0 + x1), 1.5 * y0, 0.75 * (x0 + x1), 1.5 * y1))
+                })
+                .collect()
+        })
+        .collect()
+}
+
 /// Frames and grids among the straight lines of a page: vertical lines of
 /// one height, with horizontal lines from the first to the last of them
 /// at their top, at their foot and maybe between.
@@ -3393,8 +3450,13 @@ fn mark_overlines(doc: &mut Doc) {
                         .collect();
                     let numerator = !above.is_empty()
                         && above.iter().chain(&scripts).all(|a| a.0 >= r.left - 2.0 && a.1 <= r.right + 2.0);
+                    // (a root sign, which a bar begins at: by its character
+                    // — not any piece of the symbol fonts: the ψ̄ behind an
+                    // opening "⟨" or "{" has its bar begin there too)
                     let root = all.iter().any(|a| {
-                        (a.5.starts_with("CMEX") || a.5.starts_with("CMSY") || a.4.contains('√'))
+                        let sign = a.4.trim();
+                        let brackets = sign.is_empty() || (sign.chars().count() == 1 && "()[]{}⟨⟩|fghij".contains(sign));
+                        ((a.5.starts_with("CMEX") && !brackets) || (a.5.starts_with("CMSY") && !brackets) || a.4.contains('√'))
                             && (r.left - a.1).abs() < 3.0
                             && a.2 < s.bottom()
                             && a.3 > r.top - 2.0

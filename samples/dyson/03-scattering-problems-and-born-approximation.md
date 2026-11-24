@@ -377,7 +377,7 @@ where $`d\omega_{1}`$ and $`d\omega_{2}`$ are the <a id="ix-14">solid</a> angles
 <a id="eq-130"></a>
 
 ```math
-w = \frac{2 \pi}{\hbar} \frac{\rho_{E}}{dE} | I |^{2} = \frac{2 \pi}{\hbar} \frac{dp_{1} dp_{2}}{d ( E_{1} + E_{2} )} C^{2} \frac{1}{( 2 \pi \hbar )^{6}} \frac{m^{2} c^{4} p_{1}^{2} p_{2}^{2} d\omega_{1} d\omega_{2}}{E_{1} E_{2}} \sum_{u_{1} ,u_{2}} | u_{1} \beta u_{2} |^{2} \qquad \text{(130)}
+w = \frac{2 \pi}{\hbar} \frac{\rho_{E}}{dE} | I |^{2} = \frac{2 \pi}{\hbar} \frac{dp_{1} dp_{2}}{d ( E_{1} + E_{2} )} C^{2} \frac{1}{( 2 \pi \hbar )^{6}} \frac{m^{2} c^{4} p_{1}^{2} p_{2}^{2} d\omega_{1} d\omega_{2}}{E_{1} E_{2}} \sum_{u_{1} ,u_{2}} | \overline{u}_{1} \beta u_{2} |^{2} \qquad \text{(130)}
 ```
 
 Now fixing $`p_{1}`$,
@@ -389,7 +389,7 @@ Now fixing $`p_{1}`$,
 and
 
 ```math
-\sum_{u_{1} ,u 2} | u_{1} \beta u_{2} |^{2} = \sum_{u_{1} ,u 2} ( \overline{u}_{1} \beta u_{2} ) ( \overline{u}_{2} \beta u_{1} ) = \operatorname{Spur} \left\{ \beta \frac{{p\!\!\!/}_{2} - imc}{2 imc} \beta \frac{{p\!\!\!/}_{1} + imc}{2 imc} \right\}
+\sum_{u_{1} ,u 2} | \overline{u}_{1} \beta u_{2} |^{2} = \sum_{u_{1} ,u 2} ( \overline{u}_{1} \beta u_{2} ) ( \overline{u}_{2} \beta u_{1} ) = \operatorname{Spur} \left\{ \beta \frac{{p\!\!\!/}_{2} - imc}{2 imc} \beta \frac{{p\!\!\!/}_{1} + imc}{2 imc} \right\}
 ```
 
 ```math

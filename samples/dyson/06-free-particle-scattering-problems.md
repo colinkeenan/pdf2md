@@ -66,7 +66,7 @@ We shall calculate in the Born approximation as before, thus keeping only the te
 <a id="eq-423"></a>
 
 ```math
-U_{2} = \frac{+ e^{2}}{2 \hbar^{2} c^{2}} \int \int dx_{1} dx_{2} P \left\{ \psi ( x_{1} ) {A\!\!\!/} ( x_{1} ) \psi ( x_{1} ) , \overline{\psi} ( x_{2} ) {A\!\!\!/} ( x_{2} ) \psi ( x_{2} ) \right\} \qquad \text{(423)}
+U_{2} = \frac{+ e^{2}}{2 \hbar^{2} c^{2}} \int \int dx_{1} dx_{2} P \left\{ \overline{\psi} ( x_{1} ) {A\!\!\!/} ( x_{1} ) \psi ( x_{1} ) , \overline{\psi} ( x_{2} ) {A\!\!\!/} ( x_{2} ) \psi ( x_{2} ) \right\} \qquad \text{(423)}
 ```
 
 the integration going over all space-time. To obtain the matrix element $`M = ( \Phi_{B}^{*} U_{2} \Phi_{A} )`$ we only have to replace according to (377)
@@ -500,7 +500,7 @@ To show this, it is enough to assume that all $`\xi^{( i )}`$ are different; by 
 In particular
 
 ```math
-{e\!\!\!/} {e\!\!\!/} = \mathbb{I} ( e \cdot e ) \quad /e/ k = - {k\!\!\!/} {e\!\!\!/} \quad {e\!\!\!/}^{\prime} {k\!\!\!/}^{\prime} = - {k\!\!\!/}^{\prime} {e\!\!\!/}^{\prime}
+{e\!\!\!/} {e\!\!\!/} = \mathbb{I} ( e \cdot e ) \quad {e\!\!\!/} {k\!\!\!/} = - {k\!\!\!/} {e\!\!\!/} \quad {e\!\!\!/}^{\prime} {k\!\!\!/}^{\prime} = - {k\!\!\!/}^{\prime} {e\!\!\!/}^{\prime}
 ```
 
 5) By 2), one can cyclically permute a product of dagger operators without changing its spur.
@@ -580,7 +580,7 @@ since
 Hence altogether (464) becomes
 
 ```math
-\begin{aligned} & \quad \frac{e^{4}}{3 2 \hbar^{4} c^{4} \mu^{4}} \left\{ - 8 \mu \frac{k_{0} - k_{0}^{\prime}}{k_{0} k_{0}^{\prime}} ( k \cdot k^{\prime} ) + 4 \mu ( e \cdot e^{\prime} ) \operatorname{Spur} \left[ ( {p\!\!\!/} - {k\!\!\!/}^{\prime} ) {e\!\!\!/} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/}^{\prime} + ( {p\!\!\!/} + {k\!\!\!/} ) {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/} \right] \right\} \\ \text{ But } {k\!\!\!/} /e/ k &= {k\!\!\!/}^{\prime} {e\!\!\!/}^{\prime} {k\!\!\!/}^{\prime} = 0 \text{ and } \end{aligned}
+\begin{aligned} & \quad \frac{e^{4}}{3 2 \hbar^{4} c^{4} \mu^{4}} \left\{ - 8 \mu \frac{k_{0} - k_{0}^{\prime}}{k_{0} k_{0}^{\prime}} ( k \cdot k^{\prime} ) + 4 \mu ( e \cdot e^{\prime} ) \operatorname{Spur} \left[ ( {p\!\!\!/} - {k\!\!\!/}^{\prime} ) {e\!\!\!/} \frac{{k\!\!\!/}^{\prime}}{k_{0}^{\prime}} {e\!\!\!/}^{\prime} + ( {p\!\!\!/} + {k\!\!\!/} ) {e\!\!\!/}^{\prime} \frac{{k\!\!\!/}}{k_{0}} {e\!\!\!/} \right] \right\} \\ \text{ But } {k\!\!\!/} {e\!\!\!/} {k\!\!\!/} &= {k\!\!\!/}^{\prime} {e\!\!\!/}^{\prime} {k\!\!\!/}^{\prime} = 0 \text{ and } \end{aligned}
 ```
 
 ```math
@@ -744,7 +744,7 @@ As in (453) we have
 <a id="eq-473"></a>
 
 ```math
-K = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu^{2}} \overline{u}^{\prime} ( /e/ k^{\prime} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} {k\!\!\!/} {e\!\!\!/} ) u \qquad \text{(473)}
+K = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu^{2}} \overline{u}^{\prime} ( {e\!\!\!/} {k\!\!\!/}^{\prime} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} {k\!\!\!/} {e\!\!\!/} ) u \qquad \text{(473)}
 ```
 
 The decay probability per unit volume per unit time into a solid angle $`d`$Ω for _one_ of the photons is
@@ -764,7 +764,7 @@ w = c | K |^{2} \frac{1}{( 2 \pi )^{2}} \frac{1}{8} \hbar^{2} c^{2} d \Omega \qq
 For _parallel_ polarizations, $`e = e^{\prime}`$, and
 
 ```math
-( /e/ k^{\prime} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} {k\!\!\!/} {e\!\!\!/} ) = - ( {k\!\!\!/}^{\prime} + {k\!\!\!/} ) = - 2 i\mu \beta
+( {e\!\!\!/} {k\!\!\!/}^{\prime} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} {k\!\!\!/} {e\!\!\!/} ) = - ( {k\!\!\!/}^{\prime} + {k\!\!\!/} ) = - 2 i\mu \beta
 ```
 
 But $`\beta`$ has zero matrix element between the spin-states $`u`$ and $`u^{\prime}`$, which are positive and negative-frequency states both of zero momentum. Hence for parallel polarizations
@@ -784,13 +784,13 @@ For _perpendicular_ polarizations, take coordinate axes 1 along $`e`$, 2 along $
 <a id="eq-476"></a>
 
 ```math
-( /e/ k^{\prime} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} {k\!\!\!/} {e\!\!\!/} ) = \mu \{ \gamma_{1} ( - \gamma_{3} + i\beta ) \gamma_{2} + \gamma_{2} ( \gamma_{3} + i\beta ) \gamma_{1} \} = 2 \mu \gamma_{1} \gamma_{2} \gamma_{3} \qquad \text{(476)}
+( {e\!\!\!/} {k\!\!\!/}^{\prime} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} {k\!\!\!/} {e\!\!\!/} ) = \mu \{ \gamma_{1} ( - \gamma_{3} + i\beta ) \gamma_{2} + \gamma_{2} ( \gamma_{3} + i\beta ) \gamma_{1} \} = 2 \mu \gamma_{1} \gamma_{2} \gamma_{3} \qquad \text{(476)}
 ```
 
 Hence for perpendicular polarizations<sup><a id="fnref-64" href="#fn-64">64</a></sup>
 
 ```math
-\overline{u} [ /e/ k^{\prime} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} {k\!\!\!/} {e\!\!\!/} ] u = 2 \mu v^{T} C\gamma_{4} \gamma_{1} \gamma_{2} \gamma_{3} u = - 2 \mu iv^{T} \gamma_{4} \sigma_{2} u
+\overline{u} [ {e\!\!\!/} {k\!\!\!/}^{\prime} {e\!\!\!/}^{\prime} + {e\!\!\!/}^{\prime} {k\!\!\!/} {e\!\!\!/} ] u = 2 \mu v^{T} C\gamma_{4} \gamma_{1} \gamma_{2} \gamma_{3} u = - 2 \mu iv^{T} \gamma_{4} \sigma_{2} u
 ```
 
 ```math
@@ -894,7 +894,7 @@ The processes arise in the Born approximation just from the term linear in $`A_{
 <a id="eq-482"></a>
 
 ```math
-U_{1} = \frac{e^{2}}{\hbar^{2} c^{2}} \int \int dx_{1} dx_{2} P \left\{ \psi ( x_{1} ) {A\!\!\!/} ( x_{1} ) \psi ( x_{1} ) , \overline{\psi} ( x_{2} ) {A\!\!\!/}^{e} ( x_{2} ) \psi ( x_{2} ) \right\} \qquad \text{(482)}
+U_{1} = \frac{e^{2}}{\hbar^{2} c^{2}} \int \int dx_{1} dx_{2} P \left\{ \overline{\psi} ( x_{1} ) {A\!\!\!/} ( x_{1} ) \psi ( x_{1} ) , \overline{\psi} ( x_{2} ) {A\!\!\!/}^{e} ( x_{2} ) \psi ( x_{2} ) \right\} \qquad \text{(482)}
 ```
 
 The factor $`\frac{1}{2}`$ in (423) is now missing, otherwise everything is the same as before. We suppose $`A_{\mu}^{e} ( x_{2} )`$ is a superposition of Fourier components

@@ -348,7 +348,7 @@ the integral being over all space-time. Using (542) for the initial and final el
 <a id="eq-658"></a>
 
 ```math
-U_{M} = i \frac{\delta M}{2 \hbar c} \sum_{\mu ,\nu} ( \overline{u}^{\prime} \sigma_{\mu \nu} u ) ( q_{\mu} e_{\nu} - q_{\nu} e_{\mu} ) = i \frac{\delta M}{2 \hbar c} \left[ u^{\prime} ( {q\!\!\!/} {e\!\!\!/} - {e\!\!\!/} {q\!\!\!/} ) u \right] \qquad \text{(658)}
+U_{M} = i \frac{\delta M}{2 \hbar c} \sum_{\mu ,\nu} ( \overline{u}^{\prime} \sigma_{\mu \nu} u ) ( q_{\mu} e_{\nu} - q_{\nu} e_{\mu} ) = i \frac{\delta M}{2 \hbar c} \left[ \overline{u}^{\prime} ( {q\!\!\!/} {e\!\!\!/} - {e\!\!\!/} {q\!\!\!/} ) u \right] \qquad \text{(658)}
 ```
 
 where we used $`\gamma_{k} \gamma_{\ell} = i\sigma_{m} ,k,\ell ,m`$ = (1$`, 2 , 3`$) cyclically permuted. Since we have also assumed (588) we may write simply
@@ -492,7 +492,7 @@ expanding $`H_{T}`$ in powers of the radiation interaction just as $`U`$ was exp
 <a id="eq-672"></a>
 
 ```math
-\begin{aligned} U_{2} + U_{2}^{\prime} &= \frac{1}{\mu^{2}} \frac{\alpha}{3 \pi} \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right\} \left( \frac{e}{\hbar c} \right) \int \overline{\psi} ( \Box^{2} {A\!\!\!/} ) \psi ( x ) dx \\ & \quad + \frac{\alpha}{4 \pi} \frac{e}{mc^{2}} \int \overline{\psi} \sum_{\lambda} \frac{\partial / A}{\partial x_{\lambda}} \gamma_{\lambda} \psi ( x ) dx \end{aligned} \qquad \text{(672)}
+\begin{aligned} U_{2} + U_{2}^{\prime} &= \frac{1}{\mu^{2}} \frac{\alpha}{3 \pi} \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right\} \left( \frac{e}{\hbar c} \right) \int \overline{\psi} ( \Box^{2} {A\!\!\!/} ) \psi ( x ) dx \\ & \quad + \frac{\alpha}{4 \pi} \frac{e}{mc^{2}} \int \overline{\psi} \sum_{\lambda} \frac{\partial {A\!\!\!/}}{\partial x_{\lambda}} \gamma_{\lambda} \psi ( x ) dx \end{aligned} \qquad \text{(672)}
 ```
 
 And using (670) and (668) we deduce
@@ -500,7 +500,7 @@ And using (670) and (668) we deduce
 <a id="eq-673"></a>
 
 ```math
-\begin{aligned} H_{T 2} &= \frac{ie}{\mu^{2}} \frac{\alpha}{3 \pi} \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right\} \int \overline{\psi} ( \Box^{2} {A\!\!\!/} ) \psi ( x ) d^{3} \boldsymbol{x} \\ & \quad + \frac{\alpha}{4 \pi} \frac{ie \hbar}{mc} \int \overline{\psi} \sum_{\lambda} \frac{\partial / A}{\partial x_{\lambda}} \gamma_{\lambda} \psi ( x ) d^{3} \boldsymbol{x} \end{aligned} \qquad \text{(673)}
+\begin{aligned} H_{T 2} &= \frac{ie}{\mu^{2}} \frac{\alpha}{3 \pi} \left\{ \log \frac{\mu}{2 r} + \tfrac{1 1}{2 4} - \tfrac{1}{5} \right\} \int \overline{\psi} ( \Box^{2} {A\!\!\!/} ) \psi ( x ) d^{3} \boldsymbol{x} \\ & \quad + \frac{\alpha}{4 \pi} \frac{ie \hbar}{mc} \int \overline{\psi} \sum_{\lambda} \frac{\partial {A\!\!\!/}}{\partial x_{\lambda}} \gamma_{\lambda} \psi ( x ) d^{3} \boldsymbol{x} \end{aligned} \qquad \text{(673)}
 ```
 
 Specializing now to the case of a time-independent electrostatic potential given by
@@ -548,7 +548,7 @@ is given by the Fourier expansion (534). Note that we cannot yet use the simple 
 <a id="eq-677a"></a>
 
 ```math
-M_{1} = - \frac{e^{2}}{2 \hbar^{2} c^{2}} \overline{u}^{\prime} \left\{ \frac{/e/ k^{\prime} {e\!\!\!/}^{\prime} - 2 ( p \cdot e^{\prime} ) {e\!\!\!/}}{p \cdot k^{\prime}} + \frac{{e\!\!\!/}^{\prime} {k\!\!\!/}^{\prime} {e\!\!\!/} + 2 ( p^{\prime} \cdot e^{\prime} ) {e\!\!\!/}}{p^{\prime} \cdot k^{\prime}} \right\} u \qquad \text{(677a)}
+M_{1} = - \frac{e^{2}}{2 \hbar^{2} c^{2}} \overline{u}^{\prime} \left\{ \frac{{e\!\!\!/} {k\!\!\!/}^{\prime} {e\!\!\!/}^{\prime} - 2 ( p \cdot e^{\prime} ) {e\!\!\!/}}{p \cdot k^{\prime}} + \frac{{e\!\!\!/}^{\prime} {k\!\!\!/}^{\prime} {e\!\!\!/} + 2 ( p^{\prime} \cdot e^{\prime} ) {e\!\!\!/}}{p^{\prime} \cdot k^{\prime}} \right\} u \qquad \text{(677a)}
 ```
 
 Since $`p`$ and $`p^{\prime}`$ are assumed non-relativistic we may write
@@ -566,13 +566,13 @@ and then
 <a id="eq-678"></a>
 
 ```math
-M_{1} = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu k_{0}^{\prime}} \overline{u}^{\prime} \left\{ 2 ( ( p^{\prime} - p ) \cdot e^{\prime} ) {e\!\!\!/} + {e\!\!\!/}^{\prime} {k\!\!\!/}^{\prime} {e\!\!\!/} + /e/ k^{\prime} {e\!\!\!/}^{\prime} \right\} u \qquad \text{(678)}
+M_{1} = \frac{e^{2}}{2 \hbar^{2} c^{2} \mu k_{0}^{\prime}} \overline{u}^{\prime} \left\{ 2 ( ( p^{\prime} - p ) \cdot e^{\prime} ) {e\!\!\!/} + {e\!\!\!/}^{\prime} {k\!\!\!/}^{\prime} {e\!\!\!/} + {e\!\!\!/} {k\!\!\!/}^{\prime} {e\!\!\!/}^{\prime} \right\} u \qquad \text{(678)}
 ```
 
 Now because we shall be considering only an electrostatic potential (674), $`{e\!\!\!/}`$ is a multiple of $`\gamma_{4}`$ simply. Then if $`k_{3}^{\prime}`$ is the space-like part of the vector $`k^{\prime}`$, we have
 
 ```math
-{e\!\!\!/}^{\prime} {k\!\!\!/}_{3}^{\prime} {e\!\!\!/} + /e/ k_{3}^{\prime} {e\!\!\!/}^{\prime} = {e\!\!\!/} \left\{ {e\!\!\!/}^{\prime} {k\!\!\!/}_{3}^{\prime} + {k\!\!\!/}_{3}^{\prime} {e\!\!\!/}^{\prime} \right\} = 0
+{e\!\!\!/}^{\prime} {k\!\!\!/}_{3}^{\prime} {e\!\!\!/} + {e\!\!\!/} {k\!\!\!/}_{3}^{\prime} {e\!\!\!/}^{\prime} = {e\!\!\!/} \left\{ {e\!\!\!/}^{\prime} {k\!\!\!/}_{3}^{\prime} + {k\!\!\!/}_{3}^{\prime} {e\!\!\!/}^{\prime} \right\} = 0
 ```
 
 Therefore
@@ -580,7 +580,7 @@ Therefore
 <a id="eq-679"></a>
 
 ```math
-{e\!\!\!/}^{\prime} {k\!\!\!/}_{3}^{\prime} {e\!\!\!/} + /e/ k_{3}^{\prime} {e\!\!\!/}^{\prime} = ik_{0}^{\prime} {e\!\!\!/}^{\prime} ( 2 \gamma_{4} {e\!\!\!/} ) \qquad \text{(679)}
+{e\!\!\!/}^{\prime} {k\!\!\!/}_{3}^{\prime} {e\!\!\!/} + {e\!\!\!/} {k\!\!\!/}_{3}^{\prime} {e\!\!\!/}^{\prime} = ik_{0}^{\prime} {e\!\!\!/}^{\prime} ( 2 \gamma_{4} {e\!\!\!/} ) \qquad \text{(679)}
 ```
 
 Now this term (679) is small compared to the other term in (678), because $`{e\!\!\!/}^{\prime}`$ involves the matrices $`\gamma_{1} ,\gamma_{2} ,\gamma_{3}`$ while $`{e\!\!\!/}`$ involves $`\gamma_{4}`$, and the matrix elements of $`\gamma_{1} ,\gamma_{2} ,\gamma_{3}`$ for non-relativistic transitions are small, of the order of $`( v/c )`$. The term (679) in fact describes magnetic radiation, whereas the other term in (678) gives electric. The electric term gives an effect of the order of the <a id="ix-161">Lamb shift</a>. Hence in our approximation we may neglect the magnetic term and write

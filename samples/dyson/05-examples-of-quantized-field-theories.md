@@ -1488,7 +1488,7 @@ we can write down the commutation rules for the operator components:
 <a id="eq-298"></a>
 
 ```math
-\{ \psi_{\alpha} ( z ) ,\psi_{\beta} ( y ) \} = \left\{ \psi_{\alpha} ( z ) , \overline{\psi}_{\beta} ( y ) \right\} = 0 \qquad \text{(298)}
+\{ \psi_{\alpha} ( z ) ,\psi_{\beta} ( y ) \} = \left\{ \overline{\psi}_{\alpha} ( z ) , \overline{\psi}_{\beta} ( y ) \right\} = 0 \qquad \text{(298)}
 ```
 
 <a id="eq-299"></a>
@@ -1866,7 +1866,7 @@ S^{+} = \tfrac{1}{2} \left( S - iS^{( 1 )} \right) \quad S^{-} = \tfrac{1}{2} \l
 <a id="eq-328"></a>
 
 ```math
-\left\langle \psi_{\beta} ( y ) \psi_{\alpha} ( z ) \right\rangle_{o} = - iS_{\alpha \beta}^{-} ( z - y ) \qquad \text{(328)}
+\left\langle \overline{\psi}_{\beta} ( y ) \psi_{\alpha} ( z ) \right\rangle_{o} = - iS_{\alpha \beta}^{-} ( z - y ) \qquad \text{(328)}
 ```
 
 <a id="eq-329"></a>
@@ -1926,7 +1926,7 @@ Because of the linearity, a change $`\overline{v} \psi ( z )`$ in $`\mathscr{L}`
 <a id="eq-334"></a>
 
 ```math
-\{ \psi_{\alpha} ( z ) ,\psi_{\beta} ( y ) \} = \{ \psi_{\alpha} ( z ) , \overline{\psi}_{\beta} ( y ) \} = 0 \qquad \text{(334)}
+\{ \psi_{\alpha} ( z ) ,\psi_{\beta} ( y ) \} = \{ \overline{\psi}_{\alpha} ( z ) , \overline{\psi}_{\beta} ( y ) \} = 0 \qquad \text{(334)}
 ```
 
 Beyond this point not much can be done with the theory for general time-dependent potentials $`A_{\mu}^{e}`$. In practice when we have time-dependent $`A_{\mu}^{e}`$ we always use perturbation theory starting from free field formalism, assuming the $`A_{\mu}^{e}`$ to be small, or else use special tricks for particular problems.
@@ -2255,7 +2255,7 @@ The total current operator to first order in $`A_{\mu}`$ is
 <a id="eq-363"></a>
 
 ```math
-\begin{aligned} j_{\mu H} ( x ) &= - iec \overline{\psi}_{H} ( x ) \gamma_{\mu} \psi_{H} ( x ) \\ &= j_{\mu} ( x ) + \frac{e^{2}}{\hbar} \int d^{4} x^{\prime} \left\{ \psi ( x ) \gamma_{\mu} S_{R} ( x - x^{\prime} ) {A\!\!\!/}^{e} ( x^{\prime} ) \psi ( x^{\prime} ) + \overline{\psi} ( x^{\prime} ) {A\!\!\!/}^{e} ( x^{\prime} ) S_{A} ( x^{\prime} - x ) \gamma_{\mu} \psi ( x ) \right\} \end{aligned} \qquad \text{(363)}
+\begin{aligned} j_{\mu H} ( x ) &= - iec \overline{\psi}_{H} ( x ) \gamma_{\mu} \psi_{H} ( x ) \\ &= j_{\mu} ( x ) + \frac{e^{2}}{\hbar} \int d^{4} x^{\prime} \left\{ \overline{\psi} ( x ) \gamma_{\mu} S_{R} ( x - x^{\prime} ) {A\!\!\!/}^{e} ( x^{\prime} ) \psi ( x^{\prime} ) + \overline{\psi} ( x^{\prime} ) {A\!\!\!/}^{e} ( x^{\prime} ) S_{A} ( x^{\prime} - x ) \gamma_{\mu} \psi ( x ) \right\} \end{aligned} \qquad \text{(363)}
 ```
 
 Here
@@ -2271,7 +2271,7 @@ is the current operator of the interaction representation. The vacuum expectatio
 <a id="eq-365"></a>
 
 ```math
-\begin{aligned} ( \Psi_{o}^{*} j_{\mu} ( x ) \Psi_{o} ) &= \langle j_{\mu} ( x ) \rangle_{o} \\ &= - iec \left\langle \sum_{\alpha ,\beta} \overline{\psi}_{\beta} ( x ) ( \gamma_{\mu} )_{\beta \alpha} \psi_{\alpha} ( x ) \right\rangle_{o} \\ &= - iec \sum_{\alpha ,\beta} ( \gamma_{\mu} )_{\beta \alpha} \left\langle \psi_{\beta} ( x ) \psi_{\alpha} ( x ) \right\rangle_{o} \end{aligned} \qquad \text{(365)}
+\begin{aligned} ( \Psi_{o}^{*} j_{\mu} ( x ) \Psi_{o} ) &= \langle j_{\mu} ( x ) \rangle_{o} \\ &= - iec \left\langle \sum_{\alpha ,\beta} \overline{\psi}_{\beta} ( x ) ( \gamma_{\mu} )_{\beta \alpha} \psi_{\alpha} ( x ) \right\rangle_{o} \\ &= - iec \sum_{\alpha ,\beta} ( \gamma_{\mu} )_{\beta \alpha} \left\langle \overline{\psi}_{\beta} ( x ) \psi_{\alpha} ( x ) \right\rangle_{o} \end{aligned} \qquad \text{(365)}
 ```
 
 is given by (328)

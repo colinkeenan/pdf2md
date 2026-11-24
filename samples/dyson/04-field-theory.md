@@ -236,7 +236,7 @@ of the field operator $`\phi^{\beta} ( x )`$ between the two states specified by
 <a id="eq-173"></a>
 
 ```math
-\langle \phi_{1}^{\prime \alpha} ,\sigma_{1} \phi_{2}^{\prime \alpha} ,\sigma_{2} \rangle \qquad \text{(173)}
+\langle \phi_{1}^{\prime \alpha} ,\sigma_{1} | \phi_{2}^{\prime \alpha} ,\sigma_{2} \rangle \qquad \text{(173)}
 ```
 
 The squared modulus of this gives the probability of finding the values $`\phi_{1}^{\prime \alpha}`$ for the fields on $`\sigma_{1}`$, in the motion which is defined by the fields being given the definite values $`\phi_{2}^{\prime \alpha}`$ on $`\sigma_{2}`$.
@@ -248,7 +248,7 @@ The Feynman method of quantizing the theory consists in writing down an explicit
 <a id="eq-174"></a>
 
 ```math
-\langle \phi_{1}^{\prime \alpha} ,\sigma_{1} \phi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = N \sum_{H} \exp \left\{ \frac{i}{\hbar} I_{H} ( \Omega ) \right\} \qquad \text{(174)}
+\langle \phi_{1}^{\prime \alpha} ,\sigma_{1} | \phi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = N \sum_{H} \exp \left\{ \frac{i}{\hbar} I_{H} ( \Omega ) \right\} \qquad \text{(174)}
 ```
 
 Here $`H`$ represents a History of the fields between $`\sigma_{2}`$ and $`\sigma_{1}`$, i.e. any set of classical functions $`\phi^{\alpha} ( x )`$ which are defined in the region Ω between $`\sigma_{2}`$ and $`\sigma_{1}`$ and which take the values $`\phi_{1}^{\prime \alpha}`$ on $`\sigma_{1}`$ and $`\phi_{2}^{\prime \alpha}`$ on $`\sigma_{2} . I_{H}`$(Ω) is the value of $`I`$(Ω) calculated with these particular functions. The sum $`\sum H`$ is taken over all possible histories, a continuously infinite sum whose exact mathematical definition is not easy to formulate. $`N`$ is a normalization factor independent of the particular states considered, chosen so as to make the sum of the squares of the amplitudes from a given state to all other states equal to 1. This formula is derived by Feynman from very general considerations, applying a Huyghens principle to the solution of wave-mechanics just as it is done in wave-optics. By this one formula the whole theory is quantized and the answer to any<span class="page" style="float:left;width:100%;margin:0.4em 0 0.6em"><span style="display:block;text-align:right"><a href="book.pdf#page=41" target="_blank" title="This page in the PDF"><sup>[p. 35]</sup></a></span><span style="display:block;height:2px;background:currentColor;opacity:0.25"></span><a id="p36" href="book.pdf#page=42" target="_blank" title="This page in the PDF"><sup>[p. 36]</sup></a> <sup>FIELD THEORY</sup></span> physical problem in principle given. The method applies not only to field theory but to ordinary NR quantum theory too. We do not try to derive or justify the Feynman formula here. We just show that it gives the same results as the usual QM. For a discussion of the difficulties in defining the sum $`\sum H`$, and a method of doing it in simple cases, see C. <a id="ix-215">Morette</a>, _Phys. Rev._ **81** (1951) 848.
@@ -260,7 +260,7 @@ To establish a connection between the Feynman method and the ordinary method of 
 <a id="eq-175"></a>
 
 ```math
-\langle \phi_{1}^{\prime \alpha} ,\sigma_{1} \mathcal{O} ( x ) \phi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = N \sum_{H} \mathcal{O}_{H} ( x ) \exp \left\{ \frac{i}{\hbar} I_{H} ( \Omega ) \right\} \qquad \text{(175)}
+\langle \phi_{1}^{\prime \alpha} ,\sigma_{1} | \mathcal{O} ( x ) | \phi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = N \sum_{H} \mathcal{O}_{H} ( x ) \exp \left\{ \frac{i}{\hbar} I_{H} ( \Omega ) \right\} \qquad \text{(175)}
 ```
 
 The number $`\mathcal{O}_{H}`$ is just the value which the expression $`\mathcal{O}`$ takes when the $`\phi^{\alpha}`$ are given the values which they have in the history $`H`$. It is easily verified that the definitions (174) and (175) are physically reasonable and give the right formal properties of transition <a id="ix-7">amplitudes</a> and operator matrix elements.
@@ -274,7 +274,7 @@ Let the sets of eigenvalues $`\phi_{1}^{\prime \alpha}`$ and $`\phi_{2}^{\prime 
 <a id="eq-176"></a>
 
 ```math
-\delta \langle \phi_{1}^{\prime \alpha} ,\sigma_{1} \phi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = N \sum_{H} \left\{ \frac{i}{\hbar} \delta I_{H} ( \Omega ) \exp \left( \frac{i}{\hbar} I_{H} ( \Omega ) \right) \right\} \qquad \text{(176)}
+\delta \langle \phi_{1}^{\prime \alpha} ,\sigma_{1} | \phi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = N \sum_{H} \left\{ \frac{i}{\hbar} \delta I_{H} ( \Omega ) \exp \left( \frac{i}{\hbar} I_{H} ( \Omega ) \right) \right\} \qquad \text{(176)}
 ```
 
 Using (175) this may be written
@@ -282,7 +282,7 @@ Using (175) this may be written
 <a id="eq-177"></a>
 
 ```math
-\delta \langle \phi_{1}^{\prime \alpha} ,\sigma_{1} \phi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = \frac{i}{\hbar} \langle \phi_{1}^{\prime \alpha} ,\sigma_{1} \delta I ( \Omega ) \phi_{2}^{\prime \alpha} ,\sigma_{2} \rangle . \qquad \text{(177)}
+\delta \langle \phi_{1}^{\prime \alpha} ,\sigma_{1} | \phi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = \frac{i}{\hbar} \langle \phi_{1}^{\prime \alpha} ,\sigma_{1} | \delta I ( \Omega ) | \phi_{2}^{\prime \alpha} ,\sigma_{2} \rangle . \qquad \text{(177)}
 ```
 
 Here $`\delta I`$(Ω) is the operator obtained by making the three variations on the operator $`I`$(Ω). Formally $`\delta I`$(Ω) is the same as the variation obtained in the classical theory,
@@ -317,13 +317,13 @@ Therefore the change in $`\phi_{H}^{\alpha}`$ is equivalent simply to changing
 
 The change in $`\mathscr{L}`$ and in the position of $`\sigma`$ produces a change in the left side of (174), by virtue of the change in the operators $`\phi^{\alpha}`$ on $`\sigma_{1}`$ and $`\sigma_{2}`$ resulting from the variations $`\delta \mathscr{L}`$ and $`\delta x_{\mu}`$ in consequence of the field equations.
 
-Hence the net result of the triple variation on the left side of (174) is to give the change in the matrix element $`\langle \phi_{1}^{\alpha \prime \prime} ,\sigma_{1} \phi_{2}^{\alpha \prime} ,\sigma_{2} \rangle`$ if the $`\phi_{1}^{\alpha \prime \prime}`$ and $`\phi_{2}^{\alpha \prime}`$ are left fixed, the operators $`\phi^{\alpha} ( x )`$ on $`\sigma_{1}`$ and $`\sigma_{2}`$ being modified in consequence of the variations $`\delta \mathscr{L}`$ and $`\delta x_{\mu}`$ according to the field equations, and in addition $`\phi^{\alpha} ( x )`$ on $`\sigma_{1}`$ and $`\sigma_{2}`$ being changed to $`\phi^{\alpha} ( x ) - \delta \phi^{\alpha} ( x )`$.
+Hence the net result of the triple variation on the left side of (174) is to give the change in the matrix element $`\langle \phi_{1}^{\alpha \prime \prime} ,\sigma_{1} | \phi_{2}^{\alpha \prime} ,\sigma_{2} \rangle`$ if the $`\phi_{1}^{\alpha \prime \prime}`$ and $`\phi_{2}^{\alpha \prime}`$ are left fixed, the operators $`\phi^{\alpha} ( x )`$ on $`\sigma_{1}`$ and $`\sigma_{2}`$ being modified in consequence of the variations $`\delta \mathscr{L}`$ and $`\delta x_{\mu}`$ according to the field equations, and in addition $`\phi^{\alpha} ( x )`$ on $`\sigma_{1}`$ and $`\sigma_{2}`$ being changed to $`\phi^{\alpha} ( x ) - \delta \phi^{\alpha} ( x )`$.
 
 Schwinger takes equation (177) as the fundamental principle for setting up the quantum theory. Thus he gets rid of the unpleasant $`\sum H`$. Out of this <a id="ix-3">action</a> principle come very simply all the main features of a quantum field theory, A – G below.
 
 ### <a id="s-a-the-field-equations"></a>A. The Field Equations
 
-If we take the special case of a variation $`\delta \phi^{\alpha}`$ which vanishes on the boundary of Ω and $`\delta \mathscr{L} = \delta x_{\mu} = 0`$, then $`\langle \phi_{1}^{\alpha \prime} ,\sigma_{1} \phi_{2}^{\alpha \prime} ,\sigma_{2} \rangle`$ depends only on the operators $`\phi^{\alpha}`$ on $`\sigma_{1}`$ and $`\sigma_{2}`$ and is unaffected by the variation. Therefore for all such variations
+If we take the special case of a variation $`\delta \phi^{\alpha}`$ which vanishes on the boundary of Ω and $`\delta \mathscr{L} = \delta x_{\mu} = 0`$, then $`\langle \phi_{1}^{\alpha \prime} ,\sigma_{1} | \phi_{2}^{\alpha \prime} ,\sigma_{2} \rangle`$ depends only on the operators $`\phi^{\alpha}`$ on $`\sigma_{1}`$ and $`\sigma_{2}`$ and is unaffected by the variation. Therefore for all such variations
 
 <a id="eq-171"></a>
 
@@ -346,7 +346,7 @@ We see that (177) is exactly the kind of generalization we want of the old varia
 Specialize $`\sigma_{1}`$ and $`\sigma_{2}`$ to be the whole space at the times $`t_{1}`$ and $`t_{2}`$. Then
 
 ```math
-\langle \phi_{1}^{\prime \alpha} ,\sigma_{1} \phi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = \langle \phi_{1}^{\prime \alpha} ,t_{1} \phi_{2}^{\prime \alpha} ,t_{2} \rangle = \Psi ( \phi_{1}^{\prime \alpha} ,t_{1} )
+\langle \phi_{1}^{\prime \alpha} ,\sigma_{1} | \phi_{2}^{\prime \alpha} ,\sigma_{2} \rangle = \langle \phi_{1}^{\prime \alpha} ,t_{1} | \phi_{2}^{\prime \alpha} ,t_{2} \rangle = \Psi ( \phi_{1}^{\prime \alpha} ,t_{1} )
 ```
 
 is a Schrödinger wave-function giving the probability amplitude for finding the system in the state $`\phi_{1}^{\prime \alpha}`$ at the time $`t_{1}`$, given the initial conditions $`\phi_{2}^{\prime \alpha}`$ at $`t_{2}`$. The development of Ψ $`( \phi_{1}^{\prime \alpha} ,t_{1} )`$ with time $`t_{1}`$ is thus a description of the development of the state of the system with time in the Schrödinger representation.
@@ -354,7 +354,7 @@ is a Schrödinger wave-function giving the probability amplitude for finding the
 Take in (177) a variation in which $`\delta \phi^{\alpha} = \delta \mathscr{L} = 0`$, the surface $`\sigma_{1}`$ being just moved through the displacement $`\delta t`$ in the time direction. Then using (165) and (164)
 
 ```math
-\delta \Psi ( \phi_{1}^{\prime \alpha} ,t_{1} ) = - \frac{i}{\hbar} \langle \phi_{1}^{\prime \alpha} ,t_{1} H ( t_{1} ) \phi_{2}^{\prime \alpha} ,t_{2} \rangle \delta t_{1}
+\delta \Psi ( \phi_{1}^{\prime \alpha} ,t_{1} ) = - \frac{i}{\hbar} \langle \phi_{1}^{\prime \alpha} ,t_{1} | H ( t_{1} ) | \phi_{2}^{\prime \alpha} ,t_{2} \rangle \delta t_{1}
 ```
 
 <div align="right"><a href="book.pdf#page=43" target="_blank" title="This page in the PDF"><sup>[p. 37]</sup></a></div>
@@ -366,7 +366,7 @@ or
 <a id="eq-180"></a>
 
 ```math
-i \hbar \frac{d}{dt} \langle \phi_{1}^{\prime \alpha} ,t_{1} \phi_{2}^{\prime \alpha} ,t_{2} \rangle = \langle \phi_{1}^{\prime \alpha} ,t_{1} H ( t_{1} ) \phi_{2}^{\prime \alpha} ,t_{2} \rangle \qquad \text{(180)}
+i \hbar \frac{d}{dt} \langle \phi_{1}^{\prime \alpha} ,t_{1} | \phi_{2}^{\prime \alpha} ,t_{2} \rangle = \langle \phi_{1}^{\prime \alpha} ,t_{1} | H ( t_{1} ) | \phi_{2}^{\prime \alpha} ,t_{2} \rangle \qquad \text{(180)}
 ```
 
 This is the ordinary Schrödinger <a id="ix-263">equation</a> in Dirac’s <a id="ix-89">notation</a>. It shows that the Schwinger <a id="ix-269">action principle</a> contains enough information for predicting the future behaviour of a system given initially in a known quantum state.
@@ -380,7 +380,7 @@ The usual and generally more useful way of defining operators is to specify thei
 <a id="eq-181"></a>
 
 ```math
-\langle \phi^{\prime \alpha} ,\sigma \mathcal{O} \phi^{\prime \prime \alpha} ,\sigma \rangle \qquad \text{(181)}
+\langle \phi^{\prime \alpha} ,\sigma | \mathcal{O} | \phi^{\prime \prime \alpha} ,\sigma \rangle \qquad \text{(181)}
 ```
 
 where $`\phi^{\prime \alpha}`$ and $`\phi^{\prime \prime \alpha}`$ are given sets of eigenvalues and $`\sigma`$ is a surface which may be past, present or future in relation to the field-points to which $`\mathcal{O}`$ refers.
@@ -398,23 +398,23 @@ where Ω is the region bounded by $`\sigma_{o}`$ and $`\sigma`$. Let us now fir
 <a id="eq-183"></a>
 
 ```math
-\langle \phi^{\prime \alpha} ,\sigma \mathcal{O} \phi^{\prime \prime \alpha} ,\sigma \rangle = \sum_{\phi_{o}^{\prime}} \sum_{\phi \prime \prime_{o}} \langle \phi^{\prime \alpha} ,\sigma \phi_{o}^{\prime \alpha} ,\sigma_{o} \rangle \langle \phi_{o}^{\prime \alpha} ,\sigma_{o} \mathcal{O} \phi_{o}^{\prime \prime \alpha} ,\sigma_{o} \rangle \langle \phi_{o}^{\prime \prime \alpha} ,\sigma_{o} \phi^{\prime \prime \alpha} ,\sigma \rangle \qquad \text{(183)}
+\langle \phi^{\prime \alpha} ,\sigma | \mathcal{O} | \phi^{\prime \prime \alpha} ,\sigma \rangle = \sum_{\phi_{o}^{\prime}} \sum_{\phi \prime \prime_{o}} \langle \phi^{\prime \alpha} ,\sigma \phi_{o}^{\prime \alpha} ,\sigma_{o} \rangle \langle \phi_{o}^{\prime \alpha} ,\sigma_{o} \mathcal{O} | \phi_{o}^{\prime \prime \alpha} ,\sigma_{o} \rangle \langle \phi_{o}^{\prime \prime \alpha} ,\sigma_{o} \phi^{\prime \prime \alpha} ,\sigma \rangle \qquad \text{(183)}
 ```
 
 therefore, denoting
 
 ```math
-\langle \phi^{\prime \alpha} ,\sigma \mathcal{O} \phi^{\prime \prime \alpha} ,\sigma \rangle = \langle \sigma^{\prime} \mathcal{O} \sigma^{\prime \prime} \rangle \quad \text{ etc } . , \text{ we have }
+\langle \phi^{\prime \alpha} ,\sigma | \mathcal{O} | \phi^{\prime \prime \alpha} ,\sigma \rangle = \langle \sigma^{\prime} | \mathcal{O} | \sigma^{\prime \prime} \rangle \quad \text{ etc } . , \text{ we have }
 ```
 
 ```math
-\delta \langle \sigma^{\prime} \mathcal{O} \sigma^{\prime \prime} \rangle = \sum_{\prime} \sum_{\prime \prime} ( \delta \langle \sigma^{\prime} \sigma_{o}^{\prime} \rangle ) \langle \sigma_{o}^{\prime} \mathcal{O} \sigma_{o}^{\prime \prime} \rangle \langle \sigma_{o}^{\prime \prime} \sigma^{\prime \prime} \rangle + \sum_{\prime} \sum_{\prime \prime} \langle \sigma^{\prime} \sigma_{o}^{\prime} \rangle \langle \sigma_{o}^{\prime} \mathcal{O} \sigma_{o}^{\prime \prime} \rangle ( \delta \langle \sigma_{o}^{\prime \prime} \sigma^{\prime \prime} \rangle )
+\delta \langle \sigma^{\prime} | \mathcal{O} | \sigma^{\prime \prime} \rangle = \sum_{\prime} \sum_{\prime \prime} ( \delta \langle \sigma^{\prime} | \sigma_{o}^{\prime} \rangle ) \langle \sigma_{o}^{\prime} | \mathcal{O} | \sigma_{o}^{\prime \prime} \rangle \langle \sigma_{o}^{\prime \prime} | \sigma^{\prime \prime} \rangle + \sum_{\prime} \sum_{\prime \prime} \langle \sigma^{\prime} | \sigma_{o}^{\prime} \rangle \langle \sigma_{o}^{\prime} | \mathcal{O} | \sigma_{o}^{\prime \prime} \rangle ( \delta \langle \sigma_{o}^{\prime \prime} | \sigma^{\prime \prime} \rangle )
 ```
 
 because $`| \phi_{o}^{\prime \alpha} \rangle`$ and $`| \phi_{o}^{\prime \prime \alpha} \rangle`$ are not changed by the variation, and neither is $`\mathcal{O}`$. Therefore, using (177) we have
 
 ```math
-\delta \langle \sigma^{\prime} \mathcal{O} \sigma^{\prime \prime} \rangle = \sum_{\prime} \sum_{\prime \prime} \frac{i}{\hbar} \langle \sigma^{\prime} \delta I_{\sigma - \sigma_{o}} \mathcal{O} \sigma^{\prime \prime} \rangle + \sum_{\prime} \sum_{\prime \prime} \frac{i}{\hbar} \langle \sigma^{\prime} \mathcal{O} \delta I_{\sigma_{o} - \sigma} \sigma^{\prime \prime} \rangle
+\delta \langle \sigma^{\prime} | \mathcal{O} | \sigma^{\prime \prime} \rangle = \sum_{\prime} \sum_{\prime \prime} \frac{i}{\hbar} \langle \sigma^{\prime} | \delta I_{\sigma - \sigma_{o}} \mathcal{O} | \sigma^{\prime \prime} \rangle + \sum_{\prime} \sum_{\prime \prime} \frac{i}{\hbar} \langle \sigma^{\prime} | \mathcal{O} \delta I_{\sigma_{o} - \sigma} | \sigma^{\prime \prime} \rangle
 ```
 
 where the subscript $`\sigma - \sigma_{o}`$ refers to the surface integrals in (178). Since $`\delta I_{\sigma - \sigma_{o}} = - \delta I_{\sigma_{o} - \sigma}`$, we get finally
@@ -422,17 +422,17 @@ where the subscript $`\sigma - \sigma_{o}`$ refers to the surface integrals in (
 <a id="eq-184"></a>
 
 ```math
-\delta \langle \phi^{\prime \alpha} ,\sigma \mathcal{O} \phi^{\prime \prime \alpha} ,\sigma \rangle = \frac{i}{\hbar} \langle \phi^{\prime \alpha} ,\sigma \boldsymbol{[} \delta I ( \Omega ) , \mathcal{O} \boldsymbol{]} \phi^{\prime \prime \alpha} ,\sigma \rangle \qquad \text{(184)}
+\delta \langle \phi^{\prime \alpha} ,\sigma | \mathcal{O} | \phi^{\prime \prime \alpha} ,\sigma \rangle = \frac{i}{\hbar} \langle \phi^{\prime \alpha} ,\sigma | \boldsymbol{[} \delta I ( \Omega ) , \mathcal{O} \boldsymbol{]} | \phi^{\prime \prime \alpha} ,\sigma \rangle \qquad \text{(184)}
 ```
 
 where $`\boldsymbol{[} P,R \boldsymbol{]} = PR - RP`$. This applies for the case when $`\mathcal{O}`$ is fixed and the states vary.
 
-Now we want to calculate the variation of $`\langle \phi^{\prime \alpha} ,\sigma \mathcal{O} \phi^{\prime \prime \alpha} ,\sigma \rangle`$ for the case when the states are fixed, and $`\mathcal{O} = \mathcal{O} ( \phi^{\alpha} ( \sigma ) )`$ changes. This, however, will be the same as for the previous case, except with the opposite sign, because the variation of the matrix element<sup><a id="fnref-18" href="#fn-18">18</a></sup>
+Now we want to calculate the variation of $`\langle \phi^{\prime \alpha} ,\sigma | \mathcal{O} | \phi^{\prime \prime \alpha} ,\sigma \rangle`$ for the case when the states are fixed, and $`\mathcal{O} = \mathcal{O} ( \phi^{\alpha} ( \sigma ) )`$ changes. This, however, will be the same as for the previous case, except with the opposite sign, because the variation of the matrix element<sup><a id="fnref-18" href="#fn-18">18</a></sup>
 
 <a id="eq-185"></a>
 
 ```math
-\langle \phi^{\prime \alpha} ,\sigma \mathcal{O} \phi^{\prime \prime \alpha} ,\sigma \rangle \qquad \text{(185)}
+\langle \phi^{\prime \alpha} ,\sigma | \mathcal{O} | \phi^{\prime \prime \alpha} ,\sigma \rangle \qquad \text{(185)}
 ```
 
 if _both_ the states and $`\mathcal{O}`$ change simultaneously is zero. Therefore, if we use a representation in which matrix elements of $`\mathcal{O}`$ are defined between states _not_ subject to variation we get<sup><a id="fnref-19" href="#fn-19">19</a></sup>
