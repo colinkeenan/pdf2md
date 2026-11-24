@@ -813,6 +813,7 @@ pub fn build_with(spans: &[MSpan], bars: &[Rule]) -> String {
             }
         }
     }
+    long_arrows(&mut spans);
     level_sizes(&mut spans);
     if let Some(x) = small_tail(&spans) {
         let (head, tail): (Vec<MSpan>, Vec<MSpan>) = spans.iter().cloned().partition(|s| s.left < x);
@@ -2481,6 +2482,109 @@ fn bar_or_angle(n: &MSpan) -> bool {
     matches!(n.text.trim(), "|" | "⟩" | "⟨") || (n.family.to_uppercase().starts_with("CMSY") && matches!(n.text.trim(), "j" | "h" | "i"))
 }
 
+/// A long arrow with what is written over it: TeX builds the arrow of
+/// "tends to, as ε → 0" from minus signs pushed together and an arrow's
+/// head, and sets the label small above it. The minus signs and the head
+/// are one arrow, and the small pieces over it are its label,
+/// `\xrightarrow{\epsilon \to 0}` (they had come as "− − →" with the label
+/// scattered among the signs as exponents).
+fn long_arrows(spans: &mut Vec<MSpan>) {
+    // a piece of the symbol font that holds only these signs: "−", "−−",
+    // "→", "−→" (minus signs, then at most one head, last)
+    let part = |s: &MSpan| -> Option<(usize, bool)> {
+        let text: String = s.text.chars().filter(|c| !c.is_whitespace()).collect();
+        let family = s.family.to_uppercase();
+        let shafts = text.trim_end_matches('→');
+        let heads = text.chars().count() - shafts.chars().count();
+        (s.atom.is_none() && !text.is_empty() && shafts.chars().all(|c| c == '−') && heads <= 1 && (family.starts_with("CMSY") || family.starts_with("MTSY"))).then_some((shafts.chars().count(), heads == 1))
+    };
+    let mut k = 0;
+    while k < spans.len() {
+        let Some((first_shafts, mut headed)) = part(&spans[k]).filter(|p| p.0 >= 1) else {
+            k += 1;
+            continue;
+        };
+        // the run of pieces that touch each other, at one height, up to the head
+        let mut run = vec![k];
+        let mut shafts = first_shafts;
+        while !headed {
+            let last = &spans[*run.last().unwrap()];
+            let next = (0..spans.len()).filter(|j| !run.contains(j)).find(|&j| {
+                let n = &spans[j];
+                part(n).is_some() && (n.size - last.size).abs() < 0.5 && (n.top - last.top).abs() <= 1.5 && n.left >= last.left && n.left <= last.right + 1.5
+            });
+            let Some(j) = next else { break };
+            let (more, head) = part(&spans[j]).unwrap_or((0, false));
+            run.push(j);
+            shafts += more;
+            headed = head;
+        }
+        if !headed || shafts == 0 {
+            k += 1;
+            continue;
+        }
+        let (left, right) = (spans[run[0]].left, spans[*run.last().unwrap()].right);
+        let (top, size) = (spans[run[0]].top, spans[run[0]].size);
+        let middle = top + 0.5 * (spans[run[0]].bottom - top);
+        let over: Vec<usize> = (0..spans.len())
+            .filter(|j| !run.contains(j))
+            .filter(|&j| {
+                let n = &spans[j];
+                let c = 0.5 * (n.left + n.right);
+                n.size < 0.85 * size && c >= left - 1.0 && c <= right + 1.0 && n.bottom <= middle + 1.0 && n.top >= top - 1.3 * size
+            })
+            .collect();
+        // (… or under it: "tends to, as a → 0" with the condition below)
+        let bottom = spans[run[0]].bottom;
+        let under: Vec<usize> = (0..spans.len())
+            .filter(|j| !run.contains(j) && !over.contains(j))
+            .filter(|&j| {
+                let n = &spans[j];
+                let c = 0.5 * (n.left + n.right);
+                n.size < 0.85 * size && c >= left - 1.0 && c <= right + 1.0 && n.top >= middle - 1.0 && n.top <= bottom + 0.6 * size
+            })
+            .collect();
+        // (a long arrow with nothing over or under it is written as before)
+        if over.is_empty() && under.is_empty() {
+            k += 1;
+            continue;
+        }
+        // (a label wider than its arrow: the small pieces that go on from
+        // it at its height, on either side, are of it — "|x| → ∞")
+        let grown = |which: Vec<usize>| -> Vec<usize> {
+            let mut which = which;
+            loop {
+                let (l, r) = which.iter().fold((f32::MAX, f32::MIN), |(l, r), &j| (l.min(spans[j].left), r.max(spans[j].right)));
+                let (t, b) = which.iter().fold((f32::MAX, f32::MIN), |(t, b), &j| (t.min(spans[j].top), b.max(spans[j].bottom)));
+                let next = (0..spans.len()).find(|j| {
+                    let n = &spans[*j];
+                    !which.contains(j) && !run.contains(j) && n.size < 0.85 * size && (n.top - t).abs() <= 0.2 * size && n.bottom > t && n.top < b && (n.right >= l - 0.2 * size && n.left <= r + 0.2 * size)
+                });
+                match next {
+                    Some(j) if !which.is_empty() => which.push(j),
+                    _ => break which,
+                }
+            }
+        };
+        let (over, under) = (grown(over), grown(under));
+        // (each built as a formula of its own, with its arrows and accents)
+        let pieces = |which: &[usize]| -> Vec<MSpan> { which.iter().map(|&j| spans[j].clone()).collect() };
+        let below = if under.is_empty() { String::new() } else { format!("[{}]", build_with(&pieces(&under), &[])) };
+        let above = if over.is_empty() { String::new() } else { build_with(&pieces(&over), &[]) };
+        let mut arrow = spans[run[0]].clone();
+        (arrow.left, arrow.right) = (left, right);
+        (arrow.atom, arrow.text) = (Some(format!("\\xrightarrow{below}{{{above}}}")), String::new());
+        let mut gone: Vec<usize> = run.iter().copied().chain(over).chain(under).collect();
+        gone.sort_unstable_by(|a, b| b.cmp(a));
+        let at = *gone.last().unwrap();
+        for j in gone {
+            spans.remove(j);
+        }
+        spans.insert(at.min(spans.len()), arrow);
+        k = 0;
+    }
+}
+
 /// The dot or cross of a product, a piece of the symbol font: "g · v",
 /// whose two letters are one piece with the dot drawn in its blank.
 fn product_sign(n: &MSpan) -> bool {
@@ -4087,12 +4191,21 @@ fn finish(mut out: Vec<String>) -> String {
             match opens_kind(c) {
                 Some(false) => {
                     let at = (0..k).rev().find(|&j| stop(&out[j])).map_or(0, |j| j + 1);
-                    out.insert(at, delim_tex(partner(c)).into());
-                    k += 1;
+                    // (the "⟩" of a ket lacks nothing: its bar stands before
+                    // it, "p|p′⟩", and no "⟨" goes in front of the p)
+                    let ket = c == '⟩' && out[at..k].iter().any(|t| t.trim() == "|" || t.trim() == LONE.to_string() + "|");
+                    if !ket {
+                        out.insert(at, delim_tex(partner(c)).into());
+                        k += 1;
+                    }
                 }
                 Some(true) => {
                     let at = (k + 1..out.len()).find(|&j| stop(&out[j])).unwrap_or(out.len());
-                    out.insert(at, delim_tex(partner(c)).into());
+                    // (… nor the "⟨" of a bra, "⟨x′|T")
+                    let bra = c == '⟨' && out[k + 1..at].iter().any(|t| t.trim() == "|" || t.trim() == LONE.to_string() + "|");
+                    if !bra {
+                        out.insert(at, delim_tex(partner(c)).into());
+                    }
                 }
                 None => {}
             }

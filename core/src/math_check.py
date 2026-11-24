@@ -582,7 +582,7 @@ def read(files, dst, ext: str, scale: int, state: dict):
 # Equations built from the letters of a PDF's page (a TeX book): a second
 # reading, by the recognizer, of the place on the page each was built from.
 
-PLACES = "places 15"
+PLACES = "places 16"
 # pixels of a cut-out for each pixel of the page reader's measure (it has
 # 1.5 to a point: 216 dots to the inch, twice the size of an ebook's pictures)
 ZOOM = 2.0
@@ -631,7 +631,14 @@ def tidy(t: str) -> str:
     t = re.sub(r"((?:\^\s*\{\s*(?:\\prime\s*)+\}|')+)\s*(_\s*\{?\s*\\(?:parallel|perp)\s*\}?)", r"\2\1", t)
     # (the double bar of a norm, three ways; three integral signs, two; a
     # heavy dot between two vectors and a light one)
-    t = re.sub(r"\\parallel(?![a-zA-Z])|\\\||\\Vert(?![a-zA-Z])|\\lVert(?![a-zA-Z])|\\rVert(?![a-zA-Z])", "||", t)
+    # (… not the bar of a ket that begins a row: "\\\\ |b>" is a row's end
+    # and a bar)
+    t = re.sub(r"\\parallel(?![a-zA-Z])|(?<!\\)((?:\\\\)*)\\\||\\Vert(?![a-zA-Z])|\\lVert(?![a-zA-Z])|\\rVert(?![a-zA-Z])", lambda f: (f.group(1) or "") + "||", t)
+    # (a colon by its command; an angle bracket written "<" or ">" behind
+    # a size: "\\right>" closes a ket)
+    t = re.sub(r"\\colon(?![a-zA-Z])", ":", t)
+    t = re.sub(r"(\\(?:left|right|big|Big|bigg|Bigg)[lrm]?)\s*>", r"\1\\rangle ", t)
+    t = re.sub(r"(\\(?:left|right|big|Big|bigg|Bigg)[lrm]?)\s*<", r"\1\\langle ", t)
     t = re.sub(r"\\iiint(?![a-zA-Z])", r"\\int\\int\\int ", t)
     t = re.sub(r"\\bullet(?![a-zA-Z])", r"\\cdot ", t)
     # (a wide accent and a narrow one; the sun's sign in two sizes; "it
