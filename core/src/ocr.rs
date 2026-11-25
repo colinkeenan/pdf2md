@@ -552,8 +552,23 @@ fn read_cached(dir: &std::path::Path, k: &str) -> Option<Reading> {
 /// place from the left edge; how wide the equation comes out is estimated
 /// (`measure`), so a word may stand a little off.
 fn with_labels(latex: &str, labels: &[(f32, String)]) -> String {
+    if labels.is_empty() {
+        return latex.to_string();
+    }
+    // The page reader reads the whole picture and gives the small words
+    // once more, as text beside the formula ("… \quad \text{bra ket}"):
+    // they are these words, which stand under the equation, not beside it
+    // (and would count into its width, moving every word to the right).
+    let beside = |part: &&str| {
+        let words = part.trim().strip_prefix("\\text{").and_then(|t| t.strip_suffix('}'));
+        words.is_some_and(|w| !w.trim().is_empty() && w.split_whitespace().all(|w| labels.iter().any(|(_, l)| l == w)))
+    };
+    let parts: Vec<&str> = latex.split(" \\quad ").collect();
+    let kept: Vec<&str> = parts.iter().filter(|p| !beside(p)).copied().collect();
+    let latex = if kept.is_empty() || kept.len() == parts.len() { latex.to_string() } else { kept.join(" \\quad ").trim().to_string() };
+    let latex = latex.as_str();
     // (an equation of several rows has no one width to measure along)
-    if labels.is_empty() || latex.contains("\\\\") || latex.contains("\\begin") {
+    if latex.contains("\\\\") || latex.contains("\\begin") {
         return latex.to_string();
     }
     let width = crate::measure::math_em(latex);
@@ -1621,5 +1636,12 @@ mod tests {
         // none, or an equation of several rows: as it is
         assert_eq!(with_labels("x y", &[]), "x y");
         assert_eq!(with_labels("a \\\\ b", &[(0.5, "bra".into())]), "a \\\\ b");
+        // the words read once more beside the formula are the ones under it
+        let labels = [(0.2, "bra".to_string()), (0.8, "ket".to_string())];
+        assert_eq!(with_labels("x y \\,. \\quad \\text{bra ket}", &labels), with_labels("x y \\,.", &labels));
+        assert_eq!(with_labels("\\text{ket} \\quad x y", &labels), with_labels("x y", &labels));
+        // (other words beside it are the equation's)
+        assert!(with_labels("x y \\quad \\text{for all bra}", &labels).contains("\\text{for all bra}"));
+        assert!(with_labels("\\text{bra ket}", &labels).contains("\\begin{array}{l}\n\\text{bra ket} "));
     }
 }
